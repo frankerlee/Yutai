@@ -118,10 +118,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppContext.cs" />
+    <Compile Include="Commands\Document\CmdCloseMapDocument.cs" />
+    <Compile Include="Commands\Document\CmdCloseSceneDocument.cs" />
     <Compile Include="Commands\Document\CmdCloseYutaiDoc.cs" />
-    <Compile Include="Commands\Document\CmdOpenDocument.cs" />
+    <Compile Include="Commands\Document\CmdOpenMapDocument.cs" />
+    <Compile Include="Commands\Document\CmdOpenSceneDocument.cs" />
     <Compile Include="Commands\Document\CmdOpenYutaiDoc.cs" />
-    <Compile Include="Commands\Document\CmdSaveDocument.cs" />
+    <Compile Include="Commands\Document\CmdSaveMapDocument.cs" />
+    <Compile Include="Commands\Document\CmdSaveSceneDocument.cs" />
+    <Compile Include="Commands\Document\CmdSaveYutaiDoc.cs" />
     <Compile Include="Commands\Views\CmdViewFixedZoomIn.cs" />
     <Compile Include="Commands\Views\CmdViewFixedZoomOut.cs" />
     <Compile Include="Commands\Views\CmdViewFullExtent.cs" />

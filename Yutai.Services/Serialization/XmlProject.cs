@@ -57,7 +57,7 @@ namespace Yutai.Services.Serialization
         [DataMember]
         public List<XmlPlugin> Plugins { get; set; }
 
-        [DataMember]
+        [DataMember(Name = "Extensions")]
         public List<XmlExtensions> Extensions { get; set; }
        
         [DataMember]
