@@ -182,6 +182,7 @@
     <Compile Include="Services\IBroadcasterService.cs" />
     <Compile Include="Services\IMessageService.cs" />
     <Compile Include="Services\IProjectService.cs" />
+    <Compile Include="Services\ITempFileService.cs" />
     <Compile Include="Services\MessageService.cs" />
   </ItemGroup>
   <ItemGroup />

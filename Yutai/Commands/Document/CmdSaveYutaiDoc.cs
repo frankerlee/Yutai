@@ -2,14 +2,17 @@
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
+using Yutai.Plugins.Services;
 
 namespace Yutai.Commands.Document
 {
     public class CmdSaveYutaiDoc : YutaiCommand
     {
+        private IProjectService _projectService;
         public CmdSaveYutaiDoc(IAppContext context)
         {
             OnCreate(context);
+            _projectService = context.Project as IProjectService;
         }
 
         public override void OnClick()

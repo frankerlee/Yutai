@@ -8,16 +8,19 @@ using Yutai.Commands.Views;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
+using Yutai.Plugins.Services;
 
 namespace Yutai.Menu
 {
     public class YutaiCommands : CommandProviderBase
     {
         private List<YutaiCommand> _commands;
+        
 
         public YutaiCommands(IAppContext context, PluginIdentity identity)
             : base(context, identity)
         {
+           
         }
 
 

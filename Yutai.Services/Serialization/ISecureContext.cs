@@ -14,5 +14,7 @@ namespace Yutai.Services.Serialization
     {
         IPluginManager PluginManager { get; }
         Control GetDockPanelObject(DefaultDockPanel panel);
+
+        XmlProject YutaiProject { get; set; }
     }
 }

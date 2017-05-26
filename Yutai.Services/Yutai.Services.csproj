@@ -56,6 +56,12 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ESRI.ArcGIS.Carto, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Controls, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.Geometry, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -84,11 +90,14 @@
     <Compile Include="Concrete\BaseLogger.cs" />
     <Compile Include="Concrete\ConfigService.cs" />
     <Compile Include="Concrete\FileDialogService.cs" />
+    <Compile Include="Concrete\ImageSerializationService.cs" />
     <Compile Include="Concrete\LogEntry.cs" />
     <Compile Include="Concrete\LoggingService.cs" />
+    <Compile Include="Concrete\ProjectLoader.cs" />
     <Compile Include="Concrete\ProjectLoaderBase.cs" />
     <Compile Include="Concrete\ProjectLoaderLegacy.cs" />
     <Compile Include="Concrete\ProjectService.cs" />
+    <Compile Include="Concrete\TempFileService.cs" />
     <Compile Include="Helpers\ExceptionHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\IProjectLoader.cs" />

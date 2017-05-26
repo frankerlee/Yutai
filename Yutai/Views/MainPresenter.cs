@@ -26,36 +26,33 @@ namespace Yutai.Views
         private readonly IAppContext _context;
         private readonly MenuGenerator _menuGenerator;
         private readonly StatusBarListener _statusBarListener;
+        private readonly IProjectService _projectService;
         /*private readonly LegendListener _legendListener;
         private readonly MainPluginListener _mainPluginListener;
         private readonly MapListener _mapListener;
         
         private readonly MenuListener _menuListener;
         private readonly MenuUpdater _menuUpdater;*/
-        //  private readonly IProjectService _projectService;
+        //  
         //
 
         public MainPresenter(
             IAppContext context,
             IMainView view,
             IConfigService configService,
-            MapLegendPresenter mapLegendPresenter/*,
-            IProjectService projectService,
-            IConfigService configService*/)
+            MapLegendPresenter mapLegendPresenter,
+            IProjectService projectService)
             : base(view)
         {
             Logger.Current.Trace("Start MainPresenter");
             if (view == null) throw new ArgumentNullException("view");
-         /*   if (projectService == null) throw new ArgumentNullException("projectService");
-            if (configService == null) throw new ArgumentNullException("configService");*/
+            if (projectService == null) throw new ArgumentNullException("projectService");
+            if (configService == null) throw new ArgumentNullException("configService");
 
         
             _context = context;
             _configService = configService;
-      /*      _projectService = projectService;
-            _configService = configService;*/
-
-        
+           _projectService = projectService;
 
           //  view.Map.Lock();
             try
@@ -66,7 +63,7 @@ namespace Yutai.Views
                     throw new InvalidCastException("Invalid type of IAppContext instance");
                 }
 
-                appContext.Init(view, null, configService,mapLegendPresenter);//projectService, configService);
+                appContext.Init(view, projectService, configService,mapLegendPresenter);//projectService, configService);
 
                /* view.Map.Initialize();
                 view.Map.ApplyConfig(configService);*/

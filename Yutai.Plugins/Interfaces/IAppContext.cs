@@ -38,5 +38,7 @@ namespace Yutai.Plugins.Interfaces
         bool Initialized { get; }
 
         bool SetCurrentTool(YutaiTool tool);
+
+      
     }
 }

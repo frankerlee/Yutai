@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
@@ -18,7 +17,7 @@ namespace Yutai.Services.Concrete
 {
     public class ProjectService : IProjectService, IProject
     {
-        private const string ProjectFilter = "Yutai project (*.ytproj)|*.ytproj|All projects|*.ytprj;*.ytproj";
+        private const string ProjectFilter = "项目文档(*.yxd)|*.yxd";
         private const int ProjectFilterIndex = 3;
 
         private ProjectLoadingView _loadingForm;
@@ -138,11 +137,11 @@ namespace Yutai.Services.Concrete
                 case ProjectState.NotSaved:
                 case ProjectState.HasChanges:
                     {
-                        string prompt = "Save the project?";
+                        string prompt = "是否保存项目?";
 
                         if (!string.IsNullOrWhiteSpace(_filename))
                         {
-                            prompt = string.Format("Save the project: {0}?", Path.GetFileName(_filename));
+                            prompt = string.Format("保存项目: {0}?", Path.GetFileName(_filename));
                         }
 
                         var result = MessageService.Current.AskWithCancel(prompt);
@@ -261,7 +260,7 @@ namespace Yutai.Services.Concrete
 
             ShowLoadingForm(filename);
 
-            bool legacy = !filename.ToLower().EndsWith(".ytproj");
+            bool legacy = !filename.ToLower().EndsWith(".yxd");
             var loader = GetCurrentLoader(legacy);
             loader.ProgressChanged += OnLoadingProgressChanged;
 
@@ -269,14 +268,14 @@ namespace Yutai.Services.Concrete
 
             _context.View.Lock();
 
-            if (legacy)
-            {
-                result = OpenLegacyProject(filename);
-            }
-            else
-            {
+            //if (legacy)
+            //{
+            //    result = OpenLegacyProject(filename);
+            //}
+            //else
+            //{
                 result = OpenCore(filename, silent);
-            }
+            //}
 
             // let's redraw map before hiding the progress
             _loadingForm.ShowProgress(100, "Rendering map...");
@@ -323,7 +322,7 @@ namespace Yutai.Services.Concrete
             {
                 if (!silent)
                 {
-                    MessageService.Current.Info("Project file wasn't found: " + filename);
+                    MessageService.Current.Info("没有发现项目文件: " + filename);
                 }
 
                 return false;
@@ -332,47 +331,47 @@ namespace Yutai.Services.Concrete
             return true;
         }
 
-        private bool OpenLegacyProject(string filename, bool silent = false)
-        {
-            Logger.Current.Info("Start opening legacy MapWindow 4 project: " + filename);
+        //private bool OpenLegacyProject(string filename, bool silent = false)
+        //{
+        //    Logger.Current.Info("Start opening legacy MapWindow 4 project: " + filename);
 
-            using (var reader = new StreamReader(filename))
-            {
-                string state = reader.ReadToEnd();
+        //    using (var reader = new StreamReader(filename))
+        //    {
+        //        string state = reader.ReadToEnd();
 
-                try
-                {
-                  /*  var project = state.DeserializeFromXml<MapWin4Project>();
-                    if (!_projectLoaderLegacy.Restore(project, filename))
-                    {
-                        Clear();
-                        SetEmptyProject();
-                        return false;
-                    }
+        //        try
+        //        {
+        //          /*  var project = state.DeserializeFromXml<MapWin4Project>();
+        //            if (!_projectLoaderLegacy.Restore(project, filename))
+        //            {
+        //                Clear();
+        //                SetEmptyProject();
+        //                return false;
+        //            }
 
-                    _filename = string.Empty;       // it must be saved in a new format
+        //            _filename = string.Empty;       // it must be saved in a new format
 
-                    string message = "Legacy MapWindow 4 project was loaded: " + filename;
+        //            string message = "Legacy MapWindow 4 project was loaded: " + filename;
 
-                    if (!silent)
-                    {
-                        MessageService.Current.Info(message);
-                    }
+        //            if (!silent)
+        //            {
+        //                MessageService.Current.Info(message);
+        //            }
 
-                    Logger.Current.Info(message);*/
+        //            Logger.Current.Info(message);*/
 
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    string msg = "Invalid project format: " + filename;
-                    Logger.Current.Warn(msg, ex);
-                    MessageService.Current.Warn(msg);
-                }
-            }
+        //            return true;
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            string msg = "Invalid project format: " + filename;
+        //            Logger.Current.Warn(msg, ex);
+        //            MessageService.Current.Warn(msg);
+        //        }
+        //    }
 
-            return false;
-        }
+        //    return false;
+        //}
 
         private bool OpenCore(string filename, bool silent = true)
         {
@@ -402,10 +401,10 @@ namespace Yutai.Services.Concrete
 
                 if (!silent)
                 {
-                    MessageService.Current.Info("Project was loaded: " + filename);
+                    MessageService.Current.Info("项目被引导中: " + filename);
                 }
 
-                Logger.Current.Info("Project was loaded: " + filename);
+                Logger.Current.Info("项目被引导中: " + filename);
 
                 return true;
             }

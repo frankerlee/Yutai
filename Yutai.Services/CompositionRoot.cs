@@ -21,27 +21,30 @@ namespace Yutai.Services
                 .RegisterSingleton<ILoggingService, LoggingService>()
                 .RegisterSingleton<IProjectService, ProjectService>()
                 .RegisterSingleton<IConfigService, ConfigService>()
-                .RegisterService<ProjectLoaderLegacy>();
-               // .RegisterSingleton<ILayerService, LayerService>()
-               // .RegisterSingleton<IGeoLocationService, NominatimGeoLocationService>()               
-                //.RegisterSingleton<ISelectLayerService, SelectLayerService>()                
-                //.RegisterService<ICreateLayerView, CreateLayerView>()
-                //.RegisterService<ImageSerializationService>()                
-                //.RegisterSingleton<ITempFileService, TempFileService>()               
-                //.RegisterSingleton<IProjectLoader, ProjectLoader>()
-                //.RegisterView<IMissingLayersView, MissingLayersView>()
-                //.RegisterView<ISelectLayerView, SelectLayerView>();
+                .RegisterService<ImageSerializationService>()
+                .RegisterService<ProjectLoaderLegacy>()
+                .RegisterSingleton<ITempFileService, TempFileService>()
+            .RegisterSingleton<IProjectLoader, ProjectLoader>();
+            // .RegisterSingleton<ILayerService, LayerService>()
+            // .RegisterSingleton<IGeoLocationService, NominatimGeoLocationService>()               
+            //.RegisterSingleton<ISelectLayerService, SelectLayerService>()                
+            //.RegisterService<ICreateLayerView, CreateLayerView>()
+            //               
+            //          
+    
+            //.RegisterView<IMissingLayersView, MissingLayersView>()
+            //.RegisterView<ISelectLayerView, SelectLayerView>();
 
-          /*  EnumHelper.RegisterConverter(new SelectionOperationConverter());
-            EnumHelper.RegisterConverter(new AreaUnitsConverter());
-            EnumHelper.RegisterConverter(new LogLevelConverter());
-            EnumHelper.RegisterConverter(new GeometryTypeConverter());
-            EnumHelper.RegisterConverter(new SaveResultConverter());
-            EnumHelper.RegisterConverter(new TileProviderConverter());
-            EnumHelper.RegisterConverter(new InterpolationTypeConverter());
-            EnumHelper.RegisterConverter(new RasterOverviewSamplingConverter());
-            EnumHelper.RegisterConverter(new RasterOverviewTypeConverter());
-            EnumHelper.RegisterConverter(new DynamicVisiblityModeConverter());*/
+            /*  EnumHelper.RegisterConverter(new SelectionOperationConverter());
+              EnumHelper.RegisterConverter(new AreaUnitsConverter());
+              EnumHelper.RegisterConverter(new LogLevelConverter());
+              EnumHelper.RegisterConverter(new GeometryTypeConverter());
+              EnumHelper.RegisterConverter(new SaveResultConverter());
+              EnumHelper.RegisterConverter(new TileProviderConverter());
+              EnumHelper.RegisterConverter(new InterpolationTypeConverter());
+              EnumHelper.RegisterConverter(new RasterOverviewSamplingConverter());
+              EnumHelper.RegisterConverter(new RasterOverviewTypeConverter());
+              EnumHelper.RegisterConverter(new DynamicVisiblityModeConverter());*/
         }
     }
 }

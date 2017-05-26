@@ -34,11 +34,12 @@ namespace Yutai
         private IMainView _mainView;
 
         private MapLegendPresenter _mapLegendPresenter;
+        private XmlProject _yutaiProject;
 
         public AppContext(
             IApplicationContainer container,
             IStyleService styleService
-          )
+        )
         {
             Logger.Current.Trace("In AppContext");
             if (container == null) throw new ArgumentNullException("container");
@@ -48,6 +49,7 @@ namespace Yutai
         }
 
         public IBroadcasterService Broadcaster { get; private set; }
+
         public AppConfig Config
         {
             get { return _configService.Config; }
@@ -60,63 +62,31 @@ namespace Yutai
 
         public IDockPanelCollection DockPanels { get; private set; }
 
-        public IMenu Menu
-        {
-            get;
-            private set;
-        }
+        public IMenu Menu { get; private set; }
 
         public IProject Project
         {
             get { return _project as IProject; }
         }
 
-        public ITOCControl2 MapLegend
-        {
-            get;
-            private set;
-        }
+        public ITOCControl2 MapLegend { get; private set; }
 
         public IMapControl2 MapControl
         {
             get { return _mainView.MapControl; }
         }
 
-        public ITOCControl2 SceneLegend
-        {
-            get;
-            private set;
-        }
+        public ITOCControl2 SceneLegend { get; private set; }
 
-        public ISceneControl SceneControl
-        {
-            get;
-            private set;
-        }
+        public ISceneControl SceneControl { get; private set; }
 
-        public IStatusBar StatusBar
-        {
-            get;
-            private set;
-        }
+        public IStatusBar StatusBar { get; private set; }
 
-        public SynchronizationContext SynchronizationContext
-        {
-            get;
-            private set;
-        }
+        public SynchronizationContext SynchronizationContext { get; private set; }
 
-        public IToolbarCollection Toolbars
-        {
-            get;
-            private set;
-        }
+        public IToolbarCollection Toolbars { get; private set; }
 
-        public IAppView View
-        {
-            get;
-            private set;
-        }
+        public IAppView View { get; private set; }
 
         public IMainView MainView
         {
@@ -127,11 +97,8 @@ namespace Yutai
         {
             _mainView.Close();
         }
-        public bool Initialized
-        {
-            get;
-            private set;
-        }
+
+        public bool Initialized { get; private set; }
 
         public bool SetCurrentTool(YutaiTool tool)
         {
@@ -143,11 +110,7 @@ namespace Yutai
             return false;
         }
 
-        public IPluginManager PluginManager
-        {
-            get;
-            private set;
-        }
+        public IPluginManager PluginManager { get; private set; }
 
         public Control GetDockPanelObject(DefaultDockPanel panel)
         {
@@ -164,7 +127,11 @@ namespace Yutai
             }
         }
 
-        
+        public XmlProject YutaiProject
+        {
+            get { return _yutaiProject; }
+            set { _yutaiProject = value; }
+        }
 
 
         /// <summary>
@@ -177,11 +144,11 @@ namespace Yutai
             IProjectService project,
             IConfigService configService,
             MapLegendPresenter mapLegendPresenter
-           )
+        )
         {
             Logger.Current.Trace("Start AppContext.Init()");
             if (mainView == null) throw new ArgumentNullException("mainView");
-            /*  if (project == null) throw new ArgumentNullException("project");*/
+            if (project == null) throw new ArgumentNullException("project");
 
             if (mapLegendPresenter == null) throw new ArgumentNullException("legendPresenter");
             //初始化图例控件
@@ -205,9 +172,9 @@ namespace Yutai
 
             _mainView = mainView;
             View = new AppView(mainView, _styleService);
-            /*    _project = project;
-              //  _map = mainView.Map;
-                _configService = configService;*/
+            _project = project;
+            //  _map = mainView.Map;
+            //  _configService = configService;
             //   Repository = repository;
 
             //  Legend.Lock();
@@ -215,10 +182,10 @@ namespace Yutai
             DockPanels = new DockPanelCollection(mainView.DockingManager, mainView as Form, Broadcaster, _styleService);
 
             //Menu 和Toolbars需要修改，区分样式是Ribbon还是正常方式，参数从configService里面获取
-            
-            
-           // Menu = MenuFactory.CreateMainMenu(mainView.RibbonManager,true);
-           // Toolbars = MenuFactory.CreateMainToolbars(mainView.MenuManager);
+
+
+            // Menu = MenuFactory.CreateMainMenu(mainView.RibbonManager,true);
+            // Toolbars = MenuFactory.CreateMainToolbars(mainView.MenuManager);
             StatusBar = MenuFactory.CreateStatusBar(mainView.StatusBar, PluginIdentity.Default);
 
             // _projectionDatabase.ReadFromExecutablePath(Application.ExecutablePath);
