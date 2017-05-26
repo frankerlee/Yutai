@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4A9B3243-2B0A-4E87-9B23-71A58C1F318D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Yutai.Shared</RootNamespace>
+    <AssemblyName>Yutai.Shared</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>发布\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RegisterForComInterop>true</RegisterForComInterop>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ArrayHelper.cs" />
+    <Compile Include="AssemblyHelper.cs" />
+    <Compile Include="AttributeHelper.cs" />
+    <Compile Include="BooleanHelper.cs" />
+    <Compile Include="ClipboardHelper.cs" />
+    <Compile Include="ColorHelper.cs" />
+    <Compile Include="ControlHelper.cs" />
+    <Compile Include="ConvertibleBase.cs" />
+    <Compile Include="CurrentThreadHelper.cs" />
+    <Compile Include="CustomLayoutAttribute.cs" />
+    <Compile Include="DataContractSerializationHelper.cs" />
+    <Compile Include="DataGridViewHelper.cs" />
+    <Compile Include="DebugHelper.cs" />
+    <Compile Include="DelegateHelper.cs" />
+    <Compile Include="DynamicJsonConverter.cs" />
+    <Compile Include="EnumHelper.cs" />
+    <Compile Include="EventHelper.cs" />
+    <Compile Include="FontHelper.cs" />
+    <Compile Include="GcHelper.cs" />
+    <Compile Include="IEnumConverter.cs" />
+    <Compile Include="IMarshal.cs" />
+    <Compile Include="LayoutWithRegionsAttribute.cs" />
+    <Compile Include="ListHelper.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="LogLevel.cs" />
+    <Compile Include="Log\IGlobalListener.cs" />
+    <Compile Include="Log\ILogEntry.cs" />
+    <Compile Include="Log\ILoggingService.cs" />
+    <Compile Include="Log\LogEventArgs.cs" />
+    <Compile Include="MapUnitsHelper.cs" />
+    <Compile Include="MouseEventHelper.cs" />
+    <Compile Include="NumericHelper.cs" />
+    <Compile Include="NumericUpDownHelper.cs" />
+    <Compile Include="OleImageHelper.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PathHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RectangleHelper.cs" />
+    <Compile Include="ReflectionHelper.cs" />
+    <Compile Include="ReplaceControlDescripterProvider.cs" />
+    <Compile Include="RichTextBoxHelper.cs" />
+    <Compile Include="SortableBindingList.cs" />
+    <Compile Include="StaTaskScheduler.cs" />
+    <Compile Include="StringBuilderHelper.cs" />
+    <Compile Include="StringHelper.cs" />
+    <Compile Include="WebClientEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Win32Api.cs" />
+    <Compile Include="XmlSerializationHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\GeosValidationErrors.xml" />
+    <Content Include="Styles\Icons\Events\abduction.png" />
+    <Content Include="Styles\Icons\Events\avalanche1.png" />
+    <Content Include="Styles\Icons\Events\battlefield.png" />
+    <Content Include="Styles\Icons\Events\blast.png" />
+    <Content Include="Styles\Icons\Events\bomb.png" />
+    <Content Include="Styles\Icons\Events\caraccident.png" />
+    <Content Include="Styles\Icons\Events\copyright.txt" />
+    <Content Include="Styles\Icons\Events\cowabduction.png" />
+    <Content Include="Styles\Icons\Events\crimescene.png" />
+    <Content Include="Styles\Icons\Events\cropcircles.png" />
+    <Content Include="Styles\Icons\Events\fire.png" />
+    <Content Include="Styles\Icons\Events\flood.png" />
+    <Content Include="Styles\Icons\Events\linedown.png" />
+    <Content Include="Styles\Icons\Events\love_date.png" />
+    <Content Include="Styles\Icons\Events\phantom.png" />
+    <Content Include="Styles\Icons\Events\pirates.png" />
+    <Content Include="Styles\Icons\Events\planecrash.png" />
+    <Content Include="Styles\Icons\Events\poweroutage.png" />
+    <Content Include="Styles\Icons\Events\radiation.png" />
+    <Content Include="Styles\Icons\Events\rape.png" />
+    <Content Include="Styles\Icons\Events\revolt.png" />
+    <Content Include="Styles\Icons\Events\shooting.png" />
+    <Content Include="Styles\Icons\Events\strike.png" />
+    <Content Include="Styles\Icons\Events\theft.png" />
+    <Content Include="Styles\Icons\Events\torture.png" />
+    <Content Include="Styles\Icons\Events\treedown.png" />
+    <Content Include="Styles\Icons\Events\war.png" />
+    <Content Include="Styles\Icons\Events\wedding.png" />
+    <Content Include="Styles\Textures\BasicPattern1.png" />
+    <Content Include="Styles\Textures\BasicPattern2.png" />
+    <Content Include="Styles\Textures\BasicPattern3.png" />
+    <Content Include="Styles\Textures\BasicPattern4.png" />
+    <Content Include="Styles\Textures\BasicPattern5.png" />
+    <Content Include="Styles\Textures\BasicPattern6.png" />
+    <Content Include="Styles\Textures\BasicPattern7.png" />
+    <Content Include="Styles\Textures\copyright.txt" />
+    <Content Include="Styles\Textures\elegantleather-grey.png" />
+    <Content Include="Styles\Textures\elegantleather-maroon.png" />
+    <Content Include="Styles\Textures\elegantleather-saffron.png" />
+    <Content Include="Styles\Textures\elegantleather-yellow.png" />
+    <Content Include="Styles\Textures\engravedholes-green.png" />
+    <Content Include="Styles\Textures\engravedholes-grey.png" />
+    <Content Include="Styles\Textures\engravedholes-red.png" />
+    <Content Include="Styles\Textures\engravedholes-yellow.png" />
+    <Content Include="Styles\Textures\leatherPattern1.png" />
+    <Content Include="Styles\Textures\leatherPattern2.png" />
+    <Content Include="Styles\Textures\leatherPattern3.png" />
+    <Content Include="Styles\Textures\leatherPattern4.png" />
+    <Content Include="Styles\Textures\leatherPattern5.png" />
+    <Content Include="Styles\Textures\marshes 1.bmp" />
+    <Content Include="Styles\Textures\marshes 2.bmp" />
+    <Content Include="Styles\Textures\marshes 3.bmp" />
+    <Content Include="Styles\Textures\marshes.bmp" />
+    <Content Include="Styles\Textures\pixelPattern1.png" />
+    <Content Include="Styles\Textures\pixelPattern2.png" />
+    <Content Include="Styles\Textures\pixelPattern3.png" />
+    <Content Include="Styles\Textures\softlinewood-grey.png" />
+    <Content Include="Styles\Textures\softlinewood-red.png" />
+    <Content Include="Styles\Textures\softlinewood-sandal.png" />
+    <Content Include="Styles\Textures\softlinewood-yellow.png" />
+    <Content Include="Styles\Textures\texture1.jpg" />
+    <Content Include="Styles\Textures\texture10.jpg" />
+    <Content Include="Styles\Textures\texture11.jpg" />
+    <Content Include="Styles\Textures\texture2.jpg" />
+    <Content Include="Styles\Textures\texture3.jpg" />
+    <Content Include="Styles\Textures\texture4.jpg" />
+    <Content Include="Styles\Textures\texture5.jpg" />
+    <Content Include="Styles\Textures\texture6.jpg" />
+    <Content Include="Styles\Textures\texture7.jpg" />
+    <Content Include="Styles\Textures\texture8.jpg" />
+    <Content Include="Styles\Textures\texture9.jpg" />
+    <Content Include="Styles\Textures\wood_pattern1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  -->
+  <Target Name="BeforeClean" Condition="'$(RegisterForComInterop)' == 'true'">
+    <Exec WorkingDirectory="$(CommonProgramFiles)\ArcGIS\bin" Command="esriRegasm.exe &quot;$(TargetPath)&quot; /p:Engine /u /s" Condition="Exists('$(TargetPath)')" />
+  </Target>
+  <Target Name="AfterBuild" Condition="'$(RegisterForComInterop)' == 'true'">
+    <Exec WorkingDirectory="$(CommonProgramFiles)\ArcGIS\bin" Command="esriRegasm.exe &quot;$(TargetPath)&quot; /p:Engine /s" />
+  </Target>
+</Project>

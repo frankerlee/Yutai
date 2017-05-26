@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9A73B99A-0D59-4B55-B35F-721D321942AF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Yutai.UI</RootNamespace>
+    <AssemblyName>Yutai.UI</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>发布\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />   
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RegisterForComInterop>true</RegisterForComInterop>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ESRI.ArcGIS.SystemUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Syncfusion.Grid.Grouping.Base, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Grid.Grouping.Windows, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Grid.Windows, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.GridHelperClasses.Windows, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Grouping.Base, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Grouping.Windows, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Shared.Base, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Tools.Windows, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CompositionRoot.cs" />
+    <Compile Include="Controls\CustomGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\DockPanelControlBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ToolTipEventArgs.cs" />
+    <Compile Include="Controls\TreeViewBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\DockHelper.cs" />
+    <Compile Include="Docking\DockPanel.cs" />
+    <Compile Include="Docking\DockPanelCollection.cs" />
+    <Compile Include="Docking\DockPanelInfo.cs" />
+    <Compile Include="Docking\DockPanelKeys.cs" />
+    <Compile Include="Enums\Enums.cs" />
+    <Compile Include="Forms\AppView.cs" />
+    <Compile Include="Forms\MapWindowForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MapWindowView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MapWindowView.Designer.cs">
+      <DependentUpon>MapWindowView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\CommandBarHelper.cs" />
+    <Compile Include="Helpers\SyncfusionSerializationHelper.cs" />
+    <Compile Include="Helpers\ToolTipHelper.cs" />
+    <Compile Include="Menu\Ribbon\RibbonFactory.cs" />
+    <Compile Include="Menu\Ribbon\RibbonItem.cs" />
+    <Compile Include="Menu\Ribbon\RibbonMenu.cs" />
+    <Compile Include="Menu\Ribbon\RibbonMenuIndex.cs" />
+    <Compile Include="Menu\Toolbar.cs" />
+    <Compile Include="Menu\Classic\MainMenuStripMenu.cs" />
+    <Compile Include="Menu\Classic\MenuStripDropDownItem.cs" />
+    <Compile Include="Menu\Classic\MenuStripItem.cs" />
+    <Compile Include="Menu\Classic\MenuStripItemCollection.cs" />
+    <Compile Include="Menu\Classic\MenuStripMenu.cs" />
+    <Compile Include="Menu\Classic\MenuStripMenuMute.cs" />
+    <Compile Include="Menu\Classic\MenuStripSeparator.cs" />
+    <Compile Include="Menu\ComboBoxMenuItem.cs" />
+    <Compile Include="Menu\DropDownMenuItem.cs" />
+    <Compile Include="Menu\ItemCollectionBase.cs" />
+    <Compile Include="Menu\MainMenuKeys.cs" />
+    <Compile Include="Menu\MainSyncfusionMenu.cs" />
+    <Compile Include="Menu\MenuBase.cs" />
+    <Compile Include="Menu\MenuFactory.cs" />
+    <Compile Include="Menu\MenuIndex.cs" />
+    <Compile Include="Menu\MenuItem.cs" />
+    <Compile Include="Menu\MenuItemBase.cs" />
+    <Compile Include="Menu\MenuItemCollection.cs" />
+    <Compile Include="Menu\MenuItemMetadata.cs" />
+    <Compile Include="Menu\MenuLabel.cs" />
+    <Compile Include="Menu\MenuServiceBase.cs" />
+    <Compile Include="Menu\StatusBar.cs" />
+    <Compile Include="Menu\StatusBarDropDown.cs" />
+    <Compile Include="Menu\StatusBarItem.cs" />
+    <Compile Include="Menu\StatusItemCollection.cs" />
+    <Compile Include="Menu\SyncfusionMenu.cs" />
+    <Compile Include="Menu\ToolbarCollection.cs" />
+    <Compile Include="Menu\ToolbarCollectionBase.cs" />
+    <Compile Include="Menu\ToolbarCollectionMain.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Style\ControlStyleSettings.cs" />
+    <Compile Include="Style\IStyleService.cs" />
+    <Compile Include="Style\SyncfusionStyleService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Yutai.Plugins\Yutai.Plugins.csproj">
+      <Project>{800F2EE4-47AB-4CD4-934D-A64980D98A23}</Project>
+      <Name>Yutai.Plugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yutai.Shared\Yutai.Shared.csproj">
+      <Project>{4A9B3243-2B0A-4E87-9B23-71A58C1F318D}</Project>
+      <Name>Yutai.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\MapWindowView.resx">
+      <DependentUpon>MapWindowView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MapWindow.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_clear_textbox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\palette.bmp" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  -->
+  <Target Name="BeforeClean" Condition="'$(RegisterForComInterop)' == 'true'">
+    <Exec WorkingDirectory="$(CommonProgramFiles)\ArcGIS\bin" Command="esriRegasm.exe &quot;$(TargetPath)&quot; /p:Engine /u /s" Condition="Exists('$(TargetPath)')" />
+  </Target>
+  <Target Name="AfterBuild" Condition="'$(RegisterForComInterop)' == 'true'">
+    <Exec WorkingDirectory="$(CommonProgramFiles)\ArcGIS\bin" Command="esriRegasm.exe &quot;$(TargetPath)&quot; /p:Engine /s" />
+  </Target>
+</Project>
