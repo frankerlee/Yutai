@@ -8,5 +8,6 @@ namespace Yutai.Commands.Document
 {
     public class CmdCloseYutaiDoc
     {
+
     }
 }

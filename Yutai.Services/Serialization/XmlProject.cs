@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -42,18 +43,75 @@ namespace Yutai.Services.Serialization
              
          }
 
-        /* [DataMember]
-         public XmlMap Map { get; set; }
-         [DataMember]
-         public XmlMapLocator Locator { get; set; }*/
-         [DataMember]
-         public XmlProjectSettings Settings { get; set; }
-      /*   [DataMember]
-         public List<XmlGroup> Groups { get; set; }
-         [DataMember]
-         public List<XmlLayer> Layers { get; set; }
-         [DataMember]
-         public List<XmlPlugin> Plugins { get; set; }*/
+        [DataMember(Name="MapDoc")]
+        public  string MapDocumentName { get; set; }
+        [DataMember(Name = "SceneDoc")]
+        public string SceneDocumentName { get; set; }
 
+        [DataMember(Name = "ViewStyle")]
+        public int ViewStyle { get; set; }
+
+        [DataMember(Name = "Envelope")]
+        public XmlEnvelope  Envelope { get; set; }
+
+        [DataMember]
+        public List<XmlPlugin> Plugins { get; set; }
+
+        [DataMember]
+        public List<XmlExtensions> Extensions { get; set; }
+       
+        [DataMember]
+         public XmlProjectSettings Settings { get; set; }
+   
+
+    }
+
+    [DataContract]
+    public class XmlExtensions
+    {
+        [DataMember]
+        public List<XmlMapLocator> Locators { get; set; }
+    }
+
+    [DataContract]
+    public class XmlMapLocator
+    {
+        [DataMember]
+        public string Name { get; set; }
+
+        [DataMember]
+        public string Caption { get; set; }
+
+        [DataMember]
+        public Bitmap Bitmap { get; set; }
+
+        [DataMember]
+        public string LayerName { get; set; }
+
+        [DataMember]
+        public string Fields { get; set; }
+
+        [DataMember]
+        public int Order { get; set; }
+    }
+
+    [DataContract]
+    public class XmlEnvelope
+    {
+        public XmlEnvelope(ESRI.ArcGIS.Geometry.IEnvelope e)
+        {
+            XMin = e.XMin;
+            XMax = e.XMax;
+            YMin = e.YMin;
+            YMax = e.YMax;
+        }
+        [DataMember]
+        public double XMin { get; set; }
+        [DataMember]
+        public double XMax { get; set; }
+        [DataMember]
+        public double YMin { get; set; }
+        [DataMember]
+        public double YMax { get; set; }
     }
 }
