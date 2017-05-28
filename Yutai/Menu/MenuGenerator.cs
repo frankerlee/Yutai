@@ -45,11 +45,6 @@ namespace Yutai.Menu
             RibbonFactory.CreateMenus(_commands.GetCommands(), (RibbonControlAdv) _menuManager);
 
         }
-
         
-
-     
-
-      
     }
 }

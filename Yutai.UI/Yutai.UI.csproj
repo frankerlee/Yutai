@@ -31,7 +31,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />   
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -79,12 +79,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompositionRoot.cs" />
+    <Compile Include="Controls\TwoColumnTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\CustomGridControl.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\DockPanelControlBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\NodeData.cs" />
     <Compile Include="Controls\ToolTipEventArgs.cs" />
     <Compile Include="Controls\TreeViewBase.cs">
       <SubType>Component</SubType>
@@ -105,6 +109,8 @@
     <Compile Include="Forms\MapWindowView.Designer.cs">
       <DependentUpon>MapWindowView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ComboBoxEnumItem.cs" />
+    <Compile Include="Helpers\ComboBoxHelper.cs" />
     <Compile Include="Helpers\CommandBarHelper.cs" />
     <Compile Include="Helpers\SyncfusionSerializationHelper.cs" />
     <Compile Include="Helpers\ToolTipHelper.cs" />

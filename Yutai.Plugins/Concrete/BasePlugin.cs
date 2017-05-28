@@ -466,6 +466,16 @@ namespace Yutai.Plugins.Concrete
         }
 
         #endregion
+        #region MapEvents
+
+        //internal EventHandler<MapMouseDownArgs> MapMouseDown_;
+        //public event EventHandler<MapMouseDownArgs> MapMouseDown
+        //{
+        //    add { MapMouseDown_ += value; }
+        //    remove { MapMouseDown_ -= value; }
+        //}
+
+        #endregion
 
 #pragma warning restore 67
     }

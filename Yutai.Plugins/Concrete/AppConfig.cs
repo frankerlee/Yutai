@@ -42,7 +42,7 @@ namespace Yutai.Plugins.Concrete
             [SuppressMessage("StyleCop.CSharp.LayoutRules", "SA1500:CurlyBracketsForMultiLineStatementsMustNotShareLine", Justification = "Reviewed. Suppression is OK here.")]
             get
             {
-                return new List<Guid>();
+                return new List<Guid> {new Guid("e7598649-d49b-45fa-b020-57e2dd777337") };
                 return new List<Guid> { new Guid("7B9DF651-4B8B-4AA8-A4A9-C1463A35DAC7"), // Symbology
                                         new Guid("F24E7086-1762-4A7C-8403-D1169309CBC6"), // Repository
                                         new Guid("65beb2fd-eec2-461c-965e-f20a0cef2aa2"), // Identifier
@@ -162,6 +162,12 @@ namespace Yutai.Plugins.Concrete
 
         [DataMember]
         public Color MapBackgroundColor { get; set; }
+
+        [DataMember]
+        public IdentifierMode IdentifierMode { get; set; }
+
+        [DataMember]
+        public int IdentifierToPixel { get; set; }
         private void SetDefaults()
         {
            Logger.Current.Trace("开始设置配置默认值");
@@ -177,17 +183,19 @@ namespace Yutai.Plugins.Concrete
            CreateSpatialIndexOnOpening = true;
            DisplayDynamicVisibilityWarnings = true;*/
            FirstRun = true;
-         /*  GridFavorGreyscale = true;
-           GridDefaultColorScheme = PredefinedColors.SummerMountains;
-           GridRandomColorScheme = true;
-           GridUseHistogram = true;
-           IdentifierMode = IdentifierMode.AllLayersStopOnFirst;
-           InnertiaOnPanning = AutoToggle.Auto;
-           LastProjectPath = "";
-           LegendExpandLayersOnAdding = true;
-           LoadLastProject = true;
-           LoadSymbology = true;
-           LocalDocumentation = false;*/
+            IdentifierMode = IdentifierMode.AllLayer;
+            IdentifierToPixel = 5;
+           /*  GridFavorGreyscale = true;
+             GridDefaultColorScheme = PredefinedColors.SummerMountains;
+             GridRandomColorScheme = true;
+             GridUseHistogram = true;
+
+             InnertiaOnPanning = AutoToggle.Auto;
+             LastProjectPath = "";
+             LegendExpandLayersOnAdding = true;
+             LoadLastProject = true;
+             LoadSymbology = true;
+             LocalDocumentation = false;*/
            MapBackgroundColor = Color.White;
            //MeasurementsAreaFieldName = "Area";
            MeasurementsAreaPrecision = 3;

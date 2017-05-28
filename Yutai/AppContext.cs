@@ -12,6 +12,7 @@ using Yutai.Controls;
 using Yutai.Helper;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
+using Yutai.Plugins.Events;
 using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Mvp;
 using Yutai.Plugins.Services;
@@ -155,6 +156,7 @@ namespace Yutai
             _mapLegendPresenter = mapLegendPresenter;
             var legend = _mapLegendPresenter.LegendControl;
             legend.LegendControl.SetBuddyControl(mainView.MapControl);
+           
             /*  if (toolboxPresenter == null) throw new ArgumentNullException("toolboxPresenter");
 
               _toolboxPresenter = toolboxPresenter;
@@ -173,8 +175,9 @@ namespace Yutai
             _mainView = mainView;
             View = new AppView(mainView, _styleService);
             _project = project;
+            _configService = configService;
             //  _map = mainView.Map;
-            //  _configService = configService;
+            //  
             //   Repository = repository;
 
             //  Legend.Lock();
@@ -201,6 +204,28 @@ namespace Yutai
 
             Initialized = true;
             Logger.Current.Trace("End AppContext.Init()");
+        }
+
+        internal void InitPlugins(IConfigService configService)
+        {
+            var pluginManager = PluginManager;
+            pluginManager.PluginUnloaded += ManagerPluginUnloaded;
+            pluginManager.AssemblePlugins();
+
+            var guids = configService.Config.ApplicationPlugins;
+            if (guids != null)
+            {
+                PluginManager.RestoreApplicationPlugins(guids, this);
+            }
+        }
+
+        private void ManagerPluginUnloaded(object sender, PluginEventArgs e)
+        {
+            //Toolbars.RemoveItemsForPlugin(e.Identity);
+            //Menu.RemoveItemsForPlugin(e.Identity);
+            DockPanels.RemoveItemsForPlugin(e.Identity);
+            //Toolbox.RemoveItemsForPlugin(e.Identity);
+            //StatusBar.RemoveItemsForPlugin(e.Identity);
         }
     }
 }

@@ -71,4 +71,13 @@ namespace Yutai.Api.Enums
         GoogleStyle = 2,
     }
 
+    public enum IdentifierMode
+    {
+        TopLayer=0,
+        SelectableLayer = 1,
+        VisibleLayer=2,
+        AllLayer=3,
+        CurrentLayer=4
+    }
+
 }

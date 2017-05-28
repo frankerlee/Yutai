@@ -116,6 +116,8 @@
     <Compile Include="Concrete\YutaiCommand.cs" />
     <Compile Include="Concrete\YutaiMenuCommand.cs" />
     <Compile Include="Concrete\YutaiTool.cs" />
+    <Compile Include="Events\MapMouseDownArgs.cs" />
+    <Compile Include="Interfaces\IDockPanelPresenter.cs" />
     <Compile Include="Interfaces\IRibbonItem.cs" />
     <Compile Include="Interfaces\IToolStripTabItem.cs" />
     <Compile Include="Mvp\CommandDispatcher.cs" />
