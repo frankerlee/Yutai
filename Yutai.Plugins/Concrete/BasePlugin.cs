@@ -100,6 +100,7 @@ namespace Yutai.Plugins.Concrete
         internal EventHandler<MenuItemEventArgs> ItemClicked_;
         internal EventHandler<CancelEventArgs> ProjectClosing_;
         internal EventHandler<EventArgs> ProjectClosed_;
+        internal EventHandler<EventArgs> ProjectOpened_;
         internal EventHandler<EventArgs> ViewUpdating_;
        /* internal EventHandler<LayerEventArgs> LayerFeatureCountChanged_;
         internal EventHandler<LayerEventArgs> LayerEditingChanged_;
@@ -184,233 +185,239 @@ namespace Yutai.Plugins.Concrete
             remove { ProjectClosed_ -= value; }
         }
 
+        public event EventHandler<EventArgs> ProjectOpened
+        {
+            add { ProjectOpened_ += value; }
+            remove { ProjectOpened_ -= value; }
+        }
+
         #endregion
 
-       /* #region Legend events
+        /* #region Legend events
 
-        internal LegendEventHandler<LayerEventArgs> LayerStyleClicked_;
-        internal LegendEventHandler<LayerEventArgs> LayerDoubleClicked_;
-        internal LegendEventHandler<LayerEventArgs> LayerSelected_;
-        internal LegendEventHandler<LayerEventArgs> LayerDiagramsClicked_;
-        internal LegendEventHandler<LayerEventArgs> LayerLabelsClicked_;
-        internal LegendEventHandler<LayerCategoryEventArgs> LayerCategoryClicked_;
-        internal LegendEventHandler<LayerEventArgs> LayerAdded_;
-        internal LegendEventHandler<LayerEventArgs> LayerRemoved_;
-        internal LegendEventHandler<GroupEventArgs> GroupDoubleClick_;
-        internal LegendEventHandler<GroupEventArgs> GroupAdded_;
-        internal LegendEventHandler<GroupEventArgs> GroupRemoved_;
+         internal LegendEventHandler<LayerEventArgs> LayerStyleClicked_;
+         internal LegendEventHandler<LayerEventArgs> LayerDoubleClicked_;
+         internal LegendEventHandler<LayerEventArgs> LayerSelected_;
+         internal LegendEventHandler<LayerEventArgs> LayerDiagramsClicked_;
+         internal LegendEventHandler<LayerEventArgs> LayerLabelsClicked_;
+         internal LegendEventHandler<LayerCategoryEventArgs> LayerCategoryClicked_;
+         internal LegendEventHandler<LayerEventArgs> LayerAdded_;
+         internal LegendEventHandler<LayerEventArgs> LayerRemoved_;
+         internal LegendEventHandler<GroupEventArgs> GroupDoubleClick_;
+         internal LegendEventHandler<GroupEventArgs> GroupAdded_;
+         internal LegendEventHandler<GroupEventArgs> GroupRemoved_;
 
-        public event LegendEventHandler<GroupEventArgs> GroupAdded
-        {
-            add { GroupAdded_ += value; }
-            remove { GroupAdded_ -= value; }
-        }
+         public event LegendEventHandler<GroupEventArgs> GroupAdded
+         {
+             add { GroupAdded_ += value; }
+             remove { GroupAdded_ -= value; }
+         }
 
-        public event LegendEventHandler<GroupEventArgs> GroupDoubleClick
-        {
-            add { GroupDoubleClick_ += value; }
-            remove { GroupDoubleClick_ -= value; }
-        }
+         public event LegendEventHandler<GroupEventArgs> GroupDoubleClick
+         {
+             add { GroupDoubleClick_ += value; }
+             remove { GroupDoubleClick_ -= value; }
+         }
 
-        public event LegendEventHandler<GroupEventArgs> GroupRemoved
-        {
-            add { GroupRemoved_ += value; }
-            remove { GroupRemoved_ -= value; }
-        }
+         public event LegendEventHandler<GroupEventArgs> GroupRemoved
+         {
+             add { GroupRemoved_ += value; }
+             remove { GroupRemoved_ -= value; }
+         }
 
-        public event LegendEventHandler<LayerCategoryEventArgs> LayerCategoryClicked
-        {
-            add { LayerCategoryClicked_ += value; }
-            remove { LayerCategoryClicked_ -= value; }
-        }
+         public event LegendEventHandler<LayerCategoryEventArgs> LayerCategoryClicked
+         {
+             add { LayerCategoryClicked_ += value; }
+             remove { LayerCategoryClicked_ -= value; }
+         }
 
-        public event LegendEventHandler<LayerEventArgs> LayerLabelsClicked
-        {
-            add { LayerLabelsClicked_ += value; }
-            remove { LayerLabelsClicked_ -= value; }
-        }
+         public event LegendEventHandler<LayerEventArgs> LayerLabelsClicked
+         {
+             add { LayerLabelsClicked_ += value; }
+             remove { LayerLabelsClicked_ -= value; }
+         }
 
-        public event LegendEventHandler<LayerEventArgs> LayerDiagramsClicked
-        {
-            add { LayerDiagramsClicked_ += value; }
-            remove { LayerDiagramsClicked_ -= value; }
-        }
+         public event LegendEventHandler<LayerEventArgs> LayerDiagramsClicked
+         {
+             add { LayerDiagramsClicked_ += value; }
+             remove { LayerDiagramsClicked_ -= value; }
+         }
 
-        public event LegendEventHandler<LayerEventArgs> LayerSelected
-        {
-            add { LayerSelected_ += value; }
-            remove { LayerSelected_ -= value; }
-        }
+         public event LegendEventHandler<LayerEventArgs> LayerSelected
+         {
+             add { LayerSelected_ += value; }
+             remove { LayerSelected_ -= value; }
+         }
 
-        public event LegendEventHandler<LayerEventArgs> LayerDoubleClicked
-        {
-            add { LayerDoubleClicked_ += value; }
-            remove { LayerDoubleClicked_ -= value; }
-        }
+         public event LegendEventHandler<LayerEventArgs> LayerDoubleClicked
+         {
+             add { LayerDoubleClicked_ += value; }
+             remove { LayerDoubleClicked_ -= value; }
+         }
 
-        public event LegendEventHandler<LayerEventArgs> LayerStyleClicked
-        {
-            add { LayerStyleClicked_ += value; }
-            remove { LayerStyleClicked_ -= value; }
-        }
+         public event LegendEventHandler<LayerEventArgs> LayerStyleClicked
+         {
+             add { LayerStyleClicked_ += value; }
+             remove { LayerStyleClicked_ -= value; }
+         }
 
-        public event LegendEventHandler<LayerEventArgs> LayerAdded
-        {
-            add { LayerAdded_ += value; }
-            remove { LayerAdded_ -= value; }
-        }
+         public event LegendEventHandler<LayerEventArgs> LayerAdded
+         {
+             add { LayerAdded_ += value; }
+             remove { LayerAdded_ -= value; }
+         }
 
-        public event LegendEventHandler<LayerEventArgs> LayerRemoved
-        {
-            add { LayerRemoved_ += value; }
-            remove { LayerRemoved_ -= value; }
-        }
+         public event LegendEventHandler<LayerEventArgs> LayerRemoved
+         {
+             add { LayerRemoved_ += value; }
+             remove { LayerRemoved_ -= value; }
+         }
 
-        #endregion*/
+         #endregion*/
 
-       /* #region Map events
+        /* #region Map events
 
-        // backing fields
-        internal MapEventHandler<AfterShapeEditEventArgs> AfterShapeEdit_;
-        internal MapEventHandler<DatasourceCancelEventArgs> BeforeLayerAdded_;
-        internal MapEventHandler<BeforeShapeEditEventArgs> BeforeShapeEdit_;
-        internal MapEventHandler<BeforeDeleteShapeEventArgs> BeforeDeleteShape_;
-        internal MapEventHandler<ChooseLayerEventArgs> ChooseLayer_;
-        internal MapEventHandler<EventArgs> ExtentsChanged_;
-        internal MapEventHandler<EventArgs> HistoryChanged_;
-        internal MapEventHandler<EventArgs> MapCursorChanged_;
-        internal MapEventHandler<MouseEventArgs> MouseDown_;
-        internal MapEventHandler<MouseEventArgs> MouseMove_;
-        internal MapEventHandler<MouseEventArgs> MouseUp_;
-        internal MapEventHandler<EventArgs> MouseDoubleClick_;
-        internal MapEventHandler<SelectionChangedEventArgs> SelectionChanged_;
-        internal MapEventHandler<ShapeIdentifiedEventArgs> ShapeIdentified_;
-        internal MapEventHandler<ShapeValidationFailedEventArgs> ShapeValidationFailed_;
-        internal MapEventHandler<ValidateShapeEventArgs> ValidateShape_;
-        internal MapEventHandler<LockedEventArgs> MapLocked_;
-        internal MapEventHandler<SelectBoxFinalEventArgs> SelectBoxFinal_;
-        internal MapEventHandler<EventArgs> TmsProviderChanged_;
+         // backing fields
+         internal MapEventHandler<AfterShapeEditEventArgs> AfterShapeEdit_;
+         internal MapEventHandler<DatasourceCancelEventArgs> BeforeLayerAdded_;
+         internal MapEventHandler<BeforeShapeEditEventArgs> BeforeShapeEdit_;
+         internal MapEventHandler<BeforeDeleteShapeEventArgs> BeforeDeleteShape_;
+         internal MapEventHandler<ChooseLayerEventArgs> ChooseLayer_;
+         internal MapEventHandler<EventArgs> ExtentsChanged_;
+         internal MapEventHandler<EventArgs> HistoryChanged_;
+         internal MapEventHandler<EventArgs> MapCursorChanged_;
+         internal MapEventHandler<MouseEventArgs> MouseDown_;
+         internal MapEventHandler<MouseEventArgs> MouseMove_;
+         internal MapEventHandler<MouseEventArgs> MouseUp_;
+         internal MapEventHandler<EventArgs> MouseDoubleClick_;
+         internal MapEventHandler<SelectionChangedEventArgs> SelectionChanged_;
+         internal MapEventHandler<ShapeIdentifiedEventArgs> ShapeIdentified_;
+         internal MapEventHandler<ShapeValidationFailedEventArgs> ShapeValidationFailed_;
+         internal MapEventHandler<ValidateShapeEventArgs> ValidateShape_;
+         internal MapEventHandler<LockedEventArgs> MapLocked_;
+         internal MapEventHandler<SelectBoxFinalEventArgs> SelectBoxFinal_;
+         internal MapEventHandler<EventArgs> TmsProviderChanged_;
 
-        // public events
-        public event MapEventHandler<AfterShapeEditEventArgs> AfterShapeEdit
-        {
-            add { AfterShapeEdit_ += value; }
-            remove { AfterShapeEdit_ -= value; }
-        }
+         // public events
+         public event MapEventHandler<AfterShapeEditEventArgs> AfterShapeEdit
+         {
+             add { AfterShapeEdit_ += value; }
+             remove { AfterShapeEdit_ -= value; }
+         }
 
-        public event MapEventHandler<BeforeDeleteShapeEventArgs> BeforeDeleteShape
-        {
-            add { BeforeDeleteShape_ += value; }
-            remove { BeforeDeleteShape_ -= value; }
-        }
+         public event MapEventHandler<BeforeDeleteShapeEventArgs> BeforeDeleteShape
+         {
+             add { BeforeDeleteShape_ += value; }
+             remove { BeforeDeleteShape_ -= value; }
+         }
 
-        public event MapEventHandler<DatasourceCancelEventArgs> BeforeLayerAdded
-        {
-            add { BeforeLayerAdded_ += value; }
-            remove { BeforeLayerAdded_ -= value; }
-        }
+         public event MapEventHandler<DatasourceCancelEventArgs> BeforeLayerAdded
+         {
+             add { BeforeLayerAdded_ += value; }
+             remove { BeforeLayerAdded_ -= value; }
+         }
 
-        public event MapEventHandler<BeforeShapeEditEventArgs> BeforeShapeEdit
-        {
-            add { BeforeShapeEdit_ += value; }
-            remove { BeforeShapeEdit_ -= value; }
-        }
+         public event MapEventHandler<BeforeShapeEditEventArgs> BeforeShapeEdit
+         {
+             add { BeforeShapeEdit_ += value; }
+             remove { BeforeShapeEdit_ -= value; }
+         }
 
-        public event MapEventHandler<ChooseLayerEventArgs> ChooseLayer
-        {
-            add { ChooseLayer_ += value; }
-            remove { ChooseLayer_ -= value; }
-        }
+         public event MapEventHandler<ChooseLayerEventArgs> ChooseLayer
+         {
+             add { ChooseLayer_ += value; }
+             remove { ChooseLayer_ -= value; }
+         }
 
-        public event MapEventHandler<EventArgs> ExtentsChanged
-        {
-            add { ExtentsChanged_ += value; }
-            remove { ExtentsChanged_ -= value; }
-        }
+         public event MapEventHandler<EventArgs> ExtentsChanged
+         {
+             add { ExtentsChanged_ += value; }
+             remove { ExtentsChanged_ -= value; }
+         }
 
-        public event MapEventHandler<EventArgs> MapCursorChanged
-        {
-            add { MapCursorChanged_ += value; }
-            remove { MapCursorChanged_ -= value; }
-        }
+         public event MapEventHandler<EventArgs> MapCursorChanged
+         {
+             add { MapCursorChanged_ += value; }
+             remove { MapCursorChanged_ -= value; }
+         }
 
-        public event MapEventHandler<LockedEventArgs> MapLocked
-        {
-            add { MapLocked_ += value; }
-            remove { MapLocked_ -= value; }
-        }
+         public event MapEventHandler<LockedEventArgs> MapLocked
+         {
+             add { MapLocked_ += value; }
+             remove { MapLocked_ -= value; }
+         }
 
-        public event MapEventHandler<EventArgs> MouseDoubleClick
-        {
-            add { MouseDoubleClick_ += value; }
-            remove { MouseDoubleClick_ -= value; }
-        }
+         public event MapEventHandler<EventArgs> MouseDoubleClick
+         {
+             add { MouseDoubleClick_ += value; }
+             remove { MouseDoubleClick_ -= value; }
+         }
 
-        public event MapEventHandler<MouseEventArgs> MouseDown
-        {
-            add { MouseDown_ += value; }
-            remove { MouseDown_ -= value; }
-        }
+         public event MapEventHandler<MouseEventArgs> MouseDown
+         {
+             add { MouseDown_ += value; }
+             remove { MouseDown_ -= value; }
+         }
 
-        public event MapEventHandler<MouseEventArgs> MouseMove
-        {
-            add { MouseMove_ += value; }
-            remove { MouseMove_ -= value; }
-        }
+         public event MapEventHandler<MouseEventArgs> MouseMove
+         {
+             add { MouseMove_ += value; }
+             remove { MouseMove_ -= value; }
+         }
 
-        public event MapEventHandler<MouseEventArgs> MouseUp
-        {
-            add { MouseUp_ += value; }
-            remove { MouseUp_ -= value; }
-        }
+         public event MapEventHandler<MouseEventArgs> MouseUp
+         {
+             add { MouseUp_ += value; }
+             remove { MouseUp_ -= value; }
+         }
 
-        /// <summary>
-        /// Occurs when MapControl.MapCursor set to MapCursor.Selection, MapControl.CustomCursor is not null and
-        /// user selects a rectangle on map.
-        /// </summary>
-        public event MapEventHandler<SelectBoxFinalEventArgs> SelectBoxFinal
-        {
-            add { SelectBoxFinal_ += value; }
-            remove { SelectBoxFinal_ -= value; }
-        }
+         /// <summary>
+         /// Occurs when MapControl.MapCursor set to MapCursor.Selection, MapControl.CustomCursor is not null and
+         /// user selects a rectangle on map.
+         /// </summary>
+         public event MapEventHandler<SelectBoxFinalEventArgs> SelectBoxFinal
+         {
+             add { SelectBoxFinal_ += value; }
+             remove { SelectBoxFinal_ -= value; }
+         }
 
-        public event MapEventHandler<SelectionChangedEventArgs> SelectionChanged
-        {
-            add { SelectionChanged_ += value; }
-            remove { SelectionChanged_ -= value; }
-        }
+         public event MapEventHandler<SelectionChangedEventArgs> SelectionChanged
+         {
+             add { SelectionChanged_ += value; }
+             remove { SelectionChanged_ -= value; }
+         }
 
-        public event MapEventHandler<ShapeIdentifiedEventArgs> ShapeIdentified
-        {
-            add { ShapeIdentified_ += value; }
-            remove { ShapeIdentified_ -= value; }
-        }
+         public event MapEventHandler<ShapeIdentifiedEventArgs> ShapeIdentified
+         {
+             add { ShapeIdentified_ += value; }
+             remove { ShapeIdentified_ -= value; }
+         }
 
-        public event MapEventHandler<ShapeValidationFailedEventArgs> ShapeValidationFailed
-        {
-            add { ShapeValidationFailed_ += value; }
-            remove { ShapeValidationFailed_ -= value; }
-        }
+         public event MapEventHandler<ShapeValidationFailedEventArgs> ShapeValidationFailed
+         {
+             add { ShapeValidationFailed_ += value; }
+             remove { ShapeValidationFailed_ -= value; }
+         }
 
-        public event MapEventHandler<EventArgs> TmsProviderChanged
-        {
-            add { TmsProviderChanged_ += value; }
-            remove { TmsProviderChanged_ -= value; }
-        }
+         public event MapEventHandler<EventArgs> TmsProviderChanged
+         {
+             add { TmsProviderChanged_ += value; }
+             remove { TmsProviderChanged_ -= value; }
+         }
 
-        public event MapEventHandler<EventArgs> HistoryChanged
-        {
-            add { HistoryChanged_ += value; }
-            remove { HistoryChanged_ -= value; }
-        }
+         public event MapEventHandler<EventArgs> HistoryChanged
+         {
+             add { HistoryChanged_ += value; }
+             remove { HistoryChanged_ -= value; }
+         }
 
-        public event MapEventHandler<ValidateShapeEventArgs> ValidateShape
-        {
-            add { ValidateShape_ += value; }
-            remove { ValidateShape_ -= value; }
-        }
+         public event MapEventHandler<ValidateShapeEventArgs> ValidateShape
+         {
+             add { ValidateShape_ += value; }
+             remove { ValidateShape_ -= value; }
+         }
 
-        #endregion*/
+         #endregion*/
 
         #region Unimplemented map events (add to plugin interface if they are actually needed)
 

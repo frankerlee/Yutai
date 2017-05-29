@@ -42,7 +42,11 @@ namespace Yutai.Plugins.Concrete
             [SuppressMessage("StyleCop.CSharp.LayoutRules", "SA1500:CurlyBracketsForMultiLineStatementsMustNotShareLine", Justification = "Reviewed. Suppression is OK here.")]
             get
             {
-                return new List<Guid> {new Guid("e7598649-d49b-45fa-b020-57e2dd777337") };
+                return new List<Guid>
+                {
+                    new Guid("e7598649-d49b-45fa-b020-57e2dd777337") ,//信息查看器
+                    new Guid("2b81c89a-ee45-4276-9dc1-72bbbf07f53f")//定位器
+                };
                 return new List<Guid> { new Guid("7B9DF651-4B8B-4AA8-A4A9-C1463A35DAC7"), // Symbology
                                         new Guid("F24E7086-1762-4A7C-8403-D1169309CBC6"), // Repository
                                         new Guid("65beb2fd-eec2-461c-965e-f20a0cef2aa2"), // Identifier
@@ -168,10 +172,15 @@ namespace Yutai.Plugins.Concrete
 
         [DataMember]
         public int IdentifierToPixel { get; set; }
+
+        [DataMember]
+        public int LocatorMaxCount { get; set; }
         private void SetDefaults()
         {
            Logger.Current.Trace("开始设置配置默认值");
-            MapViewStyle= MapViewStyle.View2D;
+            LocatorMaxCount = 100;
+
+            MapViewStyle = MapViewStyle.View2D;
            AnimationOnZooming = AutoToggle.Auto;
             UsingRibbon = true;
         /*   CacheRenderingData = false;

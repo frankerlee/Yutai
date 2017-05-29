@@ -77,6 +77,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -104,6 +105,8 @@
     <Compile Include="Serialization\ISecureContext.cs" />
     <Compile Include="Serialization\Legacy\YutaiProject.cs" />
     <Compile Include="Serialization\XmlConfig.cs" />
+    <Compile Include="Serialization\XmlEnvelope.cs" />
+    <Compile Include="Serialization\XmlLocator.cs" />
     <Compile Include="Serialization\XmlPlugin.cs" />
     <Compile Include="Serialization\XmlProject.cs" />
     <Compile Include="Serialization\XmlProjectSettings.cs" />
@@ -147,9 +150,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Serialization\XmlYutai.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

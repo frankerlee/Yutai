@@ -1,25 +1,20 @@
 ﻿using System;
-using Syncfusion.Windows.Forms.Tools.XPMenus;
 using Yutai.Plugins.Concrete;
-using Yutai.Plugins.Events;
-using Yutai.Plugins.Identifer.Menu;
 using Yutai.Plugins.Interfaces;
+using Yutai.Plugins.Locator.Menu;
 using Yutai.Plugins.Mef;
 using Yutai.Plugins.Mvp;
 
-namespace Yutai.Plugins.Identifer
+namespace Yutai.Plugins.Locator
 {
     [YutaiPlugin()]
-    public class IdentifierPlugin : BasePlugin
+    public class LocatorPlugin : BasePlugin
     {
         private IAppContext _context;
-        public event EventHandler<MapIdentifyArgs> MapIdentifying;
-        public event EventHandler<EventArgs> UnMapIdentify;
-        public event EventHandler<EventArgs> StartMapIdentify;
+        public event EventHandler<EventArgs> StartLocator;
         private DockPanelService _dockPanelService;
-       
         private MenuGenerator _menuGenerator;
-        //private MapListener _mapListener;
+        private ProjectListener _projectListener;
 
         protected override void RegisterServices(IApplicationContainer container)
         {
@@ -29,27 +24,16 @@ namespace Yutai.Plugins.Identifer
         public override void Initialize(IAppContext context)
         {
             _context = context;
-
             _menuGenerator = context.Container.GetInstance<MenuGenerator>();
-
-            //_menuListener = context.Container.GetInstance<MenuListener>();
-            //_mapListener = context.Container.GetInstance<MapListener>();
             _dockPanelService = context.Container.GetInstance<DockPanelService>();
+            _projectListener = context.Container.GetInstance<ProjectListener>();
         }
 
-        public void FireMapIdentifying(MapIdentifyArgs e)
+       
+      
+        public void FireStartLocator(EventArgs e)
         {
-            FireEvent(MapIdentifying, e);
-        }
-
-        public void FireUnMapIdentify(EventArgs e)
-        {
-            FireEvent(UnMapIdentify, e);
-        }
-
-        public void FireStartMapIdentify(EventArgs e)
-        {
-            FireEvent(StartMapIdentify, e);
+            FireEvent(StartLocator, e);
         }
 
         private void FireEvent<T>(EventHandler<T> handler, T args)

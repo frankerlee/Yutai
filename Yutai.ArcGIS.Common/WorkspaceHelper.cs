@@ -242,5 +242,21 @@ namespace Yutai.ArcGIS.Common
             string str2 = pWS.ConnectionProperties.GetProperty("User").ToString();
             return WorkspaceHelper.GetSDEWorkspace(str, str1, str2, sPws, sVersion);
         }
+
+        public static string GetSpecialCharacter(IDataset pDS,esriSQLSpecialCharacters specChar)
+        {
+            IWorkspace pWorkspace = pDS.Workspace;
+            //if (pWorkspace is ShapefileWorkspaceFactory)
+            //{
+            //    if (specChar == esriSQLSpecialCharacters.esriSQL_WildcardManyMatch) return "%";
+            //    if (specChar == esriSQLSpecialCharacters.esriSQL_WildcardSingleMatch) return "%";
+            //    if (specChar == esriSQLSpecialCharacters.esriSQL_WildcardManyMatch) return "%";
+            //    if (specChar == esriSQLSpecialCharacters.esriSQL_WildcardManyMatch) return "%";
+            //    if (specChar == esriSQLSpecialCharacters.esriSQL_WildcardManyMatch) return "%";
+            //}
+            ISQLSyntax sqlSyntax=pWorkspace as ISQLSyntax;
+            if (sqlSyntax == null) return "";
+            return sqlSyntax.GetSpecialCharacter(specChar);
+        }
     }
 }

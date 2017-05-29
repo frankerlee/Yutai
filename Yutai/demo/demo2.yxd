@@ -1,0 +1,13 @@
+﻿<YutaiGIS>
+  <MapDoc>demo.mxd</MapDoc>
+  <SceneDoc>demo.sxd</SceneDoc>
+    <Locators>
+      <Locator Name="地理编码定位" Caption="地理编码定位" Layer="地理编码" SearchFields="名称,地址" NameField="名称" AddressField="地址"
+               DeacriptionField="类别" TelephoneField="电话" ShapeField="Shape" OIDField="OBJECTID">
+      </Locator>
+      <Locator Name="道路定位" Caption="道路定位" Layer="LRDL_1000" SearchFields="RN,NAME" NameField="NAME" AddressField="RN"
+               DeacriptionField="RTEG" TelephoneField="WIDTH" ShapeField="Shape" OIDField="OBJECTID">
+      </Locator>
+    </Locators>
+ 
+</YutaiGIS>

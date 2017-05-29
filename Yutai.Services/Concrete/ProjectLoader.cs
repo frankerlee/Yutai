@@ -53,12 +53,14 @@ namespace Yutai.Services.Concrete
 
                 RestoreLocator(project);
 
+
                 return true;
             }
             finally
             {
                 _context.YutaiProject = project;
                _context.MainView.Unlock();
+                _broadcaster.BroadcastEvent(p=>p.ProjectOpened_,this,null);
             }
         }
 

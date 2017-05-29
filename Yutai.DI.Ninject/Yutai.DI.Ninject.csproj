@@ -10,7 +10,7 @@
     <RootNamespace>Yutai.DI.Ninject</RootNamespace>
     <AssemblyName>Yutai.DI.Ninject</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>   
+    <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

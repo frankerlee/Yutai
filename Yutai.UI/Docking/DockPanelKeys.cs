@@ -10,5 +10,6 @@
         public const string TableEditor = "DockPanelTableEditor";
         public const string Tasks = "DockPanelTasks";
         public const string Identifier = "DockPanelIdentifier";
+        public const string Locator = "DockPanelLocator";
     }
 }

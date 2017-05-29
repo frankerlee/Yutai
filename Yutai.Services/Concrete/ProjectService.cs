@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
@@ -109,7 +110,7 @@ namespace Yutai.Services.Concrete
             {
                 Clear();
 
-                _broadcaster.BroadcastEvent(p => p.ProjectClosed_, this, args);
+                //_broadcaster.BroadcastEvent(p => p.ProjectClosed_, this, args);
                 return true;
             }
             return false;
@@ -378,7 +379,11 @@ namespace Yutai.Services.Concrete
             using (var reader = new StreamReader(filename))
             {
                 string state = reader.ReadToEnd();
+                //reader.Close();
                 var project = state.Deserialize<XmlProject>();
+                //XmlSerializer serializer = new XmlSerializer(typeof(XmlProject));
+                //var project = serializer.Deserialize(new StringReader(state)) as XmlProject;
+
 
                 if (project.Settings == null)
                 {

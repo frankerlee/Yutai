@@ -117,7 +117,7 @@ namespace Yutai.Plugins.Identifer.Views
             this.toolZoomToShape.Name = "toolZoomToShape";
             this.toolZoomToShape.Padding = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.toolZoomToShape.Size = new System.Drawing.Size(38, 32);
-            this.toolZoomToShape.Text = "Zoom to Shape";
+            this.toolZoomToShape.Text = "放大到要素";
             // 
             // toolClear
             // 
@@ -128,7 +128,7 @@ namespace Yutai.Plugins.Identifer.Views
             this.toolClear.Name = "toolClear";
             this.toolClear.Padding = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.toolClear.Size = new System.Drawing.Size(38, 32);
-            this.toolClear.Text = "Clear";
+            this.toolClear.Text = "清除";
             // 
             // splitContainerAdv1
             // 
