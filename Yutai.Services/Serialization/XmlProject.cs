@@ -60,5 +60,18 @@ namespace Yutai.Services.Serialization
 
         [DataMember(IsRequired = false,Order = 6)]
         public XmlProjectSettings Settings { get; set; }
+
+        [DataMember(IsRequired = false, Order = 7)]
+        public XmlOverview Overview { get; set; }
+    }
+
+    [DataContract(Name = "Overview", Namespace = "")]
+    public class XmlOverview
+    {
+        [DataMember(Name = "OverviewType", Order = 0)]
+        public string OverviewType { get; set; }
+
+        [DataMember(Name = "ObjectName", Order = 1)]
+        public string ObjectName { get; set; }
     }
 }

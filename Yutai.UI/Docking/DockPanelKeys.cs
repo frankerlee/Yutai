@@ -11,5 +11,6 @@
         public const string Tasks = "DockPanelTasks";
         public const string Identifier = "DockPanelIdentifier";
         public const string Locator = "DockPanelLocator";
+        public const string Overview = "DockPanelOverview";
     }
 }

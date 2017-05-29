@@ -39,6 +39,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.ADF, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86" />
     <Reference Include="ESRI.ArcGIS.ADF.Local, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -95,16 +98,20 @@
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.Grid.Base, Version=14.1460.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Grid.Grouping.Windows, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Grid.Windows, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Grouping.Base, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Shared.Base, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Shared.Windows, Version=14.1460.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Tools.Base, Version=14.1460.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Tools.Windows, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite">
       <HintPath>..\packages\System.Data.SQLite.Core.1.0.105.0\lib\net45\System.Data.SQLite.dll</HintPath>
     </Reference>
+    <Reference Include="System.Design" />
     <Reference Include="System.Windows" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -137,6 +144,8 @@
     <Compile Include="Commands\Views\CmdViewZoomNext.cs" />
     <Compile Include="Commands\Views\CmdViewZoomOut.cs" />
     <Compile Include="Commands\Views\CmdViewZoomPrev.cs" />
+    <Compile Include="Commands\Windows\CmdLegendDock.cs" />
+    <Compile Include="Commands\Windows\CmdOverviewDock.cs" />
     <Compile Include="CompositionRoot.cs" />
     <Compile Include="Controls\MapLegendCommand.cs" />
     <Compile Include="Controls\MapLegendDockPanel.cs">
@@ -146,6 +155,13 @@
       <DependentUpon>MapLegendDockPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\MapLegendPresenter.cs" />
+    <Compile Include="Controls\OverviewDockPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\OverviewDockPanel.Designer.cs">
+      <DependentUpon>OverviewDockPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\OverviewPresenter.cs" />
     <Compile Include="ExceptionHandler.cs" />
     <Compile Include="Forms\ErrorView.cs">
       <SubType>Form</SubType>
@@ -176,6 +192,9 @@
     </Compile>
     <EmbeddedResource Include="Controls\MapLegendDockPanel.resx">
       <DependentUpon>MapLegendDockPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\OverviewDockPanel.resx">
+      <DependentUpon>OverviewDockPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SplashView.resx">
       <DependentUpon>SplashView.cs</DependentUpon>
@@ -210,6 +229,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Yutai.ArcGIS.Common\Yutai.ArcGIS.Common.csproj">
+      <Project>{1938B3F8-8EDE-48F7-9594-EEB1F126E622}</Project>
+      <Name>Yutai.ArcGIS.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Yutai.DI.Castle\Yutai.DI.Castle.csproj">
       <Project>{F7CF04D0-81A0-4E89-BD3B-7689F49F3653}</Project>
       <Name>Yutai.DI.Castle</Name>
@@ -498,6 +521,8 @@
     <EmbeddedResource Include="Resource\Cursor\ZoomOut.cur" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\icon_maplegend.png" />
+    <Content Include="Resources\icon_overview.png" />
     <Content Include="Resources\icon_zoom_in_fixed.bmp" />
     <Content Include="Resources\icon_zoom_out_fixed.bmp" />
     <EmbeddedResource Include="Resource\Cursor\Measure.cur" />

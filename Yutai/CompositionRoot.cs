@@ -17,7 +17,9 @@ namespace Yutai
                 .RegisterSingleton<IAppView, AppView>()
                 .RegisterInstance<IApplicationContainer>(container)
                  .RegisterService<MapLegendPresenter>()
-                .RegisterService<MapLegendDockPanel>();
+                .RegisterService<MapLegendDockPanel>()
+                 .RegisterService<OverviewPresenter>()
+                .RegisterService<OverviewDockPanel>(); 
 
             Services.CompositionRoot.Compose(container);
             Plugins.CompositionRoot.Compose(container);

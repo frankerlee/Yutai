@@ -92,6 +92,7 @@
     <Compile Include="DynamicJsonConverter.cs" />
     <Compile Include="EnumHelper.cs" />
     <Compile Include="EventHelper.cs" />
+    <Compile Include="FileHelper.cs" />
     <Compile Include="FontHelper.cs" />
     <Compile Include="GcHelper.cs" />
     <Compile Include="IEnumConverter.cs" />

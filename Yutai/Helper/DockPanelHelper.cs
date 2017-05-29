@@ -25,12 +25,13 @@ namespace Yutai.Helper
             panels.Lock();
 
            InitMapLegend(context);
+            InitOverview(context);
 
-           /* InitLocator(context);
+            /* InitLocator(context);
 
-            InitToolbox(context);
+             InitToolbox(context);
 
-            InitTasks(context);*/
+             InitTasks(context);*/
 
             context.DockPanels.MapLegend.TabPosition = 0;
             panels.Unlock();
@@ -76,32 +77,41 @@ namespace Yutai.Helper
             legend.SetIcon(Resources.ico_legend);
         }
 
-       /* private static void InitToolbox(ISecureContext context)
+        private static void InitOverview(ISecureContext context)
         {
-            var toolboxControl = context.GetDockPanelObject(DefaultDockPanel.Toolbox);
+            var overviewControl = context.GetDockPanelObject(DefaultDockPanel.Overview);
+            var overview = context.DockPanels.Add(overviewControl, DockPanelKeys.Overview, PluginIdentity.Default);
+            overview.Caption = "鹰眼视图";
+            overview.DockTo(null, DockPanelState.Left, PanelSize);
+            overview.SetIcon(Resources.ico_tasks);
+        }
 
-            var toolbox = context.DockPanels.Add(toolboxControl, DockPanelKeys.Toolbox, PluginIdentity.Default);
-            toolbox.Caption = "Toolbox";
-            toolbox.DockTo(null, DockPanelState.Right, PanelSize);
-            toolbox.SetIcon(Resources.ico_toolbox24);
-        }*/
+        /* private static void InitToolbox(ISecureContext context)
+         {
+             var toolboxControl = context.GetDockPanelObject(DefaultDockPanel.Toolbox);
 
-       /* private static void InitLocator(ISecureContext context)
-        {
-            var locatorControl = context.GetDockPanelObject(DefaultDockPanel.Locator);
-            if (locatorControl == null)
-            {
-                return;
-            }
+             var toolbox = context.DockPanels.Add(toolboxControl, DockPanelKeys.Toolbox, PluginIdentity.Default);
+             toolbox.Caption = "Toolbox";
+             toolbox.DockTo(null, DockPanelState.Right, PanelSize);
+             toolbox.SetIcon(Resources.ico_toolbox24);
+         }*/
 
-            var locator = context.DockPanels.Add(locatorControl, DockPanelKeys.Preview, PluginIdentity.Default);
-            locator.Caption = "Overview";
-            locator.SetIcon(Resources.ico_zoom_to_layer);
-            locator.DockTo(context.DockPanels.Legend, DockPanelState.Bottom, PanelSize);
+        /* private static void InitLocator(ISecureContext context)
+         {
+             var locatorControl = context.GetDockPanelObject(DefaultDockPanel.Locator);
+             if (locatorControl == null)
+             {
+                 return;
+             }
 
-            var size = locator.Size;
-            locator.Size = new Size(size.Width, 250);
-        }*/
+             var locator = context.DockPanels.Add(locatorControl, DockPanelKeys.Preview, PluginIdentity.Default);
+             locator.Caption = "Overview";
+             locator.SetIcon(Resources.ico_zoom_to_layer);
+             locator.DockTo(context.DockPanels.Legend, DockPanelState.Bottom, PanelSize);
+
+             var size = locator.Size;
+             locator.Size = new Size(size.Width, 250);
+         }*/
 
         public static void ClosePanel(IAppContext context, string dockPanelKey)
         {

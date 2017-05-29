@@ -135,12 +135,16 @@
             this.grdResult.Size = new System.Drawing.Size(313, 412);
             this.grdResult.TabIndex = 3;
             this.grdResult.TableDescriptor.AllowNew = false;
+            this.grdResult.TableDescriptor.TableOptions.AllowSelection = Syncfusion.Windows.Forms.Grid.GridSelectionFlags.Row;
             this.grdResult.TableDescriptor.TableOptions.CaptionRowHeight = 29;
             this.grdResult.TableDescriptor.TableOptions.ColumnHeaderRowHeight = 25;
+            this.grdResult.TableDescriptor.TableOptions.ListBoxSelectionMode = System.Windows.Forms.SelectionMode.One;
             this.grdResult.TableDescriptor.TableOptions.RecordRowHeight = 25;
             this.grdResult.Text = "gridGroupingControl1";
             this.grdResult.TopLevelGroupOptions.ShowColumnHeaders = false;
             this.grdResult.VersionInfo = "14.1450.0.41";
+            this.grdResult.TableControlCellClick += new Syncfusion.Windows.Forms.Grid.Grouping.GridTableControlCellClickEventHandler(this.grdResult_TableControlCellClick);
+            this.grdResult.SelectedRecordsChanged += new Syncfusion.Grouping.SelectedRecordsChangedEventHandler(this.GrdResultOnSelectedRecordsChanged);
             // 
             // LocatorDockPanel
             // 

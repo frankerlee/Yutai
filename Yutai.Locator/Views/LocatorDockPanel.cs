@@ -218,6 +218,7 @@ namespace Yutai.Plugins.Locator.Views
             this.grdResult.TableDescriptor.VisibleColumns.AddRange(new Syncfusion.Windows.Forms.Grid.Grouping.GridVisibleColumnDescriptor[] {
             new Syncfusion.Windows.Forms.Grid.Grouping.GridVisibleColumnDescriptor("ColumnSet 1")});
             this.grdResult.TableDescriptor.Columns["名称"].Width = this.grdResult.Width/2;
+            
             this.grdResult.Update();
             this.grdResult.SelectedRecordsChanged+= GrdResultOnSelectedRecordsChanged;
         }
@@ -308,6 +309,22 @@ namespace Yutai.Plugins.Locator.Views
             }
             _map=_context.MapControl.ActiveView as IMap;
            
+        }
+
+        private int _oldRow;
+        private void grdResult_TableControlCellClick(object sender, GridTableControlCellClickEventArgs e)
+        {
+            Syncfusion.Grouping.Record rec = this.grdResult.Table.CurrentRecord;
+            if (rec == null) return;
+            if (rec["要素"] == null) return;
+            IGeometry geometry = rec["要素"] as IGeometry;
+            if(_oldRow ==rec.Id)return;
+            if (ZoomToShape)
+            {
+                Yutai.ArcGIS.Common.EsriUtils.ZoomToGeometry(geometry, _map, 2);
+                Yutai.ArcGIS.Common.FlashUtility.FlashGeometry(geometry, _context.MapControl);
+            }
+            _oldRow = rec.Id;
         }
     }
 }

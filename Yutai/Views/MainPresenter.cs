@@ -41,6 +41,7 @@ namespace Yutai.Views
             IMainView view,
             IConfigService configService,
             MapLegendPresenter mapLegendPresenter,
+            OverviewPresenter overviewPresenter,
             IProjectService projectService)
             : base(view)
         {
@@ -63,7 +64,7 @@ namespace Yutai.Views
                     throw new InvalidCastException("Invalid type of IAppContext instance");
                 }
 
-                appContext.Init(view, projectService, configService,mapLegendPresenter);//projectService, configService);
+                appContext.Init(view, projectService, configService,mapLegendPresenter,overviewPresenter);//projectService, configService);
 
                /* view.Map.Initialize();
                 view.Map.ApplyConfig(configService);*/

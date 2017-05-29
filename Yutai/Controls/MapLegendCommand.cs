@@ -16,4 +16,11 @@
         Labels = 11,
         TableEditor = 12,
     }
+
+    public enum OverviewCommand
+    {
+        FullExtent,
+        Current,
+        Properties
+    }
 }

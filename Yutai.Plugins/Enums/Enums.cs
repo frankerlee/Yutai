@@ -124,7 +124,8 @@ namespace Yutai.Plugins.Enums
     {
         MapLegend = 0,
         Toolbox = 1,
-        Locator = 2,
+        Overview = 2,
+        Locator=3
 
     }
 

@@ -37,6 +37,7 @@ namespace Yutai.Plugins.Locator.Commands
             }
             else
             {
+                dock.Visible = true;
                 dock.Activate();
             }
         }

@@ -35,4 +35,8 @@
       <DisplayOrder>2</DisplayOrder>
     </Locator>
     </Locators>
+  <Overview>
+    <OverviewType>mxd</OverviewType>
+    <ObjectName>demo.mxd</ObjectName>
+  </Overview>
 </YutaiGIS>

@@ -35,6 +35,7 @@ namespace Yutai
         private IMainView _mainView;
 
         private MapLegendPresenter _mapLegendPresenter;
+        private OverviewPresenter _overviewPresenter;
         private XmlProject _yutaiProject;
 
         public AppContext(
@@ -119,6 +120,8 @@ namespace Yutai
             {
                 case DefaultDockPanel.MapLegend:
                     return _mapLegendPresenter.LegendControl as Control;
+                case DefaultDockPanel.Overview:
+                    return _overviewPresenter.OverviewControl as Control;
                 /*  case DefaultDockPanel.Toolbox:
                      return _toolboxPresenter.View;
                  case DefaultDockPanel.Locator:
@@ -144,38 +147,34 @@ namespace Yutai
             IMainView mainView,
             IProjectService project,
             IConfigService configService,
-            MapLegendPresenter mapLegendPresenter
+            MapLegendPresenter mapLegendPresenter,
+            OverviewPresenter overviewPresenter
         )
         {
             Logger.Current.Trace("Start AppContext.Init()");
             if (mainView == null) throw new ArgumentNullException("mainView");
             if (project == null) throw new ArgumentNullException("project");
-
             if (mapLegendPresenter == null) throw new ArgumentNullException("legendPresenter");
             //初始化图例控件
             _mapLegendPresenter = mapLegendPresenter;
             var legend = _mapLegendPresenter.LegendControl;
             legend.LegendControl.SetBuddyControl(mainView.MapControl);
-           
-            /*  if (toolboxPresenter == null) throw new ArgumentNullException("toolboxPresenter");
+            _overviewPresenter = overviewPresenter;
+            
 
-              _toolboxPresenter = toolboxPresenter;
-              _legendPresenter = legendPresenter;
-              var legend = _legendPresenter.Legend;
-              mainView.Map.Legend = legend;
-              legend.Map = mainView.Map;*/
-
-            // it's expected here that we are on the UI thread
+              // it's expected here that we are on the UI thread
             SynchronizationContext = SynchronizationContext.Current;
 
             PluginManager = _container.GetSingleton<IPluginManager>();
             Broadcaster = _container.GetSingleton<IBroadcasterService>();
             _container.RegisterInstance<IMapControl2>(mainView.MapControl);
-
+           
             _mainView = mainView;
             View = new AppView(mainView, _styleService);
             _project = project;
             _configService = configService;
+
+            _overviewPresenter.SetBuddyControl(mainView.MapControl);
             //  _map = mainView.Map;
             //  
             //   Repository = repository;

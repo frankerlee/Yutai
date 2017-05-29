@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Yutai.Commands.Document;
 using Yutai.Commands.Views;
+using Yutai.Commands.Windows;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
@@ -58,7 +59,11 @@ namespace Yutai.Menu
                     new CmdViewZoomNext(_context) as YutaiCommand,
                     new YutaiMenuCommand(RibbonItemType.ToolStrip, "View", "View.Measure", "View.Measure", "量测工具", "", ""),
                      new CmdViewMeasureLength(_context) as YutaiCommand,
-                      new CmdViewMeasureArea(_context) as YutaiCommand
+                      new CmdViewMeasureArea(_context) as YutaiCommand,
+                      new YutaiMenuCommand(RibbonItemType.TabItem, "Window", "Window", "Window", "窗口", "", ""),
+                    new YutaiMenuCommand(RibbonItemType.ToolStrip, "Window", "Window.Common", "Window.Common", "窗口控制", "", ""),
+                    new CmdLegendDock(_context) as YutaiCommand,
+                    new CmdOverviewDock(_context) as YutaiCommand
                 };
             }
             return _commands;

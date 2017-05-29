@@ -233,6 +233,11 @@ namespace Yutai.UI.Docking
             get { return Find(DockPanelKeys.MapLegend); }
         }
 
+        public IDockPanel Overview
+        {
+            get { return Find(DockPanelKeys.Overview); }
+        }
+
         public IDockPanel Preview
         {
             get { return Find(DockPanelKeys.Preview); }
