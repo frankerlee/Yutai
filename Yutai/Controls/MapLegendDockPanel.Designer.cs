@@ -31,9 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MapLegendDockPanel));
             this.axTOCControl1 = new ESRI.ArcGIS.Controls.AxTOCControl();
             this.contextMenuLayer = new Syncfusion.Windows.Forms.Tools.ContextMenuStripEx();
-            this.mnuZoomToLayer = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.axTOCControl1)).BeginInit();
-            this.contextMenuLayer.SuspendLayout();
             this.SuspendLayout();
             // 
             // axTOCControl1
@@ -48,18 +46,11 @@
             // 
             // contextMenuLayer
             // 
-            this.contextMenuLayer.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuZoomToLayer});
             this.contextMenuLayer.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(236)))), ((int)(((byte)(249)))));
             this.contextMenuLayer.Name = "contextMenuLayer";
-            this.contextMenuLayer.Size = new System.Drawing.Size(153, 48);
+            this.contextMenuLayer.Size = new System.Drawing.Size(61, 4);
             this.contextMenuLayer.Style = Syncfusion.Windows.Forms.Tools.ContextMenuStripEx.ContextMenuStyle.Default;
-            // 
-            // mnuZoomToLayer
-            // 
-            this.mnuZoomToLayer.Name = "mnuZoomToLayer";
-            this.mnuZoomToLayer.Size = new System.Drawing.Size(152, 22);
-            this.mnuZoomToLayer.Text = "放大到图层";
+            this.contextMenuLayer.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuLayer_Opening);
             // 
             // MapLegendDockPanel
             // 
@@ -67,7 +58,6 @@
             this.Name = "MapLegendDockPanel";
             this.Size = new System.Drawing.Size(259, 264);
             ((System.ComponentModel.ISupportInitialize)(this.axTOCControl1)).EndInit();
-            this.contextMenuLayer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -76,6 +66,5 @@
 
         private ESRI.ArcGIS.Controls.AxTOCControl axTOCControl1;
         private Syncfusion.Windows.Forms.Tools.ContextMenuStripEx contextMenuLayer;
-        private System.Windows.Forms.ToolStripMenuItem mnuZoomToLayer;
     }
 }

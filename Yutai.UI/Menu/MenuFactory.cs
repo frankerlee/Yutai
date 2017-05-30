@@ -33,8 +33,6 @@ namespace Yutai.UI.Menu
                 }
                 }
                 CreateDefaultMenuItems(_instance);
-         
-
             return _instance;
         }
 

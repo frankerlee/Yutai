@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yutai.ArcGIS.Common", "Yuta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yutai.Locator", "Yutai.Locator\Yutai.Locator.csproj", "{2B81C89A-EE45-4276-9DC1-72BBBF07F53F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yutai.Catalog", "Yutai.Catalog\Yutai.Catalog.csproj", "{A925EC17-5C70-42F6-A82E-9EBA7AA47FE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,10 @@ Global
 		{2B81C89A-EE45-4276-9DC1-72BBBF07F53F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B81C89A-EE45-4276-9DC1-72BBBF07F53F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B81C89A-EE45-4276-9DC1-72BBBF07F53F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A925EC17-5C70-42F6-A82E-9EBA7AA47FE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A925EC17-5C70-42F6-A82E-9EBA7AA47FE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A925EC17-5C70-42F6-A82E-9EBA7AA47FE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A925EC17-5C70-42F6-A82E-9EBA7AA47FE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

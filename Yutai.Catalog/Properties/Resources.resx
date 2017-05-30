@@ -1,0 +1,427 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="AddArcGISServer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AddArcGISServer.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AddArcIMSServer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AddArcIMSServer.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AddGDBServer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AddGDBServer.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AddServerObject" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AddServerObject.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AddWMSServer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AddWMSServer.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ArcGISServerConn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ArcGISServerConn.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ArcGISServerUnConn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ArcGISServerUnConn.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ArcIMSServerConn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ArcIMSServerConn.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ArcIMSServerUnConn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ArcIMSServerUnConn.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpAddLink" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpAddLink.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpAnno" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpAnno.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpAnnotationCoverage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpAnnotationCoverage.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpCADAnno" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpCADAnno.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpCadDrawing" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpCadDrawing.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpCADLayers" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpCADLayers.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpCADMultiPatch" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpCADMultiPatch.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpCADPoint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpCADPoint.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpCADPolygon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpCADPolygon.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpCADPolyline" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpCADPolyline.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpCopy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpCopy.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpCoverage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpCoverage.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpCoverageAnnoFeatclass" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpCoverageAnnoFeatclass.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpCoverageArcFeatClass" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpCoverageArcFeatClass.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpCoverageLabelFeatClass" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpCoverageLabelFeatClass.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpCoverageNodeFeatClass" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpCoverageNodeFeatClass.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpCoveragePointFeatClass" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpCoveragePointFeatClass.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpCoveragePolygonFeatClass" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpCoveragePolygonFeatClass.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpCoverageRegionFeatClass" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpCoverageRegionFeatClass.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpCoverageRouteFeatClass" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpCoverageRouteFeatClass.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpCoverageTicFeatClass" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpCoverageTicFeatClass.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpDataset" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpDataset.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpDBLink" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpDBLink.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpDelete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpDelete.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpDiskConnect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpDiskConnect.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpError" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpError.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpErrorLayer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpErrorLayer.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpFeature" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpFeature.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpFillFeatureClass" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpFillFeatureClass.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpFillLayer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpFillLayer.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpFolder1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpFolder1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpFolder2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpFolder2.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpGDBLink1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpGDBLink1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpGDBLink2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpGDBLink2.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpGeometryNet" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpGeometryNet.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpGroupLayer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpGroupLayer.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpLayer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpLayer.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpLineCoverage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpLineCoverage.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpLineFeature" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpLineFeature.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpLineLayer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpLineLayer.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpLinkToFolder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpLinkToFolder.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpMultiPatch" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpMultiPatch.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpMXD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpMXD.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpPaste" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpPaste.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpPersonGDB" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpPersonGDB.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpPMF" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpPMF.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpPointCoverage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpPointCoverage.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpPointFeature" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpPointFeature.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpPointLayer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpPointLayer.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpPolygonCoverage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpPolygonCoverage.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpProjection" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpProjection.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpProperty" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpProperty.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpRaster" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpRaster.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpRasterCatalog" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpRasterCatalog.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpRasterDataset" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpRasterDataset.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpRasterLayer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpRasterLayer.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpRefresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpRefresh.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpRegionCoverage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpRegionCoverage.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpRelation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpRelation.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpRoot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpRoot.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpTable" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpTable.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpText" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpText.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpTin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpTin.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpToHigher" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpToHigher.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmpTopology" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmpTopology.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DiskConnectionError" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DiskConnectionError.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DJStructbmp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DJStructbmp.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ErrorShapeFile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ErrorShapeFile.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Excel.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FeatureServices" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FeatureServices.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GDBFolder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GDBFolder.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GDBServer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GDBServer.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GDBsUnConnect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GDBsUnConnect.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GeometryAny" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GeometryAny.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GeometryServerPause" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GeometryServerPause.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GeometryServerStart" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GeometryServerStart.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GeometryServerStop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GeometryServerStop.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GISServerFolder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GISServerFolder.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GPServerPause" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GPServerPause.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GPServerStart" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GPServerStart.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GPServerStop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GPServerStop.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MapServerPaused" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MapServerPaused.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MapServerStarted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MapServerStarted.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MapServerStoped" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MapServerStoped.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NetworkDataset" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NetworkDataset.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SearchServerPause" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SearchServerPause.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SearchServerStart" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SearchServerStart.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SearchServerStop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SearchServerStop.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ShapeFile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ShapeFile.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ShapeFill" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ShapeFill.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ShapeLine" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ShapeLine.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ShapePoint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ShapePoint.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Word" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Word.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+</root>

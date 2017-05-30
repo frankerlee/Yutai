@@ -134,6 +134,16 @@
     <Compile Include="Commands\Document\CmdSaveMapDocument.cs" />
     <Compile Include="Commands\Document\CmdSaveSceneDocument.cs" />
     <Compile Include="Commands\Document\CmdSaveYutaiDoc.cs" />
+    <Compile Include="Commands\MapLegend\CmdClearScaleRange.cs" />
+    <Compile Include="Commands\MapLegend\CmdCollapseAllLayer.cs" />
+    <Compile Include="Commands\MapLegend\CmdCreateLayerBySelection.cs" />
+    <Compile Include="Commands\MapLegend\CmdDeleteAllLayer.cs" />
+    <Compile Include="Commands\MapLegend\CmdDeleteLayer.cs" />
+    <Compile Include="Commands\MapLegend\CmdDeleteMapFrame.cs" />
+    <Compile Include="Commands\MapLegend\CmdExpandAllLayer.cs" />
+    <Compile Include="Commands\MapLegend\CmdExportData.cs" />
+    <Compile Include="Commands\MapLegend\CmdLegendAddData.cs" />
+    <Compile Include="Commands\MapLegend\CmdLegendAddGroupLayer.cs" />
     <Compile Include="Commands\Views\CmdViewFixedZoomIn.cs" />
     <Compile Include="Commands\Views\CmdViewFixedZoomOut.cs" />
     <Compile Include="Commands\Views\CmdViewFullExtent.cs" />
@@ -147,6 +157,7 @@
     <Compile Include="Commands\Windows\CmdLegendDock.cs" />
     <Compile Include="Commands\Windows\CmdOverviewDock.cs" />
     <Compile Include="CompositionRoot.cs" />
+    <Compile Include="Controls\IMapLegendView.cs" />
     <Compile Include="Controls\MapLegendCommand.cs" />
     <Compile Include="Controls\MapLegendDockPanel.cs">
       <SubType>UserControl</SubType>

@@ -5,29 +5,130 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
+using Yutai.Commands.MapLegend;
+using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Mvp;
 using Yutai.UI.Controls;
 
 namespace Yutai.Controls
 {
-    public partial class MapLegendDockPanel : DockPanelControlBase, IMenuProvider
+    public partial class MapLegendDockPanel : DockPanelControlBase, IMenuProvider,IMapLegendView
     {
         private readonly IAppContext _context;
+        private esriTOCControlItem pTocItem = esriTOCControlItem.esriTOCControlItemNone;
+        private IBasicMap pMap = null;
+        private ILayer pLayer = null;
+        private object pother = null;
+        private object pindex = null;
+        private ITOCBuddy2 _tocBuddyControl;
+        private IBasicMap _selectedMap;
+        private ILayer _selectedLayer;
+        private List<YutaiCommand> _commands;
+        private esriTOCControlItem _selectedItemType;
 
         public MapLegendDockPanel(IAppContext context)
         {
             if (context == null) throw new ArgumentNullException("context");
             _context = context;
             InitializeComponent();
-          
-           /* legendControl1.LayerMouseUp += LegendLayerMouseUp;
-            legendControl1.GroupMouseUp += LegendGroupMouseUp;
-            legendControl1.LegendClick += OnLegendClick;*/
+
+            InitContextMenu();
+            /* legendControl1.LayerMouseUp += LegendLayerMouseUp;
+             legendControl1.GroupMouseUp += LegendGroupMouseUp;*/
+            axTOCControl1.OnMouseDown+= AxTocControl1OnOnMouseDown;
         }
 
-       /* public event KeyEventHandler LegendKeyDown
+        private void InitContextMenu()
+        {
+            CreateCommands();
+            foreach (YutaiCommand command in _commands)
+            {
+                AddCommand(command);
+            }
+        }
+
+        private void AddMenuCommand(YutaiCommand command)
+        {
+            ToolStripDropDownButton dropDown =new ToolStripDropDownButton();
+            dropDown.Name = command.Name;
+            dropDown.Text = command.Caption;
+            contextMenuLayer.Items.Add(dropDown);
+        }
+
+        private void AddCommand(YutaiCommand command)
+        {
+            if (command is YutaiMenuCommand)
+            {
+                AddMenuCommand(command);
+                return;
+            }
+            string[] names = command.Name.Split('.');
+            if (names.Length == 1)
+            {
+                ToolStripMenuItem menu=new ToolStripMenuItem
+                {
+                    Text = command.Caption,
+                    Name = command.Name,
+                    ToolTipText = command.Tooltip,
+                    Image = command.Image,
+                };
+                menu.Click += command.OnClick;
+                contextMenuLayer.Items.Add(menu);
+            }
+            else if(names.Length==2)
+            {
+                ToolStripDropDownButton dropDown = contextMenuLayer.Items[names[0]] as ToolStripDropDownButton;
+                ToolStripMenuItem menu = new ToolStripMenuItem
+                {
+                    Text = command.Caption,
+                    Name = command.Name,
+                    ToolTipText = command.Tooltip,
+                    Image = command.Image,
+                };
+                menu.Click += command.OnClick;
+                dropDown.DropDownItems.Add(menu);
+            }
+        }
+
+        private void CreateCommands()
+        {
+            if (_commands == null)
+            {
+                _commands=new List<YutaiCommand>
+                {
+                     new CmdLegendAddGroupLayer(_context,this),
+                    new CmdLegendAddData(_context,this),
+                    new CmdExpandAllLayer(_context,this),
+                    new CmdCollapseAllLayer(_context,this),
+                    new CmdCreateLayerBySelection(_context,this),
+                    new CmdExportData(_context,this),
+                    new CmdDeleteAllLayer(_context,this),
+                    new CmdDeleteLayer(_context,this),
+                    new CmdClearScaleRange(_context,this)
+                };
+            }
+        }
+
+        private void AxTocControl1OnOnMouseDown(object sender, ITOCControlEvents_OnMouseDownEvent itocControlEventsOnMouseDownEvent)
+        {
+            if (itocControlEventsOnMouseDownEvent.button == 2)
+            {
+                axTOCControl1.HitTest(itocControlEventsOnMouseDownEvent.x, itocControlEventsOnMouseDownEvent.y, ref pTocItem, ref pMap, ref pLayer, ref pother, ref pindex);
+                if (pTocItem == esriTOCControlItem.esriTOCControlItemMap)
+                    axTOCControl1.SelectItem(pMap, null);
+                else
+                    axTOCControl1.SelectItem(pLayer, null);
+
+                var pnt = PointToClient(Cursor.Position);
+                contextMenuLayer.Show(this,pnt);
+            }
+        }
+
+
+        /* public event KeyEventHandler LegendKeyDown
         {
           add { axTOCControl1.KeyDown += value; }
             remove { axTOCControl1.KeyDown -= value; }
@@ -85,7 +186,9 @@ namespace Yutai.Controls
         {
             get
             {
-                yield return contextMenuLayer.Items;
+                //因为用Command的方式开发功能，因此在这儿不将ToolStrip注入，避免多次触发菜单的点击事件
+                yield break;
+                //yield return contextMenuLayer.Items;
                 //yield return contextMenuGroup.Items;
             }
         }
@@ -94,15 +197,35 @@ namespace Yutai.Controls
         {
             get { yield break; }
         }
-
-        private void OnContextMenuLayerOpening(object sender, CancelEventArgs e)
+        
+        private void contextMenuLayer_Opening(object sender, CancelEventArgs e)
         {
-          /*  var layer = _context.Layers.Current;
-            if (layer != null)
-            {
-                toolLabels.Enabled = layer.IsVector;
-                toolTableEditor.Enabled = layer.IsVector;
-            }*/
+            
+        }
+
+        public ITOCControl2 TocControl
+        {
+            get { return axTOCControl1 as ITOCControl2; }
+        }
+
+        public ITOCBuddy2 TocBuddyControl
+        {
+            get { return ((ITOCControl2)axTOCControl1).Buddy as ITOCBuddy2; }
+        }
+
+        public IBasicMap SelectedMap
+        {
+            get { return pMap; }
+        }
+
+        public ILayer SelectedLayer
+        {
+            get { return pLayer; }
+        }
+
+        public esriTOCControlItem SelectedItemType
+        {
+            get { return pTocItem; }
         }
     }
 }

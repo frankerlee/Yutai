@@ -1,0 +1,1050 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A925EC17-5C70-42F6-A82E-9EBA7AA47FE0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Yutai.Catalog</RootNamespace>
+    <AssemblyName>Yutai.Catalog</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.3DAnalyst, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.ADF, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86" />
+    <Reference Include="ESRI.ArcGIS.Carto, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Catalog, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.DataSourcesFile, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.DataSourcesGDB, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.DataSourcesOleDB, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.DataSourcesRaster, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Display, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Framework, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geodatabase, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geometry, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geoprocessing, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geoprocessor, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
+    <Reference Include="ESRI.ArcGIS.GISClient, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.GlobeCore, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Server, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.System, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.SystemUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common.cs" />
+    <Compile Include="frmAddDatabaseServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCreateGDBConnection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetGeometryType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GxAddAGSConnection.cs" />
+    <Compile Include="GxAddAGSObject.cs" />
+    <Compile Include="GxAddGDBSConnection.cs" />
+    <Compile Include="GxAGSConnection.cs" />
+    <Compile Include="GxAGSMap.cs" />
+    <Compile Include="GxApplication.cs" />
+    <Compile Include="GxCadDataset.cs" />
+    <Compile Include="GxCadDrawing.cs" />
+    <Compile Include="GxCatalog.cs" />
+    <Compile Include="GxCatalogCommon.cs" />
+    <Compile Include="GxCoverageDataset.cs" />
+    <Compile Include="GxDatabase.cs" />
+    <Compile Include="GxDatabaseServerFolder.cs" />
+    <Compile Include="GxDataset.cs" />
+    <Compile Include="GxDiskConnection.cs" />
+    <Compile Include="GxFeatureService.cs" />
+    <Compile Include="GxFile.cs" />
+    <Compile Include="GxFolder.cs" />
+    <Compile Include="GxGDBSConnection.cs" />
+    <Compile Include="GxGDSGeodatabase.cs" />
+    <Compile Include="GxGeometryServer.cs" />
+    <Compile Include="GxGISServersFolder.cs" />
+    <Compile Include="GxGPGPTool.cs" />
+    <Compile Include="GxGPServer.cs" />
+    <Compile Include="GxLayer.cs" />
+    <Compile Include="GxMap.cs" />
+    <Compile Include="GxNewDatabase.cs" />
+    <Compile Include="GxObject.cs" />
+    <Compile Include="GxObjectArray.cs" />
+    <Compile Include="GxObjectContainer.cs" />
+    <Compile Include="GxObjectStruct.cs" />
+    <Compile Include="GxOfficeFile.cs" />
+    <Compile Include="GxRasterDataset.cs" />
+    <Compile Include="GxRemoteDatabaseFolder.cs" />
+    <Compile Include="GxSearchServer.cs" />
+    <Compile Include="GxSelection.cs" />
+    <Compile Include="GxServersFolder.cs" />
+    <Compile Include="GxShapefileDataset.cs" />
+    <Compile Include="GxShortcut.cs" />
+    <Compile Include="GxSpatialReferencesFolder.cs" />
+    <Compile Include="GxTextFile.cs" />
+    <Compile Include="GxVCTLayerObject.cs" />
+    <Compile Include="GxVCTObject.cs" />
+    <Compile Include="IEnumGxObject.cs" />
+    <Compile Include="IEnumGxObjectFactory.cs" />
+    <Compile Include="IGxAGSConnection.cs" />
+    <Compile Include="IGxAGSMap.cs" />
+    <Compile Include="IGxAGSObject.cs" />
+    <Compile Include="IGxApplication.cs" />
+    <Compile Include="IGxBasicObject.cs" />
+    <Compile Include="IGxCatalog.cs" />
+    <Compile Include="IGxCatalogEvents.cs" />
+    <Compile Include="IGxContextMenuWap.cs" />
+    <Compile Include="IGxDatabase.cs" />
+    <Compile Include="IGxDatabaseServerFolder.cs" />
+    <Compile Include="IGxDataElement.cs" />
+    <Compile Include="IGxDataElementHelper.cs" />
+    <Compile Include="IGxDataset.cs" />
+    <Compile Include="IGxDiskConnection.cs" />
+    <Compile Include="IGxFile.cs" />
+    <Compile Include="IGxFileFilter.cs" />
+    <Compile Include="IGxFileSetup.cs" />
+    <Compile Include="IGxFilterDataElements.cs" />
+    <Compile Include="IGxFolder.cs" />
+    <Compile Include="IGxFolderAdmin.cs" />
+    <Compile Include="IGxGDSConnection.cs" />
+    <Compile Include="IGxGeodatabase.cs" />
+    <Compile Include="IGxGISServersFolder.cs" />
+    <Compile Include="IGxGPGPTool.cs" />
+    <Compile Include="IGxLayer.cs" />
+    <Compile Include="IGxLayerSource.cs" />
+    <Compile Include="IGxMap.cs" />
+    <Compile Include="IGxMapPageLayout.cs" />
+    <Compile Include="IGxNewDatabase.cs" />
+    <Compile Include="IGxObject.cs" />
+    <Compile Include="IGxObjectArray.cs" />
+    <Compile Include="IGxObjectContainer.cs" />
+    <Compile Include="IGxObjectDeleteOptions.cs" />
+    <Compile Include="IGxObjectEdit.cs" />
+    <Compile Include="IGxObjectFactories.cs" />
+    <Compile Include="IGxObjectFactory.cs" />
+    <Compile Include="IGxObjectFactoryEdit.cs" />
+    <Compile Include="IGxObjectFilter.cs" />
+    <Compile Include="IGxObjectFilterCollection.cs" />
+    <Compile Include="IGxObjectInternalName.cs" />
+    <Compile Include="IGxObjectProperties.cs" />
+    <Compile Include="IGxObjectUI.cs" />
+    <Compile Include="IGxOfficeFile.cs" />
+    <Compile Include="IGxPasteTarget.cs" />
+    <Compile Include="IGxPasteTargetHelper.cs" />
+    <Compile Include="IGxPrjFile.cs" />
+    <Compile Include="IGxRemoteConnection.cs" />
+    <Compile Include="IGxRemoteContainer.cs" />
+    <Compile Include="IGxRemoteDatabaseFolder.cs" />
+    <Compile Include="IGxSelection.cs" />
+    <Compile Include="IGxSelectionEvents.cs" />
+    <Compile Include="IGxServersFolder.cs" />
+    <Compile Include="IGxShortcut.cs" />
+    <Compile Include="IGxSpatialReferencesFolder.cs" />
+    <Compile Include="IGxTextFile.cs" />
+    <Compile Include="IGxVCTLayerObject.cs" />
+    <Compile Include="IGxVCTObject.cs" />
+    <Compile Include="ImageLib.cs" />
+    <Compile Include="IPopuMenuWrap.cs" />
+    <Compile Include="LayerType.cs" />
+    <Compile Include="MyDoubleClickResult.cs" />
+    <Compile Include="MyGxFilterAnnotationFeatureClass.cs" />
+    <Compile Include="MyGxFilterBasicTypes.cs" />
+    <Compile Include="MyGxFilterCadAnnotationClasses.cs" />
+    <Compile Include="MyGxFilterContainers.cs" />
+    <Compile Include="MyGxFilterDatasets.cs" />
+    <Compile Include="MyGxFilterDatasetsAndLayers.cs" />
+    <Compile Include="MyGxFilterEnteripesGeoDatabases.cs" />
+    <Compile Include="MyGxFilterFeatureClasses.cs" />
+    <Compile Include="MyGxFilterFeatureDatasets.cs" />
+    <Compile Include="MyGxFilterFeatureDatasetsAndFeatureClasses.cs" />
+    <Compile Include="MyGxFilterFileGeodatabases.cs" />
+    <Compile Include="MyGxFilterFiles.cs" />
+    <Compile Include="MyGxFilterGeoDatabases.cs" />
+    <Compile Include="MyGxFilterGeoDatasets.cs" />
+    <Compile Include="MyGxFilterGeometricNetworks.cs" />
+    <Compile Include="MyGxFilterInfoTables.cs" />
+    <Compile Include="MyGxFilterLayers.cs" />
+    <Compile Include="MyGxFilterMaps.cs" />
+    <Compile Include="MyGxFilterPersonalGeodatabases.cs" />
+    <Compile Include="MyGxFilterPGDBFeatureClasses.cs" />
+    <Compile Include="MyGxFilterPGDBFeatureDatasets.cs" />
+    <Compile Include="MyGxFilterPGDBTables.cs" />
+    <Compile Include="MyGxFilterPointFeatureClasses.cs" />
+    <Compile Include="MyGxFilterPolygonFeatureClasses.cs" />
+    <Compile Include="MyGxFilterPolylineFeatureClasses.cs" />
+    <Compile Include="MyGxFilterRasterCatalogDatasets.cs" />
+    <Compile Include="MyGxFilterRasterDatasets.cs" />
+    <Compile Include="MyGxFilterRasterDatasets2.cs" />
+    <Compile Include="MyGxFilterRelationshipClasses.cs" />
+    <Compile Include="MyGxFilterRoute.cs" />
+    <Compile Include="MyGxFilterSDEFeatureClasses.cs" />
+    <Compile Include="MyGxFilterSDEFeatureDatasets.cs" />
+    <Compile Include="MyGxFilterSDETables.cs" />
+    <Compile Include="MyGxFilterShapefiles.cs" />
+    <Compile Include="MyGxFilterSpatialReferences.cs" />
+    <Compile Include="MyGxFilterSurfaceDatasets.cs" />
+    <Compile Include="MyGxFilterTables.cs" />
+    <Compile Include="MyGxFilterTablesAndFeatureClasses.cs" />
+    <Compile Include="MyGxFilterTINDatasets.cs" />
+    <Compile Include="MyGxFilterWorkspaces.cs" />
+    <Compile Include="MyRasterFormatGridFilter.cs" />
+    <Compile Include="MyRasterFormatImgFilter.cs" />
+    <Compile Include="MyRasterFormatPGDBFilter.cs" />
+    <Compile Include="MyRasterFormatSDEFilter.cs" />
+    <Compile Include="MyRasterFormatTifFilter.cs" />
+    <Compile Include="ObjectWrap.cs" />
+    <Compile Include="ObjectWrapEx.cs" />
+    <Compile Include="OnObjectAddedEventHandler.cs" />
+    <Compile Include="OnObjectChangedEventHandler.cs" />
+    <Compile Include="OnObjectDeletedEventHandler.cs" />
+    <Compile Include="OnObjectRefreshedEventHandler.cs" />
+    <Compile Include="OnReadCompletedHander.cs" />
+    <Compile Include="OnRefreshAllEventHandler.cs" />
+    <Compile Include="OnSelectionChangedEventHandler.cs" />
+    <Compile Include="OpenFolderDataHelper.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="State.cs" />
+    <Compile Include="UI\AGSDirectoryPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\AGSDirectoryPropertyPage.Designer.cs">
+      <DependentUpon>AGSDirectoryPropertyPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AGSGeneralPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\AGSGeneralPropertyPage.Designer.cs">
+      <DependentUpon>AGSGeneralPropertyPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AGSHostsPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\CatalogComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\CatalogComboBox.Designer.cs">
+      <DependentUpon>CatalogComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CoverageGeneralPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\CoverageTicPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\CoverageTolerancePropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\FieldMatchCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\frmAGSProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmAGSProperty.Designer.cs">
+      <DependentUpon>frmAGSProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmArcGISServerManageProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmArcGISServerProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmArcGISServerUseProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmCoveragePropertySheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmDataLoader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmDatasetUnion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmEvaluator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmHost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmNewArcGISServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmNewArcIMSServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmNewNetworkAttribute.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmNewNetworkDatasetWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmNewServerObject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmOpenFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmServerObjectPropertySheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\KTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\NetworkDirectionGeneralPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\NewNetworkDatasetAttributePropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\NewNetworkDatasetConnectivityPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\NewNetworkDatasetDirectionPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\NewNetworkDatasetFeatureClassSetPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\NewNetworkDatasetHelper.cs" />
+    <Compile Include="UI\NewNetworkDatasetModifyConnectivityPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\NewNetworkDatasetNamePropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\NewNetworkDatasetTurnsPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\SelectedDataLoaderCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\SelectNodeChangedHandler.cs" />
+    <Compile Include="UI\ServerDirectoryPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ServerHostPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ServerLogPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ServerObjectDocumentPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ServerObjectGeneralPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ServerObjectPoolPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ServerObjectProcessManagementPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ServerObjectSummaryPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\SetImportRecordCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\SODocumentPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\SOGeneralPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\SOPoolPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\SOProcessManagementPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\SOSummaryPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VCT\AbsCoConvert.cs" />
+    <Compile Include="VCT\AbsCoFeature.cs" />
+    <Compile Include="VCT\CoAnnotationFeature.cs" />
+    <Compile Include="VCT\CoFeatureFactory.cs" />
+    <Compile Include="VCT\CoFeatureType.cs" />
+    <Compile Include="VCT\CoFieldClass.cs" />
+    <Compile Include="VCT\CoFieldMapper.cs" />
+    <Compile Include="VCT\CoFieldType.cs" />
+    <Compile Include="VCT\CoLayerClass.cs" />
+    <Compile Include="VCT\CoLayerHead.cs" />
+    <Compile Include="VCT\CoLayerMapper.cs" />
+    <Compile Include="VCT\CoLayerType.cs" />
+    <Compile Include="VCT\ConvertHander.cs" />
+    <Compile Include="VCT\CoPointClass.cs" />
+    <Compile Include="VCT\CoPointCollection.cs" />
+    <Compile Include="VCT\CoPointFeature.cs" />
+    <Compile Include="VCT\CoPolygonFeature.cs" />
+    <Compile Include="VCT\CoPolylineFeature.cs" />
+    <Compile Include="VCT\CoRuleClass.cs" />
+    <Compile Include="VCT\CoRuleCollection.cs" />
+    <Compile Include="VCT\CoTopologyRuleType.cs" />
+    <Compile Include="VCT\frmProgressBar1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VCT\GeodatabaseLayerClass.cs" />
+    <Compile Include="VCT\ICoAnnotationFeature.cs" />
+    <Compile Include="VCT\ICoClone.cs" />
+    <Compile Include="VCT\ICoConvert.cs" />
+    <Compile Include="VCT\ICoFeature.cs" />
+    <Compile Include="VCT\ICoField.cs" />
+    <Compile Include="VCT\ICoLayer.cs" />
+    <Compile Include="VCT\ICoLayer2.cs" />
+    <Compile Include="VCT\ICoPoint.cs" />
+    <Compile Include="VCT\ICoPointFeature.cs" />
+    <Compile Include="VCT\ICoPolygonFeature.cs" />
+    <Compile Include="VCT\ICoPolylineFeature.cs" />
+    <Compile Include="VCT\ShapeLayerClass.cs" />
+    <Compile Include="VCT\ShapeLib.cs" />
+    <Compile Include="VCT\ShapeTool.cs" />
+    <Compile Include="VCT\VctFactory.cs" />
+    <Compile Include="VCT\VCT\DataFile.cs" />
+    <Compile Include="VCT\VCT\FeatureOIDMap.cs" />
+    <Compile Include="VCT\VCT\FeatureOIDMapCollection.cs" />
+    <Compile Include="VCT\VCT\FileConfig.cs" />
+    <Compile Include="VCT\VCT\QueueClass.cs" />
+    <Compile Include="VCT\VCT\VctClass.cs" />
+    <Compile Include="VCT\VCT\VctLayerClass.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\AGSDirectoryPropertyPage.resx">
+      <DependentUpon>AGSDirectoryPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\AGSGeneralPropertyPage.resx">
+      <DependentUpon>AGSGeneralPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CatalogComboBox.resx">
+      <DependentUpon>CatalogComboBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmAGSProperty.resx">
+      <DependentUpon>frmAGSProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmArcGISServerManageProperty.resx">
+      <DependentUpon>frmArcGISServerManageProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmArcGISServerProperty.resx">
+      <DependentUpon>frmArcGISServerProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmDatasetUnion.resx">
+      <DependentUpon>frmDatasetUnion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmHost.resx">
+      <DependentUpon>frmHost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmNewArcGISServer.resx">
+      <DependentUpon>frmNewArcGISServer.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpPointLayer.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpPolygonCoverage.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpProjection.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpProperty.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpRaster.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpRasterCatalog.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpRasterDataset.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpRasterLayer.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpRefresh.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpRegionCoverage.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpRelation.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpRoot.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpTable.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpText.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpTin.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpToHigher.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpTopology.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\DiskConnectionError.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\DJStructbmp.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ErrorShapeFile.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Excel.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\FeatureServices.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\GDBFolder.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\GDBServer.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\GDBsUnConnect.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\GeometryAny.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\GeometryServerPause.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\GeometryServerStart.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\GeometryServerStop.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\GISServerFolder.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\GPServerPause.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\GPServerStart.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\GPServerStop.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\MapServerPaused.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\MapServerStarted.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\MapServerStoped.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\NetworkDataset.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\SearchServerPause.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\SearchServerStart.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\SearchServerStop.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ShapeFile.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ShapeFill.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ShapeLine.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ShapePoint.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Word.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AddArcGISServer.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AddArcIMSServer.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AddGDBServer.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AddServerObject.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AddWMSServer.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ArcGISServerConn.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ArcGISServerUnConn.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ArcIMSServerConn.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ArcIMSServerUnConn.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpAddLink.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpAnno.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpAnnotationCoverage.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpCADAnno.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpCadDrawing.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpCADLayers.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpCADMultiPatch.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpCADPoint.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpCADPolygon.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpCADPolyline.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpCopy.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpCoverage.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpCoverageAnnoFeatclass.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpCoverageArcFeatClass.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpCoverageLabelFeatClass.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpCoverageNodeFeatClass.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpCoveragePointFeatClass.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpCoveragePolygonFeatClass.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpCoverageRegionFeatClass.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpCoverageRouteFeatClass.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpCoverageTicFeatClass.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpDataset.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpDBLink.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpDelete.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpDiskConnect.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpError.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpErrorLayer.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpFeature.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpFillFeatureClass.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpFillLayer.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpFolder1.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpFolder2.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpGDBLink1.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpGDBLink2.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpGeometryNet.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpGroupLayer.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpLayer.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpLineCoverage.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpLineFeature.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpLineLayer.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpLinkToFolder.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpMultiPatch.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpMXD.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpPaste.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpPersonGDB.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpPMF.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpPointCoverage.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmpPointFeature.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Yutai.Shared\Yutai.Shared.csproj">
+      <Project>{4A9B3243-2B0A-4E87-9B23-71A58C1F318D}</Project>
+      <Name>Yutai.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

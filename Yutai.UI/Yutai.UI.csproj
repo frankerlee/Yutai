@@ -56,9 +56,32 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.ADF, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86" />
+    <Reference Include="ESRI.ArcGIS.Carto, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.DataSourcesGDB, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.DataSourcesOleDB, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geodatabase, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geometry, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.System, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.SystemUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Syncfusion.Grid.Base, Version=14.1460.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Grid.Grouping.Base, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Grid.Grouping.Windows, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Grid.Windows, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
@@ -66,19 +89,32 @@
     <Reference Include="Syncfusion.Grouping.Base, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Grouping.Windows, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Shared.Base, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Shared.Windows, Version=14.1460.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Tools.Base, Version=14.1460.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Tools.Windows, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompositionRoot.cs" />
+    <Compile Include="Controls\GISDataComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\GISDataComboBox.Designer.cs">
+      <DependentUpon>GISDataComboBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TwoColumnTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -93,6 +129,19 @@
     <Compile Include="Controls\TreeViewBase.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Dialogs\frmExplorerData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmExplorerData.Designer.cs">
+      <DependentUpon>frmExplorerData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frmExportData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\frmExportData.Designer.cs">
+      <DependentUpon>frmExportData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ImageLib.cs" />
     <Compile Include="Docking\DockHelper.cs" />
     <Compile Include="Docking\DockPanel.cs" />
     <Compile Include="Docking\DockPanelCollection.cs" />
@@ -159,6 +208,14 @@
     <Compile Include="Style\SyncfusionStyleService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Yutai.ArcGIS.Common\Yutai.ArcGIS.Common.csproj">
+      <Project>{1938B3F8-8EDE-48F7-9594-EEB1F126E622}</Project>
+      <Name>Yutai.ArcGIS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yutai.Catalog\Yutai.Catalog.csproj">
+      <Project>{A925EC17-5C70-42F6-A82E-9EBA7AA47FE0}</Project>
+      <Name>Yutai.Catalog</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Yutai.Plugins\Yutai.Plugins.csproj">
       <Project>{800F2EE4-47AB-4CD4-934D-A64980D98A23}</Project>
       <Name>Yutai.Plugins</Name>
@@ -186,9 +243,19 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\GISDataComboBox.resx">
+      <DependentUpon>GISDataComboBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmExplorerData.resx">
+      <DependentUpon>frmExplorerData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frmExportData.resx">
+      <DependentUpon>frmExportData.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MapWindowView.resx">
       <DependentUpon>MapWindowView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -203,7 +270,312 @@
   <ItemGroup>
     <None Include="Resources\palette.bmp" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\AddArcGISServer.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddArcIMSServer.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddGDBServer.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddServerObject.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddWMSServer.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ArcGISServerConn.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ArcGISServerUnConn.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ArcIMSServerConn.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ArcIMSServerUnConn.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpAddLink.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpAnno.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpAnnotationCoverage.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpCADAnno.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpCadDrawing.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpCADLayers.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpCADMultiPatch.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpCADPoint.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpCADPolygon.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpCADPolyline.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpCopy.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpCoverage.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpCoverageAnnoFeatclass.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpCoverageArcFeatClass.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpCoverageLabelFeatClass.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpCoverageNodeFeatClass.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpCoveragePointFeatClass.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpCoveragePolygonFeatClass.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpCoverageRegionFeatClass.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpCoverageRouteFeatClass.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpCoverageTicFeatClass.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpDataset.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpDBLink.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpDelete.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpDiskConnect.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpError.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpErrorLayer.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpFeature.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpFillFeatureClass.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpFillLayer.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpFolder1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpFolder2.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpGDBLink1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpGDBLink2.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpGeometryNet.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpGroupLayer.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpLayer.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpLineCoverage.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpLineFeature.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpLineLayer.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpLinkToFolder.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpMultiPatch.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpMXD.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpPaste.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpPersonGDB.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpPMF.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpPointCoverage.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpPointFeature.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpPointLayer.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpPolygonCoverage.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpProjection.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpProperty.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpRaster.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpRasterCatalog.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpRasterDataset.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpRasterLayer.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpRefresh.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpRegionCoverage.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpRelation.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpRoot.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpTable.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpText.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpTin.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpToHigher.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bmpTopology.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DiskConnectionError.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DJStructbmp.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ErrorShapeFile.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Excel.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FeatureServices.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GDBFolder.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GDBServer.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GDBsUnConnect.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GeometryAny.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GeometryServerPause.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GeometryServerStart.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GeometryServerStop.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GISServerFolder.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GPServerPause.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GPServerStart.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GPServerStop.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MapServerPaused.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MapServerStarted.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MapServerStoped.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NetworkDataset.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SearchServerPause.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SearchServerStart.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SearchServerStop.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ShapeFile.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ShapeFill.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ShapeLine.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ShapePoint.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Word.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
