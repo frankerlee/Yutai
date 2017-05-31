@@ -17,8 +17,7 @@
         private Button btnNext;
         private FieldMatchCtrl fieldMatchCtrl_0 = new FieldMatchCtrl();
         private IContainer icontainer_0 = null;
-        [CompilerGenerated]
-        private IDataset idataset_0;
+     
         private int int_0 = 0;
         private Panel panel1;
         private Panel panel2;
@@ -179,16 +178,7 @@
 
         public IDataset Table
         {
-            [CompilerGenerated]
-            get
-            {
-                return this.idataset_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.idataset_0 = value;
-            }
+            get; set;
         }
     }
 }

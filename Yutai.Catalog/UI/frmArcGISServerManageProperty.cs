@@ -23,14 +23,12 @@
         private CheckBox chkUseDefaultFolder;
         private GroupBox groupBox1;
         private IAGSServerConnection iagsserverConnection_0;
-        [CompilerGenerated]
-        private IAGSServerConnectionName iagsserverConnectionName_0;
+        
         private IContainer icontainer_0 = null;
         private IGxObject igxObject_0 = null;
         private IMapDescription imapDescription_0;
         private IMapServer imapServer_0;
-        [CompilerGenerated]
-        private IPropertySet ipropertySet_0;
+       
         private Label label1;
         private Label label4;
         private Label label6;
@@ -40,8 +38,7 @@
         private Button Button1;
         private string string_0;
         private string string_1;
-        [CompilerGenerated]
-        private string string_2;
+      
         private Button txtMUrl;
         private Button txtPaswordMan;
         private Button txtTempFolder;
@@ -424,44 +421,17 @@
 
         public IAGSServerConnectionName AGSServerConnectionName
         {
-            [CompilerGenerated]
-            get
-            {
-                return this.iagsserverConnectionName_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.iagsserverConnectionName_0 = value;
-            }
+            get; set;
         }
 
         public string ConnectionFile
         {
-            [CompilerGenerated]
-            get
-            {
-                return this.string_2;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.string_2 = value;
-            }
+            get; set;
         }
 
         public IPropertySet ConnectionProperties
         {
-            [CompilerGenerated]
-            get
-            {
-                return this.ipropertySet_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.ipropertySet_0 = value;
-            }
+            get; set;
         }
 
         public IGxObject NewObject

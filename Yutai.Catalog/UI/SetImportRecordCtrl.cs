@@ -13,8 +13,7 @@
     {
         private Button btnQueryDialog;
         private IContainer icontainer_0 = null;
-        [CompilerGenerated]
-        private ITable itable_0;
+    
         private TextBox  memoEdit;
         private RadioButton radioButton1;
         private RadioButton radioButton2;
@@ -26,7 +25,8 @@
 
         private void btnQueryDialog_Click(object sender, EventArgs e)
         {
-            //frmAttributeQueryBuilder builder = new frmAttributeQueryBuilder {
+            //frmAttributeQueryBuilder builder = new frmAttributeQueryBuilder
+            //{
             //    Table = this.Table,
             //    WhereCaluse = this.memoEdit.Text
             //};
@@ -105,16 +105,7 @@
 
         public ITable Table
         {
-            [CompilerGenerated]
-            get
-            {
-                return this.itable_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.itable_0 = value;
-            }
+            get; set;
         }
 
         public string Where

@@ -32,8 +32,12 @@ namespace Yutai.Plugins.Identifer.Menu
                 _commands = new List<YutaiCommand>()
                 {
                     new YutaiMenuCommand(RibbonItemType.ToolStrip, "View", "View.Info", "View.Info", "查看要素", "", ""),
-                     new CmdViewIdentifier(_context,_plugin) as YutaiCommand
-                     
+                    new CmdViewIdentifier(_context,_plugin) as YutaiCommand,
+                    new YutaiMenuCommand(RibbonItemType.TabItem, "Query", "Query", "Query", "查询", "", ""),
+                    new YutaiMenuCommand(RibbonItemType.ToolStrip, "Query", "Query.Common", "Query.Common", "查询", "", ""),
+                    new CmdStartQueryBuilder(_context) as YutaiCommand,
+                    new CmdStartQueryLocation(_context) as YutaiCommand
+
                 };
             //}
             return _commands;

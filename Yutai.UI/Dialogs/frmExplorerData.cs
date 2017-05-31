@@ -1026,25 +1026,25 @@ namespace Yutai.UI.Dialogs
                         }
                         else if (tag.FullName == "添加空间数据库连接")
                         {
-                            //frmCreateGDBConnection connection = new frmCreateGDBConnection
-                            //{
-                            //    TopMost = true
-                            //};
-                            //if (connection.ShowDialog() == DialogResult.OK)
-                            //{
-                            //    IGxObject oneObj= new GxDatabase() as IGxObject;
-                            //    IWorkspaceName name2 = new WorkspaceName() as IWorkspaceName;
-                            //    name2.WorkspaceFactoryProgID = "esriDataSourcesGDB.SdeWorkspaceFactory";
-                            //    name2.PathName = connection.ConnectionPath;
-                          
-                            //    (oneObj as IGxDatabase).WorkspaceName = name2;
-                            //    oneObj.Attach(tag.Parent, this._gxCatalog);
-                            //    item = new ListViewItem(new string[] { oneObj.Name, oneObj.Category }, this.GetImageIndex(oneObj))
-                            //    {
-                            //        Tag = oneObj
-                            //    };
-                            //    this.listView1.Items.Add(item);
-                            //}
+                            frmCreateGDBConnection connection = new frmCreateGDBConnection
+                            {
+                                TopMost = true
+                            };
+                            if (connection.ShowDialog() == DialogResult.OK)
+                            {
+                                IGxObject oneObj = new GxDatabase() as IGxObject;
+                                IWorkspaceName name2 = new WorkspaceName() as IWorkspaceName;
+                                name2.WorkspaceFactoryProgID = "esriDataSourcesGDB.SdeWorkspaceFactory";
+                                name2.PathName = connection.ConnectionPath;
+
+                                (oneObj as IGxDatabase).WorkspaceName = name2;
+                                oneObj.Attach(tag.Parent, this._gxCatalog);
+                                item = new ListViewItem(new string[] { oneObj.Name, oneObj.Category }, this.GetImageIndex(oneObj))
+                                {
+                                    Tag = oneObj
+                                };
+                                this.listView1.Items.Add(item);
+                            }
                         }
                     }
                     else

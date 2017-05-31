@@ -1,6 +1,6 @@
 ﻿using Yutai.Shared;
 
-namespace JLK.Catalog
+namespace Yutai.Catalog
 {
     using ESRI.ArcGIS.esriSystem;
     using ESRI.ArcGIS.Geodatabase;
@@ -33,8 +33,6 @@ namespace JLK.Catalog
         private Panel panel1;
         private string string_0 = "";
         private string string_1 = "";
-        [CompilerGenerated]
-        private string string_2;
         private TextBox txtDatabaseInstace;
         private TextBox txtPassword;
         private TextBox txtUser;
@@ -490,19 +488,7 @@ namespace JLK.Catalog
             this.cboDatabase.Items.Clear();
         }
 
-        public string ConnectionPath
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.string_2;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.string_2 = value;
-            }
-        }
+        public string ConnectionPath { get; set; }
     }
 }
 

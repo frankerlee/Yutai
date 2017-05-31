@@ -1,6 +1,4 @@
 ﻿using ESRI.ArcGIS.DataSourcesOleDB;
-using JLK.Catalog;
-
 
 namespace Yutai.Catalog.UI
 {

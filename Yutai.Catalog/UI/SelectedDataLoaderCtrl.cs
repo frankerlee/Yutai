@@ -17,8 +17,7 @@
         private Button btnDelete;
         private Button btnSelectInputFeatures;
         private IContainer icontainer_0 = null;
-        [CompilerGenerated]
-        private IDataset idataset_0;
+      
         private Label label1;
         private Label label2;
         private ListBox SourceDatalistBox;
@@ -267,16 +266,7 @@
 
         public IDataset Table
         {
-            [CompilerGenerated]
-            get
-            {
-                return this.idataset_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.idataset_0 = value;
-            }
+            get; set;
         }
     }
 }

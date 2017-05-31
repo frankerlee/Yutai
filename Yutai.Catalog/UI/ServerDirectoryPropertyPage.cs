@@ -18,8 +18,7 @@
         private ComboBox cboDirectoryType;
         private ColumnHeader columnHeader_0;
         private ColumnHeader columnHeader_1;
-        [CompilerGenerated]
-        private IAGSServerConnectionAdmin iagsserverConnectionAdmin_0;
+       
         private IContainer icontainer_0 = null;
         private Label label4;
         private ListView lstDir;
@@ -159,16 +158,7 @@
 
         public IAGSServerConnectionAdmin AGSServerConnectionAdmin
         {
-            [CompilerGenerated]
-            get
-            {
-                return this.iagsserverConnectionAdmin_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.iagsserverConnectionAdmin_0 = value;
-            }
+            get; set;
         }
     }
 }

@@ -33,4 +33,11 @@
         Polygon,
         GroupLayer
     }
+
+    public enum QueryTargerEnum
+    {
+        View2D,
+        View3D
+    }
+
 }

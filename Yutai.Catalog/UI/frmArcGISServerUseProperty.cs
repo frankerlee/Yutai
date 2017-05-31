@@ -21,22 +21,19 @@
         private CheckBox chkSaveUserNameAndPsw;
         private GroupBox groupBox2;
         private IAGSServerConnection iagsserverConnection_0;
-        [CompilerGenerated]
-        private IAGSServerConnectionName iagsserverConnectionName_0;
+      
         private IContainer icontainer_0 = null;
         private IGxObject igxObject_0 = null;
         private IMapDescription imapDescription_0;
         private IMapServer imapServer_0;
-        [CompilerGenerated]
-        private IPropertySet ipropertySet_0;
+      
         private Label label2;
         private Label label3;
         private Label label5;
         private Label lblServerInfo;
         private string string_0;
         private string string_1;
-        [CompilerGenerated]
-        private string string_2;
+     
         private Button txtPassword;
         private Button txtServer;
         private Button txtUser;
@@ -321,44 +318,17 @@
 
         public IAGSServerConnectionName AGSServerConnectionName
         {
-            [CompilerGenerated]
-            get
-            {
-                return this.iagsserverConnectionName_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.iagsserverConnectionName_0 = value;
-            }
+            get; set;
         }
 
         public string ConnectionFile
         {
-            [CompilerGenerated]
-            get
-            {
-                return this.string_2;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.string_2 = value;
-            }
+            get; set;
         }
 
         public IPropertySet ConnectionProperties
         {
-            [CompilerGenerated]
-            get
-            {
-                return this.ipropertySet_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.ipropertySet_0 = value;
-            }
+            get; set;
         }
 
         public IGxObject NewObject

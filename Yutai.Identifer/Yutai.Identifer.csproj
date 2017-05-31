@@ -34,6 +34,10 @@
     <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.3DAnalyst, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.ADF, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86" />
     <Reference Include="ESRI.ArcGIS.ADF.Local, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
     <Reference Include="ESRI.ArcGIS.Carto, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>False</EmbedInteropTypes>
@@ -54,6 +58,10 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="ESRI.ArcGIS.Geometry, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geoprocessor, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
+    <Reference Include="ESRI.ArcGIS.GlobeCore, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="ESRI.ArcGIS.System, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
@@ -86,10 +94,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\CmdStartQueryBuilder.cs" />
     <Compile Include="Commands\CmdViewIdentifier.cs" />
+    <Compile Include="Common\LayerObject.cs" />
     <Compile Include="CompositionRoot.cs" />
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="Enums\IdentifierModeConverter.cs" />
+    <Compile Include="Helpers\CommonHelper.cs" />
     <Compile Include="Helpers\IdentifyHelper.cs" />
     <Compile Include="IdentifierPlugin.cs" />
     <Compile Include="Menu\DockPanelService.cs" />
@@ -101,6 +112,36 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Query\frmAttributeQueryBuilder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Query\frmAttributeQueryBuilder.Designer.cs">
+      <DependentUpon>frmAttributeQueryBuilder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Query\frmSelectByLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Query\frmSelectByLocation.Designer.cs">
+      <DependentUpon>frmSelectByLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Query\UcAttributeQuery.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Query\UcAttributeQuery.Designer.cs">
+      <DependentUpon>UcAttributeQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Query\UcAttributeQueryBulider.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Query\UcAttributeQueryBulider.Designer.cs">
+      <DependentUpon>UcAttributeQueryBulider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Query\UcSelectByLocation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Query\UcSelectByLocation.Designer.cs">
+      <DependentUpon>UcSelectByLocation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\IIdentifierView.cs" />
     <Compile Include="Views\IdentifierDockPanel.cs">
       <SubType>UserControl</SubType>
@@ -110,7 +151,9 @@
     </Compile>
     <Compile Include="Views\IdentifierPresenter.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\QueryAttribute.png" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Yutai.Api\Yutai.Api.csproj">
       <Project>{C0A8949E-D665-4044-8950-1A71C9B2D081}</Project>
@@ -137,6 +180,18 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Query\frmAttributeQueryBuilder.resx">
+      <DependentUpon>frmAttributeQueryBuilder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Query\frmSelectByLocation.resx">
+      <DependentUpon>frmSelectByLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Query\UcAttributeQueryBulider.resx">
+      <DependentUpon>UcAttributeQueryBulider.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Query\UcSelectByLocation.resx">
+      <DependentUpon>UcSelectByLocation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\IdentifierDockPanel.resx">
       <DependentUpon>IdentifierDockPanel.cs</DependentUpon>
@@ -180,6 +235,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Identify.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\QueryLocation.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

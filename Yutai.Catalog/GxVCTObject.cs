@@ -15,21 +15,11 @@ public class GxVCTObject : IGxObject, IGxObjectContainer, IGxVCTObject, IGxFile,
     // Fields
     private IGxCatalog igxCatalog_0 = null;
     private IGxObject igxObject_0 = null;
-    [CompilerGenerated]
-    private IGxObject igxObject_1;
     private IGxObjectArray igxObjectArray_0 = new GxObjectArray();
     private IWorkspace iworkspace_0 = null;
     internal VctFactory m_ConvertFactory;
     internal IWorkspace objws = null;
     private string string_0 = "";
-    [CompilerGenerated]
-    private string string_1;
-    [CompilerGenerated]
-    private string string_2;
-    [CompilerGenerated]
-    private string string_3;
-    [CompilerGenerated]
-    private string string_4;
     internal string TemplatePath = "";
 
     // Methods
@@ -178,32 +168,11 @@ public class GxVCTObject : IGxObject, IGxObjectContainer, IGxVCTObject, IGxFile,
         }
     }
 
-    public string BaseName
-    {
-        [CompilerGenerated]
-        get
-        {
-            return this.string_3;
-        }
-        [CompilerGenerated]
-        protected set
-        {
-            this.string_3 = value;
-        }
-    }
+    public string BaseName { get; set; }
 
     public string Category
     {
-        [CompilerGenerated]
-        get
-        {
-            return this.string_4;
-        }
-        [CompilerGenerated]
-        protected set
-        {
-            this.string_4 = value;
-        }
+        get; set;
     }
 
     public IEnumGxObject Children
@@ -228,16 +197,7 @@ public class GxVCTObject : IGxObject, IGxObjectContainer, IGxVCTObject, IGxFile,
 
     public string FullName
     {
-        [CompilerGenerated]
-        get
-        {
-            return this.string_2;
-        }
-        [CompilerGenerated]
-        protected set
-        {
-            this.string_2 = value;
-        }
+        get; set;
     }
 
     public bool HasChildren
@@ -282,30 +242,12 @@ public class GxVCTObject : IGxObject, IGxObjectContainer, IGxVCTObject, IGxFile,
 
     public string Name
     {
-        [CompilerGenerated]
-        get
-        {
-            return this.string_1;
-        }
-        [CompilerGenerated]
-        protected set
-        {
-            this.string_1 = value;
-        }
+        get; set;
     }
 
     public IGxObject Parent
     {
-        [CompilerGenerated]
-        get
-        {
-            return this.igxObject_1;
-        }
-        [CompilerGenerated]
-        protected set
-        {
-            this.igxObject_1 = value;
-        }
+        get; set;
     }
 
     public string Path

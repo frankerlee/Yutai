@@ -1,4 +1,4 @@
-﻿namespace JLK.Catalog
+﻿namespace Yutai.Catalog
 {
     using ESRI.ArcGIS.Geometry;
     using System;
@@ -12,8 +12,6 @@
         private Button button1;
         private Button button2;
         private ComboBox comboBox1;
-        [CompilerGenerated]
-        private esriGeometryType esriGeometryType_0;
         private IContainer icontainer_0 = null;
         private Label label1;
 
@@ -110,19 +108,7 @@
             base.PerformLayout();
         }
 
-        public esriGeometryType ShapeType
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.esriGeometryType_0;
-            }
-            [CompilerGenerated]
-            protected set
-            {
-                this.esriGeometryType_0 = value;
-            }
-        }
+        public esriGeometryType ShapeType { get; set; }
     }
 }
 
