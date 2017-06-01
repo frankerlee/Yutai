@@ -16,5 +16,14 @@ namespace Yutai.Plugins.Interfaces
         bool Checked { get; }
         bool Enabled { get; }
         PluginIdentity PluginIdentity { get; }
+     
+        TextImageRelationYT TextImageRelationYT { get; set; }
+        DisplayStyleYT DisplayStyleYT { get; set; }
+
+        ToolStripItemImageScalingYT ToolStripItemImageScalingYT { get; set; }
+
+        ToolStripLayoutStyleYT ToolStripLayoutStyleYT { get; set; }
+
+        int PanelRowCount { get; set; }
     }
 }

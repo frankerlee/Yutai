@@ -33,8 +33,11 @@ namespace Yutai.Menu
                 {
                     new YutaiMenuCommand(RibbonItemType.TabItem, "File", "File", "File", "文件", "", ""),
                     new YutaiMenuCommand(RibbonItemType.ToolStrip, "File", "File.Document", "File.Document", "项目", "",
-                        ""),
+                        "") ,
+                    new CmdNewYutaiDoc(_context),
                     new CmdOpenYutaiDoc(_context),
+                    new YutaiMenuCommand(RibbonItemType.Panel, "File", "File.Document.Sub", "File.Document.Sub", "", "",
+                        "") {PanelRowCount = 3,ToolStripLayoutStyleYT =  ToolStripLayoutStyleYT.Flow},
                     new CmdSaveYutaiDoc(_context),
                     new CmdCloseYutaiDoc(_context),
                     new YutaiMenuCommand(RibbonItemType.ToolStrip, "File", "File.Mxd", "File.Mxd", "二维文档", "",

@@ -42,7 +42,7 @@ namespace Yutai.Plugins.Identifer.Views
             if (context == null) throw new ArgumentNullException("context");
             InitializeComponent();
             _context = context;
-         
+            TabPosition = 3;
             layerFilterSet = new List<LayerFilterProperties>();
             identifiedResultsList = new List<LayerIdentifiedResult>();
             InitializeLayerFilters(null);

@@ -36,7 +36,7 @@ namespace Yutai.Controls
             if (context == null) throw new ArgumentNullException("context");
             _context = context;
             InitializeComponent();
-            
+            TabPosition = 1;
             //axMapControl1.MouseDown+= AxMapControl1OnMouseDown;
         }
 

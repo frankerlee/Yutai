@@ -24,7 +24,7 @@ namespace Yutai.Helper
             var panels = context.DockPanels;
             panels.Lock();
 
-           InitMapLegend(context);
+            InitMapLegend(context);
             InitOverview(context);
 
             /* InitLocator(context);
@@ -73,6 +73,7 @@ namespace Yutai.Helper
             var legendControl = context.GetDockPanelObject(DefaultDockPanel.MapLegend);
             var legend = context.DockPanels.Add(legendControl, DockPanelKeys.MapLegend, PluginIdentity.Default);
             legend.Caption = "二维图例";
+            legend.TabPosition = 1;
             legend.DockTo(null, DockPanelState.Left, PanelSize);
             legend.SetIcon(Resources.ico_legend);
         }
@@ -82,7 +83,8 @@ namespace Yutai.Helper
             var overviewControl = context.GetDockPanelObject(DefaultDockPanel.Overview);
             var overview = context.DockPanels.Add(overviewControl, DockPanelKeys.Overview, PluginIdentity.Default);
             overview.Caption = "鹰眼视图";
-            overview.DockTo(null, DockPanelState.Left, PanelSize);
+            overview.TabPosition = 2;
+            overview.DockTo(context.DockPanels.MapLegend, DockPanelState.Bottom, PanelSize);
             overview.SetIcon(Resources.ico_tasks);
         }
 

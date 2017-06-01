@@ -33,7 +33,8 @@ namespace Yutai.UI.Controls
                 return Visible;
             }
         }
-
+        public int TabPosition { get; set; }
+       
         public virtual void SetFocus()
         {
             Focus();

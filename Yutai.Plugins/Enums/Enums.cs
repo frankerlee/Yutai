@@ -6,6 +6,36 @@ using System.Threading.Tasks;
 
 namespace Yutai.Plugins.Enums
 {
+    public enum TextImageRelationYT
+    {
+        ImageAboveText = 1,
+        ImageBeforeText = 4,
+        Overlay = 0,
+        TextAboveImage = 2,
+        TextBeforeImage = 8
+    }
+    public enum DisplayStyleYT
+    {
+        None,
+        Text,
+        Image,
+        ImageAndText
+    }
+
+    public enum ToolStripItemImageScalingYT
+    {
+        None,
+        SizeToFit
+    }
+
+    public enum ToolStripLayoutStyleYT
+    {
+        StackWithOverflow,
+        HorizontalStackWithOverflow,
+        VerticalStackWithOverflow,
+        Flow,
+        Table
+    }
     public enum RibbonItemType
     {
         TabItem = 0,

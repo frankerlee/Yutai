@@ -85,6 +85,7 @@ namespace Yutai.Views
 
                 SplashView.Instance.ShowStatus("Loading plugins");
                  appContext.InitPlugins(configService); // must be called after docking is initialized
+                
 
                 // this will display progress updates and debug window
                 // file based-logger is already working

@@ -22,6 +22,11 @@ namespace Yutai.UI.Menu.Ribbon
         private bool _checked;
         private bool _enabled;
         private PluginIdentity _pluginIdentity;
+        private TextImageRelationYT _textImageRelationYt;
+        private DisplayStyleYT _displayStyleYt;
+        private ToolStripItemImageScalingYT _toolStripItemImageScalingYt;
+        private ToolStripLayoutStyleYT _toolStripLayoutStyleYt;
+        private int _panelRowCount;
 
         public RibbonItem(YutaiCommand command)
         {
@@ -86,6 +91,36 @@ namespace Yutai.UI.Menu.Ribbon
         public PluginIdentity PluginIdentity
         {
             get { return _pluginIdentity; }
+        }
+
+        public TextImageRelationYT TextImageRelationYT
+        {
+            get { return _textImageRelationYt; }
+            set { _textImageRelationYt = value; }
+        }
+
+        public DisplayStyleYT DisplayStyleYT
+        {
+            get { return _displayStyleYt; }
+            set { _displayStyleYt = value; }
+        }
+
+        public ToolStripItemImageScalingYT ToolStripItemImageScalingYT
+        {
+            get { return _toolStripItemImageScalingYt; }
+            set { _toolStripItemImageScalingYt = value; }
+        }
+
+        public ToolStripLayoutStyleYT ToolStripLayoutStyleYT
+        {
+            get { return _toolStripLayoutStyleYt; }
+            set { _toolStripLayoutStyleYt = value; }
+        }
+
+        public int PanelRowCount
+        {
+            get { return _panelRowCount; }
+            set { _panelRowCount = value; }
         }
     }
 }

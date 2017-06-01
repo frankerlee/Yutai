@@ -33,6 +33,7 @@ namespace Yutai.Plugins.Locator.Views
             if (context == null) throw new ArgumentNullException("context");
             _context = context;
             InitializeComponent();
+            TabPosition = 4;
             toolZoomToShape.Tag = 0;
             toolZoomToShape.Click += (s, e) => { toolZoomToShape.Checked = !toolZoomToShape.Checked; };
             comboBoxAdv1.SelectedIndexChanged += ComboBoxAdv1_SelectedIndexChanged;

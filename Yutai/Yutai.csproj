@@ -532,10 +532,19 @@
     <EmbeddedResource Include="Resource\Cursor\ZoomOut.cur" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\database_save.png" />
+    <None Include="Resources\database_delete.png" />
+    <None Include="Resources\add_data.png" />
     <Content Include="Resources\icon_maplegend.png" />
     <Content Include="Resources\icon_overview.png" />
     <Content Include="Resources\icon_zoom_in_fixed.bmp" />
     <Content Include="Resources\icon_zoom_out_fixed.bmp" />
+    <None Include="Resources\save_16.png" />
+    <None Include="Resources\img_folder_open321.png" />
+    <None Include="Resources\NewIcons\SaveProject.png" />
+    <None Include="Resources\NewIcons\OpenProject.png" />
+    <None Include="Resources\NewIcons\NewProject.png" />
+    <None Include="Resources\NewIcons\CloseProject.png" />
     <EmbeddedResource Include="Resource\Cursor\Measure.cur" />
     <EmbeddedResource Include="Resource\Cursor\Hand.cur" />
     <EmbeddedResource Include="Resource\Cursor\MoveHand.cur" />

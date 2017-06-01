@@ -17,8 +17,6 @@ namespace Yutai.Plugins.Concrete
     //YutaiCommand将替换掉MenuCommand,以便实现命令的调用
     public abstract class YutaiCommand : ICommand,IRibbonItem
     {
-       
-        
         protected bool m_enabled = true;
         private IntPtr m_hBitmap;
         protected System.Drawing.Bitmap m_bitmap;
@@ -33,9 +31,45 @@ namespace Yutai.Plugins.Concrete
         protected IAppContext _context;
         protected string _key;
         protected RibbonItemType _itemType;
+        private TextImageRelationYT _textImageRelationYt;
+        private DisplayStyleYT _displayStyleYt;
+        private ToolStripItemImageScalingYT _toolStripItemImageScalingYt;
+        private ToolStripLayoutStyleYT _toolStripLayoutStyleYt;
+        private int _panelRowCount;
 
-        public Keys ShortcutKeys { get; set; }
+        public  Keys ShortcutKeys { get; set; }
         public PluginIdentity PluginIdentity { get; internal set; }
+
+        public TextImageRelationYT TextImageRelationYT
+        {
+            get { return _textImageRelationYt; }
+            set { _textImageRelationYt = value; }
+        }
+
+        public DisplayStyleYT DisplayStyleYT
+        {
+            get { return _displayStyleYt; }
+            set { _displayStyleYt = value; }
+        }
+
+        public ToolStripItemImageScalingYT ToolStripItemImageScalingYT
+        {
+            get { return _toolStripItemImageScalingYt; }
+            set { _toolStripItemImageScalingYt = value; }
+        }
+
+        public ToolStripLayoutStyleYT ToolStripLayoutStyleYT
+        {
+            get { return _toolStripLayoutStyleYt; }
+            set { _toolStripLayoutStyleYt = value; }
+        }
+
+        public int PanelRowCount
+        {
+            get { return _panelRowCount; }
+            set { _panelRowCount = value; }
+        }
+
 
         public virtual string Message
         {
@@ -131,6 +165,12 @@ namespace Yutai.Plugins.Concrete
 
         protected YutaiCommand()
         {
+            _itemType = RibbonItemType.Tool;
+            _textImageRelationYt= TextImageRelationYT.ImageAboveText;
+            _displayStyleYt= DisplayStyleYT.ImageAndText;
+            _toolStripItemImageScalingYt= ToolStripItemImageScalingYT.None;
+            ToolStripLayoutStyleYT= ToolStripLayoutStyleYT.Flow;
+            _panelRowCount = 1;
         }
 
         public void InitType()
@@ -151,13 +191,20 @@ namespace Yutai.Plugins.Concrete
         }
 
        protected YutaiCommand(string category, string key, string name, string caption, string tooltip, string message)
-        {
+       {
+          
             this.m_name = name;
             this.m_message = message;
             this.m_caption = caption;
             this.m_category = category;
             this.m_toolTip = tooltip;
             this._key = key;
+            _itemType = RibbonItemType.Tool;
+            _textImageRelationYt = TextImageRelationYT.ImageAboveText;
+            _displayStyleYt = DisplayStyleYT.ImageAndText;
+            _toolStripItemImageScalingYt = ToolStripItemImageScalingYT.None;
+            ToolStripLayoutStyleYT = ToolStripLayoutStyleYT.Flow;
+            _panelRowCount = 1;
         }
 
         protected  YutaiCommand(RibbonItemType itemType,string category, string key, string name, string caption, string tooltip, string message)
@@ -168,6 +215,12 @@ namespace Yutai.Plugins.Concrete
             this.m_category = category;
             this.m_toolTip = tooltip;
             this._key = key;
+            
+            _textImageRelationYt = TextImageRelationYT.ImageAboveText;
+            _displayStyleYt = DisplayStyleYT.ImageAndText;
+            _toolStripItemImageScalingYt = ToolStripItemImageScalingYT.None;
+            ToolStripLayoutStyleYT = ToolStripLayoutStyleYT.Flow;
+            _panelRowCount = 1;
             this._itemType = itemType;
         }
 
@@ -183,6 +236,12 @@ namespace Yutai.Plugins.Concrete
             this.m_toolTip = toolTip;
             this.m_helpID = helpContextId;
             this.m_helpFile = helpFile;
+            _textImageRelationYt = TextImageRelationYT.ImageAboveText;
+            _displayStyleYt = DisplayStyleYT.ImageAndText;
+            _toolStripItemImageScalingYt = ToolStripItemImageScalingYT.None;
+            ToolStripLayoutStyleYT = ToolStripLayoutStyleYT.Flow;
+            _panelRowCount = 1;
+            this._itemType = itemType;
         }
 
         protected YutaiCommand( System.Drawing.Bitmap bitmap, string caption, string category, int helpContextId, string helpFile, string message, string name, string toolTip)
@@ -196,6 +255,12 @@ namespace Yutai.Plugins.Concrete
             this.m_toolTip = toolTip;
             this.m_helpID = helpContextId;
             this.m_helpFile = helpFile;
+            _textImageRelationYt = TextImageRelationYT.ImageAboveText;
+            _displayStyleYt = DisplayStyleYT.ImageAndText;
+            _toolStripItemImageScalingYt = ToolStripItemImageScalingYT.None;
+            ToolStripLayoutStyleYT = ToolStripLayoutStyleYT.Flow;
+            _panelRowCount = 1;
+            this._itemType = RibbonItemType.Tool;
         }
 
         

@@ -19,13 +19,15 @@ namespace Yutai.Plugins.Identifer.Menu
             panels.Lock();
             var panel = panels.Add(presenter.GetInternalObject(), Yutai.UI.Docking.DockPanelKeys.Identifier, plugin.Identity);
             panel.Caption = "信息查看器";
+            panel.TabPosition = 4;
             panel.SetIcon(Resources.ico_identify);
 
-            var preview = panels.Preview;
-            if (preview != null && preview.Visible)
-            {
-                panel.DockTo(preview, DockPanelState.Tabbed, 150);
-            }
+            //var mapLegend = panels.Preview;
+            //if (preview != null && preview.Visible)
+            //{
+            //    panel.DockTo(preview, DockPanelState.Tabbed, 150);
+            //}
+            panel.DockTo(null, DockPanelState.Right, 150);
 
             panels.Unlock();
         }

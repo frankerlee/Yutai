@@ -28,14 +28,15 @@ namespace Yutai.Commands.Document
         public override void OnCreate(object hook)
         {
             _context = hook as IAppContext;
-            base.m_caption = "保存项目";
+            base.m_caption = "保存";
             base.m_category = "Document";
-            base.m_bitmap = Properties.Resources.icon_save;
-            base.m_name = "File.Document.SaveProject";
-            base._key = "File.Document.SaveProject";
+            base.m_bitmap = Properties.Resources.yt_project_save;
+            base.m_name = "File.Document.Sub.SaveProject";
+            base._key = "File.Document.Sub.SaveProject";
             base.m_toolTip = "保存项目";
             base.m_checked = false;
             base.m_enabled = true;
+            base.TextImageRelationYT = TextImageRelationYT.ImageBeforeText;
             base._itemType = RibbonItemType.NormalItem;
         }
     }

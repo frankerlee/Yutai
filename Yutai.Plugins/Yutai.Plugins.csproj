@@ -113,6 +113,7 @@
     <Compile Include="CompositionRoot.cs" />
     <Compile Include="Concrete\BitmapConverter.cs" />
     <Compile Include="Concrete\CommandProviderBase.cs" />
+    <Compile Include="Concrete\RibbonTabItem.cs" />
     <Compile Include="Concrete\YutaiCommand.cs" />
     <Compile Include="Concrete\YutaiMenuCommand.cs" />
     <Compile Include="Concrete\YutaiTool.cs" />

@@ -43,12 +43,55 @@ namespace Yutai.Commands.Document
         public override void OnCreate(object hook)
         {
             _context = hook as IAppContext;
-            base.m_caption = "打开项目";
+            base.m_caption = "打开";
             base.m_category = "Document";
-            base.m_bitmap = Properties.Resources.icon_project_open;
+            base.m_bitmap = Properties.Resources.yt_project_open;
             base.m_name = "File.Document.OpenProject";
             base._key = "File.Document.OpenProject";
             base.m_toolTip = "打开项目";
+            base.m_checked = false;
+            base.m_enabled = true;
+            base._itemType = RibbonItemType.NormalItem;
+        }
+    }
+
+    public class CmdNewYutaiDoc : YutaiCommand
+    {
+        private IProjectService _projectService;
+        public CmdNewYutaiDoc(IAppContext context)
+        {
+            OnCreate(context);
+            _projectService = context.Project as IProjectService;
+        }
+
+        public override void OnClick()
+        {
+            //_projectService.Open();
+            //OpenFileDialog dialog = new OpenFileDialog();
+            //dialog.Title = "打开项目";
+            //dialog.Filter = "项目文档(*.yxd)|*.yxd";
+            //dialog.Multiselect = false;
+            //dialog.CheckFileExists = true;
+            //DialogResult result = dialog.ShowDialog();
+            //if (result != DialogResult.OK) return;
+            //string fileName = dialog.FileName;
+            //_context.SceneControl.LoadSxFile(fileName);
+        }
+
+        public override void OnClick(object sender, EventArgs args)
+        {
+            OnClick();
+        }
+
+        public override void OnCreate(object hook)
+        {
+            _context = hook as IAppContext;
+            base.m_caption = "新建";
+            base.m_category = "Document";
+            base.m_bitmap = Properties.Resources.yt_project_new;
+            base.m_name = "File.Document.NewProject";
+            base._key = "File.Document.NewProject";
+            base.m_toolTip = "新建项目";
             base.m_checked = false;
             base.m_enabled = true;
             base._itemType = RibbonItemType.NormalItem;

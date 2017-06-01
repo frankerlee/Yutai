@@ -34,8 +34,8 @@ namespace Yutai.Controls
             if (context == null) throw new ArgumentNullException("context");
             _context = context;
             InitializeComponent();
-
             InitContextMenu();
+            TabPosition = 0;
             /* legendControl1.LayerMouseUp += LegendLayerMouseUp;
              legendControl1.GroupMouseUp += LegendGroupMouseUp;*/
             axTOCControl1.OnMouseDown+= AxTocControl1OnOnMouseDown;

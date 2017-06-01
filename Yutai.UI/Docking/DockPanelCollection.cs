@@ -9,6 +9,7 @@ using Yutai.Plugins.Events;
 using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Services;
 using Yutai.Shared;
+using Yutai.UI.Controls;
 using Yutai.UI.Style;
 
 namespace Yutai.UI.Docking
@@ -159,11 +160,13 @@ namespace Yutai.UI.Docking
             control.Name = key;     // to save / restore layout each dock panel must have a key
 
             _dockingManager.SetEnableDocking(control, true);
+          
 
             _dict.Add(control, new DockPanelInfo(identity, key));
 
             _styleService.ApplyStyle(control);
 
+            
             return GetDockPanel(control);
         }
 

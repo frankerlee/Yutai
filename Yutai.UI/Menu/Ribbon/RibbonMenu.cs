@@ -6,6 +6,7 @@ using Yutai.Plugins;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
+using RibbonTabItem = Syncfusion.Windows.Forms.Tools.RibbonTabItem;
 
 namespace Yutai.UI.Menu.Ribbon
 {
@@ -47,6 +48,10 @@ namespace Yutai.UI.Menu.Ribbon
             {
                 AddToolStrip((IRibbonItem)command);
             }
+            if (command.ItemType == RibbonItemType.Panel)
+            {
+                AddPanel((IRibbonItem)command);
+            }
             if (command.ItemType == RibbonItemType.NormalItem)
             {
                 AddButton((IRibbonItem) command);
@@ -63,7 +68,7 @@ namespace Yutai.UI.Menu.Ribbon
         private void AddButton(IRibbonItem item)
         {
             RibbonItemType parentType;
-            object control = FindParentObject(item.Name, out parentType);
+            object control = FindParentObject(item.Key, out parentType);
             if (control == null) return;
 
             ToolStripButton button=new ToolStripButton(item.Caption,item.Image)
@@ -73,22 +78,29 @@ namespace Yutai.UI.Menu.Ribbon
                 ToolTipText = item.Tooltip
                
             };
-           // button.Image = item.Image;
-            button.DisplayStyle= ToolStripItemDisplayStyle.ImageAndText;
-            button.TextImageRelation= TextImageRelation.ImageAboveText;
-            //button.Click +=PluginBroadcaster.Instance.FireItemClicked;
+           
+            button.DisplayStyle =(ToolStripItemDisplayStyle)((int) item.DisplayStyleYT);
+            button.TextImageRelation=(TextImageRelation) item.TextImageRelationYT;
+            button.ImageScaling =(ToolStripItemImageScaling) item.ToolStripItemImageScalingYT;
+            
             if (item is YutaiCommand)
             {
                 button.Click += ((YutaiCommand) item).OnClick;
             }
             
-            if (parentType == RibbonItemType.ToolStrip)
+            if (control is ToolStripEx)
             {
                 ToolStripEx ex = (ToolStripEx) control;
                 ex.Items.Add(button);
                 ex.Update();
-
             }
+            else if (control is ToolStripPanelItem)
+            {
+                ToolStripPanelItem ex = (ToolStripPanelItem)control;
+                
+                ex.Items.Add(button);
+            }
+            
         }
         private void AddToolStrip(IRibbonItem item)
         {
@@ -104,6 +116,36 @@ namespace Yutai.UI.Menu.Ribbon
                 }
             }
           
+        }
+
+        private void AddPanel(IRibbonItem item)
+        {
+            string[] names = item.Name.Split('.');
+            
+
+            foreach (ToolStripTabItem tabItem in _ribbonManager.Header.MainItems)
+            {
+                if (tabItem.Name == names[0])
+                {
+                    foreach (Control panelControl in tabItem.Panel.Controls)
+                    {
+                        if (panelControl.Name == names[0] + "." + names[1])
+                        {
+                            ToolStripEx toolEx = (ToolStripEx) panelControl;
+                            ToolStripPanelItem panel=new ToolStripPanelItem()
+                            {
+                                Name = names[0]+"."+ names[1] +"."+names[2],
+                                RowCount = item.PanelRowCount,
+                                LayoutStyle = (ToolStripLayoutStyle)item.ToolStripLayoutStyleYT
+                            };
+                            toolEx.Items.Add(panel);
+                            return;
+                        }
+                    }
+                    
+                }
+            }
+
         }
 
         private void AddTabItem(IRibbonItem item)
@@ -124,6 +166,7 @@ namespace Yutai.UI.Menu.Ribbon
             }
         }
 
+      
         private object FindParentObject(string nameStr,out RibbonItemType itemType)
         {
             string[] names = nameStr.Split('.');
@@ -145,13 +188,14 @@ namespace Yutai.UI.Menu.Ribbon
                             {
                                 if (names.Length == 3)
                                 {
-                                    itemType=RibbonItemType.ToolStrip;
+                                    itemType= RibbonItemType.ToolStrip;
                                     return oneControl;
                                 }
-                                foreach (Control oneControlControl in oneControl.Controls)
+                                foreach (ToolStripItem oneControlControl in oneControl.Items)
                                 {
-                                    if (oneControlControl.Name == names[2])
+                                    if (oneControlControl.Name == names[0] + "." + names[1]+"."+names[2])
                                     {
+                                    itemType= RibbonItemType.Panel;
                                         return oneControlControl;
                                     }
                                 }

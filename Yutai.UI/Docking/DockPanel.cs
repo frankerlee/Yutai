@@ -54,6 +54,8 @@ namespace Yutai.UI.Docking
 
             var ctrl = parent != null ? parent.Control : _parent;
             _dockingManager.DockControl(_control, ctrl, DockHelper.MapWindowToSyncfusion(state), size);
+            if (ctrl is DockPanelControlBase)
+                _dockingManager.SetTabPosition(ctrl, ((DockPanelControlBase)ctrl).TabPosition);
         }
 
         public void DockTo(DockPanelState state, int size)

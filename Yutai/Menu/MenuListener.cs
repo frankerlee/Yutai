@@ -96,7 +96,7 @@ namespace Yutai.Menu
 
         private void ItemClicked(object sender, EventArgs e)
         {
-           
+           MessageService.Current.Info("Item Click "+sender.GetType().FullName);
         }
 
         private void MenuItemClicked(object sender, MenuItemEventArgs e)
