@@ -14,7 +14,7 @@ using Yutai.Shared;
 
 namespace Yutai.Plugins.Concrete
 {
-     [DataContract(Name = "Settings")]
+    [DataContract(Name = "Settings")]
     public class AppConfig
     {
         private List<Guid> _applicationPlugins;
@@ -45,7 +45,8 @@ namespace Yutai.Plugins.Concrete
                 return new List<Guid>
                 {
                     new Guid("e7598649-d49b-45fa-b020-57e2dd777337") ,//信息查看器
-                    new Guid("2b81c89a-ee45-4276-9dc1-72bbbf07f53f")//定位器
+                    new Guid("2b81c89a-ee45-4276-9dc1-72bbbf07f53f"),//定位器
+                    new Guid("01f8e32a-5837-431f-9c1b-5d0f195fb93e"),// 书签管理
                 };
                 return new List<Guid> { new Guid("7B9DF651-4B8B-4AA8-A4A9-C1463A35DAC7"), // Symbology
                                         new Guid("F24E7086-1762-4A7C-8403-D1169309CBC6"), // Repository
@@ -177,136 +178,136 @@ namespace Yutai.Plugins.Concrete
         public int LocatorMaxCount { get; set; }
         private void SetDefaults()
         {
-           Logger.Current.Trace("开始设置配置默认值");
+            Logger.Current.Trace("开始设置配置默认值");
             LocatorMaxCount = 100;
 
             MapViewStyle = MapViewStyle.View2D;
-           AnimationOnZooming = AutoToggle.Auto;
+            AnimationOnZooming = AutoToggle.Auto;
             UsingRibbon = true;
-        /*   CacheRenderingData = false;
-           CacheDbfRecords = false;*/
-           CoordinateAngleFormat = AngleFormat.Seconds;
-           CoordinatesDisplay = CoordinatesDisplay.Auto;
-           CoordinatePrecision = 3;
-       /*    CreatePyramidsOnOpening = true;
-           CreateSpatialIndexOnOpening = true;
-           DisplayDynamicVisibilityWarnings = true;*/
-           FirstRun = true;
+            /*   CacheRenderingData = false;
+               CacheDbfRecords = false;*/
+            CoordinateAngleFormat = AngleFormat.Seconds;
+            CoordinatesDisplay = CoordinatesDisplay.Auto;
+            CoordinatePrecision = 3;
+            /*    CreatePyramidsOnOpening = true;
+                CreateSpatialIndexOnOpening = true;
+                DisplayDynamicVisibilityWarnings = true;*/
+            FirstRun = true;
             IdentifierMode = IdentifierMode.AllLayer;
             IdentifierToPixel = 5;
-           /*  GridFavorGreyscale = true;
-             GridDefaultColorScheme = PredefinedColors.SummerMountains;
-             GridRandomColorScheme = true;
-             GridUseHistogram = true;
+            /*  GridFavorGreyscale = true;
+              GridDefaultColorScheme = PredefinedColors.SummerMountains;
+              GridRandomColorScheme = true;
+              GridUseHistogram = true;
 
-             InnertiaOnPanning = AutoToggle.Auto;
-             LastProjectPath = "";
-             LegendExpandLayersOnAdding = true;
-             LoadLastProject = true;
-             LoadSymbology = true;
-             LocalDocumentation = false;*/
-           MapBackgroundColor = Color.White;
-           //MeasurementsAreaFieldName = "Area";
-           MeasurementsAreaPrecision = 3;
-           MeasurementsAreaUnits = AreaUnits.SquareMeters;
-           MeasurementsAreaWidth = 14;
-          // MeasurementsLengthFieldName = "Length";
-           MeasurementsLengthPrecision = 3;
-           MeasurementsLengthUnits = LengthUnits.Meters;
-           MeasurementsLengthWidth = 14;
-           //MeasurementsPerimeterFieldName = "Perimeter";
-           MeasuringAngleFormat = AngleFormat.Degrees;
-           MeasuringAnglePrecision = 1;
-           MeasuringAreaPrecision = 1;
-           MeasuringAreaUnits = AreaDisplay.Metric;
-          /* MeasuringBearingType = BearingType.Absolute;
-           MeasuringFillColor = Color.Orange;
-           MeasuringFillTransparency = 100;*/
-           MeasuringLengthPrecision = 1;
-           MeasuringLengthUnits = LengthDisplay.Metric;
-           MeasuringLineColor = Color.Orange;
-           MeasuringLineStyle = DashStyle.Solid;
-           MeasuringLineWidth = 2;
-           MeasuringPointLabelsVisible = true;
-           MeasuringPointsVisible = true;
-           MeasuringShowBearing = true;
-           MeasuringShowLength = true;
-           MeasuringShowTotalLength = true;
-  /*         MouseTolerance = 10;
-           MouseWheelDirection = MouseWheelDirection.Forward;
-           OgrMaxFeatureCount = 50000;
-           OgrShareConnection = false;*/
-           OverviewBackgroundVisible = true;
-/*           PrintingUnits = 0;
-           PrintingMargins = new Margins(25, 25, 50, 50);
-           PrintingOrientation = Orientation.Vertical;
-           PrintingPaperFormat = "A4";
-           PrintingTemplate = "";
-           ProjectionAbsence = ProjectionAbsence.IgnoreAbsence;
-           ProjectionMismatch = ProjectionMismatch.Reproject;
-           ProjectionShowLoadingReport = true;
-           PyramidCompression = TiffCompression.Auto;
-           PyramidSampling = RasterOverviewSampling.Nearest;
-           QueryBuilderShowValue = true;
-           QueryBuilderSelectionOperation = SelectionOperation.New;
-           RasterDownsamplingMode = InterpolationType.Bilinear;
-           RasterUpsamplingMode = InterpolationType.None;
-           ResizeBehavior = ResizeBehavior.KeepScale;
-           ReuseTileBuffer = true;*/
-           ScalebarUnits = ScalebarUnits.GoogleStyle;
-        /*   ShapeEditorShowLabels = true;
-           ShapeEditorShowAttributeDialog = true;
-           ShapeEditorShowBearing = false;
-           ShapeEditorBearingType = BearingType.Absolute;
-           ShapeEditorBearingPrecision = 1;
-           ShapeEditorAngleFormat = AngleFormat.Degrees;
-           ShapeEditorShowLength = true;
-           ShapeEditorShowArea = true;
-           ShapeEditorUnits = LengthDisplay.Metric;
-           ShapeEditorUnitPrecision = 1;*/
-           ShowCoordinates = true;
-           ShowMenuToolTips = false;
-           ShowPluginInToolTip = false; // perhaps some kind of debug mode will be enough
-  /*         ShowProjectionAbsenceDialog = true;
-           ShowProjectionMismatchDialog = true;
-           ShowPyramidDialog = true;
-           ShowRedrawTime = false;*/
-           ShowScalebar = true;
-  /*         ShowSpatialIndexDialog = false;
-           ShowValuesOnMouseMove = true;*/
-           ShowWelcomeDialog = true;
-     /*      ShowZoombar = true;
-           SpatialIndexFeatureCount = 10000;
-           SymbolobyStorage = SymbologyStorage.Project;
-           TableEditorFormatValues = true;
-           TableEditorLayout = TableEditorLayout.Tabbed;
-           TableEditorShowAliases = true;
-           TaskRunInBackground = false;
-           TilesAutoDetectProxy = true;
-           TilesUseRamCache = true;
-           TilesMaxRamSize = 100.0;
-           TilesUseDiskCache = true;
-           TilesDatabase = string.Empty;
-           TilesMaxDiskSize = 300.0;
-           TilesMaxDiskAge = TilesMaxAge.Month3;
-           TilesProxyAddress = string.Empty;
-           TilesProxyPassword = string.Empty;
-           TilesProxyUserName = string.Empty;
-           TilesUseProxy = true;
-           ToolOutputAddToMap = true;
-           ToolOutputInMemory = true;
-           ToolOutputOverwrite = false;
-           ToolShowGdalOptionsDialog = true;
-           UpdaterCheckNewVersion = true;
-           UpdaterHasNewInstaller = false;
-           UpdaterIsDownloading = false;
-           UpdaterLastChecked = new DateTime(2015, 1, 1);
-           WmsDiskCaching = true;
-           WmsLastServer = string.Empty;
-           ZoomBarVerbosity = ZoomBarVerbosity.Full;
-           ZoomBehavior = ZoomBehavior.UseTileLevels;
-           ZoomBoxStyle = ZoomBoxStyle.Blue;*/
-           Logger.Current.Trace("End AppConfig.SetDefaults()");
+              InnertiaOnPanning = AutoToggle.Auto;
+              LastProjectPath = "";
+              LegendExpandLayersOnAdding = true;
+              LoadLastProject = true;
+              LoadSymbology = true;
+              LocalDocumentation = false;*/
+            MapBackgroundColor = Color.White;
+            //MeasurementsAreaFieldName = "Area";
+            MeasurementsAreaPrecision = 3;
+            MeasurementsAreaUnits = AreaUnits.SquareMeters;
+            MeasurementsAreaWidth = 14;
+            // MeasurementsLengthFieldName = "Length";
+            MeasurementsLengthPrecision = 3;
+            MeasurementsLengthUnits = LengthUnits.Meters;
+            MeasurementsLengthWidth = 14;
+            //MeasurementsPerimeterFieldName = "Perimeter";
+            MeasuringAngleFormat = AngleFormat.Degrees;
+            MeasuringAnglePrecision = 1;
+            MeasuringAreaPrecision = 1;
+            MeasuringAreaUnits = AreaDisplay.Metric;
+            /* MeasuringBearingType = BearingType.Absolute;
+             MeasuringFillColor = Color.Orange;
+             MeasuringFillTransparency = 100;*/
+            MeasuringLengthPrecision = 1;
+            MeasuringLengthUnits = LengthDisplay.Metric;
+            MeasuringLineColor = Color.Orange;
+            MeasuringLineStyle = DashStyle.Solid;
+            MeasuringLineWidth = 2;
+            MeasuringPointLabelsVisible = true;
+            MeasuringPointsVisible = true;
+            MeasuringShowBearing = true;
+            MeasuringShowLength = true;
+            MeasuringShowTotalLength = true;
+            /*         MouseTolerance = 10;
+                     MouseWheelDirection = MouseWheelDirection.Forward;
+                     OgrMaxFeatureCount = 50000;
+                     OgrShareConnection = false;*/
+            OverviewBackgroundVisible = true;
+            /*           PrintingUnits = 0;
+                       PrintingMargins = new Margins(25, 25, 50, 50);
+                       PrintingOrientation = Orientation.Vertical;
+                       PrintingPaperFormat = "A4";
+                       PrintingTemplate = "";
+                       ProjectionAbsence = ProjectionAbsence.IgnoreAbsence;
+                       ProjectionMismatch = ProjectionMismatch.Reproject;
+                       ProjectionShowLoadingReport = true;
+                       PyramidCompression = TiffCompression.Auto;
+                       PyramidSampling = RasterOverviewSampling.Nearest;
+                       QueryBuilderShowValue = true;
+                       QueryBuilderSelectionOperation = SelectionOperation.New;
+                       RasterDownsamplingMode = InterpolationType.Bilinear;
+                       RasterUpsamplingMode = InterpolationType.None;
+                       ResizeBehavior = ResizeBehavior.KeepScale;
+                       ReuseTileBuffer = true;*/
+            ScalebarUnits = ScalebarUnits.GoogleStyle;
+            /*   ShapeEditorShowLabels = true;
+               ShapeEditorShowAttributeDialog = true;
+               ShapeEditorShowBearing = false;
+               ShapeEditorBearingType = BearingType.Absolute;
+               ShapeEditorBearingPrecision = 1;
+               ShapeEditorAngleFormat = AngleFormat.Degrees;
+               ShapeEditorShowLength = true;
+               ShapeEditorShowArea = true;
+               ShapeEditorUnits = LengthDisplay.Metric;
+               ShapeEditorUnitPrecision = 1;*/
+            ShowCoordinates = true;
+            ShowMenuToolTips = false;
+            ShowPluginInToolTip = false; // perhaps some kind of debug mode will be enough
+                                         /*         ShowProjectionAbsenceDialog = true;
+                                                  ShowProjectionMismatchDialog = true;
+                                                  ShowPyramidDialog = true;
+                                                  ShowRedrawTime = false;*/
+            ShowScalebar = true;
+            /*         ShowSpatialIndexDialog = false;
+                     ShowValuesOnMouseMove = true;*/
+            ShowWelcomeDialog = true;
+            /*      ShowZoombar = true;
+                  SpatialIndexFeatureCount = 10000;
+                  SymbolobyStorage = SymbologyStorage.Project;
+                  TableEditorFormatValues = true;
+                  TableEditorLayout = TableEditorLayout.Tabbed;
+                  TableEditorShowAliases = true;
+                  TaskRunInBackground = false;
+                  TilesAutoDetectProxy = true;
+                  TilesUseRamCache = true;
+                  TilesMaxRamSize = 100.0;
+                  TilesUseDiskCache = true;
+                  TilesDatabase = string.Empty;
+                  TilesMaxDiskSize = 300.0;
+                  TilesMaxDiskAge = TilesMaxAge.Month3;
+                  TilesProxyAddress = string.Empty;
+                  TilesProxyPassword = string.Empty;
+                  TilesProxyUserName = string.Empty;
+                  TilesUseProxy = true;
+                  ToolOutputAddToMap = true;
+                  ToolOutputInMemory = true;
+                  ToolOutputOverwrite = false;
+                  ToolShowGdalOptionsDialog = true;
+                  UpdaterCheckNewVersion = true;
+                  UpdaterHasNewInstaller = false;
+                  UpdaterIsDownloading = false;
+                  UpdaterLastChecked = new DateTime(2015, 1, 1);
+                  WmsDiskCaching = true;
+                  WmsLastServer = string.Empty;
+                  ZoomBarVerbosity = ZoomBarVerbosity.Full;
+                  ZoomBehavior = ZoomBehavior.UseTileLevels;
+                  ZoomBoxStyle = ZoomBoxStyle.Blue;*/
+            Logger.Current.Trace("End AppConfig.SetDefaults()");
 
         }
 
@@ -316,6 +317,6 @@ namespace Yutai.Plugins.Concrete
             SetDefaults();
         }
 
-        
+
     }
 }
