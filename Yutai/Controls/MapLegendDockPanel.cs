@@ -15,7 +15,7 @@ using Yutai.UI.Controls;
 
 namespace Yutai.Controls
 {
-    public partial class MapLegendDockPanel : DockPanelControlBase, IMenuProvider,IMapLegendView
+    public partial class MapLegendDockPanel : DockPanelControlBase, IMenuProvider, IMapLegendView
     {
         private readonly IAppContext _context;
         private esriTOCControlItem pTocItem = esriTOCControlItem.esriTOCControlItemNone;
@@ -38,7 +38,7 @@ namespace Yutai.Controls
             TabPosition = 0;
             /* legendControl1.LayerMouseUp += LegendLayerMouseUp;
              legendControl1.GroupMouseUp += LegendGroupMouseUp;*/
-            axTOCControl1.OnMouseDown+= AxTocControl1OnOnMouseDown;
+            axTOCControl1.OnMouseDown += AxTocControl1OnOnMouseDown;
         }
 
         private void InitContextMenu()
@@ -52,7 +52,7 @@ namespace Yutai.Controls
 
         private void AddMenuCommand(YutaiCommand command)
         {
-            ToolStripDropDownButton dropDown =new ToolStripDropDownButton();
+            ToolStripDropDownButton dropDown = new ToolStripDropDownButton();
             dropDown.Name = command.Name;
             dropDown.Text = command.Caption;
             contextMenuLayer.Items.Add(dropDown);
@@ -68,7 +68,7 @@ namespace Yutai.Controls
             string[] names = command.Name.Split('.');
             if (names.Length == 1)
             {
-                ToolStripMenuItem menu=new ToolStripMenuItem
+                ToolStripMenuItem menu = new ToolStripMenuItem
                 {
                     Text = command.Caption,
                     Name = command.Name,
@@ -78,7 +78,7 @@ namespace Yutai.Controls
                 menu.Click += command.OnClick;
                 contextMenuLayer.Items.Add(menu);
             }
-            else if(names.Length==2)
+            else if (names.Length == 2)
             {
                 ToolStripDropDownButton dropDown = contextMenuLayer.Items[names[0]] as ToolStripDropDownButton;
                 ToolStripMenuItem menu = new ToolStripMenuItem
@@ -97,12 +97,14 @@ namespace Yutai.Controls
         {
             if (_commands == null)
             {
-                _commands=new List<YutaiCommand>
+                _commands = new List<YutaiCommand>
                 {
-                     new CmdLegendAddGroupLayer(_context,this),
+                    new CmdLegendAddGroupLayer(_context,this),
                     new CmdLegendAddData(_context,this),
                     new CmdExpandAllLayer(_context,this),
                     new CmdCollapseAllLayer(_context,this),
+                    new CmdShowAllLayer(_context, this),
+                    new CmdHideAllLayer(_context, this),
                     new CmdCreateLayerBySelection(_context,this),
                     new CmdExportData(_context,this),
                     new CmdDeleteAllLayer(_context,this),
@@ -123,7 +125,7 @@ namespace Yutai.Controls
                     axTOCControl1.SelectItem(pLayer, null);
 
                 var pnt = PointToClient(Cursor.Position);
-                contextMenuLayer.Show(this,pnt);
+                contextMenuLayer.Show(this, pnt);
             }
         }
 
@@ -156,31 +158,31 @@ namespace Yutai.Controls
             }
         }*/
 
-       /* private void LegendLayerMouseUp(object sender, LayerMouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                Legend.SelectedLayerHandle = e.LayerHandle;
+        /* private void LegendLayerMouseUp(object sender, LayerMouseEventArgs e)
+         {
+             if (e.Button == MouseButtons.Right)
+             {
+                 Legend.SelectedLayerHandle = e.LayerHandle;
 
-                var group = Legend.Groups.GroupByLayerHandle(e.LayerHandle);
-                if (group != null)
-                {
-                    SelectedGroupHandle = group.Handle;
-                }
+                 var group = Legend.Groups.GroupByLayerHandle(e.LayerHandle);
+                 if (group != null)
+                 {
+                     SelectedGroupHandle = group.Handle;
+                 }
 
-                var pnt = PointToClient(Cursor.Position);
-                contextMenuLayer.Show(this, pnt);
-            }
-        }*/
+                 var pnt = PointToClient(Cursor.Position);
+                 contextMenuLayer.Show(this, pnt);
+             }
+         }*/
 
-       /* private void OnLegendClick(object sender, LegendClickEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                var pnt = PointToClient(Cursor.Position);
-                contextMenuGroup.Show(this, pnt);
-            }
-        }*/
+        /* private void OnLegendClick(object sender, LegendClickEventArgs e)
+         {
+             if (e.Button == MouseButtons.Right)
+             {
+                 var pnt = PointToClient(Cursor.Position);
+                 contextMenuGroup.Show(this, pnt);
+             }
+         }*/
 
         public IEnumerable<ToolStripItemCollection> ToolStrips
         {
@@ -197,10 +199,10 @@ namespace Yutai.Controls
         {
             get { yield break; }
         }
-        
+
         private void contextMenuLayer_Opening(object sender, CancelEventArgs e)
         {
-            
+
         }
 
         public ITOCControl2 TocControl

@@ -76,7 +76,8 @@ namespace Yutai.Commands.MapLegend
             }
             else if (_view.SelectedItemType == esriTOCControlItem.esriTOCControlItemMap)
             {
-                
+                IMap pMap = _view.SelectedMap as IMap;
+                pMap.ReferenceScale = 0.0;
             }
         }
     }
