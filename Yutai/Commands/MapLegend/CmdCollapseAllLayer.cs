@@ -1,5 +1,6 @@
 ﻿using System;
 using ESRI.ArcGIS.Carto;
+using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.SystemUI;
 using Yutai.Controls;
 using Yutai.Plugins.Concrete;
@@ -64,26 +65,58 @@ namespace Yutai.Commands.MapLegend
 
         public void OnClick()
         {
-
-            IEnumLayer pEnumLayer = _view.SelectedMap.get_Layers(null, false);
-            if (pEnumLayer == null) return;
-            ILayer pLayer;
-            ILegendInfo pLengendInfo;
-            ILegendGroup pLengendGroup;
-            pEnumLayer.Reset();
-            for (pLayer = pEnumLayer.Next(); pLayer != null; pLayer = pEnumLayer.Next())
+            switch (_view.SelectedItemType)
             {
-                if (pLayer is ILegendInfo)
-                {
-                    pLengendInfo = pLayer as ILegendInfo;
-                    for (int i = 0; i < pLengendInfo.LegendGroupCount; i++)
+                case esriTOCControlItem.esriTOCControlItemMap:
                     {
-                        pLengendGroup = pLengendInfo.get_LegendGroup(i);
-                        pLengendGroup.Visible = false;
+                        IEnumLayer pEnumLayer = _view.SelectedMap.Layers;
+
+                        if (pEnumLayer == null) return;
+                        ILayer pLayer;
+                        pEnumLayer.Reset();
+                        for (pLayer = pEnumLayer.Next(); pLayer != null; pLayer = pEnumLayer.Next())
+                        {
+                            ExpandedLayers(pLayer, false);
+                        }
                     }
-                }
+                    break;
+                case esriTOCControlItem.esriTOCControlItemLayer:
+                    {
+                        ExpandedLayers(_view.SelectedLayer, false);
+                    }
+                    break;
+                case esriTOCControlItem.esriTOCControlItemHeading:
+                    break;
+                case esriTOCControlItem.esriTOCControlItemLegendClass:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
             _view.TocControl.Update();
+        }
+
+
+        private void ExpandedLayers(ILayer layer, bool expended)
+        {
+            if (layer is IGroupLayer)
+            {
+                ICompositeLayer pCompositeLayer = (ICompositeLayer)layer;
+                for (int i = 0; i < pCompositeLayer.Count; i++)
+                {
+                    ILayer pLayer = pCompositeLayer.Layer[i];
+                    ExpandedLayers(pLayer, expended);
+                }
+                ((IGroupLayer)layer).Expanded = expended;
+            }
+            else if (layer is ILegendInfo)
+            {
+                ILegendInfo pLegendInfo = layer as ILegendInfo;
+                for (int j = 0; j < pLegendInfo.LegendGroupCount; j++)
+                {
+                    ILegendGroup pLegendGroup = pLegendInfo.LegendGroup[j];
+                    pLegendGroup.Visible = expended;
+                }
+            }
         }
     }
 }

@@ -81,7 +81,6 @@ namespace Yutai.Commands.MapLegend
         }
         public void OnClick()
         {
-
             if (_view.SelectedItemType == esriTOCControlItem.esriTOCControlItemMap)
             {
                 IMap pMap = _view.SelectedMap as IMap;
@@ -102,6 +101,7 @@ namespace Yutai.Commands.MapLegend
                 }
                 
             }
+            _view.TocControl.Update();
         }
     }
 }

@@ -45,8 +45,8 @@ namespace Yutai.Commands.MapLegend
             base.m_caption = "由选择集创建图层";
             base.m_category = "TOC";
             base.m_bitmap = null;
-            base.m_name = "mnuCreateLayerBySelect";
-            base._key = "mnuCreateLayerBySelect";
+            base.m_name = "dropSelection.mnuCreateLayerBySelect";
+            base._key = "dropSelection.mnuCreateLayerBySelect";
             base.m_toolTip = "由选择集创建图层";
             base.m_checked = false;
             base.m_enabled = true;
@@ -82,7 +82,7 @@ namespace Yutai.Commands.MapLegend
 
             IFeatureLayer pLayer = _view.SelectedLayer as IFeatureLayer;
             IFeatureSelection selection = pLayer as IFeatureSelection;
-            if (selection.SelectionSet.Count > 0)
+            if (selection != null && selection.SelectionSet.Count > 0)
             {
                 string lyrName = GetLayerName(_view.SelectedMap, "选择集");
                 IFeatureLayer newLayer = ((IFeatureLayerDefinition2)pLayer).CreateSelectionLayer(lyrName, true, "", "");

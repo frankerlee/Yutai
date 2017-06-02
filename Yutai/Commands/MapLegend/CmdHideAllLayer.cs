@@ -1,4 +1,13 @@
-﻿using System;
+﻿// 项目名称 :  Yutai
+// 项目描述 :  
+// 类 名 称 :  CmdHideAllLayer.cs
+// 版 本 号 :  
+// 说    明 :  
+// 作    者 :  
+// 创建时间 :  2017/06/02  13:54
+// 更新时间 :  2017/06/02  13:54
+
+using System;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.SystemUI;
@@ -9,50 +18,33 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Commands.MapLegend
 {
-    public class CmdExpandAllLayer : YutaiCommand
+    public class CmdHideAllLayer : YutaiCommand
     {
         private IAppContext _context;
         private IMapLegendView _view;
         private bool _enabled;
         private ICommand _command;
-        public CmdExpandAllLayer(IAppContext context, IMapLegendView view)
+
+        public CmdHideAllLayer(IAppContext context, IMapLegendView view)
         {
             _context = context;
             _view = view;
             OnCreate();
         }
 
-        public override bool Enabled
-        {
-            get
-            {
-                if (_view == null) return false;
-                if (_view.SelectedMap == null)
-                {
-                    if (_view.SelectedLayer == null) return false;
-                    if (_view.SelectedLayer is IGroupLayer) return true;
-                    else return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
-        }
-
         private void OnCreate()
         {
-            base.m_caption = "展开所有图层";
+            base.m_caption = "隐藏所有图层";
             base.m_category = "TOC";
             base.m_bitmap = null;
-            base.m_name = "mnuExpandAllLayer";
-            base._key = "mnuExpandAllLayer";
-            base.m_toolTip = "展开所有图层";
+            base.m_name = "mnuHideAllLayer";
+            base._key = "mnuHideAllLayer";
+            base.m_toolTip = "隐藏所有图层";
             base.m_checked = false;
             base.m_enabled = true;
             base._itemType = RibbonItemType.NormalItem;
-
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
@@ -76,27 +68,22 @@ namespace Yutai.Commands.MapLegend
                         pEnumLayer.Reset();
                         for (pLayer = pEnumLayer.Next(); pLayer != null; pLayer = pEnumLayer.Next())
                         {
-                            ExpandedLayers(pLayer, true);
+                            ShowLayers(pLayer, false);
                         }
                     }
                     break;
-                case esriTOCControlItem.esriTOCControlItemLayer:
-                    {
-                        ExpandedLayers(_view.SelectedLayer, true);
-                    }
-                    break;
-                case esriTOCControlItem.esriTOCControlItemHeading:
-                    break;
-                case esriTOCControlItem.esriTOCControlItemLegendClass:
-                    break;
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    if (_view.SelectedLayer != null)
+                        ShowLayers(_view.SelectedLayer, false);
+                    break;
             }
             _view.TocControl.Update();
+            IActiveView activeView = _view.SelectedMap as IActiveView;
+            if (activeView != null) activeView.Refresh();
         }
 
 
-        private void ExpandedLayers(ILayer layer, bool expended)
+        private void ShowLayers(ILayer layer, bool show)
         {
             if (layer is IGroupLayer)
             {
@@ -104,18 +91,13 @@ namespace Yutai.Commands.MapLegend
                 for (int i = 0; i < pCompositeLayer.Count; i++)
                 {
                     ILayer pLayer = pCompositeLayer.Layer[i];
-                    ExpandedLayers(pLayer, expended);
+                    ShowLayers(pLayer, show);
                 }
-                ((IGroupLayer)layer).Expanded = expended;
+                ((IGroupLayer)layer).Visible = show;
             }
-            else if (layer is ILegendInfo)
+            else
             {
-                ILegendInfo pLegendInfo = layer as ILegendInfo;
-                for (int j = 0; j < pLegendInfo.LegendGroupCount; j++)
-                {
-                    ILegendGroup pLegendGroup = pLegendInfo.LegendGroup[j];
-                    pLegendGroup.Visible = expended;
-                }
+                layer.Visible = show;
             }
         }
     }
