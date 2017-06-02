@@ -205,12 +205,12 @@ namespace Yutai.Controls
 
         public ITOCControl2 TocControl
         {
-            get { return axTOCControl1 as ITOCControl2; }
+            get { return axTOCControl1.Object as ITOCControl2; }
         }
 
         public ITOCBuddy2 TocBuddyControl
         {
-            get { return ((ITOCControl2)axTOCControl1).Buddy as ITOCBuddy2; }
+            get { return ((ITOCControl2)axTOCControl1.Object).Buddy as ITOCBuddy2; }
         }
 
         public IBasicMap SelectedMap
