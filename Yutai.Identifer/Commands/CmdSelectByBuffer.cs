@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Framework;
 using ESRI.ArcGIS.Geodatabase;
@@ -78,15 +79,24 @@ namespace Yutai.Plugins.Identifer.Commands
 
         public override void OnClick()
         {
+
             esriSpatialRelEnum _esriSpatialRelEnum;
             _esriSpatialRelEnum = (this._bufferType == 0 ? esriSpatialRelEnum.esriSpatialRelContains : esriSpatialRelEnum.esriSpatialRelIntersects);
-            _context.MapControl.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
+            ((IActiveView)_context.MapControl.Map).PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
             QueryHelper.SelectByPolygon(_context.MapControl.Map, _context.BufferGeometry as IPolygon, _esriSpatialRelEnum);
-            _context.MapControl.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
+            ((IActiveView)_context.MapControl.Map).PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
         }
 
         public override void OnClick(object sender, EventArgs args)
         {
+            ToolStripItem strip = sender as ToolStripItem;
+            if (strip.Name == _basicName) return;
+            object tag = strip.Tag;
+            int subtype = Convert.ToInt32(tag);
+            if (subtype == -1) return;
+            _bufferType = subtype;
+            SetSubType(_bufferType);
+            
             OnClick();
         }
 
@@ -105,7 +115,7 @@ namespace Yutai.Plugins.Identifer.Commands
                 case -1:
                 {
                         base.m_bitmap = Properties.Resources.icon_select_buffer;
-
+                    this._basicName = this.m_name;
                         base.m_toolTip = "缓冲区选择";
                         base.m_name = "Query.SelectionTools.BufferSelector";
                         base.m_message = "缓冲区选择";

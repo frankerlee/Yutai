@@ -26,14 +26,14 @@ namespace Yutai.Plugins.Identifer.Commands
 
         public CmdSelectClear(IAppContext context)
         {
-            this.m_bitmap = Properties.Resources.icon_select_clear;
-            this.m_caption = "清除选择";
-            this.m_category = "Query";
-            this.m_message = "清除选择";
-            this.m_name = "Query.SelectionTools.Mouse.ClearSelection";
-            this._key = "Query.SelectionTools.Mouse.ClearSelection";
-            this.m_toolTip = "清除选择";
-           
+            base.m_bitmap = Properties.Resources.icon_select_clear;
+            base.m_caption = "清除选择";
+            base.m_category = "Query";
+            base.m_message = "清除选择";
+            base.m_name = "Query.SelectionTools.ClearSelection";
+            base._key = "Query.SelectionTools.ClearSelection";
+            base.m_toolTip = "清除选择";
+            base._itemType = RibbonItemType.NormalItem;
             base.DisplayStyleYT = DisplayStyleYT.ImageAndText;
             base.TextImageRelationYT = TextImageRelationYT.ImageAboveText;
             base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;

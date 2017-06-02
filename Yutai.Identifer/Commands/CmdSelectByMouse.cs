@@ -65,6 +65,7 @@ namespace Yutai.Plugins.Identifer.Commands
             int subtype = Convert.ToInt32(tag);
             if (subtype == -1) return; 
             _subType = subtype;
+            SetSubType(_subType);
             _context.SetCurrentTool(this);
         }
 

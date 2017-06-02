@@ -131,7 +131,7 @@ namespace Yutai.UI.Menu.Ribbon
             {
                 comboBox.Items.Add(objectItems[i]);
             }
-
+            comboBox.DropDownStyle= ComboBoxStyle.DropDownList;
             if (!string.IsNullOrEmpty(comboSetting.SelectedText)) comboBox.Text = comboSetting.SelectedText;
             if (comboSetting.ShowCaption == true)
             {
