@@ -7,6 +7,8 @@ using Yutai.Plugins;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
+using Yutai.UI.Helpers;
+using ICommandSubType = Yutai.Plugins.Interfaces.ICommandSubType;
 using RibbonTabItem = Syncfusion.Windows.Forms.Tools.RibbonTabItem;
 
 namespace Yutai.UI.Menu.Ribbon
@@ -66,9 +68,55 @@ namespace Yutai.UI.Menu.Ribbon
                 AddComboBox((IRibbonItem)command);
             }
 
+            if (command.ItemType == RibbonItemType.DropDown)
+            {
+                AddDropDown((IRibbonItem)command);
+                ((ICommandSubType)command).SetSubType(-1);
+            }
+
             _menuIndex.AddItem(command.Key,(IRibbonItem)command);
             return (IRibbonItem) command;
         }
+
+        private void AddDropDown(IRibbonItem item)
+        {
+            RibbonItemType parentType;
+            object control = FindParentObject(item.Key, out parentType);
+            if (control == null) return;
+
+            ICommandSubType comboSetting = item as ICommandSubType;
+            ToolStripDropDownButton dropDownButton = new ToolStripDropDownButton()
+            {
+                Name = item.Name + "_drop",Image=item.Image,Text = item.Caption,ToolTipText = item.Tooltip,DisplayStyle =  (ToolStripItemDisplayStyle) item.DisplayStyleYT,
+                ImageScaling =(ToolStripItemImageScaling) item.ToolStripItemImageScalingYT
+            };
+            for (int i = 0; i < comboSetting.GetCount(); i++)
+            {
+                comboSetting.SetSubType(i);
+                ToolStripMenuItem menuItem=new ToolStripMenuItem(item.Caption)
+                {
+                    Name=item.Name+"_menu_"+i.ToString(),Tag = i,Image = item.Image,ToolTipText = item.Tooltip,
+                    DisplayStyle = (ToolStripItemDisplayStyle) item.DisplayStyleYT,TextImageRelation = (TextImageRelation)item.TextImageRelationYT
+                };
+                menuItem.Click +=((YutaiCommand)item).OnClick;
+                dropDownButton.DropDownItems.Add(menuItem);
+            }
+
+            if (control is ToolStripEx)
+            {
+                ToolStripEx ex = (ToolStripEx)control;
+                ex.Items.Add(dropDownButton);
+                ex.Update();
+            }
+            else if (control is ToolStripPanelItem)
+            {
+                ToolStripPanelItem ex = (ToolStripPanelItem)control;
+
+                ex.Items.Add(dropDownButton);
+            }
+        }
+
+       
 
         private void AddComboBox(IRibbonItem item)
         {
@@ -144,7 +192,7 @@ namespace Yutai.UI.Menu.Ribbon
             {
                 Name=item.Name,
                 Tag=item.Key,
-                ToolTipText = item.Tooltip
+                ToolTipText = item.Tooltip,AutoToolTip = true
             };
            
             button.DisplayStyle =(ToolStripItemDisplayStyle)((int) item.DisplayStyleYT);
@@ -155,7 +203,10 @@ namespace Yutai.UI.Menu.Ribbon
             {
                 button.Click += ((YutaiCommand) item).OnClick;
             }
-            
+            if (!string.IsNullOrEmpty(item.Tooltip))
+            {
+                ToolTipHelper.UpdateTooltip(button, item);
+            }
             if (control is ToolStripEx)
             {
                 ToolStripEx ex = (ToolStripEx) control;
@@ -179,10 +230,15 @@ namespace Yutai.UI.Menu.Ribbon
                 if (tabItem.Name == names[0])
                 {
                     ToolStripEx ex=new ToolStripEx()
-                        {Name=item.Name,Text = item.Caption,Tag = item.Key};
+                        {Name=item.Name,Text = item.Caption,Tag = item.Key,ShowItemToolTips = true};
                     tabItem.Panel.Controls.Add(ex);
+                    if (!string.IsNullOrEmpty(item.Tooltip))
+                    {
+                        ToolTipHelper.UpdateTooltip(ex,item);
+                    }
                 }
             }
+           
           
         }
 

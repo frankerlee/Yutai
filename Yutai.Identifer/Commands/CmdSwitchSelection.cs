@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Framework;
 using Yutai.Plugins.Concrete;
+using Yutai.Plugins.Enums;
 using Yutai.Plugins.Identifer.Helpers;
 using Yutai.Plugins.Interfaces;
 
@@ -14,7 +15,7 @@ namespace Yutai.Plugins.Identifer.Commands
 {
     class CmdSwitchSelection:YutaiCommand
     {
-        private IAppContext _context;
+    
         private BasePlugin _plugin;
         public override bool Enabled
         {
@@ -28,13 +29,17 @@ namespace Yutai.Plugins.Identifer.Commands
 
         public CmdSwitchSelection(IAppContext context,BasePlugin plugin)
         {
-            this.m_bitmap = Properties.Resources.SwitchSelection;
+            this.m_bitmap = Properties.Resources.icon_select_switch;
             this.m_caption = "切换选择";
             this.m_category = "Query";
             this.m_message = "切换选择";
             this.m_name = "Query.SelectionTools.SwitchSelection";
             this._key = "Query.SelectionTools.SwitchSelection";
             this.m_toolTip = "切换选择";
+            
+            base.DisplayStyleYT = DisplayStyleYT.ImageAndText;
+            base.TextImageRelationYT = TextImageRelationYT.ImageAboveText;
+            base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
             _context = context;
             _plugin = plugin;
         }

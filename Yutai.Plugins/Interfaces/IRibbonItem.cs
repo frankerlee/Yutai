@@ -12,7 +12,7 @@ namespace Yutai.Plugins.Interfaces
         Bitmap Image { get;  }
         string Tooltip { get; }
         string Category { get; }
-        RibbonItemType ItemType { get;  }
+        RibbonItemType ItemType { get; set; }
         bool Checked { get; }
         bool Enabled { get; }
         PluginIdentity PluginIdentity { get; }

@@ -37,7 +37,7 @@ namespace Yutai.Plugins.Identifer.Commands
             _context = hook as IAppContext;
             base.m_caption = "属性查询";
             base.m_category = "Query";
-            base.m_bitmap = Properties.Resources.QueryAttribute;
+            base.m_bitmap = Properties.Resources.icon_select_attribute;
             base.m_name = "Query.Common.StartAttribute";
             base._key = "Query.Common.StartAttribute";
             base.m_toolTip = "属性查询";

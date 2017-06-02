@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using Syncfusion.Windows.Forms.Tools;
+using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Interfaces;
 using Yutai.UI.Menu.Ribbon;
 
@@ -30,7 +32,8 @@ namespace Yutai.Plugins.Identifer.Menu
 
         private void InitMenus()
         {
-            RibbonFactory.CreateMenus(_commands.GetCommands(), (RibbonControlAdv) _menuManager);
+           IEnumerable<YutaiCommand> commands = _commands.GetCommands();
+            RibbonFactory.CreateMenus(commands, (RibbonControlAdv) _menuManager);
 
         }
 

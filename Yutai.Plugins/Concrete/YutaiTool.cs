@@ -14,7 +14,7 @@ namespace Yutai.Plugins.Concrete
     {
         protected Cursor m_cursor;
         protected bool m_deactivate;
-        private RibbonItemType _itemType;
+       
 
         protected YutaiTool()
         {
@@ -84,9 +84,12 @@ namespace Yutai.Plugins.Concrete
             }
         }
 
-        public override RibbonItemType ItemType
-        {
-            get { return RibbonItemType.Tool; }
-        }
+        //public override RibbonItemType ItemType
+        //{
+        //    get { return _itemType; }
+        //    set { _itemType = value; }
+        //}
     }
+
+  
 }

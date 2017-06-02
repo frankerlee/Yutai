@@ -39,19 +39,22 @@ namespace Yutai.Plugins.Identifer.Menu
                 new CmdStartQueryBuilder(_context) as YutaiCommand,
                 new CmdStartQueryLocation(_context) as YutaiCommand,
                 new CmdStartQueryAttributeAndLocation(_context) as YutaiCommand,
+                new YutaiMenuCommand(RibbonItemType.ToolStrip, "Query", "Query.Setting", "Query.Setting", "设置", "", ""),
                 new CmdSetSelectableLayer(_context) as YutaiCommand,
+                 new YutaiMenuCommand(RibbonItemType.Panel, "Query", "Query.Setting.Panel", "Query.Setting.Panel", "查询设置", "", "") {PanelRowCount = 2},
                 new CmdSetCurrentLayer(_context,_plugin) as YutaiCommand,
+                new CmdSetSelectRelation(_context,_plugin) as YutaiCommand,
                 new YutaiMenuCommand(RibbonItemType.ToolStrip, "Query", "Query.SelectionTools", "Query.SelectionTools",
                     "图形查询", "", ""),
-                new YutaiMenuCommand(RibbonItemType.Panel, "Query", "Query.SelectionTools.Mouse",
-                    "Query.SelectionTools.Mouse", "图形查询", "", "") {PanelRowCount = 2},
-                new CmdSelectByMouse(_context) {SubType = 0} as YutaiCommand,
-                new CmdSelectByMouse(_context) {SubType = 1} as YutaiCommand,
-                new CmdZoomToSelection(_context) as YutaiCommand,
+               
+                new CmdSelectByMouse(_context) {SubType = -1,ItemType= RibbonItemType.DropDown}  as YutaiCommand,
+                 new CmdSelectByBuffer(_context) {SubType = -1,ItemType= RibbonItemType.DropDown}  as YutaiCommand,
+                 new CmdSelectAll(_context,_plugin) as YutaiCommand,
+                 new CmdSelectByScreen(_context,_plugin) as YutaiCommand,
                 new CmdSwitchSelection(_context, _plugin) as YutaiCommand,
-                new YutaiMenuCommand(RibbonItemType.ToolStrip, "Query", "Query.Buffer", "Query.Buffer", "缓冲区查询", "", ""),
-                new CmdSelectByBuffer(_context) {SubType = 0} as YutaiCommand,
-                new CmdSelectByBuffer(_context) {SubType = 1} as YutaiCommand
+                new CmdZoomToSelection(_context) as YutaiCommand,
+                new CmdSelectClear(_context) as YutaiCommand
+
             };
             //}
             return _commands;

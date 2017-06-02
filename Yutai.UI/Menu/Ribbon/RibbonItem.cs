@@ -76,6 +76,7 @@ namespace Yutai.UI.Menu.Ribbon
         public RibbonItemType ItemType
         {
             get { return _itemType; }
+            set { _itemType = value; }
         }
 
         public bool Checked

@@ -31,13 +31,16 @@ namespace Yutai.Plugins.Identifer.Commands
             _context = hook as IAppContext;
             base.m_caption = "空间查询";
             base.m_category = "Query";
-            base.m_bitmap = Properties.Resources.QueryLocation;
+            base.m_bitmap = Properties.Resources.icon_select_location2;
             base.m_name = "Query.Common.StartLocationQuery";
             base._key = "Query.Common.StartLocationQuery";
             base.m_toolTip = "空间查询";
             base.m_checked = false;
             base.m_enabled = true;
             base._itemType = RibbonItemType.NormalItem;
+            //base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
+            //base.DisplayStyleYT = DisplayStyleYT.ImageAndText;
+            //base.TextImageRelationYT = TextImageRelationYT.ImageAboveText;
         }
     }
 }

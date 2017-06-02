@@ -41,11 +41,11 @@ namespace Yutai.Plugins.Enums
         TabItem = 0,
         ToolStrip = 1,
         Panel = 2,
-        DropDown = 3,
-        NormalItem=4,
-        Tool=5,
-        ComboBox=6
-       
+        Group=3,
+        NormalItem = 4,
+        Tool = 5,
+        DropDown = 6,
+        ComboBox=7
     }
     public enum MenuStyle
     {

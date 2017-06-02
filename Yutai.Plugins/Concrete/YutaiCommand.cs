@@ -15,7 +15,7 @@ namespace Yutai.Plugins.Concrete
     
     
     //YutaiCommand将替换掉MenuCommand,以便实现命令的调用
-    public abstract class YutaiCommand : ICommand,IRibbonItem
+    public abstract class YutaiCommand : ICommand, Yutai.Plugins.Interfaces.IRibbonItem
     {
         protected bool m_enabled = true;
         private IntPtr m_hBitmap;
@@ -160,6 +160,7 @@ namespace Yutai.Plugins.Concrete
         public virtual RibbonItemType ItemType
         {
             get { return _itemType; }
+            set { _itemType = value; }
         }
 
 

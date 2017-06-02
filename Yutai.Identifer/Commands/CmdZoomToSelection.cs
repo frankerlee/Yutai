@@ -12,7 +12,7 @@ namespace Yutai.Plugins.Identifer.Commands
 {
     class CmdZoomToSelection:YutaiCommand
     {
-        private IAppContext _context;
+     
         public override bool Enabled
         {
             get
@@ -26,12 +26,12 @@ namespace Yutai.Plugins.Identifer.Commands
         public CmdZoomToSelection(IAppContext context)
         {
             this.m_bitmap = Properties.Resources.ZoomSelection;
-            this.m_caption = "缩放到选中要素";
+            this.m_caption = "缩放至选择集";
             this.m_category = "Query";
-            this.m_message = "缩放到选中要素";
+            this.m_message = "缩放至选择集";
             this.m_name = "Query.SelectionTools.ZoomToSelection";
             this._key = "Query.SelectionTools.ZoomToSelection";
-            this.m_toolTip = "缩放到选中要素";
+            this.m_toolTip = "缩放至选择集";
             _context = context;
         }
 

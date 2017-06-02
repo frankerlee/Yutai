@@ -172,4 +172,49 @@
   <data name="SwitchSelection" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ArcView_switch_selection.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icon_select_all" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_select_all.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_select_attribute" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_select_attribute.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_select_attribute_location" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_select_attribute_location.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_select_buffer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_select_buffer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_select_clear" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_select_clear.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_select_container" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_select_container.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_select_graphic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_select_graphic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_select_intersect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_select_intersect.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_select_location" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_select_location.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_select_screen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_select_screen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_select_switch" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_select_switch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_set_selectable" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_set_selectable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_switch_selection" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_switch_selection.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_select_mouse" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_select_mouse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_select_location2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_select_location2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

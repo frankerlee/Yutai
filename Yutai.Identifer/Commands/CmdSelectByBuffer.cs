@@ -17,16 +17,9 @@ namespace Yutai.Plugins.Identifer.Commands
     public class CmdSelectByBuffer:YutaiCommand,ICommandSubType
     {
         private int _bufferType = 0;
-        private IAppContext _context;
-        private int _subType;
+        private string _basicName;
 
-        public override string Caption
-        {
-            get
-            {
-                return (this._bufferType == 0 ? "选择包含在缓冲区中的要素" : "选择和缓冲区相交要素");
-            }
-        }
+        
 
         public override bool Enabled
         {
@@ -49,13 +42,7 @@ namespace Yutai.Plugins.Identifer.Commands
             }
         }
 
-        public override string Name
-        {
-            get
-            {
-                return (this._bufferType == 0 ? "SelectFeatureByBufferContains" : "SelectFeatureByBufferIntersects");
-            }
-        }
+       
 
         public CmdSelectByBuffer(IAppContext context)
         {
@@ -69,20 +56,24 @@ namespace Yutai.Plugins.Identifer.Commands
 
         public int SubType
         {
-            get { return _subType; }
-            set { _subType = value; SetSubType(value);}
+            get { return _bufferType; }
+            set { _bufferType = value; SetSubType(value);}
         }
 
         public override void OnCreate(object hook)
         {
-            _context = hook as IAppContext;
-            this.m_caption = "选择包含在缓冲区中的要素";
-            this.m_category = "Query";
-            this.m_message = "选择包含在缓冲区中的要素";
-            this.m_name = "Query.Buffer.SelectFeatureByBuffer";
-            base._key = "Query.Buffer.SelectFeatureByBuffer";
-            this.m_toolTip = "选择包含在缓冲区中的要素";
-            _subType = 0;
+            base.m_bitmap = Properties.Resources.icon_select_buffer;
+
+            base.m_toolTip = "缓冲区选择";
+            base.m_name = "Query.SelectionTools.BufferSelector";
+            base.m_message = "缓冲区选择";
+            base.m_caption = "缓冲区选择";
+            base.m_category = "Query";
+            base._key = "Query.SelectionTools.BufferSelector";
+            base._itemType = RibbonItemType.DropDown;
+            base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
+            base.DisplayStyleYT = DisplayStyleYT.ImageAndText;
+            base.TextImageRelationYT = TextImageRelationYT.ImageAboveText;
         }
 
         public override void OnClick()
@@ -99,36 +90,62 @@ namespace Yutai.Plugins.Identifer.Commands
             OnClick();
         }
 
+      
+
+        private IMap GetMap()
+        {
+            return this._context.MapControl.Map;
+        }
         public void SetSubType(int subType)
         {
             this._bufferType = subType;
 
             switch (subType)
             {
+                case -1:
+                {
+                        base.m_bitmap = Properties.Resources.icon_select_buffer;
+
+                        base.m_toolTip = "缓冲区选择";
+                        base.m_name = "Query.SelectionTools.BufferSelector";
+                        base.m_message = "缓冲区选择";
+                        base.m_caption = "缓冲区选择";
+                        base.m_category = "Query";
+                        base._key = "Query.SelectionTools.BufferSelector";
+                        base._itemType = RibbonItemType.DropDown;
+                        base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
+                        base.DisplayStyleYT = DisplayStyleYT.ImageAndText;
+                        base.TextImageRelationYT = TextImageRelationYT.ImageAboveText;
+                        break;
+                    }
                 case 0:
                     {
-                        this.m_bitmap = Properties.Resources.SelectFeatures;
+                        base.m_bitmap = Properties.Resources.icon_select_container;
                         
-                        this.m_toolTip = "选择包含在缓冲区中的要素";
-                        this.m_name = "Query.Buffer.SelectFeatureByBuffer";
-                        this.m_message = "选择包含在缓冲区中的要素";
-                        this.m_caption = "选择包含在缓冲区中的要素";
+                        base.m_toolTip = "选择包含在缓冲区中的要素";
+                        base.m_name = "Query.SelectionTools.Mouse.SelectFeatureContainers";
+                        base.m_message = "选择包含在缓冲区中的要素";
+                        base.m_caption = "选择包含在缓冲区中的要素";
                         base.m_category = "Query";
-                        base._key = "Query.Buffer.SelectFeatureByBuffer";
+                        base._key = "Query.SelectionTools.Mouse.SelectFeatureContainers";
                         base._itemType = RibbonItemType.NormalItem;
+                        base.DisplayStyleYT = DisplayStyleYT.ImageAndText;
+                        base.TextImageRelationYT = TextImageRelationYT.ImageBeforeText;
                         break;
                     }
                 case 1:
                     {
-                        this.m_bitmap = Properties.Resources.PolygonSelectFeatures;
+                        base.m_bitmap = Properties.Resources.icon_select_intersect;
                        
-                        this.m_toolTip = "选择和缓冲区相交要素";
-                        this.m_name = "Query.Buffer.SelectFeatureByBuffer2";
-                        this.m_message = "选择和缓冲区相交要素";
-                        this.m_caption = "选择和缓冲区相交要素";
+                        base.m_toolTip = "选择和缓冲区相交要素";
+                        base.m_name = "Query.SelectionTools.Mouse.SelectFeatureIntersects";
+                        base.m_message = "选择和缓冲区相交要素";
+                        base.m_caption = "选择和缓冲区相交要素";
                         base.m_category = "Query";
-                        base._key = "Query.Buffer.SelectFeatureByBuffer2";
+                        base._key = "Query.SelectionTools.Mouse.SelectFeatureIntersects";
                         base._itemType = RibbonItemType.NormalItem;
+                        base.DisplayStyleYT = DisplayStyleYT.ImageAndText;
+                        base.TextImageRelationYT = TextImageRelationYT.ImageBeforeText;
                         break;
                     }
             }

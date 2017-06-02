@@ -22,7 +22,7 @@ namespace Yutai.Plugins.Identifer.Commands
 {
     public class CmdSelectByMouse:YutaiTool, ICommandSubType
     {
-        private IAppContext _context;
+      
         public static esriSelectionResultEnum m_SelectionResultEnum;
 
         private bool _isFree = false;
@@ -36,6 +36,10 @@ namespace Yutai.Plugins.Identifer.Commands
         private int int_1 = -1;
 
         private int int_2 = 0;
+
+        private string _basicName;
+
+     
 
         public override bool Enabled
         {
@@ -54,6 +58,13 @@ namespace Yutai.Plugins.Identifer.Commands
         }
         public override void OnClick(object sender, EventArgs args)
         {
+            
+            ToolStripItem strip= sender as ToolStripItem;
+            if (strip.Name == _basicName) return;
+            object tag = strip.Tag;
+            int subtype = Convert.ToInt32(tag);
+            if (subtype == -1) return; 
+            _subType = subtype;
             _context.SetCurrentTool(this);
         }
 
@@ -323,34 +334,61 @@ namespace Yutai.Plugins.Identifer.Commands
             this._subType = subType;
             switch (subType)
             {
+                case -1:
+                    {
+                        base.m_bitmap = Properties.Resources.icon_select_mouse;
+                        base.m_toolTip = "图形选择";
+                        base.m_name = "Query.SelectionTools.Selector";
+                        _basicName = this.m_name;
+                        base.m_message = "图形选择";
+                        base.m_caption = "图形选择";
+                        base.m_category = "Query";
+                        base._key = "Query.SelectionTools.Selector";
+                        base._itemType = RibbonItemType.DropDown;
+                        base.ToolStripItemImageScalingYT= ToolStripItemImageScalingYT.None;
+                        base.DisplayStyleYT= DisplayStyleYT.ImageAndText;
+                        base.TextImageRelationYT = TextImageRelationYT.ImageAboveText;
+                        break;
+                    }
                 case 0:
                 {
-                    this.m_bitmap = Properties.Resources.SelectFeatures;
-                        this.m_cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.Plugins.Identifer.Resources.Cursor.MoveSelectFeatures.cur"));
-                        this.m_toolTip = "矩形选择";
-                        this.m_name = "Query.SelectionTools.Mouse.RectangleSelector";
-                        this.m_message = "矩形选择";
-                        this.m_caption = "矩形选择";
+                        base.m_bitmap = Properties.Resources.SelectFeatures;
+                        base.m_cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.Plugins.Identifer.Resources.Cursor.MoveSelectFeatures.cur"));
+                        base.m_toolTip = "矩形选择";
+                        base.m_name = "Query.SelectionTools.Mouse.RectangleSelector";
+                        base.m_message = "矩形选择";
+                        base.m_caption = "矩形选择";
                         base.m_category = "Query";
                         base._key = "Query.SelectionTools.Mouse.RectangleSelector";
                         base._itemType = RibbonItemType.Tool;
+                        base.DisplayStyleYT= DisplayStyleYT.ImageAndText;
+                        base.TextImageRelationYT= TextImageRelationYT.ImageBeforeText;
                         break;
                     }
                 case 1:
                 {
-                        this.m_bitmap = Properties.Resources.PolygonSelectFeatures;
-                        this.m_cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.Plugins.Identifer.Resources.Cursor.PolygonMoveSelectFeatures.cur"));
-                        this.m_toolTip = "多边形选择";
-                        this.m_name = "Query.SelectionTools.Mouse.PolygonSelector";
-                        this.m_message = "多边形选择";
-                        this.m_caption = "多边形选择";
+                        base.m_bitmap = Properties.Resources.PolygonSelectFeatures;
+                        base.m_cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.Plugins.Identifer.Resources.Cursor.PolygonMoveSelectFeatures.cur"));
+                        base.m_toolTip = "多边形选择";
+                        base.m_name = "Query.SelectionTools.Mouse.PolygonSelector";
+                        base.m_message = "多边形选择";
+                        base.m_caption = "多边形选择";
                         base.m_category = "Query";
                         base._key = "Query.SelectionTools.Mouse.PolygonSelector";
                         base._itemType = RibbonItemType.Tool;
+                        base.DisplayStyleYT = DisplayStyleYT.ImageAndText;
+                        base.TextImageRelationYT = TextImageRelationYT.ImageBeforeText;
                         break;
                     }
             }
         }
+
+        //因为在YTTool中，ItemType暂时写死为Tool，但是DropDown需要变化，所以进行了改变
+        //public override RibbonItemType ItemType
+        //{
+        //    get { return _itemType; }
+        //    set { _itemType = value; }
+        //}
     }
 }
 

@@ -30,9 +30,9 @@ namespace Yutai.Plugins.Identifer.Commands
         public override void OnCreate(object hook)
         {
             _context = hook as IAppContext;
-            base.m_caption = "空间属性联合查询";
+            base.m_caption = "联合查询";
             base.m_category = "Query";
-            base.m_bitmap = Properties.Resources.QueryLocation;
+            base.m_bitmap = Properties.Resources.icon_select_attribute_location;
             base.m_name = "Query.Common.StartAttributeAndLocationQuery";
             base._key = "Query.Common.StartAttributeAndLocationQuery";
             base.m_toolTip = "空间属性联合查询";

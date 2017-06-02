@@ -97,10 +97,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\CmdSelectAll.cs" />
     <Compile Include="Commands\CmdSelectByBuffer.cs" />
+    <Compile Include="Commands\CmdSelectByGraphics.cs" />
     <Compile Include="Commands\CmdSelectByMouse.cs" />
+    <Compile Include="Commands\CmdSelectByScreen.cs" />
+    <Compile Include="Commands\CmdSelectClear.cs" />
     <Compile Include="Commands\CmdSetCurrentLayer.cs" />
     <Compile Include="Commands\CmdSetSelectableLayer.cs" />
+    <Compile Include="Commands\CmdSetSelectRelation.cs" />
     <Compile Include="Commands\CmdStartQueryAttributeAndLocation.cs" />
     <Compile Include="Commands\CmdStartQueryBuilder.cs" />
     <Compile Include="Commands\CmdStartQueryLocation.cs" />
@@ -279,6 +284,23 @@
     <None Include="Resources\QueryAttribute.png" />
     <None Include="Resources\QueryLocation.png" />
     <None Include="Resources\ArcView_switch_selection.bmp" />
+    <None Include="Resources\icon_select_attribute.png" />
+    <None Include="Resources\icon_select_attribute_location.png" />
+    <None Include="Resources\icon_select_location.png" />
+    <None Include="Resources\icon_set_selectable.png" />
+    <None Include="Resources\icon_switch_select.png" />
+    <None Include="Resources\icon_select_tools.png" />
+    <None Include="Resources\icon_switch_selection.png" />
+    <None Include="Resources\icon_select_graphic.png" />
+    <None Include="Resources\icon_select_screen.png" />
+    <None Include="Resources\icon_select_all.png" />
+    <None Include="Resources\icon_select_buffer.png" />
+    <None Include="Resources\icon_select_clear.png" />
+    <None Include="Resources\icon_select_container.png" />
+    <None Include="Resources\icon_select_intersect.png" />
+    <None Include="Resources\icon_select_switch.png" />
+    <None Include="Resources\icon_select_mouse.png" />
+    <None Include="Resources\icon_select_location2.png" />
     <Content Include="Resources\SelectFeatures.bmp" />
     <None Include="Resources\ZoomSelection.png" />
     <EmbeddedResource Include="Resources\Cursor\PolygonMoveSelectFeatures.cur" />
