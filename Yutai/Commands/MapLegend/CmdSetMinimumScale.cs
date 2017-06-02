@@ -1,8 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// 项目名称 :  Yutai
+// 项目描述 :  
+// 类 名 称 :  CmdSetMinimumScale.cs
+// 版 本 号 :  
+// 说    明 :  
+// 作    者 :  
+// 创建时间 :  2017/06/02  14:31
+// 更新时间 :  2017/06/02  14:31
+
+using System;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.SystemUI;
@@ -13,44 +18,28 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Commands.MapLegend
 {
-    public class CmdClearScaleRange : YutaiCommand
+    public class CmdSetMinimumScale : YutaiCommand
     {
         private IAppContext _context;
         private IMapLegendView _view;
         private bool _enabled;
         private ICommand _command;
-        public CmdClearScaleRange(IAppContext context, IMapLegendView view)
+
+        public CmdSetMinimumScale(IAppContext context, IMapLegendView view)
         {
             _context = context;
             _view = view;
             OnCreate();
         }
-
-        public override bool Enabled
-        {
-            get
-            {
-                if (_view == null) return false;
-                if (_view.SelectedMap == null)
-                {
-                    if (_view.SelectedLayer == null) return false;
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-        }
-
+        
         private void OnCreate()
         {
-            base.m_caption = "清除比例范围";
+            base.m_caption = "设置最小比例";
             base.m_category = "TOC";
             base.m_bitmap = null;
-            base.m_name = "dropScale.mnuClearScaleRange";
-            base._key = "dropScale.mnuClearScaleRange";
-            base.m_toolTip = "清除比例范围";
+            base.m_name = "dropScale.mnuSetMinimumScale";
+            base._key = "dropScale.mnuSetMinimumScale";
+            base.m_toolTip = "设置最小比例";
             base.m_checked = false;
             base.m_enabled = true;
             base._itemType = RibbonItemType.NormalItem;
@@ -70,8 +59,9 @@ namespace Yutai.Commands.MapLegend
         {
             if (_view.SelectedItemType == esriTOCControlItem.esriTOCControlItemLayer)
             {
-                _view.SelectedLayer.MaximumScale = 0.0;
-                _view.SelectedLayer.MinimumScale = 0.0;
+                IMap map = _view.SelectedMap as IMap;
+                if (map != null)
+                    _view.SelectedLayer.MinimumScale = map.MapScale;
             }
         }
     }

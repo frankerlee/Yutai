@@ -109,7 +109,10 @@ namespace Yutai.Controls
                     new CmdExportData(_context,this),
                     new CmdDeleteAllLayer(_context,this),
                     new CmdDeleteLayer(_context,this),
-                    new CmdClearScaleRange(_context,this)
+                    new YutaiMenuCommand("dropScale","dropScale","dropScale", "可见比例范围", ""),
+                    new CmdSetMinimumScale(_context, this),
+                    new CmdSetMaximumScale(_context, this),
+                    new CmdClearScaleRange(_context,this),
                 };
             }
         }

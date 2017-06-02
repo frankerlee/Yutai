@@ -145,6 +145,8 @@
     <Compile Include="Commands\MapLegend\CmdHideAllLayer.cs" />
     <Compile Include="Commands\MapLegend\CmdLegendAddData.cs" />
     <Compile Include="Commands\MapLegend\CmdLegendAddGroupLayer.cs" />
+    <Compile Include="Commands\MapLegend\CmdSetMaximumScale.cs" />
+    <Compile Include="Commands\MapLegend\CmdSetMinimumScale.cs" />
     <Compile Include="Commands\MapLegend\CmdShowAllLayer.cs" />
     <Compile Include="Commands\Views\CmdViewFixedZoomIn.cs" />
     <Compile Include="Commands\Views\CmdViewFixedZoomOut.cs" />
