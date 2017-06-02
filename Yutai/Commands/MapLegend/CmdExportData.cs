@@ -65,7 +65,7 @@ namespace Yutai.Commands.MapLegend
             OnCreate();
         }
 
-       
+
         public void OnClick()
         {
 
@@ -73,6 +73,8 @@ namespace Yutai.Commands.MapLegend
             {
                 return;
             }
+            if (!(_view.SelectedLayer is IFeatureLayer))
+                return;
             frmExportData data = new frmExportData();
             data.FocusMap = _view.SelectedMap;
             data.FeatureLayer = _view.SelectedLayer as IFeatureLayer;

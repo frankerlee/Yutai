@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
+using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.SystemUI;
 using Yutai.Controls;
 using Yutai.Plugins.Concrete;
@@ -13,7 +14,7 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Commands.MapLegend
 {
-    public class CmdLegendAddData:YutaiCommand
+    public class CmdLegendAddData : YutaiCommand
     {
         private IAppContext _context;
         private IMapLegendView _view;
@@ -54,7 +55,7 @@ namespace Yutai.Commands.MapLegend
             base.m_checked = false;
             base.m_enabled = true;
             base._itemType = RibbonItemType.NormalItem;
-           
+
         }
         public override void OnClick(object sender, EventArgs args)
         {
@@ -63,12 +64,41 @@ namespace Yutai.Commands.MapLegend
                 _command = new ESRI.ArcGIS.Controls.ControlsAddDataCommandClass();
                 _command.OnCreate(_context.MapControl);
             }
-            _command.OnClick();
+            if (_view.SelectedLayer != null && _view.SelectedLayer is IGroupLayer)
+            {
+                List<ILayer> oldLayers = GetLayers();
+                _command.OnClick();
+                List<ILayer> newLayers = GetLayers();
+                IMapLayers pMapLayers = _view.SelectedMap as IMapLayers;
+                IGroupLayer pGroupLayer = _view.SelectedLayer as IGroupLayer;
+                foreach (ILayer newLayer in newLayers)
+                {
+                    if (oldLayers.Contains(newLayer))
+                        continue;
+                    pMapLayers.MoveLayerEx(null, pGroupLayer, newLayer, 0);
+                }
+            }
+            else
+            {
+                _command.OnClick();
+            }
         }
 
         public override void OnCreate(object hook)
         {
             OnCreate();
+        }
+
+        private List<ILayer> GetLayers()
+        {
+            List<ILayer> layers = new List<ILayer>();
+
+            for (int i = 0; i < _view.SelectedMap.LayerCount; i++)
+            {
+                layers.Add(_view.SelectedMap.Layer[i]);
+            }
+
+            return layers;
         }
     }
 }

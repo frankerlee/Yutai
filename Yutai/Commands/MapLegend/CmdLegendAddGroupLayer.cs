@@ -55,16 +55,17 @@ namespace Yutai.Commands.MapLegend
         }
         public override void OnClick(object sender, EventArgs args)
         {
-            IGroupLayer grpLayer = new GroupLayerClass() {Name="新图层组"};
+            IGroupLayer grpLayer = new GroupLayerClass() { Name = "新图层组" };
             if (_view.SelectedItemType == esriTOCControlItem.esriTOCControlItemLayer)
             {
-                ((IGroupLayer)_view.SelectedLayer).Add(grpLayer);
+                if (_view.SelectedLayer is IGroupLayer)
+                    ((IGroupLayer)_view.SelectedLayer).Add(grpLayer);
             }
             else if (_view.SelectedItemType == esriTOCControlItem.esriTOCControlItemMap)
             {
                 _view.SelectedMap.AddLayer(grpLayer);
             }
-           _view.TocControl.Update();
+            _view.TocControl.Update();
         }
 
         public override void OnCreate(object hook)
