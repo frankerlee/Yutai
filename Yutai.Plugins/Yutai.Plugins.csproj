@@ -97,6 +97,7 @@
     <Reference Include="ESRI.ArcGIS.Version, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="Syncfusion.Tools.Windows, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
@@ -118,6 +119,8 @@
     <Compile Include="Concrete\YutaiMenuCommand.cs" />
     <Compile Include="Concrete\YutaiTool.cs" />
     <Compile Include="Events\MapMouseDownArgs.cs" />
+    <Compile Include="Interfaces\ICommandComboBox.cs" />
+    <Compile Include="Interfaces\ICommandSubType.cs" />
     <Compile Include="Interfaces\IDockPanelPresenter.cs" />
     <Compile Include="Interfaces\IRibbonItem.cs" />
     <Compile Include="Interfaces\IToolStripTabItem.cs" />

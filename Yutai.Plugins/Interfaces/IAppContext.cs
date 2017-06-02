@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using ESRI.ArcGIS.Controls;
+using ESRI.ArcGIS.Geometry;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Mvp;
 
@@ -39,6 +40,12 @@ namespace Yutai.Plugins.Interfaces
 
         bool SetCurrentTool(YutaiTool tool);
 
-      
+        IGeometry BufferGeometry
+        {
+            get;
+            set;
+        }
+
+
     }
 }

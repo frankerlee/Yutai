@@ -48,6 +48,9 @@
     <Reference Include="ESRI.ArcGIS.DataSourcesFile, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.DataSourcesRaster, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.Display, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -94,14 +97,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\CmdSelectByBuffer.cs" />
+    <Compile Include="Commands\CmdSelectByMouse.cs" />
+    <Compile Include="Commands\CmdSetCurrentLayer.cs" />
+    <Compile Include="Commands\CmdSetSelectableLayer.cs" />
+    <Compile Include="Commands\CmdStartQueryAttributeAndLocation.cs" />
     <Compile Include="Commands\CmdStartQueryBuilder.cs" />
+    <Compile Include="Commands\CmdStartQueryLocation.cs" />
+    <Compile Include="Commands\CmdSwitchSelection.cs" />
     <Compile Include="Commands\CmdViewIdentifier.cs" />
+    <Compile Include="Commands\CmdZoomToSelection.cs" />
     <Compile Include="Common\LayerObject.cs" />
     <Compile Include="CompositionRoot.cs" />
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="Enums\IdentifierModeConverter.cs" />
     <Compile Include="Helpers\CommonHelper.cs" />
     <Compile Include="Helpers\IdentifyHelper.cs" />
+    <Compile Include="Helpers\MapHelper.cs" />
+    <Compile Include="Helpers\QueryHelper.cs" />
     <Compile Include="IdentifierPlugin.cs" />
     <Compile Include="Menu\DockPanelService.cs" />
     <Compile Include="Menu\MenuGenerator.cs" />
@@ -112,6 +125,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="QuerySettings.cs" />
     <Compile Include="Query\frmAttributeQueryBuilder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,23 +138,48 @@
     <Compile Include="Query\frmSelectByLocation.Designer.cs">
       <DependentUpon>frmSelectByLocation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Query\frmSetSelectableLayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Query\frmSetSelectableLayer.Designer.cs">
+      <DependentUpon>frmSetSelectableLayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Query\frmSimpleAttributeQueryBuilder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Query\frmSimpleAttributeQueryBuilder.Designer.cs">
+      <DependentUpon>frmSimpleAttributeQueryBuilder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Query\frmSpatialAndAttributeQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Query\frmSpatialAndAttributeQuery.Designer.cs">
+      <DependentUpon>frmSpatialAndAttributeQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Query\LayerItem.cs" />
     <Compile Include="Query\UcAttributeQuery.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Query\UcAttributeQuery.Designer.cs">
       <DependentUpon>UcAttributeQuery.cs</DependentUpon>
     </Compile>
-    <Compile Include="Query\UcAttributeQueryBulider.cs">
+    <Compile Include="Query\UcAttributeQueryBuilder.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Query\UcAttributeQueryBulider.Designer.cs">
-      <DependentUpon>UcAttributeQueryBulider.cs</DependentUpon>
+    <Compile Include="Query\UcAttributeQueryBuilder.Designer.cs">
+      <DependentUpon>UcAttributeQueryBuilder.cs</DependentUpon>
     </Compile>
     <Compile Include="Query\UcSelectByLocation.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Query\UcSelectByLocation.Designer.cs">
       <DependentUpon>UcSelectByLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Query\UcSpatialAndAttributeQuery.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Query\UcSpatialAndAttributeQuery.Designer.cs">
+      <DependentUpon>UcSpatialAndAttributeQuery.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\IIdentifierView.cs" />
     <Compile Include="Views\IdentifierDockPanel.cs">
@@ -150,9 +189,6 @@
       <DependentUpon>IdentifierDockPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\IdentifierPresenter.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\QueryAttribute.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Yutai.Api\Yutai.Api.csproj">
@@ -187,8 +223,11 @@
     <EmbeddedResource Include="Query\frmSelectByLocation.resx">
       <DependentUpon>frmSelectByLocation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Query\UcAttributeQueryBulider.resx">
-      <DependentUpon>UcAttributeQueryBulider.cs</DependentUpon>
+    <EmbeddedResource Include="Query\frmSetSelectableLayer.resx">
+      <DependentUpon>frmSetSelectableLayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Query\UcAttributeQueryBuilder.resx">
+      <DependentUpon>UcAttributeQueryBuilder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Query\UcSelectByLocation.resx">
       <DependentUpon>UcSelectByLocation.cs</DependentUpon>
@@ -237,7 +276,14 @@
     <EmbeddedResource Include="Resources\Identify.cur" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\QueryAttribute.png" />
     <None Include="Resources\QueryLocation.png" />
+    <None Include="Resources\ArcView_switch_selection.bmp" />
+    <Content Include="Resources\SelectFeatures.bmp" />
+    <None Include="Resources\ZoomSelection.png" />
+    <EmbeddedResource Include="Resources\Cursor\PolygonMoveSelectFeatures.cur" />
+    <Content Include="Resources\PolygonSelectFeatures.bmp" />
+    <EmbeddedResource Include="Resources\Cursor\MoveSelectFeatures.cur" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using ESRI.ArcGIS.Carto;
 using Yutai.Api.Enums;
 using Yutai.Plugins.Enums;
 using Yutai.Shared;
@@ -175,6 +176,13 @@ namespace Yutai.Plugins.Concrete
         public int IdentifierToPixel { get; set; }
 
         [DataMember]
+        public ISelectionEnvironment SelectionEnvironment { get; set; }
+
+        [DataMember]
+        public IFeatureLayer SelectionCurrentLayerName { get; set; }
+        
+
+        [DataMember]
         public int LocatorMaxCount { get; set; }
         private void SetDefaults()
         {
@@ -195,6 +203,10 @@ namespace Yutai.Plugins.Concrete
             FirstRun = true;
             IdentifierMode = IdentifierMode.AllLayer;
             IdentifierToPixel = 5;
+            SelectionEnvironment=new SelectionEnvironmentClass()
+            {
+                
+            };
             /*  GridFavorGreyscale = true;
               GridDefaultColorScheme = PredefinedColors.SummerMountains;
               GridRandomColorScheme = true;

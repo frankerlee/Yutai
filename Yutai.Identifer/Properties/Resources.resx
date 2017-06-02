@@ -154,10 +154,22 @@
   <data name="img_raster" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\img_raster.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="PolygonSelectFeatures" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PolygonSelectFeatures.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SelectFeatures" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SelectFeatures.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="QueryAttribute" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\QueryAttribute.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="QueryLocation" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\QueryLocation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ZoomSelection" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ZoomSelection.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SwitchSelection" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ArcView_switch_selection.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

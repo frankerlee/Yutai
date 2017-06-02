@@ -20,7 +20,14 @@ namespace Yutai.Plugins.Identifer
        
         private MenuGenerator _menuGenerator;
         //private MapListener _mapListener;
+        private QuerySettings _querySettings;
 
+        public QuerySettings QuerySettings
+        {
+            get { if (_querySettings == null) { _querySettings=new QuerySettings();}
+                return _querySettings;
+            }
+        }
         protected override void RegisterServices(IApplicationContainer container)
         {
             CompositionRoot.Compose(container);

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using ESRI.ArcGIS.SystemUI;
 using Syncfusion.Windows.Forms.Tools;
 using Yutai.Plugins;
 using Yutai.Plugins.Concrete;
@@ -58,12 +59,80 @@ namespace Yutai.UI.Menu.Ribbon
             }
             if (command.ItemType == RibbonItemType.Tool)
             {
-                AddButton((IRibbonItem)command);
+                    AddButton((IRibbonItem)command);
             }
-            
+            if (command.ItemType == RibbonItemType.ComboBox)
+            {
+                AddComboBox((IRibbonItem)command);
+            }
+
             _menuIndex.AddItem(command.Key,(IRibbonItem)command);
             return (IRibbonItem) command;
         }
+
+        private void AddComboBox(IRibbonItem item)
+        {
+            RibbonItemType parentType;
+            object control = FindParentObject(item.Key, out parentType);
+            if (control == null) return;
+
+            ICommandComboBox comboSetting=item as ICommandComboBox;
+            ToolStripComboBoxEx comboBox = new ToolStripComboBoxEx() { Name = item.Name + "_combo" ,DropDownStyle =  ComboBoxStyle.DropDownList,Style = ToolStripExStyle.Metro};
+            object[] objectItems = comboSetting.Items;
+            for (int i = 0; i < objectItems.Length; i++)
+            {
+                comboBox.Items.Add(objectItems[i]);
+            }
+
+            if (!string.IsNullOrEmpty(comboSetting.SelectedText)) comboBox.Text = comboSetting.SelectedText;
+            if (comboSetting.ShowCaption == true)
+            {
+                //创建面板
+                ToolStripPanelItem comboPanel=new ToolStripPanelItem()
+                {
+                    Name=item.Name+"_panel"
+                };
+                comboPanel.RowCount = comboSetting.LayoutType == 0 ? 1 : 2;
+                ToolStripLabel label=new ToolStripLabel(item.Caption) {Name = item.Name+"_label"};
+                comboPanel.Items.Add(label);
+                
+                comboPanel.Items.Add(comboBox);
+                comboBox.SelectedIndexChanged += comboSetting.SelectedIndexChanged;
+                comboSetting.LinkComboBox = comboBox;
+                if (control is ToolStripEx)
+                {
+                    ToolStripEx ex = (ToolStripEx)control;
+                    ex.Items.Add(comboPanel);
+                    ex.Update();
+                }
+                else if (control is ToolStripPanelItem)
+                {
+                    ToolStripPanelItem ex = (ToolStripPanelItem)control;
+
+                    ex.Items.Add(comboPanel);
+                }
+            }
+            else
+            {
+                
+                comboBox.SelectedIndexChanged += comboSetting.SelectedIndexChanged;
+                if (control is ToolStripEx)
+                {
+                    ToolStripEx ex = (ToolStripEx)control;
+                    ex.Items.Add(comboBox);
+                    ex.Update();
+                }
+                else if (control is ToolStripPanelItem)
+                {
+                    ToolStripPanelItem ex = (ToolStripPanelItem)control;
+
+                    ex.Items.Add(comboBox);
+                }
+            }
+            
+        }
+
+      
 
         private void AddButton(IRibbonItem item)
         {
@@ -76,7 +145,6 @@ namespace Yutai.UI.Menu.Ribbon
                 Name=item.Name,
                 Tag=item.Key,
                 ToolTipText = item.Tooltip
-               
             };
            
             button.DisplayStyle =(ToolStripItemDisplayStyle)((int) item.DisplayStyleYT);

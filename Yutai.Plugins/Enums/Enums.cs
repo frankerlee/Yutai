@@ -43,7 +43,9 @@ namespace Yutai.Plugins.Enums
         Panel = 2,
         DropDown = 3,
         NormalItem=4,
-        Tool=5
+        Tool=5,
+        ComboBox=6
+       
     }
     public enum MenuStyle
     {

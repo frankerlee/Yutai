@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
+using ESRI.ArcGIS.Geometry;
 using ESRI.ArcGIS.SystemUI;
 using Yutai.Controls;
 using Yutai.Helper;
@@ -37,6 +38,7 @@ namespace Yutai
         private MapLegendPresenter _mapLegendPresenter;
         private OverviewPresenter _overviewPresenter;
         private XmlProject _yutaiProject;
+        private IGeometry _bufferGeometry;
 
         public AppContext(
             IApplicationContainer container,
@@ -110,6 +112,12 @@ namespace Yutai
                 return true;
             }
             return false;
+        }
+
+        public IGeometry BufferGeometry
+        {
+            get { return _bufferGeometry; }
+            set { _bufferGeometry = value; }
         }
 
         public IPluginManager PluginManager { get; private set; }

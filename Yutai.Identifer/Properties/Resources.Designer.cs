@@ -183,6 +183,16 @@ namespace Yutai.Plugins.Identifer.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap PolygonSelectFeatures {
+            get {
+                object obj = ResourceManager.GetObject("PolygonSelectFeatures", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap QueryAttribute {
             get {
                 object obj = ResourceManager.GetObject("QueryAttribute", resourceCulture);
@@ -196,6 +206,36 @@ namespace Yutai.Plugins.Identifer.Properties {
         internal static System.Drawing.Bitmap QueryLocation {
             get {
                 object obj = ResourceManager.GetObject("QueryLocation", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap SelectFeatures {
+            get {
+                object obj = ResourceManager.GetObject("SelectFeatures", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap SwitchSelection {
+            get {
+                object obj = ResourceManager.GetObject("SwitchSelection", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap ZoomSelection {
+            get {
+                object obj = ResourceManager.GetObject("ZoomSelection", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
