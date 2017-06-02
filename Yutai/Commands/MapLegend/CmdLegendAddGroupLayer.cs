@@ -64,7 +64,7 @@ namespace Yutai.Commands.MapLegend
             {
                 _view.SelectedMap.AddLayer(grpLayer);
             }
-           
+           _view.TocControl.Update();
         }
 
         public override void OnCreate(object hook)
