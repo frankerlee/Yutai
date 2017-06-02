@@ -80,6 +80,7 @@
     <Compile Include="DsGeometryType.cs" />
     <Compile Include="ExportDataHelper.cs" />
     <Compile Include="GeometryUtility.cs" />
+    <Compile Include="MapHelper.cs" />
     <Compile Include="SystemUtility.cs" />
     <Compile Include="DataTableHelper.cs" />
     <Compile Include="EsriUtils.cs" />

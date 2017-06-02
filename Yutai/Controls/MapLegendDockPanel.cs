@@ -101,6 +101,15 @@ namespace Yutai.Controls
                 {
                     new CmdLegendAddGroupLayer(_context,this),
                     new CmdLegendAddData(_context,this),
+                    new CmdZoomToLayer(_context, this),
+                    new YutaiMenuCommand("dropVisibleScaleRange","dropVisibleScaleRange","dropVisibleScaleRange", "可见比例范围", ""),
+                    new CmdSetMinimumScale(_context, this),
+                    new CmdSetMaximumScale(_context, this),
+                    new CmdClearScaleRange(_context,this),
+                    new YutaiMenuCommand("dropSelection", "dropSelection","dropSelection", "选择",""),
+                    new CmdZoomToSelectFeatures(_context, this),
+                    new CmdPanToSelectedFeature(_context, this),
+                    new CmdSelectAllFeatures(_context, this),
                     new CmdExpandAllLayer(_context,this),
                     new CmdCollapseAllLayer(_context,this),
                     new CmdShowAllLayer(_context, this),
@@ -109,10 +118,6 @@ namespace Yutai.Controls
                     new CmdExportData(_context,this),
                     new CmdDeleteAllLayer(_context,this),
                     new CmdDeleteLayer(_context,this),
-                    new YutaiMenuCommand("dropScale","dropScale","dropScale", "可见比例范围", ""),
-                    new CmdSetMinimumScale(_context, this),
-                    new CmdSetMaximumScale(_context, this),
-                    new CmdClearScaleRange(_context,this),
                 };
             }
         }

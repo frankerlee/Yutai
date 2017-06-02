@@ -48,8 +48,8 @@ namespace Yutai.Commands.MapLegend
             base.m_caption = "清除比例范围";
             base.m_category = "TOC";
             base.m_bitmap = null;
-            base.m_name = "dropScale.mnuClearScaleRange";
-            base._key = "dropScale.mnuClearScaleRange";
+            base.m_name = "dropVisibleScaleRange.mnuClearScaleRange";
+            base._key = "dropVisibleScaleRange.mnuClearScaleRange";
             base.m_toolTip = "清除比例范围";
             base.m_checked = false;
             base.m_enabled = true;

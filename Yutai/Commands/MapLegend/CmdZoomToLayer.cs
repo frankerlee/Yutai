@@ -1,11 +1,11 @@
 ﻿// 项目名称 :  Yutai
 // 项目描述 :  
-// 类 名 称 :  CmdSetMaximumScale.cs
+// 类 名 称 :  CmdZoomToLayer.cs
 // 版 本 号 :  
 // 说    明 :  
 // 作    者 :  
-// 创建时间 :  2017/06/02  14:31
-// 更新时间 :  2017/06/02  14:31
+// 创建时间 :  2017/06/02  14:48
+// 更新时间 :  2017/06/02  14:48
 
 using System;
 using ESRI.ArcGIS.Carto;
@@ -18,14 +18,14 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Commands.MapLegend
 {
-    public class CmdSetMaximumScale : YutaiCommand
+    public class CmdZoomToLayer : YutaiCommand
     {
         private IAppContext _context;
         private IMapLegendView _view;
         private bool _enabled;
         private ICommand _command;
 
-        public CmdSetMaximumScale(IAppContext context, IMapLegendView view)
+        public CmdZoomToLayer(IAppContext context, IMapLegendView view)
         {
             _context = context;
             _view = view;
@@ -34,16 +34,15 @@ namespace Yutai.Commands.MapLegend
 
         private void OnCreate()
         {
-            base.m_caption = "设置最大比例";
+            base.m_caption = "缩放到图层";
             base.m_category = "TOC";
             base.m_bitmap = null;
-            base.m_name = "dropVisibleScaleRange.mnuSetMaximumScale";
-            base._key = "dropVisibleScaleRange.mnuSetMaximumScale";
-            base.m_toolTip = "设置最大比例";
+            base.m_name = "mnuZoomToLayer";
+            base._key = "mnuZoomToLayer";
+            base.m_toolTip = "缩放到图层";
             base.m_checked = false;
             base.m_enabled = true;
             base._itemType = RibbonItemType.NormalItem;
-
         }
         public override void OnClick(object sender, EventArgs args)
         {
@@ -57,11 +56,14 @@ namespace Yutai.Commands.MapLegend
 
         public void OnClick()
         {
-            if (_view.SelectedItemType == esriTOCControlItem.esriTOCControlItemLayer)
+            if (_view.SelectedItemType == esriTOCControlItem.esriTOCControlItemLayer && _view.SelectedLayer != null)
             {
-                IMap map = _view.SelectedMap as IMap;
-                if (map != null)
-                    _view.SelectedLayer.MaximumScale = map.MapScale;
+                IActiveView pActiveView = _view.SelectedMap as IActiveView;
+                if (pActiveView != null)
+                {
+                    pActiveView.Extent = _view.SelectedLayer.AreaOfInterest;
+                    pActiveView.Refresh();
+                }
             }
         }
 

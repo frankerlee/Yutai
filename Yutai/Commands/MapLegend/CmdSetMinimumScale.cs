@@ -37,8 +37,8 @@ namespace Yutai.Commands.MapLegend
             base.m_caption = "设置最小比例";
             base.m_category = "TOC";
             base.m_bitmap = null;
-            base.m_name = "dropScale.mnuSetMinimumScale";
-            base._key = "dropScale.mnuSetMinimumScale";
+            base.m_name = "dropVisibleScaleRange.mnuSetMinimumScale";
+            base._key = "dropVisibleScaleRange.mnuSetMinimumScale";
             base.m_toolTip = "设置最小比例";
             base.m_checked = false;
             base.m_enabled = true;
