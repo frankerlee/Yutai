@@ -3,91 +3,376 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using Syncfusion.Windows.Forms.Tools;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Events;
 using Yutai.Plugins.Interfaces;
+using Yutai.UI.Helpers;
 
 namespace Yutai.UI.Menu.Ribbon
 {
-    internal class RibbonMenuIndex:IRibbonMenuIndex
-    {
-        private readonly  Dictionary<string ,IRibbonItem> _items=new Dictionary<string,IRibbonItem>();
-        private readonly Dictionary<object, RibbonMenuItemCollectionMetadata> _collectionMetadata = new Dictionary<object, RibbonMenuItemCollectionMetadata>();
-       
-        private bool _needsToolTip;
+    
 
+    internal class RibbonMenuIndex : IRibbonMenuIndex
+    {
+        private List<IRibbonMenuItem> _items;
+        private bool _needsToolTip;
+        private RibbonControlAdv _ribbonManager;
+
+        //暂时性的事件触发没有在这儿进行
         public event EventHandler<MenuItemEventArgs> ItemClicked;
 
-        public RibbonMenuIndex()
+        public RibbonMenuIndex(RibbonControlAdv ribbonManager)
         {
+            _ribbonManager = ribbonManager;
+            _items=new List<IRibbonMenuItem>();
+        }
+
+        public string GetParentName(string pName)
+        {
+            int findSplit = pName.IndexOf('.');
+            if (findSplit<0) return string.Empty;
+            string pNewName = pName.Substring(0, pName.LastIndexOf('.'));
+            return pNewName;
+        }
+        public void AddItem(YutaiCommand command)
+        {
+            string parentKey = string.Empty;
+            if (string.IsNullOrEmpty(command.ParentName))
+            {
+                parentKey = GetParentName(command.Name);
+            }
+            else
+            {
+                parentKey = command.ParentName;
+            }
+            IRibbonMenuItem parentMenu = null;
+            if (!string.IsNullOrEmpty(parentKey))
+            {
+                parentMenu = FindItem( parentKey);
+            }
             
+            if (command.ItemType == RibbonItemType.TabItem)
+            {
+                AddTabItem((IRibbonItem)command,parentMenu);
+            }
+            if (command.ItemType == RibbonItemType.ToolStrip)
+            {
+                AddToolStrip((IRibbonItem)command,parentMenu);
+            }
+            if (command.ItemType == RibbonItemType.Panel)
+            {
+                AddPanel((IRibbonItem)command,parentMenu);
+            }
+            if (command.ItemType == RibbonItemType.NormalItem)
+            {
+                AddButton((IRibbonItem)command,parentMenu);
+            }
+            if (command.ItemType == RibbonItemType.Tool)
+            {
+                AddButton((IRibbonItem)command,parentMenu);
+            }
+            if (command.ItemType == RibbonItemType.ComboBox)
+            {
+                AddComboBox((IRibbonItem)command,parentMenu);
+            }
+
+            if (command.ItemType == RibbonItemType.DropDown)
+            {
+                AddDropDown((IRibbonItem)command,parentMenu);
+               
+            }
+        }
+
+        private void AddDropDown(IRibbonItem item, IRibbonMenuItem parentMenu)
+        {
+            if (ItemExists(item.Name)) return;
+            ICommandSubType comboSetting = item as ICommandSubType;
+            List<RibbonMenuItem> menus = new List<RibbonMenuItem>();
+            ToolStripDropDownButton dropDownButton = new ToolStripDropDownButton()
+            {
+                Name = item.Name,
+                Image = item.Image,
+                Text = item.Caption,
+                ToolTipText = item.Tooltip,
+                DisplayStyle = (ToolStripItemDisplayStyle)item.DisplayStyleYT,
+                ImageScaling = (ToolStripItemImageScaling)item.ToolStripItemImageScalingYT
+            };
+            RibbonMenuItem dropMenuItem = new RibbonMenuItem(item.Name, item, dropDownButton)
+            {
+                ParentKey = parentMenu.Key
+            };
+            menus.Add(dropMenuItem);
+            for (int i = 0; i < comboSetting.GetCount(); i++)
+            {
+                comboSetting.SetSubType(i);
+                ToolStripMenuItem menuItem = new ToolStripMenuItem(item.Caption)
+                {
+                    Name = item.Name + "_menu_" + i.ToString(),
+                    Tag = comboSetting,
+                    Image = item.Image,
+                    ToolTipText = item.Tooltip,
+                    DisplayStyle = (ToolStripItemDisplayStyle)item.DisplayStyleYT,
+                    TextImageRelation = (TextImageRelation)item.TextImageRelationYT
+                };
+                menuItem.Click += ((YutaiCommand)item).OnClick;
+                dropDownButton.DropDownItems.Add(menuItem);
+
+                RibbonItem subItem=new RibbonItem(item, menuItem.Name) {ParentName = item.Name};
+                RibbonMenuItem dropSubItem = new RibbonMenuItem(menuItem.Name, subItem, menuItem)
+                {
+                    ParentKey = item.Name
+                };
+                menus.Add(dropSubItem);
+            }
+            if (parentMenu.Item.ItemType == RibbonItemType.ToolStrip)
+            {
+                ToolStripEx ex = (ToolStripEx)parentMenu.ToolStrip;
+                ex.Items.Add(dropDownButton);
+                ex.Update();
+            }
+            else if (parentMenu.Item.ItemType == RibbonItemType.Panel)
+            {
+                ToolStripPanelItem ex = (ToolStripPanelItem)parentMenu.ToolStripItem;
+                ex.Items.Add(dropDownButton);
+            }
+            _items.AddRange(menus);
+        }
+        private void AddComboBox(IRibbonItem item, IRibbonMenuItem parentMenu)
+        {
+            if (ItemExists(item.Name)) return;
+            ICommandComboBox comboSetting = item as ICommandComboBox;
+            string newName = comboSetting.ShowCaption == true ? item.Name + "_panel" : item.Name;
+            if (ItemExists(newName)) return;
+
+            ToolStripComboBoxEx comboBox = new ToolStripComboBoxEx()
+            {
+                Name = item.Name,
+                DropDownStyle = ComboBoxStyle.DropDownList,
+                Style = ToolStripExStyle.Metro,
+                Tag=item
+            };
+            object[] objectItems = comboSetting.Items;
+            for (int i = 0; i < objectItems.Length; i++)
+            {
+                comboBox.Items.Add(objectItems[i]);
+            }
+            comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            if (!string.IsNullOrEmpty(comboSetting.SelectedText)) comboBox.Text = comboSetting.SelectedText;
+            if (comboSetting.ShowCaption == true)
+            {
+                //创建面板
+                ToolStripPanelItem comboPanel = new ToolStripPanelItem()
+                {
+                    Name = item.Name + "_panel"
+                };
+                comboPanel.RowCount = comboSetting.LayoutType == 0 ? 1 : 2;
+                ToolStripLabel label = new ToolStripLabel(item.Caption) { Name = item.Name + "_label" };
+                comboPanel.Items.Add(label);
+                comboPanel.Items.Add(comboBox);
+                comboBox.SelectedIndexChanged += comboSetting.SelectedIndexChanged;
+                comboSetting.LinkComboBox = comboBox;
+                if (parentMenu.Item.ItemType== RibbonItemType.ToolStrip)
+                {
+                    ToolStripEx ex = (ToolStripEx)parentMenu.ToolStrip;
+                    ex.Items.Add(comboPanel);
+                    ex.Update();
+                }
+                else if (parentMenu.Item.ItemType == RibbonItemType.Panel)
+                {
+                    ToolStripPanelItem ex = (ToolStripPanelItem)parentMenu.ToolStripItem;
+                    ex.Items.Add(comboPanel);
+                }
+                IRibbonItem panelRibbonItem=new RibbonItem(item, item.Name + "_panel") { ItemType =  RibbonItemType.Panel,ParentName = parentMenu.Key};
+                RibbonMenuItem panelMenuItem=new RibbonMenuItem(item.Name + "_panel",panelRibbonItem,comboPanel);
+                _items.Add(panelMenuItem);
+                item.ParentName = item.Name + "_panel";
+                RibbonMenuItem menuItem = new RibbonMenuItem(item.Key, item, comboBox);
+                menuItem.ParentKey = parentMenu.Key;
+                _items.Add(menuItem);
+            }
+            else
+            {
+                comboBox.SelectedIndexChanged += comboSetting.SelectedIndexChanged;
+                if (parentMenu.Item.ItemType == RibbonItemType.ToolStrip)
+                {
+                    ToolStripEx ex = (ToolStripEx)parentMenu.ToolStrip;
+                    ex.Items.Add(comboBox);
+                    ex.Update();
+                }
+                else if (parentMenu.Item.ItemType == RibbonItemType.Panel)
+                {
+                    ToolStripPanelItem ex = (ToolStripPanelItem)parentMenu.ToolStripItem;
+                    ex.Items.Add(comboBox);
+                }
+
+                RibbonMenuItem menuItem = new RibbonMenuItem(item.Key, item, comboBox);
+                menuItem.ParentKey = parentMenu.Key;
+                _items.Add(menuItem);
+            }
+        }
+        private void AddButton(IRibbonItem item, IRibbonMenuItem parentMenu)
+        {
+            if (ItemExists(item.Name)) return;
+            ToolStripButton button = new ToolStripButton(item.Caption, item.Image)
+            {
+                ToolTipText = item.Tooltip,
+                AutoToolTip = true,
+                Name = item.Name,
+                Tag = item
+            };
+            button.DisplayStyle = (ToolStripItemDisplayStyle)((int)item.DisplayStyleYT);
+            button.TextImageRelation = (TextImageRelation)item.TextImageRelationYT;
+            button.ImageScaling = (ToolStripItemImageScaling)item.ToolStripItemImageScalingYT;
+
+            if (item is YutaiCommand)
+            {
+                button.Click += ((YutaiCommand)item).OnClick;
+            }
+            if (!string.IsNullOrEmpty(item.Tooltip))
+            {
+                ToolTipHelper.UpdateTooltip(button, item);
+            }
+            try
+            {
+                item.ParentName = parentMenu.Key;
+                RibbonMenuItem menuItem = new RibbonMenuItem(item.Key, item, button);
+                menuItem.ParentKey = parentMenu.Key;
+                if (parentMenu.Item.ItemType == RibbonItemType.ToolStrip)
+                {
+                    ((ToolStripEx)parentMenu.ToolStrip).Items.Add(button);
+                }
+                else if (parentMenu.Item.ItemType == RibbonItemType.Panel)
+                {
+                    ((ToolStripPanelItem)parentMenu.ToolStripItem).Items.Add(button);
+                }
+                _items.Add(menuItem);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void AddPanel(IRibbonItem item, IRibbonMenuItem parentMenu)
+        {
+            if (ItemExists(item.Name)) return;
+            ToolStripPanelItem stripItem = new ToolStripPanelItem()
+            {
+                Text = item.Caption,
+                Name = item.Name,
+                Tag = item,
+                RowCount = item.PanelRowCount,
+                LayoutStyle = (ToolStripLayoutStyle)item.ToolStripLayoutStyleYT
+            };
+            try
+            {
+                item.ParentName = parentMenu.Key;
+                RibbonMenuItem menuItem = new RibbonMenuItem(item.Key, item, stripItem);
+                menuItem.ParentKey = parentMenu.Key;
+                if (parentMenu.Item.ItemType == RibbonItemType.ToolStrip)
+                {
+                    ((ToolStripEx) parentMenu.ToolStrip).Items.Add(stripItem);
+                }
+                else if (parentMenu.Item.ItemType == RibbonItemType.Panel)
+                {
+                    ((ToolStripPanelItem) parentMenu.ToolStripItem).Items.Add(stripItem);
+                }
+                _items.Add(menuItem);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void AddToolStrip(IRibbonItem item, IRibbonMenuItem parentMenu)
+        {
+            if (ItemExists(item.Name)) return;
+            ToolStripEx  stripItem = new ToolStripEx()
+            {
+                Text = item.Caption,
+                Name = item.Name,
+                Tag = item
+            };
+            if (item.Position >= 0) stripItem.TabIndex = item.Position;
+            try
+            {
+                item.ParentName = parentMenu.Key;
+                RibbonMenuItem menuItem = new RibbonMenuItem(item.Key, item, stripItem);
+                menuItem.ParentKey = parentMenu.Key;
+                ((ToolStripTabItem)parentMenu.ToolStripItem).Panel.Controls.Add(stripItem);
+                _items.Add(menuItem);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void AddTabItem(IRibbonItem item, IRibbonMenuItem parentMenu)
+        {
+            if (ItemExists(item.Name)) return;
+            ToolStripTabItem tabItem = new ToolStripTabItem()
+            {
+                Text = item.Caption,
+                Name = item.Name,
+                Tag = item
+            };
+
+            if (item.Position >= 0) tabItem.Position = item.Position;
+            try
+            {
+                RibbonMenuItem menuItem=new RibbonMenuItem(item.Key,item,tabItem);
+                _ribbonManager.Header.AddMainItem(tabItem);
+                _items.Add(menuItem);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public bool ItemExists(string itemName)
+        {
+            IRibbonMenuItem findItem = FindItem(itemName);
+            return findItem != null;
+        }
+        public IRibbonMenuItem FindItem( string key)
+        {
+            return _items.FirstOrDefault(c => c.Key == key);
         }
         
-
-        public void AddItem(string key, IRibbonItem item)
-        {
-            if (item.ItemType != RibbonItemType.TabItem && item.ItemType != RibbonItemType.Panel &&
-                item.ItemType != RibbonItemType.ToolStrip)
-            {
-                //添加事件机制
-            }
-            _items.Add(item.Key,item);
-        }
-
         public void Remove(string key)
         {
-            _items.Remove(key);
+            IRibbonMenuItem item = FindItem( key);
+            if(item != null)
+                _items.Remove(item);
+
         }
 
-        public IRibbonItem GetItem(string key)
-        {
-            IRibbonItem item;
-            _items.TryGetValue(key, out item);
-            return item;
-        }
-
+        
         public void RemoveItemsForPlugin(PluginIdentity pluginIdentity)
         {
-            HashSet<string> keys = new HashSet<string>();
+            List<IRibbonMenuItem> _removes=new List<IRibbonMenuItem>();
             foreach (var item in _items)
             {
-                if (item.Value.PluginIdentity == pluginIdentity)
+                if (item.Item.PluginIdentity == pluginIdentity)
                 {
-                    keys.Add(item.Key);
+                    _removes.Add(item);
                 }
             }
-            foreach (var key in keys)
+            foreach (var key in _removes)
             {
                 _items.Remove(key);
             }
         }
+        
 
-        public IEnumerable<IRibbonItem> ItemsForPlugin(PluginIdentity pluginIdentity)
+        public IEnumerable<IRibbonMenuItem> ItemsForPlugin(PluginIdentity pluginIdentity)
         {
-            return from item in _items where item.Value.PluginIdentity == pluginIdentity select item.Value;
+            return from item in _items where item.Item.PluginIdentity == pluginIdentity select item;
         }
-
-        public void Clear()
-        {
-            _items.Clear();
-        }
-
-        public void SaveMetadata(object key, RibbonMenuItemCollectionMetadata metadata)
-        {
-            _collectionMetadata[key] = metadata;
-        }
-
-        public RibbonMenuItemCollectionMetadata LoadMetadata(object key)
-        {
-            RibbonMenuItemCollectionMetadata data;
-            if (_collectionMetadata.TryGetValue(key, out data))
-            {
-                return data;
-            }
-            return null;
-        }
-
+        
         public bool NeedsToolTip
         {
             get { return  AppConfig.Instance.ShowMenuToolTips; }
@@ -101,6 +386,12 @@ namespace Yutai.UI.Menu.Ribbon
             {
                 handler(sender, e);
             }
+        }
+
+        public void Clear()
+        {
+            _items.Clear();
+            //后面需要增加删除真实界面的代码
         }
     }
 }

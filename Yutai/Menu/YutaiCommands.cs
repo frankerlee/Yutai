@@ -16,6 +16,7 @@ namespace Yutai.Menu
     public class YutaiCommands : CommandProviderBase
     {
         private List<YutaiCommand> _commands;
+        private List<string> _commandKeys;
         
 
         public YutaiCommands(IAppContext context, PluginIdentity identity)
@@ -24,7 +25,10 @@ namespace Yutai.Menu
            
         }
 
-
+        public List<string> GetKeys()
+        {
+            return _commandKeys;
+        }
         public override IEnumerable<YutaiCommand> GetCommands()
         {
             if (_commands == null)
@@ -68,6 +72,14 @@ namespace Yutai.Menu
                     new CmdLegendDock(_context) as YutaiCommand,
                     new CmdOverviewDock(_context) as YutaiCommand
                 };
+                _commandKeys=new List<string>();
+                foreach (var command in _commands)
+                {
+                    if (command.ItemType == RibbonItemType.TabItem || command.ItemType == RibbonItemType.Panel ||
+                        command.ItemType == RibbonItemType.ToolStrip)
+                        continue;
+                    _commandKeys.Add(command.Name);
+                }
             }
             return _commands;
         }

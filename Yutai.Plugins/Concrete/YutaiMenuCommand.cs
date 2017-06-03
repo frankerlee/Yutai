@@ -10,7 +10,6 @@ namespace Yutai.Plugins.Concrete
 {
     public class YutaiMenuCommand:YutaiCommand
     {
-        private IAppContext _context;
         public override void OnClick(object sender, EventArgs args)
         {
             

@@ -97,7 +97,7 @@ namespace Yutai.Views
         }
 
         public IMapControl2 MapControl { get { return (IMapControl2)axMapControl1.Object; } }
-        public ISceneControl SceneControl { get { return (ISceneControl)axSceneControl1.Object; } }
+        
         public event EventHandler<CancelEventArgs> ViewClosing;
 
         public event EventHandler<RenderedEventArgs> ViewUpdating;
@@ -286,7 +286,7 @@ namespace Yutai.Views
 
         public object MapContainer
         {
-            get { return mapContainer; }
+            get { return tabControl1; }
         }
 
         public IView View

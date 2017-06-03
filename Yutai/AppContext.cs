@@ -9,6 +9,7 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Geometry;
 using ESRI.ArcGIS.SystemUI;
+using Syncfusion.Windows.Forms.Tools;
 using Yutai.Controls;
 using Yutai.Helper;
 using Yutai.Plugins.Concrete;
@@ -22,6 +23,7 @@ using Yutai.Shared;
 using Yutai.UI.Docking;
 using Yutai.UI.Forms;
 using Yutai.UI.Menu;
+using Yutai.UI.Menu.Ribbon;
 using Yutai.UI.Style;
 
 namespace Yutai
@@ -64,6 +66,7 @@ namespace Yutai
             get { return _container; }
         }
 
+        public IRibbonMenu RibbonMenu { get; private set; }
         public IDockPanelCollection DockPanels { get; private set; }
 
         public IMenu Menu { get; private set; }
@@ -191,8 +194,8 @@ namespace Yutai
 
             DockPanels = new DockPanelCollection(mainView.DockingManager, mainView as Form, Broadcaster, _styleService);
 
-            //Menu 和Toolbars需要修改，区分样式是Ribbon还是正常方式，参数从configService里面获取
-
+            //Menu到最后丢弃不用，Menu部分全部采用Ribbon
+            RibbonMenu = RibbonFactory.InitMenus((RibbonControlAdv)mainView.RibbonManager);
 
             // Menu = MenuFactory.CreateMainMenu(mainView.RibbonManager,true);
             // Toolbars = MenuFactory.CreateMainToolbars(mainView.MenuManager);

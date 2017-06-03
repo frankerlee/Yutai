@@ -91,10 +91,9 @@ namespace Yutai.Plugins.Identifer.Commands
         {
             ToolStripItem strip = sender as ToolStripItem;
             if (strip.Name == _basicName) return;
-            object tag = strip.Tag;
-            int subtype = Convert.ToInt32(tag);
-            if (subtype == -1) return;
-            _bufferType = subtype;
+            CmdSelectByBuffer tag = strip.Tag as CmdSelectByBuffer;
+           
+            _bufferType = tag.SubType;
             SetSubType(_bufferType);
             
             OnClick();
@@ -115,7 +114,7 @@ namespace Yutai.Plugins.Identifer.Commands
                 case -1:
                 {
                         base.m_bitmap = Properties.Resources.icon_select_buffer;
-                    this._basicName = this.m_name;
+                        this._basicName = this.m_name;
                         base.m_toolTip = "缓冲区选择";
                         base.m_name = "Query.SelectionTools.BufferSelector";
                         base.m_message = "缓冲区选择";

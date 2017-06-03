@@ -14,7 +14,7 @@ namespace Yutai.Plugins.Identifer.Menu
     {
         private List<YutaiCommand> _commands;
         private IdentifierPlugin _plugin;
-
+        private List<string> _commandKeys;
         public YutaiCommands(IAppContext context, PluginIdentity identity)
             : base(context, identity)
         {
@@ -25,12 +25,15 @@ namespace Yutai.Plugins.Identifer.Menu
             get { return _plugin; }
             set { _plugin = value; }
         }
-
+        public List<string> GetKeys()
+        {
+            return _commandKeys;
+        }
         public override IEnumerable<YutaiCommand> GetCommands()
         {
-            //if (_commands == null)
-            //{
-            _commands = new List<YutaiCommand>()
+            if (_commands == null)
+            {
+                _commands = new List<YutaiCommand>()
             {
                 new YutaiMenuCommand(RibbonItemType.ToolStrip, "View", "View.Info", "View.Info", "查看要素", "", ""),
                 new CmdViewIdentifier(_context, _plugin) as YutaiCommand,
@@ -56,7 +59,15 @@ namespace Yutai.Plugins.Identifer.Menu
                 new CmdSelectClear(_context) as YutaiCommand
 
             };
-            //}
+            _commandKeys = new List<string>();
+            foreach (var command in _commands)
+            {
+                if (command.ItemType == RibbonItemType.TabItem || command.ItemType == RibbonItemType.Panel ||
+                    command.ItemType == RibbonItemType.ToolStrip)
+                    continue;
+                _commandKeys.Add(command.Name);
+            }
+           }
             return _commands;
         }
     }

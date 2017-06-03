@@ -27,7 +27,24 @@ namespace Yutai.UI.Menu.Ribbon
         private ToolStripItemImageScalingYT _toolStripItemImageScalingYt;
         private ToolStripLayoutStyleYT _toolStripLayoutStyleYt;
         private int _panelRowCount;
+        private int _position;
+        private string _parentName;
 
+        public RibbonItem(IRibbonItem source,string newName)
+        {
+            this._name = newName;
+            this._key = source.Key;
+            this._caption = source.Caption;
+            this._image = source.Image;
+            this._tooltip = source.Tooltip;
+            this._category = source.Category;
+            //this._checked = source.Checked;
+            //this._enabled = source.Enabled;
+            this._itemType = source.ItemType;
+            _pluginIdentity = source.PluginIdentity;
+            _parentName = source.ParentName;
+            _position = source.Position;
+        }
         public RibbonItem(YutaiCommand command)
         {
             IRibbonItem source = (IRibbonItem) command;
@@ -41,6 +58,18 @@ namespace Yutai.UI.Menu.Ribbon
             this._enabled = source.Enabled;
             this._itemType = source.ItemType;
             _pluginIdentity = source.PluginIdentity;
+        }
+
+        public int Position
+        {
+            get { return _position; }
+            set { _position = value; }
+        }
+
+        public string ParentName
+        {
+            get { return _parentName; }
+            set { _parentName = value; }
         }
 
         public string Name

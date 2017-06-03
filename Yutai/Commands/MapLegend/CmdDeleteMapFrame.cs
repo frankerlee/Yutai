@@ -10,10 +10,9 @@ namespace Yutai.Commands.MapLegend
 {
     public class CmdDeleteMapFrame : YutaiCommand
     {
-        private IAppContext _context;
+       
         private IMapLegendView _view;
-        private bool _enabled;
-        private ICommand _command;
+      
         public CmdDeleteMapFrame(IAppContext context, IMapLegendView view)
         {
             _context = context;

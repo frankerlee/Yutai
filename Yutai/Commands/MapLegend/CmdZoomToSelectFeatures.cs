@@ -21,10 +21,9 @@ namespace Yutai.Commands.MapLegend
 {
     public class CmdZoomToSelectFeatures : YutaiCommand
     {
-        private IAppContext _context;
+       
         private IMapLegendView _view;
-        private bool _enabled;
-        private ICommand _command;
+     
 
         public CmdZoomToSelectFeatures(IAppContext context, IMapLegendView view)
         {

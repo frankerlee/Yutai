@@ -167,6 +167,8 @@
     <Compile Include="Menu\Ribbon\RibbonItem.cs" />
     <Compile Include="Menu\Ribbon\RibbonMenu.cs" />
     <Compile Include="Menu\Ribbon\RibbonMenuIndex.cs" />
+    <Compile Include="Menu\Ribbon\RibbonMenuItem.cs" />
+    <Compile Include="Menu\Ribbon\RibbonMenuServiceBase.cs" />
     <Compile Include="Menu\Toolbar.cs" />
     <Compile Include="Menu\Classic\MainMenuStripMenu.cs" />
     <Compile Include="Menu\Classic\MenuStripDropDownItem.cs" />

@@ -31,7 +31,19 @@ namespace Yutai.Commands.Views
                 focusMap.Refresh();
             }
         }
-
+        public override bool Enabled
+        {
+            get
+            {
+                IActiveView focusMap = (IActiveView)_context.MapControl.ActiveView;
+                IExtentStack extentStack = focusMap.ExtentStack;
+                if (extentStack.CanUndo())
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
         public override void OnCreate(object hook)
         {
             _context = hook as IAppContext;

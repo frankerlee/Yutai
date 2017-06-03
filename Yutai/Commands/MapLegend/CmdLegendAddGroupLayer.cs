@@ -15,9 +15,9 @@ namespace Yutai.Commands.MapLegend
 {
     class CmdLegendAddGroupLayer : YutaiCommand
     {
-        private IAppContext _context;
+       
         private IMapLegendView _view;
-        private bool _enabled;
+      
 
         public CmdLegendAddGroupLayer(IAppContext context, IMapLegendView view)
         {

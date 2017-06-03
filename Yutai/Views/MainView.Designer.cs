@@ -36,11 +36,6 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.parentBarItem3 = new Syncfusion.Windows.Forms.Tools.XPMenus.ParentBarItem();
             this.dockingClientPanel1 = new Syncfusion.Windows.Forms.Tools.DockingClientPanel();
-            this.mapContainer = new Syncfusion.Windows.Forms.Tools.TabSplitterContainer();
-            this.mapPage = new Syncfusion.Windows.Forms.Tools.TabSplitterPage();
-            this.axMapControl1 = new ESRI.ArcGIS.Controls.AxMapControl();
-            this.scenePage = new Syncfusion.Windows.Forms.Tools.TabSplitterPage();
-            this.axSceneControl1 = new ESRI.ArcGIS.Controls.AxSceneControl();
             this._mainFrameBarManager1 = new Syncfusion.Windows.Forms.Tools.XPMenus.MainFrameBarManager(this);
             this.statusStripEx1 = new Syncfusion.Windows.Forms.Tools.StatusStripEx();
             this.statusStripLabel5 = new Syncfusion.Windows.Forms.Tools.StatusStripLabel();
@@ -51,16 +46,17 @@
             this.superToolTip1 = new Syncfusion.Windows.Forms.Tools.SuperToolTip(this);
             this.axLicenseControl1 = new ESRI.ArcGIS.Controls.AxLicenseControl();
             this.ribbonControlAdv1 = new Syncfusion.Windows.Forms.Tools.RibbonControlAdv();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.axMapControl1 = new ESRI.ArcGIS.Controls.AxMapControl();
             ((System.ComponentModel.ISupportInitialize)(this._dockingManager1)).BeginInit();
             this.dockingClientPanel1.SuspendLayout();
-            this.mapContainer.SuspendLayout();
-            this.mapPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).BeginInit();
-            this.scenePage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axSceneControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._mainFrameBarManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axLicenseControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlAdv1)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).BeginInit();
             this.SuspendLayout();
             // 
             // _dockingManager1
@@ -109,67 +105,41 @@
             // dockingClientPanel1
             // 
             this.dockingClientPanel1.BackColor = System.Drawing.Color.White;
-            this.dockingClientPanel1.Controls.Add(this.mapContainer);
+            this.dockingClientPanel1.Controls.Add(this.tabControl1);
             this.dockingClientPanel1.Location = new System.Drawing.Point(298, 81);
             this.dockingClientPanel1.Name = "dockingClientPanel1";
             this.dockingClientPanel1.Size = new System.Drawing.Size(434, 312);
             this.dockingClientPanel1.TabIndex = 4;
             // 
-            // mapContainer
+            // tabControl1
             // 
-            this.mapContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mapContainer.Location = new System.Drawing.Point(0, 0);
-            this.mapContainer.Name = "mapContainer";
-            this.mapContainer.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.mapContainer.PrimaryPages.AddRange(new Syncfusion.Windows.Forms.Tools.TabSplitterPage[] {
-            this.mapPage});
-            this.mapContainer.SecondaryPages.AddRange(new Syncfusion.Windows.Forms.Tools.TabSplitterPage[] {
-            this.scenePage});
-            this.mapContainer.Size = new System.Drawing.Size(434, 312);
-            this.mapContainer.SplitterBackColor = System.Drawing.Color.White;
-            this.mapContainer.SplitterPosition = 217;
-            this.mapContainer.TabIndex = 0;
-            this.mapContainer.Text = "地图视图";
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(434, 312);
+            this.tabControl1.TabIndex = 0;
             // 
-            // mapPage
+            // tabPage1
             // 
-            this.mapPage.AutoScroll = true;
-            this.mapPage.Controls.Add(this.axMapControl1);
-            this.mapPage.Hide = false;
-            this.mapPage.Location = new System.Drawing.Point(0, 0);
-            this.mapPage.Name = "mapPage";
-            this.mapPage.Size = new System.Drawing.Size(217, 312);
-            this.mapPage.TabIndex = 1;
-            this.mapPage.Text = "二维窗口";
+            this.tabPage1.Controls.Add(this.axMapControl1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(426, 286);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "地图视图";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // axMapControl1
             // 
             this.axMapControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axMapControl1.Location = new System.Drawing.Point(0, 0);
+            this.axMapControl1.Location = new System.Drawing.Point(3, 3);
             this.axMapControl1.Name = "axMapControl1";
             this.axMapControl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axMapControl1.OcxState")));
-            this.axMapControl1.Size = new System.Drawing.Size(217, 312);
+            this.axMapControl1.Size = new System.Drawing.Size(420, 280);
             this.axMapControl1.TabIndex = 0;
-            // 
-            // scenePage
-            // 
-            this.scenePage.AutoScroll = true;
-            this.scenePage.Controls.Add(this.axSceneControl1);
-            this.scenePage.Hide = false;
-            this.scenePage.Location = new System.Drawing.Point(237, 0);
-            this.scenePage.Name = "scenePage";
-            this.scenePage.Size = new System.Drawing.Size(197, 312);
-            this.scenePage.TabIndex = 2;
-            this.scenePage.Text = "三维窗口";
-            // 
-            // axSceneControl1
-            // 
-            this.axSceneControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axSceneControl1.Location = new System.Drawing.Point(0, 0);
-            this.axSceneControl1.Name = "axSceneControl1";
-            this.axSceneControl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axSceneControl1.OcxState")));
-            this.axSceneControl1.Size = new System.Drawing.Size(197, 312);
-            this.axSceneControl1.TabIndex = 0;
             // 
             // _mainFrameBarManager1
             // 
@@ -310,6 +280,7 @@
             this.ribbonControlAdv1.TabIndex = 6;
             this.ribbonControlAdv1.Text = "ribbonControlAdv1";
             this.ribbonControlAdv1.TitleColor = System.Drawing.Color.Black;
+           
             // 
             // MainView
             // 
@@ -332,14 +303,13 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this._dockingManager1)).EndInit();
             this.dockingClientPanel1.ResumeLayout(false);
-            this.mapContainer.ResumeLayout(false);
-            this.mapPage.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).EndInit();
-            this.scenePage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.axSceneControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._mainFrameBarManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.axLicenseControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlAdv1)).EndInit();
+          
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -360,12 +330,9 @@
         private Syncfusion.Windows.Forms.Tools.SuperToolTip superToolTip1;
         private Syncfusion.Windows.Forms.Tools.StatusStripEx statusStripEx1;
         private ESRI.ArcGIS.Controls.AxLicenseControl axLicenseControl1;
-        private Syncfusion.Windows.Forms.Tools.TabSplitterContainer mapContainer;
-        private Syncfusion.Windows.Forms.Tools.TabSplitterPage mapPage;
-        private ESRI.ArcGIS.Controls.AxMapControl axMapControl1;
-        private Syncfusion.Windows.Forms.Tools.TabSplitterPage scenePage;
-        private ESRI.ArcGIS.Controls.AxSceneControl axSceneControl1;
         private Syncfusion.Windows.Forms.Tools.RibbonControlAdv ribbonControlAdv1;
-        
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private ESRI.ArcGIS.Controls.AxMapControl axMapControl1;
     }
 }

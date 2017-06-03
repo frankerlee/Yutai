@@ -40,6 +40,10 @@ namespace Yutai.Menu
             InitMenus();
         }
 
+        public List<string> GetMenuKeys()
+        {
+            return _commands.GetKeys();
+        }
         private void InitMenus()
         {
             RibbonFactory.CreateMenus(_commands.GetCommands(), (RibbonControlAdv) _menuManager);

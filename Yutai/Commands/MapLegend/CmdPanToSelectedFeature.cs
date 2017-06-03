@@ -23,10 +23,9 @@ namespace Yutai.Commands.MapLegend
 {
     public class CmdPanToSelectedFeature : YutaiCommand
     {
-        private IAppContext _context;
+       
         private IMapLegendView _view;
-        private bool _enabled;
-        private ICommand _command;
+    
 
         public CmdPanToSelectedFeature(IAppContext context, IMapLegendView view)
         {

@@ -176,7 +176,7 @@ namespace Yutai.Menu
             var statusUnits = bar.FindItem(StatusBarKeys.MapUnits, Identity);
             statusUnits.Text = "单位: " + MapUnitsHelper.GetMapUnitsDesc((int)_context.MapControl.Map.MapUnits);
 
-            UpdateTmsProvider();
+            //UpdateTmsProvider();
 
             //UpdateModifiedCount();
         }
@@ -218,7 +218,15 @@ namespace Yutai.Menu
 
         private void UpdateSelectionMessage()
         {
-           
+            IMap pMap = _context.MapControl.Map;
+            if (pMap == null) return;
+            int count=pMap.SelectionCount;
+            var status = _context.StatusBar.FindItem(StatusBarKeys.SelectedCount, Identity);
+            if (status != null)
+            {
+                status.Text = string.Format("{0}个要素被选中", count);
+                status.Visible = true;
+            }
         }
 
         private void MapProjectionChanged(object sender, EventArgs e)

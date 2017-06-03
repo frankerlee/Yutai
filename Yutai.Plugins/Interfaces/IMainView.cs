@@ -15,7 +15,7 @@ namespace Yutai.Plugins.Interfaces
         object MapContainer { get; }
         IView View { get; }
         IMapControl2 MapControl { get; }
-        ISceneControl SceneControl { get; }
+      
         event EventHandler<CancelEventArgs> ViewClosing;
         event EventHandler<RenderedEventArgs> ViewUpdating;
         event Action BeforeShow;

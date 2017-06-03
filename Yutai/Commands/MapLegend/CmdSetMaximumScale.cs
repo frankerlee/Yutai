@@ -20,10 +20,9 @@ namespace Yutai.Commands.MapLegend
 {
     public class CmdSetMaximumScale : YutaiCommand
     {
-        private IAppContext _context;
+       
         private IMapLegendView _view;
-        private bool _enabled;
-        private ICommand _command;
+   
 
         public CmdSetMaximumScale(IAppContext context, IMapLegendView view)
         {

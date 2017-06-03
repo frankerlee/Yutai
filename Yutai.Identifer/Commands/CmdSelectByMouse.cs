@@ -61,12 +61,9 @@ namespace Yutai.Plugins.Identifer.Commands
             
             ToolStripItem strip= sender as ToolStripItem;
             if (strip.Name == _basicName) return;
-            object tag = strip.Tag;
-            int subtype = Convert.ToInt32(tag);
-            if (subtype == -1) return; 
-            _subType = subtype;
-            SetSubType(_subType);
-            _context.SetCurrentTool(this);
+           
+            CmdSelectByMouse tag = strip.Tag as CmdSelectByMouse;
+            _context.SetCurrentTool(tag);
         }
 
         public override void OnCreate(object hook)

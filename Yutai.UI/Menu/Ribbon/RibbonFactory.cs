@@ -13,12 +13,27 @@ namespace Yutai.UI.Menu.Ribbon
     {
         private static IRibbonMenu _instance;
 
+        internal static IRibbonMenu InitMenus(RibbonControlAdv ribbonManager)
+        {
+            if (_instance == null)
+            {
+                var menuIndex = new RibbonMenuIndex(ribbonManager);
+                _instance = new RibbonMenu(menuIndex);
+                CreateDefaultHeaders(_instance);
+            }
+            return _instance;
+        }
+
+        private static void CreateDefaultHeaders(IRibbonMenu menu)
+        {
+            
+        }
         internal static IRibbonMenu CreateMenus(IEnumerable<YutaiCommand> commands, RibbonControlAdv ribbonManager)
         {
             if (_instance == null)
             {
-                var menuIndex = new RibbonMenuIndex();
-                _instance=new RibbonMenu(menuIndex,ribbonManager);
+                var menuIndex = new RibbonMenuIndex(ribbonManager);
+                _instance=new RibbonMenu(menuIndex);
             }
             foreach (YutaiCommand command in commands)
             {

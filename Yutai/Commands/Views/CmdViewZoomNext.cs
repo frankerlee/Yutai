@@ -12,6 +12,8 @@ namespace Yutai.Commands.Views
 {
     public class CmdViewZoomNext:YutaiCommand
     {
+        private bool _enabled;
+
         public CmdViewZoomNext(IAppContext context)
         {
             OnCreate(context);
@@ -28,6 +30,19 @@ namespace Yutai.Commands.Views
             {
                 extentStack.Redo();
                 focusMap.Refresh();
+            }
+        }
+
+        public override bool Enabled
+        {
+            get {
+                IActiveView focusMap = (IActiveView)_context.MapControl.ActiveView;
+                IExtentStack extentStack = focusMap.ExtentStack;
+                if (extentStack.CanRedo())
+                {
+                    return true;
+                }
+                return false;
             }
         }
 

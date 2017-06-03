@@ -14,6 +14,9 @@ namespace Yutai.Plugins.Interfaces
     {
         AppConfig Config { get; }
 
+        //界面采用Ribbon后的管理接口
+        IRibbonMenu RibbonMenu { get; }
+
         IApplicationContainer Container { get; }
         IDockPanelCollection DockPanels { get; }
 

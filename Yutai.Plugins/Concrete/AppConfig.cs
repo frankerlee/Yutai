@@ -49,15 +49,7 @@ namespace Yutai.Plugins.Concrete
                     new Guid("2b81c89a-ee45-4276-9dc1-72bbbf07f53f"),//定位器
                     new Guid("01f8e32a-5837-431f-9c1b-5d0f195fb93e"),// 书签管理
                 };
-                return new List<Guid> { new Guid("7B9DF651-4B8B-4AA8-A4A9-C1463A35DAC7"), // Symbology
-                                        new Guid("F24E7086-1762-4A7C-8403-D1169309CBC6"), // Repository
-                                        new Guid("65beb2fd-eec2-461c-965e-f20a0cef2aa2"), // Identifier
-                                        new Guid("894E958F-69DD-48DF-B35B-16871EC5D309"), // Table editor
-                                        new Guid("70120ff9-1c6b-49a1-8949-dded8bcef499"), // Shape editor
-                                        new Guid("F0CDF80F-5F74-48F6-8C8D-75F9B505EEE0"), // Debug window
-                                        new Guid("F383FE43-0754-4EE2-951C-0066E87B28AB"), // GIS Toolbox
-                                        new Guid("16479551-5754-46A1-9243-A3DF788E7406")  // Print lay-out
-                                      };
+               
             }
         }
 

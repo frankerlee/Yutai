@@ -20,10 +20,9 @@ namespace Yutai.Commands.MapLegend
 {
     public class CmdZoomToLayer : YutaiCommand
     {
-        private IAppContext _context;
+       
         private IMapLegendView _view;
-        private bool _enabled;
-        private ICommand _command;
+       
 
         public CmdZoomToLayer(IAppContext context, IMapLegendView view)
         {

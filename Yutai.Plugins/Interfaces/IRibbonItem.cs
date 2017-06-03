@@ -6,6 +6,8 @@ namespace Yutai.Plugins.Interfaces
 {
     public interface IRibbonItem
     {
+        int Position { get; set; }
+        string ParentName { get; set; }
         string Name { get;  }
         string Key { get;  }
         string Caption { get;  }

@@ -10,6 +10,7 @@ namespace Yutai.UI.Menu
         protected readonly PluginIdentity _identity;
         protected IToolbarCollectionBase _toolbars;
         protected IMenuBase _menu;
+        protected IRibbonMenu _ribbonMenu;
 
         public MenuServiceBase(IAppContext context, PluginIdentity identity)
         {
@@ -20,6 +21,7 @@ namespace Yutai.UI.Menu
             _identity = identity;
             _toolbars = context.Toolbars;
             _menu = context.Menu;
+            _ribbonMenu = context.RibbonMenu;
         }
 
         protected IMenuItem FindToolbarItem(string itemKey)
@@ -30,6 +32,11 @@ namespace Yutai.UI.Menu
         protected IMenuItem FindMenuItem(string itemKey)
         {
             return _menu.FindItem(itemKey, _identity);
+        }
+
+        protected IRibbonMenuItem FindRibbonMenuItem(string itemKey)
+        {
+            return _ribbonMenu.FindItem(itemKey);
         }
     }
 }

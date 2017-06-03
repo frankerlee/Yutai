@@ -30,6 +30,10 @@ namespace Yutai.Plugins.Identifer.Menu
             InitMenus();
         }
 
+        public List<string> GetMenuKeys()
+        {
+            return _commands.GetKeys();
+        }
         private void InitMenus()
         {
            IEnumerable<YutaiCommand> commands = _commands.GetCommands();

@@ -36,6 +36,8 @@ namespace Yutai.Plugins.Concrete
         private ToolStripItemImageScalingYT _toolStripItemImageScalingYt;
         private ToolStripLayoutStyleYT _toolStripLayoutStyleYt;
         private int _panelRowCount;
+        private string _parentName;
+        private int _position=-1;
 
         public  Keys ShortcutKeys { get; set; }
         public PluginIdentity PluginIdentity { get; internal set; }
@@ -111,6 +113,18 @@ namespace Yutai.Plugins.Concrete
             {
                 return this.m_helpID;
             }
+        }
+
+        public  int Position
+        {
+            get { return _position; }
+            set { _position = value; }
+        }
+
+        public  string ParentName
+        {
+            get { return _parentName; }
+            set { _parentName = value; }
         }
 
         public virtual string Name
