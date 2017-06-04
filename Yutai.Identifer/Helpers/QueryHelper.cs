@@ -578,7 +578,7 @@ namespace Yutai.Plugins.Identifer.Helpers
                 COMException cOMException = cOMException1;
                 if (cOMException.ErrorCode != -2147467259)
                 {
-                    //CErrorLog.writeErrorLog(null, cOMException, "");
+                    //Logger.Current.Error("",cOMException, "");
                 }
                 else
                 {
@@ -587,7 +587,7 @@ namespace Yutai.Plugins.Identifer.Helpers
             }
             catch (Exception exception)
             {
-                //CErrorLog.writeErrorLog(null, exception, "");
+                //Logger.Current.Error("",exception, "");
             }
             return (IEnumFeature)pMap.FeatureSelection;
         }

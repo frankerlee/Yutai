@@ -27,5 +27,7 @@ namespace Yutai.Plugins.Interfaces
         ToolStripLayoutStyleYT ToolStripLayoutStyleYT { get; set; }
 
         int PanelRowCount { get; set; }
+        //对ToolStripEx起作用
+        bool IsGroup { get; set; }
     }
 }

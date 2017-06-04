@@ -62,7 +62,7 @@ namespace Yutai.Catalog
 			}
 			catch (Exception exception)
 			{
-				//CErrorLog.writeErrorLog(null, exception, "GxCatalog");
+				//Logger.Current.Error("",exception, "GxCatalog");
                 Logger.Current.Write(exception.Message,LogLevel.Error,null);
 			}
 		}

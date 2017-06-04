@@ -41,6 +41,9 @@ namespace Yutai
         private OverviewPresenter _overviewPresenter;
         private XmlProject _yutaiProject;
         private IGeometry _bufferGeometry;
+        private string _currentToolName;
+        private bool _isInEdit;
+        private bool _canEdited;
 
         public AppContext(
             IApplicationContainer container,
@@ -111,17 +114,37 @@ namespace Yutai
         {
             if (tool.ItemType == RibbonItemType.Tool)
             {
+                ITool oldTool = _mainView.MapControl.CurrentTool;
+                string oldName = oldTool == null ? string.Empty : ((YutaiTool) oldTool).Name;
                 _mainView.MapControl.CurrentTool = (ITool) tool;
+                CurrentToolName = tool.Name;
+                RibbonMenu.ChangeCurrentTool(oldName, tool.Name);
                 return true;
             }
             return false;
         }
+
+        public string CurrentToolName { get; internal set; }
+
 
         public IGeometry BufferGeometry
         {
             get { return _bufferGeometry; }
             set { _bufferGeometry = value; }
         }
+
+        public bool IsInEdit
+        {
+            get { return _isInEdit; }
+            set { _isInEdit = value; }
+        }
+
+        public bool CanEdited
+        {
+            get { return _canEdited; }
+            set { _canEdited = value; }
+        }
+
 
         public IPluginManager PluginManager { get; private set; }
 
@@ -171,19 +194,20 @@ namespace Yutai
             var legend = _mapLegendPresenter.LegendControl;
             legend.LegendControl.SetBuddyControl(mainView.MapControl);
             _overviewPresenter = overviewPresenter;
-            
 
-              // it's expected here that we are on the UI thread
+
+            // it's expected here that we are on the UI thread
             SynchronizationContext = SynchronizationContext.Current;
 
             PluginManager = _container.GetSingleton<IPluginManager>();
             Broadcaster = _container.GetSingleton<IBroadcasterService>();
             _container.RegisterInstance<IMapControl2>(mainView.MapControl);
-           
+
             _mainView = mainView;
             View = new AppView(mainView, _styleService);
             _project = project;
             _configService = configService;
+            
 
             _overviewPresenter.SetBuddyControl(mainView.MapControl);
             //  _map = mainView.Map;
@@ -195,7 +219,7 @@ namespace Yutai
             DockPanels = new DockPanelCollection(mainView.DockingManager, mainView as Form, Broadcaster, _styleService);
 
             //Menu到最后丢弃不用，Menu部分全部采用Ribbon
-            RibbonMenu = RibbonFactory.InitMenus((RibbonControlAdv)mainView.RibbonManager);
+            RibbonMenu = RibbonFactory.InitMenus((RibbonControlAdv) mainView.RibbonManager);
 
             // Menu = MenuFactory.CreateMainMenu(mainView.RibbonManager,true);
             // Toolbars = MenuFactory.CreateMainToolbars(mainView.MenuManager);
@@ -237,5 +261,29 @@ namespace Yutai
             //Toolbox.RemoveItemsForPlugin(e.Identity);
             //StatusBar.RemoveItemsForPlugin(e.Identity);
         }
+
+        #region MainView的外部调用接口，建议交给MainView完成，因为都是界面相关的
+
+        public void ShowCommandString(string msg, CommandTipsType tipType)
+        {
+            //throw new NotImplementedException();
+        }
+
+        public void SetStatus(string empty)
+        {
+            // throw new NotImplementedException();
+        }
+
+        public void UpdateUI()
+        {
+            // throw new NotImplementedException();
+        }
+
+        public void SetToolTip(string str)
+        {
+            // throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

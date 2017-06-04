@@ -161,6 +161,7 @@
     <Compile Include="Helpers\ComboBoxEnumItem.cs" />
     <Compile Include="Helpers\ComboBoxHelper.cs" />
     <Compile Include="Helpers\CommandBarHelper.cs" />
+    <Compile Include="Helpers\RibbonHelper.cs" />
     <Compile Include="Helpers\SyncfusionSerializationHelper.cs" />
     <Compile Include="Helpers\ToolTipHelper.cs" />
     <Compile Include="Menu\Ribbon\RibbonFactory.cs" />

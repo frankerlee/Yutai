@@ -13,6 +13,7 @@ using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 using Yutai.Api.Enums;
 using Yutai.ArcGIS.Common;
+using Yutai.ArcGIS.Common.Helpers;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Identifer.Enums;
 using Yutai.Plugins.Interfaces;
@@ -509,10 +510,10 @@ namespace Yutai.Plugins.Identifer.Views
                 DisplayCoordinates(featureDefault.Shape);
                 if (ZoomToShape)
                 {
-                    Yutai.ArcGIS.Common.EsriUtils.ZoomToGeometry(featureDefault.Shape, _context.MapControl.Map, 2);
+                    EsriUtils.ZoomToGeometry(featureDefault.Shape, _context.MapControl.Map, 2);
                     if (doFlash)
                     {
-                        Yutai.ArcGIS.Common.FlashUtility.FlashGeometry(featureDefault.Shape, _context.MapControl);
+                        FlashUtility.FlashGeometry(featureDefault.Shape, _context.MapControl);
                     }
                 }
             }

@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ESRI.ArcGIS.3DAnalyst, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.ADF, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86" />
     <Reference Include="ESRI.ArcGIS.Carto, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -38,6 +41,7 @@
     <Reference Include="ESRI.ArcGIS.Controls, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.CoverageTools, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
     <Reference Include="ESRI.ArcGIS.DataSourcesFile, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -53,7 +57,17 @@
     <Reference Include="ESRI.ArcGIS.Geodatabase, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.GeoDatabaseDistributed, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.Geometry, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geoprocessing, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geoprocessor, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
+    <Reference Include="ESRI.ArcGIS.GlobeCore, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="ESRI.ArcGIS.Output, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
@@ -62,12 +76,34 @@
     <Reference Include="ESRI.ArcGIS.System, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.SystemUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.OLECilentLib">
+      <HintPath>..\Libraries\Interop.OLECilentLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.SQLDMO">
+      <HintPath>..\Libraries\Interop.SQLDMO.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Data.ConnectionUI">
+      <HintPath>..\Libraries\Microsoft.Data.ConnectionUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.ConnectionUI.Dialog">
+      <HintPath>..\Libraries\Microsoft.Data.ConnectionUI.Dialog.dll</HintPath>
+    </Reference>
     <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -77,35 +113,420 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DsGeometryType.cs" />
-    <Compile Include="ExportDataHelper.cs" />
-    <Compile Include="GeometryUtility.cs" />
-    <Compile Include="MapHelper.cs" />
-    <Compile Include="SystemUtility.cs" />
-    <Compile Include="DataTableHelper.cs" />
-    <Compile Include="EsriUtils.cs" />
-    <Compile Include="FlashHelper.cs" />
-    <Compile Include="GeometryHelper.cs" />
-    <Compile Include="MessageBoxHelper.cs" />
-    <Compile Include="VersionHelper.cs" />
-    <Compile Include="ConvertHelper.cs" />
-    <Compile Include="DisplayHelper.cs" />
-    <Compile Include="OtherHelper.cs" />
-    <Compile Include="WorkspaceHelper.cs" />
-    <Compile Include="SymbolHelper.cs" />
-    <Compile Include="SpatialReferenceHelper.cs" />
-    <Compile Include="ColorHelper.cs" />
-    <Compile Include="FeatureHelper.cs" />
-    <Compile Include="FieldHelper.cs" />
-    <Compile Include="LayerHelper.cs" />
+    <Compile Include="AELicenseProvider\AELicense.cs" />
+    <Compile Include="AELicenseProvider\AELicenseProvider.cs" />
+    <Compile Include="AELicenseProvider\AELicenseProviderEx.cs" />
+    <Compile Include="AELicenseProvider\Regedit.cs" />
+    <Compile Include="BaseClasses\AppConfigInfo.cs" />
+    <Compile Include="BaseClasses\SysGrants.cs" />
+    <Compile Include="BaseClasses\ExcelReader.cs" />
+    <Compile Include="BaseClasses\Table2DataTable.cs" />
+    <Compile Include="BaseClasses\WorkspaceOperator.cs" />
+    <Compile Include="BaseClasses\XmlReaderClass.cs" />
+    <Compile Include="BitmapResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BitmapResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="frmExportProcessEx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExportProcessEx.Designer.cs">
+      <DependentUpon>frmExportProcessEx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProcessAssist.cs" />
+    <Compile Include="Display\enumLineType.cs" />
+    <Compile Include="Display\Flash.cs" />
+    <Compile Include="Display\IMoveGeometryFeedbackEx.cs" />
+    <Compile Include="Display\INewCircularArcFeedback.cs" />
+    <Compile Include="Display\INewPolygonFeedbackEx.cs" />
+    <Compile Include="Display\INewPolylineFeedback.cs" />
+    <Compile Include="Display\IRotateTrackerFeedback.cs" />
+    <Compile Include="Display\IScaleGeometryFeedback.cs" />
+    <Compile Include="Display\MoveGeometryFeedbackEx.cs" />
+    <Compile Include="Display\NewCircularArcFeedback.cs" />
+    <Compile Include="Display\NewPolygonFeedbackEx.cs" />
+    <Compile Include="Display\NewPolylineFeedback.cs" />
+    <Compile Include="Display\RotateTrackFeedback.cs" />
+    <Compile Include="Display\ScaleGeometryFeedback.cs" />
+    <Compile Include="Display\SymbolDraw.cs" />
+    <Compile Include="Display\SymbolFind.cs" />
+    <Compile Include="Editor\IFeatureSnapAgent.cs" />
+    <Compile Include="Editor\CopyEnvironment.cs" />
+    <Compile Include="Editor\CreateFeatureTool.cs" />
+    <Compile Include="Editor\Editor.cs" />
+    <Compile Include="Editor\EditorEvent.cs" />
+    <Compile Include="Editor\EditTemplateSchem.cs" />
+    <Compile Include="Editor\EditTemplateSchems.cs" />
+    <Compile Include="Editor\EditWorkspaceInfo.cs" />
+    <Compile Include="Editor\FieldMaps.cs" />
+    <Compile Include="Editor\frmSelectEditDatasource.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editor\GeometryOperator.cs" />
+    <Compile Include="Editor\GeometryOperatorFectory.cs" />
+    <Compile Include="Editor\Helpers\CircleCenterSnapAgent.cs" />
+    <Compile Include="Editor\Helpers\ConstructPolygonHepler.cs" />
+    <Compile Include="Editor\Helpers\ConstructTangentArcCommandFlow.cs" />
+    <Compile Include="Editor\Helpers\DrawTempGeometry.cs" />
+    <Compile Include="Editor\Helpers\EditorLicenseProviderCheck.cs" />
+    <Compile Include="Editor\Helpers\EditTools.cs" />
+    <Compile Include="Editor\Helpers\ExtendLineCommandFlow.cs" />
+    <Compile Include="Editor\Helpers\FeatureSnapAgent.cs" />
+    <Compile Include="Editor\Helpers\GDCloseCommandFlow.cs" />
+    <Compile Include="Editor\Helpers\GDCommandFlow.cs" />
+    <Compile Include="Editor\Helpers\HitType.cs" />
+    <Compile Include="Editor\Helpers\ICommandFlow.cs" />
+    <Compile Include="Editor\Helpers\IntersectionSnapAgent.cs" />
+    <Compile Include="Editor\Helpers\IVerticalSnapAgent.cs" />
+    <Compile Include="Editor\Helpers\SketchCommandFlow.cs" />
+    <Compile Include="Editor\Helpers\SketchShareEx.cs" />
+    <Compile Include="Editor\Helpers\SketchToolAssist.cs" />
+    <Compile Include="Editor\Helpers\SnapHelper.cs" />
+    <Compile Include="Editor\Helpers\SpecialEditor.cs" />
+    <Compile Include="Editor\Helpers\TangentSnapAgent.cs" />
+    <Compile Include="Editor\Helpers\ThreePointArcCommandFlow.cs" />
+    <Compile Include="Editor\Helpers\TopologyError.cs" />
+    <Compile Include="Editor\Helpers\TopologyErrorSelections.cs" />
+    <Compile Include="Editor\Helpers\TrimCommandFlow.cs" />
+    <Compile Include="Editor\Helpers\VerticalSnapAgent.cs" />
+    <Compile Include="Editor\Helpers\ZDEditTools.cs" />
+    <Compile Include="Editor\ICopyMaps.cs" />
+    <Compile Include="Editor\JLKEditTemplate.cs" />
+    <Compile Include="Editor\JLKEditTemplateFactory.cs" />
+    <Compile Include="Editor\LayerMap.cs" />
+    <Compile Include="Editor\PointOperator.cs" />
+    <Compile Include="Editor\PointSnapper.cs" />
+    <Compile Include="Editor\PolygonOperator.cs" />
+    <Compile Include="Editor\PolylineOperator.cs" />
+    <Compile Include="Editor\SnappingResult.cs" />
+    <Compile Include="Framework\IMapControlForm.cs" />
+    <Compile Include="Framework\IMapWindows.cs" />
+    <Compile Include="Framework\IPopuMenuWrap.cs" />
+    <Compile Include="Framework\IShortcut.cs" />
+    <Compile Include="Framework\IToolContextMenu.cs" />
+    <Compile Include="Framework\MenuItemDef.cs" />
+    <Compile Include="Framework\OnItemClickEventHandler.cs" />
+    <Compile Include="frmMainSubProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainSubProgress.Designer.cs">
+      <DependentUpon>frmMainSubProgress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmProgress2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IAppContextEvents.cs" />
+    <Compile Include="ISnapEnvironment.cs" />
+    <Compile Include="MainSunProcessAssist.cs" />
+    <Compile Include="Data\AbstractDataAccess.cs" />
+    <Compile Include="Data\BaseConnection.cs" />
+    <Compile Include="Data\ClsReadWriteTxt.cs" />
+    <Compile Include="Data\ConnectionFactory.cs" />
+    <Compile Include="Data\DataAccessLayerBaseClass.cs" />
+    <Compile Include="Data\DataAccessLayerFactory.cs" />
+    <Compile Include="Data\DatabaseProperty.cs" />
+    <Compile Include="Data\DatabaseType.cs" />
+    <Compile Include="Data\DataProviderType.cs" />
+    <Compile Include="Data\DBAccess.cs" />
+    <Compile Include="Data\DbConnectionPara.cs" />
+    <Compile Include="Data\DbOper.cs" />
+    <Compile Include="Data\DbProviderType.cs" />
+    <Compile Include="Data\DBValueTransform.cs" />
+    <Compile Include="Data\FolderBrowser.cs" />
+    <Compile Include="Data\frmDatabaseBack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Data\GcOleDbConnection.cs" />
+    <Compile Include="Data\GcOracleConnection.cs" />
+    <Compile Include="Data\GcSqlConnection.cs" />
+    <Compile Include="Data\IConnection.cs" />
+    <Compile Include="Data\IDataAccess.cs" />
+    <Compile Include="Data\IDataAccessLayer.cs" />
+    <Compile Include="Data\ISQLSelecter.cs" />
+    <Compile Include="Data\ISQLTable.cs" />
+    <Compile Include="Data\OdbcDataAccessLayer.cs" />
+    <Compile Include="Data\OleDbDataAccessLayer.cs" />
+    <Compile Include="Data\OracleDataAccessLayer.cs" />
+    <Compile Include="Data\OracleFuctions.cs" />
+    <Compile Include="Data\PersonGDBDataAccess.cs" />
+    <Compile Include="Data\SDEDataAccess.cs" />
+    <Compile Include="Data\ShapeFileDataAccess.cs" />
+    <Compile Include="Data\SqlDataAccessLayer.cs" />
+    <Compile Include="Data\SQlDBManage.cs" />
+    <Compile Include="Data\SqlLocator.cs" />
+    <Compile Include="DXF\ArcType.cs" />
+    <Compile Include="DXF\AutoCADVersion.cs" />
+    <Compile Include="DXF\DXFArc.cs" />
+    <Compile Include="DXF\DXFData.cs" />
+    <Compile Include="DXF\DXFEllipse.cs" />
+    <Compile Include="DXF\DXFExport.cs" />
+    <Compile Include="DXF\DXFFigure.cs" />
+    <Compile Include="DXF\DXFHatch.cs" />
+    <Compile Include="DXF\DXFHatchPatternData.cs" />
+    <Compile Include="DXF\DXFIntConst.cs" />
+    <Compile Include="DXF\DXFLayer.cs" />
+    <Compile Include="DXF\DXFLine.cs" />
+    <Compile Include="DXF\DXFMText.cs" />
+    <Compile Include="DXF\DXFPixel.cs" />
+    <Compile Include="DXF\DXFPoint.cs" />
+    <Compile Include="DXF\DXFPolyBezier.cs" />
+    <Compile Include="DXF\DXFPolyline.cs" />
+    <Compile Include="DXF\DXFRectangle.cs" />
+    <Compile Include="DXF\DXFSolid.cs" />
+    <Compile Include="DXF\DXFTables.cs" />
+    <Compile Include="DXF\DXFText.cs" />
+    <Compile Include="DXF\HatchBoundaryType.cs" />
+    <Compile Include="DXF\HatchStyle.cs" />
+    <Compile Include="DXF\Line.cs" />
+    <Compile Include="DXF\Rect.cs" />
+    <Compile Include="Geodatabase\CADConvert.cs" />
+    <Compile Include="Geodatabase\CassLayer.cs" />
+    <Compile Include="Geodatabase\CASSReader.cs" />
+    <Compile Include="Geodatabase\CheckOutCheckIn.cs" />
+    <Compile Include="Geodatabase\convDataType.cs" />
+    <Compile Include="Geodatabase\Dataloaders.cs" />
+    <Compile Include="Geodatabase\E00Convert.cs" />
+    <Compile Include="Geodatabase\EnumImpl.cs" />
+    <Compile Include="Geodatabase\ExportToMiTab.cs" />
+    <Compile Include="Geodatabase\Feature.cs" />
+    <Compile Include="Geodatabase\Features.cs" />
+    <Compile Include="Geodatabase\FeaturesEnum.cs" />
+    <Compile Include="Geodatabase\FeatureType.cs" />
+    <Compile Include="Geodatabase\Field.cs" />
+    <Compile Include="Geodatabase\FieldEdit.cs" />
+    <Compile Include="Geodatabase\Fields.cs" />
+    <Compile Include="Geodatabase\FieldType.cs" />
+    <Compile Include="Geodatabase\FinishHander.cs" />
+    <Compile Include="Geodatabase\GeodatabaseTools.cs" />
+    <Compile Include="Geodatabase\GEODBTools.cs" />
+    <Compile Include="Geodatabase\GrantPrivs.cs" />
+    <Compile Include="Geodatabase\ICADConvert.cs" />
+    <Compile Include="Geodatabase\IConvertEvent.cs" />
+    <Compile Include="Geodatabase\IConvertEventEx.cs" />
+    <Compile Include="Geodatabase\IDataConvert.cs" />
+    <Compile Include="Geodatabase\IMyEnumNameMapping.cs" />
+    <Compile Include="Geodatabase\IndexedEnum.cs" />
+    <Compile Include="Geodatabase\IObjectProvider.cs" />
+    <Compile Include="Geodatabase\IProgressMessage.cs" />
+    <Compile Include="Geodatabase\ITABConvert.cs" />
+    <Compile Include="Geodatabase\Justification.cs" />
+    <Compile Include="Geodatabase\Layer.cs" />
+    <Compile Include="Geodatabase\LineSpacing.cs" />
+    <Compile Include="Geodatabase\MiApi.cs" />
+    <Compile Include="Geodatabase\MiTab2DataConvert.cs" />
+    <Compile Include="Geodatabase\MyEnumNameMapping.cs" />
+    <Compile Include="Geodatabase\MyFeatureDataConverter.cs" />
+    <Compile Include="Geodatabase\MyGeoDBDataTransfer.cs" />
+    <Compile Include="Geodatabase\MyNameMapping.cs" />
+    <Compile Include="Geodatabase\Part.cs" />
+    <Compile Include="Geodatabase\Parts.cs" />
+    <Compile Include="Geodatabase\ProgressMessageHandle.cs" />
+    <Compile Include="Geodatabase\RowOperator.cs" />
+    <Compile Include="Geodatabase\SDEToShapefile.cs" />
+    <Compile Include="Geodatabase\SetFeatureClassMaxValueHandler.cs" />
+    <Compile Include="Geodatabase\SetFeatureClassMinValueHandler.cs" />
+    <Compile Include="Geodatabase\SetFeatureClassNameEnventHandler.cs" />
+    <Compile Include="Geodatabase\SetFeatureClassPositionHandler.cs" />
+    <Compile Include="Geodatabase\SetFeatureCountEnventHandler.cs" />
+    <Compile Include="Geodatabase\SetHandleFeatureInfoHandler.cs" />
+    <Compile Include="Geodatabase\SetMaxValueHandler.cs" />
+    <Compile Include="Geodatabase\SetMessageHandler.cs" />
+    <Compile Include="Geodatabase\SetMinValueHandler.cs" />
+    <Compile Include="Geodatabase\SetPositionHandler.cs" />
+    <Compile Include="Geodatabase\ShapeLib.cs" />
+    <Compile Include="Geodatabase\TabRead.cs" />
+    <Compile Include="Geodatabase\TabWrite.cs" />
+    <Compile Include="Geodatabase\TextSpacing.cs" />
+    <Compile Include="Geodatabase\UI\IProjectForm.cs" />
+    <Compile Include="Geodatabase\UI\SRLibCommonFunc.cs" />
+    <Compile Include="Geodatabase\VCTReader.cs" />
+    <Compile Include="Geodatabase\VCTWrite.cs" />
+    <Compile Include="Geodatabase\VersioningUtil.cs" />
+    <Compile Include="Geodatabase\Vertex.cs" />
+    <Compile Include="Geodatabase\Vertices.cs" />
+    <Compile Include="Helpers\CommonHelper.cs" />
+    <Compile Include="Helpers\DsGeometryType.cs" />
+    <Compile Include="Helpers\ExportDataHelper.cs" />
+    <Compile Include="Helpers\GeometryUtility.cs" />
+    <Compile Include="Helpers\MapHelper.cs" />
+    <Compile Include="Helpers\SystemUtility.cs" />
+    <Compile Include="Helpers\DataTableHelper.cs" />
+    <Compile Include="Helpers\EsriUtils.cs" />
+    <Compile Include="Helpers\FlashHelper.cs" />
+    <Compile Include="Helpers\GeometryHelper.cs" />
+    <Compile Include="Helpers\MessageBoxHelper.cs" />
+    <Compile Include="Helpers\VersionHelper.cs" />
+    <Compile Include="Helpers\ConvertHelper.cs" />
+    <Compile Include="Helpers\DisplayHelper.cs" />
+    <Compile Include="Helpers\OtherHelper.cs" />
+    <Compile Include="Helpers\WorkspaceHelper.cs" />
+    <Compile Include="Helpers\SymbolHelper.cs" />
+    <Compile Include="Helpers\SpatialReferenceHelper.cs" />
+    <Compile Include="Helpers\ColorHelper.cs" />
+    <Compile Include="Helpers\FeatureHelper.cs" />
+    <Compile Include="Helpers\FieldHelper.cs" />
+    <Compile Include="Helpers\LayerHelper.cs" />
+    <Compile Include="Meta\MetaForm.cs" />
+    <Compile Include="Priviliges\MenuInfoHelper.cs" />
+    <Compile Include="Priviliges\MenuInfo.cs" />
+    <Compile Include="ProgressInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XmlHelper.cs" />
+    <Compile Include="Helpers\XmlHelper.cs" />
+    <Compile Include="SnapEnvironment.cs" />
+    <Compile Include="SpatialReferenctOperator.cs" />
+    <Compile Include="SymbolLib\AreaPatchDraw.cs" />
+    <Compile Include="SymbolLib\BackgroundDraw.cs" />
+    <Compile Include="SymbolLib\BorderDraw.cs" />
+    <Compile Include="SymbolLib\ColorDraw.cs" />
+    <Compile Include="SymbolLib\ColorLib.cs" />
+    <Compile Include="SymbolLib\ColorRampComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\ColorRampDraw.cs" />
+    <Compile Include="SymbolLib\ColorRampDrawEx.cs" />
+    <Compile Include="SymbolLib\FillSymbolDraw.cs" />
+    <Compile Include="SymbolLib\FillSymbolDrawEx.cs" />
+    <Compile Include="SymbolLib\FontListView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\IStyleDraw.cs" />
+    <Compile Include="SymbolLib\LabelStyleDraw.cs" />
+    <Compile Include="SymbolLib\LayerColorLockedChangedHandler.cs" />
+    <Compile Include="SymbolLib\LayerVisibleChangedHandler.cs" />
+    <Compile Include="SymbolLib\LegendItemDraw.cs" />
+    <Compile Include="SymbolLib\LinePatchDraw.cs" />
+    <Compile Include="SymbolLib\LineSymbolDraw.cs" />
+    <Compile Include="SymbolLib\LineSymbolDrawEx.cs" />
+    <Compile Include="SymbolLib\MapGridDraw.cs" />
+    <Compile Include="SymbolLib\MapSurroundDraw.cs" />
+    <Compile Include="SymbolLib\MarkerSymbolDraw.cs" />
+    <Compile Include="SymbolLib\MarkerSymbolDrawEx.cs" />
+    <Compile Include="SymbolLib\NewSymbolButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\RepresentationMarkerDraw.cs" />
+    <Compile Include="SymbolLib\RepresentationRuleDraw.cs" />
+    <Compile Include="SymbolLib\RepresentationruleListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\SelectedIndexChangedHandler.cs" />
+    <Compile Include="SymbolLib\ShadowDraw.cs" />
+    <Compile Include="SymbolLib\StyleButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\StyleComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\StyleDraw.cs" />
+    <Compile Include="SymbolLib\StyleDrawFactory.cs" />
+    <Compile Include="SymbolLib\StyleLable.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\SymbolDraw.cs" />
+    <Compile Include="SymbolLib\SymbolFind.cs" />
+    <Compile Include="SymbolLib\SymbolItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\SymbolLicenseProviderCheck.cs" />
+    <Compile Include="SymbolLib\SymbolListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\SymbolListItem.cs" />
+    <Compile Include="SymbolLib\SymbolListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\SymbolListViewEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\TextSymbolDraw.cs" />
+    <Compile Include="SymbolLib\TextSymbolDrawEx.cs" />
+    <Compile Include="Symbol\ColorManage.cs" />
+    <Compile Include="Symbol\EnumBSTRClass.cs" />
+    <Compile Include="Symbol\IBStringArray.cs" />
+    <Compile Include="Symbol\MakeBasicColors.cs" />
+    <Compile Include="Symbol\MyAreaPatchStyleGalleryClass.cs" />
+    <Compile Include="Symbol\MyBackgroundStyleGalleryClass.cs" />
+    <Compile Include="Symbol\MyBorderStyleGalleryClass.cs" />
+    <Compile Include="Symbol\MyColorRampsSymbolStyleGalleryClass.cs" />
+    <Compile Include="Symbol\MyColorSymbolStyleGalleryClass.cs" />
+    <Compile Include="Symbol\MyEnumStyleGalleryItem.cs" />
+    <Compile Include="Symbol\MyFillSymbolStyleGalleryClass.cs" />
+    <Compile Include="Symbol\MyLabelStyleGalleryClass.cs" />
+    <Compile Include="Symbol\MyLegendItemStyleGalleryClass.cs" />
+    <Compile Include="Symbol\MyLinePatchStyleGalleryClass.cs" />
+    <Compile Include="Symbol\MyLineSymbolStyleGalleryClass.cs" />
+    <Compile Include="Symbol\MyMapGridStyleGalleryClass.cs" />
+    <Compile Include="Symbol\MyMarkerSymbolStyleGalleryClass.cs" />
+    <Compile Include="Symbol\MyNorthArrowStyleGalleryClass.cs" />
+    <Compile Include="Symbol\MyScaleBarStyleGalleryClass.cs" />
+    <Compile Include="Symbol\MyScaleTextStyleGalleryClass.cs" />
+    <Compile Include="Symbol\MyShadowStyleGalleryClass.cs" />
+    <Compile Include="Symbol\MyStyleGallery.cs" />
+    <Compile Include="Symbol\MyStyleGalleryItem.cs" />
+    <Compile Include="Symbol\MyTextSymbolStyleGalleryClass.cs" />
+    <Compile Include="UtilityLicenseProviderCheck.cs" />
+    <Compile Include="Wrapper\FieldObject.cs" />
+    <Compile Include="Wrapper\FieldObject2.cs" />
+    <Compile Include="Wrapper\LayerObject.cs" />
+    <Compile Include="Wrapper\LegendItemObject.cs" />
+    <Compile Include="Wrapper\ObjectWrap.cs" />
+    <Compile Include="ZD\frmSelectEditZD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ZD\HitFeatureInfo.cs" />
+    <Compile Include="ZD\OnAfterCreateZDHandler.cs" />
+    <Compile Include="ZD\OnEndZDEditHandler.cs" />
+    <Compile Include="ZD\OnStartZDEditHandler.cs" />
+    <Compile Include="ZD\ZDChangeHistory.cs" />
+    <Compile Include="ZD\ZDChangeHistoryInfo.cs" />
+    <Compile Include="ZD\ZDChangeHistoryInfo2.cs" />
+    <Compile Include="ZD\ZDEditTools.cs" />
+    <Compile Include="ZD\ZDEditType.cs" />
+    <Compile Include="ZD\ZDHistoryManage.cs" />
+    <Compile Include="ZD\ZDHistoryTable.cs" />
+    <Compile Include="ZD\ZDHistoryTableCreate.cs" />
+    <Compile Include="ZD\ZDRegister.cs" />
+    <Compile Include="ZD\ZDRegisterTable.cs" />
+    <Compile Include="ZD\ZDRegisterTableCreate.cs" />
+    <Compile Include="ZD\ZDTableCreate.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Yutai.Plugins\Yutai.Plugins.csproj">
+      <Project>{800F2EE4-47AB-4CD4-934D-A64980D98A23}</Project>
+      <Name>Yutai.Plugins</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Yutai.Shared\Yutai.Shared.csproj">
       <Project>{4A9B3243-2B0A-4E87-9B23-71A58C1F318D}</Project>
       <Name>Yutai.Shared</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BitmapResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>BitmapResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\frmSelectEditDatasource.resx">
+      <DependentUpon>frmSelectEditDatasource.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ZD\frmSelectEditZD.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Enums\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Anno.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Area.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Line.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Point.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

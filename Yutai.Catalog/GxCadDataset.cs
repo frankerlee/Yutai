@@ -139,7 +139,7 @@ namespace Yutai.Catalog
 				}
 				catch (Exception exception)
 				{
-					//CErrorLog.writeErrorLog(null, exception, "");
+					//Logger.Current.Error("",exception, "");
 				}
 				dataset = null;
 				return dataset;
@@ -309,7 +309,7 @@ namespace Yutai.Catalog
 				}
 				catch (Exception exception)
 				{
-					//CErrorLog.writeErrorLog(null, exception, "");
+					//Logger.Current.Error("",exception, "");
 					smallImage = ImageLib.GetSmallImage(40);
 					return smallImage;
 				}
@@ -376,7 +376,7 @@ namespace Yutai.Catalog
 				}
 				catch (Exception exception)
 				{
-					//CErrorLog.writeErrorLog(null, exception, "");
+					//Logger.Current.Error("",exception, "");
 					smallImage = ImageLib.GetSmallImage(40);
 					return smallImage;
 				}
@@ -531,7 +531,7 @@ namespace Yutai.Catalog
 			}
 			catch (Exception exception)
 			{
-				//CErrorLog.writeErrorLog(null, exception, "");
+				//Logger.Current.Error("",exception, "");
 			}
 		}
 
@@ -589,7 +589,7 @@ namespace Yutai.Catalog
 			}
 			catch (Exception exception)
 			{
-				//CErrorLog.writeErrorLog(null, exception, "");
+				//Logger.Current.Error("",exception, "");
 			}
 		}
 
@@ -643,7 +643,7 @@ namespace Yutai.Catalog
 			}
 			catch (Exception exception)
 			{
-				//CErrorLog.writeErrorLog(null, exception, "");
+				//Logger.Current.Error("",exception, "");
 			}
 		}
 

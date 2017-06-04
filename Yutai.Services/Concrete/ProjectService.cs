@@ -65,10 +65,10 @@ namespace Yutai.Services.Concrete
         {
             get
             {
-               /* if (_context.Map.Projection.IsEmpty && _context.Map.Layers.Count == 0)
+                if ( _context.MapControl.Map.LayerCount == 0)
                 {
                     return ProjectState.Empty;
-                }*/
+                }
 
                 if (string.IsNullOrWhiteSpace(_filename))
                 {
@@ -279,7 +279,7 @@ namespace Yutai.Services.Concrete
             //}
 
             // let's redraw map before hiding the progress
-            _loadingForm.ShowProgress(100, "Rendering map...");
+            _loadingForm.ShowProgress(100, "请等待，正在加载地图...");
             //_context.Map.Redraw();
             _context.View.Unlock();
 

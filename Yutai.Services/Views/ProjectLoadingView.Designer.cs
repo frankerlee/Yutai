@@ -40,7 +40,7 @@
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(54, 13);
             this.lblMessage.TabIndex = 1;
-            this.lblMessage.Text = "Loading...";
+            this.lblMessage.Text = "引导中...";
             // 
             // progressBarAdv1
             // 

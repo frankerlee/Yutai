@@ -17,6 +17,7 @@ using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Mvp;
 using Yutai.Plugins.Services;
 using Yutai.Shared;
+using Yutai.UI.Menu.Ribbon;
 
 namespace Yutai.Views
 {
@@ -91,8 +92,8 @@ namespace Yutai.Views
 
                 SplashView.Instance.ShowStatus("Loading plugins");
                  appContext.InitPlugins(configService); // must be called after docking is initialized
-                
 
+                _context.RibbonMenu.ReorderTabs();
                 // this will display progress updates and debug window
                 // file based-logger is already working
                 Logger.Current.Init(appContext);

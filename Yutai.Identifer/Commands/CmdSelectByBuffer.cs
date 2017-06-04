@@ -27,7 +27,7 @@ namespace Yutai.Plugins.Identifer.Commands
             get
             {
                 bool flag;
-                if (_context.MapControl.Map == null)
+                if (_context.MapControl == null || _context.MapControl.Map == null)
                 {
                     flag = false;
                 }
@@ -63,6 +63,7 @@ namespace Yutai.Plugins.Identifer.Commands
 
         public override void OnCreate(object hook)
         {
+            _context = hook as IAppContext;
             base.m_bitmap = Properties.Resources.icon_select_buffer;
 
             base.m_toolTip = "缓冲区选择";

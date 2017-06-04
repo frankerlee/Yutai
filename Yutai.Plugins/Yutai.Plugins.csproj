@@ -123,6 +123,9 @@
     <Compile Include="Interfaces\ICommandSubType.cs" />
     <Compile Include="Interfaces\IDockPanelPresenter.cs" />
     <Compile Include="Interfaces\IRibbonItem.cs" />
+    <Compile Include="Interfaces\IRibbonMenu.cs" />
+    <Compile Include="Interfaces\IRibbonMenuIndex.cs" />
+    <Compile Include="Interfaces\IRibbonMenuItem.cs" />
     <Compile Include="Interfaces\IToolStripTabItem.cs" />
     <Compile Include="Mvp\CommandDispatcher.cs" />
     <Compile Include="Mvp\IMenuProvider.cs" />

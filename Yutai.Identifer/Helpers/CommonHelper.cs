@@ -1375,7 +1375,7 @@ namespace Yutai.Plugins.Identifer.Helpers
             }
             catch (Exception exception)
             {
-                //  CErrorLog.writeErrorLog(null, exception, "");
+                //  Logger.Current.Error("",exception, "");
             }
         }
 
@@ -1621,7 +1621,7 @@ namespace Yutai.Plugins.Identifer.Helpers
             }
             catch (Exception exception)
             {
-                // CErrorLog.writeErrorLog(null, exception, "");
+                // Logger.Current.Error("",exception, "");
             }
         }
 
@@ -1661,7 +1661,7 @@ namespace Yutai.Plugins.Identifer.Helpers
             }
             catch (Exception exception)
             {
-                // CErrorLog.writeErrorLog(null, exception, "");
+                // Logger.Current.Error("",exception, "");
             }
         }
 
@@ -1755,7 +1755,7 @@ namespace Yutai.Plugins.Identifer.Helpers
             }
             catch (Exception exception)
             {
-                //CErrorLog.writeErrorLog(null, exception, "");
+                //Logger.Current.Error("",exception, "");
             }
         }
 
@@ -1781,7 +1781,7 @@ namespace Yutai.Plugins.Identifer.Helpers
             }
             catch (Exception exception)
             {
-                // CErrorLog.writeErrorLog(null, exception, "");
+                // Logger.Current.Error("",exception, "");
             }
         }
 
@@ -1800,7 +1800,7 @@ namespace Yutai.Plugins.Identifer.Helpers
             }
             catch (Exception exception)
             {
-                // CErrorLog.writeErrorLog(null, exception, "");
+                // Logger.Current.Error("",exception, "");
             }
         }
 

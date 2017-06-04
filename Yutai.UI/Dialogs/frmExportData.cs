@@ -16,6 +16,7 @@ using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 using Yutai.ArcGIS.Common;
+using Yutai.ArcGIS.Common.Helpers;
 using Yutai.Catalog;
 using Yutai.Plugins.Services;
 using Path = System.IO.Path;

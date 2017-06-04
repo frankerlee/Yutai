@@ -46,7 +46,7 @@ namespace Yutai.UI.Dialogs
             }
             catch (Exception exception)
             {
-                //CErrorLog.writeErrorLog(null, exception, "GxCatalog");
+                //Logger.Current.Error("",exception, "GxCatalog");
             }
         }
 

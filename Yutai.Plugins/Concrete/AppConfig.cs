@@ -9,6 +9,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using ESRI.ArcGIS.Carto;
+using ESRI.ArcGIS.Controls;
 using Yutai.Api.Enums;
 using Yutai.Plugins.Enums;
 using Yutai.Shared;
@@ -20,6 +21,20 @@ namespace Yutai.Plugins.Concrete
     {
         private List<Guid> _applicationPlugins;
         private CoordinatesDisplay _coordinatesDisplay;
+        private PyramidPromptType _pyramidPromptType;
+        private bool _useSnap;
+        private bool _isSnapSketch;
+        private IEngineSnapEnvironment _engineSnapEnvironment;
+        private bool _isSnapPoint;
+        private bool _isSnapIntersectionPoint;
+        private bool _isSnapEndPoint;
+        private bool _isSnapVertexPoint;
+        private bool _isSnapMiddlePoint;
+        private bool _isSnapBoundary;
+        private bool _isSupportZd;
+        private IEngineSnapEnvironment _snapEnvironment;
+        private bool _isInEdit;
+        private bool _canEdited;
 
         public AppConfig()
         {
@@ -48,6 +63,7 @@ namespace Yutai.Plugins.Concrete
                     new Guid("e7598649-d49b-45fa-b020-57e2dd777337") ,//信息查看器
                     new Guid("2b81c89a-ee45-4276-9dc1-72bbbf07f53f"),//定位器
                     new Guid("01f8e32a-5837-431f-9c1b-5d0f195fb93e"),// 书签管理
+                    new Guid("4a3bcaab-9d3e-4ca7-a19d-7ee08fb0629e")// 编辑
                 };
                
             }
@@ -176,9 +192,101 @@ namespace Yutai.Plugins.Concrete
 
         [DataMember]
         public int LocatorMaxCount { get; set; }
+        [DataMember]
+        public PyramidPromptType PyramidPromptType
+        {
+            get { return _pyramidPromptType; }
+            set { _pyramidPromptType = value; }
+        }
+        [DataMember]
+        public bool UseSnap
+        {
+            get { return _useSnap; }
+            set { _useSnap = value; }
+        }
+        [DataMember]
+        public bool IsSnapSketch
+        {
+            get { return _isSnapSketch; }
+            set { _isSnapSketch = value; }
+        }
+        [DataMember]
+        public IEngineSnapEnvironment EngineSnapEnvironment
+        {
+            get { return _engineSnapEnvironment; }
+            set { _engineSnapEnvironment = value; }
+        }
+        [DataMember]
+        public bool IsSnapPoint
+        {
+            get { return _isSnapPoint; }
+            set { _isSnapPoint = value; }
+        }
+        [DataMember]
+        public bool IsSnapIntersectionPoint
+        {
+            get { return _isSnapIntersectionPoint; }
+            set { _isSnapIntersectionPoint = value; }
+        }
+        [DataMember]
+        public bool IsSnapEndPoint
+        {
+            get { return _isSnapEndPoint; }
+            set { _isSnapEndPoint = value; }
+        }
+        [DataMember]
+        public bool IsSnapVertexPoint
+        {
+            get { return _isSnapVertexPoint; }
+            set { _isSnapVertexPoint = value; }
+        }
+        [DataMember]
+        public bool IsSnapMiddlePoint
+        {
+            get { return _isSnapMiddlePoint; }
+            set { _isSnapMiddlePoint = value; }
+        }
+        [DataMember]
+        public bool IsSnapBoundary
+        {
+            get { return _isSnapBoundary; }
+            set { _isSnapBoundary = value; }
+        }
+        [DataMember]
+        public bool IsSupportZD
+        {
+            get { return _isSupportZd; }
+            set { _isSupportZd = value; }
+        }
+
+        public IEngineSnapEnvironment SnapEnvironment
+        {
+            get { return _snapEnvironment; }
+            set { _snapEnvironment = value; }
+        }
+
+        public bool IsInEdit
+        {
+            get { return _isInEdit; }
+            set { _isInEdit = value; }
+        }
+
+        public bool CanEdited
+        {
+            get { return _canEdited; }
+            set { _canEdited = value; }
+        }
+
         private void SetDefaults()
         {
             Logger.Current.Trace("开始设置配置默认值");
+            #region 编辑部分设置
+
+            _canEdited = true;
+            _isInEdit = false;
+            #endregion
+
+
             LocatorMaxCount = 100;
 
             MapViewStyle = MapViewStyle.View2D;

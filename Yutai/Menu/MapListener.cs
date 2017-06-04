@@ -45,6 +45,7 @@ namespace Yutai.Menu
             _mapEvents.OnExtentUpdated+= MapEventsOnOnExtentUpdated;
             _mapEvents.OnSelectionChanged+= MapEventsOnOnSelectionChanged;
             
+            
            
         }
 

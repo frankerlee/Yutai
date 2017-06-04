@@ -16,6 +16,7 @@ using Yutai.Plugins.Enums;
 using Yutai.Plugins.Events;
 using Yutai.Plugins.Identifer.Helpers;
 using Yutai.Plugins.Interfaces;
+using Yutai.UI.Helpers;
 using Cursor = System.Windows.Forms.Cursor;
 
 namespace Yutai.Plugins.Identifer.Commands
@@ -61,10 +62,11 @@ namespace Yutai.Plugins.Identifer.Commands
             
             ToolStripItem strip= sender as ToolStripItem;
             if (strip.Name == _basicName) return;
-           
-            CmdSelectByMouse tag = strip.Tag as CmdSelectByMouse;
-            _context.SetCurrentTool(tag);
+            //CmdSelectByMouse tag = strip.Tag as CmdSelectByMouse;
+            SetSubType(RibbonHelper.CalculateSubTypeFromName(strip.Name));
+            _context.SetCurrentTool(this);
         }
+        
 
         public override void OnCreate(object hook)
         {

@@ -3,9 +3,11 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Geometry;
 using Yutai.Plugins.Concrete;
+using Yutai.Plugins.Enums;
 using Yutai.Plugins.Mvp;
 
 namespace Yutai.Plugins.Interfaces
@@ -43,6 +45,8 @@ namespace Yutai.Plugins.Interfaces
 
         bool SetCurrentTool(YutaiTool tool);
 
+        string CurrentToolName { get; }
+
         IGeometry BufferGeometry
         {
             get;
@@ -50,5 +54,10 @@ namespace Yutai.Plugins.Interfaces
         }
 
 
+        void ShowCommandString(string msg, CommandTipsType tipType);
+
+        void SetStatus(string empty);
+        void UpdateUI();
+        void SetToolTip(string str);
     }
 }

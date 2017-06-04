@@ -31,13 +31,14 @@ namespace Yutai.Plugins.Identifer.Menu
         }
         public override IEnumerable<YutaiCommand> GetCommands()
         {
-            if (_commands == null)
-            {
+            //第一次被初始化的时候Plugin为空，出现错误，所以在创建菜单的时候重新进行了初始化。
+            //if (_commands == null)
+            //{
                 _commands = new List<YutaiCommand>()
             {
                 new YutaiMenuCommand(RibbonItemType.ToolStrip, "View", "View.Info", "View.Info", "查看要素", "", ""),
                 new CmdViewIdentifier(_context, _plugin) as YutaiCommand,
-                new YutaiMenuCommand(RibbonItemType.TabItem, "Query", "Query", "Query", "查询", "", ""),
+                new YutaiMenuCommand(RibbonItemType.TabItem, "Query", "Query", "Query", "查询", "", ""){Position = 3},
                 new YutaiMenuCommand(RibbonItemType.ToolStrip, "Query", "Query.Common", "Query.Common", "查询", "", ""),
                 new CmdStartQueryBuilder(_context) as YutaiCommand,
                 new CmdStartQueryLocation(_context) as YutaiCommand,
@@ -67,7 +68,7 @@ namespace Yutai.Plugins.Identifer.Menu
                     continue;
                 _commandKeys.Add(command.Name);
             }
-           }
+           //}
             return _commands;
         }
     }

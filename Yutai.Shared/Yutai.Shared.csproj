@@ -101,10 +101,10 @@
     <Compile Include="AssemblyHelper.cs" />
     <Compile Include="AttributeHelper.cs" />
     <Compile Include="BooleanHelper.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="frmProgress2.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ProcessAssist.cs" />
     <Compile Include="WorkspaceOperator.cs" />
     <Compile Include="ClipboardHelper.cs" />
     <Compile Include="ColorHelper.cs" />

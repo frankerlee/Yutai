@@ -21,6 +21,9 @@ namespace Yutai.UI.Menu.Ribbon
         private bool _needsToolTip;
         private RibbonControlAdv _ribbonManager;
 
+        private IEnumerable<IRibbonMenuItem> _cmdItems;
+       
+
         //暂时性的事件触发没有在这儿进行
         public event EventHandler<MenuItemEventArgs> ItemClicked;
 
@@ -226,6 +229,7 @@ namespace Yutai.UI.Menu.Ribbon
             button.DisplayStyle = (ToolStripItemDisplayStyle)((int)item.DisplayStyleYT);
             button.TextImageRelation = (TextImageRelation)item.TextImageRelationYT;
             button.ImageScaling = (ToolStripItemImageScaling)item.ToolStripItemImageScalingYT;
+            button.Enabled = item.Enabled;
 
             if (item is YutaiCommand)
             {
@@ -293,7 +297,8 @@ namespace Yutai.UI.Menu.Ribbon
             {
                 Text = item.Caption,
                 Name = item.Name,
-                Tag = item
+                Tag = item,
+                GroupedButtons = item.IsGroup
             };
             if (item.Position >= 0) stripItem.TabIndex = item.Position;
             try
@@ -302,6 +307,7 @@ namespace Yutai.UI.Menu.Ribbon
                 RibbonMenuItem menuItem = new RibbonMenuItem(item.Key, item, stripItem);
                 menuItem.ParentKey = parentMenu.Key;
                 ((ToolStripTabItem)parentMenu.ToolStripItem).Panel.Controls.Add(stripItem);
+                stripItem.GroupedButtons = item.IsGroup;
                 _items.Add(menuItem);
             }
             catch (Exception ex)
@@ -316,10 +322,12 @@ namespace Yutai.UI.Menu.Ribbon
             {
                 Text = item.Caption,
                 Name = item.Name,
-                Tag = item
+                Tag = item,
+                Position = item.Position>=0?item.Position:10
+                
             };
 
-            if (item.Position >= 0) tabItem.Position = item.Position;
+            //if (item.Position >= 0) tabItem.Position = item.Position;
             try
             {
                 RibbonMenuItem menuItem=new RibbonMenuItem(item.Key,item,tabItem);
@@ -392,6 +400,72 @@ namespace Yutai.UI.Menu.Ribbon
         {
             _items.Clear();
             //后面需要增加删除真实界面的代码
+        }
+
+        public void ReorderTabs()
+        {
+            //按照顺序进行排序，然后加入
+            var tabItems = from item in _items
+                where item.Item.ItemType == RibbonItemType.TabItem
+                orderby item.Item.Position descending select item;
+            if (tabItems == null)
+            {
+                StartToolStripGroups();
+                return;
+            }
+            int max = tabItems.Count() - 1;
+            if (max < 0)
+            { StartToolStripGroups();
+                return;}
+            int i = 0;
+            foreach (var tabItem in tabItems)
+            {
+                ((ToolStripTabItem) tabItem.ToolStripItem).Position = max;
+                max--;
+            }
+            StartToolStripGroups();
+            
+        }
+
+        public void UpdateMenu()
+        {
+            if (_cmdItems == null)
+            {
+                 _cmdItems = from item in _items
+                    where
+                    item.Item.ItemType != RibbonItemType.TabItem && item.Item.ItemType != RibbonItemType.Group &&
+                    item.Item.ItemType != RibbonItemType.Panel && item.Item.ItemType != RibbonItemType.ToolStrip
+                    select item;
+
+            }
+            if (_cmdItems == null) return;
+            foreach (IRibbonMenuItem cmdItem in _cmdItems)
+            {
+                if(cmdItem.Item is YutaiCommand)
+                cmdItem.ToolStripItem.Enabled = ((YutaiCommand)cmdItem.Item).Enabled;
+            }
+        }
+        public IEnumerable<IRibbonMenuItem> RibbonMenuItems
+        {
+            get { return _items; }
+        }
+
+        public void StartToolStripGroups()
+        {
+            var stripItems = from item in _items
+                           where item.Item.ItemType == RibbonItemType.ToolStrip && item.Item.IsGroup==true
+                           select item;
+            foreach (var strip in stripItems)
+            {
+                ToolStripEx stripEx = ((ToolStripEx) strip.ToolStrip);
+                if (stripEx.Image==null)
+                 ((ToolStripEx) strip.ToolStrip).Image = ((ToolStripEx) strip.ToolStrip).Items[0].Image;
+                stripEx.CollapsedDropDownButtonText = stripEx.Text;
+                stripEx.GroupedButtons = true;
+
+            }
+
+            _ribbonManager.Update();
         }
     }
 }

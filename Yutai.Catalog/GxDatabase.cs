@@ -706,7 +706,7 @@ namespace Yutai.Catalog
 						return;
 					}
 				}
-			//	CErrorLog.writeErrorLog(null, exception, "");
+			//	Logger.Current.Error("",exception, "");
 			}
 		}
 

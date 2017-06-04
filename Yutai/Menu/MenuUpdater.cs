@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
 using Yutai.Plugins.Concrete;
+using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
 using Yutai.UI.Menu;
 
@@ -34,17 +35,18 @@ namespace Yutai.Menu
 
         private void UpdateMenu()
         {
+            _context.RibbonMenu.UpdateMenu();
            
-            foreach(var key in _commandKeys)
-            {
-                IRibbonMenuItem item=_context.RibbonMenu.FindItem(key);
-                if (item == null) continue;
-                item.ToolStripItem.Enabled = ((YutaiCommand) item.Item).Enabled;
-                if (item.ToolStripItem is ToolStripButton)
-                {
-                    ((ToolStripButton )item.ToolStripItem).Checked= ((YutaiCommand)item.Item).Checked;
-                }
-            }
+            //foreach(var key in _commandKeys)
+            //{
+            //    IRibbonMenuItem item=_context.RibbonMenu.FindItem(key);
+            //    if (item == null) continue;
+            //    item.ToolStripItem.Enabled = ((YutaiCommand) item.Item).Enabled;
+            //    if (item.ToolStripItem is ToolStripButton && item.Item.ItemType== RibbonItemType.Tool)
+            //    {
+            //        ((ToolStripButton) item.ToolStripItem).Checked = item.Key == _context.CurrentToolName;
+            //    }
+            //}
             //var layer = _legend.Layers.Current;
             //FindMenuItem(MenuKeys.RemoveLayer).Enabled = layer != null;
             //FindMenuItem(MenuKeys.LayerClearSelection).Enabled = layer != null && layer.IsVector;

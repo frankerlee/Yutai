@@ -13,9 +13,11 @@ using Syncfusion.Grouping;
 using Syncfusion.Windows.Forms.Grid;
 using Syncfusion.Windows.Forms.Grid.Grouping;
 using Yutai.ArcGIS.Common;
+using Yutai.ArcGIS.Common.Helpers;
 using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Services;
 using Yutai.Services.Serialization;
+using WorkspaceHelper = Yutai.ArcGIS.Common.Helpers.WorkspaceHelper;
 
 namespace Yutai.Plugins.Locator.Views
 {
@@ -70,7 +72,7 @@ namespace Yutai.Plugins.Locator.Views
             XmlLocator locator = FindLocatorByName(comboBoxAdv1.SelectedItem.ToString());
             if (locator == null) return;
             _map = _context.MapControl.Map as IMap;
-            ILayer pLayer = Yutai.ArcGIS.Common.LayerHelper.QueryLayerByDisplayName(_map, locator.Layer);
+            ILayer pLayer = LayerHelper.QueryLayerByDisplayName(_map, locator.Layer);
             if (pLayer == null)
             {
                 MessageService.Current.Warn("找不到定位所需的图层"+locator.Layer);
@@ -99,7 +101,7 @@ namespace Yutai.Plugins.Locator.Views
             if (_searchCount > _context.Config.LocatorMaxCount) return;
             IQueryFilter queryFilter=new QueryFilter();
             IFeatureClass pClass = ((IFeatureLayer) pSubLayer).FeatureClass;
-            string likeStr = Yutai.ArcGIS.Common.WorkspaceHelper.GetSpecialCharacter(pClass as IDataset,
+            string likeStr = WorkspaceHelper.GetSpecialCharacter(pClass as IDataset,
                 esriSQLSpecialCharacters.esriSQL_WildcardManyMatch);
             if (!string.IsNullOrEmpty(searchKey))
             {
@@ -231,8 +233,8 @@ namespace Yutai.Plugins.Locator.Views
             IGeometry geometry = args.SelectedRecord.Record["要素"] as IGeometry;
             if (ZoomToShape)
             {
-                Yutai.ArcGIS.Common.EsriUtils.ZoomToGeometry(geometry, _map, 2);
-                Yutai.ArcGIS.Common.FlashUtility.FlashGeometry(geometry, _context.MapControl);
+                EsriUtils.ZoomToGeometry(geometry, _map, 2);
+                FlashUtility.FlashGeometry(geometry, _context.MapControl);
             }
         }
 
@@ -322,8 +324,8 @@ namespace Yutai.Plugins.Locator.Views
             if(_oldRow ==rec.Id)return;
             if (ZoomToShape)
             {
-                Yutai.ArcGIS.Common.EsriUtils.ZoomToGeometry(geometry, _map, 2);
-                Yutai.ArcGIS.Common.FlashUtility.FlashGeometry(geometry, _context.MapControl);
+                EsriUtils.ZoomToGeometry(geometry, _map, 2);
+                FlashUtility.FlashGeometry(geometry, _context.MapControl);
             }
             _oldRow = rec.Id;
         }

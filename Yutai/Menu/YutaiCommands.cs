@@ -35,7 +35,7 @@ namespace Yutai.Menu
             {
                 _commands = new List<YutaiCommand>()
                 {
-                    new YutaiMenuCommand(RibbonItemType.TabItem, "File", "File", "File", "文件", "", ""),
+                    new YutaiMenuCommand(RibbonItemType.TabItem, "File", "File", "File", "文件", "", "") {Position = 0},
                     new YutaiMenuCommand(RibbonItemType.ToolStrip, "File", "File.Document", "File.Document", "项目", "",
                         "") ,
                     new CmdNewYutaiDoc(_context),
@@ -54,7 +54,7 @@ namespace Yutai.Menu
                     new CmdOpenSceneDocument(_context),
                     new CmdSaveSceneDocument(_context),
                     new CmdCloseSceneDocument(_context),
-                    new YutaiMenuCommand(RibbonItemType.TabItem, "View", "View", "View", "视图", "", ""),
+                    new YutaiMenuCommand(RibbonItemType.TabItem, "View", "View", "View", "视图", "", ""){Position = 2},
                     new YutaiMenuCommand(RibbonItemType.ToolStrip, "View", "View.Common", "View.Common", "视图控制", "", ""),
                     new CmdViewZoomIn(_context) as YutaiCommand,
                     new CmdViewZoomOut(_context) as YutaiCommand,
@@ -64,10 +64,10 @@ namespace Yutai.Menu
                     new CmdViewFullExtent(_context) as YutaiCommand,
                     new CmdViewZoomPrev(_context) as YutaiCommand,
                     new CmdViewZoomNext(_context) as YutaiCommand,
-                    new YutaiMenuCommand(RibbonItemType.ToolStrip, "View", "View.Measure", "View.Measure", "量测工具", "", ""),
+                    new YutaiMenuCommand(RibbonItemType.ToolStrip, "View", "View.Measure", "View.Measure", "量测工具", "", "") {IsGroup = true},
                      new CmdViewMeasureLength(_context) as YutaiCommand,
                       new CmdViewMeasureArea(_context) as YutaiCommand,
-                      new YutaiMenuCommand(RibbonItemType.TabItem, "Window", "Window", "Window", "窗口", "", ""),
+                      new YutaiMenuCommand(RibbonItemType.TabItem, "Window", "Window", "Window", "窗口", "", ""){Position =10},
                     new YutaiMenuCommand(RibbonItemType.ToolStrip, "Window", "Window.Common", "Window.Common", "窗口控制", "", ""),
                     new CmdLegendDock(_context) as YutaiCommand,
                     new CmdOverviewDock(_context) as YutaiCommand

@@ -6,6 +6,22 @@ using System.Threading.Tasks;
 
 namespace Yutai.Plugins.Enums
 {
+    public enum PyramidPromptType
+    {
+        AlwaysPrompt,
+        AlwaysBuildNoPrompt,
+        NeverBuildNoPrompt
+    }
+    public enum CommandTipsType
+    {
+        CTTCommandName,
+        CTTCommandTip,
+        CTTInput,
+        CTTEnd,
+        CTTLog,
+        CTTActiveEnd,
+        CTTUnKnown
+    }
     public enum TextImageRelationYT
     {
         ImageAboveText = 1,

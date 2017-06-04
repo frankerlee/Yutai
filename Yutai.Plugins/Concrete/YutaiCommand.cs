@@ -38,6 +38,7 @@ namespace Yutai.Plugins.Concrete
         private int _panelRowCount;
         private string _parentName;
         private int _position=-1;
+        private bool _isGroup;
 
         public  Keys ShortcutKeys { get; set; }
         public PluginIdentity PluginIdentity { get; internal set; }
@@ -70,6 +71,12 @@ namespace Yutai.Plugins.Concrete
         {
             get { return _panelRowCount; }
             set { _panelRowCount = value; }
+        }
+
+        public bool IsGroup
+        {
+            get { return _isGroup; }
+            set { _isGroup = value; }
         }
 
 

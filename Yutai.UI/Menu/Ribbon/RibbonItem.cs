@@ -29,6 +29,7 @@ namespace Yutai.UI.Menu.Ribbon
         private int _panelRowCount;
         private int _position;
         private string _parentName;
+        private bool _isGroup;
 
         public RibbonItem(IRibbonItem source,string newName)
         {
@@ -151,6 +152,12 @@ namespace Yutai.UI.Menu.Ribbon
         {
             get { return _panelRowCount; }
             set { _panelRowCount = value; }
+        }
+
+        public bool IsGroup
+        {
+            get { return _isGroup; }
+            set { _isGroup = value; }
         }
     }
 }

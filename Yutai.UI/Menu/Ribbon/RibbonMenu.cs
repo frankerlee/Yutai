@@ -25,6 +25,25 @@ namespace Yutai.UI.Menu.Ribbon
             _menuIndex = menuIndex;
           
         }
+
+        public void ChangeCurrentTool(string oldToolName, string nowToolName)
+        {
+            IRibbonMenuItem oldItem = string.IsNullOrEmpty(oldToolName) ? null : FindItem(oldToolName);
+            IRibbonMenuItem newItem = string.IsNullOrEmpty(nowToolName) ? null : FindItem(nowToolName);
+            if (oldItem != null) ((ToolStripButton) oldItem.ToolStripItem).Checked = false;
+            if (newItem != null) ((ToolStripButton)newItem.ToolStripItem).Checked = true;
+        }
+
+        public void UpdateMenu()
+        {
+            _menuIndex.UpdateMenu();
+        }
+
+        public void ReorderTabs()
+        {
+            _menuIndex.ReorderTabs();
+        }
+
         public IRibbonMenuItem FindItem(string key)
         {
             return _menuIndex.FindItem(key);

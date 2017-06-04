@@ -593,7 +593,7 @@ namespace Yutai.Catalog
 			}
 			catch (Exception exception)
 			{
-				//CErrorLog.writeErrorLog(null, exception, "");
+				//Logger.Current.Error("",exception, "");
 			}
 			layer = null;
 			return layer;

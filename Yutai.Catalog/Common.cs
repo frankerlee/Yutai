@@ -1379,7 +1379,7 @@ namespace Yutai.Catalog
             }
             catch (Exception exception)
             {
-                //  CErrorLog.writeErrorLog(null, exception, "");
+                //  Logger.Current.Error("",exception, "");
             }
         }
 
@@ -1625,7 +1625,7 @@ namespace Yutai.Catalog
             }
             catch (Exception exception)
             {
-                // CErrorLog.writeErrorLog(null, exception, "");
+                // Logger.Current.Error("",exception, "");
             }
         }
 
@@ -1665,7 +1665,7 @@ namespace Yutai.Catalog
             }
             catch (Exception exception)
             {
-                // CErrorLog.writeErrorLog(null, exception, "");
+                // Logger.Current.Error("",exception, "");
             }
         }
 
@@ -1759,7 +1759,7 @@ namespace Yutai.Catalog
             }
             catch (Exception exception)
             {
-                //CErrorLog.writeErrorLog(null, exception, "");
+                //Logger.Current.Error("",exception, "");
             }
         }
 
@@ -1785,7 +1785,7 @@ namespace Yutai.Catalog
             }
             catch (Exception exception)
             {
-                // CErrorLog.writeErrorLog(null, exception, "");
+                // Logger.Current.Error("",exception, "");
             }
         }
 
@@ -1804,7 +1804,7 @@ namespace Yutai.Catalog
             }
             catch (Exception exception)
             {
-                // CErrorLog.writeErrorLog(null, exception, "");
+                // Logger.Current.Error("",exception, "");
             }
         }
 
