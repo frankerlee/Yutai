@@ -50,23 +50,23 @@ namespace Yutai.Helper
 
         public static void SetViewStyle(this ISecureContext context, MapViewStyle viewStyle)
         {
-            TabSplitterContainer tabContainer = context.MainView.MapContainer as TabSplitterContainer;
-            if (viewStyle == MapViewStyle.View2D)
-            {
-                tabContainer.PrimaryPages[0].Hide = false;
-                tabContainer.SecondaryPages[0].Hide = true;
-            }
-            if (viewStyle == MapViewStyle.View3D)
-            {
-                tabContainer.SecondaryPages[0].Hide = false;
-                tabContainer.PrimaryPages[0].Hide = true;
-            }
-            if (viewStyle == MapViewStyle.ViewAll)
-            {
-                tabContainer.SecondaryPages[0].Hide = false;
-                tabContainer.PrimaryPages[0].Hide = false;
-            }
-            tabContainer.Update();
+            //TabSplitterContainer tabContainer = context.MainView.MapContainer as TabSplitterContainer;
+            //if (viewStyle == MapViewStyle.View2D)
+            //{
+            //    tabContainer.PrimaryPages[0].Hide = false;
+            //    tabContainer.SecondaryPages[0].Hide = true;
+            //}
+            //if (viewStyle == MapViewStyle.View3D)
+            //{
+            //    tabContainer.SecondaryPages[0].Hide = false;
+            //    tabContainer.PrimaryPages[0].Hide = true;
+            //}
+            //if (viewStyle == MapViewStyle.ViewAll)
+            //{
+            //    tabContainer.SecondaryPages[0].Hide = false;
+            //    tabContainer.PrimaryPages[0].Hide = false;
+            //}
+            //tabContainer.Update();
         }
       private static void InitMapLegend(ISecureContext context)
         {

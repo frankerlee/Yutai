@@ -109,6 +109,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompositionRoot.cs" />
+    <Compile Include="Controls\ConfigPageBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ConfigPageBase.Designer.cs">
+      <DependentUpon>ConfigPageBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ConfigPageControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ConfigPageControl.Designer.cs">
+      <DependentUpon>ConfigPageControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ConfigPanelControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ConfigPanelControl.Designer.cs">
+      <DependentUpon>ConfigPanelControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\GISDataComboBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -152,11 +170,20 @@
     <Compile Include="Forms\MapWindowForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\MainWindowView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainWindowView.Designer.cs">
+      <DependentUpon>MainWindowView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MapWindowView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\MapWindowView.Designer.cs">
       <DependentUpon>MapWindowView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MapWindowView2.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Helpers\ComboBoxEnumItem.cs" />
     <Compile Include="Helpers\ComboBoxHelper.cs" />
@@ -254,6 +281,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\frmExportData.resx">
       <DependentUpon>frmExportData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainWindowView.resx">
+      <DependentUpon>MainWindowView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MapWindowView.resx">
       <DependentUpon>MapWindowView.cs</DependentUpon>

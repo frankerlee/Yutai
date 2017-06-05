@@ -116,7 +116,7 @@ namespace Yutai.Views
         {
             Application.DoEvents();
 
-           LoadLastProject();
+          // LoadLastProject();
         }
 
         public override bool ViewOkClicked()

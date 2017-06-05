@@ -90,6 +90,13 @@ namespace Yutai.Plugins.Concrete
         public bool UsingRibbon { get; set; }
 
         [DataMember]
+        public bool LoadLastProject { get; set; }
+        [DataMember]
+        public bool LocalDocumentation { get; set; }
+        [DataMember]
+        public string LastConfigPage { get; set; }
+
+        [DataMember]
         public int MeasurementsAreaPrecision { get; set; }
 
         [DataMember]
@@ -283,8 +290,9 @@ namespace Yutai.Plugins.Concrete
             get { return _isSnapTangent; }
             set { _isSnapTangent = value; }
         }
+       
 
-        private void SetDefaults()
+        internal void SetDefaults()
         {
             Logger.Current.Trace("开始设置配置默认值");
             #region 编辑部分设置
@@ -315,6 +323,10 @@ namespace Yutai.Plugins.Concrete
             {
                 
             };
+
+            LoadLastProject = true;
+            LocalDocumentation = false;
+
             /*  GridFavorGreyscale = true;
               GridDefaultColorScheme = PredefinedColors.SummerMountains;
               GridRandomColorScheme = true;
@@ -323,9 +335,9 @@ namespace Yutai.Plugins.Concrete
               InnertiaOnPanning = AutoToggle.Auto;
               LastProjectPath = "";
               LegendExpandLayersOnAdding = true;
-              LoadLastProject = true;
+              
               LoadSymbology = true;
-              LocalDocumentation = false;*/
+              */
             MapBackgroundColor = Color.White;
             //MeasurementsAreaFieldName = "Area";
             MeasurementsAreaPrecision = 3;

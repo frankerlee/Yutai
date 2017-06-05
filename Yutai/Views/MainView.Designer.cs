@@ -36,6 +36,9 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.parentBarItem3 = new Syncfusion.Windows.Forms.Tools.XPMenus.ParentBarItem();
             this.dockingClientPanel1 = new Syncfusion.Windows.Forms.Tools.DockingClientPanel();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.axMapControl1 = new ESRI.ArcGIS.Controls.AxMapControl();
             this._mainFrameBarManager1 = new Syncfusion.Windows.Forms.Tools.XPMenus.MainFrameBarManager(this);
             this.statusStripEx1 = new Syncfusion.Windows.Forms.Tools.StatusStripEx();
             this.statusStripLabel5 = new Syncfusion.Windows.Forms.Tools.StatusStripLabel();
@@ -46,23 +49,19 @@
             this.superToolTip1 = new Syncfusion.Windows.Forms.Tools.SuperToolTip(this);
             this.axLicenseControl1 = new ESRI.ArcGIS.Controls.AxLicenseControl();
             this.ribbonControlAdv1 = new Syncfusion.Windows.Forms.Tools.RibbonControlAdv();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.axMapControl1 = new ESRI.ArcGIS.Controls.AxMapControl();
             ((System.ComponentModel.ISupportInitialize)(this._dockingManager1)).BeginInit();
             this.dockingClientPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._mainFrameBarManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axLicenseControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ribbonControlAdv1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._mainFrameBarManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axLicenseControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ribbonControlAdv1)).BeginInit();
             this.SuspendLayout();
             // 
             // _dockingManager1
             // 
             this._dockingManager1.ActiveCaptionFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
-            this._dockingManager1.AutoHideTabForeColor = System.Drawing.Color.Empty;
             this._dockingManager1.DockedCaptionFont = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
             this._dockingManager1.DockLayoutStream = ((System.IO.MemoryStream)(resources.GetObject("_dockingManager1.DockLayoutStream")));
             this._dockingManager1.DockTabAlignment = Syncfusion.Windows.Forms.Tools.DockTabAlignmentStyle.Left;
@@ -119,7 +118,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(434, 312);
-            this.tabControl1.TabIndex = 0;
+            this.tabControl1.TabIndex = 4;
             // 
             // tabPage1
             // 
@@ -139,7 +138,7 @@
             this.axMapControl1.Name = "axMapControl1";
             this.axMapControl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axMapControl1.OcxState")));
             this.axMapControl1.Size = new System.Drawing.Size(420, 280);
-            this.axMapControl1.TabIndex = 0;
+            this.axMapControl1.TabIndex = 5;
             // 
             // _mainFrameBarManager1
             // 
@@ -164,14 +163,13 @@
             this.statusStripEx1.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(206)))), ((int)(((byte)(255)))));
             this.statusStripEx1.Name = "statusStripEx1";
             this.statusStripEx1.Size = new System.Drawing.Size(794, 22);
-            this.statusStripEx1.TabIndex = 1;
+            this.statusStripEx1.TabIndex = 2;
             this.statusStripEx1.Text = "statusStripEx1";
             // 
             // statusStripLabel5
             // 
             this.statusStripLabel5.Margin = new System.Windows.Forms.Padding(0, 4, 0, 2);
             this.statusStripLabel5.Name = "statusStripLabel5";
-            this.SetShortcut(this.statusStripLabel5, System.Windows.Forms.Keys.None);
             this.statusStripLabel5.Size = new System.Drawing.Size(10, 15);
             this.statusStripLabel5.Text = "|";
             // 
@@ -179,27 +177,23 @@
             // 
             this.statusMapUnits.Margin = new System.Windows.Forms.Padding(0, 4, 0, 2);
             this.statusMapUnits.Name = "statusMapUnits";
-            this.SetShortcut(this.statusMapUnits, System.Windows.Forms.Keys.None);
             this.statusMapUnits.Size = new System.Drawing.Size(61, 15);
             this.statusMapUnits.Text = "地图单位";
             // 
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.SetShortcut(this.toolStripStatusLabel3, System.Windows.Forms.Keys.None);
             this.toolStripStatusLabel3.Size = new System.Drawing.Size(52, 15);
             this.toolStripStatusLabel3.Text = "进度";
             // 
             // statusProgress
             // 
             this.statusProgress.Name = "statusProgress";
-            this.SetShortcut(this.statusProgress, System.Windows.Forms.Keys.None);
             this.statusProgress.Size = new System.Drawing.Size(100, 15);
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.SetShortcut(this.toolStripMenuItem6, System.Windows.Forms.Keys.None);
             this.toolStripMenuItem6.Size = new System.Drawing.Size(181, 22);
             this.toolStripMenuItem6.Text = "属性";
             // 
@@ -217,7 +211,7 @@
             this.axLicenseControl1.Name = "axLicenseControl1";
             this.axLicenseControl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axLicenseControl1.OcxState")));
             this.axLicenseControl1.Size = new System.Drawing.Size(32, 32);
-            this.axLicenseControl1.TabIndex = 5;
+            this.axLicenseControl1.TabIndex = 3;
             // 
             // ribbonControlAdv1
             // 
@@ -277,10 +271,9 @@
             this.ribbonControlAdv1.ShowRibbonDisplayOptionButton = true;
             this.ribbonControlAdv1.Size = new System.Drawing.Size(798, 141);
             this.ribbonControlAdv1.SystemText.QuickAccessDialogDropDownName = "Start menu";
-            this.ribbonControlAdv1.TabIndex = 6;
+            this.ribbonControlAdv1.TabIndex = 1;
             this.ribbonControlAdv1.Text = "ribbonControlAdv1";
             this.ribbonControlAdv1.TitleColor = System.Drawing.Color.Black;
-           
             // 
             // MainView
             // 
@@ -288,7 +281,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(796, 490);
-            this.ColorScheme = Syncfusion.Windows.Forms.Tools.RibbonForm.ColorSchemeType.Silver;
             this.Controls.Add(this.ribbonControlAdv1);
             this.Controls.Add(this.axLicenseControl1);
             this.Controls.Add(this.dockingClientPanel1);
@@ -309,7 +301,6 @@
             ((System.ComponentModel.ISupportInitialize)(this._mainFrameBarManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.axLicenseControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlAdv1)).EndInit();
-          
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -128,6 +128,7 @@
     <Compile Include="Interfaces\IRibbonMenuItem.cs" />
     <Compile Include="Interfaces\IToolStripTabItem.cs" />
     <Compile Include="Mvp\CommandDispatcher.cs" />
+    <Compile Include="Mvp\ComplexPresenter.cs" />
     <Compile Include="Mvp\IMenuProvider.cs" />
     <Compile Include="PluginManager.cs" />
     <Compile Include="Concrete\MainPlugin.cs" />
