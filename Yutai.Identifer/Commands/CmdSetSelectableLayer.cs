@@ -44,7 +44,7 @@ namespace Yutai.Plugins.Identifer.Commands
             base.DisplayStyleYT= DisplayStyleYT.ImageAndText;
             base.TextImageRelationYT= TextImageRelationYT.ImageAboveText;
             base.ToolStripItemImageScalingYT= ToolStripItemImageScalingYT.None;
-            base._itemType = RibbonItemType.NormalItem;
+            base._itemType = RibbonItemType.Button;
         }
     }
 }

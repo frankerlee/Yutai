@@ -277,6 +277,10 @@ namespace Yutai
         public void UpdateUI()
         {
             // throw new NotImplementedException();
+            if (RibbonMenu != null)
+            {
+                RibbonMenu.UpdateMenu();
+            }
         }
 
         public void SetToolTip(string str)

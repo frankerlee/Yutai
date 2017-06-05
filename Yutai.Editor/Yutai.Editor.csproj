@@ -68,6 +68,10 @@
     <Compile Include="Commands\CmdEditorSave.cs" />
     <Compile Include="Commands\CmdEditorStop.cs" />
     <Compile Include="Commands\CmdEditorStart.cs" />
+    <Compile Include="Commands\CmdSnapIntersectPoint.cs" />
+    <Compile Include="Commands\CmdSnapMidPoint.cs" />
+    <Compile Include="Commands\CmdSnapOff.cs" />
+    <Compile Include="Commands\CmdSnapSketch.cs" />
     <Compile Include="CompositionRoot.cs" />
     <Compile Include="EditorPlugin.cs" />
     <Compile Include="Menu\DockPanelService.cs" />
@@ -118,7 +122,33 @@
   <ItemGroup>
     <None Include="Resources\icon_edit_stop.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\BoundarySnap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EndPointSnap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IntersectionPointSnap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MidPointSnap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PointSnap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TangentPointSnap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VertexPointSnap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_snap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_snap_sketch.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

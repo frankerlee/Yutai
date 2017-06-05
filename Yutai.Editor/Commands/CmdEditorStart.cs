@@ -58,18 +58,9 @@ namespace Yutai.Plugins.Editor.Commands
 
         public CmdEditorStart(IAppContext context, BasePlugin plugin)
         {
-            this.m_bitmap = Properties.Resources.icon_edit_start;
-            this.m_caption = "启动编辑";
-            this.m_category = "Edit";
-            this.m_message = "启动编辑";
-            this.m_name = "Edit.Common.StartEdit";
-            this._key = "Edit.Common.StartEdit";
-            this.m_toolTip = "启动编辑";
-            _context = context;
-            DisplayStyleYT = DisplayStyleYT.ImageAndText;
-            base.TextImageRelationYT = TextImageRelationYT.ImageAboveText;
-            base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
+           OnCreate(context);
             _plugin = plugin as EditorPlugin;
+            
         }
 
         public override void OnCreate(object hook)
@@ -85,6 +76,7 @@ namespace Yutai.Plugins.Editor.Commands
             DisplayStyleYT = DisplayStyleYT.ImageAndText;
             base.TextImageRelationYT = TextImageRelationYT.ImageAboveText;
             base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
+            _needUpdateEvent = true;
         }
 
 

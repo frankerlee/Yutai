@@ -53,7 +53,7 @@ namespace Yutai.Plugins.Locator.Commands
             base.m_toolTip = "定位器";
             base.m_checked = false;
             base.m_enabled = true;
-            base._itemType = RibbonItemType.NormalItem;
+            base._itemType = RibbonItemType.Button;
         }
     }
 }

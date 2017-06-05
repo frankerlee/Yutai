@@ -152,7 +152,7 @@ namespace Yutai.Plugins
             var item = sender as IRibbonItem;
             if (item != null)
             {
-                if (item.ItemType == RibbonItemType.NormalItem)
+                if (item.ItemType == RibbonItemType.Button)
                 {
                     BroadcastEvent(p => p.ToolStripCliecked_, sender, e, item.PluginIdentity);
                 }

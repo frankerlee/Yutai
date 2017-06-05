@@ -40,7 +40,7 @@ namespace Yutai.Commands.Document
             base.m_enabled = true;
             base.TextImageRelationYT= TextImageRelationYT.ImageBeforeText;
             
-            base._itemType = RibbonItemType.NormalItem;
+            base._itemType = RibbonItemType.Button;
         }
     }
 }

@@ -69,7 +69,7 @@ namespace Yutai.UI.Menu.Ribbon
             {
                 AddPanel((IRibbonItem)command,parentMenu);
             }
-            if (command.ItemType == RibbonItemType.NormalItem)
+            if (command.ItemType == RibbonItemType.Button)
             {
                 AddButton((IRibbonItem)command,parentMenu);
             }
@@ -224,7 +224,8 @@ namespace Yutai.UI.Menu.Ribbon
                 ToolTipText = item.Tooltip,
                 AutoToolTip = true,
                 Name = item.Name,
-                Tag = item
+                Tag = item,
+                Checked = item.Checked
             };
             button.DisplayStyle = (ToolStripItemDisplayStyle)((int)item.DisplayStyleYT);
             button.TextImageRelation = (TextImageRelation)item.TextImageRelationYT;
@@ -234,6 +235,10 @@ namespace Yutai.UI.Menu.Ribbon
             if (item is YutaiCommand)
             {
                 button.Click += ((YutaiCommand)item).OnClick;
+                if (item.NeedUpdateEvent)
+                {
+                    button.Click += ToolStripButton_Click; ;
+                }
             }
             if (!string.IsNullOrEmpty(item.Tooltip))
             {
@@ -259,6 +264,12 @@ namespace Yutai.UI.Menu.Ribbon
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void ToolStripButton_Click(object sender, EventArgs e)
+        {
+           UpdateMenu();
+        }
+
         private void AddPanel(IRibbonItem item, IRibbonMenuItem parentMenu)
         {
             if (ItemExists(item.Name)) return;
@@ -441,8 +452,34 @@ namespace Yutai.UI.Menu.Ribbon
             if (_cmdItems == null) return;
             foreach (IRibbonMenuItem cmdItem in _cmdItems)
             {
-                if(cmdItem.Item is YutaiCommand)
-                cmdItem.ToolStripItem.Enabled = ((YutaiCommand)cmdItem.Item).Enabled;
+                if (cmdItem.Item is YutaiCommand)
+                {
+                    cmdItem.ToolStripItem.Enabled = ((YutaiCommand)cmdItem.Item).Enabled;
+                }
+                switch (cmdItem.Item.ItemType)
+                {
+                    case RibbonItemType.TabItem:
+                    case RibbonItemType.ToolStrip:
+                    case RibbonItemType.Panel:
+                    case RibbonItemType.Group:
+                    case RibbonItemType.ComboBox:
+                        return;
+                        break;
+                    case RibbonItemType.Button:
+                        ((ToolStripButton)cmdItem.ToolStripItem).Checked = ((YutaiCommand)cmdItem.Item).Checked;
+                        break;
+                    case RibbonItemType.Tool:
+                        ((ToolStripButton)cmdItem.ToolStripItem).Checked = ((YutaiCommand)cmdItem.Item).Checked;
+                        break;
+                    case RibbonItemType.DropDown:
+                        break;
+                    case RibbonItemType.CheckBox:
+                        ((ToolStripCheckBox)cmdItem.ToolStripItem).Checked = ((YutaiCommand)cmdItem.Item).Checked;
+                        break;
+                    default:
+                        break;
+                }
+              
             }
         }
         public IEnumerable<IRibbonMenuItem> RibbonMenuItems

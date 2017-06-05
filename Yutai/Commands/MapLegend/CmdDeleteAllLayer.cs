@@ -51,7 +51,7 @@ namespace Yutai.Commands.MapLegend
             base.m_toolTip = "mnuDeleteAllLayer";
             base.m_checked = false;
             base.m_enabled = true;
-            base._itemType = RibbonItemType.NormalItem;
+            base._itemType = RibbonItemType.Button;
 
         }
         public override void OnClick(object sender, EventArgs args)

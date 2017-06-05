@@ -38,7 +38,7 @@ namespace Yutai.Plugins.Identifer.Commands
             base.m_toolTip = "空间属性联合查询";
             base.m_checked = false;
             base.m_enabled = true;
-            base._itemType = RibbonItemType.NormalItem;
+            base._itemType = RibbonItemType.Button;
         }
     }
 }

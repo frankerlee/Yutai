@@ -35,6 +35,7 @@ namespace Yutai.Plugins.Concrete
         private IEngineSnapEnvironment _snapEnvironment;
         private bool _isInEdit;
         private bool _canEdited;
+        private bool _isSnapTangent;
 
         public AppConfig()
         {
@@ -277,6 +278,12 @@ namespace Yutai.Plugins.Concrete
             set { _canEdited = value; }
         }
 
+        public bool IsSnapTangent
+        {
+            get { return _isSnapTangent; }
+            set { _isSnapTangent = value; }
+        }
+
         private void SetDefaults()
         {
             Logger.Current.Trace("开始设置配置默认值");
@@ -284,9 +291,10 @@ namespace Yutai.Plugins.Concrete
 
             _canEdited = true;
             _isInEdit = false;
+          
+            IsSnapTangent = false;
+            UseSnap = false;
             #endregion
-
-
             LocatorMaxCount = 100;
 
             MapViewStyle = MapViewStyle.View2D;

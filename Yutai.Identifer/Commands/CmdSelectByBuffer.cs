@@ -138,7 +138,7 @@ namespace Yutai.Plugins.Identifer.Commands
                         base.m_caption = "选择包含在缓冲区中的要素";
                         base.m_category = "Query";
                         base._key = "Query.SelectionTools.Mouse.SelectFeatureContainers";
-                        base._itemType = RibbonItemType.NormalItem;
+                        base._itemType = RibbonItemType.Button;
                         base.DisplayStyleYT = DisplayStyleYT.ImageAndText;
                         base.TextImageRelationYT = TextImageRelationYT.ImageBeforeText;
                         break;
@@ -153,7 +153,7 @@ namespace Yutai.Plugins.Identifer.Commands
                         base.m_caption = "选择和缓冲区相交要素";
                         base.m_category = "Query";
                         base._key = "Query.SelectionTools.Mouse.SelectFeatureIntersects";
-                        base._itemType = RibbonItemType.NormalItem;
+                        base._itemType = RibbonItemType.Button;
                         base.DisplayStyleYT = DisplayStyleYT.ImageAndText;
                         base.TextImageRelationYT = TextImageRelationYT.ImageBeforeText;
                         break;

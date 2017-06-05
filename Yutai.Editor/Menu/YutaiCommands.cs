@@ -33,10 +33,21 @@ namespace Yutai.Plugins.Editor.Menu
            _commands = new List<YutaiCommand>()
             {
                 new YutaiMenuCommand(RibbonItemType.TabItem, "Edit", "Edit", "Edit", "编辑", "", "") {Position = 4},
-                new YutaiMenuCommand(RibbonItemType.ToolStrip, "Edit", "Edit.Common", "Edit.Common", "编辑控制", "", "") {Position = 4},
+                new YutaiMenuCommand(RibbonItemType.ToolStrip, "Edit", "Edit.Common", "Edit.Common", "编辑控制", "", "") ,
                 new CmdEditorStart(_context,_plugin),
                 new CmdEditorStop(_context,_plugin),
-                new CmdEditorSave(_context,_plugin)
+                new CmdEditorSave(_context,_plugin),
+                new YutaiMenuCommand(RibbonItemType.ToolStrip, "Edit", "Edit.Snap", "Edit.Snap", "捕捉设置", "", "") ,
+                new CmdSnapOff(_context),
+                new YutaiMenuCommand(RibbonItemType.Panel, "Edit", "Edit.Snap.Config", "Edit.Snap.Config", "", "", "") {PanelRowCount = 3} ,
+                new CmdSnapPoint(_context),
+                new CmdSnapMidPoint(_context),
+                new CmdSnapEndPointt(_context),
+                new CmdSnapVertexPoint(_context),
+                new CmdSnapIntersectPoint(_context),
+                new CmdSnapBoundary(_context),
+                new CmdSnapTangent(_context),
+                new CmdSnapSketch(_context)
             };
             _commandKeys = new List<string>();
             foreach (var command in _commands)

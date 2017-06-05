@@ -8,10 +8,12 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Syncfusion.Windows.Forms.Tools;
 using Yutai.Controls;
 using Yutai.Forms;
 using Yutai.Menu;
 using Yutai.Plugins.Concrete;
+using Yutai.Plugins.Enums;
 using Yutai.Plugins.Events;
 using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Mvp;
@@ -94,6 +96,7 @@ namespace Yutai.Views
                  appContext.InitPlugins(configService); // must be called after docking is initialized
 
                 _context.RibbonMenu.ReorderTabs();
+               
                 // this will display progress updates and debug window
                 // file based-logger is already working
                 Logger.Current.Init(appContext);
@@ -107,6 +110,7 @@ namespace Yutai.Views
             View.AsForm.Shown += ViewShown;
             Logger.Current.Trace("End MainPresenter");
         }
+
 
         private void ViewShown(object sender, EventArgs e)
         {

@@ -44,7 +44,7 @@ namespace Yutai.Commands.Windows
             base.m_toolTip = "鹰眼视图";
             base.m_checked = false;
             base.m_enabled = true;
-            base._itemType = RibbonItemType.NormalItem;
+            base._itemType = RibbonItemType.Button;
         }
     }
 }

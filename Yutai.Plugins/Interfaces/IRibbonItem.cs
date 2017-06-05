@@ -29,5 +29,6 @@ namespace Yutai.Plugins.Interfaces
         int PanelRowCount { get; set; }
         //对ToolStripEx起作用
         bool IsGroup { get; set; }
+        bool NeedUpdateEvent { get; set; }
     }
 }

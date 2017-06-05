@@ -30,6 +30,7 @@ namespace Yutai.UI.Menu.Ribbon
         private int _position;
         private string _parentName;
         private bool _isGroup;
+        private bool _needUpdateEvent;
 
         public RibbonItem(IRibbonItem source,string newName)
         {
@@ -158,6 +159,12 @@ namespace Yutai.UI.Menu.Ribbon
         {
             get { return _isGroup; }
             set { _isGroup = value; }
+        }
+
+        public bool NeedUpdateEvent
+        {
+            get { return _needUpdateEvent; }
+            set { _needUpdateEvent = value; }
         }
     }
 }

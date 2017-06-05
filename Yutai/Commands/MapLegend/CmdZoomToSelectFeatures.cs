@@ -43,7 +43,7 @@ namespace Yutai.Commands.MapLegend
             base.m_toolTip = "缩放到选择要素";
             base.m_checked = false;
             base.m_enabled = true;
-            base._itemType = RibbonItemType.NormalItem;
+            base._itemType = RibbonItemType.Button;
         }
         public override void OnClick(object sender, EventArgs args)
         {

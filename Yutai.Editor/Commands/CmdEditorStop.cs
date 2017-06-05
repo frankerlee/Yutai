@@ -65,6 +65,7 @@ namespace Yutai.Plugins.Editor.Commands
             DisplayStyleYT = DisplayStyleYT.ImageAndText;
             base.TextImageRelationYT = TextImageRelationYT.ImageAboveText;
             base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
+            _needUpdateEvent = true;
         }
 
 

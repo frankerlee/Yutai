@@ -57,7 +57,7 @@ namespace Yutai.Commands.Views
             base.m_toolTip = "下一视图";
             base.m_checked = false;
             base.m_enabled = true;
-            base._itemType = RibbonItemType.NormalItem;
+            base._itemType = RibbonItemType.Button;
         }
     }
 }

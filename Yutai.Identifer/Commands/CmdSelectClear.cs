@@ -33,7 +33,7 @@ namespace Yutai.Plugins.Identifer.Commands
             base.m_name = "Query.SelectionTools.ClearSelection";
             base._key = "Query.SelectionTools.ClearSelection";
             base.m_toolTip = "清除选择";
-            base._itemType = RibbonItemType.NormalItem;
+            base._itemType = RibbonItemType.Button;
             base.DisplayStyleYT = DisplayStyleYT.ImageAndText;
             base.TextImageRelationYT = TextImageRelationYT.ImageAboveText;
             base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;

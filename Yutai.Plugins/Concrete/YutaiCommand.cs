@@ -39,6 +39,7 @@ namespace Yutai.Plugins.Concrete
         private string _parentName;
         private int _position=-1;
         private bool _isGroup;
+        public bool _needUpdateEvent;
 
         public  Keys ShortcutKeys { get; set; }
         public PluginIdentity PluginIdentity { get; internal set; }
@@ -77,6 +78,12 @@ namespace Yutai.Plugins.Concrete
         {
             get { return _isGroup; }
             set { _isGroup = value; }
+        }
+
+        public bool NeedUpdateEvent
+        {
+            get { return _needUpdateEvent; }
+            set { _needUpdateEvent = value; }
         }
 
 
@@ -193,6 +200,7 @@ namespace Yutai.Plugins.Concrete
             _toolStripItemImageScalingYt= ToolStripItemImageScalingYT.None;
             ToolStripLayoutStyleYT= ToolStripLayoutStyleYT.Flow;
             _panelRowCount = 1;
+            _needUpdateEvent = false;
         }
 
         public void InitType()
@@ -208,7 +216,7 @@ namespace Yutai.Plugins.Concrete
             }
             else
             {
-                _itemType = RibbonItemType.NormalItem;
+                _itemType = RibbonItemType.Button;
             }
         }
 
@@ -227,6 +235,7 @@ namespace Yutai.Plugins.Concrete
             _toolStripItemImageScalingYt = ToolStripItemImageScalingYT.None;
             ToolStripLayoutStyleYT = ToolStripLayoutStyleYT.Flow;
             _panelRowCount = 1;
+            _needUpdateEvent = false;
         }
 
         protected  YutaiCommand(RibbonItemType itemType,string category, string key, string name, string caption, string tooltip, string message)
@@ -244,6 +253,7 @@ namespace Yutai.Plugins.Concrete
             ToolStripLayoutStyleYT = ToolStripLayoutStyleYT.Flow;
             _panelRowCount = 1;
             this._itemType = itemType;
+            _needUpdateEvent = false;
         }
 
 
@@ -264,6 +274,7 @@ namespace Yutai.Plugins.Concrete
             ToolStripLayoutStyleYT = ToolStripLayoutStyleYT.Flow;
             _panelRowCount = 1;
             this._itemType = itemType;
+            _needUpdateEvent = false;
         }
 
         protected YutaiCommand( System.Drawing.Bitmap bitmap, string caption, string category, int helpContextId, string helpFile, string message, string name, string toolTip)
@@ -283,6 +294,7 @@ namespace Yutai.Plugins.Concrete
             ToolStripLayoutStyleYT = ToolStripLayoutStyleYT.Flow;
             _panelRowCount = 1;
             this._itemType = RibbonItemType.Tool;
+            _needUpdateEvent = false;
         }
 
         

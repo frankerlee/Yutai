@@ -51,7 +51,7 @@ namespace Yutai.Commands.Document
             base.m_toolTip = "打开项目";
             base.m_checked = false;
             base.m_enabled = true;
-            base._itemType = RibbonItemType.NormalItem;
+            base._itemType = RibbonItemType.Button;
         }
     }
 
@@ -94,7 +94,7 @@ namespace Yutai.Commands.Document
             base.m_toolTip = "新建项目";
             base.m_checked = false;
             base.m_enabled = true;
-            base._itemType = RibbonItemType.NormalItem;
+            base._itemType = RibbonItemType.Button;
         }
     }
 }
