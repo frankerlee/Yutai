@@ -1,18 +1,18 @@
 ﻿// 项目名称 :  Yutai
 // 项目描述 :  
-// 类 名 称 :  CmdSelectAllFeatures.cs
+// 类 名 称 :  CmdSwitchSelectedFeature.cs
 // 版 本 号 :  
 // 说    明 :  
 // 作    者 :  
-// 创建时间 :  2017/06/02  15:03
-// 更新时间 :  2017/06/02  15:03
+// 创建时间 :  2017/06/05  15:20
+// 更新时间 :  2017/06/05  15:20
 
 using System;
 using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
+using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
-using ESRI.ArcGIS.SystemUI;
 using Yutai.Controls;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
@@ -20,12 +20,13 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Commands.MapLegend
 {
-    public class CmdSelectAllFeatures : YutaiCommand
+    public class CmdSwitchSelectedFeature : YutaiCommand
     {
-      
+
         private IMapLegendView _view;
 
-        public CmdSelectAllFeatures(IAppContext context, IMapLegendView view)
+
+        public CmdSwitchSelectedFeature(IAppContext context, IMapLegendView view)
         {
             _context = context;
             _view = view;
@@ -34,12 +35,12 @@ namespace Yutai.Commands.MapLegend
 
         private void OnCreate()
         {
-            base.m_caption = "选择所有要素";
+            base.m_caption = "切换选择";
             base.m_category = "TOC";
             base.m_bitmap = null;
-            base.m_name = "dropSelection.mnuSelectAllFeatures";
-            base._key = "dropSelection.mnuSelectAllFeatures";
-            base.m_toolTip = "选择所有要素";
+            base.m_name = "dropSelection.mnuSwitchSelectedFeature";
+            base._key = "dropSelection.mnuSwitchSelectedFeature";
+            base.m_toolTip = "切换选择";
             base.m_checked = false;
             base.m_enabled = true;
             base._itemType = RibbonItemType.Button;
@@ -63,13 +64,14 @@ namespace Yutai.Commands.MapLegend
                 {
                     if (_view.SelectedLayer is IFeatureLayer)
                     {
-                        ISelectionEnvironment pSelectionEnvironment = new SelectionEnvironmentClass();
-                        if ((_view.SelectedLayer as IFeatureLayer).FeatureClass.FeatureCount(null) <= (pSelectionEnvironment as ISelectionEnvironmentThreshold).WarningThreshold || MessageBox.Show("所选择记录较多，执行将花较长时间，是否继续？", "选择", MessageBoxButtons.YesNo) != DialogResult.No)
+                        IFeatureSelection featureSelection = _view.SelectedLayer as IFeatureSelection;
+                        if (featureSelection != null)
                         {
-                            IFeatureSelection featureSelection = _view.SelectedLayer as IFeatureSelection;
-                            if (featureSelection != null)
+                            int count = featureSelection.SelectionSet.Count;
+                            ISelectionEnvironment pSelectionEnvironment = new SelectionEnvironmentClass();
+                            if ((_view.SelectedLayer as IFeatureLayer).FeatureClass.FeatureCount(null) - count <= (pSelectionEnvironment as ISelectionEnvironmentThreshold).WarningThreshold || MessageBox.Show("所选择记录较多，执行将花较长时间，是否继续？", "选择", MessageBoxButtons.YesNo) != DialogResult.No)
                             {
-                                featureSelection.SelectFeatures(null, esriSelectionResultEnum.esriSelectionResultAdd, false);
+                                featureSelection.SelectFeatures(null, esriSelectionResultEnum.esriSelectionResultXOR, false);
                                 pActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeography, featureSelection, null);
                             }
                         }
@@ -77,6 +79,5 @@ namespace Yutai.Commands.MapLegend
                 }
             }
         }
-        
     }
 }

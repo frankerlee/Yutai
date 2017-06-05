@@ -150,6 +150,7 @@
     <Compile Include="Commands\MapLegend\CmdSetMaximumScale.cs" />
     <Compile Include="Commands\MapLegend\CmdSetMinimumScale.cs" />
     <Compile Include="Commands\MapLegend\CmdShowAllLayer.cs" />
+    <Compile Include="Commands\MapLegend\CmdSwitchSelectedFeature.cs" />
     <Compile Include="Commands\MapLegend\CmdZoomToLayer.cs" />
     <Compile Include="Commands\MapLegend\CmdZoomToSelectFeatures.cs" />
     <Compile Include="Commands\Views\CmdViewFixedZoomIn.cs" />
