@@ -30,11 +30,11 @@ namespace Yutai.Configuration
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.configPanelControl3 = new Yutai.UI.Controls.ConfigPanelControl(this.components);
+            
+            this.configPanelControl3 = new Yutai.UI.Controls.ConfigPanelControl();
             this.chkLocalDocumentation = new System.Windows.Forms.CheckBox();
             this.chkShowMenuToolTips = new System.Windows.Forms.CheckBox();
-            this.configPanelControl2 = new Yutai.UI.Controls.ConfigPanelControl(this.components);
+            this.configPanelControl2 = new Yutai.UI.Controls.ConfigPanelControl();
             this.chkShowWelcomeDialog = new System.Windows.Forms.CheckBox();
             this.chkLoadLastProject = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.configPanelControl3)).BeginInit();

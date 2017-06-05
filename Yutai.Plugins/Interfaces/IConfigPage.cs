@@ -29,5 +29,9 @@ namespace Yutai.Plugins.Interfaces
         int ImageIndex { get; set; }
 
         Size OriginalSize { get; set; }
+
+        //增加的属性，用来替代原来的PageType,
+        string Key { get; }
+        string ParentKey { get;  }
     }
 }

@@ -53,20 +53,20 @@ namespace Yutai.Controls
 
         private void AddAllPages()
         {
-            AddPages(Nodes, ConfigPageType.None);
+            AddPages(Nodes, "");
 
-            foreach (var page in _model.Pages.Where(p => p.ParentPage == ConfigPageType.None))
+            foreach (var page in _model.Pages.Where(p => p.ParentKey == ""))
             {
                 var node = NodeForPage(page);
-                AddPages(node.Nodes, page.PageType);
+                AddPages(node.Nodes, page.Key);
             }
         }
 
-        private void AddPages(TreeNodeAdvCollection nodes, ConfigPageType parent)
+        private void AddPages(TreeNodeAdvCollection nodes, string parentKey)
         {
             foreach (var page in _model.Pages)
             {
-                if (page.ParentPage != parent) continue;
+                if (page.ParentKey != parentKey) continue;
 
                 var node = CreateNodeForPage(page);
                 page.Tag = node;
@@ -91,11 +91,11 @@ namespace Yutai.Controls
             }
         }
 
-        public void SetSelectedPage(ConfigPageType type)
+        public void SetSelectedPage(string pageKey)
         {
             TreeNodeAdv selectedNode = null;
 
-            var page = _model.Pages.FirstOrDefault(p => p.PageType == type);
+            var page = _model.Pages.FirstOrDefault(p => p.Key == pageKey);
             if (page != null)
             {
                 var node = NodeForPage(page);
@@ -109,18 +109,18 @@ namespace Yutai.Controls
         }
 
 
-        public void RestoreSelectedNode(string lastPageName)
+        public void RestoreSelectedNode(string lastPageKey)
         {
             TreeNodeAdv selectedNode = null;
 
-            if (lastPageName == null)
+            if (lastPageKey == null)
             {
-                lastPageName = string.Empty;
+                lastPageKey = string.Empty;
             }
 
             foreach (var page in _model.Pages)
             {
-                if (page.PageName.ContainsIgnoreCase(lastPageName))
+                if (page.Key.ContainsIgnoreCase(lastPageKey))
                 {
                     var node = NodeForPage(page);
                     if (node != null)

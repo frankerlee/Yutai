@@ -140,5 +140,7 @@ namespace Yutai.Views
     }
 
     public class ConfigViewBase : MapWindowView<ConfigViewModel> { }
+
+   
 }
 

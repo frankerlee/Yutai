@@ -23,12 +23,12 @@ namespace Yutai.UI.Controls
             BorderStyle = BorderStyle.None;
         }
 
-        public ConfigPanelControl(IContainer container)
-        {
-            container.Add(this);
+        //public ConfigPanelControl(IContainer container)
+        //{
+        //    container.Add(this);
 
-            InitializeComponent();
-        }
+        //    InitializeComponent();
+        //}
 
         private void AddLabel()
         {

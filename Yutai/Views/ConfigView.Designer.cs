@@ -146,9 +146,6 @@ namespace Yutai.Views
             // 
             // configPageControl1
             // 
-            this.configPageControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.configPageControl1.ConfigPage = null;
             this.configPageControl1.Description = "详细说明文本";
             this.configPageControl1.Icon = null;
@@ -194,37 +191,37 @@ namespace Yutai.Views
             // 
             this.toolOpenFolder.Image = global::Yutai.Properties.Resources.icon_folder;
             this.toolOpenFolder.Name = "toolOpenFolder";
-            this.toolOpenFolder.Size = new System.Drawing.Size(152, 22);
+            this.toolOpenFolder.Size = new System.Drawing.Size(148, 22);
             this.toolOpenFolder.Text = "打开文件夹";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(145, 6);
             // 
             // toolSetDefaults
             // 
             this.toolSetDefaults.Image = global::Yutai.Properties.Resources.img_default24;
             this.toolSetDefaults.Name = "toolSetDefaults";
-            this.toolSetDefaults.Size = new System.Drawing.Size(152, 22);
+            this.toolSetDefaults.Size = new System.Drawing.Size(148, 22);
             this.toolSetDefaults.Text = "使用默认配置";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(145, 6);
             // 
             // toolRestorePlugins
             // 
             this.toolRestorePlugins.Image = global::Yutai.Properties.Resources.img_plugin32;
             this.toolRestorePlugins.Name = "toolRestorePlugins";
-            this.toolRestorePlugins.Size = new System.Drawing.Size(152, 22);
+            this.toolRestorePlugins.Size = new System.Drawing.Size(148, 22);
             this.toolRestorePlugins.Text = "恢复插件";
             // 
             // toolRestoreToolbars
             // 
             this.toolRestoreToolbars.Name = "toolRestoreToolbars";
-            this.toolRestoreToolbars.Size = new System.Drawing.Size(152, 22);
+            this.toolRestoreToolbars.Size = new System.Drawing.Size(148, 22);
             this.toolRestoreToolbars.Text = "恢复界面";
             // 
             // ConfigView
@@ -232,6 +229,7 @@ namespace Yutai.Views
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
+            this.CaptionFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClientSize = new System.Drawing.Size(708, 483);
             this.Controls.Add(this._treeViewAdv1);
             this.Controls.Add(this.toolStripEx1);

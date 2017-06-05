@@ -92,7 +92,7 @@ namespace Yutai.Plugins.Editor.Commands
             {
                 _context.ShowCommandString("正在启动编辑", CommandTipsType.CTTLog);
                 
-                if (Editor2.StartEditing(_context.MapControl.Map))
+                if (Editor2.StartEditing(_context.MapControl.Map,_context))
                 {
                     m_pEditWorkspace = Editor2.EditWorkspace;
                   

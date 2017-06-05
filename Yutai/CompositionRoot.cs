@@ -5,6 +5,7 @@ using Yutai.Plugins.Mvp;
 using Yutai.UI.Forms;
 using Yutai.UI.Helpers;
 using Yutai.Views;
+using Yutai.Views.Abstract;
 
 namespace Yutai
 {
@@ -15,6 +16,7 @@ namespace Yutai
             container.RegisterSingleton<IMainView, MainView>()
                 .RegisterSingleton<IAppContext, AppContext>()
                 .RegisterSingleton<IAppView, AppView>()
+                .RegisterView<IConfigView, ConfigView>()
                 .RegisterInstance<IApplicationContainer>(container)
                  .RegisterService<MapLegendPresenter>()
                 .RegisterService<MapLegendDockPanel>()

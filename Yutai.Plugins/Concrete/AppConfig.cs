@@ -36,6 +36,7 @@ namespace Yutai.Plugins.Concrete
         private bool _isInEdit;
         private bool _canEdited;
         private bool _isSnapTangent;
+        private string _customConfigPages;
 
         public AppConfig()
         {
@@ -290,7 +291,15 @@ namespace Yutai.Plugins.Concrete
             get { return _isSnapTangent; }
             set { _isSnapTangent = value; }
         }
-       
+
+        public string CustomConfigPages
+        {
+            get { return _customConfigPages; }
+            set { _customConfigPages = value; }
+        }
+
+        public bool LoadAllConfigPages { get; set; }
+
 
         internal void SetDefaults()
         {

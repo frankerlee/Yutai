@@ -12,6 +12,7 @@ using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Services;
 using Yutai.Properties;
 using Yutai.UI.Controls;
+using Yutai.Views;
 
 namespace Yutai.Configuration
 {
@@ -53,7 +54,7 @@ namespace Yutai.Configuration
 
         public string PageName
         {
-            get { return "General"; }
+            get { return "常用配置"; }
         }
 
         public void Save()
@@ -70,6 +71,8 @@ namespace Yutai.Configuration
             //config.UpdaterCheckNewVersion = chkNewVersion.Checked;
             //config.LegendExpandLayersOnAdding = chkLegendExpanded.Checked;
         }
+
+        public string Key { get { return "General"; } }
 
         public Bitmap Icon
         {

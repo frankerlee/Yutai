@@ -22,6 +22,11 @@ namespace Yutai.UI.Controls
             get { return ConfigPageType.None; }
         }
 
+        public virtual string ParentKey
+        {
+            get { return ""; }
+        }
+
         /// <summary>
         /// Gets or sets the index of the image (used internally).
         /// </summary>

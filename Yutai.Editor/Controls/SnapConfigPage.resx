@@ -117,44 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="icon_edit_save" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_edit_save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_edit_start" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_edit_start.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_edit_stop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_edit_stop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_snap" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_snap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_snap_boundary" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BoundarySnap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_snap_endpoint" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\EndPointSnap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_snap_intersect" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IntersectionPointSnap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_snap_midpoint" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MidPointSnap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_snap_point" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PointSnap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_snap_setting" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_snap_setting.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_snap_sketch" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_snap_sketch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_snap_tangent" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TangentPointSnap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_snap_vertex" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\VertexPointSnap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>

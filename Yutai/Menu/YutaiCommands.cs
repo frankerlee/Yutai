@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Yutai.Commands.Document;
+using Yutai.Commands.Settings;
 using Yutai.Commands.Views;
 using Yutai.Commands.Windows;
 using Yutai.Plugins.Concrete;
@@ -17,18 +18,18 @@ namespace Yutai.Menu
     {
         private List<YutaiCommand> _commands;
         private List<string> _commandKeys;
-        
+
 
         public YutaiCommands(IAppContext context, PluginIdentity identity)
             : base(context, identity)
         {
-           
         }
 
         public List<string> GetKeys()
         {
             return _commandKeys;
         }
+
         public override IEnumerable<YutaiCommand> GetCommands()
         {
             if (_commands == null)
@@ -37,11 +38,11 @@ namespace Yutai.Menu
                 {
                     new YutaiMenuCommand(RibbonItemType.TabItem, "File", "File", "File", "文件", "", "") {Position = 0},
                     new YutaiMenuCommand(RibbonItemType.ToolStrip, "File", "File.Document", "File.Document", "项目", "",
-                        "") ,
+                        ""),
                     new CmdNewYutaiDoc(_context),
                     new CmdOpenYutaiDoc(_context),
                     new YutaiMenuCommand(RibbonItemType.Panel, "File", "File.Document.Sub", "File.Document.Sub", "", "",
-                        "") {PanelRowCount = 3,ToolStripLayoutStyleYT =  ToolStripLayoutStyleYT.Flow},
+                        "") {PanelRowCount = 3, ToolStripLayoutStyleYT = ToolStripLayoutStyleYT.Flow},
                     new CmdSaveYutaiDoc(_context),
                     new CmdCloseYutaiDoc(_context),
                     new YutaiMenuCommand(RibbonItemType.ToolStrip, "File", "File.Mxd", "File.Mxd", "二维文档", "",
@@ -49,12 +50,12 @@ namespace Yutai.Menu
                     new CmdOpenMapDocument(_context),
                     new CmdSaveMapDocument(_context),
                     new CmdCloseMapDocument(_context),
-                     new YutaiMenuCommand(RibbonItemType.ToolStrip, "File", "File.Sxd", "File.Sxd", "三维文档", "",
+                    new YutaiMenuCommand(RibbonItemType.ToolStrip, "File", "File.Sxd", "File.Sxd", "三维文档", "",
                         ""),
                     new CmdOpenSceneDocument(_context),
                     new CmdSaveSceneDocument(_context),
                     new CmdCloseSceneDocument(_context),
-                    new YutaiMenuCommand(RibbonItemType.TabItem, "View", "View", "View", "视图", "", ""){Position = 2},
+                    new YutaiMenuCommand(RibbonItemType.TabItem, "View", "View", "View", "视图", "", "") {Position = 2},
                     new YutaiMenuCommand(RibbonItemType.ToolStrip, "View", "View.Common", "View.Common", "视图控制", "", ""),
                     new CmdViewZoomIn(_context) as YutaiCommand,
                     new CmdViewZoomOut(_context) as YutaiCommand,
@@ -64,15 +65,27 @@ namespace Yutai.Menu
                     new CmdViewFullExtent(_context) as YutaiCommand,
                     new CmdViewZoomPrev(_context) as YutaiCommand,
                     new CmdViewZoomNext(_context) as YutaiCommand,
-                    new YutaiMenuCommand(RibbonItemType.ToolStrip, "View", "View.Measure", "View.Measure", "量测工具", "", "") {IsGroup = true},
-                     new CmdViewMeasureLength(_context) as YutaiCommand,
-                      new CmdViewMeasureArea(_context) as YutaiCommand,
-                      new YutaiMenuCommand(RibbonItemType.TabItem, "Window", "Window", "Window", "窗口", "", ""){Position =10},
-                    new YutaiMenuCommand(RibbonItemType.ToolStrip, "Window", "Window.Common", "Window.Common", "窗口控制", "", ""),
+                    new YutaiMenuCommand(RibbonItemType.ToolStrip, "View", "View.Measure", "View.Measure", "量测工具", "",
+                        "") {IsGroup = true},
+                    new CmdViewMeasureLength(_context) as YutaiCommand,
+                    new CmdViewMeasureArea(_context) as YutaiCommand,
+                    new YutaiMenuCommand(RibbonItemType.TabItem, "Setting", "Setting", "Setting", "设置", "", "")
+                    {
+                        Position = 9
+                    },
+                    new YutaiMenuCommand(RibbonItemType.ToolStrip, "Setting", "Setting.Common", "Setting.Common", "设置",
+                        "", ""),
+                    new CmdOpenSetting(_context) as YutaiCommand,
+                     new YutaiMenuCommand(RibbonItemType.TabItem, "Window", "Window", "Window", "窗口", "", "")
+                    {
+                        Position = 10
+                    },
+                    new YutaiMenuCommand(RibbonItemType.ToolStrip, "Window", "Window.Common", "Window.Common", "窗口控制",
+                        "", ""),
                     new CmdLegendDock(_context) as YutaiCommand,
                     new CmdOverviewDock(_context) as YutaiCommand
                 };
-                _commandKeys=new List<string>();
+                _commandKeys = new List<string>();
                 foreach (var command in _commands)
                 {
                     if (command.ItemType == RibbonItemType.TabItem || command.ItemType == RibbonItemType.Panel ||

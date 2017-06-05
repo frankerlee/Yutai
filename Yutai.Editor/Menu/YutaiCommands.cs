@@ -39,6 +39,7 @@ namespace Yutai.Plugins.Editor.Menu
                 new CmdEditorSave(_context,_plugin),
                 new YutaiMenuCommand(RibbonItemType.ToolStrip, "Edit", "Edit.Snap", "Edit.Snap", "捕捉设置", "", "") ,
                 new CmdSnapOff(_context),
+                 new CmdSnapSetting(_context),
                 new YutaiMenuCommand(RibbonItemType.Panel, "Edit", "Edit.Snap.Config", "Edit.Snap.Config", "", "", "") {PanelRowCount = 3} ,
                 new CmdSnapPoint(_context),
                 new CmdSnapMidPoint(_context),

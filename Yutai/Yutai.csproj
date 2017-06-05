@@ -152,6 +152,7 @@
     <Compile Include="Commands\MapLegend\CmdShowAllLayer.cs" />
     <Compile Include="Commands\MapLegend\CmdZoomToLayer.cs" />
     <Compile Include="Commands\MapLegend\CmdZoomToSelectFeatures.cs" />
+    <Compile Include="Commands\Settings\CmdOpenSetting.cs" />
     <Compile Include="Commands\Views\CmdViewFixedZoomIn.cs" />
     <Compile Include="Commands\Views\CmdViewFixedZoomOut.cs" />
     <Compile Include="Commands\Views\CmdViewFullExtent.cs" />
@@ -216,6 +217,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\Abstract\IConfigView.cs" />
+    <Compile Include="Views\ConfigCommand.cs" />
     <Compile Include="Views\ConfigPresenter.cs" />
     <Compile Include="Views\ConfigView.cs">
       <SubType>Form</SubType>
@@ -568,6 +570,7 @@
     <EmbeddedResource Include="Resource\Cursor\ZoomOut.cur" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\NewIcons\icon_open_setting.png" />
     <None Include="Resources\database_save.png" />
     <None Include="Resources\database_delete.png" />
     <None Include="Resources\add_data.png" />

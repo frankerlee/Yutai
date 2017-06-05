@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using Yutai.Plugins.Concrete;
+using Yutai.Plugins.Editor.Controls;
 using Yutai.Plugins.Editor.Menu;
 using Yutai.Plugins.Events;
 using Yutai.Plugins.Interfaces;
@@ -45,6 +47,10 @@ namespace Yutai.Plugins.Editor
             {
                 handler(this, args);
             }
+        }
+        public override IEnumerable<IConfigPage> ConfigPages
+        {
+            get { yield return _context.Container.GetInstance<SnapConfigPage>(); }
         }
     }
 }

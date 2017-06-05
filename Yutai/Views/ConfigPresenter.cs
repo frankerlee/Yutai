@@ -18,15 +18,7 @@ using Yutai.Views.Abstract;
 
 namespace Yutai.Views
 {
-    public enum ConfigCommand
-    {
-        Save = 0,
-        SetDefaults = 1,
-        OpenFolder = 2,
-        RestorePlugins = 3,
-        RestoreToolbars = 4,
-    }
-    internal class ConfigPresenter : ComplexPresenter<IConfigView, ConfigCommand, ConfigViewModel>
+    public class ConfigPresenter : ComplexPresenter<IConfigView, ConfigCommand, ConfigViewModel>
     {
         private readonly IAppContext _context;
         private readonly IConfigService _configService;
@@ -147,4 +139,7 @@ namespace Yutai.Views
             return true;
         }
     }
+
+
+   
 }

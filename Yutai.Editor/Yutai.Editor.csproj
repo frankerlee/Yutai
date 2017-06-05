@@ -71,8 +71,15 @@
     <Compile Include="Commands\CmdSnapIntersectPoint.cs" />
     <Compile Include="Commands\CmdSnapMidPoint.cs" />
     <Compile Include="Commands\CmdSnapOff.cs" />
+    <Compile Include="Commands\CmdSnapSetting.cs" />
     <Compile Include="Commands\CmdSnapSketch.cs" />
     <Compile Include="CompositionRoot.cs" />
+    <Compile Include="Controls\SnapConfigPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SnapConfigPage.Designer.cs">
+      <DependentUpon>SnapConfigPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditorPlugin.cs" />
     <Compile Include="Menu\DockPanelService.cs" />
     <Compile Include="Menu\MenuGenerator.cs" />
@@ -106,8 +113,15 @@
       <Project>{9a73b99a-0d59-4b55-b35f-721d321942af}</Project>
       <Name>Yutai.UI</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Yutai\Yutai.csproj">
+      <Project>{23F812D9-D4AA-44AA-A721-AD0948099A95}</Project>
+      <Name>Yutai</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\SnapConfigPage.resx">
+      <DependentUpon>SnapConfigPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -148,6 +162,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icon_snap_sketch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_snap_setting.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

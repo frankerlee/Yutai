@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Yutai.Configuration;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Services;
@@ -28,8 +29,48 @@ namespace Yutai.Views
         private void Initialize()
         {
             _pages.Clear();
+            if (_context.Config.LoadAllConfigPages)
+            {
+                _pages.Add(new GeneralConfigPage(_configeService));
+                foreach (var p in _pluginManager.ActivePlugins)
+                {
+                    foreach (var page in p.ConfigPages)
+                    {
+                        _pages.Add(page);
+                    }
+                }
+            }
+            else
+            {
+                string nameStr = _context.Config.CustomConfigPages;
+                string[] names = nameStr.Split(';');
+                for (int i = 0; i < names.Length; i++)
+                {
+                    string pageKey = names[i];
+                    if (pageKey.Equals("General"))
+                    {
+                        _pages.Add(new GeneralConfigPage(_configeService));
+                        continue;
+                    }
 
-            //_pages.Add(new GeneralConfigPage(_configeService));
+                    bool find = false;
+                    foreach (var p in _pluginManager.ActivePlugins)
+                    {
+                        foreach (var page in p.ConfigPages)
+                        {
+                            if (page.Key.Equals(pageKey))
+                            {
+                                _pages.Add(page);
+                                find = true;
+                                break;
+                            }
+                           
+                        }
+                        if (find) break;
+                    }
+                }
+            }
+
             //_pages.Add(new MapConfigPage(_configeService));
             //_pages.Add(new ProjectionsConfigPage(_configeService));
             //_pages.Add(new WidgetsConfigPage(_configeService));
@@ -44,13 +85,7 @@ namespace Yutai.Views
 
             //_pages.Add(new PluginsConfigPage(_pluginManager, _context));
 
-            foreach (var p in _pluginManager.ActivePlugins)
-            {
-                foreach (var page in p.ConfigPages)
-                {
-                    _pages.Add(page);
-                }
-            }
+
         }
 
         public void ReloadPage(ConfigPageType type)
@@ -62,7 +97,7 @@ namespace Yutai.Views
             }
         }
 
-        public ConfigPageType SelectedPage { get; set; }
+        public string SelectedPage { get; set; }
 
         public bool UseSelectedPage { get; set; }
 
@@ -76,4 +111,6 @@ namespace Yutai.Views
             return _pages.FirstOrDefault(p => p.PageType == pageType);
         }
     }
+
+    
 }

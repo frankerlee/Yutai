@@ -16,6 +16,7 @@ using Yutai.ArcGIS.Common.BaseClasses;
 using Yutai.ArcGIS.Common.Editor.Helpers;
 using Yutai.ArcGIS.Common.Geodatabase;
 using Yutai.ArcGIS.Common.Helpers;
+using Yutai.Plugins.Interfaces;
 using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Common.Editor
@@ -43,6 +44,8 @@ namespace Yutai.ArcGIS.Common.Editor
 		private static IFeatureLayer m_CurrentSkectchLayer;
 
 		private static IWorkspaceEdit m_pEditWorkspace;
+
+	    private static IAppContext m_pContext;
 
 		public static YTEditTemplate CurrentEditTemplate
 		{
@@ -3144,7 +3147,7 @@ namespace Yutai.ArcGIS.Common.Editor
 		{
 			Editor.StopEditing(imap_0, true, false);
 			(imap_0 as IActiveView).Refresh();
-			Editor.StartEditing(imap_0);
+			Editor.StartEditing(imap_0,m_pContext);
 		}
 
 		public static void SaveEditing()
@@ -3838,7 +3841,7 @@ namespace Yutai.ArcGIS.Common.Editor
 			return flag;
 		}
 
-		public static bool StartEditing(IMap imap_0)
+		public static bool StartEditing(IMap pMap,IAppContext context)
 		{
 			bool editWorkspace;
 			object obj;
@@ -3847,9 +3850,10 @@ namespace Yutai.ArcGIS.Common.Editor
 			IPropertySet propertySetClass = new PropertySet();
 			IFeatureLayer featureLayer = null;
 			EditWorkspaceInfo element = null;
-			for (int i = 0; i < imap_0.LayerCount; i++)
+		    m_pContext = context;
+			for (int i = 0; i < pMap.LayerCount; i++)
 			{
-				ILayer layer = imap_0.Layer[i];
+				ILayer layer = pMap.Layer[i];
 				if (layer is IGroupLayer)
 				{
 					Editor.CheckGroupLayerEdit(arrayClass, layer as ICompositeLayer);
@@ -3890,7 +3894,7 @@ namespace Yutai.ArcGIS.Common.Editor
 				{
 					frmSelectEditDatasource _frmSelectEditDatasource = new frmSelectEditDatasource()
 					{
-						Map = imap_0,
+						Map = pMap,
 						EditWorkspaceInfo = arrayClass
 					};
 					_frmSelectEditDatasource.ShowDialog();
@@ -3910,16 +3914,16 @@ namespace Yutai.ArcGIS.Common.Editor
 					{
 						try
 						{
-							if (ApplicationRef.AppContext.Config.EngineSnapEnvironment != null)
+							if (context.Config.EngineSnapEnvironment != null)
 							{
-								(ApplicationRef.AppContext.Config.EngineSnapEnvironment as IEngineEditor).StartEditing(workspaceEdit as IWorkspace, imap_0);
+								(context.Config.EngineSnapEnvironment as IEngineEditor).StartEditing(workspaceEdit as IWorkspace, pMap);
 							}
 							else
 							{
 								workspaceEdit.StartEditing(true);
 							}
 							Editor.EditWorkspace = workspaceEdit;
-							Editor.EditMap = imap_0;
+							Editor.EditMap = pMap;
 						}
 						catch (COMException cOMException1)
 						{
@@ -3953,24 +3957,24 @@ namespace Yutai.ArcGIS.Common.Editor
 			return editWorkspace;
 		}
 
-		private static bool StartEditing1(IMap imap_0)
+		private static bool StartEditing1(IMap pMap)
 		{
 			bool flag;
 			if (!UtilityLicenseProviderCheck.Check())
 			{
 				flag = false;
 			}
-			else if (imap_0.LayerCount < 1)
+			else if (pMap.LayerCount < 1)
 			{
 				flag = false;
 			}
-			else if (Editor.GetEditWorkspace(imap_0) != null)
+			else if (Editor.GetEditWorkspace(pMap) != null)
 			{
 				int num = 0;
 				string str = "";
-				for (int i = 0; i < imap_0.LayerCount; i++)
+				for (int i = 0; i < pMap.LayerCount; i++)
 				{
-					num = num + Editor.CheckStartEditing(imap_0.Layer[i], ref str);
+					num = num + Editor.CheckStartEditing(pMap.Layer[i], ref str);
 				}
 				if (num != 0)
 				{

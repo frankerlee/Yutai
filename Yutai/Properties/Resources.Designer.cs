@@ -323,6 +323,16 @@ namespace Yutai.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap icon_open_setting {
+            get {
+                object obj = ResourceManager.GetObject("icon_open_setting", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap icon_overview {
             get {
                 object obj = ResourceManager.GetObject("icon_overview", resourceCulture);
