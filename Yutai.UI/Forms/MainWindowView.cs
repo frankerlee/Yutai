@@ -18,12 +18,12 @@ namespace Yutai.UI.Forms
 {
 
 
-    public partial class MapWindowView : MetroForm, IViewInternal
+    public partial class MainWindowView : RibbonForm, IViewInternal
 
     {
         public event Action OkClicked;
 
-        protected MapWindowView()
+        protected MainWindowView()
         {
             //Logger.Current.Trace("Start MapWindowView");
             //Logger.Current.Trace("Start MapWindowView.InitializeComponent()");
@@ -108,10 +108,25 @@ namespace Yutai.UI.Forms
             get { return this; }
         }
 
-        private void MapWindowView_Load(object sender, EventArgs e)
+        private void MainWindowView_Load(object sender, EventArgs e)
         {
             // Fixing CORE-160
-            CaptionFont = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+           
+        }
+    }
+
+    public class MainWindowView<TModel> : MainWindowView, IViewInternal<TModel>
+    {
+        protected TModel _model;
+
+        public void InitInternal(TModel model)
+        {
+            _model = model;
+        }
+
+        public TModel Model
+        {
+            get { return _model; }
         }
     }
 }

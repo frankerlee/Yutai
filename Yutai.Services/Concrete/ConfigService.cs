@@ -66,7 +66,7 @@ namespace Yutai.Services.Concrete
             }
             catch (Exception ex)
             {
-                const string msg = "Failed to save app config.";
+                const string msg = "设置保存失败。";
                 Logger.Current.Error(msg, ex);
                 MessageService.Current.Info(msg);
             }
@@ -76,10 +76,10 @@ namespace Yutai.Services.Concrete
         public bool LoadConfig()
         {
             var path = ConfigPathHelper.GetConfigFilePath();
-            Logger.Current.Trace("Start LoadConfig. Config file: " + path);
+            Logger.Current.Trace("开始引导配置文件 " + path);
             if (!File.Exists(path))
             {
-                Logger.Current.Debug("Config file {0} does not exist", path);
+                Logger.Current.Debug("配置文件 {0} 不存在", path);
                 return false;
             }
 
@@ -94,12 +94,12 @@ namespace Yutai.Services.Concrete
                 }
 
                 ApplyXmlConfig(xmlConfig);
-                Logger.Current.Trace("End LoadConfig");
+                Logger.Current.Trace("配置文件引导结束");
                 return true;
             }
             catch (Exception ex)
             {
-                MessageService.Current.Info("Failed to load app settings: " + ex.Message);
+                MessageService.Current.Info("配置引导失败，原因为: " + ex.Message);
             }
             return false;
         }

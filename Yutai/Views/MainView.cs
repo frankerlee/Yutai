@@ -20,7 +20,7 @@ using Yutai.UI.Menu;
 
 namespace Yutai.Views
 {
-    public partial class MainView : Yutai.UI.Forms.MapWindowView, IMainView
+    public partial class MainView : Yutai.UI.Forms.MainWindowView, IMainView
     {
         public const string SerializationKey = ""; // intentionally empty
         private const string WindowTitle = "Yutai 地理信息平台";
@@ -142,8 +142,8 @@ namespace Yutai.Views
         #region IView implementation
         private void RestorePreviousState()
         {
-            _dockingManager1.TryRestoreLayout(SerializationKey);
-            _mainFrameBarManager1.TryRestoreLayout(SerializationKey);
+            //_dockingManager1.TryRestoreLayout(SerializationKey);
+            //_mainFrameBarManager1.TryRestoreLayout(SerializationKey);
         }
 
         public override void ShowView(IWin32Window parent = null)

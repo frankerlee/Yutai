@@ -1,6 +1,6 @@
 ﻿namespace Yutai.UI.Forms
 {
-    partial class MapWindowView
+    partial class MainWindowView
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // MapWindowView
+            // MainWindowView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(453, 383);
             this.Name = "MapWindowView";
             this.Text = "MapWindowView";
-            this.Load += new System.EventHandler(this.MapWindowView_Load);
+            this.Load += new System.EventHandler(this.MainWindowView_Load);
             this.ResumeLayout(false);
 
         }
