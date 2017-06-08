@@ -38,10 +38,10 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Yutai.Properties.Resources.img_mapwindow_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 6);
+            this.pictureBox1.Image = global::Yutai.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(11, 11);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(580, 102);
+            this.pictureBox1.Size = new System.Drawing.Size(175, 78);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;

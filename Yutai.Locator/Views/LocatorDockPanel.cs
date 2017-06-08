@@ -9,9 +9,6 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
-using Syncfusion.Grouping;
-using Syncfusion.Windows.Forms.Grid;
-using Syncfusion.Windows.Forms.Grid.Grouping;
 using Yutai.ArcGIS.Common;
 using Yutai.ArcGIS.Common.Helpers;
 using Yutai.Plugins.Enums;
@@ -31,6 +28,7 @@ namespace Yutai.Plugins.Locator.Views
         private IMapControlEvents2_Event mapEvent;
         private IMap _map;
         private int _searchCount = 0;
+        private bool _zoomShape = false;
 
         
         public LocatorDockPanel(IAppContext context)
@@ -39,13 +37,15 @@ namespace Yutai.Plugins.Locator.Views
             _context = context;
             InitializeComponent();
             TabPosition = 4;
-            toolZoomToShape.Tag = 0;
-            toolZoomToShape.Click += (s, e) => { toolZoomToShape.Checked = !toolZoomToShape.Checked; };
-            comboBoxAdv1.SelectedIndexChanged += ComboBoxAdv1_SelectedIndexChanged;
-            //btnSearch.Click += BtnSearch_Click;
+            btnZoom.Tag = 0;
+            btnZoom.Click += (s, e) => {_zoomShape= btnZoom.Checked ; };
+            cmbLocators.SelectedIndexChanged += cmbLocators_SelectedIndexChanged;
+           // btnSearch.Click += BtnSearch_Click;
             InitLocatorTables();
             _map = _context.MapControl.ActiveView as IMap;
-            
+            cardView1.OptionsBehavior.AutoHorzWidth = true;
+
+
         }
 
         
@@ -54,9 +54,9 @@ namespace Yutai.Plugins.Locator.Views
             TrySearch(true);
         }
 
-        private void ComboBoxAdv1_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbLocators_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBoxAdv1.SelectedIndex < 0)
+            if (cmbLocators.SelectedIndex < 0)
             {
                // btnSearch.Enabled = false;
                 return;
@@ -67,12 +67,12 @@ namespace Yutai.Plugins.Locator.Views
 
         public void TrySearch(bool allowKeyEmpty)
         {
-            if (comboBoxAdv1.SelectedIndex < 0) return;
+            if (cmbLocators.SelectedIndex < 0) return;
             _dataTable.Rows.Clear();
             _searchCount = 0;
-            string searchKey = toolSearchKey.Text.Trim();
+            string searchKey = txtKey.Text.Trim();
             if (allowKeyEmpty == false && string.IsNullOrEmpty(searchKey)) return;
-            XmlLocator locator = FindLocatorByName(comboBoxAdv1.SelectedItem.ToString());
+            XmlLocator locator = FindLocatorByName(cmbLocators.SelectedItem.ToString());
             if (locator == null) return;
             _map = _context.MapControl.Map as IMap;
             ILayer pLayer = LayerHelper.QueryLayerByDisplayName(_map, locator.Layer);
@@ -94,8 +94,7 @@ namespace Yutai.Plugins.Locator.Views
             {
                 SearchLayer(pLayer, locator, searchKey);
             }
-            this.grdResult.TableDescriptor.Columns["名称"].Appearance.AnyCell.Font.Bold = true;
-            this.grdResult.TableDescriptor.Columns["电话"].Width = this.grdResult.Width / 2;
+          
             this.grdResult.Update();
         }
 
@@ -137,6 +136,7 @@ namespace Yutai.Plugins.Locator.Views
                 row["电话"] = telIdx < 0 ? "" : pFeature.get_Value(telIdx);
                 row["邮箱"] = emailIdx < 0 ? "" : pFeature.get_Value(emailIdx);
                 row["要素"] = pFeature.Shape;
+                row["照片"] = phoIdx < 0 ? null : pFeature.get_Value(phoIdx);
                 _dataTable.Rows.Add(row);
                 _searchCount++;
                 if (_searchCount > _context.Config.LocatorMaxCount) break;
@@ -187,7 +187,7 @@ namespace Yutai.Plugins.Locator.Views
 
         public bool ZoomToShape
         {
-            get { return toolZoomToShape.Checked; }
+            get { return btnZoom.Checked; }
         }
 
         public void Clear()
@@ -200,46 +200,10 @@ namespace Yutai.Plugins.Locator.Views
 
         private void InitGridSettings()
         {
-            Syncfusion.Windows.Forms.Grid.Grouping.GridColumnSetDescriptor gridColumnSetDescriptor1 = new Syncfusion.Windows.Forms.Grid.Grouping.GridColumnSetDescriptor();
-            this.grdResult.TableDescriptor.AllowEdit = false;
-            this.grdResult.TableDescriptor.AllowNew = false;
-            this.grdResult.TableDescriptor.VisibleColumns.Clear();
-            gridColumnSetDescriptor1.ColumnSpans.AddRange(new Syncfusion.Windows.Forms.Grid.Grouping.GridColumnSpanDescriptor[] {
-            new Syncfusion.Windows.Forms.Grid.Grouping.GridColumnSpanDescriptor("名称", "R0C0:R0C1"),
-            new Syncfusion.Windows.Forms.Grid.Grouping.GridColumnSpanDescriptor("地址", "R1C0:R1C1"),
-            new Syncfusion.Windows.Forms.Grid.Grouping.GridColumnSpanDescriptor("说明", "R2C0:R2C1"),
-            new Syncfusion.Windows.Forms.Grid.Grouping.GridColumnSpanDescriptor("电话", "R3C0"),
-            new Syncfusion.Windows.Forms.Grid.Grouping.GridColumnSpanDescriptor("邮箱", "R3C1")});
-            gridColumnSetDescriptor1.Name = "ColumnSet 1";
-            this.grdResult.TableDescriptor.ColumnSets.AddRange(new Syncfusion.Windows.Forms.Grid.Grouping.GridColumnSetDescriptor[] {
-            gridColumnSetDescriptor1});
-            this.grdResult.TableDescriptor.GroupedColumns.AddRange(new Syncfusion.Grouping.SortColumnDescriptor[] {
-            new Syncfusion.Grouping.SortColumnDescriptor("图层", System.ComponentModel.ListSortDirection.Ascending)});
-            this.grdResult.TableDescriptor.TableOptions.AllowDragColumns = true;
-            this.grdResult.TableDescriptor.TableOptions.AllowDropDownCell = false;
-            this.grdResult.TableDescriptor.TableOptions.ShowRowHeader = false;
-            this.grdResult.TableDescriptor.TopLevelGroupOptions.ShowCaption = true;
-            this.grdResult.TableDescriptor.TopLevelGroupOptions.ShowColumnHeaders = false;
-            this.grdResult.TableDescriptor.TopLevelGroupOptions.ShowSummaries = false;
-            this.grdResult.TableDescriptor.VisibleColumns.AddRange(new Syncfusion.Windows.Forms.Grid.Grouping.GridVisibleColumnDescriptor[] {
-            new Syncfusion.Windows.Forms.Grid.Grouping.GridVisibleColumnDescriptor("ColumnSet 1")});
-            this.grdResult.TableDescriptor.Columns["名称"].Width = this.grdResult.Width/2;
-            
-            this.grdResult.Update();
-            this.grdResult.SelectedRecordsChanged+= GrdResultOnSelectedRecordsChanged;
+          
         }
 
-        private void GrdResultOnSelectedRecordsChanged(object sender, SelectedRecordsChangedEventArgs args)
-        {
-            if (args.SelectedRecord == null) return;
-            if (args.SelectedRecord.Record["要素"] == null) return;
-            IGeometry geometry = args.SelectedRecord.Record["要素"] as IGeometry;
-            if (ZoomToShape)
-            {
-                EsriUtils.ZoomToGeometry(geometry, _map, 2);
-                FlashUtility.FlashGeometry(geometry, _context.MapControl);
-            }
-        }
+      
 
         private void InitLocatorTables()
         {
@@ -277,8 +241,15 @@ namespace Yutai.Plugins.Locator.Views
 
         public IEnumerable<Control> Buttons
         {
-            get { yield break; }
+            get { 
+                yield return btnClear;
+                yield return btnSearch;
+                
+            }
+            
         }
+
+        
 
         /// <summary>
         /// Gets the ok button.
@@ -290,7 +261,7 @@ namespace Yutai.Plugins.Locator.Views
 
         public IEnumerable<ToolStripItemCollection> ToolStrips
         {
-            get { yield return toolStripEx1.Items; }
+            get { return null; }
         }
 
         public void Initialize(IAppContext context)
@@ -305,34 +276,18 @@ namespace Yutai.Plugins.Locator.Views
 
         public void LoadLocators()
         {
-            this.comboBoxAdv1.Items.Clear();
+            this.cmbLocators.Items.Clear();
             ISecureContext secureContext = _context as ISecureContext;
             if(secureContext.YutaiProject==null) return;
             if (secureContext.YutaiProject.Locators == null) return;
             foreach (XmlLocator locator in secureContext.YutaiProject.Locators)
             {
-                this.comboBoxAdv1.Items.Add(locator.Name);
+                this.cmbLocators.Items.Add(locator.Name);
             }
             _map=_context.MapControl.ActiveView as IMap;
            
         }
-
-        private int _oldRow;
-        private void grdResult_TableControlCellClick(object sender, GridTableControlCellClickEventArgs e)
-        {
-            Syncfusion.Grouping.Record rec = this.grdResult.Table.CurrentRecord;
-            if (rec == null) return;
-            if (rec["要素"] == null) return;
-            IGeometry geometry = rec["要素"] as IGeometry;
-            if(_oldRow ==rec.Id)return;
-            if (ZoomToShape)
-            {
-                EsriUtils.ZoomToGeometry(geometry, _map, 2);
-                FlashUtility.FlashGeometry(geometry, _context.MapControl);
-            }
-            _oldRow = rec.Id;
-        }
-
+        
         public override Bitmap Image { get { return Properties.Resources.icon_locator_small; } }
         public override string Caption {
             get { return "位置查看器"; }
@@ -342,5 +297,16 @@ namespace Yutai.Plugins.Locator.Views
         public virtual string DefaultNestDockName { get { return ""; } }
         public const string DefaultDockName = "Plug_Locatoe_Result";
 
+        private void cardView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            DataRow row = cardView1.GetDataRow(e.FocusedRowHandle);
+            if (row["要素"] == null) return;
+            IGeometry geometry = row["要素"] as IGeometry;
+            if (ZoomToShape)
+            {
+                EsriUtils.ZoomToGeometry(geometry, _map, 2);
+                FlashUtility.FlashGeometry(geometry, _context.MapControl);
+            }
+        }
     }
 }

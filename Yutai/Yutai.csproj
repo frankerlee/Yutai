@@ -586,6 +586,7 @@
     <EmbeddedResource Include="Resource\Cursor\ZoomOut.cur" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\NewIcons\logo.png" />
     <None Include="Resources\NewIcons\icon_scale_small.png" />
     <None Include="Resources\NewIcons\icon_coordinates.png" />
     <None Include="Resources\NewIcons\icon_units_small.png" />

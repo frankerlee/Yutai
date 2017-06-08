@@ -39,9 +39,12 @@ namespace Yutai.Plugins.Mvp
                 btn.Click += ItemClick;
             }
 
-            foreach (var items in view.ToolStrips)
+            if (view.ToolStrips != null)
             {
-                InitMenu(items);
+                foreach (var items in view.ToolStrips)
+                {
+                    InitMenu(items);
+                }
             }
         }
 

@@ -28,152 +28,269 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.comboBoxAdv1 = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
-            this.label1 = new System.Windows.Forms.Label();
-            this.toolStripEx1 = new Syncfusion.Windows.Forms.Tools.ToolStripEx();
-            this.toolSearchKey = new System.Windows.Forms.ToolStripTextBox();
-            this.toolSearch = new System.Windows.Forms.ToolStripButton();
-            this.toolZoomToShape = new System.Windows.Forms.ToolStripButton();
-            this.toolClear = new System.Windows.Forms.ToolStripButton();
-            this.grdResult = new Syncfusion.Windows.Forms.Grid.Grouping.GridGroupingControl();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxAdv1)).BeginInit();
-            this.toolStripEx1.SuspendLayout();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.cmbLocators = new System.Windows.Forms.ComboBox();
+            this.txtKey = new DevExpress.XtraEditors.TextEdit();
+            this.btnClear = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSearch = new DevExpress.XtraEditors.SimpleButton();
+            this.btnZoom = new DevExpress.XtraEditors.CheckButton();
+            this.grdResult = new DevExpress.XtraGrid.GridControl();
+            this.cardView1 = new DevExpress.XtraGrid.Views.Card.CardView();
+            this.图层 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.序号 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.名称 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.地址 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.说明 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.电话 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.邮箱 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.要素 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.照片 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtKey.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdResult)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // tableLayoutPanel1
             // 
-            this.panel1.Controls.Add(this.comboBoxAdv1);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(313, 28);
-            this.panel1.TabIndex = 0;
+            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.Controls.Add(this.labelControl1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.labelControl2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.cmbLocators, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtKey, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnClear, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnSearch, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnZoom, 2, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(313, 65);
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // comboBoxAdv1
+            // labelControl1
             // 
-            this.comboBoxAdv1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxAdv1.BeforeTouchSize = new System.Drawing.Size(229, 20);
-            this.comboBoxAdv1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxAdv1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.comboBoxAdv1.Location = new System.Drawing.Point(74, 5);
-            this.comboBoxAdv1.Name = "comboBoxAdv1";
-            this.comboBoxAdv1.Size = new System.Drawing.Size(229, 20);
-            this.comboBoxAdv1.TabIndex = 1;
+            this.labelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelControl1.Location = new System.Drawing.Point(7, 3);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(50, 29);
+            this.labelControl1.TabIndex = 0;
+            this.labelControl1.Text = "定位器：";
             // 
-            // label1
+            // labelControl2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "定位器：";
+            this.labelControl2.Location = new System.Drawing.Point(7, 38);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(48, 14);
+            this.labelControl2.TabIndex = 1;
+            this.labelControl2.Text = "关键字：";
             // 
-            // toolStripEx1
+            // cmbLocators
             // 
-            this.toolStripEx1.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.toolStripEx1.Image = null;
-            this.toolStripEx1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolSearchKey,
-            this.toolSearch,
-            this.toolZoomToShape,
-            this.toolClear});
-            this.toolStripEx1.Location = new System.Drawing.Point(0, 28);
-            this.toolStripEx1.Name = "toolStripEx1";
-            this.toolStripEx1.ShowCaption = false;
-            this.toolStripEx1.Size = new System.Drawing.Size(313, 25);
-            this.toolStripEx1.Stretch = true;
-            this.toolStripEx1.TabIndex = 2;
+            this.cmbLocators.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbLocators.FormattingEnabled = true;
+            this.cmbLocators.Location = new System.Drawing.Point(63, 7);
+            this.cmbLocators.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
+            this.cmbLocators.Name = "cmbLocators";
+            this.cmbLocators.Size = new System.Drawing.Size(167, 20);
+            this.cmbLocators.TabIndex = 2;
             // 
-            // toolSearchKey
+            // txtKey
             // 
-            this.toolSearchKey.Name = "toolSearchKey";
-            this.toolSearchKey.Size = new System.Drawing.Size(150, 25);
+            this.txtKey.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtKey.Location = new System.Drawing.Point(63, 38);
+            this.txtKey.Name = "txtKey";
+            this.txtKey.Size = new System.Drawing.Size(167, 20);
+            this.txtKey.TabIndex = 3;
             // 
-            // toolSearch
+            // btnClear
             // 
-            this.toolSearch.Image = global::Yutai.Plugins.Locator.Properties.Resources.YTLocator;
-            this.toolSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolSearch.Name = "toolSearch";
-            this.toolSearch.Size = new System.Drawing.Size(52, 22);
-            this.toolSearch.Text = "查找";
+            this.btnClear.Image = global::Yutai.Plugins.Locator.Properties.Resources.img_clear24;
+            this.btnClear.Location = new System.Drawing.Point(276, 3);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(34, 29);
+            this.btnClear.TabIndex = 5;
+            this.btnClear.Text = "simpleButton2";
             // 
-            // toolZoomToShape
+            // btnSearch
             // 
-            this.toolZoomToShape.Checked = true;
-            this.toolZoomToShape.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.toolZoomToShape.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolZoomToShape.Image = global::Yutai.Plugins.Locator.Properties.Resources.icon_zoom_to_layer;
-            this.toolZoomToShape.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolZoomToShape.Name = "toolZoomToShape";
-            this.toolZoomToShape.Size = new System.Drawing.Size(23, 22);
-            this.toolZoomToShape.Text = "放大到位置";
+            this.tableLayoutPanel1.SetColumnSpan(this.btnSearch, 2);
+            this.btnSearch.Location = new System.Drawing.Point(236, 38);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(74, 23);
+            this.btnSearch.TabIndex = 6;
+            this.btnSearch.Text = "搜 索";
             // 
-            // toolClear
+            // btnZoom
             // 
-            this.toolClear.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolClear.Image = global::Yutai.Plugins.Locator.Properties.Resources.img_clear24;
-            this.toolClear.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolClear.Name = "toolClear";
-            this.toolClear.Size = new System.Drawing.Size(23, 22);
-            this.toolClear.Text = "清除";
+            this.btnZoom.Image = global::Yutai.Plugins.Locator.Properties.Resources.icon_zoom_to_layer;
+            this.btnZoom.Location = new System.Drawing.Point(236, 3);
+            this.btnZoom.Name = "btnZoom";
+            this.btnZoom.Size = new System.Drawing.Size(34, 29);
+            this.btnZoom.TabIndex = 7;
             // 
             // grdResult
             // 
-            this.grdResult.BackColor = System.Drawing.SystemColors.Window;
             this.grdResult.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdResult.FreezeCaption = false;
-            this.grdResult.GridOfficeScrollBars = Syncfusion.Windows.Forms.OfficeScrollBars.Metro;
-            this.grdResult.GridVisualStyles = Syncfusion.Windows.Forms.GridVisualStyles.Metro;
-            this.grdResult.Location = new System.Drawing.Point(0, 53);
+            gridLevelNode1.RelationName = "Level1";
+            this.grdResult.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode1});
+            this.grdResult.Location = new System.Drawing.Point(0, 65);
+            this.grdResult.MainView = this.cardView1;
             this.grdResult.Name = "grdResult";
-            this.grdResult.Size = new System.Drawing.Size(313, 412);
-            this.grdResult.TabIndex = 3;
-            this.grdResult.TableDescriptor.AllowNew = false;
-            this.grdResult.TableDescriptor.TableOptions.AllowSelection = Syncfusion.Windows.Forms.Grid.GridSelectionFlags.Row;
-            this.grdResult.TableDescriptor.TableOptions.CaptionRowHeight = 29;
-            this.grdResult.TableDescriptor.TableOptions.ColumnHeaderRowHeight = 25;
-            this.grdResult.TableDescriptor.TableOptions.ListBoxSelectionMode = System.Windows.Forms.SelectionMode.One;
-            this.grdResult.TableDescriptor.TableOptions.RecordRowHeight = 25;
-            this.grdResult.Text = "gridGroupingControl1";
-            this.grdResult.TopLevelGroupOptions.ShowColumnHeaders = false;
-            this.grdResult.VersionInfo = "14.1450.0.41";
-            this.grdResult.TableControlCellClick += new Syncfusion.Windows.Forms.Grid.Grouping.GridTableControlCellClickEventHandler(this.grdResult_TableControlCellClick);
-            this.grdResult.SelectedRecordsChanged += new Syncfusion.Grouping.SelectedRecordsChangedEventHandler(this.GrdResultOnSelectedRecordsChanged);
+            this.grdResult.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemImageEdit1});
+            this.grdResult.Size = new System.Drawing.Size(313, 400);
+            this.grdResult.TabIndex = 1;
+            this.grdResult.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.cardView1});
+            // 
+            // cardView1
+            // 
+            this.cardView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.图层,
+            this.序号,
+            this.名称,
+            this.地址,
+            this.说明,
+            this.电话,
+            this.邮箱,
+            this.要素,
+            this.照片});
+            this.cardView1.FocusedCardTopFieldIndex = 0;
+            this.cardView1.GridControl = this.grdResult;
+            this.cardView1.Name = "cardView1";
+            this.cardView1.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Auto;
+            this.cardView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.cardView1_FocusedRowChanged);
+            // 
+            // 图层
+            // 
+            this.图层.Caption = "图层";
+            this.图层.FieldName = "图层";
+            this.图层.Name = "图层";
+            this.图层.OptionsColumn.AllowEdit = false;
+            this.图层.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
+            this.图层.Visible = true;
+            this.图层.VisibleIndex = 0;
+            // 
+            // 序号
+            // 
+            this.序号.Caption = "序号";
+            this.序号.FieldName = "序号";
+            this.序号.Name = "序号";
+            // 
+            // 名称
+            // 
+            this.名称.Caption = "名称";
+            this.名称.FieldName = "名称";
+            this.名称.Name = "名称";
+            this.名称.Visible = true;
+            this.名称.VisibleIndex = 1;
+            // 
+            // 地址
+            // 
+            this.地址.Caption = "地址";
+            this.地址.FieldName = "地址";
+            this.地址.Name = "地址";
+            this.地址.Visible = true;
+            this.地址.VisibleIndex = 2;
+            // 
+            // 说明
+            // 
+            this.说明.Caption = "说明";
+            this.说明.FieldName = "说明";
+            this.说明.Name = "说明";
+            this.说明.Visible = true;
+            this.说明.VisibleIndex = 3;
+            // 
+            // 电话
+            // 
+            this.电话.Caption = "电话";
+            this.电话.FieldName = "电话";
+            this.电话.Name = "电话";
+            this.电话.Visible = true;
+            this.电话.VisibleIndex = 4;
+            // 
+            // 邮箱
+            // 
+            this.邮箱.Caption = "邮箱";
+            this.邮箱.FieldName = "邮箱";
+            this.邮箱.Name = "邮箱";
+            this.邮箱.Visible = true;
+            this.邮箱.VisibleIndex = 5;
+            // 
+            // 要素
+            // 
+            this.要素.Caption = "要素";
+            this.要素.FieldName = "要素";
+            this.要素.Name = "要素";
+            // 
+            // 照片
+            // 
+            this.照片.Caption = "照片";
+            this.照片.ColumnEdit = this.repositoryItemImageEdit1;
+            this.照片.FieldName = "照片";
+            this.照片.Name = "照片";
+            this.照片.Visible = true;
+            this.照片.VisibleIndex = 6;
+            // 
+            // repositoryItemImageEdit1
+            // 
+            this.repositoryItemImageEdit1.AutoHeight = false;
+            this.repositoryItemImageEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageEdit1.Name = "repositoryItemImageEdit1";
             // 
             // LocatorDockPanel
             // 
             this.Controls.Add(this.grdResult);
-            this.Controls.Add(this.toolStripEx1);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "LocatorDockPanel";
             this.Size = new System.Drawing.Size(313, 465);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxAdv1)).EndInit();
-            this.toolStripEx1.ResumeLayout(false);
-            this.toolStripEx1.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtKey.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdResult)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private Syncfusion.Windows.Forms.Tools.ComboBoxAdv comboBoxAdv1;
-        private System.Windows.Forms.Label label1;
-        private Syncfusion.Windows.Forms.Tools.ToolStripEx toolStripEx1;
-        private System.Windows.Forms.ToolStripButton toolZoomToShape;
-        private System.Windows.Forms.ToolStripButton toolClear;
-        private Syncfusion.Windows.Forms.Grid.Grouping.GridGroupingControl grdResult;
-        private System.Windows.Forms.ToolStripTextBox toolSearchKey;
-        private System.Windows.Forms.ToolStripButton toolSearch;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private System.Windows.Forms.ComboBox cmbLocators;
+        private DevExpress.XtraEditors.TextEdit txtKey;
+        private DevExpress.XtraEditors.SimpleButton btnClear;
+        private DevExpress.XtraEditors.SimpleButton btnSearch;
+        private DevExpress.XtraGrid.GridControl grdResult;
+        private DevExpress.XtraGrid.Views.Card.CardView cardView1;
+        private DevExpress.XtraGrid.Columns.GridColumn 图层;
+        private DevExpress.XtraGrid.Columns.GridColumn 序号;
+        private DevExpress.XtraGrid.Columns.GridColumn 名称;
+        private DevExpress.XtraGrid.Columns.GridColumn 地址;
+        private DevExpress.XtraGrid.Columns.GridColumn 说明;
+        private DevExpress.XtraGrid.Columns.GridColumn 电话;
+        private DevExpress.XtraGrid.Columns.GridColumn 邮箱;
+        private DevExpress.XtraGrid.Columns.GridColumn 要素;
+        private DevExpress.XtraGrid.Columns.GridColumn 照片;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageEdit repositoryItemImageEdit1;
+        private DevExpress.XtraEditors.CheckButton btnZoom;
     }
 }
