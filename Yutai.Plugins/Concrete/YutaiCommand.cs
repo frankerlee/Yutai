@@ -220,6 +220,8 @@ namespace Yutai.Plugins.Concrete
             }
         }
 
+      
+
        protected YutaiCommand(string category, string key, string name, string caption, string tooltip, string message)
        {
           

@@ -11,6 +11,7 @@ using System.Xml;
 using DevExpress.Utils;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
+using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Repository;
 using Syncfusion.Windows.Forms.Tools;
@@ -24,8 +25,6 @@ using SuperToolTip = DevExpress.Utils.SuperToolTip;
 
 namespace Yutai.UI.Menu.Ribbon
 {
-    
-
     internal class RibbonMenuIndex : IRibbonMenuIndex
     {
         private List<IRibbonMenuItem> _items;
@@ -34,24 +33,26 @@ namespace Yutai.UI.Menu.Ribbon
         private IEnumerable<IRibbonMenuItem> _cmdItems;
         private List<YutaiCommand> _commands;
         private string _oldToolName = "";
+        private RibbonStatusBar _statusManager;
         //暂时性的事件触发没有在这儿进行
         public event EventHandler<MenuItemEventArgs> ItemClicked;
 
-        public RibbonMenuIndex(RibbonControl ribbonManager)
+        public RibbonMenuIndex(RibbonControl ribbonManager, RibbonStatusBar statusBar)
         {
             _ribbonManager = ribbonManager;
-            _items=new List<IRibbonMenuItem>();
-            _commands=new List<YutaiCommand>();
+            _items = new List<IRibbonMenuItem>();
+            _commands = new List<YutaiCommand>();
+            _statusManager = statusBar;
         }
 
         #region XML处理
-        public  string GetXMLAttribute(XmlDocument xmlDoc, string path, string attributeName)
+
+        public string GetXMLAttribute(XmlDocument xmlDoc, string path, string attributeName)
         {
             try
             {
                 XmlNode node = xmlDoc.SelectSingleNode(path);
                 return GetXMLAttribute(node, attributeName);
-
             }
             catch (Exception ex)
             {
@@ -60,8 +61,8 @@ namespace Yutai.UI.Menu.Ribbon
 
             return string.Empty;
         }
-      
-        public  string GetXMLAttribute(XmlNode node, string attributeName)
+
+        public string GetXMLAttribute(XmlNode node, string attributeName)
         {
             try
             {
@@ -72,7 +73,6 @@ namespace Yutai.UI.Menu.Ribbon
                 {
                     return node.Attributes[attributeName].Value;
                 }
-
             }
             catch (Exception ex)
             {
@@ -80,8 +80,8 @@ namespace Yutai.UI.Menu.Ribbon
             }
             return string.Empty;
         }
-        #endregion
 
+        #endregion
 
         #region 创建菜单
 
@@ -106,23 +106,52 @@ namespace Yutai.UI.Menu.Ribbon
             XmlNode node = xmlDoc.SelectSingleNode("/YutaiGIS/MainMenu/Pages");
             if (node == null)
             {
+                AddStatusItems(xmlDoc);
                 return;
             }
             XmlNodeList xmlNodeListPageItem = node.SelectNodes("Page");
             if (xmlNodeListPageItem == null)
+            {
+                AddStatusItems(xmlDoc);
                 return;
-            List<RibbonPage> pages=new List<RibbonPage>();
+            }
+            List<RibbonPage> pages = new List<RibbonPage>();
             for (var i = 0; i < xmlNodeListPageItem.Count; i++)
             {
                 XmlNode xmlNodePageItem = xmlNodeListPageItem.Item(i);
-              
-                CreateRibbonPage( xmlNodePageItem);
-               
-            }
-            //开始排序加入
-            //_ribbonManager.Pages.AddRange(pages.ToArray());
 
+                CreateRibbonPage(xmlNodePageItem);
+            }
+            AddStatusItems(xmlDoc);
         }
+
+        private void AddStatusItems(XmlDocument xmlDoc)
+        {
+            XmlNode node = xmlDoc.SelectSingleNode("/YutaiGIS/StatusBar/Links");
+            if (node == null)
+            {
+                return;
+            }
+            XmlNodeList nodeList = node.ChildNodes;
+            foreach (XmlNode subnode in nodeList)
+            {
+                string key = GetXMLAttribute(subnode, "Key");
+                BarItem item = _ribbonManager.Items[key];
+                string widthStr = GetXMLAttribute(subnode, "Width");
+                if (!string.IsNullOrEmpty(widthStr))
+                    item.Width = Convert.ToInt32(widthStr);
+                string rightStr = GetXMLAttribute(subnode, "IsRight");
+                if (!string.IsNullOrEmpty(rightStr))
+                {
+                    item.Alignment = rightStr.ToUpper().IndexOf("F") > -1
+                        ? BarItemLinkAlignment.Left
+                        : BarItemLinkAlignment.Right;
+                }
+
+                _statusManager.ItemLinks.Add(_ribbonManager.Items[key]);
+            }
+        }
+
         public void SetCurrentTool(object sender, ItemClickEventArgs e)
         {
             string nowToolName = e.Item.Name;
@@ -130,34 +159,70 @@ namespace Yutai.UI.Menu.Ribbon
             if (nowToolName == _oldToolName)
             {
                 item = _ribbonManager.Items[nowToolName];
-                if (item != null) { ((BarButtonItem)item).Down = true; item.Refresh(); }
+                if (item != null)
+                {
+                    ((BarButtonItem) item).Down = true;
+                    item.Refresh();
+                }
                 _oldToolName = nowToolName;
                 return;
             }
             if (!string.IsNullOrEmpty(_oldToolName))
             {
                 item = _ribbonManager.Items[_oldToolName];
-                if (item != null) { ((BarButtonItem)item).Down = false; item.Refresh(); }
+                if (item != null)
+                {
+                    ((BarButtonItem) item).Down = false;
+                    item.Refresh();
+                }
             }
             if (!string.IsNullOrEmpty(nowToolName))
             {
                 item = _ribbonManager.Items[nowToolName];
-                if (item != null) { ((BarButtonItem)item).Down = true; item.Refresh(); }
+                if (item != null)
+                {
+                    ((BarButtonItem) item).Down = true;
+                    item.Refresh();
+                }
                 _oldToolName = nowToolName;
             }
         }
+
         public void SetCurrentTool(string oldToolName, string nowToolName)
         {
             BarItem item;
             if (!string.IsNullOrEmpty(oldToolName))
             {
-               item =_ribbonManager.Items[oldToolName];
-                if (item != null) { ((BarButtonItem) item).Down = false; item.Refresh();}
+                item = _ribbonManager.Items[oldToolName];
+                if (item != null)
+                {
+                    ((BarButtonItem) item).Down = false;
+                    item.Refresh();
+                }
             }
             if (!string.IsNullOrEmpty(nowToolName))
             {
                 item = _ribbonManager.Items[nowToolName];
-                if (item != null) { ((BarButtonItem) item).Down = true;item.Refresh();}
+                if (item != null)
+                {
+                    ((BarButtonItem) item).Down = true;
+                    item.Refresh();
+                }
+            }
+        }
+
+        public void SetStatusValue(string statusKey, object objValue)
+        {
+            if (objValue == null) objValue = "";
+            BarItem item = _ribbonManager.Items[statusKey];
+            if (item == null) return;
+            if (item is BarStaticItem)
+            {
+                ((BarStaticItem) item).Caption = objValue.ToString();
+            }
+            else if (item is BarEditItem)
+            {
+                ((BarEditItem) item).EditValue = objValue;
             }
         }
 
@@ -171,19 +236,18 @@ namespace Yutai.UI.Menu.Ribbon
             RibbonPage ribbonPage = _ribbonManager.Pages.GetPageByName(pName);
             if (ribbonPage == null)
             {
-                ribbonPage=new RibbonPage();
+                ribbonPage = new RibbonPage();
                 ribbonPage.Name = GetXMLAttribute(node, "Key");
                 ribbonPage.Text = GetXMLAttribute(node, "Caption");
                 ribbonPage.Visible = GetXMLAttribute(node, "Visible").ToUpper().IndexOf("F") > -1 ? false : true;
                 _ribbonManager.Pages.Add(ribbonPage);
             }
 
-          
 
             XmlNodeList nodeListSubPageItem = node.ChildNodes;
             foreach (XmlNode nodeSubPageItem in nodeListSubPageItem)
             {
-                RibbonPageGroup group = CreateRibbonPageGroup(ribbonPage,nodeSubPageItem) as RibbonPageGroup;
+                RibbonPageGroup group = CreateRibbonPageGroup(ribbonPage, nodeSubPageItem) as RibbonPageGroup;
                 if (group != null)
                 {
                     ribbonPage.Groups.Add(group);
@@ -192,15 +256,16 @@ namespace Yutai.UI.Menu.Ribbon
             return ribbonPage;
         }
 
-        private object CreateRibbonPageGroup(RibbonPage pPage,XmlNode nodePageGroup)
+        private object CreateRibbonPageGroup(RibbonPage pPage, XmlNode nodePageGroup)
         {
-            if (nodePageGroup == null || nodePageGroup.NodeType == XmlNodeType.Comment || nodePageGroup.Attributes == null)
+            if (nodePageGroup == null || nodePageGroup.NodeType == XmlNodeType.Comment ||
+                nodePageGroup.Attributes == null)
                 return null;
             string grpName = GetXMLAttribute(nodePageGroup, "Key");
             RibbonPageGroup ribbonPageGroup = pPage.Groups.GetGroupByName(grpName);
             if (ribbonPageGroup == null)
             {
-                 ribbonPageGroup = new RibbonPageGroup()
+                ribbonPageGroup = new RibbonPageGroup()
                 {
                     Name = GetXMLAttribute(nodePageGroup, "Key"),
                     Text = GetXMLAttribute(nodePageGroup, "Caption"),
@@ -213,7 +278,7 @@ namespace Yutai.UI.Menu.Ribbon
             XmlNodeList nodeListSubItem = nodePageGroup.SelectNodes("BarItem");
             foreach (XmlNode nodeSubItem in nodeListSubItem)
             {
-                CreateBarItem(ribbonPageGroup,nodeSubItem);
+                CreateBarItem(ribbonPageGroup, nodeSubItem);
                 //if (groupItem != null)
                 //{
                 //    ribbonPageGroup.ItemLinks.Add(groupItem);
@@ -222,38 +287,72 @@ namespace Yutai.UI.Menu.Ribbon
             return ribbonPageGroup;
         }
 
-        private BarItem CreateRibbonButtonGroup(RibbonPageGroup pageGroup,XmlNode xmlNode)
+        private BarItem CreateRibbonButtonGroup(RibbonPageGroup pageGroup, XmlNode xmlNode)
         {
-            BarButtonGroup group=new BarButtonGroup()
+            BarButtonGroup group = new BarButtonGroup()
             {
-                Name=GetXMLAttribute(xmlNode,"Key")
+                Name = GetXMLAttribute(xmlNode, "Key")
             };
             pageGroup.ItemLinks.Add(group);
             XmlNodeList nodeListSubItem = xmlNode.ChildNodes;
             foreach (XmlNode nodeSubItem in nodeListSubItem)
             {
-                 CreateBarItem(group,nodeSubItem);
-              
+                CreateBarItem(group, nodeSubItem);
             }
             return group;
         }
-        private void CreateBarItem(object pGroup,XmlNode xmlNode)
+
+        private void CreateBarItem(object pGroup, XmlNode xmlNode)
         {
             if (xmlNode != null)
             {
                 string itemTye = GetXMLAttribute(xmlNode, "ItemType");
-                string nodeKey= GetXMLAttribute(xmlNode, "Key");
-
+                string nodeKey = GetXMLAttribute(xmlNode, "Key");
+                string widthStr = GetXMLAttribute(xmlNode, "Width");
+                string subItemStr = GetXMLAttribute(xmlNode, "SubItems");
                 if (itemTye.ToLower().Equals("buttongroup"))
                 {
                     //表示下面还是组的形式，有子对象;
                     BarItem groupButton = CreateRibbonButtonGroup(pGroup as RibbonPageGroup, xmlNode);
-                    return ;
+                    if (!string.IsNullOrEmpty(widthStr))
+                    {
+                        groupButton.Width = Convert.ToInt32(widthStr);
+                    }
+                    return;
+                }
+                else if (!string.IsNullOrEmpty(subItemStr))
+                {
+                    BarSubItem barItem = _ribbonManager.Items[nodeKey] as BarSubItem;
+
+                    if (!string.IsNullOrEmpty(subItemStr))
+                    {
+                        string[] subs = subItemStr.Split(';');
+                        for (int i = 0; i < subs.Length; i++)
+                        {
+                            BarItem oneItem = _ribbonManager.Items[subs[i]];
+                            if (oneItem == null) continue;
+                            barItem.LinksPersistInfo.Add(new LinkPersistInfo(oneItem));
+                        }
+                    }
+                    if (pGroup is RibbonPageGroup)
+                    {
+                        ((pGroup) as RibbonPageGroup).ItemLinks.Add(barItem);
+                    }
+                    else if (pGroup is BarButtonGroup)
+                    {
+                        ((pGroup) as BarButtonGroup).ItemLinks.Add(barItem);
+                    }
                 }
                 else
                 {
                     //首先检查已有的对象里面是否存在该菜单
                     BarItem barItem = _ribbonManager.Items[nodeKey];
+                    if (barItem == null) return;
+
+                    if (!string.IsNullOrEmpty(widthStr))
+                    {
+                        barItem.Width = Convert.ToInt32(widthStr);
+                    }
                     if (barItem != null)
                     {
                         if (pGroup is RibbonPageGroup)
@@ -266,9 +365,8 @@ namespace Yutai.UI.Menu.Ribbon
                         }
                     }
                 }
-                
             }
-            return ;
+            return;
         }
 
         private BarItem CreateCommand(YutaiCommand command)
@@ -276,7 +374,7 @@ namespace Yutai.UI.Menu.Ribbon
             BarItem item = null;
             if (command.ItemType == RibbonItemType.Button || command.ItemType == RibbonItemType.Tool)
             {
-                item= CreateButton(command);
+                item = CreateButton(command);
             }
             else if (command.ItemType == RibbonItemType.ComboBox)
             {
@@ -290,16 +388,53 @@ namespace Yutai.UI.Menu.Ribbon
             {
                 item = CreateDropDown(command);
             }
-           item.SuperTip=new SuperToolTip();
+            else if (command.ItemType == RibbonItemType.Label)
+            {
+                item = CreateLabel(command);
+            }
+            // if (!string.IsNullOrEmpty(command.Message))
+            item.ItemClick += FireMessageSetting;
+            item.SuperTip = new SuperToolTip();
             item.SuperTip.Items.AddTitle(item.Caption);
             item.SuperTip.Items.Add((string) command.Tooltip);
             return item;
         }
 
+        private BarItem CreateLabel(IRibbonItem item)
+        {
+            BarStaticItem button = new BarStaticItem()
+            {
+                Name = item.Key,
+                Caption = item.Caption
+            };
+            if (item.Image.Width > 24 || item.Image.Height > 24)
+            {
+                button.LargeGlyph = item.Image;
+            }
+            else
+            {
+                button.Glyph = item.Image;
+            }
+            //button.Checked = item.Checked;
+            button.Tag = item;
+            button.ItemClick += ((YutaiCommand) item).OnClick;
+
+            //开始检查Category是否存在
+            BarManagerCategory category = CheckCategoryExists(item.Category);
+            button.Category = category;
+            _ribbonManager.Items.Add(button);
+            return button;
+        }
+
+        private void FireMessageSetting(object sender, ItemClickEventArgs e)
+        {
+            IRibbonItem command = e.Item.Tag as IRibbonItem;
+            if (command == null) return;
+            SetStatusValue("Status_Message", command.Message);
+        }
+
         private BarItem CreateCheckBox(IRibbonItem item)
         {
-
-
             BarCheckItem button = new BarCheckItem()
             {
                 Name = item.Key,
@@ -315,17 +450,16 @@ namespace Yutai.UI.Menu.Ribbon
             }
             button.Checked = item.Checked;
             button.Tag = item;
-            button.ItemClick += ((YutaiCommand)item).OnClick;
+            button.ItemClick += ((YutaiCommand) item).OnClick;
             //开始检查Category是否存在
             BarManagerCategory category = CheckCategoryExists(item.Category);
             button.Category = category;
             _ribbonManager.Items.Add(button);
             return button;
         }
+
         private BarItem CreateButton(IRibbonItem item)
         {
-
-            
             BarButtonItem button = new BarButtonItem()
             {
                 Name = item.Key,
@@ -340,7 +474,7 @@ namespace Yutai.UI.Menu.Ribbon
                 button.Glyph = item.Image;
             }
             button.Tag = item;
-            button.ItemClick += ((YutaiCommand)item).OnClick;
+            button.ItemClick += ((YutaiCommand) item).OnClick;
             if (item.ItemType == RibbonItemType.Tool)
             {
                 button.ButtonStyle = BarButtonStyle.Check;
@@ -348,10 +482,10 @@ namespace Yutai.UI.Menu.Ribbon
             }
             else
             {
-                button.ButtonStyle= BarButtonStyle.Default;
+                button.ButtonStyle = BarButtonStyle.Default;
             }
 
-           
+
             //开始检查Category是否存在
             BarManagerCategory category = CheckCategoryExists(item.Category);
             button.Category = category;
@@ -361,58 +495,59 @@ namespace Yutai.UI.Menu.Ribbon
 
         private BarItem CreateDropDown(IRibbonItem item)
         {
-
             ICommandSubType comboSetting = item as ICommandSubType;
 
-            BarLinkContainerItem dropItem = new BarLinkContainerItem()
+            BarSubItem dropItem = new BarSubItem()
             {
                 Name = item.Key,
                 Caption = item.Caption
             };
-
-            
-            for (int i = 0; i < comboSetting.GetCount(); i++)
+            if (item.Image.Width > 24 || item.Image.Height > 24)
             {
-                ((ICommandSubType)item).SetSubType(i);
-                BarButtonItem button=new BarButtonItem()
-                {
-                    Name=item.Key+"_menu_"+i.ToString(),
-                    Caption = item.Caption
-                };
-                if (item.Image != null)
-                {
-                    if (item.Image.Width > 24 || item.Image.Height > 24)
-                    {
-                        button.LargeGlyph = item.Image;
-                    }
-                    else
-                    {
-                        button.Glyph = item.Image;
-                    }
-                }
-                button.Tag = item;
-                BarManagerCategory category = CheckCategoryExists(item.Category);
-                button.Category = category;
-                dropItem.LinksPersistInfo.Add(new LinkPersistInfo() {Item = button});
+                dropItem.LargeGlyph = item.Image;
             }
-            
+            else
+            {
+                dropItem.Glyph = item.Image;
+            }
+
+            //for (int i = 0; i < comboSetting.GetCount(); i++)
+            //{
+            //    ((ICommandSubType)item).SetSubType(i);
+            //    BarItem button = _ribbonManager.Items[item.Key];
+            //    dropItem.LinksPersistInfo.Add(new LinkPersistInfo() { Item = button });
+            //}
+            BarManagerCategory category = CheckCategoryExists(item.Category);
+            dropItem.Category = category;
+            _ribbonManager.Items.Add(dropItem);
             return dropItem;
         }
 
         private BarItem CreateComboBox(IRibbonItem item)
         {
-           
             ICommandComboBox comboSetting = item as ICommandComboBox;
+            //ComboBoxEdit comboBox = new ComboBoxEdit()
+            //{
+            //    Name = item.Key,
+            //    Caption = item.Caption
+            //};
             BarEditItem comboBox = new BarEditItem()
             {
                 Name = item.Key,
-                Caption = item.Caption
+                Caption = item.Caption,
+                Width = 230
             };
 
-            RepositoryItemComboBox cmbEdit=new RepositoryItemComboBox()
-            {Name = item.Key+"_combo",BestFitWidth = 200};
-            cmbEdit.Buttons.AddRange(new EditorButton[] {new EditorButton(ButtonPredefines.Combo)  });
+            RepositoryItemComboBox cmbEdit = new RepositoryItemComboBox()
+                {Name = item.Key + "_combo", BestFitWidth = 300};
+            //cmbEdit.Buttons.AddRange(new EditorButton[] {new EditorButton(ButtonPredefines.Combo)  });
             comboBox.Edit = cmbEdit;
+
+            if (comboSetting.DropDownList)
+            {
+                //cmbEdit.AllowDropDownWhenReadOnly = DefaultBoolean.True;
+                //cmbEdit.ReadOnly = true;
+            }
 
             object[] objectItems = comboSetting.Items;
             for (int i = 0; i < objectItems.Length; i++)
@@ -420,13 +555,16 @@ namespace Yutai.UI.Menu.Ribbon
                 cmbEdit.Items.Add(objectItems[i]);
             }
             comboBox.Tag = item;
-            comboBox.EditValueChanged += ((YutaiCommand) item).OnClick;
+            comboSetting.LinkComboBox = comboBox;
+            comboBox.EditValueChanged += ((ICommandComboBox) item).OnEditValueChanged;
+            comboSetting.LinkComboBox = comboBox;
             //开始检查Category是否存在
-            BarManagerCategory category=CheckCategoryExists(item.Category);
+            BarManagerCategory category = CheckCategoryExists(item.Category);
             comboBox.Category = category;
             _ribbonManager.Items.Add(comboBox);
             return comboBox;
         }
+
 
         private BarManagerCategory CheckCategoryExists(string category)
         {
@@ -437,26 +575,25 @@ namespace Yutai.UI.Menu.Ribbon
             BarManagerCategory newCategory = _ribbonManager.Categories.Add(category);
             return newCategory;
         }
+
         #endregion
 
-
-       public IRibbonMenuItem FindItem( string key)
+        public IRibbonMenuItem FindItem(string key)
         {
             return _items.FirstOrDefault(c => c.Key == key);
         }
-        
+
         public void Remove(string key)
         {
-            IRibbonMenuItem item = FindItem( key);
-            if(item != null)
+            IRibbonMenuItem item = FindItem(key);
+            if (item != null)
                 _items.Remove(item);
-
         }
 
-        
+
         public void RemoveItemsForPlugin(PluginIdentity pluginIdentity)
         {
-            List<IRibbonMenuItem> _removes=new List<IRibbonMenuItem>();
+            List<IRibbonMenuItem> _removes = new List<IRibbonMenuItem>();
             foreach (var item in _items)
             {
                 if (item.Item.PluginIdentity == pluginIdentity)
@@ -469,19 +606,19 @@ namespace Yutai.UI.Menu.Ribbon
                 _items.Remove(key);
             }
         }
-        
+
 
         public IEnumerable<IRibbonMenuItem> ItemsForPlugin(PluginIdentity pluginIdentity)
         {
             return from item in _items where item.Item.PluginIdentity == pluginIdentity select item;
         }
-        
+
         public bool NeedsToolTip
         {
-            get { return  AppConfig.Instance.ShowMenuToolTips; }
+            get { return AppConfig.Instance.ShowMenuToolTips; }
         }
 
-        
+
         public void FireItemClicked(object sender, MenuItemEventArgs e)
         {
             var handler = ItemClicked;
@@ -497,19 +634,14 @@ namespace Yutai.UI.Menu.Ribbon
             //后面需要增加删除真实界面的代码
         }
 
-      
 
         public void UpdateMenu()
         {
-           
         }
+
         public IEnumerable<IRibbonMenuItem> RibbonMenuItems
         {
             get { return _items; }
         }
-
-       
-
-     
     }
 }

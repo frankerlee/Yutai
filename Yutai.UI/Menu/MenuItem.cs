@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Syncfusion.Windows.Forms.Tools.XPMenus;
+using DevExpress.XtraBars;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Events;
 using Yutai.Plugins.Interfaces;
@@ -22,33 +22,40 @@ namespace Yutai.UI.Menu
                 throw new NullReferenceException("Bar item reference is null.");
             }
 
-            item.ShowTooltip = false;
+            //item. Tooltip= false;
 
             Skip = false;
         }
 
         public virtual string Text
         {
-            get { return _item.Text; }
+            get { return _item.Caption; }
             set
             {
-                _item.Text = value;
+                _item.Caption = value;
                 FireItemChanged("Text");
             }
         }
 
         public IMenuIcon Icon
         {
-            get { return new MenuIcon(_item.Image.GetImage()); }
+            get { return new MenuIcon(_item.Glyph==null ? _item.Glyph:_item.LargeGlyph); }
             set
             {
                 if (value == null || value.Image == null) return;
 
-                _item.Image = new ImageExt(value.Image);
-                int width = value.UseNativeSize ? value.Image.Width : IconSize;
-                int height = value.UseNativeSize ? value.Image.Height : IconSize;
+                if (value.Image.Width > 20 || value.Image.Height > 20)
+                {
+                    _item.LargeGlyph = value.Image;
+                }
+                else
+                {
+                    _item.Glyph = value.Image;
+                }
+                //int width = value.UseNativeSize ? value.Image.Width : IconSize;
+                //int height = value.UseNativeSize ? value.Image.Height : IconSize;
 
-                _item.ImageSize = new Size(width, height);
+                //_item.ImageSize = new Size(width, height);
             }
         }
 

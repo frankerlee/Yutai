@@ -27,15 +27,15 @@ namespace Yutai.Menu
 
             _context = context;
 
-            InitStatusBar();
+           // InitStatusBar();
 
-            var appContext = context as AppContext;
-            if (appContext != null)
-            {
-                appContext.Broadcaster.StatusItemClicked += PluginManager_MenuItemClicked;
-            }
+            //var appContext = context as AppContext;
+            //if (appContext != null)
+            //{
+            //    appContext.Broadcaster.StatusItemClicked += PluginManager_MenuItemClicked;
+            //}
 
-            AddMapEventHandlers();
+            //AddMapEventHandlers();
         }
 
         private void AddMapEventHandlers()
@@ -82,16 +82,16 @@ namespace Yutai.Menu
         {
             var bar = _context.StatusBar;
 
-            var dropDown = bar.Items.AddSplitButton("Not defined", StatusBarKeys.ViewStyleDropDown, Identity);
-            dropDown.Icon = new MenuIcon(Resources.icon_crs_change);
+            //var dropDown = bar.Items.AddSplitButton("Not defined", StatusBarKeys.ViewStyleDropDown, Identity);
+            //dropDown.Icon = new MenuIcon(Resources.icon_crs_change);
 
-            var items = dropDown.SubItems;
-            items.AddButton("二维模式", StatusBarKeys.ViewStyle2D, Identity);
-            items.AddButton("三维模式", StatusBarKeys.ViewStyle3D, Identity);
-            items.AddButton("联动模式", StatusBarKeys.ViewStyleAll, Identity);
-            items.AddButton("视图设置", StatusBarKeys.ViewStyleConfig, Identity).BeginGroup = true; ;
+            //var items = dropDown.SubItems;
+            //items.AddButton("二维模式", StatusBarKeys.ViewStyle2D, Identity);
+            //items.AddButton("三维模式", StatusBarKeys.ViewStyle3D, Identity);
+            //items.AddButton("联动模式", StatusBarKeys.ViewStyleAll, Identity);
+            //items.AddButton("视图设置", StatusBarKeys.ViewStyleConfig, Identity).BeginGroup = true; ;
 
-            dropDown.Update();
+            //dropDown.Update();
 
             bar.Items.AddLabel("单位: ", StatusBarKeys.MapUnits, Identity).BeginGroup = true;
             bar.Items.AddLabel("选择: ", StatusBarKeys.SelectedCount, Identity).BeginGroup = true;

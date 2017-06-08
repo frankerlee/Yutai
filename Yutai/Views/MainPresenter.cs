@@ -92,7 +92,7 @@ namespace Yutai.Views
 
                */
 
-                 SplashView.Instance.ShowStatus("Loading plugins");
+                 SplashView.Instance.ShowStatus("开始引导插件...");
                  appContext.InitPlugins(configService); // must be called after docking is initialized
 
                 _context.RibbonMenu.ReorderTabs();

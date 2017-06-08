@@ -110,7 +110,12 @@ namespace Yutai.Menu
                     new CmdViewMeasureArea(_context) as YutaiCommand,
                     new CmdOpenSetting(_context) as YutaiCommand,
                     new CmdLegendDock(_context) as YutaiCommand,
-                    new CmdOverviewDock(_context) as YutaiCommand
+                    new CmdOverviewDock(_context) as YutaiCommand,
+                    new CmdDisplayCoordinates(_context),
+                    new CmdDisplayMsg(_context),
+                    new CmdDisplayScale(_context),
+                    new CmdDisplaySelection(_context),
+                    new CmdDisplayUnits(_context)
                 };
                 _commandKeys = new List<string>();
                 foreach (var command in _commands)

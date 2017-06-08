@@ -26,6 +26,7 @@ namespace Yutai.Menu
         private readonly YutaiCommands _commands;
         private readonly object _menuManager;
         private readonly object _dockingManager;
+        private readonly object _statusManager;
 
         public MenuGenerator(IAppContext context, IPluginManager pluginManager, IMainView mainView)
         {
@@ -38,7 +39,7 @@ namespace Yutai.Menu
             _menuManager = mainView.RibbonManager;
             _dockingManager = mainView.DockingManager;
             _commands = new YutaiCommands(_context,PluginIdentity.Default);
-
+            _statusManager = mainView.RibbonStatusBar;
             InitMenus();
         }
 
@@ -50,7 +51,7 @@ namespace Yutai.Menu
         {
             XmlDocument doc = new XmlDocument();
             doc.Load(base.GetType().Assembly.GetManifestResourceStream("Yutai.Menu.MenuLayout.xml"));
-            RibbonFactory.CreateMenus(_commands.GetCommands(), (RibbonControl) _menuManager,doc);
+            RibbonFactory.CreateMenus(_commands.GetCommands(), (RibbonControl) _menuManager, (RibbonStatusBar)_statusManager,doc);
 
         }
         

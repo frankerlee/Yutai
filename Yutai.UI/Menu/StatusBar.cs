@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using Syncfusion.Windows.Forms.Tools;
-using Syncfusion.Windows.Forms.Tools.XPMenus;
+using DevExpress.XtraBars.Ribbon;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
@@ -11,11 +10,11 @@ namespace Yutai.UI.Menu
 {
     internal class StatusBar : IStatusBar
     {
-        private readonly StatusStripEx _bar;
+        private readonly RibbonStatusBar _bar;
         private readonly IMenuIndex _menuIndex;
         private ToolStripItem _progressMessage;
         private ToolStripProgressBar _progressBar;
-        private MainFrameBarManager _menuManager;
+       
 
         public const string ProgressMsg = "statusProgressMsg";
         public const string ProgressBar = "statusProgressBar";
@@ -23,7 +22,7 @@ namespace Yutai.UI.Menu
 
         internal StatusBar(object bar, IMenuIndex menuIndex, PluginIdentity identity)
         {
-            _bar = bar as StatusStripEx;
+            _bar = bar as RibbonStatusBar;
             _menuIndex = menuIndex;
 
             if (_bar == null) throw new ArgumentNullException("bar");
@@ -31,11 +30,7 @@ namespace Yutai.UI.Menu
 
             _bar.Tag = new MenuItemMetadata(identity, "statusbar");
 
-#if STYLE2010
-            _bar.VisualStyle = StatusStripExStyle.Default;
-#else
-            _bar.VisualStyle = StatusStripExStyle.Metro;
-#endif
+
         }
 
         public string Name { get; set; }

@@ -40,7 +40,7 @@ namespace Yutai.Plugins.Identifer.Menu
         {
             XmlDocument doc = new XmlDocument();
             doc.Load(base.GetType().Assembly.GetManifestResourceStream("Yutai.Plugins.Identifer.Menu.MenuLayout.xml"));
-            RibbonFactory.CreateMenus(_commands.GetCommands(), (RibbonControl)_menuManager, doc);
+            RibbonFactory.CreateMenus(_commands.GetCommands(), (RibbonControl)_menuManager, _context.MainView.RibbonStatusBar as RibbonStatusBar, doc);
 
           
 

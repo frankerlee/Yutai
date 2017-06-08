@@ -34,7 +34,7 @@ namespace Yutai.Plugins.Locator.Menu
         {
             XmlDocument doc = new XmlDocument();
             doc.Load(base.GetType().Assembly.GetManifestResourceStream("Yutai.Plugins.Locator.Menu.MenuLayout.xml"));
-            RibbonFactory.CreateMenus(_commands.GetCommands(), (RibbonControl) _menuManager,doc);
+            RibbonFactory.CreateMenus(_commands.GetCommands(), (RibbonControl) _menuManager,_context.MainView.RibbonStatusBar as RibbonStatusBar, doc);
 
         }
 

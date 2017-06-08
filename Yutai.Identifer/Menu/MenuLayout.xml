@@ -22,8 +22,8 @@
           
         </PageGroup>
         <PageGroup Key="Query_Tools" Caption="工具" Visible="true" Index="0">
-          <BarItem  Key="Query_SelectionTools_Selector" Visible="true"></BarItem>
-          <BarItem  Key="Query_SelectionTools_BufferSelector" Visible="true"></BarItem>
+          <BarItem  Key="Query_SelectionTools_Selector" Visible="true"  SubItems="Query_SelectionTools_RectangleSelector;Query_SelectionTools_PolygonSelector"></BarItem>
+          <BarItem  Key="Query_SelectionTools_BufferSelector" Visible="true" SubItems="Query_SelectionTools_SelectFeatureContainers;Query_SelectionTools_SelectFeatureIntersects"></BarItem>
           <BarItem  Key="Query_SelectionTools_Mouse_SelectByGraphics" Visible="true"></BarItem>
           <BarItem  Key="Query_SelectionTools_SelectByScreen" Visible="true"></BarItem>
           <BarItem  Key="Query_SelectionTools_SelectAll" Visible="true"></BarItem>

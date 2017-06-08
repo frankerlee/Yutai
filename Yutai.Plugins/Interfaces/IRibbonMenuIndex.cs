@@ -22,5 +22,6 @@ namespace Yutai.Plugins.Interfaces
         IEnumerable<IRibbonMenuItem> RibbonMenuItems { get; }
         void AddItems(XmlDocument xmlDoc, IEnumerable<YutaiCommand> commands);
         void SetCurrentTool(string oldToolName, string nowToolName);
+        void SetStatusValue(string statusKey, object objValue);
     }
 }

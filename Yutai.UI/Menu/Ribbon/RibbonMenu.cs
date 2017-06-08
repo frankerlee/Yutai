@@ -18,9 +18,6 @@ namespace Yutai.UI.Menu.Ribbon
     public class RibbonMenu : IRibbonMenu
     {
         private IRibbonMenuIndex _menuIndex;
-      
-       
-        
 
         public RibbonMenu(IRibbonMenuIndex menuIndex)
         {
@@ -31,10 +28,6 @@ namespace Yutai.UI.Menu.Ribbon
         public void ChangeCurrentTool(string oldToolName, string nowToolName)
         {
             _menuIndex.SetCurrentTool(oldToolName, nowToolName);
-            //IRibbonMenuItem oldItem = string.IsNullOrEmpty(oldToolName) ? null : FindItem(oldToolName);
-            //IRibbonMenuItem newItem = string.IsNullOrEmpty(nowToolName) ? null : FindItem(nowToolName);
-            //if (oldItem != null) ((ToolStripButton) oldItem.ToolStripItem).Checked = false;
-            //if (newItem != null) ((ToolStripButton)newItem.ToolStripItem).Checked = true;
         }
 
         public void UpdateMenu()
@@ -50,6 +43,11 @@ namespace Yutai.UI.Menu.Ribbon
         public void AddCommands(XmlDocument xmlDoc, IEnumerable<YutaiCommand> commands)
         {
             _menuIndex.AddItems(xmlDoc, commands);
+        }
+
+        public void SetStatusValue(string statusKey, object objValue)
+        {
+            _menuIndex.SetStatusValue(statusKey, objValue);
         }
 
         public IRibbonMenuItem FindItem(string key)

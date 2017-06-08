@@ -166,5 +166,7 @@ namespace Yutai.UI.Menu.Ribbon
             get { return _needUpdateEvent; }
             set { _needUpdateEvent = value; }
         }
+
+        public string Message { get; internal set; }
     }
 }

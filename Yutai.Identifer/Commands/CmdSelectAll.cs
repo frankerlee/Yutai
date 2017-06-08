@@ -60,9 +60,8 @@ namespace Yutai.Plugins.Identifer.Commands
         {
             ISelectionEnvironment selectionEnvironmentClass = _plugin.QuerySettings.SelectionEnvironment;
             IMap pMap = _context.MapControl.Map;
+            if (_plugin.QuerySettings.CurrentLayer == null) return;
             int num = (_plugin.QuerySettings.CurrentLayer as IFeatureLayer).FeatureClass.FeatureCount(null);
-
-
 
             if (num <= (selectionEnvironmentClass as ISelectionEnvironmentThreshold).WarningThreshold || MessageService.Current.Ask("所选择记录较多，执行将花较长时间，是否继续？") != false)
             {

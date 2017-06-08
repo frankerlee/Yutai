@@ -133,11 +133,11 @@ namespace Yutai.Plugins.Identifer.Commands
                         base.m_bitmap = Properties.Resources.icon_select_container;
                         
                         base.m_toolTip = "选择包含在缓冲区中的要素";
-                        base.m_name = "Query_SelectionTools_Mouse_SelectFeatureContainers";
+                        base.m_name = "Query_SelectionTools_SelectFeatureContainers";
                         base.m_message = "选择包含在缓冲区中的要素";
                         base.m_caption = "选择包含在缓冲区中的要素";
                         base.m_category = "Query";
-                        base._key = "Query_SelectionTools_Mouse_SelectFeatureContainers";
+                        base._key = "Query_SelectionTools_SelectFeatureContainers";
                         base._itemType = RibbonItemType.Button;
                         base.DisplayStyleYT = DisplayStyleYT.ImageAndText;
                         base.TextImageRelationYT = TextImageRelationYT.ImageBeforeText;
@@ -148,11 +148,11 @@ namespace Yutai.Plugins.Identifer.Commands
                         base.m_bitmap = Properties.Resources.icon_select_intersect;
                        
                         base.m_toolTip = "选择和缓冲区相交要素";
-                        base.m_name = "Query_SelectionTools_Mouse_SelectFeatureIntersects";
+                        base.m_name = "Query_SelectionTools_SelectFeatureIntersects";
                         base.m_message = "选择和缓冲区相交要素";
                         base.m_caption = "选择和缓冲区相交要素";
                         base.m_category = "Query";
-                        base._key = "Query_SelectionTools_Mouse_SelectFeatureIntersects";
+                        base._key = "Query_SelectionTools_SelectFeatureIntersects";
                         base._itemType = RibbonItemType.Button;
                         base.DisplayStyleYT = DisplayStyleYT.ImageAndText;
                         base.TextImageRelationYT = TextImageRelationYT.ImageBeforeText;

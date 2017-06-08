@@ -38,7 +38,7 @@ namespace Yutai.Commands.Views
         public override void OnClick()
         {
             _inZoom = false;
-            //_context.SetCurrentTool(this);
+           _context.SetCurrentTool(this);
         }
 
        
@@ -60,6 +60,7 @@ namespace Yutai.Commands.Views
             base._key = "View_ZoomIn";
             base.m_toolTip = "放大";
             base.m_checked = false;
+            base.m_message = "左键点击后按住拖动到想显示的范围后释放，图形将刷新";
             base.m_enabled = true;
             base._itemType = RibbonItemType.Tool;
         }

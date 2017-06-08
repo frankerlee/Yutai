@@ -223,7 +223,7 @@ namespace Yutai
             DockPanels = new DockPanelCollection(mainView.DockingManager, mainView as Form, Broadcaster, _styleService);
 
             //Menu到最后丢弃不用，Menu部分全部采用Ribbon
-            RibbonMenu = RibbonFactory.InitMenus((RibbonControl) mainView.RibbonManager);
+            RibbonMenu = RibbonFactory.InitMenus((RibbonControl) mainView.RibbonManager, mainView.RibbonStatusBar as RibbonStatusBar );
 
             // Menu = MenuFactory.CreateMainMenu(mainView.RibbonManager,true);
             // Toolbars = MenuFactory.CreateMainToolbars(mainView.MenuManager);

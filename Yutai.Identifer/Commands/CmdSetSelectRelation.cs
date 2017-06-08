@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Repository;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using Syncfusion.Windows.Forms.Tools;
@@ -20,8 +23,8 @@ namespace Yutai.Plugins.Identifer.Commands
         private bool _showCaption;
         private int _layoutType;
         private string _selectedText;
-        private object[] _items;
-        private ToolStripComboBoxEx _linkCombo;
+        private  object[] _items;
+        private BarEditItem _linkCombo;
 
         public CmdSetSelectRelation(IAppContext context, BasePlugin plugin)
         {
@@ -37,11 +40,13 @@ namespace Yutai.Plugins.Identifer.Commands
 
         }
 
-        public ToolStripComboBoxEx LinkComboBox
+        public BarEditItem LinkComboBox
         {
             get { return _linkCombo; }
             set { _linkCombo = value; }
         }
+
+        public bool DropDownList { get { return true; } }
 
         public override void OnCreate(object hook)
         {
@@ -81,29 +86,43 @@ namespace Yutai.Plugins.Identifer.Commands
 
         object[] ICommandComboBox.Items
         {
-            get { return new object[] { "创建新的选择集", "添加到当前选择集中", "从当前选择集中移除", "从当前选择集中选择" }; }
+            get { _items=new object[] { "创建新的选择集", "添加到当前选择集中", "从当前选择集中移除", "从当前选择集中选择" };
+                return _items;
+            }
             set { _items = value; }
         }
 
         
       
 
-        public void SelectedIndexChanged(object sender, EventArgs args)
+        public void OnEditValueChanged(object sender, EventArgs args)
         {
-            ToolStripComboBoxEx combo = sender as ToolStripComboBoxEx;
-            if (combo.SelectedIndex < 0 || combo.SelectedIndex ==0)
+            BarEditItem combo =  sender as BarEditItem;
+            string value = combo.EditValue.ToString();
+            int selectIndex = -1;
+            for (int i = 0; i < _items.Length; i++)
+            {
+                if (_items[i].ToString().Equals(value))
+                {
+                    selectIndex = i;
+                    break;
+                }
+            }
+
+
+            if (selectIndex < 0 || selectIndex ==0)
             {
                 _plugin.QuerySettings.SelectionEnvironment.CombinationMethod = esriSelectionResultEnum.esriSelectionResultNew;
             }
-            else if (combo.SelectedIndex  ==1)
+            else if (selectIndex  ==1)
             {
                 _plugin.QuerySettings.SelectionEnvironment.CombinationMethod = esriSelectionResultEnum.esriSelectionResultAdd;
             }
-            else if (combo.SelectedIndex == 2)
+            else if (selectIndex == 2)
             {
                 _plugin.QuerySettings.SelectionEnvironment.CombinationMethod = esriSelectionResultEnum.esriSelectionResultSubtract;
             }
-            else if (combo.SelectedIndex == 3)
+            else if (selectIndex == 3)
             {
                 _plugin.QuerySettings.SelectionEnvironment.CombinationMethod = esriSelectionResultEnum.esriSelectionResultAnd;
             }

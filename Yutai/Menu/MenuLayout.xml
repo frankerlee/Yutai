@@ -1,4 +1,13 @@
 ﻿<YutaiGIS>
+  <StatusBar>
+    <Links>
+      <BarItem  Key="Status_Message" Visible="true"  Width="400" IsExtend="true"></BarItem>
+      <BarItem  Key="Status_SelectionCount" Visible="true" Width="200"></BarItem>
+      <BarItem  Key="Status_Coordinates" Visible="true"  Width="300"  IsRight="true"></BarItem>
+      <BarItem  Key="Status_Scale" Visible="true"  Width="120" IsRight="true"></BarItem>
+      <BarItem  Key="Status_Units" Visible="true"  Width="120" IsRight="true"></BarItem>
+    </Links>
+  </StatusBar>
   <MainMenu>
     <Pages>
       <Page Key="File" Caption="文件" Index="0" Visible="true">

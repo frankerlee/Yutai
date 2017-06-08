@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraBars;
+using DevExpress.XtraEditors.Repository;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using Syncfusion.Windows.Forms.Tools;
@@ -26,7 +28,7 @@ namespace Yutai.Plugins.Identifer.Commands
         private IMapControlEvents2_Event _mapEvents;
         private IActiveViewEvents_Event _activeViewEvents;
         private string _selectedText;
-        private ToolStripComboBoxEx _linkCombo;
+        private BarEditItem _linkCombo;
 
         public CmdSetCurrentLayer(IAppContext context,BasePlugin plugin)
         {
@@ -42,11 +44,16 @@ namespace Yutai.Plugins.Identifer.Commands
             
         }
 
-        public ToolStripComboBoxEx LinkComboBox
+        public BarEditItem LinkComboBox
         {
             get { return _linkCombo; }
             set { _linkCombo = value; }
         }
+
+        public bool DropDownList { get
+        {
+            return true;
+        } }
 
         public override void OnCreate(object hook)
         {
@@ -146,8 +153,8 @@ namespace Yutai.Plugins.Identifer.Commands
 
             if (_linkCombo != null)
             {
-                _linkCombo.Items.Clear();
-                _linkCombo.Items.AddRange(_items.ToArray());
+                ((RepositoryItemComboBox)_linkCombo.Edit).Items.Clear();
+                ((RepositoryItemComboBox)_linkCombo.Edit).Items.AddRange(_items.ToArray());
             }
             
         }
@@ -170,19 +177,16 @@ namespace Yutai.Plugins.Identifer.Commands
             }
         }
 
-        public void SelectedIndexChanged(object sender, EventArgs args)
+        public void OnEditValueChanged(object sender, EventArgs args)
         {
-            ToolStripComboBoxEx combo = sender as ToolStripComboBoxEx;
-            if (combo.SelectedIndex < 0)
-            {
-                _plugin.QuerySettings.CurrentLayer = null;
-            }
+           BarEditItem barItem=sender as BarEditItem;
+          
+                LayerItem item = barItem.EditValue as LayerItem;
+            if (item != null)
+                _plugin.QuerySettings.CurrentLayer = item.Value as IFeatureLayer;
             else
-            {
-                LayerItem item = combo.ComboBox.SelectedItem as LayerItem;
-                _plugin.QuerySettings.CurrentLayer=item.Value as IFeatureLayer;
-                
-            }
+                _plugin.QuerySettings.CurrentLayer = null;
+
         }
 
         public string SelectedText

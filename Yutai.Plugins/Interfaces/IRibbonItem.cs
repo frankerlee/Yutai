@@ -30,5 +30,6 @@ namespace Yutai.Plugins.Interfaces
         //对ToolStripEx起作用
         bool IsGroup { get; set; }
         bool NeedUpdateEvent { get; set; }
+        string Message { get;  }
     }
 }

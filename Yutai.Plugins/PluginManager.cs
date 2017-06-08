@@ -242,6 +242,7 @@ namespace Yutai.Plugins
 
                 if (active && !PluginActive(p.Identity))
                 {
+                    
                     LoadPlugin(p.Identity, context);
                 }
             }

@@ -181,45 +181,12 @@ namespace Yutai.Views
 
         private void UpdateStatusBarCustomizationMenu()
         {
-            var hash = new HashSet<string>
-                           {
-                               StatusBarKeys.TileProvider,
-                               StatusBarKeys.MapScale,
-                               StatusBarKeys.MapUnits
-                             //  StatusBarKeys.ProjectionDropDown
-                           };
-            try
-            {
-                foreach (ToolStripItem item in statusStripEx1.ContextMenuStrip.Items)
-                {
-                    var status = ReflectionHelper.GetInstanceField(item, "m_item") as ToolStripItem;
-                    if (status == null)
-                    {
-                        item.Visible = false;
-                        continue;
-                    }
-
-                    var metadata = status.Tag as MenuItemMetadata;
-
-                    if (metadata != null && hash.Contains(metadata.Key))
-                    {
-                        item.Text = StatusBarKeys.GetStatusItemName(metadata.Key);
-                        item.Visible = true;
-                        continue;
-                    }
-
-                    item.Visible = false;
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Current.Warn("Failed to update status bar customization menu.", ex);
-            }
+           
         }
 
         private void OnStatusBarCustomizationMenuOpening(object sender, CancelEventArgs e)
         {
-            UpdateStatusBarCustomizationMenu();
+           
         }
 
         private string GetCaption()

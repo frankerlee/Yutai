@@ -355,11 +355,11 @@ namespace Yutai.Plugins.Identifer.Commands
                         base.m_bitmap = Properties.Resources.SelectFeatures;
                         base.m_cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.Plugins.Identifer.Resources.Cursor.MoveSelectFeatures.cur"));
                         base.m_toolTip = "矩形选择";
-                        base.m_name = "Query_SelectionTools_Mouse_RectangleSelector";
+                        base.m_name = "Query_SelectionTools_RectangleSelector";
                         base.m_message = "矩形选择";
                         base.m_caption = "矩形选择";
                         base.m_category = "Query";
-                        base._key = "Query_SelectionTools_Mouse_RectangleSelector";
+                        base._key = "Query_SelectionTools_RectangleSelector";
                         base._itemType = RibbonItemType.Tool;
                         base.DisplayStyleYT= DisplayStyleYT.ImageAndText;
                         base.TextImageRelationYT= TextImageRelationYT.ImageBeforeText;
@@ -370,11 +370,11 @@ namespace Yutai.Plugins.Identifer.Commands
                         base.m_bitmap = Properties.Resources.PolygonSelectFeatures;
                         base.m_cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.Plugins.Identifer.Resources.Cursor.PolygonMoveSelectFeatures.cur"));
                         base.m_toolTip = "多边形选择";
-                        base.m_name = "Query_SelectionTools_Mouse_PolygonSelector";
+                        base.m_name = "Query_SelectionTools_PolygonSelector";
                         base.m_message = "多边形选择";
                         base.m_caption = "多边形选择";
                         base.m_category = "Query";
-                        base._key = "Query_SelectionTools_Mouse_PolygonSelector";
+                        base._key = "Query_SelectionTools_PolygonSelector";
                         base._itemType = RibbonItemType.Tool;
                         base.DisplayStyleYT = DisplayStyleYT.ImageAndText;
                         base.TextImageRelationYT = TextImageRelationYT.ImageBeforeText;

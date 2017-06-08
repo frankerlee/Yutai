@@ -27,7 +27,7 @@ namespace Yutai.Views
         private readonly IConfigService _configService;
         private readonly IAppContext _context;
         private readonly MenuGenerator _menuGenerator;
-        private readonly StatusBarListener _statusBarListener;
+       // private readonly StatusBarListener _statusBarListener;
         private readonly IProjectService _projectService;
         private readonly MenuUpdater _menuUpdater;
         private readonly MapListener _mapListener;
@@ -79,13 +79,12 @@ namespace Yutai.Views
                 view.BeforeShow += OnBeforeShow;
 
                 var container = context.Container;
-                //_statusBarListener = container.GetSingleton<StatusBarListener>();
+               
                 _menuGenerator = container.GetSingleton<MenuGenerator>();
                 _menuUpdater = new MenuUpdater(_context, PluginIdentity.Default, _menuGenerator.GetMenuKeys());
                 _mapListener = container.GetSingleton<MapListener>();
                
-                /*_menuListener = container.GetSingleton<MenuListener>();
-               
+                /*_menuListener = container.GetSingleton<MenuListener>();               
                _mainPluginListener = container.GetSingleton<MainPluginListener>();
                _legendListener = container.GetSingleton<LegendListener>();
 

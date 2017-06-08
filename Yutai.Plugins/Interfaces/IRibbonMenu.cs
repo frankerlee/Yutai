@@ -19,5 +19,8 @@ namespace Yutai.Plugins.Interfaces
         void UpdateMenu();
         void ReorderTabs();
         void AddCommands(XmlDocument xmlDoc, IEnumerable<YutaiCommand> commands);
+
+        void SetStatusValue(string statusKey, object objValue);
+        
     }
 }
