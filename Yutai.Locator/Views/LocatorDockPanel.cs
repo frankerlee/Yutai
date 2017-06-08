@@ -45,7 +45,6 @@ namespace Yutai.Plugins.Locator.Views
             _map = _context.MapControl.ActiveView as IMap;
             cardView1.OptionsBehavior.AutoHorzWidth = true;
 
-
         }
 
         
