@@ -31,10 +31,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Data.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Program Files (x86)\DevExpress 16.1.4\Components\Bin\Framework\DevExpress.Data.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Program Files (x86)\DevExpress 16.1.4\Components\Bin\Framework\DevExpress.XtraEditors.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Program Files (x86)\DevExpress 16.1.4\Components\Bin\Framework\DevExpress.XtraGrid.v16.1.dll</HintPath>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.3DAnalyst, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="ESRI.ArcGIS.ADF, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86" />
+    <Reference Include="ESRI.ArcGIS.AxControls, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
     <Reference Include="ESRI.ArcGIS.Carto, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -118,6 +133,31 @@
     <Compile Include="AELicenseProvider\AELicenseProviderEx.cs" />
     <Compile Include="AELicenseProvider\Regedit.cs" />
     <Compile Include="BaseClasses\AppConfigInfo.cs" />
+    <Compile Include="BaseClasses\BaseCommand.cs" />
+    <Compile Include="BaseClasses\BaseTool.cs" />
+    <Compile Include="BaseClasses\BulidMenuXMLByDB.cs" />
+    <Compile Include="BaseClasses\Common.cs" />
+    <Compile Include="BaseClasses\ComponentList.cs" />
+    <Compile Include="BaseClasses\DockContentVisibleChangeHander.cs" />
+    <Compile Include="BaseClasses\DockingStyle.cs" />
+    <Compile Include="BaseClasses\DocumentManager.cs" />
+    <Compile Include="BaseClasses\GraphicsManage.cs" />
+    <Compile Include="BaseClasses\ICommandLineWindows.cs" />
+    <Compile Include="BaseClasses\IDockContent.cs" />
+    <Compile Include="BaseClasses\IDockContentEvents.cs" />
+    <Compile Include="BaseClasses\IProcessor.cs" />
+    <Compile Include="BaseClasses\IProcessStepEvents.cs" />
+    <Compile Include="BaseClasses\ItemDefClass.cs" />
+    <Compile Include="BaseClasses\LoadComponent.cs" />
+    <Compile Include="BaseClasses\IPropertyPage.cs" />
+    <Compile Include="BaseClasses\MxDocument.cs" />
+    <Compile Include="BaseClasses\OnCompleteHander.cs" />
+    <Compile Include="BaseClasses\OnMessageHandler.cs" />
+    <Compile Include="BaseClasses\SetMaxValueEventHandler.cs" />
+    <Compile Include="BaseClasses\SetMinValueEventHandler.cs" />
+    <Compile Include="BaseClasses\SetPositionEventHandler.cs" />
+    <Compile Include="BaseClasses\SetStepValueEventHandler.cs" />
+    <Compile Include="BaseClasses\StepEventHandler.cs" />
     <Compile Include="BaseClasses\SysGrants.cs" />
     <Compile Include="BaseClasses\ExcelReader.cs" />
     <Compile Include="BaseClasses\Table2DataTable.cs" />
@@ -128,12 +168,144 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BitmapResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Carto\AEFeatureIdentifyObject.cs" />
+    <Compile Include="Carto\AlignElementsOperation.cs" />
+    <Compile Include="Carto\AnnoHelper.cs" />
+    <Compile Include="Carto\CartoHelper.cs" />
+    <Compile Include="Carto\CartoLicenseProviderCheck.cs" />
+    <Compile Include="Carto\Clip.cs" />
+    <Compile Include="Carto\ConvertToGraphicsOperation.cs" />
+    <Compile Include="Carto\DeleteElementOperation.cs" />
+    <Compile Include="Carto\ElementChangeEvent.cs" />
+    <Compile Include="Carto\ElementOperator.cs" />
+    <Compile Include="Carto\ElementType.cs" />
+    <Compile Include="Carto\enumAlignType.cs" />
+    <Compile Include="Carto\GroupElementOperation.cs" />
+    <Compile Include="Carto\IAlignElementsOperation.cs" />
+    <Compile Include="Carto\IConvertToGraphicsOperation.cs" />
+    <Compile Include="Carto\IDeleteElementOperation.cs" />
+    <Compile Include="Carto\IdentifyHelper.cs" />
+    <Compile Include="Carto\IdentifyTypeEnum.cs" />
+    <Compile Include="Carto\IEditElementPropertiesOperation.cs" />
+    <Compile Include="Carto\IGroupElementOperation.cs" />
+    <Compile Include="Carto\IMoveElementOperation.cs" />
+    <Compile Include="Carto\INewElementOperation.cs" />
+    <Compile Include="Carto\IResizeElementOperation.cs" />
+    <Compile Include="Carto\IUnGroupElementOperation.cs" />
+    <Compile Include="Carto\LayerOp.cs" />
+    <Compile Include="Carto\MoveElementOperation.cs" />
+    <Compile Include="Carto\NewElementOperation.cs" />
+    <Compile Include="Carto\OnDeleteElementHandler.cs" />
+    <Compile Include="Carto\OnEditElementPropertyHandler.cs" />
+    <Compile Include="Carto\OnElementPositionChangeHandler.cs" />
+    <Compile Include="Carto\OnElementPropertyChangeHandler.cs" />
+    <Compile Include="Carto\OnElementSelectChangeHandler.cs" />
+    <Compile Include="Carto\OnInsertElementHandler.cs" />
+    <Compile Include="Carto\OnLoadMapTemplateHandler.cs" />
+    <Compile Include="Carto\RenderHelper.cs" />
+    <Compile Include="Carto\ResizeElementOperation.cs" />
+    <Compile Include="Carto\UnGroupElementOperation.cs" />
+    <Compile Include="CodeDomainEx\CodeDomainEx.cs" />
+    <Compile Include="CodeDomainEx\CodeDomainManage.cs" />
+    <Compile Include="CodeDomainEx\CodeDomainMapTableStruct.cs" />
+    <Compile Include="CodeDomainEx\CodeDomainTableStruct.cs" />
+    <Compile Include="ControlExtend\CheckedVertXtraGrid.cs" />
+    <Compile Include="ControlExtend\ColumnAttribute.cs" />
+    <Compile Include="ControlExtend\ComboBoxTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlExtend\DragHelper.cs" />
+    <Compile Include="ControlExtend\EditListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlExtend\EXBoolColumnHeader.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlExtend\EXBoolListViewSubItem.cs" />
+    <Compile Include="ControlExtend\EXColumnHeader.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlExtend\EXComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlExtend\EXEditableColumnHeader.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlExtend\EXImageListViewItem.cs" />
+    <Compile Include="ControlExtend\EXImageListViewSubItem.cs" />
+    <Compile Include="ControlExtend\EXListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlExtend\ExListViewEventArgs.cs" />
+    <Compile Include="ControlExtend\EXListViewItem.cs" />
+    <Compile Include="ControlExtend\EXListViewSubItem.cs" />
+    <Compile Include="ControlExtend\EXListViewSubItemAB.cs" />
+    <Compile Include="ControlExtend\EXMultipleImagesListViewItem.cs" />
+    <Compile Include="ControlExtend\EXMultipleImagesListViewSubItem.cs" />
+    <Compile Include="ControlExtend\GradientMode.cs" />
+    <Compile Include="ControlExtend\GridEditorCollection.cs" />
+    <Compile Include="ControlExtend\GridEditorItem.cs" />
+    <Compile Include="ControlExtend\ImageComboBoxEditEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlExtend\ImageComboBoxItemEx.cs" />
+    <Compile Include="ControlExtend\ListViewColumnStyle.cs" />
+    <Compile Include="ControlExtend\LVColumnHeader.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlExtend\PopupImageComboBoxEditListBoxEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlExtend\PopupImageComboBoxEditListBoxFormEx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControlExtend\RepositoryItemComboBoxTreeview.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlExtend\RepositoryItemTreeViewComboBoxEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlExtend\RepositoryTreeviewComboxEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlExtend\RowDeleteEventArgs.cs" />
+    <Compile Include="ControlExtend\RowDeleteHandler.cs" />
+    <Compile Include="ControlExtend\ToolStripComboBoxTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlExtend\TreeViewAdvance.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlExtend\TreeViewChildrenDelEventArgs.cs" />
+    <Compile Include="ControlExtend\TreeViewComboBoxEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlExtend\TreeViewDragDropEventArgs.cs" />
+    <Compile Include="ControlExtend\ValueChangedEventArgs.cs" />
+    <Compile Include="ControlExtend\ValueChangedHandler.cs" />
+    <Compile Include="ControlExtend\VertXtraGrid.cs" />
+    <Compile Include="ControlExtend\XpProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlExtend\XtraGrid.cs" />
+    <Compile Include="MapAndPageLayoutControls.cs" />
+    <Compile Include="Maps.cs" />
+    <Compile Include="SymbolUI\ValueChangedHandler.cs" />
+    <Compile Include="SymbolUI\KDColumnHeader.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\KDEditListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\KDListViewColumnStyle.cs" />
+    <Compile Include="TempAcceessBD.cs" />
     <Compile Include="frmExportProcessEx.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmExportProcessEx.Designer.cs">
       <DependentUpon>frmExportProcessEx.cs</DependentUpon>
     </Compile>
+    <Compile Include="PahtAssistant.cs" />
     <Compile Include="ProcessAssist.cs" />
     <Compile Include="Display\enumLineType.cs" />
     <Compile Include="Display\Flash.cs" />
@@ -508,6 +680,15 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>BitmapResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="ControlExtend\EditListView.resx">
+      <DependentUpon>EditListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlExtend\RepositoryTreeviewComboxEx.resx">
+      <DependentUpon>RepositoryTreeviewComboxEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlExtend\XpProgressBar.resx">
+      <DependentUpon>XpProgressBar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Editor\frmSelectEditDatasource.resx">
       <DependentUpon>frmSelectEditDatasource.cs</DependentUpon>
     </EmbeddedResource>
@@ -527,6 +708,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Point.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ControlExtend\组合框.ComboBMP.bmp" />
+    <Content Include="ControlExtend\组合框.None.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

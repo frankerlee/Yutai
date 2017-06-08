@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraBars.Ribbon;
 using Yutai.Plugins.Interfaces;
+using IRibbonItem = Yutai.Plugins.Interfaces.IRibbonItem;
 
 namespace Yutai.UI.Menu.Ribbon
 {
@@ -15,7 +17,7 @@ namespace Yutai.UI.Menu.Ribbon
         private string _key;
         private IRibbonItem _item;
         private ToolStripItem _stripItem;
-        private ToolStrip _strip;
+        private object _object;
         private string _parentKey;
 
         public RibbonMenuItem(string key, IRibbonItem item, ToolStripItem stripItem)
@@ -25,11 +27,11 @@ namespace Yutai.UI.Menu.Ribbon
             _stripItem = stripItem;
         }
 
-        public RibbonMenuItem(string key, IRibbonItem item, ToolStrip stripItem)
+        public RibbonMenuItem(string key, IRibbonItem item, object stripItem)
         {
             _key = key;
             _item = item;
-            _strip = stripItem;
+            _object = stripItem;
         }
 
         public string ParentKey
@@ -56,10 +58,10 @@ namespace Yutai.UI.Menu.Ribbon
             set { _stripItem = value; }
         }
 
-        public ToolStrip ToolStrip
+        public object RibbonObject
         {
-            get { return _strip; }
-            set { _strip = value; }
+            get { return _object; }
+            set { _object = value; }
         }
 
 

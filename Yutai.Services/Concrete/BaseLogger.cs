@@ -22,6 +22,8 @@ namespace Yutai.Services.Concrete
             Log(string.Format(msg, param), LogLevel.Error, ex);
         }
 
+      
+
         public void Fatal(string msg, Exception ex, params object[] param)
         {
             Log(string.Format(msg, param), LogLevel.Fatal, ex);

@@ -1,0 +1,1826 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C493421E-9EA5-43C7-94A1-3CAF106014BE}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>Yutai.ArcGIS.Carto</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>Yutai.ArcGIS.Carto</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="DesignLib\AddElementCommand.cs" />
+    <Compile Include="DesignLib\AddGuideTool.cs" />
+    <Compile Include="DesignLib\ApplyTFTemplateCommand.cs" />
+    <Compile Include="DesignLib\CartoDesign.cs" />
+    <Compile Include="DesignLib\CartoTemplateClass.cs" />
+    <Compile Include="DesignLib\CartoTemplateData.cs" />
+    <Compile Include="DesignLib\CartoTemplateTableStruct.cs" />
+    <Compile Include="DesignLib\CatoTemplateApplySelect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\CommandFunction.cs" />
+    <Compile Include="DesignLib\DeleteElement.cs" />
+    <Compile Include="DesignLib\DeleteElementOperation.cs" />
+    <Compile Include="DesignLib\EditElementPropertiesOperation.cs" />
+    <Compile Include="DesignLib\ElementChangeEvent.cs" />
+    <Compile Include="DesignLib\ElementGeometryInfoPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\ElementPosition.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\ElementSelectTool.cs" />
+    <Compile Include="DesignLib\ElementSizeAndPositionCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\ElementsTableStruct.cs" />
+    <Compile Include="DesignLib\ElementSymbolSetPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\ElementType.cs" />
+    <Compile Include="DesignLib\ElementTypeSelectPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\ElementWizardHelp.cs" />
+    <Compile Include="DesignLib\ElmentProperty.cs" />
+    <Compile Include="DesignLib\FillSymbolPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\frmNewElement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesignLib\frmNewLegendItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesignLib\frmParamProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesignLib\frmPropertySheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesignLib\frmSelectCartoTemplateWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesignLib\frmSelectParam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesignLib\frmTLConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\GridAxisPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\IDeleteElementOperation.cs" />
+    <Compile Include="DesignLib\IEditElementPropertiesOperation.cs" />
+    <Compile Include="DesignLib\IMoveElementOperation.cs" />
+    <Compile Include="DesignLib\InsetTemplateElement.cs" />
+    <Compile Include="DesignLib\IResizeElementOperation.cs" />
+    <Compile Include="DesignLib\JionTab.cs" />
+    <Compile Include="DesignLib\JLKElementWizardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesignLib\JLKLegendAssiatant.cs" />
+    <Compile Include="DesignLib\JLKLenendItem.cs" />
+    <Compile Include="DesignLib\JLKMapTemplateWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesignLib\JLKTKAssiatant.cs" />
+    <Compile Include="DesignLib\JLKTransformation.cs" />
+    <Compile Include="DesignLib\JLKWizardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesignLib\LabelFormatPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\LabelSetPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\LegendFormatSetupCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\LegendFrameUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\LegendInfoPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\LegendItemArrangementPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\LegendItemGeneralPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\LegendItemPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\LegendObject.cs" />
+    <Compile Include="DesignLib\LegendPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\LegendTitleUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\LineSymbolPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\ListViewItemEx.cs" />
+    <Compile Include="DesignLib\LoadTemplate.cs" />
+    <Compile Include="DesignLib\MapFenFuInfoTableStruct.cs" />
+    <Compile Include="DesignLib\MapTemplate.cs" />
+    <Compile Include="DesignLib\MapTemplateAssis.cs" />
+    <Compile Include="DesignLib\MapTemplateGeneralPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\MapTemplateTypePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\MarkerElementPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\MoveElementOperation.cs" />
+    <Compile Include="DesignLib\NorthArrowPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\NumberAndLabelPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\OLESelectPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\OnDeleteElementHandler.cs" />
+    <Compile Include="DesignLib\OnEditElementPropertyHandler.cs" />
+    <Compile Include="DesignLib\OnElementPositionChangeHandler.cs" />
+    <Compile Include="DesignLib\OnElementPropertyChangeHandler.cs" />
+    <Compile Include="DesignLib\OnExcuteAddElementHandler.cs" />
+    <Compile Include="DesignLib\OnInsertElementHandler.cs" />
+    <Compile Include="DesignLib\OnLoadMapTemplateHandler.cs" />
+    <Compile Include="DesignLib\OtherGridPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\ParamInfo.cs" />
+    <Compile Include="DesignLib\PictureSelectPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\RenderInfoListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DesignLib\ResizeElementOperation.cs" />
+    <Compile Include="DesignLib\ScaleAndUnitsPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\ScaleBarEventsClass.cs" />
+    <Compile Include="DesignLib\ScaleBarFormatPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\ScaleTextEventsClass.cs" />
+    <Compile Include="DesignLib\ScaleTextFormatPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\ScaleTextTextPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\ShowMapFrameProperty.cs" />
+    <Compile Include="DesignLib\SnapGridSet.cs" />
+    <Compile Include="DesignLib\SpheroidType.cs" />
+    <Compile Include="DesignLib\StandardTickSymbolPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\StandardTypeEnum.cs" />
+    <Compile Include="DesignLib\StarndFenFuMapTemplatePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\StripType.cs" />
+    <Compile Include="DesignLib\TableStruct.cs" />
+    <Compile Include="DesignLib\TemplateParamSetPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\TemplatePropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\TextElementValueSetPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\TFInfoPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\THTools.cs" />
+    <Compile Include="DesignLib\TickSymbolPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DesignLib\TKType.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Reference Include="DevExpress.Data.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Program Files (x86)\DevExpress 16.1.4\Components\Bin\Framework\DevExpress.Data.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Program Files (x86)\DevExpress 16.1.4\Components\Bin\Framework\DevExpress.Utils.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Program Files (x86)\DevExpress 16.1.4\Components\Bin\Framework\DevExpress.XtraEditors.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Program Files (x86)\DevExpress 16.1.4\Components\Bin\Framework\DevExpress.XtraGrid.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Program Files (x86)\DevExpress 16.1.4\Components\Bin\Framework\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System" />
+    <Reference Include="ESRI.ArcGIS.Carto" />
+    <Reference Include="ESRI.ArcGIS.Geometry" />
+    <Reference Include="ESRI.ArcGIS.Display" />
+    <Reference Include="ESRI.ArcGIS.Geodatabase" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="ESRI.ArcGIS.Controls" />
+    <Reference Include="ESRI.ArcGIS.System" />
+    <Reference Include="ESRI.ArcGIS.AxControls" />
+    <Reference Include="ESRI.ArcGIS.ADF.Local" />
+    <Reference Include="ESRI.ArcGIS.DataSourcesFile" />
+    <Reference Include="ESRI.ArcGIS.Location" />
+    <Reference Include="ESRI.ArcGIS.3DAnalyst" />
+    <Reference Include="ESRI.ArcGIS.Output" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ESRI.ArcGIS.SystemUI" />
+    <Reference Include="ESRI.ArcGIS.DataSourcesRaster" />
+    <Reference Include="System.Data" />
+    <Reference Include="stdole" />
+    <Reference Include="ESRI.ArcGIS.ADF.Connection.Local" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="ESRI.ArcGIS.DataSourcesGDB" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="UI\TKStyleSelectPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="YTTKAssiatant.cs" />
+    <Compile Include="TKType.cs" />
+    <Compile Include="BaseMap.cs" />
+    <Compile Include="FenFuMapClass.cs" />
+    <Compile Include="UI\frmLabelRotateAngles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ILayerAndStandaloneTablePropertyPage.cs" />
+    <Compile Include="UI\ToplogyLayerSymbolCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\RenderInfoListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\ListViewItemEx.cs" />
+    <Compile Include="UI\IUserControl.cs" />
+    <Compile Include="UI\TinSimpleRenderCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\JoiningAndRelatingPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\OnJoinAndRelationChangeHandler.cs" />
+    <Compile Include="UI\frmJoining.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmRelating.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmPageSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\PageSetupControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\frmElementProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UniqueValueRendererCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\FieldWrap.cs" />
+    <Compile Include="UI\frmAddValues.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MapDataFramePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\frmExtendSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ExtendSetType.cs" />
+    <Compile Include="UI\frmLayerCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormPageSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmGeographicTransformationConvert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmGaphicTransformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\BufferGeometrySetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\BufferHelper.cs" />
+    <Compile Include="MapCartoTemplateLib\DataType.cs" />
+    <Compile Include="MapCartoTemplateLib\MapTemplateParam.cs" />
+    <Compile Include="MapCartoTemplateLib\MapTemplateGallery.cs" />
+    <Compile Include="MapCartoTemplateLib\MapTemplate.cs" />
+    <Compile Include="MapCartoTemplateLib\RowAssisant.cs" />
+    <Compile Include="MapCartoTemplateLib\MapFrameType.cs" />
+    <Compile Include="MapCartoTemplateLib\MapFramingType.cs" />
+    <Compile Include="Library\MapCoordinateInputPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Library\MapTemplateApplyHelp.cs" />
+    <Compile Include="MapCartoTemplateLib\LegendPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\LegendObject.cs" />
+    <Compile Include="Library\frmInputText.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Library\frmInputCoordinate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Library\frmInputXY.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\MapTemplateElement.cs" />
+    <Compile Include="MapCartoTemplateLib\MapTemplateElementType.cs" />
+    <Compile Include="MapCartoTemplateLib\ElementLocation.cs" />
+    <Compile Include="MapCartoTemplateLib\LocationType.cs" />
+    <Compile Include="MapCartoTemplateLib\MapTemplateTableElement.cs" />
+    <Compile Include="MapCartoTemplateLib\ExpressionCalculator.cs" />
+    <Compile Include="MapCartoTemplateLib\MapFrameAssistant.cs" />
+    <Compile Include="MapCartoTemplateLib\ElementPosition.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MapGridControlFourth.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\NumberAndLabelPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ScaleBarEventsClass.cs" />
+    <Compile Include="UI\ScaleBarFormatPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\frmLabelToAnnoSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmAddTinRender.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MatchStyleGrallyCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\DataExclusionLegendCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\frmBookMark.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmPageLayoutTemp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\StandardTickSymbolPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\MapTemplateTypePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Library\MapCoordinatePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\MapNoAssistant.cs" />
+    <Compile Include="MapCartoTemplateLib\MapNoAssistantFactory.cs" />
+    <Compile Include="MapCartoTemplateLib\MapTemplateJoinTableElement.cs" />
+    <Compile Include="MapCartoTemplateLib\ScaleTextTextPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\ScaleTextEventsClass.cs" />
+    <Compile Include="MapCartoTemplateLib\ScaleTextFormatPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\ElementUI\frmExpressSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RepresentationAssist.cs" />
+    <Compile Include="UI\TopologyRulesPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\TinLayerRenderPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\TinColorRampRenderPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\TinUniqueRenderPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\TextSetupCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LegendFrameUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\frmOutline.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmLayerPropertyEx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LayerGeneralPropertyCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\GroupLayerPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LayerDataSourcePropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\FeatureSelectionSetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\TopologyErrorSelectionCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\CADDrawingLayersPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\CADTransformationPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LayerDisplaySetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\TopologyClassesPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LayerRenderCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LayerDefinitionExpressionCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LayerLabelPropertyCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\HatchLayerExtensionPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\RasterRenderPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LayerFieldsPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\BaseHeightPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\SceneRenderPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ExtrusionPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\FillSymbolPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ElementSizeAndPositionCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ElementGeometryInfoPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LabelLineElementProperty.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\frmFeatureRender.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormPrinterSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmExpressionSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LabelExpressionSetPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\frmExpressionBuild.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\LandUseMapNoAssistant.cs" />
+    <Compile Include="MapCartoTemplateLib\MapNoFormatException.cs" />
+    <Compile Include="Library\frmClipOutSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\GroupElementExPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\SizeStyle.cs" />
+    <Compile Include="MapCartoTemplateLib\MapTemplateGroupElement.cs" />
+    <Compile Include="MapCartoTemplateLib\ElementSymbolSetPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\CustomLegendConfigPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\RenderInfoListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\MapTemplateCustomLegendElement.cs" />
+    <Compile Include="MapCartoTemplateLib\frmNewLegendItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\ListViewItemEx.cs" />
+    <Compile Include="MapCartoTemplateLib\JLKLenendItem.cs" />
+    <Compile Include="UI\TFInfoPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StripType.cs" />
+    <Compile Include="SpheroidType.cs" />
+    <Compile Include="UI\frmTLConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmNewLegendItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\JLKLenendItem.cs" />
+    <Compile Include="UI\frmTKWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\TKConfigPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\TFTextInfoPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MapGridTypeProperty.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MapGridControlSecond.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ScaleAndUnitsPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LegendWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LegendLayerUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LegendSetupUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LegendTitleUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LegendFormatSetupCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LegendLayer.cs" />
+    <Compile Include="UI\SimpleRenderControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UniqueValueRendererMoreAttributeCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ClassBreaksRendererCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ProportionalSymbolRendererCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\DotDensityRendererCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ChartRendererCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\RepresentationRendererPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\FieldWrapEx.cs" />
+    <Compile Include="UI\StatisticsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\TLConfigPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\MapTemplateGeneralPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\TemplateSizeStyle.cs" />
+    <Compile Include="MapCartoTemplateLib\JLKMapTemplateWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\LabelFormatPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\GridAxisPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\TickSymbolPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\OtherGridPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\StarndFenFuMapTemplatePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\MapTemplateClass.cs" />
+    <Compile Include="MapCartoTemplateLib\MapTemplateOLEElement.cs" />
+    <Compile Include="UI\frmDataFrameProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MapGridControlThird.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LayerFieldsPageExtend.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LegendItemWrap.cs" />
+    <Compile Include="UI\HatchClassCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EditElementPropertiesOperation.cs" />
+    <Compile Include="UI\frmJTBElement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MapGeneralInfoCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MapCoordinateCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\FrameProprtyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\PicturePropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\NorthArrowPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ScaleTextTextPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ScaleTextFormatPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LegendPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LegendItemPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LineSymbolPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\JLKTransformation.cs" />
+    <Compile Include="MapCartoTemplateLib\GBMapNoAssistant.cs" />
+    <Compile Include="MapCartoTemplateLib\ExpressionTree.cs" />
+    <Compile Include="MapCartoTemplateLib\TextElementValueSetPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\MapTemplateTextElement.cs" />
+    <Compile Include="MapCartoTemplateLib\frmExpressBulider.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\TableCellSetPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\frmSetTabelCell.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\ScaleBarFormatPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\ScaleBarEventsClass.cs" />
+    <Compile Include="MapCartoTemplateLib\ScaleAndUnitsPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\PictureSelectPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\MapTemplatePictureElement.cs" />
+    <Compile Include="MapCartoTemplateLib\JLKElementWizardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\ElementTypeSelectPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\LegendTitleUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\LegendFrameUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\LegendFormatSetupCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\TableGeneralPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\MapTemplateScaleTextElement.cs" />
+    <Compile Include="MapCartoTemplateLib\MapTemplateScaleBarElement.cs" />
+    <Compile Include="MapCartoTemplateLib\MapTemplateLegendElement.cs" />
+    <Compile Include="MapCartoTemplateLib\MapTemplateNorthElement.cs" />
+    <Compile Include="UI\frmLayerRender.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XiangMapClass.cs" />
+    <Compile Include="YTTransformation.cs" />
+    <Compile Include="YTLegendAssiatant.cs" />
+    <Compile Include="YTTKTools.cs" />
+    <Compile Include="UI\frmFenFuTKCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LineLabelSetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\frmAnnoScaleSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmLayerProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ScenceGeneralPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\frmJoinTypeSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\LegendItemGeneralPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\NorthArrowPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\RepresentationruleListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\frmHatchAlignment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmBufferWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\BufferParameterSetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\BufferOutputSetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\FractionTextSymbolPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\frmPageAndPrinterSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Library\MapTemplateList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Library\frmImportExcelSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Library\ExcelTools.cs" />
+    <Compile Include="MapCartoTemplateLib\CoordinateType.cs" />
+    <Compile Include="UI\LegendItemGeneralPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LegendItemArrangementPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\RasterStretchedRenderPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\frmRasteStrechSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmRender.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmManageBookMarker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Library\frmMapTemplateApplyWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Library\MapTemplateParamPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\BLL\MapTemplateBLL.cs" />
+    <Compile Include="UI\RepresentationRuleListBox1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\frmCalibratedMapBorder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmLableRotateField.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\HatchDefinitionCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\frmNewHatchClassName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmTextDisplaySet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\RasterClassifiedRenderPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\RasterRGBRendererPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\FindResultControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\frmInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FindControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LayerObject.cs" />
+    <Compile Include="Library\frmCartoConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\MapTemplateGraphicsElement.cs" />
+    <Compile Include="UI\LegendObject.cs" />
+    <Compile Include="UI\frmScaleSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmAddValuesEx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmDataExclusion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AddClassCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\frmLabelManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LayerRenderCtrlExtend.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\frmInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Library\frmCircleInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\OLESelectPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MapGridStylePropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\PointLabelSetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\FillLabelSetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MarkerElementPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ScaleTextEventsClass.cs" />
+    <Compile Include="UI\RouteLayerPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MatchStyleGrallyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\FeatureInfoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\frmMatchStyleGrally.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Library\IMapAndPageLayoutCtrlForm.cs" />
+    <Compile Include="Library\IMxDocument.cs" />
+    <Compile Include="Library\MxDocument.cs" />
+    <Compile Include="MapCartoTemplateLib\LegendItemArrangementPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\LegendItemPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\frmConvertSymToRep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\NewMapGridWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\IndexGridLabelPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MapGridBorderPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MapGridCoordinatePropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\frmMapGridsProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FindControlEx.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\FindResultControlEx.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\frmPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JoiningRelatingHelper.cs" />
+    <Compile Include="UI\MapGridControlFirst.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\AttributeQueryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\frmFindResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormPrinterSetupEx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MapCartoTemplateLib\BLL\MapTemplateElementBLL.cs" />
+    <Compile Include="UI\frmLayerPropertyExtend.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmFind.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OnActivePageLayoutHandler.cs" />
+    <Compile Include="ApplyMapTemplateAssist.cs" />
+    <Compile Include="MapCartoTemplateLib\NumberAndLabelPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DesignLib\CatoTemplateApplySelect.resx">
+      <DependentUpon>CatoTemplateApplySelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\ElementGeometryInfoPropertyPage.resx">
+      <DependentUpon>ElementGeometryInfoPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\ElementPosition.resx">
+      <DependentUpon>ElementPosition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\ElementSizeAndPositionCtrl.resx">
+      <DependentUpon>ElementSizeAndPositionCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\ElementSymbolSetPage.resx">
+      <DependentUpon>ElementSymbolSetPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\ElementTypeSelectPage.resx">
+      <DependentUpon>ElementTypeSelectPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\FillSymbolPropertyPage.resx">
+      <DependentUpon>FillSymbolPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\frmNewLegendItem.resx">
+      <DependentUpon>frmNewLegendItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\frmParamProperty.resx">
+      <DependentUpon>frmParamProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\frmPropertySheet.resx">
+      <DependentUpon>frmPropertySheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\frmSelectCartoTemplateWizard.resx">
+      <DependentUpon>frmSelectCartoTemplateWizard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\frmSelectParam.resx">
+      <DependentUpon>frmSelectParam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\frmTLConfig.resx">
+      <DependentUpon>frmTLConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\GridAxisPropertyPage.resx">
+      <DependentUpon>GridAxisPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\JLKElementWizardForm.resx">
+      <DependentUpon>JLKElementWizardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\JLKMapTemplateWizard.resx">
+      <DependentUpon>JLKMapTemplateWizard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\JLKWizardForm.resx">
+      <DependentUpon>JLKWizardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\LabelFormatPropertyPage.resx">
+      <DependentUpon>LabelFormatPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\LabelSetPage.resx">
+      <DependentUpon>LabelSetPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\LegendFormatSetupCtrl.resx">
+      <DependentUpon>LegendFormatSetupCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\LegendFrameUserControl.resx">
+      <DependentUpon>LegendFrameUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\LegendInfoPage.resx">
+      <DependentUpon>LegendInfoPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\LegendItemArrangementPropertyPage.resx">
+      <DependentUpon>LegendItemArrangementPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\LegendItemGeneralPropertyPage.resx">
+      <DependentUpon>LegendItemGeneralPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\LegendItemPropertyPage.resx">
+      <DependentUpon>LegendItemPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\LegendPropertyPage.resx">
+      <DependentUpon>LegendPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\LegendTitleUserControl.resx">
+      <DependentUpon>LegendTitleUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\LineSymbolPropertyPage.resx">
+      <DependentUpon>LineSymbolPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\MapTemplateGeneralPage.resx">
+      <DependentUpon>MapTemplateGeneralPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\MapTemplateTypePage.resx">
+      <DependentUpon>MapTemplateTypePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\MarkerElementPropertyPage.resx">
+      <DependentUpon>MarkerElementPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\NorthArrowPropertyPage.resx">
+      <DependentUpon>NorthArrowPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\NumberAndLabelPropertyPage.resx">
+      <DependentUpon>NumberAndLabelPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\OLESelectPage.resx">
+      <DependentUpon>OLESelectPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\OtherGridPropertyPage.resx">
+      <DependentUpon>OtherGridPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\PictureSelectPage.resx">
+      <DependentUpon>PictureSelectPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\RenderInfoListView.resx">
+      <DependentUpon>RenderInfoListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\ScaleAndUnitsPropertyPage.resx">
+      <DependentUpon>ScaleAndUnitsPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\ScaleBarFormatPropertyPage.resx">
+      <DependentUpon>ScaleBarFormatPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\ScaleTextFormatPropertyPage.resx">
+      <DependentUpon>ScaleTextFormatPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\ScaleTextTextPropertyPage.resx">
+      <DependentUpon>ScaleTextTextPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\StandardTickSymbolPropertyPage.resx">
+      <DependentUpon>StandardTickSymbolPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\StarndFenFuMapTemplatePage.resx">
+      <DependentUpon>StarndFenFuMapTemplatePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\TemplateParamSetPage.resx">
+      <DependentUpon>TemplateParamSetPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\TemplatePropertyPage.resx">
+      <DependentUpon>TemplatePropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\TextElementValueSetPage.resx">
+      <DependentUpon>TextElementValueSetPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\TFInfoPage.resx">
+      <DependentUpon>TFInfoPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignLib\TickSymbolPropertyPage.resx">
+      <DependentUpon>TickSymbolPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Library\frmCartoConfig.resx">
+      <DependentUpon>frmCartoConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Library\frmCircleInput.resx">
+      <DependentUpon>frmCircleInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Library\frmClipOutSet.resx">
+      <DependentUpon>frmClipOutSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Library\frmImportExcelSet.resx">
+      <DependentUpon>frmImportExcelSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Library\frmInputCoordinate.resx">
+      <DependentUpon>frmInputCoordinate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Library\frmInputText.resx">
+      <DependentUpon>frmInputText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Library\frmInputXY.resx">
+      <DependentUpon>frmInputXY.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Library\frmMapTemplateApplyWizard.resx">
+      <DependentUpon>frmMapTemplateApplyWizard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Library\MapCoordinateInputPage.resx">
+      <DependentUpon>MapCoordinateInputPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Library\MapCoordinatePage.resx">
+      <DependentUpon>MapCoordinatePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Library\MapTemplateList.resx">
+      <DependentUpon>MapTemplateList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Library\MapTemplateParamPage.resx">
+      <DependentUpon>MapTemplateParamPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="checked.bmp" />
+    <EmbeddedResource Include="UI\AddClassCtrl.resx">
+      <DependentUpon>AddClassCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\AttributeQueryControl.resx">
+      <DependentUpon>AttributeQueryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\BaseHeightPropertyPage.resx">
+      <DependentUpon>BaseHeightPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\BufferGeometrySetCtrl.resx">
+      <DependentUpon>BufferGeometrySetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\BufferOutputSetCtrl.resx">
+      <DependentUpon>BufferOutputSetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\BufferParameterSetCtrl.resx">
+      <DependentUpon>BufferParameterSetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CADDrawingLayersPropertyPage.resx">
+      <DependentUpon>CADDrawingLayersPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CADTransformationPropertyPage.resx">
+      <DependentUpon>CADTransformationPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ChartRendererCtrl.resx">
+      <DependentUpon>ChartRendererCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ClassBreaksRendererCtrl.resx">
+      <DependentUpon>ClassBreaksRendererCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\DataExclusionLegendCtrl.resx">
+      <DependentUpon>DataExclusionLegendCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\DotDensityRendererCtrl.resx">
+      <DependentUpon>DotDensityRendererCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ElementGeometryInfoPropertyPage.resx">
+      <DependentUpon>ElementGeometryInfoPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ElementSizeAndPositionCtrl.resx">
+      <DependentUpon>ElementSizeAndPositionCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ExtrusionPropertyPage.resx">
+      <DependentUpon>ExtrusionPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FeatureInfoControl.resx">
+      <DependentUpon>FeatureInfoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FeatureSelectionSetCtrl.resx">
+      <DependentUpon>FeatureSelectionSetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FillLabelSetCtrl.resx">
+      <DependentUpon>FillLabelSetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FillSymbolPropertyPage.resx">
+      <DependentUpon>FillSymbolPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FindControl.resx">
+      <DependentUpon>FindControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FindControlEx.resx">
+      <DependentUpon>FindControlEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FindResultControl.resx">
+      <DependentUpon>FindResultControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FindResultControlEx.resx">
+      <DependentUpon>FindResultControlEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormPageSetup.resx">
+      <DependentUpon>FormPageSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormPrinterSetup.resx">
+      <DependentUpon>FormPrinterSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormPrinterSetupEx.resx">
+      <DependentUpon>FormPrinterSetupEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FractionTextSymbolPage.resx">
+      <DependentUpon>FractionTextSymbolPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrameProprtyPage.resx">
+      <DependentUpon>FrameProprtyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmAddTinRender.resx">
+      <DependentUpon>frmAddTinRender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmAddValues.resx">
+      <DependentUpon>frmAddValues.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmAddValuesEx.resx">
+      <DependentUpon>frmAddValuesEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmAnnoScaleSet.resx">
+      <DependentUpon>frmAnnoScaleSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmBookMark.resx">
+      <DependentUpon>frmBookMark.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmBufferWizard.resx">
+      <DependentUpon>frmBufferWizard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmCalibratedMapBorder.resx">
+      <DependentUpon>frmCalibratedMapBorder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmConvertSymToRep.resx">
+      <DependentUpon>frmConvertSymToRep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmDataExclusion.resx">
+      <DependentUpon>frmDataExclusion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmDataFrameProperty.resx">
+      <DependentUpon>frmDataFrameProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmElementProperty.resx">
+      <DependentUpon>frmElementProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmExpressionBuild.resx">
+      <DependentUpon>frmExpressionBuild.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmExpressionSet.resx">
+      <DependentUpon>frmExpressionSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmExtendSet.resx">
+      <DependentUpon>frmExtendSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmFeatureRender.resx">
+      <DependentUpon>frmFeatureRender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmFenFuTKCreate.resx">
+      <DependentUpon>frmFenFuTKCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmFind.resx">
+      <DependentUpon>frmFind.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmFindResult.resx">
+      <DependentUpon>frmFindResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmGaphicTransformation.resx">
+      <DependentUpon>frmGaphicTransformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmGeographicTransformationConvert.resx">
+      <DependentUpon>frmGeographicTransformationConvert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmHatchAlignment.resx">
+      <DependentUpon>frmHatchAlignment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmInfo.resx">
+      <DependentUpon>frmInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmInput.resx">
+      <DependentUpon>frmInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmJoining.resx">
+      <DependentUpon>frmJoining.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmJoinTypeSet.resx">
+      <DependentUpon>frmJoinTypeSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmJTBElement.resx">
+      <DependentUpon>frmJTBElement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmLabelManager.resx">
+      <DependentUpon>frmLabelManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmLabelRotateAngles.resx">
+      <DependentUpon>frmLabelRotateAngles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmLabelToAnnoSetup.resx">
+      <DependentUpon>frmLabelToAnnoSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmLableRotateField.resx">
+      <DependentUpon>frmLableRotateField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmLayerCheck.resx">
+      <DependentUpon>frmLayerCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmLayerProperty.resx">
+      <DependentUpon>frmLayerProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmLayerPropertyEx.resx">
+      <DependentUpon>frmLayerPropertyEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmLayerPropertyExtend.resx">
+      <DependentUpon>frmLayerPropertyExtend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmLayerRender.resx">
+      <DependentUpon>frmLayerRender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmManageBookMarker.resx">
+      <DependentUpon>frmManageBookMarker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmMapGridsProperty.resx">
+      <DependentUpon>frmMapGridsProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmNewHatchClassName.resx">
+      <DependentUpon>frmNewHatchClassName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmNewLegendItem.resx">
+      <DependentUpon>frmNewLegendItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmOutline.resx">
+      <DependentUpon>frmOutline.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmPageAndPrinterSetup.resx">
+      <DependentUpon>frmPageAndPrinterSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmPageLayoutTemp.resx">
+      <DependentUpon>frmPageLayoutTemp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmPageSetup.resx">
+      <DependentUpon>frmPageSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmPrint.resx">
+      <DependentUpon>frmPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmRasteStrechSet.resx">
+      <DependentUpon>frmRasteStrechSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmRelating.resx">
+      <DependentUpon>frmRelating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmRender.resx">
+      <DependentUpon>frmRender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmScaleSet.resx">
+      <DependentUpon>frmScaleSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmTextDisplaySet.resx">
+      <DependentUpon>frmTextDisplaySet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmTKWizard.resx">
+      <DependentUpon>frmTKWizard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmTLConfig.resx">
+      <DependentUpon>frmTLConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\GroupLayerPropertyPage.resx">
+      <DependentUpon>GroupLayerPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\HatchClassCtrl.resx">
+      <DependentUpon>HatchClassCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\HatchDefinitionCtrl.resx">
+      <DependentUpon>HatchDefinitionCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\HatchLayerExtensionPropertyPage.resx">
+      <DependentUpon>HatchLayerExtensionPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\IndexGridLabelPropertyPage.resx">
+      <DependentUpon>IndexGridLabelPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\JoiningAndRelatingPropertyPage.resx">
+      <DependentUpon>JoiningAndRelatingPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LabelExpressionSetPropertyPage.resx">
+      <DependentUpon>LabelExpressionSetPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LabelLineElementProperty.resx">
+      <DependentUpon>LabelLineElementProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LayerDataSourcePropertyPage.resx">
+      <DependentUpon>LayerDataSourcePropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LayerDefinitionExpressionCtrl.resx">
+      <DependentUpon>LayerDefinitionExpressionCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LayerDisplaySetCtrl.resx">
+      <DependentUpon>LayerDisplaySetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LayerFieldsPage.resx">
+      <DependentUpon>LayerFieldsPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LayerFieldsPageExtend.resx">
+      <DependentUpon>LayerFieldsPageExtend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LayerGeneralPropertyCtrl.resx">
+      <DependentUpon>LayerGeneralPropertyCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LayerLabelPropertyCtrl.resx">
+      <DependentUpon>LayerLabelPropertyCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LayerRenderCtrl.resx">
+      <DependentUpon>LayerRenderCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LayerRenderCtrlExtend.resx">
+      <DependentUpon>LayerRenderCtrlExtend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LegendFormatSetupCtrl.resx">
+      <DependentUpon>LegendFormatSetupCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LegendFrameUserControl.resx">
+      <DependentUpon>LegendFrameUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LegendItemArrangementPropertyPage.resx">
+      <DependentUpon>LegendItemArrangementPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LegendItemGeneralPropertyPage.resx">
+      <DependentUpon>LegendItemGeneralPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LegendItemPropertyPage.resx">
+      <DependentUpon>LegendItemPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LegendLayerUserControl.resx">
+      <DependentUpon>LegendLayerUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LegendPropertyPage.resx">
+      <DependentUpon>LegendPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LegendSetupUserControl.resx">
+      <DependentUpon>LegendSetupUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LegendTitleUserControl.resx">
+      <DependentUpon>LegendTitleUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LegendWizard.resx">
+      <DependentUpon>LegendWizard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LineLabelSetCtrl.resx">
+      <DependentUpon>LineLabelSetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LineSymbolPropertyPage.resx">
+      <DependentUpon>LineSymbolPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MapCoordinateCtrl.resx">
+      <DependentUpon>MapCoordinateCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MapDataFramePage.resx">
+      <DependentUpon>MapDataFramePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MapGeneralInfoCtrl.resx">
+      <DependentUpon>MapGeneralInfoCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MapGridBorderPropertyPage.resx">
+      <DependentUpon>MapGridBorderPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MapGridControlFirst.resx">
+      <DependentUpon>MapGridControlFirst.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MapGridControlFourth.resx">
+      <DependentUpon>MapGridControlFourth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MapGridControlSecond.resx">
+      <DependentUpon>MapGridControlSecond.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MapGridControlThird.resx">
+      <DependentUpon>MapGridControlThird.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MapGridCoordinatePropertyPage.resx">
+      <DependentUpon>MapGridCoordinatePropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MapGridStylePropertyPage.resx">
+      <DependentUpon>MapGridStylePropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MapGridTypeProperty.resx">
+      <DependentUpon>MapGridTypeProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MarkerElementPropertyPage.resx">
+      <DependentUpon>MarkerElementPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MatchStyleGrallyControl.resx">
+      <DependentUpon>MatchStyleGrallyControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MatchStyleGrallyCtrl.resx">
+      <DependentUpon>MatchStyleGrallyCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NewMapGridWizard.resx">
+      <DependentUpon>NewMapGridWizard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NorthArrowPropertyPage.resx">
+      <DependentUpon>NorthArrowPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NumberAndLabelPropertyPage.resx">
+      <DependentUpon>NumberAndLabelPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PageSetupControl.resx">
+      <DependentUpon>PageSetupControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PicturePropertyPage.resx">
+      <DependentUpon>PicturePropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PointLabelSetCtrl.resx">
+      <DependentUpon>PointLabelSetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ProportionalSymbolRendererCtrl.resx">
+      <DependentUpon>ProportionalSymbolRendererCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\RasterClassifiedRenderPage.resx">
+      <DependentUpon>RasterClassifiedRenderPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\RasterRenderPropertyPage.resx">
+      <DependentUpon>RasterRenderPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\RasterRGBRendererPage.resx">
+      <DependentUpon>RasterRGBRendererPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\RasterStretchedRenderPage.resx">
+      <DependentUpon>RasterStretchedRenderPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\RenderInfoListView.resx">
+      <DependentUpon>RenderInfoListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\RepresentationRendererPage.resx">
+      <DependentUpon>RepresentationRendererPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\RepresentationRuleListBox1.resx">
+      <DependentUpon>RepresentationRuleListBox1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\RouteLayerPropertyPage.resx">
+      <DependentUpon>RouteLayerPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ScaleAndUnitsPropertyPage.resx">
+      <DependentUpon>ScaleAndUnitsPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ScaleBarFormatPropertyPage.resx">
+      <DependentUpon>ScaleBarFormatPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ScaleTextFormatPropertyPage.resx">
+      <DependentUpon>ScaleTextFormatPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ScaleTextTextPropertyPage.resx">
+      <DependentUpon>ScaleTextTextPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ScenceGeneralPropertyPage.resx">
+      <DependentUpon>ScenceGeneralPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SceneRenderPropertyPage.resx">
+      <DependentUpon>SceneRenderPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SimpleRenderControl.resx">
+      <DependentUpon>SimpleRenderControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\StatisticsControl.resx">
+      <DependentUpon>StatisticsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TextSetupCtrl.resx">
+      <DependentUpon>TextSetupCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TFInfoPage.resx">
+      <DependentUpon>TFInfoPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TFTextInfoPage.resx">
+      <DependentUpon>TFTextInfoPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TinColorRampRenderPropertyPage.resx">
+      <DependentUpon>TinColorRampRenderPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TinLayerRenderPropertyPage.resx">
+      <DependentUpon>TinLayerRenderPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TinSimpleRenderCtrl.resx">
+      <DependentUpon>TinSimpleRenderCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TinUniqueRenderPropertyPage.resx">
+      <DependentUpon>TinUniqueRenderPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TKConfigPage.resx">
+      <DependentUpon>TKConfigPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TKStyleSelectPage.resx">
+      <DependentUpon>TKStyleSelectPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TLConfigPropertyPage.resx">
+      <DependentUpon>TLConfigPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ToplogyLayerSymbolCtrl.resx">
+      <DependentUpon>ToplogyLayerSymbolCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TopologyClassesPropertyPage.resx">
+      <DependentUpon>TopologyClassesPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TopologyErrorSelectionCtrl.resx">
+      <DependentUpon>TopologyErrorSelectionCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TopologyRulesPropertyPage.resx">
+      <DependentUpon>TopologyRulesPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UniqueValueRendererCtrl.resx">
+      <DependentUpon>UniqueValueRendererCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UniqueValueRendererMoreAttributeCtrl.resx">
+      <DependentUpon>UniqueValueRendererMoreAttributeCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\CustomLegendConfigPage.resx">
+      <DependentUpon>CustomLegendConfigPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\ElementPosition.resx">
+      <DependentUpon>ElementPosition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\ElementSymbolSetPage.resx">
+      <DependentUpon>ElementSymbolSetPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\ElementTypeSelectPage.resx">
+      <DependentUpon>ElementTypeSelectPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\frmExpressBulider.resx">
+      <DependentUpon>frmExpressBulider.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\frmNewLegendItem.resx">
+      <DependentUpon>frmNewLegendItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\frmSetTabelCell.resx">
+      <DependentUpon>frmSetTabelCell.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\GridAxisPropertyPage.resx">
+      <DependentUpon>GridAxisPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\GroupElementExPropertyPage.resx">
+      <DependentUpon>GroupElementExPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\JLKElementWizardForm.resx">
+      <DependentUpon>JLKElementWizardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\JLKMapTemplateWizard.resx">
+      <DependentUpon>JLKMapTemplateWizard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\LabelFormatPropertyPage.resx">
+      <DependentUpon>LabelFormatPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\LegendFormatSetupCtrl.resx">
+      <DependentUpon>LegendFormatSetupCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\LegendFrameUserControl.resx">
+      <DependentUpon>LegendFrameUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\LegendItemArrangementPropertyPage.resx">
+      <DependentUpon>LegendItemArrangementPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\LegendItemGeneralPropertyPage.resx">
+      <DependentUpon>LegendItemGeneralPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\LegendItemPropertyPage.resx">
+      <DependentUpon>LegendItemPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\LegendPropertyPage.resx">
+      <DependentUpon>LegendPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\LegendTitleUserControl.resx">
+      <DependentUpon>LegendTitleUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\MapTemplateGeneralPage.resx">
+      <DependentUpon>MapTemplateGeneralPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\MapTemplateTypePage.resx">
+      <DependentUpon>MapTemplateTypePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\NorthArrowPropertyPage.resx">
+      <DependentUpon>NorthArrowPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\NumberAndLabelPropertyPage.resx">
+      <DependentUpon>NumberAndLabelPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\OLESelectPage.resx">
+      <DependentUpon>OLESelectPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\OtherGridPropertyPage.resx">
+      <DependentUpon>OtherGridPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\PictureSelectPage.resx">
+      <DependentUpon>PictureSelectPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\RenderInfoListView.resx">
+      <DependentUpon>RenderInfoListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\ScaleAndUnitsPropertyPage.resx">
+      <DependentUpon>ScaleAndUnitsPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\ScaleBarFormatPropertyPage.resx">
+      <DependentUpon>ScaleBarFormatPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\ScaleTextFormatPropertyPage.resx">
+      <DependentUpon>ScaleTextFormatPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\ScaleTextTextPropertyPage.resx">
+      <DependentUpon>ScaleTextTextPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\StandardTickSymbolPropertyPage.resx">
+      <DependentUpon>StandardTickSymbolPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\StarndFenFuMapTemplatePage.resx">
+      <DependentUpon>StarndFenFuMapTemplatePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\TableCellSetPage.resx">
+      <DependentUpon>TableCellSetPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\TableGeneralPage.resx">
+      <DependentUpon>TableGeneralPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\TextElementValueSetPage.resx">
+      <DependentUpon>TextElementValueSetPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapCartoTemplateLib\TickSymbolPropertyPage.resx">
+      <DependentUpon>TickSymbolPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Yutai.ArcGIS.Common\Yutai.ArcGIS.Common.csproj">
+      <Project>{1938b3f8-8ede-48f7-9594-eeb1f126e622}</Project>
+      <Name>Yutai.ArcGIS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yutai.Catalog\Yutai.Catalog.csproj">
+      <Project>{a925ec17-5c70-42f6-a82e-9eba7aa47fe0}</Project>
+      <Name>Yutai.Catalog</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yutai.Plugins\Yutai.Plugins.csproj">
+      <Project>{800f2ee4-47ab-4cd4-934d-a64980d98a23}</Project>
+      <Name>Yutai.Plugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yutai.Shared\Yutai.Shared.csproj">
+      <Project>{4a9b3243-2b0a-4e87-9b23-71a58c1f318d}</Project>
+      <Name>Yutai.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yutai.UI\Yutai.UI.csproj">
+      <Project>{9a73b99a-0d59-4b55-b35f-721d321942af}</Project>
+      <Name>Yutai.UI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DesignLib\trck4way.cur" />
+    <EmbeddedResource Include="DesignLib\trcknesw.cur" />
+    <EmbeddedResource Include="DesignLib\trckns.cur" />
+    <EmbeddedResource Include="DesignLib\trcknwse.cur" />
+    <EmbeddedResource Include="DesignLib\trckwe.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DesignLib\AlignGEBottom.bmp" />
+    <EmbeddedResource Include="DesignLib\AlignGELeft.bmp" />
+    <EmbeddedResource Include="DesignLib\AlignGERight.bmp" />
+    <EmbeddedResource Include="DesignLib\AlignGETop.bmp" />
+    <EmbeddedResource Include="DesignLib\ApplyTemplateByMouseClick.bmp" />
+    <EmbeddedResource Include="DesignLib\ElementSelect.bmp" />
+  </ItemGroup>
+</Project>

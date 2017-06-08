@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{80D1C45B-805C-48E6-BF90-F8CB2B033D31}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Yutai.ArcGIS.Framework</RootNamespace>
+    <AssemblyName>Yutai.ArcGIS.Framework</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Program Files (x86)\DevExpress 16.1.4\Components\Bin\Framework\DevExpress.Data.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Program Files (x86)\DevExpress 16.1.4\Components\Bin\Framework\DevExpress.XtraBars.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Program Files (x86)\DevExpress 16.1.4\Components\Bin\Framework\DevExpress.XtraEditors.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Program Files (x86)\DevExpress 16.1.4\Components\Bin\Framework\DevExpress.XtraGrid.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.ADF, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86" />
+    <Reference Include="ESRI.ArcGIS.Carto, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Controls, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Display, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Framework, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geometry, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.System, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.SystemUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Controls.Ribbon" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddWindows.cs" />
+    <Compile Include="BarCreator.cs" />
+    <Compile Include="BarEditStyle.cs" />
+    <Compile Include="BarItemEditValueChangedHandler.cs" />
+    <Compile Include="BarItemEx.cs" />
+    <Compile Include="BarManagerImplement.cs" />
+    <Compile Include="ButtonBarItem.cs" />
+    <Compile Include="CatalogObjectMenuHelper.cs" />
+    <Compile Include="ComboxBarItem.cs" />
+    <Compile Include="COMMANDTYPE.cs" />
+    <Compile Include="CreateBarsHelper.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Creator.cs" />
+    <Compile Include="Docking\AutoHideStripBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\DeserializeDockContent.cs" />
+    <Compile Include="Docking\DockAlignment.cs" />
+    <Compile Include="Docking\DockAreas.cs" />
+    <Compile Include="Docking\DockAreasEditor.cs" />
+    <Compile Include="Docking\DockContent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Docking\DockContentCollection.cs" />
+    <Compile Include="Docking\DockContentEventArgs.cs" />
+    <Compile Include="Docking\DockContentHandler.cs" />
+    <Compile Include="Docking\DockHelper.cs" />
+    <Compile Include="Docking\DockOutlineBase.cs" />
+    <Compile Include="Docking\DockPane.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Docking\DockPaneCaptionBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\DockPaneCollection.cs" />
+    <Compile Include="Docking\DockPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\DockPanelExtender.cs" />
+    <Compile Include="Docking\DockPaneStripBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\DockState.cs" />
+    <Compile Include="Docking\DockWindow.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\DockWindowCollection.cs" />
+    <Compile Include="Docking\DocumentStyle.cs" />
+    <Compile Include="Docking\DragForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Docking\DrawHelper.cs" />
+    <Compile Include="Docking\DummyControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\FloatWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Docking\FloatWindowCollection.cs" />
+    <Compile Include="Docking\GetPersistStringCallback.cs" />
+    <Compile Include="Docking\IContentFocusManager.cs" />
+    <Compile Include="Docking\IDockContent.cs" />
+    <Compile Include="Docking\IDockDragSource.cs" />
+    <Compile Include="Docking\IDragSource.cs" />
+    <Compile Include="Docking\InertButtonBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\INestedPanesContainer.cs" />
+    <Compile Include="Docking\ISplitterDragSource.cs" />
+    <Compile Include="Docking\LocalizedCategoryAttribute.cs" />
+    <Compile Include="Docking\LocalizedDescriptionAttribute.cs" />
+    <Compile Include="Docking\MeasurePane.cs" />
+    <Compile Include="Docking\Measures.cs" />
+    <Compile Include="Docking\NativeMethods.cs" />
+    <Compile Include="Docking\NestedDockingStatus.cs" />
+    <Compile Include="Docking\NestedPaneCollection.cs" />
+    <Compile Include="Docking\ResourceHelper.cs" />
+    <Compile Include="Docking\Resources.cs" />
+    <Compile Include="Docking\SplitterBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\Strings.cs" />
+    <Compile Include="Docking\VisibleNestedPaneCollection.cs" />
+    <Compile Include="Docking\VS2005AutoHideStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\VS2005DockPaneCaption.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\VS2005DockPaneStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Docking\Win32Helper.cs" />
+    <Compile Include="Docking\Win32\FlagsSetWindowPos.cs" />
+    <Compile Include="Docking\Win32\GetWindowLongIndex.cs" />
+    <Compile Include="Docking\Win32\HitTest.cs" />
+    <Compile Include="Docking\Win32\HookType.cs" />
+    <Compile Include="Docking\Win32\Msgs.cs" />
+    <Compile Include="Docking\Win32\ScrollBars.cs" />
+    <Compile Include="Docking\Win32\ShowWindowStyles.cs" />
+    <Compile Include="Docking\Win32\WindowExStyles.cs" />
+    <Compile Include="Docking\Win32\WindowStyles.cs" />
+    <Compile Include="DockManagerWrapImp.cs" />
+    <Compile Include="Framework.cs" />
+    <Compile Include="IBarEditItem.cs" />
+    <Compile Include="IBarManager.cs" />
+    <Compile Include="IBarManagerEvents.cs" />
+    <Compile Include="ICommandLine.cs" />
+    <Compile Include="ICommandLineWindows.cs" />
+    <Compile Include="IDockManagerWrap.cs" />
+    <Compile Include="IFramework.cs" />
+    <Compile Include="JLKButtonBarItem.cs" />
+    <Compile Include="JLKComboxBarItem.cs" />
+    <Compile Include="MessageHandler.cs" />
+    <Compile Include="MSGTYPE.cs" />
+    <Compile Include="MyDockContext.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OnBarsCreateCompleteHandler.cs" />
+    <Compile Include="OnCreateCompleteHandler.cs" />
+    <Compile Include="OnFrameworkClosedHandler.cs" />
+    <Compile Include="PopupMenuWrap.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TreeviewComboxBarItem.cs" />
+    <Compile Include="UIManagerHelper.cs" />
+    <Compile Include="UpdateUIHelper.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Docking\Resources.resx">
+      <DependentUpon>Resources.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Docking\Strings.resx">
+      <DependentUpon>Strings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyDockContext.resx">
+      <DependentUpon>MyDockContext.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Yutai.ArcGIS.Common\Yutai.ArcGIS.Common.csproj">
+      <Project>{1938B3F8-8EDE-48F7-9594-EEB1F126E622}</Project>
+      <Name>Yutai.ArcGIS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yutai.Plugins\Yutai.Plugins.csproj">
+      <Project>{800F2EE4-47AB-4CD4-934D-A64980D98A23}</Project>
+      <Name>Yutai.Plugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yutai.Shared\Yutai.Shared.csproj">
+      <Project>{4A9B3243-2B0A-4E87-9B23-71A58C1F318D}</Project>
+      <Name>Yutai.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

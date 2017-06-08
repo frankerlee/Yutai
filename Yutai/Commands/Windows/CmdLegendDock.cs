@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DevExpress.XtraBars.Docking;
+using Yutai.Controls;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
@@ -21,7 +23,7 @@ namespace Yutai.Commands.Windows
         public override void OnClick()
         {
             ISecureContext sContext = _context as ISecureContext;
-            IDockPanel dock = _context.DockPanels.Find(DockPanelKeys.MapLegend);
+            DockPanel dock = _context.DockPanels.GetDockPanel(MapLegendDockPanel.DefaultDockName);
             if (dock == null) return;
             dock.Visible = !dock.Visible;
 

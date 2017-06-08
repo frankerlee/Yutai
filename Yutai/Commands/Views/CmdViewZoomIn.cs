@@ -38,7 +38,7 @@ namespace Yutai.Commands.Views
         public override void OnClick()
         {
             _inZoom = false;
-            _context.SetCurrentTool(this);
+            //_context.SetCurrentTool(this);
         }
 
        
@@ -56,8 +56,8 @@ namespace Yutai.Commands.Views
             base.m_bitmap = Properties.Resources.icon_zoom_in;
             _cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.Resource.Cursor.ZoomIn.cur"));
             _cursor1 = new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.Resource.Cursor.MoveZoomIn.cur"));
-            base.m_name = "View.Common.ZoomIn";
-            base._key = "View.Common.ZoomIn";
+            base.m_name = "View_ZoomIn";
+            base._key = "View_ZoomIn";
             base.m_toolTip = "放大";
             base.m_checked = false;
             base.m_enabled = true;

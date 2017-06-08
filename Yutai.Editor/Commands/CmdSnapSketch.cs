@@ -18,8 +18,8 @@ namespace Yutai.Plugins.Editor.Commands
             this.m_caption = "草图捕捉";
             this.m_category = "Edit";
             this.m_message = "草图捕捉";
-            this.m_name = "Edit.Snap.Config.SnapSketch";
-            this._key = "Edit.Snap.Config.SnapSketch";
+            this.m_name = "Edit_Snap_Config_SnapSketch";
+            this._key = "Edit_Snap_Config_SnapSketch";
             this.m_toolTip = "草图捕捉";
             _context = hook as IAppContext;
             DisplayStyleYT = DisplayStyleYT.Image;

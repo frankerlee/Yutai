@@ -11,7 +11,7 @@ namespace Yutai.UI
     {
         public static void Compose(IApplicationContainer container)
         {
-            container.RegisterService<IStyleService, SyncfusionStyleService>()
+            container.RegisterService<IStyleService, DevExpressStyleService>()
                 .RegisterSingleton<ControlStyleSettings>();
         }
     }

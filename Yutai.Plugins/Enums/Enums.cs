@@ -54,10 +54,10 @@ namespace Yutai.Plugins.Enums
     }
     public enum RibbonItemType
     {
-        TabItem = 0,
-        ToolStrip = 1,
-        Panel = 2,
-        Group=3,
+        Page = 0,
+        PageGroup = 1,
+        ButtonGroup = 2,
+        LinkGroup=3,
         Button = 4,
         Tool = 5,
         DropDown = 6,

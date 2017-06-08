@@ -56,8 +56,8 @@ namespace Yutai.Plugins.Editor.Commands
             this.m_caption = "保存";
             this.m_category = "Edit";
             this.m_message = "保存编辑";
-            this.m_name = "Edit.Common.SaveEdit";
-            this._key = "Edit.Common.SaveEdit";
+            this.m_name = "Edit_Common_SaveEdit";
+            this._key = "Edit_Common_SaveEdit";
             this.m_toolTip = "保存编辑";
             _context = hook as IAppContext;
             DisplayStyleYT = DisplayStyleYT.ImageAndText;

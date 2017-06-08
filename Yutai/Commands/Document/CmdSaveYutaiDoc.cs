@@ -32,7 +32,7 @@ namespace Yutai.Commands.Document
             base.m_category = "Document";
             base.m_bitmap = Properties.Resources.yt_project_save;
             base.m_name = "File.Document.Sub.SaveProject";
-            base._key = "File.Document.Sub.SaveProject";
+            base._key = "File_Document_SaveProject";
             base.m_toolTip = "保存项目";
             base.m_checked = false;
             base.m_enabled = true;

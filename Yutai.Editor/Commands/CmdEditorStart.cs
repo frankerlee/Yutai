@@ -69,8 +69,8 @@ namespace Yutai.Plugins.Editor.Commands
             this.m_caption = "启动编辑";
             this.m_category = "Edit";
             this.m_message = "启动编辑";
-            this.m_name = "Edit.Common.StartEdit";
-            this._key = "Edit.Common.StartEdit";
+            this.m_name = "Edit_Common_StartEdit";
+            this._key = "Edit_Common_StartEdit";
             this.m_toolTip = "启动编辑";
             _context = hook as IAppContext;
             DisplayStyleYT = DisplayStyleYT.ImageAndText;

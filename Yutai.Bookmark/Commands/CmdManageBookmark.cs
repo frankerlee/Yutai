@@ -38,8 +38,8 @@ namespace Yutai.Plugins.Bookmark.Commands
             base.m_caption = "管理";
             base.m_category = "View";
             base.m_bitmap = Resources.Bookmark;
-            base.m_name = "View.Bookmark.ManageBookmark";
-            base._key = "View.Bookmark.ManageBookmark";
+            base.m_name = "View_Bookmark_ManageBookmark";
+            base._key = "View_Bookmark_ManageBookmark";
             base.m_toolTip = "管理书签";
             base.m_checked = false;
             base.m_enabled = true;

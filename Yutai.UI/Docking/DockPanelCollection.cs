@@ -1,27 +1,31 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
-using Syncfusion.Windows.Forms;
-using Syncfusion.Windows.Forms.Tools;
+using DevExpress.XtraBars.Docking;
 using Yutai.Plugins.Concrete;
-using Yutai.Plugins.Events;
 using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Services;
 using Yutai.Shared;
 using Yutai.UI.Controls;
 using Yutai.UI.Style;
+using DockPanelCancelEventArgs = Yutai.Plugins.Events.DockPanelCancelEventArgs;
+using DockPanelEventArgs = Yutai.Plugins.Events.DockPanelEventArgs;
 
 namespace Yutai.UI.Docking
 {
+    //说明：DockPanel和插件里面的DockPanelView的关系，在进行Dock的时候，是动态创建了一个DockPanb
     internal class DockPanelCollection : IDockPanelCollection
     {
         private bool _locked;
         private readonly Form _mainForm;
         private readonly IBroadcasterService _broadcaster;
         private readonly IStyleService _styleService;
-        private readonly DockingManager _dockingManager;
-        private readonly Dictionary<Control, DockPanelInfo> _dict = new Dictionary<Control, DockPanelInfo>();
+        private readonly DevExpress.XtraBars.Docking.DockManager _dockingManager;
+        private readonly Dictionary<DockPanelInfo,IDockPanelView> _dict = new Dictionary<DockPanelInfo,IDockPanelView>();
+
+     
 
         internal DockPanelCollection(object dockingManager, Form mainForm, IBroadcasterService broadcaster,
             IStyleService styleService)
@@ -33,7 +37,7 @@ namespace Yutai.UI.Docking
             _mainForm = mainForm;
             _broadcaster = broadcaster;
             _styleService = styleService;
-            _dockingManager = dockingManager as DockingManager;
+            _dockingManager = dockingManager as DockManager;
 
             if (_dockingManager == null)
             {
@@ -41,97 +45,47 @@ namespace Yutai.UI.Docking
                     "Failed to initialize DockPanelCollection. No docking manager is provided.");
             }
 
-            _dockingManager.DragProviderStyle = DragProviderStyle.VS2012;
-#if STYLE2010
-            _dockingManager.VisualStyle = VisualStyle.Office2010;
-#else
-            _dockingManager.VisualStyle = VisualStyle.Default;
-#endif
-
-            _dockingManager.DockTabAlignment = DockTabAlignmentStyle.Bottom;
-            _dockingManager.ShowCaptionImages = false;
-
-            _dockingManager.DockVisibilityChanged += DockVisibilityChanged;
-            _dockingManager.DockVisibilityChanging += DockVisibilityChanging;
+            _dockingManager.VisibilityChanged += _dockingManager_VisibilityChanged;
+          
         }
 
-        private void DockVisibilityChanging(object sender, DockVisibilityChangingEventArgs arg)
-        {
-            if (!_dict.ContainsKey(arg.Control))
-            {
-                throw new ApplicationException("Invalid docking panel control");
-            }
+    
 
-            var panel = GetDockPanel(arg.Control);
-            var info = _dict[arg.Control];
-            var args = new DockPanelCancelEventArgs(panel, info.Key);
+        private void _dockingManager_VisibilityChanged(object sender, VisibilityChangedEventArgs e)
+        {
+            string ctrlKey = e.Panel.Name;
+            KeyValuePair<DockPanelInfo, IDockPanelView> pair = _dict.FirstOrDefault(c => c.Value.DockName == ctrlKey);
+
+            //检索控件名称
+
+
+            var panel = _dockingManager.Panels[ctrlKey];
+           
+            var args = new DockPanelEventArgs(panel,pair.Key.Key);
 
             if (panel.Visible)
             {
-                _broadcaster.BroadcastEvent(p => p.DockPanelClosing_, panel, args, info.Identity);
+                _broadcaster.BroadcastEvent(p => p.DockPanelOpened_, panel, args, pair.Key.Identity);
             }
             else
             {
-                _broadcaster.BroadcastEvent(p => p.DockPanelOpening_, panel, args, info.Identity);
-            }
-
-            if (args.Cancel)
-            {
-                arg.Cancel = true;
+                _broadcaster.BroadcastEvent(p => p.DockPanelClosed_, panel, args, pair.Key.Identity);
             }
         }
 
-        private void DockVisibilityChanged(object sender, DockVisibilityChangedEventArgs arg)
-        {
-            if (!_dict.ContainsKey(arg.Control))
-            {
-                throw new ApplicationException("Invalid docking panel control");
-            }
-
-            var panel = GetDockPanel(arg.Control);
-            var info = _dict[arg.Control];
-            var args = new DockPanelEventArgs(panel, info.Key);
-
-            if (panel.Visible)
-            {
-                _broadcaster.BroadcastEvent(p => p.DockPanelOpened_, panel, args, info.Identity);
-            }
-            else
-            {
-                _broadcaster.BroadcastEvent(p => p.DockPanelClosed_, panel, args, info.Identity);
-            }
-        }
-
-        public IEnumerator<IDockPanel> GetEnumerator()
-        {
-            var enumerator = _dockingManager.Controls;
-            enumerator.Reset();
-            while (enumerator.MoveNext())
-            {
-                var dockItem = enumerator.Current as Control;
-                if (dockItem != null)
-                {
-                    yield return GetDockPanel(dockItem);
-                }
-            }
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+       
+      
+        
 
         public void Lock()
         {
-            _dockingManager.LockDockPanelsUpdate();
-            _dockingManager.LockHostFormUpdate();
+          
             _locked = true;
         }
 
         public void Unlock()
         {
-            _dockingManager.UnlockDockPanelsUpdate();
-            _dockingManager.UnlockHostFormUpdate();
+       
             _locked = false;
         }
 
@@ -140,120 +94,163 @@ namespace Yutai.UI.Docking
             get { return _locked; }
         }
 
-        public IDockPanel Add(Control control, string key, PluginIdentity identity)
+        public DockPanel Add(IDockPanelView view, PluginIdentity identity)
         {
-            if (control == null)
+            if (view == null)
             {
                 throw new NullReferenceException();
             }
 
-            if (string.IsNullOrWhiteSpace(key))
+            if (string.IsNullOrWhiteSpace(view.DockName))
             {
                 throw new ApplicationException("Dock panel must have a unique key.");
             }
 
-            if (_dict.ContainsKey(control))
+            if(_dict.ContainsValue(view))
             {
                 throw new ApplicationException("This control has been already added as a docking window.");
             }
 
-            control.Name = key;     // to save / restore layout each dock panel must have a key
-
-            _dockingManager.SetEnableDocking(control, true);
+            //_dockingManager.SetEnableDocking(control, true);
           
+            _dict.Add(new DockPanelInfo(identity,view.DockName),view);
 
-            _dict.Add(control, new DockPanelInfo(identity, key));
-
-            _styleService.ApplyStyle(control);
-
-            
-            return GetDockPanel(control);
+           return LoadDockPanel(view);
         }
 
-        public void Remove(IDockPanel panel, PluginIdentity identity)
+        private DockPanel DockTo(string parentName, IDockPanelView view)
         {
-            if (panel == null)
+            DevExpress.XtraBars.Docking.DockPanel parentPanel;
+            if (string.IsNullOrEmpty(parentName))
+                parentPanel = null;
+            else
+            {
+                parentPanel = _dockingManager.Panels[parentName];
+
+                if (parentPanel != null && parentPanel.Visibility == DockVisibility.Hidden)
+                {
+                    parentPanel = null;
+                }
+            }
+            DevExpress.XtraBars.Docking.DockingStyle style = DockHelper.MapWindowToDevExpress(view.DefaultDock);
+            if (style == DockingStyle.Fill) style = DockingStyle.Float;
+
+            DevExpress.XtraBars.Docking.DockPanel panel = null;
+            if (parentPanel == null)
+                panel = _dockingManager.AddPanel(style);
+            else
+                panel = parentPanel.AddPanel();
+            panel.Name = view.DockName;
+            panel.Header = view.Caption;
+            panel.Image =view.Image;
+            //panel.Dock = DockHelper.MapWindowToDevExpress(((IDockPanelView)_control).DefaultDock);
+            panel.FloatSize =view.DefaultSize;
+            ((Control)view).Dock = DockStyle.Fill;
+            panel.TabText = view.Caption;
+            panel.Text = view.Caption;
+            panel.Controls.Add((Control)view);
+            return panel;
+
+        }
+        private DockPanel LoadDockPanel(IDockPanelView view)
+        {
+             return DockTo(view.DefaultNestDockName,view);
+        }
+        public void Remove(string panelName, PluginIdentity identity)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void Remove(IDockPanelView view, PluginIdentity identity)
+        {
+            if (view == null)
             {
                 throw new ArgumentException("panel");
             }
 
-            if (!_dict.ContainsKey(panel.Control))
+            if (!_dict.ContainsValue(view))
             {
                 throw new ApplicationException("Dock panel isn't registed in the collection");
             }
 
-            if (_dict[panel.Control].Identity == identity)
-            {
-                throw new ApplicationException(
-                    "Invalid plugin identity. The panel can be removed only from the same plugin.");
-            }
+            _dict.Remove(new DockPanelInfo(identity, view.DockName));
 
-            _dockingManager.SetEnableDocking(panel.Control, false);
-            _dict.Remove(panel.Control);
-            _mainForm.Controls.Remove(panel.Control);
+            _dockingManager.RemovePanel(_dockingManager.Panels[view.DockName]);
 
         }
 
         public void RemoveItemsForPlugin(PluginIdentity identity)
         {
-            var controls = new List<Control>();
+            List<DockPanelInfo> panels = new List<DockPanelInfo>();
 
-            foreach (var p in this)
+            foreach (var p in _dict)
             {
-                if (_dict[p.Control].Identity == identity)
+                if (p.Key.Identity == identity)
                 {
-                    controls.Add(p.Control);
+                    panels.Add(p.Key);
                 }
             }
 
             bool locked = _locked;
             if (!_locked) Lock();
 
-            foreach (var ctrl in controls)
+            foreach (var ctrl in panels)
             {
-                _dockingManager.SetEnableDocking(ctrl, false);
+               // _dockingManager.SetEnableDocking(ctrl, false);
                 _dict.Remove(ctrl);
-                _mainForm.Controls.Remove(ctrl);
+                _dockingManager.RemovePanel(_dockingManager.Panels[ctrl.Key]);
             }
 
             if (!locked) Unlock();
         }
 
-        public IDockPanel Find(string key)
+        public DockPanel GetDockPanel(string key)
         {
-            foreach (var item in _dict)
+            return _dockingManager.Panels[key];
+        }
+
+        public void ShowDockPanel(string dockName, bool isVisible, bool isActive)
+        {
+            SetDockVisible(dockName, isVisible, isActive);
+        }
+
+        public void SetActivePanel(string dockName)
+        {
+            SetDockVisible(dockName, true, true);
+        }
+
+        public DevExpress.XtraBars.Docking.DockPanel Find(string key)
+        {
+           return _dockingManager.Panels[key] as DevExpress.XtraBars.Docking.DockPanel;
+        }
+
+        public void SetDockVisible(string dockName, bool isVisible, bool isActive)
+        {
+            DevExpress.XtraBars.Docking.DockPanel panel = _dockingManager.Panels[dockName];
+            if (panel == null)
             {
-                if (item.Value.Key.EqualsIgnoreCase(key))
+                if (isVisible == true)
                 {
-                    return GetDockPanel(item.Key);
+                    IDockPanelView view = _dict.FirstOrDefault(c => c.Key.Key == dockName).Value;
+                    DockTo("", view);
                 }
+                return;
             }
-            return null;
+            panel.Visible = isVisible;
+            if (isVisible == true && isActive)
+                _dockingManager.ActivePanel = panel;
         }
 
-        public IDockPanel MapLegend
+
+        public IEnumerator<IDockPanelView> GetEnumerator()
         {
-            get { return Find(DockPanelKeys.MapLegend); }
+            return (IEnumerator<IDockPanelView>) (from view in _dict select view.Value);
         }
 
-        public IDockPanel Overview
+        IEnumerator IEnumerable.GetEnumerator()
         {
-            get { return Find(DockPanelKeys.Overview); }
-        }
-
-        public IDockPanel Preview
-        {
-            get { return Find(DockPanelKeys.Preview); }
-        }
-
-        public IDockPanel Toolbox
-        {
-            get { return Find(DockPanelKeys.Toolbox); }
-        }
-
-        private IDockPanel GetDockPanel(Control control)
-        {
-            return new DockPanel(_dockingManager, control, _mainForm);
+            return GetEnumerator();
         }
     }
 }

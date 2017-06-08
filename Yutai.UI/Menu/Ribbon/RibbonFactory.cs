@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using DevExpress.XtraBars.Ribbon;
 using Syncfusion.Windows.Forms.Tools;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Interfaces;
@@ -13,7 +15,7 @@ namespace Yutai.UI.Menu.Ribbon
     {
         private static IRibbonMenu _instance;
 
-        internal static IRibbonMenu InitMenus(RibbonControlAdv ribbonManager)
+        internal static IRibbonMenu InitMenus(RibbonControl ribbonManager)
         {
             if (_instance == null)
             {
@@ -26,19 +28,16 @@ namespace Yutai.UI.Menu.Ribbon
 
         private static void CreateDefaultHeaders(IRibbonMenu menu)
         {
-            
+            //这儿后期需要增加建立ApplicationMenu和QuickAccess的代码
         }
-        internal static IRibbonMenu CreateMenus(IEnumerable<YutaiCommand> commands, RibbonControlAdv ribbonManager)
+        internal static IRibbonMenu CreateMenus(IEnumerable<YutaiCommand> commands, RibbonControl ribbonManager,XmlDocument xmlDoc)
         {
             if (_instance == null)
             {
                 var menuIndex = new RibbonMenuIndex(ribbonManager);
                 _instance=new RibbonMenu(menuIndex);
             }
-            foreach (YutaiCommand command in commands)
-            {
-                _instance.AddCommand(command);
-            }
+            _instance.AddCommands(xmlDoc, commands);
             return _instance;
         }
     }

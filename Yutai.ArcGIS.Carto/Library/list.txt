@@ -1,0 +1,12 @@
+frmCartoConfig.resources
+frmCircleInput.resources
+frmClipOutSet.resources
+frmImportExcelSet.resources
+frmInputCoordinate.resources
+frmInputText.resources
+frmInputXY.resources
+frmMapTemplateApplyWizard.resources
+MapCoordinateInputPage.resources
+MapCoordinatePage.resources
+MapTemplateList.resources
+MapTemplateParamPage.resources

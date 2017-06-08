@@ -32,8 +32,8 @@ namespace Yutai.Plugins.Identifer.Commands
             base.m_caption = "空间查询";
             base.m_category = "Query";
             base.m_bitmap = Properties.Resources.icon_select_location2;
-            base.m_name = "Query.Common.StartLocationQuery";
-            base._key = "Query.Common.StartLocationQuery";
+            base.m_name = "Query_StartLocationQuery";
+            base._key = "Query_StartLocationQuery";
             base.m_toolTip = "空间查询";
             base.m_checked = false;
             base.m_enabled = true;

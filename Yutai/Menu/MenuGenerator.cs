@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Syncfusion.Windows.Forms.Tools;
+using System.Xml;
+using DevExpress.XtraBars.Ribbon;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
@@ -18,6 +19,7 @@ namespace Yutai.Menu
     {
         private const string FileToolbarNane = "File";
         private const string MapToolbarName = "Map";
+        private const string DefaultXMLLayout = "MainMenu.xml";
 
         private readonly IAppContext _context;
         private readonly IPluginManager _pluginManager;
@@ -46,7 +48,9 @@ namespace Yutai.Menu
         }
         private void InitMenus()
         {
-            RibbonFactory.CreateMenus(_commands.GetCommands(), (RibbonControlAdv) _menuManager);
+            XmlDocument doc = new XmlDocument();
+            doc.Load(base.GetType().Assembly.GetManifestResourceStream("Yutai.Menu.MenuLayout.xml"));
+            RibbonFactory.CreateMenus(_commands.GetCommands(), (RibbonControl) _menuManager,doc);
 
         }
         

@@ -208,11 +208,11 @@ namespace Yutai.Plugins.Concrete
             int dotNum = m_name.Count(c => c == '.');
             if (dotNum < 1)
             {
-                _itemType = RibbonItemType.TabItem;
+                _itemType = RibbonItemType.Page;
             }
             else if (dotNum == 1)
             {
-                _itemType = RibbonItemType.ToolStrip;
+                _itemType = RibbonItemType.PageGroup;
             }
             else
             {

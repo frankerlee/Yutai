@@ -36,8 +36,8 @@ namespace Yutai.Commands.Views
             base.m_caption = "固定缩小";
             base.m_category = "View";
             base.m_bitmap = Properties.Resources.icon_zoom_out_fixed;
-            base.m_name = "View.Common.FixedZoomOut";
-            base._key = "View.Common.FixedZoomOut";
+            base.m_name = "View_FixedZoomOut";
+            base._key = "View_FixedZoomOut";
             base.m_toolTip = "固定缩小";
             base.m_checked = false;
             base.m_enabled = true;

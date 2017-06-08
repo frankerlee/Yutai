@@ -25,7 +25,7 @@ namespace Yutai.Plugins.Bookmark.Menu
         {
             return new List<YutaiCommand>()
             {
-                new YutaiMenuCommand(RibbonItemType.ToolStrip, "View", "View.Bookmark", "View.Bookmark", "书签窗口", "", ""),
+               
                 new CmdCreateBookmark(_context),
                 new CmdManageBookmark(_context)
             };

@@ -15,6 +15,7 @@ using Yutai.Api.Enums;
 using Yutai.ArcGIS.Common;
 using Yutai.ArcGIS.Common.Helpers;
 using Yutai.Plugins.Concrete;
+using Yutai.Plugins.Enums;
 using Yutai.Plugins.Identifer.Enums;
 using Yutai.Plugins.Interfaces;
 using Yutai.UI.Controls;
@@ -804,5 +805,16 @@ namespace Yutai.Plugins.Identifer.Views
             }
             Identify(_envelope);
         }
+
+        public override Bitmap Image { get { return Properties.Resources.icon_information; } }
+        public override string Caption
+        {
+            get { return "信息查看"; }
+            set { Caption = value; }
+        }
+        public override DockPanelState DefaultDock { get { return DockPanelState.Right; } }
+        public override string DockName { get { return DefaultDockName; } }
+        public virtual string DefaultNestDockName { get { return ""; } }
+        public const string DefaultDockName = "Plug_Identifer_Result";
     }
 }

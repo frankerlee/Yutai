@@ -40,8 +40,8 @@ namespace Yutai.Plugins.Bookmark.Commands
             base.m_caption = "创建";
             base.m_category = "View";
             base.m_bitmap = Resources.Bookmark_add;
-            base.m_name = "View.Bookmark.CreateBookmark";
-            base._key = "View.Bookmark.CreateBookmark";
+            base.m_name = "View_Bookmark_CreateBookmark";
+            base._key = "View_Bookmark_CreateBookmark";
             base.m_toolTip = "创建书签";
             base.m_checked = false;
             base.m_enabled = true;

@@ -56,6 +56,11 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Data.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
     <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -161,12 +166,16 @@
     </Compile>
     <Compile Include="Dialogs\ImageLib.cs" />
     <Compile Include="Docking\DockHelper.cs" />
-    <Compile Include="Docking\DockPanel.cs" />
     <Compile Include="Docking\DockPanelCollection.cs" />
     <Compile Include="Docking\DockPanelInfo.cs" />
-    <Compile Include="Docking\DockPanelKeys.cs" />
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="Forms\AppView.cs" />
+    <Compile Include="Forms\MainWindowView2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainWindowView2.Designer.cs">
+      <DependentUpon>MainWindowView2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MapWindowForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,7 +244,7 @@
     </Compile>
     <Compile Include="Style\ControlStyleSettings.cs" />
     <Compile Include="Style\IStyleService.cs" />
-    <Compile Include="Style\SyncfusionStyleService.cs" />
+    <Compile Include="Style\DevExpressStyleService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Yutai.ArcGIS.Common\Yutai.ArcGIS.Common.csproj">
@@ -284,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainWindowView.resx">
       <DependentUpon>MainWindowView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainWindowView2.resx">
+      <DependentUpon>MainWindowView2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MapWindowView.resx">
       <DependentUpon>MapWindowView.cs</DependentUpon>

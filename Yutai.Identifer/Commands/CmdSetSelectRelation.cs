@@ -49,8 +49,8 @@ namespace Yutai.Plugins.Identifer.Commands
             base.m_caption = "选择方式：";
             base.m_category = "Query";
             base.m_bitmap = Properties.Resources.QueryAttribute;
-            base.m_name = "Query.Setting.Panel.SetSeelctRelation";
-            base._key = "Query.Setting.Panel.SetSeelctRelation";
+            base.m_name = "Query_Setting_Panel_SetSeelctRelation";
+            base._key = "Query_Setting_Panel_SetSeelctRelation";
             base.m_toolTip = "设置创建选择集的方式";
             base.m_checked = false;
             base.m_enabled = true;

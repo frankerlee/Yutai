@@ -11,7 +11,7 @@ namespace Yutai.Plugins.Interfaces
         object DockingManager { get; }
         object MenuManager { get; }
         object RibbonManager { get; }
-        object StatusBar { get; }
+        object RibbonStatusBar { get; }
         object MapContainer { get; }
         IView View { get; }
         IMapControl2 MapControl { get; }

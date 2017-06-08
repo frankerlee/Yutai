@@ -33,8 +33,8 @@ namespace Yutai.Plugins.Identifer.Commands
             this.m_caption = "切换选择";
             this.m_category = "Query";
             this.m_message = "切换选择";
-            this.m_name = "Query.SelectionTools.SwitchSelection";
-            this._key = "Query.SelectionTools.SwitchSelection";
+            this.m_name = "Query_SelectionTools_SwitchSelection";
+            this._key = "Query_SelectionTools_SwitchSelection";
             this.m_toolTip = "切换选择";
             
             base.DisplayStyleYT = DisplayStyleYT.ImageAndText;

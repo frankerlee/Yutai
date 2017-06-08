@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Data.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
     <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -301,6 +305,8 @@
     <None Include="Resources\icon_select_switch.png" />
     <None Include="Resources\icon_select_mouse.png" />
     <None Include="Resources\icon_select_location2.png" />
+    <None Include="Resources\icon_information.png" />
+    <EmbeddedResource Include="Menu\MenuLayout.xml" />
     <Content Include="Resources\SelectFeatures.bmp" />
     <None Include="Resources\ZoomSelection.png" />
     <EmbeddedResource Include="Resources\Cursor\PolygonMoveSelectFeatures.cur" />

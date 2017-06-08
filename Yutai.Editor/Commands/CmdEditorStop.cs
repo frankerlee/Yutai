@@ -58,8 +58,8 @@ namespace Yutai.Plugins.Editor.Commands
             this.m_caption = "停止编辑";
             this.m_category = "Edit";
             this.m_message = "停止编辑";
-            this.m_name = "Edit.Common.StopEdit";
-            this._key = "Edit.Common.StopEdit";
+            this.m_name = "Edit_Common_StopEdit";
+            this._key = "Edit_Common_StopEdit";
             this.m_toolTip = "停止编辑";
             _context = hook as IAppContext;
             DisplayStyleYT = DisplayStyleYT.ImageAndText;

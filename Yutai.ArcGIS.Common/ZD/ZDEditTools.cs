@@ -354,7 +354,7 @@ namespace Yutai.ArcGIS.Common.ZD
 				}
 				result = false;
 				System.Windows.Forms.MessageBox.Show("输入数据格式错误");
-				//CErrorLog.writeErrorLog(null, exception_, "");
+				//Logger.Current.Error("", exception_, "");
 			}
 			if (!WorkspaceOperator.WorkspaceIsSame(workspace, Editor.Editor.EditWorkspace as IWorkspace))
 			{

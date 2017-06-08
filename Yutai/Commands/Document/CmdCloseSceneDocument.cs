@@ -29,7 +29,7 @@ namespace Yutai.Commands.Document
             base.m_category = "Document";
             base.m_bitmap = Properties.Resources.icon_project_open;
             base.m_name = "File.Sxd.CloseSXD";
-            base._key = "File.Sxd.CloseSXD";
+            base._key = "File_Sxd_CloseSXD";
             base.m_toolTip = "关闭三维文档";
             base.m_checked = false;
             base.m_enabled = true;

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml;
+using DevExpress.XtraBars.Ribbon;
 using Syncfusion.Windows.Forms.Tools;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Interfaces;
@@ -36,8 +38,11 @@ namespace Yutai.Plugins.Identifer.Menu
         }
         private void InitMenus()
         {
-           IEnumerable<YutaiCommand> commands = _commands.GetCommands();
-            RibbonFactory.CreateMenus(commands, (RibbonControlAdv) _menuManager);
+            XmlDocument doc = new XmlDocument();
+            doc.Load(base.GetType().Assembly.GetManifestResourceStream("Yutai.Plugins.Identifer.Menu.MenuLayout.xml"));
+            RibbonFactory.CreateMenus(_commands.GetCommands(), (RibbonControl)_menuManager, doc);
+
+          
 
         }
 

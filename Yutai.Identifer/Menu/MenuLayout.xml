@@ -1,0 +1,38 @@
+﻿<YutaiGIS>
+  <MainMenu>
+    <Pages>
+      <Page Key="View" Caption="视图" Index="0" Visible="true">
+        <PageGroup Key="View_Common" Caption="常用" Visible="true" Index="0">
+          <BarItem  Key="View_Identify" Visible="true"></BarItem>
+        </PageGroup>
+   
+      </Page>
+      <Page Key="Query" Caption="查询" Index="0" Visible="true">
+        <PageGroup Key="Query_Common" Caption="常用" Visible="true" Index="0">
+          <BarItem  Key="Query_StqrtQueryBuilder" Visible="true"></BarItem>
+          <BarItem  Key="Query_StartLocationQuery" Visible="true"></BarItem>
+          <BarItem  Key="Query_StartAttributeAndLocationQuery" Visible="true"></BarItem>
+          
+        </PageGroup>
+        <PageGroup Key="Query_Setting" Caption="设置" Visible="true" Index="0">
+          <BarItem  Key="Query_ccSetting_SetSelectableLayer" Visible="true"></BarItem>
+          <BarItem  Key="Query_ccSetting_SetCurrentleLayer" Visible="true"></BarItem>
+          <BarItem  Key="Query_Setting_Panel_SetSeelctRelation" Visible="true"></BarItem>
+          
+          
+        </PageGroup>
+        <PageGroup Key="Query_Tools" Caption="工具" Visible="true" Index="0">
+          <BarItem  Key="Query_SelectionTools_Selector" Visible="true"></BarItem>
+          <BarItem  Key="Query_SelectionTools_BufferSelector" Visible="true"></BarItem>
+          <BarItem  Key="Query_SelectionTools_Mouse_SelectByGraphics" Visible="true"></BarItem>
+          <BarItem  Key="Query_SelectionTools_SelectByScreen" Visible="true"></BarItem>
+          <BarItem  Key="Query_SelectionTools_SelectAll" Visible="true"></BarItem>
+          <BarItem  Key="Query_SelectionTools_SwitchSelection" Visible="true"></BarItem>
+          <BarItem  Key="Query_SelectionTools_ZoomToSelection" Visible="true"></BarItem>
+          <BarItem  Key="Query_SelectionTools_ClearSelection" Visible="true"></BarItem>
+          
+        </PageGroup>
+      </Page>
+    </Pages>
+  </MainMenu>
+</YutaiGIS>

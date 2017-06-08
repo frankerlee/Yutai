@@ -1,20 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
+using DevExpress.XtraBars.Docking;
 using Yutai.Plugins.Concrete;
 
 namespace Yutai.Plugins.Interfaces
 {
-    public interface IDockPanelCollection : IEnumerable<IDockPanel>
+    public interface IDockPanelCollection : IEnumerable<IDockPanelView>
     {
         void Lock();
         void Unlock();
         bool Locked { get; }
-        IDockPanel Add(Control control, string key, PluginIdentity identity);
-        void Remove(IDockPanel panel, PluginIdentity identity);
+        DockPanel Add(IDockPanelView view,  PluginIdentity identity);
+        void Remove(string panelName, PluginIdentity identity);
         void RemoveItemsForPlugin(PluginIdentity identity);
-        IDockPanel Find(string key);
-        IDockPanel MapLegend { get; }
-        IDockPanel Preview { get; }
-        IDockPanel Toolbox { get; }
+        DockPanel GetDockPanel(string key);
+        void ShowDockPanel(string dockName, bool isVisible, bool isActive);
+        void SetActivePanel(string dockName);
     }
 }

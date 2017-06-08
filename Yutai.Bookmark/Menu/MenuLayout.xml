@@ -1,0 +1,15 @@
+﻿<YutaiGIS>
+  <MainMenu>
+    <Pages>
+      
+      <Page Key="View" Caption="视图" Index="0" Visible="true">
+     
+        <PageGroup Key="Bookmark" Caption="书签" Visible="true" Index="0">
+          <BarItem  Key="View_Bookmark_CreateBookmark" Visible="true"></BarItem>
+          <BarItem  Key="View_Bookmark_ManageBookmark" Visible="true"></BarItem>
+          
+        </PageGroup>
+      </Page>
+    </Pages>
+  </MainMenu>
+</YutaiGIS>

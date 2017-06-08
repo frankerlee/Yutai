@@ -30,17 +30,37 @@ namespace Yutai.Plugins.Editor.Menu
             //第一次被初始化的时候Plugin为空，出现错误，所以在创建菜单的时候重新进行了初始化。
             //if (_commands == null)
             //{
-           _commands = new List<YutaiCommand>()
+           //_commands = new List<YutaiCommand>()
+           // {
+           //     new YutaiMenuCommand(RibbonItemType.Page, "Edit", "Edit", "Edit", "编辑", "", "") {Position = 4},
+           //     new YutaiMenuCommand(RibbonItemType.PageGroup, "Edit", "Edit.Common", "Edit.Common", "编辑控制", "", "") ,
+           //     new CmdEditorStart(_context,_plugin),
+           //     new CmdEditorStop(_context,_plugin),
+           //     new CmdEditorSave(_context,_plugin),
+           //     new YutaiMenuCommand(RibbonItemType.PageGroup, "Edit", "Edit.Snap", "Edit.Snap", "捕捉设置", "", "") ,
+           //     new CmdSnapOff(_context),
+           //      new CmdSnapSetting(_context),
+           //     new YutaiMenuCommand(RibbonItemType.ButtonGroup, "Edit", "Edit.Snap.Config", "Edit.Snap.Config", "", "", "") {PanelRowCount = 3} ,
+           //     new CmdSnapPoint(_context),
+           //     new CmdSnapMidPoint(_context),
+           //     new CmdSnapEndPointt(_context),
+           //     new CmdSnapVertexPoint(_context),
+           //     new CmdSnapIntersectPoint(_context),
+           //     new CmdSnapBoundary(_context),
+           //     new CmdSnapTangent(_context),
+           //     new CmdSnapSketch(_context)
+           // };
+
+            _commands = new List<YutaiCommand>()
             {
-                new YutaiMenuCommand(RibbonItemType.TabItem, "Edit", "Edit", "Edit", "编辑", "", "") {Position = 4},
-                new YutaiMenuCommand(RibbonItemType.ToolStrip, "Edit", "Edit.Common", "Edit.Common", "编辑控制", "", "") ,
+              
                 new CmdEditorStart(_context,_plugin),
                 new CmdEditorStop(_context,_plugin),
                 new CmdEditorSave(_context,_plugin),
-                new YutaiMenuCommand(RibbonItemType.ToolStrip, "Edit", "Edit.Snap", "Edit.Snap", "捕捉设置", "", "") ,
+                
                 new CmdSnapOff(_context),
                  new CmdSnapSetting(_context),
-                new YutaiMenuCommand(RibbonItemType.Panel, "Edit", "Edit.Snap.Config", "Edit.Snap.Config", "", "", "") {PanelRowCount = 3} ,
+               
                 new CmdSnapPoint(_context),
                 new CmdSnapMidPoint(_context),
                 new CmdSnapEndPointt(_context),
@@ -53,8 +73,8 @@ namespace Yutai.Plugins.Editor.Menu
             _commandKeys = new List<string>();
             foreach (var command in _commands)
             {
-                if (command.ItemType == RibbonItemType.TabItem || command.ItemType == RibbonItemType.Panel ||
-                    command.ItemType == RibbonItemType.ToolStrip)
+                if (command.ItemType == RibbonItemType.Page || command.ItemType == RibbonItemType.ButtonGroup ||
+                    command.ItemType == RibbonItemType.PageGroup)
                     continue;
                 _commandKeys.Add(command.Name);
             }

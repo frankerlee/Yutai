@@ -54,8 +54,8 @@ namespace Yutai.Commands.Views
             _cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.Resource.Cursor.ZoomOut.cur"));
             _cursor1 =
                 new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.Resource.Cursor.MoveZoomOut.cur"));
-            base.m_name = "View.Common.ZoomOut";
-            base._key = "View.Common.ZoomOut";
+            base.m_name = "View_ZoomOut";
+            base._key = "View_ZoomOut";
             base.m_toolTip = "缩小";
             base.m_checked = false;
             base.m_enabled = true;

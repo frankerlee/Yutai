@@ -52,8 +52,8 @@ namespace Yutai.Commands.Views
             base.m_caption = "下一视图";
             base.m_category = "View";
             base.m_bitmap = Properties.Resources.img_zoom_next24;
-            base.m_name = "View.Common.NextExtent";
-            base._key = "View.Common.NextExtent";
+            base.m_name = "View_NextExtent";
+            base._key = "View_NextExtent";
             base.m_toolTip = "下一视图";
             base.m_checked = false;
             base.m_enabled = true;

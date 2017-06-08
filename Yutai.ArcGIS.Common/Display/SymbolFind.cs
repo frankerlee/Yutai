@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using ESRI.ArcGIS.Display;
+using Yutai.ArcGIS.Common.Symbol;
 
 namespace Yutai.ArcGIS.Common.Display
 {

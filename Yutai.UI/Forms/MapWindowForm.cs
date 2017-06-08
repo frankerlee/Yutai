@@ -6,7 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Syncfusion.Windows.Forms;
+using DevExpress.XtraEditors;
+
 using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Mvp;
 using Yutai.UI.Properties;
@@ -16,7 +17,7 @@ namespace Yutai.UI.Forms
 #if STYLE2010
     public partial class MapWindowForm : Office2010Form
 #else
-    public class MapWindowForm : MetroForm
+    public class MapWindowForm : XtraForm
 #endif
     {
         protected readonly IAppContext _context;
@@ -24,10 +25,7 @@ namespace Yutai.UI.Forms
         public MapWindowForm()
         {
             Icon = Resources.MapWindow;
-#if STYLE2010
-            ApplyAeroTheme = false;
-            UseOffice2010SchemeBackColor = true;
-#endif
+
         }
 
         public MapWindowForm(IAppContext context)
@@ -47,7 +45,7 @@ namespace Yutai.UI.Forms
             // 
             // MapWindowForm
             // 
-            this.CaptionFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Name = "MapWindowForm";
             this.Load += new System.EventHandler(this.MapWindowForm_Load);
@@ -58,7 +56,7 @@ namespace Yutai.UI.Forms
         private void MapWindowForm_Load(object sender, EventArgs e)
         {
             // Fixing CORE-160
-            CaptionFont = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+           
         }
     }
 }

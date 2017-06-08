@@ -54,8 +54,8 @@ namespace Yutai.Plugins.Identifer.Commands
             base.m_caption = "选择图层：";
             base.m_category = "Query";
             base.m_bitmap = Properties.Resources.QueryAttribute;
-            base.m_name = "Query.Setting.Panel.SetCurrentleLayer";
-            base._key = "Query.Setting.Panel.SetCurrentleLayer";
+            base.m_name = "Query_ccSetting_SetCurrentleLayer";
+            base._key = "Query_ccSetting_SetCurrentleLayer";
             base.m_toolTip = "选择图层";
             base.m_checked = false;
             base.m_enabled = true;

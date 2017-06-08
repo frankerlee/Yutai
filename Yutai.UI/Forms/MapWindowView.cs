@@ -111,7 +111,7 @@ namespace Yutai.UI.Forms
         private void MapWindowView_Load(object sender, EventArgs e)
         {
             // Fixing CORE-160
-            CaptionFont = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            
         }
     }
 }

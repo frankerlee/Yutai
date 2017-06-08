@@ -39,6 +39,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Data.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
     <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -227,12 +231,19 @@
       <DependentUpon>ConfigView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ConfigViewModel.cs" />
+    <Compile Include="Views\NewMainPresenter.cs" />
     <Compile Include="Views\MainPresenter.cs" />
     <Compile Include="Views\MainView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\MainView.Designer.cs">
       <DependentUpon>MainView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewMainView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\NewMainView.Designer.cs">
+      <DependentUpon>NewMainView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Configuration\GeneralConfigPage.resx">
       <DependentUpon>GeneralConfigPage.cs</DependentUpon>
@@ -261,6 +272,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\NewMainView.resx">
+      <DependentUpon>NewMainView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="demo\demo2.yxd" />
     <None Include="demo\demo.yxd" />
@@ -575,6 +589,7 @@
     <None Include="Resources\database_save.png" />
     <None Include="Resources\database_delete.png" />
     <None Include="Resources\add_data.png" />
+    <EmbeddedResource Include="Menu\MenuLayout.xml" />
     <Content Include="Resources\icon_maplegend.png" />
     <Content Include="Resources\icon_overview.png" />
     <Content Include="Resources\icon_zoom_in_fixed.bmp" />

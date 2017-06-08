@@ -33,8 +33,8 @@ namespace Yutai.Plugins.Identifer.Commands
             base.m_caption = "联合查询";
             base.m_category = "Query";
             base.m_bitmap = Properties.Resources.icon_select_attribute_location;
-            base.m_name = "Query.Common.StartAttributeAndLocationQuery";
-            base._key = "Query.Common.StartAttributeAndLocationQuery";
+            base.m_name = "Query_StartAttributeAndLocationQuery";
+            base._key = "Query_StartAttributeAndLocationQuery";
             base.m_toolTip = "空间属性联合查询";
             base.m_checked = false;
             base.m_enabled = true;

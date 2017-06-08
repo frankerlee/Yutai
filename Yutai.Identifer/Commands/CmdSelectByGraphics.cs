@@ -43,8 +43,8 @@ namespace Yutai.Plugins.Identifer.Commands
             this.m_caption = "用图形选择";
             this.m_category = "Query";
             this.m_message = "用图形选择";
-            this.m_name = "Query.SelectionTools.Mouse.SelectByGraphics";
-            this._key = "Query.SelectionTools.Mouse.SelectByGraphics";
+            this.m_name = "Query_SelectionTools_Mouse_SelectByGraphics";
+            this._key = "Query_SelectionTools_Mouse_SelectByGraphics";
             this.m_toolTip = "用图形选择";
             _context = context;
             _plugin = plugin as IdentifierPlugin;

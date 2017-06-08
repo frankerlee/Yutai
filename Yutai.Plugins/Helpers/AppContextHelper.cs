@@ -30,12 +30,7 @@ namespace Yutai.Plugins.Helpers
         /// </summary>
         internal static void ActivatePanel(this IAppContext context, string dockPanelKey)
         {
-            var panel = context.DockPanels.Find(dockPanelKey);
-            if (panel != null)
-            {
-                panel.Visible = true;
-                panel.Activate();
-            }
+            context.DockPanels.SetActivePanel(dockPanelKey);
         }
 
        

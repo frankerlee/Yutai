@@ -18,8 +18,8 @@ namespace Yutai.Plugins.Editor.Commands
             this.m_caption = "交点捕捉";
             this.m_category = "Edit";
             this.m_message = "交点捕捉";
-            this.m_name = "Edit.Snap.Config.SnapIntersectPoint";
-            this._key = "Edit.Snap.Config.SnapIntersectPoint";
+            this.m_name = "Edit_Snap_Config_SnapIntersectPoint";
+            this._key = "Edit_Snap_Config_SnapIntersectPoint";
             this.m_toolTip = "交点捕捉";
             _context = hook as IAppContext;
             DisplayStyleYT = DisplayStyleYT.Image;

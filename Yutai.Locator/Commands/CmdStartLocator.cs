@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DevExpress.XtraBars.Docking;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geometry;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
+using Yutai.Plugins.Locator.Views;
 using Yutai.Plugins.Services;
 using Yutai.Services.Serialization;
 using Yutai.UI.Docking;
@@ -27,18 +29,17 @@ namespace Yutai.Plugins.Locator.Commands
         public override void OnClick()
         {
             ISecureContext sContext = _context as ISecureContext;
-            IDockPanel dock = _context.DockPanels.Find(DockPanelKeys.Locator);
+            DockPanel dock = _context.DockPanels.GetDockPanel(LocatorDockPanel.DefaultDockName);
             if (dock == null) return;
             if (sContext.YutaiProject == null ||sContext.YutaiProject.Locators==null || sContext.YutaiProject.Locators.Count==0 )
             {
                 MessageService.Current.Warn("当前项目没有设置定位器");
-                
-                dock.Visible = false;
+
+                _context.DockPanels.ShowDockPanel(LocatorDockPanel.DefaultDockName,false,false);
             }
             else
             {
-                dock.Visible = true;
-                dock.Activate();
+                _context.DockPanels.ShowDockPanel(LocatorDockPanel.DefaultDockName, true,true);
             }
         }
 
@@ -48,8 +49,8 @@ namespace Yutai.Plugins.Locator.Commands
             base.m_caption = "定位器";
             base.m_category = "View";
             base.m_bitmap = Properties.Resources.YTLocator;
-            base.m_name = "View.Locator.StartLocator";
-            base._key = "View.Locator.StartLocator";
+            base.m_name = "View_StartLocator";
+            base._key = "View_StartLocator";
             base.m_toolTip = "定位器";
             base.m_checked = false;
             base.m_enabled = true;

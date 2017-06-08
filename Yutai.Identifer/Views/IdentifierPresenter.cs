@@ -73,11 +73,11 @@ namespace Yutai.Plugins.Identifer.Views
 
         private void ActivatePanel()
         {
-            var panel = _context.DockPanels.Find(DockPanelKeys.Identifier);
+            var panel = _context.DockPanels.GetDockPanel(((IDockPanelView)View).DockName);
             if (panel != null)
             {
                 panel.Visible = true;
-                panel.Activate();
+                _context.DockPanels.SetActivePanel(((IDockPanelView) View).DockName);
             }
         }
 

@@ -13,7 +13,7 @@ namespace Yutai
     {
         public static void Compose(IApplicationContainer container)
         {
-            container.RegisterSingleton<IMainView, MainView>()
+            container.RegisterSingleton<IMainView, NewMainView>()
                 .RegisterSingleton<IAppContext, AppContext>()
                 .RegisterSingleton<IAppView, AppView>()
                 .RegisterView<IConfigView, ConfigView>()

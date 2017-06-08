@@ -17,17 +17,7 @@ namespace Yutai.Plugins.Locator.Menu
             var panels = context.DockPanels;
 
             panels.Lock();
-            var panel = panels.Add(presenter.GetInternalObject(), Yutai.UI.Docking.DockPanelKeys.Locator, plugin.Identity);
-            panel.Caption = "定位器";
-            panel.TabPosition = 3;
-            panel.SetIcon(Resources.Locator);
-            
-
-            var mapLegend = panels.MapLegend;
-            if (mapLegend != null && mapLegend.Visible)
-            {
-                panel.DockTo(mapLegend, DockPanelState.Tabbed, 150);
-            }
+            var panel = panels.Add(presenter.GetInternalObject() as IDockPanelView, plugin.Identity);
 
             panels.Unlock();
         }

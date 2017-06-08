@@ -65,8 +65,8 @@ namespace Yutai.Commands.Views
             base.m_bitmap = Properties.Resources.icon_measure_distance;
             base.m_cursor =
                 new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.Resource.Cursor.Measure.cur"));
-            base.m_name = "View.Measure.MeasureLength";
-            base._key = "View.Measure.MeasureLength";
+            base.m_name = "View_MeasureLength";
+            base._key = "View_MeasureLength";
             base.m_toolTip = "距离量测";
             base.m_checked = false;
             base.m_enabled = true;

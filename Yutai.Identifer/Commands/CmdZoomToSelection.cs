@@ -29,8 +29,8 @@ namespace Yutai.Plugins.Identifer.Commands
             this.m_caption = "缩放至选择集";
             this.m_category = "Query";
             this.m_message = "缩放至选择集";
-            this.m_name = "Query.SelectionTools.ZoomToSelection";
-            this._key = "Query.SelectionTools.ZoomToSelection";
+            this.m_name = "Query_SelectionTools_ZoomToSelection";
+            this._key = "Query_SelectionTools_ZoomToSelection";
             this.m_toolTip = "缩放至选择集";
             _context = context;
         }

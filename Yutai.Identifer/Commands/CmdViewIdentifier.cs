@@ -57,8 +57,8 @@ namespace Yutai.Plugins.Identifer.Commands
             base.m_category = "View";
             base.m_bitmap = Properties.Resources.icon_identify;
             base.m_cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.Plugins.Identifer.Resources.Identify.cur"));
-            base.m_name = "View.Info.Identify";
-            base._key = "View.Info.Identify";
+            base.m_name = "View_Identify";
+            base._key = "View_Identify";
             base.m_toolTip = "查看地图要素";
             base.m_checked = false;
             base.m_enabled = true;

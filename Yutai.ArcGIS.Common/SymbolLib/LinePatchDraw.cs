@@ -13,7 +13,7 @@ namespace Yutai.ArcGIS.Common.SymbolLib
 
 		public override void Draw(int int_0, Rectangle rectangle_0, double double_0, double double_1)
 		{
-			IStyleGalleryClass styleGalleryClass = new LinePatchStyleGalleryClass();
+			IStyleGalleryClass styleGalleryClass = new LinePatchStyleGalleryClass() ;
 			tagRECT tagRECT = default(tagRECT);
 			tagRECT.left = rectangle_0.Left;
 			tagRECT.right = rectangle_0.Right;

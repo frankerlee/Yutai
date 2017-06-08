@@ -34,10 +34,10 @@ namespace Yutai.Commands.Views
         {
             _context = hook as IAppContext;
             base.m_caption = "固定放大";
-            base.m_category = "View";
+            base.m_category = "视图";
             base.m_bitmap = Properties.Resources.icon_zoom_in_fixed;
-            base.m_name = "View.Common.FixedZoomIn";
-            base._key = "View.Common.FixedZoomIn";
+            base.m_name = "View_FixedZoomIn";
+            base._key = "View_FixedZoomIn";
             base.m_toolTip = "固定放大";
             base.m_checked = false;
             base.m_enabled = true;

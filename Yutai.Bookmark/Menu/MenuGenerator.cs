@@ -8,6 +8,8 @@
 // 更新时间 :  2017/05/31  18:05
 
 using System;
+using System.Xml;
+using DevExpress.XtraBars.Ribbon;
 using Syncfusion.Windows.Forms.Tools;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Interfaces;
@@ -37,7 +39,9 @@ namespace Yutai.Plugins.Bookmark.Menu
 
         private void InitMenu()
         {
-            RibbonFactory.CreateMenus(_commands.GetCommands(), (RibbonControlAdv) _menuManager);
+            XmlDocument doc = new XmlDocument();
+            doc.Load(base.GetType().Assembly.GetManifestResourceStream("Yutai.Plugins.Bookmark.Menu.MenuLayout.xml"));
+            RibbonFactory.CreateMenus(_commands.GetCommands(),  (RibbonControl) _menuManager,doc);
         }
     }
 }

@@ -31,13 +31,18 @@ namespace Yutai.Controls
         private IMapControlEvents2_Event mapControlEvents2;
         private IEnvelope _envelope;
         private IGeometry _clipBounds;
-
+        private string _caption;
+        private Bitmap _bitmap;
+        public static string DefaultDockName = "Dock_Main_Overview";
         public OverviewDockPanel(IAppContext context)
         {
             if (context == null) throw new ArgumentNullException("context");
             _context = context;
             InitializeComponent();
             TabPosition = 1;
+            Caption = "鹰眼视图";
+            _bitmap = Properties.Resources.icon_overview;
+
             //axMapControl1.MouseDown+= AxMapControl1OnMouseDown;
         }
 
@@ -65,6 +70,14 @@ namespace Yutai.Controls
             mapControlEvents2.OnExtentUpdated += MapControlEvents2OnOnExtentUpdated;
         }
 
+        public override Bitmap Image { get { return _bitmap; } }
+
+        public override string Caption {
+            get { return _caption; }
+            set { _caption = value; } }
+
+        public override string DockName { get { return "DockPanel_Main_Overview"; } }
+        public override string DefaultNestDockName { get { return "Dock_Main_MapLegend"; } }
 
         public IGeometry ClipBounds
         {

@@ -47,8 +47,8 @@ namespace Yutai.Commands.Views
             base.m_bitmap = Properties.Resources.icon_pan;
             _cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.Resource.Cursor.Hand.cur"));
             _cursor1 = new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.Resource.Cursor.MoveHand.cur"));
-            base.m_name = "View.Common.Pan";
-            base._key = "View.Common.Pan";
+            base.m_name = "View_Pan";
+            base._key = "View_Pan";
             base.m_toolTip = "平移";
             base.m_checked = false;
             base.m_enabled = true;

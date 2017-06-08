@@ -13,7 +13,7 @@ namespace Yutai.Services.Serialization
     public interface ISecureContext : IAppContext
     {
         IPluginManager PluginManager { get; }
-        Control GetDockPanelObject(DefaultDockPanel panel);
+        Control GetDockPanelObject(string dockName);
 
         XmlProject YutaiProject { get; set; }
     }

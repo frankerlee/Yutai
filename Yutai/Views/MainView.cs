@@ -27,7 +27,7 @@ namespace Yutai.Views
         private readonly IAppContext _context;
         private bool _locked;
         private bool _rendered;
-        private object _mapContainer;
+       
 
         public MainView(IAppContext context)
         {
@@ -279,6 +279,9 @@ namespace Yutai.Views
         {
             get { return ribbonControlAdv1; }
         }
+
+        public object RibbonStatusBar { get { return null; } }
+
         public object StatusBar
         {
             get { return statusStripEx1; }

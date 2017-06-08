@@ -8,6 +8,6 @@ namespace Yutai.Plugins.Interfaces
         string Key { get; set; }
         IRibbonItem Item { get; set; }
         ToolStripItem ToolStripItem { get; set; }
-        ToolStrip ToolStrip { get; set; }
+        object RibbonObject { get; set; }
     }
 }

@@ -1,0 +1,1654 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0E17B019-EE36-46B7-8B96-C0A3CA666430}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>Yutai.ArcGIS.Controls</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>Yutai.ArcGIS.Controls</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v16.1.UI.resources, Version=16.1.0.0, Culture=zh-Hans, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v16.1.resources, Version=16.1.0.0, Culture=zh-Hans, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraNavBar.v16.1.resources, Version=16.1.0.0, Culture=zh-Hans, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="ESRI.ArcGIS.Geoprocessing" />
+    <Reference Include="ESRI.ArcGIS.System" />
+    <Reference Include="ESRI.ArcGIS.Geodatabase" />
+    <Reference Include="ESRI.ArcGIS.ADF.Local" />
+    <Reference Include="ESRI.ArcGIS.Geoprocessor" />
+    <Reference Include="ESRI.ArcGIS.Carto" />
+    <Reference Include="System" />
+    <Reference Include="ESRI.ArcGIS.Controls" />
+    <Reference Include="ESRI.ArcGIS.Display" />
+    <Reference Include="ESRI.ArcGIS.Geometry" />
+    <Reference Include="ESRI.ArcGIS.3DAnalyst" />
+    <Reference Include="System.Data" />
+    <Reference Include="ESRI.ArcGIS.Output" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="ESRI.ArcGIS.AxControls" />
+    <Reference Include="ESRI.ArcGIS.NetworkAnalyst" />
+    <Reference Include="ESRI.ArcGIS.SystemUI" />
+    <Reference Include="ESRI.ArcGIS.NetworkAnalysis" />
+    <Reference Include="ESRI.ArcGIS.DataSourcesRaster" />
+    <Reference Include="stdole" />
+    <Reference Include="ESRI.ArcGIS.ADF.Connection.Local" />
+    <Reference Include="ESRI.ArcGIS.DataSourcesGDB" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="ESRI.ArcGIS.GlobeCore" />
+    <Reference Include="ESRI.ArcGIS.Location" />
+    <Reference Include="ESRI.ArcGIS.DataSourcesFile" />
+    <Compile Include="ClosestFacilitySolver\frmClosesFacilitySolver.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControlExtend\ListViewItemEx.cs" />
+    <Compile Include="ControlExtend\RenderInfoListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CommandLinesCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ConfigSetting\AppConfig.cs" />
+    <Compile Include="Controls\ConfigSetting\frmAppConfigSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\ConfigSetting\frmAppConfigSettingEx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\ConfigSetting\frmLayerConfigTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\ConfigSetting\frmLayerInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\ConfigSetting\frmSelectVersion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\ConfigSetting\GDBSettingPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ConfigSetting\LayerSettingInfoPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ConfigSetting\OLEDBSettingPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ConfigSetting\OtherSettingPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ConfigSetting\SymbolsSettingPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\EditorUI\frmSelectSymbolClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\EditorUI\UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Export\ExportMap2EMFPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Export\ExportMap2EPSPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Export\ExportMap2GIFPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Export\ExportMap2PDFPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Export\ExportMap2SVGPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Export\ExportMapGeneralPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Export\ExportMapImagePropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Export\ExportToExcelHelper.cs" />
+    <Compile Include="Controls\Export\ExportToExcelSelectData.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Export\ExportToExcelSet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Export\ExportToExcelWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Export\frmDataExportToExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Export\frmExportMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Export\GraphicHelper.cs" />
+    <Compile Include="Controls\Export\GraphicsSelectData.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Export\GraphicsSet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Export\GraphicsWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Export\SeriesChart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\FormMapPrinter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\FormType.cs" />
+    <Compile Include="Controls\frmAnalystTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\frmAttributeTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\frmAttributeTableEx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\frmCommandLine.cs" />
+    <Compile Include="Controls\frmDatasourceTreeView.cs" />
+    <Compile Include="Controls\frmElementProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\FrmFastSelSpatial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\frmGeoProcessorInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\frmMagnifierWindows.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\frmMap.cs" />
+    <Compile Include="Controls\frmMapNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\frmOptionsSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\frmOverwindows.cs" />
+    <Compile Include="Controls\frmPageLayoutCtrl.cs" />
+    <Compile Include="Controls\frmPageLayoutPage.cs" />
+    <Compile Include="Controls\frmProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\frmProgressBar1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\frmRegisterAsVersion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\frmSpatialRefrence.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\frmTOCTreeView.cs" />
+    <Compile Include="Controls\frmTOCTreeView2.cs" />
+    <Compile Include="Controls\frmTOCTreeViewNew.cs" />
+    <Compile Include="Controls\frmViewerOrMagnifierPropertyPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\GeoCoordSys.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\GPSLib\DestinationPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\GPSLib\DisplayAdvancePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\GPSLib\DisplayGeneralPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\GPSLib\frmGPSDisplaySet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\GPSLib\frmGPSPositionWindows.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\GPSLib\GPSManager.cs" />
+    <Compile Include="Controls\GPSLib\GPSPositionPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\GPSLib\SnappingPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\GPSLib\TrailsSetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\IKDProgressBar.cs" />
+    <Compile Include="Controls\IKDProgressBar1.cs" />
+    <Compile Include="Controls\ListViewXP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\LVM.cs" />
+    <Compile Include="Controls\LVS_EX.cs" />
+    <Compile Include="Controls\MagnifierOrViewerProperty.cs" />
+    <Compile Include="Controls\MapAndPageLayoutForm.cs" />
+    <Compile Include="Controls\MapFrame.cs" />
+    <Compile Include="Controls\Maps.cs" />
+    <Compile Include="Controls\MDomainControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\OverviewWindowsAllLayerProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\OverviewWindowsEx.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\OverviewWindowsProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\OverwindowsLayersType.cs" />
+    <Compile Include="Controls\ProjCoordSys.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Properties\Resources.cs" />
+    <Compile Include="Controls\PropertySheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\ScenceGeneralPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TOCDisplay\BatchConvertToSHP.cs" />
+    <Compile Include="Controls\TOCDisplay\CurrentLayerChangedHandler.cs" />
+    <Compile Include="Controls\TOCDisplay\DataSourceTreeView.cs" />
+    <Compile Include="Controls\TOCDisplay\frmFolderProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\TOCDisplay\HitType.cs" />
+    <Compile Include="Controls\TOCDisplay\ITOCNodePopmenuItem.cs" />
+    <Compile Include="Controls\TOCDisplay\ITOCNodePopmenuItemEx.cs" />
+    <Compile Include="Controls\TOCDisplay\LayerConfigTreeView.cs" />
+    <Compile Include="Controls\TOCDisplay\NodeData.cs" />
+    <Compile Include="Controls\TOCDisplay\NodeType.cs" />
+    <Compile Include="Controls\TOCDisplay\TOCNodePopmenuItem.cs" />
+    <Compile Include="Controls\TOCDisplay\TOCNodePopmenuItemOld.cs" />
+    <Compile Include="Controls\TOCDisplay\TOCTreeNode.cs" />
+    <Compile Include="Controls\TOCDisplay\TOCTreeNodeCollection.cs" />
+    <Compile Include="Controls\TOCDisplay\TOCTreeNodeEx.cs" />
+    <Compile Include="Controls\TOCDisplay\TOCTreeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TOCDisplay\TocTreeViewBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TOCDisplay\TOCTreeViewEx.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TOCDisplay\TOCTreeViewType.cs" />
+    <Compile Include="Controls\TOCDisplay\TOCTreeViewWrapEx.cs" />
+    <Compile Include="Controls\TOCDisplay\TreeCreatePopMenuItem.cs" />
+    <Compile Include="Controls\TOCDisplay\TreeCreatePopMenuItemOld.cs" />
+    <Compile Include="Controls\TOCDisplay\TreeViewEvent.cs" />
+    <Compile Include="Controls\TOCDisplay\TreeViewWrapBase.cs" />
+    <Compile Include="Controls\TOCTreeview\TOCControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TOCTreeview\tocMenuBitmaps.cs" />
+    <Compile Include="Controls\XYDomainControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ZDomainControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ZoomType.cs" />
+    <Compile Include="DataConversionTools\frmGeoProcessorInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataConversionTools\ImportCoordinateFile.cs" />
+    <Compile Include="Editor\EditToolUI.cs" />
+    <Compile Include="Editor\TopologyErrorHandle.cs" />
+    <Compile Include="Editor\UI\AnnoEditControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\AttributeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\AttributeEditControlExtend.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\AttributeEditControlExtendEx.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\AttributeListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\EditorTemplateManageCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\EditTemplateListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\EditTemplateManager.cs" />
+    <Compile Include="Editor\UI\FindTopologyErrorCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\frmAttachment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\frmAttributeEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\frmAttributeTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\frmEditMultiAttribute.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\frmEditTemplateProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\frmFilterLayerSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\frmNewTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\frmProportionSplit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\frmRuleInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\frmSelectEditDatasource.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\frmSelectMergeFeature.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\frmShowShareFeature.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\frmSnapConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\frmTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\frmTemplatesGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\frmUpdateAnnoAttribute.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\frmUpdateAttribute.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\GeometryInfoPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\JLKEditTemplateWrap.cs" />
+    <Compile Include="Editor\UI\LVM.cs" />
+    <Compile Include="Editor\UI\LVS_EX.cs" />
+    <Compile Include="Editor\UI\MultiAttributeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\MultiAttributeListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\MultiAttributeListControlExtend.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\OnAddMoreTemplateHandler.cs" />
+    <Compile Include="Editor\UI\OnAddTemplateHandler.cs" />
+    <Compile Include="Editor\UI\OnDeleteMoreTemplateHandler.cs" />
+    <Compile Include="Editor\UI\OnDeleteTemplateHandler.cs" />
+    <Compile Include="Editor\UI\OnTemplatePropertyChangeHandler.cs" />
+    <Compile Include="Editor\UI\OnValueChangeHandler.cs" />
+    <Compile Include="Editor\UI\PropertyControls.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\RepresentationAssist.cs" />
+    <Compile Include="Editor\UI\RepresentationPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\SelectCreateTemplateLayer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\SelectTemplateCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\SnapConfigControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\ZDAttributeEditControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\ZDAttributeListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Historical\BaseClass.cs" />
+    <Compile Include="Historical\frmChangeVersions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Historical\frmHistorialMarkerManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Historical\frmHistoricalMarker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NetworkLib\FlowArrorPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NetworkLib\FlowHelper.cs" />
+    <Compile Include="NetworkLib\FlowShowScalePropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NetworkLib\FlowSymbol.cs" />
+    <Compile Include="NetworkLib\frmFlowArrowSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NetworkLib\frmNASheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NetworkLib\frmNewVerticalSectionSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NetworkLib\LineCreateroutes.cs" />
+    <Compile Include="NetworkLib\NAGeneralPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NetworkLib\NAResultSetPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NetworkLib\NAWeightFilterPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NetworkLib\NAWeightsPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NetworkLib\NetworkAnalyst.cs" />
+    <Compile Include="NetworkLib\NetworkAnalystClosestFacilityResult.cs" />
+    <Compile Include="NetworkLib\NetworkAnalystResult.cs" />
+    <Compile Include="NetworkLib\NetworkAnalystRouteResult.cs" />
+    <Compile Include="NetworkLib\NetworkAnalystTools.cs" />
+    <Compile Include="NetworkLib\NetworkAnalystUtility.cs" />
+    <Compile Include="NetworkLib\NetworkCommonTool.cs" />
+    <Compile Include="NetworkLib\NetworkConstants.cs" />
+    <Compile Include="NetworkLib\NetworkLibLicenseProviderCheck.cs" />
+    <Compile Include="NetworkLib\NetworkWarp.cs" />
+    <Compile Include="NetworkLib\PathFinder.cs" />
+    <Compile Include="NetworkLib\Point.cs" />
+    <Compile Include="NetworkLib\RouteClass.cs" />
+    <Compile Include="NetworkLib\StringObjectDictionary.cs" />
+    <Compile Include="NetworkLib\WeightWrap.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SymbolLib\BasicFillSymbolLayer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\BasicLineSymbolLayer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\BasicMarkerSymbolLayer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\BasicSymbolLayerBaseControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\frmGeometricEffectList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\frmMarkerPlacementList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\GeometricCutCurverPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\GeometricEffectAddControlPointsPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\GeometricEffectBaseControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\GeometricEffectBufferPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\GeometricEffectDashesPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\GeometricEffectDonutPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\GeometricEffectEnclosingPolygonPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\GeometricEffectFillPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\GeometricEffectLinePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\GeometricEffectMarkerPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\GeometricEffectOffsetCurvePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\GeometricEffectRadialfromPointPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\GeometricEffectReverseCurverPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\GeometricEffectSimplyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\GeometricSmoothCurverPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\MarkerPlacementAlongLinePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\MarkerPlacementAtExtremitiesPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\MarkerPlacementBaseControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\MarkerPlacementDecorationPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\MarkerPlacementInsidePolygonPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\MarkerPlacementOnLinePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\MarkerPlacementOnPointPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\MarkerPlacementPolygonCenterPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\MarkerPlacementRandomAlongLinePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\MarkerPlacementRandomInPolygonPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\MarkerPlacementVariableAlongLinePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolLib\RepresationRuleCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\ArrowMarkerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\BackgroundSymbolPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\BorderSymbolPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\CartoLineControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\CharacterMarker3DSymbolCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\CharacterMarkerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\ColourPicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\CommonInterface.cs" />
+    <Compile Include="SymbolUI\CornerGridLabelPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\CustomOverlayGridPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\enumSymbolType.cs" />
+    <Compile Include="SymbolUI\FillFeaturePlaceCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\FillMaplexLabelConficCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\FillMaplexLabelCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\FillMaplexLabelStrategyCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\FillPropertyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\frmElementProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\frmFillSymbolEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\frmLineSymbolEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\frmMapGridSheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\frmMapGridType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\frmPointSymbolEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\frmRepresationRule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\frmStyleConvert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\frmStyleConvertEx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\frmStyleManagerDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\frmSymbolProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\frmSymbolSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\frmSymbolSelectorEx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\frmTextSymbolEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\frmTextSymbolEdit1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\frmUnionStyleEx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\GradientFillControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\GridAxisPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\GridHatchPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\GridInteriorLabelsPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\HashLineSymbolControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\IMyStyleGallery.cs" />
+    <Compile Include="SymbolUI\IndexGridProperyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\IPropertyPage.cs" />
+    <Compile Include="SymbolUI\IPropertyPageEvents.cs" />
+    <Compile Include="SymbolUI\IPropertySheet.cs" />
+    <Compile Include="SymbolUI\IPropertySheetEvents.cs" />
+    <Compile Include="SymbolUI\LabelConficPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\LabelFormatPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\LabelPlacementPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\LabelStylePropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\LegendItemArrangementPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\LegendItemGeneralPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\LineFeaturePlaceSetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\LineFillControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\LineMaplexLabelConficCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\LineMaplexLabelCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\LineMaplexLabelStrategyCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\LinePropertyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\Marker3DEvent.cs" />
+    <Compile Include="SymbolUI\Marker3DPlacementCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\Marker3DSymbolCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\MarkerLineControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\MarkFillControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\MaskControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\MeasureCoordinatePropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\MeasuredGridPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\MGRSPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\MixedLabelPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\NorthArrowPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\NumberAndLabelPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\NumericFormatPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\OnApplyEventHandler.cs" />
+    <Compile Include="SymbolUI\OnValueChangeEventHandler.cs" />
+    <Compile Include="SymbolUI\PictureFillControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\PictureLineControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\PictureMarkerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\PointFeatureLabelCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\PointMaplexLabelConficCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\PointMaplexLabelCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\PointMaplexLabelStrategyCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\PrincipalDigitsLabelPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\ScaleAndUnitsPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\ScaleBarEventsClass.cs" />
+    <Compile Include="SymbolUI\ScaleBarFormatPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\ScaleTextEventsClass.cs" />
+    <Compile Include="SymbolUI\ScaleTextFormatPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\ScaleTextTextPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\ShadowSymbolPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\Simple3DLineSymbolCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\SimpleFillControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\SimpleLineControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\SimpleMarker3DSymbolCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\SimpleMarkerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\SymbolUILicenseProviderCheck.cs" />
+    <Compile Include="SymbolUI\TemplateControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\TextGeneralControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\TextureFillSymbolCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\TextureLineSymbolCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SymbolUI\TickSymbolPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="XtraGrid\ColumnAttribute.cs" />
+    <Compile Include="XtraGrid\XtraGrid.cs" />
+    <Compile Include="ApplicationStyle\StandardPaintStyleMenuItem.cs" />
+    <Compile Include="ApplicationStyle\StandardRibbonPaintStyleMenuItem.cs" />
+    <Compile Include="ApplicationStyle\PaintStyleMenuItem.cs" />
+    <Reference Include="TeeChart">
+      <HintPath>D:\Program Files (x86)\成都领君科技有限公司\JLKEngine中间件平台V8.0\JLKEngine8.9\TeeChart.DLL</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ClosestFacilitySolver\frmClosesFacilitySolver.resx">
+      <DependentUpon>frmClosesFacilitySolver.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlExtend\RenderInfoListView.resx">
+      <DependentUpon>RenderInfoListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CommandLinesCtrl.resx">
+      <DependentUpon>CommandLinesCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ConfigSetting\frmAppConfigSetting.resx">
+      <DependentUpon>frmAppConfigSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ConfigSetting\frmAppConfigSettingEx.resx">
+      <DependentUpon>frmAppConfigSettingEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ConfigSetting\frmLayerConfigTable.resx">
+      <DependentUpon>frmLayerConfigTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ConfigSetting\frmLayerInfo.resx">
+      <DependentUpon>frmLayerInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ConfigSetting\frmSelectVersion.resx">
+      <DependentUpon>frmSelectVersion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ConfigSetting\GDBSettingPropertyPage.resx">
+      <DependentUpon>GDBSettingPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ConfigSetting\LayerSettingInfoPropertyPage.resx">
+      <DependentUpon>LayerSettingInfoPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ConfigSetting\OLEDBSettingPropertyPage.resx">
+      <DependentUpon>OLEDBSettingPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ConfigSetting\OtherSettingPropertyPage.resx">
+      <DependentUpon>OtherSettingPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ConfigSetting\SymbolsSettingPropertyPage.resx">
+      <DependentUpon>SymbolsSettingPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\EditorUI\frmSelectSymbolClass.resx">
+      <DependentUpon>frmSelectSymbolClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\EditorUI\UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Export\ExportMap2EMFPropertyPage.resx">
+      <DependentUpon>ExportMap2EMFPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Export\ExportMap2EPSPropertyPage.resx">
+      <DependentUpon>ExportMap2EPSPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Export\ExportMap2GIFPropertyPage.resx">
+      <DependentUpon>ExportMap2GIFPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Export\ExportMap2PDFPropertyPage.resx">
+      <DependentUpon>ExportMap2PDFPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Export\ExportMap2SVGPropertyPage.resx">
+      <DependentUpon>ExportMap2SVGPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Export\ExportMapGeneralPropertyPage.resx">
+      <DependentUpon>ExportMapGeneralPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Export\ExportMapImagePropertyPage.resx">
+      <DependentUpon>ExportMapImagePropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Export\ExportToExcelSelectData.resx">
+      <DependentUpon>ExportToExcelSelectData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Export\ExportToExcelSet.resx">
+      <DependentUpon>ExportToExcelSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Export\ExportToExcelWizard.resx">
+      <DependentUpon>ExportToExcelWizard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Export\frmDataExportToExcel.resx">
+      <DependentUpon>frmDataExportToExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Export\frmExportMap.resx">
+      <DependentUpon>frmExportMap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Export\GraphicsSelectData.resx">
+      <DependentUpon>GraphicsSelectData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Export\GraphicsSet.resx">
+      <DependentUpon>GraphicsSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Export\GraphicsWizard.resx">
+      <DependentUpon>GraphicsWizard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Export\SeriesChart.resx">
+      <DependentUpon>SeriesChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FormMapPrinter.resx">
+      <DependentUpon>FormMapPrinter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\frmAnalystTable.resx">
+      <DependentUpon>frmAnalystTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\frmAttributeTable.resx">
+      <DependentUpon>frmAttributeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\frmAttributeTableEx.resx">
+      <DependentUpon>frmAttributeTableEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\frmCommandLine.resx">
+      <DependentUpon>frmCommandLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\frmDatasourceTreeView.resx">
+      <DependentUpon>frmDatasourceTreeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\frmElementProperty.resx">
+      <DependentUpon>frmElementProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FrmFastSelSpatial.resx">
+      <DependentUpon>FrmFastSelSpatial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\frmGeoProcessorInfo.resx">
+      <DependentUpon>frmGeoProcessorInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\frmMagnifierWindows.resx">
+      <DependentUpon>frmMagnifierWindows.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\frmMap.resx">
+      <DependentUpon>frmMap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\frmMapNew.resx">
+      <DependentUpon>frmMapNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\frmOptionsSet.resx">
+      <DependentUpon>frmOptionsSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\frmOverwindows.resx">
+      <DependentUpon>frmOverwindows.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\frmPageLayoutCtrl.resx">
+      <DependentUpon>frmPageLayoutCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\frmPageLayoutPage.resx">
+      <DependentUpon>frmPageLayoutPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\frmProgress.resx">
+      <DependentUpon>frmProgress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\frmProgressBar1.resx">
+      <DependentUpon>frmProgressBar1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\frmRegisterAsVersion.resx">
+      <DependentUpon>frmRegisterAsVersion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\frmSpatialRefrence.resx">
+      <DependentUpon>frmSpatialRefrence.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\frmTOCTreeView.resx">
+      <DependentUpon>frmTOCTreeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\frmTOCTreeView2.resx">
+      <DependentUpon>frmTOCTreeView2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\frmTOCTreeViewNew.resx">
+      <DependentUpon>frmTOCTreeViewNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\frmViewerOrMagnifierPropertyPage.resx">
+      <DependentUpon>frmViewerOrMagnifierPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\GeoCoordSys.resx">
+      <DependentUpon>GeoCoordSys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\GPSLib\DestinationPropertyPage.resx">
+      <DependentUpon>DestinationPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\GPSLib\DisplayAdvancePage.resx">
+      <DependentUpon>DisplayAdvancePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\GPSLib\DisplayGeneralPage.resx">
+      <DependentUpon>DisplayGeneralPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\GPSLib\frmGPSDisplaySet.resx">
+      <DependentUpon>frmGPSDisplaySet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\GPSLib\frmGPSPositionWindows.resx">
+      <DependentUpon>frmGPSPositionWindows.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\GPSLib\GPSPositionPage.resx">
+      <DependentUpon>GPSPositionPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\GPSLib\SnappingPage.resx">
+      <DependentUpon>SnappingPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\GPSLib\TrailsSetCtrl.resx">
+      <DependentUpon>TrailsSetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\MapAndPageLayoutForm.resx">
+      <DependentUpon>MapAndPageLayoutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\MapFrame.resx">
+      <DependentUpon>MapFrame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\MDomainControl.resx">
+      <DependentUpon>MDomainControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\OverviewWindowsAllLayerProperty.resx">
+      <DependentUpon>OverviewWindowsAllLayerProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\OverviewWindowsEx.resx">
+      <DependentUpon>OverviewWindowsEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\OverviewWindowsProperty.resx">
+      <DependentUpon>OverviewWindowsProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ProjCoordSys.resx">
+      <DependentUpon>ProjCoordSys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Properties.resx.resx" />
+    <EmbeddedResource Include="Controls\PropertySheet.resx">
+      <DependentUpon>PropertySheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ScenceGeneralPropertyPage.resx">
+      <DependentUpon>ScenceGeneralPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TOCDisplay\frmFolderProperty.resx">
+      <DependentUpon>frmFolderProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TOCDisplay\TOCTreeView.resx">
+      <DependentUpon>TOCTreeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TOCDisplay\TOCTreeViewEx.resx">
+      <DependentUpon>TOCTreeViewEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TOCTreeview\TOCControl.resx">
+      <DependentUpon>TOCControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TOCTreeview\tocMenuBitmaps.resx">
+      <DependentUpon>tocMenuBitmaps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\XYDomainControl.resx">
+      <DependentUpon>XYDomainControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ZDomainControl.resx">
+      <DependentUpon>ZDomainControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataConversionTools\frmGeoProcessorInfo.resx">
+      <DependentUpon>frmGeoProcessorInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\AnnoEditControl.resx">
+      <DependentUpon>AnnoEditControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\AttributeControl.resx">
+      <DependentUpon>AttributeControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\AttributeEditControlExtend.resx">
+      <DependentUpon>AttributeEditControlExtend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\AttributeEditControlExtendEx.resx">
+      <DependentUpon>AttributeEditControlExtendEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\AttributeListControl.resx">
+      <DependentUpon>AttributeListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\EditorTemplateManageCtrl.resx">
+      <DependentUpon>EditorTemplateManageCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\EditTemplateListView.resx">
+      <DependentUpon>EditTemplateListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\FindTopologyErrorCtrl.resx">
+      <DependentUpon>FindTopologyErrorCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\frmAttachment.resx">
+      <DependentUpon>frmAttachment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\frmAttributeEdit.resx">
+      <DependentUpon>frmAttributeEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\frmAttributeTable.resx">
+      <DependentUpon>frmAttributeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\frmEditMultiAttribute.resx">
+      <DependentUpon>frmEditMultiAttribute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\frmEditTemplateProperty.resx">
+      <DependentUpon>frmEditTemplateProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\frmFilterLayerSelect.resx">
+      <DependentUpon>frmFilterLayerSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\frmNewTemplate.resx">
+      <DependentUpon>frmNewTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\frmProportionSplit.resx">
+      <DependentUpon>frmProportionSplit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\frmRuleInfo.resx">
+      <DependentUpon>frmRuleInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\frmSelectEditDatasource.resx">
+      <DependentUpon>frmSelectEditDatasource.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\frmSelectMergeFeature.resx">
+      <DependentUpon>frmSelectMergeFeature.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\frmShowShareFeature.resx">
+      <DependentUpon>frmShowShareFeature.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\frmSnapConfig.resx">
+      <DependentUpon>frmSnapConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\frmTable.resx">
+      <DependentUpon>frmTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\frmTemplatesGroup.resx">
+      <DependentUpon>frmTemplatesGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\frmUpdateAnnoAttribute.resx">
+      <DependentUpon>frmUpdateAnnoAttribute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\frmUpdateAttribute.resx">
+      <DependentUpon>frmUpdateAttribute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\GeometryInfoPage.resx">
+      <DependentUpon>GeometryInfoPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\JLKEditTemplateWrap.resx">
+      <DependentUpon>JLKEditTemplateWrap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\MultiAttributeControl.resx">
+      <DependentUpon>MultiAttributeControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\MultiAttributeListControl.resx">
+      <DependentUpon>MultiAttributeListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\MultiAttributeListControlExtend.resx">
+      <DependentUpon>MultiAttributeListControlExtend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\PropertyControls.resx">
+      <DependentUpon>PropertyControls.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\RepresentationPropertyPage.resx">
+      <DependentUpon>RepresentationPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\SelectTemplateCtrl.resx">
+      <DependentUpon>SelectTemplateCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\SnapConfigControl.resx">
+      <DependentUpon>SnapConfigControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\ZDAttributeEditControl.resx">
+      <DependentUpon>ZDAttributeEditControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\ZDAttributeListControl.resx">
+      <DependentUpon>ZDAttributeListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Historical\frmHistorialMarkerManager.resx">
+      <DependentUpon>frmHistorialMarkerManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Historical\frmHistoricalMarker.resx">
+      <DependentUpon>frmHistoricalMarker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NetworkLib\FlowArrorPropertyPage.resx">
+      <DependentUpon>FlowArrorPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NetworkLib\FlowShowScalePropertyPage.resx">
+      <DependentUpon>FlowShowScalePropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NetworkLib\frmFlowArrowSet.resx">
+      <DependentUpon>frmFlowArrowSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NetworkLib\frmNASheet.resx">
+      <DependentUpon>frmNASheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NetworkLib\frmNewVerticalSectionSet.resx">
+      <DependentUpon>frmNewVerticalSectionSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NetworkLib\NAGeneralPropertyPage.resx">
+      <DependentUpon>NAGeneralPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NetworkLib\NAResultSetPropertyPage.resx">
+      <DependentUpon>NAResultSetPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NetworkLib\NAWeightFilterPropertyPage.resx">
+      <DependentUpon>NAWeightFilterPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NetworkLib\NAWeightsPropertyPage.resx">
+      <DependentUpon>NAWeightsPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\BasicFillSymbolLayer.resx">
+      <DependentUpon>BasicFillSymbolLayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\BasicLineSymbolLayer.resx">
+      <DependentUpon>BasicLineSymbolLayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\BasicMarkerSymbolLayer.resx">
+      <DependentUpon>BasicMarkerSymbolLayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\frmGeometricEffectList.resx">
+      <DependentUpon>frmGeometricEffectList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\frmMarkerPlacementList.resx">
+      <DependentUpon>frmMarkerPlacementList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\GeometricCutCurverPage.resx">
+      <DependentUpon>GeometricCutCurverPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\GeometricEffectAddControlPointsPage.resx">
+      <DependentUpon>GeometricEffectAddControlPointsPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\GeometricEffectBufferPage.resx">
+      <DependentUpon>GeometricEffectBufferPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\GeometricEffectDashesPage.resx">
+      <DependentUpon>GeometricEffectDashesPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\GeometricEffectDonutPage.resx">
+      <DependentUpon>GeometricEffectDonutPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\GeometricEffectEnclosingPolygonPage.resx">
+      <DependentUpon>GeometricEffectEnclosingPolygonPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\GeometricEffectFillPage.resx">
+      <DependentUpon>GeometricEffectFillPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\GeometricEffectLinePage.resx">
+      <DependentUpon>GeometricEffectLinePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\GeometricEffectMarkerPage.resx">
+      <DependentUpon>GeometricEffectMarkerPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\GeometricEffectOffsetCurvePage.resx">
+      <DependentUpon>GeometricEffectOffsetCurvePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\GeometricEffectRadialfromPointPage.resx">
+      <DependentUpon>GeometricEffectRadialfromPointPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\GeometricEffectReverseCurverPage.resx">
+      <DependentUpon>GeometricEffectReverseCurverPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\GeometricEffectSimplyPage.resx">
+      <DependentUpon>GeometricEffectSimplyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\GeometricSmoothCurverPage.resx">
+      <DependentUpon>GeometricSmoothCurverPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\MarkerPlacementAlongLinePage.resx">
+      <DependentUpon>MarkerPlacementAlongLinePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\MarkerPlacementAtExtremitiesPage.resx">
+      <DependentUpon>MarkerPlacementAtExtremitiesPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\MarkerPlacementDecorationPage.resx">
+      <DependentUpon>MarkerPlacementDecorationPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\MarkerPlacementInsidePolygonPage.resx">
+      <DependentUpon>MarkerPlacementInsidePolygonPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\MarkerPlacementOnLinePage.resx">
+      <DependentUpon>MarkerPlacementOnLinePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\MarkerPlacementOnPointPage.resx">
+      <DependentUpon>MarkerPlacementOnPointPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\MarkerPlacementPolygonCenterPage.resx">
+      <DependentUpon>MarkerPlacementPolygonCenterPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\MarkerPlacementRandomAlongLinePage.resx">
+      <DependentUpon>MarkerPlacementRandomAlongLinePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\MarkerPlacementRandomInPolygonPage.resx">
+      <DependentUpon>MarkerPlacementRandomInPolygonPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\MarkerPlacementVariableAlongLinePage.resx">
+      <DependentUpon>MarkerPlacementVariableAlongLinePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolLib\RepresationRuleCtrl.resx">
+      <DependentUpon>RepresationRuleCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\ArrowMarkerControl.resx">
+      <DependentUpon>ArrowMarkerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\BackgroundSymbolPropertyPage.resx">
+      <DependentUpon>BackgroundSymbolPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\BorderSymbolPropertyPage.resx">
+      <DependentUpon>BorderSymbolPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\CartoLineControl.resx">
+      <DependentUpon>CartoLineControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\CharacterMarker3DSymbolCtrl.resx">
+      <DependentUpon>CharacterMarker3DSymbolCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\CharacterMarkerControl.resx">
+      <DependentUpon>CharacterMarkerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\ColourPicker.resx">
+      <DependentUpon>ColourPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\CornerGridLabelPropertyPage.resx">
+      <DependentUpon>CornerGridLabelPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\CustomOverlayGridPropertyPage.resx">
+      <DependentUpon>CustomOverlayGridPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\FillFeaturePlaceCtrl.resx">
+      <DependentUpon>FillFeaturePlaceCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\FillMaplexLabelConficCtrl.resx">
+      <DependentUpon>FillMaplexLabelConficCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\FillMaplexLabelCtrl.resx">
+      <DependentUpon>FillMaplexLabelCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\FillMaplexLabelStrategyCtrl.resx">
+      <DependentUpon>FillMaplexLabelStrategyCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\FillPropertyControl.resx">
+      <DependentUpon>FillPropertyControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\frmElementProperty.resx">
+      <DependentUpon>frmElementProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\frmFillSymbolEdit.resx">
+      <DependentUpon>frmFillSymbolEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\frmLineSymbolEdit.resx">
+      <DependentUpon>frmLineSymbolEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\frmMapGridSheet.resx">
+      <DependentUpon>frmMapGridSheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\frmMapGridType.resx">
+      <DependentUpon>frmMapGridType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\frmPointSymbolEdit.resx">
+      <DependentUpon>frmPointSymbolEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\frmRepresationRule.resx">
+      <DependentUpon>frmRepresationRule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\frmStyleConvert.resx">
+      <DependentUpon>frmStyleConvert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\frmStyleConvertEx.resx">
+      <DependentUpon>frmStyleConvertEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\frmStyleManagerDialog.resx">
+      <DependentUpon>frmStyleManagerDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\frmSymbolProperty.resx">
+      <DependentUpon>frmSymbolProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\frmSymbolSelector.resx">
+      <DependentUpon>frmSymbolSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\frmSymbolSelectorEx.resx">
+      <DependentUpon>frmSymbolSelectorEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\frmTextSymbolEdit.resx">
+      <DependentUpon>frmTextSymbolEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\frmTextSymbolEdit1.resx">
+      <DependentUpon>frmTextSymbolEdit1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\frmUnionStyleEx.resx">
+      <DependentUpon>frmUnionStyleEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\GradientFillControl.resx">
+      <DependentUpon>GradientFillControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\GridAxisPropertyPage.resx">
+      <DependentUpon>GridAxisPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\GridHatchPropertyPage.resx">
+      <DependentUpon>GridHatchPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\GridInteriorLabelsPropertyPage.resx">
+      <DependentUpon>GridInteriorLabelsPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\HashLineSymbolControl.resx">
+      <DependentUpon>HashLineSymbolControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\IndexGridProperyPage.resx">
+      <DependentUpon>IndexGridProperyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\LabelConficPropertyPage.resx">
+      <DependentUpon>LabelConficPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\LabelFormatPropertyPage.resx">
+      <DependentUpon>LabelFormatPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\LabelPlacementPropertyPage.resx">
+      <DependentUpon>LabelPlacementPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\LabelStylePropertyPage.resx">
+      <DependentUpon>LabelStylePropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\LegendItemArrangementPropertyPage.resx">
+      <DependentUpon>LegendItemArrangementPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\LegendItemGeneralPropertyPage.resx">
+      <DependentUpon>LegendItemGeneralPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\LineFeaturePlaceSetCtrl.resx">
+      <DependentUpon>LineFeaturePlaceSetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\LineFillControl.resx">
+      <DependentUpon>LineFillControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\LineMaplexLabelConficCtrl.resx">
+      <DependentUpon>LineMaplexLabelConficCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\LineMaplexLabelCtrl.resx">
+      <DependentUpon>LineMaplexLabelCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\LineMaplexLabelStrategyCtrl.resx">
+      <DependentUpon>LineMaplexLabelStrategyCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\LinePropertyControl.resx">
+      <DependentUpon>LinePropertyControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\Marker3DPlacementCtrl.resx">
+      <DependentUpon>Marker3DPlacementCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\Marker3DSymbolCtrl.resx">
+      <DependentUpon>Marker3DSymbolCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\MarkerLineControl.resx">
+      <DependentUpon>MarkerLineControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\MarkFillControl.resx">
+      <DependentUpon>MarkFillControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\MaskControl.resx">
+      <DependentUpon>MaskControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\MeasureCoordinatePropertyPage.resx">
+      <DependentUpon>MeasureCoordinatePropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\MeasuredGridPropertyPage.resx">
+      <DependentUpon>MeasuredGridPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\MGRSPropertyPage.resx">
+      <DependentUpon>MGRSPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\MixedLabelPropertyPage.resx">
+      <DependentUpon>MixedLabelPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\NorthArrowPropertyPage.resx">
+      <DependentUpon>NorthArrowPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\NumberAndLabelPropertyPage.resx">
+      <DependentUpon>NumberAndLabelPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\NumericFormatPropertyPage.resx">
+      <DependentUpon>NumericFormatPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\PictureFillControl.resx">
+      <DependentUpon>PictureFillControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\PictureLineControl.resx">
+      <DependentUpon>PictureLineControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\PictureMarkerControl.resx">
+      <DependentUpon>PictureMarkerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\PointFeatureLabelCtrl.resx">
+      <DependentUpon>PointFeatureLabelCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\PointMaplexLabelConficCtrl.resx">
+      <DependentUpon>PointMaplexLabelConficCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\PointMaplexLabelCtrl.resx">
+      <DependentUpon>PointMaplexLabelCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\PointMaplexLabelStrategyCtrl.resx">
+      <DependentUpon>PointMaplexLabelStrategyCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\PrincipalDigitsLabelPropertyPage.resx">
+      <DependentUpon>PrincipalDigitsLabelPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\ScaleAndUnitsPropertyPage.resx">
+      <DependentUpon>ScaleAndUnitsPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\ScaleBarFormatPropertyPage.resx">
+      <DependentUpon>ScaleBarFormatPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\ScaleTextFormatPropertyPage.resx">
+      <DependentUpon>ScaleTextFormatPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\ScaleTextTextPropertyPage.resx">
+      <DependentUpon>ScaleTextTextPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\ShadowSymbolPropertyPage.resx">
+      <DependentUpon>ShadowSymbolPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\Simple3DLineSymbolCtrl.resx">
+      <DependentUpon>Simple3DLineSymbolCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\SimpleFillControl.resx">
+      <DependentUpon>SimpleFillControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\SimpleLineControl.resx">
+      <DependentUpon>SimpleLineControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\SimpleMarker3DSymbolCtrl.resx">
+      <DependentUpon>SimpleMarker3DSymbolCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\SimpleMarkerControl.resx">
+      <DependentUpon>SimpleMarkerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\TemplateControl.resx">
+      <DependentUpon>TemplateControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\TextGeneralControl.resx">
+      <DependentUpon>TextGeneralControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\TextureFillSymbolCtrl.resx">
+      <DependentUpon>TextureFillSymbolCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\TextureLineSymbolCtrl.resx">
+      <DependentUpon>TextureLineSymbolCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolUI\TickSymbolPropertyPage.resx">
+      <DependentUpon>TickSymbolPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\checked.bmp" />
+    <EmbeddedResource Include="Controls\checked_nofc.bmp" />
+    <EmbeddedResource Include="Controls\checked_novis.bmp" />
+    <EmbeddedResource Include="Controls\PaintStyle.axx35.bmp" />
+    <EmbeddedResource Include="Controls\PaintStyle.Office2000.bmp" />
+    <EmbeddedResource Include="Controls\PaintStyle.Office2003.bmp" />
+    <EmbeddedResource Include="Controls\PaintStyle.OfficeXP.bmp" />
+    <EmbeddedResource Include="Controls\PaintStyle.WindowsXP.bmp" />
+    <Content Include="Controls\TOCTreeview\bmpFileWorkspace.bmp" />
+    <Content Include="Controls\TOCTreeview\bmpFolder1.bmp" />
+    <Content Include="Controls\TOCTreeview\bmpFolder2.bmp" />
+    <Content Include="Controls\TOCTreeview\bmpGDBLink.bmp" />
+    <Content Include="Controls\TOCTreeview\bmpPersonGDB.bmp" />
+    <Content Include="Controls\TOCTreeview\bmpTable.bmp" />
+    <Content Include="Controls\TOCTreeview\checked.bmp" />
+    <Content Include="Controls\TOCTreeview\checked_nofc.bmp" />
+    <Content Include="Controls\TOCTreeview\checked_novis.bmp" />
+    <Content Include="Controls\TOCTreeview\layers.bmp" />
+    <Content Include="Controls\TOCTreeview\TocTreeView.bmp" />
+    <Content Include="Controls\TOCTreeview\uncheck.bmp" />
+    <Content Include="Controls\TOCTreeview\unchecked_nofc.bmp" />
+    <EmbeddedResource Include="Controls\uncheck.bmp" />
+    <EmbeddedResource Include="Controls\unchecked_nofc.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SymbolLib\template.ServerStyle" />
+    <EmbeddedResource Include="SymbolLib\template.style" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Yutai.ArcGIS.Common\Yutai.ArcGIS.Common.csproj">
+      <Project>{1938b3f8-8ede-48f7-9594-eeb1f126e622}</Project>
+      <Name>Yutai.ArcGIS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yutai.Plugins\Yutai.Plugins.csproj">
+      <Project>{800F2EE4-47AB-4CD4-934D-A64980D98A23}</Project>
+      <Name>Yutai.Plugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yutai.Shared\Yutai.Shared.csproj">
+      <Project>{4A9B3243-2B0A-4E87-9B23-71A58C1F318D}</Project>
+      <Name>Yutai.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

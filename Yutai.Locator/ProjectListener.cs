@@ -36,7 +36,7 @@ namespace Yutai.Plugins.Locator
 
         private void OnProjectClosed(object sender, EventArgs e)
         {
-            var panel = _context.DockPanels.Find(DockPanelKeys.Locator);
+            var panel = _context.DockPanels.GetDockPanel(LocatorDockPanel.DefaultDockName);
             if (panel.Visible)
             {
                 panel.Visible = false;

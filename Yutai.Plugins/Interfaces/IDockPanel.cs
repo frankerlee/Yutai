@@ -6,10 +6,13 @@ namespace Yutai.Plugins.Interfaces
 {
     public interface IDockPanel
     {
+        string Name { get; }
         void Activate();
         Control Control { get; }
         DockPanelState DockState { get; }
         bool Visible { get; set; }
+
+        void DockTo(string parentName, DockPanelState state, int size);
         void DockTo(IDockPanel parent, DockPanelState state, int size);
         void DockTo(DockPanelState state, int size);
         string Caption { get; set; }

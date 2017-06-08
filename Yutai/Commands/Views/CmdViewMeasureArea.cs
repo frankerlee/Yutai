@@ -67,8 +67,8 @@ namespace Yutai.Commands.Views
             base.m_bitmap = Properties.Resources.icon_measure_area;
             base.m_cursor =
                 new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.Resource.Cursor.Measure.cur"));
-            base.m_name = "View.Measure.MeasureArea";
-            base._key = "View.Measure.MeasureArea";
+            base.m_name = "View_MeasureArea";
+            base._key = "View_MeasureArea";
             base.m_toolTip = "面积量测";
             base.m_checked = false;
             base.m_enabled = true;

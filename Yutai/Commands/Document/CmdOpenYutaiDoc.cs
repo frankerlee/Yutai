@@ -47,7 +47,7 @@ namespace Yutai.Commands.Document
             base.m_category = "Document";
             base.m_bitmap = Properties.Resources.yt_project_open;
             base.m_name = "File.Document.OpenProject";
-            base._key = "File.Document.OpenProject";
+            base._key = "File_Document_OpenProject";
             base.m_toolTip = "打开项目";
             base.m_checked = false;
             base.m_enabled = true;
@@ -90,7 +90,7 @@ namespace Yutai.Commands.Document
             base.m_category = "Document";
             base.m_bitmap = Properties.Resources.yt_project_new;
             base.m_name = "File.Document.NewProject";
-            base._key = "File.Document.NewProject";
+            base._key = "File_Document_NewProject";
             base.m_toolTip = "新建项目";
             base.m_checked = false;
             base.m_enabled = true;

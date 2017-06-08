@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraBars.Ribbon;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
+using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geometry;
 using ESRI.ArcGIS.SystemUI;
 using Syncfusion.Windows.Forms.Tools;
@@ -28,7 +31,7 @@ using Yutai.UI.Style;
 
 namespace Yutai
 {
-    public class AppContext : ISecureContext
+    public class AppContext : ISecureContext,IYTHookHelper
     {
         private readonly IApplicationContainer _container;
         private readonly IStyleService _styleService;
@@ -36,6 +39,7 @@ namespace Yutai
         private IProjectService _project;
         private IToolbarCollection _toolbars;
         private IMainView _mainView;
+        private IPageLayoutControl2 _pageLayoutControl2 = null;
 
         private MapLegendPresenter _mapLegendPresenter;
         private OverviewPresenter _overviewPresenter;
@@ -44,6 +48,10 @@ namespace Yutai
         private string _currentToolName;
         private bool _isInEdit;
         private bool _canEdited;
+        private string _oldToolName;
+        private object _hook;
+        private IOperationStack m_pOperationStack;
+        private IStyleGallery m_pStyleGallery;
 
         public AppContext(
             IApplicationContainer container,
@@ -115,10 +123,10 @@ namespace Yutai
             if (tool.ItemType == RibbonItemType.Tool)
             {
                 ITool oldTool = _mainView.MapControl.CurrentTool;
-                string oldName = oldTool == null ? string.Empty : ((YutaiTool) oldTool).Name;
+                _oldToolName = oldTool == null ? string.Empty : ((YutaiTool) oldTool).Name;
                 _mainView.MapControl.CurrentTool = (ITool) tool;
                 CurrentToolName = tool.Name;
-                RibbonMenu.ChangeCurrentTool(oldName, tool.Name);
+                RibbonMenu.ChangeCurrentTool(_oldToolName, tool.Name);
                 return true;
             }
             return false;
@@ -132,6 +140,8 @@ namespace Yutai
             get { return _bufferGeometry; }
             set { _bufferGeometry = value; }
         }
+
+        IStyleGallery IAppContext.StyleGallery { get; set; }
 
         public bool IsInEdit
         {
@@ -148,21 +158,16 @@ namespace Yutai
 
         public IPluginManager PluginManager { get; private set; }
 
-        public Control GetDockPanelObject(DefaultDockPanel panel)
+        public Control GetDockPanelObject(string dockName)
         {
-            switch (panel)
-            {
-                case DefaultDockPanel.MapLegend:
+           if(dockName == MapLegendDockPanel.DefaultDockName)
                     return _mapLegendPresenter.LegendControl as Control;
-                case DefaultDockPanel.Overview:
+           else if(dockName== OverviewDockPanel.DefaultDockName)
+               
                     return _overviewPresenter.OverviewControl as Control;
-                /*  case DefaultDockPanel.Toolbox:
-                     return _toolboxPresenter.View;
-                 case DefaultDockPanel.Locator:
-                     return _locator != null ? _locator.GetInternalObject() : null;*/
-                default:
+             else
                     throw new ArgumentOutOfRangeException("panel");
-            }
+            
         }
 
         public XmlProject YutaiProject
@@ -207,7 +212,6 @@ namespace Yutai
             View = new AppView(mainView, _styleService);
             _project = project;
             _configService = configService;
-            
 
             _overviewPresenter.SetBuddyControl(mainView.MapControl);
             //  _map = mainView.Map;
@@ -219,11 +223,11 @@ namespace Yutai
             DockPanels = new DockPanelCollection(mainView.DockingManager, mainView as Form, Broadcaster, _styleService);
 
             //Menu到最后丢弃不用，Menu部分全部采用Ribbon
-            RibbonMenu = RibbonFactory.InitMenus((RibbonControlAdv) mainView.RibbonManager);
+            RibbonMenu = RibbonFactory.InitMenus((RibbonControl) mainView.RibbonManager);
 
             // Menu = MenuFactory.CreateMainMenu(mainView.RibbonManager,true);
             // Toolbars = MenuFactory.CreateMainToolbars(mainView.MenuManager);
-            StatusBar = MenuFactory.CreateStatusBar(mainView.StatusBar, PluginIdentity.Default);
+           // StatusBar = MenuFactory.CreateStatusBar(mainView.RibbonStatusBar, PluginIdentity.Default);
 
             // _projectionDatabase.ReadFromExecutablePath(Application.ExecutablePath);
 
@@ -236,6 +240,10 @@ namespace Yutai
 
             this.InitDocking();
 
+            //YTHookHelper设置
+
+            m_pOperationStack = new OperationStackClass();
+            m_pStyleGallery = null;
             Initialized = true;
             Logger.Current.Trace("End AppContext.Init()");
         }
@@ -264,6 +272,21 @@ namespace Yutai
 
         #region MainView的外部调用接口，建议交给MainView完成，因为都是界面相关的
 
+        public void HideDockWindow(object object_0)
+        {
+            
+        }
+
+        bool IYTHookHelper.ShowCommandString(string string_0, CommandTipsType commandTipsType_0)
+        {
+            return true;
+        }
+
+        public void MapDocumentChanged()
+        {
+            //throw new NotImplementedException();
+        }
+
         public void ShowCommandString(string msg, CommandTipsType tipType)
         {
             //throw new NotImplementedException();
@@ -272,6 +295,34 @@ namespace Yutai
         public void SetStatus(string empty)
         {
             // throw new NotImplementedException();
+        }
+
+        public void SetStatus(int int_0, string string_0)
+        {
+            //
+        }
+
+        public void DockWindows(object object_0, Bitmap bitmap_0)
+        {
+            //
+        }
+
+        public ILayer CurrentLayer { get; set; }
+
+        public double Tolerance
+        {
+            get { return Config.Tolerance; } set { Config.Tolerance = value; }
+        }
+        public IEngineSnapEnvironment SnapEnvironment { get { return Config.EngineSnapEnvironment; } }
+        public IStyleGallery StyleGallery { get; }
+        public string MapDocName { get; set; }
+        public double SnapTolerance { get { return Config.SnapTolerance; } set { Config.SnapTolerance = value; } }
+        public IMapDocument MapDocument { get; set; }
+        public ITool CurrentTool { get; set; }
+
+        public void ResetCurrentTool()
+        {
+            
         }
 
         public void UpdateUI()
@@ -289,5 +340,28 @@ namespace Yutai
         }
 
         #endregion
+
+        public object Hook
+        {
+            get { if(_hook == null) return this.MapControl.Map;
+                return _hook;
+            }
+            set { _hook = value; }
+        }
+
+        public IActiveView ActiveView
+        {
+            get { return MapControl.Map as IActiveView; }
+        }
+
+        public IPageLayout PageLayout {
+            get
+            {
+                if (_pageLayoutControl2 != null) return _pageLayoutControl2.PageLayout;
+                else return null;
+            }
+        }
+        public IMap FocusMap { get { return MapControl.Map as IMap; } }
+        public IOperationStack OperationStack { get { return m_pOperationStack; } }
     }
 }

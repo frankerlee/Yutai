@@ -35,8 +35,8 @@ namespace Yutai.Commands.Views
             base.m_caption = "全图";
             base.m_category = "View";
             base.m_bitmap = Properties.Resources.icon_zoom_max_extents;
-            base.m_name = "View.Common.FullExtent";
-            base._key = "View.Common.FullExtent";
+            base.m_name = "View_FullExtent";
+            base._key = "View_FullExtent";
             base.m_toolTip = "全图";
             base.m_checked = false;
             base.m_enabled = true;

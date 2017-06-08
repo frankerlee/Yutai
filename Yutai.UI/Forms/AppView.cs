@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraBars.Ribbon;
+using DevExpress.XtraEditors;
 using Syncfusion.Windows.Forms;
 using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Mvp;
@@ -35,6 +37,11 @@ namespace Yutai.UI.Forms
             if (form == null) throw new ArgumentNullException("parent");
 
             if (form is Office2010Form || form is MetroForm)
+            {
+                _styleService.ApplyStyle(form);
+            }
+
+            if (form is RibbonForm || form is XtraForm)
             {
                 _styleService.ApplyStyle(form);
             }

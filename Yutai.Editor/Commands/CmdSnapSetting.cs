@@ -34,8 +34,8 @@ namespace Yutai.Plugins.Editor.Commands
             base.m_caption = "捕捉设置";
             base.m_category = "Edit";
             base.m_bitmap = Properties.Resources.icon_snap_setting;
-            base.m_name = "Edit.Snap.SnapSetting";
-            base._key = "Edit.Snap.SnapSetting";
+            base.m_name = "Edit_Snap_SnapSetting";
+            base._key = "Edit_Snap_SnapSetting";
             base.m_toolTip = "捕捉设置";
             base.m_checked = false;
             base.m_enabled = true;

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Xml;
+using DevExpress.XtraBars.Ribbon;
 using Syncfusion.Windows.Forms.Tools;
 using Yutai.Plugins.Interfaces;
 using Yutai.UI.Menu.Ribbon;
@@ -30,7 +32,9 @@ namespace Yutai.Plugins.Locator.Menu
 
         private void InitMenus()
         {
-            RibbonFactory.CreateMenus(_commands.GetCommands(), (RibbonControlAdv) _menuManager);
+            XmlDocument doc = new XmlDocument();
+            doc.Load(base.GetType().Assembly.GetManifestResourceStream("Yutai.Plugins.Locator.Menu.MenuLayout.xml"));
+            RibbonFactory.CreateMenus(_commands.GetCommands(), (RibbonControl) _menuManager,doc);
 
         }
 

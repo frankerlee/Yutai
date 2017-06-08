@@ -23,8 +23,8 @@ namespace Yutai.Plugins.Editor.Commands
             this.m_caption = "启动捕捉";
             this.m_category = "Edit";
             this.m_message = "启动捕捉";
-            this.m_name = "Edit.Snap.SnapOff";
-            this._key = "Edit.Snap.SnapOff";
+            this.m_name = "Edit_Snap_SnapOff";
+            this._key = "Edit_Snap_SnapOff";
             this.m_toolTip = "启动捕捉";
             _context = hook as IAppContext;
             DisplayStyleYT = DisplayStyleYT.ImageAndText;
@@ -71,8 +71,8 @@ namespace Yutai.Plugins.Editor.Commands
             this.m_caption = "点捕捉";
             this.m_category = "Edit";
             this.m_message = "点捕捉";
-            this.m_name = "Edit.Snap.Config.SnapPoint";
-            this._key = "Edit.Snap.Config.SnapPoint";
+            this.m_name = "Edit_Snap_Config_SnapPoint";
+            this._key = "Edit_Snap_Config_SnapPoint";
             this.m_toolTip = "点捕捉";
             _context = hook as IAppContext;
             DisplayStyleYT = DisplayStyleYT.Image;
@@ -121,8 +121,8 @@ namespace Yutai.Plugins.Editor.Commands
             this.m_caption = "终点捕捉";
             this.m_category = "Edit";
             this.m_message = "终点捕捉";
-            this.m_name = "Edit.Snap.Config.SnapEndPoint";
-            this._key = "Edit.Snap.Config.SnapEndPoint";
+            this.m_name = "Edit_Snap_Config_SnapEndPoint";
+            this._key = "Edit_Snap_Config_SnapEndPoint";
             this.m_toolTip = "终点捕捉";
             _context = hook as IAppContext;
             DisplayStyleYT = DisplayStyleYT.Image;
@@ -169,8 +169,8 @@ namespace Yutai.Plugins.Editor.Commands
             this.m_caption = "端点捕捉";
             this.m_category = "Edit";
             this.m_message = "端点捕捉";
-            this.m_name = "Edit.Snap.Config.SnapVertexPoint";
-            this._key = "Edit.Snap.Config.SnapVertexPoint";
+            this.m_name = "Edit_Snap_Config_SnapVertexPoint";
+            this._key = "Edit_Snap_Config_SnapVertexPoint";
             this.m_toolTip = "端点捕捉";
             _context = hook as IAppContext;
             DisplayStyleYT = DisplayStyleYT.Image;
@@ -217,8 +217,8 @@ namespace Yutai.Plugins.Editor.Commands
             this.m_caption = "边线捕捉";
             this.m_category = "Edit";
             this.m_message = "边线捕捉";
-            this.m_name = "Edit.Snap.Config.SnapBoundary";
-            this._key = "Edit.Snap.Config.SnapBoundary";
+            this.m_name = "Edit_Snap_Config_SnapBoundary";
+            this._key = "Edit_Snap_Config_SnapBoundary";
             this.m_toolTip = "边线捕捉";
             _context = hook as IAppContext;
             DisplayStyleYT = DisplayStyleYT.Image;
@@ -266,8 +266,8 @@ namespace Yutai.Plugins.Editor.Commands
             this.m_caption = "切线捕捉";
             this.m_category = "Edit";
             this.m_message = "切线捕捉";
-            this.m_name = "Edit.Snap.Config.SnapTangent";
-            this._key = "Edit.Snap.Config.SnapTangent";
+            this.m_name = "Edit_Snap_Config_SnapTangent";
+            this._key = "Edit_Snap_Config_SnapTangent";
             this.m_toolTip = "切线捕捉";
             _context = hook as IAppContext;
             DisplayStyleYT = DisplayStyleYT.Image;

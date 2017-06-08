@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
+using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geometry;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
@@ -52,6 +53,8 @@ namespace Yutai.Plugins.Interfaces
             get;
             set;
         }
+
+        IStyleGallery StyleGallery { get; set; }
 
 
         void ShowCommandString(string msg, CommandTipsType tipType);

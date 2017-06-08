@@ -1,4 +1,6 @@
-﻿using Yutai.Plugins.Concrete;
+﻿using System.Collections.Generic;
+using System.Xml;
+using Yutai.Plugins.Concrete;
 
 namespace Yutai.Plugins.Interfaces
 {
@@ -16,5 +18,6 @@ namespace Yutai.Plugins.Interfaces
 
         void UpdateMenu();
         void ReorderTabs();
+        void AddCommands(XmlDocument xmlDoc, IEnumerable<YutaiCommand> commands);
     }
 }

@@ -77,11 +77,11 @@ namespace Yutai
             var container = CreateContainer();
             CompositionRoot.Compose(container);
 
-            SplashView.Instance.ShowStatus("Loading config");
+            SplashView.Instance.ShowStatus("引导配置...");
             LoadConfig(container);
 
-            SplashView.Instance.ShowStatus("Running application");
-            container.Run<MainPresenter>();
+            SplashView.Instance.ShowStatus("启动应用程序...");
+            container.Run<NewMainPresenter>();
         }
 
         private static void ShowSplashScreen()

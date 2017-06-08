@@ -41,8 +41,8 @@ namespace Yutai.Plugins.Identifer.Commands
             this.m_caption = "全部选择";
             this.m_category = "Query";
             this.m_message = "全部选择";
-            this.m_name = "Query.SelectionTools.SelectAll";
-            this._key = "Query.SelectionTools.SelectAll";
+            this.m_name = "Query_SelectionTools_SelectAll";
+            this._key = "Query_SelectionTools_SelectAll";
             this.m_toolTip = "全部选择";
             _context = context;
             base.DisplayStyleYT = DisplayStyleYT.ImageAndText;

@@ -58,12 +58,8 @@ namespace Yutai.Plugins.Locator.Views
 
         private void ActivatePanel()
         {
-            var panel = _context.DockPanels.Find(DockPanelKeys.Locator);
-            if (panel != null)
-            {
-                panel.Visible = true;
-                panel.Activate();
-            }
+            _context.DockPanels.ShowDockPanel(LocatorDockPanel.DefaultDockName,true,true);
+           
         }
 
        

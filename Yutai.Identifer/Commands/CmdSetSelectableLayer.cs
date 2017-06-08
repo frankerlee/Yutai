@@ -36,8 +36,8 @@ namespace Yutai.Plugins.Identifer.Commands
             base.m_caption = "设置可选图层";
             base.m_category = "Query";
             base.m_bitmap = Properties.Resources.icon_set_selectable;
-            base.m_name = "Query.Setting.SetSelectableLayer";
-            base._key = "Query.Setting.SetSelectableLayer";
+            base.m_name = "Query_ccSetting_SetSelectableLayer";
+            base._key = "Query_ccSetting_SetSelectableLayer";
             base.m_toolTip = "设置可选图层";
             base.m_checked = false;
             base.m_enabled = true;

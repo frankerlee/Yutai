@@ -14,6 +14,7 @@ using Syncfusion.Windows.Forms.Grid;
 using Syncfusion.Windows.Forms.Grid.Grouping;
 using Yutai.ArcGIS.Common;
 using Yutai.ArcGIS.Common.Helpers;
+using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Services;
 using Yutai.Services.Serialization;
@@ -30,6 +31,8 @@ namespace Yutai.Plugins.Locator.Views
         private IMapControlEvents2_Event mapEvent;
         private IMap _map;
         private int _searchCount = 0;
+
+        
         public LocatorDockPanel(IAppContext context)
         {
             if (context == null) throw new ArgumentNullException("context");
@@ -329,5 +332,15 @@ namespace Yutai.Plugins.Locator.Views
             }
             _oldRow = rec.Id;
         }
+
+        public override Bitmap Image { get { return Properties.Resources.icon_locator_small; } }
+        public override string Caption {
+            get { return "位置查看器"; }
+            set { Caption = value; } }
+        public override DockPanelState DefaultDock { get {return DockPanelState.Right;} }
+        public override string DockName { get { return DefaultDockName; } }
+        public virtual string DefaultNestDockName { get { return ""; } }
+        public const string DefaultDockName = "Plug_Locatoe_Result";
+
     }
 }

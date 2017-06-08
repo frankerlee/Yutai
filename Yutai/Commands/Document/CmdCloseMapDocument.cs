@@ -29,7 +29,7 @@ namespace Yutai.Commands.Document
             base.m_category = "Document";
             base.m_bitmap = Properties.Resources.icon_project_open;
             base.m_name = "File.Mxd.CloseMXD";
-            base._key = "File.Mxd.CloseMXD";
+            base._key = "File_Mxd_CloseMXD";
             base.m_toolTip = "关闭二维文档";
             base.m_checked = false;
             base.m_enabled = true;

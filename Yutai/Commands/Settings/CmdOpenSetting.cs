@@ -34,10 +34,10 @@ namespace Yutai.Commands.Settings
         public override void OnCreate(object hook)
         {
             base.m_caption = "设置";
-            base.m_category = "Setting";
+            base.m_category = "设置";
             base.m_bitmap = Properties.Resources.icon_open_setting;
-            base.m_name = "Setting.Common.OpenSetting";
-            base._key = "Setting.Common.OpenSetting";
+            base.m_name = "Setting_OpenSetting";
+            base._key = "Setting_OpenSetting";
             base.m_toolTip = "设置";
             base.m_checked = false;
             base.m_enabled = true;
@@ -48,7 +48,7 @@ namespace Yutai.Commands.Settings
         }
 
       
-        public void OnClick()
+        public override void OnClick()
         {
             _context.Config.LoadAllConfigPages = true;
             var model = _context.Container.GetInstance<ConfigViewModel>();

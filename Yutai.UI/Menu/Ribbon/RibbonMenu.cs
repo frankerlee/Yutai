@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Xml;
 using ESRI.ArcGIS.SystemUI;
 using Syncfusion.Windows.Forms.Tools;
 using Yutai.Plugins;
@@ -28,10 +30,11 @@ namespace Yutai.UI.Menu.Ribbon
 
         public void ChangeCurrentTool(string oldToolName, string nowToolName)
         {
-            IRibbonMenuItem oldItem = string.IsNullOrEmpty(oldToolName) ? null : FindItem(oldToolName);
-            IRibbonMenuItem newItem = string.IsNullOrEmpty(nowToolName) ? null : FindItem(nowToolName);
-            if (oldItem != null) ((ToolStripButton) oldItem.ToolStripItem).Checked = false;
-            if (newItem != null) ((ToolStripButton)newItem.ToolStripItem).Checked = true;
+            _menuIndex.SetCurrentTool(oldToolName, nowToolName);
+            //IRibbonMenuItem oldItem = string.IsNullOrEmpty(oldToolName) ? null : FindItem(oldToolName);
+            //IRibbonMenuItem newItem = string.IsNullOrEmpty(nowToolName) ? null : FindItem(nowToolName);
+            //if (oldItem != null) ((ToolStripButton) oldItem.ToolStripItem).Checked = false;
+            //if (newItem != null) ((ToolStripButton)newItem.ToolStripItem).Checked = true;
         }
 
         public void UpdateMenu()
@@ -41,7 +44,12 @@ namespace Yutai.UI.Menu.Ribbon
 
         public void ReorderTabs()
         {
-            _menuIndex.ReorderTabs();
+            //_menuIndex.ReorderTabs();
+        }
+
+        public void AddCommands(XmlDocument xmlDoc, IEnumerable<YutaiCommand> commands)
+        {
+            _menuIndex.AddItems(xmlDoc, commands);
         }
 
         public IRibbonMenuItem FindItem(string key)
@@ -61,7 +69,7 @@ namespace Yutai.UI.Menu.Ribbon
 
         public void AddCommand(YutaiCommand command)
         {
-            _menuIndex.AddItem(command);
+            //_menuIndex.AddItem(command);
         }
 
         public void Remove(IRibbonItem item)

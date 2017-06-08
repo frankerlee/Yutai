@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Events;
 
@@ -9,17 +10,17 @@ namespace Yutai.Plugins.Interfaces
     {
         event EventHandler<MenuItemEventArgs> ItemClicked;
         bool NeedsToolTip { get; }
-        string GetParentName(string pName);
-        void AddItem(YutaiCommand command);
-        bool ItemExists(string itemName);
+   
         IRibbonMenuItem FindItem(string key);
         void Remove(string key);
         void RemoveItemsForPlugin(PluginIdentity pluginIdentity);
         IEnumerable<IRibbonMenuItem> ItemsForPlugin(PluginIdentity pluginIdentity);
         void FireItemClicked(object sender, MenuItemEventArgs e);
         void Clear();
-        void ReorderTabs();
+    
         void UpdateMenu();
         IEnumerable<IRibbonMenuItem> RibbonMenuItems { get; }
+        void AddItems(XmlDocument xmlDoc, IEnumerable<YutaiCommand> commands);
+        void SetCurrentTool(string oldToolName, string nowToolName);
     }
 }

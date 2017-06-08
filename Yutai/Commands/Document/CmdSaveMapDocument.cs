@@ -29,7 +29,7 @@ namespace Yutai.Commands.Document
             base.m_category = "Document";
             base.m_bitmap = Properties.Resources.icon_save;
             base.m_name = "File.Mxd.SaveMXD";
-            base._key = "File.Mxd.SaveMXD";
+            base._key = "File_Mxd_SaveMXD";
             base.m_toolTip = "保存二维文档";
             base.m_checked = false;
             base.m_enabled = true;

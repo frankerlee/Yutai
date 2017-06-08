@@ -27,7 +27,7 @@ namespace Yutai.Plugins.Locator.Menu
             //{
                 _commands = new List<YutaiCommand>()
                 {
-                    new YutaiMenuCommand(RibbonItemType.ToolStrip, "View", "View.Locator", "View.Locator", "定位器", "", ""),
+                    
                      new CmdStartLocator(_context) as YutaiCommand
                      
                 };

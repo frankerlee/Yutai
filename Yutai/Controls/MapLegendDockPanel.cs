@@ -9,6 +9,7 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using Yutai.Commands.MapLegend;
 using Yutai.Plugins.Concrete;
+using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Mvp;
 using Yutai.UI.Controls;
@@ -28,7 +29,9 @@ namespace Yutai.Controls
         private ILayer _selectedLayer;
         private List<YutaiCommand> _commands;
         private esriTOCControlItem _selectedItemType;
+        private string _caption;
 
+        public static string DefaultDockName = "Dock_Main_MapLegend";
         public MapLegendDockPanel(IAppContext context)
         {
             if (context == null) throw new ArgumentNullException("context");
@@ -39,6 +42,14 @@ namespace Yutai.Controls
             /* legendControl1.LayerMouseUp += LegendLayerMouseUp;
              legendControl1.GroupMouseUp += LegendGroupMouseUp;*/
             axTOCControl1.OnMouseDown += AxTocControl1OnOnMouseDown;
+            _caption = "二维图例";
+            Image = Properties.Resources.icon_maplegend;
+        }
+
+
+        public override string DockName
+        {
+            get { return "Dock_Main_MapLegend"; }
         }
 
         private void InitContextMenu()
@@ -238,5 +249,14 @@ namespace Yutai.Controls
         {
             get { return pTocItem; }
         }
+
+        public override Bitmap Image { get; }
+
+        public override string Caption { get { return _caption; } set { _caption = value; } }
+
+        public override DockPanelState DefaultDock { get { return DockPanelState.Left; } }
+
+        public override Size DefaultSize { get { return new Size(200,300); } }
+        
     }
 }

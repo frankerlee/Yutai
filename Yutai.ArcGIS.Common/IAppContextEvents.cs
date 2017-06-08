@@ -69,5 +69,6 @@ namespace Yutai.ArcGIS.Common
         event OnApplicationClosedHandler OnApplicationClosed;
 
         event MapReplacedHandler MapReplaced;
+
     }
 }

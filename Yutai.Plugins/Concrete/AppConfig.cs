@@ -61,11 +61,11 @@ namespace Yutai.Plugins.Concrete
             get
             {
                 return new List<Guid>
-                {
-                    new Guid("e7598649-d49b-45fa-b020-57e2dd777337") ,//信息查看器
-                    new Guid("2b81c89a-ee45-4276-9dc1-72bbbf07f53f"),//定位器
-                    new Guid("01f8e32a-5837-431f-9c1b-5d0f195fb93e"),// 书签管理
-                    new Guid("4a3bcaab-9d3e-4ca7-a19d-7ee08fb0629e")// 编辑
+                { new Guid("2b81c89a-ee45-4276-9dc1-72bbbf07f53f"),//定位器
+                   new Guid("e7598649-d49b-45fa-b020-57e2dd777337") ,//信息查看器
+                   
+                   new Guid("01f8e32a-5837-431f-9c1b-5d0f195fb93e"),// 书签管理
+                  new Guid("4a3bcaab-9d3e-4ca7-a19d-7ee08fb0629e")// 编辑
                 };
                
             }
@@ -299,6 +299,8 @@ namespace Yutai.Plugins.Concrete
         }
 
         public bool LoadAllConfigPages { get; set; }
+        public double Tolerance { get; set; }
+        public double SnapTolerance { get; set; }
 
 
         internal void SetDefaults()

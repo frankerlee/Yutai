@@ -1,0 +1,378 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$Localizable" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="rdoPolygonPlacementMethod.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="pictureEdit1.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <assembly alias="System" name="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$GridSize" type="System.Drawing.Size, System.Drawing">
+    <value>8, 8</value>
+  </data>
+  <data name="$Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="pictureEdit1.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="pictureEdit2.EditValue" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk0eDQAAAAAAAHYAAAAoAAAASgAAAFEAAAABAAQAAAAAAAAAAADEDgAAxA4AABAAAAAQAAAAAAAA/wAA
+        gP8AgAD/AICA/4AAAP+AAID/gIAA/8DAwP+AgID/AAD//wD/AP8A/////wAA//8A/////wD//////wAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPv78RH7+/vxEREb+/v7+/v7+/D7+w
+        vw+/v7+/v7+/v7+/sb+wAAAAC/vxEfv7+/v7ERER+/v7+/v7+/AL8PAL+/v7+/v7+/v7+/Eb8AAAAA+/
+        ER+/v7+/v7+xERG/v7+/v7+/vw8AvwC/v7+/v7+/v7+/EbAAAAAL8RH7+/v7+/v7+/EREfv7+/v7+/sL
+        C/D7C/v7+/v7+/v7+/HwAAAAAREfv7+/v7+/v7+/sRERv7+/v7+/sL8AvwCwv7+/v7+/v7+xEAAAAAER
+        +/v7+/v7+/v7+/vxERH7+/v7+/v7CwDwAAv7+/v7+/v7+xAAAAABv7+/v7+/v7+/v7+/v7ERER+/v7+/
+        vwC/sLAPv7+/v7+/v7+wAAAAC/v7+/v7+/v7+/v7+/v78RERG/v7+/vwC/AL+wsL+/v7+/v78AAAAA+/
+        v7+/v7+/v7+/v7+/v7+/EREfv7+/v7+wD78AAL+/v7+/v7AAAAAL+/v7+/v7+/v7+/v7+/v7+/sRERv7
+        +/v78Pv7CwD7+/v7+/vwAAAAD7+/v7+/v7+/v7+/v7+/v7+/vxERH7+/v7+/vwC/v7+/v7+/sAAAAAH7
+        +/v7+/v7+/v7+/v7+/v7+/v7EREb+/v7+/sA+/v7+/v7+/AAAAABv7+/v7+/v7+/v7+/v7+/v7+/v78R
+        ERG/v7+/D7+/v7+/v78QAAAAAfv7+/v7+/v7+/v7+/v7+/v7+/v7+xEREfv7+/v7+/v7+/vxEAAAAAEf
+        v7+/v7+/v7+/v7+/v7+/v7+/v7+/sRERv7+/v7+/v7+/ERAAAAABG/v7+/v7+/v7+/v7+/v7+/v7+/v7
+        +/vxERH7+/v7+/v78RHwAAAAAR+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7EREb+/v7+/v7Ef8AAAAAEb
+        +/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v78RER+/v7+/sR//AAAAABEb+/v7+/v7+/v7+/v7+/v7+/v7+/
+        v7+/v7+xEREfv7+xEf/wAAAABhH7+/v7+/v78AAL+/v7+/v7+/v7+/v7+/v7+/ERERv78R//8AAAAAdh
+        v7+/v7+/v7+/DwAAv7+/v7+/v7+/v7+/v7+/vxERHxH///AAAAAGcRv7+/v7+/vw+wv78PD7+/v7+/v7
+        +/v7+/v7+/v7ERER///wAAAAB2Efv7+/v7+/sAAPD7AAAL+/v7+/v7+/v7+/v7+/v78RH///8AAAAAZx
+        G/v7+/v7+wD7+wAAC/DwAAv7+/v7+/v7+/v7+/v78R////AAAAAHYR+/v7+/v78AALAPvw8AsL8Av7C/
+        v7+/v7+/v7+/vxH////wAAAABnYR+/v7+/v7+/DwAAAA+wD7AAAA+/v7+/v7+/v7+/sR////8AAAAAdn
+        Eb+/v7+/v7+/v78Avw8AAL8PALAAD7+/v7+/v7+xH/////AAAAAGdhH7+/v7+/v7+/v78AALC/v7Cwv7
+        +wv7+/v7+/v78R/////wAAAAB2cRv7+/v7+/v7+/v7+/v7AAvwAPsL8Pv7+/v7+/v7Ef////8AAAAAZ2
+        ERv7+/v7+/v7+/v7+/v7+/vw+/AAC/v7+/v7+/vxH/////AAAAAHZyEfv7+/v7+/v7+/v7+/v7+/sL8A
+        v7+/v7+/v7+/Ef/////wAAAABnZxG/v7+/v7+/v7+/v7+/v7+/v7AAD7+/v7+/v7+xH/////8AAAAAdn
+        ZxG/v7+/v7+/v7+/v7+/v7+/v7+wv7+/v7+/v78R//////AAAAAGdnYR+/v7+/v7+/v7+/v7+/v7+/v7
+        +/v7+/v7+/v7Ef/////wAAAAB2dnEb+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/vxH/////8AAAAAZ2
+        dhH7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/sR//////AAAAAHZ2cRH7+/v7+/v7+/v7+/v7+/v7+/
+        v7+/v7+/v7+/ER/////wAAAABnZ2cRv7+/v7+/v7+/v7+/v7+/v7+/v7+/v78RERERH/////8AAAAAdn
+        Z2Efv7+/v7+/v7+/v7+/v7+/v7+/ERERERERERERH/////AAAAAGdnZxEfv7+/v7+/v7+/v7+/vxERER
+        EREREREb+/v7ER/////wAAAAB2dnZxG/v7+/v7+/v78RERERERERERG/v7+/v7+/v7Ef////8AAAAAZ2
+        dnYR+/v7+/ERERERERERERv7+/v7+/v7+/v7+/vxEP////AAAAAHZ2dnEREREREREREREb+/v7+/v7+/
+        v7+/v7+/v7+/sRD////wAAAABnZ2dhERERERG/v7+/v7+/v7+/v7+/v7+/v7+/v7+/ER////8AAAAAdn
+        Z2dhH7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/Ef////AAAAAGdnZ2cRv7+/v7+/v7+/v7+/v7+/v7
+        +/v7+/v7+/v7+xEf///wAAAAB2dnZ2Efv7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+xH///8AAAAAZ2
+        dnZxEfv7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v78RH///AAAAAHZ2dnZxG/v7+/v7+/v7+/v7+/v7+/
+        v7+/v7+/v7+/v78R///wAAAABnZ2dnYR+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7ER//8AAAAAdn
+        Z2dnEb+/v7+/v7+/v7+/v7+/v7+/v7+wD7+/v7+/v7ER//AAAAAGdnZ2dhEb+/v7+/v7+/v7+/v7+/v7
+        +/v7C/D7+/v7+/v7G//wAAAAB2dnZ2dhH7+/v7+/v7+/v7+/v7+/v78Avw+wv7+/v7+/EREf8AAAAAZ2
+        dnZ2cRv7+/v7+/v7+/v7+/v78Av7AAsAC/v7+/v78REREfAAAAAHZ2dnZ2Efv7+/v7+/v7+/v7+/vw+w
+        sLAPsL8Pv7+/sREfvxEQAAAABnZ2dnZxEfv7+/v7+/v7+/v7AAsL8PsLC/sA+/v7+xER+/vxEAAAAAdn
+        Z2dnZxG/v7+/v7+/v7+/vw+wAA+/sAC/v7+/vxERv7+/vxAAAAAGdnZ2dnYR+/v7+/v7+/vwAPsL8PD7
+        C/sL+/v7+/ERG/v7+/vwAAAAB2dnZ2dnEb+/v7+/v7+/sL8PsAC/AL+/v7+/v7ERH7+/v7+/sAAAAAZ2
+        dnZ2dhH7+/v7+/sAC/D7C/D7C/v7+/v7+/sREfv7+/v7+/AAAAAHZ2dnZ2dhH7+/v7+/D7C/AA+wAL+/
+        v7+/v78REb+/v7+/v7+wAAAABnZ2dnZ2cRv7+/v7+wvw+wvw+/v7+/v7+/vxERv7+/v7+/v78AAAAAdn
+        Z2dnZ2Efv7+/v7+wAL+wD7+/v7+/v7+/ER+/v7+/v7+/v7AAAAAGdnZ2dnZxG/v7+/v78PsL+/v7+/v7
+        +/v7ERH7+/v7+/v7+/vwAAAAB2dnZ2dnYRG/v7+/v78Av7+/v7+/v7+/sREfv7+/v7+/v7+/sAAAAAZ2
+        dnZ2dnYR+/v7+/v7+/v7+/v7+/v78REb+/v7+/v7+/v7+/AAAAAHZ2dnZ2dnEb+/v7+/v7+/v7+/v7+/
+        vxERv7+/v7+/v7+/v7+wAAAABnZ2dnZ2dhH7+/v7+/v7+/v7+/v7+xER+/v7+/v78Pv7+/v78AAAAAdn
+        Z2dnZ2dhH7+/v7+/v7+/v7+/v7ERH7+/v7+/v7APv7+/v7AAAAAGdnZ2dnZ2cRv7+/v7+/v7+/v7+/ER
+        G/v7+/v7+/v7APv7+/vwAAAAB2dnZ2dnZ2Efv7+/v7+/v7+/v78REb+/v7+/v78Pv78AAL+/sAAAAAZ2
+        dnZ2dnZxG/v7+/v7+/v7+/vxEfv7+/v7+/v7AAv78Av7+/AAAAAHZ2dnZ2dnYRG/v7+/v7+/v7+xER+/
+        v7+/v7+/v7APvwC/v7+wAAAABnZ2dnZ2dnYRG/v7+/v7+/v7ERH7+/v7+/v7+/ALAPsL+/v78AAAAAdn
+        Z2dnZ2dnYR+/v7+/v7+/ERG/v7+/v7+/vwAAALC/v7+/v7AAAAAGdnZ2dnZ2dnYR+/v7+/v78REb+/v7
+        +/v7+/D7C/sAC/v7+/sQAAAAB2dnZ2dnZ2dnER+/v7+/sREfv7+/v7+/v7+wDw+/v7+/v7+xEAAAAAZ2
+        dnZ2dnZ2dnER+/v7+xER+/v7+/v7+/sACwALC/v7+/v7ERAAAAAHZ2dnZ2dnZ2dnER+/vxERv7+/v7+/
+        v7+wvw+wvw+/v7+/sRGwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+</value>
+  </data>
+  <data name="pictureEdit2.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="pictureEdit3.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="$Name" xml:space="preserve">
+    <value>FillFeaturePlaceCtrl</value>
+  </data>
+  <data name="pictureEdit2.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="$SnapToGrid" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="pictureEdit1.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="chkPlaceOnlyInsidePolygon.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="chkPlaceOnlyInsidePolygon.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="chkPlaceOnlyInsidePolygon.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="pictureEdit3.EditValue" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk0eDQAAAAAAAHYAAAAoAAAASgAAAFEAAAABAAQAAAAAAAAAAADEDgAAxA4AABAAAAAQAAAAAAAA/wAA
+        gP8AgAD/AICA/4AAAP+AAID/gIAA/8DAwP+AgID/AAD//wD/AP8A/////wAA//8A/////wD//////wAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPv78RH/v7+xEREfv7+/v7+/v7C/vw
+        +wv7+/v7+/v7+/v78fvwAAAAC/vxEfu/v7+/ERERv7+/v7+/v7APsLAPv7+/v7+/v7+/v7EfsAAAAA+/
+        ER+/+/v7+/vxERH7+/v7+/v7+wsA+wD7+/v7+/v7+/v7EfAAAAAL8RH7+7+/v7+/v7EREb+/v7+/v78P
+        D7C/D7+/v7+/v7+/v7GwAAAAAREfv7/7+/v7+/v78RER+/v7+/v78PsA+wDw+/v7+/v7+/vxEAAAAAER
+        +/v7v7+/v7+/v7+xERG/v7+/v7+/DwCwAA+/v7+/v7+/vxAAAAABv7+/v/v7+/v7+/v7+/ERERv7+/v7
+        +wD78PAL+/v7+/v7+/vwAAAAC/v7+/u/v7+/v7+/v7+/sRERH7+/v7+wD7APvw8Pv7+/v7+/sAAAAA+/
+        v7+/+/v7+/v7+/v7+/v7EREb+/v7+/vwC/sAAPv7+/v7+/AAAAAL+/v7+7+/v7+/v7+/v7+/v78RER+/
+        v7+/sL+/DwC/v7+/v7+wAAAAD7+/v7/7+/v7+/v7+/v7+/v7+xERG/v7+/v7+wD7+/v7+/v78AAAAAH7
+        +/v7v7+/v7+/v7+/v7+/v7+/EREfv7+/v78Av7+/v7+/v7AAAAABv7+/v/v7+/v7+/v7+/v7+/v7+/sR
+        ERH7+/v7C/v7+/v7+/sQAAAAAfv7+/u/v7+/v7+/v7+/v7+/v7+/vxEREb+/v7+/v7+/v7+xEAAAAAEf
+        v7+/+/v7+/v7+/v7+/v7+/v7+/v78RER+/v7+/v7+/v7ERAAAAABG/v7+7+/v7+/v7+/v7+/v7+/v7+/
+        v7+xERG/v7+/v7+/sRHwAAAAAR+/v7/7+/v7+/v7+/v7+/v7+/v7+/v7+/EREfv7+/v7+/Ef8AAAAAEb
+        +/v7v7+/v7+/v7+/v7+/v7+/v7+/v7+/sRERv7+/v78R//AAAAABEb+/v/v7+/v7+/v7+/v7+/v7+/v7
+        +/v7+/vxEREb+/vxEf/wAAAABhH7+/u/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7ERER+/sR//8AAAAAdh
+        v7+/+/v7APvwC/sA+/AL+/sL8Av7+/v7+/v7+xERGxH///AAAAAGcRv7+7+/sL8PD7Cwvw8PsLAAAA+w
+        v7+/v7+/v7+/ERER///wAAAAB2Efv7/7+/v7C/vw8PsLC/Dw+wv78Pv7+/v7+/v7+/sRH///8AAAAAZx
+        G/v7v7+/vw+/sL8AvwAPvw8Pv7C/v7+/v7+/v7+/sR////AAAAAHYR+/v/v78AD7AAvw+wsL+/sLCwAL
+        +/v7+/v7+/v7+xH////wAAAABnYR+/u/v78Pv7C/sL8PD7C/sA+wv7+/v7+/v7+/v78R////8AAAAAdn
+        Eb+/+/v7AAvwAPsA+/AL+/sL8AD7+/v7+/v7+/vxH/////AAAAAGdhH7+7+/v7+/v7+/v7+/v7+/v7+/
+        v7+/v7+/v7+/sR/////wAAAAB2cRv7/7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/Ef////8AAAAAZ2
+        ERv7v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+xH/////AAAAAHZyEfv/v7+/v7+/v7+/v7+/v7+/v7
+        +/v7+/v7+/v7Ef/////wAAAABnZxG/u/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/vxH/////8AAAAAdn
+        ZxG/+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/sR//////AAAAAGdnYR+7+/v7+/v7+/v7+/v7+/v7+/
+        v7+/v7+/v7+/Ef/////wAAAAB2dnEb/7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+xH/////8AAAAAZ2
+        dhH7v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v78R//////AAAAAHZ2cRH/v7+/v7+/v7+/v7+/v7+/v7
+        +/v7+/v7+/v7ER/////wAAAABnZ2cRu/v7+/v7+/v7+/v7+/v7+/v7+/v7+/sRERERG/////8AAAAAdn
+        Z2Ef+/v7+/v7+/v7+/v7+/v7+/v7ERERERERERERH/////AAAAAGdnZxEb+/v7+/v7+/v7+/v7+xERER
+        EREREREfv7+/ER/////wAAAAB2dnZxH7+/v7+/v7+/sRERERERERERH7+/v7+/v7+/Ef////8AAAAAZ2
+        dnYRv7+/v7ERERERERERER+/v7+/v7+/v7+/v7+xEP////AAAAAHZ2dnEREREREREREREfv7+/v7+/v7
+        +/v7+/v7+/v78RD////wAAAABnZ2dhERERERG/u/v7+/v7+/v7+/v7+/v7+/v7+/v7ER////8AAAAAdn
+        Z2dhH7+/v7+/+/v7+/v7+/v7+/v7+/v7+/v7+/v7Ef////AAAAAGdnZ2cRv7+/v7+7+/v7+/v7+/v7+/
+        v7+/v7+/v7+/vxEf///wAAAAB2dnZ2Efv7+/v7/7+/v7+/v7+/v7+/v7+/v7+/v7+/vxH///8AAAAAZ2
+        dnZxEfv7+/v7v7+/v7+/v7+/v7+/v7+/v7+/v7+/sRH///AAAAAHZ2dnZxG/v7+/v/v7+/v7+/v7+/v7
+        +/v7+/v7+/v7+/sR///wAAAABnZ2dnYR+/v7+/u/v7+/v7+/v7+/v7+/v7+/v7+/v7+/ER//8AAAAAdn
+        Z2dnEb+/v7+/+/v7+/v7+/v7+/v7+/vwC/v7+/v7+/ER//AAAAAGdnZ2dhEb+/v7+7+/v7+/v7+/v7+/
+        v7+/D7C/v7+/v7+/H//wAAAAB2dnZ2dhH7+/v7/7+/v7+/v7+/v7+/sA+wvw+/v7+/v7EREf8AAAAAZ2
+        dnZ2cRv7+/v7v7+/v7+/v7+/sA+/AA8AD7+/v7+/sREREfAAAAAHZ2dnZ2Efv7+/v/v7+/v7+/v7+wvw
+        8PAL8PsL+/v78REb+xEQAAAABnZ2dnZxEfv7+/u/v7+/v7+/AA8PsL8PD78Av7+/vxERv7+xEAAAAAdn
+        Z2dnZxG/v7+/+/v7+/v7+wvwAAv78AD7+/v7+xER+/v7+xAAAAAGdnZ2dnYR+/v7+7+/v7+wAL8PsLC/
+        D78Pv7+/v7ERH7+/v7+wAAAAB2dnZ2dnEb+/v7/7+/v78PsL8AD7APv7+/v7+/ERG/v7+/v78AAAAAZ2
+        dnZ2dhH7+/v7v78AD7C/D7C/D7+/v7+/v78REb+/v7+/v7AAAAAHZ2dnZ2dhH7+/v/v7C/D7AAvwAPv7
+        +/v7+/sREfv7+/v7+/vwAAAABnZ2dnZ2cRv7+/u/vw+wvw+wv7+/v7+/v7+xER+/v7+/v7+/sAAAAAdn
+        Z2dnZ2Efv7+/+/vwAPvwC/v7+/v7+/v7ERv7+/v7+/v7+/AAAAAGdnZ2dnZxG/v7+7+/sL8Pv7+/v7+/
+        v7+/ERG/v7+/v7+/v7+wAAAAB2dnZ2dnYRG/v7/7+/sA+/v7+/v7+/v78REb+/v7+/v7+/v78AAAAAZ2
+        dnZ2dnYR+/v7v7+/v7+/v7+/v7+/sREfv7+/v7+/v7+/v7AAAAAHZ2dnZ2dnEb+/v/v7+/v7+/v7+/v7
+        +xER+/v7+/v7+/v7+/vwAAAABnZ2dnZ2dhH7+/u/v7+/v7+/v7+/vxERv7+/v7+/sL+/v7+/sAAAAAdn
+        Z2dnZ2dhH7+/+/v7+/v7+/v7+/ERG/v7+/v7+/AL+/v7+/AAAAAGdnZ2dnZ2cRv7+7+/v7+/v7+/v7ER
+        H7+/v7+/v7+/AL+/v7+wAAAAB2dnZ2dnZ2Efv7/7+/v7+/v7+/sREfv7+/v7+/sL+/sAAPv78AAAAAZ2
+        dnZ2dnZxG/v7v7+/v7+/v7+xEb+/v7+/v7+/AA+/sA+/v7AAAAAHZ2dnZ2dnYRG/v/v7+/v7+/vxERv7
+        +/v7+/v7+/AL+wD7+/vwAAAABnZ2dnZ2dnYRG/u/v7+/v7+/ERG/v7+/v7+/v7APAL8Pv7+/sAAAAAdn
+        Z2dnZ2dnYR+/+/v7+/v7ERH7+/v7+/v7+wAAAPD7+/v7+/AAAAAGdnZ2dnZ2dnYR+7+/v7+/sREfv7+/
+        v7+/v7C/D78AD7+/v78QAAAAB2dnZ2dnZ2dnER/7+/v78REb+/v7+/v7+/vwCwv7+/v7+/vxEAAAAAZ2
+        dnZ2dnZ2dnERv7+/vxERv7+/v7+/v78ADwAPD7+/v7+/ERAAAAAHZ2dnZ2dnZ2dnERv7+xER+/v7+/v7
+        +/vw+wvw+wv7+/v78RHwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+</value>
+  </data>
+  <data name="$TrayLargeIcon" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="pictureEdit1.EditValue" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk0eDQAAAAAAAHYAAAAoAAAASgAAAFEAAAABAAQAAAAAAAAAAADEDgAAxA4AABAAAAAQAAAAAAAA/wAA
+        gP8AgAD/AICA/4AAAP+AAID/gIAA/8DAwP+AgID/AAD//wD/AP8A/////wAA//8A/////wD//////wAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPv78RH7+/vxEREb+/v7+/v7+/v7+/
+        v7+/v7+/v7+/v7+/sb+wAAAAC/vxEfv7+/v7ERER+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/Eb8AAAAA+/
+        ER+/v7+/v7+xERG/v7+/v7+/v7+/v7+/v7+/v7+/v7+/EbAAAAAL8RH7+/v7+/v7+/EREfv7+/v7+/v7
+        +/v7+/v7+/v7+/v7+/HwAAAAAREfv7+/v7+/v7+/sRERv7+/v7+/v7+/v7+/v7+/v7+/v7+xEAAAAAER
+        +/v7+/v7+/v7+/vxERH7+/v7+/v7+/v7+/v7+/v7+/v7+xAAAAABv7+/v7+/v7+/v7+/v7ERER+/v7+/
+        v7+/v7+/v7+/v7+/v7+wAAAAC/v7+/v7+/v7+/v7+/v78RERG/v7+/v7+/v7+/v7+/v7+/v78AAAAA+/
+        v7+/v7+/v7+/v7+/v7+/EREfv7+/v7+/v7+/v7+/v7+/v7AAAAAL+/v7+/v7+/v7+/v7+/v7+/sRERv7
+        +/v7+/v7+/v7+/v7+/vwAAAAD7+/v7+/v7+/v7+/v7+/v7+/vxERH7+/v7+/v7+/v7+/v7+/sAAAAAH7
+        +/v7+/v7+/v7+/v7+/v7+/v7EREb+/v7+/v7+/v7+/v7+/AAAAABv7+/v7+/v7+/v7+/v7+/v7+/v78R
+        ERG/v7+/v7+/v7+/v78QAAAAAfv7+/v7+/v7+/v7+/v7+/v7+/v7+xEREfv7+/v7+/v7+/vxEAAAAAEf
+        v7+/v7+/v7+/v7+/v7+/v7+/v7+/sRERv7+/v7+/v7+/ERAAAAABG/v7+/v7+/v7+/v7+/v7+/v7+/v7
+        +/vxERH7+/v7+/v78RHwAAAAAR+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7EREb+/v7+/v7Ef8AAAAAEb
+        +/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v78RER+/v7+/sR//AAAAABEb+/v7+/v7+/v7+/v7+/v7+/v7+/
+        v7+/v7+xEREfv7+xEf/wAAAABhH7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/ERERv78R//8AAAAAdh
+        v7+/v7+/AL+wD78Av7APv78PsA+/v7+/v7+/vxERHxH///AAAAAGcRv7+/v78PsLC/Dw+wsL8PAAAAvw
+        +/v7+/v7+/v7ERER///wAAAAB2Efv7+/v7+/D7+wsL8PD7Cwvw+/sL+/v7+/v7+/v78RH///8AAAAAZx
+        G/v7+/v7+wv78PsA+wAL+wsL+/D7+/v7+/v7+/v78R////AAAAAHYR+/v7+/sAC/AA+wvw8Pv78PDwAP
+        v7+/v7+/v7+/vxH////wAAAABnYR+/v7+/sL+/D78PsLC/D78Avw+/v7+/v7+/v7+/sR////8AAAAAdn
+        Eb+/v7+/AA+wAL8Av7APv78PsAC/v7+/v7+/v7+xH/////AAAAAGdhH7+/v7+/v7+/v7+/v7+/v7+/v7
+        +/v7+/v7+/v78R/////wAAAAB2cRv7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7Ef////8AAAAAZ2
+        ERv7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/vxH/////AAAAAHZyEfv7+/v7+/v7+/v7+/v7+/v7+/
+        v7+/v7+/v7+/Ef/////wAAAABnZxG/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+xH/////8AAAAAdn
+        ZxG/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v78R//////AAAAAGdnYR+/v7+/v7+/v7+/v7+/v7+/v7
+        +/v7+/v7+/v7Ef/////wAAAAB2dnEb+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/vxH/////8AAAAAZ2
+        dhH7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/sR//////AAAAAHZ2cRH7+/v7+/v7+/v7+/v7+/v7+/
+        v7+/v7+/v7+/ER/////wAAAABnZ2cRv7+/v7+/v7+/v7+/v7+/v7+/v7+/v78RERERH/////8AAAAAdn
+        Z2Efv7+/v7+/v7+/v7+/v7+/v7+/ERERERERERERH/////AAAAAGdnZxEfv7+/v7+/v7+/v7+/vxERER
+        EREREREb+/v7ER/////wAAAAB2dnZxG/v7+/v7+/v78RERERERERERG/v7+/v7+/v7Ef////8AAAAAZ2
+        dnYR+/v7+/ERERERERERERv7+/v7+/v7+/v7+/vxEP////AAAAAHZ2dnEREREREREREREb+/v7+/v7+/
+        v7+/v7+/v7+/sRD////wAAAABnZ2dhERERERG/v7+/v7+/v7+/v7+/v7+/v7+/v7+/ER////8AAAAAdn
+        Z2dhH7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/Ef////AAAAAGdnZ2cRv7+/v7+/v7+/v7+/v7+/v7
+        +/v7+/v7+/v7+xEf///wAAAAB2dnZ2Efv7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+xH///8AAAAAZ2
+        dnZxEfv7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v78RH///AAAAAHZ2dnZxG/v7+/v7+/v7+/v7+/v7+/
+        v7+/v7+/v7+/v78R///wAAAABnZ2dnYR+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7ER//8AAAAAdn
+        Z2dnEb+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7ERv/AAAAAGdnZ2dhEb+/v7+/v7+/v7+/v7+/v7
+        +/v7+/v7+/v7+/v7G//wAAAAB2dnZ2dhH7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/EREf8AAAAAZ2
+        dnZ2cRv7+/sA+/AL+wD78Av7+wvwC/v7+/v7+/v78REREfAAAAAHZ2dnZ2Efv7+wvw8PsLC/Dw+wsAAA
+        D7C/v7+/v7+/sREfvxEQAAAABnZ2dnZxEfv7+/sL+/Dw+wsL8PD7Cwvw+/v7+/v7+xER+/vxEAAAAAdn
+        Z2dnZxG/v7+/D7+wvwC/AA+/Dw8AD7+/v7+/vxERv7+/vxAAAAAGdnZ2dnYR+/vwAPsAC/D7Cwv7+wsL
+        C/v7+/v7+/ERG/v7+/vwAAAAB2dnZ2dnEb+/vw+/sL+wvw8PsL+wDw+wv7+/v7ERH7+/v7+/sAAAAAZ2
+        dnZ2dhH7+/sAC/AA+wD78Av7+wvwC/v7+/sREfv7+/v7+/AAAAAHZ2dnZ2dhH7+/v7+/v7+/v7+/v7+/
+        v7+/v78REb+/v7+/v7+wAAAABnZ2dnZ2cRv7+/v7+/v7+/v7+/v7+/v7+/vxERv7+/v7+/v78AAAAAdn
+        Z2dnZ2Efv7+/v7+/v7+/v7+/v7+/v7+/ER+/v7+/v7+/v7AAAAAGdnZ2dnZxG/v7+/v7+/v7+/v7+/v7
+        +/v7ERH7+/v7+/v7+/vwAAAAB2dnZ2dnYRG/v7+/v7+/v7+/v7+/v7+/sREfv7+/v7+/v7+/sAAAAAZ2
+        dnZ2dnYR+/v7+/v7+/v7+/v7+/v78REb+/v7+/v7+/v7+/AAAAAHZ2dnZ2dnEb+/v7+/v7+/v7+/v7+/
+        vxERv7+/v7+/v7+/v7+wAAAABnZ2dnZ2dhH7+/v7+/v7+/v7+/v7+xER+/v7+/v7+/v7+/v78AAAAAdn
+        Z2dnZ2dhH7+/v7+/v7+/v7+/v7ERH7+/v7+/v7+/v7+/v7AAAAAGdnZ2dnZ2cRv7+/v7+/v7+/v7+/ER
+        G/v7+/v7+/v7+/v7+/vwAAAAB2dnZ2dnZ2Efv7+/v7+/v7+/v78REb+/v7+/v7+/v7+/v7+/sAAAAAZ2
+        dnZ2dnZxG/v7+/v7+/v7+/vxEfv7+/v7+/v7+/v7+/v7+/AAAAAHZ2dnZ2dnYRG/v7+/v7+/v7+xER+/
+        v7+/v7+/v7+/v7+/v7+wAAAABnZ2dnZ2dnYRG/v7+/v7+/v7ERH7+/v7+/v7+/v7+/v7+/v78AAAAAdn
+        Z2dnZ2dnYR+/v7+/v7+/ERG/v7+/v7+/v7+/v7+/v7+/v7AAAAAGdnZ2dnZ2dnYR+/v7+/v78REQC/sA
+        +/AL+wD7+/D7C/v7+/sQAAAAB2dnZ2dnZ2dnER+/v7+/sREfD7Cwvw8PsLC/DwAADw+/v7+xEAAAAAZ2
+        dnZ2dnZ2dnER+/v7+xER+/vw+/sLC/Dw+wsL8PsL+/v7ERAAAAAHZ2dnZ2dnZ2dnER+/vxERv7+/sL+/
+        D7APsAC/sLC/sL+/sRGwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+</value>
+  </data>
+  <data name="$DrawGrid" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$Language" type="System.Globalization.CultureInfo, mscorlib">
+    <value />
+  </data>
+  <data name="pictureEdit3.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="rdoPolygonPlacementMethod.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="$TrayHeight" type="System.Int32, mscorlib">
+    <value>80</value>
+  </data>
+  <data name="pictureEdit3.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="pictureEdit2.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="rdoPolygonPlacementMethod.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+</root>

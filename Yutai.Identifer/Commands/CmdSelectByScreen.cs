@@ -31,8 +31,8 @@ namespace Yutai.Plugins.Identifer.Commands
             this.m_caption = "全屏选择";
             this.m_category = "Query";
             this.m_message = "全屏选择";
-            this.m_name = "Query.SelectionTools.SelectByScreen";
-            this._key = "Query.SelectionTools.SelectByScreen";
+            this.m_name = "Query_SelectionTools_SelectByScreen";
+            this._key = "Query_SelectionTools_SelectByScreen";
             this.m_toolTip = "全屏选择";
             _context = context;
             base.DisplayStyleYT = DisplayStyleYT.ImageAndText;

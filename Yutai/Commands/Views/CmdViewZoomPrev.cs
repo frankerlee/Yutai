@@ -50,8 +50,8 @@ namespace Yutai.Commands.Views
             base.m_caption = "前一视图";
             base.m_category = "View";
             base.m_bitmap = Properties.Resources.img_zoom_prev24;
-            base.m_name = "View.Common.PreviousExtent";
-            base._key = "View.Common.PreviousExtent";
+            base.m_name = "View_PreviousExtent";
+            base._key = "View_PreviousExtent";
             base.m_toolTip = "前一视图";
             base.m_checked = false;
             base.m_enabled = true;
