@@ -18,7 +18,7 @@ namespace Yutai.Plugins.TableEditor.Editor
     {
         public event EventHandler<string> Close;
         public Header()
-        {
+        { 
             InitializeComponent();
         }
 

@@ -22,7 +22,7 @@ namespace Yutai.Plugins.TableEditor.Editor
         private VirtualGrid _virtualGrid;
         private IActiveViewEvents_Event _activeViewEventsEvent;
         public TablePage(IAppContext context, ITableEditorView view, IFeatureLayer featureLayer)
-        {
+        {  
             InitializeComponent();
             _context = context;
             _view = view;

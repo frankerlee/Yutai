@@ -110,7 +110,7 @@ namespace Yutai.Plugins.TableEditor.Editor
         }
 
         public void ClearTable()
-        {
+        { 
             m_pDataTable?.Rows.Clear();
         }
 
