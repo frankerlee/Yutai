@@ -42,7 +42,7 @@ namespace Yutai.Commands.Windows
             base.m_category = "Window";
             base.m_bitmap = Properties.Resources.icon_overview;
             base.m_name = "Window.Common.Overview";
-            base._key = "Window.Common.Overview";
+            base._key = "Window_Common_Overview";
             base.m_toolTip = "鹰眼视图";
             base.m_checked = false;
             base.m_enabled = true;

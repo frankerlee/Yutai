@@ -11,6 +11,7 @@ using ESRI.ArcGIS.Geometry;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Mvp;
+using Yutai.Plugins.Services;
 
 namespace Yutai.Plugins.Interfaces
 {
@@ -83,6 +84,7 @@ namespace Yutai.Plugins.Interfaces
         void ResetCurrentTool();
    
 
+        IBroadcasterService Broadcaster { get; }
     }
 
     public delegate void AfterDraw(IDisplay display, esriViewDrawPhase drawPhase);

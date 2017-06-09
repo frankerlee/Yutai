@@ -1,10 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// 项目名称 :  Yutai
+// 项目描述 :  
+// 类 名 称 :  CmdAttributeTable.cs
+// 版 本 号 :  
+// 说    明 :  
+// 作    者 :  
+// 创建时间 :  2017/06/06  16:33
+// 更新时间 :  2017/06/06  16:33
+
+using System;
 using DevExpress.XtraBars.Docking;
-using Yutai.Controls;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
@@ -13,20 +17,19 @@ using Yutai.UI.Docking;
 
 namespace Yutai.Commands.Windows
 {
-    class CmdLegendDock : YutaiCommand
+    public class CmdAttributeTable : YutaiCommand
     {
-        public CmdLegendDock(IAppContext context)
+        public CmdAttributeTable(IAppContext context)
         {
             OnCreate(context);
         }
 
         public override void OnClick()
         {
-            ISecureContext sContext = _context as ISecureContext;
-            DockPanel dock = _context.DockPanels.GetDockPanel(MapLegendDockPanel.DefaultDockName);
-            if (dock == null) return;
+            DockPanel dock = _context.DockPanels.GetDockPanel("Plug_TableEditor_View");
+            if (dock == null)
+                return;
             dock.Visible = !dock.Visible;
-
         }
 
         public override void OnClick(object sender, EventArgs args)
@@ -37,12 +40,12 @@ namespace Yutai.Commands.Windows
         public override void OnCreate(object hook)
         {
             _context = hook as IAppContext;
-            base.m_caption = "二维图例";
+            base.m_caption = "属性表";
             base.m_category = "Window";
-            base.m_bitmap = Properties.Resources.icon_maplegend;
-            base.m_name = "Window.Common.MapLegend";
-            base._key = "Window_Common_MapLegend";
-            base.m_toolTip = "二维图例";
+            base.m_bitmap = Properties.Resources.icon_attribute_table;
+            base.m_name = "Window.Common.AttributeTable";
+            base._key = "Window_Common_AttributeTable";
+            base.m_toolTip = "属性表";
             base.m_checked = false;
             base.m_enabled = true;
             base._itemType = RibbonItemType.Button;
