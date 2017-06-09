@@ -3,6 +3,9 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Xml;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
+using Yutai.ArcGIS.Common.Data;
 
 namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
 {

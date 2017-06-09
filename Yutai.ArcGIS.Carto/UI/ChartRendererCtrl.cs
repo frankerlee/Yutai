@@ -2,11 +2,15 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common.Symbol;
+using Yutai.ArcGIS.Common.SymbolLib;
+using Yutai.ArcGIS.Controls.SymbolUI;
 
 namespace Yutai.ArcGIS.Carto.UI
 {

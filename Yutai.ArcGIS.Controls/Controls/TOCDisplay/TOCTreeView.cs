@@ -3,8 +3,11 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using DevExpress.XtraBars;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
+using Yutai.ArcGIS.Common;
+using Yutai.ArcGIS.Common.BaseClasses;
 using Yutai.ArcGIS.Controls.SymbolUI;
 
 namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay

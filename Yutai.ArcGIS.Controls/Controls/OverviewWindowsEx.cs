@@ -4,11 +4,14 @@ using System.Configuration;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Xml;
+using DevExpress.XtraBars;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common;
+using Yutai.ArcGIS.Common.Overview;
 
 namespace Yutai.ArcGIS.Controls.Controls
 {
@@ -442,9 +445,9 @@ namespace Yutai.ArcGIS.Controls.Controls
             {
                 try
                 {
-                    this.m_pAVEnt.remove_ItemAdded(new IActiveViewEvents_ItemAddedEventHandler(this.pAVEnt_ItemAdded));
-                    this.m_pAVEnt.remove_ItemDeleted(new IActiveViewEvents_ItemDeletedEventHandler(this.pAVEnt_ItemDeleted));
-                    this.m_pAVEnt.remove_AfterDraw(new IActiveViewEvents_AfterDrawEventHandler(this.m_pAVEnt_AfterDraw));
+                    this.m_pAVEnt.ItemAdded-=(new IActiveViewEvents_ItemAddedEventHandler(this.pAVEnt_ItemAdded));
+                    this.m_pAVEnt.ItemDeleted-=(new IActiveViewEvents_ItemDeletedEventHandler(this.pAVEnt_ItemDeleted));
+                    this.m_pAVEnt.AfterDraw-=(new IActiveViewEvents_AfterDrawEventHandler(this.m_pAVEnt_AfterDraw));
                 }
                 catch
                 {
@@ -453,9 +456,9 @@ namespace Yutai.ArcGIS.Controls.Controls
             this.m_pAVEnt = this.m_pMainMapControl.ActiveView as IActiveViewEvents_Event;
             try
             {
-                this.m_pAVEnt.add_ItemAdded(new IActiveViewEvents_ItemAddedEventHandler(this.pAVEnt_ItemAdded));
-                this.m_pAVEnt.add_ItemDeleted(new IActiveViewEvents_ItemDeletedEventHandler(this.pAVEnt_ItemDeleted));
-                this.m_pAVEnt.add_AfterDraw(new IActiveViewEvents_AfterDrawEventHandler(this.m_pAVEnt_AfterDraw));
+                this.m_pAVEnt.ItemAdded+=(new IActiveViewEvents_ItemAddedEventHandler(this.pAVEnt_ItemAdded));
+                this.m_pAVEnt.ItemDeleted+=(new IActiveViewEvents_ItemDeletedEventHandler(this.pAVEnt_ItemDeleted));
+                this.m_pAVEnt.AfterDraw+=(new IActiveViewEvents_AfterDrawEventHandler(this.m_pAVEnt_AfterDraw));
             }
             catch
             {
@@ -701,9 +704,9 @@ namespace Yutai.ArcGIS.Controls.Controls
                 {
                     try
                     {
-                        this.m_pAVEnt.remove_ItemAdded(new IActiveViewEvents_ItemAddedEventHandler(this.pAVEnt_ItemAdded));
-                        this.m_pAVEnt.remove_ItemDeleted(new IActiveViewEvents_ItemDeletedEventHandler(this.pAVEnt_ItemDeleted));
-                        this.m_pAVEnt.remove_AfterDraw(new IActiveViewEvents_AfterDrawEventHandler(this.m_pAVEnt_AfterDraw));
+                        this.m_pAVEnt.ItemAdded-=(new IActiveViewEvents_ItemAddedEventHandler(this.pAVEnt_ItemAdded));
+                        this.m_pAVEnt.ItemDeleted-=(new IActiveViewEvents_ItemDeletedEventHandler(this.pAVEnt_ItemDeleted));
+                        this.m_pAVEnt.AfterDraw-=(new IActiveViewEvents_AfterDrawEventHandler(this.m_pAVEnt_AfterDraw));
                     }
                     catch
                     {
@@ -725,9 +728,9 @@ namespace Yutai.ArcGIS.Controls.Controls
                 {
                     this.m_pEnvelope = this.m_pMainMapControl.Extent;
                     this.m_pAVEnt = this.m_pMainMapControl.ActiveView as IActiveViewEvents_Event;
-                    this.m_pAVEnt.add_ItemAdded(new IActiveViewEvents_ItemAddedEventHandler(this.pAVEnt_ItemAdded));
-                    this.m_pAVEnt.add_ItemDeleted(new IActiveViewEvents_ItemDeletedEventHandler(this.pAVEnt_ItemDeleted));
-                    this.m_pAVEnt.add_AfterDraw(new IActiveViewEvents_AfterDrawEventHandler(this.m_pAVEnt_AfterDraw));
+                    this.m_pAVEnt.ItemAdded+=(new IActiveViewEvents_ItemAddedEventHandler(this.pAVEnt_ItemAdded));
+                    this.m_pAVEnt.ItemDeleted+=(new IActiveViewEvents_ItemDeletedEventHandler(this.pAVEnt_ItemDeleted));
+                    this.m_pAVEnt.AfterDraw+=(new IActiveViewEvents_AfterDrawEventHandler(this.m_pAVEnt_AfterDraw));
                     this.m_pMainMapControl.OnExtentUpdated += new IMapControlEvents2_Ax_OnExtentUpdatedEventHandler(this.m_pMainMapControl_OnExtentUpdated);
                     this.m_pMainMapControl.OnMapReplaced += new IMapControlEvents2_Ax_OnMapReplacedEventHandler(this.m_pMainMapControl_OnMapReplaced);
                     if (this.m_CanDo)

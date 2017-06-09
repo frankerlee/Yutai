@@ -9,6 +9,9 @@ using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common;
+using Yutai.ArcGIS.Common.Overview;
+using Yutai.ArcGIS.Framework.Docking;
 
 namespace Yutai.ArcGIS.Controls.Controls
 {
@@ -252,9 +255,9 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         private void Init()
         {
-            (this.m_pMainMapControl as IMapControlEvents2_Event).add_OnMapReplaced(new IMapControlEvents2_OnMapReplacedEventHandler(this.OverviewWindowCtrl_OnMapReplaced));
-            (this.m_pMainMapControl as IMapControlEvents2_Event).add_OnViewRefreshed(new IMapControlEvents2_OnViewRefreshedEventHandler(this.frmOverwindows_OnViewRefreshed));
-            (this.m_pMainMapControl as IMapControlEvents2_Event).add_OnExtentUpdated(new IMapControlEvents2_OnExtentUpdatedEventHandler(this.frmOverwindows_OnExtentUpdated));
+            (this.m_pMainMapControl as IMapControlEvents2_Event).OnMapReplaced+=(new IMapControlEvents2_OnMapReplacedEventHandler(this.OverviewWindowCtrl_OnMapReplaced));
+            (this.m_pMainMapControl as IMapControlEvents2_Event).OnViewRefreshed+=(new IMapControlEvents2_OnViewRefreshedEventHandler(this.frmOverwindows_OnViewRefreshed));
+            (this.m_pMainMapControl as IMapControlEvents2_Event).OnExtentUpdated+=(new IMapControlEvents2_OnExtentUpdatedEventHandler(this.frmOverwindows_OnExtentUpdated));
             if (this.m_OverwindowsLayersType == OverwindowsLayersType.LayerSettings)
             {
                 this.AddLayer();
@@ -639,12 +642,12 @@ namespace Yutai.ArcGIS.Controls.Controls
             {
                 try
                 {
-                    (this.m_pMainAvtiveView as IActiveViewEvents_Event).remove_ItemAdded(new IActiveViewEvents_ItemAddedEventHandler(this.OverviewWindow_ItemAdded));
-                    (this.m_pMainAvtiveView as IActiveViewEvents_Event).remove_ItemDeleted(new IActiveViewEvents_ItemDeletedEventHandler(this.OverviewWindow_ItemDeleted));
-                    (this.m_pMainAvtiveView as IActiveViewEvents_Event).remove_ItemReordered(new IActiveViewEvents_ItemReorderedEventHandler(this.OverviewWindow_ItemReordered));
-                    (this.m_pMainAvtiveView as IActiveViewEvents_Event).remove_AfterDraw(new IActiveViewEvents_AfterDrawEventHandler(this.OverviewWindow_AfterDraw));
-                    (this.m_pMainAvtiveView as IActiveViewEvents_Event).remove_ContentsCleared(new IActiveViewEvents_ContentsClearedEventHandler(this.OverviewWindow_ContentsCleared));
-                    (this.m_pMainAvtiveView as IActiveViewEvents_Event).remove_ContentsChanged(new IActiveViewEvents_ContentsChangedEventHandler(this.frmOverviewWindow_ContentsChanged));
+                    (this.m_pMainAvtiveView as IActiveViewEvents_Event).ItemAdded-=(new IActiveViewEvents_ItemAddedEventHandler(this.OverviewWindow_ItemAdded));
+                    (this.m_pMainAvtiveView as IActiveViewEvents_Event).ItemDeleted-=(new IActiveViewEvents_ItemDeletedEventHandler(this.OverviewWindow_ItemDeleted));
+                    (this.m_pMainAvtiveView as IActiveViewEvents_Event).ItemReordered-=(new IActiveViewEvents_ItemReorderedEventHandler(this.OverviewWindow_ItemReordered));
+                    (this.m_pMainAvtiveView as IActiveViewEvents_Event).AfterDraw-=(new IActiveViewEvents_AfterDrawEventHandler(this.OverviewWindow_AfterDraw));
+                    (this.m_pMainAvtiveView as IActiveViewEvents_Event).ContentsCleared-=(new IActiveViewEvents_ContentsClearedEventHandler(this.OverviewWindow_ContentsCleared));
+                    (this.m_pMainAvtiveView as IActiveViewEvents_Event).ContentsChanged-=(new IActiveViewEvents_ContentsChangedEventHandler(this.frmOverviewWindow_ContentsChanged));
                 }
                 catch
                 {
@@ -655,12 +658,12 @@ namespace Yutai.ArcGIS.Controls.Controls
             this.m_pEnvelope = this.m_pMainAvtiveView.Extent;
             try
             {
-                (this.m_pMainAvtiveView as IActiveViewEvents_Event).add_ItemAdded(new IActiveViewEvents_ItemAddedEventHandler(this.OverviewWindow_ItemAdded));
-                (this.m_pMainAvtiveView as IActiveViewEvents_Event).add_ItemDeleted(new IActiveViewEvents_ItemDeletedEventHandler(this.OverviewWindow_ItemDeleted));
-                (this.m_pMainAvtiveView as IActiveViewEvents_Event).add_ItemReordered(new IActiveViewEvents_ItemReorderedEventHandler(this.OverviewWindow_ItemReordered));
-                (this.m_pMainAvtiveView as IActiveViewEvents_Event).add_AfterDraw(new IActiveViewEvents_AfterDrawEventHandler(this.OverviewWindow_AfterDraw));
-                (this.m_pMainAvtiveView as IActiveViewEvents_Event).add_ContentsCleared(new IActiveViewEvents_ContentsClearedEventHandler(this.OverviewWindow_ContentsCleared));
-                (this.m_pMainAvtiveView as IActiveViewEvents_Event).add_ContentsChanged(new IActiveViewEvents_ContentsChangedEventHandler(this.frmOverviewWindow_ContentsChanged));
+                (this.m_pMainAvtiveView as IActiveViewEvents_Event).ItemAdded+=(new IActiveViewEvents_ItemAddedEventHandler(this.OverviewWindow_ItemAdded));
+                (this.m_pMainAvtiveView as IActiveViewEvents_Event).ItemDeleted+=(new IActiveViewEvents_ItemDeletedEventHandler(this.OverviewWindow_ItemDeleted));
+                (this.m_pMainAvtiveView as IActiveViewEvents_Event).ItemReordered+=(new IActiveViewEvents_ItemReorderedEventHandler(this.OverviewWindow_ItemReordered));
+                (this.m_pMainAvtiveView as IActiveViewEvents_Event).AfterDraw+=(new IActiveViewEvents_AfterDrawEventHandler(this.OverviewWindow_AfterDraw));
+                (this.m_pMainAvtiveView as IActiveViewEvents_Event).ContentsCleared+=(new IActiveViewEvents_ContentsClearedEventHandler(this.OverviewWindow_ContentsCleared));
+                (this.m_pMainAvtiveView as IActiveViewEvents_Event).ContentsChanged+=(new IActiveViewEvents_ContentsChangedEventHandler(this.frmOverviewWindow_ContentsChanged));
             }
             catch
             {
@@ -800,12 +803,12 @@ namespace Yutai.ArcGIS.Controls.Controls
                 {
                     try
                     {
-                        (this.m_pMainAvtiveView as IActiveViewEvents_Event).remove_ItemAdded(new IActiveViewEvents_ItemAddedEventHandler(this.OverviewWindow_ItemAdded));
-                        (this.m_pMainAvtiveView as IActiveViewEvents_Event).remove_ItemDeleted(new IActiveViewEvents_ItemDeletedEventHandler(this.OverviewWindow_ItemDeleted));
-                        (this.m_pMainAvtiveView as IActiveViewEvents_Event).remove_ItemReordered(new IActiveViewEvents_ItemReorderedEventHandler(this.OverviewWindow_ItemReordered));
-                        (this.m_pMainAvtiveView as IActiveViewEvents_Event).remove_AfterDraw(new IActiveViewEvents_AfterDrawEventHandler(this.OverviewWindow_AfterDraw));
-                        (this.m_pMainAvtiveView as IActiveViewEvents_Event).remove_ContentsCleared(new IActiveViewEvents_ContentsClearedEventHandler(this.OverviewWindow_ContentsCleared));
-                        (this.m_pMainAvtiveView as IActiveViewEvents_Event).remove_ContentsChanged(new IActiveViewEvents_ContentsChangedEventHandler(this.frmOverviewWindow_ContentsChanged));
+                        (this.m_pMainAvtiveView as IActiveViewEvents_Event).ItemAdded-=(new IActiveViewEvents_ItemAddedEventHandler(this.OverviewWindow_ItemAdded));
+                        (this.m_pMainAvtiveView as IActiveViewEvents_Event).ItemDeleted-=(new IActiveViewEvents_ItemDeletedEventHandler(this.OverviewWindow_ItemDeleted));
+                        (this.m_pMainAvtiveView as IActiveViewEvents_Event).ItemReordered-=(new IActiveViewEvents_ItemReorderedEventHandler(this.OverviewWindow_ItemReordered));
+                        (this.m_pMainAvtiveView as IActiveViewEvents_Event).AfterDraw-=(new IActiveViewEvents_AfterDrawEventHandler(this.OverviewWindow_AfterDraw));
+                        (this.m_pMainAvtiveView as IActiveViewEvents_Event).ContentsCleared-=(new IActiveViewEvents_ContentsClearedEventHandler(this.OverviewWindow_ContentsCleared));
+                        (this.m_pMainAvtiveView as IActiveViewEvents_Event).ContentsChanged-=(new IActiveViewEvents_ContentsChangedEventHandler(this.frmOverviewWindow_ContentsChanged));
                     }
                     catch
                     {
@@ -816,9 +819,9 @@ namespace Yutai.ArcGIS.Controls.Controls
                 {
                     try
                     {
-                        (this.m_pMainMapControl as IMapControlEvents2_Event).remove_OnMapReplaced(new IMapControlEvents2_OnMapReplacedEventHandler(this.OverviewWindowCtrl_OnMapReplaced));
-                        (this.m_pMainMapControl as IMapControlEvents2_Event).remove_OnViewRefreshed(new IMapControlEvents2_OnViewRefreshedEventHandler(this.frmOverwindows_OnViewRefreshed));
-                        (this.m_pMainMapControl as IMapControlEvents2_Event).remove_OnExtentUpdated(new IMapControlEvents2_OnExtentUpdatedEventHandler(this.frmOverwindows_OnExtentUpdated));
+                        (this.m_pMainMapControl as IMapControlEvents2_Event).OnMapReplaced-=(new IMapControlEvents2_OnMapReplacedEventHandler(this.OverviewWindowCtrl_OnMapReplaced));
+                        (this.m_pMainMapControl as IMapControlEvents2_Event).OnViewRefreshed-=(new IMapControlEvents2_OnViewRefreshedEventHandler(this.frmOverwindows_OnViewRefreshed));
+                        (this.m_pMainMapControl as IMapControlEvents2_Event).OnExtentUpdated-=(new IMapControlEvents2_OnExtentUpdatedEventHandler(this.frmOverwindows_OnExtentUpdated));
                     }
                     catch
                     {
@@ -846,7 +849,7 @@ namespace Yutai.ArcGIS.Controls.Controls
                 {
                     try
                     {
-                        (this.m_pMainMapControl as IMapControlEvents2_Event).remove_OnExtentUpdated(new IMapControlEvents2_OnExtentUpdatedEventHandler(this.frmOverwindows_OnExtentUpdated));
+                        (this.m_pMainMapControl as IMapControlEvents2_Event).OnExtentUpdated-=(new IMapControlEvents2_OnExtentUpdatedEventHandler(this.frmOverwindows_OnExtentUpdated));
                     }
                     catch
                     {
@@ -859,11 +862,11 @@ namespace Yutai.ArcGIS.Controls.Controls
                     this.m_pEnvelope = this.m_pMainAvtiveView.Extent;
                     if (flag)
                     {
-                        (this.m_pMainMapControl as IMapControlEvents2_Event).add_OnMapReplaced(new IMapControlEvents2_OnMapReplacedEventHandler(this.OverviewWindowCtrl_OnMapReplaced));
-                        (this.m_pMainMapControl as IMapControlEvents2_Event).add_OnViewRefreshed(new IMapControlEvents2_OnViewRefreshedEventHandler(this.frmOverwindows_OnViewRefreshed));
-                        (this.m_pMainMapControl as IMapControlEvents2_Event).add_OnExtentUpdated(new IMapControlEvents2_OnExtentUpdatedEventHandler(this.frmOverwindows_OnExtentUpdated));
+                        (this.m_pMainMapControl as IMapControlEvents2_Event).OnMapReplaced+=(new IMapControlEvents2_OnMapReplacedEventHandler(this.OverviewWindowCtrl_OnMapReplaced));
+                        (this.m_pMainMapControl as IMapControlEvents2_Event).OnViewRefreshed+=(new IMapControlEvents2_OnViewRefreshedEventHandler(this.frmOverwindows_OnViewRefreshed));
+                        (this.m_pMainMapControl as IMapControlEvents2_Event).OnExtentUpdated+=(new IMapControlEvents2_OnExtentUpdatedEventHandler(this.frmOverwindows_OnExtentUpdated));
                     }
-                    (this.m_pMainMapControl as IMapControlEvents2_Event).add_OnExtentUpdated(new IMapControlEvents2_OnExtentUpdatedEventHandler(this.frmOverwindows_OnExtentUpdated));
+                    (this.m_pMainMapControl as IMapControlEvents2_Event).OnExtentUpdated+=(new IMapControlEvents2_OnExtentUpdatedEventHandler(this.frmOverwindows_OnExtentUpdated));
                     (this.axMapControl1.Map as IMapAdmin2).ClipBounds = this.m_pMainMapControl.Map.ClipGeometry;
                     if (this.m_pMainMapControl.Map.ClipGeometry != null)
                     {

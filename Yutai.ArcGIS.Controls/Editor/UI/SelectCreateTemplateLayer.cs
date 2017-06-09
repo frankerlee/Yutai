@@ -5,6 +5,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.esriSystem;
+using Yutai.ArcGIS.Common.Editor;
+using Yutai.ArcGIS.Common.Wrapper;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {
@@ -31,7 +33,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         {
             if (this.Templates == null)
             {
-                this.Templates = new Dictionary<IFeatureLayer, List<JLKEditTemplateWrap>>();
+                this.Templates = new Dictionary<IFeatureLayer, List<YTEditTemplateWrap>>();
             }
             for (int i = 0; i < this.checkedListBox1.Items.Count; i++)
             {
@@ -41,11 +43,11 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 {
                     if (!this.Templates.ContainsKey(obj2.Layer as IFeatureLayer))
                     {
-                        List<JLKEditTemplate> list = JLKEditTemplateFactory.Create(obj2.Layer as IFeatureLayer);
-                        List<JLKEditTemplateWrap> list2 = new List<JLKEditTemplateWrap>();
-                        foreach (JLKEditTemplate template in list)
+                        List<YTEditTemplate> list = YTEditTemplateFactory.Create(obj2.Layer as IFeatureLayer);
+                        List<YTEditTemplateWrap> list2 = new List<YTEditTemplateWrap>();
+                        foreach (YTEditTemplate template in list)
                         {
-                            list2.Add(new JLKEditTemplateWrap(template));
+                            list2.Add(new YTEditTemplateWrap(template));
                         }
                         this.Templates.Add(obj2.Layer as IFeatureLayer, list2);
                     }
@@ -228,7 +230,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             layer.Reset();
             for (ILayer layer2 = layer.Next(); layer2 != null; layer2 = layer.Next())
             {
-                if ((layer2 is IFeatureLayer) && Editor.Editor.LayerCanEdit(layer2 as IFeatureLayer))
+                if ((layer2 is IFeatureLayer) && Yutai.ArcGIS.Common.Editor.Editor.LayerCanEdit(layer2 as IFeatureLayer))
                 {
                     this.checkedListBox1.Items.Add(new LayerObject(layer2), false);
                 }
@@ -237,7 +239,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         internal IMap Map { get; set; }
 
-        internal Dictionary<IFeatureLayer, List<JLKEditTemplateWrap>> Templates { get; set; }
+        internal Dictionary<IFeatureLayer, List<YTEditTemplateWrap>> Templates { get; set; }
     }
 }
 

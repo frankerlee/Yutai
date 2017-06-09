@@ -4,6 +4,8 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 
 namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
 {

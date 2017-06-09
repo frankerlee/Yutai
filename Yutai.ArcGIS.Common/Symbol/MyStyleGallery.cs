@@ -6,7 +6,6 @@ using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.esriSystem;
-using ESRI.ArcGIS.Geoprocessing;
 using Yutai.Shared;
 using Array = System.Array;
 

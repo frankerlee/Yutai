@@ -10,6 +10,7 @@ using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 using Yutai.ArcGIS.Common.SymbolLib;
+using Yutai.ArcGIS.Controls.SymbolUI;
 using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Carto.UI

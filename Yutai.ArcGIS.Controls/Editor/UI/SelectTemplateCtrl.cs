@@ -14,7 +14,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private IContainer components = null;
-        private List<List<JLKEditTemplateWrap>> EditTemplates = new List<List<JLKEditTemplateWrap>>();
+        private List<List<YTEditTemplateWrap>> EditTemplates = new List<List<YTEditTemplateWrap>>();
         private ImageList imageList1;
         private Label label1;
         private Label label2;
@@ -41,7 +41,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         {
             this.listView1.Items.Clear();
             string[] items = new string[2];
-            foreach (JLKEditTemplateWrap wrap in this.EditTemplates[this.Step])
+            foreach (YTEditTemplateWrap wrap in this.EditTemplates[this.Step])
             {
                 items[0] = wrap.EditTemplate.Name;
                 items[1] = wrap.EditTemplate.Name;
@@ -51,7 +51,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 };
                 if (!this.imageList1.Images.ContainsKey(wrap.EditTemplate.ImageKey) && (wrap.EditTemplate.Bitmap != null))
                 {
-                    this.imageList1.Images.Add(wrap.EditTemplate.ImageKey, wrap.EditTemplate.Bitmap);
+                    this.imageList1.Images.Add((string) wrap.EditTemplate.ImageKey, (Image)wrap.EditTemplate.Bitmap);
                 }
                 item.ImageKey = wrap.EditTemplate.ImageKey;
                 this.listView1.Items.Add(item);
@@ -134,7 +134,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         private void listView1_ItemChecked(object sender, ItemCheckedEventArgs e)
         {
-            (e.Item.Tag as JLKEditTemplateWrap).IsUse = e.Item.Checked;
+            (e.Item.Tag as YTEditTemplateWrap).IsUse = e.Item.Checked;
         }
 
         public bool NextStep(bool IsAdd)
@@ -149,7 +149,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         private void SelectTemplateCtrl_Load(object sender, EventArgs e)
         {
-            foreach (KeyValuePair<IFeatureLayer, List<JLKEditTemplateWrap>> pair in this.Templates)
+            foreach (KeyValuePair<IFeatureLayer, List<YTEditTemplateWrap>> pair in this.Templates)
             {
                 if (pair.Key is IFDOGraphicsLayer)
                 {
@@ -165,7 +165,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.StepCount = this.Layers.Count;
         }
 
-        internal Dictionary<IFeatureLayer, List<JLKEditTemplateWrap>> Templates { get; set; }
+        internal Dictionary<IFeatureLayer, List<YTEditTemplateWrap>> Templates { get; set; }
     }
 }
 

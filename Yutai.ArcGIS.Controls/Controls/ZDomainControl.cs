@@ -2,7 +2,9 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common.Helpers;
 
 namespace Yutai.ArcGIS.Controls.Controls
 {
@@ -141,7 +143,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             if (this.m_CanDo)
             {
                 this.m_CanDo = false;
-                if (Common.IsNmuber(this.textBoxPrecision.Text))
+                if (CommonHelper.IsNmuber(this.textBoxPrecision.Text))
                 {
                     this.textBoxPrecision.ForeColor = SystemColors.WindowText;
                     double num3 = Convert.ToDouble(this.textBoxPrecision.Text);
@@ -162,7 +164,7 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         private void TextChange(TextEdit textBox)
         {
-            if (Common.IsNmuber(textBox.Text))
+            if (CommonHelper.IsNmuber(textBox.Text))
             {
                 textBox.ForeColor = SystemColors.WindowText;
             }

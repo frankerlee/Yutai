@@ -12,6 +12,7 @@ using Yutai.ArcGIS.Common.BaseClasses;
 using Yutai.ArcGIS.Common.Display;
 using Yutai.ArcGIS.Common.Editor;
 using Yutai.ArcGIS.Common.Editor.Helpers;
+using Yutai.ArcGIS.Common.Helpers;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {
@@ -316,7 +317,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             {
                 IActiveView pMap = this.m_pMap as IActiveView;
                 IFeature feature = this.m_list[0] as IFeature;
-                Common.Zoom2Feature(pMap, feature);
+                CommonHelper.Zoom2Feature(pMap, feature);
             }
             else if (this.m_list.Count > 1)
             {
@@ -340,16 +341,16 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 {
                     try
                     {
-                        this.m_pActiveViewEvents.remove_SelectionChanged(new IActiveViewEvents_SelectionChangedEventHandler(this.m_pActiveViewEvents_SelectionChanged));
+                        this.m_pActiveViewEvents.SelectionChanged-=(new IActiveViewEvents_SelectionChangedEventHandler(this.m_pActiveViewEvents_SelectionChanged));
                     }
                     catch
                     {
                     }
                 }
                 this.m_pMap = value;
-                if (JLK.Utility.Editor.Editor.EditMap != null)
+                if (Yutai.ArcGIS.Common.Editor.Editor.EditMap != null)
                 {
-                    if (this.m_pMap == JLK.Utility.Editor.Editor.EditMap)
+                    if (this.m_pMap == Yutai.ArcGIS.Common.Editor.Editor.EditMap)
                     {
                         this.m_CanEdit = true;
                     }
@@ -361,7 +362,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 if (this.m_pMap != null)
                 {
                     this.m_pActiveViewEvents = this.m_pMap as IActiveViewEvents_Event;
-                    this.m_pActiveViewEvents.add_SelectionChanged(new IActiveViewEvents_SelectionChangedEventHandler(this.m_pActiveViewEvents_SelectionChanged));
+                    this.m_pActiveViewEvents.SelectionChanged+=(new IActiveViewEvents_SelectionChangedEventHandler(this.m_pActiveViewEvents_SelectionChanged));
                     this.m_pAttributeListControl1.ActiveView = this.m_pMap as IActiveView;
                     this.m_pMultiAttributeListControl.ActiveView = this.m_pMap as IActiveView;
                     if (this.m_CanDo)

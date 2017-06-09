@@ -8,6 +8,9 @@ using System.Windows.Forms;
 using System.Xml;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.esriSystem;
+using Yutai.ArcGIS.Common;
+using Yutai.ArcGIS.Common.BaseClasses;
+using Array = System.Array;
 
 namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 {
@@ -787,7 +790,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 b[num2] = buffer[num2];
             }
             Guid clsid = new Guid(b);
-            ESRI.ArcGIS.esriSystem.IPersistStream stream = Activator.CreateInstance(System.Type.GetTypeFromCLSID(clsid));
+            ESRI.ArcGIS.esriSystem.IPersistStream stream = Activator.CreateInstance(System.Type.GetTypeFromCLSID(clsid)) as IPersistStream;
             byte[] buffer3 = new byte[num];
             for (num2 = 0; num2 < num; num2++)
             {

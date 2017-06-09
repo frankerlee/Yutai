@@ -53,8 +53,7 @@ namespace Yutai.Plugins.Identifer.Views
             mapEvent = _context.MapControl as IMapControlEvents2_Event;
             mapEvent.OnMapReplaced += MapEventOnOnMapReplaced;
             //InitializeActiveViewEvents();
-            toolZoomToShape.Tag = 0;
-            toolZoomToShape.Click += (s, e) => { toolZoomToShape.Checked = !toolZoomToShape.Checked; };
+            btnZoom.Tag = 0;
             InitModeCombo();
         }
         private void InitModeCombo()
@@ -744,12 +743,12 @@ namespace Yutai.Plugins.Identifer.Views
 
         public IdentifierMode Mode
         {
-            get { return _cboIdentifierMode.GetValue<IdentifierMode>(); }
+            get { return (IdentifierMode) _cboIdentifierMode.SelectedValue; }
         }
 
         public bool ZoomToShape
         {
-            get { return toolZoomToShape.Checked; }
+            get { return btnZoom.Checked; }
         }
 
         public void Clear()
@@ -760,12 +759,12 @@ namespace Yutai.Plugins.Identifer.Views
 
         public IEnumerable<ToolStripItemCollection> ToolStrips
         {
-            get { yield return toolStripEx1.Items; }
+            get { yield break; }
         }
 
         public IEnumerable<Control> Buttons
         {
-            get { yield break; }
+            get { yield return btnClear; }
         }
 
         private void lstAttribute_Resize(object sender, EventArgs e)

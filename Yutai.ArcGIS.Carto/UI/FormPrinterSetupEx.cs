@@ -9,6 +9,7 @@ using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geometry;
 using ESRI.ArcGIS.Output;
+using Yutai.ArcGIS.Common;
 
 namespace Yutai.ArcGIS.Carto.UI
 {

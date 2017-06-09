@@ -4,6 +4,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.esriSystem;
+using Yutai.ArcGIS.Common.BaseClasses;
+using Yutai.ArcGIS.Common.Wrapper;
 
 namespace Yutai.ArcGIS.Controls.Controls.GPSLib
 {

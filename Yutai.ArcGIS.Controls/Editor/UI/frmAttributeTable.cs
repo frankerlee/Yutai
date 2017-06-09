@@ -5,11 +5,19 @@ using System.Data;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using DevExpress.Data;
+using DevExpress.XtraEditors;
+using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraGrid.Views.Grid;
 using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.Analyst3D;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common.ControlExtend;
+using Yutai.ArcGIS.Common.Editor;
+using Yutai.ArcGIS.Common.Helpers;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {
@@ -28,7 +36,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         private DataTable m_pDataTable = new DataTable();
         private IBasicMap m_pMap = null;
         private ITable m_pTable = null;
-        private XtraGrid m_pXtraGrid = new XtraGrid();
+        private Common.ControlExtend.XtraGrid m_pXtraGrid = new Common.ControlExtend.XtraGrid();
         private int m_RecordNum;
         private long m_ShowRecNum = 0x3e8L;
         private string m_strGeometry = "";
@@ -446,11 +454,11 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                             this.m_CanDoFeatureLayerSelectChange = true;
                             if (this.m_pMap is IMap)
                             {
-                                Common.Zoom2SelectedFeature(this.m_pMap as IActiveView);
+                                CommonHelper.Zoom2SelectedFeature(this.m_pMap as IActiveView);
                             }
                             else
                             {
-                                Common.Zoom2SelectedFeature(this.m_pMap as IScene);
+                                CommonHelper.Zoom2SelectedFeature(this.m_pMap as IScene);
                             }
                         }
                     }
@@ -839,7 +847,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 }
                 if (this.m_pTable is IFeatureLayerSelectionEvents_Event)
                 {
-                    (this.m_pTable as IFeatureLayerSelectionEvents_Event).add_FeatureLayerSelectionChanged(new IFeatureLayerSelectionEvents_FeatureLayerSelectionChangedEventHandler(this.frmAttributeTable_FeatureLayerSelectionChanged));
+                    (this.m_pTable as IFeatureLayerSelectionEvents_Event).FeatureLayerSelectionChanged+=(new IFeatureLayerSelectionEvents_FeatureLayerSelectionChangedEventHandler(this.frmAttributeTable_FeatureLayerSelectionChanged));
                 }
             }
         }

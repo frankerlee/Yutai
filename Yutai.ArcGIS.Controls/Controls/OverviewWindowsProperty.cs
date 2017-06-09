@@ -2,9 +2,12 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.esriSystem;
+using Yutai.ArcGIS.Common.SymbolLib;
 using Yutai.ArcGIS.Controls.SymbolUI;
 
 namespace Yutai.ArcGIS.Controls.Controls

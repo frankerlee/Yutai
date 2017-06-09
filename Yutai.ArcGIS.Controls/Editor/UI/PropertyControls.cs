@@ -3,8 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using DevExpress.Data;
+using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraGrid.Views.Grid;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
+using Yutai.ArcGIS.Common.ControlExtend;
+using Yutai.ArcGIS.Common.Editor;
+using Yutai.ArcGIS.Common.Geodatabase;
 using Yutai.ArcGIS.Controls.Controls.EditorUI;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
@@ -418,7 +426,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
-        public JLKEditTemplate EditTemplate { get; set; }
+        public YTEditTemplate EditTemplate { get; set; }
 
         public IFeatureLayer FeatureLayer { protected get; set; }
 

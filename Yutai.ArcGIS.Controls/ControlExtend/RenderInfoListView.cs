@@ -272,7 +272,7 @@ namespace Yutai.ArcGIS.Controls.ControlExtend
                 grect.right = rect.Right;
                 grect.bottom = rect.Bottom;
                 grect.top = rect.Top;
-                transformation.DeviceFrame = (tagRECT) &grect;
+                transformation.set_DeviceFrame(ref grect);
                 transformation.Bounds = bounds;
                 transformation.Resolution = 96.0;
                 transformation.ReferenceScale = 1.0;

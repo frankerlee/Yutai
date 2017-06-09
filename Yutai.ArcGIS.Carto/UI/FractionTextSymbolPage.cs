@@ -6,8 +6,12 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geometry;
-using Yutai.ArcGIS.Common.BaseClasses;
+using Yutai.ArcGIS.Common.ExtendClass;
 using Yutai.ArcGIS.Common.SymbolLib;
+using Yutai.ArcGIS.Controls.SymbolUI;
+using IPropertyPage = Yutai.ArcGIS.Common.BaseClasses.IPropertyPage;
+using IPropertyPageEvents = Yutai.ArcGIS.Common.BaseClasses.IPropertyPageEvents;
+using OnValueChangeEventHandler = Yutai.ArcGIS.Common.BaseClasses.OnValueChangeEventHandler;
 
 namespace Yutai.ArcGIS.Carto.UI
 {
@@ -76,7 +80,7 @@ namespace Yutai.ArcGIS.Carto.UI
                 selector.SetStyleGallery(this.m_pSG);
                 if (selector.ShowDialog() == DialogResult.OK)
                 {
-                    this.m_FractionTextSymbol.DenominatorTextSymbol = selector.GetSymbol();
+                    this.m_FractionTextSymbol.DenominatorTextSymbol = selector.GetSymbol() as ITextSymbol;
                     this.btnDenominatorTextSymbol.Style = this.m_FractionTextSymbol.DenominatorTextSymbol;
                     this.btnDenominatorTextSymbol.Invalidate();
                     this.method_0(e);
@@ -105,7 +109,7 @@ namespace Yutai.ArcGIS.Carto.UI
                 selector.SetStyleGallery(this.m_pSG);
                 if (selector.ShowDialog() == DialogResult.OK)
                 {
-                    this.m_FractionTextSymbol.LineSymbol = selector.GetSymbol();
+                    this.m_FractionTextSymbol.LineSymbol = selector.GetSymbol() as ILineSymbol;
                     this.btnLineSymbol.Style = this.m_FractionTextSymbol.LineSymbol;
                     this.btnLineSymbol.Invalidate();
                     this.method_0(e);
@@ -134,7 +138,7 @@ namespace Yutai.ArcGIS.Carto.UI
                 selector.SetStyleGallery(this.m_pSG);
                 if (selector.ShowDialog() == DialogResult.OK)
                 {
-                    this.m_FractionTextSymbol.NumeratorTextSymbol = selector.GetSymbol();
+                    this.m_FractionTextSymbol.NumeratorTextSymbol = selector.GetSymbol() as ITextSymbol;
                     this.btnNumeratorTextSymbol.Style = this.m_FractionTextSymbol.NumeratorTextSymbol;
                     this.btnNumeratorTextSymbol.Invalidate();
                     this.method_0(e);

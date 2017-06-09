@@ -61,7 +61,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         private void InitializeComponent()
         {
-            ComponentResourceManager manager = new ComponentResourceManager(typeof(frmParamProperty));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmParamProperty));
             this.label1 = new Label();
             this.label2 = new Label();
             this.txtName = new TextBox();

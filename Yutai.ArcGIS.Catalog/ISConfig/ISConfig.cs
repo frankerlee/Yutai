@@ -1,18 +1,18 @@
-﻿namespace ISConfig
-{
-    using ESRI.ArcGIS.Carto;
-    using ESRI.ArcGIS.DataSourcesRaster;
-    using ESRI.ArcGIS.esriSystem;
-    using ESRI.ArcGIS.Geodatabase;
-    using ESRI.ArcGIS.GISClient;
-    using ESRI.ArcGIS.Server;
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Net;
-    using System.Runtime.InteropServices;
-    using System.Text;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Net;
+using System.Runtime.InteropServices;
+using System.Text;
+using ESRI.ArcGIS.Carto;
+using ESRI.ArcGIS.DataSourcesRaster;
+using ESRI.ArcGIS.esriSystem;
+using ESRI.ArcGIS.Geodatabase;
+using ESRI.ArcGIS.GISClient;
+using ESRI.ArcGIS.Server;
 
+namespace Yutai.ArcGIS.Catalog.ISConfig
+{
     internal class ISConfig
     {
         private static string password;
@@ -72,13 +72,13 @@
                 config.MaxInstances = 2;
                 config.RecycleProperties.SetProperty("Interval", "24");
                 IPropertySet properties = config.Properties;
-                IWorkspace workspace = ((IDataset) ISConfig.ISConfig.rasterDataset).Workspace;
+                IWorkspace workspace = ((IDataset) ISConfig.rasterDataset).Workspace;
                 if (workspace.WorkspaceFactory.WorkspaceType == esriWorkspaceType.esriRemoteDatabaseWorkspace)
                 {
                     IWorkspaceName2 fullName = ((IDataset) workspace).FullName as IWorkspaceName2;
                     string connectionString = fullName.ConnectionString;
                     properties.SetProperty("ConnectionString", connectionString);
-                    properties.SetProperty("Raster", ((IDataset) ISConfig.ISConfig.rasterDataset).Name);
+                    properties.SetProperty("Raster", ((IDataset) ISConfig.rasterDataset).Name);
                 }
                 else
                 {
@@ -107,7 +107,7 @@
                 {
                     object obj2;
                     object obj3;
-                    IFunctionRasterDataset rasterDataset = (IFunctionRasterDataset) ISConfig.ISConfig.rasterDataset;
+                    IFunctionRasterDataset rasterDataset = (IFunctionRasterDataset) ISConfig.rasterDataset;
                     IPropertySet set3 = rasterDataset.Properties;
                     set3.GetAllProperties(out obj2, out obj3);
                     List<string> list = new List<string>();
@@ -178,7 +178,7 @@
                     properties.SetProperty("DefaultCompressionQuality", 0x4b);
                     properties.SetProperty("DefaultCompressionTolerance", 0.01);
                     IMensuration mensuration = new MensurationClass {
-                        Raster = ((IRasterDataset2) ISConfig.ISConfig.rasterDataset).CreateFullRaster()
+                        Raster = ((IRasterDataset2) ISConfig.rasterDataset).CreateFullRaster()
                     };
                     string str2 = "";
                     if (mensuration.CanMeasure)
@@ -239,9 +239,9 @@
                 {
                     Console.WriteLine("{0} on {1} was configured but can not be started, please investigate.", serviceName, restAdmin);
                 }
-                if (ISConfig.ISConfig.rasterDataset != null)
+                if (ISConfig.rasterDataset != null)
                 {
-                    Marshal.ReleaseComObject(ISConfig.ISConfig.rasterDataset);
+                    Marshal.ReleaseComObject(ISConfig.rasterDataset);
                 }
             }
             catch (Exception exception)
@@ -300,13 +300,13 @@
                 builder.AppendFormat("{0}: {1},", QuoteString("capabilities"), QuoteString(str4));
                 builder.AppendFormat("{0}: {1}", QuoteString("properties"), "{");
                 builder.AppendFormat("{0}: {1},", QuoteString("supportedImageReturnTypes"), QuoteString("MIME+URL"));
-                IWorkspace workspace = ((IDataset) ISConfig.ISConfig.rasterDataset).Workspace;
+                IWorkspace workspace = ((IDataset) ISConfig.rasterDataset).Workspace;
                 if (workspace.WorkspaceFactory.WorkspaceType == esriWorkspaceType.esriRemoteDatabaseWorkspace)
                 {
                     IWorkspaceName2 fullName = ((IDataset) workspace).FullName as IWorkspaceName2;
                     string connectionString = fullName.ConnectionString;
                     builder.AppendFormat("{0}: {1},", QuoteString("connectionString"), QuoteString(connectionString));
-                    builder.AppendFormat("{0}: {1},", QuoteString("raster"), QuoteString(((IDataset) ISConfig.ISConfig.rasterDataset).Name));
+                    builder.AppendFormat("{0}: {1},", QuoteString("raster"), QuoteString(((IDataset) ISConfig.rasterDataset).Name));
                 }
                 else
                 {
@@ -329,7 +329,7 @@
                 {
                     object obj2;
                     object obj3;
-                    IFunctionRasterDataset rasterDataset = (IFunctionRasterDataset) ISConfig.ISConfig.rasterDataset;
+                    IFunctionRasterDataset rasterDataset = (IFunctionRasterDataset) ISConfig.rasterDataset;
                     IPropertySet properties = rasterDataset.Properties;
                     properties.GetAllProperties(out obj2, out obj3);
                     List<string> list = new List<string>();
@@ -400,7 +400,7 @@
                     builder.AppendFormat("{0}: {1},", QuoteString("defaultCompressionQuality"), QuoteString("75"));
                     builder.AppendFormat("{0}: {1},", QuoteString("defaultCompressionTolerance"), QuoteString("0.01"));
                     IMensuration mensuration = new MensurationClass {
-                        Raster = ((IRasterDataset2) ISConfig.ISConfig.rasterDataset).CreateFullRaster()
+                        Raster = ((IRasterDataset2) ISConfig.rasterDataset).CreateFullRaster()
                     };
                     string str10 = "";
                     if (mensuration.CanMeasure)

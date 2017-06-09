@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
+using DevExpress.XtraBars;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Display;
@@ -8,6 +9,7 @@ using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 using Yutai.ArcGIS.Controls.Controls.Export;
+using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 {
@@ -1031,10 +1033,10 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     {
                         if (this.m_pConnectActiveEvent != null)
                         {
-                            this.m_pConnectActiveEvent.remove_ItemAdded(new IActiveViewEvents_ItemAddedEventHandler(this.m_pConnectActiveEvent_ItemAdded));
-                            this.m_pConnectActiveEvent.remove_ItemDeleted(new IActiveViewEvents_ItemDeletedEventHandler(this.m_pConnectActiveEvent_ItemDeleted));
-                            this.m_pConnectActiveEvent.remove_ItemReordered(new IActiveViewEvents_ItemReorderedEventHandler(this.m_pConnectActiveEvent_ItemReordered));
-                            this.m_pConnectActiveEvent.remove_ContentsCleared(new IActiveViewEvents_ContentsClearedEventHandler(this.m_pConnectActiveEvent_ContentsCleared));
+                            this.m_pConnectActiveEvent.ItemAdded-=(new IActiveViewEvents_ItemAddedEventHandler(this.m_pConnectActiveEvent_ItemAdded));
+                            this.m_pConnectActiveEvent.ItemDeleted-=(new IActiveViewEvents_ItemDeletedEventHandler(this.m_pConnectActiveEvent_ItemDeleted));
+                            this.m_pConnectActiveEvent.ItemReordered-=(new IActiveViewEvents_ItemReorderedEventHandler(this.m_pConnectActiveEvent_ItemReordered));
+                            this.m_pConnectActiveEvent.ContentsCleared-=(new IActiveViewEvents_ContentsClearedEventHandler(this.m_pConnectActiveEvent_ContentsCleared));
                         }
                     }
                     catch
@@ -1061,10 +1063,10 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     }
                     if (this.m_pConnectActiveEvent != null)
                     {
-                        this.m_pConnectActiveEvent.add_ItemAdded(new IActiveViewEvents_ItemAddedEventHandler(this.m_pConnectActiveEvent_ItemAdded));
-                        this.m_pConnectActiveEvent.add_ItemDeleted(new IActiveViewEvents_ItemDeletedEventHandler(this.m_pConnectActiveEvent_ItemDeleted));
-                        this.m_pConnectActiveEvent.add_ItemReordered(new IActiveViewEvents_ItemReorderedEventHandler(this.m_pConnectActiveEvent_ItemReordered));
-                        this.m_pConnectActiveEvent.add_ContentsCleared(new IActiveViewEvents_ContentsClearedEventHandler(this.m_pConnectActiveEvent_ContentsCleared));
+                        this.m_pConnectActiveEvent.ItemAdded+=(new IActiveViewEvents_ItemAddedEventHandler(this.m_pConnectActiveEvent_ItemAdded));
+                        this.m_pConnectActiveEvent.ItemDeleted+=(new IActiveViewEvents_ItemDeletedEventHandler(this.m_pConnectActiveEvent_ItemDeleted));
+                        this.m_pConnectActiveEvent.ItemReordered+=(new IActiveViewEvents_ItemReorderedEventHandler(this.m_pConnectActiveEvent_ItemReordered));
+                        this.m_pConnectActiveEvent.ContentsCleared+=(new IActiveViewEvents_ContentsClearedEventHandler(this.m_pConnectActiveEvent_ContentsCleared));
                     }
                 }
                 catch (Exception)

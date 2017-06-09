@@ -142,6 +142,7 @@ namespace Yutai
         }
 
         IStyleGallery IAppContext.StyleGallery { get; set; }
+        public PyramidPromptType PyramidPromptType { get; set; }
 
         public bool IsInEdit
         {

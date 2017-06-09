@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common.ExtendClass;
 
 namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 {

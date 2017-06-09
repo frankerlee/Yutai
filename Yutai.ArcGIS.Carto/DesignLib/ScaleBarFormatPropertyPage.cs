@@ -4,9 +4,18 @@ using System.Drawing;
 using System.Drawing.Text;
 using System.Resources;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.esriSystem;
+using Yutai.ArcGIS.Common;
+using Yutai.ArcGIS.Common.Symbol;
+using Yutai.ArcGIS.Common.SymbolLib;
+using Yutai.ArcGIS.Controls.SymbolUI;
+using IPropertyPage = Yutai.ArcGIS.Common.BaseClasses.IPropertyPage;
+using IPropertyPageEvents = Yutai.ArcGIS.Common.BaseClasses.IPropertyPageEvents;
+using OnValueChangeEventHandler = Yutai.ArcGIS.Common.BaseClasses.OnValueChangeEventHandler;
 
 namespace Yutai.ArcGIS.Carto.DesignLib
 {
@@ -364,7 +373,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         private void InitializeComponent()
         {
             this.icontainer_0 = new Container();
-            ResourceManager manager = new ResourceManager(typeof(ScaleBarFormatPropertyPage));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScaleBarFormatPropertyPage));
             this.groupBox1 = new GroupBox();
             this.btnSymbolSelector = new SimpleButton();
             this.label3 = new Label();

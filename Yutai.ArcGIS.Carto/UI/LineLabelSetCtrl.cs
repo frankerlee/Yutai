@@ -7,7 +7,9 @@ using DevExpress.XtraEditors.Controls;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
+using Yutai.ArcGIS.Common.Query.UI;
 using Yutai.ArcGIS.Common.SymbolLib;
+using Yutai.ArcGIS.Controls.SymbolUI;
 
 namespace Yutai.ArcGIS.Carto.UI
 {

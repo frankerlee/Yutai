@@ -4,6 +4,9 @@ using System.Drawing;
 using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
+using Yutai.ArcGIS.Common.BaseClasses;
+using Yutai.ArcGIS.Framework.Docking;
+using Editor2=Yutai.ArcGIS.Common.Editor;
 
 namespace Yutai.ArcGIS.Controls.Controls
 {
@@ -107,18 +110,18 @@ namespace Yutai.ArcGIS.Controls.Controls
         protected override void OnClosing(CancelEventArgs e)
         {
             IMap map = this.axMapControl.Map;
-            if (Editor.Editor.EditMap == map)
+            if (Editor2.Editor.EditMap == map)
             {
                 bool hasEdits = false;
-                Editor.Editor.EditWorkspace.HasEdits(ref hasEdits);
+                Editor2.Editor.EditWorkspace.HasEdits(ref hasEdits);
                 if (hasEdits)
                 {
                     DialogResult result = MessageBox.Show("数据已经被修改过，保存修改吗?", "更改提示", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        Editor.Editor.EditWorkspace.StopEditing(true);
-                        Editor.Editor.EditWorkspace = null;
-                        Editor.Editor.EditMap = null;
+                        Editor2.Editor.EditWorkspace.StopEditing(true);
+                        Editor2.Editor.EditWorkspace = null;
+                        Editor2.Editor.EditMap = null;
                     }
                     else
                     {
@@ -128,16 +131,16 @@ namespace Yutai.ArcGIS.Controls.Controls
                             base.OnClosing(e);
                             return;
                         }
-                        Editor.Editor.EditWorkspace.StopEditing(false);
-                        Editor.Editor.EditWorkspace = null;
-                        Editor.Editor.EditMap = null;
+                        Editor2.Editor.EditWorkspace.StopEditing(false);
+                        Editor2.Editor.EditWorkspace = null;
+                        Editor2.Editor.EditMap = null;
                     }
                 }
                 else
                 {
-                    Editor.Editor.EditWorkspace.StopEditing(false);
-                    Editor.Editor.EditWorkspace = null;
-                    Editor.Editor.EditMap = null;
+                    Editor2.Editor.EditWorkspace.StopEditing(false);
+                    Editor2.Editor.EditWorkspace = null;
+                    Editor2.Editor.EditMap = null;
                 }
             }
             if (DocumentManager.UnRegister(this.axPageLayoutControl.Object))

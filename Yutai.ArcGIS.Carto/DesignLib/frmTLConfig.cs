@@ -8,6 +8,9 @@ using System.Windows.Forms;
 using System.Xml;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.esriSystem;
+using Yutai.ArcGIS.Common;
+using Yutai.ArcGIS.Common.BaseClasses;
+using Array = System.Array;
 
 namespace Yutai.ArcGIS.Carto.DesignLib
 {
@@ -244,7 +247,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         private void InitializeComponent()
         {
             this.icontainer_0 = new Container();
-            ComponentResourceManager manager = new ComponentResourceManager(typeof(frmTLConfig));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTLConfig));
             this.txtLegend = new TextBox();
             this.labPoint = new Label();
             this.btnDele = new Button();
@@ -349,14 +352,14 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             this.btnDeleteAll.Text = "删除全部";
             this.btnDeleteAll.Click += new EventHandler(this.btnDeleteAll_Click);
             this.btnMoveDown.Enabled = false;
-            this.btnMoveDown.Image = manager.GetObject("btnMoveDown.Image");
+            this.btnMoveDown.Image = (Image) resources.GetObject("btnMoveDown.Image");
             this.btnMoveDown.Location = new Point(0x131, 0x5e);
             this.btnMoveDown.Name = "btnMoveDown";
             this.btnMoveDown.Size = new Size(0x18, 0x18);
             this.btnMoveDown.TabIndex = 0x41;
             this.btnMoveDown.Click += new EventHandler(this.btnMoveDown_Click);
             this.btnMoveUp.Enabled = false;
-            this.btnMoveUp.Image = manager.GetObject("btnMoveUp.Image");
+            this.btnMoveUp.Image = (Image) resources.GetObject("btnMoveUp.Image");
             this.btnMoveUp.Location = new Point(0x131, 0x40);
             this.btnMoveUp.Name = "btnMoveUp";
             this.btnMoveUp.Size = new Size(0x18, 0x18);
@@ -711,7 +714,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 b[num2] = buffer[num2];
             }
             Guid clsid = new Guid(b);
-            ESRI.ArcGIS.esriSystem.IPersistStream stream = Activator.CreateInstance(System.Type.GetTypeFromCLSID(clsid));
+            ESRI.ArcGIS.esriSystem.IPersistStream stream = Activator.CreateInstance(System.Type.GetTypeFromCLSID(clsid)) as IPersistStream;
             byte[] buffer3 = new byte[num];
             for (num2 = 0; num2 < num; num2++)
             {

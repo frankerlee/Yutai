@@ -136,7 +136,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     }
                     catch (Exception exception)
                     {
-                        CErrorLog.writeErrorLog(null, exception, "");
+                        //CErrorLog.writeErrorLog(null, exception, "");
                     }
                 }
             }

@@ -3,6 +3,9 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Windows.Forms;
+using DevExpress.Utils;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
 
@@ -268,7 +271,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 int num3;
                 int num4;
                 int rGB = icolor_0.RGB;
-                this.method_1(rGB, out num2, out num3, out num4);
+                this.method_1((uint) rGB, out num2, out num3, out num4);
                 colorEdit_0.Color = Color.FromArgb(icolor_0.Transparency, num2, num3, num4);
             }
         }

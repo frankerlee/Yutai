@@ -2,9 +2,17 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
+using Yutai.ArcGIS.Common;
+using Yutai.ArcGIS.Common.Helpers;
+using Yutai.ArcGIS.Common.Query.UI;
+using Yutai.ArcGIS.Common.Wrapper;
+using Yutai.Shared;
+using ProcessAssist = Yutai.Shared.ProcessAssist;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {

@@ -11,6 +11,7 @@ using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using Yutai.ArcGIS.Common.Symbol;
 using Yutai.ArcGIS.Common.SymbolLib;
+using Yutai.ArcGIS.Controls.SymbolUI;
 using ItemCheckEventArgs = DevExpress.XtraEditors.Controls.ItemCheckEventArgs;
 using ItemCheckEventHandler = DevExpress.XtraEditors.Controls.ItemCheckEventHandler;
 

@@ -5,7 +5,9 @@ using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Display;
+using Yutai.ArcGIS.Common;
 using Yutai.ArcGIS.Controls.Controls.TOCDisplay;
+using Yutai.ArcGIS.Framework.Docking;
 using TOCControl = Yutai.ArcGIS.Controls.Controls.TOCTreeview.TOCControl;
 
 namespace Yutai.ArcGIS.Controls.Controls
@@ -119,7 +121,7 @@ namespace Yutai.ArcGIS.Controls.Controls
                 this.tocTreeView1.Hook = this.m_pMainMapControl;
                 if (this.m_pMainMapControl != null)
                 {
-                    (this.m_pMainMapControl as IMapControlEvents2_Event).add_OnMapReplaced(new IMapControlEvents2_OnMapReplacedEventHandler(this.frmDatasourceTreeView_OnMapReplaced));
+                    (this.m_pMainMapControl as IMapControlEvents2_Event).OnMapReplaced+=(new IMapControlEvents2_OnMapReplacedEventHandler(this.frmDatasourceTreeView_OnMapReplaced));
                 }
                 this.tocTreeView1.tocTreeViewEx1.RefreshTree();
             }
@@ -133,7 +135,7 @@ namespace Yutai.ArcGIS.Controls.Controls
                 this.tocTreeView1.Hook = this.m_PageLayoutControl;
                 if (this.m_PageLayoutControl != null)
                 {
-                    (this.m_PageLayoutControl as IPageLayoutControlEvents_Event).add_OnPageLayoutReplaced(new IPageLayoutControlEvents_OnPageLayoutReplacedEventHandler(this.frmTOCTreeView_OnPageLayoutReplaced));
+                    (this.m_PageLayoutControl as IPageLayoutControlEvents_Event).OnPageLayoutReplaced+=(new IPageLayoutControlEvents_OnPageLayoutReplacedEventHandler(this.frmTOCTreeView_OnPageLayoutReplaced));
                 }
                 this.tocTreeView1.tocTreeViewEx1.RefreshTree();
             }

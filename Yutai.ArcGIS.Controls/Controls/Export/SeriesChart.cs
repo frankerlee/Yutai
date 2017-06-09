@@ -8,6 +8,9 @@ using System.Drawing.Text;
 using System.Windows.Forms;
 using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.Geodatabase;
+using Steema.TeeChart;
+using Steema.TeeChart.Drawing;
+using Steema.TeeChart.Styles;
 
 namespace Yutai.ArcGIS.Controls.Controls.Export
 {

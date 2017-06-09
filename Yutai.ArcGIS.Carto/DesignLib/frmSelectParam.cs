@@ -32,7 +32,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         private void InitializeComponent()
         {
-            ComponentResourceManager manager = new ComponentResourceManager(typeof(frmSelectParam));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSelectParam));
             this.button1 = new Button();
             this.button2 = new Button();
             this.listBox1 = new ListBox();

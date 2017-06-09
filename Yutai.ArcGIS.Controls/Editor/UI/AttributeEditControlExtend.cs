@@ -3,10 +3,17 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using DevExpress.XtraBars;
 using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
+using Yutai.ArcGIS.Common;
+using Yutai.ArcGIS.Common.BaseClasses;
+using Yutai.ArcGIS.Common.Display;
+using Yutai.ArcGIS.Common.Editor;
+using Yutai.ArcGIS.Common.Editor.Helpers;
+using Yutai.ArcGIS.Common.Helpers;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {
@@ -174,7 +181,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                     for (ILayer layer3 = layer2.Next(); layer3 != null; layer3 = layer2.Next())
                     {
                         IFeatureLayer layer = layer3 as IFeatureLayer;
-                        if (((layer != null) && Editor.Editor.CheckLayerCanEdit(layer)) && ((layer as IFeatureSelection).SelectionSet.Count > 0))
+                        if (((layer != null) && Yutai.ArcGIS.Common.Editor.Editor.CheckLayerCanEdit(layer)) && ((layer as IFeatureSelection).SelectionSet.Count > 0))
                         {
                             ICursor cursor;
                             list.Add(layer);
@@ -406,7 +413,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             {
                 IActiveView pMap = this.m_pMap as IActiveView;
                 IFeature feature = this.m_list[0] as IFeature;
-                Common.Zoom2Feature(pMap, feature);
+                CommonHelper.Zoom2Feature(pMap, feature);
             }
             else if (this.m_list.Count > 1)
             {
@@ -430,16 +437,16 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 {
                     try
                     {
-                        this.m_pActiveViewEvents.remove_SelectionChanged(new IActiveViewEvents_SelectionChangedEventHandler(this.m_pActiveViewEvents_SelectionChanged));
+                        this.m_pActiveViewEvents.SelectionChanged-=(new IActiveViewEvents_SelectionChangedEventHandler(this.m_pActiveViewEvents_SelectionChanged));
                     }
                     catch
                     {
                     }
                 }
                 this.m_pMap = value;
-                if (Editor.Editor.EditMap != null)
+                if (Yutai.ArcGIS.Common.Editor.Editor.EditMap != null)
                 {
-                    if (this.m_pMap == Editor.Editor.EditMap)
+                    if (this.m_pMap == Yutai.ArcGIS.Common.Editor.Editor.EditMap)
                     {
                         this.m_CanEdit = true;
                     }
@@ -451,7 +458,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 if (this.m_pMap != null)
                 {
                     this.m_pActiveViewEvents = this.m_pMap as IActiveViewEvents_Event;
-                    this.m_pActiveViewEvents.add_SelectionChanged(new IActiveViewEvents_SelectionChangedEventHandler(this.m_pActiveViewEvents_SelectionChanged));
+                    this.m_pActiveViewEvents.SelectionChanged+=(new IActiveViewEvents_SelectionChangedEventHandler(this.m_pActiveViewEvents_SelectionChanged));
                     this.m_pAnnoEditControl.ActiveView = this.m_pMap as IActiveView;
                     this.m_pAttributeListControl.ActiveView = this.m_pMap as IActiveView;
                     this.m_pAttributeListControl1.ActiveView = this.m_pMap as IActiveView;

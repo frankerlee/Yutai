@@ -339,7 +339,7 @@ namespace Yutai.ArcGIS.Carto.Library
 
         private void textBox_0_Leave(object sender, EventArgs e)
         {
-            Control control = sender;
+            Control control = sender as Control;
             this.listViewSubItem_0.Text = control.Text;
             control.Visible = false;
         }

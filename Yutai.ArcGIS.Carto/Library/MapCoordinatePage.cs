@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using ESRI.ArcGIS.Geometry;
 using Yutai.ArcGIS.Carto.MapCartoTemplateLib;
+using Yutai.ArcGIS.Common.BaseClasses;
 
 namespace Yutai.ArcGIS.Carto.Library
 {

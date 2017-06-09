@@ -3,9 +3,14 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Resources;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.esriSystem;
+using Yutai.ArcGIS.Common;
+using Yutai.ArcGIS.Common.BaseClasses;
+using Yutai.ArcGIS.Common.Wrapper;
 
 namespace Yutai.ArcGIS.Carto.DesignLib
 {
@@ -159,7 +164,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         private void InitializeComponent()
         {
-            ResourceManager manager = new ResourceManager(typeof(LegendItemPropertyPage));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LegendItemPropertyPage));
             this.groupBox1 = new GroupBox();
             this.btnLegendItemsSelector = new SimpleButton();
             this.chkNewColumn = new CheckEdit();
@@ -255,7 +260,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             this.listMapLayers.TabIndex = 12;
             this.listMapLayers.SelectedIndexChanged += new EventHandler(this.listMapLayers_SelectedIndexChanged);
             this.btnMoveDown.Enabled = false;
-            this.btnMoveDown.Image = manager.GetObject("btnMoveDown.Image");
+            this.btnMoveDown.Image = (Image) resources.GetObject("btnMoveDown.Image");
             this.btnMoveDown.Location = new Point(0x120, 0x48);
             this.btnMoveDown.Name = "btnMoveDown";
             this.btnMoveDown.Size = new Size(0x18, 0x18);
@@ -263,7 +268,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             this.btnMoveDown.Visible = false;
             this.btnMoveDown.Click += new EventHandler(this.btnMoveDown_Click);
             this.btnMoveUp.Enabled = false;
-            this.btnMoveUp.Image = manager.GetObject("btnMoveUp.Image");
+            this.btnMoveUp.Image = (Image) resources.GetObject("btnMoveUp.Image");
             this.btnMoveUp.Location = new Point(0x120, 40);
             this.btnMoveUp.Name = "btnMoveUp";
             this.btnMoveUp.Size = new Size(0x18, 0x18);

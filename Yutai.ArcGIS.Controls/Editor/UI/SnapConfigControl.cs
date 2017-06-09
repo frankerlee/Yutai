@@ -3,11 +3,18 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common;
+using Yutai.ArcGIS.Common.BaseClasses;
+using Yutai.ArcGIS.Common.Editor.Helpers;
+using Yutai.ArcGIS.Framework.Docking;
+using IDockContent = Yutai.ArcGIS.Framework.Docking.IDockContent;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {
@@ -391,84 +398,87 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         public void InitSnapEnvironment()
         {
-            LayerSnapInfo info;
-            int num2;
+            SnapConfigControl.LayerSnapInfo element;
+            int i;
             int hitType;
-            IFeatureSnapAgent agent2;
+            FeatureSnapAgent featureSnapAgent;
             try
             {
                 double num = double.Parse(this.txtRadio.Text);
-                if (num > 0.0)
+                if (num <= 0)
                 {
-                    if (this.m_pEngineSnapEnvironment != null)
-                    {
-                        this.m_pEngineSnapEnvironment.SnapTolerance = num;
-                    }
-                    else
-                    {
-                        this.m_pSnapEnvironment.SnapTolerance = num;
-                    }
+                    MessageBox.Show("数据输入错误!");
+                }
+                else if (this.m_pEngineSnapEnvironment == null)
+                {
+                    this.m_pSnapEnvironment.SnapTolerance = num;
                 }
                 else
                 {
-                    MessageBox.Show("数据输入错误!");
+                    this.m_pEngineSnapEnvironment.SnapTolerance = num;
                 }
             }
             catch
             {
                 MessageBox.Show("数据输入错误!");
             }
-            if (this.m_pEngineSnapEnvironment != null)
+            if (this.m_pEngineSnapEnvironment == null)
             {
-                this.m_pEngineSnapEnvironment.ClearSnapAgents();
-                this.m_pEngineSnapEnvironment.SnapToleranceUnits = (esriEngineSnapToleranceUnits) this.cboSnapUnits.SelectedIndex;
-                for (num2 = 0; num2 < this.m_pArray.Count; num2++)
+                this.m_pSnapEnvironment.SnapToleranceUnits = (esriEngineSnapToleranceUnits)this.cboSnapUnits.SelectedIndex;
+                ApplicationRef.Application.UseSnap = this.chkStartSnap.Checked;
+                this.m_pSnapEnvironment.ClearSnapAgents();
+                for (i = 0; i < this.m_pArray.Count; i++)
                 {
-                    info = (LayerSnapInfo) this.m_pArray.get_Element(num2);
-                    hitType = info.HitType;
+                    element = (SnapConfigControl.LayerSnapInfo)this.m_pArray.Element[i];
+                    hitType = element.HitType;
                     if (hitType != 0)
                     {
-                        IEngineFeatureSnapAgent snapAgent = new EngineFeatureSnapClass {
-                            FeatureClass = info.Layer.FeatureClass,
-                            HitType = (esriGeometryHitPartType) hitType
+                        featureSnapAgent = new FeatureSnapAgent()
+                        {
+                            FeatureClass = element.Layer.FeatureClass,
+                            GeometryHitType = hitType
                         };
-                        this.m_pEngineSnapEnvironment.AddSnapAgent(snapAgent);
+                        this.m_pSnapEnvironment.AddSnapAgent(featureSnapAgent);
                     }
-                    if (info.bVerticalSnap)
+                    if (element.bVerticalSnap)
                     {
-                        agent2 = new VerticalSnapAgent {
-                            FeatureClass = info.Layer.FeatureClass
+                        featureSnapAgent = new FeatureSnapAgent()
+                        {
+                            FeatureClass = element.Layer.FeatureClass
                         };
+                        this.m_pSnapEnvironment.AddSnapAgent(featureSnapAgent);
                     }
                 }
             }
             else
             {
-                this.m_pSnapEnvironment.SnapToleranceUnits = (esriEngineSnapToleranceUnits) this.cboSnapUnits.SelectedIndex;
-                ApplicationRef.Application.UseSnap = this.chkStartSnap.Checked;
-                this.m_pSnapEnvironment.ClearSnapAgents();
-                for (num2 = 0; num2 < this.m_pArray.Count; num2++)
+                this.m_pEngineSnapEnvironment.ClearSnapAgents();
+                this.m_pEngineSnapEnvironment.SnapToleranceUnits = (esriEngineSnapToleranceUnits)this.cboSnapUnits.SelectedIndex;
+                for (i = 0; i < this.m_pArray.Count; i++)
                 {
-                    info = (LayerSnapInfo) this.m_pArray.get_Element(num2);
-                    hitType = info.HitType;
+                    element = (SnapConfigControl.LayerSnapInfo)this.m_pArray.Element[i];
+                    hitType = element.HitType;
                     if (hitType != 0)
                     {
-                        agent2 = new FeatureSnapAgent {
-                            FeatureClass = info.Layer.FeatureClass,
-                            GeometryHitType = hitType
+                        IEngineFeatureSnapAgent engineFeatureSnapClass = new EngineFeatureSnapClass()
+                        {
+                            FeatureClass = element.Layer.FeatureClass,
+                            HitType = (esriGeometryHitPartType)hitType
                         };
-                        this.m_pSnapEnvironment.AddSnapAgent(agent2);
+                        this.m_pEngineSnapEnvironment.AddSnapAgent(engineFeatureSnapClass);
                     }
-                    if (info.bVerticalSnap)
+                    if (element.bVerticalSnap)
                     {
-                        agent2 = new VerticalSnapAgent {
-                            FeatureClass = info.Layer.FeatureClass
-                        };
-                        this.m_pSnapEnvironment.AddSnapAgent(agent2);
+                        featureSnapAgent = new FeatureSnapAgent();
+                        featureSnapAgent.FeatureClass = element.Layer.FeatureClass;
                     }
                 }
             }
         }
+
+       
+
+       
 
         private bool LayerIsExit(IGroupLayer pGroupLayer, ILayer pFindLayer)
         {
@@ -626,8 +636,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 }
                 this.m_pApp = value;
                 this.m_pMap = this.m_pApp.FocusMap;
-                (this.m_pMap as IActiveViewEvents_Event).add_ItemAdded(new IActiveViewEvents_ItemAddedEventHandler(this.SnapConfigControl_ItemAdded));
-                (this.m_pMap as IActiveViewEvents_Event).add_ItemDeleted(new IActiveViewEvents_ItemDeletedEventHandler(this.SnapConfigControl_ItemDeleted));
+                (this.m_pMap as IActiveViewEvents_Event).ItemAdded+=(new IActiveViewEvents_ItemAddedEventHandler(this.SnapConfigControl_ItemAdded));
+                (this.m_pMap as IActiveViewEvents_Event).ItemDeleted+=(new IActiveViewEvents_ItemDeletedEventHandler(this.SnapConfigControl_ItemDeleted));
                 (this.m_pApp as IApplicationEvents).OnLayerDeleted += new OnLayerDeletedHandler(this.SnapConfigControl_OnLayerDeleted);
                 (this.m_pApp as IApplicationEvents).OnMapDocumentChangedEvent += new OnMapDocumentChangedEventHandler(this.SnapConfigControl_OnMapDocumentChangedEvent);
                 if (flag)
@@ -655,6 +665,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
+        public DockContentHandler DockHandler { get; }
+
         string IDockContent.Name
         {
             get
@@ -663,12 +675,15 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
+        public int Width { get; set; }
+
         int IDockContent.Width
         {
             get
             {
                 return base.Width;
             }
+            set { base.Width = value; }
         }
 
         public IMap Map
@@ -681,8 +696,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                     flag = true;
                 }
                 this.m_pMap = value;
-                (this.m_pMap as IActiveViewEvents_Event).add_ItemAdded(new IActiveViewEvents_ItemAddedEventHandler(this.SnapConfigControl_ItemAdded));
-                (this.m_pMap as IActiveViewEvents_Event).add_ItemDeleted(new IActiveViewEvents_ItemDeletedEventHandler(this.SnapConfigControl_ItemDeleted));
+                (this.m_pMap as IActiveViewEvents_Event).ItemAdded+=(new IActiveViewEvents_ItemAddedEventHandler(this.SnapConfigControl_ItemAdded));
+                (this.m_pMap as IActiveViewEvents_Event).ItemDeleted+=(new IActiveViewEvents_ItemDeletedEventHandler(this.SnapConfigControl_ItemDeleted));
                 if (flag)
                 {
                     this.m_CanDo = false;

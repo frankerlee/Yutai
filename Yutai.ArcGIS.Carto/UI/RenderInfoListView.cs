@@ -7,6 +7,7 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Controls.SymbolUI;
 
 namespace Yutai.ArcGIS.Carto.UI
 {

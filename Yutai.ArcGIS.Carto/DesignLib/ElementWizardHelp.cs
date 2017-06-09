@@ -3,6 +3,8 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common.ExtendClass;
+using IOleFrame = Yutai.ArcGIS.Common.ExtendClass.IOleFrame;
 
 namespace Yutai.ArcGIS.Carto.DesignLib
 {
@@ -450,7 +452,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 case ElementType.OLE:
                 {
                     int hWnd = (ipageLayout_0 as IActiveView).ScreenDisplay.hWnd;
-                    JLK.ExtendClass.IOleFrame frame3 = new OleFrame();
+                    IOleFrame frame3 = new OleFrame();
                     if (frame3.CreateOleClientItem((ipageLayout_0 as IActiveView).ScreenDisplay, hWnd))
                     {
                         element = frame3 as IElement;

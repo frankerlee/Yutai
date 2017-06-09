@@ -3,9 +3,15 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.esriSystem;
+using Yutai.ArcGIS.Controls.SymbolUI;
+using IPropertyPage = Yutai.ArcGIS.Common.BaseClasses.IPropertyPage;
+using IPropertyPageEvents = Yutai.ArcGIS.Common.BaseClasses.IPropertyPageEvents;
+using OnValueChangeEventHandler = Yutai.ArcGIS.Common.BaseClasses.OnValueChangeEventHandler;
 
 namespace Yutai.ArcGIS.Carto.DesignLib
 {
@@ -73,7 +79,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 {
                     font.Name = this.cboFontName.Text;
                 }
-                font.Size = double.Parse(this.cboFontSize.Text);
+                font.Size = (decimal) double.Parse(this.cboFontSize.Text);
                 font.Bold = this.chkBold.Checked;
                 font.Italic = this.chkIta.Checked;
                 font.Underline = this.chkUnderLine.Checked;
@@ -237,7 +243,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         private void InitializeComponent()
         {
             this.icontainer_0 = new Container();
-            ComponentResourceManager manager = new ComponentResourceManager(typeof(LabelFormatPropertyPage));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LabelFormatPropertyPage));
             this.groupBox3 = new GroupBox();
             this.chkverticalRight = new CheckEdit();
             this.chkverticalBottom = new CheckEdit();
@@ -553,7 +559,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 int num3;
                 int num4;
                 int rGB = icolor_0.RGB;
-                this.method_1(rGB, out num2, out num3, out num4);
+                this.method_1((uint) rGB, out num2, out num3, out num4);
                 colorEdit_0.Color = Color.FromArgb(icolor_0.Transparency, num2, num3, num4);
             }
         }

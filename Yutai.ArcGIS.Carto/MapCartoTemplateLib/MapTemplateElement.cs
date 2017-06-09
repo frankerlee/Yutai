@@ -417,10 +417,10 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         public void Load(IPropertySet ipropertySet_0)
         {
             this.Name = Convert.ToString(ipropertySet_0.GetProperty("Name"));
-            this.m_pElement = ipropertySet_0.GetProperty("Element");
+            this.m_pElement = ipropertySet_0.GetProperty("Element") as IElement;
             string str = Convert.ToString(ipropertySet_0.GetProperty("Location"));
             this.ElementLocation = new MapCartoTemplateLib.ElementLocation(str);
-            IPropertySet property = ipropertySet_0.GetProperty("Attributes");
+            IPropertySet property = ipropertySet_0.GetProperty("Attributes") as IPropertySet;
             if (property != null)
             {
                 this.PropertySet = property;

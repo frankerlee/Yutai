@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
+using Yutai.ArcGIS.Common.Geodatabase;
 
 namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 {
@@ -119,7 +120,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     this.frm.Text = "导出VCT";
                     VCTWrite write = new VCTWrite();
                     write.ProgressMessage += new ProgressMessageHandle(this.BatchConvertToSHP_ProgressMessage);
-                    write.add_Step(new ESRI.ArcGIS.Geodatabase.IFeatureProgress_StepEventHandler(this.BatchConvertToSHP_Step));
+                    write.Step+=(new ESRI.ArcGIS.Geodatabase.IFeatureProgress_StepEventHandler(this.BatchConvertToSHP_Step));
                     write.SetFeatureClassNameEnvent += new SetFeatureClassNameEnventHandler(this.p_SetFeatureClassNameEnvent);
                     write.SetFeatureCountEnvent += new SetFeatureCountEnventHandler(this.p_SetFeatureCountEnvent);
                     for (int i = 0; i < allDataset.Count; i++)

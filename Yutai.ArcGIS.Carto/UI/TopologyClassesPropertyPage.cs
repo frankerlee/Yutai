@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
@@ -11,7 +10,9 @@ using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
+using Yutai.ArcGIS.Common.ControlExtend;
 using Yutai.Shared;
+
 
 namespace Yutai.ArcGIS.Carto.UI
 {

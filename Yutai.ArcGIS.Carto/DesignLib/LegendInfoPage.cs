@@ -57,7 +57,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         private void InitializeComponent()
         {
             this.icontainer_0 = new Container();
-            ComponentResourceManager manager = new ComponentResourceManager(typeof(LegendInfoPage));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LegendInfoPage));
             this.groupBox1 = new GroupBox();
             this.label11 = new Label();
             this.label10 = new Label();
@@ -177,13 +177,13 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             this.btnDeleteAll.TabIndex = 0x42;
             this.btnDeleteAll.Text = "删除全部";
             this.btnMoveDown.Enabled = false;
-            this.btnMoveDown.Image = manager.GetObject("btnMoveDown.Image");
+            this.btnMoveDown.Image = (Image) resources.GetObject("btnMoveDown.Image");
             this.btnMoveDown.Location = new Point(0x131, 0x76);
             this.btnMoveDown.Name = "btnMoveDown";
             this.btnMoveDown.Size = new Size(0x18, 0x18);
             this.btnMoveDown.TabIndex = 0x41;
             this.btnMoveUp.Enabled = false;
-            this.btnMoveUp.Image = manager.GetObject("btnMoveUp.Image");
+            this.btnMoveUp.Image = (Image) resources.GetObject("btnMoveUp.Image");
             this.btnMoveUp.Location = new Point(0x131, 0x4e);
             this.btnMoveUp.Name = "btnMoveUp";
             this.btnMoveUp.Size = new Size(0x18, 0x18);

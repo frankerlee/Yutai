@@ -5,11 +5,18 @@ using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.esriSystem;
+using Yutai.ArcGIS.Common.BaseClasses;
+using Yutai.ArcGIS.Common.SymbolLib;
+using Yutai.ArcGIS.Controls.Historical;
 using Yutai.ArcGIS.Controls.SymbolUI;
+using IPropertyPage = Yutai.ArcGIS.Common.BaseClasses.IPropertyPage;
+using IPropertyPageEvents = Yutai.ArcGIS.Common.BaseClasses.IPropertyPageEvents;
+using OnValueChangeEventHandler = Yutai.ArcGIS.Common.BaseClasses.OnValueChangeEventHandler;
+
 
 namespace Yutai.ArcGIS.Controls.Controls.GPSLib
 {
-    public class DestinationPropertyPage : UserControl, BaseClass.IPropertyPage, BaseClass.IPropertyPageEvents
+    public class DestinationPropertyPage : UserControl, IPropertyPage, IPropertyPageEvents
     {
         private NewSymbolButton btnBearingSymbol;
         private NewSymbolButton btnLabelSymbol;
@@ -27,11 +34,24 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
         private string m_Title = "常规";
         private TextBox txtLabel;
 
-        public event BaseClass.OnValueChangeEventHandler OnValueChange;
+        public event OnValueChangeEventHandler OnValueChange;
 
         public DestinationPropertyPage()
         {
             this.InitializeComponent();
+        }
+
+        event Common.BaseClasses.OnValueChangeEventHandler IPropertyPageEvents.OnValueChange
+        {
+            add
+            {
+                throw new NotImplementedException();
+            }
+
+            remove
+            {
+                throw new NotImplementedException();
+            }
         }
 
         public void Apply()
@@ -230,7 +250,7 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
             base.PerformLayout();
         }
 
-        void BaseClass.IPropertyPage.Hide()
+        void IPropertyPage.Hide()
         {
             base.Hide();
         }
@@ -269,7 +289,7 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
             }
         }
 
-        int BaseClass.IPropertyPage.Height
+        int IPropertyPage.Height
         {
             get
             {
@@ -277,7 +297,7 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
             }
         }
 
-        int BaseClass.IPropertyPage.Width
+        int IPropertyPage.Width
         {
             get
             {

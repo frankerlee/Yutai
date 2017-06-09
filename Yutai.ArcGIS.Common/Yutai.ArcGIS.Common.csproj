@@ -20,7 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -48,7 +48,8 @@
     <Reference Include="ESRI.ArcGIS.3DAnalyst, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="ESRI.ArcGIS.ADF, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86" />
+    <Reference Include="ESRI.ArcGIS.ADF.Connection.Local, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86" />
+    <Reference Include="ESRI.ArcGIS.ADF.Local, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
     <Reference Include="ESRI.ArcGIS.AxControls, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
     <Reference Include="ESRI.ArcGIS.Carto, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -69,6 +70,9 @@
     <Reference Include="ESRI.ArcGIS.Display, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.GeoAnalyst, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.Geodatabase, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -76,9 +80,6 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="ESRI.ArcGIS.Geometry, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="ESRI.ArcGIS.Geoprocessing, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="ESRI.ArcGIS.Geoprocessor, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
@@ -94,6 +95,7 @@
     <Reference Include="ESRI.ArcGIS.SystemUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.Version, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
     <Reference Include="Interop.OLECilentLib">
       <HintPath>..\Libraries\Interop.OLECilentLib.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -102,11 +104,13 @@
       <HintPath>..\Libraries\Interop.SQLDMO.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="Microsoft.Data.ConnectionUI">
-      <HintPath>..\Libraries\Microsoft.Data.ConnectionUI.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Data.ConnectionUI.Dialog">
       <HintPath>..\Libraries\Microsoft.Data.ConnectionUI.Dialog.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>D:\Program Files (x86)\成都领君科技有限公司\JLKEngine中间件平台V8.0\JLKEngine8.9\Microsoft.Office.Interop.Excel.DLL</HintPath>
     </Reference>
     <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -120,18 +124,22 @@
     <Reference Include="System.Management" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="TeeChart">
+      <HintPath>D:\Program Files (x86)\成都领君科技有限公司\JLKEngine中间件平台V8.0\JLKEngine8.9\TeeChart.DLL</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AELicenseProvider\AELicense.cs" />
     <Compile Include="AELicenseProvider\AELicenseProvider.cs" />
     <Compile Include="AELicenseProvider\AELicenseProviderEx.cs" />
     <Compile Include="AELicenseProvider\Regedit.cs" />
+    <Compile Include="AfterDraw.cs" />
+    <Compile Include="AoLicenseManager.cs" />
+    <Compile Include="ApplicationBase.cs" />
+    <Compile Include="ApplicationRef.cs" />
     <Compile Include="BaseClasses\AppConfigInfo.cs" />
     <Compile Include="BaseClasses\BaseCommand.cs" />
     <Compile Include="BaseClasses\BaseTool.cs" />
@@ -163,11 +171,7 @@
     <Compile Include="BaseClasses\Table2DataTable.cs" />
     <Compile Include="BaseClasses\WorkspaceOperator.cs" />
     <Compile Include="BaseClasses\XmlReaderClass.cs" />
-    <Compile Include="BitmapResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BitmapResources.resx</DependentUpon>
-    </Compile>
+    <Compile Include="BuildPyramidSet.cs" />
     <Compile Include="Carto\AEFeatureIdentifyObject.cs" />
     <Compile Include="Carto\AlignElementsOperation.cs" />
     <Compile Include="Carto\AnnoHelper.cs" />
@@ -205,10 +209,47 @@
     <Compile Include="Carto\RenderHelper.cs" />
     <Compile Include="Carto\ResizeElementOperation.cs" />
     <Compile Include="Carto\UnGroupElementOperation.cs" />
+    <Compile Include="CErrorLog.cs" />
     <Compile Include="CodeDomainEx\CodeDomainEx.cs" />
     <Compile Include="CodeDomainEx\CodeDomainManage.cs" />
     <Compile Include="CodeDomainEx\CodeDomainMapTableStruct.cs" />
     <Compile Include="CodeDomainEx\CodeDomainTableStruct.cs" />
+    <Compile Include="ControlExtenders\CustomizationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControlExtenders\DockExtender.cs" />
+    <Compile Include="ControlExtenders\DockState.cs" />
+    <Compile Include="ControlExtenders\Floaties.cs" />
+    <Compile Include="ControlExtenders\Floaty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControlExtenders\IFloaty.cs" />
+    <Compile Include="ControlExtenders\Overlay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControlExtenders\Renderer\Office2007ColorTable.cs" />
+    <Compile Include="ControlExtenders\Renderer\Office2007Renderer.cs" />
+    <Compile Include="ControlExtenders\Renderer\UseAntiAlias.cs" />
+    <Compile Include="ControlExtenders\Renderer\UseClearTypeGridFit.cs" />
+    <Compile Include="ControlExtenders\Renderer\UseClipping.cs" />
+    <Compile Include="ControlExtenders\StandardBarManager.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlExtendEx\ComboEditWindow.cs" />
+    <Compile Include="ControlExtendEx\DropDownDrawModes.cs" />
+    <Compile Include="ControlExtendEx\DropDownImages.cs" />
+    <Compile Include="ControlExtendEx\ImageComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlExtendEx\ImageComboBoxItem.cs" />
+    <Compile Include="ControlExtendEx\ImageComboBoxItemCollection.cs" />
+    <Compile Include="ControlExtendEx\ImageComboItemConverter.cs" />
+    <Compile Include="ControlExtendEx\ImageListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlExtendEx\ItemImagesContainer.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ControlExtend\CheckedVertXtraGrid.cs" />
     <Compile Include="ControlExtend\ColumnAttribute.cs" />
     <Compile Include="ControlExtend\ComboBoxTreeView.cs">
@@ -288,8 +329,150 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ControlExtend\XtraGrid.cs" />
+    <Compile Include="enumSnapToleranceUnits.cs" />
+    <Compile Include="Excel\AlignFlag.cs" />
+    <Compile Include="Excel\Body.cs" />
+    <Compile Include="Excel\BordersEdge.cs" />
+    <Compile Include="Excel\BordersEdgeFlag.cs" />
+    <Compile Include="Excel\BordersLineStyle.cs" />
+    <Compile Include="Excel\BordersWeight.cs" />
+    <Compile Include="Excel\Bottom.cs" />
+    <Compile Include="Excel\Caption.cs" />
+    <Compile Include="Excel\CellRectangle.cs" />
+    <Compile Include="Excel\ChineseNum.cs" />
+    <Compile Include="Excel\DataGridViewListViewHelper.cs" />
+    <Compile Include="Excel\DrawBase.cs" />
+    <Compile Include="Excel\DrawGrid.cs" />
+    <Compile Include="Excel\DrawRectangle.cs" />
+    <Compile Include="Excel\DrawText.cs" />
+    <Compile Include="Excel\ExcelAccess.cs" />
+    <Compile Include="Excel\ExcelBase.cs" />
+    <Compile Include="Excel\ExcelClass.cs" />
+    <Compile Include="Excel\ExceptionExcelCreateInstance.cs" />
+    <Compile Include="Excel\ExceptionExcelOpen.cs" />
+    <Compile Include="Excel\ExceptionInvalidPrinter.cs" />
+    <Compile Include="Excel\Footer.cs" />
+    <Compile Include="Excel\GoldGrid.cs" />
+    <Compile Include="Excel\GridBase.cs" />
+    <Compile Include="Excel\GridBorderFlag.cs" />
+    <Compile Include="Excel\GridLineFlag.cs" />
+    <Compile Include="Excel\GridMergeFlag.cs" />
+    <Compile Include="Excel\HAlignFlag.cs" />
+    <Compile Include="Excel\Header.cs" />
+    <Compile Include="Excel\IDraw.cs" />
+    <Compile Include="Excel\IGrid.cs" />
+    <Compile Include="Excel\ImportExcelArgs.cs" />
+    <Compile Include="Excel\ImportExcelDelegate.cs" />
+    <Compile Include="Excel\IPrinterPageSetting.cs" />
+    <Compile Include="Excel\YTExportExcel.cs" />
+    <Compile Include="Excel\MisGoldPrinter.cs" />
+    <Compile Include="Excel\MultiHeader.cs" />
+    <Compile Include="Excel\Outer.cs" />
+    <Compile Include="Excel\Printer.cs" />
+    <Compile Include="Excel\PrinterBase.cs" />
+    <Compile Include="Excel\PrinterMargins.cs" />
+    <Compile Include="Excel\PrinterPageSetting.cs" />
+    <Compile Include="Excel\PrinterSingleton.cs" />
+    <Compile Include="Excel\PrinterTabStops.cs" />
+    <Compile Include="Excel\PrintModeFlag.cs" />
+    <Compile Include="Excel\PrintPageDelegate.cs" />
+    <Compile Include="Excel\Sewing.cs" />
+    <Compile Include="Excel\SewingDirectionFlag.cs" />
+    <Compile Include="Excel\TimeDef.cs" />
+    <Compile Include="Excel\Title.cs" />
+    <Compile Include="Excel\Top.cs" />
+    <Compile Include="Excel\VAlignFlag.cs" />
+    <Compile Include="Excel\WebPrinterPageSetting.cs" />
+    <Compile Include="Excel\WinPrinterPageSetting.cs" />
+    <Compile Include="ExtendClass\AreaSeriesProperties.cs" />
+    <Compile Include="ExtendClass\BaseSeriesProperties.cs" />
+    <Compile Include="ExtendClass\ComStream.cs" />
+    <Compile Include="ExtendClass\CustomLegend.cs" />
+    <Compile Include="ExtendClass\DataGraphicsElement.cs" />
+    <Compile Include="ExtendClass\FractionTextElement.cs" />
+    <Compile Include="ExtendClass\FractionTextElement1.cs" />
+    <Compile Include="ExtendClass\frmLabelSymbolProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExtendClass\ICustomLegend.cs" />
+    <Compile Include="ExtendClass\IFractionTextElement.cs" />
+    <Compile Include="ExtendClass\IFractionTextElement1.cs" />
+    <Compile Include="ExtendClass\IJLKCodeValueDomain.cs" />
+    <Compile Include="ExtendClass\IJoinTableElement.cs" />
+    <Compile Include="ExtendClass\IJTBElement.cs" />
+    <Compile Include="ExtendClass\IOleFrame.cs" />
+    <Compile Include="ExtendClass\ISeriesProperties.cs" />
+    <Compile Include="ExtendClass\ITableElement.cs" />
+    <Compile Include="ExtendClass\ITriangleElement.cs" />
+    <Compile Include="ExtendClass\JLKCodeValueDomain.cs" />
+    <Compile Include="ExtendClass\JLKLegendAssiatant.cs" />
+    <Compile Include="ExtendClass\JoinTableElement.cs" />
+    <Compile Include="ExtendClass\JTBElement.cs" />
+    <Compile Include="ExtendClass\LabelLineElementClass.cs" />
+    <Compile Include="ExtendClass\OLEEditCompleteHandler.cs" />
+    <Compile Include="ExtendClass\OleFrame.cs" />
+    <Compile Include="ExtendClass\TableElement.cs" />
+    <Compile Include="ExtendClass\TriangleElementClass.cs" />
+    <Compile Include="frmPyramidSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GDBDeletChildVersionCreate.cs" />
+    <Compile Include="IApplication.cs" />
+    <Compile Include="IApplicationEvents.cs" />
+    <Compile Include="IFeatureSnapAgent.cs" />
+    <Compile Include="IKHookHelper.cs" />
+    <Compile Include="KHookHelper.cs" />
+    <Compile Include="LoadComponent.cs" />
+    <Compile Include="Log.cs" />
     <Compile Include="MapAndPageLayoutControls.cs" />
+    <Compile Include="MapAndPageLayoutControlsold.cs" />
+    <Compile Include="MapHelper.cs" />
     <Compile Include="Maps.cs" />
+    <Compile Include="Overview\OverviewLayerSetting.cs" />
+    <Compile Include="Overview\OverviewLayerSettings.cs" />
+    <Compile Include="Overview\OverviewWindowsLayerSettingsSectionHandler.cs" />
+    <Compile Include="PyramidPromptType.cs" />
+    <Compile Include="Query\UI\AttributeQueryBuliderControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Query\UI\AttributeQueryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Query\UI\frmAttributeQueryBuilder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Query\UI\SelectByLocationCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Query\UI\SpatialAndAttributeQueryCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Raster\RasterUtil.cs" />
+    <Compile Include="Raster\RasterUtility.cs" />
+    <Compile Include="Raster\UI\RasterAdjustHelper.cs" />
+    <Compile Include="Raster\UI\RasterAdjustPointsTablePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RegistryTools.cs" />
+    <Compile Include="Renderer\Office2007ColorTable.cs" />
+    <Compile Include="Renderer\Office2007Renderer.cs" />
+    <Compile Include="Renderer\UseAntiAlias.cs" />
+    <Compile Include="Renderer\UseClearTypeGridFit.cs" />
+    <Compile Include="Renderer\UseClipping.cs" />
+    <Compile Include="Resource\BitmapResources.cs" />
+    <Compile Include="Staff.cs" />
+    <Compile Include="StaffHelper.cs" />
+    <Compile Include="SymbolEx\FractionTextSymbolClass.cs" />
+    <Compile Include="SymbolEx\IFractionTextSymbol.cs" />
+    <Compile Include="SymbolEx\ILabelSymbol.cs" />
+    <Compile Include="SymbolEx\ILogoMarkerSymbol.cs" />
+    <Compile Include="SymbolEx\IMyText.cs" />
+    <Compile Include="SymbolEx\INodeLineSymbol.cs" />
+    <Compile Include="SymbolEx\LabelSymbol.cs" />
+    <Compile Include="SymbolEx\LogoMarkerSymbol.cs" />
+    <Compile Include="SymbolEx\MyText.cs" />
+    <Compile Include="SymbolEx\NodeLineSymbol.cs" />
+    <Compile Include="SymbolEx\Utility.cs" />
     <Compile Include="SymbolUI\ValueChangedHandler.cs" />
     <Compile Include="SymbolUI\KDColumnHeader.cs">
       <SubType>Component</SubType>
@@ -298,6 +481,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SymbolUI\KDListViewColumnStyle.cs" />
+    <Compile Include="TableCreate.cs" />
     <Compile Include="TempAcceessBD.cs" />
     <Compile Include="frmExportProcessEx.cs">
       <SubType>Form</SubType>
@@ -364,8 +548,8 @@
     <Compile Include="Editor\Helpers\VerticalSnapAgent.cs" />
     <Compile Include="Editor\Helpers\ZDEditTools.cs" />
     <Compile Include="Editor\ICopyMaps.cs" />
-    <Compile Include="Editor\JLKEditTemplate.cs" />
-    <Compile Include="Editor\JLKEditTemplateFactory.cs" />
+    <Compile Include="Editor\YtEditTemplate.cs" />
+    <Compile Include="Editor\YTEditTemplateFactory.cs" />
     <Compile Include="Editor\LayerMap.cs" />
     <Compile Include="Editor\PointOperator.cs" />
     <Compile Include="Editor\PointSnapper.cs" />
@@ -521,7 +705,6 @@
     <Compile Include="Helpers\DsGeometryType.cs" />
     <Compile Include="Helpers\ExportDataHelper.cs" />
     <Compile Include="Helpers\GeometryUtility.cs" />
-    <Compile Include="Helpers\MapHelper.cs" />
     <Compile Include="Helpers\SystemUtility.cs" />
     <Compile Include="Helpers\DataTableHelper.cs" />
     <Compile Include="Helpers\EsriUtils.cs" />
@@ -645,6 +828,7 @@
     <Compile Include="Wrapper\LayerObject.cs" />
     <Compile Include="Wrapper\LegendItemObject.cs" />
     <Compile Include="Wrapper\ObjectWrap.cs" />
+    <Compile Include="ZDHistoryManage.cs" />
     <Compile Include="ZD\frmSelectEditZD.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -676,9 +860,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="BitmapResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>BitmapResources.Designer.cs</LastGenOutput>
+    <EmbeddedResource Include="ControlExtenders\CustomizationForm.resx">
+      <DependentUpon>CustomizationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlExtenders\StandardBarManager.resx">
+      <DependentUpon>StandardBarManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlExtend\EditListView.resx">
       <DependentUpon>EditListView.cs</DependentUpon>
@@ -692,6 +878,35 @@
     <EmbeddedResource Include="Editor\frmSelectEditDatasource.resx">
       <DependentUpon>frmSelectEditDatasource.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmExportProcessEx.resx">
+      <DependentUpon>frmExportProcessEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainSubProgress.resx">
+      <DependentUpon>frmMainSubProgress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProgress2.resx">
+      <DependentUpon>frmProgress2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPyramidSet.resx">
+      <DependentUpon>frmPyramidSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Query\UI\AttributeQueryBuliderControl.resx">
+      <DependentUpon>AttributeQueryBuliderControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Query\UI\AttributeQueryControl.resx">
+      <DependentUpon>AttributeQueryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Query\UI\frmAttributeQueryBuilder.resx">
+      <DependentUpon>frmAttributeQueryBuilder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Query\UI\SelectByLocationCtrl.resx">
+      <DependentUpon>SelectByLocationCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Query\UI\SpatialAndAttributeQueryCtrl.resx">
+      <DependentUpon>SpatialAndAttributeQueryCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Raster\UI\RasterAdjustPointsTablePage.resx" />
+    <EmbeddedResource Include="Resource\BitmapResources.resx" />
     <EmbeddedResource Include="ZD\frmSelectEditZD.resources" />
   </ItemGroup>
   <ItemGroup>

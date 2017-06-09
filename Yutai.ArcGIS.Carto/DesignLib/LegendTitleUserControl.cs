@@ -4,6 +4,9 @@ using System.Drawing;
 using System.Drawing.Text;
 using System.Resources;
 using System.Windows.Forms;
+using DevExpress.Utils;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
 
@@ -116,7 +119,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         private void InitializeComponent()
         {
-            ResourceManager manager = new ResourceManager(typeof(LegendTitleUserControl));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LegendTitleUserControl));
             this.groupBox1 = new GroupBox();
             this.memoEditTitle = new MemoEdit();
             this.groupBox2 = new GroupBox();
@@ -163,21 +166,21 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "图例标题字体属性";
-            this.btnUnderline.Image = manager.GetObject("btnUnderline.Image");
+            this.btnUnderline.Image = (Image) resources.GetObject("btnUnderline.Image");
             this.btnUnderline.Location = new Point(0x70, 0x60);
             this.btnUnderline.Name = "btnUnderline";
             this.btnUnderline.Size = new Size(0x18, 0x18);
             this.btnUnderline.TabIndex = 0x47;
             this.btnUnderline.Visible = false;
             this.btnUnderline.Click += new EventHandler(this.btnUnderline_Click);
-            this.btnItalic.Image = manager.GetObject("btnItalic.Image");
+            this.btnItalic.Image = (Image) resources.GetObject("btnItalic.Image");
             this.btnItalic.Location = new Point(80, 0x60);
             this.btnItalic.Name = "btnItalic";
             this.btnItalic.Size = new Size(0x18, 0x18);
             this.btnItalic.TabIndex = 70;
             this.btnItalic.Visible = false;
             this.btnItalic.Click += new EventHandler(this.btnItalic_Click);
-            this.btnBlod.Image = manager.GetObject("btnBlod.Image");
+            this.btnBlod.Image = (Image) resources.GetObject("btnBlod.Image");
             this.btnBlod.Location = new Point(0x30, 0x60);
             this.btnBlod.Name = "btnBlod";
             this.btnBlod.Size = new Size(0x18, 0x18);
@@ -268,7 +271,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 int num3;
                 int num4;
                 int rGB = icolor_0.RGB;
-                this.method_1(rGB, out num2, out num3, out num4);
+                this.method_1((uint) rGB, out num2, out num3, out num4);
                 colorEdit_0.Color = Color.FromArgb(icolor_0.Transparency, num2, num3, num4);
             }
         }

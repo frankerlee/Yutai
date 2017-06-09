@@ -6,8 +6,11 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Xml;
+using DevExpress.XtraBars;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.SystemUI;
+using Yutai.ArcGIS.Common;
+using Yutai.ArcGIS.Controls.Historical;
 
 namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 {
@@ -75,12 +78,12 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
             return strArray;
         }
 
-        private BaseClass.LoadComponent GetLoadComponent(string name)
+        private LoadComponent GetLoadComponent(string name)
         {
-            BaseClass.LoadComponent component = this.m_assemblys[name] as BaseClass.LoadComponent;
+            LoadComponent component = this.m_assemblys[name] as LoadComponent;
             if (component == null)
             {
-                component = new BaseClass.LoadComponent();
+                component = new LoadComponent();
                 component.LoadComponentLibrary(name);
                 this.m_LoadComponents[name] = component;
             }

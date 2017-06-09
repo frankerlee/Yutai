@@ -4,11 +4,20 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
+using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common.BaseClasses;
+using Yutai.ArcGIS.Common.Display;
+using Yutai.ArcGIS.Common.Editor.Helpers;
+using Yutai.ArcGIS.Common.Geodatabase;
+using Yutai.ArcGIS.Common.Helpers;
+using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {
@@ -677,8 +686,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 feature = class2.GetFeature(pTopoErrorFeat.OriginOID);
                 IPoint shape = (pTopoErrorFeat as IFeature).Shape as IPoint;
                 IPolyline polyline = feature.Shape as IPolyline;
-                double num = Common.distance(polyline.FromPoint, shape);
-                double num2 = Common.distance(polyline.ToPoint, shape);
+                double num = CommonHelper.distance(polyline.FromPoint, shape);
+                double num2 = CommonHelper.distance(polyline.ToPoint, shape);
                 ISegmentCollection segments = polyline as ISegmentCollection;
                 ILine inLine = null;
                 IConstructLine line2 = new LineClass();
@@ -715,7 +724,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                         IGeometry geometry2 = operator2.Intersect(feature3.Shape, esriGeometryDimension.esriGeometry0Dimension);
                         if (geometry2 is IPoint)
                         {
-                            num4 = Common.distance(geometry2 as IPoint, shape);
+                            num4 = CommonHelper.distance(geometry2 as IPoint, shape);
                             if (flag)
                             {
                                 flag = false;
@@ -738,7 +747,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                             for (int i = 0; i < points.PointCount; i++)
                             {
                                 IPoint point3 = points.get_Point(i);
-                                num4 = Common.distance(point3, shape);
+                                num4 = CommonHelper.distance(point3, shape);
                                 if (flag)
                                 {
                                     flag = false;
@@ -1908,8 +1917,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 feature = class2.GetFeature(pTopoErrorFeat.OriginOID);
                 IPoint shape = (pTopoErrorFeat as IFeature).Shape as IPoint;
                 IPolyline polyline = feature.Shape as IPolyline;
-                double num = Common.distance(polyline.FromPoint, shape);
-                double num2 = Common.distance(polyline.ToPoint, shape);
+                double num = CommonHelper.distance(polyline.FromPoint, shape);
+                double num2 = CommonHelper.distance(polyline.ToPoint, shape);
                 ISegmentCollection segments = polyline as ISegmentCollection;
                 ILine line = null;
                 IConstructLine line2 = new LineClass();
@@ -1944,7 +1953,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                         IGeometry geometry2 = operator2.Intersect(feature3.Shape, esriGeometryDimension.esriGeometry0Dimension);
                         if (geometry2 is IPoint)
                         {
-                            num4 = Common.distance(geometry2 as IPoint, shape);
+                            num4 = CommonHelper.distance(geometry2 as IPoint, shape);
                             if (flag)
                             {
                                 flag = false;
@@ -1967,7 +1976,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                             for (int i = 0; i < points.PointCount; i++)
                             {
                                 IPoint point3 = points.get_Point(i);
-                                num4 = Common.distance(point3, shape);
+                                num4 = CommonHelper.distance(point3, shape);
                                 if (flag)
                                 {
                                     flag = false;
@@ -2111,7 +2120,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                     ITopologyErrorFeature tag = this.listViewError.SelectedItems[i].Tag as ITopologyErrorFeature;
                     array.Add(tag);
                 }
-                Common.Zoom2Features(this.m_pFocusMap as IActiveView, array);
+                CommonHelper.Zoom2Features(this.m_pFocusMap as IActiveView, array);
             }
         }
 

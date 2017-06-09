@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using Yutai.ArcGIS.Common.ExtendClass;
 
 namespace Yutai.ArcGIS.Carto.UI
 {

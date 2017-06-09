@@ -8,9 +8,9 @@ using ESRI.ArcGIS.DataSourcesRaster;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Catalog;
+using Yutai.ArcGIS.Catalog.UI;
 using Yutai.ArcGIS.Common;
-using Yutai.Catalog;
-using Yutai.Catalog.UI;
 using Yutai.Plugins.Enums;
 
 namespace Yutai.ArcGIS.Carto.UI

@@ -3,6 +3,9 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using ESRI.ArcGIS.Display;
+using Yutai.ArcGIS.Common;
+using Yutai.ArcGIS.Common.SymbolLib;
+using Yutai.ArcGIS.Controls.SymbolUI;
 
 namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 {

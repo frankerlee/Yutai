@@ -3,11 +3,15 @@ using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using DevExpress.XtraBars;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.SystemUI;
+using Yutai.ArcGIS.Common;
+using Yutai.ArcGIS.Common.BaseClasses;
+using Yutai.ArcGIS.Common.Helpers;
 using Yutai.ArcGIS.Controls.Editor.UI;
 
 namespace Yutai.ArcGIS.Controls.Controls
@@ -451,7 +455,7 @@ namespace Yutai.ArcGIS.Controls.Controls
                     this.toolStrip1.Visible = true;
                     foreach (object obj2 in ApplicationRef.Application.MapCommands)
                     {
-                        ToolStripItem item = Common.CreateBarItem(obj2 as ICommand);
+                        ToolStripItem item = CommonHelper.CreateBarItem(obj2 as ICommand);
                         this.toolStrip1.Items.Add(item);
                     }
                 }
@@ -460,7 +464,7 @@ namespace Yutai.ArcGIS.Controls.Controls
                     this.bar2.Visible = true;
                     foreach (object obj2 in ApplicationRef.Application.MapCommands)
                     {
-                        BarButtonItem item2 = Common.CreateJLKBarItem(this.barManager1, obj2 as ICommand);
+                        BarButtonItem item2 = CommonHelper.CreateJLKBarItem(this.barManager1, obj2 as ICommand);
                         this.bar2.AddItem(item2);
                     }
                 }
@@ -470,7 +474,7 @@ namespace Yutai.ArcGIS.Controls.Controls
         protected override void OnClosing(CancelEventArgs e)
         {
             IMap key = this.axMapControl1.Map;
-            if ((Editor.Editor.EditMap == key) && !Editor.Editor.StopEditing())
+            if ((Yutai.ArcGIS.Common.Editor.Editor.EditMap == key) && !Yutai.ArcGIS.Common.Editor.Editor.StopEditing())
             {
                 e.Cancel = true;
                 base.OnClosing(e);

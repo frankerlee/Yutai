@@ -1,5 +1,7 @@
-﻿namespace Yutai.ArcGIS.Controls.Editor.UI
+﻿using Yutai.ArcGIS.Common.Editor;
+
+namespace Yutai.ArcGIS.Controls.Editor.UI
 {
-    public delegate void OnTemplatePropertyChangeHandler(JLKEditTemplate template);
+    public delegate void OnTemplatePropertyChangeHandler(YTEditTemplate template);
 }
 

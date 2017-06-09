@@ -3,8 +3,11 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common.Geodatabase;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {
@@ -78,7 +81,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             {
                 num4 = this.m_pPolyline.Length / distance;
             }
-            Editor.Editor.EditWorkspace.StartEditOperation();
+            Yutai.ArcGIS.Common.Editor.Editor.EditWorkspace.StartEditOperation();
             int count = this.listView1.Items.Count;
             item = this.listView1.Items[count - 1];
             try
@@ -180,7 +183,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                     row.Store();
                 }
             }
-            Editor.Editor.EditWorkspace.StopEditOperation();
+            Yutai.ArcGIS.Common.Editor.Editor.EditWorkspace.StopEditOperation();
             return true;
         }
 

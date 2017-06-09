@@ -2,7 +2,9 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 using ESRI.ArcGIS.Carto;
+using Yutai.ArcGIS.Common;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Yutai.ArcGIS.Common.Editor;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {
@@ -14,7 +15,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         public static  event OnTemplatePropertyChangeHandler OnTemplatePropertyChange;
 
-        public static void AddEditTemplate(JLKEditTemplate template)
+        public static void AddEditTemplate(YTEditTemplate template)
         {
             if (OnAddTemplate != null)
             {
@@ -22,7 +23,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
-        public static void AddMoreEditTemplate(List<JLKEditTemplate> template)
+        public static void AddMoreEditTemplate(List<YTEditTemplate> template)
         {
             if (OnAddMoreTemplate != null)
             {
@@ -30,7 +31,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
-        public static void DeleteEditTemplate(JLKEditTemplate template)
+        public static void DeleteEditTemplate(YTEditTemplate template)
         {
             if (OnDeleteTemplate != null)
             {
@@ -38,7 +39,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
-        public static void DeleteMoreEditTemplate(List<JLKEditTemplate> template)
+        public static void DeleteMoreEditTemplate(List<YTEditTemplate> template)
         {
             if (OnDeleteMoreTemplate != null)
             {
@@ -46,7 +47,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
-        public static void TemplatePropertyChange(JLKEditTemplate template)
+        public static void TemplatePropertyChange(YTEditTemplate template)
         {
             if (OnTemplatePropertyChange != null)
             {

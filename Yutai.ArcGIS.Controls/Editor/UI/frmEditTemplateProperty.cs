@@ -2,6 +2,8 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using Yutai.ArcGIS.Common.Editor;
+using Yutai.ArcGIS.Common.SymbolLib;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {
@@ -243,7 +245,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
-        public JLKEditTemplate EditTemplate { get; set; }
+        public YTEditTemplate EditTemplate { get; set; }
     }
 }
 

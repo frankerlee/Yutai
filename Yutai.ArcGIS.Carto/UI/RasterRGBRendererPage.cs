@@ -9,6 +9,7 @@ using ESRI.ArcGIS.DataSourcesRaster;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.esriSystem;
 using Yutai.ArcGIS.Common.Carto;
+using Yutai.ArcGIS.Common.ControlExtend;
 
 namespace Yutai.ArcGIS.Carto.UI
 {
@@ -330,7 +331,7 @@ namespace Yutai.ArcGIS.Carto.UI
                 int num2;
                 int num3;
                 int num4;
-                int rGB = icolor_0.RGB;
+                uint rGB =(uint) icolor_0.RGB;
                 this.method_2(rGB, out num2, out num3, out num4);
                 colorEdit_0.Color = Color.FromArgb(icolor_0.Transparency, num2, num3, num4);
             }
