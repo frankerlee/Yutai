@@ -13,6 +13,7 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.DataSourcesRaster;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common;
 using Yutai.ArcGIS.Common.Helpers;
 
 namespace Yutai.Plugins.TableEditor.Editor
