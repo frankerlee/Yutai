@@ -19,18 +19,14 @@ namespace Yutai.Plugins.TableEditor.Views
     public interface ITableEditorView : IMenuProvider
     {
         IMapView MapView { get; }
-        Dictionary<int, IGridView> GridViews { get; set; }
+        Dictionary<string, ITableView> TableViews { get; set; }
         TabControl MainTabControl { get; }
-        TabPage CurTabPage { get; set; }
-        TabPage CreateTabPage(IFeatureLayer featureLayer);
-        TabPage CreateTabPage(IFeatureClass featureClass);
-        TabPage CreateTabPage(string name, int handle);
-        void ActivatePage(int handle);
-        void ClosePage(int handle);
+        void ActivatePage(string pageName);
+        void ClosePage(string pageName);
         void ClosePage();
         void OpenTable(IFeatureLayer featureLayer);
         void Clear();
-        IGridView CurrentGridView { get; }
+        ITableView CurrentGridView { get; }
 
     }
 }

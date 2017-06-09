@@ -92,7 +92,7 @@
     <Compile Include="Editor\Header.Designer.cs">
       <DependentUpon>Header.cs</DependentUpon>
     </Compile>
-    <Compile Include="Editor\IGridView.cs" />
+    <Compile Include="Editor\ITableView.cs" />
     <Compile Include="Editor\IMapView.cs" />
     <Compile Include="Editor\MapView.cs" />
     <Compile Include="Editor\NavigationBar.cs">
@@ -101,11 +101,11 @@
     <Compile Include="Editor\NavigationBar.Designer.cs">
       <DependentUpon>NavigationBar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Editor\TableEditorGrid.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Editor\TablePage.cs">
+      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Editor\TableEditorGrid.Designer.cs">
-      <DependentUpon>TableEditorGrid.cs</DependentUpon>
+    <Compile Include="Editor\TablePage.Designer.cs">
+      <DependentUpon>TablePage.cs</DependentUpon>
     </Compile>
     <Compile Include="Editor\VirtualGrid.cs">
       <SubType>UserControl</SubType>
@@ -162,9 +162,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editor\NavigationBar.resx">
       <DependentUpon>NavigationBar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Editor\TableEditorGrid.resx">
-      <DependentUpon>TableEditorGrid.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editor\VirtualGrid.resx">
       <DependentUpon>VirtualGrid.cs</DependentUpon>

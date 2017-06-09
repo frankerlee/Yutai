@@ -52,12 +52,12 @@ namespace Yutai.Plugins.TableEditor.Commands
 
         public void OnClick()
         {
-            IGridView pGridView = _view.CurrentGridView;
+            ITableView pGridView = _view.CurrentGridView;
             if (pGridView == null)
                 return;
-            if (pGridView.OID == -1)
+            if (pGridView.CurrentOID == -1)
                 return;
-            _view.MapView.ZoomToFeature(_view.CurrentGridView.FeatureLayer, _view.CurrentGridView.OID);
+            _view.MapView.ZoomToFeature(_view.CurrentGridView.FeatureLayer, _view.CurrentGridView.CurrentOID);
         }
     }
 }

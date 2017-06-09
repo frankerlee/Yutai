@@ -31,7 +31,7 @@ namespace Yutai.Plugins.TableEditor.Views
             _context = context;
             InitializeComponent();
             InitMenu();
-            GridViews = new Dictionary<int, IGridView>();
+            TableViews = new Dictionary<string, ITableView>();
             MapView = new MapView(_context.MapControl.Map);
         }
 
@@ -144,103 +144,57 @@ namespace Yutai.Plugins.TableEditor.Views
         }
 
         public IMapView MapView { get; }
-        public Dictionary<int, IGridView> GridViews { get; set; }
+        public Dictionary<string, ITableView> TableViews { get; set; }
 
         public TabControl MainTabControl
         {
             get { return tabControl; }
         }
-
-        public TabPage CurTabPage
+        
+        public void ActivatePage(string pageName)
         {
-            get { return tabControl.SelectedTab; }
-            set { tabControl.SelectedTab = value; }
+            tabControl.SelectedTab = tabControl.TabPages[pageName];
         }
 
-        public TabPage CreateTabPage(IFeatureLayer featureLayer)
+        public void ClosePage(string pageName)
         {
-            return CreateTabPage(featureLayer.FeatureClass);
-        }
-
-        public TabPage CreateTabPage(IFeatureClass featureClass)
-        {
-            return CreateTabPage(featureClass.AliasName, featureClass.ObjectClassID);
-        }
-
-        public TabPage CreateTabPage(string name, int handle)
-        {
-            TabPage tabPage = new TabPage();
-            tabPage.Name = string.Format("{0}_{1}", name, handle);
-            tabPage.Text = name;
-            tabPage.Tag = handle;
-            tabControl.Controls.Add(tabPage);
-            return tabPage;
-        }
-
-        public void ActivatePage(int handle)
-        {
-            int pageCount = tabControl.TabPages.Count;
-            for (int i = 0; i < pageCount; i++)
-            {
-                TabPage tabPage = tabControl.TabPages[i];
-                if ((int)tabPage.Tag == handle)
-                    tabPage.Select();
-            }
-        }
-
-        public void ClosePage(int handle)
-        {
-            int pageCount = tabControl.TabPages.Count;
-            for (int i = 0; i < pageCount; i++)
-            {
-                TabPage tabPage = tabControl.TabPages[i];
-                if ((int)tabPage.Tag == handle)
-                {
-                    tabControl.TabPages.Remove(tabPage);
-                    GridViews.Remove(handle);
-                }
-            }
+            TableViews.Remove(pageName);
+            TabPage page = tabControl.TabPages[pageName];
+            tabControl.TabPages.Remove(page);
         }
 
         public void ClosePage()
         {
-            int handle = (int)CurTabPage.Tag;
-            tabControl.TabPages.Remove(CurTabPage);
-            GridViews.Remove(handle);
+            TableViews.Remove(CurrentGridView.Name);
+            tabControl.TabPages.Remove(tabControl.SelectedTab);
         }
         
         public void OpenTable(IFeatureLayer featureLayer)
         {
-            if (GridViews.ContainsKey(featureLayer.FeatureClass.ObjectClassID))
+            if (TableViews.ContainsKey(featureLayer.Name))
             {
-                ActivatePage(featureLayer.FeatureClass.ObjectClassID);
+                ActivatePage(featureLayer.Name);
                 return;
             }
+            
+            ITableView pTableView = new TablePage(_context, this, featureLayer);
+            tabControl.Controls.Add(pTableView as TabPage);
+            tabControl.SelectedTab = pTableView as TabPage;
 
-            TableEditorGrid tableEditorGrid = new TableEditorGrid(_context, this);
-            tableEditorGrid.FeatureLayer = featureLayer;
-            tableEditorGrid.Dock = DockStyle.Fill;
-            TabPage tabPage = CreateTabPage(featureLayer.FeatureClass);
-            tabPage.Controls.Add(tableEditorGrid);
-            tabControl.SelectedTab = tabPage;
-
-            GridViews.Add(featureLayer.FeatureClass.ObjectClassID, tableEditorGrid);
+            TableViews.Add(featureLayer.Name, pTableView);
         }
 
         public void Clear()
         {
+            TableViews.Clear();
             tabControl.TabPages.Clear();
         }
         
-        public IGridView CurrentGridView
+        public ITableView CurrentGridView
         {
             get
             {
-                if (CurTabPage == null)
-                    return null;
-                int handle = (int)CurTabPage.Tag;
-                return GridViews[handle];
-
+                return tabControl.SelectedTab as ITableView;
             }
         }
 

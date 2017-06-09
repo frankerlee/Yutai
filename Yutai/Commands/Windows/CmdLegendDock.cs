@@ -41,7 +41,7 @@ namespace Yutai.Commands.Windows
             base.m_category = "Window";
             base.m_bitmap = Properties.Resources.icon_maplegend;
             base.m_name = "Window.Common.MapLegend";
-            base._key = "Window.Common.MapLegend";
+            base._key = "Window_Common_MapLegend";
             base.m_toolTip = "二维图例";
             base.m_checked = false;
             base.m_enabled = true;

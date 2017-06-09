@@ -8,6 +8,7 @@
 // 更新时间 :  2017/06/06  15:48
 
 using System;
+using DevExpress.XtraBars.Docking;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.TableEditor.Views;
@@ -24,7 +25,8 @@ namespace Yutai.Plugins.TableEditor.Services
 
             var panels = context.DockPanels;
             panels.Lock();
-            panels.Add(presenter.GetInternalObject() as IDockPanelView, plugin.Identity);
+            DockPanel panel = panels.Add(presenter.GetInternalObject() as IDockPanelView, plugin.Identity);
+            panel.Visible = false;
             panels.Unlock();
         }
     }

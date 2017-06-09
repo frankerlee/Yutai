@@ -16,6 +16,7 @@ namespace Yutai.Plugins.TableEditor.Editor
 {
     public partial class Header : UserControl
     {
+        public event EventHandler<string> Close;
         public Header()
         {
             InitializeComponent();
@@ -28,14 +29,9 @@ namespace Yutai.Plugins.TableEditor.Editor
             get { return this.lblValue.Text; }
             set { this.lblValue.Text = value; }
         }
-
-        public int Handler { get; set; }
-
-        public IAppContext AppContext { get; set; }
-        public ITableEditorView View { get; set; }
         private void btnClose_Click(object sender, EventArgs e)
         {
-            View.ClosePage();
+            OnClose(Value);
         }
         
         private void btnClose_MouseHover(object sender, EventArgs e)
@@ -52,6 +48,11 @@ namespace Yutai.Plugins.TableEditor.Editor
             if (button == null)
                 return;
             button.BorderStyle = BorderStyle.None;
+        }
+
+        protected virtual void OnClose(string e)
+        {
+            Close?.Invoke(this, e);
         }
     }
 }

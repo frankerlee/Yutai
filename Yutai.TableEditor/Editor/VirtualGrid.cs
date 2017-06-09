@@ -21,7 +21,7 @@ namespace Yutai.Plugins.TableEditor.Editor
 {
     public partial class VirtualGrid : UserControl
     {
-        public event EventHandler SelectFeaturesHandler;
+        public event EventHandler SelectFeatures;
         private bool _isClone = true;
         private int m_ShowMaxRecNum = 300;
         private string m_strGeometry = "";
@@ -68,9 +68,6 @@ namespace Yutai.Plugins.TableEditor.Editor
         {
             get { return _featureLayer.FeatureClass; }
         }
-
-        public IAppContext AppContext { get; set; }
-        public ITableEditorView View { get; set; }
 
         public IFeatureLayer FeatureLayer
         {
@@ -373,7 +370,7 @@ namespace Yutai.Plugins.TableEditor.Editor
 
         protected virtual void OnSelectFeaturesHandler()
         {
-            SelectFeaturesHandler?.Invoke(this, EventArgs.Empty);
+            SelectFeatures?.Invoke(this, EventArgs.Empty);
         }
 
         public void SelectionChanged(List<int> oids)
@@ -412,12 +409,18 @@ namespace Yutai.Plugins.TableEditor.Editor
 
         public void SelectAll()
         {
+            _isLockMap = true;
             this.dataGridViewAll.SelectAll();
+            _isLockMap = false;
+            OnSelectFeaturesHandler();
         }
 
         public void SelectNone()
         {
+            _isLockMap = true;
             this.dataGridViewAll.ClearSelection();
+            _isLockMap = false;
+            OnSelectFeaturesHandler();
         }
 
         public void InvertSelection()
