@@ -49,12 +49,12 @@ namespace Yutai.Plugins.TableEditor.Commands
             OnCreate();
         }
 
-        public void OnClick()
+        public override void OnClick()
         {
-            IGridView pGridView = _view.CurrentGridView;
+            ITableView pGridView = _view.CurrentGridView;
             if (pGridView == null)
                 return;
-            if (pGridView.OID == -1)
+            if (pGridView.CurrentOID == -1)
                 return;
             _view.MapView.ZoomToSelectedFeatures(_view.CurrentGridView.FeatureLayer);
         }

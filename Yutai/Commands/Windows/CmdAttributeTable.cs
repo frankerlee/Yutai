@@ -44,7 +44,7 @@ namespace Yutai.Commands.Windows
             base.m_category = "Window";
             base.m_bitmap = Properties.Resources.icon_attribute_table;
             base.m_name = "Window.Common.AttributeTable";
-            base._key = "Window.Common.AttributeTable";
+            base._key = "Window_Common_AttributeTable";
             base.m_toolTip = "属性表";
             base.m_checked = false;
             base.m_enabled = true;

@@ -69,9 +69,6 @@ namespace Yutai.Plugins.TableEditor.Editor
             get { return _featureLayer.FeatureClass; }
         }
 
-        public IAppContext AppContext { get; set; }
-        public ITableEditorView View { get; set; }
-
         public IFeatureLayer FeatureLayer
         {
             get { return _featureLayer; }
@@ -412,12 +409,18 @@ namespace Yutai.Plugins.TableEditor.Editor
 
         public void SelectAll()
         {
+            _isLockMap = true;
             this.dataGridViewAll.SelectAll();
+            _isLockMap = false;
+            OnSelectFeaturesHandler();
         }
 
         public void SelectNone()
         {
+            _isLockMap = true;
             this.dataGridViewAll.ClearSelection();
+            _isLockMap = false;
+            OnSelectFeaturesHandler();
         }
 
         public void InvertSelection()

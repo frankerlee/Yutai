@@ -1,6 +1,6 @@
 ﻿// 项目名称 :  Yutai
 // 项目描述 :  
-// 类 名 称 :  IGridView.cs
+// 类 名 称 :  ITableView.cs
 // 版 本 号 :  
 // 说    明 :  
 // 作    者 :  
@@ -12,10 +12,12 @@ using ESRI.ArcGIS.Geodatabase;
 
 namespace Yutai.Plugins.TableEditor.Editor
 {
-    public interface IGridView
+    public interface ITableView
     {
-        int OID { get; }
-        IFeatureLayer FeatureLayer { get; set; }
+        string Name { get; }
+        string Text { get; }
+        int CurrentOID { get; }
+        IFeatureLayer FeatureLayer { get; }
         void SelectAll();
         void SelectNone();
         void InvertSelection();

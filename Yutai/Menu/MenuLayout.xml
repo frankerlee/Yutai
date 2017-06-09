@@ -23,7 +23,7 @@
           <BarItem  Key="File_Mxd_CloseMXD" Visible="true"></BarItem>
         </PageGroup>
       </Page>
-      <Page Key="View" Caption="视图" Index="0" Visible="true">
+      <Page Key="View" Caption="视图" Index="1" Visible="true">
         <PageGroup Key="View_Common" Caption="常用" Visible="true" Index="0">
           <BarItem  Key="View_ZoomIn" Visible="true"></BarItem>
           <BarItem  Key="View_ZoomOut" Visible="true"></BarItem>
@@ -39,7 +39,13 @@
         <PageGroup Key="View Measure" Caption="量测" Visible="true" Index="0">
           <BarItem  Key="View_MeasureLength" Visible="true"></BarItem>
           <BarItem  Key="View_MeasureArea" Visible="true"></BarItem>
-          
+        </PageGroup>
+      </Page>
+      <Page Key="Windows" Caption="窗口" Index="10" Visible="true">
+        <PageGroup Key="Window_Common" Caption="窗口控制" Visible="true" Index="0">
+          <BarItem  Key="Window_Common_MapLegend" Visible="true"></BarItem>
+          <BarItem  Key="Window_Common_Overview" Visible="true"></BarItem>
+          <BarItem  Key="Window_Common_AttributeTable" Visible="true"></BarItem>
         </PageGroup>
       </Page>
     </Pages>

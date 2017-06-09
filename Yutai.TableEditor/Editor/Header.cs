@@ -28,9 +28,7 @@ namespace Yutai.Plugins.TableEditor.Editor
             get { return this.lblValue.Text; }
             set { this.lblValue.Text = value; }
         }
-
-        public int Handler { get; set; }
-
+        
         public IAppContext AppContext { get; set; }
         public ITableEditorView View { get; set; }
         private void btnClose_Click(object sender, EventArgs e)

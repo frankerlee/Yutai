@@ -1,6 +1,6 @@
 ﻿namespace Yutai.Plugins.TableEditor.Editor
 {
-    partial class TableEditorGrid
+    partial class TablePanel
     {
         /// <summary> 
         /// 必需的设计器变量。
@@ -34,7 +34,6 @@
             // 
             // virtualGrid
             // 
-            this.virtualGrid.AppContext = null;
             this.virtualGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.virtualGrid.FeatureLayer = null;
             this.virtualGrid.Location = new System.Drawing.Point(0, 20);
@@ -42,7 +41,6 @@
             this.virtualGrid.RecordNum = 0;
             this.virtualGrid.Size = new System.Drawing.Size(771, 343);
             this.virtualGrid.TabIndex = 1;
-            this.virtualGrid.View = null;
             this.virtualGrid.SelectFeaturesHandler += new System.EventHandler(this.virtualGrid_SelectFeaturesHandler);
             // 
             // header

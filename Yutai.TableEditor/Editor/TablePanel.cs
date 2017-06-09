@@ -14,18 +14,16 @@ using Yutai.Plugins.TableEditor.Views;
 
 namespace Yutai.Plugins.TableEditor.Editor
 {
-    public partial class TableEditorGrid : UserControl, IGridView
+    public partial class TablePanel : UserControl, ITableView
     {
         private IActiveViewEvents_Event _activeViewEventsEvent;
-        public TableEditorGrid(IAppContext context, ITableEditorView view)
+        public TablePanel(IAppContext context, ITableEditorView view)
         {
             InitializeComponent();
             AppContext = context;
             View = view;
             header.AppContext = context;
             header.View = view;
-            virtualGrid.AppContext = context;
-            virtualGrid.View = view;
             _activeViewEventsEvent = context.MapControl.Map as IActiveViewEvents_Event;
             if (_activeViewEventsEvent != null)
                 _activeViewEventsEvent.SelectionChanged += _activeViewEventsEvent_SelectionChanged;
