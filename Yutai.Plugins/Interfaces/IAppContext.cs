@@ -55,6 +55,7 @@ namespace Yutai.Plugins.Interfaces
         }
 
         IStyleGallery StyleGallery { get; set; }
+        PyramidPromptType PyramidPromptType { get; set; }
 
 
         void ShowCommandString(string msg, CommandTipsType tipType);

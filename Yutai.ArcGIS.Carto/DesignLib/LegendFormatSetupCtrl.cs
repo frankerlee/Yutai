@@ -3,6 +3,8 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Resources;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using ESRI.ArcGIS.Carto;
 
 namespace Yutai.ArcGIS.Carto.DesignLib
@@ -59,7 +61,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         private void InitializeComponent()
         {
-            ResourceManager manager = new ResourceManager(typeof(LegendFormatSetupCtrl));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LegendFormatSetupCtrl));
             this.groupBox1 = new GroupBox();
             this.label14 = new Label();
             this.label13 = new Label();

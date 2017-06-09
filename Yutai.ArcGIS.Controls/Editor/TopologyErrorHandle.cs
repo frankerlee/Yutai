@@ -5,6 +5,9 @@ using System.Windows.Forms;
 using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common;
+using Yutai.ArcGIS.Common.Geodatabase;
+using Yutai.ArcGIS.Common.Helpers;
 using Yutai.ArcGIS.Controls.Editor.UI;
 
 namespace Yutai.ArcGIS.Controls.Editor
@@ -340,8 +343,8 @@ namespace Yutai.ArcGIS.Controls.Editor
                 feature = class2.GetFeature(pTopoErrorFeat.OriginOID);
                 IPoint shape = (pTopoErrorFeat as IFeature).Shape as IPoint;
                 IPolyline polyline = feature.Shape as IPolyline;
-                double num = Common.distance(polyline.FromPoint, shape);
-                double num2 = Common.distance(polyline.ToPoint, shape);
+                double num = CommonHelper.distance(polyline.FromPoint, shape);
+                double num2 = CommonHelper.distance(polyline.ToPoint, shape);
                 ISegmentCollection segments = polyline as ISegmentCollection;
                 ILine inLine = null;
                 IConstructLine line2 = new LineClass();
@@ -378,7 +381,7 @@ namespace Yutai.ArcGIS.Controls.Editor
                         IGeometry geometry2 = operator2.Intersect(feature3.Shape, esriGeometryDimension.esriGeometry0Dimension);
                         if (geometry2 is IPoint)
                         {
-                            num4 = Common.distance(geometry2 as IPoint, shape);
+                            num4 = CommonHelper.distance(geometry2 as IPoint, shape);
                             if (flag)
                             {
                                 flag = false;
@@ -401,7 +404,7 @@ namespace Yutai.ArcGIS.Controls.Editor
                             for (int i = 0; i < points.PointCount; i++)
                             {
                                 IPoint point3 = points.get_Point(i);
-                                num4 = Common.distance(point3, shape);
+                                num4 = CommonHelper.distance(point3, shape);
                                 if (flag)
                                 {
                                     flag = false;
@@ -916,8 +919,8 @@ namespace Yutai.ArcGIS.Controls.Editor
                 feature = class2.GetFeature(pTopoErrorFeat.OriginOID);
                 IPoint shape = (pTopoErrorFeat as IFeature).Shape as IPoint;
                 IPolyline polyline = feature.Shape as IPolyline;
-                double num = Common.distance(polyline.FromPoint, shape);
-                double num2 = Common.distance(polyline.ToPoint, shape);
+                double num = CommonHelper.distance(polyline.FromPoint, shape);
+                double num2 = CommonHelper.distance(polyline.ToPoint, shape);
                 ISegmentCollection segments = polyline as ISegmentCollection;
                 ILine line = null;
                 IConstructLine line2 = new LineClass();
@@ -952,7 +955,7 @@ namespace Yutai.ArcGIS.Controls.Editor
                         IGeometry geometry2 = operator2.Intersect(feature3.Shape, esriGeometryDimension.esriGeometry0Dimension);
                         if (geometry2 is IPoint)
                         {
-                            num4 = Common.distance(geometry2 as IPoint, shape);
+                            num4 = CommonHelper.distance(geometry2 as IPoint, shape);
                             if (flag)
                             {
                                 flag = false;
@@ -975,7 +978,7 @@ namespace Yutai.ArcGIS.Controls.Editor
                             for (int i = 0; i < points.PointCount; i++)
                             {
                                 IPoint point3 = points.get_Point(i);
-                                num4 = Common.distance(point3, shape);
+                                num4 = CommonHelper.distance(point3, shape);
                                 if (flag)
                                 {
                                     flag = false;

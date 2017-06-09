@@ -7,6 +7,7 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common.Editor;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {
@@ -40,11 +41,11 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         private void DeletetoolStripButton_Click(object sender, EventArgs e)
         {
             List<ListViewItem> list = new List<ListViewItem>();
-            List<JLKEditTemplate> list2 = new List<JLKEditTemplate>();
+            List<YTEditTemplate> list2 = new List<YTEditTemplate>();
             foreach (ListViewItem item in this.listView2.SelectedItems)
             {
                 list.Add(item);
-                list2.Add(item.Tag as JLKEditTemplate);
+                list2.Add(item.Tag as YTEditTemplate);
             }
             foreach (ListViewItem item2 in list)
             {
@@ -77,7 +78,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             layer.Reset();
             for (ILayer layer2 = layer.Next(); layer2 != null; layer2 = layer.Next())
             {
-                if (!(layer2 is IFeatureLayer) || !Editor.Editor.LayerCanEdit(layer2 as IFeatureLayer))
+                if (!(layer2 is IFeatureLayer) || !Yutai.ArcGIS.Common.Editor.Editor.LayerCanEdit(layer2 as IFeatureLayer))
                 {
                     continue;
                 }
@@ -273,10 +274,10 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             if (this.listView1.SelectedItems.Count != 0)
             {
                 IFeatureLayer tag = this.listView1.SelectedItems[0].Tag as IFeatureLayer;
-                List<JLKEditTemplate> list = this.Templates[tag];
+                List<YTEditTemplate> list = this.Templates[tag];
                 this.删除图层中全部内容ToolStripMenuItem.Enabled = list.Count > 0;
                 this.删除ToolStripMenuItem.Enabled = list.Count > 0;
-                foreach (JLKEditTemplate template in list)
+                foreach (YTEditTemplate template in list)
                 {
                     ListViewItem item = new ListViewItem {
                         Text = template.Name,
@@ -305,7 +306,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         private void propertytoolStripButton_Click(object sender, EventArgs e)
         {
             frmEditTemplateProperty property = new frmEditTemplateProperty();
-            JLKEditTemplate tag = this.listView2.SelectedItems[0].Tag as JLKEditTemplate;
+            YTEditTemplate tag = this.listView2.SelectedItems[0].Tag as YTEditTemplate;
             property.EditTemplate = tag;
             if ((property.ShowDialog() == DialogResult.OK) && (this.listView2.SelectedItems[0].Text != tag.Name))
             {
@@ -321,16 +322,16 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             };
             if (template.ShowDialog() == DialogResult.OK)
             {
-                foreach (KeyValuePair<IFeatureLayer, List<JLKEditTemplate>> pair in template.TemplateList)
+                foreach (KeyValuePair<IFeatureLayer, List<Yutai.ArcGIS.Common.Editor.YTEditTemplate>> pair in template.TemplateList)
                 {
-                    List<JLKEditTemplate> list = null;
+                    List<YTEditTemplate> list = null;
                     if (this.Templates.ContainsKey(pair.Key))
                     {
                         list = this.Templates[pair.Key];
                     }
                     else
                     {
-                        list = new List<JLKEditTemplate>();
+                        list = new List<YTEditTemplate>();
                         this.Templates.Add(pair.Key, list);
                     }
                     list.AddRange(pair.Value);
@@ -343,8 +344,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         {
             if (MessageBox.Show("确定删除地图中所有模板?", "组织模板", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                List<JLKEditTemplate> template = new List<JLKEditTemplate>();
-                foreach (KeyValuePair<IFeatureLayer, List<JLKEditTemplate>> pair in this.Templates)
+                List<YTEditTemplate> template = new List<YTEditTemplate>();
+                foreach (KeyValuePair<IFeatureLayer, List<YTEditTemplate>> pair in this.Templates)
                 {
                     template.AddRange(pair.Value);
                 }
@@ -358,10 +359,10 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         private void 删除图层中全部内容ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            List<JLKEditTemplate> template = new List<JLKEditTemplate>();
+            List<YTEditTemplate> template = new List<YTEditTemplate>();
             foreach (ListViewItem item in this.listView2.Items)
             {
-                template.Add(item.Tag as JLKEditTemplate);
+                template.Add(item.Tag as YTEditTemplate);
             }
             if (template.Count > 0)
             {
@@ -388,7 +389,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         public IMap Map { get; set; }
 
-        public Dictionary<IFeatureLayer, List<JLKEditTemplate>> Templates { get; set; }
+        public Dictionary<IFeatureLayer, List<YTEditTemplate>> Templates { get; set; }
     }
 }
 

@@ -226,7 +226,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 }
                 try
                 {
-                    this.SizeStyle = Convert.ToInt32(value.GetProperty("GroupElement"));
+                    this.SizeStyle = (SizeStyle) Convert.ToInt32(value.GetProperty("GroupElement"));
                 }
                 catch
                 {

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
+using Yutai.ArcGIS.Common.Editor;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {
@@ -14,7 +15,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         private Button btnNext;
         private Button button4;
         private IContainer components = null;
-        private Dictionary<IFeatureLayer, List<JLKEditTemplate>> m_list = new Dictionary<IFeatureLayer, List<JLKEditTemplate>>();
+        private Dictionary<IFeatureLayer, List<YTEditTemplate>> m_list = new Dictionary<IFeatureLayer, List<YTEditTemplate>>();
         private int m_step = 0;
         private Panel panel1;
         private Panel panel2;
@@ -32,10 +33,10 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             {
                 this.selectLayerCtrl.Apply();
             }
-            List<JLKEditTemplate> template = new List<JLKEditTemplate>();
-            foreach (KeyValuePair<IFeatureLayer, List<JLKEditTemplateWrap>> pair in this.selectLayerCtrl.Templates)
+            List<YTEditTemplate> template = new List<YTEditTemplate>();
+            foreach (KeyValuePair<IFeatureLayer, List<YTEditTemplateWrap>> pair in this.selectLayerCtrl.Templates)
             {
-                foreach (JLKEditTemplateWrap wrap in pair.Value)
+                foreach (YTEditTemplateWrap wrap in pair.Value)
                 {
                     if (wrap.IsUse)
                     {
@@ -182,7 +183,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         public IMap Map { get; set; }
 
-        public Dictionary<IFeatureLayer, List<JLKEditTemplate>> TemplateList
+        public Dictionary<IFeatureLayer, List<YTEditTemplate>> TemplateList
         {
             get
             {

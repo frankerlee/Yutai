@@ -1,5 +1,6 @@
 ﻿using ESRI.ArcGIS.ADF.BaseClasses;
-using ESRI.ArcGIS.SystemUI;
+using Yutai.Plugins.Interfaces;
+using ICommandSubType = ESRI.ArcGIS.SystemUI.ICommandSubType;
 
 namespace Yutai.ArcGIS.Carto.DesignLib
 {
@@ -24,7 +25,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         public void SetSubType(int int_0)
         {
-            this.elementType_0 = int_0;
+            this.elementType_0 = (ElementType) int_0;
             switch (this.elementType_0)
             {
                 case ElementType.ConstantText:

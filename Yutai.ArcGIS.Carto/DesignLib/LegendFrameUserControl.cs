@@ -3,8 +3,13 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Resources;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
+using Yutai.ArcGIS.Common;
+using Yutai.ArcGIS.Common.Symbol;
+using Yutai.ArcGIS.Common.SymbolLib;
 
 namespace Yutai.ArcGIS.Carto.DesignLib
 {
@@ -52,7 +57,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         private void InitializeComponent()
         {
             this.icontainer_0 = new Container();
-            ResourceManager manager = new ResourceManager(typeof(LegendFrameUserControl));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LegendFrameUserControl));
             this.imageList_0 = new ImageList(this.icontainer_0);
             this.btnBorderInfo = new SimpleButton();
             this.btnBorderSelector = new SimpleButton();

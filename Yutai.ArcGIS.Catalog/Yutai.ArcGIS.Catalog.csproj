@@ -1,0 +1,1653 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A71076F2-B2ED-4522-8DBF-BCA1689EB637}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>Yutai.ArcGIS.Catalog</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>Yutai.ArcGIS.Catalog</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Program Files (x86)\DevExpress 16.1.4\Components\Bin\Framework\DevExpress.Data.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Program Files (x86)\DevExpress 16.1.4\Components\Bin\Framework\DevExpress.Utils.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Program Files (x86)\DevExpress 16.1.4\Components\Bin\Framework\DevExpress.XtraEditors.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="ESRI.ArcGIS.SystemUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="ESRI.ArcGIS.Geodatabase" />
+    <Reference Include="System" />
+    <Reference Include="ESRI.ArcGIS.Display" />
+    <Reference Include="ESRI.ArcGIS.Carto" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="ESRI.ArcGIS.GISClient" />
+    <Reference Include="ESRI.ArcGIS.System" />
+    <Reference Include="ESRI.ArcGIS.Server" />
+    <Reference Include="ESRI.ArcGIS.Geometry" />
+    <Reference Include="ESRI.ArcGIS.GeoDatabaseDistributed" />
+    <Reference Include="ESRI.ArcGIS.DataSourcesFile" />
+    <Reference Include="System.Data" />
+    <Reference Include="ESRI.ArcGIS.DataSourcesGDB" />
+    <Reference Include="ESRI.ArcGIS.NetworkAnalysis" />
+    <Reference Include="ESRI.ArcGIS.Controls" />
+    <Reference Include="ESRI.ArcGIS.Geoprocessing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ESRI.ArcGIS.DataSourcesOleDB" />
+    <Reference Include="stdole" />
+    <Reference Include="ESRI.ArcGIS.DataSourcesRaster" />
+    <Reference Include="ESRI.ArcGIS.ADF.Connection.Local" />
+    <Reference Include="ESRI.ArcGIS.Geoprocessor" />
+    <Reference Include="ESRI.ArcGIS.3DAnalyst" />
+    <Reference Include="ESRI.ArcGIS.GlobeCore" />
+    <Compile Include="CatalogLicenseProviderCheck.cs" />
+    <Compile Include="CommonHelper.cs" />
+    <Compile Include="Dataloaders.cs" />
+    <Compile Include="frmAddDatabaseServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCreateGDBConnection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetGeometryType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\AfterCheckOutSetupCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\AnnoClassSetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\AnnoReferenceScaleSetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\BulidGeometryNetworkHelper.cs" />
+    <Compile Include="Geodatabase\UI\BulidGeometryNetworkType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\BulidGeometryNetwork_SelectFeatureClass.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\BulidGN_Configuration.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\BulidGN_EnableFieldSet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\BulidGN_IsContaincomplexEdge.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\BulidGN_SnapSet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\BulidGN_SourceSkin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\BulidGN_Summary.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\BulidGN_WeightAssociation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\BulidGN_Weights.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\BulidGN_WeightSet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\CADDataConvertControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\CASSDataConvertControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\CheckInHelper.cs" />
+    <Compile Include="Geodatabase\UI\CheckInOutWorkspaceInfo.cs" />
+    <Compile Include="Geodatabase\UI\CheckInSetupCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\CheckOutHelper.cs" />
+    <Compile Include="Geodatabase\UI\CheckOutInHelper.cs" />
+    <Compile Include="Geodatabase\UI\CheckOutPropertyCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\CheckOutSetupCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\ConflictInfoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\CoordinateControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\DimesionFeaturePropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\DomainControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\DomainWrap1.cs" />
+    <Compile Include="Geodatabase\UI\EditObjectClassHelper.cs" />
+    <Compile Include="Geodatabase\UI\enumConflictType.cs" />
+    <Compile Include="Geodatabase\UI\enumUseType.cs" />
+    <Compile Include="Geodatabase\UI\ExportChangeSetupCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\ExportChangesHelper.cs" />
+    <Compile Include="Geodatabase\UI\ExportToCADControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\ExportToTABControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\ExtractionDataHelper.cs" />
+    <Compile Include="Geodatabase\UI\ExtractionDataSetupCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\FeatureDatasetControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\FeatureDatasetGeneralPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\FieldChangedHandler.cs" />
+    <Compile Include="Geodatabase\UI\FieldChangeType.cs" />
+    <Compile Include="Geodatabase\UI\FieldTypeBlobCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\FieldTypeDateCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\FieldTypeDoubleCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\FieldTypeGeometryCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\FieldTypeGeometryCtrl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\FieldTypeGuidCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\FieldTypeIntegerCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\FieldTypeObjectIDCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\FieldTypeRasterCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\FieldTypeTextCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmAddClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmAddGDBConnection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmAddRuleByClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmBatchProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmBatchReconcile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmCADDataConvert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmCass2FeatureClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmCheckInWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmCheckOutManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmCheckOutProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmCheckOutWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmCodes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmCompress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmConfigKey.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmConflictInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmCreateGDBRasterDataset.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmCreateRasterFolder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmCreateTopologySet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmDataConvert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmDataTransferProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmEditFeatureDataset.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmEditGDBConnection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmEditObjectClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmEidtReprensentation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmExportChangeWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmExportToCAD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmExportToTAB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmExtendDomain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmExtractionDataWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\FrmFastSelSpatial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmFeatureClass2VCT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmFeatureClassToCoverage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmFeatureDataset.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmGDBInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmGeoDBDataTransfer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmGNPropertySheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmImportCoordinateFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmImportxy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmMapInfo2FeatureClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmMultiDataConvert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmMultiDataLoader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmNetworkPropertySheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmNewFeatureDataset.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmNewGN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmNewJLKCodeDomain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmNewObjectClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmNewRelationClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmNewReprensentationWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmNewVCS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmNewVersion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmObjectClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmPropertySheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmRule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmRuleInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmSDEConnectionDetialInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmSelectReconcileVersion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmSelectVersion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmSelectWorkspace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmSimpleDataLoader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmSpatialReference.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmSpatialRefrence.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmTable2Domain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmVCT2FeatureClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmVersionDifferences.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmVersionInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmVersionProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmVersions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmVersions92.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\GDBGeneralCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\GeoCoordSys.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\GeometryNetEditHelper.cs" />
+    <Compile Include="Geodatabase\UI\GeometryNetGeneralPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\GeometryNewConnectivityPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\IControlBaseInterface.cs" />
+    <Compile Include="Geodatabase\UI\IndexSetCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\IProjectForm.cs" />
+    <Compile Include="Geodatabase\UI\MDomainControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\MultiObjectClassSelectControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\NewDatasetCoordinateDomainPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\NewDatasetSpatialRefPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\NewDatasetTolerancePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\NewObjectClassFieldsPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\NewObjectClassGeneralPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\NewObjectClassHelper.cs" />
+    <Compile Include="Geodatabase\UI\NewRelationClassHelper.cs" />
+    <Compile Include="Geodatabase\UI\NewRelationClassSetClass.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\NewRelationClass_LabelAndNotification.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\NewRelationClass_RelationType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\NewRelationClass_SetCardinality.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\NewRelationClass_SetKey.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\NewVersionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\ObjectClassGeneral.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\ObjectClassHelper.cs" />
+    <Compile Include="Geodatabase\UI\ObjectClassInfoEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\ObjectClassKeyConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\ObjectClassShareData.cs" />
+    <Compile Include="Geodatabase\UI\ObjectFieldsPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\ObjectSelectControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\ProjCoordSys.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\ReprensationGeneralPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\RepresentationPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\RepresentationRulesPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\RowCollection.cs" />
+    <Compile Include="Geodatabase\UI\SelectCheckOutWorkspaceCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\SelectExportChangeWKCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\SelectLoadDataControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\SRLibCommonFunc.cs" />
+    <Compile Include="Geodatabase\UI\TopologyClassesPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\TopologyEditHelper.cs" />
+    <Compile Include="Geodatabase\UI\TopologyGeneralPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\TopologyRulesPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\ValueChangedHandler.cs" />
+    <Compile Include="Geodatabase\UI\VCSControlPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\VCSCoordinateInfoPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\VersionInfoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\VersioningUtil.cs" />
+    <Compile Include="Geodatabase\UI\VersionPropertyCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\WeightPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\XYDomainControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\ZDomainControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GxAddAGSConnection.cs" />
+    <Compile Include="GxAddAGSObject.cs" />
+    <Compile Include="GxAddGDBSConnection.cs" />
+    <Compile Include="GxAGSConnection.cs" />
+    <Compile Include="GxAGSMap.cs" />
+    <Compile Include="GxApplication.cs" />
+    <Compile Include="GxCadDataset.cs" />
+    <Compile Include="GxCadDrawing.cs" />
+    <Compile Include="GxCatalog.cs" />
+    <Compile Include="GxCatalogCommon.cs" />
+    <Compile Include="GxCoverageDataset.cs" />
+    <Compile Include="GxDatabase.cs" />
+    <Compile Include="GxDatabaseServerFolder.cs" />
+    <Compile Include="GxDataset.cs" />
+    <Compile Include="GxDiskConnection.cs" />
+    <Compile Include="GxFeatureService.cs" />
+    <Compile Include="GxFile.cs" />
+    <Compile Include="GxFolder.cs" />
+    <Compile Include="GxGDBSConnection.cs" />
+    <Compile Include="GxGDSGeodatabase.cs" />
+    <Compile Include="GxGeometryServer.cs" />
+    <Compile Include="GxGISServersFolder.cs" />
+    <Compile Include="GxGPGPTool.cs" />
+    <Compile Include="GxGPServer.cs" />
+    <Compile Include="GxLayer.cs" />
+    <Compile Include="GxMap.cs" />
+    <Compile Include="GxNewDatabase.cs" />
+    <Compile Include="GxObject.cs" />
+    <Compile Include="GxObjectArray.cs" />
+    <Compile Include="GxObjectContainer.cs" />
+    <Compile Include="GxObjectStruct.cs" />
+    <Compile Include="GxOfficeFile.cs" />
+    <Compile Include="GxRasterDataset.cs" />
+    <Compile Include="GxRemoteDatabaseFolder.cs" />
+    <Compile Include="GxSearchServer.cs" />
+    <Compile Include="GxSelection.cs" />
+    <Compile Include="GxServersFolder.cs" />
+    <Compile Include="GxShapefileDataset.cs" />
+    <Compile Include="GxShortcut.cs" />
+    <Compile Include="GxSpatialReferencesFolder.cs" />
+    <Compile Include="GxTextFile.cs" />
+    <Compile Include="GxVCTLayerObject.cs" />
+    <Compile Include="GxVCTObject.cs" />
+    <Compile Include="IEnumGxObject.cs" />
+    <Compile Include="IEnumGxObjectFactory.cs" />
+    <Compile Include="IGxAGSConnection.cs" />
+    <Compile Include="IGxAGSMap.cs" />
+    <Compile Include="IGxAGSObject.cs" />
+    <Compile Include="IGxApplication.cs" />
+    <Compile Include="IGxBasicObject.cs" />
+    <Compile Include="IGxCatalog.cs" />
+    <Compile Include="IGxCatalogEvents.cs" />
+    <Compile Include="IGxContextMenuWap.cs" />
+    <Compile Include="IGxDatabase.cs" />
+    <Compile Include="IGxDatabaseServerFolder.cs" />
+    <Compile Include="IGxDataElement.cs" />
+    <Compile Include="IGxDataElementHelper.cs" />
+    <Compile Include="IGxDataset.cs" />
+    <Compile Include="IGxDiskConnection.cs" />
+    <Compile Include="IGxFile.cs" />
+    <Compile Include="IGxFileFilter.cs" />
+    <Compile Include="IGxFileSetup.cs" />
+    <Compile Include="IGxFilterDataElements.cs" />
+    <Compile Include="IGxFolder.cs" />
+    <Compile Include="IGxFolderAdmin.cs" />
+    <Compile Include="IGxGDSConnection.cs" />
+    <Compile Include="IGxGeodatabase.cs" />
+    <Compile Include="IGxGISServersFolder.cs" />
+    <Compile Include="IGxGPGPTool.cs" />
+    <Compile Include="IGxLayer.cs" />
+    <Compile Include="IGxLayerSource.cs" />
+    <Compile Include="IGxMap.cs" />
+    <Compile Include="IGxMapPageLayout.cs" />
+    <Compile Include="IGxNewDatabase.cs" />
+    <Compile Include="IGxObject.cs" />
+    <Compile Include="IGxObjectArray.cs" />
+    <Compile Include="IGxObjectContainer.cs" />
+    <Compile Include="IGxObjectDeleteOptions.cs" />
+    <Compile Include="IGxObjectEdit.cs" />
+    <Compile Include="IGxObjectFactories.cs" />
+    <Compile Include="IGxObjectFactory.cs" />
+    <Compile Include="IGxObjectFactoryEdit.cs" />
+    <Compile Include="IGxObjectFilter.cs" />
+    <Compile Include="IGxObjectFilterCollection.cs" />
+    <Compile Include="IGxObjectInternalName.cs" />
+    <Compile Include="IGxObjectProperties.cs" />
+    <Compile Include="IGxObjectUI.cs" />
+    <Compile Include="IGxOfficeFile.cs" />
+    <Compile Include="IGxPasteTarget.cs" />
+    <Compile Include="IGxPasteTargetHelper.cs" />
+    <Compile Include="IGxPrjFile.cs" />
+    <Compile Include="IGxRemoteConnection.cs" />
+    <Compile Include="IGxRemoteContainer.cs" />
+    <Compile Include="IGxRemoteDatabaseFolder.cs" />
+    <Compile Include="IGxSelection.cs" />
+    <Compile Include="IGxSelectionEvents.cs" />
+    <Compile Include="IGxServersFolder.cs" />
+    <Compile Include="IGxShortcut.cs" />
+    <Compile Include="IGxSpatialReferencesFolder.cs" />
+    <Compile Include="IGxTextFile.cs" />
+    <Compile Include="IGxVCTLayerObject.cs" />
+    <Compile Include="IGxVCTObject.cs" />
+    <Compile Include="ImageLib.cs" />
+    <Compile Include="LayerType.cs" />
+    <Compile Include="MyDoubleClickResult.cs" />
+    <Compile Include="MyGxFilterAnnotationFeatureClass.cs" />
+    <Compile Include="MyGxFilterBasicTypes.cs" />
+    <Compile Include="MyGxFilterCadAnnotationClasses.cs" />
+    <Compile Include="MyGxFilterContainers.cs" />
+    <Compile Include="MyGxFilterDatasets.cs" />
+    <Compile Include="MyGxFilterDatasetsAndLayers.cs" />
+    <Compile Include="MyGxFilterEnteripesGeoDatabases.cs" />
+    <Compile Include="MyGxFilterFeatureClasses.cs" />
+    <Compile Include="MyGxFilterFeatureDatasets.cs" />
+    <Compile Include="MyGxFilterFeatureDatasetsAndFeatureClasses.cs" />
+    <Compile Include="MyGxFilterFileGeodatabases.cs" />
+    <Compile Include="MyGxFilterFiles.cs" />
+    <Compile Include="MyGxFilterGeoDatabases.cs" />
+    <Compile Include="MyGxFilterGeoDatasets.cs" />
+    <Compile Include="MyGxFilterGeometricNetworks.cs" />
+    <Compile Include="MyGxFilterInfoTables.cs" />
+    <Compile Include="MyGxFilterLayers.cs" />
+    <Compile Include="MyGxFilterMaps.cs" />
+    <Compile Include="MyGxFilterPersonalGeodatabases.cs" />
+    <Compile Include="MyGxFilterPGDBFeatureClasses.cs" />
+    <Compile Include="MyGxFilterPGDBFeatureDatasets.cs" />
+    <Compile Include="MyGxFilterPGDBTables.cs" />
+    <Compile Include="MyGxFilterPointFeatureClasses.cs" />
+    <Compile Include="MyGxFilterPolygonFeatureClasses.cs" />
+    <Compile Include="MyGxFilterPolylineFeatureClasses.cs" />
+    <Compile Include="MyGxFilterRasterCatalogDatasets.cs" />
+    <Compile Include="MyGxFilterRasterDatasets.cs" />
+    <Compile Include="MyGxFilterRasterDatasets2.cs" />
+    <Compile Include="MyGxFilterRelationshipClasses.cs" />
+    <Compile Include="MyGxFilterRoute.cs" />
+    <Compile Include="MyGxFilterSDEFeatureClasses.cs" />
+    <Compile Include="MyGxFilterSDEFeatureDatasets.cs" />
+    <Compile Include="MyGxFilterSDETables.cs" />
+    <Compile Include="MyGxFilterShapefiles.cs" />
+    <Compile Include="MyGxFilterSpatialReferences.cs" />
+    <Compile Include="MyGxFilterSurfaceDatasets.cs" />
+    <Compile Include="MyGxFilterTables.cs" />
+    <Compile Include="MyGxFilterTablesAndFeatureClasses.cs" />
+    <Compile Include="MyGxFilterTINDatasets.cs" />
+    <Compile Include="MyGxFilterWorkspaces.cs" />
+    <Compile Include="MyRasterFormatGridFilter.cs" />
+    <Compile Include="MyRasterFormatImgFilter.cs" />
+    <Compile Include="MyRasterFormatPGDBFilter.cs" />
+    <Compile Include="MyRasterFormatSDEFilter.cs" />
+    <Compile Include="MyRasterFormatTifFilter.cs" />
+    <Compile Include="ObjectWrapEx.cs" />
+    <Compile Include="OnObjectAddedEventHandler.cs" />
+    <Compile Include="OnObjectChangedEventHandler.cs" />
+    <Compile Include="OnObjectDeletedEventHandler.cs" />
+    <Compile Include="OnObjectRefreshedEventHandler.cs" />
+    <Compile Include="OnReadCompletedHander.cs" />
+    <Compile Include="OnRefreshAllEventHandler.cs" />
+    <Compile Include="OnSelectionChangedEventHandler.cs" />
+    <Compile Include="OpenFolderDataHelper.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.cs" />
+    <Compile Include="State.cs" />
+    <Compile Include="UI\AGSDirectoryPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\AGSGeneralPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\AGSHostsPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\CoverageGeneralPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\CoverageTicPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\CoverageTolerancePropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\FieldMatchCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\frmAGSProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmArcGISServerManageProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmArcGISServerProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmArcGISServerUseProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmCoveragePropertySheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmDataLoader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmDatasetUnion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmEvaluator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmHost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmNewArcGISServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmNewArcGISServer93.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmNewArcIMSServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmNewNetworkAttribute.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmNewNetworkDatasetWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmNewServerObject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmOpenFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmServerObjectPropertySheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\KTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\NetworkDirectionGeneralPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\NewNetworkDatasetAttributePropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\NewNetworkDatasetConnectivityPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\NewNetworkDatasetDirectionPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\NewNetworkDatasetFeatureClassSetPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\NewNetworkDatasetHelper.cs" />
+    <Compile Include="UI\NewNetworkDatasetModifyConnectivityPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\NewNetworkDatasetNamePropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\NewNetworkDatasetTurnsPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\SelectedDataLoaderCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\SelectNodeChangedHandler.cs" />
+    <Compile Include="UI\ServerDirectoryPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ServerHostPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ServerLogPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ServerObjectDocumentPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ServerObjectGeneralPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ServerObjectPoolPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ServerObjectProcessManagementPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ServerObjectSummaryPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\SetImportRecordCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\SODocumentPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\SOGeneralPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\SOPoolPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\SOProcessManagementPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\SOSummaryPropertyPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VCT\CoPointCollection.cs" />
+    <Compile Include="VCT\frmProgressBar1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VCT\ICoPoint.cs" />
+    <Compile Include="VCT\ICoClone.cs" />
+    <Compile Include="VCT\CoLayerHead.cs" />
+    <Compile Include="VCT\CoPointClass.cs" />
+    <Compile Include="VCT\ICoAnnotationFeature.cs" />
+    <Compile Include="VCT\ICoFeature.cs" />
+    <Compile Include="VCT\ICoField.cs" />
+    <Compile Include="VCT\ICoLayer.cs" />
+    <Compile Include="VCT\CoFeatureType.cs" />
+    <Compile Include="VCT\AbsCoFeature.cs" />
+    <Compile Include="VCT\CoAnnotationFeature.cs" />
+    <Compile Include="VCT\CoLayerType.cs" />
+    <Compile Include="VCT\CoTopologyRuleType.cs" />
+    <Compile Include="Geodatabase\ChangeVersionUtil.cs" />
+    <Compile Include="VCT\ICoLayer2.cs" />
+    <Compile Include="VCT\CoRuleCollection.cs" />
+    <Compile Include="VCT\CoRuleClass.cs" />
+    <Compile Include="VCT\CoLayerClass.cs" />
+    <Compile Include="VCT\VctFactory.cs" />
+    <Compile Include="VCT\VCT\VctClass.cs" />
+    <Compile Include="VCT\ICoConvert.cs" />
+    <Compile Include="VCT\VCT\VctLayerClass.cs" />
+    <Compile Include="VCT\CoLayerMapper.cs" />
+    <Compile Include="VCT\AbsCoConvert.cs" />
+    <Compile Include="VCT\GeodatabaseLayerClass.cs" />
+    <Compile Include="VCT\CoFeatureFactory.cs" />
+    <Compile Include="VCT\ICoPolygonFeature.cs" />
+    <Compile Include="VCT\ICoPolylineFeature.cs" />
+    <Compile Include="VCT\ICoPointFeature.cs" />
+    <Compile Include="VCT\CoFieldClass.cs" />
+    <Compile Include="VCT\CoFieldType.cs" />
+    <Compile Include="VCT\CoFieldMapper.cs" />
+    <Compile Include="VCT\CoPointFeature.cs" />
+    <Compile Include="VCT\CoPolylineFeature.cs" />
+    <Compile Include="VCT\CoPolygonFeature.cs" />
+    <Compile Include="Utility\AddDataHelper.cs" />
+    <Compile Include="VCT\VCT\DataFile.cs" />
+    <Compile Include="VCT\VCT\FeatureOIDMapCollection.cs" />
+    <Compile Include="VCT\VCT\FeatureOIDMap.cs" />
+    <Compile Include="VCT\VCT\FileConfig.cs" />
+    <Compile Include="VCT\ConvertHander.cs" />
+    <Compile Include="VCT\ShapeLayerClass.cs" />
+    <Compile Include="ISConfig\ISConfig.cs" />
+    <Compile Include="VCT\VCT\QueueClass.cs" />
+    <Compile Include="VCT\ShapeTool.cs" />
+    <Compile Include="Geodatabase\UI\a.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AddArcGISServer.bmp" />
+    <EmbeddedResource Include="Resources\AddArcIMSServer.bmp" />
+    <EmbeddedResource Include="Resources\AddGDBServer.bmp" />
+    <EmbeddedResource Include="Resources\AddServerObject.bmp" />
+    <EmbeddedResource Include="Resources\AddWMSServer.bmp" />
+    <EmbeddedResource Include="Resources\ArcGISServerConn.bmp" />
+    <EmbeddedResource Include="Resources\ArcGISServerUnConn.bmp" />
+    <EmbeddedResource Include="Resources\ArcIMSServerConn.bmp" />
+    <EmbeddedResource Include="Resources\ArcIMSServerUnConn.bmp" />
+    <EmbeddedResource Include="Resources\bmpAddLink.bmp" />
+    <EmbeddedResource Include="Resources\bmpAnno.bmp" />
+    <EmbeddedResource Include="Resources\bmpAnnotationCoverage.bmp" />
+    <EmbeddedResource Include="Resources\bmpCADAnno.bmp" />
+    <EmbeddedResource Include="Resources\bmpCadDrawing.bmp" />
+    <EmbeddedResource Include="Resources\bmpCADLayers.bmp" />
+    <EmbeddedResource Include="Resources\bmpCADMultiPatch.bmp" />
+    <EmbeddedResource Include="Resources\bmpCADPoint.bmp" />
+    <EmbeddedResource Include="Resources\bmpCADPolygon.bmp" />
+    <EmbeddedResource Include="Resources\bmpCADPolyline.bmp" />
+    <EmbeddedResource Include="Resources\bmpCopy.bmp" />
+    <EmbeddedResource Include="Resources\bmpCoverage.bmp" />
+    <EmbeddedResource Include="Resources\bmpCoverageAnnoFeatclass.bmp" />
+    <EmbeddedResource Include="Resources\bmpCoverageArcFeatClass.bmp" />
+    <EmbeddedResource Include="Resources\bmpCoverageLabelFeatClass.bmp" />
+    <EmbeddedResource Include="Resources\bmpCoverageNodeFeatClass.bmp" />
+    <EmbeddedResource Include="Resources\bmpCoveragePointFeatClass.bmp" />
+    <EmbeddedResource Include="Resources\bmpCoveragePolygonFeatClass.bmp" />
+    <EmbeddedResource Include="Resources\bmpCoverageRegionFeatClass.bmp" />
+    <EmbeddedResource Include="Resources\bmpCoverageRouteFeatClass.bmp" />
+    <EmbeddedResource Include="Resources\bmpCoverageTicFeatClass.bmp" />
+    <EmbeddedResource Include="Resources\bmpDataset.bmp" />
+    <EmbeddedResource Include="Resources\bmpDBLink.bmp" />
+    <EmbeddedResource Include="Resources\bmpDelete.bmp" />
+    <EmbeddedResource Include="Resources\bmpDiskConnect.bmp" />
+    <EmbeddedResource Include="Resources\bmpError.bmp" />
+    <EmbeddedResource Include="Resources\bmpErrorLayer.bmp" />
+    <EmbeddedResource Include="Resources\bmpFeature.bmp" />
+    <EmbeddedResource Include="Resources\bmpFillFeatureClass.bmp" />
+    <EmbeddedResource Include="Resources\bmpFillLayer.bmp" />
+    <EmbeddedResource Include="Resources\bmpFolder1.bmp" />
+    <EmbeddedResource Include="Resources\bmpFolder2.bmp" />
+    <EmbeddedResource Include="Resources\bmpGDBLink1.bmp" />
+    <EmbeddedResource Include="Resources\bmpGDBLink2.bmp" />
+    <EmbeddedResource Include="Resources\bmpGeometryNet.bmp" />
+    <EmbeddedResource Include="Resources\bmpGroupLayer.bmp" />
+    <EmbeddedResource Include="Resources\bmpLayer.bmp" />
+    <EmbeddedResource Include="Resources\bmpLineCoverage.bmp" />
+    <EmbeddedResource Include="Resources\bmpLineFeature.bmp" />
+    <EmbeddedResource Include="Resources\bmpLineLayer.bmp" />
+    <EmbeddedResource Include="Resources\bmpLinkToFolder.bmp" />
+    <EmbeddedResource Include="Resources\bmpMultiPatch.bmp" />
+    <EmbeddedResource Include="Resources\bmpMXD.bmp" />
+    <EmbeddedResource Include="Resources\bmpPaste.bmp" />
+    <EmbeddedResource Include="Resources\bmpPersonGDB.bmp" />
+    <EmbeddedResource Include="Resources\bmpPMF.bmp" />
+    <EmbeddedResource Include="Resources\bmpPointCoverage.bmp" />
+    <EmbeddedResource Include="Resources\bmpPointFeature.bmp" />
+    <EmbeddedResource Include="Resources\bmpPointLayer.bmp" />
+    <EmbeddedResource Include="Resources\bmpPolygonCoverage.bmp" />
+    <EmbeddedResource Include="Resources\bmpProjection.bmp" />
+    <EmbeddedResource Include="Resources\bmpProperty.bmp" />
+    <EmbeddedResource Include="Resources\bmpRaster.bmp" />
+    <EmbeddedResource Include="Resources\bmpRasterCatalog.bmp" />
+    <EmbeddedResource Include="Resources\bmpRasterDataset.bmp" />
+    <EmbeddedResource Include="Resources\bmpRasterLayer.bmp" />
+    <EmbeddedResource Include="Resources\bmpRefresh.bmp" />
+    <EmbeddedResource Include="Resources\bmpRegionCoverage.bmp" />
+    <EmbeddedResource Include="Resources\bmpRelation.bmp" />
+    <EmbeddedResource Include="Resources\bmpRoot.bmp" />
+    <EmbeddedResource Include="Resources\bmpTable.bmp" />
+    <EmbeddedResource Include="Resources\bmpText.bmp" />
+    <EmbeddedResource Include="Resources\bmpTin.bmp" />
+    <EmbeddedResource Include="Resources\bmpToHigher.bmp" />
+    <EmbeddedResource Include="Resources\bmpTopology.bmp" />
+    <EmbeddedResource Include="Resources\DiskConnectionError.bmp" />
+    <EmbeddedResource Include="Resources\DJStructbmp.bmp" />
+    <EmbeddedResource Include="Resources\ErrorShapeFile.bmp" />
+    <EmbeddedResource Include="Resources\Excel.bmp" />
+    <EmbeddedResource Include="Resources\FeatureServices.bmp" />
+    <EmbeddedResource Include="Resources\GDBFolder.bmp" />
+    <EmbeddedResource Include="Resources\GDBServer.bmp" />
+    <EmbeddedResource Include="Resources\GDBsUnConnect.bmp" />
+    <EmbeddedResource Include="Resources\GeometryAny.bmp" />
+    <EmbeddedResource Include="Resources\GeometryServerPause.bmp" />
+    <EmbeddedResource Include="Resources\GeometryServerStart.bmp" />
+    <EmbeddedResource Include="Resources\GeometryServerStop.bmp" />
+    <EmbeddedResource Include="Resources\GISServerFolder.bmp" />
+    <EmbeddedResource Include="Resources\GPServerPause.bmp" />
+    <EmbeddedResource Include="Resources\GPServerStart.bmp" />
+    <EmbeddedResource Include="Resources\GPServerStop.bmp" />
+    <EmbeddedResource Include="Resources\MapServerPaused.bmp" />
+    <EmbeddedResource Include="Resources\MapServerStarted.bmp" />
+    <EmbeddedResource Include="Resources\MapServerStoped.bmp" />
+    <EmbeddedResource Include="Resources\NetworkDataset.bmp" />
+    <EmbeddedResource Include="Resources\SearchServerPause.bmp" />
+    <EmbeddedResource Include="Resources\SearchServerStart.bmp" />
+    <EmbeddedResource Include="Resources\SearchServerStop.bmp" />
+    <EmbeddedResource Include="Resources\ShapeFile.bmp" />
+    <EmbeddedResource Include="Resources\ShapeFill.bmp" />
+    <EmbeddedResource Include="Resources\ShapeLine.bmp" />
+    <EmbeddedResource Include="Resources\ShapePoint.bmp" />
+    <EmbeddedResource Include="Resources\Word.bmp" />
+    <EmbeddedResource Include="UI\AGSDirectoryPropertyPage.resx">
+      <DependentUpon>AGSDirectoryPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\AGSGeneralPropertyPage.resx">
+      <DependentUpon>AGSGeneralPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\AGSHostsPropertyPage.resx">
+      <DependentUpon>AGSHostsPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CoverageGeneralPropertyPage.resx">
+      <DependentUpon>CoverageGeneralPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CoverageTicPropertyPage.resx">
+      <DependentUpon>CoverageTicPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CoverageTolerancePropertyPage.resx">
+      <DependentUpon>CoverageTolerancePropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FieldMatchCtrl.resx">
+      <DependentUpon>FieldMatchCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmAGSProperty.resx">
+      <DependentUpon>frmAGSProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmArcGISServerManageProperty.resx">
+      <DependentUpon>frmArcGISServerManageProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmArcGISServerProperty.resx">
+      <DependentUpon>frmArcGISServerProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmArcGISServerUseProperty.resx">
+      <DependentUpon>frmArcGISServerUseProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmCoveragePropertySheet.resx">
+      <DependentUpon>frmCoveragePropertySheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmDataLoader.resx">
+      <DependentUpon>frmDataLoader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmDatasetUnion.resx">
+      <DependentUpon>frmDatasetUnion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmEvaluator.resx">
+      <DependentUpon>frmEvaluator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmHost.resx">
+      <DependentUpon>frmHost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmNewArcGISServer.resx">
+      <DependentUpon>frmNewArcGISServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmNewArcGISServer93.resx">
+      <DependentUpon>frmNewArcGISServer93.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmNewArcIMSServer.resx">
+      <DependentUpon>frmNewArcIMSServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmNewNetworkAttribute.resx">
+      <DependentUpon>frmNewNetworkAttribute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmNewNetworkDatasetWizard.resx">
+      <DependentUpon>frmNewNetworkDatasetWizard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmNewServerObject.resx">
+      <DependentUpon>frmNewServerObject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmOpenFile.resx">
+      <DependentUpon>frmOpenFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmServerObjectPropertySheet.resx">
+      <DependentUpon>frmServerObjectPropertySheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\KTreeView.resx">
+      <DependentUpon>KTreeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NetworkDirectionGeneralPage.resx">
+      <DependentUpon>NetworkDirectionGeneralPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NewNetworkDatasetAttributePropertyPage.resx">
+      <DependentUpon>NewNetworkDatasetAttributePropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NewNetworkDatasetConnectivityPage.resx">
+      <DependentUpon>NewNetworkDatasetConnectivityPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NewNetworkDatasetDirectionPropertyPage.resx">
+      <DependentUpon>NewNetworkDatasetDirectionPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NewNetworkDatasetFeatureClassSetPropertyPage.resx">
+      <DependentUpon>NewNetworkDatasetFeatureClassSetPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NewNetworkDatasetModifyConnectivityPage.resx">
+      <DependentUpon>NewNetworkDatasetModifyConnectivityPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NewNetworkDatasetNamePropertyPage.resx">
+      <DependentUpon>NewNetworkDatasetNamePropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NewNetworkDatasetTurnsPage.resx">
+      <DependentUpon>NewNetworkDatasetTurnsPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SelectedDataLoaderCtrl.resx">
+      <DependentUpon>SelectedDataLoaderCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ServerDirectoryPropertyPage.resx">
+      <DependentUpon>ServerDirectoryPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ServerHostPropertyPage.resx">
+      <DependentUpon>ServerHostPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ServerLogPropertyPage.resx">
+      <DependentUpon>ServerLogPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ServerObjectDocumentPropertyPage.resx">
+      <DependentUpon>ServerObjectDocumentPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ServerObjectGeneralPropertyPage.resx">
+      <DependentUpon>ServerObjectGeneralPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ServerObjectPoolPropertyPage.resx">
+      <DependentUpon>ServerObjectPoolPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ServerObjectProcessManagementPropertyPage.resx">
+      <DependentUpon>ServerObjectProcessManagementPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ServerObjectSummaryPropertyPage.resx">
+      <DependentUpon>ServerObjectSummaryPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SetImportRecordCtrl.resx">
+      <DependentUpon>SetImportRecordCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SODocumentPropertyPage.resx">
+      <DependentUpon>SODocumentPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SOGeneralPropertyPage.resx">
+      <DependentUpon>SOGeneralPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SOPoolPropertyPage.resx">
+      <DependentUpon>SOPoolPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SOProcessManagementPropertyPage.resx">
+      <DependentUpon>SOProcessManagementPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SOSummaryPropertyPage.resx">
+      <DependentUpon>SOSummaryPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VCT\frmProgressBar1.resx">
+      <DependentUpon>frmProgressBar1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmAddDatabaseServer.resx">
+      <DependentUpon>frmAddDatabaseServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCreateGDBConnection.resx">
+      <DependentUpon>frmCreateGDBConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetGeometryType.resx">
+      <DependentUpon>frmSetGeometryType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\AfterCheckOutSetupCtrl.resx">
+      <DependentUpon>AfterCheckOutSetupCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\AnnoClassSetCtrl.resx">
+      <DependentUpon>AnnoClassSetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\AnnoReferenceScaleSetCtrl.resx">
+      <DependentUpon>AnnoReferenceScaleSetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\BulidGeometryNetworkType.resx">
+      <DependentUpon>BulidGeometryNetworkType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\BulidGeometryNetwork_SelectFeatureClass.resx">
+      <DependentUpon>BulidGeometryNetwork_SelectFeatureClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\BulidGN_Configuration.resx">
+      <DependentUpon>BulidGN_Configuration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\BulidGN_EnableFieldSet.resx">
+      <DependentUpon>BulidGN_EnableFieldSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\BulidGN_IsContaincomplexEdge.resx">
+      <DependentUpon>BulidGN_IsContaincomplexEdge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\BulidGN_SnapSet.resx">
+      <DependentUpon>BulidGN_SnapSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\BulidGN_SourceSkin.resx">
+      <DependentUpon>BulidGN_SourceSkin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\BulidGN_Summary.resx">
+      <DependentUpon>BulidGN_Summary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\BulidGN_WeightAssociation.resx">
+      <DependentUpon>BulidGN_WeightAssociation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\BulidGN_Weights.resx">
+      <DependentUpon>BulidGN_Weights.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\BulidGN_WeightSet.resx">
+      <DependentUpon>BulidGN_WeightSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\CADDataConvertControl.resx">
+      <DependentUpon>CADDataConvertControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\CASSDataConvertControl.resx">
+      <DependentUpon>CASSDataConvertControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\CheckInSetupCtrl.resx">
+      <DependentUpon>CheckInSetupCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\CheckOutPropertyCtrl.resx">
+      <DependentUpon>CheckOutPropertyCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\CheckOutSetupCtrl.resx">
+      <DependentUpon>CheckOutSetupCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\ConflictInfoControl.resx">
+      <DependentUpon>ConflictInfoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\CoordinateControl.resx">
+      <DependentUpon>CoordinateControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\DimesionFeaturePropertyPage.resx">
+      <DependentUpon>DimesionFeaturePropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\DomainControl.resx">
+      <DependentUpon>DomainControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\ExportChangeSetupCtrl.resx">
+      <DependentUpon>ExportChangeSetupCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\ExportToCADControl.resx">
+      <DependentUpon>ExportToCADControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\ExportToTABControl.resx">
+      <DependentUpon>ExportToTABControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\ExtractionDataSetupCtrl.resx">
+      <DependentUpon>ExtractionDataSetupCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\FeatureDatasetControl.resx">
+      <DependentUpon>FeatureDatasetControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\FeatureDatasetGeneralPage.resx">
+      <DependentUpon>FeatureDatasetGeneralPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\FieldTypeBlobCtrl.resx">
+      <DependentUpon>FieldTypeBlobCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\FieldTypeDateCtrl.resx">
+      <DependentUpon>FieldTypeDateCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\FieldTypeDoubleCtrl.resx">
+      <DependentUpon>FieldTypeDoubleCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\FieldTypeGeometryCtrl.resx">
+      <DependentUpon>FieldTypeGeometryCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\FieldTypeGeometryCtrl1.resx">
+      <DependentUpon>FieldTypeGeometryCtrl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\FieldTypeGuidCtrl.resx">
+      <DependentUpon>FieldTypeGuidCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\FieldTypeIntegerCtrl.resx">
+      <DependentUpon>FieldTypeIntegerCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\FieldTypeObjectIDCtrl.resx">
+      <DependentUpon>FieldTypeObjectIDCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\FieldTypeRasterCtrl.resx">
+      <DependentUpon>FieldTypeRasterCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\FieldTypeTextCtrl.resx">
+      <DependentUpon>FieldTypeTextCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmAddClass.resx">
+      <DependentUpon>frmAddClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmAddGDBConnection.resx">
+      <DependentUpon>frmAddGDBConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmAddRuleByClass.resx">
+      <DependentUpon>frmAddRuleByClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmBatchProject.resx">
+      <DependentUpon>frmBatchProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmBatchReconcile.resx">
+      <DependentUpon>frmBatchReconcile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmCADDataConvert.resx">
+      <DependentUpon>frmCADDataConvert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmCass2FeatureClass.resx">
+      <DependentUpon>frmCass2FeatureClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmCheckInWizard.resx">
+      <DependentUpon>frmCheckInWizard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmCheckOutManager.resx">
+      <DependentUpon>frmCheckOutManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmCheckOutProperty.resx">
+      <DependentUpon>frmCheckOutProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmCheckOutWizard.resx">
+      <DependentUpon>frmCheckOutWizard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmCodes.resx">
+      <DependentUpon>frmCodes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmCompress.resx">
+      <DependentUpon>frmCompress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmConfigKey.resx">
+      <DependentUpon>frmConfigKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmConflictInfo.resx">
+      <DependentUpon>frmConflictInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmCreateGDBRasterDataset.resx">
+      <DependentUpon>frmCreateGDBRasterDataset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmCreateRasterFolder.resx">
+      <DependentUpon>frmCreateRasterFolder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmCreateTopologySet.resx">
+      <DependentUpon>frmCreateTopologySet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmDataConvert.resx">
+      <DependentUpon>frmDataConvert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmDataTransferProgress.resx">
+      <DependentUpon>frmDataTransferProgress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmEditFeatureDataset.resx">
+      <DependentUpon>frmEditFeatureDataset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmEditGDBConnection.resx">
+      <DependentUpon>frmEditGDBConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmEditObjectClass.resx">
+      <DependentUpon>frmEditObjectClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmEidtReprensentation.resx">
+      <DependentUpon>frmEidtReprensentation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmExportChangeWizard.resx">
+      <DependentUpon>frmExportChangeWizard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmExportToCAD.resx">
+      <DependentUpon>frmExportToCAD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmExportToTAB.resx">
+      <DependentUpon>frmExportToTAB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmExtendDomain.resx">
+      <DependentUpon>frmExtendDomain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmExtractionDataWizard.resx">
+      <DependentUpon>frmExtractionDataWizard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\FrmFastSelSpatial.resx">
+      <DependentUpon>FrmFastSelSpatial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmFeatureClass2VCT.resx">
+      <DependentUpon>frmFeatureClass2VCT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmFeatureClassToCoverage.resx">
+      <DependentUpon>frmFeatureClassToCoverage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmFeatureDataset.resx">
+      <DependentUpon>frmFeatureDataset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmGDBInfo.resx">
+      <DependentUpon>frmGDBInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmGeoDBDataTransfer.resx">
+      <DependentUpon>frmGeoDBDataTransfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmGNPropertySheet.resx">
+      <DependentUpon>frmGNPropertySheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmImportCoordinateFile.resx">
+      <DependentUpon>frmImportCoordinateFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmImportxy.resx">
+      <DependentUpon>frmImportxy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmInput.resx">
+      <DependentUpon>frmInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmMapInfo2FeatureClass.resx">
+      <DependentUpon>frmMapInfo2FeatureClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmMultiDataConvert.resx">
+      <DependentUpon>frmMultiDataConvert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmMultiDataLoader.resx">
+      <DependentUpon>frmMultiDataLoader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmNetworkPropertySheet.resx">
+      <DependentUpon>frmNetworkPropertySheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmNewFeatureDataset.resx">
+      <DependentUpon>frmNewFeatureDataset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmNewGN.resx">
+      <DependentUpon>frmNewGN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmNewJLKCodeDomain.resx">
+      <DependentUpon>frmNewJLKCodeDomain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmNewObjectClass.resx">
+      <DependentUpon>frmNewObjectClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmNewRelationClass.resx">
+      <DependentUpon>frmNewRelationClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmNewReprensentationWizard.resx">
+      <DependentUpon>frmNewReprensentationWizard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmNewVCS.resx">
+      <DependentUpon>frmNewVCS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmNewVersion.resx">
+      <DependentUpon>frmNewVersion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmObjectClass.resx">
+      <DependentUpon>frmObjectClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmProject.resx">
+      <DependentUpon>frmProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmPropertySheet.resx">
+      <DependentUpon>frmPropertySheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmRule.resx">
+      <DependentUpon>frmRule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmRuleInfo.resx">
+      <DependentUpon>frmRuleInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmSDEConnectionDetialInfo.resx">
+      <DependentUpon>frmSDEConnectionDetialInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmSelectReconcileVersion.resx">
+      <DependentUpon>frmSelectReconcileVersion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmSelectVersion.resx">
+      <DependentUpon>frmSelectVersion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmSelectWorkspace.resx">
+      <DependentUpon>frmSelectWorkspace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmSimpleDataLoader.resx">
+      <DependentUpon>frmSimpleDataLoader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmSpatialReference.resx">
+      <DependentUpon>frmSpatialReference.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmSpatialRefrence.resx">
+      <DependentUpon>frmSpatialRefrence.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmTable2Domain.resx">
+      <DependentUpon>frmTable2Domain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmVCT2FeatureClass.resx">
+      <DependentUpon>frmVCT2FeatureClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmVersionDifferences.resx">
+      <DependentUpon>frmVersionDifferences.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmVersionInfo.resx">
+      <DependentUpon>frmVersionInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmVersionProperty.resx">
+      <DependentUpon>frmVersionProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmVersions.resx">
+      <DependentUpon>frmVersions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\frmVersions92.resx">
+      <DependentUpon>frmVersions92.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\GDBGeneralCtrl.resx">
+      <DependentUpon>GDBGeneralCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\GeoCoordSys.resx">
+      <DependentUpon>GeoCoordSys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\GeometryNetGeneralPropertyPage.resx">
+      <DependentUpon>GeometryNetGeneralPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\GeometryNewConnectivityPropertyPage.resx">
+      <DependentUpon>GeometryNewConnectivityPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\IndexSetCtrl.resx">
+      <DependentUpon>IndexSetCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\MDomainControl.resx">
+      <DependentUpon>MDomainControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\MultiObjectClassSelectControl.resx">
+      <DependentUpon>MultiObjectClassSelectControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\NewDatasetCoordinateDomainPage.resx">
+      <DependentUpon>NewDatasetCoordinateDomainPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\NewDatasetSpatialRefPage.resx">
+      <DependentUpon>NewDatasetSpatialRefPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\NewDatasetTolerancePage.resx">
+      <DependentUpon>NewDatasetTolerancePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\NewObjectClassFieldsPage.resx">
+      <DependentUpon>NewObjectClassFieldsPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\NewObjectClassGeneralPage.resx">
+      <DependentUpon>NewObjectClassGeneralPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\NewRelationClassSetClass.resx">
+      <DependentUpon>NewRelationClassSetClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\NewRelationClass_LabelAndNotification.resx">
+      <DependentUpon>NewRelationClass_LabelAndNotification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\NewRelationClass_RelationType.resx">
+      <DependentUpon>NewRelationClass_RelationType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\NewRelationClass_SetCardinality.resx">
+      <DependentUpon>NewRelationClass_SetCardinality.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\NewRelationClass_SetKey.resx">
+      <DependentUpon>NewRelationClass_SetKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\NewVersionControl.resx">
+      <DependentUpon>NewVersionControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\ObjectClassGeneral.resx">
+      <DependentUpon>ObjectClassGeneral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\ObjectClassInfoEdit.resx">
+      <DependentUpon>ObjectClassInfoEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\ObjectClassKeyConfig.resx">
+      <DependentUpon>ObjectClassKeyConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\ObjectFieldsPage.resx">
+      <DependentUpon>ObjectFieldsPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\ObjectSelectControl.resx">
+      <DependentUpon>ObjectSelectControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\ProjCoordSys.resx">
+      <DependentUpon>ProjCoordSys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\ReprensationGeneralPage.resx">
+      <DependentUpon>ReprensationGeneralPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\RepresentationPropertyPage.resx">
+      <DependentUpon>RepresentationPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\RepresentationRulesPage.resx">
+      <DependentUpon>RepresentationRulesPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\SelectCheckOutWorkspaceCtrl.resx">
+      <DependentUpon>SelectCheckOutWorkspaceCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\SelectExportChangeWKCtrl.resx">
+      <DependentUpon>SelectExportChangeWKCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\SelectLoadDataControl.resx">
+      <DependentUpon>SelectLoadDataControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\TopologyClassesPropertyPage.resx">
+      <DependentUpon>TopologyClassesPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\TopologyGeneralPropertyPage.resx">
+      <DependentUpon>TopologyGeneralPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\TopologyRulesPropertyPage.resx">
+      <DependentUpon>TopologyRulesPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\VCSControlPage.resx">
+      <DependentUpon>VCSControlPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\VCSCoordinateInfoPage.resx">
+      <DependentUpon>VCSCoordinateInfoPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\VersionInfoControl.resx">
+      <DependentUpon>VersionInfoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\VersionPropertyCtrl.resx">
+      <DependentUpon>VersionPropertyCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\WeightPropertyPage.resx">
+      <DependentUpon>WeightPropertyPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\XYDomainControl.resx">
+      <DependentUpon>XYDomainControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geodatabase\UI\ZDomainControl.resx">
+      <DependentUpon>ZDomainControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <DependentUpon>Resources.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Yutai.ArcGIS.Common\Yutai.ArcGIS.Common.csproj">
+      <Project>{1938B3F8-8EDE-48F7-9594-EEB1F126E622}</Project>
+      <Name>Yutai.ArcGIS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yutai.Plugins\Yutai.Plugins.csproj">
+      <Project>{800F2EE4-47AB-4CD4-934D-A64980D98A23}</Project>
+      <Name>Yutai.Plugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yutai.Shared\Yutai.Shared.csproj">
+      <Project>{4A9B3243-2B0A-4E87-9B23-71A58C1F318D}</Project>
+      <Name>Yutai.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

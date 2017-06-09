@@ -184,8 +184,12 @@
     <Compile Include="Controls\frmAttributeTableEx.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controls\frmCommandLine.cs" />
-    <Compile Include="Controls\frmDatasourceTreeView.cs" />
+    <Compile Include="Controls\frmCommandLine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\frmDatasourceTreeView.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Controls\frmElementProperty.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,16 +202,24 @@
     <Compile Include="Controls\frmMagnifierWindows.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controls\frmMap.cs" />
+    <Compile Include="Controls\frmMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Controls\frmMapNew.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Controls\frmOptionsSet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controls\frmOverwindows.cs" />
-    <Compile Include="Controls\frmPageLayoutCtrl.cs" />
-    <Compile Include="Controls\frmPageLayoutPage.cs" />
+    <Compile Include="Controls\frmOverwindows.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\frmPageLayoutCtrl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\frmPageLayoutPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Controls\frmProgress.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,9 +232,15 @@
     <Compile Include="Controls\frmSpatialRefrence.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controls\frmTOCTreeView.cs" />
-    <Compile Include="Controls\frmTOCTreeView2.cs" />
-    <Compile Include="Controls\frmTOCTreeViewNew.cs" />
+    <Compile Include="Controls\frmTOCTreeView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\frmTOCTreeView2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\frmTOCTreeViewNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Controls\frmViewerOrMagnifierPropertyPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -262,8 +280,12 @@
     <Compile Include="Controls\LVM.cs" />
     <Compile Include="Controls\LVS_EX.cs" />
     <Compile Include="Controls\MagnifierOrViewerProperty.cs" />
-    <Compile Include="Controls\MapAndPageLayoutForm.cs" />
-    <Compile Include="Controls\MapFrame.cs" />
+    <Compile Include="Controls\MapAndPageLayoutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\MapFrame.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Controls\Maps.cs" />
     <Compile Include="Controls\MDomainControl.cs">
       <SubType>UserControl</SubType>
@@ -466,6 +488,7 @@
     <Compile Include="Historical\frmHistoricalMarker.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="LocalCommonHelper.cs" />
     <Compile Include="NetworkLib\FlowArrorPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1641,6 +1664,10 @@
     <ProjectReference Include="..\Yutai.ArcGIS.Common\Yutai.ArcGIS.Common.csproj">
       <Project>{1938b3f8-8ede-48f7-9594-eeb1f126e622}</Project>
       <Name>Yutai.ArcGIS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yutai.ArcGIS.Framework\Yutai.ArcGIS.Framework.csproj">
+      <Project>{80D1C45B-805C-48E6-BF90-F8CB2B033D31}</Project>
+      <Name>Yutai.ArcGIS.Framework</Name>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.Plugins\Yutai.Plugins.csproj">
       <Project>{800F2EE4-47AB-4CD4-934D-A64980D98A23}</Project>

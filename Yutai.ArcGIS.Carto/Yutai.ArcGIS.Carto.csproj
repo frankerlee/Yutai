@@ -250,6 +250,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>D:\Program Files (x86)\DevExpress 16.1.4\Components\Bin\Framework\DevExpress.Utils.v16.1.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>D:\Program Files (x86)\DevExpress 16.1.4\Components\Bin\Framework\DevExpress.XtraEditors.v16.1.dll</HintPath>
@@ -257,10 +258,6 @@
     <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>D:\Program Files (x86)\DevExpress 16.1.4\Components\Bin\Framework\DevExpress.XtraGrid.v16.1.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\Program Files (x86)\DevExpress 16.1.4\Components\Bin\Framework\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System" />
@@ -285,7 +282,7 @@
     <Reference Include="ESRI.ArcGIS.ADF.Connection.Local" />
     <Reference Include="System.Configuration" />
     <Reference Include="ESRI.ArcGIS.DataSourcesGDB" />
-    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="UI\TKStyleSelectPage.cs">
       <SubType>UserControl</SubType>
@@ -1787,13 +1784,17 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Yutai.ArcGIS.Catalog\Yutai.ArcGIS.Catalog.csproj">
+      <Project>{A71076F2-B2ED-4522-8DBF-BCA1689EB637}</Project>
+      <Name>Yutai.ArcGIS.Catalog</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Yutai.ArcGIS.Common\Yutai.ArcGIS.Common.csproj">
       <Project>{1938b3f8-8ede-48f7-9594-eeb1f126e622}</Project>
       <Name>Yutai.ArcGIS.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Yutai.Catalog\Yutai.Catalog.csproj">
-      <Project>{a925ec17-5c70-42f6-a82e-9eba7aa47fe0}</Project>
-      <Name>Yutai.Catalog</Name>
+    <ProjectReference Include="..\Yutai.ArcGIS.Controls\Yutai.ArcGIS.Controls.csproj">
+      <Project>{0E17B019-EE36-46B7-8B96-C0A3CA666430}</Project>
+      <Name>Yutai.ArcGIS.Controls</Name>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.Plugins\Yutai.Plugins.csproj">
       <Project>{800f2ee4-47ab-4cd4-934d-a64980d98a23}</Project>
@@ -1802,10 +1803,6 @@
     <ProjectReference Include="..\Yutai.Shared\Yutai.Shared.csproj">
       <Project>{4a9b3243-2b0a-4e87-9b23-71a58c1f318d}</Project>
       <Name>Yutai.Shared</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Yutai.UI\Yutai.UI.csproj">
-      <Project>{9a73b99a-0d59-4b55-b35f-721d321942af}</Project>
-      <Name>Yutai.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

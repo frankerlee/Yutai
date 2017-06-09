@@ -3,6 +3,11 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using Yutai.ArcGIS.Common.Symbol;
+using Yutai.ArcGIS.Common.SymbolLib;
+using Yutai.ArcGIS.Controls.SymbolUI;
+using IPropertyPage = Yutai.ArcGIS.Common.BaseClasses.IPropertyPage;
+using IPropertyPageEvents = Yutai.ArcGIS.Common.BaseClasses.IPropertyPageEvents;
+using OnValueChangeEventHandler = Yutai.ArcGIS.Common.BaseClasses.OnValueChangeEventHandler;
 
 namespace Yutai.ArcGIS.Carto.DesignLib
 {

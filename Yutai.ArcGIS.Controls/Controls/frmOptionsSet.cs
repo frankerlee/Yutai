@@ -4,6 +4,8 @@ using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using Yutai.ArcGIS.Common;
+using Yutai.Plugins.Enums;
 
 namespace Yutai.ArcGIS.Controls.Controls
 {

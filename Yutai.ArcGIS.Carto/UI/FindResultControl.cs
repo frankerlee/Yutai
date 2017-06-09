@@ -2,10 +2,14 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using DevExpress.XtraBars;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common.Display;
+using Yutai.ArcGIS.Common.Helpers;
+using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Carto.UI
 {
@@ -338,7 +342,7 @@ namespace Yutai.ArcGIS.Carto.UI
                 tag = this.listView1.SelectedItems[num].Tag as IFeatureFindData2;
                 array.Add(tag.Feature);
             }
-            Common.Zoom2Features(this.iactiveView_0, array);
+            CommonHelper.Zoom2Features(this.iactiveView_0, array);
             this.iactiveView_0.ScreenDisplay.UpdateWindow();
             for (num = 0; num < this.listView1.SelectedItems.Count; num++)
             {

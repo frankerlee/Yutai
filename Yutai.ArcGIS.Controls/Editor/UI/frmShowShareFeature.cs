@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
+using Yutai.ArcGIS.Common.Helpers;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {
@@ -40,7 +41,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                     IFeature feature = (nodeAt.Parent.Tag as IFeatureClass).GetFeature(tag);
                     if (feature != null)
                     {
-                        Display.Flash.FlashFeature(pFocusMap.ScreenDisplay, feature);
+                        Yutai.ArcGIS.Common.Display.Flash.FlashFeature(pFocusMap.ScreenDisplay, feature);
                     }
                 }
             }

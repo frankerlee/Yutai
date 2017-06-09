@@ -5,11 +5,22 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraGrid.Views.Grid;
 using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.Analyst3D;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common;
+using Yutai.ArcGIS.Common.CodeDomainEx;
+using Yutai.ArcGIS.Common.ControlExtend;
+using Yutai.ArcGIS.Common.Display;
+using Yutai.ArcGIS.Common.Helpers;
+using Yutai.ArcGIS.Common.Wrapper;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {
@@ -631,7 +642,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             {
                 return false;
             }
-            IWorkspaceEdit editWorkspace = Editor.Editor.EditWorkspace;
+            IWorkspaceEdit editWorkspace = Yutai.ArcGIS.Common.Editor.Editor.EditWorkspace;
             bool flag = false;
             try
             {
@@ -687,11 +698,11 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 {
                     if (this.m_pActiveView is IScene)
                     {
-                        Common.Zoom2SelectedFeature(this.m_pActiveView as IScene);
+                        CommonHelper.Zoom2SelectedFeature(this.m_pActiveView as IScene);
                     }
                     else
                     {
-                        Common.Zoom2SelectedFeature(this.m_pActiveView);
+                        CommonHelper.Zoom2SelectedFeature(this.m_pActiveView);
                     }
                 }
             }

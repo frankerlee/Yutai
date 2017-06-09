@@ -5,11 +5,18 @@ using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.esriSystem;
+using Yutai.ArcGIS.Common.BaseClasses;
+using Yutai.ArcGIS.Common.SymbolLib;
+using Yutai.ArcGIS.Controls.Historical;
 using Yutai.ArcGIS.Controls.SymbolUI;
+using IPropertyPage = Yutai.ArcGIS.Common.BaseClasses.IPropertyPage;
+using IPropertyPageEvents = Yutai.ArcGIS.Common.BaseClasses.IPropertyPageEvents;
+using OnValueChangeEventHandler = Yutai.ArcGIS.Common.BaseClasses.OnValueChangeEventHandler;
+
 
 namespace Yutai.ArcGIS.Controls.Controls.GPSLib
 {
-    public class DisplayGeneralPage : UserControl, BaseClass.IPropertyPage, BaseClass.IPropertyPageEvents
+    public class DisplayGeneralPage : UserControl, IPropertyPage, IPropertyPageEvents
     {
         private NewSymbolButton btnBaseMarkerSymbol;
         private NewSymbolButton btnEstimatedPositionSymbol;
@@ -33,13 +40,14 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
         private string m_Title = "常规";
         private DomainUpDown txtMinimumDisplayRate;
 
-        public event BaseClass.OnValueChangeEventHandler OnValueChange;
+        public event OnValueChangeEventHandler OnValueChange;
 
         public DisplayGeneralPage()
         {
             this.InitializeComponent();
         }
 
+       
         public void Apply()
         {
             if (this.m_IsPageDirty)
@@ -332,7 +340,7 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
             base.ResumeLayout(false);
         }
 
-        void BaseClass.IPropertyPage.Hide()
+        void IPropertyPage.Hide()
         {
             base.Hide();
         }
@@ -371,7 +379,7 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
             }
         }
 
-        int BaseClass.IPropertyPage.Height
+        int IPropertyPage.Height
         {
             get
             {
@@ -379,7 +387,7 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
             }
         }
 
-        int BaseClass.IPropertyPage.Width
+        int IPropertyPage.Width
         {
             get
             {

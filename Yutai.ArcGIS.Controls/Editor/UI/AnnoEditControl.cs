@@ -3,9 +3,12 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
+using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {

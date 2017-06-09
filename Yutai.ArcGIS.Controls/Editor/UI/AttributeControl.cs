@@ -7,6 +7,8 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common.BaseClasses;
+using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {
@@ -423,7 +425,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             {
                 this.m_pMap = value;
                 this.m_pActiveViewEvents = this.m_pMap as IActiveViewEvents_Event;
-                this.m_pActiveViewEvents.add_SelectionChanged(new IActiveViewEvents_SelectionChangedEventHandler(this.m_pActiveViewEvents_SelectionChanged));
+                this.m_pActiveViewEvents.SelectionChanged+=(new IActiveViewEvents_SelectionChangedEventHandler(this.m_pActiveViewEvents_SelectionChanged));
                 this.m_pAnnoEditControl.ActiveView = this.m_pMap as IActiveView;
                 this.m_pAttributeListControl.ActiveView = this.m_pMap as IActiveView;
                 this.m_pAttributeListControl1.ActiveView = this.m_pMap as IActiveView;

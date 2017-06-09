@@ -10,6 +10,8 @@ using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 using stdole;
+using Yutai.ArcGIS.Carto.DesignLib;
+using Yutai.ArcGIS.Common.Symbol;
 
 namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 {
@@ -486,143 +488,124 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         public void CreateDesignTK(IActiveView iactiveView_0)
         {
             IMapFrame focusMapFrame;
-            IEnvelope extent;
+            IEnvelope mapBounds;
+            double xMin;
             double num;
-            double num2;
-            string str2;
             (iactiveView_0.FocusMap as IMapClipOptions).ClipType = esriMapClipType.esriMapClipNone;
             if (iactiveView_0.FocusMap is IMapAutoExtentOptions)
             {
                 (iactiveView_0.FocusMap as IMapAutoExtentOptions).AutoExtentType = esriExtentTypeEnum.esriExtentDefault;
             }
-            if (this.MapFramingType == MapCartoTemplateLib.MapFramingType.AnyFraming)
+            if (this.MapFramingType == MapFramingType.AnyFraming)
             {
                 focusMapFrame = MapFrameAssistant.GetFocusMapFrame(iactiveView_0 as IPageLayout);
-                IEnvelope from = (focusMapFrame as IElement).Geometry.Envelope;
-                IEnvelope to = new EnvelopeClass();
-                to.PutCoords(3.0, 3.0, 53.0, 53.0);
-                ITransform2D transformd = focusMapFrame as ITransform2D;
-                IAffineTransformation2D transformation = new AffineTransformation2DClass();
-                transformation.DefineFromEnvelopes(from, to);
-                transformd.Transform(esriTransformDirection.esriTransformForward, transformation);
-                from = (focusMapFrame as IElement).Geometry.Envelope;
-                extent = focusMapFrame.MapBounds;
-                IEnvelope envelope1 = (iactiveView_0.FocusMap as IActiveView).Extent;
-                num = 0.0;
-                num2 = 0.0;
-                if (extent.YMin <= 0.0)
+                IEnvelope envelope = (focusMapFrame as IElement).Geometry.Envelope;
+                IEnvelope envelopeClass = new EnvelopeClass();
+                envelopeClass.PutCoords(3, 3, 53, 53);
+                ITransform2D transform2D = focusMapFrame as ITransform2D;
+                IAffineTransformation2D affineTransformation2DClass = new AffineTransformation2DClass();
+                affineTransformation2DClass.DefineFromEnvelopes(envelope, envelopeClass);
+                transform2D.Transform(esriTransformDirection.esriTransformForward, affineTransformation2DClass);
+                envelope = (focusMapFrame as IElement).Geometry.Envelope;
+                mapBounds = focusMapFrame.MapBounds;
+                IEnvelope extent = (iactiveView_0.FocusMap as IActiveView).Extent;
+                xMin = 0;
+                num = 0;
+                if (mapBounds.YMin <= 0)
                 {
-                    num2 = 1000.0 + Math.Abs(extent.YMin);
+                    num = 1000 + Math.Abs(mapBounds.YMin);
                 }
-                if (extent.XMin <= 0.0)
+                if (mapBounds.XMin <= 0)
                 {
-                    num = 500000.0 + extent.XMin;
+                    xMin = 500000 + mapBounds.XMin;
                 }
                 this.Scale = focusMapFrame.Map.MapScale;
-                extent.Offset(num, num2);
-                this.CreateTKByRect(iactiveView_0, extent);
-                return;
+                mapBounds.Offset(xMin, num);
+                this.CreateTKByRect(iactiveView_0, mapBounds);
             }
-            if (this.MapFramingType != MapCartoTemplateLib.MapFramingType.StandardFraming)
+            else if (this.MapFramingType == MapFramingType.StandardFraming)
             {
-                return;
-            }
-            focusMapFrame = MapFrameAssistant.GetFocusMapFrame(iactiveView_0 as IPageLayout);
-            extent = iactiveView_0.Extent;
-            if (this.MapFrameType == MapCartoTemplateLib.MapFrameType.MFTRect)
-            {
-                num = 0.0;
-                num2 = 0.0;
-                if (extent.YMin <= 0.0)
+                focusMapFrame = MapFrameAssistant.GetFocusMapFrame(iactiveView_0 as IPageLayout);
+                mapBounds = iactiveView_0.Extent;
+                if (this.MapFrameType == MapFrameType.MFTRect)
                 {
-                    num2 = 1000.0 + Math.Abs(extent.YMin);
-                }
-                if (extent.XMin <= 0.0)
-                {
-                    num = 500000.0 + extent.XMin;
-                }
-                extent.Offset(num, num2);
-                (focusMapFrame.Map as IActiveView).Extent = extent;
-                this.CreateTKN(iactiveView_0, extent.LowerLeft);
-                return;
-            }
-            if (this.MapFrameType != MapCartoTemplateLib.MapFrameType.MFTTrapezoid)
-            {
-                return;
-            }
-            string str = "G";
-            int scale = this.Scale;
-            if (scale <= 0x2710)
-            {
-                if (scale <= 0x3e8)
-                {
-                    if (scale == 500)
+                    xMin = 0;
+                    num = 0;
+                    if (mapBounds.YMin <= 0)
                     {
-                        str = "K";
+                        num = 1000 + Math.Abs(mapBounds.YMin);
                     }
-                    else if (scale == 0x3e8)
+                    if (mapBounds.XMin <= 0)
                     {
-                        str = "J";
+                        xMin = 500000 + mapBounds.XMin;
                     }
+                    mapBounds.Offset(xMin, num);
+                    (focusMapFrame.Map as IActiveView).Extent = mapBounds;
+                    this.CreateTKN(iactiveView_0, mapBounds.LowerLeft);
                 }
-                else
+                else if (this.MapFrameType == MapFrameType.MFTTrapezoid)
                 {
-                    switch (scale)
+                    string str = "G";
+                    int scale = (int)this.Scale;
+                    if (scale <= 10000)
                     {
-                        case 0x7d0:
+                        if (scale <= 1000)
+                        {
+                            if (scale == 500)
+                            {
+                                str = "K";
+                            }
+                            else if (scale == 1000)
+                            {
+                                str = "J";
+                            }
+                        }
+                        else if (scale == 2000)
+                        {
                             str = "I";
-                            goto Label_0341;
-
-                        case 0x1388:
+                        }
+                        else if (scale == 5000)
+                        {
                             str = "H";
-                            goto Label_0341;
+                        }
+                        else if (scale == 10000)
+                        {
+                            str = "G";
+                        }
                     }
-                    if (scale == 0x2710)
+                    else if (scale <= 50000)
                     {
-                        str = "G";
+                        if (scale == 25000)
+                        {
+                            str = "F";
+                        }
+                        else if (scale == 50000)
+                        {
+                            str = "E";
+                        }
                     }
-                }
-            }
-            else
-            {
-                switch (scale)
-                {
-                    case 0x61a8:
-                        str = "F";
-                        break;
-
-                    case 0xc350:
-                        str = "E";
-                        break;
-
-                    case 0x186a0:
+                    else if (scale == 100000)
+                    {
                         str = "D";
-                        break;
-
-                    case 0x3d090:
+                    }
+                    else if (scale == 250000)
+                    {
                         str = "C";
-                        break;
-
-                    case 0x7a120:
+                    }
+                    else if (scale == 500000)
+                    {
                         str = "B";
-                        break;
+                    }
+                    string str1 = "";
+                    str1 = (this.Scale <= 1000 ? string.Concat("J50", str, "00010001") : string.Concat("J50", str, "001001"));
+                    MapNoAssistant mapNoAssistant = MapNoAssistantFactory.CreateMapNoAssistant(str1);
+                    this.Scale = (double)mapNoAssistant.GetScale();
+                    this.double_6 = this.Scale;
+                    this.CreateTrapezoidTK(iactiveView_0 as IPageLayout, mapNoAssistant);
                 }
             }
-        Label_0341:
-            str2 = "";
-            if (this.Scale > 1000.0)
-            {
-                str2 = "J50" + str + "001001";
-            }
-            else
-            {
-                str2 = "J50" + str + "00010001";
-            }
-            MapNoAssistant assistant = MapNoAssistantFactory.CreateMapNoAssistant(str2);
-            this.Scale = assistant.GetScale();
-            this.double_6 = this.Scale;
-            this.CreateTrapezoidTK(iactiveView_0 as IPageLayout, assistant);
         }
+
 
         public void CreateTK(IActiveView iactiveView_0)
         {
@@ -1571,7 +1554,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 this.RightInOutSpace = Convert.ToDouble(RowAssisant.GetFieldValue(row, "RightInOutSpace"));
                 this.BottomInOutSpace = Convert.ToDouble(RowAssisant.GetFieldValue(row, "BottomInOutSpace"));
                 this.TopInOutSpace = Convert.ToDouble(RowAssisant.GetFieldValue(row, "TopInOutSpace"));
-                this.AnnoUnit = Convert.ToInt16(RowAssisant.GetFieldValue(row, "AnnoUnit"));
+                this.AnnoUnit = (esriUnits) Convert.ToInt16(RowAssisant.GetFieldValue(row, "AnnoUnit"));
                 this.AnnoUnitZoomScale = Convert.ToDouble(RowAssisant.GetFieldValue(row, "AnnoUnitZoomScale"));
                 this.XInterval = Convert.ToDouble(RowAssisant.GetFieldValue(row, "XInterval"));
                 this.YInterval = Convert.ToDouble(RowAssisant.GetFieldValue(row, "YInterval"));
@@ -1582,7 +1565,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 catch
                 {
                 }
-                this.TemplateSizeStyle = Convert.ToInt32(RowAssisant.GetFieldValue(row, "FixDataRange"));
+                this.TemplateSizeStyle = (TemplateSizeStyle) Convert.ToInt32(RowAssisant.GetFieldValue(row, "FixDataRange"));
                 this.Description = RowAssisant.GetFieldValue(row, "Description").ToString();
                 this.FontName = RowAssisant.GetFieldValue(row, "FontName").ToString();
                 try
@@ -1612,7 +1595,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 {
                     this.DrawCornerText = false;
                 }
-                this.TemplateSizeStyle = Convert.ToInt32(RowAssisant.GetFieldValue(row, "FixDataRange"));
+                this.TemplateSizeStyle = (TemplateSizeStyle) Convert.ToInt32(RowAssisant.GetFieldValue(row, "FixDataRange"));
                 this.SmallFontSize = Convert.ToSingle(RowAssisant.GetFieldValue(row, "SmallFontSize"));
                 this.BigFontSize = Convert.ToSingle(RowAssisant.GetFieldValue(row, "BigFontSize"));
                 this.method_11();
@@ -1639,20 +1622,20 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             this.Width = Convert.ToDouble(set.GetProperty("Width"));
             this.Height = Convert.ToDouble(set.GetProperty("Height"));
             this.Scale = Convert.ToDouble(set.GetProperty("Scale"));
-            this.MapFrameType = Convert.ToInt32(set.GetProperty("FrameType"));
-            this.BorderSymbol = set.GetProperty("BorderSymbol");
-            this.GridSymbol = set.GetProperty("GridSymbol");
+            this.MapFrameType = (MapFrameType) Convert.ToInt32(set.GetProperty("FrameType"));
+            this.BorderSymbol = set.GetProperty("BorderSymbol") as ISymbol;
+            this.GridSymbol = set.GetProperty("GridSymbol") as ISymbol;
             this.OutBorderWidth = Convert.ToDouble(set.GetProperty("OutBorderWidth"));
             this.LeftInOutSpace = Convert.ToDouble(set.GetProperty("LeftInOutSpace"));
             this.RightInOutSpace = Convert.ToDouble(set.GetProperty("RightInOutSpace"));
             this.BottomInOutSpace = Convert.ToDouble(set.GetProperty("BottomInOutSpace"));
             this.TopInOutSpace = Convert.ToDouble(set.GetProperty("TopInOutSpace"));
-            this.MapGrid = set.GetProperty("MapGrid");
-            this.AnnoUnit = Convert.ToInt32(set.GetProperty("AnnoUnit"));
+            this.MapGrid = set.GetProperty("MapGrid") as IMapGrid;
+            this.AnnoUnit = (esriUnits) Convert.ToInt32(set.GetProperty("AnnoUnit"));
             this.AnnoUnitZoomScale = Convert.ToDouble(set.GetProperty("AnnoUnitZoomScale"));
             this.XInterval = Convert.ToDouble(set.GetProperty("XInterval"));
             this.YInterval = Convert.ToDouble(set.GetProperty("YInterval"));
-            this.TemplateSizeStyle = Convert.ToInt32(set.GetProperty("FixDataRange"));
+            this.TemplateSizeStyle = (TemplateSizeStyle) Convert.ToInt32(set.GetProperty("FixDataRange"));
             this.Description = Convert.ToString(set.GetProperty("Description"));
             int num2 = Convert.ToInt32(set.GetProperty("DrawCornerShortLine"));
             this.DrawCornerShortLine = num2 == 1;
@@ -1671,7 +1654,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             this.FontName = Convert.ToString(set.GetProperty("FontName"));
             this.SmallFontSize = Convert.ToDouble(set.GetProperty("SmallFontSize"));
             this.BigFontSize = Convert.ToDouble(set.GetProperty("BigFontSize"));
-            IPropertySetArray property = set.GetProperty("MapParams");
+            IPropertySetArray property = set.GetProperty("MapParams") as IPropertySetArray;
             if (property != null)
             {
                 for (num3 = 0; num3 < property.Count; num3++)
@@ -1682,7 +1665,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     this.AddMapTemplateParam(param);
                 }
             }
-            property = set.GetProperty("MapElements");
+            property = set.GetProperty("MapElements") as IPropertySetArray;
             if (property != null)
             {
                 for (num3 = 0; num3 < property.Count; num3++)
@@ -2222,7 +2205,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         {
             string_6 = "";
             string_7 = "";
-            int num = Math.Truncate((double) (double_22 / double_23));
+            int num = (int) Math.Truncate((double) (double_22 / double_23));
             if (num != 0)
             {
                 string_6 = num.ToString();
@@ -2239,12 +2222,12 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         {
             string_6 = "";
             string_7 = "";
-            int num = Math.Truncate((double) (double_22 / 100000.0));
+            int num = (int) Math.Truncate((double) (double_22 / 100000.0));
             if (num != 0)
             {
                 string_6 = num.ToString();
             }
-            int num2 = Math.Truncate((double) (double_22 - (num * 100000.0)));
+            int num2 = (int) Math.Truncate((double) (double_22 - (num * 100000.0)));
             int num3 = (int) (Math.Truncate((double) (((double) num2) / double_23)) * double_23);
             double num4 = ((double) num3) / 1000.0;
             if (double_23 < 100.0)
@@ -2375,8 +2358,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             string str2 = "";
             double num14 = 0.4;
             double num15 = 0.2;
-            int smallFontSize = this.SmallFontSize;
-            int bigFontSize = this.BigFontSize;
+            int smallFontSize = (int) this.SmallFontSize;
+            int bigFontSize = (int) this.BigFontSize;
             ITextSymbol symbol = this.FontStyle((double) smallFontSize, esriTextHorizontalAlignment.esriTHARight, esriTextVerticalAlignment.esriTVABottom);
             ITextSymbol symbol2 = this.FontStyle((double) bigFontSize, esriTextHorizontalAlignment.esriTHALeft, esriTextVerticalAlignment.esriTVABottom);
             ITextSymbol symbol3 = this.FontStyle((double) smallFontSize, esriTextHorizontalAlignment.esriTHALeft, esriTextVerticalAlignment.esriTVATop);
@@ -3485,8 +3468,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             IPoint point = this.method_32(ipoint_0.X, ipoint_0.Y);
             double x = point.X;
             double y = point.Y;
-            int smallFontSize = this.SmallFontSize;
-            int bigFontSize = this.BigFontSize;
+            int smallFontSize = (int) this.SmallFontSize;
+            int bigFontSize = (int) this.BigFontSize;
             double num5 = 0.2;
             ITextSymbol symbol = this.FontStyle((double) smallFontSize, esriTextHorizontalAlignment.esriTHARight, esriTextVerticalAlignment.esriTVABottom);
             ITextSymbol symbol2 = this.FontStyle((double) bigFontSize, esriTextHorizontalAlignment.esriTHALeft, esriTextVerticalAlignment.esriTVABottom);
@@ -4067,19 +4050,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
-        public static MapCartoTemplateLib.MapTemplate CurrentMapTemplate
-        {
-            [CompilerGenerated]
-            get
-            {
-                return <CurrentMapTemplate>k__BackingField;
-            }
-            [CompilerGenerated]
-            set
-            {
-                <CurrentMapTemplate>k__BackingField = value;
-            }
-        }
+        public static MapCartoTemplateLib.MapTemplate CurrentMapTemplate { get; set; }
 
         public string Description
         {

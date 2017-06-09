@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using Yutai.ArcGIS.Common.ControlExtend;
 
 namespace Yutai.ArcGIS.Carto.DesignLib
 {

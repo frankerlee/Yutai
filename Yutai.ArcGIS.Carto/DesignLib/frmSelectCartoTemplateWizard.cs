@@ -84,7 +84,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         private void InitializeComponent()
         {
-            ComponentResourceManager manager = new ComponentResourceManager(typeof(frmSelectCartoTemplateWizard));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSelectCartoTemplateWizard));
             this.button3 = new Button();
             this.btnNext = new Button();
             this.btnLast = new Button();

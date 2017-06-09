@@ -1,4 +1,5 @@
 ﻿using ESRI.ArcGIS.ADF.BaseClasses;
+using Yutai.Plugins.Interfaces;
 
 namespace Yutai.ArcGIS.Carto.DesignLib
 {

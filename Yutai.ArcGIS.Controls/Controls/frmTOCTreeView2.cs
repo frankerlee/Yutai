@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using Yutai.ArcGIS.Common;
 using Yutai.ArcGIS.Controls.Controls.TOCTreeview;
+using Yutai.ArcGIS.Framework.Docking;
 
 namespace Yutai.ArcGIS.Controls.Controls
 {

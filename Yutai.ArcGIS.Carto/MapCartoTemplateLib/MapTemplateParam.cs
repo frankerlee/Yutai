@@ -56,7 +56,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 row = this.MapTemplateGallery.MapTemplateParamTable.GetRow(this.OID);
                 this.Name = RowAssisant.GetFieldValue(row, "Name").ToString();
                 this.AllowNull = Convert.ToInt32(RowAssisant.GetFieldValue(row, "AllowNull")) == 1;
-                this.ParamDataType = Convert.ToInt32(RowAssisant.GetFieldValue(row, "DataType"));
+                this.ParamDataType = (DataType) Convert.ToInt32(RowAssisant.GetFieldValue(row, "DataType"));
                 this.Description = RowAssisant.GetFieldValue(row, "Description").ToString();
             }
         }
@@ -67,7 +67,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             this.Description = Convert.ToString(ipropertySet_0.GetProperty("Description"));
             int num = Convert.ToInt32(ipropertySet_0.GetProperty("AllowNull"));
             this.AllowNull = num == 1;
-            this.ParamDataType = Convert.ToInt32(ipropertySet_0.GetProperty("DataType"));
+            this.ParamDataType = (DataType) Convert.ToInt32(ipropertySet_0.GetProperty("DataType"));
         }
 
         public void Save()

@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using ESRI.ArcGIS.Geodatabase;
+using Yutai.ArcGIS.Common.Excel;
 
 namespace Yutai.ArcGIS.Controls.Controls.Export
 {
@@ -55,11 +56,11 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             }
             if (this.TempleteFile == "")
             {
-                JLKExportExcel.ExportExcel(false, this.Title, table, this.Title);
+                YTExportExcel.ExportExcel(false, this.Title, table, this.Title);
             }
             else
             {
-                JLKExportExcel.ExcelTemplatePrint(false, table, this.TempleteFile, this.Title, this.TempleteStartRowIndex, this.TempleteRowCount);
+                YTExportExcel.ExcelTemplatePrint(false, table, this.TempleteFile, this.Title, this.TempleteStartRowIndex, this.TempleteRowCount);
             }
             return true;
         }
@@ -68,11 +69,11 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
         {
             if (this.TempleteFile == "")
             {
-                JLKExportExcel.ExportExcel(false, this.Title, dt, this.Title);
+                YTExportExcel.ExportExcel(false, this.Title, dt, this.Title);
             }
             else
             {
-                JLKExportExcel.ExcelTemplatePrint(false, dt, this.TempleteFile, this.Title, this.TempleteStartRowIndex, this.TempleteRowCount);
+                YTExportExcel.ExcelTemplatePrint(false, dt, this.TempleteFile, this.Title, this.TempleteStartRowIndex, this.TempleteRowCount);
             }
             return true;
         }

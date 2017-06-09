@@ -334,7 +334,6 @@ namespace Yutai.ArcGIS.Carto.UI
             base.Controls.Add(this.panel2);
             base.Controls.Add(this.panel1);
             base.Controls.Add(this.btnOK);
-            base.Icon = (Icon) resources.GetObject("$this.Icon");
             base.Name = "frmRender";
             this.Text = "图层渲染";
             base.Load += new EventHandler(this.frmRender_Load);

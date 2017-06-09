@@ -20,6 +20,7 @@ using Yutai.ArcGIS.Common.Priviliges;
 using Yutai.Plugins.Interfaces;
 using ICommand = ESRI.ArcGIS.SystemUI.ICommand;
 using ICommandSubType = ESRI.ArcGIS.SystemUI.ICommandSubType;
+using LoadComponent = Yutai.ArcGIS.Common.LoadComponent;
 
 namespace Yutai.ArcGIS.Framework
 {

@@ -1,5 +1,7 @@
 ﻿using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
+using Yutai.ArcGIS.Common;
+using Yutai.ArcGIS.Common.BaseClasses;
 
 namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 {

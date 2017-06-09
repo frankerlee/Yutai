@@ -2,8 +2,13 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
+using Yutai.ArcGIS.Common.BaseClasses;
+using Yutai.ArcGIS.Common.Helpers;
+using Yutai.ArcGIS.Common.SymbolLib;
 
 namespace Yutai.ArcGIS.Controls.Controls.GPSLib
 {
@@ -153,7 +158,7 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
                 this.txtLowAltitudeSize.Text = this.m_pGpsDisplayProperties.LowAltitudeSize.ToString();
                 this.txtLowAltitudeValue.Text = this.m_pGpsDisplayProperties.LowAltitudeValue.ToString();
                 this.txtLowSpeedValue.Text = this.m_pGpsDisplayProperties.LowSpeedValue.ToString();
-                this.lblMaxAltituteUnit.Text = Common.GetUnit(this.m_pGpsDisplayProperties.AltitudeUnits);
+                this.lblMaxAltituteUnit.Text = CommonHelper.GetUnit(this.m_pGpsDisplayProperties.AltitudeUnits);
                 this.lblMinAltituteUnit.Text = this.lblMaxAltituteUnit.Text;
                 this.lblMaxSpeedUnit.Text = this.GetSpeedUnitDescription(this.m_pGpsDisplayProperties.SpeedUnits);
                 this.lblMinSpeedUnit.Text = this.lblMaxSpeedUnit.Text;

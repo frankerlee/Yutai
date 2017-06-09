@@ -3,9 +3,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common.BaseClasses;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {
@@ -158,8 +160,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         private void btnSaveEditing_Click(object sender, EventArgs e)
         {
-            Editor.Editor.StopEditing(this.m_pTable as IDataset, true, false);
-            Editor.Editor.StartEditing(this.m_pTable as IDataset);
+            Yutai.ArcGIS.Common.Editor.Editor.StopEditing(this.m_pTable as IDataset, true, false);
+            Yutai.ArcGIS.Common.Editor.Editor.StartEditing(this.m_pTable as IDataset);
             this.btnSaveEditing.Enabled = false;
         }
 
@@ -195,7 +197,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         private void btnStopEditing_Click(object sender, EventArgs e)
         {
-            if (Editor.Editor.StopEditing(this.m_pTable as IDataset, true, true))
+            if (Yutai.ArcGIS.Common.Editor.Editor.StopEditing(this.m_pTable as IDataset, true, true))
             {
                 this.dataGrid1.ReadOnly = true;
                 this.btnStartEditing.Enabled = true;

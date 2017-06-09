@@ -5,6 +5,7 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geometry;
 using stdole;
+using Yutai.ArcGIS.Common.Symbol;
 
 namespace Yutai.ArcGIS.Carto.DesignLib
 {
@@ -2159,7 +2160,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         {
             string_5 = "";
             string_6 = "";
-            int num = Math.Truncate((double) (double_11 / double_12));
+            int num = (int) Math.Truncate((double) (double_11 / double_12));
             string_5 = num.ToString();
             string_6 = ((int) Math.Truncate((double) (((double_11 - (num * double_12)) / double_12) * 100.0))).ToString();
             if (string_6.Length < 2)

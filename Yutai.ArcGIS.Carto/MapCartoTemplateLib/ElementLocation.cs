@@ -65,7 +65,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                         case "position":
                             try
                             {
-                                this.LocationType = int.Parse(s);
+                                this.LocationType = (LocationType) int.Parse(s);
                             }
                             catch
                             {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using Yutai.ArcGIS.Common.Editor;
 
 namespace Yutai.ArcGIS.Controls.Controls.EditorUI
 {
@@ -112,7 +113,7 @@ namespace Yutai.ArcGIS.Controls.Controls.EditorUI
             this.button1.Enabled = this.listView1.SelectedIndices.Count > 0;
         }
 
-        public JLKEditTemplate EditTemplate { get; set; }
+        public YTEditTemplate EditTemplate { get; set; }
     }
 }
 

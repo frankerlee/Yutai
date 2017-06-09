@@ -5,6 +5,7 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common.Symbol;
 
 namespace Yutai.ArcGIS.Carto.DesignLib
 {
@@ -506,7 +507,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 b[num2] = buffer[num2];
             }
             Guid clsid = new Guid(b);
-            IPersistStream stream = Activator.CreateInstance(Type.GetTypeFromCLSID(clsid));
+            IPersistStream stream = Activator.CreateInstance(Type.GetTypeFromCLSID(clsid)) as IPersistStream;
             byte[] buffer3 = new byte[num];
             for (num2 = 0; num2 < num; num2++)
             {

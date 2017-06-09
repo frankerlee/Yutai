@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using Yutai.ArcGIS.Common.ControlExtenders;
+using Yutai.ArcGIS.Common.Renderer;
 
 namespace Yutai.ArcGIS.Controls.ApplicationStyle
 {

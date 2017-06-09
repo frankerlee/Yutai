@@ -2,6 +2,8 @@
 using System.Drawing;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
+using Yutai.ArcGIS.Framework;
 
 namespace Yutai.ArcGIS.Controls.Controls
 {

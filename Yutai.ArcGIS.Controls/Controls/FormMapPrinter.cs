@@ -4,14 +4,23 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
+using DevExpress.XtraBars;
+using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraEditors.Repository;
 using ESRI.ArcGIS.ADF.COMSupport;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geometry;
 using ESRI.ArcGIS.SystemUI;
+using Yutai.ArcGIS.Common;
+using Yutai.ArcGIS.Common.BaseClasses;
 using Yutai.ArcGIS.Controls.ApplicationStyle;
+using Yutai.ArcGIS.Controls.Historical;
 using Yutai.ArcGIS.Controls.SymbolUI;
+using Yutai.ArcGIS.Framework;
+using Yutai.Shared;
+using LoadComponent = Yutai.ArcGIS.Common.LoadComponent;
 
 namespace Yutai.ArcGIS.Controls.Controls
 {
@@ -1108,7 +1117,7 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         public void LoadTools(IApplication pApp, string FileName)
         {
-            BaseClass.LoadComponent component = new BaseClass.LoadComponent();
+            LoadComponent component = new LoadComponent();
             ComponentList list = new ComponentList(FileName);
             list.beginRead();
             string str = "";

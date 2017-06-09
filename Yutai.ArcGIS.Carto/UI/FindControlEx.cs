@@ -8,6 +8,7 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using Yutai.ArcGIS.Common;
+using Yutai.ArcGIS.Common.BaseClasses;
 using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Carto.UI
@@ -475,7 +476,7 @@ namespace Yutai.ArcGIS.Carto.UI
                 this.iactiveViewEvents_Event_0.ItemAdded+=(new IActiveViewEvents_ItemAddedEventHandler(this.method_5));
                 this.iactiveViewEvents_Event_0.ItemDeleted+=(new IActiveViewEvents_ItemDeletedEventHandler(this.method_6));
                 this.iactiveViewEvents_Event_0.ItemReordered+=(new IActiveViewEvents_ItemReorderedEventHandler(this.method_7));
-                this.iactiveViewEvents_Event_0.add_ContentsChanged(new IActiveViewEvents_ContentsChangedEventHandler(this.method_10));
+                this.iactiveViewEvents_Event_0.ContentsChanged+=(new IActiveViewEvents_ContentsChangedEventHandler(this.method_10));
                 this.iactiveViewEvents_Event_0.ContentsCleared+=(new IActiveViewEvents_ContentsClearedEventHandler(this.method_8));
             }
         }

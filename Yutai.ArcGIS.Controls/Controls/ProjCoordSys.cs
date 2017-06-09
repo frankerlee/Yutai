@@ -3,8 +3,11 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using ESRI.ArcGIS.Geometry;
 using Yutai.ArcGIS.Common.ControlExtend;
+using Yutai.ArcGIS.Common.Helpers;
 
 namespace Yutai.ArcGIS.Controls.Controls
 {
@@ -470,7 +473,7 @@ namespace Yutai.ArcGIS.Controls.Controls
                     }
                     this.txtValue.ForeColor = Color.Red;
                 }
-                else if (Common.IsNmuber(this.txtValue.Text))
+                else if (CommonHelper.IsNmuber(this.txtValue.Text))
                 {
                     if (Convert.ToDouble(this.txtValue.Text) > 0.0)
                     {

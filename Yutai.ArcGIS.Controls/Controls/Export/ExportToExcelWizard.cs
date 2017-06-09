@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 using ESRI.ArcGIS.Carto;
 
 namespace Yutai.ArcGIS.Controls.Controls.Export

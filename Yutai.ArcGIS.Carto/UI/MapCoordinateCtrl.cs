@@ -7,9 +7,11 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Catalog;
+using Yutai.ArcGIS.Catalog.UI;
 using Yutai.ArcGIS.Common.BaseClasses;
-using Yutai.Catalog;
-using Yutai.Catalog.UI;
+using Yutai.ArcGIS.Controls.Controls;
+
 
 namespace Yutai.ArcGIS.Carto.UI
 {

@@ -6,6 +6,7 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Carto.DesignLib;
 
 namespace Yutai.ArcGIS.Carto
 {
@@ -309,9 +310,9 @@ namespace Yutai.ArcGIS.Carto
                     element2 = new TextElementClass();
                     element3 = new TextElementClass();
                     element4 = new TextElementClass();
-                    num6 = Math.Truncate((double) (y / 100000.0));
+                    num6 = (int) Math.Truncate((double) (y / 100000.0));
                     str = num6.ToString();
-                    num7 = Math.Truncate((double) ((y - (num6 * 0x186a0)) / 1000.0));
+                    num7 = (int) Math.Truncate((double) ((y - (num6 * 0x186a0)) / 1000.0));
                     str2 = num7.ToString();
                     if (str2.Length < 2)
                     {
@@ -399,7 +400,7 @@ namespace Yutai.ArcGIS.Carto
                     element2 = new TextElementClass();
                     element3 = new TextElementClass();
                     element4 = new TextElementClass();
-                    num6 = Math.Truncate((double) (x / 100000.0));
+                    num6 = (int) Math.Truncate((double) (x / 100000.0));
                     str = num6.ToString();
                     str2 = ((int) Math.Truncate((double) ((x - (num6 * 0x186a0)) / 1000.0))).ToString();
                     if (str2.Length < 2)

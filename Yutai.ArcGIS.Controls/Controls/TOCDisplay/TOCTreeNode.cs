@@ -3,6 +3,7 @@ using System.Drawing;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
+using Yutai.ArcGIS.Common.SymbolLib;
 
 namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 {

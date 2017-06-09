@@ -17,6 +17,7 @@ using Yutai.ArcGIS.Common.Framework;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
 using Yutai.Shared;
+using IApplication = Yutai.ArcGIS.Common.IApplication;
 
 namespace Yutai.ArcGIS.Framework
 {

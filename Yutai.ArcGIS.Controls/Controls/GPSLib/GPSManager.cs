@@ -265,14 +265,14 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
                 }
                 m_RealTimeFeedManager.RealTimeFeed = value;
                 m_RealTimeFeedEvents_Event = value as IRealTimeFeedEvents_Event;
-                m_RealTimeFeedEvents_Event.add_PositionUpdated(new IRealTimeFeedEvents_PositionUpdatedEventHandler(GPSManager.m_RealTimeFeedEvents_Event_PositionUpdated));
-                m_RealTimeFeedEvents_Event.add_SatelliteInfoUpdated(new IRealTimeFeedEvents_SatelliteInfoUpdatedEventHandler(GPSManager.m_RealTimeFeedEvents_Event_SatelliteInfoUpdated));
-                m_RealTimeFeedEvents_Event.add_MagneticVarianceUpdated(new IRealTimeFeedEvents_MagneticVarianceUpdatedEventHandler(GPSManager.m_RealTimeFeedEvents_Event_MagneticVarianceUpdated));
-                m_RealTimeFeedEvents_Event.add_GroundCourseUpdated(new IRealTimeFeedEvents_GroundCourseUpdatedEventHandler(GPSManager.m_RealTimeFeedEvents_Event_GroundCourseUpdated));
-                m_RealTimeFeedEvents_Event.add_DopInfoUpdated(new IRealTimeFeedEvents_DopInfoUpdatedEventHandler(GPSManager.m_RealTimeFeedEvents_Event_DopInfoUpdated));
-                m_RealTimeFeedEvents_Event.add_DgpsInfoUpdated(new IRealTimeFeedEvents_DgpsInfoUpdatedEventHandler(GPSManager.m_RealTimeFeedEvents_Event_DgpsInfoUpdated));
-                m_RealTimeFeedEvents_Event.add_DateTimeUpdated(new IRealTimeFeedEvents_DateTimeUpdatedEventHandler(GPSManager.m_RealTimeFeedEvents_Event_DateTimeUpdated));
-                m_RealTimeFeedEvents_Event.add_ConnectionStatusUpdated(new IRealTimeFeedEvents_ConnectionStatusUpdatedEventHandler(GPSManager.m_RealTimeFeedEvents_Event_ConnectionStatusUpdated));
+                m_RealTimeFeedEvents_Event.PositionUpdated+=(new IRealTimeFeedEvents_PositionUpdatedEventHandler(GPSManager.m_RealTimeFeedEvents_Event_PositionUpdated));
+                m_RealTimeFeedEvents_Event.SatelliteInfoUpdated+=(new IRealTimeFeedEvents_SatelliteInfoUpdatedEventHandler(GPSManager.m_RealTimeFeedEvents_Event_SatelliteInfoUpdated));
+                m_RealTimeFeedEvents_Event.MagneticVarianceUpdated+=(new IRealTimeFeedEvents_MagneticVarianceUpdatedEventHandler(GPSManager.m_RealTimeFeedEvents_Event_MagneticVarianceUpdated));
+                m_RealTimeFeedEvents_Event.GroundCourseUpdated+=(new IRealTimeFeedEvents_GroundCourseUpdatedEventHandler(GPSManager.m_RealTimeFeedEvents_Event_GroundCourseUpdated));
+                m_RealTimeFeedEvents_Event.DopInfoUpdated+=(new IRealTimeFeedEvents_DopInfoUpdatedEventHandler(GPSManager.m_RealTimeFeedEvents_Event_DopInfoUpdated));
+                m_RealTimeFeedEvents_Event.DgpsInfoUpdated+=(new IRealTimeFeedEvents_DgpsInfoUpdatedEventHandler(GPSManager.m_RealTimeFeedEvents_Event_DgpsInfoUpdated));
+                m_RealTimeFeedEvents_Event.DateTimeUpdated+=(new IRealTimeFeedEvents_DateTimeUpdatedEventHandler(GPSManager.m_RealTimeFeedEvents_Event_DateTimeUpdated));
+                m_RealTimeFeedEvents_Event.ConnectionStatusUpdated+=(new IRealTimeFeedEvents_ConnectionStatusUpdatedEventHandler(GPSManager.m_RealTimeFeedEvents_Event_ConnectionStatusUpdated));
             }
         }
 

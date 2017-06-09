@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
+using DevExpress.XtraBars;
 using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.Analyst3D;
 using ESRI.ArcGIS.Carto;
@@ -1803,7 +1804,37 @@ namespace Yutai.ArcGIS.Common.Helpers
                 // Logger.Current.Error("",exception, "");
             }
         }
-
+        public static BarButtonItem CreateJLKBarItem(BarManager barManager_0, ICommand icommand_0)
+        {
+            BarButtonItem barButtonItem = new BarButtonItem();
+            barManager_0.Items.Add(barButtonItem);
+            barButtonItem.Id = barManager_0.GetNewItemId();
+            barButtonItem.Name = icommand_0.Name;
+            barButtonItem.Tag = icommand_0;
+            barButtonItem.Caption = icommand_0.Caption;
+            if (icommand_0.Tooltip == null)
+            {
+                barButtonItem.Hint = icommand_0.Caption;
+            }
+            else
+            {
+                barButtonItem.Hint = icommand_0.Tooltip;
+            }
+            barButtonItem.Enabled = icommand_0.Enabled;
+            if (icommand_0.Bitmap != 0)
+            {
+                try
+                {
+                    Bitmap bitmap = Image.FromHbitmap(new IntPtr(icommand_0.Bitmap));
+                    bitmap.MakeTransparent();
+                    barButtonItem.Glyph = bitmap;
+                }
+                catch
+                {
+                }
+            }
+            return barButtonItem;
+        }
 
     }
 }

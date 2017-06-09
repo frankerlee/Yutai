@@ -3,9 +3,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common.Excel;
 using Yutai.ArcGIS.Controls.Controls.Export;
 
 namespace Yutai.ArcGIS.Controls.Controls
@@ -131,7 +133,7 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         private void btnExportToExcel_Click(object sender, EventArgs e)
         {
-            JLKExportExcel.ExportExcel(false, this.Text, this.dataGrid1.DataSource, this.Text);
+            YTExportExcel.ExportExcel(false, this.Text, this.dataGrid1.DataSource, this.Text);
         }
 
         private void btnFirstRecord_Click(object sender, EventArgs e)
@@ -172,7 +174,7 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            JLKExportExcel.ExportExcel(true, this.Text, this.dataGrid1.DataSource, this.Text);
+            YTExportExcel.ExportExcel(true, this.Text, this.dataGrid1.DataSource, this.Text);
         }
 
         private void btnSaveEditing_Click(object sender, EventArgs e)

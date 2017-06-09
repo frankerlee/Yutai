@@ -2,6 +2,8 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using ESRI.ArcGIS.Carto;
 
 namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib

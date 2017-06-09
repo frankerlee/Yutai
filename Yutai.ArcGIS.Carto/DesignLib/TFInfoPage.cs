@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
+using Yutai.ArcGIS.Common.BaseClasses;
 
 namespace Yutai.ArcGIS.Carto.DesignLib
 {

@@ -2,8 +2,12 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.DataSourcesFile;
+using ItemCheckEventArgs = DevExpress.XtraEditors.Controls.ItemCheckEventArgs;
+using ItemCheckEventHandler = DevExpress.XtraEditors.Controls.ItemCheckEventHandler;
 
 namespace Yutai.ArcGIS.Carto.UI
 {
@@ -75,7 +79,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.method_0();
         }
 
-        private void checkedListBoxControl1_ItemCheck(object sender, JLK.Editors.Controls.ItemCheckEventArgs e)
+        private void checkedListBoxControl1_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             this.bool_0 = true;
         }
@@ -109,7 +113,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.checkedListBoxControl1.Name = "checkedListBoxControl1";
             this.checkedListBoxControl1.Size = new Size(0xf8, 0x88);
             this.checkedListBoxControl1.TabIndex = 1;
-            this.checkedListBoxControl1.ItemCheck += new JLK.Editors.Controls.ItemCheckEventHandler(this.checkedListBoxControl1_ItemCheck);
+            this.checkedListBoxControl1.ItemCheck += new ItemCheckEventHandler(this.checkedListBoxControl1_ItemCheck);
             this.btnAllVisible.Location = new Point(0x10, 200);
             this.btnAllVisible.Name = "btnAllVisible";
             this.btnAllVisible.Size = new Size(0x40, 0x18);

@@ -6,6 +6,7 @@ using DevExpress.XtraEditors;
 using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
+using Yutai.ArcGIS.Common.Query.UI;
 
 namespace Yutai.ArcGIS.Carto.UI
 {

@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Yutai.ArcGIS.Common.Editor;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {
@@ -23,7 +24,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         public void AddItem(ListViewItem li)
         {
-            JLKEditTemplate tag = li.Tag as JLKEditTemplate;
+            YTEditTemplate tag = li.Tag as YTEditTemplate;
             if (((tag != null) && !this.imageList1.Images.ContainsKey(tag.ImageKey)) && (tag.Bitmap != null))
             {
                 this.imageList1.Images.Add(tag.ImageKey, tag.Bitmap);

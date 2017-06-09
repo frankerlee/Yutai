@@ -359,15 +359,15 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         public double CalculateTKArea(double[] double_1, double[] double_2)
         {
             double num = 0.0;
-            double num3 = double_1.GetValue(0);
-            double num1 = double_2.GetValue(0);
-            double num4 = double_1.GetValue(1);
-            double num5 = double_2.GetValue(1);
-            double num6 = double_1.GetValue(2);
-            double num7 = double_2.GetValue(2);
-            double num8 = double_1.GetValue(3);
-            double num10 = double_2.GetValue(3);
-            num = Math.Abs((double) (num7 - num5));
+            double num3 = (double) double_1.GetValue(0);
+            double num1 = (double) double_2.GetValue(0);
+            double num4 = (double) double_1.GetValue(1);
+            object num5 = double_2.GetValue(1);
+            double num6 = (double) double_1.GetValue(2);
+            double num7 = (double) double_2.GetValue(2);
+            double num8 = (double) double_1.GetValue(3);
+            double num10 = (double) double_2.GetValue(3);
+            num = Math.Abs((double) (num7 - (double) num5));
             return (((Math.Abs((double) (num6 - num8)) + Math.Abs((double) (num4 - num3))) * num) / 2.0);
         }
 
@@ -761,11 +761,11 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             double num4;
             if (int_4 == 1)
             {
-                num = Math.Round((double) (double_5 / 6.0));
+                num = (long) Math.Round((double) (double_5 / 6.0));
             }
             else
             {
-                num = Math.Round((double) (double_5 / 3.0));
+                num = (long) Math.Round((double) (double_5 / 3.0));
             }
             if (this.int_1 == 1)
             {
@@ -1044,11 +1044,11 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 {
                     if (!bool_1)
                     {
-                        this.MainStrip = Math.Truncate((double) (num2 / 3.0));
+                        this.MainStrip = (int) Math.Truncate((double) (num2 / 3.0));
                     }
                     else
                     {
-                        this.MainStrip = Math.Truncate((double) (num2 / 6.0)) + 1;
+                        this.MainStrip = (int) (Math.Truncate((double) (num2 / 6.0)) + 1);
                     }
                 }
                 else
@@ -1098,11 +1098,11 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             {
                 if (!bool_1)
                 {
-                    this.MainStrip = Math.Truncate((double) (double_1 / 3.0));
+                    this.MainStrip = (int) Math.Truncate((double) (double_1 / 3.0));
                 }
                 else
                 {
-                    this.MainStrip = Math.Truncate((double) (double_1 / 6.0)) + 1;
+                    this.MainStrip = (int) (Math.Truncate((double) (double_1 / 6.0)) + 1);
                 }
             }
             else
@@ -1139,7 +1139,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             {
                 num = double_1 / 3.0;
             }
-            int num2 = num;
+            int num2 = (int) num;
             if (bool_0)
             {
                 if (num2 > 60)

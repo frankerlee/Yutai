@@ -1,0 +1,870 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System" name="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="groupBox2.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="label1.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="cboFontSize.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="label6.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$Localizable" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="groupBox2.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="groupBox2.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="cboFontSize_rel.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="btnNew.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="colorEdit1.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="txtMaxScale.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="imageList2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>130, 17</value>
+  </data>
+  <data name="groupPlaceSet.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="panelScaleSet.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="chkOverPlace.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="chkBold.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="btnNew.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="chkCanPalceOuter.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="textEdit1.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="label4.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="chkIta_rel.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="chkIta_rel.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="panelScaleSet.SnapToGrid" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkCanPalceOuter.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="chkBold.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="btnDelete.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="colorEdit2.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="chkUnderline.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="simpleButton4.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnReName.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="simpleButton2.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="label2.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="simpleButton3.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="txtMinScale.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="simpleButton2.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="simpleButton4.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="btnReName.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="rdoDisplayScale.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="btnDelete.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="simpleButton1.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="panel2.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="groupBox2.DrawGrid" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkHorPlace.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="imageComboBoxEdit1.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="chkItalic.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="chkItalic.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="groupPlaceSet.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="btnLabelExpress.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="cboFontName.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="btnLabelExpress.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="$DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="$GridSize" type="System.Drawing.Size, System.Drawing">
+    <value>8, 8</value>
+  </data>
+  <data name="colorEdit1.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="btnLabelExpress.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="simpleButton3.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="gropScaleset.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="imageList1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 17</value>
+  </data>
+  <data name="panelScaleSet.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="groupBox1.GridSize" type="System.Drawing.Size, System.Drawing">
+    <value>8, 8</value>
+  </data>
+  <data name="groupBox1.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="$Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="imageList2.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="label2.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="txtMaxScale.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="groupPlaceSet.GridSize" type="System.Drawing.Size, System.Drawing">
+    <value>8, 8</value>
+  </data>
+  <data name="chkOverPlace.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="simpleButton2.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="label5.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="chkBold_rel.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="label3.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="chkUnderLine_rel.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="cboLabelField.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="rdoDisplayScale.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="label5.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="listBoxControl1.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="cboFontSize_rel.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="simpleButton3.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="$Name" xml:space="preserve">
+    <value>AnnoClassSetCtrl</value>
+  </data>
+  <data name="panel1.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="textEdit1.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label1.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="chkCanPalceOuter.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="groupBox2.GridSize" type="System.Drawing.Size, System.Drawing">
+    <value>8, 8</value>
+  </data>
+  <data name="$SnapToGrid" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="listBoxControl1.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label4.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="chkBold.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cboFontName.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="panel2.DrawGrid" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="groupBox1.DrawGrid" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="groupPlaceSet.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="panel1.SnapToGrid" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="groupPlaceSet.SnapToGrid" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="panelScaleSet.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="panel1.GridSize" type="System.Drawing.Size, System.Drawing">
+    <value>8, 8</value>
+  </data>
+  <data name="txtMinScale.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="label2.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="rdoDisplayScale.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cboLabelField.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="imageComboBoxEdit1.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="imageList1.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="colorEdit2.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="imageComboBoxEdit1.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label6.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="panel1.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="txtMaxScale.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="cboFontName.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="gropScaleset.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="panelScaleSet.DrawGrid" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colorEdit1.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="imageList1.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAq
+        CAAAAk1TRnQBSQFMAgEBBwEAAQoBAAEIAQABEAEAARABAAT/AQkBEAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
+        AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
+        AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
+        AWYDAAGZAwABzAIAATMDAAIzAgABMwFmAgABMwGZAgABMwHMAgABMwH/AgABZgMAAWYBMwIAAmYCAAFm
+        AZkCAAFmAcwCAAFmAf8CAAGZAwABmQEzAgABmQFmAgACmQIAAZkBzAIAAZkB/wIAAcwDAAHMATMCAAHM
+        AWYCAAHMAZkCAALMAgABzAH/AgAB/wFmAgAB/wGZAgAB/wHMAQABMwH/AgAB/wEAATMBAAEzAQABZgEA
+        ATMBAAGZAQABMwEAAcwBAAEzAQAB/wEAAf8BMwIAAzMBAAIzAWYBAAIzAZkBAAIzAcwBAAIzAf8BAAEz
+        AWYCAAEzAWYBMwEAATMCZgEAATMBZgGZAQABMwFmAcwBAAEzAWYB/wEAATMBmQIAATMBmQEzAQABMwGZ
+        AWYBAAEzApkBAAEzAZkBzAEAATMBmQH/AQABMwHMAgABMwHMATMBAAEzAcwBZgEAATMBzAGZAQABMwLM
+        AQABMwHMAf8BAAEzAf8BMwEAATMB/wFmAQABMwH/AZkBAAEzAf8BzAEAATMC/wEAAWYDAAFmAQABMwEA
+        AWYBAAFmAQABZgEAAZkBAAFmAQABzAEAAWYBAAH/AQABZgEzAgABZgIzAQABZgEzAWYBAAFmATMBmQEA
+        AWYBMwHMAQABZgEzAf8BAAJmAgACZgEzAQADZgEAAmYBmQEAAmYBzAEAAWYBmQIAAWYBmQEzAQABZgGZ
+        AWYBAAFmApkBAAFmAZkBzAEAAWYBmQH/AQABZgHMAgABZgHMATMBAAFmAcwBmQEAAWYCzAEAAWYBzAH/
+        AQABZgH/AgABZgH/ATMBAAFmAf8BmQEAAWYB/wHMAQABzAEAAf8BAAH/AQABzAEAApkCAAGZATMBmQEA
+        AZkBAAGZAQABmQEAAcwBAAGZAwABmQIzAQABmQEAAWYBAAGZATMBzAEAAZkBAAH/AQABmQFmAgABmQFm
+        ATMBAAGZATMBZgEAAZkBZgGZAQABmQFmAcwBAAGZATMB/wEAApkBMwEAApkBZgEAA5kBAAKZAcwBAAKZ
+        Af8BAAGZAcwCAAGZAcwBMwEAAWYBzAFmAQABmQHMAZkBAAGZAswBAAGZAcwB/wEAAZkB/wIAAZkB/wEz
+        AQABmQHMAWYBAAGZAf8BmQEAAZkB/wHMAQABmQL/AQABzAMAAZkBAAEzAQABzAEAAWYBAAHMAQABmQEA
+        AcwBAAHMAQABmQEzAgABzAIzAQABzAEzAWYBAAHMATMBmQEAAcwBMwHMAQABzAEzAf8BAAHMAWYCAAHM
+        AWYBMwEAAZkCZgEAAcwBZgGZAQABzAFmAcwBAAGZAWYB/wEAAcwBmQIAAcwBmQEzAQABzAGZAWYBAAHM
+        ApkBAAHMAZkBzAEAAcwBmQH/AQACzAIAAswBMwEAAswBZgEAAswBmQEAA8wBAALMAf8BAAHMAf8CAAHM
+        Af8BMwEAAZkB/wFmAQABzAH/AZkBAAHMAf8BzAEAAcwC/wEAAcwBAAEzAQAB/wEAAWYBAAH/AQABmQEA
+        AcwBMwIAAf8CMwEAAf8BMwFmAQAB/wEzAZkBAAH/ATMBzAEAAf8BMwH/AQAB/wFmAgAB/wFmATMBAAHM
+        AmYBAAH/AWYBmQEAAf8BZgHMAQABzAFmAf8BAAH/AZkCAAH/AZkBMwEAAf8BmQFmAQAB/wKZAQAB/wGZ
+        AcwBAAH/AZkB/wEAAf8BzAIAAf8BzAEzAQAB/wHMAWYBAAH/AcwBmQEAAf8CzAEAAf8BzAH/AQAC/wEz
+        AQABzAH/AWYBAAL/AZkBAAL/AcwBAAJmAf8BAAFmAf8BZgEAAWYC/wEAAf8CZgEAAf8BZgH/AQAC/wFm
+        AQABIQEAAaUBAANfAQADdwEAA4YBAAOWAQADywEAA7IBAAPXAQAD3QEAA+MBAAPqAQAD8QEAA/gBAAHw
+        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD//8A/wD/AP8A/wBdAAHs
+        DgAB7AEAAewsAAHsQgAB7D0AAexCAAHsPQAB7EIAAez/ACYAAUIBTQE+BwABPgMAASgDAAFAAwABIAMA
+        AQEBAAEBBgABARYAA/8BAAb/AgAG/wIABv8CAAHwAQ8B8AEBAYABAQIABv8CAAGAAQEBgAEBAYABAQIA
+        Bv8CAAHwAQ8B8AEBAYABAQIABv8CAAGAAQEBgAEBAYABAQIABv8CAAHwAQ8B8AEBAYABAQIABv8CAAGA
+        AQEBgAEBAYABAQIABv8CAAb/AgAU/wHgAQ8I/wGAAQ8B4AEfAeABfwH4AT8C/wHxAY8B+AH/AfEBHwGA
+        AQEB8QGPAfgB/wHzAZ8C/wHxAY8B/AF/AfMBnwGAAQ8B8AEfAfwBfwHzAZ8C/wHxAY8B/gE/AfMBnwGA
+        AQEB8QGPAf4BPwHzAZ8C/wHxAY8B/wEfAfMBnwGAAQ8B4AEfAf4BDwHhAQ8I/wGAAQEQ/xYACw==
+</value>
+  </data>
+  <data name="chkBold_rel.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="btnReName.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="chkHorPlace.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="panel2.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="chkUnderLine_rel.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="panel2.GridSize" type="System.Drawing.Size, System.Drawing">
+    <value>8, 8</value>
+  </data>
+  <data name="chkOverPlace.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="imageList1.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="$TrayLargeIcon" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="chkUnderLine_rel.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cboFontSize.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="groupBox1.SnapToGrid" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="gropScaleset.DrawGrid" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="gropScaleset.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="colorEdit2.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="chkBold_rel.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cboFontSize_rel.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="imageList2.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="cboFontSize.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="listBoxControl1.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="chkHorPlace.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="$DrawGrid" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="gropScaleset.SnapToGrid" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$Language" type="System.Globalization.CultureInfo, mscorlib">
+    <value />
+  </data>
+  <data name="panel1.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label1.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="panel2.SnapToGrid" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btnNew.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cboLabelField.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="groupBox1.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="label3.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="panel2.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="gropScaleset.GridSize" type="System.Drawing.Size, System.Drawing">
+    <value>8, 8</value>
+  </data>
+  <data name="simpleButton4.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="simpleButton1.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="panel1.DrawGrid" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$TrayHeight" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="chkUnderline.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="imageList2.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACy
+        LgAAAk1TRnQBSQFMAgEBBQEAAQoBAAEIAQABUQEAAToBAAT/AQkBEAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        AwABRAEBAgABdAMAAQEBAAEIBQAB0AGSGAABgAIAAYADAAKAAQABgAMAAYABAAGAAQACgAIAA8ABAAHA
+        AdwBwAEAAfABygGmAQABMwUAATMBAAEzAQABMwEAAjMCAAMWAQADHAEAAyIBAAMpAQADVQEAA00BAANC
+        AQADOQEAAYABfAH/AQACUAH/AQABkwEAAdYBAAH/AewBzAEAAcYB1gHvAQAB1gLnAQABkAGpAa0CAAH/
+        ATMDAAFmAwABmQMAAcwCAAEzAwACMwIAATMBZgIAATMBmQIAATMBzAIAATMB/wIAAWYDAAFmATMCAAJm
+        AgABZgGZAgABZgHMAgABZgH/AgABmQMAAZkBMwIAAZkBZgIAApkCAAGZAcwCAAGZAf8CAAHMAwABzAEz
+        AgABzAFmAgABzAGZAgACzAIAAcwB/wIAAf8BZgIAAf8BmQIAAf8BzAEAATMB/wIAAf8BAAEzAQABMwEA
+        AWYBAAEzAQABmQEAATMBAAHMAQABMwEAAf8BAAH/ATMCAAMzAQACMwFmAQACMwGZAQACMwHMAQACMwH/
+        AQABMwFmAgABMwFmATMBAAEzAmYBAAEzAWYBmQEAATMBZgHMAQABMwFmAf8BAAEzAZkCAAEzAZkBMwEA
+        ATMBmQFmAQABMwKZAQABMwGZAcwBAAEzAZkB/wEAATMBzAIAATMBzAEzAQABMwHMAWYBAAEzAcwBmQEA
+        ATMCzAEAATMBzAH/AQABMwH/ATMBAAEzAf8BZgEAATMB/wGZAQABMwH/AcwBAAEzAv8BAAFmAwABZgEA
+        ATMBAAFmAQABZgEAAWYBAAGZAQABZgEAAcwBAAFmAQAB/wEAAWYBMwIAAWYCMwEAAWYBMwFmAQABZgEz
+        AZkBAAFmATMBzAEAAWYBMwH/AQACZgIAAmYBMwEAA2YBAAJmAZkBAAJmAcwBAAFmAZkCAAFmAZkBMwEA
+        AWYBmQFmAQABZgKZAQABZgGZAcwBAAFmAZkB/wEAAWYBzAIAAWYBzAEzAQABZgHMAZkBAAFmAswBAAFm
+        AcwB/wEAAWYB/wIAAWYB/wEzAQABZgH/AZkBAAFmAf8BzAEAAcwBAAH/AQAB/wEAAcwBAAKZAgABmQEz
+        AZkBAAGZAQABmQEAAZkBAAHMAQABmQMAAZkCMwEAAZkBAAFmAQABmQEzAcwBAAGZAQAB/wEAAZkBZgIA
+        AZkBZgEzAQABmQEzAWYBAAGZAWYBmQEAAZkBZgHMAQABmQEzAf8BAAKZATMBAAKZAWYBAAOZAQACmQHM
+        AQACmQH/AQABmQHMAgABmQHMATMBAAFmAcwBZgEAAZkBzAGZAQABmQLMAQABmQHMAf8BAAGZAf8CAAGZ
+        Af8BMwEAAZkBzAFmAQABmQH/AZkBAAGZAf8BzAEAAZkC/wEAAcwDAAGZAQABMwEAAcwBAAFmAQABzAEA
+        AZkBAAHMAQABzAEAAZkBMwIAAcwCMwEAAcwBMwFmAQABzAEzAZkBAAHMATMBzAEAAcwBMwH/AQABzAFm
+        AgABzAFmATMBAAGZAmYBAAHMAWYBmQEAAcwBZgHMAQABmQFmAf8BAAHMAZkCAAHMAZkBMwEAAcwBmQFm
+        AQABzAKZAQABzAGZAcwBAAHMAZkB/wEAAswCAALMATMBAALMAWYBAALMAZkBAAPMAQACzAH/AQABzAH/
+        AgABzAH/ATMBAAGZAf8BZgEAAcwB/wGZAQABzAH/AcwBAAHMAv8BAAHMAQABMwEAAf8BAAFmAQAB/wEA
+        AZkBAAHMATMCAAH/AjMBAAH/ATMBZgEAAf8BMwGZAQAB/wEzAcwBAAH/ATMB/wEAAf8BZgIAAf8BZgEz
+        AQABzAJmAQAB/wFmAZkBAAH/AWYBzAEAAcwBZgH/AQAB/wGZAgAB/wGZATMBAAH/AZkBZgEAAf8CmQEA
+        Af8BmQHMAQAB/wGZAf8BAAH/AcwCAAH/AcwBMwEAAf8BzAFmAQAB/wHMAZkBAAH/AswBAAH/AcwB/wEA
+        Av8BMwEAAcwB/wFmAQAC/wGZAQAC/wHMAQACZgH/AQABZgH/AWYBAAFmAv8BAAH/AmYBAAH/AWYB/wEA
+        Av8BZgEAASEBAAGlAQADXwEAA3cBAAOGAQADlgEAA8sBAAOyAQAD1wEAA90BAAPjAQAD6gEAA/EBAAP4
+        AQAB8AH7Af8BAAGkAqABAAOAAwAB/wIAAf8DAAL/AQAB/wMAAf8BAAH/AQAC/wIAA///AEcAT8P1AE/D
+        9QBPw/UAT8P1AE/D9QBPw/UAT8P1AAMHAfBLw/UACIYDrgK1AQcBvEDD9QARhgGuAbUB7wG8OsP1AAOu
+        E4YBrgG1AQcBGzXD9QAHwwEbAgcB7wG1Aq4NhgGuAQcyw/UAEMMBBwHvAbUBrgqGAa4B7wEbLsP1AA3D
+        Ae8B7QHrAe8BGgPDAfAB7wGuCYYBrgHvARsrw/UACsMBGwHrAREBbAGLAZEBbAEVAREB7AEbBMMB8AHv
+        Aa4IhgGuAQcpw/UACcMBBwERAYsHuwFsAQ8B7AfDAbwBrgiGAfcBGybD9QAIwwEbARUBtAq7AWwBEQHt
+        CMMBvAGuB4YBrgHwJMP1AAjDAesBbAW7AQ8BbAa7AWwBEQHtCcMBBwGuBoYBrgEHIsP1AAjDAREFuwFs
+        ARQBbAEPAWwGuwFsAQ8B7QnDARsBtQaGAa4BByDD9QAIwwFDBLsBugEOAboCuwIUBrsBugEUAQ8B7QrD
+        Ae8GhgGuAfAew/UACMMBQwS7AhQEuwEOCLsBugEUAQ8B7wrDAQcBrgWGAa4BGxzD9QAIwwEQA7sBugEA
+        ARABbAK7AboBAAG7AbQBFQEQAWwFuwG6ARQBFQHvCsMBBwGuBYYB9xvD9QAIwwETAboCuwIUAbsBkQEQ
+        AUMBDwFsAbQBDgGRAbsBiwFDBrsBugEUARUB7wrDAQcFhgGuAbwZw/UACMMB7QEUAbsBugEAAboDuwEO
+        AZEBuwEUAWwDuwEQAbQHuwG6ARQBFQHvCsMB9wWGAbUYw/UACcMBEQGRAWwBDwG6A7sBAAK7ARABtAO7
+        AQ4BugG7AUMBAAFsBbsBkQFDARUB7wnDARsBrgWGAbwWw/UACcMBGgEPAbQBkQFDARQBkQEUAUMCuwFD
+        AbQCuwGLAQ8BuwFsARUBuwFsARQBiwW7AZEBQwEVAQcJwwEHBYYB9xXD9QAKwwEHAREBiwG7AZEBFQEU
+        A7sBkQFDAZEBbAEOAbQBugEAAboBuwGRAQABkQG7AboFuwGRAUMBEgEaCMMBGwGuBIYBrgEbE8P1AAvD
+        ARsBEgFDAZEGuwG6AmwBugG7AhQCuwFsAUMBuwG6AQ4HuwGRAUMBEgEaCMMBBwWGAbwSw/UADcMBGgES
+        AUMBkQi7AboBAAG6ArsBDgGRAbsBFAFsArsCtAW7AZEBQwESARoHwwEbAa4EhgHvEcP1AA/DARoBEgFD
+        AZEGuwG6AYsCuwFsAUMBuwGRAQ4DuwFDAYsHuwGRAQ8BEgEaB8MB9wSGAbUQw/UAEcMBBwEVAUMBkQi7
+        AQ4BkQG7AUMBbAK7AZEBDwG7AboBbAEUAbQFuwGRAQ8BEgEaBsMBvASGAa4Pw/UAE8MB7wEVAUMBkQi7
+        AZEBAAGRArsBQwGRAbQBDwGLAZEBEAGRAbQFuwGRAREB6wEbBcMB8ASGAa4BGw3D9QAVwwHvARUBFAG6
+        BrsBkQFsARUBuwGRAQ8BuwEQAYsCuwGRAQABiwe7AZEBEQHrARsEwwEbAa4EhgEbDMP1ABfDAe8BFQEU
+        AboGuwGRAg4BkQG0AQ4DuwGRAQ8BuwFDAQABQwa7AZEBEQHrARsEwwGuBIYBGwvD9QAZwwHvARUBFAG6
+        CLsBtAEQA7sBEAKRAQ8BuwGRAUMBtAG6BbsBbAEPAesBGwPDAa4EhgEbCsP1ABvDARwBDwEUAboHuwEQ
+        AYsBtAEUAQ8BuwG6AQ4CuwFsAQ4BQwG7AboDuwGRAYsBbAEPAesDwwGuBIYKw/UAHcMB7QEPARQBuga7
+        AYsBbAEAAZEBuwKRAQ8BkQIUAbsBugEOA7sBugEVAZEBuwFsAQ8BBwLDAa4DhgGuCcP1AB/DAe0BEQFs
+        BrsBkQEPAbsBkQEPArsBEAEAAboBuwEUAWwEuwFsAZECuwG0AREBBwLDAa4DhgGuCMP1ACHDAe0BEQFs
+        BLsBDwGRArsBEAGLAbsBFQEUAbsBkQEOBLsBtAEOAZEDuwG6AQ8BGgLDAa4DhgHvB8P1ACPDAe0BEQFs
+        ArsBbAS7AWwBEAEVArsBQwFsA7sBtAIOAboEuwGRARMCwwEbBIYBvAbD9QAlwwHsAQ8BbAm7AZEBAAGR
+        ArsBtAEOAZEBDga7AUMBGgLDARsEhgEbBcP1ACbDARsB6wEPAWwHuwGRAWwBEAK0AQ4BkQG7AQ8GuwGR
+        AewDwwG8A4YBrgXD9QAowwEbAesBDwGRB7sBbAGRAQ4BkQG7AZEBQwa7AZEBbQTDAe8DhgH3BMP1ACrD
+        ARsB6wERAZEGuwG6AZECuwJsBrsBtAESBcMBrgOGAbwDw/UALMMBGwHrAREBkQi7ARQBbAa7AZEB6wXD
+        ARsDhgGuA8P1AC7DARsB6wEPAZEGuwK6BrsBFAEHBsMBBwOGAfcCw/UAMMMBGgESAQ8BkQu7AZEBFQjD
+        Aa4DhgEbAcP1ADLDARoBEgEQAZEIuwGRAQ8BGgjDARsDhgGuAcP1ADTDARoBEgFDAZEEuwG0ARQBFQEH
+        CsMB7wOGAbz1ADbDARoB7AQVARIBHA3DAa4ChgGu9QBLwwEHA4b1AEzDAa4ChvUATMMBBwKG9QBNwwGu
+        AYb1AE3DAQcBhvUATsMBhv8A/wA7AE8UUwBPFFMAT8MCAE/DAgBPwwIAT8MCABfDAfABBwH3AbUCrg2G
+        A64BtQH3AQcBGx7DAgAgwwHwBgcowwIAT8MCAE/DAgASwwHwAe8CrhyGAa4BtQEHGsMCABbDARsBBwH3
+        AbUCrg+GAq4CtQEHAfAewwIAT8MCACPDAfACBwO1Bq4DtQIHARsawwIAD8MBBwGuJYYBrgH3AfAWwwIA
+        EsMBBwG1Aa4dhgGuAbUBBxrDAgAewwHwCgcB8CXDAgAewwEHAfcBrhWGAq4B7wHwFcMCAAzDAQcBrgqG
+        Aq4BtQHvAgcBGwrDARsCBwH3AbUBrguGAfcBGxPDAgAOwwG8AfcBrhCGBa4QhgGuAfcB8BbDAgAWwwHw
+        AQcBtQKuEoYCrgH3AQcBGx3DAgAawwHwAfcBrgaGAa4B9wHvAQcBvAHwBhsB8AHuAQcBtQHtAa4GhgGu
+        AbwSwwIACcMBGwG1CIYBrgG1AQcB8BrDAbwB9wGuCIYBrgG8EcMCAAvDAfABtQuGAa4BtQHvAgcNwwHw
+        AgcBtQKuCoYB9wEbE8MCABLDAQcBtQGuHoYBrgH3AfAZwwIAGMMB7wGuA4YBrgG1Ae8B8BXDARsBBwH3
+        Ae0EhgG1AfAPwwIAB8MBGwG1B4YBrgEHI8MB8AH3B4YBrgEHD8MCAAnDAQcBrgiGAa4B7wG8G8MBvAHv
+        Aa4IhgGuAfARwwIADsMBGwHvAa4PhgiuD4YBrgG8FsMCABbDAe8DhgGuAe4fwwHxAbUDhgGuAfANwwIA
+        BsMBBwaGAa4BvCnDAfAB9waGAa4BGw3DAgAHwwEHAa4GhgGuAe8B8CPDAfAB9weGAa4B8A/DAgAMwwHv
+        Aa4KhgGuAbUCBwHwDsMCBwG1Aq4KhgG1AfATwwIAFMMBBwOGAe8BGyTDAQcBrgKGAa4BGwvDAgAEwwEb
+        Aa4FhgH3ARsuwwEHAa4FhgEHDMMCAAXDARsBrgaGAe8BGynDAfABtQaGAa4BGw3DAgAJwwEbAbUIhgGu
+        AfcBBxvDAbwB7wGuCIYBrgHwEcMCABPDAa4ChgG1ARsowwEHA4YBBwrDAgADwwEbBYYBtTPDAQcBrgSG
+        Aa4BGwrDAgAEwwG8BYYBrgEHL8MB7waGAQcMwwIACMMB9weGAa4BvCPDAbwB9weGAa4B8A/DAgASwwGu
+        AYYBiwHwK8MBGwGuAoYBrgnDAgACwwEbBIYBrgEbNsMB7wWGAfAJwwIAA8MB7wSGAa4BBzPDAQcFhgGu
+        C8MCAAbDAbwGhgGuAQcIwwEbARwC6wEcARsbwwG8Aa4GhgG1DsMCABHDAbUBhgGuARsuwwEHAoYBrgjD
+        AgACwwGuA4YB9znDARsBrgSGAbwIwwIAAsMBBwSGAfc3wwG1BIYBrgEbCcMCAAXDAe8FhgG1ARsIwwEb
+        AesBDgEQAmwBQwEOARMBHBvDARsBtQaGAbwMwwIAEMMB8AGGAa4BGzDDAfEBrgGGAa4HwwIAAcMB7wOG
+        Ae88wwG1BIYBvAfDAgABwwHwBIYBvBLDAQcB7wEHJMMBvAWGARsIwwIABMMBrgSGAa4BGwnDARsBEQEQ
+        AboFuwGRAUMBDgHrARoawwEbAbUFhgHvC8MCABDDAbUBhgEbM8MBrgGGAa4GwwIAAcMDhgGuPsMB7wSG
+        AbwGwwIAAcMBrgOGAbwQwwEbAesBDwEVAWwBFQEPAesBGiPDAa4EhgEbB8MCAAPDAe8EhgEHC8MCFQm7
+        AboBbAEOARIB7xrDAfABrgSGAbUKwwIAEMMBrgGGNMMBGwGuAYYB9wXDAgABBwOGARsJwwEbAe0BEy8V
+        AW0BBwLDAQcEhgEbBcMCAAEHA4YBBxDDAQcBDwGLBbsBkQEPARIBGiLDAfcEhgEbBsMCAALDAbwEhgG8
+        C8MB7wEOCbsBtAO7AYsBDwEVAe8awwH3BIYBrgnDAgAQwwKuNcMB8AKGAfAEwwIAAbUChgGuCcMB6wER
+        AYsBtC+7AZEBFAEVAQcBwwHvA4YBrgXDAgABrgKGAa4QwwEaAQ8BtAi7AZEBQwEVAe8hwwHvA4YBrgbD
+        AgACwwGuA4YBvAzDARMBbAe7AUMBDgEPAQ4BkQO7AZEBDwEVAe8ZwwEHBIYBrgjDAgAQwwGuAYY2wwH3
+        AYYBrgTDAgABrgKGAe8IwwESAWw0uwGRAREBBwHDAfcDhgEHBMMCAAGuAoYBBxDDARUBkQS7AZECQwGL
+        A7sBtAEUAQ8B7SDDAa4DhgH3BcMCAAHDAbwDhgHvDcMBDwGRBrsBEAEUArsBkQEOAZEEuwGRAQ8BFQEa
+        GMMBvASGAe8HwwIAEMMBtQGGARs1wwEbAoYBBwPDAgABrgKGAQcHwwFtAYsBugFsBLsCkQK7AZEBQwEU
+        AboCuwGRAboCuwGRAboBkQRsAZEBuwG6ARQBQwGRArsBkQG6ArsBkQG6AbsBtAFsAboBtAIVAbQCkQG7
+        AWwCuwEPARoBwwGuA4YBGwPDAgADhgEbD8MB7wEUBLsBkQEPAbQBuwGLAUMEuwG6AWwBEQHrARsewwGu
+        A4YB8ATDAgABwwH3A4YOwwEAAZEFuwGRAUMEuwGLARUGuwGLAQ4BbQEbF8MBvASGAbwGwwIAEMMB8AGG
+        Aa42wwEHAYYBrgPDAgABrgKGAbUGwwHvAUMBuwGRAQAEuwFDAWwBuwGRARABkQGLAQ8CuwFDAZECuwFD
+        ApEBAANsAZEBuwEPAYsBkQEQAZEBuwFDAZECuwFDAZEBuwEVARQBugEOAYsBkQEUAQABkQG7AQACuwGR
+        ARUBwwEbA4YBtQPDAgADhhDDAW0BkQW7AboDuwGRARQGuwGLAREBbQEaHMMBGwOGAa4EwwIAAcMBrgKG
+        Aa4OwwEOAZEFuwEQAZEEuwGRAUMCuwGRAUMBkQO7AWwBDgHtF8MBvASGARsFwwIAEcMBrgGGAbU2wwGu
+        AYYB8ALDAgAB9wOGBsMBEgGRAbsBkQEABLsBQwFsAbsBEAG6ArsBFAGRAbsBQwGRArsBQwGRAbsBbAEV
+        A7sBkQEUArsBugEQAbsBQwGRArsBQwGRAbsBQwGRAbsBAAO7AQACuwEAA7sBQwEaAcMB9wOGARsCwwIA
+        A4YBBw/DARUKuwGRAUMBuwG0AUMBiwS7AZEBEAESAe8bwwEHA4YBBwPDAgABwwGuAoYBtQ7DARMBiwW7
+        AQAFuwG6AZEBuwGRAQ4BkQEUAYsBkQK7AbQBQwEVARoWwwHvA4YBtQXDAgARwwEbAoYBBzXDAe8BhgG1
+        AsMCAAHwA4YBBwXDARECuwGRAQAEuwFDAWwBuwEAA7sCbAG7AUMBkQK7AUMBkQK7ARUBbAK7AmwDuwEA
+        AbsBQwGRArsBQwGRAbsBQwGRAbsBkQEQARUBbAEAArsBAAO7AWwBHALDA4YBtQLDAgABrgKGAbUPwwEV
+        BLsBkQEOAQABDgFDARQBDgGRAbsBQwFsAZEBuwFsBLsBkQIVARwawwGuA4YDwwIAAcMBrgKGAa4OwwHt
+        AQ8FuwEACLsBQwFsArsBDgEUBLsBiwEPAewWwwGuA4YB8ATDAgASwwG8AoYBBzTDARsChgLDAgABwwGu
+        AoYBrgXDAUMCuwGRAQAEbAEPAWwBuwEPA7sBbAGRAbsBQwGRArsBQwGRA7sBEAGRAbsBkQFsA7sBDwG7
+        AUMBkQK7AUMBkQG7AUMBkQG7AboBuwG6AZEBAAK7AQADuwGRAesCwwHvA4YCwwIAAe8DhgEbDsMBFQS7
+        AQ8BbAGRAWwBFQFDAWwBuwG6AQ4CuwFsARQGuwG6ARQBDwHtARsXwwHwA4YBBwLDAgABwwG1A4YPwwEV
+        ARQEuwEPAZEGuwGRAQ4CuwG6AQABugG7AZEBbAK7AboBQwEVARoUwwHwA4YBrgTDAgATwwG8AoYB9zTD
+        Aa4BhgEbAcMCAAHDAQcDhgG1BMMBEQK7AZEBAARsAQ8BbAG7AWwBFAG7AbQBDwG6AbsBQwEVArsBQwGR
+        AbsCkQGLAQ4BtAG6AQ8BtAG7ARQBbAG7AUMBFQK7AQ4BtAG6ARABiwG7ARQBbAG7AbQBAAK7AQADuwFs
+        ARwCwwEbA4YBBwHDAgABGwOGAbUOwwFtAZEDuwEAB7sBFAFsArsBDgG0AbsBkQEOARABkQS7AWwBDwHr
+        ARsWwwGuAoYBrgLDAgABwwEHA4YBBw7DARsBEQEUA7sBkQEOAZEBtAGRAQ4BtAG7AUMBkQK7AhQCuwEQ
+        AboEuwGLAQ4BHBTDAbUDhgHwA8MCABTDAfAChgGuM8MBtQGGAQcBwwIAAsMBrgOGAe8DwwESAbQBuwGR
+        AQAEuwFDAWwCuwEVAQABDwGRArsBbAGRAQ4BkQFsArQEQwGRAbsBkQEPAQABFQK7AWwBkQEPAQABbAG7
+        AZEBDgEQAbQBugFDAQABDgGRArsBAAO7ARUBGgPDAa4ChgGuAcMCAAHDAbUDhgEHDcMB7wFDA7sBQwGR
+        ArsBiwGRAbsBkQEAAboBuwGRAUMCuwEQAZEBuwEUApEEuwGRAQ4BEgEaFMMBBwOGARsBwwIAAsMDhgGu
+        D8MBGwESAQ4BFAGRAbsBkQEVAQABDwGRAbsBugFDArsBugEOAboBuwFsAYsGuwG0AQ8BbRPDARsDhgG1
+        A8MCABXDARsBrgGGAa4BBzHDAQcBhgH3AcMCAALDARsEhgHvAsMB7wEVAbsBkQEABLsBQwFsDLsBtBW7
+        AUMBkQi7AQACuwG0ARUEwwEHA4YBwwIAAsMEhgG8DcMBEwGRA7sBFAEQAUMBDgG0AbsBEAEOAZEBuwEP
+        AZECuwEPAYsCuwEAAUMDugG7AWwBDwEUAQABEwHvE8MDhgHvAcMCAALDAe8DhgH3EMMBGgHsAg8Biwm7
+        AUMBbAG7AbQBQwW7AbQBbAK7ARUBEQEbEsMBrgOGA8MCABfDAe8ChgGuAfEvwwHwAYYBtQHDAgADwwG8
+        BIYB7wLDARMCkQEABLsBQwFsDLsBQwGRFLsBkQG6CLsBAAK7ARABBwXDA4YBvAIAAsMBvASGAbwMwwEb
+        AREBiwS7AZEDuwEOAZEBtAGRAQ4BkQK7AbQBDwFsAZEBDgK7ARQBbAS7AZEBDwEUAREB7RHDAa4ChgGu
+        AcMCAAPDBIYBBxLDAe8BEgEOAWwBuga7AYsCuwEQAWwEuwGLAQ8BDgO7AYsBDgEHEcMB8AOGAbwCwwIA
+        GMMB8AGuAoYBtQEbLcMBGwGGAa4BwwIABMMBvASGAa4BwwEbAREBizS7AboBEAHtBsMBrgKGAfcCAAPD
+        AQcEhgEHDMMBGwFtAREBkQa7AZECuwG6AZEBDgG0AUMBkQG7AWwBDgFsAbsBugEAAbsBtAEVAQ4BbAGR
+        AUMBuwG6AWwBEQHsARsOwwEHA4YBwwIAA8MB8ASGAQcTwwEaAesBDgEUAboGuwGRARUBEAO7AkMBkQEV
+        BLsBkQEPAe0RwwOGAa4CwwIAGsMBBwOGAbwtwwGGAa4BwwIABcMBvAWGAfABGwFtAUMBkTC7AbQBbAEP
+        Ae8HwwG1AoYBrgIABMMB7wSGAfcNwwEbAesBDwFsCbsBkQG6ARQBbAG7AboBDgK7AWwBFAG7AQ4BkQG7
+        ARQBDwFsBLsBbAERAW0BGg3DA4YB8AIABMMBBwSGAe8UwwEbAesBDgEUAboGuwEUAbQBkQEOAWwBuwEU
+        AZEFuwG0AQ4B7RDDAbUChgGuAsMCABvDARsBtQKGAa4B8CvDAYYBrgHDAgAGwwEbBYYBBwHDARoBbQEV
+        AREtQwERARIB7QnDAQcChgGuAgAFwwEHBIYBrgEbDsMB7QEPARQBugm7AWwCDwGLArsBDgG6AhQCuwGR
+        AQABugG7AWwEuwGRARABEgEbC8MBrgKGAQcCAAXDAe8EhgG1FcMBGwHrAQ8BbAa7AboBQwGRArsBDgK7
+        AbQBFAEVAZECuwEQARIPwwEHA4YCwwIAHcMB8AGuAoYBrgHxKcMBhgGuAcMCAAjDAa4EhgGuAfA8wwEH
+        A4YCAAbDAbwFhgEHD8MBHAEVAUMBkQy7AYsBQwG7AQ4BugK7AWwBFAG7AZEBDwa7AYsBEQEbCsMBrgKG
+        AbUCAAbDAQcEhgGuAfAVwwEaARIBDwGRCLsBkQEVAbsBkQEOApEBDgGRArsBEAESDsMBGwOGAbwBwwIA
+        H8MB8AGuAoYBrgG8JsMBGwGGAa4BwwIACcMBBwWGAfc8wwOGAgAHwwEbAa4EhgGuARsPwwEHARIBEAGR
+        CrsBiwGRAbsBAAO7AQ4BugG7ARUBiwK7AmwDuwGRARUKwwG1AoYBtQIAB8MBvAWGAQcWwwHvAREBFQG6
+        BrsBFAGLAbsCEAGRAbsBkQEVA7sBEAESDsMDhgEHAcMCACHDAQcBrgKGAa4B7iTDAfABhgG1AcMCAArD
+        ARsBrgWGAQc6wwOGAgAJwwH3BYYB7xDDARoBbQERAWwHuwKRArsBQwGRAbsBFAFDAbsBugEOA7sBDgGR
+        AbsBiwGRAbsBFAHvCcMBBwKGAa4CAAjDARsBrgSGAa4B8BbDAesBDgGRBbsBtAG6AZEBQwG7ARABFAG0
+        ARUEuwEQARINwwGuAoYBtQHDAgAjwwEHAa4ChgGuAe4iwwEHAYYBtQHDAgAMwwEHBYYBrgHwOMMDhgIA
+        CsMBvAGuBIYBrgG8EMMBGwHsAREBbAG6BLsCkQO7AWwBFQEOAZEBuwEUAWwCuwGRAUMBuwGRARABbAG7
+        AbQBEgnDAQcChgGuAgAKwwG1BYYBtRbDAQcBEQEVBrsBtAEPArsBFQEUBrsBEAESDMMBrgKGAbUBwwIA
+        JcMBBwGuAoYBrgG8IMMBtQGGAQcBwwIADcMBGwGuBYYBrgEbNsMDhgIADMMB9wWGAa4B8BHDAe0BEQEU
+        AbQJuwG0ArsBAAFsArsBDwGRAbsBEAGRA7sBFQnDAQcChgGuAgALwwG8BoYBBxbDAW0BDwG0BbsBFAEQ
+        AWwBDwGRAbsBbAIAAWwCuwEQAesLwwG1AoYBtQHDAgAnwwHwAa4ChgGuAbwewwGuAYYB8AHDAgAPwwHw
+        Aa4FhgG1ARs0wwOGAgANwwEbAa4FhgG1ARsRwwHvARMBQwGRCbsBbAEUAUMBkQFsAQ8BuwGRAQ8EuwEV
+        CcMBBwKGAa4CAA3DAbUFhgGuAbwVwwEcAQ4BiwW7ApECuwEQAWwCuwEQAZECuwEQAe0KwwG1AoYBrgHD
+        AgApwwHwAa4ChgGuAQccwwKGAsMCABHDAQcGhgG1ARsywwOGAgAPwwEHAa4FhgG1ARsRwwEaARIBDwGR
+        B7sBDgG0AboBFAEVAbQBuwFDAYsEuwEVCcMBBwKGAa4CAA7DAfABrgWGAa4B8BTDARoBEQEUB7sBiwEV
+        A7sBbAEQAWwBuwG0AQ4B7wnDAbUChgGuAcMCACvDAfABrgOGAfcBGxjDAfEBhgGuAsMCABPDAe8GhgG1
+        ARswwwOGAgARwwHvBoYBtQEbEcMBGwHrAQ8BbAW7AZEFuwFDAQABkQO7AbQBEgnDAQcChgGuAgAQwwEH
+        BoYBrgHwE8MBGwESARAGuwFDAZEDuwEVARADuwG0AQ4BBwjDAbUChgG1AcMCAC3DARsBtQOGAa4BvBbD
+        AfcBhgH3AsMCABXDAe8GhgG1ARstwwEHA4YCABPDAbUGhgG1ARsRwwEbAe0BDwEUAboIuwIUAYsDuwEU
+        Ae8JwwHvAoYBrgIAEsMB7waGAa4B8BPDAW0BEAG6BLsBkQEQArsBFAEQBbsBiwERCMMBtQKGAbUBwwIA
+        MMMB7wOGAYsB7xTDAYsBhgHwAsMCABbDARsBtQaGAbUBGyvDAQcChgGuAgAUwwEbAbUGhgG1ARsSwwEc
+        AhUBkQa7ARQBugO7AbQBFQrDAbUChgG1AgATwwEbAbUGhgGuAfASwwHtAQ4BtAS7AWwBQwEAAUMHuwEP
+        ARwHwwGuAoYBtQHDAgAywwEHAa4DhgG1AfAQwwG8AYYBrgPDAgAYwwEbAbUGhgGuAfApwwG1AoYBrgIA
+        FsMBGwG1BoYBtQEbEsMB7wESARABkQi7AbQBDwEHCsMBrgKGAbUCABXDARsBtQaGAa4B8BHDAe0BDgG0
+        BLsCFAi7AWwBEgfDAa4ChgH3AcMCADTDAfABtQOGAa4BtQEbDMMBGwGLAYYB7wPDAgAawwEbAe8GhgGu
+        AfAnwwGuAoYB9wIAGMMBGwG1BoYBtQEbEsMBGgFtAREBiwW7AYsBDwEHC8MBrgKGAQcCABfDARsBtQaG
+        Aa4B8BDDAe0BDgG0ArsBQwEUCbsBkQEVB8MDhgEHAcMCAAfDAe8B7C/rAa4DhgGuAfcBvAEbB8MBGwGu
+        AYYBrgTDAgAdwwHvBoYBrgHwJcMDhgEHAgAawwEbAbUGhgGuAfASwwEbAesBEQFDAWwBQwERAesBGwzD
+        A4YB8AIAGcMBGwG1BoYBrgHwD8MB7QEOArQBbAq7AZEBFQbDARsDhgHwAcMCAATDARsB6wEPAWwvkQFs
+        ARABEwHsAa4EhgKuA7UB7QGuAoYBrgEbBMMCAB/DAe8GhgGuAQciwwHwA4YBwwIAHMMBGwG1BoYBrgHw
+        E8MBGgHvARoOwwG8A4YBwwIAG8MBGwG1BoYBrgEHDsMB7QEPDLsBbAETBsMBBwOGAsMCAAPDAQcBEQGL
+        M7sBkQEQAesBwwG8AfcBrgeGAa4BBwbDAgAhwwHvBoYBrgHvIMMB7wOGAcMCAB/DAe8GhgGuAQciwwHv
+        AoYBrgHDAgAdwwEbAbUGhgGuAQcNwwHsARALuwEPAe0GwwG1AoYBrgLDAgACwwEHAQ8BtAKRA7sBugFs
+        A7sBbAFDAWwCuwG6AZECuwG6AZEBuwGRBGwBugG7AZEBQwEUAboCuwFsA7sBbAK7AYsBkQG7AZEBQwEU
+        AbsBiwG0ApEBuwEUAesSwwIAI8MBBwGuBoYB9wEbHcMBrgKGAa4BwwIAIcMB7waGAa4BByDDAa4ChgG1
+        AcMCAB/DARsB9weGAe8MwwESARUJuwGLAQ4BGwbDAa4ChgGuAsMCAALDARUBkQG7AUMBbAO7AZEBAAK7
+        AhQBkQIUAbsBkQFDArsBkQFDAbsBbAEOA2wBugGRARABkQGLAQ8CuwEAA7sBAAG7AbQBDwGRAbQBDgKR
+        AUMBDwGRAmwCuwEQARoRwwIAJcMBBwGuBoYBrgG8G8MDhgG8AcMCACPDAe8BrgaGAe8BGx3DA4YBvAHD
+        AgAiwwHvB4YBtQEbCsMBFQEUB7sBkQEAARwGwwEbA4YBBwLDAgABwwEHARQCuwFDAWwDuwGRAQACuwEP
+        A7sBDwG7AZEBQwK7AZEBQwK7AUMBiwO7ARABugK7ARQBkQG7AQADuwEAAbsBkQFDAbsBkQEQArsBkQFD
+        AbsCbAK7AZEBEhHDAgAnwwHwAa4GhgGuAe8YwwHvA4YCwwIAJcMBBwGuBoYBrgHwGsMBBwOGAsMCACTD
+        Ae8HhgGuAbwIwwEbARUBDwGRA7sBkQEUAQ4B7QfDAe8DhgPDAgABwwHrAZECuwFDAWwDuwGRAQABuwGR
+        AUMDuwFDApEBQwK7AZEBQwO7AQ8BkQK7AQADuwJsAbsBAAO7AQABuwGRAUMCuwFsARACFAFDAbsCbAO7
+        ARURwwIAKcMBGwG1B4YBrgG8FcMDhgGuAsMCACfDAfABrgaGAa4B7xjDAa4ChgGuAsMCACbDAQcBrgaG
+        Aa4B7wjDAe0BEQMAAQ4BEgEaCMMBrgKGAa4DwwIAAcMB6wGRArsCQwNsARQBAAG7AboBEAO7ARABugGR
+        AUMCuwGRAUMDuwG0AQ8BtAG7AQ8DuwFsAZEBuwEAA7sBAAG7AZEBQwK7AbQBuwG0AWwBQwG7AmwDuwEP
+        EcMCACzDAQcBrgeGAa4BvBHDAbUDhgHwAsMCACnDARsBtQeGAa4BvBTDAfADhgEHAsMCACjDAfABrgeG
+        Aa4BvAjDAQcBGwrDAfADhgHvA8MCAAHDAewBkQK7AkMDbAEUAQACuwEQAZEBuwGRARABuwGRAQABtAG7
+        AZEBQwG7AboCkQEUARABuwFsARQBuwG0AQ8BugG7AQABbAG7AZEBDgG7AYsBEAG0AbsBDwGRAbsBiwFD
+        AbsCbAO7ARURwwIALsMB8AGuCIYBrgEHDcMBtQOGAa4DwwIALMMB7wGuB4YBrgG8EMMBGwSGA8MCACrD
+        ARsBtQiGAfcB8BHDAa4DhgTDAgABwwEHAUMCuwFDAWwDuwGRAQACuwG0ARABAAEQAbQBuwG0AWwBFAFD
+        AbQBbAG7AZEEQwG0AbsBFQEAAQ8BkQK7AUMBkQIOAZEBuwEQAQ4BbAG7AZEBDwEAAQ8BtAG7AmwCuwGR
+        AW0RwwIAMcMBBwGuCIYCrgHvAQcBGwTDAQcB9wWGARsDwwIALsMB8AGuCIYBrgEHARsLwwHwBIYBBwPD
+        AgAtwwEHAa4IhgGuAQcMwwEbAa4DhgG1BMMCAALDARUBkQG7AUMBbAO7AZEBAA27AbQUuwGRAUMIuwJs
+        ArsBEQEaEcMCADPDARsB7wGuFIYBGwTDAgAxwwHvAa4JhgGuAfcBBwG8A8MBBwHvAa4EhgGuBMMCAC/D
+        AfABtQmGAa4BtQEHAbwFwwG8AbUFhgXDAgACwwEbAQ8BtAFDAWwDuwGRAQAMuwGRAUMUuwG6AZEIuwJs
+        AbsBEAHtEsMCADbDARsBBwGuD4YBtQEbBcMCADPDARsB7wGuE4YBrgXDAgAywwG8Aa4VhgEbBcMCAAPD
+        AQcBEQFsM7sBkQERAe0TwwIAOsMB8AEHAbUBrgeGAa4B7wEbB8MCADbDARsBBwGuD4YBBwbDAgA1wwG8
+        AbUQhgGuARsGwwIABcMB7QEPARUvbAEUAREBEgEaFMMCAE/DAgA6wwEbAQcBtQKuBYYBrgG1AbwIwwIA
+        OMMBGwEHAbUBrgmGAa4B8AjDAgAHwwEaMO8XwwIAT8MCAE/DAgA+wwG8BAcMwwIAT8P/AEYAAUIBTQE+
+        BwABPgMAASgDAAFEAQECAAF0AwABAQEAAQEFAAHwARMWAAP//wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A
+        /wD/AP8A/wD/AP8A/wD/ABsACw==
+</value>
+  </data>
+  <data name="chkItalic.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="label3.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="label5.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="simpleButton1.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="label6.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cboFontName_rel.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="cboFontName_rel.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="panelScaleSet.GridSize" type="System.Drawing.Size, System.Drawing">
+    <value>8, 8</value>
+  </data>
+  <data name="textEdit1.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="groupPlaceSet.DrawGrid" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="groupBox1.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="chkUnderline.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="groupBox2.SnapToGrid" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="txtMinScale.Locked" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="chkIta_rel.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="btnDelete.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="label4.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+  <data name="cboFontName_rel.DefaultModifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Private</value>
+  </data>
+</root>

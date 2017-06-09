@@ -7,6 +7,9 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common;
+using Yutai.ArcGIS.Common.BaseClasses;
+using Yutai.ArcGIS.Common.Editor;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {
@@ -17,7 +20,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem CopyToolStripMenuItem;
         private ToolStripMenuItem DeleteToolStripMenuItem;
-        public static Dictionary<IMap, Dictionary<IFeatureLayer, List<JLKEditTemplate>>> EditMap = new Dictionary<IMap, Dictionary<IFeatureLayer, List<JLKEditTemplate>>>();
+        public static Dictionary<IMap, Dictionary<IFeatureLayer, List<YTEditTemplate>>> EditMap = new Dictionary<IMap, Dictionary<IFeatureLayer, List<YTEditTemplate>>>();
         private ToolStripMenuItem FillFilterToolStripMenuItem;
         private List<IFeatureLayer> FilterLayers = new List<IFeatureLayer>();
         private ToolStripMenuItem GeometryToolStripMenuItem;
@@ -28,7 +31,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         private EditTemplateListView listView1;
         private FilterType m_FilterType = FilterType.NoFilter;
         private GroupType m_GroupType = GroupType.GroupByLayer;
-        internal static Dictionary<IFeatureLayer, List<JLKEditTemplate>> m_list = null;
+        internal static Dictionary<IFeatureLayer, List<YTEditTemplate>> m_list = null;
         public IMap m_Map = null;
         private ToolStripMenuItem PointFilterToolStripMenuItem;
         private ToolStripMenuItem PropertyToolStripMenuItem;
@@ -59,16 +62,16 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             (ApplicationRef.Application as IApplicationEvents).OnMapCloseEvent += new OnMapCloseEventHandler(this.EditorTemplateManageCtrl_OnMapCloseEvent);
         }
 
-        private void AddTemplate(JLKEditTemplate template)
+        private void AddTemplate(YTEditTemplate template)
         {
-            List<JLKEditTemplate> list;
+            List<YTEditTemplate> list;
             ListViewGroup group;
             ListViewItem item;
             string str;
             IFeatureLayer featureLayer = template.FeatureLayer;
             if (!m_list.ContainsKey(featureLayer))
             {
-                list = new List<JLKEditTemplate>();
+                list = new List<YTEditTemplate>();
                 m_list.Add(featureLayer, list);
             }
             else
@@ -188,7 +191,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         {
             foreach (ListViewItem item in this.listView1.SelectedItems)
             {
-                JLKEditTemplate template = (item.Tag as JLKEditTemplate).Clone();
+                YTEditTemplate template = (item.Tag as YTEditTemplate).Clone();
                 m_list[template.FeatureLayer].Add(template);
                 ListViewItem li = new ListViewItem {
                     Text = template.Name,
@@ -199,11 +202,11 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
-        private void DeleteTemplete(JLKEditTemplate template)
+        private void DeleteTemplete(YTEditTemplate template)
         {
-            foreach (KeyValuePair<IFeatureLayer, List<JLKEditTemplate>> pair in m_list)
+            foreach (KeyValuePair<IFeatureLayer, List<YTEditTemplate>> pair in m_list)
             {
-                foreach (JLKEditTemplate template2 in pair.Value)
+                foreach (YTEditTemplate template2 in pair.Value)
                 {
                     if (template2 == template)
                     {
@@ -220,7 +223,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             foreach (ListViewItem item in this.listView1.SelectedItems)
             {
                 list.Add(item);
-                this.DeleteTemplete(item.Tag as JLKEditTemplate);
+                this.DeleteTemplete(item.Tag as YTEditTemplate);
             }
             foreach (ListViewItem item2 in list)
             {
@@ -293,35 +296,35 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         private void EditorTemplateManageCtrl_VisibleChanged(object sender, EventArgs e)
         {
-            if (base.Visible && (Editor.Editor.CurrentEditTemplate == null))
+            if (base.Visible && (Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate == null))
             {
                 this.listView1.SelectedItems.Clear();
             }
         }
 
-        private void EditTemplateManager_OnAddMoreTemplate(List<JLKEditTemplate> template)
+        private void EditTemplateManager_OnAddMoreTemplate(List<YTEditTemplate> template)
         {
-            foreach (JLKEditTemplate template2 in template)
+            foreach (YTEditTemplate template2 in template)
             {
                 this.AddTemplate(template2);
             }
         }
 
-        private void EditTemplateManager_OnAddTemplate(JLKEditTemplate template)
+        private void EditTemplateManager_OnAddTemplate(YTEditTemplate template)
         {
             this.AddTemplate(template);
         }
 
-        private void EditTemplateManager_OnDeleteMoreTemplate(List<JLKEditTemplate> template)
+        private void EditTemplateManager_OnDeleteMoreTemplate(List<YTEditTemplate> template)
         {
             List<ListViewItem> list = new List<ListViewItem>();
-            foreach (JLKEditTemplate template2 in template)
+            foreach (YTEditTemplate template2 in template)
             {
                 foreach (ListViewItem item in this.listView1.Items)
                 {
                     if (item.Tag == template2)
                     {
-                        this.DeleteTemplete(item.Tag as JLKEditTemplate);
+                        this.DeleteTemplete(item.Tag as YTEditTemplate);
                         list.Add(item);
                         break;
                     }
@@ -333,20 +336,20 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
-        private void EditTemplateManager_OnDeleteTemplate(JLKEditTemplate template)
+        private void EditTemplateManager_OnDeleteTemplate(YTEditTemplate template)
         {
             foreach (ListViewItem item in this.listView1.Items)
             {
                 if (item.Tag == template)
                 {
-                    this.DeleteTemplete(item.Tag as JLKEditTemplate);
+                    this.DeleteTemplete(item.Tag as YTEditTemplate);
                     this.listView1.Items.Remove(item);
                     break;
                 }
             }
         }
 
-        private void EditTemplateManager_OnTemplatePropertyChange(JLKEditTemplate template)
+        private void EditTemplateManager_OnTemplatePropertyChange(YTEditTemplate template)
         {
             foreach (ListViewItem item in this.listView1.Items)
             {
@@ -380,7 +383,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         {
             if (m_list == null)
             {
-                m_list = new Dictionary<IFeatureLayer, List<JLKEditTemplate>>();
+                m_list = new Dictionary<IFeatureLayer, List<YTEditTemplate>>();
                 if (!EditMap.ContainsKey(this.m_Map))
                 {
                     EditMap.Add(this.m_Map, m_list);
@@ -395,9 +398,9 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 layer.Reset();
                 for (ILayer layer2 = layer.Next(); layer2 != null; layer2 = layer.Next())
                 {
-                    if ((layer2 is IFeatureLayer) && Editor.Editor.LayerCanEdit(layer2 as IFeatureLayer))
+                    if ((layer2 is IFeatureLayer) && Yutai.ArcGIS.Common.Editor.Editor.LayerCanEdit(layer2 as IFeatureLayer))
                     {
-                        List<JLKEditTemplate> list = JLKEditTemplateFactory.Create(layer2 as IFeatureLayer);
+                        List<YTEditTemplate> list = YTEditTemplateFactory.Create(layer2 as IFeatureLayer);
                         m_list.Add(layer2 as IFeatureLayer, list);
                     }
                 }
@@ -413,7 +416,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.listView1.Items.Clear();
             if (this.m_GroupType == GroupType.GroupByLayer)
             {
-                foreach (KeyValuePair<IFeatureLayer, List<JLKEditTemplate>> pair in m_list)
+                foreach (KeyValuePair<IFeatureLayer, List<YTEditTemplate>> pair in m_list)
                 {
                     if (this.IsAdd(pair.Key))
                     {
@@ -425,7 +428,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                         this.listView1.Groups.Add(group);
                         if (pair.Value != null)
                         {
-                            foreach (JLKEditTemplate template in pair.Value)
+                            foreach (YTEditTemplate template in pair.Value)
                             {
                                 item = new ListViewItem {
                                     Text = template.Name,
@@ -444,7 +447,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 ListViewGroup group3 = null;
                 ListViewGroup group4 = null;
                 ListViewGroup group5 = null;
-                foreach (KeyValuePair<IFeatureLayer, List<JLKEditTemplate>> pair in m_list)
+                foreach (KeyValuePair<IFeatureLayer, List<YTEditTemplate>> pair in m_list)
                 {
                     if (!this.IsAdd(pair.Key))
                     {
@@ -507,7 +510,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                     this.listView1.Groups.Add(group);
                     if (pair.Value != null)
                     {
-                        foreach (JLKEditTemplate template in pair.Value)
+                        foreach (YTEditTemplate template in pair.Value)
                         {
                             item = new ListViewItem {
                                 Text = template.Name,
@@ -521,11 +524,11 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
             else
             {
-                foreach (KeyValuePair<IFeatureLayer, List<JLKEditTemplate>> pair in m_list)
+                foreach (KeyValuePair<IFeatureLayer, List<YTEditTemplate>> pair in m_list)
                 {
                     if (this.IsAdd(pair.Key) && (pair.Value != null))
                     {
-                        foreach (JLKEditTemplate template in pair.Value)
+                        foreach (YTEditTemplate template in pair.Value)
                         {
                             item = new ListViewItem {
                                 Text = template.Name,
@@ -724,7 +727,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             return false;
         }
 
-        private bool IsAdd(JLKEditTemplate template)
+        private bool IsAdd(YTEditTemplate template)
         {
             if (this.m_FilterType == FilterType.NoFilter)
             {
@@ -770,7 +773,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         private void LayerFilterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             List<IFeatureLayer> list = new List<IFeatureLayer>();
-            foreach (KeyValuePair<IFeatureLayer, List<JLKEditTemplate>> pair in m_list)
+            foreach (KeyValuePair<IFeatureLayer, List<YTEditTemplate>> pair in m_list)
             {
                 list.Add(pair.Key);
             }
@@ -810,12 +813,12 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         {
             if (this.listView1.SelectedItems.Count > 0)
             {
-                Editor.Editor.CurrentEditTemplate = this.listView1.SelectedItems[0].Tag as JLKEditTemplate;
+                Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate = this.listView1.SelectedItems[0].Tag as YTEditTemplate;
                 ApplicationRef.Application.UpdateUI();
             }
             else
             {
-                Editor.Editor.CurrentEditTemplate = null;
+                Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate = null;
                 ApplicationRef.Application.UpdateUI();
             }
             if ((e.Button == MouseButtons.Right) && (this.listView1.SelectedItems.Count > 0))
@@ -840,7 +843,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         private void PropertyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmEditTemplateProperty property = new frmEditTemplateProperty();
-            JLKEditTemplate tag = this.listView1.SelectedItems[0].Tag as JLKEditTemplate;
+            YTEditTemplate tag = this.listView1.SelectedItems[0].Tag as YTEditTemplate;
             property.EditTemplate = tag;
             if ((property.ShowDialog() == DialogResult.OK) && (this.listView1.SelectedItems[0].Text != tag.Name))
             {
@@ -922,10 +925,10 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             {
                 if (this.m_Map != null)
                 {
-                    (this.m_Map as IActiveViewEvents_Event).remove_ItemDeleted(new IActiveViewEvents_ItemDeletedEventHandler(this.EditorTemplateManageCtrl_ItemDeleted));
+                    (this.m_Map as IActiveViewEvents_Event).ItemDeleted-=(new IActiveViewEvents_ItemDeletedEventHandler(this.EditorTemplateManageCtrl_ItemDeleted));
                 }
                 this.m_Map = value;
-                (this.m_Map as IActiveViewEvents_Event).add_ItemDeleted(new IActiveViewEvents_ItemDeletedEventHandler(this.EditorTemplateManageCtrl_ItemDeleted));
+                (this.m_Map as IActiveViewEvents_Event).ItemDeleted+=(new IActiveViewEvents_ItemDeletedEventHandler(this.EditorTemplateManageCtrl_ItemDeleted));
                 if (EditMap.ContainsKey(this.m_Map))
                 {
                     m_list = EditMap[this.Map];

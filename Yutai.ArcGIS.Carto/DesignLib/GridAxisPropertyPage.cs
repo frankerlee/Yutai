@@ -2,8 +2,15 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
+using Yutai.ArcGIS.Common.SymbolLib;
+using Yutai.ArcGIS.Controls.SymbolUI;
+using IPropertyPage = Yutai.ArcGIS.Common.BaseClasses.IPropertyPage;
+using IPropertyPageEvents = Yutai.ArcGIS.Common.BaseClasses.IPropertyPageEvents;
+using OnValueChangeEventHandler = Yutai.ArcGIS.Common.BaseClasses.OnValueChangeEventHandler;
 
 namespace Yutai.ArcGIS.Carto.DesignLib
 {
@@ -185,7 +192,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 this.btnStyle.Style = m_pMapGrid.TickLineSymbol;
                 double tickLength = m_pMapGrid.TickLength;
                 this.rdoTickPalce.SelectedIndex = (tickLength < 0.0) ? 0 : 1;
-                this.txtTickLength.Value = Math.Abs(tickLength);
+                this.txtTickLength.Value = (decimal) Math.Abs(tickLength);
                 m_pMapGrid.QuerySubTickVisibility(ref leftVis, ref topVis, ref rightVis, ref bottomVis);
                 this.chkSubBottom.Checked = bottomVis;
                 this.chkSubLeft.Checked = leftVis;
@@ -194,7 +201,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 this.btnSubStyle.Style = m_pMapGrid.SubTickLineSymbol;
                 tickLength = m_pMapGrid.SubTickLength;
                 this.rdoSubTickPlace.SelectedIndex = (tickLength < 0.0) ? 0 : 1;
-                this.txtSubTickLength.Value = Math.Abs(tickLength);
+                this.txtSubTickLength.Value = (decimal) Math.Abs(tickLength);
                 this.txtSubCount.Text = m_pMapGrid.SubTickCount.ToString();
                 if (this.imapGridBorder_0 is ISimpleMapGridBorder)
                 {

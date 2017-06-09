@@ -1,6 +1,8 @@
 ﻿using System.Windows.Forms;
 using ESRI.ArcGIS.ADF.BaseClasses;
 using ESRI.ArcGIS.Carto;
+using Yutai.ArcGIS.Carto.UI;
+using Yutai.Plugins.Interfaces;
 
 namespace Yutai.ArcGIS.Carto.DesignLib
 {

@@ -6,12 +6,20 @@ using System.Data;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using DevExpress.Data;
+using DevExpress.XtraEditors;
+using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraGrid.Views.Grid;
 using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.Analyst3D;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 using Yutai.ArcGIS.Common.CodeDomainEx;
+using Yutai.ArcGIS.Common.ControlExtend;
+using Yutai.ArcGIS.Common.Editor;
+using Yutai.ArcGIS.Common.Helpers;
 
 namespace Yutai.ArcGIS.Controls.Controls
 {
@@ -34,7 +42,7 @@ namespace Yutai.ArcGIS.Controls.Controls
         private DataTable m_pSelDataTable = new DataTable();
         private ICursor m_pSelectedCursor;
         private ITable m_pTable = null;
-        private XtraGrid m_pXtraGrid = new XtraGrid();
+        private Common.ControlExtend.XtraGrid m_pXtraGrid = new Common.ControlExtend.XtraGrid();
         private int m_RecordNum;
         private int m_SelectedRecordNum;
         private int m_ShowMaxRecNum = 300;
@@ -590,11 +598,11 @@ namespace Yutai.ArcGIS.Controls.Controls
                             this.m_CanDoFeatureLayerSelectChange = true;
                             if (this.m_pMap is IMap)
                             {
-                                Common.Zoom2SelectedFeature(this.m_pMap as IActiveView);
+                                CommonHelper.Zoom2SelectedFeature(this.m_pMap as IActiveView);
                             }
                             else
                             {
-                                Common.Zoom2SelectedFeature(this.m_pMap as IScene);
+                                CommonHelper.Zoom2SelectedFeature(this.m_pMap as IScene);
                             }
                         }
                     }
@@ -734,11 +742,11 @@ namespace Yutai.ArcGIS.Controls.Controls
                         }
                         if (this.m_pMap is IMap)
                         {
-                            Common.Zoom2SelectedFeature(this.m_pMap as IActiveView);
+                            CommonHelper.Zoom2SelectedFeature(this.m_pMap as IActiveView);
                         }
                         else
                         {
-                            Common.Zoom2SelectedFeature(this.m_pMap as IScene);
+                            CommonHelper.Zoom2SelectedFeature(this.m_pMap as IScene);
                         }
                     }
                     this.m_CanDoFeatureLayerSelectChange = true;
@@ -768,7 +776,7 @@ namespace Yutai.ArcGIS.Controls.Controls
                             IFeature feature = pTable.FeatureClass.GetFeature(iD);
                             if (this.m_pMap is IMap)
                             {
-                                Common.Zoom2Feature(this.m_pMap as IActiveView, feature);
+                                CommonHelper.Zoom2Feature(this.m_pMap as IActiveView, feature);
                             }
                             else if (this.m_pMap is IScene)
                             {
@@ -1274,7 +1282,7 @@ namespace Yutai.ArcGIS.Controls.Controls
                 }
                 if (this.m_pTable is IFeatureLayerSelectionEvents_Event)
                 {
-                    (this.m_pTable as IFeatureLayerSelectionEvents_Event).add_FeatureLayerSelectionChanged(new IFeatureLayerSelectionEvents_FeatureLayerSelectionChangedEventHandler(this.frmAttributeTable_FeatureLayerSelectionChanged));
+                    (this.m_pTable as IFeatureLayerSelectionEvents_Event).FeatureLayerSelectionChanged+=(new IFeatureLayerSelectionEvents_FeatureLayerSelectionChangedEventHandler(this.frmAttributeTable_FeatureLayerSelectionChanged));
                 }
             }
         }

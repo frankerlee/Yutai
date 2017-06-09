@@ -120,8 +120,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     int index = requiredFields.FindField((description as IFeatureClassDescription).ShapeFieldName);
                     IFieldEdit edit = requiredFields.get_Field(index) as IFieldEdit;
                     IGeometryDefEdit geometryDef = edit.GeometryDef as IGeometryDefEdit;
-                    geometryDef.SpatialReference = this.m_pFocusMap.SpatialReference;
-                    geometryDef.GeometryType = esriGeometryType.esriGeometryPolygon;
+                    geometryDef.SpatialReference_2 = this.m_pFocusMap.SpatialReference;
+                    geometryDef.GeometryType_2 = esriGeometryType.esriGeometryPolygon;
                     IFeatureClass o = this.m_pOutFeatureWorksapce.CreateFeatureClass(this.m_FeatClassName, requiredFields, null, null, esriFeatureType.esriFTSimple, "Shape", "");
                     IFeatureClassName fullName = (o as IDataset).FullName as IFeatureClassName;
                     Marshal.ReleaseComObject(o);

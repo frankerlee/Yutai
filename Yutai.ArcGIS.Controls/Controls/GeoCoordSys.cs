@@ -2,7 +2,10 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common.Helpers;
 
 namespace Yutai.ArcGIS.Controls.Controls
 {
@@ -684,7 +687,7 @@ namespace Yutai.ArcGIS.Controls.Controls
                     }
                     this.txtDegree.ForeColor = Color.Red;
                 }
-                else if (Common.IsNmuber(this.txtDegree.Text))
+                else if (CommonHelper.IsNmuber(this.txtDegree.Text))
                 {
                     double num = Convert.ToDouble(this.txtDegree.Text);
                     if ((num >= -180.0) && (num <= 180.0))
@@ -728,7 +731,7 @@ namespace Yutai.ArcGIS.Controls.Controls
                     }
                     this.txtFlattening.ForeColor = Color.Red;
                 }
-                else if (Common.IsNmuber(this.txtFlattening.Text))
+                else if (CommonHelper.IsNmuber(this.txtFlattening.Text))
                 {
                     double num = 0.0;
                     try
@@ -779,7 +782,7 @@ namespace Yutai.ArcGIS.Controls.Controls
                     }
                     this.txtMajorAxis.ForeColor = Color.Red;
                 }
-                else if (Common.IsNmuber(this.txtMajorAxis.Text))
+                else if (CommonHelper.IsNmuber(this.txtMajorAxis.Text))
                 {
                     double num = 0.0;
                     try
@@ -830,7 +833,7 @@ namespace Yutai.ArcGIS.Controls.Controls
                     }
                     this.txtMiniorAxis.ForeColor = Color.Red;
                 }
-                else if (Common.IsNmuber(this.txtMiniorAxis.Text))
+                else if (CommonHelper.IsNmuber(this.txtMiniorAxis.Text))
                 {
                     double num = 0.0;
                     try
@@ -881,7 +884,7 @@ namespace Yutai.ArcGIS.Controls.Controls
                     }
                     this.txtMinute.ForeColor = Color.Red;
                 }
-                else if (Common.IsNmuber(this.txtMinute.Text))
+                else if (CommonHelper.IsNmuber(this.txtMinute.Text))
                 {
                     double num = Convert.ToDouble(str);
                     if ((num >= 0.0) && (num <= 60.0))
@@ -925,7 +928,7 @@ namespace Yutai.ArcGIS.Controls.Controls
                     }
                     this.txtSecond.ForeColor = Color.Red;
                 }
-                else if (Common.IsNmuber(this.txtSecond.Text))
+                else if (CommonHelper.IsNmuber(this.txtSecond.Text))
                 {
                     double num = Convert.ToDouble(str);
                     if ((num >= 0.0) && (num <= 60.0))
@@ -969,7 +972,7 @@ namespace Yutai.ArcGIS.Controls.Controls
                     }
                     this.txtValue.ForeColor = Color.Red;
                 }
-                else if (Common.IsNmuber(this.txtValue.Text))
+                else if (CommonHelper.IsNmuber(this.txtValue.Text))
                 {
                     if (Convert.ToDouble(this.txtValue.Text) > 0.0)
                     {

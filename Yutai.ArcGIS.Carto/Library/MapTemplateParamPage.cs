@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using ESRI.ArcGIS.Carto;
 using Yutai.ArcGIS.Carto.MapCartoTemplateLib;
 
 namespace Yutai.ArcGIS.Carto.Library
@@ -248,7 +249,7 @@ namespace Yutai.ArcGIS.Carto.Library
             }
         }
 
-        private void method_1(object sender, EventArgs e)
+        private void method_1(Control sender, EventArgs e)
         {
             Control control = sender;
             this.listViewSubItem_0.Text = control.Text;

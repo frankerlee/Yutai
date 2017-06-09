@@ -2,6 +2,8 @@
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common.ExtendClass;
+using IOleFrame = Yutai.ArcGIS.Common.ExtendClass.IOleFrame;
 
 namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 {
@@ -36,7 +38,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         {
             IPoint position = this.GetPosition(ipageLayout_0);
             int hWnd = (ipageLayout_0 as IActiveView).ScreenDisplay.hWnd;
-            JLK.ExtendClass.IOleFrame frame = new OleFrame();
+            IOleFrame frame = new OleFrame();
             if (frame.CreateOleClientItem((ipageLayout_0 as IActiveView).ScreenDisplay, hWnd))
             {
                 IElement element = frame as IElement;

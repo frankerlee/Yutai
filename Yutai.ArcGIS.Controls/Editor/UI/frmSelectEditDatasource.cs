@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
+using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {
@@ -36,15 +37,15 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
             else
             {
-                Editor.EditWorkspaceInfo tag = this.EditWorkspacelist.SelectedItems[0].Tag as Editor.EditWorkspaceInfo;
+                Yutai.ArcGIS.Common.Editor.EditWorkspaceInfo tag = this.EditWorkspacelist.SelectedItems[0].Tag as Yutai.ArcGIS.Common.Editor.EditWorkspaceInfo;
                 IWorkspaceEdit workspace = tag.Workspace as IWorkspaceEdit;
                 if (!workspace.IsBeingEdited())
                 {
                     try
                     {
                         workspace.StartEditing(true);
-                        Editor.Editor.EditWorkspace = workspace;
-                        Editor.Editor.EditMap = this.m_pMap;
+                        Yutai.ArcGIS.Common.Editor.Editor.EditWorkspace = workspace;
+                        Yutai.ArcGIS.Common.Editor.Editor.EditMap = this.m_pMap;
                     }
                     catch (COMException exception)
                     {
@@ -83,7 +84,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 this.btnOK.Enabled = true;
                 try
                 {
-                    Editor.EditWorkspaceInfo tag = this.EditWorkspacelist.SelectedItems[0].Tag as Editor.EditWorkspaceInfo;
+                    Yutai.ArcGIS.Common.Editor.EditWorkspaceInfo tag = this.EditWorkspacelist.SelectedItems[0].Tag as Yutai.ArcGIS.Common.Editor.EditWorkspaceInfo;
                     for (int i = 0; i < tag.LayerArray.Count; i++)
                     {
                         IFeatureLayer layer = tag.LayerArray.get_Element(i) as IFeatureLayer;
@@ -117,7 +118,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 string[] items = new string[2];
                 for (int i = 0; i < this.m_pEditWorkspaceInfo.Count; i++)
                 {
-                    Editor.EditWorkspaceInfo info = this.m_pEditWorkspaceInfo.get_Element(i) as Editor.EditWorkspaceInfo;
+                    Yutai.ArcGIS.Common.Editor.EditWorkspaceInfo info = this.m_pEditWorkspaceInfo.get_Element(i) as Yutai.ArcGIS.Common.Editor.EditWorkspaceInfo;
                     items[0] = info.Workspace.PathName;
                     items[1] = "";
                     switch (info.Workspace.Type)

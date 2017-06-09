@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
+using Yutai.ArcGIS.Common.Wrapper;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {

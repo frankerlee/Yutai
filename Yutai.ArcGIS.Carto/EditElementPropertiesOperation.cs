@@ -6,6 +6,7 @@ using ESRI.ArcGIS.SystemUI;
 using Yutai.ArcGIS.Carto.UI;
 using Yutai.ArcGIS.Common.BaseClasses;
 using Yutai.ArcGIS.Common.Carto;
+using Yutai.ArcGIS.Common.ExtendClass;
 
 namespace Yutai.ArcGIS.Carto
 {

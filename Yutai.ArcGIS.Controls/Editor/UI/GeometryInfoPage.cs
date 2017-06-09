@@ -4,11 +4,18 @@ using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
+using DevExpress.XtraBars;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common;
+using Yutai.ArcGIS.Common.BaseClasses;
 using Yutai.ArcGIS.Common.ControlExtend;
+using Yutai.ArcGIS.Common.Editor;
+using Yutai.ArcGIS.Common.Editor.Helpers;
+using Yutai.ArcGIS.Common.Helpers;
+using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {
@@ -141,7 +148,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                         }
                     }
                     this.SetZMProperty(points as IGeometry);
-                    IFeature feature = Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass.CreateFeature();
+                    IFeature feature = Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass.CreateFeature();
                     try
                     {
                         feature.Shape = points as IGeometry;
@@ -154,7 +161,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                     }
                     IActiveView pMap = (IActiveView) this.m_pMap;
                     this.m_pMap.ClearSelection();
-                    this.m_pMap.SelectFeature(Editor.Editor.CurrentEditTemplate.FeatureLayer, feature);
+                    this.m_pMap.SelectFeature(Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer, feature);
                     pMap.Refresh();
                 }
             }
@@ -168,7 +175,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         {
             try
             {
-                IFeatureClass featureClass = Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass;
+                IFeatureClass featureClass = Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass;
                 int index = featureClass.FindField(featureClass.ShapeFieldName);
                 IGeometryDef geometryDef = featureClass.Fields.get_Field(index).GeometryDef;
                 using (StreamReader reader = new StreamReader(filename))
@@ -241,7 +248,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         private IPoint CreatePoint(string line, int nIndex)
         {
-            IFeatureClass featureClass = Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass;
+            IFeatureClass featureClass = Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass;
             int index = featureClass.FindField(featureClass.ShapeFieldName);
             IGeometryDef geometryDef = featureClass.Fields.get_Field(index).GeometryDef;
             IPoint point = new PointClass();
@@ -371,7 +378,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                         {
                             if (geometrys.GeometryCount > 0)
                             {
-                                IFeatureLayer featureLayer = Editor.Editor.CurrentEditTemplate.FeatureLayer;
+                                IFeatureLayer featureLayer = Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer;
                                 this.SetZMProperty(geometrys as IGeometry);
                                 IFeature feature = featureLayer.FeatureClass.CreateFeature();
                                 feature.Shape = geometrys as IGeometry;
@@ -476,7 +483,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                         }
                         try
                         {
-                            IFeatureLayer featureLayer = Editor.Editor.CurrentEditTemplate.FeatureLayer;
+                            IFeatureLayer featureLayer = Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer;
                             this.SetZMProperty(geometrys as IGeometry);
                             IFeature feature = featureLayer.FeatureClass.CreateFeature();
                             feature.Shape = geometrys as IGeometry;
@@ -505,7 +512,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             {
                 IPointCollection pGeometry;
                 IEnvelope envelope = this.m_pGeometry.Envelope;
-                double dx = Common.ConvertPixelsToMapUnits(this.m_pMap as IActiveView, 6.0);
+                double dx = CommonHelper.ConvertPixelsToMapUnits(this.m_pMap as IActiveView, 6.0);
                 envelope.Expand(dx, dx, false);
                 if (this.m_pGeometry.GeometryType == esriGeometryType.esriGeometryMultipoint)
                 {
@@ -546,9 +553,9 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             base.Dispose(disposing);
         }
 
-        private void EditorEvent_OnEditTemplateChange(JLKEditTemplate template)
+        private void EditorEvent_OnEditTemplateChange(YTEditTemplate template)
         {
-            this.ImportGeometryData.Enabled = Editor.Editor.CurrentEditTemplate != null;
+            this.ImportGeometryData.Enabled = Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate != null;
         }
 
         private void EditorEvent_OnFeatureGeometryChanged(IFeature pFeat)
@@ -556,7 +563,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             if (this.m_pEditFeature == pFeat)
             {
                 this.m_pEditFeature = (pFeat.Class as IFeatureClass).GetFeature(pFeat.OID);
-                Editor.Editor.EditFeature = this.m_pEditFeature;
+                Yutai.ArcGIS.Common.Editor.Editor.EditFeature = this.m_pEditFeature;
                 this.RefreshCoordinate();
             }
         }
@@ -629,6 +636,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
+       
+
         private string GetUnitName(string s)
         {
             string str2 = s.ToLower();
@@ -646,14 +655,14 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             };
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                Editor.Editor.ImportGeometryData(dialog.FileName, this.m_pMap, Editor.Editor.CurrentEditTemplate.FeatureLayer);
-                (this.m_pMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeography, Editor.Editor.CurrentEditTemplate.FeatureLayer, null);
+                Yutai.ArcGIS.Common.Editor.Editor.ImportGeometryData(dialog.FileName, this.m_pMap, Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
+                (this.m_pMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeography, Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer, null);
             }
         }
 
         public void Init()
         {
-            if (Editor.Editor.CurrentEditTemplate != null)
+            if (Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate != null)
             {
                 this.ImportGeometryData.Enabled = true;
             }
@@ -664,7 +673,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.listBox1.Items.Clear();
             this.listView1.Clear();
             this.BarGeometryInfo.Caption = "";
-            Editor.Editor.EditFeature = null;
+            Yutai.ArcGIS.Common.Editor.Editor.EditFeature = null;
             if (this.m_pMap.SelectionCount != 1)
             {
                 this.m_pEditFeature = null;
@@ -684,7 +693,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 }
                 else
                 {
-                    Editor.Editor.EditFeature = this.m_pEditFeature;
+                    Yutai.ArcGIS.Common.Editor.Editor.EditFeature = this.m_pEditFeature;
                     this.RefreshCoordinate();
                 }
             }
@@ -813,7 +822,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             {
                 IPointCollection pGeometry;
                 IEnvelope envelope = this.m_pGeometry.Envelope;
-                double dx = Common.ConvertPixelsToMapUnits(this.m_pMap as IActiveView, 6.0);
+                double dx = CommonHelper.ConvertPixelsToMapUnits(this.m_pMap as IActiveView, 6.0);
                 envelope.Expand(dx, dx, false);
                 if (this.m_pGeometry.GeometryType == esriGeometryType.esriGeometryMultipoint)
                 {
@@ -864,7 +873,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             {
                 IPointCollection pGeometry;
                 IEnvelope envelope = this.m_pGeometry.Envelope;
-                double dx = Common.ConvertPixelsToMapUnits(this.m_pMap as IActiveView, 6.0);
+                double dx = CommonHelper.ConvertPixelsToMapUnits(this.m_pMap as IActiveView, 6.0);
                 envelope.Expand(dx, dx, false);
                 if (this.m_pGeometry.GeometryType == esriGeometryType.esriGeometryMultipoint)
                 {
@@ -942,7 +951,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
             IRgbColor color = new RgbColorClass();
             envelope = this.m_pGeometry.Envelope;
-            double dx = Common.ConvertPixelsToMapUnits(this.m_pMap as IActiveView, 6.0);
+            double dx = CommonHelper.ConvertPixelsToMapUnits(this.m_pMap as IActiveView, 6.0);
             envelope.Expand(dx, dx, false);
             if (this.m_LastPoint != null)
             {
@@ -1212,7 +1221,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         private void SetZMProperty(IGeometry pGeom)
         {
-            IFeatureClass featureClass = Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass;
+            IFeatureClass featureClass = Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass;
             int index = featureClass.FindField(featureClass.ShapeFieldName);
             IGeometryDef geometryDef = featureClass.Fields.get_Field(index).GeometryDef;
             if (geometryDef.HasZ)
@@ -1281,8 +1290,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             {
                 this.m_pMap = value;
                 this.m_pActiveViewEvents = this.m_pMap as IActiveViewEvents_Event;
-                this.m_pActiveViewEvents.add_SelectionChanged(new IActiveViewEvents_SelectionChangedEventHandler(this.m_pActiveViewEvents_SelectionChanged));
-                this.m_pActiveViewEvents.add_AfterDraw(new IActiveViewEvents_AfterDrawEventHandler(this.m_pActiveViewEvents_AfterDraw));
+                this.m_pActiveViewEvents.SelectionChanged+=(new IActiveViewEvents_SelectionChangedEventHandler(this.m_pActiveViewEvents_SelectionChanged));
+                this.m_pActiveViewEvents.AfterDraw+=(new IActiveViewEvents_AfterDrawEventHandler(this.m_pActiveViewEvents_AfterDraw));
             }
         }
 

@@ -8,6 +8,7 @@ using ESRI.ArcGIS.SystemUI;
 using Yutai.ArcGIS.Common;
 using Yutai.ArcGIS.Common.BaseClasses;
 using Yutai.ArcGIS.Common.Framework;
+using LoadComponent = Yutai.ArcGIS.Common.LoadComponent;
 
 namespace Yutai.ArcGIS.Framework
 {

@@ -4,7 +4,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using ESRI.ArcGIS.Carto;
-using Yutai.ArcGIS.Common.BaseClasses;
+using Yutai.ArcGIS.Controls.SymbolUI;
+using IPropertyPage = Yutai.ArcGIS.Common.BaseClasses.IPropertyPage;
 
 namespace Yutai.ArcGIS.Carto.UI
 {
@@ -69,63 +70,63 @@ namespace Yutai.ArcGIS.Carto.UI
                 IPropertyPage page = null;
                 if (mapGrid is IProjectedGrid)
                 {
-                    page = new GridAxisPropertyPage();
+                    page = new GridAxisPropertyPage() as IPropertyPage;
                     property.AddPage(page);
-                    page = new LabelFormatPropertyPage();
+                    page = new LabelFormatPropertyPage() as IPropertyPage;
                     property.AddPage(page);
-                    page = new TickSymbolPropertyPage();
+                    page = new TickSymbolPropertyPage() as IPropertyPage;
                     property.AddPage(page);
-                    page = new MeasureCoordinatePropertyPage();
+                    page = new MeasureCoordinatePropertyPage() as IPropertyPage;
                     property.AddPage(page);
-                    page = new MeasuredGridPropertyPage();
+                    page = new MeasuredGridPropertyPage() as IPropertyPage;
                     property.AddPage(page);
                 }
                 else if (mapGrid is IMgrsGrid)
                 {
-                    page = new MGRSPropertyPage();
+                    page = new MGRSPropertyPage() as IPropertyPage;
                     property.AddPage(page);
-                    page = new GridAxisPropertyPage();
+                    page = new GridAxisPropertyPage() as IPropertyPage;
                     property.AddPage(page);
-                    page = new LabelFormatPropertyPage();
+                    page = new LabelFormatPropertyPage() as IPropertyPage;
                     property.AddPage(page);
-                    page = new TickSymbolPropertyPage();
+                    page = new TickSymbolPropertyPage() as IPropertyPage;
                     property.AddPage(page);
                 }
                 else if (mapGrid is IGraticule)
                 {
-                    page = new GridAxisPropertyPage();
+                    page = new GridAxisPropertyPage() as IPropertyPage;
                     property.AddPage(page);
-                    page = new GridInteriorLabelsPropertyPage();
+                    page = new GridInteriorLabelsPropertyPage() as IPropertyPage;
                     property.AddPage(page);
-                    page = new LabelFormatPropertyPage();
+                    page = new LabelFormatPropertyPage() as IPropertyPage;
                     property.AddPage(page);
-                    page = new TickSymbolPropertyPage();
+                    page = new TickSymbolPropertyPage() as IPropertyPage;
                     property.AddPage(page);
-                    page = new GridHatchPropertyPage();
+                    page = new GridHatchPropertyPage() as IPropertyPage;
                     property.AddPage(page);
-                    page = new MeasuredGridPropertyPage();
+                    page = new MeasuredGridPropertyPage() as IPropertyPage;
                     property.AddPage(page);
                 }
                 else if (mapGrid is ICustomOverlayGrid)
                 {
-                    page = new CustomOverlayGridPropertyPage();
+                    page = new CustomOverlayGridPropertyPage() as IPropertyPage;
                     property.AddPage(page);
-                    page = new GridAxisPropertyPage();
+                    page = new GridAxisPropertyPage() as IPropertyPage;
                     property.AddPage(page);
-                    page = new LabelFormatPropertyPage();
+                    page = new LabelFormatPropertyPage() as IPropertyPage;
                     property.AddPage(page);
-                    page = new TickSymbolPropertyPage();
+                    page = new TickSymbolPropertyPage() as IPropertyPage;
                     property.AddPage(page);
                 }
                 else if (mapGrid is IIndexGrid)
                 {
-                    page = new GridAxisPropertyPage();
+                    page = new GridAxisPropertyPage() as IPropertyPage;
                     property.AddPage(page);
-                    page = new IndexGridProperyPage();
+                    page = new IndexGridProperyPage() as IPropertyPage;
                     property.AddPage(page);
-                    page = new LabelFormatPropertyPage();
+                    page = new LabelFormatPropertyPage() as IPropertyPage;
                     property.AddPage(page);
-                    page = new TickSymbolPropertyPage();
+                    page = new TickSymbolPropertyPage() as IPropertyPage;
                     property.AddPage(page);
                 }
                 if (property.EditProperties(mapGrid))

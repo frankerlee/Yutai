@@ -7,6 +7,7 @@ using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geometry;
 using ESRI.ArcGIS.SystemUI;
+using Yutai.ArcGIS.Common;
 
 namespace Yutai.ArcGIS.Controls.Controls
 {
@@ -475,7 +476,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             set
             {
                 this.m_pMap = value;
-                (this.m_pMap as IActiveViewEvents_Event).add_ItemAdded(new IActiveViewEvents_ItemAddedEventHandler(this.frmMagnifierWindows_ItemAdded));
+                (this.m_pMap as IActiveViewEvents_Event).ItemAdded+=(new IActiveViewEvents_ItemAddedEventHandler(this.frmMagnifierWindows_ItemAdded));
             }
         }
 

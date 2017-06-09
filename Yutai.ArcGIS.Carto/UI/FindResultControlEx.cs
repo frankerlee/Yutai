@@ -2,10 +2,16 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
+using DevExpress.XtraBars;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common.BaseClasses;
+using Yutai.ArcGIS.Common.Display;
+using Yutai.Shared;
+
 
 namespace Yutai.ArcGIS.Carto.UI
 {
@@ -377,7 +383,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
             if (this.ibasicMap_0 is IActiveView)
             {
-                Common.Zoom2Features(this.ibasicMap_0 as IActiveView, array);
+               Yutai.ArcGIS.Common.Helpers.CommonHelper.Zoom2Features(this.ibasicMap_0 as IActiveView, array);
                 (this.ibasicMap_0 as IActiveView).ScreenDisplay.UpdateWindow();
                 for (num = 0; num < this.listView1.SelectedItems.Count; num++)
                 {

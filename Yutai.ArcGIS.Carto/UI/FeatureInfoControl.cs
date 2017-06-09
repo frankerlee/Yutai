@@ -12,10 +12,14 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Catalog;
+using Yutai.ArcGIS.Common.BaseClasses;
 using Yutai.ArcGIS.Common.Carto;
 using Yutai.ArcGIS.Common.CodeDomainEx;
 using Yutai.ArcGIS.Common.Display;
+using Yutai.ArcGIS.Controls.Editor.UI;
 using Yutai.Shared;
+using Array = System.Array;
 
 namespace Yutai.ArcGIS.Carto.UI
 {
@@ -1208,8 +1212,8 @@ namespace Yutai.ArcGIS.Carto.UI
                                     (obj3 as IIdentifyObject).PropertySet.GetAllProperties(out obj4, out obj5);
                                     this.Infolist.Items.Clear();
                                     strArray = new string[2];
-                                    System.Array array = obj4;
-                                    System.Array array2 = obj5;
+                                    System.Array array = obj4 as Array;
+                                    System.Array array2 = obj5 as Array;
                                     for (int i = 0; i < array.Length; i++)
                                     {
                                         strArray[0] = array.GetValue(i).ToString();
@@ -1255,7 +1259,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
             if (this.ifeature_1 != null)
             {
-                Common.Pan2Feature(this.ibasicMap_0 as IActiveView, this.ifeature_1);
+                Yutai.ArcGIS.Common.Helpers.CommonHelper.Pan2Feature(this.ibasicMap_0 as IActiveView, this.ifeature_1);
                 (this.ibasicMap_0 as IActiveView).ScreenDisplay.UpdateWindow();
                 Flash.FlashFeature((this.ibasicMap_0 as IActiveView).ScreenDisplay, this.ifeature_1);
             }
@@ -1306,7 +1310,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
             if (this.ifeature_1 != null)
             {
-                Common.Zoom2Feature(this.ibasicMap_0 as IActiveView, this.ifeature_1);
+                CommonHelper.Zoom2Feature(this.ibasicMap_0 as IActiveView, this.ifeature_1);
                 (this.ibasicMap_0 as IActiveView).ScreenDisplay.UpdateWindow();
                 Flash.FlashFeature((this.ibasicMap_0 as IActiveView).ScreenDisplay, this.ifeature_1);
             }

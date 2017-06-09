@@ -6,6 +6,7 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
+using Yutai.ArcGIS.Controls.SymbolLib;
 
 namespace Yutai.ArcGIS.Carto.UI
 {

@@ -1,14 +1,16 @@
-﻿namespace Yutai.ArcGIS.Controls.Editor.UI
+﻿using Yutai.ArcGIS.Common.Editor;
+
+namespace Yutai.ArcGIS.Controls.Editor.UI
 {
-    internal class JLKEditTemplateWrap
+    internal class YTEditTemplateWrap
     {
-        internal JLKEditTemplateWrap(JLKEditTemplate t)
+        internal YTEditTemplateWrap(YTEditTemplate t)
         {
             this.EditTemplate = t;
             this.IsUse = true;
         }
 
-        internal JLKEditTemplate EditTemplate { get; set; }
+        internal YTEditTemplate EditTemplate { get; set; }
 
         internal bool IsUse { get; set; }
     }

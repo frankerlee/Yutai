@@ -8,6 +8,7 @@ using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Framework.Docking;
 
 namespace Yutai.ArcGIS.Controls.Controls
 {

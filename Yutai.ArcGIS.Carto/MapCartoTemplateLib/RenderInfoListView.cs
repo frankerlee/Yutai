@@ -7,6 +7,8 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common;
+using Yutai.ArcGIS.Controls.SymbolUI;
 
 namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 {
@@ -148,7 +150,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             base.Dispose(bool_1);
         }
 
-        protected unsafe void DrawSymbol(int int_3, Rectangle rectangle_0, object object_0)
+        protected  void DrawSymbol(int int_3, Rectangle rectangle_0, object object_0)
         {
             if (object_0 != null)
             {
@@ -168,7 +170,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 transformation.ScaleRatio = 1.0;
                 if (object_0 is ISymbol)
                 {
-                    symbol = object_0;
+                    symbol = object_0 as ISymbol;
                 }
                 else if (object_0 is IColorRamp)
                 {
@@ -176,7 +178,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     ILineSymbol outline = symbol2.Outline;
                     outline.Width = 0.0;
                     symbol2.Outline = outline;
-                    symbol2.ColorRamp = object_0;
+                    symbol2.ColorRamp = object_0 as IColorRamp;
                     symbol2.GradientAngle = 180.0;
                     symbol2.GradientPercentage = 1.0;
                     symbol2.IntervalCount = 100;
@@ -186,7 +188,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 else if (object_0 is IColor)
                 {
                     IColorSymbol symbol4 = new ColorSymbolClass {
-                        Color = object_0
+                        Color = object_0 as IColor
                     };
                     symbol = (ISymbol) symbol4;
                 }

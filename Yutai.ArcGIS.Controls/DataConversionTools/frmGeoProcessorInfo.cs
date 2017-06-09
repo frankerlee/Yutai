@@ -3,11 +3,13 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geoprocessing;
 using ESRI.ArcGIS.Geoprocessor;
+using Yutai.ArcGIS.Common.ControlExtend;
 using Yutai.ArcGIS.Controls.Historical;
 
 namespace Yutai.ArcGIS.Controls.DataConversionTools

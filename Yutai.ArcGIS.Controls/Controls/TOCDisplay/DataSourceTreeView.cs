@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using DevExpress.XtraBars;
 using ESRI.ArcGIS.Analyst3D;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
@@ -10,6 +11,8 @@ using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common;
+using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 {
@@ -74,10 +77,10 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
             {
                 if (this.m_pConnectActiveEvent != null)
                 {
-                    this.m_pConnectActiveEvent.add_ItemAdded(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemAddedEventHandler(this.m_pConnectActiveEvent_ItemAdded));
-                    this.m_pConnectActiveEvent.add_ItemDeleted(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemDeletedEventHandler(this.m_pConnectActiveEvent_ItemDeleted));
-                    this.m_pConnectActiveEvent.add_ItemReordered(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemReorderedEventHandler(this.m_pConnectActiveEvent_ItemReordered));
-                    this.m_pConnectActiveEvent.add_ContentsCleared(new ESRI.ArcGIS.Carto.IActiveViewEvents_ContentsClearedEventHandler(this.m_pConnectActiveEvent_ContentsCleared));
+                    this.m_pConnectActiveEvent.ItemAdded+=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemAddedEventHandler(this.m_pConnectActiveEvent_ItemAdded));
+                    this.m_pConnectActiveEvent.ItemDeleted+=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemDeletedEventHandler(this.m_pConnectActiveEvent_ItemDeleted));
+                    this.m_pConnectActiveEvent.ItemReordered+=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemReorderedEventHandler(this.m_pConnectActiveEvent_ItemReordered));
+                    this.m_pConnectActiveEvent.ContentsCleared+=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ContentsClearedEventHandler(this.m_pConnectActiveEvent_ContentsCleared));
                 }
             }
             catch (Exception exception)
@@ -878,20 +881,20 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
         {
             if (this.m_pConnectActiveEvent != null)
             {
-                this.m_pConnectActiveEvent.remove_ItemAdded(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemAddedEventHandler(this.m_pConnectActiveEvent_ItemAdded));
-                this.m_pConnectActiveEvent.remove_ItemDeleted(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemDeletedEventHandler(this.m_pConnectActiveEvent_ItemDeleted));
-                this.m_pConnectActiveEvent.remove_ItemReordered(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemReorderedEventHandler(this.m_pConnectActiveEvent_ItemReordered));
-                this.m_pConnectActiveEvent.remove_ContentsCleared(new ESRI.ArcGIS.Carto.IActiveViewEvents_ContentsClearedEventHandler(this.m_pConnectActiveEvent_ContentsCleared));
+                this.m_pConnectActiveEvent.ItemAdded-=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemAddedEventHandler(this.m_pConnectActiveEvent_ItemAdded));
+                this.m_pConnectActiveEvent.ItemDeleted-=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemDeletedEventHandler(this.m_pConnectActiveEvent_ItemDeleted));
+                this.m_pConnectActiveEvent.ItemReordered-=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemReorderedEventHandler(this.m_pConnectActiveEvent_ItemReordered));
+                this.m_pConnectActiveEvent.ContentsCleared-=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ContentsClearedEventHandler(this.m_pConnectActiveEvent_ContentsCleared));
             }
             this.m_pConnectActiveEvent = null;
             IActiveView activeView = this.m_pPageLayoutCtrl.ActiveView;
             this.m_pConnectActiveEvent = (ESRI.ArcGIS.Carto.IActiveViewEvents_Event) activeView.FocusMap;
             if (this.m_pConnectActiveEvent != null)
             {
-                this.m_pConnectActiveEvent.add_ItemAdded(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemAddedEventHandler(this.m_pConnectActiveEvent_ItemAdded));
-                this.m_pConnectActiveEvent.add_ItemDeleted(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemDeletedEventHandler(this.m_pConnectActiveEvent_ItemDeleted));
-                this.m_pConnectActiveEvent.add_ItemReordered(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemReorderedEventHandler(this.m_pConnectActiveEvent_ItemReordered));
-                this.m_pConnectActiveEvent.add_ContentsCleared(new ESRI.ArcGIS.Carto.IActiveViewEvents_ContentsClearedEventHandler(this.m_pConnectActiveEvent_ContentsCleared));
+                this.m_pConnectActiveEvent.ItemAdded+=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemAddedEventHandler(this.m_pConnectActiveEvent_ItemAdded));
+                this.m_pConnectActiveEvent.ItemDeleted+=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemDeletedEventHandler(this.m_pConnectActiveEvent_ItemDeleted));
+                this.m_pConnectActiveEvent.ItemReordered+=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemReorderedEventHandler(this.m_pConnectActiveEvent_ItemReordered));
+                this.m_pConnectActiveEvent.ContentsCleared+=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ContentsClearedEventHandler(this.m_pConnectActiveEvent_ContentsCleared));
             }
         }
 
@@ -1149,10 +1152,10 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
             {
                 if (this.m_pConnectActiveEvent != null)
                 {
-                    this.m_pConnectActiveEvent.remove_ItemAdded(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemAddedEventHandler(this.m_pConnectActiveEvent_ItemAdded));
-                    this.m_pConnectActiveEvent.remove_ItemDeleted(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemDeletedEventHandler(this.m_pConnectActiveEvent_ItemDeleted));
-                    this.m_pConnectActiveEvent.remove_ItemReordered(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemReorderedEventHandler(this.m_pConnectActiveEvent_ItemReordered));
-                    this.m_pConnectActiveEvent.remove_ContentsCleared(new ESRI.ArcGIS.Carto.IActiveViewEvents_ContentsClearedEventHandler(this.m_pConnectActiveEvent_ContentsCleared));
+                    this.m_pConnectActiveEvent.ItemAdded-=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemAddedEventHandler(this.m_pConnectActiveEvent_ItemAdded));
+                    this.m_pConnectActiveEvent.ItemDeleted-=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemDeletedEventHandler(this.m_pConnectActiveEvent_ItemDeleted));
+                    this.m_pConnectActiveEvent.ItemReordered-=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemReorderedEventHandler(this.m_pConnectActiveEvent_ItemReordered));
+                    this.m_pConnectActiveEvent.ContentsCleared-=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ContentsClearedEventHandler(this.m_pConnectActiveEvent_ContentsCleared));
                 }
             }
             catch
@@ -1229,9 +1232,9 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
             IActiveView activeView = this.m_pPageLayoutCtrl.ActiveView;
             this.m_pConnectActiveEvent = (ESRI.ArcGIS.Carto.IActiveViewEvents_Event) activeView.FocusMap;
             this.m_ipPageLayout = (ESRI.ArcGIS.Carto.IActiveViewEvents_Event) this.m_pPageLayoutCtrl.PageLayout;
-            this.m_ipPageLayout.add_ItemAdded(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemAddedEventHandler(this.m_ipPageLayout_ItemAdded));
-            this.m_ipPageLayout.add_ItemDeleted(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemDeletedEventHandler(this.m_ipPageLayout_ItemDeleted));
-            this.m_ipPageLayout.add_FocusMapChanged(new ESRI.ArcGIS.Carto.IActiveViewEvents_FocusMapChangedEventHandler(this.m_ipPageLayout_FocusMapChanged));
+            this.m_ipPageLayout.ItemAdded+=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemAddedEventHandler(this.m_ipPageLayout_ItemAdded));
+            this.m_ipPageLayout.ItemDeleted+=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemDeletedEventHandler(this.m_ipPageLayout_ItemDeleted));
+            this.m_ipPageLayout.FocusMapChanged+=(new ESRI.ArcGIS.Carto.IActiveViewEvents_FocusMapChangedEventHandler(this.m_ipPageLayout_FocusMapChanged));
             this.AddActiveEvent();
             this.RefreshTree();
         }
@@ -1373,10 +1376,10 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     {
                         if (this.m_pConnectActiveEvent != null)
                         {
-                            this.m_pConnectActiveEvent.remove_ItemAdded(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemAddedEventHandler(this.m_pConnectActiveEvent_ItemAdded));
-                            this.m_pConnectActiveEvent.remove_ItemDeleted(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemDeletedEventHandler(this.m_pConnectActiveEvent_ItemDeleted));
-                            this.m_pConnectActiveEvent.remove_ItemReordered(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemReorderedEventHandler(this.m_pConnectActiveEvent_ItemReordered));
-                            this.m_pConnectActiveEvent.remove_ContentsCleared(new ESRI.ArcGIS.Carto.IActiveViewEvents_ContentsClearedEventHandler(this.m_pConnectActiveEvent_ContentsCleared));
+                            this.m_pConnectActiveEvent.ItemAdded-=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemAddedEventHandler(this.m_pConnectActiveEvent_ItemAdded));
+                            this.m_pConnectActiveEvent.ItemDeleted-=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemDeletedEventHandler(this.m_pConnectActiveEvent_ItemDeleted));
+                            this.m_pConnectActiveEvent.ItemReordered-=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemReorderedEventHandler(this.m_pConnectActiveEvent_ItemReordered));
+                            this.m_pConnectActiveEvent.ContentsCleared-=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ContentsClearedEventHandler(this.m_pConnectActiveEvent_ContentsCleared));
                         }
                     }
                     catch (Exception exception1)
@@ -1391,7 +1394,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                         if (value is IMapControl2)
                         {
                             this.m_pMapCtrl = value as IMapControl2;
-                            (this.m_pMapCtrl as IMapControlEvents2_Event).add_OnMapReplaced(new IMapControlEvents2_OnMapReplacedEventHandler(this.mapctrl_OnMapReplaced));
+                            (this.m_pMapCtrl as IMapControlEvents2_Event).OnMapReplaced+=(new IMapControlEvents2_OnMapReplacedEventHandler(this.mapctrl_OnMapReplaced));
                             if (this.m_pConnectActiveEvent != null)
                             {
                                 this.m_pConnectActiveEvent = null;
@@ -1404,9 +1407,9 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                             {
                                 if (this.m_ipPageLayout != null)
                                 {
-                                    this.m_ipPageLayout.remove_ItemAdded(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemAddedEventHandler(this.m_ipPageLayout_ItemAdded));
-                                    this.m_ipPageLayout.remove_ItemDeleted(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemDeletedEventHandler(this.m_ipPageLayout_ItemDeleted));
-                                    this.m_ipPageLayout.remove_FocusMapChanged(new ESRI.ArcGIS.Carto.IActiveViewEvents_FocusMapChangedEventHandler(this.m_ipPageLayout_FocusMapChanged));
+                                    this.m_ipPageLayout.ItemAdded-=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemAddedEventHandler(this.m_ipPageLayout_ItemAdded));
+                                    this.m_ipPageLayout.ItemDeleted-=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemDeletedEventHandler(this.m_ipPageLayout_ItemDeleted));
+                                    this.m_ipPageLayout.FocusMapChanged-=(new ESRI.ArcGIS.Carto.IActiveViewEvents_FocusMapChangedEventHandler(this.m_ipPageLayout_FocusMapChanged));
                                 }
                             }
                             catch
@@ -1416,12 +1419,12 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                             IActiveView activeView = this.m_pPageLayoutCtrl.ActiveView;
                             this.m_pConnectActiveEvent = (ESRI.ArcGIS.Carto.IActiveViewEvents_Event) activeView.FocusMap;
                             this.m_ipPageLayout = (ESRI.ArcGIS.Carto.IActiveViewEvents_Event) this.m_pPageLayoutCtrl.PageLayout;
-                            (this.m_pPageLayoutCtrl as IPageLayoutControlEvents_Event).add_OnPageLayoutReplaced(new IPageLayoutControlEvents_OnPageLayoutReplacedEventHandler(this.TOCTreeViewWrap_OnPageLayoutReplaced));
+                            (this.m_pPageLayoutCtrl as IPageLayoutControlEvents_Event).OnPageLayoutReplaced+=(new IPageLayoutControlEvents_OnPageLayoutReplacedEventHandler(this.TOCTreeViewWrap_OnPageLayoutReplaced));
                             try
                             {
-                                this.m_ipPageLayout.add_ItemAdded(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemAddedEventHandler(this.m_ipPageLayout_ItemAdded));
-                                this.m_ipPageLayout.add_ItemDeleted(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemDeletedEventHandler(this.m_ipPageLayout_ItemDeleted));
-                                this.m_ipPageLayout.add_FocusMapChanged(new ESRI.ArcGIS.Carto.IActiveViewEvents_FocusMapChangedEventHandler(this.m_ipPageLayout_FocusMapChanged));
+                                this.m_ipPageLayout.ItemAdded+=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemAddedEventHandler(this.m_ipPageLayout_ItemAdded));
+                                this.m_ipPageLayout.ItemDeleted+=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemDeletedEventHandler(this.m_ipPageLayout_ItemDeleted));
+                                this.m_ipPageLayout.FocusMapChanged+=(new ESRI.ArcGIS.Carto.IActiveViewEvents_FocusMapChangedEventHandler(this.m_ipPageLayout_FocusMapChanged));
                             }
                             catch
                             {
@@ -1431,10 +1434,10 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                         {
                             if (this.m_pConnectActiveEvent != null)
                             {
-                                this.m_pConnectActiveEvent.add_ItemAdded(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemAddedEventHandler(this.m_pConnectActiveEvent_ItemAdded));
-                                this.m_pConnectActiveEvent.add_ItemDeleted(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemDeletedEventHandler(this.m_pConnectActiveEvent_ItemDeleted));
-                                this.m_pConnectActiveEvent.add_ItemReordered(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemReorderedEventHandler(this.m_pConnectActiveEvent_ItemReordered));
-                                this.m_pConnectActiveEvent.add_ContentsCleared(new ESRI.ArcGIS.Carto.IActiveViewEvents_ContentsClearedEventHandler(this.m_pConnectActiveEvent_ContentsCleared));
+                                this.m_pConnectActiveEvent.ItemAdded+=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemAddedEventHandler(this.m_pConnectActiveEvent_ItemAdded));
+                                this.m_pConnectActiveEvent.ItemDeleted+=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemDeletedEventHandler(this.m_pConnectActiveEvent_ItemDeleted));
+                                this.m_pConnectActiveEvent.ItemReordered+=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemReorderedEventHandler(this.m_pConnectActiveEvent_ItemReordered));
+                                this.m_pConnectActiveEvent.ContentsCleared+=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ContentsClearedEventHandler(this.m_pConnectActiveEvent_ContentsCleared));
                             }
                         }
                         catch (Exception exception2)

@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Xml;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.esriSystem;
+using Yutai.ArcGIS.Common;
 using Array = System.Array;
 
 namespace Yutai.ArcGIS.Carto.UI

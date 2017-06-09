@@ -219,42 +219,51 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void method_0()
         {
+            object extension;
             if (this.ilayerExtensions_0 != null)
             {
-                int num;
-                object obj2;
-                IHatchLayerExtension extension = null;
-                for (num = 0; num < this.ilayerExtensions_0.ExtensionCount; num++)
+                IHatchLayerExtension hatchLayerExtension = null;
+                int i = 0;
+                while (true)
                 {
-                    obj2 = this.ilayerExtensions_0.get_Extension(num);
-                    if (obj2 is IHatchLayerExtension)
+                    if (i < this.ilayerExtensions_0.ExtensionCount)
                     {
-                        extension = obj2 as IHatchLayerExtension;
-                        break;
-                    }
-                }
-                if (extension != null)
-                {
-                    IHatchClass class2;
-                    this.chkShowHatches.Checked = extension.ShowHatches;
-                    obj2 = extension.HatchClassNames();
-                    if (extension.HatchClassCount() == 0)
-                    {
-                        class2 = this.method_3();
-                        this.method_1("df", class2, this.treeView1);
+                        extension = this.ilayerExtensions_0.Extension[i];
+                        if (extension is IHatchLayerExtension)
+                        {
+                            hatchLayerExtension = extension as IHatchLayerExtension;
+                            break;
+                        }
+                        else
+                        {
+                            i++;
+                        }
                     }
                     else
                     {
-                        IEnumerator enumerator = obj2.GetEnumerator();
+                        break;
+                    }
+                }
+                if (hatchLayerExtension != null)
+                {
+                    this.chkShowHatches.Checked = hatchLayerExtension.ShowHatches;
+                    extension = hatchLayerExtension.HatchClassNames();
+                    if (hatchLayerExtension.HatchClassCount() != 0)
+                    {
+                        IEnumerator enumerator = ((System.Array)extension).GetEnumerator();
                         enumerator.Reset();
                         enumerator.MoveNext();
-                        for (num = 0; num < extension.HatchClassCount(); num++)
+                        for (i = 0; i < hatchLayerExtension.HatchClassCount(); i++)
                         {
-                            string name = enumerator.Current.ToString();
-                            class2 = extension.HatchClass(name);
-                            this.method_1(name, (class2 as IClone).Clone() as IHatchClass, this.treeView1);
+                            string str = enumerator.Current.ToString();
+                            IHatchClass hatchClass = hatchLayerExtension.HatchClass(str);
+                            this.method_1(str, (hatchClass as IClone).Clone() as IHatchClass, this.treeView1);
                             enumerator.MoveNext();
                         }
+                    }
+                    else
+                    {
+                        this.method_1("df", this.method_3(), this.treeView1);
                     }
                     if (this.treeView1.Nodes.Count > 0)
                     {

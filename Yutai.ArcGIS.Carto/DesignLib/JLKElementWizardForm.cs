@@ -214,7 +214,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         private void InitializeComponent()
         {
-            ComponentResourceManager manager = new ComponentResourceManager(typeof(JLKElementWizardForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(JLKElementWizardForm));
             this.panel1 = new Panel();
             this.btnLast = new Button();
             this.btnNext = new Button();
