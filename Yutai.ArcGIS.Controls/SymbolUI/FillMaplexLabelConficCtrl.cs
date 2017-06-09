@@ -100,8 +100,12 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.groupBox2.Size = new Size(0x120, 0x160);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            int[] bits = new int[4];
-            this.spinEdit2.EditValue = new decimal(bits);
+           
+            this.spinEdit2.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.spinEdit2.Location = new Point(0xb0, 0x128);
             this.spinEdit2.Name = "spinEdit2";
             this.spinEdit2.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
@@ -118,8 +122,12 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.pictureEdit3.Name = "pictureEdit3";
             this.pictureEdit3.Size = new Size(0x51, 0x3a);
             this.pictureEdit3.TabIndex = 20;
-            bits = new int[4];
-            this.spinEdit1.EditValue = new decimal(bits);
+           
+            this.spinEdit1.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.spinEdit1.Location = new Point(0xb0, 0x20);
             this.spinEdit1.Name = "spinEdit1";
             this.spinEdit1.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
@@ -168,8 +176,12 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Size = new Size(0x51, 0x3a);
             this.pictureEdit1.TabIndex = 0;
-            bits = new int[4];
-            this.spinEdit3.EditValue = new decimal(bits);
+         
+            this.spinEdit3.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.spinEdit3.Location = new Point(0xb0, 0x40);
             this.spinEdit3.Name = "spinEdit3";
             this.spinEdit3.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });

@@ -20,7 +20,7 @@ namespace Yutai.ArcGIS.Carto.UI
         private ILineSymbol ilineSymbol_0 = new SimpleLineSymbolClass();
         private IMarkerSymbol imarkerSymbol_0 = new SimpleMarkerSymbolClass();
         private IStyleGallery istyleGallery_0 = null;
-        private JLKLenendItem jlklenendItem_0 = null;
+        private YTLegendItem jlklenendItem_0 = null;
         private Label labPoint;
         private RadioButton rdoFillSymbol;
         private RadioButton rdoLineSymbol;
@@ -34,7 +34,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            this.jlklenendItem_0 = new JLKLenendItem(this.btnStyle.Style as ISymbol, this.txtLegendItemName.Text);
+            this.jlklenendItem_0 = new YTLegendItem(this.btnStyle.Style as ISymbol, this.txtLegendItemName.Text);
         }
 
         private void btnStyle_Click(object sender, EventArgs e)
@@ -222,7 +222,7 @@ namespace Yutai.ArcGIS.Carto.UI
         {
         }
 
-        internal JLKLenendItem JLKLenendItem
+        internal YTLegendItem YTLegendItem
         {
             get
             {

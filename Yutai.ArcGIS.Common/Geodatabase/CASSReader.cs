@@ -1408,7 +1408,7 @@ namespace Yutai.ArcGIS.Common.Geodatabase
 			}
 		}
 
-        // JLK.Utility.Geodatabase.CASSReader
+       
         private IFeatureClass method_3(string string_3, string string_4)
         {
             IFeatureClass featureClass = null;

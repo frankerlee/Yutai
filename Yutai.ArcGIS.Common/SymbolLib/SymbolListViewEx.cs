@@ -6,8 +6,8 @@ using Yutai.ArcGIS.Common.AELicenseProvider;
 
 namespace Yutai.ArcGIS.Common.SymbolLib
 {
-	[LicenseProvider(typeof(AELicenseProviderEx))]
-	public class SymbolListViewEx : System.Windows.Forms.ListView
+    //[LicenseProvider(typeof(AELicenseProviderEx))]
+    public class SymbolListViewEx : System.Windows.Forms.ListView
 	{
 		private struct Struct5
 		{
@@ -96,8 +96,7 @@ namespace Yutai.ArcGIS.Common.SymbolLib
 		private int int_2;
 
 		private bool bool_1 = true;
-
-		private License license_0 = null;
+		
 
 		private System.Windows.Forms.ListViewItem listViewItem_0 = null;
 
@@ -169,18 +168,14 @@ namespace Yutai.ArcGIS.Common.SymbolLib
 			{
 				this.icontainer_0.Dispose();
 			}
-			if (bool_3 && this.license_0 != null)
-			{
-				this.license_0.Dispose();
-				this.license_0 = null;
-			}
+			
 			base.Dispose(bool_3);
 		}
 
 		private void method_0()
 		{
 			this.icontainer_0 = new Container();
-			ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(SymbolListViewEx));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SymbolListViewEx));
 			this.columnHeader_0 = new System.Windows.Forms.ColumnHeader();
 			this.columnHeader_1 = new System.Windows.Forms.ColumnHeader();
 			this.imageList_0 = new System.Windows.Forms.ImageList(this.icontainer_0);
@@ -191,12 +186,12 @@ namespace Yutai.ArcGIS.Common.SymbolLib
 			this.columnHeader_0.Text = "名称";
 			this.columnHeader_0.Width = 120;
 			this.columnHeader_1.Text = "种类";
-			//this.imageList_0.ImageStream = (System.Windows.Forms.ImageListStreamer)componentResourceManager.GetObject("sImageList.ImageStream");
+			//this.imageList_0.ImageStream = (System.Windows.Forms.ImageListStreamer)resources.GetObject("sImageList.ImageStream");
 			this.imageList_0.TransparentColor = Color.Transparent;
-			this.imageList_0.Images.SetKeyName(0, "");
-			//this.imageList_1.ImageStream = (System.Windows.Forms.ImageListStreamer)componentResourceManager.GetObject("lImageList.ImageStream");
+			//this.imageList_0.Images.SetKeyName(0, "");
+			//this.imageList_1.ImageStream = (System.Windows.Forms.ImageListStreamer)resources.GetObject("lImageList.ImageStream");
 			this.imageList_1.TransparentColor = Color.Transparent;
-			this.imageList_1.Images.SetKeyName(0, "");
+			//this.imageList_1.Images.SetKeyName(0, "");
 			this.imageList_2.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
 			this.imageList_2.ImageSize = new Size(16, 16);
 			this.imageList_2.TransparentColor = Color.Transparent;
@@ -224,7 +219,6 @@ namespace Yutai.ArcGIS.Common.SymbolLib
 
 		public SymbolListViewEx()
 		{
-			this.license_0 = LicenseManager.Validate(typeof(SymbolListViewEx), this);
 			this.method_0();
 			this.textBox_0 = new System.Windows.Forms.TextBox();
 			this.textBox_0.Font = this.Font;

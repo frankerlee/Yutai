@@ -36,7 +36,7 @@ namespace Yutai.ArcGIS.Catalog.Properties
             {
                 if (object.ReferenceEquals(resourceMan, null))
                 {
-                    System.Resources.ResourceManager manager = new System.Resources.ResourceManager("JLK.Catalog.Properties.Resources", typeof(Resources).Assembly);
+                    System.Resources.ResourceManager manager = new System.Resources.ResourceManager("Yutai.ArcGIS.Catalog.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = manager;
                 }
                 return resourceMan;

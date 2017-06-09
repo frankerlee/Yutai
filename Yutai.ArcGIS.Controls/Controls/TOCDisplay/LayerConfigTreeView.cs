@@ -637,7 +637,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     name = "Scene";
                 }
                 TOCTreeNode pNode = new TOCTreeNodeEx(name, false, true);
-                Bitmap bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.layers.bmp"));
+                Bitmap bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.layers.bmp"));
                 pNode.Image = bitmap;
                 pNode.Tag = frame;
                 pParantNodes.Add(pNode);
@@ -894,7 +894,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     TOCTreeNode pNode = new TOCTreeNodeEx(name, false, true);
                     base.m_FocusMapNode = pNode;
                     base.m_FocusMapNode.NodeFont = new Font("Arial", 8f, FontStyle.Bold);
-                    Bitmap bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.layers.bmp"));
+                    Bitmap bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.layers.bmp"));
                     pNode.Image = bitmap;
                     pNode.Tag = this.m_pMapCtrl.Map;
                     this.m_pTOCTreeView.Nodes.Add(pNode);

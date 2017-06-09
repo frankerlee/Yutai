@@ -14,6 +14,7 @@ using ESRI.ArcGIS.Geometry;
 using ESRI.ArcGIS.SystemUI;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
+using Yutai.Plugins.Events;
 
 namespace Yutai.ArcGIS.Common
 {

@@ -147,6 +147,7 @@
     <Compile Include="Commands\MapLegend\CmdExpandAllLayer.cs" />
     <Compile Include="Commands\MapLegend\CmdExportData.cs" />
     <Compile Include="Commands\MapLegend\CmdHideAllLayer.cs" />
+    <Compile Include="Commands\MapLegend\CmdLayerProperties.cs" />
     <Compile Include="Commands\MapLegend\CmdLegendAddData.cs" />
     <Compile Include="Commands\MapLegend\CmdLegendAddGroupLayer.cs" />
     <Compile Include="Commands\MapLegend\CmdPanToSelectedFeature.cs" />
@@ -213,6 +214,8 @@
       <DependentUpon>SplashView.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper\DockPanelHelper.cs" />
+    <Compile Include="LicenseInitializer.cs" />
+    <Compile Include="LicenseInitializer.Designer.cs" />
     <Compile Include="Menu\MapListener.cs" />
     <Compile Include="Menu\MenuListener.cs" />
     <Compile Include="Menu\MenuGenerator.cs" />
@@ -294,9 +297,25 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Yutai.ArcGIS.Carto\Yutai.ArcGIS.Carto.csproj">
+      <Project>{C493421E-9EA5-43C7-94A1-3CAF106014BE}</Project>
+      <Name>Yutai.ArcGIS.Carto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yutai.ArcGIS.Catalog\Yutai.ArcGIS.Catalog.csproj">
+      <Project>{a71076f2-b2ed-4522-8dbf-bca1689eb637}</Project>
+      <Name>Yutai.ArcGIS.Catalog</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Yutai.ArcGIS.Common\Yutai.ArcGIS.Common.csproj">
       <Project>{1938B3F8-8EDE-48F7-9594-EEB1F126E622}</Project>
       <Name>Yutai.ArcGIS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yutai.ArcGIS.Controls\Yutai.ArcGIS.Controls.csproj">
+      <Project>{0e17b019-ee36-46b7-8b96-c0a3ca666430}</Project>
+      <Name>Yutai.ArcGIS.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yutai.ArcGIS.Framework\Yutai.ArcGIS.Framework.csproj">
+      <Project>{80d1c45b-805c-48e6-bf90-f8cb2b033d31}</Project>
+      <Name>Yutai.ArcGIS.Framework</Name>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.DI.Castle\Yutai.DI.Castle.csproj">
       <Project>{F7CF04D0-81A0-4E89-BD3B-7689F49F3653}</Project>

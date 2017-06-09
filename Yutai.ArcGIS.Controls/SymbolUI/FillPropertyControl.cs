@@ -98,8 +98,12 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "偏移量";
-            int[] bits = new int[4];
-            this.numericUpDownYOffset.EditValue = new decimal(bits);
+         
+            this.numericUpDownYOffset.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.numericUpDownYOffset.Location = new Point(0x30, 50);
             this.numericUpDownYOffset.Name = "numericUpDownYOffset";
             this.numericUpDownYOffset.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
@@ -107,19 +111,28 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.numericUpDownYOffset.Properties.DisplayFormat.FormatType = FormatType.Numeric;
             this.numericUpDownYOffset.Properties.EditFormat.FormatString = "0.####";
             this.numericUpDownYOffset.Properties.EditFormat.FormatType = FormatType.Numeric;
-            bits = new int[4];
-            bits[0] = 100;
-            this.numericUpDownYOffset.Properties.MaxValue = new decimal(bits);
-            bits = new int[4];
-            bits[0] = 100;
-            bits[3] = -2147483648;
-            this.numericUpDownYOffset.Properties.MinValue = new decimal(bits);
+           
+            this.numericUpDownYOffset.Properties.MaxValue = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            
+            this.numericUpDownYOffset.Properties.MinValue = new decimal(new int[] {
+            100,
+            0,
+            0,
+             -2147483648});
             this.numericUpDownYOffset.Properties.UseCtrlIncrement = false;
             this.numericUpDownYOffset.Size = new Size(0x40, 0x17);
             this.numericUpDownYOffset.TabIndex = 70;
             this.numericUpDownYOffset.TextChanged += new EventHandler(this.numericUpDownYOffset_ValueChanged);
-            bits = new int[4];
-            this.numericUpDownXOffset.EditValue = new decimal(bits);
+            
+            this.numericUpDownXOffset.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.numericUpDownXOffset.Location = new Point(0x30, 0x12);
             this.numericUpDownXOffset.Name = "numericUpDownXOffset";
             this.numericUpDownXOffset.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
@@ -127,13 +140,16 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.numericUpDownXOffset.Properties.DisplayFormat.FormatType = FormatType.Numeric;
             this.numericUpDownXOffset.Properties.EditFormat.FormatString = "0.####";
             this.numericUpDownXOffset.Properties.EditFormat.FormatType = FormatType.Numeric;
-            bits = new int[4];
-            bits[0] = 100;
-            this.numericUpDownXOffset.Properties.MaxValue = new decimal(bits);
-            bits = new int[4];
-            bits[0] = 100;
-            bits[3] = -2147483648;
-            this.numericUpDownXOffset.Properties.MinValue = new decimal(bits);
+            this.numericUpDownXOffset.Properties.MaxValue = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.numericUpDownXOffset.Properties.MinValue = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.numericUpDownXOffset.Properties.UseCtrlIncrement = false;
             this.numericUpDownXOffset.Size = new Size(0x40, 0x17);
             this.numericUpDownXOffset.TabIndex = 0x45;
@@ -160,8 +176,12 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "间隔";
-            bits = new int[4];
-            this.numericUpDownYSpace.EditValue = new decimal(bits);
+           
+            this.numericUpDownYSpace.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.numericUpDownYSpace.Location = new Point(0x30, 50);
             this.numericUpDownYSpace.Name = "numericUpDownYSpace";
             this.numericUpDownYSpace.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
@@ -169,19 +189,25 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.numericUpDownYSpace.Properties.DisplayFormat.FormatType = FormatType.Numeric;
             this.numericUpDownYSpace.Properties.EditFormat.FormatString = "0.####";
             this.numericUpDownYSpace.Properties.EditFormat.FormatType = FormatType.Numeric;
-            bits = new int[4];
-            bits[0] = 100;
-            this.numericUpDownYSpace.Properties.MaxValue = new decimal(bits);
-            bits = new int[4];
-            bits[0] = 100;
-            bits[3] = -2147483648;
-            this.numericUpDownYSpace.Properties.MinValue = new decimal(bits);
+            this.numericUpDownYSpace.Properties.MaxValue = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.numericUpDownYSpace.Properties.MinValue = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.numericUpDownYSpace.Properties.UseCtrlIncrement = false;
             this.numericUpDownYSpace.Size = new Size(0x40, 0x17);
             this.numericUpDownYSpace.TabIndex = 0x48;
             this.numericUpDownYSpace.TextChanged += new EventHandler(this.numericUpDownYSpace_ValueChanged);
-            bits = new int[4];
-            this.numericUpDownXSpace.EditValue = new decimal(bits);
+            this.numericUpDownXSpace.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.numericUpDownXSpace.Location = new Point(0x30, 0x12);
             this.numericUpDownXSpace.Name = "numericUpDownXSpace";
             this.numericUpDownXSpace.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
@@ -189,13 +215,17 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.numericUpDownXSpace.Properties.DisplayFormat.FormatType = FormatType.Numeric;
             this.numericUpDownXSpace.Properties.EditFormat.FormatString = "0.####";
             this.numericUpDownXSpace.Properties.EditFormat.FormatType = FormatType.Numeric;
-            bits = new int[4];
-            bits[0] = 100;
-            this.numericUpDownXSpace.Properties.MaxValue = new decimal(bits);
-            bits = new int[4];
-            bits[0] = 100;
-            bits[3] = -2147483648;
-            this.numericUpDownXSpace.Properties.MinValue = new decimal(bits);
+           
+            this.numericUpDownXSpace.Properties.MaxValue = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.numericUpDownXSpace.Properties.MinValue = new  decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.numericUpDownXSpace.Properties.UseCtrlIncrement = false;
             this.numericUpDownXSpace.Size = new Size(0x40, 0x17);
             this.numericUpDownXSpace.TabIndex = 0x47;

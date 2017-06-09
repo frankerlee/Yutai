@@ -1,13 +1,11 @@
-﻿namespace JLK.ControlExtendEx
-{
-    using System;
-    using System.ComponentModel;
-    using System.Drawing;
-    using System.Drawing.Drawing2D;
-    using System.Runtime.CompilerServices;
-    using System.Threading;
-    using System.Windows.Forms;
+﻿using System;
+using System.ComponentModel;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Windows.Forms;
 
+namespace Yutai.ArcGIS.Common.ControlExtendEx
+{
     public class ItemImagesContainer : Form
     {
         private Container container_0 = null;

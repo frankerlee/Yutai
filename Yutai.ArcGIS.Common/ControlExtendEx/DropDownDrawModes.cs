@@ -1,11 +1,11 @@
-﻿namespace JLK.ControlExtendEx
-{
-    using System;
-    using System.ComponentModel;
-    using System.Drawing.Design;
-    using System.Windows.Forms;
-    using System.Windows.Forms.Design;
+﻿using System;
+using System.ComponentModel;
+using System.Drawing.Design;
+using System.Windows.Forms;
+using System.Windows.Forms.Design;
 
+namespace Yutai.ArcGIS.Common.ControlExtendEx
+{
     public sealed class DropDownDrawModes : UITypeEditor
     {
         private IWindowsFormsEditorService iwindowsFormsEditorService_0;

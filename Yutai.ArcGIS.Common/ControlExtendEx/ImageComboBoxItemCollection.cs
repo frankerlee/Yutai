@@ -1,10 +1,9 @@
-﻿namespace JLK.ControlExtendEx
-{
-    using System;
-    using System.Collections;
-    using System.ComponentModel;
-    using System.Reflection;
+﻿using System;
+using System.Collections;
+using System.ComponentModel;
 
+namespace Yutai.ArcGIS.Common.ControlExtendEx
+{
     public sealed class ImageComboBoxItemCollection : IList, IEnumerable, ICollection
     {
         private ImageComboBox imageComboBox_0 = null;

@@ -10,6 +10,7 @@ using ESRI.ArcGIS.Geometry;
 using Yutai.ArcGIS.Common;
 using Yutai.ArcGIS.Common.BaseClasses;
 using Yutai.ArcGIS.Common.Editor;
+using Yutai.Plugins.Events;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {

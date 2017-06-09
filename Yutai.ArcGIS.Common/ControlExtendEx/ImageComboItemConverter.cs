@@ -1,10 +1,10 @@
-﻿namespace JLK.ControlExtendEx
-{
-    using System;
-    using System.ComponentModel;
-    using System.ComponentModel.Design.Serialization;
-    using System.Globalization;
+﻿using System;
+using System.ComponentModel;
+using System.ComponentModel.Design.Serialization;
+using System.Globalization;
 
+namespace Yutai.ArcGIS.Common.ControlExtendEx
+{
     public sealed class ImageComboItemConverter : ExpandableObjectConverter
     {
         public override bool CanConvertTo(ITypeDescriptorContext itypeDescriptorContext_0, Type type_0)

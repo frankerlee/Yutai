@@ -188,9 +188,9 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.numericUpDownWidth.Properties.DisplayFormat.FormatType = FormatType.Numeric;
             this.numericUpDownWidth.Properties.EditFormat.FormatString = "0.####";
             this.numericUpDownWidth.Properties.EditFormat.FormatType = FormatType.Numeric;
-            bits = new int[4];
-            bits[0] = 100;
-            this.numericUpDownWidth.Properties.MaxValue = new decimal(bits);
+            int[] bits2 = new int[4];
+            bits2[0] = 100;
+            this.numericUpDownWidth.Properties.MaxValue = new decimal(bits2);
             this.numericUpDownWidth.Properties.UseCtrlIncrement = false;
             this.numericUpDownWidth.Size = new Size(80, 0x17);
             this.numericUpDownWidth.TabIndex = 0x30;

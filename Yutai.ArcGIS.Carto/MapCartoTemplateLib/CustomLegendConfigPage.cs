@@ -97,14 +97,14 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     for (int i = 0; i < this.renderInfoListView1.Items.Count; i++)
                     {
                         ListViewItem item = this.renderInfoListView1.Items[i];
-                        if (item.Tag is JLKLenendItem)
+                        if (item.Tag is YTLegendItem)
                         {
                             XmlNode node3 = document.CreateElement("LegendItem");
-                            node3.Attributes.Append(this.method_5(document, "description", (item.Tag as JLKLenendItem).Description));
-                            node3.Attributes.Append(this.method_5(document, "symbol", this.method_6((item.Tag as JLKLenendItem).Symbol)));
-                            if ((item.Tag as JLKLenendItem).BackSymbol != null)
+                            node3.Attributes.Append(this.method_5(document, "description", (item.Tag as YTLegendItem).Description));
+                            node3.Attributes.Append(this.method_5(document, "symbol", this.method_6((item.Tag as YTLegendItem).Symbol)));
+                            if ((item.Tag as YTLegendItem).BackSymbol != null)
                             {
-                                node3.Attributes.Append(this.method_5(document, "backsymbol", this.method_6((item.Tag as JLKLenendItem).BackSymbol)));
+                                node3.Attributes.Append(this.method_5(document, "backsymbol", this.method_6((item.Tag as YTLegendItem).BackSymbol)));
                             }
                             newChild.AppendChild(node3);
                         }
@@ -145,7 +145,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 ListViewItemEx ex = this.renderInfoListView1.SelectedItems[0] as ListViewItemEx;
                 frmNewLegendItem item = new frmNewLegendItem {
                     StyleGallery = ApplicationBase.StyleGallery,
-                    JLKLenendItem = ex.Tag as JLKLenendItem
+                    YTLegendItem = ex.Tag as YTLegendItem
                 };
                 if (((item.ShowDialog() == DialogResult.OK) && this.bool_0) && (this.OnValueChange != null))
                 {
@@ -214,7 +214,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             };
             if (item.ShowDialog() == DialogResult.OK)
             {
-                object[] objArray = new object[] { item.JLKLenendItem.Symbol, item.JLKLenendItem.Description };
+                object[] objArray = new object[] { item.YTLegendItem.Symbol, item.YTLegendItem.Description };
                 ListViewItemEx ex = null;
                 if (this.renderInfoListView1.SelectedItems.Count > 0)
                 {
@@ -225,7 +225,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 {
                     ex = this.renderInfoListView1.Add(objArray);
                 }
-                ex.Tag = item.JLKLenendItem;
+                ex.Tag = item.YTLegendItem;
                 this.btnDeleteAll.Enabled = this.renderInfoListView1.Items.Count > 0;
             }
             if (this.bool_0 && (this.OnValueChange != null))
@@ -721,7 +721,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
             if (symbol != null)
             {
-                JLKLenendItem item = new JLKLenendItem(symbol, str, symbol2);
+                YTLegendItem item = new YTLegendItem(symbol, str, symbol2);
                 object[] objArray = new object[] { item.Symbol, item.Description };
                 this.renderInfoListView1.Add(objArray).Tag = item;
             }
@@ -731,7 +731,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         {
             if (this.OnValueChange != null)
             {
-                JLKLenendItem tag = this.renderInfoListView1.Items[int_1].Tag as JLKLenendItem;
+                YTLegendItem tag = this.renderInfoListView1.Items[int_1].Tag as YTLegendItem;
                 tag.Description = this.renderInfoListView1.Items[int_1].SubItems[1].Text;
                 ListViewItem item2 = this.renderInfoListView1.Items[int_1];
                 tag.Symbol = (item2 as ListViewItemEx).Style as ISymbol;
@@ -825,14 +825,14 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             for (int i = 0; i < this.renderInfoListView1.Items.Count; i++)
             {
                 ListViewItem item = this.renderInfoListView1.Items[i];
-                if (item.Tag is JLKLenendItem)
+                if (item.Tag is YTLegendItem)
                 {
                     XmlNode node3 = document.CreateElement("LegendItem");
-                    node3.Attributes.Append(this.method_5(document, "description", (item.Tag as JLKLenendItem).Description));
-                    node3.Attributes.Append(this.method_5(document, "symbol", this.method_6((item.Tag as JLKLenendItem).Symbol)));
-                    if ((item.Tag as JLKLenendItem).BackSymbol != null)
+                    node3.Attributes.Append(this.method_5(document, "description", (item.Tag as YTLegendItem).Description));
+                    node3.Attributes.Append(this.method_5(document, "symbol", this.method_6((item.Tag as YTLegendItem).Symbol)));
+                    if ((item.Tag as YTLegendItem).BackSymbol != null)
                     {
-                        node3.Attributes.Append(this.method_5(document, "backsymbol", this.method_6((item.Tag as JLKLenendItem).BackSymbol)));
+                        node3.Attributes.Append(this.method_5(document, "backsymbol", this.method_6((item.Tag as YTLegendItem).BackSymbol)));
                     }
                     newChild.AppendChild(node3);
                 }

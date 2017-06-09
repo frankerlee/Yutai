@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 
 namespace Yutai.ArcGIS.Framework.Docking
 {
-    [CompilerGenerated, DebuggerNonUserCode, GeneratedCode("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    
     internal class Strings
     {
         private static CultureInfo resourceCulture;

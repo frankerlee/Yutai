@@ -105,20 +105,20 @@ namespace Yutai.ArcGIS.Common.SymbolLib
 				Bitmap image;
 				if (symbolListItem.m_bVisible)
 				{
-					image = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Utility.Symbol.SymbolControl.Check.bmp"));
+					image = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.SymbolLib.Check.bmp"));
 				}
 				else
 				{
-					image = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Utility.Symbol.SymbolControl.UnCheck.bmp"));
+					image = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.SymbolLib.UnCheck.bmp"));
 				}
 				Bitmap image2;
 				if (symbolListItem.m_bLockColor)
 				{
-					image2 = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Utility.Symbol.SymbolControl.Lock.bmp"));
+					image2 = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.SymbolLib.Lock.bmp"));
 				}
 				else
 				{
-					image2 = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Utility.Symbol.SymbolControl.UnLock.bmp"));
+					image2 = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.SymbolLib.UnLock.bmp"));
 				}
 				Rectangle rect = new Rectangle(2, e.Bounds.Y + (e.Bounds.Height - 16) / 2, 16, 16);
 				Rectangle rect2 = new Rectangle(e.Bounds.Right - 21, e.Bounds.Y + (e.Bounds.Height - 16) / 2, 16, 16);

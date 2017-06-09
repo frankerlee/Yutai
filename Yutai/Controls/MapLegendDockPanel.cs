@@ -10,6 +10,7 @@ using ESRI.ArcGIS.Controls;
 using Yutai.Commands.MapLegend;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
+using Yutai.Plugins.Events;
 using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Mvp;
 using Yutai.UI.Controls;
@@ -44,6 +45,12 @@ namespace Yutai.Controls
             axTOCControl1.OnMouseDown += AxTocControl1OnOnMouseDown;
             _caption = "二维图例";
             Image = Properties.Resources.icon_maplegend;
+            ((IAppContextEvents)_context).OnMapDocumentChangedEvent+= OnOnMapDocumentChangedEvent;
+        }
+
+        private void OnOnMapDocumentChangedEvent()
+        {
+           axTOCControl1.Update();
         }
 
 
@@ -130,22 +137,31 @@ namespace Yutai.Controls
                     new CmdExportData(_context,this),
                     new CmdDeleteAllLayer(_context,this),
                     new CmdDeleteLayer(_context,this),
+                    new CmdLayerProperties(_context)
                 };
             }
         }
 
         private void AxTocControl1OnOnMouseDown(object sender, ITOCControlEvents_OnMouseDownEvent itocControlEventsOnMouseDownEvent)
         {
-            if (itocControlEventsOnMouseDownEvent.button == 2)
+            if (itocControlEventsOnMouseDownEvent.button == 2 || itocControlEventsOnMouseDownEvent.button == 1)
             {
                 axTOCControl1.HitTest(itocControlEventsOnMouseDownEvent.x, itocControlEventsOnMouseDownEvent.y, ref pTocItem, ref pMap, ref pLayer, ref pother, ref pindex);
                 if (pTocItem == esriTOCControlItem.esriTOCControlItemMap)
+                {
                     axTOCControl1.SelectItem(pMap, null);
+                    _context.CurrentLayer = null;
+                }
                 else
+                {
                     axTOCControl1.SelectItem(pLayer, null);
-
-                var pnt = PointToClient(Cursor.Position);
-                contextMenuLayer.Show(this, pnt);
+                    _context.CurrentLayer = pLayer;
+                }
+                if (itocControlEventsOnMouseDownEvent.button == 2)
+                {
+                    var pnt = PointToClient(Cursor.Position);
+                    contextMenuLayer.Show(this, pnt);
+                }
             }
         }
 

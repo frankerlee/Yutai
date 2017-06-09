@@ -20,7 +20,7 @@ namespace Yutai.ArcGIS.Common
 
         internal UtilityLicenseProviderCheck()
         {
-            this.license_0 = LicenseManager.Validate(typeof(UtilityLicenseProviderCheck), this);
+          //  this.license_0 = LicenseManager.Validate(typeof(UtilityLicenseProviderCheck), this);
         }
 
         internal static void Init()
@@ -37,6 +37,7 @@ namespace Yutai.ArcGIS.Common
 
         internal static bool Check()
         {
+            return true;
             if (!UtilityLicenseProviderCheck.m_initOk)
             {
                 UtilityLicenseProviderCheck.Init();

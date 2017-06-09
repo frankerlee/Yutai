@@ -21,8 +21,8 @@ namespace Yutai.ArcGIS.Common.AELicenseProvider
 		{
 			if (AELicenseProviderEx.m_hash.Count == 0)
 			{
-				AELicenseProviderEx.m_hash.Add("JLK.Editor.EditorLicenseProviderCheck", "编辑模块");
-				AELicenseProviderEx.m_hash.Add("JLK.Catalog.CatalogLicenseProviderCheck", "数据管理库");
+				AELicenseProviderEx.m_hash.Add("Yutai.Editor.EditorLicenseProviderCheck", "编辑模块");
+				AELicenseProviderEx.m_hash.Add("Yutai.Catalog.CatalogLicenseProviderCheck", "数据管理库");
 			}
 		}
 

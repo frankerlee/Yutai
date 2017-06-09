@@ -1,11 +1,11 @@
-﻿namespace JLK.ControlExtendEx
-{
-    using System;
-    using System.ComponentModel;
-    using System.Drawing;
-    using System.Runtime.InteropServices;
-    using System.Windows.Forms;
+﻿using System;
+using System.ComponentModel;
+using System.Drawing;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
+namespace Yutai.ArcGIS.Common.ControlExtendEx
+{
     public sealed class ComboEditWindow : NativeWindow
     {
         private const int EC_LEFTMARGIN = 1;

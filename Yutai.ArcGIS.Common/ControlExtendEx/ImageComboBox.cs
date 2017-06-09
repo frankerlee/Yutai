@@ -1,15 +1,15 @@
-﻿namespace JLK.ControlExtendEx
-{
-    using System;
-    using System.Collections;
-    using System.ComponentModel;
-    using System.ComponentModel.Design;
-    using System.Drawing;
-    using System.Drawing.Design;
-    using System.Runtime.InteropServices;
-    using System.Windows.Forms;
-    using System.Windows.Forms.Design;
+﻿using System;
+using System.Collections;
+using System.ComponentModel;
+using System.ComponentModel.Design;
+using System.Drawing;
+using System.Drawing.Design;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
+using System.Windows.Forms.Design;
 
+namespace Yutai.ArcGIS.Common.ControlExtendEx
+{
     [Designer(typeof(ControlDesigner)), ToolboxBitmap(typeof(ImageComboBox), "ComboBMP.bmp"), ToolboxItem(true)]
     public class ImageComboBox : ComboBox
     {

@@ -16,11 +16,11 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\Yutai\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -34,16 +34,23 @@
     <Reference Include="DevExpress.Data.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>D:\Program Files (x86)\DevExpress 16.1.4\Components\Bin\Framework\DevExpress.Data.v16.1.dll</HintPath>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>D:\Program Files (x86)\DevExpress 16.1.4\Components\Bin\Framework\DevExpress.XtraEditors.v16.1.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>D:\Program Files (x86)\DevExpress 16.1.4\Components\Bin\Framework\DevExpress.XtraGrid.v16.1.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="ESRI.ArcGIS.3DAnalyst, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -572,7 +579,6 @@
     <Compile Include="frmProgress2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IAppContextEvents.cs" />
     <Compile Include="ISnapEnvironment.cs" />
     <Compile Include="MainSunProcessAssist.cs" />
     <Compile Include="Data\AbstractDataAccess.cs" />
@@ -914,6 +920,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Anno.bmp" />
+    <EmbeddedResource Include="SymbolUI\ServerStyle" />
+    <EmbeddedResource Include="SymbolUI\template.style" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Area.bmp" />
@@ -927,6 +935,26 @@
   <ItemGroup>
     <Content Include="ControlExtend\组合框.ComboBMP.bmp" />
     <Content Include="ControlExtend\组合框.None.bmp" />
+    <EmbeddedResource Include="Cursor\CopyFeaturesTool.cur" />
+    <EmbeddedResource Include="Cursor\Cursor1.cur" />
+    <EmbeddedResource Include="Cursor\DeleteVertex.cur" />
+    <EmbeddedResource Include="Cursor\Digitise.cur" />
+    <EmbeddedResource Include="Cursor\Edit.cur" />
+    <EmbeddedResource Include="Cursor\EditMove.cur" />
+    <EmbeddedResource Include="Cursor\ExtendLine.cur" />
+    <EmbeddedResource Include="Cursor\FixTopologyErrorTool.cur" />
+    <EmbeddedResource Include="Cursor\LineEdit.cur" />
+    <EmbeddedResource Include="Cursor\RotateFeature.cur" />
+    <EmbeddedResource Include="Cursor\ScaleFeature.cur" />
+    <EmbeddedResource Include="Cursor\SelectTopologyError.cur" />
+    <EmbeddedResource Include="Cursor\SelectTopologyError1.cur" />
+    <EmbeddedResource Include="Cursor\TopologyEdit.cur" />
+    <EmbeddedResource Include="Cursor\ValidateTopologyInExtendCommand.cur" />
+    <EmbeddedResource Include="Cursor\VertexEdit.cur" />
+    <EmbeddedResource Include="SymbolLib\Check.bmp" />
+    <EmbeddedResource Include="SymbolLib\Lock.bmp" />
+    <EmbeddedResource Include="SymbolLib\UnCheck.bmp" />
+    <EmbeddedResource Include="SymbolLib\UnLock.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -5,7 +5,7 @@ using Yutai.ArcGIS.Common.AELicenseProvider;
 
 namespace Yutai.ArcGIS.Controls.SymbolUI
 {
-    [LicenseProvider(typeof(AELicenseProviderEx))]
+  //  [LicenseProvider(typeof(AELicenseProviderEx))]
     internal class SymbolUILicenseProviderCheck
     {
         private static SymbolUILicenseProviderCheck _licenceseCheck = null;
@@ -14,11 +14,12 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         internal SymbolUILicenseProviderCheck()
         {
-            this._license = LicenseManager.Validate(typeof(SymbolUILicenseProviderCheck), this);
+          //  this._license = LicenseManager.Validate(typeof(SymbolUILicenseProviderCheck), this);
         }
 
         internal static bool Check()
         {
+            return true;
             if (!m_initOk)
             {
                 Init();

@@ -5,6 +5,7 @@ using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geometry;
 using ESRI.ArcGIS.SystemUI;
+using Yutai.Plugins.Events;
 
 namespace Yutai.ArcGIS.Common
 {

@@ -91,11 +91,11 @@ namespace Yutai.ArcGIS.Carto.UI
             for (int i = 0; i < this.renderInfoListView1.Items.Count; i++)
             {
                 ListViewItem item = this.renderInfoListView1.Items[i];
-                if (item.Tag is JLKLenendItem)
+                if (item.Tag is YTLegendItem)
                 {
                     XmlNode node3 = document.CreateElement("LegendItem");
-                    node3.Attributes.Append(this.method_5(document, "description", (item.Tag as JLKLenendItem).Description));
-                    node3.Attributes.Append(this.method_5(document, "symbol", this.method_6((item.Tag as JLKLenendItem).Symbol)));
+                    node3.Attributes.Append(this.method_5(document, "description", (item.Tag as YTLegendItem).Description));
+                    node3.Attributes.Append(this.method_5(document, "symbol", this.method_6((item.Tag as YTLegendItem).Symbol)));
                     newChild.AppendChild(node3);
                 }
             }
@@ -183,8 +183,8 @@ namespace Yutai.ArcGIS.Carto.UI
             };
             if (item.ShowDialog() == DialogResult.OK)
             {
-                object[] objArray = new object[] { item.JLKLenendItem.Symbol, item.JLKLenendItem.Description };
-                this.renderInfoListView1.Add(objArray).Tag = item.JLKLenendItem;
+                object[] objArray = new object[] { item.YTLegendItem.Symbol, item.YTLegendItem.Description };
+                this.renderInfoListView1.Add(objArray).Tag = item.YTLegendItem;
                 this.btnDeleteAll.Enabled = this.renderInfoListView1.Items.Count > 0;
             }
             if (this.bool_0 && (this.OnValueChange != null))
@@ -298,7 +298,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.butNewRow.Text = "添加";
             this.butNewRow.UseVisualStyleBackColor = true;
             this.butNewRow.Click += new EventHandler(this.butNewRow_Click);
-            this.imageList_0.ImageStream = resources.GetObject("imageList1.ImageStream") as ImageListStreamer;
+            this.imageList_0.ImageStream =(ImageListStreamer) resources.GetObject("imageList1.ImageStream") ;
             this.imageList_0.TransparentColor = Color.Transparent;
             this.imageList_0.Images.SetKeyName(0, "Buffer.ico");
             this.txtColumnNum.Location = new Point(0x43, 30);
@@ -634,7 +634,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
             if (symbol != null)
             {
-                JLKLenendItem item = new JLKLenendItem(symbol, str);
+                YTLegendItem item = new YTLegendItem(symbol, str);
                 object[] objArray = new object[] { item.Symbol, item.Description };
                 this.renderInfoListView1.Add(objArray).Tag = item;
             }
@@ -644,7 +644,7 @@ namespace Yutai.ArcGIS.Carto.UI
         {
             if (this.OnValueChange != null)
             {
-                JLKLenendItem tag = this.renderInfoListView1.Items[int_1].Tag as JLKLenendItem;
+                YTLegendItem tag = this.renderInfoListView1.Items[int_1].Tag as YTLegendItem;
                 tag.Description = this.renderInfoListView1.Items[int_1].SubItems[1].Text;
                 ListViewItem item2 = this.renderInfoListView1.Items[int_1];
                 tag.Symbol = (item2 as ListViewItemEx).Style as ISymbol;
@@ -738,11 +738,11 @@ namespace Yutai.ArcGIS.Carto.UI
             for (int i = 0; i < this.renderInfoListView1.Items.Count; i++)
             {
                 ListViewItem item = this.renderInfoListView1.Items[i];
-                if (item.Tag is JLKLenendItem)
+                if (item.Tag is YTLegendItem)
                 {
                     XmlNode node3 = document.CreateElement("LegendItem");
-                    node3.Attributes.Append(this.method_5(document, "description", (item.Tag as JLKLenendItem).Description));
-                    node3.Attributes.Append(this.method_5(document, "symbol", this.method_6((item.Tag as JLKLenendItem).Symbol)));
+                    node3.Attributes.Append(this.method_5(document, "description", (item.Tag as YTLegendItem).Description));
+                    node3.Attributes.Append(this.method_5(document, "symbol", this.method_6((item.Tag as YTLegendItem).Symbol)));
                     newChild.AppendChild(node3);
                 }
             }

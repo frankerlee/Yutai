@@ -156,8 +156,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             this.btnChangeSymbol.TabIndex = 5;
             this.btnChangeSymbol.Text = "更改符号...";
             this.btnChangeSymbol.Click += new EventHandler(this.btnChangeSymbol_Click);
-            bits = new int[4];
-            this.txtAngle.EditValue = new decimal(bits);
+            int[] bits2 = new int[4];
+            this.txtAngle.EditValue = new decimal(bits2);
             this.txtAngle.Location = new Point(0x38, 0x5c);
             this.txtAngle.Name = "txtAngle";
             this.txtAngle.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });

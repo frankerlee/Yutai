@@ -19,10 +19,10 @@ using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Controls.SymbolUI
 {
-    [LicenseProvider(typeof(AELicenseProviderEx)), Guid("E8A66E3D-33F6-42e4-84AE-701A02ACF4D1")]
+  //  [LicenseProvider(typeof(AELicenseProviderEx)), Guid("E8A66E3D-33F6-42e4-84AE-701A02ACF4D1")]
     public class frmSymbolSelector : Form
     {
-        private License _license = null;
+    //    private License _license = null;
         private BarAndDockingController barAndDockingController1;
         private BarDockControl barDockControlBottom;
         private BarDockControl barDockControlLeft;
@@ -70,7 +70,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         public frmSymbolSelector()
         {
             this.InitializeComponent();
-            this._license = LicenseManager.Validate(typeof(frmSymbolSelector), this);
+           // this._license = LicenseManager.Validate(typeof(frmSymbolSelector), this);
         }
 
         private void AddSymbol(string FileName)
@@ -461,11 +461,6 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 {
                     this.components.Dispose();
                 }
-                if (this._license != null)
-                {
-                    this._license.Dispose();
-                }
-                this._license = null;
                 this.m_pSG = null;
             }
             base.Dispose(disposing);
@@ -791,8 +786,11 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.groupBoxLine.TabStop = false;
             this.groupBoxLine.Text = "选项";
             this.groupBoxLine.Visible = false;
-            int[] bits = new int[4];
-            this.spinEditWidth.EditValue = new decimal(bits);
+            this.spinEditWidth.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.spinEditWidth.Location = new Point(0x30, 0x38);
             this.spinEditWidth.Name = "spinEditWidth";
             this.spinEditWidth.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
@@ -800,9 +798,11 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.spinEditWidth.Properties.DisplayFormat.FormatType = FormatType.Numeric;
             this.spinEditWidth.Properties.EditFormat.FormatString = "0.####";
             this.spinEditWidth.Properties.EditFormat.FormatType = FormatType.Numeric;
-            bits = new int[4];
-            bits[0] = 100;
-            this.spinEditWidth.Properties.MaxValue = new decimal(bits);
+            this.spinEditWidth.Properties.MaxValue = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             this.spinEditWidth.Size = new Size(0x4b, 0x15);
             this.spinEditWidth.TabIndex = 3;
             this.spinEditWidth.EditValueChanged += new EventHandler(this.spinEditWidth_EditValueChanged);
@@ -836,8 +836,11 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.groupBoxMarker.TabStop = false;
             this.groupBoxMarker.Text = "选项";
             this.groupBoxMarker.Visible = false;
-            bits = new int[4];
-            this.spinEditSize.EditValue = new decimal(bits);
+            this.spinEditSize.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.spinEditSize.Location = new Point(0x30, 0x38);
             this.spinEditSize.Name = "spinEditSize";
             this.spinEditSize.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
@@ -845,9 +848,11 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.spinEditSize.Properties.DisplayFormat.FormatType = FormatType.Numeric;
             this.spinEditSize.Properties.EditFormat.FormatString = "0.####";
             this.spinEditSize.Properties.EditFormat.FormatType = FormatType.Numeric;
-            bits = new int[4];
-            bits[0] = 100;
-            this.spinEditSize.Properties.MaxValue = new decimal(bits);
+            this.spinEditSize.Properties.MaxValue = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             this.spinEditSize.Size = new Size(0x4b, 0x15);
             this.spinEditSize.TabIndex = 3;
             this.spinEditSize.EditValueChanged += new EventHandler(this.spinEditSize_EditValueChanged);

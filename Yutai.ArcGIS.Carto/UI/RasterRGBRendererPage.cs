@@ -50,8 +50,8 @@ namespace Yutai.ArcGIS.Carto.UI
             this.exListView1.Columns.Add(header2);
             EXBoolColumnHeader header3 = new EXBoolColumnHeader("可见性", 80) {
                 Editable = true,
-                TrueImage = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Carto.checked.bmp")),
-                FalseImage = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Carto.uncheck.bmp"))
+                TrueImage = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Carto.checked.bmp")),
+                FalseImage = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Carto.uncheck.bmp"))
             };
             this.exListView1.Columns.Add(header3);
         }

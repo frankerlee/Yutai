@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -63,5 +64,26 @@ namespace Yutai.Plugins.Interfaces
         void SetStatus(string empty);
         void UpdateUI();
         void SetToolTip(string str);
+
+        //需要考虑好怎么样仔细调整AppContext的参数配置
+        //当前图层，在图例点击的时候控制
+        ILayer CurrentLayer { get; set; }
+        //直接有MapControl2传入
+        IMap FocusMap { get; }
+
+        //事件
+        void AcvtiveHookChanged(object hook);
+        void AddAfterDrawCallBack(AfterDraw afterDraw);
+        void AddCommands(YutaiCommand  command);
+        void Close();
+      
+        void MapClipChanged(object clip);
+        void MapDocumentChanged();
+        void MapDocumentSave(string fileName);
+        void ResetCurrentTool();
+   
+
     }
+
+    public delegate void AfterDraw(IDisplay display, esriViewDrawPhase drawPhase);
 }

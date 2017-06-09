@@ -14,6 +14,7 @@ using Yutai.ArcGIS.Common.BaseClasses;
 using Yutai.ArcGIS.Common.Helpers;
 using Yutai.ArcGIS.Controls.Editor.UI;
 using Yutai.ArcGIS.Framework.Docking;
+using Yutai.Plugins.Events;
 
 namespace Yutai.ArcGIS.Controls.Controls
 {

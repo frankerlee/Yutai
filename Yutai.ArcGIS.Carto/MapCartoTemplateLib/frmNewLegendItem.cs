@@ -25,7 +25,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         private ILineSymbol ilineSymbol_0 = new SimpleLineSymbolClass();
         private IMarkerSymbol imarkerSymbol_0 = new SimpleMarkerSymbolClass();
         private IStyleGallery istyleGallery_0 = null;
-        private MapCartoTemplateLib.JLKLenendItem jlklenendItem_0 = null;
+        private MapCartoTemplateLib.YTLegendItem jlklenendItem_0 = null;
         private Label labPoint;
         private NewSymbolButton newSymbolButton1;
         private RadioButton rdoFillSymbol;
@@ -48,7 +48,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         {
             if (this.jlklenendItem_0 == null)
             {
-                this.jlklenendItem_0 = new MapCartoTemplateLib.JLKLenendItem(this.btnStyle.Style as ISymbol, this.txtLegendItemName.Text, this.newSymbolButton1.Style as ISymbol);
+                this.jlklenendItem_0 = new MapCartoTemplateLib.YTLegendItem(this.btnStyle.Style as ISymbol, this.txtLegendItemName.Text, this.newSymbolButton1.Style as ISymbol);
             }
             else
             {
@@ -300,7 +300,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         {
         }
 
-        internal MapCartoTemplateLib.JLKLenendItem JLKLenendItem
+        internal MapCartoTemplateLib.YTLegendItem YTLegendItem
         {
             get
             {

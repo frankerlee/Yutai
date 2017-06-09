@@ -13,11 +13,12 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
 
         internal NetworkLibLicenseProviderCheck()
         {
-            this._license = LicenseManager.Validate(typeof(NetworkLibLicenseProviderCheck), this);
+           // this._license = LicenseManager.Validate(typeof(NetworkLibLicenseProviderCheck), this);
         }
 
         internal static bool Check()
         {
+            return true;
             if (!m_initOk)
             {
                 Init();

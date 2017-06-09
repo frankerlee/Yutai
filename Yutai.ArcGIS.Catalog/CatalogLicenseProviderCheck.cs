@@ -4,7 +4,7 @@ using Yutai.ArcGIS.Common.AELicenseProvider;
 
 namespace Yutai.ArcGIS.Catalog
 {
-    [LicenseProvider(typeof(AELicenseProviderEx))]
+  //  [LicenseProvider(typeof(AELicenseProviderEx))]
     internal class CatalogLicenseProviderCheck
     {
         private static CatalogLicenseProviderCheck _licenceseCheck;
@@ -18,11 +18,12 @@ namespace Yutai.ArcGIS.Catalog
 
         internal CatalogLicenseProviderCheck()
         {
-            this.license_0 = LicenseManager.Validate(typeof(CatalogLicenseProviderCheck), this);
+        //    this.license_0 = LicenseManager.Validate(typeof(CatalogLicenseProviderCheck), this);
         }
 
         internal static bool Check()
         {
+            return true;
             if (!m_initOk)
             {
                 Init();

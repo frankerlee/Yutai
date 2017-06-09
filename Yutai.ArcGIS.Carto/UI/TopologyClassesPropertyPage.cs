@@ -82,12 +82,12 @@ namespace Yutai.ArcGIS.Carto.UI
             this.txtValue.Name = "txtValue";
             this.txtValue.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
             this.txtValue.Properties.Enabled = false;
-            bits = new int[4];
-            bits[0] = 50;
-            this.txtValue.Properties.MaxValue = new decimal(bits);
-            bits = new int[4];
-            bits[0] = 1;
-            this.txtValue.Properties.MinValue = new decimal(bits);
+            int[] bits2 = new int[4];
+            bits2[0] = 50;
+            this.txtValue.Properties.MaxValue = new decimal(bits2);
+            int[] bits3 = new int[4];
+            bits3[0] = 1;
+            this.txtValue.Properties.MinValue = new decimal(bits3);
             this.txtValue.Properties.UseCtrlIncrement = false;
             this.txtValue.Size = new Size(0x60, 0x17);
             this.txtValue.TabIndex = 6;

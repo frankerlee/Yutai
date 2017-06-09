@@ -12,6 +12,7 @@ using ESRI.ArcGIS.Geometry;
 using ESRI.ArcGIS.SystemUI;
 using Yutai.ArcGIS.Common;
 using Yutai.ArcGIS.Common.BaseClasses;
+using Yutai.Plugins.Events;
 using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
@@ -509,7 +510,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     name = "Scene";
                 }
                 TOCTreeNode pNode = new TOCTreeNode(name, false, true);
-                Bitmap bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.layers.bmp"));
+                Bitmap bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.ayers.bmp"));
                 pNode.Image = bitmap;
                 pNode.Tag = frame;
                 pNode.TOCNodeType = NodeType.MapFrame;
@@ -1482,7 +1483,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                         base.m_FocusMap = this.m_pMapCtrl.Map as IBasicMap;
                         this.m_pTOCTreeView.m_FocusMap = this.m_pMapCtrl.Map as IBasicMap;
                         this.m_pTOCTreeView.m_FocusMapNode = node;
-                        bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.layers.bmp"));
+                        bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.ayers.bmp"));
                         node.Image = bitmap;
                         node.Tag = this.m_pMapCtrl.Map;
                         this.m_pTOCTreeView.Nodes.Add(node);
@@ -1497,7 +1498,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                         base.m_FocusMap = this.m_pSceneControl.Scene as IBasicMap;
                         this.m_pTOCTreeView.m_FocusMap = this.m_pSceneControl.Scene as IBasicMap;
                         this.m_pTOCTreeView.m_FocusMapNode = node;
-                        bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.layers.bmp"));
+                        bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.ayers.bmp"));
                         node.Image = bitmap;
                         node.Tag = this.m_pSceneControl.Scene;
                         this.m_pTOCTreeView.Nodes.Add(node);
@@ -1512,7 +1513,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                         base.m_FocusMap = this.m_pGlobeControl.Globe as IBasicMap;
                         this.m_pTOCTreeView.m_FocusMap = this.m_pGlobeControl.Globe as IBasicMap;
                         this.m_pTOCTreeView.m_FocusMapNode = node;
-                        bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.layers.bmp"));
+                        bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.ayers.bmp"));
                         node.Image = bitmap;
                         node.Tag = this.m_pGlobeControl.Globe;
                         this.m_pTOCTreeView.Nodes.Add(node);

@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\Yutai\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -1119,7 +1119,7 @@
     <EmbeddedResource Include="Controls\ProjCoordSys.resx">
       <DependentUpon>ProjCoordSys.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\Properties.resx.resx" />
+    <EmbeddedResource Include="Properties\Resources.resx" />
     <EmbeddedResource Include="Controls\PropertySheet.resx">
       <DependentUpon>PropertySheet.cs</DependentUpon>
     </EmbeddedResource>
@@ -1640,19 +1640,19 @@
     <EmbeddedResource Include="Controls\PaintStyle.Office2003.bmp" />
     <EmbeddedResource Include="Controls\PaintStyle.OfficeXP.bmp" />
     <EmbeddedResource Include="Controls\PaintStyle.WindowsXP.bmp" />
-    <Content Include="Controls\TOCTreeview\bmpFileWorkspace.bmp" />
-    <Content Include="Controls\TOCTreeview\bmpFolder1.bmp" />
-    <Content Include="Controls\TOCTreeview\bmpFolder2.bmp" />
-    <Content Include="Controls\TOCTreeview\bmpGDBLink.bmp" />
-    <Content Include="Controls\TOCTreeview\bmpPersonGDB.bmp" />
-    <Content Include="Controls\TOCTreeview\bmpTable.bmp" />
-    <Content Include="Controls\TOCTreeview\checked.bmp" />
-    <Content Include="Controls\TOCTreeview\checked_nofc.bmp" />
-    <Content Include="Controls\TOCTreeview\checked_novis.bmp" />
-    <Content Include="Controls\TOCTreeview\layers.bmp" />
-    <Content Include="Controls\TOCTreeview\TocTreeView.bmp" />
-    <Content Include="Controls\TOCTreeview\uncheck.bmp" />
-    <Content Include="Controls\TOCTreeview\unchecked_nofc.bmp" />
+    <EmbeddedResource Include="Controls\TOCTreeview\bmpFileWorkspace.bmp" />
+    <EmbeddedResource Include="Controls\TOCTreeview\bmpFolder1.bmp" />
+    <EmbeddedResource Include="Controls\TOCTreeview\bmpFolder2.bmp" />
+    <EmbeddedResource Include="Controls\TOCTreeview\bmpGDBLink.bmp" />
+    <EmbeddedResource Include="Controls\TOCTreeview\bmpPersonGDB.bmp" />
+    <EmbeddedResource Include="Controls\TOCTreeview\bmpTable.bmp" />
+    <EmbeddedResource Include="Controls\TOCTreeview\checked.bmp" />
+    <EmbeddedResource Include="Controls\TOCTreeview\checked_nofc.bmp" />
+    <EmbeddedResource Include="Controls\TOCTreeview\checked_novis.bmp" />
+    <EmbeddedResource Include="Controls\TOCTreeview\layers.bmp" />
+    <EmbeddedResource Include="Controls\TOCTreeview\TocTreeView.bmp" />
+    <EmbeddedResource Include="Controls\TOCTreeview\uncheck.bmp" />
+    <EmbeddedResource Include="Controls\TOCTreeview\unchecked_nofc.bmp" />
     <EmbeddedResource Include="Controls\uncheck.bmp" />
     <EmbeddedResource Include="Controls\unchecked_nofc.bmp" />
   </ItemGroup>
@@ -1677,5 +1677,9 @@
       <Project>{4A9B3243-2B0A-4E87-9B23-71A58C1F318D}</Project>
       <Name>Yutai.Shared</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SymbolUI\template.ServerStyle" />
+    <EmbeddedResource Include="SymbolUI\template.style" />
   </ItemGroup>
 </Project>

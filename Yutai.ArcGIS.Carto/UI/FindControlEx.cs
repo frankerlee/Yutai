@@ -9,6 +9,7 @@ using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using Yutai.ArcGIS.Common;
 using Yutai.ArcGIS.Common.BaseClasses;
+using Yutai.Plugins.Events;
 using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Carto.UI

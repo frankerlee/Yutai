@@ -16,6 +16,7 @@ using ESRI.ArcGIS.Geometry;
 using Yutai.ArcGIS.Common;
 using Yutai.ArcGIS.Common.BaseClasses;
 using Yutai.ArcGIS.Controls.SymbolUI;
+using Yutai.Plugins.Events;
 using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
@@ -928,15 +929,15 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                             {
                                 pathName = pathName + ")";
                             }
-                            bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.bmpGDBLink.bmp"));
+                            bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.bmpGDBLink.bmp"));
                         }
                         else if (pWorkspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace)
                         {
-                            bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.bmpPersonGDB.bmp"));
+                            bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.bmpPersonGDB.bmp"));
                         }
                         else
                         {
-                            bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.bmpFileWorkspace.bmp"));
+                            bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.bmpFileWorkspace.bmp"));
                         }
                         workspaceTreeNode = new TOCTreeNode(pathName, false, true);
                         if (pLayer is IDataset)
@@ -1323,7 +1324,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     name = "Scene";
                 }
                 TOCTreeNode pNode = new TOCTreeNode(name, false, true);
-                Bitmap bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.layers.bmp"));
+                Bitmap bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.layers.bmp"));
                 pNode.Image = bitmap;
                 pNode.Tag = frame;
                 pNode.TOCNodeType = NodeType.MapFrame;
@@ -1422,15 +1423,15 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                         {
                         }
                         pathName = pathName + ")";
-                        bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.bmpGDBLink.bmp"));
+                        bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.bmpGDBLink.bmp"));
                     }
                     else if (pWorkspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace)
                     {
-                        bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.bmpPersonGDB.bmp"));
+                        bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.bmpPersonGDB.bmp"));
                     }
                     else
                     {
-                        bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.bmpFileWorkspace.bmp"));
+                        bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.bmpFileWorkspace.bmp"));
                     }
                     workspaceTreeNode = new TOCTreeNode(pathName, false, true) {
                         Tag = (pTable as IDataset).Workspace,
@@ -2306,7 +2307,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                         base.m_FocusMapNode = node;
                         base.m_FocusMapNode.NodeFont = new Font("Arial", 8f, FontStyle.Bold);
                         base.m_FocusMap = this.m_pMapCtrl.Map as IBasicMap;
-                        bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.layers.bmp"));
+                        bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.ayers.bmp"));
                         node.Image = bitmap;
                         node.Tag = this.m_pMapCtrl.Map;
                         this.Nodes.Add(node);
@@ -2319,7 +2320,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                         base.m_FocusMapNode = node;
                         base.m_FocusMapNode.NodeFont = new Font("Arial", 8f, FontStyle.Bold);
                         base.m_FocusMap = this.m_pSceneControl.Scene as IBasicMap;
-                        bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.layers.bmp"));
+                        bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.ayers.bmp"));
                         node.Image = bitmap;
                         node.Tag = this.m_pSceneControl.Scene;
                         this.Nodes.Add(node);
@@ -2332,7 +2333,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                         base.m_FocusMapNode = node;
                         base.m_FocusMapNode.NodeFont = new Font("Arial", 8f, FontStyle.Bold);
                         base.m_FocusMap = this.m_pGlobeControl.Globe as IBasicMap;
-                        bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.layers.bmp"));
+                        bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.ayers.bmp"));
                         node.Image = bitmap;
                         node.Tag = this.m_pGlobeControl.Globe;
                         this.Nodes.Add(node);

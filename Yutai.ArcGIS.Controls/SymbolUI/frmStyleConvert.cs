@@ -51,11 +51,11 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     int num3;
                     if (this.m_IsStyleFile)
                     {
-                        manifestResourceStream = base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.SymbolUI.template.style");
+                        manifestResourceStream = base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.SymbolUI.template.style");
                     }
                     else
                     {
-                        manifestResourceStream = base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.SymbolUI.template.ServerStyle");
+                        manifestResourceStream = base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.SymbolUI.template.ServerStyle");
                     }
                     byte[] buffer = new byte[0x1000];
                     while ((num = manifestResourceStream.Read(buffer, 0, 0x1000)) > 0)

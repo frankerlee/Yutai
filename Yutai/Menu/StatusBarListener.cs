@@ -48,9 +48,9 @@ namespace Yutai.Menu
                 throw new InvalidCastException("Map must implement IMap interface");
             }
 
-            mapEvents.OnExtentUpdated += MapEvents_OnExtentUpdated;
-            mapEvents.OnSelectionChanged += MapEvents_OnSelectionChanged;
-            mapEvents.OnMouseMove += MapEvents_OnMouseMove;
+            //mapEvents.OnExtentUpdated += MapEvents_OnExtentUpdated;
+            //mapEvents.OnSelectionChanged += MapEvents_OnSelectionChanged;
+            //mapEvents.OnMouseMove += MapEvents_OnMouseMove;
 
            
         }
@@ -93,68 +93,68 @@ namespace Yutai.Menu
 
             //dropDown.Update();
 
-            bar.Items.AddLabel("单位: ", StatusBarKeys.MapUnits, Identity).BeginGroup = true;
-            bar.Items.AddLabel("选择: ", StatusBarKeys.SelectedCount, Identity).BeginGroup = true;
-            bar.Items.AddLabel("坐标: ", StatusBarKeys.XYCoordinates, Identity).BeginGroup = true;
+            //bar.Items.AddLabel("单位: ", StatusBarKeys.MapUnits, Identity).BeginGroup = true;
+            //bar.Items.AddLabel("选择: ", StatusBarKeys.SelectedCount, Identity).BeginGroup = true;
+            //bar.Items.AddLabel("坐标: ", StatusBarKeys.XYCoordinates, Identity).BeginGroup = true;
 
-            bar.AlignNewItemsRight = true;
+            //bar.AlignNewItemsRight = true;
 
-            bar.Items.AddLabel("", StatusBarKeys.MapScale, Identity);
-            bar.Items.AddLabel("底图", StatusBarKeys.TileProvider, Identity).BeginGroup = true;
+            //bar.Items.AddLabel("", StatusBarKeys.MapScale, Identity);
+            //bar.Items.AddLabel("底图", StatusBarKeys.TileProvider, Identity).BeginGroup = true;
 
-            var progressMsg = bar.Items.AddLabel("进程", StatusBarKeys.ProgressMsg, Identity);
-            progressMsg.BeginGroup = true;
-            progressMsg.Visible = false;
+            //var progressMsg = bar.Items.AddLabel("进程", StatusBarKeys.ProgressMsg, Identity);
+            //progressMsg.BeginGroup = true;
+            //progressMsg.Visible = false;
 
-            bar.Items.AddProgressBar(StatusBarKeys.ProgressBar, Identity).Visible = false;
+            //bar.Items.AddProgressBar(StatusBarKeys.ProgressBar, Identity).Visible = false;
 
-            bar.Update();
+            //bar.Update();
         }
 
         private void PluginManager_MenuItemClicked(object sender, MenuItemEventArgs e)
         {
-            var menuItem = sender as IMenuItem;
-            if (menuItem == null)
-            {
-                throw new InvalidCastException("Invalid type of menu item. IMenuItem interface is expected");
-            }
+            //var menuItem = sender as IMenuItem;
+            //if (menuItem == null)
+            //{
+            //    throw new InvalidCastException("Invalid type of menu item. IMenuItem interface is expected");
+            //}
 
-            switch (e.ItemKey)
-            {
-                case StatusBarKeys.MapScale:
-                   // _context.Container.Run<SetScalePresenter>();
-                    break;
-                //case StatusBarKeys.ProjectionDropDown:
-                //    if (_context.Map.Projection.IsEmpty)
-                //    {
-                //        _context.ChangeProjection();
-                //    }
-                //    else
-                //    {
-                //        _context.ShowMapProjectionProperties();
-                //    }
-                //    break;
-                case StatusBarKeys.ViewStyle2D:
-                    ((ISecureContext)_context).SetViewStyle(MapViewStyle.View2D);
-                    break;
-                case StatusBarKeys.ViewStyle3D:
-                    ((ISecureContext)_context).SetViewStyle(MapViewStyle.View3D);
-                    break;
-                case StatusBarKeys.ViewStyleAll:
-                    ((ISecureContext)_context).SetViewStyle(MapViewStyle.ViewAll);
-                    break;
+            //switch (e.ItemKey)
+            //{
+            //    case StatusBarKeys.MapScale:
+            //       // _context.Container.Run<SetScalePresenter>();
+            //        break;
+            //    //case StatusBarKeys.ProjectionDropDown:
+            //    //    if (_context.Map.Projection.IsEmpty)
+            //    //    {
+            //    //        _context.ChangeProjection();
+            //    //    }
+            //    //    else
+            //    //    {
+            //    //        _context.ShowMapProjectionProperties();
+            //    //    }
+            //    //    break;
+            //    case StatusBarKeys.ViewStyle2D:
+            //        ((ISecureContext)_context).SetViewStyle(MapViewStyle.View2D);
+            //        break;
+            //    case StatusBarKeys.ViewStyle3D:
+            //        ((ISecureContext)_context).SetViewStyle(MapViewStyle.View3D);
+            //        break;
+            //    case StatusBarKeys.ViewStyleAll:
+            //        ((ISecureContext)_context).SetViewStyle(MapViewStyle.ViewAll);
+            //        break;
                
-                case StatusBarKeys.ViewStyleConfig:
-                    MessageBox.Show("进一步开发，预留快速二三维联动配置窗口启动");
-                    //var model = _context.Container.GetInstance<ConfigViewModel>();
-                    //model.UseSelectedPage = true;
-                    //model.SelectedPage = ConfigPageType.Projections;
-                    //_context.Container.Run<ConfigPresenter, ConfigViewModel>(model);
-                    break;
-                default:
-                    // do nothing
-                    break;
-            }
+            //    case StatusBarKeys.ViewStyleConfig:
+            //        MessageBox.Show("进一步开发，预留快速二三维联动配置窗口启动");
+            //        //var model = _context.Container.GetInstance<ConfigViewModel>();
+            //        //model.UseSelectedPage = true;
+            //        //model.SelectedPage = ConfigPageType.Projections;
+            //        //_context.Container.Run<ConfigPresenter, ConfigViewModel>(model);
+            //        break;
+            //    default:
+            //        // do nothing
+            //        break;
+            //}
         }
 
         private PluginIdentity Identity

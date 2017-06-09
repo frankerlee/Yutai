@@ -2,12 +2,12 @@
 
 namespace Yutai.ArcGIS.Carto.DesignLib
 {
-    internal class JLKLenendItem
+    internal class YTLegendItem
     {
         private ISymbol isymbol_0 = null;
         private string string_0 = "";
 
-        internal JLKLenendItem(ISymbol isymbol_1, string string_1)
+        internal YTLegendItem(ISymbol isymbol_1, string string_1)
         {
             this.isymbol_0 = isymbol_1;
             this.string_0 = string_1;

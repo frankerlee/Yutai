@@ -78,11 +78,11 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
             this.m_pTag = null;
             this.m_NodeType = NodeType.None;
             this.m_ChildNodes.Owner = this;
-            this.m_BmpUnCheck = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.uncheck.bmp"));
-            this.m_BmpCheck = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.checked.bmp"));
-            this.m_BmpUnCheck_nofc = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.unchecked_nofc.bmp"));
-            this.m_BmpCheck_nofc = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.checked_nofc.bmp"));
-            this.m_BmpCheck_novis = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.checked_novis.bmp"));
+            this.m_BmpUnCheck = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.uncheck.bmp"));
+            this.m_BmpCheck = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.checked.bmp"));
+            this.m_BmpUnCheck_nofc = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.unchecked_nofc.bmp"));
+            this.m_BmpCheck_nofc = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.checked_nofc.bmp"));
+            this.m_BmpCheck_novis = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.checked_novis.bmp"));
         }
 
         public TOCTreeNode(string name)
@@ -123,11 +123,11 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
             {
                 this.m_HasText = true;
             }
-            this.m_BmpUnCheck = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.uncheck.bmp"));
-            this.m_BmpCheck = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.checked.bmp"));
-            this.m_BmpUnCheck_nofc = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.unchecked_nofc.bmp"));
-            this.m_BmpCheck_nofc = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.checked_nofc.bmp"));
-            this.m_BmpCheck_novis = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.checked_novis.bmp"));
+            this.m_BmpUnCheck = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.uncheck.bmp"));
+            this.m_BmpCheck = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.checked.bmp"));
+            this.m_BmpUnCheck_nofc = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.unchecked_nofc.bmp"));
+            this.m_BmpCheck_nofc = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.checked_nofc.bmp"));
+            this.m_BmpCheck_novis = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.checked_novis.bmp"));
         }
 
         public TOCTreeNode(string name, bool HasCheck, bool HasIamge)
@@ -170,11 +170,11 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
             {
                 this.m_HasText = true;
             }
-            this.m_BmpUnCheck = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.uncheck.bmp"));
-            this.m_BmpCheck = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.checked.bmp"));
-            this.m_BmpUnCheck_nofc = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.unchecked_nofc.bmp"));
-            this.m_BmpCheck_nofc = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.checked_nofc.bmp"));
-            this.m_BmpCheck_novis = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.TOCTreeview.checked_novis.bmp"));
+            this.m_BmpUnCheck = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.uncheck.bmp"));
+            this.m_BmpCheck = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.checked.bmp"));
+            this.m_BmpUnCheck_nofc = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JYutai.ArcGIS.ControlsLK.Controls.TOCTreeview.unchecked_nofc.bmp"));
+            this.m_BmpCheck_nofc = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.checked_nofc.bmp"));
+            this.m_BmpCheck_novis = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.checked_novis.bmp"));
         }
 
         public void BeginEdit()

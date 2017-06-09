@@ -1,4 +1,6 @@
-﻿namespace Yutai.ArcGIS.Common
+﻿using Yutai.Plugins.Events;
+
+namespace Yutai.ArcGIS.Common
 {
     public interface IApplicationEvents
     {

@@ -94,7 +94,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             this.ipoint_2 = new PointClass();
             this.ipoint_3 = new PointClass();
             this.m_cursor = Cursors.Default;
-            this.m_bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JLK.CartoDesignLib.ElementSelect.bmp"));
+            this.m_bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Carto.DesignLib.ElementSelect.bmp"));
             this.m_name = "ElementSelectTool";
             this.m_caption = "选择元素";
         }
@@ -282,25 +282,25 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 case esriTrackerLocation.LocationTopLeft:
                 case esriTrackerLocation.LocationBottomRight:
                     {
-                        this.m_cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("JLK.CartoDesignLib.trcknwse.cur"));
+                        this.m_cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Carto.DesignLib.trcknwse.cur"));
                         break;
                     }
                 case esriTrackerLocation.LocationTopMiddle:
                 case esriTrackerLocation.LocationBottomMiddle:
                     {
-                        this.m_cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("JLK.CartoDesignLib.trckns.cur"));
+                        this.m_cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Carto.DesignLib.trckns.cur"));
                         break;
                     }
                 case esriTrackerLocation.LocationTopRight:
                 case esriTrackerLocation.LocationBottomLeft:
                     {
-                        this.m_cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("JLK.CartoDesignLib.trcknesw.cur"));
+                        this.m_cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Carto.DesignLib.trcknesw.cur"));
                         break;
                     }
                 case esriTrackerLocation.LocationMiddleLeft:
                 case esriTrackerLocation.LocationMiddleRight:
                     {
-                        this.m_cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("JLK.CartoDesignLib.trckwe.cur"));
+                        this.m_cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Carto.DesignLib.trckwe.cur"));
                         break;
                     }
                 default:
@@ -1868,7 +1868,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                         }
                         else if (this.method_4(graphicsContainerSelect))
                         {
-                            this.m_cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("JLK.CartoDesignLib.trck4way.cur"));
+                            this.m_cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Carto.DesignLib.trck4way.cur"));
                             return;
                         }
                     }

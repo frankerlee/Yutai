@@ -203,9 +203,9 @@ namespace Yutai.ArcGIS.Carto.UI
             this.label6.Size = new Size(0x23, 0x11);
             this.label6.TabIndex = 30;
             this.label6.Text = "圆角:";
-            bits = new int[4];
-            bits[0] = 10;
-            this.txtGap.EditValue = new decimal(bits);
+            int[] bits2 = new int[4];
+            bits2[0] = 10;
+            this.txtGap.EditValue = new decimal(bits2);
             this.txtGap.Location = new Point(0x30, 0xc4);
             this.txtGap.Name = "txtGap";
             this.txtGap.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });

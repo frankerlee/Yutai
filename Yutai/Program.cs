@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,6 +19,7 @@ namespace Yutai
     {
       
         public static Stopwatch Timer = new Stopwatch();
+        private static  LicenseInitializer m_AOLicenseInitializer=new LicenseInitializer();
 
         private static IApplicationContainer CreateContainer()
         {
@@ -51,14 +51,14 @@ namespace Yutai
         [STAThread]
         static void Main()
         {
-            if (!RuntimeManager.Bind(ProductCode.Engine))
-            {
-                if (!RuntimeManager.Bind(ProductCode.Desktop))
-                {
-                    MessageBox.Show("Unable to bind to ArcGIS runtime. Application will be shut down.");
-                    return;
-                }
-            }
+           
+            //{
+            //    if (!RuntimeManager.Bind(ProductCode.Desktop))
+            //    {
+            //        MessageBox.Show("Unable to bind to ArcGIS runtime. Application will be shut down.");
+            //        return;
+            //    }
+            //}
           
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -73,6 +73,10 @@ namespace Yutai
             ShowSplashScreen();
 
             Timer.Start();
+            SplashView.Instance.ShowStatus("正在检查许可...");
+            m_AOLicenseInitializer.InitializeApplication(new esriLicenseProductCode[] { esriLicenseProductCode.esriLicenseProductCodeEngine, esriLicenseProductCode.esriLicenseProductCodeEngineGeoDB },
+           new esriLicenseExtensionCode[] { esriLicenseExtensionCode.esriLicenseExtensionCode3DAnalyst, esriLicenseExtensionCode.esriLicenseExtensionCodeNetwork, esriLicenseExtensionCode.esriLicenseExtensionCodeSpatialAnalyst, esriLicenseExtensionCode.esriLicenseExtensionCodeSchematics, esriLicenseExtensionCode.esriLicenseExtensionCodeMLE, esriLicenseExtensionCode.esriLicenseExtensionCodeTracking });
+            
 
             var container = CreateContainer();
             CompositionRoot.Compose(container);

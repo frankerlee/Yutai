@@ -71,7 +71,7 @@ namespace Yutai.ArcGIS.Common.Display
 
 		public RotateTrackFeedback()
 		{
-			LicenseManager.Validate(typeof(UtilityLicenseProviderCheck), this);
+		//	LicenseManager.Validate(typeof(UtilityLicenseProviderCheck), this);
 			(this.isymbol_2 as ISimpleFillSymbol).Style = esriSimpleFillStyle.esriSFSNull;
 			(this.isymbol_0 as ISimpleMarkerSymbol).Style = esriSimpleMarkerStyle.esriSMSCircle;
 			(this.isymbol_0 as ISimpleMarkerSymbol).Size = 5;

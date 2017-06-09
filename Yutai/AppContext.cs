@@ -31,7 +31,7 @@ using Yutai.UI.Style;
 
 namespace Yutai
 {
-    public class AppContext : ISecureContext,IYTHookHelper
+    public class AppContext : ISecureContext,IYTHookHelper,IAppContextEvents
     {
         private readonly IApplicationContainer _container;
         private readonly IStyleService _styleService;
@@ -271,42 +271,8 @@ namespace Yutai
             //StatusBar.RemoveItemsForPlugin(e.Identity);
         }
 
-        #region MainView的外部调用接口，建议交给MainView完成，因为都是界面相关的
+       
 
-        public void HideDockWindow(object object_0)
-        {
-            
-        }
-
-        bool IYTHookHelper.ShowCommandString(string string_0, CommandTipsType commandTipsType_0)
-        {
-            return true;
-        }
-
-        public void MapDocumentChanged()
-        {
-            //throw new NotImplementedException();
-        }
-
-        public void ShowCommandString(string msg, CommandTipsType tipType)
-        {
-            //throw new NotImplementedException();
-        }
-
-        public void SetStatus(string empty)
-        {
-            // throw new NotImplementedException();
-        }
-
-        public void SetStatus(int int_0, string string_0)
-        {
-            //
-        }
-
-        public void DockWindows(object object_0, Bitmap bitmap_0)
-        {
-            //
-        }
 
         public ILayer CurrentLayer { get; set; }
 
@@ -340,7 +306,7 @@ namespace Yutai
             // throw new NotImplementedException();
         }
 
-        #endregion
+       
 
         public object Hook
         {
@@ -364,5 +330,133 @@ namespace Yutai
         }
         public IMap FocusMap { get { return MapControl.Map as IMap; } }
         public IOperationStack OperationStack { get { return m_pOperationStack; } }
+
+
+
+        #region 事件处理
+        private IActiveViewEvents_Event iactiveViewEvents_Event_0 = null;
+
+        public event MapReplacedHandler MapReplaced;
+
+        public event OnActiveHookChangedHandler OnActiveHookChanged;
+
+        public event OnApplicationClosedHandler OnApplicationClosed;
+
+        public event OnCurrentLayerChangeHandler OnCurrentLayerChange;
+
+        public event OnCurrentToolChangedHandler OnCurrentToolChanged;
+
+        public event OnDockWindowsEventHandler OnDockWindowsEvent;
+
+        public event OnHideDockWindowEventHandler OnHideDockWindowEvent;
+
+        public event OnLayerDeletedHandler OnLayerDeleted;
+
+        public event OnMapClipChangedEventHandler OnMapClipChangedEvent;
+
+        public event OnMapCloseEventHandler OnMapCloseEvent;
+
+        public event OnMapDocumentChangedEventHandler OnMapDocumentChangedEvent;
+
+        public event OnMapDocumentSaveEventHandler OnMapDocumentSaveEvent;
+
+        public event OnMessageEventHandler OnMessageEvent;
+
+        public event OnMessageEventHandlerEx OnMessageEventEx;
+
+        public event OnShowCommandStringHandler OnShowCommandString;
+
+        public event OnUpdateUIEventHandler OnUpdateUIEvent;
+
+
+        public void AcvtiveHookChanged(object hook)
+        {
+            if (this.OnActiveHookChanged != null)
+            {
+                this.OnActiveHookChanged(hook);
+            }
+        }
+
+        public void AddAfterDrawCallBack(AfterDraw afterDraw_0)
+        {
+            
+        }
+
+        public void AddCommands(YutaiCommand icommand)
+        {
+            //最后交给RibbonMenu处理
+        }
+
+        public void LayerDeleted(ILayer ilayer_2)
+        {
+            if (this.OnLayerDeleted != null)
+            {
+                this.OnLayerDeleted(ilayer_2);
+            }
+        }
+
+        public void MapClipChanged(object object_3)
+        {
+            if (this.OnMapClipChangedEvent != null)
+            {
+                this.OnMapClipChangedEvent(object_3);
+            }
+        }
+
+    
+
+        public void MapDocumentSave(string string_2)
+        {
+            if (this.OnMapDocumentSaveEvent != null)
+            {
+                this.OnMapDocumentSaveEvent(string_2);
+            }
+        }
+
+        public void HideDockWindow(object object_0)
+        {
+
+        }
+
+        bool IYTHookHelper.ShowCommandString(string string_0, CommandTipsType commandTipsType_0)
+        {
+            return true;
+        }
+
+        public void MapDocumentChanged()
+        {
+            if (this.OnMapDocumentChangedEvent != null)
+            {
+                this.OnMapDocumentChangedEvent();
+            }
+        }
+
+        public void ShowCommandString(string msg, CommandTipsType tipType)
+        {
+            //throw new NotImplementedException();
+        }
+
+        public void SetStatus(string empty)
+        {
+            if (this.OnMessageEvent != null)
+            {
+                this.OnMessageEvent(empty);
+            }
+        }
+
+        public void SetStatus(int int_0, string string_0)
+        {
+            if (this.OnMessageEventEx != null)
+            {
+                this.OnMessageEventEx(int_0, string_0);
+            }
+        }
+
+        public void DockWindows(object object_0, Bitmap bitmap_0)
+        {
+            //
+        }
+
+        #endregion
     }
 }

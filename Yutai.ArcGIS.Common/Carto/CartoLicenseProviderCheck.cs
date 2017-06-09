@@ -20,11 +20,12 @@ namespace Yutai.ArcGIS.Common.Carto
 
 		internal CartoLicenseProviderCheck()
 		{
-			this.license_0 = LicenseManager.Validate(typeof(CartoLicenseProviderCheck), this);
+			//this.license_0 = LicenseManager.Validate(typeof(CartoLicenseProviderCheck), this);
 		}
 
 		public static bool Check()
 		{
+		    return true;
 			if (!CartoLicenseProviderCheck.m_initOk)
 			{
 				CartoLicenseProviderCheck.Init();

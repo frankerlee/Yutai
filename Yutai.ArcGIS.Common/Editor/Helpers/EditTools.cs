@@ -15,6 +15,7 @@ using Yutai.ArcGIS.Common.Display;
 using Yutai.ArcGIS.Common.Framework;
 using Yutai.ArcGIS.Common.Helpers;
 using Yutai.ArcGIS.Common.Symbol;
+using Yutai.Plugins.Events;
 using Yutai.Plugins.Interfaces;
 using Yutai.Shared;
 
@@ -237,7 +238,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 		public EditTools()
 		{
 			this.iset_0 = new Set();
-			this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("JLK.Utility.Cursor.Edit.cur"));
+			this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.Edit.cur"));
 			this.isymbol_1 = new SimpleMarkerSymbol() as ISymbol;
 			(this.isymbol_1 as ISimpleMarkerSymbol).Style = esriSimpleMarkerStyle.esriSMSX;
 			(this.isymbol_1 as ISimpleMarkerSymbol).Size = 4;
@@ -547,7 +548,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 										this.method_3(searchTolerance, ipoint_5, this.igeometry_0, out point, ref num1, ref num2, ref num, out flag2);
 										this.bool_3 = false;
 										this.cursor_0.Dispose();
-										this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("JLK.Utility.Cursor.VertexEdit.cur"));
+										this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.VertexEdit.cur"));
 										flag = true;
 										return flag;
 									}
@@ -599,7 +600,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 										this.method_3(searchTolerance, ipoint_5, this.igeometry_0, out point, ref num1, ref num2, ref num, out flag2);
 										this.bool_3 = false;
 										this.cursor_0.Dispose();
-										this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("JLK.Utility.Cursor.VertexEdit.cur"));
+										this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.VertexEdit.cur"));
 										flag = true;
 										return flag;
 									}
@@ -1058,7 +1059,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 										this.method_3(searchTolerance, this.ipoint_4, this.igeometry_0, out this.ipoint_4, ref num1, ref EditTools.m_PartIndex, ref EditTools.m_PointIndex, out flag2);
 										this.bool_3 = false;
 										this.cursor_0.Dispose();
-										this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("JLK.Utility.Cursor.VertexEdit.cur"));
+										this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.VertexEdit.cur"));
 										flag = true;
 										return flag;
 									}
@@ -1109,7 +1110,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 										this.method_3(searchTolerance, this.ipoint_4, this.igeometry_0, out this.ipoint_4, ref num1, ref EditTools.m_PartIndex, ref EditTools.m_PointIndex, out flag2);
 										this.bool_3 = false;
 										this.cursor_0.Dispose();
-										this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("JLK.Utility.Cursor.VertexEdit.cur"));
+										this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.VertexEdit.cur"));
 										flag = true;
 										return flag;
 									}
@@ -1995,14 +1996,14 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 									(this.idisplayFeedback_0 as IMoveGeometryFeedbackEx).Start(mapPoint);
 								}
 								this.cursor_0.Dispose();
-								this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("JLK.Utility.Cursor.EditMove.cur"));
+								this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.EditMove.cur"));
 							}
 						}
 					}
 					else if ((this._appContext.MapControl.Map.SelectionCount <= 0 ? true : int_2 != 0))
 					{
 						this.cursor_0.Dispose();
-						this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("JLK.Utility.Cursor.Edit.cur"));
+						this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.Edit.cur"));
 						this.bool_3 = false;
 						this.Init();
 					}
@@ -2034,7 +2035,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 									this.bool_3 = true;
 								}
 								this.cursor_0.Dispose();
-								this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("JLK.Utility.Cursor.VertexEdit.cur"));
+								this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.VertexEdit.cur"));
 								this.bool_11 = true;
 								EditTools.m_pEditFeature = i;
 								EditTools.m_PartIndex = num2;
@@ -2046,7 +2047,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 							{
 								this.bool_3 = false;
 								this.cursor_0.Dispose();
-								this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("JLK.Utility.Cursor.Digitise.cur"));
+								this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.Digitise.cur"));
 								this.bool_11 = true;
 								EditTools.m_HitType = HitType.HitSegment;
 								EditTools.m_pEditFeature = i;
@@ -2058,7 +2059,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 							{
 								this.bool_3 = true;
 								this.cursor_0.Dispose();
-								this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("JLK.Utility.Cursor.EditMove.cur"));
+								this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.EditMove.cur"));
 								this.bool_11 = true;
 								EditTools.m_pEditFeature = i;
 								EditTools.m_PartIndex = num2;
@@ -2070,7 +2071,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 							{
 								this.bool_3 = true;
 								this.cursor_0.Dispose();
-								this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("JLK.Utility.Cursor.EditMove.cur"));
+								this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.EditMove.cur"));
 								this.bool_11 = true;
 								EditTools.m_pEditFeature = i;
 								EditTools.m_PartIndex = num2;
@@ -2083,7 +2084,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 						{
 							this.cursor_0.Dispose();
 							this.bool_3 = false;
-							this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("JLK.Utility.Cursor.Edit.cur"));
+							this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.Edit.cur"));
 						}
 						this.Init();
 					}
@@ -2091,7 +2092,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 				else
 				{
 					this.cursor_0.Dispose();
-					this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("JLK.Utility.Cursor.Edit.cur"));
+					this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.Edit.cur"));
 					this.Init();
 					this.bool_3 = false;
 				}
@@ -2115,7 +2116,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 						focusMap.ScreenDisplay.DisplayTransformation.ToMapPoint(int_4, int_5);
 						this.method_5(this.ipoint_2);
 						this.cursor_0.Dispose();
-						this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("JLK.Utility.Cursor.Edit.cur"));
+						this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.Edit.cur"));
 					}
 					else
 					{

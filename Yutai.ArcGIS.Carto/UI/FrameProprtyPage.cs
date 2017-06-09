@@ -647,8 +647,8 @@ namespace Yutai.ArcGIS.Carto.UI
             this.label5.Size = new Size(0x23, 0x11);
             this.label5.TabIndex = 20;
             this.label5.Text = "圆角:";
-            bits = new int[4];
-            this.txtBorderGapy.EditValue = new decimal(bits);
+            int[] bits2 = new int[4];
+            this.txtBorderGapy.EditValue = new decimal(bits2);
             this.txtBorderGapy.Location = new Point(0x98, 0x48);
             this.txtBorderGapy.Name = "txtBorderGapy";
             this.txtBorderGapy.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
@@ -668,8 +668,8 @@ namespace Yutai.ArcGIS.Carto.UI
             this.label3.Size = new Size(0x11, 0x11);
             this.label3.TabIndex = 0x11;
             this.label3.Text = "X:";
-            bits = new int[4];
-            this.txtBorderGapx.EditValue = new decimal(bits);
+            int[] bits3 = new int[4];
+            this.txtBorderGapx.EditValue = new decimal(bits3);
             this.txtBorderGapx.Location = new Point(0x48, 0x48);
             this.txtBorderGapx.Name = "txtBorderGapx";
             this.txtBorderGapx.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
@@ -750,8 +750,8 @@ namespace Yutai.ArcGIS.Carto.UI
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "背景";
-            bits = new int[4];
-            this.txtBackgroundCornerRounding.EditValue = new decimal(bits);
+            int[] bits4 = new int[4];
+            this.txtBackgroundCornerRounding.EditValue = new decimal(bits4);
             this.txtBackgroundCornerRounding.Location = new Point(280, 0x48);
             this.txtBackgroundCornerRounding.Name = "txtBackgroundCornerRounding";
             this.txtBackgroundCornerRounding.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
@@ -765,8 +765,8 @@ namespace Yutai.ArcGIS.Carto.UI
             this.label6.Size = new Size(0x23, 0x11);
             this.label6.TabIndex = 20;
             this.label6.Text = "圆角:";
-            bits = new int[4];
-            this.txtBackgroundGapy.EditValue = new decimal(bits);
+            int[] bits5 = new int[4];
+            this.txtBackgroundGapy.EditValue = new decimal(bits5);
             this.txtBackgroundGapy.Location = new Point(0x98, 0x48);
             this.txtBackgroundGapy.Name = "txtBackgroundGapy";
             this.txtBackgroundGapy.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
@@ -786,8 +786,8 @@ namespace Yutai.ArcGIS.Carto.UI
             this.label8.Size = new Size(0x11, 0x11);
             this.label8.TabIndex = 0x11;
             this.label8.Text = "X:";
-            bits = new int[4];
-            this.txtBackgroundGapx.EditValue = new decimal(bits);
+            int[] bits6 = new int[4];
+            this.txtBackgroundGapx.EditValue = new decimal(bits6);
             this.txtBackgroundGapx.Location = new Point(0x48, 0x48);
             this.txtBackgroundGapx.Name = "txtBackgroundGapx";
             this.txtBackgroundGapx.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
@@ -865,8 +865,8 @@ namespace Yutai.ArcGIS.Carto.UI
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "阴影";
-            bits = new int[4];
-            this.txtShadowCornerRounding.EditValue = new decimal(bits);
+            int[] bits7 = new int[4];
+            this.txtShadowCornerRounding.EditValue = new decimal(bits7);
             this.txtShadowCornerRounding.Location = new Point(280, 0x48);
             this.txtShadowCornerRounding.Name = "txtShadowCornerRounding";
             this.txtShadowCornerRounding.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
@@ -880,8 +880,8 @@ namespace Yutai.ArcGIS.Carto.UI
             this.label11.Size = new Size(0x23, 0x11);
             this.label11.TabIndex = 20;
             this.label11.Text = "圆角:";
-            bits = new int[4];
-            this.txtShadowGapy.EditValue = new decimal(bits);
+            int[] bits8 = new int[4];
+            this.txtShadowGapy.EditValue = new decimal(bits8);
             this.txtShadowGapy.Location = new Point(0x98, 0x48);
             this.txtShadowGapy.Name = "txtShadowGapy";
             this.txtShadowGapy.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
@@ -901,8 +901,8 @@ namespace Yutai.ArcGIS.Carto.UI
             this.label13.Size = new Size(0x11, 0x11);
             this.label13.TabIndex = 0x11;
             this.label13.Text = "X:";
-            bits = new int[4];
-            this.txtShadowGapx.EditValue = new decimal(bits);
+            int[] bits9 = new int[4];
+            this.txtShadowGapx.EditValue = new decimal(bits9);
             this.txtShadowGapx.Location = new Point(0x48, 0x48);
             this.txtShadowGapx.Name = "txtShadowGapx";
             this.txtShadowGapx.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });

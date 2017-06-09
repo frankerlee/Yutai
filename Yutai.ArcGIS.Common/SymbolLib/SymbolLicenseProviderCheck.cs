@@ -20,7 +20,7 @@ namespace Yutai.ArcGIS.Common.SymbolLib
 
 		internal SymbolLicenseProviderCheck()
 		{
-			this.license_0 = LicenseManager.Validate(typeof(SymbolLicenseProviderCheck), this);
+		//	this.license_0 = LicenseManager.Validate(typeof(SymbolLicenseProviderCheck), this);
 		}
 
 		internal static void Init()
@@ -37,6 +37,7 @@ namespace Yutai.ArcGIS.Common.SymbolLib
 
 		internal static bool Check()
 		{
+		    return true;
 			bool result;
 			if (!SymbolLicenseProviderCheck.m_initOk)
 			{

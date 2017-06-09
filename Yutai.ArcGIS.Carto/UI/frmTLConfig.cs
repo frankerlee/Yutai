@@ -126,8 +126,8 @@ namespace Yutai.ArcGIS.Carto.UI
             };
             if (item.ShowDialog() == DialogResult.OK)
             {
-                object[] objArray = new object[] { item.JLKLenendItem.Symbol, item.JLKLenendItem.Description };
-                this.renderInfoListView1.Add(objArray).Tag = item.JLKLenendItem;
+                object[] objArray = new object[] { item.YTLegendItem.Symbol, item.YTLegendItem.Description };
+                this.renderInfoListView1.Add(objArray).Tag = item.YTLegendItem;
                 this.btnDeleteAll.Enabled = this.renderInfoListView1.Items.Count > 0;
             }
         }
@@ -548,7 +548,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
             if (symbol != null)
             {
-                JLKLenendItem item = new JLKLenendItem(symbol, str);
+                YTLegendItem item = new YTLegendItem(symbol, str);
                 object[] objArray = new object[] { item.Symbol, item.Description };
                 this.renderInfoListView1.Add(objArray).Tag = item;
             }
@@ -640,11 +640,11 @@ namespace Yutai.ArcGIS.Carto.UI
             for (int i = 0; i < this.renderInfoListView1.Items.Count; i++)
             {
                 ListViewItem item = this.renderInfoListView1.Items[i];
-                if (item.Tag is JLKLenendItem)
+                if (item.Tag is YTLegendItem)
                 {
                     XmlNode node3 = document.CreateElement("LegendItem");
-                    node3.Attributes.Append(this.method_5(document, "description", (item.Tag as JLKLenendItem).Description));
-                    node3.Attributes.Append(this.method_5(document, "symbol", this.method_6((item.Tag as JLKLenendItem).Symbol)));
+                    node3.Attributes.Append(this.method_5(document, "description", (item.Tag as YTLegendItem).Description));
+                    node3.Attributes.Append(this.method_5(document, "symbol", this.method_6((item.Tag as YTLegendItem).Symbol)));
                     newChild.AppendChild(node3);
                 }
             }

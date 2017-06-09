@@ -1203,11 +1203,11 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     int num;
                     if (this.m_pSG is ESRI.ArcGIS.esriSystem.IPersistStream)
                     {
-                        manifestResourceStream = base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.SymbolUI.template.ServerStyle");
+                        manifestResourceStream = base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.SymbolUI.template.ServerStyle");
                     }
                     else
                     {
-                        manifestResourceStream = base.GetType().Assembly.GetManifestResourceStream("JLK.Controls.SymbolUI.template.style");
+                        manifestResourceStream = base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.SymbolUI.template.style");
                     }
                     byte[] buffer = new byte[0x1000];
                     while ((num = manifestResourceStream.Read(buffer, 0, 0x1000)) > 0)

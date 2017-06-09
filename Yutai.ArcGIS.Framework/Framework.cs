@@ -15,6 +15,7 @@ using Yutai.ArcGIS.Common.BaseClasses;
 using Yutai.ArcGIS.Common.Editor.Helpers;
 using Yutai.ArcGIS.Common.Framework;
 using Yutai.Plugins.Enums;
+using Yutai.Plugins.Events;
 using Yutai.Plugins.Interfaces;
 using Yutai.Shared;
 using IApplication = Yutai.ArcGIS.Common.IApplication;

@@ -69,7 +69,7 @@ namespace Yutai.ArcGIS.Common.Resource
             {
                 if (object.ReferenceEquals(resourceMan, null))
                 {
-                    System.Resources.ResourceManager manager = new System.Resources.ResourceManager("JLK.Utility.Resource.BitmapResources", typeof(BitmapResources).Assembly);
+                    System.Resources.ResourceManager manager = new System.Resources.ResourceManager("Yutai.ArcGIS.Common.Resource.BitmapResources", typeof(BitmapResources).Assembly);
                     resourceMan = manager;
                 }
                 return resourceMan;

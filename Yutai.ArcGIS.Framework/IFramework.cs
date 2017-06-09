@@ -5,6 +5,7 @@ using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Framework;
 using ESRI.ArcGIS.SystemUI;
 using Yutai.ArcGIS.Common;
+using Yutai.Plugins.Events;
 using Yutai.Plugins.Interfaces;
 using IApplication = Yutai.ArcGIS.Common.IApplication;
 

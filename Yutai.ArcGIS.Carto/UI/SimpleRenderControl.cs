@@ -29,6 +29,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public SimpleRenderControl()
         {
+          //  MessageBox.Show("Testing.....");
             this.InitializeComponent();
         }
 
@@ -45,6 +46,7 @@ namespace Yutai.ArcGIS.Carto.UI
         {
             try
             {
+                //MessageBox.Show("Click Style Button");
                 frmSymbolSelector selector = new frmSymbolSelector();
                 if (selector != null)
                 {
@@ -57,8 +59,9 @@ namespace Yutai.ArcGIS.Carto.UI
                     }
                 }
             }
-            catch
+            catch(Exception ex)
             {
+                MessageBox.Show(ex.Message);
             }
         }
 

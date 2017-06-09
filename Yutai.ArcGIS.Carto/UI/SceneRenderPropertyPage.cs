@@ -154,10 +154,10 @@ namespace Yutai.ArcGIS.Carto.UI
             this.txtRenderRefreshRate.Name = "txtRenderRefreshRate";
             this.txtRenderRefreshRate.Size = new Size(0x3f, 0x15);
             this.txtRenderRefreshRate.TabIndex = 5;
-            bits = new int[4];
-            bits[0] = 0x4b;
-            bits[3] = 0x20000;
-            this.txtRenderRefreshRate.Value = new decimal(bits);
+            int[] bits2 = new int[4];
+            bits2[0] = 0x4b;
+            bits2[3] = 0x20000;
+            this.txtRenderRefreshRate.Value = new decimal(bits2);
             this.txtRenderRefreshRate.ValueChanged += new EventHandler(this.txtRenderRefreshRate_ValueChanged);
             this.label2.AutoSize = true;
             this.label2.Location = new Point(0x15d, 0x5c);

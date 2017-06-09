@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using Yutai.Plugins.Events;
 
 namespace Yutai.ArcGIS.Common
 {

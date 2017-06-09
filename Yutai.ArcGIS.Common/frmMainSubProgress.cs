@@ -8,6 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Yutai.Shared;
+using OnIncrementHandler = Yutai.Plugins.Events.OnIncrementHandler;
+using OnSetAutoProcessHandler = Yutai.Plugins.Events.OnSetAutoProcessHandler;
+using OnSetMaxValueHandler = Yutai.Plugins.Events.OnSetMaxValueHandler;
+using OnSetMessageHandler = Yutai.Plugins.Events.OnSetMessageHandler;
+using OnSetPostionHandler = Yutai.Plugins.Events.OnSetPostionHandler;
 
 namespace Yutai.ArcGIS.Common
 {

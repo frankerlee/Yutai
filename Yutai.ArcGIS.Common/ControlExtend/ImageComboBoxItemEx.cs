@@ -3,7 +3,7 @@ using DevExpress.XtraEditors.Controls;
 
 namespace Yutai.ArcGIS.Common.ControlExtend
 {
-    [TypeConverter("JLK.Editors.Design.ImageComboBoxItemTypeConverter, JLK.Editors.Design")]
+  
     public class ImageComboBoxItemEx : ImageComboBoxItem
     {
         private int int_0;

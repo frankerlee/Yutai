@@ -1,11 +1,10 @@
-﻿namespace JLK.ControlExtendEx
-{
-    using System;
-    using System.ComponentModel;
-    using System.Drawing;
-    using System.Drawing.Design;
-    using System.Runtime.Serialization;
+﻿using System;
+using System.ComponentModel;
+using System.Drawing.Design;
+using System.Runtime.Serialization;
 
+namespace Yutai.ArcGIS.Common.ControlExtendEx
+{
     [Serializable, TypeConverter(typeof(ImageComboItemConverter)), DesignTimeVisible(false), ToolboxItem(false)]
     public sealed class ImageComboBoxItem : ISerializable
     {

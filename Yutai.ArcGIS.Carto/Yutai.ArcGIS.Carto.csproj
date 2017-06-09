@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\Yutai\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -245,43 +245,81 @@
     <Reference Include="DevExpress.Data.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>D:\Program Files (x86)\DevExpress 16.1.4\Components\Bin\Framework\DevExpress.Data.v16.1.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="DevExpress.Utils.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>D:\Program Files (x86)\DevExpress 16.1.4\Components\Bin\Framework\DevExpress.Utils.v16.1.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>D:\Program Files (x86)\DevExpress 16.1.4\Components\Bin\Framework\DevExpress.XtraEditors.v16.1.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>D:\Program Files (x86)\DevExpress 16.1.4\Components\Bin\Framework\DevExpress.XtraGrid.v16.1.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System" />
-    <Reference Include="ESRI.ArcGIS.Carto" />
-    <Reference Include="ESRI.ArcGIS.Geometry" />
-    <Reference Include="ESRI.ArcGIS.Display" />
-    <Reference Include="ESRI.ArcGIS.Geodatabase" />
+    <Reference Include="ESRI.ArcGIS.Carto">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geometry">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Display">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geodatabase">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Drawing" />
-    <Reference Include="ESRI.ArcGIS.Controls" />
-    <Reference Include="ESRI.ArcGIS.System" />
-    <Reference Include="ESRI.ArcGIS.AxControls" />
-    <Reference Include="ESRI.ArcGIS.ADF.Local" />
-    <Reference Include="ESRI.ArcGIS.DataSourcesFile" />
-    <Reference Include="ESRI.ArcGIS.Location" />
-    <Reference Include="ESRI.ArcGIS.3DAnalyst" />
-    <Reference Include="ESRI.ArcGIS.Output" />
+    <Reference Include="ESRI.ArcGIS.Controls">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.AxControls">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.ADF.Local">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.DataSourcesFile">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Location">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.3DAnalyst">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Output">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml" />
-    <Reference Include="ESRI.ArcGIS.SystemUI" />
-    <Reference Include="ESRI.ArcGIS.DataSourcesRaster" />
+    <Reference Include="ESRI.ArcGIS.SystemUI">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.DataSourcesRaster">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="stdole" />
-    <Reference Include="ESRI.ArcGIS.ADF.Connection.Local" />
+    <Reference Include="ESRI.ArcGIS.ADF.Connection.Local">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Configuration" />
-    <Reference Include="ESRI.ArcGIS.DataSourcesGDB" />
+    <Reference Include="ESRI.ArcGIS.DataSourcesGDB">
+      <Private>True</Private>
+    </Reference>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="UI\TKStyleSelectPage.cs">

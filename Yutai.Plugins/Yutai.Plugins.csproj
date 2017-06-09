@@ -125,6 +125,8 @@
     <Compile Include="Concrete\YutaiCommand.cs" />
     <Compile Include="Concrete\YutaiMenuCommand.cs" />
     <Compile Include="Concrete\YutaiTool.cs" />
+    <Compile Include="Interfaces\IAppContextEvents.cs" />
+    <Compile Include="Events\AppContextEventCollection.cs" />
     <Compile Include="Events\MapMouseDownArgs.cs" />
     <Compile Include="Interfaces\ICommandComboBox.cs" />
     <Compile Include="Interfaces\ICommandSubType.cs" />

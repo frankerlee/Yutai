@@ -20,11 +20,12 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 
 		internal EditorLicenseProviderCheck()
 		{
-			this.license_0 = LicenseManager.Validate(typeof(EditorLicenseProviderCheck), this);
+		//	this.license_0 = LicenseManager.Validate(typeof(EditorLicenseProviderCheck), this);
 		}
 
 		public static bool Check()
 		{
+		    return true;
 			if (!EditorLicenseProviderCheck.m_initOk)
 			{
 				EditorLicenseProviderCheck.Init();

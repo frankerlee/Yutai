@@ -642,9 +642,9 @@ namespace Yutai.ArcGIS.Carto.UI
             this.txtRound.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
             this.txtRound.Size = new Size(0x30, 0x15);
             this.txtRound.TabIndex = 6;
-            bits = new int[4];
-            bits[0] = 10;
-            this.txtGap.EditValue = new decimal(bits);
+            int[] bits2 = new int[4];
+            bits2[0] = 10;
+            this.txtGap.EditValue = new decimal(bits2);
             this.txtGap.Location = new System.Drawing.Point(0x10, 0xa7);
             this.txtGap.Name = "txtGap";
             this.txtGap.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });

@@ -193,9 +193,9 @@ namespace Yutai.ArcGIS.Carto.UI
             this.numUpDownSize.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
             this.numUpDownSize.Properties.DisplayFormat.FormatType = FormatType.Numeric;
             this.numUpDownSize.Properties.EditFormat.FormatType = FormatType.Numeric;
-            bits = new int[4];
-            bits[0] = 100;
-            this.numUpDownSize.Properties.MaxValue = new decimal(bits);
+            int[] bits2 = new int[4];
+            bits2[0] = 100;
+            this.numUpDownSize.Properties.MaxValue = new decimal(bits2);
             this.numUpDownSize.Size = new Size(0x40, 0x15);
             this.numUpDownSize.TabIndex = 0x44;
             this.numUpDownSize.TextChanged += new EventHandler(this.numUpDownSize_TextChanged);

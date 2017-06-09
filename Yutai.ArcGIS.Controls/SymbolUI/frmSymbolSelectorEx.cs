@@ -18,7 +18,7 @@ using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Controls.SymbolUI
 {
-    [LicenseProvider(typeof(AELicenseProviderEx))]
+  //  [LicenseProvider(typeof(AELicenseProviderEx))]
     public class frmSymbolSelectorEx : Form
     {
         private License _license = null;
@@ -70,7 +70,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         public frmSymbolSelectorEx()
         {
             this.InitializeComponent();
-            this._license = LicenseManager.Validate(typeof(frmSymbolSelector), this);
+          //  this._license = LicenseManager.Validate(typeof(frmSymbolSelector), this);
         }
 
         private void AddSymbol(string FileName)
@@ -398,11 +398,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 {
                     this.components.Dispose();
                 }
-                if (this._license != null)
-                {
-                    this._license.Dispose();
-                }
-                this._license = null;
+              
                 this.m_pSG = null;
             }
             base.Dispose(disposing);
@@ -709,9 +705,9 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.spinEditWidth.Properties.DisplayFormat.FormatType = FormatType.Numeric;
             this.spinEditWidth.Properties.EditFormat.FormatString = "0.####";
             this.spinEditWidth.Properties.EditFormat.FormatType = FormatType.Numeric;
-            bits = new int[4];
-            bits[0] = 100;
-            this.spinEditWidth.Properties.MaxValue = new decimal(bits);
+            int[] bits2 = new int[4];
+            bits2[0] = 100;
+            this.spinEditWidth.Properties.MaxValue = new decimal(bits2);
             this.spinEditWidth.Size = new Size(0x4b, 0x15);
             this.spinEditWidth.TabIndex = 3;
             this.spinEditWidth.EditValueChanged += new EventHandler(this.spinEditWidth_EditValueChanged);
@@ -745,8 +741,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.groupBoxMarker.TabStop = false;
             this.groupBoxMarker.Text = "选项";
             this.groupBoxMarker.Visible = false;
-            bits = new int[4];
-            this.spinEditSize.EditValue = new decimal(bits);
+            int[] bits3 = new int[4];
+            this.spinEditSize.EditValue = new decimal(bits3);
             this.spinEditSize.Location = new Point(0x30, 0x38);
             this.spinEditSize.Name = "spinEditSize";
             this.spinEditSize.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
@@ -754,9 +750,9 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.spinEditSize.Properties.DisplayFormat.FormatType = FormatType.Numeric;
             this.spinEditSize.Properties.EditFormat.FormatString = "0.####";
             this.spinEditSize.Properties.EditFormat.FormatType = FormatType.Numeric;
-            bits = new int[4];
-            bits[0] = 100;
-            this.spinEditSize.Properties.MaxValue = new decimal(bits);
+            int[] bits4= new int[4];
+            bits4[0] = 100;
+            this.spinEditSize.Properties.MaxValue = new decimal(bits4);
             this.spinEditSize.Size = new Size(0x4b, 0x15);
             this.spinEditSize.TabIndex = 3;
             this.spinEditSize.EditValueChanged += new EventHandler(this.spinEditSize_EditValueChanged);
@@ -852,7 +848,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             base.Controls.Add(this.barDockControlBottom);
             base.Controls.Add(this.barDockControlTop);
             base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            base.Icon = (Icon) resources.GetObject("$this.Icon");
+           base.Icon = (Icon) resources.GetObject("$this.Icon");
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmSymbolSelectorEx";

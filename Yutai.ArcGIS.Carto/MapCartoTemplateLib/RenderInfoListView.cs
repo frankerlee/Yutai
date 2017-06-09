@@ -584,13 +584,13 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                         {
                             graphics = paintEventArgs_0.Graphics;
                             hdc = graphics.GetHdc();
-                            if (base.Items[num].Tag is JLKLenendItem)
+                            if (base.Items[num].Tag is YTLegendItem)
                             {
-                                if ((base.Items[num].Tag as JLKLenendItem).BackSymbol != null)
+                                if ((base.Items[num].Tag as YTLegendItem).BackSymbol != null)
                                 {
-                                    this.DrawSymbol(hdc.ToInt32(), bounds, (base.Items[num].Tag as JLKLenendItem).BackSymbol);
+                                    this.DrawSymbol(hdc.ToInt32(), bounds, (base.Items[num].Tag as YTLegendItem).BackSymbol);
                                 }
-                                this.DrawSymbol(hdc.ToInt32(), bounds, (base.Items[num].Tag as JLKLenendItem).Symbol);
+                                this.DrawSymbol(hdc.ToInt32(), bounds, (base.Items[num].Tag as YTLegendItem).Symbol);
                             }
                             else if ((base.Items[num] as ListViewItemEx).Style is ISymbol)
                             {
