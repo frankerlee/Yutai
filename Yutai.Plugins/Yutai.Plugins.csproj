@@ -193,6 +193,7 @@
     <Compile Include="Mvp\IView.cs" />
     <Compile Include="Mvp\IViewInternal.cs" />
     <Compile Include="Concrete\MenuItemCollectionMetadata.cs" />
+    <Compile Include="PluginMessages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IConfigService.cs" />
     <Compile Include="Services\IFileDialogService.cs" />

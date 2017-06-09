@@ -149,6 +149,7 @@
     <Compile Include="Commands\MapLegend\CmdHideAllLayer.cs" />
     <Compile Include="Commands\MapLegend\CmdLegendAddData.cs" />
     <Compile Include="Commands\MapLegend\CmdLegendAddGroupLayer.cs" />
+    <Compile Include="Commands\MapLegend\CmdOpenAttributeTable.cs" />
     <Compile Include="Commands\MapLegend\CmdPanToSelectedFeature.cs" />
     <Compile Include="Commands\MapLegend\CmdSelectAllFeatures.cs" />
     <Compile Include="Commands\MapLegend\CmdSetMaximumScale.cs" />
@@ -169,6 +170,7 @@
     <Compile Include="Commands\Views\CmdViewZoomNext.cs" />
     <Compile Include="Commands\Views\CmdViewZoomOut.cs" />
     <Compile Include="Commands\Views\CmdViewZoomPrev.cs" />
+    <Compile Include="Commands\Windows\CmdAttributeTable.cs" />
     <Compile Include="Commands\Windows\CmdLegendDock.cs" />
     <Compile Include="Commands\Windows\CmdOverviewDock.cs" />
     <Compile Include="CompositionRoot.cs" />
@@ -597,6 +599,7 @@
     <None Include="Resources\database_delete.png" />
     <None Include="Resources\add_data.png" />
     <EmbeddedResource Include="Menu\MenuLayout.xml" />
+    <None Include="Resources\icon_attribute_table.png" />
     <Content Include="Resources\icon_maplegend.png" />
     <Content Include="Resources\icon_overview.png" />
     <Content Include="Resources\icon_zoom_in_fixed.bmp" />

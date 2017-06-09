@@ -10,6 +10,7 @@ using ESRI.ArcGIS.Geometry;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Mvp;
+using Yutai.Plugins.Services;
 
 namespace Yutai.Plugins.Interfaces
 {
@@ -62,5 +63,6 @@ namespace Yutai.Plugins.Interfaces
         void SetStatus(string empty);
         void UpdateUI();
         void SetToolTip(string str);
+        IBroadcasterService Broadcaster { get; }
     }
 }

@@ -115,7 +115,8 @@ namespace Yutai.Menu
                     new CmdDisplayMsg(_context),
                     new CmdDisplayScale(_context),
                     new CmdDisplaySelection(_context),
-                    new CmdDisplayUnits(_context)
+                    new CmdDisplayUnits(_context),
+                    new CmdAttributeTable(_context)
                 };
                 _commandKeys = new List<string>();
                 foreach (var command in _commands)

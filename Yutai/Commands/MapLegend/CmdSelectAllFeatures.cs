@@ -58,7 +58,7 @@ namespace Yutai.Commands.MapLegend
         {
             if (_view.SelectedItemType == esriTOCControlItem.esriTOCControlItemLayer && _view.SelectedLayer != null)
             {
-                IActiveView pActiveView = _view.SelectedMap as IActiveView;
+                IActiveView pActiveView = _context.MapControl.Map as IActiveView;
                 if (pActiveView != null)
                 {
                     if (_view.SelectedLayer is IFeatureLayer)

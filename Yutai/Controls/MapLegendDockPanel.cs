@@ -112,6 +112,7 @@ namespace Yutai.Controls
                 {
                     new CmdLegendAddGroupLayer(_context,this),
                     new CmdLegendAddData(_context,this),
+                    new CmdOpenAttributeTable(_context, this),
                     new CmdZoomToLayer(_context, this),
                     new YutaiMenuCommand("dropVisibleScaleRange","dropVisibleScaleRange","dropVisibleScaleRange", "可见比例范围", ""),
                     new CmdSetMinimumScale(_context, this),
