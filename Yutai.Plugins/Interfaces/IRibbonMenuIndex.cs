@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml;
+using DevExpress.XtraBars;
+using ESRI.ArcGIS.Geometry;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Events;
 
@@ -10,18 +12,21 @@ namespace Yutai.Plugins.Interfaces
     {
         event EventHandler<MenuItemEventArgs> ItemClicked;
         bool NeedsToolTip { get; }
-   
-        IRibbonMenuItem FindItem(string key);
+
+        BarItem FindItem(string key);
         void Remove(string key);
         void RemoveItemsForPlugin(PluginIdentity pluginIdentity);
-        IEnumerable<IRibbonMenuItem> ItemsForPlugin(PluginIdentity pluginIdentity);
+        IEnumerable<BarItem> ItemsForPlugin(PluginIdentity pluginIdentity);
         void FireItemClicked(object sender, MenuItemEventArgs e);
         void Clear();
     
         void UpdateMenu();
-        IEnumerable<IRibbonMenuItem> RibbonMenuItems { get; }
+        List<BarItem> RibbonMenuItems { get; }
         void AddItems(XmlDocument xmlDoc, IEnumerable<YutaiCommand> commands);
         void SetCurrentTool(string oldToolName, string nowToolName);
         void SetStatusValue(string statusKey, object objValue);
+
+        List<YutaiCommand> GetShapeCommands(esriGeometryType geometryType);
+
     }
 }

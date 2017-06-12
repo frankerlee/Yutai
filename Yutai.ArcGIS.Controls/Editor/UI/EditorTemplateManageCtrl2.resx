@@ -117,50 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="icon_edit_save" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_edit_save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>292, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="toolStripButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHuSURBVDhPfVHPTxNBGN1kQryZAH8HJxEUMbhs6ZZa2m5s
+        U0qglFooQaSUXxcS0ngiBOOBFC/6B3jiCAc91cZGT1xISDxw8WK8sL+7DXnODHRLaZdJXt737c57M98b
+        gYQ/g0x8Aue7NUezFzotLihegGyfg2ydghR+gSx/B8l9A5k7Bpk+Akl88TZYWFjE5aXKoaoaZ9O0WmBZ
+        FkqlUmeDdCYLVdfR++EvNGrAuPBVxcbmlou19Q2sFtbwdiWPpaVllzNUK6RSaRiGCd00Xa7VasgtvoGm
+        aRT6DTfQ6HVEIgqEqalpmPSKPbsXLq+e/MP8fA66biD+4wpk5zcVGNBozw1uOBQKQ4jHE7Btm5/KmKFe
+        r2PudZafxMRkMM/rw8OPODgocWYGweBLCIryyhU2TBzHQSqd4TfQaD46O73DDfx+GUIoNIFoVEFAHseY
+        zw9pVML+/nvMzMzSTAzs/UyBvOvm9TVYVtfsk8YgVKtVVCqVNiSTNBv6hEzcNUlgmXbLCOyfKI52flq2
+        EomkO1oTbMQmRkZeeBvEYnHUbAf404ez4gOaj9OG58+GvQ0UJcbDZOLs44e8vj0C64eePPU2CIejfNN9
+        GBgYvG+EGMYDQchyAH6fDEnyQaKhiaLocv+jfm8D9hLlcrkNrd/L+A/02WDne546JgAAAABJRU5ErkJg
+        gg==
+</value>
   </data>
-  <data name="icon_edit_start" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_edit_start.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="toolStripDropDownButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIjSURBVDhPlZLbS9NhGMf3d0RE9C9EF115E1HQVQhBF5VF
+        dBORpdWEYp5nmpqaU9TUqStdc3mKKZutpiOX6NyixaZz59n052FqFIWfen85LYlaX3h4j5/v87wvj8IX
+        iGEcsaPpGqSk/in3qtrJK2/hTlkTyvvN3K1so6hOx4MWI03dwwxZJ5kNxlGkpO2zUVjbJcNiLKjpRFWt
+        3Yn8hx0752WNetQNPdTrTLsGwegi9pl5dP2vyK9u49LNEi7eKCYru0gOsb6cq5arqmjuRds/hm3CuWuw
+        ubmJdcKFe36JxDrE1sAvbeGJf8EV2mBydpnXrggGy7RcUUGFBsFs4z8lSRJGswOnf5XwCgSXt3jrkxiZ
+        8BJekAjFEnj9YZyu94i729jvCobCPB+dxhPZILIKM8F1HJ4oH6U1ztWZyFT3cDKv+c9wSk63B4N5isDS
+        1x9P+MyULyEbZLeN0vthmYxrVbLB2YohUiGDv8pic9BvnWFu8RvuwAr+UFzOLOAjWfl/r0AomUzS0DnA
+        7MInWo1Wxt9MIfa2j9NTq96EL7YuN0+OqhK19hS3Nce5Up6RnlHKQDSRsriWGn0mY+5czqiO/vsPhDoM
+        JuzvonIbl9e3y5kFfCLncHoVDFrsvJwOcKu0kS7Di/97v9CAeZziR0+4cL2QzmdDDJceok95kO6rB9Iz
+        i8fjeL1eOcTcpjlGMvSY9vP70/uDvRKZBdx4et8eQKH4DtHByteR1EHBAAAAAElFTkSuQmCC
+</value>
   </data>
-  <data name="icon_edit_stop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_edit_stop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_sketch_point" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_sketch_point.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_snap" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_snap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_snap_boundary" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BoundarySnap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_snap_endpoint" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\EndPointSnap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_snap_intersect" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IntersectionPointSnap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_snap_midpoint" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MidPointSnap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_snap_point" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PointSnap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_snap_setting" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_snap_setting.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_snap_sketch" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_snap_sketch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_snap_tangent" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TangentPointSnap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_snap_vertex" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\VertexPointSnap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_template" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_template.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
+  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>457, 17</value>
+  </metadata>
 </root>

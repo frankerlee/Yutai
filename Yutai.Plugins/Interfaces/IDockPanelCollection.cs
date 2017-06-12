@@ -16,5 +16,6 @@ namespace Yutai.Plugins.Interfaces
         DockPanel GetDockPanel(string key);
         void ShowDockPanel(string dockName, bool isVisible, bool isActive);
         void SetActivePanel(string dockName);
+        bool GetDockVisible(string dockName);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using DevExpress.XtraBars;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Interfaces;
 
@@ -20,7 +21,7 @@ namespace Yutai.UI.Menu
             _ribbonMenu = context.RibbonMenu;
         }
     
-        protected IRibbonMenuItem FindRibbonMenuItem(string itemKey)
+        protected BarItem FindRibbonMenuItem(string itemKey)
         {
             return _ribbonMenu.FindItem(itemKey);
         }

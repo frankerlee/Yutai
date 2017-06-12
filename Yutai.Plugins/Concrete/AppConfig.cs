@@ -64,7 +64,6 @@ namespace Yutai.Plugins.Concrete
                 {
                     new Guid("2b81c89a-ee45-4276-9dc1-72bbbf07f53f"), //定位器
                     new Guid("e7598649-d49b-45fa-b020-57e2dd777337"), //信息查看器
-                   
                     new Guid("01f8e32a-5837-431f-9c1b-5d0f195fb93e"), // 书签管理
                     new Guid("4a3bcaab-9d3e-4ca7-a19d-7ee08fb0629e"), // 编辑
                     new Guid("7da6c412-c345-4ccc-9f22-ef7eb3757898"), // 属性表
@@ -315,6 +314,9 @@ namespace Yutai.Plugins.Concrete
           
             IsSnapTangent = false;
             UseSnap = false;
+            _engineSnapEnvironment=new EngineEditorClass();
+            ((IEngineEditProperties2) _engineSnapEnvironment).SnapTips = true;
+            _engineSnapEnvironment.SnapTolerance = 10;
             #endregion
             LocatorMaxCount = 100;
 

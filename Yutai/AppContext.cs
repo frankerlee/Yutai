@@ -13,7 +13,9 @@ using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geometry;
 using ESRI.ArcGIS.SystemUI;
 using Syncfusion.Windows.Forms.Tools;
+using Yutai.ArcGIS.Common;
 using Yutai.Controls;
+using Yutai.Forms;
 using Yutai.Helper;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
@@ -28,6 +30,7 @@ using Yutai.UI.Forms;
 using Yutai.UI.Menu;
 using Yutai.UI.Menu.Ribbon;
 using Yutai.UI.Style;
+using AfterDraw = Yutai.Plugins.Interfaces.AfterDraw;
 
 namespace Yutai
 {
@@ -52,6 +55,8 @@ namespace Yutai
         private object _hook;
         private IOperationStack m_pOperationStack;
         private IStyleGallery m_pStyleGallery;
+
+        private ToolTip _toolTip;
 
         public AppContext(
             IApplicationContainer container,
@@ -247,6 +252,10 @@ namespace Yutai
             m_pStyleGallery = null;
             Initialized = true;
             Logger.Current.Trace("End AppContext.Init()");
+
+            //为了减少修改，给ApplicationRef赋值
+            ApplicationRef.AppContext = this;
+
         }
 
         internal void InitPlugins(IConfigService configService)
@@ -292,6 +301,11 @@ namespace Yutai
             
         }
 
+        public void ShowSplashMessage(string msg)
+        {
+            SplashView.Instance.ShowStatus(msg);
+        }
+
         public void UpdateUI()
         {
             // throw new NotImplementedException();
@@ -304,6 +318,21 @@ namespace Yutai
         public void SetToolTip(string str)
         {
             // throw new NotImplementedException();
+
+            if (this.Config.EngineSnapEnvironment != null)
+            {
+                if ((this.Config.EngineSnapEnvironment as IEngineEditProperties2).SnapTips)
+                {
+                    if (this._mainView != null)
+                    {
+                        this._toolTip.SetToolTip(this.MapControl as Control, str);
+                    }
+                }
+                else if (!string.IsNullOrEmpty(this._toolTip.GetToolTip(this.MapControl as Control)))
+                {
+                    this._toolTip.SetToolTip(this.MapControl as Control, "");
+                }
+            }
         }
 
        

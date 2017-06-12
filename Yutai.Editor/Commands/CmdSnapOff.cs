@@ -31,6 +31,7 @@ namespace Yutai.Plugins.Editor.Commands
             base.TextImageRelationYT = TextImageRelationYT.ImageAboveText;
             base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
             base._needUpdateEvent = true;
+            _itemType = RibbonItemType.CheckBox;
         }
 
         public override bool Enabled
@@ -79,6 +80,7 @@ namespace Yutai.Plugins.Editor.Commands
             base.TextImageRelationYT = TextImageRelationYT.ImageBeforeText;
             base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
             base._needUpdateEvent = true;
+            _itemType = RibbonItemType.CheckBox;
         }
 
         public override bool Enabled
@@ -129,6 +131,7 @@ namespace Yutai.Plugins.Editor.Commands
             base.TextImageRelationYT = TextImageRelationYT.ImageBeforeText;
             base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
             base._needUpdateEvent = true;
+            _itemType = RibbonItemType.CheckBox;
         }
 
         public override bool Enabled
@@ -177,6 +180,7 @@ namespace Yutai.Plugins.Editor.Commands
             base.TextImageRelationYT = TextImageRelationYT.ImageBeforeText;
             base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
             base._needUpdateEvent = true;
+            _itemType = RibbonItemType.CheckBox;
         }
 
         public override bool Enabled
@@ -225,6 +229,7 @@ namespace Yutai.Plugins.Editor.Commands
             base.TextImageRelationYT = TextImageRelationYT.ImageBeforeText;
             base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
             base._needUpdateEvent = true;
+            _itemType = RibbonItemType.CheckBox;
         }
 
         public override bool Enabled
@@ -274,6 +279,7 @@ namespace Yutai.Plugins.Editor.Commands
             base.TextImageRelationYT = TextImageRelationYT.ImageBeforeText;
             base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
             base._needUpdateEvent = true;
+            _itemType = RibbonItemType.CheckBox;
         }
 
         public override bool Enabled

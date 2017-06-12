@@ -242,7 +242,17 @@ namespace Yutai.UI.Docking
                 _dockingManager.ActivePanel = panel;
         }
 
+        public bool GetDockVisible(string dockName)
+        {
+            DevExpress.XtraBars.Docking.DockPanel panel = _dockingManager.Panels[dockName];
+            if (panel == null)
+            {
+               
+                return false;
+            }
+            return panel.Visible;
 
+        }
         public IEnumerator<IDockPanelView> GetEnumerator()
         {
             return (IEnumerator<IDockPanelView>) (from view in _dict select view.Value);

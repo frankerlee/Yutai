@@ -82,10 +82,14 @@ namespace Yutai.Plugins.Interfaces
         void MapDocumentChanged();
         void MapDocumentSave(string fileName);
         void ResetCurrentTool();
-   
 
+        void ShowSplashMessage(string msg);
         IBroadcasterService Broadcaster { get; }
     }
 
+    public interface ISplashView
+    {
+        void ShowStatus(string message);
+    }
     public delegate void AfterDraw(IDisplay display, esriViewDrawPhase drawPhase);
 }

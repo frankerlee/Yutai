@@ -32,7 +32,7 @@ namespace Yutai.Services.Views
             if (percent < 0) percent = 0;
             if (percent > 100) percent = 100;
 
-            progressBarAdv1.Value = percent;
+            progressBarAdv1.EditValue = percent;
             progressBarAdv1.Refresh();
 
             lblMessage.Text = message;

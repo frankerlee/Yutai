@@ -41,7 +41,13 @@
     <Reference Include="ESRI.ArcGIS.Controls, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.Display, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.Geodatabase, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geometry, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="ESRI.ArcGIS.System, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
@@ -72,6 +78,8 @@
     <Compile Include="Commands\CmdEditorSave.cs" />
     <Compile Include="Commands\CmdEditorStop.cs" />
     <Compile Include="Commands\CmdEditorStart.cs" />
+    <Compile Include="Commands\CmdShowEditTemplate.cs" />
+    <Compile Include="Commands\CmdSketchPoint.cs" />
     <Compile Include="Commands\CmdSnapIntersectPoint.cs" />
     <Compile Include="Commands\CmdSnapMidPoint.cs" />
     <Compile Include="Commands\CmdSnapOff.cs" />
@@ -85,16 +93,30 @@
       <DependentUpon>SnapConfigPage.cs</DependentUpon>
     </Compile>
     <Compile Include="EditorPlugin.cs" />
-    <Compile Include="Menu\DockPanelService.cs" />
+    <Compile Include="Menu\TemplateDockPanelService.cs" />
     <Compile Include="Menu\MenuGenerator.cs" />
     <Compile Include="Menu\YutaiCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EditorSettings.cs" />
+    <Compile Include="Properties\Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\EditTemplateCommand.cs" />
+    <Compile Include="Views\EditTemplatePresenter.cs" />
+    <Compile Include="Views\EditTemplateView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\EditTemplateView.Designer.cs">
+      <DependentUpon>EditTemplateView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IEditTemplateView.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Yutai.Api\Yutai.Api.csproj">
@@ -104,6 +126,10 @@
     <ProjectReference Include="..\Yutai.ArcGIS.Common\Yutai.ArcGIS.Common.csproj">
       <Project>{1938b3f8-8ede-48f7-9594-eeb1f126e622}</Project>
       <Name>Yutai.ArcGIS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yutai.ArcGIS.Controls\Yutai.ArcGIS.Controls.csproj">
+      <Project>{0E17B019-EE36-46B7-8B96-C0A3CA666430}</Project>
+      <Name>Yutai.ArcGIS.Controls</Name>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.Plugins\Yutai.Plugins.csproj">
       <Project>{800f2ee4-47ab-4cd4-934d-a64980d98a23}</Project>
@@ -126,9 +152,16 @@
     <EmbeddedResource Include="Controls\SnapConfigPage.resx">
       <DependentUpon>SnapConfigPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
+    <EmbeddedResource Include="Properties\Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EditTemplateView.resx">
+      <DependentUpon>EditTemplateView.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +205,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Menu\MenuLayout.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_template.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_sketch_point.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

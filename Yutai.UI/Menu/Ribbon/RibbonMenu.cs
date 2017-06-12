@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
+using DevExpress.XtraBars;
 using ESRI.ArcGIS.SystemUI;
 using Syncfusion.Windows.Forms.Tools;
 using Yutai.Plugins;
@@ -50,7 +51,7 @@ namespace Yutai.UI.Menu.Ribbon
             _menuIndex.SetStatusValue(statusKey, objValue);
         }
 
-        public IRibbonMenuItem FindItem(string key)
+        public BarItem FindItem(string key)
         {
             return _menuIndex.FindItem(key);
         }

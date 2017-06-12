@@ -26,6 +26,7 @@ namespace Yutai.Plugins.Editor.Commands
             base.TextImageRelationYT = TextImageRelationYT.ImageBeforeText;
             base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
             base._needUpdateEvent = true;
+            _itemType = RibbonItemType.CheckBox;
         }
 
         public override bool Enabled
@@ -47,6 +48,7 @@ namespace Yutai.Plugins.Editor.Commands
         public override void OnClick()
         {
             _context.Config.IsSnapMiddlePoint = !_context.Config.IsSnapMiddlePoint;
+            
         }
     }
 }

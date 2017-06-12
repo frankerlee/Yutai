@@ -14,6 +14,7 @@ using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Repository;
+using ESRI.ArcGIS.Geometry;
 using Syncfusion.Windows.Forms.Tools;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
@@ -27,11 +28,12 @@ namespace Yutai.UI.Menu.Ribbon
 {
     internal class RibbonMenuIndex : IRibbonMenuIndex
     {
-        private List<IRibbonMenuItem> _items;
+       
         private bool _needsToolTip;
         private RibbonControl _ribbonManager;
-        private IEnumerable<IRibbonMenuItem> _cmdItems;
+    
         private List<YutaiCommand> _commands;
+        private List<YutaiCommand> _shapeCommands;
         private string _oldToolName = "";
         private RibbonStatusBar _statusManager;
         //暂时性的事件触发没有在这儿进行
@@ -40,8 +42,8 @@ namespace Yutai.UI.Menu.Ribbon
         public RibbonMenuIndex(RibbonControl ribbonManager, RibbonStatusBar statusBar)
         {
             _ribbonManager = ribbonManager;
-            _items = new List<IRibbonMenuItem>();
-            _commands = new List<YutaiCommand>();
+            _shapeCommands=new List<YutaiCommand>();
+              _commands = new List<YutaiCommand>();
             _statusManager = statusBar;
         }
 
@@ -94,6 +96,10 @@ namespace Yutai.UI.Menu.Ribbon
                     continue;
                 }
                 _commands.Add(command);
+                if (command is IShapeConstructorTool)
+                {
+                    _shapeCommands.Add(command);
+                }
                 CreateCommand(command);
             }
         }
@@ -224,6 +230,14 @@ namespace Yutai.UI.Menu.Ribbon
             {
                 ((BarEditItem) item).EditValue = objValue;
             }
+        }
+
+        public List<YutaiCommand> GetShapeCommands(esriGeometryType geometryType)
+        {
+            return
+            (from command in _shapeCommands
+                where ((IShapeConstructorTool) command).GeometryType == geometryType
+                select command).ToList();
         }
 
         private RibbonPage CreateRibbonPage(XmlNode node)
@@ -394,6 +408,11 @@ namespace Yutai.UI.Menu.Ribbon
             }
             // if (!string.IsNullOrEmpty(command.Message))
             item.ItemClick += FireMessageSetting;
+            if (command.NeedUpdateEvent)
+            {
+                item.ItemClick += UpdateMenuClick;
+            }
+            item.Enabled = command.Enabled;
             item.SuperTip = new SuperToolTip();
             item.SuperTip.Items.AddTitle(item.Caption);
             item.SuperTip.Items.Add((string) command.Tooltip);
@@ -426,6 +445,10 @@ namespace Yutai.UI.Menu.Ribbon
             return button;
         }
 
+        private void UpdateMenuClick(object sender, ItemClickEventArgs e)
+        {
+            UpdateMenu();
+        }
         private void FireMessageSetting(object sender, ItemClickEventArgs e)
         {
             IRibbonItem command = e.Item.Tag as IRibbonItem;
@@ -578,39 +601,40 @@ namespace Yutai.UI.Menu.Ribbon
 
         #endregion
 
-        public IRibbonMenuItem FindItem(string key)
+        public BarItem FindItem(string key)
         {
-            return _items.FirstOrDefault(c => c.Key == key);
+            return _ribbonManager.Items[key];
         }
 
         public void Remove(string key)
         {
-            IRibbonMenuItem item = FindItem(key);
+            BarItem item = FindItem(key);
             if (item != null)
-                _items.Remove(item);
+                _ribbonManager.Items.Remove(item);
         }
 
 
         public void RemoveItemsForPlugin(PluginIdentity pluginIdentity)
         {
-            List<IRibbonMenuItem> _removes = new List<IRibbonMenuItem>();
-            foreach (var item in _items)
-            {
-                if (item.Item.PluginIdentity == pluginIdentity)
-                {
-                    _removes.Add(item);
-                }
-            }
-            foreach (var key in _removes)
-            {
-                _items.Remove(key);
-            }
+            //List<IRibbonMenuItem> _removes = new List<IRibbonMenuItem>();
+            //foreach (var item in _items)
+            //{
+            //    if (item.Item.PluginIdentity == pluginIdentity)
+            //    {
+            //        _removes.Add(item);
+            //    }
+            //}
+            //foreach (var key in _removes)
+            //{
+            //    _items.Remove(key);
+            //}
         }
 
 
-        public IEnumerable<IRibbonMenuItem> ItemsForPlugin(PluginIdentity pluginIdentity)
+        public IEnumerable<BarItem> ItemsForPlugin(PluginIdentity pluginIdentity)
         {
-            return from item in _items where item.Item.PluginIdentity == pluginIdentity select item;
+           // return from item in _items where item.Item.PluginIdentity == pluginIdentity select item;
+            return null;
         }
 
         public bool NeedsToolTip
@@ -630,18 +654,40 @@ namespace Yutai.UI.Menu.Ribbon
 
         public void Clear()
         {
-            _items.Clear();
+            _commands.Clear();
+            _shapeCommands.Clear();
+            _ribbonManager.Items.Clear();
             //后面需要增加删除真实界面的代码
         }
 
 
         public void UpdateMenu()
         {
+            foreach (BarItem item in _ribbonManager.Items)
+            {
+                if (item.Tag != null)
+                {
+                    YutaiCommand command = item.Tag as YutaiCommand;
+                    if (command != null)
+                    {
+                        item.Enabled = command.Enabled;
+                        if (item is BarCheckItem) ((BarCheckItem) item).Checked = command.Checked;
+                       continue;
+                    }
+                }
+                YutaiCommand oneCommand = _commands.Find(c => c.Key == item.Name);
+                if (oneCommand != null)
+                {
+                    item.Enabled = oneCommand.Enabled;
+                    if (item is BarCheckItem) ((BarCheckItem)item).Checked = oneCommand.Checked;
+                    continue;
+                }
+            }
         }
 
-        public IEnumerable<IRibbonMenuItem> RibbonMenuItems
+        public List<BarItem> RibbonMenuItems
         {
-            get { return _items; }
+            get { return _ribbonManager.Items.GetSortedList(); }
         }
     }
 }

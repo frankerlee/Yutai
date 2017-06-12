@@ -115,7 +115,7 @@ namespace Yutai.ArcGIS.Common.Editor
 			return aliasName;
 		}
 
-		private IPoint method_2(IPoint ipoint_0, IFeatureCache2 ifeatureCache2_0, double double_0)
+		private IPoint SnapPoint(IPoint ipoint_0, IFeatureCache2 ifeatureCache2_0, double double_0)
 		{
 			IPoint shape;
 			double num;
@@ -178,7 +178,7 @@ namespace Yutai.ArcGIS.Common.Editor
 			return shapeCopy;
 		}
 
-		private IPoint method_3(IPoint ipoint_0, IFeatureCache2 ifeatureCache2_0, double double_0)
+		private IPoint SnapEndPoint(IPoint ipoint_0, IFeatureCache2 ifeatureCache2_0, double double_0)
 		{
 			double num = 0;
 			int num1 = 0;
@@ -220,7 +220,7 @@ namespace Yutai.ArcGIS.Common.Editor
 			return x;
 		}
 
-		private IPoint method_4(IPoint ipoint_0, IFeatureCache2 ifeatureCache2_0, double double_0)
+		private IPoint SnapBoundary(IPoint ipoint_0, IFeatureCache2 ifeatureCache2_0, double double_0)
 		{
 			IFeature feature = null;
 			double num = 0;
@@ -262,7 +262,7 @@ namespace Yutai.ArcGIS.Common.Editor
 			return x;
 		}
 
-		private IPoint method_5(IPoint ipoint_0, IFeatureCache2 ifeatureCache2_0, double double_0)
+		private IPoint SnapVertexPoint(IPoint ipoint_0, IFeatureCache2 ifeatureCache2_0, double double_0)
 		{
 			IFeature feature = null;
 			double num = 0;
@@ -304,7 +304,7 @@ namespace Yutai.ArcGIS.Common.Editor
 			return x;
 		}
 
-		private IPoint method_6(IPoint ipoint_0, IFeatureCache2 ifeatureCache2_0, double double_0)
+		private IPoint SnapMiddlePoint(IPoint ipoint_0, IFeatureCache2 ifeatureCache2_0, double double_0)
 		{
 			IFeature feature = null;
 			double num = 0;
@@ -346,7 +346,7 @@ namespace Yutai.ArcGIS.Common.Editor
 			return x;
 		}
 
-		private IPoint method_7(IPoint ipoint_0, IFeatureCache2 ifeatureCache2_0, double double_0)
+		private IPoint SnapIntersectPoint(IPoint ipoint_0, IFeatureCache2 ifeatureCache2_0, double double_0)
 		{
 			int i;
 			IGeometry geometry;
@@ -528,137 +528,123 @@ namespace Yutai.ArcGIS.Common.Editor
 			return point;
 		}
 
-		private bool method_9(IPoint ipoint_0, IAppContext appContext, double double_0, out IPoint ipoint_1)
+		private bool SnapAll(IPoint pPoint, IAppContext appContext, double torelance, out IPoint snapPoint)
 		{
-			bool flag;
-			IMap focusMap = appContext.MapControl.Map;
-			ipoint_1 = null;
-			if (appContext.Config.UseSnap)
-			{
-				if (appContext.Config.IsSnapSketch)
-				{
-					IHitTest mPPointColn = SketchToolAssist.m_pPointColn as IHitTest;
-					if (mPPointColn != null)
-					{
-						double num = 0;
-						int num1 = 0;
-						int num2 = 0;
-						bool flag1 = false;
-						IPoint pointClass = new ESRI.ArcGIS.Geometry.Point();
-						if (!mPPointColn.HitTest(ipoint_0, double_0, esriGeometryHitPartType.esriGeometryPartVertex, pointClass, ref num, ref num1, ref num2, ref flag1))
-						{
-							goto Label1;
-						}
-						ipoint_1 = pointClass;
-						ApplicationRef.AppContext.SetToolTip("草图:折点");
-						flag = true;
-						return flag;
-					}
-				}
-			Label1:
-				UID uIDClass = new UID()
-				{
-					Value = "{6CA416B1-E160-11D2-9F4E-00C04F6BC78E}"
-				};
-				IEnumLayer layers = focusMap.Layers[uIDClass, true];
-				layers.Reset();
-				layers.Next();
-				IFeatureCache2 featureCacheClass = new FeatureCache() as IFeatureCache2;
-				featureCacheClass.Initialize(ipoint_0, double_0);
-				try
-				{
-					featureCacheClass.AddLayers(layers, (focusMap as IActiveView).Extent);
-				}
-				catch
-				{
-				}
-				if (featureCacheClass.Count != 0)
-				{
-					if (appContext.Config.IsSnapPoint)
-					{
-						ipoint_1 = this.method_2(ipoint_0, featureCacheClass, double_0);
-						if (ipoint_1 == null)
-						{
-							goto Label2;
-						}
-						flag = true;
-						return flag;
-					}
-				Label2:
-					if (appContext.Config.IsSnapIntersectionPoint)
-					{
-						ipoint_1 = this.method_7(ipoint_0, featureCacheClass, double_0);
-						if (ipoint_1 == null)
-						{
-							goto Label3;
-						}
-						flag = true;
-						return flag;
-					}
-				Label3:
-					if (appContext.Config.IsSnapEndPoint)
-					{
-						ipoint_1 = this.method_3(ipoint_0, featureCacheClass, double_0);
-						if (ipoint_1 == null)
-						{
-							goto Label4;
-						}
-						flag = true;
-						return flag;
-					}
-				Label4:
-					if (appContext.Config.IsSnapVertexPoint)
-					{
-						ipoint_1 = this.method_5(ipoint_0, featureCacheClass, double_0);
-						if (ipoint_1 == null)
-						{
-							goto Label5;
-						}
-						flag = true;
-						return flag;
-					}
-				Label5:
-					if (appContext.Config.IsSnapMiddlePoint)
-					{
-						ipoint_1 = this.method_6(ipoint_0, featureCacheClass, double_0);
-						if (ipoint_1 == null)
-						{
-							goto Label6;
-						}
-						flag = true;
-						return flag;
-					}
-				Label6:
-					if (appContext.Config.IsSnapBoundary)
-					{
-						ipoint_1 = this.method_4(ipoint_0, featureCacheClass, double_0);
-						if (ipoint_1 == null)
-						{
-							goto Label7;
-						}
-						flag = true;
-						return flag;
-					}
-				Label7:
-					flag = false;
-				}
-				else
-				{
-					flag = false;
-				}
-			}
-			else
-			{
-				flag = false;
-			}
-			return flag;
-		}
+            IMap focusMap = appContext.FocusMap;
+            snapPoint = null;
+            bool result;
+            if (!appContext.Config.UseSnap)
+            {
+                result = false;
+            }
+            else
+            {
+                if (appContext.Config.IsSnapSketch)
+                {
+                    IHitTest hitTest = SketchToolAssist.m_pPointColn as IHitTest;
+                    if (hitTest != null)
+                    {
+                        double num = 0.0;
+                        int num2 = 0;
+                        int num3 = 0;
+                        bool flag = false;
+                        IPoint point = new Point();
+                        if (hitTest.HitTest(pPoint, torelance, esriGeometryHitPartType.esriGeometryPartVertex, point, ref num, ref num2, ref num3, ref flag))
+                        {
+                            snapPoint = point;
+                            string toolTip = "草图:折点";
+                            ApplicationRef.Application.SetToolTip(toolTip);
+                            result = true;
+                            return result;
+                        }
+                    }
+                }
+                IEnumLayer enumLayer = focusMap.get_Layers(new UID
+                {
+                    Value = "{6CA416B1-E160-11D2-9F4E-00C04F6BC78E}"
+                }, true);
+                enumLayer.Reset();
+                enumLayer.Next();
+                IFeatureCache2 featureCache = new FeatureCache() as IFeatureCache2;
+                featureCache.Initialize(pPoint, torelance);
+                try
+                {
+                    featureCache.AddLayers(enumLayer, (focusMap as IActiveView).Extent);
+                }
+                catch
+                {
+                }
+                if (featureCache.Count == 0)
+                {
+                    result = false;
+                }
+                else
+                {
+                    if (appContext.Config.IsSnapPoint)
+                    {
+                        snapPoint = this.SnapPoint(pPoint, featureCache, torelance);
+                        if (snapPoint != null)
+                        {
+                            result = true;
+                            return result;
+                        }
+                    }
+                    if (appContext.Config.IsSnapIntersectionPoint)
+                    {
+                        snapPoint = this.SnapIntersectPoint(pPoint, featureCache, torelance);
+                        if (snapPoint != null)
+                        {
+                            result = true;
+                            return result;
+                        }
+                    }
+                    if (appContext.Config.IsSnapEndPoint)
+                    {
+                        snapPoint = this.SnapEndPoint(pPoint, featureCache, torelance);
+                        if (snapPoint != null)
+                        {
+                            result = true;
+                            return result;
+                        }
+                    }
+                    if (appContext.Config.IsSnapVertexPoint)
+                    {
+                        snapPoint = this.SnapVertexPoint(pPoint, featureCache, torelance);
+                        if (snapPoint != null)
+                        {
+                            result = true;
+                            return result;
+                        }
+                    }
+                    if (appContext.Config.IsSnapMiddlePoint)
+                    {
+                        snapPoint = this.SnapMiddlePoint(pPoint, featureCache, torelance);
+                        if (snapPoint != null)
+                        {
+                            result = true;
+                            return result;
+                        }
+                    }
+                    if (appContext.Config.IsSnapBoundary)
+                    {
+                        snapPoint = this.SnapBoundary(pPoint, featureCache, torelance);
+                        if (snapPoint != null)
+                        {
+                            result = true;
+                            return result;
+                        }
+                    }
+                    result = false;
+                }
+            }
+            return result;
+        }
 
 		public void RemoveCachedShapes(int int_0)
 		{
 		}
 
-		public ISnappingResult Snap(IPoint ipoint_0)
+		public ISnappingResult Snap(IPoint pPoint)
 		{
 			ISnappingResult snappingResult;
 			if (this.Map != null)
@@ -670,7 +656,7 @@ namespace Yutai.ArcGIS.Common.Editor
 				{
 					snapTolerance = CommonHelper.ConvertPixelsToMapUnits(application.MapControl.Map as IActiveView, snapTolerance);
 				}
-				if (!this.method_9(ipoint_0, application, snapTolerance, out point))
+				if (!this.SnapAll(pPoint, application, snapTolerance, out point))
 				{
 					ApplicationRef.AppContext.SetToolTip("");
 					snappingResult = null;

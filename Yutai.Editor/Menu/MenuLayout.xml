@@ -18,7 +18,9 @@
           <BarItem  Key="Edit_Snap_Config_SnapIntersectPoint" Visible="true"></BarItem>
           <BarItem  Key="Edit_Snap_Config_SnapMidPoint" Visible="true"></BarItem>
         </PageGroup>
-      
+        <PageGroup Key="Edit_Extend" Caption="工具" Visible="true" Index="1">
+          <BarItem  Key="Edit_Open_Template" Visible="true"></BarItem>
+        </PageGroup>
       </Page>
     </Pages>
   </MainMenu>

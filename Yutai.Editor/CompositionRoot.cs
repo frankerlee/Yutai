@@ -1,4 +1,5 @@
-﻿using Yutai.Plugins.Mvp;
+﻿using Yutai.Plugins.Editor.Views;
+using Yutai.Plugins.Mvp;
 
 namespace Yutai.Plugins.Editor
 {
@@ -6,10 +7,8 @@ namespace Yutai.Plugins.Editor
     {
         public static void Compose(IApplicationContainer container)
         {
-            
-
-            //container.RegisterService<IIdentifierView, IdentifierDockPanel>()
-            //    .RegisterSingleton<IdentifierPresenter>();
+            container.RegisterService<IEditTemplateView, EditTemplateView>()
+                .RegisterSingleton<EditTemplatePresenter>();
         }
     }
 }
