@@ -377,6 +377,12 @@
     <Compile Include="Editor\UI\EditorTemplateManageCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Editor\UI\EditorTemplateManageCtrl2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\UI\EditorTemplateManageCtrl2.Designer.cs">
+      <DependentUpon>EditorTemplateManageCtrl2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editor\UI\EditTemplateListView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1118,6 +1124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ProjCoordSys.resx">
       <DependentUpon>ProjCoordSys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\UI\EditorTemplateManageCtrl2.resx">
+      <DependentUpon>EditorTemplateManageCtrl2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx" />
     <EmbeddedResource Include="Controls\PropertySheet.resx">

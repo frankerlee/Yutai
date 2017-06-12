@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Xml;
+using DevExpress.XtraBars;
 using Yutai.Plugins.Concrete;
 
 namespace Yutai.Plugins.Interfaces
 {
     public interface IRibbonMenu
     {
-        IRibbonMenuItem FindItem(string key);
+        BarItem FindItem(string key);
         //IRibbonItem FindItem(string key, PluginIdentity identity);
         void RemoveItemsForPlugin(PluginIdentity identity);
         IRibbonMenuIndex SubItems { get; }

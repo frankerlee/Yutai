@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 using Syncfusion.Windows.Forms;
 using Syncfusion.Windows.Forms.Tools;
 using Yutai.Plugins.Mvp;
@@ -18,7 +19,7 @@ namespace Yutai.UI.Forms
 {
 
 
-    public partial class MapWindowView : MetroForm, IViewInternal
+    public partial class MapWindowView : XtraForm, IViewInternal
 
     {
         public event Action OkClicked;

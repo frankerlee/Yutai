@@ -135,7 +135,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="TeeChart">
-      <HintPath>C:\Program Files (x86)\成都领君科技有限公司\JLKEngine中间件平台V8.0\JLKEngine8.9\TeeChart.DLL</HintPath>
+      <HintPath>D:\Program Files (x86)\成都领君科技有限公司\JLKEngine中间件平台V8.0\JLKEngine8.9\TeeChart.DLL</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -913,7 +913,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Raster\UI\RasterAdjustPointsTablePage.resx" />
     <EmbeddedResource Include="Resource\BitmapResources.resx" />
-    <EmbeddedResource Include="ZD\frmSelectEditZD.resources" />
+    <EmbeddedResource Include="ZD\frmSelectEditZD.resx">
+      <DependentUpon>frmSelectEditZD.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Enums\" />

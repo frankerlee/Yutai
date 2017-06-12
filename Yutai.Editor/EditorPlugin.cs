@@ -14,7 +14,7 @@ namespace Yutai.Plugins.Editor
     public class EditorPlugin : BasePlugin
     {
         private IAppContext _context;
-        //private DockPanelService _dockPanelService;
+        private TemplateDockPanelService _dockPanelService;
        
         private MenuGenerator _menuGenerator;
         //private MapListener _mapListener;
@@ -38,7 +38,7 @@ namespace Yutai.Plugins.Editor
 
             //_menuListener = context.Container.GetInstance<MenuListener>();
             //_mapListener = context.Container.GetInstance<MapListener>();
-            //_dockPanelService = context.Container.GetInstance<DockPanelService>();
+            _dockPanelService = context.Container.GetInstance<TemplateDockPanelService>();
         }
 
         private void FireEvent<T>(EventHandler<T> handler, T args)

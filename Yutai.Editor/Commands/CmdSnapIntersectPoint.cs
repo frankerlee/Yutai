@@ -25,6 +25,7 @@ namespace Yutai.Plugins.Editor.Commands
             DisplayStyleYT = DisplayStyleYT.Image;
             base.TextImageRelationYT = TextImageRelationYT.ImageBeforeText;
             base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
+            _itemType = RibbonItemType.CheckBox;
             //base._needUpdateEvent = true;
         }
 
@@ -41,6 +42,7 @@ namespace Yutai.Plugins.Editor.Commands
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
+            
             if (sender != null && base._needUpdateEvent)
             {
                 _context.UpdateUI();

@@ -130,6 +130,7 @@ namespace Yutai.Plugins
                 _container.RegisterInstance(p.GetType(), p);
 
                 _plugins.Add(p);
+                
             }
 
 #if DEBUG
@@ -237,12 +238,13 @@ namespace Yutai.Plugins
 
             foreach (var p in AllPlugins)
             {
+               
                 bool active = dict.Contains(p.Identity.Guid);
                 p.SetApplicationPlugin(active);
 
                 if (active && !PluginActive(p.Identity))
                 {
-                    
+                    context.ShowSplashMessage("正在引导:" + p.Identity.Name);
                     LoadPlugin(p.Identity, context);
                 }
             }

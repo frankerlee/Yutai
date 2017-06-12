@@ -10,7 +10,6 @@ namespace Yutai.Plugins.Identifer
         public static void Compose(IApplicationContainer container)
         {
             EnumHelper.RegisterConverter(new IdentifierModeConverter());
-
             container.RegisterService<IIdentifierView, IdentifierDockPanel>()
                 .RegisterSingleton<IdentifierPresenter>();
         }

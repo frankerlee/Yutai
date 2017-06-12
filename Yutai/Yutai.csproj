@@ -209,6 +209,7 @@
     <Compile Include="Forms\ErrorView.Designer.cs">
       <DependentUpon>ErrorView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ISplashView.cs" />
     <Compile Include="Forms\SplashView.cs">
       <SubType>Form</SubType>
     </Compile>

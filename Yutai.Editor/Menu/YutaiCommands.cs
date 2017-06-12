@@ -68,7 +68,9 @@ namespace Yutai.Plugins.Editor.Menu
                 new CmdSnapIntersectPoint(_context),
                 new CmdSnapBoundary(_context),
                 new CmdSnapTangent(_context),
-                new CmdSnapSketch(_context)
+                new CmdSnapSketch(_context),
+                new CmdShowEditTemplate(_context),
+                new CmdSketchPoint(_context)
             };
             _commandKeys = new List<string>();
             foreach (var command in _commands)

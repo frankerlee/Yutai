@@ -22,7 +22,7 @@ namespace Yutai.Plugins.Editor.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Yutai.Plugins.Editor.Properties {
         ///   返回此类使用的缓存的 ResourceManager 实例。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Yutai.Plugins.Editor.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace Yutai.Plugins.Editor.Properties {
         ///   重写当前线程的 CurrentUICulture 属性。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace Yutai.Plugins.Editor.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap icon_edit_save {
+        public static System.Drawing.Bitmap icon_edit_save {
             get {
                 object obj = ResourceManager.GetObject("icon_edit_save", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -73,7 +73,7 @@ namespace Yutai.Plugins.Editor.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap icon_edit_start {
+        public static System.Drawing.Bitmap icon_edit_start {
             get {
                 object obj = ResourceManager.GetObject("icon_edit_start", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -83,7 +83,7 @@ namespace Yutai.Plugins.Editor.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap icon_edit_stop {
+        public static System.Drawing.Bitmap icon_edit_stop {
             get {
                 object obj = ResourceManager.GetObject("icon_edit_stop", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -93,7 +93,17 @@ namespace Yutai.Plugins.Editor.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap icon_snap {
+        public static System.Drawing.Bitmap icon_sketch_point {
+            get {
+                object obj = ResourceManager.GetObject("icon_sketch_point", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap icon_snap {
             get {
                 object obj = ResourceManager.GetObject("icon_snap", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -103,7 +113,7 @@ namespace Yutai.Plugins.Editor.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap icon_snap_boundary {
+        public static System.Drawing.Bitmap icon_snap_boundary {
             get {
                 object obj = ResourceManager.GetObject("icon_snap_boundary", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -113,7 +123,7 @@ namespace Yutai.Plugins.Editor.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap icon_snap_endpoint {
+        public static System.Drawing.Bitmap icon_snap_endpoint {
             get {
                 object obj = ResourceManager.GetObject("icon_snap_endpoint", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -123,7 +133,7 @@ namespace Yutai.Plugins.Editor.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap icon_snap_intersect {
+        public static System.Drawing.Bitmap icon_snap_intersect {
             get {
                 object obj = ResourceManager.GetObject("icon_snap_intersect", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -133,7 +143,7 @@ namespace Yutai.Plugins.Editor.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap icon_snap_midpoint {
+        public static System.Drawing.Bitmap icon_snap_midpoint {
             get {
                 object obj = ResourceManager.GetObject("icon_snap_midpoint", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -143,7 +153,7 @@ namespace Yutai.Plugins.Editor.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap icon_snap_point {
+        public static System.Drawing.Bitmap icon_snap_point {
             get {
                 object obj = ResourceManager.GetObject("icon_snap_point", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -153,7 +163,7 @@ namespace Yutai.Plugins.Editor.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap icon_snap_setting {
+        public static System.Drawing.Bitmap icon_snap_setting {
             get {
                 object obj = ResourceManager.GetObject("icon_snap_setting", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -163,7 +173,7 @@ namespace Yutai.Plugins.Editor.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap icon_snap_sketch {
+        public static System.Drawing.Bitmap icon_snap_sketch {
             get {
                 object obj = ResourceManager.GetObject("icon_snap_sketch", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -173,7 +183,7 @@ namespace Yutai.Plugins.Editor.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap icon_snap_tangent {
+        public static System.Drawing.Bitmap icon_snap_tangent {
             get {
                 object obj = ResourceManager.GetObject("icon_snap_tangent", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -183,9 +193,19 @@ namespace Yutai.Plugins.Editor.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap icon_snap_vertex {
+        public static System.Drawing.Bitmap icon_snap_vertex {
             get {
                 object obj = ResourceManager.GetObject("icon_snap_vertex", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap icon_template {
+            get {
+                object obj = ResourceManager.GetObject("icon_template", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
