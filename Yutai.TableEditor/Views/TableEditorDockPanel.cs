@@ -88,6 +88,7 @@ namespace Yutai.Plugins.TableEditor.Views
                 else if (names.Length == 2)
                 {
                     ToolStripDropDownButton dropDown = toolStrip.Items[names[0]] as ToolStripDropDownButton;
+
                     ToolStripMenuItem menu = new ToolStripMenuItem
                     {
                         Text = command.Caption,
@@ -95,6 +96,7 @@ namespace Yutai.Plugins.TableEditor.Views
                         ToolTipText = command.Tooltip,
                         Image = command.Image,
                     };
+
                     menu.Click += command.OnClick;
                     dropDown.DropDownItems.Add(menu);
                 }
@@ -113,13 +115,18 @@ namespace Yutai.Plugins.TableEditor.Views
                     new YutaiSeparatorCommand("tedSelection"),
                     new CmdBuildQuery(_context, this),
                     new YutaiSeparatorCommand("tedSelection"),
+                    new CmdAttributeExplorer(_context, this),
+                    new YutaiSeparatorCommand("tedSelection"),
                     new CmdSelectAll(_context, this),
                     new CmdSelectNone(_context, this),
                     new CmdInvertSelection(_context, this),
                     new YutaiSeparatorCommand("tedSelection"),
                     new CmdExportAll(_context, this),
-                    new CmdExportSelection(_context, this),
+                    //new CmdExportSelection(_context, this),
                     new YutaiMenuCommand("tedFields", "tedFields","tedFields", "字段",""),
+                    new CmdAddField(_context, this),
+                    new YutaiSeparatorCommand("tedFields"),
+                    new CmdShowAliases(_context, this),
                     new YutaiMenuCommand("tedTools", "tedTools","tedTools", "工具",""),
                     new YutaiSeparatorCommand(),
                     new YutaiMenuCommand("tedLayout", "tedLayout","tedLayout", "布局",""),
@@ -150,7 +157,7 @@ namespace Yutai.Plugins.TableEditor.Views
         {
             get { return tabControl; }
         }
-        
+
         public void ActivatePage(string pageName)
         {
             tabControl.SelectedTab = tabControl.TabPages[pageName];
@@ -168,7 +175,7 @@ namespace Yutai.Plugins.TableEditor.Views
             TableViews.Remove(CurrentGridView.Name);
             tabControl.TabPages.Remove(tabControl.SelectedTab);
         }
-        
+
         public void OpenTable(IFeatureLayer featureLayer)
         {
             if (TableViews.ContainsKey(featureLayer.Name))
@@ -176,7 +183,7 @@ namespace Yutai.Plugins.TableEditor.Views
                 ActivatePage(featureLayer.Name);
                 return;
             }
-            
+
             ITableView pTableView = new TablePage(_context, this, featureLayer);
             tabControl.Controls.Add(pTableView as TabPage);
             tabControl.SelectedTab = pTableView as TabPage;
@@ -189,7 +196,7 @@ namespace Yutai.Plugins.TableEditor.Views
             TableViews.Clear();
             tabControl.TabPages.Clear();
         }
-        
+
         public ITableView CurrentGridView
         {
             get

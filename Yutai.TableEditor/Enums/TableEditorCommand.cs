@@ -6,6 +6,9 @@
 // 作    者 :  
 // 创建时间 :  2017/06/06  15:25
 // 更新时间 :  2017/06/06  15:25
+
+using System.ComponentModel;
+
 namespace Yutai.Plugins.TableEditor.Enums
 {
     public enum TableEditorCommand
@@ -27,5 +30,12 @@ namespace Yutai.Plugins.TableEditor.Enums
     {
         All,
         Selected
+    }
+
+    public enum FieldType
+    {
+        String = 0,
+        Integer = 1,
+        Double = 2
     }
 }

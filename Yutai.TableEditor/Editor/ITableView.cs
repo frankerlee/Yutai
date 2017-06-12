@@ -22,5 +22,8 @@ namespace Yutai.Plugins.TableEditor.Editor
         void SelectNone();
         void InvertSelection();
         void ReloadData(string whereCaluse);
+        string StrGeometry { get; }
+        void AddColumn(IField field);
+        void ShowAlias(bool isAlias);
     }
 }

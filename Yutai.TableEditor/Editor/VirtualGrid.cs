@@ -24,7 +24,7 @@ namespace Yutai.Plugins.TableEditor.Editor
         public event EventHandler SelectFeatures;
         private bool _isClone = true;
         private int m_ShowMaxRecNum = 300;
-        private string m_strGeometry = "";
+        public string m_strGeometry = "";
         private DataTable m_pDataTable;
         private int m_MaxOID = 0;
         private IFeatureLayer _featureLayer;
@@ -123,7 +123,7 @@ namespace Yutai.Plugins.TableEditor.Editor
                     IField field = pFields.Field[i];
                     DataColumn dataColumn = new DataColumn(field.Name)
                     {
-                        Caption = field.AliasName
+                        Caption = field.AliasName,                        
                     };
                     if (!(field.Domain is ICodedValueDomain))
                     {
@@ -434,6 +434,36 @@ namespace Yutai.Plugins.TableEditor.Editor
             this.dataGridViewAll.Refresh();
             _isLockMap = false;
             OnSelectFeaturesHandler();
+        }
+
+        public void AddColumnToGrid(IField pField)
+        {
+            DataColumn dataColumn = new DataColumn(pField.Name)
+            {
+                Caption = pField.AliasName
+            };
+            m_pDataTable.Columns.Add(dataColumn);
+        }
+
+        public void ShowAlias()
+        {
+            for (int i = 0; i < m_pDataTable.Columns.Count; i++)
+            {
+                DataColumn pColumn = m_pDataTable.Columns[i];
+                dataGridViewAll.Columns[i].HeaderText = pColumn.Caption;
+                dataGridViewSelected.Columns[i].HeaderText = pColumn.Caption;
+                
+            }
+        }
+
+        public void ShowName()
+        {
+            for (int i = 0; i < m_pDataTable.Columns.Count; i++)
+            {
+                DataColumn pColumn = m_pDataTable.Columns[i];
+                dataGridViewAll.Columns[i].HeaderText = pColumn.ColumnName;
+                dataGridViewSelected.Columns[i].HeaderText = pColumn.ColumnName;
+            }
         }
     }
 }
