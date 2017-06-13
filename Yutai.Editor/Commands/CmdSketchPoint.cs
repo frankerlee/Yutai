@@ -11,6 +11,7 @@ using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geometry;
 using Yutai.ArcGIS.Common.Editor;
 using Yutai.ArcGIS.Common.Editor.Helpers;
+using Yutai.ArcGIS.Common.Symbol;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Editor.Properties;
 using Yutai.Plugins.Enums;
@@ -75,6 +76,10 @@ namespace Yutai.Plugins.Editor.Commands
             base._key = "Editor_Sketch_Point";
             base.m_toolTip = "创建点";
             base._itemType = RibbonItemType.Tool;
+            this.simpleMarkerSymbol.Style = esriSimpleMarkerStyle.esriSMSCircle;
+            this.simpleMarkerSymbol.Size = 8;
+            this.simpleMarkerSymbol.Outline = true;
+            this.simpleMarkerSymbol.Color = ColorManage.GetRGBColor(0, 255, 255);
         }
 
         public esriGeometryType GeometryType { get {return esriGeometryType.esriGeometryPoint;} }
@@ -84,42 +89,41 @@ namespace Yutai.Plugins.Editor.Commands
             if (int_0 == 1)
             {
                 IActiveView focusMap = (IActiveView)_context.FocusMap;
-                pPoint = SketchShareEx.m_pAnchorPoint;
                 CreateFeatureTool.CreateFeature(this.pPoint, focusMap,Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
             }
             base.OnMouseDown(int_0, int_1, int_2, int_3);
         }
 
-        public override void OnMouseMove(int int_0, int int_1, int int_2, int int_3)
+        public override void OnMouseMove(int int_0, int int_1, int x, int y)
         {
 
-            IActiveView focusMap = (IActiveView)_context.FocusMap;
-            this.pPoint = focusMap.ScreenDisplay.DisplayTransformation.ToMapPoint(int_2, int_3);
+            IActiveView focusMap = (IActiveView)_context.MapControl.ActiveView;
+            pPoint = focusMap.ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
             ISnappingResult snappingResult = this.pointSnapper.Snap(this.pPoint);
             if (snappingResult == null)
             {
-                if (this.anchorPoint == null)
+                if (anchorPoint == null)
                 {
-                    this.anchorPoint  = new AnchorPoint()
+                    anchorPoint  = new AnchorPoint()
                     {
-                        Symbol = this.simpleMarkerSymbol as ISymbol
+                        Symbol = simpleMarkerSymbol as ISymbol
                     };
                 }
-                this.anchorPoint.MoveTo(this.pPoint, focusMap.ScreenDisplay);
+                anchorPoint.MoveTo(this.pPoint, focusMap.ScreenDisplay);
             }
             else
             {
-                this.pPoint = snappingResult.Location;
+                pPoint = snappingResult.Location;
                 if (this.anchorPoint == null)
                 {
-                    this.anchorPoint = new AnchorPoint()
+                    anchorPoint = new AnchorPoint()
                     {
-                        Symbol = this.simpleMarkerSymbol as ISymbol
+                        Symbol = simpleMarkerSymbol as ISymbol
                     };
                 }
-                this.anchorPoint.MoveTo(this.pPoint, focusMap.ScreenDisplay);
+                anchorPoint.MoveTo(this.pPoint, focusMap.ScreenDisplay);
             }
-            base.OnMouseMove(int_0, int_1, int_2, int_3);
+            //base.OnMouseMove(int_0, int_1, x, y);
         }
     }
 }

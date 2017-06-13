@@ -70,7 +70,9 @@ namespace Yutai.Plugins.Editor.Menu
                 new CmdSnapTangent(_context),
                 new CmdSnapSketch(_context),
                 new CmdShowEditTemplate(_context),
-                new CmdSketchPoint(_context)
+                new CmdSketchPoint(_context),
+                new CmdSketchLinePoint(_context),
+                new CmdSketchAlongLinePoint(_context)
             };
             _commandKeys = new List<string>();
             foreach (var command in _commands)

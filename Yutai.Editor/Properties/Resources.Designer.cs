@@ -63,6 +63,16 @@ namespace Yutai.Plugins.Editor.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        public static System.Drawing.Bitmap icon_along_line {
+            get {
+                object obj = ResourceManager.GetObject("icon_along_line", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         public static System.Drawing.Bitmap icon_edit_save {
             get {
                 object obj = ResourceManager.GetObject("icon_edit_save", resourceCulture);

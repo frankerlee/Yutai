@@ -13,6 +13,7 @@ namespace Yutai.ArcGIS.Common.Editor
 {
 	public class PointSnapper : IPointSnapper
 	{
+	    private IAppContext _context;
 		public IMap Map
 		{
 			get;
@@ -34,7 +35,12 @@ namespace Yutai.ArcGIS.Common.Editor
 		{
 		}
 
-		public int CacheShapes(IGeometryBag igeometryBag_0, string string_0)
+        public PointSnapper(IAppContext context)
+        {
+            _context = context;
+        }
+
+        public int CacheShapes(IGeometryBag igeometryBag_0, string string_0)
 		{
 			return 0;
 		}
@@ -569,7 +575,7 @@ namespace Yutai.ArcGIS.Common.Editor
                 featureCache.Initialize(pPoint, torelance);
                 try
                 {
-                    featureCache.AddLayers(enumLayer, (focusMap as IActiveView).Extent);
+                    featureCache.AddLayers(enumLayer, (appContext.MapControl.ActiveView as IActiveView).Extent);
                 }
                 catch
                 {
@@ -654,7 +660,7 @@ namespace Yutai.ArcGIS.Common.Editor
 				double snapTolerance = application.Config.EngineSnapEnvironment.SnapTolerance;
 				if (application.Config.EngineSnapEnvironment.SnapToleranceUnits == esriEngineSnapToleranceUnits.esriEngineSnapTolerancePixels)
 				{
-					snapTolerance = CommonHelper.ConvertPixelsToMapUnits(application.MapControl.Map as IActiveView, snapTolerance);
+					snapTolerance = CommonHelper.ConvertPixelsToMapUnits(application.MapControl.ActiveView as IActiveView, snapTolerance);
 				}
 				if (!this.SnapAll(pPoint, application, snapTolerance, out point))
 				{

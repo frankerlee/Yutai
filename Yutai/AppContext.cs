@@ -43,6 +43,7 @@ namespace Yutai
         private IToolbarCollection _toolbars;
         private IMainView _mainView;
         private IPageLayoutControl2 _pageLayoutControl2 = null;
+        private AxMapControl _axMapControl;
 
         private MapLegendPresenter _mapLegendPresenter;
         private OverviewPresenter _overviewPresenter;
@@ -181,6 +182,11 @@ namespace Yutai
             get { return _yutaiProject; }
             set { _yutaiProject = value; }
         }
+
+        public AxMapControl MapControlContainer { get { return _axMapControl; } set
+        {
+            _axMapControl = value;
+        } }
 
 
         /// <summary>
@@ -325,12 +331,13 @@ namespace Yutai
                 {
                     if (this._mainView != null)
                     {
-                        this._toolTip.SetToolTip(this.MapControl as Control, str);
+                        
+                        this._mainView.SetMapTooltip(str);
                     }
                 }
-                else if (!string.IsNullOrEmpty(this._toolTip.GetToolTip(this.MapControl as Control)))
+                else if (!string.IsNullOrEmpty(this._mainView.GetMapTooltip()))
                 {
-                    this._toolTip.SetToolTip(this.MapControl as Control, "");
+                    this._mainView.SetMapTooltip(str);
                 }
             }
         }

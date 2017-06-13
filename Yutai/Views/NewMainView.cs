@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.Utils;
 using ESRI.ArcGIS.Controls;
 using Yutai.Forms;
 using Yutai.Menu;
@@ -97,6 +98,7 @@ namespace Yutai.Views
         }
 
         public IMapControl2 MapControl { get { return (IMapControl2)axMapControl1.Object; } }
+        public AxMapControl MapControlContainer { get { return axMapControl1; } }
 
         public event EventHandler<CancelEventArgs> ViewClosing;
 
@@ -251,6 +253,23 @@ namespace Yutai.Views
                  _mapControl1.Focus();
              }*/
         }
+
+        public void SetMapTooltip(string msg)
+        {
+            this.toolTipController1.SetToolTip(this.axMapControl1, msg);
+        }
+
+        public string GetMapTooltip()
+        {
+            return this.toolTipController1.GetToolTip(axMapControl1);
+        }
+
+        public void SetTooltip(string msg)
+        {
+            this.toolTipController1.SetToolTip(this.axMapControl1,msg);
+        }
+
+    
 
         public override void UpdateView()
         {

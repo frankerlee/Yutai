@@ -64,7 +64,9 @@
     <Reference Include="Syncfusion.Tools.Windows, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -79,6 +81,8 @@
     <Compile Include="Commands\CmdEditorStop.cs" />
     <Compile Include="Commands\CmdEditorStart.cs" />
     <Compile Include="Commands\CmdShowEditTemplate.cs" />
+    <Compile Include="Commands\CmdSketchAlongLinePoint.cs" />
+    <Compile Include="Commands\CmdSketchLinePoint.cs" />
     <Compile Include="Commands\CmdSketchPoint.cs" />
     <Compile Include="Commands\CmdSnapIntersectPoint.cs" />
     <Compile Include="Commands\CmdSnapMidPoint.cs" />
@@ -93,6 +97,18 @@
       <DependentUpon>SnapConfigPage.cs</DependentUpon>
     </Compile>
     <Compile Include="EditorPlugin.cs" />
+    <Compile Include="Forms\frmAlongLineProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAlongLineProperties.Designer.cs">
+      <DependentUpon>frmAlongLineProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmLinePointProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmLinePointProperties.Designer.cs">
+      <DependentUpon>frmLinePointProperties.cs</DependentUpon>
+    </Compile>
     <Compile Include="Menu\TemplateDockPanelService.cs" />
     <Compile Include="Menu\MenuGenerator.cs" />
     <Compile Include="Menu\YutaiCommands.cs" />
@@ -151,6 +167,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Controls\SnapConfigPage.resx">
       <DependentUpon>SnapConfigPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAlongLineProperties.resx">
+      <DependentUpon>frmAlongLineProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmLinePointProperties.resx">
+      <DependentUpon>frmLinePointProperties.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -211,6 +233,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icon_sketch_point.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LineLine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_along_line.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

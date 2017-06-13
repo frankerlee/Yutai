@@ -5,7 +5,9 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using DevExpress.Utils;
 using ESRI.ArcGIS.Controls;
+using Syncfusion.Windows.Forms.Tools;
 using Yutai.Forms;
 using Yutai.Helper;
 using Yutai.Menu;
@@ -17,6 +19,7 @@ using Yutai.Shared;
 using Yutai.UI.Docking;
 using Yutai.UI.Helpers;
 using Yutai.UI.Menu;
+using Action = System.Action;
 
 namespace Yutai.Views
 {
@@ -97,7 +100,8 @@ namespace Yutai.Views
         }
 
         public IMapControl2 MapControl { get { return (IMapControl2)axMapControl1.Object; } }
-        
+        public AxMapControl MapControlContainer { get { return axMapControl1; } }
+
         public event EventHandler<CancelEventArgs> ViewClosing;
 
         public event EventHandler<RenderedEventArgs> ViewUpdating;
@@ -217,6 +221,23 @@ namespace Yutai.Views
              {
                  _mapControl1.Focus();
              }*/
+        }
+
+        public void SetMapTooltip(string msg)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetMapTooltip()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void SetTooltip(string msg)
+        {
+           // ToolTipInfo info=new ToolTipInfo();
+           //this.superToolTip1.SetToolTip(this.axMapControl1,new ToolTipInfo() { });
         }
 
         public override void UpdateView()

@@ -43,7 +43,124 @@ namespace Yutai.ArcGIS.Common.Editor
 			}
 		}
 
-		public static void CreateFeature(IGeometry pGeometry, IActiveView pActiveView, IFeatureLayer pFeatureLayer)
+        public static void CreateFeature(IGeometry pGeometry, IActiveView pActiveView, IFeatureLayer pFeatureLayer, bool IsClearSelection)
+        {
+            double num;
+            double num1;
+            Exception exception;
+            if (pGeometry != null && !pGeometry.IsEmpty)
+            {
+                IEnvelope envelope = pGeometry.Envelope;
+                envelope.Expand(10, 10, false);
+                try
+                {
+                    pGeometry.SpatialReference = pActiveView.FocusMap.SpatialReference;
+                    int num2 = pFeatureLayer.FeatureClass.FindField(pFeatureLayer.FeatureClass.ShapeFieldName);
+                    IGeometryDef geometryDef = pFeatureLayer.FeatureClass.Fields.Field[num2].GeometryDef;
+                    if (geometryDef.HasZ)
+                    {
+                        ((IZAware)pGeometry).ZAware = true;
+                        if (pGeometry is IZ)
+                        {
+                            IZ igeometry0 = (IZ)pGeometry;
+                            geometryDef.SpatialReference.GetZDomain(out num, out num1);
+                            igeometry0.SetConstantZ(num);
+                        }
+                        else if (pGeometry is IPoint)
+                        {
+                            geometryDef.SpatialReference.GetZDomain(out num, out num1);
+                            (pGeometry as IPoint).Z = num;
+                        }
+                    }
+                    if (geometryDef.HasM)
+                    {
+                        ((IMAware)pGeometry).MAware = true;
+                    }
+                    IWorkspaceEdit workspace = (IWorkspaceEdit)((IDataset)pFeatureLayer.FeatureClass).Workspace;
+                    workspace.StartEditOperation();
+                    IFeature feature = pFeatureLayer.FeatureClass.CreateFeature();
+                    feature.Shape = pGeometry;
+                    try
+                    {
+                        ((IRowSubtypes)feature).InitDefaultValues();
+                    }
+                    catch (Exception exception1)
+                    {
+                        exception = exception1;
+                        Logger.Current.Error(exception.Message);
+                    }
+                    if (Editor.CurrentEditTemplate != null)
+                    {
+                        Editor.CurrentEditTemplate.SetFeatureValue(feature);
+                    }
+                    EditorEvent.NewRow(feature);
+                    feature.Store();
+                    workspace.StopEditOperation();
+                    EditorEvent.AfterNewRow(feature);
+                    if (IsClearSelection)
+                    {
+                        if (pActiveView.FocusMap.SelectionCount > 0)
+                        {
+                            pActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
+                            pActiveView.FocusMap.ClearSelection();
+                            pActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
+                        }
+                    }
+                    pActiveView.FocusMap.SelectFeature(pFeatureLayer, feature);
+                    if (pGeometry.GeometryType != esriGeometryType.esriGeometryPoint)
+                    {
+                        pActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeography, pFeatureLayer, envelope);
+                    }
+                    else
+                    {
+                        pActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeography, pFeatureLayer, envelope);
+                    }
+                    if (pFeatureLayer.FeatureClass.ShapeType == esriGeometryType.esriGeometryPoint)
+                    {
+                        pActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeography, pFeatureLayer, envelope);
+                    }
+                }
+                catch (COMException cOMException1)
+                {
+                    COMException cOMException = cOMException1;
+                    if (cOMException.ErrorCode != -2147220936)
+                    {
+
+                        MessageBox.Show(cOMException.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    }
+                    else
+                    {
+                        MessageBox.Show("几何坐标超出边界!", "", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    }
+                    if (pGeometry.GeometryType != esriGeometryType.esriGeometryPoint)
+                    {
+                        pActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeography, pFeatureLayer, envelope);
+                    }
+                    else
+                    {
+                        pActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeography, pFeatureLayer, null);
+                    }
+                    Logger.Current.Error("", cOMException, null);
+
+                }
+                catch (Exception exception2)
+                {
+                    exception = exception2;
+                    Logger.Current.Error("", exception, null);
+                    if (pGeometry.GeometryType != esriGeometryType.esriGeometryPoint)
+                    {
+                        pActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeography, pFeatureLayer, envelope);
+                    }
+                    else
+                    {
+                        pActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeography, pFeatureLayer, null);
+                    }
+                    MessageBox.Show(exception.Message);
+                }
+            }
+        }
+
+        public static void CreateFeature(IGeometry pGeometry, IActiveView pActiveView, IFeatureLayer pFeatureLayer)
 		{
 			double num;
 			double num1;

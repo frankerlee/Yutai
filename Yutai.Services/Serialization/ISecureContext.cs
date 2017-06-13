@@ -7,6 +7,7 @@ using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Services;
 using System.Windows.Forms;
+using ESRI.ArcGIS.Controls;
 
 namespace Yutai.Services.Serialization
 {
@@ -16,5 +17,7 @@ namespace Yutai.Services.Serialization
         Control GetDockPanelObject(string dockName);
 
         XmlProject YutaiProject { get; set; }
+
+       
     }
 }

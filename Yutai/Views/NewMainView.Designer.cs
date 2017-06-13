@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewMainView));
             this.ribbonManager = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
@@ -36,7 +35,8 @@
             this.pageMap = new DevExpress.XtraTab.XtraTabPage();
             this.axLicenseControl1 = new ESRI.ArcGIS.Controls.AxLicenseControl();
             this.axMapControl1 = new ESRI.ArcGIS.Controls.AxMapControl();
-            this.dockManager = new DevExpress.XtraBars.Docking.DockManager(this.components);
+            this.dockManager = new DevExpress.XtraBars.Docking.DockManager();
+            this.toolTipController1 = new DevExpress.Utils.ToolTipController();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabContent)).BeginInit();
             this.tabContent.SuspendLayout();
@@ -100,6 +100,7 @@
             this.axMapControl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axMapControl1.OcxState")));
             this.axMapControl1.Size = new System.Drawing.Size(1122, 574);
             this.axMapControl1.TabIndex = 1;
+            this.toolTipController1.SetToolTip(this.axMapControl1, "地图窗口");
             // 
             // dockManager
             // 
@@ -149,5 +150,6 @@
         private ESRI.ArcGIS.Controls.AxLicenseControl axLicenseControl1;
         private ESRI.ArcGIS.Controls.AxMapControl axMapControl1;
         private DevExpress.XtraBars.Docking.DockManager dockManager;
+        private DevExpress.Utils.ToolTipController toolTipController1;
     }
 }

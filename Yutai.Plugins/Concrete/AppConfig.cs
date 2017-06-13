@@ -302,6 +302,9 @@ namespace Yutai.Plugins.Concrete
         public bool LoadAllConfigPages { get; set; }
         public double Tolerance { get; set; }
         public double SnapTolerance { get; set; }
+        public bool IsAddStartPoint { get; set; }
+        public bool IsAddEndPoint { get; set; }
+        public bool IsAddVertexPoint { get; set; }
 
 
         internal void SetDefaults()

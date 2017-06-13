@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             Syncfusion.Windows.Forms.Tools.Office2013ColorTable office2013ColorTable1 = new Syncfusion.Windows.Forms.Tools.Office2013ColorTable();
             Syncfusion.Windows.Forms.Tools.ToolTipInfo toolTipInfo1 = new Syncfusion.Windows.Forms.Tools.ToolTipInfo();
-            this._dockingManager1 = new Syncfusion.Windows.Forms.Tools.DockingManager(this.components);
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this._dockingManager1 = new Syncfusion.Windows.Forms.Tools.DockingManager();
+            this.imageList1 = new System.Windows.Forms.ImageList();
             this.parentBarItem3 = new Syncfusion.Windows.Forms.Tools.XPMenus.ParentBarItem();
             this.dockingClientPanel1 = new Syncfusion.Windows.Forms.Tools.DockingClientPanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -62,6 +61,7 @@
             // _dockingManager1
             // 
             this._dockingManager1.ActiveCaptionFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
+            this._dockingManager1.AutoHideTabForeColor = System.Drawing.Color.Empty;
             this._dockingManager1.DockedCaptionFont = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
             this._dockingManager1.DockLayoutStream = ((System.IO.MemoryStream)(resources.GetObject("_dockingManager1.DockLayoutStream")));
             this._dockingManager1.DockTabAlignment = Syncfusion.Windows.Forms.Tools.DockTabAlignmentStyle.Left;
@@ -105,9 +105,9 @@
             // 
             this.dockingClientPanel1.BackColor = System.Drawing.Color.White;
             this.dockingClientPanel1.Controls.Add(this.tabControl1);
-            this.dockingClientPanel1.Location = new System.Drawing.Point(298, 81);
+            this.dockingClientPanel1.Location = new System.Drawing.Point(348, 94);
             this.dockingClientPanel1.Name = "dockingClientPanel1";
-            this.dockingClientPanel1.Size = new System.Drawing.Size(434, 312);
+            this.dockingClientPanel1.Size = new System.Drawing.Size(506, 364);
             this.dockingClientPanel1.TabIndex = 4;
             // 
             // tabControl1
@@ -117,16 +117,16 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(434, 312);
+            this.tabControl1.Size = new System.Drawing.Size(506, 364);
             this.tabControl1.TabIndex = 4;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.axMapControl1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(426, 286);
+            this.tabPage1.Size = new System.Drawing.Size(498, 337);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "地图视图";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -137,7 +137,7 @@
             this.axMapControl1.Location = new System.Drawing.Point(3, 3);
             this.axMapControl1.Name = "axMapControl1";
             this.axMapControl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axMapControl1.OcxState")));
-            this.axMapControl1.Size = new System.Drawing.Size(420, 280);
+            this.axMapControl1.Size = new System.Drawing.Size(492, 331);
             this.axMapControl1.TabIndex = 5;
             // 
             // _mainFrameBarManager1
@@ -146,9 +146,9 @@
             this._mainFrameBarManager1.AutoPersistCustomization = false;
             this._mainFrameBarManager1.AutoScale = true;
             this._mainFrameBarManager1.BarPositionInfo = ((System.IO.MemoryStream)(resources.GetObject("_mainFrameBarManager1.BarPositionInfo")));
-            this._mainFrameBarManager1.CurrentBaseFormType = "Yutai.UI.Forms.MapWindowView";
+            this._mainFrameBarManager1.CurrentBaseFormType = "Yutai.UI.Forms.MainWindowView";
             this._mainFrameBarManager1.EnableMenuMerge = true;
-            this._mainFrameBarManager1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this._mainFrameBarManager1.Font = new System.Drawing.Font("Tahoma", 9F);
             this._mainFrameBarManager1.Form = this;
             this._mainFrameBarManager1.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(201)))), ((int)(((byte)(232)))));
             this._mainFrameBarManager1.ResetCustomization = false;
@@ -157,12 +157,13 @@
             // statusStripEx1
             // 
             this.statusStripEx1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(206)))), ((int)(((byte)(255)))));
-            this.statusStripEx1.BeforeTouchSize = new System.Drawing.Size(794, 22);
+            this.statusStripEx1.BeforeTouchSize = new System.Drawing.Size(927, 22);
             this.statusStripEx1.Dock = Syncfusion.Windows.Forms.Tools.DockStyleEx.Bottom;
-            this.statusStripEx1.Location = new System.Drawing.Point(1, 467);
+            this.statusStripEx1.Location = new System.Drawing.Point(1, 549);
             this.statusStripEx1.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(206)))), ((int)(((byte)(255)))));
             this.statusStripEx1.Name = "statusStripEx1";
-            this.statusStripEx1.Size = new System.Drawing.Size(794, 22);
+            this.statusStripEx1.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
+            this.statusStripEx1.Size = new System.Drawing.Size(927, 22);
             this.statusStripEx1.TabIndex = 2;
             this.statusStripEx1.Text = "statusStripEx1";
             // 
@@ -222,6 +223,7 @@
             this.ribbonControlAdv1.MenuButtonText = "项目";
             this.ribbonControlAdv1.MenuButtonWidth = 56;
             this.ribbonControlAdv1.MenuColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(114)))), ((int)(((byte)(198)))));
+            this.ribbonControlAdv1.MinimumSize = new System.Drawing.Size(0, 31);
             this.ribbonControlAdv1.Name = "ribbonControlAdv1";
             office2013ColorTable1.BackStageCaptionColor = System.Drawing.Color.White;
             office2013ColorTable1.ButtonBackgroundPressed = System.Drawing.Color.Empty;
@@ -269,7 +271,7 @@
             this.ribbonControlAdv1.RibbonStyle = Syncfusion.Windows.Forms.Tools.RibbonStyle.Office2013;
             this.ribbonControlAdv1.SelectedTab = null;
             this.ribbonControlAdv1.ShowRibbonDisplayOptionButton = true;
-            this.ribbonControlAdv1.Size = new System.Drawing.Size(798, 141);
+            this.ribbonControlAdv1.Size = new System.Drawing.Size(931, 164);
             this.ribbonControlAdv1.SystemText.QuickAccessDialogDropDownName = "Start menu";
             this.ribbonControlAdv1.TabIndex = 1;
             this.ribbonControlAdv1.Text = "ribbonControlAdv1";
@@ -277,10 +279,9 @@
             // 
             // MainView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(796, 490);
+            this.ClientSize = new System.Drawing.Size(929, 572);
             this.Controls.Add(this.ribbonControlAdv1);
             this.Controls.Add(this.axLicenseControl1);
             this.Controls.Add(this.dockingClientPanel1);

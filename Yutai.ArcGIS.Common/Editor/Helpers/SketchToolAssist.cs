@@ -155,16 +155,16 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 		{
 		}
 
-		internal static void AddNewAnchorPt(IPoint ipoint_0, esriSimpleMarkerStyle esriSimpleMarkerStyle_0, IActiveView iactiveView_0)
+		internal static void AddNewAnchorPt(IPoint ipoint_0, esriSimpleMarkerStyle esriSimpleMarkerStyle_0, IActiveView pActiveView)
 		{
 			SketchToolAssist.m_pAP = new AnchorPoint()
 			{
 				Symbol = SketchToolAssist.m_pSym as ISymbol
 			};
-			SketchToolAssist.m_pAP.MoveTo(ipoint_0, iactiveView_0.ScreenDisplay);
+			SketchToolAssist.m_pAP.MoveTo(ipoint_0, pActiveView.ScreenDisplay);
 		}
 
-		public static void EndSketch(bool bool_0, IActiveView iactiveView_0, IFeatureLayer ifeatureLayer_0)
+		public static void EndSketch(bool bool_0, IActiveView pActiveView, IFeatureLayer pFeatureLayer)
 		{
 			INewLineFeedback feedback;
 			IPointCollection pointCollection;
@@ -290,7 +290,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 								SketchToolAssist.m_pPointColn = null;
 							}
 						}
-						CreateFeatureTool.CreateFeature(mPPointCollection, iactiveView_0, ifeatureLayer_0);
+						CreateFeatureTool.CreateFeature(mPPointCollection, pActiveView, pFeatureLayer);
 					}
 					else
 					{
@@ -320,12 +320,12 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 				{
 					MessageBox.Show("面剪切操作无法将面的所有部分划分到剪切线的左侧或右侧!", "编辑", MessageBoxButtons.OK, MessageBoxIcon.Hand);
 				}
-				iactiveView_0.PartialRefresh(esriViewDrawPhase.esriViewGeography, ifeatureLayer_0, null);
+				pActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeography, pFeatureLayer, null);
 			}
 			catch (Exception exception1)
 			{
 				Exception exception = exception1;
-				iactiveView_0.PartialRefresh(esriViewDrawPhase.esriViewGeography, ifeatureLayer_0, null);
+				pActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeography, pFeatureLayer, null);
 				Logger.Current.Error("",exception, "");
 			}
 			SketchToolAssist.m_bInUse = false;
@@ -367,7 +367,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 			SketchToolAssist.Init();
 		}
 
-		private static ISnappingResult OldSnap(IPoint ipoint_0, IActiveView iactiveView_0, IEngineSnapEnvironment iengineSnapEnvironment_0)
+		private static ISnappingResult OldSnap(IPoint ipoint_0, IActiveView pActiveView, IEngineSnapEnvironment iengineSnapEnvironment_0)
 		{
 			IHitTest mPPointColn;
 			double num;
@@ -398,7 +398,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 						num1 = 0;
 						num2 = 0;
 						flag = false;
-						mapUnits = CommonHelper.ConvertPixelsToMapUnits(iactiveView_0, iengineSnapEnvironment0.SnapTolerance);
+						mapUnits = CommonHelper.ConvertPixelsToMapUnits(pActiveView, iengineSnapEnvironment0.SnapTolerance);
 						if (mapUnits == 0)
 						{
 							mapUnits = 3;
@@ -437,7 +437,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 					mapUnits = iengineSnapEnvironment_0.SnapTolerance;
 					if (iengineSnapEnvironment_0.SnapToleranceUnits == esriEngineSnapToleranceUnits.esriEngineSnapTolerancePixels)
 					{
-						mapUnits = CommonHelper.ConvertPixelsToMapUnits(iactiveView_0, iengineSnapEnvironment_0.SnapTolerance);
+						mapUnits = CommonHelper.ConvertPixelsToMapUnits(pActiveView, iengineSnapEnvironment_0.SnapTolerance);
 					}
 					if (mapUnits == 0)
 					{
@@ -472,7 +472,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 			(SketchToolAssist.m_psnaper as PointSnapper).Map = imap_0;
 		}
 
-		public static string SketchMouseDown(IActiveView iactiveView_0, IFeatureLayer ifeatureLayer_0)
+		public static string SketchMouseDown(IActiveView pActiveView, IFeatureLayer pFeatureLayer)
 		{
 			INewPolylineFeedback feedback;
 			string str;
@@ -497,7 +497,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 					SketchToolAssist.m_bInUse = true;
 					SketchToolAssist.Feedback = new NewPolylineFeedback();
 					feedback = (INewPolylineFeedback)SketchToolAssist.Feedback;
-					SketchToolAssist.Feedback.Display = iactiveView_0.ScreenDisplay;
+					SketchToolAssist.Feedback.Display = pActiveView.ScreenDisplay;
 					feedback.ChangeLineType(SketchToolAssist.LineType);
 					feedback.Start(SketchToolAssist.m_pAnchorPoint);
 					SketchToolAssist.m_pPointColn = new Polyline();
@@ -522,7 +522,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 					SketchToolAssist.m_bInUse = true;
 					SketchToolAssist.Feedback = new NewPolygonFeedbackEx();
 					newPolygonFeedbackEx = (INewPolygonFeedbackEx)SketchToolAssist.Feedback;
-					SketchToolAssist.Feedback.Display = iactiveView_0.ScreenDisplay;
+					SketchToolAssist.Feedback.Display = pActiveView.ScreenDisplay;
 					newPolygonFeedbackEx.ChangeLineType(SketchToolAssist.LineType);
 					newPolygonFeedbackEx.Start(SketchToolAssist.m_pAnchorPoint);
 					SketchToolAssist.m_pPointColn = new Polygon();
@@ -537,11 +537,11 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 				SketchToolAssist.TempLine = SketchToolAssist.m_pAnchorPoint;
 				str = "";
 			}
-			else if (ifeatureLayer_0 == null)
+			else if (pFeatureLayer == null)
 			{
 				str = "";
 			}
-			else if (ifeatureLayer_0.FeatureClass != null)
+			else if (pFeatureLayer.FeatureClass != null)
 			{
 				string str1 = "";
 				string unit = "";
@@ -549,12 +549,12 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 				SketchToolAssist.IsFixLength = false;
 				if (SketchToolAssist.Feedback == null)
 				{
-					if (ifeatureLayer_0.FeatureClass.FeatureType == esriFeatureType.esriFTAnnotation)
+					if (pFeatureLayer.FeatureClass.FeatureType == esriFeatureType.esriFTAnnotation)
 					{
 						try
 						{
 							Editor.EditWorkspace.StartEditOperation();
-							IFeature feature = ifeatureLayer_0.FeatureClass.CreateFeature();
+							IFeature feature = pFeatureLayer.FeatureClass.CreateFeature();
 							ITextElement textElement = CreateFeatureTool.MakeTextElement("文本", 0, SketchToolAssist.m_pAnchorPoint);
 							IAnnotationFeature2 annotationFeature2 = feature as IAnnotationFeature2;
 							annotationFeature2.LinkedFeatureID = -1;
@@ -564,24 +564,24 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 							feature.Store();
 							Editor.EditWorkspace.StopEditOperation();
 							EditorEvent.AfterNewRow(feature);
-							iactiveView_0.PartialRefresh(esriViewDrawPhase.esriViewGeography, null, null);
-							iactiveView_0.FocusMap.ClearSelection();
-							iactiveView_0.FocusMap.SelectFeature(ifeatureLayer_0, feature);
-							iactiveView_0.PartialRefresh(esriViewDrawPhase.esriViewGeography, null, null);
+							pActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeography, null, null);
+							pActiveView.FocusMap.ClearSelection();
+							pActiveView.FocusMap.SelectFeature(pFeatureLayer, feature);
+							pActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeography, null, null);
 						}
 						catch (Exception exception)
 						{
 							Logger.Current.Error("",exception, "");
 						}
 					}
-					else if (ifeatureLayer_0.FeatureClass.FeatureType != esriFeatureType.esriFTDimension)
+					else if (pFeatureLayer.FeatureClass.FeatureType != esriFeatureType.esriFTDimension)
 					{
 						value = Missing.Value;
-						switch (ifeatureLayer_0.FeatureClass.ShapeType)
+						switch (pFeatureLayer.FeatureClass.ShapeType)
 						{
 							case esriGeometryType.esriGeometryPoint:
 							{
-								CreateFeatureTool.CreateFeature(SketchToolAssist.m_pAnchorPoint, iactiveView_0, ifeatureLayer_0);
+								CreateFeatureTool.CreateFeature(SketchToolAssist.m_pAnchorPoint, pActiveView, pFeatureLayer);
 								break;
 							}
 							case esriGeometryType.esriGeometryMultipoint:
@@ -589,7 +589,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 								SketchToolAssist.m_bInUse = true;
 								SketchToolAssist.Feedback = new NewMultiPointFeedback();
 								INewMultiPointFeedback newMultiPointFeedback = (INewMultiPointFeedback)SketchToolAssist.Feedback;
-								SketchToolAssist.Feedback.Display = iactiveView_0.ScreenDisplay;
+								SketchToolAssist.Feedback.Display = pActiveView.ScreenDisplay;
 								SketchToolAssist.m_pPointCollection = new Multipoint();
 								newMultiPointFeedback.Start(SketchToolAssist.m_pPointCollection, SketchToolAssist.m_pAnchorPoint);
 								break;
@@ -600,13 +600,13 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 								SketchToolAssist.Feedback = new NewPolylineFeedback();
 								newPolylineFeedback = (INewPolylineFeedback)SketchToolAssist.Feedback;
 								newPolylineFeedback.ChangeLineType(SketchToolAssist.LineType);
-								SketchToolAssist.Feedback.Display = iactiveView_0.ScreenDisplay;
+								SketchToolAssist.Feedback.Display = pActiveView.ScreenDisplay;
 								newPolylineFeedback.Start(SketchToolAssist.m_pAnchorPoint);
 								SketchToolAssist.m_PointCount = 1;
 								SketchToolAssist.StartPoint = SketchToolAssist.m_pAnchorPoint;
 								SketchToolAssist.m_pPointColn = new Polyline();
 								SketchToolAssist.m_pPointColn.AddPoint(SketchToolAssist.m_pAnchorPoint, ref value, ref value);
-								unit = CommonHelper.GetUnit(iactiveView_0.FocusMap.MapUnits);
+								unit = CommonHelper.GetUnit(pActiveView.FocusMap.MapUnits);
 								break;
 							}
 							case esriGeometryType.esriGeometryPolygon:
@@ -615,12 +615,12 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 								SketchToolAssist.Feedback = new NewPolygonFeedbackEx();
 								feedback1 = (INewPolygonFeedbackEx)SketchToolAssist.Feedback;
 								feedback1.ChangeLineType(SketchToolAssist.LineType);
-								SketchToolAssist.Feedback.Display = iactiveView_0.ScreenDisplay;
+								SketchToolAssist.Feedback.Display = pActiveView.ScreenDisplay;
 								feedback1.Start(SketchToolAssist.m_pAnchorPoint);
 								SketchToolAssist.m_PointCount = 0;
 								SketchToolAssist.m_pPointColn = new Polygon();
 								SketchToolAssist.StartPoint = SketchToolAssist.m_pAnchorPoint;
-								unit = CommonHelper.GetUnit(iactiveView_0.FocusMap.MapUnits);
+								unit = CommonHelper.GetUnit(pActiveView.FocusMap.MapUnits);
 								num = CommonHelper.measureArea(SketchToolAssist.m_pAnchorPoint, 1, ref SketchToolAssist.m_pPointColn);
 								length = (SketchToolAssist.m_pPointColn as IPolygon).Length;
 								if (num <= 0)
@@ -637,13 +637,13 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 						SketchToolAssist.Feedback = new NewDimensionFeedback();
 						try
 						{
-							(SketchToolAssist.Feedback as INewDimensionFeedback).ReferenceScale = (iactiveView_0 as IMap).ReferenceScale;
-							(SketchToolAssist.Feedback as INewDimensionFeedback).ReferenceScaleUnits = (iactiveView_0 as IMap).MapUnits;
+							(SketchToolAssist.Feedback as INewDimensionFeedback).ReferenceScale = (pActiveView as IMap).ReferenceScale;
+							(SketchToolAssist.Feedback as INewDimensionFeedback).ReferenceScaleUnits = (pActiveView as IMap).MapUnits;
 						}
 						catch
 						{
 						}
-						SketchToolAssist.Feedback.Display = iactiveView_0.ScreenDisplay;
+						SketchToolAssist.Feedback.Display = pActiveView.ScreenDisplay;
 						(SketchToolAssist.Feedback as INewDimensionFeedback).Start(SketchToolAssist.m_pAnchorPoint);
 						SketchToolAssist.m_PointCount = 1;
 					}
@@ -655,7 +655,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 					if (SketchToolAssist.m_PointCount == 3)
 					{
 						IDimensionShape dimensionShape = (SketchToolAssist.Feedback as INewDimensionFeedback).Stop();
-						CreateFeatureTool.CreateDimensionFeature(dimensionShape, (SketchToolAssist.Feedback as INewDimensionFeedback).DimensionType, iactiveView_0, ifeatureLayer_0);
+						CreateFeatureTool.CreateDimensionFeature(dimensionShape, (SketchToolAssist.Feedback as INewDimensionFeedback).DimensionType, pActiveView, pFeatureLayer);
 					}
 				}
 				else if (SketchToolAssist.Feedback is INewMultiPointFeedback)
@@ -671,14 +671,14 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 					newPolylineFeedback.AddPoint(SketchToolAssist.m_pAnchorPoint);
 					SketchToolAssist.m_pPointColn.AddPoint(SketchToolAssist.m_pAnchorPoint, ref value, ref value);
 					SketchToolAssist.m_PointCount = SketchToolAssist.m_PointCount + 1;
-					unit = CommonHelper.GetUnit(iactiveView_0.FocusMap.MapUnits);
+					unit = CommonHelper.GetUnit(pActiveView.FocusMap.MapUnits);
 				}
 				else if (SketchToolAssist.Feedback is INewPolygonFeedback)
 				{
 					feedback1 = (INewPolygonFeedbackEx)SketchToolAssist.Feedback;
 					feedback1.AddPoint(SketchToolAssist.m_pAnchorPoint);
 					SketchToolAssist.m_PointCount = SketchToolAssist.m_PointCount + 1;
-					unit = CommonHelper.GetUnit(iactiveView_0.FocusMap.MapUnits);
+					unit = CommonHelper.GetUnit(pActiveView.FocusMap.MapUnits);
 					num = CommonHelper.measureArea(SketchToolAssist.m_pAnchorPoint, 1, ref SketchToolAssist.m_pPointColn);
 					length = (SketchToolAssist.m_pPointColn as IPolygon).Length;
 					if (num > 0)
