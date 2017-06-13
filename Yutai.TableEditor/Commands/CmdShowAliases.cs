@@ -1,27 +1,26 @@
 ﻿// 项目名称 :  Yutai
 // 项目描述 :  
-// 类 名 称 :  CmdExportAll.cs
+// 类 名 称 :  CmdShowAliases.cs
 // 版 本 号 :  
 // 说    明 :  
 // 作    者 :  
-// 创建时间 :  2017/06/08  18:51
-// 更新时间 :  2017/06/08  18:51
+// 创建时间 :  2017/06/12  16:31
+// 更新时间 :  2017/06/12  16:31
 
 using System;
-using ESRI.ArcGIS.Carto;
+using System.Windows.Forms;
+using ESRI.ArcGIS.Geodatabase;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
-using Yutai.Plugins.TableEditor.Editor;
 using Yutai.Plugins.TableEditor.Views;
-using Yutai.UI.Dialogs;
 
 namespace Yutai.Plugins.TableEditor.Commands
 {
-    public class CmdExportAll : YutaiCommand
+    public class CmdShowAliases : YutaiCommand
     {
         private ITableEditorView _view;
-        public CmdExportAll(IAppContext context, ITableEditorView view)
+        public CmdShowAliases(IAppContext context, ITableEditorView view)
         {
             _context = context;
             _view = view;
@@ -30,15 +29,15 @@ namespace Yutai.Plugins.TableEditor.Commands
 
         private void OnCreate()
         {
-            base.m_caption = "导出记录";
+            base.m_caption = "显示字段别名";
             base.m_category = "TableEditor";
             base.m_bitmap = null;
-            base.m_name = "tedSelection.mnuExportAll";
-            base._key = "tedSelection.mnuExportAll";
-            base.m_toolTip = "导出记录";
+            base.m_name = "tedFields.mnuShowAliases";
+            base._key = "tedFields.mnuShowAliases";
+            base.m_toolTip = "切换显示字段名称/别名";
             base.m_checked = false;
             base.m_enabled = true;
-            base._itemType = RibbonItemType.Button;
+            base._itemType = RibbonItemType.CheckBox;
         }
 
         public override void OnClick(object sender, EventArgs args)
@@ -53,10 +52,9 @@ namespace Yutai.Plugins.TableEditor.Commands
 
         public override void OnClick()
         {
-            frmExportData data = new frmExportData();
-            data.FocusMap = _context.FocusMap as IBasicMap;
-            data.FeatureLayer = _view.CurrentGridView.FeatureLayer;
-            data.ShowDialog();
+            base.m_checked = !base.m_checked;
+            _view.CurrentGridView.ShowAlias(base.m_checked);
+            base.m_caption = base.m_checked ? "显示字段名称" : "显示字段别名";
         }
     }
 }

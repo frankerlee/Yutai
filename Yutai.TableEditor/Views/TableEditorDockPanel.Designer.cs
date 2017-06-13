@@ -30,10 +30,12 @@
         {
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.tabControl = new System.Windows.Forms.TabControl();
+            this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip
             // 
+            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(666, 25);
@@ -57,6 +59,8 @@
             this.Controls.Add(this.toolStrip);
             this.Name = "TableEditorDockPanel";
             this.Size = new System.Drawing.Size(666, 343);
+            this.toolStrip.ResumeLayout(false);
+            this.toolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

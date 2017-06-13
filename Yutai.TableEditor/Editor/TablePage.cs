@@ -22,7 +22,7 @@ namespace Yutai.Plugins.TableEditor.Editor
         private VirtualGrid _virtualGrid;
         private IActiveViewEvents_Event _activeViewEventsEvent;
         public TablePage(IAppContext context, ITableEditorView view, IFeatureLayer featureLayer)
-        {  
+        {
             InitializeComponent();
             _context = context;
             _view = view;
@@ -35,7 +35,19 @@ namespace Yutai.Plugins.TableEditor.Editor
 
             _activeViewEventsEvent = context.MapControl.Map as IActiveViewEvents_Event;
             if (_activeViewEventsEvent != null)
+            {
                 _activeViewEventsEvent.SelectionChanged += _activeViewEventsEvent_SelectionChanged;
+                _activeViewEventsEvent.ItemDeleted += _activeViewEventsEvent_ItemDeleted;
+            }
+        }
+
+        private void _activeViewEventsEvent_ItemDeleted(object Item)
+        {
+            IFeatureLayer pLayer = Item as IFeatureLayer;
+            if (pLayer != null && pLayer.Name == _featureLayer.Name)
+            {
+                _view.ClosePage(_featureLayer.Name);
+            }
         }
 
         private void _activeViewEventsEvent_SelectionChanged()
@@ -96,7 +108,7 @@ namespace Yutai.Plugins.TableEditor.Editor
         {
             _view.ClosePage(e);
         }
-        
+
         public int CurrentOID
         {
             get { return _virtualGrid.CurrentOID; }
@@ -113,7 +125,8 @@ namespace Yutai.Plugins.TableEditor.Editor
         }
 
         public void SelectNone()
-        {_virtualGrid.SelectNone();
+        {
+            _virtualGrid.SelectNone();
         }
 
         public void InvertSelection()
@@ -125,6 +138,24 @@ namespace Yutai.Plugins.TableEditor.Editor
         {
             _virtualGrid.ClearTable();
             _virtualGrid.ShowTable(whereCaluse);
+        }
+
+        public string StrGeometry => _virtualGrid.m_strGeometry;
+        public void AddColumn(IField field)
+        {
+            _virtualGrid.AddColumnToGrid(field);
+        }
+
+        public void ShowAlias(bool isAlias)
+        {
+            if (isAlias)
+            {
+                _virtualGrid.ShowAlias();
+            }
+            else
+            {
+                _virtualGrid.ShowName();
+            }
         }
     }
 }

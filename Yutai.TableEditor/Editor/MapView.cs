@@ -7,6 +7,7 @@
 // 创建时间 :  2017/06/07  17:40
 // 更新时间 :  2017/06/07  17:40
 
+using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using ESRI.ArcGIS.Carto;
@@ -43,7 +44,13 @@ namespace Yutai.Plugins.TableEditor.Editor
             _map.ClearSelection();
             foreach (int oid in oids)
             {
-                _map.SelectFeature(featureLayer, featureLayer.FeatureClass.GetFeature(oid));
+                try
+                {
+                    _map.SelectFeature(featureLayer, featureLayer.FeatureClass.GetFeature(oid));
+                }
+                catch (Exception)
+                {
+                }
             }
             _activeView.Refresh();
         }
