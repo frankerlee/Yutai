@@ -80,20 +80,49 @@
     <Compile Include="Commands\CmdAddField.cs" />
     <Compile Include="Commands\CmdAttributeExplorer.cs" />
     <Compile Include="Commands\CmdBuildQuery.cs" />
+    <Compile Include="Commands\CmdClearSorting.cs" />
     <Compile Include="Commands\CmdExportAll.cs" />
     <Compile Include="Commands\CmdExportSelection.cs" />
+    <Compile Include="Commands\CmdFind.cs" />
     <Compile Include="Commands\CmdInvertSelection.cs" />
+    <Compile Include="Commands\CmdReloadTable.cs" />
     <Compile Include="Commands\CmdSelectAll.cs" />
     <Compile Include="Commands\CmdSelectNone.cs" />
     <Compile Include="Commands\CmdShowAliases.cs" />
+    <Compile Include="Commands\CmdShowAllFields.cs" />
     <Compile Include="Commands\CmdZoomToCurrentFeature.cs" />
     <Compile Include="Commands\CmdZoomToSelectedFeatures.cs" />
+    <Compile Include="Commands\ContextMenu\CmdCalculateField.cs" />
+    <Compile Include="Commands\ContextMenu\CmdFieldProperties.cs" />
+    <Compile Include="Commands\ContextMenu\CmdHideField.cs" />
+    <Compile Include="Commands\ContextMenu\CmdRemoveField.cs" />
+    <Compile Include="Commands\ContextMenu\CmdSortAscending.cs" />
+    <Compile Include="Commands\ContextMenu\CmdSortDescending.cs" />
+    <Compile Include="Commands\ContextMenu\CmdStatistics.cs" />
     <Compile Include="CompositionRoot.cs" />
+    <Compile Include="Controls\CompContextMenuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CompContextMenuStrip.Designer.cs">
+      <DependentUpon>CompContextMenuStrip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FieldStatsGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\FieldStatsGrid.Designer.cs">
+      <DependentUpon>FieldStatsGrid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\UCSelectField.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\UCSelectField.designer.cs">
       <DependentUpon>UCSelectField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\Grid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\Grid.Designer.cs">
+      <DependentUpon>Grid.cs</DependentUpon>
     </Compile>
     <Compile Include="Editor\Header.cs">
       <SubType>UserControl</SubType>
@@ -103,6 +132,7 @@
     </Compile>
     <Compile Include="Editor\ITableView.cs" />
     <Compile Include="Editor\IMapView.cs" />
+    <Compile Include="Editor\IVirtualGridView.cs" />
     <Compile Include="Editor\MapView.cs" />
     <Compile Include="Editor\NavigationBar.cs">
       <SubType>UserControl</SubType>
@@ -115,12 +145,6 @@
     </Compile>
     <Compile Include="Editor\TablePage.Designer.cs">
       <DependentUpon>TablePage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Editor\VirtualGrid.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Editor\VirtualGrid.Designer.cs">
-      <DependentUpon>VirtualGrid.cs</DependentUpon>
     </Compile>
     <Compile Include="Enums\TableEditorCommand.cs" />
     <Compile Include="Menu\MenuListener.cs" />
@@ -140,6 +164,18 @@
     <Compile Include="Views\AttributeExplorer.Designer.cs">
       <DependentUpon>AttributeExplorer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FieldStatistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FieldStatistics.Designer.cs">
+      <DependentUpon>FieldStatistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FindReplace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FindReplace.Designer.cs">
+      <DependentUpon>FindReplace.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmFieldProperties.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +184,7 @@
     </Compile>
     <Compile Include="Views\IAttributeExplorerView.cs" />
     <Compile Include="Views\IFieldPropertiesView.cs" />
+    <Compile Include="Views\IFindReplaceView.cs" />
     <Compile Include="Views\ITableEditorView.cs" />
     <Compile Include="Views\TableEditorDockPanel.cs">
       <SubType>UserControl</SubType>
@@ -180,8 +217,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\FieldStatsGrid.resx">
+      <DependentUpon>FieldStatsGrid.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\UCSelectField.resx">
       <DependentUpon>UCSelectField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor\Grid.resx">
+      <DependentUpon>Grid.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editor\Header.resx">
       <DependentUpon>Header.cs</DependentUpon>
@@ -189,15 +232,18 @@
     <EmbeddedResource Include="Editor\NavigationBar.resx">
       <DependentUpon>NavigationBar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Editor\VirtualGrid.resx">
-      <DependentUpon>VirtualGrid.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AttributeExplorer.resx">
       <DependentUpon>AttributeExplorer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FieldStatistics.resx">
+      <DependentUpon>FieldStatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FindReplace.resx">
+      <DependentUpon>FindReplace.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmFieldProperties.resx">
       <DependentUpon>FrmFieldProperties.cs</DependentUpon>

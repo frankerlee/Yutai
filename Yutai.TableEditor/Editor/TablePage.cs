@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
 using Yutai.Plugins.Interfaces;
+using Yutai.Plugins.TableEditor.Controls;
+using Yutai.Plugins.TableEditor.Enums;
 using Yutai.Plugins.TableEditor.Views;
 
 namespace Yutai.Plugins.TableEditor.Editor
@@ -19,7 +21,8 @@ namespace Yutai.Plugins.TableEditor.Editor
         private ITableEditorView _view;
         private IFeatureLayer _featureLayer;
         private Header _header;
-        private VirtualGrid _virtualGrid;
+        private IVirtualGridView _virtualGrid;
+        private CompContextMenuStrip _contextMenuStrip;
         private IActiveViewEvents_Event _activeViewEventsEvent;
         public TablePage(IAppContext context, ITableEditorView view, IFeatureLayer featureLayer)
         {
@@ -67,6 +70,11 @@ namespace Yutai.Plugins.TableEditor.Editor
             }
             _virtualGrid.SelectionChanged(oids);
         }
+        
+        public IVirtualGridView VirtualGridView
+        {
+            get { return _virtualGrid; }
+        }
 
         public sealed override string Text
         {
@@ -77,30 +85,39 @@ namespace Yutai.Plugins.TableEditor.Editor
         private void InitControls()
         {
             _header = new Header();
-            _virtualGrid = new VirtualGrid();
+            //_virtualGrid = new VirtualGrid();
+            _virtualGrid = new Grid();
+            _contextMenuStrip = new CompContextMenuStrip(_context, this);
             this.SuspendLayout();
-
 
             _header.Dock = DockStyle.Top;
             _header.TabIndex = 0;
             _header.Value = Text;
             _header.Close += _header_Close;
 
-            _virtualGrid.Dock = DockStyle.Fill;
-            _virtualGrid.FeatureLayer = _featureLayer;
-            _virtualGrid.ShowTable(null);
-            _virtualGrid.TabIndex = 1;
-            _virtualGrid.SelectFeatures += _virtualGrid_SelectFeatures;
+            ((Grid)_virtualGrid).Dock = DockStyle.Fill;
+            ((Grid)_virtualGrid).FeatureLayer = _featureLayer;
+            ((Grid)_virtualGrid).ShowTable(null);
+            ((Grid)_virtualGrid).TabIndex = 1;
+            ((Grid)_virtualGrid).SelectFeatures += _virtualGrid_SelectFeatures;
+            ((Grid)_virtualGrid).ColumnHeaderRightClick += _virtualGrid_ColumnHeaderRightClick;
 
-            this.Controls.Add(_virtualGrid);
+            this.Controls.Add(((Grid)_virtualGrid));
             this.Controls.Add(_header);
             this.ResumeLayout(false);
         }
 
+        private void _virtualGrid_ColumnHeaderRightClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            _contextMenuStrip.Show(e.ColumnIndex, MousePosition.X, MousePosition.Y);
+        }
+
         private void _virtualGrid_SelectFeatures(object sender, EventArgs e)
         {
+            if (_virtualGrid.TableType == TableType.Selected)
+                return;
             _activeViewEventsEvent.SelectionChanged -= _activeViewEventsEvent_SelectionChanged;
-            _view?.MapView.SelectFeatures(_virtualGrid.FeatureLayer, _virtualGrid.SelectedOIDs);
+            _view?.MapView.SelectFeatures(_virtualGrid.FeatureLayer, _virtualGrid.GetSelectedRows());
             _activeViewEventsEvent.SelectionChanged += _activeViewEventsEvent_SelectionChanged;
         }
 
@@ -118,44 +135,7 @@ namespace Yutai.Plugins.TableEditor.Editor
         {
             get { return _featureLayer; }
         }
+        
 
-        public void SelectAll()
-        {
-            _virtualGrid.SelectAll();
-        }
-
-        public void SelectNone()
-        {
-            _virtualGrid.SelectNone();
-        }
-
-        public void InvertSelection()
-        {
-            _virtualGrid.InvertSelection();
-        }
-
-        public void ReloadData(string whereCaluse)
-        {
-            _virtualGrid.ClearTable();
-            _virtualGrid.ShowTable(whereCaluse);
-        }
-
-        public string StrGeometry => _virtualGrid.m_strGeometry;
-        public void AddColumn(IField field)
-        {
-            _virtualGrid.AddColumnToGrid(field);
-        }
-
-        public void ShowAlias(bool isAlias)
-        {
-            if (isAlias)
-            {
-                _virtualGrid.ShowAlias();
-            }
-            else
-            {
-                _virtualGrid.ShowName();
-            }
-        }
     }
 }

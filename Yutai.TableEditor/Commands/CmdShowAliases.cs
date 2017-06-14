@@ -53,7 +53,10 @@ namespace Yutai.Plugins.TableEditor.Commands
         public override void OnClick()
         {
             base.m_checked = !base.m_checked;
-            _view.CurrentGridView.ShowAlias(base.m_checked);
+            if (base.m_checked)
+                _view.CurrentGridView.VirtualGridView.ShowAlias();
+            else
+                _view.CurrentGridView.VirtualGridView.ShowName();
             base.m_caption = base.m_checked ? "显示字段名称" : "显示字段别名";
         }
     }

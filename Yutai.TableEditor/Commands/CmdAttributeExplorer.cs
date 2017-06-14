@@ -50,7 +50,7 @@ namespace Yutai.Plugins.TableEditor.Commands
 
         public override void OnClick()
         {
-            AttributeExplorer frm = new AttributeExplorer(_context, _view.MapView, _view.CurrentGridView.FeatureLayer, _view.CurrentGridView.StrGeometry);
+            AttributeExplorer frm = new AttributeExplorer(_context, _view.MapView, _view.CurrentGridView.FeatureLayer, _view.CurrentGridView.VirtualGridView.StrGeometry);
             frm.ShowDialog();
         }
     }

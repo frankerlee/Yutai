@@ -62,7 +62,7 @@ namespace Yutai.Plugins.TableEditor.Commands
                 {
                     IClass pClass = _view.CurrentGridView.FeatureLayer.FeatureClass;
                     pClass.AddField(view.NewField);
-                    _view.CurrentGridView.AddColumn(view.NewField);
+                    _view.CurrentGridView.VirtualGridView.AddColumnToGrid(view.NewField);
                 }
             }
             catch (Exception exception)

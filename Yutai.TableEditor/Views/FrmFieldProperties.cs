@@ -21,6 +21,24 @@ namespace Yutai.Plugins.TableEditor.Views
             InitControls();
         }
 
+        public FrmFieldProperties(IField field)
+        {
+            InitializeComponent();
+            InitControls();
+
+            txtName.Text = field.Name;
+            txtAlias.Text = field.AliasName;
+            cboDataType.SelectedValue = field.Type;
+            udWidth.Value = field.Length;
+            udPrecision.Value = field.Precision;
+
+            chkVisible.Enabled = false;
+            cboDataType.Enabled = false;
+            udWidth.Enabled = false;
+            udPrecision.Enabled = false;
+            txtExpression.Enabled = false;
+        }
+
         private void InitControls()
         {
             cboDataType.DataSource = Enum.GetNames(typeof(esriFieldType));

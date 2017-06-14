@@ -38,4 +38,11 @@ namespace Yutai.Plugins.TableEditor.Enums
         Integer = 1,
         Double = 2
     }
+    
+    public enum MatchType
+    {
+        Contains = 0,
+        Match = 1,
+        Start = 2,
+    }
 }
