@@ -14,16 +14,10 @@ namespace Yutai.Plugins.TableEditor.Editor
 {
     public interface ITableView
     {
+        IVirtualGridView VirtualGridView { get; }
         string Name { get; }
         string Text { get; }
         int CurrentOID { get; }
         IFeatureLayer FeatureLayer { get; }
-        void SelectAll();
-        void SelectNone();
-        void InvertSelection();
-        void ReloadData(string whereCaluse);
-        string StrGeometry { get; }
-        void AddColumn(IField field);
-        void ShowAlias(bool isAlias);
     }
 }

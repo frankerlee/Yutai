@@ -50,7 +50,7 @@ namespace Yutai.Plugins.TableEditor.Commands
             OnCreate();
         }
 
-        public void OnClick()
+        public override void OnClick()
         {
             string whereCaluse = null;
             frmSimpleAttributeQueryBuilder frm = new frmSimpleAttributeQueryBuilder()
@@ -61,7 +61,8 @@ namespace Yutai.Plugins.TableEditor.Commands
             {
                 whereCaluse = frm.WhereCaluse;
             }
-            _view.CurrentGridView.ReloadData(whereCaluse);
+            _view.CurrentGridView.VirtualGridView.ClearTable();
+            _view.CurrentGridView.VirtualGridView.ShowTable(whereCaluse);
         }
     }
 }

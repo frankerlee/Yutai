@@ -49,14 +49,14 @@ namespace Yutai.Plugins.TableEditor.Commands
             OnCreate();
         }
 
-        public void OnClick()
+        public override void OnClick()
         {
             ITableView pGridView = _view.CurrentGridView;
             if (pGridView == null)
                 return;
             if (pGridView.CurrentOID == -1)
                 return;
-            _view.CurrentGridView.InvertSelection();
+            _view.CurrentGridView.VirtualGridView.InvertSelection();
         }
     }
 }

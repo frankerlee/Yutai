@@ -19,12 +19,14 @@ using Yutai.Plugins.TableEditor.Views;
 
 namespace Yutai.Plugins.TableEditor.Editor
 {
-    public partial class VirtualGrid : UserControl
+    public delegate void ColumnHeaderRightClickEventHandler(object sender, DataGridViewCellMouseEventArgs e);
+    public partial class VirtualGrid : UserControl, IVirtualGridView
     {
+        public event ColumnHeaderRightClickEventHandler ColumnHeaderRightClick;
         public event EventHandler SelectFeatures;
         private bool _isClone = true;
         private int m_ShowMaxRecNum = 300;
-        public string m_strGeometry = "";
+        private string m_strGeometry = "";
         private DataTable m_pDataTable;
         private int m_MaxOID = 0;
         private IFeatureLayer _featureLayer;
@@ -36,6 +38,11 @@ namespace Yutai.Plugins.TableEditor.Editor
         {
             InitializeComponent();
             m_pDataTable = new DataTable();
+        }
+
+        public DataGridView GridView
+        {
+            get { return _tableType == TableType.All ? dataGridViewAll : dataGridViewSelected; }
         }
 
         public int CurrentOID
@@ -78,7 +85,7 @@ namespace Yutai.Plugins.TableEditor.Editor
                 ShowTable(null);
             }
         }
-        
+
         public int RecordNum { get; set; }
 
         public void ShowTable(string whereCaluse)
@@ -110,7 +117,7 @@ namespace Yutai.Plugins.TableEditor.Editor
         }
 
         public void ClearTable()
-        { 
+        {
             m_pDataTable?.Rows.Clear();
         }
 
@@ -123,7 +130,7 @@ namespace Yutai.Plugins.TableEditor.Editor
                     IField field = pFields.Field[i];
                     DataColumn dataColumn = new DataColumn(field.Name)
                     {
-                        Caption = field.AliasName,                        
+                        Caption = field.AliasName,
                     };
                     if (!(field.Domain is ICodedValueDomain))
                     {
@@ -407,6 +414,11 @@ namespace Yutai.Plugins.TableEditor.Editor
             this.dataGridViewSelected.Refresh();
         }
 
+        public void RemoveField(int index)
+        {
+            m_pDataTable.Columns.RemoveAt(index);
+        }
+
         public void SelectAll()
         {
             _isLockMap = true;
@@ -436,6 +448,16 @@ namespace Yutai.Plugins.TableEditor.Editor
             OnSelectFeaturesHandler();
         }
 
+        public string StrGeometry
+        {
+            get { return m_strGeometry; }
+        }
+
+        public DataTable Table
+        {
+            get { return m_pDataTable; }
+        }
+
         public void AddColumnToGrid(IField pField)
         {
             DataColumn dataColumn = new DataColumn(pField.Name)
@@ -452,7 +474,6 @@ namespace Yutai.Plugins.TableEditor.Editor
                 DataColumn pColumn = m_pDataTable.Columns[i];
                 dataGridViewAll.Columns[i].HeaderText = pColumn.Caption;
                 dataGridViewSelected.Columns[i].HeaderText = pColumn.Caption;
-                
             }
         }
 
@@ -463,6 +484,52 @@ namespace Yutai.Plugins.TableEditor.Editor
                 DataColumn pColumn = m_pDataTable.Columns[i];
                 dataGridViewAll.Columns[i].HeaderText = pColumn.ColumnName;
                 dataGridViewSelected.Columns[i].HeaderText = pColumn.ColumnName;
+            }
+        }
+
+        private void dataGridViewAll_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                OnColumnHeaderRightClick(e);
+            }
+
+        }
+
+        protected virtual void OnColumnHeaderRightClick(DataGridViewCellMouseEventArgs e)
+        {
+            ColumnHeaderRightClick?.Invoke(this, e);
+        }
+
+        public void Sort(int columnIndex, ListSortDirection direction)
+        {
+            if (columnIndex <= -1)
+                return;
+            dataGridViewAll.Sort(dataGridViewAll.Columns[columnIndex], direction);
+            dataGridViewSelected.Sort(dataGridViewSelected.Columns[columnIndex], direction);
+        }
+
+        public void UpdateField(int index, IField field)
+        {
+            DataColumn pColumn = m_pDataTable.Columns[index];
+            pColumn.ColumnName = field.Name;
+            pColumn.Caption = field.AliasName;
+        }
+
+        public void HideField(int columnIndex)
+        {
+            if (columnIndex <= -1)
+                return;
+            dataGridViewAll.Columns[columnIndex].Visible = false;
+            dataGridViewSelected.Columns[columnIndex].Visible = false;
+        }
+
+        public void ShowAllFields()
+        {
+            for (int i = 0; i < dataGridViewAll.ColumnCount; i++)
+            {
+                dataGridViewAll.Columns[i].Visible = true;
+                dataGridViewSelected.Columns[i].Visible = true;
             }
         }
     }

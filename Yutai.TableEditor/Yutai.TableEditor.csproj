@@ -82,13 +82,28 @@
     <Compile Include="Commands\CmdBuildQuery.cs" />
     <Compile Include="Commands\CmdExportAll.cs" />
     <Compile Include="Commands\CmdExportSelection.cs" />
+    <Compile Include="Commands\CmdFind.cs" />
     <Compile Include="Commands\CmdInvertSelection.cs" />
     <Compile Include="Commands\CmdSelectAll.cs" />
     <Compile Include="Commands\CmdSelectNone.cs" />
     <Compile Include="Commands\CmdShowAliases.cs" />
+    <Compile Include="Commands\CmdShowAllFields.cs" />
     <Compile Include="Commands\CmdZoomToCurrentFeature.cs" />
     <Compile Include="Commands\CmdZoomToSelectedFeatures.cs" />
+    <Compile Include="Commands\ContextMenu\CmdCalculateField.cs" />
+    <Compile Include="Commands\ContextMenu\CmdFieldProperties.cs" />
+    <Compile Include="Commands\ContextMenu\CmdHideField.cs" />
+    <Compile Include="Commands\ContextMenu\CmdRemoveField.cs" />
+    <Compile Include="Commands\ContextMenu\CmdSortAscending.cs" />
+    <Compile Include="Commands\ContextMenu\CmdSortDescending.cs" />
+    <Compile Include="Commands\ContextMenu\CmdStatistics.cs" />
     <Compile Include="CompositionRoot.cs" />
+    <Compile Include="Controls\CompContextMenuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CompContextMenuStrip.Designer.cs">
+      <DependentUpon>CompContextMenuStrip.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\UCSelectField.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -103,6 +118,7 @@
     </Compile>
     <Compile Include="Editor\ITableView.cs" />
     <Compile Include="Editor\IMapView.cs" />
+    <Compile Include="Editor\IVirtualGridView.cs" />
     <Compile Include="Editor\MapView.cs" />
     <Compile Include="Editor\NavigationBar.cs">
       <SubType>UserControl</SubType>
@@ -140,6 +156,12 @@
     <Compile Include="Views\AttributeExplorer.Designer.cs">
       <DependentUpon>AttributeExplorer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FindReplace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FindReplace.Designer.cs">
+      <DependentUpon>FindReplace.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmFieldProperties.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +170,7 @@
     </Compile>
     <Compile Include="Views\IAttributeExplorerView.cs" />
     <Compile Include="Views\IFieldPropertiesView.cs" />
+    <Compile Include="Views\IFindReplaceView.cs" />
     <Compile Include="Views\ITableEditorView.cs" />
     <Compile Include="Views\TableEditorDockPanel.cs">
       <SubType>UserControl</SubType>
@@ -198,6 +221,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AttributeExplorer.resx">
       <DependentUpon>AttributeExplorer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FindReplace.resx">
+      <DependentUpon>FindReplace.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmFieldProperties.resx">
       <DependentUpon>FrmFieldProperties.cs</DependentUpon>

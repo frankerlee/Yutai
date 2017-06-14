@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
 using Yutai.Plugins.Interfaces;
+using Yutai.Plugins.TableEditor.Controls;
 using Yutai.Plugins.TableEditor.Views;
 
 namespace Yutai.Plugins.TableEditor.Editor
@@ -20,6 +21,7 @@ namespace Yutai.Plugins.TableEditor.Editor
         private IFeatureLayer _featureLayer;
         private Header _header;
         private VirtualGrid _virtualGrid;
+        private CompContextMenuStrip _contextMenuStrip;
         private IActiveViewEvents_Event _activeViewEventsEvent;
         public TablePage(IAppContext context, ITableEditorView view, IFeatureLayer featureLayer)
         {
@@ -67,6 +69,11 @@ namespace Yutai.Plugins.TableEditor.Editor
             }
             _virtualGrid.SelectionChanged(oids);
         }
+        
+        public IVirtualGridView VirtualGridView
+        {
+            get { return _virtualGrid; }
+        }
 
         public sealed override string Text
         {
@@ -78,8 +85,8 @@ namespace Yutai.Plugins.TableEditor.Editor
         {
             _header = new Header();
             _virtualGrid = new VirtualGrid();
+            _contextMenuStrip = new CompContextMenuStrip(_context, this);
             this.SuspendLayout();
-
 
             _header.Dock = DockStyle.Top;
             _header.TabIndex = 0;
@@ -91,10 +98,16 @@ namespace Yutai.Plugins.TableEditor.Editor
             _virtualGrid.ShowTable(null);
             _virtualGrid.TabIndex = 1;
             _virtualGrid.SelectFeatures += _virtualGrid_SelectFeatures;
+            _virtualGrid.ColumnHeaderRightClick += _virtualGrid_ColumnHeaderRightClick;
 
             this.Controls.Add(_virtualGrid);
             this.Controls.Add(_header);
             this.ResumeLayout(false);
+        }
+
+        private void _virtualGrid_ColumnHeaderRightClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            _contextMenuStrip.Show(e.ColumnIndex, MousePosition.X, MousePosition.Y);
         }
 
         private void _virtualGrid_SelectFeatures(object sender, EventArgs e)
@@ -118,44 +131,7 @@ namespace Yutai.Plugins.TableEditor.Editor
         {
             get { return _featureLayer; }
         }
+        
 
-        public void SelectAll()
-        {
-            _virtualGrid.SelectAll();
-        }
-
-        public void SelectNone()
-        {
-            _virtualGrid.SelectNone();
-        }
-
-        public void InvertSelection()
-        {
-            _virtualGrid.InvertSelection();
-        }
-
-        public void ReloadData(string whereCaluse)
-        {
-            _virtualGrid.ClearTable();
-            _virtualGrid.ShowTable(whereCaluse);
-        }
-
-        public string StrGeometry => _virtualGrid.m_strGeometry;
-        public void AddColumn(IField field)
-        {
-            _virtualGrid.AddColumnToGrid(field);
-        }
-
-        public void ShowAlias(bool isAlias)
-        {
-            if (isAlias)
-            {
-                _virtualGrid.ShowAlias();
-            }
-            else
-            {
-                _virtualGrid.ShowName();
-            }
-        }
     }
 }

@@ -127,7 +127,9 @@ namespace Yutai.Plugins.TableEditor.Views
                     new CmdAddField(_context, this),
                     new YutaiSeparatorCommand("tedFields"),
                     new CmdShowAliases(_context, this),
+                    new CmdShowAllFields(_context, this),
                     new YutaiMenuCommand("tedTools", "tedTools","tedTools", "工具",""),
+                    new CmdFind(_context, this),
                     new YutaiSeparatorCommand(),
                     new YutaiMenuCommand("tedLayout", "tedLayout","tedLayout", "布局",""),
                 };
