@@ -132,6 +132,8 @@ namespace Yutai.Plugins.TableEditor.Views
                     new CmdFind(_context, this),
                     new YutaiSeparatorCommand(),
                     new YutaiMenuCommand("tedLayout", "tedLayout","tedLayout", "布局",""),
+                    new CmdReloadTable(_context, this),
+                    new CmdClearSorting(_context, this),
                 };
             }
         }

@@ -1,35 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
-using Yutai.Plugins.TableEditor.Controls;
 using Yutai.Plugins.TableEditor.Views;
 
-namespace Yutai.Plugins.TableEditor.Commands.ContextMenu
+namespace Yutai.Plugins.TableEditor.Commands
 {
-    class CmdStatistics : YutaiCommand
+    class CmdClearSorting : YutaiCommand
     {
-        private CompContextMenuStrip _menuStrip;
-        public CmdStatistics(IAppContext context, CompContextMenuStrip menuStrip)
+        private ITableEditorView _view;
+        public CmdClearSorting(IAppContext context, ITableEditorView view)
         {
             _context = context;
-            _menuStrip = menuStrip;
+            _view = view;
             OnCreate();
         }
 
         private void OnCreate()
         {
-            base.m_caption = "统计";
-            base.m_category = "TableEditorCMS";
+            base.m_caption = "清除排序";
+            base.m_category = "TableEditor";
             base.m_bitmap = null;
-            base.m_name = "mnuStatistics";
-            base._key = "mnuStatistics";
-            base.m_toolTip = "统计";
+            base.m_name = "tedLayout.mnuClearSorting";
+            base._key = "tedLayout.mnuClearSorting";
+            base.m_toolTip = "清除排序";
             base.m_checked = false;
             base.m_enabled = true;
             base._itemType = RibbonItemType.Button;
@@ -47,10 +45,7 @@ namespace Yutai.Plugins.TableEditor.Commands.ContextMenu
 
         public override void OnClick()
         {
-            string fieldName = _menuStrip.TableView.VirtualGridView.Table.Columns[_menuStrip.ColumnIndex].ColumnName;
-            FieldStatistics frm = new FieldStatistics(_menuStrip.TableView, fieldName);
-            frm.ShowDialog();
+            _view.CurrentGridView.VirtualGridView.ClearSorting();
         }
-
     }
 }

@@ -10,6 +10,7 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
 using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.TableEditor.Controls;
+using Yutai.Plugins.TableEditor.Enums;
 using Yutai.Plugins.TableEditor.Views;
 
 namespace Yutai.Plugins.TableEditor.Editor
@@ -20,7 +21,7 @@ namespace Yutai.Plugins.TableEditor.Editor
         private ITableEditorView _view;
         private IFeatureLayer _featureLayer;
         private Header _header;
-        private VirtualGrid _virtualGrid;
+        private IVirtualGridView _virtualGrid;
         private CompContextMenuStrip _contextMenuStrip;
         private IActiveViewEvents_Event _activeViewEventsEvent;
         public TablePage(IAppContext context, ITableEditorView view, IFeatureLayer featureLayer)
@@ -84,7 +85,8 @@ namespace Yutai.Plugins.TableEditor.Editor
         private void InitControls()
         {
             _header = new Header();
-            _virtualGrid = new VirtualGrid();
+            //_virtualGrid = new VirtualGrid();
+            _virtualGrid = new Grid();
             _contextMenuStrip = new CompContextMenuStrip(_context, this);
             this.SuspendLayout();
 
@@ -93,14 +95,14 @@ namespace Yutai.Plugins.TableEditor.Editor
             _header.Value = Text;
             _header.Close += _header_Close;
 
-            _virtualGrid.Dock = DockStyle.Fill;
-            _virtualGrid.FeatureLayer = _featureLayer;
-            _virtualGrid.ShowTable(null);
-            _virtualGrid.TabIndex = 1;
-            _virtualGrid.SelectFeatures += _virtualGrid_SelectFeatures;
-            _virtualGrid.ColumnHeaderRightClick += _virtualGrid_ColumnHeaderRightClick;
+            ((Grid)_virtualGrid).Dock = DockStyle.Fill;
+            ((Grid)_virtualGrid).FeatureLayer = _featureLayer;
+            ((Grid)_virtualGrid).ShowTable(null);
+            ((Grid)_virtualGrid).TabIndex = 1;
+            ((Grid)_virtualGrid).SelectFeatures += _virtualGrid_SelectFeatures;
+            ((Grid)_virtualGrid).ColumnHeaderRightClick += _virtualGrid_ColumnHeaderRightClick;
 
-            this.Controls.Add(_virtualGrid);
+            this.Controls.Add(((Grid)_virtualGrid));
             this.Controls.Add(_header);
             this.ResumeLayout(false);
         }
@@ -112,8 +114,10 @@ namespace Yutai.Plugins.TableEditor.Editor
 
         private void _virtualGrid_SelectFeatures(object sender, EventArgs e)
         {
+            if (_virtualGrid.TableType == TableType.Selected)
+                return;
             _activeViewEventsEvent.SelectionChanged -= _activeViewEventsEvent_SelectionChanged;
-            _view?.MapView.SelectFeatures(_virtualGrid.FeatureLayer, _virtualGrid.SelectedOIDs);
+            _view?.MapView.SelectFeatures(_virtualGrid.FeatureLayer, _virtualGrid.GetSelectedRows());
             _activeViewEventsEvent.SelectionChanged += _activeViewEventsEvent_SelectionChanged;
         }
 
