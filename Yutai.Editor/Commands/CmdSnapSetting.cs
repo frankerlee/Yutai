@@ -10,11 +10,10 @@ using Yutai.Views;
 
 namespace Yutai.Plugins.Editor.Commands
 {
-    class CmdSnapSetting:YutaiCommand
+    class CmdSnapSetting : YutaiCommand
     {
         public CmdSnapSetting(IAppContext context)
         {
-
             OnCreate(context);
         }
 

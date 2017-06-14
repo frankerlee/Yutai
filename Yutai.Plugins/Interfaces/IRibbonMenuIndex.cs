@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using System.Xml;
 using DevExpress.XtraBars;
 using ESRI.ArcGIS.Geometry;
@@ -28,5 +29,6 @@ namespace Yutai.Plugins.Interfaces
 
         List<YutaiCommand> GetShapeCommands(esriGeometryType geometryType);
 
+        void SetContextMenu(Control mainViewMapControlContainer);
     }
 }

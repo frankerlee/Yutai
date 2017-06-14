@@ -139,7 +139,7 @@ namespace Yutai.Plugins.Identifer.Commands
             }
         }
 
-        public override void OnKeyDown(int keyCode, int shift)
+        public override void OnKeyDown(int keyCode, int Shift)
         {
             if (this._isFree && keyCode == 27)
             {
@@ -149,11 +149,11 @@ namespace Yutai.Plugins.Identifer.Commands
             }
         }
 
-        public override void OnMouseDown(int button, int shift, int x, int y)
+        public override void OnMouseDown(int button, int Shift, int x, int y)
         {
             if (button != 2)
             {
-                this.int_2 = shift;
+                this.int_2 = Shift;
                 if (_context.MapControl.ActiveView is IPageLayout)
                 {
                     IPoint mapPoint = _context.MapControl.ActiveView.ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
@@ -187,7 +187,7 @@ namespace Yutai.Plugins.Identifer.Commands
             }
         }
 
-        public override void OnMouseMove(int button, int shift, int x, int y)
+        public override void OnMouseMove(int Button, int Shift, int x, int y)
         {
             if (this._isFree)
             {

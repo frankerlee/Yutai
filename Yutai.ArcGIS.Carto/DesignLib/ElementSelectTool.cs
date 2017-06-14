@@ -11,6 +11,7 @@ using Yutai.ArcGIS.Common.ExtendClass;
 using Yutai.ArcGIS.Common.Framework;
 using Yutai.Plugins.Interfaces;
 using IOleFrame = Yutai.ArcGIS.Common.ExtendClass.IOleFrame;
+using IToolContextMenu = Yutai.ArcGIS.Common.Framework.IToolContextMenu;
 
 
 namespace Yutai.ArcGIS.Carto.DesignLib

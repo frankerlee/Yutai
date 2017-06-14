@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Windows.Forms;
 using System.Xml;
 using DevExpress.XtraBars;
+using ESRI.ArcGIS.Controls;
 using Yutai.Plugins.Concrete;
 
 namespace Yutai.Plugins.Interfaces
@@ -22,6 +24,11 @@ namespace Yutai.Plugins.Interfaces
         void AddCommands(XmlDocument xmlDoc, IEnumerable<YutaiCommand> commands);
 
         void SetStatusValue(string statusKey, object objValue);
-        
+
+        void SetCurrentTool(object control, YutaiTool tool);
+        void SetCurrentTool(object control,string toolName);
+
+
+        void SetContextMenu(Control mainViewMapControlContainer);
     }
 }

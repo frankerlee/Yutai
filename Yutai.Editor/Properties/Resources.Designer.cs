@@ -103,9 +103,79 @@ namespace Yutai.Plugins.Editor.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        public static System.Drawing.Bitmap icon_pencil {
+            get {
+                object obj = ResourceManager.GetObject("icon_pencil", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap icon_sketch_circle {
+            get {
+                object obj = ResourceManager.GetObject("icon_sketch_circle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap icon_sketch_ellipse {
+            get {
+                object obj = ResourceManager.GetObject("icon_sketch_ellipse", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap icon_sketch_line2p {
+            get {
+                object obj = ResourceManager.GetObject("icon_sketch_line2p", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         public static System.Drawing.Bitmap icon_sketch_point {
             get {
                 object obj = ResourceManager.GetObject("icon_sketch_point", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap icon_sketch_polygon {
+            get {
+                object obj = ResourceManager.GetObject("icon_sketch_polygon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap icon_sketch_polyline {
+            get {
+                object obj = ResourceManager.GetObject("icon_sketch_polyline", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap icon_sketch_rectangle {
+            get {
+                object obj = ResourceManager.GetObject("icon_sketch_rectangle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

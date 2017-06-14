@@ -42,13 +42,11 @@ namespace Yutai.Plugins.Editor.Commands
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
-            
         }
 
         public override void OnClick()
         {
             _context.Config.IsSnapMiddlePoint = !_context.Config.IsSnapMiddlePoint;
-            
         }
     }
 }

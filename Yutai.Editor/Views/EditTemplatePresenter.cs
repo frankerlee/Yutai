@@ -9,10 +9,10 @@ namespace Yutai.Plugins.Editor.Views
     public class EditTemplatePresenter : CommandDispatcher<IEditTemplateView, EditTemplateCommand>, IDockPanelPresenter
     {
         private readonly IAppContext _context;
-      
+
         #region Constructors
 
-        public EditTemplatePresenter(IAppContext context,IEditTemplateView view)
+        public EditTemplatePresenter(IAppContext context, IEditTemplateView view)
             : base(view)
         {
             if (context == null) throw new ArgumentNullException("context");
@@ -22,17 +22,17 @@ namespace Yutai.Plugins.Editor.Views
 
             EditorEvent.OnStopEditing += EditorEvent_OnStopEditing;
             //View.Panels.BeforePanelClosed += (s, e) => View.BeforeClose();
-           
         }
 
         private void EditorEvent_OnStopEditing()
         {
-            _context.DockPanels.ShowDockPanel(((IDockPanelView)View).DockName,false,false);
+            _context.DockPanels.ShowDockPanel(((IDockPanelView) View).DockName, false, false);
         }
 
-
         #endregion
+
         #region Properties
+
         #endregion
 
         public Control GetInternalObject()
@@ -44,8 +44,5 @@ namespace Yutai.Plugins.Editor.Views
         {
             return;
         }
-
-       
-
     }
 }

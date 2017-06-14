@@ -13,5 +13,7 @@ namespace Yutai.Plugins.Editor.Views
 
         void OnConstructToolToolChanged();
         void Initialize(IAppContext context);
+
+        void ValidateWorkspace();
     }
 }

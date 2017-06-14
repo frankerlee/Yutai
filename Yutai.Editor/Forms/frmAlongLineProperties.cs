@@ -19,7 +19,7 @@ namespace Yutai.Plugins.Editor.Forms
     public partial class frmAlongLineProperties : XtraForm
     {
         private IAppContext _context;
-        
+
         private IPolyline m_polyline;
 
         IEditTemplate m_editTemplate;
@@ -30,7 +30,6 @@ namespace Yutai.Plugins.Editor.Forms
         {
             InitializeComponent();
             _context = context;
-
         }
 
         public void SetPolyline(IPolyline polyline)
@@ -40,7 +39,7 @@ namespace Yutai.Plugins.Editor.Forms
 
         private void cmdCancel_Click(object sender, EventArgs e)
         {
-            DialogResult= DialogResult.Cancel;
+            DialogResult = DialogResult.Cancel;
         }
 
         private void cmdOK_Click(object sender, EventArgs e)
@@ -48,11 +47,24 @@ namespace Yutai.Plugins.Editor.Forms
             DialogResult = DialogResult.OK;
         }
 
-        public bool IsNOP { get { return rbNOP.Checked; } }
-        public int NOP { get { return int.Parse(txtNOP.EditValue.ToString()); } }
-        public double Distance { get { return double.Parse(txtDist.EditValue.ToString()); } }
+        public bool IsNOP
+        {
+            get { return rbNOP.Checked; }
+        }
 
-        public bool IsEnds { get { return chkEnds.Checked; } }
+        public int NOP
+        {
+            get { return int.Parse(txtNOP.EditValue.ToString()); }
+        }
 
+        public double Distance
+        {
+            get { return double.Parse(txtDist.EditValue.ToString()); }
+        }
+
+        public bool IsEnds
+        {
+            get { return chkEnds.Checked; }
+        }
     }
 }

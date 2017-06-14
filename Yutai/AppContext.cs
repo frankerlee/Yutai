@@ -56,8 +56,9 @@ namespace Yutai
         private object _hook;
         private IOperationStack m_pOperationStack;
         private IStyleGallery m_pStyleGallery;
-
         private ToolTip _toolTip;
+
+        private YutaiTool _currentTool;
 
         public AppContext(
             IApplicationContainer container,
@@ -133,6 +134,11 @@ namespace Yutai
                 _mainView.MapControl.CurrentTool = (ITool) tool;
                 CurrentToolName = tool.Name;
                 RibbonMenu.ChangeCurrentTool(_oldToolName, tool.Name);
+                if (tool is IToolContextMenu)
+                {
+                    RibbonMenu.SetContextMenu(_mainView.MapControlContainer);
+                }
+                
                 return true;
             }
             return false;
@@ -300,7 +306,10 @@ namespace Yutai
         public string MapDocName { get; set; }
         public double SnapTolerance { get { return Config.SnapTolerance; } set { Config.SnapTolerance = value; } }
         public IMapDocument MapDocument { get; set; }
-        public ITool CurrentTool { get; set; }
+        public YutaiTool CurrentTool { get { return _currentTool; } set { SetCurrentTool((YutaiTool)value);
+            _currentTool = (YutaiTool)value;
+                
+        } }
 
         public void ResetCurrentTool()
         {

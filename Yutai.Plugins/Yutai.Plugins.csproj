@@ -126,6 +126,7 @@
     <Compile Include="Concrete\YutaiCommand.cs" />
     <Compile Include="Concrete\YutaiMenuCommand.cs" />
     <Compile Include="Concrete\YutaiTool.cs" />
+    <Compile Include="Interfaces\IPopuMenu.cs" />
     <Compile Include="Interfaces\IShapeConstructorTool.cs" />
     <Compile Include="Interfaces\IAppContextEvents.cs" />
     <Compile Include="Events\AppContextEventCollection.cs" />
@@ -139,6 +140,7 @@
     <Compile Include="Interfaces\IRibbonMenu.cs" />
     <Compile Include="Interfaces\IRibbonMenuIndex.cs" />
     <Compile Include="Interfaces\IRibbonMenuItem.cs" />
+    <Compile Include="Interfaces\IToolContextMenu.cs" />
     <Compile Include="Interfaces\IToolStripTabItem.cs" />
     <Compile Include="Mvp\CommandDispatcher.cs" />
     <Compile Include="Mvp\ComplexPresenter.cs" />

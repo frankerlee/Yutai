@@ -51,6 +51,21 @@ namespace Yutai.UI.Menu.Ribbon
             _menuIndex.SetStatusValue(statusKey, objValue);
         }
 
+        public void SetCurrentTool(object control, YutaiTool tool)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetCurrentTool(object control, string toolName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetContextMenu(Control mainViewMapControlContainer)
+        {
+            _menuIndex.SetContextMenu(mainViewMapControlContainer);
+        }
+
         public BarItem FindItem(string key)
         {
             return _menuIndex.FindItem(key);

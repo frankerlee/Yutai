@@ -6,7 +6,7 @@ namespace Yutai.Plugins.Editor
     {
         public EditorSettings()
         {
-            SelectionEnvironment=new SelectionEnvironment();
+            SelectionEnvironment = new SelectionEnvironment();
         }
 
         private double QueryTorelance { get; set; }

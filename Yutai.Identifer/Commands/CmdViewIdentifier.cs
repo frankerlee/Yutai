@@ -66,7 +66,7 @@ namespace Yutai.Plugins.Identifer.Commands
         }
 
 
-        public override void OnMouseDown(int button, int shift, int x, int y)
+        public override void OnMouseDown(int button, int Shift, int x, int y)
         {
             if (button != 1) return;
             IPoint mouseDownPoint = _context.MapControl.ActiveView.ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
@@ -74,7 +74,7 @@ namespace Yutai.Plugins.Identifer.Commands
             _inIdentify = true;
         }
 
-        public override void OnMouseMove(int button, int shift, int x, int y)
+        public override void OnMouseMove(int Button, int Shift, int x, int y)
         {
             if (this._inIdentify)
             {

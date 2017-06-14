@@ -42,7 +42,7 @@ namespace Yutai.Plugins.Editor.Commands
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
-            
+
             if (sender != null && base._needUpdateEvent)
             {
                 _context.UpdateUI();

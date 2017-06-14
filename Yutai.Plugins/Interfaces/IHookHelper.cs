@@ -8,6 +8,7 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.SystemUI;
+using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 
 namespace Yutai.Plugins.Interfaces
@@ -21,7 +22,7 @@ namespace Yutai.Plugins.Interfaces
         string MapDocName { get; set; }
         double SnapTolerance { get; set; }
         IMapDocument MapDocument { get; set; }
-        ITool CurrentTool { get; set; }
+        YutaiTool CurrentTool { get; set; }
         void ResetCurrentTool();
         void UpdateUI();
         void SetStatus(string string_0);

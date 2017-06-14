@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -15,12 +16,14 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Repository;
 using ESRI.ArcGIS.Geometry;
+using ESRI.ArcGIS.SystemUI;
 using Syncfusion.Windows.Forms.Tools;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Events;
 using Yutai.Plugins.Interfaces;
 using Yutai.UI.Helpers;
+using ICommandSubType = Yutai.Plugins.Interfaces.ICommandSubType;
 using IRibbonItem = Yutai.Plugins.Interfaces.IRibbonItem;
 using SuperToolTip = DevExpress.Utils.SuperToolTip;
 
@@ -36,6 +39,9 @@ namespace Yutai.UI.Menu.Ribbon
         private List<YutaiCommand> _shapeCommands;
         private string _oldToolName = "";
         private RibbonStatusBar _statusManager;
+
+        protected PopupMenu m_pCurrentPopupMenu;
+        private PopupMenu m_pSystemPopupMenu;
         //暂时性的事件触发没有在这儿进行
         public event EventHandler<MenuItemEventArgs> ItemClicked;
 
@@ -45,6 +51,10 @@ namespace Yutai.UI.Menu.Ribbon
             _shapeCommands=new List<YutaiCommand>();
               _commands = new List<YutaiCommand>();
             _statusManager = statusBar;
+            m_pCurrentPopupMenu=new PopupMenu();
+            m_pCurrentPopupMenu.Ribbon = _ribbonManager;
+            m_pSystemPopupMenu=new PopupMenu();
+            m_pSystemPopupMenu.Ribbon = _ribbonManager;
         }
 
         #region XML处理
@@ -212,7 +222,9 @@ namespace Yutai.UI.Menu.Ribbon
                 if (item != null)
                 {
                     ((BarButtonItem) item).Down = true;
+                    
                     item.Refresh();
+                    _oldToolName = nowToolName;
                 }
             }
         }
@@ -234,11 +246,62 @@ namespace Yutai.UI.Menu.Ribbon
 
         public List<YutaiCommand> GetShapeCommands(esriGeometryType geometryType)
         {
+            if(geometryType!= esriGeometryType.esriGeometryNull)
             return
             (from command in _shapeCommands
                 where ((IShapeConstructorTool) command).GeometryType == geometryType
                 select command).ToList();
+            else
+            {
+                return _shapeCommands;
+            }
         }
+
+        public void SetContextMenu(Control mapControl)
+        {
+            if (string.IsNullOrEmpty(_oldToolName))
+            {
+                _ribbonManager.SetPopupContextMenu(mapControl, null);
+                return;
+            }
+            BarItem item = _ribbonManager.Items[_oldToolName];
+            if (item == null)
+            {
+                _ribbonManager.SetPopupContextMenu(mapControl, null);
+                return;
+            }
+            YutaiTool tool = item.Tag as YutaiTool;
+            if (!(tool is IToolContextMenu))
+            {
+                _ribbonManager.SetPopupContextMenu(mapControl, null);
+                return;
+            }
+            
+                PopupMenu mPCurrentPopupMenu = this.m_pCurrentPopupMenu;
+                mPCurrentPopupMenu.ClearLinks();
+            string[] keys = ((IToolContextMenu) tool).ContextMenuKeys;
+                 item = null;
+               
+               for(int i=0; i<keys.Length;i++)
+                {
+                    item = _ribbonManager.Items[keys[i]];
+                    if (item == null)
+                    {
+                        continue;
+                    }
+                    mPCurrentPopupMenu.AddItem(item);
+                }
+                if (mPCurrentPopupMenu.ItemLinks.Count <= 0)
+                {
+                    _ribbonManager.SetPopupContextMenu(mapControl, this.m_pSystemPopupMenu);
+                }
+                else
+                {
+                _ribbonManager.SetPopupContextMenu(mapControl, mPCurrentPopupMenu);
+                }
+            
+        }
+
 
         private RibbonPage CreateRibbonPage(XmlNode node)
         {

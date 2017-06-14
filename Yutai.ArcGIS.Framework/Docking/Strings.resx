@@ -136,7 +136,7 @@
     <value>The pane is invalid. Check the IsFloat and DockPanel properties of this dock pane.</value>
   </data>
   <data name="DockContent_CloseButton_Description" xml:space="preserve">
-    <value>Enable/Disable the close button of the content.</value>
+    <value>Enable/Disable the close Button of the content.</value>
   </data>
   <data name="DockPanel_LoadFromXml_InvalidFormatVersion" xml:space="preserve">
     <value>The configuration file's version is invalid.</value>

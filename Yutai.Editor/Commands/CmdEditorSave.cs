@@ -25,23 +25,21 @@ namespace Yutai.Plugins.Editor.Commands
         {
             get
             {
-        
-                    if (_context.MapControl.Map == null)
-                    {
-                        return false;
-                    }
-                    if (_context.MapControl.Map.LayerCount == 0)
-                    {
-                        return false;
-                    }
-                    if ((Editor2.EditMap != null) && (Editor2.EditMap != _context.MapControl.Map))
-                    {
-                        return false;
-                    }
-                    return (Editor2.EditWorkspace != null);
+                if (_context.MapControl.Map == null)
+                {
+                    return false;
                 }
-
+                if (_context.MapControl.Map.LayerCount == 0)
+                {
+                    return false;
+                }
+                if ((Editor2.EditMap != null) && (Editor2.EditMap != _context.MapControl.Map))
+                {
+                    return false;
+                }
+                return (Editor2.EditWorkspace != null);
             }
+        }
 
 
         public CmdEditorSave(IAppContext context, BasePlugin plugin)
@@ -71,9 +69,6 @@ namespace Yutai.Plugins.Editor.Commands
             OnClick();
         }
 
-    
-
-       
 
         public override void OnClick()
         {
@@ -84,10 +79,9 @@ namespace Yutai.Plugins.Editor.Commands
             {
                 Editor2.EditWorkspace.StopEditing(true);
                 Editor2.EditWorkspace.StartEditing(true);
-                ((IActiveView)_context.MapControl.Map).Refresh();
+                ((IActiveView) _context.MapControl.Map).Refresh();
                 EditorEvent.SaveEditing();
             }
-
         }
     }
 }

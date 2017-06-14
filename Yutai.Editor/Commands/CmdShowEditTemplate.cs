@@ -22,11 +22,11 @@ namespace Yutai.Plugins.Editor.Commands
         public static IWorkspaceEdit m_pEditWorkspace;
         private bool _checked = false;
         private TemplateDockPanelService _dockPanelService;
+
         public override bool Enabled
         {
             get
             {
-
                 if (_context.MapControl.Map == null)
                 {
                     return false;
@@ -41,12 +41,16 @@ namespace Yutai.Plugins.Editor.Commands
                 }
                 return (Editor2.EditWorkspace != null);
             }
-
         }
 
-        public override bool Checked { get
+        public override bool Checked
         {
-            if (_dockPanelService == null) return false;return _dockPanelService.Visible; } }
+            get
+            {
+                if (_dockPanelService == null) return false;
+                return _dockPanelService.Visible;
+            }
+        }
 
         public CmdShowEditTemplate(IAppContext context)
         {
@@ -68,7 +72,7 @@ namespace Yutai.Plugins.Editor.Commands
             base.TextImageRelationYT = TextImageRelationYT.ImageAboveText;
             base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
             _checked = false;
-           _itemType= RibbonItemType.CheckBox;
+            _itemType = RibbonItemType.CheckBox;
         }
 
 
@@ -78,12 +82,9 @@ namespace Yutai.Plugins.Editor.Commands
         }
 
 
-
-
-
         public override void OnClick()
         {
-            if(_dockPanelService==null)
+            if (_dockPanelService == null)
                 _dockPanelService = _context.Container.GetInstance<TemplateDockPanelService>();
             if (_dockPanelService.Visible == false)
             {
@@ -94,7 +95,6 @@ namespace Yutai.Plugins.Editor.Commands
             {
                 _dockPanelService.Hide();
             }
-
         }
     }
 }

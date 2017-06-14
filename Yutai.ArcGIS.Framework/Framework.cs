@@ -19,6 +19,8 @@ using Yutai.Plugins.Events;
 using Yutai.Plugins.Interfaces;
 using Yutai.Shared;
 using IApplication = Yutai.ArcGIS.Common.IApplication;
+using IToolContextMenu = Yutai.ArcGIS.Common.Framework.IToolContextMenu;
+using OnItemClickEventHandler = Yutai.ArcGIS.Common.Framework.OnItemClickEventHandler;
 
 namespace Yutai.ArcGIS.Framework
 {

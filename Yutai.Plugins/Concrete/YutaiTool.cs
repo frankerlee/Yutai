@@ -29,12 +29,12 @@ namespace Yutai.Plugins.Concrete
             this.m_deactivate = true;
         }
 
-        public virtual void OnMouseDown(int button, int shift, int x, int y)
+        public virtual void OnMouseDown(int button, int Shift, int x, int y)
         {
            
         }
 
-        public virtual void OnMouseMove(int button, int shift, int x, int y)
+        public virtual void OnMouseMove(int Button, int Shift, int x, int y)
         {
            
         }
@@ -49,7 +49,7 @@ namespace Yutai.Plugins.Concrete
            
         }
 
-        public virtual void OnKeyDown(int keyCode, int shift)
+        public virtual void OnKeyDown(int keyCode, int Shift)
         {
            
         }

@@ -19,25 +19,26 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Plugins.Editor.Commands
 {
-    public class CmdSketchPoint:YutaiTool,IShapeConstructorTool
+    public class CmdSketchPoint : YutaiTool, IShapeConstructorTool
     {
-        private ISnappingEnvironment snappingEnvironment=new Snapping();
-        private ControlsEditingSketchTool sketchTool=new ControlsEditingSketchTool();
-        private ISnappingFeedback snappingFeedback=new SnappingFeedback();
-        private IPointSnapper pointSnapper=new PointSnapper();
+        private ISnappingEnvironment snappingEnvironment = new Snapping();
+        private ControlsEditingSketchTool sketchTool = new ControlsEditingSketchTool();
+        private ISnappingFeedback snappingFeedback = new SnappingFeedback();
+        private IPointSnapper pointSnapper = new PointSnapper();
         private IAnchorPoint anchorPoint = null;
         private IPoint pPoint;
         private ISimpleMarkerSymbol simpleMarkerSymbol = new SimpleMarkerSymbol();
 
-        
+
         public CmdSketchPoint(IAppContext context)
         {
             OnCreate(context);
         }
+
         public override void OnClick()
         {
             (this.pointSnapper as PointSnapper).Map = _context.FocusMap;
-            
+
             base.OnClick();
         }
 
@@ -48,8 +49,13 @@ namespace Yutai.Plugins.Editor.Commands
                 bool flag;
                 if (ArcGIS.Common.Editor.Editor.CurrentEditTemplate != null)
                 {
-                    esriGeometryType shapeType = ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass.ShapeType;
-                    flag = ((shapeType == esriGeometryType.esriGeometryMultipoint ? false : shapeType != esriGeometryType.esriGeometryPoint) ? false : true);
+                    esriGeometryType shapeType =
+                        ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass.ShapeType;
+                    flag = ((shapeType == esriGeometryType.esriGeometryMultipoint
+                        ? false
+                        : shapeType != esriGeometryType.esriGeometryPoint)
+                        ? false
+                        : true);
                 }
                 else
                 {
@@ -71,7 +77,7 @@ namespace Yutai.Plugins.Editor.Commands
             base.m_category = "Editor";
             base.m_bitmap = Properties.Resources.icon_sketch_point;
             m_cursor = new Cursor(new MemoryStream(Resource.Digitise));
-            
+
             base.m_name = "Editor_Sketch_Point";
             base._key = "Editor_Sketch_Point";
             base.m_toolTip = "创建点";
@@ -82,29 +88,32 @@ namespace Yutai.Plugins.Editor.Commands
             this.simpleMarkerSymbol.Color = ColorManage.GetRGBColor(0, 255, 255);
         }
 
-        public esriGeometryType GeometryType { get {return esriGeometryType.esriGeometryPoint;} }
+        public esriGeometryType GeometryType
+        {
+            get { return esriGeometryType.esriGeometryPoint; }
+        }
 
-        public override void OnMouseDown(int int_0, int int_1, int int_2, int int_3)
+        public override void OnMouseDown(int int_0, int Shift, int int_2, int int_3)
         {
             if (int_0 == 1)
             {
-                IActiveView focusMap = (IActiveView)_context.FocusMap;
-                CreateFeatureTool.CreateFeature(this.pPoint, focusMap,Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
+                IActiveView focusMap = (IActiveView) _context.FocusMap;
+                CreateFeatureTool.CreateFeature(this.pPoint, focusMap,
+                    Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
             }
-            base.OnMouseDown(int_0, int_1, int_2, int_3);
+            base.OnMouseDown(int_0, Shift, int_2, int_3);
         }
 
-        public override void OnMouseMove(int int_0, int int_1, int x, int y)
+        public override void OnMouseMove(int Button, int Shift, int x, int y)
         {
-
-            IActiveView focusMap = (IActiveView)_context.MapControl.ActiveView;
+            IActiveView focusMap = (IActiveView) _context.MapControl.ActiveView;
             pPoint = focusMap.ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
             ISnappingResult snappingResult = this.pointSnapper.Snap(this.pPoint);
             if (snappingResult == null)
             {
                 if (anchorPoint == null)
                 {
-                    anchorPoint  = new AnchorPoint()
+                    anchorPoint = new AnchorPoint()
                     {
                         Symbol = simpleMarkerSymbol as ISymbol
                     };
@@ -123,7 +132,7 @@ namespace Yutai.Plugins.Editor.Commands
                 }
                 anchorPoint.MoveTo(this.pPoint, focusMap.ScreenDisplay);
             }
-            //base.OnMouseMove(int_0, int_1, x, y);
+            //base.OnMouseMove(Button, Shift, x, y);
         }
     }
 }

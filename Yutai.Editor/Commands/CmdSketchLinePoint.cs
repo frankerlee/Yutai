@@ -37,6 +37,7 @@ namespace Yutai.Plugins.Editor.Commands
         {
             OnCreate(context);
         }
+
         public override void OnClick()
         {
             SketchToolAssist.LineType = enumLineType.LTLine;
@@ -53,10 +54,11 @@ namespace Yutai.Plugins.Editor.Commands
 
         public override void OnDblClick()
         {
-            IActiveView focusMap = (IActiveView)_context.FocusMap;
+            IActiveView focusMap = (IActiveView) _context.FocusMap;
             if (SketchToolAssist.CurrentTask == null)
             {
-                SketchToolAssist.EndSketch(false, focusMap, Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
+                SketchToolAssist.EndSketch(false, focusMap,
+                    Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
             }
             else
             {
@@ -66,7 +68,7 @@ namespace Yutai.Plugins.Editor.Commands
             {
                 if (frmProperties == null)
                 {
-                    frmProperties=new frmLinePointProperties(_context);
+                    frmProperties = new frmLinePointProperties(_context);
                 }
                 DialogResult result = frmProperties.ShowDialog();
                 if (result != DialogResult.OK)
@@ -80,26 +82,28 @@ namespace Yutai.Plugins.Editor.Commands
                     IPoint point = pntCol.Point[i];
                     if (i == 0 && !_context.Config.IsAddStartPoint)
                     {
-                        continue;}
-                    if (i == pntCol.PointCount-1 && !_context.Config.IsAddEndPoint)
+                        continue;
+                    }
+                    if (i == pntCol.PointCount - 1 && !_context.Config.IsAddEndPoint)
                     {
                         continue;
                     }
                     if ((i > 0 && i < pntCol.PointCount - 1) && !_context.Config.IsAddVertexPoint) continue;
 
                     bool isClear = createCount == 0 ? true : false;
-                        CreateFeatureTool.CreateFeature(point, focusMap, Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer, isClear);
+                    CreateFeatureTool.CreateFeature(point, focusMap,
+                        Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer, isClear);
                     createCount++;
                 }
             }
         }
 
-        public override void OnKeyDown(int int_0, int int_1)
+        public override void OnKeyDown(int int_0, int Shift)
         {
             if (int_0 == 27)
             {
                 SketchToolAssist.Feedback = null;
-                ((IActiveView)_context.FocusMap).Refresh();
+                ((IActiveView) _context.FocusMap).Refresh();
             }
         }
 
@@ -110,8 +114,13 @@ namespace Yutai.Plugins.Editor.Commands
                 bool flag;
                 if (ArcGIS.Common.Editor.Editor.CurrentEditTemplate != null)
                 {
-                    esriGeometryType shapeType = ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass.ShapeType;
-                    flag = ((shapeType == esriGeometryType.esriGeometryMultipoint ? false : shapeType != esriGeometryType.esriGeometryPoint) ? false : true);
+                    esriGeometryType shapeType =
+                        ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass.ShapeType;
+                    flag = ((shapeType == esriGeometryType.esriGeometryMultipoint
+                        ? false
+                        : shapeType != esriGeometryType.esriGeometryPoint)
+                        ? false
+                        : true);
                 }
                 else
                 {
@@ -143,13 +152,16 @@ namespace Yutai.Plugins.Editor.Commands
             this.simpleMarkerSymbol.Color = ColorManage.GetRGBColor(0, 255, 255);
         }
 
-        public esriGeometryType GeometryType { get { return esriGeometryType.esriGeometryPoint; } }
+        public esriGeometryType GeometryType
+        {
+            get { return esriGeometryType.esriGeometryPoint; }
+        }
 
-        public override void OnMouseDown(int int_0, int int_1, int int_2, int int_3)
+        public override void OnMouseDown(int int_0, int Shift, int int_2, int int_3)
         {
             if (int_0 == 1)
             {
-                IActiveView focusMap = (IActiveView)_context.FocusMap;
+                IActiveView focusMap = (IActiveView) _context.FocusMap;
                 if (SketchToolAssist.CurrentTask == null)
                 {
                     SketchToolAssist.IsDrawTempLine = DrawTempGeometry.Line;
@@ -162,15 +174,15 @@ namespace Yutai.Plugins.Editor.Commands
                     SketchToolAssist.SketchMouseDown(focusMap, null);
                 }
             }
-            //base.OnMouseDown(int_0, int_1, int_2, int_3);
+            //base.OnMouseDown(Button, Shift, int_2, int_3);
         }
 
-        public override void OnMouseMove(int int_0, int int_1, int int_2, int int_3)
+        public override void OnMouseMove(int Button, int Shift, int int_2, int int_3)
         {
-            IActiveView focusMap = (IActiveView)_context.FocusMap;
+            IActiveView focusMap = (IActiveView) _context.FocusMap;
             this.pPoint = focusMap.ScreenDisplay.DisplayTransformation.ToMapPoint(int_2, int_3);
             SketchToolAssist.SketchMouseMove(this.pPoint);
-            //base.OnMouseMove(int_0, int_1, int_2, int_3);
+            //base.OnMouseMove(Button, Shift, int_2, int_3);
         }
     }
 }

@@ -77,18 +77,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\CmdReverseLineOrientation.cs" />
+    <Compile Include="Commands\CmdSnapToEndPoint.cs" />
+    <Compile Include="Commands\CmdSnapToMidPoint.cs" />
+    <Compile Include="Commands\CmdSnapToSegment.cs" />
+    <Compile Include="Commands\CmdSnapToVertex.cs" />
+    <Compile Include="Commands\CmdSquareAndFinish.cs" />
+    <Compile Include="Commands\StreamingFlag.cs" />
     <Compile Include="Commands\CmdEditorSave.cs" />
     <Compile Include="Commands\CmdEditorStop.cs" />
     <Compile Include="Commands\CmdEditorStart.cs" />
     <Compile Include="Commands\CmdShowEditTemplate.cs" />
+    <Compile Include="Commands\CmdShowGeometryVertex.cs" />
     <Compile Include="Commands\CmdSketchAlongLinePoint.cs" />
+    <Compile Include="Commands\CmdSketchArcLine.cs" />
+    <Compile Include="Commands\CmdSketchCircle.cs" />
+    <Compile Include="Commands\CmdSketchEllipse.cs" />
+    <Compile Include="Commands\CmdSketchLine.cs" />
     <Compile Include="Commands\CmdSketchLinePoint.cs" />
     <Compile Include="Commands\CmdSketchPoint.cs" />
+    <Compile Include="Commands\CmdSketchRectangle.cs" />
+    <Compile Include="Commands\CmdSketchRectangle2.cs" />
     <Compile Include="Commands\CmdSnapIntersectPoint.cs" />
     <Compile Include="Commands\CmdSnapMidPoint.cs" />
     <Compile Include="Commands\CmdSnapOff.cs" />
     <Compile Include="Commands\CmdSnapSetting.cs" />
     <Compile Include="Commands\CmdSnapSketch.cs" />
+    <Compile Include="Commands\CmdStartSketch.cs" />
     <Compile Include="CompositionRoot.cs" />
     <Compile Include="Controls\SnapConfigPage.cs">
       <SubType>UserControl</SubType>
@@ -108,6 +123,12 @@
     </Compile>
     <Compile Include="Forms\frmLinePointProperties.Designer.cs">
       <DependentUpon>frmLinePointProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSetUndoStep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmStaticByGeometry.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Menu\TemplateDockPanelService.cs" />
     <Compile Include="Menu\MenuGenerator.cs" />
@@ -138,6 +159,10 @@
     <ProjectReference Include="..\Yutai.Api\Yutai.Api.csproj">
       <Project>{c0a8949e-d665-4044-8950-1a71c9b2d081}</Project>
       <Name>Yutai.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yutai.ArcGIS.Catalog\Yutai.ArcGIS.Catalog.csproj">
+      <Project>{A71076F2-B2ED-4522-8DBF-BCA1689EB637}</Project>
+      <Name>Yutai.ArcGIS.Catalog</Name>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.ArcGIS.Common\Yutai.ArcGIS.Common.csproj">
       <Project>{1938b3f8-8ede-48f7-9594-eeb1f126e622}</Project>
@@ -173,6 +198,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmLinePointProperties.resx">
       <DependentUpon>frmLinePointProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSetUndoStep.resx">
+      <DependentUpon>frmSetUndoStep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmStaticByGeometry.resx">
+      <DependentUpon>frmStaticByGeometry.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -239,6 +270,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icon_along_line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jlk.pluge.cursor.deletevertex.cur" />
+    <None Include="Resources\icon_pencil.png" />
+    <EmbeddedResource Include="Resources\Cursor\DeleteVertex.cur" />
+    <Content Include="Resources\icon_sketch_circle.bmp" />
+    <None Include="Resources\icon_sketch_polyline.png" />
+    <None Include="Resources\icon_sketch_rectangle.png" />
+    <None Include="Resources\icon_sketch_polygon.png" />
+    <None Include="Resources\icon_sketch_line2p.png" />
+    <None Include="Resources\icon_sketch_ellipse.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

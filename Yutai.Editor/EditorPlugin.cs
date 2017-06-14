@@ -15,17 +15,23 @@ namespace Yutai.Plugins.Editor
     {
         private IAppContext _context;
         private TemplateDockPanelService _dockPanelService;
-       
+
         private MenuGenerator _menuGenerator;
         //private MapListener _mapListener;
         private EditorSettings _querySettings;
 
         public EditorSettings EditorSettings
         {
-            get { if (_querySettings == null) { _querySettings=new EditorSettings();}
+            get
+            {
+                if (_querySettings == null)
+                {
+                    _querySettings = new EditorSettings();
+                }
                 return _querySettings;
             }
         }
+
         protected override void RegisterServices(IApplicationContainer container)
         {
             CompositionRoot.Compose(container);
@@ -48,6 +54,7 @@ namespace Yutai.Plugins.Editor
                 handler(this, args);
             }
         }
+
         public override IEnumerable<IConfigPage> ConfigPages
         {
             get { yield return _context.Container.GetInstance<SnapConfigPage>(); }

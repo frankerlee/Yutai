@@ -371,6 +371,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         public void Init()
         {
             if (DesignMode) return;
+            if (m_Map == null) return;
             if (m_list == null)
             {
                 m_list = new Dictionary<IFeatureLayer, List<YTEditTemplate>>();

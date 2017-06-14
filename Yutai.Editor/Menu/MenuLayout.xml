@@ -3,23 +3,25 @@
     <Pages>
       <Page Key="Edit" Caption="编辑" Index="0" Visible="true">
         <PageGroup Key="Edit_Common" Caption="常用" Visible="true" Index="0">
-          <BarItem  Key="Edit_Common_StartEdit" Visible="true"></BarItem>
-          <BarItem  Key="Edit_Common_StopEdit" Visible="true"></BarItem>
-          <BarItem  Key="Edit_Common_SaveEdit" Visible="true"></BarItem>
-          
+          <BarItem Key="Edit_Common_StartEdit" Visible="true"></BarItem>
+          <BarItem Key="Edit_Common_StopEdit" Visible="true"></BarItem>
+          <BarItem Key="Edit_Common_SaveEdit" Visible="true"></BarItem>
+
         </PageGroup>
         <PageGroup Key="Edit_Snap" Caption="设置" Visible="true" Index="0">
-          <BarItem  Key="Edit_Snap_SnapOff" Visible="true"></BarItem>
-          <BarItem  Key="Edit_Snap_Config_SnapPoint" Visible="true"></BarItem>
-          <BarItem  Key="Edit_Snap_Config_SnapEndPoint" Visible="true"></BarItem>
-          <BarItem  Key="Edit_Snap_Config_SnapVertexPoint" Visible="true"></BarItem>
-          <BarItem  Key="Edit_Snap_Config_SnapBoundary" Visible="true"></BarItem>
-          <BarItem  Key="Edit_Snap_Config_SnapTangent" Visible="true"></BarItem>
-          <BarItem  Key="Edit_Snap_Config_SnapIntersectPoint" Visible="true"></BarItem>
-          <BarItem  Key="Edit_Snap_Config_SnapMidPoint" Visible="true"></BarItem>
+          <BarItem Key="Edit_Snap_SnapOff" Visible="true"></BarItem>
+          <BarItem Key="Edit_Snap_Config_SnapPoint" Visible="true"></BarItem>
+          <BarItem Key="Edit_Snap_Config_SnapEndPoint" Visible="true"></BarItem>
+          <BarItem Key="Edit_Snap_Config_SnapVertexPoint" Visible="true"></BarItem>
+          <BarItem Key="Edit_Snap_Config_SnapBoundary" Visible="true"></BarItem>
+          <BarItem Key="Edit_Snap_Config_SnapTangent" Visible="true"></BarItem>
+          <BarItem Key="Edit_Snap_Config_SnapIntersectPoint" Visible="true"></BarItem>
+          <BarItem Key="Edit_Snap_Config_SnapMidPoint" Visible="true"></BarItem>
         </PageGroup>
         <PageGroup Key="Edit_Extend" Caption="工具" Visible="true" Index="1">
-          <BarItem  Key="Edit_Open_Template" Visible="true"></BarItem>
+          <BarItem Key="Editor_Start_Sketch" Visible="true"></BarItem>
+          <BarItem Key="Edit_Open_Template" Visible="true"></BarItem>
+          <BarItem Key="Editor_Show_Vertex" Visible="true"></BarItem>
         </PageGroup>
       </Page>
     </Pages>

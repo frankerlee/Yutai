@@ -62,7 +62,7 @@ namespace Yutai.Commands.Views
             base._itemType = RibbonItemType.Tool;
         }
 
-        public override void OnKeyDown(int keyCode, int shift)
+        public override void OnKeyDown(int keyCode, int Shift)
         {
             if (_inZoom && keyCode == 27)
             {
@@ -72,7 +72,7 @@ namespace Yutai.Commands.Views
             }
         }
 
-        public override void OnMouseDown(int button, int shift, int x, int y)
+        public override void OnMouseDown(int button, int Shift, int x, int y)
         {
             if (button != 2)
             {
@@ -83,7 +83,7 @@ namespace Yutai.Commands.Views
             }
         }
 
-        public override void OnMouseMove(int button, int shift, int x, int y)
+        public override void OnMouseMove(int Button, int Shift, int x, int y)
         {
             if (this._inZoom)
             {

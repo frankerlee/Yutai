@@ -36,8 +36,8 @@ namespace Yutai.Plugins.Editor.Views
             {
                 _context = context;
                 editorTemplateManageCtrl21.Map = _context.FocusMap;
-                _mapEvent=_context.MapControl as IMapControlEvents2_Event;
-                EditorEvent.OnEditTemplateChange+= EditorEventOnOnEditTemplateChange;
+                _mapEvent = _context.MapControl as IMapControlEvents2_Event;
+                EditorEvent.OnEditTemplateChange += EditorEventOnOnEditTemplateChange;
                 imageList = new ImageList();
             }
             //_context.RibbonMenu.comm
@@ -45,8 +45,9 @@ namespace Yutai.Plugins.Editor.Views
 
         private void EditorEventOnOnEditTemplateChange(YTEditTemplate editTemplate0)
         {
-            if(editTemplate0==null)
-            { lstConstructionTools.Items.Clear();
+            if (editTemplate0 == null)
+            {
+                lstConstructionTools.Items.Clear();
                 return;
             }
             BuildListFromCommands(editTemplate0.FeatureLayer.FeatureClass.ShapeType);
@@ -55,7 +56,26 @@ namespace Yutai.Plugins.Editor.Views
         private void BuildListFromCommands(esriGeometryType geometryType)
         {
             lstConstructionTools.Items.Clear();
-            commands= _context.RibbonMenu.SubItems.GetShapeCommands(geometryType);
+            if (geometryType == esriGeometryType.esriGeometryPoint)
+                commands = _context.RibbonMenu.SubItems.GetShapeCommands(geometryType);
+            else if (geometryType == esriGeometryType.esriGeometryPolyline ||
+                     geometryType == esriGeometryType.esriGeometryPolygon)
+            {
+                if (commands == null)
+                {
+                    commands = new List<YutaiCommand>();
+                }
+                commands.Clear();
+                List<YutaiCommand> subCommands =
+                    _context.RibbonMenu.SubItems.GetShapeCommands(esriGeometryType.esriGeometryNull);
+                foreach (YutaiCommand subCommand in subCommands)
+                {
+                    if (subCommand.Enabled)
+                    {
+                        commands.Add(subCommand);
+                    }
+                }
+            }
             if (commands == null) return;
             imageList.Images.Clear();
             foreach (YutaiTool yutaiTool in commands)
@@ -78,7 +98,11 @@ namespace Yutai.Plugins.Editor.Views
                 editorTemplateManageCtrl21.Map = _context.FocusMap;
             }
         }
-        public IEnumerable<ToolStripItemCollection> ToolStrips { get {yield break;} }
+
+        public IEnumerable<ToolStripItemCollection> ToolStrips
+        {
+            get { yield break; }
+        }
 
         public IEnumerable<Control> Buttons
         {
@@ -91,6 +115,7 @@ namespace Yutai.Plugins.Editor.Views
         }
 
         public IConstructTool CurrentConstructTool { get; }
+
         public void OnTemplateSelectedChanged()
         {
             //throw new NotImplementedException();
@@ -104,18 +129,39 @@ namespace Yutai.Plugins.Editor.Views
         public void Initialize(IAppContext context)
         {
             editorTemplateManageCtrl21.Map = _context.FocusMap;
-
         }
 
-        public override Bitmap Image { get { return Resources.icon_template; } }
+        public void ValidateWorkspace()
+        {
+            editorTemplateManageCtrl21.Map = _context.FocusMap;
+        }
+
+        public override Bitmap Image
+        {
+            get { return Resources.icon_template; }
+        }
+
         public override string Caption
         {
             get { return "要素模板"; }
             set { Caption = value; }
         }
-        public override DockPanelState DefaultDock{ get { return DockPanelState.Right; } }
-        public override string DockName { get { return DefaultDockName; } }
-        public override string DefaultNestDockName { get { return ""; } }
+
+        public override DockPanelState DefaultDock
+        {
+            get { return DockPanelState.Right; }
+        }
+
+        public override string DockName
+        {
+            get { return DefaultDockName; }
+        }
+
+        public override string DefaultNestDockName
+        {
+            get { return ""; }
+        }
+
         public const string DefaultDockName = "Editor_Feature_Template";
 
         private void lstConstructionTools_SelectedIndexChanged(object sender, EventArgs e)
@@ -123,7 +169,6 @@ namespace Yutai.Plugins.Editor.Views
             if (lstConstructionTools.SelectedIndex < 0) return;
             commands[lstConstructionTools.SelectedIndex].OnClick();
             _context.SetCurrentTool(commands[lstConstructionTools.SelectedIndex] as YutaiTool);
-
         }
     }
 }

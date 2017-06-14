@@ -15,6 +15,7 @@ namespace Yutai.Plugins.Editor.Forms
     public partial class frmLinePointProperties : XtraForm
     {
         private IAppContext _context;
+
         public frmLinePointProperties()
         {
             InitializeComponent();
@@ -38,7 +39,7 @@ namespace Yutai.Plugins.Editor.Forms
             _context.Config.IsAddStartPoint = chkStart.Checked;
             _context.Config.IsAddEndPoint = chkEnd.Checked;
             _context.Config.IsAddVertexPoint = chkVertex.Checked;
-            DialogResult= DialogResult.OK;
+            DialogResult = DialogResult.OK;
         }
     }
 }

@@ -15,7 +15,7 @@ using Yutai.UI.Controls;
 
 namespace Yutai.Plugins.Editor.Controls
 {
-    public partial class SnapConfigPage :   ConfigPageBase, IConfigPage
+    public partial class SnapConfigPage : ConfigPageBase, IConfigPage
     {
         private readonly IConfigService _configService;
 
@@ -26,12 +26,10 @@ namespace Yutai.Plugins.Editor.Controls
 
             InitializeComponent();
 
-           
 
             Initialize();
         }
 
-     
 
         public void Initialize()
         {
@@ -45,7 +43,6 @@ namespace Yutai.Plugins.Editor.Controls
             chkSnapSketch.Checked = config.IsSnapSketch;
             chkSnapTargent.Checked = config.IsSnapTangent;
             chkSnapVertexPoint.Checked = config.IsSnapVertexPoint;
-           
         }
 
         public string PageName
@@ -58,18 +55,20 @@ namespace Yutai.Plugins.Editor.Controls
             var config = _configService.Config;
             config.UseSnap = chkSnap.Checked;
             config.IsSnapBoundary = chkSnapBoundary.Checked;
-             config.IsSnapEndPoint = chkSnapEndPoint.Checked;
+            config.IsSnapEndPoint = chkSnapEndPoint.Checked;
             config.IsSnapIntersectionPoint = chkSnapIntersectPoint.Checked;
-             config.IsSnapMiddlePoint = chkSnapMidPoint.Checked;
+            config.IsSnapMiddlePoint = chkSnapMidPoint.Checked;
             config.IsSnapPoint = chkSnapPoint.Checked;
-           config.IsSnapSketch = chkSnapSketch.Checked;
+            config.IsSnapSketch = chkSnapSketch.Checked;
             config.IsSnapTangent = chkSnapTargent.Checked;
-             config.IsSnapVertexPoint = chkSnapVertexPoint.Checked;
+            config.IsSnapVertexPoint = chkSnapVertexPoint.Checked;
         }
 
-        public string Key { get { return "Snap"; } }
+        public string Key
+        {
+            get { return "Snap"; }
+        }
 
-        
 
         public Bitmap Icon
         {

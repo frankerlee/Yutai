@@ -50,6 +50,8 @@ namespace Yutai.Plugins.Interfaces
 
         string CurrentToolName { get; }
 
+        YutaiTool CurrentTool { get; set; }
+
         IGeometry BufferGeometry
         {
             get;
@@ -71,6 +73,8 @@ namespace Yutai.Plugins.Interfaces
         ILayer CurrentLayer { get; set; }
         //直接有MapControl2传入
         IMap FocusMap { get; }
+
+        IActiveView ActiveView { get; }
 
         //事件
         void AcvtiveHookChanged(object hook);

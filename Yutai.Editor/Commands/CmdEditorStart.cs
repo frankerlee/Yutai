@@ -36,18 +36,17 @@ namespace Yutai.Plugins.Editor.Commands
                 {
                     return false;
                 }
-                
-                    if (!_context.Config.CanEdited)
-                    {
-                        return false;
-                    }
-                    if ((Editor2.EditMap != null) && (Editor2.EditMap != _context.MapControl.Map))
-                    {
-                        return false;
-                    }
-               
-                return true;
 
+                if (!_context.Config.CanEdited)
+                {
+                    return false;
+                }
+                if ((Editor2.EditMap != null) && (Editor2.EditMap != _context.MapControl.Map))
+                {
+                    return false;
+                }
+
+                return true;
             }
         }
 
@@ -58,9 +57,8 @@ namespace Yutai.Plugins.Editor.Commands
 
         public CmdEditorStart(IAppContext context, BasePlugin plugin)
         {
-           OnCreate(context);
+            OnCreate(context);
             _plugin = plugin as EditorPlugin;
-            
         }
 
         public override void OnCreate(object hook)
@@ -91,18 +89,18 @@ namespace Yutai.Plugins.Editor.Commands
             if (this.Enabled)
             {
                 _context.ShowCommandString("正在启动编辑", CommandTipsType.CTTLog);
-                
-                if (Editor2.StartEditing(_context.MapControl.Map,_context))
+
+                if (Editor2.StartEditing(_context.MapControl.Map, _context))
                 {
                     m_pEditWorkspace = Editor2.EditWorkspace;
-                  
-                     _context.Config.IsInEdit = true;
-                     _context.ShowCommandString("启动编辑", CommandTipsType.CTTEnd);
+
+                    _context.Config.IsInEdit = true;
+                    _context.ShowCommandString("启动编辑", CommandTipsType.CTTEnd);
                     EditorEvent.StartEditing();
                     //EditToolUI.EditTemplateCtrl.Map = _context.MapControl.Map;
                     //base.m_HookHelper.DockWindows(EditToolUI.EditTemplateCtrl, null);
                 }
-                else 
+                else
                 {
                     _context.ShowCommandString("未启动编辑", CommandTipsType.CTTEnd);
                 }
@@ -118,7 +116,6 @@ namespace Yutai.Plugins.Editor.Commands
                     _context.ShowCommandString("开始编辑命令不可用", CommandTipsType.CTTEnd);
                 }
             }
-
         }
 
 

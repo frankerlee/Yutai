@@ -201,6 +201,7 @@
     <Compile Include="Helpers\SyncfusionSerializationHelper.cs" />
     <Compile Include="Helpers\ToolTipHelper.cs" />
     <Compile Include="Menu\MenuServiceBase.cs" />
+    <Compile Include="Menu\Ribbon\RibbonPopupMenu.cs" />
     <Compile Include="Menu\Ribbon\RibbonFactory.cs" />
     <Compile Include="Menu\Ribbon\RibbonItem.cs" />
     <Compile Include="Menu\Ribbon\RibbonMenu.cs" />

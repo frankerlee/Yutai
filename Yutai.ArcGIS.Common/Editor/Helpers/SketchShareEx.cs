@@ -380,10 +380,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 			string[] strArrays;
 			double num1;
 			double length;
-			if (!SketchShareEx.m_HasLicense)
-			{
-				MessageBox.Show("无授权许可!");
-			}
+			
 			if (SketchToolAssist.IsDrawTempLine == DrawTempGeometry.Line)
 			{
 				if (SketchToolAssist.Feedback != null)
@@ -617,10 +614,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 			string unit;
 			if (imap_0 != null)
 			{
-				if (!SketchShareEx.m_HasLicense)
-				{
-					MessageBox.Show("无授权许可!");
-				}
+				
 				string str1 = "";
 				SketchShareEx.m_pAnchorPoint = ipoint_0;
 				SketchShareEx.Snap2Point(ipoint_0, SketchShareEx.m_pAnchorPoint, esriSimpleMarkerStyle.esriSMSDiamond, imap_0 as IActiveView, iengineSnapEnvironment_0);
@@ -740,7 +734,16 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 								pointClass = new ESRI.ArcGIS.Geometry.Point();
 								if (!mPPointColn.HitTest(ipoint_0, mapUnits, esriGeometryHitPartType.esriGeometryPartVertex, pointClass, ref num, ref num1, ref num2, ref flag))
 								{
-									goto Label2;
+                                    SketchShareEx.m_bSnapSuccessful = false;
+                                    if (SketchToolAssist.m_pAP != null)
+                                    {
+                                        SketchToolAssist.m_pAP.MoveTo(ipoint_0, iactiveView_0.ScreenDisplay);
+                                    }
+                                    else
+                                    {
+                                        SketchToolAssist.AddNewAnchorPt(ipoint_0, esriSimpleMarkerStyle_0, iactiveView_0);
+                                    }
+								    return;
 								}
 								ipoint_0.PutCoords(pointClass.X, pointClass.Y);
 								SketchShareEx.m_bSnapSuccessful = true;
@@ -756,16 +759,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 								}
 							}
 						}
-					Label2:
-						SketchShareEx.m_bSnapSuccessful = false;
-						if (SketchToolAssist.m_pAP != null)
-						{
-							SketchToolAssist.m_pAP.MoveTo(ipoint_0, iactiveView_0.ScreenDisplay);
-						}
-						else
-						{
-							SketchToolAssist.AddNewAnchorPt(ipoint_0, esriSimpleMarkerStyle_0, iactiveView_0);
-						}
+						
 					}
 					else
 					{
@@ -803,7 +797,16 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 							pointClass = new ESRI.ArcGIS.Geometry.Point();
 							if (!mPPointColn.HitTest(ipoint_0, mapUnits, esriGeometryHitPartType.esriGeometryPartVertex, pointClass, ref num, ref num1, ref num2, ref flag))
 							{
-								goto Label1;
+                                SketchShareEx.m_bSnapSuccessful = false;
+                                if (SketchToolAssist.m_pAP != null)
+                                {
+                                    SketchToolAssist.m_pAP.MoveTo(ipoint_0, iactiveView_0.ScreenDisplay);
+                                }
+                                else
+                                {
+                                    SketchToolAssist.AddNewAnchorPt(ipoint_0, esriSimpleMarkerStyle_0, iactiveView_0);
+                                }
+							    return;
 							}
 							ipoint_0.PutCoords(pointClass.X, pointClass.Y);
 							SketchShareEx.m_bSnapSuccessful = true;
@@ -819,16 +822,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 							}
 						}
 					}
-				Label1:
-					SketchShareEx.m_bSnapSuccessful = false;
-					if (SketchToolAssist.m_pAP != null)
-					{
-						SketchToolAssist.m_pAP.MoveTo(ipoint_0, iactiveView_0.ScreenDisplay);
-					}
-					else
-					{
-						SketchToolAssist.AddNewAnchorPt(ipoint_0, esriSimpleMarkerStyle_0, iactiveView_0);
-					}
+					
 				}
 				else
 				{

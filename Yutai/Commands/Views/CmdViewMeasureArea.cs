@@ -182,7 +182,7 @@ namespace Yutai.Commands.Views
             return str;
         }
 
-        public override void OnMouseDown(int button, int shift, int x, int y)
+        public override void OnMouseDown(int button, int Shift, int x, int y)
         {
             if (button != 2)
             {
@@ -191,7 +191,7 @@ namespace Yutai.Commands.Views
             }
         }
 
-        public override void OnMouseMove(int button, int shift, int x, int y)
+        public override void OnMouseMove(int Button, int Shift, int x, int y)
         {
             this.CalculateArea(x, y, 2);
         }

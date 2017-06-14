@@ -495,7 +495,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 				else
 				{
 					SketchToolAssist.m_bInUse = true;
-					SketchToolAssist.Feedback = new NewPolylineFeedback();
+					SketchToolAssist.Feedback = new NewPolylineFeedback() as IDisplayFeedback2;
 					feedback = (INewPolylineFeedback)SketchToolAssist.Feedback;
 					SketchToolAssist.Feedback.Display = pActiveView.ScreenDisplay;
 					feedback.ChangeLineType(SketchToolAssist.LineType);
