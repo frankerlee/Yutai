@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using ESRI.ArcGIS.Geodatabase;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
@@ -48,8 +50,20 @@ namespace Yutai.Plugins.TableEditor.Commands.ContextMenu
         public override void OnClick()
         {
             string fieldName = _menuStrip.TableView.VirtualGridView.Table.Columns[_menuStrip.ColumnIndex].ColumnName;
-            FieldStatistics frm = new FieldStatistics(_menuStrip.TableView, fieldName);
-            frm.ShowDialog();
+            int idx = _menuStrip.TableView.FeatureLayer.FeatureClass.FindField(fieldName);
+            IField pField = _menuStrip.TableView.FeatureLayer.FeatureClass.Fields.Field[idx];
+            if (pField.Type == esriFieldType.esriFieldTypeDouble ||
+                    pField.Type == esriFieldType.esriFieldTypeInteger ||
+                    pField.Type == esriFieldType.esriFieldTypeSingle ||
+                    pField.Type == esriFieldType.esriFieldTypeSmallInteger)
+            {
+                FieldStatistics frm = new FieldStatistics(_menuStrip.TableView, fieldName);
+                frm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show(@"统计信息不适用于文本字段。");
+            }
         }
 
     }

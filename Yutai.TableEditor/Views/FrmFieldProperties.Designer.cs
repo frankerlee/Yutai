@@ -233,6 +233,7 @@ namespace Yutai.Plugins.TableEditor.Views
             this.Name = "FrmFieldProperties";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "字段属性";
+            this.Load += new System.EventHandler(this.FrmFieldProperties_Load);
             ((System.ComponentModel.ISupportInitialize)(this.udPrecision)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udWidth)).EndInit();
             this.groupBox1.ResumeLayout(false);
