@@ -171,6 +171,7 @@ namespace Yutai.Plugins.TableEditor.Views
             this.functionTreeView.HideSelection = false;
             this.functionTreeView.Location = new System.Drawing.Point(361, 24);
             this.functionTreeView.Name = "functionTreeView";
+            this.functionTreeView.ShowNodeToolTips = true;
             this.functionTreeView.Size = new System.Drawing.Size(206, 325);
             this.functionTreeView.TabIndex = 35;
             this.functionTreeView.Text = "functionsTreeView1";
@@ -197,6 +198,9 @@ namespace Yutai.Plugins.TableEditor.Views
             this.Controls.Add(this.functionTreeView);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FieldCalculator";
             this.Text = "字段计算器";
             this.ResumeLayout(false);

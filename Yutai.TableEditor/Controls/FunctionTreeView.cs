@@ -47,6 +47,7 @@ namespace Yutai.Plugins.TableEditor.Controls
                 node.ToolTipText = function.GetDescription();
                 node.Tag = function;
             }
+            this.ShowNodeToolTips = true;
         }
     }
 }

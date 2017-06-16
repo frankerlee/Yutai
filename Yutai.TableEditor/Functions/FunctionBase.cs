@@ -123,7 +123,7 @@ namespace Yutai.Plugins.TableEditor.Functions
             {
                 for (int i = 0; i < Parameters.Count; i++)
                 {
-                    des = $"\r\n{Parameters[i].Name}:{Parameters[i].Description}";
+                    des += $"\r\n{Parameters[i].Name}:{Parameters[i].Description}";
                 }
             }
             return des;
