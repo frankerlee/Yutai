@@ -369,55 +369,36 @@ namespace Yutai.Plugins.TableEditor.Editor
         {
             try
             {
-                int reocrdNum = RecordNum - pDataTable.Rows.Count;
-                if (reocrdNum > 0)
+                pDataTable.Rows.Clear();
+                IFields fields = pCursor.Fields;
+                int num = 0;
+                IRow row;
+                object[] mStrGeometry = new object[fields.FieldCount];
+                while ((row = pCursor.NextRow()) != null)
                 {
-                    if (!bAll)
+                    for (int i = 0; i < fields.FieldCount; i++)
                     {
-                        reocrdNum = (reocrdNum > this._showMaxRecNum ? this._showMaxRecNum : reocrdNum);
-                    }
-                    IFields fields = pCursor.Fields;
-                    int num = 0;
-                    IRow row = pCursor.NextRow();
-                    object[] mStrGeometry = new object[fields.FieldCount];
-                    while (row != null)
-                    {
-                        for (int i = 0; i < fields.FieldCount; i++)
+                        IField field = fields.Field[i];
+                        if (field.Type == esriFieldType.esriFieldTypeGeometry)
                         {
-                            IField field = fields.Field[i];
-                            if (field.Type == esriFieldType.esriFieldTypeGeometry)
-                            {
-                                mStrGeometry[i] = this._strGeometry;
-                            }
-                            else if (field.Type != esriFieldType.esriFieldTypeBlob)
-                            {
-                                object value = row.Value[i];
-                                mStrGeometry[i] = value;
-                            }
-                            else
-                            {
-                                mStrGeometry[i] = "二进制数据";
-                            }
+                            mStrGeometry[i] = this._strGeometry;
                         }
-                        pDataTable.Rows.Add(mStrGeometry);
-                        num++;
-                        if (row.HasOID)
+                        else if (field.Type != esriFieldType.esriFieldTypeBlob)
                         {
-                            this._maxOID = row.OID;
-                        }
-                        if (num < reocrdNum)
-                        {
-                            row = pCursor.NextRow();
+                            object value = row.Value[i];
+                            mStrGeometry[i] = value;
                         }
                         else
                         {
-                            break;
+                            mStrGeometry[i] = "二进制数据";
                         }
                     }
-                }
-                else
-                {
-                    return;
+                    pDataTable.Rows.Add(mStrGeometry);
+                    num++;
+                    if (row.HasOID)
+                    {
+                        this._maxOID = row.OID;
+                    }
                 }
             }
             catch

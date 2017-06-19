@@ -123,6 +123,16 @@ namespace Yutai.Plugins.TableEditor.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap icon_folder_open {
+            get {
+                object obj = ResourceManager.GetObject("icon_folder_open", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap icon_selected_records {
             get {
                 object obj = ResourceManager.GetObject("icon_selected_records", resourceCulture);

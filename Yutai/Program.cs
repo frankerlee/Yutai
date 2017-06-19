@@ -59,7 +59,7 @@ namespace Yutai
             //        return;
             //    }
             //}
-          
+            ESRI.ArcGIS.RuntimeManager.Bind(ESRI.ArcGIS.ProductCode.Desktop);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
            // Application.Run(new Form1());

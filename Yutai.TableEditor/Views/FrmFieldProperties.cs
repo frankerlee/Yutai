@@ -21,22 +21,12 @@ namespace Yutai.Plugins.TableEditor.Views
             InitControls();
         }
 
+        private IField _field;
         public FrmFieldProperties(IField field)
         {
             InitializeComponent();
             InitControls();
-
-            txtName.Text = field.Name;
-            txtAlias.Text = field.AliasName;
-            cboDataType.SelectedValue = field.Type;
-            udWidth.Value = field.Length;
-            udPrecision.Value = field.Precision;
-
-            chkVisible.Enabled = false;
-            cboDataType.Enabled = false;
-            udWidth.Enabled = false;
-            udPrecision.Enabled = false;
-            txtExpression.Enabled = false;
+            _field = field;
         }
 
         private void InitControls()
@@ -60,6 +50,22 @@ namespace Yutai.Plugins.TableEditor.Views
 
                 return pFieldEdit as IField;
             }
+        }
+
+        private void FrmFieldProperties_Load(object sender, EventArgs e)
+        {
+            txtName.Text = _field.Name;
+            txtAlias.Text = _field.AliasName;
+            cboDataType.SelectedItem = _field.Type.ToString();
+            udWidth.Value = _field.Length;
+            udPrecision.Value = _field.Precision;
+
+            chkVisible.Enabled = false;
+            cboDataType.Enabled = false;
+            udWidth.Enabled = false;
+            udPrecision.Enabled = false;
+            txtExpression.Enabled = false;
+
         }
     }
 }

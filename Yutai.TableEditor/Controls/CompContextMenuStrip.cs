@@ -116,6 +116,8 @@ namespace Yutai.Plugins.TableEditor.Controls
                     new YutaiSeparatorCommand(),
                     new CmdHideField(_context, this),
                     new YutaiSeparatorCommand(),
+                    new CmdCalculateField(_context, this),
+                    new YutaiSeparatorCommand(),
                     new CmdRemoveField(_context, this),
                     new YutaiSeparatorCommand(),
                     new CmdStatistics(_context, this),

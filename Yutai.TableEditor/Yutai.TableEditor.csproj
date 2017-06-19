@@ -52,6 +52,9 @@
     <Reference Include="ESRI.ArcGIS.Geodatabase">
       <HintPath>C:\Program Files (x86)\ArcGIS\DeveloperKit10.2\DotNet\ESRI.ArcGIS.Geodatabase.dll</HintPath>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.GeoDatabaseUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.Geometry, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
@@ -106,11 +109,29 @@
     <Compile Include="Controls\CompContextMenuStrip.Designer.cs">
       <DependentUpon>CompContextMenuStrip.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ExpressionTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ExpressionTextBox.Designer.cs">
+      <DependentUpon>ExpressionTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FieldsListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FieldsListBox.Designer.cs">
+      <DependentUpon>FieldsListBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\FieldStatsGrid.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\FieldStatsGrid.Designer.cs">
       <DependentUpon>FieldStatsGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FunctionTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FunctionTreeView.Designer.cs">
+      <DependentUpon>FunctionTreeView.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\UCSelectField.cs">
       <SubType>UserControl</SubType>
@@ -147,6 +168,50 @@
       <DependentUpon>TablePage.cs</DependentUpon>
     </Compile>
     <Compile Include="Enums\TableEditorCommand.cs" />
+    <Compile Include="Functions\Conversion\FunctionCBool.cs" />
+    <Compile Include="Functions\Conversion\FunctionCDate.cs" />
+    <Compile Include="Functions\Conversion\FunctionCDbl.cs" />
+    <Compile Include="Functions\Conversion\FunctionCInt.cs" />
+    <Compile Include="Functions\Conversion\FunctionCLng.cs" />
+    <Compile Include="Functions\Conversion\FunctionCSng.cs" />
+    <Compile Include="Functions\Conversion\FunctionCStr.cs" />
+    <Compile Include="Functions\Conversion\FunctionHex.cs" />
+    <Compile Include="Functions\Conversion\FunctionOct.cs" />
+    <Compile Include="Functions\Date\FunctionDate.cs" />
+    <Compile Include="Functions\Date\FunctionDateAdd.cs" />
+    <Compile Include="Functions\Date\FunctionDateDiff.cs" />
+    <Compile Include="Functions\Date\FunctionDatePart.cs" />
+    <Compile Include="Functions\Date\FunctionNow.cs" />
+    <Compile Include="Functions\FunctionBase.cs" />
+    <Compile Include="Functions\IFunction.cs" />
+    <Compile Include="Functions\Math\FunctionAbs.cs" />
+    <Compile Include="Functions\Math\FunctionAtn.cs" />
+    <Compile Include="Functions\Math\FunctionCos.cs" />
+    <Compile Include="Functions\Math\FunctionExp.cs" />
+    <Compile Include="Functions\Math\FunctionFix.cs" />
+    <Compile Include="Functions\Math\FunctionInt.cs" />
+    <Compile Include="Functions\Math\FunctionLog.cs" />
+    <Compile Include="Functions\Math\FunctionRnd.cs" />
+    <Compile Include="Functions\Math\FunctionSgn.cs" />
+    <Compile Include="Functions\Math\FunctionSin.cs" />
+    <Compile Include="Functions\Math\FunctionSqr.cs" />
+    <Compile Include="Functions\Math\FunctionTan.cs" />
+    <Compile Include="Functions\Parameter.cs" />
+    <Compile Include="Functions\Conversion\FunctionAsc.cs" />
+    <Compile Include="Functions\Conversion\FunctionChr.cs" />
+    <Compile Include="Functions\String\FunctionInStr.cs" />
+    <Compile Include="Functions\String\FunctionLCase.cs" />
+    <Compile Include="Functions\String\FunctionLeft.cs" />
+    <Compile Include="Functions\String\FunctionLen.cs" />
+    <Compile Include="Functions\String\FunctionLTrim.cs" />
+    <Compile Include="Functions\String\FunctionMid.cs" />
+    <Compile Include="Functions\String\FunctionReplace.cs" />
+    <Compile Include="Functions\String\FunctionRight.cs" />
+    <Compile Include="Functions\String\FunctionRTrim.cs" />
+    <Compile Include="Functions\String\FunctionSpace.cs" />
+    <Compile Include="Functions\String\FunctionString.cs" />
+    <Compile Include="Functions\String\FunctionStrReverse.cs" />
+    <Compile Include="Functions\String\FunctionUCase.cs" />
     <Compile Include="Menu\MenuListener.cs" />
     <Compile Include="Menu\YutaiSeparatorCommand.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -163,6 +228,12 @@
     </Compile>
     <Compile Include="Views\AttributeExplorer.Designer.cs">
       <DependentUpon>AttributeExplorer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FieldCalculator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FieldCalculator.Designer.cs">
+      <DependentUpon>FieldCalculator.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FieldStatistics.cs">
       <SubType>Form</SubType>
@@ -225,6 +296,9 @@
     <EmbeddedResource Include="Controls\FieldStatsGrid.resx">
       <DependentUpon>FieldStatsGrid.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FunctionTreeView.resx">
+      <DependentUpon>FunctionTreeView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\UCSelectField.resx">
       <DependentUpon>UCSelectField.cs</DependentUpon>
     </EmbeddedResource>
@@ -243,6 +317,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AttributeExplorer.resx">
       <DependentUpon>AttributeExplorer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FieldCalculator.resx">
+      <DependentUpon>FieldCalculator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FieldStatistics.resx">
       <DependentUpon>FieldStatistics.cs</DependentUpon>
@@ -281,6 +358,10 @@
   <ItemGroup>
     <None Include="Resources\GenericDeleteBlack16.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_folder_open.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
