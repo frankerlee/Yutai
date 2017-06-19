@@ -14,7 +14,7 @@ namespace Yutai.Plugins.Editor.Commands
         {
             OnCreate(context);
         }
-
+        public override bool Checked { get { return _context.Config.IsSnapVertexPoint; } }
         public override void OnCreate(object hook)
         {
             this.m_bitmap = Properties.Resources.icon_snap_vertex;
@@ -50,7 +50,7 @@ namespace Yutai.Plugins.Editor.Commands
                 IPoint point = new Point();
                 point.PutCoords(SketchShareEx.m_pAnchorPoint.X, SketchShareEx.m_pAnchorPoint.Y);
                 point.SpatialReference = _context.FocusMap.SpatialReference;
-                double snapTolerance = _context.Config.SnapEnvironment.SnapTolerance;
+                double snapTolerance = _context.Config.EngineSnapEnvironment.SnapTolerance;
                 IFeature feature;
                 Yutai.ArcGIS.Common.Editor.Editor.GetClosesFeature(_context.FocusMap, point, snapTolerance, out feature);
                 if (feature != null)

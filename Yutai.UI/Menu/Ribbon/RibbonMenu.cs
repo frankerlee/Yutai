@@ -66,6 +66,16 @@ namespace Yutai.UI.Menu.Ribbon
             _menuIndex.SetContextMenu(mainViewMapControlContainer);
         }
 
+        public bool GetContextMenuVisible()
+        {
+            return _menuIndex.GetContextMenuVisible();
+        }
+
+        public void RefreshContextMenu()
+        {
+            _menuIndex.RefreshContextMenu();
+        }
+
         public BarItem FindItem(string key)
         {
             return _menuIndex.FindItem(key);

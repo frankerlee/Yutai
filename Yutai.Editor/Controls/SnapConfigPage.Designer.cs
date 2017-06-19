@@ -38,13 +38,11 @@
             this.chkSnapBoundary = new System.Windows.Forms.CheckBox();
             this.chkSnapTargent = new System.Windows.Forms.CheckBox();
             this.chkSnapIntersectPoint = new System.Windows.Forms.CheckBox();
-            ((System.ComponentModel.ISupportInitialize)(this.configPanelControl1)).BeginInit();
-            this.configPanelControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // configPanelControl1
             // 
-            this.configPanelControl1.BackColor = System.Drawing.Color.White;
+           
             this.configPanelControl1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.configPanelControl1.Controls.Add(this.chkSnapSketch);
             this.configPanelControl1.Controls.Add(this.chkSnapBoundary);
@@ -140,8 +138,6 @@
             this.Controls.Add(this.configPanelControl1);
             this.Name = "SnapConfigPage";
             this.Size = new System.Drawing.Size(385, 253);
-            ((System.ComponentModel.ISupportInitialize)(this.configPanelControl1)).EndInit();
-            this.configPanelControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

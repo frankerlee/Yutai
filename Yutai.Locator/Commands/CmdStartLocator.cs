@@ -9,6 +9,7 @@ using ESRI.ArcGIS.Geometry;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
+using Yutai.Plugins.Locator.Menu;
 using Yutai.Plugins.Locator.Views;
 using Yutai.Plugins.Services;
 using Yutai.Services.Serialization;
@@ -18,6 +19,7 @@ namespace Yutai.Plugins.Locator.Commands
 {
     public class CmdStartLocator : YutaiCommand
     {
+        private DockPanelService _dockService;
         public CmdStartLocator(IAppContext context)
         {
             OnCreate(context);
@@ -29,17 +31,18 @@ namespace Yutai.Plugins.Locator.Commands
         public override void OnClick()
         {
             ISecureContext sContext = _context as ISecureContext;
-            DockPanel dock = _context.DockPanels.GetDockPanel(LocatorDockPanel.DefaultDockName);
-            if (dock == null) return;
+            if (_dockService == null)
+                _dockService = _context.Container.GetInstance<DockPanelService>();
+          
             if (sContext.YutaiProject == null ||sContext.YutaiProject.Locators==null || sContext.YutaiProject.Locators.Count==0 )
             {
                 MessageService.Current.Warn("当前项目没有设置定位器");
 
-                _context.DockPanels.ShowDockPanel(LocatorDockPanel.DefaultDockName,false,false);
+                _dockService.Hide();
             }
             else
             {
-                _context.DockPanels.ShowDockPanel(LocatorDockPanel.DefaultDockName, true,true);
+               _dockService.Show();
             }
         }
 

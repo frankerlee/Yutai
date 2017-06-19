@@ -22,6 +22,28 @@
           <BarItem Key="Editor_Start_Sketch" Visible="true"></BarItem>
           <BarItem Key="Edit_Open_Template" Visible="true"></BarItem>
           <BarItem Key="Editor_Show_Vertex" Visible="true"></BarItem>
+          <BarItem Key="Edit_FeatureReShapeTool" Visible="true"></BarItem>
+          <BarItem Key="Edit_TargetTool" Visible="true"></BarItem>
+          <BarItem Key="Edit_ViewGeometryInfo" Visible="true"></BarItem>
+          <BarItem Key="Edit_FollowAlong" Visible="true"></BarItem>
+          <BarItem Key="Edit_Buffer" Visible="true"></BarItem>
+        </PageGroup>
+        <PageGroup Key="Edit_AdvanceTools" Caption="高级工具" Visible="true" Index="2">
+          <BarItem Key="Edit_ConstructJunction" Visible="true"></BarItem>
+          <BarItem Key="Edit_DeComposeGeometry" Visible="true"></BarItem>
+          <BarItem Key="Edit_ExtendLineEx" Visible="true"></BarItem>
+          <BarItem Key="Edit_TrimLineEx" Visible="true"></BarItem>
+          <BarItem Key="Edit_StretchLine" Visible="true"></BarItem>
+          <BarItem Key="Edit_ComposeGeometry" Visible="true"></BarItem>
+          <BarItem Key="Edit_GeometryGeneralize" Visible="true"></BarItem>
+          <BarItem Key="Edit_GeometrySmooth" Visible="true"></BarItem>
+          <BarItem Key="Edit_ProportionSplit" Visible="true"></BarItem>
+          <BarItem Key="Edit_SplitTool" Visible="true"></BarItem>
+          <BarItem Key="Edit_MirrorToolEx" Visible="true"></BarItem>
+          <BarItem Key="Edit_PointSplitLine" Visible="true"></BarItem>
+          <BarItem Key="Edit_PolygonCutHollow0" Visible="true"></BarItem>
+          <BarItem Key="Edit_PolygonCutByPolygon" Visible="true"></BarItem>
+          <BarItem Key="Edit_ConstructParallel" Visible="true"></BarItem>
         </PageGroup>
       </Page>
     </Pages>

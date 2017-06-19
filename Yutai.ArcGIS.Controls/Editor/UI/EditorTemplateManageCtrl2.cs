@@ -409,6 +409,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.listView1.Items.Clear();
             if (this.m_GroupType == GroupType.GroupByLayer)
             {
+                if (m_list == null) return;
                 foreach (KeyValuePair<IFeatureLayer, List<YTEditTemplate>> pair in m_list)
                 {
                     if (this.IsAdd(pair.Key))

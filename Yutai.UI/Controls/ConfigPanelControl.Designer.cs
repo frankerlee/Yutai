@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
-            this.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
-            this.ResumeLayout(false);
+            //((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            //this.SuspendLayout();
+            //((System.ComponentModel.ISupportInitialize)(this)).EndInit();
+            //this.ResumeLayout(false);
         }
 
         #endregion

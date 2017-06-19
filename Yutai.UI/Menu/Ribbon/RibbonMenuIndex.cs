@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Xml;
 using DevExpress.Utils;
 using DevExpress.XtraBars;
+using DevExpress.XtraBars.InternalItems;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
@@ -31,10 +32,9 @@ namespace Yutai.UI.Menu.Ribbon
 {
     internal class RibbonMenuIndex : IRibbonMenuIndex
     {
-       
         private bool _needsToolTip;
         private RibbonControl _ribbonManager;
-    
+
         private List<YutaiCommand> _commands;
         private List<YutaiCommand> _shapeCommands;
         private string _oldToolName = "";
@@ -48,12 +48,12 @@ namespace Yutai.UI.Menu.Ribbon
         public RibbonMenuIndex(RibbonControl ribbonManager, RibbonStatusBar statusBar)
         {
             _ribbonManager = ribbonManager;
-            _shapeCommands=new List<YutaiCommand>();
-              _commands = new List<YutaiCommand>();
+            _shapeCommands = new List<YutaiCommand>();
+            _commands = new List<YutaiCommand>();
             _statusManager = statusBar;
-            m_pCurrentPopupMenu=new PopupMenu();
+            m_pCurrentPopupMenu = new PopupMenu();
             m_pCurrentPopupMenu.Ribbon = _ribbonManager;
-            m_pSystemPopupMenu=new PopupMenu();
+            m_pSystemPopupMenu = new PopupMenu();
             m_pSystemPopupMenu.Ribbon = _ribbonManager;
         }
 
@@ -222,7 +222,7 @@ namespace Yutai.UI.Menu.Ribbon
                 if (item != null)
                 {
                     ((BarButtonItem) item).Down = true;
-                    
+
                     item.Refresh();
                     _oldToolName = nowToolName;
                 }
@@ -246,11 +246,11 @@ namespace Yutai.UI.Menu.Ribbon
 
         public List<YutaiCommand> GetShapeCommands(esriGeometryType geometryType)
         {
-            if(geometryType!= esriGeometryType.esriGeometryNull)
-            return
-            (from command in _shapeCommands
-                where ((IShapeConstructorTool) command).GeometryType == geometryType
-                select command).ToList();
+            if (geometryType != esriGeometryType.esriGeometryNull)
+                return
+                (from command in _shapeCommands
+                    where ((IShapeConstructorTool) command).GeometryType == geometryType
+                    select command).ToList();
             else
             {
                 return _shapeCommands;
@@ -276,30 +276,62 @@ namespace Yutai.UI.Menu.Ribbon
                 _ribbonManager.SetPopupContextMenu(mapControl, null);
                 return;
             }
-            
-                PopupMenu mPCurrentPopupMenu = this.m_pCurrentPopupMenu;
-                mPCurrentPopupMenu.ClearLinks();
+
+            PopupMenu mPCurrentPopupMenu = this.m_pCurrentPopupMenu;
+            mPCurrentPopupMenu.ClearLinks();
             string[] keys = ((IToolContextMenu) tool).ContextMenuKeys;
-                 item = null;
-               
-               for(int i=0; i<keys.Length;i++)
+            if (keys == null) return;
+            item = null;
+            bool nextGroup = false;
+            for (int i = 0; i < keys.Length; i++)
+            {
+                if (keys[i].Equals('-'))
                 {
-                    item = _ribbonManager.Items[keys[i]];
-                    if (item == null)
-                    {
-                        continue;
-                    }
-                    mPCurrentPopupMenu.AddItem(item);
+                    nextGroup = true;
+                    continue;
                 }
-                if (mPCurrentPopupMenu.ItemLinks.Count <= 0)
+                item = _ribbonManager.Items[keys[i]];
+
+                if (item == null)
                 {
-                    _ribbonManager.SetPopupContextMenu(mapControl, this.m_pSystemPopupMenu);
+                    continue;
                 }
-                else
+                BarItemLink link = mPCurrentPopupMenu.AddItem(item);
+                if (nextGroup)
                 {
+                    link.BeginGroup = true;
+                    nextGroup = false;
+                }
+            }
+            if (mPCurrentPopupMenu.ItemLinks.Count <= 0)
+            {
+                _ribbonManager.SetPopupContextMenu(mapControl, this.m_pSystemPopupMenu);
+            }
+            else
+            {
                 _ribbonManager.SetPopupContextMenu(mapControl, mPCurrentPopupMenu);
-                }
-            
+            }
+        }
+
+        public bool GetContextMenuVisible()
+        {
+            if (this.m_pCurrentPopupMenu == null) return false;
+            return this.m_pCurrentPopupMenu.Visible;
+        }
+
+        public void RefreshContextMenu()
+        {
+          
+
+            PopupMenu mPCurrentPopupMenu = this.m_pCurrentPopupMenu;
+            if (mPCurrentPopupMenu == null) return;
+
+            for (int i = 0; i < mPCurrentPopupMenu.ItemLinks.Count; i++)
+            {
+                YutaiCommand command=mPCurrentPopupMenu.ItemLinks[i].Item.Tag as YutaiCommand;
+                if (command == null) continue;
+                mPCurrentPopupMenu.ItemLinks[i].Item.Enabled = command.Enabled;
+            }
         }
 
 
@@ -400,7 +432,7 @@ namespace Yutai.UI.Menu.Ribbon
                 else if (!string.IsNullOrEmpty(subItemStr))
                 {
                     BarSubItem barItem = _ribbonManager.Items[nodeKey] as BarSubItem;
-
+                    if (barItem == null) return;
                     if (!string.IsNullOrEmpty(subItemStr))
                     {
                         string[] subs = subItemStr.Split(';');
@@ -449,37 +481,46 @@ namespace Yutai.UI.Menu.Ribbon
         private BarItem CreateCommand(YutaiCommand command)
         {
             BarItem item = null;
-            if (command.ItemType == RibbonItemType.Button || command.ItemType == RibbonItemType.Tool)
+            try
             {
-                item = CreateButton(command);
+               
+                if (command.ItemType == RibbonItemType.Button || command.ItemType == RibbonItemType.Tool)
+                {
+                    item = CreateButton(command);
+                }
+                else if (command.ItemType == RibbonItemType.ComboBox)
+                {
+                    item = CreateComboBox(command);
+                }
+                else if (command.ItemType == RibbonItemType.CheckBox)
+                {
+                    item = CreateCheckBox(command);
+                }
+                else if (command.ItemType == RibbonItemType.DropDown)
+                {
+                    item = CreateDropDown(command);
+                }
+                else if (command.ItemType == RibbonItemType.Label)
+                {
+                    item = CreateLabel(command);
+                }
+                // if (!string.IsNullOrEmpty(command.Message))
+                item.ItemClick += FireMessageSetting;
+                if (command.NeedUpdateEvent)
+                {
+                    item.ItemClick += UpdateMenuClick;
+                }
+                item.Enabled = command.Enabled;
+                item.SuperTip = new SuperToolTip();
+                item.SuperTip.Items.AddTitle(item.Caption);
+                item.SuperTip.Items.Add((string) command.Tooltip);
+                return item;
             }
-            else if (command.ItemType == RibbonItemType.ComboBox)
+            catch (Exception ex)
             {
-                item = CreateComboBox(command);
+                return null;
             }
-            else if (command.ItemType == RibbonItemType.CheckBox)
-            {
-                item = CreateCheckBox(command);
-            }
-            else if (command.ItemType == RibbonItemType.DropDown)
-            {
-                item = CreateDropDown(command);
-            }
-            else if (command.ItemType == RibbonItemType.Label)
-            {
-                item = CreateLabel(command);
-            }
-            // if (!string.IsNullOrEmpty(command.Message))
-            item.ItemClick += FireMessageSetting;
-            if (command.NeedUpdateEvent)
-            {
-                item.ItemClick += UpdateMenuClick;
-            }
-            item.Enabled = command.Enabled;
-            item.SuperTip = new SuperToolTip();
-            item.SuperTip.Items.AddTitle(item.Caption);
-            item.SuperTip.Items.Add((string) command.Tooltip);
-            return item;
+            
         }
 
         private BarItem CreateLabel(IRibbonItem item)
@@ -512,6 +553,7 @@ namespace Yutai.UI.Menu.Ribbon
         {
             UpdateMenu();
         }
+
         private void FireMessageSetting(object sender, ItemClickEventArgs e)
         {
             IRibbonItem command = e.Item.Tag as IRibbonItem;
@@ -696,7 +738,7 @@ namespace Yutai.UI.Menu.Ribbon
 
         public IEnumerable<BarItem> ItemsForPlugin(PluginIdentity pluginIdentity)
         {
-           // return from item in _items where item.Item.PluginIdentity == pluginIdentity select item;
+            // return from item in _items where item.Item.PluginIdentity == pluginIdentity select item;
             return null;
         }
 
@@ -735,14 +777,14 @@ namespace Yutai.UI.Menu.Ribbon
                     {
                         item.Enabled = command.Enabled;
                         if (item is BarCheckItem) ((BarCheckItem) item).Checked = command.Checked;
-                       continue;
+                        continue;
                     }
                 }
                 YutaiCommand oneCommand = _commands.Find(c => c.Key == item.Name);
                 if (oneCommand != null)
                 {
                     item.Enabled = oneCommand.Enabled;
-                    if (item is BarCheckItem) ((BarCheckItem)item).Checked = oneCommand.Checked;
+                    if (item is BarCheckItem) ((BarCheckItem) item).Checked = oneCommand.Checked;
                     continue;
                 }
             }

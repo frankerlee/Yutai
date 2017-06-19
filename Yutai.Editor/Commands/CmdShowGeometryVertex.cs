@@ -41,7 +41,10 @@ namespace Yutai.Plugins.Editor.Commands
             base._key = "Editor_Show_Vertex";
             base.m_toolTip = "编辑折点";
             base._itemType = RibbonItemType.Button;
-          
+            DisplayStyleYT = DisplayStyleYT.ImageAndText;
+            base.TextImageRelationYT = TextImageRelationYT.ImageAboveText;
+            base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
+           
         }
 
         public override bool Checked
@@ -77,7 +80,7 @@ namespace Yutai.Plugins.Editor.Commands
         {
             get
             {
-                return "EditTool";
+                return "Edit_TargetTool";
             }
         }
 
@@ -103,7 +106,7 @@ namespace Yutai.Plugins.Editor.Commands
         {
             string name = (itool_0 as ICommand).Name;
             bool flag = false;
-            if (string.Compare(name, "EditTool", true) == 0)
+            if (string.Compare(name, "Edit_TargetTool", true) == 0)
             {
                 flag = true;
             }

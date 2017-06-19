@@ -35,10 +35,20 @@
     <Reference Include="DevExpress.Utils.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
-    <Reference Include="ESRI.ArcGIS.Carto, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+    <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.3DAnalyst, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.ADF, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86" />
+    <Reference Include="ESRI.ArcGIS.Carto, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.Controls, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.DataSourcesFile, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="ESRI.ArcGIS.Display, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
@@ -56,17 +66,17 @@
     <Reference Include="ESRI.ArcGIS.SystemUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="Syncfusion.Grid.Base, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Grid.Windows, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Shared.Base, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Shared.Windows, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Tools.Base, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Grid.Grouping.Windows, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Grid.Windows, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Grouping.Base, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Shared.Base, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Tools.Windows, Version=14.1450.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -77,12 +87,56 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\CmdAddPointInGeometry.cs" />
+    <Compile Include="Commands\CmdBufferTool.cs" />
+    <Compile Include="Commands\CmdComposeGeometry.cs" />
+    <Compile Include="Commands\CmdConstructParallel.cs" />
+    <Compile Include="Commands\CmdCopyFeaturesTool.cs" />
+    <Compile Include="Commands\CmdDeComposeGeometry.cs" />
+    <Compile Include="Commands\CmdEditAttribute.cs" />
+    <Compile Include="Commands\CmdEditCopy.cs" />
+    <Compile Include="Commands\CmdEditPaste.cs" />
+    <Compile Include="Commands\CmdEditTarget.cs" />
+    <Compile Include="Commands\CmdExtendLine.cs" />
+    <Compile Include="Commands\CmdExtendLinesToJunction.cs" />
+    <Compile Include="Commands\CmdFeatureReShapeTool.cs" />
+    <Compile Include="Commands\CmdAbsoluteXYTool.cs" />
+    <Compile Include="Commands\CmdCompletePartTool.cs" />
+    <Compile Include="Commands\CmdCompleteSketchTool.cs" />
+    <Compile Include="Commands\CmdDeleteSketchTool.cs" />
+    <Compile Include="Commands\CmdDeltaXYTool.cs" />
+    <Compile Include="Commands\CmdDirectionLengthTool.cs" />
+    <Compile Include="Commands\CmdFollowAlong.cs" />
+    <Compile Include="Commands\CmdGeometryGeneralize.cs" />
+    <Compile Include="Commands\CmdGeometrySmooth.cs" />
+    <Compile Include="Commands\CmdLengthTool.cs" />
+    <Compile Include="Commands\CmdDirectionTool.cs" />
+    <Compile Include="Commands\CmdMoveFeature.cs" />
+    <Compile Include="Commands\CmdMoveFeatureToPoint.cs" />
+    <Compile Include="Commands\CmdMoveVert.cs" />
+    <Compile Include="Commands\CmdMoveVertToPoint.cs" />
+    <Compile Include="Commands\CmdPointSplitLine.cs" />
+    <Compile Include="Commands\CmdPolygonCutByPolygon.cs" />
+    <Compile Include="Commands\CmdPolygonCutHollow.cs" />
+    <Compile Include="Commands\CmdProportionSplit.cs" />
+    <Compile Include="Commands\CmdRedo.cs" />
+    <Compile Include="Commands\CmdRedoAll.cs" />
     <Compile Include="Commands\CmdReverseLineOrientation.cs" />
+    <Compile Include="Commands\CmdRotateFeature.cs" />
     <Compile Include="Commands\CmdSnapToEndPoint.cs" />
     <Compile Include="Commands\CmdSnapToMidPoint.cs" />
     <Compile Include="Commands\CmdSnapToSegment.cs" />
     <Compile Include="Commands\CmdSnapToVertex.cs" />
-    <Compile Include="Commands\CmdSquareAndFinish.cs" />
+    <Compile Include="Commands\CmdSplitTool.cs" />
+    <Compile Include="Commands\CmdSquareFinishTool.cs" />
+    <Compile Include="Commands\CmdStretchLine.cs" />
+    <Compile Include="Commands\CmdUndo.cs" />
+    <Compile Include="Commands\CmdUndoAll.cs" />
+    <Compile Include="Commands\CmdVerticsEditTool.cs" />
+    <Compile Include="Commands\CmdViewGeometryInfo.cs" />
+    <Compile Include="Commands\CmdZoom2SelectedFeature.cs" />
+    <Compile Include="Commands\CmdMirrorToolEx.cs" />
+    <Compile Include="Commands\SkectchAssist.cs" />
     <Compile Include="Commands\StreamingFlag.cs" />
     <Compile Include="Commands\CmdEditorSave.cs" />
     <Compile Include="Commands\CmdEditorStop.cs" />
@@ -104,6 +158,7 @@
     <Compile Include="Commands\CmdSnapSetting.cs" />
     <Compile Include="Commands\CmdSnapSketch.cs" />
     <Compile Include="Commands\CmdStartSketch.cs" />
+    <Compile Include="Commands\CmdTrimLineEx.cs" />
     <Compile Include="CompositionRoot.cs" />
     <Compile Include="Controls\SnapConfigPage.cs">
       <SubType>UserControl</SubType>
@@ -118,11 +173,20 @@
     <Compile Include="Forms\frmAlongLineProperties.Designer.cs">
       <DependentUpon>frmAlongLineProperties.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmInputValue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmInputValue1.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmLinePointProperties.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmLinePointProperties.Designer.cs">
       <DependentUpon>frmLinePointProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmMaxAllowableOffset.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmSetUndoStep.cs">
       <SubType>Form</SubType>
@@ -130,6 +194,11 @@
     <Compile Include="Forms\frmStaticByGeometry.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\frmTrackSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu\AttributeEditDockPanelService.cs" />
+    <Compile Include="Menu\GeometryInfoDockPanelService.cs" />
     <Compile Include="Menu\TemplateDockPanelService.cs" />
     <Compile Include="Menu\MenuGenerator.cs" />
     <Compile Include="Menu\YutaiCommands.cs" />
@@ -145,6 +214,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\AttributeEditCommand.cs" />
+    <Compile Include="Views\AttributeEditPresenter.cs" />
+    <Compile Include="Views\AttributeEditView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\AttributeEditView.Designer.cs">
+      <DependentUpon>AttributeEditView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\EditTemplateCommand.cs" />
     <Compile Include="Views\EditTemplatePresenter.cs" />
     <Compile Include="Views\EditTemplateView.cs">
@@ -153,40 +230,58 @@
     <Compile Include="Views\EditTemplateView.Designer.cs">
       <DependentUpon>EditTemplateView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\GeometryInfoCommand.cs" />
+    <Compile Include="Views\GeometryInfoPresenter.cs" />
+    <Compile Include="Views\GeometryInfoView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\GeometryInfoView.Designer.cs">
+      <DependentUpon>GeometryInfoView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IAttributeEditView.cs" />
     <Compile Include="Views\IEditTemplateView.cs" />
+    <Compile Include="Views\IGeometryInfoView.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Yutai.Api\Yutai.Api.csproj">
       <Project>{c0a8949e-d665-4044-8950-1a71c9b2d081}</Project>
       <Name>Yutai.Api</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.ArcGIS.Catalog\Yutai.ArcGIS.Catalog.csproj">
       <Project>{A71076F2-B2ED-4522-8DBF-BCA1689EB637}</Project>
       <Name>Yutai.ArcGIS.Catalog</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.ArcGIS.Common\Yutai.ArcGIS.Common.csproj">
       <Project>{1938b3f8-8ede-48f7-9594-eeb1f126e622}</Project>
       <Name>Yutai.ArcGIS.Common</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.ArcGIS.Controls\Yutai.ArcGIS.Controls.csproj">
       <Project>{0E17B019-EE36-46B7-8B96-C0A3CA666430}</Project>
       <Name>Yutai.ArcGIS.Controls</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.Plugins\Yutai.Plugins.csproj">
       <Project>{800f2ee4-47ab-4cd4-934d-a64980d98a23}</Project>
       <Name>Yutai.Plugins</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.Shared\Yutai.Shared.csproj">
       <Project>{4a9b3243-2b0a-4e87-9b23-71a58c1f318d}</Project>
       <Name>Yutai.Shared</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.UI\Yutai.UI.csproj">
       <Project>{9a73b99a-0d59-4b55-b35f-721d321942af}</Project>
       <Name>Yutai.UI</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Yutai\Yutai.csproj">
       <Project>{23F812D9-D4AA-44AA-A721-AD0948099A95}</Project>
       <Name>Yutai</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -196,14 +291,26 @@
     <EmbeddedResource Include="Forms\frmAlongLineProperties.resx">
       <DependentUpon>frmAlongLineProperties.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmInputValue.resx">
+      <DependentUpon>frmInputValue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmInputValue1.resx">
+      <DependentUpon>frmInputValue1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmLinePointProperties.resx">
       <DependentUpon>frmLinePointProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMaxAllowableOffset.resx">
+      <DependentUpon>frmMaxAllowableOffset.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSetUndoStep.resx">
       <DependentUpon>frmSetUndoStep.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmStaticByGeometry.resx">
       <DependentUpon>frmStaticByGeometry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmTrackSet.resx">
+      <DependentUpon>frmTrackSet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -213,8 +320,14 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\AttributeEditView.resx">
+      <DependentUpon>AttributeEditView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\EditTemplateView.resx">
       <DependentUpon>EditTemplateView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\GeometryInfoView.resx">
+      <DependentUpon>GeometryInfoView.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -272,9 +385,54 @@
     <None Include="Resources\icon_along_line.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\jlk.pluge.cursor.deletevertex.cur" />
+    <None Include="Resources\JLK.Pluge.Bitmap.ConstructParallel.bmp" />
+    <None Include="Resources\JLK.Pluge.Bitmaps.bmpTrim.bmp" />
+    <None Include="Resources\JLK.Pluge.Bitmap.bmpExtendLine.bmp" />
+    <None Include="Resources\JLK.Pluge.Bitmap.SplitTool.bmp" />
+    <None Include="Resources\JLK.Pluge.Bitmap.Proportion.bmp" />
+    <None Include="Resources\JLK.Pluge.Bitmap.GeometrySmooth.bmp" />
+    <None Include="Resources\JLK.Pluge.Bitmap.GeometryGeneralize.bmp" />
+    <None Include="Resources\JLK.Pluge.Bitmap.DeComposeGeometry.bmp" />
+    <None Include="Resources\JLK.Pluge.Bitmap.ConstructJunction.bmp" />
+    <None Include="Resources\JLK.Pluge.Bitmap.CopyFeaturesTool.bmp" />
+    <None Include="Resources\icon_sketch_squarefinish.png" />
+    <None Include="Resources\icon_sketch_lengthdirection.png" />
+    <None Include="Resources\icon_sketch_length.png" />
+    <None Include="Resources\icon_sketch_finish.png" />
+    <None Include="Resources\icon_sketch_direction.png" />
+    <None Include="Resources\icon_sketch_delta.png" />
+    <None Include="Resources\icon_sketch_delete.png" />
+    <None Include="Resources\icon_sketch_complete.png" />
+    <None Include="Resources\deletevertex.cur" />
     <None Include="Resources\icon_pencil.png" />
     <EmbeddedResource Include="Resources\Cursor\DeleteVertex.cur" />
+    <None Include="Resources\icon_sketch_absolutexy.png" />
+    <None Include="Resources\icon_edit_reshape.bmp" />
+    <None Include="Resources\icon_edit_target.png" />
+    <EmbeddedResource Include="Resources\Cursor\Edit.cur" />
+    <EmbeddedResource Include="Resources\Cursor\CopyFeaturesTool.cur" />
+    <None Include="Resources\icon_edit_copy.png" />
+    <None Include="Resources\icon_edit_paste.png" />
+    <None Include="Resources\icon_edit_attribute.png" />
+    <None Include="Resources\icon_edit_clearselection.png" />
+    <None Include="Resources\icon_edit_delete.png" />
+    <None Include="Resources\icon_edit_zoom2selection.png" />
+    <None Include="Resources\icon_edit_redo.png" />
+    <None Include="Resources\icon_edit_redoall.png" />
+    <None Include="Resources\icon_edit_undo.png" />
+    <None Include="Resources\icon_edit_undoall.png" />
+    <None Include="Resources\icon_follow_along.png" />
+    <None Include="Resources\icon_edit_track.png" />
+    <None Include="Resources\icon_edit_buffer.png" />
+    <EmbeddedResource Include="Resources\Cursor\RotateFeature.cur" />
+    <EmbeddedResource Include="Resources\Cursor\VertexEdit.cur" />
+    <EmbeddedResource Include="Resources\Cursor\ExtendLine.cur" />
+    <None Include="Resources\icon_edit_composegeometry.png" />
+    <None Include="Resources\icon_edit_rotate.png" />
+    <None Include="Resources\icon_edit_strecthline.png" />
+    <None Include="Resources\icon_edit_cutpolygon.png" />
+    <None Include="Resources\icon_edit_cuthole.png" />
+    <None Include="Resources\icon_edit_union.png" />
     <Content Include="Resources\icon_sketch_circle.bmp" />
     <None Include="Resources\icon_sketch_polyline.png" />
     <None Include="Resources\icon_sketch_rectangle.png" />

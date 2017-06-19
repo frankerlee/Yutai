@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            this.gradientPanel1 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblDescription = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelContent = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.gradientPanel1)).BeginInit();
             this.gradientPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -43,7 +42,6 @@
             // 
             this.gradientPanel1.AutoScroll = true;
             this.gradientPanel1.BackColor = System.Drawing.Color.White;
-            this.gradientPanel1.BorderColor = System.Drawing.Color.DarkGray;
             this.gradientPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.gradientPanel1.Controls.Add(this.panel1);
             this.gradientPanel1.Controls.Add(this.panelContent);
@@ -99,7 +97,6 @@
             this.Controls.Add(this.gradientPanel1);
             this.Name = "ConfigPageControl";
             this.Size = new System.Drawing.Size(503, 255);
-            ((System.ComponentModel.ISupportInitialize)(this.gradientPanel1)).EndInit();
             this.gradientPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -109,7 +106,7 @@
 
         #endregion
 
-        private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel1;
+        private System.Windows.Forms.Panel gradientPanel1;
         private System.Windows.Forms.Panel panelContent;
         private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.PictureBox pictureBox1;

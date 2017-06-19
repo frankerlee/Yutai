@@ -11,7 +11,7 @@ namespace Yutai.Plugins.Editor.Commands
         {
             OnCreate(context);
         }
-
+        
         public override void OnCreate(object hook)
         {
             this.m_bitmap = Properties.Resources.icon_snap_intersect;

@@ -630,7 +630,7 @@ namespace Yutai.Plugins.Editor.Commands
                 }
                 else if (keyCode == 79) //O
                 {
-                    CmdSquareAndFinish squareAndFinishCommand = new CmdSquareAndFinish(_context);
+                    CmdSquareFinishTool squareAndFinishCommand = new CmdSquareFinishTool(_context);
                     if (squareAndFinishCommand.Enabled)
                     {
                         squareAndFinishCommand.OnClick();
@@ -841,7 +841,7 @@ namespace Yutai.Plugins.Editor.Commands
             IPoint mapPoint = focusMap.ScreenDisplay.DisplayTransformation.ToMapPoint(X, Y);
             if (SketchToolAssist.CurrentTask != null)
             {
-                SketchShareEx.SketchMouseMove(mapPoint, _context.FocusMap, _context.Config.SnapEnvironment);
+                SketchShareEx.SketchMouseMove(mapPoint, _context.FocusMap, _context.Config.EngineSnapEnvironment);
             }
             else if (this.bool_1)
             {
@@ -922,7 +922,7 @@ namespace Yutai.Plugins.Editor.Commands
                     y = SketchShareEx.LastPoint.Y + y;
                     mapPoint.PutCoords(x, y);
                 }
-                string str = SketchShareEx.SketchMouseMove(mapPoint, _context.FocusMap, _context.Config.SnapEnvironment);
+                string str = SketchShareEx.SketchMouseMove(mapPoint, _context.FocusMap, _context.Config.EngineSnapEnvironment);
                 if (this.bool_0)
                 {
                     _context.SetStatus(str);
@@ -966,14 +966,12 @@ namespace Yutai.Plugins.Editor.Commands
             {
                 string[] keys = new string[]
                 {
-                    "Edit_Snap_SnapSegment", "Edit_Snap_SnapVertex", "Edit_Snap_SnapMidPoint", "Edit_Snap_SnapEndPoint"
+                    "Edit_Snap_SnapSegment", "Edit_Snap_SnapVertex", "Edit_Snap_SnapMidPoint", "Edit_Snap_SnapEndPoint",
+                    "-","Edit_DirectionTool","Edit_LengthTool","Edit_DirectionLengthTool",
+                    "Edit_AbsoluteXYTool","Edit_DeltaXYTool","Edit_CompletePartTool",
+                    "Edit_SquareFinishTool","Edit_DeleteSketchTool","Edit_CompleteSketchTool"
                 };
-                //string[] keys = new string[]
-                //{
-                //    "SnapToSegment", "SnapToVertex", "SnapToMidPoint", "SnapToEndPoint", "-", "_DirectionTool",
-                //    "_LengthTool", "_DirectionLengthTool", "_AbsoluteXYTool", "_DeltaXYTool", "-", "CompletePartTool",
-                //    "SquareAndFinishCommand", "DeleteSketchCommand", "CompleteSketchCommand"
-                //};
+             
                 return keys;
             }
         }

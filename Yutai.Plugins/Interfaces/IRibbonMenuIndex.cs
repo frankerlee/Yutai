@@ -30,5 +30,8 @@ namespace Yutai.Plugins.Interfaces
         List<YutaiCommand> GetShapeCommands(esriGeometryType geometryType);
 
         void SetContextMenu(Control mainViewMapControlContainer);
+
+        bool GetContextMenuVisible();
+        void RefreshContextMenu();
     }
 }

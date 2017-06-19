@@ -8,7 +8,11 @@ namespace Yutai.Plugins.Editor
         public static void Compose(IApplicationContainer container)
         {
             container.RegisterService<IEditTemplateView, EditTemplateView>()
-                .RegisterSingleton<EditTemplatePresenter>();
+                .RegisterService<IGeometryInfoView, GeometryInfoView>()
+                 .RegisterService<IAttributeEditView, AttributeEditView>()
+                .RegisterSingleton<EditTemplatePresenter>()
+                 .RegisterSingleton<GeometryInfoPresenter>()
+                 .RegisterSingleton<AttributeEditPresenter>();
         }
     }
 }

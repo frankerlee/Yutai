@@ -92,7 +92,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 					if (string_0 == "ESC")
 					{
 						this._appContext.ShowCommandString("取消延长线操作", CommandTipsType.CTTActiveEnd);
-					    this._appContext.SetCurrentTool(null);
+					    this._appContext.ClearCurrentTool();
 						this.bool_0 = true;
 						flag = true;
 						return flag;

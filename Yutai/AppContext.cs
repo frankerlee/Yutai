@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
@@ -73,6 +74,15 @@ namespace Yutai
         }
 
         public IBroadcasterService Broadcaster { get; private set; }
+        public void RefreshContextMenu()
+        {
+            RibbonMenu.RefreshContextMenu();
+        }
+
+        public void ClearCurrentTool()
+        {
+            _mainView.MapControl.CurrentTool = null;
+        }
 
         public AppConfig Config
         {
@@ -142,6 +152,29 @@ namespace Yutai
                 return true;
             }
             return false;
+        }
+
+        public bool SetCurrentTool(string toolName)
+        {
+            ITool oldTool = _mainView.MapControl.CurrentTool;
+            _oldToolName = oldTool == null ? string.Empty : ((YutaiTool)oldTool).Name;
+           
+            BarItem item=this.RibbonMenu.SubItems.FindItem(toolName);
+            if (item != null)
+            {
+                _mainView.MapControl.CurrentTool = ((ITool) item.Tag);
+                RibbonMenu.ChangeCurrentTool(_oldToolName, toolName);
+            }
+
+
+            return true;
+        }
+
+        public bool UpdateContextMenu()
+        {
+            if (RibbonMenu.GetContextMenuVisible()) return false;
+            RibbonMenu.SetContextMenu(_mainView.MapControlContainer);
+            return true;
         }
 
         public string CurrentToolName { get; internal set; }

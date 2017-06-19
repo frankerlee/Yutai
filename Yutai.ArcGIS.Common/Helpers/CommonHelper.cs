@@ -1626,16 +1626,16 @@ namespace Yutai.ArcGIS.Common.Helpers
             }
         }
 
-        public static void Zoom2Features(IActiveView iactiveView_0, IArray iarray_0)
+        public static void Zoom2Features(IActiveView pActiveView, IArray pArray)
         {
             try
             {
                 IEnvelope envelope = null;
                 IEnvelope inEnvelope = null;
-                double dx = ConvertPixelsToMapUnits(iactiveView_0, 5.0);
-                for (int i = 0; i < iarray_0.Count; i++)
+                double dx = ConvertPixelsToMapUnits(pActiveView, 5.0);
+                for (int i = 0; i < pArray.Count; i++)
                 {
-                    IFeature feature = iarray_0.get_Element(i) as IFeature;
+                    IFeature feature = pArray.get_Element(i) as IFeature;
                     if (i == 0)
                     {
                         envelope = feature.Shape.Envelope;
@@ -1656,8 +1656,8 @@ namespace Yutai.ArcGIS.Common.Helpers
                 }
                 if (envelope != null)
                 {
-                    iactiveView_0.Extent = envelope;
-                    iactiveView_0.Refresh();
+                    pActiveView.Extent = envelope;
+                    pActiveView.Refresh();
                 }
             }
             catch (Exception exception)
@@ -1666,17 +1666,17 @@ namespace Yutai.ArcGIS.Common.Helpers
             }
         }
 
-        public static void Zoom2SelectedFeature(IScene iscene_0)
+        public static void Zoom2SelectedFeature(IScene pScene)
         {
-            if (iscene_0.SelectionCount >= 1)
+            if (pScene.SelectionCount >= 1)
             {
                 ISceneGraph sceneGraph;
                 IFeature feature = null;
-                IEnumFeature featureSelection = iscene_0.FeatureSelection as IEnumFeature;
+                IEnumFeature featureSelection = pScene.FeatureSelection as IEnumFeature;
                 featureSelection.Reset();
                 IEnvelope pExtent = null;
                 double dx = 5.0;
-                if (iscene_0.SelectionCount == 1)
+                if (pScene.SelectionCount == 1)
                 {
                     feature = featureSelection.Next();
                     pExtent = feature.Shape.Envelope;
@@ -1684,18 +1684,18 @@ namespace Yutai.ArcGIS.Common.Helpers
                     {
                         pExtent.Expand(dx, dx, false);
                     }
-                    if (iscene_0 is IGlobe)
+                    if (pScene is IGlobe)
                     {
-                        ICamera camera = (iscene_0 as IGlobe).GlobeDisplay.ActiveViewer.Camera;
+                        ICamera camera = (pScene as IGlobe).GlobeDisplay.ActiveViewer.Camera;
                         double num1 = (pExtent.XMin + pExtent.XMax)/2.0;
                         double num2 = (pExtent.YMin + pExtent.YMax)/2.0;
                         double num3 = (pExtent.ZMin + pExtent.ZMax)/2.0;
                         camera.ZoomToRect(pExtent);
-                        (iscene_0 as IGlobe).GlobeDisplay.RefreshViewers();
+                        (pScene as IGlobe).GlobeDisplay.RefreshViewers();
                     }
                     else
                     {
-                        sceneGraph = iscene_0.SceneGraph;
+                        sceneGraph = pScene.SceneGraph;
                         sceneGraph.ActiveViewer.Camera.SetDefaultsMBB(pExtent);
                         sceneGraph.RefreshViewers();
                     }
@@ -1703,14 +1703,14 @@ namespace Yutai.ArcGIS.Common.Helpers
                 else
                 {
                     pExtent = GetSelectFeatureEnvelop(featureSelection);
-                    if (iscene_0 is IGlobe)
+                    if (pScene is IGlobe)
                     {
-                        (iscene_0 as IGlobe).GlobeDisplay.ActiveViewer.Camera.ZoomToRect(pExtent);
-                        (iscene_0 as IGlobe).GlobeDisplay.ActiveViewer.Redraw(true);
+                        (pScene as IGlobe).GlobeDisplay.ActiveViewer.Camera.ZoomToRect(pExtent);
+                        (pScene as IGlobe).GlobeDisplay.ActiveViewer.Redraw(true);
                     }
                     else
                     {
-                        sceneGraph = iscene_0.SceneGraph;
+                        sceneGraph = pScene.SceneGraph;
                         sceneGraph.ActiveViewer.Camera.SetDefaultsMBB(pExtent);
                         sceneGraph.RefreshViewers();
                     }
@@ -1718,11 +1718,11 @@ namespace Yutai.ArcGIS.Common.Helpers
             }
         }
 
-        public static void Zoom2SelectedFeature(IActiveView iactiveView_0)
+        public static void Zoom2SelectedFeature(IActiveView pActiveView)
         {
             try
             {
-                IMap focusMap = iactiveView_0.FocusMap;
+                IMap focusMap = pActiveView.FocusMap;
                 if (focusMap != null)
                 {
                     IFeature feature = null;
@@ -1742,14 +1742,14 @@ namespace Yutai.ArcGIS.Common.Helpers
                                 {
                                     (focusMap as IActiveView).Extent = feature.Shape.Envelope;
                                 }
-                                iactiveView_0.Refresh();
+                                pActiveView.Refresh();
                             }
                         }
                         else
                         {
                             IEnvelope selectFeatureEnvelop = GetSelectFeatureEnvelop(featureSelection);
                             (focusMap as IActiveView).Extent = selectFeatureEnvelop;
-                            iactiveView_0.Refresh();
+                            pActiveView.Refresh();
                         }
                     }
                 }
@@ -1760,21 +1760,21 @@ namespace Yutai.ArcGIS.Common.Helpers
             }
         }
 
-        public static void Zoom2SelectedFeature(IScene iscene_0, IFeatureLayer ifeatureLayer_0)
+        public static void Zoom2SelectedFeature(IScene pScene, IFeatureLayer pFeatureLayer)
         {
             try
             {
-                IEnvelope selectFeatureEnvelop = GetSelectFeatureEnvelop(ifeatureLayer_0);
+                IEnvelope selectFeatureEnvelop = GetSelectFeatureEnvelop(pFeatureLayer);
                 if (selectFeatureEnvelop != null)
                 {
-                    if (iscene_0 is IGlobe)
+                    if (pScene is IGlobe)
                     {
-                        (iscene_0 as IGlobe).GlobeDisplay.ActiveViewer.Camera.ZoomToRect(selectFeatureEnvelop);
-                        (iscene_0 as IGlobe).GlobeDisplay.ActiveViewer.Redraw(true);
+                        (pScene as IGlobe).GlobeDisplay.ActiveViewer.Camera.ZoomToRect(selectFeatureEnvelop);
+                        (pScene as IGlobe).GlobeDisplay.ActiveViewer.Redraw(true);
                     }
                     else
                     {
-                        ISceneGraph sceneGraph = iscene_0.SceneGraph;
+                        ISceneGraph sceneGraph = pScene.SceneGraph;
                         sceneGraph.ActiveViewer.Camera.SetDefaultsMBB(selectFeatureEnvelop);
                         sceneGraph.RefreshViewers();
                     }
@@ -1786,18 +1786,18 @@ namespace Yutai.ArcGIS.Common.Helpers
             }
         }
 
-        public static void Zoom2SelectedFeature(IActiveView iactiveView_0, IFeatureLayer ifeatureLayer_0)
+        public static void Zoom2SelectedFeature(IActiveView pActiveView, IFeatureLayer pFeatureLayer)
         {
             try
             {
                 double dx = 5.0;
-                IEnvelope selectFeatureEnvelop = GetSelectFeatureEnvelop(ifeatureLayer_0);
+                IEnvelope selectFeatureEnvelop = GetSelectFeatureEnvelop(pFeatureLayer);
                 if (selectFeatureEnvelop != null)
                 {
                     selectFeatureEnvelop.Expand(dx, dx, false);
-                    iactiveView_0.Extent = selectFeatureEnvelop;
+                    pActiveView.Extent = selectFeatureEnvelop;
                 }
-                iactiveView_0.Refresh();
+                pActiveView.Refresh();
             }
             catch (Exception exception)
             {

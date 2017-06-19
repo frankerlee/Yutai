@@ -47,6 +47,8 @@ namespace Yutai.Plugins.Interfaces
         bool Initialized { get; }
 
         bool SetCurrentTool(YutaiTool tool);
+        bool SetCurrentTool(string toolName);
+        bool UpdateContextMenu();
 
         string CurrentToolName { get; }
 
@@ -89,6 +91,9 @@ namespace Yutai.Plugins.Interfaces
 
         void ShowSplashMessage(string msg);
         IBroadcasterService Broadcaster { get; }
+        void RefreshContextMenu();
+
+        void ClearCurrentTool();
     }
 
     public interface ISplashView

@@ -1,21 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
-using Yutai.ArcGIS.Common;
 using Yutai.ArcGIS.Common.Display;
 using Yutai.ArcGIS.Common.Editor.Helpers;
 using Yutai.Plugins.Concrete;
+using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Plugins.Editor.Commands
 {
-    public class CmdSquareAndFinish : YutaiCommand
+    public class CmdSquareFinishTool : YutaiCommand
     {
+        public CmdSquareFinishTool(IAppContext context)
+        {
+            OnCreate(context);
+        }
+
+        public override void OnCreate(object hook)
+        {
+            this.m_bitmap = Properties.Resources.icon_sketch_squarefinish;
+            this.m_caption = "直角结束";
+            this.m_category = "Edit";
+            this.m_message = "直角结束";
+            this.m_name = "Edit_SquareFinishTool";
+            this._key = "Edit_SquareFinishTool";
+            this.m_toolTip = "直角结束";
+            _context = hook as IAppContext;
+            DisplayStyleYT = DisplayStyleYT.Image;
+            base.TextImageRelationYT = TextImageRelationYT.ImageBeforeText;
+            base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
+            _itemType = RibbonItemType.Button;
+        }
+
         public override bool Enabled
         {
             get
@@ -33,7 +49,7 @@ namespace Yutai.Plugins.Editor.Commands
                 {
                     result = false;
                 }
-                else if (Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer == null)
+                else if (Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate==null || Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer == null)
                 {
                     result = false;
                 }
@@ -53,25 +69,20 @@ namespace Yutai.Plugins.Editor.Commands
             }
         }
 
-        public CmdSquareAndFinish(IAppContext context)
-        {
-           OnCreate(context);
-        }
 
-        public override void OnCreate(object hook)
+
+
+        public override void OnClick(object sender, EventArgs args)
         {
-            _context = hook as IAppContext;
-            this.m_name = "Editor_SquareAndFinish";
-            this._key = "Editor_SquareAndFinish";
-            base.m_category = "Editor";
-            this.m_caption = "直角结束";
-            this.m_toolTip = "直角结束";
-            this.m_category = "编辑器";
-            this.m_message = "直角结束";
-           
+            OnClick();
         }
 
         public override void OnClick()
+        {
+            EndSketch();
+        }
+
+        public void EndSketch()
         {
             ISpatialReference spatialReference = (Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer as IGeoDataset).SpatialReference;
             IGeometry geometry = null;
@@ -85,16 +96,12 @@ namespace Yutai.Plugins.Editor.Commands
             }
             if (geometry != null)
             {
-                SketchShareEx.EndSketch(geometry, _context.FocusMap as IActiveView, Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
+                SketchShareEx.EndSketch(geometry, _context.ActiveView, Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
                 SketchToolAssist.Feedback = null;
                 SketchShareEx.PointCount = 0;
                 SketchShareEx.m_bInUse = false;
             }
         }
 
-        public override void OnClick(object sender, EventArgs args)
-        {
-          OnClick();
-        }
     }
 }

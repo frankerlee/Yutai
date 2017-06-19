@@ -7,14 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Syncfusion.Drawing;
-using Syncfusion.Windows.Forms.Tools;
+
 
 namespace Yutai.UI.Controls
 {
-    public partial class ConfigPanelControl : GradientPanel
+    public partial class ConfigPanelControl : Panel
     {
-        private GradientLabel _gradientLabel1;
+        private Label _gradientLabel1;
         public ConfigPanelControl()
         {
             InitializeComponent();
@@ -32,13 +31,9 @@ namespace Yutai.UI.Controls
 
         private void AddLabel()
         {
-            _gradientLabel1 = new GradientLabel
+            _gradientLabel1 = new Label
             {
                 Dock = DockStyle.Top,
-                BackgroundColor = new BrushInfo(GradientStyle.None, Color.WhiteSmoke, Color.WhiteSmoke),
-                BorderAppearance = BorderStyle.None,
-                BorderSides = Border3DSide.Bottom,
-                BorderColor = Color.Gainsboro,
                 Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 204),
                 ForeColor = SystemColors.ControlDarkDark,
                 TextAlign = ContentAlignment.MiddleCenter

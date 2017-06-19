@@ -121,8 +121,74 @@
   <data name="icon_along_line" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_along_line.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icon_edit_attribute" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_edit_attribute.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_edit_buffer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_edit_buffer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_edit_clearselection" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_edit_clearselection.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_edit_composegeometry" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_edit_composegeometry.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_edit_constructparallel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\JLK.Pluge.Bitmap.ConstructParallel.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_edit_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_edit_copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_edit_copyfeatures" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\JLK.Pluge.Bitmap.CopyFeaturesTool.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_edit_cuthole" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_edit_cuthole.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_edit_cutpolygon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_edit_cutpolygon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_edit_decomposegeometry" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\JLK.Pluge.Bitmap.DeComposeGeometry.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_edit_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_edit_delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_edit_extendjunction" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\JLK.Pluge.Bitmap.ConstructJunction.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_edit_extendline" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\JLK.Pluge.Bitmap.bmpExtendLine.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_edit_geometrygeneralize" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\JLK.Pluge.Bitmap.GeometryGeneralize.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_edit_geometrysmooth" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\JLK.Pluge.Bitmap.GeometrySmooth.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_edit_paste" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_edit_paste.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_edit_proportion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\JLK.Pluge.Bitmap.Proportion.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_edit_redo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_edit_redo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_edit_redoall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_edit_redoall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_edit_reshape" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_edit_reshape.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_edit_rotate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_edit_rotate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icon_edit_save" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_edit_save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_edit_splittool" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\JLK.Pluge.Bitmap.SplitTool.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icon_edit_start" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_edit_start.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -130,14 +196,65 @@
   <data name="icon_edit_stop" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_edit_stop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icon_edit_strecthline" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_edit_strecthline.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_edit_target" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_edit_target.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_edit_track" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_edit_track.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_edit_trimline" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\JLK.Pluge.Bitmaps.bmpTrim.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_edit_undo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_edit_undo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_edit_undoall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_edit_undoall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_edit_union" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_edit_union.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_edit_zoom2selection" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_edit_zoom2selection.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_follow_along" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_follow_along.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icon_pencil" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_pencil.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_sketch_absolutexy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_sketch_absolutexy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icon_sketch_circle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_sketch_circle.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icon_sketch_complete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_sketch_complete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_sketch_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_sketch_delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_sketch_delta" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_sketch_delta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_sketch_direction" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_sketch_direction.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icon_sketch_ellipse" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_sketch_ellipse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_sketch_finish" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_sketch_finish.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_sketch_length" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_sketch_length.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_sketch_lengthdirection" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_sketch_lengthdirection.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icon_sketch_line2p" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_sketch_line2p.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -153,6 +270,9 @@
   </data>
   <data name="icon_sketch_rectangle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_sketch_rectangle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_sketch_squarefinish" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_sketch_squarefinish.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icon_snap" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_snap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

@@ -30,5 +30,8 @@ namespace Yutai.Plugins.Interfaces
 
 
         void SetContextMenu(Control mainViewMapControlContainer);
+
+        bool GetContextMenuVisible();
+        void RefreshContextMenu();
     }
 }

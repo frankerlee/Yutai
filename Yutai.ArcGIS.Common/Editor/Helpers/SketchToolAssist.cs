@@ -13,6 +13,7 @@ using Yutai.ArcGIS.Common.Helpers;
 using Yutai.ArcGIS.Common.Symbol;
 using Yutai.Plugins.Interfaces;
 using Yutai.Shared;
+using ITask = Yutai.ArcGIS.Common.BaseClasses.ITask;
 
 namespace Yutai.ArcGIS.Common.Editor.Helpers
 {

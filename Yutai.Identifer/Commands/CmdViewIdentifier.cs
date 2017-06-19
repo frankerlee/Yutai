@@ -10,6 +10,7 @@ using ESRI.ArcGIS.Geometry;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Events;
+using Yutai.Plugins.Identifer.Menu;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Plugins.Identifer.Commands
@@ -23,6 +24,7 @@ namespace Yutai.Plugins.Identifer.Commands
         private IdentifierPlugin _plugin;
         private INewEnvelopeFeedback _envelopeFeedback;
         private bool _inIdentify;
+        private DockPanelService _dockService;
 
         public CmdViewIdentifier(IAppContext context,IdentifierPlugin plugin)
         {
@@ -36,6 +38,14 @@ namespace Yutai.Plugins.Identifer.Commands
             _inIdentify = false;
             _plugin.FireStartMapIdentify(null);
             _context.SetCurrentTool(this);
+
+            if (_dockService == null)
+                _dockService = _context.Container.GetInstance<DockPanelService>();
+            if (_dockService.Visible == false)
+            {
+                _dockService.Show();
+                return;
+            }
 
         }
 

@@ -21,14 +21,13 @@ using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Common.Editor.Helpers
 {
-	[LicenseProvider(typeof(AELicenseProviderEx))]
 	public class EditTools
 	{
 		private static HitType m_HitType;
 
 		internal static IPoint m_CurrentPoint;
 
-		private System.Windows.Forms.Cursor cursor_0 = null;
+		private System.Windows.Forms.Cursor m_Cursor = null;
 
 		internal static int m_PartIndex;
 
@@ -36,13 +35,13 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 
 		internal static IFeature m_pEditFeature;
 
-		private IActiveViewEvents_Event iactiveViewEvents_Event_0 = null;
+		private IActiveViewEvents_Event m_ActiveViewEvents;
 
 		private bool bool_0 = true;
 
 		private IList ilist_0 = new ArrayList();
 
-		private IGeometry igeometry_0 = null;
+		private IGeometry m_Geometry = null;
 
 		private string string_0 = "";
 
@@ -56,7 +55,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 
 		private IPoint ipoint_1;
 
-		private IDisplayFeedback idisplayFeedback_0;
+		private IDisplayFeedback m_DisplayFeedback;
 
 		private bool bool_2 = false;
 
@@ -66,19 +65,19 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 
 		private IPoint ipoint_3;
 
-		private ISymbol isymbol_0;
+		private ISymbol m_Symbol;
 
-		private ISymbol isymbol_1 = null;
+		private ISymbol m_Symbol1 = null;
 
 		private bool bool_4;
 
-		private IAnchorPoint ianchorPoint_0;
+		private IAnchorPoint m_AnchorPoint;
 
-		private ISimpleMarkerSymbol isimpleMarkerSymbol_0 = new SimpleMarkerSymbol();
+		private ISimpleMarkerSymbol m_SimpleMarkerSymbol = new SimpleMarkerSymbol();
 
-		private INewEnvelopeFeedback inewEnvelopeFeedback_0;
+		private INewEnvelopeFeedback m_NewEnvelopeFeedback;
 
-		private IEnvelope ienvelope_0;
+		private IEnvelope m_Envelope;
 
 		private bool bool_5;
 
@@ -92,7 +91,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 
 		private int int_0 = -1;
 
-		private IEnumFeature ienumFeature_0 = null;
+		private IEnumFeature m_EnumFeature = null;
 
 		private int int_1 = 0;
 
@@ -102,14 +101,15 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 
 		private IPoint ipoint_4;
 
-		private IPopuMenuWrap ipopuMenuWrap_0 = null;
+		private IPopuMenuWrap m_PopuMenuWrap = null;
 
-		private HitType hitType_0 = HitType.HitNode;
+		private HitType p_HitType = HitType.HitNode;
 
 		private bool bool_12 = false;
 
 		private static IPoint m_SelectionSetAnchorPoint;
 
+	    private string[] _contextMenuKeys;
 		public static IPoint CurrentPosition
 		{
 			get
@@ -122,7 +122,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 		{
 			get
 			{
-				return this.cursor_0;
+				return this.m_Cursor;
 			}
 		}
 
@@ -143,6 +143,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 			get
 			{
 				bool flag;
+			    if (_appContext == null) return false;
 				if (this._appContext.MapControl.Map == null)
 				{
 					flag = false;
@@ -214,7 +215,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 		{
 			set
 			{
-				this.ipopuMenuWrap_0 = value;
+				this.m_PopuMenuWrap = value;
 			}
 		}
 
@@ -235,61 +236,67 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 			EditTools.old_acctor_mc();
 		}
 
-		public EditTools()
+		public EditTools(IAppContext context)
 		{
+		    _appContext = context;
 			this.iset_0 = new Set();
-			this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.Edit.cur"));
-			this.isymbol_1 = new SimpleMarkerSymbol() as ISymbol;
-			(this.isymbol_1 as ISimpleMarkerSymbol).Style = esriSimpleMarkerStyle.esriSMSX;
-			(this.isymbol_1 as ISimpleMarkerSymbol).Size = 4;
-			this.isymbol_0 = new SimpleMarkerSymbol() as ISymbol;
-            (this.isymbol_0 as ISimpleMarkerSymbol).Style = esriSimpleMarkerStyle.esriSMSSquare;
-			(this.isymbol_0 as ISimpleMarkerSymbol).Size = 4;
+			this.m_Cursor = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.Edit.cur"));
+			m_Symbol1 = new SimpleMarkerSymbol() as ISymbol;
+			(m_Symbol1 as ISimpleMarkerSymbol).Style = esriSimpleMarkerStyle.esriSMSX;
+			(m_Symbol1 as ISimpleMarkerSymbol).Size = 4;
+			this.m_Symbol = new SimpleMarkerSymbol() as ISymbol;
+            (this.m_Symbol as ISimpleMarkerSymbol).Style = esriSimpleMarkerStyle.esriSMSSquare;
+			(this.m_Symbol as ISimpleMarkerSymbol).Size = 4;
 			IRgbColor rgbColorClass = new RgbColor()
 			{
 				Red = 183,
 				Green = 120,
 				Blue = 245
 			};
-			(this.isymbol_0 as ISimpleMarkerSymbol).Color = rgbColorClass;
-			this.isimpleMarkerSymbol_0.Style = esriSimpleMarkerStyle.esriSMSCircle;
-			this.isimpleMarkerSymbol_0.Size = 8;
-			this.isimpleMarkerSymbol_0.Outline = true;
-			this.isimpleMarkerSymbol_0.Color = ColorManage.GetRGBColor(0, 255, 255);
+			(this.m_Symbol as ISimpleMarkerSymbol).Color = rgbColorClass;
+			this.m_SimpleMarkerSymbol.Style = esriSimpleMarkerStyle.esriSMSCircle;
+			this.m_SimpleMarkerSymbol.Size = 8;
+			this.m_SimpleMarkerSymbol.Outline = true;
+			this.m_SimpleMarkerSymbol.Color = ColorManage.GetRGBColor(0, 255, 255);
 		}
 
+        public string[] ContextMenuKeys { get { return _contextMenuKeys; } }
 		public void Init()
 		{
 			string[] strArrays;
 			string[] strArrays1;
-			if (!this.ipopuMenuWrap_0.Visible)
+			if (!_appContext.RibbonMenu.GetContextMenuVisible())
 			{
-				if ((!this.bool_12 ? true : this.hitType_0 != EditTools.m_HitType))
+				if ((!this.bool_12 ? true : this.p_HitType != EditTools.m_HitType))
 				{
 					this.bool_12 = true;
-					this.hitType_0 = EditTools.m_HitType;
-					this.ipopuMenuWrap_0.Clear();
+					this.p_HitType = EditTools.m_HitType;
+					//this.m_PopuMenuWrap.Clear();
 					if (EditTools.m_HitType != HitType.None)
 					{
-						strArrays = new string[] { "MoveVertToPoint", "MoveVert", "-", "MoveFeaturesToPoint", "MoveFeatures", "-", "AddPointInGeometry", "-", "ViewGeometryInfo" };
+						strArrays = new string[] { "Edit_MoveVertexToPoint", "Edit_MoveVertex", "-", "Edit_MoveFeatureToPoint", "Edit_MoveFeatures", "-", "Edit_AddPointInGeometry", "-", "ViewGeometryInfo" };
 						strArrays1 = strArrays;
+					    _contextMenuKeys = strArrays;
 					}
 					else
 					{
-						strArrays = new string[] { "CopyCommand", "PasteCommand", "CopyFeaturesTool", "-", "Zoom2SelectedFeature", "DeleteSelectFeature", "ClearSelection", "-", "AttributeEdit" };
+						strArrays = new string[] { "Edit_Copy", "Edit_Paste", "Edit_CopyFeatureTools", "-", "Edit_Zoom2Selection", "Edit_DeleteSelection", "Edit_ClearSelection", "-", "Edit_Attribute" };
 						strArrays1 = strArrays;
 					}
-					bool flag = false;
+                    _contextMenuKeys = strArrays;
+                    bool flag = false;
 					for (int i = 0; i < (int)strArrays1.Length; i++)
 					{
 						flag = (i + 1 == (int)strArrays1.Length ? false : string.Compare(strArrays1[i + 1], "-") == 0);
-						this.ipopuMenuWrap_0.AddItem(strArrays1[i], flag);
+						//this.m_PopuMenuWrap.AddItem(strArrays1[i], flag);
 					}
+				    _appContext.UpdateContextMenu();
 				}
 				else
 				{
-					this.ipopuMenuWrap_0.UpdateUI();
-				}
+                    //this.m_PopuMenuWrap.UpdateUI();
+                    _appContext.RefreshContextMenu();
+                }
 			}
 		}
 
@@ -306,7 +313,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 			int pointCount;
 			int i;
 			bool_13 = false;
-			this.igeometry_0 = null;
+			this.m_Geometry = null;
 			EditTools.m_PartIndex = -1;
 			EditTools.m_PointIndex = -1;
 			this.string_0 = "";
@@ -342,9 +349,9 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 								}
 								else
 								{
-									this.igeometry_0 = feature.ShapeCopy;
+									this.m_Geometry = feature.ShapeCopy;
 									unit = CommonHelper.GetUnit(this._appContext.MapControl.Map.MapUnits);
-									double length = (this.igeometry_0 as IPolyline).Length;
+									double length = (this.m_Geometry as IPolyline).Length;
 									this.string_0 = string.Concat("原线长度: ", length.ToString("0.###"), unit);
 									if (flag2)
 									{
@@ -353,32 +360,32 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 										pointCount = 0;
 										for (i = 0; i < num2; i++)
 										{
-											geometry = (IPath)((IGeometryCollection)this.igeometry_0).Geometry[i];
+											geometry = (IPath)((IGeometryCollection)this.m_Geometry).Geometry[i];
 											pointCount = pointCount + (geometry as IPointCollection).PointCount;
 										}
 										num = num + pointCount;
-										this.idisplayFeedback_0 = new LineMovePointFeedback()
+										this.m_DisplayFeedback = new LineMovePointFeedback()
 										{
 											Display = focusMap.ScreenDisplay
 										};
-										((ILineMovePointFeedback)this.idisplayFeedback_0).Start((IPolyline)shape, num, ipoint_5);
+										((ILineMovePointFeedback)this.m_DisplayFeedback).Start((IPolyline)shape, num, ipoint_5);
 										break;
 									}
 									else
 									{
 										if (Editor.DrawNode)
 										{
-											geometry = (IPath)((IGeometryCollection)this.igeometry_0).Geometry[num2];
+											geometry = (IPath)((IGeometryCollection)this.m_Geometry).Geometry[num2];
 											value = Missing.Value;
 											obj = num;
 											((IPointCollection)geometry).AddPoint(point, ref value, ref obj);
 											flag1 = false;
-											Editor.UpdateFeature(EditTools.m_pEditFeature, this.igeometry_0, ref flag1);
+											Editor.UpdateFeature(EditTools.m_pEditFeature, this.m_Geometry, ref flag1);
 											if (flag1)
 											{
 												(this._appContext.MapControl.Map as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
 											}
-											this.method_3(searchTolerance, ipoint_5, this.igeometry_0, out point, ref num1, ref num2, ref num, out flag2);
+											this.method_3(searchTolerance, ipoint_5, this.m_Geometry, out point, ref num1, ref num2, ref num, out flag2);
 											bool_13 = true;
 										}
 										flag = true;
@@ -395,8 +402,8 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 								}
 								else
 								{
-									this.igeometry_0 = feature.ShapeCopy;
-									double num3 = Math.Abs((this.igeometry_0 as IArea).Area);
+									this.m_Geometry = feature.ShapeCopy;
+									double num3 = Math.Abs((this.m_Geometry as IArea).Area);
 									unit = string.Concat(" 平方", CommonHelper.GetUnit(this._appContext.MapControl.Map.MapUnits));
 									this.string_0 = string.Concat("原多边形面积: ", num3.ToString("0.###"), unit);
 									if (flag2)
@@ -410,14 +417,14 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 											pointCount = pointCount + (geometry as IPointCollection).PointCount;
 										}
 										num = num + pointCount;
-										this.idisplayFeedback_0 = new PolygonMovePointFeedback()
+										this.m_DisplayFeedback = new PolygonMovePointFeedback()
 										{
 											Display = focusMap.ScreenDisplay
 										};
-										IPolygonMovePointFeedback idisplayFeedback0 = (PolygonMovePointFeedback)this.idisplayFeedback_0;
+										IPolygonMovePointFeedback idisplayFeedback0 = (PolygonMovePointFeedback)this.m_DisplayFeedback;
 										IPolygon polygonClass = new Polygon() as IPolygon;
 										object missing = Type.Missing;
-										(polygonClass as IGeometryCollection).AddGeometry(((IGeometryCollection)this.igeometry_0).Geometry[num2], ref missing, ref missing);
+										(polygonClass as IGeometryCollection).AddGeometry(((IGeometryCollection)this.m_Geometry).Geometry[num2], ref missing, ref missing);
 										idisplayFeedback0.Start((IPolygon)shape, num, ipoint_5);
 										break;
 									}
@@ -425,17 +432,17 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 									{
 										if (Editor.DrawNode)
 										{
-											geometry = (IPath)((IGeometryCollection)this.igeometry_0).Geometry[num2];
+											geometry = (IPath)((IGeometryCollection)this.m_Geometry).Geometry[num2];
 											value = Missing.Value;
 											obj = num;
 											((IPointCollection)geometry).AddPoint(point, ref value, ref obj);
 											flag1 = false;
-											Editor.UpdateFeature(EditTools.m_pEditFeature, this.igeometry_0, ref flag1);
+											Editor.UpdateFeature(EditTools.m_pEditFeature, this.m_Geometry, ref flag1);
 											if (flag1)
 											{
 												(this._appContext.MapControl.Map as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
 											}
-											this.method_3(searchTolerance, ipoint_5, this.igeometry_0, out point, ref num1, ref num2, ref num, out flag2);
+											this.method_3(searchTolerance, ipoint_5, this.m_Geometry, out point, ref num1, ref num2, ref num, out flag2);
 											bool_13 = true;
 										}
 										flag = true;
@@ -475,7 +482,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 			bool flag1;
 			int pointCount;
 			int i;
-			this.igeometry_0 = null;
+			this.m_Geometry = null;
 			EditTools.m_PartIndex = -1;
 			EditTools.m_PointIndex = -1;
 			this.string_0 = "";
@@ -511,9 +518,9 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 								}
 								else
 								{
-									this.igeometry_0 = feature.ShapeCopy;
+									this.m_Geometry = feature.ShapeCopy;
 									unit = CommonHelper.GetUnit(this._appContext.MapControl.Map.MapUnits);
-									double length = (this.igeometry_0 as IPolyline).Length;
+									double length = (this.m_Geometry as IPolyline).Length;
 									this.string_0 = string.Concat("原线长度: ", length.ToString("0.###"), unit);
 									if (flag2)
 									{
@@ -522,33 +529,33 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 										pointCount = 0;
 										for (i = 0; i < num2; i++)
 										{
-											geometry = (IPath)((IGeometryCollection)this.igeometry_0).Geometry[i];
+											geometry = (IPath)((IGeometryCollection)this.m_Geometry).Geometry[i];
 											pointCount = pointCount + (geometry as IPointCollection).PointCount;
 										}
 										num = num + pointCount;
-										this.idisplayFeedback_0 = new LineMovePointFeedback()
+										this.m_DisplayFeedback = new LineMovePointFeedback()
 										{
 											Display = focusMap.ScreenDisplay
 										};
-										((ILineMovePointFeedback)this.idisplayFeedback_0).Start((IPolyline)shape, num, ipoint_5);
+										((ILineMovePointFeedback)this.m_DisplayFeedback).Start((IPolyline)shape, num, ipoint_5);
 										break;
 									}
 									else
 									{
-										geometry = (IPath)((IGeometryCollection)this.igeometry_0).Geometry[num2];
+										geometry = (IPath)((IGeometryCollection)this.m_Geometry).Geometry[num2];
 										value = Missing.Value;
 										obj = num;
 										((IPointCollection)geometry).AddPoint(point, ref value, ref obj);
 										flag1 = false;
-										Editor.UpdateFeature(EditTools.m_pEditFeature, this.igeometry_0, ref flag1);
+										Editor.UpdateFeature(EditTools.m_pEditFeature, this.m_Geometry, ref flag1);
 										if (flag1)
 										{
 											(this._appContext.MapControl.Map as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
 										}
-										this.method_3(searchTolerance, ipoint_5, this.igeometry_0, out point, ref num1, ref num2, ref num, out flag2);
+										this.method_3(searchTolerance, ipoint_5, this.m_Geometry, out point, ref num1, ref num2, ref num, out flag2);
 										this.bool_3 = false;
-										this.cursor_0.Dispose();
-										this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.VertexEdit.cur"));
+										this.m_Cursor.Dispose();
+										this.m_Cursor = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.VertexEdit.cur"));
 										flag = true;
 										return flag;
 									}
@@ -563,8 +570,8 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 								}
 								else
 								{
-									this.igeometry_0 = feature.ShapeCopy;
-									double num3 = Math.Abs((this.igeometry_0 as IArea).Area);
+									this.m_Geometry = feature.ShapeCopy;
+									double num3 = Math.Abs((this.m_Geometry as IArea).Area);
 									unit = string.Concat(" 平方", CommonHelper.GetUnit(this._appContext.MapControl.Map.MapUnits));
 									this.string_0 = string.Concat("原多边形面积: ", num3.ToString("0.###"), unit);
 									if (flag2)
@@ -578,29 +585,29 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 											pointCount = pointCount + (geometry as IPointCollection).PointCount;
 										}
 										num = num + pointCount;
-										this.idisplayFeedback_0 = new PolygonMovePointFeedback()
+										this.m_DisplayFeedback = new PolygonMovePointFeedback()
 										{
 											Display = focusMap.ScreenDisplay
 										};
-										((PolygonMovePointFeedback)this.idisplayFeedback_0).Start((IPolygon)shape, num, ipoint_5);
+										((PolygonMovePointFeedback)this.m_DisplayFeedback).Start((IPolygon)shape, num, ipoint_5);
 										break;
 									}
 									else
 									{
-										geometry = (IPath)((IGeometryCollection)this.igeometry_0).Geometry[num2];
+										geometry = (IPath)((IGeometryCollection)this.m_Geometry).Geometry[num2];
 										value = Missing.Value;
 										obj = num;
 										((IPointCollection)geometry).AddPoint(point, ref value, ref obj);
 										flag1 = false;
-										Editor.UpdateFeature(EditTools.m_pEditFeature, this.igeometry_0, ref flag1);
+										Editor.UpdateFeature(EditTools.m_pEditFeature, this.m_Geometry, ref flag1);
 										if (flag1)
 										{
 											(this._appContext.MapControl.Map as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
 										}
-										this.method_3(searchTolerance, ipoint_5, this.igeometry_0, out point, ref num1, ref num2, ref num, out flag2);
+										this.method_3(searchTolerance, ipoint_5, this.m_Geometry, out point, ref num1, ref num2, ref num, out flag2);
 										this.bool_3 = false;
-										this.cursor_0.Dispose();
-										this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.VertexEdit.cur"));
+										this.m_Cursor.Dispose();
+										this.m_Cursor = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.VertexEdit.cur"));
 										flag = true;
 										return flag;
 									}
@@ -626,14 +633,14 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 			return flag;
 		}
 
-		private void method_10(ICompositeLayer icompositeLayer_0)
+		private void ClearLayerSelection(ICompositeLayer pCompLayer)
 		{
-			for (int i = 0; i < icompositeLayer_0.Count; i++)
+			for (int i = 0; i < pCompLayer.Count; i++)
 			{
-				ILayer layer = icompositeLayer_0.Layer[i];
+				ILayer layer = pCompLayer.Layer[i];
 				if (layer is IGroupLayer)
 				{
-					this.method_10(layer as ICompositeLayer);
+					this.ClearLayerSelection(layer as ICompositeLayer);
 				}
 				else if (layer is IFeatureLayer)
 				{
@@ -646,25 +653,25 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 			}
 		}
 
-		private IFeatureLayer method_11(ICompositeLayer icompositeLayer_0, IFeature ifeature_0)
+		private IFeatureLayer GetLayerByFeature(ICompositeLayer pCompLayer, IFeature pFeature)
 		{
 			IFeatureLayer featureLayer;
 			int num = 0;
 			while (true)
 			{
-				if (num < icompositeLayer_0.Count)
+				if (num < pCompLayer.Count)
 				{
-					ILayer layer = icompositeLayer_0.Layer[num];
+					ILayer layer = pCompLayer.Layer[num];
 					if (layer is IGroupLayer)
 					{
-						IFeatureLayer featureLayer1 = this.method_11(layer as ICompositeLayer, ifeature_0);
+						IFeatureLayer featureLayer1 = this.GetLayerByFeature(layer as ICompositeLayer, pFeature);
 						if (featureLayer1 != null)
 						{
 							featureLayer = featureLayer1;
 							break;
 						}
 					}
-					else if (layer is IFeatureLayer && (layer as IFeatureLayer).FeatureClass == ifeature_0.Class)
+					else if (layer is IFeatureLayer && (layer as IFeatureLayer).FeatureClass == pFeature.Class)
 					{
 						featureLayer = layer as IFeatureLayer;
 						break;
@@ -680,25 +687,25 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 			return featureLayer;
 		}
 
-		private IFeatureLayer method_12(IMap imap_0, IFeature ifeature_0)
+		private IFeatureLayer GetLayerByFeature(IMap pMap, IFeature pFeature)
 		{
 			IFeatureLayer featureLayer;
 			int num = 0;
 			while (true)
 			{
-				if (num < imap_0.LayerCount)
+				if (num < pMap.LayerCount)
 				{
-					ILayer layer = imap_0.Layer[num];
+					ILayer layer = pMap.Layer[num];
 					if (layer is IGroupLayer)
 					{
-						IFeatureLayer featureLayer1 = this.method_11(layer as ICompositeLayer, ifeature_0);
+						IFeatureLayer featureLayer1 = this.GetLayerByFeature(layer as ICompositeLayer, pFeature);
 						if (featureLayer1 != null)
 						{
 							featureLayer = featureLayer1;
 							break;
 						}
 					}
-					else if (layer is IFeatureLayer && (layer as IFeatureLayer).FeatureClass == ifeature_0.Class)
+					else if (layer is IFeatureLayer && (layer as IFeatureLayer).FeatureClass == pFeature.Class)
 					{
 						featureLayer = layer as IFeatureLayer;
 						break;
@@ -714,14 +721,14 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 			return featureLayer;
 		}
 
-		private double method_13()
+		private double GetSearchTolerance()
 		{
 			double num;
 			num = (!(this._appContext is IAppContext) ? 8 : (double)(this._appContext as IAppContext).Config.SelectionEnvironment.SearchTolerance);
 			return num;
 		}
 
-		private bool method_14()
+		private bool IsNetworkFeature()
 		{
 			bool flag;
 			IEnumFeature featureSelection = (IEnumFeature)this._appContext.MapControl.Map.FeatureSelection;
@@ -747,29 +754,29 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 			return flag;
 		}
 
-		private ISnappingResult method_15(IPoint ipoint_5, IActiveView iactiveView_0)
+		private ISnappingResult SnapPoint(IPoint pPoint, IActiveView pActiveView)
 		{
 			IEngineSnapEnvironment engineSnapEnvironment = ApplicationRef.AppContext.Config.EngineSnapEnvironment;
 			ISnappingResult snappingResult = null;
 			if (engineSnapEnvironment is ISnapEnvironment)
 			{
 				ISnapEnvironment snapEnvironment = engineSnapEnvironment as ISnapEnvironment;
-				if ((snapEnvironment == null || !ApplicationRef.AppContext.Config.UseSnap ? false : snapEnvironment.SnapPoint(this.ipoint_3, ipoint_5)))
+				if ((snapEnvironment == null || !ApplicationRef.AppContext.Config.UseSnap ? false : snapEnvironment.SnapPoint(this.ipoint_3, pPoint)))
 				{
 					SnappingResult snappingResult1 = new SnappingResult()
 					{
-						X = ipoint_5.X,
-						Y = ipoint_5.Y
+						X = pPoint.X,
+						Y = pPoint.Y
 					};
 					snappingResult = snappingResult1;
 				}
 			}
-			else if ((engineSnapEnvironment == null || !ApplicationRef.AppContext.Config.UseSnap ? false : engineSnapEnvironment.SnapPoint(ipoint_5)))
+			else if ((engineSnapEnvironment == null || !ApplicationRef.AppContext.Config.UseSnap ? false : engineSnapEnvironment.SnapPoint(pPoint)))
 			{
 				SnappingResult snappingResult2 = new SnappingResult()
 				{
-					X = ipoint_5.X,
-					Y = ipoint_5.Y
+					X = pPoint.X,
+					Y = pPoint.Y
 				};
 				snappingResult = snappingResult2;
 			}
@@ -784,75 +791,75 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 				snappingResult = SketchToolAssist.m_psnaper.Snap(this.ipoint_2);
 				if (snappingResult == null)
 				{
-					if (this.ianchorPoint_0 == null)
+					if (this.m_AnchorPoint == null)
 					{
-						this.ianchorPoint_0 = new AnchorPoint()
+						this.m_AnchorPoint = new AnchorPoint()
 						{
-							Symbol = this.isimpleMarkerSymbol_0 as ISymbol
+							Symbol = this.m_SimpleMarkerSymbol as ISymbol
 						};
 					}
-					this.ianchorPoint_0.MoveTo(this.ipoint_2, (this._appContext.MapControl.Map as IActiveView).ScreenDisplay);
+					this.m_AnchorPoint.MoveTo(this.ipoint_2, (this._appContext.MapControl.Map as IActiveView).ScreenDisplay);
 				}
 				else
 				{
 					this.ipoint_2 = snappingResult.Location;
-					if (this.ianchorPoint_0 == null)
+					if (this.m_AnchorPoint == null)
 					{
-						this.ianchorPoint_0 = new AnchorPoint()
+						this.m_AnchorPoint = new AnchorPoint()
 						{
-							Symbol = this.isimpleMarkerSymbol_0 as ISymbol
+							Symbol = this.m_SimpleMarkerSymbol as ISymbol
 						};
 					}
-					this.ianchorPoint_0.MoveTo(this.ipoint_2, (this._appContext.MapControl.Map as IActiveView).ScreenDisplay);
+					this.m_AnchorPoint.MoveTo(this.ipoint_2, (this._appContext.MapControl.Map as IActiveView).ScreenDisplay);
 				}
 			}
 			else
 			{
 				IAppContext application = ApplicationRef.AppContext;
-				snappingResult = this.method_15(this.ipoint_2, this._appContext.MapControl.Map as IActiveView);
+				snappingResult = this.SnapPoint(this.ipoint_2, this._appContext.MapControl.Map as IActiveView);
 				if (snappingResult == null)
 				{
-					if (this.ianchorPoint_0 == null)
+					if (this.m_AnchorPoint == null)
 					{
-						this.ianchorPoint_0 = new AnchorPoint()
+						this.m_AnchorPoint = new AnchorPoint()
 						{
-							Symbol = this.isimpleMarkerSymbol_0 as ISymbol
+							Symbol = this.m_SimpleMarkerSymbol as ISymbol
 						};
 					}
-					this.ianchorPoint_0.MoveTo(this.ipoint_2, (this._appContext.MapControl.Map as IActiveView).ScreenDisplay);
+					this.m_AnchorPoint.MoveTo(this.ipoint_2, (this._appContext.MapControl.Map as IActiveView).ScreenDisplay);
 				}
 				else
 				{
 					this.ipoint_2 = snappingResult.Location;
-					if (this.ianchorPoint_0 == null)
+					if (this.m_AnchorPoint == null)
 					{
-						this.ianchorPoint_0 = new AnchorPoint()
+						this.m_AnchorPoint = new AnchorPoint()
 						{
-							Symbol = this.isimpleMarkerSymbol_0 as ISymbol
+							Symbol = this.m_SimpleMarkerSymbol as ISymbol
 						};
 					}
-					this.ianchorPoint_0.MoveTo(this.ipoint_2, (this._appContext.MapControl.Map as IActiveView).ScreenDisplay);
+					this.m_AnchorPoint.MoveTo(this.ipoint_2, (this._appContext.MapControl.Map as IActiveView).ScreenDisplay);
 				}
 			}
 		}
 
 		private void method_17(IPoint ipoint_5, IPoint ipoint_6, esriSimpleMarkerStyle esriSimpleMarkerStyle_0)
 		{
-			ISimpleMarkerSymbol isimpleMarkerSymbol0 = this.isimpleMarkerSymbol_0;
+			ISimpleMarkerSymbol isimpleMarkerSymbol0 = this.m_SimpleMarkerSymbol;
 			isimpleMarkerSymbol0.Style = esriSimpleMarkerStyle_0;
 			IActiveView focusMap = (IActiveView)this._appContext.MapControl.Map;
-			if (this._appContext.Config.SnapEnvironment != null)
+			if (this._appContext.Config.EngineSnapEnvironment != null)
 			{
-				IEngineSnapEnvironment snapEnvironment = this._appContext.Config.SnapEnvironment;
+				IEngineSnapEnvironment snapEnvironment = this._appContext.Config.EngineSnapEnvironment;
 				if (snapEnvironment is ISnapEnvironment)
 				{
 					if (!(snapEnvironment as ISnapEnvironment).SnapPoint(this.ipoint_3, ipoint_5))
 					{
 						this.bool_4 = false;
-						if (this.ianchorPoint_0 != null)
+						if (this.m_AnchorPoint != null)
 						{
-							this.ianchorPoint_0.Symbol = (ISymbol)isimpleMarkerSymbol0;
-							this.ianchorPoint_0.MoveTo(ipoint_5, focusMap.ScreenDisplay);
+							this.m_AnchorPoint.Symbol = (ISymbol)isimpleMarkerSymbol0;
+							this.m_AnchorPoint.MoveTo(ipoint_5, focusMap.ScreenDisplay);
 						}
 						else
 						{
@@ -862,10 +869,10 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 					else
 					{
 						this.bool_4 = true;
-						if (this.ianchorPoint_0 != null)
+						if (this.m_AnchorPoint != null)
 						{
-							this.ianchorPoint_0.Symbol = (ISymbol)isimpleMarkerSymbol0;
-							this.ianchorPoint_0.MoveTo(ipoint_6, focusMap.ScreenDisplay);
+							this.m_AnchorPoint.Symbol = (ISymbol)isimpleMarkerSymbol0;
+							this.m_AnchorPoint.MoveTo(ipoint_6, focusMap.ScreenDisplay);
 						}
 						else
 						{
@@ -876,10 +883,10 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 				else if (!snapEnvironment.SnapPoint(ipoint_5))
 				{
 					this.bool_4 = false;
-					if (this.ianchorPoint_0 != null)
+					if (this.m_AnchorPoint != null)
 					{
-						this.ianchorPoint_0.Symbol = (ISymbol)isimpleMarkerSymbol0;
-						this.ianchorPoint_0.MoveTo(ipoint_5, focusMap.ScreenDisplay);
+						this.m_AnchorPoint.Symbol = (ISymbol)isimpleMarkerSymbol0;
+						this.m_AnchorPoint.MoveTo(ipoint_5, focusMap.ScreenDisplay);
 					}
 					else
 					{
@@ -889,10 +896,10 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 				else
 				{
 					this.bool_4 = true;
-					if (this.ianchorPoint_0 != null)
+					if (this.m_AnchorPoint != null)
 					{
-						this.ianchorPoint_0.Symbol = (ISymbol)isimpleMarkerSymbol0;
-						this.ianchorPoint_0.MoveTo(ipoint_6, focusMap.ScreenDisplay);
+						this.m_AnchorPoint.Symbol = (ISymbol)isimpleMarkerSymbol0;
+						this.m_AnchorPoint.MoveTo(ipoint_6, focusMap.ScreenDisplay);
 					}
 					else
 					{
@@ -902,14 +909,14 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 			}
 		}
 
-		private void method_18(IPoint ipoint_5, esriSimpleMarkerStyle esriSimpleMarkerStyle_0)
+		private void method_18(IPoint ipoint_5, esriSimpleMarkerStyle pSimpleMarkerStyle)
 		{
 			IActiveView focusMap = (IActiveView)this._appContext.MapControl.Map;
-			this.ianchorPoint_0 = new AnchorPoint()
+			this.m_AnchorPoint = new AnchorPoint()
 			{
-				Symbol = this.isimpleMarkerSymbol_0 as ISymbol
+				Symbol = this.m_SimpleMarkerSymbol as ISymbol
 			};
-			this.ianchorPoint_0.MoveTo(ipoint_5, focusMap.ScreenDisplay);
+			this.m_AnchorPoint.MoveTo(ipoint_5, focusMap.ScreenDisplay);
 		}
 
 		private void method_19()
@@ -1023,9 +1030,9 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 								}
 								else
 								{
-									this.igeometry_0 = mPEditFeature.ShapeCopy;
+									this.m_Geometry = mPEditFeature.ShapeCopy;
 									unit = CommonHelper.GetUnit(this._appContext.MapControl.Map.MapUnits);
-									double length = (this.igeometry_0 as IPolyline).Length;
+									double length = (this.m_Geometry as IPolyline).Length;
 									this.string_0 = string.Concat("原线长度: ", length.ToString("0.###"), unit);
 									if (EditTools.m_HitType != HitType.HitSegment)
 									{
@@ -1033,33 +1040,33 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 										pointCount = 0;
 										for (i = 0; i < EditTools.m_PartIndex; i++)
 										{
-											geometry = (IPath)((IGeometryCollection)this.igeometry_0).Geometry[i];
+											geometry = (IPath)((IGeometryCollection)this.m_Geometry).Geometry[i];
 											pointCount = pointCount + (geometry as IPointCollection).PointCount;
 										}
 										num = num + pointCount;
-										this.idisplayFeedback_0 = new LineMovePointFeedback()
+										this.m_DisplayFeedback = new LineMovePointFeedback()
 										{
 											Display = focusMap.ScreenDisplay
 										};
-										((ILineMovePointFeedback)this.idisplayFeedback_0).Start((IPolyline)shape, num, ipoint_5);
+										((ILineMovePointFeedback)this.m_DisplayFeedback).Start((IPolyline)shape, num, ipoint_5);
 										break;
 									}
 									else
 									{
-										geometry = (IPath)((IGeometryCollection)this.igeometry_0).Geometry[EditTools.m_PartIndex];
+										geometry = (IPath)((IGeometryCollection)this.m_Geometry).Geometry[EditTools.m_PartIndex];
 										value = Missing.Value;
 										mPointIndex = EditTools.m_PointIndex;
 										((IPointCollection)geometry).AddPoint(this.ipoint_4, ref value, ref mPointIndex);
 										flag1 = false;
-										Editor.UpdateFeature(EditTools.m_pEditFeature, this.igeometry_0, ref flag1);
+										Editor.UpdateFeature(EditTools.m_pEditFeature, this.m_Geometry, ref flag1);
 										if (flag1)
 										{
 											(this._appContext.MapControl.Map as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
 										}
-										this.method_3(searchTolerance, this.ipoint_4, this.igeometry_0, out this.ipoint_4, ref num1, ref EditTools.m_PartIndex, ref EditTools.m_PointIndex, out flag2);
+										this.method_3(searchTolerance, this.ipoint_4, this.m_Geometry, out this.ipoint_4, ref num1, ref EditTools.m_PartIndex, ref EditTools.m_PointIndex, out flag2);
 										this.bool_3 = false;
-										this.cursor_0.Dispose();
-										this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.VertexEdit.cur"));
+										this.m_Cursor.Dispose();
+										this.m_Cursor = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.VertexEdit.cur"));
 										flag = true;
 										return flag;
 									}
@@ -1074,8 +1081,8 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 								}
 								else
 								{
-									this.igeometry_0 = mPEditFeature.ShapeCopy;
-									double num2 = Math.Abs((this.igeometry_0 as IArea).Area);
+									this.m_Geometry = mPEditFeature.ShapeCopy;
+									double num2 = Math.Abs((this.m_Geometry as IArea).Area);
 									unit = string.Concat(" 平方", CommonHelper.GetUnit(this._appContext.MapControl.Map.MapUnits));
 									this.string_0 = string.Concat("原多边形面积: ", num2.ToString("0.###"), unit);
 									if (EditTools.m_HitType != HitType.HitSegment)
@@ -1088,29 +1095,29 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 											pointCount = pointCount + (geometry as IPointCollection).PointCount;
 										}
 										num = num + pointCount;
-										this.idisplayFeedback_0 = new PolygonMovePointFeedback()
+										this.m_DisplayFeedback = new PolygonMovePointFeedback()
 										{
 											Display = focusMap.ScreenDisplay
 										};
-										((PolygonMovePointFeedback)this.idisplayFeedback_0).Start((IPolygon)shape, num, ipoint_5);
+										((PolygonMovePointFeedback)this.m_DisplayFeedback).Start((IPolygon)shape, num, ipoint_5);
 										break;
 									}
 									else
 									{
-										geometry = (IPath)((IGeometryCollection)this.igeometry_0).Geometry[EditTools.m_PartIndex];
+										geometry = (IPath)((IGeometryCollection)this.m_Geometry).Geometry[EditTools.m_PartIndex];
 										value = Missing.Value;
 										mPointIndex = EditTools.m_PointIndex;
 										((IPointCollection)geometry).AddPoint(this.ipoint_4, ref value, ref mPointIndex);
 										flag1 = false;
-										Editor.UpdateFeature(EditTools.m_pEditFeature, this.igeometry_0, ref flag1);
+										Editor.UpdateFeature(EditTools.m_pEditFeature, this.m_Geometry, ref flag1);
 										if (flag1)
 										{
 											(this._appContext.MapControl.Map as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
 										}
-										this.method_3(searchTolerance, this.ipoint_4, this.igeometry_0, out this.ipoint_4, ref num1, ref EditTools.m_PartIndex, ref EditTools.m_PointIndex, out flag2);
+										this.method_3(searchTolerance, this.ipoint_4, this.m_Geometry, out this.ipoint_4, ref num1, ref EditTools.m_PartIndex, ref EditTools.m_PointIndex, out flag2);
 										this.bool_3 = false;
-										this.cursor_0.Dispose();
-										this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.VertexEdit.cur"));
+										this.m_Cursor.Dispose();
+										this.m_Cursor = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.VertexEdit.cur"));
 										flag = true;
 										return flag;
 									}
@@ -1136,7 +1143,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 			return flag;
 		}
 
-		private void method_20(IDisplay idisplay_0, esriViewDrawPhase esriViewDrawPhase_0)
+		private void View_AfterDraw(IDisplay pDisplay, esriViewDrawPhase pViewDrawPhase)
 		{
 			if (this.Enabled)
 			{
@@ -1150,23 +1157,23 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 						IPointCollection shape = (feature.Class as IFeatureClass).GetFeature(feature.OID).Shape as IPointCollection;
 						if (shape != null)
 						{
-							idisplay_0.StartDrawing(0, -1);
-							idisplay_0.SetSymbol(this.isymbol_0);
+							pDisplay.StartDrawing(0, -1);
+							pDisplay.SetSymbol(m_Symbol);
 							IPointCollection multipointClass = new Multipoint();
 							multipointClass.AddPointCollection(shape);
-							idisplay_0.DrawMultipoint(multipointClass as IGeometry);
-							idisplay_0.FinishDrawing();
-							IColor color = (this.isymbol_0 as IMarkerSymbol).Color;
+							pDisplay.DrawMultipoint(multipointClass as IGeometry);
+							pDisplay.FinishDrawing();
+							IColor color = (m_Symbol as IMarkerSymbol).Color;
 							IColor rgbColorClass = new RgbColor()
 							{
 								RGB = 255
 							};
-							(this.isymbol_0 as IMarkerSymbol).Color = rgbColorClass;
-							idisplay_0.StartDrawing(0, -1);
-							idisplay_0.SetSymbol(this.isymbol_0);
-							idisplay_0.DrawPoint(multipointClass.Point[multipointClass.PointCount - 1]);
-							idisplay_0.FinishDrawing();
-							(this.isymbol_0 as IMarkerSymbol).Color = color;
+							(m_Symbol as IMarkerSymbol).Color = rgbColorClass;
+							pDisplay.StartDrawing(0, -1);
+							pDisplay.SetSymbol(m_Symbol);
+							pDisplay.DrawPoint(multipointClass.Point[multipointClass.PointCount - 1]);
+							pDisplay.FinishDrawing();
+							(m_Symbol as IMarkerSymbol).Color = color;
 						}
 					}
 				}
@@ -1179,26 +1186,26 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 			iset_1.Reset();
 		}
 
-		private void method_22(object object_0)
+		private void View_ActiveHookChanged(object object_0)
 		{
-			if (this.iactiveViewEvents_Event_0 != null)
+			if (this.m_ActiveViewEvents != null)
 			{
 				try
 				{
-					this.iactiveViewEvents_Event_0.AfterDraw -= new IActiveViewEvents_AfterDrawEventHandler(this.method_20);
-					this.iactiveViewEvents_Event_0.SelectionChanged -= new IActiveViewEvents_SelectionChangedEventHandler(this.method_23);
+					this.m_ActiveViewEvents.AfterDraw -= new IActiveViewEvents_AfterDrawEventHandler(this.View_AfterDraw);
+					this.m_ActiveViewEvents.SelectionChanged -= new IActiveViewEvents_SelectionChangedEventHandler(this.View_SelectionChanged);
 				}
 				catch
 				{
 				}
 			}
-			this.iactiveViewEvents_Event_0 = this._appContext.MapControl.ActiveView as IActiveViewEvents_Event;
-			if (this.iactiveViewEvents_Event_0 != null)
+			this.m_ActiveViewEvents = this._appContext.MapControl.ActiveView as IActiveViewEvents_Event;
+			if (this.m_ActiveViewEvents != null)
 			{
 				try
 				{
-					this.iactiveViewEvents_Event_0.AfterDraw += new IActiveViewEvents_AfterDrawEventHandler(this.method_20);
-					this.iactiveViewEvents_Event_0.SelectionChanged += new IActiveViewEvents_SelectionChangedEventHandler(this.method_23);
+					this.m_ActiveViewEvents.AfterDraw += new IActiveViewEvents_AfterDrawEventHandler(this.View_AfterDraw);
+					this.m_ActiveViewEvents.SelectionChanged += new IActiveViewEvents_SelectionChangedEventHandler(this.View_SelectionChanged);
 				}
 				catch
 				{
@@ -1206,7 +1213,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 			}
 		}
 
-		private void method_23()
+		private void View_SelectionChanged()
 		{
 			if (this.Enabled)
 			{
@@ -1370,12 +1377,12 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 							if (layer.FeatureClass.ShapeType == esriGeometryType.esriGeometryPoint)
 							{
 								IPoint shape = (IPoint)feature.Shape;
-								this.ienvelope_0.Height = 2;
-								this.ienvelope_0.Width = 2;
-								this.ienvelope_0.CenterAt(shape);
+								this.m_Envelope.Height = 2;
+								this.m_Envelope.Width = 2;
+								this.m_Envelope.CenterAt(shape);
 							}
-							this.ienvelope_0 = feature.Extent;
-							Editor.RefreshLayerWithSelection(this._appContext.MapControl.Map, this.ienvelope_0, esriViewDrawPhase.esriViewGeoSelection);
+							this.m_Envelope = feature.Extent;
+							Editor.RefreshLayerWithSelection(this._appContext.MapControl.Map, this.m_Envelope, esriViewDrawPhase.esriViewGeoSelection);
 							flag = true;
 							return flag;
 						}
@@ -1413,10 +1420,10 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 			try
 			{
 				bool flag = false;
-				if (this.idisplayFeedback_0 != null)
+				if (this.m_DisplayFeedback != null)
 				{
-					Editor.RefreshLayerWithSelection(this._appContext.MapControl.Map, this.ienvelope_0, esriViewDrawPhase.esriViewGeography);
-					if (this.idisplayFeedback_0 is IMoveGeometryFeedback)
+					Editor.RefreshLayerWithSelection(this._appContext.MapControl.Map, this.m_Envelope, esriViewDrawPhase.esriViewGeography);
+					if (this.m_DisplayFeedback is IMoveGeometryFeedback)
 					{
 						x = ipoint_5.X - this.ipoint_3.X;
 						y = ipoint_5.Y - this.ipoint_3.Y;
@@ -1440,20 +1447,20 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 								}
 								extent = i.Extent;
 								extent.Expand(3, 3, false);
-								if (this.ienvelope_0 == null)
+								if (this.m_Envelope == null)
 								{
-									this.ienvelope_0 = extent;
+									this.m_Envelope = extent;
 								}
 								else
 								{
-									this.ienvelope_0.Union(extent);
+									this.m_Envelope.Union(extent);
 								}
 							}
 						}
 					}
-					else if (this.idisplayFeedback_0 is IPolygonMovePointFeedback)
+					else if (this.m_DisplayFeedback is IPolygonMovePointFeedback)
 					{
-						geometry = ((IPolygonMovePointFeedback)this.idisplayFeedback_0).Stop();
+						geometry = ((IPolygonMovePointFeedback)this.m_DisplayFeedback).Stop();
 						if (!(geometry as ITopologicalOperator).IsSimple)
 						{
 							(geometry as ITopologicalOperator).Simplify();
@@ -1471,35 +1478,35 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 						if (!extent.IsEmpty)
 						{
 							extent.Expand(1.4, 1.4, false);
-							if (this.ienvelope_0 == null)
+							if (this.m_Envelope == null)
 							{
-								this.ienvelope_0 = extent;
+								this.m_Envelope = extent;
 							}
 							else
 							{
-								this.ienvelope_0.Union(extent);
+								this.m_Envelope.Union(extent);
 							}
 						}
 					}
-					else if (this.idisplayFeedback_0 is ILineMovePointFeedback)
+					else if (this.m_DisplayFeedback is ILineMovePointFeedback)
 					{
-						geometry = ((ILineMovePointFeedback)this.idisplayFeedback_0).Stop();
+						geometry = ((ILineMovePointFeedback)this.m_DisplayFeedback).Stop();
 						Editor.UpdateFeature(EditTools.m_pEditFeature, geometry, ref flag);
 						extent = EditTools.m_pEditFeature.Extent;
 						if (!extent.IsEmpty)
 						{
 							extent.Expand(1.4, 1.4, false);
-							if (this.ienvelope_0 == null)
+							if (this.m_Envelope == null)
 							{
-								this.ienvelope_0 = extent;
+								this.m_Envelope = extent;
 							}
 							else
 							{
-								this.ienvelope_0.Union(extent);
+								this.m_Envelope.Union(extent);
 							}
 						}
 					}
-					else if (this.idisplayFeedback_0 is IMoveGeometryFeedbackEx)
+					else if (this.m_DisplayFeedback is IMoveGeometryFeedbackEx)
 					{
 						x = ipoint_5.X - this.ipoint_3.X;
 						y = ipoint_5.Y - this.ipoint_3.Y;
@@ -1536,23 +1543,23 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 							if (!extent.IsEmpty)
 							{
 								extent.Expand(1.4, 1.4, false);
-								if (this.ienvelope_0 == null)
+								if (this.m_Envelope == null)
 								{
-									this.ienvelope_0 = extent;
+									this.m_Envelope = extent;
 								}
 								else
 								{
-									this.ienvelope_0.Union(extent);
+									this.m_Envelope.Union(extent);
 								}
 							}
 							i = setClass.Next() as IFeature;
 						}
-						if (this.idisplayFeedback_0 is IMoveGeometryFeedbackEx)
+						if (this.m_DisplayFeedback is IMoveGeometryFeedbackEx)
 						{
 							(this._appContext.MapControl.Map as IActiveView).Refresh();
 						}
 					}
-					Editor.RefreshLayerWithSelection(this._appContext.MapControl.Map, this.ienvelope_0, esriViewDrawPhase.esriViewGeography);
+					Editor.RefreshLayerWithSelection(this._appContext.MapControl.Map, this.m_Envelope, esriViewDrawPhase.esriViewGeography);
 				}
 			}
 			catch (Exception exception)
@@ -1634,7 +1641,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 					IEnumFeature featureSelection = (IEnumFeature)this._appContext.MapControl.Map.FeatureSelection;
 					featureSelection.Reset();
 					IFeature feature = featureSelection.Next();
-					ILayer layer = this.method_12(this._appContext.MapControl.Map, feature);
+					ILayer layer = this.GetLayerByFeature(this._appContext.MapControl.Map, feature);
 					this._appContext.SetStatus(string.Concat("当前图层:", layer.Name));
 				}
 			}
@@ -1657,19 +1664,19 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 			EditTools.m_SelectionSetAnchorPoint = null;
 		}
 
-		public void OnCreate(object object_0)
+		public void OnCreate(object context)
 		{
-			this._appContext = object_0 as IAppContext;
+			this._appContext = context as IAppContext;
 			if (this._appContext is IAppContextEvents)
 			{
-				(this._appContext as IAppContextEvents).OnActiveHookChanged += new OnActiveHookChangedHandler(this.method_22);
+				(this._appContext as IAppContextEvents).OnActiveHookChanged += new OnActiveHookChangedHandler(this.View_ActiveHookChanged);
 			}
-			if (this.iactiveViewEvents_Event_0 != null)
+			if (this.m_ActiveViewEvents != null)
 			{
 				try
 				{
-					this.iactiveViewEvents_Event_0.AfterDraw -= new IActiveViewEvents_AfterDrawEventHandler(this.method_20);
-					this.iactiveViewEvents_Event_0.SelectionChanged -= new IActiveViewEvents_SelectionChangedEventHandler(this.method_23);
+					this.m_ActiveViewEvents.AfterDraw -= new IActiveViewEvents_AfterDrawEventHandler(this.View_AfterDraw);
+					this.m_ActiveViewEvents.SelectionChanged -= new IActiveViewEvents_SelectionChangedEventHandler(this.View_SelectionChanged);
 				}
 				catch
 				{
@@ -1677,11 +1684,11 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 			}
 			if (this._appContext.MapControl.Map != null)
 			{
-				this.iactiveViewEvents_Event_0 = this._appContext.MapControl.ActiveView as IActiveViewEvents_Event;
+				m_ActiveViewEvents = this._appContext.MapControl.ActiveView as IActiveViewEvents_Event;
 				try
 				{
-					this.iactiveViewEvents_Event_0.AfterDraw += new IActiveViewEvents_AfterDrawEventHandler(this.method_20);
-					this.iactiveViewEvents_Event_0.SelectionChanged += new IActiveViewEvents_SelectionChangedEventHandler(this.method_23);
+					m_ActiveViewEvents.AfterDraw += new IActiveViewEvents_AfterDrawEventHandler(this.View_AfterDraw);
+					m_ActiveViewEvents.SelectionChanged += new IActiveViewEvents_SelectionChangedEventHandler(this.View_SelectionChanged);
 				}
 				catch (Exception exception)
 				{
@@ -1813,7 +1820,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 								IFeature item = this.ilist_0[this.int_1] as IFeature;
 								EditTools int1 = this;
 								int1.int_1 = int1.int_1 + 1;
-								ILayer layer = this.method_12(this._appContext.MapControl.Map, item);
+								ILayer layer = this.GetLayerByFeature(this._appContext.MapControl.Map, item);
 								this.bool_0 = false;
 								(this._appContext.MapControl.Map as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
 								this._appContext.MapControl.Map.ClearSelection();
@@ -1849,10 +1856,10 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 					{
 						this.bool_2 = false;
 						this.bool_5 = true;
-						this.inewEnvelopeFeedback_0 = new NewEnvelopeFeedback();
+						this.m_NewEnvelopeFeedback = new NewEnvelopeFeedback();
 						this.int_0 = int_4;
-						this.inewEnvelopeFeedback_0.Display = focusMap.ScreenDisplay;
-						this.inewEnvelopeFeedback_0.Start(mapPoint);
+						this.m_NewEnvelopeFeedback.Display = focusMap.ScreenDisplay;
+						this.m_NewEnvelopeFeedback.Start(mapPoint);
 					}
 					else
 					{
@@ -1865,10 +1872,10 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 						{
 							this.bool_2 = false;
 							this.bool_5 = true;
-							this.inewEnvelopeFeedback_0 = new NewEnvelopeFeedback();
+							this.m_NewEnvelopeFeedback = new NewEnvelopeFeedback();
 							this.int_0 = int_4;
-							this.inewEnvelopeFeedback_0.Display = focusMap.ScreenDisplay;
-							this.inewEnvelopeFeedback_0.Start(mapPoint);
+							this.m_NewEnvelopeFeedback.Display = focusMap.ScreenDisplay;
+							this.m_NewEnvelopeFeedback.Start(mapPoint);
 						}
 						activeView.PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
 					}
@@ -1886,7 +1893,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 			}
 			else
 			{
-				this.ipopuMenuWrap_0.Visible = false;
+				//this.m_PopuMenuWrap.Visible = false;
 				this.OnMouseMove(int_2, int_3, int_4, int_5);
 				this.bool_9 = !this.bool_9;
 			}
@@ -1916,9 +1923,9 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 					EditTools.m_CurrentPoint.PutCoords(mapPoint.X, mapPoint.Y);
 					if (this.bool_5)
 					{
-						if (int_2 == 1 && this.inewEnvelopeFeedback_0 != null)
+						if (int_2 == 1 && this.m_NewEnvelopeFeedback != null)
 						{
-							this.inewEnvelopeFeedback_0.MoveTo(mapPoint);
+							this.m_NewEnvelopeFeedback.MoveTo(mapPoint);
 						}
 					}
 					else if (this.bool_2)
@@ -1926,26 +1933,26 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 						this.Init();
 						if (int_2 == 1)
 						{
-							if (this.idisplayFeedback_0 != null)
+							if (this.m_DisplayFeedback != null)
 							{
 								this.ipoint_2 = mapPoint;
 								this.method_16(mapPoint, this.ipoint_2, esriSimpleMarkerStyle.esriSMSDiamond);
-								this.idisplayFeedback_0.MoveTo(this.ipoint_2);
-								if ((!this.bool_1 || this.igeometry_0 == null || EditTools.m_PartIndex == -1 ? false : EditTools.m_PointIndex != -1))
+								this.m_DisplayFeedback.MoveTo(this.ipoint_2);
+								if ((!this.bool_1 || this.m_Geometry == null || EditTools.m_PartIndex == -1 ? false : EditTools.m_PointIndex != -1))
 								{
-									IPointCollection geometry = (this.igeometry_0 as IGeometryCollection).Geometry[EditTools.m_PartIndex] as IPointCollection;
+									IPointCollection geometry = (this.m_Geometry as IGeometryCollection).Geometry[EditTools.m_PartIndex] as IPointCollection;
 									geometry.UpdatePoint(EditTools.m_PointIndex, this.ipoint_2);
-									(this.igeometry_0 as IGeometryCollection).GeometriesChanged();
+									(this.m_Geometry as IGeometryCollection).GeometriesChanged();
 									string string0 = this.string_0;
-									if (this.igeometry_0 is IPolyline)
+									if (this.m_Geometry is IPolyline)
 									{
 										unit = CommonHelper.GetUnit(this._appContext.MapControl.Map.MapUnits);
-										double length = (this.igeometry_0 as IPolyline).Length;
+										double length = (this.m_Geometry as IPolyline).Length;
 										string0 = string.Concat(string0, ", 调整后的线长度: ", length.ToString("0.###"), unit);
 									}
-									else if (this.igeometry_0 is IPolygon)
+									else if (this.m_Geometry is IPolygon)
 									{
-										double num3 = Math.Abs((this.igeometry_0 as IArea).Area);
+										double num3 = Math.Abs((this.m_Geometry as IArea).Area);
 										unit = string.Concat(" 平方", CommonHelper.GetUnit(this._appContext.MapControl.Map.MapUnits));
 										string0 = string.Concat(string0, ", 调整后的多边形面积: ", num3.ToString("0.###"), unit);
 									}
@@ -1959,51 +1966,51 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 							}
 							else
 							{
-								if (!this.method_14())
+								if (!this.IsNetworkFeature())
 								{
-									this.idisplayFeedback_0 = new MoveGeometryFeedback()
+									this.m_DisplayFeedback = new MoveGeometryFeedback()
 									{
 										Display = focusMap.ScreenDisplay
 									};
 								}
 								else
 								{
-									this.idisplayFeedback_0 = new MoveGeometryFeedbackEx();
-									(this.idisplayFeedback_0 as IMoveGeometryFeedbackEx).Display = this._appContext.MapControl.ActiveView.ScreenDisplay;
+									this.m_DisplayFeedback = new MoveGeometryFeedbackEx();
+									(this.m_DisplayFeedback as IMoveGeometryFeedbackEx).Display = this._appContext.MapControl.ActiveView.ScreenDisplay;
 								}
 								featureSelection = (IEnumFeature)this._appContext.MapControl.Map.FeatureSelection;
 								featureSelection.Reset();
 								for (i = featureSelection.Next(); i != null; i = featureSelection.Next())
 								{
-									if (this.idisplayFeedback_0 is IMoveGeometryFeedback)
+									if (this.m_DisplayFeedback is IMoveGeometryFeedback)
 									{
 										IGeometry shapeCopy = i.ShapeCopy;
-										(this.idisplayFeedback_0 as IMoveGeometryFeedback).AddGeometry(shapeCopy);
+										(this.m_DisplayFeedback as IMoveGeometryFeedback).AddGeometry(shapeCopy);
 									}
 									else if (i is INetworkFeature)
 									{
-										(this.idisplayFeedback_0 as IMoveGeometryFeedbackEx).Add(i);
+										(this.m_DisplayFeedback as IMoveGeometryFeedbackEx).Add(i);
 									}
 								}
 								this.ipoint_2 = mapPoint;
 								this.method_16(mapPoint, this.ipoint_2, esriSimpleMarkerStyle.esriSMSDiamond);
-								if (this.idisplayFeedback_0 is IMoveGeometryFeedback)
+								if (this.m_DisplayFeedback is IMoveGeometryFeedback)
 								{
-									(this.idisplayFeedback_0 as IMoveGeometryFeedback).Start(mapPoint);
+									(this.m_DisplayFeedback as IMoveGeometryFeedback).Start(mapPoint);
 								}
-								else if (this.idisplayFeedback_0 is IMoveGeometryFeedbackEx)
+								else if (this.m_DisplayFeedback is IMoveGeometryFeedbackEx)
 								{
-									(this.idisplayFeedback_0 as IMoveGeometryFeedbackEx).Start(mapPoint);
+									(this.m_DisplayFeedback as IMoveGeometryFeedbackEx).Start(mapPoint);
 								}
-								this.cursor_0.Dispose();
-								this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.EditMove.cur"));
+								this.m_Cursor.Dispose();
+								this.m_Cursor = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.EditMove.cur"));
 							}
 						}
 					}
 					else if ((this._appContext.MapControl.Map.SelectionCount <= 0 ? true : int_2 != 0))
 					{
-						this.cursor_0.Dispose();
-						this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.Edit.cur"));
+						this.m_Cursor.Dispose();
+						this.m_Cursor = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.Edit.cur"));
 						this.bool_3 = false;
 						this.Init();
 					}
@@ -2034,8 +2041,8 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 								{
 									this.bool_3 = true;
 								}
-								this.cursor_0.Dispose();
-								this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.VertexEdit.cur"));
+								this.m_Cursor.Dispose();
+								this.m_Cursor = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.VertexEdit.cur"));
 								this.bool_11 = true;
 								EditTools.m_pEditFeature = i;
 								EditTools.m_PartIndex = num2;
@@ -2046,8 +2053,8 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 							else if (!(num2 < 0 ? true : !Editor.DrawNode))
 							{
 								this.bool_3 = false;
-								this.cursor_0.Dispose();
-								this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.Digitise.cur"));
+								this.m_Cursor.Dispose();
+								this.m_Cursor = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.Digitise.cur"));
 								this.bool_11 = true;
 								EditTools.m_HitType = HitType.HitSegment;
 								EditTools.m_pEditFeature = i;
@@ -2058,8 +2065,8 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 							else if (num2 != -1)
 							{
 								this.bool_3 = true;
-								this.cursor_0.Dispose();
-								this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.EditMove.cur"));
+								this.m_Cursor.Dispose();
+								this.m_Cursor = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.EditMove.cur"));
 								this.bool_11 = true;
 								EditTools.m_pEditFeature = i;
 								EditTools.m_PartIndex = num2;
@@ -2070,8 +2077,8 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 							else
 							{
 								this.bool_3 = true;
-								this.cursor_0.Dispose();
-								this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.EditMove.cur"));
+								this.m_Cursor.Dispose();
+								this.m_Cursor = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.EditMove.cur"));
 								this.bool_11 = true;
 								EditTools.m_pEditFeature = i;
 								EditTools.m_PartIndex = num2;
@@ -2082,17 +2089,17 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 						}
 						if (!this.bool_11)
 						{
-							this.cursor_0.Dispose();
+							this.m_Cursor.Dispose();
 							this.bool_3 = false;
-							this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.Edit.cur"));
+							this.m_Cursor = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.Edit.cur"));
 						}
 						this.Init();
 					}
 				}
 				else
 				{
-					this.cursor_0.Dispose();
-					this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.Edit.cur"));
+					this.m_Cursor.Dispose();
+					this.m_Cursor = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.Edit.cur"));
 					this.Init();
 					this.bool_3 = false;
 				}
@@ -2115,23 +2122,23 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 					{
 						focusMap.ScreenDisplay.DisplayTransformation.ToMapPoint(int_4, int_5);
 						this.method_5(this.ipoint_2);
-						this.cursor_0.Dispose();
-						this.cursor_0 = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.Edit.cur"));
+						this.m_Cursor.Dispose();
+						this.m_Cursor = new System.Windows.Forms.Cursor(this.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Common.Cursor.Edit.cur"));
 					}
 					else
 					{
 						bool flag = false;
 						IGeometry spatialReference = null;
-						if (this.inewEnvelopeFeedback_0 != null)
+						if (this.m_NewEnvelopeFeedback != null)
 						{
-							spatialReference = this.inewEnvelopeFeedback_0.Stop();
+							spatialReference = this.m_NewEnvelopeFeedback.Stop();
 						}
 						if (spatialReference != null)
 						{
 							if (spatialReference.IsEmpty)
 							{
 								envelope = this.ipoint_1.Envelope;
-								mapUnits = CommonHelper.ConvertPixelsToMapUnits(this._appContext.MapControl.Map as IActiveView, this.method_13());
+								mapUnits = CommonHelper.ConvertPixelsToMapUnits(this._appContext.MapControl.Map as IActiveView, this.GetSearchTolerance());
 								envelope.Height = mapUnits;
 								envelope.Width = mapUnits;
 								envelope.CenterAt(this.ipoint_1);
@@ -2141,7 +2148,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 							else if ((spatialReference.Envelope.Width == 0 ? true : spatialReference.Envelope.Height == 0))
 							{
 								envelope = this.ipoint_1.Envelope;
-								mapUnits = CommonHelper.ConvertPixelsToMapUnits(this._appContext.MapControl.Map as IActiveView, this.method_13());
+								mapUnits = CommonHelper.ConvertPixelsToMapUnits(this._appContext.MapControl.Map as IActiveView, this.GetSearchTolerance());
 								envelope.Height = mapUnits;
 								envelope.Width = mapUnits;
 								envelope.CenterAt(this.ipoint_1);
@@ -2218,7 +2225,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 										layer = this._appContext.MapControl.Map.Layer[i];
 										if (layer is IGroupLayer)
 										{
-											this.method_10(layer as ICompositeLayer);
+											this.ClearLayerSelection(layer as ICompositeLayer);
 										}
 										else if (layer is IFeatureLayer)
 										{
@@ -2234,11 +2241,11 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 								this.ilist_0.Clear();
 								if (!flag)
 								{
-									this.ienumFeature_0 = null;
+									this.m_EnumFeature = null;
 								}
 								else if (this._appContext.MapControl.Map.SelectionCount <= 1)
 								{
-									this.ienumFeature_0 = null;
+									this.m_EnumFeature = null;
 								}
 								else
 								{
@@ -2255,7 +2262,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 									this._appContext.MapControl.Map.ClearSelection();
 									item = this.ilist_0[0] as IFeature;
 									this.int_1 = 1;
-									layer = this.method_12(this._appContext.MapControl.Map, item);
+									layer = this.GetLayerByFeature(this._appContext.MapControl.Map, item);
 									this._appContext.MapControl.Map.SelectFeature(layer, item);
 									this.method_9(true);
 									this.bool_0 = true;
@@ -2295,7 +2302,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 							selectionEnvironmentClass.CombinationMethod = combinationMethod;
 							selectionEnvironmentClass.LinearSelectionMethod = linearSelectionMethod;
 							selectionEnvironmentClass.AreaSelectionMethod = areaSelectionMethod;
-							this.inewEnvelopeFeedback_0 = null;
+							this.m_NewEnvelopeFeedback = null;
 							this._appContext.UpdateUI();
 							return;
 						}
@@ -2311,7 +2318,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 				}
 				this.bool_3 = false;
 				this.bool_2 = false;
-				this.idisplayFeedback_0 = null;
+				this.m_DisplayFeedback = null;
 			}
 		}
 	}

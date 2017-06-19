@@ -198,22 +198,27 @@
     <ProjectReference Include="..\Yutai.ArcGIS.Common\Yutai.ArcGIS.Common.csproj">
       <Project>{1938b3f8-8ede-48f7-9594-eeb1f126e622}</Project>
       <Name>Yutai.ArcGIS.Common</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.Identifer\Yutai.Identifer.csproj">
       <Project>{e7598649-d49b-45fa-b020-57e2dd777337}</Project>
       <Name>Yutai.Identifer</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.Plugins\Yutai.Plugins.csproj">
       <Project>{800F2EE4-47AB-4CD4-934D-A64980D98A23}</Project>
       <Name>Yutai.Plugins</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.UI\Yutai.UI.csproj">
       <Project>{9A73B99A-0D59-4B55-B35F-721D321942AF}</Project>
       <Name>Yutai.UI</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Yutai\Yutai.csproj">
       <Project>{23F812D9-D4AA-44AA-A721-AD0948099A95}</Project>
       <Name>Yutai</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -72,8 +72,8 @@ namespace Yutai.Plugins.Editor.Commands
         public override void OnCreate(object hook)
         {
             _context = hook as IAppContext;
-            this.m_name = "Editor_StreamingFlag";
-            this._key = "Editor_StreamingFlag";
+            this.m_name = "Edit_StreamingFlag";
+            this._key = "Edit_StreamingFlag";
             base.m_category = "Editor";
             this.m_caption = "启用流模式";
             this.m_toolTip = "启用流模式";

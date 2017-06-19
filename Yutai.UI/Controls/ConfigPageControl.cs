@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Syncfusion.Windows.Forms.Tools;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.UI.Controls
@@ -19,7 +18,7 @@ namespace Yutai.UI.Controls
             InitializeComponent();
         }
 
-        public GradientPanel Panel
+        public Panel Panel
         {
             get { return gradientPanel1; }
         }

@@ -189,7 +189,7 @@ namespace Yutai.Plugins.Editor.Commands
         {
             IActiveView focusMap = (IActiveView) _context.FocusMap;
             IPoint mapPoint = focusMap.ScreenDisplay.DisplayTransformation.ToMapPoint(int_2, int_3);
-            SketchShareEx.SketchMouseMove(mapPoint, _context.FocusMap, _context.Config.SnapEnvironment);
+            SketchShareEx.SketchMouseMove(mapPoint, _context.FocusMap, _context.Config.EngineSnapEnvironment);
             //base.OnMouseMove(Button, Shift, int_2, int_3);
         }
     }
