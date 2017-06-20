@@ -439,7 +439,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             base.ClientSize = new Size(0x1c0, 0x111);
             base.Controls.Add(this.dataGrid1);
             base.Controls.Add(this.panel1);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmTable";
             base.Load += new EventHandler(this.frmTable_Load);
             this.dataGrid1.EndInit();

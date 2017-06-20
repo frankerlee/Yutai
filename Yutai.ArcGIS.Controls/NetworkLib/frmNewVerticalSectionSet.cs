@@ -100,7 +100,7 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             base.Controls.Add(this.label2);
             base.Controls.Add(this.cboPipleLineLayers);
             base.Controls.Add(this.label1);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmNewVerticalSectionSet";
             this.Text = "纵断面设置";
             base.ResumeLayout(false);

@@ -81,7 +81,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.Controls.Add(this.btnCancel);
             base.Controls.Add(this.btnOK);
             base.Controls.Add(this.panel1);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmFeatureDataset";
             this.Text = "要素集";
             base.Load += new EventHandler(this.frmFeatureDataset_Load);

@@ -12,22 +12,22 @@ namespace Yutai.ArcGIS.Common.Framework
 			set;
 		}
 
-		void AddItem(string string_0, bool bool_0);
+		void AddItem(string cmdName, bool isGroup);
 
-		void AddItem(MenuItemDef menuItemDef_0);
+		void AddItem(MenuItemDef menuItemDef);
 
-		void AddItemEx(string string_0, string string_1, bool bool_0);
+		void AddItemEx(string cmdName, string groupCmdName, bool isGroup);
 
-		void AddItem(string string_0, string string_1, bool bool_0);
+		void AddItem(string cmdName, string parentName, bool isGroup);
 
-		void AddSubmenuItem(string string_0, string string_1, string string_2, bool bool_0);
+		void AddSubmenuItem(string cmdName, string caption, string parentName, bool isGroup);
 
-		void ClearSubItem(string string_0);
+		void ClearSubItem(string cmdName);
 
 		void Clear();
 
 		void UpdateUI();
 
-		void Show(System.Windows.Forms.Control control_0, Point point_0);
+		void Show(System.Windows.Forms.Control control, Point point);
 	}
 }

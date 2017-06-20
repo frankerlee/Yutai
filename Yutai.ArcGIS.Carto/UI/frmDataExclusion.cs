@@ -130,7 +130,7 @@ namespace Yutai.ArcGIS.Carto.UI
             base.ClientSize = new Size(0x188, 0x1ad);
             base.Controls.Add(this.tabControl1);
             base.Controls.Add(this.panel1);
-            base.Icon = ((System.Drawing.Icon)resources.GetObject("$Icon"));
+            
             base.Name = "frmDataExclusion";
             this.Text = "数据排除属性";
             this.panel1.ResumeLayout(false);

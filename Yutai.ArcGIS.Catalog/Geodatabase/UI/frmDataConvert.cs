@@ -91,7 +91,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.ClientSize = new Size(360, 0xf5);
             base.Controls.Add(this.panel2);
             base.Controls.Add(this.panel1);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmDataConvert";

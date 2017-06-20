@@ -32,7 +32,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.SuspendLayout();
             this.AutoScaleBaseSize = new Size(6, 14);
             base.ClientSize = new Size(0x198, 0xf5);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmVersionInfo";

@@ -33,7 +33,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.SuspendLayout();
             this.AutoScaleBaseSize = new Size(6, 14);
             base.ClientSize = new Size(0x192, 0x10f);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmConflictInfo";

@@ -821,7 +821,7 @@ namespace Yutai.ArcGIS.Carto.UI
             base.Controls.Add(this.groupBox3);
             base.Controls.Add(this.groupBox2);
             base.Controls.Add(this.groupBox1);
-            base.Icon = ((System.Drawing.Icon)resources.GetObject("$Icon"));
+            
             base.Name = "frmOutline";
             this.Text = "轮廓线";
             base.Load += new EventHandler(this.frmOutline_Load);

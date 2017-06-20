@@ -208,7 +208,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             base.ClientSize = new Size(0x1f8, 330);
             base.Controls.Add(this.panel2);
             base.Controls.Add(this.panel1);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmNewServerObject";
             this.Text = "New ServerObject";
             base.Load += new EventHandler(this.frmNewServerObject_Load);

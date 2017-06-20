@@ -461,7 +461,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             base.ClientSize = new Size(480, 0x111);
             base.Controls.Add(this.dataGrid1);
             base.Controls.Add(this.panel1);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmAnalystTable";
             this.Text = "分析结果";
             base.Load += new EventHandler(this.frmTable_Load);

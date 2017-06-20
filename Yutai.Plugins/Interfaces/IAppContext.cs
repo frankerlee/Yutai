@@ -91,6 +91,9 @@ namespace Yutai.Plugins.Interfaces
 
         void ShowSplashMessage(string msg);
         IBroadcasterService Broadcaster { get; }
+        object GxSelection { get; set; }
+        object GxCatalog { get; set; }
+        object GxObject { get; set; }
         void RefreshContextMenu();
 
         void ClearCurrentTool();

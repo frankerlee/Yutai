@@ -97,8 +97,8 @@ namespace Yutai.ArcGIS.Catalog
         {
             this.ipopuMenuWrap_0 = object_0 as IPopuMenuWrap;
             this.ipopuMenuWrap_0.Clear();
-            this.ipopuMenuWrap_0.AddItem("Connection", true);
-            this.ipopuMenuWrap_0.AddItem("DisConnection", false);
+            this.ipopuMenuWrap_0.AddItem("Catalog_Connection", true);
+            this.ipopuMenuWrap_0.AddItem("Catalog_Disconnection", false);
         }
 
         public void LoadFromFile(string string_1)

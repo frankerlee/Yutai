@@ -111,7 +111,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.Controls.Add(this.btnCancel);
             base.Controls.Add(this.btnApply);
             base.Controls.Add(this.btnOK);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "ObjectClassInfoEdit";
             this.Text = "新建";
             base.Load += new EventHandler(this.ObjectClassInfoEdit_Load);

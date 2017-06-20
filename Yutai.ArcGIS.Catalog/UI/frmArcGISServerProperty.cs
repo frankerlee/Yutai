@@ -287,7 +287,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             base.Controls.Add(this.groupBox1);
             base.Controls.Add(this.groupBox3);
             base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmArcGISServerProperty";

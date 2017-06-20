@@ -101,11 +101,11 @@ namespace Yutai.ArcGIS.Catalog
             wrap.Clear();
             if (this.int_0 > 0)
             {
-                wrap.AddItem("ServerStartCommand", true);
-                wrap.AddItem("ServerStopCommand", true);
-                wrap.AddItem("ServicesProperty", true);
+                wrap.AddItem("Catalog_StartServer", true);
+                wrap.AddItem("Catalog_StopServer", true);
+                wrap.AddItem("Catalog_ServiceProperty", true);
             }
-            wrap.AddItem("GxObjectProperty", true);
+            wrap.AddItem("Catalog_GxObjectProperty", true);
         }
 
         public void Refresh()

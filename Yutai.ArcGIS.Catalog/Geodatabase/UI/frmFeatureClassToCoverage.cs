@@ -112,7 +112,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.Controls.Add(this.btnDelete);
             base.Controls.Add(this.btnSelectInputFeatures);
             base.Controls.Add(this.lblSelectObjects);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmFeatureClassToCoverage";
             this.Text = "要素类转为Coverage";
             ((ISupportInitialize) this.dataGridView1).EndInit();

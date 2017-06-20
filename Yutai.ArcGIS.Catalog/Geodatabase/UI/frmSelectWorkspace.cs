@@ -146,7 +146,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.Controls.Add(this.label2);
             base.Controls.Add(this.EditWorkspacelist);
             base.Controls.Add(this.label1);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmSelectWorkspace";
             this.Text = "frmSelectWorkspace";
             base.Load += new EventHandler(this.frmSelectWorkspace_Load);

@@ -189,7 +189,7 @@ namespace Yutai.ArcGIS.Controls.DataConversionTools
             base.Controls.Add(this.btnCancel);
             base.Controls.Add(this.lblGeoProcessor);
             base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmGeoProcessorInfo";

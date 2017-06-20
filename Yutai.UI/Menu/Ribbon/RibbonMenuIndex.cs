@@ -568,13 +568,16 @@ namespace Yutai.UI.Menu.Ribbon
                 Name = item.Key,
                 Caption = item.Caption
             };
-            if (item.Image.Width > 24 || item.Image.Height > 24)
+            if (item.Image != null)
             {
-                button.LargeGlyph = item.Image;
-            }
-            else
-            {
-                button.Glyph = item.Image;
+                if (item.Image.Width > 24 || item.Image.Height > 24)
+                {
+                    button.LargeGlyph = item.Image;
+                }
+                else
+                {
+                    button.Glyph = item.Image;
+                }
             }
             button.Checked = item.Checked;
             button.Tag = item;
@@ -593,13 +596,20 @@ namespace Yutai.UI.Menu.Ribbon
                 Name = item.Key,
                 Caption = item.Caption
             };
-            if (item.Image.Width > 24 || item.Image.Height > 24)
+            if (item.Image != null)
             {
-                button.LargeGlyph = item.Image;
+                if (item.Image.Width > 24 || item.Image.Height > 24)
+                {
+                    button.LargeGlyph = item.Image;
+                }
+                else
+                {
+                    button.Glyph = item.Image;
+                }
             }
             else
             {
-                button.Glyph = item.Image;
+                button.PaintStyle = BarItemPaintStyle.Caption;
             }
             button.Tag = item;
             button.ItemClick += ((YutaiCommand) item).OnClick;
@@ -630,15 +640,17 @@ namespace Yutai.UI.Menu.Ribbon
                 Name = item.Key,
                 Caption = item.Caption
             };
-            if (item.Image.Width > 24 || item.Image.Height > 24)
+            if (item.Image != null)
             {
-                dropItem.LargeGlyph = item.Image;
+                if (item.Image.Width > 24 || item.Image.Height > 24)
+                {
+                    dropItem.LargeGlyph = item.Image;
+                }
+                else
+                {
+                    dropItem.Glyph = item.Image;
+                }
             }
-            else
-            {
-                dropItem.Glyph = item.Image;
-            }
-
             //for (int i = 0; i < comboSetting.GetCount(); i++)
             //{
             //    ((ICommandSubType)item).SetSubType(i);

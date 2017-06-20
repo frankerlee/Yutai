@@ -14,6 +14,7 @@ using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geometry;
 using ESRI.ArcGIS.SystemUI;
 using Syncfusion.Windows.Forms.Tools;
+using Yutai.ArcGIS.Catalog;
 using Yutai.ArcGIS.Common;
 using Yutai.Controls;
 using Yutai.Forms;
@@ -59,6 +60,10 @@ namespace Yutai
         private IStyleGallery m_pStyleGallery;
         private ToolTip _toolTip;
 
+
+        private IGxSelection _gxSelection;
+        private IGxCatalog _gxCatalog;
+        private IGxObject _gxObject;
         private YutaiTool _currentTool;
 
         public AppContext(
@@ -74,6 +79,59 @@ namespace Yutai
         }
 
         public IBroadcasterService Broadcaster { get; private set; }
+
+        public object GxSelection
+        {
+            get
+            {
+                return _gxSelection as object;
+            }
+            set
+            {
+                if (_gxSelection is IGxSelectionEvents)
+                {
+                    (_gxSelection as IGxSelectionEvents).OnSelectionChanged -= new OnSelectionChangedEventHandler(this.GxSelection_Changed);
+                }
+                _gxSelection = value as IGxSelection;
+                if (_gxSelection is IGxSelectionEvents)
+                {
+                    (_gxSelection as IGxSelectionEvents).OnSelectionChanged += new OnSelectionChangedEventHandler(this.GxSelection_Changed);
+                }
+            }
+        }
+
+        private void GxSelection_Changed(IGxSelection igxSelection_1, object object_0)
+        {
+            if (this._gxSelection == igxSelection_1)
+            {
+                this._gxObject = igxSelection_1.FirstObject;
+            }
+        }
+
+        public object GxCatalog {
+            get
+            {
+                return _gxCatalog;
+            }
+            set
+            {
+                this._gxCatalog = value as IGxCatalog;
+                this.GxSelection = this._gxCatalog.Selection;
+            }
+        }
+
+        public object GxObject
+        {
+            get
+            {
+                return _gxObject;
+            }
+            set
+            {
+                _gxObject = value as IGxObject;
+            }
+        }
+
         public void RefreshContextMenu()
         {
             RibbonMenu.RefreshContextMenu();
@@ -295,6 +353,15 @@ namespace Yutai
 
             m_pOperationStack = new OperationStackClass();
             m_pStyleGallery = null;
+
+            //Catalog配置
+            GxCatalog = new GxCatalog();
+            //GxSelection=new GxSelection();
+            //if (this._gxSelection is IGxSelectionEvents)
+            //{
+            //    (this._gxSelection as IGxSelectionEvents).OnSelectionChanged += new OnSelectionChangedEventHandler(this.GxSelection_Changed);
+            //}
+
             Initialized = true;
             Logger.Current.Trace("End AppContext.Init()");
 

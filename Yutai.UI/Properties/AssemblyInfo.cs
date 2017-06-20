@@ -35,6 +35,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 [assembly: InternalsVisibleTo("Yutai.Editor")]
 [assembly: InternalsVisibleTo("Yutai.Identifer")]
+[assembly: InternalsVisibleTo("Yutai.Catalog")]
 [assembly: InternalsVisibleTo("Yutai.Locator")]
 [assembly: InternalsVisibleTo("Yutai.Bookmark")]
 [assembly: InternalsVisibleTo("Yutai.TableEditor")]

@@ -602,7 +602,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.Controls.Add(this.groupBox1);
             base.Controls.Add(this.listRule);
             base.Controls.Add(this.chkListBoxFeatureClass);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmCreateTopologySet";

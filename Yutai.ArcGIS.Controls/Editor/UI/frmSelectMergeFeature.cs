@@ -84,7 +84,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             base.Controls.Add(this.btnOK);
             base.Controls.Add(this.label1);
             base.Controls.Add(this.listBox1);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmSelectMergeFeature";
             this.Text = "合并";
             base.Load += new EventHandler(this.frmSelectMergeFeature_Load);

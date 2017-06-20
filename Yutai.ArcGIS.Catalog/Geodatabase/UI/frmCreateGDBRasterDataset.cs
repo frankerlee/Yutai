@@ -267,7 +267,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.Controls.Add(this.label2);
             base.Controls.Add(this.btnSelectOutLocation);
             base.Controls.Add(this.label1);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmCreateGDBRasterDataset";
             this.Text = "创建栅格数据集";
             base.Load += new EventHandler(this.frmCreateGDBRasterDataset_Load);

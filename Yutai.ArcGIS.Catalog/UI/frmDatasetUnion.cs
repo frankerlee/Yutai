@@ -493,7 +493,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             base.Controls.Add(this.panel2);
             base.Controls.Add(this.panel1);
             base.Controls.Add(this.radioGroup1);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmDatasetUnion";
             this.Text = "合并数据";
             this.radioGroup1.Properties.EndInit();

@@ -65,7 +65,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             base.Controls.Add(this.btnCnacel);
             base.Controls.Add(this.btnAdd);
             base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmRepresationRule";

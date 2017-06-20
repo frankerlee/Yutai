@@ -261,7 +261,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.Controls.Add(this.label2);
             base.Controls.Add(this.label1);
             base.Controls.Add(this.comboRule);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmAddRuleByClass";

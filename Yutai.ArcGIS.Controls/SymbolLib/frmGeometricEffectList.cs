@@ -253,7 +253,7 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
             base.Controls.Add(this.btnOK);
             base.Controls.Add(this.treeView1);
             base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmGeometricEffectList";

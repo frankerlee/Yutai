@@ -108,7 +108,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.AutoScaleBaseSize = new Size(6, 14);
             base.ClientSize = new Size(0x138, 0x111);
             base.Controls.Add(this.listView1);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmCheckOutManager";

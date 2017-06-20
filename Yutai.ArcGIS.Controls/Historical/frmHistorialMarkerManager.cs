@@ -182,7 +182,7 @@ namespace Yutai.ArcGIS.Controls.Historical
             base.Controls.Add(this.btnNew);
             base.Controls.Add(this.listView1);
             base.Controls.Add(this.label1);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmHistorialMarkerManager";

@@ -120,7 +120,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             base.ClientSize = new Size(0x1f8, 0x16d);
             base.Controls.Add(this.panel1);
             base.Controls.Add(this.xtraTabControl1);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmCoveragePropertySheet";
             this.Text = "frmCoveragePropertySheet";
             base.Load += new EventHandler(this.frmCoveragePropertySheet_Load);

@@ -67,6 +67,7 @@ namespace Yutai.Plugins.Concrete
                     new Guid("01f8e32a-5837-431f-9c1b-5d0f195fb93e"), // 书签管理
                     new Guid("4a3bcaab-9d3e-4ca7-a19d-7ee08fb0629e"), // 编辑
                     new Guid("7da6c412-c345-4ccc-9f22-ef7eb3757898"), // 属性表
+                    new Guid("5e857d4e-1a77-46d8-b1bb-b36548be7333"),//Catalog功能
                 };
 
             }

@@ -99,7 +99,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.Controls.Add(this.progressBarObjectClass);
             base.Controls.Add(this.label2);
             base.Controls.Add(this.lblObjectClass);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmDataTransferProgress";
             this.Text = "数据传送进程";
             base.Load += new EventHandler(this.frmDataTransferProgress_Load);

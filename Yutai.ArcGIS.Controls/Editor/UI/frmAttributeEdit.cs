@@ -32,7 +32,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAttributeEdit));
             base.SuspendLayout();
             base.ClientSize = new Size(0x124, 0x111);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmAttributeEdit";
             base.ResumeLayout(false);
         }

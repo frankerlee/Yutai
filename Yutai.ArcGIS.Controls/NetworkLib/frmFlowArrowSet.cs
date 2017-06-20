@@ -63,7 +63,7 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             base.ClientSize = new Size(0x124, 0x111);
             base.Controls.Add(this.tabControl1);
             base.Controls.Add(this.panel1);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmFlowArrowSet";
             this.Text = "流向属性";
             this.tabControl1.ResumeLayout(false);

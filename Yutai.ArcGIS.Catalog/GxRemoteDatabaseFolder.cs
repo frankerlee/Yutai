@@ -18,7 +18,7 @@ namespace Yutai.ArcGIS.Catalog
 
         public GxRemoteDatabaseFolder()
         {
-            string str = RegistryTools.GetRegistryKey("HKEY_CURRENT_USER", @"Software\ESRI\Desktop10.2\CoreRuntime\Locator\Settings", "LocatorDirectory");
+            string str ="";//= RegistryTools.GetRegistryKey("HKEY_CURRENT_USER", @"Software\ESRI\Desktop10.2\CoreRuntime\Locator\Settings", "LocatorDirectory");
             if (!string.IsNullOrEmpty(str) && ((str.IndexOf(@"Locators\", StringComparison.OrdinalIgnoreCase) > 0) && (str.IndexOf("ArcCatalog", StringComparison.OrdinalIgnoreCase) == -1)))
             {
                 this.string_0 = str.Replace("Locators", "ArcCatalog");

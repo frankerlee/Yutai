@@ -156,17 +156,17 @@ namespace Yutai.ArcGIS.Catalog
         {
             this.ipopuMenuWrap_0 = object_0 as IPopuMenuWrap;
             this.ipopuMenuWrap_0.Clear();
-            this.ipopuMenuWrap_0.AddItem("CopyItem", false);
-            this.ipopuMenuWrap_0.AddItem("PasteItem", false);
-            this.ipopuMenuWrap_0.AddItem("DeleteObject", true);
-            this.ipopuMenuWrap_0.AddItem("ReName", false);
-            this.ipopuMenuWrap_0.AddItem("RefreshItem", true);
+            this.ipopuMenuWrap_0.AddItem("Catalog_Copy", false);
+            this.ipopuMenuWrap_0.AddItem("Catalog_Paste", false);
+            this.ipopuMenuWrap_0.AddItem("Catalog_Delete", true);
+            this.ipopuMenuWrap_0.AddItem("Catalog_Rename", false);
+            this.ipopuMenuWrap_0.AddItem("Catalog_Refresh", true);
             this.ipopuMenuWrap_0.ClearSubItem("NewBarSubItem");
             this.ipopuMenuWrap_0.AddSubmenuItem("NewBarSubItem", "新建", "", true);
-            this.ipopuMenuWrap_0.AddItem("NewFolder", "NewBarSubItem", false);
-            this.ipopuMenuWrap_0.AddItem("NewPersonGDB", "NewBarSubItem", true);
-            this.ipopuMenuWrap_0.AddItem("NewFileGDB", "NewBarSubItem", false);
-            this.ipopuMenuWrap_0.AddItem("NewShapefile", "NewBarSubItem", false);
+            this.ipopuMenuWrap_0.AddItem("Catalog_NewFolder", "NewBarSubItem", false);
+            this.ipopuMenuWrap_0.AddItem("Catalog_NewPGDB", "NewBarSubItem", true);
+            this.ipopuMenuWrap_0.AddItem("Catalog_NewFGDB", "NewBarSubItem", false);
+            this.ipopuMenuWrap_0.AddItem("Catalog_NewShapefile", "NewBarSubItem", false);
         }
 
         private bool method_0(string string_1, bool bool_2)

@@ -259,7 +259,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.ClientSize = new Size(440, 0x145);
             base.Controls.Add(this.panel2);
             base.Controls.Add(this.panel1);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmCheckInWizard";
             this.Text = "检入数据向导";
             base.Load += new EventHandler(this.frmCheckInWizard_Load);

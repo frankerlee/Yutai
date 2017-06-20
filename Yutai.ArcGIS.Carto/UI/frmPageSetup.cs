@@ -71,7 +71,7 @@ namespace Yutai.ArcGIS.Carto.UI
             base.Controls.Add(this.btnCancel);
             base.Controls.Add(this.panel);
             base.Controls.Add(this.btnOK);
-            base.Icon = ((System.Drawing.Icon)resources.GetObject("$Icon"));
+            
             base.Name = "frmPageSetup";
             this.Text = "页面设置";
             base.Load += new EventHandler(this.frmPageSetup_Load);

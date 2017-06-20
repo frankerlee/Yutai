@@ -180,7 +180,7 @@ namespace Yutai.ArcGIS.Carto.UI
             base.Controls.Add(this.btnOK);
             base.Controls.Add(this.gropScaleset);
             base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            base.Icon = ((System.Drawing.Icon)resources.GetObject("$Icon"));
+            
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmAnnoScaleSet";

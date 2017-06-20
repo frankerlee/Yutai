@@ -107,7 +107,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.Controls.Add(this.btnCancel);
             base.Controls.Add(this.btnOK);
             base.Controls.Add(this.tabControl1);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmGDBInfo";
             this.Text = "数据库属性";
             base.Load += new EventHandler(this.frmGDBInfo_Load);

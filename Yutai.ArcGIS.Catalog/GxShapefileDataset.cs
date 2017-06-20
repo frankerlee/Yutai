@@ -124,10 +124,10 @@ namespace Yutai.ArcGIS.Catalog
         {
             this.ipopuMenuWrap_0 = object_0 as IPopuMenuWrap;
             this.ipopuMenuWrap_0.Clear();
-            this.ipopuMenuWrap_0.AddItem("CopyItem", false);
-            this.ipopuMenuWrap_0.AddItem("DeleteObject", true);
-            this.ipopuMenuWrap_0.AddItem("ReName", false);
-            this.ipopuMenuWrap_0.AddItem("GxObjectProperty", true);
+            this.ipopuMenuWrap_0.AddItem("Catalog_Copy", false);
+            this.ipopuMenuWrap_0.AddItem("Catalog_Delete", true);
+            this.ipopuMenuWrap_0.AddItem("Catalog_Rename", false);
+            this.ipopuMenuWrap_0.AddItem("Catalog_GxObjectProperty", true);
             this.ipopuMenuWrap_0.UpdateUI();
         }
 

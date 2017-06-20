@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Yutai.Catalog.Properties {
+namespace Yutai.Plugins.Catalog.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Yutai.Catalog.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Yutai.Catalog.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Yutai.Plugins.Catalog.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -63,9 +63,9 @@ namespace Yutai.Catalog.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap AddArcGISServer {
+        internal static System.Drawing.Bitmap icon_catalog {
             get {
-                object obj = ResourceManager.GetObject("AddArcGISServer", resourceCulture);
+                object obj = ResourceManager.GetObject("icon_catalog", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace Yutai.Catalog.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap AddArcIMSServer {
+        internal static System.Drawing.Bitmap icon_catalog_copy {
             get {
-                object obj = ResourceManager.GetObject("AddArcIMSServer", resourceCulture);
+                object obj = ResourceManager.GetObject("icon_catalog_copy", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace Yutai.Catalog.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap AddGDBServer {
+        internal static System.Drawing.Bitmap icon_catalog_dataset {
             get {
-                object obj = ResourceManager.GetObject("AddGDBServer", resourceCulture);
+                object obj = ResourceManager.GetObject("icon_catalog_dataset", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace Yutai.Catalog.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap AddServerObject {
+        internal static System.Drawing.Bitmap icon_catalog_delete {
             get {
-                object obj = ResourceManager.GetObject("AddServerObject", resourceCulture);
+                object obj = ResourceManager.GetObject("icon_catalog_delete", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace Yutai.Catalog.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap AddWMSServer {
+        internal static System.Drawing.Bitmap icon_catalog_featureclass {
             get {
-                object obj = ResourceManager.GetObject("AddWMSServer", resourceCulture);
+                object obj = ResourceManager.GetObject("icon_catalog_featureclass", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace Yutai.Catalog.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap ArcGISServerConn {
+        internal static System.Drawing.Bitmap icon_catalog_filegdb {
             get {
-                object obj = ResourceManager.GetObject("ArcGISServerConn", resourceCulture);
+                object obj = ResourceManager.GetObject("icon_catalog_filegdb", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +123,9 @@ namespace Yutai.Catalog.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap ArcGISServerUnConn {
+        internal static System.Drawing.Bitmap icon_catalog_folder {
             get {
-                object obj = ResourceManager.GetObject("ArcGISServerUnConn", resourceCulture);
+                object obj = ResourceManager.GetObject("icon_catalog_folder", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +133,9 @@ namespace Yutai.Catalog.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap ArcIMSServerConn {
+        internal static System.Drawing.Bitmap icon_catalog_paste {
             get {
-                object obj = ResourceManager.GetObject("ArcIMSServerConn", resourceCulture);
+                object obj = ResourceManager.GetObject("icon_catalog_paste", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +143,9 @@ namespace Yutai.Catalog.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap ArcIMSServerUnConn {
+        internal static System.Drawing.Bitmap icon_catalog_pgdb {
             get {
-                object obj = ResourceManager.GetObject("ArcIMSServerUnConn", resourceCulture);
+                object obj = ResourceManager.GetObject("icon_catalog_pgdb", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +153,9 @@ namespace Yutai.Catalog.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap bmpAddLink {
+        internal static System.Drawing.Bitmap icon_catalog_raster {
             get {
-                object obj = ResourceManager.GetObject("bmpAddLink", resourceCulture);
+                object obj = ResourceManager.GetObject("icon_catalog_raster", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +163,9 @@ namespace Yutai.Catalog.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap bmpAnno {
+        internal static System.Drawing.Bitmap icon_catalog_rasterfolder {
             get {
-                object obj = ResourceManager.GetObject("bmpAnno", resourceCulture);
+                object obj = ResourceManager.GetObject("icon_catalog_rasterfolder", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +173,9 @@ namespace Yutai.Catalog.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap bmpAnnotationCoverage {
+        internal static System.Drawing.Bitmap icon_catalog_relationship {
             get {
-                object obj = ResourceManager.GetObject("bmpAnnotationCoverage", resourceCulture);
+                object obj = ResourceManager.GetObject("icon_catalog_relationship", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,9 +183,9 @@ namespace Yutai.Catalog.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap bmpCADAnno {
+        internal static System.Drawing.Bitmap icon_catalog_shapefile {
             get {
-                object obj = ResourceManager.GetObject("bmpCADAnno", resourceCulture);
+                object obj = ResourceManager.GetObject("icon_catalog_shapefile", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,889 +193,9 @@ namespace Yutai.Catalog.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap bmpCadDrawing {
+        internal static System.Drawing.Bitmap icon_catalog_table {
             get {
-                object obj = ResourceManager.GetObject("bmpCadDrawing", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpCADLayers {
-            get {
-                object obj = ResourceManager.GetObject("bmpCADLayers", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpCADMultiPatch {
-            get {
-                object obj = ResourceManager.GetObject("bmpCADMultiPatch", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpCADPoint {
-            get {
-                object obj = ResourceManager.GetObject("bmpCADPoint", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpCADPolygon {
-            get {
-                object obj = ResourceManager.GetObject("bmpCADPolygon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpCADPolyline {
-            get {
-                object obj = ResourceManager.GetObject("bmpCADPolyline", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpCopy {
-            get {
-                object obj = ResourceManager.GetObject("bmpCopy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpCoverage {
-            get {
-                object obj = ResourceManager.GetObject("bmpCoverage", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpCoverageAnnoFeatclass {
-            get {
-                object obj = ResourceManager.GetObject("bmpCoverageAnnoFeatclass", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpCoverageArcFeatClass {
-            get {
-                object obj = ResourceManager.GetObject("bmpCoverageArcFeatClass", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpCoverageLabelFeatClass {
-            get {
-                object obj = ResourceManager.GetObject("bmpCoverageLabelFeatClass", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpCoverageNodeFeatClass {
-            get {
-                object obj = ResourceManager.GetObject("bmpCoverageNodeFeatClass", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpCoveragePointFeatClass {
-            get {
-                object obj = ResourceManager.GetObject("bmpCoveragePointFeatClass", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpCoveragePolygonFeatClass {
-            get {
-                object obj = ResourceManager.GetObject("bmpCoveragePolygonFeatClass", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpCoverageRegionFeatClass {
-            get {
-                object obj = ResourceManager.GetObject("bmpCoverageRegionFeatClass", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpCoverageRouteFeatClass {
-            get {
-                object obj = ResourceManager.GetObject("bmpCoverageRouteFeatClass", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpCoverageTicFeatClass {
-            get {
-                object obj = ResourceManager.GetObject("bmpCoverageTicFeatClass", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpDataset {
-            get {
-                object obj = ResourceManager.GetObject("bmpDataset", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpDBLink {
-            get {
-                object obj = ResourceManager.GetObject("bmpDBLink", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpDelete {
-            get {
-                object obj = ResourceManager.GetObject("bmpDelete", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpDiskConnect {
-            get {
-                object obj = ResourceManager.GetObject("bmpDiskConnect", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpError {
-            get {
-                object obj = ResourceManager.GetObject("bmpError", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpErrorLayer {
-            get {
-                object obj = ResourceManager.GetObject("bmpErrorLayer", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpFeature {
-            get {
-                object obj = ResourceManager.GetObject("bmpFeature", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpFillFeatureClass {
-            get {
-                object obj = ResourceManager.GetObject("bmpFillFeatureClass", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpFillLayer {
-            get {
-                object obj = ResourceManager.GetObject("bmpFillLayer", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpFolder1 {
-            get {
-                object obj = ResourceManager.GetObject("bmpFolder1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpFolder2 {
-            get {
-                object obj = ResourceManager.GetObject("bmpFolder2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpGDBLink1 {
-            get {
-                object obj = ResourceManager.GetObject("bmpGDBLink1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpGDBLink2 {
-            get {
-                object obj = ResourceManager.GetObject("bmpGDBLink2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpGeometryNet {
-            get {
-                object obj = ResourceManager.GetObject("bmpGeometryNet", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpGroupLayer {
-            get {
-                object obj = ResourceManager.GetObject("bmpGroupLayer", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpLayer {
-            get {
-                object obj = ResourceManager.GetObject("bmpLayer", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpLineCoverage {
-            get {
-                object obj = ResourceManager.GetObject("bmpLineCoverage", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpLineFeature {
-            get {
-                object obj = ResourceManager.GetObject("bmpLineFeature", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpLineLayer {
-            get {
-                object obj = ResourceManager.GetObject("bmpLineLayer", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpLinkToFolder {
-            get {
-                object obj = ResourceManager.GetObject("bmpLinkToFolder", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpMultiPatch {
-            get {
-                object obj = ResourceManager.GetObject("bmpMultiPatch", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpMXD {
-            get {
-                object obj = ResourceManager.GetObject("bmpMXD", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpPaste {
-            get {
-                object obj = ResourceManager.GetObject("bmpPaste", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpPersonGDB {
-            get {
-                object obj = ResourceManager.GetObject("bmpPersonGDB", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpPMF {
-            get {
-                object obj = ResourceManager.GetObject("bmpPMF", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpPointCoverage {
-            get {
-                object obj = ResourceManager.GetObject("bmpPointCoverage", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpPointFeature {
-            get {
-                object obj = ResourceManager.GetObject("bmpPointFeature", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpPointLayer {
-            get {
-                object obj = ResourceManager.GetObject("bmpPointLayer", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpPolygonCoverage {
-            get {
-                object obj = ResourceManager.GetObject("bmpPolygonCoverage", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpProjection {
-            get {
-                object obj = ResourceManager.GetObject("bmpProjection", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpProperty {
-            get {
-                object obj = ResourceManager.GetObject("bmpProperty", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpRaster {
-            get {
-                object obj = ResourceManager.GetObject("bmpRaster", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpRasterCatalog {
-            get {
-                object obj = ResourceManager.GetObject("bmpRasterCatalog", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpRasterDataset {
-            get {
-                object obj = ResourceManager.GetObject("bmpRasterDataset", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpRasterLayer {
-            get {
-                object obj = ResourceManager.GetObject("bmpRasterLayer", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpRefresh {
-            get {
-                object obj = ResourceManager.GetObject("bmpRefresh", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpRegionCoverage {
-            get {
-                object obj = ResourceManager.GetObject("bmpRegionCoverage", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpRelation {
-            get {
-                object obj = ResourceManager.GetObject("bmpRelation", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpRoot {
-            get {
-                object obj = ResourceManager.GetObject("bmpRoot", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpTable {
-            get {
-                object obj = ResourceManager.GetObject("bmpTable", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpText {
-            get {
-                object obj = ResourceManager.GetObject("bmpText", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpTin {
-            get {
-                object obj = ResourceManager.GetObject("bmpTin", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpToHigher {
-            get {
-                object obj = ResourceManager.GetObject("bmpToHigher", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap bmpTopology {
-            get {
-                object obj = ResourceManager.GetObject("bmpTopology", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap DiskConnectionError {
-            get {
-                object obj = ResourceManager.GetObject("DiskConnectionError", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap DJStructbmp {
-            get {
-                object obj = ResourceManager.GetObject("DJStructbmp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap ErrorShapeFile {
-            get {
-                object obj = ResourceManager.GetObject("ErrorShapeFile", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap Excel {
-            get {
-                object obj = ResourceManager.GetObject("Excel", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap FeatureServices {
-            get {
-                object obj = ResourceManager.GetObject("FeatureServices", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap GDBFolder {
-            get {
-                object obj = ResourceManager.GetObject("GDBFolder", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap GDBServer {
-            get {
-                object obj = ResourceManager.GetObject("GDBServer", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap GDBsUnConnect {
-            get {
-                object obj = ResourceManager.GetObject("GDBsUnConnect", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap GeometryAny {
-            get {
-                object obj = ResourceManager.GetObject("GeometryAny", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap GeometryServerPause {
-            get {
-                object obj = ResourceManager.GetObject("GeometryServerPause", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap GeometryServerStart {
-            get {
-                object obj = ResourceManager.GetObject("GeometryServerStart", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap GeometryServerStop {
-            get {
-                object obj = ResourceManager.GetObject("GeometryServerStop", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap GISServerFolder {
-            get {
-                object obj = ResourceManager.GetObject("GISServerFolder", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap GPServerPause {
-            get {
-                object obj = ResourceManager.GetObject("GPServerPause", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap GPServerStart {
-            get {
-                object obj = ResourceManager.GetObject("GPServerStart", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap GPServerStop {
-            get {
-                object obj = ResourceManager.GetObject("GPServerStop", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap MapServerPaused {
-            get {
-                object obj = ResourceManager.GetObject("MapServerPaused", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap MapServerStarted {
-            get {
-                object obj = ResourceManager.GetObject("MapServerStarted", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap MapServerStoped {
-            get {
-                object obj = ResourceManager.GetObject("MapServerStoped", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap NetworkDataset {
-            get {
-                object obj = ResourceManager.GetObject("NetworkDataset", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap SearchServerPause {
-            get {
-                object obj = ResourceManager.GetObject("SearchServerPause", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap SearchServerStart {
-            get {
-                object obj = ResourceManager.GetObject("SearchServerStart", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap SearchServerStop {
-            get {
-                object obj = ResourceManager.GetObject("SearchServerStop", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap ShapeFile {
-            get {
-                object obj = ResourceManager.GetObject("ShapeFile", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap ShapeFill {
-            get {
-                object obj = ResourceManager.GetObject("ShapeFill", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap ShapeLine {
-            get {
-                object obj = ResourceManager.GetObject("ShapeLine", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap ShapePoint {
-            get {
-                object obj = ResourceManager.GetObject("ShapePoint", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap Word {
-            get {
-                object obj = ResourceManager.GetObject("Word", resourceCulture);
+                object obj = ResourceManager.GetObject("icon_catalog_table", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

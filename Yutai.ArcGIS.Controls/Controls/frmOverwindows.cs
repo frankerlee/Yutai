@@ -360,7 +360,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             base.Controls.Add(this.axMapControl1);
             base.DockAreas = DockAreas.DockBottom | DockAreas.DockTop | DockAreas.DockRight | DockAreas.DockLeft | DockAreas.Float;
             base.HideOnClose = true;
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmOverwindows";
             base.ShowHint = DockState.DockBottom;
             base.TabText = "鹰眼视图";

@@ -389,7 +389,7 @@ namespace Yutai.ArcGIS.Carto.UI
             base.Controls.Add(this.txtName);
             base.Controls.Add(this.label1);
             base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            base.Icon = ((System.Drawing.Icon)resources.GetObject("$Icon"));
+            
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmGaphicTransformation";

@@ -412,48 +412,48 @@ namespace Yutai.ArcGIS.Catalog
             {
                 flag = true;
             }
-            this.ipopuMenuWrap_0.AddItem("CopyItem", false);
-            this.ipopuMenuWrap_0.AddItem("PasteItem", false);
-            this.ipopuMenuWrap_0.AddItem("RefreshItem", false);
-            this.ipopuMenuWrap_0.AddItem("DeleteObject", true);
-            this.ipopuMenuWrap_0.AddItem("ReName", false);
+            this.ipopuMenuWrap_0.AddItem("Catalog_Copy", false);
+            this.ipopuMenuWrap_0.AddItem("Catalog_Paste", false);
+            this.ipopuMenuWrap_0.AddItem("Catalog_Refresh", false);
+            this.ipopuMenuWrap_0.AddItem("Catalog_Delete", true);
+            this.ipopuMenuWrap_0.AddItem("Catalog_Rename", false);
             this.ipopuMenuWrap_0.ClearSubItem("NewBarSubItem");
             this.ipopuMenuWrap_0.AddSubmenuItem("NewBarSubItem", "新建", "", true);
             if (flag)
             {
-                this.ipopuMenuWrap_0.AddItem("NewFeatureDataset", "NewBarSubItem", false);
+                this.ipopuMenuWrap_0.AddItem("Catalog_NewFeatureDataset", "NewBarSubItem", false);
             }
-            this.ipopuMenuWrap_0.AddItem("NewFeatureClass", "NewBarSubItem", false);
-            this.ipopuMenuWrap_0.AddItem("NewTable", "NewBarSubItem", false);
+            this.ipopuMenuWrap_0.AddItem("Catalog_NewFeatureClass", "NewBarSubItem", false);
+            this.ipopuMenuWrap_0.AddItem("Catalog_NewTable", "NewBarSubItem", false);
             if (flag)
             {
-                this.ipopuMenuWrap_0.AddItem("NewRelationClass", "NewBarSubItem", false);
-                this.ipopuMenuWrap_0.AddItem("NewRasterFolder", "NewBarSubItem", true);
-                this.ipopuMenuWrap_0.AddItem("NewRasterDataset", "NewBarSubItem", false);
+                this.ipopuMenuWrap_0.AddItem("Catalog_NewRelationClass", "NewBarSubItem", false);
+                this.ipopuMenuWrap_0.AddItem("Catalog_NewRasterFolder", "NewBarSubItem", true);
+                this.ipopuMenuWrap_0.AddItem("Catalog_NewRasterDataset", "NewBarSubItem", false);
             }
             this.ipopuMenuWrap_0.ClearSubItem("ImportBarSubItem");
             this.ipopuMenuWrap_0.AddSubmenuItem("ImportBarSubItem", "导入", "", true);
-            this.ipopuMenuWrap_0.AddItem("ImportSingleFeatureClass", "ImportBarSubItem", false);
-            this.ipopuMenuWrap_0.AddItem("ConvertToMultiFeatureClass", "ImportBarSubItem", false);
-            this.ipopuMenuWrap_0.AddItem("ImportSingleTable", "ImportBarSubItem", false);
-            this.ipopuMenuWrap_0.AddItem("MultiTableDataConvert", "ImportBarSubItem", false);
+            this.ipopuMenuWrap_0.AddItem("Catalog_ImportSingleFeatureClass", "ImportBarSubItem", false);
+            this.ipopuMenuWrap_0.AddItem("Catalog_ImportMultiFeatureClasses", "ImportBarSubItem", false);
+            this.ipopuMenuWrap_0.AddItem("Catalog_ImportSingleTable", "ImportBarSubItem", false);
+            this.ipopuMenuWrap_0.AddItem("Catalog_ImportMultiTables", "ImportBarSubItem", false);
             if (flag)
             {
-                this.ipopuMenuWrap_0.AddItem("RasterToGDB", "ImportBarSubItem", false);
+                this.ipopuMenuWrap_0.AddItem("Catalog_RasterToGDB", "ImportBarSubItem", false);
             }
-            this.ipopuMenuWrap_0.AddItem("ImportXY", "ImportBarSubItem", false);
+            this.ipopuMenuWrap_0.AddItem("Catalog_ImportXY", "ImportBarSubItem", false);
             if (this.IsRemoteDatabase)
             {
                 if (!flag)
                 {
-                    this.ipopuMenuWrap_0.AddItem("EnableEnterpriseGeodatabaseCommand", true);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_EnableSDE", true);
                 }
-                this.ipopuMenuWrap_0.AddItem("VersionInfo", true);
-                this.ipopuMenuWrap_0.AddItem("Connection", false);
-                this.ipopuMenuWrap_0.AddItem("DisConnection", false);
-                this.ipopuMenuWrap_0.AddItem("ConnectionProperty", false);
+                this.ipopuMenuWrap_0.AddItem("Catalog_VersionInfo", true);
+                this.ipopuMenuWrap_0.AddItem("Catalog_Connection", false);
+                this.ipopuMenuWrap_0.AddItem("Catalog_Disconnection", false);
+                this.ipopuMenuWrap_0.AddItem("Catalog_ConnectionProperty", false);
             }
-            this.ipopuMenuWrap_0.AddItem("GxObjectProperty", true);
+            this.ipopuMenuWrap_0.AddItem("Catalog_GxObjectProperty", true);
         }
 
         private void method_0(IWorkspace iworkspace_1)

@@ -73,7 +73,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             base.ClientSize = new Size(0x162, 0x10f);
             base.Controls.Add(this.panel1);
             base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmSnapConfig";

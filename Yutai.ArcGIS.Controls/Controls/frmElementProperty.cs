@@ -152,7 +152,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             base.ClientSize = new Size(0x198, 0x15d);
             base.Controls.Add(this.tabControl1);
             base.Controls.Add(this.panel1);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmElementProperty";
             this.Text = "属性";
             this.panel1.ResumeLayout(false);

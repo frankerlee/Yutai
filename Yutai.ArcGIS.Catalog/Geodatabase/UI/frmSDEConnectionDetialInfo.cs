@@ -212,7 +212,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.Controls.Add(this.cboHistoricalMarker);
             base.Controls.Add(this.lvwVersions);
             base.Controls.Add(this.rdoType);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmSDEConnectionDetialInfo";
             this.Text = "连接信息";
             base.Load += new EventHandler(this.frmSDEConnectionDetialInfo_Load);

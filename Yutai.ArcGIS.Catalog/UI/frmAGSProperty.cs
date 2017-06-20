@@ -68,7 +68,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             base.ClientSize = new Size(480, 330);
             base.Controls.Add(this.xtraTabControl1);
             base.Controls.Add(this.panel1);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmAGSProperty";
             this.Text = "frmAGSProperty";
             base.Load += new EventHandler(this.frmAGSProperty_Load);

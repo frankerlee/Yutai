@@ -130,7 +130,7 @@ namespace Yutai.ArcGIS.Carto.UI
             base.Controls.Add(this.btnNext);
             base.Controls.Add(this.btnLast);
             base.Controls.Add(this.btnCancel);
-            base.Icon = ((System.Drawing.Icon)resources.GetObject("$Icon"));
+            
             base.Name = "frmBufferWizard";
             this.Text = "缓冲区向导";
             base.Load += new EventHandler(this.frmBufferWizard_Load);

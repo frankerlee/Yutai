@@ -642,7 +642,7 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
             base.Controls.Add(this.lblMag);
             base.Controls.Add(this.label16);
             base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmGPSPositionWindows";

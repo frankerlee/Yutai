@@ -364,7 +364,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             base.Controls.Add(this.groupBox2);
             base.Controls.Add(this.groupBox1);
             base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmUpdateAnnoAttribute";

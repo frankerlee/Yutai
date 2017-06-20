@@ -164,7 +164,7 @@ namespace Yutai.ArcGIS.Carto.UI
             base.Controls.Add(this.btnLast);
             base.Controls.Add(this.btnCancel);
             base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            base.Icon = ((System.Drawing.Icon)resources.GetObject("$Icon"));
+            
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmTKWizard";

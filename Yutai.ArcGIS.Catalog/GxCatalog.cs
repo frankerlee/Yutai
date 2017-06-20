@@ -206,7 +206,7 @@ namespace Yutai.ArcGIS.Catalog
         {
             this.ipopuMenuWrap_0 = object_0 as IPopuMenuWrap;
             this.ipopuMenuWrap_0.Clear();
-            this.ipopuMenuWrap_0.AddItem("RefreshItem", false);
+            this.ipopuMenuWrap_0.AddItem("Catalog_Refresh", false);
         }
 
         void IGxFile.Close(bool bool_0)

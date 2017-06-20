@@ -42,7 +42,7 @@ namespace Yutai.ArcGIS.Carto.UI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInfo));
             base.SuspendLayout();
             base.ClientSize = new Size(0x124, 0x111);
-            base.Icon = ((System.Drawing.Icon)resources.GetObject("$Icon"));
+            
             base.Name = "frmInfo";
             base.ResumeLayout(false);
         }

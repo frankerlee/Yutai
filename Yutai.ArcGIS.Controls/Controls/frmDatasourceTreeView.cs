@@ -75,7 +75,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             base.Controls.Add(this.tocTreeView1);
             base.DockAreas = DockAreas.DockBottom | DockAreas.DockTop | DockAreas.DockRight | DockAreas.DockLeft | DockAreas.Float;
             base.HideOnClose = true;
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmDatasourceTreeView";
             base.ShowHint = DockState.DockLeft;
             base.TabText = "数据源";

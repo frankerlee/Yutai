@@ -150,7 +150,7 @@ namespace Yutai.ArcGIS.Carto.UI
             base.Controls.Add(this.groupBox1);
             base.Controls.Add(this.txtScale);
             base.Controls.Add(this.label1);
-            base.Icon = ((System.Drawing.Icon)resources.GetObject("$Icon"));
+            
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmScaleSet";

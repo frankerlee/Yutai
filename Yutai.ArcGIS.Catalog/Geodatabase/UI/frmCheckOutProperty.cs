@@ -175,7 +175,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.Controls.Add(this.label3);
             base.Controls.Add(this.label2);
             base.Controls.Add(this.label1);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmCheckOutProperty";
             this.Text = "frmCheckOutProperty";
             base.Load += new EventHandler(this.frmCheckOutProperty_Load);

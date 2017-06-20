@@ -61,7 +61,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             base.Controls.Add(this.listBox1);
             base.Controls.Add(this.button2);
             base.Controls.Add(this.button1);
-            base.Icon = (Icon)resources.GetObject("$Icon");
+            
             base.Name = "frmSelectParam";
             this.Text = "选择参数";
             base.Load += new EventHandler(this.frmSelectParam_Load);

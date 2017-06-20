@@ -75,7 +75,7 @@ namespace Yutai.ArcGIS.Carto.UI
             base.ClientSize = new Size(0x130, 0x17d);
             base.Controls.Add(this.panel2);
             base.Controls.Add(this.panel1);
-            base.Icon = ((System.Drawing.Icon)resources.GetObject("$Icon"));
+            
             base.Name = "frmExpressionSet";
             base.StartPosition = FormStartPosition.CenterParent;
             this.Text = "表达式";

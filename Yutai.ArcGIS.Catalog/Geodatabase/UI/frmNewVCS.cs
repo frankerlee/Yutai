@@ -601,7 +601,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.Controls.Add(this.label1);
             base.Controls.Add(this.textEditName);
             base.Controls.Add(this.groupBox3);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmNewVCS";
             this.Text = "New VCS";
             base.Load += new EventHandler(this.frmNewVCS_Load);

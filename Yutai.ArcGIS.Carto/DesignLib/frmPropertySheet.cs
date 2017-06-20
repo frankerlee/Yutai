@@ -61,7 +61,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             base.Controls.Add(this.button2);
             base.Controls.Add(this.btnOK);
             base.Controls.Add(this.panel1);
-            base.Icon = (Icon)resources.GetObject("$Icon");
+            
             base.Name = "frmPropertySheet";
             this.Text = "位置属性";
             base.ResumeLayout(false);

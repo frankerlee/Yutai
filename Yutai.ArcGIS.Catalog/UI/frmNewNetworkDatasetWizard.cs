@@ -188,7 +188,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             base.Controls.Add(this.btnCancel);
             base.Controls.Add(this.btnNext);
             base.Controls.Add(this.btnLast);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmNewNetworkDatasetWizard";
             this.Text = "新建网络要素集";
             base.Load += new EventHandler(this.frmNewNetworkDatasetWizard_Load);

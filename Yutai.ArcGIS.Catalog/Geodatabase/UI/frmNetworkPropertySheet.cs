@@ -284,7 +284,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.AutoScaleMode = AutoScaleMode.Font;
             base.ClientSize = new Size(0x1ed, 0x158);
             base.Controls.Add(this.tabControl1);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmNetworkPropertySheet";
             this.Text = "网络要素集属性";
             base.Load += new EventHandler(this.frmNetworkPropertySheet_Load);

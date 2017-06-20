@@ -112,7 +112,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             base.Controls.Add(this.btnLast);
             base.Controls.Add(this.panel1);
             base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            base.Icon = (Icon)resources.GetObject("$Icon");
+            
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "JLKWizardForm";

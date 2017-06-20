@@ -237,7 +237,7 @@ namespace Yutai.ArcGIS.Carto.UI
             base.Controls.Add(this.btnClose);
             base.Controls.Add(this.checkedListBox1);
             base.Controls.Add(this.label1);
-            base.Icon = ((System.Drawing.Icon)resources.GetObject("$Icon"));
+            
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmMapGridsProperty";

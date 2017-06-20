@@ -148,7 +148,7 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             base.Controls.Add(this.panel1);
             base.Controls.Add(this.tabControl1);
             base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmNASheet";

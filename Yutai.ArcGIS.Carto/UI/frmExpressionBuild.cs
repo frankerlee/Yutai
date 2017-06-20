@@ -391,7 +391,7 @@ namespace Yutai.ArcGIS.Carto.UI
             base.Controls.Add(this.memEditWhereCaluse);
             base.Controls.Add(this.Fieldlist);
             base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            base.Icon = ((System.Drawing.Icon)resources.GetObject("$Icon"));
+            
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmExpressionBuild";

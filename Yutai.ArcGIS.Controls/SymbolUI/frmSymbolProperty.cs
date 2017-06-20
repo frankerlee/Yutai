@@ -455,7 +455,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             base.Controls.Add(this.btnCancle);
             base.Controls.Add(this.btnOK);
             base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmSymbolProperty";

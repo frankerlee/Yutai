@@ -70,7 +70,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             base.Controls.Add(this.btnOK);
             base.Controls.Add(this.checkEdit1);
             base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmRegisterAsVersion";

@@ -47,7 +47,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             base.ClientSize = new Size(0x124, 0x111);
             base.DockAreas = DockAreas.DockBottom | DockAreas.DockTop | DockAreas.DockRight | DockAreas.DockLeft | DockAreas.Float;
             base.HideOnClose = true;
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmCommandLine";
             base.ShowHint = DockState.DockBottom;
             base.TabText = "命令行";

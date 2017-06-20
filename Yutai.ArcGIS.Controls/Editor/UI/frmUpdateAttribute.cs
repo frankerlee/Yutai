@@ -322,7 +322,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             base.Controls.Add(this.cboLayer);
             base.Controls.Add(this.label2);
             base.Controls.Add(this.label1);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmUpdateAttribute";
             this.Text = "更新属性值";
             base.Load += new EventHandler(this.frmUpdateAttribute_Load);

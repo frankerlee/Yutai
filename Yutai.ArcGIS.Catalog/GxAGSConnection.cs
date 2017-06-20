@@ -18,8 +18,6 @@ namespace Yutai.ArcGIS.Catalog
         private IGxCatalog igxCatalog_0 = null;
         private IGxObject igxObject_0 = null;
         private IGxObjectArray igxObjectArray_0 = new GxObjectArray();
-        [CompilerGenerated]
-        private int int_0;
         private IPopuMenuWrap ipopuMenuWrap_0 = null;
         private IPropertySet ipropertySet_0 = null;
         private object object_0 = null;
@@ -192,16 +190,16 @@ namespace Yutai.ArcGIS.Catalog
                 this.ipopuMenuWrap_0 = object_1 as IPopuMenuWrap;
             }
             this.ipopuMenuWrap_0.Clear();
-            this.ipopuMenuWrap_0.AddItem("DeleteObject", true);
-            this.ipopuMenuWrap_0.AddItem("ReName", false);
-            this.ipopuMenuWrap_0.AddItem("RefreshItem", true);
-            this.ipopuMenuWrap_0.AddItem("Connection", true);
-            this.ipopuMenuWrap_0.AddItem("DisConnection", false);
+            this.ipopuMenuWrap_0.AddItem("Catalog_Delete", true);
+            this.ipopuMenuWrap_0.AddItem("Catalog_Rename", false);
+            this.ipopuMenuWrap_0.AddItem("Catalog_Refresh", true);
+            this.ipopuMenuWrap_0.AddItem("Catalog_Connection", true);
+            this.ipopuMenuWrap_0.AddItem("Catalog_Disconnection", false);
             if (this.IsConnected)
             {
-                this.ipopuMenuWrap_0.AddItem("ServerProperty", true);
+                this.ipopuMenuWrap_0.AddItem("Catalog_ServerProperty", true);
             }
-            this.ipopuMenuWrap_0.AddItem("GxObjectProperty", true);
+            this.ipopuMenuWrap_0.AddItem("Catalog_GxObjectProperty", true);
         }
 
         public void LoadFromFile(string string_1)
@@ -475,19 +473,7 @@ namespace Yutai.ArcGIS.Catalog
             }
         }
 
-        public int ConnectionMode
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.int_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.int_0 = value;
-            }
-        }
+        public int ConnectionMode { get; set; }
 
         public UID ContextMenu
         {

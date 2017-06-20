@@ -181,7 +181,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.Controls.Add(this.groupBox2);
             base.Controls.Add(this.btnRefresh);
             base.Controls.Add(this.groupBox1);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmBatchReconcile";
             this.Text = "批量提交";
             base.Load += new EventHandler(this.frmBatchReconcile_Load);

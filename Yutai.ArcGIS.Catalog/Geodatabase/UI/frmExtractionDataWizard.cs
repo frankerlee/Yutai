@@ -293,7 +293,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.ClientSize = new Size(440, 0x145);
             base.Controls.Add(this.panel2);
             base.Controls.Add(this.panel1);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmExtractionDataWizard";
             base.Load += new EventHandler(this.frmExtractionDataWizard_Load);
             this.panel1.ResumeLayout(false);

@@ -603,7 +603,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             base.Controls.Add(this.groupBox2);
             base.Controls.Add(this.rdoPline1);
             base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            base.Icon = (Icon)componentResourceManager.GetObject("$Icon");
+           
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmLineSymbolEdit";

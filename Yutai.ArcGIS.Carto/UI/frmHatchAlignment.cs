@@ -172,7 +172,7 @@ namespace Yutai.ArcGIS.Carto.UI
             base.Controls.Add(this.rdoCenter);
             base.Controls.Add(this.rdoLeft);
             base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            base.Icon = ((System.Drawing.Icon)resources.GetObject("$Icon"));
+            
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmHatchAlignment";

@@ -1,0 +1,98 @@
+﻿using System;
+using System.IO;
+using System.Windows.Forms;
+using ESRI.ArcGIS.DataSourcesGDB;
+using ESRI.ArcGIS.Geodatabase;
+using Yutai.ArcGIS.Catalog;
+using Yutai.Plugins.Concrete;
+using Yutai.Plugins.Enums;
+using Yutai.Plugins.Interfaces;
+
+namespace Yutai.Plugins.Catalog.Commands
+{
+    class CmdNewPGDB : YutaiCommand
+    {
+        public CmdNewPGDB(IAppContext context)
+        {
+            OnCreate(context);
+        }
+
+        public override void OnCreate(object hook)
+        {
+            this.m_bitmap = Properties.Resources.icon_catalog_pgdb;
+            this.m_caption = "创建个人数据库";
+            this.m_category = "Catalog";
+            this.m_message = "创建个人数据库";
+            this.m_name = "Catalog_NewPGDB";
+            this._key = "Catalog_NewPGDB";
+            this.m_toolTip = "创建个人数据库";
+            _context = hook as IAppContext;
+            DisplayStyleYT = DisplayStyleYT.Image;
+            base.TextImageRelationYT = TextImageRelationYT.ImageAboveText;
+            base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
+            _itemType = RibbonItemType.Button;
+        }
+
+        public override bool Enabled
+        {
+            get
+            {
+                bool flag;
+                if (_context.GxSelection != null)
+                {
+                    IGxObject firstObject = ((IGxSelection) _context.GxSelection).FirstObject;
+                    if (firstObject != null)
+                    {
+                        flag = ((firstObject is IGxDiskConnection ? false : !(firstObject is IGxFolder)) ? false : true);
+                    }
+                    else
+                    {
+                        flag = false;
+                    }
+                }
+                else
+                {
+                    flag = false;
+                }
+                return flag;
+            }
+        }
+
+
+        public override void OnClick(object sender, EventArgs args)
+        {
+            OnClick();
+        }
+
+        public override void OnClick()
+        {
+            IGxObject firstObject = ((IGxSelection) _context.GxSelection).FirstObject;
+            if (firstObject is IGxFile)
+            {
+                string path = (firstObject as IGxFile).Path;
+                path = (path[path.Length - 1] != '\\' ? string.Concat(path, "\\新建个人数据库") : string.Concat(path, "新建个人数据库"));
+                string str = string.Concat(path, ".mdb");
+                int num = 1;
+                while (File.Exists(str))
+                {
+                    num++;
+                    str = string.Concat(path, " (", num.ToString(), ").mdb");
+                }
+                IWorkspaceFactory accessWorkspaceFactoryClass = new AccessWorkspaceFactory();
+                try
+                {
+                    IWorkspaceName workspaceName = accessWorkspaceFactoryClass.Create(Path.GetDirectoryName(str), Path.GetFileNameWithoutExtension(str), null, 0);
+                    IGxObject gxDatabase = new GxDatabase();
+                    (gxDatabase as IGxDatabase).WorkspaceName = workspaceName;
+                    IGxCatalog catalog = GxCatalogCommon.GetCatalog(firstObject);
+                    gxDatabase.Attach(firstObject, catalog);
+                    catalog.ObjectAdded(gxDatabase);
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message);
+                }
+            }
+        }
+    }
+}

@@ -145,15 +145,15 @@ namespace Yutai.ArcGIS.Catalog
             this.ipopuMenuWrap_0.Clear();
             if (this.idatasetName_0.Type == esriDatasetType.esriDTRasterDataset)
             {
-                this.ipopuMenuWrap_0.AddItem("CopyItem", false);
-                this.ipopuMenuWrap_0.AddItem("DeleteObject", true);
-                this.ipopuMenuWrap_0.AddItem("ReName", false);
-                this.ipopuMenuWrap_0.AddItem("RefreshItem", true);
+                this.ipopuMenuWrap_0.AddItem("Catalog_Copy", false);
+                this.ipopuMenuWrap_0.AddItem("Catalog_Delete", true);
+                this.ipopuMenuWrap_0.AddItem("Catalog_Rename", false);
+                this.ipopuMenuWrap_0.AddItem("Catalog_Refresh", true);
                 this.ipopuMenuWrap_0.UpdateUI();
             }
             else if ((this.idatasetName_0.Type != esriDatasetType.esriDTRasterBand) && (this.idatasetName_0.Type == esriDatasetType.esriDTRasterCatalog))
             {
-                this.ipopuMenuWrap_0.AddItem("DeleteObject", false);
+                this.ipopuMenuWrap_0.AddItem("Catalog_Delete", false);
             }
         }
 

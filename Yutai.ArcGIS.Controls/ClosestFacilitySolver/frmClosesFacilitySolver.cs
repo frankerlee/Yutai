@@ -256,7 +256,6 @@ namespace Yutai.ArcGIS.Controls.ClosestFacilitySolver
             base.Controls.Add(this.lblCutOff);
             base.Controls.Add(this.lblNumFacility);
             base.Controls.Add(this.lblCostAttribute);
-            base.Icon = (Icon) resources.GetObject("$Icon");
             base.Name = "frmClosesFacilitySolver";
             this.Text = "最近设置分析";
             base.Load += new EventHandler(this.frmClosesFacilitySolver_Load);

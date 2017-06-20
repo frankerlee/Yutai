@@ -91,7 +91,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             base.Controls.Add(this.btnOK);
             base.Controls.Add(this.radioGroup1);
             base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmMapGridType";

@@ -136,7 +136,7 @@ namespace Yutai.ArcGIS.Carto.UI
             base.ClientSize = new Size(440, 0x115);
             base.Controls.Add(this.panel2);
             base.Controls.Add(this.panel1);
-            base.Icon = ((System.Drawing.Icon)resources.GetObject("$Icon"));
+            
             base.Name = "frmLayerProperty";
             this.Text = "图层属性";
             base.Load += new EventHandler(this.frmLayerProperty_Load);

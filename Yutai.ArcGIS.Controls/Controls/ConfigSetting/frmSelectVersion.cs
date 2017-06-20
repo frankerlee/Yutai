@@ -135,7 +135,7 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
             base.Controls.Add(this.label2);
             base.Controls.Add(this.label1);
             base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmSelectVersion";

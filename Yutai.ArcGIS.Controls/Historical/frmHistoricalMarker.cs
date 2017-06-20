@@ -137,7 +137,7 @@ namespace Yutai.ArcGIS.Controls.Historical
             base.Controls.Add(this.label2);
             base.Controls.Add(this.txtMarkerName);
             base.Controls.Add(this.label1);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmHistoricalMarker";

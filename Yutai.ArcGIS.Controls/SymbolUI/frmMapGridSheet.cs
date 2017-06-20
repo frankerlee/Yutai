@@ -187,7 +187,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             base.ClientSize = new Size(400, 0x135);
             base.Controls.Add(this.xtraTabControl1);
             base.Controls.Add(this.panel1);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmMapGridSheet";
             this.Text = "参考系";
             base.Load += new EventHandler(this.frmMapGridSheet_Load);

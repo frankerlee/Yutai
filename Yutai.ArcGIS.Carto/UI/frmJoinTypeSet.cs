@@ -101,7 +101,7 @@ namespace Yutai.ArcGIS.Carto.UI
             base.Controls.Add(this.btnOK);
             base.Controls.Add(this.radioGroup1);
             base.Controls.Add(this.pictureEdit1);
-            base.Icon = ((System.Drawing.Icon)resources.GetObject("$Icon"));
+            
             base.Name = "frmJoinTypeSet";
             this.Text = "高级连接选项";
             base.Load += new EventHandler(this.frmJoinTypeSet_Load);

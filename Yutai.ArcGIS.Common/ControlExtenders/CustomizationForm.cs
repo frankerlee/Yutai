@@ -196,7 +196,6 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
             base.ClientSize = new Size(0x182, 0x126);
             base.Controls.Add(this.button1);
             base.Controls.Add(this.tabControl1);
-            base.Icon = (Icon) resources.GetObject("$Icon");
             base.Name = "CustomizationForm";
             this.Text = "自定义";
             base.Load += new EventHandler(this.CustomizationForm_Load);

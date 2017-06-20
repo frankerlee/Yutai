@@ -92,7 +92,6 @@ namespace Yutai.ArcGIS.Common.Query.UI
             base.Controls.Add(this.btnClose);
             base.Controls.Add(this.btnApply);
             base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            base.Icon = (Icon) resources.GetObject("$Icon");
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmAttributeQueryBuilder";

@@ -280,37 +280,37 @@ namespace Yutai.ArcGIS.Catalog
             this.ipopuMenuWrap_0.Clear();
             if (this.idatasetName_0.Type == esriDatasetType.esriDTFeatureDataset)
             {
-                this.ipopuMenuWrap_0.AddItem("CopyItem", false);
-                this.ipopuMenuWrap_0.AddItem("PasteItem", false);
-                this.ipopuMenuWrap_0.AddItem("DeleteObject", true);
-                this.ipopuMenuWrap_0.AddItem("ReName", false);
-                this.ipopuMenuWrap_0.AddItem("RefreshItem", true);
+                this.ipopuMenuWrap_0.AddItem("Catalog_Copy", false);
+                this.ipopuMenuWrap_0.AddItem("Catalog_Paste", false);
+                this.ipopuMenuWrap_0.AddItem("Catalog_Delete", true);
+                this.ipopuMenuWrap_0.AddItem("Catalog_Rename", false);
+                this.ipopuMenuWrap_0.AddItem("Catalog_Refresh", true);
                 if (this.idatasetName_0.WorkspaceName.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace)
                 {
                     this.ipopuMenuWrap_0.ClearSubItem("ArchivingSubItem");
                     this.ipopuMenuWrap_0.AddSubmenuItem("ArchivingSubItem", "管理", "", true);
-                    this.ipopuMenuWrap_0.AddItem("JLK.Pluge.RegisterAsVersionCommand", "ArchivingSubItem", true);
-                    this.ipopuMenuWrap_0.AddItem("UnRegisterVersion", "ArchivingSubItem", false);
-                    this.ipopuMenuWrap_0.AddItem("JLK.Pluge.EnableArchivingCommand", "ArchivingSubItem", false);
-                    this.ipopuMenuWrap_0.AddItem("JLK.Pluge.DisableArchivingCommand", "ArchivingSubItem", false);
-                    this.ipopuMenuWrap_0.AddItem("CreateVersionedViewCommand", "ArchivingSubItem", false);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_RegisterAsVersion", "ArchivingSubItem", true);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_UnregisterVersion", "ArchivingSubItem", false);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_EnableArchiving", "ArchivingSubItem", false);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_DisableArchiving", "ArchivingSubItem", false);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_CreateVersionView", "ArchivingSubItem", false);
                 }
                 this.ipopuMenuWrap_0.ClearSubItem("NewBarSubItem");
                 this.ipopuMenuWrap_0.AddSubmenuItem("NewBarSubItem", "新建", "", true);
-                this.ipopuMenuWrap_0.AddItem("NewFeatureClass", "NewBarSubItem", false);
-                this.ipopuMenuWrap_0.AddItem("NewRelationClass", "NewBarSubItem", false);
-                this.ipopuMenuWrap_0.AddItem("NewNetworkDatasetCommand", "NewBarSubItem", true);
-                this.ipopuMenuWrap_0.AddItem("NewTopology", "NewBarSubItem", false);
-                this.ipopuMenuWrap_0.AddItem("NewGeometryNetwork", "NewBarSubItem", false);
+                this.ipopuMenuWrap_0.AddItem("Catalog_NewFeatureClass", "NewBarSubItem", false);
+                this.ipopuMenuWrap_0.AddItem("Catalog_NewRelationClass", "NewBarSubItem", false);
+                this.ipopuMenuWrap_0.AddItem("Catalog_NewNetworkDataset", "NewBarSubItem", true);
+                this.ipopuMenuWrap_0.AddItem("Catalog_NewTopology", "NewBarSubItem", false);
+                this.ipopuMenuWrap_0.AddItem("Catalog_NewNetwork", "NewBarSubItem", false);
                 this.ipopuMenuWrap_0.ClearSubItem("ImportBarSubItem");
                 this.ipopuMenuWrap_0.AddSubmenuItem("ImportBarSubItem", "导入", "", true);
-                this.ipopuMenuWrap_0.AddItem("ImportSingleFeatureClass", "ImportBarSubItem", false);
-                this.ipopuMenuWrap_0.AddItem("ConvertToMultiFeatureClass", "ImportBarSubItem", false);
-                this.ipopuMenuWrap_0.AddItem("ImportXY", "ImportBarSubItem", false);
+                this.ipopuMenuWrap_0.AddItem("Catalog_ImportSingleFeatureClass", "ImportBarSubItem", false);
+                this.ipopuMenuWrap_0.AddItem("Catalog_ImportMultiFeatureClasses", "ImportBarSubItem", false);
+                this.ipopuMenuWrap_0.AddItem("Catalog_ImportXY", "ImportBarSubItem", false);
                 this.ipopuMenuWrap_0.ClearSubItem("ExportBarSubItem");
                 this.ipopuMenuWrap_0.AddSubmenuItem("ExportBarSubItem", "导出", "", true);
-                this.ipopuMenuWrap_0.AddItem("MultiFeatureClassExport", "ExportBarSubItem", false);
-                this.ipopuMenuWrap_0.AddItem("GxObjectProperty", true);
+                this.ipopuMenuWrap_0.AddItem("Catalog_ExportMultiFeatureClasses", "ExportBarSubItem", false);
+                this.ipopuMenuWrap_0.AddItem("Catalog_GxObjectProperty", true);
                 this.ipopuMenuWrap_0.UpdateUI();
             }
             else
@@ -318,81 +318,81 @@ namespace Yutai.ArcGIS.Catalog
                 IObjectClass dataset;
                 if (this.idatasetName_0.Type == esriDatasetType.esriDTFeatureClass)
                 {
-                    this.ipopuMenuWrap_0.AddItem("CopyItem", false);
-                    this.ipopuMenuWrap_0.AddItem("DeleteObject", true);
-                    this.ipopuMenuWrap_0.AddItem("ReName", false);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_Copy", false);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_Delete", true);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_Rename", false);
                     this.ipopuMenuWrap_0.ClearSubItem("ArchivingSubItem");
                     this.ipopuMenuWrap_0.AddSubmenuItem("ArchivingSubItem", "管理", "", true);
                     if ((this.idatasetName_0.WorkspaceName.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace) && ((this.idatasetName_0 as IFeatureClassName).FeatureDatasetName == null))
                     {
-                        this.ipopuMenuWrap_0.AddItem("JLK.Pluge.RegisterAsVersionCommand", "ArchivingSubItem", true);
-                        this.ipopuMenuWrap_0.AddItem("UnRegisterVersion", "ArchivingSubItem", false);
-                        this.ipopuMenuWrap_0.AddItem("JLK.Pluge.EnableArchivingCommand", "ArchivingSubItem", false);
-                        this.ipopuMenuWrap_0.AddItem("JLK.Pluge.DisableArchivingCommand", "ArchivingSubItem", false);
-                        this.ipopuMenuWrap_0.AddItem("CreateVersionedViewCommand", "ArchivingSubItem", false);
+                        this.ipopuMenuWrap_0.AddItem("Catalog_RegisterAsVersion", "ArchivingSubItem", true);
+                        this.ipopuMenuWrap_0.AddItem("Catalog_UnregisterVersion", "ArchivingSubItem", false);
+                        this.ipopuMenuWrap_0.AddItem("Catalog_EnableArchiving", "ArchivingSubItem", false);
+                        this.ipopuMenuWrap_0.AddItem("Catalog_DisableArchiving", "ArchivingSubItem", false);
+                        this.ipopuMenuWrap_0.AddItem("Catalog_CreateVersionView", "ArchivingSubItem", false);
                     }
-                    this.ipopuMenuWrap_0.AddItem("CreateAttachmentsCommand", "ArchivingSubItem", true);
-                    this.ipopuMenuWrap_0.AddItem("DeleteAttachmentsCommand", "ArchivingSubItem", false);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_CreateAttachments", "ArchivingSubItem", true);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_DeleteAttachments", "ArchivingSubItem", false);
                     dataset = this.Dataset as IObjectClass;
                     if (dataset.ObjectClassID == -1)
                     {
-                        this.ipopuMenuWrap_0.AddItem("RegisterAsObjectClass", "ArchivingSubItem", true);
+                        this.ipopuMenuWrap_0.AddItem("Catalog_RegisterAsObjectClass", "ArchivingSubItem", true);
                     }
-                    this.ipopuMenuWrap_0.AddItem("DataLoader", true);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_DataLoader", true);
                     this.ipopuMenuWrap_0.ClearSubItem("ExportBarSubItem");
                     this.ipopuMenuWrap_0.AddSubmenuItem("ExportBarSubItem", "导出", "", true);
-                    this.ipopuMenuWrap_0.AddItem("ExportSingleToGeodatabase", "ExportBarSubItem", false);
-                    this.ipopuMenuWrap_0.AddItem("ExportSingleToShapefile", "ExportBarSubItem", false);
-                    this.ipopuMenuWrap_0.AddItem("GxObjectProperty", true);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_ExportSingleToGDB", "ExportBarSubItem", false);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_ExportShapefile", "ExportBarSubItem", false);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_GxObjectProperty", true);
                     this.ipopuMenuWrap_0.UpdateUI();
                 }
                 else if (this.idatasetName_0.Type == esriDatasetType.esriDTTable)
                 {
-                    this.ipopuMenuWrap_0.AddItem("CopyItem", false);
-                    this.ipopuMenuWrap_0.AddItem("PasteItem", false);
-                    this.ipopuMenuWrap_0.AddItem("DeleteObject", true);
-                    this.ipopuMenuWrap_0.AddItem("ReName", false);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_Copy", false);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_Paste", false);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_Delete", true);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_Rename", false);
                     this.ipopuMenuWrap_0.ClearSubItem("ArchivingSubItem");
                     this.ipopuMenuWrap_0.AddSubmenuItem("ArchivingSubItem", "管理", "", true);
-                    this.ipopuMenuWrap_0.AddItem("JLK.Pluge.RegisterAsVersionCommand", "ArchivingSubItem", true);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_RegisterAsVersion", "ArchivingSubItem", true);
                     if (this.idatasetName_0.WorkspaceName.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace)
                     {
-                        this.ipopuMenuWrap_0.AddItem("UnRegisterVersion", "ArchivingSubItem", false);
-                        this.ipopuMenuWrap_0.AddItem("JLK.Pluge.EnableArchivingCommand", "ArchivingSubItem", false);
-                        this.ipopuMenuWrap_0.AddItem("JLK.Pluge.DisableArchivingCommand", "ArchivingSubItem", false);
-                        this.ipopuMenuWrap_0.AddItem("CreateVersionedViewCommand", "ArchivingSubItem", false);
+                        this.ipopuMenuWrap_0.AddItem("Catalog_UnregisterVersion", "ArchivingSubItem", false);
+                        this.ipopuMenuWrap_0.AddItem("Catalog_EnableArchiving", "ArchivingSubItem", false);
+                        this.ipopuMenuWrap_0.AddItem("Catalog_DisableArchiving", "ArchivingSubItem", false);
+                        this.ipopuMenuWrap_0.AddItem("Catalog_CreateVersionView", "ArchivingSubItem", false);
                     }
-                    this.ipopuMenuWrap_0.AddItem("CreateAttachmentsCommand", "ArchivingSubItem", true);
-                    this.ipopuMenuWrap_0.AddItem("DeleteAttachmentsCommand", "ArchivingSubItem", false);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_CreateAttachments", "ArchivingSubItem", true);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_DeleteAttachments", "ArchivingSubItem", false);
                     dataset = this.Dataset as IObjectClass;
                     if (dataset.ObjectClassID == -1)
                     {
-                        this.ipopuMenuWrap_0.AddItem("RegisterAsObjectClass", "ArchivingSubItem", true);
+                        this.ipopuMenuWrap_0.AddItem("Catalog_RegisterAsObjectClass", "ArchivingSubItem", true);
                     }
-                    this.ipopuMenuWrap_0.AddItem("DataLoader", true);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_DataLoader", true);
                     this.ipopuMenuWrap_0.ClearSubItem("ExportBarSubItem");
                     this.ipopuMenuWrap_0.AddSubmenuItem("ExportBarSubItem", "导出", "", true);
-                    this.ipopuMenuWrap_0.AddItem("ExportSingleToGeodatabase", "ExportBarSubItem", false);
-                    this.ipopuMenuWrap_0.AddItem("GxObjectProperty", true);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_ExportSingleToGDB", "ExportBarSubItem", false);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_GxObjectProperty", true);
                     this.ipopuMenuWrap_0.UpdateUI();
                 }
                 else if (this.idatasetName_0.Type == esriDatasetType.esriDTTopology)
                 {
-                    this.ipopuMenuWrap_0.AddItem("DeleteObject", false);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_Delete", false);
                     this.ipopuMenuWrap_0.AddItem("ValidateTopologyCommand", true);
-                    this.ipopuMenuWrap_0.AddItem("GxObjectProperty", true);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_GxObjectProperty", true);
                     this.ipopuMenuWrap_0.UpdateUI();
                 }
                 else if (this.idatasetName_0.Type == esriDatasetType.esriDTNetworkDataset)
                 {
-                    this.ipopuMenuWrap_0.AddItem("DeleteObject", false);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_Delete", false);
                     this.ipopuMenuWrap_0.AddItem("BuildNetworkCommand", true);
-                    this.ipopuMenuWrap_0.AddItem("GxObjectProperty", true);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_GxObjectProperty", true);
                     this.ipopuMenuWrap_0.UpdateUI();
                 }
                 else
                 {
-                    this.ipopuMenuWrap_0.AddItem("DeleteObject", false);
+                    this.ipopuMenuWrap_0.AddItem("Catalog_Delete", false);
                     this.ipopuMenuWrap_0.UpdateUI();
                 }
             }

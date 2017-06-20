@@ -265,7 +265,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.Controls.Add(this.barDockControl_3);
             base.Controls.Add(this.barDockControl_1);
             base.Controls.Add(this.barDockControl_0);
-            base.Icon = (Icon) resources.GetObject("$Icon");
+            
             base.Name = "frmVersionDifferences";
             this.Text = "版本差异";
             base.Load += new EventHandler(this.frmVersionDifferences_Load);

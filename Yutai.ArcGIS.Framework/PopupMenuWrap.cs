@@ -20,28 +20,28 @@ namespace Yutai.ArcGIS.Framework
 
         public event OnItemClickEventHandler OnItemClickEvent;
 
-        public void AddItem(MenuItemDef menuItemDef_0)
+        public void AddItem(MenuItemDef menuItemDef)
         {
             bool flag = false;
-            if (!string.IsNullOrEmpty(menuItemDef_0.BeginGroup))
+            if (!string.IsNullOrEmpty(menuItemDef.BeginGroup))
             {
-                flag = bool.Parse(menuItemDef_0.BeginGroup);
+                flag = bool.Parse(menuItemDef.BeginGroup);
             }
-            if (menuItemDef_0.HasSubMenu)
+            if (menuItemDef.HasSubMenu)
             {
-                this.ClearSubItem(menuItemDef_0.Name);
-                this.AddSubmenuItem(menuItemDef_0.Name, menuItemDef_0.Caption, string.IsNullOrEmpty(menuItemDef_0.MainMenuItem) ? "" : menuItemDef_0.MainMenuItem, flag);
+                this.ClearSubItem(menuItemDef.Name);
+                this.AddSubmenuItem(menuItemDef.Name, menuItemDef.Caption, string.IsNullOrEmpty(menuItemDef.MainMenuItem) ? "" : menuItemDef.MainMenuItem, flag);
             }
             else
             {
                 BarSubItem item = null;
-                if (!string.IsNullOrEmpty(menuItemDef_0.MainMenuItem))
+                if (!string.IsNullOrEmpty(menuItemDef.MainMenuItem))
                 {
-                    item = this.popupMenu_0.Manager.Items[menuItemDef_0.MainMenuItem] as BarSubItem;
+                    item = this.popupMenu_0.Manager.Items[menuItemDef.MainMenuItem] as BarSubItem;
                     if (item == null)
                     {
                         item = new BarSubItem {
-                            Name = menuItemDef_0.MainMenuItem
+                            Name = menuItemDef.MainMenuItem
                         };
                         this.popupMenu_0.Manager.Items.Add(item);
                         if (flag)
@@ -55,10 +55,10 @@ namespace Yutai.ArcGIS.Framework
                     }
                 }
                 BarItem item2 = null;
-                item2 = this.popupMenu_0.Manager.Items[menuItemDef_0.Name];
+                item2 = this.popupMenu_0.Manager.Items[menuItemDef.Name];
                 if (item2 == null)
                 {
-                    item2 = this.method_1(menuItemDef_0);
+                    item2 = this.method_1(menuItemDef);
                 }
                 if (item2 != null)
                 {

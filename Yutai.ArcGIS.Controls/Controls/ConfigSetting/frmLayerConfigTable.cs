@@ -92,7 +92,6 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
             base.Controls.Add(this.btnOk);
             base.Controls.Add(this.treeView1);
             base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            base.Icon = (Icon) resources.GetObject("$Icon");
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmLayerConfigTable";

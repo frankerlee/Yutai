@@ -1,0 +1,11 @@
+﻿<YutaiGIS>
+  <MainMenu>
+    <Pages>
+      <Page Key="Catalog" Caption="数据库" Index="0" Visible="true">
+        <PageGroup Key="Catalog_Common" Caption="常用" Visible="true" Index="0">
+          <BarItem Key="Catalog_OpenView" Visible="true"></BarItem>
+        </PageGroup>
+      </Page>
+    </Pages>
+  </MainMenu>
+</YutaiGIS>
