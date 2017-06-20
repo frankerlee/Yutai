@@ -16,6 +16,7 @@ using Yutai.Plugins.TableEditor.Enums;
 namespace Yutai.Plugins.TableEditor.Editor
 {
     public delegate void ColumnHeaderRightClickEventHandler(object sender, DataGridViewCellMouseEventArgs e);
+
     public partial class Grid : UserControl, IVirtualGridView
     {
         public event ColumnHeaderRightClickEventHandler ColumnHeaderRightClick;
@@ -23,14 +24,12 @@ namespace Yutai.Plugins.TableEditor.Editor
         private string _strGeometry = "";
         private IFeatureLayer _featureLayer;
         private DataTable _dataTable;
+        private DataTable _joinDataTable;
         private DataView _dataViewAll;
         private DataView _dataViewSelected;
         private int _recordNum;
-        private bool _isClone = true;
         private ICursor _cursor;
-        private int _showMaxRecNum = 300;
-        private bool _isLockMap = false;    // false:可以对地图进行操作；
-        private int _maxOID = 0;
+        private bool _isLockMap = false; // false:可以对地图进行操作；
         private TableType _tableType;
         private List<int> _selectedRowIdList;
 
@@ -68,10 +67,7 @@ namespace Yutai.Plugins.TableEditor.Editor
 
         public List<int> SelectedRowIdList
         {
-            get
-            {
-                return _selectedRowIdList;
-            }
+            get { return _selectedRowIdList; }
         }
 
         public int RecordNum
@@ -113,6 +109,55 @@ namespace Yutai.Plugins.TableEditor.Editor
         public void ClearTable()
         {
             _dataTable.Rows.Clear();
+        }
+
+        public DataTable ConvertITableToDataTable(IFeatureClass featureClass, List<string> fields)
+        {
+            string strGeometry = GetShapeString(featureClass);
+            ITable table = featureClass as ITable;
+            return ConvertITableToDataTable(table, strGeometry, featureClass.AliasName, fields);
+        }
+
+        public DataTable ConvertITableToDataTable(ITable table, string strGeometry, string name, List<string> displayFields)
+        {
+            DataTable dataTable = new DataTable(name);
+            try
+            {
+                IFields fields = table.Fields;
+                ICursor cursor = table.Search(null, false);
+                AddFilesInfoToListViewColumn(dataTable, fields, displayFields);
+
+                IRow row;
+                object[] strValues = new object[fields.FieldCount];
+                while ((row = cursor.NextRow()) != null)
+                {
+                    for (int i = 0; i < fields.FieldCount; i++)
+                    {
+                        IField field = fields.Field[i];
+                        if (field.Type == esriFieldType.esriFieldTypeGeometry)
+                        {
+                            strValues[i] = strGeometry;
+                        }
+                        else if (field.Type != esriFieldType.esriFieldTypeBlob)
+                        {
+                            object value = row.Value[i];
+                            strValues[i] = value;
+                        }
+                        else
+                        {
+                            strValues[i] = "二进制数据";
+                        }
+                    }
+                    dataTable.Rows.Add(strValues);
+                }
+
+                Marshal.ReleaseComObject(cursor);
+            }
+            catch (Exception exception)
+            {
+                throw new Exception(exception.Message);
+            }
+            return dataTable;
         }
 
         public void HideField(int columnIndex)
@@ -211,23 +256,8 @@ namespace Yutai.Plugins.TableEditor.Editor
             if (_featureLayer == null)
                 return;
             _tableType = TableType.All;
-            _dataTable.TableName = _featureLayer.Name;
-            this._strGeometry = this.GetShapeString(this._featureLayer.FeatureClass);
-            IQueryFilter pQueryFilter = null;
-            if (string.IsNullOrWhiteSpace(whereCaluse) == false)
-            {
-                pQueryFilter = new QueryFilterClass()
-                {
-                    WhereClause = whereCaluse
-                };
-            }
-            _recordNum = _featureLayer.FeatureClass.FeatureCount(pQueryFilter);
-            _cursor = _featureLayer.FeatureClass.Search(pQueryFilter, false) as ICursor;
-
-            AddFilesInfoToListViewColumn(_dataTable, _cursor.Fields);
-            LoadToDataTable(_cursor, _dataTable, true);
-            Marshal.ReleaseComObject(_cursor);
-            _cursor = null;
+            _dataTable = ConvertITableToDataTable(_featureLayer.FeatureClass, null);
+            _recordNum = _dataTable.Rows.Count;
             _navigationBar.View = this._dataGridView;
             _dataViewAll = _dataTable.DefaultView;
             this._dataGridView.DataSource = _dataViewAll;
@@ -250,6 +280,46 @@ namespace Yutai.Plugins.TableEditor.Editor
             DataColumn pColumn = _dataTable.Columns[index];
             pColumn.ColumnName = field.Name;
             pColumn.Caption = field.AliasName;
+        }
+
+        public void JoinTable(IFeatureClass featureClass, string parentFieldName, string childFieldName, List<string> fields)
+        {
+            DataTable childDataTable = ConvertITableToDataTable(featureClass, fields);
+            string childName = featureClass.AliasName;
+            for (int i = 0; i < childDataTable.Columns.Count; i++)
+            {
+                DataColumn dataColumn = childDataTable.Columns[i];
+                _dataTable.Columns.Add(new DataColumn()
+                {
+                    ColumnName = $"{childName}_{dataColumn.ColumnName}",
+                    DataType = dataColumn.DataType,
+                    Caption = $"{childName}_{dataColumn.Caption}"
+                });
+            }
+            DataView childDataView = childDataTable.DefaultView;
+            foreach (DataRow dataTableRow in _dataTable.Rows)
+            {
+                childDataView.RowFilter =
+                    $" {childFieldName} = '{dataTableRow[parentFieldName]}' or {childFieldName} = {dataTableRow[parentFieldName]} ";
+                if (childDataView.Count <= 0)
+                    continue;
+                DataRowView childDataRowView = childDataView[0];
+                for (int i = 0; i < childDataTable.Columns.Count; i++)
+                {
+                    DataColumn childColumn = childDataTable.Columns[i];
+                    dataTableRow[$"{childName}_{childColumn.ColumnName}"] = childDataRowView[childColumn.ColumnName];
+                }
+            }
+        }
+        
+        public void StopJoin(string tableName)
+        {
+            for (int i = _dataTable.Columns.Count - 1; i >= 0; i--)
+            {
+                DataColumn dataColumn = _dataTable.Columns[i];
+                if (dataColumn.ColumnName.StartsWith($"{tableName}_"))
+                    _dataTable.Columns.Remove(dataColumn);
+            }
         }
 
         private string GetShapeString(IFeatureClass pFeatClass)
@@ -311,13 +381,15 @@ namespace Yutai.Plugins.TableEditor.Editor
             return str;
         }
 
-        private void AddFilesInfoToListViewColumn(DataTable pDataTable, IFields pFields)
+        private void AddFilesInfoToListViewColumn(DataTable pDataTable, IFields pFields, List<string> fields)
         {
             for (int i = 0; i < pFields.FieldCount; i++)
             {
                 try
                 {
                     IField field = pFields.Field[i];
+                    if (fields != null && !fields.Contains(field.Name))
+                        continue;
                     DataColumn dataColumn = new DataColumn(field.Name)
                     {
                         Caption = field.AliasName,
@@ -362,47 +434,6 @@ namespace Yutai.Plugins.TableEditor.Editor
                 catch (Exception exception)
                 {
                 }
-            }
-        }
-
-        private void LoadToDataTable(ICursor pCursor, DataTable pDataTable, bool bAll)
-        {
-            try
-            {
-                pDataTable.Rows.Clear();
-                IFields fields = pCursor.Fields;
-                int num = 0;
-                IRow row;
-                object[] mStrGeometry = new object[fields.FieldCount];
-                while ((row = pCursor.NextRow()) != null)
-                {
-                    for (int i = 0; i < fields.FieldCount; i++)
-                    {
-                        IField field = fields.Field[i];
-                        if (field.Type == esriFieldType.esriFieldTypeGeometry)
-                        {
-                            mStrGeometry[i] = this._strGeometry;
-                        }
-                        else if (field.Type != esriFieldType.esriFieldTypeBlob)
-                        {
-                            object value = row.Value[i];
-                            mStrGeometry[i] = value;
-                        }
-                        else
-                        {
-                            mStrGeometry[i] = "二进制数据";
-                        }
-                    }
-                    pDataTable.Rows.Add(mStrGeometry);
-                    num++;
-                    if (row.HasOID)
-                    {
-                        this._maxOID = row.OID;
-                    }
-                }
-            }
-            catch
-            {
             }
         }
 

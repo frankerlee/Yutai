@@ -43,9 +43,9 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.txtField = new Yutai.Plugins.TableEditor.Controls.UCSelectField();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtField = new Yutai.Plugins.TableEditor.Controls.UCSelectField();
             this.panel1.SuspendLayout();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -214,6 +214,17 @@
             this.panel3.Size = new System.Drawing.Size(377, 25);
             this.panel3.TabIndex = 1;
             // 
+            // txtField
+            // 
+            this.txtField.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtField.Label = "";
+            this.txtField.LabelWidth = 25;
+            this.txtField.Location = new System.Drawing.Point(0, 0);
+            this.txtField.Name = "txtField";
+            this.txtField.Size = new System.Drawing.Size(377, 20);
+            this.txtField.TabIndex = 0;
+            this.txtField.SelectComlateEvent += new System.EventHandler(this.txtField_SelectComlateEvent);
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.label1);
@@ -233,17 +244,6 @@
             this.label1.Size = new System.Drawing.Size(34, 22);
             this.label1.TabIndex = 0;
             this.label1.Text = "字段";
-            // 
-            // txtField
-            // 
-            this.txtField.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtField.Label = "";
-            this.txtField.LabelWidth = 25;
-            this.txtField.Location = new System.Drawing.Point(0, 0);
-            this.txtField.Name = "txtField";
-            this.txtField.Size = new System.Drawing.Size(377, 20);
-            this.txtField.TabIndex = 0;
-            this.txtField.SelectComlateEvent += new System.EventHandler(this.txtField_SelectComlateEvent);
             // 
             // AttributeExplorer
             // 
