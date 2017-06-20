@@ -149,7 +149,7 @@ namespace Yutai.Plugins.TableEditor.Controls
             for (int i = 0; i < count; i++)
             {
                 IField pField = fields.Field[i];
-                if (pField != null && pField.Editable)
+                if (pField != null)
                 {
                     comboBox.Items.Add(pField.Name);
                 }

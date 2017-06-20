@@ -29,6 +29,8 @@ namespace Yutai.Plugins.TableEditor.Editor
         void AddColumnToGrid(IField pField);
         void ClearSorting();
         void ClearTable();
+        DataTable ConvertITableToDataTable(IFeatureClass featureClass, List<string> fields);
+        DataTable ConvertITableToDataTable(ITable table, string strGeometry, string name, List<string> fields);
         List<int> GetSelectedRows();
         void HideField(int columnIndex);
         void InvertSelection();
@@ -42,5 +44,7 @@ namespace Yutai.Plugins.TableEditor.Editor
         void ShowTable(string whereCaluse);
         void Sort(int columnIndex, ListSortDirection direction);
         void UpdateField(int index, IField field);
+        void JoinTable(IFeatureClass featureClass, string parentFieldName, string childFieldName, List<string> fields);
+        void StopJoin(string tableName);
     }
 }

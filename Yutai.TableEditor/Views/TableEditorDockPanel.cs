@@ -130,6 +130,8 @@ namespace Yutai.Plugins.TableEditor.Views
                     new CmdShowAllFields(_context, this),
                     new YutaiMenuCommand("tedTools", "tedTools","tedTools", "工具",""),
                     new CmdFind(_context, this),
+                    new YutaiSeparatorCommand("tedTools"),
+                    new CmdJoinDatasource(_context, this),
                     new YutaiSeparatorCommand(),
                     new YutaiMenuCommand("tedLayout", "tedLayout","tedLayout", "布局",""),
                     new CmdReloadTable(_context, this),

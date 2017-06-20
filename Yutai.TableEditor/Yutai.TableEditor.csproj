@@ -43,6 +43,12 @@
     <Reference Include="ESRI.ArcGIS.Carto, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.Catalog, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.CatalogUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.Controls, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
@@ -88,6 +94,7 @@
     <Compile Include="Commands\CmdExportSelection.cs" />
     <Compile Include="Commands\CmdFind.cs" />
     <Compile Include="Commands\CmdInvertSelection.cs" />
+    <Compile Include="Commands\CmdJoinDatasource.cs" />
     <Compile Include="Commands\CmdReloadTable.cs" />
     <Compile Include="Commands\CmdSelectAll.cs" />
     <Compile Include="Commands\CmdSelectNone.cs" />
@@ -132,6 +139,12 @@
     </Compile>
     <Compile Include="Controls\FunctionTreeView.Designer.cs">
       <DependentUpon>FunctionTreeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JoinsGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SelectFields.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\UCSelectField.cs">
       <SubType>UserControl</SubType>
@@ -223,6 +236,12 @@
     <Compile Include="ProjectListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TableEditorPlugin.cs" />
+    <Compile Include="TEST\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TEST\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\AttributeExplorer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -257,6 +276,12 @@
     <Compile Include="Views\IFieldPropertiesView.cs" />
     <Compile Include="Views\IFindReplaceView.cs" />
     <Compile Include="Views\ITableEditorView.cs" />
+    <Compile Include="Views\JoinTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\JoinTable.Designer.cs">
+      <DependentUpon>JoinTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\TableEditorDockPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -264,6 +289,12 @@
       <DependentUpon>TableEditorDockPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\TableEditorPresenter.cs" />
+    <Compile Include="Views\TableJoins.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\TableJoins.Designer.cs">
+      <DependentUpon>TableJoins.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Yutai.ArcGIS.Common\Yutai.ArcGIS.Common.csproj">
@@ -315,6 +346,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="TEST\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\AttributeExplorer.resx">
       <DependentUpon>AttributeExplorer.cs</DependentUpon>
     </EmbeddedResource>
@@ -330,8 +364,14 @@
     <EmbeddedResource Include="Views\FrmFieldProperties.resx">
       <DependentUpon>FrmFieldProperties.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\JoinTable.resx">
+      <DependentUpon>JoinTable.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\TableEditorDockPanel.resx">
       <DependentUpon>TableEditorDockPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TableJoins.resx">
+      <DependentUpon>TableJoins.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
