@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F804E812-481E-45C3-BE08-749DA82075D1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Yutai.Pipeline.Analysis</RootNamespace>
+    <AssemblyName>Yutai.Pipeline.Analysis</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="ESRI.ArcGIS.AxControls, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
+    <Reference Include="ESRI.ArcGIS.Carto, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Controls, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Display, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geodatabase, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geometry, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.NetworkAnalysis, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.System, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.SystemUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CatalogPlugin.cs" />
+    <Compile Include="Classes\ApplyConst.cs" />
+    <Compile Include="Classes\ApplyMath.cs" />
+    <Compile Include="Classes\CBase.cs" />
+    <Compile Include="Classes\CheckListFeatureLayerItem.cs" />
+    <Compile Include="Classes\CHitAnalyse.cs" />
+    <Compile Include="Classes\CLinesect.cs" />
+    <Compile Include="Classes\CommonDistAnalyse.cs" />
+    <Compile Include="Classes\CRandomColor.cs" />
+    <Compile Include="Classes\CVeObj.cs" />
+    <Compile Include="Classes\DistAnalyseType.cs" />
+    <Compile Include="Classes\DstLineItem.cs" />
+    <Compile Include="Classes\GPoint.cs" />
+    <Compile Include="Classes\GPoints.cs" />
+    <Compile Include="Classes\GPolyLine.cs" />
+    <Compile Include="Classes\LayerInfo.cs" />
+    <Compile Include="Classes\PipeLine.cs" />
+    <Compile Include="Classes\PipePoint.cs" />
+    <Compile Include="Classes\RuleMs.cs" />
+    <Compile Include="Classes\SectionDisp.cs" />
+    <Compile Include="Classes\Section.cs" />
+    <Compile Include="Classes\SectionInfoStore.cs" />
+    <Compile Include="Classes\SelectControl.cs" />
+    <Compile Include="Classes\SortInfo.cs" />
+    <Compile Include="Classes\TranSection.cs" />
+    <Compile Include="Classes\VerSection.cs" />
+    <Compile Include="Classes\XmlUtility.cs" />
+    <Compile Include="Commands\CmdCloseValveAnalysis.cs" />
+    <Compile Include="Commands\CmdConnectivityAnalysis.cs" />
+    <Compile Include="Commands\CmdMaiShenAnalysis.cs" />
+    <Compile Include="Commands\CmdPopAlarmAnalysis.cs" />
+    <Compile Include="Commands\CmdPreAlarmAnalysis.cs" />
+    <Compile Include="Commands\CmdSearchAffixAnalysis.cs" />
+    <Compile Include="Commands\CmdShortCutAnalysis.cs" />
+    <Compile Include="Commands\CmdStartAreaMeasureAnalysis.cs" />
+    <Compile Include="Commands\CmdStartBufferAnalysis.cs" />
+    <Compile Include="Commands\CmdStartDistMeasureAnalysis.cs" />
+    <Compile Include="Commands\CmdStartHitAnalysis.cs" />
+    <Compile Include="Commands\CmdStartHoriDistAnalysis.cs" />
+    <Compile Include="Commands\CmdStartHoriSectAnalysis.cs" />
+    <Compile Include="Commands\CmdStartVertSectAnalysis.cs" />
+    <Compile Include="Commands\CmdTrackAnalysis.cs" />
+    <Compile Include="CompositionRoot.cs" />
+    <Compile Include="Forms\AreaMeasureDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BufferAnalyseDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ConfigurationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DistMeausreDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DMCoordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormMaiShenAnalysis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmBurstReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GForm0.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HitAnalyseDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HrzDistDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MagnifierForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MagnifierMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoPointAlarmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PPAlarmResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PreAlarmDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PreAlarmResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ResultDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SearchAffixAnalyDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SectionInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SectionOption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SectionViewFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SetFlowToolForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SetScaleDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ShowShortObjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TrackingAnalyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\VerDistDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Helpers\BaseFun.cs" />
+    <Compile Include="Helpers\CMapOperator.cs" />
+    <Compile Include="Helpers\CommonUtils.cs" />
+    <Compile Include="Menu\MenuGenerator.cs" />
+    <Compile Include="Menu\YutaiCommands.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Yutai.ArcGIS.Common\Yutai.ArcGIS.Common.csproj">
+      <Project>{1938B3F8-8EDE-48F7-9594-EEB1F126E622}</Project>
+      <Name>Yutai.ArcGIS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yutai.Plugins\Yutai.Plugins.csproj">
+      <Project>{800F2EE4-47AB-4CD4-934D-A64980D98A23}</Project>
+      <Name>Yutai.Plugins</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\AreaMeasureDlg.resx">
+      <DependentUpon>AreaMeasureDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BufferAnalyseDlg.resx">
+      <DependentUpon>BufferAnalyseDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ConfigurationForm.resx">
+      <DependentUpon>ConfigurationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DistMeausreDlg.resx">
+      <DependentUpon>DistMeausreDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DMCoordForm.resx">
+      <DependentUpon>DMCoordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormMaiShenAnalysis.resx">
+      <DependentUpon>FormMaiShenAnalysis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmBurstReport.resx">
+      <DependentUpon>frmBurstReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GForm0.resx">
+      <DependentUpon>GForm0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HitAnalyseDlg.resx">
+      <DependentUpon>HitAnalyseDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HrzDistDlg.resx">
+      <DependentUpon>HrzDistDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MagnifierForm.resx">
+      <DependentUpon>MagnifierForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MagnifierMainForm.resx">
+      <DependentUpon>MagnifierMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoPointAlarmForm.resx">
+      <DependentUpon>PoPointAlarmForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PPAlarmResult.resx">
+      <DependentUpon>PPAlarmResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PreAlarmDlg.resx">
+      <DependentUpon>PreAlarmDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PreAlarmResult.resx">
+      <DependentUpon>PreAlarmResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ResultDialog.resx">
+      <DependentUpon>ResultDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SearchAffixAnalyDlg.resx">
+      <DependentUpon>SearchAffixAnalyDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SectionInfo.resx">
+      <DependentUpon>SectionInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SectionOption.resx">
+      <DependentUpon>SectionOption.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SectionViewFrm.resx">
+      <DependentUpon>SectionViewFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SetFlowToolForm.resx">
+      <DependentUpon>SetFlowToolForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SetScaleDlg.resx">
+      <DependentUpon>SetScaleDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ShowShortObjectForm.resx">
+      <DependentUpon>ShowShortObjectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TrackingAnalyForm.resx">
+      <DependentUpon>TrackingAnalyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\VerDistDlg.resx">
+      <DependentUpon>VerDistDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu\MenuLayout.xml" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="icon_transect.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon_versect.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon_analysis_collision.png" />
+    <None Include="icon_measure_length.png" />
+    <None Include="icon_measure_area.png" />
+    <Content Include="Resources\cursor\Hand.cur" />
+    <Content Include="Resources\cursor\MoveHand.cur" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

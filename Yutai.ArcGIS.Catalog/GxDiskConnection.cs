@@ -650,7 +650,8 @@ namespace Yutai.ArcGIS.Catalog
             {
                 this.openFolderDataHelper_0 = new OpenFolderDataHelper(this.igxObjectArray_0, this.string_0, this.igxCatalog_0, this);
             }
-            ManualResetEvent[] waitHandles = new ManualResetEvent[] { new ManualResetEvent(false) };
+            // ManualResetEvent[] waitHandles = new ManualResetEvent[] { new ManualResetEvent(false) };
+            ManualResetEvent[] waitHandles = new ManualResetEvent[] { new ManualResetEvent(true) };
             State state = new State(waitHandles[0]);
             ThreadPool.QueueUserWorkItem(new WaitCallback(this.Open1), state);
             WaitHandle.WaitAll(waitHandles);
