@@ -384,15 +384,15 @@ namespace Yutai.Pipeline.Analysis.Forms
 			esriFlowMethod result;
 			if (this.radioDown.Checked)
 			{
-				result = (esriFlowMethod) 1;
+				result = esriFlowMethod.esriFMDownstream;
 			}
 			else if (this.radioUp.Checked)
 			{
-				result = 0;
+				result = esriFlowMethod.esriFMUpstream;
 			}
 			else
 			{
-				result = (esriFlowMethod) 2;
+				result = esriFlowMethod.esriFMConnected;
 			}
 			return result;
 		}
@@ -451,6 +451,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 				if (featureLayer != null && featureLayer.FeatureClass != null && m_iApp.PipeConfig.IsPipePoint(featureLayer.FeatureClass.AliasName))
 				{
 					IFeatureClass featureClass = featureLayer.FeatureClass;
+					//new QueryFilter()
 					int num = featureClass.Fields.FindField(pointTableFieldName);
 					if (num != -1)
 					{

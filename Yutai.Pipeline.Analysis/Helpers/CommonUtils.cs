@@ -674,7 +674,7 @@ namespace Yutai.Pipeline.Analysis.Helpers
             if (CommonUtils.AppContext.Workspace != null)
             {
                 IFeatureWorkspace workspace =CommonUtils.AppContext.Workspace as IFeatureWorkspace;
-                if (!(CommonUtils.AppContext.Workspace as IWorkspace2).get_NameExists((esriDatasetType)10, strTableName))
+                if (!(CommonUtils.AppContext.Workspace as IWorkspace2).NameExists[(esriDatasetType)10, strTableName])
                 {
                     table = null;
                 }

@@ -7,6 +7,7 @@ using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 using ESRI.ArcGIS.NetworkAnalysis;
+using Yutai.PipeConfig;
 using Yutai.Pipeline.Analysis.Forms;
 using Yutai.Pipeline.Analysis.Helpers;
 using Yutai.Plugins.Concrete;

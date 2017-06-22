@@ -1,4 +1,4 @@
-﻿using Yutai.Plugins.Catalog.Views;
+﻿
 using Yutai.Plugins.Mvp;
 
 namespace Yutai.Plugins.Catalog
