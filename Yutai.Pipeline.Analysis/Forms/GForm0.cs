@@ -1,11 +1,10 @@
-using ApplicationData;
+﻿using ApplicationData;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.DataSourcesFile;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
-using PipeConfig;
 using RandomColor;
 using System;
 using System.Collections;
@@ -15,13 +14,15 @@ using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using Yutai.Pipeline.Analysis.Classes;
+using Yutai.Pipeline.Analysis.Helpers;
 
 namespace Yutai.Pipeline.Analysis.Forms
 {
 	public class GForm0 : XtraForm
 	{
 		private TabControl QfyEqiOwEk;
-
+        
 		public IProjectFrameworkApp m_app;
 
 		private List<IFeatureLayer> list_0 = new List<IFeatureLayer>();
@@ -160,6 +161,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 				m_nAnalyseType = DistAnalyseType.emVerDist
 			};
 			this.m_app = pApp;
+            
 			this.m_commonDistAls.PipeConfig = pApp.PipeConfig;
 			this.m_nTimerCount = 0;
 			this.dataGridViewSelectItem.Columns[0].ReadOnly = true;
@@ -175,14 +177,14 @@ namespace Yutai.Pipeline.Analysis.Forms
 				if (iFLayer != null)
 				{
 					IFeatureClass featureClass = iFLayer.FeatureClass;
-					if ((featureClass.ShapeType == 13 ? true : featureClass.ShapeType == 3))
+					if ((featureClass.ShapeType == (esriGeometryType) 13 || featureClass.ShapeType == (esriGeometryType) 3))
 					{
-						if ((featureClass.AliasName == "SY_ZX_L" ? true : featureClass.AliasName == "SDE.SY_ZX_L"))
+						if ((featureClass.AliasName == "SY_ZX_L" || featureClass.AliasName == "SDE.SY_ZX_L"))
 						{
 							this.ifeatureClass_1 = featureClass;
 						}
 						INetworkClass networkClass = featureClass as INetworkClass;
-						if ((networkClass == null ? false : networkClass.GeometricNetwork != null))
+						if ((networkClass?.GeometricNetwork != null))
 						{
 							pListLayers.Add(iFLayer);
 						}
@@ -202,7 +204,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 				int count = compositeLayer.Count;
 				for (int i = 0; i < count; i++)
 				{
-					this.AddLayer(compositeLayer.get_Layer(i), pListLayers);
+					this.AddLayer(compositeLayer.Layer[i], pListLayers);
 				}
 			}
 		}
@@ -351,7 +353,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 							map.ClearSelection();
 							map.SelectFeature(tag, feature);
 							this.GetBaseLine();
-							((IActiveView)map).PartialRefresh(4, null, null);
+							((IActiveView)map).PartialRefresh((esriViewDrawPhase) 4, null, null);
 							CommonUtils.ScaleToTwoGeo(this.m_app.FocusMap, this.ipolyline_0, this.m_pFlashGeo);
 						}
 					}
@@ -456,22 +458,22 @@ namespace Yutai.Pipeline.Analysis.Forms
 			if (feature != null)
 			{
 				CommonUtils.GetSmpClassName(feature.Class.AliasName);
-				if ((this.m_app.PipeConfig.IsPipeLine(feature.Class.AliasName) ? true : !(feature.Class.AliasName != "Polyline")))
+				if ((this.m_app.PipeConfig.IsPipeLine(feature.Class.AliasName) || feature.Class.AliasName == "Polyline"))
 				{
 					IGeometry shape = feature.Shape;
-					if (shape.GeometryType == 3)
+					if (shape.GeometryType == esriGeometryType.esriGeometryPolyline)
 					{
 						this.ipolyline_0 = CommonUtils.GetPolylineDeepCopy((IPolyline)shape);
 						this.m_commonDistAls.m_pFeature = feature;
 						this.m_commonDistAls.m_pBaseLine = this.ipolyline_0;
 						this.m_commonDistAls.m_strLayerName = feature.Class.AliasName;
 						int num = feature.Fields.FindField("埋设方式");
-						str = (num == -1 ? "" : this.method_11(feature.get_Value(num)));
+						str = (num == -1 ? "" : this.method_11(feature.Value[num]));
 						this.m_commonDistAls.m_strBuryKind = str;
 						int num1 = feature.Fields.FindField(this.m_app.PipeConfig.get_Diameter());
-						str1 = (num1 == -1 ? "" : this.method_11(feature.get_Value(num1)));
+						str1 = (num1 == -1 ? "" : this.method_11(feature.Value[num1]));
 						num1 = feature.Fields.FindField(this.m_app.PipeConfig.get_Section_Size());
-						str2 = (num1 == -1 ? "" : this.method_11(feature.get_Value(num1)));
+						str2 = (num1 == -1 ? "" : this.method_11(feature.Value[num1]));
 						string str3 = "";
 						if (str1 != "")
 						{
@@ -490,7 +492,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 					}
 					else
 					{
-						MessageBox.Show("所选择的管线多于一条，或者不是管线！");
+						MessageBox.Show(@"所选择的管线多于一条，或者不是管线！");
 					}
 				}
 				else
@@ -1014,7 +1016,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 				IGeometry geometry = ipolyline0.Buffer(num);
 				ISpatialFilter spatialFilterClass = new SpatialFilter();
 				spatialFilterClass.Geometry=(geometry);
-				spatialFilterClass.SpatialRel=(1);
+				spatialFilterClass.SpatialRel=(esriSpatialRelEnum) 1;
 				if (this.list_2.Count >= 1)
 				{
 					this.list_4.Clear();
@@ -1027,7 +1029,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 							continue;
 						}
 						IFeatureClass featureClass = list2.FeatureClass;
-						if ((featureClass.AliasName == this.ifeatureClass_0.AliasName ? true : featureClass.ShapeType != 3))
+						if ((featureClass.AliasName == this.ifeatureClass_0.AliasName || featureClass.ShapeType != (esriGeometryType) 3))
 						{
 							continue;
 						}
@@ -1163,13 +1165,13 @@ namespace Yutai.Pipeline.Analysis.Forms
 		private IPolyline method_13(IPolyline polyline)
 		{
 			object missing = Type.Missing;
-			IPolyline polylineClass = new Polyline();
+			IPolyline polylineClass = new PolylineClass();
 			IPointCollection pointCollection = (IPointCollection)polylineClass;
 			IPointCollection pointCollection1 = (IPointCollection)polyline;
 			for (int i = 0; i <= pointCollection1.PointCount - 1; i++)
 			{
-				IPoint point = pointCollection1.get_Point(i);
-				PointClass pointClass = new Point();
+				IPoint point = pointCollection1.Point[i];
+				IPoint pointClass = new ESRI.ArcGIS.Geometry.Point();
 				pointClass.X=(point.X);
 				pointClass.Y=(point.Y);
 				pointClass.Z=(0);
@@ -1178,7 +1180,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 			return polylineClass;
 		}
 
-		private double method_14(IFeature feature, int num, int num, out double double_2)
+		private double method_14(IFeature feature, int num, out double double_2)
 		{
 			double_2 = 0;
 			double num1 = 0;
@@ -1290,7 +1292,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 							num3 = 10;
 						}
 						num3 = num3 * 0.0005;
-						IGeometry geometry = ipolyline1.Intersect(polyline, 1);
+						IGeometry geometry = ipolyline1.Intersect(polyline, (esriGeometryDimension) 1);
 						if (geometry != null)
 						{
 							IPoint point = null;
@@ -1624,19 +1626,19 @@ namespace Yutai.Pipeline.Analysis.Forms
 							IFeatureClass @class = featureClassContainer.get_Class(i);
 							if (@class != null)
 							{
-								if (@class.FeatureType != 12)
+								if (@class.FeatureType != (esriFeatureType) 12)
 								{
-									cadFeatureLayerClass = new CadFeatureLayer();
+									cadFeatureLayerClass = new CadFeatureLayer() as IFeatureLayer;
 								}
 								else
 								{
-									cadFeatureLayerClass = new CadAnnotationLayer();
+									cadFeatureLayerClass = new CadAnnotationLayer() as IFeatureLayer;
 								}
 								cadFeatureLayerClass.Name=(@class.AliasName);
-								cadFeatureLayerClass.set_FeatureClass(@class);
-								cadFeatureLayerClass.set_Selectable(true);
+								cadFeatureLayerClass.FeatureClass = @class;
+								cadFeatureLayerClass.Selectable = true;
 								this.m_app.FocusMap.AddLayer(cadFeatureLayerClass, i);
-								if (cadFeatureLayerClass.FeatureClass.ShapeType == 3)
+								if (cadFeatureLayerClass.FeatureClass.ShapeType == (esriGeometryType) 3)
 								{
 									this.list_0.Add(cadFeatureLayerClass);
 								}
@@ -1690,7 +1692,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 				this.m_nTimerCount = 0;
 				this.timer_0.Stop();
 				IActiveView activeView = this.m_app.FocusMap.get_ActiveView();
-				activeView.PartialRefresh(8, null, null);
+				activeView.PartialRefresh((esriViewDrawPhase) 8, null, null);
 			}
 			this.FlashDstItem();
 			GForm0 mNTimerCount = this;

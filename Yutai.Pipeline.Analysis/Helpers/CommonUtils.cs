@@ -671,10 +671,10 @@ namespace Yutai.Pipeline.Analysis.Helpers
         public static ITable GetTable(string strTableName)
         {
             ITable table;
-            if (CommonUtils.AppContext.Workspace) != null)
+            if (CommonUtils.AppContext.Workspace != null)
             {
-                IFeatureWorkspace workspace =CommonUtils.AppContext.Workspace) as IFeatureWorkspace;
-                if (!(CommonUtils.AppContext.Workspace) as IWorkspace2).get_NameExists((esriDatasetType)10, strTableName))
+                IFeatureWorkspace workspace =CommonUtils.AppContext.Workspace as IFeatureWorkspace;
+                if (!(CommonUtils.AppContext.Workspace as IWorkspace2).NameExists[(esriDatasetType)10, strTableName])
                 {
                     table = null;
                 }

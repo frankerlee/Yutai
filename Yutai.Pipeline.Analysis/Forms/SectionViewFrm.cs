@@ -7,6 +7,7 @@ using System.IO;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using ESRI.ArcGIS.Geometry;
+using Yutai.PipeConfig;
 using Yutai.Pipeline.Analysis.Classes;
 using Yutai.Plugins.Interfaces;
 

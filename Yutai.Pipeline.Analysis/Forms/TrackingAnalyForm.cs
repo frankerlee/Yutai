@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using Yutai.PipeConfig;
 using Yutai.Pipeline.Analysis.Helpers;
 using Yutai.Plugins.Interfaces;
 

@@ -1,11 +1,10 @@
-using ApplicationData;
+﻿using ApplicationData;
 using DevExpress.XtraEditors;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
-using PipeConfig;
 using RandomColor;
 using System;
 using System.Collections.Generic;

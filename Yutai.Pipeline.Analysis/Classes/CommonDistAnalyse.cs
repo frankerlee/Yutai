@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.PipeConfig;
 using Yutai.Pipeline.Analysis.Helpers;
 
 namespace Yutai.Pipeline.Analysis.Classes

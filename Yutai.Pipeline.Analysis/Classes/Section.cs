@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using ESRI.ArcGIS.Geometry;
+using Yutai.PipeConfig;
 using Yutai.Plugins.Interfaces;
 using Point = System.Drawing.Point;
 
