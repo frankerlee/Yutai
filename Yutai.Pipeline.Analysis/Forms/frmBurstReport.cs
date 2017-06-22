@@ -384,7 +384,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 			esriFlowMethod result;
 			if (this.radioDown.Checked)
 			{
-				result = 1;
+				result = (esriFlowMethod) 1;
 			}
 			else if (this.radioUp.Checked)
 			{
@@ -392,7 +392,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 			}
 			else
 			{
-				result = 2;
+				result = (esriFlowMethod) 2;
 			}
 			return result;
 		}
@@ -451,7 +451,6 @@ namespace Yutai.Pipeline.Analysis.Forms
 				if (featureLayer != null && featureLayer.FeatureClass != null && m_iApp.PipeConfig.IsPipePoint(featureLayer.FeatureClass.AliasName))
 				{
 					IFeatureClass featureClass = featureLayer.FeatureClass;
-					new QueryFilter()
 					int num = featureClass.Fields.FindField(pointTableFieldName);
 					if (num != -1)
 					{
@@ -490,7 +489,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 		public ArrayList GetUVByQueryDef(IFeatureLayer pFeatureLayer, string strField)
 		{
 			IDataset dataset = (IDataset)pFeatureLayer.FeatureClass;
-			IFeatureWorkspace featureWorkspace = (IFeatureWorkspace)dataset.Workspace);
+			IFeatureWorkspace featureWorkspace = (IFeatureWorkspace)dataset.Workspace;
 			IQueryDef queryDef = featureWorkspace.CreateQueryDef();
 			queryDef.Tables=(dataset.Name);
 			queryDef.SubFields=("DISTINCT(" + strField + ")");

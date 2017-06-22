@@ -1,17 +1,19 @@
-using ApplicationData;
+
 using DevExpress.XtraEditors;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
-using PipeConfig;
-using RandomColor;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using Yutai.Pipeline.Analysis.Classes;
+using Yutai.Pipeline.Analysis.Helpers;
+using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.Forms
 {
@@ -43,7 +45,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		private CHitAnalyse chitAnalyse_0 = new CHitAnalyse();
 
-		public IProjectFrameworkApp m_app;
+		public IAppContext m_app;
 
 		public CommonDistAnalyse m_commonDistAls;
 
@@ -53,7 +55,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		public IGeometry m_pFlashGeo;
 
-		public VerDistDlg(IProjectFrameworkApp pApp)
+		public VerDistDlg(IAppContext pApp)
 		{
 			this.InitializeComponent();
 			this.m_commonDistAls = new CommonDistAnalyse()
@@ -139,7 +141,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 				CommonUtils.ScaleToTwoGeo(this.m_app.FocusMap, this.m_commonDistAls.m_pBaseLine, this.m_pFlashGeo);
 				this.timer_0.Start();
 				this.timer_0.Interval = 300;
-				this.m_app.FocusMap.get_ActiveView().Refresh();
+				this.m_app.ActiveView.Refresh();
 				this.m_nTimerCount = 0;
 				this.FlashDstItem();
 			}
@@ -156,8 +158,8 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		public void FlashDstItem()
 		{
-			IMapControl3 mapControl = this.m_app.FocusMap;
-			Color randColor = (new RandomColor.CRandomColor()).GetRandColor();
+			IMapControl3 mapControl = this.m_app.MapControl as IMapControl3;
+			Color randColor = (new CRandomColor()).GetRandColor();
 			ISimpleLineSymbol simpleLineSymbolClass = new SimpleLineSymbol();
 			IRgbColor rgbColorClass = new RgbColor();
 			rgbColorClass.Red=((int)randColor.R);
@@ -194,17 +196,17 @@ namespace Yutai.Pipeline.Analysis.Forms
 			string str2;
 			this.timer_0.Stop();
 			this.dataGridView1.Rows.Clear();
-			IMap map = this.m_app.FocusMap.get_Map();
+			IMap map = this.m_app.FocusMap;
 			IEnumFeature featureSelection = (IEnumFeature)map.FeatureSelection;
 			featureSelection.Reset();
 			IFeature feature = featureSelection.Next();
-			if ((feature == null ? false : feature.FeatureType == 8))
+			if ((feature == null ? false : feature.FeatureType == (esriFeatureType) 8))
 			{
 				CommonUtils.GetSmpClassName(feature.Class.AliasName);
 				if (this.m_app.PipeConfig.IsPipeLine(feature.Class.AliasName))
 				{
 					IGeometry shape = feature.Shape;
-					if (shape.GeometryType == 3)
+					if (shape.GeometryType == (esriGeometryType) 3)
 					{
 						this.ipolyline_0 = CommonUtils.GetPolylineDeepCopy((IPolyline)shape);
 						this.m_commonDistAls.m_pFeature = feature;
@@ -243,23 +245,23 @@ namespace Yutai.Pipeline.Analysis.Forms
 				{
 					this.m_commonDistAls.m_pBaseLine = null;
 					this.btAnalyse.Enabled = false;
-					this.m_app.FocusMap.get_Map().ClearSelection();
-					this.m_app.FocusMap.get_ActiveView().Refresh();
+					this.m_app.FocusMap.ClearSelection();
+					this.m_app.ActiveView.Refresh();
 				}
 			}
 			else
 			{
 				this.m_commonDistAls.m_pBaseLine = null;
 				this.btAnalyse.Enabled = false;
-				this.m_app.FocusMap.get_Map().ClearSelection();
-				this.m_app.FocusMap.get_ActiveView().Refresh();
+				this.m_app.FocusMap.ClearSelection();
+				this.m_app.ActiveView.Refresh();
 			}
 		}
 
 		public void InitDistAnalyseDlg()
 		{
-			this.m_app.FocusMap.get_Map().ClearSelection();
-			this.m_app.FocusMap.get_ActiveView().Refresh();
+			this.m_app.FocusMap.ClearSelection();
+			this.m_app.ActiveView.Refresh();
 			this.dataGridView1.Rows.Clear();
 			this.btAnalyse.Enabled = false;
 		}
@@ -456,8 +458,8 @@ namespace Yutai.Pipeline.Analysis.Forms
 			{
 				this.m_nTimerCount = 0;
 				this.timer_0.Stop();
-				IActiveView activeView = this.m_app.FocusMap.get_ActiveView();
-				activeView.PartialRefresh(8, null, null);
+				IActiveView activeView = this.m_app.ActiveView;
+				activeView.PartialRefresh((esriViewDrawPhase) 8, null, null);
 			}
 			this.FlashDstItem();
 			VerDistDlg mNTimerCount = this;
@@ -477,7 +479,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 		private void VerDistDlg_Load(object obj, EventArgs eventArg)
 		{
 			this.chitAnalyse_0.m_app = this.m_app;
-			this.chitAnalyse_0.IMap = this.m_app.FocusMap.get_Map();
+			this.chitAnalyse_0.IMap = this.m_app.FocusMap;
 		}
 	}
 }

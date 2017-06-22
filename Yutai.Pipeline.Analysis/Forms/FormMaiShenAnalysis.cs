@@ -334,18 +334,18 @@ namespace Yutai.Pipeline.Analysis.Forms
 			}
 			foreach (CheckListFeatureLayerItem @class in this.checkedListBox1.CheckedItems)
 			{
-				IFeatureLayer ifeatureLayer_ = @class.m_pFeatureLayer;
+				IFeatureLayer ifeatureLayer = @class.m_pFeatureLayer;
 				this.progressBar1.Visible = true;
-				this.progressBar1.Maximum = ifeatureLayer_.FeatureClass.FeatureCount(null);
+				this.progressBar1.Maximum = ifeatureLayer.FeatureClass.FeatureCount(null);
 				this.progressBar1.Step = 1;
 				this.progressBar1.Value = 0;
-				this.Text = "覆土分析 - 正在处理：" + ifeatureLayer_.Name+ "...";
-				string lineConfig_Kind = _context.PipeConfig.getLineConfig_Kind(ifeatureLayer_.FeatureClass.AliasName);
+				this.Text = "覆土分析 - 正在处理：" + ifeatureLayer.Name+ "...";
+				string lineConfig_Kind = _context.PipeConfig.getLineConfig_Kind(ifeatureLayer.FeatureClass.AliasName);
 				string sDepthMethod = "";
 				string sDepPosition = "";
-				int num = ifeatureLayer_.FeatureClass.Fields.FindField(text);
-				int num2 = ifeatureLayer_.FeatureClass.Fields.FindField(text2);
-				IFeatureCursor featureCursor = ifeatureLayer_.Search(null, false);
+				int num = ifeatureLayer.FeatureClass.Fields.FindField(text);
+				int num2 = ifeatureLayer.FeatureClass.Fields.FindField(text2);
+				IFeatureCursor featureCursor = ifeatureLayer.Search(null, false);
 				IFeature feature = featureCursor.NextFeature();
 				while (feature != null)
 				{
@@ -576,7 +576,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 				IActiveView activeView = _context.ActiveView;
 				activeView.PartialRefresh((esriViewDrawPhase) 8, null, null);
 			}
-			_context.ShowFeatureWithWink(_context.ActiveView.ScreenDisplay, this.ifeature_0.Shape);
+			CMapOperator.ShowFeatureWithWink(_context.ActiveView.ScreenDisplay, this.ifeature_0.Shape);
 			this.m_nTimerCount++;
 		}
 	}

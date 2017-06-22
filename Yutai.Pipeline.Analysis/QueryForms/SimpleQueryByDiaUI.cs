@@ -1,10 +1,9 @@
-using ApplicationData;
+
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
-using PipeConfig;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -518,7 +517,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 					}
 					else if (this.SelectType == 1)
 					{
-						spatialFilter.SpatialRel=(7);
+						spatialFilter.SpatialRel=(esriSpatialRelEnum) (7);
 					}
 					pCursor = featureClass.Search(spatialFilter, false);
 				}
@@ -611,7 +610,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
         private void SimpleQueryByDiaUI_FormClosed(object sender, FormClosedEventArgs e)
 		{
             IMapControlEvents2_Event axMapControl = this.m_context.MapControl as IMapControlEvents2_Event;
-            axMapControl.OnAfterDraw -= AxMapControlOnOnAfterDraw
+		    axMapControl.OnAfterDraw -= AxMapControlOnOnAfterDraw;
 
             this.OnClosed(e);
 		}

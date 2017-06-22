@@ -1,4 +1,4 @@
-using GMAnalysePack.Properties;
+
 using System;
 using System.ComponentModel;
 using System.Drawing;

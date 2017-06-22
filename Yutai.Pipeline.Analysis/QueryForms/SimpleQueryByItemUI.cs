@@ -1,8 +1,6 @@
-using ApplicationData;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Geodatabase;
-using PipeConfig;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -245,7 +243,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				{
 					text2 = "";
 				}
-				spatialFilter.WhereClause=text2);
+				spatialFilter.WhereClause=text2;
 				IFeatureCursor pCursor = featureClass.Search(spatialFilter, false);
 				this.m_iApp.SetResult(pCursor, (IFeatureSelection)this.SelectLayer);
 			}

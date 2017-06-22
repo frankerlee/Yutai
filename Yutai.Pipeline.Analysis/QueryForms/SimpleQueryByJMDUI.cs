@@ -1,9 +1,9 @@
-using ApplicationData;
+
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
-using PipeConfig;
+
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -207,7 +207,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				{
 					text2 = "名称 IS NULL ";
 				}
-				spatialFilter.WhereClause=text2);
+				spatialFilter.WhereClause=text2;
 				IFeatureCursor pCursor = featureClass.Search(spatialFilter, false);
 				this.m_iApp.SetResult(pCursor, (IFeatureSelection)this.SelectLayer);
 			}

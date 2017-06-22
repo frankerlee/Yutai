@@ -1,12 +1,9 @@
-using ApplicationData;
+
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
-using ESRI.ArcGIS.DataSourcesFile;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
-using PipeConfig;
-using RandomColor;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,6 +12,10 @@ using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using ESRI.ArcGIS.DataSourcesFile;
+using Yutai.Pipeline.Analysis.Classes;
+using Yutai.Pipeline.Analysis.Helpers;
+using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.Forms
 {
@@ -22,7 +23,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 	{
 		private TabControl QfyEqiOwEk;
 
-		public IProjectFrameworkApp m_app;
+		public IAppContext m_app;
 
 		private List<IFeatureLayer> list_0 = new List<IFeatureLayer>();
 
@@ -152,7 +153,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		private DataGridViewComboBoxCell dataGridViewComboBoxCell_0;
 
-		public GForm0(IProjectFrameworkApp pApp)
+		public GForm0(IAppContext pApp)
 		{
 			this.InitializeComponent();
 			this.m_commonDistAls = new CommonDistAnalyse()
@@ -175,7 +176,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 				if (iFLayer != null)
 				{
 					IFeatureClass featureClass = iFLayer.FeatureClass;
-					if ((featureClass.ShapeType == 13 ? true : featureClass.ShapeType == 3))
+					if ((featureClass.ShapeType == (esriGeometryType) 13 ? true : featureClass.ShapeType == (esriGeometryType) 3))
 					{
 						if ((featureClass.AliasName == "SY_ZX_L" ? true : featureClass.AliasName == "SDE.SY_ZX_L"))
 						{
@@ -227,7 +228,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 				{
 					IFeatureLayer featureLayer = pLayer as IFeatureLayer;
 					IFeatureClass featureClass = featureLayer.FeatureClass;
-					if (featureLayer.FeatureClass.FeatureType != 11 && this.m_app.PipeConfig.IsPipeLine(featureClass.AliasName))
+					if (featureLayer.FeatureClass.FeatureType != (esriFeatureType) 11 && this.m_app.PipeConfig.IsPipeLine(featureClass.AliasName))
 					{
 						this.dictionary_0.Add(featureLayer.Name, featureClass.AliasName);
 					}
@@ -288,7 +289,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 					}
 					this.timer_0.Start();
 					this.timer_0.Interval = 300;
-					this.m_app.FocusMap.get_ActiveView().Refresh();
+					this.m_app.ActiveView.Refresh();
 					this.m_nTimerCount = 0;
 					this.FlashDstItem();
 				}
@@ -319,7 +320,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 					}
 					this.timer_0.Start();
 					this.timer_0.Interval = 300;
-					this.m_app.FocusMap.get_ActiveView().Refresh();
+					this.m_app.ActiveView.Refresh();
 					this.m_nTimerCount = 0;
 					this.FlashDstItem();
 				}
@@ -347,15 +348,15 @@ namespace Yutai.Pipeline.Analysis.Forms
 						if (feature != null)
 						{
 							this.m_pFlashGeo = feature.Shape;
-							IMap map = this.m_app.FocusMap.get_Map();
+							IMap map = this.m_app.FocusMap;
 							map.ClearSelection();
 							map.SelectFeature(tag, feature);
 							this.GetBaseLine();
-							((IActiveView)map).PartialRefresh(4, null, null);
+							((IActiveView)map).PartialRefresh((esriViewDrawPhase) 4, null, null);
 							CommonUtils.ScaleToTwoGeo(this.m_app.FocusMap, this.ipolyline_0, this.m_pFlashGeo);
 						}
 					}
-					this.m_app.FocusMap.get_ActiveView().Refresh();
+					this.m_app.ActiveView.Refresh();
 				}
 				catch (Exception exception)
 				{
@@ -392,7 +393,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 					}
 					this.timer_0.Start();
 					this.timer_0.Interval = 300;
-					this.m_app.FocusMap.get_ActiveView().Refresh();
+					this.m_app.ActiveView.Refresh();
 					this.m_nTimerCount = 0;
 					this.FlashDstItem();
 				}
@@ -414,25 +415,26 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		public void FlashDstItem()
 		{
-			IMapControl3 mapControl = this.m_app.FocusMap;
-			Color randColor = (new RandomColor.CRandomColor()).GetRandColor();
-			ISimpleLineSymbol simpleLineSymbolClass = new SimpleLineSymbol();
-			IRgbColorrgbColorClass = new RgbColor();
-			rgbColorClass.Red=((int)randColor.R);
-			rgbColorClass.Green=((int)randColor.G);
-			rgbColorClass.Blue=((int)randColor.B);
-			simpleLineSymbolClass.Color=(rgbColorClass);
-			simpleLineSymbolClass.Width=(5);
-			object obj = simpleLineSymbolClass;
-			ISimpleLineSymbol simpleLineSymbolClass1 = new SimpleLineSymbol();
-			IRgbColorrgbColorClass1 = new RgbColor();
-			rgbColorClass1.Red=(255);
-			rgbColorClass1.Green=(0);
-			rgbColorClass1.Blue=(0);
-			simpleLineSymbolClass1.Color=(rgbColorClass1);
-			simpleLineSymbolClass1.Width=(5);
-			object obj1 = simpleLineSymbolClass1;
-			try
+            IMapControl3 mapControl = this.m_app.MapControl as IMapControl3;
+            Color randColor = (new CRandomColor()).GetRandColor();
+            ISimpleLineSymbol simpleLineSymbolClass = new SimpleLineSymbol();
+            IRgbColor rgbColorClass = new RgbColor();
+            rgbColorClass.Red = ((int)randColor.R);
+            rgbColorClass.Green = ((int)randColor.G);
+            rgbColorClass.Blue = ((int)randColor.B);
+            simpleLineSymbolClass.Color = (rgbColorClass);
+            simpleLineSymbolClass.Width = (5);
+            object obj = simpleLineSymbolClass;
+            ISimpleLineSymbol simpleLineSymbolClass1 = new SimpleLineSymbol();
+            IRgbColor rgbColorClass1 = new RgbColor();
+            rgbColorClass1.Red = (255);
+            rgbColorClass1.Green = (0);
+            rgbColorClass1.Blue = (0);
+            simpleLineSymbolClass1.Color = (rgbColorClass1);
+            simpleLineSymbolClass1.Width = (5);
+            object obj1 = simpleLineSymbolClass1;
+           
+            try
 			{
 				mapControl.DrawShape(this.m_pFlashGeo, ref obj);
 				if (this.m_commonDistAls.m_pBaseLine != null)
@@ -451,7 +453,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 			string str1;
 			string str2;
 			this.timer_0.Stop();
-			IMap map = this.m_app.FocusMap.get_Map();
+			IMap map = this.m_app.FocusMap;
 			IFeature feature = ((IEnumFeature)map.FeatureSelection).Next();
 			if (feature != null)
 			{
@@ -459,7 +461,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 				if ((this.m_app.PipeConfig.IsPipeLine(feature.Class.AliasName) ? true : !(feature.Class.AliasName != "Polyline")))
 				{
 					IGeometry shape = feature.Shape;
-					if (shape.GeometryType == 3)
+					if (shape.GeometryType == (esriGeometryType) 3)
 					{
 						this.ipolyline_0 = CommonUtils.GetPolylineDeepCopy((IPolyline)shape);
 						this.m_commonDistAls.m_pFeature = feature;
@@ -497,16 +499,16 @@ namespace Yutai.Pipeline.Analysis.Forms
 				{
 					this.m_commonDistAls.m_pBaseLine = null;
 					this.btAnalyse.Enabled = false;
-					this.m_app.FocusMap.get_Map().ClearSelection();
-					this.m_app.FocusMap.get_ActiveView().Refresh();
+					this.m_app.FocusMap.ClearSelection();
+					this.m_app.ActiveView.Refresh();
 				}
 			}
 			else
 			{
 				this.m_commonDistAls.m_pBaseLine = null;
 				this.btAnalyse.Enabled = false;
-				this.m_app.FocusMap.get_Map().ClearSelection();
-				this.m_app.FocusMap.get_ActiveView().Refresh();
+				this.m_app.FocusMap.ClearSelection();
+				this.m_app.ActiveView.Refresh();
 			}
 		}
 
@@ -535,8 +537,8 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		public void InitDistAnalyseDlg()
 		{
-			this.m_app.FocusMap.get_Map().ClearSelection();
-			this.m_app.FocusMap.get_ActiveView().Refresh();
+			this.m_app.FocusMap.ClearSelection();
+			this.m_app.ActiveView.Refresh();
 			this.dataGridViewVer.Rows.Clear();
 			this.dataGridViewHor.Rows.Clear();
 			this.dataGridViewSelectItem.Rows.Clear();
@@ -989,11 +991,11 @@ namespace Yutai.Pipeline.Analysis.Forms
 		{
 			this.list_2.Clear();
 			this.ifeatureClass_1 = null;
-			if ((this.m_app == null || this.m_app.FocusMap == null ? false : this.m_app.FocusMap.get_Map() != null))
+			if ((this.m_app == null || this.m_app.FocusMap == null ? false : this.m_app.FocusMap != null))
 			{
-				for (int i = 0; i < this.m_app.FocusMap.get_Map().LayerCount; i++)
+				for (int i = 0; i < this.m_app.FocusMap.LayerCount; i++)
 				{
-					ILayer layer = this.m_app.FocusMap.get_Map().get_Layer(i);
+					ILayer layer = this.m_app.FocusMap.get_Layer(i);
 					this.AddLayer(layer, this.list_2);
 				}
 			}
@@ -1005,7 +1007,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		private void method_0()
 		{
-			CommonUtils.m_pProjectFrameWorkApp = this.m_app;
+			CommonUtils.AppContext = this.m_app;
 			this.ipolyline_1 = this.method_13(this.ipolyline_0);
 			ITopologicalOperator ipolyline0 = (ITopologicalOperator)this.ipolyline_0;
 			double num = Convert.ToDouble(this.tbBufferRadius.Text);
@@ -1027,11 +1029,11 @@ namespace Yutai.Pipeline.Analysis.Forms
 							continue;
 						}
 						IFeatureClass featureClass = list2.FeatureClass;
-						if ((featureClass.AliasName == this.ifeatureClass_0.AliasName ? true : featureClass.ShapeType != 3))
+						if ((featureClass.AliasName == this.ifeatureClass_0.AliasName ? true : featureClass.ShapeType != (esriGeometryType) 3))
 						{
 							continue;
 						}
-						spatialFilterClass.Geometry=Field(featureClass.ShapeFieldName);
+						spatialFilterClass.GeometryField=(featureClass.ShapeFieldName);
 						this.method_1(featureClass.Search(spatialFilterClass, false));
 						this.method_2();
 						this.method_3(featureClass.Search(spatialFilterClass, false));
@@ -1039,7 +1041,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 					}
 					if (this.ifeatureClass_1 != null)
 					{
-						spatialFilterClass.Geometry=Field(this.ifeatureClass_1.ShapeFieldName);
+						spatialFilterClass.GeometryField=(this.ifeatureClass_1.ShapeFieldName);
 						this.method_8(this.ifeatureClass_1.Search(spatialFilterClass, false));
 						this.method_9();
 					}
@@ -1124,7 +1126,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 			{
 				for (int i = 0; i < this.list_1.Count; i++)
 				{
-					this.m_app.FocusMap.get_Map().DeleteLayer(this.list_1[i]);
+					this.m_app.FocusMap.DeleteLayer(this.list_1[i]);
 				}
 			}
 		}
@@ -1163,13 +1165,13 @@ namespace Yutai.Pipeline.Analysis.Forms
 		private IPolyline method_13(IPolyline polyline)
 		{
 			object missing = Type.Missing;
-			IPolyline polylineClass = new Polyline();
+			IPolyline polylineClass = new Polyline() as IPolyline;
 			IPointCollection pointCollection = (IPointCollection)polylineClass;
 			IPointCollection pointCollection1 = (IPointCollection)polyline;
 			for (int i = 0; i <= pointCollection1.PointCount - 1; i++)
 			{
 				IPoint point = pointCollection1.get_Point(i);
-				PointClass pointClass = new Point();
+				IPoint pointClass = new ESRI.ArcGIS.Geometry.Point();
 				pointClass.X=(point.X);
 				pointClass.Y=(point.Y);
 				pointClass.Z=(0);
@@ -1178,28 +1180,42 @@ namespace Yutai.Pipeline.Analysis.Forms
 			return polylineClass;
 		}
 
-		private double method_14(IFeature feature, int num, int num, out double double_2)
-		{
-			double_2 = 0;
-			double num1 = 0;
-			object value = null;
-			if (num > 0)
-			{
-				value = feature.get_Value(num);
-				num1 = ((value == null || Convert.IsDBNull(value) ? false : Regex.IsMatch(value.ToString(), "^\\d+$")) ? Convert.ToDouble(value) : 0);
-			}
-			if (num1 >= 1)
-			{
-				double_2 = num1;
-			}
-			else
-			{
-				num1 = (!Convert.IsDBNull(value) ? this.method_15(feature, num, out double_2) : this.method_15(feature, num, out double_2));
-			}
-			return num1;
-		}
+        private double method_14(IFeature feature, int num, int num2, out double double_2)
+        {
+            double_2 = 0.0;
+            double num3 = 0.0;
+            object obj = null;
+            if (num > 0)
+            {
+                obj = feature.get_Value(num);
+                if (obj == null || Convert.IsDBNull(obj) || !Regex.IsMatch(obj.ToString(), "^\\d+$"))
+                {
+                    num3 = 0.0;
+                }
+                else
+                {
+                    num3 = Convert.ToDouble(obj);
+                }
+            }
+            if (num3 < 1.0)
+            {
+                if (Convert.IsDBNull(obj))
+                {
+                    num3 = this.method_15(feature, num2, out double_2);
+                }
+                else
+                {
+                    num3 = this.method_15(feature, num, out double_2);
+                }
+            }
+            else
+            {
+                double_2 = num3;
+            }
+            return num3;
+        }
 
-		private double method_15(IFeature feature, int num, out double double_2)
+        private double method_15(IFeature feature, int num, out double double_2)
 		{
 			double num1 = 0;
 			double_2 = 0;
@@ -1224,7 +1240,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 		private void method_16()
 		{
 			this.dictionary_0.Clear();
-			CommonUtils.ThrougAllLayer(this.m_app.FocusMap.get_Map(), new CommonUtils.DealLayer(this.AddName));
+			CommonUtils.ThrougAllLayer(this.m_app.FocusMap, new CommonUtils.DealLayer(this.AddName));
 		}
 
 		private void method_2()
@@ -1290,7 +1306,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 							num3 = 10;
 						}
 						num3 = num3 * 0.0005;
-						IGeometry geometry = ipolyline1.Intersect(polyline, 1);
+						IGeometry geometry = ipolyline1.Intersect(polyline, (esriGeometryDimension) 1);
 						if (geometry != null)
 						{
 							IPoint point = null;
@@ -1607,7 +1623,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 				string fileName = openFileDialog.FileName;
 				int num = fileName.LastIndexOf('\\');
 				fileName = fileName.Substring(0, num);
-				IWorkspace workspace = cadWorkspaceFactoryClass.OpenFromFile(fileName, this.m_app.FocusMap.get_hWnd());
+				IWorkspace workspace = cadWorkspaceFactoryClass.OpenFromFile(fileName, this.m_app.MapControl.hWnd);
 				if (workspace != null)
 				{
 					IFeatureWorkspace featureWorkspace = workspace as IFeatureWorkspace;
@@ -1624,19 +1640,19 @@ namespace Yutai.Pipeline.Analysis.Forms
 							IFeatureClass @class = featureClassContainer.get_Class(i);
 							if (@class != null)
 							{
-								if (@class.FeatureType != 12)
+								if (@class.FeatureType != (esriFeatureType) 12)
 								{
-									cadFeatureLayerClass = new CadFeatureLayer();
+									cadFeatureLayerClass = new CadFeatureLayer() as IFeatureLayer;
 								}
 								else
 								{
-									cadFeatureLayerClass = new CadAnnotationLayer();
+									cadFeatureLayerClass = new CadAnnotationLayer() as IFeatureLayer;
 								}
 								cadFeatureLayerClass.Name=(@class.AliasName);
-								cadFeatureLayerClass.set_FeatureClass(@class);
-								cadFeatureLayerClass.set_Selectable(true);
-								this.m_app.FocusMap.AddLayer(cadFeatureLayerClass, i);
-								if (cadFeatureLayerClass.FeatureClass.ShapeType == 3)
+								cadFeatureLayerClass.FeatureClass=(@class);
+								cadFeatureLayerClass.Selectable=(true);
+								this.m_app.FocusMap.AddLayer(cadFeatureLayerClass);
+								if (cadFeatureLayerClass.FeatureClass.ShapeType == (esriGeometryType) 3)
 								{
 									this.list_0.Add(cadFeatureLayerClass);
 								}
@@ -1677,7 +1693,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 								num1 = num1 + num2;
 							}
 						}
-						this.m_app.FocusMap.get_ActiveView().Refresh();
+						this.m_app.ActiveView.Refresh();
 					}
 				}
 			}
@@ -1689,8 +1705,8 @@ namespace Yutai.Pipeline.Analysis.Forms
 			{
 				this.m_nTimerCount = 0;
 				this.timer_0.Stop();
-				IActiveView activeView = this.m_app.FocusMap.get_ActiveView();
-				activeView.PartialRefresh(8, null, null);
+				IActiveView activeView = this.m_app.ActiveView;
+				activeView.PartialRefresh((esriViewDrawPhase) 8, null, null);
 			}
 			this.FlashDstItem();
 			GForm0 mNTimerCount = this;
