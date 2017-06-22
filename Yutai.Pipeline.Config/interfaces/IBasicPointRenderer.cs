@@ -6,7 +6,7 @@
 // 作    者 :  
 // 创建时间 :  2017/06/22  17:08
 // 更新时间 :  2017/06/22  17:08
-namespace Yutai.Pipeline.Config.interfaces
+namespace Yutai.Pipeline.Config.Interfaces
 {
     public interface IBasicPointRenderer
     {

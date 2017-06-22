@@ -9,7 +9,7 @@
 
 using System.Collections.Generic;
 
-namespace Yutai.Pipeline.Config.interfaces
+namespace Yutai.Pipeline.Config.Interfaces
 {
     public interface IPipelineTemplate
     {

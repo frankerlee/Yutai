@@ -1,4 +1,4 @@
-﻿namespace Yutai.Pipeline.Config.interfaces
+﻿namespace Yutai.Pipeline.Config.Interfaces
 {
     public interface IBasicLayerInfo
     {
@@ -6,5 +6,7 @@
         string AliasName { get; set; }
         bool Visible { get; set; }
         string TemplateName { get; set; }
+
+        void LoadTemplate(IPipeTemplate template);
     }
 }

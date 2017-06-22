@@ -1,7 +1,7 @@
 ﻿using System.Xml;
 using ESRI.ArcGIS.Carto;
 
-namespace Yutai.Pipeline.Config.interfaces
+namespace Yutai.Pipeline.Config.Interfaces
 {
     public interface IBasicPipePoint
     {

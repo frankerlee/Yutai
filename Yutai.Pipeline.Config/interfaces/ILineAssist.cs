@@ -1,4 +1,4 @@
-﻿namespace Yutai.Pipeline.Config.interfaces
+﻿namespace Yutai.Pipeline.Config.Interfaces
 {
     public interface ILineAssist : IBasicLineAssist, IBasicLayerInfo
     {

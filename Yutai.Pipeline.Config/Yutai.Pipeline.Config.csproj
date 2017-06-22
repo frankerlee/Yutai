@@ -46,25 +46,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="interfaces\IBasicAnnotation.cs" />
-    <Compile Include="interfaces\IBasicLayerInfo.cs" />
-    <Compile Include="interfaces\IBasicLineAssist.cs" />
-    <Compile Include="interfaces\IBasicPointAssist.cs" />
-    <Compile Include="interfaces\IBasicLineRenderer.cs" />
-    <Compile Include="interfaces\IBasicPipe.cs" />
-    <Compile Include="interfaces\IBasicPipe3D.cs" />
-    <Compile Include="interfaces\IBasicPipeLine.cs" />
-    <Compile Include="interfaces\IBasicPipeNetwork.cs" />
-    <Compile Include="interfaces\IBasicPipePoint.cs" />
-    <Compile Include="interfaces\IBasicPointRenderer.cs" />
-    <Compile Include="interfaces\ILineAssist.cs" />
-    <Compile Include="interfaces\IPipeLine.cs" />
-    <Compile Include="interfaces\IPipelineConfig.cs" />
-    <Compile Include="interfaces\IPipelineLayer.cs" />
-    <Compile Include="interfaces\IPipelineTemplate.cs" />
-    <Compile Include="interfaces\IPipePoint.cs" />
-    <Compile Include="interfaces\IPointAssist.cs" />
-    <Compile Include="interfaces\IYTField.cs" />
+    <Compile Include="Concretes\PipelineConfig.cs" />
+    <Compile Include="Concretes\PipelineLayer.cs" />
+    <Compile Include="Concretes\PipePoint.cs" />
+    <Compile Include="Concretes\PipeTemplate.cs" />
+    <Compile Include="Interfaces\IBasicAnnotation.cs" />
+    <Compile Include="Interfaces\IBasicLayerInfo.cs" />
+    <Compile Include="Interfaces\IBasicLineAssist.cs" />
+    <Compile Include="Interfaces\IBasicPointAssist.cs" />
+    <Compile Include="Interfaces\IBasicLineRenderer.cs" />
+    <Compile Include="Interfaces\IBasicPipe.cs" />
+    <Compile Include="Interfaces\IBasicPipe3D.cs" />
+    <Compile Include="Interfaces\IBasicPipeLine.cs" />
+    <Compile Include="Interfaces\IBasicPipeNetwork.cs" />
+    <Compile Include="Interfaces\IBasicPipePoint.cs" />
+    <Compile Include="Interfaces\IBasicPointRenderer.cs" />
+    <Compile Include="Interfaces\ILineAssist.cs" />
+    <Compile Include="Interfaces\IPipeLine.cs" />
+    <Compile Include="Interfaces\IPipelineConfig.cs" />
+    <Compile Include="Interfaces\IPipelineLayer.cs" />
+    <Compile Include="Interfaces\IPipelineTemplate.cs" />
+    <Compile Include="Interfaces\IPipePoint.cs" />
+    <Compile Include="Interfaces\IPipeTemplate.cs" />
+    <Compile Include="Interfaces\IPointAssist.cs" />
+    <Compile Include="Interfaces\IYTField.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

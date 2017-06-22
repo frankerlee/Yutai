@@ -9,7 +9,7 @@
 
 using System.Xml;
 
-namespace Yutai.Pipeline.Config.interfaces
+namespace Yutai.Pipeline.Config.Interfaces
 {
     public interface IBasicAnnotation
     {

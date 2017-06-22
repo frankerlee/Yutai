@@ -10,10 +10,11 @@
 using System.Xml;
 using ESRI.ArcGIS.Geodatabase;
 
-namespace Yutai.Pipeline.Config.interfaces
+namespace Yutai.Pipeline.Config.Interfaces
 {
     public interface IYTField
     {
+        string TypeName { get; set; }
         string Name { get; set; }
         string AliasName { get; set; }
         string AutoNames { get; set; }
