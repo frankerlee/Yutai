@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ESRI.ArcGIS.Carto, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geodatabase, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,7 +46,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="interfaces\IBasicAnnotation.cs" />
+    <Compile Include="interfaces\IBasicLineAssist.cs" />
+    <Compile Include="interfaces\IBasicPointAssist.cs" />
+    <Compile Include="interfaces\IBasicLineRenderer.cs" />
+    <Compile Include="interfaces\IBasicPipe.cs" />
+    <Compile Include="interfaces\IBasicPipe3D.cs" />
+    <Compile Include="interfaces\IBasicPipeLine.cs" />
+    <Compile Include="interfaces\IBasicPipeNetwork.cs" />
     <Compile Include="interfaces\IBasicPipePoint.cs" />
+    <Compile Include="interfaces\IBasicPointRenderer.cs" />
+    <Compile Include="interfaces\IPipelineConfig.cs" />
+    <Compile Include="interfaces\IPipelineLayer.cs" />
+    <Compile Include="interfaces\IPipelineTemplate.cs" />
+    <Compile Include="interfaces\IYTField.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
