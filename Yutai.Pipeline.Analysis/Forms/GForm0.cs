@@ -1014,7 +1014,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 				IGeometry geometry = ipolyline0.Buffer(num);
 				ISpatialFilter spatialFilterClass = new SpatialFilter();
 				spatialFilterClass.Geometry=(geometry);
-				spatialFilterClass.SpatialRel=(1);
+				spatialFilterClass.SpatialRel=(esriSpatialRelEnum) (1);
 				if (this.list_2.Count >= 1)
 				{
 					this.list_4.Clear();
