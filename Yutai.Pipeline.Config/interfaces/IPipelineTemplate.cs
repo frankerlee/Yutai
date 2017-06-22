@@ -8,6 +8,7 @@
 // 更新时间 :  2017/06/22  17:33
 
 using System.Collections.Generic;
+using System.Xml;
 
 namespace Yutai.Pipeline.Config.Interfaces
 {
@@ -16,5 +17,8 @@ namespace Yutai.Pipeline.Config.Interfaces
         string Name { get; set; }
         string Caption { get; set; }
         List<IYTField> Fields { get; set; }
+
+        void ReadFromXml(XmlNode xmlNode);
+        XmlNode ToXml();
     }
 }

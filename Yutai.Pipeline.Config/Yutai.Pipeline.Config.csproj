@@ -49,7 +49,7 @@
     <Compile Include="Concretes\PipelineConfig.cs" />
     <Compile Include="Concretes\PipelineLayer.cs" />
     <Compile Include="Concretes\PipePoint.cs" />
-    <Compile Include="Concretes\PipeTemplate.cs" />
+    <Compile Include="Concretes\PipelineTemplate.cs" />
     <Compile Include="Interfaces\IBasicAnnotation.cs" />
     <Compile Include="Interfaces\IBasicLayerInfo.cs" />
     <Compile Include="Interfaces\IBasicLineAssist.cs" />
@@ -67,12 +67,13 @@
     <Compile Include="Interfaces\IPipelineLayer.cs" />
     <Compile Include="Interfaces\IPipelineTemplate.cs" />
     <Compile Include="Interfaces\IPipePoint.cs" />
-    <Compile Include="Interfaces\IPipeTemplate.cs" />
     <Compile Include="Interfaces\IPointAssist.cs" />
     <Compile Include="Interfaces\IYTField.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="sample1.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

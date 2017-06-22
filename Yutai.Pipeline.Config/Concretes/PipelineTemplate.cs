@@ -8,7 +8,7 @@ using Yutai.Pipeline.Config.Interfaces;
 
 namespace Yutai.Pipeline.Config.Concretes
 {
-    public  class PipeTemplate:IPipeTemplate
+    public  class PipelineTemplate:IPipelineTemplate
     {
         private string _name;
         private string _caption;
