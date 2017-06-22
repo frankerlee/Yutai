@@ -11,37 +11,14 @@ using Yutai.ArcGIS.Common.Helpers;
 
 namespace Yutai.ArcGIS.Controls.Controls
 {
-    public class ProjCoordSys : UserControl
+    public partial class ProjCoordSys : UserControl
     {
-        private SimpleButton btnModify;
-        private SimpleButton btnNew;
-        private SimpleButton btnSelect;
-        private ComboBoxEdit cboLineUnitName;
-        private ComboBoxEdit cboProjectName;
-        private LVColumnHeader columnHeader1;
-        private LVColumnHeader columnHeader2;
-        private Container components = null;
-        private GroupBox groupBox1;
-        private GroupBox groupBox3;
-        private GroupBox groupBox4;
-        private Label label1;
-        private Label label2;
-        private Label label5;
-        private Label label6;
         private bool m_CanDo = false;
         private int m_ErrorCount = 0;
-        private IGeographicCoordinateSystem m_GeoCoordSys;
-        private IParameter[] m_pParamters = new IParameter[0x19];
-        private IProjectedCoordinateSystem m_ProjectedCoordSys;
-        private IProjection m_Projection;
+        private IParameter[] m_pParamters = new IParameter[25];
         private ISpatialReferenceFactory m_SpatialFactory = new SpatialReferenceEnvironmentClass();
-        private IUnit m_Unit;
-        private EditListView paramlistView;
-        private int[] ProjectType = new int[] { 0xa7fd, 0xa80c, 0xa819, 0xa7fc, 0xa7fe };
-        private MemoEdit textBoxGeoCoodSys;
-        private TextEdit textEditName;
-        private TextEdit txtValue;
-        private int[] UnitType = new int[] { 0x2329, 0x234c };
+        private int[] ProjectType = new int[] { 43005, 43020, 43033, 43004, 43006 };
+        private int[] UnitType = new int[] { 9001, 9036 };
 
         public ProjCoordSys()
         {
@@ -151,16 +128,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             }
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        public IProjectedCoordinateSystem GetSpatialRefrence()
+ public IProjectedCoordinateSystem GetSpatialRefrence()
         {
             int num3;
             if (this.m_ErrorCount > 0)
@@ -258,176 +226,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             this.m_CanDo = true;
         }
 
-        private void InitializeComponent()
-        {
-            this.groupBox4 = new GroupBox();
-            this.cboLineUnitName = new ComboBoxEdit();
-            this.txtValue = new TextEdit();
-            this.label6 = new Label();
-            this.label5 = new Label();
-            this.groupBox1 = new GroupBox();
-            this.cboProjectName = new ComboBoxEdit();
-            this.paramlistView = new EditListView();
-            this.columnHeader1 = new LVColumnHeader();
-            this.columnHeader2 = new LVColumnHeader();
-            this.label2 = new Label();
-            this.label1 = new Label();
-            this.textEditName = new TextEdit();
-            this.groupBox3 = new GroupBox();
-            this.btnModify = new SimpleButton();
-            this.btnNew = new SimpleButton();
-            this.btnSelect = new SimpleButton();
-            this.textBoxGeoCoodSys = new MemoEdit();
-            this.groupBox4.SuspendLayout();
-            this.cboLineUnitName.Properties.BeginInit();
-            this.txtValue.Properties.BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.cboProjectName.Properties.BeginInit();
-            this.textEditName.Properties.BeginInit();
-            this.groupBox3.SuspendLayout();
-            this.textBoxGeoCoodSys.Properties.BeginInit();
-            base.SuspendLayout();
-            this.groupBox4.Controls.Add(this.cboLineUnitName);
-            this.groupBox4.Controls.Add(this.txtValue);
-            this.groupBox4.Controls.Add(this.label6);
-            this.groupBox4.Controls.Add(this.label5);
-            this.groupBox4.Location = new System.Drawing.Point(8, 0xd0);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new Size(0x128, 0x58);
-            this.groupBox4.TabIndex = 7;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "线性单位";
-            this.cboLineUnitName.EditValue = "";
-            this.cboLineUnitName.Location = new System.Drawing.Point(80, 0x18);
-            this.cboLineUnitName.Name = "cboLineUnitName";
-            this.cboLineUnitName.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.cboLineUnitName.Size = new Size(0xc0, 0x15);
-            this.cboLineUnitName.TabIndex = 10;
-            this.cboLineUnitName.SelectedIndexChanged += new EventHandler(this.cboLineUnitName_SelectedIndexChanged);
-            this.txtValue.EditValue = "1";
-            this.txtValue.Location = new System.Drawing.Point(80, 0x38);
-            this.txtValue.Name = "txtValue";
-            this.txtValue.Size = new Size(0xc0, 0x15);
-            this.txtValue.TabIndex = 9;
-            this.txtValue.EditValueChanged += new EventHandler(this.txtValue_EditValueChanged);
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(0x10, 0x38);
-            this.label6.Name = "label6";
-            this.label6.Size = new Size(60, 0x11);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "单位(米):";
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(0x10, 0x1a);
-            this.label5.Name = "label5";
-            this.label5.Size = new Size(0x23, 0x11);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "名称:";
-            this.groupBox1.Controls.Add(this.cboProjectName);
-            this.groupBox1.Controls.Add(this.paramlistView);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(8, 40);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new Size(0x128, 160);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "投影";
-            this.cboProjectName.EditValue = "";
-            this.cboProjectName.Location = new System.Drawing.Point(0x40, 0x18);
-            this.cboProjectName.Name = "cboProjectName";
-            this.cboProjectName.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.cboProjectName.Size = new Size(200, 0x15);
-            this.cboProjectName.TabIndex = 3;
-            this.cboProjectName.SelectedIndexChanged += new EventHandler(this.cboProjectName_SelectedIndexChanged);
-            this.paramlistView.Columns.AddRange(new ColumnHeader[] { this.columnHeader1, this.columnHeader2 });
-            this.paramlistView.ComboBoxBgColor = Color.LightBlue;
-            this.paramlistView.ComboBoxFont = new Font("宋体", 9f, FontStyle.Regular, GraphicsUnit.Point, 0x86);
-            this.paramlistView.EditBgColor = Color.LightBlue;
-            this.paramlistView.EditFont = new Font("宋体", 9f, FontStyle.Regular, GraphicsUnit.Point, 0x86);
-            this.paramlistView.FullRowSelect = true;
-            this.paramlistView.GridLines = true;
-            this.paramlistView.Location = new System.Drawing.Point(0x10, 0x38);
-            this.paramlistView.Name = "paramlistView";
-            this.paramlistView.Size = new Size(0x110, 0x60);
-            this.paramlistView.TabIndex = 2;
-            this.paramlistView.View = View.Details;
-            this.paramlistView.ValueChanged += new ValueChangedHandler(this.paramlistView_ValueChanged);
-            this.columnHeader1.ColumnStyle = ListViewColumnStyle.ReadOnly;
-            this.columnHeader1.Text = "参数";
-            this.columnHeader1.Width = 0x90;
-            this.columnHeader2.ColumnStyle = ListViewColumnStyle.EditBox;
-            this.columnHeader2.Text = "值";
-            this.columnHeader2.Width = 0x7a;
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(0x10, 0x1b);
-            this.label2.Name = "label2";
-            this.label2.Size = new Size(0x23, 0x11);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "名称:";
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(0x23, 0x11);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "名称:";
-            this.textEditName.EditValue = "";
-            this.textEditName.Location = new System.Drawing.Point(0x30, 8);
-            this.textEditName.Name = "textEditName";
-            this.textEditName.Size = new Size(240, 0x15);
-            this.textEditName.TabIndex = 4;
-            this.groupBox3.Controls.Add(this.btnModify);
-            this.groupBox3.Controls.Add(this.btnNew);
-            this.groupBox3.Controls.Add(this.btnSelect);
-            this.groupBox3.Controls.Add(this.textBoxGeoCoodSys);
-            this.groupBox3.Location = new System.Drawing.Point(8, 0x130);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new Size(0x128, 0x80);
-            this.groupBox3.TabIndex = 8;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "地理坐标系";
-            this.btnModify.Location = new System.Drawing.Point(0xe8, 0x60);
-            this.btnModify.Name = "btnModify";
-            this.btnModify.Size = new Size(0x30, 0x18);
-            this.btnModify.TabIndex = 14;
-            this.btnModify.Text = "修改";
-            this.btnModify.Click += new EventHandler(this.btnModify_Click);
-            this.btnNew.Location = new System.Drawing.Point(0xe8, 0x40);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new Size(0x30, 0x18);
-            this.btnNew.TabIndex = 13;
-            this.btnNew.Text = "新建";
-            this.btnNew.Click += new EventHandler(this.btnNew_Click);
-            this.btnSelect.Location = new System.Drawing.Point(0xe8, 0x20);
-            this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new Size(0x30, 0x18);
-            this.btnSelect.TabIndex = 12;
-            this.btnSelect.Text = "选择";
-            this.btnSelect.Click += new EventHandler(this.btnSelect_Click);
-            this.textBoxGeoCoodSys.EditValue = "";
-            this.textBoxGeoCoodSys.Location = new System.Drawing.Point(0x10, 0x18);
-            this.textBoxGeoCoodSys.Name = "textBoxGeoCoodSys";
-            this.textBoxGeoCoodSys.Properties.ReadOnly = true;
-            this.textBoxGeoCoodSys.Size = new Size(200, 0x60);
-            this.textBoxGeoCoodSys.TabIndex = 4;
-            base.Controls.Add(this.groupBox4);
-            base.Controls.Add(this.groupBox1);
-            base.Controls.Add(this.label1);
-            base.Controls.Add(this.textEditName);
-            base.Controls.Add(this.groupBox3);
-            base.Name = "ProjCoordSys";
-            base.Size = new Size(320, 480);
-            base.Load += new EventHandler(this.ProjCoordSys_Load);
-            this.groupBox4.ResumeLayout(false);
-            this.cboLineUnitName.Properties.EndInit();
-            this.txtValue.Properties.EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.cboProjectName.Properties.EndInit();
-            this.textEditName.Properties.EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.textBoxGeoCoodSys.Properties.EndInit();
-            base.ResumeLayout(false);
-        }
-
-        private void paramlistView_ValueChanged(object sender, ValueChangedEventArgs e)
+ private void paramlistView_ValueChanged(object sender, ValueChangedEventArgs e)
         {
             try
             {

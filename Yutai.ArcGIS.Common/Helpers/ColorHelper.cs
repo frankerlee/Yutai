@@ -23,9 +23,9 @@ namespace Yutai.ArcGIS.Common.Helpers
                 }
                 else
                 {
-                    int red = esriColor.RGB % 0x100;
-                    int green = (esriColor.RGB / 0x100) % 0x100;
-                    int blue = ((esriColor.RGB / 0x100) / 0x100) % 0x100;
+                    int red = esriColor.RGB % 256;
+                    int green = (esriColor.RGB / 256) % 256;
+                    int blue = ((esriColor.RGB / 256) / 256) % 256;
                     black = Color.FromArgb(red, green, blue);
                 }
             }
@@ -63,9 +63,9 @@ namespace Yutai.ArcGIS.Common.Helpers
 
         public static IColor CreateRandomColor(byte alpha)
         {
-            int red = m_random.Next(0xff);
-            int green = m_random.Next(0xff);
-            int blue = m_random.Next(0xff);
+            int red = m_random.Next(255);
+            int green = m_random.Next(255);
+            int blue = m_random.Next(255);
             return CreateColor(alpha, red, green, blue);
         }
 
@@ -90,9 +90,9 @@ namespace Yutai.ArcGIS.Common.Helpers
 
         public static Color CreateRandomMSColor()
         {
-            int red = m_random.Next(0xff);
-            int green = m_random.Next(0xff);
-            int blue = m_random.Next(0xff);
+            int red = m_random.Next(255);
+            int green = m_random.Next(255);
+            int blue = m_random.Next(255);
             return Color.FromArgb(red, green, blue);
         }
     }

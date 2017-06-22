@@ -14,31 +14,16 @@ using Yutai.ArcGIS.Controls.SymbolUI;
 
 namespace Yutai.ArcGIS.Carto.UI
 {
-    internal class ChartRendererCtrl : UserControl, IUserControl
+    internal partial class ChartRendererCtrl : UserControl, IUserControl
     {
         private bool bool_0 = false;
-        private SimpleButton btnMoveDown;
-        private SimpleButton btnMoveUp;
-        private SimpleButton btnSelect;
-        private StyleButton btnStyle;
-        private SimpleButton btnUnSelect;
-        private SimpleButton btnUnSelectAll;
-        private CheckEdit chkOverposter;
-        private ColorRampComboBox colorRampComboBox1;
-        private ColumnHeader columnHeader_0;
-        private ColumnHeader columnHeader_1;
         private Container container_0 = null;
-        private ListBoxControl FieldsListBoxCtrl;
-        private GroupBox groupBox1;
         private IChartRenderer ichartRenderer_0 = null;
         private IColorRamp icolorRamp_0 = null;
         private IEnumColors ienumColors_0 = null;
         private IGeoFeatureLayer igeoFeatureLayer_0 = null;
         private int int_0 = 0;
         private IStyleGallery istyleGallery_0 = null;
-        private Label label3;
-        private Label lblBackground;
-        private RenderInfoListView SelectFieldslistView;
 
         public ChartRendererCtrl()
         {
@@ -252,16 +237,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
-        protected override void Dispose(bool bool_1)
-        {
-            if (bool_1 && (this.container_0 != null))
-            {
-                this.container_0.Dispose();
-            }
-            base.Dispose(bool_1);
-        }
-
-        private void FieldsListBoxCtrl_SelectedIndexChanged(object sender, EventArgs e)
+ private void FieldsListBoxCtrl_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.FieldsListBoxCtrl.SelectedIndices.Count > 0)
             {
@@ -299,140 +275,7 @@ namespace Yutai.ArcGIS.Carto.UI
             return num;
         }
 
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChartRendererCtrl));
-            this.chkOverposter = new CheckEdit();
-            this.lblBackground = new Label();
-            this.colorRampComboBox1 = new ColorRampComboBox();
-            this.label3 = new Label();
-            this.btnStyle = new StyleButton();
-            this.groupBox1 = new GroupBox();
-            this.btnMoveDown = new SimpleButton();
-            this.btnMoveUp = new SimpleButton();
-            this.SelectFieldslistView = new RenderInfoListView();
-            this.columnHeader_1 = new ColumnHeader();
-            this.columnHeader_0 = new ColumnHeader();
-            this.btnUnSelectAll = new SimpleButton();
-            this.btnUnSelect = new SimpleButton();
-            this.btnSelect = new SimpleButton();
-            this.FieldsListBoxCtrl = new ListBoxControl();
-            this.chkOverposter.Properties.BeginInit();
-            this.groupBox1.SuspendLayout();
-            ((ISupportInitialize) this.FieldsListBoxCtrl).BeginInit();
-            base.SuspendLayout();
-            this.chkOverposter.Location = new System.Drawing.Point(0x10, 0xd0);
-            this.chkOverposter.Name = "chkOverposter";
-            this.chkOverposter.Properties.Caption = "防止图表被覆盖";
-            this.chkOverposter.Size = new Size(120, 0x13);
-            this.chkOverposter.TabIndex = 0x27;
-            this.chkOverposter.CheckedChanged += new EventHandler(this.chkOverposter_CheckedChanged);
-            this.lblBackground.AutoSize = true;
-            this.lblBackground.Location = new System.Drawing.Point(8, 0xb0);
-            this.lblBackground.Name = "lblBackground";
-            this.lblBackground.Size = new Size(0x1d, 0x11);
-            this.lblBackground.TabIndex = 0x25;
-            this.lblBackground.Text = "背景";
-            this.colorRampComboBox1.DrawMode = DrawMode.OwnerDrawVariable;
-            this.colorRampComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            this.colorRampComboBox1.Location = new System.Drawing.Point(0x108, 0xb0);
-            this.colorRampComboBox1.Name = "colorRampComboBox1";
-            this.colorRampComboBox1.Size = new Size(0x88, 0x16);
-            this.colorRampComboBox1.TabIndex = 0x24;
-            this.colorRampComboBox1.SelectedIndexChanged += new EventHandler(this.colorRampComboBox1_SelectedIndexChanged);
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(0xc0, 0xb0);
-            this.label3.Name = "label3";
-            this.label3.Size = new Size(0x36, 0x11);
-            this.label3.TabIndex = 0x23;
-            this.label3.Text = "颜色模型";
-            this.btnStyle.Location = new System.Drawing.Point(0x30, 0xa8);
-            this.btnStyle.Name = "btnStyle";
-            this.btnStyle.Size = new Size(0x48, 0x20);
-            this.btnStyle.Style = null;
-            this.btnStyle.TabIndex = 0x29;
-            this.btnStyle.Click += new EventHandler(this.btnStyle_Click);
-            this.groupBox1.Controls.Add(this.btnMoveDown);
-            this.groupBox1.Controls.Add(this.btnMoveUp);
-            this.groupBox1.Controls.Add(this.SelectFieldslistView);
-            this.groupBox1.Controls.Add(this.btnUnSelectAll);
-            this.groupBox1.Controls.Add(this.btnUnSelect);
-            this.groupBox1.Controls.Add(this.btnSelect);
-            this.groupBox1.Controls.Add(this.FieldsListBoxCtrl);
-            this.groupBox1.Location = new System.Drawing.Point(8, 8);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new Size(400, 0x98);
-            this.groupBox1.TabIndex = 40;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "字段集";
-            this.btnMoveDown.Enabled = false;
-            this.btnMoveDown.Image = (System.Drawing.Image)resources.GetObject("btnMoveDown.Image");
-            this.btnMoveDown.Location = new System.Drawing.Point(0x170, 80);
-            this.btnMoveDown.Name = "btnMoveDown";
-            this.btnMoveDown.Size = new Size(0x18, 0x18);
-            this.btnMoveDown.TabIndex = 6;
-            this.btnMoveDown.Click += new EventHandler(this.btnMoveDown_Click);
-            this.btnMoveUp.Enabled = false;
-            this.btnMoveUp.Image = (System.Drawing.Image)resources.GetObject("btnMoveUp.Image");
-            this.btnMoveUp.Location = new System.Drawing.Point(0x170, 40);
-            this.btnMoveUp.Name = "btnMoveUp";
-            this.btnMoveUp.Size = new Size(0x18, 0x18);
-            this.btnMoveUp.TabIndex = 5;
-            this.btnMoveUp.Click += new EventHandler(this.btnMoveUp_Click);
-            this.SelectFieldslistView.Columns.AddRange(new ColumnHeader[] { this.columnHeader_1, this.columnHeader_0 });
-            this.SelectFieldslistView.FullRowSelect = true;
-            this.SelectFieldslistView.Location = new System.Drawing.Point(0xa8, 0x20);
-            this.SelectFieldslistView.Name = "SelectFieldslistView";
-            this.SelectFieldslistView.Size = new Size(0xc0, 0x68);
-            this.SelectFieldslistView.TabIndex = 4;
-            this.SelectFieldslistView.View = View.Details;
-            this.SelectFieldslistView.SelectedIndexChanged += new EventHandler(this.SelectFieldslistView_SelectedIndexChanged);
-            this.columnHeader_1.Text = "符号";
-            this.columnHeader_0.Text = "字段";
-            this.columnHeader_0.Width = 0x5f;
-            this.btnUnSelectAll.Location = new System.Drawing.Point(0x80, 0x68);
-            this.btnUnSelectAll.Name = "btnUnSelectAll";
-            this.btnUnSelectAll.Size = new Size(0x20, 0x18);
-            this.btnUnSelectAll.TabIndex = 3;
-            this.btnUnSelectAll.Text = "<<";
-            this.btnUnSelectAll.Click += new EventHandler(this.btnUnSelectAll_Click);
-            this.btnUnSelect.Enabled = false;
-            this.btnUnSelect.Location = new System.Drawing.Point(0x80, 0x48);
-            this.btnUnSelect.Name = "btnUnSelect";
-            this.btnUnSelect.Size = new Size(0x20, 0x18);
-            this.btnUnSelect.TabIndex = 2;
-            this.btnUnSelect.Text = "<";
-            this.btnUnSelect.Click += new EventHandler(this.btnUnSelect_Click);
-            this.btnSelect.Enabled = false;
-            this.btnSelect.Location = new System.Drawing.Point(0x80, 40);
-            this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new Size(0x20, 0x18);
-            this.btnSelect.TabIndex = 1;
-            this.btnSelect.Text = ">";
-            this.btnSelect.Click += new EventHandler(this.btnSelect_Click);
-            this.FieldsListBoxCtrl.ItemHeight = 0x11;
-            this.FieldsListBoxCtrl.Location = new System.Drawing.Point(8, 0x18);
-            this.FieldsListBoxCtrl.Name = "FieldsListBoxCtrl";
-            this.FieldsListBoxCtrl.SelectionMode = SelectionMode.MultiExtended;
-            this.FieldsListBoxCtrl.Size = new Size(0x70, 120);
-            this.FieldsListBoxCtrl.TabIndex = 0;
-            this.FieldsListBoxCtrl.SelectedIndexChanged += new EventHandler(this.FieldsListBoxCtrl_SelectedIndexChanged);
-            base.Controls.Add(this.btnStyle);
-            base.Controls.Add(this.groupBox1);
-            base.Controls.Add(this.chkOverposter);
-            base.Controls.Add(this.lblBackground);
-            base.Controls.Add(this.colorRampComboBox1);
-            base.Controls.Add(this.label3);
-            base.Name = "ChartRendererCtrl";
-            base.Size = new Size(0x1a0, 240);
-            base.Load += new EventHandler(this.ChartRendererCtrl_Load);
-            this.chkOverposter.Properties.EndInit();
-            this.groupBox1.ResumeLayout(false);
-            ((ISupportInitialize) this.FieldsListBoxCtrl).EndInit();
-            base.ResumeLayout(false);
-        }
-
-        public IColorRamp MakeNewRamp()
+ public IColorRamp MakeNewRamp()
         {
             return new AlgorithmicColorRampClass { FromColor = this.RandomColor(), ToColor = this.RandomColor(), Algorithm = esriColorRampAlgorithm.esriLabLChAlgorithm };
         }

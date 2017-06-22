@@ -8,13 +8,10 @@ using ESRI.ArcGIS.Geometry;
 
 namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 {
-    public class frmNewObjectClass : Form
+    public partial class frmNewObjectClass : Form
     {
         private AnnoClassSetCtrl annoClassSetCtrl_0 = new AnnoClassSetCtrl();
         private AnnoReferenceScaleSetCtrl annoReferenceScaleSetCtrl_0 = new AnnoReferenceScaleSetCtrl();
-        private SimpleButton btnCancel;
-        private SimpleButton btnLast;
-        private SimpleButton btnNext;
         private IContainer icontainer_0 = null;
         private int int_0 = 0;
         private IObjectClass iobjectClass_0 = null;
@@ -23,7 +20,6 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         private NewDatasetTolerancePage newDatasetTolerancePage_0 = new NewDatasetTolerancePage();
         private NewObjectClassFieldsPage newObjectClassFieldsPage_0 = new NewObjectClassFieldsPage();
         private NewObjectClassGeneralPage newObjectClassGeneralPage_0 = new NewObjectClassGeneralPage();
-        private Panel panel1;
         private VCSControlPage vcscontrolPage_0 = new VCSControlPage();
 
         public frmNewObjectClass()
@@ -706,16 +702,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
-        protected override void Dispose(bool bool_0)
-        {
-            if (bool_0 && (this.icontainer_0 != null))
-            {
-                this.icontainer_0.Dispose();
-            }
-            base.Dispose(bool_0);
-        }
-
-        private void frmNewObjectClass_Load(object sender, EventArgs e)
+ private void frmNewObjectClass_Load(object sender, EventArgs e)
         {
             this.annoReferenceScaleSetCtrl_0.Dock = DockStyle.Fill;
             this.annoReferenceScaleSetCtrl_0.Visible = false;
@@ -743,55 +730,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.btnLast.Enabled = false;
         }
 
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNewObjectClass));
-            this.panel1 = new Panel();
-            this.btnCancel = new SimpleButton();
-            this.btnNext = new SimpleButton();
-            this.btnLast = new SimpleButton();
-            base.SuspendLayout();
-            this.panel1.Location = new System.Drawing.Point(12, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new Size(0x188, 0x1c8);
-            this.panel1.TabIndex = 7;
-            this.btnCancel.DialogResult = DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(0x147, 0x1da);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new Size(0x38, 0x18);
-            this.btnCancel.TabIndex = 6;
-            this.btnCancel.Text = "取消";
-            this.btnCancel.Click += new EventHandler(this.btnCancel_Click);
-            this.btnNext.Location = new System.Drawing.Point(0xff, 0x1da);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new Size(0x38, 0x18);
-            this.btnNext.TabIndex = 5;
-            this.btnNext.Text = "下一步";
-            this.btnNext.Click += new EventHandler(this.btnNext_Click);
-            this.btnLast.Location = new System.Drawing.Point(0xb7, 0x1da);
-            this.btnLast.Name = "btnLast";
-            this.btnLast.Size = new Size(0x38, 0x18);
-            this.btnLast.TabIndex = 4;
-            this.btnLast.Text = "上一步";
-            this.btnLast.Click += new EventHandler(this.btnLast_Click);
-            base.AutoScaleDimensions = new SizeF(6f, 12f);
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.ClientSize = new Size(0x19b, 0x1f8);
-            base.Controls.Add(this.panel1);
-            base.Controls.Add(this.btnCancel);
-            base.Controls.Add(this.btnNext);
-            base.Controls.Add(this.btnLast);
-            base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            
-            base.MaximizeBox = false;
-            base.MinimizeBox = false;
-            base.Name = "frmNewObjectClass";
-            this.Text = "新建";
-            base.Load += new EventHandler(this.frmNewObjectClass_Load);
-            base.ResumeLayout(false);
-        }
-
-        public bool IsFeatureClass
+ public bool IsFeatureClass
         {
             set
             {

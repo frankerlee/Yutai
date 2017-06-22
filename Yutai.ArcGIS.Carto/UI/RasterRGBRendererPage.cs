@@ -13,26 +13,15 @@ using Yutai.ArcGIS.Common.ControlExtend;
 
 namespace Yutai.ArcGIS.Carto.UI
 {
-    public class RasterRGBRendererPage : UserControl, IUserControl
+    public partial class RasterRGBRendererPage : UserControl, IUserControl
     {
         private bool bool_0 = false;
-        private Button btnStretch;
-        private CheckBox chkShowBackground;
-        private ColorEdit colorEdit1;
-        private ColorEdit colorEdit2;
-        private System.Windows.Forms.ComboBox comboBox_0;
-        private EXListView exListView1;
         private IColorRamp icolorRamp_0 = null;
         private IContainer icontainer_0 = null;
         private IEnumColors ienumColors_0 = null;
         private IRasterLayer irasterLayer_0 = null;
         private IRasterRGBRenderer irasterRGBRenderer_0 = null;
         private IStyleGallery istyleGallery_0 = null;
-        private Label label3;
-        private Label label4;
-        private TextBox txtBackgroundB;
-        private TextBox txtBackgroundG;
-        private TextBox txtBackgroundR;
 
         public RasterRGBRendererPage()
         {
@@ -156,119 +145,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
-        protected override void Dispose(bool bool_1)
-        {
-            if (bool_1 && (this.icontainer_0 != null))
-            {
-                this.icontainer_0.Dispose();
-            }
-            base.Dispose(bool_1);
-        }
-
-        private void InitializeComponent()
-        {
-            this.exListView1 = new EXListView();
-            this.txtBackgroundR = new TextBox();
-            this.btnStretch = new Button();
-            this.label3 = new Label();
-            this.chkShowBackground = new CheckBox();
-            this.colorEdit2 = new ColorEdit();
-            this.colorEdit1 = new ColorEdit();
-            this.label4 = new Label();
-            this.txtBackgroundG = new TextBox();
-            this.txtBackgroundB = new TextBox();
-            this.colorEdit2.Properties.BeginInit();
-            this.colorEdit1.Properties.BeginInit();
-            base.SuspendLayout();
-            this.exListView1.FullRowSelect = true;
-            this.exListView1.Location = new Point(14, 0x10);
-            this.exListView1.Name = "exListView1";
-            this.exListView1.OwnerDraw = true;
-            this.exListView1.Size = new Size(0x126, 0x61);
-            this.exListView1.TabIndex = 0;
-            this.exListView1.UseCompatibleStateImageBehavior = false;
-            this.exListView1.View = View.Details;
-            this.txtBackgroundR.Location = new Point(0x68, 0x75);
-            this.txtBackgroundR.Name = "txtBackgroundR";
-            this.txtBackgroundR.Size = new Size(0x21, 0x15);
-            this.txtBackgroundR.TabIndex = 0x41;
-            this.txtBackgroundR.Text = "0";
-            this.txtBackgroundR.TextChanged += new EventHandler(this.txtBackgroundR_TextChanged);
-            this.btnStretch.Location = new Point(0xe5, 0xa9);
-            this.btnStretch.Name = "btnStretch";
-            this.btnStretch.Size = new Size(0x5e, 0x17);
-            this.btnStretch.TabIndex = 0x40;
-            this.btnStretch.Text = "拉伸设置...";
-            this.btnStretch.UseVisualStyleBackColor = true;
-            this.btnStretch.Click += new EventHandler(this.btnStretch_Click);
-            this.label3.AutoSize = true;
-            this.label3.Location = new Point(0xe3, 0x91);
-            this.label3.Name = "label3";
-            this.label3.Size = new Size(0x4d, 12);
-            this.label3.TabIndex = 0x3f;
-            this.label3.Text = "空值显示颜色";
-            this.chkShowBackground.AutoSize = true;
-            this.chkShowBackground.Location = new Point(14, 0x77);
-            this.chkShowBackground.Name = "chkShowBackground";
-            this.chkShowBackground.Size = new Size(0x54, 0x10);
-            this.chkShowBackground.TabIndex = 0x3e;
-            this.chkShowBackground.Text = "显示背景值";
-            this.chkShowBackground.UseVisualStyleBackColor = true;
-            this.chkShowBackground.CheckedChanged += new EventHandler(this.chkShowBackground_CheckedChanged);
-            this.colorEdit2.EditValue = Color.Empty;
-            this.colorEdit2.Location = new Point(310, 0x8d);
-            this.colorEdit2.Name = "colorEdit2";
-            this.colorEdit2.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.colorEdit2.Size = new Size(0x30, 0x15);
-            this.colorEdit2.TabIndex = 0x3d;
-            this.colorEdit2.EditValueChanged += new EventHandler(this.colorEdit2_EditValueChanged);
-            this.colorEdit1.EditValue = Color.Empty;
-            this.colorEdit1.Location = new Point(310, 0x72);
-            this.colorEdit1.Name = "colorEdit1";
-            this.colorEdit1.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.colorEdit1.Size = new Size(0x30, 0x15);
-            this.colorEdit1.TabIndex = 60;
-            this.colorEdit1.EditValueChanged += new EventHandler(this.colorEdit1_EditValueChanged);
-            this.label4.AutoSize = true;
-            this.label4.Location = new Point(0xe3, 120);
-            this.label4.Name = "label4";
-            this.label4.Size = new Size(0x41, 12);
-            this.label4.TabIndex = 0x3b;
-            this.label4.Text = "背景值颜色";
-            this.txtBackgroundG.Location = new Point(0x8f, 0x75);
-            this.txtBackgroundG.Name = "txtBackgroundG";
-            this.txtBackgroundG.Size = new Size(0x21, 0x15);
-            this.txtBackgroundG.TabIndex = 0x42;
-            this.txtBackgroundG.Text = "0";
-            this.txtBackgroundG.TextChanged += new EventHandler(this.txtBackgroundG_TextChanged);
-            this.txtBackgroundB.Location = new Point(0xb6, 0x75);
-            this.txtBackgroundB.Name = "txtBackgroundB";
-            this.txtBackgroundB.Size = new Size(0x21, 0x15);
-            this.txtBackgroundB.TabIndex = 0x43;
-            this.txtBackgroundB.Text = "0";
-            this.txtBackgroundB.TextChanged += new EventHandler(this.txtBackgroundB_TextChanged);
-            base.AutoScaleDimensions = new SizeF(6f, 12f);
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.Controls.Add(this.txtBackgroundB);
-            base.Controls.Add(this.txtBackgroundG);
-            base.Controls.Add(this.txtBackgroundR);
-            base.Controls.Add(this.btnStretch);
-            base.Controls.Add(this.label3);
-            base.Controls.Add(this.chkShowBackground);
-            base.Controls.Add(this.colorEdit2);
-            base.Controls.Add(this.colorEdit1);
-            base.Controls.Add(this.label4);
-            base.Controls.Add(this.exListView1);
-            base.Name = "RasterRGBRendererPage";
-            base.Size = new Size(0x17d, 0x113);
-            base.Load += new EventHandler(this.RasterRGBRendererPage_Load);
-            this.colorEdit2.Properties.EndInit();
-            this.colorEdit1.Properties.EndInit();
-            base.ResumeLayout(false);
-            base.PerformLayout();
-        }
-
-        private void method_0()
+ private void method_0()
         {
             IRasterBandCollection raster = this.irasterLayer_0.Raster as IRasterBandCollection;
             if (raster.Count != this.irasterLayer_0.BandCount)
@@ -339,11 +216,11 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void method_2(uint uint_0, out int int_0, out int int_1, out int int_2)
         {
-            uint num = uint_0 & 0xff0000;
-             int_2 = (int) (num >> 0x10);
-            num = uint_0 & 0xff00;
+            uint num = uint_0 & 16711680;
+             int_2 = (int) (num >> 16);
+            num = uint_0 & 65280;
             int_1 = (int) (num >> 8);
-            num = uint_0 & 0xff;
+            num = uint_0 & 255;
             int_0 = (int) num;
         }
 
@@ -437,7 +314,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
-        internal class BandWrap
+        internal partial class BandWrap
         {
             private IRasterBand irasterBand_0 = null;
 

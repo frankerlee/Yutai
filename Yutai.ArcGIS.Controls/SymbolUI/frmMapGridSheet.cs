@@ -7,12 +7,9 @@ using ESRI.ArcGIS.Carto;
 
 namespace Yutai.ArcGIS.Controls.SymbolUI
 {
-    public class frmMapGridSheet : Form
+    public partial class frmMapGridSheet : Form
     {
-        private Container components = null;
         private IMapGrid m_pMapGrid = null;
-        private Panel panel1;
-        private XtraTabControl xtraTabControl1;
 
         public frmMapGridSheet(IMapGrid pMapGrid)
         {
@@ -20,16 +17,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.m_pMapGrid = pMapGrid;
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private void frmMapGridSheet_Load(object sender, EventArgs e)
+ private void frmMapGridSheet_Load(object sender, EventArgs e)
         {
             XtraTabPage page;
             IPropertyPage page2;
@@ -165,35 +153,6 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMapGridSheet));
-            this.panel1 = new Panel();
-            this.xtraTabControl1 = new XtraTabControl();
-            this.xtraTabControl1.BeginInit();
-            base.SuspendLayout();
-            this.panel1.Dock = DockStyle.Bottom;
-            this.panel1.Location = new Point(0, 0x105);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new Size(400, 0x30);
-            this.panel1.TabIndex = 0;
-            this.xtraTabControl1.Dock = DockStyle.Fill;
-            this.xtraTabControl1.Location = new Point(0, 0);
-            this.xtraTabControl1.Name = "xtraTabControl1";
-            this.xtraTabControl1.Size = new Size(400, 0x105);
-            this.xtraTabControl1.TabIndex = 1;
-            this.xtraTabControl1.Text = "xtraTabControl1";
-            this.AutoScaleBaseSize = new Size(6, 14);
-            base.ClientSize = new Size(400, 0x135);
-            base.Controls.Add(this.xtraTabControl1);
-            base.Controls.Add(this.panel1);
-            
-            base.Name = "frmMapGridSheet";
-            this.Text = "参考系";
-            base.Load += new EventHandler(this.frmMapGridSheet_Load);
-            this.xtraTabControl1.EndInit();
-            base.ResumeLayout(false);
-        }
+
     }
 }
-

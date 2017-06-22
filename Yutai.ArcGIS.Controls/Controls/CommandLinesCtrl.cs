@@ -7,17 +7,12 @@ using Yutai.ArcGIS.Framework;
 
 namespace Yutai.ArcGIS.Controls.Controls
 {
-    public class CommandLinesCtrl : UserControl, ICommandLineWindows
+    public partial class CommandLinesCtrl : UserControl, ICommandLineWindows
     {
-        private Container components = null;
         private int m_CommandTipInfo = 0;
         private int m_CurrentLine = 1;
         protected int m_MaxCommandLine = 100;
         protected IFramework m_pFrameWork = null;
-        private Panel panel1;
-        private TextEdit txtCommandLine;
-        private MemoEdit txtCommandLineList;
-        private Label txtCommandTip;
 
         public CommandLinesCtrl()
         {
@@ -93,68 +88,12 @@ namespace Yutai.ArcGIS.Controls.Controls
             }
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        public void Init()
+ public void Init()
         {
             this.m_CurrentLine = 1;
         }
 
-        private void InitializeComponent()
-        {
-            this.panel1 = new Panel();
-            this.txtCommandLine = new TextEdit();
-            this.txtCommandTip = new Label();
-            this.txtCommandLineList = new MemoEdit();
-            this.panel1.SuspendLayout();
-            this.txtCommandLine.Properties.BeginInit();
-            this.txtCommandLineList.Properties.BeginInit();
-            base.SuspendLayout();
-            this.panel1.Controls.Add(this.txtCommandLine);
-            this.panel1.Controls.Add(this.txtCommandTip);
-            this.panel1.Dock = DockStyle.Bottom;
-            this.panel1.Location = new Point(0, 0x67);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new Size(0x1c8, 0x11);
-            this.panel1.TabIndex = 1;
-            this.txtCommandLine.Dock = DockStyle.Fill;
-            this.txtCommandLine.EditValue = "";
-            this.txtCommandLine.Location = new Point(0x2a, 0);
-            this.txtCommandLine.Name = "txtCommandLine";
-            this.txtCommandLine.Properties.BorderStyle = BorderStyles.NoBorder;
-            this.txtCommandLine.Size = new Size(0x19e, 0x11);
-            this.txtCommandLine.TabIndex = 1;
-            this.txtCommandLine.KeyUp += new KeyEventHandler(this.CommandLine_KeyUp);
-            this.txtCommandTip.Dock = DockStyle.Left;
-            this.txtCommandTip.Name = "txtCommandTip";
-            this.txtCommandTip.BackColor = this.txtCommandLine.BackColor;
-            this.txtCommandTip.AutoSize = true;
-            this.txtCommandTip.TabIndex = 2;
-            this.txtCommandLineList.Dock = DockStyle.Fill;
-            this.txtCommandLineList.EditValue = "";
-            this.txtCommandLineList.Location = new Point(0, 0);
-            this.txtCommandLineList.Name = "txtCommandLineList";
-            this.txtCommandLineList.Properties.ReadOnly = true;
-            this.txtCommandLineList.Size = new Size(0x1c8, 0x67);
-            this.txtCommandLineList.TabIndex = 3;
-            base.Controls.Add(this.txtCommandLineList);
-            base.Controls.Add(this.panel1);
-            base.Name = "CommandLinesCtrl";
-            base.Size = new Size(0x1c8, 120);
-            this.panel1.ResumeLayout(false);
-            this.txtCommandLine.Properties.EndInit();
-            this.txtCommandLineList.Properties.EndInit();
-            base.ResumeLayout(false);
-        }
-
-        public void LockCommandLine(bool flag)
+ public void LockCommandLine(bool flag)
         {
         }
 

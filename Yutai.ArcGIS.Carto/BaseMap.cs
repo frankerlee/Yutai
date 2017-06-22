@@ -63,9 +63,9 @@ namespace Yutai.ArcGIS.Carto
             ISimpleFillSymbol symbol = new SimpleFillSymbolClass();
             new SimpleLineSymbolClass();
             IRgbColor color = new RgbColorClass {
-                Red = 0xff,
-                Blue = 0xff,
-                Green = 0xff
+                Red = 255,
+                Blue = 255,
+                Green = 255
             };
             symbol.Color = color;
             symbol.Outline = null;

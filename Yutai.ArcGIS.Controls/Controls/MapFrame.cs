@@ -10,13 +10,12 @@ using Editor2=Yutai.ArcGIS.Common.Editor;
 
 namespace Yutai.ArcGIS.Controls.Controls
 {
-    internal class MapFrame : DockContent
+    internal partial class MapFrame : DockContent
     {
         public AxMapControl axMapControl;
         public AxPageLayoutControl axPageLayoutControl;
-        private Container components = null;
-        private const int WM_ENTERSIZEMOVE = 0x231;
-        private const int WM_EXITSIZEMOVE = 0x232;
+        private const int WM_ENTERSIZEMOVE = 561;
+        private const int WM_EXITSIZEMOVE = 562;
 
         public MapFrame()
         {
@@ -61,46 +60,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             this.axMapControl.ActiveView.Refresh();
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MapFrame));
-            this.axMapControl = new AxMapControl();
-            this.axPageLayoutControl = new AxPageLayoutControl();
-            base.SuspendLayout();
-            this.axMapControl.Dock = DockStyle.Fill;
-            this.axMapControl.Location = new Point(0, 0);
-            this.axMapControl.Name = "axMapControl";
-            this.axMapControl.OcxState = (AxHost.State) resources.GetObject("axMapControl.OcxState");
-            this.axMapControl.Size = new Size(0x124, 0x111);
-            this.axMapControl.TabIndex = 13;
-            this.axPageLayoutControl.Dock = DockStyle.Fill;
-            this.axPageLayoutControl.Location = new Point(0, 0);
-            this.axPageLayoutControl.Name = "axPageLayoutControl";
-            this.axPageLayoutControl.OcxState = (AxHost.State) resources.GetObject("axPageLayoutControl.OcxState");
-            this.axPageLayoutControl.Size = new Size(0x124, 0x111);
-            this.axPageLayoutControl.TabIndex = 12;
-            base.DockAreas = DockAreas.Document;
-            base.ShowHint = DockState.Document;
-            base.TabText = "地图视图";
-            this.Text = "地图视图";
-            base.ClientSize = new Size(0x124, 0x111);
-            base.Controls.Add(this.axMapControl);
-            base.Controls.Add(this.axPageLayoutControl);
-            base.Name = "MapFrame";
-            base.Load += new EventHandler(this.MapFrame_Load);
-            base.ResumeLayout(false);
-        }
-
-        private void MapFrame_Load(object sender, EventArgs e)
+ private void MapFrame_Load(object sender, EventArgs e)
         {
             DocumentManager.Register(this.axPageLayoutControl.Object);
             this.axMapControl.ShowMapTips = true;
@@ -153,12 +113,12 @@ namespace Yutai.ArcGIS.Controls.Controls
         protected override void OnNotifyMessage(Message m)
         {
             base.OnNotifyMessage(m);
-            if (m.Msg == 0x231)
+            if (m.Msg == 561)
             {
                 this.axMapControl.SuppressResizeDrawing(true, 0);
                 this.axPageLayoutControl.SuppressResizeDrawing(true, 0);
             }
-            else if (m.Msg == 0x232)
+            else if (m.Msg == 562)
             {
                 this.axMapControl.SuppressResizeDrawing(false, 0);
                 this.axPageLayoutControl.SuppressResizeDrawing(false, 0);

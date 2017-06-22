@@ -108,7 +108,7 @@ namespace Yutai.ArcGIS.Carto
             ITextSymbol symbol6 = new TextSymbolClass();
             int num6 = 0;
             int num7 = 0;
-            int num8 = 0x3e8;
+            int num8 = 1000;
             double x = 0.0;
             double y = 0.0;
             IPoint point2 = new PointClass();
@@ -312,7 +312,7 @@ namespace Yutai.ArcGIS.Carto
                     element4 = new TextElementClass();
                     num6 = (int) Math.Truncate((double) (y / 100000.0));
                     str = num6.ToString();
-                    num7 = (int) Math.Truncate((double) ((y - (num6 * 0x186a0)) / 1000.0));
+                    num7 = (int) Math.Truncate((double) ((y - (num6 * 100000)) / 1000.0));
                     str2 = num7.ToString();
                     if (str2.Length < 2)
                     {
@@ -402,7 +402,7 @@ namespace Yutai.ArcGIS.Carto
                     element4 = new TextElementClass();
                     num6 = (int) Math.Truncate((double) (x / 100000.0));
                     str = num6.ToString();
-                    str2 = ((int) Math.Truncate((double) ((x - (num6 * 0x186a0)) / 1000.0))).ToString();
+                    str2 = ((int) Math.Truncate((double) ((x - (num6 * 100000)) / 1000.0))).ToString();
                     if (str2.Length < 2)
                     {
                         str2 = "0" + str2;

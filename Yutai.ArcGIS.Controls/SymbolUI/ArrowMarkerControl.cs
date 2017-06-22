@@ -10,24 +10,11 @@ using Yutai.ArcGIS.Common.SymbolUI;
 
 namespace Yutai.ArcGIS.Controls.SymbolUI
 {
-    internal class ArrowMarkerControl : UserControl, CommonInterface
+    internal partial class ArrowMarkerControl : UserControl, CommonInterface
     {
-        private ColorEdit colorEdit1;
-        private Container components = null;
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Label label5;
-        private Label label7;
         public IArrowMarkerSymbol m_ArrowMarkerSymbol;
         private bool m_CanDo = false;
         public double m_unit = 1.0;
-        private SpinEdit numericUpDownAngle;
-        private SpinEdit numericUpDownLength;
-        private SpinEdit numericUpDownWidth;
-        private SpinEdit numericUpDownXOffset;
-        private SpinEdit numericUpDownYOffset;
 
         public event ValueChangedHandler ValueChanged;
 
@@ -69,206 +56,17 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
-        protected override void Dispose(bool disposing)
+ private void GetRGB(uint rgb, out int r, out int g, out int b)
         {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private void GetRGB(uint rgb, out int r, out int g, out int b)
-        {
-            uint num = rgb & 0xff0000;
-            b = (int) (num >> 0x10);
-            num = rgb & 0xff00;
+            uint num = rgb & 16711680;
+            b = (int) (num >> 16);
+            num = rgb & 65280;
             g = (int) (num >> 8);
-            num = rgb & 0xff;
+            num = rgb & 255;
             r = (int) num;
         }
 
-        private void InitializeComponent()
-        {
-            this.label7 = new Label();
-            this.label5 = new Label();
-            this.label4 = new Label();
-            this.label3 = new Label();
-            this.label1 = new Label();
-            this.label2 = new Label();
-            this.colorEdit1 = new ColorEdit();
-            this.numericUpDownAngle = new SpinEdit();
-            this.numericUpDownLength = new SpinEdit();
-            this.numericUpDownWidth = new SpinEdit();
-            this.numericUpDownXOffset = new SpinEdit();
-            this.numericUpDownYOffset = new SpinEdit();
-            this.colorEdit1.Properties.BeginInit();
-            this.numericUpDownAngle.Properties.BeginInit();
-            this.numericUpDownLength.Properties.BeginInit();
-            this.numericUpDownWidth.Properties.BeginInit();
-            this.numericUpDownXOffset.Properties.BeginInit();
-            this.numericUpDownYOffset.Properties.BeginInit();
-            base.SuspendLayout();
-            this.label7.AutoSize = true;
-            this.label7.Location = new Point(8, 120);
-            this.label7.Name = "label7";
-            this.label7.Size = new Size(0x1d, 0x11);
-            this.label7.TabIndex = 0x23;
-            this.label7.Text = "角度";
-            this.label5.AutoSize = true;
-            this.label5.Location = new Point(0x88, 0x56);
-            this.label5.Name = "label5";
-            this.label5.Size = new Size(0x23, 0x11);
-            this.label5.TabIndex = 0x1d;
-            this.label5.Text = "Y偏移";
-            this.label4.AutoSize = true;
-            this.label4.Location = new Point(0x88, 0x36);
-            this.label4.Name = "label4";
-            this.label4.Size = new Size(0x23, 0x11);
-            this.label4.TabIndex = 0x1a;
-            this.label4.Text = "X偏移";
-            this.label3.AutoSize = true;
-            this.label3.Location = new Point(8, 0x36);
-            this.label3.Name = "label3";
-            this.label3.Size = new Size(0x11, 0x11);
-            this.label3.TabIndex = 0x17;
-            this.label3.Text = "长";
-            this.label1.AutoSize = true;
-            this.label1.Location = new Point(8, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(0x1d, 0x11);
-            this.label1.TabIndex = 0x13;
-            this.label1.Text = "颜色";
-            this.label2.AutoSize = true;
-            this.label2.Location = new Point(8, 0x56);
-            this.label2.Name = "label2";
-            this.label2.Size = new Size(0x11, 0x11);
-            this.label2.TabIndex = 0x26;
-            this.label2.Text = "宽";
-            this.colorEdit1.EditValue = Color.Empty;
-            this.colorEdit1.Location = new Point(0x30, 0x10);
-            this.colorEdit1.Name = "colorEdit1";
-            this.colorEdit1.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.colorEdit1.Size = new Size(0x30, 0x17);
-            this.colorEdit1.TabIndex = 0x2c;
-            this.colorEdit1.EditValueChanged += new EventHandler(this.colorEdit1_EditValueChanged);
-            int[] bits = new int[4];
-            this.numericUpDownAngle.EditValue = new decimal(bits);
-            this.numericUpDownAngle.Location = new Point(0x30, 120);
-            this.numericUpDownAngle.Name = "numericUpDownAngle";
-            this.numericUpDownAngle.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
-            this.numericUpDownAngle.Properties.DisplayFormat.FormatString = "0.####";
-            this.numericUpDownAngle.Properties.DisplayFormat.FormatType = FormatType.Numeric;
-            this.numericUpDownAngle.Properties.EditFormat.FormatString = "0.####";
-            this.numericUpDownAngle.Properties.EditFormat.FormatType = FormatType.Numeric;
-            int[] bits2 = new int[4];
-            bits2[0] = 360;
-            this.numericUpDownAngle.Properties.MaxValue = new decimal(bits2);
-            int[] bits3 = new int[4];
-            bits3[0] = 360;
-            bits3[3] = -2147483648;
-            this.numericUpDownAngle.Properties.MinValue = new decimal(bits3);
-            //this.numericUpDownAngle.Properties.UseCtrlIncrement = false;
-            this.numericUpDownAngle.Size = new Size(80, 0x17);
-            this.numericUpDownAngle.TabIndex = 0x2d;
-            this.numericUpDownAngle.TextChanged += new EventHandler(this.numericUpDownAngle_ValueChanged);
-            int[] bits4 = new int[4];
-            this.numericUpDownLength.EditValue = new decimal(bits4);
-            this.numericUpDownLength.Location = new Point(0x30, 0x30);
-            this.numericUpDownLength.Name = "numericUpDownLength";
-            this.numericUpDownLength.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
-            this.numericUpDownLength.Properties.DisplayFormat.FormatString = "0.####";
-            this.numericUpDownLength.Properties.DisplayFormat.FormatType = FormatType.Numeric;
-            this.numericUpDownLength.Properties.EditFormat.FormatString = "0.####";
-            this.numericUpDownLength.Properties.EditFormat.FormatType = FormatType.Numeric;
-            int[] bits5 = new int[4];
-            bits5[0] = 100;
-            this.numericUpDownLength.Properties.MaxValue = new decimal(bits5);
-           // this.numericUpDownLength.Properties.UseCtrlIncrement = false;
-            this.numericUpDownLength.Size = new Size(80, 0x17);
-            this.numericUpDownLength.TabIndex = 0x2e;
-            this.numericUpDownLength.TextChanged += new EventHandler(this.numericUpDownLength_ValueChanged);
-            int[] bits6 = new int[4];
-            this.numericUpDownWidth.EditValue = new decimal(bits6);
-            this.numericUpDownWidth.Location = new Point(0x30, 80);
-            this.numericUpDownWidth.Name = "numericUpDownWidth";
-            this.numericUpDownWidth.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
-            this.numericUpDownWidth.Properties.DisplayFormat.FormatString = "0.####";
-            this.numericUpDownWidth.Properties.DisplayFormat.FormatType = FormatType.Numeric;
-            this.numericUpDownWidth.Properties.EditFormat.FormatString = "0.####";
-            this.numericUpDownWidth.Properties.EditFormat.FormatType = FormatType.Numeric;
-            int[] bits7 = new int[4];
-            bits7[0] = 100;
-            this.numericUpDownWidth.Properties.MaxValue = new decimal(bits7);
-          //  this.numericUpDownWidth.Properties.UseCtrlIncrement = false;
-            this.numericUpDownWidth.Size = new Size(80, 0x17);
-            this.numericUpDownWidth.TabIndex = 0x2f;
-            this.numericUpDownWidth.TextChanged += new EventHandler(this.numericUpDownWidth_ValueChanged);
-            int[] bits8 = new int[4];
-            this.numericUpDownXOffset.EditValue = new decimal(bits8);
-            this.numericUpDownXOffset.Location = new Point(0xb0, 0x30);
-            this.numericUpDownXOffset.Name = "numericUpDownXOffset";
-            this.numericUpDownXOffset.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
-            this.numericUpDownXOffset.Properties.DisplayFormat.FormatString = "0.####";
-            this.numericUpDownXOffset.Properties.DisplayFormat.FormatType = FormatType.Numeric;
-            this.numericUpDownXOffset.Properties.EditFormat.FormatString = "0.####";
-            this.numericUpDownXOffset.Properties.EditFormat.FormatType = FormatType.Numeric;
-            int[] bits9 = new int[4];
-            bits9[0] = 100;
-            this.numericUpDownXOffset.Properties.MaxValue = new decimal(bits9);
-            int[] bits10 = new int[4];
-            bits10[0] = 100;
-            bits10[3] = -2147483648;
-            this.numericUpDownXOffset.Properties.MinValue = new decimal(bits10);
-            this.numericUpDownXOffset.Properties.UseCtrlIncrement = false;
-            this.numericUpDownXOffset.Size = new Size(80, 0x17);
-            this.numericUpDownXOffset.TabIndex = 0x30;
-            this.numericUpDownXOffset.TextChanged += new EventHandler(this.numericUpDownXOffset_ValueChanged);
-            int[] bits11 = new int[4];
-            this.numericUpDownYOffset.EditValue = new decimal(bits11);
-            this.numericUpDownYOffset.Location = new Point(0xb0, 80);
-            this.numericUpDownYOffset.Name = "numericUpDownYOffset";
-            this.numericUpDownYOffset.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
-            this.numericUpDownYOffset.Properties.DisplayFormat.FormatString = "0.####";
-            this.numericUpDownYOffset.Properties.DisplayFormat.FormatType = FormatType.Numeric;
-            this.numericUpDownYOffset.Properties.EditFormat.FormatString = "0.####";
-            this.numericUpDownYOffset.Properties.EditFormat.FormatType = FormatType.Numeric;
-            int[] bits12 = new int[4];
-            bits12[0] = 100;
-            this.numericUpDownYOffset.Properties.MaxValue = new decimal(bits12);
-            int[] bits13 = new int[4];
-            bits13[0] = 100;
-            bits13[3] = -2147483648;
-            this.numericUpDownYOffset.Properties.MinValue = new decimal(bits13);
-          //  this.numericUpDownYOffset.Properties.UseCtrlIncrement = false;
-            this.numericUpDownYOffset.Size = new Size(80, 0x17);
-            this.numericUpDownYOffset.TabIndex = 0x31;
-            this.numericUpDownYOffset.TextChanged += new EventHandler(this.numericUpDownYOffset_ValueChanged);
-            base.Controls.Add(this.numericUpDownYOffset);
-            base.Controls.Add(this.numericUpDownXOffset);
-            base.Controls.Add(this.numericUpDownWidth);
-            base.Controls.Add(this.numericUpDownLength);
-            base.Controls.Add(this.numericUpDownAngle);
-            base.Controls.Add(this.colorEdit1);
-            base.Controls.Add(this.label2);
-            base.Controls.Add(this.label7);
-            base.Controls.Add(this.label5);
-            base.Controls.Add(this.label4);
-            base.Controls.Add(this.label3);
-            base.Controls.Add(this.label1);
-            base.Name = "ArrowMarkerControl";
-            base.Size = new Size(0x158, 240);
-            base.Load += new EventHandler(this.ArrowMarkerControl_Load);
-            this.colorEdit1.Properties.EndInit();
-            this.numericUpDownAngle.Properties.EndInit();
-            this.numericUpDownLength.Properties.EndInit();
-            this.numericUpDownWidth.Properties.EndInit();
-            this.numericUpDownXOffset.Properties.EndInit();
-            this.numericUpDownYOffset.Properties.EndInit();
-            base.ResumeLayout(false);
-        }
-
-        public static bool IsNmuber(string str)
+ public static bool IsNmuber(string str)
         {
             if (str.Length > 0)
             {

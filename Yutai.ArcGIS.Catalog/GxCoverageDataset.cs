@@ -522,50 +522,50 @@ namespace Yutai.ArcGIS.Catalog
                 if (this.idatasetName_0 is ICoverageName)
                 {
                     int num = (int) this.method_0();
-                    return ImageLib.GetSmallImage(0x39 + num);
+                    return ImageLib.GetSmallImage(57 + num);
                 }
                 if (this.idatasetName_0 is ICoverageFeatureClassName)
                 {
                     switch ((this.idatasetName_0 as ICoverageFeatureClassName).FeatureClassType)
                     {
                         case esriCoverageFeatureClassType.esriCFCTPoint:
-                            return ImageLib.GetSmallImage(0x3f);
+                            return ImageLib.GetSmallImage(63);
 
                         case esriCoverageFeatureClassType.esriCFCTArc:
-                            return ImageLib.GetSmallImage(0x40);
+                            return ImageLib.GetSmallImage(64);
 
                         case esriCoverageFeatureClassType.esriCFCTPolygon:
-                            return ImageLib.GetSmallImage(0x41);
+                            return ImageLib.GetSmallImage(65);
 
                         case esriCoverageFeatureClassType.esriCFCTNode:
-                            return ImageLib.GetSmallImage(0x42);
+                            return ImageLib.GetSmallImage(66);
 
                         case esriCoverageFeatureClassType.esriCFCTTic:
-                            return ImageLib.GetSmallImage(0x43);
+                            return ImageLib.GetSmallImage(67);
 
                         case esriCoverageFeatureClassType.esriCFCTAnnotation:
-                            return ImageLib.GetSmallImage(0x44);
+                            return ImageLib.GetSmallImage(68);
 
                         case esriCoverageFeatureClassType.esriCFCTSection:
-                            return ImageLib.GetSmallImage(0x48);
+                            return ImageLib.GetSmallImage(72);
 
                         case esriCoverageFeatureClassType.esriCFCTRoute:
-                            return ImageLib.GetSmallImage(0x45);
+                            return ImageLib.GetSmallImage(69);
 
                         case esriCoverageFeatureClassType.esriCFCTLink:
-                            return ImageLib.GetSmallImage(0x48);
+                            return ImageLib.GetSmallImage(72);
 
                         case esriCoverageFeatureClassType.esriCFCTRegion:
                             return ImageLib.GetSmallImage(70);
 
                         case esriCoverageFeatureClassType.esriCFCTLabel:
-                            return ImageLib.GetSmallImage(0x47);
+                            return ImageLib.GetSmallImage(71);
 
                         case esriCoverageFeatureClassType.esriCFCTFile:
-                            return ImageLib.GetSmallImage(0x48);
+                            return ImageLib.GetSmallImage(72);
                     }
                 }
-                return ImageLib.GetSmallImage(0x39);
+                return ImageLib.GetSmallImage(57);
             }
         }
 
@@ -576,50 +576,50 @@ namespace Yutai.ArcGIS.Catalog
                 if (this.idatasetName_0 is ICoverageName)
                 {
                     int num = (int) this.method_0();
-                    return ImageLib.GetSmallImage(0x39 + num);
+                    return ImageLib.GetSmallImage(57 + num);
                 }
                 if (this.idatasetName_0 is ICoverageFeatureClassName)
                 {
                     switch ((this.idatasetName_0 as ICoverageFeatureClassName).FeatureClassType)
                     {
                         case esriCoverageFeatureClassType.esriCFCTPoint:
-                            return ImageLib.GetSmallImage(0x3f);
+                            return ImageLib.GetSmallImage(63);
 
                         case esriCoverageFeatureClassType.esriCFCTArc:
-                            return ImageLib.GetSmallImage(0x40);
+                            return ImageLib.GetSmallImage(64);
 
                         case esriCoverageFeatureClassType.esriCFCTPolygon:
-                            return ImageLib.GetSmallImage(0x41);
+                            return ImageLib.GetSmallImage(65);
 
                         case esriCoverageFeatureClassType.esriCFCTNode:
-                            return ImageLib.GetSmallImage(0x42);
+                            return ImageLib.GetSmallImage(66);
 
                         case esriCoverageFeatureClassType.esriCFCTTic:
-                            return ImageLib.GetSmallImage(0x43);
+                            return ImageLib.GetSmallImage(67);
 
                         case esriCoverageFeatureClassType.esriCFCTAnnotation:
-                            return ImageLib.GetSmallImage(0x44);
+                            return ImageLib.GetSmallImage(68);
 
                         case esriCoverageFeatureClassType.esriCFCTSection:
-                            return ImageLib.GetSmallImage(0x48);
+                            return ImageLib.GetSmallImage(72);
 
                         case esriCoverageFeatureClassType.esriCFCTRoute:
-                            return ImageLib.GetSmallImage(0x45);
+                            return ImageLib.GetSmallImage(69);
 
                         case esriCoverageFeatureClassType.esriCFCTLink:
-                            return ImageLib.GetSmallImage(0x48);
+                            return ImageLib.GetSmallImage(72);
 
                         case esriCoverageFeatureClassType.esriCFCTRegion:
                             return ImageLib.GetSmallImage(70);
 
                         case esriCoverageFeatureClassType.esriCFCTLabel:
-                            return ImageLib.GetSmallImage(0x47);
+                            return ImageLib.GetSmallImage(71);
 
                         case esriCoverageFeatureClassType.esriCFCTFile:
-                            return ImageLib.GetSmallImage(0x48);
+                            return ImageLib.GetSmallImage(72);
                     }
                 }
-                return ImageLib.GetSmallImage(0x39);
+                return ImageLib.GetSmallImage(57);
             }
         }
 

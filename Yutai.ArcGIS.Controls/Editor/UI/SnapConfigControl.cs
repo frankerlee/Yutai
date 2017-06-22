@@ -19,23 +19,12 @@ using IDockContent = Yutai.ArcGIS.Framework.Docking.IDockContent;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {
-    public class SnapConfigControl : UserControl, IDockContent
+    public partial class SnapConfigControl : UserControl, IDockContent
     {
-        private SimpleButton btnApply;
-        private ComboBoxEdit cboSnapUnits;
-        private CheckEdit chkStartSnap;
-        private Container components = null;
-        private DataGrid dataGrid1;
         private DataTable dt = new DataTable();
-        private GroupBox groupBox4;
         private bool m_CanDo = false;
         private bool m_InitOk = false;
-        private IApplication m_pApp;
         private IArray m_pArray = new ArrayClass();
-        private IEngineSnapEnvironment m_pEngineSnapEnvironment;
-        private IMap m_pMap;
-        private ISnapEnvironment m_pSnapEnvironment;
-        private TextEdit txtRadio;
 
         public SnapConfigControl()
         {
@@ -167,16 +156,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private void dt_ColumnChanged(object sender, DataColumnChangeEventArgs e)
+ private void dt_ColumnChanged(object sender, DataColumnChangeEventArgs e)
         {
             if (this.m_CanDo)
             {
@@ -229,10 +209,10 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                             {
                                 LSInfo.bSnapBoundary = true;
                             }
-                            if ((geometryHitType & 0x20) != 0)
+                            if ((geometryHitType & 32) != 0)
                             {
                             }
-                            if ((geometryHitType & 0x10) != 0)
+                            if ((geometryHitType & 16) != 0)
                             {
                                 LSInfo.bSnapEndPoint = true;
                             }
@@ -266,10 +246,10 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                             {
                                 LSInfo.bSnapBoundary = true;
                             }
-                            if ((geometryHitType & 0x20) != 0)
+                            if ((geometryHitType & 32) != 0)
                             {
                             }
-                            if ((geometryHitType & 0x10) != 0)
+                            if ((geometryHitType & 16) != 0)
                             {
                                 LSInfo.bSnapEndPoint = true;
                             }
@@ -322,82 +302,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
-        private void InitializeComponent()
-        {
-            this.groupBox4 = new GroupBox();
-            this.cboSnapUnits = new ComboBoxEdit();
-            this.txtRadio = new TextEdit();
-            this.dataGrid1 = new DataGrid();
-            this.btnApply = new SimpleButton();
-            this.chkStartSnap = new CheckEdit();
-            this.groupBox4.SuspendLayout();
-            this.cboSnapUnits.Properties.BeginInit();
-            this.txtRadio.Properties.BeginInit();
-            this.dataGrid1.BeginInit();
-            this.chkStartSnap.Properties.BeginInit();
-            base.SuspendLayout();
-            this.groupBox4.Controls.Add(this.cboSnapUnits);
-            this.groupBox4.Controls.Add(this.txtRadio);
-            this.groupBox4.Location = new System.Drawing.Point(8, 0xb0);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new Size(0x108, 0x30);
-            this.groupBox4.TabIndex = 1;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "捕捉半径";
-            this.cboSnapUnits.EditValue = "像素";
-            this.cboSnapUnits.Location = new System.Drawing.Point(0x90, 0x11);
-            this.cboSnapUnits.Name = "cboSnapUnits";
-            this.cboSnapUnits.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.cboSnapUnits.Properties.Items.AddRange(new object[] { "像素", "地图单位" });
-            this.cboSnapUnits.Size = new Size(0x68, 0x15);
-            this.cboSnapUnits.TabIndex = 2;
-            this.cboSnapUnits.SelectedIndexChanged += new EventHandler(this.cboSnapUnits_SelectedIndexChanged);
-            this.txtRadio.EditValue = "1";
-            this.txtRadio.Location = new System.Drawing.Point(0x10, 0x11);
-            this.txtRadio.Name = "txtRadio";
-            this.txtRadio.RightToLeft = RightToLeft.Yes;
-            this.txtRadio.Size = new Size(0x70, 0x15);
-            this.txtRadio.TabIndex = 0;
-            this.txtRadio.EditValueChanged += new EventHandler(this.txtRadio_EditValueChanged);
-            this.dataGrid1.CaptionVisible = false;
-            this.dataGrid1.DataMember = "";
-            this.dataGrid1.Dock = DockStyle.Top;
-            this.dataGrid1.GridLineStyle = DataGridLineStyle.None;
-            this.dataGrid1.HeaderForeColor = SystemColors.ControlText;
-            this.dataGrid1.Location = new System.Drawing.Point(0, 0);
-            this.dataGrid1.Name = "dataGrid1";
-            this.dataGrid1.RowHeadersVisible = false;
-            this.dataGrid1.RowHeaderWidth = 0;
-            this.dataGrid1.Size = new Size(0x138, 0xa8);
-            this.dataGrid1.TabIndex = 2;
-            this.btnApply.Location = new System.Drawing.Point(8, 0x106);
-            this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new Size(0x58, 0x18);
-            this.btnApply.TabIndex = 3;
-            this.btnApply.Text = "应用设置";
-            this.btnApply.Click += new EventHandler(this.btnApply_Click);
-            this.chkStartSnap.EditValue = true;
-            this.chkStartSnap.Location = new System.Drawing.Point(8, 0xed);
-            this.chkStartSnap.Name = "chkStartSnap";
-            this.chkStartSnap.Properties.Caption = "启用捕捉";
-            this.chkStartSnap.Size = new Size(0x80, 0x13);
-            this.chkStartSnap.TabIndex = 6;
-            base.Controls.Add(this.chkStartSnap);
-            base.Controls.Add(this.btnApply);
-            base.Controls.Add(this.dataGrid1);
-            base.Controls.Add(this.groupBox4);
-            base.Name = "SnapConfigControl";
-            base.Size = new Size(0x138, 0x12e);
-            base.Load += new EventHandler(this.SnapConfigControl_Load);
-            this.groupBox4.ResumeLayout(false);
-            this.cboSnapUnits.Properties.EndInit();
-            this.txtRadio.Properties.EndInit();
-            this.dataGrid1.EndInit();
-            this.chkStartSnap.Properties.EndInit();
-            base.ResumeLayout(false);
-        }
-
-        public void InitSnapEnvironment()
+ public void InitSnapEnvironment()
         {
             SnapConfigControl.LayerSnapInfo element;
             int i;
@@ -716,7 +621,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
-        private class LayerSnapInfo
+        private partial class LayerSnapInfo
         {
             public bool bSnapBoundary = false;
             public bool bSnapEndPoint = false;
@@ -739,7 +644,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                     }
                     if (this.bSnapEndPoint)
                     {
-                        num |= 0x10;
+                        num |= 16;
                     }
                     return num;
                 }

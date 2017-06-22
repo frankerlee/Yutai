@@ -8,15 +8,12 @@ using ESRI.ArcGIS.Geodatabase;
 
 namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 {
-    internal class FieldTypeObjectIDCtrl : UserControl, IControlBaseInterface
+    internal partial class FieldTypeObjectIDCtrl : UserControl, IControlBaseInterface
     {
         private bool bool_0 = false;
         private bool bool_1 = false;
         private Container container_0 = null;
-        private IFieldEdit ifieldEdit_0;
         private IWorkspace iworkspace_0 = null;
-        private TextEdit textEdit1;
-        private TextEdit txtAlias;
 
         public event FieldChangedHandler FieldChanged;
 
@@ -27,16 +24,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.InitializeComponent();
         }
 
-        protected override void Dispose(bool bool_2)
-        {
-            if (bool_2 && (this.container_0 != null))
-            {
-                this.container_0.Dispose();
-            }
-            base.Dispose(bool_2);
-        }
-
-        private void FieldTypeObjectIDCtrl_Load(object sender, EventArgs e)
+ private void FieldTypeObjectIDCtrl_Load(object sender, EventArgs e)
         {
             this.method_1();
         }
@@ -53,41 +41,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
         }
 
-        private void InitializeComponent()
-        {
-            this.textEdit1 = new TextEdit();
-            this.txtAlias = new TextEdit();
-            this.textEdit1.Properties.BeginInit();
-            this.txtAlias.Properties.BeginInit();
-            base.SuspendLayout();
-            this.textEdit1.EditValue = "别名";
-            this.textEdit1.Location = new Point(8, 8);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Properties.AllowFocused = false;
-            this.textEdit1.Properties.BorderStyle = BorderStyles.Simple;
-            this.textEdit1.Properties.ReadOnly = true;
-            this.textEdit1.Size = new Size(0x58, 0x13);
-            this.textEdit1.TabIndex = 0;
-            this.txtAlias.EditValue = "OBJECTID";
-            this.txtAlias.Location = new Point(0x60, 8);
-            this.txtAlias.Name = "txtAlias";
-            this.txtAlias.Properties.BorderStyle = BorderStyles.Simple;
-            this.txtAlias.Size = new Size(0x70, 0x13);
-            this.txtAlias.TabIndex = 1;
-            this.txtAlias.EditValueChanged += new EventHandler(this.txtAlias_EditValueChanged);
-            this.BackColor = SystemColors.Control;
-            base.Controls.Add(this.txtAlias);
-            base.Controls.Add(this.textEdit1);
-            base.Name = "FieldTypeObjectIDCtrl";
-            base.Size = new Size(240, 0xd0);
-            base.VisibleChanged += new EventHandler(this.FieldTypeObjectIDCtrl_VisibleChanged);
-            base.Load += new EventHandler(this.FieldTypeObjectIDCtrl_Load);
-            this.textEdit1.Properties.EndInit();
-            this.txtAlias.Properties.EndInit();
-            base.ResumeLayout(false);
-        }
-
-        private void method_0(IField ifield_0, FieldChangeType fieldChangeType_0)
+ private void method_0(IField ifield_0, FieldChangeType fieldChangeType_0)
         {
             if (this.FieldChanged != null)
             {

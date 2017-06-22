@@ -42,33 +42,33 @@ namespace Yutai.ArcGIS.Common.ControlExtenders.Renderer
         private static void old_acctor_mc()
         {
             _contextMenuBack = Color.FromArgb(250, 250, 250);
-            _buttonPressedBegin = Color.FromArgb(0xf8, 0xb5, 0x6a);
-            _buttonPressedEnd = Color.FromArgb(0xff, 0xd0, 0x86);
-            _buttonPressedMiddle = Color.FromArgb(0xfb, 140, 60);
-            _buttonSelectedBegin = Color.FromArgb(0xff, 0xff, 0xde);
-            _buttonSelectedEnd = Color.FromArgb(0xff, 0xcb, 0x88);
-            _buttonSelectedMiddle = Color.FromArgb(0xff, 0xe1, 0xac);
-            _menuItemSelectedBegin = Color.FromArgb(0xff, 0xd5, 0x67);
-            _menuItemSelectedEnd = Color.FromArgb(0xff, 0xe4, 0x91);
-            _checkBack = Color.FromArgb(0xff, 0xe3, 0x95);
-            _gripDark = Color.FromArgb(0x6f, 0x9d, 0xd9);
-            _gripLight = Color.FromArgb(0xff, 0xff, 0xff);
-            _imageMargin = Color.FromArgb(0xe9, 0xee, 0xee);
-            _menuBorder = Color.FromArgb(0x86, 0x86, 0x86);
-            _overflowBegin = Color.FromArgb(0xa7, 0xcc, 0xfb);
-            _overflowEnd = Color.FromArgb(0x65, 0x93, 0xcf);
-            _overflowMiddle = Color.FromArgb(0xa7, 0xcc, 0xfb);
-            _menuToolBack = Color.FromArgb(0xbf, 0xdb, 0xff);
-            _separatorDark = Color.FromArgb(0x9a, 0xc6, 0xff);
-            _separatorLight = Color.FromArgb(0xff, 0xff, 0xff);
-            _statusStripLight = Color.FromArgb(0xd7, 0xe5, 0xf7);
-            _statusStripDark = Color.FromArgb(0xac, 0xc9, 0xee);
-            _toolStripBorder = Color.FromArgb(0x6f, 0x9d, 0xd9);
-            _toolStripContentEnd = Color.FromArgb(0xa4, 0xc3, 0xeb);
-            _toolStripBegin = Color.FromArgb(0xe3, 0xef, 0xff);
-            _toolStripEnd = Color.FromArgb(0x98, 0xba, 230);
-            _toolStripMiddle = Color.FromArgb(0xde, 0xec, 0xff);
-            _buttonBorder = Color.FromArgb(0x79, 0x99, 0xc2);
+            _buttonPressedBegin = Color.FromArgb(248, 181, 106);
+            _buttonPressedEnd = Color.FromArgb(255, 208, 134);
+            _buttonPressedMiddle = Color.FromArgb(251, 140, 60);
+            _buttonSelectedBegin = Color.FromArgb(255, 255, 222);
+            _buttonSelectedEnd = Color.FromArgb(255, 203, 136);
+            _buttonSelectedMiddle = Color.FromArgb(255, 225, 172);
+            _menuItemSelectedBegin = Color.FromArgb(255, 213, 103);
+            _menuItemSelectedEnd = Color.FromArgb(255, 228, 145);
+            _checkBack = Color.FromArgb(255, 227, 149);
+            _gripDark = Color.FromArgb(111, 157, 217);
+            _gripLight = Color.FromArgb(255, 255, 255);
+            _imageMargin = Color.FromArgb(233, 238, 238);
+            _menuBorder = Color.FromArgb(134, 134, 134);
+            _overflowBegin = Color.FromArgb(167, 204, 251);
+            _overflowEnd = Color.FromArgb(101, 147, 207);
+            _overflowMiddle = Color.FromArgb(167, 204, 251);
+            _menuToolBack = Color.FromArgb(191, 219, 255);
+            _separatorDark = Color.FromArgb(154, 198, 255);
+            _separatorLight = Color.FromArgb(255, 255, 255);
+            _statusStripLight = Color.FromArgb(215, 229, 247);
+            _statusStripDark = Color.FromArgb(172, 201, 238);
+            _toolStripBorder = Color.FromArgb(111, 157, 217);
+            _toolStripContentEnd = Color.FromArgb(164, 195, 235);
+            _toolStripBegin = Color.FromArgb(227, 239, 255);
+            _toolStripEnd = Color.FromArgb(152, 186, 230);
+            _toolStripMiddle = Color.FromArgb(222, 236, 255);
+            _buttonBorder = Color.FromArgb(121, 153, 194);
         }
 
         public override Color ButtonPressedGradientBegin

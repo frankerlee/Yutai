@@ -27,7 +27,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         protected override void WndProc(ref Message m)
         {
-            if (m.Msg == 0x84)
+            if (m.Msg == 132)
             {
                 m.Result = (IntPtr) (-1L);
             }
@@ -42,7 +42,7 @@ namespace Yutai.ArcGIS.Framework.Docking
             get
             {
                 System.Windows.Forms.CreateParams createParams = base.CreateParams;
-                createParams.ExStyle |= 0x80;
+                createParams.ExStyle |= 128;
                 return createParams;
             }
         }

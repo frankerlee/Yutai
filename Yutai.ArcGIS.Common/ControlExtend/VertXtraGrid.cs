@@ -372,7 +372,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             this.gridColumn_1.OptionsFilter.AllowFilter = false;
             this.gridColumn_1.Visible = true;
             this.gridColumn_1.VisibleIndex = 1;
-            this.gridColumn_1.Width = 0xea;
+            this.gridColumn_1.Width = 234;
         }
 
         public string EditorName

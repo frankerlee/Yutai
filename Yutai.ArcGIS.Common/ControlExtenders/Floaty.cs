@@ -6,18 +6,12 @@ using System.Windows.Forms;
 
 namespace Yutai.ArcGIS.Common.ControlExtenders
 {
-    internal sealed class Floaty : Form, IFloaty
+    internal sealed partial class Floaty : Form, IFloaty
     {
-        private bool bool_0;
-        private bool bool_1;
-        private bool bool_2;
-        private bool bool_3;
-        private DockExtender dockExtender_0;
-        private DockState dockState_0;
-        private const int SC_MOVE = 0xf010;
-        private const int WM_LBUTTONUP = 0x202;
-        private const int WM_NCLBUTTONDBLCLK = 0xa3;
-        private const int WM_SYSCOMMAND = 0x112;
+        private const int SC_MOVE = 61456;
+        private const int WM_LBUTTONUP = 514;
+        private const int WM_NCLBUTTONDBLCLK = 163;
+        private const int WM_SYSCOMMAND = 274;
 
         public event EventHandler Docking;
 
@@ -51,8 +45,8 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
                 Size size = this.dockState_0.Container.Size;
                 if (this.dockState_0.Container.Equals(this.dockState_0.Handle))
                 {
-                    size.Width += 0x12;
-                    size.Height += 0x1c;
+                    size.Width += 18;
+                    size.Height += 28;
                 }
                 if (size.Width > 600)
                 {
@@ -88,22 +82,7 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
             this.dockState_0.Container.Hide();
         }
 
-        private void InitializeComponent()
-        {
-            base.SuspendLayout();
-            base.ClientSize = new Size(0xb2, 0x7a);
-            base.FormBorderStyle = FormBorderStyle.SizableToolWindow;
-            base.MaximizeBox = false;
-            base.Name = "Floaty";
-            base.ShowIcon = false;
-            base.ShowInTaskbar = false;
-            base.StartPosition = FormStartPosition.Manual;
-            base.ResumeLayout(false);
-            this.bool_3 = true;
-            this.bool_2 = true;
-        }
-
-        private Rectangle method_0(Control control_0)
+ private Rectangle method_0(Control control_0)
         {
             Rectangle bounds = control_0.Bounds;
             if (control_0.Parent != null)
@@ -229,7 +208,7 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
         private Rectangle method_2(Point point_0, ToolStripPanel toolStripPanel_0, DockStyle dockStyle_0)
         {
             Rectangle bounds = toolStripPanel_0.Bounds;
-            int num = 0x19;
+            int num = 25;
             if (toolStripPanel_0.Controls.Count == 0)
             {
                 if ((dockStyle_0 == DockStyle.Top) || (dockStyle_0 == DockStyle.Bottom))
@@ -388,8 +367,8 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
                 }
                 if (this.dockState_0.Container.Equals(this.dockState_0.Handle))
                 {
-                    size.Width += 0x12;
-                    size.Height += 0x1c;
+                    size.Width += 18;
+                    size.Height += 28;
                 }
                 if (size.Width > 600)
                 {
@@ -410,13 +389,13 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
                     this.dockState_0.Splitter.Visible = false;
                     this.dockState_0.Splitter.Parent = this;
                 }
-                SendMessage(this.dockState_0.Handle.Handle.ToInt32(), 0x202, 0, 0);
+                SendMessage(this.dockState_0.Handle.Handle.ToInt32(), 514, 0, 0);
                 position.X -= int_0;
                 position.Y -= int_1;
                 base.Bounds = new Rectangle(position, size);
                 this.bool_1 = true;
                 this.Show();
-                SendMessage(base.Handle.ToInt32(), 0x112, 0xf012, 0);
+                SendMessage(base.Handle.ToInt32(), 274, 61458, 0);
             }
         }
 
@@ -576,7 +555,7 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
 
         protected override void WndProc(ref Message message_0)
         {
-            if (message_0.Msg == 0xa3)
+            if (message_0.Msg == 163)
             {
                 this.method_7();
             }

@@ -259,9 +259,9 @@ namespace Yutai.ArcGIS.Catalog
             {
                 if (this.IsConnected)
                 {
-                    return ImageLib.GetSmallImage(0x4c);
+                    return ImageLib.GetSmallImage(76);
                 }
-                return ImageLib.GetSmallImage(0x4d);
+                return ImageLib.GetSmallImage(77);
             }
         }
 
@@ -271,9 +271,9 @@ namespace Yutai.ArcGIS.Catalog
             {
                 if (this.IsConnected)
                 {
-                    return ImageLib.GetSmallImage(0x4c);
+                    return ImageLib.GetSmallImage(76);
                 }
-                return ImageLib.GetSmallImage(0x4d);
+                return ImageLib.GetSmallImage(77);
             }
         }
 
@@ -323,9 +323,9 @@ namespace Yutai.ArcGIS.Catalog
             {
                 if (this.IsConnected)
                 {
-                    return ImageLib.GetSmallImage(0x4c);
+                    return ImageLib.GetSmallImage(76);
                 }
-                return ImageLib.GetSmallImage(0x4d);
+                return ImageLib.GetSmallImage(77);
             }
         }
 
@@ -335,9 +335,9 @@ namespace Yutai.ArcGIS.Catalog
             {
                 if (this.IsConnected)
                 {
-                    return ImageLib.GetSmallImage(0x4c);
+                    return ImageLib.GetSmallImage(76);
                 }
-                return ImageLib.GetSmallImage(0x4d);
+                return ImageLib.GetSmallImage(77);
             }
         }
     }

@@ -14,15 +14,9 @@ using BaseView = DevExpress.XtraBars.Docking2010.Views.BaseView;
 
 namespace Yutai.ArcGIS.Catalog.UI
 {
-    public class FieldMatchCtrl : UserControl
+    public partial class FieldMatchCtrl : UserControl
     {
-        private GridControl gridControl1;
-        private GridView gridView1;
         private IContainer icontainer_0 = null;
-        [CompilerGenerated]
-        private IFields ifields_0;
-        [CompilerGenerated]
-        private IFields ifields_1;
         private VertXtraGrid vertXtraGrid_0 = null;
 
         public FieldMatchCtrl()
@@ -32,16 +26,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             this.gridView1.CellValueChanged += new CellValueChangedEventHandler(this.gridView1_CellValueChanged);
         }
 
-        protected override void Dispose(bool bool_0)
-        {
-            if (bool_0 && (this.icontainer_0 != null))
-            {
-                this.icontainer_0.Dispose();
-            }
-            base.Dispose(bool_0);
-        }
-
-        private void FieldMatchCtrl_Load(object sender, EventArgs e)
+ private void FieldMatchCtrl_Load(object sender, EventArgs e)
         {
             this.Init();
         }
@@ -69,38 +54,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
         }
 
-        private void InitializeComponent()
-        {
-            this.gridControl1 = new GridControl();
-            this.gridView1 = new GridView();
-            this.gridControl1.BeginInit();
-            this.gridView1.BeginInit();
-            base.SuspendLayout();
-            this.gridControl1.EmbeddedNavigator.Name = "";
-            this.gridControl1.Location = new Point(8, 8);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new Size(0x128, 0xe0);
-            this.gridControl1.TabIndex = 1;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { this.gridView1 });
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsView.RowAutoHeight = true;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.OptionsView.ShowIndicator = false;
-            this.gridView1.ShowButtonMode = ShowButtonModeEnum.ShowOnlyInEditor;
-            base.AutoScaleDimensions = new SizeF(6f, 12f);
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.Controls.Add(this.gridControl1);
-            base.Name = "FieldMatchCtrl";
-            base.Size = new Size(0x145, 0x101);
-            base.Load += new EventHandler(this.FieldMatchCtrl_Load);
-            this.gridControl1.EndInit();
-            this.gridView1.EndInit();
-            base.ResumeLayout(false);
-        }
-
-        private List<object> method_0(IField ifield_0, out FieldObject fieldObject_0)
+ private List<object> method_0(IField ifield_0, out FieldObject fieldObject_0)
         {
             List<object> list = new List<object> { "<空>" };
             fieldObject_0 = null;

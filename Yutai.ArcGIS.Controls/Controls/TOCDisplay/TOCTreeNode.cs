@@ -49,7 +49,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
         {
             this.OID = 0;
             this.m_pImage = null;
-            this.m_nItemHeight = 0x12;
+            this.m_nItemHeight = 18;
             this.m_Space = 4;
             this.m_Checked = false;
             this.m_Text = "";
@@ -89,7 +89,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
         {
             this.OID = 0;
             this.m_pImage = null;
-            this.m_nItemHeight = 0x12;
+            this.m_nItemHeight = 18;
             this.m_Space = 4;
             this.m_Checked = false;
             this.m_Text = "";
@@ -134,7 +134,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
         {
             this.OID = 0;
             this.m_pImage = null;
-            this.m_nItemHeight = 0x12;
+            this.m_nItemHeight = 18;
             this.m_Space = 4;
             this.m_Checked = false;
             this.m_Text = "";
@@ -272,9 +272,9 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                 {
                     this.m_ImageRect.X = x;
                     this.m_ImageRect.Y = y;
-                    this.m_ImageRect.Width = 0x12;
+                    this.m_ImageRect.Width = 18;
                     this.m_ImageRect.Height = this.m_nItemHeight;
-                    x += 0x12;
+                    x += 18;
                 }
             }
             else if (this.m_HasImage)
@@ -566,7 +566,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     SolidBrush brush2;
                     if (this.m_IsSelected)
                     {
-                        brush2 = new SolidBrush(Color.FromArgb(190, 0xd5, 0xff));
+                        brush2 = new SolidBrush(Color.FromArgb(190, 213, 255));
                         brush = new SolidBrush(Color.White);
                     }
                     else

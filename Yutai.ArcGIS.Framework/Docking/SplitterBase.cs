@@ -25,7 +25,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         protected override void WndProc(ref Message m)
         {
-            if (m.Msg != 0x21)
+            if (m.Msg != 33)
             {
                 base.WndProc(ref m);
             }

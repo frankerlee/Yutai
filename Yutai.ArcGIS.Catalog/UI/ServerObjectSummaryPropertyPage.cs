@@ -25,7 +25,7 @@ namespace Yutai.ArcGIS.Catalog.UI
         private void InitializeComponent()
         {
             base.Name = "ServerObjectSummaryPropertyPage";
-            base.Size = new Size(0x130, 0x138);
+            base.Size = new Size(304, 312);
         }
     }
 }

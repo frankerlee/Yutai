@@ -6,9 +6,8 @@ using ESRI.ArcGIS.Display;
 
 namespace Yutai.ArcGIS.Controls.SymbolLib
 {
-    internal class BasicFillSymbolLayer : BasicSymbolLayerBaseControl
+    internal partial class BasicFillSymbolLayer : BasicSymbolLayerBaseControl
     {
-        private IContainer components = null;
 
         public BasicFillSymbolLayer()
         {
@@ -28,25 +27,6 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
             }
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
 
-        private void InitializeComponent()
-        {
-            base.SuspendLayout();
-            base.AutoScaleDimensions = new SizeF(6f, 12f);
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.Name = "BasicFillSymbolLayer";
-            base.Size = new Size(0xd5, 0x100);
-            base.Load += new EventHandler(this.BasicFillSymbolLayer_Load);
-            base.ResumeLayout(false);
-        }
     }
 }
-

@@ -16,31 +16,24 @@ using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 {
-    public class NewObjectClassFieldsPage : UserControl
+    public partial class NewObjectClassFieldsPage : UserControl
     {
         private bool bool_0 = true;
         private bool bool_1 = false;
         private bool bool_2 = false;
-        private bool bool_3;
-        private SimpleButton btnImportStruct;
         private enumUseType enumUseType_0 = enumUseType.enumUTFeatureClass;
         private esriFieldType[] esriFieldType_0;
         private esriFieldType[] esriFieldType_1;
         private esriFieldType[] esriFieldType_2;
-        private GroupBox groupBox1;
         private IContainer icontainer_0 = null;
         private IControlBaseInterface[] icontrolBaseInterface_0;
         private IField ifield_0 = null;
-        private IFields ifields_0;
         private IFieldsEdit ifieldsEdit_0 = new FieldsClass();
         private IFieldsEdit ifieldsEdit_1 = new FieldsClass();
         private IList<IField> ilist_0 = new List<IField>();
         private IList<FieldChangeType> ilist_1 = new List<FieldChangeType>();
         private ITable itable_0 = null;
         private IWorkspace iworkspace_0 = null;
-        private EditListView listView2;
-        private LVColumnHeader lvcolumnHeader_0;
-        private LVColumnHeader lvcolumnHeader_1;
         private string string_0 = "SHAPE";
         private string[] string_1 = new string[] { "短整形", "长整形", "单精度", "双精度", "字符串", "日期型", "Blob", "Guid", "几何对象", "Raster" };
         private string[] string_2 = new string[] { "短整形", "长整形", "单精度", "双精度", "字符串", "日期型", "Blob", "Guid", "Raster" };
@@ -326,16 +319,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
-        protected override void Dispose(bool bool_4)
-        {
-            if (bool_4 && (this.icontainer_0 != null))
-            {
-                this.icontainer_0.Dispose();
-            }
-            base.Dispose(bool_4);
-        }
-
-        public void InitControl()
+ public void InitControl()
         {
             NewObjectClassHelper.m_pObjectClassHelper.InitFields();
             this.ifields_0 = NewObjectClassHelper.m_pObjectClassHelper.Fields;
@@ -346,63 +330,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
-        private void InitializeComponent()
-        {
-            this.btnImportStruct = new SimpleButton();
-            this.groupBox1 = new GroupBox();
-            this.listView2 = new EditListView();
-            this.lvcolumnHeader_0 = new LVColumnHeader();
-            this.lvcolumnHeader_1 = new LVColumnHeader();
-            base.SuspendLayout();
-            this.btnImportStruct.Location = new System.Drawing.Point(0x128, 0x187);
-            this.btnImportStruct.Name = "btnImportStruct";
-            this.btnImportStruct.Size = new Size(0x38, 0x18);
-            this.btnImportStruct.TabIndex = 5;
-            this.btnImportStruct.Text = "导入...";
-            this.btnImportStruct.Click += new EventHandler(this.btnImportStruct_Click);
-            this.groupBox1.Location = new System.Drawing.Point(0x10, 0xbf);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new Size(0x110, 0xe0);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "字段属性";
-            this.listView2.Columns.AddRange(new ColumnHeader[] { this.lvcolumnHeader_0, this.lvcolumnHeader_1 });
-            this.listView2.ComboBoxBgColor = Color.GhostWhite;
-            this.listView2.ComboBoxFont = new Font("宋体", 9f, FontStyle.Regular, GraphicsUnit.Point, 0x86);
-            this.listView2.EditBgColor = Color.GhostWhite;
-            this.listView2.EditFont = new Font("宋体", 9f, FontStyle.Regular, GraphicsUnit.Point, 0x86);
-            this.listView2.FullRowSelect = true;
-            this.listView2.GridLines = true;
-            this.listView2.HideSelection = false;
-            this.listView2.Location = new System.Drawing.Point(0x10, 13);
-            this.listView2.LockRowCount = 0;
-            this.listView2.MultiSelect = false;
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new Size(0x150, 0xa7);
-            this.listView2.TabIndex = 3;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.View = View.Details;
-            this.listView2.SelectedIndexChanged += new EventHandler(this.listView2_SelectedIndexChanged);
-            this.listView2.ValueChanged += new Common.ControlExtend.ValueChangedHandler(this.method_6);
-            this.listView2.RowDelete += new RowDeleteHandler(this.method_7);
-            this.lvcolumnHeader_0.ColumnStyle = ListViewColumnStyle.EditBox;
-            this.lvcolumnHeader_0.Text = "字段名";
-            this.lvcolumnHeader_0.Width = 0xcb;
-            this.lvcolumnHeader_1.ColumnStyle = ListViewColumnStyle.ComboBox;
-            this.lvcolumnHeader_1.Text = "数据类型";
-            this.lvcolumnHeader_1.Width = 0x7e;
-            base.AutoScaleDimensions = new SizeF(6f, 12f);
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.Controls.Add(this.btnImportStruct);
-            base.Controls.Add(this.groupBox1);
-            base.Controls.Add(this.listView2);
-            base.Name = "NewObjectClassFieldsPage";
-            base.Size = new Size(0x170, 0x1a8);
-            base.Load += new EventHandler(this.NewObjectClassFieldsPage_Load);
-            base.ResumeLayout(false);
-        }
-
-        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+ private void listView2_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.listView2.SelectedItems.Count > 0)
             {

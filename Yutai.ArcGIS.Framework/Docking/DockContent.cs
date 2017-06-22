@@ -152,7 +152,7 @@ namespace Yutai.ArcGIS.Framework.Docking
             }
         }
 
-        [DefaultValue(0x3f), LocalizedDescription("DockContent_DockAreas_Description"), LocalizedCategory("Category_Docking")]
+        [DefaultValue(63), LocalizedDescription("DockContent_DockAreas_Description"), LocalizedCategory("Category_Docking")]
         public DockAreas DockAreas
         {
             get

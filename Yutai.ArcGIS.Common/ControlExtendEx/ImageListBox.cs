@@ -13,7 +13,7 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
 
         public ImageListBox()
         {
-            Bitmap image = new Bitmap(0x10, 0x10);
+            Bitmap image = new Bitmap(16, 16);
             Graphics graphics = Graphics.FromImage(image);
             graphics.SmoothingMode = SmoothingMode.AntiAlias;
             Rectangle rect = new Rectangle(0, 0, image.Width - 1, image.Height - 1);
@@ -23,7 +23,7 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
             graphics.Dispose();
             image.Dispose();
             this.ListBoxIcon = this.icon_0;
-            this.ItemHeight = 0x19;
+            this.ItemHeight = 25;
             this.DrawMode = DrawMode.OwnerDrawFixed;
         }
 
@@ -37,7 +37,7 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
                 if (((this.ImageList == null) || (this.ImageList.Images.Count == 0)) || (drawItemEventArgs_0.Index == (base.Items.Count - 1)))
                 {
                     drawItemEventArgs_0.Graphics.DrawIcon(this.icon_0, new Rectangle(drawItemEventArgs_0.Bounds.X + 2, drawItemEventArgs_0.Bounds.Y + 5, this.icon_0.Width, this.icon_0.Height));
-                    drawItemEventArgs_0.Graphics.DrawString(base.Items[drawItemEventArgs_0.Index].ToString(), drawItemEventArgs_0.Font, new SolidBrush(drawItemEventArgs_0.ForeColor), (float) ((drawItemEventArgs_0.Bounds.X + 0x10) + 3), (float) (drawItemEventArgs_0.Bounds.Y + 5));
+                    drawItemEventArgs_0.Graphics.DrawString(base.Items[drawItemEventArgs_0.Index].ToString(), drawItemEventArgs_0.Font, new SolidBrush(drawItemEventArgs_0.ForeColor), (float) ((drawItemEventArgs_0.Bounds.X + 16) + 3), (float) (drawItemEventArgs_0.Bounds.Y + 5));
                 }
                 else
                 {

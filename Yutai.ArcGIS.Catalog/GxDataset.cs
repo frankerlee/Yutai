@@ -798,8 +798,8 @@ namespace Yutai.ArcGIS.Catalog
                         {
                             switch (((uint) (exception as COMException).ErrorCode))
                             {
-                                case 0x80041352:
-                                case 0x80041538:
+                                case 2147750738:
+                                case 2147751224:
                                     throw new Exception("打开对象类错误!");
                             }
                             Logger.Current.Error("",exception, "");
@@ -950,11 +950,11 @@ namespace Yutai.ArcGIS.Catalog
             {
                 if (this.idatasetName_0.Type == esriDatasetType.esriDTFeatureDataset)
                 {
-                    return ImageLib.GetSmallImage(0x12);
+                    return ImageLib.GetSmallImage(18);
                 }
                 if (this.idatasetName_0.Type == esriDatasetType.esriDTTable)
                 {
-                    return ImageLib.GetSmallImage(0x13);
+                    return ImageLib.GetSmallImage(19);
                 }
                 if (this.idatasetName_0.Type == esriDatasetType.esriDTRelationshipClass)
                 {
@@ -962,22 +962,22 @@ namespace Yutai.ArcGIS.Catalog
                 }
                 if (this.idatasetName_0.Type == esriDatasetType.esriDTTopology)
                 {
-                    return ImageLib.GetSmallImage(0x1d);
+                    return ImageLib.GetSmallImage(29);
                 }
                 if (this.idatasetName_0.Type == esriDatasetType.esriDTGeometricNetwork)
                 {
-                    return ImageLib.GetSmallImage(0x26);
+                    return ImageLib.GetSmallImage(38);
                 }
                 if (this.idatasetName_0.Type == esriDatasetType.esriDTCadastralFabric)
                 {
-                    return ImageLib.GetSmallImage(0x4e);
+                    return ImageLib.GetSmallImage(78);
                 }
                 if (this.idatasetName_0.Type == esriDatasetType.esriDTFeatureClass)
                 {
                     IFeatureClassName name = this.idatasetName_0 as IFeatureClassName;
                     if (name.FeatureType == esriFeatureType.esriFTAnnotation)
                     {
-                        return ImageLib.GetSmallImage(0x27);
+                        return ImageLib.GetSmallImage(39);
                     }
                     switch (name.ShapeType)
                     {
@@ -988,13 +988,13 @@ namespace Yutai.ArcGIS.Catalog
                         case esriGeometryType.esriGeometryPolyline:
                         case esriGeometryType.esriGeometryPath:
                         case esriGeometryType.esriGeometryRay:
-                            return ImageLib.GetSmallImage(0x15);
+                            return ImageLib.GetSmallImage(21);
 
                         case esriGeometryType.esriGeometryPolygon:
-                            return ImageLib.GetSmallImage(0x16);
+                            return ImageLib.GetSmallImage(22);
 
                         case esriGeometryType.esriGeometryAny:
-                            return ImageLib.GetSmallImage(0x4f);
+                            return ImageLib.GetSmallImage(79);
                     }
                 }
                 else
@@ -1005,11 +1005,11 @@ namespace Yutai.ArcGIS.Catalog
                     }
                     if (this.idatasetName_0.Type == esriDatasetType.esriDTTin)
                     {
-                        return ImageLib.GetSmallImage(0x2f);
+                        return ImageLib.GetSmallImage(47);
                     }
                     if (this.idatasetName_0.Type == esriDatasetType.esriDTNetworkDataset)
                     {
-                        return ImageLib.GetSmallImage(0x49);
+                        return ImageLib.GetSmallImage(73);
                     }
                 }
                 return ImageLib.GetSmallImage(20);
@@ -1022,15 +1022,15 @@ namespace Yutai.ArcGIS.Catalog
             {
                 if (this.idatasetName_0.Type == esriDatasetType.esriDTFeatureDataset)
                 {
-                    return ImageLib.GetSmallImage(0x12);
+                    return ImageLib.GetSmallImage(18);
                 }
                 if (this.idatasetName_0.Type == esriDatasetType.esriDTCadastralFabric)
                 {
-                    return ImageLib.GetSmallImage(0x4e);
+                    return ImageLib.GetSmallImage(78);
                 }
                 if (this.idatasetName_0.Type == esriDatasetType.esriDTTable)
                 {
-                    return ImageLib.GetSmallImage(0x13);
+                    return ImageLib.GetSmallImage(19);
                 }
                 if (this.idatasetName_0.Type == esriDatasetType.esriDTRelationshipClass)
                 {
@@ -1038,18 +1038,18 @@ namespace Yutai.ArcGIS.Catalog
                 }
                 if (this.idatasetName_0.Type == esriDatasetType.esriDTTopology)
                 {
-                    return ImageLib.GetSmallImage(0x1d);
+                    return ImageLib.GetSmallImage(29);
                 }
                 if (this.idatasetName_0.Type == esriDatasetType.esriDTGeometricNetwork)
                 {
-                    return ImageLib.GetSmallImage(0x26);
+                    return ImageLib.GetSmallImage(38);
                 }
                 if (this.idatasetName_0.Type == esriDatasetType.esriDTFeatureClass)
                 {
                     IFeatureClassName name = this.idatasetName_0 as IFeatureClassName;
                     if (name.FeatureType == esriFeatureType.esriFTAnnotation)
                     {
-                        return ImageLib.GetSmallImage(0x27);
+                        return ImageLib.GetSmallImage(39);
                     }
                     switch (name.ShapeType)
                     {
@@ -1060,13 +1060,13 @@ namespace Yutai.ArcGIS.Catalog
                         case esriGeometryType.esriGeometryPolyline:
                         case esriGeometryType.esriGeometryPath:
                         case esriGeometryType.esriGeometryRay:
-                            return ImageLib.GetSmallImage(0x15);
+                            return ImageLib.GetSmallImage(21);
 
                         case esriGeometryType.esriGeometryPolygon:
-                            return ImageLib.GetSmallImage(0x16);
+                            return ImageLib.GetSmallImage(22);
 
                         case esriGeometryType.esriGeometryAny:
-                            return ImageLib.GetSmallImage(0x4f);
+                            return ImageLib.GetSmallImage(79);
                     }
                 }
                 else
@@ -1077,11 +1077,11 @@ namespace Yutai.ArcGIS.Catalog
                     }
                     if (this.idatasetName_0.Type == esriDatasetType.esriDTTin)
                     {
-                        return ImageLib.GetSmallImage(0x2f);
+                        return ImageLib.GetSmallImage(47);
                     }
                     if (this.idatasetName_0.Type == esriDatasetType.esriDTNetworkDataset)
                     {
-                        return ImageLib.GetSmallImage(0x49);
+                        return ImageLib.GetSmallImage(73);
                     }
                 }
                 return ImageLib.GetSmallImage(20);

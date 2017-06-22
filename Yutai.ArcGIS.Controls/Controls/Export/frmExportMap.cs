@@ -11,18 +11,11 @@ using ESRI.ArcGIS.Output;
 
 namespace Yutai.ArcGIS.Controls.Controls.Export
 {
-    public class frmExportMap : Form
+    public partial class frmExportMap : Form
     {
-        private SimpleButton btnCancel;
-        private SimpleButton btnOK;
-        private SimpleButton btnSelectOutLocation;
-        private Container components = null;
-        private Label label1;
         private IActiveView m_pActiveView = null;
         private IExport m_pExport = null;
         private ILayer m_pLayer = null;
-        private TabControl tabControl1;
-        private TextBox textBox1;
 
         public frmExportMap()
         {
@@ -110,16 +103,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             return null;
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        public void Export()
+ public void Export()
         {
             if (this.m_pLayer == null)
             {
@@ -161,7 +145,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             {
                 tagRECT grect;
                 IExport pExport = this.m_pExport;
-                int num2 = 0x60;
+                int num2 = 96;
                 int resolution = (int) pExport.Resolution;
                 grect.left = 0;
                 grect.top = 0;
@@ -187,68 +171,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             }
         }
 
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmExportMap));
-            this.label1 = new Label();
-            this.textBox1 = new TextBox();
-            this.btnSelectOutLocation = new SimpleButton();
-            this.tabControl1 = new TabControl();
-            this.btnOK = new SimpleButton();
-            this.btnCancel = new SimpleButton();
-            base.SuspendLayout();
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(0x47, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "导出文件名:";
-            this.textBox1.Location = new System.Drawing.Point(8, 0x18);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new Size(0x128, 0x15);
-            this.textBox1.TabIndex = 1;
-            this.btnSelectOutLocation.Image = (Image) resources.GetObject("btnSelectOutLocation.Image");
-            this.btnSelectOutLocation.Location = new System.Drawing.Point(320, 0x18);
-            this.btnSelectOutLocation.Name = "btnSelectOutLocation";
-            this.btnSelectOutLocation.Size = new Size(0x18, 0x18);
-            this.btnSelectOutLocation.TabIndex = 15;
-            this.btnSelectOutLocation.Click += new EventHandler(this.btnSelectOutLocation_Click);
-            this.tabControl1.Location = new System.Drawing.Point(8, 0x40);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new Size(0x158, 200);
-            this.tabControl1.TabIndex = 0x10;
-            this.btnOK.DialogResult = DialogResult.OK;
-            this.btnOK.Enabled = false;
-            this.btnOK.Location = new System.Drawing.Point(0xc0, 280);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new Size(0x40, 0x18);
-            this.btnOK.TabIndex = 0x11;
-            this.btnOK.Text = "确定";
-            this.btnOK.Click += new EventHandler(this.btnOK_Click);
-            this.btnCancel.DialogResult = DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(0x110, 280);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new Size(0x40, 0x18);
-            this.btnCancel.TabIndex = 0x12;
-            this.btnCancel.Text = "取消";
-            this.AutoScaleBaseSize = new Size(6, 14);
-            base.ClientSize = new Size(360, 0x135);
-            base.Controls.Add(this.btnCancel);
-            base.Controls.Add(this.btnOK);
-            base.Controls.Add(this.tabControl1);
-            base.Controls.Add(this.btnSelectOutLocation);
-            base.Controls.Add(this.textBox1);
-            base.Controls.Add(this.label1);
-            base.Icon = (Icon) resources.GetObject("$this.Icon");
-            base.Name = "frmExportMap";
-            this.Text = "导出地图";
-            base.ResumeLayout(false);
-            base.PerformLayout();
-        }
-
-        private void SetTabControl(IExport pExport)
+ private void SetTabControl(IExport pExport)
         {
             this.tabControl1.TabPages.Clear();
             if (pExport == null)

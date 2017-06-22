@@ -10,22 +10,12 @@ using Yutai.ArcGIS.Common.ControlExtend;
 
 namespace Yutai.ArcGIS.Carto.UI
 {
-    public class LayerFieldsPageExtend : UserControl, ILayerAndStandaloneTablePropertyPage
+    public partial class LayerFieldsPageExtend : UserControl, ILayerAndStandaloneTablePropertyPage
     {
         private bool bool_0 = false;
         private bool bool_1 = false;
-        private ComboBoxEdit cboFields;
         private IContainer icontainer_0 = null;
-        private ILayer ilayer_0;
         private ILayerFields ilayerFields_0 = null;
-        private Label label1;
-        private Label label2;
-        private EditListView listView1;
-        private LVColumnHeader lvcolumnHeader_0;
-        private LVColumnHeader lvcolumnHeader_1;
-        private LVColumnHeader lvcolumnHeader_2;
-        private LVColumnHeader lvcolumnHeader_3;
-        private LVColumnHeader lvcolumnHeader_4;
 
         public LayerFieldsPageExtend()
         {
@@ -71,89 +61,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
-        protected override void Dispose(bool bool_2)
-        {
-            if (bool_2 && (this.icontainer_0 != null))
-            {
-                this.icontainer_0.Dispose();
-            }
-            base.Dispose(bool_2);
-        }
-
-        private void InitializeComponent()
-        {
-            this.label1 = new Label();
-            this.listView1 = new EditListView();
-            this.lvcolumnHeader_0 = new LVColumnHeader();
-            this.lvcolumnHeader_1 = new LVColumnHeader();
-            this.lvcolumnHeader_2 = new LVColumnHeader();
-            this.lvcolumnHeader_3 = new LVColumnHeader();
-            this.lvcolumnHeader_4 = new LVColumnHeader();
-            this.cboFields = new ComboBoxEdit();
-            this.label2 = new Label();
-            this.cboFields.Properties.BeginInit();
-            base.SuspendLayout();
-            this.label1.AutoSize = true;
-            this.label1.Location = new Point(3, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(0x35, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "字段列表";
-            this.listView1.Columns.AddRange(new ColumnHeader[] { this.lvcolumnHeader_0, this.lvcolumnHeader_1, this.lvcolumnHeader_2, this.lvcolumnHeader_3, this.lvcolumnHeader_4 });
-            this.listView1.ComboBoxBgColor = Color.LightBlue;
-            this.listView1.ComboBoxFont = new Font("宋体", 9f, FontStyle.Regular, GraphicsUnit.Point, 0x86);
-            this.listView1.EditBgColor = Color.LightBlue;
-            this.listView1.EditFont = new Font("宋体", 9f, FontStyle.Regular, GraphicsUnit.Point, 0x86);
-            this.listView1.FullRowSelect = true;
-            this.listView1.GridLines = true;
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new Point(3, 0x23);
-            this.listView1.LockRowCount = 0;
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new Size(0x1c7, 0xcf);
-            this.listView1.TabIndex = 1;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = View.Details;
-            this.lvcolumnHeader_0.ColumnStyle = ListViewColumnStyle.ReadOnly;
-            this.lvcolumnHeader_0.Text = "字段名称";
-            this.lvcolumnHeader_0.Width = 0x95;
-            this.lvcolumnHeader_1.ColumnStyle = ListViewColumnStyle.EditBox;
-            this.lvcolumnHeader_1.Text = "别名";
-            this.lvcolumnHeader_1.Width = 0x6c;
-            this.lvcolumnHeader_2.ColumnStyle = ListViewColumnStyle.ReadOnly;
-            this.lvcolumnHeader_2.Text = "类型";
-            this.lvcolumnHeader_3.ColumnStyle = ListViewColumnStyle.ReadOnly;
-            this.lvcolumnHeader_3.Text = "长度";
-            this.lvcolumnHeader_4.ColumnStyle = ListViewColumnStyle.ReadOnly;
-            this.lvcolumnHeader_4.Text = "精度";
-            this.cboFields.EditValue = "";
-            this.cboFields.Location = new Point(0x57, -24);
-            this.cboFields.Name = "cboFields";
-            this.cboFields.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.cboFields.Size = new Size(0x90, 0x15);
-            this.cboFields.TabIndex = 3;
-            this.cboFields.SelectedIndexChanged += new EventHandler(this.cboFields_SelectedIndexChanged);
-            this.label2.AutoSize = true;
-            this.label2.Location = new Point(0x10, -19);
-            this.label2.Name = "label2";
-            this.label2.Size = new Size(0x41, 12);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "主显示字段";
-            base.AutoScaleDimensions = new SizeF(6f, 12f);
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.Controls.Add(this.cboFields);
-            base.Controls.Add(this.label2);
-            base.Controls.Add(this.listView1);
-            base.Controls.Add(this.label1);
-            base.Name = "LayerFieldsPageExtend";
-            base.Size = new Size(0x1d8, 0x102);
-            base.Load += new EventHandler(this.LayerFieldsPageExtend_Load);
-            this.cboFields.Properties.EndInit();
-            base.ResumeLayout(false);
-            base.PerformLayout();
-        }
-
-        private void LayerFieldsPageExtend_Load(object sender, EventArgs e)
+ private void LayerFieldsPageExtend_Load(object sender, EventArgs e)
         {
             this.listView1.ItemChecked += new ItemCheckedEventHandler(this.listView1_ItemChecked);
             if (this.ilayerFields_0 != null)

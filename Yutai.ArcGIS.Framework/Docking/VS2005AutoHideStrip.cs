@@ -14,8 +14,8 @@ namespace Yutai.ArcGIS.Framework.Docking
         private const int _ImageGapLeft = 4;
         private const int _ImageGapRight = 2;
         private const int _ImageGapTop = 2;
-        private const int _ImageHeight = 0x10;
-        private const int _ImageWidth = 0x10;
+        private const int _ImageHeight = 16;
+        private const int _ImageWidth = 16;
         private static Matrix _matrixIdentity = new Matrix();
         private static StringFormat _stringFormatTabHorizontal;
         private static StringFormat _stringFormatTabVertical;
@@ -386,7 +386,7 @@ namespace Yutai.ArcGIS.Framework.Docking
         {
             get
             {
-                return 0x10;
+                return 16;
             }
         }
 
@@ -394,7 +394,7 @@ namespace Yutai.ArcGIS.Framework.Docking
         {
             get
             {
-                return 0x10;
+                return 16;
             }
         }
 

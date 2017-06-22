@@ -35,13 +35,13 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             string_0 = "";
             char ch = 'A';
             int num = int_2;
-            if (num <= 0x2710)
+            if (num <= 10000)
             {
-                if (num <= 0x3e8)
+                if (num <= 1000)
                 {
                     if (num != 500)
                     {
-                        if (num != 0x3e8)
+                        if (num != 1000)
                         {
                             goto Label_0145;
                         }
@@ -60,19 +60,19 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 {
                     switch (num)
                     {
-                        case 0x7d0:
+                        case 2000:
                             ch = 'I';
                             num2 = 0.010416666666666666;
                             num3 = 0.0069444444444444441;
                             goto Label_0196;
 
-                        case 0x1388:
+                        case 5000:
                             ch = 'H';
                             num2 = 0.03125;
                             num3 = 0.020833333333333332;
                             goto Label_0196;
                     }
-                    if (num != 0x2710)
+                    if (num != 10000)
                     {
                         goto Label_0145;
                     }
@@ -82,11 +82,11 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 }
                 goto Label_0196;
             }
-            if (num <= 0xc350)
+            if (num <= 50000)
             {
-                if (num != 0x61a8)
+                if (num != 25000)
                 {
-                    if (num != 0xc350)
+                    if (num != 50000)
                     {
                         goto Label_0145;
                     }
@@ -104,19 +104,19 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             }
             switch (num)
             {
-                case 0x186a0:
+                case 100000:
                     ch = 'D';
                     num2 = 0.5;
                     num3 = 0.33333333333333331;
                     goto Label_0196;
 
-                case 0x3d090:
+                case 250000:
                     ch = 'C';
                     num2 = 1.5;
                     num3 = 1.0;
                     goto Label_0196;
 
-                case 0x7a120:
+                case 500000:
                     ch = 'B';
                     num2 = 3.0;
                     num3 = 2.0;
@@ -130,10 +130,10 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 return false;
             }
             long num4 = ((int) (double_1 / 4.0)) + 1;
-            long num5 = ((int) (double_2 / 6.0)) + 0x1f;
+            long num5 = ((int) (double_2 / 6.0)) + 31;
             long num6 = ((int) (4.0 / num3)) - ((int) ((double_1 - (((int) (double_1 / 4.0)) * 4)) / num3));
             long num7 = ((int) ((double_2 - (((int) (double_2 / 6.0)) * 6)) / num2)) + 1;
-            if (int_2 <= 0x3e8)
+            if (int_2 <= 1000)
             {
                 string_0 = string.Concat(new object[] { Convert.ToChar((long) ((Convert.ToInt16('A') + num4) - 1L)).ToString(), num5, ch.ToString(), num6.ToString("0000"), num7.ToString("0000") });
             }
@@ -305,7 +305,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             {
                 num5 += 30L;
             }
-            string_1 = string.Concat(new object[] { Convert.ToChar((int) ((str[0] - 'A') + 0x41)).ToString(), Convert.ToChar((long) ((0x41L + num4) - 1L)).ToString(), num5, str3, str4 });
+            string_1 = string.Concat(new object[] { Convert.ToChar((int) ((str[0] - 'A') + 65)).ToString(), Convert.ToChar((long) ((65 + num4) - 1L)).ToString(), num5, str3, str4 });
             return true;
         }
 
@@ -524,7 +524,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                     double_4 = 0.0625;
                     double_3 = 0.041666666666666664;
                 }
-                long num6 = (num2 - 0x61L) + 1L;
+                long num6 = (num2 - 97) + 1L;
                 long num7 = num3;
                 long num8 = num4;
                 long num9 = num5;
@@ -656,7 +656,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 num = Convert.ToInt16(str2.Substring(4, 4));
                 num2 = Convert.ToInt16(str2.Substring(8, 4));
             }
-            long num9 = num3 - 0x60;
+            long num9 = num3 - 96;
             long num10 = num4;
             if (num10 > 30L)
             {
@@ -738,7 +738,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             }
             return false;
         Label_0226:
-            num8 = (num - 0x61) + 1;
+            num8 = (num - 97) + 1;
             long num9 = num2;
             if (num9 >= 30L)
             {
@@ -769,7 +769,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             }
             if (this.int_1 == 1)
             {
-                double_2 -= num * 0xf4240L;
+                double_2 -= num * 1000000;
             }
             double_1 /= 1000000.0;
             double_2 -= 500000.0;
@@ -1198,7 +1198,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             num2 = int.Parse(string_0.Substring(6, 2));
             num9 = char.Parse(s);
             num3 = (int.Parse(str3) - 1) * 6;
-            num4 = ((num9 - 0x41) + 1) * 4;
+            num4 = ((num9 - 65) + 1) * 4;
             if (num3 >= 180.0)
             {
                 num3 -= 180.0;
@@ -1265,28 +1265,28 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             switch (str.ToUpper())
             {
                 case "B":
-                    return 0x7a120;
+                    return 500000;
 
                 case "C":
-                    return 0x3d090;
+                    return 250000;
 
                 case "D":
-                    return 0x186a0;
+                    return 100000;
 
                 case "E":
-                    return 0xc350;
+                    return 50000;
 
                 case "F":
-                    return 0x61a8;
+                    return 25000;
 
                 case "G":
-                    return 0x2710;
+                    return 10000;
 
                 case "H":
-                    return 0x1388;
+                    return 5000;
 
                 case "I":
-                    return 0x7d0;
+                    return 2000;
             }
             return 0;
         }
@@ -1417,7 +1417,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             double_5 = (num9 * num11) + double_3;
             if (bool_0)
             {
-                double_5 += int_2 * 0xf4240;
+                double_5 += int_2 * 1000000;
             }
         }
 
@@ -1450,7 +1450,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             double_6 = (num9 * num11) + double_4;
             if (bool_0)
             {
-                double_6 += int_2 * 0xf4240;
+                double_6 += int_2 * 1000000;
             }
         }
 
@@ -1653,7 +1653,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 {
                     return false;
                 }
-                if ((num < 0x41) || (num > 0x56))
+                if ((num < 65) || (num > 86))
                 {
                     return false;
                 }
@@ -1670,7 +1670,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 }
                 try
                 {
-                    if (int.Parse(strArray.GetValue(2).ToString()) > 0x90)
+                    if (int.Parse(strArray.GetValue(2).ToString()) > 144)
                     {
                         return false;
                     }
@@ -1681,7 +1681,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 }
                 try
                 {
-                    if (int.Parse(strArray.GetValue(3).ToString().Replace('(', ' ').Replace(')', ' ').Trim()) > 0x40)
+                    if (int.Parse(strArray.GetValue(3).ToString().Replace('(', ' ').Replace(')', ' ').Trim()) > 64)
                     {
                         return false;
                     }
@@ -1811,7 +1811,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 str = str.Substring(1, str.Length - 2);
             }
             long num5 = Convert.ToInt16(str.Trim());
-            long num6 = (num2 - 0x61L) + 1L;
+            long num6 = (num2 - 97) + 1L;
             long num7 = num3;
             long num8 = num4;
             long num9 = num5;
@@ -1901,7 +1901,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             }
             return false;
         Label_025F:
-            num8 = (num3 - 0x61) + 1;
+            num8 = (num3 - 97) + 1;
             long num9 = num4;
             long num10 = num;
             long num11 = num2;
@@ -1979,7 +1979,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             }
             return false;
         Label_0225:
-            num8 = (num - 0x61) + 1;
+            num8 = (num - 97) + 1;
             long num9 = num2;
             if (num9 >= 30L)
             {
@@ -2025,13 +2025,13 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                             return ((((num >= 1) && (num <= 12)) && (num2 >= 1)) && (num2 <= 12));
 
                         case 'E':
-                            return ((((num >= 1) && (num <= 0x18)) && (num2 >= 1)) && (num2 <= 0x18));
+                            return ((((num >= 1) && (num <= 24)) && (num2 >= 1)) && (num2 <= 24));
 
                         case 'F':
-                            return ((((num >= 1) && (num <= 0x30)) && (num2 >= 1)) && (num2 <= 0x30));
+                            return ((((num >= 1) && (num <= 48)) && (num2 >= 1)) && (num2 <= 48));
 
                         case 'G':
-                            return ((((num >= 1) && (num <= 0x60)) && (num2 >= 1)) && (num2 <= 0x60));
+                            return ((((num >= 1) && (num <= 96)) && (num2 >= 1)) && (num2 <= 96));
                     }
                     goto Label_031F;
                 }
@@ -2049,7 +2049,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 try
                 {
                     num = int.Parse(str.Substring(1, 2));
-                    if ((num < 0x2b) || (num > 0x35))
+                    if ((num < 43) || (num > 53))
                     {
                         return false;
                     }
@@ -2078,16 +2078,16 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                             return ((((num >= 1) && (num <= 12)) && (num2 >= 1)) && (num2 <= 12));
 
                         case 'E':
-                            return ((((num >= 1) && (num <= 0x18)) && (num2 >= 1)) && (num2 <= 0x18));
+                            return ((((num >= 1) && (num <= 24)) && (num2 >= 1)) && (num2 <= 24));
 
                         case 'F':
-                            return ((((num >= 1) && (num <= 0x30)) && (num2 >= 1)) && (num2 <= 0x30));
+                            return ((((num >= 1) && (num <= 48)) && (num2 >= 1)) && (num2 <= 48));
 
                         case 'G':
-                            return ((((num >= 1) && (num <= 0x60)) && (num2 >= 1)) && (num2 <= 0x60));
+                            return ((((num >= 1) && (num <= 96)) && (num2 >= 1)) && (num2 <= 96));
 
                         case 'H':
-                            return ((((num >= 1) && (num <= 0xc0)) && (num2 >= 1)) && (num2 <= 0xc0));
+                            return ((((num >= 1) && (num <= 192)) && (num2 >= 1)) && (num2 <= 192));
                     }
                 }
                 catch

@@ -185,9 +185,9 @@ namespace Yutai.ArcGIS.Catalog
             {
                 if (this.string_1 == "WORD")
                 {
-                    return ImageLib.GetSmallImage(0x30);
+                    return ImageLib.GetSmallImage(48);
                 }
-                return ImageLib.GetSmallImage(0x31);
+                return ImageLib.GetSmallImage(49);
             }
         }
 
@@ -197,9 +197,9 @@ namespace Yutai.ArcGIS.Catalog
             {
                 if (this.string_1 == "WORD")
                 {
-                    return ImageLib.GetSmallImage(0x30);
+                    return ImageLib.GetSmallImage(48);
                 }
-                return ImageLib.GetSmallImage(0x31);
+                return ImageLib.GetSmallImage(49);
             }
         }
 
@@ -267,9 +267,9 @@ namespace Yutai.ArcGIS.Catalog
             {
                 if (this.string_1 == "WORD")
                 {
-                    return ImageLib.GetSmallImage(0x30);
+                    return ImageLib.GetSmallImage(48);
                 }
-                return ImageLib.GetSmallImage(0x31);
+                return ImageLib.GetSmallImage(49);
             }
         }
 
@@ -279,9 +279,9 @@ namespace Yutai.ArcGIS.Catalog
             {
                 if (this.string_1 == "WORD")
                 {
-                    return ImageLib.GetSmallImage(0x30);
+                    return ImageLib.GetSmallImage(48);
                 }
-                return ImageLib.GetSmallImage(0x31);
+                return ImageLib.GetSmallImage(49);
             }
         }
     }

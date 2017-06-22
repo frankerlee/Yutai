@@ -7,15 +7,11 @@ using ESRI.ArcGIS.Geometry;
 
 namespace Yutai.ArcGIS.Controls.Controls
 {
-    public class frmSpatialRefrence : Form
+    public partial class frmSpatialRefrence : Form
     {
-        private SimpleButton btnCancel;
-        private SimpleButton btnOK;
-        private Container components = null;
         private GeoCoordSys m_GeoCoordSys = new GeoCoordSys();
         private bool m_IsNew = true;
         private ProjCoordSys m_ProjCoordSys = new ProjCoordSys();
-        private ISpatialReference m_pSpatialRefrence;
         private enumSpatialRefrenceType m_SRType = enumSpatialRefrenceType.enumProjectCoord;
 
         public frmSpatialRefrence()
@@ -60,16 +56,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             base.Close();
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private void frmSpatialRefrence_Load(object sender, EventArgs e)
+ private void frmSpatialRefrence_Load(object sender, EventArgs e)
         {
             switch (this.m_SRType)
             {
@@ -102,41 +89,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             base.Controls.Add(this.m_ProjCoordSys);
         }
 
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSpatialRefrence));
-            this.btnOK = new SimpleButton();
-            this.btnCancel = new SimpleButton();
-            base.SuspendLayout();
-            this.btnOK.Location = new System.Drawing.Point(0xb0, 0x1c8);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new Size(0x38, 0x18);
-            this.btnOK.TabIndex = 2;
-            this.btnOK.Text = "确定";
-            this.btnOK.Click += new EventHandler(this.btnOK_Click);
-            this.btnCancel.DialogResult = DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(0xf8, 0x1c8);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new Size(0x38, 0x18);
-            this.btnCancel.TabIndex = 3;
-            this.btnCancel.Text = "取消";
-            this.btnCancel.Click += new EventHandler(this.btnCancel_Click);
-            this.AutoScaleBaseSize = new Size(6, 14);
-            base.ClientSize = new Size(0x142, 0x1e7);
-            base.Controls.Add(this.btnCancel);
-            base.Controls.Add(this.btnOK);
-            base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            
-            base.MaximizeBox = false;
-            base.MinimizeBox = false;
-            base.Name = "frmSpatialRefrence";
-            base.ShowInTaskbar = false;
-            base.StartPosition = FormStartPosition.CenterParent;
-            base.Load += new EventHandler(this.frmSpatialRefrence_Load);
-            base.ResumeLayout(false);
-        }
-
-        public ISpatialReference SpatialRefrence
+ public ISpatialReference SpatialRefrence
         {
             get
             {

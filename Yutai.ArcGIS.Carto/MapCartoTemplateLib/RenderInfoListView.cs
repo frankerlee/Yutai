@@ -43,7 +43,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             int size;
             if (base.Items.Count == 0)
             {
-                this.imageList_0.ImageSize = new Size(0x10, 0x10);
+                this.imageList_0.ImageSize = new Size(16, 16);
             }
             if (object_0 == null)
             {
@@ -111,7 +111,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             int size;
             if (base.Items.Count == 0)
             {
-                this.imageList_0.ImageSize = new Size(0x10, 0x10);
+                this.imageList_0.ImageSize = new Size(16, 16);
             }
             object tag = listViewItemEx_0.Tag;
             if (tag is IMarkerSymbol)
@@ -196,9 +196,9 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 {
                     symbol = new SimpleFillSymbolClass();
                     IRgbColor color = new RgbColorClass {
-                        Red = 0xe3,
-                        Green = 0xec,
-                        Blue = 0x13
+                        Red = 227,
+                        Green = 236,
+                        Blue = 19
                     };
                     ((IFillSymbol) symbol).Color = color;
                 }
@@ -317,7 +317,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             int size;
             if (base.Items.Count == 0)
             {
-                this.imageList_0.ImageSize = new Size(0x10, 0x10);
+                this.imageList_0.ImageSize = new Size(16, 16);
             }
             if (object_0 == null)
             {
@@ -378,13 +378,13 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             this.imageList_0 = new ImageList(this.icontainer_0);
             this.imageList_1 = new ImageList(this.icontainer_0);
             this.textBox = new TextBox();
-            this.imageList_0.ImageSize = new Size(0x10, 0x10);
+            this.imageList_0.ImageSize = new Size(16, 16);
             this.imageList_0.TransparentColor = Color.Transparent;
-            this.imageList_1.ImageSize = new Size(0x30, 0x30);
+            this.imageList_1.ImageSize = new Size(48, 48);
             this.imageList_1.TransparentColor = Color.Transparent;
             this.textBox.AutoSize = false;
             this.textBox.BorderStyle = BorderStyle.FixedSingle;
-            this.textBox.Location = new System.Drawing.Point(0xf3, 0x11);
+            this.textBox.Location = new System.Drawing.Point(243, 17);
             this.textBox.Name = "textBox";
             this.textBox.TabIndex = 0;
             this.textBox.Text = "";
@@ -422,9 +422,9 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     }
                 }
             }
-            if ((num < 16.0) && (base.SmallImageList.ImageSize.Height > 0x10))
+            if ((num < 16.0) && (base.SmallImageList.ImageSize.Height > 16))
             {
-                base.SmallImageList.ImageSize = new Size(0x10, 0x10);
+                base.SmallImageList.ImageSize = new Size(16, 16);
             }
             if (num > 40.0)
             {

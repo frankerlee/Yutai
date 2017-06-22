@@ -12,7 +12,7 @@
 
         private static void old_acctor_mc()
         {
-            STREAM_BUFFER_SIZE = 0xfa000;
+            STREAM_BUFFER_SIZE = 1024000;
             MAP_DISTANCE = 10;
         }
     }

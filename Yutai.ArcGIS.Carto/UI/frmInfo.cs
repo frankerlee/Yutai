@@ -10,7 +10,7 @@ using Yutai.ArcGIS.Common.Carto;
 
 namespace Yutai.ArcGIS.Carto.UI
 {
-    internal class frmInfo : Form
+    internal partial class frmInfo : Form
     {
         private Container container_0 = null;
         private FeatureInfoControl featureInfoControl_0 = new FeatureInfoControl();
@@ -28,26 +28,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.featureInfoControl_0.IdentifyLayerChanged += new FeatureInfoControl.IdentifyLayerChangedHandler(this.method_2);
         }
 
-        protected override void Dispose(bool bool_0)
-        {
-            if (bool_0 && (this.container_0 != null))
-            {
-                this.container_0.Dispose();
-            }
-            base.Dispose(bool_0);
-        }
-
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInfo));
-            base.SuspendLayout();
-            base.ClientSize = new Size(0x124, 0x111);
-            
-            base.Name = "frmInfo";
-            base.ResumeLayout(false);
-        }
-
-        private void method_0(object sender, EventArgs e)
+ private void method_0(object sender, EventArgs e)
         {
         }
 

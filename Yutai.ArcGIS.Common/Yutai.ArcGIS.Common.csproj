@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -224,16 +224,28 @@
     <Compile Include="ControlExtenders\CustomizationForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ControlExtenders\CustomizationForm.Designer.cs">
+        <DependentUpon>CustomizationForm.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="ControlExtenders\DockExtender.cs" />
     <Compile Include="ControlExtenders\DockState.cs" />
     <Compile Include="ControlExtenders\Floaties.cs" />
     <Compile Include="ControlExtenders\Floaty.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ControlExtenders\Floaty.Designer.cs">
+        <DependentUpon>Floaty.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="ControlExtenders\IFloaty.cs" />
     <Compile Include="ControlExtenders\Overlay.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ControlExtenders\Overlay.Designer.cs">
+        <DependentUpon>Overlay.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="ControlExtenders\Renderer\Office2007ColorTable.cs" />
     <Compile Include="ControlExtenders\Renderer\Office2007Renderer.cs" />
     <Compile Include="ControlExtenders\Renderer\UseAntiAlias.cs" />
@@ -257,6 +269,10 @@
     <Compile Include="ControlExtendEx\ItemImagesContainer.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ControlExtendEx\ItemImagesContainer.Designer.cs">
+        <DependentUpon>ItemImagesContainer.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="ControlExtend\CheckedVertXtraGrid.cs" />
     <Compile Include="ControlExtend\ColumnAttribute.cs" />
     <Compile Include="ControlExtend\ComboBoxTreeView.cs">
@@ -423,6 +439,10 @@
     <Compile Include="frmPyramidSet.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmPyramidSet.Designer.cs">
+        <DependentUpon>frmPyramidSet.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="GDBDeletChildVersionCreate.cs" />
     <Compile Include="IApplication.cs" />
     <Compile Include="IApplicationEvents.cs" />
@@ -442,24 +462,48 @@
     <Compile Include="Query\UI\AttributeQueryBuliderControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Query\UI\AttributeQueryBuliderControl.Designer.cs">
+        <DependentUpon>AttributeQueryBuliderControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Query\UI\AttributeQueryControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Query\UI\AttributeQueryControl.Designer.cs">
+        <DependentUpon>AttributeQueryControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Query\UI\frmAttributeQueryBuilder.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Query\UI\frmAttributeQueryBuilder.Designer.cs">
+        <DependentUpon>frmAttributeQueryBuilder.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Query\UI\SelectByLocationCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Query\UI\SelectByLocationCtrl.Designer.cs">
+        <DependentUpon>SelectByLocationCtrl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Query\UI\SpatialAndAttributeQueryCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Query\UI\SpatialAndAttributeQueryCtrl.Designer.cs">
+        <DependentUpon>SpatialAndAttributeQueryCtrl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Raster\RasterUtil.cs" />
     <Compile Include="Raster\RasterUtility.cs" />
     <Compile Include="Raster\UI\RasterAdjustHelper.cs" />
     <Compile Include="Raster\UI\RasterAdjustPointsTablePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Raster\UI\RasterAdjustPointsTablePage.Designer.cs">
+        <DependentUpon>RasterAdjustPointsTablePage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="RegistryTools.cs" />
     <Compile Include="Renderer\Office2007ColorTable.cs" />
     <Compile Include="Renderer\Office2007Renderer.cs" />
@@ -526,6 +570,10 @@
     <Compile Include="Editor\frmSelectEditDatasource.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Editor\frmSelectEditDatasource.Designer.cs">
+        <DependentUpon>frmSelectEditDatasource.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\GeometryOperator.cs" />
     <Compile Include="Editor\GeometryOperatorFectory.cs" />
     <Compile Include="Editor\Helpers\CircleCenterSnapAgent.cs" />
@@ -579,6 +627,10 @@
     <Compile Include="frmProgress2.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmProgress2.Designer.cs">
+        <DependentUpon>frmProgress2.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="ISnapEnvironment.cs" />
     <Compile Include="MainSunProcessAssist.cs" />
     <Compile Include="Data\AbstractDataAccess.cs" />
@@ -599,6 +651,10 @@
     <Compile Include="Data\frmDatabaseBack.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Data\frmDatabaseBack.Designer.cs">
+        <DependentUpon>frmDatabaseBack.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Data\GcOleDbConnection.cs" />
     <Compile Include="Data\GcOracleConnection.cs" />
     <Compile Include="Data\GcSqlConnection.cs" />
@@ -838,6 +894,10 @@
     <Compile Include="ZD\frmSelectEditZD.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ZD\frmSelectEditZD.Designer.cs">
+        <DependentUpon>frmSelectEditZD.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="ZD\HitFeatureInfo.cs" />
     <Compile Include="ZD\OnAfterCreateZDHandler.cs" />
     <Compile Include="ZD\OnEndZDEditHandler.cs" />

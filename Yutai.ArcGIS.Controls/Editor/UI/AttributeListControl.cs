@@ -20,22 +20,14 @@ using Yutai.ArcGIS.Common.Editor;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {
-    internal class AttributeListControl : UserControl
+    internal partial class AttributeListControl : UserControl
     {
-        private Container components = null;
-        private GridControl gridControl1;
-        private GridView gridView1;
         private bool m_CanDo = false;
         private string m_EditFeildName = "";
-        private int m_nX;
-        private int m_nY;
         private IActiveView m_pActiveView = null;
         private IFeatureLayer m_pFeatureLayer = null;
         private IObject m_pObject = null;
         private VertXtraGrid m_pVertXtraGrid = null;
-        private ToolStripLabel toolAttachmentLabel;
-        private ToolStrip toolStrip1;
-        private ToolStripDropDownButton toolStripDropDownButton1;
 
         public AttributeListControl()
         {
@@ -72,16 +64,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             return true;
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private void EditorEvent_OnSaveEditing()
+ private void EditorEvent_OnSaveEditing()
         {
             base.Visible = false;
             base.Visible = true;
@@ -561,62 +544,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AttributeListControl));
-            this.toolStrip1 = new ToolStrip();
-            this.toolStripDropDownButton1 = new ToolStripDropDownButton();
-            this.toolAttachmentLabel = new ToolStripLabel();
-            this.gridControl1 = new GridControl();
-            this.gridView1 = new GridView();
-            this.toolStrip1.SuspendLayout();
-            this.gridControl1.BeginInit();
-            this.gridView1.BeginInit();
-            base.SuspendLayout();
-            this.toolStrip1.Items.AddRange(new ToolStripItem[] { this.toolStripDropDownButton1, this.toolAttachmentLabel });
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new Size(0x128, 0x19);
-            this.toolStrip1.TabIndex = 1;
-            this.toolStrip1.Text = "toolStrip1";
-            this.toolStrip1.Visible = false;
-            this.toolStripDropDownButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            this.toolStripDropDownButton1.Image = (Image) resources.GetObject("toolStripDropDownButton1.Image");
-            this.toolStripDropDownButton1.ImageTransparentColor = Color.Magenta;
-            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new Size(0x1d, 0x16);
-            this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
-            this.toolAttachmentLabel.Name = "toolAttachmentLabel";
-            this.toolAttachmentLabel.Size = new Size(0x2f, 0x16);
-            this.toolAttachmentLabel.Text = "附件(0)";
-            this.gridControl1.Dock = DockStyle.Fill;
-            this.gridControl1.EmbeddedNavigator.Name = "";
-            this.gridControl1.Location = new System.Drawing.Point(0, 0x19);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new Size(0x128, 0xc7);
-            this.gridControl1.TabIndex = 2;
-            this.gridControl1.ViewCollection.AddRange(new BaseView[] { this.gridView1 });
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsView.RowAutoHeight = true;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.OptionsView.ShowIndicator = false;
-            this.gridView1.ShowButtonMode = ShowButtonModeEnum.ShowOnlyInEditor;
-            base.Controls.Add(this.gridControl1);
-            base.Controls.Add(this.toolStrip1);
-            base.Name = "AttributeListControl";
-            base.Size = new Size(0x128, 0xe0);
-            base.Load += new EventHandler(this.AttributeListControl_Load);
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
-            this.gridControl1.EndInit();
-            this.gridView1.EndInit();
-            base.ResumeLayout(false);
-            base.PerformLayout();
-        }
-
-        private void toolStripDropDownButton1_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+ private void toolStripDropDownButton1_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             if (e.ClickedItem.Tag == null)
             {

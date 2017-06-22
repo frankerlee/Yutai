@@ -243,7 +243,7 @@ namespace Yutai.ArcGIS.Common.Raster
                 {
                     for (int j = 0; j < props.Height; j++)
                     {
-                        objArray[i, j] = (i * j) % 0xff;
+                        objArray[i, j] = (i * j) % 255;
                     }
                 }
                 object cache = pixels.AcquireCache();
@@ -344,7 +344,7 @@ namespace Yutai.ArcGIS.Common.Raster
 
         public static IRasterStorageDef CreateRasterStorageDef()
         {
-            return new RasterStorageDef{ CompressionType = esriRasterCompressionType.esriRasterCompressionRLE, PyramidLevel = 2, PyramidResampleType = rstResamplingTypes.RSP_BilinearInterpolation, TileHeight = 0x80, TileWidth = 0x80 };
+            return new RasterStorageDef{ CompressionType = esriRasterCompressionType.esriRasterCompressionRLE, PyramidLevel = 2, PyramidResampleType = rstResamplingTypes.RSP_BilinearInterpolation, TileHeight = 128, TileWidth = 128 };
         }
 
         public static IRasterDataset CreateRasterSurf(string string_0, string string_1, string string_2, IPoint ipoint_0, int int_0, int int_1, double double_0, double double_1, rstPixelType rstPixelType_0, ISpatialReference2 ispatialReference2_0, bool bool_0)
@@ -566,9 +566,9 @@ namespace Yutai.ArcGIS.Common.Raster
             IRasterProps props = pixels as IRasterProps;
             object noDataValue = props.NoDataValue;
             IPnt tlc = new DblPnt();
-            int num3 = 0x800;
-            int num4 = 0x800;
-            if (num < 0x800)
+            int num3 = 2048;
+            int num4 = 2048;
+            if (num < 2048)
             {
                 num3 = num;
             }
@@ -646,13 +646,13 @@ namespace Yutai.ArcGIS.Common.Raster
             }
             o.NoDataValue = obj3;
             IPnt tlc = new DblPnt();
-            int num4 = 0x800;
-            if (num < 0x800)
+            int num4 = 2048;
+            if (num < 2048)
             {
                 num4 = num;
             }
-            int num5 = 0x800;
-            if (num2 < 0x800)
+            int num5 = 2048;
+            if (num2 < 2048)
             {
                 num5 = num2;
             }
@@ -844,10 +844,10 @@ namespace Yutai.ArcGIS.Common.Raster
             IRasterRenderer renderer2 = renderer as IRasterRenderer;
             renderer2.Raster = raster;
             renderer2.Update();
-            IColor color = ColorManage.CreatColor(0xff, 0, 0);
-            IColor color2 = ColorManage.CreatColor(0, 0xff, 0);
+            IColor color = ColorManage.CreatColor(255, 0, 0);
+            IColor color2 = ColorManage.CreatColor(0, 255, 0);
             IAlgorithmicColorRamp ramp = new AlgorithmicColorRamp{
-                Size = 0xff,
+                Size = 255,
                 FromColor = color,
                 ToColor = color2
             };

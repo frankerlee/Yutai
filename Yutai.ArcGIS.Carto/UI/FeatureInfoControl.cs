@@ -23,39 +23,16 @@ using Array = System.Array;
 
 namespace Yutai.ArcGIS.Carto.UI
 {
-    public class FeatureInfoControl : UserControl, IDockContent
+    public partial class FeatureInfoControl : UserControl, IDockContent
     {
         private bool bool_0 = false;
         private bool bool_1 = false;
         private bool bool_2 = false;
-        private Button button1;
-        private ColumnHeader columnHeader_0;
-        private ColumnHeader columnHeader_1;
-        private ComboBoxEdit combLayer;
-        private ContextMenuStrip contextMenuStrip1;
-        private ESRI.ArcGIS.Carto.IActiveViewEvents_Event iactiveViewEvents_Event_0;
-        private IArray iarray_0;
-        private IBasicMap ibasicMap_0;
-        private IContainer icontainer_0;
         private IdentifyTypeEnum identifyTypeEnum_0 = IdentifyTypeEnum.enumITAllLayer;
         private IFeature ifeature_0 = null;
         private IFeature ifeature_1 = null;
         private ILayer ilayer_0 = null;
         private IList<string> ilist_0 = null;
-        private ListView Infolist;
-        private IPoint ipoint_0;
-        private Label label1;
-        private TreeView objTree;
-        private Panel panel1;
-        private Panel panel2;
-        private Panel panel3;
-        private Panel panel4;
-        private Panel panel5;
-        private Panel panelAttach;
-        private ToolStripMenuItem PanToFeature;
-        private TextBox textBox1;
-        private TextEdit txtPos;
-        private ToolStripMenuItem ZoomToFeature;
 
         public event IdentifyLayerChangedHandler IdentifyLayerChanged;
 
@@ -98,16 +75,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
-        protected override void Dispose(bool bool_3)
-        {
-            if (bool_3 && (this.icontainer_0 != null))
-            {
-                this.icontainer_0.Dispose();
-            }
-            base.Dispose(bool_3);
-        }
-
-        private void FeatureInfoControl_Load(object sender, EventArgs e)
+ private void FeatureInfoControl_Load(object sender, EventArgs e)
         {
             this.bool_0 = true;
             this.method_11();
@@ -119,169 +87,7 @@ namespace Yutai.ArcGIS.Carto.UI
         {
         }
 
-        private void InitializeComponent()
-        {
-            this.icontainer_0 = new Container();
-            this.panel1 = new Panel();
-            this.combLayer = new ComboBoxEdit();
-            this.panel4 = new Panel();
-            this.label1 = new Label();
-            this.txtPos = new TextEdit();
-            this.contextMenuStrip1 = new ContextMenuStrip(this.icontainer_0);
-            this.ZoomToFeature = new ToolStripMenuItem();
-            this.PanToFeature = new ToolStripMenuItem();
-            this.panel3 = new Panel();
-            this.objTree = new TreeView();
-            this.panel5 = new Panel();
-            this.panelAttach = new Panel();
-            this.textBox1 = new TextBox();
-            this.button1 = new Button();
-            this.panel2 = new Panel();
-            this.Infolist = new ListView();
-            this.columnHeader_0 = new ColumnHeader();
-            this.columnHeader_1 = new ColumnHeader();
-            this.panel1.SuspendLayout();
-            this.combLayer.Properties.BeginInit();
-            this.panel4.SuspendLayout();
-            this.txtPos.Properties.BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panelAttach.SuspendLayout();
-            this.panel2.SuspendLayout();
-            base.SuspendLayout();
-            this.panel1.Controls.Add(this.combLayer);
-            this.panel1.Controls.Add(this.panel4);
-            this.panel1.Dock = DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new Size(570, 0x1a);
-            this.panel1.TabIndex = 0;
-            this.panel1.SizeChanged += new EventHandler(this.panel1_SizeChanged);
-            this.combLayer.Dock = DockStyle.Fill;
-            this.combLayer.EditValue = "";
-            this.combLayer.Location = new System.Drawing.Point(40, 0);
-            this.combLayer.Name = "combLayer";
-            this.combLayer.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.combLayer.Size = new Size(530, 0x15);
-            this.combLayer.TabIndex = 3;
-            this.combLayer.SelectedIndexChanged += new EventHandler(this.combLayer_SelectedIndexChanged);
-            this.panel4.Controls.Add(this.label1);
-            this.panel4.Dock = DockStyle.Left;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new Size(40, 0x1a);
-            this.panel4.TabIndex = 2;
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(0x1d, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "图层";
-            this.txtPos.Dock = DockStyle.Top;
-            this.txtPos.EditValue = "";
-            this.txtPos.Location = new System.Drawing.Point(0, 0);
-            this.txtPos.Name = "txtPos";
-            this.txtPos.Properties.Appearance.BackColor = SystemColors.InactiveBorder;
-            this.txtPos.Properties.Appearance.Options.UseBackColor = true;
-            this.txtPos.Properties.ReadOnly = true;
-            this.txtPos.Size = new Size(570, 0x15);
-            this.txtPos.TabIndex = 1;
-            this.contextMenuStrip1.Items.AddRange(new ToolStripItem[] { this.ZoomToFeature, this.PanToFeature });
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new Size(0x89, 0x30);
-            this.ZoomToFeature.Name = "ZoomToFeature";
-            this.ZoomToFeature.Size = new Size(0x88, 0x16);
-            this.ZoomToFeature.Text = "缩放到要素";
-            this.ZoomToFeature.Click += new EventHandler(this.ZoomToFeature_Click);
-            this.PanToFeature.Name = "PanToFeature";
-            this.PanToFeature.Size = new Size(0x88, 0x16);
-            this.PanToFeature.Text = "平移到要素";
-            this.PanToFeature.Click += new EventHandler(this.PanToFeature_Click);
-            this.panel3.Controls.Add(this.objTree);
-            this.panel3.Controls.Add(this.panel1);
-            this.panel3.Dock = DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new Size(570, 0x5f);
-            this.panel3.TabIndex = 2;
-            this.objTree.Dock = DockStyle.Fill;
-            this.objTree.HideSelection = false;
-            this.objTree.Location = new System.Drawing.Point(0, 0x1a);
-            this.objTree.Name = "objTree";
-            this.objTree.Size = new Size(570, 0x45);
-            this.objTree.TabIndex = 2;
-            this.objTree.AfterSelect += new TreeViewEventHandler(this.objTree_AfterSelect);
-            this.panel5.Controls.Add(this.panelAttach);
-            this.panel5.Controls.Add(this.txtPos);
-            this.panel5.Dock = DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new Size(570, 0x2a);
-            this.panel5.TabIndex = 1;
-            this.panelAttach.AutoSize = true;
-            this.panelAttach.Controls.Add(this.textBox1);
-            this.panelAttach.Controls.Add(this.button1);
-            this.panelAttach.Dock = DockStyle.Fill;
-            this.panelAttach.Location = new System.Drawing.Point(0, 0x15);
-            this.panelAttach.Name = "panelAttach";
-            this.panelAttach.Size = new Size(570, 0x15);
-            this.panelAttach.TabIndex = 2;
-            this.textBox1.Dock = DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(0x40, 0);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new Size(0x1fa, 0x15);
-            this.textBox1.TabIndex = 1;
-            this.button1.Dock = DockStyle.Left;
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new Size(0x40, 0x15);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "附件";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new EventHandler(this.button1_Click);
-            this.panel2.Controls.Add(this.Infolist);
-            this.panel2.Controls.Add(this.panel5);
-            this.panel2.Dock = DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0x5f);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new Size(570, 0xf4);
-            this.panel2.TabIndex = 5;
-            this.Infolist.Columns.AddRange(new ColumnHeader[] { this.columnHeader_0, this.columnHeader_1 });
-            this.Infolist.Dock = DockStyle.Fill;
-            this.Infolist.Location = new System.Drawing.Point(0, 0x2a);
-            this.Infolist.Name = "Infolist";
-            this.Infolist.Size = new Size(570, 0xca);
-            this.Infolist.TabIndex = 5;
-            this.Infolist.UseCompatibleStateImageBehavior = false;
-            this.Infolist.View = View.Details;
-            this.columnHeader_0.Text = "字段";
-            this.columnHeader_0.Width = 0x57;
-            this.columnHeader_1.Text = "字段值";
-            this.columnHeader_1.Width = 0xa4;
-            base.Controls.Add(this.panel2);
-            base.Controls.Add(this.panel3);
-            base.Name = "FeatureInfoControl";
-            base.Size = new Size(570, 0x153);
-            base.Load += new EventHandler(this.FeatureInfoControl_Load);
-            base.SizeChanged += new EventHandler(this.FeatureInfoControl_SizeChanged);
-            this.panel1.ResumeLayout(false);
-            this.combLayer.Properties.EndInit();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.txtPos.Properties.EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panelAttach.ResumeLayout(false);
-            this.panelAttach.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            base.ResumeLayout(false);
-        }
-
-        private void method_0()
+ private void method_0()
         {
             this.objTree.Nodes.Clear();
             this.Infolist.Items.Clear();

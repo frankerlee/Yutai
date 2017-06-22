@@ -7,9 +7,8 @@ using Yutai.ArcGIS.Framework.Docking;
 
 namespace Yutai.ArcGIS.Controls.Controls
 {
-    public class frmCommandLine : DockContent, ICommandLineWindows
+    public partial class frmCommandLine : DockContent, ICommandLineWindows
     {
-        private IContainer components = null;
         private CommandLinesCtrl ctrl = new CommandLinesCtrl();
 
         public frmCommandLine()
@@ -18,16 +17,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             base.Load += new EventHandler(this.frmCommandLine_Load);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private void frmCommandLine_Load(object sender, EventArgs e)
+ private void frmCommandLine_Load(object sender, EventArgs e)
         {
             this.ctrl.Dock = DockStyle.Fill;
             base.Controls.Add(this.ctrl);
@@ -38,24 +28,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             this.ctrl.Init();
         }
 
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCommandLine));
-            base.SuspendLayout();
-            base.AutoScaleDimensions = new SizeF(6f, 12f);
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.ClientSize = new Size(0x124, 0x111);
-            base.DockAreas = DockAreas.DockBottom | DockAreas.DockTop | DockAreas.DockRight | DockAreas.DockLeft | DockAreas.Float;
-            base.HideOnClose = true;
-            
-            base.Name = "frmCommandLine";
-            base.ShowHint = DockState.DockBottom;
-            base.TabText = "命令行";
-            this.Text = "命令行";
-            base.ResumeLayout(false);
-        }
-
-        public void LockCommandLine(bool flag)
+ public void LockCommandLine(bool flag)
         {
             this.ctrl.LockCommandLine(flag);
         }

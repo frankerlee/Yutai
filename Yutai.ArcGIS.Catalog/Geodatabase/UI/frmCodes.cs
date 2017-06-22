@@ -7,19 +7,13 @@ using ESRI.ArcGIS.Geodatabase;
 
 namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 {
-    internal class frmCodes : Form
+    internal partial class frmCodes : Form
     {
         private bool bool_0 = false;
-        private SimpleButton btnCancel;
-        private SimpleButton btnOK;
         private ICodedValueDomain icodedValueDomain_0 = null;
         private IContainer icontainer_0 = null;
-        private Label label1;
-        private Label label2;
         internal object m_Code = "";
         internal string m_CodeName = "";
-        private TextEdit txtCode;
-        private TextEdit txtName;
 
         public frmCodes()
         {
@@ -86,87 +80,13 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
-        protected override void Dispose(bool bool_1)
-        {
-            if (bool_1 && (this.icontainer_0 != null))
-            {
-                this.icontainer_0.Dispose();
-            }
-            base.Dispose(bool_1);
-        }
-
-        private void frmCodes_Load(object sender, EventArgs e)
+ private void frmCodes_Load(object sender, EventArgs e)
         {
             this.txtCode.Text = this.m_Code.ToString();
             this.txtName.Text = this.m_CodeName;
         }
 
-        private void InitializeComponent()
-        {
-            this.btnOK = new SimpleButton();
-            this.btnCancel = new SimpleButton();
-            this.txtCode = new TextEdit();
-            this.label1 = new Label();
-            this.txtName = new TextEdit();
-            this.label2 = new Label();
-            this.txtCode.Properties.BeginInit();
-            this.txtName.Properties.BeginInit();
-            base.SuspendLayout();
-            this.btnOK.Location = new Point(0x52, 0x3b);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new Size(0x40, 0x18);
-            this.btnOK.TabIndex = 6;
-            this.btnOK.Text = "确定";
-            this.btnOK.Click += new EventHandler(this.btnOK_Click);
-            this.btnCancel.DialogResult = DialogResult.Cancel;
-            this.btnCancel.Location = new Point(0x98, 0x3b);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new Size(0x40, 0x18);
-            this.btnCancel.TabIndex = 7;
-            this.btnCancel.Text = "取消";
-            this.txtCode.EditValue = "";
-            this.txtCode.Location = new Point(0x2f, 4);
-            this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new Size(0xa5, 0x15);
-            this.txtCode.TabIndex = 9;
-            this.label1.AutoSize = true;
-            this.label1.Location = new Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(0x1d, 12);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "代码";
-            this.txtName.EditValue = "";
-            this.txtName.Location = new Point(0x2f, 0x20);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new Size(0xa5, 0x15);
-            this.txtName.TabIndex = 11;
-            this.label2.AutoSize = true;
-            this.label2.Location = new Point(12, 0x25);
-            this.label2.Name = "label2";
-            this.label2.Size = new Size(0x1d, 12);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "描述";
-            base.AutoScaleDimensions = new SizeF(6f, 12f);
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.ClientSize = new Size(0xec, 0x62);
-            base.Controls.Add(this.txtName);
-            base.Controls.Add(this.label2);
-            base.Controls.Add(this.txtCode);
-            base.Controls.Add(this.label1);
-            base.Controls.Add(this.btnCancel);
-            base.Controls.Add(this.btnOK);
-            base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            base.MaximizeBox = false;
-            base.MinimizeBox = false;
-            base.Name = "frmCodes";
-            base.Load += new EventHandler(this.frmCodes_Load);
-            this.txtCode.Properties.EndInit();
-            this.txtName.Properties.EndInit();
-            base.ResumeLayout(false);
-            base.PerformLayout();
-        }
-
-        private object method_0(string string_0)
+ private object method_0(string string_0)
         {
             try
             {

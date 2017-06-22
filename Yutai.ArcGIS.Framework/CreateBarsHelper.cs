@@ -1094,7 +1094,7 @@ namespace Yutai.ArcGIS.Framework
                 bar.BarName = this.barManager_0.GetNewBarName();
                 bar.DockCol = 0;
                 bar.DockRow = this.barManager_0.Bars.Count;
-                bar.FloatSize = new Size(0x120, 0x18);
+                bar.FloatSize = new Size(288, 24);
                 this.barManager_0.Bars.Add(bar);
                 this.method_1(bar, strArray);
                 if (bar.DockStyle == BarDockStyle.None)

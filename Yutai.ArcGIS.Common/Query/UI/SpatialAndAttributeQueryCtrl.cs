@@ -11,29 +11,10 @@ using ESRI.ArcGIS.Geometry;
 
 namespace Yutai.ArcGIS.Common.Query.UI
 {
-    public class SpatialAndAttributeQueryCtrl : UserControl
+    public partial class SpatialAndAttributeQueryCtrl : UserControl
     {
-        private SimpleButton btnApply;
-        private SimpleButton btnCreateQuery;
-        private ComboBoxEdit cboOperationType;
-        private ComboBoxEdit cboSourceLayer;
-        private ComboBoxEdit cboSpatialRelation;
-        private ComboBoxEdit cboUnit;
-        private CheckEdit chkUseBuffer;
-        private CheckEdit chkUseSelectFeature;
-        private CheckEdit chkUsetSelectedLayer;
-        private ComboBoxEdit comboBoxLayer;
-        private GroupBox groupBox1;
         private IContainer icontainer_0 = null;
         private IMap imap_0 = null;
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Label lblStatu;
-        private MemoEdit memEditWhereCaluse;
-        private Panel panel1;
-        private TextEdit txtRadius;
 
         public SpatialAndAttributeQueryCtrl()
         {
@@ -201,208 +182,7 @@ namespace Yutai.ArcGIS.Common.Query.UI
             }
         }
 
-        protected override void Dispose(bool bool_0)
-        {
-            if (bool_0 && (this.icontainer_0 != null))
-            {
-                this.icontainer_0.Dispose();
-            }
-            base.Dispose(bool_0);
-        }
-
-        private void InitializeComponent()
-        {
-            this.btnApply = new SimpleButton();
-            this.chkUsetSelectedLayer = new CheckEdit();
-            this.label2 = new Label();
-            this.cboOperationType = new ComboBoxEdit();
-            this.label1 = new Label();
-            this.memEditWhereCaluse = new MemoEdit();
-            this.comboBoxLayer = new ComboBoxEdit();
-            this.label4 = new Label();
-            this.groupBox1 = new GroupBox();
-            this.cboUnit = new ComboBoxEdit();
-            this.txtRadius = new TextEdit();
-            this.chkUseBuffer = new CheckEdit();
-            this.chkUseSelectFeature = new CheckEdit();
-            this.cboSourceLayer = new ComboBoxEdit();
-            this.label3 = new Label();
-            this.cboSpatialRelation = new ComboBoxEdit();
-            this.panel1 = new Panel();
-            this.lblStatu = new Label();
-            this.btnCreateQuery = new SimpleButton();
-            this.chkUsetSelectedLayer.Properties.BeginInit();
-            this.cboOperationType.Properties.BeginInit();
-            this.memEditWhereCaluse.Properties.BeginInit();
-            this.comboBoxLayer.Properties.BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.cboUnit.Properties.BeginInit();
-            this.txtRadius.Properties.BeginInit();
-            this.chkUseBuffer.Properties.BeginInit();
-            this.chkUseSelectFeature.Properties.BeginInit();
-            this.cboSourceLayer.Properties.BeginInit();
-            this.cboSpatialRelation.Properties.BeginInit();
-            this.panel1.SuspendLayout();
-            base.SuspendLayout();
-            this.btnApply.Location = new System.Drawing.Point(0x10b, 0x14b);
-            this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new Size(0x40, 0x18);
-            this.btnApply.TabIndex = 0x1b;
-            this.btnApply.Text = "应用";
-            this.btnApply.Click += new EventHandler(this.btnApply_Click);
-            this.chkUsetSelectedLayer.Location = new System.Drawing.Point(0x34, 0x2d);
-            this.chkUsetSelectedLayer.Name = "chkUsetSelectedLayer";
-            this.chkUsetSelectedLayer.Properties.Caption = "只显示可选图层";
-            this.chkUsetSelectedLayer.Size = new Size(0x70, 0x13);
-            this.chkUsetSelectedLayer.TabIndex = 0x13;
-            this.chkUsetSelectedLayer.Visible = false;
-            this.chkUsetSelectedLayer.CheckedChanged += new EventHandler(this.chkUsetSelectedLayer_CheckedChanged);
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(0x11, 0x1b);
-            this.label2.Name = "label2";
-            this.label2.Size = new Size(0x1d, 12);
-            this.label2.TabIndex = 0x12;
-            this.label2.Text = "图层";
-            this.cboOperationType.EditValue = "选择要素";
-            this.cboOperationType.Location = new System.Drawing.Point(0x11, 70);
-            this.cboOperationType.Name = "cboOperationType";
-            this.cboOperationType.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.cboOperationType.Properties.Items.AddRange(new object[] { "选择要素", "选择要素,并添加到选择集中", "的选择集中删除", "的选择集中选择" });
-            this.cboOperationType.Size = new Size(0xf8, 0x15);
-            this.cboOperationType.TabIndex = 0x10;
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(0x11, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(0xd1, 12);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "根据要素的空间关系从图层中选择要素";
-            this.memEditWhereCaluse.EditValue = "";
-            this.memEditWhereCaluse.Location = new System.Drawing.Point(7, 0x107);
-            this.memEditWhereCaluse.Name = "memEditWhereCaluse";
-            this.memEditWhereCaluse.Size = new Size(0x157, 0x3e);
-            this.memEditWhereCaluse.TabIndex = 0x1d;
-            this.comboBoxLayer.EditValue = "";
-            this.comboBoxLayer.Location = new System.Drawing.Point(0x34, 0x12);
-            this.comboBoxLayer.Name = "comboBoxLayer";
-            this.comboBoxLayer.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.comboBoxLayer.Size = new Size(0x120, 0x15);
-            this.comboBoxLayer.TabIndex = 0x31;
-            this.comboBoxLayer.SelectedIndexChanged += new EventHandler(this.comboBoxLayer_SelectedIndexChanged);
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 0xf1);
-            this.label4.Name = "label4";
-            this.label4.Size = new Size(0x7d, 12);
-            this.label4.TabIndex = 50;
-            this.label4.Text = "并满足如下条件的要素";
-            this.groupBox1.Controls.Add(this.cboUnit);
-            this.groupBox1.Controls.Add(this.txtRadius);
-            this.groupBox1.Controls.Add(this.chkUseBuffer);
-            this.groupBox1.Controls.Add(this.chkUseSelectFeature);
-            this.groupBox1.Controls.Add(this.cboSourceLayer);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.cboSpatialRelation);
-            this.groupBox1.Location = new System.Drawing.Point(7, 0x5d);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new Size(0x157, 0x91);
-            this.groupBox1.TabIndex = 0x33;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "空间过滤";
-            this.cboUnit.EditValue = "";
-            this.cboUnit.Location = new System.Drawing.Point(0x6a, 0x76);
-            this.cboUnit.Name = "cboUnit";
-            this.cboUnit.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.cboUnit.Size = new Size(0x60, 0x15);
-            this.cboUnit.TabIndex = 0x21;
-            this.cboUnit.Visible = false;
-            this.txtRadius.EditValue = "0";
-            this.txtRadius.Location = new System.Drawing.Point(10, 0x76);
-            this.txtRadius.Name = "txtRadius";
-            this.txtRadius.Size = new Size(0x58, 0x15);
-            this.txtRadius.TabIndex = 0x20;
-            this.chkUseBuffer.Location = new System.Drawing.Point(10, 0x5e);
-            this.chkUseBuffer.Name = "chkUseBuffer";
-            this.chkUseBuffer.Properties.Caption = "对要素进行缓冲区操作";
-            this.chkUseBuffer.Size = new Size(0xa8, 0x13);
-            this.chkUseBuffer.TabIndex = 0x1f;
-            this.chkUseBuffer.CheckedChanged += new EventHandler(this.chkUseBuffer_CheckedChanged);
-            this.chkUseSelectFeature.Location = new System.Drawing.Point(0xa2, 0x24);
-            this.chkUseSelectFeature.Name = "chkUseSelectFeature";
-            this.chkUseSelectFeature.Properties.Caption = "使用选中的要素";
-            this.chkUseSelectFeature.Size = new Size(0x68, 0x13);
-            this.chkUseSelectFeature.TabIndex = 30;
-            this.cboSourceLayer.EditValue = "";
-            this.cboSourceLayer.Location = new System.Drawing.Point(10, 0x24);
-            this.cboSourceLayer.Name = "cboSourceLayer";
-            this.cboSourceLayer.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.cboSourceLayer.Size = new Size(0x90, 0x15);
-            this.cboSourceLayer.TabIndex = 0x1d;
-            this.cboSourceLayer.SelectedIndexChanged += new EventHandler(this.cboSourceLayer_SelectedIndexChanged);
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 20);
-            this.label3.Name = "label3";
-            this.label3.Size = new Size(0x59, 12);
-            this.label3.TabIndex = 0x1c;
-            this.label3.Text = "与图层中的要素";
-            this.cboSpatialRelation.EditValue = "相交";
-            this.cboSpatialRelation.Location = new System.Drawing.Point(10, 0x41);
-            this.cboSpatialRelation.Name = "cboSpatialRelation";
-            this.cboSpatialRelation.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.cboSpatialRelation.Properties.Items.AddRange(new object[] { "相交", "包围矩形相交", "相接", "重叠", "被包含", "包含" });
-            this.cboSpatialRelation.Size = new Size(0xf8, 0x15);
-            this.cboSpatialRelation.TabIndex = 0x1b;
-            this.panel1.Controls.Add(this.lblStatu);
-            this.panel1.Location = new System.Drawing.Point(0xa2, 0xbf);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new Size(0x98, 0x40);
-            this.panel1.TabIndex = 0x34;
-            this.panel1.Visible = false;
-            this.lblStatu.AutoSize = true;
-            this.lblStatu.Location = new System.Drawing.Point(8, 8);
-            this.lblStatu.Name = "lblStatu";
-            this.lblStatu.Size = new Size(0x6b, 12);
-            this.lblStatu.TabIndex = 14;
-            this.lblStatu.Text = "正在查找请稍候...";
-            this.btnCreateQuery.Location = new System.Drawing.Point(7, 0x14b);
-            this.btnCreateQuery.Name = "btnCreateQuery";
-            this.btnCreateQuery.Size = new Size(0x5d, 0x18);
-            this.btnCreateQuery.TabIndex = 0x35;
-            this.btnCreateQuery.Text = "构建查询条件";
-            this.btnCreateQuery.Click += new EventHandler(this.btnCreateQuery_Click);
-            base.AutoScaleDimensions = new SizeF(6f, 12f);
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.Controls.Add(this.btnCreateQuery);
-            base.Controls.Add(this.panel1);
-            base.Controls.Add(this.groupBox1);
-            base.Controls.Add(this.label4);
-            base.Controls.Add(this.comboBoxLayer);
-            base.Controls.Add(this.memEditWhereCaluse);
-            base.Controls.Add(this.btnApply);
-            base.Controls.Add(this.chkUsetSelectedLayer);
-            base.Controls.Add(this.label2);
-            base.Controls.Add(this.cboOperationType);
-            base.Controls.Add(this.label1);
-            base.Name = "SpatialAndAttributeQueryCtrl";
-            base.Size = new Size(0x16e, 0x180);
-            base.Load += new EventHandler(this.SpatialAndAttributeQueryCtrl_Load);
-            this.chkUsetSelectedLayer.Properties.EndInit();
-            this.cboOperationType.Properties.EndInit();
-            this.memEditWhereCaluse.Properties.EndInit();
-            this.comboBoxLayer.Properties.EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.cboUnit.Properties.EndInit();
-            this.txtRadius.Properties.EndInit();
-            this.chkUseBuffer.Properties.EndInit();
-            this.chkUseSelectFeature.Properties.EndInit();
-            this.cboSourceLayer.Properties.EndInit();
-            this.cboSpatialRelation.Properties.EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            base.ResumeLayout(false);
-            base.PerformLayout();
-        }
-
-        private void method_0(ComboBoxEdit comboBoxEdit_0, ICompositeLayer icompositeLayer_0, bool bool_0)
+ private void method_0(ComboBoxEdit comboBoxEdit_0, ICompositeLayer icompositeLayer_0, bool bool_0)
         {
             for (int i = 0; i < icompositeLayer_0.Count; i++)
             {
@@ -575,7 +355,7 @@ namespace Yutai.ArcGIS.Common.Query.UI
             }
         }
 
-        internal class LayerObjectWrap
+        internal partial class LayerObjectWrap
         {
             private ILayer ilayer_0 = null;
 

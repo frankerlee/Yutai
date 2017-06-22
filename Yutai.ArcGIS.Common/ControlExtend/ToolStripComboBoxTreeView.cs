@@ -55,7 +55,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             }
         }
 
-        [DefaultValue(0x6a), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        [DefaultValue(106), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         public int DropDownHeight
         {
             get
@@ -147,8 +147,8 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             private ToolStripComboBoxTreeView toolStripComboBoxTreeView_0;
             private ToolStripControlHost toolStripControlHost_0;
             private ToolStripDropDown toolStripDropDown_0;
-            private const int WM_LBUTTONDBLCLK = 0x203;
-            private const int WM_LBUTTONDOWN = 0x201;
+            private const int WM_LBUTTONDBLCLK = 515;
+            private const int WM_LBUTTONDOWN = 513;
 
             public ToolStripComboBoxTreeViewControl()
             {
@@ -192,7 +192,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
             protected override void WndProc(ref Message message_0)
             {
-                if ((message_0.Msg == 0x203) || (message_0.Msg == 0x201))
+                if ((message_0.Msg == 515) || (message_0.Msg == 513))
                 {
                     this.method_0();
                 }

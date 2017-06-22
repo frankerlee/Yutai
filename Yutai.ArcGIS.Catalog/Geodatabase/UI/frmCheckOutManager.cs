@@ -9,32 +9,18 @@ using ESRI.ArcGIS.Geodatabase;
 
 namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 {
-    public class frmCheckOutManager : Form
+    public partial class frmCheckOutManager : Form
     {
-        private ColumnHeader columnHeader_0;
-        private ColumnHeader columnHeader_1;
-        private ColumnHeader columnHeader_2;
-        private ColumnHeader columnHeader_3;
         private Container container_0 = null;
         private IArray iarray_0 = null;
         private IWorkspace iworkspace_0 = null;
-        private ListView listView1;
 
         public frmCheckOutManager()
         {
             this.InitializeComponent();
         }
 
-        protected override void Dispose(bool bool_0)
-        {
-            if (bool_0 && (this.container_0 != null))
-            {
-                this.container_0.Dispose();
-            }
-            base.Dispose(bool_0);
-        }
-
-        private void frmCheckOutManager_Load(object sender, EventArgs e)
+ private void frmCheckOutManager_Load(object sender, EventArgs e)
         {
             if (this.iarray_0.Count == 1)
             {
@@ -76,48 +62,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCheckOutManager));
-            this.listView1 = new ListView();
-            this.columnHeader_0 = new ColumnHeader();
-            this.columnHeader_1 = new ColumnHeader();
-            this.columnHeader_2 = new ColumnHeader();
-            this.columnHeader_3 = new ColumnHeader();
-            base.SuspendLayout();
-            this.listView1.Columns.AddRange(new ColumnHeader[] { this.columnHeader_0, this.columnHeader_1, this.columnHeader_2, this.columnHeader_3 });
-            this.listView1.Dock = DockStyle.Fill;
-            this.listView1.FullRowSelect = true;
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new Point(0, 0);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new Size(0x138, 0x111);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = View.Details;
-            this.listView1.DoubleClick += new EventHandler(this.listView1_DoubleClick);
-            this.listView1.SelectedIndexChanged += new EventHandler(this.listView1_SelectedIndexChanged);
-            this.columnHeader_0.Text = "名称";
-            this.columnHeader_0.Width = 100;
-            this.columnHeader_1.Text = "拥有者";
-            this.columnHeader_1.Width = 0x49;
-            this.columnHeader_2.Text = "版本";
-            this.columnHeader_2.Width = 0x4e;
-            this.columnHeader_3.Text = "日期";
-            this.columnHeader_3.Width = 0x4f;
-            this.AutoScaleBaseSize = new Size(6, 14);
-            base.ClientSize = new Size(0x138, 0x111);
-            base.Controls.Add(this.listView1);
-            
-            base.MaximizeBox = false;
-            base.MinimizeBox = false;
-            base.Name = "frmCheckOutManager";
-            this.Text = "检出管理器";
-            base.Load += new EventHandler(this.frmCheckOutManager_Load);
-            base.ResumeLayout(false);
-        }
-
-        private void listView1_DoubleClick(object sender, EventArgs e)
+ private void listView1_DoubleClick(object sender, EventArgs e)
         {
             if (this.listView1.SelectedItems.Count > 0)
             {

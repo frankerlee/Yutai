@@ -24,21 +24,13 @@ using Yutai.ArcGIS.Common.Wrapper;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {
-    public class MultiAttributeListControlExtend : UserControl
+    public partial class MultiAttributeListControlExtend : UserControl
     {
-        private ComboBoxEdit cboLayer;
-        private Container components = null;
-        private GridControl gridControl1;
-        private GridView gridView1;
-        private Label label1;
         private bool m_CanDo = false;
         private IList m_LayerList = null;
-        private int m_nX;
-        private int m_nY;
         private IActiveView m_pActiveView = null;
         private IFeatureLayer m_pFeatLayer = null;
         private VertXtraGrid m_pVertXtraGrid = null;
-        private Panel panel3;
 
         public MultiAttributeListControlExtend()
         {
@@ -390,16 +382,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             return true;
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        public void FlashObject()
+ public void FlashObject()
         {
             try
             {
@@ -562,66 +545,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
-        private void InitializeComponent()
-        {
-            this.panel3 = new Panel();
-            this.cboLayer = new ComboBoxEdit();
-            this.label1 = new Label();
-            this.gridControl1 = new GridControl();
-            this.gridView1 = new GridView();
-            this.panel3.SuspendLayout();
-            this.cboLayer.Properties.BeginInit();
-            this.gridControl1.BeginInit();
-            this.gridView1.BeginInit();
-            base.SuspendLayout();
-            this.panel3.Controls.Add(this.cboLayer);
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Dock = DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new Size(0x176, 0x17);
-            this.panel3.TabIndex = 1;
-            this.panel3.Resize += new EventHandler(this.panel3_Resize);
-            this.panel3.SizeChanged += new EventHandler(this.panel3_SizeChanged);
-            this.cboLayer.EditValue = "";
-            this.cboLayer.Location = new System.Drawing.Point(0x31, 1);
-            this.cboLayer.Name = "cboLayer";
-            this.cboLayer.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.cboLayer.Size = new Size(0x129, 0x15);
-            this.cboLayer.TabIndex = 3;
-            this.cboLayer.SelectedIndexChanged += new EventHandler(this.cboLayer_SelectedIndexChanged);
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(0x23, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "图层:";
-            this.gridControl1.Dock = DockStyle.Fill;
-            this.gridControl1.EmbeddedNavigator.Name = "";
-            this.gridControl1.Location = new System.Drawing.Point(0, 0x17);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new Size(0x176, 0x11f);
-            this.gridControl1.TabIndex = 2;
-            this.gridControl1.ViewCollection.AddRange(new BaseView[] { this.gridView1 });
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.OptionsView.ShowIndicator = false;
-            base.Controls.Add(this.gridControl1);
-            base.Controls.Add(this.panel3);
-            base.Name = "MultiAttributeListControlExtend";
-            base.Size = new Size(0x176, 310);
-            base.Load += new EventHandler(this.AttributeListControl_Load);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.cboLayer.Properties.EndInit();
-            this.gridControl1.EndInit();
-            this.gridView1.EndInit();
-            base.ResumeLayout(false);
-        }
-
-        private void panel3_Resize(object sender, EventArgs e)
+ private void panel3_Resize(object sender, EventArgs e)
         {
         }
 

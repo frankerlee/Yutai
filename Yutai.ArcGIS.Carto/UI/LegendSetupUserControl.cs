@@ -11,27 +11,12 @@ using Yutai.ArcGIS.Common.SymbolLib;
 
 namespace Yutai.ArcGIS.Carto.UI
 {
-    internal class LegendSetupUserControl : UserControl
+    internal partial class LegendSetupUserControl : UserControl
     {
         private bool bool_0 = false;
-        private StyleComboBox cboAreaPatches;
-        private StyleComboBox cboLinePatches;
-        private GroupBox groupBox1;
-        private IArray iarray_0;
-        private IContainer icontainer_0;
         private ILegend ilegend_0 = null;
         private ILegendItem ilegendItem_0 = null;
         private IStyleGallery istyleGallery_0 = null;
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Label label5;
-        private Label label6;
-        private Label label7;
-        private ListBoxControl listLegendLayers;
-        private TextEdit txtHeight;
-        private TextEdit txtWidth;
         private IStyleGalleryItem 定制 = null;
         private IStyleGalleryItem 定制_1 = null;
 
@@ -56,145 +41,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
-        protected override void Dispose(bool bool_1)
-        {
-            if (bool_1 && (this.icontainer_0 != null))
-            {
-                this.icontainer_0.Dispose();
-            }
-            base.Dispose(bool_1);
-        }
-
-        private void InitializeComponent()
-        {
-            this.icontainer_0 = new Container();
-            this.groupBox1 = new GroupBox();
-            this.cboAreaPatches = new StyleComboBox(this.icontainer_0);
-            this.cboLinePatches = new StyleComboBox(this.icontainer_0);
-            this.label6 = new Label();
-            this.label7 = new Label();
-            this.label5 = new Label();
-            this.label4 = new Label();
-            this.txtHeight = new TextEdit();
-            this.txtWidth = new TextEdit();
-            this.label3 = new Label();
-            this.label1 = new Label();
-            this.listLegendLayers = new ListBoxControl();
-            this.label2 = new Label();
-            this.groupBox1.SuspendLayout();
-            this.txtHeight.Properties.BeginInit();
-            this.txtWidth.Properties.BeginInit();
-            ((ISupportInitialize) this.listLegendLayers).BeginInit();
-            base.SuspendLayout();
-            this.groupBox1.Controls.Add(this.cboAreaPatches);
-            this.groupBox1.Controls.Add(this.cboLinePatches);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.txtHeight);
-            this.groupBox1.Controls.Add(this.txtWidth);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(0xa8, 0x20);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new Size(0xb8, 0xa8);
-            this.groupBox1.TabIndex = 9;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "区块";
-            this.cboAreaPatches.DrawMode = DrawMode.OwnerDrawVariable;
-            this.cboAreaPatches.DropDownStyle = ComboBoxStyle.DropDownList;
-            this.cboAreaPatches.DropDownWidth = 160;
-            this.cboAreaPatches.Font = new Font("宋体", 15f, FontStyle.Regular, GraphicsUnit.Point, 0x86);
-            this.cboAreaPatches.Location = new System.Drawing.Point(0x38, 0x80);
-            this.cboAreaPatches.Name = "cboAreaPatches";
-            this.cboAreaPatches.Size = new Size(0x48, 0x1f);
-            this.cboAreaPatches.TabIndex = 9;
-            this.cboAreaPatches.SelectedIndexChanged += new EventHandler(this.cboAreaPatches_SelectedIndexChanged);
-            this.cboLinePatches.DrawMode = DrawMode.OwnerDrawVariable;
-            this.cboLinePatches.DropDownStyle = ComboBoxStyle.DropDownList;
-            this.cboLinePatches.DropDownWidth = 160;
-            this.cboLinePatches.Font = new Font("宋体", 15f, FontStyle.Regular, GraphicsUnit.Point, 0x86);
-            this.cboLinePatches.Location = new System.Drawing.Point(0x38, 0x58);
-            this.cboLinePatches.Name = "cboLinePatches";
-            this.cboLinePatches.Size = new Size(0x48, 0x1f);
-            this.cboLinePatches.TabIndex = 8;
-            this.cboLinePatches.SelectedIndexChanged += new EventHandler(this.cboLinePatches_SelectedIndexChanged);
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(0x10, 0x88);
-            this.label6.Name = "label6";
-            this.label6.Size = new Size(0x17, 0x11);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "面:";
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(0x10, 0x60);
-            this.label7.Name = "label7";
-            this.label7.Size = new Size(0x17, 0x11);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "线:";
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(0x90, 0x30);
-            this.label5.Name = "label5";
-            this.label5.Size = new Size(0x11, 0x11);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "点";
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(0x90, 0x10);
-            this.label4.Name = "label4";
-            this.label4.Size = new Size(0x11, 0x11);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "点";
-            this.txtHeight.EditValue = "";
-            this.txtHeight.Location = new System.Drawing.Point(0x38, 0x30);
-            this.txtHeight.Name = "txtHeight";
-            this.txtHeight.Size = new Size(80, 0x17);
-            this.txtHeight.TabIndex = 3;
-            this.txtHeight.EditValueChanged += new EventHandler(this.txtHeight_EditValueChanged);
-            this.txtHeight.TextChanged += new EventHandler(this.txtHeight_TextChanged);
-            this.txtWidth.EditValue = "";
-            this.txtWidth.Location = new System.Drawing.Point(0x38, 0x10);
-            this.txtWidth.Name = "txtWidth";
-            this.txtWidth.Size = new Size(80, 0x17);
-            this.txtWidth.TabIndex = 2;
-            this.txtWidth.EditValueChanged += new EventHandler(this.txtWidth_EditValueChanged);
-            this.txtWidth.TextChanged += new EventHandler(this.txtWidth_TextChanged);
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 0x38);
-            this.label3.Name = "label3";
-            this.label3.Size = new Size(0x23, 0x11);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "高度:";
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 0x18);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(0x23, 0x11);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "宽度:";
-            this.listLegendLayers.ItemHeight = 15;
-            this.listLegendLayers.Location = new System.Drawing.Point(8, 40);
-            this.listLegendLayers.Name = "listLegendLayers";
-            this.listLegendLayers.Size = new Size(0x90, 160);
-            this.listLegendLayers.TabIndex = 8;
-            this.listLegendLayers.SelectedIndexChanged += new EventHandler(this.listLegendLayers_SelectedIndexChanged);
-            this.label2.Location = new System.Drawing.Point(8, 0x10);
-            this.label2.Name = "label2";
-            this.label2.Size = new Size(0x58, 0x10);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "图例项";
-            base.Controls.Add(this.groupBox1);
-            base.Controls.Add(this.listLegendLayers);
-            base.Controls.Add(this.label2);
-            base.Name = "LegendSetupUserControl";
-            base.Size = new Size(400, 0x110);
-            base.Load += new EventHandler(this.LegendSetupUserControl_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.txtHeight.Properties.EndInit();
-            this.txtWidth.Properties.EndInit();
-            ((ISupportInitialize) this.listLegendLayers).EndInit();
-            base.ResumeLayout(false);
-        }
-
-        private void LegendSetupUserControl_Load(object sender, EventArgs e)
+ private void LegendSetupUserControl_Load(object sender, EventArgs e)
         {
             if (this.istyleGallery_0 != null)
             {

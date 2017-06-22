@@ -12,7 +12,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         public static uint MakeLong(int low, int high)
         {
-            return (uint) ((high << 0x10) + low);
+            return (uint) ((high << 16) + low);
         }
     }
 }

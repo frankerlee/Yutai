@@ -15,21 +15,14 @@ using Yutai.Plugins.Enums;
 
 namespace Yutai.ArcGIS.Carto.UI
 {
-    public class GroupLayerPropertyPage : UserControl, ILayerAndStandaloneTablePropertyPage
+    public partial class GroupLayerPropertyPage : UserControl, ILayerAndStandaloneTablePropertyPage
     {
         private bool bool_0 = false;
         private bool bool_1 = false;
-        private SimpleButton btnAdd;
-        private SimpleButton btnDelete;
-        private SimpleButton btnDown;
-        private SimpleButton btnProperty;
-        private SimpleButton btnUp;
         private Container container_0 = null;
-        private GroupBox groupBox1;
         private IBasicMap ibasicMap_0 = null;
         private ICompositeLayer icompositeLayer_0 = null;
         private IGroupLayer igroupLayer_0 = null;
-        private ListBox listBox1;
 
         public GroupLayerPropertyPage()
         {
@@ -118,94 +111,13 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
-        protected override void Dispose(bool bool_2)
-        {
-            if (bool_2 && (this.container_0 != null))
-            {
-                this.container_0.Dispose();
-            }
-            base.Dispose(bool_2);
-        }
-
-        private void GroupLayerPropertyPage_Load(object sender, EventArgs e)
+ private void GroupLayerPropertyPage_Load(object sender, EventArgs e)
         {
             this.method_0();
             this.bool_0 = true;
         }
 
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GroupLayerPropertyPage));
-            this.groupBox1 = new GroupBox();
-            this.btnDown = new SimpleButton();
-            this.btnUp = new SimpleButton();
-            this.btnProperty = new SimpleButton();
-            this.btnDelete = new SimpleButton();
-            this.btnAdd = new SimpleButton();
-            this.listBox1 = new ListBox();
-            this.groupBox1.SuspendLayout();
-            base.SuspendLayout();
-            this.groupBox1.Controls.Add(this.btnDown);
-            this.groupBox1.Controls.Add(this.btnUp);
-            this.groupBox1.Controls.Add(this.btnProperty);
-            this.groupBox1.Controls.Add(this.btnDelete);
-            this.groupBox1.Controls.Add(this.btnAdd);
-            this.groupBox1.Controls.Add(this.listBox1);
-            this.groupBox1.Location = new System.Drawing.Point(0x10, 0x10);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new Size(360, 0xc0);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "图层";
-            this.btnDown.Enabled = false;
-            this.btnDown.Image = (System.Drawing.Image)resources.GetObject("btnDown.Image");
-            this.btnDown.Location = new System.Drawing.Point(280, 0x98);
-            this.btnDown.Name = "btnDown";
-            this.btnDown.Size = new Size(0x20, 0x18);
-            this.btnDown.TabIndex = 5;
-            this.btnDown.Click += new EventHandler(this.btnDown_Click);
-            this.btnUp.Enabled = false;
-            this.btnUp.Image = (System.Drawing.Image)resources.GetObject("btnUp.Image");
-            this.btnUp.Location = new System.Drawing.Point(280, 120);
-            this.btnUp.Name = "btnUp";
-            this.btnUp.Size = new Size(0x20, 0x18);
-            this.btnUp.TabIndex = 4;
-            this.btnUp.Click += new EventHandler(this.btnUp_Click);
-            this.btnProperty.Enabled = false;
-            this.btnProperty.Location = new System.Drawing.Point(280, 0x58);
-            this.btnProperty.Name = "btnProperty";
-            this.btnProperty.Size = new Size(0x30, 0x18);
-            this.btnProperty.TabIndex = 3;
-            this.btnProperty.Text = "属性";
-            this.btnProperty.Click += new EventHandler(this.btnProperty_Click);
-            this.btnDelete.Enabled = false;
-            this.btnDelete.Location = new System.Drawing.Point(280, 0x38);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new Size(0x30, 0x18);
-            this.btnDelete.TabIndex = 2;
-            this.btnDelete.Text = "删除";
-            this.btnDelete.Click += new EventHandler(this.btnDelete_Click);
-            this.btnAdd.Location = new System.Drawing.Point(280, 0x18);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new Size(0x30, 0x18);
-            this.btnAdd.TabIndex = 1;
-            this.btnAdd.Text = "添加";
-            this.btnAdd.Click += new EventHandler(this.btnAdd_Click);
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(0x10, 0x18);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new Size(0x100, 160);
-            this.listBox1.TabIndex = 0;
-            this.listBox1.SelectedIndexChanged += new EventHandler(this.listBox1_SelectedIndexChanged);
-            base.Controls.Add(this.groupBox1);
-            base.Name = "GroupLayerPropertyPage";
-            base.Size = new Size(0x198, 240);
-            base.Load += new EventHandler(this.GroupLayerPropertyPage_Load);
-            this.groupBox1.ResumeLayout(false);
-            base.ResumeLayout(false);
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+ private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.listBox1.SelectedIndices.Count > 0)
             {
@@ -616,7 +528,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
-        protected class LayerWrapObject
+        protected partial class LayerWrapObject
         {
             private ILayer ilayer_0 = null;
 

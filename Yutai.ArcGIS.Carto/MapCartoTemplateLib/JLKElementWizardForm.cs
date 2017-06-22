@@ -6,11 +6,8 @@ using System.Windows.Forms;
 
 namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 {
-    public class JLKElementWizardForm : Form
+    public partial class JLKElementWizardForm : Form
     {
-        private Button btnLast;
-        private Button btnNext;
-        private Button button3;
         private CustomLegendConfigPage customLegendConfigPage_0 = new CustomLegendConfigPage();
         private ElementPosition elementPosition_0 = new ElementPosition();
         private ElementSymbolSetPage elementSymbolSetPage_0 = new ElementSymbolSetPage();
@@ -20,11 +17,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         private LegendFormatSetupCtrl legendFormatSetupCtrl_0 = new LegendFormatSetupCtrl();
         private LegendFrameUserControl legendFrameUserControl_0 = new LegendFrameUserControl();
         private LegendTitleUserControl legendTitleUserControl_0 = new LegendTitleUserControl();
-        [CompilerGenerated]
-        private MapCartoTemplateLib.MapTemplate mapTemplate_0;
-        [CompilerGenerated]
-        private MapCartoTemplateLib.MapTemplateElement mapTemplateElement_0;
-        private Panel panel1;
+       
         private PictureSelectPage pictureSelectPage_0 = new PictureSelectPage();
         private TableCellSetPage tableCellSetPage_0 = new TableCellSetPage();
         private TableGeneralPage tableGeneralPage_0 = new TableGeneralPage();
@@ -228,67 +221,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             this.int_0++;
         }
 
-        protected override void Dispose(bool bool_0)
-        {
-            if (bool_0 && (this.icontainer_0 != null))
-            {
-                this.icontainer_0.Dispose();
-            }
-            base.Dispose(bool_0);
-        }
-
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(JLKElementWizardForm));
-            this.panel1 = new Panel();
-            this.btnLast = new Button();
-            this.btnNext = new Button();
-            this.button3 = new Button();
-            base.SuspendLayout();
-            this.panel1.Dock = DockStyle.Top;
-            this.panel1.Location = new Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new Size(0x1b1, 0x132);
-            this.panel1.TabIndex = 8;
-            this.btnLast.Location = new Point(0xb8, 0x138);
-            this.btnLast.Name = "btnLast";
-            this.btnLast.Size = new Size(0x4b, 0x17);
-            this.btnLast.TabIndex = 0;
-            this.btnLast.Text = "<上一步";
-            this.btnLast.UseVisualStyleBackColor = true;
-            this.btnLast.Click += new EventHandler(this.btnLast_Click);
-            this.btnNext.Location = new Point(0x109, 0x138);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new Size(0x4b, 0x17);
-            this.btnNext.TabIndex = 9;
-            this.btnNext.Text = "下一步>";
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new EventHandler(this.btnNext_Click);
-            this.button3.DialogResult = DialogResult.Cancel;
-            this.button3.Location = new Point(0x15d, 0x138);
-            this.button3.Name = "button3";
-            this.button3.Size = new Size(0x4b, 0x17);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "取消";
-            this.button3.UseVisualStyleBackColor = true;
-            base.AutoScaleDimensions = new SizeF(6f, 12f);
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.ClientSize = new Size(0x1b1, 0x152);
-            base.Controls.Add(this.button3);
-            base.Controls.Add(this.btnNext);
-            base.Controls.Add(this.btnLast);
-            base.Controls.Add(this.panel1);
-            base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            base.Icon = (Icon)resources.GetObject("$this.Icon");
-            base.MaximizeBox = false;
-            base.MinimizeBox = false;
-            base.Name = "JLKElementWizardForm";
-            this.Text = "元素向导";
-            base.Load += new EventHandler(this.JLKElementWizardForm_Load);
-            base.ResumeLayout(false);
-        }
-
-        private void JLKElementWizardForm_Load(object sender, EventArgs e)
+ private void JLKElementWizardForm_Load(object sender, EventArgs e)
         {
             this.elementTypeSelectPage_0.Dock = DockStyle.Fill;
             this.panel1.Controls.Add(this.elementTypeSelectPage_0);

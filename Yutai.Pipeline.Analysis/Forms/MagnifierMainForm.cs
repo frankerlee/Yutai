@@ -1,5 +1,4 @@
-using GMAnalysePack.Properties;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -12,17 +11,14 @@ using Yutai.Pipeline.Analysis.Properties;
 
 namespace Yutai.Pipeline.Analysis.Forms
 {
-	public class MagnifierMainForm : XtraForm
+	public partial class MagnifierMainForm : XtraForm
 	{
 		private string string_0 = "configData.xml";
 
-		private Image image_0;
 
 		private List<Class2> list_0 = new List<Class2>();
 
-		private Point point_0;
 
-		private Point point_1;
 
 		private Configuration configuration_0 = new Configuration();
 
@@ -52,30 +48,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 			base.ShowInTaskbar = false;
 		}
 
-		protected override void Dispose(bool disposing)
-		{
-			if ((!disposing ? false : this.icontainer_0 != null))
-			{
-				this.icontainer_0.Dispose();
-			}
-			base.Dispose(disposing);
-		}
-
-		private void InitializeComponent()
-		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MagnifierMainForm));
-			base.SuspendLayout();
-			base.AutoScaleDimensions = new SizeF(6f, 13f);
-			base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			base.ClientSize = new System.Drawing.Size(292, 269);
-			this.Cursor = Cursors.Default;
-			base.Icon = (System.Drawing.Icon)resources.GetObject("$Icon");
-			base.Name = "MagnifierMainForm";
-			this.Text = "SimpleMagnifier";
-			base.ResumeLayout(false);
-		}
-
-		private void method_0()
+	private void method_0()
 		{
 			try
 			{

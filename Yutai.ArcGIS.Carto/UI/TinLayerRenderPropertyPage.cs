@@ -9,22 +9,14 @@ using ESRI.ArcGIS.esriSystem;
 
 namespace Yutai.ArcGIS.Carto.UI
 {
-    public class TinLayerRenderPropertyPage : UserControl, ILayerAndStandaloneTablePropertyPage
+    public partial class TinLayerRenderPropertyPage : UserControl, ILayerAndStandaloneTablePropertyPage
     {
         private bool bool_0 = false;
-        private SimpleButton btnAdd;
-        private SimpleButton btnDelete;
-        private CheckedListBox checkedListBox1;
         private IBasicMap ibasicMap_0 = null;
         private IContainer icontainer_0 = null;
         private ITinLayer itinLayer_0 = null;
         private IUserControl iuserControl_0 = null;
-        private Label label1;
         private List<ITinRenderer> list_0 = new List<ITinRenderer>();
-        private Panel panel;
-        private TinColorRampRenderPropertyPage tinColorRampRenderPropertyPage_0;
-        private TinSimpleRenderCtrl tinSimpleRenderCtrl_0;
-        private TinUniqueRenderPropertyPage tinUniqueRenderPropertyPage_0;
 
         public TinLayerRenderPropertyPage()
         {
@@ -134,67 +126,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
-        protected override void Dispose(bool bool_1)
-        {
-            if (bool_1 && (this.icontainer_0 != null))
-            {
-                this.icontainer_0.Dispose();
-            }
-            base.Dispose(bool_1);
-        }
-
-        private void InitializeComponent()
-        {
-            this.checkedListBox1 = new CheckedListBox();
-            this.label1 = new Label();
-            this.btnAdd = new SimpleButton();
-            this.btnDelete = new SimpleButton();
-            this.panel = new Panel();
-            base.SuspendLayout();
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new Point(14, 0x18);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new Size(0x6b, 0x84);
-            this.checkedListBox1.TabIndex = 0;
-            this.checkedListBox1.SelectedIndexChanged += new EventHandler(this.checkedListBox1_SelectedIndexChanged);
-            this.label1.AutoSize = true;
-            this.label1.Location = new Point(14, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(0x1d, 12);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "显示";
-            this.btnAdd.Location = new Point(0x1b, 0xac);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new Size(0x4b, 0x17);
-            this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "添加";
-            this.btnAdd.Click += new EventHandler(this.btnAdd_Click);
-            this.btnDelete.Location = new Point(0x1b, 0xc9);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new Size(0x4b, 0x17);
-            this.btnDelete.TabIndex = 3;
-            this.btnDelete.Text = "删除";
-            this.btnDelete.Click += new EventHandler(this.btnDelete_Click);
-            this.panel.Dock = DockStyle.Right;
-            this.panel.Location = new Point(0x7f, 0);
-            this.panel.Name = "panel";
-            this.panel.Size = new Size(0x191, 0x10c);
-            this.panel.TabIndex = 4;
-            base.AutoScaleDimensions = new SizeF(6f, 12f);
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.Controls.Add(this.panel);
-            base.Controls.Add(this.btnDelete);
-            base.Controls.Add(this.btnAdd);
-            base.Controls.Add(this.label1);
-            base.Controls.Add(this.checkedListBox1);
-            base.Name = "TinLayerRenderPropertyPage";
-            base.Size = new Size(0x210, 0x10c);
-            base.Load += new EventHandler(this.TinLayerRenderPropertyPage_Load);
-            base.ResumeLayout(false);
-            base.PerformLayout();
-        }
-
-        private void method_0(ITinRenderer itinRenderer_0)
+ private void method_0(ITinRenderer itinRenderer_0)
         {
             this.checkedListBox1.Items.Add(new TinRenderWrap(itinRenderer_0, true), itinRenderer_0.Visible);
         }
@@ -236,7 +168,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
-        internal class TinRenderWrap
+        internal partial class TinRenderWrap
         {
             private bool bool_0 = false;
             private ITinRenderer itinRenderer_0 = null;

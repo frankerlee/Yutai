@@ -14,36 +14,15 @@ using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Carto.UI
 {
-    public class RasterClassifiedRenderPage : UserControl, IUserControl
+    public partial class RasterClassifiedRenderPage : UserControl, IUserControl
     {
         private bool bool_0 = false;
-        private ComboBoxEdit cboClassifyMethod;
-        private ComboBoxEdit cboClassifyNum;
-        private StyleComboBox cboColorRamp;
-        private ComboBoxEdit cboNormFields;
-        private ComboBoxEdit cboValueFields;
-        private CheckBox checkBox1;
-        private GroupBox Classifygroup;
-        private ColorEdit colorEdit1;
-        private ColumnHeader columnHeader_0;
-        private ColumnHeader columnHeader_1;
-        private ColumnHeader columnHeader_2;
-        private GroupBox groupBox1;
         private IColorRamp icolorRamp_0 = null;
         private IContainer icontainer_0 = null;
         private IEnumColors ienumColors_0 = null;
         private IRasterClassifyColorRampRenderer irasterClassifyColorRampRenderer_0 = null;
         private IRasterLayer irasterLayer_0 = null;
         private IStyleGallery istyleGallery_0 = null;
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Label label5;
-        private Label label6;
-        private Label lblZFactor;
-        private RenderInfoListView listView1;
-        private TextBox txtZFactor;
 
         public RasterClassifiedRenderPage()
         {
@@ -178,213 +157,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
-        protected override void Dispose(bool bool_1)
-        {
-            if (bool_1 && (this.icontainer_0 != null))
-            {
-                this.icontainer_0.Dispose();
-            }
-            base.Dispose(bool_1);
-        }
-
-        private void InitializeComponent()
-        {
-            this.icontainer_0 = new Container();
-            this.cboColorRamp = new StyleComboBox(this.icontainer_0);
-            this.label2 = new Label();
-            this.colorEdit1 = new ColorEdit();
-            this.label1 = new Label();
-            this.Classifygroup = new GroupBox();
-            this.cboClassifyNum = new ComboBoxEdit();
-            this.cboClassifyMethod = new ComboBoxEdit();
-            this.label4 = new Label();
-            this.label5 = new Label();
-            this.listView1 = new RenderInfoListView();
-            this.columnHeader_0 = new ColumnHeader();
-            this.columnHeader_1 = new ColumnHeader();
-            this.columnHeader_2 = new ColumnHeader();
-            this.groupBox1 = new GroupBox();
-            this.cboNormFields = new ComboBoxEdit();
-            this.cboValueFields = new ComboBoxEdit();
-            this.label3 = new Label();
-            this.label6 = new Label();
-            this.checkBox1 = new CheckBox();
-            this.txtZFactor = new TextBox();
-            this.lblZFactor = new Label();
-            this.colorEdit1.Properties.BeginInit();
-            this.Classifygroup.SuspendLayout();
-            this.cboClassifyNum.Properties.BeginInit();
-            this.cboClassifyMethod.Properties.BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.cboNormFields.Properties.BeginInit();
-            this.cboValueFields.Properties.BeginInit();
-            base.SuspendLayout();
-            this.cboColorRamp.DrawMode = DrawMode.OwnerDrawVariable;
-            this.cboColorRamp.DropDownStyle = ComboBoxStyle.DropDownList;
-            this.cboColorRamp.DropDownWidth = 160;
-            this.cboColorRamp.Location = new Point(0x62, 0x65);
-            this.cboColorRamp.Name = "cboColorRamp";
-            this.cboColorRamp.Size = new Size(0x90, 0x16);
-            this.cboColorRamp.TabIndex = 7;
-            this.cboColorRamp.SelectedIndexChanged += new EventHandler(this.cboColorRamp_SelectedIndexChanged);
-            this.label2.AutoSize = true;
-            this.label2.Location = new Point(14, 0x69);
-            this.label2.Name = "label2";
-            this.label2.Size = new Size(0x35, 12);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "颜色方案";
-            this.colorEdit1.EditValue = Color.Empty;
-            this.colorEdit1.Location = new Point(0x149, 0xf9);
-            this.colorEdit1.Name = "colorEdit1";
-            this.colorEdit1.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.colorEdit1.Size = new Size(0x30, 0x15);
-            this.colorEdit1.TabIndex = 0x2e;
-            this.colorEdit1.EditValueChanged += new EventHandler(this.colorEdit1_EditValueChanged);
-            this.label1.AutoSize = true;
-            this.label1.Location = new Point(0xf6, 0xfe);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(0x4d, 12);
-            this.label1.TabIndex = 0x2d;
-            this.label1.Text = "空值显示颜色";
-            this.Classifygroup.Controls.Add(this.cboClassifyNum);
-            this.Classifygroup.Controls.Add(this.cboClassifyMethod);
-            this.Classifygroup.Controls.Add(this.label4);
-            this.Classifygroup.Controls.Add(this.label5);
-            this.Classifygroup.Location = new Point(210, 5);
-            this.Classifygroup.Name = "Classifygroup";
-            this.Classifygroup.Size = new Size(0xa7, 0x58);
-            this.Classifygroup.TabIndex = 0x31;
-            this.Classifygroup.TabStop = false;
-            this.Classifygroup.Text = "分类";
-            this.cboClassifyNum.EditValue = "";
-            this.cboClassifyNum.Location = new Point(0x43, 0x38);
-            this.cboClassifyNum.Name = "cboClassifyNum";
-            this.cboClassifyNum.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.cboClassifyNum.Properties.Items.AddRange(new object[] { 
-                "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", 
-                "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32"
-             });
-            this.cboClassifyNum.Size = new Size(0x5c, 0x15);
-            this.cboClassifyNum.TabIndex = 0x31;
-            this.cboClassifyNum.SelectedIndexChanged += new EventHandler(this.cboClassifyNum_SelectedIndexChanged);
-            this.cboClassifyMethod.EditValue = "";
-            this.cboClassifyMethod.Location = new Point(0x43, 0x18);
-            this.cboClassifyMethod.Name = "cboClassifyMethod";
-            this.cboClassifyMethod.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.cboClassifyMethod.Properties.Items.AddRange(new object[] { "等间隔", "分位数", "自然间隔" });
-            this.cboClassifyMethod.Size = new Size(0x5c, 0x15);
-            this.cboClassifyMethod.TabIndex = 0x30;
-            this.cboClassifyMethod.SelectedIndexChanged += new EventHandler(this.cboClassifyMethod_SelectedIndexChanged);
-            this.label4.AutoSize = true;
-            this.label4.Location = new Point(8, 0x38);
-            this.label4.Name = "label4";
-            this.label4.Size = new Size(0x11, 12);
-            this.label4.TabIndex = 0x27;
-            this.label4.Text = "类";
-            this.label5.AutoSize = true;
-            this.label5.Location = new Point(8, 0x18);
-            this.label5.Name = "label5";
-            this.label5.Size = new Size(0x35, 12);
-            this.label5.TabIndex = 0x26;
-            this.label5.Text = "分类方法";
-            this.listView1.Columns.AddRange(new ColumnHeader[] { this.columnHeader_0, this.columnHeader_1, this.columnHeader_2 });
-            this.listView1.FullRowSelect = true;
-            this.listView1.Location = new Point(0x10, 130);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new Size(0x169, 0x6d);
-            this.listView1.TabIndex = 0x30;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = View.Details;
-            this.columnHeader_0.Text = "符号";
-            this.columnHeader_1.Text = "范围";
-            this.columnHeader_1.Width = 0x61;
-            this.columnHeader_2.Text = "标注";
-            this.columnHeader_2.Width = 150;
-            this.groupBox1.Controls.Add(this.cboNormFields);
-            this.groupBox1.Controls.Add(this.cboValueFields);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Location = new Point(10, 2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new Size(0xc2, 0x58);
-            this.groupBox1.TabIndex = 0x2f;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "字段";
-            this.cboNormFields.EditValue = "";
-            this.cboNormFields.Location = new Point(0x4e, 0x38);
-            this.cboNormFields.Name = "cboNormFields";
-            this.cboNormFields.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.cboNormFields.Size = new Size(0x68, 0x15);
-            this.cboNormFields.TabIndex = 0x2e;
-            this.cboNormFields.SelectedIndexChanged += new EventHandler(this.cboNormFields_SelectedIndexChanged);
-            this.cboValueFields.EditValue = "";
-            this.cboValueFields.Location = new Point(0x4e, 0x18);
-            this.cboValueFields.Name = "cboValueFields";
-            this.cboValueFields.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.cboValueFields.Size = new Size(0x68, 0x15);
-            this.cboValueFields.TabIndex = 0x2d;
-            this.cboValueFields.SelectedIndexChanged += new EventHandler(this.cboValueFields_SelectedIndexChanged);
-            this.label3.AutoSize = true;
-            this.label3.Location = new Point(8, 0x38);
-            this.label3.Name = "label3";
-            this.label3.Size = new Size(0x41, 12);
-            this.label3.TabIndex = 0x27;
-            this.label3.Text = "正则化字段";
-            this.label6.AutoSize = true;
-            this.label6.Location = new Point(8, 0x18);
-            this.label6.Name = "label6";
-            this.label6.Size = new Size(0x29, 12);
-            this.label6.TabIndex = 0x26;
-            this.label6.Text = "值字段";
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new Point(20, 250);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new Size(0x48, 0x10);
-            this.checkBox1.TabIndex = 50;
-            this.checkBox1.Text = "使用山影";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new EventHandler(this.checkBox1_CheckedChanged);
-            this.txtZFactor.Location = new Point(0x9d, 0xf8);
-            this.txtZFactor.Name = "txtZFactor";
-            this.txtZFactor.Size = new Size(0x4e, 0x15);
-            this.txtZFactor.TabIndex = 0x33;
-            this.txtZFactor.Text = "1";
-            this.txtZFactor.TextChanged += new EventHandler(this.txtZFactor_TextChanged);
-            this.lblZFactor.AutoSize = true;
-            this.lblZFactor.Location = new Point(0x74, 0xfc);
-            this.lblZFactor.Name = "lblZFactor";
-            this.lblZFactor.Size = new Size(0x23, 12);
-            this.lblZFactor.TabIndex = 0x34;
-            this.lblZFactor.Text = "Z因子";
-            base.AutoScaleDimensions = new SizeF(6f, 12f);
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.Controls.Add(this.lblZFactor);
-            base.Controls.Add(this.txtZFactor);
-            base.Controls.Add(this.checkBox1);
-            base.Controls.Add(this.Classifygroup);
-            base.Controls.Add(this.listView1);
-            base.Controls.Add(this.groupBox1);
-            base.Controls.Add(this.colorEdit1);
-            base.Controls.Add(this.label1);
-            base.Controls.Add(this.cboColorRamp);
-            base.Controls.Add(this.label2);
-            base.Name = "RasterClassifiedRenderPage";
-            base.Size = new Size(0x19d, 0x131);
-            base.Load += new EventHandler(this.RasterClassifiedRenderPage_Load);
-            this.colorEdit1.Properties.EndInit();
-            this.Classifygroup.ResumeLayout(false);
-            this.Classifygroup.PerformLayout();
-            this.cboClassifyNum.Properties.EndInit();
-            this.cboClassifyMethod.Properties.EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.cboNormFields.Properties.EndInit();
-            this.cboValueFields.Properties.EndInit();
-            base.ResumeLayout(false);
-            base.PerformLayout();
-        }
-
-        private object method_0(UID uid_0)
+ private object method_0(UID uid_0)
         {
             if (uid_0 == null)
             {
@@ -644,11 +417,11 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void method_6(uint uint_0, out int int_0, out int int_1, out int int_2)
         {
-            uint num = uint_0 & 0xff0000;
-             int_2 = (int) (num >> 0x10);
-            num = uint_0 & 0xff00;
+            uint num = uint_0 & 16711680;
+             int_2 = (int) (num >> 16);
+            num = uint_0 & 65280;
             int_1 = (int) (num >> 8);
-            num = uint_0 & 0xff;
+            num = uint_0 & 255;
             int_0 = (int) num;
         }
 
@@ -699,12 +472,12 @@ namespace Yutai.ArcGIS.Carto.UI
                     IRandomColorRamp ramp = new RandomColorRampClass {
                         StartHue = 40,
                         EndHue = 120,
-                        MinValue = 0x41,
+                        MinValue = 65,
                         MaxValue = 90,
-                        MinSaturation = 0x19,
-                        MaxSaturation = 0x2d,
+                        MinSaturation = 25,
+                        MaxSaturation = 45,
                         Size = 5,
-                        Seed = 0x17
+                        Seed = 23
                     };
                     this.icolorRamp_0 = ramp;
                 }

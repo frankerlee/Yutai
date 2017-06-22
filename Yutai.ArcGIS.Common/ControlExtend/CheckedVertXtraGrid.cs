@@ -341,7 +341,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             this.gridColumn_0.OptionsFilter.AllowFilter = false;
             this.gridColumn_0.Visible = true;
             this.gridColumn_0.VisibleIndex = 0;
-            this.gridColumn_0.Width = 0x22;
+            this.gridColumn_0.Width = 34;
             if ((this.string_1 == null) || (this.string_1.Trim() == ""))
             {
                 this.string_1 = "字段";
@@ -370,7 +370,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             this.gridColumn_2.OptionsFilter.AllowFilter = false;
             this.gridColumn_2.Visible = true;
             this.gridColumn_2.VisibleIndex = 2;
-            this.gridColumn_2.Width = 0xea;
+            this.gridColumn_2.Width = 234;
         }
 
         public void RefreshDataSource()

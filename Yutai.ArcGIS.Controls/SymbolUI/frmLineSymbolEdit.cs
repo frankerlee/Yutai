@@ -18,13 +18,11 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
     /// 线符号编辑窗体
     /// </summary>
     [Guid("8FB4B208-6846-4144-A4DA-52650462479E")]
-    public class frmLineSymbolEdit : Form
+    public partial class frmLineSymbolEdit : Form
     {
         private double[] point_unit_to = new double[] { 1, 0.01388889, 0.0352777778, 0.352777778 };
 
-        private ISymbol m_pOldSymbol;
 
-        private IMultiLayerLineSymbol m_pMultiLineSymbol;
 
         private bool m_CanDo = true;
 
@@ -42,60 +40,34 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         private ILineSymbol m_CopySymbol = null;
 
-        private Label label1;
 
-        private Label label2;
 
-        private GroupBox groupBox2;
 
-        private SymbolItem symbolItem1;
 
-        private GroupBox groupBox3;
 
-        private SymbolListBox symbolListBox1;
 
-        private RadioButton rdoLine;
 
-        private GroupBox rdoPline1;
 
-        private TabControl tabControl1;
 
-        private RadioButton rdoPline;
 
-        private SimpleButton btnPaste;
 
-        private SimpleButton btnCopy;
 
-        private SimpleButton tnMoveDown;
 
-        private SimpleButton btnMoveUp;
 
-        private SimpleButton btnDeleteLayer;
 
-        private SimpleButton btnAddLayer;
 
-        private ComboBoxEdit cboScale;
 
-        private SimpleButton btnOnt2One;
 
-        private SimpleButton btnFixZoomOut;
 
-        private SimpleButton btnFixZoomIn;
 
-        private ComboBoxEdit cboUnit;
 
-        private ComboBoxEdit cboLineType;
 
-        private SimpleButton btnCancel;
 
-        private SimpleButton btnOK;
 
-        private XtraTabControl xtraTabControl1;
 
         /// <summary>
         /// 必需的设计器变量。
         /// </summary>
-        private Container components = null;
 
         public frmLineSymbolEdit()
         {
@@ -312,19 +284,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         /// <summary>
         /// 清理所有正在使用的资源。
         /// </summary>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                if (this.components != null)
-                {
-                    this.components.Dispose();
-                }
-            }
-            base.Dispose(disposing);
-        }
-
-        private void frmLineSymbolEdit_Load(object sender, EventArgs e)
+ private void frmLineSymbolEdit_Load(object sender, EventArgs e)
         {
             this.m_CanDo = false;
             this.cboUnit.SelectedIndex = 0;
@@ -369,260 +329,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         /// 设计器支持所需的方法 - 不要使用代码编辑器修改
         /// 此方法的内容。
         /// </summary>
-        private void InitializeComponent()
-        {
-            ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmLineSymbolEdit));
-            this.rdoPline1 = new GroupBox();
-            this.xtraTabControl1 = new XtraTabControl();
-            this.cboUnit = new ComboBoxEdit();
-            this.cboLineType = new ComboBoxEdit();
-            this.tabControl1 = new TabControl();
-            this.label2 = new Label();
-            this.label1 = new Label();
-            this.groupBox2 = new GroupBox();
-            this.cboScale = new ComboBoxEdit();
-            this.btnOnt2One = new SimpleButton();
-            this.btnFixZoomOut = new SimpleButton();
-            this.btnFixZoomIn = new SimpleButton();
-            this.rdoPline = new RadioButton();
-            this.rdoLine = new RadioButton();
-            this.symbolItem1 = new SymbolItem();
-            this.groupBox3 = new GroupBox();
-            this.btnPaste = new SimpleButton();
-            this.btnCopy = new SimpleButton();
-            this.tnMoveDown = new SimpleButton();
-            this.btnMoveUp = new SimpleButton();
-            this.btnDeleteLayer = new SimpleButton();
-            this.btnAddLayer = new SimpleButton();
-            this.symbolListBox1 = new SymbolListBox();
-            this.btnCancel = new SimpleButton();
-            this.btnOK = new SimpleButton();
-            this.rdoPline1.SuspendLayout();
-            ((ISupportInitialize)this.xtraTabControl1).BeginInit();
-            ((ISupportInitialize)this.cboUnit.Properties).BeginInit();
-            ((ISupportInitialize)this.cboLineType.Properties).BeginInit();
-            this.groupBox2.SuspendLayout();
-            ((ISupportInitialize)this.cboScale.Properties).BeginInit();
-            this.groupBox3.SuspendLayout();
-            base.SuspendLayout();
-            this.rdoPline1.Controls.Add(this.xtraTabControl1);
-            this.rdoPline1.Controls.Add(this.cboUnit);
-            this.rdoPline1.Controls.Add(this.cboLineType);
-            this.rdoPline1.Controls.Add(this.tabControl1);
-            this.rdoPline1.Controls.Add(this.label2);
-            this.rdoPline1.Controls.Add(this.label1);
-            this.rdoPline1.Location = new Point(192, 8);
-            this.rdoPline1.Name = "rdoPline1";
-            this.rdoPline1.Size = new Size(464, 400);
-            this.rdoPline1.TabIndex = 0;
-            this.rdoPline1.TabStop = false;
-            this.rdoPline1.Text = "属性";
-            this.xtraTabControl1.Location = new Point(16, 56);
-            this.xtraTabControl1.Name = "xtraTabControl1";
-            this.xtraTabControl1.Size = new Size(432, 328);
-            this.xtraTabControl1.TabIndex = 13;
-            this.xtraTabControl1.Text = "xtraTabControl1";
-            this.cboUnit.EditValue = "";
-            this.cboUnit.Location = new Point(240, 24);
-            this.cboUnit.Name = "cboUnit";
-            EditorButtonCollection buttons = this.cboUnit.Properties.Buttons;
-            EditorButton[] editorButton = new EditorButton[] { new EditorButton(ButtonPredefines.Combo) };
-            buttons.AddRange(editorButton);
-            ComboBoxItemCollection items = this.cboUnit.Properties.Items;
-            object[] objArray = new object[] { "点", "英寸", "厘米", "毫米" };
-            items.AddRange(objArray);
-            this.cboUnit.Size = new Size(152, 21);
-            this.cboUnit.TabIndex = 12;
-            this.cboUnit.SelectedIndexChanged += new EventHandler(this.cboUnit_SelectedIndexChanged);
-            this.cboLineType.EditValue = "";
-            this.cboLineType.Location = new Point(56, 24);
-            this.cboLineType.Name = "cboLineType";
-            EditorButtonCollection editorButtonCollection = this.cboLineType.Properties.Buttons;
-            editorButton = new EditorButton[] { new EditorButton(ButtonPredefines.Combo) };
-            editorButtonCollection.AddRange(editorButton);
-            ComboBoxItemCollection comboBoxItemCollection = this.cboLineType.Properties.Items;
-            objArray = new object[] { "简单线符号", "制图线符号", "标记线符号", "碎切线符号", "图片线符号", "3D简单线", "3D纹理线" };
-            comboBoxItemCollection.AddRange(objArray);
-            this.cboLineType.Size = new Size(144, 21);
-            this.cboLineType.TabIndex = 11;
-            this.cboLineType.SelectedIndexChanged += new EventHandler(this.cboLineType_SelectedIndexChanged);
-            this.tabControl1.Location = new Point(288, 344);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new Size(160, 40);
-            this.tabControl1.TabIndex = 6;
-            this.label2.AutoSize = true;
-            this.label2.Location = new Point(208, 26);
-            this.label2.Name = "label2";
-            this.label2.Size = new Size(29, 12);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "单位";
-            this.label1.AutoSize = true;
-            this.label1.Location = new Point(16, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(29, 12);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "类型";
-            this.groupBox2.Controls.Add(this.cboScale);
-            this.groupBox2.Controls.Add(this.btnOnt2One);
-            this.groupBox2.Controls.Add(this.btnFixZoomOut);
-            this.groupBox2.Controls.Add(this.btnFixZoomIn);
-            this.groupBox2.Controls.Add(this.rdoPline);
-            this.groupBox2.Controls.Add(this.rdoLine);
-            this.groupBox2.Controls.Add(this.symbolItem1);
-            this.groupBox2.Location = new Point(8, 8);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new Size(168, 192);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "预览";
-            this.cboScale.EditValue = "";
-            this.cboScale.Location = new Point(92, 160);
-            this.cboScale.Name = "cboScale";
-            EditorButtonCollection buttons1 = this.cboScale.Properties.Buttons;
-            editorButton = new EditorButton[] { new EditorButton(ButtonPredefines.Combo) };
-            buttons1.AddRange(editorButton);
-            ComboBoxItemCollection items1 = this.cboScale.Properties.Items;
-            objArray = new object[] { "400%", "200%", "100%", "75%", "50%" };
-            items1.AddRange(objArray);
-            this.cboScale.Size = new Size(72, 21);
-            this.cboScale.TabIndex = 28;
-            this.cboScale.SelectedIndexChanged += new EventHandler(this.cboScale_SelectedIndexChanged);
-            this.btnOnt2One.Image = (Image)componentResourceManager.GetObject("btnOnt2One.Image");
-            this.btnOnt2One.Location = new Point(60, 160);
-            this.btnOnt2One.Name = "btnOnt2One";
-            this.btnOnt2One.Size = new Size(22, 22);
-            this.btnOnt2One.TabIndex = 27;
-            this.btnOnt2One.Click += new EventHandler(this.btnOnt2One_Click);
-            this.btnFixZoomOut.Image = (Image)componentResourceManager.GetObject("btnFixZoomOut.Image");
-            this.btnFixZoomOut.Location = new Point(34, 160);
-            this.btnFixZoomOut.Name = "btnFixZoomOut";
-            this.btnFixZoomOut.Size = new Size(22, 22);
-            this.btnFixZoomOut.TabIndex = 26;
-            this.btnFixZoomOut.Click += new EventHandler(this.btnFixZoomOut_Click);
-            this.btnFixZoomIn.Image = (Image)componentResourceManager.GetObject("btnFixZoomIn.Image");
-            this.btnFixZoomIn.Location = new Point(4, 160);
-            this.btnFixZoomIn.Name = "btnFixZoomIn";
-            this.btnFixZoomIn.Size = new Size(22, 22);
-            this.btnFixZoomIn.TabIndex = 25;
-            this.btnFixZoomIn.Click += new EventHandler(this.btnFixZoomIn_Click);
-            this.rdoPline.Image = (Image)componentResourceManager.GetObject("rdoPline.Image");
-            this.rdoPline.Location = new Point(56, 136);
-            this.rdoPline.Name = "rdoPline";
-            this.rdoPline.Size = new Size(32, 16);
-            this.rdoPline.TabIndex = 18;
-            this.rdoPline.Click += new EventHandler(this.rdoPline_Click);
-            this.rdoLine.Image = (Image)componentResourceManager.GetObject("rdoLine.Image");
-            this.rdoLine.Location = new Point(8, 136);
-            this.rdoLine.Name = "rdoLine";
-            this.rdoLine.Size = new Size(32, 16);
-            this.rdoLine.TabIndex = 17;
-            this.rdoLine.Click += new EventHandler(this.rdoLine_Click);
-            this.symbolItem1.BackColor = SystemColors.ControlLight;
-            this.symbolItem1.Location = new Point(16, 32);
-            this.symbolItem1.Name = "symbolItem1";
-            this.symbolItem1.Size = new Size(128, 88);
-            this.symbolItem1.Symbol = null;
-            this.symbolItem1.TabIndex = 1;
-            this.groupBox3.Controls.Add(this.btnPaste);
-            this.groupBox3.Controls.Add(this.btnCopy);
-            this.groupBox3.Controls.Add(this.tnMoveDown);
-            this.groupBox3.Controls.Add(this.btnMoveUp);
-            this.groupBox3.Controls.Add(this.btnDeleteLayer);
-            this.groupBox3.Controls.Add(this.btnAddLayer);
-            this.groupBox3.Controls.Add(this.symbolListBox1);
-            this.groupBox3.Location = new Point(16, 208);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new Size(160, 232);
-            this.groupBox3.TabIndex = 6;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "图层";
-            this.btnPaste.Image = (Image)componentResourceManager.GetObject("btnPaste.Image");
-            this.btnPaste.Location = new Point(40, 200);
-            this.btnPaste.Name = "btnPaste";
-            this.btnPaste.Size = new Size(24, 24);
-            this.btnPaste.TabIndex = 23;
-            this.btnPaste.Click += new EventHandler(this.btnPaste_Click);
-            this.btnCopy.Image = (Image)componentResourceManager.GetObject("btnCopy.Image");
-            this.btnCopy.Location = new Point(8, 200);
-            this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new Size(24, 24);
-            this.btnCopy.TabIndex = 22;
-            this.btnCopy.Click += new EventHandler(this.btnCopy_Click);
-            this.tnMoveDown.Image = (Image)componentResourceManager.GetObject("tnMoveDown.Image");
-            this.tnMoveDown.Location = new Point(104, 168);
-            this.tnMoveDown.Name = "tnMoveDown";
-            this.tnMoveDown.Size = new Size(24, 24);
-            this.tnMoveDown.TabIndex = 21;
-            this.tnMoveDown.Click += new EventHandler(this.tnMoveDown_Click);
-            this.btnMoveUp.Image = (Image)componentResourceManager.GetObject("btnMoveUp.Image");
-            this.btnMoveUp.Location = new Point(72, 168);
-            this.btnMoveUp.Name = "btnMoveUp";
-            this.btnMoveUp.Size = new Size(24, 24);
-            this.btnMoveUp.TabIndex = 20;
-            this.btnMoveUp.Click += new EventHandler(this.btnMoveUp_Click);
-            this.btnDeleteLayer.Image = (Image)componentResourceManager.GetObject("btnDeleteLayer.Image");
-            this.btnDeleteLayer.Location = new Point(40, 168);
-            this.btnDeleteLayer.Name = "btnDeleteLayer";
-            this.btnDeleteLayer.Size = new Size(24, 24);
-            this.btnDeleteLayer.TabIndex = 19;
-            this.btnDeleteLayer.Click += new EventHandler(this.btnDeleteLayer_Click);
-            this.btnAddLayer.Image = (Image)componentResourceManager.GetObject("btnAddLayer.Image");
-            this.btnAddLayer.Location = new Point(8, 168);
-            this.btnAddLayer.Name = "btnAddLayer";
-            this.btnAddLayer.Size = new Size(24, 24);
-            this.btnAddLayer.TabIndex = 18;
-            this.btnAddLayer.Click += new EventHandler(this.btnAddLayer_Click);
-            this.symbolListBox1.DrawMode = DrawMode.OwnerDrawVariable;
-            this.symbolListBox1.Location = new Point(8, 24);
-            this.symbolListBox1.Name = "symbolListBox1";
-            this.symbolListBox1.Size = new Size(144, 136);
-            this.symbolListBox1.TabIndex = 5;
-            this.symbolListBox1.LayerVisibleChanged += new LayerVisibleChangedHandler(this.symbolListBox1_LayerVisibleChanged);
-            this.symbolListBox1.LayerColorLockedChanged += new LayerColorLockedChangedHandler(this.symbolListBox1_LayerColorLockedChanged);
-            this.symbolListBox1.SelectedIndexChanged += new EventHandler(this.symbolListBox1_SelectedIndexChanged);
-            this.btnCancel.DialogResult = DialogResult.Cancel;
-            this.btnCancel.Location = new Point(584, 416);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new Size(56, 24);
-            this.btnCancel.TabIndex = 13;
-            this.btnCancel.Text = "取消";
-            this.btnCancel.Click += new EventHandler(this.btnCancel_Click);
-            this.btnOK.DialogResult = DialogResult.OK;
-            this.btnOK.Location = new Point(504, 416);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new Size(56, 24);
-            this.btnOK.TabIndex = 12;
-            this.btnOK.Text = "确定";
-            this.btnOK.Click += new EventHandler(this.btnOK_Click);
-            this.AutoScaleBaseSize = new Size(6, 14);
-            base.ClientSize = new Size(666, 447);
-            base.Controls.Add(this.btnCancel);
-            base.Controls.Add(this.btnOK);
-            base.Controls.Add(this.groupBox3);
-            base.Controls.Add(this.groupBox2);
-            base.Controls.Add(this.rdoPline1);
-            base.FormBorderStyle = FormBorderStyle.FixedSingle;
-           
-            base.MaximizeBox = false;
-            base.MinimizeBox = false;
-            base.Name = "frmLineSymbolEdit";
-            base.ShowInTaskbar = false;
-            base.StartPosition = FormStartPosition.CenterParent;
-            this.Text = "线符号编辑器";
-            base.Load += new EventHandler(this.frmLineSymbolEdit_Load);
-            this.rdoPline1.ResumeLayout(false);
-            this.rdoPline1.PerformLayout();
-            ((ISupportInitialize)this.xtraTabControl1).EndInit();
-            ((ISupportInitialize)this.cboUnit.Properties).EndInit();
-            ((ISupportInitialize)this.cboLineType.Properties).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            ((ISupportInitialize)this.cboScale.Properties).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            base.ResumeLayout(false);
-        }
-
-        private void rdoLine_Click(object sender, EventArgs e)
+ private void rdoLine_Click(object sender, EventArgs e)
         {
             if (this.rdoLine.Checked)
             {

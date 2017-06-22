@@ -7,13 +7,10 @@ using Yutai.ArcGIS.Common.BaseClasses;
 
 namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 {
-    public class TableCellSetPage : UserControl, IPropertyPage, IPropertyPageEvents
+    public partial class TableCellSetPage : UserControl, IPropertyPage, IPropertyPageEvents
     {
         private bool bool_0 = false;
-        private Button btnSetCell;
         private IContainer icontainer_0 = null;
-        private ListView listView1;
-        private MapTemplateElement mapTemplateElement_0;
         private SortedList<int, SortedList<int, string>> sortedList_0 = new SortedList<int, SortedList<int, string>>();
 
         public event OnValueChangeEventHandler OnValueChange;
@@ -73,16 +70,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         {
         }
 
-        protected override void Dispose(bool bool_1)
-        {
-            if (bool_1 && (this.icontainer_0 != null))
-            {
-                this.icontainer_0.Dispose();
-            }
-            base.Dispose(bool_1);
-        }
-
-        public void Init()
+ public void Init()
         {
             int num3;
             MapTemplateTableElement element = this.mapTemplateElement_0 as MapTemplateTableElement;
@@ -116,41 +104,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
-        private void InitializeComponent()
-        {
-            this.listView1 = new ListView();
-            this.btnSetCell = new Button();
-            base.SuspendLayout();
-            this.listView1.Location = new Point(13, 0x2e);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new Size(0x128, 0xb5);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = View.Details;
-            this.btnSetCell.Location = new Point(0x7a, 0xfb);
-            this.btnSetCell.Name = "btnSetCell";
-            this.btnSetCell.Size = new Size(0x56, 0x17);
-            this.btnSetCell.TabIndex = 1;
-            this.btnSetCell.Text = "设置单元格";
-            this.btnSetCell.UseVisualStyleBackColor = true;
-            this.btnSetCell.Click += new EventHandler(this.btnSetCell_Click);
-            base.AutoScaleDimensions = new SizeF(6f, 12f);
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.Controls.Add(this.btnSetCell);
-            base.Controls.Add(this.listView1);
-            base.Name = "TableCellSetPage";
-            base.Size = new Size(0x147, 0x12d);
-            base.Load += new EventHandler(this.TableCellSetPage_Load);
-            base.VisibleChanged += new EventHandler(this.TableCellSetPage_VisibleChanged);
-            base.ResumeLayout(false);
-        }
-
-        void IPropertyPage.Hide()
-        {
-            base.Hide();
-        }
-
-        private void method_0(int int_0, int int_1, string string_0)
+ private void method_0(int int_0, int int_1, string string_0)
         {
             SortedList<int, string> list;
             if (this.sortedList_0.ContainsKey(int_0))

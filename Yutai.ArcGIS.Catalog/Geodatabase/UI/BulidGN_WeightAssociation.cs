@@ -9,21 +9,14 @@ using ESRI.ArcGIS.Geodatabase;
 
 namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 {
-    public class BulidGN_WeightAssociation : UserControl
+    public partial class BulidGN_WeightAssociation : UserControl
     {
         private bool bool_0 = false;
         private bool bool_1 = false;
-        private ColumnHeader columnHeader_0;
-        private ColumnHeader columnHeader_1;
-        private System.Windows.Forms.ComboBox comboBox_0;
-        private ComboBoxEdit comboBoxEdit;
         private Container container_0 = null;
         private IList ilist_0 = new ArrayList();
         private int int_0 = 0;
         private int int_1 = 0;
-        private Label label1;
-        private Label label2;
-        private ListView listView1;
         private ListViewItem listViewItem_0 = null;
 
         public BulidGN_WeightAssociation()
@@ -112,16 +105,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
-        protected override void Dispose(bool bool_2)
-        {
-            if (bool_2 && (this.container_0 != null))
-            {
-                this.container_0.Dispose();
-            }
-            base.Dispose(bool_2);
-        }
-
-        public void Init()
+ public void Init()
         {
             for (int i = 0; i < BulidGeometryNetworkHelper.BulidGNHelper.Weights.Count; i++)
             {
@@ -148,62 +132,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             BulidGeometryNetworkHelper.BulidGNHelper.WeightAssociations.Clear();
         }
 
-        private void InitializeComponent()
-        {
-            this.label1 = new Label();
-            this.comboBoxEdit = new ComboBoxEdit();
-            this.listView1 = new ListView();
-            this.columnHeader_0 = new ColumnHeader();
-            this.columnHeader_1 = new ColumnHeader();
-            this.label2 = new Label();
-            this.comboBoxEdit.Properties.BeginInit();
-            base.SuspendLayout();
-            this.label1.AutoSize = true;
-            this.label1.Location = new Point(8, 0x10);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(0x36, 0x11);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "网络权重";
-            this.comboBoxEdit.EditValue = "";
-            this.comboBoxEdit.Location = new Point(0x10, 40);
-            this.comboBoxEdit.Name = "comboBoxEdit";
-            this.comboBoxEdit.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.comboBoxEdit.Size = new Size(240, 0x17);
-            this.comboBoxEdit.TabIndex = 1;
-            this.comboBoxEdit.SelectedIndexChanged += new EventHandler(this.comboBoxEdit_SelectedIndexChanged);
-            this.listView1.Columns.AddRange(new ColumnHeader[] { this.columnHeader_0, this.columnHeader_1 });
-            this.listView1.FullRowSelect = true;
-            this.listView1.GridLines = true;
-            this.listView1.Location = new Point(0x18, 0x68);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new Size(240, 0x68);
-            this.listView1.TabIndex = 2;
-            this.listView1.View = View.Details;
-            this.listView1.MouseDown += new MouseEventHandler(this.listView1_MouseDown);
-            this.listView1.DoubleClick += new EventHandler(this.listView1_DoubleClick);
-            this.listView1.SelectedIndexChanged += new EventHandler(this.listView1_SelectedIndexChanged);
-            this.columnHeader_0.Text = "要素类";
-            this.columnHeader_0.Width = 0x66;
-            this.columnHeader_1.Text = "字段";
-            this.columnHeader_1.Width = 0x7a;
-            this.label2.AutoSize = true;
-            this.label2.Location = new Point(0x10, 0x48);
-            this.label2.Name = "label2";
-            this.label2.Size = new Size(0x99, 0x11);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "权重和要素类字段关联设置";
-            base.Controls.Add(this.label2);
-            base.Controls.Add(this.listView1);
-            base.Controls.Add(this.comboBoxEdit);
-            base.Controls.Add(this.label1);
-            base.Name = "BulidGN_WeightAssociation";
-            base.Size = new Size(0x130, 0xe8);
-            base.Load += new EventHandler(this.BulidGN_WeightAssociation_Load);
-            this.comboBoxEdit.Properties.EndInit();
-            base.ResumeLayout(false);
-        }
-
-        private void listView1_DoubleClick(object sender, EventArgs e)
+ private void listView1_DoubleClick(object sender, EventArgs e)
         {
             if (this.listView1.SelectedItems.Count == 1)
             {

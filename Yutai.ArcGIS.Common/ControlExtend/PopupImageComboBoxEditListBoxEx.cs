@@ -12,7 +12,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
     [ToolboxItem(false)]
     internal class PopupImageComboBoxEditListBoxEx : PopupImageComboBoxEditListBox
     {
-        private const int DegreeIndent = 0x10;
+        private const int DegreeIndent = 16;
         private const int TextGlyphIndent = 4;
 
         public PopupImageComboBoxEditListBoxEx(PopupListBoxForm popupListBoxForm_0) : base(popupListBoxForm_0)
@@ -28,7 +28,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
                 Brush foreBrush = null;
                 ImageComboBoxItemEx item = listBoxDrawItemEventArgs_0.Item as ImageComboBoxItemEx;
                 Rectangle bounds = Rectangle.Inflate(listBoxDrawItemEventArgs_0.Bounds, -2, -1);
-                bounds.X += item.Degree * 0x10;
+                bounds.X += item.Degree * 16;
                 Rectangle empty = Rectangle.Empty;
                 ImageList images = this.Images as ImageList;
                 if ((images != null) && !images.ImageSize.IsEmpty)

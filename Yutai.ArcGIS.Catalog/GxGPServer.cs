@@ -296,14 +296,14 @@ namespace Yutai.ArcGIS.Catalog
                 {
                     if (this.Status == "Stopped")
                     {
-                        return ImageLib.GetSmallImage(0x54);
+                        return ImageLib.GetSmallImage(84);
                     }
                     if (this.Status == "Paused")
                     {
-                        return ImageLib.GetSmallImage(0x55);
+                        return ImageLib.GetSmallImage(85);
                     }
                 }
-                return ImageLib.GetSmallImage(0x53);
+                return ImageLib.GetSmallImage(83);
             }
         }
 
@@ -315,14 +315,14 @@ namespace Yutai.ArcGIS.Catalog
                 {
                     if (this.Status == "Stopped")
                     {
-                        return ImageLib.GetSmallImage(0x54);
+                        return ImageLib.GetSmallImage(84);
                     }
                     if (this.Status == "Paused")
                     {
-                        return ImageLib.GetSmallImage(0x55);
+                        return ImageLib.GetSmallImage(85);
                     }
                 }
-                return ImageLib.GetSmallImage(0x53);
+                return ImageLib.GetSmallImage(83);
             }
         }
 
@@ -387,14 +387,14 @@ namespace Yutai.ArcGIS.Catalog
                 {
                     if (this.Status == "Stopped")
                     {
-                        return ImageLib.GetSmallImage(0x54);
+                        return ImageLib.GetSmallImage(84);
                     }
                     if (this.Status == "Paused")
                     {
-                        return ImageLib.GetSmallImage(0x55);
+                        return ImageLib.GetSmallImage(85);
                     }
                 }
-                return ImageLib.GetSmallImage(0x53);
+                return ImageLib.GetSmallImage(83);
             }
         }
 
@@ -406,14 +406,14 @@ namespace Yutai.ArcGIS.Catalog
                 {
                     if (this.Status == "Stopped")
                     {
-                        return ImageLib.GetSmallImage(0x54);
+                        return ImageLib.GetSmallImage(84);
                     }
                     if (this.Status == "Paused")
                     {
-                        return ImageLib.GetSmallImage(0x55);
+                        return ImageLib.GetSmallImage(85);
                     }
                 }
-                return ImageLib.GetSmallImage(0x53);
+                return ImageLib.GetSmallImage(83);
             }
         }
 

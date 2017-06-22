@@ -8,11 +8,8 @@ using ESRI.ArcGIS.esriSystem;
 
 namespace Yutai.ArcGIS.Carto.DesignLib
 {
-    public class JLKMapTemplateWizard : Form
+    public partial class JLKMapTemplateWizard : Form
     {
-        private Button btnLast;
-        private Button btnNext;
-        private Button button3;
         private GridAxisPropertyPage gridAxisPropertyPage_0 = new GridAxisPropertyPage();
         private IContainer icontainer_0 = null;
         private IMapFrame imapFrame_0 = null;
@@ -23,8 +20,6 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         private MapTemplateGeneralPage mapTemplateGeneralPage_0 = new MapTemplateGeneralPage();
         private MapTemplateTypePage mapTemplateTypePage_0 = new MapTemplateTypePage();
         private OtherGridPropertyPage otherGridPropertyPage_0 = new OtherGridPropertyPage();
-        private Panel panel1;
-        private Panel panel2;
         private StandardTickSymbolPropertyPage standardTickSymbolPropertyPage_0 = new StandardTickSymbolPropertyPage();
         private StarndFenFuMapTemplatePage starndFenFuMapTemplatePage_0 = new StarndFenFuMapTemplatePage();
         private TickSymbolPropertyPage tickSymbolPropertyPage_0 = new TickSymbolPropertyPage();
@@ -172,71 +167,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             this.int_0++;
         }
 
-        protected override void Dispose(bool bool_0)
-        {
-            if (bool_0 && (this.icontainer_0 != null))
-            {
-                this.icontainer_0.Dispose();
-            }
-            base.Dispose(bool_0);
-        }
-
-        private void InitializeComponent()
-        {
-            this.panel2 = new Panel();
-            this.btnLast = new Button();
-            this.button3 = new Button();
-            this.btnNext = new Button();
-            this.panel1 = new Panel();
-            this.panel2.SuspendLayout();
-            base.SuspendLayout();
-            this.panel2.Controls.Add(this.btnLast);
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.btnNext);
-            this.panel2.Dock = DockStyle.Bottom;
-            this.panel2.Location = new Point(0, 0x14c);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new Size(0x1d4, 0x1b);
-            this.panel2.TabIndex = 3;
-            this.btnLast.Location = new Point(0xc3, 3);
-            this.btnLast.Name = "btnLast";
-            this.btnLast.Size = new Size(0x4b, 0x17);
-            this.btnLast.TabIndex = 11;
-            this.btnLast.Text = "<上一步";
-            this.btnLast.UseVisualStyleBackColor = true;
-            this.btnLast.Click += new EventHandler(this.btnLast_Click);
-            this.button3.DialogResult = DialogResult.Cancel;
-            this.button3.Location = new Point(360, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new Size(0x4b, 0x17);
-            this.button3.TabIndex = 14;
-            this.button3.Text = "取消";
-            this.button3.UseVisualStyleBackColor = true;
-            this.btnNext.Location = new Point(0x114, 3);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new Size(0x4b, 0x17);
-            this.btnNext.TabIndex = 13;
-            this.btnNext.Text = "下一步>";
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new EventHandler(this.btnNext_Click);
-            this.panel1.Dock = DockStyle.Fill;
-            this.panel1.Location = new Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new Size(0x1d4, 0x14c);
-            this.panel1.TabIndex = 4;
-            base.AutoScaleDimensions = new SizeF(6f, 12f);
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.ClientSize = new Size(0x1d4, 0x167);
-            base.Controls.Add(this.panel1);
-            base.Controls.Add(this.panel2);
-            base.Name = "JLKMapTemplateWizard";
-            this.Text = "制图模板向导";
-            base.Load += new EventHandler(this.JLKMapTemplateWizard_Load);
-            this.panel2.ResumeLayout(false);
-            base.ResumeLayout(false);
-        }
-
-        private void JLKMapTemplateWizard_Load(object sender, EventArgs e)
+ private void JLKMapTemplateWizard_Load(object sender, EventArgs e)
         {
             this.mapTemplateTypePage_0.Dock = DockStyle.Fill;
             this.panel1.Controls.Add(this.mapTemplateTypePage_0);

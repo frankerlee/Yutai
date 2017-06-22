@@ -10,21 +10,12 @@ using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 {
-    public class TopologyRulesPropertyPage : UserControl, IPropertyPage, IPropertyPageEvents
+    public partial class TopologyRulesPropertyPage : UserControl, IPropertyPage, IPropertyPageEvents
     {
         private bool bool_0 = false;
-        private SimpleButton btnAddRule;
-        private SimpleButton btnAddRule1;
-        private SimpleButton btnDeleteAll;
-        private SimpleButton btnDeleteRule;
-        private SimpleButton btnDescription;
-        private ColumnHeader columnHeader_0;
-        private ColumnHeader columnHeader_1;
-        private ColumnHeader columnHeader_2;
         private Container container_0 = null;
         private IList ilist_0 = new ArrayList();
         private ITopology itopology_0 = null;
-        private ListView listView1;
         private string string_0 = "规则";
 
         public event OnValueChangeEventHandler OnValueChange;
@@ -224,92 +215,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.ilist_0.Clear();
         }
 
-        protected override void Dispose(bool bool_1)
-        {
-            if (bool_1 && (this.container_0 != null))
-            {
-                this.container_0.Dispose();
-            }
-            base.Dispose(bool_1);
-        }
-
-        private void InitializeComponent()
-        {
-            this.listView1 = new ListView();
-            this.columnHeader_0 = new ColumnHeader();
-            this.columnHeader_1 = new ColumnHeader();
-            this.columnHeader_2 = new ColumnHeader();
-            this.btnDescription = new SimpleButton();
-            this.btnAddRule = new SimpleButton();
-            this.btnDeleteRule = new SimpleButton();
-            this.btnDeleteAll = new SimpleButton();
-            this.btnAddRule1 = new SimpleButton();
-            base.SuspendLayout();
-            this.listView1.Columns.AddRange(new ColumnHeader[] { this.columnHeader_0, this.columnHeader_1, this.columnHeader_2 });
-            this.listView1.FullRowSelect = true;
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new Point(8, 8);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new Size(0x128, 0xd0);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = View.Details;
-            this.listView1.SelectedIndexChanged += new EventHandler(this.listView1_SelectedIndexChanged);
-            this.columnHeader_0.Text = "要素类";
-            this.columnHeader_0.Width = 0x4c;
-            this.columnHeader_1.Text = "规则";
-            this.columnHeader_1.Width = 0x87;
-            this.columnHeader_2.Text = "要素类";
-            this.columnHeader_2.Width = 0x4b;
-            this.btnDescription.Location = new Point(0x138, 8);
-            this.btnDescription.Name = "btnDescription";
-            this.btnDescription.Size = new Size(0x60, 0x20);
-            this.btnDescription.TabIndex = 1;
-            this.btnDescription.Text = "描述";
-            this.btnDescription.Click += new EventHandler(this.btnDescription_Click);
-            this.btnAddRule.Location = new Point(0x138, 0x30);
-            this.btnAddRule.Name = "btnAddRule";
-            this.btnAddRule.Size = new Size(0x60, 0x20);
-            this.btnAddRule.TabIndex = 2;
-            this.btnAddRule.Text = "按类添加规则";
-            this.btnAddRule.Click += new EventHandler(this.btnAddRule_Click);
-            this.btnDeleteRule.Enabled = false;
-            this.btnDeleteRule.Location = new Point(0x138, 0x7d);
-            this.btnDeleteRule.Name = "btnDeleteRule";
-            this.btnDeleteRule.Size = new Size(0x60, 0x20);
-            this.btnDeleteRule.TabIndex = 3;
-            this.btnDeleteRule.Text = "删除";
-            this.btnDeleteRule.Click += new EventHandler(this.btnDeleteRule_Click);
-            this.btnDeleteAll.Location = new Point(0x138, 0xa5);
-            this.btnDeleteAll.Name = "btnDeleteAll";
-            this.btnDeleteAll.Size = new Size(0x60, 0x20);
-            this.btnDeleteAll.TabIndex = 4;
-            this.btnDeleteAll.Text = "全部删除";
-            this.btnDeleteAll.Click += new EventHandler(this.btnDeleteAll_Click);
-            this.btnAddRule1.Location = new Point(310, 0x56);
-            this.btnAddRule1.Name = "btnAddRule1";
-            this.btnAddRule1.Size = new Size(0x62, 0x20);
-            this.btnAddRule1.TabIndex = 5;
-            this.btnAddRule1.Text = "添加规则";
-            this.btnAddRule1.Click += new EventHandler(this.btnAddRule1_Click);
-            base.Controls.Add(this.btnAddRule1);
-            base.Controls.Add(this.btnDeleteAll);
-            base.Controls.Add(this.btnDeleteRule);
-            base.Controls.Add(this.btnAddRule);
-            base.Controls.Add(this.btnDescription);
-            base.Controls.Add(this.listView1);
-            base.Name = "TopologyRulesPropertyPage";
-            base.Size = new Size(0x19b, 0x110);
-            base.Load += new EventHandler(this.TopologyRulesPropertyPage_Load);
-            base.ResumeLayout(false);
-        }
-
-        void IPropertyPage.Hide()
-        {
-            base.Hide();
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+ private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.listView1.SelectedItems.Count > 0)
             {
@@ -536,7 +442,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
-        private class Class2
+        private partial class Class2
         {
             private bool bool_0 = false;
             private ITopologyRule itopologyRule_0 = null;

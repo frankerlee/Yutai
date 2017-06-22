@@ -9,11 +9,8 @@ using ESRI.ArcGIS.Geometry;
 
 namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 {
-    public class frmEditObjectClass : Form
+    public partial class frmEditObjectClass : Form
     {
-        private SimpleButton btnApply;
-        private SimpleButton btnCancel;
-        private SimpleButton btnOK;
         private CoordinateControl coordinateControl_0 = new CoordinateControl();
         private IContainer icontainer_0 = null;
         private NewDatasetCoordinateDomainPage newDatasetCoordinateDomainPage_0 = new NewDatasetCoordinateDomainPage();
@@ -22,7 +19,6 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         private NewObjectClassFieldsPage newObjectClassFieldsPage_0 = new NewObjectClassFieldsPage();
         private NewObjectClassGeneralPage newObjectClassGeneralPage_0 = new NewObjectClassGeneralPage();
         private RepresentationPropertyPage representationPropertyPage_0 = new RepresentationPropertyPage();
-        private TabControl tabControl1;
         private VCSCoordinateInfoPage vcscoordinateInfoPage_0 = new VCSCoordinateInfoPage();
 
         public frmEditObjectClass()
@@ -52,16 +48,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
-        protected override void Dispose(bool bool_0)
-        {
-            if (bool_0 && (this.icontainer_0 != null))
-            {
-                this.icontainer_0.Dispose();
-            }
-            base.Dispose(bool_0);
-        }
-
-        private void frmEditObjectClass_Load(object sender, EventArgs e)
+ private void frmEditObjectClass_Load(object sender, EventArgs e)
         {
             this.btnApply.Enabled = false;
             TabPage page = new TabPage("常规");
@@ -114,56 +101,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.newObjectClassFieldsPage_0.ValueChanged += new ValueChangedHandler(this.method_1);
         }
 
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditObjectClass));
-            this.tabControl1 = new TabControl();
-            this.btnCancel = new SimpleButton();
-            this.btnApply = new SimpleButton();
-            this.btnOK = new SimpleButton();
-            base.SuspendLayout();
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new Size(0x1ac, 0x1d4);
-            this.tabControl1.TabIndex = 0;
-            this.btnCancel.DialogResult = DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(0x13e, 0x1e6);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new Size(0x38, 0x18);
-            this.btnCancel.TabIndex = 9;
-            this.btnCancel.Text = "取消";
-            this.btnApply.Enabled = false;
-            this.btnApply.Location = new System.Drawing.Point(0x189, 0x1e6);
-            this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new Size(0x38, 0x18);
-            this.btnApply.TabIndex = 8;
-            this.btnApply.Text = "应用";
-            this.btnApply.Click += new EventHandler(this.btnApply_Click);
-            this.btnOK.Location = new System.Drawing.Point(0xf2, 0x1e6);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new Size(0x38, 0x18);
-            this.btnOK.TabIndex = 7;
-            this.btnOK.Text = "确定";
-            this.btnOK.Click += new EventHandler(this.btnOK_Click);
-            base.AutoScaleDimensions = new SizeF(6f, 12f);
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.ClientSize = new Size(0x1c4, 0x20a);
-            base.Controls.Add(this.btnCancel);
-            base.Controls.Add(this.btnApply);
-            base.Controls.Add(this.btnOK);
-            base.Controls.Add(this.tabControl1);
-            base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            
-            base.MaximizeBox = false;
-            base.MinimizeBox = false;
-            base.Name = "frmEditObjectClass";
-            this.Text = "对象类属性";
-            base.Load += new EventHandler(this.frmEditObjectClass_Load);
-            base.ResumeLayout(false);
-        }
-
-        private bool method_0(IFeatureClass ifeatureClass_0)
+ private bool method_0(IFeatureClass ifeatureClass_0)
         {
             if (ifeatureClass_0 != null)
             {

@@ -39,7 +39,7 @@ namespace Yutai.ArcGIS.Framework.Docking
                 FloatWindow container = (FloatWindow) this.Container;
                 if (!(container.Disposing || container.IsDisposed))
                 {
-                    NativeMethods.PostMessage(((FloatWindow) this.Container).Handle, 0x401, 0, 0);
+                    NativeMethods.PostMessage(((FloatWindow) this.Container).Handle, 1025, 0, 0);
                 }
             }
         }

@@ -175,7 +175,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             this.timer_0.Interval = 200;
             this.imageList_0 = new ImageList();
             this.imageList_0.ColorDepth = ColorDepth.Depth32Bit;
-            this.imageList_0.ImageSize = new Size(0x10, 0x10);
+            this.imageList_0.ImageSize = new Size(16, 16);
             this.imageList_0.TransparentColor = Color.Transparent;
             this.method_3();
         }

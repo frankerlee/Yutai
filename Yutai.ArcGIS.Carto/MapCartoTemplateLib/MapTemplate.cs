@@ -3682,12 +3682,12 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             IEnvelope extent = (focusMapFrame.Map as IActiveView).Extent;
             double num = (int) ((extent.Width / envelope.Width) * 100.0);
             int num2 = (int) (num / 1000.0);
-            double num3 = num2 * 0x3e8;
+            double num3 = num2 * 1000;
             if (Math.Abs((double) (num3 - num)) > 10.0)
             {
                 num2++;
             }
-            num = num2 * 0x3e8;
+            num = num2 * 1000;
             double x = extent.LowerLeft.X;
             double y = extent.LowerLeft.Y;
             this.double_6 = num;

@@ -15,14 +15,9 @@ using Yutai.ArcGIS.Common.ControlExtend;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {
-    internal class MultiAttributeListControl : UserControl
+    internal partial class MultiAttributeListControl : UserControl
     {
-        private Container components = null;
-        private GridControl gridControl1;
-        private GridView gridView1;
         private bool m_CanDo = false;
-        private int m_nX;
-        private int m_nY;
         private IActiveView m_pActiveView = null;
         private IFeatureLayer m_pFeatLayer = null;
         private VertXtraGrid m_pVertXtraGrid = null;
@@ -40,16 +35,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.m_CanDo = true;
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private string GetShapeString(IField pField)
+ private string GetShapeString(IField pField)
         {
             string str = "";
             IGeometryDef geometryDef = pField.GeometryDef;
@@ -268,37 +254,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
-        private void InitializeComponent()
-        {
-            this.gridControl1 = new GridControl();
-            this.gridView1 = new GridView();
-            this.gridControl1.BeginInit();
-            this.gridView1.BeginInit();
-            base.SuspendLayout();
-            this.gridControl1.Dock = DockStyle.Fill;
-            this.gridControl1.EmbeddedNavigator.Name = "";
-            this.gridControl1.Location = new System.Drawing.Point(0, 0);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new Size(0x128, 0xe0);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.ViewCollection.AddRange(new BaseView[] { this.gridView1 });
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsView.RowAutoHeight = true;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.OptionsView.ShowIndicator = false;
-            this.gridView1.ShowButtonMode = ShowButtonModeEnum.ShowOnlyInEditor;
-            base.Controls.Add(this.gridControl1);
-            base.Name = "MultiAttributeListControl";
-            base.Size = new Size(0x128, 0xe0);
-            base.Load += new EventHandler(this.AttributeListControl_Load);
-            this.gridControl1.EndInit();
-            this.gridView1.EndInit();
-            base.ResumeLayout(false);
-        }
-
-        private bool UpdateFieldValue(IField pField, object str)
+ private bool UpdateFieldValue(IField pField, object str)
         {
             IWorkspaceEdit workspace = (this.m_pFeatLayer.FeatureClass as IDataset).Workspace as IWorkspaceEdit;
             bool flag = false;

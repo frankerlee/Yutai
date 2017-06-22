@@ -11,21 +11,9 @@ using ESRI.ArcGIS.NetworkAnalyst;
 
 namespace Yutai.ArcGIS.Controls.ClosestFacilitySolver
 {
-    internal class frmClosesFacilitySolver : Form
+    internal partial class frmClosesFacilitySolver : Form
     {
-        private ComboBox cboCostAttribute;
-        private CheckBox chkUseHierarchy;
-        private CheckBox chkUseRestriction;
-        private Button cmdSolve;
-        private Container components = null;
-        private Label lblCostAttribute;
-        private Label lblCutOff;
-        private Label lblNumFacility;
-        private ListBox lstOutput;
         private IMap m_pFocusMap = null;
-        private INAContext m_pNAContext;
-        private TextBox txtCutOff;
-        private TextBox txtTargetFacility;
 
         public frmClosesFacilitySolver()
         {
@@ -104,16 +92,7 @@ namespace Yutai.ArcGIS.Controls.ClosestFacilitySolver
             return (edit as INAContext);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private void frmClosesFacilitySolver_Load(object sender, EventArgs e)
+ private void frmClosesFacilitySolver_Load(object sender, EventArgs e)
         {
         }
 
@@ -178,92 +157,7 @@ namespace Yutai.ArcGIS.Controls.ClosestFacilitySolver
             layer.Name = this.m_pNAContext.Solver.DisplayName;
         }
 
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClosesFacilitySolver));
-            this.lstOutput = new ListBox();
-            this.cmdSolve = new Button();
-            this.txtCutOff = new TextBox();
-            this.txtTargetFacility = new TextBox();
-            this.cboCostAttribute = new ComboBox();
-            this.chkUseHierarchy = new CheckBox();
-            this.chkUseRestriction = new CheckBox();
-            this.lblCutOff = new Label();
-            this.lblNumFacility = new Label();
-            this.lblCostAttribute = new Label();
-            base.SuspendLayout();
-            this.lstOutput.ItemHeight = 12;
-            this.lstOutput.Location = new System.Drawing.Point(0x18, 0xe8);
-            this.lstOutput.Name = "lstOutput";
-            this.lstOutput.Size = new Size(360, 0xc4);
-            this.lstOutput.TabIndex = 0x13;
-            this.cmdSolve.Location = new System.Drawing.Point(0x18, 0xc0);
-            this.cmdSolve.Name = "cmdSolve";
-            this.cmdSolve.Size = new Size(0xb0, 0x16);
-            this.cmdSolve.TabIndex = 0x12;
-            this.cmdSolve.Text = "查找最近设施";
-            this.cmdSolve.Click += new EventHandler(this.cmdSolve_Click);
-            this.txtCutOff.Location = new System.Drawing.Point(0xe0, 80);
-            this.txtCutOff.Name = "txtCutOff";
-            this.txtCutOff.Size = new Size(160, 0x15);
-            this.txtCutOff.TabIndex = 0x11;
-            this.txtTargetFacility.Location = new System.Drawing.Point(0xe0, 40);
-            this.txtTargetFacility.Name = "txtTargetFacility";
-            this.txtTargetFacility.Size = new Size(160, 0x15);
-            this.txtTargetFacility.TabIndex = 0x10;
-            this.cboCostAttribute.Location = new System.Drawing.Point(0xe0, 0x10);
-            this.cboCostAttribute.Name = "cboCostAttribute";
-            this.cboCostAttribute.Size = new Size(160, 20);
-            this.cboCostAttribute.TabIndex = 15;
-            this.cboCostAttribute.Text = "cboCostAttribute";
-            this.chkUseHierarchy.Location = new System.Drawing.Point(0x18, 0x98);
-            this.chkUseHierarchy.Name = "chkUseHierarchy";
-            this.chkUseHierarchy.Size = new Size(0xa8, 0x16);
-            this.chkUseHierarchy.TabIndex = 14;
-            this.chkUseHierarchy.Text = "使用层次";
-            this.chkUseRestriction.Location = new System.Drawing.Point(0x18, 0x80);
-            this.chkUseRestriction.Name = "chkUseRestriction";
-            this.chkUseRestriction.Size = new Size(0xa8, 0x16);
-            this.chkUseRestriction.TabIndex = 13;
-            this.chkUseRestriction.Text = "使用Oneway约束";
-            this.lblCutOff.AutoSize = true;
-            this.lblCutOff.Location = new System.Drawing.Point(0x18, 0x58);
-            this.lblCutOff.Name = "lblCutOff";
-            this.lblCutOff.Size = new Size(0x1d, 12);
-            this.lblCutOff.TabIndex = 12;
-            this.lblCutOff.Text = "断开";
-            this.lblNumFacility.AutoSize = true;
-            this.lblNumFacility.Location = new System.Drawing.Point(0x18, 0x30);
-            this.lblNumFacility.Name = "lblNumFacility";
-            this.lblNumFacility.Size = new Size(0x41, 12);
-            this.lblNumFacility.TabIndex = 11;
-            this.lblNumFacility.Text = "目标设施数";
-            this.lblCostAttribute.AutoSize = true;
-            this.lblCostAttribute.Location = new System.Drawing.Point(0x18, 0x10);
-            this.lblCostAttribute.Name = "lblCostAttribute";
-            this.lblCostAttribute.Size = new Size(0x1d, 12);
-            this.lblCostAttribute.TabIndex = 10;
-            this.lblCostAttribute.Text = "费用";
-            this.AutoScaleBaseSize = new Size(6, 14);
-            base.ClientSize = new Size(0x218, 490);
-            base.Controls.Add(this.lstOutput);
-            base.Controls.Add(this.cmdSolve);
-            base.Controls.Add(this.txtCutOff);
-            base.Controls.Add(this.txtTargetFacility);
-            base.Controls.Add(this.cboCostAttribute);
-            base.Controls.Add(this.chkUseHierarchy);
-            base.Controls.Add(this.chkUseRestriction);
-            base.Controls.Add(this.lblCutOff);
-            base.Controls.Add(this.lblNumFacility);
-            base.Controls.Add(this.lblCostAttribute);
-            base.Name = "frmClosesFacilitySolver";
-            this.Text = "最近设置分析";
-            base.Load += new EventHandler(this.frmClosesFacilitySolver_Load);
-            base.ResumeLayout(false);
-            base.PerformLayout();
-        }
-
-        private bool IsNumeric(string str)
+ private bool IsNumeric(string str)
         {
             try
             {

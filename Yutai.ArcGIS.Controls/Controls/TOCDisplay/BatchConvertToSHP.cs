@@ -51,9 +51,9 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
         {
             string[] strArray = str.Split(new char[] { '.' });
             str = strArray[strArray.Length - 1];
-            if (str.Length > 0x24)
+            if (str.Length > 36)
             {
-                str = str.Substring(0, str.Length - 0x24);
+                str = str.Substring(0, str.Length - 36);
             }
             this.m_str = str;
             this.frm.Text = "处理:" + str;

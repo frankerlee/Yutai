@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
   <PropertyGroup>
     <ProjectType>local</ProjectType>
@@ -77,201 +77,457 @@
     <Compile Include="ClosestFacilitySolver\frmClosesFacilitySolver.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ClosestFacilitySolver\frmClosesFacilitySolver.Designer.cs">
+        <DependentUpon>frmClosesFacilitySolver.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="ControlExtend\ListViewItemEx.cs" />
     <Compile Include="ControlExtend\RenderInfoListView.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ControlExtend\RenderInfoListView.Designer.cs">
+        <DependentUpon>RenderInfoListView.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\CommandLinesCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\CommandLinesCtrl.Designer.cs">
+        <DependentUpon>CommandLinesCtrl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\ConfigSetting\AppConfig.cs" />
     <Compile Include="Controls\ConfigSetting\frmAppConfigSetting.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\ConfigSetting\frmAppConfigSetting.Designer.cs">
+        <DependentUpon>frmAppConfigSetting.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\ConfigSetting\frmAppConfigSettingEx.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\ConfigSetting\frmAppConfigSettingEx.Designer.cs">
+        <DependentUpon>frmAppConfigSettingEx.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\ConfigSetting\frmLayerConfigTable.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\ConfigSetting\frmLayerConfigTable.Designer.cs">
+        <DependentUpon>frmLayerConfigTable.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\ConfigSetting\frmLayerInfo.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\ConfigSetting\frmLayerInfo.Designer.cs">
+        <DependentUpon>frmLayerInfo.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\ConfigSetting\frmSelectVersion.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\ConfigSetting\frmSelectVersion.Designer.cs">
+        <DependentUpon>frmSelectVersion.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\ConfigSetting\GDBSettingPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\ConfigSetting\GDBSettingPropertyPage.Designer.cs">
+        <DependentUpon>GDBSettingPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\ConfigSetting\LayerSettingInfoPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\ConfigSetting\LayerSettingInfoPropertyPage.Designer.cs">
+        <DependentUpon>LayerSettingInfoPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\ConfigSetting\OLEDBSettingPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\ConfigSetting\OLEDBSettingPropertyPage.Designer.cs">
+        <DependentUpon>OLEDBSettingPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\ConfigSetting\OtherSettingPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\ConfigSetting\OtherSettingPropertyPage.Designer.cs">
+        <DependentUpon>OtherSettingPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\ConfigSetting\SymbolsSettingPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\ConfigSetting\SymbolsSettingPropertyPage.Designer.cs">
+        <DependentUpon>SymbolsSettingPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\EditorUI\frmSelectSymbolClass.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\EditorUI\frmSelectSymbolClass.Designer.cs">
+        <DependentUpon>frmSelectSymbolClass.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\EditorUI\UserControl1.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\EditorUI\UserControl1.Designer.cs">
+        <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\Export\ExportMap2EMFPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\Export\ExportMap2EMFPropertyPage.Designer.cs">
+        <DependentUpon>ExportMap2EMFPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\Export\ExportMap2EPSPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\Export\ExportMap2EPSPropertyPage.Designer.cs">
+        <DependentUpon>ExportMap2EPSPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\Export\ExportMap2GIFPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\Export\ExportMap2GIFPropertyPage.Designer.cs">
+        <DependentUpon>ExportMap2GIFPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\Export\ExportMap2PDFPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\Export\ExportMap2PDFPropertyPage.Designer.cs">
+        <DependentUpon>ExportMap2PDFPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\Export\ExportMap2SVGPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\Export\ExportMap2SVGPropertyPage.Designer.cs">
+        <DependentUpon>ExportMap2SVGPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\Export\ExportMapGeneralPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\Export\ExportMapGeneralPropertyPage.Designer.cs">
+        <DependentUpon>ExportMapGeneralPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\Export\ExportMapImagePropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\Export\ExportMapImagePropertyPage.Designer.cs">
+        <DependentUpon>ExportMapImagePropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\Export\ExportToExcelHelper.cs" />
     <Compile Include="Controls\Export\ExportToExcelSelectData.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\Export\ExportToExcelSelectData.Designer.cs">
+        <DependentUpon>ExportToExcelSelectData.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\Export\ExportToExcelSet.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\Export\ExportToExcelSet.Designer.cs">
+        <DependentUpon>ExportToExcelSet.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\Export\ExportToExcelWizard.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\Export\ExportToExcelWizard.Designer.cs">
+        <DependentUpon>ExportToExcelWizard.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\Export\frmDataExportToExcel.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\Export\frmDataExportToExcel.Designer.cs">
+        <DependentUpon>frmDataExportToExcel.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\Export\frmExportMap.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\Export\frmExportMap.Designer.cs">
+        <DependentUpon>frmExportMap.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\Export\GraphicHelper.cs" />
     <Compile Include="Controls\Export\GraphicsSelectData.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\Export\GraphicsSelectData.Designer.cs">
+        <DependentUpon>GraphicsSelectData.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\Export\GraphicsSet.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\Export\GraphicsSet.Designer.cs">
+        <DependentUpon>GraphicsSet.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\Export\GraphicsWizard.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\Export\GraphicsWizard.Designer.cs">
+        <DependentUpon>GraphicsWizard.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\Export\SeriesChart.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\Export\SeriesChart.Designer.cs">
+        <DependentUpon>SeriesChart.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\FormMapPrinter.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\FormMapPrinter.Designer.cs">
+        <DependentUpon>FormMapPrinter.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\FormType.cs" />
     <Compile Include="Controls\frmAnalystTable.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\frmAnalystTable.Designer.cs">
+        <DependentUpon>frmAnalystTable.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\frmAttributeTable.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\frmAttributeTable.Designer.cs">
+        <DependentUpon>frmAttributeTable.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\frmAttributeTableEx.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\frmAttributeTableEx.Designer.cs">
+        <DependentUpon>frmAttributeTableEx.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\frmCommandLine.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\frmCommandLine.Designer.cs">
+        <DependentUpon>frmCommandLine.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\frmDatasourceTreeView.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\frmDatasourceTreeView.Designer.cs">
+        <DependentUpon>frmDatasourceTreeView.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\frmElementProperty.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\frmElementProperty.Designer.cs">
+        <DependentUpon>frmElementProperty.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\FrmFastSelSpatial.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\FrmFastSelSpatial.Designer.cs">
+        <DependentUpon>FrmFastSelSpatial.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\frmGeoProcessorInfo.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\frmGeoProcessorInfo.Designer.cs">
+        <DependentUpon>frmGeoProcessorInfo.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\frmMagnifierWindows.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\frmMagnifierWindows.Designer.cs">
+        <DependentUpon>frmMagnifierWindows.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\frmMap.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\frmMap.Designer.cs">
+        <DependentUpon>frmMap.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\frmMapNew.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\frmMapNew.Designer.cs">
+        <DependentUpon>frmMapNew.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\frmOptionsSet.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\frmOptionsSet.Designer.cs">
+        <DependentUpon>frmOptionsSet.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\frmOverwindows.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\frmOverwindows.Designer.cs">
+        <DependentUpon>frmOverwindows.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\frmPageLayoutCtrl.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\frmPageLayoutCtrl.Designer.cs">
+        <DependentUpon>frmPageLayoutCtrl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\frmPageLayoutPage.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\frmPageLayoutPage.Designer.cs">
+        <DependentUpon>frmPageLayoutPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\frmProgress.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\frmProgress.Designer.cs">
+        <DependentUpon>frmProgress.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\frmProgressBar1.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\frmProgressBar1.Designer.cs">
+        <DependentUpon>frmProgressBar1.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\frmRegisterAsVersion.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\frmRegisterAsVersion.Designer.cs">
+        <DependentUpon>frmRegisterAsVersion.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\frmSpatialRefrence.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\frmSpatialRefrence.Designer.cs">
+        <DependentUpon>frmSpatialRefrence.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\frmTOCTreeView.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\frmTOCTreeView.Designer.cs">
+        <DependentUpon>frmTOCTreeView.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\frmTOCTreeView2.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\frmTOCTreeView2.Designer.cs">
+        <DependentUpon>frmTOCTreeView2.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\frmTOCTreeViewNew.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\frmTOCTreeViewNew.Designer.cs">
+        <DependentUpon>frmTOCTreeViewNew.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\frmViewerOrMagnifierPropertyPage.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\frmViewerOrMagnifierPropertyPage.Designer.cs">
+        <DependentUpon>frmViewerOrMagnifierPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\GeoCoordSys.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\GeoCoordSys.Designer.cs">
+        <DependentUpon>GeoCoordSys.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\GPSLib\DestinationPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\GPSLib\DestinationPropertyPage.Designer.cs">
+        <DependentUpon>DestinationPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\GPSLib\DisplayAdvancePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\GPSLib\DisplayAdvancePage.Designer.cs">
+        <DependentUpon>DisplayAdvancePage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\GPSLib\DisplayGeneralPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\GPSLib\DisplayGeneralPage.Designer.cs">
+        <DependentUpon>DisplayGeneralPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\GPSLib\frmGPSDisplaySet.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\GPSLib\frmGPSDisplaySet.Designer.cs">
+        <DependentUpon>frmGPSDisplaySet.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\GPSLib\frmGPSPositionWindows.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\GPSLib\frmGPSPositionWindows.Designer.cs">
+        <DependentUpon>frmGPSPositionWindows.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\GPSLib\GPSManager.cs" />
     <Compile Include="Controls\GPSLib\GPSPositionPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\GPSLib\GPSPositionPage.Designer.cs">
+        <DependentUpon>GPSPositionPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\GPSLib\SnappingPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\GPSLib\SnappingPage.Designer.cs">
+        <DependentUpon>SnappingPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\GPSLib\TrailsSetCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\GPSLib\TrailsSetCtrl.Designer.cs">
+        <DependentUpon>TrailsSetCtrl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\IKDProgressBar.cs" />
     <Compile Include="Controls\IKDProgressBar1.cs" />
     <Compile Include="Controls\ListViewXP.cs">
@@ -283,39 +539,79 @@
     <Compile Include="Controls\MapAndPageLayoutForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\MapAndPageLayoutForm.Designer.cs">
+        <DependentUpon>MapAndPageLayoutForm.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\MapFrame.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\MapFrame.Designer.cs">
+        <DependentUpon>MapFrame.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\Maps.cs" />
     <Compile Include="Controls\MDomainControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\MDomainControl.Designer.cs">
+        <DependentUpon>MDomainControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\OverviewWindowsAllLayerProperty.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\OverviewWindowsAllLayerProperty.Designer.cs">
+        <DependentUpon>OverviewWindowsAllLayerProperty.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\OverviewWindowsEx.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\OverviewWindowsEx.Designer.cs">
+        <DependentUpon>OverviewWindowsEx.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\OverviewWindowsProperty.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\OverviewWindowsProperty.Designer.cs">
+        <DependentUpon>OverviewWindowsProperty.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\OverwindowsLayersType.cs" />
     <Compile Include="Controls\ProjCoordSys.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\ProjCoordSys.Designer.cs">
+        <DependentUpon>ProjCoordSys.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\Properties\Resources.cs" />
     <Compile Include="Controls\PropertySheet.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\PropertySheet.Designer.cs">
+        <DependentUpon>PropertySheet.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\ScenceGeneralPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\ScenceGeneralPropertyPage.Designer.cs">
+        <DependentUpon>ScenceGeneralPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\TOCDisplay\BatchConvertToSHP.cs" />
     <Compile Include="Controls\TOCDisplay\CurrentLayerChangedHandler.cs" />
     <Compile Include="Controls\TOCDisplay\DataSourceTreeView.cs" />
     <Compile Include="Controls\TOCDisplay\frmFolderProperty.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Controls\TOCDisplay\frmFolderProperty.Designer.cs">
+        <DependentUpon>frmFolderProperty.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\TOCDisplay\HitType.cs" />
     <Compile Include="Controls\TOCDisplay\ITOCNodePopmenuItem.cs" />
     <Compile Include="Controls\TOCDisplay\ITOCNodePopmenuItemEx.cs" />
@@ -330,12 +626,20 @@
     <Compile Include="Controls\TOCDisplay\TOCTreeView.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\TOCDisplay\TOCTreeView.Designer.cs">
+        <DependentUpon>TOCTreeView.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\TOCDisplay\TocTreeViewBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\TOCDisplay\TOCTreeViewEx.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\TOCDisplay\TOCTreeViewEx.Designer.cs">
+        <DependentUpon>TOCTreeViewEx.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\TOCDisplay\TOCTreeViewType.cs" />
     <Compile Include="Controls\TOCDisplay\TOCTreeViewWrapEx.cs" />
     <Compile Include="Controls\TOCDisplay\TreeCreatePopMenuItem.cs" />
@@ -345,38 +649,78 @@
     <Compile Include="Controls\TOCTreeview\TOCControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\TOCTreeview\TOCControl.Designer.cs">
+        <DependentUpon>TOCControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\TOCTreeview\tocMenuBitmaps.cs" />
     <Compile Include="Controls\XYDomainControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\XYDomainControl.Designer.cs">
+        <DependentUpon>XYDomainControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\ZDomainControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\ZDomainControl.Designer.cs">
+        <DependentUpon>ZDomainControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Controls\ZoomType.cs" />
     <Compile Include="DataConversionTools\frmGeoProcessorInfo.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DataConversionTools\frmGeoProcessorInfo.Designer.cs">
+        <DependentUpon>frmGeoProcessorInfo.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="DataConversionTools\ImportCoordinateFile.cs" />
     <Compile Include="Editor\EditToolUI.cs" />
     <Compile Include="Editor\TopologyErrorHandle.cs" />
     <Compile Include="Editor\UI\AnnoEditControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Editor\UI\AnnoEditControl.Designer.cs">
+        <DependentUpon>AnnoEditControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\AttributeControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Editor\UI\AttributeControl.Designer.cs">
+        <DependentUpon>AttributeControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\AttributeEditControlExtend.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Editor\UI\AttributeEditControlExtend.Designer.cs">
+        <DependentUpon>AttributeEditControlExtend.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\AttributeEditControlExtendEx.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Editor\UI\AttributeEditControlExtendEx.Designer.cs">
+        <DependentUpon>AttributeEditControlExtendEx.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\AttributeListControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Editor\UI\AttributeListControl.Designer.cs">
+        <DependentUpon>AttributeListControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\EditorTemplateManageCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Editor\UI\EditorTemplateManageCtrl.Designer.cs">
+        <DependentUpon>EditorTemplateManageCtrl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\EditorTemplateManageCtrl2.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -386,76 +730,168 @@
     <Compile Include="Editor\UI\EditTemplateListView.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Editor\UI\EditTemplateListView.Designer.cs">
+        <DependentUpon>EditTemplateListView.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\EditTemplateManager.cs" />
     <Compile Include="Editor\UI\FindTopologyErrorCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Editor\UI\FindTopologyErrorCtrl.Designer.cs">
+        <DependentUpon>FindTopologyErrorCtrl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\frmAttachment.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Editor\UI\frmAttachment.Designer.cs">
+        <DependentUpon>frmAttachment.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\frmAttributeEdit.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Editor\UI\frmAttributeEdit.Designer.cs">
+        <DependentUpon>frmAttributeEdit.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\frmAttributeTable.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Editor\UI\frmAttributeTable.Designer.cs">
+        <DependentUpon>frmAttributeTable.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\frmEditMultiAttribute.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Editor\UI\frmEditMultiAttribute.Designer.cs">
+        <DependentUpon>frmEditMultiAttribute.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\frmEditTemplateProperty.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Editor\UI\frmEditTemplateProperty.Designer.cs">
+        <DependentUpon>frmEditTemplateProperty.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\frmFilterLayerSelect.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Editor\UI\frmFilterLayerSelect.Designer.cs">
+        <DependentUpon>frmFilterLayerSelect.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\frmNewTemplate.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Editor\UI\frmNewTemplate.Designer.cs">
+        <DependentUpon>frmNewTemplate.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\frmProportionSplit.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Editor\UI\frmProportionSplit.Designer.cs">
+        <DependentUpon>frmProportionSplit.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\frmRuleInfo.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Editor\UI\frmRuleInfo.Designer.cs">
+        <DependentUpon>frmRuleInfo.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\frmSelectEditDatasource.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Editor\UI\frmSelectEditDatasource.Designer.cs">
+        <DependentUpon>frmSelectEditDatasource.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\frmSelectMergeFeature.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Editor\UI\frmSelectMergeFeature.Designer.cs">
+        <DependentUpon>frmSelectMergeFeature.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\frmShowShareFeature.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Editor\UI\frmShowShareFeature.Designer.cs">
+        <DependentUpon>frmShowShareFeature.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\frmSnapConfig.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Editor\UI\frmSnapConfig.Designer.cs">
+        <DependentUpon>frmSnapConfig.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\frmTable.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Editor\UI\frmTable.Designer.cs">
+        <DependentUpon>frmTable.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\frmTemplatesGroup.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Editor\UI\frmTemplatesGroup.Designer.cs">
+        <DependentUpon>frmTemplatesGroup.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\frmUpdateAnnoAttribute.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Editor\UI\frmUpdateAnnoAttribute.Designer.cs">
+        <DependentUpon>frmUpdateAnnoAttribute.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\frmUpdateAttribute.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Editor\UI\frmUpdateAttribute.Designer.cs">
+        <DependentUpon>frmUpdateAttribute.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\GeometryInfoPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Editor\UI\GeometryInfoPage.Designer.cs">
+        <DependentUpon>GeometryInfoPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\JLKEditTemplateWrap.cs" />
     <Compile Include="Editor\UI\LVM.cs" />
     <Compile Include="Editor\UI\LVS_EX.cs" />
     <Compile Include="Editor\UI\MultiAttributeControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Editor\UI\MultiAttributeControl.Designer.cs">
+        <DependentUpon>MultiAttributeControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\MultiAttributeListControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Editor\UI\MultiAttributeListControl.Designer.cs">
+        <DependentUpon>MultiAttributeListControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\MultiAttributeListControlExtend.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Editor\UI\MultiAttributeListControlExtend.Designer.cs">
+        <DependentUpon>MultiAttributeListControlExtend.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\OnAddMoreTemplateHandler.cs" />
     <Compile Include="Editor\UI\OnAddTemplateHandler.cs" />
     <Compile Include="Editor\UI\OnDeleteMoreTemplateHandler.cs" />
@@ -465,25 +901,53 @@
     <Compile Include="Editor\UI\PropertyControls.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Editor\UI\PropertyControls.Designer.cs">
+        <DependentUpon>PropertyControls.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\RepresentationAssist.cs" />
     <Compile Include="Editor\UI\RepresentationPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Editor\UI\RepresentationPropertyPage.Designer.cs">
+        <DependentUpon>RepresentationPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\SelectCreateTemplateLayer.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Editor\UI\SelectCreateTemplateLayer.Designer.cs">
+        <DependentUpon>SelectCreateTemplateLayer.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\SelectTemplateCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Editor\UI\SelectTemplateCtrl.Designer.cs">
+        <DependentUpon>SelectTemplateCtrl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\SnapConfigControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Editor\UI\SnapConfigControl.Designer.cs">
+        <DependentUpon>SnapConfigControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\ZDAttributeEditControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Editor\UI\ZDAttributeEditControl.Designer.cs">
+        <DependentUpon>ZDAttributeEditControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Editor\UI\ZDAttributeListControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Editor\UI\ZDAttributeListControl.Designer.cs">
+        <DependentUpon>ZDAttributeListControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Historical\BaseClass.cs" />
     <Compile Include="Historical\frmChangeVersions.cs">
       <SubType>Form</SubType>
@@ -491,40 +955,84 @@
     <Compile Include="Historical\frmHistorialMarkerManager.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Historical\frmHistorialMarkerManager.Designer.cs">
+        <DependentUpon>frmHistorialMarkerManager.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="Historical\frmHistoricalMarker.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Historical\frmHistoricalMarker.Designer.cs">
+        <DependentUpon>frmHistoricalMarker.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="LocalCommonHelper.cs" />
     <Compile Include="NetworkLib\FlowArrorPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="NetworkLib\FlowArrorPropertyPage.Designer.cs">
+        <DependentUpon>FlowArrorPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="NetworkLib\FlowHelper.cs" />
     <Compile Include="NetworkLib\FlowShowScalePropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="NetworkLib\FlowShowScalePropertyPage.Designer.cs">
+        <DependentUpon>FlowShowScalePropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="NetworkLib\FlowSymbol.cs" />
     <Compile Include="NetworkLib\frmFlowArrowSet.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="NetworkLib\frmFlowArrowSet.Designer.cs">
+        <DependentUpon>frmFlowArrowSet.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="NetworkLib\frmNASheet.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="NetworkLib\frmNASheet.Designer.cs">
+        <DependentUpon>frmNASheet.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="NetworkLib\frmNewVerticalSectionSet.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="NetworkLib\frmNewVerticalSectionSet.Designer.cs">
+        <DependentUpon>frmNewVerticalSectionSet.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="NetworkLib\LineCreateroutes.cs" />
     <Compile Include="NetworkLib\NAGeneralPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="NetworkLib\NAGeneralPropertyPage.Designer.cs">
+        <DependentUpon>NAGeneralPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="NetworkLib\NAResultSetPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="NetworkLib\NAResultSetPropertyPage.Designer.cs">
+        <DependentUpon>NAResultSetPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="NetworkLib\NAWeightFilterPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="NetworkLib\NAWeightFilterPropertyPage.Designer.cs">
+        <DependentUpon>NAWeightFilterPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="NetworkLib\NAWeightsPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="NetworkLib\NAWeightsPropertyPage.Designer.cs">
+        <DependentUpon>NAWeightsPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="NetworkLib\NetworkAnalyst.cs" />
     <Compile Include="NetworkLib\NetworkAnalystClosestFacilityResult.cs" />
     <Compile Include="NetworkLib\NetworkAnalystResult.cs" />
@@ -544,120 +1052,264 @@
     <Compile Include="SymbolLib\BasicFillSymbolLayer.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolLib\BasicFillSymbolLayer.Designer.cs">
+        <DependentUpon>BasicFillSymbolLayer.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolLib\BasicLineSymbolLayer.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolLib\BasicLineSymbolLayer.Designer.cs">
+        <DependentUpon>BasicLineSymbolLayer.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolLib\BasicMarkerSymbolLayer.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolLib\BasicMarkerSymbolLayer.Designer.cs">
+        <DependentUpon>BasicMarkerSymbolLayer.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolLib\BasicSymbolLayerBaseControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="SymbolLib\frmGeometricEffectList.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SymbolLib\frmGeometricEffectList.Designer.cs">
+        <DependentUpon>frmGeometricEffectList.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolLib\frmMarkerPlacementList.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SymbolLib\frmMarkerPlacementList.Designer.cs">
+        <DependentUpon>frmMarkerPlacementList.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolLib\GeometricCutCurverPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolLib\GeometricCutCurverPage.Designer.cs">
+        <DependentUpon>GeometricCutCurverPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolLib\GeometricEffectAddControlPointsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolLib\GeometricEffectAddControlPointsPage.Designer.cs">
+        <DependentUpon>GeometricEffectAddControlPointsPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolLib\GeometricEffectBaseControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="SymbolLib\GeometricEffectBufferPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolLib\GeometricEffectBufferPage.Designer.cs">
+        <DependentUpon>GeometricEffectBufferPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolLib\GeometricEffectDashesPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolLib\GeometricEffectDashesPage.Designer.cs">
+        <DependentUpon>GeometricEffectDashesPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolLib\GeometricEffectDonutPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolLib\GeometricEffectDonutPage.Designer.cs">
+        <DependentUpon>GeometricEffectDonutPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolLib\GeometricEffectEnclosingPolygonPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolLib\GeometricEffectEnclosingPolygonPage.Designer.cs">
+        <DependentUpon>GeometricEffectEnclosingPolygonPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolLib\GeometricEffectFillPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolLib\GeometricEffectFillPage.Designer.cs">
+        <DependentUpon>GeometricEffectFillPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolLib\GeometricEffectLinePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolLib\GeometricEffectLinePage.Designer.cs">
+        <DependentUpon>GeometricEffectLinePage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolLib\GeometricEffectMarkerPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolLib\GeometricEffectMarkerPage.Designer.cs">
+        <DependentUpon>GeometricEffectMarkerPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolLib\GeometricEffectOffsetCurvePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolLib\GeometricEffectOffsetCurvePage.Designer.cs">
+        <DependentUpon>GeometricEffectOffsetCurvePage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolLib\GeometricEffectRadialfromPointPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolLib\GeometricEffectRadialfromPointPage.Designer.cs">
+        <DependentUpon>GeometricEffectRadialfromPointPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolLib\GeometricEffectReverseCurverPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolLib\GeometricEffectReverseCurverPage.Designer.cs">
+        <DependentUpon>GeometricEffectReverseCurverPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolLib\GeometricEffectSimplyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolLib\GeometricEffectSimplyPage.Designer.cs">
+        <DependentUpon>GeometricEffectSimplyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolLib\GeometricSmoothCurverPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolLib\GeometricSmoothCurverPage.Designer.cs">
+        <DependentUpon>GeometricSmoothCurverPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolLib\MarkerPlacementAlongLinePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolLib\MarkerPlacementAlongLinePage.Designer.cs">
+        <DependentUpon>MarkerPlacementAlongLinePage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolLib\MarkerPlacementAtExtremitiesPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolLib\MarkerPlacementAtExtremitiesPage.Designer.cs">
+        <DependentUpon>MarkerPlacementAtExtremitiesPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolLib\MarkerPlacementBaseControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="SymbolLib\MarkerPlacementDecorationPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolLib\MarkerPlacementDecorationPage.Designer.cs">
+        <DependentUpon>MarkerPlacementDecorationPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolLib\MarkerPlacementInsidePolygonPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolLib\MarkerPlacementInsidePolygonPage.Designer.cs">
+        <DependentUpon>MarkerPlacementInsidePolygonPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolLib\MarkerPlacementOnLinePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolLib\MarkerPlacementOnLinePage.Designer.cs">
+        <DependentUpon>MarkerPlacementOnLinePage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolLib\MarkerPlacementOnPointPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolLib\MarkerPlacementOnPointPage.Designer.cs">
+        <DependentUpon>MarkerPlacementOnPointPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolLib\MarkerPlacementPolygonCenterPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolLib\MarkerPlacementPolygonCenterPage.Designer.cs">
+        <DependentUpon>MarkerPlacementPolygonCenterPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolLib\MarkerPlacementRandomAlongLinePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolLib\MarkerPlacementRandomAlongLinePage.Designer.cs">
+        <DependentUpon>MarkerPlacementRandomAlongLinePage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolLib\MarkerPlacementRandomInPolygonPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolLib\MarkerPlacementRandomInPolygonPage.Designer.cs">
+        <DependentUpon>MarkerPlacementRandomInPolygonPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolLib\MarkerPlacementVariableAlongLinePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolLib\MarkerPlacementVariableAlongLinePage.Designer.cs">
+        <DependentUpon>MarkerPlacementVariableAlongLinePage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolLib\RepresationRuleCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolLib\RepresationRuleCtrl.Designer.cs">
+        <DependentUpon>RepresationRuleCtrl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\ArrowMarkerControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\ArrowMarkerControl.Designer.cs">
+        <DependentUpon>ArrowMarkerControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\BackgroundSymbolPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\BackgroundSymbolPropertyPage.Designer.cs">
+        <DependentUpon>BackgroundSymbolPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\BorderSymbolPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\BorderSymbolPropertyPage.Designer.cs">
+        <DependentUpon>BorderSymbolPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\CartoLineControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\CartoLineControl.Designer.cs">
+        <DependentUpon>CartoLineControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\CharacterMarker3DSymbolCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\CharacterMarker3DSymbolCtrl.Designer.cs">
+        <DependentUpon>CharacterMarker3DSymbolCtrl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\CharacterMarkerControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\CharacterMarkerControl.Designer.cs">
+        <DependentUpon>CharacterMarkerControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\ColourPicker.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -665,92 +1317,208 @@
     <Compile Include="SymbolUI\CornerGridLabelPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\CornerGridLabelPropertyPage.Designer.cs">
+        <DependentUpon>CornerGridLabelPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\CustomOverlayGridPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\CustomOverlayGridPropertyPage.Designer.cs">
+        <DependentUpon>CustomOverlayGridPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\enumSymbolType.cs" />
     <Compile Include="SymbolUI\FillFeaturePlaceCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\FillFeaturePlaceCtrl.Designer.cs">
+        <DependentUpon>FillFeaturePlaceCtrl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\FillMaplexLabelConficCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\FillMaplexLabelConficCtrl.Designer.cs">
+        <DependentUpon>FillMaplexLabelConficCtrl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\FillMaplexLabelCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\FillMaplexLabelCtrl.Designer.cs">
+        <DependentUpon>FillMaplexLabelCtrl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\FillMaplexLabelStrategyCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\FillMaplexLabelStrategyCtrl.Designer.cs">
+        <DependentUpon>FillMaplexLabelStrategyCtrl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\FillPropertyControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\FillPropertyControl.Designer.cs">
+        <DependentUpon>FillPropertyControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\frmElementProperty.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SymbolUI\frmElementProperty.Designer.cs">
+        <DependentUpon>frmElementProperty.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\frmFillSymbolEdit.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SymbolUI\frmFillSymbolEdit.Designer.cs">
+        <DependentUpon>frmFillSymbolEdit.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\frmLineSymbolEdit.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SymbolUI\frmLineSymbolEdit.Designer.cs">
+        <DependentUpon>frmLineSymbolEdit.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\frmMapGridSheet.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SymbolUI\frmMapGridSheet.Designer.cs">
+        <DependentUpon>frmMapGridSheet.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\frmMapGridType.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SymbolUI\frmMapGridType.Designer.cs">
+        <DependentUpon>frmMapGridType.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\frmPointSymbolEdit.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SymbolUI\frmPointSymbolEdit.Designer.cs">
+        <DependentUpon>frmPointSymbolEdit.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\frmRepresationRule.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SymbolUI\frmRepresationRule.Designer.cs">
+        <DependentUpon>frmRepresationRule.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\frmStyleConvert.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SymbolUI\frmStyleConvert.Designer.cs">
+        <DependentUpon>frmStyleConvert.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\frmStyleConvertEx.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SymbolUI\frmStyleConvertEx.Designer.cs">
+        <DependentUpon>frmStyleConvertEx.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\frmStyleManagerDialog.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SymbolUI\frmStyleManagerDialog.Designer.cs">
+        <DependentUpon>frmStyleManagerDialog.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\frmSymbolProperty.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SymbolUI\frmSymbolProperty.Designer.cs">
+        <DependentUpon>frmSymbolProperty.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\frmSymbolSelector.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SymbolUI\frmSymbolSelector.Designer.cs">
+        <DependentUpon>frmSymbolSelector.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\frmSymbolSelectorEx.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SymbolUI\frmSymbolSelectorEx.Designer.cs">
+        <DependentUpon>frmSymbolSelectorEx.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\frmTextSymbolEdit.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SymbolUI\frmTextSymbolEdit.Designer.cs">
+        <DependentUpon>frmTextSymbolEdit.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\frmTextSymbolEdit1.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SymbolUI\frmTextSymbolEdit1.Designer.cs">
+        <DependentUpon>frmTextSymbolEdit1.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\frmUnionStyleEx.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SymbolUI\frmUnionStyleEx.Designer.cs">
+        <DependentUpon>frmUnionStyleEx.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\GradientFillControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\GradientFillControl.Designer.cs">
+        <DependentUpon>GradientFillControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\GridAxisPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\GridAxisPropertyPage.Designer.cs">
+        <DependentUpon>GridAxisPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\GridHatchPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\GridHatchPropertyPage.Designer.cs">
+        <DependentUpon>GridHatchPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\GridInteriorLabelsPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\GridInteriorLabelsPropertyPage.Designer.cs">
+        <DependentUpon>GridInteriorLabelsPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\HashLineSymbolControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\HashLineSymbolControl.Designer.cs">
+        <DependentUpon>HashLineSymbolControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\IMyStyleGallery.cs" />
     <Compile Include="SymbolUI\IndexGridProperyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\IndexGridProperyPage.Designer.cs">
+        <DependentUpon>IndexGridProperyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\IPropertyPage.cs" />
     <Compile Include="SymbolUI\IPropertyPageEvents.cs" />
     <Compile Include="SymbolUI\IPropertySheet.cs" />
@@ -758,150 +1526,338 @@
     <Compile Include="SymbolUI\LabelConficPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\LabelConficPropertyPage.Designer.cs">
+        <DependentUpon>LabelConficPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\LabelFormatPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\LabelFormatPropertyPage.Designer.cs">
+        <DependentUpon>LabelFormatPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\LabelPlacementPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\LabelPlacementPropertyPage.Designer.cs">
+        <DependentUpon>LabelPlacementPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\LabelStylePropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\LabelStylePropertyPage.Designer.cs">
+        <DependentUpon>LabelStylePropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\LegendItemArrangementPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\LegendItemArrangementPropertyPage.Designer.cs">
+        <DependentUpon>LegendItemArrangementPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\LegendItemGeneralPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\LegendItemGeneralPropertyPage.Designer.cs">
+        <DependentUpon>LegendItemGeneralPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\LineFeaturePlaceSetCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\LineFeaturePlaceSetCtrl.Designer.cs">
+        <DependentUpon>LineFeaturePlaceSetCtrl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\LineFillControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\LineFillControl.Designer.cs">
+        <DependentUpon>LineFillControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\LineMaplexLabelConficCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\LineMaplexLabelConficCtrl.Designer.cs">
+        <DependentUpon>LineMaplexLabelConficCtrl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\LineMaplexLabelCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\LineMaplexLabelCtrl.Designer.cs">
+        <DependentUpon>LineMaplexLabelCtrl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\LineMaplexLabelStrategyCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\LineMaplexLabelStrategyCtrl.Designer.cs">
+        <DependentUpon>LineMaplexLabelStrategyCtrl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\LinePropertyControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\LinePropertyControl.Designer.cs">
+        <DependentUpon>LinePropertyControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\Marker3DEvent.cs" />
     <Compile Include="SymbolUI\Marker3DPlacementCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\Marker3DPlacementCtrl.Designer.cs">
+        <DependentUpon>Marker3DPlacementCtrl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\Marker3DSymbolCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\Marker3DSymbolCtrl.Designer.cs">
+        <DependentUpon>Marker3DSymbolCtrl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\MarkerLineControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\MarkerLineControl.Designer.cs">
+        <DependentUpon>MarkerLineControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\MarkFillControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\MarkFillControl.Designer.cs">
+        <DependentUpon>MarkFillControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\MaskControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\MaskControl.Designer.cs">
+        <DependentUpon>MaskControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\MeasureCoordinatePropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\MeasureCoordinatePropertyPage.Designer.cs">
+        <DependentUpon>MeasureCoordinatePropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\MeasuredGridPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\MeasuredGridPropertyPage.Designer.cs">
+        <DependentUpon>MeasuredGridPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\MGRSPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\MGRSPropertyPage.Designer.cs">
+        <DependentUpon>MGRSPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\MixedLabelPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\MixedLabelPropertyPage.Designer.cs">
+        <DependentUpon>MixedLabelPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\NorthArrowPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\NorthArrowPropertyPage.Designer.cs">
+        <DependentUpon>NorthArrowPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\NumberAndLabelPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\NumberAndLabelPropertyPage.Designer.cs">
+        <DependentUpon>NumberAndLabelPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\NumericFormatPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\NumericFormatPropertyPage.Designer.cs">
+        <DependentUpon>NumericFormatPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\OnApplyEventHandler.cs" />
     <Compile Include="SymbolUI\OnValueChangeEventHandler.cs" />
     <Compile Include="SymbolUI\PictureFillControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\PictureFillControl.Designer.cs">
+        <DependentUpon>PictureFillControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\PictureLineControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\PictureLineControl.Designer.cs">
+        <DependentUpon>PictureLineControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\PictureMarkerControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\PictureMarkerControl.Designer.cs">
+        <DependentUpon>PictureMarkerControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\PointFeatureLabelCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\PointFeatureLabelCtrl.Designer.cs">
+        <DependentUpon>PointFeatureLabelCtrl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\PointMaplexLabelConficCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\PointMaplexLabelConficCtrl.Designer.cs">
+        <DependentUpon>PointMaplexLabelConficCtrl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\PointMaplexLabelCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\PointMaplexLabelCtrl.Designer.cs">
+        <DependentUpon>PointMaplexLabelCtrl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\PointMaplexLabelStrategyCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\PointMaplexLabelStrategyCtrl.Designer.cs">
+        <DependentUpon>PointMaplexLabelStrategyCtrl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\PrincipalDigitsLabelPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\PrincipalDigitsLabelPropertyPage.Designer.cs">
+        <DependentUpon>PrincipalDigitsLabelPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\ScaleAndUnitsPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\ScaleAndUnitsPropertyPage.Designer.cs">
+        <DependentUpon>ScaleAndUnitsPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\ScaleBarEventsClass.cs" />
     <Compile Include="SymbolUI\ScaleBarFormatPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\ScaleBarFormatPropertyPage.Designer.cs">
+        <DependentUpon>ScaleBarFormatPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\ScaleTextEventsClass.cs" />
     <Compile Include="SymbolUI\ScaleTextFormatPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\ScaleTextFormatPropertyPage.Designer.cs">
+        <DependentUpon>ScaleTextFormatPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\ScaleTextTextPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\ScaleTextTextPropertyPage.Designer.cs">
+        <DependentUpon>ScaleTextTextPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\ShadowSymbolPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\ShadowSymbolPropertyPage.Designer.cs">
+        <DependentUpon>ShadowSymbolPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\Simple3DLineSymbolCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\Simple3DLineSymbolCtrl.Designer.cs">
+        <DependentUpon>Simple3DLineSymbolCtrl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\SimpleFillControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\SimpleFillControl.Designer.cs">
+        <DependentUpon>SimpleFillControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\SimpleLineControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\SimpleLineControl.Designer.cs">
+        <DependentUpon>SimpleLineControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\SimpleMarker3DSymbolCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\SimpleMarker3DSymbolCtrl.Designer.cs">
+        <DependentUpon>SimpleMarker3DSymbolCtrl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\SimpleMarkerControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\SimpleMarkerControl.Designer.cs">
+        <DependentUpon>SimpleMarkerControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\SymbolUILicenseProviderCheck.cs" />
     <Compile Include="SymbolUI\TemplateControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\TemplateControl.Designer.cs">
+        <DependentUpon>TemplateControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\TextGeneralControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\TextGeneralControl.Designer.cs">
+        <DependentUpon>TextGeneralControl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\TextureFillSymbolCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\TextureFillSymbolCtrl.Designer.cs">
+        <DependentUpon>TextureFillSymbolCtrl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\TextureLineSymbolCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\TextureLineSymbolCtrl.Designer.cs">
+        <DependentUpon>TextureLineSymbolCtrl.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SymbolUI\TickSymbolPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SymbolUI\TickSymbolPropertyPage.Designer.cs">
+        <DependentUpon>TickSymbolPropertyPage.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="XtraGrid\ColumnAttribute.cs" />
     <Compile Include="XtraGrid\XtraGrid.cs" />
     <Compile Include="ApplicationStyle\StandardPaintStyleMenuItem.cs" />

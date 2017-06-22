@@ -15,51 +15,17 @@ using Array = System.Array;
 
 namespace Yutai.ArcGIS.Carto.UI
 {
-    public class TLConfigPropertyPage : UserControl, IPropertyPage, IPropertyPageEvents
+    public partial class TLConfigPropertyPage : UserControl, IPropertyPage, IPropertyPageEvents
     {
         private bool bool_0 = false;
         private bool bool_1 = false;
-        private Button btnDele;
-        private Button btnDeleteAll;
-        private Button btnMoveDown;
-        private Button btnMoveUp;
-        private Button btnOpen;
-        private Button butNewRow;
-        private Button button1;
-        private Button button2;
-        private CheckBox chkHasBorder;
-        private CheckBox chkItemHasBorder;
-        private ColumnHeader columnHeader_0;
-        private ColumnHeader columnHeader_1;
-        private GroupBox groupBox1;
         private IContainer icontainer_0 = null;
         private ICustomLegend icustomLegend_0 = null;
         private Image image_0 = null;
         private Image image_1 = null;
         private Image image_2 = null;
-        private ImageList imageList_0;
         private int int_0 = 50;
-        private Label label1;
-        private Label label10;
-        private Label label11;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Label label5;
-        private Label label6;
-        private Label label7;
-        private Label label8;
-        private Label label9;
-        private Label labPoint;
-        private RenderInfoListView renderInfoListView1;
         private string string_0 = "";
-        private TextBox txtColumnNum;
-        private TextBox txtColumnSpace;
-        private TextBox txtHeight;
-        private TextBox txtLabelSpace;
-        private TextBox txtLegend;
-        private TextBox txtRowSpace;
-        private TextBox txtWidth;
 
         public event OnValueChangeEventHandler OnValueChange;
 
@@ -224,305 +190,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
-        protected override void Dispose(bool bool_2)
-        {
-            if (bool_2 && (this.icontainer_0 != null))
-            {
-                this.icontainer_0.Dispose();
-            }
-            base.Dispose(bool_2);
-        }
-
-        private void InitializeComponent()
-        {
-            this.icontainer_0 = new Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TLConfigPropertyPage));
-            this.txtLegend = new TextBox();
-            this.labPoint = new Label();
-            this.btnDele = new Button();
-            this.butNewRow = new Button();
-            this.imageList_0 = new ImageList(this.icontainer_0);
-            this.txtColumnNum = new TextBox();
-            this.label1 = new Label();
-            this.groupBox1 = new GroupBox();
-            this.btnDeleteAll = new Button();
-            this.btnMoveDown = new Button();
-            this.btnMoveUp = new Button();
-            this.chkItemHasBorder = new CheckBox();
-            this.label8 = new Label();
-            this.txtLabelSpace = new TextBox();
-            this.label7 = new Label();
-            this.label6 = new Label();
-            this.label5 = new Label();
-            this.txtHeight = new TextBox();
-            this.label4 = new Label();
-            this.txtWidth = new TextBox();
-            this.label3 = new Label();
-            this.renderInfoListView1 = new RenderInfoListView();
-            this.columnHeader_0 = new ColumnHeader();
-            this.columnHeader_1 = new ColumnHeader();
-            this.txtRowSpace = new TextBox();
-            this.label2 = new Label();
-            this.chkHasBorder = new CheckBox();
-            this.txtColumnSpace = new TextBox();
-            this.label9 = new Label();
-            this.button1 = new Button();
-            this.button2 = new Button();
-            this.label10 = new Label();
-            this.label11 = new Label();
-            this.btnOpen = new Button();
-            this.groupBox1.SuspendLayout();
-            base.SuspendLayout();
-            this.txtLegend.Location = new Point(0x43, 6);
-            this.txtLegend.Name = "txtLegend";
-            this.txtLegend.Size = new Size(0x12d, 0x15);
-            this.txtLegend.TabIndex = 0x22;
-            this.txtLegend.TextChanged += new EventHandler(this.txtColumnSpace_TextChanged);
-            this.labPoint.AutoSize = true;
-            this.labPoint.Location = new Point(7, 9);
-            this.labPoint.Name = "labPoint";
-            this.labPoint.Size = new Size(0x3b, 12);
-            this.labPoint.TabIndex = 0x25;
-            this.labPoint.Text = "图例标题:";
-            this.btnDele.Location = new Point(0x86, 0x92);
-            this.btnDele.Name = "btnDele";
-            this.btnDele.Size = new Size(70, 0x17);
-            this.btnDele.TabIndex = 0x2b;
-            this.btnDele.Text = "删除";
-            this.btnDele.UseVisualStyleBackColor = true;
-            this.btnDele.Click += new EventHandler(this.btnDele_Click);
-            this.butNewRow.Location = new Point(0x3a, 0x92);
-            this.butNewRow.Name = "butNewRow";
-            this.butNewRow.Size = new Size(70, 0x17);
-            this.butNewRow.TabIndex = 0x2c;
-            this.butNewRow.Text = "添加";
-            this.butNewRow.UseVisualStyleBackColor = true;
-            this.butNewRow.Click += new EventHandler(this.butNewRow_Click);
-            this.imageList_0.ImageStream =(ImageListStreamer) resources.GetObject("imageList1.ImageStream") ;
-            this.imageList_0.TransparentColor = Color.Transparent;
-            this.imageList_0.Images.SetKeyName(0, "Buffer.ico");
-            this.txtColumnNum.Location = new Point(0x43, 30);
-            this.txtColumnNum.Name = "txtColumnNum";
-            this.txtColumnNum.Size = new Size(0x75, 0x15);
-            this.txtColumnNum.TabIndex = 0x31;
-            this.txtColumnNum.TextChanged += new EventHandler(this.txtColumnSpace_TextChanged);
-            this.label1.AutoSize = true;
-            this.label1.Location = new Point(7, 0x21);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(0x3b, 12);
-            this.label1.TabIndex = 50;
-            this.label1.Text = "图例列数:";
-            this.groupBox1.Controls.Add(this.btnDeleteAll);
-            this.groupBox1.Controls.Add(this.btnMoveDown);
-            this.groupBox1.Controls.Add(this.btnMoveUp);
-            this.groupBox1.Controls.Add(this.chkItemHasBorder);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.txtLabelSpace);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.txtHeight);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.txtWidth);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.renderInfoListView1);
-            this.groupBox1.Controls.Add(this.butNewRow);
-            this.groupBox1.Controls.Add(this.btnDele);
-            this.groupBox1.Location = new Point(9, 0x52);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new Size(0x167, 0xb1);
-            this.groupBox1.TabIndex = 0x33;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "图例项信息";
-            this.btnDeleteAll.Location = new Point(210, 0x92);
-            this.btnDeleteAll.Name = "btnDeleteAll";
-            this.btnDeleteAll.Size = new Size(80, 0x18);
-            this.btnDeleteAll.TabIndex = 0x42;
-            this.btnDeleteAll.Text = "删除全部";
-            this.btnDeleteAll.Click += new EventHandler(this.btnDeleteAll_Click);
-            this.btnMoveDown.Enabled = false;
-            this.btnMoveDown.Image = (System.Drawing.Image)resources.GetObject("btnMoveDown.Image");
-            this.btnMoveDown.Location = new Point(0x131, 0x5e);
-            this.btnMoveDown.Name = "btnMoveDown";
-            this.btnMoveDown.Size = new Size(0x18, 0x18);
-            this.btnMoveDown.TabIndex = 0x41;
-            this.btnMoveDown.Click += new EventHandler(this.btnMoveDown_Click);
-            this.btnMoveUp.Enabled = false;
-            this.btnMoveUp.Image = (System.Drawing.Image)resources.GetObject("btnMoveUp.Image");
-            this.btnMoveUp.Location = new Point(0x131, 0x40);
-            this.btnMoveUp.Name = "btnMoveUp";
-            this.btnMoveUp.Size = new Size(0x18, 0x18);
-            this.btnMoveUp.TabIndex = 0x40;
-            this.btnMoveUp.Text = "z";
-            this.btnMoveUp.Click += new EventHandler(this.btnMoveUp_Click);
-            this.chkItemHasBorder.AutoSize = true;
-            this.chkItemHasBorder.Location = new Point(0xe4, 0x2a);
-            this.chkItemHasBorder.Name = "chkItemHasBorder";
-            this.chkItemHasBorder.Size = new Size(0x60, 0x10);
-            this.chkItemHasBorder.TabIndex = 0x3f;
-            this.chkItemHasBorder.Text = "是否添加边框";
-            this.chkItemHasBorder.UseVisualStyleBackColor = true;
-            this.chkItemHasBorder.CheckedChanged += new EventHandler(this.chkItemHasBorder_CheckedChanged);
-            this.label8.AutoSize = true;
-            this.label8.Location = new Point(0xbd, 0x2b);
-            this.label8.Name = "label8";
-            this.label8.Size = new Size(0x1d, 12);
-            this.label8.TabIndex = 0x3e;
-            this.label8.Text = "厘米";
-            this.txtLabelSpace.Location = new Point(0x63, 40);
-            this.txtLabelSpace.Name = "txtLabelSpace";
-            this.txtLabelSpace.Size = new Size(0x54, 0x15);
-            this.txtLabelSpace.TabIndex = 60;
-            this.txtLabelSpace.TextChanged += new EventHandler(this.txtColumnSpace_TextChanged);
-            this.label7.AutoSize = true;
-            this.label7.Location = new Point(6, 0x2b);
-            this.label7.Name = "label7";
-            this.label7.Size = new Size(0x59, 12);
-            this.label7.TabIndex = 0x3d;
-            this.label7.Text = "符号与说明间距";
-            this.label6.AutoSize = true;
-            this.label6.Location = new Point(0x13e, 0x11);
-            this.label6.Name = "label6";
-            this.label6.Size = new Size(0x1d, 12);
-            this.label6.TabIndex = 0x3b;
-            this.label6.Text = "厘米";
-            this.label5.AutoSize = true;
-            this.label5.Location = new Point(0x7d, 0x11);
-            this.label5.Name = "label5";
-            this.label5.Size = new Size(0x1d, 12);
-            this.label5.TabIndex = 0x3a;
-            this.label5.Text = "厘米";
-            this.txtHeight.Location = new Point(0xe4, 14);
-            this.txtHeight.Name = "txtHeight";
-            this.txtHeight.Size = new Size(0x54, 0x15);
-            this.txtHeight.TabIndex = 0x38;
-            this.txtHeight.TextChanged += new EventHandler(this.txtColumnSpace_TextChanged);
-            this.label4.AutoSize = true;
-            this.label4.Location = new Point(0xc3, 0x11);
-            this.label4.Name = "label4";
-            this.label4.Size = new Size(0x17, 12);
-            this.label4.TabIndex = 0x39;
-            this.label4.Text = "高:";
-            this.txtWidth.Location = new Point(0x23, 14);
-            this.txtWidth.Name = "txtWidth";
-            this.txtWidth.Size = new Size(0x54, 0x15);
-            this.txtWidth.TabIndex = 0x36;
-            this.txtWidth.TextChanged += new EventHandler(this.txtColumnSpace_TextChanged);
-            this.label3.AutoSize = true;
-            this.label3.Location = new Point(6, 0x11);
-            this.label3.Name = "label3";
-            this.label3.Size = new Size(0x17, 12);
-            this.label3.TabIndex = 0x37;
-            this.label3.Text = "宽:";
-            this.renderInfoListView1.Columns.AddRange(new ColumnHeader[] { this.columnHeader_0, this.columnHeader_1 });
-            this.renderInfoListView1.FullRowSelect = true;
-            this.renderInfoListView1.Location = new Point(7, 0x40);
-            this.renderInfoListView1.Name = "renderInfoListView1";
-            this.renderInfoListView1.Size = new Size(0x124, 0x4e);
-            this.renderInfoListView1.TabIndex = 0x30;
-            this.renderInfoListView1.UseCompatibleStateImageBehavior = false;
-            this.renderInfoListView1.View = View.Details;
-            this.renderInfoListView1.SelectedIndexChanged += new EventHandler(this.renderInfoListView1_SelectedIndexChanged);
-            this.renderInfoListView1.OnValueChanged += new RenderInfoListView.OnValueChangedHandler(this.method_12);
-            this.columnHeader_0.Text = "图例项符号";
-            this.columnHeader_0.Width = 110;
-            this.columnHeader_1.Text = "图例项说明";
-            this.columnHeader_1.Width = 0x84;
-            this.txtRowSpace.Location = new Point(0x43, 0x37);
-            this.txtRowSpace.Name = "txtRowSpace";
-            this.txtRowSpace.Size = new Size(0x54, 0x15);
-            this.txtRowSpace.TabIndex = 0x34;
-            this.txtRowSpace.TextChanged += new EventHandler(this.txtColumnSpace_TextChanged);
-            this.label2.AutoSize = true;
-            this.label2.Location = new Point(7, 0x3a);
-            this.label2.Name = "label2";
-            this.label2.Size = new Size(0x2f, 12);
-            this.label2.TabIndex = 0x35;
-            this.label2.Text = "行间距:";
-            this.chkHasBorder.AutoSize = true;
-            this.chkHasBorder.Location = new Point(0xda, 0x1d);
-            this.chkHasBorder.Name = "chkHasBorder";
-            this.chkHasBorder.Size = new Size(120, 0x10);
-            this.chkHasBorder.TabIndex = 0x40;
-            this.chkHasBorder.Text = "图例是否添加边框";
-            this.chkHasBorder.UseVisualStyleBackColor = true;
-            this.chkHasBorder.CheckedChanged += new EventHandler(this.chkHasBorder_CheckedChanged);
-            this.txtColumnSpace.Location = new Point(0x102, 0x37);
-            this.txtColumnSpace.Name = "txtColumnSpace";
-            this.txtColumnSpace.Size = new Size(0x4b, 0x15);
-            this.txtColumnSpace.TabIndex = 0x41;
-            this.txtColumnSpace.TextChanged += new EventHandler(this.txtColumnSpace_TextChanged);
-            this.label9.AutoSize = true;
-            this.label9.Location = new Point(0xc6, 0x3a);
-            this.label9.Name = "label9";
-            this.label9.Size = new Size(0x2f, 12);
-            this.label9.TabIndex = 0x42;
-            this.label9.Text = "列间距:";
-            this.button1.Location = new Point(0x11, 0x107);
-            this.button1.Name = "button1";
-            this.button1.Size = new Size(70, 0x17);
-            this.button1.TabIndex = 0x44;
-            this.button1.Text = "保存";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new EventHandler(this.button1_Click);
-            this.button2.DialogResult = DialogResult.Cancel;
-            this.button2.Location = new Point(0x12a, 0x173);
-            this.button2.Name = "button2";
-            this.button2.Size = new Size(70, 0x17);
-            this.button2.TabIndex = 0x43;
-            this.button2.Text = "关闭";
-            this.button2.UseVisualStyleBackColor = true;
-            this.label10.AutoSize = true;
-            this.label10.Location = new Point(0x9b, 0x3a);
-            this.label10.Name = "label10";
-            this.label10.Size = new Size(0x1d, 12);
-            this.label10.TabIndex = 0x45;
-            this.label10.Text = "厘米";
-            this.label11.AutoSize = true;
-            this.label11.Location = new Point(0x153, 0x3a);
-            this.label11.Name = "label11";
-            this.label11.Size = new Size(0x1d, 12);
-            this.label11.TabIndex = 70;
-            this.label11.Text = "厘米";
-            this.btnOpen.Location = new Point(0x11e, 0x107);
-            this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new Size(70, 0x17);
-            this.btnOpen.TabIndex = 0x47;
-            this.btnOpen.Text = "加载";
-            this.btnOpen.UseVisualStyleBackColor = true;
-            this.btnOpen.Click += new EventHandler(this.btnOpen_Click);
-            base.AutoScaleDimensions = new SizeF(6f, 12f);
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.Controls.Add(this.btnOpen);
-            base.Controls.Add(this.label11);
-            base.Controls.Add(this.label10);
-            base.Controls.Add(this.button1);
-            base.Controls.Add(this.button2);
-            base.Controls.Add(this.txtColumnSpace);
-            base.Controls.Add(this.label9);
-            base.Controls.Add(this.chkHasBorder);
-            base.Controls.Add(this.txtRowSpace);
-            base.Controls.Add(this.label2);
-            base.Controls.Add(this.groupBox1);
-            base.Controls.Add(this.txtColumnNum);
-            base.Controls.Add(this.label1);
-            base.Controls.Add(this.txtLegend);
-            base.Controls.Add(this.labPoint);
-            base.Name = "frmTLConfig";
-            base.Size = new Size(0x17d, 290);
-            base.Load += new EventHandler(this.TLConfigPropertyPage_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            base.ResumeLayout(false);
-            base.PerformLayout();
-        }
-
-        void IPropertyPage.Hide()
-        {
-            base.Hide();
-        }
-
-        private void method_0(string string_1)
+ private void method_0(string string_1)
         {
         }
 
@@ -686,9 +354,9 @@ namespace Yutai.ArcGIS.Carto.UI
             stream.Save(pstm, 1);
             ((IMemoryBlobStreamVariant) pstm).ExportToVariant(out obj2);
             System.Array array = obj2 as Array;
-            byte[] buffer = new byte[array.Length + 0x10];
+            byte[] buffer = new byte[array.Length + 16];
             guid.ToByteArray().CopyTo(buffer, 0);
-            array.CopyTo(buffer, 0x10);
+            array.CopyTo(buffer, 16);
             return Convert.ToBase64String(buffer);
         }
 
@@ -696,9 +364,9 @@ namespace Yutai.ArcGIS.Carto.UI
         {
             int num2;
             byte[] buffer = Convert.FromBase64String(string_1);
-            int num = buffer.Length - 0x10;
-            byte[] b = new byte[0x10];
-            for (num2 = 0; num2 < 0x10; num2++)
+            int num = buffer.Length - 16;
+            byte[] b = new byte[16];
+            for (num2 = 0; num2 < 16; num2++)
             {
                 b[num2] = buffer[num2];
             }
@@ -707,7 +375,7 @@ namespace Yutai.ArcGIS.Carto.UI
             byte[] buffer3 = new byte[num];
             for (num2 = 0; num2 < num; num2++)
             {
-                buffer3[num2] = buffer[num2 + 0x10];
+                buffer3[num2] = buffer[num2 + 16];
             }
             IMemoryBlobStream pstm = new MemoryBlobStreamClass();
             ((IMemoryBlobStreamVariant) pstm).ImportFromVariant(buffer3);

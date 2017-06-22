@@ -295,7 +295,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
         {
             get
             {
-                return 0x97;
+                return 151;
             }
         }
 

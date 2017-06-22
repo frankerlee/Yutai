@@ -189,7 +189,7 @@ namespace Yutai.ArcGIS.Catalog
         {
             get
             {
-                return ImageLib.GetSmallImage(0x38);
+                return ImageLib.GetSmallImage(56);
             }
         }
 
@@ -197,7 +197,7 @@ namespace Yutai.ArcGIS.Catalog
         {
             get
             {
-                return ImageLib.GetSmallImage(0x38);
+                return ImageLib.GetSmallImage(56);
             }
         }
 
@@ -237,7 +237,7 @@ namespace Yutai.ArcGIS.Catalog
         {
             get
             {
-                return ImageLib.GetSmallImage(0x38);
+                return ImageLib.GetSmallImage(56);
             }
         }
 
@@ -245,7 +245,7 @@ namespace Yutai.ArcGIS.Catalog
         {
             get
             {
-                return ImageLib.GetSmallImage(0x38);
+                return ImageLib.GetSmallImage(56);
             }
         }
 

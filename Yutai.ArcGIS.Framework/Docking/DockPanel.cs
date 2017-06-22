@@ -262,17 +262,17 @@ namespace Yutai.ArcGIS.Framework.Docking
                 int num = (base.ClientRectangle.Width - base.DockPadding.Left) - base.DockPadding.Right;
                 int num2 = (this.m_dockLeftPortion >= 1.0) ? ((int) this.m_dockLeftPortion) : ((int) (num * this.m_dockLeftPortion));
                 int num3 = (this.m_dockRightPortion >= 1.0) ? ((int) this.m_dockRightPortion) : ((int) (num * this.m_dockRightPortion));
-                if (num2 < 0x18)
+                if (num2 < 24)
                 {
-                    num2 = 0x18;
+                    num2 = 24;
                 }
-                if (num3 < 0x18)
+                if (num3 < 24)
                 {
-                    num3 = 0x18;
+                    num3 = 24;
                 }
-                if ((num2 + num3) > (num - 0x18))
+                if ((num2 + num3) > (num - 24))
                 {
-                    num4 = (num2 + num3) - (num - 0x18);
+                    num4 = (num2 + num3) - (num - 24);
                     num2 -= num4 / 2;
                     num3 -= num4 / 2;
                 }
@@ -283,17 +283,17 @@ namespace Yutai.ArcGIS.Framework.Docking
                 int num5 = (base.ClientRectangle.Height - base.DockPadding.Top) - base.DockPadding.Bottom;
                 int num6 = (this.m_dockTopPortion >= 1.0) ? ((int) this.m_dockTopPortion) : ((int) (num5 * this.m_dockTopPortion));
                 int num7 = (this.m_dockBottomPortion >= 1.0) ? ((int) this.m_dockBottomPortion) : ((int) (num5 * this.m_dockBottomPortion));
-                if (num6 < 0x18)
+                if (num6 < 24)
                 {
-                    num6 = 0x18;
+                    num6 = 24;
                 }
-                if (num7 < 0x18)
+                if (num7 < 24)
                 {
-                    num7 = 0x18;
+                    num7 = 24;
                 }
-                if ((num6 + num7) > (num5 - 0x18))
+                if ((num6 + num7) > (num5 - 24))
                 {
-                    num4 = (num6 + num7) - (num5 - 0x18);
+                    num4 = (num6 + num7) - (num5 - 24);
                     num6 -= num4 / 2;
                     num7 -= num4 / 2;
                 }
@@ -1003,9 +1003,9 @@ namespace Yutai.ArcGIS.Framework.Docking
                         {
                             autoHidePortion = dockArea.Width * autoHidePortion;
                         }
-                        if (autoHidePortion > (dockArea.Width - 0x18))
+                        if (autoHidePortion > (dockArea.Width - 24))
                         {
-                            autoHidePortion = dockArea.Width - 0x18;
+                            autoHidePortion = dockArea.Width - 24;
                         }
                         empty.X = dockArea.X;
                         empty.Y = dockArea.Y;
@@ -1018,9 +1018,9 @@ namespace Yutai.ArcGIS.Framework.Docking
                         {
                             autoHidePortion = dockArea.Width * autoHidePortion;
                         }
-                        if (autoHidePortion > (dockArea.Width - 0x18))
+                        if (autoHidePortion > (dockArea.Width - 24))
                         {
-                            autoHidePortion = dockArea.Width - 0x18;
+                            autoHidePortion = dockArea.Width - 24;
                         }
                         empty.X = (dockArea.X + dockArea.Width) - ((int) autoHidePortion);
                         empty.Y = dockArea.Y;
@@ -1033,9 +1033,9 @@ namespace Yutai.ArcGIS.Framework.Docking
                         {
                             autoHidePortion = dockArea.Height * autoHidePortion;
                         }
-                        if (autoHidePortion > (dockArea.Height - 0x18))
+                        if (autoHidePortion > (dockArea.Height - 24))
                         {
-                            autoHidePortion = dockArea.Height - 0x18;
+                            autoHidePortion = dockArea.Height - 24;
                         }
                         empty.X = dockArea.X;
                         empty.Y = dockArea.Y;
@@ -1048,9 +1048,9 @@ namespace Yutai.ArcGIS.Framework.Docking
                         {
                             autoHidePortion = dockArea.Height * autoHidePortion;
                         }
-                        if (autoHidePortion > (dockArea.Height - 0x18))
+                        if (autoHidePortion > (dockArea.Height - 24))
                         {
-                            autoHidePortion = dockArea.Height - 0x18;
+                            autoHidePortion = dockArea.Height - 24;
                         }
                         empty.X = dockArea.X;
                         empty.Y = (dockArea.Y + dockArea.Height) - ((int) autoHidePortion);
@@ -1997,13 +1997,13 @@ namespace Yutai.ArcGIS.Framework.Docking
                     Rectangle dockArea = this.DockPanel.DockArea;
                     if (((ISplitterDragSource) this).IsVertical)
                     {
-                        dockArea.X += 0x18;
-                        dockArea.Width -= 0x30;
+                        dockArea.X += 24;
+                        dockArea.Width -= 48;
                     }
                     else
                     {
-                        dockArea.Y += 0x18;
-                        dockArea.Height -= 0x30;
+                        dockArea.Y += 24;
+                        dockArea.Height -= 48;
                     }
                     return this.DockPanel.RectangleToScreen(dockArea);
                 }
@@ -3003,7 +3003,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             protected sealed override bool OnPreFilterMessage(ref Message m)
             {
-                if (((m.Msg == 0x100) || (m.Msg == 0x101)) && ((((int) m.WParam) == 0x11) || (((int) m.WParam) == 0x10)))
+                if (((m.Msg == 256) || (m.Msg == 257)) && ((((int) m.WParam) == 17) || (((int) m.WParam) == 16)))
                 {
                     this.OnDragging();
                 }
@@ -3084,19 +3084,19 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             bool IMessageFilter.PreFilterMessage(ref Message m)
             {
-                if (m.Msg == 0x200)
+                if (m.Msg == 512)
                 {
                     this.OnDragging();
                 }
-                else if (m.Msg == 0x202)
+                else if (m.Msg == 514)
                 {
                     this.EndDrag(false);
                 }
-                else if (m.Msg == 0x215)
+                else if (m.Msg == 533)
                 {
                     this.EndDrag(true);
                 }
-                else if ((m.Msg == 0x100) && (((int) m.WParam) == 0x1b))
+                else if ((m.Msg == 256) && (((int) m.WParam) == 27))
                 {
                     this.EndDrag(true);
                 }
@@ -3105,7 +3105,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             protected sealed override void WndProc(ref Message m)
             {
-                if ((m.Msg == 0x1f) || (m.Msg == 0x215))
+                if ((m.Msg == 31) || (m.Msg == 533))
                 {
                     this.EndDrag(true);
                 }
@@ -3808,7 +3808,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             protected override void WndProc(ref Message m)
             {
-                if ((m.Msg == 0x83) && !this.AutoScroll)
+                if ((m.Msg == 131) && !this.AutoScroll)
                 {
                     NativeMethods.ShowScrollBar(m.HWnd, 3, 0);
                 }
@@ -3853,11 +3853,11 @@ namespace Yutai.ArcGIS.Framework.Docking
 
                             case System.Windows.Forms.BorderStyle.FixedSingle:
                                 num2 &= -513;
-                                windowLong |= 0x800000;
+                                windowLong |= 8388608;
                                 break;
 
                             case System.Windows.Forms.BorderStyle.Fixed3D:
-                                num2 |= 0x200;
+                                num2 |= 512;
                                 windowLong &= -8388609;
                                 break;
                         }
@@ -4142,7 +4142,7 @@ namespace Yutai.ArcGIS.Framework.Docking
                 dockPanel.DockRightPortion = struct2.DockRightPortion;
                 dockPanel.DockTopPortion = struct2.DockTopPortion;
                 dockPanel.DockBottomPortion = struct2.DockBottomPortion;
-                int num = 0x7fffffff;
+                int num = 2147483647;
                 for (num2 = 0; num2 < structArray3.Length; num2++)
                 {
                     int zOrderIndex = -1;

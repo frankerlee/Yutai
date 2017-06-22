@@ -7,17 +7,11 @@ using ESRI.ArcGIS.Carto;
 
 namespace Yutai.ArcGIS.Controls.Controls.Export
 {
-    public class ExportToExcelWizard : Form
+    public partial class ExportToExcelWizard : Form
     {
-        private SimpleButton btnCancel;
-        private SimpleButton btnLast;
-        private SimpleButton btnNext;
-        private Container components = null;
-        private GroupBox groupBox1;
         private ExportToExcelSelectData m_pExcelSelectData = new ExportToExcelSelectData();
         private ExportToExcelSet m_pExportToExcelSet = new ExportToExcelSet();
         private int m_Step = 0;
-        private Panel panel1;
 
         public ExportToExcelWizard()
         {
@@ -76,58 +70,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
         {
         }
 
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExportToExcelWizard));
-            this.panel1 = new Panel();
-            this.groupBox1 = new GroupBox();
-            this.btnLast = new SimpleButton();
-            this.btnNext = new SimpleButton();
-            this.btnCancel = new SimpleButton();
-            base.SuspendLayout();
-            this.panel1.Dock = DockStyle.Top;
-            this.panel1.Location = new Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new Size(0x178, 0xd8);
-            this.panel1.TabIndex = 0;
-            this.groupBox1.Location = new Point(0, 0xd8);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new Size(0x170, 8);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.btnLast.Location = new Point(0x98, 0xe8);
-            this.btnLast.Name = "btnLast";
-            this.btnLast.Size = new Size(0x40, 0x18);
-            this.btnLast.TabIndex = 2;
-            this.btnLast.Text = "上一步";
-            this.btnLast.Click += new EventHandler(this.btnLast_Click);
-            this.btnNext.Location = new Point(0xe0, 0xe8);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new Size(0x40, 0x18);
-            this.btnNext.TabIndex = 3;
-            this.btnNext.Text = "下一步";
-            this.btnNext.Click += new EventHandler(this.btnNext_Click);
-            this.btnCancel.DialogResult = DialogResult.Cancel;
-            this.btnCancel.Location = new Point(0x128, 0xe8);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new Size(0x40, 0x18);
-            this.btnCancel.TabIndex = 4;
-            this.btnCancel.Text = "取消";
-            this.AutoScaleBaseSize = new Size(6, 14);
-            base.ClientSize = new Size(0x178, 0x10d);
-            base.Controls.Add(this.btnCancel);
-            base.Controls.Add(this.btnNext);
-            base.Controls.Add(this.btnLast);
-            base.Controls.Add(this.groupBox1);
-            base.Controls.Add(this.panel1);
-            base.Icon = (Icon) resources.GetObject("$this.Icon");
-            base.Name = "ExportToExcelWizard";
-            this.Text = "导出数据到Excel向导";
-            base.Load += new EventHandler(this.ExportToExcelWizard_Load);
-            base.ResumeLayout(false);
-        }
-
-        public IMap Map
+ public IMap Map
         {
             set
             {

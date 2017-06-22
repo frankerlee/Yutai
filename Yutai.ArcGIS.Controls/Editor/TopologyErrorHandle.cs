@@ -436,7 +436,7 @@ namespace Yutai.ArcGIS.Controls.Editor
                     bool extensionsPerformed = true;
                     if (num < num2)
                     {
-                        curve2.ConstructExtended(fromCurve, toCurve, 0x10, ref extensionsPerformed);
+                        curve2.ConstructExtended(fromCurve, toCurve, 16, ref extensionsPerformed);
                     }
                     else
                     {

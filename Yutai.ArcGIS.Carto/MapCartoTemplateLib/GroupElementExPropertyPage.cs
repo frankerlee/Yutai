@@ -6,16 +6,11 @@ using Yutai.ArcGIS.Common.BaseClasses;
 
 namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 {
-    public class GroupElementExPropertyPage : UserControl, IPropertyPage, IPropertyPageEvents
+    public partial class GroupElementExPropertyPage : UserControl, IPropertyPage, IPropertyPageEvents
     {
         private bool bool_0 = false;
         private bool bool_1 = false;
         private IContainer icontainer_0 = null;
-        private MapCartoTemplateLib.MapTemplateElement mapTemplateElement_0;
-        private RadioButton rdoFiexdSize;
-        private RadioButton rdoSameAsWidth;
-        private RadioButton rdoWidthScale;
-        private TextBox txtScale;
 
         public event OnValueChangeEventHandler OnValueChange;
 
@@ -58,79 +53,12 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             this.bool_1 = false;
         }
 
-        protected override void Dispose(bool bool_2)
-        {
-            if (bool_2 && (this.icontainer_0 != null))
-            {
-                this.icontainer_0.Dispose();
-            }
-            base.Dispose(bool_2);
-        }
-
-        private void GroupElementExPropertyPage_Load(object sender, EventArgs e)
+ private void GroupElementExPropertyPage_Load(object sender, EventArgs e)
         {
             this.method_1();
         }
 
-        private void InitializeComponent()
-        {
-            this.rdoFiexdSize = new RadioButton();
-            this.rdoSameAsWidth = new RadioButton();
-            this.rdoWidthScale = new RadioButton();
-            this.txtScale = new TextBox();
-            base.SuspendLayout();
-            this.rdoFiexdSize.AutoSize = true;
-            this.rdoFiexdSize.Location = new Point(0x15, 0x1a);
-            this.rdoFiexdSize.Name = "rdoFiexdSize";
-            this.rdoFiexdSize.Size = new Size(0x47, 0x10);
-            this.rdoFiexdSize.TabIndex = 2;
-            this.rdoFiexdSize.Text = "固定大小";
-            this.rdoFiexdSize.UseVisualStyleBackColor = true;
-            this.rdoFiexdSize.CheckedChanged += new EventHandler(this.rdoWidthScale_CheckedChanged);
-            this.rdoSameAsWidth.AutoSize = true;
-            this.rdoSameAsWidth.Checked = true;
-            this.rdoSameAsWidth.Location = new Point(0x15, 0x37);
-            this.rdoSameAsWidth.Name = "rdoSameAsWidth";
-            this.rdoSameAsWidth.Size = new Size(0x5f, 0x10);
-            this.rdoSameAsWidth.TabIndex = 3;
-            this.rdoSameAsWidth.TabStop = true;
-            this.rdoSameAsWidth.Text = "同内图廓宽度";
-            this.rdoSameAsWidth.UseVisualStyleBackColor = true;
-            this.rdoSameAsWidth.CheckedChanged += new EventHandler(this.rdoWidthScale_CheckedChanged);
-            this.rdoWidthScale.AutoSize = true;
-            this.rdoWidthScale.Location = new Point(0x15, 0x56);
-            this.rdoWidthScale.Name = "rdoWidthScale";
-            this.rdoWidthScale.Size = new Size(0x9b, 0x10);
-            this.rdoWidthScale.TabIndex = 4;
-            this.rdoWidthScale.Text = "同内图廓宽度按比例缩放";
-            this.rdoWidthScale.UseVisualStyleBackColor = true;
-            this.rdoWidthScale.CheckedChanged += new EventHandler(this.rdoWidthScale_CheckedChanged);
-            this.txtScale.Location = new Point(40, 0x6c);
-            this.txtScale.Name = "txtScale";
-            this.txtScale.ReadOnly = true;
-            this.txtScale.Size = new Size(0x88, 0x15);
-            this.txtScale.TabIndex = 5;
-            this.txtScale.Text = "1";
-            this.txtScale.TextChanged += new EventHandler(this.txtScale_TextChanged);
-            base.AutoScaleDimensions = new SizeF(6f, 12f);
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.Controls.Add(this.txtScale);
-            base.Controls.Add(this.rdoWidthScale);
-            base.Controls.Add(this.rdoSameAsWidth);
-            base.Controls.Add(this.rdoFiexdSize);
-            base.Name = "GroupElementExPropertyPage";
-            base.Size = new Size(0xfc, 0xce);
-            base.Load += new EventHandler(this.GroupElementExPropertyPage_Load);
-            base.ResumeLayout(false);
-            base.PerformLayout();
-        }
-
-        void IPropertyPage.Hide()
-        {
-            base.Hide();
-        }
-
-        private void method_0()
+ private void method_0()
         {
             this.bool_1 = true;
             if (this.OnValueChange != null)

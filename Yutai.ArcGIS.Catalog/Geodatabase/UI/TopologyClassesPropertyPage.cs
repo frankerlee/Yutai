@@ -16,22 +16,14 @@ using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 {
-    public class TopologyClassesPropertyPage : UserControl, IPropertyPage, IPropertyPageEvents
+    public partial class TopologyClassesPropertyPage : UserControl, IPropertyPage, IPropertyPageEvents
     {
         private bool bool_0 = false;
         private bool bool_1 = false;
-        private SimpleButton btnAdd;
-        private SimpleButton btnDelete;
-        private SimpleButton btnDeleteAll;
         private Container container_0 = null;
-        private GridControl gridControl1;
-        private GridView gridView1;
         private IList ilist_0 = new ArrayList();
         private ITopology itopology_0 = null;
-        private Label label1;
         private string string_0 = "要素类";
-        private SpinEdit txtValue;
-        private VertXtraGrid vertXtraGrid_0;
 
         public event OnValueChangeEventHandler OnValueChange;
 
@@ -203,16 +195,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
         }
 
-        protected override void Dispose(bool bool_2)
-        {
-            if (bool_2 && (this.container_0 != null))
-            {
-                this.container_0.Dispose();
-            }
-            base.Dispose(bool_2);
-        }
-
-        private void gridView1_CellValueChanged(object sender, CellValueChangedEventArgs e)
+ private void gridView1_CellValueChanged(object sender, CellValueChangedEventArgs e)
         {
             if (this.bool_0 && (this.OnValueChange != null))
             {
@@ -232,91 +215,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
-        private void InitializeComponent()
-        {
-            this.label1 = new Label();
-            this.gridControl1 = new GridControl();
-            this.gridView1 = new GridView();
-            this.btnAdd = new SimpleButton();
-            this.btnDelete = new SimpleButton();
-            this.btnDeleteAll = new SimpleButton();
-            this.txtValue = new SpinEdit();
-            this.gridControl1.BeginInit();
-            this.gridView1.BeginInit();
-            this.txtValue.Properties.BeginInit();
-            base.SuspendLayout();
-            this.label1.AutoSize = true;
-            this.label1.Location = new Point(0x10, 0x10);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(0x48, 0x11);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "优先级数值:";
-            this.gridControl1.EmbeddedNavigator.Name = "";
-            this.gridControl1.Location = new Point(0x10, 40);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new Size(0x138, 200);
-            this.gridControl1.TabIndex = 2;
-            this.gridControl1.ViewCollection.AddRange(new BaseView[] { this.gridView1 });
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.OptionsView.ShowIndicator = false;
-            this.gridView1.SelectionChanged += new SelectionChangedEventHandler(this.gridView1_SelectionChanged);
-            this.btnAdd.Location = new Point(0x150, 0x30);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new Size(0x40, 0x18);
-            this.btnAdd.TabIndex = 3;
-            this.btnAdd.Text = "增加类";
-            this.btnAdd.Click += new EventHandler(this.btnAdd_Click);
-            this.btnDelete.Location = new Point(0x150, 80);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new Size(0x40, 0x18);
-            this.btnDelete.TabIndex = 4;
-            this.btnDelete.Text = "删除";
-            this.btnDelete.Click += new EventHandler(this.btnDelete_Click);
-            this.btnDeleteAll.Location = new Point(0x150, 120);
-            this.btnDeleteAll.Name = "btnDeleteAll";
-            this.btnDeleteAll.Size = new Size(0x40, 0x18);
-            this.btnDeleteAll.TabIndex = 5;
-            this.btnDeleteAll.Text = "删除全部";
-            this.btnDeleteAll.Click += new EventHandler(this.btnDeleteAll_Click);
-            int[] bits = new int[4];
-            bits[0] = 1;
-            this.txtValue.EditValue = new decimal(bits);
-            this.txtValue.Location = new Point(0x60, 8);
-            this.txtValue.Name = "txtValue";
-            this.txtValue.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
-            bits = new int[4];
-            bits[0] = 50;
-            this.txtValue.Properties.MaxValue = new decimal(bits);
-            bits = new int[4];
-            bits[0] = 1;
-            this.txtValue.Properties.MinValue = new decimal(bits);
-            this.txtValue.Size = new Size(0x60, 0x17);
-            this.txtValue.TabIndex = 6;
-            this.txtValue.EditValueChanged += new EventHandler(this.txtValue_EditValueChanged);
-            base.Controls.Add(this.txtValue);
-            base.Controls.Add(this.btnDeleteAll);
-            base.Controls.Add(this.btnDelete);
-            base.Controls.Add(this.btnAdd);
-            base.Controls.Add(this.gridControl1);
-            base.Controls.Add(this.label1);
-            base.Name = "TopologyClassesPropertyPage";
-            base.Size = new Size(0x198, 0x120);
-            base.Load += new EventHandler(this.TopologyClassesPropertyPage_Load);
-            this.gridControl1.EndInit();
-            this.gridView1.EndInit();
-            this.txtValue.Properties.EndInit();
-            base.ResumeLayout(false);
-        }
-
-        void IPropertyPage.Hide()
-        {
-            base.Hide();
-        }
-
-        public void ResetControl()
+ public void ResetControl()
         {
         }
 
@@ -430,7 +329,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
-        private class Class6
+        private partial class Class6
         {
             private bool bool_0 = false;
             private ITopologyClass itopologyClass_0 = null;

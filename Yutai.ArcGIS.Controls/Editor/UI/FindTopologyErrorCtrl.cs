@@ -21,57 +21,15 @@ using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {
-    public class FindTopologyErrorCtrl : UserControl, IDockContent
+    public partial class FindTopologyErrorCtrl : UserControl, IDockContent
     {
-        private BarDockControl barDockControlBottom;
-        private BarDockControl barDockControlLeft;
-        private BarDockControl barDockControlRight;
-        private BarDockControl barDockControlTop;
-        private BarManager barManager1;
-        private SimpleButton btnFind;
-        private ComboBoxEdit cboFindType;
-        private CheckEdit chkError;
-        private CheckEdit chkException;
-        private CheckEdit chkVisibleRegion;
-        private ColumnHeader columnHeader1;
-        private ColumnHeader columnHeader2;
-        private ColumnHeader columnHeader3;
-        private ColumnHeader columnHeader4;
-        private ColumnHeader columnHeader5;
-        private ColumnHeader columnHeader6;
-        private ColumnHeader columnHeader7;
-        private IContainer components;
-        private BarButtonItem Delete;
-        private BarButtonItem DemoteFromRuleException;
-        private BarButtonItem Explode;
-        private BarButtonItem ExtendLine;
-        private Label label1;
-        private Label lblErrorNum;
-        private ListView listViewError;
-        private bool m_CanDo;
-        private IWorkspace m_pEditWorkspace;
-        private IMap m_pFocusMap;
         private TopologyErrorSelections m_pTopoErroeSelection = new TopologyErrorSelections();
-        private ITopologyLayer m_TopologyLayer;
-        private BarButtonItem MergeErrorToFeature;
-        private BarButtonItem NewFeature;
-        private Panel panel1;
-        private BarButtonItem PanTo;
-        private PopupMenu popupMenu1;
-        private BarButtonItem PromoteToRuleException;
         private string[] RuleDes;
         private esriTopologyRuleType[] RuleType;
-        private BarButtonItem SelectFeature;
-        private BarButtonItem ShowTopoRuleDescript;
-        private BarButtonItem Simplify;
-        private BarButtonItem Split;
-        private BarButtonItem SubtractError;
-        private BarButtonItem TrimLine;
-        private BarButtonItem ZoomTo;
 
         public FindTopologyErrorCtrl()
         {
-            esriTopologyRuleType[] typeArray = new esriTopologyRuleType[0x1b];
+            esriTopologyRuleType[] typeArray = new esriTopologyRuleType[27];
             typeArray[0] = esriTopologyRuleType.esriTRTAny;
             typeArray[2] = esriTopologyRuleType.esriTRTAreaNoGaps;
             typeArray[3] = esriTopologyRuleType.esriTRTAreaNoOverlap;
@@ -87,17 +45,17 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             typeArray[13] = esriTopologyRuleType.esriTRTLineNoDangles;
             typeArray[14] = esriTopologyRuleType.esriTRTLineNoPseudos;
             typeArray[15] = esriTopologyRuleType.esriTRTLineCoveredByLineClass;
-            typeArray[0x10] = esriTopologyRuleType.esriTRTLineNoOverlapLine;
-            typeArray[0x11] = esriTopologyRuleType.esriTRTPointCoveredByLine;
-            typeArray[0x12] = esriTopologyRuleType.esriTRTPointCoveredByLineEndpoint;
-            typeArray[0x13] = esriTopologyRuleType.esriTRTAreaBoundaryCoveredByLine;
+            typeArray[16] = esriTopologyRuleType.esriTRTLineNoOverlapLine;
+            typeArray[17] = esriTopologyRuleType.esriTRTPointCoveredByLine;
+            typeArray[18] = esriTopologyRuleType.esriTRTPointCoveredByLineEndpoint;
+            typeArray[19] = esriTopologyRuleType.esriTRTAreaBoundaryCoveredByLine;
             typeArray[20] = esriTopologyRuleType.esriTRTAreaBoundaryCoveredByAreaBoundary;
-            typeArray[0x15] = esriTopologyRuleType.esriTRTLineNoSelfOverlap;
-            typeArray[0x16] = esriTopologyRuleType.esriTRTLineNoSelfIntersect;
-            typeArray[0x17] = esriTopologyRuleType.esriTRTLineNoIntersectOrInteriorTouch;
-            typeArray[0x18] = esriTopologyRuleType.esriTRTLineEndpointCoveredByPoint;
-            typeArray[0x19] = esriTopologyRuleType.esriTRTAreaContainPoint;
-            typeArray[0x1a] = esriTopologyRuleType.esriTRTLineNoMultipart;
+            typeArray[21] = esriTopologyRuleType.esriTRTLineNoSelfOverlap;
+            typeArray[22] = esriTopologyRuleType.esriTRTLineNoSelfIntersect;
+            typeArray[23] = esriTopologyRuleType.esriTRTLineNoIntersectOrInteriorTouch;
+            typeArray[24] = esriTopologyRuleType.esriTRTLineEndpointCoveredByPoint;
+            typeArray[25] = esriTopologyRuleType.esriTRTAreaContainPoint;
+            typeArray[26] = esriTopologyRuleType.esriTRTLineNoMultipart;
             this.RuleType = typeArray;
             this.RuleDes = new string[] { 
                 "所有错误", "必需大于集束容限值", "面不能有缝隙", "面不能重叠", "面必须被面要素类覆盖", "面必须和其它面要素层相互覆盖", "面必须被面覆盖", "面不能与其他面层重叠", "线必须被面要素边界线覆盖", "点必须被面要素边界线覆盖", "点落在面要素内", "线不能重叠", "线不能相交", "线不能有悬挂点", "线不能有伪节点", "线必须被线要素覆盖", 
@@ -583,16 +541,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             workspace.StopEditOperation();
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private void DoExplode(ITopologyErrorFeature pTopoErrorFeat)
+ private void DoExplode(ITopologyErrorFeature pTopoErrorFeat)
         {
             ITopologicalOperator shapeCopy = (this.m_TopologyLayer.Topology as IFeatureClassContainer).get_ClassByID(pTopoErrorFeat.OriginClassID).GetFeature(pTopoErrorFeat.OriginOID).ShapeCopy as ITopologicalOperator;
             if (pTopoErrorFeat.TopologyRuleType == esriTopologyRuleType.esriTRTLineNoMultipart)
@@ -779,7 +728,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                     bool extensionsPerformed = true;
                     if (num < num2)
                     {
-                        curve2.ConstructExtended(fromCurve, toCurve, 0x10, ref extensionsPerformed);
+                        curve2.ConstructExtended(fromCurve, toCurve, 16, ref extensionsPerformed);
                     }
                     else
                     {
@@ -974,223 +923,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.cboFindType.SelectedIndex = 0;
         }
 
-        private void InitializeComponent()
-        {
-            this.components = new Container();
-            this.panel1 = new Panel();
-            this.chkVisibleRegion = new CheckEdit();
-            this.chkException = new CheckEdit();
-            this.chkError = new CheckEdit();
-            this.btnFind = new SimpleButton();
-            this.lblErrorNum = new Label();
-            this.cboFindType = new ComboBoxEdit();
-            this.label1 = new Label();
-            this.listViewError = new ListView();
-            this.columnHeader2 = new ColumnHeader();
-            this.columnHeader1 = new ColumnHeader();
-            this.columnHeader3 = new ColumnHeader();
-            this.columnHeader4 = new ColumnHeader();
-            this.columnHeader5 = new ColumnHeader();
-            this.columnHeader6 = new ColumnHeader();
-            this.columnHeader7 = new ColumnHeader();
-            this.barManager1 = new BarManager(this.components);
-            this.barDockControlTop = new BarDockControl();
-            this.barDockControlBottom = new BarDockControl();
-            this.barDockControlLeft = new BarDockControl();
-            this.barDockControlRight = new BarDockControl();
-            this.ZoomTo = new BarButtonItem();
-            this.PanTo = new BarButtonItem();
-            this.SelectFeature = new BarButtonItem();
-            this.PromoteToRuleException = new BarButtonItem();
-            this.DemoteFromRuleException = new BarButtonItem();
-            this.NewFeature = new BarButtonItem();
-            this.MergeErrorToFeature = new BarButtonItem();
-            this.SubtractError = new BarButtonItem();
-            this.Simplify = new BarButtonItem();
-            this.Explode = new BarButtonItem();
-            this.Delete = new BarButtonItem();
-            this.Split = new BarButtonItem();
-            this.ExtendLine = new BarButtonItem();
-            this.TrimLine = new BarButtonItem();
-            this.ShowTopoRuleDescript = new BarButtonItem();
-            this.popupMenu1 = new PopupMenu(this.components);
-            this.panel1.SuspendLayout();
-            this.chkVisibleRegion.Properties.BeginInit();
-            this.chkException.Properties.BeginInit();
-            this.chkError.Properties.BeginInit();
-            this.cboFindType.Properties.BeginInit();
-            this.barManager1.BeginInit();
-            this.popupMenu1.BeginInit();
-            base.SuspendLayout();
-            this.panel1.Controls.Add(this.chkVisibleRegion);
-            this.panel1.Controls.Add(this.chkException);
-            this.panel1.Controls.Add(this.chkError);
-            this.panel1.Controls.Add(this.btnFind);
-            this.panel1.Controls.Add(this.lblErrorNum);
-            this.panel1.Controls.Add(this.cboFindType);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new Size(0x1f8, 0x48);
-            this.panel1.TabIndex = 1;
-            this.panel1.Paint += new PaintEventHandler(this.panel1_Paint);
-            this.chkVisibleRegion.EditValue = true;
-            this.chkVisibleRegion.Location = new System.Drawing.Point(0xe8, 0x2c);
-            this.chkVisibleRegion.Name = "chkVisibleRegion";
-            this.chkVisibleRegion.Properties.Caption = "仅限可视区域";
-            this.chkVisibleRegion.Size = new Size(0x68, 0x13);
-            this.chkVisibleRegion.TabIndex = 7;
-            this.chkException.Location = new System.Drawing.Point(160, 0x2c);
-            this.chkException.Name = "chkException";
-            this.chkException.Properties.Caption = "例外";
-            this.chkException.Size = new Size(0x30, 0x13);
-            this.chkException.TabIndex = 6;
-            this.chkError.EditValue = true;
-            this.chkError.Location = new System.Drawing.Point(0x60, 0x2c);
-            this.chkError.Name = "chkError";
-            this.chkError.Properties.Caption = "错误";
-            this.chkError.Size = new Size(0x30, 0x13);
-            this.chkError.TabIndex = 5;
-            this.btnFind.Location = new System.Drawing.Point(8, 40);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new Size(0x48, 0x18);
-            this.btnFind.TabIndex = 4;
-            this.btnFind.Text = "开始查找";
-            this.btnFind.Click += new EventHandler(this.btnFind_Click);
-            this.lblErrorNum.AutoSize = true;
-            this.lblErrorNum.Location = new System.Drawing.Point(0x158, 10);
-            this.lblErrorNum.Name = "lblErrorNum";
-            this.lblErrorNum.Size = new Size(0, 12);
-            this.lblErrorNum.TabIndex = 3;
-            this.cboFindType.EditValue = "";
-            this.cboFindType.Location = new System.Drawing.Point(0x30, 8);
-            this.cboFindType.Name = "cboFindType";
-            this.cboFindType.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.cboFindType.Size = new Size(0x110, 0x15);
-            this.cboFindType.TabIndex = 2;
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(0x23, 12);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "查找:";
-            this.listViewError.Columns.AddRange(new ColumnHeader[] { this.columnHeader2, this.columnHeader1, this.columnHeader3, this.columnHeader4, this.columnHeader5, this.columnHeader6, this.columnHeader7 });
-            this.listViewError.Dock = DockStyle.Fill;
-            this.listViewError.FullRowSelect = true;
-            this.listViewError.GridLines = true;
-            this.listViewError.HideSelection = false;
-            this.listViewError.Location = new System.Drawing.Point(0, 0x48);
-            this.listViewError.Name = "listViewError";
-            this.listViewError.Size = new Size(0x1f8, 0xd8);
-            this.listViewError.TabIndex = 2;
-            this.listViewError.UseCompatibleStateImageBehavior = false;
-            this.listViewError.View = View.Details;
-            this.listViewError.SelectedIndexChanged += new EventHandler(this.listViewError_SelectedIndexChanged);
-            this.listViewError.Click += new EventHandler(this.listViewError_Click);
-            this.listViewError.MouseDown += new MouseEventHandler(this.listViewError_MouseDown);
-            this.columnHeader2.Text = "规则类型";
-            this.columnHeader2.Width = 0x60;
-            this.columnHeader1.Text = "类1";
-            this.columnHeader1.Width = 0x43;
-            this.columnHeader3.Text = "类2";
-            this.columnHeader3.Width = 0x48;
-            this.columnHeader4.Text = "几何类型";
-            this.columnHeader4.Width = 0x45;
-            this.columnHeader5.Text = "要素1";
-            this.columnHeader6.Text = "要素2";
-            this.columnHeader6.Width = 70;
-            this.columnHeader7.Text = "例外";
-            this.barManager1.DockControls.Add(this.barDockControlTop);
-            this.barManager1.DockControls.Add(this.barDockControlBottom);
-            this.barManager1.DockControls.Add(this.barDockControlLeft);
-            this.barManager1.DockControls.Add(this.barDockControlRight);
-            this.barManager1.Form = this;
-            this.barManager1.Items.AddRange(new BarItem[] { this.ZoomTo, this.PanTo, this.SelectFeature, this.PromoteToRuleException, this.DemoteFromRuleException, this.NewFeature, this.MergeErrorToFeature, this.SubtractError, this.Simplify, this.Explode, this.Delete, this.Split, this.ExtendLine, this.TrimLine, this.ShowTopoRuleDescript });
-            this.barManager1.MaxItemId = 15;
-            this.ZoomTo.Caption = "缩放到";
-            this.ZoomTo.Id = 0;
-            this.ZoomTo.Name = "ZoomTo";
-            this.ZoomTo.ItemClick += new ItemClickEventHandler(this.ZoomTo_ItemClick);
-            this.PanTo.Caption = "平移到";
-            this.PanTo.Id = 1;
-            this.PanTo.Name = "PanTo";
-            this.PanTo.ItemClick += new ItemClickEventHandler(this.PanTo_ItemClick);
-            this.SelectFeature.Caption = "选择要素";
-            this.SelectFeature.Id = 2;
-            this.SelectFeature.Name = "SelectFeature";
-            this.SelectFeature.ItemClick += new ItemClickEventHandler(this.SelectFeature_ItemClick);
-            this.PromoteToRuleException.Caption = "标记为例外";
-            this.PromoteToRuleException.Id = 3;
-            this.PromoteToRuleException.Name = "PromoteToRuleException";
-            this.PromoteToRuleException.ItemClick += new ItemClickEventHandler(this.PromoteToRuleException_ItemClick);
-            this.DemoteFromRuleException.Caption = "标记为错误";
-            this.DemoteFromRuleException.Id = 4;
-            this.DemoteFromRuleException.Name = "DemoteFromRuleException";
-            this.DemoteFromRuleException.ItemClick += new ItemClickEventHandler(this.DemoteFromRuleException_ItemClick);
-            this.NewFeature.Caption = "新建要素";
-            this.NewFeature.Id = 5;
-            this.NewFeature.Name = "NewFeature";
-            this.NewFeature.ItemClick += new ItemClickEventHandler(this.NewFeature_ItemClick);
-            this.MergeErrorToFeature.Caption = "合并...";
-            this.MergeErrorToFeature.Id = 6;
-            this.MergeErrorToFeature.Name = "MergeErrorToFeature";
-            this.MergeErrorToFeature.ItemClick += new ItemClickEventHandler(this.MergeErrorToFeature_ItemClick);
-            this.SubtractError.Caption = "扣除";
-            this.SubtractError.Id = 7;
-            this.SubtractError.Name = "SubtractError";
-            this.SubtractError.ItemClick += new ItemClickEventHandler(this.SubtractError_ItemClick);
-            this.Simplify.Caption = "简化";
-            this.Simplify.Id = 8;
-            this.Simplify.Name = "Simplify";
-            this.Simplify.ItemClick += new ItemClickEventHandler(this.Simplify_ItemClick);
-            this.Explode.Caption = "炸开";
-            this.Explode.Id = 9;
-            this.Explode.Name = "Explode";
-            this.Delete.Caption = "删除";
-            this.Delete.Id = 10;
-            this.Delete.Name = "Delete";
-            this.Delete.ItemClick += new ItemClickEventHandler(this.Delete_ItemClick);
-            this.Split.Caption = "断开";
-            this.Split.Id = 11;
-            this.Split.Name = "Split";
-            this.Split.ItemClick += new ItemClickEventHandler(this.Split_ItemClick);
-            this.ExtendLine.Caption = "延伸";
-            this.ExtendLine.Id = 12;
-            this.ExtendLine.Name = "ExtendLine";
-            this.ExtendLine.ItemClick += new ItemClickEventHandler(this.ExtendLine_ItemClick);
-            this.TrimLine.Caption = "裁剪";
-            this.TrimLine.Id = 13;
-            this.TrimLine.Name = "TrimLine";
-            this.TrimLine.ItemClick += new ItemClickEventHandler(this.TrimLine_ItemClick);
-            this.ShowTopoRuleDescript.Caption = "显示规则描述";
-            this.ShowTopoRuleDescript.Id = 14;
-            this.ShowTopoRuleDescript.Name = "ShowTopoRuleDescript";
-            this.ShowTopoRuleDescript.ItemClick += new ItemClickEventHandler(this.ShowTopoRuleDescript_ItemClick);
-            this.popupMenu1.LinksPersistInfo.AddRange(new LinkPersistInfo[] { new LinkPersistInfo(this.ZoomTo), new LinkPersistInfo(this.PanTo), new LinkPersistInfo(this.SelectFeature), new LinkPersistInfo(this.NewFeature, true), new LinkPersistInfo(this.PromoteToRuleException, true), new LinkPersistInfo(this.DemoteFromRuleException) });
-            this.popupMenu1.Manager = this.barManager1;
-            this.popupMenu1.Name = "popupMenu1";
-            base.Controls.Add(this.listViewError);
-            base.Controls.Add(this.panel1);
-            base.Controls.Add(this.barDockControlLeft);
-            base.Controls.Add(this.barDockControlRight);
-            base.Controls.Add(this.barDockControlBottom);
-            base.Controls.Add(this.barDockControlTop);
-            base.Name = "FindTopologyErrorCtrl";
-            base.Size = new Size(0x1f8, 0x120);
-            base.Load += new EventHandler(this.FindTopologyErrorCtrl_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.chkVisibleRegion.Properties.EndInit();
-            this.chkException.Properties.EndInit();
-            this.chkError.Properties.EndInit();
-            this.cboFindType.Properties.EndInit();
-            this.barManager1.EndInit();
-            this.popupMenu1.EndInit();
-            base.ResumeLayout(false);
-        }
-
-        private void listViewError_Click(object sender, EventArgs e)
+ private void listViewError_Click(object sender, EventArgs e)
         {
         }
 
@@ -2177,7 +1910,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
-        private class TopologyRuleWrap
+        private partial class TopologyRuleWrap
         {
             private IFeatureClassContainer m_pFeatClassCont = null;
             private ITopologyRule m_pRule = null;

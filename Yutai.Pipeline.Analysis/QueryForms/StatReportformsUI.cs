@@ -1,4 +1,4 @@
-
+﻿
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Geometry;
 
@@ -11,9 +11,8 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.QueryForms
 {
-	public class StatReportformsUI : Form
+	public partial class StatReportformsUI : Form
 	{
-		private IContainer components = null;
 
 		public IGeometry m_ipGeo;
 
@@ -23,27 +22,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
 		public IPipeConfig pPipeCfg;
 
-		protected override void Dispose(bool disposing)
-		{
-			if (disposing && this.components != null)
-			{
-				this.components.Dispose();
-			}
-			base.Dispose(disposing);
-		}
-
-		private void InitializeComponent()
-		{
-			base.SuspendLayout();
-			base.AutoScaleDimensions = new SizeF(6f, 12f);
-			base.AutoScaleMode = AutoScaleMode.Font;
-			base.ClientSize = new Size(292, 273);
-			base.Name = "StatReportformsUI";
-			this.Text = "统计报表";
-			base.ResumeLayout(false);
-		}
-
-		public StatReportformsUI()
+	public StatReportformsUI()
 		{
 			this.InitializeComponent();
 		}

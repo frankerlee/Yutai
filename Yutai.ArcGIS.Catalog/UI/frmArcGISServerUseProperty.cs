@@ -12,33 +12,12 @@ using ESRI.ArcGIS.GISClient;
 
 namespace Yutai.ArcGIS.Catalog.UI
 {
-    public class frmArcGISServerUseProperty : Form
+    public partial class frmArcGISServerUseProperty : Form
     {
-        private bool bool_0;
-        private SimpleButton btnCancel;
-        private SimpleButton btnOK;
-        private CheckEdit chkSaveUserNameAndPsw;
-        private GroupBox groupBox2;
-        private IAGSServerConnection iagsserverConnection_0;
-        [CompilerGenerated]
-        private IAGSServerConnectionName iagsserverConnectionName_0;
+       
         private IContainer icontainer_0 = null;
         private IGxObject igxObject_0 = null;
-        private IMapDescription imapDescription_0;
-        private IMapServer imapServer_0;
-        [CompilerGenerated]
-        private IPropertySet ipropertySet_0;
-        private Label label2;
-        private Label label3;
-        private Label label5;
-        private Label lblServerInfo;
-        private string string_0;
-        private string string_1;
-        [CompilerGenerated]
-        private string string_2;
-        private TextEdit txtPassword;
-        private TextEdit txtServer;
-        private TextEdit txtUser;
+     
 
         public frmArcGISServerUseProperty()
         {
@@ -89,16 +68,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             base.DialogResult = DialogResult.OK;
         }
 
-        protected override void Dispose(bool bool_1)
-        {
-            if (bool_1 && (this.icontainer_0 != null))
-            {
-                this.icontainer_0.Dispose();
-            }
-            base.Dispose(bool_1);
-        }
-
-        private void frmArcGISServerUseProperty_Load(object sender, EventArgs e)
+ private void frmArcGISServerUseProperty_Load(object sender, EventArgs e)
         {
             IPropertySet connectionProperties = null;
             if (this.AGSServerConnectionName != null)
@@ -121,121 +91,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             this.groupBox2.Enabled = true;
         }
 
-        private void InitializeComponent()
-        {
-            this.btnOK = new SimpleButton();
-            this.btnCancel = new SimpleButton();
-            this.groupBox2 = new GroupBox();
-            this.chkSaveUserNameAndPsw = new CheckEdit();
-            this.txtPassword = new TextEdit();
-            this.txtUser = new TextEdit();
-            this.label3 = new Label();
-            this.label2 = new Label();
-            this.txtServer = new TextEdit();
-            this.lblServerInfo = new Label();
-            this.label5 = new Label();
-            this.groupBox2.SuspendLayout();
-            this.chkSaveUserNameAndPsw.Properties.BeginInit();
-            this.txtPassword.Properties.BeginInit();
-            this.txtUser.Properties.BeginInit();
-            this.txtServer.Properties.BeginInit();
-            base.SuspendLayout();
-            this.btnOK.Location = new Point(0xe4, 0xe2);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new Size(60, 0x1c);
-            this.btnOK.TabIndex = 0x18;
-            this.btnOK.Text = "确定";
-            this.btnOK.Click += new EventHandler(this.btnOK_Click);
-            this.btnCancel.Location = new Point(0x139, 0xe2);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new Size(60, 0x1c);
-            this.btnCancel.TabIndex = 0x17;
-            this.btnCancel.Text = "取消";
-            this.groupBox2.Controls.Add(this.chkSaveUserNameAndPsw);
-            this.groupBox2.Controls.Add(this.txtPassword);
-            this.groupBox2.Controls.Add(this.txtUser);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Enabled = false;
-            this.groupBox2.Location = new Point(14, 0x5d);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new Size(0x184, 0x74);
-            this.groupBox2.TabIndex = 0x16;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "帐户";
-            this.chkSaveUserNameAndPsw.EditValue = true;
-            this.chkSaveUserNameAndPsw.Location = new Point(0x10, 0x58);
-            this.chkSaveUserNameAndPsw.Name = "chkSaveUserNameAndPsw";
-            this.chkSaveUserNameAndPsw.Properties.Caption = "保存用户名/密码";
-            this.chkSaveUserNameAndPsw.Size = new Size(0x70, 0x13);
-            this.chkSaveUserNameAndPsw.TabIndex = 4;
-            this.txtPassword.EditValue = "";
-            this.txtPassword.Location = new Point(0x44, 0x34);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Properties.PasswordChar = '*';
-            this.txtPassword.Size = new Size(0x130, 0x15);
-            this.txtPassword.TabIndex = 3;
-            this.txtUser.EditValue = "";
-            this.txtUser.Location = new Point(0x44, 20);
-            this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new Size(0x130, 0x15);
-            this.txtUser.TabIndex = 2;
-            this.txtUser.EditValueChanged += new EventHandler(this.txtUser_EditValueChanged);
-            this.label3.AutoSize = true;
-            this.label3.Location = new Point(0x10, 0x38);
-            this.label3.Name = "label3";
-            this.label3.Size = new Size(0x2f, 12);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "密  码:";
-            this.label2.AutoSize = true;
-            this.label2.Location = new Point(0x10, 0x18);
-            this.label2.Name = "label2";
-            this.label2.Size = new Size(0x2f, 12);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "用户名:";
-            this.txtServer.EditValue = "http://";
-            this.txtServer.Location = new Point(0x53, 0x10);
-            this.txtServer.Name = "txtServer";
-            this.txtServer.Size = new Size(0x13f, 0x15);
-            this.txtServer.TabIndex = 0x10;
-            this.lblServerInfo.AutoSize = true;
-            this.lblServerInfo.Location = new Point(12, 0x13);
-            this.lblServerInfo.Name = "lblServerInfo";
-            this.lblServerInfo.Size = new Size(0x41, 12);
-            this.lblServerInfo.TabIndex = 12;
-            this.lblServerInfo.Text = "服务器URL:";
-            this.label5.AutoSize = true;
-            this.label5.Location = new Point(0x51, 0x31);
-            this.label5.Name = "label5";
-            this.label5.Size = new Size(0x131, 12);
-            this.label5.TabIndex = 0x17;
-            this.label5.Text = "ArcGIS Server:http://myserver:6080/arcgis/services";
-            base.AutoScaleDimensions = new SizeF(6f, 12f);
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.ClientSize = new Size(0x1b1, 270);
-            base.Controls.Add(this.label5);
-            base.Controls.Add(this.txtServer);
-            base.Controls.Add(this.btnOK);
-            base.Controls.Add(this.groupBox2);
-            base.Controls.Add(this.lblServerInfo);
-            base.Controls.Add(this.btnCancel);
-            base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            base.MaximizeBox = false;
-            base.MinimizeBox = false;
-            base.Name = "frmArcGISServerUseProperty";
-            this.Text = "ArcGIS Server用户连接属性";
-            base.Load += new EventHandler(this.frmArcGISServerUseProperty_Load);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.chkSaveUserNameAndPsw.Properties.EndInit();
-            this.txtPassword.Properties.EndInit();
-            this.txtUser.Properties.EndInit();
-            this.txtServer.Properties.EndInit();
-            base.ResumeLayout(false);
-            base.PerformLayout();
-        }
-
-        private IMapServer method_0(string string_3)
+ private IMapServer method_0(string string_3)
         {
             IAGSEnumServerObjectName serverObjectNames = this.iagsserverConnection_0.ServerObjectNames;
             IAGSServerObjectName name2 = null;

@@ -171,11 +171,11 @@ namespace Yutai.ArcGIS.Catalog.ISConfig
                 }
                 else
                 {
-                    properties.SetProperty("MaxImageHeight", 0x1004);
-                    properties.SetProperty("MaxImageWidth", 0x3a98);
+                    properties.SetProperty("MaxImageHeight", 4100);
+                    properties.SetProperty("MaxImageWidth", 15000);
                     properties.SetProperty("AllowedCompressions", "None,JPEG,LZ77");
                     properties.SetProperty("DefaultResamplingMethod", 0);
-                    properties.SetProperty("DefaultCompressionQuality", 0x4b);
+                    properties.SetProperty("DefaultCompressionQuality", 75);
                     properties.SetProperty("DefaultCompressionTolerance", 0.01);
                     IMensuration mensuration = new MensurationClass {
                         Raster = ((IRasterDataset2) ISConfig.rasterDataset).CreateFullRaster()
@@ -282,8 +282,8 @@ namespace Yutai.ArcGIS.Catalog.ISConfig
                 builder.AppendFormat("{0}: {1},", QuoteString("clusterName"), QuoteString("default"));
                 builder.AppendFormat("{0}: {1},", QuoteString("minInstancesPerNode"), 1);
                 builder.AppendFormat("{0}: {1},", QuoteString("maxInstancesPerNode"), 2);
-                builder.AppendFormat("{0}: {1},", QuoteString("maxWaitTime"), 0x2710);
-                builder.AppendFormat("{0}: {1},", QuoteString("maxIdleTime"), 0x708);
+                builder.AppendFormat("{0}: {1},", QuoteString("maxWaitTime"), 10000);
+                builder.AppendFormat("{0}: {1},", QuoteString("maxIdleTime"), 1800);
                 builder.AppendFormat("{0}: {1},", QuoteString("maxUsageTime"), 600);
                 builder.AppendFormat("{0}: {1},", QuoteString("loadBalancing"), QuoteString("ROUND_ROBIN"));
                 builder.AppendFormat("{0}: {1},", QuoteString("isolationLevel"), QuoteString("HIGH"));

@@ -23,30 +23,21 @@ using Yutai.ArcGIS.Common.Helpers;
 
 namespace Yutai.ArcGIS.Controls.Controls
 {
-    public class frmAttributeTable : Form
+    public partial class frmAttributeTable : Form
     {
-        private Container components = null;
-        private GridControl dataGrid1;
-        private GridView gridView1;
-        private Label label1;
         private bool m_CanDo = true;
         private bool m_CanDoFeatureLayerSelectChange = true;
         private bool m_CanDoSelectChange = false;
         private bool m_InEditing = false;
         private bool m_IsChange = false;
         private int m_MaxOID = 0;
-        private ICursor m_pCursor;
         private DataTable m_pDataTable = new DataTable();
         private IBasicMap m_pMap = null;
         private ITable m_pTable = null;
         private Common.ControlExtend.XtraGrid m_pXtraGrid = new Common.ControlExtend.XtraGrid();
-        private int m_RecordNum;
-        private long m_ShowRecNum = 0x3e8L;
+        private long m_ShowRecNum = 1000;
         private string m_strGeometry = "";
         private string m_strWhere = "";
-        private Panel panel1;
-        private RadioButton rdoAll;
-        private RadioButton rdoSelect;
 
         public frmAttributeTable()
         {
@@ -281,21 +272,7 @@ namespace Yutai.ArcGIS.Controls.Controls
         {
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-            this.m_pDataTable.ColumnChanged -= new DataColumnChangeEventHandler(this.m_pDataTable_ColumnChanged);
-            EditorEvent.OnStopEditing -= new EditorEvent.OnStopEditingHandler(this.EditorEvent_OnStopEditing);
-            EditorEvent.OnStartEditing -= new EditorEvent.OnStartEditingHandler(this.EditorEvent_OnStartEditing);
-            EditorEvent.OnAddFeature -= new EditorEvent.OnAddFeatureHandler(this.EditorEvent_OnAddFeature);
-            EditorEvent.OnDeleteFeature -= new EditorEvent.OnDeleteFeatureHandler(this.EditorEvent_OnDeleteFeature);
-        }
-
-        private void EditorEvent_OnAddFeature(ILayer pLayer, IFeature pFeature)
+ private void EditorEvent_OnAddFeature(ILayer pLayer, IFeature pFeature)
         {
             if (pLayer == this.m_pTable)
             {
@@ -527,99 +504,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             return str;
         }
 
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAttributeTable));
-            this.panel1 = new Panel();
-            this.rdoSelect = new RadioButton();
-            this.rdoAll = new RadioButton();
-            this.label1 = new Label();
-            this.dataGrid1 = new GridControl();
-            this.gridView1 = new GridView();
-            this.panel1.SuspendLayout();
-            this.dataGrid1.BeginInit();
-            this.gridView1.BeginInit();
-            base.SuspendLayout();
-            this.panel1.Controls.Add(this.rdoSelect);
-            this.panel1.Controls.Add(this.rdoAll);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 0xf7);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new Size(0x1d0, 0x20);
-            this.panel1.TabIndex = 1;
-            this.panel1.Visible = false;
-            this.rdoSelect.AutoSize = true;
-            this.rdoSelect.Checked = true;
-            this.rdoSelect.Location = new System.Drawing.Point(0x7e, 7);
-            this.rdoSelect.Name = "rdoSelect";
-            this.rdoSelect.Size = new Size(0x47, 0x10);
-            this.rdoSelect.TabIndex = 2;
-            this.rdoSelect.TabStop = true;
-            this.rdoSelect.Text = "选中对象";
-            this.rdoSelect.UseVisualStyleBackColor = true;
-            this.rdoAll.AutoSize = true;
-            this.rdoAll.Location = new System.Drawing.Point(0x31, 6);
-            this.rdoAll.Name = "rdoAll";
-            this.rdoAll.Size = new Size(0x47, 0x10);
-            this.rdoAll.TabIndex = 1;
-            this.rdoAll.Text = "所有对象";
-            this.rdoAll.UseVisualStyleBackColor = true;
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(0x1d, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "显示";
-            this.dataGrid1.Dock = DockStyle.Fill;
-            this.dataGrid1.EmbeddedNavigator.Buttons.Append.Enabled = false;
-            this.dataGrid1.EmbeddedNavigator.Buttons.Append.Hint = "增加";
-            this.dataGrid1.EmbeddedNavigator.Buttons.CancelEdit.Hint = "取消编辑";
-            this.dataGrid1.EmbeddedNavigator.Buttons.Edit.Enabled = false;
-            this.dataGrid1.EmbeddedNavigator.Buttons.Edit.Hint = "编辑";
-            this.dataGrid1.EmbeddedNavigator.Buttons.EndEdit.Hint = "结束编辑";
-            this.dataGrid1.EmbeddedNavigator.Buttons.First.Hint = "第一个";
-            this.dataGrid1.EmbeddedNavigator.Buttons.Last.Hint = "上一个";
-            this.dataGrid1.EmbeddedNavigator.Buttons.Next.Hint = "下一个";
-            this.dataGrid1.EmbeddedNavigator.Buttons.NextPage.Hint = "下一页";
-            this.dataGrid1.EmbeddedNavigator.Buttons.Prev.Hint = "前一个";
-            this.dataGrid1.EmbeddedNavigator.Buttons.PrevPage.Hint = "前一页";
-            this.dataGrid1.EmbeddedNavigator.Buttons.Remove.Enabled = false;
-            this.dataGrid1.EmbeddedNavigator.Buttons.Remove.Hint = "删除";
-            this.dataGrid1.EmbeddedNavigator.Name = "";
-            this.dataGrid1.EmbeddedNavigator.ButtonClick += new NavigatorButtonClickEventHandler(this.dataGrid1_EmbeddedNavigator_ButtonClick);
-            this.dataGrid1.Location = new System.Drawing.Point(0, 0);
-            this.dataGrid1.MainView = this.gridView1;
-            this.dataGrid1.Name = "dataGrid1";
-            this.dataGrid1.Size = new Size(0x1d0, 0xf7);
-            this.dataGrid1.TabIndex = 3;
-            this.dataGrid1.UseEmbeddedNavigator = true;
-            this.dataGrid1.ViewCollection.AddRange(new BaseView[] { this.gridView1 });
-            this.dataGrid1.LocationChanged += new EventHandler(this.dataGrid1_LocationChanged);
-            this.dataGrid1.Click += new EventHandler(this.dataGrid1_Click);
-            this.gridView1.GridControl = this.dataGrid1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.AllowIncrementalSearch = true;
-            this.gridView1.OptionsSelection.MultiSelect = true;
-            this.gridView1.OptionsView.ColumnAutoWidth = false;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.AutoScaleBaseSize = new Size(6, 14);
-            base.ClientSize = new Size(0x1d0, 0x117);
-            base.Controls.Add(this.dataGrid1);
-            base.Controls.Add(this.panel1);
-            base.Icon = (Icon) resources.GetObject("$this.Icon");
-            base.Name = "frmAttributeTable";
-            this.Text = "属性表";
-            base.Load += new EventHandler(this.TableControl_Load);
-            base.SizeChanged += new EventHandler(this.TableControl_SizeChanged);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.dataGrid1.EndInit();
-            this.gridView1.EndInit();
-            base.ResumeLayout(false);
-        }
-
-        private void LayoutControl()
+ private void LayoutControl()
         {
             this.dataGrid1.Location = new System.Drawing.Point(0, 0);
             this.dataGrid1.Size = new Size(base.Width, base.Height - this.panel1.Height);

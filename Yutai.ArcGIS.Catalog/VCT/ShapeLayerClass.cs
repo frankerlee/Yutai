@@ -180,7 +180,7 @@ namespace Yutai.ArcGIS.Catalog.VCT
                 switch (field.Type)
                 {
                     case CoFieldType.整型:
-                        ShapeLib.DBFAddField(this.intptr_1, name, ShapeLib.DBFFieldType.FTInteger, 0x10, 0);
+                        ShapeLib.DBFAddField(this.intptr_1, name, ShapeLib.DBFFieldType.FTInteger, 16, 0);
                         this.list_0.Add(name);
                         break;
 

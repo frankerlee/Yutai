@@ -179,7 +179,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 WorkspaceName = name2,
                 Name = string_0
             };
-            converter.ConvertFeatureDataset((IFeatureDatasetName) name3, (IFeatureDatasetName) name4, outputGeometryDef, "", 0x3e8, 0);
+            converter.ConvertFeatureDataset((IFeatureDatasetName) name3, (IFeatureDatasetName) name4, outputGeometryDef, "", 1000, 0);
         }
 
         public static void Project(IFeatureClass ifeatureClass_0, ISpatialReference ispatialReference_0, IFeatureDatasetName ifeatureDatasetName_0, string string_0, double double_0)
@@ -266,7 +266,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
             try
             {
-                converter.ConvertFeatureClass((IFeatureClassName) name3, null, ifeatureDatasetName_0, (IFeatureClassName) name4, geometryDef, fields2, "", 0x3e8, 0);
+                converter.ConvertFeatureClass((IFeatureClassName) name3, null, ifeatureDatasetName_0, (IFeatureClassName) name4, geometryDef, fields2, "", 1000, 0);
             }
             catch (Exception exception)
             {
@@ -359,7 +359,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
             try
             {
-                converter.ConvertFeatureClass((IFeatureClassName) name3, null, null, (IFeatureClassName) name4, geometryDef, fields2, "", 0x3e8, 0);
+                converter.ConvertFeatureClass((IFeatureClassName) name3, null, null, (IFeatureClassName) name4, geometryDef, fields2, "", 1000, 0);
             }
             catch (Exception exception)
             {

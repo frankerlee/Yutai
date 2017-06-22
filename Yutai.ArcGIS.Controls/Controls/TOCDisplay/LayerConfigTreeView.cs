@@ -190,11 +190,11 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
             this.DeleteAllLayer.Name = "DeleteAllLayer";
             this.DeleteAllLayer.ItemClick += new ItemClickEventHandler(this.DeleteAllLayer_ItemClick);
             this.SaveRenderProject.Caption = "保存渲染方案";
-            this.SaveRenderProject.Id = 0x10;
+            this.SaveRenderProject.Id = 16;
             this.SaveRenderProject.Name = "SaveRenderProject";
             this.SaveRenderProject.ItemClick += new ItemClickEventHandler(this.SaveRenderProject_ItemClick);
             this.ApplyRenderProject.Caption = "应用渲染方案";
-            this.ApplyRenderProject.Id = 0x11;
+            this.ApplyRenderProject.Id = 17;
             this.ApplyRenderProject.Name = "ApplyRenderProject";
             this.ApplyRenderProject.ItemClick += new ItemClickEventHandler(this.ApplyRenderProject_ItemClick);
         }

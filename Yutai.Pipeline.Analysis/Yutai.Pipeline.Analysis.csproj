@@ -137,80 +137,158 @@
     <Compile Include="Forms\AreaMeasureDlg.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\AreaMeasureDlg.Designer.cs">
+      <DependentUpon>AreaMeasureDlg.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\BufferAnalyseDlg.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BufferAnalyseDlg.Designer.cs">
+      <DependentUpon>BufferAnalyseDlg.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ConfigurationForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\ConfigurationForm.Designer.cs">
+      <DependentUpon>ConfigurationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DistMeausreDlg.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DistMeausreDlg.Designer.cs">
+      <DependentUpon>DistMeausreDlg.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\DMCoordForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\DMCoordForm.Designer.cs">
+      <DependentUpon>DMCoordForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormMaiShenAnalysis.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormMaiShenAnalysis.Designer.cs">
+      <DependentUpon>FormMaiShenAnalysis.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmBurstReport.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\frmBurstReport.Designer.cs">
+      <DependentUpon>frmBurstReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\GForm0.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GForm0.Designer.cs">
+      <DependentUpon>GForm0.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\HitAnalyseDlg.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\HitAnalyseDlg.Designer.cs">
+      <DependentUpon>HitAnalyseDlg.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\HrzDistDlg.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HrzDistDlg.Designer.cs">
+      <DependentUpon>HrzDistDlg.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MagnifierForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\MagnifierForm.Designer.cs">
+      <DependentUpon>MagnifierForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MagnifierMainForm.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MagnifierMainForm.Designer.cs">
+      <DependentUpon>MagnifierMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\PoPointAlarmForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\PoPointAlarmForm.Designer.cs">
+      <DependentUpon>PoPointAlarmForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\PPAlarmResult.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PPAlarmResult.Designer.cs">
+      <DependentUpon>PPAlarmResult.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\PreAlarmDlg.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\PreAlarmDlg.Designer.cs">
+      <DependentUpon>PreAlarmDlg.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\PreAlarmResult.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PreAlarmResult.Designer.cs">
+      <DependentUpon>PreAlarmResult.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ResultDialog.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\ResultDialog.Designer.cs">
+      <DependentUpon>ResultDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SearchAffixAnalyDlg.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SearchAffixAnalyDlg.Designer.cs">
+      <DependentUpon>SearchAffixAnalyDlg.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SectionInfo.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\SectionInfo.Designer.cs">
+      <DependentUpon>SectionInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SectionOption.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SectionOption.Designer.cs">
+      <DependentUpon>SectionOption.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SectionViewFrm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\SectionViewFrm.Designer.cs">
+      <DependentUpon>SectionViewFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SetFlowToolForm.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SetFlowToolForm.Designer.cs">
+      <DependentUpon>SetFlowToolForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SetScaleDlg.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\SetScaleDlg.Designer.cs">
+      <DependentUpon>SetScaleDlg.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ShowShortObjectForm.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ShowShortObjectForm.Designer.cs">
+      <DependentUpon>ShowShortObjectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\TrackingAnalyForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\TrackingAnalyForm.Designer.cs">
+      <DependentUpon>TrackingAnalyForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\VerDistDlg.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\VerDistDlg.Designer.cs">
+      <DependentUpon>VerDistDlg.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\BaseFun.cs" />
     <Compile Include="Helpers\CMapOperator.cs" />
@@ -243,69 +321,135 @@
     <Compile Include="QueryForms\BaseQueryUI.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="QueryForms\BaseQueryUI.Designer.cs">
+      <DependentUpon>BaseQueryUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="QueryForms\ClassCollectformsUI.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\ClassCollectformsUI.Designer.cs">
+      <DependentUpon>ClassCollectformsUI.cs</DependentUpon>
     </Compile>
     <Compile Include="QueryForms\ClassCollectResultForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="QueryForms\ClassCollectResultForm.Designer.cs">
+      <DependentUpon>ClassCollectResultForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="QueryForms\ComplexQueryUI.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\ComplexQueryUI.Designer.cs">
+      <DependentUpon>ComplexQueryUI.cs</DependentUpon>
     </Compile>
     <Compile Include="QueryForms\CustomColumnChooser.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="QueryForms\CustomColumnChooser.Designer.cs">
+      <DependentUpon>CustomColumnChooser.cs</DependentUpon>
+    </Compile>
     <Compile Include="QueryForms\frmPromptQuerying.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\frmPromptQuerying.Designer.cs">
+      <DependentUpon>frmPromptQuerying.cs</DependentUpon>
     </Compile>
     <Compile Include="QueryForms\QueryIntersectionUI.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="QueryForms\QueryIntersectionUI.Designer.cs">
+      <DependentUpon>QueryIntersectionUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="QueryForms\QueryResult.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\QueryResult.Designer.cs">
+      <DependentUpon>QueryResult.cs</DependentUpon>
     </Compile>
     <Compile Include="QueryForms\RelateQueryUI.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="QueryForms\RelateQueryUI.Designer.cs">
+      <DependentUpon>RelateQueryUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="QueryForms\SimpleQueryByAddressUI.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\SimpleQueryByAddressUI.Designer.cs">
+      <DependentUpon>SimpleQueryByAddressUI.cs</DependentUpon>
     </Compile>
     <Compile Include="QueryForms\SimpleQueryByAddressUI1.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="QueryForms\SimpleQueryByAddressUI1.Designer.cs">
+      <DependentUpon>SimpleQueryByAddressUI1.cs</DependentUpon>
+    </Compile>
     <Compile Include="QueryForms\SimpleQueryByCmisUI.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\SimpleQueryByCmisUI.Designer.cs">
+      <DependentUpon>SimpleQueryByCmisUI.cs</DependentUpon>
     </Compile>
     <Compile Include="QueryForms\SimpleQueryByDataUI.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="QueryForms\SimpleQueryByDataUI.Designer.cs">
+      <DependentUpon>SimpleQueryByDataUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="QueryForms\SimpleQueryByDiaUI.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\SimpleQueryByDiaUI.Designer.cs">
+      <DependentUpon>SimpleQueryByDiaUI.cs</DependentUpon>
     </Compile>
     <Compile Include="QueryForms\SimpleQueryByItemUI.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="QueryForms\SimpleQueryByItemUI.Designer.cs">
+      <DependentUpon>SimpleQueryByItemUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="QueryForms\SimpleQueryByJdxzUI.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\SimpleQueryByJdxzUI.Designer.cs">
+      <DependentUpon>SimpleQueryByJdxzUI.cs</DependentUpon>
     </Compile>
     <Compile Include="QueryForms\SimpleQueryByJMDUI.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="QueryForms\SimpleQueryByJMDUI.Designer.cs">
+      <DependentUpon>SimpleQueryByJMDUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="QueryForms\SimpleQueryByMaterialUI.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\SimpleQueryByMaterialUI.Designer.cs">
+      <DependentUpon>SimpleQueryByMaterialUI.cs</DependentUpon>
     </Compile>
     <Compile Include="QueryForms\SimpleStat.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="QueryForms\SimpleStat.Designer.cs">
+      <DependentUpon>SimpleStat.cs</DependentUpon>
+    </Compile>
     <Compile Include="QueryForms\SimpleStatMyshUI.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\SimpleStatMyshUI.Designer.cs">
+      <DependentUpon>SimpleStatMyshUI.cs</DependentUpon>
     </Compile>
     <Compile Include="QueryForms\Splash.cs" />
     <Compile Include="QueryForms\StatForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="QueryForms\StatForm.Designer.cs">
+      <DependentUpon>StatForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="QueryForms\StatReportformsUI.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\StatReportformsUI.Designer.cs">
+      <DependentUpon>StatReportformsUI.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -402,6 +546,7 @@
       <DependentUpon>VerDistDlg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu\MenuLayout.xml" />
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

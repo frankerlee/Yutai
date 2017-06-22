@@ -15,8 +15,8 @@ namespace Yutai.ArcGIS.Framework.Docking
         private const int _DocumentIconGapBottom = 2;
         private const int _DocumentIconGapLeft = 8;
         private const int _DocumentIconGapRight = 0;
-        private const int _DocumentIconHeight = 0x10;
-        private const int _DocumentIconWidth = 0x10;
+        private const int _DocumentIconHeight = 16;
+        private const int _DocumentIconWidth = 16;
         private const int _DocumentStripGapBottom = 1;
         private const int _DocumentStripGapTop = 0;
         private const int _DocumentTabGapLeft = 3;
@@ -33,8 +33,8 @@ namespace Yutai.ArcGIS.Framework.Docking
         private const int _ToolWindowImageGapLeft = 2;
         private const int _ToolWindowImageGapRight = 0;
         private const int _ToolWindowImageGapTop = 3;
-        private const int _ToolWindowImageHeight = 0x10;
-        private const int _ToolWindowImageWidth = 0x10;
+        private const int _ToolWindowImageHeight = 16;
+        private const int _ToolWindowImageWidth = 16;
         private const int _ToolWindowStripGapBottom = 1;
         private const int _ToolWindowStripGapLeft = 0;
         private const int _ToolWindowStripGapRight = 0;
@@ -856,7 +856,7 @@ namespace Yutai.ArcGIS.Framework.Docking
         {
             get
             {
-                return ColorTranslator.FromWin32(0xb2c9e0);
+                return ColorTranslator.FromWin32(11717088);
             }
         }
 
@@ -936,7 +936,7 @@ namespace Yutai.ArcGIS.Framework.Docking
         {
             get
             {
-                return 0x10;
+                return 16;
             }
         }
 
@@ -944,7 +944,7 @@ namespace Yutai.ArcGIS.Framework.Docking
         {
             get
             {
-                return 0x10;
+                return 16;
             }
         }
 
@@ -1253,7 +1253,7 @@ namespace Yutai.ArcGIS.Framework.Docking
         {
             get
             {
-                return 0x10;
+                return 16;
             }
         }
 
@@ -1261,7 +1261,7 @@ namespace Yutai.ArcGIS.Framework.Docking
         {
             get
             {
-                return 0x10;
+                return 16;
             }
         }
 

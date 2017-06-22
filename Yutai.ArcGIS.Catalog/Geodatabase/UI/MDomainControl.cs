@@ -8,34 +8,18 @@ using Yutai.ArcGIS.Common.Helpers;
 
 namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 {
-    internal class MDomainControl : UserControl
+    internal partial class MDomainControl : UserControl
     {
         private bool bool_0 = false;
         private bool bool_1 = true;
         private Container container_0 = null;
-        private ISpatialReference ispatialReference_0;
-        private Label label1;
-        private Label label3;
-        private Label label5;
-        private TextEdit textBoxMaxValue;
-        private TextEdit textBoxMinValue;
-        private TextEdit textBoxPrecision;
 
         public MDomainControl()
         {
             this.InitializeComponent();
         }
 
-        protected override void Dispose(bool bool_2)
-        {
-            if (bool_2 && (this.container_0 != null))
-            {
-                this.container_0.Dispose();
-            }
-            base.Dispose(bool_2);
-        }
-
-        public void InitControl()
+ public void InitControl()
         {
             double outMMin = -10000.0;
             double outMMax = 11474.83645;
@@ -55,70 +39,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.textBoxPrecision.Text = num3.ToString();
         }
 
-        private void InitializeComponent()
-        {
-            this.label5 = new Label();
-            this.label3 = new Label();
-            this.label1 = new Label();
-            this.textBoxMinValue = new TextEdit();
-            this.textBoxMaxValue = new TextEdit();
-            this.textBoxPrecision = new TextEdit();
-            this.textBoxMinValue.Properties.BeginInit();
-            this.textBoxMaxValue.Properties.BeginInit();
-            this.textBoxPrecision.Properties.BeginInit();
-            base.SuspendLayout();
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 0x38);
-            this.label5.Name = "label5";
-            this.label5.Size = new Size(0x1d, 0x11);
-            this.label5.TabIndex = 0x11;
-            this.label5.Text = "精度";
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(0x98, 0x18);
-            this.label3.Name = "label3";
-            this.label3.Size = new Size(0x2a, 0x11);
-            this.label3.TabIndex = 0x10;
-            this.label3.Text = "最大值";
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 0x18);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(0x2a, 0x11);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "最小值";
-            this.textBoxMinValue.EditValue = "";
-            this.textBoxMinValue.Location = new System.Drawing.Point(0x38, 0x18);
-            this.textBoxMinValue.Name = "textBoxMinValue";
-            this.textBoxMinValue.Size = new Size(0x58, 0x17);
-            this.textBoxMinValue.TabIndex = 0x15;
-            this.textBoxMinValue.TextChanged += new EventHandler(this.textBoxMinValue_TextChanged);
-            this.textBoxMaxValue.EditValue = "";
-            this.textBoxMaxValue.Location = new System.Drawing.Point(200, 0x18);
-            this.textBoxMaxValue.Name = "textBoxMaxValue";
-            this.textBoxMaxValue.Size = new Size(0x58, 0x17);
-            this.textBoxMaxValue.TabIndex = 0x16;
-            this.textBoxMaxValue.TextChanged += new EventHandler(this.textBoxMaxValue_TextChanged);
-            this.textBoxPrecision.EditValue = "";
-            this.textBoxPrecision.Location = new System.Drawing.Point(0x38, 0x38);
-            this.textBoxPrecision.Name = "textBoxPrecision";
-            this.textBoxPrecision.Size = new Size(0x58, 0x17);
-            this.textBoxPrecision.TabIndex = 0x17;
-            this.textBoxPrecision.TextChanged += new EventHandler(this.textBoxPrecision_TextChanged);
-            base.Controls.Add(this.textBoxPrecision);
-            base.Controls.Add(this.textBoxMaxValue);
-            base.Controls.Add(this.textBoxMinValue);
-            base.Controls.Add(this.label5);
-            base.Controls.Add(this.label3);
-            base.Controls.Add(this.label1);
-            base.Name = "MDomainControl";
-            base.Size = new Size(0x130, 280);
-            base.Load += new EventHandler(this.MDomainControl_Load);
-            this.textBoxMinValue.Properties.EndInit();
-            this.textBoxMaxValue.Properties.EndInit();
-            this.textBoxPrecision.Properties.EndInit();
-            base.ResumeLayout(false);
-        }
-
-        private void MDomainControl_Load(object sender, EventArgs e)
+ private void MDomainControl_Load(object sender, EventArgs e)
         {
             if (!this.bool_1)
             {

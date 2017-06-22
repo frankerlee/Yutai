@@ -9,16 +9,9 @@ using Yutai.ArcGIS.Carto.MapCartoTemplateLib;
 
 namespace Yutai.ArcGIS.Carto.Library
 {
-    public class frmMapTemplateApplyWizard : Form
+    public partial class frmMapTemplateApplyWizard : Form
     {
         private bool bool_0 = false;
-        [CompilerGenerated]
-        private bool bool_1;
-        [CompilerGenerated]
-        private bool bool_2;
-        private Button btnLast;
-        private Button btnNext;
-        private Button button3;
         private double double_0 = 0.0;
         private double double_1 = 0.0;
         private IContainer icontainer_0 = null;
@@ -29,8 +22,6 @@ namespace Yutai.ArcGIS.Carto.Library
         private MapTemplateApplyHelp mapTemplateApplyHelp_0 = new MapTemplateApplyHelp();
         private MapTemplateList mapTemplateList_0 = new MapTemplateList();
         private MapTemplateParamPage mapTemplateParamPage_0 = new MapTemplateParamPage();
-        private Panel panel1;
-        private Panel panel2;
 
         public frmMapTemplateApplyWizard()
         {
@@ -172,16 +163,7 @@ namespace Yutai.ArcGIS.Carto.Library
             this.int_0++;
         }
 
-        protected override void Dispose(bool bool_3)
-        {
-            if (bool_3 && (this.icontainer_0 != null))
-            {
-                this.icontainer_0.Dispose();
-            }
-            base.Dispose(bool_3);
-        }
-
-        private void frmMapTemplateApplyWizard_Load(object sender, EventArgs e)
+ private void frmMapTemplateApplyWizard_Load(object sender, EventArgs e)
         {
             this.mapTemplateApplyHelp_0.FixDataRange = this.FixDataRange;
             this.mapTemplateList_0.IsInputTF = this.IsInputTF;
@@ -208,62 +190,7 @@ namespace Yutai.ArcGIS.Carto.Library
             this.mapCoordinateInputPage_0.MapTemplateHelp = this.mapTemplateApplyHelp_0;
         }
 
-        private void InitializeComponent()
-        {
-            this.panel2 = new Panel();
-            this.panel1 = new Panel();
-            this.button3 = new Button();
-            this.btnNext = new Button();
-            this.btnLast = new Button();
-            this.panel2.SuspendLayout();
-            base.SuspendLayout();
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.btnNext);
-            this.panel2.Controls.Add(this.btnLast);
-            this.panel2.Dock = DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 0x12d);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new Size(0x222, 0x2b);
-            this.panel2.TabIndex = 1;
-            this.panel1.Dock = DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new Size(0x222, 0x12d);
-            this.panel1.TabIndex = 2;
-            this.button3.DialogResult = DialogResult.Cancel;
-            this.button3.Location = new System.Drawing.Point(0x1c5, 8);
-            this.button3.Name = "button3";
-            this.button3.Size = new Size(0x4b, 0x17);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "取消";
-            this.button3.UseVisualStyleBackColor = true;
-            this.btnNext.Location = new System.Drawing.Point(0x171, 8);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new Size(0x4b, 0x17);
-            this.btnNext.TabIndex = 12;
-            this.btnNext.Text = "下一步>";
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new EventHandler(this.btnNext_Click);
-            this.btnLast.Location = new System.Drawing.Point(0x120, 8);
-            this.btnLast.Name = "btnLast";
-            this.btnLast.Size = new Size(0x4b, 0x17);
-            this.btnLast.TabIndex = 11;
-            this.btnLast.Text = "<上一步";
-            this.btnLast.UseVisualStyleBackColor = true;
-            this.btnLast.Click += new EventHandler(this.btnLast_Click);
-            base.AutoScaleDimensions = new SizeF(6f, 12f);
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.ClientSize = new Size(0x222, 0x158);
-            base.Controls.Add(this.panel1);
-            base.Controls.Add(this.panel2);
-            base.Name = "frmMapTemplateApplyWizard";
-            this.Text = "地图模板向导";
-            base.Load += new EventHandler(this.frmMapTemplateApplyWizard_Load);
-            this.panel2.ResumeLayout(false);
-            base.ResumeLayout(false);
-        }
-
-        public void SetMapEnv(IEnvelope ienvelope_1)
+ public void SetMapEnv(IEnvelope ienvelope_1)
         {
             this.ienvelope_0 = ienvelope_1;
             this.double_0 = ienvelope_1.XMin;

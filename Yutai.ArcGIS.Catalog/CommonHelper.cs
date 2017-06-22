@@ -255,9 +255,9 @@ namespace Yutai.ArcGIS.Catalog
                 return 1000.0;
             }
             int num3 = num2*1;
-            if (num3 > 0x3e8)
+            if (num3 > 1000)
             {
-                num3 = 0x3e8;
+                num3 = 1000;
             }
             string name = ifeatureClass_0.Fields.get_Field(0).Name;
             for (int i = 0; i < num2; i += int.Parse(num5.ToString()))

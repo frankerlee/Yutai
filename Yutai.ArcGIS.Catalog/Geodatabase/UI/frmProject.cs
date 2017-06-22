@@ -12,37 +12,16 @@ using Yutai.ArcGIS.Common;
 
 namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 {
-    public class frmProject : Form, IProjectForm
+    public partial class frmProject : Form, IProjectForm
     {
         private bool bool_0 = false;
         private bool bool_1 = false;
-        private SimpleButton btnCancel;
-        private SimpleButton btnOK;
-        private SimpleButton btnSelectIn;
-        private SimpleButton btnSelectOut;
-        private SimpleButton btnSR;
         private Container container_0 = null;
-        private FolderBrowserDialog folderBrowserDialog_0;
-        private GroupBox groupBox1;
-        private GroupBox groupBox2;
-        private GroupBox groupBox3;
-        private IDataset idataset_0;
-        private IFeatureProgress_Event ifeatureProgress_Event_0;
         private IGxDataset igxDataset_0 = null;
         private IName iname_0 = null;
-        private int int_0;
-        private int int_1;
         private int int_2 = 0;
         private int int_3 = 0;
         private ISpatialReference ispatialReference_0 = new UnknownCoordinateSystemClass();
-        private IWorkspace iworkspace_0;
-        private OpenFileDialog openFileDialog_0;
-        private PictureBox pictureBox1;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private string string_0;
-        private TextEdit txtInputFeat;
-        private TextEdit txtOutFeat;
-        private TextEdit txtOutSR;
 
         public frmProject()
         {
@@ -274,157 +253,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
-        protected override void Dispose(bool bool_2)
-        {
-            if (bool_2 && (this.container_0 != null))
-            {
-                this.container_0.Dispose();
-            }
-            this.ispatialReference_0 = null;
-            base.Dispose(bool_2);
-        }
-
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProject));
-            this.groupBox1 = new GroupBox();
-            this.btnSelectIn = new SimpleButton();
-            this.txtInputFeat = new TextEdit();
-            this.groupBox2 = new GroupBox();
-            this.pictureBox1 = new PictureBox();
-            this.btnSelectOut = new SimpleButton();
-            this.txtOutFeat = new TextEdit();
-            this.groupBox3 = new GroupBox();
-            this.btnSR = new SimpleButton();
-            this.txtOutSR = new TextEdit();
-            this.openFileDialog_0 = new OpenFileDialog();
-            this.folderBrowserDialog_0 = new FolderBrowserDialog();
-            this.btnOK = new SimpleButton();
-            this.btnCancel = new SimpleButton();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.groupBox1.SuspendLayout();
-            this.txtInputFeat.Properties.BeginInit();
-            this.groupBox2.SuspendLayout();
-            ((ISupportInitialize) this.pictureBox1).BeginInit();
-            this.txtOutFeat.Properties.BeginInit();
-            this.groupBox3.SuspendLayout();
-            this.txtOutSR.Properties.BeginInit();
-            base.SuspendLayout();
-            this.groupBox1.Controls.Add(this.btnSelectIn);
-            this.groupBox1.Controls.Add(this.txtInputFeat);
-            this.groupBox1.Location = new System.Drawing.Point(0x10, 0x10);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new Size(0x178, 0x38);
-            this.groupBox1.TabIndex = 10;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "输入要素集或要素类";
-            this.btnSelectIn.Image = (Image) resources.GetObject("btnSelectIn.Image");
-            this.btnSelectIn.Location = new System.Drawing.Point(320, 0x18);
-            this.btnSelectIn.Name = "btnSelectIn";
-            this.btnSelectIn.Size = new Size(0x20, 0x18);
-            this.btnSelectIn.TabIndex = 15;
-            this.btnSelectIn.Click += new EventHandler(this.btnSelectIn_Click);
-            this.txtInputFeat.EditValue = "";
-            this.txtInputFeat.Location = new System.Drawing.Point(0x10, 0x18);
-            this.txtInputFeat.Name = "txtInputFeat";
-            this.txtInputFeat.Properties.ReadOnly = true;
-            this.txtInputFeat.Size = new Size(0x128, 0x15);
-            this.txtInputFeat.TabIndex = 14;
-            this.groupBox2.Controls.Add(this.pictureBox1);
-            this.groupBox2.Controls.Add(this.btnSelectOut);
-            this.groupBox2.Controls.Add(this.txtOutFeat);
-            this.groupBox2.Location = new System.Drawing.Point(0x10, 80);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new Size(0x178, 0x38);
-            this.groupBox2.TabIndex = 11;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "输出要数集或要素类";
-            this.pictureBox1.Image = (Image) resources.GetObject("pictureBox1.Image");
-            this.pictureBox1.Location = new System.Drawing.Point(8, 0x10);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new Size(10, 10);
-            this.pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0x11;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Visible = false;
-            this.btnSelectOut.Image = (Image) resources.GetObject("btnSelectOut.Image");
-            this.btnSelectOut.Location = new System.Drawing.Point(320, 0x18);
-            this.btnSelectOut.Name = "btnSelectOut";
-            this.btnSelectOut.Size = new Size(0x20, 0x18);
-            this.btnSelectOut.TabIndex = 0x10;
-            this.btnSelectOut.Click += new EventHandler(this.btnSelectOut_Click);
-            this.txtOutFeat.EditValue = "";
-            this.txtOutFeat.Location = new System.Drawing.Point(0x10, 0x18);
-            this.txtOutFeat.Name = "txtOutFeat";
-            this.txtOutFeat.Properties.ReadOnly = true;
-            this.txtOutFeat.Size = new Size(0x128, 0x15);
-            this.txtOutFeat.TabIndex = 15;
-            this.txtOutFeat.TextChanged += new EventHandler(this.txtOutFeat_TextChanged);
-            this.groupBox3.Controls.Add(this.btnSR);
-            this.groupBox3.Controls.Add(this.txtOutSR);
-            this.groupBox3.Location = new System.Drawing.Point(0x10, 0x98);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new Size(0x178, 0x38);
-            this.groupBox3.TabIndex = 12;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "输出坐标系";
-            this.btnSR.Image = (Image) resources.GetObject("btnSR.Image");
-            this.btnSR.Location = new System.Drawing.Point(320, 20);
-            this.btnSR.Name = "btnSR";
-            this.btnSR.Size = new Size(0x20, 0x18);
-            this.btnSR.TabIndex = 0x11;
-            this.btnSR.Click += new EventHandler(this.btnSR_Click);
-            this.txtOutSR.EditValue = "";
-            this.txtOutSR.Location = new System.Drawing.Point(0x10, 0x16);
-            this.txtOutSR.Name = "txtOutSR";
-            this.txtOutSR.Properties.ReadOnly = true;
-            this.txtOutSR.Size = new Size(0x128, 0x15);
-            this.txtOutSR.TabIndex = 0x10;
-            this.openFileDialog_0.Filter = "shp文件|*.shp";
-            this.btnOK.DialogResult = DialogResult.OK;
-            this.btnOK.Location = new System.Drawing.Point(0xf8, 0xd8);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new Size(0x40, 0x18);
-            this.btnOK.TabIndex = 13;
-            this.btnOK.Text = "确定";
-            this.btnOK.Click += new EventHandler(this.btnOK_Click);
-            this.btnCancel.DialogResult = DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(0x148, 0xd8);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new Size(0x40, 0x18);
-            this.btnCancel.TabIndex = 14;
-            this.btnCancel.Text = "取消";
-            this.btnCancel.Click += new EventHandler(this.btnCancel_Click);
-            this.progressBar1.Location = new System.Drawing.Point(0x18, 0xe0);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new Size(0xd8, 0x10);
-            this.progressBar1.TabIndex = 15;
-            this.progressBar1.Visible = false;
-            this.AutoScaleBaseSize = new Size(6, 14);
-            base.ClientSize = new Size(0x198, 0x105);
-            base.Controls.Add(this.progressBar1);
-            base.Controls.Add(this.btnCancel);
-            base.Controls.Add(this.btnOK);
-            base.Controls.Add(this.groupBox3);
-            base.Controls.Add(this.groupBox2);
-            base.Controls.Add(this.groupBox1);
-            base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            
-            base.MaximizeBox = false;
-            base.MinimizeBox = false;
-            base.Name = "frmProject";
-            this.Text = "投影";
-            this.groupBox1.ResumeLayout(false);
-            this.txtInputFeat.Properties.EndInit();
-            this.groupBox2.ResumeLayout(false);
-            ((ISupportInitialize) this.pictureBox1).EndInit();
-            this.txtOutFeat.Properties.EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.txtOutSR.Properties.EndInit();
-            base.ResumeLayout(false);
-        }
-
-        private bool method_0()
+ private bool method_0()
         {
             if (this.iworkspace_0 == null)
             {

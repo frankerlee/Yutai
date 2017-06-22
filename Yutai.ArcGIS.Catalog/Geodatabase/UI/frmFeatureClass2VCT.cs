@@ -12,11 +12,8 @@ using Yutai.ArcGIS.Common.Geodatabase;
 
 namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 {
-    public class frmFeatureClass2VCT : Form
+    public partial class frmFeatureClass2VCT : Form
     {
-        private SimpleButton btnDelete;
-        private SimpleButton btnSelectInputFeatures;
-        private SimpleButton btnSelectOutLocation;
         private Container container_0 = null;
         private IGxObject igxObject_0 = null;
         private IList ilist_0 = new ArrayList();
@@ -24,17 +21,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         private int int_0 = 0;
         private int int_1 = 0;
         private ISpatialReference ispatialReference_0 = null;
-        private Label label2;
-        private Label labelFileName;
-        private Label labelFN;
-        private Label lblSelectObjects;
-        private ListView listView1;
-        private Panel panel1;
-        private System.Windows.Forms.ProgressBar progressBar2;
-        private SimpleButton simpleButton1;
-        private SimpleButton simpleButton2;
         private string string_0 = "";
-        private TextEdit txtOutLocation;
 
         public frmFeatureClass2VCT()
         {
@@ -138,141 +125,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             return true;
         }
 
-        protected override void Dispose(bool bool_0)
-        {
-            if (bool_0 && (this.container_0 != null))
-            {
-                this.container_0.Dispose();
-            }
-            base.Dispose(bool_0);
-        }
-
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFeatureClass2VCT));
-            this.btnDelete = new SimpleButton();
-            this.listView1 = new ListView();
-            this.label2 = new Label();
-            this.txtOutLocation = new TextEdit();
-            this.btnSelectInputFeatures = new SimpleButton();
-            this.lblSelectObjects = new Label();
-            this.btnSelectOutLocation = new SimpleButton();
-            this.panel1 = new Panel();
-            this.labelFN = new Label();
-            this.labelFileName = new Label();
-            this.progressBar2 = new System.Windows.Forms.ProgressBar();
-            this.simpleButton1 = new SimpleButton();
-            this.simpleButton2 = new SimpleButton();
-            this.txtOutLocation.Properties.BeginInit();
-            this.panel1.SuspendLayout();
-            base.SuspendLayout();
-            this.btnDelete.Enabled = false;
-            this.btnDelete.Image = (Image) resources.GetObject("btnDelete.Image");
-            this.btnDelete.Location = new System.Drawing.Point(0x110, 0x40);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new Size(0x18, 0x18);
-            this.btnDelete.TabIndex = 13;
-            this.btnDelete.Click += new EventHandler(this.btnDelete_Click);
-            this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(8, 0x20);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new Size(0x100, 0x98);
-            this.listView1.TabIndex = 12;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = View.List;
-            this.listView1.SelectedIndexChanged += new EventHandler(this.listView1_SelectedIndexChanged);
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 0xc0);
-            this.label2.Name = "label2";
-            this.label2.Size = new Size(0x47, 12);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "输出VCT文件";
-            this.txtOutLocation.EditValue = "";
-            this.txtOutLocation.Location = new System.Drawing.Point(8, 0xd8);
-            this.txtOutLocation.Name = "txtOutLocation";
-            this.txtOutLocation.Properties.Appearance.BackColor = SystemColors.InactiveCaptionText;
-            this.txtOutLocation.Properties.Appearance.Options.UseBackColor = true;
-            this.txtOutLocation.Properties.ReadOnly = true;
-            this.txtOutLocation.Size = new Size(0xf8, 0x15);
-            this.txtOutLocation.TabIndex = 10;
-            this.btnSelectInputFeatures.Image = (Image) resources.GetObject("btnSelectInputFeatures.Image");
-            this.btnSelectInputFeatures.Location = new System.Drawing.Point(0x110, 0x18);
-            this.btnSelectInputFeatures.Name = "btnSelectInputFeatures";
-            this.btnSelectInputFeatures.Size = new Size(0x18, 0x18);
-            this.btnSelectInputFeatures.TabIndex = 9;
-            this.btnSelectInputFeatures.Click += new EventHandler(this.btnSelectInputFeatures_Click);
-            this.lblSelectObjects.AutoSize = true;
-            this.lblSelectObjects.Location = new System.Drawing.Point(8, 8);
-            this.lblSelectObjects.Name = "lblSelectObjects";
-            this.lblSelectObjects.Size = new Size(0x35, 12);
-            this.lblSelectObjects.TabIndex = 8;
-            this.lblSelectObjects.Text = "选择要素";
-            this.btnSelectOutLocation.Image = (Image) resources.GetObject("btnSelectOutLocation.Image");
-            this.btnSelectOutLocation.Location = new System.Drawing.Point(0x110, 0xd8);
-            this.btnSelectOutLocation.Name = "btnSelectOutLocation";
-            this.btnSelectOutLocation.Size = new Size(0x18, 0x18);
-            this.btnSelectOutLocation.TabIndex = 14;
-            this.btnSelectOutLocation.Click += new EventHandler(this.btnSelectOutLocation_Click);
-            this.panel1.Controls.Add(this.labelFN);
-            this.panel1.Controls.Add(this.labelFileName);
-            this.panel1.Controls.Add(this.progressBar2);
-            this.panel1.Location = new System.Drawing.Point(8, 8);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new Size(0x160, 0xf2);
-            this.panel1.TabIndex = 0x10;
-            this.panel1.Visible = false;
-            this.labelFN.AutoSize = true;
-            this.labelFN.Location = new System.Drawing.Point(0x18, 0x40);
-            this.labelFN.Name = "labelFN";
-            this.labelFN.Size = new Size(0, 12);
-            this.labelFN.TabIndex = 0x13;
-            this.labelFileName.AutoSize = true;
-            this.labelFileName.Location = new System.Drawing.Point(0x18, 0x18);
-            this.labelFileName.Name = "labelFileName";
-            this.labelFileName.Size = new Size(0, 12);
-            this.labelFileName.TabIndex = 0x12;
-            this.progressBar2.Location = new System.Drawing.Point(0x18, 0x58);
-            this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new Size(0x100, 0x18);
-            this.progressBar2.TabIndex = 0x10;
-            this.simpleButton1.Location = new System.Drawing.Point(0xa8, 0x100);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new Size(0x48, 0x18);
-            this.simpleButton1.TabIndex = 0x11;
-            this.simpleButton1.Text = "转换";
-            this.simpleButton1.Click += new EventHandler(this.simpleButton1_Click);
-            this.simpleButton2.DialogResult = DialogResult.Cancel;
-            this.simpleButton2.Location = new System.Drawing.Point(0xf8, 0x100);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new Size(80, 0x18);
-            this.simpleButton2.TabIndex = 0x12;
-            this.simpleButton2.Text = "取消";
-            this.AutoScaleBaseSize = new Size(6, 14);
-            base.ClientSize = new Size(0x170, 0x125);
-            base.Controls.Add(this.simpleButton2);
-            base.Controls.Add(this.simpleButton1);
-            base.Controls.Add(this.panel1);
-            base.Controls.Add(this.btnSelectOutLocation);
-            base.Controls.Add(this.btnDelete);
-            base.Controls.Add(this.listView1);
-            base.Controls.Add(this.label2);
-            base.Controls.Add(this.lblSelectObjects);
-            base.Controls.Add(this.txtOutLocation);
-            base.Controls.Add(this.btnSelectInputFeatures);
-            base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            base.Icon = (Icon) resources.GetObject("$this.Icon");
-            base.MaximizeBox = false;
-            base.MinimizeBox = false;
-            base.Name = "frmFeatureClass2VCT";
-            this.Text = "导出VCT数据";
-            this.txtOutLocation.Properties.EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            base.ResumeLayout(false);
-            base.PerformLayout();
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+ private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.listView1.SelectedItems.Count > 0)
             {

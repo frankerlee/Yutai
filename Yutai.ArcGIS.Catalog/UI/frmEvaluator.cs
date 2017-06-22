@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Yutai.ArcGIS.Catalog.UI
 {
-    internal class frmEvaluator : Form
+    internal partial class frmEvaluator : Form
     {
         private IContainer icontainer_0 = null;
 
@@ -13,25 +13,6 @@ namespace Yutai.ArcGIS.Catalog.UI
             this.InitializeComponent();
         }
 
-        protected override void Dispose(bool bool_0)
-        {
-            if (bool_0 && (this.icontainer_0 != null))
-            {
-                this.icontainer_0.Dispose();
-            }
-            base.Dispose(bool_0);
-        }
 
-        private void InitializeComponent()
-        {
-            base.SuspendLayout();
-            base.AutoScaleDimensions = new SizeF(6f, 12f);
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.ClientSize = new Size(0x129, 0x111);
-            base.Name = "frmEvaluator";
-            this.Text = "frmEvaluator";
-            base.ResumeLayout(false);
-        }
     }
 }
-

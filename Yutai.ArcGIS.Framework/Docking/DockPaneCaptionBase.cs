@@ -58,7 +58,7 @@ namespace Yutai.ArcGIS.Framework.Docking
         [SecurityPermission(SecurityAction.LinkDemand, Flags=SecurityPermissionFlag.UnmanagedCode)]
         protected override void WndProc(ref Message m)
         {
-            if (m.Msg == 0x203)
+            if (m.Msg == 515)
             {
                 if (DockHelper.IsDockStateAutoHide(this.DockPane.DockState))
                 {

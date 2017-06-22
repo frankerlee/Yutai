@@ -1,0 +1,218 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
+using ESRI.ArcGIS.Carto;
+using ESRI.ArcGIS.Display;
+using ESRI.ArcGIS.esriSystem;
+using ESRI.ArcGIS.Geodatabase;
+using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common.SymbolLib;
+using Yutai.Shared;
+
+namespace Yutai.ArcGIS.Carto.UI
+{
+    partial class UniqueValueRendererMoreAttributeCtrl
+    {
+        protected override void Dispose(bool bool_2)
+        {
+            if (bool_2 && (this.icontainer_0 != null))
+            {
+                this.icontainer_0.Dispose();
+            }
+            base.Dispose(bool_2);
+        }
+
+       
+        private void InitializeComponent()
+        {
+            this.icontainer_0 = new Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UniqueValueRendererMoreAttributeCtrl));
+            this.btnAddAllValues = new SimpleButton();
+            this.btnAddValue = new SimpleButton();
+            this.btnDelete = new SimpleButton();
+            this.btnDeleteAll = new SimpleButton();
+            this.listView1 = new RenderInfoListView();
+            this.columnHeader_3 = new ColumnHeader();
+            this.columnHeader_0 = new ColumnHeader();
+            this.columnHeader_1 = new ColumnHeader();
+            this.columnHeader_2 = new ColumnHeader();
+            this.groupBox1 = new GroupBox();
+            this.cboFields3 = new ComboBoxEdit();
+            this.cboFields2 = new ComboBoxEdit();
+            this.cboFields1 = new ComboBoxEdit();
+            this.groupBox2 = new GroupBox();
+            this.cboColorRamp = new StyleComboBox(this.icontainer_0);
+            this.btnMoveDown = new SimpleButton();
+            this.btnMoveUp = new SimpleButton();
+            this.contextMenuStrip1 = new ContextMenuStrip(this.icontainer_0);
+            this.menuitemGroup = new ToolStripMenuItem();
+            this.menuitemUnGroup = new ToolStripMenuItem();
+            this.groupBox1.SuspendLayout();
+            this.cboFields3.Properties.BeginInit();
+            this.cboFields2.Properties.BeginInit();
+            this.cboFields1.Properties.BeginInit();
+            this.groupBox2.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
+            base.SuspendLayout();
+            this.btnAddAllValues.Location = new System.Drawing.Point(88, 224);
+            this.btnAddAllValues.Name = "btnAddAllValues";
+            this.btnAddAllValues.Size = new Size(80, 24);
+            this.btnAddAllValues.TabIndex = 8;
+            this.btnAddAllValues.Text = "添加所有值";
+            this.btnAddAllValues.Click += new EventHandler(this.btnAddAllValues_Click);
+            this.btnAddValue.Location = new System.Drawing.Point(176, 224);
+            this.btnAddValue.Name = "btnAddValue";
+            this.btnAddValue.Size = new Size(72, 24);
+            this.btnAddValue.TabIndex = 9;
+            this.btnAddValue.Text = "添加值";
+            this.btnAddValue.Click += new EventHandler(this.btnAddValue_Click);
+            this.btnDelete.Enabled = false;
+            this.btnDelete.Location = new System.Drawing.Point(248, 224);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new Size(80, 24);
+            this.btnDelete.TabIndex = 10;
+            this.btnDelete.Text = "删除";
+            this.btnDelete.Click += new EventHandler(this.btnDelete_Click);
+            this.btnDeleteAll.Location = new System.Drawing.Point(328, 224);
+            this.btnDeleteAll.Name = "btnDeleteAll";
+            this.btnDeleteAll.Size = new Size(80, 24);
+            this.btnDeleteAll.TabIndex = 11;
+            this.btnDeleteAll.Text = "删除全部";
+            this.btnDeleteAll.Click += new EventHandler(this.btnDeleteAll_Click);
+            this.listView1.Columns.AddRange(new ColumnHeader[] { this.columnHeader_3, this.columnHeader_0, this.columnHeader_1, this.columnHeader_2 });
+            this.listView1.FullRowSelect = true;
+            this.listView1.Location = new System.Drawing.Point(16, 112);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new Size(360, 104);
+            this.listView1.TabIndex = 12;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = View.Details;
+            this.listView1.SelectedIndexChanged += new EventHandler(this.listView1_SelectedIndexChanged);
+            this.listView1.MouseUp += new MouseEventHandler(this.listView1_MouseUp);
+            this.columnHeader_3.Text = "符号";
+            this.columnHeader_0.Text = "值";
+            this.columnHeader_0.Width = 107;
+            this.columnHeader_1.Text = "标注";
+            this.columnHeader_1.Width = 119;
+            this.columnHeader_2.Text = "数目";
+            this.columnHeader_2.Width = 63;
+            this.groupBox1.Controls.Add(this.cboFields3);
+            this.groupBox1.Controls.Add(this.cboFields2);
+            this.groupBox1.Controls.Add(this.cboFields1);
+            this.groupBox1.Location = new System.Drawing.Point(16, 5);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new Size(192, 99);
+            this.groupBox1.TabIndex = 49;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "值字段";
+            this.cboFields3.EditValue = "";
+            this.cboFields3.Location = new System.Drawing.Point(8, 67);
+            this.cboFields3.Name = "cboFields3";
+            this.cboFields3.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
+            this.cboFields3.Size = new Size(176, 21);
+            this.cboFields3.TabIndex = 52;
+            this.cboFields3.SelectedIndexChanged += new EventHandler(this.cboFields3_SelectedIndexChanged);
+            this.cboFields2.EditValue = "";
+            this.cboFields2.Location = new System.Drawing.Point(8, 43);
+            this.cboFields2.Name = "cboFields2";
+            this.cboFields2.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
+            this.cboFields2.Size = new Size(176, 21);
+            this.cboFields2.TabIndex = 51;
+            this.cboFields2.SelectedIndexChanged += new EventHandler(this.cboFields2_SelectedIndexChanged);
+            this.cboFields1.EditValue = "";
+            this.cboFields1.Location = new System.Drawing.Point(8, 19);
+            this.cboFields1.Name = "cboFields1";
+            this.cboFields1.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
+            this.cboFields1.Size = new Size(176, 21);
+            this.cboFields1.TabIndex = 50;
+            this.cboFields1.SelectedIndexChanged += new EventHandler(this.cboFields1_SelectedIndexChanged);
+            this.groupBox2.Controls.Add(this.cboColorRamp);
+            this.groupBox2.Location = new System.Drawing.Point(216, 5);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new Size(184, 51);
+            this.groupBox2.TabIndex = 50;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "颜色方案";
+            this.cboColorRamp.DrawMode = DrawMode.OwnerDrawVariable;
+            this.cboColorRamp.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.cboColorRamp.DropDownWidth = 160;
+            this.cboColorRamp.Location = new System.Drawing.Point(8, 17);
+            this.cboColorRamp.Name = "cboColorRamp";
+            this.cboColorRamp.Size = new Size(168, 22);
+            this.cboColorRamp.TabIndex = 6;
+            this.cboColorRamp.SelectedIndexChanged += new EventHandler(this.cboColorRamp_SelectedIndexChanged);
+            this.btnMoveDown.Enabled = false;
+            this.btnMoveDown.Image = (System.Drawing.Image)resources.GetObject("btnMoveDown.Image");
+            this.btnMoveDown.Location = new System.Drawing.Point(384, 152);
+            this.btnMoveDown.Name = "btnMoveDown";
+            this.btnMoveDown.Size = new Size(24, 24);
+            this.btnMoveDown.TabIndex = 52;
+            this.btnMoveDown.Click += new EventHandler(this.btnMoveDown_Click);
+            this.btnMoveUp.Enabled = false;
+            this.btnMoveUp.Image = (System.Drawing.Image)resources.GetObject("btnMoveUp.Image");
+            this.btnMoveUp.Location = new System.Drawing.Point(384, 112);
+            this.btnMoveUp.Name = "btnMoveUp";
+            this.btnMoveUp.Size = new Size(24, 24);
+            this.btnMoveUp.TabIndex = 51;
+            this.btnMoveUp.Click += new EventHandler(this.btnMoveUp_Click);
+            this.contextMenuStrip1.Items.AddRange(new ToolStripItem[] { this.menuitemGroup, this.menuitemUnGroup });
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new Size(125, 48);
+            this.menuitemGroup.Name = "menuitemGroup";
+            this.menuitemGroup.Size = new Size(124, 22);
+            this.menuitemGroup.Text = "值分组";
+            this.menuitemGroup.Click += new EventHandler(this.menuitemGroup_Click);
+            this.menuitemUnGroup.Name = "menuitemUnGroup";
+            this.menuitemUnGroup.Size = new Size(124, 22);
+            this.menuitemUnGroup.Text = "取消分组";
+            this.menuitemUnGroup.Click += new EventHandler(this.menuitemUnGroup_Click);
+            base.Controls.Add(this.btnMoveDown);
+            base.Controls.Add(this.btnMoveUp);
+            base.Controls.Add(this.groupBox2);
+            base.Controls.Add(this.groupBox1);
+            base.Controls.Add(this.listView1);
+            base.Controls.Add(this.btnDeleteAll);
+            base.Controls.Add(this.btnDelete);
+            base.Controls.Add(this.btnAddValue);
+            base.Controls.Add(this.btnAddAllValues);
+            base.Name = "UniqueValueRendererMoreAttributeCtrl";
+            base.Size = new Size(416, 264);
+            base.Load += new EventHandler(this.UniqueValueRendererMoreAttributeCtrl_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.cboFields3.Properties.EndInit();
+            this.cboFields2.Properties.EndInit();
+            this.cboFields1.Properties.EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
+            base.ResumeLayout(false);
+        }
+
+       
+        private SimpleButton btnAddAllValues;
+        private SimpleButton btnAddValue;
+        private SimpleButton btnDelete;
+        private SimpleButton btnDeleteAll;
+        private SimpleButton btnMoveDown;
+        private SimpleButton btnMoveUp;
+        private StyleComboBox cboColorRamp;
+        private ComboBoxEdit cboFields1;
+        private ComboBoxEdit cboFields2;
+        private ComboBoxEdit cboFields3;
+        private ColumnHeader columnHeader_0;
+        private ColumnHeader columnHeader_1;
+        private ColumnHeader columnHeader_2;
+        private ColumnHeader columnHeader_3;
+        private ContextMenuStrip contextMenuStrip1;
+        private GroupBox groupBox1;
+        private GroupBox groupBox2;
+        private IContainer icontainer_0;
+        private RenderInfoListView listView1;
+        private ToolStripMenuItem menuitemGroup;
+        private ToolStripMenuItem menuitemUnGroup;
+    }
+}

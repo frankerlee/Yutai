@@ -39,7 +39,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         public void DrawDifferenceGeometry(IGeometry igeometry_0, IScreenDisplay iscreenDisplay_0)
         {
             IRgbColor color = new RgbColorClass {
-                Red = 0xff
+                Red = 255
             };
             iscreenDisplay_0.StartDrawing(iscreenDisplay_0.hDC, -1);
             switch (igeometry_0.GeometryType)

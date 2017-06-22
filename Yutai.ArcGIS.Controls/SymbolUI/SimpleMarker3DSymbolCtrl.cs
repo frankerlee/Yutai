@@ -14,26 +14,11 @@ using Yutai.ArcGIS.Common.SymbolUI;
 
 namespace Yutai.ArcGIS.Controls.SymbolUI
 {
-    internal class SimpleMarker3DSymbolCtrl : UserControl, CommonInterface
+    internal partial class SimpleMarker3DSymbolCtrl : UserControl, CommonInterface
     {
-        private AxSceneControl axSceneControl1;
-        private ComboBoxEdit cboStyle;
-        private CheckEdit chkMaintainAspectRatio;
-        private ColorEdit colorEdit1;
-        private Container components = null;
-        private GroupBox groupBox1;
-        private GroupBox groupBox2;
-        private Label label2;
-        private Label label4;
-        private Label label6;
-        private Label label7;
-        private Label label8;
         private bool m_CanDo = false;
         public ISimpleMarker3DSymbol m_pSimpleMarker3DSymbol = null;
         public double m_unit = 1.0;
-        private SpinEdit txtDepth1;
-        private SpinEdit txtSize;
-        private SpinEdit txtWidth;
 
         public event ValueChangedHandler ValueChanged;
 
@@ -121,22 +106,13 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.axSceneControl1.SceneGraph.RefreshViewers();
         }
 
-        protected override void Dispose(bool disposing)
+ private void GetRGB(uint rgb, out int r, out int g, out int b)
         {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private void GetRGB(uint rgb, out int r, out int g, out int b)
-        {
-            uint num = rgb & 0xff0000;
-            b = (int) (num >> 0x10);
-            num = rgb & 0xff00;
+            uint num = rgb & 16711680;
+            b = (int) (num >> 16);
+            num = rgb & 65280;
             g = (int) (num >> 8);
-            num = rgb & 0xff;
+            num = rgb & 255;
             r = (int) num;
         }
 
@@ -153,180 +129,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.m_CanDo = true;
         }
 
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SimpleMarker3DSymbolCtrl));
-            this.groupBox2 = new GroupBox();
-            this.axSceneControl1 = new AxSceneControl();
-            this.groupBox1 = new GroupBox();
-            this.chkMaintainAspectRatio = new CheckEdit();
-            this.txtDepth1 = new SpinEdit();
-            this.label4 = new Label();
-            this.txtWidth = new SpinEdit();
-            this.txtSize = new SpinEdit();
-            this.label6 = new Label();
-            this.label7 = new Label();
-            this.colorEdit1 = new ColorEdit();
-            this.label8 = new Label();
-            this.cboStyle = new ComboBoxEdit();
-            this.label2 = new Label();
-            this.groupBox2.SuspendLayout();
-            this.axSceneControl1.BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.chkMaintainAspectRatio.Properties.BeginInit();
-            this.txtDepth1.Properties.BeginInit();
-            this.txtWidth.Properties.BeginInit();
-            this.txtSize.Properties.BeginInit();
-            this.colorEdit1.Properties.BeginInit();
-            this.cboStyle.Properties.BeginInit();
-            base.SuspendLayout();
-            this.groupBox2.Controls.Add(this.axSceneControl1);
-            this.groupBox2.Location = new System.Drawing.Point(0xcc, 0x58);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new Size(0xb0, 160);
-            this.groupBox2.TabIndex = 0x54;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "3D预览";
-            this.axSceneControl1.Location = new System.Drawing.Point(6, 20);
-            this.axSceneControl1.Name = "axSceneControl1";
-            this.axSceneControl1.OcxState = (AxHost.State) resources.GetObject("axSceneControl1.OcxState");
-            this.axSceneControl1.Size = new Size(0xa4, 0x80);
-            this.axSceneControl1.TabIndex = 1;
-            this.groupBox1.Controls.Add(this.chkMaintainAspectRatio);
-            this.groupBox1.Controls.Add(this.txtDepth1);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.txtWidth);
-            this.groupBox1.Controls.Add(this.txtSize);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Location = new System.Drawing.Point(0x1c, 0x58);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new Size(0x98, 0x98);
-            this.groupBox1.TabIndex = 0x53;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "尺寸";
-            this.chkMaintainAspectRatio.Location = new System.Drawing.Point(0x10, 80);
-            this.chkMaintainAspectRatio.Name = "chkMaintainAspectRatio";
-            this.chkMaintainAspectRatio.Properties.Caption = "保持长宽比";
-            this.chkMaintainAspectRatio.Size = new Size(0x68, 0x13);
-            this.chkMaintainAspectRatio.TabIndex = 0x55;
-            this.chkMaintainAspectRatio.CheckedChanged += new EventHandler(this.chkMaintainAspectRatio_CheckedChanged);
-            int[] bits = new int[4];
-            this.txtDepth1.EditValue = new decimal(bits);
-            this.txtDepth1.Location = new System.Drawing.Point(0x38, 0x70);
-            this.txtDepth1.Name = "txtDepth1";
-            this.txtDepth1.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
-            this.txtDepth1.Properties.DisplayFormat.FormatType = FormatType.Numeric;
-            this.txtDepth1.Properties.EditFormat.FormatType = FormatType.Numeric;
-            bits = new int[4];
-            bits[0] = 100;
-            this.txtDepth1.Properties.MaxValue = new decimal(bits);
-            bits = new int[4];
-            bits[0] = 100;
-            bits[3] = -2147483648;
-            this.txtDepth1.Properties.MinValue = new decimal(bits);
-            this.txtDepth1.Size = new Size(0x48, 0x15);
-            this.txtDepth1.TabIndex = 0x54;
-            this.txtDepth1.EditValueChanged += new EventHandler(this.txtDepth1_EditValueChanged);
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(0x10, 120);
-            this.label4.Name = "label4";
-            this.label4.Size = new Size(0x1d, 12);
-            this.label4.TabIndex = 0x53;
-            this.label4.Text = "深度";
-            bits = new int[4];
-            this.txtWidth.EditValue = new decimal(bits);
-            this.txtWidth.Location = new System.Drawing.Point(0x38, 0x30);
-            this.txtWidth.Name = "txtWidth";
-            this.txtWidth.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
-            this.txtWidth.Properties.DisplayFormat.FormatType = FormatType.Numeric;
-            this.txtWidth.Properties.EditFormat.FormatType = FormatType.Numeric;
-            bits = new int[4];
-            bits[0] = 360;
-            this.txtWidth.Properties.MaxValue = new decimal(bits);
-            bits = new int[4];
-            bits[0] = 360;
-            bits[3] = -2147483648;
-            this.txtWidth.Properties.MinValue = new decimal(bits);
-            this.txtWidth.Size = new Size(0x40, 0x15);
-            this.txtWidth.TabIndex = 0x52;
-            this.txtWidth.EditValueChanged += new EventHandler(this.txtWidth_EditValueChanged);
-            bits = new int[4];
-            this.txtSize.EditValue = new decimal(bits);
-            this.txtSize.Location = new System.Drawing.Point(0x38, 0x18);
-            this.txtSize.Name = "txtSize";
-            this.txtSize.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
-            this.txtSize.Properties.DisplayFormat.FormatType = FormatType.Numeric;
-            this.txtSize.Properties.EditFormat.FormatType = FormatType.Numeric;
-            bits = new int[4];
-            bits[0] = 100;
-            this.txtSize.Properties.MaxValue = new decimal(bits);
-            this.txtSize.Size = new Size(0x40, 0x15);
-            this.txtSize.TabIndex = 0x51;
-            this.txtSize.EditValueChanged += new EventHandler(this.txtSize_EditValueChanged);
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(0x10, 0x18);
-            this.label6.Name = "label6";
-            this.label6.Size = new Size(0x1d, 12);
-            this.label6.TabIndex = 80;
-            this.label6.Text = "大小";
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(0x10, 0x38);
-            this.label7.Name = "label7";
-            this.label7.Size = new Size(0x23, 12);
-            this.label7.TabIndex = 0x4f;
-            this.label7.Text = "宽度:";
-            this.colorEdit1.EditValue = Color.Empty;
-            this.colorEdit1.Location = new System.Drawing.Point(0x40, 8);
-            this.colorEdit1.Name = "colorEdit1";
-            this.colorEdit1.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.colorEdit1.Size = new Size(0x30, 0x15);
-            this.colorEdit1.TabIndex = 0x52;
-            this.colorEdit1.EditValueChanged += new EventHandler(this.colorEdit1_EditValueChanged);
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(0x18, 8);
-            this.label8.Name = "label8";
-            this.label8.Size = new Size(0x1d, 12);
-            this.label8.TabIndex = 0x51;
-            this.label8.Text = "颜色";
-            this.cboStyle.EditValue = "";
-            this.cboStyle.Location = new System.Drawing.Point(0x40, 40);
-            this.cboStyle.Name = "cboStyle";
-            this.cboStyle.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.cboStyle.Properties.Items.AddRange(new object[] { "四面体", "立方体", "锥体", "圆柱体", "棱形", "球体", "SphereFrame" });
-            this.cboStyle.Size = new Size(80, 0x15);
-            this.cboStyle.TabIndex = 0x56;
-            this.cboStyle.SelectedIndexChanged += new EventHandler(this.cboStyle_SelectedIndexChanged);
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(0x18, 0x2d);
-            this.label2.Name = "label2";
-            this.label2.Size = new Size(0x1d, 12);
-            this.label2.TabIndex = 0x55;
-            this.label2.Text = "样式";
-            base.Controls.Add(this.cboStyle);
-            base.Controls.Add(this.label2);
-            base.Controls.Add(this.groupBox2);
-            base.Controls.Add(this.groupBox1);
-            base.Controls.Add(this.colorEdit1);
-            base.Controls.Add(this.label8);
-            base.Name = "SimpleMarker3DSymbolCtrl";
-            base.Size = new Size(0x198, 0x128);
-            base.Load += new EventHandler(this.SimpleMarker3DSymbolCtrl_Load);
-            this.groupBox2.ResumeLayout(false);
-            this.axSceneControl1.EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.chkMaintainAspectRatio.Properties.EndInit();
-            this.txtDepth1.Properties.EndInit();
-            this.txtWidth.Properties.EndInit();
-            this.txtSize.Properties.EndInit();
-            this.colorEdit1.Properties.EndInit();
-            this.cboStyle.Properties.EndInit();
-            base.ResumeLayout(false);
-            base.PerformLayout();
-        }
-
-        private void Marker3DEvent_Marker3DChanged(object sender)
+ private void Marker3DEvent_Marker3DChanged(object sender)
         {
             if (sender != this)
             {

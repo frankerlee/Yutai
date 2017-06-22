@@ -1,0 +1,211 @@
+﻿using System;
+using System.Collections;
+using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
+using ESRI.ArcGIS.Carto;
+using ESRI.ArcGIS.Display;
+using ESRI.ArcGIS.esriSystem;
+using ESRI.ArcGIS.Geodatabase;
+using Yutai.ArcGIS.Common.Query.UI;
+using Yutai.ArcGIS.Common.SymbolLib;
+using Yutai.ArcGIS.Controls.SymbolUI;
+
+namespace Yutai.ArcGIS.Carto.UI
+{
+    partial class LayerLabelPropertyCtrl
+    {
+        protected override void Dispose(bool bool_4)
+        {
+            if (bool_4 && (this.container_0 != null))
+            {
+                this.container_0.Dispose();
+            }
+            base.Dispose(bool_4);
+        }
+
+       
+ private void InitializeComponent()
+        {
+            this.chkLabelFeature = new CheckEdit();
+            this.groupBox1 = new GroupBox();
+            this.cboFields = new ComboBoxEdit();
+            this.simpleButton1 = new SimpleButton();
+            this.label1 = new Label();
+            this.btnLabelExpression = new GroupBox();
+            this.btnEditSymbol = new SimpleButton();
+            this.symbolItem = new SymbolItem();
+            this.label2 = new Label();
+            this.cboClass = new ComboBoxEdit();
+            this.chkLabel = new CheckEdit();
+            this.btnAddClass = new SimpleButton();
+            this.btnDeleteClass = new SimpleButton();
+            this.btnRename = new SimpleButton();
+            this.btnSQL = new SimpleButton();
+            this.groupBox2 = new GroupBox();
+            this.btnScaleSet = new SimpleButton();
+            this.chkLabelFeature.Properties.BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.cboFields.Properties.BeginInit();
+            this.btnLabelExpression.SuspendLayout();
+            this.cboClass.Properties.BeginInit();
+            this.chkLabel.Properties.BeginInit();
+            this.groupBox2.SuspendLayout();
+            base.SuspendLayout();
+            this.chkLabelFeature.Location = new Point(16, 8);
+            this.chkLabelFeature.Name = "chkLabelFeature";
+            this.chkLabelFeature.Properties.Caption = "标注要素";
+            this.chkLabelFeature.Size = new Size(88, 19);
+            this.chkLabelFeature.TabIndex = 0;
+            this.chkLabelFeature.CheckedChanged += new EventHandler(this.chkLabelFeature_CheckedChanged);
+            this.groupBox1.Controls.Add(this.cboFields);
+            this.groupBox1.Controls.Add(this.simpleButton1);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new Point(16, 96);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new Size(320, 64);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "标注表达式";
+            this.cboFields.EditValue = "";
+            this.cboFields.Location = new Point(80, 24);
+            this.cboFields.Name = "cboFields";
+            this.cboFields.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
+            this.cboFields.Size = new Size(136, 23);
+            this.cboFields.TabIndex = 5;
+            this.cboFields.SelectedIndexChanged += new EventHandler(this.cboFields_SelectedIndexChanged);
+            this.simpleButton1.Location = new Point(240, 24);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new Size(64, 24);
+            this.simpleButton1.TabIndex = 4;
+            this.simpleButton1.Text = "表达式...";
+            this.simpleButton1.Click += new EventHandler(this.simpleButton1_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new Point(8, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new Size(54, 17);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "标注字段";
+            this.btnLabelExpression.Controls.Add(this.btnEditSymbol);
+            this.btnLabelExpression.Controls.Add(this.symbolItem);
+            this.btnLabelExpression.Location = new Point(16, 168);
+            this.btnLabelExpression.Name = "btnLabelExpression";
+            this.btnLabelExpression.Size = new Size(320, 72);
+            this.btnLabelExpression.TabIndex = 3;
+            this.btnLabelExpression.TabStop = false;
+            this.btnLabelExpression.Text = "文本符号";
+            this.btnEditSymbol.Location = new Point(232, 24);
+            this.btnEditSymbol.Name = "btnEditSymbol";
+            this.btnEditSymbol.Size = new Size(64, 24);
+            this.btnEditSymbol.TabIndex = 1;
+            this.btnEditSymbol.Text = "符号...";
+            this.btnEditSymbol.Click += new EventHandler(this.btnEditSymbol_Click);
+            this.symbolItem.BackColor = SystemColors.ControlLight;
+            this.symbolItem.Location = new Point(16, 24);
+            this.symbolItem.Name = "symbolItem";
+            this.symbolItem.Size = new Size(168, 40);
+            this.symbolItem.Symbol = null;
+            this.symbolItem.TabIndex = 0;
+            this.label2.AutoSize = true;
+            this.label2.Location = new Point(16, 32);
+            this.label2.Name = "label2";
+            this.label2.Size = new Size(23, 17);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "类:";
+            this.cboClass.EditValue = "";
+            this.cboClass.Location = new Point(48, 32);
+            this.cboClass.Name = "cboClass";
+            this.cboClass.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
+            this.cboClass.Size = new Size(136, 23);
+            this.cboClass.TabIndex = 6;
+            this.cboClass.SelectedIndexChanged += new EventHandler(this.cboClass_SelectedIndexChanged);
+            this.chkLabel.Location = new Point(192, 32);
+            this.chkLabel.Name = "chkLabel";
+            this.chkLabel.Properties.Caption = "标注这个类的要素";
+            this.chkLabel.Size = new Size(128, 19);
+            this.chkLabel.TabIndex = 7;
+            this.chkLabel.CheckedChanged += new EventHandler(this.chkLabel_CheckedChanged);
+            this.btnAddClass.Location = new Point(16, 64);
+            this.btnAddClass.Name = "btnAddClass";
+            this.btnAddClass.Size = new Size(56, 24);
+            this.btnAddClass.TabIndex = 8;
+            this.btnAddClass.Text = "添加...";
+            this.btnAddClass.Click += new EventHandler(this.btnAddClass_Click);
+            this.btnDeleteClass.Location = new Point(80, 64);
+            this.btnDeleteClass.Name = "btnDeleteClass";
+            this.btnDeleteClass.Size = new Size(56, 24);
+            this.btnDeleteClass.TabIndex = 9;
+            this.btnDeleteClass.Text = "删除";
+            this.btnDeleteClass.Click += new EventHandler(this.btnDeleteClass_Click);
+            this.btnRename.Location = new Point(144, 64);
+            this.btnRename.Name = "btnRename";
+            this.btnRename.Size = new Size(56, 24);
+            this.btnRename.TabIndex = 10;
+            this.btnRename.Text = "重命名";
+            this.btnRename.Click += new EventHandler(this.btnRename_Click);
+            this.btnSQL.Location = new Point(208, 64);
+            this.btnSQL.Name = "btnSQL";
+            this.btnSQL.Size = new Size(56, 24);
+            this.btnSQL.TabIndex = 11;
+            this.btnSQL.Text = "SQL查询";
+            this.btnSQL.Click += new EventHandler(this.btnSQL_Click);
+            this.groupBox2.Controls.Add(this.btnScaleSet);
+            this.groupBox2.Location = new Point(16, 248);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new Size(216, 48);
+            this.groupBox2.TabIndex = 12;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "其他选项";
+            this.btnScaleSet.Location = new Point(48, 16);
+            this.btnScaleSet.Name = "btnScaleSet";
+            this.btnScaleSet.Size = new Size(64, 24);
+            this.btnScaleSet.TabIndex = 0;
+            this.btnScaleSet.Text = "比例范围";
+            this.btnScaleSet.Click += new EventHandler(this.btnScaleSet_Click);
+            base.Controls.Add(this.groupBox2);
+            base.Controls.Add(this.btnSQL);
+            base.Controls.Add(this.btnRename);
+            base.Controls.Add(this.btnDeleteClass);
+            base.Controls.Add(this.btnAddClass);
+            base.Controls.Add(this.chkLabel);
+            base.Controls.Add(this.cboClass);
+            base.Controls.Add(this.label2);
+            base.Controls.Add(this.btnLabelExpression);
+            base.Controls.Add(this.groupBox1);
+            base.Controls.Add(this.chkLabelFeature);
+            base.Name = "LayerLabelPropertyCtrl";
+            base.Size = new Size(408, 312);
+            base.Load += new EventHandler(this.LayerLabelPropertyCtrl_Load);
+            this.chkLabelFeature.Properties.EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.cboFields.Properties.EndInit();
+            this.btnLabelExpression.ResumeLayout(false);
+            this.cboClass.Properties.EndInit();
+            this.chkLabel.Properties.EndInit();
+            this.groupBox2.ResumeLayout(false);
+            base.ResumeLayout(false);
+        }
+
+       
+        private SimpleButton btnAddClass;
+        private SimpleButton btnDeleteClass;
+        private SimpleButton btnEditSymbol;
+        private GroupBox btnLabelExpression;
+        private SimpleButton btnRename;
+        private SimpleButton btnScaleSet;
+        private SimpleButton btnSQL;
+        private ComboBoxEdit cboClass;
+        private ComboBoxEdit cboFields;
+        private CheckEdit chkLabel;
+        private CheckEdit chkLabelFeature;
+        private GroupBox groupBox1;
+        private GroupBox groupBox2;
+        private IAnnotateLayerProperties iannotateLayerProperties_0;
+        private Label label1;
+        private Label label2;
+        private SimpleButton simpleButton1;
+        private SymbolItem symbolItem;
+    }
+}

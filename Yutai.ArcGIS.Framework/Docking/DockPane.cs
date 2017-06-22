@@ -1063,7 +1063,7 @@ namespace Yutai.ArcGIS.Framework.Docking
         [SecurityPermission(SecurityAction.LinkDemand, Flags=SecurityPermissionFlag.UnmanagedCode)]
         protected override void WndProc(ref Message m)
         {
-            if (m.Msg == 0x21)
+            if (m.Msg == 33)
             {
                 this.Activate();
             }
@@ -1655,12 +1655,12 @@ namespace Yutai.ArcGIS.Framework.Docking
                     Rectangle rectangle = base.Parent.RectangleToScreen(nestedDockingStatus.LogicalBounds);
                     if (((ISplitterDragSource) this).IsVertical)
                     {
-                        rectangle.X += 0x18;
-                        rectangle.Width -= 0x30;
+                        rectangle.X += 24;
+                        rectangle.Width -= 48;
                         return rectangle;
                     }
-                    rectangle.Y += 0x18;
-                    rectangle.Height -= 0x30;
+                    rectangle.Y += 24;
+                    rectangle.Height -= 48;
                     return rectangle;
                 }
             }

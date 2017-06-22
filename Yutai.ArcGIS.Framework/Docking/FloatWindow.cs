@@ -10,7 +10,7 @@ namespace Yutai.ArcGIS.Framework.Docking
         private bool m_allowEndUserDocking;
         private DockPanel m_dockPanel;
         private NestedPaneCollection m_nestedPanes;
-        internal const int WM_CHECKDISPOSE = 0x401;
+        internal const int WM_CHECKDISPOSE = 1025;
 
         protected internal FloatWindow(DockPanel dockPanel, DockPane pane)
         {
@@ -314,7 +314,7 @@ namespace Yutai.ArcGIS.Framework.Docking
                 {
                     Point mousePosition = Control.MousePosition;
                     uint lParam = Win32Helper.MakeLong(mousePosition.X, mousePosition.Y);
-                    if (NativeMethods.SendMessage(base.Handle, 0x84, 0, lParam) == 2)
+                    if (NativeMethods.SendMessage(base.Handle, 132, 0, lParam) == 2)
                     {
                         dockOutline.Show(this.VisibleNestedPanes[0], -1);
                     }
@@ -325,11 +325,11 @@ namespace Yutai.ArcGIS.Framework.Docking
         [SecurityPermission(SecurityAction.LinkDemand, Flags=SecurityPermissionFlag.UnmanagedCode)]
         protected override void WndProc(ref Message m)
         {
-            if (m.Msg == 0xa1)
+            if (m.Msg == 161)
             {
                 if (!base.IsDisposed)
                 {
-                    if (((NativeMethods.SendMessage(base.Handle, 0x84, 0, (uint) ((int) m.LParam)) == 2) && this.DockPanel.AllowEndUserDocking) && this.AllowEndUserDocking)
+                    if (((NativeMethods.SendMessage(base.Handle, 132, 0, (uint) ((int) m.LParam)) == 2) && this.DockPanel.AllowEndUserDocking) && this.AllowEndUserDocking)
                     {
                         base.Activate();
                         this.m_dockPanel.BeginDrag(this);
@@ -340,9 +340,9 @@ namespace Yutai.ArcGIS.Framework.Docking
                     }
                 }
             }
-            else if (m.Msg == 0xa4)
+            else if (m.Msg == 164)
             {
-                if (NativeMethods.SendMessage(base.Handle, 0x84, 0, (uint) ((int) m.LParam)) == 2)
+                if (NativeMethods.SendMessage(base.Handle, 132, 0, (uint) ((int) m.LParam)) == 2)
                 {
                     DockPane pane = (this.VisibleNestedPanes.Count == 1) ? this.VisibleNestedPanes[0] : null;
                     if ((pane != null) && (pane.ActiveContent != null))
@@ -353,7 +353,7 @@ namespace Yutai.ArcGIS.Framework.Docking
                 }
                 base.WndProc(ref m);
             }
-            else if (m.Msg == 0x10)
+            else if (m.Msg == 16)
             {
                 if (this.NestedPanes.Count == 0)
                 {
@@ -382,9 +382,9 @@ namespace Yutai.ArcGIS.Framework.Docking
                     }
                 }
             }
-            else if (m.Msg == 0xa3)
+            else if (m.Msg == 163)
             {
-                if (NativeMethods.SendMessage(base.Handle, 0x84, 0, (uint) ((int) m.LParam)) != 2)
+                if (NativeMethods.SendMessage(base.Handle, 132, 0, (uint) ((int) m.LParam)) != 2)
                 {
                     base.WndProc(ref m);
                 }
@@ -401,7 +401,7 @@ namespace Yutai.ArcGIS.Framework.Docking
                     this.DockPanel.ResumeLayout(true, true);
                 }
             }
-            else if (m.Msg == 0x401)
+            else if (m.Msg == 1025)
             {
                 if (this.NestedPanes.Count == 0)
                 {

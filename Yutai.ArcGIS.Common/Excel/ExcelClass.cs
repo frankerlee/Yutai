@@ -108,7 +108,7 @@ namespace Yutai.ArcGIS.Common.Excel
         public void InsertCol(int int_0, int int_1)
         {
             object obj2 = Missing.Value;
-            string str = ((char) (int_1 + 0x41)).ToString();
+            string str = ((char) (int_1 + 65)).ToString();
             try
             {
                 Range range = this._Worksheet_0.get_Range(str + "1", str + this._Worksheet_0.UsedRange.Rows.Count.ToString());
@@ -124,7 +124,7 @@ namespace Yutai.ArcGIS.Common.Excel
         public void InsertCol(int int_0, object object_1)
         {
             object obj2 = Missing.Value;
-            string str = ((char) (int_0 + 0x41)).ToString();
+            string str = ((char) (int_0 + 65)).ToString();
             Range range = this._Worksheet_0.get_Range(str + "1", str + this._Worksheet_0.UsedRange.Rows.Count.ToString());
             range.ColumnWidth=object_1;
             range.EntireColumn.Insert((XlInsertShiftDirection) (-4121), obj2);

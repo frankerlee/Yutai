@@ -14,20 +14,12 @@ using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {
-    public class MultiAttributeControl : UserControl, IDockContent
+    public partial class MultiAttributeControl : UserControl, IDockContent
     {
-        private Container components = null;
-        private IActiveViewEvents_Event m_pActiveViewEvents;
         private MultiAttributeListControl m_pAttributeListControl = new MultiAttributeListControl();
         private IWorkspace m_pEditWorkspace = null;
-        private IMap m_pMap;
         private int m_SelectType = 0;
         private SysGrants m_sysGrants = new SysGrants();
-        private Panel panel1;
-        private Panel panel2;
-        private Splitter splitter1;
-        private TextBox textBox1;
-        private TreeView treeView1;
 
         public MultiAttributeControl()
         {
@@ -75,16 +67,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             return false;
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        public void FlashGeometry(IScreenDisplay pScreenDisplay, IGeometry pGeometry)
+ public void FlashGeometry(IScreenDisplay pScreenDisplay, IGeometry pGeometry)
         {
             pScreenDisplay.StartDrawing(0, -1);
             switch (pGeometry.GeometryType)
@@ -110,7 +93,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 Width = 4.0
             };
             IRgbColor color = new RgbColorClass {
-                Green = 0x80
+                Green = 128
             };
             ISymbol sym = (ISymbol) symbol;
             sym.ROP2 = esriRasterOpCode.esriROPNotXOrPen;
@@ -126,7 +109,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 Style = esriSimpleMarkerStyle.esriSMSCircle
             };
             IRgbColor color = new RgbColorClass {
-                Green = 0x80
+                Green = 128
             };
             ISymbol sym = (ISymbol) symbol;
             sym.ROP2 = esriRasterOpCode.esriROPNotXOrPen;
@@ -142,7 +125,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 Outline = null
             };
             IRgbColor color = new RgbColorClass {
-                Green = 0x80
+                Green = 128
             };
             ISymbol sym = (ISymbol) symbol;
             sym.ROP2 = esriRasterOpCode.esriROPNotXOrPen;
@@ -187,62 +170,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
-        private void InitializeComponent()
-        {
-            this.panel1 = new Panel();
-            this.textBox1 = new TextBox();
-            this.treeView1 = new TreeView();
-            this.splitter1 = new Splitter();
-            this.panel2 = new Panel();
-            this.panel1.SuspendLayout();
-            base.SuspendLayout();
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.treeView1);
-            this.panel1.Dock = DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new Size(0x68, 0x130);
-            this.panel1.TabIndex = 0;
-            this.textBox1.Dock = DockStyle.Bottom;
-            this.textBox1.Location = new System.Drawing.Point(0, 0x11b);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new Size(0x68, 0x15);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "";
-            this.treeView1.Dock = DockStyle.Fill;
-            this.treeView1.Font = new Font("宋体", 9f, FontStyle.Regular, GraphicsUnit.Point, 0x86);
-            this.treeView1.HideSelection = false;
-            this.treeView1.ImageIndex = -1;
-            this.treeView1.Location = new System.Drawing.Point(0, 0);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.SelectedImageIndex = -1;
-            this.treeView1.Size = new Size(0x68, 0x130);
-            this.treeView1.TabIndex = 0;
-            this.treeView1.AfterSelect += new TreeViewEventHandler(this.treeView1_AfterSelect);
-            this.splitter1.Location = new System.Drawing.Point(0x68, 0);
-            this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new Size(3, 0x130);
-            this.splitter1.TabIndex = 2;
-            this.splitter1.TabStop = false;
-            this.panel2.Dock = DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0x6b, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new Size(0x12d, 0x130);
-            this.panel2.TabIndex = 4;
-            this.panel2.Visible = false;
-            base.Controls.Add(this.panel2);
-            base.Controls.Add(this.splitter1);
-            base.Controls.Add(this.panel1);
-            this.Font = new Font("宋体", 9f, FontStyle.Regular, GraphicsUnit.Point, 0x86);
-            base.Name = "MultiAttributeControl";
-            base.Size = new Size(0x198, 0x130);
-            base.Load += new EventHandler(this.AttributeControl_Load);
-            this.panel1.ResumeLayout(false);
-            base.ResumeLayout(false);
-        }
-
-        private void m_pActiveViewEvents_SelectionChanged()
+ private void m_pActiveViewEvents_SelectionChanged()
         {
             if (base.Visible)
             {

@@ -21,16 +21,10 @@ using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 {
-    public class TOCTreeViewEx : TocTreeViewBase
+    public partial class TOCTreeViewEx : TocTreeViewBase
     {
         private TOCTreeViewType _type = TOCTreeViewType.TOCTree;
-        private BarDockControl barDockControlBottom;
-        private BarDockControl barDockControlLeft;
-        private BarDockControl barDockControlRight;
-        private BarDockControl barDockControlTop;
         private List<BarItem> baritems = new List<BarItem>();
-        private BarManager barManager1;
-        private IContainer components = null;
         private List<bool> isgroups = new List<bool>();
         private bool m_bDrag = false;
         private bool m_CanDo = true;
@@ -50,7 +44,6 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
         protected IPageLayoutControl2 m_pPageLayoutCtrl = null;
         private ISceneControlDefault m_pSceneControl = null;
         private IWorkspace m_pWorkspace = null;
-        private PopupMenu popupMenu1;
 
         public event AfterSelectEventHandler AfterSelect;
 
@@ -66,7 +59,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
             base.SetStyle(ControlStyles.UserPaint, true);
             base.SetStyle(ControlStyles.DoubleBuffer, true);
             this.barManager1.SetPopupContextMenu(this, this.popupMenu1);
-            this.Indent = 0x10;
+            this.Indent = 16;
             this.CanDrag = true;
             this.ShowLines = false;
             this.TOCTreeViewType = TOCTreeViewType.TOCTree;
@@ -413,16 +406,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
             this.Calculate();
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        public void Draw()
+ public void Draw()
         {
             Graphics pGraphics = base.CreateGraphics();
             for (int i = 0; i < base.m_pNodes.Count; i++)
@@ -709,45 +693,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
             return null;
         }
 
-        private void InitializeComponent()
-        {
-            this.components = new Container();
-            this.barManager1 = new BarManager(this.components);
-            this.barDockControlTop = new BarDockControl();
-            this.barDockControlBottom = new BarDockControl();
-            this.barDockControlLeft = new BarDockControl();
-            this.barDockControlRight = new BarDockControl();
-            this.popupMenu1 = new PopupMenu(this.components);
-            this.barManager1.BeginInit();
-            this.popupMenu1.BeginInit();
-            base.SuspendLayout();
-            this.barManager1.DockControls.Add(this.barDockControlTop);
-            this.barManager1.DockControls.Add(this.barDockControlBottom);
-            this.barManager1.DockControls.Add(this.barDockControlLeft);
-            this.barManager1.DockControls.Add(this.barDockControlRight);
-            this.barManager1.Form = this;
-            this.barManager1.MaxItemId = 0;
-            this.popupMenu1.Manager = this.barManager1;
-            this.popupMenu1.Name = "popupMenu1";
-            base.AutoScaleDimensions = new SizeF(6f, 12f);
-            base.AutoScaleMode = AutoScaleMode.Font;
-            this.BackColor = SystemColors.Window;
-            base.Controls.Add(this.barDockControlLeft);
-            base.Controls.Add(this.barDockControlRight);
-            base.Controls.Add(this.barDockControlBottom);
-            base.Controls.Add(this.barDockControlTop);
-            base.Name = "TOCTreeViewEx";
-            base.Load += new EventHandler(this.TOCTreeViewEx_Load);
-            base.Paint += new PaintEventHandler(this.TOCTreeViewEx_Paint);
-            base.MouseDown += new MouseEventHandler(this.TOCTreeViewEx_MouseDown);
-            base.MouseMove += new MouseEventHandler(this.TOCTreeViewEx_MouseMove);
-            base.MouseUp += new MouseEventHandler(this.TOCTreeViewEx_MouseUp);
-            this.barManager1.EndInit();
-            this.popupMenu1.EndInit();
-            base.ResumeLayout(false);
-        }
-
-        protected void InitPopupMenu()
+ protected void InitPopupMenu()
         {
             string xMLConfig = System.Windows.Forms.Application.StartupPath + @"\TOCTreeviewCommands.xml";
             TreeCreatePopMenuItem item = new TreeCreatePopMenuItem();
@@ -1492,12 +1438,12 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 
         private bool IsCtrlDown()
         {
-            int num = GetKeyState(0xa2) >> 4;
+            int num = GetKeyState(162) >> 4;
             if (num != 0)
             {
                 return true;
             }
-            num = GetKeyState(0xa3) >> 4;
+            num = GetKeyState(163) >> 4;
             return (num != 0);
         }
 
@@ -1519,7 +1465,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
             {
                 return true;
             }
-            num = GetKeyState(0xa1) >> 4;
+            num = GetKeyState(161) >> 4;
             return (num != 0);
         }
 

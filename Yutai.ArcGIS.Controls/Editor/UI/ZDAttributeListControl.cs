@@ -20,15 +20,10 @@ using ColumnAttribute = Yutai.ArcGIS.Common.ControlExtend.ColumnAttribute ;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {
-    internal class ZDAttributeListControl : UserControl
+    internal partial class ZDAttributeListControl : UserControl
     {
-        private Container components = null;
-        private GridControl gridControl1;
-        private GridView gridView1;
         private bool m_CanDo = false;
         private string m_EditFeildName = "";
-        private int m_nX;
-        private int m_nY;
         private IActiveView m_pActiveView = null;
         private IFeatureLayer m_pFeatureLayer = null;
         private IObject m_pObject = null;
@@ -69,16 +64,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             return true;
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private void EditorEvent_OnSaveEditing()
+ private void EditorEvent_OnSaveEditing()
         {
             base.Visible = false;
             base.Visible = true;
@@ -506,37 +492,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
-        private void InitializeComponent()
-        {
-            this.gridControl1 = new GridControl();
-            this.gridView1 = new GridView();
-            this.gridControl1.BeginInit();
-            this.gridView1.BeginInit();
-            base.SuspendLayout();
-            this.gridControl1.Dock = DockStyle.Fill;
-            this.gridControl1.EmbeddedNavigator.Name = "";
-            this.gridControl1.Location = new System.Drawing.Point(0, 0);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new Size(0x128, 0xe0);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.ViewCollection.AddRange(new BaseView[] { this.gridView1 });
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsView.RowAutoHeight = true;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.OptionsView.ShowIndicator = false;
-            this.gridView1.ShowButtonMode = ShowButtonModeEnum.ShowOnlyInEditor;
-            base.Controls.Add(this.gridControl1);
-            base.Name = "AttributeListControl";
-            base.Size = new Size(0x128, 0xe0);
-            base.Load += new EventHandler(this.AttributeListControl_Load);
-            this.gridControl1.EndInit();
-            this.gridView1.EndInit();
-            base.ResumeLayout(false);
-        }
-
-        private bool UpdateFieldValue(IField pField, object str)
+ private bool UpdateFieldValue(IField pField, object str)
         {
             if (this.m_pObject == null)
             {

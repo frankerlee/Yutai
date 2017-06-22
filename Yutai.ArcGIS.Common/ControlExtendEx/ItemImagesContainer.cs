@@ -6,12 +6,11 @@ using System.Windows.Forms;
 
 namespace Yutai.ArcGIS.Common.ControlExtendEx
 {
-    public class ItemImagesContainer : Form
+    public partial class ItemImagesContainer : Form
     {
         private Container container_0 = null;
         private Image image_0 = null;
         private System.Windows.Forms.ImageList imageList_0 = null;
-        private ListBox imageListBox;
         private string string_0 = string.Empty;
 
         public event AfterSelectEventHandler AfterSelectEvent;
@@ -21,7 +20,7 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
             this.InitializeComponent();
             this.imageListBox.Size = new Size(base.Size.Width - 2, base.Size.Height - 2);
             base.TopLevel = false;
-            Bitmap image = new Bitmap(0x10, 0x10);
+            Bitmap image = new Bitmap(16, 16);
             Graphics graphics = Graphics.FromImage(image);
             graphics.SmoothingMode = SmoothingMode.AntiAlias;
             Rectangle rect = new Rectangle(0, 0, image.Width - 1, image.Height - 1);
@@ -31,19 +30,10 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
             graphics.Dispose();
             image.Dispose();
             this.imageListBox.DrawMode = DrawMode.OwnerDrawFixed;
-            this.imageListBox.ItemHeight = 0x19;
+            this.imageListBox.ItemHeight = 25;
         }
 
-        protected override void Dispose(bool bool_0)
-        {
-            if (bool_0 && (this.container_0 != null))
-            {
-                this.container_0.Dispose();
-            }
-            base.Dispose(bool_0);
-        }
-
-        private void imageListBox_DrawItem(object sender, DrawItemEventArgs e)
+ private void imageListBox_DrawItem(object sender, DrawItemEventArgs e)
         {
             if (((e.Index >= 0) && (this.imageListBox.Items.Count > 0)) && (e.Index < this.imageListBox.Items.Count))
             {
@@ -52,7 +42,7 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
                 if (((this.ImageList == null) || (this.ImageList.Images.Count == 0)) || (e.Index == (this.imageListBox.Items.Count - 1)))
                 {
                     e.Graphics.DrawImage(this.image_0, new Rectangle(e.Bounds.X + 2, e.Bounds.Y + 5, this.image_0.Width, this.image_0.Height));
-                    e.Graphics.DrawString(this.imageListBox.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), (float) ((e.Bounds.X + 0x10) + 3), (float) (e.Bounds.Y + 5));
+                    e.Graphics.DrawString(this.imageListBox.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), (float) ((e.Bounds.X + 16) + 3), (float) (e.Bounds.Y + 5));
                 }
                 else
                 {
@@ -87,37 +77,7 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
             base.Size = new Size(this.imageListBox.Size.Width, this.imageListBox.Size.Height);
         }
 
-        private void InitializeComponent()
-        {
-            this.imageListBox = new ListBox();
-            base.SuspendLayout();
-            this.imageListBox.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Top;
-            this.imageListBox.BorderStyle = BorderStyle.None;
-            this.imageListBox.IntegralHeight = false;
-            this.imageListBox.ItemHeight = 12;
-            this.imageListBox.Location = new Point(0, 0);
-            this.imageListBox.MultiColumn = true;
-            this.imageListBox.Name = "imageListBox";
-            this.imageListBox.Size = new Size(180, 0x9b);
-            this.imageListBox.TabIndex = 0;
-            this.imageListBox.DrawItem += new DrawItemEventHandler(this.imageListBox_DrawItem);
-            this.imageListBox.SelectedIndexChanged += new EventHandler(this.imageListBox_SelectedIndexChanged);
-            this.imageListBox.SizeChanged += new EventHandler(this.imageListBox_SizeChanged);
-            this.AutoScaleBaseSize = new Size(6, 14);
-            base.ClientSize = new Size(0xb2, 0x58);
-            base.ControlBox = false;
-            base.Controls.Add(this.imageListBox);
-            base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            base.MaximizeBox = false;
-            base.MinimizeBox = false;
-            base.Name = "ItemImagesContainer";
-            base.ShowInTaskbar = false;
-            base.SizeGripStyle = SizeGripStyle.Hide;
-            base.Load += new EventHandler(this.ItemImagesContainer_Load);
-            base.ResumeLayout(false);
-        }
-
-        private void ItemImagesContainer_Load(object sender, EventArgs e)
+ private void ItemImagesContainer_Load(object sender, EventArgs e)
         {
             this.imageListBox.SelectedIndex = -1;
         }

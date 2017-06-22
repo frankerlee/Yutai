@@ -2,7 +2,7 @@
 {
     internal static class MeasurePane
     {
-        public const int MinSize = 0x18;
+        public const int MinSize = 24;
     }
 }
 

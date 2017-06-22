@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
@@ -13,9 +13,9 @@ using QueryResult = Yutai.Pipeline.Analysis.QueryForms.QueryResult;
 
 namespace Yutai.Pipeline.Analysis.QueryForms
 {
-	public class BaseQueryUI : Form
+	public partial class BaseQueryUI : Form
 	{
-		private class LayerboxItem
+		private partial class LayerboxItem
 		{
 			public IFeatureLayer m_pPipeLayer;
 
@@ -33,81 +33,21 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
 		public IPipeConfig pPipeCfg;
 
-		private IFields myfields;
-
-		private int LayerType;
-
-		private IFeatureLayer SelectLayer;
-
+        
 		public IGeometry SelectBound;
 
 		public ushort DrawType;
 
 		public ushort SelectType;
 
-		private QueryResult resultDlg;
 
-		private string strWinText;
 
 		private bool bSave = true;
 
 		public object mainform;
 
-		private ContextMenuStrip contextMenuStrip1;
+        
 
-		private IContainer components = null;
-
-		private ComboBox Layerbox;
-
-		private Label label1;
-
-		private Button QueryButton;
-
-		private Label label2;
-
-		private ComboBox FieldsBox;
-
-		private ListBox ValueBox;
-
-		private RadioButton Equalradio;
-
-		private RadioButton Bigradio;
-
-		private RadioButton BigeRaido;
-
-		private RadioButton SmallRadio;
-
-		private RadioButton SmalelRadio;
-
-		private RadioButton LikeRadio;
-
-		private GroupBox groupBox1;
-
-		private GroupBox groupBox2;
-
-		private Button CloseButton;
-
-		private CheckBox GeometrySet;
-
-		private RadioButton NoEqualRadio;
-
-		private ToolStripMenuItem 选择方式ToolStripMenuItem;
-
-		private ToolStripMenuItem 数据选择ToolStripMenuItem;
-
-		private ToolStripMenuItem ByEnvelope;
-
-		private ToolStripMenuItem ByPolygon;
-
-		private ToolStripMenuItem ByCircle;
-
-		private ToolStripMenuItem CrossesSelect;
-
-		private ToolStripMenuItem WithinSelect;
-
-		private Button Clearbut;
-
-		private TextBox ValueEdit;
 
 		public bool SelectGeometry
 		{
@@ -619,285 +559,6 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			Help.ShowHelp(this, url, command, parameter);
 		}
 
-		protected override void Dispose(bool disposing)
-		{
-			if (disposing && this.components != null)
-			{
-				this.components.Dispose();
-			}
-			base.Dispose(disposing);
-		}
 
-		private void InitializeComponent()
-		{
-			this.components = new Container();
-			this.Layerbox = new ComboBox();
-			this.label1 = new Label();
-			this.QueryButton = new Button();
-			this.label2 = new Label();
-			this.FieldsBox = new ComboBox();
-			this.ValueBox = new ListBox();
-			this.Equalradio = new RadioButton();
-			this.Bigradio = new RadioButton();
-			this.BigeRaido = new RadioButton();
-			this.SmallRadio = new RadioButton();
-			this.SmalelRadio = new RadioButton();
-			this.LikeRadio = new RadioButton();
-			this.groupBox1 = new GroupBox();
-			this.NoEqualRadio = new RadioButton();
-			this.groupBox2 = new GroupBox();
-			this.ValueEdit = new TextBox();
-			this.CloseButton = new Button();
-			this.GeometrySet = new CheckBox();
-			this.contextMenuStrip1 = new ContextMenuStrip(this.components);
-			this.选择方式ToolStripMenuItem = new ToolStripMenuItem();
-			this.ByEnvelope = new ToolStripMenuItem();
-			this.ByPolygon = new ToolStripMenuItem();
-			this.ByCircle = new ToolStripMenuItem();
-			this.数据选择ToolStripMenuItem = new ToolStripMenuItem();
-			this.CrossesSelect = new ToolStripMenuItem();
-			this.WithinSelect = new ToolStripMenuItem();
-			this.Clearbut = new Button();
-			this.groupBox1.SuspendLayout();
-			this.groupBox2.SuspendLayout();
-			this.contextMenuStrip1.SuspendLayout();
-			base.SuspendLayout();
-			this.Layerbox.DropDownStyle = ComboBoxStyle.DropDownList;
-			this.Layerbox.FormattingEnabled = true;
-			this.Layerbox.Items.AddRange(new object[]
-			{
-				"油田电力点",
-				"中压天然气点1"
-			});
-			this.Layerbox.Location = new System.Drawing.Point(58, 11);
-			this.Layerbox.Name = "Layerbox";
-			this.Layerbox.Size = new Size(162, 20);
-			this.Layerbox.TabIndex = 0;
-			this.Layerbox.SelectedIndexChanged += new EventHandler(this.Layerbox_SelectedIndexChanged);
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(4, 16);
-			this.label1.Name = "label1";
-			this.label1.Size = new Size(41, 12);
-			this.label1.TabIndex = 1;
-			this.label1.Text = "查询层";
-			this.QueryButton.Location = new System.Drawing.Point(12, 263);
-			this.QueryButton.Name = "QueryButton";
-			this.QueryButton.Size = new Size(75, 23);
-			this.QueryButton.TabIndex = 2;
-			this.QueryButton.Text = "查询(&Q)";
-			this.QueryButton.UseVisualStyleBackColor = true;
-			this.QueryButton.Click += new EventHandler(this.QueryButton_Click);
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(5, 47);
-			this.label2.Name = "label2";
-			this.label2.Size = new Size(53, 12);
-			this.label2.TabIndex = 3;
-			this.label2.Text = "查询字段";
-			this.FieldsBox.DropDownStyle = ComboBoxStyle.DropDownList;
-			this.FieldsBox.FormattingEnabled = true;
-			this.FieldsBox.Items.AddRange(new object[]
-			{
-				"查询字段"
-			});
-			this.FieldsBox.Location = new System.Drawing.Point(58, 38);
-			this.FieldsBox.Name = "FieldsBox";
-			this.FieldsBox.Size = new Size(162, 20);
-			this.FieldsBox.TabIndex = 4;
-			this.FieldsBox.SelectedIndexChanged += new EventHandler(this.FieldsBox_SelectedIndexChanged);
-			this.ValueBox.FormattingEnabled = true;
-			this.ValueBox.ItemHeight = 12;
-			this.ValueBox.Location = new System.Drawing.Point(7, 37);
-			this.ValueBox.Name = "ValueBox";
-			this.ValueBox.Size = new Size(126, 112);
-			this.ValueBox.Sorted = true;
-			this.ValueBox.TabIndex = 5;
-			this.ValueBox.SelectedIndexChanged += new EventHandler(this.ValueBox_SelectedIndexChanged);
-			this.Equalradio.AutoSize = true;
-			this.Equalradio.Checked = true;
-			this.Equalradio.Location = new System.Drawing.Point(5, 19);
-			this.Equalradio.Name = "Equalradio";
-			this.Equalradio.Size = new Size(29, 16);
-			this.Equalradio.TabIndex = 7;
-			this.Equalradio.TabStop = true;
-			this.Equalradio.Text = "=";
-			this.Equalradio.UseVisualStyleBackColor = true;
-			this.Bigradio.AutoSize = true;
-			this.Bigradio.Location = new System.Drawing.Point(5, 55);
-			this.Bigradio.Name = "Bigradio";
-			this.Bigradio.Size = new Size(29, 16);
-			this.Bigradio.TabIndex = 8;
-			this.Bigradio.TabStop = true;
-			this.Bigradio.Text = ">";
-			this.Bigradio.UseVisualStyleBackColor = true;
-			this.BigeRaido.AutoSize = true;
-			this.BigeRaido.Location = new System.Drawing.Point(5, 73);
-			this.BigeRaido.Name = "BigeRaido";
-			this.BigeRaido.Size = new Size(35, 16);
-			this.BigeRaido.TabIndex = 9;
-			this.BigeRaido.TabStop = true;
-			this.BigeRaido.Text = ">=";
-			this.BigeRaido.UseVisualStyleBackColor = true;
-			this.SmallRadio.AutoSize = true;
-			this.SmallRadio.Location = new System.Drawing.Point(5, 91);
-			this.SmallRadio.Name = "SmallRadio";
-			this.SmallRadio.Size = new Size(29, 16);
-			this.SmallRadio.TabIndex = 10;
-			this.SmallRadio.TabStop = true;
-			this.SmallRadio.Text = "<";
-			this.SmallRadio.UseVisualStyleBackColor = true;
-			this.SmalelRadio.AutoSize = true;
-			this.SmalelRadio.Location = new System.Drawing.Point(5, 109);
-			this.SmalelRadio.Name = "SmalelRadio";
-			this.SmalelRadio.Size = new Size(35, 16);
-			this.SmalelRadio.TabIndex = 11;
-			this.SmalelRadio.TabStop = true;
-			this.SmalelRadio.Text = ">=";
-			this.SmalelRadio.UseVisualStyleBackColor = true;
-			this.LikeRadio.AutoSize = true;
-			this.LikeRadio.Location = new System.Drawing.Point(5, 127);
-			this.LikeRadio.Name = "LikeRadio";
-			this.LikeRadio.Size = new Size(47, 16);
-			this.LikeRadio.TabIndex = 12;
-			this.LikeRadio.TabStop = true;
-			this.LikeRadio.Text = "相似";
-			this.LikeRadio.UseVisualStyleBackColor = true;
-			this.groupBox1.Controls.Add(this.NoEqualRadio);
-			this.groupBox1.Controls.Add(this.LikeRadio);
-			this.groupBox1.Controls.Add(this.SmalelRadio);
-			this.groupBox1.Controls.Add(this.SmallRadio);
-			this.groupBox1.Controls.Add(this.BigeRaido);
-			this.groupBox1.Controls.Add(this.Bigradio);
-			this.groupBox1.Controls.Add(this.Equalradio);
-			this.groupBox1.Location = new System.Drawing.Point(1, 72);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new Size(74, 154);
-			this.groupBox1.TabIndex = 13;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "关系符";
-			this.NoEqualRadio.AutoSize = true;
-			this.NoEqualRadio.Location = new System.Drawing.Point(5, 37);
-			this.NoEqualRadio.Name = "NoEqualRadio";
-			this.NoEqualRadio.Size = new Size(35, 16);
-			this.NoEqualRadio.TabIndex = 13;
-			this.NoEqualRadio.TabStop = true;
-			this.NoEqualRadio.Text = "!=";
-			this.NoEqualRadio.UseVisualStyleBackColor = true;
-			this.groupBox2.Controls.Add(this.ValueEdit);
-			this.groupBox2.Controls.Add(this.ValueBox);
-			this.groupBox2.Location = new System.Drawing.Point(81, 72);
-			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new Size(139, 154);
-			this.groupBox2.TabIndex = 14;
-			this.groupBox2.TabStop = false;
-			this.groupBox2.Text = "字段值";
-			this.ValueEdit.Location = new System.Drawing.Point(6, 13);
-			this.ValueEdit.Name = "ValueEdit";
-			this.ValueEdit.Size = new Size(127, 21);
-			this.ValueEdit.TabIndex = 6;
-			this.CloseButton.DialogResult = DialogResult.Cancel;
-			this.CloseButton.Location = new System.Drawing.Point(128, 263);
-			this.CloseButton.Name = "CloseButton";
-			this.CloseButton.Size = new Size(75, 23);
-			this.CloseButton.TabIndex = 15;
-			this.CloseButton.Text = "关闭(&C)";
-			this.CloseButton.UseVisualStyleBackColor = true;
-			this.CloseButton.Click += new EventHandler(this.CloseButton_Click);
-			this.GeometrySet.AutoSize = true;
-			this.GeometrySet.ContextMenuStrip = this.contextMenuStrip1;
-			this.GeometrySet.Location = new System.Drawing.Point(5, 236);
-			this.GeometrySet.Name = "GeometrySet";
-			this.GeometrySet.Size = new Size(72, 16);
-			this.GeometrySet.TabIndex = 16;
-			this.GeometrySet.Text = "空间范围";
-			this.GeometrySet.UseVisualStyleBackColor = true;
-			this.contextMenuStrip1.Items.AddRange(new ToolStripItem[]
-			{
-				this.选择方式ToolStripMenuItem,
-				this.数据选择ToolStripMenuItem
-			});
-			this.contextMenuStrip1.Name = "contextMenuStrip1";
-			this.contextMenuStrip1.Size = new Size(123, 48);
-			this.选择方式ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[]
-			{
-				this.ByEnvelope,
-				this.ByPolygon,
-				this.ByCircle
-			});
-			this.选择方式ToolStripMenuItem.Name = "选择方式ToolStripMenuItem";
-			this.选择方式ToolStripMenuItem.Size = new Size(122, 22);
-			this.选择方式ToolStripMenuItem.Text = "选择方式";
-			this.ByEnvelope.Checked = true;
-			this.ByEnvelope.CheckOnClick = true;
-			this.ByEnvelope.CheckState = CheckState.Checked;
-			this.ByEnvelope.Name = "ByEnvelope";
-			this.ByEnvelope.Size = new Size(134, 22);
-			this.ByEnvelope.Text = "矩形选择";
-			this.ByEnvelope.Click += new EventHandler(this.ByEnvelope_Click);
-			this.ByPolygon.CheckOnClick = true;
-			this.ByPolygon.Name = "ByPolygon";
-			this.ByPolygon.Size = new Size(134, 22);
-			this.ByPolygon.Text = "多边形选择";
-			this.ByPolygon.Click += new EventHandler(this.ByPolygon_Click);
-			this.ByCircle.CheckOnClick = true;
-			this.ByCircle.Name = "ByCircle";
-			this.ByCircle.Size = new Size(134, 22);
-			this.ByCircle.Text = "圆形选择";
-			this.ByCircle.Click += new EventHandler(this.ByCircle_Click);
-			this.数据选择ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[]
-			{
-				this.CrossesSelect,
-				this.WithinSelect
-			});
-			this.数据选择ToolStripMenuItem.Name = "数据选择ToolStripMenuItem";
-			this.数据选择ToolStripMenuItem.Size = new Size(122, 22);
-			this.数据选择ToolStripMenuItem.Text = "数据选择";
-			this.CrossesSelect.Checked = true;
-			this.CrossesSelect.CheckOnClick = true;
-			this.CrossesSelect.CheckState = CheckState.Checked;
-			this.CrossesSelect.Name = "CrossesSelect";
-			this.CrossesSelect.Size = new Size(98, 22);
-			this.CrossesSelect.Text = "相交";
-			this.CrossesSelect.Click += new EventHandler(this.CrossesSelect_Click);
-			this.WithinSelect.Name = "WithinSelect";
-			this.WithinSelect.Size = new Size(98, 22);
-			this.WithinSelect.Text = "内部";
-			this.WithinSelect.Click += new EventHandler(this.WithinSelect_Click);
-			this.Clearbut.Location = new System.Drawing.Point(83, 230);
-			this.Clearbut.Name = "Clearbut";
-			this.Clearbut.Size = new Size(69, 24);
-			this.Clearbut.TabIndex = 17;
-			this.Clearbut.Text = "清理屏幕";
-			this.Clearbut.UseVisualStyleBackColor = true;
-			this.Clearbut.Visible = false;
-			this.Clearbut.Click += new EventHandler(this.Clearbut_Click);
-			base.AutoScaleDimensions = new SizeF(6f, 12f);
-			base.AutoScaleMode = AutoScaleMode.Font;
-			base.ClientSize = new Size(231, 290);
-			base.Controls.Add(this.Clearbut);
-			base.Controls.Add(this.GeometrySet);
-			base.Controls.Add(this.CloseButton);
-			base.Controls.Add(this.groupBox2);
-			base.Controls.Add(this.groupBox1);
-			base.Controls.Add(this.FieldsBox);
-			base.Controls.Add(this.label2);
-			base.Controls.Add(this.QueryButton);
-			base.Controls.Add(this.label1);
-			base.Controls.Add(this.Layerbox);
-			base.FormBorderStyle = FormBorderStyle.FixedDialog;
-			base.MaximizeBox = false;
-			base.Name = "BaseQueryUI";
-			base.ShowInTaskbar = false;
-			this.Text = "BaseQueryUI";
-			base.Load += new EventHandler(this.BaseQueryUI_Load);
-			base.VisibleChanged += new EventHandler(this.BaseQueryUI_VisibleChanged);
-			base.HelpRequested += new HelpEventHandler(this.BaseQueryUI_HelpRequested);
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox1.PerformLayout();
-			this.groupBox2.ResumeLayout(false);
-			this.groupBox2.PerformLayout();
-			this.contextMenuStrip1.ResumeLayout(false);
-			base.ResumeLayout(false);
-			base.PerformLayout();
-		}
-	}
+    }
 }

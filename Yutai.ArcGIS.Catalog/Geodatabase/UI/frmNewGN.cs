@@ -7,11 +7,8 @@ using ESRI.ArcGIS.Geodatabase;
 
 namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 {
-    public class frmNewGN : Form
+    public partial class frmNewGN : Form
     {
-        private SimpleButton btnCnacel;
-        private SimpleButton btnLast;
-        private SimpleButton btnNext;
         private BulidGeometryNetwork_SelectFeatureClass bulidGeometryNetwork_SelectFeatureClass_0 = new BulidGeometryNetwork_SelectFeatureClass();
         private BulidGeometryNetworkType bulidGeometryNetworkType_0 = new BulidGeometryNetworkType();
         private BulidGN_Configuration bulidGN_Configuration_0 = new BulidGN_Configuration();
@@ -24,8 +21,6 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         private BulidGN_Weights bulidGN_Weights_0 = new BulidGN_Weights();
         private Container container_0 = null;
         private int int_0 = 0;
-        private Panel panel1;
-        private Panel panel2;
 
         public frmNewGN()
         {
@@ -719,72 +714,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.int_0++;
         }
 
-        protected override void Dispose(bool bool_0)
-        {
-            if (bool_0 && (this.container_0 != null))
-            {
-                this.container_0.Dispose();
-            }
-            base.Dispose(bool_0);
-        }
-
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNewGN));
-            this.panel2 = new Panel();
-            this.panel1 = new Panel();
-            this.btnNext = new SimpleButton();
-            this.btnLast = new SimpleButton();
-            this.btnCnacel = new SimpleButton();
-            this.panel1.SuspendLayout();
-            base.SuspendLayout();
-            this.panel2.Dock = DockStyle.Fill;
-            this.panel2.Location = new Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new Size(0x1c0, 0x11e);
-            this.panel2.TabIndex = 3;
-            this.panel1.Controls.Add(this.btnCnacel);
-            this.panel1.Controls.Add(this.btnNext);
-            this.panel1.Controls.Add(this.btnLast);
-            this.panel1.Dock = DockStyle.Bottom;
-            this.panel1.Location = new Point(0, 0x11e);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new Size(0x1c0, 0x25);
-            this.panel1.TabIndex = 2;
-            this.btnNext.Location = new Point(0x130, 8);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new Size(0x38, 0x18);
-            this.btnNext.TabIndex = 4;
-            this.btnNext.Text = "下一步";
-            this.btnNext.Click += new EventHandler(this.btnNext_Click);
-            this.btnLast.Enabled = false;
-            this.btnLast.Location = new Point(240, 8);
-            this.btnLast.Name = "btnLast";
-            this.btnLast.Size = new Size(0x38, 0x18);
-            this.btnLast.TabIndex = 3;
-            this.btnLast.Text = "上一步";
-            this.btnLast.Click += new EventHandler(this.btnLast_Click);
-            this.btnCnacel.DialogResult = DialogResult.Cancel;
-            this.btnCnacel.Location = new Point(0x16e, 8);
-            this.btnCnacel.Name = "btnCnacel";
-            this.btnCnacel.Size = new Size(0x38, 0x18);
-            this.btnCnacel.TabIndex = 5;
-            this.btnCnacel.Text = "取消";
-            this.AutoScaleBaseSize = new Size(6, 14);
-            base.ClientSize = new Size(0x1c0, 0x143);
-            base.Controls.Add(this.panel2);
-            base.Controls.Add(this.panel1);
-            base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            
-            base.MaximizeBox = false;
-            base.MinimizeBox = false;
-            base.Name = "frmNewGN";
-            this.Text = "创建几何网络";
-            this.panel1.ResumeLayout(false);
-            base.ResumeLayout(false);
-        }
-
-        public IFeatureDataset FeatureDataset
+ public IFeatureDataset FeatureDataset
         {
             set
             {

@@ -42,7 +42,7 @@
             {
                 str = str.Remove(startIndex, 1);
             }
-            if ((str[str.Length - 1] == 0x96f6) && (str.Length > 1))
+            if ((str[str.Length - 1] == 38646) && (str.Length > 1))
             {
                 str = str.Remove(str.Length - 1, 1);
             }
@@ -110,7 +110,7 @@
             {
                 str = str.Remove(index, 1);
             }
-            if ((str[str.Length - 1] == 0x96f6) && (str.Length > 1))
+            if ((str[str.Length - 1] == 38646) && (str.Length > 1))
             {
                 str = str.Remove(str.Length - 1, 1);
             }

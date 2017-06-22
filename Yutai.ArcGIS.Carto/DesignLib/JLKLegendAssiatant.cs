@@ -500,9 +500,9 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         {
             int num2;
             byte[] buffer = Convert.FromBase64String(string_1);
-            int num = buffer.Length - 0x10;
-            byte[] b = new byte[0x10];
-            for (num2 = 0; num2 < 0x10; num2++)
+            int num = buffer.Length - 16;
+            byte[] b = new byte[16];
+            for (num2 = 0; num2 < 16; num2++)
             {
                 b[num2] = buffer[num2];
             }
@@ -511,7 +511,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             byte[] buffer3 = new byte[num];
             for (num2 = 0; num2 < num; num2++)
             {
-                buffer3[num2] = buffer[num2 + 0x10];
+                buffer3[num2] = buffer[num2 + 16];
             }
             IMemoryBlobStream pstm = new MemoryBlobStreamClass();
             ((IMemoryBlobStreamVariant) pstm).ImportFromVariant(buffer3);

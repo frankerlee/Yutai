@@ -10,15 +10,11 @@ using ESRI.ArcGIS.esriSystem;
 
 namespace Yutai.ArcGIS.Carto.UI
 {
-    internal class AddClassCtrl : UserControl
+    internal partial class AddClassCtrl : UserControl
     {
-        private SimpleButton btnAdd;
         private Container container_0 = null;
-        private GroupBox groupBox1;
         private IAnnotateLayerPropertiesCollection2 iannotateLayerPropertiesCollection2_0 = null;
-        private Label label1;
         private TreeNode treeNode_0 = null;
-        private TextEdit txtClassName;
 
         public AddClassCtrl()
         {
@@ -69,59 +65,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
-        protected override void Dispose(bool bool_0)
-        {
-            if (bool_0 && (this.container_0 != null))
-            {
-                this.container_0.Dispose();
-            }
-            base.Dispose(bool_0);
-        }
-
-        private void InitializeComponent()
-        {
-            this.groupBox1 = new GroupBox();
-            this.label1 = new Label();
-            this.txtClassName = new TextEdit();
-            this.btnAdd = new SimpleButton();
-            this.groupBox1.SuspendLayout();
-            this.txtClassName.Properties.BeginInit();
-            base.SuspendLayout();
-            this.groupBox1.Controls.Add(this.btnAdd);
-            this.groupBox1.Controls.Add(this.txtClassName);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new Point(0x10, 0x10);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new Size(0x120, 0x48);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "添加标注类";
-            this.label1.AutoSize = true;
-            this.label1.Location = new Point(0x10, 0x18);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(0x1d, 0x11);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "类名";
-            this.txtClassName.EditValue = "";
-            this.txtClassName.Location = new Point(0x38, 0x18);
-            this.txtClassName.Name = "txtClassName";
-            this.txtClassName.Size = new Size(0x80, 0x17);
-            this.txtClassName.TabIndex = 1;
-            this.btnAdd.Location = new Point(0xd0, 0x18);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new Size(0x40, 0x18);
-            this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "添加";
-            this.btnAdd.Click += new EventHandler(this.btnAdd_Click);
-            base.Controls.Add(this.groupBox1);
-            base.Name = "AddClassCtrl";
-            base.Size = new Size(360, 0xe8);
-            this.groupBox1.ResumeLayout(false);
-            this.txtClassName.Properties.EndInit();
-            base.ResumeLayout(false);
-        }
-
-        private bool method_0(string string_0)
+ private bool method_0(string string_0)
         {
             for (int i = 0; i < this.iannotateLayerPropertiesCollection2_0.Count; i++)
             {

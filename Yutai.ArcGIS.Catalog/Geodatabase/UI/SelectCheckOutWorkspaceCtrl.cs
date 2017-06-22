@@ -8,17 +8,11 @@ using ESRI.ArcGIS.Geodatabase;
 
 namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 {
-    internal class SelectCheckOutWorkspaceCtrl : UserControl
+    internal partial class SelectCheckOutWorkspaceCtrl : UserControl
     {
-        private ListBox CanEditDatasetList;
-        private ColumnHeader columnHeader_0;
-        private ColumnHeader columnHeader_1;
         private Container container_0 = null;
-        private ListView EditWorkspacelist;
         private IArray iarray_0 = null;
         private int int_0 = 0;
-        private Label label1;
-        private Label label2;
 
         public SelectCheckOutWorkspaceCtrl(int int_1)
         {
@@ -26,16 +20,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.int_0 = int_1;
         }
 
-        protected override void Dispose(bool bool_0)
-        {
-            if (bool_0 && (this.container_0 != null))
-            {
-                this.container_0.Dispose();
-            }
-            base.Dispose(bool_0);
-        }
-
-        public bool Do()
+ public bool Do()
         {
             IEnumNameEdit edit;
             IEnumName enumName;
@@ -202,55 +187,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
-        private void InitializeComponent()
-        {
-            this.CanEditDatasetList = new ListBox();
-            this.label2 = new Label();
-            this.label1 = new Label();
-            this.EditWorkspacelist = new ListView();
-            this.columnHeader_0 = new ColumnHeader();
-            this.columnHeader_1 = new ColumnHeader();
-            base.SuspendLayout();
-            this.CanEditDatasetList.ItemHeight = 12;
-            this.CanEditDatasetList.Location = new Point(0x10, 160);
-            this.CanEditDatasetList.Name = "CanEditDatasetList";
-            this.CanEditDatasetList.Size = new Size(280, 0x58);
-            this.CanEditDatasetList.TabIndex = 7;
-            this.label2.AutoSize = true;
-            this.label2.Location = new Point(0x10, 0x88);
-            this.label2.Name = "label2";
-            this.label2.Size = new Size(0x80, 0x11);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "以下层或表检出时可用";
-            this.label1.AutoSize = true;
-            this.label1.Location = new Point(0x10, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(140, 0x11);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "选择要检出的空间数据库";
-            this.EditWorkspacelist.Columns.AddRange(new ColumnHeader[] { this.columnHeader_0, this.columnHeader_1 });
-            this.EditWorkspacelist.Location = new Point(0x10, 0x20);
-            this.EditWorkspacelist.MultiSelect = false;
-            this.EditWorkspacelist.Name = "EditWorkspacelist";
-            this.EditWorkspacelist.Size = new Size(280, 0x60);
-            this.EditWorkspacelist.TabIndex = 5;
-            this.EditWorkspacelist.View = View.Details;
-            this.EditWorkspacelist.SelectedIndexChanged += new EventHandler(this.EditWorkspacelist_SelectedIndexChanged);
-            this.columnHeader_0.Text = "源";
-            this.columnHeader_0.Width = 0x93;
-            this.columnHeader_1.Text = "类型";
-            this.columnHeader_1.Width = 0x77;
-            base.Controls.Add(this.CanEditDatasetList);
-            base.Controls.Add(this.label2);
-            base.Controls.Add(this.label1);
-            base.Controls.Add(this.EditWorkspacelist);
-            base.Name = "SelectCheckOutWorkspaceCtrl";
-            base.Size = new Size(0x158, 0x128);
-            base.Load += new EventHandler(this.SelectCheckOutWorkspaceCtrl_Load);
-            base.ResumeLayout(false);
-        }
-
-        private void method_0(IWorkspace iworkspace_0, out string string_0, out string string_1)
+ private void method_0(IWorkspace iworkspace_0, out string string_0, out string string_1)
         {
             string_0 = iworkspace_0.PathName;
             if (iworkspace_0.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace)

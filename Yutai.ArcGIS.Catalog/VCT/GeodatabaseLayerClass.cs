@@ -344,10 +344,10 @@ namespace Yutai.ArcGIS.Catalog.VCT
         {
             int num = int_0;
             IRgbColor color = new RgbColorClass();
-            int num2 = int_0 / 0x10000;
-            num -= num2 * 0x10000;
-            int num3 = num / 0x100;
-            num -= num3 * 0x100;
+            int num2 = int_0 / 65536;
+            num -= num2 * 65536;
+            int num3 = num / 256;
+            num -= num3 * 256;
             int num4 = num;
             color.Red = num2;
             color.Green = num3;

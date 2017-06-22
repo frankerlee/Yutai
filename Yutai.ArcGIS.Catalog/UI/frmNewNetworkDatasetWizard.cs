@@ -7,11 +7,8 @@ using ESRI.ArcGIS.Geodatabase;
 
 namespace Yutai.ArcGIS.Catalog.UI
 {
-    public class frmNewNetworkDatasetWizard : Form
+    public partial class frmNewNetworkDatasetWizard : Form
     {
-        private SimpleButton btnCancel;
-        private SimpleButton btnLast;
-        private SimpleButton btnNext;
         private IContainer icontainer_0 = null;
         private IFeatureDataset ifeatureDataset_0 = null;
         private INetworkDataset inetworkDataset_0 = null;
@@ -23,7 +20,6 @@ namespace Yutai.ArcGIS.Catalog.UI
         private NewNetworkDatasetModifyConnectivityPage newNetworkDatasetModifyConnectivityPage_0 = new NewNetworkDatasetModifyConnectivityPage();
         private NewNetworkDatasetNamePropertyPage newNetworkDatasetNamePropertyPage_0 = new NewNetworkDatasetNamePropertyPage();
         private NewNetworkDatasetTurnsPage newNetworkDatasetTurnsPage_0 = new NewNetworkDatasetTurnsPage();
-        private Panel panel1;
 
         public frmNewNetworkDatasetWizard()
         {
@@ -116,16 +112,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             this.int_0++;
         }
 
-        protected override void Dispose(bool bool_0)
-        {
-            if (bool_0 && (this.icontainer_0 != null))
-            {
-                this.icontainer_0.Dispose();
-            }
-            base.Dispose(bool_0);
-        }
-
-        private void frmNewNetworkDatasetWizard_Load(object sender, EventArgs e)
+ private void frmNewNetworkDatasetWizard_Load(object sender, EventArgs e)
         {
             this.newNetworkDatasetNamePropertyPage_0.Dock = DockStyle.Fill;
             this.newNetworkDatasetNamePropertyPage_0.Visible = true;
@@ -150,52 +137,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             this.panel1.Controls.Add(this.newNetworkDatasetDirectionPropertyPage_0);
         }
 
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNewNetworkDatasetWizard));
-            this.panel1 = new Panel();
-            this.btnCancel = new SimpleButton();
-            this.btnNext = new SimpleButton();
-            this.btnLast = new SimpleButton();
-            base.SuspendLayout();
-            this.panel1.Dock = DockStyle.Top;
-            this.panel1.Location = new Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new Size(0x1f0, 0x13e);
-            this.panel1.TabIndex = 11;
-            this.btnCancel.DialogResult = DialogResult.Cancel;
-            this.btnCancel.Location = new Point(0x1a9, 0x144);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new Size(0x38, 0x18);
-            this.btnCancel.TabIndex = 10;
-            this.btnCancel.Text = "取消";
-            this.btnNext.Location = new Point(0x161, 0x144);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new Size(0x38, 0x18);
-            this.btnNext.TabIndex = 9;
-            this.btnNext.Text = "下一步";
-            this.btnNext.Click += new EventHandler(this.btnNext_Click);
-            this.btnLast.Location = new Point(0x119, 0x144);
-            this.btnLast.Name = "btnLast";
-            this.btnLast.Size = new Size(0x38, 0x18);
-            this.btnLast.TabIndex = 8;
-            this.btnLast.Text = "上一步";
-            this.btnLast.Click += new EventHandler(this.btnLast_Click);
-            base.AutoScaleDimensions = new SizeF(6f, 12f);
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.ClientSize = new Size(0x1f0, 360);
-            base.Controls.Add(this.panel1);
-            base.Controls.Add(this.btnCancel);
-            base.Controls.Add(this.btnNext);
-            base.Controls.Add(this.btnLast);
-            
-            base.Name = "frmNewNetworkDatasetWizard";
-            this.Text = "新建网络要素集";
-            base.Load += new EventHandler(this.frmNewNetworkDatasetWizard_Load);
-            base.ResumeLayout(false);
-        }
-
-        public IFeatureDataset FeatureDataset
+ public IFeatureDataset FeatureDataset
         {
             set
             {

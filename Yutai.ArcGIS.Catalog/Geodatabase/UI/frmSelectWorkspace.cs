@@ -10,19 +10,11 @@ using ESRI.ArcGIS.Geodatabase;
 
 namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 {
-    internal class frmSelectWorkspace : Form
+    internal partial class frmSelectWorkspace : Form
     {
-        private SimpleButton btnOK;
-        private ListBox CanEditDatasetList;
-        private ColumnHeader columnHeader_0;
-        private ColumnHeader columnHeader_1;
         private Container container_0 = null;
-        private ListView EditWorkspacelist;
         private IArray iarray_0 = null;
         private IWorkspace iworkspace_0 = null;
-        private Label label1;
-        private Label label2;
-        private SimpleButton simpleButton1;
 
         public frmSelectWorkspace()
         {
@@ -40,16 +32,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
-        protected override void Dispose(bool bool_0)
-        {
-            if (bool_0 && (this.container_0 != null))
-            {
-                this.container_0.Dispose();
-            }
-            base.Dispose(bool_0);
-        }
-
-        private void EditWorkspacelist_SelectedIndexChanged(object sender, EventArgs e)
+ private void EditWorkspacelist_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.CanEditDatasetList.Items.Clear();
             if (this.EditWorkspacelist.SelectedItems.Count != 0)
@@ -85,76 +68,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSelectWorkspace));
-            this.label1 = new Label();
-            this.EditWorkspacelist = new ListView();
-            this.columnHeader_0 = new ColumnHeader();
-            this.columnHeader_1 = new ColumnHeader();
-            this.label2 = new Label();
-            this.CanEditDatasetList = new ListBox();
-            this.btnOK = new SimpleButton();
-            this.simpleButton1 = new SimpleButton();
-            base.SuspendLayout();
-            this.label1.AutoSize = true;
-            this.label1.Location = new Point(8, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(0x41, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "空间数据库";
-            this.EditWorkspacelist.Columns.AddRange(new ColumnHeader[] { this.columnHeader_0, this.columnHeader_1 });
-            this.EditWorkspacelist.Location = new Point(8, 0x20);
-            this.EditWorkspacelist.Name = "EditWorkspacelist";
-            this.EditWorkspacelist.Size = new Size(0x108, 0x70);
-            this.EditWorkspacelist.TabIndex = 1;
-            this.EditWorkspacelist.UseCompatibleStateImageBehavior = false;
-            this.EditWorkspacelist.View = View.Details;
-            this.EditWorkspacelist.SelectedIndexChanged += new EventHandler(this.EditWorkspacelist_SelectedIndexChanged);
-            this.columnHeader_0.Text = "";
-            this.columnHeader_0.Width = 0x62;
-            this.columnHeader_1.Text = "";
-            this.columnHeader_1.Width = 0x76;
-            this.label2.AutoSize = true;
-            this.label2.Location = new Point(8, 0x98);
-            this.label2.Name = "label2";
-            this.label2.Size = new Size(0x65, 12);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "空间数据库层和表";
-            this.CanEditDatasetList.ItemHeight = 12;
-            this.CanEditDatasetList.Location = new Point(0x10, 0xb0);
-            this.CanEditDatasetList.Name = "CanEditDatasetList";
-            this.CanEditDatasetList.Size = new Size(0x100, 0x58);
-            this.CanEditDatasetList.TabIndex = 3;
-            this.btnOK.Location = new Point(0x90, 280);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new Size(0x38, 0x18);
-            this.btnOK.TabIndex = 4;
-            this.btnOK.Text = "确定";
-            this.btnOK.Click += new EventHandler(this.btnOK_Click);
-            this.simpleButton1.DialogResult = DialogResult.Cancel;
-            this.simpleButton1.Location = new Point(0xd8, 280);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new Size(0x38, 0x18);
-            this.simpleButton1.TabIndex = 5;
-            this.simpleButton1.Text = "取消";
-            this.AutoScaleBaseSize = new Size(6, 14);
-            base.ClientSize = new Size(0x124, 0x13d);
-            base.Controls.Add(this.simpleButton1);
-            base.Controls.Add(this.btnOK);
-            base.Controls.Add(this.CanEditDatasetList);
-            base.Controls.Add(this.label2);
-            base.Controls.Add(this.EditWorkspacelist);
-            base.Controls.Add(this.label1);
-            
-            base.Name = "frmSelectWorkspace";
-            this.Text = "frmSelectWorkspace";
-            base.Load += new EventHandler(this.frmSelectWorkspace_Load);
-            base.ResumeLayout(false);
-            base.PerformLayout();
-        }
-
-        private void method_0(IMap imap_0)
+ private void method_0(IMap imap_0)
         {
             int num;
             IDataset featureClass;

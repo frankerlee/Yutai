@@ -85,85 +85,163 @@
     <Compile Include="frmAddDatabaseServer.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmAddDatabaseServer.Designer.cs">
+      <DependentUpon>frmAddDatabaseServer.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCreateGDBConnection.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCreateGDBConnection.Designer.cs">
+      <DependentUpon>frmCreateGDBConnection.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSetGeometryType.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmSetGeometryType.Designer.cs">
+      <DependentUpon>frmSetGeometryType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\AfterCheckOutSetupCtrl.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\AfterCheckOutSetupCtrl.Designer.cs">
+      <DependentUpon>AfterCheckOutSetupCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\AnnoClassSetCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\AnnoClassSetCtrl.Designer.cs">
+      <DependentUpon>AnnoClassSetCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\AnnoReferenceScaleSetCtrl.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\AnnoReferenceScaleSetCtrl.Designer.cs">
+      <DependentUpon>AnnoReferenceScaleSetCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\BulidGeometryNetworkHelper.cs" />
     <Compile Include="Geodatabase\UI\BulidGeometryNetworkType.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\BulidGeometryNetworkType.Designer.cs">
+      <DependentUpon>BulidGeometryNetworkType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\BulidGeometryNetwork_SelectFeatureClass.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\BulidGeometryNetwork_SelectFeatureClass.Designer.cs">
+      <DependentUpon>BulidGeometryNetwork_SelectFeatureClass.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\BulidGN_Configuration.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\BulidGN_Configuration.Designer.cs">
+      <DependentUpon>BulidGN_Configuration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\BulidGN_EnableFieldSet.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\BulidGN_EnableFieldSet.Designer.cs">
+      <DependentUpon>BulidGN_EnableFieldSet.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\BulidGN_IsContaincomplexEdge.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\BulidGN_IsContaincomplexEdge.Designer.cs">
+      <DependentUpon>BulidGN_IsContaincomplexEdge.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\BulidGN_SnapSet.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\BulidGN_SnapSet.Designer.cs">
+      <DependentUpon>BulidGN_SnapSet.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\BulidGN_SourceSkin.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\BulidGN_SourceSkin.Designer.cs">
+      <DependentUpon>BulidGN_SourceSkin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\BulidGN_Summary.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\BulidGN_Summary.Designer.cs">
+      <DependentUpon>BulidGN_Summary.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\BulidGN_WeightAssociation.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\BulidGN_WeightAssociation.Designer.cs">
+      <DependentUpon>BulidGN_WeightAssociation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\BulidGN_Weights.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\BulidGN_Weights.Designer.cs">
+      <DependentUpon>BulidGN_Weights.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\BulidGN_WeightSet.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\BulidGN_WeightSet.Designer.cs">
+      <DependentUpon>BulidGN_WeightSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\CADDataConvertControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\CADDataConvertControl.Designer.cs">
+      <DependentUpon>CADDataConvertControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\CASSDataConvertControl.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\CASSDataConvertControl.Designer.cs">
+      <DependentUpon>CASSDataConvertControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\CheckInHelper.cs" />
     <Compile Include="Geodatabase\UI\CheckInOutWorkspaceInfo.cs" />
     <Compile Include="Geodatabase\UI\CheckInSetupCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\CheckInSetupCtrl.Designer.cs">
+      <DependentUpon>CheckInSetupCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\CheckOutHelper.cs" />
     <Compile Include="Geodatabase\UI\CheckOutInHelper.cs" />
     <Compile Include="Geodatabase\UI\CheckOutPropertyCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\CheckOutPropertyCtrl.Designer.cs">
+      <DependentUpon>CheckOutPropertyCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\CheckOutSetupCtrl.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\CheckOutSetupCtrl.Designer.cs">
+      <DependentUpon>CheckOutSetupCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\ConflictInfoControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\ConflictInfoControl.Designer.cs">
+      <DependentUpon>ConflictInfoControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\CoordinateControl.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\CoordinateControl.Designer.cs">
+      <DependentUpon>CoordinateControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\DimesionFeaturePropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\DimesionFeaturePropertyPage.Designer.cs">
+      <DependentUpon>DimesionFeaturePropertyPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\DomainControl.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\DomainControl.Designer.cs">
+      <DependentUpon>DomainControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\DomainWrap1.cs" />
     <Compile Include="Geodatabase\UI\EditObjectClassHelper.cs" />
@@ -172,396 +250,774 @@
     <Compile Include="Geodatabase\UI\ExportChangeSetupCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\ExportChangeSetupCtrl.Designer.cs">
+      <DependentUpon>ExportChangeSetupCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\ExportChangesHelper.cs" />
     <Compile Include="Geodatabase\UI\ExportToCADControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\ExportToCADControl.Designer.cs">
+      <DependentUpon>ExportToCADControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\ExportToTABControl.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\ExportToTABControl.Designer.cs">
+      <DependentUpon>ExportToTABControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\ExtractionDataHelper.cs" />
     <Compile Include="Geodatabase\UI\ExtractionDataSetupCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\ExtractionDataSetupCtrl.Designer.cs">
+      <DependentUpon>ExtractionDataSetupCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\FeatureDatasetControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\FeatureDatasetControl.Designer.cs">
+      <DependentUpon>FeatureDatasetControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\FeatureDatasetGeneralPage.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\FeatureDatasetGeneralPage.Designer.cs">
+      <DependentUpon>FeatureDatasetGeneralPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\FieldChangedHandler.cs" />
     <Compile Include="Geodatabase\UI\FieldChangeType.cs" />
     <Compile Include="Geodatabase\UI\FieldTypeBlobCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\FieldTypeBlobCtrl.Designer.cs">
+      <DependentUpon>FieldTypeBlobCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\FieldTypeDateCtrl.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\FieldTypeDateCtrl.Designer.cs">
+      <DependentUpon>FieldTypeDateCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\FieldTypeDoubleCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\FieldTypeDoubleCtrl.Designer.cs">
+      <DependentUpon>FieldTypeDoubleCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\FieldTypeGeometryCtrl.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\FieldTypeGeometryCtrl.Designer.cs">
+      <DependentUpon>FieldTypeGeometryCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\FieldTypeGeometryCtrl1.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\FieldTypeGeometryCtrl1.Designer.cs">
+      <DependentUpon>FieldTypeGeometryCtrl1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\FieldTypeGuidCtrl.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\FieldTypeGuidCtrl.Designer.cs">
+      <DependentUpon>FieldTypeGuidCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\FieldTypeIntegerCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\FieldTypeIntegerCtrl.Designer.cs">
+      <DependentUpon>FieldTypeIntegerCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\FieldTypeObjectIDCtrl.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\FieldTypeObjectIDCtrl.Designer.cs">
+      <DependentUpon>FieldTypeObjectIDCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\FieldTypeRasterCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\FieldTypeRasterCtrl.Designer.cs">
+      <DependentUpon>FieldTypeRasterCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\FieldTypeTextCtrl.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\FieldTypeTextCtrl.Designer.cs">
+      <DependentUpon>FieldTypeTextCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmAddClass.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmAddClass.Designer.cs">
+      <DependentUpon>frmAddClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmAddGDBConnection.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmAddGDBConnection.Designer.cs">
+      <DependentUpon>frmAddGDBConnection.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmAddRuleByClass.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmAddRuleByClass.Designer.cs">
+      <DependentUpon>frmAddRuleByClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmBatchProject.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmBatchProject.Designer.cs">
+      <DependentUpon>frmBatchProject.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmBatchReconcile.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmBatchReconcile.Designer.cs">
+      <DependentUpon>frmBatchReconcile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmCADDataConvert.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmCADDataConvert.Designer.cs">
+      <DependentUpon>frmCADDataConvert.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmCass2FeatureClass.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmCass2FeatureClass.Designer.cs">
+      <DependentUpon>frmCass2FeatureClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmCheckInWizard.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmCheckInWizard.Designer.cs">
+      <DependentUpon>frmCheckInWizard.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmCheckOutManager.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmCheckOutManager.Designer.cs">
+      <DependentUpon>frmCheckOutManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmCheckOutProperty.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmCheckOutProperty.Designer.cs">
+      <DependentUpon>frmCheckOutProperty.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmCheckOutWizard.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmCheckOutWizard.Designer.cs">
+      <DependentUpon>frmCheckOutWizard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmCodes.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmCodes.Designer.cs">
+      <DependentUpon>frmCodes.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmCompress.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmCompress.Designer.cs">
+      <DependentUpon>frmCompress.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmConfigKey.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmConfigKey.Designer.cs">
+      <DependentUpon>frmConfigKey.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmConflictInfo.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmConflictInfo.Designer.cs">
+      <DependentUpon>frmConflictInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmCreateGDBRasterDataset.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmCreateGDBRasterDataset.Designer.cs">
+      <DependentUpon>frmCreateGDBRasterDataset.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmCreateRasterFolder.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmCreateRasterFolder.Designer.cs">
+      <DependentUpon>frmCreateRasterFolder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmCreateTopologySet.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmCreateTopologySet.Designer.cs">
+      <DependentUpon>frmCreateTopologySet.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmDataConvert.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmDataConvert.Designer.cs">
+      <DependentUpon>frmDataConvert.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmDataTransferProgress.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmDataTransferProgress.Designer.cs">
+      <DependentUpon>frmDataTransferProgress.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmEditFeatureDataset.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmEditFeatureDataset.Designer.cs">
+      <DependentUpon>frmEditFeatureDataset.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmEditGDBConnection.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmEditGDBConnection.Designer.cs">
+      <DependentUpon>frmEditGDBConnection.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmEditObjectClass.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmEditObjectClass.Designer.cs">
+      <DependentUpon>frmEditObjectClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmEidtReprensentation.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmEidtReprensentation.Designer.cs">
+      <DependentUpon>frmEidtReprensentation.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmExportChangeWizard.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmExportChangeWizard.Designer.cs">
+      <DependentUpon>frmExportChangeWizard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmExportToCAD.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmExportToCAD.Designer.cs">
+      <DependentUpon>frmExportToCAD.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmExportToTAB.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmExportToTAB.Designer.cs">
+      <DependentUpon>frmExportToTAB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmExtendDomain.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmExtendDomain.Designer.cs">
+      <DependentUpon>frmExtendDomain.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmExtractionDataWizard.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmExtractionDataWizard.Designer.cs">
+      <DependentUpon>frmExtractionDataWizard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\FrmFastSelSpatial.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\FrmFastSelSpatial.Designer.cs">
+      <DependentUpon>FrmFastSelSpatial.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmFeatureClass2VCT.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmFeatureClass2VCT.Designer.cs">
+      <DependentUpon>frmFeatureClass2VCT.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmFeatureClassToCoverage.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmFeatureClassToCoverage.Designer.cs">
+      <DependentUpon>frmFeatureClassToCoverage.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmFeatureDataset.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmFeatureDataset.Designer.cs">
+      <DependentUpon>frmFeatureDataset.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmGDBInfo.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmGDBInfo.Designer.cs">
+      <DependentUpon>frmGDBInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmGeoDBDataTransfer.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmGeoDBDataTransfer.Designer.cs">
+      <DependentUpon>frmGeoDBDataTransfer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmGNPropertySheet.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmGNPropertySheet.Designer.cs">
+      <DependentUpon>frmGNPropertySheet.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmImportCoordinateFile.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmImportCoordinateFile.Designer.cs">
+      <DependentUpon>frmImportCoordinateFile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmImportxy.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmImportxy.Designer.cs">
+      <DependentUpon>frmImportxy.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmInput.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmInput.Designer.cs">
+      <DependentUpon>frmInput.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmMapInfo2FeatureClass.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmMapInfo2FeatureClass.Designer.cs">
+      <DependentUpon>frmMapInfo2FeatureClass.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmMultiDataConvert.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmMultiDataConvert.Designer.cs">
+      <DependentUpon>frmMultiDataConvert.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmMultiDataLoader.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmMultiDataLoader.Designer.cs">
+      <DependentUpon>frmMultiDataLoader.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmNetworkPropertySheet.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmNetworkPropertySheet.Designer.cs">
+      <DependentUpon>frmNetworkPropertySheet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmNewFeatureDataset.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmNewFeatureDataset.Designer.cs">
+      <DependentUpon>frmNewFeatureDataset.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmNewGN.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmNewGN.Designer.cs">
+      <DependentUpon>frmNewGN.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmNewJLKCodeDomain.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmNewJLKCodeDomain.Designer.cs">
+      <DependentUpon>frmNewJLKCodeDomain.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmNewObjectClass.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmNewObjectClass.Designer.cs">
+      <DependentUpon>frmNewObjectClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmNewRelationClass.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmNewRelationClass.Designer.cs">
+      <DependentUpon>frmNewRelationClass.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmNewReprensentationWizard.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmNewReprensentationWizard.Designer.cs">
+      <DependentUpon>frmNewReprensentationWizard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmNewVCS.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmNewVCS.Designer.cs">
+      <DependentUpon>frmNewVCS.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmNewVersion.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmNewVersion.Designer.cs">
+      <DependentUpon>frmNewVersion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmObjectClass.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmObjectClass.Designer.cs">
+      <DependentUpon>frmObjectClass.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmProject.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmProject.Designer.cs">
+      <DependentUpon>frmProject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmPropertySheet.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmPropertySheet.Designer.cs">
+      <DependentUpon>frmPropertySheet.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmRule.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmRule.Designer.cs">
+      <DependentUpon>frmRule.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmRuleInfo.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmRuleInfo.Designer.cs">
+      <DependentUpon>frmRuleInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmSDEConnectionDetialInfo.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmSDEConnectionDetialInfo.Designer.cs">
+      <DependentUpon>frmSDEConnectionDetialInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmSelectReconcileVersion.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmSelectReconcileVersion.Designer.cs">
+      <DependentUpon>frmSelectReconcileVersion.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmSelectVersion.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmSelectVersion.Designer.cs">
+      <DependentUpon>frmSelectVersion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmSelectWorkspace.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmSelectWorkspace.Designer.cs">
+      <DependentUpon>frmSelectWorkspace.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmSimpleDataLoader.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmSimpleDataLoader.Designer.cs">
+      <DependentUpon>frmSimpleDataLoader.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmSpatialReference.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmSpatialReference.Designer.cs">
+      <DependentUpon>frmSpatialReference.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmSpatialRefrence.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmSpatialRefrence.Designer.cs">
+      <DependentUpon>frmSpatialRefrence.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmTable2Domain.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmTable2Domain.Designer.cs">
+      <DependentUpon>frmTable2Domain.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmVCT2FeatureClass.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmVCT2FeatureClass.Designer.cs">
+      <DependentUpon>frmVCT2FeatureClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmVersionDifferences.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmVersionDifferences.Designer.cs">
+      <DependentUpon>frmVersionDifferences.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmVersionInfo.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmVersionInfo.Designer.cs">
+      <DependentUpon>frmVersionInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmVersionProperty.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmVersionProperty.Designer.cs">
+      <DependentUpon>frmVersionProperty.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\frmVersions.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\frmVersions.Designer.cs">
+      <DependentUpon>frmVersions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\frmVersions92.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\frmVersions92.Designer.cs">
+      <DependentUpon>frmVersions92.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\GDBGeneralCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\GDBGeneralCtrl.Designer.cs">
+      <DependentUpon>GDBGeneralCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\GeoCoordSys.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\GeoCoordSys.Designer.cs">
+      <DependentUpon>GeoCoordSys.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\GeometryNetEditHelper.cs" />
     <Compile Include="Geodatabase\UI\GeometryNetGeneralPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\GeometryNetGeneralPropertyPage.Designer.cs">
+      <DependentUpon>GeometryNetGeneralPropertyPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\GeometryNewConnectivityPropertyPage.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\GeometryNewConnectivityPropertyPage.Designer.cs">
+      <DependentUpon>GeometryNewConnectivityPropertyPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\IControlBaseInterface.cs" />
     <Compile Include="Geodatabase\UI\IndexSetCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\IndexSetCtrl.Designer.cs">
+      <DependentUpon>IndexSetCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\IProjectForm.cs" />
     <Compile Include="Geodatabase\UI\MDomainControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\MDomainControl.Designer.cs">
+      <DependentUpon>MDomainControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\MultiObjectClassSelectControl.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\MultiObjectClassSelectControl.Designer.cs">
+      <DependentUpon>MultiObjectClassSelectControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\NewDatasetCoordinateDomainPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\NewDatasetCoordinateDomainPage.Designer.cs">
+      <DependentUpon>NewDatasetCoordinateDomainPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\NewDatasetSpatialRefPage.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\NewDatasetSpatialRefPage.Designer.cs">
+      <DependentUpon>NewDatasetSpatialRefPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\NewDatasetTolerancePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\NewDatasetTolerancePage.Designer.cs">
+      <DependentUpon>NewDatasetTolerancePage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\NewObjectClassFieldsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\NewObjectClassFieldsPage.Designer.cs">
+      <DependentUpon>NewObjectClassFieldsPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\NewObjectClassGeneralPage.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\NewObjectClassGeneralPage.Designer.cs">
+      <DependentUpon>NewObjectClassGeneralPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\NewObjectClassHelper.cs" />
     <Compile Include="Geodatabase\UI\NewRelationClassHelper.cs" />
     <Compile Include="Geodatabase\UI\NewRelationClassSetClass.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\NewRelationClassSetClass.Designer.cs">
+      <DependentUpon>NewRelationClassSetClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\NewRelationClass_LabelAndNotification.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\NewRelationClass_LabelAndNotification.Designer.cs">
+      <DependentUpon>NewRelationClass_LabelAndNotification.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\NewRelationClass_RelationType.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\NewRelationClass_RelationType.Designer.cs">
+      <DependentUpon>NewRelationClass_RelationType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\NewRelationClass_SetCardinality.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\NewRelationClass_SetCardinality.Designer.cs">
+      <DependentUpon>NewRelationClass_SetCardinality.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\NewRelationClass_SetKey.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\NewRelationClass_SetKey.Designer.cs">
+      <DependentUpon>NewRelationClass_SetKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\NewVersionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\NewVersionControl.Designer.cs">
+      <DependentUpon>NewVersionControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\ObjectClassGeneral.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\ObjectClassGeneral.Designer.cs">
+      <DependentUpon>ObjectClassGeneral.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\ObjectClassHelper.cs" />
     <Compile Include="Geodatabase\UI\ObjectClassInfoEdit.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\ObjectClassInfoEdit.Designer.cs">
+      <DependentUpon>ObjectClassInfoEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\ObjectClassKeyConfig.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\ObjectClassKeyConfig.Designer.cs">
+      <DependentUpon>ObjectClassKeyConfig.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\ObjectClassShareData.cs" />
     <Compile Include="Geodatabase\UI\ObjectFieldsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\ObjectFieldsPage.Designer.cs">
+      <DependentUpon>ObjectFieldsPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\ObjectSelectControl.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\ObjectSelectControl.Designer.cs">
+      <DependentUpon>ObjectSelectControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\ProjCoordSys.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\ProjCoordSys.Designer.cs">
+      <DependentUpon>ProjCoordSys.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\ReprensationGeneralPage.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\ReprensationGeneralPage.Designer.cs">
+      <DependentUpon>ReprensationGeneralPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\RepresentationPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\RepresentationPropertyPage.Designer.cs">
+      <DependentUpon>RepresentationPropertyPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\RepresentationRulesPage.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\RepresentationRulesPage.Designer.cs">
+      <DependentUpon>RepresentationRulesPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\RowCollection.cs" />
     <Compile Include="Geodatabase\UI\SelectCheckOutWorkspaceCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\SelectCheckOutWorkspaceCtrl.Designer.cs">
+      <DependentUpon>SelectCheckOutWorkspaceCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\SelectExportChangeWKCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\SelectExportChangeWKCtrl.Designer.cs">
+      <DependentUpon>SelectExportChangeWKCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\SelectLoadDataControl.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\SelectLoadDataControl.Designer.cs">
+      <DependentUpon>SelectLoadDataControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\SRLibCommonFunc.cs" />
     <Compile Include="Geodatabase\UI\TopologyClassesPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\TopologyClassesPropertyPage.Designer.cs">
+      <DependentUpon>TopologyClassesPropertyPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\TopologyEditHelper.cs" />
     <Compile Include="Geodatabase\UI\TopologyGeneralPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\TopologyGeneralPropertyPage.Designer.cs">
+      <DependentUpon>TopologyGeneralPropertyPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\TopologyRulesPropertyPage.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\TopologyRulesPropertyPage.Designer.cs">
+      <DependentUpon>TopologyRulesPropertyPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\ValueChangedHandler.cs" />
     <Compile Include="Geodatabase\UI\VCSControlPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\VCSControlPage.Designer.cs">
+      <DependentUpon>VCSControlPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\VCSCoordinateInfoPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\VCSCoordinateInfoPage.Designer.cs">
+      <DependentUpon>VCSCoordinateInfoPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\VersionInfoControl.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\VersionInfoControl.Designer.cs">
+      <DependentUpon>VersionInfoControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\VersioningUtil.cs" />
     <Compile Include="Geodatabase\UI\VersionPropertyCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\VersionPropertyCtrl.Designer.cs">
+      <DependentUpon>VersionPropertyCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\WeightPropertyPage.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\WeightPropertyPage.Designer.cs">
+      <DependentUpon>WeightPropertyPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Geodatabase\UI\XYDomainControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Geodatabase\UI\XYDomainControl.Designer.cs">
+      <DependentUpon>XYDomainControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geodatabase\UI\ZDomainControl.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geodatabase\UI\ZDomainControl.Designer.cs">
+      <DependentUpon>ZDomainControl.cs</DependentUpon>
     </Compile>
     <Compile Include="GxAddAGSConnection.cs" />
     <Compile Include="GxAddAGSObject.cs" />
@@ -730,74 +1186,146 @@
     <Compile Include="UI\AGSDirectoryPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UI\AGSDirectoryPropertyPage.Designer.cs">
+      <DependentUpon>AGSDirectoryPropertyPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\AGSGeneralPropertyPage.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\AGSGeneralPropertyPage.Designer.cs">
+      <DependentUpon>AGSGeneralPropertyPage.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\AGSHostsPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UI\AGSHostsPropertyPage.Designer.cs">
+      <DependentUpon>AGSHostsPropertyPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\CoverageGeneralPropertyPage.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\CoverageGeneralPropertyPage.Designer.cs">
+      <DependentUpon>CoverageGeneralPropertyPage.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\CoverageTicPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UI\CoverageTicPropertyPage.Designer.cs">
+      <DependentUpon>CoverageTicPropertyPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\CoverageTolerancePropertyPage.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\CoverageTolerancePropertyPage.Designer.cs">
+      <DependentUpon>CoverageTolerancePropertyPage.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FieldMatchCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UI\FieldMatchCtrl.Designer.cs">
+      <DependentUpon>FieldMatchCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\frmAGSProperty.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmAGSProperty.Designer.cs">
+      <DependentUpon>frmAGSProperty.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\frmArcGISServerManageProperty.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UI\frmArcGISServerManageProperty.Designer.cs">
+      <DependentUpon>frmArcGISServerManageProperty.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\frmArcGISServerProperty.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmArcGISServerProperty.Designer.cs">
+      <DependentUpon>frmArcGISServerProperty.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\frmArcGISServerUseProperty.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UI\frmArcGISServerUseProperty.Designer.cs">
+      <DependentUpon>frmArcGISServerUseProperty.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\frmCoveragePropertySheet.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmCoveragePropertySheet.Designer.cs">
+      <DependentUpon>frmCoveragePropertySheet.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\frmDataLoader.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UI\frmDataLoader.Designer.cs">
+      <DependentUpon>frmDataLoader.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\frmDatasetUnion.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmDatasetUnion.Designer.cs">
+      <DependentUpon>frmDatasetUnion.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\frmEvaluator.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UI\frmEvaluator.Designer.cs">
+      <DependentUpon>frmEvaluator.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\frmHost.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmHost.Designer.cs">
+      <DependentUpon>frmHost.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\frmNewArcGISServer.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UI\frmNewArcGISServer.Designer.cs">
+      <DependentUpon>frmNewArcGISServer.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\frmNewArcGISServer93.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmNewArcGISServer93.Designer.cs">
+      <DependentUpon>frmNewArcGISServer93.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\frmNewArcIMSServer.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UI\frmNewArcIMSServer.Designer.cs">
+      <DependentUpon>frmNewArcIMSServer.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\frmNewNetworkAttribute.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmNewNetworkAttribute.Designer.cs">
+      <DependentUpon>frmNewNetworkAttribute.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\frmNewNetworkDatasetWizard.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UI\frmNewNetworkDatasetWizard.Designer.cs">
+      <DependentUpon>frmNewNetworkDatasetWizard.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\frmNewServerObject.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmNewServerObject.Designer.cs">
+      <DependentUpon>frmNewServerObject.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\frmOpenFile.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UI\frmOpenFile.Designer.cs">
+      <DependentUpon>frmOpenFile.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\frmServerObjectPropertySheet.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmServerObjectPropertySheet.Designer.cs">
+      <DependentUpon>frmServerObjectPropertySheet.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\KTreeView.cs">
       <SubType>Component</SubType>
@@ -805,52 +1333,100 @@
     <Compile Include="UI\NetworkDirectionGeneralPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UI\NetworkDirectionGeneralPage.Designer.cs">
+      <DependentUpon>NetworkDirectionGeneralPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\NewNetworkDatasetAttributePropertyPage.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\NewNetworkDatasetAttributePropertyPage.Designer.cs">
+      <DependentUpon>NewNetworkDatasetAttributePropertyPage.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\NewNetworkDatasetConnectivityPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UI\NewNetworkDatasetConnectivityPage.Designer.cs">
+      <DependentUpon>NewNetworkDatasetConnectivityPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\NewNetworkDatasetDirectionPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UI\NewNetworkDatasetDirectionPropertyPage.Designer.cs">
+      <DependentUpon>NewNetworkDatasetDirectionPropertyPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\NewNetworkDatasetFeatureClassSetPropertyPage.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\NewNetworkDatasetFeatureClassSetPropertyPage.Designer.cs">
+      <DependentUpon>NewNetworkDatasetFeatureClassSetPropertyPage.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\NewNetworkDatasetHelper.cs" />
     <Compile Include="UI\NewNetworkDatasetModifyConnectivityPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UI\NewNetworkDatasetModifyConnectivityPage.Designer.cs">
+      <DependentUpon>NewNetworkDatasetModifyConnectivityPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\NewNetworkDatasetNamePropertyPage.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\NewNetworkDatasetNamePropertyPage.Designer.cs">
+      <DependentUpon>NewNetworkDatasetNamePropertyPage.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\NewNetworkDatasetTurnsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UI\NewNetworkDatasetTurnsPage.Designer.cs">
+      <DependentUpon>NewNetworkDatasetTurnsPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\SelectedDataLoaderCtrl.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\SelectedDataLoaderCtrl.Designer.cs">
+      <DependentUpon>SelectedDataLoaderCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\SelectNodeChangedHandler.cs" />
     <Compile Include="UI\ServerDirectoryPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UI\ServerDirectoryPropertyPage.Designer.cs">
+      <DependentUpon>ServerDirectoryPropertyPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ServerHostPropertyPage.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ServerHostPropertyPage.Designer.cs">
+      <DependentUpon>ServerHostPropertyPage.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\ServerLogPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UI\ServerLogPropertyPage.Designer.cs">
+      <DependentUpon>ServerLogPropertyPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ServerObjectDocumentPropertyPage.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ServerObjectDocumentPropertyPage.Designer.cs">
+      <DependentUpon>ServerObjectDocumentPropertyPage.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\ServerObjectGeneralPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UI\ServerObjectGeneralPropertyPage.Designer.cs">
+      <DependentUpon>ServerObjectGeneralPropertyPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ServerObjectPoolPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UI\ServerObjectPoolPropertyPage.Designer.cs">
+      <DependentUpon>ServerObjectPoolPropertyPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ServerObjectProcessManagementPropertyPage.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ServerObjectProcessManagementPropertyPage.Designer.cs">
+      <DependentUpon>ServerObjectProcessManagementPropertyPage.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\ServerObjectSummaryPropertyPage.cs">
       <SubType>UserControl</SubType>
@@ -858,24 +1434,45 @@
     <Compile Include="UI\SetImportRecordCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UI\SetImportRecordCtrl.Designer.cs">
+      <DependentUpon>SetImportRecordCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\SODocumentPropertyPage.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\SODocumentPropertyPage.Designer.cs">
+      <DependentUpon>SODocumentPropertyPage.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\SOGeneralPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UI\SOGeneralPropertyPage.Designer.cs">
+      <DependentUpon>SOGeneralPropertyPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\SOPoolPropertyPage.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\SOPoolPropertyPage.Designer.cs">
+      <DependentUpon>SOPoolPropertyPage.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\SOProcessManagementPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UI\SOProcessManagementPropertyPage.Designer.cs">
+      <DependentUpon>SOProcessManagementPropertyPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\SOSummaryPropertyPage.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\SOSummaryPropertyPage.Designer.cs">
+      <DependentUpon>SOSummaryPropertyPage.cs</DependentUpon>
     </Compile>
     <Compile Include="VCT\CoPointCollection.cs" />
     <Compile Include="VCT\frmProgressBar1.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VCT\frmProgressBar1.Designer.cs">
+      <DependentUpon>frmProgressBar1.cs</DependentUpon>
     </Compile>
     <Compile Include="VCT\ICoPoint.cs" />
     <Compile Include="VCT\ICoClone.cs" />
@@ -1640,6 +2237,10 @@
     <ProjectReference Include="..\Yutai.ArcGIS.Common\Yutai.ArcGIS.Common.csproj">
       <Project>{1938B3F8-8EDE-48F7-9594-EEB1F126E622}</Project>
       <Name>Yutai.ArcGIS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yutai.ArcGIS.Controls\Yutai.ArcGIS.Controls.csproj">
+      <Project>{0E17B019-EE36-46B7-8B96-C0A3CA666430}</Project>
+      <Name>Yutai.ArcGIS.Controls</Name>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.Plugins\Yutai.Plugins.csproj">
       <Project>{800F2EE4-47AB-4CD4-934D-A64980D98A23}</Project>

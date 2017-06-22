@@ -359,26 +359,26 @@ namespace Yutai.ArcGIS.Catalog
                         break;
 
                     case "Point":
-                        return ImageLib.GetSmallImage(0x20);
+                        return ImageLib.GetSmallImage(32);
 
                     case "line":
-                        return ImageLib.GetSmallImage(0x21);
+                        return ImageLib.GetSmallImage(33);
 
                     default:
                         if (!(layerTypeName == "Polygon"))
                         {
                             if (layerTypeName == "Text")
                             {
-                                return ImageLib.GetSmallImage(0x22);
+                                return ImageLib.GetSmallImage(34);
                             }
                         }
                         else
                         {
-                            return ImageLib.GetSmallImage(0x22);
+                            return ImageLib.GetSmallImage(34);
                         }
                         break;
                 }
-                return ImageLib.GetSmallImage(0x23);
+                return ImageLib.GetSmallImage(35);
             }
         }
 
@@ -393,26 +393,26 @@ namespace Yutai.ArcGIS.Catalog
                         break;
 
                     case "Point":
-                        return ImageLib.GetSmallImage(0x20);
+                        return ImageLib.GetSmallImage(32);
 
                     case "line":
-                        return ImageLib.GetSmallImage(0x21);
+                        return ImageLib.GetSmallImage(33);
 
                     default:
                         if (!(layerTypeName == "Polygon"))
                         {
                             if (layerTypeName == "Text")
                             {
-                                return ImageLib.GetSmallImage(0x22);
+                                return ImageLib.GetSmallImage(34);
                             }
                         }
                         else
                         {
-                            return ImageLib.GetSmallImage(0x22);
+                            return ImageLib.GetSmallImage(34);
                         }
                         break;
                 }
-                return ImageLib.GetSmallImage(0x23);
+                return ImageLib.GetSmallImage(35);
             }
         }
 
@@ -501,22 +501,22 @@ namespace Yutai.ArcGIS.Catalog
                 {
                     case "Point":
                         this.LayerType = LayerType.PointLayer;
-                        return ImageLib.GetSmallImage(0x20);
+                        return ImageLib.GetSmallImage(32);
 
                     case "line":
                         this.LayerType = LayerType.LineLayer;
-                        return ImageLib.GetSmallImage(0x21);
+                        return ImageLib.GetSmallImage(33);
 
                     case "Polygon":
                         this.LayerType = LayerType.PolygonLayer;
-                        return ImageLib.GetSmallImage(0x22);
+                        return ImageLib.GetSmallImage(34);
 
                     case "Text":
                         this.LayerType = LayerType.AnnoLayer;
-                        return ImageLib.GetSmallImage(0x22);
+                        return ImageLib.GetSmallImage(34);
                 }
                 this.LayerType = LayerType.UnknownLayer;
-                return ImageLib.GetSmallImage(0x23);
+                return ImageLib.GetSmallImage(35);
             }
         }
 
@@ -528,22 +528,22 @@ namespace Yutai.ArcGIS.Catalog
                 {
                     case "Point":
                         this.LayerType = LayerType.PointLayer;
-                        return ImageLib.GetSmallImage(0x20);
+                        return ImageLib.GetSmallImage(32);
 
                     case "line":
                         this.LayerType = LayerType.LineLayer;
-                        return ImageLib.GetSmallImage(0x21);
+                        return ImageLib.GetSmallImage(33);
 
                     case "Polygon":
                         this.LayerType = LayerType.PolygonLayer;
-                        return ImageLib.GetSmallImage(0x22);
+                        return ImageLib.GetSmallImage(34);
 
                     case "Text":
                         this.LayerType = LayerType.AnnoLayer;
-                        return ImageLib.GetSmallImage(0x22);
+                        return ImageLib.GetSmallImage(34);
                 }
                 this.LayerType = LayerType.UnknownLayer;
-                return ImageLib.GetSmallImage(0x23);
+                return ImageLib.GetSmallImage(35);
             }
         }
 

@@ -8,7 +8,7 @@ using ESRI.ArcGIS.Geodatabase;
 
 namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 {
-    public class frmDataTransferProgress : Form
+    public partial class frmDataTransferProgress : Form
     {
         private bool bool_0 = false;
         private bool bool_1 = false;
@@ -21,11 +21,6 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         private int int_2 = 0;
         private int int_3 = 0;
         private int int_4 = 0;
-        private Label label2;
-        private Label lblObject;
-        private Label lblObjectClass;
-        private ProgressBar progressBarObject;
-        private ProgressBar progressBarObjectClass;
         private string string_0 = "";
 
         public frmDataTransferProgress()
@@ -48,65 +43,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
-        protected override void Dispose(bool bool_2)
-        {
-            if (bool_2 && (this.container_0 != null))
-            {
-                this.container_0.Dispose();
-            }
-            base.Dispose(bool_2);
-        }
-
-        private void frmDataTransferProgress_Load(object sender, EventArgs e)
+ private void frmDataTransferProgress_Load(object sender, EventArgs e)
         {
             this.method_7();
         }
 
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDataTransferProgress));
-            this.lblObjectClass = new Label();
-            this.label2 = new Label();
-            this.progressBarObjectClass = new ProgressBar();
-            this.lblObject = new Label();
-            this.progressBarObject = new ProgressBar();
-            base.SuspendLayout();
-            this.lblObjectClass.Location = new Point(80, 8);
-            this.lblObjectClass.Name = "lblObjectClass";
-            this.lblObjectClass.Size = new Size(0x148, 0x10);
-            this.lblObjectClass.TabIndex = 0;
-            this.label2.Location = new Point(8, 0x30);
-            this.label2.Name = "label2";
-            this.label2.Size = new Size(0x30, 0x10);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "总进程";
-            this.progressBarObjectClass.Location = new Point(80, 0x30);
-            this.progressBarObjectClass.Name = "progressBarObjectClass";
-            this.progressBarObjectClass.Size = new Size(0x158, 0x18);
-            this.progressBarObjectClass.TabIndex = 2;
-            this.lblObject.Location = new Point(0x18, 80);
-            this.lblObject.Name = "lblObject";
-            this.lblObject.Size = new Size(0x198, 0x10);
-            this.lblObject.TabIndex = 3;
-            this.progressBarObject.Location = new Point(0x18, 0x70);
-            this.progressBarObject.Name = "progressBarObject";
-            this.progressBarObject.Size = new Size(0x198, 0x18);
-            this.progressBarObject.TabIndex = 4;
-            this.AutoScaleBaseSize = new Size(6, 14);
-            base.ClientSize = new Size(0x1c0, 0x9d);
-            base.Controls.Add(this.progressBarObject);
-            base.Controls.Add(this.lblObject);
-            base.Controls.Add(this.progressBarObjectClass);
-            base.Controls.Add(this.label2);
-            base.Controls.Add(this.lblObjectClass);
-            
-            base.Name = "frmDataTransferProgress";
-            this.Text = "数据传送进程";
-            base.Load += new EventHandler(this.frmDataTransferProgress_Load);
-            base.ResumeLayout(false);
-        }
-
-        private void method_0(string string_1)
+ private void method_0(string string_1)
         {
             this.int_1++;
             this.lblObjectClass.Text = string.Concat(new object[] { "传送第 ", this.int_1.ToString(), "个对象，共 ", this.int_0, "个对象" });

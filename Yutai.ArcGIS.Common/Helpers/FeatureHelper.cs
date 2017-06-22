@@ -193,7 +193,7 @@ namespace Yutai.ArcGIS.Common.Helpers
                         {
                             try
                             {
-                                if ((num2 >= 0x3e8) && ((num3++ % num2) == 0))
+                                if ((num2 >= 1000) && ((num3++ % num2) == 0))
                                 {
                                     edit.StopEditOperation();
                                     edit.StopEditing(true);

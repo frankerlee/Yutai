@@ -258,26 +258,26 @@ namespace Yutai.ArcGIS.Catalog
                 {
                     switch (((uint) (exception as COMException).ErrorCode))
                     {
-                        case 0x80041569:
-                        case 0x80041501:
+                        case 2147751273:
+                        case 2147751169:
                             MessageBox.Show("连接数据库失败", "连接");
                             return;
 
-                        case 0x8004156a:
+                        case 2147751274:
                             MessageBox.Show("连接数据库失败\r\n该服务器上的SDE没有启动", "连接");
                             return;
 
-                        case 0x80050199:
+                        case 2147811737:
                             MessageBox.Show("连接的数据库服务器未启动", "连接");
                             return;
 
-                        case 0x80041538:
+                        case 2147751224:
                             MessageBox.Show("连接的数据库服务器已暂停", "连接");
                             return;
 
-                        case 0x80004005:
-                        case 0x80050144:
-                        case 0x8004150a:
+                        case 2147500037:
+                        case 2147811652:
+                        case 2147751178:
                             MessageBox.Show("连接数据库失败", "连接");
                             return;
                     }

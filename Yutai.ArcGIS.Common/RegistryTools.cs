@@ -15,7 +15,7 @@ namespace Yutai.ArcGIS.Common
         internal const ushort PROCESSOR_ARCHITECTURE_AMD64 = 9;
         internal const ushort PROCESSOR_ARCHITECTURE_IA64 = 6;
         internal const ushort PROCESSOR_ARCHITECTURE_INTEL = 0;
-        internal const ushort PROCESSOR_ARCHITECTURE_UNKNOWN = 0xffff;
+        internal const ushort PROCESSOR_ARCHITECTURE_UNKNOWN = 65535;
 
         static RegistryTools()
         {
@@ -52,13 +52,13 @@ namespace Yutai.ArcGIS.Common
 
         public static string Get64BitRegistryKey(string string_0, string string_1, string string_2)
         {
-            int num = 1 | 0x100;
+            int num = 1 | 256;
             try
             {
                 UIntPtr ptr = TransferKeyName(string_0);
                 IntPtr zero = IntPtr.Zero;
-                StringBuilder builder = new StringBuilder("".PadLeft(0x400));
-                uint num2 = 0x400;
+                StringBuilder builder = new StringBuilder("".PadLeft(1024));
+                uint num2 = 1024;
                 uint num3 = 0;
                 IntPtr ptr3 = new IntPtr();
                 if (Wow64DisableWow64FsRedirection(ref ptr3))

@@ -10,21 +10,21 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
     {
         private const int EC_LEFTMARGIN = 1;
         private const int EC_RIGHTMARGIN = 2;
-        private const int EM_SETMARGINS = 0xd3;
+        private const int EM_SETMARGINS = 211;
         private Graphics graphics_0;
         private Image image_0 = null;
         private ImageComboBox imageComboBox_0 = null;
         private int int_0 = 0;
         private int int_1 = -1;
         private Struct3 struct3_0 = new Struct3();
-        private const int WM_CHAR = 0x102;
+        private const int WM_CHAR = 258;
         private const int WM_GETTEXT = 13;
         private const int WM_GETTEXTLENGTH = 14;
-        private const int WM_KEYDOWN = 0x100;
-        private const int WM_KEYUP = 0x101;
-        private const int WM_LBUTTONDOWN = 0x201;
+        private const int WM_KEYDOWN = 256;
+        private const int WM_KEYUP = 257;
+        private const int WM_LBUTTONDOWN = 513;
         private const int WM_PAINT = 15;
-        private const int WM_SETCURSOR = 0x20;
+        private const int WM_SETCURSOR = 32;
 
         public void AssignTextBoxHandle(ImageComboBox imageComboBox_1)
         {
@@ -108,14 +108,14 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
                 if (this.imageComboBox_0.RightToLeft == RightToLeft.Yes)
                 {
                     num2 = this.int_0;
-                    SendMessage(base.Handle, 0xd3, 2, num2 * 0x10000);
-                    SendMessage(base.Handle, 0xd3, 1, num);
+                    SendMessage(base.Handle, 211, 2, num2 * 65536);
+                    SendMessage(base.Handle, 211, 1, num);
                 }
                 else if (this.imageComboBox_0.RightToLeft == RightToLeft.No)
                 {
                     num = this.int_0;
-                    SendMessage(base.Handle, 0xd3, 1, this.int_0);
-                    SendMessage(base.Handle, 0xd3, 2, num2 * 0x10000);
+                    SendMessage(base.Handle, 211, 1, this.int_0);
+                    SendMessage(base.Handle, 211, 2, num2 * 65536);
                 }
             }
         }
@@ -139,22 +139,22 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
                     this.DrawImage();
                     break;
 
-                case 0x100:
+                case 256:
                     base.WndProc(ref message_0);
                     this.DrawImage();
                     break;
 
-                case 0x101:
+                case 257:
                     base.WndProc(ref message_0);
                     this.DrawImage();
                     break;
 
-                case 0x102:
+                case 258:
                     base.WndProc(ref message_0);
                     this.DrawImage();
                     break;
 
-                case 0x201:
+                case 513:
                     base.WndProc(ref message_0);
                     this.DrawImage();
                     break;

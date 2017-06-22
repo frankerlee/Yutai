@@ -240,7 +240,7 @@ namespace Yutai.ArcGIS.Common.Helpers
 
         private void GKTransform(double x, double y, ref double B, ref double L, double center, int n)
         {
-            double num = (y - 500000.0) - (0xf4240 * n);
+            double num = (y - 500000.0) - (1000000 * n);
             double a = 1.57048687472752E-07 * x;
             double num4 = Math.Sin(a);
             double num2 = a + (Math.Cos(a) * ((((0.00505250559291393 * num4) - (2.98473350966158E-05 * Math.Pow(num4, 3.0))) + (2.41627215981336E-07 * Math.Pow(num4, 5.0))) - (2.22241909461273E-09 * Math.Pow(num4, 7.0))));

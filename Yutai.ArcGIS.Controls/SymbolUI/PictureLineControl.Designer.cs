@@ -1,0 +1,217 @@
+﻿using System;
+using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
+using DevExpress.Utils;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
+using ESRI.ArcGIS.Display;
+using Yutai.ArcGIS.Common.SymbolUI;
+
+namespace Yutai.ArcGIS.Controls.SymbolUI
+{
+    partial class PictureLineControl
+    {
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (this.components != null))
+            {
+                this.components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+       
+        private void InitializeComponent()
+        {
+            this.lblPathName = new Label();
+            this.label1 = new Label();
+            this.label2 = new Label();
+            this.label3 = new Label();
+            this.label4 = new Label();
+            this.label5 = new Label();
+            this.label6 = new Label();
+            this.colorEditForeColor = new ColorEdit();
+            this.colorEditBackgroundColor = new ColorEdit();
+            this.colorEditTransColor = new ColorEdit();
+            this.numericUpDownYScale = new SpinEdit();
+            this.numericUpDownXScale = new SpinEdit();
+            this.numericUpDownWidth = new SpinEdit();
+            this.chkSwapFGBG = new CheckEdit();
+            this.btnSelectPicture = new SimpleButton();
+            this.colorEditForeColor.Properties.BeginInit();
+            this.colorEditBackgroundColor.Properties.BeginInit();
+            this.colorEditTransColor.Properties.BeginInit();
+            this.numericUpDownYScale.Properties.BeginInit();
+            this.numericUpDownXScale.Properties.BeginInit();
+            this.numericUpDownWidth.Properties.BeginInit();
+            this.chkSwapFGBG.Properties.BeginInit();
+            base.SuspendLayout();
+            this.lblPathName.Location = new Point(96, 16);
+            this.lblPathName.Name = "lblPathName";
+            this.lblPathName.Size = new Size(280, 24);
+            this.lblPathName.TabIndex = 1;
+            this.label1.AutoSize = true;
+            this.label1.Location = new Point(16, 76);
+            this.label1.Name = "label1";
+            this.label1.Size = new Size(29, 17);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "宽度";
+            this.label2.AutoSize = true;
+            this.label2.Location = new Point(16, 107);
+            this.label2.Name = "label2";
+            this.label2.Size = new Size(48, 17);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "X方向比";
+            this.label3.AutoSize = true;
+            this.label3.Location = new Point(16, 138);
+            this.label3.Name = "label3";
+            this.label3.Size = new Size(48, 17);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Y方向比";
+            this.label4.AutoSize = true;
+            this.label4.Location = new Point(160, 76);
+            this.label4.Name = "label4";
+            this.label4.Size = new Size(42, 17);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "前景色";
+            this.label5.AutoSize = true;
+            this.label5.Location = new Point(160, 107);
+            this.label5.Name = "label5";
+            this.label5.Size = new Size(42, 17);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "背景色";
+            this.label6.AutoSize = true;
+            this.label6.Location = new Point(160, 138);
+            this.label6.Name = "label6";
+            this.label6.Size = new Size(42, 17);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "透明色";
+            this.colorEditForeColor.EditValue = Color.Empty;
+            this.colorEditForeColor.Location = new Point(216, 72);
+            this.colorEditForeColor.Name = "colorEditForeColor";
+            this.colorEditForeColor.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
+            this.colorEditForeColor.Size = new Size(48, 23);
+            this.colorEditForeColor.TabIndex = 11;
+            this.colorEditForeColor.EditValueChanged += new EventHandler(this.colorEditForeColor_EditValueChanged);
+            this.colorEditBackgroundColor.EditValue = Color.Empty;
+            this.colorEditBackgroundColor.Location = new Point(216, 104);
+            this.colorEditBackgroundColor.Name = "colorEditBackgroundColor";
+            this.colorEditBackgroundColor.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
+            this.colorEditBackgroundColor.Size = new Size(48, 23);
+            this.colorEditBackgroundColor.TabIndex = 12;
+            this.colorEditBackgroundColor.EditValueChanged += new EventHandler(this.colorEditBackgroundColor_EditValueChanged);
+            this.colorEditTransColor.EditValue = Color.Empty;
+            this.colorEditTransColor.Location = new Point(216, 136);
+            this.colorEditTransColor.Name = "colorEditTransColor";
+            this.colorEditTransColor.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
+            this.colorEditTransColor.Size = new Size(48, 23);
+            this.colorEditTransColor.TabIndex = 13;
+            this.colorEditTransColor.EditValueChanged += new EventHandler(this.colorEditTransColor_EditValueChanged);
+            int[] bits = new int[4];
+            this.numericUpDownYScale.EditValue = new decimal(bits);
+            this.numericUpDownYScale.Location = new Point(72, 136);
+            this.numericUpDownYScale.Name = "numericUpDownYScale";
+            this.numericUpDownYScale.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
+            this.numericUpDownYScale.Properties.DisplayFormat.FormatString = "0.####";
+            this.numericUpDownYScale.Properties.DisplayFormat.FormatType = FormatType.Numeric;
+            this.numericUpDownYScale.Properties.EditFormat.FormatString = "0.####";
+            this.numericUpDownYScale.Properties.EditFormat.FormatType = FormatType.Numeric;
+            bits = new int[4];
+            bits[0] = 100;
+            this.numericUpDownYScale.Properties.MaxValue = new decimal(bits);
+            this.numericUpDownYScale.Properties.UseCtrlIncrement = false;
+            this.numericUpDownYScale.Size = new Size(64, 23);
+            this.numericUpDownYScale.TabIndex = 79;
+            this.numericUpDownYScale.TextChanged += new EventHandler(this.numericUpDownYScale_ValueChanged);
+            bits = new int[4];
+            this.numericUpDownXScale.EditValue = new decimal(bits);
+            this.numericUpDownXScale.Location = new Point(72, 104);
+            this.numericUpDownXScale.Name = "numericUpDownXScale";
+            this.numericUpDownXScale.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
+            this.numericUpDownXScale.Properties.DisplayFormat.FormatString = "0.####";
+            this.numericUpDownXScale.Properties.DisplayFormat.FormatType = FormatType.Numeric;
+            this.numericUpDownXScale.Properties.EditFormat.FormatString = "0.####";
+            this.numericUpDownXScale.Properties.EditFormat.FormatType = FormatType.Numeric;
+            bits = new int[4];
+            bits[0] = 100;
+            this.numericUpDownXScale.Properties.MaxValue = new decimal(bits);
+            this.numericUpDownXScale.Properties.UseCtrlIncrement = false;
+            this.numericUpDownXScale.Size = new Size(64, 23);
+            this.numericUpDownXScale.TabIndex = 78;
+            this.numericUpDownXScale.TextChanged += new EventHandler(this.numericUpDownXScale_ValueChanged);
+            bits = new int[4];
+            this.numericUpDownWidth.EditValue = new decimal(bits);
+            this.numericUpDownWidth.Location = new Point(72, 72);
+            this.numericUpDownWidth.Name = "numericUpDownWidth";
+            this.numericUpDownWidth.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
+            this.numericUpDownWidth.Properties.DisplayFormat.FormatString = "0.####";
+            this.numericUpDownWidth.Properties.DisplayFormat.FormatType = FormatType.Numeric;
+            this.numericUpDownWidth.Properties.EditFormat.FormatString = "0.####";
+            this.numericUpDownWidth.Properties.EditFormat.FormatType = FormatType.Numeric;
+            bits = new int[4];
+            bits[0] = 100;
+            this.numericUpDownWidth.Properties.MaxValue = new decimal(bits);
+            this.numericUpDownWidth.Properties.UseCtrlIncrement = false;
+            this.numericUpDownWidth.Size = new Size(64, 23);
+            this.numericUpDownWidth.TabIndex = 80;
+            this.numericUpDownWidth.TextChanged += new EventHandler(this.numericUpDownWidth_ValueChanged);
+            this.chkSwapFGBG.Location = new Point(16, 168);
+            this.chkSwapFGBG.Name = "chkSwapFGBG";
+            this.chkSwapFGBG.Properties.Caption = "交换前后景色";
+            this.chkSwapFGBG.Size = new Size(128, 19);
+            this.chkSwapFGBG.TabIndex = 81;
+            this.chkSwapFGBG.CheckedChanged += new EventHandler(this.chkSwapFGBG_CheckedChanged);
+            this.btnSelectPicture.Location = new Point(16, 16);
+            this.btnSelectPicture.Name = "btnSelectPicture";
+            this.btnSelectPicture.Size = new Size(64, 24);
+            this.btnSelectPicture.TabIndex = 85;
+            this.btnSelectPicture.Text = "图片...";
+            this.btnSelectPicture.Click += new EventHandler(this.btnSelectPicture_Click);
+            base.Controls.Add(this.btnSelectPicture);
+            base.Controls.Add(this.chkSwapFGBG);
+            base.Controls.Add(this.numericUpDownWidth);
+            base.Controls.Add(this.numericUpDownYScale);
+            base.Controls.Add(this.numericUpDownXScale);
+            base.Controls.Add(this.colorEditTransColor);
+            base.Controls.Add(this.colorEditBackgroundColor);
+            base.Controls.Add(this.colorEditForeColor);
+            base.Controls.Add(this.label6);
+            base.Controls.Add(this.label5);
+            base.Controls.Add(this.label4);
+            base.Controls.Add(this.label3);
+            base.Controls.Add(this.label2);
+            base.Controls.Add(this.label1);
+            base.Controls.Add(this.lblPathName);
+            base.Name = "PictureLineControl";
+            base.Size = new Size(408, 280);
+            base.Load += new EventHandler(this.PictureLineControl_Load);
+            this.colorEditForeColor.Properties.EndInit();
+            this.colorEditBackgroundColor.Properties.EndInit();
+            this.colorEditTransColor.Properties.EndInit();
+            this.numericUpDownYScale.Properties.EndInit();
+            this.numericUpDownXScale.Properties.EndInit();
+            this.numericUpDownWidth.Properties.EndInit();
+            this.chkSwapFGBG.Properties.EndInit();
+            base.ResumeLayout(false);
+        }
+
+       
+        private Container components = null;
+        private SimpleButton btnSelectPicture;
+        private CheckEdit chkSwapFGBG;
+        private ColorEdit colorEditBackgroundColor;
+        private ColorEdit colorEditForeColor;
+        private ColorEdit colorEditTransColor;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private Label label5;
+        private Label label6;
+        private Label lblPathName;
+        private SpinEdit numericUpDownWidth;
+        private SpinEdit numericUpDownXScale;
+        private SpinEdit numericUpDownYScale;
+    }
+}

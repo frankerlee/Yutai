@@ -16,38 +16,18 @@ using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Carto.UI
 {
-    internal class MatchStyleGrallyCtrl : UserControl, IUserControl
+    internal partial class MatchStyleGrallyCtrl : UserControl, IUserControl
     {
         private bool bool_0 = false;
         private bool bool_1 = false;
-        private SimpleButton btnAddAllValues;
-        private SimpleButton btnAddValue;
-        private SimpleButton btnBrowStyle;
-        private SimpleButton btnDelete;
-        private SimpleButton btnDeleteAll;
-        private SimpleButton btnMoveDown;
-        private SimpleButton btnMoveUp;
-        private ComboBoxEdit cboFields;
-        private ComboBoxEdit cboLookupStyleset;
-        private ColumnHeader columnHeader_0;
-        private ColumnHeader columnHeader_1;
-        private ColumnHeader columnHeader_2;
-        private ColumnHeader columnHeader_3;
-        private ContextMenuStrip contextMenuStrip1;
         private IColorRamp icolorRamp_0 = null;
-        private IContainer icontainer_0;
         private IEnumColors ienumColors_0 = null;
         private IFields ifields_0 = null;
         private IGeoFeatureLayer igeoFeatureLayer_0 = null;
         private IList ilist_0 = new ArrayList();
         private int int_0 = 10;
         private IUniqueValueRenderer iuniqueValueRenderer_0 = null;
-        private Label label1;
-        private Label label2;
-        private RenderInfoListView listView1;
         public IStyleGallery m_pSG = null;
-        private ToolStripMenuItem menuitemGroup;
-        private ToolStripMenuItem menuitemUnGroup;
 
         public MatchStyleGrallyCtrl()
         {
@@ -309,16 +289,7 @@ namespace Yutai.ArcGIS.Carto.UI
             return object_0.ToString();
         }
 
-        protected override void Dispose(bool bool_2)
-        {
-            if (bool_2 && (this.icontainer_0 != null))
-            {
-                this.icontainer_0.Dispose();
-            }
-            base.Dispose(bool_2);
-        }
-
-        public bool GetUniqueValues(ILayer ilayer_0, string string_0, IList ilist_1)
+ public bool GetUniqueValues(ILayer ilayer_0, string string_0, IList ilist_1)
         {
             try
             {
@@ -369,155 +340,7 @@ namespace Yutai.ArcGIS.Carto.UI
             return false;
         }
 
-        private void InitializeComponent()
-        {
-            this.icontainer_0 = new Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MatchStyleGrallyCtrl));
-            this.label1 = new Label();
-            this.label2 = new Label();
-            this.btnAddAllValues = new SimpleButton();
-            this.btnAddValue = new SimpleButton();
-            this.btnDelete = new SimpleButton();
-            this.btnDeleteAll = new SimpleButton();
-            this.listView1 = new RenderInfoListView();
-            this.columnHeader_3 = new ColumnHeader();
-            this.columnHeader_0 = new ColumnHeader();
-            this.columnHeader_1 = new ColumnHeader();
-            this.columnHeader_2 = new ColumnHeader();
-            this.btnBrowStyle = new SimpleButton();
-            this.cboFields = new ComboBoxEdit();
-            this.cboLookupStyleset = new ComboBoxEdit();
-            this.btnMoveDown = new SimpleButton();
-            this.btnMoveUp = new SimpleButton();
-            this.contextMenuStrip1 = new ContextMenuStrip(this.icontainer_0);
-            this.menuitemGroup = new ToolStripMenuItem();
-            this.menuitemUnGroup = new ToolStripMenuItem();
-            this.cboFields.Properties.BeginInit();
-            this.cboLookupStyleset.Properties.BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
-            base.SuspendLayout();
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(0x29, 12);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "值字段";
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(0x10, 40);
-            this.label2.Name = "label2";
-            this.label2.Size = new Size(0x41, 12);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "匹配符号库";
-            this.btnAddAllValues.Location = new System.Drawing.Point(0x18, 0xe8);
-            this.btnAddAllValues.Name = "btnAddAllValues";
-            this.btnAddAllValues.Size = new Size(80, 0x18);
-            this.btnAddAllValues.TabIndex = 8;
-            this.btnAddAllValues.Text = "添加所有值";
-            this.btnAddAllValues.Click += new EventHandler(this.btnAddAllValues_Click);
-            this.btnAddValue.Location = new System.Drawing.Point(0x70, 0xe8);
-            this.btnAddValue.Name = "btnAddValue";
-            this.btnAddValue.Size = new Size(0x48, 0x18);
-            this.btnAddValue.TabIndex = 9;
-            this.btnAddValue.Text = "添加值...";
-            this.btnAddValue.Click += new EventHandler(this.btnAddValue_Click);
-            this.btnDelete.Enabled = false;
-            this.btnDelete.Location = new System.Drawing.Point(0xc0, 0xe8);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new Size(80, 0x18);
-            this.btnDelete.TabIndex = 10;
-            this.btnDelete.Text = "删除";
-            this.btnDelete.Click += new EventHandler(this.btnDelete_Click);
-            this.btnDeleteAll.Location = new System.Drawing.Point(280, 0xe8);
-            this.btnDeleteAll.Name = "btnDeleteAll";
-            this.btnDeleteAll.Size = new Size(80, 0x18);
-            this.btnDeleteAll.TabIndex = 11;
-            this.btnDeleteAll.Text = "删除全部";
-            this.btnDeleteAll.Click += new EventHandler(this.btnDeleteAll_Click);
-            this.listView1.Columns.AddRange(new ColumnHeader[] { this.columnHeader_3, this.columnHeader_0, this.columnHeader_1, this.columnHeader_2 });
-            this.listView1.FullRowSelect = true;
-            this.listView1.Location = new System.Drawing.Point(8, 0x48);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new Size(0x178, 0x98);
-            this.listView1.TabIndex = 12;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = View.Details;
-            this.listView1.SelectedIndexChanged += new EventHandler(this.listView1_SelectedIndexChanged);
-            this.listView1.MouseUp += new MouseEventHandler(this.listView1_MouseUp);
-            this.columnHeader_3.Text = "符号";
-            this.columnHeader_0.Text = "值";
-            this.columnHeader_0.Width = 110;
-            this.columnHeader_1.Text = "标注";
-            this.columnHeader_1.Width = 0x77;
-            this.columnHeader_2.Text = "数目";
-            this.columnHeader_2.Width = 0x3f;
-            this.btnBrowStyle.Location = new System.Drawing.Point(0x158, 40);
-            this.btnBrowStyle.Name = "btnBrowStyle";
-            this.btnBrowStyle.Size = new Size(0x38, 0x18);
-            this.btnBrowStyle.TabIndex = 15;
-            this.btnBrowStyle.Text = "浏览...";
-            this.btnBrowStyle.Click += new EventHandler(this.btnBrowStyle_Click);
-            this.cboFields.EditValue = "";
-            this.cboFields.Location = new System.Drawing.Point(0x5d, 6);
-            this.cboFields.Name = "cboFields";
-            this.cboFields.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.cboFields.Size = new Size(0xeb, 0x15);
-            this.cboFields.TabIndex = 0x10;
-            this.cboFields.SelectedIndexChanged += new EventHandler(this.cboFields_SelectedIndexChanged);
-            this.cboLookupStyleset.EditValue = "";
-            this.cboLookupStyleset.Location = new System.Drawing.Point(0x60, 40);
-            this.cboLookupStyleset.Name = "cboLookupStyleset";
-            this.cboLookupStyleset.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.cboLookupStyleset.Size = new Size(240, 0x15);
-            this.cboLookupStyleset.TabIndex = 0x11;
-            this.cboLookupStyleset.SelectedIndexChanged += new EventHandler(this.cboLookupStyleset_SelectedIndexChanged);
-            this.btnMoveDown.Enabled = false;
-            this.btnMoveDown.Image = (System.Drawing.Image)resources.GetObject("btnMoveDown.Image");
-            this.btnMoveDown.Location = new System.Drawing.Point(0x188, 0x80);
-            this.btnMoveDown.Name = "btnMoveDown";
-            this.btnMoveDown.Size = new Size(0x18, 0x18);
-            this.btnMoveDown.TabIndex = 0x34;
-            this.btnMoveDown.Click += new EventHandler(this.btnMoveDown_Click);
-            this.btnMoveUp.Enabled = false;
-            this.btnMoveUp.Image = (System.Drawing.Image)resources.GetObject("btnMoveUp.Image");
-            this.btnMoveUp.Location = new System.Drawing.Point(0x188, 0x58);
-            this.btnMoveUp.Name = "btnMoveUp";
-            this.btnMoveUp.Size = new Size(0x18, 0x18);
-            this.btnMoveUp.TabIndex = 0x33;
-            this.btnMoveUp.Click += new EventHandler(this.btnMoveUp_Click);
-            this.contextMenuStrip1.Items.AddRange(new ToolStripItem[] { this.menuitemGroup, this.menuitemUnGroup });
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new Size(0x99, 70);
-            this.menuitemGroup.Name = "menuitemGroup";
-            this.menuitemGroup.Size = new Size(0x98, 0x16);
-            this.menuitemGroup.Text = "值分组";
-            this.menuitemGroup.Click += new EventHandler(this.menuitemGroup_Click);
-            this.menuitemUnGroup.Name = "menuitemUnGroup";
-            this.menuitemUnGroup.Size = new Size(0x98, 0x16);
-            this.menuitemUnGroup.Text = "取消分组";
-            this.menuitemUnGroup.Click += new EventHandler(this.menuitemUnGroup_Click);
-            base.Controls.Add(this.btnMoveDown);
-            base.Controls.Add(this.btnMoveUp);
-            base.Controls.Add(this.cboLookupStyleset);
-            base.Controls.Add(this.cboFields);
-            base.Controls.Add(this.btnBrowStyle);
-            base.Controls.Add(this.listView1);
-            base.Controls.Add(this.btnDeleteAll);
-            base.Controls.Add(this.btnDelete);
-            base.Controls.Add(this.btnAddValue);
-            base.Controls.Add(this.btnAddAllValues);
-            base.Controls.Add(this.label2);
-            base.Controls.Add(this.label1);
-            base.Name = "MatchStyleGrallyCtrl";
-            base.Size = new Size(0x1b0, 0x108);
-            base.Load += new EventHandler(this.MatchStyleGrallyCtrl_Load);
-            this.cboFields.Properties.EndInit();
-            this.cboLookupStyleset.Properties.EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
-            base.ResumeLayout(false);
-            base.PerformLayout();
-        }
-
-        private void listView1_MouseUp(object sender, MouseEventArgs e)
+ private void listView1_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {

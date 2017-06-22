@@ -237,8 +237,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                 }
                 if (((ISplitterDragSource) this).IsVertical)
                 {
-                    dockArea.X += 0x18;
-                    dockArea.Width -= 0x30;
+                    dockArea.X += 24;
+                    dockArea.Width -= 48;
                     dockArea.Y = location.Y;
                     if ((Control.ModifierKeys & Keys.Shift) == Keys.None)
                     {
@@ -247,8 +247,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                 }
                 else
                 {
-                    dockArea.Y += 0x18;
-                    dockArea.Height -= 0x30;
+                    dockArea.Y += 24;
+                    dockArea.Height -= 48;
                     dockArea.X = location.X;
                     if ((Control.ModifierKeys & Keys.Shift) == Keys.None)
                     {

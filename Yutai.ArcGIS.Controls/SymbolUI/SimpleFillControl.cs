@@ -11,23 +11,12 @@ using Yutai.ArcGIS.Common.SymbolUI;
 
 namespace Yutai.ArcGIS.Controls.SymbolUI
 {
-    internal class SimpleFillControl : UserControl, CommonInterface
+    internal partial class SimpleFillControl : UserControl, CommonInterface
     {
-        private NewSymbolButton btnOutline;
-        private ComboBoxEdit cboStyle;
-        private ColorEdit colorEdit1;
-        private ColorEdit colorEditOutline;
-        private Container components = null;
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Label label5;
         private bool m_CanDo = true;
         public IStyleGallery m_pSG;
         public ISimpleFillSymbol m_SimpleFillSymbol;
         public double m_unit = 1.0;
-        private SpinEdit numericUpDownWidth;
 
         public event ValueChangedHandler ValueChanged;
 
@@ -114,22 +103,13 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
-        protected override void Dispose(bool disposing)
+ private void GetRGB(uint rgb, out int r, out int g, out int b)
         {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private void GetRGB(uint rgb, out int r, out int g, out int b)
-        {
-            uint num = rgb & 0xff0000;
-            b = (int) (num >> 0x10);
-            num = rgb & 0xff00;
+            uint num = rgb & 16711680;
+            b = (int) (num >> 16);
+            num = rgb & 65280;
             g = (int) (num >> 8);
-            num = rgb & 0xff;
+            num = rgb & 255;
             r = (int) num;
         }
 
@@ -150,119 +130,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.m_CanDo = true;
         }
 
-        private void InitializeComponent()
-        {
-            this.label1 = new Label();
-            this.label2 = new Label();
-            this.label3 = new Label();
-            this.colorEdit1 = new ColorEdit();
-            this.colorEditOutline = new ColorEdit();
-            this.numericUpDownWidth = new SpinEdit();
-            this.btnOutline = new NewSymbolButton();
-            this.label5 = new Label();
-            this.cboStyle = new ComboBoxEdit();
-            this.label4 = new Label();
-            this.colorEdit1.Properties.BeginInit();
-            this.colorEditOutline.Properties.BeginInit();
-            this.numericUpDownWidth.Properties.BeginInit();
-            this.cboStyle.Properties.BeginInit();
-            base.SuspendLayout();
-            this.label1.AutoSize = true;
-            this.label1.Location = new Point(0x10, 0x37);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(0x1d, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "颜色";
-            this.label2.AutoSize = true;
-            this.label2.Location = new Point(0x10, 0x4f);
-            this.label2.Name = "label2";
-            this.label2.Size = new Size(0x41, 12);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "轮廓线颜色";
-            this.label3.AutoSize = true;
-            this.label3.Location = new Point(0x10, 0x6f);
-            this.label3.Name = "label3";
-            this.label3.Size = new Size(0x35, 12);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "轮廓线宽";
-            this.colorEdit1.EditValue = Color.Empty;
-            this.colorEdit1.Location = new Point(0x58, 0x2f);
-            this.colorEdit1.Name = "colorEdit1";
-            this.colorEdit1.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.colorEdit1.Size = new Size(0x30, 0x15);
-            this.colorEdit1.TabIndex = 4;
-            this.colorEdit1.EditValueChanged += new EventHandler(this.colorEdit1_EditValueChanged);
-            this.colorEditOutline.EditValue = Color.Empty;
-            this.colorEditOutline.Location = new Point(0x58, 0x47);
-            this.colorEditOutline.Name = "colorEditOutline";
-            this.colorEditOutline.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.colorEditOutline.Size = new Size(0x30, 0x15);
-            this.colorEditOutline.TabIndex = 5;
-            this.colorEditOutline.EditValueChanged += new EventHandler(this.colorEditOutline_EditValueChanged);
-            int[] bits = new int[4];
-            this.numericUpDownWidth.EditValue = new decimal(bits);
-            this.numericUpDownWidth.Location = new Point(0x58, 0x67);
-            this.numericUpDownWidth.Name = "numericUpDownWidth";
-            this.numericUpDownWidth.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton() });
-            this.numericUpDownWidth.Properties.DisplayFormat.FormatString = "0.####";
-            this.numericUpDownWidth.Properties.DisplayFormat.FormatType = FormatType.Numeric;
-            this.numericUpDownWidth.Properties.EditFormat.FormatString = "0.####";
-            this.numericUpDownWidth.Properties.EditFormat.FormatType = FormatType.Numeric;
-            bits = new int[4];
-            bits[0] = 100;
-            this.numericUpDownWidth.Properties.MaxValue = new decimal(bits);
-            this.numericUpDownWidth.Size = new Size(0x40, 0x15);
-            this.numericUpDownWidth.TabIndex = 0x47;
-            this.numericUpDownWidth.EditValueChanged += new EventHandler(this.numericUpDownWidth_EditValueChanged);
-            this.numericUpDownWidth.TextChanged += new EventHandler(this.numericUpDownWidth_ValueChanged);
-            this.btnOutline.Location = new Point(0x58, 0x87);
-            this.btnOutline.Name = "btnOutline";
-            this.btnOutline.Size = new Size(0x58, 40);
-            this.btnOutline.Style = null;
-            this.btnOutline.TabIndex = 0x4f;
-            this.btnOutline.Click += new EventHandler(this.btnOutline_Click);
-            this.label5.AutoSize = true;
-            this.label5.Location = new Point(0x10, 0x97);
-            this.label5.Name = "label5";
-            this.label5.Size = new Size(0x47, 12);
-            this.label5.TabIndex = 80;
-            this.label5.Text = "轮廓线符号:";
-            this.cboStyle.EditValue = "颜色填充";
-            this.cboStyle.Location = new Point(0x58, 0x11);
-            this.cboStyle.Name = "cboStyle";
-            this.cboStyle.SelectedIndexChanged += new EventHandler(this.cboStyle_SelectedIndexChanged);
-            this.cboStyle.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.cboStyle.Properties.Items.AddRange(new object[] { "颜色填充", "不填充", "水平线填充", "竖直线填充", "45度下斜线填充", "45度上斜线填充", "十字丝填充", "X填充" });
-            this.cboStyle.Size = new Size(80, 0x15);
-            this.cboStyle.TabIndex = 90;
-            this.label4.AutoSize = true;
-            this.label4.Location = new Point(0x10, 0x16);
-            this.label4.Name = "label4";
-            this.label4.Size = new Size(0x1d, 12);
-            this.label4.TabIndex = 0x59;
-            this.label4.Text = "样式";
-            base.Controls.Add(this.cboStyle);
-            base.Controls.Add(this.label4);
-            base.Controls.Add(this.label5);
-            base.Controls.Add(this.btnOutline);
-            base.Controls.Add(this.numericUpDownWidth);
-            base.Controls.Add(this.colorEditOutline);
-            base.Controls.Add(this.colorEdit1);
-            base.Controls.Add(this.label3);
-            base.Controls.Add(this.label2);
-            base.Controls.Add(this.label1);
-            base.Name = "SimpleFillControl";
-            base.Size = new Size(0x178, 0xe8);
-            base.Load += new EventHandler(this.SimpleFillControl_Load);
-            this.colorEdit1.Properties.EndInit();
-            this.colorEditOutline.Properties.EndInit();
-            this.numericUpDownWidth.Properties.EndInit();
-            this.cboStyle.Properties.EndInit();
-            base.ResumeLayout(false);
-            base.PerformLayout();
-        }
-
-        public static bool IsNmuber(string str)
+ public static bool IsNmuber(string str)
         {
             if (str.Length > 0)
             {

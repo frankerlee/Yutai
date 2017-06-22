@@ -16,12 +16,12 @@ namespace Yutai.ArcGIS.Common.ControlExtend
         private int int_2 = -1;
         private ListViewItem listViewItem_0;
         private ListViewItem.ListViewSubItem listViewSubItem_0;
-        private const uint LVM_FIRST = 0x1000;
-        private const uint LVM_SCROLL = 0x1014;
+        private const uint LVM_FIRST = 4096;
+        private const uint LVM_SCROLL = 4116;
         private TextBox textBox_0;
-        private const int WM_HSCROLL = 0x114;
-        private const int WM_MOUSEWHEEL = 0x20a;
-        private const int WM_VSCROLL = 0x115;
+        private const int WM_HSCROLL = 276;
+        private const int WM_MOUSEWHEEL = 522;
+        private const int WM_VSCROLL = 277;
 
         public event ValueChangedHandler ValueChanged;
 
@@ -257,7 +257,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         private void method_0(int int_3, int int_4)
         {
-            SendMessage(base.Handle, 0x1014, int_3, int_4);
+            SendMessage(base.Handle, 4116, int_3, int_4);
         }
 
         private void method_1(object sender, EventArgs e)
@@ -376,7 +376,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         protected override void WndProc(ref Message message_0)
         {
-            if (((message_0.Msg == 0x114) || (message_0.Msg == 0x115)) || (message_0.Msg == 0x20a))
+            if (((message_0.Msg == 276) || (message_0.Msg == 277)) || (message_0.Msg == 522))
             {
                 base.Focus();
             }

@@ -8,13 +8,9 @@ using ESRI.ArcGIS.Geometry;
 
 namespace Yutai.ArcGIS.Catalog.UI
 {
-    public class NewNetworkDatasetFeatureClassSetPropertyPage : UserControl
+    public partial class NewNetworkDatasetFeatureClassSetPropertyPage : UserControl
     {
-        private SimpleButton btnClearAll;
-        private SimpleButton btnSelectAll;
-        private CheckedListBox chkListUseFeatureClass;
         private IContainer icontainer_0 = null;
-        private Label label1;
 
         public NewNetworkDatasetFeatureClassSetPropertyPage()
         {
@@ -74,59 +70,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
         }
 
-        protected override void Dispose(bool bool_0)
-        {
-            if (bool_0 && (this.icontainer_0 != null))
-            {
-                this.icontainer_0.Dispose();
-            }
-            base.Dispose(bool_0);
-        }
-
-        private void InitializeComponent()
-        {
-            this.btnClearAll = new SimpleButton();
-            this.btnSelectAll = new SimpleButton();
-            this.chkListUseFeatureClass = new CheckedListBox();
-            this.label1 = new Label();
-            base.SuspendLayout();
-            this.btnClearAll.Location = new System.Drawing.Point(0xf3, 0x3b);
-            this.btnClearAll.Name = "btnClearAll";
-            this.btnClearAll.Size = new Size(40, 0x18);
-            this.btnClearAll.TabIndex = 13;
-            this.btnClearAll.Text = "清除";
-            this.btnClearAll.Click += new EventHandler(this.btnClearAll_Click);
-            this.btnSelectAll.Location = new System.Drawing.Point(0xf3, 0x1d);
-            this.btnSelectAll.Name = "btnSelectAll";
-            this.btnSelectAll.Size = new Size(40, 0x18);
-            this.btnSelectAll.TabIndex = 12;
-            this.btnSelectAll.Text = "全选";
-            this.btnSelectAll.Click += new EventHandler(this.btnSelectAll_Click);
-            this.chkListUseFeatureClass.Location = new System.Drawing.Point(11, 0x1d);
-            this.chkListUseFeatureClass.Name = "chkListUseFeatureClass";
-            this.chkListUseFeatureClass.Size = new Size(0xe2, 0xc4);
-            this.chkListUseFeatureClass.TabIndex = 11;
-            this.chkListUseFeatureClass.ItemCheck += new ItemCheckEventHandler(this.chkListUseFeatureClass_ItemCheck);
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(0xad, 12);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "选择要参与网络要素集的要素类";
-            base.AutoScaleDimensions = new SizeF(6f, 12f);
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.Controls.Add(this.btnClearAll);
-            base.Controls.Add(this.btnSelectAll);
-            base.Controls.Add(this.chkListUseFeatureClass);
-            base.Controls.Add(this.label1);
-            base.Name = "NewNetworkDatasetFeatureClassSetPropertyPage";
-            base.Size = new Size(0x142, 0x109);
-            base.Load += new EventHandler(this.NewNetworkDatasetFeatureClassSetPropertyPage_Load);
-            base.ResumeLayout(false);
-            base.PerformLayout();
-        }
-
-        private void NewNetworkDatasetFeatureClassSetPropertyPage_Load(object sender, EventArgs e)
+ private void NewNetworkDatasetFeatureClassSetPropertyPage_Load(object sender, EventArgs e)
         {
             try
             {

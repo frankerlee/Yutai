@@ -26,7 +26,7 @@ namespace Yutai.ArcGIS.Framework
         private void method_0()
         {
             base.SuspendLayout();
-            base.ClientSize = new Size(0x124, 0x111);
+            base.ClientSize = new Size(292, 273);
             base.DockAreas = DockAreas.DockBottom | DockAreas.DockTop | DockAreas.DockRight | DockAreas.DockLeft | DockAreas.Float;
             base.HideOnClose = true;
             base.Name = "MyDockContext";

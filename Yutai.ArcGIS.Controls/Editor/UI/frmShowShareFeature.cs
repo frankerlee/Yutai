@@ -8,28 +8,17 @@ using Yutai.ArcGIS.Common.Helpers;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {
-    internal class frmShowShareFeature : Form
+    internal partial class frmShowShareFeature : Form
     {
-        private Container components = null;
         private IMap m_pFocusMap = null;
         private ITopologyGraph m_pTopologyGraph = null;
-        private TreeView treeView1;
 
         public frmShowShareFeature()
         {
             this.InitializeComponent();
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private void Flash(int x, int y)
+ private void Flash(int x, int y)
         {
             try
             {
@@ -75,32 +64,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
-        private void InitializeComponent()
-        {
-            this.treeView1 = new TreeView();
-            base.SuspendLayout();
-            this.treeView1.Dock = DockStyle.Fill;
-            this.treeView1.ImageIndex = -1;
-            this.treeView1.Location = new Point(0, 0);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.SelectedImageIndex = -1;
-            this.treeView1.Size = new Size(0xda, 0xad);
-            this.treeView1.TabIndex = 0;
-            this.treeView1.MouseDown += new MouseEventHandler(this.treeView1_MouseDown);
-            this.treeView1.Click += new EventHandler(this.treeView1_Click);
-            this.AutoScaleBaseSize = new Size(6, 14);
-            base.ClientSize = new Size(0xda, 0xad);
-            base.Controls.Add(this.treeView1);
-            base.FormBorderStyle = FormBorderStyle.FixedSingle;
-            base.MaximizeBox = false;
-            base.MinimizeBox = false;
-            base.Name = "frmShowShareFeature";
-            this.Text = "共享要素";
-            base.Load += new EventHandler(this.frmShowShareFeature_Load);
-            base.ResumeLayout(false);
-        }
-
-        private void treeView1_Click(object sender, EventArgs e)
+ private void treeView1_Click(object sender, EventArgs e)
         {
         }
 

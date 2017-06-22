@@ -9,20 +9,11 @@ using Yutai.ArcGIS.Common.Geodatabase;
 
 namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 {
-    internal class FeatureDatasetControl : UserControl
+    internal partial class FeatureDatasetControl : UserControl
     {
         private bool bool_0 = false;
-        private SimpleButton btnEditSR;
-        private CheckEdit chkShowDetail;
         private Container container_0 = null;
-        private GroupBox groupBox1;
-        private IFeatureDataset ifeatureDataset_0;
-        private IFeatureWorkspace ifeatureWorkspace_0;
         private ISpatialReference ispatialReference_0 = null;
-        private Label label1;
-        private Label label2;
-        private MemoEdit memoEditSRDescription;
-        private TextEdit txtFeatureDatasetName;
 
         public event ValueChangedHandler ValueChanged;
 
@@ -79,16 +70,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.memoEditSRDescription.Text = this.GetSpatialRefrenceInfo(this.ispatialReference_0, this.chkShowDetail.Checked);
         }
 
-        protected override void Dispose(bool bool_1)
-        {
-            if (bool_1 && (this.container_0 != null))
-            {
-                this.container_0.Dispose();
-            }
-            base.Dispose(bool_1);
-        }
-
-        private void FeatureDatasetControl_Load(object sender, EventArgs e)
+ private void FeatureDatasetControl_Load(object sender, EventArgs e)
         {
             if (this.bool_0)
             {
@@ -164,7 +146,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             {
                 return ((((str + "投影坐标系统: \r\n") + "  名称:" + iprojectedCoordinateSystem_0.Name + "\r\n") + "\r\n" + "地理坐标系统: \r\n") + "  名称:" + iprojectedCoordinateSystem_0.GeographicCoordinateSystem.Name + "\r\n");
             }
-            IParameter[] parameters = new IParameter[0x19];
+            IParameter[] parameters = new IParameter[25];
             ((IProjectedCoordinateSystem4GEN) iprojectedCoordinateSystem_0).GetParameters(ref parameters);
             string str2 = "  ";
             for (int i = 0; i < parameters.Length; i++)
@@ -200,81 +182,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             return str;
         }
 
-        private void InitializeComponent()
-        {
-            this.label1 = new Label();
-            this.txtFeatureDatasetName = new TextEdit();
-            this.groupBox1 = new GroupBox();
-            this.btnEditSR = new SimpleButton();
-            this.chkShowDetail = new CheckEdit();
-            this.memoEditSRDescription = new MemoEdit();
-            this.label2 = new Label();
-            this.txtFeatureDatasetName.Properties.BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.chkShowDetail.Properties.BeginInit();
-            this.memoEditSRDescription.Properties.BeginInit();
-            base.SuspendLayout();
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(0x10, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(0x23, 0x11);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "名称:";
-            this.txtFeatureDatasetName.EditValue = "";
-            this.txtFeatureDatasetName.Location = new System.Drawing.Point(0x40, 8);
-            this.txtFeatureDatasetName.Name = "txtFeatureDatasetName";
-            this.txtFeatureDatasetName.Size = new Size(0xc0, 0x17);
-            this.txtFeatureDatasetName.TabIndex = 1;
-            this.groupBox1.Controls.Add(this.btnEditSR);
-            this.groupBox1.Controls.Add(this.chkShowDetail);
-            this.groupBox1.Controls.Add(this.memoEditSRDescription);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(0x10, 40);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new Size(0x108, 0x108);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "空间参考";
-            this.btnEditSR.Location = new System.Drawing.Point(160, 0xe7);
-            this.btnEditSR.Name = "btnEditSR";
-            this.btnEditSR.Size = new Size(0x40, 0x18);
-            this.btnEditSR.TabIndex = 5;
-            this.btnEditSR.Text = "编辑...";
-            this.btnEditSR.Click += new EventHandler(this.btnEditSR_Click);
-            this.chkShowDetail.Location = new System.Drawing.Point(0x10, 0xe7);
-            this.chkShowDetail.Name = "chkShowDetail";
-            this.chkShowDetail.Properties.Caption = "显示详细信息";
-            this.chkShowDetail.Size = new Size(0x68, 0x13);
-            this.chkShowDetail.TabIndex = 4;
-            this.chkShowDetail.CheckedChanged += new EventHandler(this.chkShowDetail_CheckedChanged);
-            this.memoEditSRDescription.EditValue = "";
-            this.memoEditSRDescription.Location = new System.Drawing.Point(0x10, 0x30);
-            this.memoEditSRDescription.Name = "memoEditSRDescription";
-            this.memoEditSRDescription.Properties.Appearance.BackColor = SystemColors.InactiveBorder;
-            this.memoEditSRDescription.Properties.Appearance.Options.UseBackColor = true;
-            this.memoEditSRDescription.Properties.ReadOnly = true;
-            this.memoEditSRDescription.Size = new Size(0xe8, 0xa8);
-            this.memoEditSRDescription.TabIndex = 3;
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(0x10, 0x17);
-            this.label2.Name = "label2";
-            this.label2.Size = new Size(0x23, 0x11);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "说明:";
-            base.Controls.Add(this.groupBox1);
-            base.Controls.Add(this.txtFeatureDatasetName);
-            base.Controls.Add(this.label1);
-            base.Name = "FeatureDatasetControl";
-            base.Size = new Size(0x128, 320);
-            base.Load += new EventHandler(this.FeatureDatasetControl_Load);
-            this.txtFeatureDatasetName.Properties.EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.chkShowDetail.Properties.EndInit();
-            this.memoEditSRDescription.Properties.EndInit();
-            base.ResumeLayout(false);
-        }
-
-        private ISpatialReference method_0(bool bool_1)
+ private ISpatialReference method_0(bool bool_1)
         {
             new SpatialReferenceEnvironmentClass();
             ISpatialReference reference = new UnknownCoordinateSystemClass();

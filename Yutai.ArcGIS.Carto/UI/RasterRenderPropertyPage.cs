@@ -8,7 +8,7 @@ using ESRI.ArcGIS.Display;
 
 namespace Yutai.ArcGIS.Carto.UI
 {
-    public class RasterRenderPropertyPage : UserControl, ILayerAndStandaloneTablePropertyPage
+    public partial class RasterRenderPropertyPage : UserControl, ILayerAndStandaloneTablePropertyPage
     {
         private bool bool_0 = false;
         private bool bool_1 = false;
@@ -18,8 +18,6 @@ namespace Yutai.ArcGIS.Carto.UI
         private IRasterLayer irasterLayer_1 = null;
         private IStyleGallery istyleGallery_0 = null;
         private IUserControl iuserControl_0 = null;
-        private ListBox listBox1;
-        private Panel panel1;
         private RasterClassifiedRenderPage rasterClassifiedRenderPage_0 = new RasterClassifiedRenderPage();
         private RasterRGBRendererPage rasterRGBRendererPage_0 = new RasterRGBRendererPage();
         private RasterStretchedRenderPage rasterStretchedRenderPage_0 = new RasterStretchedRenderPage();
@@ -38,42 +36,7 @@ namespace Yutai.ArcGIS.Carto.UI
             return true;
         }
 
-        protected override void Dispose(bool bool_2)
-        {
-            if (bool_2 && (this.icontainer_0 != null))
-            {
-                this.icontainer_0.Dispose();
-            }
-            base.Dispose(bool_2);
-        }
-
-        private void InitializeComponent()
-        {
-            this.listBox1 = new ListBox();
-            this.panel1 = new Panel();
-            base.SuspendLayout();
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new Point(6, 4);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new Size(120, 0x100);
-            this.listBox1.TabIndex = 0;
-            this.listBox1.SelectedIndexChanged += new EventHandler(this.listBox1_SelectedIndexChanged);
-            this.panel1.Location = new Point(0x84, 4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new Size(0x18d, 0x10d);
-            this.panel1.TabIndex = 1;
-            base.AutoScaleDimensions = new SizeF(6f, 12f);
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.Controls.Add(this.panel1);
-            base.Controls.Add(this.listBox1);
-            base.Name = "RasterRenderPropertyPage";
-            base.Size = new Size(0x214, 0x114);
-            base.Load += new EventHandler(this.RasterRenderPropertyPage_Load);
-            base.ResumeLayout(false);
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+ private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.bool_0)
             {

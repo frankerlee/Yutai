@@ -188,7 +188,7 @@ namespace Yutai.ArcGIS.Common.Helpers
 
         public static Image StyleToImage(ISymbol sym)
         {
-            return StyleToImage(sym, 0x10, 0x10);
+            return StyleToImage(sym, 16, 16);
         }
 
         public static ITransformation CreateTransformationFromHDC(IntPtr HDC, int width, int height)

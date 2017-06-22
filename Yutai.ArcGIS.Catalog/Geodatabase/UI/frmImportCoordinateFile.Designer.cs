@@ -1,0 +1,224 @@
+﻿using System;
+using System.ComponentModel;
+using System.Drawing;
+using System.IO;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
+using ESRI.ArcGIS.esriSystem;
+using ESRI.ArcGIS.Geodatabase;
+using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Catalog.UI;
+using Yutai.ArcGIS.Common;
+using Yutai.Shared;
+
+namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
+{
+    partial class frmImportCoordinateFile
+    {
+        protected override void Dispose(bool bool_0)
+        {
+            if (bool_0 && (this.icontainer_0 != null))
+            {
+                this.icontainer_0.Dispose();
+            }
+            base.Dispose(bool_0);
+        }
+
+       
+ private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmImportCoordinateFile));
+            this.simpleButton2 = new SimpleButton();
+            this.btnOK = new SimpleButton();
+            this.btnSelectOutLocation = new SimpleButton();
+            this.label2 = new Label();
+            this.txtOutLocation = new TextEdit();
+            this.label1 = new Label();
+            this.txtCoordinateFile = new TextEdit();
+            this.btnOpenCoordinateFile = new SimpleButton();
+            this.label3 = new Label();
+            this.cboGeometryType = new ComboBoxEdit();
+            this.label4 = new Label();
+            this.btnSelectCoordinate = new SimpleButton();
+            this.txtCoordinate = new TextEdit();
+            this.txtFeatureClassName = new TextEdit();
+            this.label5 = new Label();
+            this.chkHasZ = new CheckEdit();
+            this.chkHasM = new CheckEdit();
+            this.txtOutLocation.Properties.BeginInit();
+            this.txtCoordinateFile.Properties.BeginInit();
+            this.cboGeometryType.Properties.BeginInit();
+            this.txtCoordinate.Properties.BeginInit();
+            this.txtFeatureClassName.Properties.BeginInit();
+            this.chkHasZ.Properties.BeginInit();
+            this.chkHasM.Properties.BeginInit();
+            base.SuspendLayout();
+            this.simpleButton2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.simpleButton2.Location = new System.Drawing.Point(291, 250);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new Size(80, 24);
+            this.simpleButton2.TabIndex = 23;
+            this.simpleButton2.Text = "取消";
+            this.btnOK.Location = new System.Drawing.Point(211, 250);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new Size(72, 24);
+            this.btnOK.TabIndex = 22;
+            this.btnOK.Text = "导入";
+            this.btnOK.Click += new EventHandler(this.btnOK_Click);
+            this.btnSelectOutLocation.Image = (Image) resources.GetObject("btnSelectOutLocation.Image");
+            this.btnSelectOutLocation.Location = new System.Drawing.Point(353, 126);
+            this.btnSelectOutLocation.Name = "btnSelectOutLocation";
+            this.btnSelectOutLocation.Size = new Size(24, 24);
+            this.btnSelectOutLocation.TabIndex = 21;
+            this.btnSelectOutLocation.Click += new EventHandler(this.btnSelectOutLocation_Click);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 131);
+            this.label2.Name = "label2";
+            this.label2.Size = new Size(53, 12);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "输出位置";
+            this.txtOutLocation.EditValue = "";
+            this.txtOutLocation.Location = new System.Drawing.Point(106, 126);
+            this.txtOutLocation.Name = "txtOutLocation";
+            this.txtOutLocation.Properties.Appearance.BackColor = SystemColors.Control;
+            this.txtOutLocation.Properties.Appearance.Options.UseBackColor = true;
+            this.txtOutLocation.Properties.ReadOnly = true;
+            this.txtOutLocation.Size = new Size(231, 21);
+            this.txtOutLocation.TabIndex = 19;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new Size(53, 12);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "坐标文件";
+            this.txtCoordinateFile.EditValue = "";
+            this.txtCoordinateFile.Location = new System.Drawing.Point(106, 12);
+            this.txtCoordinateFile.Name = "txtCoordinateFile";
+            this.txtCoordinateFile.Properties.Appearance.BackColor = SystemColors.Control;
+            this.txtCoordinateFile.Properties.Appearance.Options.UseBackColor = true;
+            this.txtCoordinateFile.Properties.ReadOnly = true;
+            this.txtCoordinateFile.Size = new Size(231, 21);
+            this.txtCoordinateFile.TabIndex = 25;
+            this.btnOpenCoordinateFile.Image = (Image) resources.GetObject("btnOpenCoordinateFile.Image");
+            this.btnOpenCoordinateFile.Location = new System.Drawing.Point(353, 12);
+            this.btnOpenCoordinateFile.Name = "btnOpenCoordinateFile";
+            this.btnOpenCoordinateFile.Size = new Size(24, 24);
+            this.btnOpenCoordinateFile.TabIndex = 26;
+            this.btnOpenCoordinateFile.Click += new EventHandler(this.btnOpenCoordinateFile_Click);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 55);
+            this.label3.Name = "label3";
+            this.label3.Size = new Size(77, 12);
+            this.label3.TabIndex = 27;
+            this.label3.Text = "几何数据类型";
+            this.cboGeometryType.EditValue = "多义线";
+            this.cboGeometryType.Location = new System.Drawing.Point(106, 50);
+            this.cboGeometryType.Name = "cboGeometryType";
+            this.cboGeometryType.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
+            this.cboGeometryType.Properties.Items.AddRange(new object[] { "点", "多点", "多义线", "多边形" });
+            this.cboGeometryType.Size = new Size(177, 21);
+            this.cboGeometryType.TabIndex = 28;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 93);
+            this.label4.Name = "label4";
+            this.label4.Size = new Size(89, 12);
+            this.label4.TabIndex = 29;
+            this.label4.Text = "坐标系统(可选)";
+            this.btnSelectCoordinate.Image = (Image) resources.GetObject("btnSelectCoordinate.Image");
+            this.btnSelectCoordinate.Location = new System.Drawing.Point(353, 88);
+            this.btnSelectCoordinate.Name = "btnSelectCoordinate";
+            this.btnSelectCoordinate.Size = new Size(24, 24);
+            this.btnSelectCoordinate.TabIndex = 31;
+            this.btnSelectCoordinate.Click += new EventHandler(this.btnSelectCoordinate_Click);
+            this.txtCoordinate.EditValue = "";
+            this.txtCoordinate.Location = new System.Drawing.Point(106, 88);
+            this.txtCoordinate.Name = "txtCoordinate";
+            this.txtCoordinate.Properties.Appearance.BackColor = SystemColors.Control;
+            this.txtCoordinate.Properties.Appearance.Options.UseBackColor = true;
+            this.txtCoordinate.Properties.ReadOnly = true;
+            this.txtCoordinate.Size = new Size(231, 21);
+            this.txtCoordinate.TabIndex = 30;
+            this.txtFeatureClassName.EditValue = "";
+            this.txtFeatureClassName.Location = new System.Drawing.Point(106, 164);
+            this.txtFeatureClassName.Name = "txtFeatureClassName";
+            this.txtFeatureClassName.Properties.Appearance.BackColor = SystemColors.ControlLightLight;
+            this.txtFeatureClassName.Properties.Appearance.Options.UseBackColor = true;
+            this.txtFeatureClassName.Size = new Size(231, 21);
+            this.txtFeatureClassName.TabIndex = 33;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(8, 169);
+            this.label5.Name = "label5";
+            this.label5.Size = new Size(41, 12);
+            this.label5.TabIndex = 32;
+            this.label5.Text = "要素名";
+            this.chkHasZ.Location = new System.Drawing.Point(175, 200);
+            this.chkHasZ.Name = "chkHasZ";
+            this.chkHasZ.Properties.Caption = "包含Z值";
+            this.chkHasZ.Size = new Size(75, 19);
+            this.chkHasZ.TabIndex = 34;
+            this.chkHasM.Location = new System.Drawing.Point(276, 200);
+            this.chkHasM.Name = "chkHasM";
+            this.chkHasM.Properties.Caption = "包含M值";
+            this.chkHasM.Size = new Size(75, 19);
+            this.chkHasM.TabIndex = 35;
+            base.AutoScaleDimensions = new SizeF(6f, 12f);
+            base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            base.ClientSize = new Size(398, 297);
+            base.Controls.Add(this.chkHasM);
+            base.Controls.Add(this.chkHasZ);
+            base.Controls.Add(this.txtFeatureClassName);
+            base.Controls.Add(this.label5);
+            base.Controls.Add(this.btnSelectCoordinate);
+            base.Controls.Add(this.txtCoordinate);
+            base.Controls.Add(this.label4);
+            base.Controls.Add(this.cboGeometryType);
+            base.Controls.Add(this.label3);
+            base.Controls.Add(this.btnOpenCoordinateFile);
+            base.Controls.Add(this.txtCoordinateFile);
+            base.Controls.Add(this.label1);
+            base.Controls.Add(this.simpleButton2);
+            base.Controls.Add(this.btnOK);
+            base.Controls.Add(this.btnSelectOutLocation);
+            base.Controls.Add(this.label2);
+            base.Controls.Add(this.txtOutLocation);
+            base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            
+            base.MaximizeBox = false;
+            base.MinimizeBox = false;
+            base.Name = "frmImportCoordinateFile";
+            this.Text = "导入坐标数据";
+            this.txtOutLocation.Properties.EndInit();
+            this.txtCoordinateFile.Properties.EndInit();
+            this.cboGeometryType.Properties.EndInit();
+            this.txtCoordinate.Properties.EndInit();
+            this.txtFeatureClassName.Properties.EndInit();
+            this.chkHasZ.Properties.EndInit();
+            this.chkHasM.Properties.EndInit();
+            base.ResumeLayout(false);
+            base.PerformLayout();
+        }
+
+       
+        private SimpleButton btnOK;
+        private SimpleButton btnOpenCoordinateFile;
+        private SimpleButton btnSelectCoordinate;
+        private SimpleButton btnSelectOutLocation;
+        private ComboBoxEdit cboGeometryType;
+        private CheckEdit chkHasM;
+        private CheckEdit chkHasZ;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private Label label5;
+        private SimpleButton simpleButton2;
+        private TextEdit txtCoordinate;
+        private TextEdit txtCoordinateFile;
+        private TextEdit txtFeatureClassName;
+        private TextEdit txtOutLocation;
+    }
+}

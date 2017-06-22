@@ -368,11 +368,11 @@ namespace Yutai.ArcGIS.Catalog
                     {
                         if (this.ilayer_0 is IGroupLayer)
                         {
-                            return ImageLib.GetSmallImage(0x23);
+                            return ImageLib.GetSmallImage(35);
                         }
                         if (this.ilayer_0 is IRasterLayer)
                         {
-                            return ImageLib.GetSmallImage(0x24);
+                            return ImageLib.GetSmallImage(36);
                         }
                         if (this.ilayer_0 is IFeatureLayer)
                         {
@@ -383,15 +383,15 @@ namespace Yutai.ArcGIS.Catalog
                                 {
                                     case esriGeometryType.esriGeometryPoint:
                                     case esriGeometryType.esriGeometryMultipoint:
-                                        return ImageLib.GetSmallImage(0x20);
+                                        return ImageLib.GetSmallImage(32);
 
                                     case esriGeometryType.esriGeometryPolyline:
                                     case esriGeometryType.esriGeometryPath:
                                     case esriGeometryType.esriGeometryRay:
-                                        return ImageLib.GetSmallImage(0x21);
+                                        return ImageLib.GetSmallImage(33);
 
                                     case esriGeometryType.esriGeometryPolygon:
-                                        return ImageLib.GetSmallImage(0x22);
+                                        return ImageLib.GetSmallImage(34);
                                 }
                             }
                         }
@@ -403,11 +403,11 @@ namespace Yutai.ArcGIS.Catalog
                         {
                             if (layer is IGroupLayer)
                             {
-                                return ImageLib.GetSmallImage(0x23);
+                                return ImageLib.GetSmallImage(35);
                             }
                             if (layer is IRasterLayer)
                             {
-                                return ImageLib.GetSmallImage(0x24);
+                                return ImageLib.GetSmallImage(36);
                             }
                             if (layer is IFeatureLayer)
                             {
@@ -418,15 +418,15 @@ namespace Yutai.ArcGIS.Catalog
                                     {
                                         case esriGeometryType.esriGeometryPoint:
                                         case esriGeometryType.esriGeometryMultipoint:
-                                            return ImageLib.GetSmallImage(0x20);
+                                            return ImageLib.GetSmallImage(32);
 
                                         case esriGeometryType.esriGeometryPolyline:
                                         case esriGeometryType.esriGeometryPath:
                                         case esriGeometryType.esriGeometryRay:
-                                            return ImageLib.GetSmallImage(0x21);
+                                            return ImageLib.GetSmallImage(33);
 
                                         case esriGeometryType.esriGeometryPolygon:
-                                            return ImageLib.GetSmallImage(0x22);
+                                            return ImageLib.GetSmallImage(34);
                                     }
                                 }
                                 featureClass = null;
@@ -437,7 +437,7 @@ namespace Yutai.ArcGIS.Catalog
                 catch
                 {
                 }
-                return ImageLib.GetSmallImage(0x25);
+                return ImageLib.GetSmallImage(37);
             }
         }
 
@@ -452,11 +452,11 @@ namespace Yutai.ArcGIS.Catalog
                     {
                         if (this.ilayer_0 is IGroupLayer)
                         {
-                            return ImageLib.GetSmallImage(0x23);
+                            return ImageLib.GetSmallImage(35);
                         }
                         if (this.ilayer_0 is IRasterLayer)
                         {
-                            return ImageLib.GetSmallImage(0x24);
+                            return ImageLib.GetSmallImage(36);
                         }
                         if (this.ilayer_0 is IFeatureLayer)
                         {
@@ -467,15 +467,15 @@ namespace Yutai.ArcGIS.Catalog
                                 {
                                     case esriGeometryType.esriGeometryPoint:
                                     case esriGeometryType.esriGeometryMultipoint:
-                                        return ImageLib.GetSmallImage(0x20);
+                                        return ImageLib.GetSmallImage(32);
 
                                     case esriGeometryType.esriGeometryPolyline:
                                     case esriGeometryType.esriGeometryPath:
                                     case esriGeometryType.esriGeometryRay:
-                                        return ImageLib.GetSmallImage(0x21);
+                                        return ImageLib.GetSmallImage(33);
 
                                     case esriGeometryType.esriGeometryPolygon:
-                                        return ImageLib.GetSmallImage(0x22);
+                                        return ImageLib.GetSmallImage(34);
                                 }
                             }
                         }
@@ -487,11 +487,11 @@ namespace Yutai.ArcGIS.Catalog
                         {
                             if (layer is IGroupLayer)
                             {
-                                return ImageLib.GetSmallImage(0x23);
+                                return ImageLib.GetSmallImage(35);
                             }
                             if (layer is IRasterLayer)
                             {
-                                return ImageLib.GetSmallImage(0x24);
+                                return ImageLib.GetSmallImage(36);
                             }
                             if (layer is IFeatureLayer)
                             {
@@ -502,15 +502,15 @@ namespace Yutai.ArcGIS.Catalog
                                     {
                                         case esriGeometryType.esriGeometryPoint:
                                         case esriGeometryType.esriGeometryMultipoint:
-                                            return ImageLib.GetSmallImage(0x20);
+                                            return ImageLib.GetSmallImage(32);
 
                                         case esriGeometryType.esriGeometryPolyline:
                                         case esriGeometryType.esriGeometryPath:
                                         case esriGeometryType.esriGeometryRay:
-                                            return ImageLib.GetSmallImage(0x21);
+                                            return ImageLib.GetSmallImage(33);
 
                                         case esriGeometryType.esriGeometryPolygon:
-                                            return ImageLib.GetSmallImage(0x22);
+                                            return ImageLib.GetSmallImage(34);
                                     }
                                 }
                                 featureClass = null;
@@ -521,7 +521,7 @@ namespace Yutai.ArcGIS.Catalog
                 catch
                 {
                 }
-                return ImageLib.GetSmallImage(0x25);
+                return ImageLib.GetSmallImage(37);
             }
         }
     }

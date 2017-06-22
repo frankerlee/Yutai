@@ -1,0 +1,215 @@
+﻿using System;
+using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace Yutai.ArcGIS.Carto.UI
+{
+    partial class TKConfigPage
+    {
+        protected override void Dispose(bool bool_0)
+        {
+            if (bool_0 && (this.icontainer_0 != null))
+            {
+                this.icontainer_0.Dispose();
+            }
+            base.Dispose(bool_0);
+        }
+
+       
+        private void InitializeComponent()
+        {
+            this.txtInOutDis = new TextBox();
+            this.label4 = new Label();
+            this.label7 = new Label();
+            this.label1 = new Label();
+            this.txtOutBorderWidth = new TextBox();
+            this.label2 = new Label();
+            this.groupBox8 = new GroupBox();
+            this.txtR3C3 = new TextBox();
+            this.txtR2C3 = new TextBox();
+            this.txtR1C3 = new TextBox();
+            this.txtR3C2 = new TextBox();
+            this.txtR2C2 = new TextBox();
+            this.txtR1C2 = new TextBox();
+            this.txtR2C1 = new TextBox();
+            this.txtR3C1 = new TextBox();
+            this.txtR1C1 = new TextBox();
+            this.label5 = new Label();
+            this.txtTitleSpace = new TextBox();
+            this.label6 = new Label();
+            this.checkBox1 = new CheckBox();
+            this.txtLegendItem = new TextBox();
+            this.btnSelectLegend = new Button();
+            this.groupBox8.SuspendLayout();
+            base.SuspendLayout();
+            this.txtInOutDis.Location = new Point(75, 65);
+            this.txtInOutDis.Name = "txtInOutDis";
+            this.txtInOutDis.Size = new Size(85, 21);
+            this.txtInOutDis.TabIndex = 11;
+            this.label4.AutoSize = true;
+            this.label4.Location = new Point(7, 68);
+            this.label4.Name = "label4";
+            this.label4.Size = new Size(65, 12);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "内外框间距";
+            this.label7.AutoSize = true;
+            this.label7.Location = new Point(166, 68);
+            this.label7.Name = "label7";
+            this.label7.Size = new Size(29, 12);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "厘米";
+            this.label1.AutoSize = true;
+            this.label1.Location = new Point(360, 68);
+            this.label1.Name = "label1";
+            this.label1.Size = new Size(29, 12);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "厘米";
+            this.txtOutBorderWidth.Location = new Point(269, 65);
+            this.txtOutBorderWidth.Name = "txtOutBorderWidth";
+            this.txtOutBorderWidth.Size = new Size(85, 21);
+            this.txtOutBorderWidth.TabIndex = 16;
+            this.label2.AutoSize = true;
+            this.label2.Location = new Point(201, 68);
+            this.label2.Name = "label2";
+            this.label2.Size = new Size(53, 12);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "外框宽度";
+            this.groupBox8.Controls.Add(this.txtR3C3);
+            this.groupBox8.Controls.Add(this.txtR2C3);
+            this.groupBox8.Controls.Add(this.txtR1C3);
+            this.groupBox8.Controls.Add(this.txtR3C2);
+            this.groupBox8.Controls.Add(this.txtR2C2);
+            this.groupBox8.Controls.Add(this.txtR1C2);
+            this.groupBox8.Controls.Add(this.txtR2C1);
+            this.groupBox8.Controls.Add(this.txtR3C1);
+            this.groupBox8.Controls.Add(this.txtR1C1);
+            this.groupBox8.Location = new Point(9, 102);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new Size(352, 115);
+            this.groupBox8.TabIndex = 58;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "接图表信息";
+            this.txtR3C3.Location = new Point(235, 80);
+            this.txtR3C3.Name = "txtR3C3";
+            this.txtR3C3.Size = new Size(101, 21);
+            this.txtR3C3.TabIndex = 11;
+            this.txtR2C3.Location = new Point(235, 53);
+            this.txtR2C3.Name = "txtR2C3";
+            this.txtR2C3.Size = new Size(101, 21);
+            this.txtR2C3.TabIndex = 10;
+            this.txtR1C3.Location = new Point(235, 23);
+            this.txtR1C3.Name = "txtR1C3";
+            this.txtR1C3.Size = new Size(101, 21);
+            this.txtR1C3.TabIndex = 9;
+            this.txtR3C2.Location = new Point(128, 80);
+            this.txtR3C2.Name = "txtR3C2";
+            this.txtR3C2.Size = new Size(101, 21);
+            this.txtR3C2.TabIndex = 8;
+            this.txtR2C2.BackColor = SystemColors.InactiveBorder;
+            this.txtR2C2.Enabled = false;
+            this.txtR2C2.Location = new Point(128, 53);
+            this.txtR2C2.Name = "txtR2C2";
+            this.txtR2C2.Size = new Size(101, 21);
+            this.txtR2C2.TabIndex = 7;
+            this.txtR1C2.Location = new Point(128, 23);
+            this.txtR1C2.Name = "txtR1C2";
+            this.txtR1C2.Size = new Size(101, 21);
+            this.txtR1C2.TabIndex = 6;
+            this.txtR2C1.Location = new Point(21, 53);
+            this.txtR2C1.Name = "txtR2C1";
+            this.txtR2C1.Size = new Size(101, 21);
+            this.txtR2C1.TabIndex = 5;
+            this.txtR3C1.Location = new Point(21, 80);
+            this.txtR3C1.Name = "txtR3C1";
+            this.txtR3C1.Size = new Size(101, 21);
+            this.txtR3C1.TabIndex = 4;
+            this.txtR1C1.Location = new Point(21, 23);
+            this.txtR1C1.Name = "txtR1C1";
+            this.txtR1C1.Size = new Size(101, 21);
+            this.txtR1C1.TabIndex = 3;
+            this.label5.AutoSize = true;
+            this.label5.Location = new Point(286, 23);
+            this.label5.Name = "label5";
+            this.label5.Size = new Size(29, 12);
+            this.label5.TabIndex = 61;
+            this.label5.Text = "厘米";
+            this.txtTitleSpace.Location = new Point(110, 20);
+            this.txtTitleSpace.Name = "txtTitleSpace";
+            this.txtTitleSpace.Size = new Size(170, 21);
+            this.txtTitleSpace.TabIndex = 60;
+            this.label6.AutoSize = true;
+            this.label6.Location = new Point(7, 23);
+            this.label6.Name = "label6";
+            this.label6.Size = new Size(89, 12);
+            this.label6.TabIndex = 59;
+            this.label6.Text = "图名与外框间距";
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new Point(17, 229);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new Size(72, 16);
+            this.checkBox1.TabIndex = 62;
+            this.checkBox1.Text = "生成图例";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new EventHandler(this.checkBox1_CheckedChanged);
+            this.txtLegendItem.Location = new Point(95, 226);
+            this.txtLegendItem.Name = "txtLegendItem";
+            this.txtLegendItem.ReadOnly = true;
+            this.txtLegendItem.Size = new Size(220, 21);
+            this.txtLegendItem.TabIndex = 63;
+            this.btnSelectLegend.Location = new Point(328, 226);
+            this.btnSelectLegend.Name = "btnSelectLegend";
+            this.btnSelectLegend.Size = new Size(33, 19);
+            this.btnSelectLegend.TabIndex = 64;
+            this.btnSelectLegend.Text = "...";
+            this.btnSelectLegend.UseVisualStyleBackColor = true;
+            this.btnSelectLegend.Click += new EventHandler(this.btnSelectLegend_Click);
+            base.AutoScaleDimensions = new SizeF(6f, 12f);
+            base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            base.Controls.Add(this.btnSelectLegend);
+            base.Controls.Add(this.txtLegendItem);
+            base.Controls.Add(this.checkBox1);
+            base.Controls.Add(this.label5);
+            base.Controls.Add(this.txtTitleSpace);
+            base.Controls.Add(this.label6);
+            base.Controls.Add(this.groupBox8);
+            base.Controls.Add(this.label1);
+            base.Controls.Add(this.txtOutBorderWidth);
+            base.Controls.Add(this.label2);
+            base.Controls.Add(this.label7);
+            base.Controls.Add(this.txtInOutDis);
+            base.Controls.Add(this.label4);
+            base.Name = "TKConfigPage";
+            base.Size = new Size(422, 295);
+            base.Load += new EventHandler(this.TKConfigPage_Load);
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            base.ResumeLayout(false);
+            base.PerformLayout();
+        }
+
+       
+        private Button btnSelectLegend;
+        private CheckBox checkBox1;
+        private GroupBox groupBox8;
+        private Label label1;
+        private Label label2;
+        private Label label4;
+        private Label label5;
+        private Label label6;
+        private Label label7;
+        private TextBox txtInOutDis;
+        private TextBox txtLegendItem;
+        private TextBox txtOutBorderWidth;
+        private TextBox txtR1C1;
+        private TextBox txtR1C2;
+        private TextBox txtR1C3;
+        private TextBox txtR2C1;
+        private TextBox txtR2C2;
+        private TextBox txtR2C3;
+        private TextBox txtR3C1;
+        private TextBox txtR3C2;
+        private TextBox txtR3C3;
+        private TextBox txtTitleSpace;
+    }
+}

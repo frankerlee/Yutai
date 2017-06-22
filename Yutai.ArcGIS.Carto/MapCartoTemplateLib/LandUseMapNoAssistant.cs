@@ -22,7 +22,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             int num4 = Convert.ToInt16(base.MapNo.Substring(2, 2));
             int num5 = Convert.ToInt16(base.MapNo.Substring(4, 2));
             int num6 = Convert.ToInt16(base.MapNo.Substring(6, 2));
-            long num7 = (num3 - 0x41) + 1;
+            long num7 = (num3 - 65) + 1;
             long num8 = num4;
             if (num8 >= 30L)
             {
@@ -46,28 +46,28 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             switch (base.MapNo[0])
             {
                 case 'B':
-                    return 0x7a120;
+                    return 500000;
 
                 case 'C':
-                    return 0x3d090;
+                    return 250000;
 
                 case 'D':
-                    return 0x186a0;
+                    return 100000;
 
                 case 'E':
-                    return 0xc350;
+                    return 50000;
 
                 case 'F':
-                    return 0x61a8;
+                    return 25000;
 
                 case 'G':
-                    return 0x2710;
+                    return 10000;
 
                 case 'H':
-                    return 0x1388;
+                    return 5000;
 
                 case 'I':
-                    return 0x7d0;
+                    return 2000;
             }
             throw new MapNoFormatException();
         }
@@ -148,13 +148,13 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                             return ((((num >= 1) && (num <= 12)) && (num2 >= 1)) && (num2 <= 12));
 
                         case 'E':
-                            return ((((num >= 1) && (num <= 0x18)) && (num2 >= 1)) && (num2 <= 0x18));
+                            return ((((num >= 1) && (num <= 24)) && (num2 >= 1)) && (num2 <= 24));
 
                         case 'F':
-                            return ((((num >= 1) && (num <= 0x30)) && (num2 >= 1)) && (num2 <= 0x30));
+                            return ((((num >= 1) && (num <= 48)) && (num2 >= 1)) && (num2 <= 48));
 
                         case 'G':
-                            return ((((num >= 1) && (num <= 0x60)) && (num2 >= 1)) && (num2 <= 0x60));
+                            return ((((num >= 1) && (num <= 96)) && (num2 >= 1)) && (num2 <= 96));
                     }
                 }
                 catch

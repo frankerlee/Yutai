@@ -378,7 +378,7 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                                     {
                                         goto Label_0AD2;
                                     }
-                                    item.Length = 0x1c;
+                                    item.Length = 28;
                                     this.WriteLog("行\"" + str5 + "\"不能获取浮点数的长度，将采用默认值28.");
                                     goto Label_0BA4;
 
@@ -419,7 +419,7 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                             }
                             else
                             {
-                                item.Length = 0x1c;
+                                item.Length = 28;
                                 item.Precision = 8;
                                 this.WriteLog("行\"" + str5 + "\"不能获取浮点数长度和精度，将采用8位小数位。");
                             }

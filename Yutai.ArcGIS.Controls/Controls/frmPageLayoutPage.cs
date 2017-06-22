@@ -12,10 +12,9 @@ using Yutai.ArcGIS.Framework.Docking;
 
 namespace Yutai.ArcGIS.Controls.Controls
 {
-    public class frmPageLayoutPage : DockContent
+    public partial class frmPageLayoutPage : DockContent
     {
         public AxPageLayoutControl axPageLayoutControl1;
-        private IContainer components = null;
         private IMap m_OldMap = null;
 
         public frmPageLayoutPage()
@@ -48,9 +47,9 @@ namespace Yutai.ArcGIS.Controls.Controls
                 {
                     SimpleLineSymbolClass class2 = new SimpleLineSymbolClass();
                     IRgbColor color = new RgbColorClass {
-                        Red = 0xff,
-                        Green = 0xff,
-                        Blue = 0xff
+                        Red = 255,
+                        Green = 255,
+                        Blue = 255
                     };
                     class2.Color = color;
                     ISymbolBorder border = new SymbolBorderClass {
@@ -86,9 +85,9 @@ namespace Yutai.ArcGIS.Controls.Controls
                 this.fullPageLayerOut(this.axPageLayoutControl1.ActiveView.FocusMap, (MapControlOfMap as IActiveView).Extent);
                 SimpleLineSymbolClass class2 = new SimpleLineSymbolClass();
                 IRgbColor color = new RgbColorClass {
-                    Red = 0xff,
-                    Green = 0xff,
-                    Blue = 0xff
+                    Red = 255,
+                    Green = 255,
+                    Blue = 255
                 };
                 class2.Color = color;
                 ISymbolBorder border = new SymbolBorderClass {
@@ -107,16 +106,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             }
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private void frmPageLayoutPage_Load(object sender, EventArgs e)
+ private void frmPageLayoutPage_Load(object sender, EventArgs e)
         {
             this.CopyMapToPageLayOutDataFrameforPrint(this.FocusMap);
             this.axPageLayoutControl1.Page.PageToPrinterMapping = esriPageToPrinterMapping.esriPageMappingScale;
@@ -135,31 +125,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             }
         }
 
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPageLayoutPage));
-            this.axPageLayoutControl1 = new AxPageLayoutControl();
-            this.axPageLayoutControl1.BeginInit();
-            base.SuspendLayout();
-            this.axPageLayoutControl1.Dock = DockStyle.Fill;
-            this.axPageLayoutControl1.Location = new System.Drawing.Point(0, 0);
-            this.axPageLayoutControl1.Name = "axPageLayoutControl1";
-            this.axPageLayoutControl1.OcxState = (AxHost.State) resources.GetObject("axPageLayoutControl1.OcxState");
-            this.axPageLayoutControl1.Size = new Size(0x124, 0x10a);
-            this.axPageLayoutControl1.TabIndex = 0;
-            base.AutoScaleDimensions = new SizeF(6f, 12f);
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.ClientSize = new Size(0x124, 0x10a);
-            base.Controls.Add(this.axPageLayoutControl1);
-            base.Name = "frmPageLayoutPage";
-            base.TabText = "打印视图";
-            this.Text = "打印视图";
-            base.Load += new EventHandler(this.frmPageLayoutPage_Load);
-            this.axPageLayoutControl1.EndInit();
-            base.ResumeLayout(false);
-        }
-
-        public IMap FocusMap { get; set; }
+ public IMap FocusMap { get; set; }
     }
 }
 

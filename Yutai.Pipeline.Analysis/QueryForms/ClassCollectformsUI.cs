@@ -1,4 +1,4 @@
-using ESRI.ArcGIS.Carto;
+﻿using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
@@ -13,9 +13,9 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.QueryForms
 {
-	public class ClassCollectformsUI : Form
+	public partial class ClassCollectformsUI : Form
 	{
-		private class LayerboxItem
+		private partial class LayerboxItem
 		{
 			public IFeatureLayer m_pPipeLayer;
 
@@ -33,51 +33,29 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
 		public IPipeConfig pPipeCfg;
 
-		private IFields myfields;
 
-		private int LayerType;
 
 		private DataTable Sumtable = new DataTable();
 
-		private IContainer components = null;
 
-		private RadioButton PointRadio;
 
-		private RadioButton LineRadio;
 
-		private CheckedListBox Layerbox;
 
-		private GroupBox groupBox1;
 
-		private Button CalButton;
 
-		private Button CloseBut;
 
-		private Button RevBut;
 
-		private Button NoneBut;
 
-		private Button AllBut;
 
-		private ComboBox FieldsBox;
 
-		private Label label1;
 
-		private ListBox listBox1;
 
-		private Button AddBut;
 
-		private GroupBox groupBox2;
 
-		private Button Calbut2;
 
-		private Button DownBut;
 
-		private Button UpBut;
 
-		private Button DelBut;
 
-		private CheckBox GeometrySet;
 
 		public bool SelectGeometry
 		{
@@ -1062,211 +1040,6 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			Help.ShowHelp(this, url, command, parameter);
 		}
 
-		protected override void Dispose(bool disposing)
-		{
-			if (disposing && this.components != null)
-			{
-				this.components.Dispose();
-			}
-			base.Dispose(disposing);
-		}
 
-		private void InitializeComponent()
-		{
-			this.PointRadio = new RadioButton();
-			this.LineRadio = new RadioButton();
-			this.Layerbox = new CheckedListBox();
-			this.groupBox1 = new GroupBox();
-			this.RevBut = new Button();
-			this.NoneBut = new Button();
-			this.AllBut = new Button();
-			this.CalButton = new Button();
-			this.CloseBut = new Button();
-			this.FieldsBox = new ComboBox();
-			this.label1 = new Label();
-			this.listBox1 = new ListBox();
-			this.AddBut = new Button();
-			this.groupBox2 = new GroupBox();
-			this.DelBut = new Button();
-			this.DownBut = new Button();
-			this.UpBut = new Button();
-			this.Calbut2 = new Button();
-			this.GeometrySet = new CheckBox();
-			this.groupBox1.SuspendLayout();
-			this.groupBox2.SuspendLayout();
-			base.SuspendLayout();
-			this.PointRadio.AutoSize = true;
-			this.PointRadio.Checked = true;
-			this.PointRadio.Location = new System.Drawing.Point(6, 9);
-			this.PointRadio.Name = "PointRadio";
-			this.PointRadio.Size = new Size(59, 16);
-			this.PointRadio.TabIndex = 0;
-			this.PointRadio.TabStop = true;
-			this.PointRadio.Text = "管线点";
-			this.PointRadio.UseVisualStyleBackColor = true;
-			this.PointRadio.CheckedChanged += new EventHandler(this.PointRadio_CheckedChanged);
-			this.LineRadio.AutoSize = true;
-			this.LineRadio.Location = new System.Drawing.Point(83, 9);
-			this.LineRadio.Name = "LineRadio";
-			this.LineRadio.Size = new Size(59, 16);
-			this.LineRadio.TabIndex = 1;
-			this.LineRadio.Text = "管线线";
-			this.LineRadio.UseVisualStyleBackColor = true;
-			this.Layerbox.CheckOnClick = true;
-			this.Layerbox.FormattingEnabled = true;
-			this.Layerbox.Location = new System.Drawing.Point(11, 20);
-			this.Layerbox.Name = "Layerbox";
-			this.Layerbox.Size = new Size(162, 196);
-			this.Layerbox.Sorted = true;
-			this.Layerbox.TabIndex = 2;
-			this.Layerbox.SelectedIndexChanged += new EventHandler(this.Layerbox_SelectedIndexChanged);
-			this.groupBox1.Controls.Add(this.RevBut);
-			this.groupBox1.Controls.Add(this.NoneBut);
-			this.groupBox1.Controls.Add(this.AllBut);
-			this.groupBox1.Controls.Add(this.Layerbox);
-			this.groupBox1.Location = new System.Drawing.Point(3, 36);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new Size(266, 224);
-			this.groupBox1.TabIndex = 3;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "管线数据层列表";
-			this.RevBut.Location = new System.Drawing.Point(179, 110);
-			this.RevBut.Name = "RevBut";
-			this.RevBut.Size = new Size(76, 23);
-			this.RevBut.TabIndex = 6;
-			this.RevBut.Text = "反选(&I)";
-			this.RevBut.UseVisualStyleBackColor = true;
-			this.RevBut.Click += new EventHandler(this.RevBut_Click);
-			this.NoneBut.Location = new System.Drawing.Point(179, 65);
-			this.NoneBut.Name = "NoneBut";
-			this.NoneBut.Size = new Size(76, 23);
-			this.NoneBut.TabIndex = 5;
-			this.NoneBut.Text = "全不选(&N)";
-			this.NoneBut.UseVisualStyleBackColor = true;
-			this.NoneBut.Click += new EventHandler(this.NoneBut_Click);
-			this.AllBut.Location = new System.Drawing.Point(179, 20);
-			this.AllBut.Name = "AllBut";
-			this.AllBut.Size = new Size(76, 23);
-			this.AllBut.TabIndex = 4;
-			this.AllBut.Text = "全选(&A)";
-			this.AllBut.UseVisualStyleBackColor = true;
-			this.AllBut.Click += new EventHandler(this.AllBut_Click);
-			this.CalButton.DialogResult = DialogResult.OK;
-			this.CalButton.Location = new System.Drawing.Point(183, 2);
-			this.CalButton.Name = "CalButton";
-			this.CalButton.Size = new Size(86, 23);
-			this.CalButton.TabIndex = 4;
-			this.CalButton.Text = "标准汇总(&H)";
-			this.CalButton.UseVisualStyleBackColor = true;
-			this.CalButton.Click += new EventHandler(this.CalButton_Click);
-			this.CloseBut.Location = new System.Drawing.Point(434, 237);
-			this.CloseBut.Name = "CloseBut";
-			this.CloseBut.Size = new Size(75, 23);
-			this.CloseBut.TabIndex = 5;
-			this.CloseBut.Text = "关闭(&C)";
-			this.CloseBut.UseVisualStyleBackColor = true;
-			this.CloseBut.Click += new EventHandler(this.CloseBut_Click);
-			this.FieldsBox.FormattingEnabled = true;
-			this.FieldsBox.Location = new System.Drawing.Point(77, 24);
-			this.FieldsBox.Name = "FieldsBox";
-			this.FieldsBox.Size = new Size(120, 20);
-			this.FieldsBox.TabIndex = 6;
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(7, 28);
-			this.label1.Name = "label1";
-			this.label1.Size = new Size(53, 12);
-			this.label1.TabIndex = 7;
-			this.label1.Text = "分类字段";
-			this.listBox1.FormattingEnabled = true;
-			this.listBox1.ItemHeight = 12;
-			this.listBox1.Location = new System.Drawing.Point(77, 50);
-			this.listBox1.Name = "listBox1";
-			this.listBox1.Size = new Size(155, 136);
-			this.listBox1.TabIndex = 8;
-			this.listBox1.SelectedIndexChanged += new EventHandler(this.listBox1_SelectedIndexChanged);
-			this.AddBut.Location = new System.Drawing.Point(203, 22);
-			this.AddBut.Name = "AddBut";
-			this.AddBut.Size = new Size(29, 23);
-			this.AddBut.TabIndex = 9;
-			this.AddBut.Text = "+";
-			this.AddBut.UseVisualStyleBackColor = true;
-			this.AddBut.Click += new EventHandler(this.AddBut_Click);
-			this.groupBox2.Controls.Add(this.DelBut);
-			this.groupBox2.Controls.Add(this.DownBut);
-			this.groupBox2.Controls.Add(this.UpBut);
-			this.groupBox2.Controls.Add(this.Calbut2);
-			this.groupBox2.Controls.Add(this.AddBut);
-			this.groupBox2.Controls.Add(this.listBox1);
-			this.groupBox2.Controls.Add(this.label1);
-			this.groupBox2.Controls.Add(this.FieldsBox);
-			this.groupBox2.Location = new System.Drawing.Point(277, 2);
-			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new Size(251, 228);
-			this.groupBox2.TabIndex = 10;
-			this.groupBox2.TabStop = false;
-			this.groupBox2.Text = "自定义汇总";
-			this.DelBut.Location = new System.Drawing.Point(233, 105);
-			this.DelBut.Name = "DelBut";
-			this.DelBut.Size = new Size(18, 23);
-			this.DelBut.TabIndex = 13;
-			this.DelBut.Text = "-";
-			this.DelBut.UseVisualStyleBackColor = true;
-			this.DelBut.Click += new EventHandler(this.DelBut_Click);
-			this.DownBut.Enabled = false;
-			this.DownBut.Location = new System.Drawing.Point(22, 122);
-			this.DownBut.Name = "DownBut";
-			this.DownBut.Size = new Size(38, 23);
-			this.DownBut.TabIndex = 12;
-			this.DownBut.Text = "向下";
-			this.DownBut.UseVisualStyleBackColor = true;
-			this.DownBut.Click += new EventHandler(this.DownBut_Click);
-			this.UpBut.Enabled = false;
-			this.UpBut.Location = new System.Drawing.Point(22, 85);
-			this.UpBut.Name = "UpBut";
-			this.UpBut.Size = new Size(38, 23);
-			this.UpBut.TabIndex = 11;
-			this.UpBut.Text = "向上";
-			this.UpBut.UseVisualStyleBackColor = true;
-			this.UpBut.Click += new EventHandler(this.UpBut_Click);
-			this.Calbut2.Location = new System.Drawing.Point(157, 199);
-			this.Calbut2.Name = "Calbut2";
-			this.Calbut2.Size = new Size(75, 23);
-			this.Calbut2.TabIndex = 10;
-			this.Calbut2.Text = "汇总";
-			this.Calbut2.UseVisualStyleBackColor = true;
-			this.Calbut2.Click += new EventHandler(this.Calbut2_Click);
-			this.GeometrySet.AutoSize = true;
-			this.GeometrySet.Location = new System.Drawing.Point(277, 241);
-			this.GeometrySet.Name = "GeometrySet";
-			this.GeometrySet.Size = new Size(72, 16);
-			this.GeometrySet.TabIndex = 23;
-			this.GeometrySet.Text = "空间范围";
-			this.GeometrySet.UseVisualStyleBackColor = true;
-			this.GeometrySet.Click += new EventHandler(this.GeometrySet_Click);
-			base.AutoScaleDimensions = new SizeF(6f, 12f);
-			base.AutoScaleMode = AutoScaleMode.Font;
-			base.ClientSize = new Size(532, 266);
-			base.Controls.Add(this.GeometrySet);
-			base.Controls.Add(this.groupBox2);
-			base.Controls.Add(this.CloseBut);
-			base.Controls.Add(this.CalButton);
-			base.Controls.Add(this.groupBox1);
-			base.Controls.Add(this.LineRadio);
-			base.Controls.Add(this.PointRadio);
-			base.FormBorderStyle = FormBorderStyle.FixedDialog;
-			base.MaximizeBox = false;
-			base.MinimizeBox = false;
-			base.Name = "ClassCollectformsUI";
-			base.ShowInTaskbar = false;
-			this.Text = "分类汇总";
-			base.Load += new EventHandler(this.ClassCollectformsUI_Load);
-			base.VisibleChanged += new EventHandler(this.ClassCollectformsUI_VisibleChanged);
-			base.HelpRequested += new HelpEventHandler(this.ClassCollectformsUI_HelpRequested);
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox2.ResumeLayout(false);
-			this.groupBox2.PerformLayout();
-			base.ResumeLayout(false);
-			base.PerformLayout();
-		}
-	}
+    }
 }

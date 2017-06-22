@@ -330,15 +330,15 @@ namespace Yutai.ArcGIS.Catalog
                         {
                             case esriGeometryType.esriGeometryPoint:
                             case esriGeometryType.esriGeometryMultipoint:
-                                return ImageLib.GetSmallImage(0x17);
+                                return ImageLib.GetSmallImage(23);
 
                             case esriGeometryType.esriGeometryPolyline:
                             case esriGeometryType.esriGeometryPath:
                             case esriGeometryType.esriGeometryRay:
-                                return ImageLib.GetSmallImage(0x18);
+                                return ImageLib.GetSmallImage(24);
 
                             case esriGeometryType.esriGeometryPolygon:
-                                return ImageLib.GetSmallImage(0x19);
+                                return ImageLib.GetSmallImage(25);
 
                             case esriGeometryType.esriGeometryEnvelope:
                                 goto Label_0082;
@@ -349,7 +349,7 @@ namespace Yutai.ArcGIS.Catalog
                 {
                 }
             Label_0082:
-                return ImageLib.GetSmallImage(0x1f);
+                return ImageLib.GetSmallImage(31);
             }
         }
 
@@ -367,15 +367,15 @@ namespace Yutai.ArcGIS.Catalog
                         {
                             case esriGeometryType.esriGeometryPoint:
                             case esriGeometryType.esriGeometryMultipoint:
-                                return ImageLib.GetSmallImage(0x17);
+                                return ImageLib.GetSmallImage(23);
 
                             case esriGeometryType.esriGeometryPolyline:
                             case esriGeometryType.esriGeometryPath:
                             case esriGeometryType.esriGeometryRay:
-                                return ImageLib.GetSmallImage(0x18);
+                                return ImageLib.GetSmallImage(24);
 
                             case esriGeometryType.esriGeometryPolygon:
-                                return ImageLib.GetSmallImage(0x19);
+                                return ImageLib.GetSmallImage(25);
 
                             case esriGeometryType.esriGeometryEnvelope:
                                 goto Label_0082;
@@ -386,7 +386,7 @@ namespace Yutai.ArcGIS.Catalog
                 {
                 }
             Label_0082:
-                return ImageLib.GetSmallImage(0x1f);
+                return ImageLib.GetSmallImage(31);
             }
         }
 

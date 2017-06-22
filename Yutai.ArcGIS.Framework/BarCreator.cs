@@ -30,7 +30,7 @@ namespace Yutai.ArcGIS.Framework
                             BarName = base.barManager1.GetNewBarName(),
                             DockCol = 0,
                             DockRow = base.barManager1.Bars.Count,
-                            FloatSize = new Size(0x120, 0x18)
+                            FloatSize = new Size(288, 24)
                         };
                         base.barManager1.Bars.Add(bar);
                         this.method_0(bar, xmlNode_0);

@@ -9,13 +9,8 @@ using ESRI.ArcGIS.Output;
 
 namespace Yutai.ArcGIS.Controls.Controls.Export
 {
-    internal class ExportMap2GIFPropertyPage : UserControl
+    internal partial class ExportMap2GIFPropertyPage : UserControl
     {
-        private ComboBoxEdit cboImageCompression;
-        private ColorEdit colorEdit1;
-        private Container components = null;
-        private Label label1;
-        private Label label4;
         private bool m_CanDo = false;
         private IExport m_pExport = null;
 
@@ -55,16 +50,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             }
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private void ExportMap2EMFPropertyPage_Load(object sender, EventArgs e)
+ private void ExportMap2EMFPropertyPage_Load(object sender, EventArgs e)
         {
             if (this.m_pExport != null)
             {
@@ -89,63 +75,15 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
 
         private void GetRGB(uint rgb, out int r, out int g, out int b)
         {
-            uint num = rgb & 0xff0000;
-            b = (int) (num >> 0x10);
-            num = rgb & 0xff00;
+            uint num = rgb & 16711680;
+            b = (int) (num >> 16);
+            num = rgb & 65280;
             g = (int) (num >> 8);
-            num = rgb & 0xff;
+            num = rgb & 255;
             r = (int) num;
         }
 
-        private void InitializeComponent()
-        {
-            this.label1 = new Label();
-            this.cboImageCompression = new ComboBoxEdit();
-            this.colorEdit1 = new ColorEdit();
-            this.label4 = new Label();
-            this.cboImageCompression.Properties.BeginInit();
-            this.colorEdit1.Properties.BeginInit();
-            base.SuspendLayout();
-            this.label1.AutoSize = true;
-            this.label1.Location = new Point(8, 0x10);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(60, 0x11);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "图像压缩:";
-            this.cboImageCompression.EditValue = "无";
-            this.cboImageCompression.Location = new Point(0x60, 0x10);
-            this.cboImageCompression.Name = "cboImageCompression";
-            this.cboImageCompression.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.cboImageCompression.Properties.Items.AddRange(new object[] { "无", "RLE", "LZW" });
-            this.cboImageCompression.Size = new Size(0x60, 0x17);
-            this.cboImageCompression.TabIndex = 10;
-            this.cboImageCompression.SelectedIndexChanged += new EventHandler(this.cboImageCompression_SelectedIndexChanged);
-            this.colorEdit1.EditValue = Color.Empty;
-            this.colorEdit1.Location = new Point(0x60, 0x40);
-            this.colorEdit1.Name = "colorEdit1";
-            this.colorEdit1.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
-            this.colorEdit1.Size = new Size(0x30, 0x17);
-            this.colorEdit1.TabIndex = 13;
-            this.colorEdit1.EditValueChanged += new EventHandler(this.colorEdit1_EditValueChanged);
-            this.label4.AutoSize = true;
-            this.label4.Location = new Point(8, 0x40);
-            this.label4.Name = "label4";
-            this.label4.Size = new Size(0x30, 0x11);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "透明色:";
-            base.Controls.Add(this.colorEdit1);
-            base.Controls.Add(this.label4);
-            base.Controls.Add(this.cboImageCompression);
-            base.Controls.Add(this.label1);
-            base.Name = "ExportMap2GIFPropertyPage";
-            base.Size = new Size(0xd8, 0xb8);
-            base.Load += new EventHandler(this.ExportMap2EMFPropertyPage_Load);
-            this.cboImageCompression.Properties.EndInit();
-            this.colorEdit1.Properties.EndInit();
-            base.ResumeLayout(false);
-        }
-
-        private int RGB(int r, int g, int b)
+ private int RGB(int r, int g, int b)
         {
             uint num = 0;
             num |= (uint) b;

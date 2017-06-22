@@ -7,17 +7,8 @@ using ESRI.ArcGIS.Geodatabase;
 
 namespace Yutai.ArcGIS.Controls.Historical
 {
-    public class frmHistorialMarkerManager : Form
+    public partial class frmHistorialMarkerManager : Form
     {
-        private SimpleButton btnColse;
-        private SimpleButton btnDelete;
-        private SimpleButton btnEdit;
-        private SimpleButton btnNew;
-        private ColumnHeader columnHeader1;
-        private ColumnHeader columnHeader2;
-        private IContainer components = null;
-        private Label label1;
-        private ListView listView1;
         private IHistoricalWorkspace m_pHistoricalWorkspace = null;
 
         public frmHistorialMarkerManager()
@@ -85,16 +76,7 @@ namespace Yutai.ArcGIS.Controls.Historical
             }
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private void frmHistorialMarkerManager_Load(object sender, EventArgs e)
+ private void frmHistorialMarkerManager_Load(object sender, EventArgs e)
         {
             IEnumHistoricalMarker historicalMarkers = this.m_pHistoricalWorkspace.HistoricalMarkers;
             historicalMarkers.Reset();
@@ -116,83 +98,7 @@ namespace Yutai.ArcGIS.Controls.Historical
             }
         }
 
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHistorialMarkerManager));
-            this.label1 = new Label();
-            this.listView1 = new ListView();
-            this.columnHeader1 = new ColumnHeader();
-            this.columnHeader2 = new ColumnHeader();
-            this.btnNew = new SimpleButton();
-            this.btnEdit = new SimpleButton();
-            this.btnDelete = new SimpleButton();
-            this.btnColse = new SimpleButton();
-            base.SuspendLayout();
-            this.label1.AutoSize = true;
-            this.label1.Location = new Point(13, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new Size(0x35, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "历史标记";
-            this.listView1.Columns.AddRange(new ColumnHeader[] { this.columnHeader1, this.columnHeader2 });
-            this.listView1.FullRowSelect = true;
-            this.listView1.Location = new Point(15, 0x1a);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new Size(0x157, 0xc0);
-            this.listView1.TabIndex = 1;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = View.Details;
-            this.listView1.SelectedIndexChanged += new EventHandler(this.listView1_SelectedIndexChanged);
-            this.columnHeader1.Text = "名称";
-            this.columnHeader1.Width = 0xa2;
-            this.columnHeader2.Text = "时间标记";
-            this.columnHeader2.Width = 0x9b;
-            this.btnNew.Location = new Point(7, 0xee);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new Size(0x4b, 0x17);
-            this.btnNew.TabIndex = 2;
-            this.btnNew.Text = "新建...";
-            this.btnNew.Click += new EventHandler(this.btnNew_Click);
-            this.btnEdit.Enabled = false;
-            this.btnEdit.Location = new Point(0x58, 0xee);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new Size(0x4b, 0x17);
-            this.btnEdit.TabIndex = 3;
-            this.btnEdit.Text = "编辑...";
-            this.btnEdit.Click += new EventHandler(this.btnEdit_Click);
-            this.btnDelete.Enabled = false;
-            this.btnDelete.Location = new Point(170, 0xee);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new Size(0x4b, 0x17);
-            this.btnDelete.TabIndex = 4;
-            this.btnDelete.Text = "删除";
-            this.btnDelete.Click += new EventHandler(this.btnDelete_Click);
-            this.btnColse.DialogResult = DialogResult.Cancel;
-            this.btnColse.Location = new Point(0x125, 0xee);
-            this.btnColse.Name = "btnColse";
-            this.btnColse.Size = new Size(0x4b, 0x17);
-            this.btnColse.TabIndex = 5;
-            this.btnColse.Text = "关闭";
-            base.AutoScaleDimensions = new SizeF(6f, 12f);
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.ClientSize = new Size(380, 0x111);
-            base.Controls.Add(this.btnColse);
-            base.Controls.Add(this.btnDelete);
-            base.Controls.Add(this.btnEdit);
-            base.Controls.Add(this.btnNew);
-            base.Controls.Add(this.listView1);
-            base.Controls.Add(this.label1);
-            
-            base.MaximizeBox = false;
-            base.MinimizeBox = false;
-            base.Name = "frmHistorialMarkerManager";
-            this.Text = "历史标记管理";
-            base.Load += new EventHandler(this.frmHistorialMarkerManager_Load);
-            base.ResumeLayout(false);
-            base.PerformLayout();
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+ private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.btnDelete.Enabled = this.listView1.SelectedIndices.Count > 0;
             this.btnEdit.Enabled = this.listView1.SelectedIndices.Count == 1;

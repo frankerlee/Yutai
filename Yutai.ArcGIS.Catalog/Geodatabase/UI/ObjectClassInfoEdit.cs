@@ -8,22 +8,13 @@ using ESRI.ArcGIS.Geometry;
 
 namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 {
-    public class ObjectClassInfoEdit : Form
+    public partial class ObjectClassInfoEdit : Form
     {
         private bool bool_0 = true;
-        private SimpleButton btnApply;
-        private SimpleButton btnCancel;
-        private SimpleButton btnOK;
         private Container container_0 = null;
-        private enumUseType enumUseType_0;
-        private IFeatureDataset ifeatureDataset_0;
-        private IFeatureWorkspace ifeatureWorkspace_0;
-        private IFieldsEdit ifieldsEdit_0;
-        private IObjectClass iobjectClass_0;
         private ObjectClassGeneral objectClassGeneral_0 = new ObjectClassGeneral();
         private ObjectClassKeyConfig objectClassKeyConfig_0 = new ObjectClassKeyConfig();
         private ObjectFieldsPage objectFieldsPage_0 = new ObjectFieldsPage();
-        private TabControl tabControl1;
 
         public ObjectClassInfoEdit()
         {
@@ -64,61 +55,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.Close();
         }
 
-        protected override void Dispose(bool bool_1)
-        {
-            if (bool_1 && (this.container_0 != null))
-            {
-                this.container_0.Dispose();
-            }
-            base.Dispose(bool_1);
-        }
-
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ObjectClassInfoEdit));
-            this.btnOK = new SimpleButton();
-            this.btnApply = new SimpleButton();
-            this.btnCancel = new SimpleButton();
-            this.tabControl1 = new TabControl();
-            base.SuspendLayout();
-            this.btnOK.Location = new System.Drawing.Point(0xa8, 0x1f0);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new Size(0x38, 0x18);
-            this.btnOK.TabIndex = 0;
-            this.btnOK.Text = "确定";
-            this.btnOK.Click += new EventHandler(this.btnOK_Click);
-            this.btnApply.Location = new System.Drawing.Point(0x128, 0x1f0);
-            this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new Size(0x38, 0x18);
-            this.btnApply.TabIndex = 1;
-            this.btnApply.Text = "应用";
-            this.btnApply.Click += new EventHandler(this.btnApply_Click);
-            this.btnCancel.DialogResult = DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(0xe8, 0x1f0);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new Size(0x38, 0x18);
-            this.btnCancel.TabIndex = 2;
-            this.btnCancel.Text = "取消";
-            this.btnCancel.Click += new EventHandler(this.btnCancel_Click);
-            this.tabControl1.Location = new System.Drawing.Point(8, 8);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new Size(0x170, 480);
-            this.tabControl1.TabIndex = 3;
-            this.AutoScaleBaseSize = new Size(6, 14);
-            base.ClientSize = new Size(0x180, 0x215);
-            base.Controls.Add(this.tabControl1);
-            base.Controls.Add(this.btnCancel);
-            base.Controls.Add(this.btnApply);
-            base.Controls.Add(this.btnOK);
-            
-            base.Name = "ObjectClassInfoEdit";
-            this.Text = "新建";
-            base.Load += new EventHandler(this.ObjectClassInfoEdit_Load);
-            base.ResumeLayout(false);
-        }
-
-        private void method_0()
+ private void method_0()
         {
         }
 

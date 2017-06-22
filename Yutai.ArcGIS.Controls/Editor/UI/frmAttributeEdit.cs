@@ -6,9 +6,8 @@ using ESRI.ArcGIS.Geodatabase;
 
 namespace Yutai.ArcGIS.Controls.Editor.UI
 {
-    public class frmAttributeEdit : Form
+    public partial class frmAttributeEdit : Form
     {
-        private Container components = null;
         private AttributeControl m_pAttributeCtrl = new AttributeControl();
 
         public frmAttributeEdit()
@@ -18,26 +17,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             base.Controls.Add(this.m_pAttributeCtrl);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAttributeEdit));
-            base.SuspendLayout();
-            base.ClientSize = new Size(0x124, 0x111);
-            
-            base.Name = "frmAttributeEdit";
-            base.ResumeLayout(false);
-        }
-
-        public IWorkspace EditWorkspace
+ public IWorkspace EditWorkspace
         {
             set
             {

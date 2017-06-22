@@ -7,17 +7,12 @@ using Yutai.ArcGIS.Common.BaseClasses;
 
 namespace Yutai.ArcGIS.Carto.UI
 {
-    public class frmElementProperty : Form, IPropertySheet, IPropertySheetEvents
+    public partial class frmElementProperty : Form, IPropertySheet, IPropertySheetEvents
     {
         private bool bool_0 = false;
         private bool bool_1 = false;
-        private SimpleButton btnApply;
-        private SimpleButton btnCancel;
-        private SimpleButton btnOK;
         private Container container_0 = null;
-        private Panel panel1;
         private short short_0 = 0;
-        private TabControl tabControl1;
 
         public event OnApplyEventHandler OnApply;
 
@@ -70,16 +65,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
-        protected override void Dispose(bool bool_2)
-        {
-            if (bool_2 && (this.container_0 != null))
-            {
-                this.container_0.Dispose();
-            }
-            base.Dispose(bool_2);
-        }
-
-        public bool EditProperties(object object_0)
+ public bool EditProperties(object object_0)
         {
             for (int i = 0; i < this.tabControl1.TabPages.Count; i++)
             {
@@ -94,61 +80,7 @@ namespace Yutai.ArcGIS.Carto.UI
             return this.bool_0;
         }
 
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmElementProperty));
-            this.panel1 = new Panel();
-            this.btnApply = new SimpleButton();
-            this.btnCancel = new SimpleButton();
-            this.btnOK = new SimpleButton();
-            this.tabControl1 = new TabControl();
-            this.panel1.SuspendLayout();
-            base.SuspendLayout();
-            this.panel1.Controls.Add(this.btnApply);
-            this.panel1.Controls.Add(this.btnCancel);
-            this.panel1.Controls.Add(this.btnOK);
-            this.panel1.Dock = DockStyle.Bottom;
-            this.panel1.Location = new Point(0, 0x13d);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new Size(0x198, 0x20);
-            this.panel1.TabIndex = 4;
-            this.btnApply.Location = new Point(0x158, 4);
-            this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new Size(0x38, 0x18);
-            this.btnApply.TabIndex = 6;
-            this.btnApply.Text = "应用";
-            this.btnApply.Click += new EventHandler(this.btnApply_Click);
-            this.btnCancel.DialogResult = DialogResult.Cancel;
-            this.btnCancel.Location = new Point(280, 4);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new Size(0x38, 0x18);
-            this.btnCancel.TabIndex = 5;
-            this.btnCancel.Text = "取消";
-            this.btnOK.DialogResult = DialogResult.OK;
-            this.btnOK.Location = new Point(0xd8, 4);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new Size(0x38, 0x18);
-            this.btnOK.TabIndex = 4;
-            this.btnOK.Text = "确定";
-            this.btnOK.Click += new EventHandler(this.btnOK_Click);
-            this.tabControl1.Dock = DockStyle.Fill;
-            this.tabControl1.Location = new Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new Size(0x198, 0x13d);
-            this.tabControl1.TabIndex = 5;
-            this.AutoScaleBaseSize = new Size(6, 14);
-            base.ClientSize = new Size(0x198, 0x15d);
-            base.Controls.Add(this.tabControl1);
-            base.Controls.Add(this.panel1);
-            
-            base.Name = "frmElementProperty";
-            this.Text = "属性";
-            this.panel1.ResumeLayout(false);
-            base.ResumeLayout(false);
-        }
-
-        private void method_0()
+ private void method_0()
         {
             this.bool_0 = true;
             for (int i = 0; i < this.tabControl1.TabPages.Count; i++)

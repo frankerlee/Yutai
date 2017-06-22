@@ -9,25 +9,17 @@ using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 {
-    public class frmObjectClass : Form
+    public partial class frmObjectClass : Form
     {
         private AnnoClassSetCtrl annoClassSetCtrl_0 = new AnnoClassSetCtrl();
         private AnnoReferenceScaleSetCtrl annoReferenceScaleSetCtrl_0 = new AnnoReferenceScaleSetCtrl();
-        private SimpleButton btnCancel;
-        private SimpleButton btnLast;
-        private SimpleButton btnNext;
         private Container container_0 = null;
-        private enumUseType enumUseType_0;
-        private IFeatureDataset ifeatureDataset_0;
-        private IFeatureWorkspace ifeatureWorkspace_0;
-        private IFieldsEdit ifieldsEdit_0;
         private int int_0 = 0;
         private IObjectClass iobjectClass_0 = null;
         private const int m_TotalStep = 3;
         private ObjectClassGeneral objectClassGeneral_0 = new ObjectClassGeneral();
         private ObjectClassKeyConfig objectClassKeyConfig_0 = new ObjectClassKeyConfig();
         private ObjectFieldsPage objectFieldsPage_0 = new ObjectFieldsPage();
-        private Panel panel1;
 
         public frmObjectClass()
         {
@@ -217,16 +209,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.int_0++;
         }
 
-        protected override void Dispose(bool bool_0)
-        {
-            if (bool_0 && (this.container_0 != null))
-            {
-                this.container_0.Dispose();
-            }
-            base.Dispose(bool_0);
-        }
-
-        private void frmObjectClass_Load(object sender, EventArgs e)
+ private void frmObjectClass_Load(object sender, EventArgs e)
         {
             if (this.ifeatureWorkspace_0 != null)
             {
@@ -239,50 +222,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.panel1.Controls.Add(this.objectClassGeneral_0);
         }
 
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmObjectClass));
-            this.btnLast = new SimpleButton();
-            this.btnNext = new SimpleButton();
-            this.btnCancel = new SimpleButton();
-            this.panel1 = new Panel();
-            base.SuspendLayout();
-            this.btnLast.Location = new System.Drawing.Point(0xa8, 480);
-            this.btnLast.Name = "btnLast";
-            this.btnLast.Size = new Size(0x38, 0x18);
-            this.btnLast.TabIndex = 0;
-            this.btnLast.Text = "上一步";
-            this.btnLast.Click += new EventHandler(this.btnLast_Click);
-            this.btnNext.Location = new System.Drawing.Point(240, 480);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new Size(0x38, 0x18);
-            this.btnNext.TabIndex = 1;
-            this.btnNext.Text = "下一步";
-            this.btnNext.Click += new EventHandler(this.btnNext_Click);
-            this.btnCancel.DialogResult = DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(0x138, 480);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new Size(0x38, 0x18);
-            this.btnCancel.TabIndex = 2;
-            this.btnCancel.Text = "取消";
-            this.panel1.Location = new System.Drawing.Point(8, 8);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new Size(0x188, 0x1c8);
-            this.panel1.TabIndex = 3;
-            this.AutoScaleBaseSize = new Size(6, 14);
-            base.ClientSize = new Size(0x198, 0x1fd);
-            base.Controls.Add(this.panel1);
-            base.Controls.Add(this.btnCancel);
-            base.Controls.Add(this.btnNext);
-            base.Controls.Add(this.btnLast);
-            
-            base.Name = "frmObjectClass";
-            this.Text = "新建";
-            base.Load += new EventHandler(this.frmObjectClass_Load);
-            base.ResumeLayout(false);
-        }
-
-        private void method_0()
+ private void method_0()
         {
             this.btnLast.Enabled = false;
             this.btnNext.Enabled = false;

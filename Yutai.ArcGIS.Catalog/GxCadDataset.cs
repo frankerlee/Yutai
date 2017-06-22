@@ -482,7 +482,7 @@ namespace Yutai.ArcGIS.Catalog
                     {
                         if ((this.idatasetName_0 as IFeatureClassName).FeatureType == esriFeatureType.esriFTCoverageAnnotation)
                         {
-                            return ImageLib.GetSmallImage(0x2c);
+                            return ImageLib.GetSmallImage(44);
                         }
                         string name = this.Name;
                         switch (name)
@@ -491,24 +491,24 @@ namespace Yutai.ArcGIS.Catalog
                                 goto Label_00EE;
 
                             case "Annotation":
-                                return ImageLib.GetSmallImage(0x2c);
+                                return ImageLib.GetSmallImage(44);
 
                             case "Point":
-                                return ImageLib.GetSmallImage(0x29);
+                                return ImageLib.GetSmallImage(41);
 
                             case "Polyline":
-                                return ImageLib.GetSmallImage(0x2a);
+                                return ImageLib.GetSmallImage(42);
                         }
                         if (!(name == "Polygon"))
                         {
                             if (name == "MultiPatch")
                             {
-                                return ImageLib.GetSmallImage(0x2d);
+                                return ImageLib.GetSmallImage(45);
                             }
                         }
                         else
                         {
-                            return ImageLib.GetSmallImage(0x2b);
+                            return ImageLib.GetSmallImage(43);
                         }
                     }
                 }
@@ -535,7 +535,7 @@ namespace Yutai.ArcGIS.Catalog
                     {
                         if ((this.idatasetName_0 as IFeatureClassName).FeatureType == esriFeatureType.esriFTCoverageAnnotation)
                         {
-                            return ImageLib.GetSmallImage(0x2c);
+                            return ImageLib.GetSmallImage(44);
                         }
                         string name = this.Name;
                         switch (name)
@@ -544,24 +544,24 @@ namespace Yutai.ArcGIS.Catalog
                                 goto Label_00EE;
 
                             case "Annotation":
-                                return ImageLib.GetSmallImage(0x2c);
+                                return ImageLib.GetSmallImage(44);
 
                             case "Point":
-                                return ImageLib.GetSmallImage(0x29);
+                                return ImageLib.GetSmallImage(41);
 
                             case "Polyline":
-                                return ImageLib.GetSmallImage(0x2a);
+                                return ImageLib.GetSmallImage(42);
                         }
                         if (!(name == "Polygon"))
                         {
                             if (name == "MultiPatch")
                             {
-                                return ImageLib.GetSmallImage(0x2d);
+                                return ImageLib.GetSmallImage(45);
                             }
                         }
                         else
                         {
-                            return ImageLib.GetSmallImage(0x2b);
+                            return ImageLib.GetSmallImage(43);
                         }
                     }
                 }

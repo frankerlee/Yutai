@@ -92,7 +92,7 @@ namespace Yutai.ArcGIS.Common.Helpers
                     return;
             }
             export.ExportFileName = string_0;
-            int num2 = 0x60;
+            int num2 = 96;
             int num3 = 300;
             try
             {

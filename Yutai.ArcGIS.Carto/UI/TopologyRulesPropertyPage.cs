@@ -9,17 +9,12 @@ using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Carto.UI
 {
-    public class TopologyRulesPropertyPage : UserControl, ILayerAndStandaloneTablePropertyPage
+    public partial class TopologyRulesPropertyPage : UserControl, ILayerAndStandaloneTablePropertyPage
     {
         private bool bool_0 = false;
-        private SimpleButton btnDescription;
-        private ColumnHeader columnHeader_0;
-        private ColumnHeader columnHeader_1;
-        private ColumnHeader columnHeader_2;
         private Container container_0 = null;
         private ITopology itopology_0 = null;
         private ITopologyLayer itopologyLayer_0 = null;
-        private ListView listView1;
 
         public TopologyRulesPropertyPage()
         {
@@ -35,55 +30,7 @@ namespace Yutai.ArcGIS.Carto.UI
         {
         }
 
-        protected override void Dispose(bool bool_1)
-        {
-            if (bool_1 && (this.container_0 != null))
-            {
-                this.container_0.Dispose();
-            }
-            base.Dispose(bool_1);
-        }
-
-        private void InitializeComponent()
-        {
-            this.listView1 = new ListView();
-            this.columnHeader_0 = new ColumnHeader();
-            this.columnHeader_1 = new ColumnHeader();
-            this.columnHeader_2 = new ColumnHeader();
-            this.btnDescription = new SimpleButton();
-            base.SuspendLayout();
-            this.listView1.Columns.AddRange(new ColumnHeader[] { this.columnHeader_0, this.columnHeader_1, this.columnHeader_2 });
-            this.listView1.FullRowSelect = true;
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new Point(8, 8);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new Size(0x128, 0xd0);
-            this.listView1.TabIndex = 0;
-            this.listView1.View = View.Details;
-            this.listView1.SelectedIndexChanged += new EventHandler(this.listView1_SelectedIndexChanged);
-            this.columnHeader_0.Text = "要素类";
-            this.columnHeader_0.Width = 0x4c;
-            this.columnHeader_1.Text = "规则";
-            this.columnHeader_1.Width = 0x87;
-            this.columnHeader_2.Text = "要素类";
-            this.columnHeader_2.Width = 0x4b;
-            this.btnDescription.Enabled = false;
-            this.btnDescription.Location = new Point(0x138, 8);
-            this.btnDescription.Name = "btnDescription";
-            this.btnDescription.Size = new Size(0x40, 0x20);
-            this.btnDescription.TabIndex = 1;
-            this.btnDescription.Text = "描述";
-            this.btnDescription.Visible = false;
-            this.btnDescription.Click += new EventHandler(this.btnDescription_Click);
-            base.Controls.Add(this.btnDescription);
-            base.Controls.Add(this.listView1);
-            base.Name = "TopologyRulesPropertyPage";
-            base.Size = new Size(0x188, 0x110);
-            base.Load += new EventHandler(this.TopologyRulesPropertyPage_Load);
-            base.ResumeLayout(false);
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+ private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.listView1.SelectedItems.Count > 0)
             {
@@ -241,7 +188,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
-        internal class TopologyRuleWrap
+        internal partial class TopologyRuleWrap
         {
             private bool bool_0 = false;
             private ITopologyRule itopologyRule_0 = null;

@@ -190,24 +190,24 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
         {
             base.SuspendLayout();
             base.BottomToolStripPanel.Dock = DockStyle.Bottom;
-            base.BottomToolStripPanel.Location = new Point(0, 0xaf);
+            base.BottomToolStripPanel.Location = new Point(0, 175);
             base.BottomToolStripPanel.Name = "";
             base.BottomToolStripPanel.Orientation = Orientation.Horizontal;
             base.BottomToolStripPanel.RowMargin = new Padding(3, 0, 0, 0);
             base.BottomToolStripPanel.Size = new Size(150, 0);
-            base.ContentPanel.Size = new Size(150, 0xaf);
+            base.ContentPanel.Size = new Size(150, 175);
             base.LeftToolStripPanel.Dock = DockStyle.Left;
             base.LeftToolStripPanel.Location = new Point(0, 0);
             base.LeftToolStripPanel.Name = "";
             base.LeftToolStripPanel.Orientation = Orientation.Vertical;
             base.LeftToolStripPanel.RowMargin = new Padding(0, 3, 0, 0);
-            base.LeftToolStripPanel.Size = new Size(0, 0xaf);
+            base.LeftToolStripPanel.Size = new Size(0, 175);
             base.RightToolStripPanel.Dock = DockStyle.Right;
             base.RightToolStripPanel.Location = new Point(150, 0);
             base.RightToolStripPanel.Name = "";
             base.RightToolStripPanel.Orientation = Orientation.Vertical;
             base.RightToolStripPanel.RowMargin = new Padding(0, 3, 0, 0);
-            base.RightToolStripPanel.Size = new Size(0, 0xaf);
+            base.RightToolStripPanel.Size = new Size(0, 175);
             base.TopToolStripPanel.Dock = DockStyle.Top;
             base.TopToolStripPanel.Location = new Point(0, 0);
             base.TopToolStripPanel.Name = "";

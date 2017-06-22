@@ -25,8 +25,8 @@ namespace Yutai.ArcGIS.Common.ControlExtend
         private int int_2 = 50;
         private LinearGradientBrush linearGradientBrush_0;
         private LinearGradientBrush linearGradientBrush_1;
-        private Pen pen_0 = new Pen(Color.FromArgb(0xef, 0xef, 0xef));
-        private Pen pen_1 = new Pen(Color.FromArgb(0x68, 0x68, 0x68));
+        private Pen pen_0 = new Pen(Color.FromArgb(239, 239, 239));
+        private Pen pen_1 = new Pen(Color.FromArgb(104, 104, 104));
         private Pen pen_2 = new Pen(Color.FromArgb(190, 190, 190));
         private Rectangle rectangle_0;
         private Rectangle rectangle_1;
@@ -312,7 +312,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
         {
             get
             {
-                return new Size(100, 0x1d);
+                return new Size(100, 29);
             }
         }
 

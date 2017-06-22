@@ -14,11 +14,8 @@ using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 {
-    internal class CADDataConvertControl : UserControl
+    internal partial class CADDataConvertControl : UserControl
     {
-        private SimpleButton btnDelete;
-        private SimpleButton btnSelectInputFeatures;
-        private SimpleButton btnSelectOutLocation;
         private Container container_0 = null;
         private IArray iarray_0 = new ArrayClass();
         private IArray iarray_1 = new ArrayClass();
@@ -29,15 +26,6 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         private IName iname_1 = null;
         private int int_0 = 0;
         private int int_1 = 1;
-        private Label label2;
-        private Label labelFeatureClass;
-        private Label lblObj;
-        private Label lblSelectObjects;
-        private ListView listView1;
-        private Panel panel1;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.ProgressBar progressBar2;
-        private TextEdit txtOutLocation;
 
         public CADDataConvertControl()
         {
@@ -160,16 +148,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.iarray_1.RemoveAll();
         }
 
-        protected override void Dispose(bool bool_0)
-        {
-            if (bool_0 && (this.container_0 != null))
-            {
-                this.container_0.Dispose();
-            }
-            base.Dispose(bool_0);
-        }
-
-        public void Do()
+ public void Do()
         {
             try
             {
@@ -197,111 +176,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
-        private void InitializeComponent()
-        {
-           System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CADDataConvertControl));
-            this.lblSelectObjects = new Label();
-            this.txtOutLocation = new TextEdit();
-            this.label2 = new Label();
-            this.listView1 = new ListView();
-            this.btnDelete = new SimpleButton();
-            this.btnSelectInputFeatures = new SimpleButton();
-            this.btnSelectOutLocation = new SimpleButton();
-            this.panel1 = new Panel();
-            this.progressBar2 = new System.Windows.Forms.ProgressBar();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.lblObj = new Label();
-            this.labelFeatureClass = new Label();
-            this.txtOutLocation.Properties.BeginInit();
-            this.panel1.SuspendLayout();
-            base.SuspendLayout();
-            this.lblSelectObjects.AutoSize = true;
-            this.lblSelectObjects.Location = new Point(8, 8);
-            this.lblSelectObjects.Name = "lblSelectObjects";
-            this.lblSelectObjects.Size = new Size(0x42, 0x11);
-            this.lblSelectObjects.TabIndex = 0;
-            this.lblSelectObjects.Text = "输入要素类";
-            this.txtOutLocation.Location = new Point(8, 0xd8);
-            this.txtOutLocation.Name = "txtOutLocation";
-            this.txtOutLocation.Properties.ReadOnly = true;
-            this.txtOutLocation.Size = new Size(0xf8, 0x17);
-            this.txtOutLocation.TabIndex = 3;
-            this.label2.AutoSize = true;
-            this.label2.Location = new Point(8, 0xc0);
-            this.label2.Name = "label2";
-            this.label2.Size = new Size(0x36, 0x11);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "输出位置";
-            this.listView1.GridLines = true;
-            this.listView1.Location = new Point(8, 0x20);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new Size(0x100, 0x98);
-            this.listView1.TabIndex = 6;
-            this.listView1.View = View.SmallIcon;
-            this.listView1.SelectedIndexChanged += new EventHandler(this.listView1_SelectedIndexChanged);
-            this.btnDelete.Enabled = false;
-            this.btnDelete.Image = (Image) resources.GetObject("btnDelete.Image");
-            this.btnDelete.Location = new Point(0x110, 0x48);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new Size(0x18, 0x18);
-            this.btnDelete.TabIndex = 9;
-            this.btnDelete.Click += new EventHandler(this.btnDelete_Click);
-            this.btnSelectInputFeatures.Image = (Image) resources.GetObject("btnSelectInputFeatures.Image");
-            this.btnSelectInputFeatures.Location = new Point(0x110, 0x20);
-            this.btnSelectInputFeatures.Name = "btnSelectInputFeatures";
-            this.btnSelectInputFeatures.Size = new Size(0x18, 0x18);
-            this.btnSelectInputFeatures.TabIndex = 8;
-            this.btnSelectInputFeatures.Click += new EventHandler(this.btnSelectInputFeatures_Click);
-            this.btnSelectOutLocation.Image = (Image) resources.GetObject("btnSelectOutLocation.Image");
-            this.btnSelectOutLocation.Location = new Point(0x108, 0xd8);
-            this.btnSelectOutLocation.Name = "btnSelectOutLocation";
-            this.btnSelectOutLocation.Size = new Size(0x18, 0x18);
-            this.btnSelectOutLocation.TabIndex = 10;
-            this.btnSelectOutLocation.Click += new EventHandler(this.btnSelectOutLocation_Click);
-            this.panel1.Controls.Add(this.progressBar2);
-            this.panel1.Controls.Add(this.progressBar1);
-            this.panel1.Controls.Add(this.lblObj);
-            this.panel1.Controls.Add(this.labelFeatureClass);
-            this.panel1.Location = new Point(8, 8);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new Size(0x130, 240);
-            this.panel1.TabIndex = 11;
-            this.panel1.Visible = false;
-            this.progressBar2.Location = new Point(8, 0x80);
-            this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new Size(0x100, 0x18);
-            this.progressBar2.TabIndex = 3;
-            this.progressBar1.Location = new Point(8, 40);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new Size(0x100, 0x18);
-            this.progressBar1.TabIndex = 2;
-            this.lblObj.AutoSize = true;
-            this.lblObj.Location = new Point(8, 0x55);
-            this.lblObj.Name = "lblObj";
-            this.lblObj.Size = new Size(0, 0x11);
-            this.lblObj.TabIndex = 1;
-            this.labelFeatureClass.AutoSize = true;
-            this.labelFeatureClass.Location = new Point(8, 8);
-            this.labelFeatureClass.Name = "labelFeatureClass";
-            this.labelFeatureClass.Size = new Size(0, 0x11);
-            this.labelFeatureClass.TabIndex = 0;
-            base.Controls.Add(this.panel1);
-            base.Controls.Add(this.btnSelectOutLocation);
-            base.Controls.Add(this.listView1);
-            base.Controls.Add(this.label2);
-            base.Controls.Add(this.txtOutLocation);
-            base.Controls.Add(this.lblSelectObjects);
-            base.Controls.Add(this.btnSelectInputFeatures);
-            base.Controls.Add(this.btnDelete);
-            base.Name = "CADDataConvertControl";
-            base.Size = new Size(0x130, 0x108);
-            base.Load += new EventHandler(this.CADDataConvertControl_Load);
-            this.txtOutLocation.Properties.EndInit();
-            this.panel1.ResumeLayout(false);
-            base.ResumeLayout(false);
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+ private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.btnDelete.Enabled = this.listView1.SelectedItems.Count > 0;
         }

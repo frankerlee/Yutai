@@ -11,19 +11,12 @@ using Yutai.ArcGIS.Controls.SymbolUI;
 
 namespace Yutai.ArcGIS.Controls.ControlExtend
 {
-    public class RenderInfoListView : ListView
+    public partial class RenderInfoListView : ListView
     {
         public bool[] ColumnEditables = null;
-        private IContainer components;
-        private ImageList lImageList;
         private int m_EditColumIndex = 0;
         private bool m_IsCancel = false;
-        private int m_nX;
-        private int m_nY;
-        private ListViewItem m_preListViewItem;
         private IStyleGallery m_pSG = null;
-        private ImageList sImageList;
-        private TextBox textBox;
 
         public event OnValueChangedHandler OnValueChanged;
 
@@ -40,7 +33,7 @@ namespace Yutai.ArcGIS.Controls.ControlExtend
         {
             if (base.Items.Count == 0)
             {
-                this.sImageList.ImageSize = new Size(0x10, 0x10);
+                this.sImageList.ImageSize = new Size(16, 16);
             }
             if (pObjects != null)
             {
@@ -107,7 +100,7 @@ namespace Yutai.ArcGIS.Controls.ControlExtend
             int size;
             if (base.Items.Count == 0)
             {
-                this.sImageList.ImageSize = new Size(0x10, 0x10);
+                this.sImageList.ImageSize = new Size(16, 16);
             }
             object tag = item.Tag;
             if (tag is IMarkerSymbol)
@@ -137,16 +130,7 @@ namespace Yutai.ArcGIS.Controls.ControlExtend
             base.Items.Add(item);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private void DrawSymbol(IFillSymbol pSymbol, Rectangle rect)
+ private void DrawSymbol(IFillSymbol pSymbol, Rectangle rect)
         {
             object before = Missing.Value;
             IPoint inPoint = new PointClass();
@@ -308,9 +292,9 @@ namespace Yutai.ArcGIS.Controls.ControlExtend
                 {
                     symbol2 = new SimpleFillSymbolClass();
                     IRgbColor color = new RgbColorClass {
-                        Red = 0xe3,
-                        Green = 0xec,
-                        Blue = 0x13
+                        Red = 227,
+                        Green = 236,
+                        Blue = 19
                     };
                     ((IFillSymbol) symbol2).Color = color;
                     goto Label_0532;
@@ -423,37 +407,7 @@ namespace Yutai.ArcGIS.Controls.ControlExtend
             symbol2.ResetDC();
         }
 
-        private void InitializeComponent()
-        {
-            this.components = new Container();
-            this.sImageList = new ImageList(this.components);
-            this.lImageList = new ImageList(this.components);
-            this.textBox = new TextBox();
-            base.SuspendLayout();
-            this.sImageList.ColorDepth = ColorDepth.Depth8Bit;
-            this.sImageList.ImageSize = new Size(0x10, 0x10);
-            this.sImageList.TransparentColor = Color.Transparent;
-            this.lImageList.ColorDepth = ColorDepth.Depth8Bit;
-            this.lImageList.ImageSize = new Size(0x30, 0x30);
-            this.lImageList.TransparentColor = Color.Transparent;
-            this.textBox.BorderStyle = BorderStyle.FixedSingle;
-            this.textBox.Location = new System.Drawing.Point(0xf3, 0x11);
-            this.textBox.Name = "textBox";
-            this.textBox.Size = new Size(100, 0x15);
-            this.textBox.TabIndex = 0;
-            this.textBox.Visible = false;
-            this.textBox.Leave += new EventHandler(this.textBox_Leave);
-            this.textBox.KeyPress += new KeyPressEventHandler(this.textBox_KeyPress);
-            base.FullRowSelect = true;
-            base.LargeImageList = this.lImageList;
-            base.SmallImageList = this.sImageList;
-            base.DoubleClick += new EventHandler(this.RenderInfoListView_DoubleClick);
-            base.SelectedIndexChanged += new EventHandler(this.SymbolListViewEx_SelectedIndexChanged);
-            base.MouseDown += new MouseEventHandler(this.RenderInfoListView_MouseDown);
-            base.ResumeLayout(false);
-        }
-
-        protected override void OnPaint(PaintEventArgs e)
+ protected override void OnPaint(PaintEventArgs e)
         {
             Rectangle bounds;
             int num;
@@ -685,9 +639,9 @@ namespace Yutai.ArcGIS.Controls.ControlExtend
                     }
                 }
             }
-            if ((num < 16.0) && (base.SmallImageList.ImageSize.Height > 0x10))
+            if ((num < 16.0) && (base.SmallImageList.ImageSize.Height > 16))
             {
-                base.SmallImageList.ImageSize = new Size(0x10, 0x10);
+                base.SmallImageList.ImageSize = new Size(16, 16);
             }
             if (num > 40.0)
             {

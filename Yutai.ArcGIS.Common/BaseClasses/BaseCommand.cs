@@ -25,14 +25,14 @@ namespace Yutai.ArcGIS.Common.BaseClasses
         {
             this.m_HookHelper = context as IYTHookHelper;
             
-            this.uint_0 = 0x80070057;
+            this.uint_0 = 2147942487;
             this.m_enabled = true;
         }
 
         protected BaseCommand(System.Drawing.Bitmap bitmap_0, string string_0, string string_1, int int_0, string string_2, string string_3, string string_4, string string_5)
         {
             
-            this.uint_0 = 0x80070057;
+            this.uint_0 = 2147942487;
             this.m_enabled = true;
             this.m_bitmap = bitmap_0;
             this.m_name = string_4;

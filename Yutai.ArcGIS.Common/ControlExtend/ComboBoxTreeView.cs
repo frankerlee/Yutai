@@ -7,8 +7,8 @@ namespace Yutai.ArcGIS.Common.ControlExtend
     {
         private ToolStripControlHost toolStripControlHost_0;
         private ToolStripDropDown toolStripDropDown_0;
-        private const int WM_LBUTTONDBLCLK = 0x203;
-        private const int WM_LBUTTONDOWN = 0x201;
+        private const int WM_LBUTTONDBLCLK = 515;
+        private const int WM_LBUTTONDOWN = 513;
 
         public ComboBoxTreeView()
         {
@@ -48,7 +48,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         protected override void WndProc(ref Message message_0)
         {
-            if ((message_0.Msg == 0x203) || (message_0.Msg == 0x201))
+            if ((message_0.Msg == 515) || (message_0.Msg == 513))
             {
                 this.method_0();
             }

@@ -12,9 +12,8 @@ using TOCControl = Yutai.ArcGIS.Controls.Controls.TOCTreeview.TOCControl;
 
 namespace Yutai.ArcGIS.Controls.Controls
 {
-    public class frmTOCTreeViewNew : DockContent
+    public partial class frmTOCTreeViewNew : DockContent
     {
-        private IContainer components = null;
         private IPageLayoutControl m_PageLayoutControl = null;
         private IMapControl2 m_pMainMapControl = null;
         internal TOCControl tocTreeView1;
@@ -33,16 +32,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             this.tocTreeView1.tocTreeViewEx1.SetMapCtrl(pMapControl);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (this.components != null))
-            {
-                this.components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private void frmDatasourceTreeView_OnMapReplaced(object newMap)
+ private void frmDatasourceTreeView_OnMapReplaced(object newMap)
         {
             this.tocTreeView1.tocTreeViewEx1.RefreshTree();
         }
@@ -56,34 +46,7 @@ namespace Yutai.ArcGIS.Controls.Controls
         {
         }
 
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTOCTreeViewNew));
-            this.tocTreeView1 = new TOCControl();
-            base.SuspendLayout();
-            this.tocTreeView1.AutoScroll = true;
-            this.tocTreeView1.BackColor = SystemColors.ControlLightLight;
-            this.tocTreeView1.Dock = DockStyle.Fill;
-            this.tocTreeView1.Location = new Point(0, 0);
-            this.tocTreeView1.Name = "tocTreeView1";
-            this.tocTreeView1.Size = new Size(0x124, 0x111);
-            this.tocTreeView1.TabIndex = 0;
-            base.AutoScaleDimensions = new SizeF(6f, 12f);
-            base.AutoScaleMode = AutoScaleMode.Font;
-            base.ClientSize = new Size(0x124, 0x111);
-            base.Controls.Add(this.tocTreeView1);
-            base.DockAreas = DockAreas.DockBottom | DockAreas.DockTop | DockAreas.DockRight | DockAreas.DockLeft | DockAreas.Float;
-            base.HideOnClose = true;
-            base.Icon = (Icon) resources.GetObject("$this.Icon");
-            base.Name = "frmTOCTreeViewNew";
-            base.ShowHint = DockState.DockLeft;
-            base.TabText = "图层树";
-            this.Text = "图层树";
-            base.Load += new EventHandler(this.frmTOCTreeViewNew_Load);
-            base.ResumeLayout(false);
-        }
-
-        private void m_pTOCTreeViewWrap_CurrentLayerChanged(object sender, EventArgs e)
+ private void m_pTOCTreeViewWrap_CurrentLayerChanged(object sender, EventArgs e)
         {
             if (this.CurrentLayerChanged != null)
             {

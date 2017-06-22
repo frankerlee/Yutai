@@ -397,9 +397,9 @@ namespace Yutai.ArcGIS.Catalog
             {
                 if (this.idatasetName_0.Type == esriDatasetType.esriDTRasterCatalog)
                 {
-                    return ImageLib.GetSmallImage(0x2e);
+                    return ImageLib.GetSmallImage(46);
                 }
-                return ImageLib.GetSmallImage(0x11);
+                return ImageLib.GetSmallImage(17);
             }
         }
 
@@ -409,9 +409,9 @@ namespace Yutai.ArcGIS.Catalog
             {
                 if (this.idatasetName_0.Type == esriDatasetType.esriDTRasterCatalog)
                 {
-                    return ImageLib.GetSmallImage(0x2e);
+                    return ImageLib.GetSmallImage(46);
                 }
-                return ImageLib.GetSmallImage(0x11);
+                return ImageLib.GetSmallImage(17);
             }
         }
 
@@ -463,9 +463,9 @@ namespace Yutai.ArcGIS.Catalog
             {
                 if (this.idatasetName_0.Type == esriDatasetType.esriDTRasterCatalog)
                 {
-                    return ImageLib.GetSmallImage(0x2e);
+                    return ImageLib.GetSmallImage(46);
                 }
-                return ImageLib.GetSmallImage(0x11);
+                return ImageLib.GetSmallImage(17);
             }
         }
 
@@ -475,9 +475,9 @@ namespace Yutai.ArcGIS.Catalog
             {
                 if (this.idatasetName_0.Type == esriDatasetType.esriDTRasterCatalog)
                 {
-                    return ImageLib.GetSmallImage(0x2e);
+                    return ImageLib.GetSmallImage(46);
                 }
-                return ImageLib.GetSmallImage(0x11);
+                return ImageLib.GetSmallImage(17);
             }
         }
 
