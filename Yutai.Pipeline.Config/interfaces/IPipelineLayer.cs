@@ -10,9 +10,9 @@ namespace Yutai.Pipeline.Config.interfaces
 {
     public interface IPipelineLayer
     {
-        IBasicPipePoint PointLayer { get; set; }
-        IBasicPipeLine LineLayer { get; set; }
-        IBasicPointAssist PointAssistLayer { get; set; }
-        IBasicLineAssist LineAssistLayer { get; set; }
+        IPipePoint PointLayer { get; set; }
+        IPipeLine LineLayer { get; set; }
+        IPointAssist PointAssistLayer { get; set; }
+        ILineAssist LineAssistLayer { get; set; }
     }
 }

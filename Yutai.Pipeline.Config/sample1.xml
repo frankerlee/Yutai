@@ -1,0 +1,43 @@
+﻿<PipelineConfig>
+  <PipelineLayers>
+    <PipelineLayer>
+      <PointLayer Name="上水管线点" AliasName="上水管线点" Template="PipePoint">
+        <Fields>
+          <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
+        </Fields>
+      </PointLayer>
+      <LineLayer Name="上水管线线" AliasName="上水管线线" Template="PipeLine">
+        //这部分是可选的，就是如果有特殊需要修改的在这儿修改，有点类似于override
+        <Fields>
+          <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
+        </Fields>
+      </LineLayer>
+    </PipelineLayer>
+  </PipelineLayers>
+  <LayerTemplates>
+    <Template Name="PipePoint" Caption="管线点模板">
+      <Fields>
+        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
+        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
+        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
+        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
+        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
+        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
+        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
+        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
+      </Fields>
+    </Template>
+    <Template Name="PipeLine" Caption="管线线模板">
+      <Fields>
+        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
+        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
+        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
+        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
+        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
+        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
+        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
+        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
+      </Fields>
+    </Template>
+  </LayerTemplates>
+</PipelineConfig>

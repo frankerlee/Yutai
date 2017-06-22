@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="interfaces\IBasicAnnotation.cs" />
+    <Compile Include="interfaces\IBasicLayerInfo.cs" />
     <Compile Include="interfaces\IBasicLineAssist.cs" />
     <Compile Include="interfaces\IBasicPointAssist.cs" />
     <Compile Include="interfaces\IBasicLineRenderer.cs" />
@@ -56,9 +57,13 @@
     <Compile Include="interfaces\IBasicPipeNetwork.cs" />
     <Compile Include="interfaces\IBasicPipePoint.cs" />
     <Compile Include="interfaces\IBasicPointRenderer.cs" />
+    <Compile Include="interfaces\ILineAssist.cs" />
+    <Compile Include="interfaces\IPipeLine.cs" />
     <Compile Include="interfaces\IPipelineConfig.cs" />
     <Compile Include="interfaces\IPipelineLayer.cs" />
     <Compile Include="interfaces\IPipelineTemplate.cs" />
+    <Compile Include="interfaces\IPipePoint.cs" />
+    <Compile Include="interfaces\IPointAssist.cs" />
     <Compile Include="interfaces\IYTField.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
