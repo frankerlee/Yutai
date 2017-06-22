@@ -4,6 +4,7 @@ using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Locator.Menu;
 using Yutai.Plugins.Mef;
 using Yutai.Plugins.Mvp;
+using Yutai.Plugins.Services;
 
 namespace Yutai.Plugins.Locator
 {
@@ -27,7 +28,8 @@ namespace Yutai.Plugins.Locator
             _menuGenerator = context.Container.GetInstance<MenuGenerator>();
             _dockPanelService = context.Container.GetInstance<DockPanelService>();
             _projectListener = context.Container.GetInstance<ProjectListener>();
-            
+           // IPluginManager plugin = _context.Container.GetSingleton<IPluginManager>();
+
         }
 
        

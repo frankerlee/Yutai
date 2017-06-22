@@ -1,10 +1,8 @@
-using ApplicationData;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
-using PipeConfig;
 using System;
 using System.ComponentModel;
 using System.Data;
