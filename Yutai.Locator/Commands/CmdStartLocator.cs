@@ -34,7 +34,7 @@ namespace Yutai.Plugins.Locator.Commands
             if (_dockService == null)
                 _dockService = _context.Container.GetInstance<DockPanelService>();
           
-            if (sContext.YutaiProject == null ||sContext.YutaiProject.Locators==null || sContext.YutaiProject.Locators.Count==0 )
+            if (sContext.YutaiProject == null )
             {
                 MessageService.Current.Warn("当前项目没有设置定位器");
 

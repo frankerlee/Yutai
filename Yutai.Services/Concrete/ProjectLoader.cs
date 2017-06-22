@@ -44,15 +44,16 @@ namespace Yutai.Services.Concrete
 
             try
             {
+                //因为插件引导的时候需要读取项目文档里面的配置，因此，这个参数必须在插件引导前赋值
+                _context.YutaiProject = project;
                 RestoreMxdDocument(project);
-                RestoreSxdDocument(project);
+              //  RestoreSxdDocument(project);
 
-             //   RestorePlugins(project);
+                RestorePlugins(project);
 
                 RestoreExtents(project);
 
-                RestoreLocator(project);
-
+                
 
                 return true;
             }

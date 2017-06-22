@@ -1,8 +1,16 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using System.Runtime.Serialization;
 
-namespace Yutai.Services.Serialization
+namespace Yutai.Plugins.Locator
 {
+    [DataContract(Name = "PluginConfig", Namespace = "")]
+    public class PluginConfig
+    {
+        public PluginConfig() { }
+        [DataMember(Name = "Locators", Order = 0)]
+        public List<XmlLocator> Locators { get; set; }
+    }
     [DataContract(Name="Locator",Namespace = "")]
     public class XmlLocator
     {

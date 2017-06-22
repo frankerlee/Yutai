@@ -16,13 +16,13 @@ namespace Yutai.Services.Serialization
 
             Layers = context.Legend.Layers.Select(l => new XmlLayer(l, l.Handle == selectedHandle)).ToList();
 
-            Groups = context.Legend.Groups.Select(g => new XmlGroup(g)).ToList();
+            Groups = context.Legend.Groups.Select(g => new XmlGroup(g)).ToList();*/
 
             Plugins = context.PluginManager.ActivePlugins.Select(p => new XmlPlugin()
             {
                 Name = p.Identity.Name,
                 Guid = p.Identity.Guid
-            }).ToList();*/
+            }).ToList();
 
             /* Map = new XmlMap
              {
@@ -40,6 +40,14 @@ namespace Yutai.Services.Serialization
              }*/
         }
 
+        public XmlPlugin FindPlugin(string pluginGuid)
+        {
+            Guid findGuid=new Guid(pluginGuid);
+            return Plugins.FirstOrDefault(c => c.Guid == findGuid);
+        }
+
+        
+
         [DataMember(Name = "MapDoc",Order=0)]
         public string MapDocumentName { get; set; }
 
@@ -55,13 +63,11 @@ namespace Yutai.Services.Serialization
         [DataMember(IsRequired = false,Order = 4)]
         public List<XmlPlugin> Plugins { get; set; }
 
+      
         [DataMember(IsRequired = false,Order = 5)]
-        public List<XmlLocator> Locators { get; set; }
-
-        [DataMember(IsRequired = false,Order = 6)]
         public XmlProjectSettings Settings { get; set; }
 
-        [DataMember(IsRequired = false, Order = 7)]
+        [DataMember(IsRequired = false, Order = 6)]
         public XmlOverview Overview { get; set; }
     }
 

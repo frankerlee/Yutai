@@ -1,0 +1,32 @@
+﻿<PluginConfig>
+<Locators>
+  <Locator>
+    <Name>地理编码定位</Name>
+    <Caption>地理编码定位</Caption>
+    <Layer>地理编码</Layer>
+    <SearchFields>名称,地址</SearchFields>
+    <NameField>名称</NameField>
+    <DeacriptionField>类别</DeacriptionField>
+    <AddressField>地址</AddressField>
+    <TelephoneField>电话</TelephoneField>
+    <PhotoField></PhotoField>
+    <OIDField>OBJECTID</OIDField>
+    <ShapeField>Shape</ShapeField>
+    <DisplayOrder>1</DisplayOrder>
+  </Locator>
+  <Locator>
+    <Name>道路定位</Name>
+    <Caption>道路定位</Caption>
+    <Layer>LRDL_1000</Layer>
+    <SearchFields>RN,NAME</SearchFields>
+    <NameField>NAME</NameField>
+    <DeacriptionField>RTEG</DeacriptionField>
+    <AddressField>RN</AddressField>
+    <TelephoneField>WIDTH</TelephoneField>
+    <PhotoField></PhotoField>
+    <OIDField>OBJECTID</OIDField>
+    <ShapeField>Shape</ShapeField>
+    <DisplayOrder>2</DisplayOrder>
+  </Locator>
+</Locators>
+</PluginConfig>

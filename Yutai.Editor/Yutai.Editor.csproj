@@ -268,6 +268,10 @@
       <Name>Yutai.Plugins</Name>
       <Private>False</Private>
     </ProjectReference>
+    <ProjectReference Include="..\Yutai.Services\Yutai.Services.csproj">
+      <Project>{E95B46F1-A8D7-41D8-9F5A-B57BD748A62B}</Project>
+      <Name>Yutai.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Yutai.Shared\Yutai.Shared.csproj">
       <Project>{4a9b3243-2b0a-4e87-9b23-71a58c1f318d}</Project>
       <Name>Yutai.Shared</Name>

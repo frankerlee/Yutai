@@ -109,7 +109,6 @@
     <Compile Include="Serialization\Legacy\YutaiProject.cs" />
     <Compile Include="Serialization\XmlConfig.cs" />
     <Compile Include="Serialization\XmlEnvelope.cs" />
-    <Compile Include="Serialization\XmlLocator.cs" />
     <Compile Include="Serialization\XmlPlugin.cs" />
     <Compile Include="Serialization\XmlProject.cs" />
     <Compile Include="Serialization\XmlProjectSettings.cs" />

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
@@ -15,6 +16,7 @@ using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Services;
 using Yutai.Services.Serialization;
+using Yutai.Shared;
 using WorkspaceHelper = Yutai.ArcGIS.Common.Helpers.WorkspaceHelper;
 
 namespace Yutai.Plugins.Locator.Views
@@ -29,6 +31,7 @@ namespace Yutai.Plugins.Locator.Views
         private IMap _map;
         private int _searchCount = 0;
         private bool _zoomShape = false;
+        private List<XmlLocator> _locators;
 
         
         public LocatorDockPanel(IAppContext context)
@@ -168,10 +171,11 @@ namespace Yutai.Plugins.Locator.Views
 
         private XmlLocator FindLocatorByName(string toString)
         {
-            ISecureContext secureContext = _context as ISecureContext;
-            if (secureContext.YutaiProject == null) return null;
-            if (secureContext.YutaiProject.Locators == null) return null;
-            foreach (XmlLocator locator in secureContext.YutaiProject.Locators)
+      
+            if (_locators == null) return null;
+
+            
+            foreach (XmlLocator locator in _locators)
             {
                 if (locator.Name == toString)
                     return locator;
@@ -278,12 +282,27 @@ namespace Yutai.Plugins.Locator.Views
             this.cmbLocators.Items.Clear();
             ISecureContext secureContext = _context as ISecureContext;
             if(secureContext.YutaiProject==null) return;
-            if (secureContext.YutaiProject.Locators == null) return;
-            foreach (XmlLocator locator in secureContext.YutaiProject.Locators)
+            XmlPlugin plugCfg = secureContext.YutaiProject.FindPlugin("2b81c89a-ee45-4276-9dc1-72bbbf07f53f");
+            if (plugCfg == null) return;
+            //修改为从配置文件里面读取
+            string locatorXml = FileHelper.GetFullPath(plugCfg.ConfigXML);
+            FileInfo fileInfo=new FileInfo(locatorXml);
+            if (!fileInfo.Exists) return;
+            using (var reader = new StreamReader(locatorXml))
             {
-                this.cmbLocators.Items.Add(locator.Name);
+                string state = reader.ReadToEnd();
+                var config = state.Deserialize<PluginConfig>();
+                _locators = config.Locators;
+                foreach (XmlLocator locator in config.Locators)
+                {
+                    this.cmbLocators.Items.Add(locator.Name);
+                }
+                _map = _context.MapControl.ActiveView as IMap;
             }
-            _map=_context.MapControl.ActiveView as IMap;
+
+
+
+           
            
         }
         

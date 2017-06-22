@@ -27,6 +27,7 @@ namespace Yutai.Plugins.Locator
             _menuGenerator = context.Container.GetInstance<MenuGenerator>();
             _dockPanelService = context.Container.GetInstance<DockPanelService>();
             _projectListener = context.Container.GetInstance<ProjectListener>();
+            
         }
 
        
