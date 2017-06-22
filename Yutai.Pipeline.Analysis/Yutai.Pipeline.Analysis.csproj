@@ -60,6 +60,18 @@
     <Reference Include="ESRI.ArcGIS.SystemUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Infragistics4.Documents.Excel.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+    <Reference Include="Infragistics4.Olap.DataSource.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Shared.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.DataVisualization.Shared.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.Misc.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinChart.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinDataSource.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinEditors.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinGrid.ExcelExport.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinGrid.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinPrintPreviewDialog.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -208,6 +220,90 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="QueryCommands\CmdQueryBasic.cs" />
+    <Compile Include="QueryCommands\CmdQueryByAddress.cs" />
+    <Compile Include="QueryCommands\CmdQueryByCMIS.cs" />
+    <Compile Include="QueryCommands\CmdQueryByDate.cs" />
+    <Compile Include="QueryCommands\CmdQueryByDia.cs" />
+    <Compile Include="QueryCommands\CmdQueryByGJJTJ.cs" />
+    <Compile Include="QueryCommands\CmdQueryByItem.cs" />
+    <Compile Include="QueryCommands\CmdQueryByJdxz.cs" />
+    <Compile Include="QueryCommands\CmdQueryByJMD.cs" />
+    <Compile Include="QueryCommands\CmdQueryByMaterial.cs" />
+    <Compile Include="QueryCommands\CmdQueryByMSTJ.cs" />
+    <Compile Include="QueryCommands\CmdQueryComplex.cs" />
+    <Compile Include="QueryCommands\CmdQueryLine.cs" />
+    <Compile Include="QueryCommands\CmdQueryRelate.cs" />
+    <Compile Include="QueryCommands\CmdQueryRoadIntersect.cs" />
+    <Compile Include="QueryCommands\CmdStartClassForm.cs" />
+    <Compile Include="QueryCommands\CmdStartReportForm.cs" />
+    <Compile Include="QueryForms\BaseQueryUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\ClassCollectformsUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\ClassCollectResultForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\ComplexQueryUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\CustomColumnChooser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\frmPromptQuerying.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\QueryIntersectionUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\QueryResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\RelateQueryUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\SimpleQueryByAddressUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\SimpleQueryByAddressUI1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\SimpleQueryByCmisUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\SimpleQueryByDataUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\SimpleQueryByDiaUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\SimpleQueryByItemUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\SimpleQueryByJdxzUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\SimpleQueryByJMDUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\SimpleQueryByMaterialUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\SimpleStat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\SimpleStatMyshUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\Splash.cs" />
+    <Compile Include="QueryForms\StatForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForms\StatReportformsUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Yutai.ArcGIS.Common\Yutai.ArcGIS.Common.csproj">
@@ -303,9 +399,76 @@
       <DependentUpon>VerDistDlg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu\MenuLayout.xml" />
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QueryForms\BaseQueryUI.resx">
+      <DependentUpon>BaseQueryUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QueryForms\ClassCollectformsUI.resx">
+      <DependentUpon>ClassCollectformsUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QueryForms\ClassCollectResultForm.resx">
+      <DependentUpon>ClassCollectResultForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QueryForms\ComplexQueryUI.resx">
+      <DependentUpon>ComplexQueryUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QueryForms\CustomColumnChooser.resx">
+      <DependentUpon>CustomColumnChooser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QueryForms\frmPromptQuerying.resx">
+      <DependentUpon>frmPromptQuerying.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QueryForms\QueryIntersectionUI.resx">
+      <DependentUpon>QueryIntersectionUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QueryForms\QueryResult.resx">
+      <DependentUpon>QueryResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QueryForms\RelateQueryUI.resx">
+      <DependentUpon>RelateQueryUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QueryForms\SimpleQueryByAddressUI.resx">
+      <DependentUpon>SimpleQueryByAddressUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QueryForms\SimpleQueryByAddressUI1.resx">
+      <DependentUpon>SimpleQueryByAddressUI1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QueryForms\SimpleQueryByCmisUI.resx">
+      <DependentUpon>SimpleQueryByCmisUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QueryForms\SimpleQueryByDataUI.resx">
+      <DependentUpon>SimpleQueryByDataUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QueryForms\SimpleQueryByDiaUI.resx">
+      <DependentUpon>SimpleQueryByDiaUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QueryForms\SimpleQueryByItemUI.resx">
+      <DependentUpon>SimpleQueryByItemUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QueryForms\SimpleQueryByJdxzUI.resx">
+      <DependentUpon>SimpleQueryByJdxzUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QueryForms\SimpleQueryByJMDUI.resx">
+      <DependentUpon>SimpleQueryByJMDUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QueryForms\SimpleQueryByMaterialUI.resx">
+      <DependentUpon>SimpleQueryByMaterialUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QueryForms\SimpleStat.resx">
+      <DependentUpon>SimpleStat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QueryForms\SimpleStatMyshUI.resx">
+      <DependentUpon>SimpleStatMyshUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QueryForms\StatForm.resx">
+      <DependentUpon>StatForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QueryForms\StatReportformsUI.resx">
+      <DependentUpon>StatReportformsUI.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
