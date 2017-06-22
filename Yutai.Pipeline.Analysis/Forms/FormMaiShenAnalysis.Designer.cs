@@ -247,7 +247,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		}
 
-        #endregion
+      
        
 		private CheckedListBox checkedListBox1;
 		private CheckBox chkRegionAnalysis;

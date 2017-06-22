@@ -21,28 +21,13 @@ namespace Yutai.Pipeline.Analysis.Forms
 	public partial class FormMaiShenAnalysis : XtraForm
 	{
 		private IContainer icontainer_0 = null;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
 
 
 		public RuleMs m_RuleMs = new RuleMs();
 
 		public int m_nTimerCount;
 
-
-        #region 自动生成
 
  public FormMaiShenAnalysis(IAppContext context)
 		{
@@ -66,9 +51,9 @@ namespace Yutai.Pipeline.Analysis.Forms
 					IFeatureLayer featureLayer = (IFeatureLayer)arrayList[i];
 					if (_context.PipeConfig.IsPipeLine(featureLayer.FeatureClass.AliasName))
 					{
-                        CheckListFeatureLayerItem @partial class = new CheckListFeatureLayerItem();
-						@partial class.m_pFeatureLayer = featureLayer;
-						this.checkedListBox1.Items.Add(@partial class, true);
+                        CheckListFeatureLayerItem class1 = new CheckListFeatureLayerItem();
+						class1.m_pFeatureLayer = featureLayer;
+						this.checkedListBox1.Items.Add(class1, true);
 					}
 				}
 			}
@@ -88,9 +73,9 @@ namespace Yutai.Pipeline.Analysis.Forms
 			{
 				text2 = "所在位置";
 			}
-			foreach (CheckListFeatureLayerItem @partial class in this.checkedListBox1.CheckedItems)
+			foreach (CheckListFeatureLayerItem pclass in this.checkedListBox1.CheckedItems)
 			{
-				IFeatureLayer ifeatureLayer = @partial class.m_pFeatureLayer;
+				IFeatureLayer ifeatureLayer = pclass.m_pFeatureLayer;
 				this.progressBar1.Visible = true;
 				this.progressBar1.Maximum = ifeatureLayer.FeatureClass.FeatureCount(null);
 				this.progressBar1.Step = 1;

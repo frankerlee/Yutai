@@ -298,7 +298,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			appearance.BackColor = SystemColors.Window;
 			appearance.BorderColor = SystemColors.InactiveCaption;
 			this.ultraGrid1.DisplayLayout.Appearance=(appearance);
-			this.ultraGrid1.DisplayLayout.AutoFitStyle=(AutoFitStyle) (1);
+			this.ultraGrid1.DisplayLayout.AutoFitStyle=(AutoFitStyle.ResizeAllColumns) ;
 			ultraGridBand.CardView=(true);
 			this.ultraGrid1.DisplayLayout.BandsSerializer.Add(ultraGridBand);
 			this.ultraGrid1.DisplayLayout.BorderStyle=(UIElementBorderStyle.Solid);
@@ -322,7 +322,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			appearance6.BackColor = SystemColors.Highlight;
 			appearance6.ForeColor = SystemColors.HighlightText;
 			this.ultraGrid1.DisplayLayout.Override.ActiveRowAppearance=(appearance6);
-			this.ultraGrid1.DisplayLayout.Override.AllowColSizing=(AllowColSizing) (3);
+		    this.ultraGrid1.DisplayLayout.Override.AllowColSizing = AllowColSizing.Free;
 			this.ultraGrid1.DisplayLayout.Override.BorderStyleCell=(UIElementBorderStyle.Dotted);
 			this.ultraGrid1.DisplayLayout.Override.BorderStyleRow=(UIElementBorderStyle.Dotted);
 			appearance7.BackColor = SystemColors.Window;
@@ -330,9 +330,9 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			appearance8.BorderColor = Color.Silver;
 			appearance8.TextTrimming = TextTrimming.EllipsisCharacter;
 			this.ultraGrid1.DisplayLayout.Override.CellAppearance=(appearance8);
-			this.ultraGrid1.DisplayLayout.Override.CellClickAction=(CellClickAction) (4);
+			this.ultraGrid1.DisplayLayout.Override.CellClickAction=CellClickAction.EditAndSelectText;
 			this.ultraGrid1.DisplayLayout.Override.CellPadding=(0);
-			this.ultraGrid1.DisplayLayout.Override.ColumnSizingArea=(ColumnSizingArea) (3);
+			this.ultraGrid1.DisplayLayout.Override.ColumnSizingArea=(ColumnSizingArea.EntireColumn);
 			appearance9.BackColor = SystemColors.Control;
 			appearance9.BackColor2 = SystemColors.ControlDark;
 			appearance9.BackGradientAlignment = GradientAlignment.Element;
@@ -341,7 +341,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			this.ultraGrid1.DisplayLayout.Override.GroupByRowAppearance=(appearance9);
 			appearance10.TextHAlignAsString = "Left";
 			this.ultraGrid1.DisplayLayout.Override.HeaderAppearance=(appearance10);
-			this.ultraGrid1.DisplayLayout.Override.HeaderClickAction=(HeaderClickAction) (3);
+			this.ultraGrid1.DisplayLayout.Override.HeaderClickAction=(HeaderClickAction.SortMulti);
 			this.ultraGrid1.DisplayLayout.Override.HeaderStyle=(HeaderStyle.WindowsXPCommand);
 			appearance11.BackColor = SystemColors.Window;
 			appearance11.BorderColor = Color.Silver;
@@ -349,7 +349,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			this.ultraGrid1.DisplayLayout.Override.RowSelectors=(DefaultableBoolean.False);
 			appearance12.BackColor = SystemColors.ControlLight;
 			this.ultraGrid1.DisplayLayout.Override.TemplateAddRowAppearance=(appearance12);
-			this.ultraGrid1.DisplayLayout.ScrollStyle=(ScrollStyle) (1);
+			this.ultraGrid1.DisplayLayout.ScrollStyle=(ScrollStyle.Immediate);
 			this.ultraGrid1.Location = new System.Drawing.Point(5, 270);
 			this.ultraGrid1.Name = "ultraGrid1";
 			this.ultraGrid1.Size = new Size(513, 110);

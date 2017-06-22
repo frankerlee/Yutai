@@ -105,29 +105,29 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 					this.ultraGrid1.DataSource=(this.pDataSet);
 					for (int i = 0; i < this.ultraGrid1.DisplayLayout.Bands[0].Columns.Count; i++)
 					{
-						this.ultraGrid1.DisplayLayout.Bands[0].Columns.get_Item(i).PerformAutoResize();
-						this.ultraGrid1.DisplayLayout.Bands[0].Columns.get_Item(i).Width=((int)((double)this.ultraGrid1.DisplayLayout.Bands[0].Columns.get_Item(i).get_Width() * 1.4));
-						string key = this.ultraGrid1.DisplayLayout.Bands[0].Columns.get_Item(i).Key;
+						this.ultraGrid1.DisplayLayout.Bands[0].Columns[i].PerformAutoResize();
+						this.ultraGrid1.DisplayLayout.Bands[0].Columns[i].Width=((int)((double)this.ultraGrid1.DisplayLayout.Bands[0].Columns[i].Width * 1.4));
+						string key = this.ultraGrid1.DisplayLayout.Bands[0].Columns[i].Key;
 						if (key == "管径" || key == "沟截面宽高")
 						{
-							this.ultraGrid1.DisplayLayout.Bands[0].Columns.get_Item(i).Header.set_Caption(key + "[毫米]");
+							this.ultraGrid1.DisplayLayout.Bands[0].Columns[i].Header.Caption=(key + "[毫米]");
 						}
 						else if (key.ToUpper() == "X" || key.ToUpper() == "Y" || key == "地面高程" || key == "起点高程" || key == "终点高程" || key == "起点埋深" || key == "终点埋深")
 						{
-							this.ultraGrid1.DisplayLayout.Bands[0].Columns.get_Item(i).Header.set_Caption(key + "[米]");
+							this.ultraGrid1.DisplayLayout.Bands[0].Columns[i].Header.Caption=(key + "[米]");
 						}
 						else if (key == "电压")
 						{
-							this.ultraGrid1.DisplayLayout.Bands[0].Columns.get_Item(i).Header.set_Caption("电压[千伏]");
+							this.ultraGrid1.DisplayLayout.Bands[0].Columns[i].Header.Caption=("电压[千伏]");
 						}
 						else if (key == "压力")
 						{
-							this.ultraGrid1.DisplayLayout.Bands[0].Columns.get_Item(i).Header.set_Caption("压力[兆帕]");
+							this.ultraGrid1.DisplayLayout.Bands[0].Columns[i].Header.Caption=("压力[兆帕]");
 						}
 						Regex regex = new Regex("^[\\u4e00-\\u9fa5]+$");
 						if (!regex.IsMatch(key))
 						{
-							this.ultraGrid1.DisplayLayout.Bands[0].Columns.get_Item(i).set_Hidden(true);
+							this.ultraGrid1.DisplayLayout.Bands[0].Columns[i].Hidden=(true);
 						}
 					}
 					this.FormatCurrencyColumns();
@@ -154,9 +154,9 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 						while (enumerator2.MoveNext())
 						{
 							UltraGridColumn current2 = enumerator2.Current;
-							if (current2.get_DataType().ToString() == "System.Decimal" || current2.get_DataType().ToString() == "System.Single" || current2.get_DataType().ToString() == "System.Double" || current2.get_DataType().ToString() == "System.Int32")
+							if (current2.DataType.ToString() == "System.Decimal" || current2.DataType.ToString() == "System.Single" || current2.DataType.ToString() == "System.Double" || current2.DataType.ToString() == "System.Int32")
 							{
-								current2.get_CellAppearance().TextHAlign = HAlign.Right;
+								current2.CellAppearance.TextHAlign = HAlign.Right;
 							}
 						}
 					}
@@ -202,11 +202,11 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				{
 					IField field = fields.get_Field(i);
 					string name = field.Name;
-					if (field.Type == 7)
+					if (field.Type == (esriFieldType) 7)
 					{
 						num = i;
 					}
-					if (field.Type == 6)
+					if (field.Type == (esriFieldType)6)
 					{
 						this.OidField = i;
 					}
@@ -215,7 +215,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 						Regex regex = new Regex("^[\\u4e00-\\u9fa5]+$");
 						if (regex.IsMatch(field.Name))
 						{
-							if (field.Type == 3 || field.Type == 1 || field.Type == 2 || field.Type == 0)
+							if (field.Type == (esriFieldType)3 || field.Type == (esriFieldType)1 || field.Type == (esriFieldType)2 || field.Type == 0)
 							{
 								this.CalField.Items.Add(field.Name);
 							}
@@ -223,7 +223,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 						}
 						if (!this.stable.Columns.Contains(fields.get_Field(i).Name))
 						{
-							switch (field.Type)
+							switch ((int)field.Type)
 							{
 							case 1:
 								this.stable.Columns.Add(name, typeof(int));
@@ -255,7 +255,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				}
 				else
 				{
-					if (feature.get_FeatureType() == 10 || feature.get_FeatureType() == 8)
+					if (feature.FeatureType == (esriFeatureType) 10 || feature.FeatureType == (esriFeatureType) 8)
 					{
 						this.StatWay.Items.Add("统计长度");
 						if (!this.stable.Columns.Contains("GD管线长度"))
@@ -265,21 +265,21 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 						flag = true;
 						this.nGeoType = 1;
 					}
-					else if (feature.get_FeatureType() == 7 || feature.get_FeatureType() == 9)
+					else if (feature.FeatureType == (esriFeatureType) 7 || feature.FeatureType == (esriFeatureType) 9)
 					{
 						this.nGeoType = 0;
 					}
-					else if (feature.get_FeatureType() == 1)
+					else if (feature.FeatureType == (esriFeatureType) 1)
 					{
-						if (feature.Shape.GeometryType == 1)
+						if (feature.Shape.GeometryType == (esriGeometryType) 1)
 						{
 							this.nGeoType = 0;
 						}
-						if (feature.Shape.GeometryType == 6 || feature.Shape.GeometryType == 3)
+						if (feature.Shape.GeometryType == (esriGeometryType) 6 || feature.Shape.GeometryType == (esriGeometryType) 3)
 						{
 							this.nGeoType = 3;
 						}
-						if (feature.Shape.GeometryType == 4)
+						if (feature.Shape.GeometryType == (esriGeometryType) 4)
 						{
 							this.nGeoType = 2;
 						}
@@ -288,7 +288,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 							this.nGeoType = -1;
 						}
 					}
-					if (feature.get_FeatureType() == 11)
+					if (feature.FeatureType == (esriFeatureType) 11)
 					{
 						this.nGeoType = 4;
 					}
@@ -363,14 +363,14 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 							array = new object[fields.FieldCount];
 							array2 = new object[4];
 						}
-						string text = feature.get_FeatureType().ToString();
+						string text = feature.FeatureType.ToString();
 						this.pFeatureSelection.Clear();
 						Splash.Status = "状态:填充表单,请稍候...";
 						while (feature != null)
 						{
 							double num2 = 0.0;
 							string text2 = feature.get_Value(this.OidField).ToString();
-							if (feature.Shape== null || feature.Shape.get_IsEmpty())
+							if (feature.Shape== null || feature.Shape.IsEmpty)
 							{
 								feature = this.pFeatureCursor.NextFeature();
 							}
@@ -478,7 +478,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 										object obj = feature.get_Value(j);
 										if (j < this.OidField)
 										{
-											if (field2.Type == 3 || field2.Type == 2)
+											if (field2.Type == (esriFieldType) 3 || field2.Type == (esriFieldType) 2)
 											{
 												if (obj != DBNull.Value)
 												{
@@ -490,7 +490,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 												}
 												feature.get_Value(j).ToString();
 											}
-											else if (field2.Type == 5)
+											else if (field2.Type == (esriFieldType) 5)
 											{
 												if (obj != DBNull.Value)
 												{
@@ -507,7 +507,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 												array[j + 1] = obj;
 											}
 										}
-										else if (field2.Type == 3 || field2.Type == 2)
+										else if (field2.Type == (esriFieldType) 3 || field2.Type == (esriFieldType) 2)
 										{
 											if (obj != DBNull.Value)
 											{
@@ -518,7 +518,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 												array[j] = obj;
 											}
 										}
-										else if (field2.Type == 5)
+										else if (field2.Type == (esriFieldType) 5)
 										{
 											if (obj != DBNull.Value)
 											{
@@ -625,10 +625,10 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
 		private void ultraGrid1_AfterSortChange(object sender, BandEventArgs e)
 		{
-			for (int i = 0; i < e.get_Band().get_SortedColumns().Count; i++)
+			for (int i = 0; i < e.Band.SortedColumns.Count; i++)
 			{
-				UltraGridColumn ultraGridColumn = e.get_Band().get_SortedColumns().get_Item(i);
-				if (ultraGridColumn.get_IsGroupByColumn())
+				UltraGridColumn ultraGridColumn = e.Band.SortedColumns[i];
+				if (ultraGridColumn.IsGroupByColumn)
 				{
 					this.StatField.Text = ultraGridColumn.Key;
 					break;
@@ -640,8 +640,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 		{
 			if (!this.bControlEvent && this.stable.Rows.Count > 0)
 			{
-				this.ultraGrid1.DisplayLayout.Bands[0].get_SortedColumns().Clear();
-				this.ultraGrid1.DisplayLayout.Bands[0].get_SortedColumns().Add(this.StatField.SelectedItem.ToString(), true, true);
+				this.ultraGrid1.DisplayLayout.Bands[0].SortedColumns.Clear();
+				this.ultraGrid1.DisplayLayout.Bands[0].SortedColumns.Add(this.StatField.SelectedItem.ToString(), true, true);
 			}
 		}
 
@@ -673,7 +673,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
 		private void ultraGrid1_MouseUp(object sender, MouseEventArgs e)
 		{
-			UIElement uIElement = this.ultraGrid1.DisplayLayout.get_UIElement().ElementFromPoint(new Point(e.X, e.Y));
+			UIElement uIElement = this.ultraGrid1.DisplayLayout.UIElement.ElementFromPoint(new System.Drawing.Point(e.X, e.Y));
 			if (uIElement != null)
 			{
 				UltraGridRow ultraGridRow = uIElement.GetContext(typeof(UltraGridRow)) as UltraGridRow;
@@ -682,16 +682,16 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
 		private void RayObjectBut_Click(object sender, EventArgs e)
 		{
-			SelectedRowsCollection rows = this.ultraGrid1.get_Selected().Rows;
+			SelectedRowsCollection rows = this.ultraGrid1.Selected.Rows;
 			if (rows.Count >= 1)
 			{
 				if (this.nGeoType == 0)
 				{
-					UltraGridColumn ultraGridColumn = this.ultraGrid1.DisplayLayout.Bands.get_Item(1).Columns[1];
-					UltraGridColumn ultraGridColumn2 = this.ultraGrid1.DisplayLayout.Bands.get_Item(1).Columns.get_Item(2);
+					UltraGridColumn ultraGridColumn = this.ultraGrid1.DisplayLayout.Bands[1].Columns[1];
+					UltraGridColumn ultraGridColumn2 = this.ultraGrid1.DisplayLayout.Bands[1].Columns[2];
 					for (int i = 0; i < rows.Count; i++)
 					{
-						UltraGridRow ultraGridRow = rows.get_Item(i);
+						UltraGridRow ultraGridRow = rows[i];
 						if (ultraGridRow is UltraGridGroupByRow)
 						{
 							UltraGridGroupByRow ultraGridGroupByRow = (UltraGridGroupByRow)ultraGridRow;
@@ -702,7 +702,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 								while (enumerator.MoveNext())
 								{
 									UltraGridRow current = enumerator.Current;
-									ChildBandsCollection childBands = current.get_ChildBands();
+									ChildBandsCollection childBands = current.ChildBands;
 									UltraGridChildBand ultraGridChildBand = childBands[0];
 									UltraGridRow ultraGridRow2 = ultraGridChildBand.Rows[0];
 									object cellValue = ultraGridRow2.GetCellValue(ultraGridColumn);
@@ -723,23 +723,23 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 								}
 							}
 							this.AllGeo = (IGeometry)pointCollection;
-							IEnvelope envelope = this.MapControl.get_Extent();
+							IEnvelope envelope = this.MapControl.Extent;
 							if (pointCollection.PointCount < 2)
 							{
 								envelope.CenterAt(pointCollection.get_Point(0));
 							}
 							else
 							{
-								envelope = this.AllGeo.get_Envelope();
+								envelope = this.AllGeo.Envelope;
 							}
-							this.MapControl.set_Extent(envelope);
+							this.MapControl.Extent=(envelope);
 						}
 						else if (ultraGridRow != null)
 						{
-							if (ultraGridRow.get_Band().get_Index() == 0)
+							if (ultraGridRow.Band.Index == 0)
 							{
-								ChildBandsCollection childBands2 = ultraGridRow.get_ChildBands();
-								if (!childBands2.get_HasChildRows())
+								ChildBandsCollection childBands2 = ultraGridRow.ChildBands;
+								if (!childBands2.HasChildRows)
 								{
 									MessageBox.Show("BAND1出现问题,请检查!");
 									break;
@@ -779,27 +779,27 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 									}
 								}
 								this.AllGeo = (IGeometry)pointCollection2;
-								IEnvelope envelope2 = this.MapControl.get_Extent();
+								IEnvelope envelope2 = this.MapControl.Extent;
 								if (pointCollection2.PointCount < 2)
 								{
 									envelope2.CenterAt(pointCollection2.get_Point(0));
 								}
 								else
 								{
-									envelope2 = this.AllGeo.get_Envelope();
+									envelope2 = this.AllGeo.Envelope;
 								}
-								this.MapControl.set_Extent(envelope2);
+								this.MapControl.Extent=(envelope2);
 							}
-							else if (ultraGridRow.get_Band().get_Index() == 1)
+							else if (ultraGridRow.Band.Index == 1)
 							{
 								object cellValue5 = ultraGridRow.GetCellValue(ultraGridColumn);
 								object cellValue6 = ultraGridRow.GetCellValue(ultraGridColumn2);
-								IEnvelope extent = this.MapControl.get_Extent();
+								IEnvelope extent = this.MapControl.Extent;
 								IPoint point3 = new PointClass();
 								point3.X=(Convert.ToDouble(cellValue5));
 								point3.Y=(Convert.ToDouble(cellValue6));
 								extent.CenterAt(point3);
-								this.MapControl.set_Extent(extent);
+								this.MapControl.Extent=(extent);
 								this.AllGeo = point3;
 							}
 						}
@@ -807,8 +807,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				}
 				else if (this.nGeoType == 1 || this.nGeoType == 3)
 				{
-					UltraGridColumn ultraGridColumn3 = this.ultraGrid1.DisplayLayout.Bands.get_Item(1).Columns.get_Item(2);
-					UltraGridColumn ultraGridColumn4 = this.ultraGrid1.DisplayLayout.Bands.get_Item(1).Columns.get_Item(3);
+					UltraGridColumn ultraGridColumn3 = this.ultraGrid1.DisplayLayout.Bands[1].Columns[2];
+					UltraGridColumn ultraGridColumn4 = this.ultraGrid1.DisplayLayout.Bands[1].Columns[3];
 					object missing3 = Type.Missing;
 					RowEnumerator enumerator = rows.GetEnumerator();
 					try
@@ -826,8 +826,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 									while (enumerator3.MoveNext())
 									{
 										UltraGridRow current4 = enumerator3.Current;
-										ChildBandsCollection childBands3 = current4.get_ChildBands();
-										UltraGridChildBand ultraGridChildBand3 = childBands3.Item[0];
+										ChildBandsCollection childBands3 = current4.ChildBands;
+										UltraGridChildBand ultraGridChildBand3 = childBands3[0];
 										IPointCollection pointCollection3 = new PathClass();
 										RowEnumerator enumerator4 = ultraGridChildBand3.Rows.GetEnumerator();
 										try
@@ -867,16 +867,16 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 							}
 							else
 							{
-								if (current3.get_Band().get_Index() == 0)
+								if (current3.Band.Index == 0)
 								{
-									ChildBandsCollection childBands4 = current3.get_ChildBands();
-									if (!childBands4.get_HasChildRows())
+									ChildBandsCollection childBands4 = current3.ChildBands;
+									if (!childBands4.HasChildRows)
 									{
 										MessageBox.Show("BAND1出现问题,请检查!");
 										return;
 									}
 									IPointCollection pointCollection4 = new PolylineClass();
-									IEnumerator enumerator5 = childBands4.GetEnumerator();
+								    IEnumerator enumerator5 = childBands4.Enumerator;
 									try
 									{
 										while (enumerator5.MoveNext())
@@ -918,18 +918,18 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 										}
 									}
 								}
-								if (current3.get_Band().get_Index() == 1)
+								if (current3.Band.Index == 1)
 								{
 									IGeometryCollection geometryCollection2 = new PolylineClass();
 									IPointCollection pointCollection5 = new PathClass();
-									UltraGridRow parentRow = current3.get_ParentRow();
-									ChildBandsCollection childBands5 = parentRow.get_ChildBands();
-									if (!childBands5.get_HasChildRows())
+									UltraGridRow parentRow = current3.ParentRow;
+									ChildBandsCollection childBands5 = parentRow.ChildBands;
+									if (!childBands5.HasChildRows)
 									{
 										MessageBox.Show("BAND1出现问题,请检查!");
 										return;
 									}
-									UltraGridChildBand ultraGridChildBand5 = childBands5.Item[0];
+									UltraGridChildBand ultraGridChildBand5 = childBands5[0];
 									RowEnumerator enumerator3 = ultraGridChildBand5.Rows.GetEnumerator();
 									try
 									{
@@ -953,8 +953,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 											disposable.Dispose();
 										}
 									}
-									IEnvelope envelope3 = ((IGeometry)pointCollection5).get_Envelope();
-									double num = (envelope3.get_Width() > envelope3.get_Height()) ? (envelope3.get_Width() / 20.0) : (envelope3.get_Height() / 20.0);
+									IEnvelope envelope3 = ((IGeometry)pointCollection5).Envelope;
+									double num = (envelope3.Width > envelope3.Height) ? (envelope3.Width / 20.0) : (envelope3.Height / 20.0);
 									geometryCollection2.AddGeometry((IGeometry)pointCollection5, ref missing3, ref missing3);
 									object cellValue13 = current3.GetCellValue(ultraGridColumn3);
 									object cellValue14 = current3.GetCellValue(ultraGridColumn4);
@@ -993,16 +993,16 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 					}
 					if (this.AllGeo != null)
 					{
-						IEnvelope envelope4 = this.MapControl.get_Extent();
-						envelope4 = this.AllGeo.get_Envelope();
+						IEnvelope envelope4 = this.MapControl.Extent;
+						envelope4 = this.AllGeo.Envelope;
 						envelope4.Expand(1.5, 1.5, true);
-						this.MapControl.set_Extent(envelope4);
+						this.MapControl.Extent=(envelope4);
 					}
 				}
 				else if (this.nGeoType == 2 || this.nGeoType == 4)
 				{
-					UltraGridColumn ultraGridColumn5 = this.ultraGrid1.DisplayLayout.Bands.get_Item(1).Columns.get_Item(2);
-					UltraGridColumn ultraGridColumn6 = this.ultraGrid1.DisplayLayout.Bands.get_Item(1).Columns.get_Item(3);
+					UltraGridColumn ultraGridColumn5 = this.ultraGrid1.DisplayLayout.Bands[1].Columns[2];
+					UltraGridColumn ultraGridColumn6 = this.ultraGrid1.DisplayLayout.Bands[1].Columns[3];
 					object missing4 = Type.Missing;
 					RowEnumerator enumerator = rows.GetEnumerator();
 					try
@@ -1020,8 +1020,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 									while (enumerator3.MoveNext())
 									{
 										UltraGridRow current9 = enumerator3.Current;
-										ChildBandsCollection childBands6 = current9.get_ChildBands();
-										UltraGridChildBand ultraGridChildBand6 = childBands6.Item[0];
+										ChildBandsCollection childBands6 = current9.ChildBands;
+										UltraGridChildBand ultraGridChildBand6 = childBands6[0];
 										IPointCollection pointCollection8 = new RingClass();
 										RowEnumerator enumerator4 = ultraGridChildBand6.Rows.GetEnumerator();
 										try
@@ -1061,16 +1061,16 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 							}
 							else
 							{
-								if (current8.get_Band().get_Index() == 0)
+								if (current8.Band.Index == 0)
 								{
-									ChildBandsCollection childBands7 = current8.get_ChildBands();
-									if (!childBands7.get_HasChildRows())
+									ChildBandsCollection childBands7 = current8.ChildBands;
+									if (!childBands7.HasChildRows)
 									{
 										MessageBox.Show("BAND1出现问题,请检查!");
 										return;
 									}
 									IPointCollection pointCollection9 = new PolygonClass();
-									IEnumerator enumerator5 = childBands7.GetEnumerator();
+									IEnumerator enumerator5 = childBands7.Enumerator;
 									try
 									{
 										while (enumerator5.MoveNext())
@@ -1112,18 +1112,18 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 										}
 									}
 								}
-								if (current8.get_Band().get_Index() == 1)
+								if (current8.Band.Index == 1)
 								{
 									IGeometryCollection geometryCollection4 = new PolylineClass();
 									IPointCollection pointCollection10 = new PathClass();
-									UltraGridRow parentRow2 = current8.get_ParentRow();
-									ChildBandsCollection childBands8 = parentRow2.get_ChildBands();
-									if (!childBands8.get_HasChildRows())
+									UltraGridRow parentRow2 = current8.ParentRow;
+									ChildBandsCollection childBands8 = parentRow2.ChildBands;
+									if (!childBands8.HasChildRows)
 									{
 										MessageBox.Show("BAND1出现问题,请检查!");
 										return;
 									}
-									UltraGridChildBand ultraGridChildBand8 = childBands8.Item[0];
+									UltraGridChildBand ultraGridChildBand8 = childBands8[0];
 									RowEnumerator enumerator3 = ultraGridChildBand8.Rows.GetEnumerator();
 									try
 									{
@@ -1147,8 +1147,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 											disposable.Dispose();
 										}
 									}
-									IEnvelope envelope5 = ((IGeometry)pointCollection10).get_Envelope();
-									double num2 = (envelope5.get_Width() > envelope5.get_Height()) ? (envelope5.get_Width() / 20.0) : (envelope5.get_Height() / 20.0);
+									IEnvelope envelope5 = ((IGeometry)pointCollection10).Envelope;
+									double num2 = (envelope5.Width > envelope5.Height) ? (envelope5.Width / 20.0) : (envelope5.Height / 20.0);
 									geometryCollection4.AddGeometry((IGeometry)pointCollection10, ref missing4, ref missing4);
 									object cellValue21 = current8.GetCellValue(ultraGridColumn5);
 									object cellValue22 = current8.GetCellValue(ultraGridColumn6);
@@ -1187,10 +1187,10 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 					}
 					if (this.AllGeo != null)
 					{
-						IEnvelope envelope6 = this.MapControl.get_Extent();
-						envelope6 = this.AllGeo.get_Envelope();
+						IEnvelope envelope6 = this.MapControl.Extent;
+						envelope6 = this.AllGeo.Envelope;
 						envelope6.Expand(1.5, 1.5, true);
-						this.MapControl.set_Extent(envelope6);
+						this.MapControl.Extent=(envelope6);
 					}
 				}
 			}
@@ -1236,7 +1236,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				}
 				else if (a == "esriGeometryPolygon")
 				{
-					simpleFillSymbol.set_Outline(null);
+					simpleFillSymbol.Outline=(null);
 					simpleFillSymbol.Color=(rgbColor);
 					ISymbol symbol = (ISymbol)simpleFillSymbol;
 					symbol.ROP2=(esriRasterOpCode) (10);
@@ -1253,16 +1253,16 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
 		private void SetPosBut_Click(object sender, EventArgs e)
 		{
-			SelectedRowsCollection rows = this.ultraGrid1.get_Selected().Rows;
+			SelectedRowsCollection rows = this.ultraGrid1.Selected.Rows;
 			if (rows.Count >= 1)
 			{
 				if (this.nGeoType == 0)
 				{
-					UltraGridColumn ultraGridColumn = this.ultraGrid1.DisplayLayout.Bands.get_Item(1).Columns[1];
-					UltraGridColumn ultraGridColumn2 = this.ultraGrid1.DisplayLayout.Bands.get_Item(1).Columns.get_Item(2);
+					UltraGridColumn ultraGridColumn = this.ultraGrid1.DisplayLayout.Bands[1].Columns[1];
+					UltraGridColumn ultraGridColumn2 = this.ultraGrid1.DisplayLayout.Bands[1].Columns[2];
 					for (int i = 0; i < rows.Count; i++)
 					{
-						UltraGridRow ultraGridRow = rows.get_Item(i);
+						UltraGridRow ultraGridRow = rows[i];
 						if (ultraGridRow is UltraGridGroupByRow)
 						{
 							UltraGridGroupByRow ultraGridGroupByRow = (UltraGridGroupByRow)ultraGridRow;
@@ -1273,7 +1273,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 								while (enumerator.MoveNext())
 								{
 									UltraGridRow current = enumerator.Current;
-									ChildBandsCollection childBands = current.get_ChildBands();
+									ChildBandsCollection childBands = current.ChildBands;
 									UltraGridChildBand ultraGridChildBand = childBands[0];
 									UltraGridRow ultraGridRow2 = ultraGridChildBand.Rows[0];
 									object cellValue = ultraGridRow2.GetCellValue(ultraGridColumn);
@@ -1297,10 +1297,10 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 						}
 						else if (ultraGridRow != null)
 						{
-							if (ultraGridRow.get_Band().get_Index() == 0)
+							if (ultraGridRow.Band.Index == 0)
 							{
-								ChildBandsCollection childBands2 = ultraGridRow.get_ChildBands();
-								if (!childBands2.get_HasChildRows())
+								ChildBandsCollection childBands2 = ultraGridRow.ChildBands;
+								if (!childBands2.HasChildRows)
 								{
 									MessageBox.Show("BAND1出现问题,请检查!");
 									return;
@@ -1341,16 +1341,16 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 								}
 								this.AllGeo = (IGeometry)pointCollection2;
 							}
-							else if (ultraGridRow.get_Band().get_Index() == 1)
+							else if (ultraGridRow.Band.Index == 1)
 							{
 								object cellValue5 = ultraGridRow.GetCellValue(ultraGridColumn);
 								object cellValue6 = ultraGridRow.GetCellValue(ultraGridColumn2);
-								IEnvelope extent = this.MapControl.get_Extent();
+								IEnvelope extent = this.MapControl.Extent;
 								IPoint point3 = new PointClass();
 								point3.X=(Convert.ToDouble(cellValue5));
 								point3.Y=(Convert.ToDouble(cellValue6));
 								extent.CenterAt(point3);
-								this.MapControl.set_Extent(extent);
+								this.MapControl.Extent=(extent);
 								this.AllGeo = point3;
 							}
 						}
@@ -1360,8 +1360,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				{
 					if (this.nGeoType == 1)
 					{
-						UltraGridColumn ultraGridColumn3 = this.ultraGrid1.DisplayLayout.Bands.get_Item(1).Columns.get_Item(2);
-						UltraGridColumn ultraGridColumn4 = this.ultraGrid1.DisplayLayout.Bands.get_Item(1).Columns.get_Item(3);
+						UltraGridColumn ultraGridColumn3 = this.ultraGrid1.DisplayLayout.Bands[1].Columns[2];
+						UltraGridColumn ultraGridColumn4 = this.ultraGrid1.DisplayLayout.Bands[1].Columns[3];
 						object missing3 = Type.Missing;
 						RowEnumerator enumerator3 = rows.GetEnumerator();
 						try
@@ -1379,8 +1379,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 										while (enumerator.MoveNext())
 										{
 											UltraGridRow current4 = enumerator.Current;
-											ChildBandsCollection childBands3 = current4.get_ChildBands();
-											UltraGridChildBand ultraGridChildBand3 = childBands3.Item[0];
+											ChildBandsCollection childBands3 = current4.ChildBands;
+											UltraGridChildBand ultraGridChildBand3 = childBands3[0];
 											IPointCollection pointCollection3 = new PathClass();
 											RowEnumerator enumerator4 = ultraGridChildBand3.Rows.GetEnumerator();
 											try
@@ -1420,16 +1420,16 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 								}
 								else
 								{
-									if (current3.get_Band().get_Index() == 0)
+									if (current3.Band.Index == 0)
 									{
-										ChildBandsCollection childBands4 = current3.get_ChildBands();
-										if (!childBands4.get_HasChildRows())
+										ChildBandsCollection childBands4 = current3.ChildBands;
+										if (!childBands4.HasChildRows)
 										{
 											MessageBox.Show("BAND1出现问题,请检查!");
 											return;
 										}
 										IPointCollection pointCollection4 = new PolylineClass();
-										IEnumerator enumerator5 = childBands4.GetEnumerator();
+										IEnumerator enumerator5 = childBands4.Enumerator;
 										try
 										{
 											while (enumerator5.MoveNext())
@@ -1471,18 +1471,18 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 											}
 										}
 									}
-									if (current3.get_Band().get_Index() == 1)
+									if (current3.Band.Index == 1)
 									{
 										IGeometryCollection geometryCollection2 = new PolylineClass();
 										IPointCollection pointCollection5 = new PathClass();
-										UltraGridRow parentRow = current3.get_ParentRow();
-										ChildBandsCollection childBands5 = parentRow.get_ChildBands();
-										if (!childBands5.get_HasChildRows())
+										UltraGridRow parentRow = current3.ParentRow;
+										ChildBandsCollection childBands5 = parentRow.ChildBands;
+										if (!childBands5.HasChildRows)
 										{
 											MessageBox.Show("BAND1出现问题,请检查!");
 											return;
 										}
-										UltraGridChildBand ultraGridChildBand5 = childBands5.Item[0];
+										UltraGridChildBand ultraGridChildBand5 = childBands5[0];
 										RowEnumerator enumerator = ultraGridChildBand5.Rows.GetEnumerator();
 										try
 										{
@@ -1506,8 +1506,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 												disposable.Dispose();
 											}
 										}
-										IEnvelope envelope = ((IGeometry)pointCollection5).get_Envelope();
-										double num = (envelope.get_Width() > envelope.get_Height()) ? (envelope.get_Width() / 20.0) : (envelope.get_Height() / 20.0);
+										IEnvelope envelope = ((IGeometry)pointCollection5).Envelope;
+										double num = (envelope.Width > envelope.Height) ? (envelope.Width / 20.0) : (envelope.Height / 20.0);
 										geometryCollection2.AddGeometry((IGeometry)pointCollection5, ref missing3, ref missing3);
 										object cellValue13 = current3.GetCellValue(ultraGridColumn3);
 										object cellValue14 = current3.GetCellValue(ultraGridColumn4);
@@ -1548,8 +1548,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 					}
 					if (this.nGeoType == 2 || this.nGeoType == 4)
 					{
-						UltraGridColumn ultraGridColumn5 = this.ultraGrid1.DisplayLayout.Bands.get_Item(1).Columns.get_Item(2);
-						UltraGridColumn ultraGridColumn6 = this.ultraGrid1.DisplayLayout.Bands.get_Item(1).Columns.get_Item(3);
+						UltraGridColumn ultraGridColumn5 = this.ultraGrid1.DisplayLayout.Bands[1].Columns[2];
+						UltraGridColumn ultraGridColumn6 = this.ultraGrid1.DisplayLayout.Bands[1].Columns[3];
 						object missing4 = Type.Missing;
 						RowEnumerator enumerator = rows.GetEnumerator();
 						try
@@ -1567,8 +1567,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 										while (enumerator4.MoveNext())
 										{
 											UltraGridRow current9 = enumerator4.Current;
-											ChildBandsCollection childBands6 = current9.get_ChildBands();
-											UltraGridChildBand ultraGridChildBand6 = childBands6.Item[0];
+											ChildBandsCollection childBands6 = current9.ChildBands;
+											UltraGridChildBand ultraGridChildBand6 = childBands6[0];
 											IPointCollection pointCollection8 = new RingClass();
 											RowEnumerator enumerator6 = ultraGridChildBand6.Rows.GetEnumerator();
 											try
@@ -1608,16 +1608,16 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 								}
 								else
 								{
-									if (current8.get_Band().get_Index() == 0)
+									if (current8.Band.Index == 0)
 									{
-										ChildBandsCollection childBands7 = current8.get_ChildBands();
-										if (!childBands7.get_HasChildRows())
+										ChildBandsCollection childBands7 = current8.ChildBands;
+										if (!childBands7.HasChildRows)
 										{
 											MessageBox.Show("BAND1出现问题,请检查!");
 											return;
 										}
 										IPointCollection pointCollection9 = new PolygonClass();
-										IEnumerator enumerator5 = childBands7.GetEnumerator();
+										IEnumerator enumerator5 = childBands7.Enumerator;
 										try
 										{
 											while (enumerator5.MoveNext())
@@ -1659,18 +1659,18 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 											}
 										}
 									}
-									if (current8.get_Band().get_Index() == 1)
+									if (current8.Band.Index == 1)
 									{
 										IGeometryCollection geometryCollection4 = new PolylineClass();
 										IPointCollection pointCollection10 = new PathClass();
-										UltraGridRow parentRow2 = current8.get_ParentRow();
-										ChildBandsCollection childBands8 = parentRow2.get_ChildBands();
-										if (!childBands8.get_HasChildRows())
+										UltraGridRow parentRow2 = current8.ParentRow;
+										ChildBandsCollection childBands8 = parentRow2.ChildBands;
+										if (!childBands8.HasChildRows)
 										{
 											MessageBox.Show("BAND1出现问题,请检查!");
 											return;
 										}
-										UltraGridChildBand ultraGridChildBand8 = childBands8.Item[0];
+										UltraGridChildBand ultraGridChildBand8 = childBands8[0];
 										RowEnumerator enumerator4 = ultraGridChildBand8.Rows.GetEnumerator();
 										try
 										{
@@ -1694,8 +1694,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 												disposable.Dispose();
 											}
 										}
-										IEnvelope envelope2 = ((IGeometry)pointCollection10).get_Envelope();
-										double num2 = (envelope2.get_Width() > envelope2.get_Height()) ? (envelope2.get_Width() / 20.0) : (envelope2.get_Height() / 20.0);
+										IEnvelope envelope2 = ((IGeometry)pointCollection10).Envelope;
+										double num2 = (envelope2.Width > envelope2.Height) ? (envelope2.Width / 20.0) : (envelope2.Height / 20.0);
 										geometryCollection4.AddGeometry((IGeometry)pointCollection10, ref missing4, ref missing4);
 										object cellValue21 = current8.GetCellValue(ultraGridColumn5);
 										object cellValue22 = current8.GetCellValue(ultraGridColumn6);
@@ -1742,32 +1742,32 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 					rgbColor.Red=(0);
 					rgbColor.Green=(255);
 					rgbColor.Blue=(0);
-					switch (this.AllGeo.GeometryType)
+					switch ((int)this.AllGeo.GeometryType)
 					{
 					case 1:
 					case 2:
 					{
-						SimpleMarkerSymbolClass simpleMarkerSymbolClass = new SimpleMarkerSymbol();
+						ISimpleMarkerSymbol simpleMarkerSymbolClass = new SimpleMarkerSymbol();
 						simpleMarkerSymbolClass.Color=(rgbColor);
-						symbol = simpleMarkerSymbolClass;
+						symbol = simpleMarkerSymbolClass as ISymbol;
 						break;
 					}
 					case 3:
 					case 6:
 					{
-						SimpleLineSymbolClass simpleLineSymbolClass = new SimpleLineSymbol();
+						ISimpleLineSymbol simpleLineSymbolClass = new SimpleLineSymbol();
 						simpleLineSymbolClass.Color=(rgbColor);
 						simpleLineSymbolClass.Width=(6.0);
-						symbol = simpleLineSymbolClass;
+						symbol = simpleLineSymbolClass as ISymbol;
 						break;
 					}
 					case 4:
 					{
-						SimpleFillSymbolClass simpleFillSymbolClass = new SimpleFillSymbol();
+						ISimpleFillSymbol simpleFillSymbolClass = new SimpleFillSymbol();
 						simpleFillSymbolClass.Style=(0);
-						simpleFillSymbolClass.get_Outline().Width=(6.0);
+						simpleFillSymbolClass.Outline.Width=(6.0);
 						simpleFillSymbolClass.Color=(rgbColor);
-						symbol = simpleFillSymbolClass;
+						symbol = simpleFillSymbolClass as ISymbol;
 						break;
 					}
 					}
@@ -1802,45 +1802,45 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
 		private void ultraGrid1_InitializePrintPreview(object sender, CancelablePrintPreviewEventArgs e)
 		{
-			e.PrintPreviewSettings.set_Zoom(1.0);
-			e.get_PrintLayout().Bands.get_Item(1).set_Hidden(!this.bShowGeo);
-			e.PrintPreviewSettings.set_DialogLeft(SystemInformation.WorkingArea.X);
-			e.PrintPreviewSettings.set_DialogTop(SystemInformation.WorkingArea.Y);
-			e.PrintPreviewSettings.set_DialogWidth(SystemInformation.WorkingArea.Width);
-			e.PrintPreviewSettings.set_DialogHeight(SystemInformation.WorkingArea.Height);
+			e.PrintPreviewSettings.Zoom=(1.0);
+			e.PrintLayout.Bands[1].Hidden=(!this.bShowGeo);
+			e.PrintPreviewSettings.DialogLeft=(SystemInformation.WorkingArea.X);
+			e.PrintPreviewSettings.DialogTop=(SystemInformation.WorkingArea.Y);
+			e.PrintPreviewSettings.DialogWidth=(SystemInformation.WorkingArea.Width);
+			e.PrintPreviewSettings.DialogHeight=(SystemInformation.WorkingArea.Height);
 			if (this.bFitWidth)
 			{
-				e.get_DefaultLogicalPageLayoutInfo().set_FitWidthToPages(1);
+				e.DefaultLogicalPageLayoutInfo.FitWidthToPages=(1);
 			}
 			else
 			{
-				e.get_DefaultLogicalPageLayoutInfo().set_FitWidthToPages(0);
+                e.DefaultLogicalPageLayoutInfo.FitWidthToPages=(0);
 			}
 			if (this.bHaveTop)
 			{
-				e.get_DefaultLogicalPageLayoutInfo().set_PageHeader(this.TopBandText);
-				e.get_DefaultLogicalPageLayoutInfo().set_PageHeaderHeight((int)((double)this.TopBandFont.SizeInPoints * 1.5));
-				e.get_DefaultLogicalPageLayoutInfo().get_PageHeaderAppearance().FontData.Bold = this.TopBandFont.Bold;
-				e.get_DefaultLogicalPageLayoutInfo().get_PageHeaderAppearance().FontData.Italic = this.TopBandFont.Italic;
-				e.get_DefaultLogicalPageLayoutInfo().get_PageHeaderAppearance().FontData.Underline = this.TopBandFont.Underline;
-				e.get_DefaultLogicalPageLayoutInfo().get_PageHeaderAppearance().FontData.SizeInPoints = this.TopBandFont.SizeInPoints;
-				e.get_DefaultLogicalPageLayoutInfo().get_PageHeaderAppearance().ForeColor = this.TopBandColor;
-				e.get_DefaultLogicalPageLayoutInfo().get_PageHeaderAppearance().FontData.Name = this.TopBandFont.Name;
-				e.get_DefaultLogicalPageLayoutInfo().get_PageHeaderAppearance().TextHAlign = HAlign.Center;
-				e.get_DefaultLogicalPageLayoutInfo().set_PageHeaderBorderStyle(UIElementBorderStyle.Solid);
+				e.DefaultLogicalPageLayoutInfo.PageHeader=(this.TopBandText);
+				e.DefaultLogicalPageLayoutInfo.PageHeaderHeight=((int)((double)this.TopBandFont.SizeInPoints * 1.5));
+				e.DefaultLogicalPageLayoutInfo.PageHeaderAppearance.FontData.Bold = this.TopBandFont.Bold;
+				e.DefaultLogicalPageLayoutInfo.PageHeaderAppearance.FontData.Italic = this.TopBandFont.Italic;
+				e.DefaultLogicalPageLayoutInfo.PageHeaderAppearance.FontData.Underline = this.TopBandFont.Underline;
+				e.DefaultLogicalPageLayoutInfo.PageHeaderAppearance.FontData.SizeInPoints = this.TopBandFont.SizeInPoints;
+				e.DefaultLogicalPageLayoutInfo.PageHeaderAppearance.ForeColor = this.TopBandColor;
+				e.DefaultLogicalPageLayoutInfo.PageHeaderAppearance.FontData.Name = this.TopBandFont.Name;
+				e.DefaultLogicalPageLayoutInfo.PageHeaderAppearance.TextHAlign = HAlign.Center;
+				e.DefaultLogicalPageLayoutInfo.PageHeaderBorderStyle=(UIElementBorderStyle.Solid);
 			}
-			e.get_DefaultLogicalPageLayoutInfo().set_PageFooter("<#>.页");
-			e.get_DefaultLogicalPageLayoutInfo().set_PageFooterHeight(40);
-			e.get_DefaultLogicalPageLayoutInfo().get_PageFooterAppearance().TextHAlign = HAlign.Center;
-			e.get_DefaultLogicalPageLayoutInfo().get_PageFooterAppearance().FontData.Italic = DefaultableBoolean.True;
-			e.get_DefaultLogicalPageLayoutInfo().set_PageFooterBorderStyle(UIElementBorderStyle.Solid);
-			e.get_DefaultLogicalPageLayoutInfo().set_ClippingOverride(1);
-			e.get_PrintDocument().DocumentName = "Document Name";
+			e.DefaultLogicalPageLayoutInfo.PageFooter=("<#>.页");
+			e.DefaultLogicalPageLayoutInfo.PageFooterHeight=(40);
+			e.DefaultLogicalPageLayoutInfo.PageFooterAppearance.TextHAlign = HAlign.Center;
+			e.DefaultLogicalPageLayoutInfo.PageFooterAppearance.FontData.Italic = DefaultableBoolean.True;
+			e.DefaultLogicalPageLayoutInfo.PageFooterBorderStyle=(UIElementBorderStyle.Solid);
+			e.DefaultLogicalPageLayoutInfo.ClippingOverride=ClippingOverride.Yes;
+			e.PrintDocument.DocumentName = "Document Name";
 		}
 
 		private void ultraGrid1_InitializeGroupByRow(object sender, InitializeGroupByRowEventArgs e)
 		{
-			e.Row.set_Description(string.Concat(new object[]
+			e.Row.Description=(string.Concat(new object[]
 			{
 				e.Row.Value.ToString(),
 				", ",
@@ -1852,7 +1852,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 		private void ultraGrid1_InitializeLayout(object sender, InitializeLayoutEventArgs e)
 		{
 			e.Layout.Bands[0].Override.RowAlternateAppearance.BackColor = Color.LightCyan;
-			e.Layout.Bands.get_Item(1).Override.RowAlternateAppearance.BackColor = Color.LightYellow;
+			e.Layout.Bands[1].Override.RowAlternateAppearance.BackColor = Color.LightYellow;
 		}
 
 		private void QueryResult_KeyDown(object sender, KeyEventArgs e)

@@ -47,13 +47,13 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		private void btnAnalyse_Click(object obj, EventArgs eventArgs)
 		{
-            CheckListFeatureLayerItem @partial class = this.LayerBox.SelectedItem as CheckListFeatureLayerItem;
+            CheckListFeatureLayerItem pclass = this.LayerBox.SelectedItem as CheckListFeatureLayerItem;
 			this.DeleteAllElements(this.m_iApp.ActiveView);
 			if (this.preAlarmResult_0 == null)
 			{
 				this.preAlarmResult_0 = new PreAlarmResult();
 				this.preAlarmResult_0.App = this.m_iApp;
-				this.preAlarmResult_0.m_pCurLayer = @partial class.m_pFeatureLayer;
+				this.preAlarmResult_0.m_pCurLayer = pclass.m_pFeatureLayer;
 				this.preAlarmResult_0.m_strLayerName = this.LayerBox.Text;
 				this.preAlarmResult_0.m_nExpireTime = (int)Convert.ToSingle(this.txBoxExpireTime.Text.Trim());
 				this.preAlarmResult_0.Show();
@@ -61,14 +61,14 @@ namespace Yutai.Pipeline.Analysis.Forms
 			else if (this.preAlarmResult_0.Visible)
 			{
 				this.preAlarmResult_0.m_strLayerName = this.LayerBox.Text;
-				this.preAlarmResult_0.m_pCurLayer = @partial class.m_pFeatureLayer;
+				this.preAlarmResult_0.m_pCurLayer = pclass.m_pFeatureLayer;
 				this.preAlarmResult_0.m_nExpireTime = (int)Convert.ToSingle(this.txBoxExpireTime.Text.Trim());
 				this.preAlarmResult_0.ThrougAllLayer();
 			}
 			else
 			{
 				this.preAlarmResult_0.m_strLayerName = this.LayerBox.Text;
-				this.preAlarmResult_0.m_pCurLayer = @partial class.m_pFeatureLayer;
+				this.preAlarmResult_0.m_pCurLayer = pclass.m_pFeatureLayer;
 				this.preAlarmResult_0.m_nExpireTime = (int)Convert.ToSingle(this.txBoxExpireTime.Text.Trim());
 				this.preAlarmResult_0.ThrougAllLayer();
 				this.preAlarmResult_0.Visible = true;
@@ -92,9 +92,9 @@ namespace Yutai.Pipeline.Analysis.Forms
 				IFeatureLayer featureLayer = pLayer as IFeatureLayer;
 				if (this.m_iApp.PipeConfig.IsPipePoint(featureLayer.FeatureClass.AliasName) || this.m_iApp.PipeConfig.IsPipeLine(featureLayer.FeatureClass.AliasName))
 				{
-                    CheckListFeatureLayerItem @partial class = new CheckListFeatureLayerItem();
-					@partial class.m_pFeatureLayer = featureLayer;
-					this.LayerBox.Items.Add(@partial class);
+                    CheckListFeatureLayerItem pclass = new CheckListFeatureLayerItem();
+					pclass.m_pFeatureLayer = featureLayer;
+					this.LayerBox.Items.Add(pclass);
 				}
 			}
 		}

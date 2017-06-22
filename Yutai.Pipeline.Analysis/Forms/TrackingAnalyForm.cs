@@ -235,9 +235,9 @@ namespace Yutai.Pipeline.Analysis.Forms
 				string aliasName = featureLayer.FeatureClass.AliasName;
 				if (this.pPipeCfg.IsPipeLine(aliasName))
 				{
-					TrackingAnalyForm.Class6 @partial class = new TrackingAnalyForm.Class6();
-					@partial class.ifeatureLayer_0 = featureLayer;
-					this.LayerCom.Items.Add(@partial class);
+					TrackingAnalyForm.Class6 pclass = new TrackingAnalyForm.Class6();
+					pclass.ifeatureLayer_0 = featureLayer;
+					this.LayerCom.Items.Add(pclass);
 				}
 			}
 		}

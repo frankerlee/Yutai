@@ -92,7 +92,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			this.ultraGrid1.DisplayLayout.Override.GroupByRowAppearance=(appearance9);
 			appearance10.TextHAlignAsString = "Left";
 			this.ultraGrid1.DisplayLayout.Override.HeaderAppearance=(appearance10);
-			this.ultraGrid1.DisplayLayout.Override.HeaderClickAction=(HeaderClickAction) (3);
+			this.ultraGrid1.DisplayLayout.Override.HeaderClickAction=(HeaderClickAction.SortMulti);
 			this.ultraGrid1.DisplayLayout.Override.HeaderStyle=(HeaderStyle.WindowsXPCommand);
 			appearance11.BackColor = SystemColors.Window;
 			appearance11.BorderColor = Color.Silver;
@@ -101,8 +101,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			appearance12.BackColor = SystemColors.ControlLight;
 			this.ultraGrid1.DisplayLayout.Override.TemplateAddRowAppearance=(appearance12);
 			this.ultraGrid1.DisplayLayout.ScrollBounds=(0);
-			this.ultraGrid1.DisplayLayout.ScrollStyle=(ScrollStyle) (1);
-			this.ultraGrid1.DisplayLayout.ViewStyleBand=(ViewStyleBand) (2);
+			this.ultraGrid1.DisplayLayout.ScrollStyle=(ScrollStyle.Immediate);
+			this.ultraGrid1.DisplayLayout.ViewStyleBand=(ViewStyleBand.OutlookGroupBy);
 			this.ultraGrid1.Location = new System.Drawing.Point(0, 43);
 			this.ultraGrid1.Name = "ultraGrid1";
 			this.ultraGrid1.Size = new Size(493, 261);

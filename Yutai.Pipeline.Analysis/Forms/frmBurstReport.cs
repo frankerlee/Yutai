@@ -53,29 +53,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		private IContainer icontainer_0 = null;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
 		public IAppContext m_iApp;
 
 
@@ -324,10 +302,10 @@ namespace Yutai.Pipeline.Analysis.Forms
             {
                 if (num3 < featureDataset.ClassCount)
                 {
-                    IFeatureClass @partial class = featureDataset.Class[num3];
-                    if ((@partial class.ShapeType != esriGeometryType.esriGeometryPoint ? false : !@partial class.AliasName.Contains("Junctions")))
+                    IFeatureClass pclass = featureDataset.Class[num3];
+                    if ((pclass.ShapeType != esriGeometryType.esriGeometryPoint ? false : !pclass.AliasName.Contains("Junctions")))
                     {
-                        featureClass = @partial class;
+                        featureClass = pclass;
                         break;
                     }
                     else

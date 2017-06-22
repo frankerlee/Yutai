@@ -84,9 +84,9 @@ namespace Yutai.Pipeline.Analysis.Forms
 				string aliasName = featureLayer.FeatureClass.AliasName;
 				if (this.pPipeCfg.IsPipeLine(aliasName))
 				{
-					SetFlowToolForm.Class2 @partial class = new SetFlowToolForm.Class2();
-					@partial class.ifeatureLayer_0 = featureLayer;
-					this.NetWorkCombo.Items.Add(@partial class);
+					SetFlowToolForm.Class2 pclass = new SetFlowToolForm.Class2();
+					pclass.ifeatureLayer_0 = featureLayer;
+					this.NetWorkCombo.Items.Add(pclass);
 				}
 			}
 		}

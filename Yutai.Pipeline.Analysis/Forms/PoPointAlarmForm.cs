@@ -67,9 +67,9 @@ namespace Yutai.Pipeline.Analysis.Forms
 				IFeatureLayer featureLayer = pLayer as IFeatureLayer;
 				if (this.pPipeCfg.IsPipeLine(featureLayer.FeatureClass.AliasName))
 				{
-					PoPointAlarmForm.Class5 @partial class = new PoPointAlarmForm.Class5();
-					@partial class.ifeatureLayer_0 = featureLayer;
-					this.LayerBox.Items.Add(@partial class);
+					PoPointAlarmForm.Class5 pclass = new PoPointAlarmForm.Class5();
+					pclass.ifeatureLayer_0 = featureLayer;
+					this.LayerBox.Items.Add(pclass);
 				}
 			}
 		}
@@ -85,13 +85,13 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		private void btnAnalyse_Click(object obj, EventArgs eventArgs)
 		{
-			PoPointAlarmForm.Class5 @partial class = this.LayerBox.SelectedItem as PoPointAlarmForm.Class5;
+			PoPointAlarmForm.Class5 pclass = this.LayerBox.SelectedItem as PoPointAlarmForm.Class5;
 			this.DeleteAllElements(m_iApp.FocusMap);
 			if (this.ppalarmResult_0 == null)
 			{
 				this.ppalarmResult_0 = new PPAlarmResult();
 				this.ppalarmResult_0.App = this.m_iApp;
-				this.ppalarmResult_0.m_pCurLayer = @partial class.ifeatureLayer_0;
+				this.ppalarmResult_0.m_pCurLayer = pclass.ifeatureLayer_0;
 				this.ppalarmResult_0.m_strLayerName = this.LayerBox.Text;
 				this.ppalarmResult_0.m_nExpireTime = (int)Convert.ToSingle(this.txBoxExpireTime.Text.Trim());
 				this.ppalarmResult_0.Show();
@@ -99,14 +99,14 @@ namespace Yutai.Pipeline.Analysis.Forms
 			else if (this.ppalarmResult_0.Visible)
 			{
 				this.ppalarmResult_0.m_strLayerName = this.LayerBox.Text;
-				this.ppalarmResult_0.m_pCurLayer = @partial class.ifeatureLayer_0;
+				this.ppalarmResult_0.m_pCurLayer = pclass.ifeatureLayer_0;
 				this.ppalarmResult_0.m_nExpireTime = (int)Convert.ToSingle(this.txBoxExpireTime.Text.Trim());
 				this.ppalarmResult_0.ThrougAllLayer();
 			}
 			else
 			{
 				this.ppalarmResult_0.m_strLayerName = this.LayerBox.Text;
-				this.ppalarmResult_0.m_pCurLayer = @partial class.ifeatureLayer_0;
+				this.ppalarmResult_0.m_pCurLayer = pclass.ifeatureLayer_0;
 				this.ppalarmResult_0.m_nExpireTime = (int)Convert.ToSingle(this.txBoxExpireTime.Text.Trim());
 				this.ppalarmResult_0.ThrougAllLayer();
 				this.ppalarmResult_0.Visible = true;
