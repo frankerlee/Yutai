@@ -50,6 +50,7 @@
     <Compile Include="Concretes\PipelineLayer.cs" />
     <Compile Include="Concretes\PipePoint.cs" />
     <Compile Include="Concretes\PipelineTemplate.cs" />
+    <Compile Include="Concretes\YTField.cs" />
     <Compile Include="Interfaces\IBasicAnnotation.cs" />
     <Compile Include="Interfaces\IBasicLayerInfo.cs" />
     <Compile Include="Interfaces\IBasicLineAssist.cs" />

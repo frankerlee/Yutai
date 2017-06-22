@@ -14,6 +14,19 @@ namespace Yutai.Pipeline.Config.Concretes
         private string _caption;
         private List<IYTField> _fields;
 
+        public PipelineTemplate()
+        {
+            _fields=new List<IYTField>();
+        }
+
+        public PipelineTemplate(XmlNode node)
+        {
+            _fields = new List<IYTField>();
+            ReadFromXml(node);
+        }
+
+
+
         public string Name
         {
             get { return _name; }
@@ -34,7 +47,14 @@ namespace Yutai.Pipeline.Config.Concretes
 
         public void ReadFromXml(XmlNode xmlNode)
         {
-            throw new NotImplementedException();
+            _name = xmlNode.Attributes["Name"].Value;
+            _caption = xmlNode.Attributes["Caption"].Value;
+            XmlNodeList nodeList = xmlNode.SelectNodes("/Template/Fields/Field");
+            foreach (XmlNode node in nodeList)
+            {
+                IYTField field = new YTField(node);
+                _fields.Add(field);
+            }
         }
 
         public XmlNode ToXml()
