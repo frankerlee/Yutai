@@ -52,7 +52,7 @@ namespace Yutai.Pipeline.Config.Concretes
                 _name = xmlNode.Attributes["Name"].Value;
                 _caption = xmlNode.Attributes["Caption"].Value;
             }
-            XmlNodeList nodeList = xmlNode.SelectNodes("/PipelineConfig/LayerTemplates/Template/Fields/Field");
+            XmlNodeList nodeList = xmlNode.SelectNodes($"/PipelineConfig/LayerTemplates/Template[@Name='{_name}']/Fields/Field");
             foreach (XmlNode node in nodeList)
             {
                 IYTField field = new YTField(node);

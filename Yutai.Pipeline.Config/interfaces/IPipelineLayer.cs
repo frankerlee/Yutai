@@ -13,6 +13,8 @@ namespace Yutai.Pipeline.Config.Interfaces
 {
     public interface IPipelineLayer
     {
+        string Name { get; set; }
+        string Code { get; set; }
         IPipePoint PointLayer { get; set; }
         IPipeLine LineLayer { get; set; }
         IPointAssist PointAssistLayer { get; set; }

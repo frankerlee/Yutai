@@ -41,3 +41,4 @@ using System.Runtime.InteropServices;
 [assembly: InternalsVisibleTo("Yutai.TableEditor")]
 [assembly: InternalsVisibleTo("Yutai.Pipeline.Analysis")]
 [assembly: InternalsVisibleTo("YutaiGIS")]
+[assembly: InternalsVisibleTo("Yutai.Test")]
