@@ -13,6 +13,7 @@
       <Guid>4a3bcaab-9d3e-4ca7-a19d-7ee08fb0629e</Guid>
       <Name>编辑器</Name>
       <MenuXML>\\plugins\\menus\\EditorMenu.xml</MenuXML>
+      <ConfigXML>\\plugins\\configs\\pipeline.xml</ConfigXML>
     </Plugin>
     <Plugin>
       <Guid>7da6c412-c345-4ccc-9f22-ef7eb3757898</Guid>
@@ -23,6 +24,7 @@
       <Name>目录管理</Name>
       <MenuXML>\\plugins\\menus\\CatalogMenu.xml</MenuXML>
     </Plugin>
+    
   </Plugins>
   
   <Overview>

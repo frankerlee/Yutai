@@ -263,6 +263,10 @@
       <Name>Yutai.ArcGIS.Controls</Name>
       <Private>False</Private>
     </ProjectReference>
+    <ProjectReference Include="..\Yutai.Pipeline.Config\Yutai.Pipeline.Config.csproj">
+      <Project>{0AA42995-A1CE-49FD-BB98-F94EED2D7289}</Project>
+      <Name>Yutai.Pipeline.Config</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Yutai.Plugins\Yutai.Plugins.csproj">
       <Project>{800f2ee4-47ab-4cd4-934d-a64980d98a23}</Project>
       <Name>Yutai.Plugins</Name>
