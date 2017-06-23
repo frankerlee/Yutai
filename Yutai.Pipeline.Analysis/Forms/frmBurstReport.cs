@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using ESRI.ArcGIS.NetworkAnalysis;
 using Yutai.Pipeline.Analysis.Classes;
 using Yutai.Pipeline.Analysis.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.Forms
@@ -55,6 +56,8 @@ namespace Yutai.Pipeline.Analysis.Forms
 
         
 		public IAppContext m_iApp;
+
+	    public IPipelineConfig m_Config;
 
 
 		private frmBurstReport.Struct0 struct0_0 = default(frmBurstReport.Struct0);
@@ -152,12 +155,12 @@ namespace Yutai.Pipeline.Analysis.Forms
 		{
 			ArrayList arrayList = new ArrayList();
 			CMapOperator.GetMapILayers(m_iApp.FocusMap, null, arrayList);
-			string pointTableFieldName = m_iApp.PipeConfig.GetPointTableFieldName("点性");
+			string pointTableFieldName = m_Config.GetPointTableFieldName("点性");
 			this.label1.Text = pointTableFieldName;
 			for (int i = 0; i < arrayList.Count; i++)
 			{
 				IFeatureLayer featureLayer = arrayList[i] as IFeatureLayer;
-				if (featureLayer != null && featureLayer.FeatureClass != null && m_iApp.PipeConfig.IsPipePoint(featureLayer.FeatureClass.AliasName))
+				if (featureLayer != null && featureLayer.FeatureClass != null && m_Config.IsPipePoint(featureLayer.FeatureClass.AliasName))
 				{
 					IFeatureClass featureClass = featureLayer.FeatureClass;
 					//new QueryFilter()
@@ -253,7 +256,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 			for (int i = 0; i < arrayList.Count; i++)
 			{
 				IFeatureLayer featureLayer = arrayList[i] as IFeatureLayer;
-				if (featureLayer != null && featureLayer.FeatureClass != null && featureLayer.Visible && m_iApp.PipeConfig.IsPipeLine(featureLayer.FeatureClass.AliasName))
+				if (featureLayer != null && featureLayer.FeatureClass != null && featureLayer.Visible && m_Config.IsPipeLine(featureLayer.FeatureClass.AliasName))
 				{
 					IFeatureDataset featureDataset = featureLayer.FeatureClass.FeatureDataset;
 					IFeatureClassContainer featureClassContainer = featureDataset as IFeatureClassContainer;

@@ -7,6 +7,8 @@ using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Mef;
 using Yutai.Plugins.Mvp;
+using Yutai.Services.Serialization;
+using Yutai.Shared;
 
 namespace Yutai.Pipeline.Analysis
 {
@@ -16,8 +18,8 @@ namespace Yutai.Pipeline.Analysis
         private IAppContext _context;
         private MenuGenerator _menuGenerator;
         private IPipelineConfig _config;
-        
-      public event EventHandler<QueryResultArgs>QueryResultChanged;
+
+        public event EventHandler<QueryResultArgs> QueryResultChanged;
 
         protected override void RegisterServices(IApplicationContainer container)
         {
@@ -29,6 +31,12 @@ namespace Yutai.Pipeline.Analysis
             _context = context;
             _menuGenerator = context.Container.GetInstance<MenuGenerator>();
             _config = context.Container.GetSingleton<IPipelineConfig>();
+            if (string.IsNullOrEmpty(_config.XmlFile))
+            {
+                string fileName = ((ISecureContext)_context).YutaiProject.FindPlugin("f804e812-481e-45c3-be08-749da82075d1").ConfigXML;
+                fileName = FileHelper.GetFullPath(fileName);
+                _config.LoadFromXml(fileName);
+            }
             //_menuListener = context.Container.GetInstance<MenuListener>();
             //_mapListener = context.Container.GetInstance<MapListener>();
             // _dockPanelService = context.Container.GetInstance<TemplateDockPanelService>();
@@ -44,7 +52,7 @@ namespace Yutai.Pipeline.Analysis
 
         public IPipelineConfig PipeConfig
         {
-            get { return _config;}
+            get { return _config; }
         }
         public void FireQueryResultChanged(QueryResultArgs e)
         {
