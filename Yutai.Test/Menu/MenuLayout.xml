@@ -1,0 +1,13 @@
+﻿<YutaiGIS>
+  <MainMenu>
+    <Pages>
+      
+      <Page Key="Test" Caption="测试" Index="0" Visible="true">
+     
+        <PageGroup Key="Test_Common" Caption="常用" Visible="true" Index="0">
+          <BarItem  Key="Test_Common_Test" Visible="true"></BarItem>
+        </PageGroup>
+      </Page>
+    </Pages>
+  </MainMenu>
+</YutaiGIS>
