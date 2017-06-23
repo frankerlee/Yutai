@@ -15,6 +15,8 @@ namespace Yutai.Pipeline.Config.Concretes
         private IPointAssist _pointAssistLayer;
         private ILineAssist _lineAssistLayer;
         private List<IPipelineTemplate> _templates;
+        private string _name;
+        private string _code;
 
         public PipelineLayer()
         {
@@ -29,6 +31,18 @@ namespace Yutai.Pipeline.Config.Concretes
         {
             _templates = templates;
             ReadFromXml(xmlNode);
+        }
+
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
+
+        public string Code
+        {
+            get { return _code; }
+            set { _code = value; }
         }
 
         public IPipePoint PointLayer
@@ -59,7 +73,12 @@ namespace Yutai.Pipeline.Config.Concretes
         {
             if (xml == null)
                 return;
-            XmlNode node = xml.SelectSingleNode("/PipelineConfig/PipelineLayers/PipelineLayer/PointLayer");
+            if (xml.Attributes != null)
+            {
+                _name = xml.Attributes["Name"].Value;
+                _code = xml.Attributes["Code"].Value;
+            }
+            XmlNode node = xml.SelectSingleNode($"/PipelineConfig/PipelineLayers/PipelineLayer[@Name='{_name}']/PointLayer");
             if (node?.Attributes != null)
             {
                 string template = node.Attributes["Template"].Value;
@@ -74,7 +93,7 @@ namespace Yutai.Pipeline.Config.Concretes
                         _pointLayer = new PipePoint(node);
                 }
             }
-            node = xml.SelectSingleNode("/PipelineConfig/PipelineLayers/PipelineLayer/LineLayer");
+            node = xml.SelectSingleNode($"/PipelineConfig/PipelineLayers/PipelineLayer[@Name='{_name}']/LineLayer");
 
             if (node?.Attributes != null)
             {
@@ -92,7 +111,7 @@ namespace Yutai.Pipeline.Config.Concretes
                 }
             }
 
-            node = xml.SelectSingleNode("/PipelineConfig/PipelineLayers/PipelineLayer/PointAssist");
+            node = xml.SelectSingleNode($"/PipelineConfig/PipelineLayers/PipelineLayer[@Name='{_name}']/PointAssist");
             if (node?.Attributes != null)
             {
                 string template = node.Attributes["Template"].Value;
@@ -109,7 +128,7 @@ namespace Yutai.Pipeline.Config.Concretes
                 }
             }
 
-            node = xml.SelectSingleNode("/PipelineConfig/PipelineLayers/PipelineLayer/LineAssist");
+            node = xml.SelectSingleNode($"/PipelineConfig/PipelineLayers/PipelineLayer[@Name='{_name}']/LineAssist");
             if (node?.Attributes != null)
             {
                 string template = node.Attributes["Template"].Value;
@@ -129,6 +148,13 @@ namespace Yutai.Pipeline.Config.Concretes
         public XmlNode ToXml(XmlDocument doc)
         {
             XmlNode layerNode = doc.CreateElement("PipelineLayer");
+            XmlAttribute nameAttribute = doc.CreateAttribute("Name");
+            nameAttribute.Value = _name;
+            XmlAttribute codeAttribute = doc.CreateAttribute("Code");
+            codeAttribute.Value = _code;
+            layerNode.Attributes.Append(nameAttribute);
+            layerNode.Attributes.Append(codeAttribute);
+
             if (_pointLayer != null) layerNode.AppendChild(_pointLayer.ToXml(doc));
             if (_lineLayer != null) layerNode.AppendChild(_lineLayer.ToXml(doc));
             if (_pointAssistLayer != null) layerNode.AppendChild(_pointAssistLayer.ToXml(doc));

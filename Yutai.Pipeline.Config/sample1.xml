@@ -1,6 +1,6 @@
 ﻿<PipelineConfig>
   <PipelineLayers>
-    <PipelineLayer>
+    <PipelineLayer Name="上水管线" Code="SS">
       <PointLayer Name="上水管线点" AliasName="上水管线点" Template="PipePoint" Visible="True">
       </PointLayer>
       <LineLayer Name="上水管线线" AliasName="上水管线线" Template="PipeLine" Visible="True">

@@ -44,33 +44,10 @@ namespace Yutai.Plugins.Bookmark.Menu
         private void InitMenu()
         {
             XmlDocument doc = new XmlDocument();
-            //检测项目文档里面是否有插件的界面配置，如果没有，则使用默认配置，如果有，则使用配置文件里面的配置
-            Guid dllGuid = new Guid("01f8e32a-5837-431f-9c1b-5d0f195fb93e");
             string resString = "Yutai.Plugins.Bookmark.Menu.MenuLayout.xml";
-            XmlPlugin plugin =
-                ((ISecureContext)_context).YutaiProject.Plugins.FirstOrDefault(
-                    c => c.Guid == dllGuid);
-            if (plugin != null)
-            {
-                if (string.IsNullOrEmpty(plugin.MenuXML))
-                {
-                    doc.Load(base.GetType().Assembly.GetManifestResourceStream(resString));
-                }
-                else
-                {
-                    FileInfo info = new FileInfo(FileHelper.GetFullPath(plugin.MenuXML));
-                    if (info.Exists)
-                        doc.Load(FileHelper.GetFullPath(plugin.MenuXML));
-                    else
-                        doc.Load(base.GetType().Assembly.GetManifestResourceStream(resString));
-                }
-            }
-            else
-            {
-                doc.Load(base.GetType().Assembly.GetManifestResourceStream(resString));
-            }
+            doc.Load(base.GetType().Assembly.GetManifestResourceStream(resString));
 
-            RibbonFactory.CreateMenus(_commands.GetCommands(),  (RibbonControl) _menuManager, _context.MainView.RibbonStatusBar as RibbonStatusBar, doc);
+            RibbonFactory.CreateMenus(_commands.GetCommands(), (RibbonControl)_menuManager, _context.MainView.RibbonStatusBar as RibbonStatusBar, doc);
         }
     }
 }
