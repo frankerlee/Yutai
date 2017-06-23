@@ -17,6 +17,6 @@ namespace Yutai.Pipeline.Config.Interfaces
         IYTField NoField { get; set; }            // 编号字段
         IYTField MDateField { get; set; }         // 入库日期
         void ReadFromXml(XmlNode xml);
-        XmlNode ToXml();
+        XmlNode ToXml(XmlDocument doc);
     }
 }

@@ -150,7 +150,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             }
             if (esriFieldType.esriFieldTypeSingle == paramFT)
             {
-                return "浮点数";
+                return "单精度浮点数";
             }
             if (esriFieldType.esriFieldTypeSmallInteger == paramFT)
             {
@@ -190,6 +190,38 @@ namespace Yutai.ArcGIS.Common.Helpers
             IRasterDef pRDef = pEdit.RasterDef;
             pRDef.SpatialReference = sr;
             return pField;
+        }
+
+        public static esriFieldType ConvertFromString(string fieldTypeStr)
+        {
+            switch (fieldTypeStr)
+            {
+                case "二进制":
+                    return esriFieldType.esriFieldTypeBlob;
+                case "日期":
+                    return esriFieldType.esriFieldTypeDate;
+                case "浮点数":
+                    return esriFieldType.esriFieldTypeDouble;
+                case "图形对象":
+                    return esriFieldType.esriFieldTypeGeometry;
+                case "全局编号":
+                    return esriFieldType.esriFieldTypeGlobalID;
+                case "永久唯一编号":
+                    return esriFieldType.esriFieldTypeGUID;
+                case "整型":
+                    return esriFieldType.esriFieldTypeInteger;
+                case "表内编号":
+                    return esriFieldType.esriFieldTypeOID;
+                case "影像图":
+                    return esriFieldType.esriFieldTypeRaster;
+                case "单精度浮点数":
+                    return esriFieldType.esriFieldTypeSingle;
+                case "短整型":
+                    return esriFieldType.esriFieldTypeSmallInteger;
+                case "字符串":
+                    return esriFieldType.esriFieldTypeString;
+            }
+            return esriFieldType.esriFieldTypeString;
         }
     }
 }

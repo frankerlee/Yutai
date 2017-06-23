@@ -8,12 +8,28 @@ using Yutai.Pipeline.Config.Interfaces;
 
 namespace Yutai.Pipeline.Config.Concretes
 {
-    public class PipelineLayer:IPipelineLayer
+    public class PipelineLayer : IPipelineLayer
     {
         private IPipePoint _pointLayer;
         private IPipeLine _lineLayer;
         private IPointAssist _pointAssistLayer;
         private ILineAssist _lineAssistLayer;
+        private List<IPipelineTemplate> _templates;
+
+        public PipelineLayer()
+        {
+        }
+
+        public PipelineLayer(XmlNode xmlNode)
+        {
+            ReadFromXml(xmlNode);
+        }
+
+        public PipelineLayer(XmlNode xmlNode, List<IPipelineTemplate> templates)
+        {
+            _templates = templates;
+            ReadFromXml(xmlNode);
+        }
 
         public IPipePoint PointLayer
         {
@@ -39,14 +55,85 @@ namespace Yutai.Pipeline.Config.Concretes
             set { _lineAssistLayer = value; }
         }
 
-        public void LoadFromXml(string fileName)
+        public void ReadFromXml(XmlNode xml)
         {
-            throw new NotImplementedException();
+            if (xml == null)
+                return;
+            XmlNode node = xml.SelectSingleNode("/PipelineConfig/PipelineLayers/PipelineLayer/PointLayer");
+            if (node?.Attributes != null)
+            {
+                string template = node.Attributes["Template"].Value;
+                if (_templates == null || string.IsNullOrWhiteSpace(template))
+                    _pointLayer = new PipePoint(node);
+                else
+                {
+                    IPipelineTemplate pipelineTemplate = _templates.FirstOrDefault(c => c.Name == template);
+                    if (pipelineTemplate != null)
+                        _pointLayer = new PipePoint(node, pipelineTemplate);
+                    else
+                        _pointLayer = new PipePoint(node);
+                }
+            }
+            node = xml.SelectSingleNode("/PipelineConfig/PipelineLayers/PipelineLayer/LineLayer");
+
+            if (node?.Attributes != null)
+            {
+                string template = node.Attributes["Template"].Value;
+
+                if (_templates == null || string.IsNullOrWhiteSpace(template))
+                    _lineLayer = new PipeLine(node);
+                else
+                {
+                    IPipelineTemplate pipelineTemplate = _templates.FirstOrDefault(c => c.Name == template);
+                    if (pipelineTemplate != null)
+                        _lineLayer = new PipeLine(node, pipelineTemplate);
+                    else
+                        _lineLayer = new PipeLine(node);
+                }
+            }
+
+            node = xml.SelectSingleNode("/PipelineConfig/PipelineLayers/PipelineLayer/PointAssist");
+            if (node?.Attributes != null)
+            {
+                string template = node.Attributes["Template"].Value;
+
+                if (_templates == null || string.IsNullOrWhiteSpace(template))
+                    _pointAssistLayer = new PointAssist(node);
+                else
+                {
+                    IPipelineTemplate pipelineTemplate = _templates.FirstOrDefault(c => c.Name == template);
+                    if (pipelineTemplate != null)
+                        _pointAssistLayer = new PointAssist(node, pipelineTemplate);
+                    else
+                        _pointAssistLayer = new PointAssist(node);
+                }
+            }
+
+            node = xml.SelectSingleNode("/PipelineConfig/PipelineLayers/PipelineLayer/LineAssist");
+            if (node?.Attributes != null)
+            {
+                string template = node.Attributes["Template"].Value;
+                if (_templates == null || string.IsNullOrWhiteSpace(template))
+                    _lineAssistLayer = new LineAssist(node);
+                else
+                {
+                    IPipelineTemplate pipelineTemplate = _templates.FirstOrDefault(c => c.Name == template);
+                    if (pipelineTemplate != null)
+                        _lineAssistLayer = new LineAssist(node, pipelineTemplate);
+                    else
+                        _lineAssistLayer = new LineAssist(node);
+                }
+            }
         }
 
-        public XmlNode ToXml()
+        public XmlNode ToXml(XmlDocument doc)
         {
-            throw new NotImplementedException();
+            XmlNode layerNode = doc.CreateElement("PipelineLayer");
+            if (_pointLayer != null) layerNode.AppendChild(_pointLayer.ToXml(doc));
+            if (_lineLayer != null) layerNode.AppendChild(_lineLayer.ToXml(doc));
+            if (_pointAssistLayer != null) layerNode.AppendChild(_pointAssistLayer.ToXml(doc));
+            if (_lineAssistLayer != null) layerNode.AppendChild(_lineAssistLayer.ToXml(doc));
+            return layerNode;
         }
     }
 }

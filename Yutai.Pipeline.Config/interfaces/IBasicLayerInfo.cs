@@ -7,6 +7,6 @@
         bool Visible { get; set; }
         string TemplateName { get; set; }
 
-        void LoadTemplate(IPipeTemplate template);
+        void LoadTemplate(IPipelineTemplate template);
     }
 }

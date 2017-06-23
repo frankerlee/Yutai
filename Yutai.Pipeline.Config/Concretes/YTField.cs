@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using ESRI.ArcGIS.Geodatabase;
+using Yutai.ArcGIS.Common.Helpers;
 using Yutai.Pipeline.Config.Interfaces;
 
 namespace Yutai.Pipeline.Config.Concretes
@@ -74,20 +75,66 @@ namespace Yutai.Pipeline.Config.Concretes
 
         public void ReadFromXml(XmlNode xml)
         {
-            _typeName = xml.Attributes["TypeName"].Value;
-            _name = xml.Attributes["Name"].Value;
-            _aliasName = xml.Attributes["AliasName"].Value;
-            _autoNames = xml.Attributes["AutoNames"].Value;
-            _length = xml.Attributes["Length"].Value==null?50: Convert.ToInt32(xml.Attributes["Length"].Value);
-            _allowNull = xml.Attributes["AllowNull"].Value==null ? true: (xml.Attributes["AllowNull"].Value.ToUpper().StartsWith("T")?true:false);
-            _fieldTypeStr = xml.Attributes["FieldType"].Value;
-            _precision = xml.Attributes["Precision"].Value == null ? 50 : Convert.ToInt32(xml.Attributes["Precision"].Value);
-            _fieldType = FieldHelper.ConvertFromString(_fieldTypeStr);
+            if (xml.Attributes != null)
+            {
+                _typeName = xml.Attributes["TypeName"].Value;
+                _name = xml.Attributes["Name"].Value;
+                _aliasName = xml.Attributes["AliasName"].Value;
+                _autoNames = xml.Attributes["AutoNames"].Value;
+                _length = string.IsNullOrWhiteSpace(xml.Attributes["Length"].Value) ? 50 : Convert.ToInt32(xml.Attributes["Length"].Value);
+                _allowNull = string.IsNullOrWhiteSpace(xml.Attributes["AllowNull"].Value) || (xml.Attributes["AllowNull"].Value.ToUpper().StartsWith("T"));
+                _fieldTypeStr = xml.Attributes["FieldType"].Value;
+                _precision = string.IsNullOrWhiteSpace(xml.Attributes["Precision"].Value) ? 50: Convert.ToInt32(xml.Attributes["Precision"].Value);
+                _fieldType = FieldHelper.ConvertFromString(_fieldTypeStr);
+            }
         }
 
-        public XmlNode ToXml()
+        public XmlNode ToXml(XmlDocument doc)
         {
-            throw new NotImplementedException();
+            XmlNode fieldNode = doc.CreateElement("Field");
+            XmlAttribute typeNameAttribute = doc.CreateAttribute("TypeName");
+            typeNameAttribute.Value = _typeName;
+            XmlAttribute nameAttribute = doc.CreateAttribute("Name");
+            nameAttribute.Value = _name;
+            XmlAttribute aliasNameAttribute = doc.CreateAttribute("AliasName");
+            aliasNameAttribute.Value = _aliasName;
+            XmlAttribute lengthAttribute = doc.CreateAttribute("Length");
+            lengthAttribute.Value = _length.ToString();
+            XmlAttribute allowNullAttribute = doc.CreateAttribute("AllowNull");
+            allowNullAttribute.Value = _allowNull.ToString();
+            XmlAttribute fieldTypeAttribute = doc.CreateAttribute("FieldType");
+            fieldTypeAttribute.Value = FieldHelper.QueryFieldTypeName(_fieldType);
+            XmlAttribute precisionAttribute = doc.CreateAttribute("Precision");
+            precisionAttribute.Value = _precision.ToString();
+
+            fieldNode.Attributes.Append(typeNameAttribute);
+            fieldNode.Attributes.Append(nameAttribute);
+            fieldNode.Attributes.Append(aliasNameAttribute);
+            fieldNode.Attributes.Append(lengthAttribute);
+            fieldNode.Attributes.Append(allowNullAttribute);
+            fieldNode.Attributes.Append(fieldTypeAttribute);
+            fieldNode.Attributes.Append(precisionAttribute);
+
+            return fieldNode;
+        }
+
+        public void LoadFromField(IFields fields)
+        {
+            string[] autoNames = _autoNames.Split(';');
+            foreach (string autoName in autoNames)
+            {
+                int i = fields.FindField(autoName);
+                if (i >= 0)
+                {
+                    IField field = fields.Field[i];
+                    _name = field.Name;
+                    _aliasName = field.AliasName;
+                    _length = field.Length;
+                    _allowNull = field.IsNullable;
+                    _fieldType = field.Type;
+                    _precision = field.Precision;
+                }
+            }
         }
     }
 }
