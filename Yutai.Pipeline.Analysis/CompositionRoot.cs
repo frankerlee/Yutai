@@ -1,4 +1,5 @@
 ﻿
+using Yutai.Pipeline.Analysis.Views;
 using Yutai.Plugins.Mvp;
 
 namespace Yutai.Plugins.Catalog
@@ -7,8 +8,8 @@ namespace Yutai.Plugins.Catalog
     {
         public static void Compose(IApplicationContainer container)
         {
-            //container.RegisterService<ICatalogView, CatalogView>()
-            //    .RegisterSingleton<CatalogPresenter>();
+           container.RegisterService<IQueryResultView, QueryResultView>()
+                .RegisterSingleton<QueryResultPresenter>();
             //    .RegisterService<IGeometryInfoView, GeometryInfoView>()
             //     .RegisterService<IAttributeEditView, AttributeEditView>()
             //    .RegisterSingleton<EditTemplatePresenter>()

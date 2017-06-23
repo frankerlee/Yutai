@@ -134,7 +134,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		private void pb_About_Click(object obj, EventArgs eventArg)
 		{
-			(new AboutForm()).ShowDialog(this);
+			//(new AboutForm()).ShowDialog(this);
 		}
 
 		private void pb_About_MouseEnter(object obj, EventArgs eventArg)

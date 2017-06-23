@@ -31,15 +31,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Data.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282" />
+    <Reference Include="DevExpress.Sparkline.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282" />
     <Reference Include="DevExpress.Utils.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282" />
     <Reference Include="ESRI.ArcGIS.AxControls, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
     <Reference Include="ESRI.ArcGIS.Carto, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="ESRI.ArcGIS.Controls, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="ESRI.ArcGIS.DataSourcesFile, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="ESRI.ArcGIS.DataSourcesFile, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
@@ -360,12 +365,6 @@
     <Compile Include="QueryForms\QueryIntersectionUI.Designer.cs">
       <DependentUpon>QueryIntersectionUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="QueryForms\QueryResult.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="QueryForms\QueryResult.Designer.cs">
-      <DependentUpon>QueryResult.cs</DependentUpon>
-    </Compile>
     <Compile Include="QueryForms\RelateQueryUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -451,6 +450,15 @@
     <Compile Include="QueryForms\StatReportformsUI.Designer.cs">
       <DependentUpon>StatReportformsUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="QueryResultArgs.cs" />
+    <Compile Include="Views\IQueryResultView.cs" />
+    <Compile Include="Views\QueryResultView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\QueryResultView.Designer.cs">
+      <DependentUpon>QueryResultView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QueryResultViewCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Yutai.ArcGIS.Common\Yutai.ArcGIS.Common.csproj">
@@ -464,6 +472,10 @@
     <ProjectReference Include="..\Yutai.Plugins\Yutai.Plugins.csproj">
       <Project>{800F2EE4-47AB-4CD4-934D-A64980D98A23}</Project>
       <Name>Yutai.Plugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yutai.UI\Yutai.UI.csproj">
+      <Project>{9A73B99A-0D59-4B55-B35F-721D321942AF}</Project>
+      <Name>Yutai.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -572,9 +584,6 @@
     <EmbeddedResource Include="QueryForms\QueryIntersectionUI.resx">
       <DependentUpon>QueryIntersectionUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="QueryForms\QueryResult.resx">
-      <DependentUpon>QueryResult.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="QueryForms\RelateQueryUI.resx">
       <DependentUpon>RelateQueryUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -617,6 +626,9 @@
     <EmbeddedResource Include="QueryForms\StatReportformsUI.resx">
       <DependentUpon>StatReportformsUI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\QueryResultView.resx">
+      <DependentUpon>QueryResultView.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -629,6 +641,11 @@
     <None Include="icon_analysis_collision.png" />
     <None Include="icon_measure_length.png" />
     <None Include="icon_measure_area.png" />
+    <None Include="icon_excel.png" />
+    <None Include="icon_flash.png" />
+    <None Include="icon_locate.png" />
+    <None Include="icon_print.png" />
+    <None Include="icon_sum.png" />
     <Content Include="Resources\cursor\Hand.cur" />
     <Content Include="Resources\cursor\MoveHand.cur" />
   </ItemGroup>

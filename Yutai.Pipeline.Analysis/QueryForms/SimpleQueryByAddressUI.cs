@@ -24,9 +24,16 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 		public IPipeConfig pPipeCfg;
 
 
+        private PipelineAnalysisPlugin _plugin;
+
+        public PipelineAnalysisPlugin Plugin
+        {
+            set { _plugin = value; }
+        }
 
 
-		private List<string> ADArray = new List<string>();
+
+        private List<string> ADArray = new List<string>();
 
 
 
@@ -398,28 +405,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			IL_101:
 			spatialFilter.WhereClause=text;
 			IFeatureCursor pFeatureCursor = featureClass.Search(spatialFilter, false);
-			if (this.resultDlg == null || this.resultDlg.IsDisposed)
-			{
-				this.resultDlg = new QueryResult();
-				this.resultDlg.pFeatureCursor = pFeatureCursor;
-				this.resultDlg.MapControl = this.MapControl;
-				this.resultDlg.pFeatureSelection = (IFeatureSelection)this.SelectLayer;
-				this.resultDlg.Show(this);
-			}
-			else
-			{
-				this.resultDlg.pFeatureCursor = pFeatureCursor;
-				if (!this.resultDlg.Visible)
-				{
-					this.resultDlg.Show();
-					if (this.resultDlg.WindowState == FormWindowState.Minimized)
-					{
-						this.resultDlg.WindowState = FormWindowState.Normal;
-					}
-				}
-				this.resultDlg.UpdateGrid();
-			}
-		}
+            _plugin.FireQueryResultChanged(new QueryResultArgs(pFeatureCursor, this.SelectLayer as IFeatureSelection));
+        }
 
 		private void SimpleQueryByAddressUI_HelpRequested(object sender, HelpEventArgs hlpevent)
 		{

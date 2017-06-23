@@ -14,7 +14,8 @@ namespace Yutai.Pipeline.Analysis
     {
         private IAppContext _context;
         private MenuGenerator _menuGenerator;
-      
+        
+      public event EventHandler<QueryResultArgs>QueryResultChanged;
 
         protected override void RegisterServices(IApplicationContainer container)
         {
@@ -39,6 +40,10 @@ namespace Yutai.Pipeline.Analysis
             }
         }
 
-      
+
+        public void FireQueryResultChanged(QueryResultArgs e)
+        {
+            FireEvent(QueryResultChanged, e);
+        }
     }
 }

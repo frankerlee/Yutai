@@ -14,11 +14,12 @@ namespace Yutai.Pipeline.Analysis.QueryForms
     class CmdQueryBasic : YutaiTool
     {
         private BaseQueryUI QueryUI;
+        private PipelineAnalysisPlugin _plugin;
 
-
-        public CmdQueryBasic(IAppContext context)
+        public CmdQueryBasic(IAppContext context,PipelineAnalysisPlugin plugin)
         {
             OnCreate(context);
+            _plugin = plugin;
         }
 
         public override void OnClick()

@@ -26,6 +26,14 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 		}
 
 
+        private PipelineAnalysisPlugin _plugin;
+        public PipelineAnalysisPlugin Plugin
+        {
+            set
+            {
+                _plugin = value;
+            }
+        }
 
 
 
@@ -53,8 +61,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
 
 
-
-		public IMapControl3 MapControl;
+        public IMapControl3 MapControl;
 
 		public IPipeConfig pPipeCfg;
 
@@ -575,8 +582,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 					MessageBox.Show("查询值有误,请检查!");
 					return;
 				}
-				this.m_iApp.SetResult(featureCursor, (IFeatureSelection)this.SelectLayer);
-			}
+			    _plugin.FireQueryResultChanged(new QueryResultArgs(featureCursor, (IFeatureSelection)this.SelectLayer));
+            }
 		}
 
 		protected override void OnClosed(EventArgs e)

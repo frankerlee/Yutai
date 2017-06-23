@@ -13,25 +13,6 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 	{
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		private FontData mFontData = new FontData();
 
 

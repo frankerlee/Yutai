@@ -29,18 +29,14 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 		}
 
 
+	    private PipelineAnalysisPlugin _plugin;
 
+	    public PipelineAnalysisPlugin Plugin
+	    {
+            set { _plugin = value; }
+	    }
 
-
-
-
-
-
-
-
-
-
-
+        
 
 
 		public IGeometry m_ipGeo;
@@ -287,29 +283,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				selectionSet.Search(queryFilter, false, out cursor);
 				IFeatureCursor pFeatureCursor = cursor as IFeatureCursor;
 				Splash.Close();
-				if (this.resultDlg == null || this.resultDlg.IsDisposed)
-				{
-					this.resultDlg = new QueryResult();
-					this.resultDlg.pFeatureCursor = pFeatureCursor;
-					this.resultDlg.MapControl = this.MapControl;
-					this.resultDlg.pFeatureSelection = featureSelection;
-					this.resultDlg.Show(this);
-				}
-				else
-				{
-					this.resultDlg.pFeatureCursor = pFeatureCursor;
-					this.resultDlg.pFeatureSelection = featureSelection;
-					this.resultDlg.MapControl = this.MapControl;
-					if (!this.resultDlg.Visible)
-					{
-						this.resultDlg.Show(this);
-						if (this.resultDlg.WindowState == FormWindowState.Minimized)
-						{
-							this.resultDlg.WindowState = FormWindowState.Normal;
-						}
-					}
-					this.resultDlg.UpdateGrid();
-				}
+				_plugin.FireQueryResultChanged(new QueryResultArgs(pFeatureCursor, featureSelection));
 			}
 		}
 
@@ -346,30 +320,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				ICursor cursor;
 				selectionSet.Search(queryFilter, false, out cursor);
 				IFeatureCursor pFeatureCursor = cursor as IFeatureCursor;
-				if (this.resultDlg == null || this.resultDlg.IsDisposed)
-				{
-					this.resultDlg = new QueryResult();
-					this.resultDlg.pFeatureCursor = pFeatureCursor;
-					this.resultDlg.MapControl = this.MapControl;
-					this.resultDlg.pFeatureSelection = featureSelection;
-					this.resultDlg.Show();
-				}
-				else
-				{
-					this.resultDlg.pFeatureCursor = pFeatureCursor;
-					this.resultDlg.MapControl = this.MapControl;
-					this.resultDlg.pFeatureSelection = featureSelection;
-					if (!this.resultDlg.Visible)
-					{
-						this.resultDlg.Show();
-						if (this.resultDlg.WindowState == FormWindowState.Minimized)
-						{
-							this.resultDlg.WindowState = FormWindowState.Normal;
-						}
-					}
-					this.resultDlg.UpdateGrid();
-				}
-			}
+                _plugin.FireQueryResultChanged(new QueryResultArgs(pFeatureCursor, featureSelection));
+            }
 		}
 
 		private void btnClose_Click(object sender, EventArgs e)

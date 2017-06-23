@@ -419,7 +419,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 		private DataGridViewTextBoxColumn Column2;
 		private DataGridViewTextBoxColumn Column3;
 		private DataGridViewTextBoxColumn Column4;
-		private ComboBox comboBoxGX;
+		private System.Windows.Forms.ComboBox comboBoxGX;
 		private Label label3;
 		private DataGridViewTextBoxColumn 序号;
 		private DataGridViewTextBoxColumn PipeDataset;

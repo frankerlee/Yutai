@@ -33,12 +33,19 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
 		public IPipeConfig pPipeCfg;
 
+        private PipelineAnalysisPlugin _plugin;
+        public PipelineAnalysisPlugin Plugin
+        {
+            set
+            {
+                _plugin = value;
+            }
+        }
 
 
 
 
-
-		public object mainform;
+        public object mainform;
 
 		private List<string> DXArray = new List<string>();
 
@@ -360,8 +367,9 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				spatialFilter.SpatialRel=(esriSpatialRelEnum) (1);
 			}
 			IFeatureCursor pCursor = featureClass.Search(spatialFilter, false);
-			this.m_iApp.SetResult(pCursor, (IFeatureSelection)this.SelectLayer);
-		}
+            //修改为插件事件，因为结果显示窗体为插件拥有。
+            _plugin.FireQueryResultChanged(new QueryResultArgs(pCursor, (IFeatureSelection)this.SelectLayer));
+        }
 
 		private void SimpleQueryByJdxzUI_VisibleChanged(object sender, EventArgs e)
 		{

@@ -90,7 +90,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 				IFeature feature = featureCursor.NextFeature();
 				while (feature != null)
 				{
-					this.progressBar1.Value++;
+					this.progressBar1.Value= this.progressBar1.Value+1;
 					if (feature.Shape == null || feature.Shape.GeometryType != (esriGeometryType) 3)
 					{
 						feature = featureCursor.NextFeature();

@@ -223,7 +223,7 @@ namespace Yutai.Pipeline.Analysis.Classes
                         }
                         num5 = num5 * 0.0005;
                         IPoint point = null;
-                        IGeometry geometry = ipolyline1.Intersect(polyline, 1);
+                        IGeometry geometry = ipolyline1.Intersect(polyline, (esriGeometryDimension) 1);
                         if (geometry != null)
                         {
                             if (geometry is IPoint)
@@ -464,7 +464,7 @@ namespace Yutai.Pipeline.Analysis.Classes
                             num3 = 10;
                         }
                         num3 = num3 * 0.0005;
-                        IGeometry geometry = ipolyline1.Intersect(polyline, 1);
+                        IGeometry geometry = ipolyline1.Intersect(polyline, (esriGeometryDimension) 1);
                         if (geometry != null)
                         {
                             IPoint point = null;

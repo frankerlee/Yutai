@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using Yutai.Pipeline.Config.Interfaces;
 
 namespace Yutai.Pipeline.Config.Concretes
@@ -36,6 +37,16 @@ namespace Yutai.Pipeline.Config.Concretes
         {
             get { return _lineAssistLayer; }
             set { _lineAssistLayer = value; }
+        }
+
+        public void LoadFromXml(string fileName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public XmlNode ToXml()
+        {
+            throw new NotImplementedException();
         }
     }
 }

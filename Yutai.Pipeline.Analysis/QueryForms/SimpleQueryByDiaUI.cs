@@ -33,13 +33,20 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 		public IPipeConfig pPipeCfg;
 
 
+        private PipelineAnalysisPlugin _plugin;
+        public PipelineAnalysisPlugin Plugin
+        {
+            set
+            {
+                _plugin = value;
+            }
+        }
 
 
 
 
 
-
-		public object mainform;
+        public object mainform;
 
 		public ushort DrawType;
 
@@ -494,8 +501,9 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 					MessageBox.Show("查询值有误,请检查!");
 					return;
 				}
-				this.m_iApp.SetResult(pCursor, (IFeatureSelection)this.SelectLayer);
-			}
+                //修改为插件事件，因为结果显示窗体为插件拥有。
+                _plugin.FireQueryResultChanged(new QueryResultArgs(pCursor, (IFeatureSelection)this.SelectLayer));
+            }
 		}
 
 		private void lable_Click(object sender, EventArgs e)

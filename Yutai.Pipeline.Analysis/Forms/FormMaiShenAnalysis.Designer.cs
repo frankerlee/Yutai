@@ -262,7 +262,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 		private Button btnExport;
 		private SaveFileDialog saveFileDialog_0;
 		private SplitContainer splitContainer1;
-		private ProgressBar progressBar1;
+		private System.Windows.Forms.ProgressBar progressBar1;
 		private Timer timer_0;
 		private IFeature ifeature_0;
 	    private IAppContext _context;

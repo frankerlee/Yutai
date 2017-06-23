@@ -22,24 +22,6 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 	{
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		public IMapControl3 MapControl;
 
 		public IFeatureSelection pFeatureSelection;
@@ -52,12 +34,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
 		private int nGeoType = -1;
 
-
-
-
-
-
-
+        
 
 		private bool bFitWidth = true;
 

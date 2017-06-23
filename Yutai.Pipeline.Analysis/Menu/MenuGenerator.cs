@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml;
+using DevExpress.XtraBars.Ribbon;
 using Yutai.Plugins.Catalog.Menu;
 using Yutai.Plugins.Interfaces;
+using Yutai.UI.Menu.Ribbon;
 
 namespace Yutai.Pipeline.Analysis.Menu
 {
@@ -21,7 +23,6 @@ namespace Yutai.Pipeline.Analysis.Menu
 
             _plugin = plugin;
             _context = context;
-
             _menuManager = _context.MainView.RibbonManager;
             _commands = new YutaiCommands(_context, plugin.Identity);
             _commands.Plugin = plugin;

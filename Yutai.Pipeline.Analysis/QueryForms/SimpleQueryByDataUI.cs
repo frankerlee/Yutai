@@ -23,10 +23,17 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				return this.m_pPipeLayer.Name;
 			}
 		}
+        private PipelineAnalysisPlugin _plugin;
+        public PipelineAnalysisPlugin Plugin
+        {
+            set
+            {
+                _plugin = value;
+            }
+        }
 
 
-
-		public IGeometry m_ipGeo;
+        public IGeometry m_ipGeo;
 
 		public IAppContext m_context;
 
@@ -328,8 +335,9 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 								spatialFilter.SpatialRel=(esriSpatialRelEnum) (1);
 							}
 							IFeatureCursor pCursor = featureClass.Search(spatialFilter, false);
-							this.m_iApp.SetResult(pCursor, (IFeatureSelection)this.SelectLayer);
-						}
+                            //修改为插件事件，因为结果显示窗体为插件拥有。
+                            _plugin.FireQueryResultChanged(new QueryResultArgs(pCursor, (IFeatureSelection)this.SelectLayer));
+                        }
 					}
 				}
 			}

@@ -45,7 +45,7 @@ namespace Yutai.Pipeline.Config.Concretes
 
         }
 
-        public PipePoint(XmlNode xmlNode, IPipeTemplate template)
+        public PipePoint(XmlNode xmlNode, IPipelineTemplate template)
         {
 
         }
@@ -204,7 +204,7 @@ namespace Yutai.Pipeline.Config.Concretes
             set { _templateName = value; }
         }
 
-        public void LoadTemplate(IPipeTemplate template)
+        public void LoadTemplate(IPipelineTemplate template)
         {
             throw new NotImplementedException();
         }

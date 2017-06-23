@@ -72,39 +72,40 @@ namespace Yutai.Pipeline.Analysis.Commands
 
         public override void OnMouseDown(int button, int Shift, int x, int y)
         {
-            if (button == 1 && this.m_hitAlsDlg.Visible && this.m_hitAlsDlg.HitType == HitAnalyseDlg.HitAnalyseType.emHitAnalyseDraw)
+            if (button == 1 && this.hrzDistDlg.Visible )
             {
-                this.m_hitAlsDlg.GetDrawLine();
+                this.StartAnalysis(x,y);
+                this.hrzDistDlg.GetBaseLine();
             }
         }
 
         public override void OnMouseUp(int button, int shift, int x, int y)
         {
 
-            if (button == 1)
-            {
-                if (this.m_hitAlsDlg.HitType == HitAnalyseDlg.HitAnalyseType.emHitAnalyseSelect)
-                {
-                    this.StartAnalysis(x, y);
-                    this.m_hitAlsDlg.GetBaseLine();
-                    this.m_hitAlsDlg.RefreshBaseLineGrid();
-                }
-                if (this.m_hitAlsDlg.HitType == HitAnalyseDlg.HitAnalyseType.emHitAnalyseDraw)
-                {
-                    ISimpleLineSymbol simpleLineSymbol = new SimpleLineSymbol();
-                    ISimpleLineSymbol arg_89_0 = simpleLineSymbol;
-                    IRgbColor rgbColorClass = new RgbColor();
-                    rgbColorClass.Red = (255);
-                    rgbColorClass.Green = (0);
-                    rgbColorClass.Blue = (0);
-                    arg_89_0.Color = (rgbColorClass);
-                    simpleLineSymbol.Width = (5.0);
-                    if (this.m_hitAlsDlg.m_commonDistAls.m_pBaseLine != null)
-                    {
-                        this.m_hitAlsDlg.RefreshBaseLineGrid();
-                    }
-                }
-            }
+            //if (button == 1)
+            //{
+            //    if (this.m_hitAlsDlg.HitType == HitAnalyseDlg.HitAnalyseType.emHitAnalyseSelect)
+            //    {
+            //        this.StartAnalysis(x, y);
+            //        this.m_hitAlsDlg.GetBaseLine();
+            //        this.m_hitAlsDlg.RefreshBaseLineGrid();
+            //    }
+            //    if (this.m_hitAlsDlg.HitType == HitAnalyseDlg.HitAnalyseType.emHitAnalyseDraw)
+            //    {
+            //        ISimpleLineSymbol simpleLineSymbol = new SimpleLineSymbol();
+            //        ISimpleLineSymbol arg_89_0 = simpleLineSymbol;
+            //        IRgbColor rgbColorClass = new RgbColor();
+            //        rgbColorClass.Red = (255);
+            //        rgbColorClass.Green = (0);
+            //        rgbColorClass.Blue = (0);
+            //        arg_89_0.Color = (rgbColorClass);
+            //        simpleLineSymbol.Width = (5.0);
+            //        if (this.m_hitAlsDlg.m_commonDistAls.m_pBaseLine != null)
+            //        {
+            //            this.m_hitAlsDlg.RefreshBaseLineGrid();
+            //        }
+            //    }
+            //}
         }
 
         private void StartAnalysis(int num, int num2)

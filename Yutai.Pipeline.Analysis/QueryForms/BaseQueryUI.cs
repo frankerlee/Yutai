@@ -26,17 +26,19 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 		}
 
 		public IGeometry m_ipGeo;
-
 		public IAppContext m_context;
-
 		public IMapControl3 MapControl;
-
 		public IPipeConfig pPipeCfg;
-
-        
 		public IGeometry SelectBound;
-
-		public ushort DrawType;
+	    private PipelineAnalysisPlugin _plugin;
+        public PipelineAnalysisPlugin Plugin
+	    {
+            set
+            {
+                _plugin = value;
+            }
+	    }
+        public ushort DrawType;
 
 		public ushort SelectType;
 
@@ -400,7 +402,9 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				MessageBox.Show("查询值有误,请检查!");
 				return;
 			}
-			this.m_iApp.SetResult(pCursor, (IFeatureSelection)this.SelectLayer);
+            //修改为插件事件，因为结果显示窗体为插件拥有。
+            _plugin.FireQueryResultChanged(new QueryResultArgs(pCursor, (IFeatureSelection)this.SelectLayer));
+			
 		}
 
 		private void ByEnvelope_Click(object sender, EventArgs e)
