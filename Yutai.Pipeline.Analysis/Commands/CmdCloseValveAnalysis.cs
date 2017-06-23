@@ -1,6 +1,7 @@
 ﻿using System;
 using Yutai.Pipeline.Analysis.Forms;
 using Yutai.Pipeline.Analysis.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
@@ -11,11 +12,12 @@ namespace Yutai.Pipeline.Analysis.Commands
     {
 
         private frmBurstReport frmBurst;
+        private IPipelineConfig _config;
 
-
-        public CmdCloseValveAnalysis(IAppContext context)
+        public CmdCloseValveAnalysis(IAppContext context,IPipelineConfig config)
         {
             OnCreate(context);
+            _config = config;
         }
 
         public override void OnClick()
@@ -27,6 +29,7 @@ namespace Yutai.Pipeline.Analysis.Commands
             {
                 this.frmBurst = new frmBurstReport();
                 frmBurst.m_iApp = this._context;
+                
                 this.frmBurst.Show();
             }
         }

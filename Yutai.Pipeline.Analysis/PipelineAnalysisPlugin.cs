@@ -1,5 +1,6 @@
 ﻿using System;
 using Yutai.Pipeline.Analysis.Menu;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Catalog;
 using Yutai.Plugins.Catalog.Menu;
 using Yutai.Plugins.Concrete;
@@ -14,6 +15,7 @@ namespace Yutai.Pipeline.Analysis
     {
         private IAppContext _context;
         private MenuGenerator _menuGenerator;
+        private IPipelineConfig _config;
         
       public event EventHandler<QueryResultArgs>QueryResultChanged;
 
@@ -26,7 +28,7 @@ namespace Yutai.Pipeline.Analysis
         {
             _context = context;
             _menuGenerator = context.Container.GetInstance<MenuGenerator>();
-
+            _config = context.Container.GetSingleton<IPipelineConfig>();
             //_menuListener = context.Container.GetInstance<MenuListener>();
             //_mapListener = context.Container.GetInstance<MapListener>();
             // _dockPanelService = context.Container.GetInstance<TemplateDockPanelService>();
@@ -40,7 +42,10 @@ namespace Yutai.Pipeline.Analysis
             }
         }
 
-
+        public IPipelineConfig PipeConfig
+        {
+            get { return _config;}
+        }
         public void FireQueryResultChanged(QueryResultArgs e)
         {
             FireEvent(QueryResultChanged, e);

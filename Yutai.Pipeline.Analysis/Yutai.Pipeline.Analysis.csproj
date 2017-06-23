@@ -96,6 +96,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Configuration.cs" />
     <Compile Include="PipelineAnalysisPlugin.cs" />
     <Compile Include="Classes\ApplyConst.cs" />
     <Compile Include="Classes\ApplyMath.cs" />
@@ -468,6 +469,10 @@
     <ProjectReference Include="..\Yutai.PipeConfig\Yutai.PipeConfig.csproj">
       <Project>{8BBB6B46-4076-442A-8EDB-C5B28879C77E}</Project>
       <Name>Yutai.PipeConfig</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yutai.Pipeline.Config\Yutai.Pipeline.Config.csproj">
+      <Project>{0AA42995-A1CE-49FD-BB98-F94EED2D7289}</Project>
+      <Name>Yutai.Pipeline.Config</Name>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.Plugins\Yutai.Plugins.csproj">
       <Project>{800F2EE4-47AB-4CD4-934D-A64980D98A23}</Project>
