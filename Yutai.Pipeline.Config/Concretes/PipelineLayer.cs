@@ -148,6 +148,13 @@ namespace Yutai.Pipeline.Config.Concretes
         public XmlNode ToXml(XmlDocument doc)
         {
             XmlNode layerNode = doc.CreateElement("PipelineLayer");
+            XmlAttribute nameAttribute = doc.CreateAttribute("Name");
+            nameAttribute.Value = _name;
+            XmlAttribute codeAttribute = doc.CreateAttribute("Code");
+            codeAttribute.Value = _code;
+            layerNode.Attributes.Append(nameAttribute);
+            layerNode.Attributes.Append(codeAttribute);
+
             if (_pointLayer != null) layerNode.AppendChild(_pointLayer.ToXml(doc));
             if (_lineLayer != null) layerNode.AppendChild(_lineLayer.ToXml(doc));
             if (_pointAssistLayer != null) layerNode.AppendChild(_pointAssistLayer.ToXml(doc));
