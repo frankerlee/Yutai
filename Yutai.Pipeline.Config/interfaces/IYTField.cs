@@ -24,6 +24,7 @@ namespace Yutai.Pipeline.Config.Interfaces
         bool AllowNull { get; set; }
 
         void ReadFromXml(XmlNode xml);
-        XmlNode ToXml();
+        XmlNode ToXml(XmlDocument doc);
+        void LoadFromField(IFields fields);
     }
 }

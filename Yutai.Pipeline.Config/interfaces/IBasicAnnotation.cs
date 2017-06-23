@@ -21,6 +21,6 @@ namespace Yutai.Pipeline.Config.Interfaces
         IYTField TextStringField { get; set; }    // 标注的内容
         IYTField RemarkField { get; set; }        // 备注
         void ReadFromXml(XmlNode xml);
-        XmlNode ToXml();
+        XmlNode ToXml(XmlDocument doc);
     }
 }

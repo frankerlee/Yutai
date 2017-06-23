@@ -1,5 +1,6 @@
 ﻿using System.Xml;
 using ESRI.ArcGIS.Carto;
+using ESRI.ArcGIS.Geodatabase;
 
 namespace Yutai.Pipeline.Config.Interfaces
 {
@@ -25,9 +26,9 @@ namespace Yutai.Pipeline.Config.Interfaces
         IYTField MDateField { get; set; }         // 入库日期
         IYTField PCJHField { get; set; }          // 偏心井号
         IYTField RemarkField { get; set; }        // 备注
-
+        
         void AutoAssembly(IFeatureLayer pLayer);
         void ReadFromXml(XmlNode xml);
-        XmlNode ToXml();
+        XmlNode ToXml(XmlDocument doc);
     }
 }

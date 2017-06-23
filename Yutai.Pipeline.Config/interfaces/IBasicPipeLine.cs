@@ -8,6 +8,8 @@
 // 更新时间 :  2017/06/22  15:40
 
 using System.Xml;
+using ESRI.ArcGIS.Carto;
+using ESRI.ArcGIS.Geodatabase;
 
 namespace Yutai.Pipeline.Config.Interfaces
 {
@@ -40,7 +42,8 @@ namespace Yutai.Pipeline.Config.Interfaces
         IYTField HoleUsedField { get; set; }      // 已用孔数
         IYTField FlowDField { get; set; }         // 流向
         IYTField RemarkField { get; set; }        // 备注
+        void AutoAssembly(IFeatureLayer pLayer);
         void ReadFromXml(XmlNode xml);
-        XmlNode ToXml();
+        XmlNode ToXml(XmlDocument doc);
     }
 }

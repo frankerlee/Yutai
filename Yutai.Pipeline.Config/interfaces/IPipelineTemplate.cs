@@ -19,6 +19,6 @@ namespace Yutai.Pipeline.Config.Interfaces
         List<IYTField> Fields { get; set; }
 
         void ReadFromXml(XmlNode xmlNode);
-        XmlNode ToXml();
+        XmlNode ToXml(XmlDocument doc);
     }
 }

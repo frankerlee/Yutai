@@ -1,42 +1,63 @@
 ﻿<PipelineConfig>
   <PipelineLayers>
     <PipelineLayer>
-      <PointLayer Name="上水管线点" AliasName="上水管线点" Template="PipePoint">
-        <Fields>
-          <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
-        </Fields>
+      <PointLayer Name="上水管线点" AliasName="上水管线点" Template="PipePoint" Visible="True">
       </PointLayer>
-      <LineLayer Name="上水管线线" AliasName="上水管线线" Template="PipeLine">
-        //这部分是可选的，就是如果有特殊需要修改的在这儿修改，有点类似于override
-        <Fields>
-          <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
-        </Fields>
+      <LineLayer Name="上水管线线" AliasName="上水管线线" Template="PipeLine" Visible="True">
       </LineLayer>
     </PipelineLayer>
   </PipelineLayers>
   <LayerTemplates>
     <Template Name="PipePoint" Caption="管线点模板">
       <Fields>
-        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
-        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
-        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
-        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
-        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
-        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
-        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
-        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
+        <Field TypeName="NoField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="XField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="YField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="ZField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="DepthField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="FeatureField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="SubsidField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="PStyleField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="PDSField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="CodeField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="MapNoField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="UseStatusField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="BCodeField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="RotangField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="RoadCodeField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="MDateField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="PCJHField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="RemarkField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
       </Fields>
     </Template>
     <Template Name="PipeLine" Caption="管线线模板">
       <Fields>
-        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
-        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
-        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
-        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
-        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
-        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
-        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
-        <Field TypeName="" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames=""/>
+        <Field TypeName="NoField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="SPointField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="EPointField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="SDeepField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="EDeepField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="SHField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="EHField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="CodeField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="MaterialField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="DTypeField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="LineStyleField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="DSField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="SectionSizeField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="PDMField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="PipeNatureField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="MSRQField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="MDateField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="UseStatusField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="BCodeField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="RoadCodeField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="CabCountField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="VolPresField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="HoleCountField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="HoleUsedField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="FlowDField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
+        <Field TypeName="RemarkField" Name="" AliasName="" Length="" Precision="" AllowNull="" AutoNames="" FieldType=""/>
       </Fields>
     </Template>
   </LayerTemplates>

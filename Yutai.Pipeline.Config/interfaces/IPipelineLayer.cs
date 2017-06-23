@@ -17,8 +17,7 @@ namespace Yutai.Pipeline.Config.Interfaces
         IPipeLine LineLayer { get; set; }
         IPointAssist PointAssistLayer { get; set; }
         ILineAssist LineAssistLayer { get; set; }
-
-        void LoadFromXml(string fileName);
-        XmlNode ToXml();
+        void ReadFromXml(XmlNode xml);
+        XmlNode ToXml(XmlDocument doc);
     }
 }

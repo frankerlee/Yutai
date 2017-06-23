@@ -18,6 +18,6 @@ namespace Yutai.Pipeline.Config.Interfaces
         IBasicPipeNetwork BasicPipeNetwork { get; set; }
         IBasicPipe3D BasicPipe3D { get; set; }
         void ReadFromXml(XmlNode xml);
-        XmlNode ToXml();
+        XmlNode ToXml(XmlDocument doc);
     }
 }

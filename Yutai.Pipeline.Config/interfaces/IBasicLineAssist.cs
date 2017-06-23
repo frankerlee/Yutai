@@ -8,6 +8,8 @@
 // 更新时间 :  2017/06/22  16:37
 
 using System.Xml;
+using ESRI.ArcGIS.Carto;
+using ESRI.ArcGIS.Geodatabase;
 
 namespace Yutai.Pipeline.Config.Interfaces
 {
@@ -26,7 +28,8 @@ namespace Yutai.Pipeline.Config.Interfaces
         IYTField DDateField { get; set; }         // 探测日期
         IYTField MDateField { get; set; }         // 入库日期
         IYTField RemarkField { get; set; }        // 备注
+        void AutoAssembly(IFeatureLayer pLayer);
         void ReadFromXml(XmlNode xml);
-        XmlNode ToXml();
+        XmlNode ToXml(XmlDocument doc);
     }
 }
