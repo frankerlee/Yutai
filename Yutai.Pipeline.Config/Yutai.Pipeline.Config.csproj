@@ -67,6 +67,7 @@
     <Compile Include="Interfaces\IPipelineConfig.cs" />
     <Compile Include="Interfaces\IPipelineLayer.cs" />
     <Compile Include="Interfaces\IPipelineTemplate.cs" />
+    <Compile Include="Interfaces\IPipelineType.cs" />
     <Compile Include="Interfaces\IPipePoint.cs" />
     <Compile Include="Interfaces\IPointAssist.cs" />
     <Compile Include="Interfaces\IYTField.cs" />
