@@ -636,6 +636,9 @@
     <Content Include="plugins\configs\pipeline.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="plugins\configs\pipelineSet.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\icon_maplegend.png" />
     <Content Include="Resources\icon_overview.png" />
     <Content Include="Resources\icon_zoom_in_fixed.bmp" />

@@ -8,7 +8,7 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using Yutai.PipeConfig;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.Forms
@@ -29,7 +29,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		public IMapControl3 MapControl;
 
-		public IPipeConfig pPipeCfg;
+		public IPipelineConfig pPipeCfg;
 
 		private IContainer icontainer_0 = null;
 
@@ -82,7 +82,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 			if (featureLayer != null)
 			{
 				string aliasName = featureLayer.FeatureClass.AliasName;
-				if (this.pPipeCfg.IsPipeLine(aliasName))
+				if (this.pPipeCfg.IsPipelineLayer(featureLayer.Name,enumPipelineDataType.Line))
 				{
 					SetFlowToolForm.Class2 pclass = new SetFlowToolForm.Class2();
 					pclass.ifeatureLayer_0 = featureLayer;

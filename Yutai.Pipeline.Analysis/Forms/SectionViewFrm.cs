@@ -7,18 +7,15 @@ using System.IO;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using ESRI.ArcGIS.Geometry;
-using Yutai.PipeConfig;
 using Yutai.Pipeline.Analysis.Classes;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.Forms
 {
 	public partial class SectionViewFrm : XtraForm
 	{
-
-
-
-
+        
 
 		public IAppContext _context;
 
@@ -33,10 +30,10 @@ namespace Yutai.Pipeline.Analysis.Forms
 		public int m_nRightMargin;
 
 		public int m_nBottomMargin;
+        private IPipelineConfig m_PipeConfig;
 
 
-
-		private int int_0 = 739;
+        private int int_0 = 739;
 
 		private int int_1 = 541;
 
@@ -46,52 +43,35 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		private IContainer icontainer_0 = null;
 
+        
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		public IPipeConfig PipeConfig
+		public IPipelineConfig PipeConfig
 		{
 			get
 			{
-				return this.ipipeConfig_0;
+				return this.m_PipeConfig;
 			}
 			set
 			{
-				this.ipipeConfig_0 = value;
+				this.m_PipeConfig = value;
 			}
 		}
 
-		public SectionViewFrm(SectionViewFrm.SectionType stVal, IAppContext pApp)
+		public SectionViewFrm(SectionViewFrm.SectionType stVal, IAppContext pApp,IPipelineConfig config)
 		{
 			this.m_sectionType = stVal;
 			this._context = pApp;
 			if (this.m_sectionType == SectionViewFrm.SectionType.SectionTypeTransect)
 			{
-				this.m_pSection = new TranSection(this, _context);
+				this.m_pSection = new TranSection(this, _context,config);
 			}
 			if (this.m_sectionType == SectionViewFrm.SectionType.SectionTypeVersect)
 			{
-				this.m_pSection = new VerSection(this, _context);
+				this.m_pSection = new VerSection(this, _context,config);
 			}
-			this.m_pSection.PipeConfig = _context.PipeConfig;
+			this.m_pSection.PipeConfig = config;
 			this.InitializeComponent();
 		}
 

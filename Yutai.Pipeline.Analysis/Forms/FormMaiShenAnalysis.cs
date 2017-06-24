@@ -14,6 +14,8 @@ using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 using Yutai.Pipeline.Analysis.Classes;
 using Yutai.Pipeline.Analysis.Helpers;
+using Yutai.Pipeline.Config.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.Forms
@@ -21,19 +23,22 @@ namespace Yutai.Pipeline.Analysis.Forms
 	public partial class FormMaiShenAnalysis : XtraForm
 	{
 		private IContainer icontainer_0 = null;
-        
 
+	    private IPipelineConfig _config;
 
-		public RuleMs m_RuleMs = new RuleMs();
+        public RuleMs m_RuleMs ;//= new RuleMs();
 
 		public int m_nTimerCount;
 
 
- public FormMaiShenAnalysis(IAppContext context)
+ public FormMaiShenAnalysis(IAppContext context,IPipelineConfig config)
 		{
 			this.InitializeComponent();
 		    _context = context;
-		}
+		    _config = config;
+            m_RuleMs=new RuleMs(config);
+
+        }
 
 		private void FormMaiShenAnalysis_Load(object obj, EventArgs eventArgs)
 		{
@@ -49,7 +54,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 				if (arrayList[i] is IFeatureLayer)
 				{
 					IFeatureLayer featureLayer = (IFeatureLayer)arrayList[i];
-					if (_context.PipeConfig.IsPipeLine(featureLayer.FeatureClass.AliasName))
+					if (_config.IsPipelineLayer(featureLayer.Name,enumPipelineDataType.Line))
 					{
                         CheckListFeatureLayerItem class1 = new CheckListFeatureLayerItem();
 						class1.m_pFeatureLayer = featureLayer;
@@ -63,16 +68,16 @@ namespace Yutai.Pipeline.Analysis.Forms
 		{
 			this.dataGridView1.Columns.Clear();
 			this.dataGridView1.Rows.Clear();
-			string text = _context.PipeConfig.GetLineTableFieldName("敷设方式");
-			if (text == "")
-			{
-				text = "敷设方式";
-			}
-			string text2 = _context.PipeConfig.GetLineTableFieldName("所在位置");
-			if (text2 == "")
-			{
-				text2 = "所在位置";
-			}
+			//string text = _context.PipeConfig.GetLineTableFieldName("敷设方式");
+			//if (text == "")
+			//{
+			//	text = "敷设方式";
+			//}
+			//string text2 = _context.PipeConfig.GetLineTableFieldName("所在位置");
+			//if (text2 == "")
+			//{
+			//	text2 = "所在位置";
+			//}
 			foreach (CheckListFeatureLayerItem pclass in this.checkedListBox1.CheckedItems)
 			{
 				IFeatureLayer ifeatureLayer = pclass.m_pFeatureLayer;
@@ -81,11 +86,17 @@ namespace Yutai.Pipeline.Analysis.Forms
 				this.progressBar1.Step = 1;
 				this.progressBar1.Value = 0;
 				this.Text = "覆土分析 - 正在处理：" + ifeatureLayer.Name+ "...";
-				string lineConfig_Kind = _context.PipeConfig.getLineConfig_Kind(ifeatureLayer.FeatureClass.AliasName);
-				string sDepthMethod = "";
+
+			    IBasicLayerInfo pipeLine = _config.GetBasicLayerInfo(ifeatureLayer.FeatureClass.AliasName) as IBasicLayerInfo;
+
+
+                string lineConfig_Kind = pipeLine.GetFieldName(PipeConfigWordHelper.LineWords.GDXZ);
+
+                string sDepthMethod = "";
 				string sDepPosition = "";
-				int num = ifeatureLayer.FeatureClass.Fields.FindField(text);
-				int num2 = ifeatureLayer.FeatureClass.Fields.FindField(text2);
+				int num = ifeatureLayer.FeatureClass.Fields.FindField(pipeLine.GetFieldName(PipeConfigWordHelper.LineWords.MSFS));
+                //基本上没有使用，因为所在位置没有数据
+				int num2 = ifeatureLayer.FeatureClass.Fields.FindField("所在位置");
 				IFeatureCursor featureCursor = ifeatureLayer.Search(null, false);
 				IFeature feature = featureCursor.NextFeature();
 				while (feature != null)
@@ -110,7 +121,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 						IPoint point2 = ((IPointCollection)feature.Shape).get_Point(1);
 						if (point.M < ruleMS || point2.M < ruleMS)
 						{
-							this.method_0(lineConfig_Kind, feature, ruleMS, point.M, point2.M);
+							this.FillFeatureValue(pipeLine,lineConfig_Kind, feature, ruleMS, point.M, point2.M);
 						}
 						feature = featureCursor.NextFeature();
 					}
@@ -121,7 +132,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 			this.Text = "覆土分析--记录数:" + this.dataGridView1.Rows.Count.ToString();
 		}
 
-		private void method_0(string value, IFeature feature, double num, double num2, double num3)
+		private void FillFeatureValue(IBasicLayerInfo pipeLine,string value, IFeature feature, double num, double num2, double num3)
 		{
 			if (!this.dataGridView1.Columns.Contains("*规范埋深"))
 			{
@@ -139,8 +150,10 @@ namespace Yutai.Pipeline.Analysis.Forms
 			{
 				this.dataGridView1.Columns.Add("*管线类别", "*管线类别");
 			}
-			string text = _context.PipeConfig.GetLineTableFieldName("管线性质");
-			if (text == "")
+            //
+		    string text = pipeLine.GetFieldName(PipeConfigWordHelper.LineWords.GDXZ);
+
+            if (text == "")
 			{
 				text = "管线性质";
 			}
@@ -148,7 +161,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 			{
 				this.dataGridView1.Columns.Add(text, text);
 			}
-			string text2 = _context.PipeConfig.GetLineTableFieldName("埋设方式");
+		    string text2 = pipeLine.GetFieldName(PipeConfigWordHelper.LineWords.MSFS);// _context.PipeConfig.GetLineTableFieldName("埋设方式");
 			if (text2 == "")
 			{
 				text2 = "埋设方式";

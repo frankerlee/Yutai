@@ -17,9 +17,14 @@ namespace Yutai.Pipeline.Analysis.Commands
         public HrzDistDlg hrzDistDlg;
         public Form m_pParentFrom;
 
-        public CmdStartHoriDistAnalysis(IAppContext context)
+
+        private PipelineAnalysisPlugin _plugin;
+
+
+        public CmdStartHoriDistAnalysis(IAppContext context, PipelineAnalysisPlugin plugin)
         {
             OnCreate(context);
+            _plugin = plugin;
         }
 
         public override void OnClick()
@@ -29,7 +34,7 @@ namespace Yutai.Pipeline.Analysis.Commands
 
             if (this.hrzDistDlg == null)
             {
-                this.hrzDistDlg = new HrzDistDlg(_context);
+                this.hrzDistDlg = new HrzDistDlg(_context,_plugin.PipeConfig);
                 
                 this.hrzDistDlg.Show();
             }

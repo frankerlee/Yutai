@@ -37,6 +37,9 @@
     <Reference Include="ESRI.ArcGIS.Geodatabase, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.Geometry, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.System, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
@@ -51,33 +54,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompositionRoot.cs" />
-    <Compile Include="Concretes\LineAssist.cs" />
-    <Compile Include="Concretes\PipeLine.cs" />
+    <Compile Include="Concretes\BasicLayerInfo.cs" />
     <Compile Include="Concretes\PipelineConfig.cs" />
     <Compile Include="Concretes\PipelineLayer.cs" />
-    <Compile Include="Concretes\PipePoint.cs" />
     <Compile Include="Concretes\PipelineTemplate.cs" />
-    <Compile Include="Concretes\PointAssist.cs" />
     <Compile Include="Concretes\YTField.cs" />
-    <Compile Include="Interfaces\IBasicAnnotation.cs" />
+    <Compile Include="Helpers\ConfigHelper.cs" />
+    <Compile Include="Helpers\EnumHelper.cs" />
+    <Compile Include="Helpers\PipeConfigWordHelper.cs" />
+    <Compile Include="Interfaces\enumPipelineDataType.cs" />
+    <Compile Include="Interfaces\enumPipelineHeightType.cs" />
     <Compile Include="Interfaces\IBasicLayerInfo.cs" />
-    <Compile Include="Interfaces\IBasicLineAssist.cs" />
-    <Compile Include="Interfaces\IBasicPointAssist.cs" />
-    <Compile Include="Interfaces\IBasicLineRenderer.cs" />
-    <Compile Include="Interfaces\IBasicPipe.cs" />
-    <Compile Include="Interfaces\IBasicPipe3D.cs" />
-    <Compile Include="Interfaces\IBasicPipeLine.cs" />
-    <Compile Include="Interfaces\IBasicPipeNetwork.cs" />
-    <Compile Include="Interfaces\IBasicPipePoint.cs" />
-    <Compile Include="Interfaces\IBasicPointRenderer.cs" />
-    <Compile Include="Interfaces\ILineAssist.cs" />
-    <Compile Include="Interfaces\IPipeLine.cs" />
     <Compile Include="Interfaces\IPipelineConfig.cs" />
     <Compile Include="Interfaces\IPipelineLayer.cs" />
     <Compile Include="Interfaces\IPipelineTemplate.cs" />
     <Compile Include="Interfaces\IPipelineType.cs" />
-    <Compile Include="Interfaces\IPipePoint.cs" />
-    <Compile Include="Interfaces\IPointAssist.cs" />
     <Compile Include="Interfaces\IYTField.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -92,6 +83,10 @@
     <ProjectReference Include="..\Yutai.Plugins\Yutai.Plugins.csproj">
       <Project>{800F2EE4-47AB-4CD4-934D-A64980D98A23}</Project>
       <Name>Yutai.Plugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yutai.Shared\Yutai.Shared.csproj">
+      <Project>{4A9B3243-2B0A-4E87-9B23-71A58C1F318D}</Project>
+      <Name>Yutai.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

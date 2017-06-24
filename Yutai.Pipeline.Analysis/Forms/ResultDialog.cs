@@ -18,8 +18,9 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using ESRI.ArcGIS.esriSystem;
-using Yutai.PipeConfig;
+
 using Yutai.Pipeline.Analysis.Classes;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.Forms
@@ -39,7 +40,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		public IMapControl3 MapControl;
 
-		public IPipeConfig pPipeCfg;
+		public IPipelineConfig pPipeCfg;
 
 		public string m_strLayerName = "";
 
@@ -64,13 +65,15 @@ namespace Yutai.Pipeline.Analysis.Forms
 			{
 				this.m_iApp = value;
 				this.MapControl = (IMapControl3) this.m_iApp.MapControl;
-				this.pPipeCfg = this.m_iApp.PipeConfig;
+				
 			}
 		}
 
-		public ResultDialog()
+		public ResultDialog(IAppContext context, IPipelineConfig config)
 		{
 			this.InitializeComponent();
+		    m_iApp = context;
+		    pPipeCfg = config;
 		}
 
 		private void dataGridView3_CellClick(object obj, DataGridViewCellEventArgs dataGridViewCellEventArg)

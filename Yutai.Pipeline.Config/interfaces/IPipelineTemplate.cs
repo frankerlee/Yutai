@@ -16,8 +16,8 @@ namespace Yutai.Pipeline.Config.Interfaces
     {
         string Name { get; set; }
         string Caption { get; set; }
+        enumPipelineDataType DataType { get; set; }
         List<IYTField> Fields { get; set; }
-
         void ReadFromXml(XmlNode xmlNode);
         XmlNode ToXml(XmlDocument doc);
     }

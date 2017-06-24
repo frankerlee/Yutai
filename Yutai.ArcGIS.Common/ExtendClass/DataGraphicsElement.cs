@@ -12,6 +12,7 @@ using ESRI.ArcGIS.Geometry;
 using Steema.TeeChart;
 using Steema.TeeChart.Styles;
 
+
 namespace Yutai.ArcGIS.Common.ExtendClass
 {
 	[Guid("C86B5915-443F-4108-8FE7-386FCBD038DB")]

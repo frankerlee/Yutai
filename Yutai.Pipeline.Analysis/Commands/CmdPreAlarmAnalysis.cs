@@ -12,11 +12,13 @@ namespace Yutai.Pipeline.Analysis.Commands
     {
 
         private PreAlarmDlg preAlarmDlg_0;
+        private PipelineAnalysisPlugin _plugin;
 
 
-        public CmdPreAlarmAnalysis(IAppContext context)
+        public CmdPreAlarmAnalysis(IAppContext context, PipelineAnalysisPlugin plugin)
         {
             OnCreate(context);
+            _plugin = plugin;
         }
 
         public override void OnClick()
@@ -25,8 +27,9 @@ namespace Yutai.Pipeline.Analysis.Commands
             _context.SetCurrentTool(this);
             if (this.preAlarmDlg_0 == null)
             {
-                this.preAlarmDlg_0 = new PreAlarmDlg();
+                this.preAlarmDlg_0 = new PreAlarmDlg(_context,_plugin.PipeConfig);
                 this.preAlarmDlg_0.App = _context;
+                this.preAlarmDlg_0.pPipeCfg = _plugin.PipeConfig;
                 this.preAlarmDlg_0.Show();
             }
             else if (!this.preAlarmDlg_0.Visible)

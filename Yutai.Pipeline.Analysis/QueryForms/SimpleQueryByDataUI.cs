@@ -7,7 +7,8 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using Yutai.PipeConfig;
+using Yutai.Pipeline.Config.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.QueryForms
@@ -39,7 +40,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
 		public IMapControl3 MapControl;
 
-		public IPipeConfig pPipeCfg;
+		public IPipelineConfig pPipeCfg;
 
 
 
@@ -119,14 +120,14 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				string aliasName = iFLayer.FeatureClass.AliasName;
 				if (this.radioButton1.Checked)
 				{
-					if (this.pPipeCfg.IsPipePoint(aliasName))
+					if (this.pPipeCfg.IsPipelineLayer(iFLayer.Name,enumPipelineDataType.Point))
 					{
 						SimpleQueryByDataUI.LayerboxItem layerboxItem = new SimpleQueryByDataUI.LayerboxItem();
 						layerboxItem.m_pPipeLayer = iFLayer;
 						this.LayerBox.Items.Add(layerboxItem);
 					}
 				}
-				else if (this.pPipeCfg.IsPipeLine(aliasName))
+				else if (this.pPipeCfg.IsPipelineLayer(iFLayer.Name, enumPipelineDataType.Line))
 				{
 					SimpleQueryByDataUI.LayerboxItem layerboxItem2 = new SimpleQueryByDataUI.LayerboxItem();
 					layerboxItem2.m_pPipeLayer = iFLayer;
@@ -201,15 +202,18 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 					if (this.SelectLayer != null)
 					{
 						this.myfields = this.SelectLayer.FeatureClass.Fields;
-						string text2;
+                        IBasicLayerInfo layerInfo = pPipeCfg.GetBasicLayerInfo(this.SelectLayer.FeatureClass);
+                        string text2;
 						if (this.radioButton1.Checked)
 						{
-							text2 = this.pPipeCfg.GetPointTableFieldName("建设年代");
+						    
+						    text2 = layerInfo.GetFieldName(PipeConfigWordHelper.PointWords.MSRQ); ;// this.pPipeCfg.GetPointTableFieldName("建设年代");
 						}
 						else
 						{
-							text2 = this.pPipeCfg.GetLineTableFieldName("建设年代");
-						}
+                           
+						    text2 = layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.MSRQ);// this.pPipeCfg.GetLineTableFieldName("建设年代");
+                        }
 						int num = this.myfields.FindField(text2);
 						if (num < 0)
 						{

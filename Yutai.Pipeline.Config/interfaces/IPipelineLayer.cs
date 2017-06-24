@@ -7,6 +7,7 @@
 // 创建时间 :  2017/06/22  17:32
 // 更新时间 :  2017/06/22  17:32
 
+using System.Collections.Generic;
 using System.Xml;
 
 namespace Yutai.Pipeline.Config.Interfaces
@@ -15,10 +16,8 @@ namespace Yutai.Pipeline.Config.Interfaces
     {
         string Name { get; set; }
         string Code { get; set; }
-        IPipePoint PointLayer { get; set; }
-        IPipeLine LineLayer { get; set; }
-        IPointAssist PointAssistLayer { get; set; }
-        ILineAssist LineAssistLayer { get; set; }
+       
+        List<IBasicLayerInfo> Layers { get;set; }
         void ReadFromXml(XmlNode xml);
         XmlNode ToXml(XmlDocument doc);
     }

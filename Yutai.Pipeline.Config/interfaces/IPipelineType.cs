@@ -12,17 +12,4 @@ namespace Yutai.Pipeline.Config.Interfaces
         string Name { get; set; }
         string AutoNames { get; set; }
     }
-
-    public enum enumPipelineDataType
-    {
-        Point,
-        Line,
-        ThreeD,
-        AssPoint,
-        AssLine,
-        AnnoPoint,
-        AnnoLine,
-        Annotation,
-        Other
-    }
 }

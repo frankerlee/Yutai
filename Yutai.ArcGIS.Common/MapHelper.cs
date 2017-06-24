@@ -397,13 +397,13 @@ namespace Yutai.ArcGIS.Common
             }
         }
 
-        public static IFeatureLayer FindFeatureLayerByFCName(IBasicMap ibasicMap_0, string string_0, bool bool_0)
+        public static IFeatureLayer FindFeatureLayerByFCName(IBasicMap pMap, string fcName, bool checkEdit)
         {
-            string str = string_0.ToLower();
+            string str = fcName.ToLower();
             UID uid = new UID{
                 Value = "{6CA416B1-E160-11D2-9F4E-00C04F6BC78E}"
             };
-            IEnumLayer layer = ibasicMap_0.get_Layers(uid, true);
+            IEnumLayer layer = pMap.get_Layers(uid, true);
             layer.Reset();
             for (ILayer layer2 = layer.Next(); layer2 != null; layer2 = layer.Next())
             {
@@ -412,7 +412,7 @@ namespace Yutai.ArcGIS.Common
                     string[] strArray = ((layer2 as IFeatureLayer).FeatureClass as IDataset).Name.Split(new char[] { '.' });
                     if (strArray[strArray.Length - 1].ToLower() == str)
                     {
-                        if (!bool_0)
+                        if (!checkEdit)
                         {
                             return (layer2 as IFeatureLayer);
                         }

@@ -9,6 +9,7 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.QueryForms
@@ -63,7 +64,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
         public IMapControl3 MapControl;
 
-		public IPipeConfig pPipeCfg;
+		public IPipelineConfig pPipeCfg;
 
 		public IGeometry newGeometry;
 

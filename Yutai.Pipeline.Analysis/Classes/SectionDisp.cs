@@ -10,14 +10,15 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Yutai.PipeConfig;
+using Yutai.Pipeline.Config.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 
 
 namespace Yutai.Pipeline.Analysis.Classes
 {
     public class SectionDisp
     {
-        private IPipeConfig ipipeConfig_0;
+        private IPipelineConfig ipipeConfig_0;
 
         public ArrayList m_arrObjectRects = new ArrayList();
 
@@ -131,7 +132,7 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         private float yQsaxPkehn = 1f;
 
-        public IPipeConfig PipeConfig
+        public IPipelineConfig PipeConfig
         {
             get
             {
@@ -309,7 +310,9 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         private string method_0(string text)
         {
-            return this.ipipeConfig_0.getLineConfig_DM(text);
+            //代码字段
+            //!++ 后期需要修改
+            return PipeConfigWordHelper.PointWords.YSDM;
         }
 
         private void method_1()

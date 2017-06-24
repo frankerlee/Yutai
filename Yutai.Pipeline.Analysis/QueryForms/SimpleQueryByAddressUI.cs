@@ -8,7 +8,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using Yutai.PipeConfig;
+using Yutai.Pipeline.Config.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.QueryForms
@@ -21,7 +22,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
 		public IMapControl3 MapControl;
 
-		public IPipeConfig pPipeCfg;
+		public IPipelineConfig pPipeCfg;
 
 
         private PipelineAnalysisPlugin _plugin;
@@ -78,12 +79,12 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 						string text = layer2.Name.ToString();
 						if (this.radioButton1.Checked)
 						{
-							if (this.pPipeCfg.IsPipePoint(text))
+							if (this.pPipeCfg.IsPipelineLayer(layer2.Name,enumPipelineDataType.Point))
 							{
 								this.LayerBox.Items.Add(text);
 							}
 						}
-						else if (this.pPipeCfg.IsPipeLine(text))
+						else if (this.pPipeCfg.IsPipelineLayer(text,enumPipelineDataType.Line))
 						{
 							this.LayerBox.Items.Add(text);
 						}
@@ -94,12 +95,12 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 					string text = layer.Name.ToString();
 					if (this.radioButton1.Checked)
 					{
-						if (this.pPipeCfg.PointConfigItem(text) != null)
+						if (this.pPipeCfg.GetBasicLayerInfo(((IFeatureLayer) layer).FeatureClass) != null)
 						{
 							this.LayerBox.Items.Add(text);
 						}
 					}
-					else if (this.pPipeCfg.LineConfigItem(text) != null)
+					else if (this.pPipeCfg.GetBasicLayerInfo(((IFeatureLayer)layer).FeatureClass) != null)
 					{
 						this.LayerBox.Items.Add(text);
 					}
@@ -169,14 +170,19 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 					else
 					{
 						this.myfields = this.SelectLayer.FeatureClass.Fields;
-						if (this.radioButton1.Checked)
-						{
-							this.FieldBox.Text = this.pPipeCfg.GetPointTableFieldName("所属");
-						}
+                        IBasicLayerInfo layerInfo = pPipeCfg.GetBasicLayerInfo(this.SelectLayer.FeatureClass);
+                        if (this.radioButton1.Checked)
+                        {
+
+
+                            this.FieldBox.Text = layerInfo.GetFieldName(PipeConfigWordHelper.PointWords.QSDW);
+                            // this.FieldBox.Text = this.pPipeCfg.GetPointTableFieldName("所属");
+                        }
 						else
 						{
-							this.FieldBox.Text = this.pPipeCfg.GetLineTableFieldName("所在道路");
-						}
+                           
+						    this.FieldBox.Text = layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.SZDL);
+                        }
 						if (this.myfields.FindField(this.FieldBox.Text) < 0)
 						{
 							this.QueryBut.Enabled = false;

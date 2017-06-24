@@ -11,6 +11,7 @@ using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 using Yutai.Pipeline.Analysis.Classes;
 using Yutai.Pipeline.Analysis.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 
@@ -30,26 +31,14 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		public IGeometry m_pBufferGeo;
 
-
 		public bool bDrawRed;
 
 		private IContainer icontainer_0 = null;
 
+	    public IPipelineConfig m_PipeConfig;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-		public double Radius
+        public double Radius
 		{
 			get
 			{
@@ -88,15 +77,15 @@ namespace Yutai.Pipeline.Analysis.Forms
 					IFeatureClass featureClass = featureLayer.FeatureClass;
 					if (featureLayer.FeatureClass.FeatureType != (esriFeatureType) 11)
 					{
-						if ((!this.radBtnPt.Checked ? false : this.m_app.PipeConfig.IsPipePoint(featureClass.AliasName)))
+						if ((!this.radBtnPt.Checked ? false : m_PipeConfig.IsPipelineLayer(featureLayer.Name,enumPipelineDataType.Point)))
 						{
 							this.chkLstLayers.Items.Add(checkListFeatureLayerItem);
 						}
-						if ((!this.radBtnLn.Checked ? false : this.m_app.PipeConfig.IsPipeLine(featureClass.AliasName)))
+						if ((!this.radBtnLn.Checked ? false : m_PipeConfig.IsPipelineLayer(featureLayer.Name, enumPipelineDataType.Line)))
 						{
 							this.chkLstLayers.Items.Add(checkListFeatureLayerItem);
 						}
-						if ((!this.radBtnOther.Checked || this.m_app.PipeConfig.IsPipeLine(featureClass.AliasName) ? false : !this.m_app.PipeConfig.IsPipePoint(featureClass.AliasName)))
+						if ((!this.radBtnOther.Checked || m_PipeConfig.IsPipelineLayer(featureLayer.Name, enumPipelineDataType.Line) ? false : !m_PipeConfig.IsPipelineLayer(featureLayer.Name, enumPipelineDataType.Point)))
 						{
 							this.chkLstLayers.Items.Add(checkListFeatureLayerItem);
 						}
@@ -399,7 +388,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 		{
 			if (this.resultDialog_0 == null)
 			{
-				this.resultDialog_0 = new ResultDialog()
+				this.resultDialog_0 = new ResultDialog(m_app,m_PipeConfig)
 				{
 					App = this.m_app,
 					m_pBufferGeo = this.m_pBufferGeo,

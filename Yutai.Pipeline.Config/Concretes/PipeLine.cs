@@ -13,6 +13,7 @@ using System.Linq;
 using System.Xml;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
+using Yutai.Pipeline.Config.Helpers;
 using Yutai.Pipeline.Config.Interfaces;
 
 namespace Yutai.Pipeline.Config.Concretes
@@ -53,6 +54,9 @@ namespace Yutai.Pipeline.Config.Concretes
         private IPipelineTemplate _template;
 
         private List<IYTField> _fields;
+        private IFeatureLayer _featureLayer;
+        private string _heightTypeName;
+        private enumPipelineHeightType _heightType;
 
         public PipeLine()
         {
@@ -77,6 +81,18 @@ namespace Yutai.Pipeline.Config.Concretes
         {
             get { return _typeName; }
             set { _typeName = value; }
+        }
+
+        public string HeightTypeName
+        {
+            get { return _heightTypeName; }
+            set { _heightTypeName = value; }
+        }
+
+        public enumPipelineHeightType HeightType
+        {
+            get { return _heightType; }
+            set { _heightType = value; }
         }
 
         public IYTField NoField
@@ -272,6 +288,8 @@ namespace Yutai.Pipeline.Config.Concretes
             _name = xml.Attributes["Name"].Value;
             _aliasName = xml.Attributes["AliasName"].Value;
             _visible = Convert.ToBoolean(xml.Attributes["Visible"].Value);
+            _heightTypeName = xml.Attributes["HeightType"].Value;
+            _heightType = EnumHelper.ConvertHeightTypeFromStr(_heightTypeName);
             _templateName = xml.Attributes["Template"].Value;
 
             XmlNodeList nodeList = xml.SelectNodes("/LineLayer/Fields/Field");
@@ -319,12 +337,16 @@ namespace Yutai.Pipeline.Config.Concretes
             aliasNameAttribute.Value = _aliasName;
             XmlAttribute templateAttribute = doc.CreateAttribute("Template");
             templateAttribute.Value = _templateName;
+
+            XmlAttribute heightTypeAttribute = doc.CreateAttribute("HeightType");
+            heightTypeAttribute.Value = EnumHelper.ConvertHeightTypeToStr(_heightType);
             XmlAttribute visibleAttribute = doc.CreateAttribute("Visible");
             visibleAttribute.Value = _visible.ToString();
             layerNode.Attributes.Append(nameAttribute);
             layerNode.Attributes.Append(aliasNameAttribute);
             layerNode.Attributes.Append(templateAttribute);
             layerNode.Attributes.Append(visibleAttribute);
+            layerNode.Attributes.Append(heightTypeAttribute);
 
             XmlNode fieldsNode = doc.CreateElement("Fields");
             if (_noField != null && _template != null && _template.Fields.FirstOrDefault(c => c.TypeName == _noField.TypeName) == null)
@@ -410,6 +432,12 @@ namespace Yutai.Pipeline.Config.Concretes
         public void LoadTemplate(IPipelineTemplate template)
         {
             _fields.AddRange(template.Fields);
+        }
+
+        public IFeatureLayer FeatureLayer
+        {
+            get { return _featureLayer; }
+            set { _featureLayer = value; }
         }
     }
 }

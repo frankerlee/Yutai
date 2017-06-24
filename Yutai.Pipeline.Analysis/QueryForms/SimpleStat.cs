@@ -10,7 +10,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using Yutai.PipeConfig;
+using Yutai.Pipeline.Config.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.QueryForms
@@ -26,9 +27,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				return this.m_pPipeLayer.Name;
 			}
 		}
-
-
-
+        
 
 		public ColumnHeader columnHeader4;
 
@@ -38,38 +37,10 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
 		public IMapControl3 MapControl;
 
-		public IPipeConfig pPipeCfg;
-
-
-
-
-
-
+		public IPipelineConfig pPipeCfg;
 
 		private DataTable Sumtable = new DataTable();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
 		public bool SelectGeometry
 		{
 			get
@@ -224,7 +195,9 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 		{
 			if (this.myfields != null)
 			{
-				string lineTableFieldName =m_context.PipeConfig.GetLineTableFieldName("管径");
+                IBasicLayerInfo layerInfo = pPipeCfg.GetBasicLayerInfo(this.SelectLayer.FeatureClass);
+                
+			    string lineTableFieldName = layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.GJ);//m_context.PipeConfig.GetLineTableFieldName("管径");
 				int num = this.myfields.FindField(lineTableFieldName);
 				this.myfield = this.myfields.get_Field(num);
 				IFeatureClass featureClass = this.SelectLayer.FeatureClass;
@@ -288,7 +261,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			if (iFLayer != null)
 			{
 				string aliasName = iFLayer.FeatureClass.AliasName;
-				if (this.pPipeCfg.IsPipeLine(aliasName))
+
+				if (this.pPipeCfg.IsPipelineLayer(iFLayer.Name,enumPipelineDataType.Line))
 				{
 					SimpleStat.LayerboxItem layerboxItem = new SimpleStat.LayerboxItem();
 					layerboxItem.m_pPipeLayer = iFLayer;
@@ -363,7 +337,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 							}
 							IFeatureLayer pPipeLayer = ((SimpleStat.LayerboxItem)this.checkedListBox1.CheckedItems[i]).m_pPipeLayer;
 							IFields fields = pPipeLayer.FeatureClass.Fields;
-							string lineTableFieldName = this.pPipeCfg.GetLineTableFieldName("管径");
+                            IBasicLayerInfo layerInfo = pPipeCfg.GetBasicLayerInfo(this.SelectLayer.FeatureClass);
+                            string lineTableFieldName = layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.GJ);// this.pPipeCfg.GetLineTableFieldName("管径");
 							num = fields.FindField(lineTableFieldName);
 							for (int k = 0; k < fields.FieldCount; k++)
 							{
@@ -571,8 +546,9 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 					this.SelectLayer = ((SimpleStat.LayerboxItem)this.checkedListBox1.SelectedItem).m_pPipeLayer;
 					if (this.SelectLayer != null)
 					{
-						this.myfields = this.SelectLayer.FeatureClass.Fields;
-						this.strGJ = this.pPipeCfg.GetLineTableFieldName("管径");
+                        IBasicLayerInfo layerInfo = pPipeCfg.GetBasicLayerInfo(this.SelectLayer.FeatureClass);
+                        this.myfields = this.SelectLayer.FeatureClass.Fields;
+					    this.strGJ = layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.GJ);// this.pPipeCfg.GetLineTableFieldName("管径");
 					}
 				}
 			}

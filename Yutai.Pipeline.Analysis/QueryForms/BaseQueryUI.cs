@@ -7,9 +7,9 @@ using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
-using Yutai.PipeConfig;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
-using QueryResult = Yutai.Pipeline.Analysis.QueryForms.QueryResult;
+
 
 namespace Yutai.Pipeline.Analysis.QueryForms
 {
@@ -28,7 +28,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 		public IGeometry m_ipGeo;
 		public IAppContext m_context;
 		public IMapControl3 MapControl;
-		public IPipeConfig pPipeCfg;
+		public IPipelineConfig pPipeCfg;
 		public IGeometry SelectBound;
 	    private PipelineAnalysisPlugin _plugin;
         public PipelineAnalysisPlugin Plugin
@@ -113,14 +113,15 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				string aliasName = iFLayer.FeatureClass.AliasName;
 				if (this.Text == "管点查询")
 				{
-					if (this.pPipeCfg.IsPipePoint(aliasName))
+
+					if (this.pPipeCfg.IsPipelineLayer(iFLayer.Name,enumPipelineDataType.Point))
 					{
 						BaseQueryUI.LayerboxItem layerboxItem = new BaseQueryUI.LayerboxItem();
 						layerboxItem.m_pPipeLayer = iFLayer;
 						this.Layerbox.Items.Add(layerboxItem);
 					}
 				}
-				else if (this.Text == "管线查询" && this.pPipeCfg.IsPipeLine(aliasName))
+				else if (this.Text == "管线查询" && this.pPipeCfg.IsPipelineLayer(iFLayer.Name, enumPipelineDataType.Line))
 				{
 					BaseQueryUI.LayerboxItem layerboxItem2 = new BaseQueryUI.LayerboxItem();
 					layerboxItem2.m_pPipeLayer = iFLayer;

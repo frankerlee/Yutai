@@ -9,15 +9,18 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using Yutai.ArcGIS.Common;
 using Yutai.Pipeline.Analysis.Classes;
 using Yutai.Pipeline.Analysis.Helpers;
+using Yutai.Pipeline.Config.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.Forms
 {
 	public partial class HrzDistDlg : XtraForm
 	{
-		private CHitAnalyse chitAnalyse_0 = new CHitAnalyse();
+		private CHitAnalyse chitAnalyse_0 ;//= new CHitAnalyse();
 
 		public IAppContext m_app;
 
@@ -30,18 +33,11 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		private IContainer icontainer_0 = null;
 
+	    public IPipelineConfig m_config;
 
+        
 
-
-
-
-
-
-
-
-
-
-		public HrzDistDlg(IAppContext pApp)
+		public HrzDistDlg(IAppContext pApp,IPipelineConfig pipeConfig)
 		{
 			this.InitializeComponent();
 			this.m_commonDistAls = new CommonDistAnalyse()
@@ -49,7 +45,10 @@ namespace Yutai.Pipeline.Analysis.Forms
 				m_nAnalyseType = DistAnalyseType.emHrzDist
 			};
 			this.m_app = pApp;
-			this.m_commonDistAls.PipeConfig = pApp.PipeConfig;
+            chitAnalyse_0=new CHitAnalyse(pipeConfig);
+
+            this.m_commonDistAls.PipeConfig =pipeConfig;
+		    m_config = pipeConfig;
 			this.m_nTimerCount = 0;
 		}
 
@@ -186,7 +185,8 @@ namespace Yutai.Pipeline.Analysis.Forms
 			if (feature != null)
 			{
 				CommonUtils.GetSmpClassName(feature.Class.AliasName);
-				if (!this.m_app.PipeConfig.IsPipeLine(feature.Class.AliasName))
+                IBasicLayerInfo pipeLine = m_config.GetBasicLayerInfo(feature.Class.AliasName);
+                if (pipeLine==null)
 				{
 					this.m_commonDistAls.m_pBaseLine = null;
 					this.btAnalyse.Enabled = false;
@@ -202,12 +202,13 @@ namespace Yutai.Pipeline.Analysis.Forms
 						this.m_commonDistAls.m_pFeature = feature;
 						this.m_commonDistAls.m_pBaseLine = this.ipolyline_0;
 						this.m_commonDistAls.m_strLayerName = feature.Class.AliasName;
-						int num = feature.Fields.FindField("埋设方式");
-						str = (num == -1 ? "" : this.method_0(feature.get_Value(num)));
+                        //int num = feature.Fields.FindField("埋设方式");
+                        int num = feature.Fields.FindField(pipeLine.GetFieldName(PipeConfigWordHelper.LineWords.MSFS));
+                        str = (num == -1 ? "" : this.method_0(feature.get_Value(num)));
 						this.m_commonDistAls.m_strBuryKind = str;
-						int num1 = feature.Fields.FindField(this.m_app.PipeConfig.get_Diameter());
+						int num1 = feature.Fields.FindField(pipeLine.GetFieldName(PipeConfigWordHelper.LineWords.GJ));
 						str1 = (num1 == -1 ? "" : feature.get_Value(num1).ToString());
-						num1 = feature.Fields.FindField(this.m_app.PipeConfig.get_Section_Size());
+						num1 = feature.Fields.FindField(pipeLine.GetFieldName(PipeConfigWordHelper.LineWords.DMCC));
 						str2 = (num1 == -1 ? "" : feature.get_Value(num1).ToString());
 						string str3 = "";
 						if (str1 != "")

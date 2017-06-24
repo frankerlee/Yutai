@@ -17,9 +17,13 @@ namespace Yutai.Pipeline.Analysis.Commands
         public HitAnalyseDlg m_hitAlsDlg;
 
 
-        public CmdStartHitAnalysis(IAppContext context)
+        private PipelineAnalysisPlugin _plugin;
+
+
+        public CmdStartHitAnalysis(IAppContext context, PipelineAnalysisPlugin plugin)
         {
             OnCreate(context);
+            _plugin = plugin;
         }
 
         public override void OnClick()
@@ -29,8 +33,8 @@ namespace Yutai.Pipeline.Analysis.Commands
 
             if (this.m_hitAlsDlg == null)
             {
-                this.m_hitAlsDlg = new HitAnalyseDlg(_context);
-                this.m_hitAlsDlg.m_app = this._context;
+                this.m_hitAlsDlg = new HitAnalyseDlg(_context, _plugin.PipeConfig);
+             
                 this.m_hitAlsDlg.Show();
             }
             else if (!this.m_hitAlsDlg.Visible)

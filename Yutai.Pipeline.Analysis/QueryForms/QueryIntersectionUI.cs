@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using Yutai.Pipeline.Analysis.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.QueryForms
@@ -49,12 +50,12 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
 
 
-
+        
 		public IAppContext m_context;
 
 		public IMapControl3 m_MapControl;
 
-		public IPipeConfig m_pPipeCfg;
+		public IPipelineConfig m_pPipeCfg;
 
 
 		public int m_nTimerCount;

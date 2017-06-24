@@ -7,7 +7,6 @@ using System.IO;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using ESRI.ArcGIS.Geometry;
-using Yutai.PipeConfig;
 using Yutai.Pipeline.Analysis.Classes;
 using Yutai.Plugins.Interfaces;
 
@@ -193,7 +192,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 		private PrintPreviewDialog printPreviewDialog1;
 		private PrintDialog printDialog_0;
 		private OpenFileDialog openFileDialog_0;
-		private IPipeConfig ipipeConfig_0;
+		
 		private SectionInfo sectionInfo_0;
 		private MenuStrip menuStrip1;
 		private ToolStripMenuItem 文件FToolStripMenuItem;

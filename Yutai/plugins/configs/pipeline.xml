@@ -1,4 +1,4 @@
-﻿<PipelineConfig>
+﻿<PipelineConfig ConfigDatabase="\\plugins\\configs\\pipelineSet.mdb">
   <PipelineLayers>
     <PipelineLayer>
       <PointLayer Name="上水管线点" AliasName="上水管线点" Template="PipePoint" Visible="True">

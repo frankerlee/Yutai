@@ -4,8 +4,9 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using Yutai.PipeConfig;
+
 using Yutai.Pipeline.Analysis.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.Forms
@@ -24,25 +25,19 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		private IContainer icontainer_0 = null;
 
-
-
-
-
-
-
 		public IAppContext m_iApp;
 
 		public IMapControl3 MapControl;
 
-		public IPipeConfig pPipeCfg;
+		public IPipelineConfig pPipeCfg;
 
 
-	public PoPointAlarmForm(IAppContext context)
+	public PoPointAlarmForm(IAppContext context,IPipelineConfig config)
 		{
 			this.InitializeComponent();
 		    m_iApp = context;
 		    MapControl = m_iApp.MapControl as IMapControl3;
-		    pPipeCfg = context.PipeConfig;
+		    pPipeCfg = config;
 		}
 
 		private void PoPointAlarmForm_Load(object obj, EventArgs eventArgs)
@@ -65,7 +60,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 			if (pLayer is IFeatureLayer)
 			{
 				IFeatureLayer featureLayer = pLayer as IFeatureLayer;
-				if (this.pPipeCfg.IsPipeLine(featureLayer.FeatureClass.AliasName))
+				if (this.pPipeCfg.IsPipelineLayer(featureLayer.Name,enumPipelineDataType.Line))
 				{
 					PoPointAlarmForm.Class5 pclass = new PoPointAlarmForm.Class5();
 					pclass.ifeatureLayer_0 = featureLayer;
@@ -89,7 +84,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 			this.DeleteAllElements(m_iApp.FocusMap);
 			if (this.ppalarmResult_0 == null)
 			{
-				this.ppalarmResult_0 = new PPAlarmResult();
+				this.ppalarmResult_0 = new PPAlarmResult(m_iApp, pPipeCfg);
 				this.ppalarmResult_0.App = this.m_iApp;
 				this.ppalarmResult_0.m_pCurLayer = pclass.ifeatureLayer_0;
 				this.ppalarmResult_0.m_strLayerName = this.LayerBox.Text;

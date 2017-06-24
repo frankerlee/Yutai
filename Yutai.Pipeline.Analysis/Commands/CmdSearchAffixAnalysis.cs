@@ -14,12 +14,14 @@ namespace Yutai.Pipeline.Analysis.Commands
 
         private SearchAffixAnalyDlg searchAffixAnalyDlg_0;
 
+        private PipelineAnalysisPlugin _plugin;
 
-        public CmdSearchAffixAnalysis(IAppContext context)
+
+        public CmdSearchAffixAnalysis(IAppContext context, PipelineAnalysisPlugin plugin)
         {
             OnCreate(context);
+            _plugin = plugin;
         }
-
         public override void OnClick()
         {
 
@@ -29,7 +31,7 @@ namespace Yutai.Pipeline.Analysis.Commands
                 this.searchAffixAnalyDlg_0 = new SearchAffixAnalyDlg();
                 this.searchAffixAnalyDlg_0.m_iApp = _context;
                 this.searchAffixAnalyDlg_0.MapControl = _context.MapControl as IMapControl3;
-                this.searchAffixAnalyDlg_0.pPipeCfg = _context.PipeConfig;
+                this.searchAffixAnalyDlg_0.pPipeCfg = _plugin.PipeConfig;
                 this.searchAffixAnalyDlg_0.Show();
             }
             else if (!this.searchAffixAnalyDlg_0.Visible)

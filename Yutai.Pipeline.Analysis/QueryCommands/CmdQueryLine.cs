@@ -16,9 +16,11 @@ namespace Yutai.Pipeline.Analysis.QueryForms
         private BaseQueryUI QueryUI;
 
 
-        public CmdQueryLine(IAppContext context)
+        private PipelineAnalysisPlugin _plugin;
+        public CmdQueryLine(IAppContext context, PipelineAnalysisPlugin plugin)
         {
             OnCreate(context);
+            _plugin = plugin;
         }
 
         public override void OnClick()
@@ -28,7 +30,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             {
                 this.QueryUI = new BaseQueryUI();
                 this.QueryUI.MapControl = (IMapControl3)_context.MapControl;
-                this.QueryUI.pPipeCfg = _context.pPipeCfg;
+                this.QueryUI.pPipeCfg = _plugin.PipeConfig;
                 this.QueryUI.m_context = this._context;
                 this.QueryUI.WindowText = "管线查询";
                 this.QueryUI.Closing += new CancelEventHandler(this.QueryUI_Closing);

@@ -7,9 +7,10 @@ using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 using ESRI.ArcGIS.NetworkAnalysis;
-using Yutai.PipeConfig;
+
 using Yutai.Pipeline.Analysis.Forms;
 using Yutai.Pipeline.Analysis.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
@@ -19,7 +20,7 @@ namespace Yutai.Pipeline.Analysis.Commands
     class CmdTrackAnalysis : YutaiTool
     {
 
-        private IPipeConfig ipipeConfig_0;
+        private IPipelineConfig ipipeConfig_0;
 
         private IMapControl3 imapControl3_0;
 

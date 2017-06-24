@@ -11,7 +11,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using Yutai.PipeConfig;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.QueryForms
@@ -55,10 +55,10 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 		public IGeometry m_ipGeo;
 
 		public IAppContext m_context;
-
+        
 		public IMapControl3 MapControl;
 
-		public IPipeConfig pPipeCfg;
+		public IPipelineConfig pPipeCfg;
 
 
 
@@ -173,7 +173,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			if (iFLayer != null)
 			{
 				string aliasName = iFLayer.FeatureClass.AliasName;
-				if (this.pPipeCfg.IsPipeLine(aliasName))
+				if (this.pPipeCfg.IsPipelineLayer(iFLayer.Name,enumPipelineDataType.Line))
 				{
 					SimpleStatMyshUI.LayerboxItem layerboxItem = new SimpleStatMyshUI.LayerboxItem();
 					layerboxItem.m_pPipeLayer = iFLayer;

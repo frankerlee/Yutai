@@ -9,17 +9,18 @@ namespace Yutai.Pipeline.Analysis.Commands
 {
     class CmdPopAlarmAnalysis : YutaiCommand
     {
+        private PipelineAnalysisPlugin _plugin;
 
 
-
-        public CmdPopAlarmAnalysis(IAppContext context)
+        public CmdPopAlarmAnalysis(IAppContext context,PipelineAnalysisPlugin plugin)
         {
             OnCreate(context);
+            _plugin = plugin;
         }
 
         public override void OnClick()
         {
-            new PoPointAlarmForm(_context).ShowDialog();
+            new PoPointAlarmForm(_context, _plugin.PipeConfig).ShowDialog();
         }
 
 

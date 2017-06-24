@@ -8,7 +8,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using Yutai.PipeConfig;
+using Yutai.Pipeline.Config.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.QueryForms
@@ -31,7 +32,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
 		public IMapControl3 MapControl;
 
-		public IPipeConfig pPipeCfg;
+		public IPipelineConfig pPipeCfg;
 
         private PipelineAnalysisPlugin _plugin;
         public PipelineAnalysisPlugin Plugin
@@ -128,7 +129,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			if (iFLayer != null)
 			{
 				string aliasName = iFLayer.FeatureClass.AliasName;
-				if (this.pPipeCfg.IsPipePoint(aliasName))
+
+				if (this.pPipeCfg.IsPipelineLayer(iFLayer.Name,enumPipelineDataType.Point))
 				{
 					SimpleQueryByJdxzUI.LayerboxItem layerboxItem = new SimpleQueryByJdxzUI.LayerboxItem();
 					layerboxItem.m_pPipeLayer = iFLayer;
@@ -176,8 +178,11 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 					}
 					else
 					{
+
 						this.myfields = this.SelectLayer.FeatureClass.Fields;
-						this.strDX = this.pPipeCfg.GetPointTableFieldName("点性");
+                        IBasicLayerInfo layerInfo = pPipeCfg.GetBasicLayerInfo(this.SelectLayer.FeatureClass);
+                        
+					    this.strDX = layerInfo.GetFieldName(PipeConfigWordHelper.PointWords.TZW);// this.pPipeCfg.GetPointTableFieldName("点性");
 						if (this.myfields.FindField(this.strDX) < 0)
 						{
 							this.QueryBut.Enabled = false;

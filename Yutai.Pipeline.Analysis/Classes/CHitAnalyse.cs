@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common;
 using Yutai.Pipeline.Analysis.Helpers;
+using Yutai.Pipeline.Config.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.Classes
 {
@@ -35,13 +38,15 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         private ESRI.ArcGIS.Carto.IMap imap_0;
 
-        private string string_0 = "管线性质";
+        //private string string_0 = "管线性质";
 
-        private string string_1 = "管径";
+        //private string string_1 = "管径";
 
-        private string string_2 = "断面尺寸";
+        //private string string_2 = "断面尺寸";
 
         private char[] char_0 = new char[] { 'x', 'X', 'Х' };
+
+        public IPipelineConfig m_config;
 
         public IPolyline BaseLine
         {
@@ -58,11 +63,12 @@ namespace Yutai.Pipeline.Analysis.Classes
                 this.int_0 = value;
                 this.ipolyline_0 = null;
                 IFeature feature = this.ifeatureClass_0.GetFeature(this.int_0);
+                IBasicLayerInfo lineConfig = m_config.GetBasicLayerInfo(this.ifeatureClass_0.AliasName) as IBasicLayerInfo;
                 if (feature != null)
                 {
-                    int num = feature.Fields.FindField(this.string_1);
-                    int num1 = feature.Fields.FindField(this.string_2);
-                    if (feature.Fields.FindField(this.string_0) >= 0)
+                    int num = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GJ));
+                    int num1 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.DMCC));
+                    if (feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GDXZ)) >= 0)
                     {
                         if ((num >= 0 ? false : num1 < 0))
                         {
@@ -78,7 +84,7 @@ namespace Yutai.Pipeline.Analysis.Classes
                         {
                             this.double_0 = this.double_1;
                         }
-                        this.int_1 = this.m_app.PipeConfig.getLineConfig_HeightFlag(CommonUtils.GetSmpClassName(this.ifeatureClass_0.AliasName));
+                        this.int_1 = (int) lineConfig.HeightType;// this.m_app.PipeConfig.getLineConfig_HeightFlag(CommonUtils.GetSmpClassName(this.ifeatureClass_0.AliasName));
                     }
                     else
                     {
@@ -114,9 +120,9 @@ namespace Yutai.Pipeline.Analysis.Classes
                         base.AddLayer(this.imap_0.get_Layer(i), this.m_listLayers);
                     }
                 }
-                this.string_0 = this.m_app.PipeConfig.get_Kind();
-                this.string_1 = this.m_app.PipeConfig.get_Diameter();
-                this.string_2 = this.m_app.PipeConfig.get_Section_Size();
+                //this.string_0 = this.m_app.PipeConfig.get_Kind();
+                //this.string_1 = this.m_app.PipeConfig.get_Diameter();
+                //this.string_2 = this.m_app.PipeConfig.get_Section_Size();
             }
         }
 
@@ -149,8 +155,9 @@ namespace Yutai.Pipeline.Analysis.Classes
             }
         }
 
-        public CHitAnalyse()
+        public CHitAnalyse(IPipelineConfig config)
         {
+            m_config = config;
         }
 
         public void Analyse_Hit()
@@ -167,6 +174,7 @@ namespace Yutai.Pipeline.Analysis.Classes
             ITopologicalOperator ipolyline1 = (ITopologicalOperator)this.ipolyline_1;
             IProximityOperator proximityOperator = (IProximityOperator)this.ipolyline_1;
             IPointCollection ipolyline0 = (IPointCollection)this.ipolyline_0;
+            
             double z = ipolyline0.get_Point(0).Z;
             double num1 = z;
             for (int i = 1; i < ipolyline0.PointCount; i++)
@@ -192,20 +200,23 @@ namespace Yutai.Pipeline.Analysis.Classes
                 num1 = num1 + double0;
             }
             IFeature feature = pFeaCursor.NextFeature();
+           
+            IBasicLayerInfo lineConfig = m_config.GetBasicLayerInfo(feature.Class.AliasName) as IBasicLayerInfo;
             int num2 = -1;
             int num3 = -1;
             int num4 = -1;
             if (feature != null)
             {
-                num2 = feature.Fields.FindField(this.string_1);
-                num3 = feature.Fields.FindField(this.string_2);
-                num4 = feature.Fields.FindField(this.string_0);
+                num2 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GJ));
+                num3 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.DMCC));
+                num4 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GDXZ));
             }
             if (num4 >= 0)
             {
                 if ((num2 >= 0 ? true : num3 >= 0))
                 {
-                    int lineConfigHeightFlag = this.m_app.PipeConfig.getLineConfig_HeightFlag(CommonUtils.GetSmpClassName(feature.Class.AliasName));
+                    //!+ 要判断lineConfigHeightFlag 和 enumPipelineHeightType的对应关系
+                    int lineConfigHeightFlag = (int) lineConfig.HeightType;//this.m_app.PipeConfig.getLineConfig_HeightFlag(CommonUtils.GetSmpClassName(feature.Class.AliasName));
                     while (feature != null)
                     {
                         IPolyline shape = feature.Shape as IPolyline;
@@ -301,10 +312,10 @@ namespace Yutai.Pipeline.Analysis.Classes
                                 }
                                 cItem._dVerDistance = num;
                                 cItem._dVerBase = 0;
-                                cItem._dHorBase = (double)CommonUtils.GetPipeLineAlarmHrzDistByFeatureClassName2(CommonUtils.GetSmpClassName(this.ifeatureClass_0.AliasName), CommonUtils.GetSmpClassName(feature.Class.AliasName), this.ifeature_0, feature);
+                                cItem._dHorBase = (double)CommonUtils.GetPipeLineAlarmHrzDistByFeatureClassName2(m_config,CommonUtils.GetSmpClassName(this.ifeatureClass_0.AliasName), CommonUtils.GetSmpClassName(feature.Class.AliasName), this.ifeature_0, feature);
                                 string str1 = this.method_2(feature);
                                 string str2 = this.method_2(this.ifeature_0);
-                                cItem._dVerBase = (double)CommonUtils.GetPipeLineAlarmVerDistByFeatureClassName(CommonUtils.GetSmpClassName(this.ifeatureClass_0.AliasName), CommonUtils.GetSmpClassName(feature.Class.AliasName), str2, str1);
+                                cItem._dVerBase = (double)CommonUtils.GetPipeLineAlarmVerDistByFeatureClassName(m_config,CommonUtils.GetSmpClassName(this.ifeatureClass_0.AliasName), CommonUtils.GetSmpClassName(feature.Class.AliasName), str2, str1);
                                 this.list_0.Add(cItem);
                             }
                             else
@@ -349,10 +360,10 @@ namespace Yutai.Pipeline.Analysis.Classes
                                     _dHorBase = 0,
                                     _pClass = (IFeatureClass)feature.Class
                                 };
-                                pipeLineAlarmHrzDistByFeatureClassName2._dHorBase = (double)CommonUtils.GetPipeLineAlarmHrzDistByFeatureClassName2(CommonUtils.GetSmpClassName(this.ifeatureClass_0.AliasName), CommonUtils.GetSmpClassName(feature.Class.AliasName), this.ifeature_0, feature);
+                                pipeLineAlarmHrzDistByFeatureClassName2._dHorBase = (double)CommonUtils.GetPipeLineAlarmHrzDistByFeatureClassName2(m_config,CommonUtils.GetSmpClassName(this.ifeatureClass_0.AliasName), CommonUtils.GetSmpClassName(feature.Class.AliasName), this.ifeature_0, feature);
                                 string str4 = this.method_2(feature);
                                 string str5 = this.method_2(this.ifeature_0);
-                                pipeLineAlarmHrzDistByFeatureClassName2._dVerBase = (double)CommonUtils.GetPipeLineAlarmVerDistByFeatureClassName(CommonUtils.GetSmpClassName(this.ifeatureClass_0.AliasName), CommonUtils.GetSmpClassName(feature.Class.AliasName), str5, str4);
+                                pipeLineAlarmHrzDistByFeatureClassName2._dVerBase = (double)CommonUtils.GetPipeLineAlarmVerDistByFeatureClassName(m_config,CommonUtils.GetSmpClassName(this.ifeatureClass_0.AliasName), CommonUtils.GetSmpClassName(feature.Class.AliasName), str5, str4);
                                 this.list_0.Add(pipeLineAlarmHrzDistByFeatureClassName2);
                             }
                             else
@@ -383,9 +394,11 @@ namespace Yutai.Pipeline.Analysis.Classes
             int num2 = -1;
             if (feature != null)
             {
-                num = feature.Fields.FindField(this.string_1);
-                num1 = feature.Fields.FindField(this.string_2);
-                num2 = feature.Fields.FindField(this.string_0);
+                
+                IBasicLayerInfo lineConfig = m_config.GetBasicLayerInfo(feature.Class.AliasName) as IBasicLayerInfo;
+                num = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GJ));
+                num1 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.DMCC));
+                num2 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GDXZ));
             }
             if (num2 >= 0)
             {
@@ -414,7 +427,7 @@ namespace Yutai.Pipeline.Analysis.Classes
                                 _dHorBase = 0,
                                 _pClass = (IFeatureClass)feature.Class
                             };
-                            cItem._dHorBase = (double)CommonUtils.GetPipeLineAlarmHrzDistByFeatureClassName2(CommonUtils.GetSmpClassName(this.ifeatureClass_0.AliasName), CommonUtils.GetSmpClassName(feature.Class.AliasName), this.ifeature_0, feature);
+                            cItem._dHorBase = (double)CommonUtils.GetPipeLineAlarmHrzDistByFeatureClassName2(m_config,CommonUtils.GetSmpClassName(this.ifeatureClass_0.AliasName), CommonUtils.GetSmpClassName(feature.Class.AliasName), this.ifeature_0, feature);
                             this.list_0.Add(cItem);
                             feature = pFeaCursor.NextFeature();
                         }
@@ -439,20 +452,24 @@ namespace Yutai.Pipeline.Analysis.Classes
             double double0 = this.double_0 * 0.0005;
             ITopologicalOperator ipolyline1 = (ITopologicalOperator)this.ipolyline_1;
             IFeature feature = pFeaCursor.NextFeature();
-            int num = -1;
+            if (feature == null) return;
+                int num = -1;
             int num1 = -1;
             int num2 = -1;
+           
+            IBasicLayerInfo lineConfig = m_config.GetBasicLayerInfo(feature.Class.AliasName) as IBasicLayerInfo;
             if (feature != null)
             {
-                num = feature.Fields.FindField(this.string_1);
-                num1 = feature.Fields.FindField(this.string_2);
-                num2 = feature.Fields.FindField(this.string_0);
+                num = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GJ));
+                num1 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.DMCC));
+                num2 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GDXZ));
             }
             if (num2 >= 0)
             {
                 if ((num >= 0 ? true : num1 >= 0))
                 {
-                    int lineConfigHeightFlag = this.m_app.PipeConfig.getLineConfig_HeightFlag(CommonUtils.GetSmpClassName(feature.Class.AliasName));
+                    
+                    int lineConfigHeightFlag = (int) lineConfig.HeightType;// this.m_app.PipeConfig.getLineConfig_HeightFlag(CommonUtils.GetSmpClassName(feature.Class.AliasName));
                     while (feature != null)
                     {
                         IPolyline shape = feature.Shape as IPolyline;
@@ -516,7 +533,7 @@ namespace Yutai.Pipeline.Analysis.Classes
                                     };
                                     string str1 = this.method_2(feature);
                                     string str2 = this.method_2(this.ifeature_0);
-                                    cItem._dVerBase = (double)CommonUtils.GetPipeLineAlarmVerDistByFeatureClassName(CommonUtils.GetSmpClassName(this.ifeatureClass_0.AliasName), CommonUtils.GetSmpClassName(feature.Class.AliasName), str2, str1);
+                                    cItem._dVerBase = (double)CommonUtils.GetPipeLineAlarmVerDistByFeatureClassName(m_config,CommonUtils.GetSmpClassName(this.ifeatureClass_0.AliasName), CommonUtils.GetSmpClassName(feature.Class.AliasName), str2, str1);
                                     this.list_0.Add(cItem);
                                 }
                                 else

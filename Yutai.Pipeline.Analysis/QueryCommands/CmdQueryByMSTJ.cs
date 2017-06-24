@@ -16,10 +16,13 @@ namespace Yutai.Pipeline.Analysis.QueryForms
         private SimpleStatMyshUI QueryUI;
 
 
-        public CmdQueryByMSTJ(IAppContext context)
+        private PipelineAnalysisPlugin _plugin;
+        public CmdQueryByMSTJ(IAppContext context, PipelineAnalysisPlugin plugin)
         {
             OnCreate(context);
+            _plugin = plugin;
         }
+
 
         public override void OnClick()
         {
@@ -28,7 +31,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             {
                 this.QueryUI = new SimpleStatMyshUI();
                 this.QueryUI.MapControl = (IMapControl3)_context.MapControl;
-                this.QueryUI.pPipeCfg = _context.pPipeCfg;
+                this.QueryUI.pPipeCfg =_plugin.PipeConfig;
                 this.QueryUI.m_context = this._context;
                 this.QueryUI.Closing += new CancelEventHandler(this.QueryUI_Closing);
                 this.QueryUI.Show();

@@ -9,7 +9,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using Yutai.PipeConfig;
+using Yutai.Pipeline.Config.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.QueryForms
@@ -56,7 +57,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
 		public IMapControl3 MapControl;
 
-		public IPipeConfig pPipeCfg;
+		public IPipelineConfig pPipeCfg;
 
 
 
@@ -108,14 +109,14 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				string aliasName = iFLayer.FeatureClass.AliasName;
 				if (this.radioButton1.Checked)
 				{
-					if (this.pPipeCfg.IsPipePoint(aliasName))
+					if (this.pPipeCfg.IsPipelineLayer(iFLayer.Name,enumPipelineDataType.Point))
 					{
 						SimpleQueryByAddressUI1.LayerboxItem layerboxItem = new SimpleQueryByAddressUI1.LayerboxItem();
 						layerboxItem.m_pPipeLayer = iFLayer;
 						this.LayerBox.Items.Add(layerboxItem);
 					}
 				}
-				else if (this.pPipeCfg.IsPipeLine(aliasName))
+				else if (this.pPipeCfg.IsPipelineLayer(iFLayer.Name,enumPipelineDataType.Line))
 				{
 					SimpleQueryByAddressUI1.LayerboxItem layerboxItem2 = new SimpleQueryByAddressUI1.LayerboxItem();
 					layerboxItem2.m_pPipeLayer = iFLayer;
@@ -166,16 +167,19 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 					else
 					{
 						this.myfields = this.SelectLayer.FeatureClass.Fields;
-						if (this.radioButton1.Checked)
+                        IBasicLayerInfo layerInfo = pPipeCfg.GetBasicLayerInfo(this.SelectLayer.FeatureClass);
+                        if (this.radioButton1.Checked)
 						{
-							this.FieldBox.Text = this.pPipeCfg.GetPointTableFieldName("所在道路");
-							this.FindField = this.pPipeCfg.GetPointTableFieldName("点性");
+                           
+						    this.FieldBox.Text = layerInfo.GetFieldName(PipeConfigWordHelper.PointWords.SZDL);// this.pPipeCfg.GetPointTableFieldName("所在道路");
+						    this.FindField = layerInfo.GetFieldName(PipeConfigWordHelper.PointWords.TZW);// this.pPipeCfg.GetPointTableFieldName("点性");
 						}
 						else
 						{
-							this.FieldBox.Text = this.pPipeCfg.GetLineTableFieldName("所在道路");
-							this.FindField = this.pPipeCfg.GetLineTableFieldName("管径");
-							this.FindField1 = this.pPipeCfg.GetLineTableFieldName("断面尺寸");
+                           
+						    this.FieldBox.Text = layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.SZDL);// this.pPipeCfg.GetLineTableFieldName("所在道路");
+						    this.FindField = layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.GJ);// this.pPipeCfg.GetLineTableFieldName("管径");
+						    this.FindField1 = layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.DMCC);// this.pPipeCfg.GetLineTableFieldName("断面尺寸");
 						}
 						if (this.myfields.FindField(this.FindField) < 0 && this.myfields.FindField(this.FindField1) < 0)
 						{

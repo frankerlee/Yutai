@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using Yutai.Pipeline.Config.Helpers;
 using Yutai.Pipeline.Config.Interfaces;
 
 namespace Yutai.Pipeline.Config.Concretes
@@ -13,6 +14,7 @@ namespace Yutai.Pipeline.Config.Concretes
         private string _name;
         private string _caption;
         private List<IYTField> _fields;
+        private enumPipelineDataType _dataType;
 
         public PipelineTemplate()
         {
@@ -39,6 +41,12 @@ namespace Yutai.Pipeline.Config.Concretes
             set { _caption = value; }
         }
 
+        public enumPipelineDataType DataType
+        {
+            get { return _dataType; }
+            set { _dataType = value; }
+        }
+
         public List<IYTField> Fields
         {
             get { return _fields; }
@@ -51,6 +59,9 @@ namespace Yutai.Pipeline.Config.Concretes
             {
                 _name = xmlNode.Attributes["Name"].Value;
                 _caption = xmlNode.Attributes["Caption"].Value;
+                _dataType = xmlNode.Attributes["DataType"] == null
+                    ? enumPipelineDataType.Point
+                    : EnumHelper.ConvertDataTypeFromString(xmlNode.Attributes["DataType"].Value);
             }
             XmlNodeList nodeList = xmlNode.SelectNodes($"/PipelineConfig/LayerTemplates/Template[@Name='{_name}']/Fields/Field");
             foreach (XmlNode node in nodeList)
@@ -67,8 +78,11 @@ namespace Yutai.Pipeline.Config.Concretes
             nameAttribute.Value = _name;
             XmlAttribute captionAttribute = doc.CreateAttribute("Caption");
             captionAttribute.Value = _caption;
+            XmlAttribute typeAttribute = doc.CreateAttribute("DataType");
+            typeAttribute.Value = EnumHelper.ConvertDataTypeToString(_dataType);
             templateNode.Attributes.Append(nameAttribute);
             templateNode.Attributes.Append(captionAttribute);
+            templateNode.Attributes.Append(typeAttribute);
 
             foreach (IYTField ytField in _fields)
             {

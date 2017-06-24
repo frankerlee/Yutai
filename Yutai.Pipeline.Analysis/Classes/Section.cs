@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using ESRI.ArcGIS.Geometry;
-using Yutai.PipeConfig;
+
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 using Point = System.Drawing.Point;
 
@@ -26,7 +27,7 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         public double m_dMaxY;
 
-        private IPipeConfig ipipeConfig_0;
+        private IPipelineConfig ipipeConfig_0;
 
         private Section.Section_Action section_Action_0;
 
@@ -40,7 +41,7 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         public SectionDisp m_pSectionDisp;
 
-        public IPipeConfig PipeConfig
+        public IPipelineConfig PipeConfig
         {
             get
             {
@@ -77,13 +78,13 @@ namespace Yutai.Pipeline.Analysis.Classes
             }
         }
 
-        public Section(object objFrom, IAppContext pApp)
+        public Section(object objFrom, IAppContext pApp,IPipelineConfig pipeConfig)
         {
             this.m_context = pApp;
-            this.PipeConfig = pApp.PipeConfig;
+            this.PipeConfig = pipeConfig;
             this.m_nSelectIndex = -1;
             this.m_pSectionDisp = new SectionDisp(objFrom);
-            this.m_pSectionDisp.PipeConfig = pApp.PipeConfig;
+            this.m_pSectionDisp.PipeConfig = pipeConfig;
         }
 
         public void OnResize(int nMenuH, int nToolBarH, float a, float b)

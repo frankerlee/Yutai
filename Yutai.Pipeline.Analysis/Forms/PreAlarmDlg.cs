@@ -6,9 +6,10 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using Yutai.PipeConfig;
+
 using Yutai.Pipeline.Analysis.Classes;
 using Yutai.Pipeline.Analysis.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.Forms
@@ -18,16 +19,14 @@ namespace Yutai.Pipeline.Analysis.Forms
 		private IContainer icontainer_0 = null;
 
 
+	    public IPipelineConfig _config;
 
 
-
-
-
-		public IAppContext m_iApp;
+        public IAppContext m_iApp;
 
 		public IMapControl3 MapControl;
 
-		public IPipeConfig pPipeCfg;
+		public IPipelineConfig pPipeCfg;
 
 
 		public IAppContext App
@@ -36,13 +35,15 @@ namespace Yutai.Pipeline.Analysis.Forms
 			{
 				this.m_iApp = value;
 				this.MapControl = this.m_iApp.MapControl as IMapControl3;
-				this.pPipeCfg = this.m_iApp.PipeConfig;
+				
 			}
 		}
 
-	public PreAlarmDlg()
+	    public PreAlarmDlg(IAppContext context,IPipelineConfig config)
 		{
 			this.InitializeComponent();
+            m_iApp = context;
+		    _config = config;
 		}
 
 		private void btnAnalyse_Click(object obj, EventArgs eventArgs)
@@ -51,7 +52,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 			this.DeleteAllElements(this.m_iApp.ActiveView);
 			if (this.preAlarmResult_0 == null)
 			{
-				this.preAlarmResult_0 = new PreAlarmResult();
+				this.preAlarmResult_0 = new PreAlarmResult(m_iApp,_config);
 				this.preAlarmResult_0.App = this.m_iApp;
 				this.preAlarmResult_0.m_pCurLayer = pclass.m_pFeatureLayer;
 				this.preAlarmResult_0.m_strLayerName = this.LayerBox.Text;
@@ -90,7 +91,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 			if (pLayer is IFeatureLayer)
 			{
 				IFeatureLayer featureLayer = pLayer as IFeatureLayer;
-				if (this.m_iApp.PipeConfig.IsPipePoint(featureLayer.FeatureClass.AliasName) || this.m_iApp.PipeConfig.IsPipeLine(featureLayer.FeatureClass.AliasName))
+				if (this.pPipeCfg.IsPipelineLayer(featureLayer.Name,enumPipelineDataType.Point) || this.pPipeCfg.IsPipelineLayer(featureLayer.Name,enumPipelineDataType.Line))
 				{
                     CheckListFeatureLayerItem pclass = new CheckListFeatureLayerItem();
 					pclass.m_pFeatureLayer = featureLayer;

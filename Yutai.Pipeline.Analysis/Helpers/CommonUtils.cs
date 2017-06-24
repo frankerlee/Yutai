@@ -9,6 +9,8 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.Pipeline.Config.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.Helpers
@@ -101,9 +103,9 @@ namespace Yutai.Pipeline.Analysis.Helpers
             ((IActiveView)pMap).Refresh();
         }
 
-        public static string GetFeatureClassNameFromLayerName(string strLayerName)
+        public static string GetFeatureClassNameFromLayerName(IPipelineConfig config, string strLayerName)
         {
-            object valueFromTable = GetValueFromTable("EmFeatureClassInfo", "层名", strLayerName, "表名");
+            object valueFromTable = GetValueFromTable(config,"EmFeatureClassInfo", "层名", strLayerName, "表名");
             return (valueFromTable != null ? (string)valueFromTable : "");
         }
 
@@ -237,18 +239,18 @@ namespace Yutai.Pipeline.Analysis.Helpers
             }
         }
 
-        public static string GetPipeCatNameFromLayerName(string strLayerName)
+        public static string GetPipeCatNameFromLayerName(IPipelineConfig config, string strLayerName)
         {
-            object valueFromTable =CommonUtils.GetValueFromTable("EmFeatureClassInfo", "层名", strLayerName, "管线类别");
+            object valueFromTable =CommonUtils.GetValueFromTable(config,"EmFeatureClassInfo", "层名", strLayerName, "管线类别");
             return (valueFromTable != null ? (string)valueFromTable : "");
         }
 
-        public static object GetPipeLineAlarmHrzDist(string strPipeLine1, string strPipeLine2)
+        public static object GetPipeLineAlarmHrzDist(IPipelineConfig config, string strPipeLine1, string strPipeLine2)
         {
-            return CommonUtils.GetValueFromTable("EmPipeDists", "管线1", strPipeLine1, "管线2", strPipeLine2, "水平净距");
+            return CommonUtils.GetValueFromTable(config,"EmPipeDists", "管线1", strPipeLine1, "管线2", strPipeLine2, "水平净距");
         }
 
-        public static object GetPipeLineAlarmHrzDist2(string strPipeLine1, string strPipeLine2, IFeature pFeature1, IFeature pFeature2)
+        public static object GetPipeLineAlarmHrzDist2(IPipelineConfig config,string strPipeLine1, string strPipeLine2, IFeature pFeature1, IFeature pFeature2)
         {
             object obj;
             double num;
@@ -259,7 +261,7 @@ namespace Yutai.Pipeline.Analysis.Helpers
             double num5;
             double num6;
             double num7;
-            ITable table =CommonUtils.GetTable("EMMETAPIPELEVELSPACE");
+            ITable table =CommonUtils.GetTable(config,"EMMETAPIPELEVELSPACE");
             if (table != null)
             {
                 string[] strArrays = new string[] { "(管线1 = '", strPipeLine1, "' AND 管线2 = '", strPipeLine2, "')" };
@@ -294,7 +296,8 @@ namespace Yutai.Pipeline.Analysis.Helpers
                     {
                         num8 = num12;
                     }
-                    string lineTableFieldName =CommonUtils.AppContext.PipeConfig.GetLineTableFieldName("管径");
+                    
+                    string lineTableFieldName = config.GetSpecialField(pFeature1.Class.AliasName, PipeConfigWordHelper.LineWords.GJ).Name; //CommonUtils.AppContext.PipeConfig.GetLineTableFieldName("管径");
                     if ((pFeature1 == null ? false : str2 == lineTableFieldName))
                     {
                         int num13 = pFeature1.Fields.FindField(lineTableFieldName);
@@ -316,7 +319,7 @@ namespace Yutai.Pipeline.Analysis.Helpers
                             }
                         }
                     }
-                    string lineTableFieldName1 =CommonUtils.AppContext.PipeConfig.GetLineTableFieldName("管径");
+                    string lineTableFieldName1 = config.GetSpecialField(pFeature2.Class.AliasName, PipeConfigWordHelper.LineWords.GJ).Name;
                     if (str3 == lineTableFieldName)
                     {
                         int num15 = pFeature2.Fields.FindField(lineTableFieldName1);
@@ -452,16 +455,16 @@ namespace Yutai.Pipeline.Analysis.Helpers
             return obj;
         }
 
-        public static float GetPipeLineAlarmHrzDistByFeatureClassName(string strFeaClassName1, string strFeaClassName2)
+        public static float GetPipeLineAlarmHrzDistByFeatureClassName(IPipelineConfig config, string strFeaClassName1, string strFeaClassName2)
         {
             float single;
             string str;
             string str1;
-            object valueFromTable =CommonUtils.GetValueFromTable("EMFeatureClassInfo", "要素类", strFeaClassName1, "管线类别");
+            object valueFromTable =CommonUtils.GetValueFromTable(config,"EMFeatureClassInfo", "要素类", strFeaClassName1, "管线类别");
             if (valueFromTable != null)
             {
                 str = (!Convert.IsDBNull(valueFromTable) ? valueFromTable.ToString() : "");
-                valueFromTable =CommonUtils.GetValueFromTable("EMFeatureClassInfo", "要素类", strFeaClassName2, "管线类别");
+                valueFromTable =CommonUtils.GetValueFromTable(config,"EMFeatureClassInfo", "要素类", strFeaClassName2, "管线类别");
                 if (valueFromTable != null)
                 {
                     str1 = (!Convert.IsDBNull(valueFromTable) ? valueFromTable.ToString() : "");
@@ -473,7 +476,7 @@ namespace Yutai.Pipeline.Analysis.Helpers
                     {
                         str1 = str1.Substring(0, 2);
                     }
-                    object pipeLineAlarmHrzDist =CommonUtils.GetPipeLineAlarmHrzDist(str, str1);
+                    object pipeLineAlarmHrzDist =CommonUtils.GetPipeLineAlarmHrzDist(config, str, str1);
                     if (pipeLineAlarmHrzDist != null)
                     {
                         single = (!Convert.IsDBNull(pipeLineAlarmHrzDist) ? Convert.ToSingle(pipeLineAlarmHrzDist) : 0f);
@@ -495,20 +498,20 @@ namespace Yutai.Pipeline.Analysis.Helpers
             return single;
         }
 
-        public static float GetPipeLineAlarmHrzDistByFeatureClassName2(string strFeaClassName1, string strFeaClassName2, IFeature pFeature1, IFeature pFeature2)
+        public static float GetPipeLineAlarmHrzDistByFeatureClassName2(IPipelineConfig config,string strFeaClassName1, string strFeaClassName2, IFeature pFeature1, IFeature pFeature2)
         {
             float single;
             string str;
             string str1;
-            object valueFromTable =CommonUtils.GetValueFromTable("EMFeatureClassInfo", "要素类", strFeaClassName1.ToUpper(), "管线类别");
+            object valueFromTable =CommonUtils.GetValueFromTable(config,"EMFeatureClassInfo", "要素类", strFeaClassName1.ToUpper(), "管线类别");
             if (valueFromTable != null)
             {
                 str = (!Convert.IsDBNull(valueFromTable) ? valueFromTable.ToString() : "");
-                valueFromTable =CommonUtils.GetValueFromTable("EMFeatureClassInfo", "要素类", strFeaClassName2.ToUpper(), "管线类别");
+                valueFromTable =CommonUtils.GetValueFromTable(config,"EMFeatureClassInfo", "要素类", strFeaClassName2.ToUpper(), "管线类别");
                 if (valueFromTable != null)
                 {
                     str1 = (!Convert.IsDBNull(valueFromTable) ? valueFromTable.ToString() : "");
-                    object pipeLineAlarmHrzDist2 =CommonUtils.GetPipeLineAlarmHrzDist2(str, str1, pFeature1, pFeature2);
+                    object pipeLineAlarmHrzDist2 =CommonUtils.GetPipeLineAlarmHrzDist2(config,str, str1, pFeature1, pFeature2);
                     if (pipeLineAlarmHrzDist2 != null)
                     {
                         single = (!Convert.IsDBNull(pipeLineAlarmHrzDist2) ? Convert.ToSingle(pipeLineAlarmHrzDist2) : 0f);
@@ -530,10 +533,10 @@ namespace Yutai.Pipeline.Analysis.Helpers
             return single;
         }
 
-        public static object GetPipeLineAlarmVerDist(string strPipeLine1, string strPipeLine2, string strBuryKind1, string strBuryKind2)
+        public static object GetPipeLineAlarmVerDist(IPipelineConfig config, string strPipeLine1, string strPipeLine2, string strBuryKind1, string strBuryKind2)
         {
             object obj;
-            ITable table =CommonUtils.GetTable("EMMetaPipeAplombSpace");
+            ITable table =CommonUtils.GetTable(config,"EMMetaPipeAplombSpace");
             if (table != null)
             {
                 string[] strArrays = new string[] { "(上面管线1 = '", strPipeLine1, "' AND 下面管线2 = '", strPipeLine2, "')" };
@@ -601,20 +604,20 @@ namespace Yutai.Pipeline.Analysis.Helpers
             return obj;
         }
 
-        public static float GetPipeLineAlarmVerDistByFeatureClassName(string strFeaClassName1, string strFeaClassName2, string strBuryKind1, string strBuryKind2)
+        public static float GetPipeLineAlarmVerDistByFeatureClassName(IPipelineConfig config, string strFeaClassName1, string strFeaClassName2, string strBuryKind1, string strBuryKind2)
         {
             float single;
             string str;
             string str1;
-            object valueFromTable =CommonUtils.GetValueFromTable("EMFeatureClassInfo", "要素类", strFeaClassName1.ToUpper(), "管线类别");
+            object valueFromTable =CommonUtils.GetValueFromTable(config,"EMFeatureClassInfo", "要素类", strFeaClassName1.ToUpper(), "管线类别");
             if (valueFromTable != null)
             {
                 str = (!Convert.IsDBNull(valueFromTable) ? valueFromTable.ToString() : "");
-                valueFromTable =CommonUtils.GetValueFromTable("EMFeatureClassInfo", "要素类", strFeaClassName2.ToUpper(), "管线类别");
+                valueFromTable =CommonUtils.GetValueFromTable(config,"EMFeatureClassInfo", "要素类", strFeaClassName2.ToUpper(), "管线类别");
                 if (valueFromTable != null)
                 {
                     str1 = (!Convert.IsDBNull(valueFromTable) ? valueFromTable.ToString() : "");
-                    object pipeLineAlarmVerDist =CommonUtils.GetPipeLineAlarmVerDist(str, str1, strBuryKind1, strBuryKind2);
+                    object pipeLineAlarmVerDist =CommonUtils.GetPipeLineAlarmVerDist(config,str, str1, strBuryKind1, strBuryKind2);
                     if (valueFromTable != null)
                     {
                         single = (!Convert.IsDBNull(pipeLineAlarmVerDist) ? Convert.ToSingle(pipeLineAlarmVerDist) : 0f);
@@ -668,13 +671,13 @@ namespace Yutai.Pipeline.Analysis.Helpers
             return CommonUtils.GetSmpClassName((pLayer as IFeatureLayer).FeatureClass.AliasName);
         }
 
-        public static ITable GetTable(string strTableName)
+        public static ITable GetTable(IPipelineConfig config,string strTableName)
         {
             ITable table;
-            if (CommonUtils.AppContext.Workspace != null)
+            if (config.Workspace != null)
             {
-                IFeatureWorkspace workspace =CommonUtils.AppContext.Workspace as IFeatureWorkspace;
-                if (!(CommonUtils.AppContext.Workspace as IWorkspace2).get_NameExists((esriDatasetType)10, strTableName))
+                IFeatureWorkspace workspace = config.Workspace as IFeatureWorkspace;
+                if (!(config.Workspace as IWorkspace2).get_NameExists((esriDatasetType)10, strTableName))
                 {
                     table = null;
                 }
@@ -690,10 +693,10 @@ namespace Yutai.Pipeline.Analysis.Helpers
             return table;
         }
 
-        public static object GetValueFromTable(string strTableName, string strKeyFieldName, string strKeyFieldValue, string strDstFieldName)
+        public static object GetValueFromTable(IPipelineConfig config,string strTableName, string strKeyFieldName, string strKeyFieldValue, string strDstFieldName)
         {
             object obj;
-            ITable table =CommonUtils.GetTable(strTableName);
+            ITable table =CommonUtils.GetTable(config,strTableName);
             if (table != null)
             {
                 string str = string.Concat(strKeyFieldName, " = '", strKeyFieldValue, "'");
@@ -721,10 +724,10 @@ namespace Yutai.Pipeline.Analysis.Helpers
             return obj;
         }
 
-        public static object GetValueFromTable(string strTableName, string strKeyFieldName1, string strKeyFieldValue1, string strKeyFieldName2, string strKeyFieldValue2, string strDstFieldName)
+        public static object GetValueFromTable(IPipelineConfig config, string strTableName, string strKeyFieldName1, string strKeyFieldValue1, string strKeyFieldName2, string strKeyFieldValue2, string strDstFieldName)
         {
             object obj;
-            ITable table =CommonUtils.GetTable(strTableName);
+            ITable table =CommonUtils.GetTable(config,strTableName);
             if (table != null)
             {
                 string[] strArrays = new string[] { strKeyFieldName1, " = '", strKeyFieldValue1, "' AND ", strKeyFieldName2, " = '", strKeyFieldValue2, "'" };
@@ -753,16 +756,16 @@ namespace Yutai.Pipeline.Analysis.Helpers
             return obj;
         }
 
-        public static bool IsPipeLine(string strLayerName)
+        public static bool IsPipeLine(IPipelineConfig config, string strLayerName)
         {
-            object valueFromTable =CommonUtils.GetValueFromTable("EmFeatureClassInfo", "层名", strLayerName, "管线类别");
+            object valueFromTable =CommonUtils.GetValueFromTable(config,"EmFeatureClassInfo", "层名", strLayerName, "管线类别");
             return (valueFromTable == null ? false : !Convert.IsDBNull(valueFromTable));
         }
 
-        public static bool IsPipeLineByFeatureClassName(string strFeaClassName)
+        public static bool IsPipeLineByFeatureClassName(IPipelineConfig config, string strFeaClassName)
         {
             bool flag;
-            object valueFromTable =CommonUtils.GetValueFromTable("EmFeatureClassInfo", "要素类", strFeaClassName, "管线类别");
+            object valueFromTable =CommonUtils.GetValueFromTable(config,"EmFeatureClassInfo", "要素类", strFeaClassName, "管线类别");
             if (valueFromTable != null)
             {
                 flag = (!Convert.IsDBNull(valueFromTable) ? ((string)valueFromTable).Trim() != "" : false);

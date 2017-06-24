@@ -38,6 +38,7 @@ namespace Yutai.Pipeline.Config.Concretes
         private IPipelineTemplate _template;
 
         private List<IYTField> _fields;
+        private IFeatureLayer _featureLayer;
 
         public PointAssist()
         {
@@ -246,6 +247,12 @@ namespace Yutai.Pipeline.Config.Concretes
         public void LoadTemplate(IPipelineTemplate template)
         {
             _fields.AddRange(template.Fields);
+        }
+
+        public IFeatureLayer FeatureLayer
+        {
+            get { return _featureLayer; }
+            set { _featureLayer = value; }
         }
     }
 }

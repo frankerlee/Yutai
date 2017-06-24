@@ -8,6 +8,8 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using Yutai.Pipeline.Config.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.QueryForms
@@ -30,7 +32,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
 		public IMapControl3 MapControl;
 
-		public IPipeConfig pPipeCfg;
+		public IPipelineConfig pPipeCfg;
 
 
         private PipelineAnalysisPlugin _plugin;
@@ -139,7 +141,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			if (iFLayer != null)
 			{
 				string aliasName = iFLayer.FeatureClass.AliasName;
-				if (this.pPipeCfg.IsPipeLine(aliasName))
+				if (this.pPipeCfg.IsPipelineLayer(aliasName))
 				{
 					SimpleQueryByDiaUI.LayerboxItem layerboxItem = new SimpleQueryByDiaUI.LayerboxItem();
 					layerboxItem.m_pPipeLayer = iFLayer;
@@ -279,9 +281,10 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 					this.SelectLayer = ((SimpleQueryByDiaUI.LayerboxItem)this.LayerBox.SelectedItem).m_pPipeLayer;
 					if (this.SelectLayer != null)
 					{
-						this.myfields = this.SelectLayer.FeatureClass.Fields;
-						this.strGJ = this.pPipeCfg.GetLineTableFieldName("管径");
-						this.strKG = this.pPipeCfg.GetLineTableFieldName("断面尺寸");
+                        IBasicLayerInfo layerInfo = pPipeCfg.GetBasicLayerInfo(this.SelectLayer.FeatureClass);
+                        this.myfields = this.SelectLayer.FeatureClass.Fields;
+						this.strGJ = layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.GJ); ;
+						this.strKG = layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.DMCC); ;
 						if (this.myfields.FindField(this.strGJ) < 0)
 						{
 							this.radioButton1.Enabled = false;

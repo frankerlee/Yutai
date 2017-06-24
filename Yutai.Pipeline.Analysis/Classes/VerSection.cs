@@ -6,7 +6,10 @@ using System.Xml;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common;
 using Yutai.Pipeline.Analysis.Helpers;
+using Yutai.Pipeline.Config.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.Classes
@@ -23,7 +26,7 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         private ArrayList arrayList_4 = new ArrayList();
 
-        public VerSection(object objForm, IAppContext pApp) : base(objForm, pApp)
+        public VerSection(object objForm, IAppContext pApp,IPipelineConfig config) : base(objForm, pApp,config)
         {
         }
 
@@ -107,6 +110,8 @@ namespace Yutai.Pipeline.Analysis.Classes
             IFeature feature = enumFeature.Next();
             if (feature != null)
             {
+                IFeatureLayer pLayer = MapHelper.GetLayerByFeature(map as IBasicMap, feature);
+                IBasicLayerInfo lineConfig = PipeConfig.GetBasicLayerInfo(feature.Class.AliasName) as IBasicLayerInfo;
                 int num = 0;
                 this.arrayList_1.Clear();
                 this.arrayList_2.Clear();
@@ -137,7 +142,8 @@ namespace Yutai.Pipeline.Analysis.Classes
                             pipeLine.PushBack(point.X, point.Y, point.Z - point.M, point.Z);
                         }
                     }
-                    string text = "管线性质";
+                    //string text = "管线性质";
+                    string text =lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GDXZ) ==""? "管线性质": lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GDXZ);
                     string text2 = "";
                     int num2 = feature.Fields.FindField(text);
                     if (num2 != -1)
@@ -154,7 +160,7 @@ namespace Yutai.Pipeline.Analysis.Classes
                     }
                     pipeLine.ID = Convert.ToInt32(feature.get_Value(0).ToString());
                     pipeLine.DatasetName = text2;
-                    int num3 = feature.Fields.FindField(base.PipeConfig.get_Material());
+                    int num3 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GXCZ));
                     if (num3 == -1)
                     {
                         pipeLine.Material = "";
@@ -163,7 +169,8 @@ namespace Yutai.Pipeline.Analysis.Classes
                     {
                         pipeLine.Material = feature.get_Value(num3).ToString();
                     }
-                    num3 = feature.Fields.FindField(base.PipeConfig.get_Diameter());
+                    //管径
+                    num3 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GJ));
                     string text3;
                     if (num3 != -1)
                     {
@@ -173,7 +180,8 @@ namespace Yutai.Pipeline.Analysis.Classes
                     {
                         text3 = "";
                     }
-                    num3 = feature.Fields.FindField(base.PipeConfig.get_Section_Size());
+                    //断面尺寸
+                    num3 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.DMCC));
                     string text4;
                     if (num3 != -1)
                     {
@@ -217,7 +225,10 @@ namespace Yutai.Pipeline.Analysis.Classes
                         pipePoint.nID = Convert.ToInt32(feature4.get_Value(0));
                         pipePoint.nAtPipeSegID = pipeLine.ID;
                         pipePoint.bstrDatasetName = text2;
-                        num3 = feature4.Fields.FindField(base.PipeConfig.get_PointKind());
+
+                        IBasicLayerInfo pointConfig =
+                            PipeConfig.GetBasicLayerInfo(feature.Class.AliasName) as IBasicLayerInfo;
+                        num3 = feature4.Fields.FindField(pointConfig.GetFieldName(PipeConfigWordHelper.PointWords.TZW));
                         if (num3 == -1)
                         {
                             pipePoint.bstrPointKind = "";
@@ -244,7 +255,9 @@ namespace Yutai.Pipeline.Analysis.Classes
                     pipePoint2.nID = Convert.ToInt32(feature4.get_Value(0));
                     pipePoint2.nAtPipeSegID = pipeLine.ID;
                     pipePoint2.bstrDatasetName = text2;
-                    num3 = feature4.Fields.FindField(base.PipeConfig.get_PointKind());
+                    IBasicLayerInfo pointConfig3 =
+                             PipeConfig.GetBasicLayerInfo(feature4.Class.AliasName) as IBasicLayerInfo;
+                    num3 = feature4.Fields.FindField(pointConfig3.GetFieldName(PipeConfigWordHelper.PointWords.TZW));
                     if (num3 == -1)
                     {
                         pipePoint2.bstrPointKind = "";

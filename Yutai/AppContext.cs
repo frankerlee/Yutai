@@ -473,6 +473,9 @@ namespace Yutai
                 else return null;
             }
         }
+
+      
+
         public IMap FocusMap { get { return MapControl.Map as IMap; } }
         public IOperationStack OperationStack { get { return m_pOperationStack; } }
 
@@ -480,6 +483,7 @@ namespace Yutai
 
         #region 事件处理
         private IActiveViewEvents_Event iactiveViewEvents_Event_0 = null;
+        private IMap _focusMap;
 
         public event MapReplacedHandler MapReplaced;
 

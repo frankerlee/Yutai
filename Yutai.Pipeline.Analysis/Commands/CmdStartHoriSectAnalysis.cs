@@ -27,11 +27,15 @@ namespace Yutai.Pipeline.Analysis.Commands
         private Cursor _cursor1;
 
         private IPolyline _sectLine;
+        private PipelineAnalysisPlugin _plugin;
 
-        public CmdStartHoriSectAnalysis(IAppContext context)
+
+        public CmdStartHoriSectAnalysis(IAppContext context, PipelineAnalysisPlugin plugin)
         {
             OnCreate(context);
+            _plugin = plugin;
         }
+
 
         public override void OnClick()
         {
@@ -187,7 +191,7 @@ namespace Yutai.Pipeline.Analysis.Commands
                 ((IGraphicsContainer) _context.ActiveView).AddElement(textElement, 0);
                 this._lineFeedback = null;
                 SectionViewFrm sectionViewFrm = new SectionViewFrm(SectionViewFrm.SectionType.SectionTypeTransect,
-                    _context);
+                    _context,_plugin.PipeConfig);
                 sectionViewFrm.PutBaseLine(_sectLine);
                 sectionViewFrm.ShowDialog();
             }

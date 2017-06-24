@@ -12,6 +12,7 @@ using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Yutai.Pipeline.Analysis.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.QueryForms
@@ -45,7 +46,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
 		public IMapControl3 MapControl;
 
-		public IPipeConfig pPipeCfg;
+		public IPipelineConfig pPipeCfg;
 
 
 		private ArrayList m_alPipeLine = new ArrayList();
@@ -79,13 +80,13 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			if (pLayer is IFeatureLayer)
 			{
 				IFeatureLayer featureLayer = pLayer as IFeatureLayer;
-				if (this.pPipeCfg.IsPipeLine(featureLayer.FeatureClass.AliasName))
+				if (this.pPipeCfg.IsPipelineLayer(featureLayer.FeatureClass.AliasName))
 				{
 					RelateQueryUI.LayerboxItem layerboxItem = new RelateQueryUI.LayerboxItem();
 					layerboxItem.m_pPipeLayer = featureLayer;
 					this.cmbPipeLine.Items.Add(layerboxItem);
 				}
-				if (this.pPipeCfg.IsPipePoint(featureLayer.FeatureClass.AliasName))
+				if (this.pPipeCfg.IsPipelineLayer(featureLayer.FeatureClass.AliasName))
 				{
 					RelateQueryUI.LayerboxItem layerboxItem2 = new RelateQueryUI.LayerboxItem();
 					layerboxItem2.m_pPipeLayer = featureLayer;

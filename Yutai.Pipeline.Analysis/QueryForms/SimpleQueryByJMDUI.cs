@@ -8,6 +8,7 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.QueryForms
@@ -20,7 +21,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
 		public IAppContext m_context;
 
-		public IPipeConfig pPipeCfg;
+		public IPipelineConfig pPipeCfg;
 
         private PipelineAnalysisPlugin _plugin;
         public PipelineAnalysisPlugin Plugin

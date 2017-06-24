@@ -15,6 +15,8 @@ using DevExpress.XtraEditors;
 using ESRI.ArcGIS.DataSourcesFile;
 using Yutai.Pipeline.Analysis.Classes;
 using Yutai.Pipeline.Analysis.Helpers;
+using Yutai.Pipeline.Config.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.Forms
@@ -28,7 +30,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 
         private List<IFeatureLayer> list_1 = new List<IFeatureLayer>();
 
-        private CHitAnalyse chitAnalyse_0 = new CHitAnalyse();
+        private CHitAnalyse chitAnalyse_0 ;//= new CHitAnalyse();
 
         public CommonDistAnalyse m_commonDistAls;
 
@@ -56,12 +58,12 @@ namespace Yutai.Pipeline.Analysis.Forms
 
         private Dictionary<string, string> dictionary_0 = new Dictionary<string, string>();
 
-
+        private IPipelineConfig _config;
 
         private IContainer icontainer_0 = null;
 
 
-        public GForm0(IAppContext pApp)
+        public GForm0(IAppContext pApp,IPipelineConfig config)
         {
             this.InitializeComponent();
             this.m_commonDistAls = new CommonDistAnalyse()
@@ -69,7 +71,9 @@ namespace Yutai.Pipeline.Analysis.Forms
                 m_nAnalyseType = DistAnalyseType.emVerDist
             };
             this.m_app = pApp;
-            this.m_commonDistAls.PipeConfig = pApp.PipeConfig;
+            _config = config;
+            chitAnalyse_0 =new CHitAnalyse(config);
+            this.m_commonDistAls.PipeConfig = config;
             this.m_nTimerCount = 0;
             this.dataGridViewSelectItem.Columns[0].ReadOnly = true;
             this.dataGridViewSelectItem.Columns[1].ReadOnly = true;
@@ -136,7 +140,7 @@ namespace Yutai.Pipeline.Analysis.Forms
                 {
                     IFeatureLayer featureLayer = pLayer as IFeatureLayer;
                     IFeatureClass featureClass = featureLayer.FeatureClass;
-                    if (featureLayer.FeatureClass.FeatureType != (esriFeatureType)11 && this.m_app.PipeConfig.IsPipeLine(featureClass.AliasName))
+                    if (featureLayer.FeatureClass.FeatureType != (esriFeatureType)11 && this._config.IsPipelineLayer(featureClass.AliasName))
                     {
                         this.dictionary_0.Add(featureLayer.Name, featureClass.AliasName);
                     }
@@ -357,21 +361,23 @@ namespace Yutai.Pipeline.Analysis.Forms
             if (feature != null)
             {
                 CommonUtils.GetSmpClassName(feature.Class.AliasName);
-                if ((this.m_app.PipeConfig.IsPipeLine(feature.Class.AliasName) ? true : !(feature.Class.AliasName != "Polyline")))
+                if ((this._config.IsPipelineLayer(feature.Class.AliasName) ? true : !(feature.Class.AliasName != "Polyline")))
                 {
                     IGeometry shape = feature.Shape;
                     if (shape.GeometryType == (esriGeometryType)3)
                     {
+                        IBasicLayerInfo layerInfo = _config.GetBasicLayerInfo(feature.Class.AliasName);
+                        
                         this.ipolyline_0 = CommonUtils.GetPolylineDeepCopy((IPolyline)shape);
                         this.m_commonDistAls.m_pFeature = feature;
                         this.m_commonDistAls.m_pBaseLine = this.ipolyline_0;
                         this.m_commonDistAls.m_strLayerName = feature.Class.AliasName;
-                        int num = feature.Fields.FindField("埋设方式");
+                        int num = feature.Fields.FindField(layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.MSFS));
                         str = (num == -1 ? "" : this.method_11(feature.get_Value(num)));
                         this.m_commonDistAls.m_strBuryKind = str;
-                        int num1 = feature.Fields.FindField(this.m_app.PipeConfig.get_Diameter());
+                        int num1 = feature.Fields.FindField(layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.GJ));
                         str1 = (num1 == -1 ? "" : this.method_11(feature.get_Value(num1)));
-                        num1 = feature.Fields.FindField(this.m_app.PipeConfig.get_Section_Size());
+                        num1 = feature.Fields.FindField(layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.DMCC));
                         str2 = (num1 == -1 ? "" : this.method_11(feature.get_Value(num1)));
                         string str3 = "";
                         if (str1 != "")
@@ -460,9 +466,9 @@ namespace Yutai.Pipeline.Analysis.Forms
                     this.AddLayer(layer, this.list_2);
                 }
             }
-            this.string_0 = this.m_app.PipeConfig.get_Kind();
-            this.string_1 = this.m_app.PipeConfig.get_Diameter();
-            this.string_2 = this.m_app.PipeConfig.get_Section_Size();
+            //this.string_0 = this.m_app.PipeConfig.get_Kind();
+            //this.string_1 = this.m_app.PipeConfig.get_Diameter();
+            //this.string_2 = this.m_app.PipeConfig.get_Section_Size();
             this.method_12();
         }
 
@@ -528,9 +534,10 @@ namespace Yutai.Pipeline.Analysis.Forms
             int num2 = -1;
             if (feature != null)
             {
-                num = feature.Fields.FindField(this.string_1);
-                num1 = feature.Fields.FindField(this.string_2);
-                num2 = feature.Fields.FindField(this.string_0);
+                IBasicLayerInfo layerInfo = _config.GetBasicLayerInfo(feature.Class.AliasName);
+                num = feature.Fields.FindField(layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.GJ));
+                num1 = feature.Fields.FindField(layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.DMCC));
+                num2 = feature.Fields.FindField(layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.GDXZ));
             }
             if (num2 >= 0)
             {
@@ -573,7 +580,7 @@ namespace Yutai.Pipeline.Analysis.Forms
                         {
                             value = this.dictionary_0[value].ToString();
                         }
-                        cItem._dHorBase = (double)CommonUtils.GetPipeLineAlarmHrzDistByFeatureClassName2(CommonUtils.GetSmpClassName(value), CommonUtils.GetSmpClassName(feature.Class.AliasName), this.ifeature_0, feature);
+                        cItem._dHorBase = (double)CommonUtils.GetPipeLineAlarmHrzDistByFeatureClassName2(_config,CommonUtils.GetSmpClassName(value), CommonUtils.GetSmpClassName(feature.Class.AliasName), this.ifeature_0, feature);
                         this.list_3.Add(cItem);
                         feature = featureCursor.NextFeature();
                     }
@@ -602,8 +609,9 @@ namespace Yutai.Pipeline.Analysis.Forms
             this.ipolyline_0 = null;
             if (this.ifeature_0 != null)
             {
-                int num = this.ifeature_0.Fields.FindField(this.string_1);
-                int num1 = this.ifeature_0.Fields.FindField(this.string_2);
+                IBasicLayerInfo layerInfo = _config.GetBasicLayerInfo(ifeature_0.Class.AliasName);
+                int num = this.ifeature_0.Fields.FindField(layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.GJ));
+                int num1 = this.ifeature_0.Fields.FindField(layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.DMCC));
                 if (this.ifeature_0.Fields.FindField(this.string_0) >= 0)
                 {
                     if ((num >= 0 ? true : num1 >= 0))
@@ -617,7 +625,8 @@ namespace Yutai.Pipeline.Analysis.Forms
                         {
                             this.double_0 = this.double_1;
                         }
-                        this.int_0 = this.m_app.PipeConfig.getLineConfig_HeightFlag(CommonUtils.GetSmpClassName(this.ifeatureClass_0.AliasName));
+                        //! 需要检查enum和这儿int_0的对应关系
+                        this.int_0 = (int) layerInfo.HeightType;
                     }
                 }
             }
@@ -678,24 +687,31 @@ namespace Yutai.Pipeline.Analysis.Forms
 
         private double method_15(IFeature feature, int num, out double double_2)
         {
-            double num1 = 0;
-            double_2 = 0;
-            string str = "";
+            double result = 0.0;
+            double_2 = 0.0;
+            string text = "";
             if (num > 0)
             {
                 object value = feature.get_Value(num);
                 if (!Convert.IsDBNull(value))
                 {
-                    str = Convert.ToString(value);
+                    text = Convert.ToString(value);
                 }
-                if ((str == null ? false : str.Length >= 1))
+                if (text != null && text.Length >= 1)
                 {
-                    string[] strArrays = str.Split(new char[] { 'x', 'X', 'Х', '×' });
-                    num1 = Convert.ToDouble(strArrays[0]);
-                    double_2 = Convert.ToDouble(strArrays[1]);
+                    char[] separator = new char[]
+                    {
+                'x',
+                'X',
+                'Х',
+                '×'
+                    };
+                    string[] array = text.Split(separator);
+                    result = Convert.ToDouble(array[0]);
+                    double_2 = Convert.ToDouble(array[1]);
                 }
             }
-            return num1;
+            return result;
         }
 
         private void method_16()
@@ -745,17 +761,23 @@ namespace Yutai.Pipeline.Analysis.Forms
             int num = -1;
             int num1 = -1;
             int num2 = -1;
+            if (feature == null) return;
+            IBasicLayerInfo layerInfo = _config.GetBasicLayerInfo(feature.Class.AliasName);
             if (feature != null)
             {
-                num = feature.Fields.FindField(this.string_1);
-                num1 = feature.Fields.FindField(this.string_2);
-                num2 = feature.Fields.FindField(this.string_0);
+                
+                num = feature.Fields.FindField(layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.GJ));
+                num1 = feature.Fields.FindField(layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.DMCC));
+                num2 = feature.Fields.FindField(layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.GDXZ));
+                //num = feature.Fields.FindField(this.string_1);
+                //num1 = feature.Fields.FindField(this.string_2);
+                //num2 = feature.Fields.FindField(this.string_0);
             }
             if (num2 >= 0)
             {
                 if ((num >= 0 ? true : num1 >= 0))
                 {
-                    int lineConfigHeightFlag = this.m_app.PipeConfig.getLineConfig_HeightFlag(CommonUtils.GetSmpClassName(feature.Class.AliasName));
+                    int lineConfigHeightFlag = (int) layerInfo.HeightType;// this.m_app.PipeConfig.getLineConfig_HeightFlag(CommonUtils.GetSmpClassName(feature.Class.AliasName));
                     while (feature != null)
                     {
                         IPolyline shape = feature.Shape as IPolyline;
@@ -827,7 +849,7 @@ namespace Yutai.Pipeline.Analysis.Forms
                                 {
                                     value = this.dictionary_0[value].ToString();
                                 }
-                                cItem._dVerBase = (double)CommonUtils.GetPipeLineAlarmVerDistByFeatureClassName(CommonUtils.GetSmpClassName(value), CommonUtils.GetSmpClassName(feature.Class.AliasName), str2, str1);
+                                cItem._dVerBase = (double)CommonUtils.GetPipeLineAlarmVerDistByFeatureClassName(_config,CommonUtils.GetSmpClassName(value), CommonUtils.GetSmpClassName(feature.Class.AliasName), str2, str1);
                                 this.list_4.Add(cItem);
                             }
                         }

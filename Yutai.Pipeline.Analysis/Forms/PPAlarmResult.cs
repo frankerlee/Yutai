@@ -9,8 +9,10 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using Yutai.PipeConfig;
+
 using Yutai.Pipeline.Analysis.Classes;
+using Yutai.Pipeline.Config.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.Forms
@@ -27,7 +29,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		public IMap Map;
 
-		public IPipeConfig pPipeCfg;
+		public IPipelineConfig pPipeCfg;
 
 		public string m_strLayerName = "";
 
@@ -46,13 +48,18 @@ namespace Yutai.Pipeline.Analysis.Forms
 			{
 				this.m_iApp = value;
 				this.Map = this.m_iApp.FocusMap;
-				this.pPipeCfg = this.m_iApp.PipeConfig;
+				
 			}
 		}
 
-	public PPAlarmResult()
+	    public IPipelineConfig _config;
+
+	    public PPAlarmResult(IAppContext context, IPipelineConfig config)
 		{
 			this.InitializeComponent();
+		    m_iApp = context;
+		    _config = config;
+
 		}
 
 		private void method_0(ILayer layer)
@@ -62,14 +69,17 @@ namespace Yutai.Pipeline.Analysis.Forms
 				IFeatureLayer featureLayer = layer as IFeatureLayer;
 				IFeatureClass featureClass = featureLayer.FeatureClass;
 				IFields fields = featureClass.Fields;
+			    IBasicLayerInfo layerInfo = _config.GetBasicLayerInfo(featureClass);
 				if (featureClass.ShapeType == (esriGeometryType) 1)
 				{
-					this.m_strBuildDate = this.pPipeCfg.GetPointTableFieldName("爆管次数");
-					this.pPipeCfg.GetPointTableFieldName("点性");
+                    //this.m_strBuildDate = this.pPipeCfg.GetPointTableFieldName("爆管次数");
+				    this.m_strBuildDate = layerInfo.GetFieldName(PipeConfigWordHelper.PointWords.SGYHDJ);
+                   
 				}
 				else
 				{
-					this.m_strBuildDate = this.pPipeCfg.GetLineTableFieldName("爆管次数");
+                    this.m_strBuildDate = layerInfo.GetFieldName(PipeConfigWordHelper.PointWords.SGYHDJ);
+                   // this.m_strBuildDate = this.pPipeCfg.GetLineTableFieldName("爆管次数");
 				}
 				int num = fields.FindField(this.m_strBuildDate);
 				if (num == -1)
@@ -79,7 +89,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 				else
 				{
 					IField field = fields.get_Field(num);
-					if (this.pPipeCfg.IsPipePoint(featureClass.AliasName) || this.pPipeCfg.IsPipeLine(featureClass.AliasName))
+					if (layerInfo!=null && (layerInfo.DataType == enumPipelineDataType.Point || layerInfo.DataType == enumPipelineDataType.Line))
 					{
 						DateTime now = DateTime.Now;
 						now.ToShortDateString();

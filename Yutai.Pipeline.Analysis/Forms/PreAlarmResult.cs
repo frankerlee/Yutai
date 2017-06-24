@@ -8,8 +8,10 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using Yutai.PipeConfig;
+
 using Yutai.Pipeline.Analysis.Classes;
+using Yutai.Pipeline.Config.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.Forms
@@ -26,7 +28,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		public IMapControl3 MapControl;
 
-		public IPipeConfig pPipeCfg;
+		public IPipelineConfig pPipeCfg;
 
 		public string m_strLayerName = "";
 
@@ -36,8 +38,8 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		public int m_nCurRowIndex;
 
-
-		public IFeatureLayer m_pCurLayer;
+	    public IPipelineConfig _config;
+        public IFeatureLayer m_pCurLayer;
 
 		public IAppContext App
 		{
@@ -45,13 +47,15 @@ namespace Yutai.Pipeline.Analysis.Forms
 			{
 				this.m_iApp = value;
 				this.MapControl = (IMapControl3) this.m_iApp.MapControl;
-				this.pPipeCfg = this.m_iApp.PipeConfig;
+				//this.pPipeCfg = this.m_iApp.PipeConfig;
 			}
 		}
 
-	public PreAlarmResult()
+	public PreAlarmResult(IAppContext context,IPipelineConfig config)
 		{
 			this.InitializeComponent();
+            m_iApp = context;
+		    _config = config;
 		}
 
 		private void method_0(ILayer layer)
@@ -62,15 +66,17 @@ namespace Yutai.Pipeline.Analysis.Forms
 				IFeatureClass featureClass = featureLayer.FeatureClass;
 				IFields fields = featureClass.Fields;
 				string text = "节点性质";
-				if (featureClass.ShapeType == (esriGeometryType) 1)
-				{
-					this.m_strBuildDate = this.pPipeCfg.GetPointTableFieldName("建设年代");
-					text = this.pPipeCfg.GetPointTableFieldName("点性");
-				}
+                IBasicLayerInfo layerInfo = _config.GetBasicLayerInfo(featureClass);
+                if (featureClass.ShapeType == (esriGeometryType) 1)
+                {
+                    this.m_strBuildDate = layerInfo.GetFieldName(PipeConfigWordHelper.PointWords.MSRQ);// this.pPipeCfg.GetPointTableFieldName("建设年代");
+					text = layerInfo.GetFieldName(PipeConfigWordHelper.PointWords.TZW);
+                }
 				else
-				{
-					this.m_strBuildDate = this.pPipeCfg.GetLineTableFieldName("建设年代");
-				}
+                {
+                    this.m_strBuildDate = layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.MSRQ);
+                        // this.pPipeCfg.GetLineTableFieldName("建设年代");
+                }
 				int num = fields.FindField(this.m_strBuildDate);
 				if (num == -1)
 				{
@@ -79,8 +85,8 @@ namespace Yutai.Pipeline.Analysis.Forms
 				else
 				{
 					IField field = fields.get_Field(num);
-					if (this.pPipeCfg.IsPipePoint(featureClass.AliasName) || this.pPipeCfg.IsPipeLine(featureClass.AliasName))
-					{
+                    if (layerInfo != null && (layerInfo.DataType == enumPipelineDataType.Point || layerInfo.DataType == enumPipelineDataType.Line))
+                    {
 						DateTime now = DateTime.Now;
 						now.ToShortDateString();
 						string text2 = now.AddYears(-1 * this.m_nExpireTime).ToShortDateString();

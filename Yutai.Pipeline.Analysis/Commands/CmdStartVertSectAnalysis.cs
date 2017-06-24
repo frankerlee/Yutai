@@ -22,10 +22,14 @@ namespace Yutai.Pipeline.Analysis.Commands
     {
         
         public SelectControl m_SectionControl;
-       
-        public CmdStartVertSectAnalysis(IAppContext context)
+
+        private PipelineAnalysisPlugin _plugin;
+
+
+        public CmdStartVertSectAnalysis(IAppContext context, PipelineAnalysisPlugin plugin)
         {
             OnCreate(context);
+            _plugin = plugin;
         }
 
         public override void OnClick()
@@ -161,7 +165,7 @@ namespace Yutai.Pipeline.Analysis.Commands
                 {
                     if (flag)
                     {
-                        SectionViewFrm sectionViewFrm = new SectionViewFrm(SectionViewFrm.SectionType.SectionTypeVersect, _context);
+                        SectionViewFrm sectionViewFrm = new SectionViewFrm(SectionViewFrm.SectionType.SectionTypeVersect, _context,_plugin.PipeConfig);
                         sectionViewFrm.GetSelectedData();
                         sectionViewFrm.ShowDialog();
                     }

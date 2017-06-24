@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using Yutai.Pipeline.Analysis.Classes;
 using Yutai.Pipeline.Analysis.Properties;
 
 namespace Yutai.Pipeline.Analysis.Forms
@@ -14,14 +15,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 		private IContainer icontainer_0 = null;
 
 
-
-
-
-
-
-
-
-
+        
 		private bool bool_0 = true;
 
 		private static Point point_2;
@@ -31,7 +25,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 			MagnifierForm.point_2 = System.Windows.Forms.Cursor.Position;
 		}
 
-		public MagnifierForm(Configuration configuration, Point startPoint)
+		public MagnifierForm(Yutai.Pipeline.Analysis.Classes.Configuration configuration, Point startPoint)
 		{
 			this.InitializeComponent();
 			this.configuration_0 = configuration;
@@ -43,7 +37,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 			GraphicsPath graphicsPath = new GraphicsPath();
 			graphicsPath.AddEllipse(base.ClientRectangle);
 			base.Region = new System.Drawing.Region(graphicsPath);
-			this.image_0 = Resources.magnifierGlass;
+			//this.image_0 = Resources.magnifierGlass;
 			this.timer_0 = new Timer()
 			{
 				Enabled = true,

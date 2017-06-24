@@ -21,6 +21,7 @@ namespace Yutai.Pipeline.Config.Concretes
         private esriFieldType _fieldType;
         private bool _allowNull;
         private string _fieldTypeStr;
+        private string _domainValues;
 
         public YTField() { }
         public YTField(XmlNode node) { ReadFromXml(node);}
@@ -73,6 +74,12 @@ namespace Yutai.Pipeline.Config.Concretes
             set { _allowNull = value; }
         }
 
+        public string DomainValues
+        {
+            get { return _domainValues; }
+            set { _domainValues = value; }
+        }
+
         public void ReadFromXml(XmlNode xml)
         {
             if (xml.Attributes != null)
@@ -86,6 +93,7 @@ namespace Yutai.Pipeline.Config.Concretes
                 _fieldTypeStr = xml.Attributes["FieldType"].Value;
                 _precision = string.IsNullOrWhiteSpace(xml.Attributes["Precision"].Value) ? 50: Convert.ToInt32(xml.Attributes["Precision"].Value);
                 _fieldType = FieldHelper.ConvertFromString(_fieldTypeStr);
+                _domainValues = xml.Attributes["DomainValues"].Value;
             }
         }
 
@@ -107,6 +115,9 @@ namespace Yutai.Pipeline.Config.Concretes
             XmlAttribute precisionAttribute = doc.CreateAttribute("Precision");
             precisionAttribute.Value = _precision.ToString();
 
+            XmlAttribute domainAttribute = doc.CreateAttribute("DomainValues");
+            domainAttribute.Value = _domainValues;
+
             fieldNode.Attributes.Append(typeNameAttribute);
             fieldNode.Attributes.Append(nameAttribute);
             fieldNode.Attributes.Append(aliasNameAttribute);
@@ -114,7 +125,7 @@ namespace Yutai.Pipeline.Config.Concretes
             fieldNode.Attributes.Append(allowNullAttribute);
             fieldNode.Attributes.Append(fieldTypeAttribute);
             fieldNode.Attributes.Append(precisionAttribute);
-
+            fieldNode.Attributes.Append(domainAttribute);
             return fieldNode;
         }
 

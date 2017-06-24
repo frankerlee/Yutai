@@ -6,7 +6,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
-using Yutai.PipeConfig;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.QueryForms
@@ -27,7 +27,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
 		public IAppContext m_context;
 
-		public IPipeConfig pPipeCfg;
+		public IPipelineConfig pPipeCfg;
 
 	public SimpleQueryByCmisUI()
 		{

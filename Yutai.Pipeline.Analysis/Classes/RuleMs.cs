@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using ESRI.ArcGIS.Geodatabase;
+using Yutai.Pipeline.Config.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.Classes
 {
@@ -9,9 +10,9 @@ namespace Yutai.Pipeline.Analysis.Classes
     {
         public TreeView tree = new TreeView();
 
-        public RuleMs()
+        public RuleMs(IPipelineConfig config)
         {
-            ITable table = ((IFeatureWorkspace)MaiShenAnalysis.m_app.Workspace).OpenTable("EMMETAPIPEDEPTH");
+            ITable table = ((IFeatureWorkspace)config.Workspace).OpenTable("EMMETAPIPEDEPTH");
             ICursor cursor = table.Search(null, false);
             IRow row = cursor.NextRow();
             while (row != null)

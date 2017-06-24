@@ -9,11 +9,15 @@
 
 using System.Collections.Generic;
 using ESRI.ArcGIS.Carto;
+using ESRI.ArcGIS.Geodatabase;
 
 namespace Yutai.Pipeline.Config.Interfaces
 {
     public interface IPipelineConfig
     {
+        string ConfigDatabaseName { get; set; }
+
+        IFeatureWorkspace Workspace { get; set; }
         List<IPipelineTemplate> Templates { get; set; }
         List<IPipelineLayer> Layers { get; set; }
         void LoadFromXml(string fileName);
@@ -24,6 +28,20 @@ namespace Yutai.Pipeline.Config.Interfaces
 
         void Save();
 
+        //! 通过对地图内图层的自动识别创建有关配置
         void LoadFromMap(IMap pMap);
+
+        //! 在读取配置文件后，需要通过链接Map来读取对应的图层，并关联有关事件
+        bool LinkMap(IMap pMap);
+
+        //! 依据名字来判断是否为符合要求的管线图层
+        bool IsPipelineLayer(string classAliasName);
+        bool IsPipelineLayer(string classAliasName, enumPipelineDataType dataType);
+        //! 依据FeatureLayer获取BaiscLayerInfo对象
+        IBasicLayerInfo GetBasicLayerInfo(IFeatureClass pClass);
+
+        IBasicLayerInfo GetBasicLayerInfo(string pClassAliasName);
+
+        IYTField GetSpecialField(string classAliasName, string typeWord);
     }
 }

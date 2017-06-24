@@ -16,6 +16,8 @@ namespace Yutai.Pipeline.Config.Interfaces
     public interface IBasicPipeLine
     {
         string TypeName { get; set; }
+        string HeightTypeName { get; set; }
+        enumPipelineHeightType HeightType { get; set; }
         IYTField NoField { get; set; }            // 编号字段
         IYTField SPointField { get; set; }        // 起点点号
         IYTField EPointField { get; set; }        // 终点点号

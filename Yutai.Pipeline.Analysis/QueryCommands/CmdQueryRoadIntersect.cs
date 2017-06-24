@@ -14,9 +14,11 @@ namespace Yutai.Pipeline.Analysis.QueryForms
         private QueryIntersectionUI QueryUI;
 
 
-        public CmdQueryRoadIntersect(IAppContext context)
+        private PipelineAnalysisPlugin _plugin;
+        public CmdQueryRoadIntersect(IAppContext context, PipelineAnalysisPlugin plugin)
         {
             OnCreate(context);
+            _plugin = plugin;
         }
 
         public override void OnClick()
@@ -26,7 +28,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             {
                 this.QueryUI = new QueryIntersectionUI();
                 this.QueryUI.m_MapControl = (IMapControl3)_context.MapControl;
-                this.QueryUI.m_pPipeCfg = _context.pPipeCfg;
+                this.QueryUI.m_pPipeCfg = _plugin.PipeConfig;
                 this.QueryUI.m_context = this._context;
                 this.QueryUI.Closing += new CancelEventHandler(this.QueryUI_Closing);
                 this.QueryUI.Show();

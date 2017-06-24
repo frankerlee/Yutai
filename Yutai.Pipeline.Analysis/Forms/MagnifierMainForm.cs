@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Resources;
+using System.Threading;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using Yutai.Pipeline.Analysis.Classes;
@@ -11,12 +12,168 @@ using Yutai.Pipeline.Analysis.Properties;
 
 namespace Yutai.Pipeline.Analysis.Forms
 {
-	public partial class MagnifierMainForm : XtraForm
+    internal class MagnifierEventClass
+    {
+        public delegate void Delegate2(object sender);
+
+        private Rectangle rectangle_0;
+
+        private MagnifierEventClass.Delegate2 delegate2_0;
+
+        private MagnifierEventClass.Delegate2 TyaPcGjAdg;
+
+        private MagnifierEventClass.Delegate2 delegate2_1;
+
+        public event MagnifierEventClass.Delegate2 Event_0
+        {
+            add
+            {
+                MagnifierEventClass.Delegate2 @delegate = this.delegate2_0;
+                MagnifierEventClass.Delegate2 delegate2;
+                do
+                {
+                    delegate2 = @delegate;
+                    MagnifierEventClass.Delegate2 value2 = (MagnifierEventClass.Delegate2)Delegate.Combine(delegate2, value);
+                    @delegate = Interlocked.CompareExchange<MagnifierEventClass.Delegate2>(ref this.delegate2_0, value2, delegate2);
+                }
+                while (@delegate != delegate2);
+            }
+            remove
+            {
+                MagnifierEventClass.Delegate2 @delegate = this.delegate2_0;
+                MagnifierEventClass.Delegate2 delegate2;
+                do
+                {
+                    delegate2 = @delegate;
+                    MagnifierEventClass.Delegate2 value2 = (MagnifierEventClass.Delegate2)Delegate.Remove(delegate2, value);
+                    @delegate = Interlocked.CompareExchange<MagnifierEventClass.Delegate2>(ref this.delegate2_0, value2, delegate2);
+                }
+                while (@delegate != delegate2);
+            }
+        }
+
+        public event MagnifierEventClass.Delegate2 Event_1
+        {
+            add
+            {
+                MagnifierEventClass.Delegate2 @delegate = this.TyaPcGjAdg;
+                MagnifierEventClass.Delegate2 delegate2;
+                do
+                {
+                    delegate2 = @delegate;
+                    MagnifierEventClass.Delegate2 value2 = (MagnifierEventClass.Delegate2)Delegate.Combine(delegate2, value);
+                    @delegate = Interlocked.CompareExchange<MagnifierEventClass.Delegate2>(ref this.TyaPcGjAdg, value2, delegate2);
+                }
+                while (@delegate != delegate2);
+            }
+            remove
+            {
+                MagnifierEventClass.Delegate2 @delegate = this.TyaPcGjAdg;
+                MagnifierEventClass.Delegate2 delegate2;
+                do
+                {
+                    delegate2 = @delegate;
+                    MagnifierEventClass.Delegate2 value2 = (MagnifierEventClass.Delegate2)Delegate.Remove(delegate2, value);
+                    @delegate = Interlocked.CompareExchange<MagnifierEventClass.Delegate2>(ref this.TyaPcGjAdg, value2, delegate2);
+                }
+                while (@delegate != delegate2);
+            }
+        }
+
+        public event MagnifierEventClass.Delegate2 Event_2
+        {
+            add
+            {
+                MagnifierEventClass.Delegate2 @delegate = this.delegate2_1;
+                MagnifierEventClass.Delegate2 delegate2;
+                do
+                {
+                    delegate2 = @delegate;
+                    MagnifierEventClass.Delegate2 value2 = (MagnifierEventClass.Delegate2)Delegate.Combine(delegate2, value);
+                    @delegate = Interlocked.CompareExchange<MagnifierEventClass.Delegate2>(ref this.delegate2_1, value2, delegate2);
+                }
+                while (@delegate != delegate2);
+            }
+            remove
+            {
+                MagnifierEventClass.Delegate2 @delegate = this.delegate2_1;
+                MagnifierEventClass.Delegate2 delegate2;
+                do
+                {
+                    delegate2 = @delegate;
+                    MagnifierEventClass.Delegate2 value2 = (MagnifierEventClass.Delegate2)Delegate.Remove(delegate2, value);
+                    @delegate = Interlocked.CompareExchange<MagnifierEventClass.Delegate2>(ref this.delegate2_1, value2, delegate2);
+                }
+                while (@delegate != delegate2);
+            }
+        }
+
+        public MagnifierEventClass(Rectangle rectangle)
+        {
+            this.rectangle_0 = rectangle;
+        }
+
+        public bool method_0(MouseEventArgs mouseEventArgs)
+        {
+            bool result;
+            if (!this.rectangle_0.Contains(mouseEventArgs.X, mouseEventArgs.Y))
+            {
+                result = false;
+            }
+            else
+            {
+                if (this.delegate2_0 != null)
+                {
+                    this.delegate2_0(this);
+                }
+                result = true;
+            }
+            return result;
+        }
+
+        public bool method_1(MouseEventArgs mouseEventArgs)
+        {
+            bool result;
+            if (!this.rectangle_0.Contains(mouseEventArgs.X, mouseEventArgs.Y))
+            {
+                result = false;
+            }
+            else
+            {
+                if (this.TyaPcGjAdg != null)
+                {
+                    this.TyaPcGjAdg(this);
+                }
+                result = true;
+            }
+            return result;
+        }
+
+        public bool method_2(MouseEventArgs mouseEventArgs)
+        {
+            bool result;
+            if (!this.rectangle_0.Contains(mouseEventArgs.X, mouseEventArgs.Y))
+            {
+                result = false;
+            }
+            else
+            {
+                if (this.delegate2_1 != null)
+                {
+                    this.delegate2_1(this);
+                }
+                result = true;
+            }
+            return result;
+        }
+    }
+
+    public partial class MagnifierMainForm : XtraForm
 	{
 		private string string_0 = "configData.xml";
 
 
-		private List<Class2> list_0 = new List<Class2>();
+		private List<MagnifierEventClass> list_0 = new List<MagnifierEventClass>();
 
 
 
@@ -30,19 +187,19 @@ namespace Yutai.Pipeline.Analysis.Forms
 			base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			base.TopMost = true;
 			base.StartPosition = FormStartPosition.CenterScreen;
-			this.image_0 = Resources.magControlPanel;
+			//this.image_0 = Resources.magControlPanel;
 			if (this.image_0 == null)
 			{
 				throw new Exception("Resource cannot be found!");
 			}
 			base.Width = this.image_0.Width;
 			base.Height = this.image_0.Height;
-			Class2 class2 = new Class2(new Rectangle(10, 15, 30, 30));
-			class2.Event_1 += new Class2.Delegate2(this.method_7);
-			class2.Event_0 += new Class2.Delegate2(this.method_6);
-			class2.Event_2 += new Class2.Delegate2(this.method_5);
-			Class2 class21 = new Class2(new Rectangle(50, 15, 35, 30));
-			class21.Event_2 += new Class2.Delegate2(this.method_8);
+            MagnifierEventClass class2 = new MagnifierEventClass(new Rectangle(10, 15, 30, 30));
+			class2.Event_1 += new MagnifierEventClass.Delegate2(this.method_7);
+			class2.Event_0 += new MagnifierEventClass.Delegate2(this.method_6);
+			class2.Event_2 += new MagnifierEventClass.Delegate2(this.method_5);
+            MagnifierEventClass class21 = new MagnifierEventClass(new Rectangle(50, 15, 35, 30));
+			class21.Event_2 += new MagnifierEventClass.Delegate2(this.method_8);
 			this.list_0.Add(class2);
 			this.list_0.Add(class21);
 			base.ShowInTaskbar = false;
@@ -105,10 +262,10 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		protected override void OnMouseDown(MouseEventArgs e)
 		{
-			Class2 current;
+            MagnifierEventClass current;
 			this.point_0 = new Point(e.X, e.Y);
 			this.point_1 = System.Windows.Forms.Cursor.Position;
-			List<Class2>.Enumerator enumerator = this.list_0.GetEnumerator();
+			List<MagnifierEventClass>.Enumerator enumerator = this.list_0.GetEnumerator();
 			try
 			{
 				do
@@ -129,7 +286,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		protected override void OnMouseMove(MouseEventArgs e)
 		{
-			foreach (Class2 list0 in this.list_0)
+			foreach (MagnifierEventClass list0 in this.list_0)
 			{
 				if (!list0.method_1(e))
 				{
@@ -154,8 +311,8 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		protected override void OnMouseUp(MouseEventArgs e)
 		{
-			Class2 current;
-			List<Class2>.Enumerator enumerator = this.list_0.GetEnumerator();
+            MagnifierEventClass current;
+			List<MagnifierEventClass>.Enumerator enumerator = this.list_0.GetEnumerator();
 			try
 			{
 				do

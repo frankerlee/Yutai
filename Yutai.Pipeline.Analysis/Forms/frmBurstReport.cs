@@ -10,8 +10,10 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using ESRI.ArcGIS.NetworkAnalysis;
+using Yutai.ArcGIS.Common;
 using Yutai.Pipeline.Analysis.Classes;
 using Yutai.Pipeline.Analysis.Helpers;
+using Yutai.Pipeline.Config.Helpers;
 using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
@@ -19,34 +21,34 @@ namespace Yutai.Pipeline.Analysis.Forms
 {
 	public partial class frmBurstReport : Form
 	{
-		private struct Struct0
+		private struct NearestEdgeInfo
 		{
-			public IGeometricNetwork igeometricNetwork_0;
+			public IGeometricNetwork GeometricNetwork;
 
-			public int int_0;
+			public int EdgeID;
 
-			public IPoint ipoint_0;
+			public IPoint Location;
 
-			public double double_0;
+			public double Percent;
 		}
 
-		private struct Struct1
+		private struct NetworkInfo
 		{
-			public IFeatureLayer ifeatureLayer_0;
+			public IFeatureLayer LayerLine;
 
-			public IFeatureLayer ifeatureLayer_1;
+			public IFeatureLayer LayerPoint;
 
-			public IFeature ifeature_0;
+			public IFeature LineFeature;
 
 			public ArrayList arrayList_0;
 
 			public ArrayList arrayList_1;
 
-			public Struct1(IFeatureLayer featureLayer, IFeatureLayer featureLayer2, IFeature feature, ArrayList arrayList, ArrayList arrayList2)
+			public NetworkInfo(IFeatureLayer featureLayer, IFeatureLayer featureLayer2, IFeature feature, ArrayList arrayList, ArrayList arrayList2)
 			{
-				this.ifeatureLayer_0 = featureLayer;
-				this.ifeatureLayer_1 = featureLayer2;
-				this.ifeature_0 = feature;
+				this.LayerLine = featureLayer;
+				this.LayerPoint = featureLayer2;
+				this.LineFeature = feature;
 				this.arrayList_0 = arrayList;
 				this.arrayList_1 = arrayList2;
 			}
@@ -60,9 +62,9 @@ namespace Yutai.Pipeline.Analysis.Forms
 	    public IPipelineConfig m_Config;
 
 
-		private frmBurstReport.Struct0 struct0_0 = default(frmBurstReport.Struct0);
+		private frmBurstReport.NearestEdgeInfo _nearestEdgeInfo = default(frmBurstReport.NearestEdgeInfo);
 
-		private frmBurstReport.Struct1 struct1_0 = new frmBurstReport.Struct1(null, null, null, new ArrayList(), new ArrayList());
+		private frmBurstReport.NetworkInfo _networkInfo = new frmBurstReport.NetworkInfo(null, null, null, new ArrayList(), new ArrayList());
 
 
 		public int m_nTimerCounter;
@@ -72,7 +74,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 		{
 		    IQueryFilter queryFilter = new QueryFilter();
 			ArrayList arrayList = new ArrayList();
-			frmBurstReport.GetValues(arrayList);
+			GetValues(arrayList);
 			for (int i = 0; i < this.listFieldValues.Items.Count; i++)
 			{
 				if (i > 0)
@@ -111,9 +113,9 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		public ISelectionSetBarriers GetSelectionSetBarries()
 		{
-			int featureClassID = this.struct1_0.ifeatureLayer_1.FeatureClass.FeatureClassID;
+			int featureClassID = this._networkInfo.LayerPoint.FeatureClass.FeatureClassID;
 		    ISelectionSetBarriers selectionSetBarriers = new SelectionSetBarriers();
-			IFeatureSelection featureSelection = (IFeatureSelection)this.struct1_0.ifeatureLayer_1;
+			IFeatureSelection featureSelection = (IFeatureSelection)this._networkInfo.LayerPoint;
 			IQueryFilter barrierQuery = this.GetBarrierQuery();
 			featureSelection.SelectFeatures(barrierQuery, 0, false);
 			IEnumIDs iDs = featureSelection.SelectionSet.IDs;
@@ -130,17 +132,17 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		public ITraceFlowSolver GetTraceFlowSolver()
 		{
-			INetElements netElements = (INetElements)this.struct0_0.igeometricNetwork_0.Network;
+			INetElements netElements = (INetElements)this._nearestEdgeInfo.GeometricNetwork.Network;
 			int userClassID = 0;
 			int userID = 0;
 			int userSubID = 0;
-			netElements.QueryIDs(this.struct0_0.int_0, (esriElementType) 2, out userClassID, out userID, out userSubID);
+			netElements.QueryIDs(this._nearestEdgeInfo.EdgeID, esriElementType.esriETEdge, out userClassID, out userID, out userSubID);
 		    IEdgeFlag edgeFlag = new EdgeFlag();
 			((INetFlag)edgeFlag).UserClassID=(userClassID);
 			((INetFlag)edgeFlag).UserID=(userID);
 			((INetFlag)edgeFlag).UserSubID=(userSubID);
 		    ITraceFlowSolver traceFlowSolver = (ITraceFlowSolver) new TraceFlowSolver();
-			((INetSolver)traceFlowSolver).SourceNetwork=(this.struct0_0.igeometricNetwork_0.Network);
+			((INetSolver)traceFlowSolver).SourceNetwork=(this._nearestEdgeInfo.GeometricNetwork.Network);
 			((INetSolver)traceFlowSolver).SelectionSetBarriers=(this.GetSelectionSetBarries());
 			traceFlowSolver.PutEdgeOrigins(1, ref edgeFlag);
 			return traceFlowSolver;
@@ -155,19 +157,25 @@ namespace Yutai.Pipeline.Analysis.Forms
 		{
 			ArrayList arrayList = new ArrayList();
 			CMapOperator.GetMapILayers(m_iApp.FocusMap, null, arrayList);
-			string pointTableFieldName = m_Config.GetPointTableFieldName("点性");
-			this.label1.Text = pointTableFieldName;
+			//string pointTableFieldName = m_Config.GetPointTableFieldName("点性");
+			//this.label1.Text = pointTableFieldName;
 			for (int i = 0; i < arrayList.Count; i++)
 			{
 				IFeatureLayer featureLayer = arrayList[i] as IFeatureLayer;
-				if (featureLayer != null && featureLayer.FeatureClass != null && m_Config.IsPipePoint(featureLayer.FeatureClass.AliasName))
+			    if (featureLayer == null || featureLayer.FeatureClass == null) continue;
+                if (featureLayer.FeatureClass.ShapeType != esriGeometryType.esriGeometryPoint) continue;
+
+                //! 在这儿修改判断条件，判断图层为点图层而且为管线点图层的方式需要做修改
+			    IBasicLayerInfo pipePoint = m_Config.GetBasicLayerInfo(featureLayer.FeatureClass.AliasName) as IBasicLayerInfo;
+
+                if (pipePoint!=null)
 				{
 					IFeatureClass featureClass = featureLayer.FeatureClass;
-					//new QueryFilter()
-					int num = featureClass.Fields.FindField(pointTableFieldName);
+                    this.label1.Text = pipePoint.GetFieldName(PipeConfigWordHelper.PointWords.TZW);
+                    int num = featureClass.Fields.FindField(pipePoint.GetFieldName(PipeConfigWordHelper.PointWords.TZW));
 					if (num != -1)
 					{
-						ArrayList uVByQueryDef = this.GetUVByQueryDef(featureLayer, pointTableFieldName);
+						ArrayList uVByQueryDef = this.GetUVByQueryDef(featureLayer, pipePoint.GetFieldName(PipeConfigWordHelper.PointWords.TZW));
 						for (int j = 0; j < uVByQueryDef.Count; j++)
 						{
 							string text = uVByQueryDef[j].ToString();
@@ -184,9 +192,9 @@ namespace Yutai.Pipeline.Analysis.Forms
 			{
 				this.comboBox1.SelectedIndex = 0;
 			}
-			this.label1.Text = pointTableFieldName;
+			
 			ArrayList arrayList2 = new ArrayList();
-			frmBurstReport.GetValues(arrayList2);
+			GetValues(arrayList2);
 			for (int j = 0; j < arrayList2.Count; j++)
 			{
 				this.listFieldValues.Items.Add(arrayList2[j].ToString());
@@ -230,7 +238,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 					this.listOutBarriers.Items.Clear();
 					if (this.PickBrokePipe(pMousePoint))
 					{
-						this.method_0();
+						this.InitBrokePoint();
 						this.btnStartAnalysis_Click(null, null);
 					}
 				}
@@ -244,19 +252,19 @@ namespace Yutai.Pipeline.Analysis.Forms
 			}
 			this.Cursor = Cursors.Default;
 		}
-
+        //! 通过点击获取需要分析的管线
 		public bool PickBrokePipe(IPoint _pMousePoint)
 		{
-			this.method_1();
+			this.InitClick();
 			this.ipoint_0 = _pMousePoint;
 			bool flag = false;
 			double num = 2147483647.0;
 			ArrayList arrayList = new ArrayList();
-			frmBurstReport.GetMapVisibleILayers(m_iApp.FocusMap, null, arrayList);
+			GetMapVisibleILayers(m_iApp.FocusMap, null, arrayList);
 			for (int i = 0; i < arrayList.Count; i++)
 			{
 				IFeatureLayer featureLayer = arrayList[i] as IFeatureLayer;
-				if (featureLayer != null && featureLayer.FeatureClass != null && featureLayer.Visible && m_Config.IsPipeLine(featureLayer.FeatureClass.AliasName))
+				if (featureLayer != null && featureLayer.FeatureClass != null && featureLayer.Visible && m_Config.IsPipelineLayer(featureLayer.Name, enumPipelineDataType.Line))
 				{
 					IFeatureDataset featureDataset = featureLayer.FeatureClass.FeatureDataset;
 					IFeatureClassContainer featureClassContainer = featureDataset as IFeatureClassContainer;
@@ -268,17 +276,17 @@ namespace Yutai.Pipeline.Analysis.Forms
 						pointToEIDClass.SourceMap=(m_iApp.FocusMap);
 						pointToEIDClass.GeometricNetwork=(geometricNetwork);
 						pointToEIDClass.SnapTolerance=(m_iApp.ActiveView.Extent.Width / 200.0);
-						int int_ = 0;
-						IPoint point = null;
-						double num2 = 0;
-						pointToEIDClass.GetNearestEdge(this.ipoint_0, out int_, out point, out num2);
-						if (point != null && num > num2)
+						int edgeID = 0;
+						IPoint location = null;
+						double percent = 0;
+						pointToEIDClass.GetNearestEdge(this.ipoint_0, out edgeID, out location, out percent);
+						if (location != null && num > percent)
 						{
-							num = num2;
-							this.struct0_0.igeometricNetwork_0 = geometricNetwork;
-							this.struct0_0.double_0 = num2;
-							this.struct0_0.int_0 = int_;
-							this.struct0_0.ipoint_0 = point;
+							num = percent;
+							this._nearestEdgeInfo.GeometricNetwork = geometricNetwork;
+							this._nearestEdgeInfo.Percent = percent;
+							this._nearestEdgeInfo.EdgeID = edgeID;
+							this._nearestEdgeInfo.Location = location;
 							flag = true;
 						}
 					}
@@ -287,84 +295,62 @@ namespace Yutai.Pipeline.Analysis.Forms
 			arrayList.Clear();
 			if (flag)
 			{
-				this.method_3();
+				this.DrawBrokeEdge();
 			}
 			return flag;
 		}
 
-		private void method_0()
+		private void InitBrokePoint()
 		{
-            int num;
-            int num1;
-            int num2;
-            IFeatureClassContainer featureDataset = (IFeatureClassContainer)this.struct0_0.igeometricNetwork_0.FeatureDataset;
-            IFeatureClass featureClass = null;
-            IFeatureClass featureClass1 = null;
+            int userClassID;
+            int userID;
+            int userSubID;
+            IFeatureClassContainer featureDataset = (IFeatureClassContainer)this._nearestEdgeInfo.GeometricNetwork.FeatureDataset;
+            IFeatureClass pointClass = null;
+            IFeatureClass lineClass = null;
             int num3 = 0;
-            while (true)
+            for(int i=0;i<featureDataset.ClassCount;i++)
             {
-                if (num3 < featureDataset.ClassCount)
-                {
-                    IFeatureClass pclass = featureDataset.Class[num3];
+                    IFeatureClass pclass = featureDataset.Class[i];
                     if ((pclass.ShapeType != esriGeometryType.esriGeometryPoint ? false : !pclass.AliasName.Contains("Junctions")))
                     {
-                        featureClass = pclass;
+                        pointClass = pclass;
                         break;
                     }
-                    else
-                    {
-                        num3++;
-                    }
-                }
-                else
-                {
-                    break;
-                }
             }
-            int num4 = 0;
-            while (true)
+            for (int i = 0; i < featureDataset.ClassCount; i++)
             {
-                if (num4 < featureDataset.ClassCount)
+                IFeatureClass pclass = featureDataset.Class[i];
+
+                if (pclass.ShapeType == esriGeometryType.esriGeometryPolyline)
                 {
-                    IFeatureClass class1 = featureDataset.Class[num4];
-                    if (class1.ShapeType == esriGeometryType.esriGeometryPolyline)
-                    {
-                        featureClass1 = class1;
-                        break;
-                    }
-                    else
-                    {
-                        num4++;
-                    }
-                }
-                else
-                {
+                    lineClass = pclass;
                     break;
                 }
             }
-            this.struct1_0.ifeatureLayer_0 = CMapOperator.GetILayerByAliasName(m_iApp.FocusMap, null, featureClass1.AliasName) as IFeatureLayer;
-            this.struct1_0.ifeatureLayer_1 = CMapOperator.GetILayerByAliasName(m_iApp.FocusMap, null, featureClass.AliasName) as IFeatureLayer;
-            INetElements network = (INetElements)this.struct0_0.igeometricNetwork_0.Network;
-            network.QueryIDs(this.struct0_0.int_0, esriElementType.esriETEdge, out num, out num1, out num2);
-            this.struct1_0.ifeature_0 = featureClass1.GetFeature(num1);
+            this._networkInfo.LayerLine = MapHelper.FindFeatureLayerByFCName(m_iApp.FocusMap as IBasicMap, ((IDataset)lineClass).Name,false) as IFeatureLayer;
+            this._networkInfo.LayerPoint = MapHelper.FindFeatureLayerByFCName(m_iApp.FocusMap as IBasicMap, ((IDataset)pointClass).Name, false) as IFeatureLayer;
+            INetElements network = (INetElements)this._nearestEdgeInfo.GeometricNetwork.Network;
+            network.QueryIDs(this._nearestEdgeInfo.EdgeID, esriElementType.esriETEdge, out userClassID, out userID, out userSubID);
+            this._networkInfo.LineFeature = lineClass.GetFeature(userID);
             Label label = this.lblPickPipeInfo;
-            string[] name = new string[] { this.struct1_0.ifeatureLayer_0.Name, ",", featureClass1.OIDFieldName, "=", num1.ToString() };
+            string[] name = new string[] { this._networkInfo.LayerLine.Name, ",", lineClass.OIDFieldName, "=", userID.ToString() };
             label.Text = string.Concat(name);
-            string.Format("\r\n爆管点位置({0:f2},{1:f2},{2:f2})", this.struct0_0.ipoint_0.X, this.struct0_0.ipoint_0.Y, this.struct0_0.ipoint_0.Z);
+            string.Format("\r\n爆管点位置({0:f2},{1:f2},{2:f2})", this._nearestEdgeInfo.Location.X, this._nearestEdgeInfo.Location.Y, this._nearestEdgeInfo.Location.Z);
         }
 
-		private void method_1()
+		private void InitClick()
 		{
 			this.ipoint_0 = null;
-			this.struct0_0.igeometricNetwork_0 = null;
-			this.struct0_0.ipoint_0 = null;
-			this.struct0_0.int_0 = 0;
-			this.struct0_0.double_0 = 2147483647.0;
-			this.struct1_0.arrayList_1.Clear();
-			this.struct1_0.ifeature_0 = null;
-			this.struct1_0.ifeatureLayer_0 = null;
-			this.struct1_0.ifeatureLayer_1 = null;
-			this.struct1_0.arrayList_0.Clear();
+			this._nearestEdgeInfo.GeometricNetwork = null;
+			this._nearestEdgeInfo.Location = null;
+			this._nearestEdgeInfo.EdgeID = 0;
+			this._nearestEdgeInfo.Percent = 2147483647.0;
+			this._networkInfo.arrayList_1.Clear();
+			this._networkInfo.LineFeature = null;
+			this._networkInfo.LayerLine = null;
+			this._networkInfo.LayerPoint = null;
+			this._networkInfo.arrayList_0.Clear();
 			this.treeView1.Nodes.Clear();
 			this.listView1.Items.Clear();
 		}
@@ -380,7 +366,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 					{
 						if (layer is IGroupLayer)
 						{
-							frmBurstReport.GetMapVisibleILayers(XMap, layer, Layers);
+							GetMapVisibleILayers(XMap, layer, Layers);
 						}
 						else
 						{
@@ -409,7 +395,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 			}
 		}
 
-		private void method_2(IFeature feature)
+		private void FillListView(IFeature feature)
 		{
 			if (feature != null)
 			{
@@ -460,8 +446,8 @@ namespace Yutai.Pipeline.Analysis.Forms
 						}
 						else if (treeViewHitTestInfo.Node.Parent.Text.Trim() == "爆管的线路")
 						{
-							this.method_2(this.struct1_0.ifeature_0);
-							this.BuoawIbkuD = this.struct1_0.ifeature_0.Shape;
+							this.FillListView(this._networkInfo.LineFeature);
+							this.BuoawIbkuD = this._networkInfo.LineFeature.Shape;
 							this.ScaleToGeo(m_iApp.ActiveView, this.BuoawIbkuD);
 							this.timer_0.Start();
 							this.m_nTimerCounter = 0;
@@ -469,13 +455,13 @@ namespace Yutai.Pipeline.Analysis.Forms
 						}
 						else if (treeViewHitTestInfo.Node.Parent.Text.Trim() == "受影响的阀门")
 						{
-							for (int i = 0; i <= this.struct1_0.arrayList_0.Count - 1; i++)
+							for (int i = 0; i <= this._networkInfo.arrayList_0.Count - 1; i++)
 							{
-								IFeature feature = (IFeature)this.struct1_0.arrayList_0[i];
+								IFeature feature = (IFeature)this._networkInfo.arrayList_0[i];
 								if (feature.OID == (int)Convert.ToInt16(treeViewHitTestInfo.Node.Text))
 								{
 									this.BuoawIbkuD = feature.Shape;
-									this.method_2(feature);
+									this.FillListView(feature);
 									this.ScaleToGeo(m_iApp.ActiveView , this.BuoawIbkuD);
 									this.timer_0.Start();
 									this.m_nTimerCounter = 0;
@@ -519,20 +505,20 @@ namespace Yutai.Pipeline.Analysis.Forms
 		public void PickThroughValve(IPoint _pMousePoint)
 		{
 			IPointToEID pointToEIDClass = new PointToEID();
-			pointToEIDClass.GeometricNetwork=(this.struct0_0.igeometricNetwork_0);
+			pointToEIDClass.GeometricNetwork=(this._nearestEdgeInfo.GeometricNetwork);
 			pointToEIDClass.SourceMap=(m_iApp.FocusMap);
 			pointToEIDClass.SnapTolerance=(m_iApp.ActiveView.Extent.Width / 200.0);
-			int num = 0;
-			IPoint point = null;
-			pointToEIDClass.GetNearestJunction(_pMousePoint, out num, out point);
-			if (point != null)
+			int junctionEID = 0;
+			IPoint location = null;
+			pointToEIDClass.GetNearestJunction(_pMousePoint, out junctionEID, out location);
+			if (location != null)
 			{
-				INetElements netElements = (INetElements)this.struct0_0.igeometricNetwork_0.Network;
-				int num2;
-				int num3;
-				int num4;
-				netElements.QueryIDs(num, (esriElementType) 1, out num2, out num3, out num4);
-				IFeature feature = this.struct1_0.ifeatureLayer_1.FeatureClass.GetFeature(num3);
+				INetElements netElements = (INetElements)this._nearestEdgeInfo.GeometricNetwork.Network;
+				int userClassID;
+				int userID;
+				int userSubID;
+				netElements.QueryIDs(junctionEID, esriElementType.esriETJunction,out userClassID, out userID, out userSubID);
+				IFeature feature = this._networkInfo.LayerPoint.FeatureClass.GetFeature(userID);
 				this.listOutBarriers.Items.Add(feature.OID.ToString());
 			}
 		}
@@ -547,22 +533,22 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		private void btnStartAnalysis_Click(object obj, EventArgs eventArgs)
 		{
-			if (this.struct0_0.igeometricNetwork_0 != null)
+			if (this._nearestEdgeInfo.GeometricNetwork != null)
 			{
-				this.struct1_0.arrayList_1.Clear();
-				this.struct1_0.arrayList_0.Clear();
-				INetElements netElements = (INetElements)this.struct0_0.igeometricNetwork_0.Network;
+				this._networkInfo.arrayList_1.Clear();
+				this._networkInfo.arrayList_0.Clear();
+				INetElements netElements = (INetElements)this._nearestEdgeInfo.GeometricNetwork.Network;
 				ITraceFlowSolver traceFlowSolver = this.GetTraceFlowSolver();
-				IEnumNetEID enumNetEID;
-				IEnumNetEID enumNetEID2;
-				traceFlowSolver.FindFlowEndElements(this.GetFindMethod(), 0, out enumNetEID, out enumNetEID2);
+				IEnumNetEID junctionEIDs;
+				IEnumNetEID edgeEIDs;
+			    traceFlowSolver.FindFlowEndElements(this.GetFindMethod(), esriFlowElements.esriFEJunctions,out junctionEIDs, out edgeEIDs);
 				int num;
 				int num2;
 				int num3;
-				for (int i = enumNetEID.Next(); i > 0; i = enumNetEID.Next())
+				for (int i = junctionEIDs.Next(); i > 0; i = junctionEIDs.Next())
 				{
 					netElements.QueryIDs(i, (esriElementType) 1, out num, out num2, out num3);
-					IFeature feature = this.struct1_0.ifeatureLayer_1.FeatureClass.GetFeature(num2);
+					IFeature feature = this._networkInfo.LayerPoint.FeatureClass.GetFeature(num2);
 					int num4 = feature.Fields.FindField(this.label1.Text);
 					if (num4 == -1)
 					{
@@ -570,20 +556,20 @@ namespace Yutai.Pipeline.Analysis.Forms
 					}
 					if (this.listFieldValues.Items.IndexOf(feature.get_Value(num4)) != -1)
 					{
-						this.struct1_0.arrayList_0.Add(feature);
+						this._networkInfo.arrayList_0.Add(feature);
 					}
 				}
-				traceFlowSolver.FindFlowElements(this.GetFindMethod(), (esriFlowElements) 1, out enumNetEID, out enumNetEID2);
-				for (int i = enumNetEID2.Next(); i > 0; i = enumNetEID2.Next())
+				traceFlowSolver.FindFlowElements(this.GetFindMethod(), (esriFlowElements) 1, out junctionEIDs, out edgeEIDs);
+				for (int i = edgeEIDs.Next(); i > 0; i = edgeEIDs.Next())
 				{
 					netElements.QueryIDs(i, (esriElementType) 2, out num, out num2, out num3);
-					IFeature feature2 = this.struct1_0.ifeatureLayer_0.FeatureClass.GetFeature(num2);
-					this.struct1_0.arrayList_1.Add(feature2);
+					IFeature feature2 = this._networkInfo.LayerLine.FeatureClass.GetFeature(num2);
+					this._networkInfo.arrayList_1.Add(feature2);
 				}
 				m_iApp.FocusMap.ClearSelection();
-				this.method_4();
-				this.method_5();
-				this.method_7();
+				this.CreateResultElements();
+				this.CreateBlockElements();
+				this.FillResultToTreeView();
 			}
 		}
 
@@ -598,7 +584,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 			}
 		}
 
-		private void method_3()
+		private void DrawBrokeEdge()
 		{
 			IMarkerSymbol markerSymbol = new SimpleMarkerSymbol();
 			IMarkerSymbol arg_2B_0 = markerSymbol;
@@ -611,20 +597,20 @@ namespace Yutai.Pipeline.Analysis.Forms
 			IScreenDisplay screenDisplay = m_iApp.ActiveView.ScreenDisplay;
 			screenDisplay.StartDrawing(screenDisplay.hDC, 0);
 			screenDisplay.SetSymbol((ISymbol)markerSymbol);
-			screenDisplay.DrawPoint(this.struct0_0.ipoint_0);
+			screenDisplay.DrawPoint(this._nearestEdgeInfo.Location);
 			screenDisplay.FinishDrawing();
 		}
 
-		private void method_4()
+		private void CreateResultElements()
 		{
 			IGeometryCollection geometryCollection = new GeometryBag() as IGeometryCollection;
-			for (int i = 0; i < this.struct1_0.arrayList_1.Count; i++)
+			for (int i = 0; i < this._networkInfo.arrayList_1.Count; i++)
 			{
 				object missing = Type.Missing;
-				IFeature feature = (IFeature)this.struct1_0.arrayList_1[i];
+				IFeature feature = (IFeature)this._networkInfo.arrayList_1[i];
 				geometryCollection.AddGeometry(feature.ShapeCopy, ref missing, ref missing);
 			}
-			if (this.struct1_0.arrayList_1.Count > 0)
+			if (this._networkInfo.arrayList_1.Count > 0)
 			{
 				IRgbColor rgbColor = new RgbColor();
 				rgbColor.Red=(255);
@@ -650,19 +636,19 @@ namespace Yutai.Pipeline.Analysis.Forms
 			}
 		}
 
-		private void method_5()
+		private void CreateBlockElements()
 		{
 			IGeometryCollection geometryCollection = new Multipoint() as IGeometryCollection;
-			for (int i = 0; i < this.struct1_0.arrayList_0.Count; i++)
+			for (int i = 0; i < this._networkInfo.arrayList_0.Count; i++)
 			{
 				object missing = Type.Missing;
-				IFeature feature = (IFeature)this.struct1_0.arrayList_0[i];
+				IFeature feature = (IFeature)this._networkInfo.arrayList_0[i];
 				geometryCollection.AddGeometry(feature.ShapeCopy, ref missing, ref missing);
 			}
-			if (this.struct1_0.arrayList_0.Count > 0)
+			if (this._networkInfo.arrayList_0.Count > 0)
 			{
 				IGraphicsContainer graphicsContainer = (IGraphicsContainer)m_iApp.ActiveView;
-				IMarkerSymbol markerSymbol = this.method_6();
+				IMarkerSymbol markerSymbol = this.GetMarkerSymbol();
 				markerSymbol.Size=(26.0);
 				for (int j = 0; j < geometryCollection.GeometryCount; j++)
 				{
@@ -676,7 +662,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 			}
 		}
 
-		private IMarkerSymbol method_6()
+		private IMarkerSymbol GetMarkerSymbol()
 		{
             IMarkerSymbol markerSymbol;
             IStyleGallery serverStyleGalleryClass = new ServerStyleGallery();
@@ -721,18 +707,18 @@ namespace Yutai.Pipeline.Analysis.Forms
             return markerSymbol;
         }
 
-		private void method_7()
+		private void FillResultToTreeView()
 		{
 			this.treeView1.Nodes.Clear();
 			TreeNode treeNode = this.treeView1.Nodes.Add("爆管的线路");
-			TreeNode treeNode2 = treeNode.Nodes.Add(this.struct1_0.ifeature_0.OID.ToString());
-			treeNode2.Tag = this.struct1_0.ifeature_0;
+			TreeNode treeNode2 = treeNode.Nodes.Add(this._networkInfo.LineFeature.OID.ToString());
+			treeNode2.Tag = this._networkInfo.LineFeature;
 			this.treeView1.SelectedNode = treeNode2;
 			treeNode.Expand();
 			TreeNode treeNode3 = this.treeView1.Nodes.Add("受影响的阀门");
-			for (int i = 0; i < this.struct1_0.arrayList_0.Count; i++)
+			for (int i = 0; i < this._networkInfo.arrayList_0.Count; i++)
 			{
-				IFeature feature = (IFeature)this.struct1_0.arrayList_0[i];
+				IFeature feature = (IFeature)this._networkInfo.arrayList_0[i];
 				TreeNode treeNode4 = treeNode3.Nodes.Add(feature.OID.ToString());
 				treeNode4.Tag = feature;
 			}
@@ -762,11 +748,17 @@ namespace Yutai.Pipeline.Analysis.Forms
 		{
 		}
 
-		public static void GetValues(ArrayList Values)
+		public  void GetValues(ArrayList Values)
 		{
 			Values.Clear();
-			string text = CRegOperator.GetRegistryKey().GetValue("节点性质字段值", "").ToString();
-			for (int num = text.IndexOf("/"); num != -1; num = text.IndexOf("/"))
+		    IBasicLayerInfo pipePoint =
+                m_Config.GetBasicLayerInfo(this._networkInfo.LayerPoint.FeatureClass.AliasName) as IBasicLayerInfo;
+
+            //IPipePoint pipePoint = m_Config.GetSubLayer(this._networkInfo.LayerPoint, enumPipelineDataType.Point) as IPipePoint;
+
+            //string text = CRegOperator.GetRegistryKey().GetValue("节点性质字段值", "").ToString();
+		    string text = pipePoint.GetField(PipeConfigWordHelper.PointWords.TZW).DomainValues;
+            for (int num = text.IndexOf("/"); num != -1; num = text.IndexOf("/"))
 			{
 				Values.Add(text.Substring(0, num));
 				text = text.Substring(num + 1, text.Length - num - 1);

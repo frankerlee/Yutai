@@ -7,9 +7,9 @@ using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
-using Yutai.PipeConfig;
+
 using Yutai.Plugins.Interfaces;
-using QueryResult = Yutai.Pipeline.Analysis.QueryForms.QueryResult;
+
 
 namespace Yutai.Pipeline.Analysis.QueryForms
 {

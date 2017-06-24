@@ -9,17 +9,16 @@ namespace Yutai.Pipeline.Analysis.Commands
 {
     class CmdMaiShenAnalysis : YutaiCommand
     {
+        private PipelineAnalysisPlugin _plugin;
 
-      
-
-        public CmdMaiShenAnalysis(IAppContext context)
+        public CmdMaiShenAnalysis(IAppContext context,PipelineAnalysisPlugin plugin)
         {
             OnCreate(context);
         }
 
         public override void OnClick()
         {
-            FormMaiShenAnalysis formMaiShenAnalysis = new FormMaiShenAnalysis(_context);
+            FormMaiShenAnalysis formMaiShenAnalysis = new FormMaiShenAnalysis(_context, _plugin.PipeConfig);
             formMaiShenAnalysis.Show();
         }
 

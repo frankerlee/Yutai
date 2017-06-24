@@ -7,7 +7,10 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common;
 using Yutai.Pipeline.Analysis.Helpers;
+using Yutai.Pipeline.Config.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.Classes
@@ -18,7 +21,7 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         public ArrayList m_arrPipePointsDraw = new ArrayList();
 
-        public TranSection(object objForm, IAppContext pApp) : base(objForm, pApp)
+        public TranSection(object objForm, IAppContext pApp,IPipelineConfig config) : base(objForm, pApp, config)
         {
         }
 
@@ -203,7 +206,9 @@ namespace Yutai.Pipeline.Analysis.Classes
             while (feature != null)
             {
                 string smpClassName = CommonUtils.GetSmpClassName(feature.Class.AliasName);
-                if (!base.PipeConfig.IsPipeLine(feature.Class.AliasName) && !smpClassName.ToUpper().Contains("JT_JT_L") && !smpClassName.ToUpper().Contains("SY_ZX_L") && !smpClassName.ToUpper().Contains("ZB_LD_R"))
+                
+                IBasicLayerInfo lineConfig = PipeConfig.GetBasicLayerInfo(feature.Class.AliasName) as IBasicLayerInfo;
+                if (lineConfig==null && !smpClassName.ToUpper().Contains("JT_JT_L") && !smpClassName.ToUpper().Contains("SY_ZX_L") && !smpClassName.ToUpper().Contains("ZB_LD_R"))
                 {
                     feature = enumFeature.Next();
                 }
@@ -226,7 +231,8 @@ namespace Yutai.Pipeline.Analysis.Classes
                             polyline = (IPolyline)shape;
                         }
                         GPoints gPoints = this.method_6(this.m_pBaseLine, polyline);
-                        string text = "管线性质";
+                        //string text = "管线性质";
+                        string text = lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GDXZ);
                         string bstrDatasetName = "";
                         int num = feature.Fields.FindField(text);
                         if (num != -1)
@@ -251,6 +257,7 @@ namespace Yutai.Pipeline.Analysis.Classes
                             for (int i = 0; i < num2; i++)
                             {
                                 GPoint gPoint = gPoints[i];
+                                
                                 PipePoint pipePoint = new PipePoint();
                                 if (smpClassName.ToUpper().Contains("JT_JT_L"))
                                 {
@@ -273,7 +280,8 @@ namespace Yutai.Pipeline.Analysis.Classes
                                 pipePoint.z = gPoint.Z;
                                 pipePoint.m = gPoint.M;
                                 pipePoint.bstrDatasetName = bstrDatasetName;
-                                int num3 = feature.Fields.FindField(base.PipeConfig.get_Material());
+                                //  int num3 = feature.Fields.FindField(base.PipeConfig.get_Material());
+                                int num3 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GXCZ));
                                 if (num3 == -1)
                                 {
                                     pipePoint.strMaterial = "";
@@ -290,7 +298,8 @@ namespace Yutai.Pipeline.Analysis.Classes
                                         pipePoint.strMaterial = "";
                                     }
                                 }
-                                num3 = feature.Fields.FindField(base.PipeConfig.get_Diameter());
+                                // num3 = feature.Fields.FindField(base.PipeConfig.get_Diameter());
+                                num3 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GJ));
                                 string text2;
                                 if (num3 != -1 && feature.get_Value(num3) != null)
                                 {
@@ -300,7 +309,7 @@ namespace Yutai.Pipeline.Analysis.Classes
                                 {
                                     text2 = "";
                                 }
-                                num3 = feature.Fields.FindField(base.PipeConfig.get_Section_Size());
+                                num3 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.DMCC));
                                 string text3;
                                 if (num3 != -1 && feature.get_Value(num3) != null)
                                 {

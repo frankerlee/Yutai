@@ -6,8 +6,11 @@ using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 using ESRI.ArcGIS.NetworkAnalysis;
 using ESRI.ArcGIS.SystemUI;
+using Yutai.ArcGIS.Common;
 using Yutai.Pipeline.Analysis.Forms;
 using Yutai.Pipeline.Analysis.Helpers;
+using Yutai.Pipeline.Config.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
@@ -27,10 +30,13 @@ namespace Yutai.Pipeline.Analysis.Commands
 
         private IFeature ifeature_2;
 
+        private PipelineAnalysisPlugin _plugin;
 
-        public CmdShortCutAnalysis(IAppContext context)
+
+        public CmdShortCutAnalysis(IAppContext context, PipelineAnalysisPlugin plugin)
         {
             OnCreate(context);
+            _plugin = plugin;
         }
 
         public override void OnClick()
@@ -88,7 +94,7 @@ namespace Yutai.Pipeline.Analysis.Commands
                     IFeature feature = enumFeature.Next();
                     if (feature != null)
                     {
-                        this.method_0(feature);
+                        this.StartAnalysis(feature);
                     }
                 }
             }
@@ -133,26 +139,31 @@ namespace Yutai.Pipeline.Analysis.Commands
             }
         }
 
-        private void method_0(IFeature feature)
+        private void StartAnalysis(IFeature feature)
         {
             if (feature != null)
             {
                 if (feature.FeatureType != (esriFeatureType) 7)
                 {
                     MessageBox.Show("请选择管线点");
+                    return;
                 }
-                else if (!_context.PipeConfig.IsPipePoint(feature.Class.AliasName))
+                IBasicLayerInfo lineConfig =
+                    _plugin.PipeConfig.GetBasicLayerInfo(feature.Class.AliasName) as IBasicLayerInfo;
+
+                if (lineConfig == null)
                 {
                     MessageBox.Show("请选择管线点");
+                    return;
                 }
-                else if (this.ifeature_0 == null)
+                 if (this.ifeature_0 == null)
                 {
                     this.ifeature_0 = feature;
                     this.ifeature_1 = feature;
                 }
                 else
-                {
-                    string text = "管线性质";
+                 {
+                     string text = lineConfig.GetFieldName(PipeConfigWordHelper.PointWords.TZW);
                     string arg = "";
                     int num = this.ifeature_0.Fields.FindField(text);
                     if (num != -1)

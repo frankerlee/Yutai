@@ -9,8 +9,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using Yutai.PipeConfig;
+
 using Yutai.Pipeline.Analysis.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.Forms
@@ -41,7 +42,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		public IMapControl3 MapControl;
 
-		public IPipeConfig pPipeCfg;
+		public IPipelineConfig pPipeCfg;
 
 		public IAppContext m_iApp;
 
@@ -233,7 +234,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 			if (featureLayer != null && featureLayer.FeatureClass != null)
 			{
 				string aliasName = featureLayer.FeatureClass.AliasName;
-				if (this.pPipeCfg.IsPipeLine(aliasName))
+				if (this.pPipeCfg.IsPipelineLayer(featureLayer.Name, enumPipelineDataType.Line))
 				{
 					TrackingAnalyForm.Class6 pclass = new TrackingAnalyForm.Class6();
 					pclass.ifeatureLayer_0 = featureLayer;

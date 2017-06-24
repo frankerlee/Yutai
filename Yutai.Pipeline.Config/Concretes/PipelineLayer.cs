@@ -10,13 +10,10 @@ namespace Yutai.Pipeline.Config.Concretes
 {
     public class PipelineLayer : IPipelineLayer
     {
-        private IPipePoint _pointLayer;
-        private IPipeLine _lineLayer;
-        private IPointAssist _pointAssistLayer;
-        private ILineAssist _lineAssistLayer;
         private List<IPipelineTemplate> _templates;
         private string _name;
         private string _code;
+        private List<IBasicLayerInfo> _layers;
 
         public PipelineLayer()
         {
@@ -45,28 +42,10 @@ namespace Yutai.Pipeline.Config.Concretes
             set { _code = value; }
         }
 
-        public IPipePoint PointLayer
+        public List<IBasicLayerInfo> Layers
         {
-            get { return _pointLayer; }
-            set { _pointLayer = value; }
-        }
-
-        public IPipeLine LineLayer
-        {
-            get { return _lineLayer; }
-            set { _lineLayer = value; }
-        }
-
-        public IPointAssist PointAssistLayer
-        {
-            get { return _pointAssistLayer; }
-            set { _pointAssistLayer = value; }
-        }
-
-        public ILineAssist LineAssistLayer
-        {
-            get { return _lineAssistLayer; }
-            set { _lineAssistLayer = value; }
+            get { return _layers; }
+            set { _layers = value; }
         }
 
         public void ReadFromXml(XmlNode xml)
@@ -78,71 +57,24 @@ namespace Yutai.Pipeline.Config.Concretes
                 _name = xml.Attributes["Name"].Value;
                 _code = xml.Attributes["Code"].Value;
             }
-            XmlNode node = xml.SelectSingleNode($"/PipelineConfig/PipelineLayers/PipelineLayer[@Name='{_name}']/PointLayer");
-            if (node?.Attributes != null)
+            XmlNodeList nodeList = xml.SelectNodes($"/PipelineConfig/PipelineLayers/PipelineLayer[@Name='{_name}']/Layers/Layer");
+            foreach (XmlNode node in nodeList)
             {
                 string template = node.Attributes["Template"].Value;
+                IBasicLayerInfo layerInfo;
                 if (_templates == null || string.IsNullOrWhiteSpace(template))
-                    _pointLayer = new PipePoint(node);
+                    layerInfo = new BasicLayerInfo(node);
                 else
                 {
                     IPipelineTemplate pipelineTemplate = _templates.FirstOrDefault(c => c.Name == template);
                     if (pipelineTemplate != null)
-                        _pointLayer = new PipePoint(node, pipelineTemplate);
+                        layerInfo = new BasicLayerInfo(node, pipelineTemplate);
                     else
-                        _pointLayer = new PipePoint(node);
+                        layerInfo = new BasicLayerInfo(node);
                 }
+                 _layers.Add(layerInfo);
             }
-            node = xml.SelectSingleNode($"/PipelineConfig/PipelineLayers/PipelineLayer[@Name='{_name}']/LineLayer");
-
-            if (node?.Attributes != null)
-            {
-                string template = node.Attributes["Template"].Value;
-
-                if (_templates == null || string.IsNullOrWhiteSpace(template))
-                    _lineLayer = new PipeLine(node);
-                else
-                {
-                    IPipelineTemplate pipelineTemplate = _templates.FirstOrDefault(c => c.Name == template);
-                    if (pipelineTemplate != null)
-                        _lineLayer = new PipeLine(node, pipelineTemplate);
-                    else
-                        _lineLayer = new PipeLine(node);
-                }
-            }
-
-            node = xml.SelectSingleNode($"/PipelineConfig/PipelineLayers/PipelineLayer[@Name='{_name}']/PointAssist");
-            if (node?.Attributes != null)
-            {
-                string template = node.Attributes["Template"].Value;
-
-                if (_templates == null || string.IsNullOrWhiteSpace(template))
-                    _pointAssistLayer = new PointAssist(node);
-                else
-                {
-                    IPipelineTemplate pipelineTemplate = _templates.FirstOrDefault(c => c.Name == template);
-                    if (pipelineTemplate != null)
-                        _pointAssistLayer = new PointAssist(node, pipelineTemplate);
-                    else
-                        _pointAssistLayer = new PointAssist(node);
-                }
-            }
-
-            node = xml.SelectSingleNode($"/PipelineConfig/PipelineLayers/PipelineLayer[@Name='{_name}']/LineAssist");
-            if (node?.Attributes != null)
-            {
-                string template = node.Attributes["Template"].Value;
-                if (_templates == null || string.IsNullOrWhiteSpace(template))
-                    _lineAssistLayer = new LineAssist(node);
-                else
-                {
-                    IPipelineTemplate pipelineTemplate = _templates.FirstOrDefault(c => c.Name == template);
-                    if (pipelineTemplate != null)
-                        _lineAssistLayer = new LineAssist(node, pipelineTemplate);
-                    else
-                        _lineAssistLayer = new LineAssist(node);
-                }
-            }
+           
         }
 
         public XmlNode ToXml(XmlDocument doc)
@@ -154,11 +86,13 @@ namespace Yutai.Pipeline.Config.Concretes
             codeAttribute.Value = _code;
             layerNode.Attributes.Append(nameAttribute);
             layerNode.Attributes.Append(codeAttribute);
-
-            if (_pointLayer != null) layerNode.AppendChild(_pointLayer.ToXml(doc));
-            if (_lineLayer != null) layerNode.AppendChild(_lineLayer.ToXml(doc));
-            if (_pointAssistLayer != null) layerNode.AppendChild(_pointAssistLayer.ToXml(doc));
-            if (_lineAssistLayer != null) layerNode.AppendChild(_lineAssistLayer.ToXml(doc));
+            XmlNode subNodes = doc.CreateElement("Layers");
+            foreach (IBasicLayerInfo basicInfo in _layers)
+            {
+                XmlNode oneNode = basicInfo.ToXml(doc);
+                subNodes.AppendChild(oneNode);
+            }
+            layerNode.AppendChild(subNodes);
             return layerNode;
         }
     }

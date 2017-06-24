@@ -21,11 +21,14 @@ namespace Yutai.Pipeline.Analysis.Commands
         private BufferAnalyseDlg _analyseDlg;
         private IPolygon _polygon;
 
-        
 
-        public CmdStartBufferAnalysis(IAppContext context)
+        private PipelineAnalysisPlugin _plugin;
+
+
+        public CmdStartBufferAnalysis(IAppContext context, PipelineAnalysisPlugin plugin)
         {
             OnCreate(context);
+            _plugin = plugin;
         }
 
         public override void OnClick()
@@ -36,7 +39,8 @@ namespace Yutai.Pipeline.Analysis.Commands
             {
                 _analyseDlg=new BufferAnalyseDlg()
                 {
-                    m_app = _context
+                    m_app = _context,
+                    m_PipeConfig=_plugin.PipeConfig
                 };
                 _analyseDlg.Show();
                 _analyseDlg.Closing+= AnalyseDlgOnClosing;

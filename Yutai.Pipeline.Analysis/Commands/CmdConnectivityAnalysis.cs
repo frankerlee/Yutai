@@ -6,6 +6,7 @@ using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 using ESRI.ArcGIS.NetworkAnalysis;
 using Yutai.Pipeline.Analysis.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
@@ -19,10 +20,13 @@ namespace Yutai.Pipeline.Analysis.Commands
 
         private IPolyline ipolyline_0;
 
+        private IPipelineConfig _pipelineConfig;
 
-        public CmdConnectivityAnalysis(IAppContext context)
+
+        public CmdConnectivityAnalysis(IAppContext context,PipelineAnalysisPlugin plugin)
         {
             OnCreate(context);
+            _pipelineConfig = plugin.PipeConfig;
         }
 
         public override void OnClick()
@@ -42,7 +46,7 @@ namespace Yutai.Pipeline.Analysis.Commands
         public override void OnCreate(object hook)
         {
             _context = hook as IAppContext;
-            base.m_caption = "解析加点(&A)";
+            base.m_caption ="解析加点(&A)";
             base.m_category = "PipelineAnalysus";
             base.m_bitmap = Properties.Resources.icon_analysis_collision;
             base.m_name = "PipeAnalysis_ConnectivityAnalysis";
@@ -95,11 +99,11 @@ namespace Yutai.Pipeline.Analysis.Commands
         {
             if (feature != null)
             {
-                if (feature.FeatureType != (esriFeatureType) 7)
+                if (feature.FeatureType != esriFeatureType.esriFTSimpleJunction)
                 {
                     MessageBox.Show("请选择管线点");
                 }
-                else if (!_context.PipeConfig.IsPipePoint(feature.Class.AliasName))
+                else if (!_pipelineConfig.IsPipelineLayer(feature.Class.AliasName,enumPipelineDataType.Point))
                 {
                     MessageBox.Show("请选择管线点");
                 }

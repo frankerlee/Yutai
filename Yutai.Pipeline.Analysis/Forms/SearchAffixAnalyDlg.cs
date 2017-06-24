@@ -10,9 +10,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using Yutai.PipeConfig;
+
 using Yutai.Pipeline.Analysis.Classes;
 using Yutai.Pipeline.Analysis.Helpers;
+using Yutai.Pipeline.Config.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.Forms
@@ -25,7 +27,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		public IMapControl3 MapControl;
 
-		public IPipeConfig pPipeCfg;
+		public IPipelineConfig pPipeCfg;
 
 
 
@@ -40,26 +42,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 		private List<string> list_0 = new List<string>();
 
 		private IContainer icontainer_0 = null;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
 
 		public SearchAffixAnalyDlg()
 		{
@@ -79,7 +62,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 				{
 					string name = pLayer.Name;
 					IFeatureLayer featureLayer = pLayer as IFeatureLayer;
-					if (this.m_iApp.PipeConfig.IsPipePoint(featureLayer.FeatureClass.AliasName))
+					if (this.pPipeCfg.IsPipelineLayer(featureLayer.Name,enumPipelineDataType.Point))
 					{
 						this.LayerBox.Items.Add(name);
 					}
@@ -138,9 +121,11 @@ namespace Yutai.Pipeline.Analysis.Forms
 					}
 					else
 					{
+					    IYTField pField = pPipeCfg.GetSpecialField(ifeatureLayer_0.FeatureClass.AliasName,
+					        PipeConfigWordHelper.PointWords.TZW);
 						this.ifields_0 = this.ifeatureLayer_0.FeatureClass.Fields;
-						this.string_0 = this.pPipeCfg.GetPointTableFieldName("节点性质");
-						this.string_0 = "节点性质";
+					    this.string_0 = pField != null ? pField.Name : "节点性质";
+
 						if (this.ifields_0.FindField(this.string_0) < 0)
 						{
 							this.btnAnalyse.Enabled = false;

@@ -13,10 +13,11 @@ namespace Yutai.Pipeline.Analysis.QueryForms
     {
         private SimpleQueryByCmisUI QueryUI;
 
-
-        public CmdQueryByCMIS(IAppContext context)
+        private PipelineAnalysisPlugin _plugin;
+        public CmdQueryByCMIS(IAppContext context, PipelineAnalysisPlugin plugin)
         {
             OnCreate(context);
+            _plugin = plugin;
         }
 
         public override void OnClick()
@@ -25,7 +26,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             {
                 this.QueryUI = new SimpleQueryByCmisUI();
                 this.QueryUI.MapControl = (IMapControl3)_context.MapControl;
-                this.QueryUI.pPipeCfg = _context.pPipeCfg;
+                this.QueryUI.pPipeCfg = _plugin.PipeConfig;
                 this.QueryUI.m_context = this._context;
                 this.QueryUI.Closing += new CancelEventHandler(this.QueryUI_Closing);
                 this.QueryUI.Show();

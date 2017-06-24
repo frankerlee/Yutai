@@ -9,6 +9,8 @@ using System.Data;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using Yutai.Pipeline.Config.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.QueryForms
@@ -31,7 +33,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
 		public IMapControl3 MapControl;
 
-		public IPipeConfig pPipeCfg;
+		public IPipelineConfig pPipeCfg;
 
 
 
@@ -112,14 +114,14 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				string aliasName = iFLayer.FeatureClass.AliasName;
 				if (this.PointRadio.Checked)
 				{
-					if (this.pPipeCfg.IsPipePoint(aliasName))
+					if (this.pPipeCfg.IsPipelineLayer(aliasName))
 					{
 						ClassCollectformsUI.LayerboxItem layerboxItem = new ClassCollectformsUI.LayerboxItem();
 						layerboxItem.m_pPipeLayer = iFLayer;
 						this.Layerbox.Items.Add(layerboxItem);
 					}
 				}
-				else if (this.pPipeCfg.IsPipeLine(aliasName))
+				else if (this.pPipeCfg.IsPipelineLayer(aliasName))
 				{
 					ClassCollectformsUI.LayerboxItem layerboxItem2 = new ClassCollectformsUI.LayerboxItem();
 					layerboxItem2.m_pPipeLayer = iFLayer;
@@ -258,7 +260,9 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 					Splash.Status = "状态: 正在汇总" + this.Layerbox.CheckedItems[i].ToString() + ",请稍候...";
 					IFeatureLayer pPipeLayer = ((ClassCollectformsUI.LayerboxItem)this.Layerbox.CheckedItems[i]).m_pPipeLayer;
 					IFields fields = pPipeLayer.FeatureClass.Fields;
-					string pointTableFieldName = this.pPipeCfg.GetPointTableFieldName("点性");
+				    IYTField fieldInfo = pPipeCfg.GetSpecialField(pPipeLayer.FeatureClass.AliasName,
+				        PipeConfigWordHelper.PointWords.TZW);
+					string pointTableFieldName = fieldInfo.Name;
 					int num4 = fields.FindField(pointTableFieldName);
 					if (num4 >= 0)
 					{
@@ -363,11 +367,13 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 					Splash.Status = "状态: 正在汇总" + this.Layerbox.CheckedItems[j].ToString() + ",请稍候...";
 					IFeatureLayer pPipeLayer = ((ClassCollectformsUI.LayerboxItem)this.Layerbox.CheckedItems[j]).m_pPipeLayer;
 					IFields fields2 = pPipeLayer.FeatureClass.Fields;
-					string lineTableFieldName = this.pPipeCfg.GetLineTableFieldName("管径");
-					int num4 = fields2.FindField(lineTableFieldName);
-					string lineTableFieldName2 = this.pPipeCfg.GetLineTableFieldName("断面尺寸");
+                    IBasicLayerInfo layerInfo = pPipeCfg.GetBasicLayerInfo(pPipeLayer.FeatureClass);
+				    string lineTableFieldName = layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.GJ);
+
+                    int num4 = fields2.FindField(lineTableFieldName);
+					string lineTableFieldName2 = layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.DMCC);// this.pPipeCfg.GetLineTableFieldName("断面尺寸");
 					int num10 = fields2.FindField(lineTableFieldName2);
-					string lineTableFieldName3 = this.pPipeCfg.GetLineTableFieldName("材质");
+					string lineTableFieldName3 = layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.GXCZ);// this.pPipeCfg.GetLineTableFieldName("材质");
 					int num11 = fields2.FindField(lineTableFieldName3);
 					for (int k = 0; k < fields2.FieldCount; k++)
 					{

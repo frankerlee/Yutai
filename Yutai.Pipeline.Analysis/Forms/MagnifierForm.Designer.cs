@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using Yutai.Pipeline.Analysis.Classes;
 using Yutai.Pipeline.Analysis.Properties;
 
 namespace Yutai.Pipeline.Analysis.Forms

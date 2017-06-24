@@ -10,7 +10,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using Yutai.PipeConfig;
+using Yutai.Pipeline.Config.Helpers;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.QueryForms
@@ -53,7 +54,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
 		public IMapControl3 MapControl;
 
-		public IPipeConfig pPipeCfg;
+		public IPipelineConfig pPipeCfg;
 
 
 
@@ -112,7 +113,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			if (iFLayer != null)
 			{
 				string aliasName = iFLayer.FeatureClass.AliasName;
-				if (this.pPipeCfg.IsPipeLine(aliasName))
+				if (this.pPipeCfg.IsPipelineLayer(iFLayer.Name,enumPipelineDataType.Line))
 				{
 					SimpleQueryByMaterialUI.LayerboxItem layerboxItem = new SimpleQueryByMaterialUI.LayerboxItem();
 					layerboxItem.m_pPipeLayer = iFLayer;
@@ -160,8 +161,9 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 					}
 					else
 					{
-						this.myfields = this.SelectLayer.FeatureClass.Fields;
-						this.strMT = this.pPipeCfg.GetLineTableFieldName("材质");
+                        IBasicLayerInfo layerInfo = pPipeCfg.GetBasicLayerInfo(this.SelectLayer.FeatureClass);
+                        this.myfields = this.SelectLayer.FeatureClass.Fields;
+					    this.strMT = layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.GXCZ);//this.pPipeCfg.GetLineTableFieldName("材质");
 						if (this.myfields.FindField(this.strMT) < 0)
 						{
 							this.QueryBut.Enabled = false;
