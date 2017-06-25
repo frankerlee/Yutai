@@ -9,6 +9,7 @@
 
 using System.Collections.Generic;
 using System.Xml;
+using ESRI.ArcGIS.Geodatabase;
 
 namespace Yutai.Pipeline.Config.Interfaces
 {
@@ -16,9 +17,16 @@ namespace Yutai.Pipeline.Config.Interfaces
     {
         string Name { get; set; }
         string Code { get; set; }
-       
+
+        string AutoNames { get; set; }
+
         List<IBasicLayerInfo> Layers { get;set; }
         void ReadFromXml(XmlNode xml);
         XmlNode ToXml(XmlDocument doc);
+        bool OrganizeFeatureClass(IFeatureClass featureClass);
+        IPipelineLayer NewOrganizeFeatureClass(IFeatureClass featureClass);
+
+        IPipelineLayer Clone(bool keepClass);
+        IWorkspace Workspace { get; set; }
     }
 }

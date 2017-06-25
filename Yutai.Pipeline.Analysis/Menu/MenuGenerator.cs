@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Xml;
 using DevExpress.XtraBars.Ribbon;
-using Yutai.Plugins.Catalog.Menu;
+
 using Yutai.Plugins.Interfaces;
 using Yutai.UI.Menu.Ribbon;
 
@@ -37,7 +37,7 @@ namespace Yutai.Pipeline.Analysis.Menu
         private void InitMenus()
         {
             XmlDocument doc = new XmlDocument();
-            doc.Load(base.GetType().Assembly.GetManifestResourceStream("Yutai.Plugins.Catalog.Menu.MenuLayout.xml"));
+            doc.Load(base.GetType().Assembly.GetManifestResourceStream("Yutai.Pipeline.Analysis.Menu.MenuLayout.xml"));
             RibbonFactory.CreateMenus(_commands.GetCommands(), (RibbonControl) _menuManager,
                 _context.MainView.RibbonStatusBar as RibbonStatusBar, doc);
         }

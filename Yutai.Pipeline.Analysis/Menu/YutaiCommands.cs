@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using Yutai.Pipeline.Analysis;
 using Yutai.Pipeline.Analysis.Commands;
+using Yutai.Pipeline.Analysis.QueryForms;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Interfaces;
 
-namespace Yutai.Plugins.Catalog.Menu
+namespace Yutai.Pipeline.Analysis.Menu
 {
     public class YutaiCommands : CommandProviderBase
     {
@@ -37,7 +38,7 @@ namespace Yutai.Plugins.Catalog.Menu
             {
                 _commands = new List<YutaiCommand>()
                 {
-                    new CmdStartAreaMeasureAnalysis(_context),
+                    new CmdStartOrganizeMap(_context,_plugin),
 
 
                 };

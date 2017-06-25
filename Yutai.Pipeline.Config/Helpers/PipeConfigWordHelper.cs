@@ -21,35 +21,69 @@ namespace Yutai.Pipeline.Config.Helpers
     
     public class PipePointConfigWords
     {
-        
+        //! 管点编号 全局唯一编号
         public string GDBH
         {
             get { return "GDBH"; }
         }
-
-        public  string YSDM {get{return  "YSDM";}}
-        public  string SZTF {get{return  "SZTF";}}
-        public  string XZB {get{return  "XZB";}}
-        public  string YZB {get{return  "YZB";}}
-        public  string DMGC {get{return  "DMGC";}}
-        public  string TZW {get{return  "TZW";}}
-        public  string FSW {get{return  "FSW";}}
-        public  string JGCZ {get{return  "JGCZ";}}
-        public  string SYZT {get{return  "SYZT";}}
-        public  string PXJH {get{return  "PXJH";}}
-        public  string QSDW {get{return  "QSDW";}}
-        public  string FHJD {get{return  "FHJD";}}
-        public  string JCSBLX {get{return  "JCSBLX";}}
-        public  string JCSBBH {get{return  "JCSBBH";}}
-        public  string SGYHLX {get{return  "SGYHLX";}}
-        public  string SGYHDJ {get{return  "SGYHDJ";}}
-        public  string SZDL {get{return  "SZDL";}}
-        public  string TCDW {get{return  "TCDW";}}
-        public  string TCRQ {get{return  "TCRQ";}}
-        public  string RKRQ {get{return  "RKRQ";}}
-        public  string BZ {get{return  "BZ";}}
-        public  string BZ2 {get{return  "BZ2";}}
-
+        //! 图上点号
+        public string TSDH
+        {
+            get { return "TSDH"; }
+        }
+        //! 要素代码
+        public string YSDM {get{return  "YSDM";}}
+        //! 所在图幅，图幅号
+        public string SZTF {get{return  "SZTF";}}
+        //! X坐标
+        public string XZB {get{return  "XZB";}}
+        //! Y坐标
+        public string YZB {get{return  "YZB";}}
+        //! 地面高程
+        public string DMGC {get{return  "DMGC";}}
+        //! 特征物
+        public string TZW {get{return  "TZW";}}
+        //! 附属物
+        public string FSW {get{return  "FSW";}}
+        //! 井底深度
+        public string JDSD { get { return "JDSD"; } }
+        //! 井盖规格
+        public string JGGG {get{return "JGGG"; }}
+        //! 井盖材质
+        public string JGCZ { get { return "JGCZ"; } }
+        //! 井盖类型
+        public string JGLX { get { return "JGLX"; } }
+        //! 使用状态
+        public string SYZT {get{return  "SYZT";}}
+        //! 偏心井号
+        public string PXJH {get{return  "PXJH";}}
+        //! 权属单位
+        public string QSDW {get{return  "QSDW";}}
+        //! 产权单位
+        public string CQDW { get { return "CQDW"; } }
+        //! 符号角度
+        public string FHJD {get{return  "FHJD";}}
+        //! 监测设备类型
+        public string JCSBLX {get{return  "JCSBLX";}}
+        //! 监测设备编号
+        public string JCSBBH {get{return  "JCSBBH";}}
+        //! 事故隐患类型
+        public string SGYHLX {get{return  "SGYHLX";}}
+        //! 事故隐患等级
+        public string SGYHDJ {get{return  "SGYHDJ";}}
+        //! 所在道路
+        public string SZDL {get{return  "SZDL";}}
+        //! 探测单位
+        public string TCDW {get{return  "TCDW";}}
+        //! 探测日期
+        public string TCRQ {get{return  "TCRQ";}}
+        //! 入库日期
+        public string RKRQ {get{return  "RKRQ";}}
+        //! 备注
+        public string BZ {get{return  "BZ";}}
+        //! 备注2
+        public string BZ2 {get{return  "BZ2";}}
+        //! 埋设日期，建设年代
         public string MSRQ
         {
             get { return "MSRQ"; }
@@ -91,11 +125,18 @@ namespace Yutai.Pipeline.Config.Helpers
         public  string RKRQ {get{return "RKRQ";}}
         public  string BZ {get{return "BZ";}}
         public  string BZ2 {get{return "BZ2";}}
+        //! 使用状况
+        public string SYZK { get { return "SYZK"; } }
     }
 
     public class AssPointConfigWords
     {
         public  string FZDH {get{return "FZDH";}}
+        //! 图上点号
+        public string TSDH
+        {
+            get { return "TSDH"; }
+        }
         public  string YSDM {get{return "YSDM";}}
         public  string XZB {get{return "XZB";}}
         public  string YZB {get{return "YZB";}}
@@ -129,10 +170,13 @@ namespace Yutai.Pipeline.Config.Helpers
     public class GouPointConfigWords
     {
         public  string GGDH {get{return "GGDH";}}
+        public string TSDH { get { return "TSDH"; } }
         public  string YSDM {get{return "YSDM";}}
         public  string XZB {get{return "XZB";}}
         public  string YZB {get{return "YZB";}}
         public  string DMGC {get{return "DMGC";}}
+        //! 所在图幅，图幅号
+        public string SZTF { get { return "SZTF"; } }
         public  string JCSBLX {get{return "JCSBLX";}}
         public  string JCSBBH {get{return "JCSBBH";}}
         public  string SGYHLX {get{return "SGYHLX";}}

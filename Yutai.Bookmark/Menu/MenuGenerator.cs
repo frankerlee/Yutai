@@ -46,7 +46,6 @@ namespace Yutai.Plugins.Bookmark.Menu
             XmlDocument doc = new XmlDocument();
             string resString = "Yutai.Plugins.Bookmark.Menu.MenuLayout.xml";
             doc.Load(base.GetType().Assembly.GetManifestResourceStream(resString));
-
             RibbonFactory.CreateMenus(_commands.GetCommands(), (RibbonControl)_menuManager, _context.MainView.RibbonStatusBar as RibbonStatusBar, doc);
         }
     }

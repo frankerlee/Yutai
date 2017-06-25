@@ -7,6 +7,7 @@ namespace Yutai.Pipeline.Config.Interfaces
 {
     public interface IBasicLayerInfo
     {
+        string AutoNames { get; set; }
         string Name { get; set; }
         string AliasName { get; set; }
         bool Visible { get; set; }
@@ -29,5 +30,8 @@ namespace Yutai.Pipeline.Config.Interfaces
         IYTField GetField(string typeWord);
 
         string GetFieldName(string typeWord);
+
+        string EsriClassName { get; set; }
+        IBasicLayerInfo Clone(bool keepClass);
     }
 }

@@ -28,5 +28,9 @@ namespace Yutai.Pipeline.Config.Interfaces
         void ReadFromXml(XmlNode xml);
         XmlNode ToXml(XmlDocument doc);
         void LoadFromField(IFields fields);
+
+
+        string EsriFieldName { get; set; }
+        IYTField Clone(bool keepClass);
     }
 }

@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using ESRI.ArcGIS.Geodatabase;
+using Yutai.ArcGIS.Common.Helpers;
+using Yutai.Pipeline.Config.Helpers;
 using Yutai.Pipeline.Config.Interfaces;
 
 namespace Yutai.Pipeline.Config.Concretes
@@ -14,9 +17,28 @@ namespace Yutai.Pipeline.Config.Concretes
         private string _name;
         private string _code;
         private List<IBasicLayerInfo> _layers;
-
+        private string _autoNames;
+        private IWorkspace _workspace;
         public PipelineLayer()
         {
+        }
+
+        public PipelineLayer(IPipelineLayer layer, bool keepClass)
+        {
+            _name = layer.Name;
+            _code = layer.Code;
+            _autoNames = layer.AutoNames;
+            _layers=new List<IBasicLayerInfo>();
+            foreach (IBasicLayerInfo basicLayerInfo in layer.Layers)
+            {
+                IBasicLayerInfo newBasicLayerInfo = basicLayerInfo.Clone(keepClass);
+                _layers.Add(newBasicLayerInfo);
+            }
+
+            if(keepClass)
+            {
+                _workspace = layer.Workspace;
+            }
         }
 
         public PipelineLayer(XmlNode xmlNode)
@@ -42,10 +64,29 @@ namespace Yutai.Pipeline.Config.Concretes
             set { _code = value; }
         }
 
+        public string AutoNames
+        {
+            get { return _autoNames; }
+            set { _autoNames = value; }
+        }
+
         public List<IBasicLayerInfo> Layers
         {
             get { return _layers; }
             set { _layers = value; }
+        }
+
+        public IWorkspace Workspace
+        {
+            get
+            {
+                return _workspace;
+            }
+
+            set
+            {
+                _workspace = value;
+            }
         }
 
         public void ReadFromXml(XmlNode xml)
@@ -54,8 +95,9 @@ namespace Yutai.Pipeline.Config.Concretes
                 return;
             if (xml.Attributes != null)
             {
-                _name = xml.Attributes["Name"].Value;
-                _code = xml.Attributes["Code"].Value;
+                _name = xml.Attributes["Name"]==null?"" : xml.Attributes["Name"].Value;
+                _code = xml.Attributes["Code"] == null ? "" : xml.Attributes["Code"].Value;
+                _autoNames = xml.Attributes["AutoNames"]==null ? "" :xml.Attributes["AutoNames"].Value;
             }
             XmlNodeList nodeList = xml.SelectNodes($"/PipelineConfig/PipelineLayers/PipelineLayer[@Name='{_name}']/Layers/Layer");
             foreach (XmlNode node in nodeList)
@@ -84,8 +126,11 @@ namespace Yutai.Pipeline.Config.Concretes
             nameAttribute.Value = _name;
             XmlAttribute codeAttribute = doc.CreateAttribute("Code");
             codeAttribute.Value = _code;
+            XmlAttribute autoNamesAttribute = doc.CreateAttribute("AutoNames");
+            autoNamesAttribute.Value = _autoNames;
             layerNode.Attributes.Append(nameAttribute);
             layerNode.Attributes.Append(codeAttribute);
+            layerNode.Attributes.Append(autoNamesAttribute);
             XmlNode subNodes = doc.CreateElement("Layers");
             foreach (IBasicLayerInfo basicInfo in _layers)
             {
@@ -94,6 +139,46 @@ namespace Yutai.Pipeline.Config.Concretes
             }
             layerNode.AppendChild(subNodes);
             return layerNode;
+        }
+        //!+ 自动识别图层并匹配配置,这个时候是这个图层组中有图层已经被识别
+        public bool OrganizeFeatureClass(IFeatureClass featureClass)
+        {
+            //! 因为图层是按照工作空间组织的，所以图层不可能被重复，也就是说一个工作控件里面的图层只可能识别一次
+            string ownerName = ConfigHelper.GetClassOwnerName(((IDataset)featureClass).Name);
+            string baseName = ConfigHelper.GetClassShortName(featureClass);
+            string classAliasName = featureClass.AliasName;
+            string autoStr = "/" + _autoNames + "/";
+            IBasicLayerInfo layerInfo = _layers.FirstOrDefault(c => c.Name == baseName || c.AliasName==baseName || autoStr.Contains("/"+baseName+"/"));
+            if (layerInfo != null && layerInfo.FeatureClass==null)
+            {
+                layerInfo.FeatureClass = featureClass;
+                return true;
+            }
+            return false;
+        }
+
+        public IPipelineLayer NewOrganizeFeatureClass(IFeatureClass featureClass)
+        {
+            string ownerName = ConfigHelper.GetClassOwnerName(((IDataset)featureClass).Name);
+            string baseName = ConfigHelper.GetClassShortName(featureClass);
+            string classAliasName = featureClass.AliasName;
+            string autoStr = "/" + _autoNames + "/";
+            IBasicLayerInfo layerInfo = _layers.FirstOrDefault(c => c.Name == baseName || c.AliasName == baseName || autoStr.Contains("/" + baseName + "/"));
+            if (layerInfo != null )
+            {
+                IPipelineLayer pipeLayer = new PipelineLayer(this, false);
+                layerInfo = pipeLayer.Layers.FirstOrDefault(c => c.Name == baseName || c.AliasName == baseName || autoStr.Contains("/" + baseName + "/"));
+                layerInfo.FeatureClass = featureClass;
+                return pipeLayer;
+            }
+            return null;
+        }
+
+        public IPipelineLayer Clone(bool keepClass)
+        {
+            IPipelineLayer pClone=new PipelineLayer(this,keepClass);
+            
+            return pClone;
         }
     }
 }

@@ -22,8 +22,23 @@ namespace Yutai.Pipeline.Config.Concretes
         private bool _allowNull;
         private string _fieldTypeStr;
         private string _domainValues;
+        private string _esriFieldName;
 
         public YTField() { }
+
+        public YTField(IYTField pField)
+        {
+            _typeName = pField.TypeName;
+            _name = pField.Name;
+            _aliasName = pField.AliasName;
+            _autoNames = pField.AutoNames;
+            _length = pField.Length;
+            _precision = pField.Precision;
+            _fieldType = pField.FieldType;
+            _allowNull = pField.AllowNull;
+            _domainValues = pField.DomainValues;
+
+        }
         public YTField(XmlNode node) { ReadFromXml(node);}
 
         public string TypeName
@@ -93,7 +108,7 @@ namespace Yutai.Pipeline.Config.Concretes
                 _fieldTypeStr = xml.Attributes["FieldType"].Value;
                 _precision = string.IsNullOrWhiteSpace(xml.Attributes["Precision"].Value) ? 50: Convert.ToInt32(xml.Attributes["Precision"].Value);
                 _fieldType = FieldHelper.ConvertFromString(_fieldTypeStr);
-                _domainValues = xml.Attributes["DomainValues"].Value;
+                _domainValues = xml.Attributes["DomainValues"]==null?"": xml.Attributes["DomainValues"].Value;
             }
         }
 
@@ -146,6 +161,22 @@ namespace Yutai.Pipeline.Config.Concretes
                     _precision = field.Precision;
                 }
             }
+        }
+
+        public string EsriFieldName
+        {
+            get { return _esriFieldName; }
+            set { _esriFieldName = value; }
+        }
+
+        public IYTField Clone(bool keepClass)
+        {
+            IYTField newField= new YTField(this);
+            if (keepClass)
+            {
+                newField.EsriFieldName = this._esriFieldName;
+            }
+            return newField;
         }
     }
 }

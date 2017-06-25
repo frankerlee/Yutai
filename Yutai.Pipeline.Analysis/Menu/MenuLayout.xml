@@ -3,7 +3,8 @@
     <Pages>
       <Page Key="PipelineAnalysis" Caption="管线分析" Index="0" Visible="true">
         <PageGroup Key="Pipeline_Analysis_Common" Caption="常用分析" Visible="true" Index="0">
-          <BarItem Key="PipeAnalysis_AreaMeasure" Visible="true"></BarItem>
+         
+        <BarItem Key="PipeQuery_Config" Visible="true"></BarItem>
         </PageGroup>
       </Page>
     </Pages>

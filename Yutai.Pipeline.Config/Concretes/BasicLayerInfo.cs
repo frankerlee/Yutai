@@ -22,6 +22,14 @@ namespace Yutai.Pipeline.Config.Concretes
         private List<IYTField> _fields;
         private string _templateName;
         private IFeatureClass _featureClass;
+        private string _autoNames;
+        private string _esriClassName;
+
+        public string AutoNames
+        {
+            get { return _autoNames; }
+            set { _autoNames = value; }
+        }
 
         public string Name
         {
@@ -73,7 +81,11 @@ namespace Yutai.Pipeline.Config.Concretes
         public IFeatureClass FeatureClass
         {
             get { return _featureClass; }
-            set { _featureClass = value; }
+            set
+            {
+                _featureClass = value;
+                _esriClassName = ((IDataset) FeatureClass).Name;
+            }
         }
 
         public IYTField GetField(string typeWord)
@@ -88,6 +100,19 @@ namespace Yutai.Pipeline.Config.Concretes
             return field!=null? field.Name:typeWord;
         }
 
+        public string EsriClassName
+        {
+            get { return _esriClassName; }
+            set { _esriClassName = value; }
+        }
+
+        public IBasicLayerInfo Clone(bool keepClass)
+        {
+            IBasicLayerInfo pClone=new BasicLayerInfo(this,keepClass);
+            return pClone;
+
+        }
+
         public BasicLayerInfo(XmlNode node)
         {
             ReadFromXml(node);
@@ -99,6 +124,31 @@ namespace Yutai.Pipeline.Config.Concretes
            ReadFromXml(node);
         }
 
+        public BasicLayerInfo()
+        {
+        }
+
+        public BasicLayerInfo(IBasicLayerInfo info,bool keepClass)
+        {
+            _name = info.Name;
+            _autoNames = info.AutoNames;
+            _aliasName = info.AliasName;
+            _visible = info.Visible;
+            _dataType = info.DataType;
+            _heightType = info.HeightType;
+            _validateKeys = info.ValidateKeys;
+            _templateName = info.TemplateName;
+            _fields=new List<IYTField>();
+            foreach (IYTField infoField in info.Fields)
+            {
+                _fields.Add(infoField.Clone(keepClass));
+            }
+            if (keepClass)
+            {
+                _featureClass = info.FeatureClass;
+                _esriClassName = info.EsriClassName;
+            }
+        }
 
         public void LoadTemplate(IPipelineTemplate template)
         {
@@ -119,6 +169,7 @@ namespace Yutai.Pipeline.Config.Concretes
                 _heightType = node.Attributes["HeightType"] == null ? enumPipelineHeightType.Top : EnumHelper.ConvertHeightTypeFromStr(node.Attributes["HeightType"].Value);
                 _validateKeys = node.Attributes["ValidateKeys"] == null ? "" : node.Attributes["ValidateKeys"].Value;
                 _templateName = node.Attributes["TemplateName"] == null ? "" : node.Attributes["TemplateName"].Value;
+                _autoNames = node.Attributes["AutoNames"].Value;
             }
 
             XmlNodeList fieldNodes = node.SelectNodes("Fields/Field");
@@ -158,6 +209,8 @@ namespace Yutai.Pipeline.Config.Concretes
             heightAttribute.Value = EnumHelper.ConvertHeightTypeToStr(_heightType);
             XmlAttribute validateKeysAttribute = doc.CreateAttribute("ValidateKeys");
             validateKeysAttribute.Value = _validateKeys;
+            XmlAttribute autoNamesAttribute = doc.CreateAttribute("AutoNames");
+            autoNamesAttribute.Value = _autoNames;
             layerNode.Attributes.Append(nameAttribute);
             layerNode.Attributes.Append(aliasNameAttribute);
             layerNode.Attributes.Append(templateAttribute);
@@ -165,6 +218,7 @@ namespace Yutai.Pipeline.Config.Concretes
             layerNode.Attributes.Append(typeAttribute);
             layerNode.Attributes.Append(heightAttribute);
             layerNode.Attributes.Append(validateKeysAttribute);
+            layerNode.Attributes.Append(autoNamesAttribute);
 
             XmlNode fieldsNode = doc.CreateElement("Fields");
             foreach (IYTField ytField in _fields)

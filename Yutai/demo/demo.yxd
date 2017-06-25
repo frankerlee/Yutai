@@ -1,9 +1,9 @@
 ﻿<YutaiGIS>
-  <MapDoc>demo.mxd</MapDoc>
+  <MapDoc>demo1.mxd</MapDoc>
   <SceneDoc>demo.sxd</SceneDoc>
   <ViewStyle>1</ViewStyle>
   <Plugins>
-    <Plugin>
+    <!--<Plugin>
       <Guid>2b81c89a-ee45-4276-9dc1-72bbbf07f53f</Guid>
       <Name>定位器</Name>
       <MenuXML>\\plugins\\menus\\LocatorMenu.xml</MenuXML>
@@ -13,7 +13,7 @@
       <Guid>4a3bcaab-9d3e-4ca7-a19d-7ee08fb0629e</Guid>
       <Name>编辑器</Name>
       <MenuXML>\\plugins\\menus\\EditorMenu.xml</MenuXML>
-      <ConfigXML>\\plugins\\configs\\pipeline.xml</ConfigXML>
+      
     </Plugin>
     <Plugin>
       <Guid>7da6c412-c345-4ccc-9f22-ef7eb3757898</Guid>
@@ -23,6 +23,11 @@
       <Guid>5e857d4e-1a77-46d8-b1bb-b36548be7333</Guid>
       <Name>目录管理</Name>
       <MenuXML>\\plugins\\menus\\CatalogMenu.xml</MenuXML>
+    </Plugin>-->
+    <Plugin>
+      <Guid>f804e812-481e-45c3-be08-749da82075d1</Guid>
+      <Name>管线分析</Name>
+      <ConfigXML>\\plugins\\configs\\pipeline.xml</ConfigXML>
     </Plugin>
     
   </Plugins>

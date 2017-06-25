@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using ESRI.ArcGIS.Carto;
+using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using Yutai.ArcGIS.Common;
 using Yutai.ArcGIS.Common.Helpers;
 using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Shared;
+using ESRI.ArcGIS.DataSourcesFile;
+using Yutai.Pipeline.Config.Helpers;
 
 namespace Yutai.Pipeline.Config.Concretes
 {
@@ -22,6 +26,7 @@ namespace Yutai.Pipeline.Config.Concretes
         private IActiveViewEvents_Event viewEvents;
         private string _configDatabaseName;
         private IFeatureWorkspace _workspace;
+        private List<IPipelineLayer> _dbLayers;
 
         public PipelineConfig()
         {
@@ -68,7 +73,7 @@ namespace Yutai.Pipeline.Config.Concretes
             XmlDocument doc = new XmlDocument();
             doc.Load(_xmlFile);
 
-            _configDatabaseName = doc.SelectSingleNode("/PipelineConfig/ConfigDatabase").Value;
+            _configDatabaseName = doc.SelectSingleNode("/PipelineConfig/ConfigDatabase").InnerText;
             string fullPath = FileHelper.GetFullPath(_configDatabaseName);
             _workspace = Yutai.ArcGIS.Common.Helpers.WorkspaceHelper.GetAccessWorkspace(fullPath) as IFeatureWorkspace;
             XmlNodeList nodes = doc.SelectNodes("/PipelineConfig/LayerTemplates/Template");
@@ -88,10 +93,7 @@ namespace Yutai.Pipeline.Config.Concretes
 
         }
 
-        public void LoadFromMap(IMap pMap)
-        {
-          
-        }
+       
 
         public bool LinkMap(IMap pMap)
         {
@@ -122,6 +124,17 @@ namespace Yutai.Pipeline.Config.Concretes
             foreach (IPipelineLayer pipelineLayer in _layers)
             {
                 layer = pipelineLayer.Layers.FirstOrDefault(c => c.FeatureClass.AliasName == classAliasName);
+                if (layer != null) return true;
+            }
+            return false;
+        }
+
+        public bool IsPipelineLayer(IFeatureClass pClass)
+        {
+            IBasicLayerInfo layer;
+            foreach (IPipelineLayer pipelineLayer in _layers)
+            {
+                layer = pipelineLayer.Layers.FirstOrDefault(c => c.FeatureClass == pClass);
                 if (layer != null) return true;
             }
             return false;
@@ -265,6 +278,211 @@ namespace Yutai.Pipeline.Config.Concretes
             rootNode.AppendChild(templatesNode);
             doc.AppendChild(rootNode);
             doc.Save(_xmlFile);
+        }
+
+
+        //! 依据数据库内配置识别当前地图图层
+        public void OrganizeMap(IMap pMap)
+        {
+            _layers.Clear();
+            if (_dbLayers == null || _dbLayers.Count == 0)
+                _dbLayers= ReadLayersFromDatabase();
+
+            //先读取Map里面的图层，并按照Workspace进行组织，有点类似启动编辑时候的整理
+            IArray arrayClass = ConfigHelper.OrganizeMapWorkspaceAndLayer(pMap);
+
+            //图层已经按照Workspace组织，在一个Workspace里面，不允许有同名称的管线图层存在，而且在配置里面，不是依据图层，而是依据要素类，因为在实际中有可能一个要素类被渲染成好几个图层
+            for(int i=0; i<arrayClass.Count;i++)
+            {
+                PipeWorkspaceInfo workspaceInfo = arrayClass.Element[i] as PipeWorkspaceInfo;
+
+                for(int j=0;j<workspaceInfo.ClassArray.Count;j++)
+                {
+                    IFeatureClass pClass = workspaceInfo.ClassArray.Element[j] as IFeatureClass;
+                    string className = ((IDataset)pClass).Name;
+                    string shortName = ConfigHelper.GetClassShortName(className);
+                    bool findExist = false;
+                    foreach(IPipelineLayer existLayer in _layers)
+                    {
+                        if(existLayer.Workspace.ConnectionProperties != workspaceInfo.Workspace.ConnectionProperties)
+                        {
+                            continue;
+                        }
+                        bool back = existLayer.OrganizeFeatureClass(pClass);
+                        if (back)
+                        {
+                            findExist = true;break; }
+                        IPipelineLayer newLayer = existLayer.NewOrganizeFeatureClass(pClass);
+                       
+                        if(newLayer!=null)
+                        {
+                            newLayer.Workspace = workspaceInfo.Workspace;
+                            _layers.Add(newLayer);
+                            findExist = true;
+                            break;
+                        }
+                    }
+                    if (findExist) continue;
+                    foreach (IPipelineLayer dbLayer in _dbLayers)
+                    {
+                       IPipelineLayer newLayer = dbLayer.NewOrganizeFeatureClass(pClass);
+                        
+                        if (newLayer != null)
+                        {
+                            IPipelineLayer pSaveLayer = newLayer.Clone(true);
+                            newLayer.Workspace = workspaceInfo.Workspace;
+                            _layers.Add(newLayer);
+                           
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        public List<IPipelineLayer> ReadLayersFromDatabase()
+        {
+
+            List<IPipelineLayer> layers=new List<IPipelineLayer>();
+            ITable pCodeTable = _workspace.OpenTable("YT_PIPE_CODE");
+            ITableSort tableSort = new TableSortClass();
+            tableSort.Table = pCodeTable;
+            tableSort.Fields = "Priority";
+            tableSort.Sort(null);
+
+            ICursor pCursor = tableSort.Rows;
+            IRow pRow = pCursor.NextRow();
+            int codeIdx = pCursor.FindField("PipeCode");
+            int nameIdx = pCursor.FindField("PipeName");
+            int autoIdx = pCursor.FindField("AutoNames");
+            int priIdx = pCursor.FindField("Priority");
+            while (pRow != null)
+            {
+                IPipelineLayer oneLayer=new PipelineLayer()
+                {
+                    Code=pRow.Value[codeIdx].ToString(),
+                    Name=pRow.Value[nameIdx].ToString(),
+                    AutoNames = pRow.Value[autoIdx].ToString(),
+                    Layers=new List<IBasicLayerInfo>()
+                };
+                layers.Add(oneLayer);
+                pRow = pCursor.NextRow();
+            }
+            Marshal.ReleaseComObject(pCursor);
+            Marshal.ReleaseComObject(tableSort);
+            Marshal.ReleaseComObject(pCodeTable);
+            List<IPipelineTemplate> templates=new List<IPipelineTemplate>();
+            //! 先读取模板
+            pCodeTable = _workspace.OpenTable("YT_PIPE_FIELD");
+            tableSort = new TableSortClass();
+            tableSort.Table = pCodeTable;
+            tableSort.Fields = "TemplateName";
+           
+            tableSort.Sort(null);
+            pCursor = tableSort.Rows;
+            string oldTemplate = "";
+            int[] fieldIndexes=new int[10];
+            pRow = pCursor.NextRow();
+            fieldIndexes[0] = pRow.Fields.FindField("TemplateName");
+            fieldIndexes[1] = pRow.Fields.FindField("TypeName");
+            fieldIndexes[2] = pRow.Fields.FindField("FieldName");
+            fieldIndexes[3] = pRow.Fields.FindField("FieldAliasName");
+            fieldIndexes[4] = pRow.Fields.FindField("FieldType");
+            fieldIndexes[5] = pRow.Fields.FindField("FieldLength");
+            fieldIndexes[6] = pRow.Fields.FindField("FieldPrecision");
+            fieldIndexes[7] = pRow.Fields.FindField("AllowNull");
+            fieldIndexes[8] = pRow.Fields.FindField("AutoValues");
+            fieldIndexes[9] = pRow.Fields.FindField("IsKey");
+           
+
+            IPipelineTemplate oneTemplate = null;
+            while (pRow != null)
+            {
+                string templateName = pRow.Value[fieldIndexes[0]].ToString();
+                if (!templateName.Equals(oldTemplate))
+                {
+                    if (oneTemplate != null)
+                    {
+                        templates.Add(oneTemplate);
+                    }
+                    oneTemplate=new PipelineTemplate() {Name=templateName,Fields=new List<IYTField>()};
+                        pRow = pCursor.NextRow();
+                        continue;
+                }
+                IYTField field=new YTField()
+                {
+                    TypeName=pRow.Value[fieldIndexes[1]].ToString(),
+                    Name = pRow.Value[fieldIndexes[2]].ToString(),
+                    AliasName = pRow.Value[fieldIndexes[3]].ToString(),
+                    Length= Convert.ToInt32(pRow.Value[fieldIndexes[5]].ToString()),
+                    Precision = Convert.ToInt32(pRow.Value[fieldIndexes[6]].ToString()),
+                    AllowNull = Convert.ToInt32(pRow.Value[fieldIndexes[7]].ToString())==-1?true:false,
+                    AutoNames=pRow.Value[fieldIndexes[8]].ToString(),
+                    FieldType=FieldHelper.ConvertFromString(pRow.Value[fieldIndexes[4]].ToString())
+                };
+                oneTemplate.Fields.Add(field);
+                pRow = pCursor.NextRow();
+            }
+            if (oneTemplate != null)
+            {
+                templates.Add(oneTemplate);
+            }
+            Marshal.ReleaseComObject(pCursor);
+            Marshal.ReleaseComObject(tableSort);
+            Marshal.ReleaseComObject(pCodeTable);
+
+            List<IBasicLayerInfo> basicInfos=new List<IBasicLayerInfo>();
+
+            pCodeTable = _workspace.OpenTable("YT_PIPE_LAYER");
+            tableSort = new TableSortClass();
+            tableSort.Table = pCodeTable;
+            tableSort.Fields = "Priority,LayerName";
+            tableSort.Sort(null);
+            pCursor = tableSort.Rows;
+            pRow = pCursor.NextRow();
+            fieldIndexes = new int[7];
+          
+            fieldIndexes[0] = pRow.Fields.FindField("PipeCode");
+            fieldIndexes[1] = pRow.Fields.FindField("BasicName");
+            fieldIndexes[2] = pRow.Fields.FindField("LayerName");
+            fieldIndexes[3] = pRow.Fields.FindField("AutoNames");
+            fieldIndexes[4] = pRow.Fields.FindField("Priority");
+            fieldIndexes[5] = pRow.Fields.FindField("DataType");
+            fieldIndexes[6] = pRow.Fields.FindField("Template");
+            while (pRow != null)
+            {
+                string pipeCode = pRow.Value[fieldIndexes[0]].ToString();
+                IPipelineLayer oneLayer = layers.Find(c => c.Code == pipeCode);
+                if (oneLayer == null)
+                {
+                    pRow = pCursor.NextRow();
+                    continue;
+                }
+                enumPipelineDataType dataType =
+                    Yutai.Pipeline.Config.Helpers.EnumHelper.ConvertDataTypeFromString(pRow.Value[fieldIndexes[5]].ToString().Trim());
+                IBasicLayerInfo basicLayer=new BasicLayerInfo()
+                {
+                    Name = pRow.Value[fieldIndexes[1]].ToString(),
+                    AliasName =  pRow.Value[fieldIndexes[2]].ToString(),
+                    AutoNames = pRow.Value[fieldIndexes[3]].ToString(),
+                    DataType=dataType,
+                    TemplateName = pRow.Value[fieldIndexes[6]].ToString(),
+                    Fields = new List<IYTField>()
+                };
+                if (pRow.Value[fieldIndexes[6]] != null)
+                {
+                    IPipelineTemplate template = templates.Find(c => c.Name == basicLayer.TemplateName);
+                    if (template != null)
+                    {
+                        basicLayer.Fields.AddRange(template.Fields);
+                    }
+                }
+                oneLayer.Layers.Add(basicLayer);
+                pRow = pCursor.NextRow();
+            }
+            Marshal.ReleaseComObject(pCursor);
+            Marshal.ReleaseComObject(tableSort);
+            Marshal.ReleaseComObject(pCodeTable);
+            return layers;
         }
     }
 }
