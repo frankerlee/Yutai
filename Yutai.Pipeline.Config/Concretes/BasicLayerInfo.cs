@@ -88,6 +88,7 @@ namespace Yutai.Pipeline.Config.Concretes
             {
                 _featureClass = value;
                 _esriClassName = ((IDataset) FeatureClass).Name;
+                LoadFieldAutoNames();
             }
         }
 
@@ -233,6 +234,26 @@ namespace Yutai.Pipeline.Config.Concretes
             return layerNode;
         }
 
-      
+        //! 该方法在FeatureClass被设置时触发，主要是将FeatureClass中的字段和配置中的字段想匹配
+        private void LoadFieldAutoNames()
+        {
+            for (int i = 0; i < _featureClass.Fields.FieldCount; i++)
+            {
+                IField pField = _featureClass.Fields.Field[i];
+                IYTField ytField =
+                    _fields.FirstOrDefault(
+                        c =>
+                            c.Name == pField.Name || c.AliasName == pField.Name || c.AliasName == pField.AliasName ||
+                            c.Name == pField.AliasName || c.FixAutoNames.Contains("/" + pField.Name + "/"));
+                if (ytField != null)
+                {
+                    ytField.EsriFieldName = pField.Name;
+                    ytField.Name = pField.Name;
+                    ytField.AliasName = pField.AliasName;
+                    continue;
+                }
+            }
+        }
+
     }
 }

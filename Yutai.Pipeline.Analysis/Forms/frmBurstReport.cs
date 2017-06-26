@@ -751,6 +751,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 		public  void GetValues(ArrayList Values)
 		{
 			Values.Clear();
+		    if (this._networkInfo.LayerPoint==null) return;
 		    IBasicLayerInfo pipePoint =
                 m_Config.GetBasicLayerInfo(this._networkInfo.LayerPoint.FeatureClass.AliasName) as IBasicLayerInfo;
 

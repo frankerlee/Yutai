@@ -421,8 +421,7 @@ namespace Yutai.Pipeline.Config.Concretes
                         templates.Add(oneTemplate);
                     }
                     oneTemplate=new PipelineTemplate() {Name=templateName,Fields=new List<IYTField>()};
-                        pRow = pCursor.NextRow();
-                        continue;
+                    oldTemplate = templateName;
                 }
                 IYTField field=new YTField()
                 {
