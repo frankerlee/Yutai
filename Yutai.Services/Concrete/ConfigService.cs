@@ -47,7 +47,7 @@ namespace Yutai.Services.Concrete
 
         public void LoadAll()
         {
-            LoadConfig();
+            //LoadConfig();
            // LoadRepository();
         }
 
