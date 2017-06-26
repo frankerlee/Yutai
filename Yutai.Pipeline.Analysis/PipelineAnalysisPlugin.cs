@@ -1,5 +1,6 @@
 ﻿using System;
 using Yutai.Pipeline.Analysis.Menu;
+using Yutai.Pipeline.Analysis.Services;
 using Yutai.Pipeline.Config.Concretes;
 using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Catalog;
@@ -19,6 +20,7 @@ namespace Yutai.Pipeline.Analysis
         private IAppContext _context;
         private MenuGenerator _menuGenerator;
         private IPipelineConfig _config;
+        private DockPanelService _dockPanelService;
 
         public event EventHandler<QueryResultArgs> QueryResultChanged;
 
@@ -32,6 +34,7 @@ namespace Yutai.Pipeline.Analysis
             _context = context;
             _menuGenerator = context.Container.GetInstance<MenuGenerator>();
             _config = context.Container.GetSingleton<PipelineConfig>();
+            _dockPanelService = context.Container.GetInstance<DockPanelService>();
             if (string.IsNullOrEmpty(_config.XmlFile))
             {
                 string fileName = ((ISecureContext)_context).YutaiProject.FindPlugin("f804e812-481e-45c3-be08-749da82075d1").ConfigXML;

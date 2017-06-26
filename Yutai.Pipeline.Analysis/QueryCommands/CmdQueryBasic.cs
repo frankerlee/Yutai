@@ -28,11 +28,14 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             if (this.QueryUI == null || this.QueryUI.IsDisposed)
             {
                 this.QueryUI = new BaseQueryUI();
+                this.QueryUI.TopMost = true;
                 this.QueryUI.MapControl = (IMapControl3)_context.MapControl;
                 this.QueryUI.pPipeCfg = _plugin.PipeConfig;
                 this.QueryUI.m_context = this._context;
+                this.QueryUI.WindowText = "管点查询";
                 this.QueryUI.Closing += new CancelEventHandler(this.QueryUI_Closing);
                 this.QueryUI.Show();
+                this.QueryUI.Plugin = _plugin;
             }
             else if (!this.QueryUI.Visible)
             {
@@ -55,14 +58,14 @@ namespace Yutai.Pipeline.Analysis.QueryForms
         public override void OnCreate(object hook)
         {
             _context = hook as IAppContext;
-            base.m_caption = "基础查询";
+            base.m_caption = "管点查询";
             base.m_category = "PipelineQuery";
             base.m_bitmap = Properties.Resources.icon_analysis_collision;
             base.m_name = "PipeQuery_Basic";
             base._key = "PipeQuery_Basic";
-            base.m_toolTip = "基础查询";
+            base.m_toolTip = "管点查询";
             base.m_checked = false;
-            base.m_message = "基础查询";
+            base.m_message = "管点查询";
             base.m_enabled = true;
             base._itemType = RibbonItemType.Tool;
 

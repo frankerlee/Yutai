@@ -145,11 +145,18 @@ namespace Yutai.Pipeline.Config.Concretes
             IBasicLayerInfo layer;
             foreach (IPipelineLayer pipelineLayer in _layers)
             {
-                layer = pipelineLayer.Layers.FirstOrDefault(c => c.FeatureClass.AliasName == classAliasName ||  c.EsriClassName == classAliasName);
-                if (layer != null)
+                try
                 {
-                    if(layer.DataType == dataType)
-                         return true;
+                    layer = pipelineLayer.Layers.FirstOrDefault(c => c.FeatureClass.AliasName == classAliasName);
+                    if (layer != null)
+                    {
+                        if(layer.DataType == dataType)
+                            return true;
+                    }
+                }
+                catch (Exception)
+                {
+                    return false;
                 }
             }
             return false;

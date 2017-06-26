@@ -25,6 +25,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             if (this.QueryUI == null || this.QueryUI.IsDisposed)
             {
                 this.QueryUI = new SimpleQueryByCmisUI();
+                this.QueryUI.TopMost = true;
                 this.QueryUI.MapControl = (IMapControl3)_context.MapControl;
                 this.QueryUI.pPipeCfg = _plugin.PipeConfig;
                 this.QueryUI.m_context = this._context;

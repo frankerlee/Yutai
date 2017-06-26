@@ -141,7 +141,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			if (iFLayer != null)
 			{
 				string aliasName = iFLayer.FeatureClass.AliasName;
-				if (this.pPipeCfg.IsPipelineLayer(aliasName))
+				if (this.pPipeCfg.IsPipelineLayer(aliasName, enumPipelineDataType.Line))
 				{
 					SimpleQueryByDiaUI.LayerboxItem layerboxItem = new SimpleQueryByDiaUI.LayerboxItem();
 					layerboxItem.m_pPipeLayer = iFLayer;
