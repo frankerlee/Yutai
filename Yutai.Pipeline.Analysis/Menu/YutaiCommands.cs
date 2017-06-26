@@ -42,6 +42,10 @@ namespace Yutai.Pipeline.Analysis.Menu
                     new CmdCloseValveAnalysis(_context,_plugin),
                     new CmdQueryBasic(_context, _plugin),
                     new CmdQueryLine(_context, _plugin),
+                    new CmdQueryByAddress(_context, _plugin),
+                    new CmdQueryByCMIS(_context, _plugin),
+                    new CmdQueryByDate(_context, _plugin),
+                    new CmdQueryByDia(_context, _plugin),
                 };
             }
             catch (Exception ex)
