@@ -23,6 +23,7 @@ namespace Yutai.Pipeline.Config.Concretes
         private string _fieldTypeStr;
         private string _domainValues;
         private string _esriFieldName;
+      
 
         public YTField() { }
 
@@ -63,6 +64,11 @@ namespace Yutai.Pipeline.Config.Concretes
         {
             get { return _autoNames; }
             set { _autoNames = value; }
+        }
+
+        public string FixAutoNames
+        {
+            get { return "/"+_autoNames+"/"; }
         }
 
         public int Length

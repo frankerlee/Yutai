@@ -19,6 +19,7 @@ namespace Yutai.Pipeline.Config.Interfaces
         string Code { get; set; }
 
         string AutoNames { get; set; }
+        string FixAutoNames { get; }
 
         List<IBasicLayerInfo> Layers { get;set; }
         void ReadFromXml(XmlNode xml);
@@ -28,5 +29,6 @@ namespace Yutai.Pipeline.Config.Interfaces
 
         IPipelineLayer Clone(bool keepClass);
         IWorkspace Workspace { get; set; }
+
     }
 }

@@ -12,12 +12,13 @@ namespace Yutai.Pipeline.Analysis.Commands
     {
 
         private frmBurstReport frmBurst;
+        private PipelineAnalysisPlugin _plugin;
         private IPipelineConfig _config;
 
-        public CmdCloseValveAnalysis(IAppContext context,IPipelineConfig config)
+        public CmdCloseValveAnalysis(IAppContext context,PipelineAnalysisPlugin plugin)
         {
             OnCreate(context);
-            _config = config;
+            _plugin = plugin;
         }
 
         public override void OnClick()
@@ -29,7 +30,11 @@ namespace Yutai.Pipeline.Analysis.Commands
             {
                 this.frmBurst = new frmBurstReport();
                 frmBurst.m_iApp = this._context;
-                
+                frmBurst.m_Config = _plugin.PipeConfig;
+                this.frmBurst.Show();
+            }
+            else
+            {
                 this.frmBurst.Show();
             }
         }
@@ -72,6 +77,7 @@ namespace Yutai.Pipeline.Analysis.Commands
                 {
                     this.frmBurst = new frmBurstReport();
                     frmBurst.m_iApp = this._context;
+                    frmBurst.m_Config = _plugin.PipeConfig;
                     this.frmBurst.Show();
                 }
                 this.frmBurst.SetMousePoint(x, y);

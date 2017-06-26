@@ -18,6 +18,7 @@ namespace Yutai.Pipeline.Config.Interfaces
         string Name { get; set; }
         string AliasName { get; set; }
         string AutoNames { get; set; }
+        string FixAutoNames { get; }
         int Length { get; set; }
         int Precision { get; set; }
         esriFieldType FieldType { get; set; }

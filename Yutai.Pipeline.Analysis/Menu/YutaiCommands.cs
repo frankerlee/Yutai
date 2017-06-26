@@ -39,6 +39,7 @@ namespace Yutai.Pipeline.Analysis.Menu
                 _commands = new List<YutaiCommand>()
                 {
                     new CmdStartOrganizeMap(_context,_plugin),
+                    new CmdCloseValveAnalysis(_context,_plugin)
 
 
                 };

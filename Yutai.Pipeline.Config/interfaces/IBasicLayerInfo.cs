@@ -8,6 +8,7 @@ namespace Yutai.Pipeline.Config.Interfaces
     public interface IBasicLayerInfo
     {
         string AutoNames { get; set; }
+        string FixAutoNames { get; }
         string Name { get; set; }
         string AliasName { get; set; }
         bool Visible { get; set; }

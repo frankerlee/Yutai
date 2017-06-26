@@ -69,7 +69,10 @@ namespace Yutai.Pipeline.Config.Concretes
             get { return _autoNames; }
             set { _autoNames = value; }
         }
-
+        public string FixAutoNames
+        {
+            get { return "/" + _autoNames + "/"; }
+        }
         public List<IBasicLayerInfo> Layers
         {
             get { return _layers; }
@@ -144,11 +147,11 @@ namespace Yutai.Pipeline.Config.Concretes
         public bool OrganizeFeatureClass(IFeatureClass featureClass)
         {
             //! 因为图层是按照工作空间组织的，所以图层不可能被重复，也就是说一个工作控件里面的图层只可能识别一次
-            string ownerName = ConfigHelper.GetClassOwnerName(((IDataset)featureClass).Name);
+            string ownerName = ConfigHelper.GetClassOwnerName(((IDataset)featureClass).FullName.NameString);
             string baseName = ConfigHelper.GetClassShortName(featureClass);
             string classAliasName = featureClass.AliasName;
             string autoStr = "/" + _autoNames + "/";
-            IBasicLayerInfo layerInfo = _layers.FirstOrDefault(c => c.Name == baseName || c.AliasName==baseName || autoStr.Contains("/"+baseName+"/"));
+            IBasicLayerInfo layerInfo = _layers.FirstOrDefault(c => c.Name == baseName || c.AliasName==baseName || c.FixAutoNames.Contains("/"+baseName+"/"));
             if (layerInfo != null && layerInfo.FeatureClass==null)
             {
                 layerInfo.FeatureClass = featureClass;

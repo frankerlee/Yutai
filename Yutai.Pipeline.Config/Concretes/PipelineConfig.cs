@@ -304,14 +304,17 @@ namespace Yutai.Pipeline.Config.Concretes
                     bool findExist = false;
                     foreach(IPipelineLayer existLayer in _layers)
                     {
-                        if(existLayer.Workspace.ConnectionProperties != workspaceInfo.Workspace.ConnectionProperties)
+                        // if(existLayer.Workspace.ConnectionProperties != workspaceInfo.Workspace.ConnectionProperties)
+                        if (existLayer.Workspace.PathName != workspaceInfo.Workspace.PathName)
                         {
                             continue;
                         }
                         bool back = existLayer.OrganizeFeatureClass(pClass);
                         if (back)
                         {
-                            findExist = true;break; }
+                            findExist = true;
+                            break;
+                        }
                         IPipelineLayer newLayer = existLayer.NewOrganizeFeatureClass(pClass);
                        
                         if(newLayer!=null)
@@ -336,6 +339,19 @@ namespace Yutai.Pipeline.Config.Concretes
                             break;
                         }
                     }
+                }
+            }
+            for (int i = _layers.Count-1;i>=0 ;i--)
+            {
+                IPipelineLayer oneLayer = _layers[i];
+                for (int j = oneLayer.Layers.Count - 1; j >= 0; j--)
+                {
+                    IBasicLayerInfo layerInfo = oneLayer.Layers[j];
+                    if (layerInfo.FeatureClass == null) oneLayer.Layers.Remove(layerInfo);
+                }
+                if (oneLayer.Layers == null || oneLayer.Layers.Count == 0)
+                {
+                    _layers.Remove(oneLayer);
                 }
             }
         }

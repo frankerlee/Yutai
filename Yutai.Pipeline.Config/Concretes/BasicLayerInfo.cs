@@ -30,7 +30,10 @@ namespace Yutai.Pipeline.Config.Concretes
             get { return _autoNames; }
             set { _autoNames = value; }
         }
-
+        public string FixAutoNames
+        {
+            get { return "/" + _autoNames + "/"; }
+        }
         public string Name
         {
             get { return _name; }
