@@ -33,15 +33,15 @@ namespace Yutai.Pipeline.Analysis.Menu
         public override IEnumerable<YutaiCommand> GetCommands()
         {
             //第一次被初始化的时候Plugin为空，出现错误，所以在创建菜单的时候重新进行了初始化。
-           
+
             try
             {
                 _commands = new List<YutaiCommand>()
                 {
                     new CmdStartOrganizeMap(_context,_plugin),
-                    new CmdCloseValveAnalysis(_context,_plugin)
-
-
+                    new CmdCloseValveAnalysis(_context,_plugin),
+                    new CmdQueryBasic(_context, _plugin),
+                    new CmdQueryLine(_context, _plugin),
                 };
             }
             catch (Exception ex)
@@ -49,7 +49,7 @@ namespace Yutai.Pipeline.Analysis.Menu
                 string msg = ex.Message;
             }
 
-         
+
             return _commands;
         }
     }

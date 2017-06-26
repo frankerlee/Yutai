@@ -72,7 +72,7 @@ namespace Yutai.Pipeline.Analysis.Views
 
         public override DockPanelState DefaultDock
         {
-            get { return DockPanelState.Right; }
+            get { return DockPanelState.Bottom; }
         }
 
         public override string DockName

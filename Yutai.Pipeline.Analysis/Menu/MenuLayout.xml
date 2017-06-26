@@ -6,6 +6,10 @@
           <BarItem Key="PipeQuery_Config" Visible="true"></BarItem>
           <BarItem Key="PipeAnalysis_CloseValveAnalysis" Visible="true"></BarItem>
         </PageGroup>
+        <PageGroup Key="Pipeline_Query_Common" Caption="常用查询" Visible="true" Index="1">
+          <BarItem Key="PipeQuery_Basic" Visible="true"/>
+          <BarItem Key="PipeQuery_BasicLine" Visible="true"/>
+        </PageGroup>
       </Page>
     </Pages>
   </MainMenu>

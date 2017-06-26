@@ -111,7 +111,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			if (iFLayer != null)
 			{
 				string aliasName = iFLayer.FeatureClass.AliasName;
-				if (this.Text == "管点查询")
+				if (this.Text == @"管点查询")
 				{
 
 					if (this.pPipeCfg.IsPipelineLayer(iFLayer.Name,enumPipelineDataType.Point))
