@@ -5,6 +5,8 @@
     {
         Point,
         Line,
+        Network,
+        Junction,
         Point3D,
         Line3D,
         AssPoint,

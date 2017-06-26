@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +22,8 @@ namespace Yutai.Pipeline.Config.Concretes
         private string _fieldTypeStr;
         private string _domainValues;
         private string _esriFieldName;
-      
+        private IYTDomain _domain;
+
 
         public YTField() { }
 
@@ -38,6 +38,10 @@ namespace Yutai.Pipeline.Config.Concretes
             _fieldType = pField.FieldType;
             _allowNull = pField.AllowNull;
             _domainValues = pField.DomainValues;
+            if (string.IsNullOrEmpty(_domainValues))
+            {
+                DomainValues = pField.DomainValues;
+            }
 
         }
         public YTField(XmlNode node) { ReadFromXml(node);}
@@ -98,7 +102,14 @@ namespace Yutai.Pipeline.Config.Concretes
         public string DomainValues
         {
             get { return _domainValues; }
-            set { _domainValues = value; }
+            set
+            {
+                _domainValues = value;
+                if (_domain == null)
+                {
+                    _domain=new YTDomain("Domain_"+_name,_domainValues);
+                }
+            }
         }
 
         public void ReadFromXml(XmlNode xml)
@@ -135,7 +146,6 @@ namespace Yutai.Pipeline.Config.Concretes
             fieldTypeAttribute.Value = FieldHelper.QueryFieldTypeName(_fieldType);
             XmlAttribute precisionAttribute = doc.CreateAttribute("Precision");
             precisionAttribute.Value = _precision.ToString();
-
             XmlAttribute domainAttribute = doc.CreateAttribute("DomainValues");
             domainAttribute.Value = _domainValues;
 
@@ -166,6 +176,16 @@ namespace Yutai.Pipeline.Config.Concretes
                     _fieldType = field.Type;
                     _precision = field.Precision;
                 }
+            }
+        }
+
+        public IYTDomain Domain
+        {
+            get { return _domain; }
+            set
+            {
+                _domain = value;
+                _domainValues = _domain.DomainValues;
             }
         }
 

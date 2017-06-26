@@ -92,6 +92,11 @@ namespace Yutai.Pipeline.Config.Concretes
             }
         }
 
+        public List<IBasicLayerInfo> GetLayers(enumPipelineDataType dataType)
+        {
+            return (from c in _layers where c.DataType == dataType select c).ToList();
+        }
+
         public void ReadFromXml(XmlNode xml)
         {
             if (xml == null)

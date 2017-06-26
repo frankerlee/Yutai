@@ -62,6 +62,7 @@
     <Compile Include="Concretes\PipelineLayer.cs" />
     <Compile Include="Concretes\PipelineTemplate.cs" />
     <Compile Include="Concretes\PipeWorkspaceInfo.cs" />
+    <Compile Include="Concretes\YTDomain.cs" />
     <Compile Include="Concretes\YTField.cs" />
     <Compile Include="Helpers\ConfigHelper.cs" />
     <Compile Include="Helpers\EnumHelper.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Interfaces\IPipelineLayer.cs" />
     <Compile Include="Interfaces\IPipelineTemplate.cs" />
     <Compile Include="Interfaces\IPipelineType.cs" />
+    <Compile Include="Interfaces\IYTDomain.cs" />
     <Compile Include="Interfaces\IYTField.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

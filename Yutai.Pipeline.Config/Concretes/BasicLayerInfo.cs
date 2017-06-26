@@ -87,7 +87,9 @@ namespace Yutai.Pipeline.Config.Concretes
             set
             {
                 _featureClass = value;
-                _esriClassName = ((IDataset) FeatureClass).Name;
+                _esriClassName = ((IDataset)_featureClass).Name;
+                _name = ((IDataset)_featureClass).Name;
+                _aliasName = _featureClass.AliasName;
                 LoadFieldAutoNames();
             }
         }
@@ -252,6 +254,22 @@ namespace Yutai.Pipeline.Config.Concretes
                     ytField.AliasName = pField.AliasName;
                     continue;
                 }
+            }
+        }
+
+        public string EsriShortName
+        {
+            get
+            {
+                if (_featureClass == null) return "";
+                string paramName = ((IDataset)_featureClass).Name;
+                string str = paramName;
+                int num = paramName.LastIndexOf(".");
+                if (num >= 0)
+                {
+                    str = paramName.Substring(num + 1);
+                }
+                return str;
             }
         }
 

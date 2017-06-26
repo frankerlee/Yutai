@@ -31,6 +31,10 @@ namespace Yutai.Pipeline.Config.Helpers
                     return enumPipelineDataType.Point;
                 case "LINE":
                     return enumPipelineDataType.Line;
+                case "NETWORK":
+                    return enumPipelineDataType.Network;
+                case "JUNCTION":
+                    return enumPipelineDataType.Junction;
                 case "POINT3D":
                     return enumPipelineDataType.Point3D;
                 case "LINE3D":
@@ -59,6 +63,10 @@ namespace Yutai.Pipeline.Config.Helpers
                     return "POINT";
                 case enumPipelineDataType.Line:
                     return "LINE";
+                    case enumPipelineDataType.Network:
+                    return "NETWORK";
+                    case enumPipelineDataType.Junction:
+                    return "JUNCTION";
                 case enumPipelineDataType.Point3D:
                     return "POINT3D";
                 case enumPipelineDataType.Line3D:

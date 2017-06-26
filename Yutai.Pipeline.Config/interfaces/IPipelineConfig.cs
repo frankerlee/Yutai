@@ -38,6 +38,7 @@ namespace Yutai.Pipeline.Config.Interfaces
         bool IsPipelineLayer(string classAliasName);
         bool IsPipelineLayer(IFeatureClass pClass);
         bool IsPipelineLayer(string classAliasName, enumPipelineDataType dataType);
+        IPipelineLayer GetPipelineLayer(string classAliasName, enumPipelineDataType dataType);
         //! 依据FeatureLayer获取BaiscLayerInfo对象
         IBasicLayerInfo GetBasicLayerInfo(IFeatureClass pClass);
 

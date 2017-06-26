@@ -30,7 +30,7 @@ namespace Yutai.Pipeline.Config.Interfaces
         XmlNode ToXml(XmlDocument doc);
         void LoadFromField(IFields fields);
 
-
+        IYTDomain Domain { get; set; }
         string EsriFieldName { get; set; }
         IYTField Clone(bool keepClass);
     }

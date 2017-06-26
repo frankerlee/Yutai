@@ -22,6 +22,7 @@ namespace Yutai.Pipeline.Config.Interfaces
         string FixAutoNames { get; }
 
         List<IBasicLayerInfo> Layers { get;set; }
+        List<IBasicLayerInfo> GetLayers(enumPipelineDataType dataType);
         void ReadFromXml(XmlNode xml);
         XmlNode ToXml(XmlDocument doc);
         bool OrganizeFeatureClass(IFeatureClass featureClass);

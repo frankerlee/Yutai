@@ -34,5 +34,7 @@ namespace Yutai.Pipeline.Config.Interfaces
 
         string EsriClassName { get; set; }
         IBasicLayerInfo Clone(bool keepClass);
+
+        string EsriShortName { get; }
     }
 }

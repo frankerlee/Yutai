@@ -145,7 +145,7 @@ namespace Yutai.Pipeline.Config.Concretes
             IBasicLayerInfo layer;
             foreach (IPipelineLayer pipelineLayer in _layers)
             {
-                layer = pipelineLayer.Layers.FirstOrDefault(c => c.FeatureClass.AliasName == classAliasName);
+                layer = pipelineLayer.Layers.FirstOrDefault(c => c.FeatureClass.AliasName == classAliasName ||  c.EsriClassName == classAliasName);
                 if (layer != null)
                 {
                     if(layer.DataType == dataType)
@@ -153,6 +153,21 @@ namespace Yutai.Pipeline.Config.Concretes
                 }
             }
             return false;
+        }
+
+        public IPipelineLayer GetPipelineLayer(string classAliasName, enumPipelineDataType dataType)
+        {
+            IBasicLayerInfo layer;
+            foreach (IPipelineLayer pipelineLayer in _layers)
+            {
+                layer = pipelineLayer.Layers.FirstOrDefault(c => c.FeatureClass.AliasName == classAliasName || c.EsriClassName == classAliasName);
+                if (layer != null)
+                {
+                    if (layer.DataType == dataType)
+                        return pipelineLayer;
+                }
+            }
+            return null;
         }
 
         public IBasicLayerInfo GetBasicLayerInfo(IFeatureClass pClass)
@@ -386,6 +401,25 @@ namespace Yutai.Pipeline.Config.Concretes
             Marshal.ReleaseComObject(pCursor);
             Marshal.ReleaseComObject(tableSort);
             Marshal.ReleaseComObject(pCodeTable);
+
+            List<IYTDomain> domains = new List<IYTDomain>();
+            pCodeTable = _workspace.OpenTable("YT_PIPE_DOMAIN");
+            pCursor = pCodeTable.Search(null,false);
+            pRow = pCursor.NextRow();
+            nameIdx = pCursor.FindField("DomainName");
+            autoIdx = pCursor.FindField("DomainValues");
+           
+            while (pRow != null)
+            {
+                string domainName = pRow.Value[nameIdx].ToString();
+                string domainValues = pRow.Value[autoIdx].ToString();
+                IYTDomain onedomain = new YTDomain(domainName, domainValues);
+                domains.Add(onedomain);
+                pRow = pCursor.NextRow();
+            }
+            Marshal.ReleaseComObject(pCursor);
+            Marshal.ReleaseComObject(pCodeTable);
+
             List<IPipelineTemplate> templates=new List<IPipelineTemplate>();
             //! 先读取模板
             pCodeTable = _workspace.OpenTable("YT_PIPE_FIELD");
@@ -408,7 +442,8 @@ namespace Yutai.Pipeline.Config.Concretes
             fieldIndexes[7] = pRow.Fields.FindField("AllowNull");
             fieldIndexes[8] = pRow.Fields.FindField("AutoValues");
             fieldIndexes[9] = pRow.Fields.FindField("IsKey");
-           
+          //  fieldIndexes[10] = pRow.Fields.FindField("Domains");
+
 
             IPipelineTemplate oneTemplate = null;
             while (pRow != null)
@@ -454,7 +489,7 @@ namespace Yutai.Pipeline.Config.Concretes
             tableSort.Sort(null);
             pCursor = tableSort.Rows;
             pRow = pCursor.NextRow();
-            fieldIndexes = new int[7];
+            fieldIndexes = new int[8];
           
             fieldIndexes[0] = pRow.Fields.FindField("PipeCode");
             fieldIndexes[1] = pRow.Fields.FindField("BasicName");
@@ -463,6 +498,7 @@ namespace Yutai.Pipeline.Config.Concretes
             fieldIndexes[4] = pRow.Fields.FindField("Priority");
             fieldIndexes[5] = pRow.Fields.FindField("DataType");
             fieldIndexes[6] = pRow.Fields.FindField("Template");
+            fieldIndexes[7] = pRow.Fields.FindField("Domains");
             while (pRow != null)
             {
                 string pipeCode = pRow.Value[fieldIndexes[0]].ToString();
@@ -488,9 +524,35 @@ namespace Yutai.Pipeline.Config.Concretes
                     IPipelineTemplate template = templates.Find(c => c.Name == basicLayer.TemplateName);
                     if (template != null)
                     {
-                        basicLayer.Fields.AddRange(template.Fields);
+                        foreach (IYTField field in template.Fields)
+                        {
+                            basicLayer.Fields.Add(new YTField(field));
+                        }
+                        
                     }
                 }
+
+                string domainStr = pRow.Value[fieldIndexes[7]] == DBNull.Value
+                    ? string.Empty
+                    : pRow.Value[fieldIndexes[7]].ToString();
+                if (!string.IsNullOrEmpty(domainStr))
+                {
+                    //获得Domainzhi值
+                    string[] domainPairs = domainStr.Split('/');
+                    for (int j = 0; j < domainPairs.Length; j++)
+                    {
+                        string[] domainPair = domainPairs[j].Split(':');
+                        string fieldName = domainPair[0];
+                        string domainName = domainPair[1];
+                        IYTDomain findDomain = domains.FirstOrDefault(c => c.DomainName == domainName);
+                        if (findDomain != null)
+                        {
+                            IYTField pField = basicLayer.Fields.FirstOrDefault(c => c.TypeName == fieldName);
+                            if (pField != null) pField.Domain = new YTDomain(findDomain.DomainName,findDomain.DomainValues);
+                        }
+                    }
+                }
+
                 oneLayer.Layers.Add(basicLayer);
                 pRow = pCursor.NextRow();
             }

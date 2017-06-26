@@ -5,6 +5,7 @@ using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
@@ -56,6 +57,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		private IContainer icontainer_0 = null;
 
+	    private IPipelineLayer _pipeLayer;
         
 		public IAppContext m_iApp;
 
@@ -79,15 +81,11 @@ namespace Yutai.Pipeline.Analysis.Forms
 			{
 				if (i > 0)
 				{
-					IQueryFilter queryFilter2 = queryFilter;
-					IQueryFilter expr_22 = queryFilter2;
-					expr_22.WhereClause=(expr_22.WhereClause + " or ");
+                    queryFilter.WhereClause=(queryFilter.WhereClause + " or ");
 				}
-				IQueryFilter queryFilter3 = queryFilter;
-				IQueryFilter expr_3C = queryFilter3;
-				expr_3C.WhereClause=(expr_3C.WhereClause + this.label1.Text);
-				IQueryFilter queryFilter4 = queryFilter;
-				queryFilter4.WhereClause=(queryFilter4.WhereClause + "='" + this.listFieldValues.Items[i].ToString() + "'");
+
+                queryFilter.WhereClause=queryFilter.WhereClause + this.label1.Text;
+                queryFilter.WhereClause=queryFilter.WhereClause + "='" + this.listFieldValues.Items[i].ToString() + "'";
 			}
 			arrayList.Clear();
 			return queryFilter;
@@ -159,51 +157,52 @@ namespace Yutai.Pipeline.Analysis.Forms
 			CMapOperator.GetMapILayers(m_iApp.FocusMap, null, arrayList);
 			//string pointTableFieldName = m_Config.GetPointTableFieldName("点性");
 			//this.label1.Text = pointTableFieldName;
-			for (int i = 0; i < arrayList.Count; i++)
-			{
-				IFeatureLayer featureLayer = arrayList[i] as IFeatureLayer;
-			    if (featureLayer == null || featureLayer.FeatureClass == null) continue;
-                if (featureLayer.FeatureClass.ShapeType != esriGeometryType.esriGeometryPoint) continue;
+			//for (int i = 0; i < arrayList.Count; i++)
+			//{
+			//	IFeatureLayer featureLayer = arrayList[i] as IFeatureLayer;
+			//    if (featureLayer == null || featureLayer.FeatureClass == null) continue;
+   //             if (featureLayer.FeatureClass.ShapeType != esriGeometryType.esriGeometryPoint) continue;
 
-                //! 在这儿修改判断条件，判断图层为点图层而且为管线点图层的方式需要做修改
-			    IBasicLayerInfo pipePoint = m_Config.GetBasicLayerInfo(featureLayer.FeatureClass.AliasName) as IBasicLayerInfo;
+   //             //! 在这儿修改判断条件，判断图层为点图层而且为管线点图层的方式需要做修改
+			//    IBasicLayerInfo pipePoint = m_Config.GetBasicLayerInfo(featureLayer.FeatureClass.AliasName) as IBasicLayerInfo;
 
-                if (pipePoint!=null)
-				{
-					IFeatureClass featureClass = featureLayer.FeatureClass;
-                    this.label1.Text = pipePoint.GetFieldName(PipeConfigWordHelper.PointWords.TZW);
-                    int num = featureClass.Fields.FindField(pipePoint.GetFieldName(PipeConfigWordHelper.PointWords.TZW));
-					if (num != -1)
-					{
-						ArrayList uVByQueryDef = this.GetUVByQueryDef(featureLayer, pipePoint.GetFieldName(PipeConfigWordHelper.PointWords.TZW));
-						for (int j = 0; j < uVByQueryDef.Count; j++)
-						{
-							string text = uVByQueryDef[j].ToString();
-							if (text.Trim() != "" && !this.comboBox1.Items.Contains(text))
-							{
-								this.comboBox1.Items.Add(text);
-							}
-							this.comboBox1.Items.Add(text);
-						}
-					}
-				}
-			}
-			if (this.comboBox1.Items.Count > 0)
-			{
-				this.comboBox1.SelectedIndex = 0;
-			}
+   //             if (pipePoint!=null)
+   //             {
+   //                 if (pipePoint.DataType != enumPipelineDataType.Point) continue;
+			//		IFeatureClass featureClass = featureLayer.FeatureClass;
+   //                 this.label1.Text = pipePoint.GetFieldName(PipeConfigWordHelper.PointWords.FSW);
+   //                 int num = featureClass.Fields.FindField(pipePoint.GetFieldName(PipeConfigWordHelper.PointWords.FSW));
+			//		if (num != -1)
+			//		{
+			//			ArrayList uVByQueryDef = this.GetUVByQueryDef(featureLayer, pipePoint.GetFieldName(PipeConfigWordHelper.PointWords.FSW));
+			//			for (int j = 0; j < uVByQueryDef.Count; j++)
+			//			{
+			//				string text = uVByQueryDef[j].ToString();
+			//				if (text.Trim() != "" && !this.cmbDomainValues.Items.Contains(text))
+			//				{
+			//					this.cmbDomainValues.Items.Add(text);
+			//				}
+			//				this.cmbDomainValues.Items.Add(text);
+			//			}
+			//		}
+			//	}
+			//}
+			//if (this.cmbDomainValues.Items.Count > 0)
+			//{
+			//	this.cmbDomainValues.SelectedIndex = 0;
+			//}
 			
-			ArrayList arrayList2 = new ArrayList();
-			GetValues(arrayList2);
-			for (int j = 0; j < arrayList2.Count; j++)
-			{
-				this.listFieldValues.Items.Add(arrayList2[j].ToString());
-			}
-			if (this.listFieldValues.Items.Count == 0)
-			{
-				this.listFieldValues.Items.Add("阀门");
-				this.listFieldValues.Items.Add("阀门井");
-			}
+			//ArrayList arrayList2 = new ArrayList();
+			//GetValues(arrayList2);
+			//for (int j = 0; j < arrayList2.Count; j++)
+			//{
+			//	this.listFieldValues.Items.Add(arrayList2[j].ToString());
+			//}
+			//if (this.listFieldValues.Items.Count == 0)
+			//{
+			//	this.listFieldValues.Items.Add("阀门");
+			//	this.listFieldValues.Items.Add("阀门井");
+			//}
 			this.radioUpAndDown.Checked = true;
 		}
 
@@ -264,11 +263,15 @@ namespace Yutai.Pipeline.Analysis.Forms
 			for (int i = 0; i < arrayList.Count; i++)
 			{
 				IFeatureLayer featureLayer = arrayList[i] as IFeatureLayer;
-				if (featureLayer != null && featureLayer.FeatureClass != null && featureLayer.Visible && m_Config.IsPipelineLayer(featureLayer.Name, enumPipelineDataType.Line))
+				if (featureLayer != null && featureLayer.FeatureClass != null && featureLayer.Visible && m_Config.IsPipelineLayer(featureLayer.FeatureClass.AliasName, enumPipelineDataType.Line))
 				{
+				    IPipelineLayer pipeLayer = m_Config.GetPipelineLayer(featureLayer.FeatureClass.AliasName,
+				        enumPipelineDataType.Line);
 					IFeatureDataset featureDataset = featureLayer.FeatureClass.FeatureDataset;
 					IFeatureClassContainer featureClassContainer = featureDataset as IFeatureClassContainer;
-					IFeatureClass featureClass = featureClassContainer.get_Class(1);
+				    List<IBasicLayerInfo> basicInfos = pipeLayer.GetLayers(enumPipelineDataType.Junction);
+
+				    IFeatureClass featureClass = basicInfos.Count > 0 ? basicInfos[0].FeatureClass : null;
 					if (featureClass != null && featureClass is INetworkClass)
 					{
 						IGeometricNetwork geometricNetwork = ((INetworkClass)featureClass).GeometricNetwork;
@@ -283,11 +286,13 @@ namespace Yutai.Pipeline.Analysis.Forms
 						if (location != null && num > percent)
 						{
 							num = percent;
+                            _pipeLayer = pipeLayer;
 							this._nearestEdgeInfo.GeometricNetwork = geometricNetwork;
 							this._nearestEdgeInfo.Percent = percent;
 							this._nearestEdgeInfo.EdgeID = edgeID;
 							this._nearestEdgeInfo.Location = location;
 							flag = true;
+						    break;
 						}
 					}
 				}
@@ -309,25 +314,10 @@ namespace Yutai.Pipeline.Analysis.Forms
             IFeatureClass pointClass = null;
             IFeatureClass lineClass = null;
             int num3 = 0;
-            for(int i=0;i<featureDataset.ClassCount;i++)
-            {
-                    IFeatureClass pclass = featureDataset.Class[i];
-                    if ((pclass.ShapeType != esriGeometryType.esriGeometryPoint ? false : !pclass.AliasName.Contains("Junctions")))
-                    {
-                        pointClass = pclass;
-                        break;
-                    }
-            }
-            for (int i = 0; i < featureDataset.ClassCount; i++)
-            {
-                IFeatureClass pclass = featureDataset.Class[i];
+    
 
-                if (pclass.ShapeType == esriGeometryType.esriGeometryPolyline)
-                {
-                    lineClass = pclass;
-                    break;
-                }
-            }
+		    pointClass = _pipeLayer.GetLayers(enumPipelineDataType.Point)[0].FeatureClass;
+            lineClass = _pipeLayer.GetLayers(enumPipelineDataType.Line)[0].FeatureClass;
             this._networkInfo.LayerLine = MapHelper.FindFeatureLayerByFCName(m_iApp.FocusMap as IBasicMap, ((IDataset)lineClass).Name,false) as IFeatureLayer;
             this._networkInfo.LayerPoint = MapHelper.FindFeatureLayerByFCName(m_iApp.FocusMap as IBasicMap, ((IDataset)pointClass).Name, false) as IFeatureLayer;
             INetElements network = (INetElements)this._nearestEdgeInfo.GeometricNetwork.Network;
@@ -337,9 +327,30 @@ namespace Yutai.Pipeline.Analysis.Forms
             string[] name = new string[] { this._networkInfo.LayerLine.Name, ",", lineClass.OIDFieldName, "=", userID.ToString() };
             label.Text = string.Concat(name);
             string.Format("\r\n爆管点位置({0:f2},{1:f2},{2:f2})", this._nearestEdgeInfo.Location.X, this._nearestEdgeInfo.Location.Y, this._nearestEdgeInfo.Location.Z);
+
+            //初始化下拉菜单
+            
+            cmbDomainValues.Items.Clear();
+		    IBasicLayerInfo pLayerInfo = _pipeLayer.GetLayers(enumPipelineDataType.Point)[0];
+		    IYTField pField = pLayerInfo.GetField(PipeConfigWordHelper.PointWords.FSW);
+		    this.label1.Text = pField.Name;
+            if (!string.IsNullOrEmpty(pField.DomainValues))
+		    {
+		        string[] domianValues = pField.DomainValues.Split('/');
+		        foreach (var onePair in domianValues)
+		        {
+		            cmbDomainValues.Items.Add(onePair);
+		        }
+		        
+		    }
+            if (this.listFieldValues.Items.Count == 0)
+            {
+                this.listFieldValues.Items.Add("阀门");
+                this.listFieldValues.Items.Add("阀门井");
+            }
         }
 
-		private void InitClick()
+        private void InitClick()
 		{
 			this.ipoint_0 = null;
 			this._nearestEdgeInfo.GeometricNetwork = null;
@@ -414,9 +425,9 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		private void btnAddFieldValue_Click(object obj, EventArgs eventArgs)
 		{
-			if (this.listFieldValues.Items.IndexOf(this.comboBox1.Text) == -1)
+			if (this.listFieldValues.Items.IndexOf(this.cmbDomainValues.Text) == -1)
 			{
-				this.listFieldValues.Items.Add(this.comboBox1.Text);
+				this.listFieldValues.Items.Add(this.cmbDomainValues.Text);
 			}
 		}
 
@@ -559,10 +570,10 @@ namespace Yutai.Pipeline.Analysis.Forms
 						this._networkInfo.arrayList_0.Add(feature);
 					}
 				}
-				traceFlowSolver.FindFlowElements(this.GetFindMethod(), (esriFlowElements) 1, out junctionEIDs, out edgeEIDs);
+				traceFlowSolver.FindFlowElements(this.GetFindMethod(), esriFlowElements.esriFEEdges, out junctionEIDs, out edgeEIDs);
 				for (int i = edgeEIDs.Next(); i > 0; i = edgeEIDs.Next())
 				{
-					netElements.QueryIDs(i, (esriElementType) 2, out num, out num2, out num3);
+					netElements.QueryIDs(i, esriElementType.esriETEdge, out num, out num2, out num3);
 					IFeature feature2 = this._networkInfo.LayerLine.FeatureClass.GetFeature(num2);
 					this._networkInfo.arrayList_1.Add(feature2);
 				}
@@ -633,12 +644,14 @@ namespace Yutai.Pipeline.Analysis.Forms
 				IEnvelope envelope = ((IGeometry)geometryCollection).Envelope;
 				envelope.Expand(1.2, 1.2, true);
 				m_iApp.ActiveView.Extent=(envelope);
-			}
+                m_iApp.ActiveView.Refresh();
+            }
 		}
 
 		private void CreateBlockElements()
 		{
-			IGeometryCollection geometryCollection = new Multipoint() as IGeometryCollection;
+           
+            IGeometryCollection geometryCollection = new Multipoint() as IGeometryCollection;
 			for (int i = 0; i < this._networkInfo.arrayList_0.Count; i++)
 			{
 				object missing = Type.Missing;
@@ -668,7 +681,7 @@ namespace Yutai.Pipeline.Analysis.Forms
             IStyleGallery serverStyleGalleryClass = new ServerStyleGallery();
             IMarkerSymbol item = null;
             bool flag = false;
-            string str = string.Concat(Application.StartupPath, "\\Style\\ESRI.ServerStyle");
+            string str = string.Concat(Application.StartupPath, "\\Styles\\ESRI.ServerStyle");
             if (!File.Exists(str))
             {
                 markerSymbol = null;
@@ -758,7 +771,7 @@ namespace Yutai.Pipeline.Analysis.Forms
             //IPipePoint pipePoint = m_Config.GetSubLayer(this._networkInfo.LayerPoint, enumPipelineDataType.Point) as IPipePoint;
 
             //string text = CRegOperator.GetRegistryKey().GetValue("节点性质字段值", "").ToString();
-		    string text = pipePoint.GetField(PipeConfigWordHelper.PointWords.TZW).DomainValues;
+		    string text = pipePoint.GetField(PipeConfigWordHelper.PointWords.FSW).DomainValues;
             for (int num = text.IndexOf("/"); num != -1; num = text.IndexOf("/"))
 			{
 				Values.Add(text.Substring(0, num));
