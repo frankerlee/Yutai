@@ -66,6 +66,8 @@ namespace Yutai.Pipeline.Analysis.Forms
             this.stanVerDist = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timer_0 = new System.Windows.Forms.Timer();
             this.saveFileDialog_0 = new System.Windows.Forms.SaveFileDialog();
+            this.cmbDepthType = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBase)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -171,6 +173,8 @@ namespace Yutai.Pipeline.Analysis.Forms
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbDepthType);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.comboBoxGX);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.tbPipeWidthOrHeight);
@@ -369,6 +373,27 @@ namespace Yutai.Pipeline.Analysis.Forms
             this.saveFileDialog_0.RestoreDirectory = true;
             this.saveFileDialog_0.Title = "保存";
             // 
+            // cmbDepthType
+            // 
+            this.cmbDepthType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDepthType.FormattingEnabled = true;
+            this.cmbDepthType.Items.AddRange(new object[] {
+            "保存在属性中",
+            "保存在Z，M值中"});
+            this.cmbDepthType.Location = new System.Drawing.Point(428, 15);
+            this.cmbDepthType.Name = "cmbDepthType";
+            this.cmbDepthType.Size = new System.Drawing.Size(121, 22);
+            this.cmbDepthType.TabIndex = 22;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(339, 21);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(83, 14);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "埋深数据类型:";
+            // 
             // HitAnalyseDlg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -389,7 +414,7 @@ namespace Yutai.Pipeline.Analysis.Forms
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HitAnalyseDlg_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HitAnalyseDlg_FormClosed);
-            this.Load += new System.EventHandler(this.FyUjxdliMq);
+            this.Load += new System.EventHandler(this.HitAnalyseDlg_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBase)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -429,5 +454,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 		private DataGridViewTextBoxColumn verDist;
 		private DataGridViewTextBoxColumn stanVerDist;
 		private HitAnalyseDlg.HitAnalyseType hitAnalyseType_0;
+        private System.Windows.Forms.ComboBox cmbDepthType;
+        private Label label4;
     }
 }

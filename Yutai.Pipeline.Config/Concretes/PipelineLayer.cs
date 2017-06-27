@@ -19,6 +19,8 @@ namespace Yutai.Pipeline.Config.Concretes
         private List<IBasicLayerInfo> _layers;
         private string _autoNames;
         private IWorkspace _workspace;
+        private string _classCode;
+
         public PipelineLayer()
         {
         }
@@ -27,6 +29,7 @@ namespace Yutai.Pipeline.Config.Concretes
         {
             _name = layer.Name;
             _code = layer.Code;
+            _classCode = layer.ClassCode;
             _autoNames = layer.AutoNames;
             _layers=new List<IBasicLayerInfo>();
             foreach (IBasicLayerInfo basicLayerInfo in layer.Layers)
@@ -62,6 +65,12 @@ namespace Yutai.Pipeline.Config.Concretes
         {
             get { return _code; }
             set { _code = value; }
+        }
+
+        public string ClassCode
+        {
+            get { return _classCode; }
+            set { _classCode = value; }
         }
 
         public string AutoNames
@@ -105,6 +114,7 @@ namespace Yutai.Pipeline.Config.Concretes
             {
                 _name = xml.Attributes["Name"]==null?"" : xml.Attributes["Name"].Value;
                 _code = xml.Attributes["Code"] == null ? "" : xml.Attributes["Code"].Value;
+                _classCode = xml.Attributes["ClassCode"] == null ? "" : xml.Attributes["ClassCode"].Value;
                 _autoNames = xml.Attributes["AutoNames"]==null ? "" :xml.Attributes["AutoNames"].Value;
             }
             XmlNodeList nodeList = xml.SelectNodes($"/PipelineConfig/PipelineLayers/PipelineLayer[@Name='{_name}']/Layers/Layer");
@@ -134,10 +144,13 @@ namespace Yutai.Pipeline.Config.Concretes
             nameAttribute.Value = _name;
             XmlAttribute codeAttribute = doc.CreateAttribute("Code");
             codeAttribute.Value = _code;
+            XmlAttribute classcodeAttribute = doc.CreateAttribute("ClassCode");
+            classcodeAttribute.Value = _classCode;
             XmlAttribute autoNamesAttribute = doc.CreateAttribute("AutoNames");
             autoNamesAttribute.Value = _autoNames;
             layerNode.Attributes.Append(nameAttribute);
             layerNode.Attributes.Append(codeAttribute);
+            layerNode.Attributes.Append(classcodeAttribute);
             layerNode.Attributes.Append(autoNamesAttribute);
             XmlNode subNodes = doc.CreateElement("Layers");
             foreach (IBasicLayerInfo basicInfo in _layers)

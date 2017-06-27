@@ -360,7 +360,7 @@ namespace Yutai.Pipeline.Analysis.Helpers
                pMap.ClearSelection();
                pMap.SelectByShape(envelope, new SelectionEnvironment(), justOnce);
             }
-            else if (Geo.GeometryType == (esriGeometryType) 3)
+            else if (Geo.GeometryType == esriGeometryType.esriGeometryPolyline)
             {
                 IPolyline polyline = (IPolyline)Geo;
                 ISelectionEnvironment selectionEnvironment = new SelectionEnvironment();

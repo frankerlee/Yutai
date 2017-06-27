@@ -14,23 +14,23 @@ namespace Yutai.Pipeline.Analysis.Classes
     {
         private CHitAnalyse.enumHitAnalyseType enumHitAnalyseType_0 = CHitAnalyse.enumHitAnalyseType.emHit;
 
-        private IPolyline ipolyline_0;
+        private IPolyline baselineShape;
 
-        private IPolyline ipolyline_1;
+        private IPolyline baselineSimpleLine;
 
-        private IFeature ifeature_0;
+        private IFeature baseFeature;
 
-        private int int_0;
+        private int baselineOID;
 
         private double double_0;
 
         private double double_1;
 
-        private int int_1;
+        private int heightType;
 
-        private IFeatureLayer ifeatureLayer_0;
+        private IFeatureLayer baselineLayer;
 
-        private IFeatureClass ifeatureClass_0;
+        private IFeatureClass baselineFC;
 
         private double double_2 = 10;
 
@@ -44,38 +44,39 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         //private string string_2 = "断面尺寸";
 
-        private char[] char_0 = new char[] { 'x', 'X', 'Х' };
+        private char[] char_0 = new char[] {'x', 'X', 'Х'};
 
         public IPipelineConfig m_config;
 
+        public bool IsMUsing;
+
         public IPolyline BaseLine
         {
-            set
-            {
-                this.BaseLine = value;
-            }
+            set { this.BaseLine = value; }
         }
 
         public int BaseLine_OID
         {
+            get { return this.baselineOID; }
             set
             {
-                this.int_0 = value;
-                this.ipolyline_0 = null;
-                IFeature feature = this.ifeatureClass_0.GetFeature(this.int_0);
-                IBasicLayerInfo lineConfig = m_config.GetBasicLayerInfo(this.ifeatureClass_0.AliasName) as IBasicLayerInfo;
+                this.baselineOID = value;
+                this.baselineShape = null;
+                IFeature feature = this.baselineFC.GetFeature(this.baselineOID);
+                IBasicLayerInfo lineConfig =
+                    m_config.GetBasicLayerInfo(this.baselineFC.AliasName) as IBasicLayerInfo;
                 if (feature != null)
                 {
-                    int num = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GJ));
-                    int num1 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.DMCC));
+                    int gjIdx = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GJ));
+                    int dmccIdx = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.DMCC));
                     if (feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GDXZ)) >= 0)
                     {
-                        if ((num >= 0 ? false : num1 < 0))
+                        if ((gjIdx >= 0 ? false : dmccIdx < 0))
                         {
                             return;
                         }
-                        this.ipolyline_0 = (IPolyline)feature.Shape;
-                        this.double_1 = this.method_6(feature, num, num1, out this.double_0);
+                        this.baselineShape = (IPolyline) feature.Shape;
+                        this.double_1 = this.GetPipeGJ(feature, gjIdx, dmccIdx, out this.double_0);
                         if (this.double_1 < 1)
                         {
                             this.double_1 = 10;
@@ -84,31 +85,26 @@ namespace Yutai.Pipeline.Analysis.Classes
                         {
                             this.double_0 = this.double_1;
                         }
-                        this.int_1 = (int) lineConfig.HeightType;// this.m_app.PipeConfig.getLineConfig_HeightFlag(CommonUtils.GetSmpClassName(this.ifeatureClass_0.AliasName));
+                        this.heightType = (int) lineConfig.HeightType;
+                        // this.m_app.PipeConfig.getLineConfig_HeightFlag(CommonUtils.GetSmpClassName(this.baselineFC.AliasName));
                     }
                     else
                     {
                         return;
                     }
                 }
-                this.ifeature_0 = feature;
+                this.baseFeature = feature;
             }
         }
 
         public double BufferDistance
         {
-            set
-            {
-                this.double_2 = value;
-            }
+            set { this.double_2 = value; }
         }
 
         public ESRI.ArcGIS.Carto.IMap IMap
         {
-            get
-            {
-                return this.imap_0;
-            }
+            get { return this.imap_0; }
             set
             {
                 this.imap_0 = value;
@@ -128,31 +124,26 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         public List<CHitAnalyse.CItem> Items
         {
-            get
-            {
-                return this.list_0;
-            }
+            get { return this.list_0; }
         }
 
         public IFeatureLayer PipeLayer
         {
             set
             {
-                this.ifeatureClass_0 = null;
-                this.ifeatureLayer_0 = value;
-                if (this.ifeatureLayer_0 != null)
+                this.baselineFC = null;
+                this.baselineLayer = value;
+                if (this.baselineLayer != null)
                 {
-                    this.ifeatureClass_0 = this.ifeatureLayer_0.FeatureClass;
+                    this.baselineFC = this.baselineLayer.FeatureClass;
                 }
             }
         }
 
         public IFeatureClass PipeLayer_Class
         {
-            set
-            {
-                this.ifeatureClass_0 = value;
-            }
+            get { return this.baselineFC; }
+            set { this.baselineFC = value; }
         }
 
         public CHitAnalyse(IPipelineConfig config)
@@ -169,12 +160,16 @@ namespace Yutai.Pipeline.Analysis.Classes
         public void Analyse_Hit(IFeatureCursor pFeaCursor)
         {
             double num;
-            double double0 = this.double_0 * 0.0005;
-            double double1 = this.double_1 * 0.0005;
-            ITopologicalOperator ipolyline1 = (ITopologicalOperator)this.ipolyline_1;
-            IProximityOperator proximityOperator = (IProximityOperator)this.ipolyline_1;
-            IPointCollection ipolyline0 = (IPointCollection)this.ipolyline_0;
-            
+            double double0 = this.double_0*0.0005;
+            double double1 = this.double_1*0.0005;
+            ITopologicalOperator ipolyline1 = (ITopologicalOperator) this.baselineSimpleLine;
+            IProximityOperator proximityOperator = (IProximityOperator) this.baselineSimpleLine;
+            IPointCollection ipolyline0 = (IPointCollection) this.baselineShape;
+            int qdgcIdx = -1;
+            int qdmsIdx = -1;
+            int zdgcIdx = -1;
+            int zdmsIdx = -1;
+
             double z = ipolyline0.get_Point(0).Z;
             double num1 = z;
             for (int i = 1; i < ipolyline0.PointCount; i++)
@@ -189,18 +184,19 @@ namespace Yutai.Pipeline.Analysis.Classes
                     num1 = z1;
                 }
             }
-            if (this.int_1 == 0)
+            if (this.heightType == 0)
             {
                 z = z - double0;
                 num1 = num1 - double0;
             }
-            else if (2 == this.int_1)
+            else if (2 == this.heightType)
             {
                 z = z + double0;
                 num1 = num1 + double0;
             }
             IFeature feature = pFeaCursor.NextFeature();
-           
+            if (feature == null) return;
+
             IBasicLayerInfo lineConfig = m_config.GetBasicLayerInfo(feature.Class.AliasName) as IBasicLayerInfo;
             int num2 = -1;
             int num3 = -1;
@@ -210,40 +206,48 @@ namespace Yutai.Pipeline.Analysis.Classes
                 num2 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GJ));
                 num3 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.DMCC));
                 num4 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GDXZ));
+                if (!IsMUsing)
+                {
+                    qdgcIdx = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.QDGC));
+                    qdmsIdx = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.QDMS));
+                    zdgcIdx = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.ZDGC));
+                    zdmsIdx = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.ZDMS));
+                }
             }
             if (num4 >= 0)
             {
                 if ((num2 >= 0 ? true : num3 >= 0))
                 {
                     //!+ 要判断lineConfigHeightFlag 和 enumPipelineHeightType的对应关系
-                    int lineConfigHeightFlag = (int) lineConfig.HeightType;//this.m_app.PipeConfig.getLineConfig_HeightFlag(CommonUtils.GetSmpClassName(feature.Class.AliasName));
+                    int lineConfigHeightFlag = (int) lineConfig.HeightType;
+                    //this.m_app.PipeConfig.getLineConfig_HeightFlag(CommonUtils.GetSmpClassName(feature.Class.AliasName));
                     while (feature != null)
                     {
                         IPolyline shape = feature.Shape as IPolyline;
-                        IPolyline polyline = this.method_0(shape);
+                        IPolyline polyline = this.SimplifyPolyline(shape);
                         double num5 = 0;
-                        double num6 = this.method_6(feature, num2, num3, out num5);
+                        double num6 = this.GetPipeGJ(feature, num2, num3, out num5);
                         if (num6 < 10)
                         {
                             num6 = 10;
                         }
-                        num6 = num6 * 0.0005;
+                        num6 = num6*0.0005;
                         if (num5 < 10)
                         {
                             num5 = 10;
                         }
-                        num5 = num5 * 0.0005;
+                        num5 = num5*0.0005;
                         IPoint point = null;
                         IGeometry geometry = ipolyline1.Intersect(polyline, (esriGeometryDimension) 1);
                         if (geometry != null)
                         {
                             if (geometry is IPoint)
                             {
-                                point = (IPoint)geometry;
+                                point = (IPoint) geometry;
                             }
                             else if (geometry is IMultipoint)
                             {
-                                IPointCollection pointCollection = (IPointCollection)geometry;
+                                IPointCollection pointCollection = (IPointCollection) geometry;
                                 if (pointCollection.PointCount > 0)
                                 {
                                     point = pointCollection.get_Point(0);
@@ -256,19 +260,44 @@ namespace Yutai.Pipeline.Analysis.Classes
                             string str = feature.get_Value(num4).ToString();
                             cItem._OID = feature.OID;
                             cItem._sKind = str;
-                            cItem._pClass = (IFeatureClass)feature.Class;
+                            cItem._pClass = (IFeatureClass) feature.Class;
                             num = proximityOperator.ReturnDistance(polyline);
                             num = num - double1 - num6;
                             if (num >= 0.001)
                             {
                                 cItem._dHorDistance = num;
                                 cItem._dHorBase = 0;
-                                IPointCollection pointCollection1 = (IPointCollection)shape;
-                                double z2 = pointCollection1.get_Point(0).Z - pointCollection1.get_Point(0).M;
-                                double num7 = z2;
-                                for (int j = 1; j < pointCollection1.PointCount; j++)
+                                IPointCollection pointCollection1 = (IPointCollection) shape;
+                                double z2;
+                                if (IsMUsing)
+                                    z2 = pointCollection1.get_Point(0).Z - pointCollection1.get_Point(0).M;
+                                else
                                 {
-                                    double z3 = pointCollection1.get_Point(j).Z - pointCollection1.get_Point(j).M;
+                                    double pHeight = 0;
+                                    z2 = GetDoubleValue(feature, qdgcIdx, out pHeight) -
+                                         GetDoubleValue(feature, qdmsIdx, out pHeight);
+                                }
+                                double num7 = z2;
+                                if (IsMUsing)
+                                {
+                                    for (int j = 1; j < pointCollection1.PointCount; j++)
+                                    {
+                                        double z3 = pointCollection1.get_Point(j).Z - pointCollection1.get_Point(j).M;
+                                        if (z2 > z3)
+                                        {
+                                            z2 = z3;
+                                        }
+                                        if (num7 < z3)
+                                        {
+                                            num7 = z3;
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    double pHeight = 0;
+                                    double z3 = GetDoubleValue(feature, zdgcIdx, out pHeight) -
+                                                GetDoubleValue(feature, zdmsIdx, out pHeight);
                                     if (z2 > z3)
                                     {
                                         z2 = z3;
@@ -312,10 +341,18 @@ namespace Yutai.Pipeline.Analysis.Classes
                                 }
                                 cItem._dVerDistance = num;
                                 cItem._dVerBase = 0;
-                                cItem._dHorBase = (double)CommonUtils.GetPipeLineAlarmHrzDistByFeatureClassName2(m_config,CommonUtils.GetSmpClassName(this.ifeatureClass_0.AliasName), CommonUtils.GetSmpClassName(feature.Class.AliasName), this.ifeature_0, feature);
-                                string str1 = this.method_2(feature);
-                                string str2 = this.method_2(this.ifeature_0);
-                                cItem._dVerBase = (double)CommonUtils.GetPipeLineAlarmVerDistByFeatureClassName(m_config,CommonUtils.GetSmpClassName(this.ifeatureClass_0.AliasName), CommonUtils.GetSmpClassName(feature.Class.AliasName), str2, str1);
+                                cItem._dHorBase =
+                                    (double)
+                                    CommonUtils.GetPipeLineAlarmHrzDistByFeatureClassName2(m_config,
+                                        CommonUtils.GetSmpClassName(this.baselineFC.AliasName),
+                                        CommonUtils.GetSmpClassName(feature.Class.AliasName), this.baseFeature, feature);
+                                string str1 = this.GetPipeMSFS(feature);
+                                string str2 = this.GetPipeMSFS(this.baseFeature);
+                                cItem._dVerBase =
+                                    (double)
+                                    CommonUtils.GetPipeLineAlarmVerDistByFeatureClassName(m_config,
+                                        CommonUtils.GetSmpClassName(this.baselineFC.AliasName),
+                                        CommonUtils.GetSmpClassName(feature.Class.AliasName), str2, str1);
                                 this.list_0.Add(cItem);
                             }
                             else
@@ -326,18 +363,33 @@ namespace Yutai.Pipeline.Analysis.Classes
                         }
                         else
                         {
-                            int num8 = this.method_3(this.ipolyline_1, point);
-                            double num9 = this.method_4(this.ipolyline_0, point, num8);
-                            if (this.int_1 == 0)
+                            int num8 = this.method_3(this.baselineSimpleLine, point);
+                            double num9 = 0;
+                            if (IsMUsing)
+                                num9 = this.CalculateZ(this.baselineShape, point, num8);
+                            else
+                            {
+                                num9 = this.CalculateZ(this.baselineShape, point, num8, feature, qdgcIdx, zdgcIdx);
+                            }
+
+                            if (this.heightType == 0)
                             {
                                 num9 = num9 - double0;
                             }
-                            else if (2 == this.int_1)
+                            else if (2 == this.heightType)
                             {
                                 num9 = num9 + double0;
                             }
                             int num10 = this.method_3(polyline, point);
-                            double num11 = this.method_5(shape, point, num10);
+                            double num11 = 0;
+                            if (IsMUsing)
+                                num11 = this.CalculateZAlongLine(shape, point, num10);
+                            else
+                            {
+                                num11 = this.CalculateZAlongLine(shape, point, num10, feature, qdgcIdx, qdmsIdx, zdgcIdx,
+                                    zdmsIdx);
+                            }
+
                             if (lineConfigHeightFlag == 0)
                             {
                                 num11 = num11 - num5;
@@ -358,12 +410,20 @@ namespace Yutai.Pipeline.Analysis.Classes
                                     _dVerBase = 0,
                                     _dHorDistance = 0,
                                     _dHorBase = 0,
-                                    _pClass = (IFeatureClass)feature.Class
+                                    _pClass = (IFeatureClass) feature.Class
                                 };
-                                pipeLineAlarmHrzDistByFeatureClassName2._dHorBase = (double)CommonUtils.GetPipeLineAlarmHrzDistByFeatureClassName2(m_config,CommonUtils.GetSmpClassName(this.ifeatureClass_0.AliasName), CommonUtils.GetSmpClassName(feature.Class.AliasName), this.ifeature_0, feature);
-                                string str4 = this.method_2(feature);
-                                string str5 = this.method_2(this.ifeature_0);
-                                pipeLineAlarmHrzDistByFeatureClassName2._dVerBase = (double)CommonUtils.GetPipeLineAlarmVerDistByFeatureClassName(m_config,CommonUtils.GetSmpClassName(this.ifeatureClass_0.AliasName), CommonUtils.GetSmpClassName(feature.Class.AliasName), str5, str4);
+                                pipeLineAlarmHrzDistByFeatureClassName2._dHorBase =
+                                    (double)
+                                    CommonUtils.GetPipeLineAlarmHrzDistByFeatureClassName2(m_config,
+                                        CommonUtils.GetSmpClassName(this.baselineFC.AliasName),
+                                        CommonUtils.GetSmpClassName(feature.Class.AliasName), this.baseFeature, feature);
+                                string str4 = this.GetPipeMSFS(feature);
+                                string str5 = this.GetPipeMSFS(this.baseFeature);
+                                pipeLineAlarmHrzDistByFeatureClassName2._dVerBase =
+                                    (double)
+                                    CommonUtils.GetPipeLineAlarmVerDistByFeatureClassName(m_config,
+                                        CommonUtils.GetSmpClassName(this.baselineFC.AliasName),
+                                        CommonUtils.GetSmpClassName(feature.Class.AliasName), str5, str4);
                                 this.list_0.Add(pipeLineAlarmHrzDistByFeatureClassName2);
                             }
                             else
@@ -386,34 +446,36 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         public void Analyse_Horizontal(IFeatureCursor pFeaCursor)
         {
-            double double1 = this.double_1 * 0.0005;
-            IProximityOperator ipolyline1 = (IProximityOperator)this.ipolyline_1;
+            double double1 = this.double_1*0.0005;
+            IProximityOperator ipolyline1 = (IProximityOperator) this.baselineSimpleLine;
             IFeature feature = pFeaCursor.NextFeature();
+            if (feature == null) return;
             int num = -1;
             int num1 = -1;
             int num2 = -1;
-            if (feature != null)
-            {
-                
-                IBasicLayerInfo lineConfig = m_config.GetBasicLayerInfo(feature.Class.AliasName) as IBasicLayerInfo;
-                num = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GJ));
-                num1 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.DMCC));
-                num2 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GDXZ));
-            }
+
+
+            IBasicLayerInfo lineConfig = m_config.GetBasicLayerInfo(feature.Class.AliasName) as IBasicLayerInfo;
+            IPipelineLayer pipelineLayer = m_config.GetPipelineLayer(feature.Class as IFeatureClass);
+            IPipelineLayer pipelineLayer0 = m_config.GetPipelineLayer(baselineFC);
+            num = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GJ));
+            num1 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.DMCC));
+            num2 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GDXZ));
+
             if (num2 >= 0)
             {
                 if ((num >= 0 ? true : num1 >= 0))
                 {
                     while (feature != null)
                     {
-                        IPolyline polyline = this.method_0(feature.Shape as IPolyline);
+                        IPolyline polyline = this.SimplifyPolyline(feature.Shape as IPolyline);
                         double num3 = 0;
-                        double num4 = this.method_6(feature, num, num1, out num3);
+                        double num4 = this.GetPipeGJ(feature, num, num1, out num3);
                         if (num4 < 10)
                         {
                             num4 = 10;
                         }
-                        num4 = num4 * 0.0005;
+                        num4 = num4*0.0005;
                         double num5 = ipolyline1.ReturnDistance(polyline);
                         num5 = num5 - double1 - num4;
                         if (num5 >= 0.001)
@@ -425,9 +487,12 @@ namespace Yutai.Pipeline.Analysis.Classes
                                 _sKind = str,
                                 _dHorDistance = num5,
                                 _dHorBase = 0,
-                                _pClass = (IFeatureClass)feature.Class
+                                _pClass = (IFeatureClass) feature.Class
                             };
-                            cItem._dHorBase = (double)CommonUtils.GetPipeLineAlarmHrzDistByFeatureClassName2(m_config,CommonUtils.GetSmpClassName(this.ifeatureClass_0.AliasName), CommonUtils.GetSmpClassName(feature.Class.AliasName), this.ifeature_0, feature);
+                            cItem._dHorBase =
+                                (double)
+                                CommonUtils.GetPipeLineAlarmHrzDistByFeatureClassName2(m_config,
+                                    baselineFC.AliasName, feature.Class.AliasName, this.baseFeature, feature);
                             this.list_0.Add(cItem);
                             feature = pFeaCursor.NextFeature();
                         }
@@ -449,15 +514,18 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         public void Analyse_Vertical(IFeatureCursor pFeaCursor)
         {
-            double double0 = this.double_0 * 0.0005;
-            ITopologicalOperator ipolyline1 = (ITopologicalOperator)this.ipolyline_1;
+            double double0 = this.double_0*0.0005;
+            ITopologicalOperator ipolyline1 = (ITopologicalOperator) this.baselineSimpleLine;
             IFeature feature = pFeaCursor.NextFeature();
             if (feature == null) return;
-                int num = -1;
+            int num = -1;
             int num1 = -1;
             int num2 = -1;
-           
+
             IBasicLayerInfo lineConfig = m_config.GetBasicLayerInfo(feature.Class.AliasName) as IBasicLayerInfo;
+            IPipelineLayer pipelineLayer = m_config.GetPipelineLayer(feature.Class as IFeatureClass);
+            IPipelineLayer pipelineLayer0 = m_config.GetPipelineLayer(baselineFC);
+
             if (feature != null)
             {
                 num = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GJ));
@@ -468,30 +536,30 @@ namespace Yutai.Pipeline.Analysis.Classes
             {
                 if ((num >= 0 ? true : num1 >= 0))
                 {
-                    
-                    int lineConfigHeightFlag = (int) lineConfig.HeightType;// this.m_app.PipeConfig.getLineConfig_HeightFlag(CommonUtils.GetSmpClassName(feature.Class.AliasName));
+                    int lineConfigHeightFlag = (int) lineConfig.HeightType;
+                    // this.m_app.PipeConfig.getLineConfig_HeightFlag(CommonUtils.GetSmpClassName(feature.Class.AliasName));
                     while (feature != null)
                     {
                         IPolyline shape = feature.Shape as IPolyline;
-                        IPolyline polyline = this.method_0(shape);
+                        IPolyline polyline = this.SimplifyPolyline(shape);
                         double num3 = 0;
-                        this.method_6(feature, num, num1, out num3);
+                        this.GetPipeGJ(feature, num, num1, out num3);
                         if (num3 < 10)
                         {
                             num3 = 10;
                         }
-                        num3 = num3 * 0.0005;
+                        num3 = num3*0.0005;
                         IGeometry geometry = ipolyline1.Intersect(polyline, (esriGeometryDimension) 1);
                         if (geometry != null)
                         {
                             IPoint point = null;
                             if (geometry is IPoint)
                             {
-                                point = (IPoint)geometry;
+                                point = (IPoint) geometry;
                             }
                             else if (geometry is IMultipoint)
                             {
-                                IPointCollection pointCollection = (IPointCollection)geometry;
+                                IPointCollection pointCollection = (IPointCollection) geometry;
                                 if (pointCollection.PointCount > 0)
                                 {
                                     point = pointCollection.get_Point(0);
@@ -499,18 +567,18 @@ namespace Yutai.Pipeline.Analysis.Classes
                             }
                             if (point != null)
                             {
-                                int num4 = this.method_3(this.ipolyline_1, point);
-                                double num5 = this.method_5(this.ipolyline_0, point, num4);
-                                if (this.int_1 == 0)
+                                int num4 = this.method_3(this.baselineSimpleLine, point);
+                                double num5 = this.CalculateZAlongLine(this.baselineShape, point, num4);
+                                if (this.heightType == 0)
                                 {
                                     num5 = num5 - double0;
                                 }
-                                else if (2 == this.int_1)
+                                else if (2 == this.heightType)
                                 {
                                     num5 = num5 + double0;
                                 }
                                 int num6 = this.method_3(polyline, point);
-                                double num7 = this.method_5(shape, point, num6);
+                                double num7 = this.CalculateZAlongLine(shape, point, num6);
                                 if (lineConfigHeightFlag == 0)
                                 {
                                     num7 = num7 - num3;
@@ -529,11 +597,14 @@ namespace Yutai.Pipeline.Analysis.Classes
                                         _sKind = str,
                                         _dVerDistance = num8,
                                         _dVerBase = 0,
-                                        _pClass = (IFeatureClass)feature.Class
+                                        _pClass = (IFeatureClass) feature.Class
                                     };
-                                    string str1 = this.method_2(feature);
-                                    string str2 = this.method_2(this.ifeature_0);
-                                    cItem._dVerBase = (double)CommonUtils.GetPipeLineAlarmVerDistByFeatureClassName(m_config,CommonUtils.GetSmpClassName(this.ifeatureClass_0.AliasName), CommonUtils.GetSmpClassName(feature.Class.AliasName), str2, str1);
+                                    string str1 = this.GetPipeMSFS(feature);
+                                    string str2 = this.GetPipeMSFS(this.baseFeature);
+                                    cItem._dVerBase =
+                                        (double)
+                                        CommonUtils.GetPipeLineAlarmVerDistByFeatureClassName(m_config,
+                                            pipelineLayer0.ClassCode, pipelineLayer.ClassCode, str2, str1);
                                     this.list_0.Add(cItem);
                                 }
                                 else
@@ -549,19 +620,19 @@ namespace Yutai.Pipeline.Analysis.Classes
             }
         }
 
-        private IPolyline method_0(IPolyline polyline)
+        private IPolyline SimplifyPolyline(IPolyline polyline)
         {
             object missing = Type.Missing;
             IPolyline polylineClass = new Polyline() as IPolyline;
-            IPointCollection pointCollection = (IPointCollection)polylineClass;
-            IPointCollection pointCollection1 = (IPointCollection)polyline;
+            IPointCollection pointCollection = (IPointCollection) polylineClass;
+            IPointCollection pointCollection1 = (IPointCollection) polyline;
             for (int i = 0; i <= pointCollection1.PointCount - 1; i++)
             {
                 IPoint point = pointCollection1.get_Point(i);
                 IPoint pointClass = new Point();
-                pointClass.X=(point.X);
-                pointClass.Y=(point.Y);
-                pointClass.Z=(0);
+                pointClass.X = (point.X);
+                pointClass.Y = (point.Y);
+                pointClass.Z = (0);
                 pointCollection.AddPoint(pointClass, ref missing, ref missing);
             }
             return polylineClass;
@@ -571,11 +642,11 @@ namespace Yutai.Pipeline.Analysis.Classes
         {
             CommonUtils.AppContext = this.m_app;
             this.list_0.Clear();
-            this.ipolyline_1 = this.method_0(this.ipolyline_0);
-            IGeometry geometry = ((ITopologicalOperator)this.ipolyline_0).Buffer(this.double_2);
+            this.baselineSimpleLine = this.SimplifyPolyline(this.baselineShape);
+            IGeometry geometry = ((ITopologicalOperator) this.baselineShape).Buffer(this.double_2);
             ISpatialFilter spatialFilterClass = new SpatialFilter();
-            spatialFilterClass.Geometry=(geometry);
-            spatialFilterClass.SpatialRel=(esriSpatialRelEnum) (1);
+            spatialFilterClass.Geometry = (geometry);
+            spatialFilterClass.SpatialRel = (esriSpatialRelEnum) (1);
             if (this.m_listLayers.Count >= 1)
             {
                 foreach (IFeatureLayer mListLayer in this.m_listLayers)
@@ -585,23 +656,27 @@ namespace Yutai.Pipeline.Analysis.Classes
                         continue;
                     }
                     IFeatureClass featureClass = mListLayer.FeatureClass;
-                    if ((featureClass.AliasName == this.ifeatureClass_0.AliasName ? true : featureClass.ShapeType!= (esriGeometryType) 3))
+                    if ((featureClass.AliasName == this.baselineFC.AliasName
+                        ? true
+                        : featureClass.ShapeType != esriGeometryType.esriGeometryPolyline))
                     {
                         continue;
                     }
-                    spatialFilterClass.GeometryField=featureClass.ShapeFieldName;
+                    spatialFilterClass.GeometryField = featureClass.ShapeFieldName;
                     delegate1(featureClass.Search(spatialFilterClass, false));
                 }
             }
         }
 
-        private string method_2(IFeature feature)
+        private string GetPipeMSFS(IFeature feature)
         {
             string str;
             string str1;
             if (feature != null)
             {
-                int num = feature.Fields.FindField("埋设方式");
+                IBasicLayerInfo layerInfo = m_config.GetBasicLayerInfo(feature.Class as IFeatureClass);
+                if (layerInfo == null) return "";
+                int num = feature.Fields.FindField(layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.MSFS));
                 str1 = (num == -1 ? "" : CommonUtils.ObjToString(feature.get_Value(num)));
                 str = str1;
             }
@@ -616,10 +691,10 @@ namespace Yutai.Pipeline.Analysis.Classes
         {
             int num;
             int num1 = -1;
-            IPointCollection pointCollection = (IPointCollection)polyline;
+            IPointCollection pointCollection = (IPointCollection) polyline;
             if (pointCollection.PointCount != 2)
             {
-                ISegmentCollection segmentCollection = (ISegmentCollection)polyline;
+                ISegmentCollection segmentCollection = (ISegmentCollection) polyline;
                 int pointCount = pointCollection.PointCount;
                 bool[] flagArray = new bool[pointCount];
                 bool[] flagArray1 = new bool[2];
@@ -667,7 +742,9 @@ namespace Yutai.Pipeline.Analysis.Classes
                         {
                             flagArray1[1] = false;
                         }
-                        if (flagArray1[0] != flagArray1[1] && Math.Abs(((IProximityOperator)segmentCollection.get_Segment(j)).ReturnDistance(point)) < 0.001)
+                        if (flagArray1[0] != flagArray1[1] &&
+                            Math.Abs(((IProximityOperator) segmentCollection.get_Segment(j)).ReturnDistance(point)) <
+                            0.001)
                         {
                             num = j;
                             return num;
@@ -699,10 +776,10 @@ namespace Yutai.Pipeline.Analysis.Classes
             return num;
         }
 
-        private double method_4(IPolyline polyline, IPoint point, int num)
+        private double CalculateZ(IPolyline polyline, IPoint point, int num)
         {
             double z;
-            IPointCollection pointCollection = (IPointCollection)polyline;
+            IPointCollection pointCollection = (IPointCollection) polyline;
             IPoint point1 = pointCollection.get_Point(num);
             IPoint point2 = pointCollection.get_Point(num + 1);
             double x = point2.X - point1.X;
@@ -710,12 +787,12 @@ namespace Yutai.Pipeline.Analysis.Classes
             double z1 = point2.Z - point1.Z;
             double x1 = point.X - point1.X;
             double y1 = point.Y - point1.Y;
-            double num1 = Math.Sqrt(x * x + y * y);
-            double num2 = Math.Sqrt(x1 * x1 + y1 * y1);
+            double num1 = Math.Sqrt(x*x + y*y);
+            double num2 = Math.Sqrt(x1*x1 + y1*y1);
             if (num1 >= 0.001)
             {
-                double num3 = num2 / num1;
-                z = num3 * z1 + point1.Z;
+                double num3 = num2/num1;
+                z = num3*z1 + point1.Z;
             }
             else
             {
@@ -724,10 +801,40 @@ namespace Yutai.Pipeline.Analysis.Classes
             return z;
         }
 
-        private double method_5(IPolyline polyline, IPoint point, int num)
+        private double CalculateZ(IPolyline polyline, IPoint point, int num, IFeature pFeature, int qdgcIdx, int zdgcIdx)
+        {
+            double height;
+            double qdgc = GetDoubleValue(pFeature, qdgcIdx, out height);
+
+            double zdgc = GetDoubleValue(pFeature, zdgcIdx, out height);
+
+            double z;
+            IPointCollection pointCollection = (IPointCollection) polyline;
+            IPoint point1 = pointCollection.get_Point(num);
+            IPoint point2 = pointCollection.get_Point(num + 1);
+            double x = point2.X - point1.X;
+            double y = point2.Y - point1.Y;
+            double z1 = zdgc - qdgc;
+            double x1 = point.X - point1.X;
+            double y1 = point.Y - point1.Y;
+            double num1 = Math.Sqrt(x*x + y*y);
+            double num2 = Math.Sqrt(x1*x1 + y1*y1);
+            if (num1 >= 0.001)
+            {
+                double num3 = num2/num1;
+                z = num3*z1 + qdgc;
+            }
+            else
+            {
+                z = qdgc;
+            }
+            return z;
+        }
+
+        private double CalculateZAlongLine(IPolyline polyline, IPoint point, int num)
         {
             double z;
-            IPointCollection pointCollection = (IPointCollection)polyline;
+            IPointCollection pointCollection = (IPointCollection) polyline;
             IPoint point1 = pointCollection.get_Point(num);
             IPoint point2 = pointCollection.get_Point(num + 1);
             double x = point2.X - point1.X;
@@ -735,12 +842,12 @@ namespace Yutai.Pipeline.Analysis.Classes
             double z1 = point2.Z - point2.M - point1.Z + point1.M;
             double x1 = point.X - point1.X;
             double y1 = point.Y - point1.Y;
-            double num1 = Math.Sqrt(x * x + y * y);
-            double num2 = Math.Sqrt(x1 * x1 + y1 * y1);
+            double num1 = Math.Sqrt(x*x + y*y);
+            double num2 = Math.Sqrt(x1*x1 + y1*y1);
             if (num1 >= 0.001)
             {
-                double num3 = num2 / num1;
-                z = num3 * z1 + point1.Z - point1.M;
+                double num3 = num2/num1;
+                z = num3*z1 + point1.Z - point1.M;
             }
             else
             {
@@ -749,62 +856,108 @@ namespace Yutai.Pipeline.Analysis.Classes
             return z;
         }
 
-        private double method_6(IFeature feature, int num, int num2, out double double_3)
+        private double CalculateZAlongLine(IPolyline polyline, IPoint point, int num, IFeature pFeature, int qdgcIdx,
+            int qdmsIdx, int zdgcIdx, int zdmsIdx)
         {
-            double_3 = 0.0;
-            double num3 = 0.0;
-            if (num > 0)
+            double z;
+            double height;
+            double qdgc = GetDoubleValue(pFeature, qdgcIdx, out height);
+            double qdms = GetDoubleValue(pFeature, qdmsIdx, out height);
+            double zdgc = GetDoubleValue(pFeature, zdgcIdx, out height);
+            double zdms = GetDoubleValue(pFeature, zdmsIdx, out height);
+            IPointCollection pointCollection = (IPointCollection) polyline;
+            IPoint point1 = pointCollection.get_Point(num);
+            IPoint point2 = pointCollection.get_Point(num + 1);
+            double x = point2.X - point1.X;
+            double y = point2.Y - point1.Y;
+            double z1 = zdgc - zdms - qdgc + qdms;
+            double x1 = point.X - point1.X;
+            double y1 = point.Y - point1.Y;
+            double num1 = Math.Sqrt(x*x + y*y);
+            double num2 = Math.Sqrt(x1*x1 + y1*y1);
+            if (num1 >= 0.001)
             {
-                object value = feature.get_Value(num);
-                if (Convert.IsDBNull(value))
-                {
-                    num3 = 0.0;
-                }
-                else
-                {
-                    num3 = Convert.ToDouble(value);
-                }
-            }
-            if (num3 < 1.0)
-            {
-                num3 = this.method_7(feature, num2, out double_3);
+                double num3 = num2/num1;
+                z = num3*z1 + qdgc - qdms;
             }
             else
             {
-                double_3 = num3;
+                z = qdgc - qdms;
             }
-            return num3;
+            return z;
         }
 
-
-        private double method_7(IFeature feature, int num, out double double_3)
+        private double GetPipeGJ(IFeature feature, int gjIdx, int dmccIdx, out double double_3)
         {
-            double num1 = 0;
-            double_3 = 0;
-            string str = "";
-            if (num > 0)
+            double_3 = 0.0;
+            double num3 = 0.0;
+            try
             {
-                object value = feature.get_Value(num);
-                if (!Convert.IsDBNull(value))
+                if (gjIdx > 0)
                 {
-                    str = Convert.ToString(value);
-                }
-                if ((str == null ? false : str.Length >= 1))
-                {
-                    string[] strArrays = str.Split(this.char_0);
-                    if (strArrays[0].ToString().Trim() != "")
+                    object value = feature.get_Value(gjIdx);
+                    if (Convert.IsDBNull(value))
                     {
-                        num1 = Convert.ToDouble(strArrays[0]);
-                        double_3 = Convert.ToDouble(strArrays[1]);
+                        num3 = 0.0;
                     }
                     else
                     {
-                        num1 = 0;
-                        double_3 = 0;
+                        num3 = Convert.ToDouble(value);
                     }
                 }
+                if (num3 < 1.0)
+                {
+                    num3 = this.GetDoubleValue(feature, dmccIdx, out double_3);
+                }
+                else
+                {
+                    double_3 = num3;
+                }
+                return num3;
             }
-            return num1;
+            catch (Exception ex)
+            {
+                return 0.0;
+            }
+        }
+
+
+        private double GetDoubleValue(IFeature feature, int fldIdx, out double height)
+        {
+            double width = 0;
+            height = 0;
+            string str = "";
+            try
+            {
+                if (fldIdx > 0)
+                {
+                    object value = feature.get_Value(fldIdx);
+                    if (!Convert.IsDBNull(value))
+                    {
+                        str = Convert.ToString(value);
+                    }
+                    if ((str == null ? false : str.Length >= 1))
+                    {
+                        string[] strArrays = str.Split(this.char_0);
+                        if (strArrays[0].ToString().Trim() != "")
+                        {
+                            width = Convert.ToDouble(strArrays[0]);
+                            if (strArrays.Length > 1)
+                                height = Convert.ToDouble(strArrays[1]);
+                        }
+                        else
+                        {
+                            width = 0;
+                            height = 0;
+                        }
+                    }
+                }
+                return width;
+            }
+            catch (Exception ex)
+            {
+                return 0.0;
+            }
         }
 
         public void RegexPipeSize(object obj, out double dw, out double dh)
@@ -835,7 +988,7 @@ namespace Yutai.Pipeline.Analysis.Classes
             {
                 string[] strArrays = sSize.Split(this.char_0);
                 dw = Convert.ToDouble(strArrays[0]);
-                if ((int)strArrays.Length <= 1)
+                if ((int) strArrays.Length <= 1)
                 {
                     dh = dw;
                 }
@@ -848,8 +1001,8 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         public void SetData(string sSize, IPolyline pLine, IFeatureClass pClass)
         {
-            this.ifeature_0 = null;
-            this.ifeatureClass_0 = pClass;
+            this.baseFeature = null;
+            this.baselineFC = pClass;
             this.RegexPipeSize(sSize, out this.double_1, out this.double_0);
             if (this.double_1 < 10)
             {
@@ -859,7 +1012,7 @@ namespace Yutai.Pipeline.Analysis.Classes
             {
                 this.double_0 = 10;
             }
-            this.ipolyline_0 = pLine;
+            this.baselineShape = pLine;
         }
 
         public void SetData(string sSize, IPolyline pLine)
@@ -873,7 +1026,7 @@ namespace Yutai.Pipeline.Analysis.Classes
             {
                 this.double_0 = 10;
             }
-            this.ipolyline_0 = pLine;
+            this.baselineShape = pLine;
         }
 
         public string toHtml()

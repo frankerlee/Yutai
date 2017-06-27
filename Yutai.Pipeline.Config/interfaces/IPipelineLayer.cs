@@ -17,6 +17,7 @@ namespace Yutai.Pipeline.Config.Interfaces
     {
         string Name { get; set; }
         string Code { get; set; }
+        string ClassCode { get; set; }
 
         string AutoNames { get; set; }
         string FixAutoNames { get; }

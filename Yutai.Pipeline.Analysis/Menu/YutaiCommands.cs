@@ -48,6 +48,7 @@ namespace Yutai.Pipeline.Analysis.Menu
                     new CmdStartDistMeasureAnalysis(_context),
                     new CmdSearchAffixAnalysis(_context,_plugin),
                     new CmdStartBufferAnalysis(_context,_plugin),
+                    new CmdStartHitAnalysis(_context,_plugin),
                     //new CmdQueryBasic(_context, _plugin),
                     //new CmdQueryLine(_context, _plugin),
                     //new CmdQueryByAddress(_context, _plugin),

@@ -215,14 +215,14 @@ namespace Yutai.Pipeline.Analysis.Classes
                 else
                 {
                     IGeometry shape = feature.Shape;
-                    if (shape.GeometryType != (esriGeometryType) 3 && shape.GeometryType != (esriGeometryType) 4)
+                    if (shape.GeometryType != esriGeometryType.esriGeometryPolyline && shape.GeometryType != esriGeometryType.esriGeometryPolygon)
                     {
                         feature = enumFeature.Next();
                     }
                     else
                     {
                         IPolyline polyline;
-                        if (shape.GeometryType == (esriGeometryType) 4)
+                        if (shape.GeometryType == esriGeometryType.esriGeometryPolygon)
                         {
                             polyline = this.PolygonToPolyline((IPolygon)shape);
                         }

@@ -821,7 +821,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 				{
 					mapControl.DrawShape(this.BuoawIbkuD, ref obj2);
 				}
-				if (this.BuoawIbkuD.GeometryType == (esriGeometryType) 3)
+				if (this.BuoawIbkuD.GeometryType == esriGeometryType.esriGeometryPolyline)
 				{
 					mapControl.DrawShape(this.BuoawIbkuD, ref obj);
 				}

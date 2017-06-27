@@ -196,7 +196,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 				else if (feature.FeatureType == (esriFeatureType) 8)
 				{
 					IGeometry shape = feature.Shape;
-					if (shape.GeometryType == (esriGeometryType) 3)
+					if (shape.GeometryType == esriGeometryType.esriGeometryPolyline)
 					{
 						this.ipolyline_0 = CommonUtils.GetPolylineDeepCopy((IPolyline)shape);
 						this.m_commonDistAls.m_pFeature = feature;

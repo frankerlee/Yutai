@@ -1,6 +1,21 @@
 ﻿<YutaiGIS>
   <MainMenu>
     <Pages>
+      <Page Key="PipelineQuery" Caption="管线查询统计" Index="0" Visible="true">
+        <PageGroup Key="Pipeline_Query_Common" Caption="常用查询" Visible="true" Index="1">
+          <BarItem Key="PipeQuery_ByCMIS" Visible="true" />
+          <BarItem Key="PipeQuery_Basic" Visible="true" />
+          <BarItem Key="PipeQuery_BasicLine" Visible="true" />
+        </PageGroup>
+        <PageGroup Key="Pipeline_Query_Quick" Caption="快速查询" Visible="true" Index="2">
+          <BarItem Key="PipeQuery_ByAddress" Visible="true" />
+          <BarItem Key="PipeQuery_ByDate" Visible="true" />
+          <BarItem Key="PipeQuery_ByDia" Visible="true" />
+        </PageGroup>
+        <PageGroup Key="Pipeline_Statistics_Common" Caption="常用统计" Visible="true" Index="3">
+          <BarItem Key="PipeQuery_ByGJTJ" Visible="true" />
+        </PageGroup>
+      </Page>
       <Page Key="PipelineAnalysis" Caption="管线分析" Index="0" Visible="true">
         <PageGroup Key="Pipeline_Analysis_Common" Caption="常用分析" Visible="true" Index="0">
           <BarItem Key="PipeQuery_Config" Visible="true"></BarItem>
@@ -12,20 +27,8 @@
           <BarItem Key="PipeAnalysis_AreaMeasure" Visible="true"></BarItem>
           <BarItem Key="PipeAnalysis_SearchAffixAnalysis" Visible="true"></BarItem>
           <BarItem Key="PipeAnalysis_BufferAnalysisStart" Visible="true"></BarItem>
-          
-        </PageGroup>
-        <PageGroup Key="Pipeline_Query_Common" Caption="常用查询" Visible="true" Index="1">
-          <BarItem Key="PipeQuery_ByCMIS" Visible="true"/>
-          <BarItem Key="PipeQuery_Basic" Visible="true"/>
-          <BarItem Key="PipeQuery_BasicLine" Visible="true"/>
-        </PageGroup>
-        <PageGroup Key="Pipeline_Query_Quick" Caption="快速查询" Visible="true" Index="2">
-          <BarItem Key="PipeQuery_ByAddress" Visible="true"/>
-          <BarItem Key="PipeQuery_ByDate" Visible="true"/>
-          <BarItem Key="PipeQuery_ByDia" Visible="true"/>
-        </PageGroup>
-        <PageGroup Key="Pipeline_Statistics_Common" Caption="常用统计" Visible="true" Index="3">
-          <BarItem Key="PipeQuery_ByGJTJ" Visible="true"/>
+          <BarItem Key="PipeAnalysis_HitAnalysis" Visible="true"></BarItem>
+
         </PageGroup>
       </Page>
     </Pages>

@@ -262,7 +262,7 @@ namespace Yutai.Pipeline.Analysis.Helpers
             return CommonUtils.GetValueFromTable(config,"EmPipeDists", "管线1", strPipeLine1, "管线2", strPipeLine2, "水平净距");
         }
 
-        public static object GetPipeLineAlarmHrzDist2(IPipelineConfig config,string strPipeLine1, string strPipeLine2, IFeature pFeature1, IFeature pFeature2)
+        public static object GetPipeLineAlarmHrzDist2(IPipelineConfig config,string strPipeLine1, string strPipeLine2, IFeature pFeature1, IFeature pFeature2,IBasicLayerInfo basicLayer1, IBasicLayerInfo basicLayer2)
         {
             object obj;
             double num;
@@ -273,44 +273,44 @@ namespace Yutai.Pipeline.Analysis.Helpers
             double num5;
             double num6;
             double num7;
-            ITable table =CommonUtils.GetTable(config,"EMMETAPIPELEVELSPACE");
+            ITable table =CommonUtils.GetTable(config,"YT_PIPE_HORLIMITED");
             if (table != null)
             {
-                string[] strArrays = new string[] { "(管线1 = '", strPipeLine1, "' AND 管线2 = '", strPipeLine2, "')" };
+                string[] strArrays = new string[] { "(CLASSCODE1 = '", strPipeLine1, "' AND CLASSCODE2 = '", strPipeLine2, "')" };
                 string str = string.Concat(strArrays);
-                strArrays = new string[] { str, " OR (管线1 = '", strPipeLine2, "' AND 管线2 = '", strPipeLine1, "')" };
+                strArrays = new string[] { str, " OR (CLASSCODE1 = '", strPipeLine2, "' AND CLASSCODE2 = '", strPipeLine1, "')" };
                 string str1 = string.Concat(strArrays);
                 IQueryFilter queryFilterClass = new QueryFilter();
                 queryFilterClass.WhereClause=(str1);
                 ICursor cursor = table.Search(queryFilterClass, false);
                 IRow row = cursor.NextRow();
-                int fieldIndex =CommonUtils.GetFieldIndex(table, "条件1");
-                int fieldIndex1 =CommonUtils.GetFieldIndex(table, "条件2");
-                int fieldIndex2 =CommonUtils.GetFieldIndex(table, "范围1");
-                int fieldIndex3 =CommonUtils.GetFieldIndex(table, "范围2");
-                int fieldIndex4 =CommonUtils.GetFieldIndex(table, "限距");
-                string str2 = "";
-                string str3 = "";
-                string str4 = "";
-                string str5 = "";
+                int fieldIndex =CommonUtils.GetFieldIndex(table, "CONDITION1");
+                int fieldIndex1 =CommonUtils.GetFieldIndex(table, "CONDITION2");
+                int fieldIndex2 =CommonUtils.GetFieldIndex(table, "RANGE1");
+                int fieldIndex3 =CommonUtils.GetFieldIndex(table, "RANGE2");
+                int fieldIndex4 =CommonUtils.GetFieldIndex(table, "LIMITED");
+                string strCondition1 = "";
+                string strCondition2 = "";
+                string strRange1 = "";
+                string strRange2 = "";
                 double num8 = -1;
                 double num9 = -1;
                 double num10 = -1;
                 double num11 = -1;
                 while (row != null)
                 {
-                    str2 =CommonUtils.ObjToString(row.get_Value(fieldIndex));
-                    str3 =CommonUtils.ObjToString(row.get_Value(fieldIndex1));
-                    str4 =CommonUtils.ObjToString(row.get_Value(fieldIndex2));
-                    str5 =CommonUtils.ObjToString(row.get_Value(fieldIndex3));
-                    double num12 =CommonUtils.ObjToDouble(row.get_Value(fieldIndex4));
-                    if ((str2 != "" ? false : str3 == ""))
+                    strCondition1 =CommonUtils.ObjToString(row.get_Value(fieldIndex));
+                    strCondition2 =CommonUtils.ObjToString(row.get_Value(fieldIndex1));
+                    strRange1 =CommonUtils.ObjToString(row.get_Value(fieldIndex2));
+                    strRange2 =CommonUtils.ObjToString(row.get_Value(fieldIndex3));
+                    double dblLimited =CommonUtils.ObjToDouble(row.get_Value(fieldIndex4));
+                    if ((strCondition1 != "" ? false : strCondition2 == ""))
                     {
-                        num8 = num12;
+                        num8 = dblLimited;
                     }
-                    
-                    string lineTableFieldName = config.GetSpecialField(pFeature1.Class.AliasName, PipeConfigWordHelper.LineWords.GJ).Name; //CommonUtils.AppContext.PipeConfig.GetLineTableFieldName("管径");
-                    if ((pFeature1 == null ? false : str2 == lineTableFieldName))
+
+                    string lineTableFieldName = basicLayer1.GetFieldName(PipeConfigWordHelper.LineWords.GJ);
+                    if ((pFeature1 == null ? false : strCondition1 == PipeConfigWordHelper.LineWords.GJ))
                     {
                         int num13 = pFeature1.Fields.FindField(lineTableFieldName);
                         if (num13 != -1)
@@ -324,15 +324,15 @@ namespace Yutai.Pipeline.Analysis.Helpers
                             catch (Exception exception)
                             {
                             }
-                           CommonUtils.GetMaxAndMinValue(str4, out num, out num1);
+                           CommonUtils.GetMaxAndMinValue(strRange1, out num, out num1);
                             if ((num14 > num ? false : num14 >= num1))
                             {
-                                num9 = num12;
+                                num9 = dblLimited;
                             }
                         }
                     }
-                    string lineTableFieldName1 = config.GetSpecialField(pFeature2.Class.AliasName, PipeConfigWordHelper.LineWords.GJ).Name;
-                    if (str3 == lineTableFieldName)
+                    string lineTableFieldName1 = basicLayer2.GetFieldName(PipeConfigWordHelper.LineWords.GJ);
+                    if (strCondition2 == PipeConfigWordHelper.LineWords.GJ)
                     {
                         int num15 = pFeature2.Fields.FindField(lineTableFieldName1);
                         if (num15 != -1)
@@ -346,15 +346,15 @@ namespace Yutai.Pipeline.Analysis.Helpers
                             catch (Exception exception1)
                             {
                             }
-                           CommonUtils.GetMaxAndMinValue(str5, out num2, out num3);
+                           CommonUtils.GetMaxAndMinValue(strRange2, out num2, out num3);
                             if ((num16 > num2 ? false : num16 >= num3))
                             {
-                                num10 = num12;
+                                num10 = dblLimited;
                             }
                         }
                     }
-                    lineTableFieldName = "压力";
-                    if ((pFeature1 == null ? false : str2 == lineTableFieldName))
+                    lineTableFieldName = basicLayer1.GetFieldName(PipeConfigWordHelper.LineWords.YL);
+                    if ((pFeature1 == null ? false : strCondition1 == PipeConfigWordHelper.LineWords.YL))
                     {
                         int num17 = pFeature1.Fields.FindField(lineTableFieldName);
                         if (num17 != -1)
@@ -380,15 +380,15 @@ namespace Yutai.Pipeline.Analysis.Helpers
                             catch (Exception exception2)
                             {
                             }
-                           CommonUtils.GetMaxAndMinValue(str4, out num4, out num5);
+                           CommonUtils.GetMaxAndMinValue(strRange1, out num4, out num5);
                             if ((num18 > num4 ? false : num18 >= num5))
                             {
-                                num9 = num12;
+                                num9 = dblLimited;
                             }
                         }
                     }
-                    lineTableFieldName = "压力";
-                    if (str3 == lineTableFieldName)
+                    lineTableFieldName = basicLayer2.GetFieldName(PipeConfigWordHelper.LineWords.YL);
+                    if (strCondition2 == PipeConfigWordHelper.LineWords.YL)
                     {
                         int num19 = pFeature2.Fields.FindField(lineTableFieldName);
                         if (num19 != -1)
@@ -414,28 +414,29 @@ namespace Yutai.Pipeline.Analysis.Helpers
                             catch (Exception exception3)
                             {
                             }
-                           CommonUtils.GetMaxAndMinValue(str5, out num6, out num7);
+                           CommonUtils.GetMaxAndMinValue(strRange2, out num6, out num7);
                             if ((num20 > num6 ? false : num20 >= num7))
                             {
-                                num10 = num12;
+                                num10 = dblLimited;
                             }
                         }
                     }
-                    lineTableFieldName = "埋设方式";
-                    if ((pFeature1 == null ? false : str2 == lineTableFieldName))
+                    lineTableFieldName = basicLayer1.GetFieldName(PipeConfigWordHelper.LineWords.MSFS); ;
+                    if ((pFeature1 == null ? false : strCondition1 == PipeConfigWordHelper.LineWords.MSFS))
                     {
                         int num21 = pFeature1.Fields.FindField(lineTableFieldName);
-                        if (num21 != -1 &&CommonUtils.ObjToString(pFeature1.get_Value(num21)).Trim().ToUpper() == str4.ToUpper())
+                        if (num21 != -1 &&CommonUtils.ObjToString(pFeature1.get_Value(num21)).Trim().ToUpper() == strRange1.ToUpper())
                         {
-                            num9 = num12;
+                            num9 = dblLimited;
                         }
                     }
-                    if (str3 == lineTableFieldName)
+                    lineTableFieldName = basicLayer2.GetFieldName(PipeConfigWordHelper.LineWords.MSFS); ;
+                    if (strCondition2 == PipeConfigWordHelper.LineWords.MSFS)
                     {
                         int num22 = pFeature2.Fields.FindField(lineTableFieldName);
-                        if (num22 != -1 &&CommonUtils.ObjToString(pFeature2.get_Value(num22)).Trim().ToUpper() == str5.ToUpper())
+                        if (num22 != -1 &&CommonUtils.ObjToString(pFeature2.get_Value(num22)).Trim().ToUpper() == strRange2.ToUpper())
                         {
-                            num9 = num12;
+                            num9 = dblLimited;
                         }
                     }
                     row = cursor.NextRow();
@@ -515,15 +516,11 @@ namespace Yutai.Pipeline.Analysis.Helpers
             float single;
             string str;
             string str1;
-            object valueFromTable =CommonUtils.GetValueFromTable(config,"EMFeatureClassInfo", "要素类", strFeaClassName1.ToUpper(), "管线类别");
-            if (valueFromTable != null)
-            {
-                str = (!Convert.IsDBNull(valueFromTable) ? valueFromTable.ToString() : "");
-                valueFromTable =CommonUtils.GetValueFromTable(config,"EMFeatureClassInfo", "要素类", strFeaClassName2.ToUpper(), "管线类别");
-                if (valueFromTable != null)
-                {
-                    str1 = (!Convert.IsDBNull(valueFromTable) ? valueFromTable.ToString() : "");
-                    object pipeLineAlarmHrzDist2 =CommonUtils.GetPipeLineAlarmHrzDist2(config,str, str1, pFeature1, pFeature2);
+            IBasicLayerInfo pipeLayer1 = config.GetBasicLayerInfo(strFeaClassName1);
+            IBasicLayerInfo pipeLayer2 = config.GetBasicLayerInfo(strFeaClassName2);
+            IPipelineLayer pipeline1 = config.GetPipelineLayer(pipeLayer1.FeatureClass);
+            IPipelineLayer pipeline2 = config.GetPipelineLayer(pipeLayer2.FeatureClass);
+            object pipeLineAlarmHrzDist2 =CommonUtils.GetPipeLineAlarmHrzDist2(config,pipeline1.ClassCode, pipeline2.ClassCode, pFeature1, pFeature2,pipeLayer1,pipeLayer2);
                     if (pipeLineAlarmHrzDist2 != null)
                     {
                         single = (!Convert.IsDBNull(pipeLineAlarmHrzDist2) ? Convert.ToSingle(pipeLineAlarmHrzDist2) : 0f);
@@ -532,36 +529,27 @@ namespace Yutai.Pipeline.Analysis.Helpers
                     {
                         single = 0f;
                     }
-                }
-                else
-                {
-                    single = 0f;
-                }
-            }
-            else
-            {
-                single = 0f;
-            }
+           
             return single;
         }
 
         public static object GetPipeLineAlarmVerDist(IPipelineConfig config, string strPipeLine1, string strPipeLine2, string strBuryKind1, string strBuryKind2)
         {
             object obj;
-            ITable table =CommonUtils.GetTable(config,"EMMetaPipeAplombSpace");
+            ITable table =CommonUtils.GetTable(config,"YT_PIPE_DISTLIMITED");
             if (table != null)
             {
-                string[] strArrays = new string[] { "(上面管线1 = '", strPipeLine1, "' AND 下面管线2 = '", strPipeLine2, "')" };
+                string[] strArrays = new string[] { "(CLASSCODE_UP = '", strPipeLine1, "' AND CLASSCODE_DOWN = '", strPipeLine2, "')" };
                 string str = string.Concat(strArrays);
-                strArrays = new string[] { str, "OR (上面管线1 = '", strPipeLine2, "' AND 下面管线2 = '", strPipeLine1, "')" };
+                strArrays = new string[] { str, "OR (CLASSCODE_UP = '", strPipeLine2, "' AND CLASSCODE_DOWN = '", strPipeLine1, "')" };
                 string str1 = string.Concat(strArrays);
                 IQueryFilter queryFilterClass = new QueryFilter();
                 queryFilterClass.WhereClause=(str1);
                 ICursor cursor = table.Search(queryFilterClass, false);
                 IRow row = cursor.NextRow();
-                int fieldIndex =CommonUtils.GetFieldIndex(table, "条件1");
-                int num =CommonUtils.GetFieldIndex(table, "条件2");
-                int fieldIndex1 =CommonUtils.GetFieldIndex(table, "限距");
+                int fieldIndex =CommonUtils.GetFieldIndex(table, "CONDITION_UP");
+                int num =CommonUtils.GetFieldIndex(table, "CONDITION_DOWN");
+                int fieldIndex1 =CommonUtils.GetFieldIndex(table, "LIMITED");
                 double num1 = -1;
                 double num2 = -1;
                 double num3 = -1;
@@ -616,21 +604,17 @@ namespace Yutai.Pipeline.Analysis.Helpers
             return obj;
         }
 
-        public static float GetPipeLineAlarmVerDistByFeatureClassName(IPipelineConfig config, string strFeaClassName1, string strFeaClassName2, string strBuryKind1, string strBuryKind2)
+        public static float GetPipeLineAlarmVerDistByFeatureClassName(IPipelineConfig config, string className1, string className2, string strBuryKind1, string strBuryKind2)
         {
             float single;
             string str;
             string str1;
-            object valueFromTable =CommonUtils.GetValueFromTable(config,"EMFeatureClassInfo", "要素类", strFeaClassName1.ToUpper(), "管线类别");
-            if (valueFromTable != null)
-            {
-                str = (!Convert.IsDBNull(valueFromTable) ? valueFromTable.ToString() : "");
-                valueFromTable =CommonUtils.GetValueFromTable(config,"EMFeatureClassInfo", "要素类", strFeaClassName2.ToUpper(), "管线类别");
-                if (valueFromTable != null)
-                {
-                    str1 = (!Convert.IsDBNull(valueFromTable) ? valueFromTable.ToString() : "");
-                    object pipeLineAlarmVerDist =CommonUtils.GetPipeLineAlarmVerDist(config,str, str1, strBuryKind1, strBuryKind2);
-                    if (valueFromTable != null)
+            IBasicLayerInfo pipeLayer1 = config.GetBasicLayerInfo(className1);
+            IBasicLayerInfo pipeLayer2 = config.GetBasicLayerInfo(className2);
+            IPipelineLayer pipeline1 = config.GetPipelineLayer(pipeLayer1.FeatureClass);
+            IPipelineLayer pipeline2 = config.GetPipelineLayer(pipeLayer2.FeatureClass);
+            object pipeLineAlarmVerDist =CommonUtils.GetPipeLineAlarmVerDist(config, pipeline1.ClassCode, pipeline2.ClassCode, strBuryKind1, strBuryKind2);
+                    if (pipeLineAlarmVerDist != null)
                     {
                         single = (!Convert.IsDBNull(pipeLineAlarmVerDist) ? Convert.ToSingle(pipeLineAlarmVerDist) : 0f);
                     }
@@ -638,16 +622,7 @@ namespace Yutai.Pipeline.Analysis.Helpers
                     {
                         single = 0f;
                     }
-                }
-                else
-                {
-                    single = 0f;
-                }
-            }
-            else
-            {
-                single = 0f;
-            }
+           
             return single;
         }
 
@@ -689,7 +664,7 @@ namespace Yutai.Pipeline.Analysis.Helpers
             if (config.Workspace != null)
             {
                 IFeatureWorkspace workspace = config.Workspace as IFeatureWorkspace;
-                if (!(config.Workspace as IWorkspace2).get_NameExists((esriDatasetType)10, strTableName))
+                if (!(config.Workspace as IWorkspace2).get_NameExists(esriDatasetType.esriDTTable, strTableName))
                 {
                     table = null;
                 }

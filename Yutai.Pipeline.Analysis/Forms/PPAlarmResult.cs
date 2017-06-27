@@ -229,7 +229,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 				{
 					mapControl.DrawShape(this.igeometry_0, ref obj2);
 				}
-				if (this.igeometry_0.GeometryType == (esriGeometryType) 3)
+				if (this.igeometry_0.GeometryType == esriGeometryType.esriGeometryPolyline)
 				{
 					mapControl.DrawShape(this.igeometry_0, ref obj);
 				}

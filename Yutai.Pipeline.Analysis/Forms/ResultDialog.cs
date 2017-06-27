@@ -141,11 +141,11 @@ namespace Yutai.Pipeline.Analysis.Forms
 				{
 					mapControl.DrawShape(this.igeometry_0, ref obj1);
 				}
-				if (this.igeometry_0.GeometryType == (esriGeometryType) 3)
+				if (this.igeometry_0.GeometryType == esriGeometryType.esriGeometryPolyline)
 				{
 					mapControl.DrawShape(this.igeometry_0, ref obj);
 				}
-				if (this.igeometry_0.GeometryType == (esriGeometryType) 4)
+				if (this.igeometry_0.GeometryType == esriGeometryType.esriGeometryPolygon)
 				{
 					mapControl.DrawShape(this.igeometry_0, ref obj2);
 				}

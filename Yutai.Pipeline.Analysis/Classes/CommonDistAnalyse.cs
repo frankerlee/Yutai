@@ -413,7 +413,7 @@ namespace Yutai.Pipeline.Analysis.Classes
                                     str3 = str1;
                                 }
                                 this.m_dDiameterDst = this.GetDiameterFromString(str3.Trim());
-                                if (shape.GeometryType == (esriGeometryType) 3)
+                                if (shape.GeometryType == esriGeometryType.esriGeometryPolyline)
                                 {
                                     double num1 = ((IProximityOperator)this.m_pBaseLine).ReturnDistance(shape);
                                     if (num1 > 1E-07)

@@ -460,6 +460,7 @@ namespace Yutai.Pipeline.Config.Concretes
             ICursor pCursor = tableSort.Rows;
             IRow pRow = pCursor.NextRow();
             int codeIdx = pCursor.FindField("PipeCode");
+            int classIdx = pCursor.FindField("ClassCode");
             int nameIdx = pCursor.FindField("PipeName");
             int autoIdx = pCursor.FindField("AutoNames");
             int priIdx = pCursor.FindField("Priority");
@@ -470,7 +471,8 @@ namespace Yutai.Pipeline.Config.Concretes
                     Code=pRow.Value[codeIdx].ToString(),
                     Name=pRow.Value[nameIdx].ToString(),
                     AutoNames = pRow.Value[autoIdx].ToString(),
-                    Layers=new List<IBasicLayerInfo>()
+                    Layers=new List<IBasicLayerInfo>(),
+                    ClassCode = pRow.Value[classIdx].ToString()
                 };
                 layers.Add(oneLayer);
                 pRow = pCursor.NextRow();

@@ -24,7 +24,7 @@ namespace Yutai.Pipeline.Analysis.Classes
                 if (iFLayer != null)
                 {
                     IFeatureClass featureClass = iFLayer.FeatureClass;
-                    if ((featureClass.ShapeType == (esriGeometryType) 13 ? true : featureClass.ShapeType == (esriGeometryType)3))
+                    if ((featureClass.ShapeType == (esriGeometryType.esriGeometryLine)  ? true : featureClass.ShapeType == (esriGeometryType.esriGeometryPolyline)))
                     {
                         INetworkClass networkClass = featureClass as INetworkClass;
                         if ((networkClass == null ? false : networkClass.GeometricNetwork != null))

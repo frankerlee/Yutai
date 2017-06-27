@@ -90,7 +90,8 @@ namespace Yutai.Pipeline.Analysis.Commands
                 if (this.m_hitAlsDlg.HitType == HitAnalyseDlg.HitAnalyseType.emHitAnalyseSelect)
                 {
                     this.StartAnalysis(x, y);
-                    this.m_hitAlsDlg.GetBaseLine();
+                    IPoint point = _context.ActiveView.ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
+                    this.m_hitAlsDlg.GetBaseLine(point);
                     this.m_hitAlsDlg.RefreshBaseLineGrid();
                 }
                 if (this.m_hitAlsDlg.HitType == HitAnalyseDlg.HitAnalyseType.emHitAnalyseDraw)

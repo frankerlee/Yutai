@@ -48,7 +48,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 		private void FormMaiShenAnalysis_Load(object obj, EventArgs eventArgs)
 		{
 			IFeature feature = ((IEnumFeature)_context.FocusMap.FeatureSelection).Next();
-			//if (feature == null || feature.Shape.GeometryType != (esriGeometryType) 4)
+			//if (feature == null || feature.Shape.GeometryType != esriGeometryType.esriGeometryPolygon)
 			//{
 			//	this.chkRegionAnalysis.Visible = false;
 			//}

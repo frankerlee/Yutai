@@ -741,7 +741,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 					simpleMarkerSymbolClass.Color=(rgbColor);
 					symbol = simpleMarkerSymbolClass as ISymbol;
 				}
-				if (geometryType == (esriGeometryType) 3)
+				if (geometryType == esriGeometryType.esriGeometryPolyline)
 				{
 					ISimpleLineSymbol simpleLineSymbolClass = new SimpleLineSymbol();
 					simpleLineSymbolClass.Color=(rgbColor);
