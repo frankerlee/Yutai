@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.esriSystem;
@@ -14,6 +16,7 @@ using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Shared;
 using ESRI.ArcGIS.DataSourcesFile;
 using Yutai.Pipeline.Config.Helpers;
+
 
 namespace Yutai.Pipeline.Config.Concretes
 {
@@ -27,17 +30,33 @@ namespace Yutai.Pipeline.Config.Concretes
         private string _configDatabaseName;
         private IFeatureWorkspace _workspace;
         private List<IPipelineLayer> _dbLayers;
+        private List<string> _styleFiles;
+        private List<ICommonConfig> _commonConfigs;
 
         public PipelineConfig()
         {
             _templates = new List<IPipelineTemplate>();
             _layers = new List<IPipelineLayer>();
+            _styleFiles=new List<string>();
+            _commonConfigs=new List<ICommonConfig>();
         }
 
         public string ConfigDatabaseName
         {
             get { return _configDatabaseName; }
             set { _configDatabaseName = value; }
+        }
+
+        public List<string> StyleFiles
+        {
+            get { return _styleFiles; }
+            set { _styleFiles = value; }
+        }
+
+        public List<ICommonConfig> CommonConfigs
+        {
+            get { return _commonConfigs; }
+            set { _commonConfigs = value; }
         }
 
         public IFeatureWorkspace Workspace
@@ -68,12 +87,15 @@ namespace Yutai.Pipeline.Config.Concretes
         {
             _templates.Clear();
             _layers.Clear();
+            _styleFiles.Clear();
             _xmlFile = fileName;
             //首先读取Template
             XmlDocument doc = new XmlDocument();
             doc.Load(_xmlFile);
 
             _configDatabaseName = doc.SelectSingleNode("/PipelineConfig/ConfigDatabase").InnerText;
+            InitStyleFiles(doc);
+            InitCommonConfig(doc);
             string fullPath = FileHelper.GetFullPath(_configDatabaseName);
             _workspace = Yutai.ArcGIS.Common.Helpers.WorkspaceHelper.GetAccessWorkspace(fullPath) as IFeatureWorkspace;
             XmlNodeList nodes = doc.SelectNodes("/PipelineConfig/LayerTemplates/Template");
@@ -93,7 +115,41 @@ namespace Yutai.Pipeline.Config.Concretes
 
         }
 
-       
+        private void InitCommonConfig(XmlDocument doc)
+        {
+            XmlNodeList nodeList = doc.SelectNodes("/PipelineConfig/CommonConfigs/CommonConfig");
+            foreach (XmlNode node in nodeList)
+            {
+                ICommonConfig config = new CommonConfig(node);
+                _commonConfigs.Add(config);
+            }
+        }
+
+        private void InitStyleFiles(XmlDocument doc)
+        {
+            XmlNodeList nodeList = doc.SelectNodes("/PipelineConfig/Styles/Style");
+            foreach (XmlNode node in nodeList)
+            {
+                string fullPath = FileHelper.GetFullPath(node.InnerText);
+                _styleFiles.Add(fullPath);
+            }
+            if (_styleFiles.Count == 0)
+            {
+                string fullPath=Application.StartupPath+"\\Styles";
+                FileInfo fileInfo=new FileInfo(fullPath+"\\ESRI.ServerStyle");
+
+                if (fileInfo.Exists)
+                {
+                    _styleFiles.Add(fileInfo.FullName);
+                }
+                fileInfo = new FileInfo(fullPath + "\\YTPipeline.ServerStyle");
+
+                if (fileInfo.Exists)
+                {
+                    _styleFiles.Add(fileInfo.FullName);
+                }
+            }
+        }
 
         public bool LinkMap(IMap pMap)
         {
@@ -172,6 +228,20 @@ namespace Yutai.Pipeline.Config.Concretes
                 {
                     if (layer.DataType == dataType)
                         return pipelineLayer;
+                }
+            }
+            return null;
+        }
+
+        public IPipelineLayer GetPipelineLayer(IFeatureClass pClass)
+        {
+            IBasicLayerInfo layer;
+            foreach (IPipelineLayer pipelineLayer in _layers)
+            {
+                layer = pipelineLayer.Layers.FirstOrDefault(c => c.FeatureClass == pClass );
+                if (layer != null)
+                {
+                    return pipelineLayer;
                 }
             }
             return null;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
 using ESRI.ArcGIS.Carto;
@@ -11,133 +12,118 @@ using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geometry;
 using ESRI.ArcGIS.SystemUI;
 using stdole;
+using Yutai.Pipeline.Config.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.Helpers
 {
     public class BaseFun
     {
-        private string string_0;
+        private string lineName;
 
-        private double double_0;
+        private double lineWidth;
 
-        public int _iLineColor;
+        public int lineColor;
 
-        private string string_1;
+        private string fontName;
 
-        private double double_1;
+        private double fontSize;
 
-        private int int_0;
+        private int fontColor;
 
-        private bool bool_0;
+        private bool fontBold;
 
-        private bool bool_1;
+        private bool fontItalic;
 
-        private bool bool_2;
+        private bool fontUnderline;
+        private IPipelineConfig _config;
 
-        public BaseFun()
+        public BaseFun(IPipelineConfig config)
         {
-            this.method_0();
+            this.InitConfig(config);
+            _config = config;
         }
 
-        private void method_0()
+        private void InitConfig(IPipelineConfig config)
         {
-            this.string_1 = "宋体";
-            this.double_1 = 10.0;
-            this.int_0 = 0;
-            this.bool_0 = false;
-            this.bool_1 = false;
-            this.bool_2 = false;
-            this.string_0 = "";
-            this._iLineColor = 0;
-            this.double_0 = 1.7;
+            this.fontName = "华文中宋";
+            this.fontSize = 12.0;
+            this.fontColor = -16776961;
+            this.fontBold = false;
+            this.fontItalic = false;
+            this.fontUnderline = false;
+            this.lineName = "1033B";
+            this.lineColor = 33554432;
+            this.lineWidth = 1.7;
             try
             {
-                string url = Application.StartupPath + "\\config\\EMNote.xml";
-                XmlTextReader xmlTextReader = new XmlTextReader(url);
-                while (xmlTextReader.Read())
+                ICommonConfig commonConfig = config.CommonConfigs.FirstOrDefault(c => c.Name.ToUpper() == "MAPNOTETEXT");
+                if (commonConfig != null)
                 {
-                    if (xmlTextReader.NodeType == XmlNodeType.Element)
+                    string[] values = commonConfig.Value.Split(';');
+                    for (int i = 0; i < values.Length; i++)
                     {
-                        if (xmlTextReader.Name == "text")
+                        string[] pairs = values[i].Split(':');
+                        string pairName = pairs[0].ToUpper();
+                        string pairValue = pairs[1].ToUpper();
+                        if (pairName == "FONT")
                         {
-                            try
-                            {
-                                this.string_1 = xmlTextReader.GetAttribute("font");
-                            }
-                            catch
-                            {
-                            }
-                            try
-                            {
-                                this.double_1 = Convert.ToDouble(xmlTextReader.GetAttribute("size"));
-                            }
-                            catch
-                            {
-                            }
-                            try
-                            {
-                                int argb = Convert.ToInt32(xmlTextReader.GetAttribute("color"));
-                                IRgbColor rgbColor = new RgbColor();
-                                Color color = Color.FromArgb(argb);
-                                rgbColor.Red=((int)color.R);
-                                rgbColor.Green=((int)color.G);
-                                rgbColor.Blue=((int)color.B);
-                                this.int_0 = rgbColor.RGB;
-                            }
-                            catch
-                            {
-                            }
-                            try
-                            {
-                                this.bool_0 = Convert.ToBoolean(xmlTextReader.GetAttribute("bold"));
-                            }
-                            catch
-                            {
-                            }
-                            try
-                            {
-                                this.bool_1 = Convert.ToBoolean(xmlTextReader.GetAttribute("italic"));
-                            }
-                            catch
-                            {
-                            }
-                            try
-                            {
-                                this.bool_2 = Convert.ToBoolean(xmlTextReader.GetAttribute("underline"));
-                                continue;
-                            }
-                            catch
-                            {
-                                continue;
-                            }
+                            this.fontName = pairValue;
+                            continue;
                         }
-                        if (xmlTextReader.Name == "line")
+                        if (pairName == "SIZE")
                         {
-                            try
-                            {
-                                this.string_0 = xmlTextReader.GetAttribute("name").ToString();
-                            }
-                            catch
-                            {
-                            }
-                            try
-                            {
-                                this._iLineColor = Convert.ToInt32(xmlTextReader.GetAttribute("color"));
-                            }
-                            catch
-                            {
-                            }
-                            try
-                            {
-                                this.double_0 = Convert.ToDouble(xmlTextReader.GetAttribute("width"));
-                            }
-                            catch
-                            {
-                            }
+                            this.fontSize =Convert.ToDouble(pairValue);
+                            continue;
+                        }
+                        if (pairName == "COLOR")
+                        {
+                            this.fontColor = Convert.ToInt32(pairValue);
+                            continue;
+                        }
+                        if (pairName.Contains("BOLD"))
+                        {
+                            this.fontBold = pairValue.StartsWith("T") ? true : false;
+                            continue;
+                        }
+                        if (pairName.Contains("ITAL"))
+                        {
+                            this.fontItalic = pairValue.StartsWith("T") ? true : false;
+                            continue;
+                        }
+                        if (pairName.Contains("UNDER"))
+                        {
+                            this.fontUnderline = pairValue.StartsWith("T") ? true : false;
+                            continue;
                         }
                     }
                 }
-                xmlTextReader.Close();
+                commonConfig = config.CommonConfigs.FirstOrDefault(c => c.Name.ToUpper() == "MAPNOTELINE");
+                if (commonConfig != null)
+                {
+                    string[] values = commonConfig.Value.Split(';');
+                    for (int i = 0; i < values.Length; i++)
+                    {
+                        string[] pairs = values[i].Split(':');
+                        string pairName = pairs[0].ToUpper();
+                        string pairValue = pairs[1].ToUpper();
+                        if (pairName == "NAME")
+                        {
+                            this.lineName = pairValue;
+                            continue;
+                        }
+                        if (pairName == "WIDTH")
+                        {
+                            this.lineWidth = Convert.ToDouble(pairValue);
+                            continue;
+                        }
+                        if (pairName == "COLOR")
+                        {
+                            this.lineColor = Convert.ToInt32(pairValue);
+                            continue;
+                        }
+                    }
+                }
+               
             }
             catch
             {
@@ -173,10 +159,11 @@ namespace Yutai.Pipeline.Analysis.Helpers
         public ISymbol GetLineSymbol(out string sLineSymbolName)
         {
             List<string> list = new List<string>();
-            this.method_1(list);
+            //this.method_1(list);
             IStyleGallery styleGallery = new ServerStyleGallery();
             ISymbol result;
-            foreach (string current in list)
+            
+            foreach (string current in _config.StyleFiles)
             {
                 styleGallery.Clear();
                 ((IStyleGalleryStorage)styleGallery).AddFile(current);
@@ -184,19 +171,19 @@ namespace Yutai.Pipeline.Analysis.Helpers
                 enumStyleGalleryItem.Reset();
                 for (IStyleGalleryItem styleGalleryItem = enumStyleGalleryItem.Next(); styleGalleryItem != null; styleGalleryItem = enumStyleGalleryItem.Next())
                 {
-                    if (this.string_0 == "")
+                    if (this.lineName == "")
                     {
                         sLineSymbolName = styleGalleryItem.Name;
                         ISymbol symbol = (ISymbol)styleGalleryItem.Item;
                         result = symbol;
                         return result;
                     }
-                    if (styleGalleryItem.Name == this.string_0)
+                    if (styleGalleryItem.Name == this.lineName)
                     {
                         IRgbColor rgbColor = new RgbColor();
-                        rgbColor.RGB=(this._iLineColor);
+                        rgbColor.RGB=(this.lineColor);
                         ((ILineSymbol)styleGalleryItem.Item).Color=(rgbColor);
-                        ((ILineSymbol)styleGalleryItem.Item).Width=(this.double_0);
+                        ((ILineSymbol)styleGalleryItem.Item).Width=(this.lineWidth);
                         sLineSymbolName = styleGalleryItem.Name;
                         ISymbol symbol = (ISymbol)styleGalleryItem.Item;
                         result = symbol;
@@ -217,7 +204,7 @@ namespace Yutai.Pipeline.Analysis.Helpers
 
         public IElement GetTextElement(double dblAngle, string sNoteText, IPoint PosPt)
         {
-            return this.GetTextElement(dblAngle, sNoteText, PosPt, this.int_0);
+            return this.GetTextElement(dblAngle, sNoteText, PosPt, this.fontColor);
         }
 
         public IElement GetTextElement(double dblAngle, string sNoteText, IPoint PosPt, int iColor)
@@ -225,11 +212,11 @@ namespace Yutai.Pipeline.Analysis.Helpers
             IRgbColor rgbColor = new RgbColor();
             rgbColor.RGB=(iColor);
             IFont font = new SystemFont() as IFont;
-            font.Name = this.string_1;
-            font.Size = (decimal)this.double_1;
-            font.Bold = this.bool_0;
-            font.Italic = this.bool_1;
-            font.Underline = this.bool_2;
+            font.Name = this.fontName;
+            font.Size = (decimal)this.fontSize;
+            font.Bold = this.fontBold;
+            font.Italic = this.fontItalic;
+            font.Underline = this.fontUnderline;
             ITextSymbol textSymbol = new TextSymbol();
             textSymbol.Color=(rgbColor);
             textSymbol.Font=((IFontDisp)font);

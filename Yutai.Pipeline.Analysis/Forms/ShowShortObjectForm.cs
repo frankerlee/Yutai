@@ -4,6 +4,7 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using Yutai.ArcGIS.Common.Helpers;
 using Yutai.Pipeline.Analysis.Helpers;
 using Yutai.Plugins.Interfaces;
 
@@ -61,6 +62,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 					if (polyline != null)
 					{
 						CMapOperator.ShowFeatureWithWink(_context.ActiveView.ScreenDisplay, polyline);
+                       // FlashUtility.FlashGeometry(polyline,_context.MapControl);
 					}
 				}
 				else
@@ -68,8 +70,9 @@ namespace Yutai.Pipeline.Analysis.Forms
 					IFeature feature = this.treeView1.SelectedNode.Tag as IFeature;
 					if (feature != null)
 					{
+                      //  FlashUtility.FlashGeometry(feature.Shape, _context.MapControl);
                         CMapOperator.ShowFeatureWithWink(_context.ActiveView.ScreenDisplay, feature.Shape);
-					}
+                    }
 				}
 			}
 		}

@@ -1,5 +1,9 @@
 ﻿<PipelineConfig>
   <ConfigDatabase>\plugins\configs\pipelineSet.mdb</ConfigDatabase>
+  <!--<Styles>
+    <Style>\Styles\ESRI.ServerStyle</Style>
+    <Style>\Styles\YTPipeline.ServerStyle</Style>
+  </Styles>-->
   <PipelineLayers>
     <PipelineLayer Name="上水管线" Code="GS">
       <PointLayer Name="上水管线点" AliasName="上水管线点" Template="PipePoint" Visible="True">

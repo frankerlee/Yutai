@@ -29,11 +29,6 @@ namespace Yutai.Pipeline.Analysis.Forms
 	{
 		private IContainer icontainer_0 = null;
 
-
-
-
-
-
 		public string m_strBuildDate = "建设时间";
 
 		public IAppContext m_iApp;

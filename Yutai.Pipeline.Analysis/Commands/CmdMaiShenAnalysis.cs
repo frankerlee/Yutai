@@ -14,6 +14,7 @@ namespace Yutai.Pipeline.Analysis.Commands
         public CmdMaiShenAnalysis(IAppContext context,PipelineAnalysisPlugin plugin)
         {
             OnCreate(context);
+            _plugin = plugin;
         }
 
         public override void OnClick()

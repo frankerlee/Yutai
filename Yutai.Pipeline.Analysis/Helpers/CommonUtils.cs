@@ -17,6 +17,18 @@ namespace Yutai.Pipeline.Analysis.Helpers
 {
     public class CommonUtils
     {
+
+        public static double ConvertPixelsToMapUnits(IActiveView pActiveView, double pPixel)
+        {
+            int num = pActiveView.ScreenDisplay.DisplayTransformation.get_DeviceFrame().right -
+                      pActiveView.ScreenDisplay.DisplayTransformation.get_DeviceFrame().left;
+            if (num == 0)
+            {
+                return pPixel;
+            }
+            double num4 = pActiveView.ScreenDisplay.DisplayTransformation.VisibleBounds.Width / ((double)num);
+            return (pPixel * num4);
+        }
         public static ILayer GetLayerByName(IMap pMap, string strDstName)
         {
             ILayer layer;

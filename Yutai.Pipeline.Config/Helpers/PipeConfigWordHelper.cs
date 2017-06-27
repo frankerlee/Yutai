@@ -93,6 +93,7 @@ namespace Yutai.Pipeline.Config.Helpers
 
     public class PipeLineConfigWords
     {
+        public string SZWZ { get { return "SZWZ"; } }
         public  string QDBH {get{return "QDBH";}}
         public  string ZDBH {get{return "ZDBH";}}
         public  string QDMS {get{return "QDMS";}}

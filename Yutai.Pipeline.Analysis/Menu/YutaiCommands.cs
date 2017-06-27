@@ -40,12 +40,19 @@ namespace Yutai.Pipeline.Analysis.Menu
                 {
                     new CmdStartOrganizeMap(_context,_plugin),
                     new CmdCloseValveAnalysis(_context,_plugin),
-                    new CmdQueryBasic(_context, _plugin),
-                    new CmdQueryLine(_context, _plugin),
-                    new CmdQueryByAddress(_context, _plugin),
-                    new CmdQueryByCMIS(_context, _plugin),
-                    new CmdQueryByDate(_context, _plugin),
-                    new CmdQueryByDia(_context, _plugin),
+                    new CmdConnectivityAnalysis(_context,_plugin),
+                    new CmdMaiShenAnalysis(_context,_plugin),
+                    new CmdShortCutAnalysis(_context,_plugin),
+                    new CmdStartAreaMeasureAnalysis(_context),
+                    new CmdStartDistMeasureAnalysis(_context),
+                    new CmdSearchAffixAnalysis(_context,_plugin),
+                    new CmdStartBufferAnalysis(_context,_plugin),
+                    //new CmdQueryBasic(_context, _plugin),
+                    //new CmdQueryLine(_context, _plugin),
+                    //new CmdQueryByAddress(_context, _plugin),
+                    //new CmdQueryByCMIS(_context, _plugin),
+                    //new CmdQueryByDate(_context, _plugin),
+                    //new CmdQueryByDia(_context, _plugin),
                 };
             }
             catch (Exception ex)

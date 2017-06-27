@@ -30,7 +30,6 @@ namespace Yutai.Pipeline.Analysis.Commands
 
         public override void OnClick()
         {
-
             _context.SetCurrentTool(this);
 
             if (this.m_dmd == null)

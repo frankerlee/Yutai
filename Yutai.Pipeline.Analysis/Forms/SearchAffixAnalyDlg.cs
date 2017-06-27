@@ -6,11 +6,12 @@ using ESRI.ArcGIS.Geometry;
 using ESRI.ArcGIS.SystemUI;
 using stdole;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-
+using Yutai.ArcGIS.Common.Helpers;
 using Yutai.Pipeline.Analysis.Classes;
 using Yutai.Pipeline.Analysis.Helpers;
 using Yutai.Pipeline.Config.Helpers;
@@ -29,8 +30,9 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		public IPipelineConfig pPipeCfg;
 
+        
 
-
+	    private IBasicLayerInfo _basicLayerInfo;
 
 
 		public object mainform;
@@ -75,20 +77,18 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		public void AutoFlash()
 		{
-			this.method_0();
-			if (!this.method_1())
+			this.FindLayers();
+			if (!this.FindPipePointLayer())
 			{
 				MessageBox.Show("配置文件有误，请检查！");
 			}
-			else
-			{
-				this.method_2();
-			}
+			
 		}
 
-		private void method_0()
+		private void FindLayers()
 		{
 			this.LayerBox.Items.Clear();
+
 			CommonUtils.ThrougAllLayer(this.m_iApp.FocusMap, new CommonUtils.DealLayer(this.AddName));
 			if (this.LayerBox.Items.Count > 0)
 			{
@@ -96,7 +96,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 			}
 		}
 
-		private bool method_1()
+		private bool FindPipePointLayer()
 		{
 			int selectedIndex = this.LayerBox.SelectedIndex;
 			bool result;
@@ -121,12 +121,8 @@ namespace Yutai.Pipeline.Analysis.Forms
 					}
 					else
 					{
-					    IYTField pField = pPipeCfg.GetSpecialField(ifeatureLayer_0.FeatureClass.AliasName,
-					        PipeConfigWordHelper.PointWords.TZW);
-						this.ifields_0 = this.ifeatureLayer_0.FeatureClass.Fields;
-					    this.string_0 = pField != null ? pField.Name : "节点性质";
-
-						if (this.ifields_0.FindField(this.string_0) < 0)
+					    IBasicLayerInfo basicLayerInfo = pPipeCfg.GetBasicLayerInfo(ifeatureLayer_0.FeatureClass);
+					   if(basicLayerInfo.DataType!= enumPipelineDataType.Point)
 						{
 							this.btnAnalyse.Enabled = false;
 							result = false;
@@ -134,6 +130,9 @@ namespace Yutai.Pipeline.Analysis.Forms
 						else
 						{
 							this.btnAnalyse.Enabled = true;
+						    _basicLayerInfo = basicLayerInfo;
+						    //string values=basicLayerInfo.GetField(PipeConfigWordHelper.PointWords.FSW).DomainValues;
+                            FillValues();
 							result = true;
 						}
 					}
@@ -180,58 +179,28 @@ namespace Yutai.Pipeline.Analysis.Forms
 			}
 		}
 
-		private void method_2()
+		private void FillValues()
 		{
-			this.string_0 = "节点性质";
-			if (this.ifields_0 != null)
-			{
-				int num = this.ifields_0.FindField(this.string_0);
-				if (num >= 0)
-				{
-					this.ifield_0 = this.ifields_0.get_Field(num);
-					IFeatureClass featureClass = this.ifeatureLayer_0.FeatureClass;
-					IQueryFilter queryFilter = new QueryFilter();
-					IFeatureCursor featureCursor = featureClass.Search(queryFilter, false);
-					IFeature feature = featureCursor.NextFeature();
-					this.ValueBox.Items.Clear();
-					while (feature != null)
-					{
-						object obj = feature.get_Value(num);
-						if (obj is DBNull)
-						{
-							feature = featureCursor.NextFeature();
-						}
-						else
-						{
-							string text = obj.ToString();
-							if (text.Length == 0)
-							{
-								feature = featureCursor.NextFeature();
-							}
-							else
-							{
-								if (!this.ValueBox.Items.Contains(text))
-								{
-									this.ValueBox.Items.Add(text);
-								}
-								feature = featureCursor.NextFeature();
-							}
-						}
-					}
-				}
-			}
+
+            List<string> listValues =new List<string>();
+                CommonHelper.GetUniqueValues(ifeatureLayer_0, _basicLayerInfo.GetFieldName(PipeConfigWordHelper.PointWords.FSW),listValues);
+		    this.string_0 = _basicLayerInfo.GetFieldName(PipeConfigWordHelper.PointWords.FSW);
+
+                    this.ValueBox.Items.Clear();
+		    foreach (string value in listValues)
+		    {
+		        ValueBox.Items.Add(value);
+		    }
+				
+			
 		}
 
 		private void LayerBox_SelectedIndexChanged(object obj, EventArgs eventArgs)
 		{
 			this.list_0.Clear();
-			if (!this.method_1())
+			if (!this.FindPipePointLayer())
 			{
 				MessageBox.Show("配置文件有误，点性字段不匹配,请检查！");
-			}
-			else
-			{
-				this.method_2();
 			}
 		}
 
@@ -553,7 +522,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 			IPointCollection pointCollection = new Polyline();
 			pointCollection.AddPoint(point4, ref missing, ref missing);
 			pointCollection.AddPoint(point5, ref missing, ref missing);
-			BaseFun baseFun = new BaseFun();
+			BaseFun baseFun = new BaseFun(pPipeCfg);
 			IElement lineElement = baseFun.GetLineElement((IPolyline)pointCollection);
 			((IGraphicsContainer)this.m_iApp.ActiveView).AddElement(lineElement, 0);
 			string sNoteText = string.Format("L = {0:f2}m", ((IPolyline)pointCollection).Length);

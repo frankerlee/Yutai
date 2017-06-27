@@ -16,7 +16,8 @@ namespace Yutai.Pipeline.Config.Interfaces
     public interface IPipelineConfig
     {
         string ConfigDatabaseName { get; set; }
-
+        List<string> StyleFiles { get; set; }
+        List<ICommonConfig> CommonConfigs { get; set; }
         IFeatureWorkspace Workspace { get; set; }
         List<IPipelineTemplate> Templates { get; set; }
         List<IPipelineLayer> Layers { get; set; }
@@ -39,6 +40,9 @@ namespace Yutai.Pipeline.Config.Interfaces
         bool IsPipelineLayer(IFeatureClass pClass);
         bool IsPipelineLayer(string classAliasName, enumPipelineDataType dataType);
         IPipelineLayer GetPipelineLayer(string classAliasName, enumPipelineDataType dataType);
+
+        //推荐使用该方法获取，因为图层名字可能会一样，但是直接是类对象，就会对Workspace进行判断
+        IPipelineLayer GetPipelineLayer(IFeatureClass pClass);
         //! 依据FeatureLayer获取BaiscLayerInfo对象
         IBasicLayerInfo GetBasicLayerInfo(IFeatureClass pClass);
 

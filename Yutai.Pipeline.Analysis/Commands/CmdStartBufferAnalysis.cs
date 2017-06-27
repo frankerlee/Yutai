@@ -74,11 +74,11 @@ namespace Yutai.Pipeline.Analysis.Commands
             _cursor =
                 new System.Windows.Forms.Cursor(
                     base.GetType()
-                        .Assembly.GetManifestResourceStream("Yutai.Pipeline.Analysis.Resources.Cursor.Hand.cur"));
+                        .Assembly.GetManifestResourceStream("Yutai.Pipeline.Analysis.Resources.cursor.Hand.cur"));
             _cursor1 =
                 new Cursor(
                     base.GetType()
-                        .Assembly.GetManifestResourceStream("Yutai.Pipeline.Analysis.Resources.Cursor.MoveHand.cur"));
+                        .Assembly.GetManifestResourceStream("Yutai.Pipeline.Analysis.Resources.cursor.MoveHand.cur"));
             base.m_name = "PipeAnalysis_BufferAnalysisStart";
             base._key = "PipeAnalysis_BufferAnalysisStart";
             base.m_toolTip = "缓冲区分析";
@@ -132,8 +132,8 @@ namespace Yutai.Pipeline.Analysis.Commands
             envelope2.YMax=(envelope2.YMax + width);
             IEnvelope envelope3 = envelopeClass;
             envelope3.XMax=(envelope3.XMax + width);
-            map.SelectByShape(envelopeClass, new SelectionEnvironment(), true);
-            ((IActiveView)map).PartialRefresh((esriViewDrawPhase)4, null, null);
+            map.SelectByShape(envelopeClass, new SelectionEnvironment() , true);
+            ((IActiveView)map).PartialRefresh((esriViewDrawPhase.esriViewGeoSelection), null, null);
         }
 
       

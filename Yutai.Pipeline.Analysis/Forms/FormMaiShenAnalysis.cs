@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Columns;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
@@ -17,6 +18,7 @@ using Yutai.Pipeline.Analysis.Helpers;
 using Yutai.Pipeline.Config.Helpers;
 using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
+using Yutai.Plugins.Services;
 
 namespace Yutai.Pipeline.Analysis.Forms
 {
@@ -30,8 +32,11 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		public int m_nTimerCount;
 
+	    private DataTable _table;
+	    private IGeometry _curShape;
 
- public FormMaiShenAnalysis(IAppContext context,IPipelineConfig config)
+
+	    public FormMaiShenAnalysis(IAppContext context,IPipelineConfig config)
 		{
 			this.InitializeComponent();
 		    _context = context;
@@ -43,10 +48,10 @@ namespace Yutai.Pipeline.Analysis.Forms
 		private void FormMaiShenAnalysis_Load(object obj, EventArgs eventArgs)
 		{
 			IFeature feature = ((IEnumFeature)_context.FocusMap.FeatureSelection).Next();
-			if (feature == null || feature.Shape.GeometryType != (esriGeometryType) 4)
-			{
-				this.chkRegionAnalysis.Visible = false;
-			}
+			//if (feature == null || feature.Shape.GeometryType != (esriGeometryType) 4)
+			//{
+			//	this.chkRegionAnalysis.Visible = false;
+			//}
 			ArrayList arrayList = new ArrayList();
 			CMapOperator.GetMapILayers(_context.FocusMap, null, arrayList);
 			for (int i = 0; i < arrayList.Count; i++)
@@ -66,43 +71,52 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		private void btnAnalysis_Click(object obj, EventArgs eventArgs)
 		{
-			this.dataGridView1.Columns.Clear();
-			this.dataGridView1.Rows.Clear();
-			//string text = _context.PipeConfig.GetLineTableFieldName("敷设方式");
-			//if (text == "")
-			//{
-			//	text = "敷设方式";
-			//}
-			//string text2 = _context.PipeConfig.GetLineTableFieldName("所在位置");
-			//if (text2 == "")
-			//{
-			//	text2 = "所在位置";
-			//}
+		    if (cmbDepthType.SelectedIndex < 0)
+		    {
+		        MessageService.Current.Warn("请先选择埋深数据类型再进行分析!");
+		        return;
+		    }
+			this.gridView1.Columns.Clear();
+			//this.gridControl1.DataRowCount=0;//.Rows.Clear();
+		    IQueryFilter queryFilter = null;
+		    bool isM = cmbDepthType.SelectedIndex > 0 ? true : false;
+		    if (chkRegionAnalysis.Checked)
+		    {
+		        ISpatialFilter spatialFilter=new SpatialFilterClass();
+		        spatialFilter.Geometry = _context.ActiveView.Extent;
+                spatialFilter.SpatialRel= esriSpatialRelEnum.esriSpatialRelIntersects;
+                queryFilter=spatialFilter as IQueryFilter;
+		    }
+		    _table = null;
 			foreach (CheckListFeatureLayerItem pclass in this.checkedListBox1.CheckedItems)
 			{
 				IFeatureLayer ifeatureLayer = pclass.m_pFeatureLayer;
 				this.progressBar1.Visible = true;
-				this.progressBar1.Maximum = ifeatureLayer.FeatureClass.FeatureCount(null);
+				this.progressBar1.Maximum = ifeatureLayer.FeatureClass.FeatureCount(queryFilter);
 				this.progressBar1.Step = 1;
 				this.progressBar1.Value = 0;
 				this.Text = "覆土分析 - 正在处理：" + ifeatureLayer.Name+ "...";
+			    IPipelineLayer pipelineLayer = _config.GetPipelineLayer(ifeatureLayer.FeatureClass);
+			    IBasicLayerInfo pipeLine = _config.GetBasicLayerInfo(ifeatureLayer.FeatureClass) as IBasicLayerInfo;
 
-			    IBasicLayerInfo pipeLine = _config.GetBasicLayerInfo(ifeatureLayer.FeatureClass.AliasName) as IBasicLayerInfo;
 
-
-                string lineConfig_Kind = pipeLine.GetFieldName(PipeConfigWordHelper.LineWords.GDXZ);
-
+                string lineConfig_Kind = pipelineLayer.Code;
+                
                 string sDepthMethod = "";
 				string sDepPosition = "";
 				int num = ifeatureLayer.FeatureClass.Fields.FindField(pipeLine.GetFieldName(PipeConfigWordHelper.LineWords.MSFS));
                 //基本上没有使用，因为所在位置没有数据
-				int num2 = ifeatureLayer.FeatureClass.Fields.FindField("所在位置");
-				IFeatureCursor featureCursor = ifeatureLayer.Search(null, false);
-				IFeature feature = featureCursor.NextFeature();
+				int num2 = ifeatureLayer.FeatureClass.Fields.FindField(pipeLine.GetFieldName(PipeConfigWordHelper.LineWords.SZWZ));
+				IFeatureCursor featureCursor = ifeatureLayer.Search(queryFilter, false);
+			    int qdmsIdx = featureCursor.FindField(pipeLine.GetFieldName(PipeConfigWordHelper.LineWords.QDMS));
+                int zdmsIdx = featureCursor.FindField(pipeLine.GetFieldName(PipeConfigWordHelper.LineWords.ZDMS));
+
+			    BuildTable(featureCursor);
+                IFeature feature = featureCursor.NextFeature();
 				while (feature != null)
 				{
 					this.progressBar1.Value= this.progressBar1.Value+1;
-					if (feature.Shape == null || feature.Shape.GeometryType != (esriGeometryType) 3)
+					if (feature.Shape == null || feature.Shape.GeometryType !=esriGeometryType.esriGeometryPolyline )
 					{
 						feature = featureCursor.NextFeature();
 					}
@@ -117,90 +131,81 @@ namespace Yutai.Pipeline.Analysis.Forms
 							sDepPosition = feature.get_Value(num2).ToString();
 						}
 						double ruleMS = this.m_RuleMs.GetRuleMS(lineConfig_Kind, sDepthMethod, sDepPosition);
-						IPoint point = ((IPointCollection)feature.Shape).get_Point(0);
-						IPoint point2 = ((IPointCollection)feature.Shape).get_Point(1);
-						if (point.M < ruleMS || point2.M < ruleMS)
-						{
-							this.FillFeatureValue(pipeLine,lineConfig_Kind, feature, ruleMS, point.M, point2.M);
-						}
-						feature = featureCursor.NextFeature();
+					    if (isM)
+					    {
+					        IPoint point = ((IPointCollection) feature.Shape).get_Point(0);
+					        IPoint point2 = ((IPointCollection) feature.Shape).get_Point(1);
+					        if (point.M < ruleMS || point2.M < ruleMS)
+					        {
+					            this.FillFeatureValue(pipeLine, lineConfig_Kind, feature, ruleMS, point.M, point2.M);
+					        }
+					    }
+					    else
+					    {
+					        double qdms = qdmsIdx >= 0 ? Convert.ToDouble(feature.Value[qdmsIdx]) : 0;
+                            double zdms = qdmsIdx >= 0 ? Convert.ToDouble(feature.Value[zdmsIdx]) : 0;
+                            if (qdms < ruleMS || zdms < ruleMS)
+                            {
+                                this.FillFeatureValue(pipeLine, lineConfig_Kind, feature, ruleMS, qdms, zdms);
+                            }
+                        }
+					    feature = featureCursor.NextFeature();
 					}
 				}
 				Marshal.ReleaseComObject(featureCursor);
 				this.progressBar1.Visible = false;
+			    this.gridControl1.DataSource = _table;
 			}
-			this.Text = "覆土分析--记录数:" + this.dataGridView1.Rows.Count.ToString();
+			this.Text = "覆土分析--记录数:" + _table.Rows.Count.ToString();
 		}
 
+	    private void BuildTable(IFeatureCursor pCursor)
+	    {
+	        if (_table == null)
+	        {
+	            _table=new DataTable("分析结果");
+	            _table.Columns.Add("规范埋深");
+                _table.Columns.Add("起点埋深");
+                _table.Columns.Add("终点埋深");
+                _table.Columns.Add("管线类别", typeof(string));
+                _table.Columns.Add("管线名称", typeof(string));
+                _table.Columns.Add("对象");
+            }
+
+            Regex regex = new Regex("^[\\u4e00-\\u9fa5]+$");
+            for (int i = 0; i < pCursor.Fields.FieldCount; i++)
+            {
+                string name = pCursor.Fields.get_Field(i).Name;
+                if (_table.Columns[name] == null && regex.IsMatch(name))
+                {
+                    _table.Columns.Add(name);
+                }
+
+            }
+        }
 		private void FillFeatureValue(IBasicLayerInfo pipeLine,string value, IFeature feature, double num, double num2, double num3)
 		{
-			if (!this.dataGridView1.Columns.Contains("*规范埋深"))
-			{
-				this.dataGridView1.Columns.Add("*规范埋深", "*规范埋深");
-			}
-			if (!this.dataGridView1.Columns.Contains("*起点埋深"))
-			{
-				this.dataGridView1.Columns.Add("*起点埋深", "*起点埋深");
-			}
-			if (!this.dataGridView1.Columns.Contains("*终点埋深"))
-			{
-				this.dataGridView1.Columns.Add("*终点埋深", "*终点埋深");
-			}
-			if (!this.dataGridView1.Columns.Contains("*管线类别"))
-			{
-				this.dataGridView1.Columns.Add("*管线类别", "*管线类别");
-			}
-            //
-		    string text = pipeLine.GetFieldName(PipeConfigWordHelper.LineWords.GDXZ);
+            Regex regex = new Regex("^[\\u4e00-\\u9fa5]+$");
 
-            if (text == "")
+		    DataRow pRow = _table.NewRow();
+		    pRow["管线名称"] = pipeLine.Name;
+            pRow["规范埋深"] = string.Format("{0:f2}", num);
+            pRow["起点埋深"] = string.Format("{0:f2}", num2);
+            pRow["终点埋深"] = string.Format("{0:f2}", num3);
+            pRow["管线类别"] = value;
+            pRow["对象"] = feature.Shape;
+         
+            for (int j = 0; j < feature.Fields.FieldCount; j++)
 			{
-				text = "管线性质";
-			}
-			if (!this.dataGridView1.Columns.Contains(text))
-			{
-				this.dataGridView1.Columns.Add(text, text);
-			}
-		    string text2 = pipeLine.GetFieldName(PipeConfigWordHelper.LineWords.MSFS);// _context.PipeConfig.GetLineTableFieldName("埋设方式");
-			if (text2 == "")
-			{
-				text2 = "埋设方式";
-			}
-			if (!this.dataGridView1.Columns.Contains(text2))
-			{
-				this.dataGridView1.Columns.Add(text2, text2);
-			}
-			Regex regex = new Regex("^[\\u4e00-\\u9fa5]+$");
-			for (int i = 0; i < feature.Fields.FieldCount; i++)
-			{
-				string name = feature.Fields.get_Field(i).Name;
-				if (!this.dataGridView1.Columns.Contains(name) && regex.IsMatch(name))
-				{
-					this.dataGridView1.Columns.Add(name, name);
-				}
-			}
-			int index = this.dataGridView1.Rows.Add();
-			this.dataGridView1.Rows[index].Cells["*规范埋深"].Value = string.Format("{0:f2}", num);
-			this.dataGridView1.Rows[index].Cells["*起点埋深"].Value = string.Format("{0:f2}", num2);
-			this.dataGridView1.Rows[index].Cells["*终点埋深"].Value = string.Format("{0:f2}", num3);
-			this.dataGridView1.Rows[index].Cells["*管线类别"].Value = value;
-			this.dataGridView1.Rows[index].Tag = feature;
-			if (num2 < num)
-			{
-				this.dataGridView1.Rows[index].Cells["*起点埋深"].Style.BackColor = Color.Red;
-			}
-			if (num3 < num)
-			{
-				this.dataGridView1.Rows[index].Cells["*终点埋深"].Style.BackColor = Color.Red;
-			}
-			for (int j = 0; j < feature.Fields.FieldCount; j++)
-			{
+                
 				string name2 = feature.Fields.get_Field(j).Name;
 				if (regex.IsMatch(name2))
 				{
-					this.dataGridView1.Rows[index].Cells[name2].Value = feature.get_Value(j).ToString();
+				    pRow[name2]= feature.get_Value(j);
 				}
 			}
+		    _table.Rows.Add(pRow);
+		    // this.gridView1.Columns["ObjShape"].Visible = false;
 		}
 
 		private void btnExit_Click(object obj, EventArgs eventArgs)
@@ -234,84 +239,81 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		private void btnExport_Click(object obj, EventArgs eventArgs)
 		{
-			if (this.saveFileDialog_0.ShowDialog() == DialogResult.OK)
-			{
-				string fileName = this.saveFileDialog_0.FileName;
-				if (File.Exists(fileName))
-				{
-					File.Delete(fileName);
-				}
-				OdbcCommand odbcCommand = new OdbcCommand();
-				OdbcConnection odbcConnection = new OdbcConnection();
-				string connectionString = "DRIVER=MICROSOFT EXCEL DRIVER (*.xls);FIRSTROWHASNAMES=1;READONLY=FALSE;CREATE_DB=\"" + fileName + "\\;DBQ=" + fileName;
-				odbcConnection.ConnectionString = connectionString;
-				odbcConnection.Open();
-				odbcCommand.Connection = odbcConnection;
-				odbcCommand.CommandType = CommandType.Text;
-				string text = "(";
-				for (int i = 0; i < this.dataGridView1.Columns.Count; i++)
-				{
-					if (i == 0)
-					{
-						text = text + this.dataGridView1.Columns[i].Name + " varchar(20) ";
-					}
-					else
-					{
-						text = text + " , " + this.dataGridView1.Columns[i].Name + " varchar(20) ";
-					}
-				}
-				text += ")";
-				text = text.Replace("*", "Custom");
-				string commandText = "CREATE TABLE Result " + text;
-				odbcCommand.CommandText = commandText;
-				odbcCommand.ExecuteNonQuery();
-				for (int j = 0; j < this.dataGridView1.Rows.Count; j++)
-				{
-					OdbcCommand odbcCommand2 = new OdbcCommand();
-					odbcCommand2.Connection = odbcConnection;
-					odbcCommand2.CommandType = CommandType.Text;
-					string text2 = "INSERT INTO Result ";
-					string text3 = " VALUES(";
-					for (int k = 0; k < this.dataGridView1.ColumnCount; k++)
-					{
-						if (k != this.dataGridView1.ColumnCount - 1)
-						{
-							text3 = text3 + "'" + this.dataGridView1[k, j].Value.ToString() + "', ";
-						}
-						else
-						{
-							text3 = text3 + "'" + this.dataGridView1[k, j].Value.ToString() + "')";
-						}
-					}
-					text2 += text3;
-					odbcCommand2.CommandText = text2;
-					odbcCommand2.ExecuteNonQuery();
-				}
-				odbcConnection.Close();
-			}
-		}
+            using (SaveFileDialog saveDialog = new SaveFileDialog())
+            {
+                saveDialog.Filter = "Excel (2003)(.xls)|*.xls|Excel (2010) (.xlsx)|*.xlsx |RichText File (.rtf)|*.rtf |Pdf File (.pdf)|*.pdf |Html File (.html)|*.html";
+                if (saveDialog.ShowDialog() != DialogResult.Cancel)
+                {
+                    string exportFilePath = saveDialog.FileName;
+                    string fileExtenstion = new FileInfo(exportFilePath).Extension;
+
+                    switch (fileExtenstion)
+                    {
+                        case ".xls":
+                            gridControl1.ExportToXls(exportFilePath);
+                            break;
+                        case ".xlsx":
+                            gridControl1.ExportToXlsx(exportFilePath);
+                            break;
+                        case ".rtf":
+                            gridControl1.ExportToRtf(exportFilePath);
+                            break;
+                        case ".pdf":
+                            gridControl1.ExportToPdf(exportFilePath);
+                            break;
+                        case ".html":
+                            gridControl1.ExportToHtml(exportFilePath);
+                            break;
+                        case ".mht":
+                            gridControl1.ExportToMht(exportFilePath);
+                            break;
+                        default:
+                            break;
+                    }
+
+                    if (File.Exists(exportFilePath))
+                    {
+                        try
+                        {
+                            //Try to open the file and let windows decide how to open it.
+                            System.Diagnostics.Process.Start(exportFilePath);
+                        }
+                        catch
+                        {
+                            String msg = "The file could not be opened." + Environment.NewLine + Environment.NewLine + "Path: " + exportFilePath;
+                            MessageBox.Show(msg, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        String msg = "The file could not be saved." + Environment.NewLine + Environment.NewLine + "Path: " + exportFilePath;
+                        MessageBox.Show(msg, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
 
 		private void dataGridView1_CellClick(object obj, DataGridViewCellEventArgs dataGridViewCellEventArgs)
 		{
-			if (dataGridViewCellEventArgs.RowIndex >= 0)
-			{
-				IFeature feature = (IFeature)this.dataGridView1.Rows[dataGridViewCellEventArgs.RowIndex].Tag;
-				if (feature != null)
-				{
-					IEnvelope extent = _context.ActiveView.Extent;
-					IEnvelope arg_B5_0 = extent;
-					IPoint pointClass = new ESRI.ArcGIS.Geometry.Point();
-					pointClass.X=((feature.Shape.Envelope.XMin + feature.Shape.Envelope.XMax) / 2.0);
-					pointClass.Y=((feature.Shape.Envelope.YMin + feature.Shape.Envelope.YMax) / 2.0);
-					arg_B5_0.CenterAt(pointClass);
-					_context.MapControl.Extent=(extent);
-					this.ifeature_0 = feature;
-					this.timer_0.Start();
-					this.timer_0.Interval = 100;
-					_context.ActiveView.Refresh();
-					this.m_nTimerCount = 0;
-				}
-			}
+			//if (dataGridViewCellEventArgs.RowIndex >= 0)
+			//{
+			//	IFeature feature = (IFeature)this.gridView1.Rows[dataGridViewCellEventArgs.RowIndex].Tag;
+			//	if (feature != null)
+			//	{
+			//		IEnvelope extent = _context.ActiveView.Extent;
+			//		IEnvelope arg_B5_0 = extent;
+			//		IPoint pointClass = new ESRI.ArcGIS.Geometry.Point();
+			//		pointClass.X=((feature.Shape.Envelope.XMin + feature.Shape.Envelope.XMax) / 2.0);
+			//		pointClass.Y=((feature.Shape.Envelope.YMin + feature.Shape.Envelope.YMax) / 2.0);
+			//		arg_B5_0.CenterAt(pointClass);
+			//		_context.MapControl.Extent=(extent);
+			//		this.ifeature_0 = feature;
+			//		this.timer_0.Start();
+			//		this.timer_0.Interval = 100;
+			//		_context.ActiveView.Refresh();
+			//		this.m_nTimerCount = 0;
+			//	}
+			//}
 		}
 
 		private void FormMaiShenAnalysis_HelpRequested(object obj, HelpEventArgs helpEventArgs)
@@ -330,8 +332,28 @@ namespace Yutai.Pipeline.Analysis.Forms
 				IActiveView activeView = _context.ActiveView;
 				activeView.PartialRefresh((esriViewDrawPhase) 8, null, null);
 			}
-			CMapOperator.ShowFeatureWithWink(_context.ActiveView.ScreenDisplay, this.ifeature_0.Shape);
+			CMapOperator.ShowFeatureWithWink(_context.ActiveView.ScreenDisplay, this._curShape);
 			this.m_nTimerCount++;
 		}
-	}
+
+        private void gridView1_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
+        {
+            IGeometry feature = this.gridView1.GetRowCellValue(e.RowHandle, "对象") as IGeometry;
+            if (feature != null)
+            {
+                IEnvelope extent = _context.ActiveView.Extent;
+                IEnvelope arg_B5_0 = extent;
+                IPoint pointClass = new ESRI.ArcGIS.Geometry.Point();
+                pointClass.X = ((feature.Envelope.XMin + feature.Envelope.XMax) / 2.0);
+                pointClass.Y = ((feature.Envelope.YMin + feature.Envelope.YMax) / 2.0);
+                arg_B5_0.CenterAt(pointClass);
+                _context.MapControl.Extent = (extent);
+                this._curShape = feature;
+                this.timer_0.Start();
+                this.timer_0.Interval = 100;
+                _context.ActiveView.Refresh();
+                this.m_nTimerCount = 0;
+            }
+        }
+    }
 }

@@ -321,8 +321,9 @@ namespace Yutai.Plugins.Concrete
             _engineSnapEnvironment=new EngineEditorClass();
             ((IEngineEditProperties2) _engineSnapEnvironment).SnapTips = true;
             _engineSnapEnvironment.SnapTolerance = 10;
+            SnapTolerance = 10;
 
-            
+
             #endregion
             LocatorMaxCount = 100;
 
