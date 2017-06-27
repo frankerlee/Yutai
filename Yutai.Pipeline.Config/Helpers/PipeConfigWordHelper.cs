@@ -17,6 +17,7 @@ namespace Yutai.Pipeline.Config.Helpers
         public static AnnoConfigWords AnnoWords=new AnnoConfigWords();
         public static Point3DConfigWords Point3DWords = new Point3DConfigWords();
         public static Line3DConfigWords Line3DWords = new Line3DConfigWords();
+        public static FunctionLayerConfigWords FunctionLayerWorkds = new FunctionLayerConfigWords();
     }
     
     public class PipePointConfigWords
@@ -237,5 +238,11 @@ namespace Yutai.Pipeline.Config.Helpers
     {
         public  string GDBH {get{return "GDBH";}}
         public  string RKRQ {get{return "RKRQ";}}
+    }
+
+    public class FunctionLayerConfigWords
+    {
+        public string XMMC { get { return "XMMC"; } }
+        public string XMDW { get { return "XMDW"; } }
     }
 }

@@ -83,12 +83,12 @@ namespace Yutai.Pipeline.Config.Concretes
             templateNode.Attributes.Append(nameAttribute);
             templateNode.Attributes.Append(captionAttribute);
             templateNode.Attributes.Append(typeAttribute);
-
+            XmlNode fieldsNode = doc.CreateElement("Fields");
             foreach (IYTField ytField in _fields)
             {
-                templateNode.AppendChild(ytField.ToXml(doc));
+                fieldsNode.AppendChild(ytField.ToXml(doc));
             }
-
+            templateNode.AppendChild(fieldsNode);
             return templateNode;
         }
     }

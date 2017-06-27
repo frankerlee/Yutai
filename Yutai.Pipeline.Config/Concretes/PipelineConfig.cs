@@ -32,11 +32,13 @@ namespace Yutai.Pipeline.Config.Concretes
         private List<IPipelineLayer> _dbLayers;
         private List<string> _styleFiles;
         private List<ICommonConfig> _commonConfigs;
+        private List<IFunctionLayer> _functionLayers;
 
         public PipelineConfig()
         {
             _templates = new List<IPipelineTemplate>();
             _layers = new List<IPipelineLayer>();
+            _functionLayers = new List<IFunctionLayer>();
             _styleFiles=new List<string>();
             _commonConfigs=new List<ICommonConfig>();
         }
@@ -77,6 +79,12 @@ namespace Yutai.Pipeline.Config.Concretes
             set { _layers = value; }
         }
 
+        public List<IFunctionLayer> FunctionLayers
+        {
+            get { return _functionLayers; }
+            set { _functionLayers = value; }
+        }
+
         public string XmlFile
         {
             get { return _xmlFile; }
@@ -113,6 +121,13 @@ namespace Yutai.Pipeline.Config.Concretes
                     _layers.Add(layer);
                 }
 
+            nodes = doc.SelectNodes("/PipelineConfig/FunctionLayers/FunctionLayer");
+            if (nodes != null)
+                foreach (XmlNode node in nodes)
+                {
+                    IFunctionLayer layer = new FunctionLayer(node);
+                    _functionLayers.Add(layer);
+                }
         }
 
         private void InitCommonConfig(XmlDocument doc)
@@ -277,6 +292,21 @@ namespace Yutai.Pipeline.Config.Concretes
             return field;
         }
 
+        public IFunctionLayer GetFunctionLayer(IFeatureClass featureClass)
+        {
+            return _functionLayers.FirstOrDefault(c => c.AliasName == featureClass.AliasName);
+        }
+
+        public IFunctionLayer GetFunctionLayer(string aliasName)
+        {
+            return _functionLayers.FirstOrDefault(c => c.AliasName == aliasName);
+        }
+
+        public IFunctionLayer GetFunctionLayer(enumFunctionLayerType type)
+        {
+            return _functionLayers.FirstOrDefault(c => c.FunctionType == type);
+        }
+
 
         //! 目前只是按照名字对照去识别管线图层，后期可能需要动态的识别管线图层，并进行判断确定是否为合法的管线图层
         private void LinkFeatureLayers()
@@ -347,6 +377,12 @@ namespace Yutai.Pipeline.Config.Concretes
                 templatesNode.AppendChild(pipelineTemplate.ToXml(doc));
             }
             rootNode.AppendChild(templatesNode);
+            XmlNode functionsNode = doc.CreateElement("FunctionLayers");
+            foreach (IFunctionLayer functionLayer in _functionLayers)
+            {
+                functionsNode.AppendChild(functionLayer.ToXml(doc));
+            }
+            rootNode.AppendChild(functionsNode);
             doc.AppendChild(rootNode);
             doc.Save(fileName);
         }
@@ -368,6 +404,12 @@ namespace Yutai.Pipeline.Config.Concretes
                 templatesNode.AppendChild(pipelineTemplate.ToXml(doc));
             }
             rootNode.AppendChild(templatesNode);
+            XmlNode functionsNode = doc.CreateElement("FunctionLayers");
+            foreach (IFunctionLayer functionLayer in _functionLayers)
+            {
+                functionsNode.AppendChild(functionLayer.ToXml(doc));
+            }
+            rootNode.AppendChild(functionsNode);
             doc.AppendChild(rootNode);
             doc.Save(_xmlFile);
         }

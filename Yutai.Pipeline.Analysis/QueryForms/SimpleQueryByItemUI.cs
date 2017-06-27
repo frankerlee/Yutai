@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using Yutai.Pipeline.Config.Helpers;
 using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
@@ -28,19 +29,11 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 _plugin = value;
             }
         }
-
-
+        
         private List<string> ADArray = new List<string>();
 
 		private DataTable Sumtable = new DataTable();
-
-
-
-
-
-
-
-
+        
 		public SimpleQueryByItemUI()
 		{
 			this.InitializeComponent();
@@ -56,11 +49,12 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			int layerCount = m_context.FocusMap.LayerCount;
 			for (int i = 0; i < layerCount; i++)
 			{
-				ILayer ipLay = m_context.FocusMap.get_Layer(i);
-				if (this.GetLayer("项目地界", ipLay))
-				{
-					break;
-				}
+				ILayer ipLay = m_context.FocusMap.Layer[i];
+			    IFunctionLayer functionLayer = pPipeCfg.GetFunctionLayer(enumFunctionLayerType.Item);
+                if (functionLayer == null)
+                    break;
+			    if (this.GetLayer(functionLayer.AutoNames, ipLay))
+			        break;
 			}
 			if (this.SelectLayer == null)
 			{
@@ -86,7 +80,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			}
 			else if (ipLay is IGroupLayer)
 			{
-				result = this.GetGroupLayer("项目地界", (IGroupLayer)ipLay);
+				result = this.GetGroupLayer(pPipeCfg.GetFunctionLayer(enumFunctionLayerType.Item).AutoNames, (IGroupLayer)ipLay);
 				return result;
 			}
 			result = false;
@@ -106,7 +100,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				int count = compositeLayer.Count;
 				for (int i = 0; i < count; i++)
 				{
-					ILayer ipLay = compositeLayer.get_Layer(i);
+					ILayer ipLay = compositeLayer.Layer[i];
 					if (this.GetLayer(name, ipLay))
 					{
 						result = true;
@@ -122,11 +116,12 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 		{
 			if (this.SelectLayer == null)
 			{
-				MessageBox.Show("此图层不存在");
+				MessageBox.Show(@"此图层不存在");
 			}
 			else
 			{
 				IFeatureClass featureClass = this.SelectLayer.FeatureClass;
+			    IFunctionLayer layerInfo = pPipeCfg.GetFunctionLayer(featureClass);
 				IQueryFilter queryFilter = new QueryFilter();
 				IFeatureCursor featureCursor = featureClass.Search(queryFilter, false);
 				IFeature feature = featureCursor.NextFeature();
@@ -134,23 +129,23 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				string text;
 				if (this.radioButton1.Checked)
 				{
-					text = "项目名称";
+					text = layerInfo.GetFieldName(PipeConfigWordHelper.FunctionLayerWorkds.XMMC);
 				}
 				else
 				{
-					text = "项目单位";
-				}
+					text = layerInfo.GetFieldName(PipeConfigWordHelper.FunctionLayerWorkds.XMDW);
+                }
 				int num = featureClass.Fields.FindField(text);
 				if (num == -1)
 				{
-					MessageBox.Show("没有找到字段！");
+					MessageBox.Show(@"没有找到字段！");
 				}
 				else
 				{
 					this.comboBox1.Items.Clear();
 					while (feature != null)
 					{
-						object obj = feature.get_Value(num);
+						object obj = feature.Value[num];
 						string text2;
 						if (obj == null || Convert.IsDBNull(obj))
 						{
@@ -191,23 +186,24 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 		{
 			if (this.SelectLayer == null)
 			{
-				MessageBox.Show("项目地界层不存在!");
+				MessageBox.Show(@"项目地界层不存在!");
 			}
 			else
 			{
 				IFeatureClass featureClass = this.SelectLayer.FeatureClass;
-				ISpatialFilter spatialFilter = new SpatialFilter();
+                IFunctionLayer layerInfo = pPipeCfg.GetFunctionLayer(featureClass);
+                ISpatialFilter spatialFilter = new SpatialFilter();
 				string text = this.comboBox1.Text;
 				string text2;
 				if (!this.checkBox1.Checked)
 				{
 					if (this.radioButton1.Checked)
 					{
-						text2 = "项目名称 = ";
+						text2 = $"{layerInfo.GetFieldName(PipeConfigWordHelper.FunctionLayerWorkds.XMMC)} = ";
 					}
 					else
 					{
-						text2 = "项目单位 = ";
+						text2 = $"{layerInfo.GetFieldName(PipeConfigWordHelper.FunctionLayerWorkds.XMDW)} = ";
 					}
 					text2 += " '";
 					text2 += text;
@@ -217,11 +213,11 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				{
 					if (this.radioButton1.Checked)
 					{
-						text2 = "项目名称 LIKE ";
+						text2 = $"{layerInfo.GetFieldName(PipeConfigWordHelper.FunctionLayerWorkds.XMMC)} LIKE ";
 					}
 					else
 					{
-						text2 = "项目单位 LIKE ";
+						text2 = $"{layerInfo.GetFieldName(PipeConfigWordHelper.FunctionLayerWorkds.XMDW)} LIKE ";
 					}
 					IDataset dataset = this.SelectLayer.FeatureClass as IDataset;
 					if (dataset.Workspace.Type == (esriWorkspaceType) 2)

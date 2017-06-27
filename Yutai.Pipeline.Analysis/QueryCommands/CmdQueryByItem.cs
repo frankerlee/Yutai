@@ -24,15 +24,16 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
 
         public override void OnClick()
         {
-            // _context.SetCurrentTool(this);
             if (this.QueryUI == null || this.QueryUI.IsDisposed)
             {
                 this.QueryUI = new SimpleQueryByItemUI();
+                this.QueryUI.TopMost = true;
                 this.QueryUI.MapControl = (IMapControl3)_context.MapControl;
                 this.QueryUI.pPipeCfg =_plugin.PipeConfig;
                 this.QueryUI.m_context = this._context;
                 this.QueryUI.Closing += new CancelEventHandler(this.QueryUI_Closing);
                 this.QueryUI.Show();
+                this.QueryUI.Plugin = _plugin;
             }
             else if (!this.QueryUI.Visible)
             {
@@ -68,27 +69,7 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
 
             CommonUtils.AppContext = _context;
         }
-        //public override void OnMouseDown(int Button, int Shift, int X, int Y)
-        //{
-        //    if (this.QueryUI.SelectGeometry && Button == 1)
-        //    {
-        //        IGeometry ipGeo = null;
-        //        if (this.QueryUI.DrawType == 0)
-        //        {
-        //            ipGeo = _context.MapControl.TrackRectangle();
-        //        }
-        //        if (this.QueryUI.DrawType == 1)
-        //        {
-        //            ipGeo = _context.MapControl.TrackPolygon();
-        //        }
-        //        if (this.QueryUI.DrawType == 2)
-        //        {
-        //            ipGeo = _context.MapControl.TrackCircle();
-        //        }
-        //        this.QueryUI.m_ipGeo = ipGeo;
-        //        _context.ActiveView.PartialRefresh((esriViewDrawPhase)32, null, null);
-        //    }
-        //}
+
         private void QueryUI_Closing(object sender, CancelEventArgs e)
         {
             e.Cancel = true;
