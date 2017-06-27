@@ -1,8 +1,7 @@
-﻿
-using Yutai.Pipeline.Analysis.Views;
+﻿using Yutai.Pipeline.Analysis.Views;
 using Yutai.Plugins.Mvp;
 
-namespace Yutai.Plugins.Catalog
+namespace Yutai.Pipeline.Analysis
 {
     internal static class CompositionRoot
     {
