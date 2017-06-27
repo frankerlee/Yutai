@@ -5,7 +5,7 @@ using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
 
-namespace Yutai.Pipeline.Analysis.QueryForms
+namespace Yutai.Pipeline.Analysis.QueryCommands
 {
     class CmdStartOrganizeMap : YutaiCommand
     {

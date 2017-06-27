@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Yutai.Pipeline.Analysis;
 using Yutai.Pipeline.Analysis.Commands;
+using Yutai.Pipeline.Analysis.QueryCommands;
 using Yutai.Pipeline.Analysis.QueryForms;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Interfaces;
@@ -53,6 +54,13 @@ namespace Yutai.Pipeline.Analysis.Menu
                     //new CmdQueryByCMIS(_context, _plugin),
                     //new CmdQueryByDate(_context, _plugin),
                     //new CmdQueryByDia(_context, _plugin),
+                    new CmdQueryBasic(_context, _plugin),
+                    new CmdQueryLine(_context, _plugin),
+                    new CmdQueryByAddress(_context, _plugin),
+                    new CmdQueryByCMIS(_context, _plugin),
+                    new CmdQueryByDate(_context, _plugin),
+                    new CmdQueryByDia(_context, _plugin),
+                    new CmdQueryByGJJTJ(_context, _plugin),
                 };
             }
             catch (Exception ex)

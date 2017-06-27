@@ -14,14 +14,19 @@
           <BarItem Key="PipeAnalysis_BufferAnalysisStart" Visible="true"></BarItem>
           
         </PageGroup>
-        <!--<PageGroup Key="Pipeline_Query_Common" Caption="常用查询" Visible="true" Index="1">
+        <PageGroup Key="Pipeline_Query_Common" Caption="常用查询" Visible="true" Index="1">
           <BarItem Key="PipeQuery_ByCMIS" Visible="true"/>
           <BarItem Key="PipeQuery_Basic" Visible="true"/>
           <BarItem Key="PipeQuery_BasicLine" Visible="true"/>
+        </PageGroup>
+        <PageGroup Key="Pipeline_Query_Quick" Caption="快速查询" Visible="true" Index="2">
           <BarItem Key="PipeQuery_ByAddress" Visible="true"/>
           <BarItem Key="PipeQuery_ByDate" Visible="true"/>
           <BarItem Key="PipeQuery_ByDia" Visible="true"/>
-        </PageGroup>-->
+        </PageGroup>
+        <PageGroup Key="Pipeline_Statistics_Common" Caption="常用统计" Visible="true" Index="3">
+          <BarItem Key="PipeQuery_ByGJTJ" Visible="true"/>
+        </PageGroup>
       </Page>
     </Pages>
   </MainMenu>

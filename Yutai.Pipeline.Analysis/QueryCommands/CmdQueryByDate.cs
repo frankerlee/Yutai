@@ -5,11 +5,12 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Geometry;
 using Yutai.Pipeline.Analysis.Helpers;
+using Yutai.Pipeline.Analysis.QueryForms;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
 
-namespace Yutai.Pipeline.Analysis.QueryForms
+namespace Yutai.Pipeline.Analysis.QueryCommands
 {
     class CmdQueryByDate : YutaiTool
     {

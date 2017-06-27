@@ -3,11 +3,12 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using ESRI.ArcGIS.Controls;
 using Yutai.Pipeline.Analysis.Helpers;
+using Yutai.Pipeline.Analysis.QueryForms;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
 
-namespace Yutai.Pipeline.Analysis.QueryForms
+namespace Yutai.Pipeline.Analysis.QueryCommands
 {
     class CmdQueryByItem : YutaiCommand
     {

@@ -3,8 +3,6 @@ using Yutai.Pipeline.Analysis.Menu;
 using Yutai.Pipeline.Analysis.Services;
 using Yutai.Pipeline.Config.Concretes;
 using Yutai.Pipeline.Config.Interfaces;
-using Yutai.Plugins.Catalog;
-
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Mef;

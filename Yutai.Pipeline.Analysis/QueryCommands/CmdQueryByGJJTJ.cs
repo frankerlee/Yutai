@@ -5,11 +5,12 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Geometry;
 using Yutai.Pipeline.Analysis.Helpers;
+using Yutai.Pipeline.Analysis.QueryForms;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
 
-namespace Yutai.Pipeline.Analysis.QueryForms
+namespace Yutai.Pipeline.Analysis.QueryCommands
 {
     class CmdQueryByGJJTJ : YutaiTool
     {
@@ -30,9 +31,10 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             if (this.QueryUI == null || this.QueryUI.IsDisposed)
             {
                 this.QueryUI = new SimpleStat();
+                this.QueryUI.TopMost = true;
                 this.QueryUI.MapControl = (IMapControl3)_context.MapControl;
-                this.QueryUI.pPipeCfg = _plugin.PipeConfig;
-                this.QueryUI.m_context = this._context;
+                this.QueryUI.PPipeCfg = _plugin.PipeConfig;
+                this.QueryUI.MContext = this._context;
                 this.QueryUI.Closing += new CancelEventHandler(this.QueryUI_Closing);
                 this.QueryUI.Show();
             }
@@ -76,7 +78,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             {
                 IGeometry ipGeo = null;
                 ipGeo = _context.MapControl.TrackRectangle();
-                this.QueryUI.m_ipGeo = ipGeo;
+                this.QueryUI.MIpGeo = ipGeo;
                 _context.ActiveView.PartialRefresh((esriViewDrawPhase)32, null, null);
             }
         }
