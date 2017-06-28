@@ -54,5 +54,8 @@ namespace Yutai.Pipeline.Config.Interfaces
         IFunctionLayer GetFunctionLayer(IFeatureClass featureClass);
         IFunctionLayer GetFunctionLayer(string aliasName);
         IFunctionLayer GetFunctionLayer(enumFunctionLayerType type);
+        bool IsFunctionLayer(string classAliasName);
+        bool IsFunctionLayer(IFeatureClass featureClass);
+        bool IsFunctionLayer(string classAliasName, enumFunctionLayerType type);
     }
 }

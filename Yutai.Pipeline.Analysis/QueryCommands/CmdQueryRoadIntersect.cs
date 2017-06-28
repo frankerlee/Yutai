@@ -28,6 +28,7 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
             if (this.QueryUI == null || this.QueryUI.IsDisposed)
             {
                 this.QueryUI = new QueryIntersectionUI();
+                this.QueryUI.TopMost = true;
                 this.QueryUI.m_MapControl = (IMapControl3)_context.MapControl;
                 this.QueryUI.m_pPipeCfg = _plugin.PipeConfig;
                 this.QueryUI.m_context = this._context;

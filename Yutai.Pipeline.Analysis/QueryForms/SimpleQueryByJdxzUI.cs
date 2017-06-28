@@ -43,26 +43,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             }
         }
 
-
-
-
-        public object mainform;
-
+	    public object mainform;
 		private List<string> DXArray = new List<string>();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		public bool SelectGeometry
 		{
 			get
@@ -393,15 +375,12 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
         private void AxMapControlOnOnAfterDraw(object display, int viewDrawPhase)
         {
-
             if (viewDrawPhase == 32)
             {
                 this.DrawSelGeometry();
             }
         }
-
         
-
         private void SimpleQueryByDiaUI_FormClosed(object sender, FormClosedEventArgs e)
 		{
             IMapControlEvents2_Event axMapControl = this.m_context.MapControl as IMapControlEvents2_Event;
@@ -465,7 +444,5 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			HelpNavigator command = HelpNavigator.KeywordIndex;
 			Help.ShowHelp(this, url, command, parameter);
 		}
-
-
     }
 }

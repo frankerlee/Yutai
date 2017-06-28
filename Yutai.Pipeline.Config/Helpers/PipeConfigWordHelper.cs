@@ -244,5 +244,6 @@ namespace Yutai.Pipeline.Config.Helpers
     {
         public string XMMC { get { return "XMMC"; } }
         public string XMDW { get { return "XMDW"; } }
+        public string DLMC { get { return "DLMC"; } }
     }
 }

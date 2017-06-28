@@ -11,6 +11,7 @@ namespace Yutai.Pipeline.Config.Interfaces
     public enum enumFunctionLayerType
     {
         Item,   // 项目表
+        RoadCenterLine, // 道路中心线
         Other
     }
 }

@@ -27,7 +27,6 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
 
         public override void OnClick()
         {
-            _context.SetCurrentTool(this);
             if (this.QueryUI == null || this.QueryUI.IsDisposed)
             {
                 this.QueryUI = new ClassCollectformsUI();
@@ -67,7 +66,7 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
             base.m_checked = false;
             base.m_message = "分类汇总";
             base.m_enabled = true;
-            base._itemType = RibbonItemType.Tool;
+            base._itemType = RibbonItemType.Button;
 
             CommonUtils.AppContext = _context;
         }

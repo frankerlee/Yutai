@@ -13,7 +13,6 @@ using DevExpress.XtraGrid;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
-using Infragistics.Win;
 using Yutai.Pipeline.Analysis.QueryForms;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
@@ -39,7 +38,6 @@ namespace Yutai.Pipeline.Analysis.Views
         private int OidField;
        // private CustomColumnChooser customColumnChooserDialog;
         private string TopBandText;
-        private FontData TopBandFont;
         private Color TopBandColor;
         private bool bHaveTop;
 
@@ -599,14 +597,14 @@ namespace Yutai.Pipeline.Analysis.Views
             }
             else
             {
-                new StatForm
-                {
-                    Owner = _context.MainView as Form,
-                    Form_StatField = this.cmbStatField.SelectedItem.ToString(),
-                    Form_StatWay = this.cmbStatWay.SelectedItem.ToString(),
-                    Form_CalField = this.cmbCalField.SelectedItem.ToString(),
-                    resultTable = this.stable
-                }.ShowDialog();
+                //new StatForm
+                //{
+                //    Owner = _context.MainView as Form,
+                //    Form_StatField = this.cmbStatField.SelectedItem.ToString(),
+                //    Form_StatWay = this.cmbStatWay.SelectedItem.ToString(),
+                //    Form_CalField = this.cmbCalField.SelectedItem.ToString(),
+                //    resultTable = this.stable
+                //}.ShowDialog();
             }
         }
 
