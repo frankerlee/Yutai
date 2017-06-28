@@ -91,7 +91,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 						now.ToShortDateString();
 						string text2 = now.AddYears(-1 * this.m_nExpireTime).ToShortDateString();
 						string whereClause = "";
-						if (field.Type == (esriFieldType) 5)
+						if (field.Type ==esriFieldType.esriFieldTypeDate)
 						{
 							if (featureLayer.DataSourceType == "Personal Geodatabase Feature Class")
 							{

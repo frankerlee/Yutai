@@ -1,0 +1,459 @@
+<PipelineConfig ConfigDatabase="\plugins\configs\pipelineSet.mdb">
+  <PipelineLayers>
+    <PipelineLayer Name="供电管线" Code="GD" ClassCode="GD" AutoNames="GD/供电">
+      <Layers>
+        <Layer Name="GDPOINT" AliasName="GDPOINT" Template="POINT" Visible="False" DataType="POINT" HeightType="管顶" ValidateKeys="" AutoNames="GD_Point">
+          <Fields>
+            <Field TypeName="JGCZ" Name="PMA" AliasName="井盖材质" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="JGGG" Name="PDS" AliasName="井盖规格" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="JGLX" Name="PSTYLE" AliasName="井盖类型" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="FSW" Name="Subsid" AliasName="附属物" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="变电站/配电房/变压器/检修井/控制柜/灯杆/线杆/上杆/接线箱/窨井/环网柜/通风孔/塔架/预留口/起止点/三分支点/四分支点/五分支点/六分支点/多分支点/变径点/变材点/变坡点/转折点/出地点/直线点/架空点/偏心点/井边点（一井多盖）/辅助点/非普查/信号灯/探测点/" />
+            <Field TypeName="TZW" Name="Feature" AliasName="特征" Length="16" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TSDH" Name="M_No" AliasName="图上点号" Length="10" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="YZB" Name="Y" AliasName="Y坐标" Length="15" AllowNull="True" FieldType="字符串" Precision="3" DomainValues="" />
+            <Field TypeName="XZB" Name="X" AliasName="X坐标" Length="15" AllowNull="True" FieldType="字符串" Precision="3" DomainValues="" />
+            <Field TypeName="GCBH" Name="ProjectNo" AliasName="工程编号" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TCRQ" Name="DDate" AliasName="探测日期" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="DMGC" Name="H" AliasName="地面高程" Length="8" AllowNull="True" FieldType="字符串" Precision="2" DomainValues="" />
+            <Field TypeName="YSDM" Name="CODE" AliasName="要素代码" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="SZDL" Name="ROADCODE" AliasName="道路代码" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="SZTF" Name="MapNumber" AliasName="图幅号" Length="16" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TCDW" Name="DCode" AliasName="探测单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="QSDW" Name="BCode" AliasName="权属单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="MSRQ" Name="Mdate" AliasName="建设年代" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="JDJB" Name="Precision" AliasName="Precision" Length="10" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="FHJD" Name="Rotang" AliasName="旋转角度" Length="10" AllowNull="True" FieldType="字符串" Precision="4" DomainValues="" />
+            <Field TypeName="BZ" Name="Remark" AliasName="备注" Length="255" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="GDBH" Name="P_No" AliasName="管点编号" Length="12" AllowNull="False" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="CQDW" Name="CCode" AliasName="产权单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+          </Fields>
+        </Layer>
+        <Layer Name="GDPEXPTEXT" AliasName="GDPEXPTEXT" Template="ANNOPOINT" Visible="False" DataType="ANNOPOINT" HeightType="管顶" ValidateKeys="" AutoNames="GD_AnnoPoint">
+          <Fields>
+            <Field TypeName="XAJD" Name="Angle" AliasName="Angle" Length="8" AllowNull="True" FieldType="字符串" Precision="4" DomainValues="" />
+            <Field TypeName="BZDH" Name="P_No" AliasName="标注点号" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="YZB" Name="Y" AliasName="Y" Length="15" AllowNull="True" FieldType="字符串" Precision="3" DomainValues="" />
+            <Field TypeName="WZ" Name="TextString" AliasName="TextString" Length="50" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="GCBH" Name="ProjectNo" AliasName="ProjectNo" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="BZ" Name="Remark" AliasName="Remark" Length="255" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="XZB" Name="X" AliasName="X" Length="15" AllowNull="True" FieldType="字符串" Precision="3" DomainValues="" />
+          </Fields>
+        </Layer>
+        <Layer Name="GDLINE" AliasName="GDLINE" Template="LINE" Visible="False" DataType="LINE" HeightType="管顶" ValidateKeys="" AutoNames="GD_Line">
+          <Fields>
+            <Field TypeName="QSDW" Name="BCode" AliasName="权属单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TCRQ" Name="DDate" AliasName="探测日期" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="MSRQ" Name="Mdate" AliasName="建设年代" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="GJ" Name="D_S" AliasName="管径" Length="15" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="XX" Name="Line_Style" AliasName="线型" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="MSFS" Name="D_Type" AliasName="埋设方式" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="CQDW" Name="CCode" AliasName="产权单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="ZDMS" Name="E_Deep" AliasName="终点埋深" Length="8" AllowNull="True" FieldType="字符串" Precision="2" DomainValues="" />
+            <Field TypeName="GXCZ" Name="Material" AliasName="材质" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="QDMS" Name="S_Deep" AliasName="起点埋深" Length="8" AllowNull="True" FieldType="字符串" Precision="2" DomainValues="" />
+            <Field TypeName="ZDBH" Name="E_Point" AliasName="终点点号" Length="12" AllowNull="False" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="QDBH" Name="S_Point" AliasName="起点点号" Length="12" AllowNull="False" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="ZDGC" Name="E_H" AliasName="终点高程" Length="8" AllowNull="True" FieldType="字符串" Precision="2" DomainValues="" />
+            <Field TypeName="BZ" Name="Remark" AliasName="备注" Length="255" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="QDGC" Name="S_H" AliasName="起点高程" Length="8" AllowNull="True" FieldType="字符串" Precision="2" DomainValues="" />
+            <Field TypeName="GCBH" Name="ProjectNo" AliasName="工程编号" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="GDXZ" Name="管线类型" AliasName="管线类型" Length="50" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="LX" Name="Flow_D" AliasName="流向" Length="1" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="SSZK" Name="UseStatus" AliasName="使用状况" Length="10" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TCDW" Name="DCode" AliasName="探测单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="YSDM" Name="CODE" AliasName="要素代码" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="ZKS" Name="Hole_Count" AliasName="总孔数" Length="3" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="YL" Name="Vol_Pres" AliasName="压力值" Length="10" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="DLTS" Name="Cab_Count" AliasName="条数" Length="10" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="SZDL" Name="ROADCODE" AliasName="道路代码" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="YYKS" Name="Hole_Used" AliasName="已用孔数" Length="3" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TGXH" Name="PD_M" AliasName="套管材料" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+          </Fields>
+        </Layer>
+        <Layer Name="GD_NETWORK_Junctions" AliasName="GD_NETWORK_Junctions" Template="NETWORK" Visible="False" DataType="JUNCTION" HeightType="管顶" ValidateKeys="" AutoNames="#NAME?">
+          <Fields />
+        </Layer>
+        <Layer Name="GDLEXPTEXT" AliasName="GDLEXPTEXT" Template="ANNOLINE" Visible="False" DataType="ANNOLINE" HeightType="管顶" ValidateKeys="" AutoNames="GD_AnnoLine">
+          <Fields>
+            <Field TypeName="BZDH" Name="P_No" AliasName="标注点号" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="XZB" Name="X" AliasName="X" Length="15" AllowNull="True" FieldType="字符串" Precision="3" DomainValues="" />
+            <Field TypeName="YZB" Name="Y" AliasName="Y" Length="15" AllowNull="True" FieldType="字符串" Precision="3" DomainValues="" />
+            <Field TypeName="XAJD" Name="Angle" AliasName="Angle" Length="8" AllowNull="True" FieldType="字符串" Precision="4" DomainValues="" />
+            <Field TypeName="WZ" Name="TextString" AliasName="TextString" Length="50" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="GCBH" Name="ProjectNo" AliasName="ProjectNo" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="BZ" Name="Remark" AliasName="Remark" Length="255" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+          </Fields>
+        </Layer>
+        <Layer Name="GDPANNEXE" AliasName="GDPANNEXE" Template="ASSPOINT" Visible="False" DataType="ASSPOINT" HeightType="管顶" ValidateKeys="" AutoNames="GD_AssPoint">
+          <Fields>
+            <Field TypeName="XAJD" Name="Rotang" AliasName="旋转角度" Length="10" AllowNull="True" FieldType="字符串" Precision="4" DomainValues="" />
+            <Field TypeName="BZ" Name="Remark" AliasName="备注" Length="255" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="QSDW" Name="BCode" AliasName="权属单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="GCBH" Name="ProjectNo" AliasName="工程编号" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TZW" Name="Feature" AliasName="特征" Length="16" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TSDH" Name="M_No" AliasName="图上点号" Length="10" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="DMGC" Name="H" AliasName="地面高程" Length="8" AllowNull="True" FieldType="字符串" Precision="2" DomainValues="" />
+            <Field TypeName="YZB" Name="Y" AliasName="Y坐标" Length="15" AllowNull="True" FieldType="字符串" Precision="3" DomainValues="" />
+            <Field TypeName="XZB" Name="X" AliasName="X坐标" Length="15" AllowNull="True" FieldType="字符串" Precision="3" DomainValues="" />
+            <Field TypeName="YSDM" Name="CODE" AliasName="要素代码" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TCDW" Name="DCode" AliasName="探测单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="FZDH" Name="P_No" AliasName="管点编号" Length="12" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+          </Fields>
+        </Layer>
+        <Layer Name="GDLANNEXE" AliasName="GDLANNEXE" Template="ASSLINE" Visible="False" DataType="ASSLINE" HeightType="管顶" ValidateKeys="" AutoNames="GD_AssLine">
+          <Fields>
+            <Field TypeName="QSDW" Name="BCode" AliasName="权属单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TCDW" Name="DCode" AliasName="探测单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="GCBH" Name="ProjectNo" AliasName="工程编号" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="YSDM" Name="CODE" AliasName="要素代码" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="GXLX" Name="Line_Style" AliasName="线型" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="ZDBH" Name="E_Point" AliasName="终点点号" Length="12" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="QDBH" Name="S_Point" AliasName="起点点号" Length="12" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="BZ" Name="Remark" AliasName="备注" Length="255" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+          </Fields>
+        </Layer>
+      </Layers>
+    </PipelineLayer>
+    <PipelineLayer Name="雨水管线" Code="YS" ClassCode="PS" AutoNames="YS/雨水">
+      <Layers>
+        <Layer Name="YSPOINT" AliasName="YSPOINT" Template="POINT" Visible="False" DataType="POINT" HeightType="管顶" ValidateKeys="" AutoNames="YS_Point">
+          <Fields>
+            <Field TypeName="JGCZ" Name="PMA" AliasName="井盖材质" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="JGGG" Name="PDS" AliasName="井盖规格" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="JGLX" Name="PSTYLE" AliasName="井盖类型" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="FSW" Name="Subsid" AliasName="附属物" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="污水检修井/雨篦/出水口/污篦/进水口/出气井/雨水检修井/雨污合流井/跌水井/水封井/冲洗井/沉泥井/排污装置/预留口/化粪池/起止点/弯头/变径点/变材点/三通点/四通点/五通点/六通点/多通点/变坡点/直线点/出地点/架空点/偏心点/井边点/辅助点/非普查/再生水检修井/阀门井/水表(井)/排气阀(井)/排污阀(井)/消防栓/消防井/阀门/水源井/水塔/水池/泵站/沉淀池/节点/空气门/截水门/撤水门/加压站/测压点/测量计/窨井/管帽/探测点/" />
+            <Field TypeName="TZW" Name="Feature" AliasName="特征" Length="16" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TSDH" Name="M_No" AliasName="图上点号" Length="10" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="YZB" Name="Y" AliasName="Y坐标" Length="15" AllowNull="True" FieldType="字符串" Precision="3" DomainValues="" />
+            <Field TypeName="XZB" Name="X" AliasName="X坐标" Length="15" AllowNull="True" FieldType="字符串" Precision="3" DomainValues="" />
+            <Field TypeName="GCBH" Name="ProjectNo" AliasName="工程编号" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TCRQ" Name="DDate" AliasName="探测日期" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="DMGC" Name="H" AliasName="地面高程" Length="8" AllowNull="True" FieldType="字符串" Precision="2" DomainValues="" />
+            <Field TypeName="YSDM" Name="CODE" AliasName="要素代码" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="SZDL" Name="ROADCODE" AliasName="道路代码" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="SZTF" Name="MapNumber" AliasName="图幅号" Length="16" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TCDW" Name="DCode" AliasName="探测单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="QSDW" Name="BCode" AliasName="权属单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="MSRQ" Name="Mdate" AliasName="建设年代" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="JDJB" Name="Precision" AliasName="Precision" Length="10" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="FHJD" Name="Rotang" AliasName="旋转角度" Length="10" AllowNull="True" FieldType="字符串" Precision="4" DomainValues="" />
+            <Field TypeName="BZ" Name="Remark" AliasName="备注" Length="255" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="GDBH" Name="P_No" AliasName="管点编号" Length="12" AllowNull="False" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="CQDW" Name="CCode" AliasName="产权单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+          </Fields>
+        </Layer>
+        <Layer Name="YSPEXPTEXT" AliasName="YSPEXPTEXT" Template="ANNOPOINT" Visible="False" DataType="ANNOPOINT" HeightType="管顶" ValidateKeys="" AutoNames="YS_AnnoPoint">
+          <Fields>
+            <Field TypeName="XAJD" Name="Angle" AliasName="Angle" Length="8" AllowNull="True" FieldType="字符串" Precision="4" DomainValues="" />
+            <Field TypeName="BZDH" Name="P_No" AliasName="标注点号" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="YZB" Name="Y" AliasName="Y" Length="15" AllowNull="True" FieldType="字符串" Precision="3" DomainValues="" />
+            <Field TypeName="WZ" Name="TextString" AliasName="TextString" Length="50" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="GCBH" Name="ProjectNo" AliasName="ProjectNo" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="BZ" Name="Remark" AliasName="Remark" Length="255" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="XZB" Name="X" AliasName="X" Length="15" AllowNull="True" FieldType="字符串" Precision="3" DomainValues="" />
+          </Fields>
+        </Layer>
+        <Layer Name="YSLINE" AliasName="YSLINE" Template="LINE" Visible="False" DataType="LINE" HeightType="管顶" ValidateKeys="" AutoNames="YS_Line">
+          <Fields>
+            <Field TypeName="QSDW" Name="BCode" AliasName="权属单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TCRQ" Name="DDate" AliasName="探测日期" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="MSRQ" Name="Mdate" AliasName="建设年代" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="GJ" Name="D_S" AliasName="管径" Length="15" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="XX" Name="Line_Style" AliasName="线型" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="MSFS" Name="D_Type" AliasName="埋设方式" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="CQDW" Name="CCode" AliasName="产权单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="ZDMS" Name="E_Deep" AliasName="终点埋深" Length="8" AllowNull="True" FieldType="字符串" Precision="2" DomainValues="" />
+            <Field TypeName="GXCZ" Name="Material" AliasName="材质" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="QDMS" Name="S_Deep" AliasName="起点埋深" Length="8" AllowNull="True" FieldType="字符串" Precision="2" DomainValues="" />
+            <Field TypeName="ZDBH" Name="E_Point" AliasName="终点点号" Length="12" AllowNull="False" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="QDBH" Name="S_Point" AliasName="起点点号" Length="12" AllowNull="False" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="ZDGC" Name="E_H" AliasName="终点高程" Length="8" AllowNull="True" FieldType="字符串" Precision="2" DomainValues="" />
+            <Field TypeName="BZ" Name="Remark" AliasName="备注" Length="255" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="QDGC" Name="S_H" AliasName="起点高程" Length="8" AllowNull="True" FieldType="字符串" Precision="2" DomainValues="" />
+            <Field TypeName="GCBH" Name="ProjectNo" AliasName="工程编号" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="GDXZ" Name="管线类型" AliasName="管线类型" Length="50" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="LX" Name="Flow_D" AliasName="流向" Length="1" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="SSZK" Name="UseStatus" AliasName="使用状况" Length="10" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TCDW" Name="DCode" AliasName="探测单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="YSDM" Name="CODE" AliasName="要素代码" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="ZKS" Name="Hole_Count" AliasName="总孔数" Length="3" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="YL" Name="Vol_Pres" AliasName="压力值" Length="10" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="DLTS" Name="Cab_Count" AliasName="条数" Length="10" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="SZDL" Name="ROADCODE" AliasName="道路代码" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="YYKS" Name="Hole_Used" AliasName="已用孔数" Length="3" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TGXH" Name="PD_M" AliasName="套管材料" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+          </Fields>
+        </Layer>
+        <Layer Name="YS_NETWORK_Junctions" AliasName="YS_NETWORK_Junctions" Template="NETWORK" Visible="False" DataType="JUNCTION" HeightType="管顶" ValidateKeys="" AutoNames="YS_Network_Junctions">
+          <Fields />
+        </Layer>
+        <Layer Name="YSLEXPTEXT" AliasName="YSLEXPTEXT" Template="ANNOLINE" Visible="False" DataType="ANNOLINE" HeightType="管顶" ValidateKeys="" AutoNames="YS_AnnoLine">
+          <Fields>
+            <Field TypeName="BZDH" Name="P_No" AliasName="标注点号" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="XZB" Name="X" AliasName="X" Length="15" AllowNull="True" FieldType="字符串" Precision="3" DomainValues="" />
+            <Field TypeName="YZB" Name="Y" AliasName="Y" Length="15" AllowNull="True" FieldType="字符串" Precision="3" DomainValues="" />
+            <Field TypeName="XAJD" Name="Angle" AliasName="Angle" Length="8" AllowNull="True" FieldType="字符串" Precision="4" DomainValues="" />
+            <Field TypeName="WZ" Name="TextString" AliasName="TextString" Length="50" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="GCBH" Name="ProjectNo" AliasName="ProjectNo" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="BZ" Name="Remark" AliasName="Remark" Length="255" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+          </Fields>
+        </Layer>
+      </Layers>
+    </PipelineLayer>
+    <PipelineLayer Name="污水管线" Code="WS" ClassCode="PS" AutoNames="WS/污水">
+      <Layers>
+        <Layer Name="WSPOINT" AliasName="WSPOINT" Template="POINT" Visible="False" DataType="POINT" HeightType="管顶" ValidateKeys="" AutoNames="WS_Point">
+          <Fields>
+            <Field TypeName="JGCZ" Name="PMA" AliasName="井盖材质" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="JGGG" Name="PDS" AliasName="井盖规格" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="JGLX" Name="PSTYLE" AliasName="井盖类型" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="FSW" Name="Subsid" AliasName="附属物" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="污水检修井/雨篦/出水口/污篦/进水口/出气井/雨水检修井/雨污合流井/跌水井/水封井/冲洗井/沉泥井/排污装置/预留口/化粪池/起止点/弯头/变径点/变材点/三通点/四通点/五通点/六通点/多通点/变坡点/直线点/出地点/架空点/偏心点/井边点/辅助点/非普查/再生水检修井/阀门井/水表(井)/排气阀(井)/排污阀(井)/消防栓/消防井/阀门/水源井/水塔/水池/泵站/沉淀池/节点/空气门/截水门/撤水门/加压站/测压点/测量计/窨井/管帽/探测点/" />
+            <Field TypeName="TZW" Name="Feature" AliasName="特征" Length="16" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TSDH" Name="M_No" AliasName="图上点号" Length="10" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="YZB" Name="Y" AliasName="Y坐标" Length="15" AllowNull="True" FieldType="字符串" Precision="3" DomainValues="" />
+            <Field TypeName="XZB" Name="X" AliasName="X坐标" Length="15" AllowNull="True" FieldType="字符串" Precision="3" DomainValues="" />
+            <Field TypeName="GCBH" Name="ProjectNo" AliasName="工程编号" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TCRQ" Name="DDate" AliasName="探测日期" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="DMGC" Name="H" AliasName="地面高程" Length="8" AllowNull="True" FieldType="字符串" Precision="2" DomainValues="" />
+            <Field TypeName="YSDM" Name="CODE" AliasName="要素代码" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="SZDL" Name="ROADCODE" AliasName="道路代码" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="SZTF" Name="MapNumber" AliasName="图幅号" Length="16" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TCDW" Name="DCode" AliasName="探测单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="QSDW" Name="BCode" AliasName="权属单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="MSRQ" Name="Mdate" AliasName="建设年代" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="JDJB" Name="Precision" AliasName="Precision" Length="10" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="FHJD" Name="Rotang" AliasName="旋转角度" Length="10" AllowNull="True" FieldType="字符串" Precision="4" DomainValues="" />
+            <Field TypeName="BZ" Name="Remark" AliasName="备注" Length="255" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="GDBH" Name="P_No" AliasName="管点编号" Length="12" AllowNull="False" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="CQDW" Name="CCode" AliasName="产权单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+          </Fields>
+        </Layer>
+        <Layer Name="WSPEXPTEXT" AliasName="WSPEXPTEXT" Template="ANNOPOINT" Visible="False" DataType="ANNOPOINT" HeightType="管顶" ValidateKeys="" AutoNames="WS_AnnoPoint">
+          <Fields>
+            <Field TypeName="XAJD" Name="Angle" AliasName="Angle" Length="8" AllowNull="True" FieldType="字符串" Precision="4" DomainValues="" />
+            <Field TypeName="BZDH" Name="P_No" AliasName="标注点号" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="YZB" Name="Y" AliasName="Y" Length="15" AllowNull="True" FieldType="字符串" Precision="3" DomainValues="" />
+            <Field TypeName="WZ" Name="TextString" AliasName="TextString" Length="50" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="GCBH" Name="ProjectNo" AliasName="ProjectNo" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="BZ" Name="Remark" AliasName="Remark" Length="255" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="XZB" Name="X" AliasName="X" Length="15" AllowNull="True" FieldType="字符串" Precision="3" DomainValues="" />
+          </Fields>
+        </Layer>
+        <Layer Name="WSLINE" AliasName="WSLINE" Template="LINE" Visible="False" DataType="LINE" HeightType="管顶" ValidateKeys="" AutoNames="WS_Line">
+          <Fields>
+            <Field TypeName="QSDW" Name="BCode" AliasName="权属单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TCRQ" Name="DDate" AliasName="探测日期" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="MSRQ" Name="Mdate" AliasName="建设年代" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="GJ" Name="D_S" AliasName="管径" Length="15" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="XX" Name="Line_Style" AliasName="线型" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="MSFS" Name="D_Type" AliasName="埋设方式" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="CQDW" Name="CCode" AliasName="产权单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="ZDMS" Name="E_Deep" AliasName="终点埋深" Length="8" AllowNull="True" FieldType="字符串" Precision="2" DomainValues="" />
+            <Field TypeName="GXCZ" Name="Material" AliasName="材质" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="QDMS" Name="S_Deep" AliasName="起点埋深" Length="8" AllowNull="True" FieldType="字符串" Precision="2" DomainValues="" />
+            <Field TypeName="ZDBH" Name="E_Point" AliasName="终点点号" Length="12" AllowNull="False" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="QDBH" Name="S_Point" AliasName="起点点号" Length="12" AllowNull="False" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="ZDGC" Name="E_H" AliasName="终点高程" Length="8" AllowNull="True" FieldType="字符串" Precision="2" DomainValues="" />
+            <Field TypeName="BZ" Name="Remark" AliasName="备注" Length="255" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="QDGC" Name="S_H" AliasName="起点高程" Length="8" AllowNull="True" FieldType="字符串" Precision="2" DomainValues="" />
+            <Field TypeName="GCBH" Name="ProjectNo" AliasName="工程编号" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="GDXZ" Name="管线类型" AliasName="管线类型" Length="50" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="LX" Name="Flow_D" AliasName="流向" Length="1" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="SSZK" Name="UseStatus" AliasName="使用状况" Length="10" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TCDW" Name="DCode" AliasName="探测单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="YSDM" Name="CODE" AliasName="要素代码" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="ZKS" Name="Hole_Count" AliasName="总孔数" Length="3" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="YL" Name="Vol_Pres" AliasName="压力值" Length="10" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="DLTS" Name="Cab_Count" AliasName="条数" Length="10" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="SZDL" Name="ROADCODE" AliasName="道路代码" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="YYKS" Name="Hole_Used" AliasName="已用孔数" Length="3" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TGXH" Name="PD_M" AliasName="套管材料" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+          </Fields>
+        </Layer>
+        <Layer Name="WS_NETWORK_Junctions" AliasName="WS_NETWORK_Junctions" Template="NETWORK" Visible="False" DataType="JUNCTION" HeightType="管顶" ValidateKeys="" AutoNames="WS_Network_Junctions">
+          <Fields />
+        </Layer>
+        <Layer Name="WSLEXPTEXT" AliasName="WSLEXPTEXT" Template="ANNOLINE" Visible="False" DataType="ANNOLINE" HeightType="管顶" ValidateKeys="" AutoNames="WS_AnnoLine">
+          <Fields>
+            <Field TypeName="BZDH" Name="P_No" AliasName="标注点号" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="XZB" Name="X" AliasName="X" Length="15" AllowNull="True" FieldType="字符串" Precision="3" DomainValues="" />
+            <Field TypeName="YZB" Name="Y" AliasName="Y" Length="15" AllowNull="True" FieldType="字符串" Precision="3" DomainValues="" />
+            <Field TypeName="XAJD" Name="Angle" AliasName="Angle" Length="8" AllowNull="True" FieldType="字符串" Precision="4" DomainValues="" />
+            <Field TypeName="WZ" Name="TextString" AliasName="TextString" Length="50" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="GCBH" Name="ProjectNo" AliasName="ProjectNo" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="BZ" Name="Remark" AliasName="Remark" Length="255" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+          </Fields>
+        </Layer>
+      </Layers>
+    </PipelineLayer>
+    <PipelineLayer Name="给水管线" Code="JS" ClassCode="JS" AutoNames="JS/给水">
+      <Layers>
+        <Layer Name="JSPOINT" AliasName="JSPOINT" Template="POINT" Visible="False" DataType="POINT" HeightType="管顶" ValidateKeys="" AutoNames="JS_Point">
+          <Fields>
+            <Field TypeName="JGCZ" Name="PMA" AliasName="井盖材质" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="JGGG" Name="PDS" AliasName="井盖规格" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="JGLX" Name="PSTYLE" AliasName="井盖类型" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="FSW" Name="Subsid" AliasName="附属物" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="检修井/阀门井/水表(井)/排气阀(井)/排污阀(井)/消防栓/消防井/阀门/水源井/水塔/水池/泵站/进水口/沉淀池/节点/空气门/截水门/撤水门/加压站/测压点/测量计/窨井/预留口/管帽/起止点/弯头/变径点/变材点/变坡点/直线点/三通点/四通点/五通点/六通点/多通点/出地点/架空点/偏心点/井边点/辅助点/非普查/出水口/水鹤/探测点/" />
+            <Field TypeName="TZW" Name="Feature" AliasName="特征" Length="16" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TSDH" Name="M_No" AliasName="图上点号" Length="10" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="YZB" Name="Y" AliasName="Y坐标" Length="15" AllowNull="True" FieldType="字符串" Precision="3" DomainValues="" />
+            <Field TypeName="XZB" Name="X" AliasName="X坐标" Length="15" AllowNull="True" FieldType="字符串" Precision="3" DomainValues="" />
+            <Field TypeName="GCBH" Name="ProjectNo" AliasName="工程编号" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TCRQ" Name="DDate" AliasName="探测日期" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="DMGC" Name="H" AliasName="地面高程" Length="8" AllowNull="True" FieldType="字符串" Precision="2" DomainValues="" />
+            <Field TypeName="YSDM" Name="CODE" AliasName="要素代码" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="SZDL" Name="ROADCODE" AliasName="道路代码" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="SZTF" Name="MapNumber" AliasName="图幅号" Length="16" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TCDW" Name="DCode" AliasName="探测单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="QSDW" Name="BCode" AliasName="权属单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="MSRQ" Name="Mdate" AliasName="建设年代" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="JDJB" Name="Precision" AliasName="Precision" Length="10" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="FHJD" Name="Rotang" AliasName="旋转角度" Length="10" AllowNull="True" FieldType="字符串" Precision="4" DomainValues="" />
+            <Field TypeName="BZ" Name="Remark" AliasName="备注" Length="255" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="GDBH" Name="P_No" AliasName="管点编号" Length="12" AllowNull="False" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="CQDW" Name="CCode" AliasName="产权单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+          </Fields>
+        </Layer>
+        <Layer Name="JSPEXPTEXT" AliasName="JSPEXPTEXT" Template="ANNOPOINT" Visible="False" DataType="ANNOPOINT" HeightType="管顶" ValidateKeys="" AutoNames="JS_AnnoPoint">
+          <Fields>
+            <Field TypeName="XAJD" Name="Angle" AliasName="Angle" Length="8" AllowNull="True" FieldType="字符串" Precision="4" DomainValues="" />
+            <Field TypeName="BZDH" Name="P_No" AliasName="标注点号" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="YZB" Name="Y" AliasName="Y" Length="15" AllowNull="True" FieldType="字符串" Precision="3" DomainValues="" />
+            <Field TypeName="WZ" Name="TextString" AliasName="TextString" Length="50" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="GCBH" Name="ProjectNo" AliasName="ProjectNo" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="BZ" Name="Remark" AliasName="Remark" Length="255" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="XZB" Name="X" AliasName="X" Length="15" AllowNull="True" FieldType="字符串" Precision="3" DomainValues="" />
+          </Fields>
+        </Layer>
+        <Layer Name="JS_NETWORK_Junctions" AliasName="JS_NETWORK_Junctions" Template="NETWORK" Visible="False" DataType="JUNCTION" HeightType="管顶" ValidateKeys="" AutoNames="JS_Network_Junctions">
+          <Fields />
+        </Layer>
+        <Layer Name="JSLINE" AliasName="JSLINE" Template="LINE" Visible="False" DataType="LINE" HeightType="管顶" ValidateKeys="" AutoNames="JS_Line">
+          <Fields>
+            <Field TypeName="QSDW" Name="BCode" AliasName="权属单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TCRQ" Name="DDate" AliasName="探测日期" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="MSRQ" Name="Mdate" AliasName="建设年代" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="GJ" Name="D_S" AliasName="管径" Length="15" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="XX" Name="Line_Style" AliasName="线型" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="MSFS" Name="D_Type" AliasName="埋设方式" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="CQDW" Name="CCode" AliasName="产权单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="ZDMS" Name="E_Deep" AliasName="终点埋深" Length="8" AllowNull="True" FieldType="字符串" Precision="2" DomainValues="" />
+            <Field TypeName="GXCZ" Name="Material" AliasName="材质" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="QDMS" Name="S_Deep" AliasName="起点埋深" Length="8" AllowNull="True" FieldType="字符串" Precision="2" DomainValues="" />
+            <Field TypeName="ZDBH" Name="E_Point" AliasName="终点点号" Length="12" AllowNull="False" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="QDBH" Name="S_Point" AliasName="起点点号" Length="12" AllowNull="False" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="ZDGC" Name="E_H" AliasName="终点高程" Length="8" AllowNull="True" FieldType="字符串" Precision="2" DomainValues="" />
+            <Field TypeName="BZ" Name="Remark" AliasName="备注" Length="255" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="QDGC" Name="S_H" AliasName="起点高程" Length="8" AllowNull="True" FieldType="字符串" Precision="2" DomainValues="" />
+            <Field TypeName="GCBH" Name="ProjectNo" AliasName="工程编号" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="GDXZ" Name="管线类型" AliasName="管线类型" Length="50" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="LX" Name="Flow_D" AliasName="流向" Length="1" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="SSZK" Name="UseStatus" AliasName="使用状况" Length="10" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TCDW" Name="DCode" AliasName="探测单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="YSDM" Name="CODE" AliasName="要素代码" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="ZKS" Name="Hole_Count" AliasName="总孔数" Length="3" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="YL" Name="Vol_Pres" AliasName="压力值" Length="10" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="DLTS" Name="Cab_Count" AliasName="条数" Length="10" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="SZDL" Name="ROADCODE" AliasName="道路代码" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="YYKS" Name="Hole_Used" AliasName="已用孔数" Length="3" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TGXH" Name="PD_M" AliasName="套管材料" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+          </Fields>
+        </Layer>
+        <Layer Name="JSLEXPTEXT" AliasName="JSLEXPTEXT" Template="ANNOLINE" Visible="False" DataType="ANNOLINE" HeightType="管顶" ValidateKeys="" AutoNames="JS_AnnoLine">
+          <Fields>
+            <Field TypeName="BZDH" Name="P_No" AliasName="标注点号" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="XZB" Name="X" AliasName="X" Length="15" AllowNull="True" FieldType="字符串" Precision="3" DomainValues="" />
+            <Field TypeName="YZB" Name="Y" AliasName="Y" Length="15" AllowNull="True" FieldType="字符串" Precision="3" DomainValues="" />
+            <Field TypeName="XAJD" Name="Angle" AliasName="Angle" Length="8" AllowNull="True" FieldType="字符串" Precision="4" DomainValues="" />
+            <Field TypeName="WZ" Name="TextString" AliasName="TextString" Length="50" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="GCBH" Name="ProjectNo" AliasName="ProjectNo" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="BZ" Name="Remark" AliasName="Remark" Length="255" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+          </Fields>
+        </Layer>
+        <Layer Name="JSPANNEXE" AliasName="JSPANNEXE" Template="ASSPOINT" Visible="False" DataType="ASSPOINT" HeightType="管顶" ValidateKeys="" AutoNames="JS_AssPoint">
+          <Fields>
+            <Field TypeName="XAJD" Name="Rotang" AliasName="旋转角度" Length="10" AllowNull="True" FieldType="字符串" Precision="4" DomainValues="" />
+            <Field TypeName="BZ" Name="Remark" AliasName="备注" Length="255" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="QSDW" Name="BCode" AliasName="权属单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="GCBH" Name="ProjectNo" AliasName="工程编号" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TZW" Name="Feature" AliasName="特征" Length="16" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TSDH" Name="M_No" AliasName="图上点号" Length="10" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="DMGC" Name="H" AliasName="地面高程" Length="8" AllowNull="True" FieldType="字符串" Precision="2" DomainValues="" />
+            <Field TypeName="YZB" Name="Y" AliasName="Y坐标" Length="15" AllowNull="True" FieldType="字符串" Precision="3" DomainValues="" />
+            <Field TypeName="XZB" Name="X" AliasName="X坐标" Length="15" AllowNull="True" FieldType="字符串" Precision="3" DomainValues="" />
+            <Field TypeName="YSDM" Name="CODE" AliasName="要素代码" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TCDW" Name="DCode" AliasName="探测单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="FZDH" Name="P_No" AliasName="管点编号" Length="12" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+          </Fields>
+        </Layer>
+        <Layer Name="JSLANNEXE" AliasName="JSLANNEXE" Template="ASSLINE" Visible="False" DataType="ASSLINE" HeightType="管顶" ValidateKeys="" AutoNames="JS_AssLine">
+          <Fields>
+            <Field TypeName="QSDW" Name="BCode" AliasName="权属单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="TCDW" Name="DCode" AliasName="探测单位代码" Length="2" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="GCBH" Name="ProjectNo" AliasName="工程编号" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="YSDM" Name="CODE" AliasName="要素代码" Length="8" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="GXLX" Name="Line_Style" AliasName="线型" Length="20" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="ZDBH" Name="E_Point" AliasName="终点点号" Length="12" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="QDBH" Name="S_Point" AliasName="起点点号" Length="12" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+            <Field TypeName="BZ" Name="Remark" AliasName="备注" Length="255" AllowNull="True" FieldType="字符串" Precision="0" DomainValues="" />
+          </Fields>
+        </Layer>
+      </Layers>
+    </PipelineLayer>
+  </PipelineLayers>
+  <LayerTemplates>
+    <Template Name="PipePoint" Caption="管线点模板" DataType="POINT">
+      <Fields>
+        <Field TypeName="NoField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="XField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="YField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="ZField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="DepthField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="FeatureField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="SubsidField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="PStyleField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="PDSField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="CodeField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="MapNoField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="UseStatusField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="BCodeField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="RotangField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="RoadCodeField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="MDateField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="PCJHField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="RemarkField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+      </Fields>
+    </Template>
+    <Template Name="PipeLine" Caption="管线线模板" DataType="POINT">
+      <Fields>
+        <Field TypeName="NoField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="SPointField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="EPointField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="SDeepField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="EDeepField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="SHField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="EHField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="CodeField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="MaterialField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="DTypeField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="LineStyleField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="DSField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="SectionSizeField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="PDMField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="PipeNatureField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="MSRQField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="MDateField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="UseStatusField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="BCodeField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="RoadCodeField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="CabCountField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="VolPresField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="HoleCountField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="HoleUsedField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="FlowDField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+        <Field TypeName="RemarkField" Name="" AliasName="" Length="50" AllowNull="True" FieldType="字符串" Precision="50" DomainValues="" />
+      </Fields>
+    </Template>
+  </LayerTemplates>
+  <FunctionLayers />
+</PipelineConfig>

@@ -379,9 +379,16 @@ namespace Yutai.Pipeline.Config.Concretes
             XmlDocument doc = new XmlDocument();
 
             XmlNode rootNode = doc.CreateElement("PipelineConfig");
-            XmlAttribute dbAttribute = doc.CreateAttribute("ConfigDatabase");
-            dbAttribute.Value = _configDatabaseName;
-            rootNode.Attributes.Append(dbAttribute);
+            XmlNode dbNode = doc.CreateElement("ConfigDatabase");
+            dbNode.InnerText = FileHelper.GetRelativePath(Application.StartupPath, _configDatabaseName);
+            rootNode.AppendChild(dbNode);
+            XmlNode configNode = doc.CreateElement("CommonConfigs");
+            for (int i = 0; i < _commonConfigs.Count; i++)
+            {
+                XmlNode subNode = _commonConfigs[i].ToXml(doc);
+                configNode.AppendChild(subNode);
+            }
+            rootNode.AppendChild(configNode);
             XmlNode layersNode = doc.CreateElement("PipelineLayers");
             foreach (IPipelineLayer pipelineLayer in _layers)
             {

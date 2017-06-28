@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
@@ -7,6 +8,7 @@ using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common.Helpers;
 using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
@@ -191,42 +193,47 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 					this.LikeRadio.Enabled = false;
 				}
 				IFeatureClass featureClass = this.SelectLayer.FeatureClass;
-				IQueryFilter queryFilter = new QueryFilter();
-				IFeatureCursor featureCursor = featureClass.Search(queryFilter, false);
-				IFeature feature = featureCursor.NextFeature();
-				this.ValueBox.Items.Clear();
-				this.ValueEdit.Text = "";
-				while (feature != null)
-				{
-					object obj = feature.get_Value(num);
-					string text;
-					if (obj is DBNull)
-					{
-						text = "NULL";
-					}
-					else if (field.Type == (esriFieldType) 5)
-					{
-						text = Convert.ToDateTime(obj).ToShortDateString();
-					}
-					else
-					{
-						text = feature.get_Value(num).ToString();
-						if (text.Length == 0)
-						{
-							text = "空字段值";
-						}
-					}
-					if (!this.ValueBox.Items.Contains(text))
-					{
-						this.ValueBox.Items.Add(text);
-					}
-					if (this.ValueBox.Items.Count > 100)
-					{
-						break;
-					}
-					feature = featureCursor.NextFeature();
-				}
-			}
+                List<string> values=new List<string>();
+                this.ValueBox.Items.Clear();
+                this.ValueEdit.Text = "";
+                CommonHelper.GetUniqueValues((ITable)featureClass, this.FieldsBox.SelectedItem.ToString(), values);
+                this.ValueBox.Items.AddRange(values.ToArray());
+                //IQueryFilter queryFilter = new QueryFilter();
+                //IFeatureCursor featureCursor = featureClass.Search(queryFilter, false);
+                //IFeature feature = featureCursor.NextFeature();
+                //this.ValueBox.Items.Clear();
+                //this.ValueEdit.Text = "";
+                //while (feature != null)
+                //{
+                //	object obj = feature.get_Value(num);
+                //	string text;
+                //	if (obj is DBNull)
+                //	{
+                //		text = "NULL";
+                //	}
+                //	else if (field.Type ==esriFieldType.esriFieldTypeDate)
+                //	{
+                //		text = Convert.ToDateTime(obj).ToShortDateString();
+                //	}
+                //	else
+                //	{
+                //		text = feature.get_Value(num).ToString();
+                //		if (text.Length == 0)
+                //		{
+                //			text = "空字段值";
+                //		}
+                //	}
+                //	if (!this.ValueBox.Items.Contains(text))
+                //	{
+                //		this.ValueBox.Items.Add(text);
+                //	}
+                //	if (this.ValueBox.Items.Count > 100)
+                //	{
+                //		break;
+                //	}
+                //	feature = featureCursor.NextFeature();
+                //}
+            }
 		}
 
 		private void BaseQueryUI_Load(object sender, EventArgs e)
@@ -248,7 +255,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				this.Layerbox.SelectedIndex = 0;
 				if (this.Fill())
 				{
-					this.FieldValue();
+					//this.FieldValue();
 				}
 			}
 		}
@@ -258,13 +265,14 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			this.FieldsBox.Items.Clear();
 			if (this.Fill())
 			{
-				this.FieldValue();
+				//this.FieldValue();
 			}
 		}
 
 		private void FieldsBox_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			this.FieldValue();
+			//this.FieldValue();
+            this.ValueBox.Items.Clear();
 		}
 
 		private void QueryButton_Click(object sender, EventArgs e)
@@ -356,7 +364,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 							text2 += "'";
 						}
 					}
-					else if (field.Type == (esriFieldType) 5)
+					else if (field.Type ==esriFieldType.esriFieldTypeDate)
 					{
 						if (this.SelectLayer.DataSourceType == "SDE Feature Class")
 						{
@@ -564,6 +572,9 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			Help.ShowHelp(this, url, command, parameter);
 		}
 
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.FieldValue();
+        }
     }
 }

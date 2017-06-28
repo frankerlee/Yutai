@@ -34,8 +34,7 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         public KTreeView()
         {
-            if (CatalogLicenseProviderCheck.Check())
-            {
+            
                 this.method_0();
                 this.imageList_0 = base.ImageList;
                 if (this.imageList_0 == null)
@@ -57,7 +56,7 @@ namespace Yutai.ArcGIS.Catalog.UI
                 base.AllowDrop = true;
                 base.HideSelection = false;
                 base.LabelEdit = true;
-            }
+           
         }
 
         public void AddChildNode(IGxObject igxObject_1, TreeNode treeNode_2)

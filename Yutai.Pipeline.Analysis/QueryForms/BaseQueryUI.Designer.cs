@@ -55,6 +55,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             this.CrossesSelect = new System.Windows.Forms.ToolStripMenuItem();
             this.WithinSelect = new System.Windows.Forms.ToolStripMenuItem();
             this.Clearbut = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -339,11 +340,22 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             this.Clearbut.Visible = false;
             this.Clearbut.Click += new System.EventHandler(this.Clearbut_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(149, 230);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(78, 24);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "获取唯一值";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // BaseQueryUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(231, 290);
+            this.ClientSize = new System.Drawing.Size(229, 293);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.Clearbut);
             this.Controls.Add(this.GeometrySet);
             this.Controls.Add(this.CloseButton);
@@ -356,6 +368,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             this.Controls.Add(this.Layerbox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "BaseQueryUI";
             this.ShowInTaskbar = false;
             this.Text = "基本查询";
@@ -405,5 +418,6 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 		private ToolStripMenuItem WithinSelect;
 		private Button Clearbut;
 		private TextBox ValueEdit;
+        private Button button1;
     }
 }

@@ -56,7 +56,7 @@ namespace Yutai.Pipeline.Analysis.Commands
             _context = hook as IAppContext;
             base.m_caption = "水平净距分析";
             base.m_category = "PipelineAnalysus";
-            base.m_bitmap = Properties.Resources.icon_analysis_collision;
+            base.m_bitmap = Properties.Resources.icon_distance_hor;
             base.m_name = "PipeAnalysis_HoriDistAnalysis";
             base._key = "PipeAnalysis_HoriDistAnalysis";
             base.m_toolTip = "水平净距分析";

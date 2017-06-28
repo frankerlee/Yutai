@@ -55,7 +55,7 @@ namespace Yutai.Pipeline.Analysis.Commands
             _context = hook as IAppContext;
             base.m_caption = "连通性分析";
             base.m_category = "PipelineAnalysus";
-            base.m_bitmap = Properties.Resources.icon_analysis_collision;
+            base.m_bitmap = Properties.Resources.icon_connection;
             base.m_name = "PipeAnalysis_ConnectivityAnalysis";
             base._key = "PipeAnalysis_ConnectivityAnalysis";
             base.m_toolTip = "连通性分析";

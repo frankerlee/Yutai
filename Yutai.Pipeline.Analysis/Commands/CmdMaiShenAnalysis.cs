@@ -34,7 +34,7 @@ namespace Yutai.Pipeline.Analysis.Commands
             _context = hook as IAppContext;
             base.m_caption = "埋深分析";
             base.m_category = "PipelineAnalysus";
-            base.m_bitmap = Properties.Resources.icon_analysis_collision;
+            base.m_bitmap = Properties.Resources.icon_depth;
             base.m_name = "PipeAnalysis_MaiShenAnalysis";
             base._key = "PipeAnalysis_MaiShenAnalysis";
             base.m_toolTip = "埋深分析";

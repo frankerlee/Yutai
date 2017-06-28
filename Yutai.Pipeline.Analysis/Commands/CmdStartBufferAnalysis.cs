@@ -70,7 +70,7 @@ namespace Yutai.Pipeline.Analysis.Commands
             _context = hook as IAppContext;
             base.m_caption = "缓冲区分析";
             base.m_category = "PipelineAnalysus";
-            base.m_bitmap = Properties.Resources.icon_transect;
+            base.m_bitmap = Properties.Resources.icon_buffer;
             _cursor =
                 new System.Windows.Forms.Cursor(
                     base.GetType()

@@ -17,7 +17,6 @@ namespace Yutai.Pipeline.Analysis.Helpers
 {
     public class CommonUtils
     {
-
         public static double ConvertPixelsToMapUnits(IActiveView pActiveView, double pPixel)
         {
             int num = pActiveView.ScreenDisplay.DisplayTransformation.get_DeviceFrame().right -
@@ -133,7 +132,7 @@ namespace Yutai.Pipeline.Analysis.Helpers
                     ISymbol symbolByFeature = ((IGeoFeatureLayer)layerByFeatureClassName).Renderer.get_SymbolByFeature(pFeaVal);
                     IRgbColor rgbColorClass = new RgbColor();
                     IColor color = null;
-                    if (geometryType == (esriGeometryType)3)
+                    if (geometryType == esriGeometryType.esriGeometryPolyline)
                     {
                         if (symbolByFeature is ISimpleLineSymbol)
                         {
@@ -144,7 +143,7 @@ namespace Yutai.Pipeline.Analysis.Helpers
                             color = ((ILineSymbol)symbolByFeature).Color;
                         }
                     }
-                    if (geometryType == (esriGeometryType)1)
+                    if (geometryType == esriGeometryType.esriGeometryPoint)
                     {
                         if (symbolByFeature is IMarkerFillSymbol)
                         {

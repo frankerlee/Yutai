@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Yutai.Pipeline.Analysis;
 using Yutai.Pipeline.Analysis.Commands;
+using Yutai.Pipeline.Analysis.ConfigCommands;
 using Yutai.Pipeline.Analysis.QueryCommands;
 using Yutai.Pipeline.Analysis.QueryForms;
 using Yutai.Plugins.Concrete;
@@ -40,6 +41,7 @@ namespace Yutai.Pipeline.Analysis.Menu
                 _commands = new List<YutaiCommand>()
                 {
                     new CmdStartOrganizeMap(_context,_plugin),
+                    new CmdSavePipeConfig(_context,_plugin),
                     new CmdCloseValveAnalysis(_context,_plugin),
                     new CmdConnectivityAnalysis(_context,_plugin),
                     new CmdMaiShenAnalysis(_context,_plugin),
@@ -52,6 +54,7 @@ namespace Yutai.Pipeline.Analysis.Menu
                     new CmdStartHoriDistAnalysis(_context,_plugin),
                     new CmdStartHoriSectAnalysis(_context,_plugin),
                     new CmdStartVertSectAnalysis(_context,_plugin),
+                    new CmdTrackAnalysis(_context,_plugin),
                     //new CmdQueryBasic(_context, _plugin),
                     //new CmdQueryLine(_context, _plugin),
                     //new CmdQueryByAddress(_context, _plugin),

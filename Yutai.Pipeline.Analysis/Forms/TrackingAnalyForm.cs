@@ -18,27 +18,18 @@ namespace Yutai.Pipeline.Analysis.Forms
 {
 	public partial class TrackingAnalyForm : Form
 	{
-		private partial class Class6
+		private partial class LayerInfo
 		{
-			public IFeatureLayer ifeatureLayer_0;
+			public IFeatureLayer _layer;
 
 			public override string ToString()
 			{
-				return this.ifeatureLayer_0.Name;
+				return this._layer.Name;
 			}
 		}
 
 		private IContainer icontainer_0 = null;
-
-
-
-
-
-
-
-
-
-
+        
 
 		public IMapControl3 MapControl;
 
@@ -46,13 +37,13 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		public IAppContext m_iApp;
 
-		private IList<IFeature> ilist_0 = new List<IFeature>();
+		private IList<IFeature> listJunctionFlag = new List<IFeature>();
 
-		private IList<IFeature> ilist_1 = new List<IFeature>();
+		private IList<IFeature> listEdgeFlag = new List<IFeature>();
 
-		private IList<IFeature> ilist_2 = new List<IFeature>();
+		private IList<IFeature> listJunctionBarrier = new List<IFeature>();
 
-		private IList<IFeature> ilist_3 = new List<IFeature>();
+		private IList<IFeature> listEdgeBarrier = new List<IFeature>();
 
 		private IList<IFeature> ilist_4 = new List<IFeature>();
 
@@ -101,7 +92,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 				}
 				else
 				{
-					IFeatureClass featureClass = ((TrackingAnalyForm.Class6)this.LayerCom.SelectedItem).ifeatureLayer_0.FeatureClass;
+					IFeatureClass featureClass = ((TrackingAnalyForm.LayerInfo)this.LayerCom.SelectedItem)._layer.FeatureClass;
 					if (featureClass == null)
 					{
 						result = null;
@@ -116,10 +107,10 @@ namespace Yutai.Pipeline.Analysis.Forms
 						else
 						{
 							IGeometricNetwork geometricNetwork = networkClass.GeometricNetwork;
-							IEnumFeatureClass enumFeatureClass = geometricNetwork.get_ClassesByType((esriFeatureType) 7);
+							IEnumFeatureClass enumFeatureClass = geometricNetwork.get_ClassesByType(esriFeatureType.esriFTSimpleJunction);
 							enumFeatureClass.Reset();
 							featureClass = enumFeatureClass.Next();
-							if (featureClass.AliasName.Contains("TOPO_Junctions"))
+							if (featureClass.AliasName.Contains("Junctions"))
 							{
 								featureClass = enumFeatureClass.Next();
 							}
@@ -147,7 +138,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 				}
 				else
 				{
-					IFeatureClass featureClass = ((TrackingAnalyForm.Class6)this.LayerCom.SelectedItem).ifeatureLayer_0.FeatureClass;
+					IFeatureClass featureClass = ((TrackingAnalyForm.LayerInfo)this.LayerCom.SelectedItem)._layer.FeatureClass;
 					if (featureClass == null)
 					{
 						result = null;
@@ -162,7 +153,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 						else
 						{
 							IGeometricNetwork geometricNetwork = networkClass.GeometricNetwork;
-							IEnumFeatureClass enumFeatureClass = geometricNetwork.get_ClassesByType((esriFeatureType) 8);
+							IEnumFeatureClass enumFeatureClass = geometricNetwork.get_ClassesByType(esriFeatureType.esriFTSimpleEdge);
 							enumFeatureClass.Reset();
 							result = enumFeatureClass.Next();
 						}
@@ -179,22 +170,22 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		public void AddJunctionFlag(IFeature PointFeature)
 		{
-			this.ilist_0.Add(PointFeature);
+			this.listJunctionFlag.Add(PointFeature);
 		}
 
 		public void AddEdgeFlag(IFeature PointFeature)
 		{
-			this.ilist_1.Add(PointFeature);
+			this.listEdgeFlag.Add(PointFeature);
 		}
 
 		public void AddJunctionBarrierFlag(IFeature PointFeature)
 		{
-			this.ilist_2.Add(PointFeature);
+			this.listJunctionBarrier.Add(PointFeature);
 		}
 
 		public void AddEdgeBarrierFlag(IFeature PointFeature)
 		{
-			this.ilist_3.Add(PointFeature);
+			this.listEdgeBarrier.Add(PointFeature);
 		}
 
 		private void TrackingAnalyForm_Load(object obj, EventArgs eventArgs)
@@ -236,8 +227,8 @@ namespace Yutai.Pipeline.Analysis.Forms
 				string aliasName = featureLayer.FeatureClass.AliasName;
 				if (this.pPipeCfg.IsPipelineLayer(featureLayer.Name, enumPipelineDataType.Line))
 				{
-					TrackingAnalyForm.Class6 pclass = new TrackingAnalyForm.Class6();
-					pclass.ifeatureLayer_0 = featureLayer;
+					TrackingAnalyForm.LayerInfo pclass = new TrackingAnalyForm.LayerInfo();
+					pclass._layer = featureLayer;
 					this.LayerCom.Items.Add(pclass);
 				}
 			}
@@ -263,19 +254,19 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		private void LayerCom_SelectedIndexChanged(object obj, EventArgs eventArgs)
 		{
-			this.ilist_0.Clear();
-			this.ilist_1.Clear();
-			this.ilist_2.Clear();
-			this.ilist_3.Clear();
+			this.listJunctionFlag.Clear();
+			this.listEdgeFlag.Clear();
+			this.listJunctionBarrier.Clear();
+			this.listEdgeBarrier.Clear();
 			this.ilist_4.Clear();
 		}
 
 		private void SetButton_Click(object obj, EventArgs eventArgs)
 		{
-			int count = this.ilist_0.Count;
-			int count2 = this.ilist_1.Count;
-			int count3 = this.ilist_2.Count;
-			int count4 = this.ilist_3.Count;
+			int count = this.listJunctionFlag.Count;
+			int count2 = this.listEdgeFlag.Count;
+			int count3 = this.listJunctionBarrier.Count;
+			int count4 = this.listEdgeBarrier.Count;
 			if (count < 1 && count2 < 1)
 			{
 				MessageBox.Show("请用户选择要分析的点或线!");
@@ -290,7 +281,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 				{
 					for (int i = 0; i < count; i++)
 					{
-						IFeature feature = this.ilist_0[i];
+						IFeature feature = this.listJunctionFlag[i];
 						networkClass = (feature.Class as INetworkClass);
 						network = networkClass.GeometricNetwork.Network;
 						INetElements netElements = network as INetElements;
@@ -311,7 +302,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 				{
 					for (int j = 0; j < count2; j++)
 					{
-						IFeature feature2 = this.ilist_1[j];
+						IFeature feature2 = this.listEdgeFlag[j];
 						networkClass = (feature2.Class as INetworkClass);
 						network = networkClass.GeometricNetwork.Network;
 						INetElements netElements2 = network as INetElements;
@@ -339,7 +330,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 				{
 					for (int k = 0; k < count3; k++)
 					{
-						IFeature feature3 = this.ilist_2[k];
+						IFeature feature3 = this.listJunctionBarrier[k];
 						networkClass = (feature3.Class as INetworkClass);
 						network = networkClass.GeometricNetwork.Network;
 						INetElements netElements3 = network as INetElements;
@@ -361,7 +352,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 				{
 					for (int l = 0; l < count4; l++)
 					{
-						IFeature feature4 = this.ilist_3[l];
+						IFeature feature4 = this.listEdgeBarrier[l];
 						networkClass = (feature4.Class as INetworkClass);
 						network = networkClass.GeometricNetwork.Network;
 						INetElements netElements4 = network as INetElements;
@@ -407,7 +398,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 				if (selectedIndex >= 0 && this.MapControl != null)
 				{
 					this.LayerCom.SelectedItem.ToString();
-					IFeatureLayer ifeatureLayer_ = ((TrackingAnalyForm.Class6)this.LayerCom.SelectedItem).ifeatureLayer_0;
+					IFeatureLayer ifeatureLayer_ = ((TrackingAnalyForm.LayerInfo)this.LayerCom.SelectedItem)._layer;
 					if (ifeatureLayer_ != null)
 					{
 						IFeatureSelection featureSelection = (IFeatureSelection)ifeatureLayer_;
@@ -436,10 +427,10 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		private void ClearBut_Click(object obj, EventArgs eventArgs)
 		{
-			this.ilist_0.Clear();
-			this.ilist_1.Clear();
-			this.ilist_2.Clear();
-			this.ilist_3.Clear();
+			this.listJunctionFlag.Clear();
+			this.listEdgeFlag.Clear();
+			this.listJunctionBarrier.Clear();
+			this.listEdgeBarrier.Clear();
 			this.ilist_4.Clear();
 		    IActiveView activeView = this.m_iApp.ActiveView;
 

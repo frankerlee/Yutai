@@ -31,21 +31,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Infragistics4.Win.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinPrintPreviewDialog.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinGrid.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinGrid.ExcelExport.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinEditors.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinDataSource.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinChart.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.Misc.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Shared.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Documents.Excel.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Documents.Reports.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Documents.Core.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <HintPath>D:\Program Files (x86)\Infragistics\2016.1\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.Core.v16.1.dll</HintPath>
       <Name>Infragistics4.Documents.Core.v16.1</Name>
     </Reference>
-        <Reference Include="Infragistics2.Documents.v9.2, Version=9.2.20092.1003, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
-    <Reference Include="Infragistics2.Excel.v9.2, Version=9.2.20092.1003, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
-    <Reference Include="Infragistics2.Shared.v9.2, Version=9.2.20092.1003, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
-    <Reference Include="Infragistics2.Win.Misc.v9.2, Version=9.2.20092.1003, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
-    <Reference Include="Infragistics2.Win.UltraWinChart.v9.2, Version=9.2.20092.1003, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
-    <Reference Include="Infragistics2.Win.UltraWinDataSource.v9.2, Version=9.2.20092.1003, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
-    <Reference Include="Infragistics2.Win.UltraWinEditors.v9.2, Version=9.2.20092.1003, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
-    <Reference Include="Infragistics2.Win.UltraWinGrid.ExcelExport.v9.2, Version=9.2.20092.1003, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
-    <Reference Include="Infragistics2.Win.UltraWinGrid.v9.2, Version=9.2.20092.1003, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
-    <Reference Include="Infragistics2.Win.UltraWinPrintPreviewDialog.v9.2, Version=9.2.20092.1003, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
-    <Reference Include="Infragistics2.Win.v9.2, Version=9.2.20092.1003, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -106,6 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Configuration.cs" />
+    <Compile Include="ConfigCommands\CmdSavePipeConfig.cs" />
     <Compile Include="Controls\DataGridViewEx.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -350,7 +351,7 @@
     <Compile Include="QueryCommands\CmdQueryRelate.cs" />
     <Compile Include="QueryCommands\CmdQueryRoadIntersect.cs" />
     <Compile Include="QueryCommands\CmdStartClassForm.cs" />
-    <Compile Include="QueryCommands\CmdStartOrganizeMap.cs" />
+    <Compile Include="ConfigCommands\CmdStartOrganizeMap.cs" />
     <Compile Include="QueryCommands\CmdStartReportForm.cs" />
     <Compile Include="QueryForms\BaseQueryUI.cs">
       <SubType>Form</SubType>
@@ -470,6 +471,7 @@
     <Compile Include="QueryResultArgs.cs" />
     <Compile Include="Services\DockPanelService.cs" />
     <Compile Include="Views\IQueryResultView.cs" />
+    <Compile Include="Views\QueryResultPresenter.cs" />
     <Compile Include="Views\QueryResultView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -659,7 +661,9 @@
       <DependentUpon>QueryResultView.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\icon_connection.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icon_transect.png" />
   </ItemGroup>
@@ -677,6 +681,46 @@
     <None Include="Resources\icon_sum.png" />
     <EmbeddedResource Include="Resources\cursor\Hand.cur" />
     <EmbeddedResource Include="Resources\cursor\MoveHand.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_depth.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_distance_hor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_facility.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_flow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_section_hor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_section_vert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_short_path.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_track.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_valve.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_buffer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_auto_config.png" />
+    <Content Include="Resources\icon_depth.png" />
+    <None Include="Resources\icon_save_config.png" />
+    <Content Include="Resources\icon_short_path.png" />
+    <Content Include="Resources\icon_valve.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ConfigForms\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -88,7 +88,7 @@ namespace Yutai.Pipeline.Analysis.Forms
                 if (iFLayer != null)
                 {
                     IFeatureClass featureClass = iFLayer.FeatureClass;
-                    if ((featureClass.ShapeType == (esriGeometryType)13 ? true : featureClass.ShapeType == (esriGeometryType)3))
+                    if ((featureClass.ShapeType == esriGeometryType.esriGeometryPoint ? true : featureClass.ShapeType == esriGeometryType.esriGeometryPolyline))
                     {
                         if ((featureClass.AliasName == "SY_ZX_L" ? true : featureClass.AliasName == "SDE.SY_ZX_L"))
                         {
@@ -364,7 +364,7 @@ namespace Yutai.Pipeline.Analysis.Forms
                 if ((this._config.IsPipelineLayer(feature.Class.AliasName) ? true : !(feature.Class.AliasName != "Polyline")))
                 {
                     IGeometry shape = feature.Shape;
-                    if (shape.GeometryType == (esriGeometryType)3)
+                    if (shape.GeometryType == esriGeometryType.esriGeometryPolyline)
                     {
                         IBasicLayerInfo layerInfo = _config.GetBasicLayerInfo(feature.Class.AliasName);
                         
@@ -496,7 +496,7 @@ namespace Yutai.Pipeline.Analysis.Forms
                             continue;
                         }
                         IFeatureClass featureClass = list2.FeatureClass;
-                        if ((featureClass.AliasName == this.ifeatureClass_0.AliasName ? true : featureClass.ShapeType != (esriGeometryType)3))
+                        if ((featureClass.AliasName == this.ifeatureClass_0.AliasName ? true : featureClass.ShapeType != esriGeometryType.esriGeometryPolyline))
                         {
                             continue;
                         }
@@ -1136,7 +1136,7 @@ namespace Yutai.Pipeline.Analysis.Forms
                                 cadFeatureLayerClass.Selectable = (true);
 
                                 this.m_app.FocusMap.AddLayer(cadFeatureLayerClass);
-                                if (cadFeatureLayerClass.FeatureClass.ShapeType == (esriGeometryType)3)
+                                if (cadFeatureLayerClass.FeatureClass.ShapeType == esriGeometryType.esriGeometryPolyline)
 
                                 {
                                     this.list_0.Add(cadFeatureLayerClass);

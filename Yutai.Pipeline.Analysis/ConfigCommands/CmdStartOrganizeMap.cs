@@ -5,7 +5,7 @@ using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
 
-namespace Yutai.Pipeline.Analysis.QueryCommands
+namespace Yutai.Pipeline.Analysis.ConfigCommands
 {
     class CmdStartOrganizeMap : YutaiCommand
     {
@@ -25,14 +25,14 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
         public override void OnCreate(object hook)
         {
             _context = hook as IAppContext;
-            base.m_caption = "管线配置";
+            base.m_caption = "管线识别";
             base.m_category = "PipelineQuery";
-            base.m_bitmap = Properties.Resources.icon_analysis_collision;
-            base.m_name = "PipeQuery_Config";
-            base._key = "PipeQuery_Config";
-            base.m_toolTip = "管线配置";
+            base.m_bitmap = Properties.Resources.icon_auto_config;
+            base.m_name = "PipeQuery_AutoConfig";
+            base._key = "PipeQuery_AutoConfig";
+            base.m_toolTip = "管线识别";
             base.m_checked = false;
-            base.m_message = "管线配置";
+            base.m_message = "管线识别";
             base.m_enabled = true;
             base._itemType = RibbonItemType.Button;
             

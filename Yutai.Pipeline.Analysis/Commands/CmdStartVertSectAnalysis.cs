@@ -51,7 +51,7 @@ namespace Yutai.Pipeline.Analysis.Commands
             _context = hook as IAppContext;
             base.m_caption = "纵断面分析";
             base.m_category = "PipelineAnalysus";
-            base.m_bitmap = Properties.Resources.icon_versect;
+            base.m_bitmap = Properties.Resources.icon_section_vert;
             base.m_name = "PipeAnalysis_VertSectionStart";
             base._key = "PipeAnalysis_VertSectionStart";
             base.m_toolTip = "纵断面分析";

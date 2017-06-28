@@ -53,7 +53,7 @@ namespace Yutai.Pipeline.Analysis.Commands
             _context = hook as IAppContext;
             base.m_caption = "设施搜索";
             base.m_category = "PipelineAnalysus";
-            base.m_bitmap = Properties.Resources.icon_analysis_collision;
+            base.m_bitmap = Properties.Resources.icon_facility;
             base.m_name = "PipeAnalysis_SearchAffixAnalysis";
             base._key = "PipeAnalysis_SearchAffixAnalysis";
             base.m_toolTip = "设施搜索";

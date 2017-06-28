@@ -61,7 +61,7 @@ namespace Yutai.Pipeline.Analysis.Commands
             _context = hook as IAppContext;
             base.m_caption = "最短路径分析";
             base.m_category = "PipelineAnalysus";
-            base.m_bitmap = Properties.Resources.icon_analysis_collision;
+            base.m_bitmap = Properties.Resources.icon_short_path;
             base.m_name = "PipeAnalysis_ShortestAnalysis";
             base._key = "PipeAnalysis_ShortestAnalysis";
             base.m_toolTip = "最短路径分析";

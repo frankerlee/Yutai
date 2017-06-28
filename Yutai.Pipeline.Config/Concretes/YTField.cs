@@ -23,9 +23,13 @@ namespace Yutai.Pipeline.Config.Concretes
         private string _domainValues;
         private string _esriFieldName;
         private IYTDomain _domain;
+        private bool _visible;
 
 
-        public YTField() { }
+        public YTField()
+        {
+            _visible = true;
+        }
 
         public YTField(IYTField pField)
         {
@@ -38,6 +42,7 @@ namespace Yutai.Pipeline.Config.Concretes
             _fieldType = pField.FieldType;
             _allowNull = pField.AllowNull;
             _domainValues = pField.DomainValues;
+            _visible = pField.Visible;
             if (string.IsNullOrEmpty(_domainValues))
             {
                 DomainValues = pField.DomainValues;
@@ -87,6 +92,12 @@ namespace Yutai.Pipeline.Config.Concretes
             set { _precision = value; }
         }
 
+        public bool Visible
+        {
+            get { return _visible; }
+            set { _visible = value; }
+        }
+
         public esriFieldType FieldType
         {
             get { return _fieldType; }
@@ -126,6 +137,7 @@ namespace Yutai.Pipeline.Config.Concretes
                 _precision = string.IsNullOrWhiteSpace(xml.Attributes["Precision"].Value) ? 50: Convert.ToInt32(xml.Attributes["Precision"].Value);
                 _fieldType = FieldHelper.ConvertFromString(_fieldTypeStr);
                 _domainValues = xml.Attributes["DomainValues"]==null?"": xml.Attributes["DomainValues"].Value;
+                _visible = xml.Attributes["Visible"] == null || (string.IsNullOrWhiteSpace(xml.Attributes["Visible"].Value) || (xml.Attributes["Visible"].Value.ToUpper().StartsWith("T")));
             }
         }
 
@@ -148,6 +160,8 @@ namespace Yutai.Pipeline.Config.Concretes
             precisionAttribute.Value = _precision.ToString();
             XmlAttribute domainAttribute = doc.CreateAttribute("DomainValues");
             domainAttribute.Value = _domainValues;
+            XmlAttribute visibleAttribute = doc.CreateAttribute("Visible");
+            visibleAttribute.Value = _visible.ToString();
 
             fieldNode.Attributes.Append(typeNameAttribute);
             fieldNode.Attributes.Append(nameAttribute);
@@ -157,6 +171,7 @@ namespace Yutai.Pipeline.Config.Concretes
             fieldNode.Attributes.Append(fieldTypeAttribute);
             fieldNode.Attributes.Append(precisionAttribute);
             fieldNode.Attributes.Append(domainAttribute);
+            fieldNode.Attributes.Append(visibleAttribute);
             return fieldNode;
         }
 

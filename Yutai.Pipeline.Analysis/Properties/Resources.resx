@@ -121,11 +121,32 @@
   <data name="icon_analysis_collision" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_analysis_collision.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icon_auto_config" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_auto_config.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_buffer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_buffer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_connection" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_connection.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_depth" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_depth.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_distance_hor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_distance_hor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icon_excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_excel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icon_facility" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_facility.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icon_flash" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_flash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_flow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_flow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icon_locate" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_locate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,11 +160,29 @@
   <data name="icon_print" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_print.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icon_save_config" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_save_config.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_section_hor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_section_hor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_section_vert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_section_vert.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_short_path" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_short_path.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icon_sum" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_sum.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icon_track" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_track.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icon_transect" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_transect.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_valve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_valve.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icon_versect" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_versect.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

@@ -21,6 +21,7 @@ namespace Yutai.Pipeline.Config.Interfaces
         string FixAutoNames { get; }
         int Length { get; set; }
         int Precision { get; set; }
+        bool Visible { get; set; }
         esriFieldType FieldType { get; set; }
         bool AllowNull { get; set; }
         //! 如果有值字段，则定义，值中间用斜杠"/"分割
