@@ -21,6 +21,7 @@ namespace Yutai.Pipeline.Config.Interfaces
         IFeatureWorkspace Workspace { get; set; }
         List<IPipelineTemplate> Templates { get; set; }
         List<IPipelineLayer> Layers { get; set; }
+        List<IFunctionLayer> FunctionLayers { get; set; }
         void LoadFromXml(string fileName);
 
         void SaveToXml(string fileName);
@@ -49,5 +50,9 @@ namespace Yutai.Pipeline.Config.Interfaces
         IBasicLayerInfo GetBasicLayerInfo(string pClassAliasName);
 
         IYTField GetSpecialField(string classAliasName, string typeWord);
+
+        IFunctionLayer GetFunctionLayer(IFeatureClass featureClass);
+        IFunctionLayer GetFunctionLayer(string aliasName);
+        IFunctionLayer GetFunctionLayer(enumFunctionLayerType type);
     }
 }

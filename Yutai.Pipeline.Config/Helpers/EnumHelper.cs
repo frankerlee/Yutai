@@ -86,5 +86,29 @@ namespace Yutai.Pipeline.Config.Helpers
                     return "OTHER";
             }
         }
+
+        public static enumFunctionLayerType ConvertFunctionLayerTypeFromString(string typeStr)
+        {
+            switch (typeStr.ToUpper())
+            {
+                case "ITEM":
+                    return enumFunctionLayerType.Item;
+                case "OTHER":
+                default:
+                    return enumFunctionLayerType.Other;
+            }
+        }
+
+        public static string ConvertFunctionLayerTypeToString(enumFunctionLayerType type)
+        {
+            switch (type)
+            {
+                case enumFunctionLayerType.Item:
+                    return "ITEM";
+                case enumFunctionLayerType.Other:
+                default:
+                    return "OTHER";
+            }
+        }
     }
 }

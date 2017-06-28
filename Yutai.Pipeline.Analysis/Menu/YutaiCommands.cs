@@ -62,6 +62,7 @@ namespace Yutai.Pipeline.Analysis.Menu
                     new CmdQueryByDate(_context, _plugin),
                     new CmdQueryByDia(_context, _plugin),
                     new CmdQueryByGJJTJ(_context, _plugin),
+                    new CmdQueryByItem(_context, _plugin),
                 };
             }
             catch (Exception ex)

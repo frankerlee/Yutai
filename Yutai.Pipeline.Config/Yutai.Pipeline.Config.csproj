@@ -63,6 +63,7 @@
     <Compile Include="CompositionRoot.cs" />
     <Compile Include="Concretes\BasicLayerInfo.cs" />
     <Compile Include="Concretes\CommonConfig.cs" />
+    <Compile Include="Concretes\FunctionLayer.cs" />
     <Compile Include="Concretes\PipelineConfig.cs" />
     <Compile Include="Concretes\PipelineLayer.cs" />
     <Compile Include="Concretes\PipelineTemplate.cs" />
@@ -72,10 +73,12 @@
     <Compile Include="Helpers\ConfigHelper.cs" />
     <Compile Include="Helpers\EnumHelper.cs" />
     <Compile Include="Helpers\PipeConfigWordHelper.cs" />
+    <Compile Include="Interfaces\enumFunctionLayerType.cs" />
     <Compile Include="Interfaces\enumPipelineDataType.cs" />
     <Compile Include="Interfaces\enumPipelineHeightType.cs" />
     <Compile Include="Interfaces\IBasicLayerInfo.cs" />
     <Compile Include="Interfaces\ICommonConfig.cs" />
+    <Compile Include="Interfaces\IFunctionLayer.cs" />
     <Compile Include="Interfaces\IPipelineConfig.cs" />
     <Compile Include="Interfaces\IPipelineLayer.cs" />
     <Compile Include="Interfaces\IPipelineTemplate.cs" />
