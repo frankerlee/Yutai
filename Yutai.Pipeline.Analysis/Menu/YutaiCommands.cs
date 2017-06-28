@@ -63,6 +63,15 @@ namespace Yutai.Pipeline.Analysis.Menu
                     new CmdQueryByDia(_context, _plugin),
                     new CmdQueryByGJJTJ(_context, _plugin),
                     new CmdQueryByItem(_context, _plugin),
+                    new CmdQueryByJdxz(_context, _plugin),
+                    new CmdQueryByJMD(_context, _plugin),
+                    new CmdQueryByMaterial(_context, _plugin),
+                    new CmdQueryByMSTJ(_context, _plugin),
+                    new CmdQueryComplex(_context, _plugin),
+                    new CmdQueryRelate(_context, _plugin),
+                    new CmdQueryRoadIntersect(_context, _plugin),
+                    new CmdStartClassForm(_context, _plugin),
+                    new CmdStartReportForm(_context, _plugin),
                 };
             }
             catch (Exception ex)

@@ -31,6 +31,7 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
             if (this.QueryUI == null || this.QueryUI.IsDisposed)
             {
                 this.QueryUI = new SimpleStatMyshUI();
+                this.QueryUI.TopMost = true;
                 this.QueryUI.MapControl = (IMapControl3)_context.MapControl;
                 this.QueryUI.pPipeCfg =_plugin.PipeConfig;
                 this.QueryUI.m_context = this._context;
@@ -67,7 +68,7 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
             base.m_checked = false;
             base.m_message = "埋深分段统计";
             base.m_enabled = true;
-            base._itemType = RibbonItemType.Tool;
+            base._itemType = RibbonItemType.Button;
 
             CommonUtils.AppContext = _context;
         }

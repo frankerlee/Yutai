@@ -11,20 +11,20 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.QueryForms
 {
-	public partial class StatReportformsUI : Form
-	{
+    public partial class StatReportformsUI : Form
+    {
 
-		public IGeometry m_ipGeo;
+        public IGeometry m_ipGeo;
 
-		public IAppContext m_context;
+        public IAppContext m_context;
 
-		public IMapControl3 MapControl;
+        public IMapControl3 MapControl;
 
-		public IPipelineConfig pPipeCfg;
+        public IPipelineConfig pPipeCfg;
 
-	public StatReportformsUI()
-		{
-			this.InitializeComponent();
-		}
-	}
+        public StatReportformsUI()
+        {
+            this.InitializeComponent();
+        }
+    }
 }

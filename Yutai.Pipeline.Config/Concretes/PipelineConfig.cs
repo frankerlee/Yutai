@@ -307,7 +307,24 @@ namespace Yutai.Pipeline.Config.Concretes
             return _functionLayers.FirstOrDefault(c => c.FunctionType == type);
         }
 
+        public bool IsFunctionLayer(string classAliasName)
+        {
+            IFunctionLayer layer = _functionLayers.FirstOrDefault(c => c.AliasName == classAliasName);
+            return layer != null;
+        }
 
+        public bool IsFunctionLayer(IFeatureClass featureClass)
+        {
+            IFunctionLayer layer = _functionLayers.FirstOrDefault(c => c.AliasName == featureClass.AliasName);
+            return layer != null;
+        }
+
+        public bool IsFunctionLayer(string classAliasName, enumFunctionLayerType type)
+        {
+            IFunctionLayer layer = _functionLayers.FirstOrDefault(c => c.AliasName == classAliasName);
+            return layer != null && layer.FunctionType == type;
+        }
+        
         //! 目前只是按照名字对照去识别管线图层，后期可能需要动态的识别管线图层，并进行判断确定是否为合法的管线图层
         private void LinkFeatureLayers()
         {

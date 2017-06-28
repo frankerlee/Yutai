@@ -31,14 +31,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 _plugin = value;
             }
         }
-
-
-
-
-
-
-
-
+        
         public SimpleQueryByJMDUI()
 		{
 			this.InitializeComponent();
@@ -217,7 +210,5 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 		{
 			base.Close();
 		}
-
-
     }
 }

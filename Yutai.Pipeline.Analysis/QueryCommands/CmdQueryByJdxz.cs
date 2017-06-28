@@ -35,6 +35,7 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
                 this.QueryUI.m_context = this._context;
                 this.QueryUI.Closing += new CancelEventHandler(this.QueryUI_Closing);
                 this.QueryUI.Show();
+                this.QueryUI.Plugin = _plugin;
             }
             else if (!this.QueryUI.Visible)
             {

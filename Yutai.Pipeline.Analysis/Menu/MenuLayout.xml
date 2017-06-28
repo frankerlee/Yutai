@@ -6,14 +6,24 @@
           <BarItem Key="PipeQuery_ByCMIS" Visible="true" />
           <BarItem Key="PipeQuery_Basic" Visible="true" />
           <BarItem Key="PipeQuery_BasicLine" Visible="true" />
+          <BarItem Key="PipeQuery_Complex" Visible="true"/>
+          <BarItem Key="PipeQuery_RelationShip" Visible="true"/>
+          <BarItem Key="PipeQuery_RoadIntersect" Visible="true"/>
         </PageGroup>
         <PageGroup Key="Pipeline_Query_Quick" Caption="快速查询" Visible="true" Index="2">
           <BarItem Key="PipeQuery_ByAddress" Visible="true" />
           <BarItem Key="PipeQuery_ByDate" Visible="true" />
           <BarItem Key="PipeQuery_ByDia" Visible="true" />
+          <BarItem Key="PipeQuery_ByItem" Visible="true"/>
+          <BarItem Key="PipeQuery_ByJdxz" Visible="true"/>
+          <BarItem Key="PipeQuery_ByJMD" Visible="true"/>
+          <BarItem Key="PipeQuery_ByCZ" Visible="true"/>
         </PageGroup>
         <PageGroup Key="Pipeline_Statistics_Common" Caption="常用统计" Visible="true" Index="3">
           <BarItem Key="PipeQuery_ByGJTJ" Visible="true" />
+          <BarItem Key="PipeQuery_ByMSTJ" Visible="true"/>
+          <BarItem Key="PipeQuery_Statics" Visible="true"/>
+          <BarItem Key="PipeQuery_Report" Visible="true"/>
         </PageGroup>
       </Page>
       <Page Key="PipelineAnalysis" Caption="管线分析" Index="0" Visible="true">

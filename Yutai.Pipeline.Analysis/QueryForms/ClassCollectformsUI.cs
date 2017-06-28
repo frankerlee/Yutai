@@ -28,37 +28,10 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 		}
 
 		public IGeometry m_ipGeo;
-
 		public IAppContext m_context;
-
-		public IMapControl3 MapControl;
-
+        public IMapControl3 MapControl;
 		public IPipelineConfig pPipeCfg;
-
-
-
 		private DataTable Sumtable = new DataTable();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		public bool SelectGeometry
 		{
 			get
@@ -101,7 +74,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				int count = compositeLayer.Count;
 				for (int i = 0; i < count; i++)
 				{
-					ILayer ipLay = compositeLayer.get_Layer(i);
+					ILayer ipLay = compositeLayer.Layer[i];
 					this.AddLayer(ipLay);
 				}
 			}
@@ -136,7 +109,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			int layerCount = m_context.FocusMap.LayerCount;
 			for (int i = 0; i < layerCount; i++)
 			{
-				ILayer ipLay = m_context.FocusMap.get_Layer(i);
+				ILayer ipLay = m_context.FocusMap.Layer[i];
 				this.AddLayer(ipLay);
 			}
 			if (this.Layerbox.Items.Count > 0)
@@ -150,11 +123,11 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				this.FieldsBox.Items.Clear();
 				for (int j = 0; j < fields.FieldCount; j++)
 				{
-					IField field = fields.get_Field(j);
+					IField field = fields.Field[j];
 					string name = field.Name;
-					if (field.Type != (esriFieldType) 6 && field.Type != (esriFieldType) 7 && !(name == "Enabled"))
+					if (field.Type != (esriFieldType) 6 && field.Type != (esriFieldType) 7 && name != "Enabled")
 					{
-						Regex regex = new Regex("^[\\u4e00-\\u9fa5]+$");
+						Regex regex = new Regex("^[\\u4e00-\\u9fa5A-Za-z0-9]+$");
 						if (regex.IsMatch(name))
 						{
 							this.FieldsBox.Items.Add(name);
@@ -193,34 +166,31 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			{
 				for (int i = 0; i < layerCount; i++)
 				{
-					ILayer layer = m_context.FocusMap.get_Layer(i);
+					ILayer layer = m_context.FocusMap.Layer[i];
 					if (layer is IFeatureLayer)
 					{
-						string a = layer.Name.ToString();
+						string a = layer.Name;
 						if (a == layername)
 						{
-							featureLayer = (IFeatureLayer)m_context.FocusMap.get_Layer(i);
+							featureLayer = (IFeatureLayer)m_context.FocusMap.Layer[i];
 							break;
 						}
 					}
 					else if (layer is IGroupLayer)
-					{
-						ICompositeLayer compositeLayer = (ICompositeLayer)layer;
-						if (compositeLayer != null)
-						{
-							int count = compositeLayer.Count;
-							for (int j = 0; j < count; j++)
-							{
-								ILayer layer2 = compositeLayer.get_Layer(j);
-								string a = layer2.Name.ToString();
-								if (a == layername)
-								{
-									featureLayer = (IFeatureLayer)layer2;
-									break;
-								}
-							}
-						}
-					}
+				    {
+				        ICompositeLayer compositeLayer = (ICompositeLayer) layer;
+				        int count = compositeLayer.Count;
+				        for (int j = 0; j < count; j++)
+				        {
+				            ILayer layer2 = compositeLayer.Layer[j];
+				            string a = layer2.Name;
+				            if (a == layername)
+				            {
+				                featureLayer = (IFeatureLayer) layer2;
+				                break;
+				            }
+				        }
+				    }
 				}
 				result = featureLayer;
 			}
@@ -257,7 +227,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				for (int i = 0; i < count; i++)
 				{
 					int num3 = 0;
-					Splash.Status = "状态: 正在汇总" + this.Layerbox.CheckedItems[i].ToString() + ",请稍候...";
+					Splash.Status = "状态: 正在汇总" + this.Layerbox.CheckedItems[i] + ",请稍候...";
 					IFeatureLayer pPipeLayer = ((ClassCollectformsUI.LayerboxItem)this.Layerbox.CheckedItems[i]).m_pPipeLayer;
 					IFields fields = pPipeLayer.FeatureClass.Fields;
 				    IYTField fieldInfo = pPipeCfg.GetSpecialField(pPipeLayer.FeatureClass.AliasName,
@@ -287,7 +257,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 						int num5 = 1;
 						for (IRow row = rows.NextRow(); row != null; row = rows.NextRow())
 						{
-							object obj2 = row.get_Value(num4);
+							object obj2 = row.Value[num4];
 							if (obj == null || !this.ColumnEqual(obj, obj2))
 							{
 								if (obj == null)
@@ -364,7 +334,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				{
 					int num8 = 0;
 					double num9 = 0.0;
-					Splash.Status = "状态: 正在汇总" + this.Layerbox.CheckedItems[j].ToString() + ",请稍候...";
+					Splash.Status = "状态: 正在汇总" + this.Layerbox.CheckedItems[j] + ",请稍候...";
 					IFeatureLayer pPipeLayer = ((ClassCollectformsUI.LayerboxItem)this.Layerbox.CheckedItems[j]).m_pPipeLayer;
 					IFields fields2 = pPipeLayer.FeatureClass.Fields;
                     IBasicLayerInfo layerInfo = pPipeCfg.GetBasicLayerInfo(pPipeLayer.FeatureClass);
@@ -377,7 +347,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 					int num11 = fields2.FindField(lineTableFieldName3);
 					for (int k = 0; k < fields2.FieldCount; k++)
 					{
-						IField field = fields2.get_Field(k);
+						IField field = fields2.Field[k];
 						if (field.Type == (esriFieldType) 7)
 						{
 							num = k;
@@ -417,25 +387,25 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 						double num13 = 0.0;
 						while (row2 != null)
 						{
-							object obj5 = row2.get_Value(num4);
+							object obj5 = row2.Value[num4];
 							if (obj5 is DBNull || obj5.ToString() == "0")
 							{
-								obj5 = row2.get_Value(num10);
+								obj5 = row2.Value[num10];
 							}
-							object obj6 = row2.get_Value(num11);
-							if (row2.get_Value(num) is DBNull)
+							object obj6 = row2.Value[num11];
+							if (row2.Value[num] is DBNull)
 							{
 								row2 = rows2.NextRow();
 							}
 							else
 							{
-								IPolyline polyline = (IPolyline)row2.get_Value(num);
+								IPolyline polyline = (IPolyline)row2.Value[num];
 								IPointCollection pointCollection = (IPointCollection)polyline;
 								double num14 = 0.0;
 								for (int l = 0; l < pointCollection.PointCount - 1; l++)
 								{
-									IPoint point = pointCollection.get_Point(l);
-									IPoint point2 = pointCollection.get_Point(l + 1);
+									IPoint point = pointCollection.Point[l];
+									IPoint point2 = pointCollection.Point[l + 1];
 									num14 += Math.Sqrt(Math.Pow(point.X - point2.X, 2.0) + Math.Pow(point.Y - point2.Y, 2.0) + Math.Pow(point.Z - point.M - point2.Z + point2.M, 2.0));
 								}
 								if (obj3 == null || !this.ColumnEqual(obj3, obj5))
@@ -626,7 +596,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 		{
 			if (this.listBox1.Items.Count < 1)
 			{
-				MessageBox.Show("请添加分类项!");
+				MessageBox.Show(@"请添加分类项!");
 			}
 			else
 			{
@@ -635,7 +605,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				int num = -1;
 				DataTable dataTable = new DataTable();
 				dataTable.Columns.Clear();
-				Splash.Status = "状态: 正在汇总,请稍候...";
+				Splash.Status = @"状态: 正在汇总,请稍候...";
 				string text = "";
 				if (this.PointRadio.Checked)
 				{
@@ -668,7 +638,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 					for (int j = 0; j < count; j++)
 					{
 						int num3 = 0;
-						Splash.Status = "状态: 正在汇总" + this.Layerbox.CheckedItems[j].ToString() + ",请稍候...";
+						Splash.Status = "状态: 正在汇总" + this.Layerbox.CheckedItems[j] + ",请稍候...";
 						IFeatureLayer pPipeLayer = ((ClassCollectformsUI.LayerboxItem)this.Layerbox.CheckedItems[j]).m_pPipeLayer;
 						ISpatialFilter spatialFilter = new SpatialFilter();
 						IFeatureClass featureClass = pPipeLayer.FeatureClass;
@@ -696,14 +666,14 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 							for (int k = 0; k < count2; k++)
 							{
 								int num5 = row.Fields.FindField(this.listBox1.Items[k].ToString());
-								array2[k] = row.get_Value(num5);
+								array2[k] = row.Value[num5];
 							}
 							for (row = rows.NextRow(); row != null; row = rows.NextRow())
 							{
 								for (int l = 0; l < count2; l++)
 								{
 									int num6 = row.Fields.FindField(this.listBox1.Items[l].ToString());
-									array[l] = row.get_Value(num6);
+									array[l] = row.Value[num6];
 								}
 								bool flag = false;
 								for (int m = 0; m < count2; m++)
@@ -793,12 +763,12 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 					{
 						int num13 = 0;
 						double num14 = 0.0;
-						Splash.Status = "状态: 正在汇总" + this.Layerbox.CheckedItems[num12].ToString() + ",请稍候...";
+						Splash.Status = "状态: 正在汇总" + this.Layerbox.CheckedItems[num12] + ",请稍候...";
 						IFeatureLayer pPipeLayer = ((ClassCollectformsUI.LayerboxItem)this.Layerbox.CheckedItems[num12]).m_pPipeLayer;
 						IFields fields = pPipeLayer.FeatureClass.Fields;
 						for (int num15 = 0; num15 < fields.FieldCount; num15++)
 						{
-							IField field = fields.get_Field(num15);
+							IField field = fields.Field[num15];
 							if (field.Type == (esriFieldType) 7)
 							{
 								num = num15;
@@ -830,42 +800,42 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 						IRow row2 = rows2.NextRow();
 						if (row2 != null)
 						{
-							IPolyline polyline = (IPolyline)row2.get_Value(num);
+							IPolyline polyline = (IPolyline)row2.Value[num];
 							IPointCollection pointCollection = (IPointCollection)polyline;
 							for (int num19 = 0; num19 < pointCollection.PointCount - 1; num19++)
 							{
-								IPoint point = pointCollection.get_Point(num19);
-								IPoint point2 = pointCollection.get_Point(num19 + 1);
+								IPoint point = pointCollection.Point[num19];
+								IPoint point2 = pointCollection.Point[num19 + 1];
 								num18 += Math.Sqrt(Math.Pow(point.X - point2.X, 2.0) + Math.Pow(point.Y - point2.Y, 2.0) + Math.Pow(point.Z - point.M - point2.Z + point2.M, 2.0));
 							}
 							num17 += num18;
 							for (int num20 = 0; num20 < count3; num20++)
 							{
 								int num21 = row2.Fields.FindField(this.listBox1.Items[num20].ToString());
-								array7[num20] = row2.get_Value(num21);
+								array7[num20] = row2.Value[num21];
 							}
 							row2 = rows2.NextRow();
 							while (row2 != null)
 							{
-								if (row2.get_Value(num) is DBNull)
+								if (row2.Value[num] is DBNull)
 								{
 									row2 = rows2.NextRow();
 								}
 								else
 								{
-									IPolyline polyline2 = (IPolyline)row2.get_Value(num);
+									IPolyline polyline2 = (IPolyline)row2.Value[num];
 									IPointCollection pointCollection2 = (IPointCollection)polyline2;
 									num18 = 0.0;
 									for (int num22 = 0; num22 < pointCollection2.PointCount - 1; num22++)
 									{
-										IPoint point3 = pointCollection2.get_Point(num22);
-										IPoint point4 = pointCollection2.get_Point(num22 + 1);
+										IPoint point3 = pointCollection2.Point[num22];
+										IPoint point4 = pointCollection2.Point[num22 + 1];
 										num18 += Math.Sqrt(Math.Pow(point3.X - point4.X, 2.0) + Math.Pow(point3.Y - point4.Y, 2.0) + Math.Pow(point3.Z - point3.M - point4.Z + point4.M, 2.0));
 									}
 									for (int num23 = 0; num23 < count3; num23++)
 									{
 										int num24 = row2.Fields.FindField(this.listBox1.Items[num23].ToString());
-										array6[num23] = row2.get_Value(num24);
+										array6[num23] = row2.Value[num24];
 									}
 									bool flag2 = false;
 									for (int num25 = 0; num25 < count3; num25++)
@@ -944,7 +914,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			int selectedIndex = this.listBox1.SelectedIndex;
 			if (selectedIndex == -1)
 			{
-				MessageBox.Show("请用户选择项!");
+				MessageBox.Show(@"请用户选择项!");
 			}
 			else
 			{

@@ -11,30 +11,34 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.QueryForms
 {
-	    partial class StatReportformsUI
+    partial class StatReportformsUI
     {
-		protected override void Dispose(bool disposing)
-		{
-			if (disposing && this.components != null)
-			{
-				this.components.Dispose();
-			}
-			base.Dispose(disposing);
-		}
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && this.components != null)
+            {
+                this.components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
-	
-	private void InitializeComponent()
-		{
-			base.SuspendLayout();
-			base.AutoScaleDimensions = new SizeF(6f, 12f);
-			base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			base.ClientSize = new Size(292, 273);
-			base.Name = "StatReportformsUI";
-			this.Text = "统计报表";
-			base.ResumeLayout(false);
-		}
 
-	
-		private IContainer components = null;
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // StatReportformsUI
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1017, 699);
+            this.Name = "StatReportformsUI";
+            this.Text = "统计报表";
+            this.ResumeLayout(false);
+
+        }
+
+
+        private IContainer components = null;
     }
 }
