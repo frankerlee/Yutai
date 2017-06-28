@@ -28,7 +28,10 @@
           <BarItem Key="PipeAnalysis_SearchAffixAnalysis" Visible="true"></BarItem>
           <BarItem Key="PipeAnalysis_BufferAnalysisStart" Visible="true"></BarItem>
           <BarItem Key="PipeAnalysis_HitAnalysis" Visible="true"></BarItem>
-
+          <BarItem Key="PipeAnalysis_HoriDistAnalysis" Visible="true"></BarItem>
+          <BarItem Key="PipeAnalysis_HoriSectionStart" Visible="true"></BarItem>
+          <BarItem Key="PipeAnalysis_VertSectionStart" Visible="true"></BarItem>
+          
         </PageGroup>
       </Page>
     </Pages>

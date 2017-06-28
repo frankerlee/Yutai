@@ -2,15 +2,15 @@
 {
     public class PipeLine : GPoints
     {
-        private string string_0;
+        private string _datasetName;
 
-        private int int_0;
+        private int _id;
 
-        private int int_1;
+        private int _code;
 
-        private string string_1;
+        private string _material;
 
-        private string string_2;
+        private string _pipeWidthHeight;
 
         public int Red;
 
@@ -22,11 +22,11 @@
         {
             get
             {
-                return this.string_0;
+                return this._datasetName;
             }
             set
             {
-                this.string_0 = value;
+                this._datasetName = value;
             }
         }
 
@@ -34,11 +34,11 @@
         {
             get
             {
-                return this.int_0;
+                return this._id;
             }
             set
             {
-                this.int_0 = value;
+                this._id = value;
             }
         }
 
@@ -46,11 +46,11 @@
         {
             get
             {
-                return this.int_1;
+                return this._code;
             }
             set
             {
-                this.int_1 = value;
+                this._code = value;
             }
         }
 
@@ -58,11 +58,11 @@
         {
             get
             {
-                return this.string_1;
+                return this._material;
             }
             set
             {
-                this.string_1 = value;
+                this._material = value;
             }
         }
 
@@ -70,11 +70,11 @@
         {
             get
             {
-                return this.string_2;
+                return this._pipeWidthHeight;
             }
             set
             {
-                this.string_2 = value;
+                this._pipeWidthHeight = value;
             }
         }
 
@@ -100,11 +100,11 @@
             return new PipeLine
             {
                 m_vtPoints = base.GetDeepCopyOfVePoints(),
-                string_0 = this.string_0,
-                int_1 = this.int_1,
-                int_0 = this.int_0,
-                string_1 = this.string_1,
-                string_2 = this.string_2,
+                _datasetName = this._datasetName,
+                _code = this._code,
+                _id = this._id,
+                _material = this._material,
+                _pipeWidthHeight = this._pipeWidthHeight,
                 Red = this.Red,
                 Green = this.Green,
                 Blue = this.Blue

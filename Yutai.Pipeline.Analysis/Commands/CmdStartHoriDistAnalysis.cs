@@ -80,7 +80,8 @@ namespace Yutai.Pipeline.Analysis.Commands
             if (button == 1 && this.hrzDistDlg.Visible )
             {
                 this.StartAnalysis(x,y);
-                this.hrzDistDlg.GetBaseLine();
+                IPoint point = _context.ActiveView.ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
+                this.hrzDistDlg.GetBaseLine(point);
             }
         }
 

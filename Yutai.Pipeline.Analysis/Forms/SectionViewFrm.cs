@@ -33,13 +33,13 @@ namespace Yutai.Pipeline.Analysis.Forms
         private IPipelineConfig m_PipeConfig;
 
 
-        private int int_0 = 739;
+        private int pixWidth = 739;
 
-		private int int_1 = 541;
+		private int pixHeight = 541;
 
-		private float float_0 = 1f;
+		private float scaleWidth = 1f;
 
-		private float float_1 = 1f;
+		private float scaleHeight = 1f;
 
 		private IContainer icontainer_0 = null;
 
@@ -59,7 +59,12 @@ namespace Yutai.Pipeline.Analysis.Forms
 			}
 		}
 
-		public SectionViewFrm(SectionViewFrm.SectionType stVal, IAppContext pApp,IPipelineConfig config)
+	    public SectionViewFrm()
+	    {
+            this.InitializeComponent();
+        }
+
+        public SectionViewFrm(SectionViewFrm.SectionType stVal, IAppContext pApp,IPipelineConfig config)
 		{
 			this.m_sectionType = stVal;
 			this._context = pApp;
@@ -85,13 +90,13 @@ namespace Yutai.Pipeline.Analysis.Forms
 			(new MagnifierMainForm()).Show();
 		}
 
-		private void method_0(object obj, EventArgs eventArg)
-		{
-		}
+		//private void method_0(object obj, EventArgs eventArg)
+		//{
+		//}
 
-		private void method_1(object obj, EventArgs eventArg)
-		{
-		}
+		//private void method_1(object obj, EventArgs eventArg)
+		//{
+		//}
 
 		private void method_2(object obj, HelpEventArgs helpEventArg)
 		{
@@ -228,10 +233,10 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		private void SectionViewFrm_Resize(object obj, EventArgs eventArg)
 		{
-			this.float_0 = (float)(this.int_0 / base.Width);
-			this.float_1 = (float)(this.int_1 / base.Height);
+			this.scaleWidth = (float)(this.pixWidth / base.Width);
+			this.scaleHeight = (float)(this.pixHeight / base.Height);
 			int height = this.menuStrip1.Height;
-			this.m_pSection.OnResize(height, 0, this.float_0, this.float_1);
+			this.m_pSection.OnResize(height, 0, this.scaleWidth, this.scaleHeight);
 		}
 
 		private void toolStripMenuItem1_Click(object obj, EventArgs eventArg)

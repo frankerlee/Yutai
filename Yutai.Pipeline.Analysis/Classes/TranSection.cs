@@ -7,11 +7,15 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using ESRI.ArcGIS.NetworkAnalysis;
+using Microsoft.Office.Interop.Excel;
 using Yutai.ArcGIS.Common;
+using Yutai.ArcGIS.Common.Helpers;
 using Yutai.Pipeline.Analysis.Helpers;
 using Yutai.Pipeline.Config.Helpers;
 using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
+using IPoint = ESRI.ArcGIS.Geometry.IPoint;
 
 namespace Yutai.Pipeline.Analysis.Classes
 {
@@ -20,6 +24,7 @@ namespace Yutai.Pipeline.Analysis.Classes
         public ArrayList m_arrPipePoints = new ArrayList();
 
         public ArrayList m_arrPipePointsDraw = new ArrayList();
+        private char[] char_0 = new char[] { 'x', 'X', 'Х' };
 
         public TranSection(object objForm, IAppContext pApp,IPipelineConfig config) : base(objForm, pApp, config)
         {
@@ -203,9 +208,64 @@ namespace Yutai.Pipeline.Analysis.Classes
             map.SelectByShape(geometry, selectionEnvironment, false);
             IEnumFeature enumFeature = (IEnumFeature)map.FeatureSelection;
             IFeature feature = enumFeature.Next();
+            
             while (feature != null)
             {
+                if (feature.FeatureType == esriFeatureType.esriFTSimpleEdge)
+                {
+                    IPolyline egLine = feature.Shape as IPolyline;
+                    IPoint newCenter=new PointClass();
+                    egLine.QueryPoint(esriSegmentExtension.esriNoExtension, 0.01, true, newCenter);
+                   
+                    IEdgeFeature pEgFeature =feature as IEdgeFeature;
+                    
+                    
+                    IFeatureClass pClass = feature.Class as IFeatureClass;
+                    INetworkClass pNetworkClass = pClass as INetworkClass;
+                    INetElements network = pNetworkClass.GeometricNetwork.Network as INetElements;
+                    IPointToEID pntEID = new PointToEIDClass();
+                    pntEID.GeometricNetwork = pNetworkClass.GeometricNetwork;
+                    pntEID.SourceMap = m_context.FocusMap;
+                    pntEID.SnapTolerance = CommonHelper.ConvertPixelsToMapUnits(m_context.ActiveView, 5.0);
+                    double percent;
+                    int edgeID;
+                    IPoint location;
+                    pntEID.GetNearestEdge(newCenter,out edgeID,out location,out percent);
+                    if (percent == 0)
+                    {
+                        feature = enumFeature.Next();
+                        continue;
+                    }
+                   
+                    int userClassID, userID, userSubID;
+                   
+                    network.QueryIDs(edgeID, esriElementType.esriETEdge,out userClassID,out userID,out userSubID);
+                    if (pClass.FeatureClassID == userClassID)
+                    {
+                        feature = pClass.GetFeature(userID);
+                    }
+                    else
+                    {
+                       IEnumDataset dses= pNetworkClass.FeatureDataset.Subsets;
+                        dses.Reset();
+                        IDataset ds = dses.Next();
+                        while (ds != null)
+                        {
+                            if (ds is IFeatureClass)
+                            {
+                                IFeatureClass pClass2 = ds as IFeatureClass;
+                                if (pClass2.FeatureClassID == userClassID)
+                                {
+                                    feature = pClass2.GetFeature(userID);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
                 string smpClassName = CommonUtils.GetSmpClassName(feature.Class.AliasName);
+                IMAware mWAware=feature.Shape as IMAware;
+                bool isMUsing = mWAware.MAware;
                 
                 IBasicLayerInfo lineConfig = PipeConfig.GetBasicLayerInfo(feature.Class.AliasName) as IBasicLayerInfo;
                 if (lineConfig==null && !smpClassName.ToUpper().Contains("JT_JT_L") && !smpClassName.ToUpper().Contains("SY_ZX_L") && !smpClassName.ToUpper().Contains("ZB_LD_R"))
@@ -230,7 +290,12 @@ namespace Yutai.Pipeline.Analysis.Classes
                         {
                             polyline = (IPolyline)shape;
                         }
-                        GPoints gPoints = this.method_6(this.m_pBaseLine, polyline);
+                        GPoints gPoints = null;
+                        if(isMUsing)
+                            gPoints = this.CalculateIntersections(this.m_pBaseLine, polyline);
+                        else
+                            gPoints = this.CalculateIntersections(this.m_pBaseLine, feature, lineConfig);
+                     
                         //string text = "管线性质";
                         string text = lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GDXZ);
                         string bstrDatasetName = "";
@@ -577,12 +642,7 @@ namespace Yutai.Pipeline.Analysis.Classes
                 num2 = num;
                 pipePoint = pipePoint2.GetDeepCopy();
             }
-            for (int j = 0; j < count; j++)
-            {
-            }
-            for (int k = 0; k < count; k++)
-            {
-            }
+           
         }
 
         private void method_5(ArrayList arrayList, ArrayList arrayList2)
@@ -596,7 +656,143 @@ namespace Yutai.Pipeline.Analysis.Classes
             }
         }
 
-        private GPoints method_6(IPolyline polyline, IPolyline polyline2)
+        private GPoints CalculateIntersections(IPolyline baseline, IFeature pFeature, IBasicLayerInfo lineConfig)
+        {
+            IPointCollection pointCollection = (IPointCollection)baseline;
+            int pointCount = pointCollection.PointCount;
+            GPoints result;
+            if (pointCount == 0)
+            {
+                result = null;
+            }
+            else
+            {
+                GPolyLine gPolyLine = new GPolyLine();
+                gPolyLine.Clear();
+                for (int i = 0; i < pointCount; i++)
+                {
+                    IPoint point = pointCollection.get_Point(i);
+                    double x = point.X;
+                    double y = point.Y;
+                    double z = point.Z - point.M;
+                    double z2 = point.Z;
+                    gPolyLine.PushBack(new GPoint
+                    {
+                        X = x,
+                        Y = y,
+                        Z = z,
+                        M = z2
+                    });
+                }
+                pointCollection = (IPointCollection)pFeature.Shape;
+                pointCount = pointCollection.PointCount;
+                if (pointCount == 0)
+                {
+                    result = null;
+                }
+                else
+                {
+                    GPolyLine gPolyLine2 = new GPolyLine();
+                    gPolyLine2.Clear();
+
+                    int qdgcIndex = pFeature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.QDGC));
+                    int qdmsIndex = pFeature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.QDMS));
+                    int zdgcIndex = pFeature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.ZDGC));
+                    int zdmsIndex = pFeature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.ZDMS));
+                    double height = 0;
+                    double qdgc = GetDoubleValue(pFeature, qdgcIndex, out height);
+                    double zdgc = GetDoubleValue(pFeature, zdgcIndex, out height);
+                    double qdms = GetDoubleValue(pFeature, qdmsIndex, out height);
+                    double zdms = GetDoubleValue(pFeature, zdmsIndex, out height);
+                    if (qdms == 0) qdms = 1;
+                    if (zdms == 0) zdms = 1;
+                    IPoint startPoint = pointCollection.Point[0];
+                    IPoint endPoint = pointCollection.Point[pointCollection.PointCount - 1];
+
+                    gPolyLine2.PushBack(new GPoint
+                    {
+                        X = startPoint.X,
+                        Y = startPoint.Y,
+                        Z = qdgc-qdms,
+                        M = qdgc
+                    });
+                    gPolyLine2.PushBack(new GPoint
+                    {
+                        X = endPoint.X,
+                        Y = endPoint.Y,
+                        Z = zdgc - zdms,
+                        M = zdgc
+                    });
+
+                    //for (int j = 0; j < pointCount; j++)
+                    //{
+                    //    IPoint point2 = pointCollection.get_Point(j);
+                    //    double x2 = point2.X;
+                    //    double y2 = point2.Y;
+                    //    double z3 = point2.Z - point2.M;
+                    //    double m;
+                    //    if (double.IsNaN(point2.M))
+                    //    {
+                    //        m = 1.0 + point2.Z;
+                    //    }
+                    //    else
+                    //    {
+                    //        m = point2.Z;
+                    //    }
+                    //    gPolyLine2.PushBack(new GPoint
+                    //    {
+                    //        X = x2,
+                    //        Y = y2,
+                    //        Z = z3,
+                    //        M = m
+                    //    });
+                    //}
+                    //new GPoints();
+                    result = gPolyLine.GetInterPtsToPolyLineWithHeightForTransect(gPolyLine2);
+                }
+            }
+            return result;
+        }
+
+        private double GetDoubleValue(IFeature feature, int fldIdx, out double height)
+        {
+            double width = 0;
+            height = 0;
+            string str = "";
+            try
+            {
+                if (fldIdx > 0)
+                {
+                    object value = feature.get_Value(fldIdx);
+                    if (!Convert.IsDBNull(value))
+                    {
+                        str = Convert.ToString(value);
+                    }
+                    if ((str == null ? false : str.Length >= 1))
+                    {
+                        string[] strArrays = str.Split(this.char_0);
+                        if (strArrays[0].ToString().Trim() != "")
+                        {
+                            width = Convert.ToDouble(strArrays[0]);
+                            if (strArrays.Length > 1)
+                                height = Convert.ToDouble(strArrays[1]);
+                        }
+                        else
+                        {
+                            width = 0;
+                            height = 0;
+                        }
+                    }
+                }
+                return width;
+            }
+            catch (Exception ex)
+            {
+                return 0.0;
+            }
+        }
+
+        private GPoints CalculateIntersections(IPolyline polyline, IPolyline polyline2)
         {
             IPointCollection pointCollection = (IPointCollection)polyline;
             int pointCount = pointCollection.PointCount;

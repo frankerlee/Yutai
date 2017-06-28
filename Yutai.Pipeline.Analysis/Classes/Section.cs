@@ -27,9 +27,9 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         public double m_dMaxY;
 
-        private IPipelineConfig ipipeConfig_0;
+        private IPipelineConfig m_PipeConfig;
 
-        private Section.Section_Action section_Action_0;
+        private Section.Section_Action _sectionAction;
 
         public IPolyline m_pBaseLine;
 
@@ -41,27 +41,34 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         public SectionDisp m_pSectionDisp;
 
+        private bool _isMUsing;
+
         public IPipelineConfig PipeConfig
         {
             get
             {
-                return this.ipipeConfig_0;
+                return this.m_PipeConfig;
             }
             set
             {
-                this.ipipeConfig_0 = value;
+                this.m_PipeConfig = value;
             }
         }
 
+        public bool IsMUsing
+        {
+            get { return _isMUsing; }
+            set { _isMUsing = value; }
+        }
         public Section.Section_Action ActionType
         {
             get
             {
-                return this.section_Action_0;
+                return this._sectionAction;
             }
             set
             {
-                this.section_Action_0 = value;
+                this._sectionAction = value;
             }
         }
 
@@ -105,7 +112,7 @@ namespace Yutai.Pipeline.Analysis.Classes
         public void MouseUp(Point ptVal)
         {
             this.m_PointUp = ptVal;
-            switch (this.section_Action_0)
+            switch (this._sectionAction)
             {
                 case Section.Section_Action.Section_Select:
                     this.m_nSelectIndex = this.m_pSectionDisp.GetSelectIndex(ptVal);
@@ -128,22 +135,22 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         public void ZoomIn()
         {
-            this.section_Action_0 = Section.Section_Action.Section_ZoomIn;
+            this._sectionAction = Section.Section_Action.Section_ZoomIn;
         }
 
         public void ZoomOut()
         {
-            this.section_Action_0 = Section.Section_Action.Section_ZoomOut;
+            this._sectionAction = Section.Section_Action.Section_ZoomOut;
         }
 
         public void Select()
         {
-            this.section_Action_0 = Section.Section_Action.Section_Select;
+            this._sectionAction = Section.Section_Action.Section_Select;
         }
 
         public void Pan()
         {
-            this.section_Action_0 = Section.Section_Action.Section_Pan;
+            this._sectionAction = Section.Section_Action.Section_Pan;
         }
 
         public void ViewEntire()

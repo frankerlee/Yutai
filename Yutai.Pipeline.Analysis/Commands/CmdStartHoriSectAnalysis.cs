@@ -58,11 +58,11 @@ namespace Yutai.Pipeline.Analysis.Commands
             _cursor =
                 new System.Windows.Forms.Cursor(
                     base.GetType()
-                        .Assembly.GetManifestResourceStream("Yutai.Pipeline.Analysis.Resources.Cursor.Hand.cur"));
+                        .Assembly.GetManifestResourceStream("Yutai.Pipeline.Analysis.Resources.cursor.Hand.cur"));
             _cursor1 =
                 new Cursor(
                     base.GetType()
-                        .Assembly.GetManifestResourceStream("Yutai.Pipeline.Analysis.Resources.Cursor.MoveHand.cur"));
+                        .Assembly.GetManifestResourceStream("Yutai.Pipeline.Analysis.Resources.cursor.MoveHand.cur"));
             base.m_name = "PipeAnalysis_HoriSectionStart";
             base._key = "PipeAnalysis_HoriSectionStart";
             base.m_toolTip = "横断面分析";

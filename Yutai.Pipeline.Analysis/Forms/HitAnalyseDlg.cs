@@ -39,6 +39,7 @@ namespace Yutai.Pipeline.Analysis.Forms
         public IGeometry m_pFlashGeo;
 
         private IBasicLayerInfo _baseLayerInfo;
+       
 
 
         public HitAnalyseDlg.HitAnalyseType HitType
@@ -50,6 +51,7 @@ namespace Yutai.Pipeline.Analysis.Forms
         public HitAnalyseDlg(IAppContext pApp, IPipelineConfig config)
         {
             this.InitializeComponent();
+            cmbDepthType.SelectedIndex = 0;
             this.m_commonDistAls = new CommonDistAnalyse()
             {
                 m_nAnalyseType = DistAnalyseType.emHitDist
@@ -305,6 +307,7 @@ namespace Yutai.Pipeline.Analysis.Forms
                 this.m_app.FocusMap.ClearSelection();
                 this.m_app.ActiveView.Refresh();
                 this.tbPipeWidthOrHeight.Text = "";
+                return;
             }
 
             List<IBasicLayerInfo> basicInfos = pipeLayer.GetLayers(enumPipelineDataType.Junction);

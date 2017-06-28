@@ -5,8 +5,10 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using ESRI.ArcGIS.NetworkAnalysis;
 using ESRI.ArcGIS.SystemUI;
 using stdole;
+using Yutai.ArcGIS.Common.Helpers;
 using Yutai.ArcGIS.Common.Symbol;
 using Yutai.Pipeline.Analysis.Classes;
 using Yutai.Pipeline.Analysis.Forms;
@@ -20,7 +22,7 @@ namespace Yutai.Pipeline.Analysis.Commands
 {
     class CmdStartVertSectAnalysis : YutaiTool
     {
-        
+
         public SelectControl m_SectionControl;
 
         private PipelineAnalysisPlugin _plugin;
@@ -34,7 +36,7 @@ namespace Yutai.Pipeline.Analysis.Commands
 
         public override void OnClick()
         {
-            
+
             _context.SetCurrentTool(this);
         }
 
@@ -65,7 +67,7 @@ namespace Yutai.Pipeline.Analysis.Commands
             CommonUtils.AppContext = _context;
         }
 
-        private void method_0(int x, int y)
+        private void SelectByClick(int x, int y)
         {
             IMap map = _context.FocusMap;
             IEnvelope envelope = new Envelope() as IEnvelope;
@@ -73,73 +75,123 @@ namespace Yutai.Pipeline.Analysis.Commands
             IActiveView activeView = (IActiveView)map;
             envelope.PutCoords(point.X, point.Y, point.X, point.Y);
             double num3 = activeView.Extent.Width / 200.0;
-            envelope.XMin=(envelope.XMin - num3);
-            envelope.YMin=(envelope.YMin - num3);
-            envelope.YMax=(envelope.YMax + num3);
-            envelope.XMax=(envelope.XMax + num3);
+            envelope.XMin = (envelope.XMin - num3);
+            envelope.YMin = (envelope.YMin - num3);
+            envelope.YMax = (envelope.YMax + num3);
+            envelope.XMax = (envelope.XMax + num3);
             ISelectionEnvironment selectionEnvironment = new SelectionEnvironment();
             map.SelectByShape(envelope, selectionEnvironment, true);
         }
 
         public override void OnKeyDown(int keyCode, int Shift)
         {
-            if ( keyCode == 27)
+            if (keyCode == 27)
             {
-              
+
             }
         }
 
         public override void OnMouseDown(int button, int Shift, int x, int y)
         {
-            if (button == 1)
+            if (button != 1) return;
+
+            this.SelectByClick(x, y);
+            IMap map = _context.FocusMap;
+            IEnumFeature enumFeature = (IEnumFeature)map.FeatureSelection;
+            IFeature feature = enumFeature.Next();
+            if (feature == null)
             {
-                this.method_0(x, y);
-                IMap map = _context.FocusMap;
-                IEnumFeature enumFeature = (IEnumFeature)map.FeatureSelection;
-                IFeature feature = enumFeature.Next();
-                if (feature == null)
+                if (Shift == 1)
                 {
-                    if (Shift == 1)
-                    {
-                        this.m_SectionControl.RebuildSelection();
-                    }
-                    else
-                    {
-                        this.m_SectionControl.LayerName = "";
-                        this.m_SectionControl.Clear();
-                        this._context.ActiveView.Refresh();
-                    }
+                    this.m_SectionControl.RebuildSelection();
                 }
                 else
                 {
-                    string aliasName = feature.Class.AliasName;
-                    int oID;
-                    if (feature.HasOID)
-                    {
-                        oID = feature.OID;
-                    }
-                    else
-                    {
-                        oID = feature.OID;
-                    }
-                    if (Shift != 1)
-                    {
-                        this.m_SectionControl.Clear();
-                        this.m_SectionControl.LayerName = aliasName;
-                        this.m_SectionControl.Add(oID);
-                    }
-                    else if (this.m_SectionControl.Count == 0)
-                    {
-                        this.m_SectionControl.LayerName = aliasName;
-                        this.m_SectionControl.Add(oID);
-                    }
-                    else if (this.m_SectionControl.IsInSameLayer(aliasName))
-                    {
-                        this.m_SectionControl.LayerName = aliasName;
-                        this.m_SectionControl.Add(oID);
-                    }
+                    this.m_SectionControl.LayerName = "";
+                    this.m_SectionControl.Clear();
+                    this._context.ActiveView.Refresh();
                 }
             }
+            else
+            {
+                string aliasName = feature.Class.AliasName;
+                int oID;
+                if (feature.HasOID)
+                {
+                    oID = feature.OID;
+                }
+                else
+                {
+                    if (feature.FeatureType == esriFeatureType.esriFTSimpleEdge ||
+                        feature.FeatureType == esriFeatureType.esriFTComplexEdge)
+                    {
+                        IPolyline egLine = feature.Shape as IPolyline;
+                        IPoint newCenter = new PointClass();
+                        egLine.QueryPoint(esriSegmentExtension.esriNoExtension, 0.01, true, newCenter);
+                        IEdgeFeature pEgFeature = feature as IEdgeFeature;
+                        IFeatureClass pClass = feature.Class as IFeatureClass;
+                        INetworkClass pNetworkClass = pClass as INetworkClass;
+                        INetElements network = pNetworkClass.GeometricNetwork.Network as INetElements;
+                        IPointToEID pntEID = new PointToEIDClass();
+                        pntEID.GeometricNetwork = pNetworkClass.GeometricNetwork;
+                        pntEID.SourceMap = _context.FocusMap;
+                        pntEID.SnapTolerance = CommonHelper.ConvertPixelsToMapUnits(_context.ActiveView, 5.0);
+                        double percent;
+                        int edgeID;
+                        IPoint location;
+                        pntEID.GetNearestEdge(newCenter, out edgeID, out location, out percent);
+                        if (percent == 0)
+                        {
+                            return;
+                        }
+
+                        int userClassID, userID, userSubID;
+
+                        network.QueryIDs(edgeID, esriElementType.esriETEdge, out userClassID, out userID, out userSubID);
+                        if (pClass.FeatureClassID == userClassID)
+                        {
+                            feature = pClass.GetFeature(userID);
+                        }
+                        else
+                        {
+                            IEnumDataset dses = pNetworkClass.FeatureDataset.Subsets;
+                            dses.Reset();
+                            IDataset ds = dses.Next();
+                            while (ds != null)
+                            {
+                                if (ds is IFeatureClass)
+                                {
+                                    IFeatureClass pClass2 = ds as IFeatureClass;
+                                    if (pClass2.FeatureClassID == userClassID)
+                                    {
+                                        feature = pClass2.GetFeature(userID);
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    oID = feature.OID;
+                }
+                if (Shift != 1)
+                {
+                    this.m_SectionControl.Clear();
+                    this.m_SectionControl.LayerName = aliasName;
+                    this.m_SectionControl.Add(oID);
+                }
+                else if (this.m_SectionControl.Count == 0)
+                {
+                    this.m_SectionControl.LayerName = aliasName;
+                    this.m_SectionControl.Add(oID);
+                }
+                else if (this.m_SectionControl.IsInSameLayer(aliasName))
+                {
+                    this.m_SectionControl.LayerName = aliasName;
+                    this.m_SectionControl.Add(oID);
+                }
+            }
+
         }
 
         public override void OnMouseUp(int button, int shift, int x, int y)
@@ -165,7 +217,7 @@ namespace Yutai.Pipeline.Analysis.Commands
                 {
                     if (flag)
                     {
-                        SectionViewFrm sectionViewFrm = new SectionViewFrm(SectionViewFrm.SectionType.SectionTypeVersect, _context,_plugin.PipeConfig);
+                        SectionViewFrm sectionViewFrm = new SectionViewFrm(SectionViewFrm.SectionType.SectionTypeVersect, _context, _plugin.PipeConfig);
                         sectionViewFrm.GetSelectedData();
                         sectionViewFrm.ShowDialog();
                     }
@@ -240,13 +292,28 @@ namespace Yutai.Pipeline.Analysis.Commands
             {
                 do
                 {
-                    IEdgeFeature edgeFeature = (IEdgeFeature)feature;
-                    pSortInfos.Add(new SortInfo
+                    if (feature.FeatureType == esriFeatureType.esriFTSimpleEdge)
                     {
-                        SmID = Convert.ToInt32(feature.get_Value(0).ToString()),
-                        SmFNode = edgeFeature.FromJunctionEID,
-                        SmTNode = edgeFeature.ToJunctionEID
-                    });
+                        IPolyline egLine = feature.Shape as IPolyline;
+                        IPoint newCenter = new PointClass();
+                        egLine.QueryPoint(esriSegmentExtension.esriNoExtension, 0.01, true, newCenter);
+                        IEdgeFeature pEgFeature = feature as IEdgeFeature;
+                        IFeatureClass pClass = feature.Class as IFeatureClass;
+                        INetworkClass pNetworkClass = pClass as INetworkClass;
+                        INetElements network = pNetworkClass.GeometricNetwork.Network as INetElements;
+                        IEnumFeature enumFeatures = pNetworkClass.GeometricNetwork.SearchForNetworkFeature(newCenter,
+                            esriFeatureType.esriFTSimpleEdge);
+
+                        IEdgeFeature edgeFeature = (IEdgeFeature)enumFeatures.Next();
+                        ISimpleEdgeFeature simpedgeFeature = (ISimpleEdgeFeature)edgeFeature;
+                        pSortInfos.Add(new SortInfo
+                        {
+                            SmID = simpedgeFeature.EID,
+                            SmFNode = edgeFeature.FromJunctionEID,
+                            SmTNode = edgeFeature.ToJunctionEID
+                        });
+                    }
+                
                     feature = enumFeature.Next();
                 }
                 while (feature != null);
@@ -352,8 +419,8 @@ namespace Yutai.Pipeline.Analysis.Commands
             result = true;
             return result;
         }
-    
 
 
-}
+
+    }
 }

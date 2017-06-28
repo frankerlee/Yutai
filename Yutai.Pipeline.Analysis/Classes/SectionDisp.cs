@@ -120,7 +120,7 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         private float float_29 = 1f;
 
-        private string[] string_3 = new string[6];
+        private string[] strLabels = new string[6];
 
         private double double_4;
 
@@ -293,12 +293,12 @@ namespace Yutai.Pipeline.Analysis.Classes
         {
             this.form_0 = (Form)objFrom;
             this.graphics_0 = this.form_0.CreateGraphics();
-            this.string_3[0] = "埋深(m)";
-            this.string_3[1] = "规格(mm)";
-            this.string_3[2] = "间距(m)";
-            this.string_3[3] = "红线间距";
-            this.string_3[4] = "管线高程";
-            this.string_3[5] = "地面高程";
+            this.strLabels[0] = "埋深(m)";
+            this.strLabels[1] = "规格(mm)";
+            this.strLabels[2] = "间距(m)";
+            this.strLabels[3] = "红线间距";
+            this.strLabels[4] = "管线高程";
+            this.strLabels[5] = "地面高程";
             this.float_24 = 100f;
             this.float_25 = 100f;
             this.float_28 = 1f;
@@ -595,7 +595,7 @@ namespace Yutai.Pipeline.Analysis.Classes
                 float height = this.float_5;
                 RectangleF layoutRectangle = new RectangleF(x, y, width, height);
                 this.method_10(ref layoutRectangle, (double)this.float_28);
-                string s = this.string_3[this.int_2 - this.int_2 + i];
+                string s = this.strLabels[this.int_2 - this.int_2 + i];
                 this.graphics_0.DrawString(s, font, Brushes.Black, layoutRectangle, stringFormat);
             }
         }

@@ -6,7 +6,9 @@ using System.Xml;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using ESRI.ArcGIS.NetworkAnalysis;
 using Yutai.ArcGIS.Common;
+using Yutai.ArcGIS.Common.Helpers;
 using Yutai.Pipeline.Analysis.Helpers;
 using Yutai.Pipeline.Config.Helpers;
 using Yutai.Pipeline.Config.Interfaces;
@@ -26,7 +28,9 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         private ArrayList arrayList_4 = new ArrayList();
 
-        public VerSection(object objForm, IAppContext pApp,IPipelineConfig config) : base(objForm, pApp,config)
+        private char[] char_0 = new char[] {'x', 'X', 'Х'};
+
+        public VerSection(object objForm, IAppContext pApp, IPipelineConfig config) : base(objForm, pApp, config)
         {
         }
 
@@ -51,24 +55,44 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         public void GetSortInfos(ArrayList pSortInfos)
         {
-            this.arrayList_0.Clear();
+            pSortInfos.Clear();
             IMap map = m_context.FocusMap;
-            IEnumFeature enumFeature = (IEnumFeature)map.FeatureSelection;
+            IEnumFeature enumFeature = (IEnumFeature) map.FeatureSelection;
             IFeature feature = enumFeature.Next();
             if (feature != null)
             {
                 do
                 {
-                    IEdgeFeature edgeFeature = (IEdgeFeature)feature;
-                    pSortInfos.Add(new SortInfo
+                    if (feature.FeatureType == esriFeatureType.esriFTSimpleEdge)
                     {
-                        SmID = Convert.ToInt32(feature.get_Value(0).ToString()),
-                        SmFNode = edgeFeature.FromJunctionEID,
-                        SmTNode = edgeFeature.ToJunctionEID
-                    });
+                        IPolyline egLine = feature.Shape as IPolyline;
+                        IPoint newCenter = new PointClass();
+                        egLine.QueryPoint(esriSegmentExtension.esriNoExtension, 0.01, true, newCenter);
+                        IEdgeFeature pEgFeature = feature as IEdgeFeature;
+                        IFeatureClass pClass = feature.Class as IFeatureClass;
+                        INetworkClass pNetworkClass = pClass as INetworkClass;
+                        INetElements network = pNetworkClass.GeometricNetwork.Network as INetElements;
+                        IEnumFeature enumFeatures = pNetworkClass.GeometricNetwork.SearchForNetworkFeature(newCenter,
+                            esriFeatureType.esriFTSimpleEdge);
+
+                        IEdgeFeature edgeFeature = (IEdgeFeature) enumFeatures.Next();
+                        ISimpleEdgeFeature simpedgeFeature = (ISimpleEdgeFeature) edgeFeature;
+                        pSortInfos.Add(new SortInfo
+                        {
+                            SmID = simpedgeFeature.EID,
+                            SmFNode = edgeFeature.FromJunctionEID,
+                            SmTNode = edgeFeature.ToJunctionEID
+                        });
+                    }
+                    //IEdgeFeature edgeFeature = (IEdgeFeature) feature;
+                    //pSortInfos.Add(new SortInfo
+                    //{
+                    //    SmID = Convert.ToInt32(feature.get_Value(0).ToString()),
+                    //    SmFNode = edgeFeature.FromJunctionEID,
+                    //    SmTNode = edgeFeature.ToJunctionEID
+                    //});
                     feature = enumFeature.Next();
-                }
-                while (feature != null);
+                } while (feature != null);
             }
         }
 
@@ -77,8 +101,8 @@ namespace Yutai.Pipeline.Analysis.Classes
             int count = arrayList.Count;
             for (int i = 0; i < count - 1; i++)
             {
-                SortInfo sortInfo = (SortInfo)arrayList[i];
-                SortInfo sortInfo2 = (SortInfo)arrayList[i + 1];
+                SortInfo sortInfo = (SortInfo) arrayList[i];
+                SortInfo sortInfo2 = (SortInfo) arrayList[i + 1];
                 int pointInfoRleation = sortInfo.GetPointInfoRleation(sortInfo2);
                 if (pointInfoRleation == 21)
                 {
@@ -103,29 +127,96 @@ namespace Yutai.Pipeline.Analysis.Classes
             }
         }
 
+        //!在这儿进行修改，将对高程埋深数据存储在不同位置进行统一处理
         private void method_2()
         {
             IMap map = m_context.FocusMap;
-            IEnumFeature enumFeature = (IEnumFeature)map.FeatureSelection;
+            IEnumFeature enumFeature = (IEnumFeature) map.FeatureSelection;
             IFeature feature = enumFeature.Next();
-            if (feature != null)
+            bool isMUsing = false;
+            int qdgcIndex = -1;
+            int qdmsIndex = -1;
+            int zdgcIndex = -1;
+            int zdmsIndex = -1;
+
+            if (feature == null) return;
+            if (feature.FeatureType != esriFeatureType.esriFTSimpleEdge) return;
+
+            this.arrayList_1.Clear();
+            this.arrayList_2.Clear();
+            int num = 0;
+            while (feature != null)
             {
-                IFeatureLayer pLayer = MapHelper.GetLayerByFeature(map as IBasicMap, feature);
-                IBasicLayerInfo lineConfig = PipeConfig.GetBasicLayerInfo(feature.Class.AliasName) as IBasicLayerInfo;
-                int num = 0;
-                this.arrayList_1.Clear();
-                this.arrayList_2.Clear();
-                do
+                IPolyline egLine = feature.Shape as IPolyline;
+                IPoint newCenter = new PointClass();
+                egLine.QueryPoint(esriSegmentExtension.esriNoExtension, 0.01, true, newCenter);
+                IEdgeFeature pEgFeature = feature as IEdgeFeature;
+                IFeatureClass pClass = feature.Class as IFeatureClass;
+                INetworkClass pNetworkClass = pClass as INetworkClass;
+                INetElements network = pNetworkClass.GeometricNetwork.Network as INetElements;
+                IEnumFeature enumFeatures = pNetworkClass.GeometricNetwork.SearchForNetworkFeature(newCenter,
+                    esriFeatureType.esriFTSimpleEdge);
+
+                ISimpleEdgeFeature simpleEdgeFeature = enumFeatures.Next() as ISimpleEdgeFeature;
+
+                IFeature realFeature = null;
+
+                int userClassID, userID, userSubID;
+
+                network.QueryIDs(simpleEdgeFeature.EID, esriElementType.esriETEdge, out userClassID, out userID,
+                    out userSubID);
+                if (pClass.FeatureClassID == userClassID)
                 {
-                    PipeLine pipeLine = new PipeLine();
-                    IPolyline polyline = (IPolyline)feature.Shape;
-                    IPointCollection pointCollection = (IPointCollection)polyline;
-                    int pointCount = pointCollection.PointCount;
-                    pipeLine.Clear();
+                    realFeature = pClass.GetFeature(userID);
+                }
+                else
+                {
+                    IEnumDataset dses = pNetworkClass.FeatureDataset.Subsets;
+                    dses.Reset();
+                    IDataset ds = dses.Next();
+                    while (ds != null)
+                    {
+                        if (ds is IFeatureClass)
+                        {
+                            IFeatureClass pClass2 = ds as IFeatureClass;
+                            if (pClass2.FeatureClassID == userClassID)
+                            {
+                                realFeature = pClass2.GetFeature(userID);
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                IMAware mAware = realFeature.Shape as IMAware;
+                isMUsing = mAware.MAware;
+                IFeatureLayer pLayer = MapHelper.GetLayerByFeature(map as IBasicMap, realFeature);
+                IBasicLayerInfo lineConfig =
+                    PipeConfig.GetBasicLayerInfo(realFeature.Class.AliasName) as IBasicLayerInfo;
+              
+                
+                if (!isMUsing)
+                {
+                    qdgcIndex =
+                        realFeature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.QDGC));
+                    qdmsIndex =
+                        realFeature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.QDMS));
+                    zdgcIndex =
+                        realFeature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.ZDGC));
+                    zdmsIndex =
+                        realFeature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.ZDMS));
+                }
+                PipeLine pipeLine = new PipeLine();
+                IPolyline polyline = (IPolyline) feature.Shape;
+                IPointCollection pointCollection = (IPointCollection) polyline;
+                int pointCount = pointCollection.PointCount;
+                pipeLine.Clear();
+                if (isMUsing)
+                {
                     for (int i = 0; i < pointCount; i++)
                     {
                         IPoint point = new ESRI.ArcGIS.Geometry.Point();
-                        if (((SortInfo)this.arrayList_0[num]).bRightDirection)
+                        if (((SortInfo) this.arrayList_0[num]).bRightDirection)
                         {
                             point = pointCollection.get_Point(i);
                         }
@@ -133,6 +224,7 @@ namespace Yutai.Pipeline.Analysis.Classes
                         {
                             point = pointCollection.get_Point(pointCount - i - 1);
                         }
+
                         if (double.IsNaN(point.M))
                         {
                             pipeLine.PushBack(point.X, point.Y, point.Z, point.Z + 1.0);
@@ -142,146 +234,181 @@ namespace Yutai.Pipeline.Analysis.Classes
                             pipeLine.PushBack(point.X, point.Y, point.Z - point.M, point.Z);
                         }
                     }
-                    //string text = "管线性质";
-                    string text =lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GDXZ) ==""? "管线性质": lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GDXZ);
-                    string text2 = "";
-                    int num2 = feature.Fields.FindField(text);
-                    if (num2 != -1)
+                }
+                else
+                {
+                    double height = 0;
+                    double qdgc = GetDoubleValue(realFeature, qdgcIndex, out height);
+                    double zdgc = GetDoubleValue(realFeature, zdgcIndex, out height);
+                    double qdms = GetDoubleValue(realFeature, qdmsIndex, out height);
+                    double zdms = GetDoubleValue(realFeature, zdmsIndex, out height);
+                    if (qdms == 0) qdms = 1;
+                    if (zdms == 0) zdms = 1;
+                    IPoint startPoint = pointCollection.Point[0];
+                    IPoint endPoint = pointCollection.Point[pointCollection.PointCount - 1];
+                    pipeLine.PushBack(startPoint.X, startPoint.Y, qdgc - qdms, qdgc);
+                    pipeLine.PushBack(endPoint.X, endPoint.Y, zdgc - zdms, zdgc);
+                }
+                //string text = "管线性质";
+                string text = lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GDXZ) == ""
+                    ? "管线性质"
+                    : lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GDXZ);
+               
+                int num2 = realFeature.Fields.FindField(text);
+                string text2 = "";
+                if (num2 != -1)
+                {
+                    object obj = realFeature.get_Value(num2);
+                    if (obj == null || Convert.IsDBNull(obj))
                     {
-                        object obj = feature.get_Value(num2);
-                        if (obj == null || Convert.IsDBNull(obj))
-                        {
-                            text2 = "";
-                        }
-                        else
-                        {
-                            text2 = obj.ToString();
-                        }
-                    }
-                    pipeLine.ID = Convert.ToInt32(feature.get_Value(0).ToString());
-                    pipeLine.DatasetName = text2;
-                    int num3 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GXCZ));
-                    if (num3 == -1)
-                    {
-                        pipeLine.Material = "";
-                    }
-                    else
-                    {
-                        pipeLine.Material = feature.get_Value(num3).ToString();
-                    }
-                    //管径
-                    num3 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GJ));
-                    string text3;
-                    if (num3 != -1)
-                    {
-                        text3 = feature.get_Value(num3).ToString();
+                        text2 = "";
                     }
                     else
                     {
-                        text3 = "";
+                        text2 = obj.ToString();
                     }
-                    //断面尺寸
-                    num3 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.DMCC));
-                    string text4;
-                    if (num3 != -1)
-                    {
-                        text4 = feature.get_Value(num3).ToString();
-                    }
-                    else
-                    {
-                        text4 = "";
-                    }
-                    Color featureColor = CommonUtils.GetFeatureColor(map, feature.Class.AliasName, feature);
-                    pipeLine.Red = (int)featureColor.R;
-                    pipeLine.Green = (int)featureColor.G;
-                    pipeLine.Blue = (int)featureColor.B;
-                    if (text3 != "")
-                    {
-                        pipeLine.PipeWidthHeight = text3;
-                    }
-                    if (text4 != "")
-                    {
-                        pipeLine.PipeWidthHeight = text4;
-                    }
-                    if (pipeLine.PipeWidthHeight == null)
-                    {
-                        pipeLine.PipeWidthHeight = "";
-                    }
-                    this.arrayList_1.Add(pipeLine);
-                    IFeature feature2 = (IFeature)((IEdgeFeature)feature).FromJunctionFeature;
-                    IFeature feature3 = (IFeature)((IEdgeFeature)feature).ToJunctionFeature;
-                    IFeature feature4;
-                    if (num == 0)
-                    {
-                        PipePoint pipePoint = new PipePoint();
-                        if (((SortInfo)this.arrayList_0[num]).bRightDirection)
-                        {
-                            feature4 = feature2;
-                        }
-                        else
-                        {
-                            feature4 = feature3;
-                        }
-                        pipePoint.nID = Convert.ToInt32(feature4.get_Value(0));
-                        pipePoint.nAtPipeSegID = pipeLine.ID;
-                        pipePoint.bstrDatasetName = text2;
-
-                        IBasicLayerInfo pointConfig =
-                            PipeConfig.GetBasicLayerInfo(feature.Class.AliasName) as IBasicLayerInfo;
-                        num3 = feature4.Fields.FindField(pointConfig.GetFieldName(PipeConfigWordHelper.PointWords.TZW));
-                        if (num3 == -1)
-                        {
-                            pipePoint.bstrPointKind = "";
-                        }
-                        else
-                        {
-                            pipePoint.bstrPointKind = feature4.get_Value(num3).ToString();
-                        }
-                        Color featureColor2 = CommonUtils.GetFeatureColor(map, feature4.Class.AliasName, feature4);
-                        pipePoint.Red = (int)featureColor2.R;
-                        pipePoint.Green = (int)featureColor2.G;
-                        pipePoint.Blue = (int)featureColor2.B;
-                        this.arrayList_2.Add(pipePoint);
-                    }
-                    PipePoint pipePoint2 = new PipePoint();
-                    if (((SortInfo)this.arrayList_0[num]).bRightDirection)
-                    {
-                        feature4 = feature3;
-                    }
-                    else
+                }
+                pipeLine.ID = Convert.ToInt32(realFeature.get_Value(0).ToString());
+                pipeLine.DatasetName = text2;
+                int num3 = realFeature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GXCZ));
+                pipeLine.Material=num3==-1?"": realFeature.get_Value(num3).ToString();
+             
+                //管径
+                num3 = realFeature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GJ));
+                string text3= num3==-1?"": realFeature.get_Value(num3).ToString();
+               
+                //断面尺寸
+                num3 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.DMCC));
+                string text4= num3 == -1?"" : realFeature.get_Value(num3).ToString();
+              
+                Color featureColor = CommonUtils.GetFeatureColor(map, realFeature.Class.AliasName, realFeature);
+                pipeLine.Red = (int) featureColor.R;
+                pipeLine.Green = (int) featureColor.G;
+                pipeLine.Blue = (int) featureColor.B;
+                if (text3 != "")
+                {
+                    pipeLine.PipeWidthHeight = text3;
+                }
+                if (text4 != "")
+                {
+                    pipeLine.PipeWidthHeight = text4;
+                }
+                if (pipeLine.PipeWidthHeight == null)
+                {
+                    pipeLine.PipeWidthHeight = "";
+                }
+                this.arrayList_1.Add(pipeLine);
+                IFeature feature2 = (IFeature) ((IEdgeFeature)realFeature).FromJunctionFeature;
+                IFeature feature3 = (IFeature) ((IEdgeFeature)realFeature).ToJunctionFeature;
+                IFeature feature4;
+                if (num == 0)
+                {
+                    PipePoint pipePoint = new PipePoint();
+                    if (((SortInfo) this.arrayList_0[num]).bRightDirection)
                     {
                         feature4 = feature2;
                     }
-                    pipePoint2.nID = Convert.ToInt32(feature4.get_Value(0));
-                    pipePoint2.nAtPipeSegID = pipeLine.ID;
-                    pipePoint2.bstrDatasetName = text2;
-                    IBasicLayerInfo pointConfig3 =
-                             PipeConfig.GetBasicLayerInfo(feature4.Class.AliasName) as IBasicLayerInfo;
-                    num3 = feature4.Fields.FindField(pointConfig3.GetFieldName(PipeConfigWordHelper.PointWords.TZW));
+                    else
+                    {
+                        feature4 = feature3;
+                    }
+                    pipePoint.nID = Convert.ToInt32(feature4.get_Value(0));
+                    pipePoint.nAtPipeSegID = pipeLine.ID;
+                    pipePoint.bstrDatasetName = text2;
+
+                    IBasicLayerInfo pointConfig =
+                        PipeConfig.GetBasicLayerInfo(feature4.Class.AliasName) as IBasicLayerInfo;
+                    num3 = feature4.Fields.FindField(pointConfig.GetFieldName(PipeConfigWordHelper.PointWords.FSW));
                     if (num3 == -1)
                     {
-                        pipePoint2.bstrPointKind = "";
+                        pipePoint.bstrPointKind = "";
                     }
                     else
                     {
-                        pipePoint2.bstrPointKind = feature4.get_Value(num3).ToString();
+                        pipePoint.bstrPointKind = feature4.get_Value(num3).ToString();
                     }
-                    Color featureColor3 = CommonUtils.GetFeatureColor(map, feature4.Class.AliasName, feature4);
-                    pipePoint2.Red = (int)featureColor3.R;
-                    pipePoint2.Green = (int)featureColor3.G;
-                    pipePoint2.Blue = (int)featureColor3.B;
-                    this.arrayList_2.Add(pipePoint2);
-                    feature = enumFeature.Next();
-                    num++;
+                    Color featureColor2 = CommonUtils.GetFeatureColor(map, feature4.Class.AliasName, feature4);
+                    pipePoint.Red = (int) featureColor2.R;
+                    pipePoint.Green = (int) featureColor2.G;
+                    pipePoint.Blue = (int) featureColor2.B;
+                    this.arrayList_2.Add(pipePoint);
                 }
-                while (feature != null);
-                this.method_3(this.arrayList_2, this.arrayList_1);
-                this.method_4(this.arrayList_3, this.arrayList_1);
-                this.method_5(this.arrayList_4, this.arrayList_2);
-                this.method_6();
-                this.method_7(this.arrayList_3);
+                PipePoint pipePoint2 = new PipePoint();
+                if (((SortInfo) this.arrayList_0[num]).bRightDirection)
+                {
+                    feature4 = feature3;
+                }
+                else
+                {
+                    feature4 = feature2;
+                }
+                pipePoint2.nID = Convert.ToInt32(feature4.get_Value(0));
+                pipePoint2.nAtPipeSegID = pipeLine.ID;
+                pipePoint2.bstrDatasetName = text2;
+                IBasicLayerInfo pointConfig3 =
+                    PipeConfig.GetBasicLayerInfo(feature4.Class.AliasName) as IBasicLayerInfo;
+                num3 = feature4.Fields.FindField(pointConfig3.GetFieldName(PipeConfigWordHelper.PointWords.FSW));
+                if (num3 == -1)
+                {
+                    pipePoint2.bstrPointKind = "";
+                }
+                else
+                {
+                    pipePoint2.bstrPointKind = feature4.get_Value(num3).ToString();
+                }
+                Color featureColor3 = CommonUtils.GetFeatureColor(map, feature4.Class.AliasName, feature4);
+                pipePoint2.Red = (int) featureColor3.R;
+                pipePoint2.Green = (int) featureColor3.G;
+                pipePoint2.Blue = (int) featureColor3.B;
+                this.arrayList_2.Add(pipePoint2);
+                feature = enumFeature.Next();
+                num++;
+            }
+            this.method_3(this.arrayList_2, this.arrayList_1);
+            this.method_4(this.arrayList_3, this.arrayList_1);
+            this.method_5(this.arrayList_4, this.arrayList_2);
+            this.method_6();
+            this.method_7(this.arrayList_3);
+        }
+
+        private double GetDoubleValue(IFeature feature, int fldIdx, out double height)
+        {
+            double width = 0;
+            height = 0;
+            string str = "";
+            try
+            {
+                if (fldIdx > 0)
+                {
+                    object value = feature.get_Value(fldIdx);
+                    if (!Convert.IsDBNull(value))
+                    {
+                        str = Convert.ToString(value);
+                    }
+                    if ((str == null ? false : str.Length >= 1))
+                    {
+                        string[] strArrays = str.Split(this.char_0);
+                        if (strArrays[0].ToString().Trim() != "")
+                        {
+                            width = Convert.ToDouble(strArrays[0]);
+                            if (strArrays.Length > 1)
+                                height = Convert.ToDouble(strArrays[1]);
+                        }
+                        else
+                        {
+                            width = 0;
+                            height = 0;
+                        }
+                    }
+                }
+                return width;
+            }
+            catch (Exception ex)
+            {
+                return 0.0;
             }
         }
+
 
         private void method_3(ArrayList arrayList, ArrayList arrayList2)
         {
@@ -289,11 +416,11 @@ namespace Yutai.Pipeline.Analysis.Classes
             int num = 0;
             for (int i = 0; i < count; i++)
             {
-                PipeLine pipeLine = (PipeLine)arrayList2[i];
+                PipeLine pipeLine = (PipeLine) arrayList2[i];
                 int num2 = pipeLine.Size();
                 if (i == 0)
                 {
-                    PipePoint pipePoint = (PipePoint)arrayList[num];
+                    PipePoint pipePoint = (PipePoint) arrayList[num];
                     pipePoint.x = pipeLine[i].X;
                     pipePoint.y = pipeLine[i].Y;
                     pipePoint.z = pipeLine[i].Z;
@@ -301,7 +428,7 @@ namespace Yutai.Pipeline.Analysis.Classes
                     pipePoint.strPipeWidthHeight = pipeLine.PipeWidthHeight;
                     num++;
                 }
-                PipePoint pipePoint2 = (PipePoint)arrayList[num];
+                PipePoint pipePoint2 = (PipePoint) arrayList[num];
                 pipePoint2.x = pipeLine[num2 - 1].X;
                 pipePoint2.y = pipeLine[num2 - 1].Y;
                 pipePoint2.z = pipeLine[num2 - 1].Z;
@@ -317,7 +444,7 @@ namespace Yutai.Pipeline.Analysis.Classes
             arrayList.Clear();
             for (int i = 0; i < count; i++)
             {
-                PipeLine deepCopy = ((PipeLine)arrayList2[i]).GetDeepCopy();
+                PipeLine deepCopy = ((PipeLine) arrayList2[i]).GetDeepCopy();
                 arrayList.Add(deepCopy);
             }
         }
@@ -328,7 +455,7 @@ namespace Yutai.Pipeline.Analysis.Classes
             arrayList.Clear();
             for (int i = 0; i < count; i++)
             {
-                PipePoint deepCopy = ((PipePoint)arrayList2[i]).GetDeepCopy();
+                PipePoint deepCopy = ((PipePoint) arrayList2[i]).GetDeepCopy();
                 arrayList.Add(deepCopy);
             }
         }
@@ -340,7 +467,7 @@ namespace Yutai.Pipeline.Analysis.Classes
             double num = 0.0;
             for (int i = 0; i < count; i++)
             {
-                PipeLine pipeLine = (PipeLine)this.arrayList_3[i];
+                PipeLine pipeLine = (PipeLine) this.arrayList_3[i];
                 int num2 = pipeLine.Size();
                 for (int j = 0; j < num2; j++)
                 {
@@ -377,7 +504,7 @@ namespace Yutai.Pipeline.Analysis.Classes
             }
             for (int k = 0; k < count; k++)
             {
-                PipeLine pipeLine2 = (PipeLine)this.arrayList_1[k];
+                PipeLine pipeLine2 = (PipeLine) this.arrayList_1[k];
                 int num4 = pipeLine2.Size();
                 for (int l = 0; l < num4; l++)
                 {
@@ -385,7 +512,7 @@ namespace Yutai.Pipeline.Analysis.Classes
             }
             for (int m = 0; m < count; m++)
             {
-                PipeLine pipeLine3 = (PipeLine)this.arrayList_3[m];
+                PipeLine pipeLine3 = (PipeLine) this.arrayList_3[m];
                 int num5 = pipeLine3.Size();
                 for (int n = 0; n < num5; n++)
                 {
@@ -401,7 +528,7 @@ namespace Yutai.Pipeline.Analysis.Classes
             {
                 if (this.m_nSelectIndex < count)
                 {
-                    PipeLine pipeLine = (PipeLine)this.arrayList_1[this.m_nSelectIndex];
+                    PipeLine pipeLine = (PipeLine) this.arrayList_1[this.m_nSelectIndex];
                     SectionInfoStore sectionInfoStore;
                     sectionInfoStore.strField = "数据集名称";
                     sectionInfoStore.strVal = pipeLine.DatasetName;
@@ -429,7 +556,7 @@ namespace Yutai.Pipeline.Analysis.Classes
                 }
                 else
                 {
-                    PipePoint pipePoint = (PipePoint)this.arrayList_2[this.m_nSelectIndex - count];
+                    PipePoint pipePoint = (PipePoint) this.arrayList_2[this.m_nSelectIndex - count];
                     SectionInfoStore sectionInfoStore7;
                     sectionInfoStore7.strField = "数据集名称";
                     sectionInfoStore7.strVal = pipePoint.bstrDatasetName;
@@ -476,7 +603,7 @@ namespace Yutai.Pipeline.Analysis.Classes
             xmlTextWriter.WriteAttributeString("PipeLineCount", count.ToString());
             for (int i = 0; i < count; i++)
             {
-                PipeLine pipeLine = (PipeLine)this.arrayList_1[i];
+                PipeLine pipeLine = (PipeLine) this.arrayList_1[i];
                 int num = pipeLine.Size();
                 xmlTextWriter.WriteStartElement("PipeLine");
                 xmlTextWriter.WriteAttributeString("DatasetName", pipeLine.DatasetName);
@@ -505,7 +632,7 @@ namespace Yutai.Pipeline.Analysis.Classes
             xmlTextWriter.WriteAttributeString("PipePointCount", count2.ToString());
             for (int k = 0; k < count2; k++)
             {
-                PipePoint pipePoint = (PipePoint)this.arrayList_2[k];
+                PipePoint pipePoint = (PipePoint) this.arrayList_2[k];
                 xmlTextWriter.WriteStartElement("PipePoint");
                 xmlTextWriter.WriteAttributeString("X", pipePoint.x.ToString("f3"));
                 xmlTextWriter.WriteAttributeString("Y", pipePoint.y.ToString("f3"));
@@ -559,10 +686,10 @@ namespace Yutai.Pipeline.Analysis.Classes
                         xmlReader.ReadToFollowing("Point");
                         pipeLine.PushBack(new GPoint
                         {
-                            X = (double)Convert.ToSingle(xmlReader.GetAttribute("X")),
-                            Y = (double)Convert.ToSingle(xmlReader.GetAttribute("Y")),
-                            Z = (double)Convert.ToSingle(xmlReader.GetAttribute("Z")),
-                            M = (double)Convert.ToSingle(xmlReader.GetAttribute("M"))
+                            X = (double) Convert.ToSingle(xmlReader.GetAttribute("X")),
+                            Y = (double) Convert.ToSingle(xmlReader.GetAttribute("Y")),
+                            Z = (double) Convert.ToSingle(xmlReader.GetAttribute("Z")),
+                            M = (double) Convert.ToSingle(xmlReader.GetAttribute("M"))
                         });
                     }
                     this.arrayList_1.Add(pipeLine);
@@ -574,10 +701,10 @@ namespace Yutai.Pipeline.Analysis.Classes
                 {
                     xmlReader.ReadToFollowing("PipePoint");
                     PipePoint pipePoint = new PipePoint();
-                    pipePoint.x = (double)Convert.ToSingle(xmlReader.GetAttribute("X"));
-                    pipePoint.y = (double)Convert.ToSingle(xmlReader.GetAttribute("Y"));
-                    pipePoint.z = (double)Convert.ToSingle(xmlReader.GetAttribute("Z"));
-                    pipePoint.m = (double)Convert.ToSingle(xmlReader.GetAttribute("M"));
+                    pipePoint.x = (double) Convert.ToSingle(xmlReader.GetAttribute("X"));
+                    pipePoint.y = (double) Convert.ToSingle(xmlReader.GetAttribute("Y"));
+                    pipePoint.z = (double) Convert.ToSingle(xmlReader.GetAttribute("Z"));
+                    pipePoint.m = (double) Convert.ToSingle(xmlReader.GetAttribute("M"));
                     pipePoint.bstrDatasetName = xmlReader.GetAttribute("DatasetName");
                     pipePoint.nID = Convert.ToInt32(xmlReader.GetAttribute("ID"));
                     pipePoint.bstrPointKind = xmlReader.GetAttribute("PipePointKind");
@@ -599,7 +726,7 @@ namespace Yutai.Pipeline.Analysis.Classes
             int count = arrayList.Count;
             for (int i = 0; i < count; i++)
             {
-                PipeLine pipeLine = (PipeLine)arrayList[i];
+                PipeLine pipeLine = (PipeLine) arrayList[i];
                 int num = pipeLine.Size();
                 for (int j = 0; j < num; j++)
                 {
@@ -622,7 +749,7 @@ namespace Yutai.Pipeline.Analysis.Classes
             this.m_pSectionDisp.SetDataBound(this.m_dMinX, this.m_dMaxX, this.m_dMinY, this.m_dMaxY);
             for (int k = 0; k < count; k++)
             {
-                PipeLine pipeLine2 = (PipeLine)this.arrayList_3[k];
+                PipeLine pipeLine2 = (PipeLine) this.arrayList_3[k];
                 int num2 = pipeLine2.Size();
                 for (int l = 0; l < num2; l++)
                 {
