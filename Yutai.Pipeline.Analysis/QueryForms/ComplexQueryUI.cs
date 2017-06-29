@@ -6,9 +6,11 @@ using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using Yutai.ArcGIS.Common.Helpers;
 using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
@@ -74,13 +76,13 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             }
             else if (pFeaLay == null)
             {
-                MessageBox.Show("FeatureClass为空");
+                MessageBox.Show(@"FeatureClass为空");
             }
             else
             {
                 IFeatureClass featureClass = pFeaLay.FeatureClass;
                 IQueryFilter queryFilter = new QueryFilter();
-                ISelectionSet pSelectionSetForSearch = featureClass.Select(queryFilter, (esriSelectionType)1, (esriSelectionOption)1, null);
+                ISelectionSet pSelectionSetForSearch = featureClass.Select(queryFilter, esriSelectionType.esriSelectionTypeIDSet, esriSelectionOption.esriSelectionOptionNormal, null);
                 this.m_pSelectionSetForSearch = pSelectionSetForSearch;
             }
         }
@@ -114,7 +116,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 int count = compositeLayer.Count;
                 for (int i = 0; i < count; i++)
                 {
-                    ILayer ipLay = compositeLayer.get_Layer(i);
+                    ILayer ipLay = compositeLayer.Layer[i];
                     this.AddLayer(ipLay);
                 }
             }
@@ -124,7 +126,6 @@ namespace Yutai.Pipeline.Analysis.QueryForms
         {
             if (iFLayer != null)
             {
-                iFLayer.Name.ToString();
                 ComplexQueryUI.LayerboxItem layerboxItem = new ComplexQueryUI.LayerboxItem();
                 layerboxItem.m_pPipeLayer = iFLayer;
                 this.LayerBox.Items.Add(layerboxItem);
@@ -139,7 +140,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             {
                 for (int i = 0; i < layerCount; i++)
                 {
-                    ILayer ipLay = m_context.FocusMap.get_Layer(i);
+                    ILayer ipLay = m_context.FocusMap.Layer[i];
                     this.AddLayer(ipLay);
                 }
                 this.LayerBox.SelectedIndex = 0;
@@ -148,7 +149,6 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
         private void FillField()
         {
-            this.LayerBox.SelectedItem.ToString();
             if (this.MapControl != null)
             {
                 this.SelectLayer = ((ComplexQueryUI.LayerboxItem)this.LayerBox.SelectedItem).m_pPipeLayer;
@@ -158,9 +158,9 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                     this.FieldBox.Items.Clear();
                     for (int i = 0; i < this.myfields.FieldCount; i++)
                     {
-                        IField field = this.myfields.get_Field(i);
+                        IField field = this.myfields.Field[i];
                         string name = field.Name;
-                        if (field.Type != (esriFieldType)6 && field.Type != (esriFieldType)7 && !(name.ToUpper() == "ENABLED") && !(name.ToUpper() == "SHAPE.LEN") && !(name.ToUpper() == "SHAPE.AREA"))
+                        if (field.Type != (esriFieldType)6 && field.Type != (esriFieldType)7 && name.ToUpper() != "ENABLED" && name.ToUpper() != "SHAPE.LEN" && name.ToUpper() != "SHAPE.AREA")
                         {
                             this.FieldBox.Items.Add(name);
                         }
@@ -185,7 +185,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 if (this.FieldBox.Items.Count >= 1)
                 {
                     int num = this.myfields.FindField(this.FieldBox.SelectedItem.ToString());
-                    this.myfield = this.myfields.get_Field(num);
+                    this.myfield = this.myfields.Field[num];
                     if (this.myfield.Type == (esriFieldType)4)
                     {
                         this.BigeRadio.Enabled = false;
@@ -203,41 +203,6 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                         this.Likeradio.Enabled = false;
                     }
                     this.Equradio.Checked = true;
-                    IFeatureClass featureClass = this.SelectLayer.FeatureClass;
-                    IQueryFilter queryFilter = new QueryFilter();
-                    IFeatureCursor featureCursor = featureClass.Search(queryFilter, false);
-                    IFeature feature = featureCursor.NextFeature();
-                    this.ValueBox.Items.Clear();
-                    while (feature != null)
-                    {
-                        object obj = feature.get_Value(num);
-                        string text;
-                        if (obj is DBNull)
-                        {
-                            text = "NULL";
-                        }
-                        else if (this.myfield.Type == (esriFieldType)5)
-                        {
-                            text = Convert.ToDateTime(obj).ToShortDateString();
-                        }
-                        else
-                        {
-                            text = obj.ToString();
-                            if (text.Length == 0)
-                            {
-                                text = "空字段值";
-                            }
-                        }
-                        if (!this.ValueBox.Items.Contains(text))
-                        {
-                            this.ValueBox.Items.Add(text);
-                        }
-                        if (this.ValueBox.Items.Count > 100)
-                        {
-                            break;
-                        }
-                        feature = featureCursor.NextFeature();
-                    }
                 }
             }
         }
@@ -307,13 +272,13 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             if (this.bFirst)
             {
                 this.bFirst = false;
-                this.SelectText.Text = "select * from ";
+                this.SelectText.Text =@"select * from ";
                 TextBox selectText = this.SelectText;
                 TextBox expr_73 = selectText;
                 expr_73.Text += this.LayerBox.SelectedItem.ToString();
                 TextBox selectText2 = this.SelectText;
                 TextBox expr_9E = selectText2;
-                expr_9E.Text += " where ";
+                expr_9E.Text += @" where ";
             }
             else if (this.AndRaio.Checked)
             {
@@ -502,7 +467,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
         {
             ISpatialFilter spatialFilter = new SpatialFilter();
             IFeatureCursor featureCursor = null;
-            if (!(this.SqlBox.Text == "") || MessageBox.Show("末指定属性条件,是否查询?", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (this.SqlBox.Text != "" || MessageBox.Show(@"末指定属性条件,是否查询?", @"提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 spatialFilter.WhereClause = this.SqlBox.Text;
                 if (this.bGeo.Checked && this.m_ipGeo != null)
@@ -530,7 +495,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 try
                 {
                     this.MakeSelectionSetForSearch(this.SelectLayer);
-                    ICursor cursor = featureCursor as ICursor;
+                    ICursor cursor = null;
                     this.m_pSelectionSetForSearch.Search(spatialFilter, false, out cursor);
                     if (cursor is IFeatureCursor)
                     {
@@ -539,7 +504,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("查询值有误,请检查!");
+                    MessageBox.Show(@"查询值有误,请检查!");
                     return;
                 }
                 _plugin.FireQueryResultChanged(new QueryResultArgs(featureCursor, (IFeatureSelection)this.SelectLayer));
@@ -591,14 +556,14 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                         }
                         else
                         {
-                            MessageBox.Show("复杂多边形,创建缓冲区失败!");
+                            MessageBox.Show(@"复杂多边形,创建缓冲区失败!");
                             this.m_ipGeo = this.m_OriginGeo;
                         }
                         goto IL_CF;
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("复杂多边形,创建缓冲区失败!");
+                        MessageBox.Show(@"复杂多边形,创建缓冲区失败!");
                         this.GlacisUpDown.Value = 0m;
                         this.m_ipGeo = this.m_OriginGeo;
                         goto IL_CF;
@@ -631,6 +596,25 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             string parameter = "复合查询";
             HelpNavigator command = HelpNavigator.KeywordIndex;
             Help.ShowHelp(this, url, command, parameter);
+        }
+
+        private void BtnGetUniqueValue_Click(object sender, EventArgs e)
+        {
+            this.ValueBox.Items.Clear();
+            if (this.myfields != null)
+            {
+                if (this.FieldBox.Items.Count >= 1)
+                {
+                    int num = this.myfields.FindField(this.FieldBox.SelectedItem.ToString());
+                    if (num >= 0)
+                    {
+                        IFeatureClass featureClass = this.SelectLayer.FeatureClass;
+                        List<string> values = new List<string>();
+                        CommonHelper.GetUniqueValues((ITable)featureClass, this.FieldBox.SelectedItem.ToString(), values);
+                        ValueBox.Items.AddRange(values.ToArray());
+                    }
+                }
+            }
         }
     }
 }

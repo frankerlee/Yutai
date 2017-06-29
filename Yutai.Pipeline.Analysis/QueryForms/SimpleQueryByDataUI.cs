@@ -85,7 +85,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 int count = compositeLayer.Count;
                 for (int i = 0; i < count; i++)
                 {
-                    ILayer ipLay = compositeLayer.get_Layer(i);
+                    ILayer ipLay = compositeLayer.Layer[i];
                     this.AddLayer(ipLay);
                 }
             }
@@ -120,7 +120,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             int layerCount = m_context.FocusMap.LayerCount;
             for (int i = 0; i < layerCount; i++)
             {
-                ILayer ipLay = m_context.FocusMap.get_Layer(i);
+                ILayer ipLay = m_context.FocusMap.Layer[i];
                 this.AddLayer(ipLay);
             }
             if (this.LayerBox.Items.Count > 0)
@@ -195,11 +195,11 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                         int num = this.myfields.FindField(text2);
                         if (num < 0)
                         {
-                            MessageBox.Show("图层中日期字段没有找到！请检查配置文件！");
+                            MessageBox.Show(@"图层中日期字段没有找到！请检查配置文件！");
                         }
                         else
                         {
-                            IField field = this.myfields.get_Field(num);
+                            IField field = this.myfields.Field[num];
                             if (field.Type == (esriFieldType)4)
                             {
                                 switch (this.OperateBox.SelectedIndex)

@@ -6,9 +6,11 @@ using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using Yutai.ArcGIS.Common.Helpers;
 using Yutai.Pipeline.Analysis.Helpers;
 using Yutai.Pipeline.Config.Helpers;
 using Yutai.Pipeline.Config.Interfaces;
@@ -110,19 +112,12 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 IFeatureCursor featureCursor = featureClass.Search(null, false);
                 IFeature feature = featureCursor.NextFeature();
                 int num = feature.Fields.FindField(layer.GetFieldName(PipeConfigWordHelper.FunctionLayerWorkds.DLMC));
-                while (feature != null)
+                if (num >= 0)
                 {
-                    object obj = feature.get_Value(num);
-                    string text = obj as string;
-                    int oID = feature.OID;
-                    text.Replace(" ", "");
-                    if (text != null && "" != text && " " != text)
-                    {
-                        QueryIntersectionUI.ItemInfo item = new QueryIntersectionUI.ItemInfo(oID, text);
-                        this.comboRoad1.Items.Add(item);
-                        this.comboRoad2.Items.Add(item);
-                    }
-                    feature = featureCursor.NextFeature();
+                    List<string> values = new List<string>();
+                    CommonHelper.GetUniqueValues((ITable)featureClass, layer.GetFieldName(PipeConfigWordHelper.FunctionLayerWorkds.DLMC), values);
+                    this.comboRoad1.Items.AddRange(values.ToArray());
+                    this.comboRoad2.Items.AddRange(values.ToArray());
                 }
             }
         }
@@ -142,7 +137,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 int num = this.comboRoad1.FindString(this.comboRoad1.Text);
                 if (num < 0)
                 {
-                    string text = string.Format("道路名称[{0}]错误！", this.comboRoad1.Text);
+                    string text = $"道路名称[{this.comboRoad1.Text}]错误！";
                     MessageBox.Show(text);
                 }
                 else
@@ -152,7 +147,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                     num = this.comboRoad1.FindString(this.comboRoad2.Text);
                     if (num < 0)
                     {
-                        string text2 = string.Format("道路名称[{0}]错误！", this.comboRoad2.Text);
+                        string text2 = $"道路名称[{this.comboRoad2.Text}]错误！";
                         MessageBox.Show(text2);
                     }
                     else
@@ -190,7 +185,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                         }
                         else
                         {
-                            MessageBox.Show("选择的道路没有交叉口!");
+                            MessageBox.Show(@"选择的道路没有交叉口!");
                         }
                     }
                 }
@@ -234,13 +229,13 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
             ISimpleMarkerSymbol simpleMarkerSymbol = new SimpleMarkerSymbol();
             IRgbColor rgbColor = new RgbColor();
-            rgbColor.Red = (255);
-            rgbColor.Green = (0);
-            rgbColor.Blue = (0);
+            rgbColor.Red = 255;
+            rgbColor.Green = 0;
+            rgbColor.Blue = 0;
             IRgbColor rgbColor2 = new RgbColor();
-            rgbColor2.Red = (0);
-            rgbColor2.Green = (0);
-            rgbColor2.Blue = (0);
+            rgbColor2.Red = 0;
+            rgbColor2.Green = 0;
+            rgbColor2.Blue = 0;
             simpleMarkerSymbol.Style = (esriSimpleMarkerStyle)(3);
             simpleMarkerSymbol.Color = (rgbColor);
             simpleMarkerSymbol.Outline = (true);

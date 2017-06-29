@@ -29,6 +29,9 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
             if (this.QueryUI == null || this.QueryUI.IsDisposed)
             {
                 this.QueryUI = new RelateQueryUI();
+                this.QueryUI.FormBorderStyle = FormBorderStyle.FixedDialog;
+                this.QueryUI.MinimizeBox = false;
+                this.QueryUI.MaximizeBox = false;
                 this.QueryUI.Plugin = _plugin;
                 this.QueryUI.TopMost = true;
                 this.QueryUI.MapControl = (IMapControl3)_context.MapControl;

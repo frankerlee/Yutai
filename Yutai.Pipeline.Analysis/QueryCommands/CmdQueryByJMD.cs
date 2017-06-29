@@ -28,6 +28,9 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
             if (this.QueryUI == null || this.QueryUI.IsDisposed)
             {
                 this.QueryUI = new SimpleQueryByJMDUI();
+                this.QueryUI.FormBorderStyle = FormBorderStyle.FixedDialog;
+                this.QueryUI.MinimizeBox = false;
+                this.QueryUI.MaximizeBox = false;
                 this.QueryUI.TopMost = true;
                 this.QueryUI.MapControl = (IMapControl3)_context.MapControl;
                 this.QueryUI.pPipeCfg = _plugin.PipeConfig;
@@ -70,27 +73,7 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
 
             CommonUtils.AppContext = _context;
         }
-        //public override void OnMouseDown(int Button, int Shift, int X, int Y)
-        //{
-        //    if (this.QueryUI.SelectGeometry && Button == 1)
-        //    {
-        //        IGeometry ipGeo = null;
-        //        if (this.QueryUI.DrawType == 0)
-        //        {
-        //            ipGeo = _context.MapControl.TrackRectangle();
-        //        }
-        //        if (this.QueryUI.DrawType == 1)
-        //        {
-        //            ipGeo = _context.MapControl.TrackPolygon();
-        //        }
-        //        if (this.QueryUI.DrawType == 2)
-        //        {
-        //            ipGeo = _context.MapControl.TrackCircle();
-        //        }
-        //        this.QueryUI.m_ipGeo = ipGeo;
-        //        _context.ActiveView.PartialRefresh((esriViewDrawPhase)32, null, null);
-        //    }
-        //}
+
         private void QueryUI_Closing(object sender, CancelEventArgs e)
         {
             e.Cancel = true;

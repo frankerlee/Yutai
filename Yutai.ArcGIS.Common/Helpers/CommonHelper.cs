@@ -945,14 +945,14 @@ namespace Yutai.ArcGIS.Common.Helpers
             }
         }
 
-        public static void GetUniqueValues(ITable itable_0, string string_0, IList ilist_0)
+        public static void GetUniqueValues(ITable itable_0, string string_0, IList ilist_0, string whereClause = "")
         {
             try
             {
                 IQueryFilter queryFilter = new QueryFilter
                 {
                     SubFields = string_0,
-                    WhereClause = ""
+                    WhereClause = whereClause
                 };
                 (queryFilter as IQueryFilterDefinition).PostfixClause = "Order by " + string_0;
                 ICursor o = itable_0.Search(queryFilter, false);
@@ -975,7 +975,7 @@ namespace Yutai.ArcGIS.Common.Helpers
                 MessageBox.Show(exception.Message);
             }
         }
-
+        
         public static void GetUniqueValuesEx(ILayer ilayer_0, string string_0, IList ilist_0)
         {
             try

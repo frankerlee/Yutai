@@ -43,42 +43,13 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 _plugin = value;
             }
         }
-
-
-
-
-
+        
         public object mainform;
 
 		public ushort DrawType;
 
 		public ushort SelectType;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
 		public bool SelectGeometry
 		{
 			get
@@ -130,7 +101,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				int count = compositeLayer.Count;
 				for (int i = 0; i < count; i++)
 				{
-					ILayer ipLay = compositeLayer.get_Layer(i);
+					ILayer ipLay = compositeLayer.Layer[i];
 					this.AddLayer(ipLay);
 				}
 			}
@@ -156,7 +127,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			int layerCount = m_context.FocusMap.LayerCount;
 			for (int i = 0; i < layerCount; i++)
 			{
-				ILayer layer = m_context.FocusMap.get_Layer(i);
+				ILayer layer = m_context.FocusMap.Layer[i];
 				if (layer.Valid)
 				{
 				}
@@ -184,7 +155,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				}
 				if (num >= 0)
 				{
-					this.myfieldGJ = this.myfields.get_Field(num);
+					this.myfieldGJ = this.myfields.Field[num];
 				}
 				else
 				{
@@ -192,7 +163,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				}
 				if (num2 >= 0)
 				{
-					this.myfieldKG = this.myfields.get_Field(num2);
+					this.myfieldKG = this.myfields.Field[num2];
 					if (num < 0)
 					{
 						this.radioButton2.Checked = true;
@@ -211,7 +182,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 					{
 						if (num >= 0)
 						{
-							object obj = feature.get_Value(num);
+							object obj = feature.Value[num];
 							string text;
 							if (obj is DBNull)
 							{
@@ -233,7 +204,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 						}
 						if (num2 >= 0)
 						{
-							object obj = feature.get_Value(num2);
+							object obj = feature.Value[num2];
 							string text;
 							if (obj is DBNull)
 							{
@@ -356,11 +327,11 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 		{
 			if (!this.radioButton1.Checked && !this.radioButton2.Checked)
 			{
-				MessageBox.Show("系统设置有误/当前层不含有管径信息，请检查配置文件/数据！");
+				MessageBox.Show(@"系统设置有误/当前层不含有管径信息，请检查配置文件/数据！");
 			}
 			else if (!this.radioButton1.Enabled && !this.radioButton2.Enabled)
 			{
-				MessageBox.Show("系统设置有误/当前层不含有管径信息，请检查配置文件/数据！");
+				MessageBox.Show(@"系统设置有误/当前层不含有管径信息，请检查配置文件/数据！");
 			}
 			else
 			{
@@ -388,7 +359,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 						}
 						if (text3 == text2)
 						{
-							if (this.myfieldGJ.Type == (esriFieldType) 4)
+							if (this.myfieldGJ.Type == esriFieldType.esriFieldTypeString)
 							{
 								text = this.strGJ;
 								text += " = '";
@@ -401,7 +372,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 								text += text3;
 							}
 						}
-						else if (this.myfieldGJ.Type == (esriFieldType) 4)
+						else if (this.myfieldGJ.Type == esriFieldType.esriFieldTypeString)
 						{
 							text = this.strGJ;
 							text += ">= '";
@@ -447,7 +418,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 							text += "<=";
 							break;
 						}
-						if (this.myfieldGJ.Type == (esriFieldType) 4)
+						if (this.myfieldGJ.Type == esriFieldType.esriFieldTypeString)
 						{
 							text += "'";
 							text += this.ValueBox1.Text;
@@ -471,7 +442,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 						text += "<>";
 						break;
 					}
-					if (this.ValueBox3.Text == "空字段值")
+					if (this.ValueBox3.Text == @"空字段值")
 					{
 						text += "''";
 					}
@@ -491,17 +462,17 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 					}
 					if (this.SelectType == 0)
 					{
-						spatialFilter.SpatialRel=(esriSpatialRelEnum) (1);
+						spatialFilter.SpatialRel=esriSpatialRelEnum.esriSpatialRelIntersects;
 					}
 					else if (this.SelectType == 1)
 					{
-						spatialFilter.SpatialRel=(esriSpatialRelEnum) (7);
+						spatialFilter.SpatialRel=esriSpatialRelEnum.esriSpatialRelWithin;
 					}
 					pCursor = featureClass.Search(spatialFilter, false);
 				}
 				catch (Exception)
 				{
-					MessageBox.Show("查询值有误,请检查!");
+					MessageBox.Show(@"查询值有误,请检查!");
 					return;
 				}
                 //修改为插件事件，因为结果显示窗体为插件拥有。

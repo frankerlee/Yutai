@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using Yutai.ArcGIS.Common.Helpers;
 using Yutai.Pipeline.Config.Helpers;
 using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
@@ -29,10 +30,6 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 _plugin = value;
             }
         }
-        
-        private List<string> ADArray = new List<string>();
-
-		private DataTable Sumtable = new DataTable();
         
 		public SimpleQueryByItemUI()
 		{
@@ -122,9 +119,6 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			{
 				IFeatureClass featureClass = this.SelectLayer.FeatureClass;
 			    IFunctionLayer layerInfo = pPipeCfg.GetFunctionLayer(featureClass);
-				IQueryFilter queryFilter = new QueryFilter();
-				IFeatureCursor featureCursor = featureClass.Search(queryFilter, false);
-				IFeature feature = featureCursor.NextFeature();
 				this.comboBox1.Items.Clear();
 				string text;
 				if (this.radioButton1.Checked)
@@ -142,46 +136,22 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				}
 				else
 				{
-					this.comboBox1.Items.Clear();
-					while (feature != null)
-					{
-						object obj = feature.Value[num];
-						string text2;
-						if (obj == null || Convert.IsDBNull(obj))
-						{
-							text2 = "";
-						}
-						else
-						{
-							text2 = obj.ToString();
-						}
-						if (!this.comboBox1.Items.Contains(text2) && text2 != "")
-						{
-							this.comboBox1.Items.Add(text2);
-						}
-						feature = featureCursor.NextFeature();
-					}
-					if (this.comboBox1.Items.Count > 0)
-					{
-						this.comboBox1.SelectedIndex = 0;
-					}
-				}
+                    List<string> values = new List<string>();
+                    CommonHelper.GetUniqueValues((ITable)featureClass, text, values);
+                    this.comboBox1.Items.AddRange(values.ToArray());
+                    if (this.comboBox1.Items.Count > 0)
+                    {
+                        this.comboBox1.SelectedIndex = 0;
+                    }
+                }
 			}
 		}
-
-		private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-		{
-		}
-
+        
 		private void radioButton1_CheckedChanged(object sender, EventArgs e)
 		{
 			this.FillLayerBox();
 		}
-
-		private void radioButton2_CheckedChanged(object sender, EventArgs e)
-		{
-		}
-
+        
 		private void button1_Click(object sender, EventArgs e)
 		{
 			if (this.SelectLayer == null)

@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Charts.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282" />
+    <Reference Include="DevExpress.XtraCharts.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282" />
+    <Reference Include="DevExpress.XtraCharts.v16.1.UI, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v16.1.Wizard, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282" />
     <Reference Include="Infragistics4.Win.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinPrintPreviewDialog.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinGrid.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />

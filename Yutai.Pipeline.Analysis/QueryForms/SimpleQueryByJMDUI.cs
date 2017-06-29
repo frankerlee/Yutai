@@ -8,6 +8,7 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using Yutai.Pipeline.Config.Helpers;
 using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 
@@ -47,8 +48,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			int layerCount = m_context.FocusMap.LayerCount;
 			for (int i = 0; i < layerCount; i++)
 			{
-				ILayer ipLay = m_context.FocusMap.get_Layer(i);
-				if (this.GetLayer("居民地与设施面", ipLay))
+				ILayer ipLay = m_context.FocusMap.Layer[i];
+				if (this.GetLayer(ipLay))
 				{
 					break;
 				}
@@ -63,12 +64,13 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			}
 		}
 
-		private bool GetLayer(string name, ILayer ipLay)
+		private bool GetLayer(ILayer ipLay)
 		{
 			bool result;
 			if (ipLay is IFeatureLayer)
 			{
-				if (ipLay.Name == name)
+                IFeatureLayer featureLayer = ipLay as IFeatureLayer;
+				if (pPipeCfg.IsFunctionLayer(featureLayer.FeatureClass.AliasName, enumFunctionLayerType.Jmd))
 				{
 					this.SelectLayer = (ipLay as IFeatureLayer);
 					result = true;
@@ -77,14 +79,14 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			}
 			else if (ipLay is IGroupLayer)
 			{
-				result = this.GetGroupLayer("居民地与设施面", (IGroupLayer)ipLay);
+				result = this.GetGroupLayer((IGroupLayer)ipLay);
 				return result;
 			}
 			result = false;
 			return result;
 		}
 
-		private bool GetGroupLayer(string name, ILayer iGLayer)
+		private bool GetGroupLayer(ILayer iGLayer)
 		{
 			ICompositeLayer compositeLayer = (ICompositeLayer)iGLayer;
 			bool result;
@@ -97,8 +99,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				int count = compositeLayer.Count;
 				for (int i = 0; i < count; i++)
 				{
-					ILayer ipLay = compositeLayer.get_Layer(i);
-					if (this.GetLayer(name, ipLay))
+					ILayer ipLay = compositeLayer.Layer[i];
+					if (this.GetLayer(ipLay))
 					{
 						result = true;
 						return result;
@@ -113,21 +115,22 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 		{
 			if (this.SelectLayer == null)
 			{
-				MessageBox.Show("此图层不存在");
+				MessageBox.Show(@"此图层不存在");
 			}
 			else
 			{
 				IFeatureClass featureClass = this.SelectLayer.FeatureClass;
+			    IFunctionLayer functionLayer = pPipeCfg.GetFunctionLayer(featureClass);
 				IQueryFilter queryFilter = new QueryFilter();
 				IFeatureCursor featureCursor = featureClass.Search(queryFilter, false);
 				IFeature feature = featureCursor.NextFeature();
 				this.comboBox1.Items.Clear();
-				string text = "名称";
+				string text = functionLayer.GetFieldName(PipeConfigWordHelper.FunctionLayerWorkds.JMDMC);
 				int num = featureClass.Fields.FindField(text);
 				if (num == -1)
 				{
 					this.button1.Enabled = false;
-					MessageBox.Show("没有找到字段！");
+					MessageBox.Show(@"没有找到字段！");
 				}
 				else
 				{
@@ -135,7 +138,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 					this.comboBox1.Items.Clear();
 					while (feature != null)
 					{
-						object obj = feature.get_Value(num);
+						object obj = feature.Value[num];
 						string text2;
 						if (obj == null || Convert.IsDBNull(obj))
 						{
@@ -163,7 +166,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 		{
 			if (this.SelectLayer == null)
 			{
-				MessageBox.Show("项目地界层不存在!");
+				MessageBox.Show(@"项目地界层不存在!");
 			}
 			else
 			{

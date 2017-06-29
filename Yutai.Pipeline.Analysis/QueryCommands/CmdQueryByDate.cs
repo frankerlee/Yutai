@@ -15,8 +15,6 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
     class CmdQueryByDate : YutaiTool
     {
         private SimpleQueryByDataUI QueryUI;
-
-
         private PipelineAnalysisPlugin _plugin;
         public CmdQueryByDate(IAppContext context, PipelineAnalysisPlugin plugin)
         {
@@ -29,6 +27,9 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
             if (this.QueryUI == null || this.QueryUI.IsDisposed)
             {
                 this.QueryUI = new SimpleQueryByDataUI();
+                this.QueryUI.FormBorderStyle = FormBorderStyle.FixedDialog;
+                this.QueryUI.MinimizeBox = false;
+                this.QueryUI.MaximizeBox = false;
                 this.QueryUI.TopMost = true;
                 this.QueryUI.MapControl = (IMapControl3)_context.MapControl;
                 this.QueryUI.pPipeCfg = _plugin.PipeConfig;
@@ -47,7 +48,7 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
                 }
             }
         }
-        
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
@@ -75,7 +76,7 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
             {
                 IGeometry ipGeo = _context.MapControl.TrackRectangle();
                 this.QueryUI.m_ipGeo = ipGeo;
-                _context.ActiveView.PartialRefresh((esriViewDrawPhase) 32, null, null);
+                _context.ActiveView.PartialRefresh((esriViewDrawPhase)32, null, null);
             }
         }
         private void QueryUI_Closing(object sender, CancelEventArgs e)

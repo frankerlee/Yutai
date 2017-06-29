@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using Yutai.ArcGIS.Common.Helpers;
 using Yutai.Pipeline.Config.Helpers;
 using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
@@ -71,7 +72,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 int count = compositeLayer.Count;
                 for (int i = 0; i < count; i++)
                 {
-                    ILayer ipLay = compositeLayer.get_Layer(i);
+                    ILayer ipLay = compositeLayer.Layer[i];
                     this.AddLayer(ipLay);
                 }
             }
@@ -108,7 +109,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             int layerCount = m_context.FocusMap.LayerCount;
             for (int i = 0; i < layerCount; i++)
             {
-                ILayer ipLay = m_context.FocusMap.get_Layer(i);
+                ILayer ipLay = m_context.FocusMap.Layer[i];
                 this.AddLayer(ipLay);
                 if (this.LayerBox.Items.Count > 0)
                 {
@@ -185,107 +186,26 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             }
             return result;
         }
-
-        private void FillValueBox()
-        {
-            if (this.myfields != null)
-            {
-                int num = -1;
-                this.bUnWipe = true;
-                int num2 = this.myfields.FindField(this.FieldBox.Text);
-                if (num2 >= 0)
-                {
-                    IFeatureClass featureClass = this.SelectLayer.FeatureClass;
-                    IQueryFilter queryFilter = new QueryFilter();
-                    IFeatureCursor featureCursor = featureClass.Search(queryFilter, false);
-                    IFeature feature = featureCursor.NextFeature();
-                    this.FieldValueBox.Items.Clear();
-                    this.ValueBox.Items.Clear();
-                    int num3 = this.myfields.FindField(this.FindField);
-                    if (!this.radioButton1.Checked)
-                    {
-                        num = this.myfields.FindField(this.FindField1);
-                    }
-                    while (feature != null)
-                    {
-                        object obj = feature.get_Value(num2);
-                        if (num3 > 0)
-                        {
-                            object obj2 = feature.get_Value(num3);
-                            if (!(obj2 is DBNull))
-                            {
-                                string text = obj2.ToString();
-                                if (text.Length > 0 && !this.ValueBox.Items.Contains(text))
-                                {
-                                    this.ValueBox.Items.Add(text);
-                                }
-                            }
-                        }
-                        if (num > 0)
-                        {
-                            object obj2 = feature.get_Value(num);
-                            if (!(obj2 is DBNull))
-                            {
-                                string text = obj2.ToString();
-                                if (text.Length > 0 && !this.ValueBox.Items.Contains(text))
-                                {
-                                    this.ValueBox.Items.Add(text);
-                                }
-                            }
-                        }
-                        if (obj is DBNull)
-                        {
-                            feature = featureCursor.NextFeature();
-                        }
-                        else
-                        {
-                            string text = obj.ToString();
-                            if (text.Length == 0)
-                            {
-                                feature = featureCursor.NextFeature();
-                            }
-                            else
-                            {
-                                if (!this.FieldValueBox.Items.Contains(text))
-                                {
-                                    this.FieldValueBox.Items.Add(text);
-                                }
-                                feature = featureCursor.NextFeature();
-                            }
-                        }
-                    }
-                    if (this.FieldValueBox.Items.Count > 0)
-                    {
-                        this.FieldValueBox.SelectedIndex = 0;
-                    }
-                }
-            }
-        }
-
-        private void SimpleQueryByAddressUI1_Load(object sender, EventArgs e)
-        {
-            this.AutoFlash();
-        }
-
+        
         public void AutoFlash()
         {
             this.FillLayerBox();
             if (this.ValidateField())
             {
-                this.FillValueBox();
+                this.FillFieldValueBox();
             }
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            this.groupBox2.Text = "选择查询对象：点性";
+            this.groupBox2.Text = @"选择查询对象：点性";
             this.FieldValueBox.Text = "";
             this.FillLayerBox();
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            this.groupBox2.Text = "选择查询对象：管径/沟截面宽高";
+            this.groupBox2.Text = @"选择查询对象：管径/沟截面宽高";
             this.FieldValueBox.Text = "";
             this.FillLayerBox();
         }
@@ -294,7 +214,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
         {
             if (this.ValidateField())
             {
-                this.FillValueBox();
+                this.FillFieldValueBox();
             }
         }
 
@@ -350,7 +270,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             string text = "";
             if (this.FieldValueBox.Text == string.Empty)
             {
-                MessageBox.Show("请确定所在位置!");
+                MessageBox.Show(@"请确定所在位置!");
             }
             else
             {
@@ -364,7 +284,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 else
                 {
                     IDataset dataset = this.SelectLayer.FeatureClass as IDataset;
-                    if (dataset.Workspace.Type == (esriWorkspaceType)2)
+                    if (dataset != null && dataset.Workspace.Type == (esriWorkspaceType)2)
                     {
                         text = this.FieldBox.Text;
                         text += " LIKE '%";
@@ -446,165 +366,80 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("查询条件过于复杂,请减少条件项。" + ex.Message);
+                    MessageBox.Show(@"查询条件过于复杂,请减少条件项。" + ex.Message);
                 }
                 //修改为插件事件，因为结果显示窗体为插件拥有。
                 _plugin.FireQueryResultChanged(new QueryResultArgs(pCursor, (IFeatureSelection)this.SelectLayer));
             }
         }
-
-        private void WipeValueBox()
+        
+        private void FillValueBox(string whereClause = "")
         {
-            this.bUnWipe = false;
             if (this.myfields != null)
             {
                 int num = -1;
                 IFeatureClass featureClass = this.SelectLayer.FeatureClass;
-                IQueryFilter queryFilter = new QueryFilter();
-                string text;
-                if (!this.BlurCheck.Checked)
-                {
-                    text = this.FieldBox.Text;
-                    text += "='";
-                    text += this.FieldValueBox.Text;
-                    text += "'";
-                }
-                else
-                {
-                    text = this.FieldBox.Text;
-                    text += " LIKE '*";
-                    text += this.FieldValueBox.Text;
-                    text += "*'";
-                }
-                queryFilter.WhereClause = text;
-                IFeatureCursor featureCursor = featureClass.Search(queryFilter, false);
-                IFeature feature = featureCursor.NextFeature();
+                
                 this.ValueBox.Items.Clear();
                 int num2 = this.myfields.FindField(this.FindField);
                 if (!this.radioButton1.Checked)
                 {
                     num = this.myfields.FindField(this.FindField1);
                 }
-                while (feature != null)
+                List<string> values = new List<string>();
+                if (num2 > 0)
                 {
-                    if (num2 > 0)
-                    {
-                        object obj = feature.get_Value(num2);
-                        if (!(obj is DBNull))
-                        {
-                            string text2 = obj.ToString();
-                            if (text2.Length > 0 && !this.ValueBox.Items.Contains(text2))
-                            {
-                                this.ValueBox.Items.Add(text2);
-                            }
-                        }
-                    }
-                    if (num > 0)
-                    {
-                        object obj = feature.get_Value(num);
-                        if (!(obj is DBNull))
-                        {
-                            string text2 = obj.ToString();
-                            if (text2.Length > 0 && !this.ValueBox.Items.Contains(text2))
-                            {
-                                this.ValueBox.Items.Add(text2);
-                            }
-                        }
-                    }
-                    feature = featureCursor.NextFeature();
+                    CommonHelper.GetUniqueValues((ITable)featureClass, this.FindField, values, whereClause);
+                }
+                if (num > 0)
+                {
+                    CommonHelper.GetUniqueValues((ITable)featureClass, this.FindField1, values, whereClause);
+                }
+                this.ValueBox.Items.AddRange(values.ToArray());
+            }
+        }
+
+        private void FillFieldValueBox()
+        {
+            if (this.myfields != null)
+            {
+                IFeatureClass featureClass = this.SelectLayer.FeatureClass;
+                this.FieldValueBox.Items.Clear();
+                List<string> fieldValues = new List<string>();
+                CommonHelper.GetUniqueValues((ITable)featureClass, this.FieldBox.Text, fieldValues);
+                this.FieldValueBox.Items.AddRange(fieldValues.ToArray());
+                if (this.FieldValueBox.Items.Count > 0)
+                {
+                    this.FieldValueBox.SelectedIndex = 0;
                 }
             }
         }
 
         private void WipeBut_Click(object sender, EventArgs e)
         {
-            this.WipeValueBox();
-        }
-
-        private void UnWipeValuebox()
-        {
-            if (this.myfields != null)
+            this.bUnWipe = false;
+            string text;
+            if (!this.BlurCheck.Checked)
             {
-                int num = -1;
-                if (!this.bUnWipe)
-                {
-                    this.bUnWipe = true;
-                    IFeatureClass featureClass = this.SelectLayer.FeatureClass;
-                    IQueryFilter queryFilter = new QueryFilter();
-                    IFeatureCursor featureCursor = featureClass.Search(queryFilter, false);
-                    IFeature feature = featureCursor.NextFeature();
-                    this.ValueBox.Items.Clear();
-                    int num2 = this.myfields.FindField(this.FindField);
-                    if (!this.radioButton1.Checked)
-                    {
-                        num = this.myfields.FindField(this.FindField1);
-                    }
-                    while (feature != null)
-                    {
-                        if (num2 > 0)
-                        {
-                            object obj = feature.get_Value(num2);
-                            if (!(obj is DBNull))
-                            {
-                                string text = obj.ToString();
-                                if (text.Length > 0 && !this.ValueBox.Items.Contains(text))
-                                {
-                                    this.ValueBox.Items.Add(text);
-                                }
-                            }
-                        }
-                        if (num > 0)
-                        {
-                            object obj = feature.get_Value(num);
-                            if (!(obj is DBNull))
-                            {
-                                string text = obj.ToString();
-                                if (text.Length > 0 && !this.ValueBox.Items.Contains(text))
-                                {
-                                    this.ValueBox.Items.Add(text);
-                                }
-                            }
-                        }
-                        feature = featureCursor.NextFeature();
-                    }
-                }
+                text = this.FieldBox.Text;
+                text += "='";
+                text += this.FieldValueBox.Text;
+                text += "'";
             }
-        }
-
-        private void FieldValueBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!this.bUnWipe)
+            else
             {
-                this.UnWipeValuebox();
+                text = this.FieldBox.Text;
+                text += " LIKE '*";
+                text += this.FieldValueBox.Text;
+                text += "*'";
             }
+            FillValueBox(text);
         }
-
-        private void FieldValueBox_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void BlurCheck_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!this.bUnWipe)
-            {
-                this.UnWipeValuebox();
-            }
-        }
-
-        private void FieldValueBox_TextUpdate(object sender, EventArgs e)
-        {
-            if (!this.bUnWipe)
-            {
-                this.UnWipeValuebox();
-            }
-        }
-
+        
         private void FillAllBut_Click(object sender, EventArgs e)
         {
-            if (!this.bUnWipe)
-            {
-                this.UnWipeValuebox();
-            }
+            this.bUnWipe = true;
+            this.FillValueBox();
         }
 
         private void SimpleQueryByAddressUI1_HelpRequested(object sender, HelpEventArgs hlpevent)
@@ -613,6 +448,19 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             string parameter = "快速查询";
             HelpNavigator command = HelpNavigator.KeywordIndex;
             Help.ShowHelp(this, url, command, parameter);
+        }
+
+        private void BtnGetUniqueValue_Click(object sender, EventArgs e)
+        {
+            if (!this.bUnWipe)
+            {
+                this.FillValueBox();
+            }
+        }
+
+        private void SimpleQueryByAddressUI1_Load(object sender, EventArgs e)
+        {
+            this.AutoFlash();
         }
     }
 }

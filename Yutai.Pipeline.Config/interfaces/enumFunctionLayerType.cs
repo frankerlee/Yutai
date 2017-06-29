@@ -12,6 +12,7 @@ namespace Yutai.Pipeline.Config.Interfaces
     {
         Item,   // 项目表
         RoadCenterLine, // 道路中心线
+        Jmd,    // 居民地
         Other
     }
 }
