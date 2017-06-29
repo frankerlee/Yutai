@@ -24,7 +24,6 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
 
         public override void OnClick()
         {
-            // _context.SetCurrentTool(this);
             if (this.QueryUI == null || this.QueryUI.IsDisposed)
             {
                 this.QueryUI = new StatReportformsUI();

@@ -1,15 +1,10 @@
-﻿using Infragistics.UltraChart.Resources.Appearance;
-using Infragistics.UltraChart.Shared.Styles;
-using Infragistics.Win;
-using Infragistics.Win.Printing;
-using Infragistics.Win.UltraWinChart;
-using Infragistics.Win.UltraWinGrid;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using DevExpress.XtraCharts;
 
 namespace Yutai.Pipeline.Analysis.QueryForms
 {
@@ -19,7 +14,10 @@ namespace Yutai.Pipeline.Analysis.QueryForms
         public DataSet ds;
         private static bool frmIsResizing;
         private Rectangle frmRectangle = default(Rectangle);
-        private Dictionary<string, string> PosDic = new Dictionary<string, string>();
+        private DevExpress.XtraCharts.Series _series;
+        /// <summary>
+        /// 统计方式
+        /// </summary>
         public string Form_StatWay
         {
             get
@@ -31,7 +29,9 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 this.statWay = value;
             }
         }
-
+        /// <summary>
+        /// 统计字段
+        /// </summary>
         public string Form_StatField
         {
             get
@@ -43,7 +43,9 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 this.statField = value;
             }
         }
-
+        /// <summary>
+        /// 计算字段
+        /// </summary>
         public string Form_CalField
         {
             get
@@ -59,33 +61,17 @@ namespace Yutai.Pipeline.Analysis.QueryForms
         public StatForm()
         {
             this.InitializeComponent();
-            this.PosDic.Add("Top", "上部");
-            this.PosDic.Add("Bottom", "下部");
-            this.PosDic.Add("Left", "左部");
-            this.PosDic.Add("Right", "右部");
         }
 
         private void StatForm_Load(object sender, EventArgs e)
         {
-            this.ChangeSize();
-            this.LegendBox.Items.Clear();
-            string[] names = Enum.GetNames(typeof(LegendLocation));
-            string[] array = names;
-            for (int i = 0; i < array.Length; i++)
-            {
-                string key = array[i];
-                this.LegendBox.Items.Add(this.PosDic[key]);
-            }
-            this.LegendBox.Text = this.PosDic[this.ultraChart1.Legend.Location.ToString()];
-            this.ShowLegendBox.Checked = this.ultraChart1.Legend.Visible;
+            _series = ultraChart1.Series[0];
+            _series.Name = statField;
             this.ChartKind.SelectedIndex = 0;
             this.ds = new DataSet("tableCol");
             this.MakeData();
-            this.trackBar1.Value = (int)this.ultraChart1.Transform3D.XRotation;
-            this.trackBar2.Value = (int)this.ultraChart1.Transform3D.YRotation;
-            this.trackBar3.Value = (int)this.ultraChart1.Transform3D.ZRotation;
-            this.SizeBar.Value = (int)this.ultraChart1.Transform3D.Scale;
             Splash.Close();
+            
         }
 
         private void MakeData()
@@ -109,18 +95,18 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                     this.ds.Tables.Add(this.CalTable);
                 }
                 this.ultraChart1.DataSource = this.dt;
-                this.ultraChart1.DataBind();
+                _series.ArgumentDataMember = statField;
+                _series.ValueDataMembers[0] = "计算值";
                 if (this.statWay == "计数")
                 {
-                    this.ultraGrid1.DataSource = (this.dt);
+                    this.gridControl1.DataSource = this.dt;
                     this.sumRadio.Enabled = false;
                 }
                 else
                 {
-                    this.ultraGrid1.DataSource = (this.AllTable);
+                    this.gridControl1.DataSource = (this.AllTable);
                     this.sumRadio.Text = this.statWay + "分布";
                 }
-                this.ultraGrid1.DisplayLayout.Bands[0].CardSettings.Width = (50);
                 Splash.Close();
             }
             catch
@@ -129,31 +115,31 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             }
         }
 
-        public void SelectDistinct(string TableName, DataTable SourceTable, string FieldName)
+        public void SelectDistinct(string tableName, DataTable sourceTable, string statFieldName)
         {
-            this.dt.Columns.Add(FieldName, typeof(string));
-            this.dt.Columns.Add("值", typeof(double));
-            this.CalTable.Columns.Add(FieldName, typeof(string));
+            this.dt.Columns.Add(statFieldName, typeof(string));
+            this.dt.Columns.Add("计算值", typeof(double));
+            this.CalTable.Columns.Add(statFieldName, typeof(string));
             this.CalTable.Columns.Add("计算值", typeof(double));
-            this.AllTable.Columns.Add(FieldName, typeof(string));
+            this.AllTable.Columns.Add(statFieldName, typeof(string));
             this.AllTable.Columns.Add("分类值", typeof(double));
             this.AllTable.Columns.Add("计算值", typeof(double));
-            object obj = null;
+            object objValue = null;
             int num = 1;
             double num2 = 0.0;
-            DataRow[] array = SourceTable.Select("", FieldName);
-            for (int i = 0; i < array.Length; i++)
+            DataRow[] dataRows = sourceTable.Select("", statFieldName);
+            for (int i = 0; i < dataRows.Length; i++)
             {
-                DataRow dataRow = array[i];
-                if (obj == null || !this.ColumnEqual(obj, dataRow[FieldName]))
+                DataRow dataRow = dataRows[i];
+                if (objValue == null || !this.ColumnEqual(objValue, dataRow[statFieldName]))
                 {
-                    if (obj == null)
+                    if (objValue == null)
                     {
-                        obj = dataRow[FieldName];
+                        objValue = dataRow[statFieldName];
                         if (this.statWay != "计数")
                         {
                             string a = dataRow[this.calField].ToString();
-                            if (a != "")
+                            if (string.IsNullOrWhiteSpace(a) == false)
                             {
                                 num2 += Convert.ToDouble(dataRow[this.calField]);
                             }
@@ -161,28 +147,15 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                     }
                     else
                     {
-                        this.dt.Rows.Add(new object[]
-                        {
-                            obj,
-                            num
-                        });
+                        this.dt.Rows.Add(objValue, num);
                         if (this.statWay == "平均值")
                         {
-                            num2 /= (double)num;
+                            num2 /= num;
                         }
                         num2 = Math.Round(num2, 3);
-                        this.CalTable.Rows.Add(new object[]
-                        {
-                            obj,
-                            num2
-                        });
-                        this.AllTable.Rows.Add(new object[]
-                        {
-                            obj,
-                            num,
-                            num2
-                        });
-                        obj = dataRow[FieldName];
+                        this.CalTable.Rows.Add(objValue, num2);
+                        this.AllTable.Rows.Add(objValue, num, num2);
+                        objValue = dataRow[statFieldName];
                         num = 1;
                         if (this.statWay != "计数")
                         {
@@ -216,22 +189,9 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 num2 /= (double)num;
             }
             num2 = Math.Round(num2, 3);
-            this.dt.Rows.Add(new object[]
-            {
-                obj,
-                num
-            });
-            this.CalTable.Rows.Add(new object[]
-            {
-                obj,
-                num2
-            });
-            this.AllTable.Rows.Add(new object[]
-            {
-                obj,
-                num,
-                num2
-            });
+            this.dt.Rows.Add(objValue, num);
+            this.CalTable.Rows.Add(objValue, num2);
+            this.AllTable.Rows.Add(objValue, num, num2);
         }
 
         private bool ColumnEqual(object A, object B)
@@ -242,103 +202,39 @@ namespace Yutai.Pipeline.Analysis.QueryForms
         private void sumRadio_CheckedChanged(object sender, EventArgs e)
         {
             this.ultraChart1.DataSource = this.CalTable;
+            _series.ArgumentDataMember = statField;
+            _series.ValueDataMembers[0] = "计算值";
         }
 
         private void CountRadio_CheckedChanged(object sender, EventArgs e)
         {
             this.ultraChart1.DataSource = this.dt;
+            _series.ArgumentDataMember = statField;
+            _series.ValueDataMembers[0] = "计算值";
         }
 
         private void ChartType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.ChartKind.SelectedIndex == 0)
+            switch (this.ChartKind.SelectedItem.ToString())
             {
-                this.ultraChart1.ChartType = ChartType.CylinderColumnChart3D;
+                case "饼图":
+                    _series.View = new PieSeriesView();
+                    break;
+                case "柱状图":
+                default:
+                    _series.View = (new Series()).View;
+                    break;
             }
-            else
-            {
-                this.ultraChart1.ChartType = ChartType.PieChart3D;
-                this.ultraChart1.PieChart3D.OthersCategoryPercent = 0.0;
-                this.ultraChart1.PieChart3D.OthersCategoryText = "其它";
-            }
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        
+        private void StatForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.bExtent = !this.bExtent;
-            this.ChangeSize();
-        }
-
-        private void ChangeSize()
-        {
-            int height = base.Size.Height;
-            int width;
-            if (!this.bExtent)
-            {
-                width = this.SizeBut.Right + 10;
-                this.SizeBut.BackgroundImage = this.imageList1.Images[0];
-            }
-            else
-            {
-                width = this.SizeBut.Right + 157;
-                this.SizeBut.BackgroundImage = this.imageList1.Images[1];
-            }
-            Size size = base.Size;
-            size.Width = width;
-            size.Height = height;
-            base.Size = size;
-        }
-
-        private void trackBar1_Scroll(object sender, EventArgs e)
-        {
-            this.ultraChart1.Transform3D.XRotation = (float)this.trackBar1.Value;
-        }
-
-        private void trackBar2_Scroll(object sender, EventArgs e)
-        {
-            this.ultraChart1.Transform3D.YRotation = (float)this.trackBar2.Value;
-        }
-
-        private void trackBar3_Scroll(object sender, EventArgs e)
-        {
-            this.ultraChart1.Transform3D.ZRotation = (float)this.trackBar3.Value;
-        }
-
-        private void SizeBar_Scroll(object sender, EventArgs e)
-        {
-            this.ultraChart1.Transform3D.Scale = (float)this.SizeBar.Value;
+            Splash.Close();
         }
 
         private void DoIt_Click(object sender, EventArgs e)
         {
-            this.ultraChart1.AutoSize = true;
-            this.ultraPrintPreviewDialog1.Document = this.ultraChart1.PrintDocument;
-            this.ultraPrintPreviewDialog1.ShowDialog();
-        }
-
-        private void ShowLegendBox_CheckedChanged(object sender, EventArgs e)
-        {
-            this.ultraChart1.Legend.Visible = this.ShowLegendBox.Checked;
-        }
-
-        private void LegendBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string a = this.LegendBox.SelectedItem.ToString();
-            string value = "";
-            foreach (KeyValuePair<string, string> current in this.PosDic)
-            {
-                if (a == current.Value)
-                {
-                    value = current.Key;
-                    break;
-                }
-            }
-            this.ultraChart1.Legend.Location = (LegendLocation)Enum.Parse(typeof(LegendLocation), value);
-        }
-
-        private void StatForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Splash.Close();
+            ultraChart1.ShowPrintPreview();
         }
     }
 }
