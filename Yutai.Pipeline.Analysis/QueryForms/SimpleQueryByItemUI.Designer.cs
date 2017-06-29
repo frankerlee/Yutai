@@ -49,7 +49,6 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			this.radioButton2.TabIndex = 1;
 			this.radioButton2.Text = "项目单位";
 			this.radioButton2.UseVisualStyleBackColor = true;
-			this.radioButton2.CheckedChanged += new EventHandler(this.radioButton2_CheckedChanged);
 			this.button1.Location = new System.Drawing.Point(51, 69);
 			this.button1.Name = "button1";
 			this.button1.Size = new Size(85, 28);
@@ -69,7 +68,6 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			this.comboBox1.Name = "comboBox1";
 			this.comboBox1.Size = new Size(279, 20);
 			this.comboBox1.TabIndex = 6;
-			this.comboBox1.SelectedIndexChanged += new EventHandler(this.comboBox1_SelectedIndexChanged);
 			this.checkBox1.AutoSize = true;
 			this.checkBox1.Checked = true;
 			this.checkBox1.CheckState = CheckState.Checked;

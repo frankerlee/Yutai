@@ -38,6 +38,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             this.button1 = new System.Windows.Forms.Button();
             this._gjListBox = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.BtnGetUniqueValue = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.InsertBut = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -123,7 +124,6 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             this._layersCheckedListBox.Size = new System.Drawing.Size(217, 84);
             this._layersCheckedListBox.Sorted = true;
             this._layersCheckedListBox.TabIndex = 2;
-            this._layersCheckedListBox.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -141,13 +141,14 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             this._gjListBox.ItemHeight = 12;
             this._gjListBox.Location = new System.Drawing.Point(6, 14);
             this._gjListBox.Name = "_gjListBox";
-            this._gjListBox.Size = new System.Drawing.Size(73, 148);
+            this._gjListBox.Size = new System.Drawing.Size(73, 124);
             this._gjListBox.Sorted = true;
             this._gjListBox.TabIndex = 17;
             this._gjListBox.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.BtnGetUniqueValue);
             this.groupBox2.Controls.Add(this._gjListBox);
             this.groupBox2.Location = new System.Drawing.Point(12, 126);
             this.groupBox2.Name = "groupBox2";
@@ -155,6 +156,16 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "管径范围";
+            // 
+            // BtnGetUniqueValue
+            // 
+            this.BtnGetUniqueValue.Location = new System.Drawing.Point(6, 140);
+            this.BtnGetUniqueValue.Name = "BtnGetUniqueValue";
+            this.BtnGetUniqueValue.Size = new System.Drawing.Size(72, 23);
+            this.BtnGetUniqueValue.TabIndex = 18;
+            this.BtnGetUniqueValue.Text = "获取唯一值";
+            this.BtnGetUniqueValue.UseVisualStyleBackColor = true;
+            this.BtnGetUniqueValue.Click += new System.EventHandler(this.BtnGetUniqueValue_Click);
             // 
             // groupBox3
             // 
@@ -348,5 +359,6 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 		private Label label1;
 		private Button InsertBut;
 		private CheckBox GeometrySet;
+        private Button BtnGetUniqueValue;
     }
 }

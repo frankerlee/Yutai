@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
@@ -6,6 +7,7 @@ using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common.Helpers;
 using Yutai.Pipeline.Config.Helpers;
 using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
@@ -48,71 +50,10 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 _layersCheckedListBox.SelectedIndex = 0;
         }
 
-        private IFeatureLayer GetLayer(string layername)
-        {
-            var layerCount = MContext.FocusMap.LayerCount;
-            IFeatureLayer featureLayer = null;
-            IFeatureLayer result;
-            if (MapControl == null)
-            {
-                result = null;
-            }
-            else
-            {
-                for (var i = 0; i < layerCount; i++)
-                {
-                    var layer = MContext.FocusMap.Layer[i];
-                    if (layer is IFeatureLayer)
-                    {
-                        var a = layer.Name;
-                        if (a == layername)
-                        {
-                            featureLayer = (IFeatureLayer)MContext.FocusMap.Layer[i];
-                            break;
-                        }
-                    }
-                    else if (layer is IGroupLayer)
-                    {
-                        var compositeLayer = (ICompositeLayer)layer;
-                        {
-                            var count = compositeLayer.Count;
-                            for (var j = 0; j < count; j++)
-                            {
-                                var layer2 = compositeLayer.Layer[j];
-                                var a = layer2.Name;
-                                if (a == layername)
-                                {
-                                    featureLayer = (IFeatureLayer)layer2;
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-                result = featureLayer;
-            }
-            return result;
-        }
-
-        private bool ColumnEqual(object A, object B)
-        {
-            return ((A == DBNull.Value) && (B == DBNull.Value)) ||
-                   ((A != DBNull.Value) && (B != DBNull.Value) && A.Equals(B));
-        }
-
         private void AllBut_Click(object sender, EventArgs e)
         {
             for (var i = 0; i < _layersCheckedListBox.Items.Count; i++)
                 _layersCheckedListBox.SetItemChecked(i, true);
-            _gjListBox.Items.Clear();
-            var count = _layersCheckedListBox.CheckedItems.Count;
-            if (count != 0)
-                for (var j = 0; j < count; j++)
-                {
-                    var pPipeLayer =
-                        ((LayerboxItem)_layersCheckedListBox.CheckedItems[j]).m_pPipeLayer;
-                    FillFieldValuesToListBox(pPipeLayer, _gjListBox);
-                }
         }
 
         private void NoneBut_Click(object sender, EventArgs e)
@@ -129,54 +70,11 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                     _layersCheckedListBox.SetItemChecked(i, false);
                 else
                     _layersCheckedListBox.SetItemChecked(i, true);
-            _gjListBox.Items.Clear();
-            var count = _layersCheckedListBox.CheckedItems.Count;
-            if (count != 0)
-                for (var j = 0; j < count; j++)
-                {
-                    var pPipeLayer =
-                        ((LayerboxItem)_layersCheckedListBox.CheckedItems[j]).m_pPipeLayer;
-                    FillFieldValuesToListBox(pPipeLayer, _gjListBox);
-                }
         }
 
         private void SimpleStat_Load(object sender, EventArgs e)
         {
             AutoFlash();
-        }
-
-        public void FillValue()
-        {
-            if (myfields != null)
-            {
-                var layerInfo = PPipeCfg.GetBasicLayerInfo(SelectLayer.FeatureClass);
-                var lineTableFieldName = layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.GJ);
-                var num = myfields.FindField(lineTableFieldName);
-                myfield = myfields.Field[num];
-                var featureClass = SelectLayer.FeatureClass;
-                IQueryFilter queryFilter = new QueryFilter();
-                var featureCursor = featureClass.Search(queryFilter, false);
-                var feature = featureCursor.NextFeature();
-                _gjListBox.Items.Clear();
-                while (feature != null)
-                {
-                    var obj = feature.Value[num];
-                    string text;
-                    if (obj is DBNull)
-                    {
-                        text = "NULL";
-                    }
-                    else
-                    {
-                        text = obj.ToString();
-                        if (text.Length == 0)
-                            text = "空字段值";
-                    }
-                    if (!_gjListBox.Items.Contains(text))
-                        _gjListBox.Items.Add(text);
-                    feature = featureCursor.NextFeature();
-                }
-            }
         }
 
         private void AddLayer(ILayer ipLay)
@@ -356,57 +254,20 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             }
         }
 
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void FillFieldValuesToListBox(IFeatureLayer pFeaLay, ListBox lbVal, bool clear = false)
         {
-            _gjListBox.Items.Clear();
-            var count = _layersCheckedListBox.CheckedItems.Count;
-            if (count != 0)
-                for (var i = 0; i < count; i++)
-                {
-                    var pPipeLayer = ((LayerboxItem)_layersCheckedListBox.CheckedItems[i]).m_pPipeLayer;
-                    FillFieldValuesToListBox(pPipeLayer, _gjListBox);
-                    var count2 = _gjListBox.Items.Count;
-                    for (var j = 0; j < count2; j++)
-                    {
-                        var a = _gjListBox.Items[j].ToString();
-                        if (a == "")
-                            _gjListBox.Items.RemoveAt(j);
-                    }
-                }
-        }
-
-        private void FillFieldValuesToListBox(IFeatureLayer pFeaLay, ListBox lbVal)
-        {
+            if (clear)
+                lbVal.Items.Clear();
             var featureClass = pFeaLay.FeatureClass;
-            IQueryFilter queryFilter = new QueryFilter();
-            var featureCursor = featureClass.Search(queryFilter, false);
-            var feature = featureCursor.NextFeature();
             var layerInfo = PPipeCfg.GetBasicLayerInfo(featureClass);
-            var num = featureClass.Fields.FindField(layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.GJ));
+            strGJ = layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.GJ);
+            var num = featureClass.Fields.FindField(strGJ);
             if (num != -1)
-                while (feature != null)
-                {
-                    object obj = feature.Value[num].ToString();
-                    if (Convert.IsDBNull(obj))
-                    {
-                        feature = featureCursor.NextFeature();
-                    }
-                    else
-                    {
-                        var text = obj.ToString();
-                        text = text.Trim();
-                        if (text == string.Empty)
-                        {
-                            feature = featureCursor.NextFeature();
-                        }
-                        else
-                        {
-                            if (!lbVal.Items.Contains(text))
-                                lbVal.Items.Add(obj);
-                            feature = featureCursor.NextFeature();
-                        }
-                    }
-                }
+            {
+                List<string> values = new List<string>();
+                CommonHelper.GetUniqueValues((ITable)featureClass, strGJ, values);
+                lbVal.Items.AddRange(values.ToArray());
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -646,6 +507,16 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             public override string ToString()
             {
                 return m_pPipeLayer.Name;
+            }
+        }
+
+        private void BtnGetUniqueValue_Click(object sender, EventArgs e)
+        {
+            this._gjListBox.Items.Clear();
+            foreach (LayerboxItem checkedItem in _layersCheckedListBox.CheckedItems)
+            {
+                IFeatureLayer featureLayer = checkedItem.m_pPipeLayer;
+                FillFieldValuesToListBox(featureLayer, _gjListBox);
             }
         }
     }

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using Yutai.ArcGIS.Common.Helpers;
 using Yutai.Pipeline.Config.Helpers;
 using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
@@ -61,23 +62,10 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 		{
 			this.InitializeComponent();
 		}
-
-		private void SimpleQueryByJdxzUI_Load(object sender, EventArgs e)
-		{
-			this.AutoFlash();
-		}
-
+        
 		public void AutoFlash()
 		{
 			this.FillLayerBox();
-			if (!this.ValidateField())
-			{
-				MessageBox.Show("配置文件有误，请检查！");
-			}
-			else
-			{
-				this.FillValueBox();
-			}
 		}
 
 		private void AddLayer(ILayer ipLay)
@@ -100,7 +88,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				int count = compositeLayer.Count;
 				for (int i = 0; i < count; i++)
 				{
-					ILayer ipLay = compositeLayer.get_Layer(i);
+					ILayer ipLay = compositeLayer.Layer[i];
 					this.AddLayer(ipLay);
 				}
 			}
@@ -127,7 +115,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			int layerCount = m_context.FocusMap.LayerCount;
 			for (int i = 0; i < layerCount; i++)
 			{
-				ILayer ipLay = m_context.FocusMap.get_Layer(i);
+				ILayer ipLay = m_context.FocusMap.Layer[i];
 				this.AddLayer(ipLay);
 			}
 			if (this.LayerBox.Items.Count > 0)
@@ -188,36 +176,12 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				int num = this.myfields.FindField(this.strDX);
 				if (num >= 0)
 				{
-					this.myfieldDX = this.myfields.get_Field(num);
+					this.myfieldDX = this.myfields.Field[num];
 					IFeatureClass featureClass = this.SelectLayer.FeatureClass;
-					IQueryFilter queryFilter = new QueryFilter();
-					IFeatureCursor featureCursor = featureClass.Search(queryFilter, false);
-					IFeature feature = featureCursor.NextFeature();
 					this.ValueBox.Items.Clear();
-					while (feature != null)
-					{
-						object obj = feature.get_Value(num);
-						if (obj is DBNull)
-						{
-							feature = featureCursor.NextFeature();
-						}
-						else
-						{
-							string text = obj.ToString();
-							if (text.Length == 0)
-							{
-								feature = featureCursor.NextFeature();
-							}
-							else
-							{
-								if (!this.ValueBox.Items.Contains(text))
-								{
-									this.ValueBox.Items.Add(text);
-								}
-								feature = featureCursor.NextFeature();
-							}
-						}
-					}
+                    List<string> values = new List<string>();
+                    CommonHelper.GetUniqueValues((ITable)featureClass, this.strDX, values);
+                    this.ValueBox.Items.AddRange(values.ToArray());
 				}
 			}
 		}
@@ -226,14 +190,6 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 		{
 			this.DXArray.Clear();
 			this.SqlBox.Text = "";
-			if (!this.ValidateField())
-			{
-				MessageBox.Show("配置文件有误，点性字段不匹配,请检查！");
-			}
-			else
-			{
-				this.FillValueBox();
-			}
 		}
 
 		private void AllBut_Click(object sender, EventArgs e)
@@ -444,5 +400,22 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			HelpNavigator command = HelpNavigator.KeywordIndex;
 			Help.ShowHelp(this, url, command, parameter);
 		}
+
+        private void BtnGetUniqueValue_Click(object sender, EventArgs e)
+        {
+            if (!this.ValidateField())
+            {
+                MessageBox.Show(@"配置文件有误，请检查！");
+            }
+            else
+            {
+                this.FillValueBox();
+            }
+        }
+
+        private void SimpleQueryByJdxzUI_Load(object sender, EventArgs e)
+        {
+            this.AutoFlash();
+        }
     }
 }

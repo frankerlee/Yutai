@@ -24,10 +24,12 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
 
         public override void OnClick()
         {
-            // _context.SetCurrentTool(this);
             if (this.QueryUI == null || this.QueryUI.IsDisposed)
             {
                 this.QueryUI = new StatReportformsUI();
+                this.QueryUI.FormBorderStyle = FormBorderStyle.FixedDialog;
+                this.QueryUI.MinimizeBox = false;
+                this.QueryUI.MaximizeBox = false;
                 this.QueryUI.TopMost = true;
                 this.QueryUI.MapControl = (IMapControl3)_context.MapControl;
                 this.QueryUI.pPipeCfg = _plugin.PipeConfig;

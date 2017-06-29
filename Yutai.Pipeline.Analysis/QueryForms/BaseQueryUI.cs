@@ -113,7 +113,6 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 		{
 			if (iFLayer != null)
 			{
-				string aliasName = iFLayer.FeatureClass.AliasName;
 				if (this.Text == @"管点查询")
 				{
 
@@ -124,7 +123,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 						this.Layerbox.Items.Add(layerboxItem);
 					}
 				}
-				else if (this.Text == "管线查询" && this.pPipeCfg.IsPipelineLayer(iFLayer.Name, enumPipelineDataType.Line))
+				else if (this.Text == @"管线查询" && this.pPipeCfg.IsPipelineLayer(iFLayer.Name, enumPipelineDataType.Line))
 				{
 					BaseQueryUI.LayerboxItem layerboxItem2 = new BaseQueryUI.LayerboxItem();
 					layerboxItem2.m_pPipeLayer = iFLayer;
@@ -176,7 +175,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			if (this.myfields != null)
 			{
 				int num = this.myfields.FindField(this.FieldsBox.SelectedItem.ToString());
-				IField field = this.myfields.get_Field(num);
+				IField field = this.myfields.Field[num];
 				if (field.Type == (esriFieldType) 4)
 				{
 					this.BigeRaido.Enabled = false;
@@ -289,7 +288,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 					return;
 				}
 				int num = this.myfields.FindField(this.FieldsBox.SelectedItem.ToString());
-				IField field = this.myfields.get_Field(num);
+				IField field = this.myfields.Field[num];
 				string text2 = this.FieldsBox.SelectedItem.ToString();
 				if (text == "NULL")
 				{
@@ -387,7 +386,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 				}
 				spatialFilter.WhereClause=(text2);
 			}
-			else if (MessageBox.Show("末指定属性条件,是否查询?", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+			else if (MessageBox.Show(@"末指定属性条件,是否查询?", @"提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
 			{
 				return;
 			}
@@ -409,7 +408,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 			}
 			catch (Exception)
 			{
-				MessageBox.Show("查询值有误,请检查!");
+				MessageBox.Show(@"查询值有误,请检查!");
 				return;
 			}
             //修改为插件事件，因为结果显示窗体为插件拥有。

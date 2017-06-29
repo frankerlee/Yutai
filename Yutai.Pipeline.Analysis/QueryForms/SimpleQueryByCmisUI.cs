@@ -33,15 +33,15 @@ namespace Yutai.Pipeline.Analysis.QueryForms
         {
             if (this.textBox1.Text == null)
             {
-                MessageBox.Show("坐标值不能为空:请依次输入坐标的XY值，其间用逗号隔开");
+                MessageBox.Show(@"坐标值不能为空:请依次输入坐标的XY值，其间用逗号隔开");
             }
             else
             {
                 string text = this.textBox1.Text;
-                int num = text.IndexOf(",");
+                int num = text.IndexOf(",", StringComparison.Ordinal);
                 if (num < 0)
                 {
-                    MessageBox.Show("请输入分隔符 , !");
+                    MessageBox.Show(@"请输入分隔符 , !");
                 }
                 else
                 {
@@ -51,14 +51,14 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                     });
                     if (array[0] == string.Empty)
                     {
-                        MessageBox.Show("X坐标不能为空!");
+                        MessageBox.Show(@"X坐标不能为空!");
                     }
                     else
                     {
                         string value = array[0];
                         if (array[1] == string.Empty)
                         {
-                            MessageBox.Show("Y坐标不能为空!");
+                            MessageBox.Show(@"Y坐标不能为空!");
                         }
                         else
                         {
@@ -72,7 +72,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                             }
                             catch (Exception)
                             {
-                                MessageBox.Show("输入的坐标值有误,请检查!");
+                                MessageBox.Show(@"输入的坐标值有误,请检查!");
                                 return;
                             }
                             IPoint point = new ESRI.ArcGIS.Geometry.Point();

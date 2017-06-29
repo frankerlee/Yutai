@@ -11,6 +11,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using Yutai.ArcGIS.Common.Helpers;
 using Yutai.Pipeline.Config.Helpers;
 using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
@@ -69,7 +70,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             int layerCount = m_context.FocusMap.LayerCount;
             for (int i = 0; i < layerCount; i++)
             {
-                ILayer ipLay = m_context.FocusMap.get_Layer(i);
+                ILayer ipLay = m_context.FocusMap.Layer[i];
                 this.AddLayer(ipLay);
             }
             if (this.checkedListBox1.Items.Count > 0)
@@ -85,32 +86,13 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 IFeatureClass featureClass = this.SelectLayer.FeatureClass;
                 IBasicLayerInfo layerInfo = pPipeCfg.GetBasicLayerInfo(featureClass);
                 int num = this.myfields.FindField(layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.QDMS));
-                this.myfield = this.myfields.get_Field(num);
-                IQueryFilter queryFilter = new QueryFilter();
-                IFeatureCursor featureCursor = featureClass.Search(queryFilter, false);
-                IFeature feature = featureCursor.NextFeature();
-                this.listBox1.Items.Clear();
-                while (feature != null)
+                if (num > 0)
                 {
-                    object obj = feature.get_Value(num);
-                    string text;
-                    if (obj is DBNull)
-                    {
-                        text = "NULL";
-                    }
-                    else
-                    {
-                        text = obj.ToString();
-                        if (text.Length == 0)
-                        {
-                            text = "空字段值";
-                        }
-                    }
-                    if (!this.listBox1.Items.Contains(text))
-                    {
-                        this.listBox1.Items.Add(text);
-                    }
-                    feature = featureCursor.NextFeature();
+                    this.myfield = this.myfields.Field[num];
+                    this.listBox1.Items.Clear();
+                    List<string> values = new List<string>();
+                    CommonHelper.GetUniqueValues((ITable)featureClass, layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.QDMS), values);
+                    this.listBox1.Items.AddRange(values.ToArray());
                 }
             }
         }
@@ -135,7 +117,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 int count = compositeLayer.Count;
                 for (int i = 0; i < count; i++)
                 {
-                    ILayer ipLay = compositeLayer.get_Layer(i);
+                    ILayer ipLay = compositeLayer.Layer[i];
                     this.AddLayer(ipLay);
                 }
             }
@@ -165,18 +147,18 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             int count = this.checkedListBox1.CheckedItems.Count;
             if (count == 0)
             {
-                MessageBox.Show("请选定需要统计的管线");
+                MessageBox.Show(@"请选定需要统计的管线");
             }
             else
             {
                 int rowCount = this.dataGridView1.RowCount;
                 if (rowCount <= 0)
                 {
-                    MessageBox.Show("请确定上下限的值，其值不能为空");
+                    MessageBox.Show(@"请确定上下限的值，其值不能为空");
                 }
                 else if (this.dataGridView1[0, 0].Value == null && this.dataGridView1[1, 0].Value == null)
                 {
-                    MessageBox.Show("没有确定埋深的范围");
+                    MessageBox.Show(@"没有确定埋深的范围");
                 }
                 else
                 {
@@ -204,7 +186,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                             string text2 = (string)this.dataGridView1[1, j].Value;
                             if (text == null || text2 == null)
                             {
-                                MessageBox.Show("请确定上下限的值，其值不能为空");
+                                MessageBox.Show(@"请确定上下限的值，其值不能为空");
                                 return;
                             }
                             double num = 0.0;
@@ -216,7 +198,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                             }
                             catch (Exception)
                             {
-                                MessageBox.Show("请确定上下限的值是否输入有误");
+                                MessageBox.Show(@"请确定上下限的值是否输入有误");
                                 return;
                             }
                             int num3 = 0;
@@ -244,8 +226,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                                 {
                                     IPolyline polyline = (IPolyline)feature.Shape;
                                     IPointCollection pointCollection = (IPointCollection)polyline;
-                                    IPoint point = pointCollection.get_Point(0);
-                                    IPoint point2 = pointCollection.get_Point(1);
+                                    IPoint point = pointCollection.Point[0];
+                                    IPoint point2 = pointCollection.Point[1];
                                     double m = point.M;
                                     double m2 = point2.M;
                                     if (m >= num && m < num2 && !this.DXArray.Contains(point))
@@ -344,13 +326,13 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 {
                     try
                     {
-                        object obj = feature.get_Value(num).ToString();
-                        object obj2 = feature.get_Value(num2).ToString();
-                        if (obj == null || Convert.IsDBNull(obj))
+                        object obj = feature.Value[num].ToString();
+                        object obj2 = feature.Value[num2].ToString();
+                        if (Convert.IsDBNull(obj))
                         {
                             continue;
                         }
-                        if (obj2 == null || Convert.IsDBNull(obj2))
+                        if (Convert.IsDBNull(obj2))
                         {
                             continue;
                         }
@@ -417,11 +399,13 @@ namespace Yutai.Pipeline.Analysis.QueryForms
         {
             if (this.dataGridView1.Rows.Count == 0)
             {
-                MessageBox.Show("行数已为空");
+                MessageBox.Show(@"行数已为空");
             }
             else
             {
-                this.dataGridView1.Rows.RemoveAt(this.dataGridView1.CurrentRow.Index);
+                DataGridViewRow dataGridViewRow = this.dataGridView1.CurrentRow;
+                if (dataGridViewRow != null)
+                    this.dataGridView1.Rows.RemoveAt(dataGridViewRow.Index);
             }
         }
 
@@ -429,32 +413,36 @@ namespace Yutai.Pipeline.Analysis.QueryForms
         {
             if (this.listBox1.Items.Count == 0)
             {
-                MessageBox.Show("请选定要统计的管线");
+                MessageBox.Show(@"请选定要统计的管线");
             }
             else if (this.listBox1.SelectedItems.Count == 0)
             {
-                MessageBox.Show("请选定需要的埋深");
+                MessageBox.Show(@"请选定需要的埋深");
             }
             else
             {
                 int count = this.dataGridView1.Rows.Count;
                 if (count < 1)
                 {
-                    MessageBox.Show("请用户添加行");
+                    MessageBox.Show(@"请用户添加行");
                 }
                 else
                 {
                     string value = this.listBox1.SelectedItem.ToString();
                     double num = Convert.ToDouble(value);
-                    int index = this.dataGridView1.CurrentRow.Index;
-                    double num2 = Convert.ToDouble(this.dataGridView1[0, index].Value);
-                    if (num2 > num)
+                    DataGridViewRow dataGridViewRow = this.dataGridView1.CurrentRow;
+                    if (dataGridViewRow != null)
                     {
-                        MessageBox.Show("下限值不应大于上限值");
-                    }
-                    else
-                    {
-                        this.dataGridView1.CurrentRow.Cells[1].Value = value;
+                        int index = dataGridViewRow.Index;
+                        double num2 = Convert.ToDouble(this.dataGridView1[0, index].Value);
+                        if (num2 > num)
+                        {
+                            MessageBox.Show(@"下限值不应大于上限值");
+                        }
+                        else
+                        {
+                            dataGridViewRow.Cells[1].Value = value;
+                        }
                     }
                 }
             }
@@ -464,32 +452,36 @@ namespace Yutai.Pipeline.Analysis.QueryForms
         {
             if (this.listBox1.Items.Count == 0)
             {
-                MessageBox.Show("请选定要统计的管线");
+                MessageBox.Show(@"请选定要统计的管线");
             }
             else if (this.listBox1.SelectedItems.Count == 0)
             {
-                MessageBox.Show("请选定需要的埋深");
+                MessageBox.Show(@"请选定需要的埋深");
             }
             else
             {
                 int count = this.dataGridView1.Rows.Count;
                 if (count < 1)
                 {
-                    MessageBox.Show("请用户添加行");
+                    MessageBox.Show(@"请用户添加行");
                 }
                 else
                 {
                     string value = this.listBox1.SelectedItem.ToString();
                     double num = Convert.ToDouble(value);
-                    int index = this.dataGridView1.CurrentRow.Index;
-                    double num2 = Convert.ToDouble(this.dataGridView1[1, index].Value);
-                    if (num2 < num && num2 != 0.0)
+                    DataGridViewRow dataGridViewRow = this.dataGridView1.CurrentRow;
+                    if (dataGridViewRow != null)
                     {
-                        MessageBox.Show("下限值不应大于上限值");
-                    }
-                    else
-                    {
-                        this.dataGridView1.CurrentRow.Cells[0].Value = value;
+                        int index = dataGridViewRow.Index;
+                        double num2 = Convert.ToDouble(this.dataGridView1[1, index].Value);
+                        if (num2 < num && Math.Abs(num2) > 0)
+                        {
+                            MessageBox.Show(@"下限值不应大于上限值");
+                        }
+                        else
+                        {
+                            dataGridViewRow.Cells[0].Value = value;
+                        }
                     }
                 }
             }
@@ -542,7 +534,9 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             }
             else
             {
-                this.dataGridView1.Rows.Insert(this.dataGridView1.CurrentRow.Index, new object[0]);
+                DataGridViewRow dataGridViewRow = this.dataGridView1.CurrentRow;
+                if (dataGridViewRow != null)
+                    this.dataGridView1.Rows.Insert(dataGridViewRow.Index, new object[0]);
             }
         }
 
@@ -595,7 +589,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                         {
                             ISimpleMarkerSymbol simpleMarkerSymbol = new SimpleMarkerSymbol();
                             symbol = (ISymbol)simpleMarkerSymbol;
-                            symbol.ROP2 = (esriRasterOpCode)(10);
+                            symbol.ROP2 = esriRasterOpCode.esriROPNotXOrPen;
                             simpleMarkerSymbol.Color = (rgbColor);
                             simpleMarkerSymbol.Size = ((double)(selectionBufferInPixels + selectionBufferInPixels + selectionBufferInPixels));
                             break;
@@ -604,9 +598,9 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                         {
                             ISimpleLineSymbol simpleLineSymbol = new SimpleLineSymbol();
                             symbol = (ISymbol)simpleLineSymbol;
-                            symbol.ROP2 = (esriRasterOpCode)(10);
-                            simpleLineSymbol.Color = (rgbColor);
-                            simpleLineSymbol.Color.Transparency = (1);
+                            symbol.ROP2 = esriRasterOpCode.esriROPNotXOrPen;
+                            simpleLineSymbol.Color = rgbColor;
+                            simpleLineSymbol.Color.Transparency = 1;
                             simpleLineSymbol.Width = ((double)selectionBufferInPixels);
                             break;
                         }
@@ -615,9 +609,9 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                         {
                             ISimpleFillSymbol simpleFillSymbol = new SimpleFillSymbol();
                             symbol = (ISymbol)simpleFillSymbol;
-                            symbol.ROP2 = (esriRasterOpCode)(10);
-                            simpleFillSymbol.Color = (rgbColor);
-                            simpleFillSymbol.Color.Transparency = (1);
+                            symbol.ROP2 = esriRasterOpCode.esriROPNotXOrPen;
+                            simpleFillSymbol.Color = rgbColor;
+                            simpleFillSymbol.Color.Transparency = 1;
                             break;
                         }
                 }

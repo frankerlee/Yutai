@@ -201,7 +201,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             this.groupBox1.Controls.Add(this.BigeRaido);
             this.groupBox1.Controls.Add(this.Bigradio);
             this.groupBox1.Controls.Add(this.Equalradio);
-            this.groupBox1.Location = new System.Drawing.Point(1, 72);
+            this.groupBox1.Location = new System.Drawing.Point(3, 72);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(74, 154);
             this.groupBox1.TabIndex = 13;
@@ -240,7 +240,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             // CloseButton
             // 
             this.CloseButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CloseButton.Location = new System.Drawing.Point(128, 263);
+            this.CloseButton.Location = new System.Drawing.Point(145, 263);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(75, 23);
             this.CloseButton.TabIndex = 15;
@@ -331,9 +331,9 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             // 
             // Clearbut
             // 
-            this.Clearbut.Location = new System.Drawing.Point(83, 230);
+            this.Clearbut.Location = new System.Drawing.Point(81, 230);
             this.Clearbut.Name = "Clearbut";
-            this.Clearbut.Size = new System.Drawing.Size(69, 24);
+            this.Clearbut.Size = new System.Drawing.Size(62, 24);
             this.Clearbut.TabIndex = 17;
             this.Clearbut.Text = "清理屏幕";
             this.Clearbut.UseVisualStyleBackColor = true;
@@ -342,9 +342,9 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(149, 230);
+            this.button1.Location = new System.Drawing.Point(144, 230);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(78, 24);
+            this.button1.Size = new System.Drawing.Size(76, 24);
             this.button1.TabIndex = 18;
             this.button1.Text = "获取唯一值";
             this.button1.UseVisualStyleBackColor = true;

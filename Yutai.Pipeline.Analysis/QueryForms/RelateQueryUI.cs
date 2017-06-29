@@ -7,10 +7,12 @@ using ESRI.ArcGIS.Geometry;
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using Yutai.ArcGIS.Common.Helpers;
 using Yutai.Pipeline.Analysis.Helpers;
 using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
@@ -179,6 +181,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                     }
                 }
             }
+
             if (cmbVal.Items.Count > 0)
             {
                 cmbVal.SelectedIndex = 0;
@@ -188,68 +191,29 @@ namespace Yutai.Pipeline.Analysis.QueryForms
         private void FillFieldValuesToListBox(IFeatureLayer pFeaLay, string strFieldName, ListBox lbVal)
         {
             IFeatureClass featureClass = pFeaLay.FeatureClass;
-            IQueryFilter queryFilter = new QueryFilter();
-            IFeatureCursor featureCursor = featureClass.Search(queryFilter, false);
-            IFeature feature = featureCursor.NextFeature();
             int num = featureClass.Fields.FindField(strFieldName);
             if (num != -1)
             {
                 lbVal.Items.Clear();
-                while (feature != null)
-                {
-                    object obj = feature.get_Value(num).ToString();
-                    if (obj != null && !Convert.IsDBNull(obj))
-                    {
-                        string value = obj.ToString();
-                        if (!lbVal.Items.Contains(value))
-                        {
-                            lbVal.Items.Add(obj);
-                        }
-                        feature = featureCursor.NextFeature();
-                    }
-                }
+                List<string> values = new List<string>();
+                CommonHelper.GetUniqueValues((ITable)featureClass, strFieldName, values);
+                lbVal.Items.AddRange(values.ToArray());
             }
         }
-
-        private void cmbPipeLineFields_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (this.cmbPipeLine.Items.Count >= 1)
-            {
-                RelateQueryUI.LayerboxItem layerboxItem = this.cmbPipeLine.SelectedItem as RelateQueryUI.LayerboxItem;
-                IFeatureLayer pPipeLayer = layerboxItem.m_pPipeLayer;
-                if (pPipeLayer != null)
-                {
-                    this.FillFieldValuesToListBox(pPipeLayer, this.cmbPipeLineFields.Text.Trim(), this.lstBoxPipeLineValues);
-                }
-            }
-        }
-
-        private void cmbPipePointFields_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (this.cmbPipePoint.Items.Count >= 1)
-            {
-                RelateQueryUI.LayerboxItem layerboxItem = this.cmbPipePoint.SelectedItem as RelateQueryUI.LayerboxItem;
-                IFeatureLayer pPipeLayer = layerboxItem.m_pPipeLayer;
-                if (pPipeLayer != null)
-                {
-                    this.FillFieldValuesToListBox(pPipeLayer, this.cmbPipePointFields.Text.Trim(), this.lstBoxPipePointValues);
-                }
-            }
-        }
-
+        
         private void btnPipeLineQuery_Click(object sender, EventArgs e)
         {
             if (this.cmbPipeLineFields.Text == "")
             {
-                MessageBox.Show("请选择管线层查询字段！");
+                MessageBox.Show(@"请选择管线层查询字段！");
             }
             else if (this.lstBoxPipeLineValues.Text == "")
             {
-                MessageBox.Show("请指定管线层查询值！");
+                MessageBox.Show(@"请指定管线层查询值！");
             }
             else if (this.lstBoxPipeLineValues.Text == "")
             {
-                MessageBox.Show("请指定管点层查询值！");
+                MessageBox.Show(@"请指定管点层查询值！");
             }
             else
             {
@@ -281,15 +245,15 @@ namespace Yutai.Pipeline.Analysis.QueryForms
         {
             if (this.cmbPipeLineFields.Text == "")
             {
-                MessageBox.Show("请选择管点层查询字段！");
+                MessageBox.Show(@"请选择管点层查询字段！");
             }
             else if (this.lstBoxPipeLineValues.Text == "")
             {
-                MessageBox.Show("请指定管线层查询值！");
+                MessageBox.Show(@"请指定管线层查询值！");
             }
             else if (this.lstBoxPipeLineValues.Text == "")
             {
-                MessageBox.Show("请指定管点层查询值！");
+                MessageBox.Show(@"请指定管点层查询值！");
             }
             else
             {
@@ -377,11 +341,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 }
             }
         }
-
-        private void QueryPipePoint()
-        {
-        }
-
+        
         private bool JustifyPipeLine(IFeature pFeatureLine)
         {
             IEdgeFeature edgeFeature = null;
@@ -396,7 +356,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             IFields fields = feature.Fields;
             string text = this.cmbPipePointFields.Text.Trim();
             int num = fields.FindField(text);
-            object obj = feature.get_Value(num);
+            object obj = feature.Value[num];
             string a;
             if (obj == null || Convert.IsDBNull(obj))
             {
@@ -428,15 +388,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             }
             return flag || flag2;
         }
-
-        private void lstBoxPipeLineValues_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void lstBoxPipePointValues_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
+        
         private void axMap_OnAfterDraw(object sender, IMapControlEvents2_OnAfterDrawEvent e)
         {
             int viewDrawPhase = e.viewDrawPhase;
@@ -539,6 +491,32 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             string parameter = "关联查询";
             HelpNavigator command = HelpNavigator.KeywordIndex;
             Help.ShowHelp(this, url, command, parameter);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (this.cmbPipeLine.Items.Count >= 1)
+            {
+                RelateQueryUI.LayerboxItem layerboxItem = this.cmbPipeLine.SelectedItem as RelateQueryUI.LayerboxItem;
+                IFeatureLayer pPipeLayer = layerboxItem.m_pPipeLayer;
+                if (pPipeLayer != null)
+                {
+                    this.FillFieldValuesToListBox(pPipeLayer, this.cmbPipeLineFields.Text.Trim(), this.lstBoxPipeLineValues);
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (this.cmbPipePoint.Items.Count >= 1)
+            {
+                RelateQueryUI.LayerboxItem layerboxItem = this.cmbPipePoint.SelectedItem as RelateQueryUI.LayerboxItem;
+                IFeatureLayer pPipeLayer = layerboxItem.m_pPipeLayer;
+                if (pPipeLayer != null)
+                {
+                    this.FillFieldValuesToListBox(pPipeLayer, this.cmbPipePointFields.Text.Trim(), this.lstBoxPipePointValues);
+                }
+            }
         }
     }
 }
