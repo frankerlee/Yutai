@@ -34,7 +34,7 @@ namespace Yutai.Pipeline.Analysis.Commands
             _context = hook as IAppContext;
             base.m_caption = "爆点预警";
             base.m_category = "PipelineAnalysus";
-            base.m_bitmap = Properties.Resources.icon_analysis_collision;
+            base.m_bitmap = Properties.Resources.icon_warning_anlysis;
             base.m_name = "PipeAnalysis_PopAlarmAnalysis";
             base._key = "PipeAnalysis_PopAlarmAnalysis";
             base.m_toolTip = "爆点预警";

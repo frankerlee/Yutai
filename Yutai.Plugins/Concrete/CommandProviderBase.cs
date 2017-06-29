@@ -10,6 +10,7 @@ namespace Yutai.Plugins.Concrete
     {
         protected readonly Dictionary<string, YutaiCommand> Commands = new Dictionary<string, YutaiCommand>();
         protected IAppContext _context;
+        
         protected CommandProviderBase(IAppContext context,PluginIdentity identity)
         {
             _context = context;

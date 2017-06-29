@@ -29,6 +29,7 @@ namespace Yutai.Menu
             _context = context;
             _broadcaster = broadcaster;
             _projectService = projectService;
+            
 
             _mapEvents = _context.MapControl as IMapControlEvents2_Event;
             if (_mapEvents == null)
@@ -44,9 +45,6 @@ namespace Yutai.Menu
         {
             _mapEvents.OnExtentUpdated+= MapEventsOnOnExtentUpdated;
             _mapEvents.OnSelectionChanged+= MapEventsOnOnSelectionChanged;
-            
-            
-           
         }
 
        

@@ -7,8 +7,8 @@ namespace Yutai.Pipeline.Analysis
     {
         public static void Compose(IApplicationContainer container)
         {
-           container.RegisterService<IQueryResultView, QueryResultView>()
-                .RegisterSingleton<QueryResultPresenter>();
+            container.RegisterService<IQueryResultView, QueryResultView>()
+                 .RegisterSingleton<QueryResultPresenter>();
             //    .RegisterService<IGeometryInfoView, GeometryInfoView>()
             //     .RegisterService<IAttributeEditView, AttributeEditView>()
             //    .RegisterSingleton<EditTemplatePresenter>()

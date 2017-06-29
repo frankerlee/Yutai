@@ -137,7 +137,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 			object obj2 = simpleFillSymbolClass;
 			try
 			{
-				if (this.igeometry_0.GeometryType == (esriGeometryType) 1)
+				if (this.igeometry_0.GeometryType ==esriGeometryType.esriGeometryPoint)
 				{
 					mapControl.DrawShape(this.igeometry_0, ref obj1);
 				}
@@ -318,7 +318,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 			IEnvelope envelope = pGeo.Envelope;
 			if ((pMapCtrl.Extent.LowerLeft.X > envelope.LowerLeft.X || pMapCtrl.Extent.LowerLeft.Y > envelope.LowerLeft.Y || pMapCtrl.Extent.UpperRight.X < envelope.UpperRight.X ? true : pMapCtrl.Extent.UpperRight.Y < envelope.UpperRight.Y))
 			{
-				if (pGeo.GeometryType != (esriGeometryType) 1)
+				if (pGeo.GeometryType !=esriGeometryType.esriGeometryPoint)
 				{
 					IEnvelope envelope1 = pGeo.Envelope;
 					envelope1.Expand(3, 3, true);

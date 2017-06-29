@@ -157,6 +157,9 @@
   <data name="icon_measure_length" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_measure_length.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icon_prealarm" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_prealarm.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icon_print" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_print.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -186,5 +189,8 @@
   </data>
   <data name="icon_versect" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_versect.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_warning_anlysis" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_warning_anlysis.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

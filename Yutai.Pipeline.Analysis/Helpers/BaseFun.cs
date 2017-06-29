@@ -347,7 +347,7 @@ namespace Yutai.Pipeline.Analysis.Helpers
 
         public static void SelectObjsByShape(IMap pMap, IGeometry Geo, bool justOnce)
         {
-            if (Geo.GeometryType == (esriGeometryType) 1)
+            if (Geo.GeometryType ==esriGeometryType.esriGeometryPoint)
             {
                 IPoint point = (IPoint)Geo;
                 double num = ((IActiveView)pMap).Extent.Width / 200.0;

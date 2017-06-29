@@ -31,7 +31,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1017, 699);
+            this.ClientSize = new System.Drawing.Size(915, 445);
             this.Name = "StatReportformsUI";
             this.Text = "统计报表";
             this.ResumeLayout(false);

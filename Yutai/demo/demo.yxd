@@ -29,6 +29,10 @@
       <Name>管线分析</Name>
       <ConfigXML>\\plugins\\configs\\pipeline.xml</ConfigXML>
     </Plugin>
+    <Plugin>
+      <Guid>5e933989-b5a4-4a45-a5b7-2d9ded61df0f</Guid>
+      <Name>地图制图</Name>
+    </Plugin>
     
   </Plugins>
   

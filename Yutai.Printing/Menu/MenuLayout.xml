@@ -1,0 +1,11 @@
+﻿<YutaiGIS>
+  <MainMenu>
+    <Pages>
+      <Page Key="Layout" Caption="制图" Index="0" Visible="true">
+        <PageGroup Key="Layout_Common" Caption="常用" Visible="true" Index="0">
+          <BarItem Key="Layout_StartLayout" Visible="true"></BarItem>
+        </PageGroup>
+      </Page>
+    </Pages>
+  </MainMenu>
+</YutaiGIS>

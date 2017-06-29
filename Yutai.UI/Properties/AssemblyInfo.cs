@@ -39,6 +39,8 @@ using System.Runtime.InteropServices;
 [assembly: InternalsVisibleTo("Yutai.Locator")]
 [assembly: InternalsVisibleTo("Yutai.Bookmark")]
 [assembly: InternalsVisibleTo("Yutai.TableEditor")]
+[assembly: InternalsVisibleTo("Yutai.Printing")]
 [assembly: InternalsVisibleTo("Yutai.Pipeline.Analysis")]
+[assembly: InternalsVisibleTo("Yutai.Pipeline.Editor")]
 [assembly: InternalsVisibleTo("YutaiGIS")]
 [assembly: InternalsVisibleTo("Yutai.Test")]

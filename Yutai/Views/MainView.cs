@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using DevExpress.Utils;
+using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using Syncfusion.Windows.Forms.Tools;
 using Yutai.Forms;
@@ -99,12 +100,29 @@ namespace Yutai.Views
             }
         }
 
-        public IMapControl2 MapControl { get { return (IMapControl2)axMapControl1.Object; } }
+        public IMapControl3 MapControl { get { return (IMapControl3)axMapControl1.Object; } }
         public AxMapControl MapControlContainer { get { return axMapControl1; } }
+        public YutaiTool CurrentTool { get; set; }
+        public IActiveView ActiveView { get; set; }
+        public IMap FocusMap { get; set; }
+        public IPageLayoutControl3 PageLayoutControl { get; set; }
+        public string ActiveViewType { get; }
+        public object ActiveGISControl { get; }
+        public object ActiveControl { get; }
+        public void ActivateMap()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ActivatePageLayout()
+        {
+            throw new NotImplementedException();
+        }
 
         public event EventHandler<CancelEventArgs> ViewClosing;
 
         public event EventHandler<RenderedEventArgs> ViewUpdating;
+        public event EventHandler<EventArgs> ArcGISControlChanging;
 
         public event Action BeforeShow;
         public void Lock()

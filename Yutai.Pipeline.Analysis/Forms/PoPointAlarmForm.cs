@@ -13,13 +13,13 @@ namespace Yutai.Pipeline.Analysis.Forms
 {
 	public partial class PoPointAlarmForm : Form
 	{
-		private partial class Class5
+		private partial class LayerItem
 		{
-			public IFeatureLayer ifeatureLayer_0;
+			public IFeatureLayer featureLayer;
 
 			public override string ToString()
 			{
-				return this.ifeatureLayer_0.Name;
+				return this.featureLayer.Name;
 			}
 		}
 
@@ -42,10 +42,10 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		private void PoPointAlarmForm_Load(object obj, EventArgs eventArgs)
 		{
-			this.method_0();
+			this.FillLayers();
 		}
 
-		private void method_0()
+		private void FillLayers()
 		{
 			this.LayerBox.Items.Clear();
 			CommonUtils.ThrougAllLayer(m_iApp.FocusMap, new CommonUtils.DealLayer(this.AddName));
@@ -60,10 +60,10 @@ namespace Yutai.Pipeline.Analysis.Forms
 			if (pLayer is IFeatureLayer)
 			{
 				IFeatureLayer featureLayer = pLayer as IFeatureLayer;
-				if (this.pPipeCfg.IsPipelineLayer(featureLayer.Name,enumPipelineDataType.Line))
+				if (this.pPipeCfg.IsPipelineLayer(featureLayer.FeatureClass.AliasName,enumPipelineDataType.Line))
 				{
-					PoPointAlarmForm.Class5 pclass = new PoPointAlarmForm.Class5();
-					pclass.ifeatureLayer_0 = featureLayer;
+					PoPointAlarmForm.LayerItem pclass = new PoPointAlarmForm.LayerItem();
+					pclass.featureLayer = featureLayer;
 					this.LayerBox.Items.Add(pclass);
 				}
 			}
@@ -80,13 +80,13 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		private void btnAnalyse_Click(object obj, EventArgs eventArgs)
 		{
-			PoPointAlarmForm.Class5 pclass = this.LayerBox.SelectedItem as PoPointAlarmForm.Class5;
+			PoPointAlarmForm.LayerItem pclass = this.LayerBox.SelectedItem as PoPointAlarmForm.LayerItem;
 			this.DeleteAllElements(m_iApp.FocusMap);
 			if (this.ppalarmResult_0 == null)
 			{
 				this.ppalarmResult_0 = new PPAlarmResult(m_iApp, pPipeCfg);
 				this.ppalarmResult_0.App = this.m_iApp;
-				this.ppalarmResult_0.m_pCurLayer = pclass.ifeatureLayer_0;
+				this.ppalarmResult_0.m_pCurLayer = pclass.featureLayer;
 				this.ppalarmResult_0.m_strLayerName = this.LayerBox.Text;
 				this.ppalarmResult_0.m_nExpireTime = (int)Convert.ToSingle(this.txBoxExpireTime.Text.Trim());
 				this.ppalarmResult_0.Show();
@@ -94,14 +94,14 @@ namespace Yutai.Pipeline.Analysis.Forms
 			else if (this.ppalarmResult_0.Visible)
 			{
 				this.ppalarmResult_0.m_strLayerName = this.LayerBox.Text;
-				this.ppalarmResult_0.m_pCurLayer = pclass.ifeatureLayer_0;
+				this.ppalarmResult_0.m_pCurLayer = pclass.featureLayer;
 				this.ppalarmResult_0.m_nExpireTime = (int)Convert.ToSingle(this.txBoxExpireTime.Text.Trim());
 				this.ppalarmResult_0.ThrougAllLayer();
 			}
 			else
 			{
 				this.ppalarmResult_0.m_strLayerName = this.LayerBox.Text;
-				this.ppalarmResult_0.m_pCurLayer = pclass.ifeatureLayer_0;
+				this.ppalarmResult_0.m_pCurLayer = pclass.featureLayer;
 				this.ppalarmResult_0.m_nExpireTime = (int)Convert.ToSingle(this.txBoxExpireTime.Text.Trim());
 				this.ppalarmResult_0.ThrougAllLayer();
 				this.ppalarmResult_0.Visible = true;

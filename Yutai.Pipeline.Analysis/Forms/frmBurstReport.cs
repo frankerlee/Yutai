@@ -492,7 +492,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		public void ScaleToGeo(IActiveView pView, IGeometry pGeo)
 		{
-			if (pGeo.GeometryType == (esriGeometryType) 1)
+			if (pGeo.GeometryType ==esriGeometryType.esriGeometryPoint)
 			{
 				IEnvelope envelope = pGeo.Envelope;
 			    IEnvelope extent = pView.Extent;
@@ -817,7 +817,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 			object obj2 = simpleMarkerSymbolClass;
 			try
 			{
-				if (this.BuoawIbkuD.GeometryType == (esriGeometryType) 1)
+				if (this.BuoawIbkuD.GeometryType ==esriGeometryType.esriGeometryPoint)
 				{
 					mapControl.DrawShape(this.BuoawIbkuD, ref obj2);
 				}

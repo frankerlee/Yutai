@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewMainView));
             this.ribbonManager = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
@@ -35,14 +36,18 @@
             this.pageMap = new DevExpress.XtraTab.XtraTabPage();
             this.axLicenseControl1 = new ESRI.ArcGIS.Controls.AxLicenseControl();
             this.axMapControl1 = new ESRI.ArcGIS.Controls.AxMapControl();
-            this.dockManager = new DevExpress.XtraBars.Docking.DockManager();
-            this.toolTipController1 = new DevExpress.Utils.ToolTipController();
+            this.pageLayout = new DevExpress.XtraTab.XtraTabPage();
+            this.axPageLayoutControl1 = new ESRI.ArcGIS.Controls.AxPageLayoutControl();
+            this.dockManager = new DevExpress.XtraBars.Docking.DockManager(this.components);
+            this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabContent)).BeginInit();
             this.tabContent.SuspendLayout();
             this.pageMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axLicenseControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).BeginInit();
+            this.pageLayout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axPageLayoutControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,7 +78,8 @@
             this.tabContent.Size = new System.Drawing.Size(1128, 603);
             this.tabContent.TabIndex = 2;
             this.tabContent.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.pageMap});
+            this.pageMap,
+            this.pageLayout});
             // 
             // pageMap
             // 
@@ -101,6 +107,23 @@
             this.axMapControl1.Size = new System.Drawing.Size(1122, 574);
             this.axMapControl1.TabIndex = 1;
             this.toolTipController1.SetToolTip(this.axMapControl1, "地图窗口");
+            // 
+            // pageLayout
+            // 
+            this.pageLayout.Controls.Add(this.axPageLayoutControl1);
+            this.pageLayout.Name = "pageLayout";
+            this.pageLayout.Size = new System.Drawing.Size(1122, 574);
+            this.pageLayout.Text = "制图窗口";
+            // 
+            // axPageLayoutControl1
+            // 
+            this.axPageLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.axPageLayoutControl1.Location = new System.Drawing.Point(0, 0);
+            this.axPageLayoutControl1.Name = "axPageLayoutControl1";
+            this.axPageLayoutControl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axPageLayoutControl1.OcxState")));
+            this.axPageLayoutControl1.Padding = new System.Windows.Forms.Padding(2);
+            this.axPageLayoutControl1.Size = new System.Drawing.Size(1122, 574);
+            this.axPageLayoutControl1.TabIndex = 0;
             // 
             // dockManager
             // 
@@ -135,6 +158,8 @@
             this.pageMap.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.axLicenseControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).EndInit();
+            this.pageLayout.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.axPageLayoutControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -151,5 +176,7 @@
         private ESRI.ArcGIS.Controls.AxMapControl axMapControl1;
         private DevExpress.XtraBars.Docking.DockManager dockManager;
         private DevExpress.Utils.ToolTipController toolTipController1;
+        private DevExpress.XtraTab.XtraTabPage pageLayout;
+        private ESRI.ArcGIS.Controls.AxPageLayoutControl axPageLayoutControl1;
     }
 }

@@ -24,7 +24,7 @@ namespace Yutai.Pipeline.Analysis.Menu
             _plugin = plugin;
             _context = context;
             _menuManager = _context.MainView.RibbonManager;
-            _commands = new YutaiCommands(_context, plugin.Identity);
+            _commands = new YutaiCommands(_context, plugin);
             _commands.Plugin = plugin;
             InitMenus();
         }

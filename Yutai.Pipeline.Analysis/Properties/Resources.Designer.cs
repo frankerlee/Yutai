@@ -193,6 +193,16 @@ namespace Yutai.Pipeline.Analysis.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap icon_prealarm {
+            get {
+                object obj = ResourceManager.GetObject("icon_prealarm", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap icon_print {
             get {
                 object obj = ResourceManager.GetObject("icon_print", resourceCulture);
@@ -286,6 +296,16 @@ namespace Yutai.Pipeline.Analysis.Properties {
         internal static System.Drawing.Bitmap icon_versect {
             get {
                 object obj = ResourceManager.GetObject("icon_versect", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_warning_anlysis {
+            get {
+                object obj = ResourceManager.GetObject("icon_warning_anlysis", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

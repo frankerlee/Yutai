@@ -83,7 +83,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		private void PreAlarmDlg_Load(object obj, EventArgs eventArgs)
 		{
-			this.method_0();
+			this.FillLayers();
 		}
 
 		public void AddName(ILayer pLayer)
@@ -91,7 +91,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 			if (pLayer is IFeatureLayer)
 			{
 				IFeatureLayer featureLayer = pLayer as IFeatureLayer;
-				if (this.pPipeCfg.IsPipelineLayer(featureLayer.Name,enumPipelineDataType.Point) || this.pPipeCfg.IsPipelineLayer(featureLayer.Name,enumPipelineDataType.Line))
+				if (this.pPipeCfg.IsPipelineLayer(featureLayer.FeatureClass))
 				{
                     CheckListFeatureLayerItem pclass = new CheckListFeatureLayerItem();
 					pclass.m_pFeatureLayer = featureLayer;
@@ -100,7 +100,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 			}
 		}
 
-		private void method_0()
+		private void FillLayers()
 		{
 			this.LayerBox.Items.Clear();
 			CommonUtils.ThrougAllLayer(this.m_iApp.FocusMap, new CommonUtils.DealLayer(this.AddName));
@@ -108,37 +108,31 @@ namespace Yutai.Pipeline.Analysis.Forms
 			{
 				this.LayerBox.SelectedIndex = 0;
 			}
-			this.method_1();
+		
 		}
 
 		private void LayerBox_SelectedIndexChanged(object obj, EventArgs eventArgs)
 		{
-			if (this.LayerBox.SelectedIndex != -1)
-			{
-				this.method_1();
-			}
+			
 		}
 
-		private void method_1()
-		{
-		}
 
-		private void method_2(IMap map)
-		{
-			int layerCount = map.LayerCount;
-			for (int i = 0; i < layerCount; i++)
-			{
-				ILayer layer = map.get_Layer(i);
-				if (layer is ICompositeLayer)
-				{
-					this.VerifyLayer(layer);
-				}
-				else
-				{
-					this.method_3((IFeatureLayer)layer);
-				}
-			}
-		}
+		//private void method_2(IMap map)
+		//{
+		//	int layerCount = map.LayerCount;
+		//	for (int i = 0; i < layerCount; i++)
+		//	{
+		//		ILayer layer = map.get_Layer(i);
+		//		if (layer is ICompositeLayer)
+		//		{
+		//			this.VerifyLayer(layer);
+		//		}
+		//		else
+		//		{
+		//			this.ValidatePipeLayer((IFeatureLayer)layer);
+		//		}
+		//	}
+		//}
 
 		public ILayer VerifyLayer(ILayer pLayVal)
 		{
@@ -153,13 +147,13 @@ namespace Yutai.Pipeline.Analysis.Forms
 				}
 				else
 				{
-					this.method_3((IFeatureLayer)layer);
+					this.ValidatePipeLayer((IFeatureLayer)layer);
 				}
 			}
 			return null;
 		}
 
-		private void method_3(IFeatureLayer featureLayer)
+		private void ValidatePipeLayer(IFeatureLayer featureLayer)
 		{
 		}
 
@@ -183,25 +177,25 @@ namespace Yutai.Pipeline.Analysis.Forms
             ((IActiveView)pView).Refresh();
 		}
 
-		public void NewLineElement(IActiveView pView, IPolyline pPolyLine)
-		{
-		    IGraphicsContainer graphicsContainer = (IGraphicsContainer) pView;
+		//public void NewLineElement(IActiveView pView, IPolyline pPolyLine)
+		//{
+		//    IGraphicsContainer graphicsContainer = (IGraphicsContainer) pView;
 			
-			ISimpleLineSymbol simpleLineSymbol = new SimpleLineSymbol();
-			ISimpleLineSymbol arg_3D_0 = simpleLineSymbol;
-			IRgbColor rgbColorClass = new RgbColor();
-			rgbColorClass.Red=(0);
-			rgbColorClass.Green=(255);
-			rgbColorClass.Blue=(255);
-			arg_3D_0.Color=(rgbColorClass);
-			simpleLineSymbol.Width=(8.0);
-			simpleLineSymbol.Style=(esriSimpleLineStyle) (2);
-			IGraphicsContainer arg_68_0 = graphicsContainer;
-			ILineElement lineElementClass = new LineElement() as ILineElement;
-            ((IElement)lineElementClass).Geometry=(pPolyLine);
-			arg_68_0.AddElement(lineElementClass as IElement, 0);
-			pView.Refresh();
-		}
+		//	ISimpleLineSymbol simpleLineSymbol = new SimpleLineSymbol();
+		//	ISimpleLineSymbol arg_3D_0 = simpleLineSymbol;
+		//	IRgbColor rgbColorClass = new RgbColor();
+		//	rgbColorClass.Red=(0);
+		//	rgbColorClass.Green=(255);
+		//	rgbColorClass.Blue=(255);
+		//	arg_3D_0.Color=(rgbColorClass);
+		//	simpleLineSymbol.Width=(8.0);
+		//	simpleLineSymbol.Style=(esriSimpleLineStyle) (2);
+		//	IGraphicsContainer arg_68_0 = graphicsContainer;
+		//	ILineElement lineElementClass = new LineElement() as ILineElement;
+  //          ((IElement)lineElementClass).Geometry=(pPolyLine);
+		//	arg_68_0.AddElement(lineElementClass as IElement, 0);
+		//	pView.Refresh();
+		//}
 
 		public void DeleteAllElements(IActiveView pView)
 		{
@@ -212,12 +206,12 @@ namespace Yutai.Pipeline.Analysis.Forms
 			activeView.Refresh();
 		}
 
-		private bool aelhLaYb1(IFeatureLayer featureLayer)
-		{
-			ILayerFields layerFields = (ILayerFields)featureLayer;
-			int num = layerFields.FindField("建设年代");
-			return num > 0;
-		}
+		//private bool aelhLaYb1(IFeatureLayer featureLayer)
+		//{
+		//	ILayerFields layerFields = (ILayerFields)featureLayer;
+		//	int num = layerFields.FindField("建设年代");
+		//	return num > 0;
+		//}
 
 		private void PreAlarmDlg_FormClosing(object obj, FormClosingEventArgs formClosingEventArgs)
 		{

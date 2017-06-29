@@ -1,0 +1,11 @@
+﻿<YutaiGIS>
+  <MainMenu>
+    <Pages>
+      <Page Key="PipelineQuery" Caption="管线编辑" Index="0" Visible="true">
+        <PageGroup Key="Pipeline_Editor_Common" Caption="常用" Visible="true" Index="1">
+       
+        </PageGroup>
+      </Page>
+    </Pages>
+  </MainMenu>
+</YutaiGIS>

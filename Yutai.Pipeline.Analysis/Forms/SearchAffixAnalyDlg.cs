@@ -735,7 +735,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 			try
 			{
 				esriGeometryType geometryType = this.igeometryCollection_0.get_Geometry(0).GeometryType;
-				if (geometryType == (esriGeometryType) 1)
+				if (geometryType ==esriGeometryType.esriGeometryPoint)
 				{
 					ISimpleMarkerSymbol simpleMarkerSymbolClass = new SimpleMarkerSymbol();
 					simpleMarkerSymbolClass.Color=(rgbColor);

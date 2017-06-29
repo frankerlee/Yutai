@@ -102,11 +102,12 @@ namespace Yutai.Plugins.Concrete
         internal EventHandler<EventArgs> ProjectClosed_;
         internal EventHandler<EventArgs> ProjectOpened_;
         internal EventHandler<EventArgs> ViewUpdating_;
-       /* internal EventHandler<LayerEventArgs> LayerFeatureCountChanged_;
-        internal EventHandler<LayerEventArgs> LayerEditingChanged_;
-        internal EventHandler<LayerCancelEventArgs> BeforeRemoveLayer_;
-        internal EventHandler<ToolboxToolEventArgs> ToolboxToolClicked_;
-        internal EventHandler<UpdateJoinEventArgs> UpdateTableJoin_;*/
+        internal EventHandler<EventArgs> ArcGISControlChanging_;
+        /* internal EventHandler<LayerEventArgs> LayerFeatureCountChanged_;
+         internal EventHandler<LayerEventArgs> LayerEditingChanged_;
+         internal EventHandler<LayerCancelEventArgs> BeforeRemoveLayer_;
+         internal EventHandler<ToolboxToolEventArgs> ToolboxToolClicked_;
+         internal EventHandler<UpdateJoinEventArgs> UpdateTableJoin_;*/
         internal EventHandler<PluginMessageEventArgs> MessageBroadcasted_;
 
         // public events
@@ -159,6 +160,12 @@ namespace Yutai.Plugins.Concrete
         {
             add { ViewUpdating_ += value; }
             remove { ViewUpdating_ -= value; }
+        }
+
+        public event EventHandler<EventArgs> ArcGISControlChanging
+        {
+            add { ArcGISControlChanging_ += value; }
+            remove { ArcGISControlChanging_ -= value; }
         }
 
         public event EventHandler<PluginMessageEventArgs> MessageBroadcasted

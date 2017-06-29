@@ -70,7 +70,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 				IFeatureClass featureClass = featureLayer.FeatureClass;
 				IFields fields = featureClass.Fields;
 			    IBasicLayerInfo layerInfo = _config.GetBasicLayerInfo(featureClass);
-				if (featureClass.ShapeType == (esriGeometryType) 1)
+				if (featureClass.ShapeType ==esriGeometryType.esriGeometryPoint)
 				{
                     //this.m_strBuildDate = this.pPipeCfg.GetPointTableFieldName("爆管次数");
 				    this.m_strBuildDate = layerInfo.GetFieldName(PipeConfigWordHelper.PointWords.SGYHDJ);
@@ -225,7 +225,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 			object obj2 = simpleMarkerSymbolClass;
 			try
 			{
-				if (this.igeometry_0.GeometryType == (esriGeometryType) 1)
+				if (this.igeometry_0.GeometryType ==esriGeometryType.esriGeometryPoint)
 				{
 					mapControl.DrawShape(this.igeometry_0, ref obj2);
 				}
@@ -255,7 +255,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 
 		public void ScaleToGeo(IMap pMap, IGeometry pGeo)
 		{
-			if (pGeo.GeometryType == (esriGeometryType) 1)
+			if (pGeo.GeometryType ==esriGeometryType.esriGeometryPoint)
 			{
 				IEnvelope envelope = pGeo.Envelope;
 				IEnvelope extent = ((IActiveView)pMap).Extent;

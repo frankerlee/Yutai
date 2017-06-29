@@ -77,6 +77,7 @@ namespace Yutai.Views
                 view.ViewClosing += OnViewClosing;
                 view.ViewUpdating += OnViewUpdating;
                 view.BeforeShow += OnBeforeShow;
+                view.ArcGISControlChanging += View_ArcGISControlChanging;
 
                 var container = context.Container;
                
@@ -109,6 +110,7 @@ namespace Yutai.Views
             Logger.Current.Trace("End MainPresenter");
         }
 
+       
 
         private void ViewShown(object sender, EventArgs e)
         {
@@ -227,6 +229,15 @@ namespace Yutai.Views
             if (appContext != null)
             {
                 appContext.Broadcaster.BroadcastEvent(p => p.ViewUpdating_, sender, e);
+            }
+        }
+
+        private void View_ArcGISControlChanging(object sender, EventArgs e)
+        {
+            _menuUpdater.Update(true);
+            if (_context != null)
+            {
+                _context.Broadcaster.BroadcastEvent(p => p.ArcGISControlChanging_, sender, e);
             }
         }
     }

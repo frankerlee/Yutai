@@ -16,6 +16,9 @@ namespace Yutai.Pipeline.Analysis.Menu
         private PipelineAnalysisPlugin _plugin;
         private List<string> _commandKeys;
 
+        public YutaiCommands(IAppContext context, PipelineAnalysisPlugin plugin) : base(context,plugin.Identity)
+        {
+        }
         public YutaiCommands(IAppContext context, PluginIdentity identity)
             : base(context, identity)
         {
@@ -55,6 +58,8 @@ namespace Yutai.Pipeline.Analysis.Menu
                     new CmdStartHoriSectAnalysis(_context,_plugin),
                     new CmdStartVertSectAnalysis(_context,_plugin),
                     new CmdTrackAnalysis(_context,_plugin),
+                    new CmdPopAlarmAnalysis(_context,_plugin),
+                    new CmdPreAlarmAnalysis(_context,_plugin),
                     //new CmdQueryBasic(_context, _plugin),
                     //new CmdQueryLine(_context, _plugin),
                     //new CmdQueryByAddress(_context, _plugin),

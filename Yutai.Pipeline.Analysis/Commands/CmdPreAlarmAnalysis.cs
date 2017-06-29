@@ -8,7 +8,7 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.Commands
 {
-    class CmdPreAlarmAnalysis : YutaiTool
+    class CmdPreAlarmAnalysis : YutaiCommand
     {
 
         private PreAlarmDlg preAlarmDlg_0;
@@ -24,7 +24,7 @@ namespace Yutai.Pipeline.Analysis.Commands
         public override void OnClick()
         {
 
-            _context.SetCurrentTool(this);
+          
             if (this.preAlarmDlg_0 == null)
             {
                 this.preAlarmDlg_0 = new PreAlarmDlg(_context,_plugin.PipeConfig);
@@ -51,7 +51,7 @@ namespace Yutai.Pipeline.Analysis.Commands
             _context = hook as IAppContext;
             base.m_caption = "预警分析";
             base.m_category = "PipelineAnalysus";
-            base.m_bitmap = Properties.Resources.icon_analysis_collision;
+            base.m_bitmap = Properties.Resources.icon_prealarm;
             base.m_name = "PipeAnalysis_PreAlarmAnalysis";
             base._key = "PipeAnalysis_PreAlarmAnalysis";
             base.m_toolTip = "预警分析";
@@ -63,46 +63,8 @@ namespace Yutai.Pipeline.Analysis.Commands
             CommonUtils.AppContext = _context;
         }
 
-        private void method_0(IMap map)
-        {
-            int layerCount = map.LayerCount;
-            for (int i = 0; i < layerCount; i++)
-            {
-                ILayer layer = map.get_Layer(i);
-                if (layer is ICompositeLayer)
-                {
-                    this.VerifyLayer(layer);
-                }
-                else
-                {
-                    this.method_1((IFeatureLayer)layer);
-                }
-            }
-        }
 
-        public ILayer VerifyLayer(ILayer pLayVal)
-        {
-            ICompositeLayer compositeLayer = pLayVal as ICompositeLayer;
-            int count = compositeLayer.Count;
-            for (int i = 0; i < count; i++)
-            {
-                ILayer layer = compositeLayer.get_Layer(i);
-                if (layer is ICompositeLayer)
-                {
-                    this.VerifyLayer(layer);
-                }
-                else
-                {
-                    this.method_1((IFeatureLayer)layer);
-                }
-            }
-            return null;
-        }
-
-        private void method_1(IFeatureLayer featureLayer)
-        {
-        }
-      
+    
       
     }
 }
