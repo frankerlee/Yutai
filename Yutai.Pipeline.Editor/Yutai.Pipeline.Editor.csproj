@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\Yutai\bin\Debug\Plugins\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -53,6 +53,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,6 +62,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\CmdAngleConvert.cs" />
+    <Compile Include="Commands\CmdAngleForFPCQQX.cs" />
+    <Compile Include="Commands\CmdAngleForYSBZ.cs" />
+    <Compile Include="Commands\CmdAnnotationSorting.cs" />
+    <Compile Include="Commands\CmdAutoGenerateNumbers.cs" />
+    <Compile Include="Commands\CmdCalculateDepth.cs" />
+    <Compile Include="Commands\CmdCenterPoint.cs" />
+    <Compile Include="Commands\CmdCopyAttributes.cs" />
+    <Compile Include="Commands\CmdDeletePipePoint.cs" />
+    <Compile Include="Commands\CmdIdentifyRoadName.cs" />
+    <Compile Include="Commands\CmdLayerByAttribute.cs" />
+    <Compile Include="Commands\CmdLineLineToRightAngle.cs" />
+    <Compile Include="Commands\CmdModifyFlow.cs" />
+    <Compile Include="Commands\CmdMoveTurningPoint.cs" />
+    <Compile Include="Commands\CmdPartialDistance.cs" />
+    <Compile Include="Commands\CmdPointLineLinkage.cs" />
+    <Compile Include="Commands\CmdPointLineToRightAngle.cs" />
     <Compile Include="CompositionRoot.cs" />
     <Compile Include="Menu\MenuGenerator.cs" />
     <Compile Include="Menu\YutaiCommands.cs" />
@@ -68,7 +86,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Commands\" />
     <Folder Include="Forms\" />
   </ItemGroup>
   <ItemGroup>
