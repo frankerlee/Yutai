@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ESRI.ArcGIS.Carto;
+using ESRI.ArcGIS.esriSystem;
+using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
@@ -23,10 +26,50 @@ namespace Yutai.Commands.Views
         }
         public override void OnClick()
         {
-            IActiveView focusMap = (IActiveView)_context.MapControl.ActiveView;
-            IEnvelope extent = focusMap.FullExtent;
-            focusMap.Extent = extent;
-            focusMap.Refresh();
+
+            IActiveView activeView = (IActiveView)this._context.FocusMap;
+            UID uID = new UIDClass();
+            uID.Value = "{6CA416B1-E160-11D2-9F4E-00C04F6BC78E}";
+            IEnumLayer enumLayer = this._context.FocusMap.get_Layers(uID, true);
+            enumLayer.Reset();
+            ILayer layer = enumLayer.Next();
+            IEnvelope envelope = null;
+            while (layer != null)
+            {
+                if (layer is IFeatureLayer)
+                {
+                    IFeatureClass featureClass = (layer as IFeatureLayer).FeatureClass;
+                    if (featureClass != null && featureClass.FeatureCount(null) > 0)
+                    {
+                        if (envelope == null)
+                        {
+                            envelope = layer.AreaOfInterest;
+                        }
+                        else
+                        {
+                            envelope.Union(layer.AreaOfInterest);
+                        }
+                    }
+                }
+                else if (envelope == null)
+                {
+                    envelope = layer.AreaOfInterest;
+                }
+                else
+                {
+                    envelope.Union(layer.AreaOfInterest);
+                }
+                layer = enumLayer.Next();
+            }
+            if (envelope == null)
+            {
+                activeView.Extent = activeView.FullExtent;
+            }
+            else
+            {
+                activeView.Extent = envelope;
+            }
+            activeView.Refresh();
         }
 
         public override void OnCreate(object hook)

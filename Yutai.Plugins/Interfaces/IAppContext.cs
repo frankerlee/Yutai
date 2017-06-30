@@ -73,7 +73,6 @@ namespace Yutai.Plugins.Interfaces
         //需要考虑好怎么样仔细调整AppContext的参数配置
         //当前图层，在图例点击的时候控制
         ILayer CurrentLayer { get; set; }
-        //直接有MapControl2传入
         IMap FocusMap { get; }
 
         IActiveView ActiveView { get; }

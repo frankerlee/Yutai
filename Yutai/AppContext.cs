@@ -419,9 +419,9 @@ namespace Yutai
         {
             if (tool.ItemType == RibbonItemType.Tool)
             {
-                ITool oldTool = _mainView.MapControl.CurrentTool;
+                ITool oldTool = _mainView.CurrentTool;
                 _oldToolName = oldTool == null ? string.Empty : ((YutaiTool)oldTool).Name;
-                _mainView.MapControl.CurrentTool = (ITool)tool;
+                _mainView.CurrentTool = (YutaiTool)tool;
                 CurrentToolName = tool.Name;
                 RibbonMenu.ChangeCurrentTool(_oldToolName, tool.Name);
                 if (tool is IToolContextMenu)
@@ -436,13 +436,13 @@ namespace Yutai
 
         public bool SetCurrentTool(string toolName)
         {
-            ITool oldTool = _mainView.MapControl.CurrentTool;
+            ITool oldTool = _mainView.CurrentTool;
             _oldToolName = oldTool == null ? string.Empty : ((YutaiTool)oldTool).Name;
 
             BarItem item = this.RibbonMenu.SubItems.FindItem(toolName);
             if (item != null)
             {
-                _mainView.MapControl.CurrentTool = ((ITool)item.Tag);
+                _mainView.CurrentTool = ((YutaiTool)item.Tag);
                 RibbonMenu.ChangeCurrentTool(_oldToolName, toolName);
             }
 

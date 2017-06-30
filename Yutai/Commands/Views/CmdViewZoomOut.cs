@@ -69,6 +69,7 @@ namespace Yutai.Commands.Views
                 this._envelopeFeedback = null;
                 this._inZoom = false;
                 base.m_cursor = this._cursor1;
+                this._context.ActiveView.Refresh();
             }
         }
 
@@ -76,10 +77,23 @@ namespace Yutai.Commands.Views
         {
             if (button != 2)
             {
-                this._iPoint =
-                    ((IActiveView) _context.MapControl.ActiveView).ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
-                this.m_cursor = this._cursor1;
+                if (this._context.ActiveView is IPageLayout)
+                {
+                    IPoint location = this._context.ActiveView.ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
+                    IMap map = this._context.ActiveView.HitTestMap(location);
+                    if (map == null)
+                    {
+                        return;
+                    }
+                    if (map != this._context.FocusMap)
+                    {
+                        this._context.ActiveView.FocusMap = map;
+                        this._context.ActiveView.Refresh();
+                    }
+                }
+                this._iPoint = ((IActiveView)this._context.FocusMap).ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
                 this._inZoom = true;
+                this.m_cursor = this._cursor1;
             }
         }
 
@@ -87,64 +101,53 @@ namespace Yutai.Commands.Views
         {
             if (this._inZoom)
             {
-                IActiveView focusMap = (IActiveView) _context.MapControl.ActiveView;
-                if (_envelopeFeedback == null)
+                IActiveView activeView = (IActiveView)this._context.FocusMap;
+                if (this._envelopeFeedback == null)
                 {
-                    _envelopeFeedback = new NewEnvelopeFeedbackClass()
-                    {
-                        Display = focusMap.ScreenDisplay
-                    };
-                    _envelopeFeedback.Start(_iPoint);
+                    this._envelopeFeedback = new NewEnvelopeFeedback();
+                    this._envelopeFeedback.Display = activeView.ScreenDisplay;
+                    this._envelopeFeedback.Start(this._iPoint);
                 }
-                _envelopeFeedback.MoveTo(focusMap.ScreenDisplay.DisplayTransformation.ToMapPoint(x, y));
+                this._envelopeFeedback.MoveTo(activeView.ScreenDisplay.DisplayTransformation.ToMapPoint(x, y));
             }
         }
 
         public override void OnMouseUp(int button, int shift, int x, int y)
         {
-            IEnvelope extent;
-            IEnvelope newextent;
-            if (this._inZoom)
+            if (!this._inZoom) return;
+            this._inZoom = false;
+            this.m_cursor = this._cursor;
+            IActiveView activeView = (IActiveView)this._context.FocusMap;
+            IEnvelope envelope;
+            if (this._envelopeFeedback == null)
             {
-                this.m_cursor = this._cursor;
-                this._inZoom = false;
-                IActiveView focusMap = (IActiveView) _context.MapControl.ActiveView;
-                if (this._envelopeFeedback != null)
+                envelope = activeView.Extent;
+                envelope.Expand(2.0, 2.0, true);
+                envelope.CenterAt(this._iPoint);
+            }
+            else
+            {
+                IEnvelope envelope2 = this._envelopeFeedback.Stop();
+                if (envelope2.Width == 0.0 || envelope2.Height == 0.0)
                 {
-                    extent = this._envelopeFeedback.Stop();
-                    if ((extent.Width == 0 ? false : extent.Height == 0))
-                    {
-                        double width = focusMap.Extent.Width*(focusMap.Extent.Width/extent.Width);
-                        double height = focusMap.Extent.Height*(focusMap.Extent.Height/extent.Height);
-                        newextent = new ESRI.ArcGIS.Geometry.Envelope() as IEnvelope;
-                        newextent.PutCoords(
-                            focusMap.Extent.XMin -
-                            (extent.XMin - focusMap.Extent.XMin)*(focusMap.Extent.Width/extent.Width),
-                            focusMap.Extent.YMin -
-                            (extent.YMin - focusMap.Extent.YMin)*(focusMap.Extent.Height/extent.Height),
-                            focusMap.Extent.XMin -
-                            (extent.XMin - focusMap.Extent.XMin)*(focusMap.Extent.Width/extent.Width) + width,
-                            focusMap.Extent.YMin -
-                            (extent.YMin - focusMap.Extent.YMin)*(focusMap.Extent.Height/extent.Height) + height);
-                    }
-                    else
-                    {
-                        newextent = focusMap.Extent;
-                        newextent.Expand(2, 2, true);
-                        newextent.CenterAt(this._iPoint);
-                    }
+                    envelope = activeView.Extent;
+                    envelope.Expand(2.0, 2.0, true);
+                    envelope.CenterAt(this._iPoint);
                 }
                 else
                 {
-                    newextent = focusMap.Extent;
-                    newextent.Expand(2, 2, true);
-                    newextent.CenterAt(this._iPoint);
+                    double num = activeView.Extent.Width * (activeView.Extent.Width / envelope2.Width);
+                    double num2 = activeView.Extent.Height * (activeView.Extent.Height / envelope2.Height);
+                    envelope = new EnvelopeClass();
+                    envelope.PutCoords(activeView.Extent.XMin - (envelope2.XMin - activeView.Extent.XMin) * (activeView.Extent.Width / envelope2.Width), activeView.Extent.YMin - (envelope2.YMin - activeView.Extent.YMin) * (activeView.Extent.Height / envelope2.Height), activeView.Extent.XMin - (envelope2.XMin - activeView.Extent.XMin) * (activeView.Extent.Width / envelope2.Width) + num, activeView.Extent.YMin - (envelope2.YMin - activeView.Extent.YMin) * (activeView.Extent.Height / envelope2.Height) + num2);
                 }
-                focusMap.Extent = newextent;
-                this._envelopeFeedback = null;
-                focusMap.Refresh();
             }
+            activeView.Extent = envelope;
+            this._envelopeFeedback = null;
+            activeView.Refresh();
+            
         }
+        
     }
 }
 

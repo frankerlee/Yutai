@@ -32,23 +32,23 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewMainView));
             this.ribbonManager = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.tabContent = new DevExpress.XtraTab.XtraTabControl();
-            this.pageMap = new DevExpress.XtraTab.XtraTabPage();
-            this.axLicenseControl1 = new ESRI.ArcGIS.Controls.AxLicenseControl();
-            this.axMapControl1 = new ESRI.ArcGIS.Controls.AxMapControl();
-            this.pageLayout = new DevExpress.XtraTab.XtraTabPage();
-            this.axPageLayoutControl1 = new ESRI.ArcGIS.Controls.AxPageLayoutControl();
             this.dockManager = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
+            this.pageMap = new DevExpress.XtraTab.XtraTabPage();
+            this.axMapControl1 = new ESRI.ArcGIS.Controls.AxMapControl();
+            this.axLicenseControl1 = new ESRI.ArcGIS.Controls.AxLicenseControl();
+            this.pageLayout = new DevExpress.XtraTab.XtraTabPage();
+            this.axPageLayoutControl1 = new ESRI.ArcGIS.Controls.AxPageLayoutControl();
+            this.tabContent = new DevExpress.XtraTab.XtraTabControl();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonManager)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tabContent)).BeginInit();
-            this.tabContent.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dockManager)).BeginInit();
             this.pageMap.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axLicenseControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axLicenseControl1)).BeginInit();
             this.pageLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axPageLayoutControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dockManager)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabContent)).BeginInit();
+            this.tabContent.SuspendLayout();
             this.SuspendLayout();
             // 
             // ribbonManager
@@ -69,62 +69,6 @@
             this.ribbonStatusBar.Ribbon = this.ribbonManager;
             this.ribbonStatusBar.Size = new System.Drawing.Size(1128, 31);
             // 
-            // tabContent
-            // 
-            this.tabContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabContent.Location = new System.Drawing.Point(0, 50);
-            this.tabContent.Name = "tabContent";
-            this.tabContent.SelectedTabPage = this.pageMap;
-            this.tabContent.Size = new System.Drawing.Size(1128, 603);
-            this.tabContent.TabIndex = 2;
-            this.tabContent.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.pageMap,
-            this.pageLayout});
-            // 
-            // pageMap
-            // 
-            this.pageMap.Controls.Add(this.axLicenseControl1);
-            this.pageMap.Controls.Add(this.axMapControl1);
-            this.pageMap.Name = "pageMap";
-            this.pageMap.Size = new System.Drawing.Size(1122, 574);
-            this.pageMap.Text = "地图窗口";
-            // 
-            // axLicenseControl1
-            // 
-            this.axLicenseControl1.Enabled = true;
-            this.axLicenseControl1.Location = new System.Drawing.Point(364, 422);
-            this.axLicenseControl1.Name = "axLicenseControl1";
-            this.axLicenseControl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axLicenseControl1.OcxState")));
-            this.axLicenseControl1.Size = new System.Drawing.Size(32, 32);
-            this.axLicenseControl1.TabIndex = 0;
-            // 
-            // axMapControl1
-            // 
-            this.axMapControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axMapControl1.Location = new System.Drawing.Point(0, 0);
-            this.axMapControl1.Name = "axMapControl1";
-            this.axMapControl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axMapControl1.OcxState")));
-            this.axMapControl1.Size = new System.Drawing.Size(1122, 574);
-            this.axMapControl1.TabIndex = 1;
-            this.toolTipController1.SetToolTip(this.axMapControl1, "地图窗口");
-            // 
-            // pageLayout
-            // 
-            this.pageLayout.Controls.Add(this.axPageLayoutControl1);
-            this.pageLayout.Name = "pageLayout";
-            this.pageLayout.Size = new System.Drawing.Size(1122, 574);
-            this.pageLayout.Text = "制图窗口";
-            // 
-            // axPageLayoutControl1
-            // 
-            this.axPageLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axPageLayoutControl1.Location = new System.Drawing.Point(0, 0);
-            this.axPageLayoutControl1.Name = "axPageLayoutControl1";
-            this.axPageLayoutControl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axPageLayoutControl1.OcxState")));
-            this.axPageLayoutControl1.Padding = new System.Windows.Forms.Padding(2);
-            this.axPageLayoutControl1.Size = new System.Drawing.Size(1122, 574);
-            this.axPageLayoutControl1.TabIndex = 0;
-            // 
             // dockManager
             // 
             this.dockManager.Form = this;
@@ -140,6 +84,61 @@
             "DevExpress.XtraBars.Navigation.TileNavPane",
             "DevExpress.XtraBars.TabFormControl"});
             // 
+            // pageMap
+            // 
+            this.pageMap.Controls.Add(this.axMapControl1);
+            this.pageMap.Controls.Add(this.axLicenseControl1);
+            this.pageMap.Name = "pageMap";
+            this.pageMap.Size = new System.Drawing.Size(1122, 574);
+            this.pageMap.Text = "地图窗口";
+            // 
+            // axMapControl1
+            // 
+            this.axMapControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.axMapControl1.Location = new System.Drawing.Point(0, 0);
+            this.axMapControl1.Name = "axMapControl1";
+            this.axMapControl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axMapControl1.OcxState")));
+            this.axMapControl1.Size = new System.Drawing.Size(1122, 574);
+            this.axMapControl1.TabIndex = 1;
+            // 
+            // axLicenseControl1
+            // 
+            this.axLicenseControl1.Enabled = true;
+            this.axLicenseControl1.Location = new System.Drawing.Point(149, 277);
+            this.axLicenseControl1.Name = "axLicenseControl1";
+            this.axLicenseControl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axLicenseControl1.OcxState")));
+            this.axLicenseControl1.Size = new System.Drawing.Size(32, 32);
+            this.axLicenseControl1.TabIndex = 0;
+            // 
+            // pageLayout
+            // 
+            this.pageLayout.Controls.Add(this.axPageLayoutControl1);
+            this.pageLayout.Name = "pageLayout";
+            this.pageLayout.Size = new System.Drawing.Size(1122, 574);
+            this.pageLayout.Text = "排版窗口";
+            // 
+            // axPageLayoutControl1
+            // 
+            this.axPageLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.axPageLayoutControl1.Location = new System.Drawing.Point(0, 0);
+            this.axPageLayoutControl1.Name = "axPageLayoutControl1";
+            this.axPageLayoutControl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axPageLayoutControl1.OcxState")));
+            this.axPageLayoutControl1.Size = new System.Drawing.Size(1122, 574);
+            this.axPageLayoutControl1.TabIndex = 0;
+            // 
+            // tabContent
+            // 
+            this.tabContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabContent.Location = new System.Drawing.Point(0, 50);
+            this.tabContent.Name = "tabContent";
+            this.tabContent.SelectedTabPage = this.pageMap;
+            this.tabContent.Size = new System.Drawing.Size(1128, 603);
+            this.tabContent.TabIndex = 5;
+            this.tabContent.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.pageMap,
+            this.pageLayout});
+            this.tabContent.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.tabContent_SelectedPageChanged);
+            // 
             // NewMainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -153,14 +152,14 @@
             this.StatusBar = this.ribbonStatusBar;
             this.Text = "NewMainView";
             ((System.ComponentModel.ISupportInitialize)(this.ribbonManager)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tabContent)).EndInit();
-            this.tabContent.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dockManager)).EndInit();
             this.pageMap.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.axLicenseControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axLicenseControl1)).EndInit();
             this.pageLayout.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.axPageLayoutControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dockManager)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabContent)).EndInit();
+            this.tabContent.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,12 +169,12 @@
 
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonManager;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
-        private DevExpress.XtraTab.XtraTabControl tabContent;
-        private DevExpress.XtraTab.XtraTabPage pageMap;
-        private ESRI.ArcGIS.Controls.AxLicenseControl axLicenseControl1;
-        private ESRI.ArcGIS.Controls.AxMapControl axMapControl1;
         private DevExpress.XtraBars.Docking.DockManager dockManager;
         private DevExpress.Utils.ToolTipController toolTipController1;
+        private DevExpress.XtraTab.XtraTabControl tabContent;
+        private DevExpress.XtraTab.XtraTabPage pageMap;
+        private ESRI.ArcGIS.Controls.AxMapControl axMapControl1;
+        private ESRI.ArcGIS.Controls.AxLicenseControl axLicenseControl1;
         private DevExpress.XtraTab.XtraTabPage pageLayout;
         private ESRI.ArcGIS.Controls.AxPageLayoutControl axPageLayoutControl1;
     }

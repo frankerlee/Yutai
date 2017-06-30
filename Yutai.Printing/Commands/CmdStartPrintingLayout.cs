@@ -52,4 +52,48 @@ namespace Yutai.Plugins.Printing.Commands
            _context.MainView.ActivatePageLayout();
         }
     }
+
+    public class CmdCloseLayout : YutaiCommand
+    {
+        private PrintingPlugin _plugin;
+
+
+
+        static CmdCloseLayout()
+        {
+
+        }
+
+        public CmdCloseLayout(IAppContext context, BasePlugin plugin)
+        {
+            OnCreate(context);
+            _plugin = plugin as PrintingPlugin;
+        }
+
+        public override void OnCreate(object hook)
+        {
+            this.m_bitmap = Properties.Resources.icon_layout_start;
+            this.m_caption = "退出制图";
+            this.m_category = "Layout";
+            this.m_message = "退出制图";
+            this.m_name = "Layout_CloseLayout";
+            this._key = "Layout_CloseLayout";
+            this.m_toolTip = "退出制图";
+            _context = hook as IAppContext;
+            this._itemType = RibbonItemType.Button; ;
+            _needUpdateEvent = true;
+        }
+
+        public override void OnClick(object sender, EventArgs args)
+        {
+            OnClick();
+        }
+
+
+
+        public override void OnClick()
+        {
+            _context.MainView.ActivateMap();
+        }
+    }
 }

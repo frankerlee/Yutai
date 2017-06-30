@@ -120,6 +120,8 @@
   <ItemGroup>
     <Compile Include="CompositionRoot.cs" />
     <Compile Include="Concrete\BitmapConverter.cs" />
+    <Compile Include="Concrete\ControlsSynchronizer.cs" />
+    <Compile Include="Concrete\Maps.cs" />
     <Compile Include="Concrete\OperationStackClass.cs" />
     <Compile Include="Concrete\CommandProviderBase.cs" />
     <Compile Include="Concrete\RibbonTabItem.cs" />

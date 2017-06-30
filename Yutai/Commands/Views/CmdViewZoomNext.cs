@@ -24,7 +24,7 @@ namespace Yutai.Commands.Views
         }
         public override void OnClick()
         {
-            IActiveView focusMap = (IActiveView)_context.MapControl.ActiveView;
+            IActiveView focusMap = (IActiveView)_context.FocusMap;
             IExtentStack extentStack = focusMap.ExtentStack;
             if (extentStack.CanRedo())
             {
@@ -36,11 +36,25 @@ namespace Yutai.Commands.Views
         public override bool Enabled
         {
             get {
-                IActiveView focusMap = (IActiveView)_context.MapControl.ActiveView;
-                IExtentStack extentStack = focusMap.ExtentStack;
-                if (extentStack.CanRedo())
+                if (this._context.FocusMap == null)
                 {
-                    return true;
+                    return false;
+                }
+                if (this._context.FocusMap is IMapAutoExtentOptions)
+                {
+                    bool flag = false;
+                    ((IMapAutoExtentOptions)this._context.FocusMap).LockedZoom(ref flag);
+                    if (flag)
+                    {
+                        return false;
+                    }
+                    IActiveView focusMap = (IActiveView)_context.FocusMap;
+                    IExtentStack extentStack = focusMap.ExtentStack;
+                    if (extentStack.CanRedo())
+                    {
+                        return true;
+                    }
+                    return false;
                 }
                 return false;
             }

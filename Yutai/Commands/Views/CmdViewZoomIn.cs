@@ -79,7 +79,21 @@ namespace Yutai.Commands.Views
         {
             if (button != 2)
             {
-                this._iPoint = ((IActiveView)_context.MapControl.ActiveView).ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
+                if (this._context.ActiveView is IPageLayout)
+                {
+                    IPoint location = this._context.ActiveView.ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
+                    IMap map = this._context.ActiveView.HitTestMap(location);
+                    if (map == null)
+                    {
+                        return;
+                    }
+                    if (map != this._context.FocusMap)
+                    {
+                        this._context.ActiveView.FocusMap = map;
+                        this._context.ActiveView.Refresh();
+                    }
+                }
+                this._iPoint = ((IActiveView)this._context.FocusMap).ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
                 this.m_cursor = this._cursor1;
                 this._inZoom = true;
             }
@@ -89,47 +103,45 @@ namespace Yutai.Commands.Views
         {
             if (this._inZoom)
             {
-                IActiveView focusMap = (IActiveView) _context.MapControl.ActiveView;
-                if (_envelopeFeedback == null)
+                IActiveView activeView = (IActiveView)this._context.FocusMap;
+                if (this._envelopeFeedback == null)
                 {
-                    _envelopeFeedback=new NewEnvelopeFeedbackClass()
-                    {
-                        Display = focusMap.ScreenDisplay
-                    };
-                    _envelopeFeedback.Start(_iPoint);
+                    this._envelopeFeedback = new NewEnvelopeFeedbackClass();
+                    this._envelopeFeedback.Display = activeView.ScreenDisplay;
+                    this._envelopeFeedback.Start(this._iPoint);
                 }
-                _envelopeFeedback.MoveTo(focusMap.ScreenDisplay.DisplayTransformation.ToMapPoint(x,y));
+                this._envelopeFeedback.MoveTo(activeView.ScreenDisplay.DisplayTransformation.ToMapPoint(x, y));
             }
         }
 
         public override void OnMouseUp(int button, int shift, int x, int y)
         {
-            IEnvelope extent;
-            if (this._inZoom)
+            if (!this._inZoom) return;
+
+            this.m_cursor = this._cursor;
+            this._inZoom = false;
+            IActiveView activeView = (IActiveView)this._context.FocusMap;
+            IEnvelope envelope;
+            if (this._envelopeFeedback == null)
             {
-                this.m_cursor = this._cursor;
-                this._inZoom = false;
-                IActiveView focusMap = (IActiveView)_context.MapControl.ActiveView;
-                if (this._envelopeFeedback != null)
-                {
-                    extent = this._envelopeFeedback.Stop();
-                    if ((extent.Width == 0 ? true : extent.Height == 0))
-                    {
-                        extent = focusMap.Extent;
-                        extent.Expand(0.5, 0.5, true);
-                        extent.CenterAt(this._iPoint);
-                    }
-                }
-                else
-                {
-                    extent = focusMap.Extent;
-                    extent.Expand(0.5, 0.5, true);
-                    extent.CenterAt(this._iPoint);
-                }
-                focusMap.Extent = extent;
-                this._envelopeFeedback = null;
-                focusMap.Refresh();
+                envelope = activeView.Extent;
+                envelope.Expand(0.5, 0.5, true);
+                envelope.CenterAt(this._iPoint);
             }
+            else
+            {
+                envelope = this._envelopeFeedback.Stop();
+                if (envelope.Width == 0.0 || envelope.Height == 0.0)
+                {
+                    envelope = activeView.Extent;
+                    envelope.Expand(0.5, 0.5, true);
+                    envelope.CenterAt(this._iPoint);
+                }
+            }
+            activeView.Extent = envelope;
+            this._envelopeFeedback = null;
+            activeView.Refresh();
+
         }
     }
 

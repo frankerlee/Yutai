@@ -13,6 +13,7 @@ using Yutai.Forms;
 using Yutai.Helper;
 using Yutai.Menu;
 using Yutai.Plugins.Concrete;
+using Yutai.Plugins.Enums;
 using Yutai.Plugins.Events;
 using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Mvp;
@@ -105,7 +106,7 @@ namespace Yutai.Views
         public YutaiTool CurrentTool { get; set; }
         public IActiveView ActiveView { get; set; }
         public IMap FocusMap { get; set; }
-        public IPageLayoutControl3 PageLayoutControl { get; set; }
+        public IPageLayoutControl2 PageLayoutControl { get; set; }
         public string ActiveViewType { get; }
         public object ActiveGISControl { get; }
         public object ActiveControl { get; }
@@ -118,6 +119,8 @@ namespace Yutai.Views
         {
             throw new NotImplementedException();
         }
+
+        public GISControlType ControlType { get; }
 
         public event EventHandler<CancelEventArgs> ViewClosing;
 

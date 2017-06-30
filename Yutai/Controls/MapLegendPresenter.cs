@@ -32,13 +32,14 @@ namespace Yutai.Controls
             _context = context;
             _broadcaster = broadcaster;
             _legendDockPanel = legendDockPanel;
+            ((IAppContextEvents)_context).OnActiveHookChanged+= OnOnActiveHookChanged;
             //_context.MainView.ArcGISControlChanging += MainView_ArcGISControlChanging;
             //View.LegendKeyDown += OnLegendKeyDown;
         }
 
-        private void MainView_ArcGISControlChanging(object sender, EventArgs e)
+        private void OnOnActiveHookChanged(object object0)
         {
-           
+            if (_context.MainView == null) return;
             if (_context.MainView.ActiveViewType.StartsWith("M"))
             {
                 _legendDockPanel.LegendControl.SetBuddyControl(_context.MainView.MapControl);
@@ -48,6 +49,8 @@ namespace Yutai.Controls
                 _legendDockPanel.LegendControl.SetBuddyControl(_context.MainView.PageLayoutControl);
             }
         }
+
+       
 
         private void OnLegendKeyDown(object sender, KeyEventArgs e)
         {

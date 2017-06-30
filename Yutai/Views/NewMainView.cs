@@ -15,6 +15,7 @@ using Yutai.ArcGIS.Common;
 using Yutai.Forms;
 using Yutai.Menu;
 using Yutai.Plugins.Concrete;
+using Yutai.Plugins.Enums;
 using Yutai.Plugins.Events;
 using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Mvp;
@@ -31,9 +32,11 @@ namespace Yutai.Views
         private readonly IAppContext _context;
         private bool _locked;
         private bool _rendered;
-        private YutaiTool _mapCurrentTool;
-        private YutaiTool _layoutCurrentTool;
+        private IMapControl3 _mapControl;
+        private IPageLayoutControl2 _layoutControl;
+        private ControlsSynchronizer _controlsSynchronizer;
 
+#region Events
         private OnActiveHookChangedHandler onActiveHookChangedHandler;
         private OnMousePostionHandler onMousePostionHandler;
 
@@ -68,7 +71,6 @@ namespace Yutai.Views
                 } while (onActiveHookChangedHandler != onActiveHookChangedHandler2);
             }
         }
-
         public event OnMousePostionHandler OnMousePostion
         {
             add
@@ -100,31 +102,18 @@ namespace Yutai.Views
                 } while (onMousePostionHandler != onMousePostionHandler2);
             }
         }
+#endregion
 
 
         public NewMainView(IAppContext context)
         {
-            if (DesignMode == false)
-            {
-                Logger.Current.Trace("Start Main View");
-            }
             _context = context;
-            if (DesignMode == false)
-            {
-                Logger.Current.Trace("Start MainView InitializeComponent");
-            }
             InitializeComponent();
-
-            Logger.Current.Trace("End MainView InitializeComponent");
-
-            //ActivateMap();
-            //statusStripEx1.Items.Clear();
-            //statusStripEx1.Refresh();
-
-            //ToolTipHelper.Init(this.superToolTip1);
+            _mapControl = this.axMapControl1.Object as IMapControl3;
+            _layoutControl=this.axPageLayoutControl1.Object as IPageLayoutControl2;
+            
 
             this.FormClosing += MainView_FormClosing;
-
             this.Shown += MainView_Shown;
             Logger.Current.Trace("End MainView");
         }
@@ -132,9 +121,13 @@ namespace Yutai.Views
         private void MainView_Shown(object sender, EventArgs e)
         {
             _rendered = true;
-
+            _controlsSynchronizer = new ControlsSynchronizer(_mapControl, _layoutControl);
+            this.tabContent.SelectedTabPageIndex = 0;
+            IMap map = new MapClass();
+            map.Name = "地图";
+            _controlsSynchronizer.ReplaceMap(map);
+            tabContent.TabPages[1].PageVisible = false;
             UpdateView();
-
             //ForceTaskBarDisplay();
         }
 
@@ -168,203 +161,40 @@ namespace Yutai.Views
             }
         }
 
-        public IMapControl3 MapControl
-        {
-            get { return (IMapControl3) axMapControl1.Object; }
-        }
+        //public IMapControl3 MapControl
+        //{
+        //    //get { return (IMapControl3) axMapControl1.Object; }
+        //    get { return _mapControl; }
+        //}
+
+        public IMapControl3 MapControl { get{return _mapControl;} }
 
         public AxMapControl MapControlContainer
         {
             get { return axMapControl1; }
         }
 
-        public YutaiTool CurrentTool
-        {
-            get
-            {
-                YutaiTool result;
-                if (tabContent.SelectedTabPageIndex == 0)
-                {
-                    if (this.axMapControl1 != null)
-                    {
-                        result = this.axMapControl1.CurrentTool as YutaiTool;
-                        return result;
-                    }
-                }
-                else if (this.axPageLayoutControl1.CurrentTool != null)
-                {
-                    result = this.axPageLayoutControl1.CurrentTool as YutaiTool;
-                    return result;
-                }
-                result = null;
-                return result;
-            }
-            set
-            {
-                if (tabContent.SelectedTabPageIndex != 0)
-                {
-                    if (this.axPageLayoutControl1 != null)
-                    {
-                        this.axPageLayoutControl1.CurrentTool = value;
-                    }
-                }
-                else
-                {
-                    if (this.axMapControl1 != null)
-                    {
-                        this.axMapControl1.CurrentTool = value;
-                    }
-                }
-            }
-        }
-
-        public IActiveView ActiveView
-        {
-            get
-            {
-                return tabContent.SelectedTabPageIndex == 0 ? axMapControl1.ActiveView : axPageLayoutControl1.ActiveView;
-            }
-        }
-
-        public IMap FocusMap
-        {
-            get
-            {
-                return tabContent.SelectedTabPageIndex == 0
-                    ? axMapControl1.ActiveView.FocusMap
-                    : axPageLayoutControl1.ActiveView.FocusMap;
-            }
-        }
-
-        public IPageLayoutControl3 PageLayoutControl
-        {
-            get { return this.axPageLayoutControl1.Object as IPageLayoutControl3; }
-        }
-
-        public string ActiveViewType
-        {
-            get
-            {
-                string result;
-                result = tabContent.SelectedTabPageIndex == 0 ? "MapControl" : "PageLayoutControl";
-                return result;
-            }
-        }
-
-        public object ActiveGISControl
-        {
-            get
-            {
-                if (this.axMapControl1 == null || this.axPageLayoutControl1 == null)
-                {
-                    throw new System.Exception("无法获取地图控件:\r\n不管是地图还是排版控件均为初始化!");
-                }
-                object @object;
-                @object = tabContent.SelectedTabPageIndex == 0
-                    ? this.axMapControl1.Object
-                    : this.axPageLayoutControl1.Object;
-                return @object;
-            }
-        }
-
+        public YutaiTool CurrentTool { get{return _controlsSynchronizer.CurrentTool;} set { _controlsSynchronizer.CurrentTool=value; } }
+        public IActiveView ActiveView { get { return _controlsSynchronizer.ActiveView; } }
+        public IMap FocusMap { get { return _controlsSynchronizer.FocusMap; } }
+        public IPageLayoutControl2 PageLayoutControl { get {return _layoutControl;} }
+        public string ActiveViewType { get { return _controlsSynchronizer.ActiveViewType; } }
+        public object ActiveGISControl { get { return _controlsSynchronizer.ActiveControl; } }
         public void ActivateMap()
         {
-            try
-            {
-                //this.axPageLayoutControl1.Visible = false;
-                this.tabContent.TabPages[0].PageVisible = true;
-                this.tabContent.TabPages[1].PageVisible = false;
-                
-                this.pageLayout.Visible = false;
-                this.pageMap.Visible = true;
-                //this.axMapControl1.Visible = true;
-                if (this.axPageLayoutControl1.CurrentTool != null)
-                {
-                    this._layoutCurrentTool = this.axPageLayoutControl1.CurrentTool as YutaiTool;
-                }
-                if (this._mapCurrentTool != null)
-                {
-                    this.axMapControl1.CurrentTool = this._mapCurrentTool as ITool;
-                }
-                this.tabContent.SelectedTabPageIndex = 0;
-                if (this.onActiveHookChangedHandler != null)
-                {
-                    this.onActiveHookChangedHandler(this);
-                }
-                if (this.axPageLayoutControl1.ActiveView != null &&
-                    this.axPageLayoutControl1.ActiveView.FocusMap != null)
-                {
-                    this.axMapControl1.Map = this.axPageLayoutControl1.ActiveView.FocusMap;
-                }
-                FireArcGISControlChanging();
-            }
-            catch (System.Exception ex)
-            {
-                throw new System.Exception(string.Format("ControlsSynchronizer::ActivateMap:\r\n{0}", ex.Message));
-            }
+            tabContent.TabPages[0].PageVisible = true;
+            tabContent.SelectedTabPageIndex = 0;
         }
-
 
         public void ActivatePageLayout()
         {
-            try
-            {
-                this.tabContent.TabPages[1].PageVisible = true;
-                this.tabContent.TabPages[0].PageVisible=false;
-                
-                if (this.axMapControl1.CurrentTool != null)
-                {
-                    this._mapCurrentTool = this.axMapControl1.CurrentTool as YutaiTool;
-                }
-                IMapFrame focusMapFrame = this.GetFocusMapFrame(this.axPageLayoutControl1.PageLayout);
-                (focusMapFrame.Map as IMapClipOptions).ClipType = esriMapClipType.esriMapClipNone;
-                if (focusMapFrame.Map is IMapAutoExtentOptions)
-                {
-                    (focusMapFrame.Map as IMapAutoExtentOptions).AutoExtentType = esriExtentTypeEnum.esriExtentDefault;
-                }
-                (focusMapFrame.Map as IActiveView).Extent = this.axMapControl1.ActiveView.Extent;
-                if (this._layoutCurrentTool != null)
-                {
-                    this.axPageLayoutControl1.CurrentTool = this._layoutCurrentTool;
-                }
-                this.tabContent.SelectedTabPageIndex = 1;
-                if (this.onActiveHookChangedHandler != null)
-                {
-                    this.onActiveHookChangedHandler(this);
-                }
-                CopyLayerToLayout();
-                FireArcGISControlChanging();
-            }
-            catch (System.Exception ex)
-            {
-                throw new System.Exception(string.Format("ControlsSynchronizer::ActivatePageLayout:\r\n{0}", ex.Message));
-            }
+          //  _controlsSynchronizer.ActivatePageLayout();
+            tabContent.TabPages[1].PageVisible = true;
+            tabContent.SelectedTabPageIndex = 1;
         }
 
-        private void CopyLayerToLayout()
-        {
-            IMaps maps = new Maps();
-            maps.Add(this.axMapControl1.Map);
-            this.axPageLayoutControl1.PageLayout.ReplaceMaps(maps);
-            this.axPageLayoutControl1.ActiveView.Refresh();
-        }
+        public GISControlType ControlType { get; }
 
-        internal IMapFrame GetFocusMapFrame(IPageLayout ipageLayout)
-        {
-            IGraphicsContainer graphicsContainer = ipageLayout as IGraphicsContainer;
-            graphicsContainer.Reset();
-            IMapFrame result;
-            for (IElement element = graphicsContainer.Next(); element != null; element = graphicsContainer.Next())
-            {
-                if (element is IMapFrame)
-                {
-                    result = (element as IMapFrame);
-                    return result;
-                }
-            }
-            result = null;
-            return result;
-        }
 
         public event EventHandler<CancelEventArgs> ViewClosing;
         public event EventHandler<RenderedEventArgs> ViewUpdating;
@@ -532,7 +362,7 @@ namespace Yutai.Views
 
         public void SetMapTooltip(string msg)
         {
-            this.toolTipController1.SetToolTip(this.axMapControl1, msg);
+           // this.toolTipController1.SetToolTip(this.axMapControl1, msg);
         }
 
         public string GetMapTooltip()
@@ -542,7 +372,7 @@ namespace Yutai.Views
 
         public void SetTooltip(string msg)
         {
-            this.toolTipController1.SetToolTip(this.axMapControl1, msg);
+           // this.toolTipController1.SetToolTip(this.axMapControl1, msg);
         }
 
 
@@ -592,90 +422,25 @@ namespace Yutai.Views
 
         #endregion
 
-        #region 地图和制图模块切换工作
-        private int GetLayerIndex(IBasicMap pMap, ILayer pLayer)
-        {
-           
-            for (int i = 0; i < pMap.LayerCount; i++)
-            {
-                if (pMap.get_Layer(i) == pLayer)
-                {
-                    return i;
-                }
-            }
-            return -1;
-        }
+       
+        
 
-        private void MoveLayerByIndex(object lyrObject, int newIndex)
+        private void tabContent_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
-            if (lyrObject is ILayer && this.axMapControl1 != null)
+            if (e.Page == pageMap)
             {
-                int fromIndex = this.GetLayerIndex(this.axMapControl1.Map as IBasicMap, lyrObject as ILayer);
-                this.axMapControl1.MoveLayerTo(fromIndex, newIndex);
-                this.axMapControl1.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeography, lyrObject, null);
+                tabContent.TabPages[0].PageVisible = true;
+                _controlsSynchronizer.ActivateMap();
+                tabContent.TabPages[1].PageVisible = false;
+            }
+            else if (e.Page == pageLayout)
+            {
+                tabContent.TabPages[1].PageVisible = true;
+                _controlsSynchronizer.ActivatePageLayout();
+                IMap map = _mapControl.Map;
+                _controlsSynchronizer.ReplaceMap(map);
+                tabContent.TabPages[0].PageVisible = false;
             }
         }
-
-        private void CopyLayerToMap()
-        {
-            if (this.tabContent.SelectedTabPageIndex != 1) return;
-            try
-            {
-                //if (this.iactiveViewEvents_Event_0 != null)
-                //{
-                //    this.iactiveViewEvents_Event_0.ItemAdded -= new IActiveViewEvents_ItemAddedEventHandler(this, (System.UIntPtr)ldftn(method_8));
-                //    this.iactiveViewEvents_Event_0.ItemReordered -= new IActiveViewEvents_ItemReorderedEventHandler(this, (System.UIntPtr)ldftn(method_0));
-                //    this.iactiveViewEvents_Event_0.ItemDeleted -= new IActiveViewEvents_ItemDeletedEventHandler(this, (System.UIntPtr)ldftn(method_7));
-                //}
-            }
-            catch
-            {
-            }
-            IMap focusMap = this.axPageLayoutControl1.ActiveView.FocusMap;
-            //this.iactiveViewEvents_Event_0 = (focusMap as IActiveViewEvents_Event);
-            //try
-            //{
-            //    if (this.iactiveViewEvents_Event_0 != null)
-            //    {
-            //        this.iactiveViewEvents_Event_0.ItemAdded += new IActiveViewEvents_ItemAddedEventHandler(this, (System.UIntPtr)ldftn(method_8));
-            //        this.iactiveViewEvents_Event_0.ItemReordered += new IActiveViewEvents_ItemReorderedEventHandler(this, (System.UIntPtr)ldftn(method_0));
-            //        this.iactiveViewEvents_Event_0.ItemDeleted += new IActiveViewEvents_ItemDeletedEventHandler(this, (System.UIntPtr)ldftn(method_7));
-            //    }
-            //}
-            //catch
-            //{
-            //}
-            this.axMapControl1.Map.ClearLayers();
-            (this.axMapControl1.Map as IActiveView).ContentsChanged();
-            this.axMapControl1.Map.MapUnits = focusMap.MapUnits;
-            this.axMapControl1.Map.SpatialReferenceLocked = false;
-            this.axMapControl1.Map.SpatialReference = focusMap.SpatialReference;
-            this.axMapControl1.Map.Name = focusMap.Name;
-            for (int i = 0; i < focusMap.LayerCount; i++)
-            {
-                ILayer layer = focusMap.get_Layer(i);
-                this.axMapControl1.AddLayer(layer, i);
-            }
-            (this.axMapControl1.Map as IGraphicsContainer).DeleteAllElements();
-            IGraphicsContainer graphicsContainer = focusMap as IGraphicsContainer;
-            graphicsContainer.Reset();
-            IElement element = graphicsContainer.Next();
-            int num = 0;
-            while (element != null)
-            {
-                (this.axMapControl1.Map as IGraphicsContainer).AddElement(element, num);
-                num++;
-                element = graphicsContainer.Next();
-            }
-            (this.axMapControl1.Map as ITableCollection).RemoveAllTables();
-            ITableCollection tableCollection = focusMap as ITableCollection;
-            for (int i = 0; i < tableCollection.TableCount; i++)
-            {
-                (this.axMapControl1.Map as ITableCollection).AddTable(tableCollection.get_Table(i));
-            }
-            this.axMapControl1.ActiveView.Extent = (focusMap as IActiveView).Extent;
-            this.axMapControl1.ActiveView.Refresh();
-        }
-        #endregion
     }
 }

@@ -206,27 +206,28 @@ namespace Yutai.UI.Menu.Ribbon
 
         public void SetCurrentTool(string oldToolName, string nowToolName)
         {
-            BarItem item;
-            if (!string.IsNullOrEmpty(oldToolName))
-            {
-                item = _ribbonManager.Items[oldToolName];
-                if (item != null)
-                {
-                    ((BarButtonItem) item).Down = false;
-                    item.Refresh();
-                }
-            }
-            if (!string.IsNullOrEmpty(nowToolName))
-            {
-                item = _ribbonManager.Items[nowToolName];
-                if (item != null)
-                {
-                    ((BarButtonItem) item).Down = true;
+            return;
+            //BarItem item;
+            //if (!string.IsNullOrEmpty(oldToolName))
+            //{
+            //    item = _ribbonManager.Items[oldToolName];
+            //    if (item != null)
+            //    {
+            //        ((BarButtonItem) item).Down = false;
+            //        item.Refresh();
+            //    }
+            //}
+            //if (!string.IsNullOrEmpty(nowToolName))
+            //{
+            //    item = _ribbonManager.Items[nowToolName];
+            //    if (item != null)
+            //    {
+            //        ((BarButtonItem) item).Down = true;
 
-                    item.Refresh();
-                    _oldToolName = nowToolName;
-                }
-            }
+            //        item.Refresh();
+            //        _oldToolName = nowToolName;
+            //    }
+            //}
         }
 
         public void SetStatusValue(string statusKey, object objValue)

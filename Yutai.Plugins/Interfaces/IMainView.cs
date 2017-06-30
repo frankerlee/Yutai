@@ -4,6 +4,7 @@ using DevExpress.Utils;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using Yutai.Plugins.Concrete;
+using Yutai.Plugins.Enums;
 using Yutai.Plugins.Events;
 using Yutai.Plugins.Mvp;
 
@@ -18,20 +19,21 @@ namespace Yutai.Plugins.Interfaces
         object MapContainer { get; }
         IView View { get; }
         IMapControl3 MapControl { get; }
-
         AxMapControl MapControlContainer { get; }
 
         YutaiTool CurrentTool { get; set; }
         IActiveView ActiveView { get;}
         IMap FocusMap { get; }
 
-        IPageLayoutControl3 PageLayoutControl { get;  }
+        IPageLayoutControl2 PageLayoutControl { get;  }
 
         string ActiveViewType { get; }
         object ActiveGISControl { get; }
 
         void ActivateMap();
         void ActivatePageLayout();
+
+        GISControlType ControlType { get; }
 
 
         event EventHandler<CancelEventArgs> ViewClosing;

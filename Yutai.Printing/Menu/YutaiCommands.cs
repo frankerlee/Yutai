@@ -37,6 +37,7 @@ namespace Yutai.Plugins.Printing.Menu
                 _commands = new List<YutaiCommand>()
                 {
                    new CmdStartLayout(_context,_plugin),
+                    new CmdCloseLayout(_context,_plugin),
 
 
                 };

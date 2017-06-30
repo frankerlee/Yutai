@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace Yutai.Plugins.Enums
 {
+    public enum GISControlType
+    {
+        MapControl,
+        PageLayout,
+        Scene,
+        Globe
+    }
     public enum PyramidPromptType
     {
         AlwaysPrompt,
