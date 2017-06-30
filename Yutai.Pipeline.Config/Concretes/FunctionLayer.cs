@@ -33,6 +33,7 @@ namespace Yutai.Pipeline.Config.Concretes
 
         public FunctionLayer(XmlNode node)
         {
+            _fields = new List<IYTField>();
             ReadFromXml(node);
         }
 

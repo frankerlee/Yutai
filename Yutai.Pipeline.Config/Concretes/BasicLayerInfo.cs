@@ -121,17 +121,20 @@ namespace Yutai.Pipeline.Config.Concretes
 
         public BasicLayerInfo(XmlNode node)
         {
+            _fields = new List<IYTField>();
             ReadFromXml(node);
         }
 
         public BasicLayerInfo(XmlNode node,IPipelineTemplate template)
         {
+            _fields = new List<IYTField>();
             _fields.AddRange(template.Fields);
            ReadFromXml(node);
         }
 
         public BasicLayerInfo()
         {
+            _fields = new List<IYTField>();
         }
 
         public BasicLayerInfo(IBasicLayerInfo info,bool keepClass)
@@ -168,9 +171,7 @@ namespace Yutai.Pipeline.Config.Concretes
             {
                 _name = node.Attributes["Name"] == null ? "" : node.Attributes["Name"].Value;
                 _aliasName = node.Attributes["AliasName"] == null ? "" : node.Attributes["AliasName"].Value;
-                _visible = node.Attributes["Visible"] == null
-                    ? true
-                    : (node.Attributes["Visible"].Value.ToUpper().StartsWith("T") ? true : false);
+                _visible = node.Attributes["Visible"] == null || node.Attributes["Visible"].Value.ToUpper().StartsWith("T");
                 _dataType = node.Attributes["DataType"] == null ? enumPipelineDataType.Point : EnumHelper.ConvertDataTypeFromString(node.Attributes["DataType"].Value);
                 _heightType = node.Attributes["HeightType"] == null ? enumPipelineHeightType.Top : EnumHelper.ConvertHeightTypeFromStr(node.Attributes["HeightType"].Value);
                 _validateKeys = node.Attributes["ValidateKeys"] == null ? "" : node.Attributes["ValidateKeys"].Value;

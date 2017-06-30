@@ -9,7 +9,7 @@ using Yutai.Pipeline.Config.Interfaces;
 
 namespace Yutai.Pipeline.Config.Concretes
 {
-    public class YTField:IYTField
+    public class YTField : IYTField
     {
         private string _typeName;
         private string _name;
@@ -49,7 +49,7 @@ namespace Yutai.Pipeline.Config.Concretes
             }
 
         }
-        public YTField(XmlNode node) { ReadFromXml(node);}
+        public YTField(XmlNode node) { ReadFromXml(node); }
 
         public string TypeName
         {
@@ -77,7 +77,7 @@ namespace Yutai.Pipeline.Config.Concretes
 
         public string FixAutoNames
         {
-            get { return "/"+_autoNames+"/"; }
+            get { return "/" + _autoNames + "/"; }
         }
 
         public int Length
@@ -118,7 +118,7 @@ namespace Yutai.Pipeline.Config.Concretes
                 _domainValues = value;
                 if (_domain == null)
                 {
-                    _domain=new YTDomain("Domain_"+_name,_domainValues);
+                    _domain = new YTDomain("Domain_" + _name, _domainValues);
                 }
             }
         }
@@ -130,14 +130,14 @@ namespace Yutai.Pipeline.Config.Concretes
                 _typeName = xml.Attributes["TypeName"].Value;
                 _name = xml.Attributes["Name"].Value;
                 _aliasName = xml.Attributes["AliasName"].Value;
-                _autoNames = xml.Attributes["AutoNames"].Value;
-                _length = string.IsNullOrWhiteSpace(xml.Attributes["Length"].Value) ? 50 : Convert.ToInt32(xml.Attributes["Length"].Value);
-                _allowNull = string.IsNullOrWhiteSpace(xml.Attributes["AllowNull"].Value) || (xml.Attributes["AllowNull"].Value.ToUpper().StartsWith("T"));
+                _autoNames = xml.Attributes["AutoNames"] == null ? "" : xml.Attributes["AutoNames"].Value;
+                _length = string.IsNullOrWhiteSpace(xml.Attributes["Length"]?.Value) ? 50 : Convert.ToInt32(xml.Attributes["Length"].Value);
+                _allowNull = string.IsNullOrWhiteSpace(xml.Attributes["AllowNull"]?.Value) || xml.Attributes["AllowNull"].Value.ToUpper().StartsWith("T");
                 _fieldTypeStr = xml.Attributes["FieldType"].Value;
-                _precision = string.IsNullOrWhiteSpace(xml.Attributes["Precision"].Value) ? 50: Convert.ToInt32(xml.Attributes["Precision"].Value);
+                _precision = string.IsNullOrWhiteSpace(xml.Attributes["Precision"]?.Value) ? 50 : Convert.ToInt32(xml.Attributes["Precision"].Value);
                 _fieldType = FieldHelper.ConvertFromString(_fieldTypeStr);
-                _domainValues = xml.Attributes["DomainValues"]==null?"": xml.Attributes["DomainValues"].Value;
-                _visible = xml.Attributes["Visible"] == null || (string.IsNullOrWhiteSpace(xml.Attributes["Visible"].Value) || (xml.Attributes["Visible"].Value.ToUpper().StartsWith("T")));
+                _domainValues = xml.Attributes["DomainValues"] == null ? "" : xml.Attributes["DomainValues"].Value;
+                _visible = string.IsNullOrWhiteSpace(xml.Attributes["Visible"]?.Value) || (xml.Attributes["Visible"].Value.ToUpper().StartsWith("T"));
             }
         }
 
@@ -212,7 +212,7 @@ namespace Yutai.Pipeline.Config.Concretes
 
         public IYTField Clone(bool keepClass)
         {
-            IYTField newField= new YTField(this);
+            IYTField newField = new YTField(this);
             if (keepClass)
             {
                 newField.EsriFieldName = this._esriFieldName;
