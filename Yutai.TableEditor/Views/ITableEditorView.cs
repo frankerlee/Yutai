@@ -9,6 +9,7 @@
 
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DevExpress.XtraTab;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
 using Yutai.Plugins.Mvp;
@@ -20,7 +21,7 @@ namespace Yutai.Plugins.TableEditor.Views
     {
         IMapView MapView { get; }
         Dictionary<string, ITableView> TableViews { get; set; }
-        TabControl MainTabControl { get; }
+        XtraTabControl MainTabControl { get; }
         void ActivatePage(string pageName);
         void ClosePage(string pageName);
         void ClosePage();

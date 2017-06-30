@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraTab;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
 using Yutai.Plugins.Interfaces;
@@ -15,7 +16,7 @@ using Yutai.Plugins.TableEditor.Views;
 
 namespace Yutai.Plugins.TableEditor.Editor
 {
-    public partial class TablePage : TabPage, ITableView
+    public partial class TablePage : XtraTabPage, ITableView
     {
         private IAppContext _context;
         private ITableEditorView _view;
@@ -33,7 +34,6 @@ namespace Yutai.Plugins.TableEditor.Editor
 
             this.Name = featureLayer.Name;
             this.Text = featureLayer.Name;
-
             InitControls();
 
             _activeViewEventsEvent = context.MapControl.Map as IActiveViewEvents_Event;
@@ -88,12 +88,11 @@ namespace Yutai.Plugins.TableEditor.Editor
             //_virtualGrid = new VirtualGrid();
             _virtualGrid = new Grid();
             _contextMenuStrip = new CompContextMenuStrip(_context, this);
-            this.SuspendLayout();
 
             _header.Dock = DockStyle.Top;
             _header.TabIndex = 0;
             _header.Value = Text;
-            _header.Close += _header_Close;
+            //_header.Close += _header_Close;
 
             ((Grid)_virtualGrid).Dock = DockStyle.Fill;
             ((Grid)_virtualGrid).FeatureLayer = _featureLayer;
@@ -104,7 +103,6 @@ namespace Yutai.Plugins.TableEditor.Editor
 
             this.Controls.Add(((Grid)_virtualGrid));
             this.Controls.Add(_header);
-            this.ResumeLayout(false);
         }
 
         private void _virtualGrid_ColumnHeaderRightClick(object sender, DataGridViewCellMouseEventArgs e)

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraTab;
+using DevExpress.XtraTab.ViewInfo;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
 using Yutai.Plugins.Concrete;
@@ -159,27 +161,29 @@ namespace Yutai.Plugins.TableEditor.Views
         public IMapView MapView { get; }
         public Dictionary<string, ITableView> TableViews { get; set; }
 
-        public TabControl MainTabControl
+        public XtraTabControl MainTabControl
         {
-            get { return tabControl; }
+            get { return xtraTabControl; }
         }
 
         public void ActivatePage(string pageName)
         {
-            tabControl.SelectedTab = tabControl.TabPages[pageName];
+            XtraTabPage page = xtraTabControl.TabPages.FirstOrDefault(c => c.Name == pageName);
+            if (page != null) xtraTabControl.SelectedTabPage = page;
         }
 
         public void ClosePage(string pageName)
         {
             TableViews.Remove(pageName);
-            TabPage page = tabControl.TabPages[pageName];
-            tabControl.TabPages.Remove(page);
+            XtraTabPage page = xtraTabControl.TabPages.FirstOrDefault(c => c.Name == pageName);
+            if (page != null) xtraTabControl.TabPages.Remove(page);
         }
 
         public void ClosePage()
         {
             TableViews.Remove(CurrentGridView.Name);
-            tabControl.TabPages.Remove(tabControl.SelectedTab);
+
+            xtraTabControl.TabPages.Remove(xtraTabControl.SelectedTabPage);
         }
 
         public void OpenTable(IFeatureLayer featureLayer)
@@ -191,23 +195,23 @@ namespace Yutai.Plugins.TableEditor.Views
             }
 
             ITableView pTableView = new TablePage(_context, this, featureLayer);
-            tabControl.Controls.Add(pTableView as TabPage);
-            tabControl.SelectedTab = pTableView as TabPage;
+            xtraTabControl.TabPages.Add(pTableView as XtraTabPage);
+            xtraTabControl.SelectedTabPage = pTableView as XtraTabPage;
 
             TableViews.Add(featureLayer.Name, pTableView);
         }
-
+        
         public void Clear()
         {
             TableViews.Clear();
-            tabControl.TabPages.Clear();
+            xtraTabControl.TabPages.Clear();
         }
 
         public ITableView CurrentGridView
         {
             get
             {
-                return tabControl.SelectedTab as ITableView;
+                return xtraTabControl.SelectedTabPage as ITableView;
             }
         }
 
@@ -221,5 +225,14 @@ namespace Yutai.Plugins.TableEditor.Views
         public override string DockName { get { return DefaultDockName; } }
         public virtual string DefaultNestDockName { get { return ""; } }
         public const string DefaultDockName = "Plug_TableEditor_View";
+
+        private void xtraTabControl_CloseButtonClick(object sender, EventArgs e)
+        {
+            ClosePageButtonEventArgs arg = e as ClosePageButtonEventArgs;
+            XtraTabPage page = arg?.Page as XtraTabPage;
+            if (page == null)
+                return;
+            ClosePage(page.Name);
+        }
     }
 }

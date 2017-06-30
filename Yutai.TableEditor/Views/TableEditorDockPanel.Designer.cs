@@ -29,38 +29,38 @@
         private void InitializeComponent()
         {
             this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.tabControl = new System.Windows.Forms.TabControl();
-            this.toolStrip.SuspendLayout();
+            this.xtraTabControl = new DevExpress.XtraTab.XtraTabControl();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip
             // 
-            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(666, 25);
             this.toolStrip.TabIndex = 2;
             this.toolStrip.Text = "toolStrip1";
             // 
-            // tabControl
+            // xtraTabControl
             // 
-            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl.Location = new System.Drawing.Point(0, 25);
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(666, 318);
-            this.tabControl.TabIndex = 3;
+            this.xtraTabControl.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InAllTabPageHeaders;
+            this.xtraTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraTabControl.HeaderLocation = DevExpress.XtraTab.TabHeaderLocation.Bottom;
+            this.xtraTabControl.Location = new System.Drawing.Point(0, 25);
+            this.xtraTabControl.Name = "xtraTabControl";
+            this.xtraTabControl.Size = new System.Drawing.Size(666, 318);
+            this.xtraTabControl.TabIndex = 3;
+            this.xtraTabControl.CloseButtonClick += new System.EventHandler(this.xtraTabControl_CloseButtonClick);
             // 
             // TableEditorDockPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tabControl);
+            this.Controls.Add(this.xtraTabControl);
             this.Controls.Add(this.toolStrip);
             this.Name = "TableEditorDockPanel";
             this.Size = new System.Drawing.Size(666, 343);
-            this.toolStrip.ResumeLayout(false);
-            this.toolStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -68,6 +68,6 @@
 
         #endregion
         private System.Windows.Forms.ToolStrip toolStrip;
-        private System.Windows.Forms.TabControl tabControl;
+        private DevExpress.XtraTab.XtraTabControl xtraTabControl;
     }
 }
