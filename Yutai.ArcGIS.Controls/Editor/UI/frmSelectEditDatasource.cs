@@ -24,11 +24,13 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         {
             if (this.CanEditDatasetList.Items.Count == 0)
             {
-                MessageBox.Show("不能编辑任何图层，请检查是否加载了要素图层，加载的要素图层是否已经进行了版本注册或是否有更新权限！", "开始编辑", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("不能编辑任何图层，请检查是否加载了要素图层，加载的要素图层是否已经进行了版本注册或是否有更新权限！", "开始编辑", MessageBoxButtons.OK,
+                    MessageBoxIcon.Asterisk);
             }
             else
             {
-                Yutai.ArcGIS.Common.Editor.EditWorkspaceInfo tag = this.EditWorkspacelist.SelectedItems[0].Tag as Yutai.ArcGIS.Common.Editor.EditWorkspaceInfo;
+                Yutai.ArcGIS.Common.Editor.EditWorkspaceInfo tag =
+                    this.EditWorkspacelist.SelectedItems[0].Tag as Yutai.ArcGIS.Common.Editor.EditWorkspaceInfo;
                 IWorkspaceEdit workspace = tag.Workspace as IWorkspaceEdit;
                 if (!workspace.IsBeingEdited())
                 {
@@ -46,18 +48,18 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                         }
                         else
                         {
-                           Logger.Current.Error("", exception, "");
+                            Logger.Current.Error("", exception, "");
                         }
                     }
                     catch (Exception exception2)
                     {
-                       Logger.Current.Error("", exception2, "");
+                        Logger.Current.Error("", exception2, "");
                     }
                 }
             }
         }
 
- private void EditWorkspacelist_SelectedIndexChanged(object sender, EventArgs e)
+        private void EditWorkspacelist_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.CanEditDatasetList.Items.Clear();
             this.btnOK.Enabled = false;
@@ -66,7 +68,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 this.btnOK.Enabled = true;
                 try
                 {
-                    Yutai.ArcGIS.Common.Editor.EditWorkspaceInfo tag = this.EditWorkspacelist.SelectedItems[0].Tag as Yutai.ArcGIS.Common.Editor.EditWorkspaceInfo;
+                    Yutai.ArcGIS.Common.Editor.EditWorkspaceInfo tag =
+                        this.EditWorkspacelist.SelectedItems[0].Tag as Yutai.ArcGIS.Common.Editor.EditWorkspaceInfo;
                     for (int i = 0; i < tag.LayerArray.Count; i++)
                     {
                         IFeatureLayer layer = tag.LayerArray.get_Element(i) as IFeatureLayer;
@@ -100,7 +103,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 string[] items = new string[2];
                 for (int i = 0; i < this.m_pEditWorkspaceInfo.Count; i++)
                 {
-                    Yutai.ArcGIS.Common.Editor.EditWorkspaceInfo info = this.m_pEditWorkspaceInfo.get_Element(i) as Yutai.ArcGIS.Common.Editor.EditWorkspaceInfo;
+                    Yutai.ArcGIS.Common.Editor.EditWorkspaceInfo info =
+                        this.m_pEditWorkspaceInfo.get_Element(i) as Yutai.ArcGIS.Common.Editor.EditWorkspaceInfo;
                     items[0] = info.Workspace.PathName;
                     items[1] = "";
                     switch (info.Workspace.Type)
@@ -117,7 +121,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                             items[1] = "空间数据库连接";
                             break;
                     }
-                    ListViewItem item = new ListViewItem(items) {
+                    ListViewItem item = new ListViewItem(items)
+                    {
                         Tag = info
                     };
                     this.EditWorkspacelist.Items.Add(item);
@@ -125,21 +130,14 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
- public IArray EditWorkspaceInfo
+        public IArray EditWorkspaceInfo
         {
-            set
-            {
-                this.m_pEditWorkspaceInfo = value;
-            }
+            set { this.m_pEditWorkspaceInfo = value; }
         }
 
         public IMap Map
         {
-            set
-            {
-                this.m_pMap = value;
-            }
+            set { this.m_pMap = value; }
         }
     }
 }
-

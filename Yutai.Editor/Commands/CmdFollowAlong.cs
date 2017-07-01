@@ -93,7 +93,11 @@ namespace Yutai.Plugins.Editor.Commands
                     {
                         result = false;
                     }
-                    else if (Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass != null && (Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass.ShapeType == esriGeometryType.esriGeometryPolyline || Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass.ShapeType == esriGeometryType.esriGeometryPolygon))
+                    else if (Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass != null &&
+                             (Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass.ShapeType ==
+                              esriGeometryType.esriGeometryPolyline ||
+                              Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass.ShapeType ==
+                              esriGeometryType.esriGeometryPolygon))
                     {
                         result = true;
                     }
@@ -110,8 +114,6 @@ namespace Yutai.Plugins.Editor.Commands
             }
         }
 
- 
-     
 
         public CmdFollowAlong(IAppContext context)
         {
@@ -120,7 +122,7 @@ namespace Yutai.Plugins.Editor.Commands
 
         public override void OnClick(object sender, EventArgs args)
         {
-           OnClick();
+            OnClick();
         }
 
         public override void OnCreate(object hook)
@@ -139,7 +141,7 @@ namespace Yutai.Plugins.Editor.Commands
             this.isimpleLineSymbol_0 = new SimpleLineSymbol();
             this.isimpleLineSymbol_0.Width = 1.0;
             this.isegmentGraph_0 = new SegmentGraph();
-           
+
             DisplayStyleYT = DisplayStyleYT.Image;
             base.TextImageRelationYT = TextImageRelationYT.ImageAboveText;
             base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
@@ -147,13 +149,15 @@ namespace Yutai.Plugins.Editor.Commands
 
             if (_context is IApplicationEvents)
             {
-                (_context as IApplicationEvents).OnActiveHookChanged += new OnActiveHookChangedHandler(this.AppContext_ActiveHookChanged);
+                (_context as IApplicationEvents).OnActiveHookChanged +=
+                    new OnActiveHookChangedHandler(this.AppContext_ActiveHookChanged);
             }
             if (this.iactiveViewEvents_Event_0 != null)
             {
                 try
                 {
-                    this.iactiveViewEvents_Event_0.AfterDraw -= new IActiveViewEvents_AfterDrawEventHandler(ActiveView_AfterDraw);
+                    this.iactiveViewEvents_Event_0.AfterDraw -=
+                        new IActiveViewEvents_AfterDrawEventHandler(ActiveView_AfterDraw);
                 }
                 catch
                 {
@@ -162,7 +166,8 @@ namespace Yutai.Plugins.Editor.Commands
             if (_context.FocusMap != null)
             {
                 this.iactiveViewEvents_Event_0 = (_context.ActiveView as IActiveViewEvents_Event);
-                this.iactiveViewEvents_Event_0.AfterDraw += new IActiveViewEvents_AfterDrawEventHandler(ActiveView_AfterDraw);
+                this.iactiveViewEvents_Event_0.AfterDraw +=
+                    new IActiveViewEvents_AfterDrawEventHandler(ActiveView_AfterDraw);
                 this.snapHelper_0 = new SnapHelper(_context);
             }
         }
@@ -190,10 +195,12 @@ namespace Yutai.Plugins.Editor.Commands
                         this.isegmentGraphCursor_0 = this.isegmentGraph_0.GetCursor(this.ipoint_0);
                         this.ipolyline_0 = this.isegmentGraphCursor_0.CurrentTrace;
                         this.iconstructCurve_0.ConstructOffset(this.ipolyline_0, this.double_0, ref obj, ref value);
-                        if (SketchShareEx.LastPoint != null && (this.iconstructCurve_0 as IPointCollection).PointCount > 0)
+                        if (SketchShareEx.LastPoint != null &&
+                            (this.iconstructCurve_0 as IPointCollection).PointCount > 0)
                         {
                             this.iline_0 = new Line();
-                            this.iline_0.PutCoords(SketchShareEx.LastPoint, (this.iconstructCurve_0 as IPointCollection).get_Point(0));
+                            this.iline_0.PutCoords(SketchShareEx.LastPoint,
+                                (this.iconstructCurve_0 as IPointCollection).get_Point(0));
                         }
                         this.method_4();
                         this.int_0 = 0;
@@ -238,7 +245,8 @@ namespace Yutai.Plugins.Editor.Commands
             IPoint anchorPoint = _context.ActiveView.ScreenDisplay.DisplayTransformation.ToMapPoint(int_4, int_5);
             this.snapHelper_0.AnchorPoint = anchorPoint;
             IActiveView arg_3A_0 = _context.FocusMap as IActiveView;
-            this.snapHelper_0.Snap2Point(anchorPoint, this.snapHelper_0.AnchorPoint, esriSimpleMarkerStyle.esriSMSDiamond);
+            this.snapHelper_0.Snap2Point(anchorPoint, this.snapHelper_0.AnchorPoint,
+                esriSimpleMarkerStyle.esriSMSDiamond);
             if (this.bool_5)
             {
                 this.bool_1 = true;
@@ -284,15 +292,15 @@ namespace Yutai.Plugins.Editor.Commands
                 if (igeometry_0 != null)
                 {
                     IFeatureLayer featureLayer = Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer;
-                    IDataset dataset = (IDataset)featureLayer.FeatureClass;
-                    IWorkspaceEdit workspaceEdit = (IWorkspaceEdit)dataset.Workspace;
+                    IDataset dataset = (IDataset) featureLayer.FeatureClass;
+                    IWorkspaceEdit workspaceEdit = (IWorkspaceEdit) dataset.Workspace;
                     int index = featureLayer.FeatureClass.FindField(featureLayer.FeatureClass.ShapeFieldName);
                     IGeometryDef geometryDef = featureLayer.FeatureClass.Fields.get_Field(index).GeometryDef;
                     if (geometryDef.HasZ)
                     {
-                        IZAware iZAware = (IZAware)igeometry_0;
+                        IZAware iZAware = (IZAware) igeometry_0;
                         iZAware.ZAware = true;
-                        IZ iZ = (IZ)igeometry_0;
+                        IZ iZ = (IZ) igeometry_0;
                         double constantZ;
                         double num;
                         geometryDef.SpatialReference.GetZDomain(out constantZ, out num);
@@ -300,7 +308,7 @@ namespace Yutai.Plugins.Editor.Commands
                     }
                     if (geometryDef.HasM)
                     {
-                        IMAware iMAware = (IMAware)igeometry_0;
+                        IMAware iMAware = (IMAware) igeometry_0;
                         iMAware.MAware = true;
                     }
                     workspaceEdit.StartEditOperation();
@@ -312,7 +320,7 @@ namespace Yutai.Plugins.Editor.Commands
                     feature.Shape = igeometry_0;
                     try
                     {
-                        IRowSubtypes rowSubtypes = (IRowSubtypes)feature;
+                        IRowSubtypes rowSubtypes = (IRowSubtypes) feature;
                         rowSubtypes.InitDefaultValues();
                     }
                     catch (Exception exception_)
@@ -322,13 +330,13 @@ namespace Yutai.Plugins.Editor.Commands
                     feature.Store();
                     workspaceEdit.StopEditOperation();
                     EditorEvent.AddFeature(featureLayer, feature);
-                    IActiveView activeView = (IActiveView)_context.FocusMap;
+                    IActiveView activeView = (IActiveView) _context.FocusMap;
                     _context.FocusMap.ClearSelection();
                     _context.FocusMap.SelectFeature(featureLayer, feature);
                     if (igeometry_0.GeometryType == esriGeometryType.esriGeometryPoint)
                     {
-                        double distance = Common.ConvertPixelsToMapUnits((IActiveView)_context.FocusMap, 30.0);
-                        ITopologicalOperator topologicalOperator = (ITopologicalOperator)igeometry_0;
+                        double distance = Common.ConvertPixelsToMapUnits((IActiveView) _context.FocusMap, 30.0);
+                        ITopologicalOperator topologicalOperator = (ITopologicalOperator) igeometry_0;
                         topologicalOperator.Buffer(distance);
                         activeView.Refresh();
                     }
@@ -342,7 +350,8 @@ namespace Yutai.Plugins.Editor.Commands
             {
                 if (ex.ErrorCode == -2147220936)
                 {
-                    System.Windows.Forms.MessageBox.Show("坐标值或量测值超出范围!", "创建要素", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Hand);
+                    System.Windows.Forms.MessageBox.Show("坐标值或量测值超出范围!", "创建要素",
+                        System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Hand);
                 }
             }
         }
@@ -354,17 +363,19 @@ namespace Yutai.Plugins.Editor.Commands
                 IGeometry geometry = null;
                 if (SketchToolAssist.Feedback is INewLineFeedback)
                 {
-                    INewLineFeedback newLineFeedback = (INewLineFeedback)SketchToolAssist.Feedback;
+                    INewLineFeedback newLineFeedback = (INewLineFeedback) SketchToolAssist.Feedback;
                     IPolyline polyline = newLineFeedback.Stop();
                     if (polyline != null)
                     {
-                        IPointCollection pointCollection = (IPointCollection)polyline;
+                        IPointCollection pointCollection = (IPointCollection) polyline;
                         if (pointCollection.PointCount >= 2)
                         {
-                            geometry = (IGeometry)pointCollection;
-                            if (SketchShareEx.m_LastPartGeometry != null && SketchShareEx.m_LastPartGeometry is IPolyline)
+                            geometry = (IGeometry) pointCollection;
+                            if (SketchShareEx.m_LastPartGeometry != null &&
+                                SketchShareEx.m_LastPartGeometry is IPolyline)
                             {
-                                IGeometryCollection geometryCollection = SketchShareEx.m_LastPartGeometry as IGeometryCollection;
+                                IGeometryCollection geometryCollection =
+                                    SketchShareEx.m_LastPartGeometry as IGeometryCollection;
                                 geometryCollection.AddGeometryCollection(polyline as IGeometryCollection);
                                 geometry = (geometryCollection as IGeometry);
                                 SketchShareEx.m_LastPartGeometry = null;
@@ -374,17 +385,18 @@ namespace Yutai.Plugins.Editor.Commands
                 }
                 else if (SketchToolAssist.Feedback is INewPolygonFeedback)
                 {
-                    INewPolygonFeedback newPolygonFeedback = (INewPolygonFeedback)SketchToolAssist.Feedback;
+                    INewPolygonFeedback newPolygonFeedback = (INewPolygonFeedback) SketchToolAssist.Feedback;
                     IPolygon polygon = newPolygonFeedback.Stop();
                     if (polygon != null)
                     {
-                        IPointCollection pointCollection = (IPointCollection)polygon;
+                        IPointCollection pointCollection = (IPointCollection) polygon;
                         if (pointCollection.PointCount >= 3)
                         {
-                            geometry = (IGeometry)pointCollection;
+                            geometry = (IGeometry) pointCollection;
                             if (SketchShareEx.m_LastPartGeometry != null && SketchShareEx.m_LastPartGeometry is IPolygon)
                             {
-                                IGeometryCollection geometryCollection = SketchShareEx.m_LastPartGeometry as IGeometryCollection;
+                                IGeometryCollection geometryCollection =
+                                    SketchShareEx.m_LastPartGeometry as IGeometryCollection;
                                 geometryCollection.AddGeometryCollection(polygon as IGeometryCollection);
                                 geometry = (geometryCollection as IGeometry);
                                 SketchShareEx.m_LastPartGeometry = null;
@@ -403,7 +415,8 @@ namespace Yutai.Plugins.Editor.Commands
                 COMException ex = ex2 as COMException;
                 if (ex.ErrorCode == -2147220936)
                 {
-                    System.Windows.Forms.MessageBox.Show("坐标值或量测值超出范围!", "创建要素", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Hand);
+                    System.Windows.Forms.MessageBox.Show("坐标值或量测值超出范围!", "创建要素",
+                        System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Hand);
                 }
                 CErrorLog.writeErrorLog(this, ex2, "");
             }
@@ -430,7 +443,8 @@ namespace Yutai.Plugins.Editor.Commands
 
         private void method_2(IPolyline ipolyline_1)
         {
-            esriGeometryType shapeType = Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass.ShapeType;
+            esriGeometryType shapeType =
+                Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass.ShapeType;
             if (SketchToolAssist.Feedback == null)
             {
                 if (shapeType == esriGeometryType.esriGeometryPolyline)
@@ -529,7 +543,8 @@ namespace Yutai.Plugins.Editor.Commands
             while (feature != null)
             {
                 esriGeometryType geometryType = feature.Shape.GeometryType;
-                if (geometryType == esriGeometryType.esriGeometryPolygon || geometryType == esriGeometryType.esriGeometryPolyline)
+                if (geometryType == esriGeometryType.esriGeometryPolygon ||
+                    geometryType == esriGeometryType.esriGeometryPolyline)
                 {
                     IClone clone = feature.Shape as IClone;
                     geometryCollection.AddGeometry(clone.Clone() as IGeometry, ref value, ref value);
@@ -548,7 +563,8 @@ namespace Yutai.Plugins.Editor.Commands
 
         private void ActiveView_AfterDraw(IDisplay idisplay_0, esriViewDrawPhase esriViewDrawPhase_0)
         {
-            if (this.bool_2 && this.iconstructCurve_0 != null && (this.iconstructCurve_0 as IPointCollection).PointCount <= 1)
+            if (this.bool_2 && this.iconstructCurve_0 != null &&
+                (this.iconstructCurve_0 as IPointCollection).PointCount <= 1)
             {
                 IDisplay screenDisplay = _context.ActiveView.ScreenDisplay;
                 screenDisplay.StartDrawing(screenDisplay.hDC, -1);
@@ -582,42 +598,43 @@ namespace Yutai.Plugins.Editor.Commands
                 switch (int_2)
                 {
                     case 68:
+                    {
+                        frmTrackSet frmTrackSet = new frmTrackSet();
+                        frmTrackSet.offset = this.double_0;
+                        frmTrackSet.ConstructOffset = this.int_1;
+                        if (frmTrackSet.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                         {
-                            frmTrackSet frmTrackSet = new frmTrackSet();
-                            frmTrackSet.offset = this.double_0;
-                            frmTrackSet.ConstructOffset = this.int_1;
-                            if (frmTrackSet.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                            this.double_0 = frmTrackSet.offset;
+                            this.int_1 = frmTrackSet.ConstructOffset;
+                            if (this.bool_2)
                             {
-                                this.double_0 = frmTrackSet.offset;
-                                this.int_1 = frmTrackSet.ConstructOffset;
-                                if (this.bool_2)
-                                {
-                                    this.ipolyline_0 = this.isegmentGraphCursor_0.CurrentTrace;
-                                    object value = Missing.Value;
-                                    object obj = esriConstructOffsetEnum.esriConstructOffsetSimple;
-                                    this.iconstructCurve_0.ConstructOffset(this.ipolyline_0, this.double_0, ref obj, ref value);
-                                    this.method_4();
-                                }
+                                this.ipolyline_0 = this.isegmentGraphCursor_0.CurrentTrace;
+                                object value = Missing.Value;
+                                object obj = esriConstructOffsetEnum.esriConstructOffsetSimple;
+                                this.iconstructCurve_0.ConstructOffset(this.ipolyline_0, this.double_0, ref obj,
+                                    ref value);
+                                this.method_4();
                             }
-                            break;
                         }
+                        break;
+                    }
                     case 69:
                         break;
                     case 70:
+                    {
+                        this.iline_0 = null;
+                        this.ipolyline_0 = this.isegmentGraphCursor_0.CurrentTrace;
+                        object value = Missing.Value;
+                        object obj = this.int_1;
+                        this.iconstructCurve_0.ConstructOffset(this.ipolyline_0, this.double_0, ref obj, ref value);
+                        this.method_1();
+                        this.method_2(this.iconstructCurve_0 as IPolyline);
+                        if (SketchToolAssist.Feedback != null)
                         {
-                            this.iline_0 = null;
-                            this.ipolyline_0 = this.isegmentGraphCursor_0.CurrentTrace;
-                            object value = Missing.Value;
-                            object obj = this.int_1;
-                            this.iconstructCurve_0.ConstructOffset(this.ipolyline_0, this.double_0, ref obj, ref value);
-                            this.method_1();
-                            this.method_2(this.iconstructCurve_0 as IPolyline);
-                            if (SketchToolAssist.Feedback != null)
-                            {
-                                this.method_0();
-                            }
-                            break;
+                            this.method_0();
                         }
+                        break;
+                    }
                     default:
                         if (int_2 == 119)
                         {
@@ -660,7 +677,8 @@ namespace Yutai.Plugins.Editor.Commands
             {
                 try
                 {
-                    this.iactiveViewEvents_Event_0.AfterDraw -= new IActiveViewEvents_AfterDrawEventHandler(ActiveView_AfterDraw);
+                    this.iactiveViewEvents_Event_0.AfterDraw -=
+                        new IActiveViewEvents_AfterDrawEventHandler(ActiveView_AfterDraw);
                 }
                 catch
                 {
@@ -672,12 +690,13 @@ namespace Yutai.Plugins.Editor.Commands
                 this.iactiveViewEvents_Event_0 = (_context.ActiveView as IActiveViewEvents_Event);
                 if (this.iactiveViewEvents_Event_0 != null)
                 {
-                    this.iactiveViewEvents_Event_0.AfterDraw += new IActiveViewEvents_AfterDrawEventHandler(ActiveView_AfterDraw);
+                    this.iactiveViewEvents_Event_0.AfterDraw +=
+                        new IActiveViewEvents_AfterDrawEventHandler(ActiveView_AfterDraw);
                 }
             }
             catch (Exception exception_)
             {
-               // CErrorLog.writeErrorLog(this, exception_, "");
+                // CErrorLog.writeErrorLog(this, exception_, "");
             }
         }
     }

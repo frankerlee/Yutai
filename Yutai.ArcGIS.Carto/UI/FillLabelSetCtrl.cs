@@ -45,7 +45,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnExpress_Click(object sender, EventArgs e)
         {
-            frmExpressionSet set = new frmExpressionSet {
+            frmExpressionSet set = new frmExpressionSet
+            {
                 LabelExpression = this.string_0,
                 AnnotationExpressionEngine = this.iannotationExpressionEngine_0,
                 IsExpressionSimple = this.bool_1,
@@ -57,7 +58,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 this.iannotationExpressionEngine_0 = set.AnnotationExpressionEngine;
                 this.bool_1 = set.IsExpressionSimple;
                 (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).Expression = this.string_0;
-                (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).ExpressionParser = this.iannotationExpressionEngine_0;
+                (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).ExpressionParser =
+                    this.iannotationExpressionEngine_0;
                 (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).IsExpressionSimple = this.bool_1;
                 int index = this.string_0.IndexOf("[", 1);
                 IFields fields = this.igeoFeatureLayer_0.FeatureClass.Fields;
@@ -88,12 +90,13 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnScaleSet_Click(object sender, EventArgs e)
         {
-            new frmAnnoScaleSet { AnnotateLayerProperties = this.iannotateLayerProperties_0 }.ShowDialog();
+            new frmAnnoScaleSet {AnnotateLayerProperties = this.iannotateLayerProperties_0}.ShowDialog();
         }
 
         private void btnSQL_Click(object sender, EventArgs e)
         {
-            frmAttributeQueryBuilder builder = new frmAttributeQueryBuilder {
+            frmAttributeQueryBuilder builder = new frmAttributeQueryBuilder
+            {
                 Table = this.igeoFeatureLayer_0.FeatureClass as ITable,
                 WhereCaluse = this.iannotateLayerProperties_0.WhereClause
             };
@@ -122,34 +125,46 @@ namespace Yutai.ArcGIS.Carto.UI
         {
             if (this.bool_0)
             {
-                IBasicOverposterLayerProperties4 basicOverposterLayerProperties = (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties as IBasicOverposterLayerProperties4;
+                IBasicOverposterLayerProperties4 basicOverposterLayerProperties =
+                    (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties as
+                        IBasicOverposterLayerProperties4;
                 basicOverposterLayerProperties.PlaceOnlyInsidePolygon = this.chkPlaceOnlyInsidePolygon.Checked;
             }
         }
 
- private void FillLabelSetCtrl_Load(object sender, EventArgs e)
+        private void FillLabelSetCtrl_Load(object sender, EventArgs e)
         {
             this.method_0();
             this.bool_2 = true;
         }
 
- private void method_0()
+        private void method_0()
         {
-            if (((this.igeoFeatureLayer_0 != null) && (this.iannotateLayerProperties_0 != null)) && (this.igeoFeatureLayer_0.FeatureClass != null))
+            if (((this.igeoFeatureLayer_0 != null) && (this.iannotateLayerProperties_0 != null)) &&
+                (this.igeoFeatureLayer_0.FeatureClass != null))
             {
                 this.bool_0 = false;
                 IFields fields = this.igeoFeatureLayer_0.FeatureClass.Fields;
                 for (int i = 0; i < fields.FieldCount; i++)
                 {
                     IField field = fields.get_Field(i);
-                    if (((((field.Type == esriFieldType.esriFieldTypeDate) || (field.Type == esriFieldType.esriFieldTypeDouble)) || ((field.Type == esriFieldType.esriFieldTypeGlobalID) || (field.Type == esriFieldType.esriFieldTypeGUID))) || (((field.Type == esriFieldType.esriFieldTypeInteger) || (field.Type == esriFieldType.esriFieldTypeOID)) || ((field.Type == esriFieldType.esriFieldTypeSingle) || (field.Type == esriFieldType.esriFieldTypeSmallInteger)))) || (field.Type == esriFieldType.esriFieldTypeString))
+                    if (((((field.Type == esriFieldType.esriFieldTypeDate) ||
+                           (field.Type == esriFieldType.esriFieldTypeDouble)) ||
+                          ((field.Type == esriFieldType.esriFieldTypeGlobalID) ||
+                           (field.Type == esriFieldType.esriFieldTypeGUID))) ||
+                         (((field.Type == esriFieldType.esriFieldTypeInteger) ||
+                           (field.Type == esriFieldType.esriFieldTypeOID)) ||
+                          ((field.Type == esriFieldType.esriFieldTypeSingle) ||
+                           (field.Type == esriFieldType.esriFieldTypeSmallInteger)))) ||
+                        (field.Type == esriFieldType.esriFieldTypeString))
                     {
                         this.cboFields.Properties.Items.Add(field.AliasName);
                     }
                 }
                 this.string_0 = (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).Expression.Trim();
                 this.bool_1 = (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).IsExpressionSimple;
-                this.iannotationExpressionEngine_0 = (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).ExpressionParser;
+                this.iannotationExpressionEngine_0 =
+                    (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).ExpressionParser;
                 if (this.string_0.IndexOf("[", 1) != -1)
                 {
                     this.cboFields.Enabled = false;
@@ -175,8 +190,11 @@ namespace Yutai.ArcGIS.Carto.UI
                 this.itextSymbol_0 = (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).Symbol;
                 this.symbolItem.Symbol = this.itextSymbol_0;
                 this.symbolItem.Invalidate();
-                IBasicOverposterLayerProperties4 basicOverposterLayerProperties = (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties as IBasicOverposterLayerProperties4;
-                this.rdoPolygonPlacementMethod.SelectedIndex = (int) basicOverposterLayerProperties.PolygonPlacementMethod;
+                IBasicOverposterLayerProperties4 basicOverposterLayerProperties =
+                    (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties as
+                        IBasicOverposterLayerProperties4;
+                this.rdoPolygonPlacementMethod.SelectedIndex =
+                    (int) basicOverposterLayerProperties.PolygonPlacementMethod;
                 this.chkPlaceOnlyInsidePolygon.Checked = basicOverposterLayerProperties.PlaceOnlyInsidePolygon;
                 this.rdoPolygonPlacementMethod_SelectedIndexChanged(this, new EventArgs());
                 this.bool_0 = true;
@@ -207,8 +225,11 @@ namespace Yutai.ArcGIS.Carto.UI
             }
             if (this.bool_0)
             {
-                IBasicOverposterLayerProperties4 basicOverposterLayerProperties = (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties as IBasicOverposterLayerProperties4;
-                basicOverposterLayerProperties.PolygonPlacementMethod = (esriOverposterPolygonPlacementMethod) this.rdoPolygonPlacementMethod.SelectedIndex;
+                IBasicOverposterLayerProperties4 basicOverposterLayerProperties =
+                    (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties as
+                        IBasicOverposterLayerProperties4;
+                basicOverposterLayerProperties.PolygonPlacementMethod =
+                    (esriOverposterPolygonPlacementMethod) this.rdoPolygonPlacementMethod.SelectedIndex;
             }
         }
 
@@ -226,11 +247,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IGeoFeatureLayer GeoFeatureLayer
         {
-            set
-            {
-                this.igeoFeatureLayer_0 = value;
-            }
+            set { this.igeoFeatureLayer_0 = value; }
         }
     }
 }
-

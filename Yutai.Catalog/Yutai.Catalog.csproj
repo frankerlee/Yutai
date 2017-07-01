@@ -155,10 +155,12 @@
     <ProjectReference Include="..\Yutai.ArcGIS.Controls\Yutai.ArcGIS.Controls.csproj">
       <Project>{0E17B019-EE36-46B7-8B96-C0A3CA666430}</Project>
       <Name>Yutai.ArcGIS.Controls</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.ArcGIS.Framework\Yutai.ArcGIS.Framework.csproj">
       <Project>{80D1C45B-805C-48E6-BF90-F8CB2B033D31}</Project>
       <Name>Yutai.ArcGIS.Framework</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.Plugins\Yutai.Plugins.csproj">
       <Project>{800F2EE4-47AB-4CD4-934D-A64980D98A23}</Project>
@@ -168,10 +170,12 @@
     <ProjectReference Include="..\Yutai.Services\Yutai.Services.csproj">
       <Project>{E95B46F1-A8D7-41D8-9F5A-B57BD748A62B}</Project>
       <Name>Yutai.Services</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.Shared\Yutai.Shared.csproj">
       <Project>{4A9B3243-2B0A-4E87-9B23-71A58C1F318D}</Project>
       <Name>Yutai.Shared</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.UI\Yutai.UI.csproj">
       <Project>{9A73B99A-0D59-4B55-B35F-721D321942AF}</Project>

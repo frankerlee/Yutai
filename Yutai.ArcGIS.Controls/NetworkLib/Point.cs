@@ -39,51 +39,26 @@
 
         public double M
         {
-            get
-            {
-                return this.m_m;
-            }
-            set
-            {
-                this.m_m = value;
-            }
+            get { return this.m_m; }
+            set { this.m_m = value; }
         }
 
         public double X
         {
-            get
-            {
-                return this.m_x;
-            }
-            set
-            {
-                this.m_x = value;
-            }
+            get { return this.m_x; }
+            set { this.m_x = value; }
         }
 
         public double Y
         {
-            get
-            {
-                return this.m_y;
-            }
-            set
-            {
-                this.m_y = value;
-            }
+            get { return this.m_y; }
+            set { this.m_y = value; }
         }
 
         public double Z
         {
-            get
-            {
-                return this.m_z;
-            }
-            set
-            {
-                this.m_z = value;
-            }
+            get { return this.m_z; }
+            set { this.m_z = value; }
         }
     }
 }
-

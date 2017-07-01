@@ -19,20 +19,20 @@ namespace Yutai.Pipeline.Analysis.Views
             _context = context;
             _plugin = plugin;
             View.Initialize(context);
-            _plugin.QueryResultChanged+= PluginOnQueryResultChanged;
-           
+            _plugin.QueryResultChanged += PluginOnQueryResultChanged;
         }
+
         private void ActivatePanel()
         {
-            var panel = _context.DockPanels.GetDockPanel(((IDockPanelView)View).DockName);
+            var panel = _context.DockPanels.GetDockPanel(((IDockPanelView) View).DockName);
             if (panel == null)
             {
                 panel = _context.DockPanels.Add(GetInternalObject() as IDockPanelView, _plugin.Identity);
             }
             panel.Visible = true;
             _context.DockPanels.SetActivePanel(((IDockPanelView) View).DockName);
-            
         }
+
         private void PluginOnQueryResultChanged(object sender, QueryResultArgs queryResultArgs)
         {
             if (queryResultArgs == null)

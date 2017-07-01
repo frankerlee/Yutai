@@ -90,17 +90,21 @@ namespace Yutai.ArcGIS.Carto.UI
                 for (num3 = this.FieldsListBoxCtrl.SelectedIndices.Count - 1; num3 >= 0; num3--)
                 {
                     int index = this.FieldsListBoxCtrl.SelectedIndices[num3];
-                    (this.idotDensityRenderer_0 as IRendererFields).AddField((this.FieldsListBoxCtrl.Items[index] as FieldWrap).Name, this.FieldsListBoxCtrl.Items[index].ToString());
+                    (this.idotDensityRenderer_0 as IRendererFields).AddField(
+                        (this.FieldsListBoxCtrl.Items[index] as FieldWrap).Name,
+                        this.FieldsListBoxCtrl.Items[index].ToString());
                     IColor color = this.ienumColors_0.Next();
                     if (color == null)
                     {
                         this.ienumColors_0.Reset();
                         color = this.ienumColors_0.Next();
                     }
-                    ISymbol symbol = this.CreateMarkerSymbol(color, esriSimpleMarkerStyle.esriSMSCircle, num2) as ISymbol;
+                    ISymbol symbol =
+                        this.CreateMarkerSymbol(color, esriSimpleMarkerStyle.esriSMSCircle, num2) as ISymbol;
                     strArray[0] = "";
                     strArray[1] = this.FieldsListBoxCtrl.Items[index].ToString();
-                    ListViewItemEx ex = new ListViewItemEx(strArray) {
+                    ListViewItemEx ex = new ListViewItemEx(strArray)
+                    {
                         Style = symbol,
                         Tag = this.FieldsListBoxCtrl.Items[index]
                     };
@@ -122,7 +126,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     double num5;
                     double num6;
                     double num7;
-                    this.GetStaticsValue((this.idotDensityRenderer_0 as IRendererFields).get_Field(num3), out num5, out num6, out num7);
+                    this.GetStaticsValue((this.idotDensityRenderer_0 as IRendererFields).get_Field(num3), out num5,
+                        out num6, out num7);
                     numArray[num3] = num5;
                     numArray3[num3] = num6;
                     numArray2[num3] = num7;
@@ -147,9 +152,9 @@ namespace Yutai.ArcGIS.Carto.UI
                 }
                 for (num3 = 0; num3 < numArray.Length; num3++)
                 {
-                    symbol2.set_DotCount(num3, (int) (numArray[num3] / num));
-                    symbol3.set_DotCount(num3, (int) (numArray3[num3] / num));
-                    symbol4.set_DotCount(num3, (int) (numArray2[num3] / num));
+                    symbol2.set_DotCount(num3, (int) (numArray[num3]/num));
+                    symbol3.set_DotCount(num3, (int) (numArray3[num3]/num));
+                    symbol4.set_DotCount(num3, (int) (numArray2[num3]/num));
                 }
                 this.MinsymbolItem.Invalidate();
                 this.MeansymbolItem.Invalidate();
@@ -210,22 +215,25 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IDotDensityFillSymbol CreateDotDensityFillSymbol()
         {
-            IDotDensityFillSymbol symbol = new DotDensityFillSymbolClass {
+            IDotDensityFillSymbol symbol = new DotDensityFillSymbolClass
+            {
                 DotSize = 2.0
             };
-            IColor color = new RgbColorClass {
+            IColor color = new RgbColorClass
+            {
                 NullColor = true
             };
             symbol.BackgroundColor = color;
             return symbol;
         }
 
-        public ISimpleMarkerSymbol CreateMarkerSymbol(IColor icolor_0, esriSimpleMarkerStyle esriSimpleMarkerStyle_0, double double_0)
+        public ISimpleMarkerSymbol CreateMarkerSymbol(IColor icolor_0, esriSimpleMarkerStyle esriSimpleMarkerStyle_0,
+            double double_0)
         {
-            return new SimpleMarkerSymbolClass { Style = esriSimpleMarkerStyle_0, Size = double_0, Color = icolor_0 };
+            return new SimpleMarkerSymbolClass {Style = esriSimpleMarkerStyle_0, Size = double_0, Color = icolor_0};
         }
 
- private void DotDensityRendererCtrl_Load(object sender, EventArgs e)
+        private void DotDensityRendererCtrl_Load(object sender, EventArgs e)
         {
             this.method_2();
             if (this.istyleGallery_0 != null)
@@ -281,7 +289,8 @@ namespace Yutai.ArcGIS.Carto.UI
             double_2 = 0.0;
             try
             {
-                ITableHistogram histogram = new BasicTableHistogramClass {
+                ITableHistogram histogram = new BasicTableHistogramClass
+                {
                     Field = string_0,
                     Table = this.method_3()
                 };
@@ -297,7 +306,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void method_0()
+        private void method_0()
         {
             IFields fields2;
             int num;
@@ -326,7 +335,8 @@ namespace Yutai.ArcGIS.Carto.UI
             {
                 IField field = fields2.get_Field(num);
                 esriFieldType type = field.Type;
-                if ((((type != esriFieldType.esriFieldTypeDouble) && (type != esriFieldType.esriFieldTypeInteger)) && (type != esriFieldType.esriFieldTypeSingle)) && (type != esriFieldType.esriFieldTypeSmallInteger))
+                if ((((type != esriFieldType.esriFieldTypeDouble) && (type != esriFieldType.esriFieldTypeInteger)) &&
+                     (type != esriFieldType.esriFieldTypeSingle)) && (type != esriFieldType.esriFieldTypeSmallInteger))
                 {
                     continue;
                 }
@@ -340,9 +350,9 @@ namespace Yutai.ArcGIS.Carto.UI
                     }
                 }
                 goto Label_0147;
-            Label_0145:
+                Label_0145:
                 flag = false;
-            Label_0147:
+                Label_0147:
                 if (flag)
                 {
                     this.FieldsListBoxCtrl.Items.Add(new FieldWrap(field));
@@ -360,7 +370,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 double num5;
                 strArray[0] = "";
                 strArray[1] = fields.get_FieldAlias(num);
-                ListViewItemEx ex = new ListViewItemEx(strArray) {
+                ListViewItemEx ex = new ListViewItemEx(strArray)
+                {
                     Style = dotDensitySymbol.get_Symbol(num),
                     Tag = new FieldWrap(fields2.get_Field(fields2.FindField(fields.get_Field(num))))
                 };
@@ -377,17 +388,20 @@ namespace Yutai.ArcGIS.Carto.UI
             this.txtSize.Text = this.idotDensityRenderer_0.DotDensitySymbol.DotSize.ToString();
             this.txtPointValue.Text = this.idotDensityRenderer_0.DotValue.ToString();
             double num7 = double.Parse(this.txtPointValue.Text);
-            IDotDensityFillSymbol symbol = (this.idotDensityRenderer_0.DotDensitySymbol as IClone).Clone() as IDotDensityFillSymbol;
-            IDotDensityFillSymbol symbol2 = (this.idotDensityRenderer_0.DotDensitySymbol as IClone).Clone() as IDotDensityFillSymbol;
-            IDotDensityFillSymbol symbol3 = (this.idotDensityRenderer_0.DotDensitySymbol as IClone).Clone() as IDotDensityFillSymbol;
+            IDotDensityFillSymbol symbol =
+                (this.idotDensityRenderer_0.DotDensitySymbol as IClone).Clone() as IDotDensityFillSymbol;
+            IDotDensityFillSymbol symbol2 =
+                (this.idotDensityRenderer_0.DotDensitySymbol as IClone).Clone() as IDotDensityFillSymbol;
+            IDotDensityFillSymbol symbol3 =
+                (this.idotDensityRenderer_0.DotDensitySymbol as IClone).Clone() as IDotDensityFillSymbol;
             this.MinsymbolItem.Symbol = symbol;
             this.MeansymbolItem.Symbol = symbol2;
             this.MaxsymbolItem.Symbol = symbol3;
             for (num = 0; num < (symbol as ISymbolArray).SymbolCount; num++)
             {
-                symbol.set_DotCount(num, (int) (numArray[num] / num7));
-                symbol2.set_DotCount(num, (int) (numArray3[num] / num7));
-                symbol3.set_DotCount(num, (int) (numArray2[num] / num7));
+                symbol.set_DotCount(num, (int) (numArray[num]/num7));
+                symbol2.set_DotCount(num, (int) (numArray3[num]/num7));
+                symbol3.set_DotCount(num, (int) (numArray2[num]/num7));
             }
             this.MinsymbolItem.Invalidate();
             this.MeansymbolItem.Invalidate();
@@ -398,7 +412,8 @@ namespace Yutai.ArcGIS.Carto.UI
         {
             if (icolorRamp_1 == null)
             {
-                IAlgorithmicColorRamp ramp = new AlgorithmicColorRampClass {
+                IAlgorithmicColorRamp ramp = new AlgorithmicColorRampClass
+                {
                     FromColor = ColorManage.CreatColor(160, 0, 0),
                     ToColor = ColorManage.CreatColor(255, 200, 200),
                     Algorithm = esriColorRampAlgorithm.esriLabLChAlgorithm
@@ -512,16 +527,16 @@ namespace Yutai.ArcGIS.Carto.UI
                 try
                 {
                     double num = double.Parse(this.txtPointValue.Text);
-                    double num2 = this.idotDensityRenderer_0.DotValue / num;
+                    double num2 = this.idotDensityRenderer_0.DotValue/num;
                     this.idotDensityRenderer_0.DotValue = num;
                     IDotDensityFillSymbol symbol = this.MinsymbolItem.Symbol as IDotDensityFillSymbol;
                     IDotDensityFillSymbol symbol2 = this.MeansymbolItem.Symbol as IDotDensityFillSymbol;
                     IDotDensityFillSymbol symbol3 = this.MaxsymbolItem.Symbol as IDotDensityFillSymbol;
                     for (int i = 0; i < (symbol as ISymbolArray).SymbolCount; i++)
                     {
-                        symbol.set_DotCount(i, (int) (symbol.get_DotCount(i) * num2));
-                        symbol2.set_DotCount(i, (int) (symbol2.get_DotCount(i) * num2));
-                        symbol3.set_DotCount(i, (int) (symbol3.get_DotCount(i) * num2));
+                        symbol.set_DotCount(i, (int) (symbol.get_DotCount(i)*num2));
+                        symbol2.set_DotCount(i, (int) (symbol2.get_DotCount(i)*num2));
+                        symbol3.set_DotCount(i, (int) (symbol3.get_DotCount(i)*num2));
                     }
                     this.MinsymbolItem.Invalidate();
                     this.MeansymbolItem.Invalidate();
@@ -565,23 +580,13 @@ namespace Yutai.ArcGIS.Carto.UI
 
         bool IUserControl.Visible
         {
-            get
-            {
-                return base.Visible;
-            }
-            set
-            {
-                base.Visible = value;
-            }
+            get { return base.Visible; }
+            set { base.Visible = value; }
         }
 
         public IStyleGallery StyleGallery
         {
-            set
-            {
-                this.istyleGallery_0 = value;
-            }
+            set { this.istyleGallery_0 = value; }
         }
     }
 }
-

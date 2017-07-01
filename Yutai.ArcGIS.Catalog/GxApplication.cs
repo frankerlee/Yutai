@@ -12,7 +12,8 @@ namespace Yutai.ArcGIS.Catalog
         {
             if (this.igxSelection_0 is IGxSelectionEvents)
             {
-                (this.igxSelection_0 as IGxSelectionEvents).OnSelectionChanged += new OnSelectionChangedEventHandler(this.method_0);
+                (this.igxSelection_0 as IGxSelectionEvents).OnSelectionChanged +=
+                    new OnSelectionChangedEventHandler(this.method_0);
             }
         }
 
@@ -26,10 +27,7 @@ namespace Yutai.ArcGIS.Catalog
 
         public IGxCatalog GxCatalog
         {
-            get
-            {
-                return this.igxCatalog_0;
-            }
+            get { return this.igxCatalog_0; }
             set
             {
                 this.igxCatalog_0 = value;
@@ -39,35 +37,27 @@ namespace Yutai.ArcGIS.Catalog
 
         public IGxObject GxObject
         {
-            get
-            {
-                return this.igxObject_0;
-            }
-            set
-            {
-                this.igxObject_0 = value;
-            }
+            get { return this.igxObject_0; }
+            set { this.igxObject_0 = value; }
         }
 
         public IGxSelection GxSelection
         {
-            get
-            {
-                return this.igxSelection_0;
-            }
+            get { return this.igxSelection_0; }
             set
             {
                 if (this.igxSelection_0 is IGxSelectionEvents)
                 {
-                    (this.igxSelection_0 as IGxSelectionEvents).OnSelectionChanged -= new OnSelectionChangedEventHandler(this.method_0);
+                    (this.igxSelection_0 as IGxSelectionEvents).OnSelectionChanged -=
+                        new OnSelectionChangedEventHandler(this.method_0);
                 }
                 this.igxSelection_0 = value;
                 if (this.igxSelection_0 is IGxSelectionEvents)
                 {
-                    (this.igxSelection_0 as IGxSelectionEvents).OnSelectionChanged += new OnSelectionChangedEventHandler(this.method_0);
+                    (this.igxSelection_0 as IGxSelectionEvents).OnSelectionChanged +=
+                        new OnSelectionChangedEventHandler(this.method_0);
                 }
             }
         }
     }
 }
-

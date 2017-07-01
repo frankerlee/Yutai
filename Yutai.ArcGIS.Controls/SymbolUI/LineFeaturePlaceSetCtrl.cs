@@ -157,11 +157,11 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- public void Hide()
+        public void Hide()
         {
         }
 
- private void LineFeaturePlaceSetCtrl_Load(object sender, EventArgs e)
+        private void LineFeaturePlaceSetCtrl_Load(object sender, EventArgs e)
         {
             if (this.m_OverLayerProperty != null)
             {
@@ -195,8 +195,12 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 {
                     this.cboPlaceLinePos.SelectedIndex = 2;
                 }
-                this.chkBelow_Right.Checked = this.m_LineLabelPosition.Below ? this.m_LineLabelPosition.Below : this.m_LineLabelPosition.Right;
-                this.chkTop_Left.Checked = this.m_LineLabelPosition.Above ? this.m_LineLabelPosition.Above : this.m_LineLabelPosition.Left;
+                this.chkBelow_Right.Checked = this.m_LineLabelPosition.Below
+                    ? this.m_LineLabelPosition.Below
+                    : this.m_LineLabelPosition.Right;
+                this.chkTop_Left.Checked = this.m_LineLabelPosition.Above
+                    ? this.m_LineLabelPosition.Above
+                    : this.m_LineLabelPosition.Left;
                 this.chkOnTop.Checked = this.m_LineLabelPosition.OnTop;
                 this.cboCoorType_SelectedIndexChanged(this, e);
                 if (!(this.chkTop_Left.Checked || this.chkBelow_Right.Checked))
@@ -252,38 +256,23 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.m_IsPageDirty;
-            }
+            get { return this.m_IsPageDirty; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return "";
-            }
-            set
-            {
-            }
+            get { return ""; }
+            set { }
         }
     }
 }
-

@@ -73,19 +73,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public string Description
         {
-            get
-            {
-                return "Image文件";
-            }
+            get { return "Image文件"; }
         }
 
         public string Name
         {
-            get
-            {
-                return "RasterFormatImgFilter";
-            }
+            get { return "RasterFormatImgFilter"; }
         }
     }
 }
-

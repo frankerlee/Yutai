@@ -48,4 +48,3 @@ namespace Yutai.ArcGIS.Framework.Docking
         }
     }
 }
-

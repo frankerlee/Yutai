@@ -34,7 +34,7 @@ namespace Yutai.Helper
 
              InitTasks(context);*/
 
-            
+
             panels.Unlock();
         }
 
@@ -69,10 +69,11 @@ namespace Yutai.Helper
             //}
             //tabContainer.Update();
         }
-      private static void InitMapLegend(ISecureContext context)
+
+        private static void InitMapLegend(ISecureContext context)
         {
             var legendControl = context.GetDockPanelObject(MapLegendDockPanel.DefaultDockName);
-            var legend = context.DockPanels.Add(legendControl as IDockPanelView,   PluginIdentity.Default);
+            var legend = context.DockPanels.Add(legendControl as IDockPanelView, PluginIdentity.Default);
             //legend.Caption = "二维图例";
             //legend.TabPosition = 1;
             //legend.DockTo(MapLegendDockPanel.DefaultDockName, DockPanelState.Left, PanelSize);
@@ -85,11 +86,10 @@ namespace Yutai.Helper
             var overview = context.DockPanels.Add(overviewControl as IDockPanelView, PluginIdentity.Default);
             //overview.Caption = "鹰眼视图";
             //overview.TabPosition = 2;
-           // overview.DockTo(MapLegendDockPanel.DefaultDockName, DockPanelState.Bottom, PanelSize);
+            // overview.DockTo(MapLegendDockPanel.DefaultDockName, DockPanelState.Bottom, PanelSize);
             //overview.SetIcon(Resources.ico_tasks);
         }
 
-       
 
         public static void ClosePanel(IAppContext context, string dockPanelKey)
         {
@@ -102,7 +102,7 @@ namespace Yutai.Helper
 
         public static void ShowPanel(IAppContext context, string dockPanelKey)
         {
-           context.DockPanels.ShowDockPanel(dockPanelKey,true,true);
+            context.DockPanels.ShowDockPanel(dockPanelKey, true, true);
         }
 
         public static void SerializeDockState(IAppContext context)

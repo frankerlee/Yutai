@@ -120,7 +120,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void frmAddValues_Load(object sender, EventArgs e)
+        private void frmAddValues_Load(object sender, EventArgs e)
         {
             if (this.arrayList_0 != null)
             {
@@ -147,12 +147,14 @@ namespace Yutai.ArcGIS.Carto.UI
                 if (table != null)
                 {
                     ITable attributeTable = table.AttributeTable;
-                    IQueryFilter queryFilter = new QueryFilterClass {
+                    IQueryFilter queryFilter = new QueryFilterClass
+                    {
                         WhereClause = "1=1"
                     };
                     (queryFilter as IQueryFilterDefinition).PostfixClause = "Order by " + string_1;
                     ICursor cursor = attributeTable.Search(queryFilter, false);
-                    IDataStatistics statistics = new DataStatisticsClass {
+                    IDataStatistics statistics = new DataStatisticsClass
+                    {
                         Field = string_1,
                         Cursor = cursor
                     };
@@ -171,7 +173,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void method_0(object sender, EventArgs e)
+        private void method_0(object sender, EventArgs e)
         {
             if (this.ValuelistBoxControl.SelectedIndices.Count > 0)
             {
@@ -190,55 +192,33 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public string FieldName
         {
-            set
-            {
-                this.string_0 = value;
-            }
+            set { this.string_0 = value; }
         }
 
         public bool GetAllValues
         {
-            get
-            {
-                return this.bool_0;
-            }
-            set
-            {
-                this.bool_0 = value;
-            }
+            get { return this.bool_0; }
+            set { this.bool_0 = value; }
         }
 
         public ILayer Layer
         {
-            set
-            {
-                this.ilayer_0 = value;
-            }
+            set { this.ilayer_0 = value; }
         }
 
         public ArrayList List
         {
-            set
-            {
-                this.arrayList_0 = value;
-            }
+            set { this.arrayList_0 = value; }
         }
 
         public IList SelectedItems
         {
-            get
-            {
-                return this.ilist_0;
-            }
+            get { return this.ilist_0; }
         }
 
         public IUniqueValueRenderer UniqueValueRenderer
         {
-            set
-            {
-                this.iuniqueValueRenderer_0 = value;
-            }
+            set { this.iuniqueValueRenderer_0 = value; }
         }
     }
 }
-

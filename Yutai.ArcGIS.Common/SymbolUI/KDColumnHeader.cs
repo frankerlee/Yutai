@@ -21,14 +21,8 @@ namespace Yutai.ArcGIS.Common.SymbolUI
         // Properties
         public KDListViewColumnStyle ColumnStyle
         {
-            get
-            {
-                return this.kdlistViewColumnStyle_0;
-            }
-            set
-            {
-                this.kdlistViewColumnStyle_0 = value;
-            }
+            get { return this.kdlistViewColumnStyle_0; }
+            set { this.kdlistViewColumnStyle_0 = value; }
         }
     }
 }

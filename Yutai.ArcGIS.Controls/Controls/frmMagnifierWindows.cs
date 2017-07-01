@@ -26,7 +26,7 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         private void AdjustByMagnify(double s)
         {
-            IEnvelope envelope = this.GetEnvelope(1.0 / s);
+            IEnvelope envelope = this.GetEnvelope(1.0/s);
             this.axMapControl1.ActiveView.Extent = envelope;
             if (this.m_CenterPoint != null)
             {
@@ -65,7 +65,9 @@ namespace Yutai.ArcGIS.Controls.Controls
                         command.OnCreate(this.axMapControl1.Object);
                         this.axMapControl1.CurrentTool = command as ITool;
                     }
-                    else if ((this.axMapControl1.CurrentTool != null) && (this.axMapControl1.CurrentTool.GetType().FullName != this.m_MainMapControl.CurrentTool.GetType().FullName))
+                    else if ((this.axMapControl1.CurrentTool != null) &&
+                             (this.axMapControl1.CurrentTool.GetType().FullName !=
+                              this.m_MainMapControl.CurrentTool.GetType().FullName))
                     {
                         command = Activator.CreateInstance(this.m_MainMapControl.CurrentTool.GetType()) as ICommand;
                         command.OnCreate(this.axMapControl1.Object);
@@ -98,7 +100,7 @@ namespace Yutai.ArcGIS.Controls.Controls
                         }
                         else
                         {
-                            string[] strArray = text.Split(new char[] { ':' });
+                            string[] strArray = text.Split(new char[] {':'});
                             if (strArray.Length >= 2)
                             {
                                 text = strArray[1];
@@ -123,7 +125,7 @@ namespace Yutai.ArcGIS.Controls.Controls
                         }
                     }
                     this.m_proprty.m_scale = text;
-                    num2 = double.Parse(text.Split(new char[] { ':' })[1]);
+                    num2 = double.Parse(text.Split(new char[] {':'})[1]);
                     this.AdjustByScale(num2);
                 }
                 else
@@ -170,13 +172,13 @@ namespace Yutai.ArcGIS.Controls.Controls
                         }
                     }
                     this.m_proprty.m_magnify = text;
-                    num2 = double.Parse(text.Substring(0, text.Length - 1)) / 100.0;
+                    num2 = double.Parse(text.Substring(0, text.Length - 1))/100.0;
                     this.AdjustByMagnify(num2);
                 }
             }
         }
 
- private void frmMagnifierWindows_ItemAdded(object Item)
+        private void frmMagnifierWindows_ItemAdded(object Item)
         {
             MapHelper.CopyMap(this.m_pMap, this.axMapControl1.Map, false, false);
         }
@@ -249,8 +251,8 @@ namespace Yutai.ArcGIS.Controls.Controls
             double height = this.m_MainMapControl.Height;
             double num3 = this.axMapControl1.Width;
             double num4 = this.axMapControl1.Height;
-            extent.Width = (extent.Width * num3) / width;
-            extent.Height = (extent.Height * num4) / height;
+            extent.Width = (extent.Width*num3)/width;
+            extent.Height = (extent.Height*num4)/height;
             extent.Expand(s, s, true);
             return extent;
         }
@@ -262,7 +264,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             this.axMapControl1.ActiveView.Refresh();
         }
 
- private void m_MainMapControl_OnExtentUpdated(object sender, IMapControlEvents2_OnExtentUpdatedEvent e)
+        private void m_MainMapControl_OnExtentUpdated(object sender, IMapControlEvents2_OnExtentUpdatedEvent e)
         {
             this.cboMapScale_SelectedIndexChanged(this, new EventArgs());
             this.SetExtend();
@@ -283,7 +285,8 @@ namespace Yutai.ArcGIS.Controls.Controls
         private void SetExtend()
         {
             Rectangle rectangle = new Rectangle(this.axMapControl1.Location, this.axMapControl1.Size);
-            System.Drawing.Point p = new System.Drawing.Point((rectangle.Left + rectangle.Right) / 2, (rectangle.Top + rectangle.Bottom) / 2);
+            System.Drawing.Point p = new System.Drawing.Point((rectangle.Left + rectangle.Right)/2,
+                (rectangle.Top + rectangle.Bottom)/2);
             p = this.axMapControl1.PointToScreen(p);
             p = this.m_MainMapControl.PointToClient(p);
             this.m_CenterPoint = this.m_MainMapControl.ToMapPoint(p.X, p.Y);
@@ -313,7 +316,11 @@ namespace Yutai.ArcGIS.Controls.Controls
                 }
                 else
                 {
-                    this.cboMapScale.Items.AddRange(new object[] { "1:1000", "1:10000", "1:24000", "1:100000", "1:250000", "1:500000", "1:750000", "1:1000000", "1:5000000", "1:10000000" });
+                    this.cboMapScale.Items.AddRange(new object[]
+                    {
+                        "1:1000", "1:10000", "1:24000", "1:100000", "1:250000", "1:500000", "1:750000", "1:1000000",
+                        "1:5000000", "1:10000000"
+                    });
                     magnify = this.m_proprty.m_scale;
                 }
                 this.m_CanDo = true;
@@ -338,7 +345,11 @@ namespace Yutai.ArcGIS.Controls.Controls
                 this.btnNextExtend.Enabled = true;
                 this.m_CanDo = false;
                 this.cboMapScale.Items.Clear();
-                this.cboMapScale.Items.AddRange(new object[] { "1:1000", "1:10000", "1:24000", "1:100000", "1:250000", "1:500000", "1:750000", "1:1000000", "1:5000000", "1:10000000" });
+                this.cboMapScale.Items.AddRange(new object[]
+                {
+                    "1:1000", "1:10000", "1:24000", "1:100000", "1:250000", "1:500000", "1:750000", "1:1000000",
+                    "1:5000000", "1:10000000"
+                });
                 this.m_CanDo = true;
                 this.cboMapScale.Text = this.m_proprty.m_scale;
                 this.Text = "视图";
@@ -362,7 +373,8 @@ namespace Yutai.ArcGIS.Controls.Controls
             set
             {
                 this.m_pMap = value;
-                (this.m_pMap as IActiveViewEvents_Event).ItemAdded+=(new IActiveViewEvents_ItemAddedEventHandler(this.frmMagnifierWindows_ItemAdded));
+                (this.m_pMap as IActiveViewEvents_Event).ItemAdded +=
+                    (new IActiveViewEvents_ItemAddedEventHandler(this.frmMagnifierWindows_ItemAdded));
             }
         }
 
@@ -372,9 +384,9 @@ namespace Yutai.ArcGIS.Controls.Controls
             {
                 this.m_MainMapControl = value;
                 this.FocusMap = this.m_MainMapControl.Map;
-                this.m_MainMapControl.OnExtentUpdated += new IMapControlEvents2_Ax_OnExtentUpdatedEventHandler(this.m_MainMapControl_OnExtentUpdated);
+                this.m_MainMapControl.OnExtentUpdated +=
+                    new IMapControlEvents2_Ax_OnExtentUpdatedEventHandler(this.m_MainMapControl_OnExtentUpdated);
             }
         }
     }
 }
-

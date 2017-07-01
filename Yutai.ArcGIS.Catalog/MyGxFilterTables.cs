@@ -49,7 +49,9 @@ namespace Yutai.ArcGIS.Catalog
             }
             if (igxObject_0 is IGxDatabase)
             {
-                bool_0 = ((igxObject_0 as IGxDatabase).Workspace as IWorkspace2).get_NameExists(esriDatasetType.esriDTFeatureClass, string_0);
+                bool_0 =
+                    ((igxObject_0 as IGxDatabase).Workspace as IWorkspace2).get_NameExists(
+                        esriDatasetType.esriDTFeatureClass, string_0);
                 return true;
             }
             return false;
@@ -57,19 +59,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public string Description
         {
-            get
-            {
-                return "表";
-            }
+            get { return "表"; }
         }
 
         public string Name
         {
-            get
-            {
-                return "GxFilterTables";
-            }
+            get { return "GxFilterTables"; }
         }
     }
 }
-

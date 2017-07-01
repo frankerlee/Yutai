@@ -18,8 +18,8 @@ namespace Yutai.Shared
         static DebugHelper()
         {
 #if DEBUG
-        DrawTilesGrid = false;
-        LoadToolDocumentation = false;
+            DrawTilesGrid = false;
+            LoadToolDocumentation = false;
 #endif
         }
     }

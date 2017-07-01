@@ -8,4 +8,3 @@ namespace Yutai.ArcGIS.Catalog
         void RetrieveDEFullProperties(IDataElement idataElement_0);
     }
 }
-

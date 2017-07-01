@@ -78,7 +78,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             if (!(this.ispatialReference_0 is IUnknownCoordinateSystem))
             {
-                frmSpatialRefrence refrence = new frmSpatialRefrence {
+                frmSpatialRefrence refrence = new frmSpatialRefrence
+                {
                     SpatialRefrence = this.ispatialReference_0
                 };
                 if (refrence.ShowDialog() == DialogResult.OK)
@@ -94,13 +95,15 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            System.Drawing.Point position = new System.Drawing.Point(this.btnNew.Location.X, this.btnNew.Location.Y + this.btnNew.Height);
+            System.Drawing.Point position = new System.Drawing.Point(this.btnNew.Location.X,
+                this.btnNew.Location.Y + this.btnNew.Height);
             this.contextMenuStrip1.Show(this, position);
         }
 
- private void GeoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void GeoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmSpatialRefrence refrence = new frmSpatialRefrence {
+            frmSpatialRefrence refrence = new frmSpatialRefrence
+            {
                 SpatialRefrenceType = frmSpatialRefrence.enumSpatialRefrenceType.enumGeographicCoord
             };
             if (refrence.ShowDialog() == DialogResult.OK)
@@ -112,7 +115,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void method_0()
+        private void method_0()
         {
         }
 
@@ -142,7 +145,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     {
                         if (System.IO.Path.GetExtension(files[num2]).ToLower() == ".prj")
                         {
-                            node3 = new TreeNode(System.IO.Path.GetFileName(files[num2]), 2, 2) {
+                            node3 = new TreeNode(System.IO.Path.GetFileName(files[num2]), 2, 2)
+                            {
                                 Tag = factory.CreateESRISpatialReferenceFromPRJFile(files[num2])
                             };
                             node2.Nodes.Add(node3);
@@ -171,7 +175,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         {
                             if (System.IO.Path.GetExtension(files[num2]).ToLower() == ".prj")
                             {
-                                node3 = new TreeNode(System.IO.Path.GetFileName(files[num2]), 2, 2) {
+                                node3 = new TreeNode(System.IO.Path.GetFileName(files[num2]), 2, 2)
+                                {
                                     Tag = factory.CreateESRISpatialReferenceFromPRJFile(files[num2])
                                 };
                                 node4.Nodes.Add(node3);
@@ -180,15 +185,19 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     }
                 }
             }
-            node = new TreeNode("未知坐标系统", 2, 2) {
-                Tag = SpatialReferenctOperator.ConstructCoordinateSystem(NewObjectClassHelper.m_pObjectClassHelper.Workspace as IGeodatabaseRelease)
+            node = new TreeNode("未知坐标系统", 2, 2)
+            {
+                Tag =
+                    SpatialReferenctOperator.ConstructCoordinateSystem(
+                        NewObjectClassHelper.m_pObjectClassHelper.Workspace as IGeodatabaseRelease)
             };
             this.treeView1.Nodes.Add(node);
         }
 
         private void ProjToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmSpatialRefrence refrence = new frmSpatialRefrence {
+            frmSpatialRefrence refrence = new frmSpatialRefrence
+            {
                 SpatialRefrenceType = frmSpatialRefrence.enumSpatialRefrenceType.enumProjectCoord
             };
             if (refrence.ShowDialog() == DialogResult.OK)
@@ -211,4 +220,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

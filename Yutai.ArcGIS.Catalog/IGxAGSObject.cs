@@ -17,4 +17,3 @@ namespace Yutai.ArcGIS.Catalog
         string Status { get; }
     }
 }
-

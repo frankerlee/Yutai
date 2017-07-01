@@ -13,11 +13,12 @@ namespace Yutai.ArcGIS.Common
             old_acctor_mc();
         }
 
-        private static esriLicenseStatus CheckOutLicenses(esriLicenseProductCode esriLicenseProductCode_0, esriLicenseExtensionCode esriLicenseExtensionCode_0)
+        private static esriLicenseStatus CheckOutLicenses(esriLicenseProductCode esriLicenseProductCode_0,
+            esriLicenseExtensionCode esriLicenseExtensionCode_0)
         {
             if (m_pAoInitialize == null)
             {
-               // m_pAoInitialize = new AoInitializeClass();
+                // m_pAoInitialize = new AoInitializeClass();
             }
             esriLicenseStatus status = m_pAoInitialize.IsProductCodeAvailable(esriLicenseProductCode_0);
             if (status == esriLicenseStatus.esriLicenseAvailable)
@@ -51,7 +52,13 @@ namespace Yutai.ArcGIS.Common
             //{
             //    return false;
             //}
-            esriLicenseProductCode[] codeArray2 = new esriLicenseProductCode[] { esriLicenseProductCode.esriLicenseProductCodeEngineGeoDB, esriLicenseProductCode.esriLicenseProductCodeEngine, esriLicenseProductCode.esriLicenseProductCodeArcServer, esriLicenseProductCode.esriLicenseProductCodeAdvanced };
+            esriLicenseProductCode[] codeArray2 = new esriLicenseProductCode[]
+            {
+                esriLicenseProductCode.esriLicenseProductCodeEngineGeoDB,
+                esriLicenseProductCode.esriLicenseProductCodeEngine,
+                esriLicenseProductCode.esriLicenseProductCodeArcServer,
+                esriLicenseProductCode.esriLicenseProductCodeAdvanced
+            };
             esriLicenseStatus esriLicenseNotLicensed = esriLicenseStatus.esriLicenseNotLicensed;
             for (int i = 0; i < codeArray2.Length; i++)
             {
@@ -68,10 +75,14 @@ namespace Yutai.ArcGIS.Common
                     MessageBox.Show("无ArcGIS Engine使用权限!");
                     return false;
             }
-            esriLicenseNotLicensed = m_pAoInitialize.CheckOutExtension(esriLicenseExtensionCode.esriLicenseExtensionCode3DAnalyst);
-            esriLicenseNotLicensed = m_pAoInitialize.CheckOutExtension(esriLicenseExtensionCode.esriLicenseExtensionCodeNetwork);
-            esriLicenseNotLicensed = m_pAoInitialize.CheckOutExtension(esriLicenseExtensionCode.esriLicenseExtensionCodeSpatialAnalyst);
-            esriLicenseNotLicensed = m_pAoInitialize.CheckOutExtension(esriLicenseExtensionCode.esriLicenseExtensionCodeDataInteroperability);
+            esriLicenseNotLicensed =
+                m_pAoInitialize.CheckOutExtension(esriLicenseExtensionCode.esriLicenseExtensionCode3DAnalyst);
+            esriLicenseNotLicensed =
+                m_pAoInitialize.CheckOutExtension(esriLicenseExtensionCode.esriLicenseExtensionCodeNetwork);
+            esriLicenseNotLicensed =
+                m_pAoInitialize.CheckOutExtension(esriLicenseExtensionCode.esriLicenseExtensionCodeSpatialAnalyst);
+            esriLicenseNotLicensed =
+                m_pAoInitialize.CheckOutExtension(esriLicenseExtensionCode.esriLicenseExtensionCodeDataInteroperability);
             return true;
         }
 
@@ -81,4 +92,3 @@ namespace Yutai.ArcGIS.Common
         }
     }
 }
-

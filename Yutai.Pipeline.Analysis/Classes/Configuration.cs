@@ -42,10 +42,7 @@
 
         public float ZoomFactor
         {
-            get
-            {
-                return this.float_0;
-            }
+            get { return this.float_0; }
             set
             {
                 if (value > Configuration.ZOOM_FACTOR_MAX)
@@ -65,10 +62,7 @@
 
         public float SpeedFactor
         {
-            get
-            {
-                return this.float_1;
-            }
+            get { return this.float_1; }
             set
             {
                 if (value > Configuration.SPEED_FACTOR_MAX)

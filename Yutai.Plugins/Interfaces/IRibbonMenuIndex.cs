@@ -20,7 +20,7 @@ namespace Yutai.Plugins.Interfaces
         IEnumerable<BarItem> ItemsForPlugin(PluginIdentity pluginIdentity);
         void FireItemClicked(object sender, MenuItemEventArgs e);
         void Clear();
-    
+
         void UpdateMenu();
         List<BarItem> RibbonMenuItems { get; }
         void AddItems(XmlDocument xmlDoc, IEnumerable<YutaiCommand> commands);

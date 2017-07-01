@@ -26,19 +26,19 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         public void ChangeUnit(double newunit)
         {
             this.m_CanDo = false;
-            this.numericUpDownOffset.Value = (decimal) ((((double) this.numericUpDownOffset.Value) / this.m_unit) * newunit);
+            this.numericUpDownOffset.Value = (decimal) ((((double) this.numericUpDownOffset.Value)/this.m_unit)*newunit);
             this.m_unit = newunit;
             this.m_CanDo = true;
         }
 
- private void InitControl()
+        private void InitControl()
         {
             this.m_CanDo = false;
-            this.numericUpDownOffset.Value = (decimal) (this.m_LineProperties.Offset * this.m_unit);
+            this.numericUpDownOffset.Value = (decimal) (this.m_LineProperties.Offset*this.m_unit);
             this.m_CanDo = true;
         }
 
- public static bool IsNmuber(string str)
+        public static bool IsNmuber(string str)
         {
             if (str.Length > 0)
             {
@@ -138,7 +138,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     this.numericUpDownOffset.ForeColor = SystemColors.WindowText;
-                    this.m_LineProperties.Offset = ((double) this.numericUpDownOffset.Value) / this.m_unit;
+                    this.m_LineProperties.Offset = ((double) this.numericUpDownOffset.Value)/this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -153,4 +153,3 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         }
     }
 }
-

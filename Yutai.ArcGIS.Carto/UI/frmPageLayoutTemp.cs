@@ -14,7 +14,5 @@ namespace Yutai.ArcGIS.Carto.UI
         {
             this.InitializeComponent();
         }
-
-
     }
 }

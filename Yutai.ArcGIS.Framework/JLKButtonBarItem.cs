@@ -18,34 +18,19 @@ namespace Yutai.ArcGIS.Framework
 
         public override string Caption
         {
-            set
-            {
-                this.barItem_0.Caption = value;
-            }
+            set { this.barItem_0.Caption = value; }
         }
 
         public override object EditValue
         {
-            get
-            {
-                return "";
-            }
-            set
-            {
-            }
+            get { return ""; }
+            set { }
         }
 
         public override bool Enabled
         {
-            get
-            {
-                return this.barItem_0.Enabled;
-            }
-            set
-            {
-                this.barItem_0.Enabled = value;
-            }
+            get { return this.barItem_0.Enabled; }
+            set { this.barItem_0.Enabled = value; }
         }
     }
 }
-

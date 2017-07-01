@@ -5,15 +5,15 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 {
     public class EditTemplateManager
     {
-        public static  event OnAddMoreTemplateHandler OnAddMoreTemplate;
+        public static event OnAddMoreTemplateHandler OnAddMoreTemplate;
 
-        public static  event OnAddTemplateHandler OnAddTemplate;
+        public static event OnAddTemplateHandler OnAddTemplate;
 
-        public static  event OnDeleteMoreTemplateHandler OnDeleteMoreTemplate;
+        public static event OnDeleteMoreTemplateHandler OnDeleteMoreTemplate;
 
-        public static  event OnDeleteTemplateHandler OnDeleteTemplate;
+        public static event OnDeleteTemplateHandler OnDeleteTemplate;
 
-        public static  event OnTemplatePropertyChangeHandler OnTemplatePropertyChange;
+        public static event OnTemplatePropertyChangeHandler OnTemplatePropertyChange;
 
         public static void AddEditTemplate(YTEditTemplate template)
         {
@@ -56,4 +56,3 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         }
     }
 }
-

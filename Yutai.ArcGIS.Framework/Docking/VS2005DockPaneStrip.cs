@@ -58,7 +58,9 @@ namespace Yutai.ArcGIS.Framework.Docking
             this.m_startDisplayingTab = 0;
             this.m_endDisplayingTab = 0;
             this.m_documentTabsOverflow = false;
-            base.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.ResizeRedraw | ControlStyles.UserPaint, true);
+            base.SetStyle(
+                ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.ResizeRedraw |
+                ControlStyles.UserPaint, true);
             base.SuspendLayout();
             this.m_components = new Container();
             this.m_toolTip = new ToolTip(this.Components);
@@ -108,7 +110,7 @@ namespace Yutai.ArcGIS.Framework.Docking
                 this.m_startDisplayingTab = 0;
             }
             Rectangle tabsRectangle = this.TabsRectangle;
-            int x = tabsRectangle.X + (tabsRectangle.Height / 2);
+            int x = tabsRectangle.X + (tabsRectangle.Height/2);
             bool flag = false;
             for (num2 = this.StartDisplayingTab; num2 < base.Tabs.Count; num2++)
             {
@@ -121,7 +123,7 @@ namespace Yutai.ArcGIS.Framework.Docking
             if (!flag)
             {
                 this.m_startDisplayingTab = 0;
-                x = tabsRectangle.X + (tabsRectangle.Height / 2);
+                x = tabsRectangle.X + (tabsRectangle.Height/2);
                 foreach (TabVS2005 bvs in (IEnumerable<DockPaneStripBase.Tab>) base.Tabs)
                 {
                     bvs.TabX = x;
@@ -145,7 +147,7 @@ namespace Yutai.ArcGIS.Framework.Docking
                 bool flag = true;
                 int num2 = (tabStripRectangle.Width - ToolWindowStripGapLeft) - ToolWindowStripGapRight;
                 int num3 = 0;
-                int num4 = num2 / count;
+                int num4 = num2/count;
                 int num5 = count;
                 flag = true;
                 while (flag && (num5 > 0))
@@ -164,12 +166,12 @@ namespace Yutai.ArcGIS.Framework.Docking
                     }
                     if (num5 != 0)
                     {
-                        num4 = (num2 - num3) / num5;
+                        num4 = (num2 - num3)/num5;
                     }
                 }
                 if (num5 > 0)
                 {
-                    int num6 = (num2 - num3) - (num4 * num5);
+                    int num6 = (num2 - num3) - (num4*num5);
                     foreach (TabVS2005 bvs in (IEnumerable<DockPaneStripBase.Tab>) base.Tabs)
                     {
                         if (!bvs.Flag)
@@ -246,13 +248,16 @@ namespace Yutai.ArcGIS.Framework.Docking
         {
             if (tab.TabWidth != 0)
             {
-                Rectangle rectangle = new Rectangle(rect.X + DocumentIconGapLeft, (((rect.Y + rect.Height) - 1) - DocumentIconGapBottom) - DocumentIconHeight, DocumentIconWidth, DocumentIconHeight);
+                Rectangle rectangle = new Rectangle(rect.X + DocumentIconGapLeft,
+                    (((rect.Y + rect.Height) - 1) - DocumentIconGapBottom) - DocumentIconHeight, DocumentIconWidth,
+                    DocumentIconHeight);
                 Rectangle rectangle2 = rectangle;
                 if (base.DockPane.DockPanel.ShowDocumentIcon)
                 {
                     rectangle2.X += rectangle.Width + DocumentIconGapRight;
                     rectangle2.Y = rect.Y;
-                    rectangle2.Width = (((rect.Width - rectangle.Width) - DocumentIconGapLeft) - DocumentIconGapRight) - DocumentTextGapRight;
+                    rectangle2.Width = (((rect.Width - rectangle.Width) - DocumentIconGapLeft) - DocumentIconGapRight) -
+                                       DocumentTextGapRight;
                     rectangle2.Height = rect.Height;
                 }
                 else
@@ -269,18 +274,21 @@ namespace Yutai.ArcGIS.Framework.Docking
                     g.DrawPath(PenDocumentTabActiveBorder, path);
                     if (base.DockPane.IsActiveDocumentPane)
                     {
-                        TextRenderer.DrawText(g, tab.Content.DockHandler.TabText, this.BoldFont, rectangle2, ColorDocumentActiveText, this.DocumentTextFormat);
+                        TextRenderer.DrawText(g, tab.Content.DockHandler.TabText, this.BoldFont, rectangle2,
+                            ColorDocumentActiveText, this.DocumentTextFormat);
                     }
                     else
                     {
-                        TextRenderer.DrawText(g, tab.Content.DockHandler.TabText, TextFont, rectangle2, ColorDocumentActiveText, this.DocumentTextFormat);
+                        TextRenderer.DrawText(g, tab.Content.DockHandler.TabText, TextFont, rectangle2,
+                            ColorDocumentActiveText, this.DocumentTextFormat);
                     }
                 }
                 else
                 {
                     g.FillPath(BrushDocumentInactiveBackground, path);
                     g.DrawPath(PenDocumentTabInactiveBorder, path);
-                    TextRenderer.DrawText(g, tab.Content.DockHandler.TabText, TextFont, rectangle2, ColorDocumentInactiveText, this.DocumentTextFormat);
+                    TextRenderer.DrawText(g, tab.Content.DockHandler.TabText, TextFont, rectangle2,
+                        ColorDocumentInactiveText, this.DocumentTextFormat);
                 }
                 if (rectangle3.Contains(rectangle) && base.DockPane.DockPanel.ShowDocumentIcon)
                 {
@@ -291,10 +299,13 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         private void DrawTab_ToolWindow(Graphics g, TabVS2005 tab, Rectangle rect)
         {
-            Rectangle rectangle = new Rectangle(rect.X + ToolWindowImageGapLeft, (((rect.Y + rect.Height) - 1) - ToolWindowImageGapBottom) - ToolWindowImageHeight, ToolWindowImageWidth, ToolWindowImageHeight);
+            Rectangle rectangle = new Rectangle(rect.X + ToolWindowImageGapLeft,
+                (((rect.Y + rect.Height) - 1) - ToolWindowImageGapBottom) - ToolWindowImageHeight, ToolWindowImageWidth,
+                ToolWindowImageHeight);
             Rectangle rectangle2 = rectangle;
             rectangle2.X += rectangle.Width + ToolWindowImageGapRight;
-            rectangle2.Width = (((rect.Width - rectangle.Width) - ToolWindowImageGapLeft) - ToolWindowImageGapRight) - ToolWindowTextGapRight;
+            rectangle2.Width = (((rect.Width - rectangle.Width) - ToolWindowImageGapLeft) - ToolWindowImageGapRight) -
+                               ToolWindowTextGapRight;
             Rectangle rectangle3 = DrawHelper.RtlTransform(this, rect);
             rectangle2 = DrawHelper.RtlTransform(this, rectangle2);
             rectangle = DrawHelper.RtlTransform(this, rectangle);
@@ -303,7 +314,8 @@ namespace Yutai.ArcGIS.Framework.Docking
             {
                 g.FillPath(BrushToolWindowActiveBackground, path);
                 g.DrawPath(PenToolWindowTabBorder, path);
-                TextRenderer.DrawText(g, tab.Content.DockHandler.TabText, TextFont, rectangle2, ColorToolWindowActiveText, this.ToolWindowTextFormat);
+                TextRenderer.DrawText(g, tab.Content.DockHandler.TabText, TextFont, rectangle2,
+                    ColorToolWindowActiveText, this.ToolWindowTextFormat);
             }
             else
             {
@@ -311,9 +323,11 @@ namespace Yutai.ArcGIS.Framework.Docking
                 {
                     Point point = new Point(rect.Right, rect.Top + ToolWindowTabSeperatorGapTop);
                     Point point2 = new Point(rect.Right, rect.Bottom - ToolWindowTabSeperatorGapBottom);
-                    g.DrawLine(PenToolWindowTabBorder, DrawHelper.RtlTransform(this, point), DrawHelper.RtlTransform(this, point2));
+                    g.DrawLine(PenToolWindowTabBorder, DrawHelper.RtlTransform(this, point),
+                        DrawHelper.RtlTransform(this, point2));
                 }
-                TextRenderer.DrawText(g, tab.Content.DockHandler.TabText, TextFont, rectangle2, ColorToolWindowInactiveText, this.ToolWindowTextFormat);
+                TextRenderer.DrawText(g, tab.Content.DockHandler.TabText, TextFont, rectangle2,
+                    ColorToolWindowInactiveText, this.ToolWindowTextFormat);
             }
             if (rectangle3.Contains(rectangle))
             {
@@ -356,7 +370,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                     }
                 }
                 g.SetClip(tabStripRectangle);
-                g.DrawLine(PenDocumentTabActiveBorder, tabStripRectangle.Left, tabStripRectangle.Bottom - 1, tabStripRectangle.Right, tabStripRectangle.Bottom - 1);
+                g.DrawLine(PenDocumentTabActiveBorder, tabStripRectangle.Left, tabStripRectangle.Bottom - 1,
+                    tabStripRectangle.Right, tabStripRectangle.Bottom - 1);
                 g.SetClip(DrawHelper.RtlTransform(this, tabsRectangle));
                 if (tab != null)
                 {
@@ -372,7 +387,8 @@ namespace Yutai.ArcGIS.Framework.Docking
         private void DrawTabStrip_ToolWindow(Graphics g)
         {
             Rectangle tabStripRectangle = this.TabStripRectangle;
-            g.DrawLine(PenToolWindowTabBorder, tabStripRectangle.Left, tabStripRectangle.Top, tabStripRectangle.Right, tabStripRectangle.Top);
+            g.DrawLine(PenToolWindowTabBorder, tabStripRectangle.Left, tabStripRectangle.Top, tabStripRectangle.Right,
+                tabStripRectangle.Top);
             for (int i = 0; i < base.Tabs.Count; i++)
             {
                 this.DrawTab(g, base.Tabs[i] as TabVS2005, this.GetTabRectangle(i));
@@ -417,10 +433,12 @@ namespace Yutai.ArcGIS.Framework.Docking
         {
             IDockContent content = base.Tabs[index].Content;
             int height = this.GetTabRectangle_Document(index).Height;
-            Size size = TextRenderer.MeasureText(content.DockHandler.TabText, this.BoldFont, new Size(DocumentTabMaxWidth, height), this.DocumentTextFormat);
+            Size size = TextRenderer.MeasureText(content.DockHandler.TabText, this.BoldFont,
+                new Size(DocumentTabMaxWidth, height), this.DocumentTextFormat);
             if (base.DockPane.DockPanel.ShowDocumentIcon)
             {
-                return ((((size.Width + DocumentIconWidth) + DocumentIconGapLeft) + DocumentIconGapRight) + DocumentTextGapRight);
+                return ((((size.Width + DocumentIconWidth) + DocumentIconGapLeft) + DocumentIconGapRight) +
+                        DocumentTextGapRight);
             }
             return ((size.Width + DocumentIconGapLeft) + DocumentTextGapRight);
         }
@@ -428,7 +446,8 @@ namespace Yutai.ArcGIS.Framework.Docking
         private int GetMaxTabWidth_ToolWindow(int index)
         {
             Size size = TextRenderer.MeasureText(base.Tabs[index].Content.DockHandler.TabText, TextFont);
-            return ((((ToolWindowImageWidth + size.Width) + ToolWindowImageGapLeft) + ToolWindowImageGapRight) + ToolWindowTextGapRight);
+            return ((((ToolWindowImageWidth + size.Width) + ToolWindowImageGapLeft) + ToolWindowImageGapRight) +
+                    ToolWindowTextGapRight);
         }
 
         protected internal override System.Drawing.Drawing2D.GraphicsPath GetOutline(int index)
@@ -443,13 +462,14 @@ namespace Yutai.ArcGIS.Framework.Docking
         private System.Drawing.Drawing2D.GraphicsPath GetOutline_Document(int index)
         {
             Rectangle tabRectangle = this.GetTabRectangle(index);
-            tabRectangle.X -= tabRectangle.Height / 2;
+            tabRectangle.X -= tabRectangle.Height/2;
             tabRectangle.Intersect(this.TabsRectangle);
             tabRectangle = base.RectangleToScreen(DrawHelper.RtlTransform(this, tabRectangle));
             int top = tabRectangle.Top;
             Rectangle rectangle2 = base.DockPane.RectangleToScreen(base.DockPane.ClientRectangle);
             System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
-            System.Drawing.Drawing2D.GraphicsPath addingPath = this.GetTabOutline_Document(base.Tabs[index], true, true, true);
+            System.Drawing.Drawing2D.GraphicsPath addingPath = this.GetTabOutline_Document(base.Tabs[index], true, true,
+                true);
             path.AddPath(addingPath, true);
             path.AddLine(tabRectangle.Right, tabRectangle.Bottom, rectangle2.Right, tabRectangle.Bottom);
             path.AddLine(rectangle2.Right, tabRectangle.Bottom, rectangle2.Right, rectangle2.Bottom);
@@ -477,7 +497,8 @@ namespace Yutai.ArcGIS.Framework.Docking
             return path;
         }
 
-        private System.Drawing.Drawing2D.GraphicsPath GetTabOutline(DockPaneStripBase.Tab tab, bool rtlTransform, bool toScreen)
+        private System.Drawing.Drawing2D.GraphicsPath GetTabOutline(DockPaneStripBase.Tab tab, bool rtlTransform,
+            bool toScreen)
         {
             if (base.Appearance == DockPane.AppearanceStyle.ToolWindow)
             {
@@ -486,7 +507,8 @@ namespace Yutai.ArcGIS.Framework.Docking
             return this.GetTabOutline_Document(tab, rtlTransform, toScreen, false);
         }
 
-        private System.Drawing.Drawing2D.GraphicsPath GetTabOutline_Document(DockPaneStripBase.Tab tab, bool rtlTransform, bool toScreen, bool full)
+        private System.Drawing.Drawing2D.GraphicsPath GetTabOutline_Document(DockPaneStripBase.Tab tab,
+            bool rtlTransform, bool toScreen, bool full)
         {
             int width = 6;
             GraphicsPath.Reset();
@@ -499,64 +521,83 @@ namespace Yutai.ArcGIS.Framework.Docking
             {
                 tabRectangle = base.RectangleToScreen(tabRectangle);
             }
-            if (((tab.Content == base.DockPane.ActiveContent) || (base.Tabs.IndexOf(tab) == this.StartDisplayingTab)) || full)
+            if (((tab.Content == base.DockPane.ActiveContent) || (base.Tabs.IndexOf(tab) == this.StartDisplayingTab)) ||
+                full)
             {
                 if (this.RightToLeft == RightToLeft.Yes)
                 {
-                    GraphicsPath.AddLine(tabRectangle.Right, tabRectangle.Bottom, tabRectangle.Right + (tabRectangle.Height / 2), tabRectangle.Bottom);
-                    GraphicsPath.AddLine(tabRectangle.Right + (tabRectangle.Height / 2), tabRectangle.Bottom, (tabRectangle.Right - (tabRectangle.Height / 2)) + (width / 2), tabRectangle.Top + (width / 2));
+                    GraphicsPath.AddLine(tabRectangle.Right, tabRectangle.Bottom,
+                        tabRectangle.Right + (tabRectangle.Height/2), tabRectangle.Bottom);
+                    GraphicsPath.AddLine(tabRectangle.Right + (tabRectangle.Height/2), tabRectangle.Bottom,
+                        (tabRectangle.Right - (tabRectangle.Height/2)) + (width/2), tabRectangle.Top + (width/2));
                 }
                 else
                 {
-                    GraphicsPath.AddLine(tabRectangle.Left, tabRectangle.Bottom, tabRectangle.Left - (tabRectangle.Height / 2), tabRectangle.Bottom);
-                    GraphicsPath.AddLine(tabRectangle.Left - (tabRectangle.Height / 2), tabRectangle.Bottom, (tabRectangle.Left + (tabRectangle.Height / 2)) - (width / 2), tabRectangle.Top + (width / 2));
+                    GraphicsPath.AddLine(tabRectangle.Left, tabRectangle.Bottom,
+                        tabRectangle.Left - (tabRectangle.Height/2), tabRectangle.Bottom);
+                    GraphicsPath.AddLine(tabRectangle.Left - (tabRectangle.Height/2), tabRectangle.Bottom,
+                        (tabRectangle.Left + (tabRectangle.Height/2)) - (width/2), tabRectangle.Top + (width/2));
                 }
             }
             else if (this.RightToLeft == RightToLeft.Yes)
             {
-                GraphicsPath.AddLine(tabRectangle.Right, tabRectangle.Bottom, tabRectangle.Right, tabRectangle.Bottom - (tabRectangle.Height / 2));
-                GraphicsPath.AddLine(tabRectangle.Right, tabRectangle.Bottom - (tabRectangle.Height / 2), (tabRectangle.Right - (tabRectangle.Height / 2)) + (width / 2), tabRectangle.Top + (width / 2));
+                GraphicsPath.AddLine(tabRectangle.Right, tabRectangle.Bottom, tabRectangle.Right,
+                    tabRectangle.Bottom - (tabRectangle.Height/2));
+                GraphicsPath.AddLine(tabRectangle.Right, tabRectangle.Bottom - (tabRectangle.Height/2),
+                    (tabRectangle.Right - (tabRectangle.Height/2)) + (width/2), tabRectangle.Top + (width/2));
             }
             else
             {
-                GraphicsPath.AddLine(tabRectangle.Left, tabRectangle.Bottom, tabRectangle.Left, tabRectangle.Bottom - (tabRectangle.Height / 2));
-                GraphicsPath.AddLine(tabRectangle.Left, tabRectangle.Bottom - (tabRectangle.Height / 2), (tabRectangle.Left + (tabRectangle.Height / 2)) - (width / 2), tabRectangle.Top + (width / 2));
+                GraphicsPath.AddLine(tabRectangle.Left, tabRectangle.Bottom, tabRectangle.Left,
+                    tabRectangle.Bottom - (tabRectangle.Height/2));
+                GraphicsPath.AddLine(tabRectangle.Left, tabRectangle.Bottom - (tabRectangle.Height/2),
+                    (tabRectangle.Left + (tabRectangle.Height/2)) - (width/2), tabRectangle.Top + (width/2));
             }
             if (this.RightToLeft == RightToLeft.Yes)
             {
-                GraphicsPath.AddLine((tabRectangle.Right - (tabRectangle.Height / 2)) - (width / 2), tabRectangle.Top, tabRectangle.Left + (width / 2), tabRectangle.Top);
+                GraphicsPath.AddLine((tabRectangle.Right - (tabRectangle.Height/2)) - (width/2), tabRectangle.Top,
+                    tabRectangle.Left + (width/2), tabRectangle.Top);
                 GraphicsPath.AddArc(new Rectangle(tabRectangle.Left, tabRectangle.Top, width, width), 180f, 90f);
             }
             else
             {
-                GraphicsPath.AddLine((tabRectangle.Left + (tabRectangle.Height / 2)) + (width / 2), tabRectangle.Top, tabRectangle.Right - (width / 2), tabRectangle.Top);
+                GraphicsPath.AddLine((tabRectangle.Left + (tabRectangle.Height/2)) + (width/2), tabRectangle.Top,
+                    tabRectangle.Right - (width/2), tabRectangle.Top);
                 GraphicsPath.AddArc(new Rectangle(tabRectangle.Right - width, tabRectangle.Top, width, width), -90f, 90f);
             }
-            if ((((base.Tabs.IndexOf(tab) != this.EndDisplayingTab) && (base.Tabs.IndexOf(tab) != (base.Tabs.Count - 1))) && (base.Tabs[base.Tabs.IndexOf(tab) + 1].Content == base.DockPane.ActiveContent)) && !full)
+            if ((((base.Tabs.IndexOf(tab) != this.EndDisplayingTab) && (base.Tabs.IndexOf(tab) != (base.Tabs.Count - 1))) &&
+                 (base.Tabs[base.Tabs.IndexOf(tab) + 1].Content == base.DockPane.ActiveContent)) && !full)
             {
                 if (this.RightToLeft == RightToLeft.Yes)
                 {
-                    GraphicsPath.AddLine(tabRectangle.Left, tabRectangle.Top + (width / 2), tabRectangle.Left, tabRectangle.Top + (tabRectangle.Height / 2));
-                    GraphicsPath.AddLine(tabRectangle.Left, tabRectangle.Top + (tabRectangle.Height / 2), tabRectangle.Left + (tabRectangle.Height / 2), tabRectangle.Bottom);
+                    GraphicsPath.AddLine(tabRectangle.Left, tabRectangle.Top + (width/2), tabRectangle.Left,
+                        tabRectangle.Top + (tabRectangle.Height/2));
+                    GraphicsPath.AddLine(tabRectangle.Left, tabRectangle.Top + (tabRectangle.Height/2),
+                        tabRectangle.Left + (tabRectangle.Height/2), tabRectangle.Bottom);
                 }
                 else
                 {
-                    GraphicsPath.AddLine(tabRectangle.Right, tabRectangle.Top + (width / 2), tabRectangle.Right, tabRectangle.Top + (tabRectangle.Height / 2));
-                    GraphicsPath.AddLine(tabRectangle.Right, tabRectangle.Top + (tabRectangle.Height / 2), tabRectangle.Right - (tabRectangle.Height / 2), tabRectangle.Bottom);
+                    GraphicsPath.AddLine(tabRectangle.Right, tabRectangle.Top + (width/2), tabRectangle.Right,
+                        tabRectangle.Top + (tabRectangle.Height/2));
+                    GraphicsPath.AddLine(tabRectangle.Right, tabRectangle.Top + (tabRectangle.Height/2),
+                        tabRectangle.Right - (tabRectangle.Height/2), tabRectangle.Bottom);
                 }
             }
             else if (this.RightToLeft == RightToLeft.Yes)
             {
-                GraphicsPath.AddLine(tabRectangle.Left, tabRectangle.Top + (width / 2), tabRectangle.Left, tabRectangle.Bottom);
+                GraphicsPath.AddLine(tabRectangle.Left, tabRectangle.Top + (width/2), tabRectangle.Left,
+                    tabRectangle.Bottom);
             }
             else
             {
-                GraphicsPath.AddLine(tabRectangle.Right, tabRectangle.Top + (width / 2), tabRectangle.Right, tabRectangle.Bottom);
+                GraphicsPath.AddLine(tabRectangle.Right, tabRectangle.Top + (width/2), tabRectangle.Right,
+                    tabRectangle.Bottom);
             }
             return GraphicsPath;
         }
 
-        private System.Drawing.Drawing2D.GraphicsPath GetTabOutline_ToolWindow(DockPaneStripBase.Tab tab, bool rtlTransform, bool toScreen)
+        private System.Drawing.Drawing2D.GraphicsPath GetTabOutline_ToolWindow(DockPaneStripBase.Tab tab,
+            bool rtlTransform, bool toScreen)
         {
             Rectangle tabRectangle = this.GetTabRectangle(base.Tabs.IndexOf(tab));
             if (rtlTransform)
@@ -584,7 +625,8 @@ namespace Yutai.ArcGIS.Framework.Docking
         {
             Rectangle tabStripRectangle = this.TabStripRectangle;
             TabVS2005 bvs = (TabVS2005) base.Tabs[index];
-            return new Rectangle(bvs.TabX, tabStripRectangle.Y + DocumentTabGapTop, bvs.TabWidth, tabStripRectangle.Height - DocumentTabGapTop);
+            return new Rectangle(bvs.TabX, tabStripRectangle.Y + DocumentTabGapTop, bvs.TabWidth,
+                tabStripRectangle.Height - DocumentTabGapTop);
         }
 
         private Rectangle GetTabRectangle_ToolWindow(int index)
@@ -621,7 +663,10 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         private int MeasureHeight_Document()
         {
-            return ((Math.Max((int) (TextFont.Height + DocumentTabGapTop), (int) ((this.ButtonClose.Height + DocumentButtonGapTop) + DocumentButtonGapBottom)) + DocumentStripGapBottom) + DocumentStripGapTop);
+            return
+            ((Math.Max((int) (TextFont.Height + DocumentTabGapTop),
+                  (int) ((this.ButtonClose.Height + DocumentButtonGapTop) + DocumentButtonGapBottom)) +
+              DocumentStripGapBottom) + DocumentStripGapTop);
         }
 
         private int MeasureHeight_ToolWindow()
@@ -630,7 +675,9 @@ namespace Yutai.ArcGIS.Framework.Docking
             {
                 return 0;
             }
-            return ((Math.Max(TextFont.Height, (ToolWindowImageHeight + ToolWindowImageGapTop) + ToolWindowImageGapBottom) + ToolWindowStripGapTop) + ToolWindowStripGapBottom);
+            return
+            ((Math.Max(TextFont.Height, (ToolWindowImageHeight + ToolWindowImageGapTop) + ToolWindowImageGapBottom) +
+              ToolWindowStripGapTop) + ToolWindowStripGapBottom);
         }
 
         protected override void OnLayout(LayoutEventArgs levent)
@@ -647,11 +694,12 @@ namespace Yutai.ArcGIS.Framework.Docking
                 int num3 = (tabStripRectangle.Height - DocumentButtonGapTop) - DocumentButtonGapBottom;
                 if (height < num3)
                 {
-                    width *= num3 / height;
+                    width *= num3/height;
                     height = num3;
                 }
                 Size size = new Size(width, height);
-                int x = (((tabStripRectangle.X + tabStripRectangle.Width) - DocumentTabGapLeft) - DocumentButtonGapRight) - width;
+                int x = (((tabStripRectangle.X + tabStripRectangle.Width) - DocumentTabGapLeft) - DocumentButtonGapRight) -
+                        width;
                 int y = tabStripRectangle.Y + DocumentButtonGapTop;
                 Point location = new Point(x, y);
                 this.ButtonClose.Bounds = DrawHelper.RtlTransform(this, new Rectangle(location, size));
@@ -703,7 +751,8 @@ namespace Yutai.ArcGIS.Framework.Docking
             }
             base.OnPaint(e);
             this.CalculateTabs();
-            if (((base.Appearance == DockPane.AppearanceStyle.Document) && (base.DockPane.ActiveContent != null)) && this.EnsureDocumentTabVisible(base.DockPane.ActiveContent, false))
+            if (((base.Appearance == DockPane.AppearanceStyle.Document) && (base.DockPane.ActiveContent != null)) &&
+                this.EnsureDocumentTabVisible(base.DockPane.ActiveContent, false))
             {
                 this.CalculateTabs();
             }
@@ -752,7 +801,8 @@ namespace Yutai.ArcGIS.Framework.Docking
             foreach (TabVS2005 bvs in (IEnumerable<DockPaneStripBase.Tab>) base.Tabs)
             {
                 IDockContent content = bvs.Content;
-                ToolStripItem item = this.SelectMenu.Items.Add(content.DockHandler.TabText, content.DockHandler.Icon.ToBitmap());
+                ToolStripItem item = this.SelectMenu.Items.Add(content.DockHandler.TabText,
+                    content.DockHandler.Icon.ToBitmap());
                 item.Tag = bvs.Content;
                 item.Click += new EventHandler(this.ContextMenuItem_Click);
             }
@@ -784,26 +834,17 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         private static Brush BrushDocumentActiveBackground
         {
-            get
-            {
-                return SystemBrushes.ControlLightLight;
-            }
+            get { return SystemBrushes.ControlLightLight; }
         }
 
         private static Brush BrushDocumentInactiveBackground
         {
-            get
-            {
-                return SystemBrushes.ControlLight;
-            }
+            get { return SystemBrushes.ControlLight; }
         }
 
         private static Brush BrushToolWindowActiveBackground
         {
-            get
-            {
-                return SystemBrushes.Control;
-            }
+            get { return SystemBrushes.Control; }
         }
 
         private InertButton ButtonClose
@@ -838,162 +879,102 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         private static Color ColorDocumentActiveText
         {
-            get
-            {
-                return SystemColors.ControlText;
-            }
+            get { return SystemColors.ControlText; }
         }
 
         private static Color ColorDocumentInactiveText
         {
-            get
-            {
-                return SystemColors.ControlText;
-            }
+            get { return SystemColors.ControlText; }
         }
 
         private static Color ColorToolWindowActiveText
         {
-            get
-            {
-                return ColorTranslator.FromWin32(11717088);
-            }
+            get { return ColorTranslator.FromWin32(11717088); }
         }
 
         private static Color ColorToolWindowInactiveText
         {
-            get
-            {
-                return SystemColors.ControlDarkDark;
-            }
+            get { return SystemColors.ControlDarkDark; }
         }
 
         private IContainer Components
         {
-            get
-            {
-                return this.m_components;
-            }
+            get { return this.m_components; }
         }
 
         private static int DocumentButtonGapBetween
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         private static int DocumentButtonGapBottom
         {
-            get
-            {
-                return 4;
-            }
+            get { return 4; }
         }
 
         private static int DocumentButtonGapRight
         {
-            get
-            {
-                return 3;
-            }
+            get { return 3; }
         }
 
         private static int DocumentButtonGapTop
         {
-            get
-            {
-                return 4;
-            }
+            get { return 4; }
         }
 
         private static int DocumentIconGapBottom
         {
-            get
-            {
-                return 2;
-            }
+            get { return 2; }
         }
 
         private static int DocumentIconGapLeft
         {
-            get
-            {
-                return 8;
-            }
+            get { return 8; }
         }
 
         private static int DocumentIconGapRight
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         private static int DocumentIconHeight
         {
-            get
-            {
-                return 16;
-            }
+            get { return 16; }
         }
 
         private static int DocumentIconWidth
         {
-            get
-            {
-                return 16;
-            }
+            get { return 16; }
         }
 
         private static int DocumentStripGapBottom
         {
-            get
-            {
-                return 1;
-            }
+            get { return 1; }
         }
 
         private static int DocumentStripGapTop
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         private static int DocumentTabGapLeft
         {
-            get
-            {
-                return 3;
-            }
+            get { return 3; }
         }
 
         private static int DocumentTabGapRight
         {
-            get
-            {
-                return 3;
-            }
+            get { return 3; }
         }
 
         private static int DocumentTabGapTop
         {
-            get
-            {
-                return 3;
-            }
+            get { return 3; }
         }
 
         private static int DocumentTabMaxWidth
         {
-            get
-            {
-                return 200;
-            }
+            get { return 200; }
         }
 
         private bool DocumentTabsOverflow
@@ -1019,7 +1000,9 @@ namespace Yutai.ArcGIS.Framework.Docking
         {
             get
             {
-                TextFormatFlags flags = TextFormatFlags.PreserveGraphicsClipping | TextFormatFlags.PathEllipsis | TextFormatFlags.SingleLine | TextFormatFlags.VerticalCenter | TextFormatFlags.HorizontalCenter;
+                TextFormatFlags flags = TextFormatFlags.PreserveGraphicsClipping | TextFormatFlags.PathEllipsis |
+                                        TextFormatFlags.SingleLine | TextFormatFlags.VerticalCenter |
+                                        TextFormatFlags.HorizontalCenter;
                 if (this.RightToLeft == RightToLeft.Yes)
                 {
                     return (flags | TextFormatFlags.RightToLeft);
@@ -1030,30 +1013,18 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         private static int DocumentTextGapRight
         {
-            get
-            {
-                return 3;
-            }
+            get { return 3; }
         }
 
         private int EndDisplayingTab
         {
-            get
-            {
-                return this.m_endDisplayingTab;
-            }
-            set
-            {
-                this.m_endDisplayingTab = value;
-            }
+            get { return this.m_endDisplayingTab; }
+            set { this.m_endDisplayingTab = value; }
         }
 
         private static System.Drawing.Drawing2D.GraphicsPath GraphicsPath
         {
-            get
-            {
-                return VS2005AutoHideStrip.GraphicsPath;
-            }
+            get { return VS2005AutoHideStrip.GraphicsPath; }
         }
 
         private static Bitmap ImageButtonClose
@@ -1094,42 +1065,27 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         private static Pen PenDocumentTabActiveBorder
         {
-            get
-            {
-                return SystemPens.ControlDarkDark;
-            }
+            get { return SystemPens.ControlDarkDark; }
         }
 
         private static Pen PenDocumentTabInactiveBorder
         {
-            get
-            {
-                return SystemPens.GrayText;
-            }
+            get { return SystemPens.GrayText; }
         }
 
         private static Pen PenToolWindowTabBorder
         {
-            get
-            {
-                return SystemPens.GrayText;
-            }
+            get { return SystemPens.GrayText; }
         }
 
         private ContextMenuStrip SelectMenu
         {
-            get
-            {
-                return this.m_selectMenu;
-            }
+            get { return this.m_selectMenu; }
         }
 
         private int StartDisplayingTab
         {
-            get
-            {
-                return this.m_startDisplayingTab;
-            }
+            get { return this.m_startDisplayingTab; }
             set
             {
                 this.m_startDisplayingTab = value;
@@ -1151,7 +1107,10 @@ namespace Yutai.ArcGIS.Framework.Docking
                 int width = tabStripRectangle.Width;
                 int height = tabStripRectangle.Height;
                 x += DocumentTabGapLeft;
-                return new Rectangle(x, y, width - (((((DocumentTabGapLeft + DocumentTabGapRight) + DocumentButtonGapRight) + this.ButtonClose.Width) + this.ButtonWindowList.Width) + (2 * DocumentButtonGapBetween)), height);
+                return new Rectangle(x, y,
+                    width -
+                    (((((DocumentTabGapLeft + DocumentTabGapRight) + DocumentButtonGapRight) + this.ButtonClose.Width) +
+                      this.ButtonWindowList.Width) + (2*DocumentButtonGapBetween)), height);
             }
         }
 
@@ -1172,7 +1131,8 @@ namespace Yutai.ArcGIS.Framework.Docking
             get
             {
                 Rectangle clientRectangle = base.ClientRectangle;
-                return new Rectangle(clientRectangle.X, clientRectangle.Top + DocumentStripGapTop, clientRectangle.Width, (clientRectangle.Height - DocumentStripGapTop) - ToolWindowStripGapBottom);
+                return new Rectangle(clientRectangle.X, clientRectangle.Top + DocumentStripGapTop, clientRectangle.Width,
+                    (clientRectangle.Height - DocumentStripGapTop) - ToolWindowStripGapBottom);
             }
         }
 
@@ -1181,16 +1141,14 @@ namespace Yutai.ArcGIS.Framework.Docking
             get
             {
                 Rectangle clientRectangle = base.ClientRectangle;
-                return new Rectangle(clientRectangle.X, clientRectangle.Top + ToolWindowStripGapTop, clientRectangle.Width, (clientRectangle.Height - ToolWindowStripGapTop) - ToolWindowStripGapBottom);
+                return new Rectangle(clientRectangle.X, clientRectangle.Top + ToolWindowStripGapTop,
+                    clientRectangle.Width, (clientRectangle.Height - ToolWindowStripGapTop) - ToolWindowStripGapBottom);
             }
         }
 
         private static Font TextFont
         {
-            get
-            {
-                return SystemInformation.MenuFont;
-            }
+            get { return SystemInformation.MenuFont; }
         }
 
         private static string ToolTipClose
@@ -1219,105 +1177,70 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         private static int ToolWindowImageGapBottom
         {
-            get
-            {
-                return 1;
-            }
+            get { return 1; }
         }
 
         private static int ToolWindowImageGapLeft
         {
-            get
-            {
-                return 2;
-            }
+            get { return 2; }
         }
 
         private static int ToolWindowImageGapRight
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         private static int ToolWindowImageGapTop
         {
-            get
-            {
-                return 3;
-            }
+            get { return 3; }
         }
 
         private static int ToolWindowImageHeight
         {
-            get
-            {
-                return 16;
-            }
+            get { return 16; }
         }
 
         private static int ToolWindowImageWidth
         {
-            get
-            {
-                return 16;
-            }
+            get { return 16; }
         }
 
         private static int ToolWindowStripGapBottom
         {
-            get
-            {
-                return 1;
-            }
+            get { return 1; }
         }
 
         private static int ToolWindowStripGapLeft
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         private static int ToolWindowStripGapRight
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         private static int ToolWindowStripGapTop
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         private static int ToolWindowTabSeperatorGapBottom
         {
-            get
-            {
-                return 3;
-            }
+            get { return 3; }
         }
 
         private static int ToolWindowTabSeperatorGapTop
         {
-            get
-            {
-                return 3;
-            }
+            get { return 3; }
         }
 
         private TextFormatFlags ToolWindowTextFormat
         {
             get
             {
-                TextFormatFlags flags = TextFormatFlags.EndEllipsis | TextFormatFlags.SingleLine | TextFormatFlags.VerticalCenter | TextFormatFlags.HorizontalCenter;
+                TextFormatFlags flags = TextFormatFlags.EndEllipsis | TextFormatFlags.SingleLine |
+                                        TextFormatFlags.VerticalCenter | TextFormatFlags.HorizontalCenter;
                 if (this.RightToLeft == RightToLeft.Yes)
                 {
                     return ((flags | TextFormatFlags.RightToLeft) | TextFormatFlags.Right);
@@ -1328,10 +1251,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         private static int ToolWindowTextGapRight
         {
-            get
-            {
-                return 3;
-            }
+            get { return 3; }
         }
 
         private sealed class InertButton : InertButtonBase
@@ -1357,18 +1277,12 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             public override Bitmap Image
             {
-                get
-                {
-                    return ((this.ImageCategory == 0) ? this.m_image0 : this.m_image1);
-                }
+                get { return ((this.ImageCategory == 0) ? this.m_image0 : this.m_image1); }
             }
 
             public int ImageCategory
             {
-                get
-                {
-                    return this.m_imageCategory;
-                }
+                get { return this.m_imageCategory; }
                 set
                 {
                     if (this.m_imageCategory != value)
@@ -1393,52 +1307,27 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             protected internal bool Flag
             {
-                get
-                {
-                    return this.m_flag;
-                }
-                set
-                {
-                    this.m_flag = value;
-                }
+                get { return this.m_flag; }
+                set { this.m_flag = value; }
             }
 
             public int MaxWidth
             {
-                get
-                {
-                    return this.m_maxWidth;
-                }
-                set
-                {
-                    this.m_maxWidth = value;
-                }
+                get { return this.m_maxWidth; }
+                set { this.m_maxWidth = value; }
             }
 
             public int TabWidth
             {
-                get
-                {
-                    return this.m_tabWidth;
-                }
-                set
-                {
-                    this.m_tabWidth = value;
-                }
+                get { return this.m_tabWidth; }
+                set { this.m_tabWidth = value; }
             }
 
             public int TabX
             {
-                get
-                {
-                    return this.m_tabX;
-                }
-                set
-                {
-                    this.m_tabX = value;
-                }
+                get { return this.m_tabX; }
+                set { this.m_tabX = value; }
             }
         }
     }
 }
-

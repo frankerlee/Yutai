@@ -50,7 +50,10 @@ namespace Yutai.Plugins.Editor.Commands
                     {
                         flag = false;
                     }
-                    else if (!(Yutai.ArcGIS.Common.Editor.Editor.EditMap == null ? true : Yutai.ArcGIS.Common.Editor.Editor.EditMap == _context.FocusMap))
+                    else if (
+                        !(Yutai.ArcGIS.Common.Editor.Editor.EditMap == null
+                            ? true
+                            : Yutai.ArcGIS.Common.Editor.Editor.EditMap == _context.FocusMap))
                     {
                         flag = false;
                     }
@@ -66,7 +69,8 @@ namespace Yutai.Plugins.Editor.Commands
                     {
                         flag = false;
                     }
-                    else if (Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass.ShapeType == esriGeometryType.esriGeometryPolyline)
+                    else if (Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass.ShapeType ==
+                             esriGeometryType.esriGeometryPolyline)
                     {
                         IEnumFeature featureSelection = _context.FocusMap.FeatureSelection as IEnumFeature;
                         featureSelection.Reset();
@@ -99,9 +103,6 @@ namespace Yutai.Plugins.Editor.Commands
         }
 
 
-
-
-
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
@@ -119,10 +120,10 @@ namespace Yutai.Plugins.Editor.Commands
                     IGeometryDef geometryDef = pFeatureClass.Fields.Field[num2].GeometryDef;
                     if (geometryDef.HasZ)
                     {
-                        ((IZAware)pGeometry).ZAware = true;
+                        ((IZAware) pGeometry).ZAware = true;
                         if (pGeometry is IZ)
                         {
-                            IZ igeometry0 = (IZ)pGeometry;
+                            IZ igeometry0 = (IZ) pGeometry;
                             geometryDef.SpatialReference.GetZDomain(out num, out num1);
                             igeometry0.SetConstantZ(num);
                         }
@@ -134,13 +135,13 @@ namespace Yutai.Plugins.Editor.Commands
                     }
                     if (geometryDef.HasM)
                     {
-                        ((IMAware)pGeometry).MAware = true;
+                        ((IMAware) pGeometry).MAware = true;
                     }
                     IFeature feature = pFeatureClass.CreateFeature();
                     feature.Shape = pGeometry;
                     try
                     {
-                        ((IRowSubtypes)feature).InitDefaultValues();
+                        ((IRowSubtypes) feature).InitDefaultValues();
                     }
                     catch (Exception exception)
                     {
@@ -172,7 +173,8 @@ namespace Yutai.Plugins.Editor.Commands
                 if (feature.Shape.GeometryType == esriGeometryType.esriGeometryPolyline)
                 {
                     IConstructCurve polylineClass = new Polyline() as IConstructCurve;
-                    polylineClass.ConstructOffset(feature.Shape as IPolycurve, this.m_offset, ref mConstructOffset, ref value);
+                    polylineClass.ConstructOffset(feature.Shape as IPolycurve, this.m_offset, ref mConstructOffset,
+                        ref value);
                     this.CreateParallel(polylineClass as IGeometry, featureClass);
                 }
                 feature = featureSelection.Next();
@@ -181,6 +183,4 @@ namespace Yutai.Plugins.Editor.Commands
             focusMap.Refresh();
         }
     }
-
-  
 }

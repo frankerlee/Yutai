@@ -110,7 +110,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             {
                 e.Graphics.FillRectangle(this.brush_1, e.Bounds);
             }
-            int num = (e.Bounds.Y + (e.Bounds.Height / 2)) - (e.SubItem.Font.Height / 2);
+            int num = (e.Bounds.Y + (e.Bounds.Height/2)) - (e.SubItem.Font.Height/2);
             int x = e.Bounds.X + 2;
             if (e.ColumnIndex == 0)
             {
@@ -121,12 +121,13 @@ namespace Yutai.ArcGIS.Common.ControlExtend
                     if (item2.MyImage != null)
                     {
                         Image myImage = item2.MyImage;
-                        int y = (e.Bounds.Y + (e.Bounds.Height / 2)) - (myImage.Height / 2);
+                        int y = (e.Bounds.Y + (e.Bounds.Height/2)) - (myImage.Height/2);
                         e.Graphics.DrawImage(myImage, x, y, myImage.Width, myImage.Height);
                         x += myImage.Width + 2;
                     }
                 }
-                e.Graphics.DrawString(e.SubItem.Text, e.SubItem.Font, new SolidBrush(e.SubItem.ForeColor), (float) x, (float) num);
+                e.Graphics.DrawString(e.SubItem.Text, e.SubItem.Font, new SolidBrush(e.SubItem.ForeColor), (float) x,
+                    (float) num);
             }
             else
             {
@@ -138,7 +139,8 @@ namespace Yutai.ArcGIS.Common.ControlExtend
                 else
                 {
                     x = subItem.DoDraw(e, x, base.Columns[e.ColumnIndex] as EXColumnHeader);
-                    e.Graphics.DrawString(e.SubItem.Text, e.SubItem.Font, new SolidBrush(e.SubItem.ForeColor), (float) x, (float) num);
+                    e.Graphics.DrawString(e.SubItem.Text, e.SubItem.Font, new SolidBrush(e.SubItem.ForeColor), (float) x,
+                        (float) num);
                 }
             }
         }
@@ -284,7 +286,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
                             {
                                 item2 = (EXMultipleImagesListViewItem) this.listViewItem_0;
                                 item2.MyImages.Clear();
-                                item2.MyImages.AddRange(new object[] { item.MyImage });
+                                item2.MyImages.AddRange(new object[] {item.MyImage});
                             }
                         }
                         else if (this.listViewSubItem_0.GetType() == typeof(EXImageListViewSubItem))
@@ -342,6 +344,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         [DllImport("user32.dll")]
         private static extern bool SendMessage(IntPtr intptr_0, uint uint_0, int int_3, int int_4);
+
         private void textBox_0_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == '\r')
@@ -385,26 +388,14 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         public Brush MyHighlightBrush
         {
-            get
-            {
-                return this.brush_1;
-            }
-            set
-            {
-                this.brush_1 = value;
-            }
+            get { return this.brush_1; }
+            set { this.brush_1 = value; }
         }
 
         public Brush MySortBrush
         {
-            get
-            {
-                return this.brush_0;
-            }
-            set
-            {
-                this.brush_0 = value;
-            }
+            get { return this.brush_0; }
+            set { this.brush_0 = value; }
         }
 
         private class Class0 : IComparer
@@ -606,4 +597,3 @@ namespace Yutai.ArcGIS.Common.ControlExtend
         public delegate void ValueChangedHandler(object sender, ExListViewEventArgs e);
     }
 }
-

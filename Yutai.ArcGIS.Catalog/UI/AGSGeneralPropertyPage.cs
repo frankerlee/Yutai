@@ -48,7 +48,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             properties.SetProperty("LogLevel", this.cboLogLevel.SelectedIndex);
         }
 
- private void method_0()
+        private void method_0()
         {
             object obj2;
             object obj3;
@@ -62,11 +62,7 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         public IAGSServerConnectionAdmin AGSServerConnectionAdmin
         {
-            set
-            {
-                this.iagsserverConnectionAdmin_0 = value;
-            }
+            set { this.iagsserverConnectionAdmin_0 = value; }
         }
     }
 }
-

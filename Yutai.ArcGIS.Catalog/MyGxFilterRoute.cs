@@ -88,12 +88,16 @@ namespace Yutai.ArcGIS.Catalog
                 }
                 if (igxObject_0 is IGxDatabase)
                 {
-                    bool_0 = ((igxObject_0 as IGxDatabase).Workspace as IWorkspace2).get_NameExists(esriDatasetType.esriDTFeatureClass, string_0);
+                    bool_0 =
+                        ((igxObject_0 as IGxDatabase).Workspace as IWorkspace2).get_NameExists(
+                            esriDatasetType.esriDTFeatureClass, string_0);
                     return true;
                 }
                 if (igxObject_0 is IGxDataset)
                 {
-                    bool_0 = ((igxObject_0 as IGxDataset).Dataset.Workspace as IWorkspace2).get_NameExists(esriDatasetType.esriDTFeatureClass, string_0);
+                    bool_0 =
+                        ((igxObject_0 as IGxDataset).Dataset.Workspace as IWorkspace2).get_NameExists(
+                            esriDatasetType.esriDTFeatureClass, string_0);
                     if ((igxObject_0 as IGxDataset).Type == esriDatasetType.esriDTFeatureDataset)
                     {
                         return true;
@@ -108,19 +112,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public string Description
         {
-            get
-            {
-                return "线要素包含路径";
-            }
+            get { return "线要素包含路径"; }
         }
 
         public string Name
         {
-            get
-            {
-                return "MyGxFilterRoute";
-            }
+            get { return "MyGxFilterRoute"; }
         }
     }
 }
-

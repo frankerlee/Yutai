@@ -132,7 +132,7 @@ namespace Yutai.Plugins.Editor.Commands
                 IActiveView focusMap = (IActiveView) _context.FocusMap;
                 if (SketchToolAssist.CurrentTask == null)
                 {
-                   // SketchToolAssist.IsDrawTempLine = DrawTempGeometry.Line;
+                    // SketchToolAssist.IsDrawTempLine = DrawTempGeometry.Line;
                     SketchToolAssist.SketchMouseDown(focusMap,
                         ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
                     //SketchToolAssist.SketchMouseDown(focusMap, ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);

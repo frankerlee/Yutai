@@ -32,7 +32,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 ITable table2 = this.igxDataset_0.Dataset as ITable;
                 this.progressBar1.Visible = true;
                 Dataloaders dataloaders = new Dataloaders();
-                dataloaders.Step+=(new IFeatureProgress_StepEventHandler(this.method_3));
+                dataloaders.Step += (new IFeatureProgress_StepEventHandler(this.method_3));
                 System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
                 dataloaders.LoadData(dataset, null, table2, 500);
                 System.Windows.Forms.Cursor.Current = Cursors.Default;
@@ -51,11 +51,16 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 IGxDataset dataset = file.Items.get_Element(0) as IGxDataset;
                 if (dataset != null)
                 {
-                    if ((this.igxDataset_0.Type == esriDatasetType.esriDTFeatureClass) && (dataset.Type == esriDatasetType.esriDTFeatureClass))
+                    if ((this.igxDataset_0.Type == esriDatasetType.esriDTFeatureClass) &&
+                        (dataset.Type == esriDatasetType.esriDTFeatureClass))
                     {
-                        if ((this.igxDataset_0.Dataset as IFeatureClass).ShapeType == (dataset.Dataset as IFeatureClass).ShapeType)
+                        if ((this.igxDataset_0.Dataset as IFeatureClass).ShapeType ==
+                            (dataset.Dataset as IFeatureClass).ShapeType)
                         {
-                            if (this.method_0(this.igxDataset_0.DatasetName.WorkspaceName, dataset.DatasetName.WorkspaceName) && (this.igxDataset_0.DatasetName.Name == dataset.DatasetName.Name))
+                            if (
+                                this.method_0(this.igxDataset_0.DatasetName.WorkspaceName,
+                                    dataset.DatasetName.WorkspaceName) &&
+                                (this.igxDataset_0.DatasetName.Name == dataset.DatasetName.Name))
                             {
                                 MessageBox.Show("源对象类和目标对象类必须不同!");
                             }
@@ -83,7 +88,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private bool method_0(IWorkspaceName iworkspaceName_0, IWorkspaceName iworkspaceName_1)
+        private bool method_0(IWorkspaceName iworkspaceName_0, IWorkspaceName iworkspaceName_1)
         {
             return iworkspaceName_0.ConnectionProperties.IsEqual(iworkspaceName_1.ConnectionProperties);
         }
@@ -106,11 +111,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IGxDataset OutLocation
         {
-            set
-            {
-                this.igxDataset_0 = value;
-            }
+            set { this.igxDataset_0 = value; }
         }
     }
 }
-

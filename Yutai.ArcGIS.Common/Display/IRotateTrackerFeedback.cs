@@ -3,25 +3,18 @@ using ESRI.ArcGIS.Geometry;
 
 namespace Yutai.ArcGIS.Common.Display
 {
-	public interface IRotateTrackerFeedback : IDisplayFeedback
-	{
-		double Angle
-		{
-			get;
-		}
+    public interface IRotateTrackerFeedback : IDisplayFeedback
+    {
+        double Angle { get; }
 
-		IPoint Origin
-		{
-			get;
-			set;
-		}
+        IPoint Origin { get; set; }
 
-		void AddGeometry(IGeometry igeometry_0);
+        void AddGeometry(IGeometry igeometry_0);
 
-		void ClearGeometry();
+        void ClearGeometry();
 
-		void Start(IPoint ipoint_0);
+        void Start(IPoint ipoint_0);
 
-		double Stop();
-	}
+        double Stop();
+    }
 }

@@ -26,7 +26,8 @@ namespace Yutai.ArcGIS.Framework
                     bar = base.barManager1.Bars[str];
                     if (bar == null)
                     {
-                        bar = new Bar {
+                        bar = new Bar
+                        {
                             BarName = base.barManager1.GetNewBarName(),
                             DockCol = 0,
                             DockRow = base.barManager1.Bars.Count,
@@ -190,4 +191,3 @@ namespace Yutai.ArcGIS.Framework
         }
     }
 }
-

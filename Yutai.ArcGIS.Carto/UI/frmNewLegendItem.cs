@@ -54,7 +54,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void frmNewLegendItem_Load(object sender, EventArgs e)
+        private void frmNewLegendItem_Load(object sender, EventArgs e)
         {
             this.bool_0 = true;
             if (this.rdoPointSymbol.Checked)
@@ -71,7 +71,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void rdoFillSymbol_CheckedChanged(object sender, EventArgs e)
+        private void rdoFillSymbol_CheckedChanged(object sender, EventArgs e)
         {
             if (this.bool_0)
             {
@@ -102,23 +102,13 @@ namespace Yutai.ArcGIS.Carto.UI
 
         internal YTLegendItem YTLegendItem
         {
-            get
-            {
-                return this.jlklenendItem_0;
-            }
-            set
-            {
-                this.jlklenendItem_0 = value;
-            }
+            get { return this.jlklenendItem_0; }
+            set { this.jlklenendItem_0 = value; }
         }
 
         public IStyleGallery StyleGallery
         {
-            set
-            {
-                this.istyleGallery_0 = value;
-            }
+            set { this.istyleGallery_0 = value; }
         }
     }
 }
-

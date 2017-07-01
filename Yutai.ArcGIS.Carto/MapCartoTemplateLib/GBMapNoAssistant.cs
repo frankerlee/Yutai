@@ -8,7 +8,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         {
         }
 
-        public override bool GetBLInfo(out double double_0, out double double_1, out double double_2, out double double_3)
+        public override bool GetBLInfo(out double double_0, out double double_1, out double double_2,
+            out double double_3)
         {
             double num;
             double num2;
@@ -41,8 +42,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
             long num9 = num3;
             long num10 = num4;
-            double_1 = ((num8 - 1.0) * 6.0) + ((num10 - 1.0) * num2);
-            double_0 = ((num7 - 1.0) * 4.0) + (((4.0 / num) - num9) * num);
+            double_1 = ((num8 - 1.0)*6.0) + ((num10 - 1.0)*num2);
+            double_0 = ((num7 - 1.0)*4.0) + (((4.0/num) - num9)*num);
             double_3 = num2;
             double_2 = num;
             return true;
@@ -213,4 +214,3 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         }
     }
 }
-

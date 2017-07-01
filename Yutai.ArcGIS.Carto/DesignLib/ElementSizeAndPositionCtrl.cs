@@ -32,7 +32,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         {
         }
 
- private void ElementSizeAndPositionCtrl_Load(object sender, EventArgs e)
+        private void ElementSizeAndPositionCtrl_Load(object sender, EventArgs e)
         {
             IEnvelope outEnvelope = new EnvelopeClass();
             this.ielement_0.Geometry.QueryEnvelope(outEnvelope);
@@ -52,7 +52,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             this.txtHeight.Text = outEnvelope.Height.ToString("0.###");
         }
 
- private void method_0()
+        private void method_0()
         {
         }
 
@@ -122,39 +122,23 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_0;
-            }
+            get { return this.bool_0; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

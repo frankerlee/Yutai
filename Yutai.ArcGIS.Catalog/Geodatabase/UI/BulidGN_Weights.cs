@@ -71,7 +71,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             if (this.listView1.SelectedItems.Count > 0)
             {
-                BulidGeometryNetworkHelper.Weight tag = this.listView1.SelectedItems[0].Tag as BulidGeometryNetworkHelper.Weight;
+                BulidGeometryNetworkHelper.Weight tag =
+                    this.listView1.SelectedItems[0].Tag as BulidGeometryNetworkHelper.Weight;
                 if (tag != null)
                 {
                     BulidGeometryNetworkHelper.BulidGNHelper.Weights.Remove(tag);
@@ -175,7 +176,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void listView1_DoubleClick(object sender, EventArgs e)
+        private void listView1_DoubleClick(object sender, EventArgs e)
         {
             if (this.listView1.SelectedItems.Count == 1)
             {
@@ -295,7 +296,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         flag = true;
                         for (num = 0; num < BulidGeometryNetworkHelper.BulidGNHelper.Weights.Count; num++)
                         {
-                            weight2 = BulidGeometryNetworkHelper.BulidGNHelper.Weights[num] as BulidGeometryNetworkHelper.Weight;
+                            weight2 =
+                                BulidGeometryNetworkHelper.BulidGNHelper.Weights[num] as
+                                    BulidGeometryNetworkHelper.Weight;
                             if ((tag != weight2) && (weight2.networkWeightName == tag.networkWeightName))
                             {
                                 flag = false;
@@ -317,14 +320,17 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     }
                     else
                     {
-                        tag = new BulidGeometryNetworkHelper.Weight {
+                        tag = new BulidGeometryNetworkHelper.Weight
+                        {
                             networkWeightName = this.textBox_0.Text,
                             weightType = esriWeightType.esriWTNull
                         };
                         flag = true;
                         for (num = 0; num < BulidGeometryNetworkHelper.BulidGNHelper.Weights.Count; num++)
                         {
-                            weight2 = BulidGeometryNetworkHelper.BulidGNHelper.Weights[num] as BulidGeometryNetworkHelper.Weight;
+                            weight2 =
+                                BulidGeometryNetworkHelper.BulidGNHelper.Weights[num] as
+                                    BulidGeometryNetworkHelper.Weight;
                             if (weight2.networkWeightName == tag.networkWeightName)
                             {
                                 flag = false;
@@ -352,4 +358,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

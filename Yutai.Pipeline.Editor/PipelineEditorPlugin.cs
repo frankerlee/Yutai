@@ -1,5 +1,4 @@
 ﻿using System;
-
 using Yutai.Pipeline.Config.Concretes;
 using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Pipeline.Editor.Menu;
@@ -20,7 +19,7 @@ namespace Yutai.Pipeline.Editor
         private IPipelineConfig _config;
         //private DockPanelService _dockPanelService;
 
-       // public event EventHandler<QueryResultArgs> QueryResultChanged;
+        // public event EventHandler<QueryResultArgs> QueryResultChanged;
 
         protected override void RegisterServices(IApplicationContainer container)
         {
@@ -35,7 +34,9 @@ namespace Yutai.Pipeline.Editor
             //_dockPanelService = context.Container.GetInstance<DockPanelService>();
             if (string.IsNullOrEmpty(_config.XmlFile))
             {
-                string fileName = ((ISecureContext)_context).YutaiProject.FindPlugin("95ab64f9-65ca-400f-8f68-c18cadff1421").ConfigXML;
+                string fileName =
+                    ((ISecureContext) _context).YutaiProject.FindPlugin("95ab64f9-65ca-400f-8f68-c18cadff1421")
+                        .ConfigXML;
                 if (string.IsNullOrEmpty(fileName)) return;
                 fileName = FileHelper.GetFullPath(fileName);
                 _config.LoadFromXml(fileName);
@@ -57,6 +58,7 @@ namespace Yutai.Pipeline.Editor
         {
             get { return _config; }
         }
+
         //public void FireQueryResultChanged(QueryResultArgs e)
         //{
         //    FireEvent(QueryResultChanged, e);

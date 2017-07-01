@@ -12,7 +12,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         private bool bool_0 = false;
         private Container container_0 = null;
         private IList ilist_0 = null;
-        [CompilerGenerated]
+
         private string string_0 = "";
         private string string_1 = "";
 
@@ -254,7 +254,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             this.memEditWhereCaluse.Text = "";
         }
 
- private void Fieldlist_DoubleClick(object sender, EventArgs e)
+        private void Fieldlist_DoubleClick(object sender, EventArgs e)
         {
             string str = "";
             if (this.Fieldlist.SelectedItem != null)
@@ -285,7 +285,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             this.bool_0 = true;
         }
 
- private void method_0(object sender, EventArgs e)
+        private void method_0(object sender, EventArgs e)
         {
             string str = "LIKE";
             string text = this.memEditWhereCaluse.Text;
@@ -332,10 +332,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public string Expression
         {
-            get
-            {
-                return ("=" + this.memEditWhereCaluse.Text);
-            }
+            get { return ("=" + this.memEditWhereCaluse.Text); }
             set
             {
                 if (value.Length > 0)
@@ -358,25 +355,9 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public IList FieldList
         {
-            set
-            {
-                this.ilist_0 = value;
-            }
+            set { this.ilist_0 = value; }
         }
 
-        public MapCartoTemplateLib.MapTemplate MapTemplate
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.mapTemplate_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.mapTemplate_0 = value;
-            }
-        }
+        public MapCartoTemplateLib.MapTemplate MapTemplate { get; set; }
     }
 }
-

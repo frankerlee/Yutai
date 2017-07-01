@@ -10,12 +10,11 @@ namespace Yutai.Pipeline.Analysis.Commands
 {
     class CmdCloseValveAnalysis : YutaiTool
     {
-
         private frmBurstReport frmBurst;
         private PipelineAnalysisPlugin _plugin;
         private IPipelineConfig _config;
 
-        public CmdCloseValveAnalysis(IAppContext context,PipelineAnalysisPlugin plugin)
+        public CmdCloseValveAnalysis(IAppContext context, PipelineAnalysisPlugin plugin)
         {
             OnCreate(context);
             _plugin = plugin;
@@ -23,7 +22,6 @@ namespace Yutai.Pipeline.Analysis.Commands
 
         public override void OnClick()
         {
-
             _context.SetCurrentTool(this);
 
             if (this.frmBurst == null || this.frmBurst.IsDisposed)
@@ -64,9 +62,7 @@ namespace Yutai.Pipeline.Analysis.Commands
 
         public override void OnDblClick()
         {
-
         }
-
 
 
         public override void OnMouseDown(int button, int Shift, int x, int y)
@@ -83,9 +79,5 @@ namespace Yutai.Pipeline.Analysis.Commands
                 this.frmBurst.SetMousePoint(x, y);
             }
         }
-
-      
-
-
     }
 }

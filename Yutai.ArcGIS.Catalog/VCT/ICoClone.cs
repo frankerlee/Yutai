@@ -5,4 +5,3 @@
         object Clone();
     }
 }
-

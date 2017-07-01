@@ -89,7 +89,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     IPropertyPage page5;
                     if (item is IScaleBar)
                     {
-                        property = new frmElementProperty {
+                        property = new frmElementProperty
+                        {
                             Text = "比例尺"
                         };
                         page5 = new ScaleBarFormatPropertyPage();
@@ -107,7 +108,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     }
                     else if (item is IScaleText)
                     {
-                        property = new frmElementProperty {
+                        property = new frmElementProperty
+                        {
                             Text = "比例尺文本"
                         };
                         page5 = new ScaleTextTextPropertyPage();
@@ -123,7 +125,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     }
                     else if (item is ILegendItem)
                     {
-                        property = new frmElementProperty {
+                        property = new frmElementProperty
+                        {
                             Text = "图例项"
                         };
                         page5 = new LegendItemArrangementPropertyPage();
@@ -147,7 +150,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 {
                     case enumSymbolType.enumSTPoint:
                     {
-                        frmPointSymbolEdit edit = new frmPointSymbolEdit {
+                        frmPointSymbolEdit edit = new frmPointSymbolEdit
+                        {
                             m_pSG = this.m_pSG
                         };
                         edit.SetSymbol(pSym);
@@ -157,7 +161,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     }
                     case enumSymbolType.enumSTLine:
                     {
-                        frmLineSymbolEdit edit2 = new frmLineSymbolEdit {
+                        frmLineSymbolEdit edit2 = new frmLineSymbolEdit
+                        {
                             m_pSG = this.m_pSG
                         };
                         edit2.SetSymbol(pSym);
@@ -167,7 +172,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     }
                     case enumSymbolType.enumSTFill:
                     {
-                        frmFillSymbolEdit edit3 = new frmFillSymbolEdit {
+                        frmFillSymbolEdit edit3 = new frmFillSymbolEdit
+                        {
                             m_pSG = this.m_pSG
                         };
                         edit3.SetSymbol(pSym);
@@ -177,7 +183,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     }
                     case enumSymbolType.enumSTText:
                     {
-                        frmTextSymbolEdit edit4 = new frmTextSymbolEdit {
+                        frmTextSymbolEdit edit4 = new frmTextSymbolEdit
+                        {
                             m_pSG = this.m_pSG
                         };
                         edit4.SetSymbol(pSym);
@@ -197,7 +204,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- private void frmSymbolProperty_Load(object sender, EventArgs e)
+        private void frmSymbolProperty_Load(object sender, EventArgs e)
         {
             if (this.m_pStyleGalleryItem != null)
             {
@@ -342,7 +349,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- private void tnOK_Click(object sender, EventArgs e)
+        private void tnOK_Click(object sender, EventArgs e)
         {
             this.m_pSG = null;
             this.m_pStyleGalleryItem.Name = this.txtName.Text;
@@ -352,35 +359,19 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         public IStyleGallery StyleGallery
         {
-            set
-            {
-                this.m_pSG = value;
-            }
+            set { this.m_pSG = value; }
         }
 
         public IStyleGalleryItem StyleGalleryItem
         {
-            get
-            {
-                return this.m_pStyleGalleryItem;
-            }
-            set
-            {
-                this.m_pStyleGalleryItem = value;
-            }
+            get { return this.m_pStyleGalleryItem; }
+            set { this.m_pStyleGalleryItem = value; }
         }
 
         public enumSymbolType SymbolType
         {
-            get
-            {
-                return this.m_SymbolType;
-            }
-            set
-            {
-                this.m_SymbolType = value;
-            }
+            get { return this.m_SymbolType; }
+            set { this.m_SymbolType = value; }
         }
     }
 }
-

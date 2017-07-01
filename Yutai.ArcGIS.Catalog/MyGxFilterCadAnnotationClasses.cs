@@ -13,7 +13,8 @@ namespace Yutai.ArcGIS.Catalog
                 return true;
             }
             IName internalObjectName = igxObject_0.InternalObjectName;
-            if ((internalObjectName is IFeatureClassName) && ((internalObjectName as IFeatureClassName).FeatureType == esriFeatureType.esriFTCoverageAnnotation))
+            if ((internalObjectName is IFeatureClassName) &&
+                ((internalObjectName as IFeatureClassName).FeatureType == esriFeatureType.esriFTCoverageAnnotation))
             {
                 myDoubleClickResult_0 = MyDoubleClickResult.myDCRChooseAndDismiss;
                 return true;
@@ -48,19 +49,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public string Description
         {
-            get
-            {
-                return "CAD注记类";
-            }
+            get { return "CAD注记类"; }
         }
 
         public string Name
         {
-            get
-            {
-                return "GxFilterCadAnnotationClasses";
-            }
+            get { return "GxFilterCadAnnotationClasses"; }
         }
     }
 }
-

@@ -36,7 +36,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             }
         }
 
- private void frmViewerOrMagnifierPropertyPage_Load(object sender, EventArgs e)
+        private void frmViewerOrMagnifierPropertyPage_Load(object sender, EventArgs e)
         {
             if (this.m_proprty.m_Formtype == FormType.Magnifier)
             {
@@ -68,7 +68,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             }
         }
 
- private void rdoMagnifier_CheckedChanged(object sender, EventArgs e)
+        private void rdoMagnifier_CheckedChanged(object sender, EventArgs e)
         {
             if (this.rdoMagnifier.Checked)
             {
@@ -94,11 +94,7 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         internal MagnifierOrViewerProperty Property
         {
-            set
-            {
-                this.m_proprty = value;
-            }
+            set { this.m_proprty = value; }
         }
     }
 }
-

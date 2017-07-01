@@ -33,7 +33,7 @@ namespace Yutai.Plugins.Locator.Views
         private bool _zoomShape = false;
         private List<XmlLocator> _locators;
 
-        
+
         public LocatorDockPanel(IAppContext context)
         {
             if (context == null) throw new ArgumentNullException("context");
@@ -41,16 +41,15 @@ namespace Yutai.Plugins.Locator.Views
             InitializeComponent();
             TabPosition = 4;
             btnZoom.Tag = 0;
-            btnZoom.Click += (s, e) => {_zoomShape= btnZoom.Checked ; };
+            btnZoom.Click += (s, e) => { _zoomShape = btnZoom.Checked; };
             cmbLocators.SelectedIndexChanged += cmbLocators_SelectedIndexChanged;
-           // btnSearch.Click += BtnSearch_Click;
+            // btnSearch.Click += BtnSearch_Click;
             InitLocatorTables();
             _map = _context.MapControl.ActiveView as IMap;
             cardView1.OptionsBehavior.AutoHorzWidth = true;
-
         }
 
-        
+
         private void BtnSearch_Click(object sender, EventArgs e)
         {
             TrySearch(true);
@@ -60,7 +59,7 @@ namespace Yutai.Plugins.Locator.Views
         {
             if (cmbLocators.SelectedIndex < 0)
             {
-               // btnSearch.Enabled = false;
+                // btnSearch.Enabled = false;
                 return;
             }
             //btnSearch.Enabled = true;
@@ -80,7 +79,7 @@ namespace Yutai.Plugins.Locator.Views
             ILayer pLayer = LayerHelper.QueryLayerByDisplayName(_map, locator.Layer);
             if (pLayer == null)
             {
-                MessageService.Current.Warn("找不到定位所需的图层"+locator.Layer);
+                MessageService.Current.Warn("找不到定位所需的图层" + locator.Layer);
                 return;
             }
             if (pLayer is IGroupLayer && pLayer is ICompositeLayer)
@@ -89,21 +88,21 @@ namespace Yutai.Plugins.Locator.Views
                 for (int i = 0; i < pGroupLayer.Count; i++)
                 {
                     ILayer pSubLayer = pGroupLayer.Layer[i];
-                    SearchLayer(pSubLayer, locator,searchKey);
+                    SearchLayer(pSubLayer, locator, searchKey);
                 }
             }
             else if (pLayer is IFeatureLayer)
             {
                 SearchLayer(pLayer, locator, searchKey);
             }
-          
+
             this.grdResult.Update();
         }
 
-        private void SearchLayer(ILayer pSubLayer, XmlLocator locator,string searchKey)
+        private void SearchLayer(ILayer pSubLayer, XmlLocator locator, string searchKey)
         {
             if (_searchCount > _context.Config.LocatorMaxCount) return;
-            IQueryFilter queryFilter=new QueryFilter();
+            IQueryFilter queryFilter = new QueryFilter();
             IFeatureClass pClass = ((IFeatureLayer) pSubLayer).FeatureClass;
             string likeStr = WorkspaceHelper.GetSpecialCharacter(pClass as IDataset,
                 esriSQLSpecialCharacters.esriSQL_WildcardManyMatch);
@@ -114,12 +113,12 @@ namespace Yutai.Plugins.Locator.Views
             IFeatureCursor cursor = pClass.Search(queryFilter, false);
             IFeature pFeature = cursor.NextFeature();
             int nameIdx = GetFieldIdx(cursor, locator.NameField);
-            int addIdx= GetFieldIdx(cursor, locator.AddressField);
+            int addIdx = GetFieldIdx(cursor, locator.AddressField);
             int descIdx = GetFieldIdx(cursor, locator.DescriptionField);
             int telIdx = GetFieldIdx(cursor, locator.TelephoneField);
             int emailIdx = GetFieldIdx(cursor, locator.EmailField);
             int phoIdx = GetFieldIdx(cursor, locator.PhotoField);
-           
+
             while (pFeature != null)
             {
                 IGeometry pGeometry = pFeature.Shape;
@@ -155,7 +154,7 @@ namespace Yutai.Plugins.Locator.Views
         }
 
 
-        private string BuildWhereClause(string locatorSearchFields, string searchKey,string likeStr)
+        private string BuildWhereClause(string locatorSearchFields, string searchKey, string likeStr)
         {
             string[] fields = locatorSearchFields.Split(',');
             string whereClause = "";
@@ -164,17 +163,16 @@ namespace Yutai.Plugins.Locator.Views
                 if (i == 0)
                     whereClause = string.Format("{0} Like '{1}{2}{1}' ", fields[i], likeStr, searchKey);
                 else
-                    whereClause+= string.Format(" OR {0} Like '{1}{2}{1}' ", fields[i], likeStr, searchKey);
+                    whereClause += string.Format(" OR {0} Like '{1}{2}{1}' ", fields[i], likeStr, searchKey);
             }
             return whereClause;
         }
 
         private XmlLocator FindLocatorByName(string toString)
         {
-      
             if (_locators == null) return null;
 
-            
+
             foreach (XmlLocator locator in _locators)
             {
                 if (locator.Name == toString)
@@ -203,15 +201,13 @@ namespace Yutai.Plugins.Locator.Views
 
         private void InitGridSettings()
         {
-          
         }
 
-      
 
         private void InitLocatorTables()
         {
-            _dataTable=new DataTable("定位结果");
-            DataColumn column=new DataColumn("图层",typeof(string));
+            _dataTable = new DataTable("定位结果");
+            DataColumn column = new DataColumn("图层", typeof(string));
             _dataTable.Columns.Add(column);
             column = new DataColumn("序号", typeof(int));
             _dataTable.Columns.Add(column);
@@ -236,23 +232,20 @@ namespace Yutai.Plugins.Locator.Views
             column = new DataColumn("照片", typeof(object));
             column.AllowDBNull = true;
             _dataTable.Columns.Add(column);
-           
+
             this.grdResult.DataSource = _dataTable;
             InitGridSettings();
-            
         }
 
         public IEnumerable<Control> Buttons
         {
-            get { 
+            get
+            {
                 yield return btnClear;
                 yield return btnSearch;
-                
             }
-            
         }
 
-        
 
         /// <summary>
         /// Gets the ok button.
@@ -281,12 +274,12 @@ namespace Yutai.Plugins.Locator.Views
         {
             this.cmbLocators.Items.Clear();
             ISecureContext secureContext = _context as ISecureContext;
-            if(secureContext.YutaiProject==null) return;
+            if (secureContext.YutaiProject == null) return;
             XmlPlugin plugCfg = secureContext.YutaiProject.FindPlugin("2b81c89a-ee45-4276-9dc1-72bbbf07f53f");
             if (plugCfg == null) return;
             //修改为从配置文件里面读取
             string locatorXml = FileHelper.GetFullPath(plugCfg.ConfigXML);
-            FileInfo fileInfo=new FileInfo(locatorXml);
+            FileInfo fileInfo = new FileInfo(locatorXml);
             if (!fileInfo.Exists) return;
             using (var reader = new StreamReader(locatorXml))
             {
@@ -299,23 +292,38 @@ namespace Yutai.Plugins.Locator.Views
                 }
                 _map = _context.MapControl.ActiveView as IMap;
             }
-
-
-
-           
-           
         }
-        
-        public override Bitmap Image { get { return Properties.Resources.icon_locator_small; } }
-        public override string Caption {
+
+        public override Bitmap Image
+        {
+            get { return Properties.Resources.icon_locator_small; }
+        }
+
+        public override string Caption
+        {
             get { return "位置查看器"; }
-            set { Caption = value; } }
-        public override DockPanelState DefaultDock { get {return DockPanelState.Right;} }
-        public override string DockName { get { return DefaultDockName; } }
-        public virtual string DefaultNestDockName { get { return ""; } }
+            set { Caption = value; }
+        }
+
+        public override DockPanelState DefaultDock
+        {
+            get { return DockPanelState.Right; }
+        }
+
+        public override string DockName
+        {
+            get { return DefaultDockName; }
+        }
+
+        public virtual string DefaultNestDockName
+        {
+            get { return ""; }
+        }
+
         public const string DefaultDockName = "Plug_Locatoe_Result";
 
-        private void cardView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        private void cardView1_FocusedRowChanged(object sender,
+            DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             DataRow row = cardView1.GetDataRow(e.FocusedRowHandle);
             if (row["要素"] == null) return;

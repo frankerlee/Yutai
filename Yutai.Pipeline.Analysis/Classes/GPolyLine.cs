@@ -5,8 +5,8 @@
         public GPoints GetInterPtsToPolyLine(GPolyLine plObj)
         {
             GPoints gPoints = new GPoints();
-            long num = (long)this.m_vtPoints.Count;
-            long num2 = (long)plObj.Size();
+            long num = (long) this.m_vtPoints.Count;
+            long num2 = (long) plObj.Size();
             GPoints result;
             if (num < 2L || num2 < 2L)
             {
@@ -17,12 +17,12 @@
                 CLinesect cLinesect = new CLinesect();
                 CLinesect cLinesect2 = new CLinesect();
                 int num3 = 1;
-                while ((long)num3 < num)
+                while ((long) num3 < num)
                 {
-                    cLinesect.SetFirstPoint((GPoint)this.m_vtPoints[num3 - 1]);
-                    cLinesect.SetSecondPoint((GPoint)this.m_vtPoints[num3]);
+                    cLinesect.SetFirstPoint((GPoint) this.m_vtPoints[num3 - 1]);
+                    cLinesect.SetSecondPoint((GPoint) this.m_vtPoints[num3]);
                     int num4 = 1;
-                    while ((long)num4 < num2)
+                    while ((long) num4 < num2)
                     {
                         cLinesect2.SetFirstPoint(plObj[num4 - 1]);
                         cLinesect2.SetSecondPoint(plObj[num4]);
@@ -49,8 +49,8 @@
         public GPoints GetInterPtsToPolyLineWithHeight(GPolyLine plObj)
         {
             GPoints gPoints = new GPoints();
-            long num = (long)this.m_vtPoints.Count;
-            long num2 = (long)plObj.Size();
+            long num = (long) this.m_vtPoints.Count;
+            long num2 = (long) plObj.Size();
             GPoints result;
             if (num < 2L || num2 < 2L)
             {
@@ -61,12 +61,12 @@
                 CLinesect cLinesect = new CLinesect();
                 CLinesect cLinesect2 = new CLinesect();
                 int num3 = 1;
-                while ((long)num3 < num)
+                while ((long) num3 < num)
                 {
-                    cLinesect.SetFirstPoint((GPoint)this.m_vtPoints[num3 - 1]);
-                    cLinesect.SetSecondPoint((GPoint)this.m_vtPoints[num3]);
+                    cLinesect.SetFirstPoint((GPoint) this.m_vtPoints[num3 - 1]);
+                    cLinesect.SetSecondPoint((GPoint) this.m_vtPoints[num3]);
                     int num4 = 1;
-                    while ((long)num4 < num2)
+                    while ((long) num4 < num2)
                     {
                         cLinesect2.SetFirstPoint(plObj[num4 - 1]);
                         cLinesect2.SetSecondPoint(plObj[num4]);
@@ -93,8 +93,8 @@
         public GPoints GetInterPtsToPolyLineWithHeightForTransect(GPolyLine plObj)
         {
             GPoints gPoints = new GPoints();
-            long num = (long)this.m_vtPoints.Count;
-            long num2 = (long)plObj.Size();
+            long num = (long) this.m_vtPoints.Count;
+            long num2 = (long) plObj.Size();
             GPoints result;
             if (num < 2L || num2 < 2L)
             {
@@ -105,12 +105,12 @@
                 CLinesect cLinesect = new CLinesect();
                 CLinesect cLinesect2 = new CLinesect();
                 int num3 = 1;
-                while ((long)num3 < num)
+                while ((long) num3 < num)
                 {
-                    cLinesect.SetFirstPoint((GPoint)this.m_vtPoints[num3 - 1]);
-                    cLinesect.SetSecondPoint((GPoint)this.m_vtPoints[num3]);
+                    cLinesect.SetFirstPoint((GPoint) this.m_vtPoints[num3 - 1]);
+                    cLinesect.SetSecondPoint((GPoint) this.m_vtPoints[num3]);
                     int num4 = 1;
-                    while ((long)num4 < num2)
+                    while ((long) num4 < num2)
                     {
                         cLinesect2.SetFirstPoint(plObj[num4 - 1]);
                         cLinesect2.SetSecondPoint(plObj[num4]);
@@ -141,7 +141,7 @@
             gPolyLine.Clear();
             for (int i = 0; i < count; i++)
             {
-                GPoint deepCopy = ((GPoint)this.m_vtPoints[i]).GetDeepCopy();
+                GPoint deepCopy = ((GPoint) this.m_vtPoints[i]).GetDeepCopy();
                 gPolyLine.m_vtPoints.Add(deepCopy);
             }
             return gPolyLine;

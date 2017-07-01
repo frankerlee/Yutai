@@ -1,4 +1,4 @@
 namespace Yutai.ArcGIS.Common.Carto
 {
-	public delegate void OnElementSelectChangeHandler();
+    public delegate void OnElementSelectChangeHandler();
 }

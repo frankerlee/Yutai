@@ -38,25 +38,17 @@ namespace Yutai
 {
     public class AppContext : ISecureContext, IYTHookHelper, IAppContextEvents
     {
-        private readonly IApplicationContainer _container;
         private readonly IStyleService _styleService;
         private IConfigService _configService;
         private IProjectService _project;
         private IToolbarCollection _toolbars;
-        private IMainView _mainView;
         private IPageLayoutControl2 _pageLayoutControl2 = null;
-        private AxMapControl _axMapControl;
 
         private MapLegendPresenter _mapLegendPresenter;
         private OverviewPresenter _overviewPresenter;
-        private XmlProject _yutaiProject;
-        private IGeometry _bufferGeometry;
         private string _currentToolName;
-        private bool _isInEdit;
-        private bool _canEdited;
         private string _oldToolName;
         private object _hook;
-        private IOperationStack m_pOperationStack;
         private IStyleGallery m_pStyleGallery;
         private ToolTip _toolTip;
 
@@ -70,59 +62,42 @@ namespace Yutai
 
         public object GxSelection
         {
-            get
-            {
-                return _gxSelection as object;
-            }
+            get { return _gxSelection as object; }
             set
             {
                 if (_gxSelection is IGxSelectionEvents)
-                {
-                    (_gxSelection as IGxSelectionEvents).OnSelectionChanged -= new OnSelectionChangedEventHandler(this.GxSelection_Changed);
-                }
+                    (_gxSelection as IGxSelectionEvents).OnSelectionChanged -=
+                        new OnSelectionChangedEventHandler(GxSelection_Changed);
                 _gxSelection = value as IGxSelection;
                 if (_gxSelection is IGxSelectionEvents)
-                {
-                    (_gxSelection as IGxSelectionEvents).OnSelectionChanged += new OnSelectionChangedEventHandler(this.GxSelection_Changed);
-                }
+                    (_gxSelection as IGxSelectionEvents).OnSelectionChanged +=
+                        new OnSelectionChangedEventHandler(GxSelection_Changed);
             }
         }
 
         public object GxCatalog
         {
-            get
-            {
-                return _gxCatalog;
-            }
+            get { return _gxCatalog; }
             set
             {
-                this._gxCatalog = value as IGxCatalog;
-                this.GxSelection = this._gxCatalog.Selection;
+                _gxCatalog = value as IGxCatalog;
+                GxSelection = _gxCatalog.Selection;
             }
         }
 
         public object GxObject
         {
-            get
-            {
-                return _gxObject;
-            }
-            set
-            {
-                _gxObject = value as IGxObject;
-            }
+            get { return _gxObject; }
+            set { _gxObject = value as IGxObject; }
         }
 
-      
+
         public AppConfig Config
         {
             get { return _configService.Config; }
         }
 
-        public IApplicationContainer Container
-        {
-            get { return _container; }
-        }
+        public IApplicationContainer Container { get; }
 
         public IRibbonMenu RibbonMenu { get; private set; }
         public IDockPanelCollection DockPanels { get; private set; }
@@ -138,7 +113,7 @@ namespace Yutai
 
         public IMapControl2 MapControl
         {
-            get { return _mainView.MapControl; }
+            get { return MainView.MapControl; }
         }
 
         public ITOCControl2 SceneLegend { get; private set; }
@@ -153,62 +128,31 @@ namespace Yutai
 
         public IAppView View { get; private set; }
 
-        public IMainView MainView
-        {
-            get { return _mainView; }
-        }
+        public IMainView MainView { get; private set; }
 
-       
+
         public bool Initialized { get; private set; }
 
-      
 
         public string CurrentToolName { get; internal set; }
 
 
-        public IGeometry BufferGeometry
-        {
-            get { return _bufferGeometry; }
-            set { _bufferGeometry = value; }
-        }
+        public IGeometry BufferGeometry { get; set; }
 
         IStyleGallery IAppContext.StyleGallery { get; set; }
         public PyramidPromptType PyramidPromptType { get; set; }
 
-        public bool IsInEdit
-        {
-            get { return _isInEdit; }
-            set { _isInEdit = value; }
-        }
+        public bool IsInEdit { get; set; }
 
-        public bool CanEdited
-        {
-            get { return _canEdited; }
-            set { _canEdited = value; }
-        }
+        public bool CanEdited { get; set; }
 
 
         public IPluginManager PluginManager { get; private set; }
 
-       
 
-        public XmlProject YutaiProject
-        {
-            get { return _yutaiProject; }
-            set { _yutaiProject = value; }
-        }
+        public XmlProject YutaiProject { get; set; }
 
-        public AxMapControl MapControlContainer
-        {
-            get { return _axMapControl; }
-            set
-            {
-                _axMapControl = value;
-            }
-        }
-
-
-
+        public AxMapControl MapControlContainer { get; set; }
 
 
         public ILayer CurrentLayer { get; set; }
@@ -218,30 +162,39 @@ namespace Yutai
             get { return Config.Tolerance; }
             set { Config.Tolerance = value; }
         }
-        public IEngineSnapEnvironment SnapEnvironment { get { return Config.EngineSnapEnvironment; } }
+
+        public IEngineSnapEnvironment SnapEnvironment
+        {
+            get { return Config.EngineSnapEnvironment; }
+        }
+
         public IStyleGallery StyleGallery { get; }
         public string MapDocName { get; set; }
-        public double SnapTolerance { get { return Config.SnapTolerance; } set { Config.SnapTolerance = value; } }
+
+        public double SnapTolerance
+        {
+            get { return Config.SnapTolerance; }
+            set { Config.SnapTolerance = value; }
+        }
+
         public IMapDocument MapDocument { get; set; }
+
         public YutaiTool CurrentTool
         {
             get { return _currentTool; }
             set
             {
-                SetCurrentTool((YutaiTool)value);
-                _currentTool = (YutaiTool)value;
-
+                SetCurrentTool((YutaiTool) value);
+                _currentTool = (YutaiTool) value;
             }
         }
-
-       
 
 
         public object Hook
         {
             get
             {
-                if (_hook == null) return this.MapControl.Map;
+                if (_hook == null) return FocusMap;
                 return _hook;
             }
             set { _hook = value; }
@@ -249,7 +202,7 @@ namespace Yutai
 
         public IActiveView ActiveView
         {
-            get { return _mainView.ActiveView; }
+            get { return MainView.ActiveView; }
         }
 
         public IPageLayout PageLayout
@@ -262,9 +215,12 @@ namespace Yutai
         }
 
 
+        public IMap FocusMap
+        {
+            get { return MainView.FocusMap; }
+        }
 
-        public IMap FocusMap { get { return _mainView.FocusMap; } }
-        public IOperationStack OperationStack { get { return m_pOperationStack; } }
+        public IOperationStack OperationStack { get; private set; }
 
         public Control GetDockPanelObject(string dockName)
         {
@@ -275,27 +231,24 @@ namespace Yutai
                 return _overviewPresenter.OverviewControl as Control;
             else
                 throw new ArgumentOutOfRangeException("panel");
-
         }
+
         private void GxSelection_Changed(IGxSelection igxSelection, object gobject)
         {
-            if (this._gxSelection == igxSelection)
-            {
-                this._gxObject = igxSelection.FirstObject;
-            }
+            if (_gxSelection == igxSelection)
+                _gxObject = igxSelection.FirstObject;
         }
-
 
 
         public AppContext(
-    IApplicationContainer container,
-    IStyleService styleService
-)
+            IApplicationContainer container,
+            IStyleService styleService
+        )
         {
             Logger.Current.Trace("In AppContext");
             if (container == null) throw new ArgumentNullException("container");
             if (styleService == null) throw new ArgumentNullException("styleService");
-            _container = container;
+            Container = container;
             _styleService = styleService;
         }
 
@@ -321,22 +274,25 @@ namespace Yutai
             _mapLegendPresenter = mapLegendPresenter;
             var legend = _mapLegendPresenter.LegendControl;
             legend.LegendControl.SetBuddyControl(mainView.MapControl);
-            _overviewPresenter = overviewPresenter;
 
 
             // it's expected here that we are on the UI thread
             SynchronizationContext = SynchronizationContext.Current;
 
-            PluginManager = _container.GetSingleton<IPluginManager>();
-            Broadcaster = _container.GetSingleton<IBroadcasterService>();
-            _container.RegisterInstance<IMapControl2>(mainView.MapControl);
+            PluginManager = Container.GetSingleton<IPluginManager>();
+            Broadcaster = Container.GetSingleton<IBroadcasterService>();
+            Container.RegisterInstance<IMapControl2>(mainView.MapControl);
 
-            _mainView = mainView;
+            MainView = mainView;
             View = new AppView(mainView, _styleService);
             _project = project;
             _configService = configService;
+            MainView.AddFrameworkControl(legend.LegendControl.Object);
 
+            _overviewPresenter = overviewPresenter;
             _overviewPresenter.SetBuddyControl(mainView.MapControl);
+            MainView.AddFrameworkControl(_overviewPresenter.OverviewControl);
+
             //  _map = mainView.Map;
             //  
             //   Repository = repository;
@@ -346,7 +302,8 @@ namespace Yutai
             DockPanels = new DockPanelCollection(mainView.DockingManager, mainView as Form, Broadcaster, _styleService);
 
             //Menu到最后丢弃不用，Menu部分全部采用Ribbon
-            RibbonMenu = RibbonFactory.InitMenus((RibbonControl)mainView.RibbonManager, mainView.RibbonStatusBar as RibbonStatusBar);
+            RibbonMenu = RibbonFactory.InitMenus((RibbonControl) mainView.RibbonManager,
+                mainView.RibbonStatusBar as RibbonStatusBar);
 
             // Menu = MenuFactory.CreateMainMenu(mainView.RibbonManager,true);
             // Toolbars = MenuFactory.CreateMainToolbars(mainView.MenuManager);
@@ -365,7 +322,7 @@ namespace Yutai
 
             //YTHookHelper设置
 
-            m_pOperationStack = new OperationStackClass();
+            OperationStack = new OperationStackClass();
             m_pStyleGallery = null;
 
             //Catalog配置
@@ -381,20 +338,17 @@ namespace Yutai
 
             //为了减少修改，给ApplicationRef赋值
             ApplicationRef.AppContext = this;
-
         }
 
         internal void InitPlugins(IConfigService configService)
         {
             var pluginManager = PluginManager;
             pluginManager.PluginUnloaded += ManagerPluginUnloaded;
-            pluginManager.AssemblePlugins();
+            pluginManager.AssemblePlugins((ISplashView) SplashView.Instance);
 
             var guids = configService.Config.ApplicationPlugins;
             if (guids != null)
-            {
                 PluginManager.RestoreApplicationPlugins(guids, this);
-            }
         }
 
         private void ManagerPluginUnloaded(object sender, PluginEventArgs e)
@@ -405,6 +359,7 @@ namespace Yutai
             //Toolbox.RemoveItemsForPlugin(e.Identity);
             //StatusBar.RemoveItemsForPlugin(e.Identity);
         }
+
         public void RefreshContextMenu()
         {
             RibbonMenu.RefreshContextMenu();
@@ -412,22 +367,20 @@ namespace Yutai
 
         public void ClearCurrentTool()
         {
-            _mainView.MapControl.CurrentTool = null;
+            MainView.MapControl.CurrentTool = null;
         }
 
         public bool SetCurrentTool(YutaiTool tool)
         {
             if (tool.ItemType == RibbonItemType.Tool)
             {
-                ITool oldTool = _mainView.CurrentTool;
-                _oldToolName = oldTool == null ? string.Empty : ((YutaiTool)oldTool).Name;
-                _mainView.CurrentTool = (YutaiTool)tool;
+                ITool oldTool = MainView.CurrentTool;
+                _oldToolName = oldTool == null ? string.Empty : ((YutaiTool) oldTool).Name;
+                MainView.CurrentTool = (YutaiTool) tool;
                 CurrentToolName = tool.Name;
                 RibbonMenu.ChangeCurrentTool(_oldToolName, tool.Name);
                 if (tool is IToolContextMenu)
-                {
-                    RibbonMenu.SetContextMenu(_mainView.MapControlContainer);
-                }
+                    RibbonMenu.SetContextMenu(MainView.MapControlContainer);
 
                 return true;
             }
@@ -436,13 +389,13 @@ namespace Yutai
 
         public bool SetCurrentTool(string toolName)
         {
-            ITool oldTool = _mainView.CurrentTool;
-            _oldToolName = oldTool == null ? string.Empty : ((YutaiTool)oldTool).Name;
+            ITool oldTool = MainView.CurrentTool;
+            _oldToolName = oldTool == null ? string.Empty : ((YutaiTool) oldTool).Name;
 
-            BarItem item = this.RibbonMenu.SubItems.FindItem(toolName);
+            BarItem item = RibbonMenu.SubItems.FindItem(toolName);
             if (item != null)
             {
-                _mainView.CurrentTool = ((YutaiTool)item.Tag);
+                MainView.CurrentTool = (YutaiTool) item.Tag;
                 RibbonMenu.ChangeCurrentTool(_oldToolName, toolName);
             }
 
@@ -453,12 +406,12 @@ namespace Yutai
         public bool UpdateContextMenu()
         {
             if (RibbonMenu.GetContextMenuVisible()) return false;
-            RibbonMenu.SetContextMenu(_mainView.MapControlContainer);
+            RibbonMenu.SetContextMenu(MainView.MapControlContainer);
             return true;
         }
+
         public void ResetCurrentTool()
         {
-
         }
 
         public void ShowSplashMessage(string msg)
@@ -470,38 +423,32 @@ namespace Yutai
         {
             // throw new NotImplementedException();
             if (RibbonMenu != null)
-            {
                 RibbonMenu.UpdateMenu();
-            }
         }
 
         public void SetToolTip(string str)
         {
             // throw new NotImplementedException();
 
-            if (this.Config.EngineSnapEnvironment != null)
-            {
-                if ((this.Config.EngineSnapEnvironment as IEngineEditProperties2).SnapTips)
+            if (Config.EngineSnapEnvironment != null)
+                if ((Config.EngineSnapEnvironment as IEngineEditProperties2).SnapTips)
                 {
-                    if (this._mainView != null)
-                    {
-
-                        this._mainView.SetMapTooltip(str);
-                    }
+                    if (MainView != null)
+                        MainView.SetMapTooltip(str);
                 }
-                else if (!string.IsNullOrEmpty(this._mainView.GetMapTooltip()))
+                else if (!string.IsNullOrEmpty(MainView.GetMapTooltip()))
                 {
-                    this._mainView.SetMapTooltip(str);
+                    MainView.SetMapTooltip(str);
                 }
-            }
         }
+
         public void Close()
         {
-            _mainView.Close();
+            MainView.Close();
         }
 
-
         #region 事件处理
+
         private IActiveViewEvents_Event iactiveViewEvents_Event_0 = null;
 
 
@@ -540,15 +487,12 @@ namespace Yutai
 
         public void AcvtiveHookChanged(object hook)
         {
-            if (this.OnActiveHookChanged != null)
-            {
-                this.OnActiveHookChanged(hook);
-            }
+            if (OnActiveHookChanged != null)
+                OnActiveHookChanged(hook);
         }
 
         public void AddAfterDrawCallBack(AfterDraw afterDraw_0)
         {
-
         }
 
         public void AddCommands(YutaiCommand icommand)
@@ -558,33 +502,25 @@ namespace Yutai
 
         public void LayerDeleted(ILayer ilayer_2)
         {
-            if (this.OnLayerDeleted != null)
-            {
-                this.OnLayerDeleted(ilayer_2);
-            }
+            if (OnLayerDeleted != null)
+                OnLayerDeleted(ilayer_2);
         }
 
         public void MapClipChanged(object object_3)
         {
-            if (this.OnMapClipChangedEvent != null)
-            {
-                this.OnMapClipChangedEvent(object_3);
-            }
+            if (OnMapClipChangedEvent != null)
+                OnMapClipChangedEvent(object_3);
         }
-
 
 
         public void MapDocumentSave(string string_2)
         {
-            if (this.OnMapDocumentSaveEvent != null)
-            {
-                this.OnMapDocumentSaveEvent(string_2);
-            }
+            if (OnMapDocumentSaveEvent != null)
+                OnMapDocumentSaveEvent(string_2);
         }
 
         public void HideDockWindow(object object_0)
         {
-
         }
 
         bool IYTHookHelper.ShowCommandString(string string_0, CommandTipsType commandTipsType_0)
@@ -594,10 +530,8 @@ namespace Yutai
 
         public void MapDocumentChanged()
         {
-            if (this.OnMapDocumentChangedEvent != null)
-            {
-                this.OnMapDocumentChangedEvent();
-            }
+            if (OnMapDocumentChangedEvent != null)
+                OnMapDocumentChangedEvent();
         }
 
         public void ShowCommandString(string msg, CommandTipsType tipType)
@@ -607,18 +541,14 @@ namespace Yutai
 
         public void SetStatus(string empty)
         {
-            if (this.OnMessageEvent != null)
-            {
-                this.OnMessageEvent(empty);
-            }
+            if (OnMessageEvent != null)
+                OnMessageEvent(empty);
         }
 
         public void SetStatus(int int_0, string string_0)
         {
-            if (this.OnMessageEventEx != null)
-            {
-                this.OnMessageEventEx(int_0, string_0);
-            }
+            if (OnMessageEventEx != null)
+                OnMessageEventEx(int_0, string_0);
         }
 
         public void DockWindows(object object_0, Bitmap bitmap_0)

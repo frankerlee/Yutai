@@ -11,19 +11,21 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Commands.Views
 {
-    public class CmdViewFixedZoomOut:YutaiCommand
+    public class CmdViewFixedZoomOut : YutaiCommand
     {
         public CmdViewFixedZoomOut(IAppContext context)
         {
-           OnCreate(context);
+            OnCreate(context);
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
-           OnClick();
+            OnClick();
         }
+
         public override void OnClick()
         {
-            IActiveView focusMap = (IActiveView)_context.FocusMap;
+            IActiveView focusMap = (IActiveView) _context.FocusMap;
             IEnvelope extent = focusMap.Extent;
             extent.Expand(1.25, 1.25, true);
             focusMap.Extent = extent;
@@ -32,7 +34,7 @@ namespace Yutai.Commands.Views
 
         public override void OnCreate(object hook)
         {
-              _context = hook as IAppContext;
+            _context = hook as IAppContext;
             base.m_caption = "固定缩小";
             base.m_category = "View";
             base.m_bitmap = Properties.Resources.icon_zoom_out_fixed;

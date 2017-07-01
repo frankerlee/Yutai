@@ -61,7 +61,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void LayerGeneralPropertyCtrl_Load(object sender, EventArgs e)
+        private void LayerGeneralPropertyCtrl_Load(object sender, EventArgs e)
         {
             this.method_0();
             this.bool_0 = true;
@@ -128,34 +128,22 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IBasicMap FocusMap
         {
-            set
-            {
-            }
+            set { }
         }
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         public ILayer Layer
         {
-            set
-            {
-                this.ilayer_0 = value;
-            }
+            set { this.ilayer_0 = value; }
         }
 
         public object SelectItem
         {
-            set
-            {
-                this.ilayer_0 = value as ILayer;
-            }
+            set { this.ilayer_0 = value as ILayer; }
         }
     }
 }
-

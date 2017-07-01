@@ -37,7 +37,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>bin\x86\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -123,14 +123,17 @@
     <ProjectReference Include="..\Yutai.Plugins\Yutai.Plugins.csproj">
       <Project>{800F2EE4-47AB-4CD4-934D-A64980D98A23}</Project>
       <Name>Yutai.Plugins</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.Shared\Yutai.Shared.csproj">
       <Project>{4a9b3243-2b0a-4e87-9b23-71a58c1f318d}</Project>
       <Name>Yutai.Shared</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.UI\Yutai.UI.csproj">
       <Project>{9A73B99A-0D59-4B55-B35F-721D321942AF}</Project>
       <Name>Yutai.UI</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

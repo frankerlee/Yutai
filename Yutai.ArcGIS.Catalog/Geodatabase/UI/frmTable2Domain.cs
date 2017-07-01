@@ -74,7 +74,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 }
                 catch (Exception exception)
                 {
-                    Logger.Current.Error("",exception, "");
+                    Logger.Current.Error("", exception, "");
                 }
                 base.Close();
             }
@@ -82,7 +82,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnSelectInputFeatures_Click(object sender, EventArgs e)
         {
-            frmOpenFile file = new frmOpenFile {
+            frmOpenFile file = new frmOpenFile
+            {
                 Text = "选择表"
             };
             file.AddFilter(new MyGxFilterTables(), true);
@@ -97,14 +98,17 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     if (dataset != null)
                     {
                         this.txtTable.Text = obj2.FullName;
-                        string[] strArray = obj2.Name.Split(new char[] { '.' });
+                        string[] strArray = obj2.Name.Split(new char[] {'.'});
                         string str = strArray[strArray.Length - 1];
                         this.txtDomainName.Text = str;
                         IFields fields = dataset.Fields;
                         for (int i = 0; i < fields.FieldCount; i++)
                         {
                             IField field = fields.get_Field(i);
-                            if ((((field.Type != esriFieldType.esriFieldTypeBlob) && (field.Type != esriFieldType.esriFieldTypeGeometry)) && (field.Type != esriFieldType.esriFieldTypeRaster)) && (field.Type != esriFieldType.esriFieldTypeOID))
+                            if ((((field.Type != esriFieldType.esriFieldTypeBlob) &&
+                                  (field.Type != esriFieldType.esriFieldTypeGeometry)) &&
+                                 (field.Type != esriFieldType.esriFieldTypeRaster)) &&
+                                (field.Type != esriFieldType.esriFieldTypeOID))
                             {
                                 this.cdoCodeField.Properties.Items.Add(field.AliasName);
                                 if (field.Type == esriFieldType.esriFieldTypeString)
@@ -126,11 +130,11 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void frmTable2Domain_Load(object sender, EventArgs e)
+        private void frmTable2Domain_Load(object sender, EventArgs e)
         {
         }
 
- private void method_0(int int_0, IDomain idomain_0)
+        private void method_0(int int_0, IDomain idomain_0)
         {
             switch (int_0)
             {
@@ -168,11 +172,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IWorkspace Workspace
         {
-            set
-            {
-                this.iworkspaceDomains_0 = value as IWorkspaceDomains;
-            }
+            set { this.iworkspaceDomains_0 = value as IWorkspaceDomains; }
         }
     }
 }
-

@@ -19,4 +19,3 @@ namespace Yutai.ArcGIS.Catalog.VCT
         ICoLayer XpgisLayer { get; }
     }
 }
-

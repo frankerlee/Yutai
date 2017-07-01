@@ -34,17 +34,19 @@ namespace Yutai.ArcGIS.Carto.UI
             }
             if (this.ihatchDefinition_0 is IHatchLineDefinition)
             {
-                (this.ihatchDefinition_0 as IHatchLineDefinition).SupplementalAngle = (double) this.txtSupplementalAngle.Value;
+                (this.ihatchDefinition_0 as IHatchLineDefinition).SupplementalAngle =
+                    (double) this.txtSupplementalAngle.Value;
             }
         }
 
- private void frmHatchAlignment_Load(object sender, EventArgs e)
+        private void frmHatchAlignment_Load(object sender, EventArgs e)
         {
             if (this.ihatchDefinition_0 != null)
             {
                 if (this.ihatchDefinition_0 is IHatchLineDefinition)
                 {
-                    this.txtSupplementalAngle.Value = (decimal) (this.ihatchDefinition_0 as IHatchLineDefinition).SupplementalAngle;
+                    this.txtSupplementalAngle.Value =
+                        (decimal) (this.ihatchDefinition_0 as IHatchLineDefinition).SupplementalAngle;
                     this.rdoCenter.Enabled = true;
                 }
                 else
@@ -75,17 +77,10 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- public IHatchDefinition HatchDefinition
+        public IHatchDefinition HatchDefinition
         {
-            get
-            {
-                return this.ihatchDefinition_0;
-            }
-            set
-            {
-                this.ihatchDefinition_0 = value;
-            }
+            get { return this.ihatchDefinition_0; }
+            set { this.ihatchDefinition_0 = value; }
         }
     }
 }
-

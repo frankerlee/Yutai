@@ -19,7 +19,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.InitializeComponent();
         }
 
- private void PointMaplexLabelCtrl_Load(object sender, EventArgs e)
+        private void PointMaplexLabelCtrl_Load(object sender, EventArgs e)
         {
             if (this.m_pMaplexOLP != null)
             {
@@ -27,4 +27,3 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         }
     }
 }
-

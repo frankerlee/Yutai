@@ -64,7 +64,6 @@ namespace Yutai.ArcGIS.Common.Helpers
             }
             else
                 return false;
-
         }
 
         /// <summary>
@@ -133,10 +132,10 @@ namespace Yutai.ArcGIS.Common.Helpers
         {
             ILine line = CreateLineByTwoPoints(fromPoint, toPoint);
             ILine normal = new Line();
-            line.QueryNormal(esriSegmentExtension.esriNoExtension, 0.5, true, (double)(line.Length / 3.0), normal);
+            line.QueryNormal(esriSegmentExtension.esriNoExtension, 0.5, true, (double) (line.Length/3.0), normal);
             IConstructCircularArc Constructor = new CircularArc() as IConstructCircularArc;
             Constructor.ConstructThreePoints(fromPoint, normal.ToPoint, toPoint, true);
-            return (ISegment)Constructor;
+            return (ISegment) Constructor;
         }
 
         /// <summary>
@@ -149,10 +148,10 @@ namespace Yutai.ArcGIS.Common.Helpers
         {
             ILine line = CreateLineByTwoPoints(fromPoint, toPoint);
             ILine normal = new Line();
-            line.QueryNormal(esriSegmentExtension.esriNoExtension, 0.5, true, (double)(line.Length / 2.0), normal);
+            line.QueryNormal(esriSegmentExtension.esriNoExtension, 0.5, true, (double) (line.Length/2.0), normal);
             IConstructCircularArc Constructor = new CircularArc() as IConstructCircularArc;
             Constructor.ConstructThreePoints(fromPoint, normal.ToPoint, toPoint, true);
-            return (ISegment)Constructor;
+            return (ISegment) Constructor;
         }
 
         /// <summary>
@@ -166,14 +165,14 @@ namespace Yutai.ArcGIS.Common.Helpers
             IBezierCurveGEN CurveGEN = new BezierCurve();
             ILine line = CreateLineByTwoPoints(fromPoint, toPoint);
             ILine normal = new Line();
-            line.QueryNormal(esriSegmentExtension.esriNoExtension, 0.5, true, (double)(line.Length / 2.0), normal);
-            IPoint fromTangent = (IPoint)normal.ToPoint;
+            line.QueryNormal(esriSegmentExtension.esriNoExtension, 0.5, true, (double) (line.Length/2.0), normal);
+            IPoint fromTangent = (IPoint) normal.ToPoint;
             line = CreateLineByTwoPoints(toPoint, fromPoint);
-            line.QueryNormal(esriSegmentExtension.esriNoExtension, 0.5, true, (double)(line.Length / 2.0), normal);
-            IPoint toTangent = (IPoint)normal.ToPoint;
-            IPoint[] points = { fromPoint, fromTangent, toTangent, toPoint };
+            line.QueryNormal(esriSegmentExtension.esriNoExtension, 0.5, true, (double) (line.Length/2.0), normal);
+            IPoint toTangent = (IPoint) normal.ToPoint;
+            IPoint[] points = {fromPoint, fromTangent, toTangent, toPoint};
             CurveGEN.PutCoords(ref points);
-            return (ISegment)CurveGEN;
+            return (ISegment) CurveGEN;
         }
 
         /// <summary>
@@ -188,8 +187,8 @@ namespace Yutai.ArcGIS.Common.Helpers
             {
                 double dx0, dy0, dx1, dy1;
                 envelope.QueryCoords(out dx0, out dy0, out dx1, out dy1);
-                polyline = CreatePolylineByTwoPoints(CreatePointByCoord(dx0, (double)(dy0 + dy1) / 2.0),
-                    CreatePointByCoord(dx1, (double)(dy0 + dy1) / 2.0));
+                polyline = CreatePolylineByTwoPoints(CreatePointByCoord(dx0, (double) (dy0 + dy1)/2.0),
+                    CreatePointByCoord(dx1, (double) (dy0 + dy1)/2.0));
             }
             return polyline;
         }
@@ -206,8 +205,8 @@ namespace Yutai.ArcGIS.Common.Helpers
             {
                 double dx0, dy0, dx1, dy1;
                 envelope.QueryCoords(out dx0, out dy0, out dx1, out dy1);
-                polyline = CreatePolylineByTwoPoints(CreatePointByCoord((double)(dx0 + dx1) / 2.0, dy1),
-                    CreatePointByCoord((double)(dx0 + dx1) / 2.0, dy0));
+                polyline = CreatePolylineByTwoPoints(CreatePointByCoord((double) (dx0 + dx1)/2.0, dy1),
+                    CreatePointByCoord((double) (dx0 + dx1)/2.0, dy0));
             }
             return polyline;
         }
@@ -223,8 +222,8 @@ namespace Yutai.ArcGIS.Common.Helpers
             {
                 ISegmentCollection segmentCollecttion = new Polyline() as ISegmentCollection;
                 object Missing = Type.Missing;
-                segmentCollecttion.AddSegment((ISegment)geometry, ref Missing, ref Missing);
-                return (IGeometry)segmentCollecttion;
+                segmentCollecttion.AddSegment((ISegment) geometry, ref Missing, ref Missing);
+                return (IGeometry) segmentCollecttion;
             }
             else
                 return null;
@@ -241,8 +240,8 @@ namespace Yutai.ArcGIS.Common.Helpers
             {
                 ISegmentCollection segmentCollecttion = new Polyline() as ISegmentCollection;
                 object Missing = Type.Missing;
-                segmentCollecttion.AddSegment((ISegment)geometry, ref Missing, ref Missing);
-                return (IGeometry)segmentCollecttion;
+                segmentCollecttion.AddSegment((ISegment) geometry, ref Missing, ref Missing);
+                return (IGeometry) segmentCollecttion;
             }
             else
                 return null;
@@ -259,8 +258,8 @@ namespace Yutai.ArcGIS.Common.Helpers
             {
                 ISegmentCollection segmentCollecttion = new Polyline() as ISegmentCollection;
                 object Missing = Type.Missing;
-                segmentCollecttion.AddSegment((ISegment)geometry, ref Missing, ref Missing);
-                return (IGeometry)segmentCollecttion;
+                segmentCollecttion.AddSegment((ISegment) geometry, ref Missing, ref Missing);
+                return (IGeometry) segmentCollecttion;
             }
             else
                 return null;
@@ -277,7 +276,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             {
                 ISegmentCollection segmentCollecttion = new Polygon() as ISegmentCollection;
                 segmentCollecttion.SetCircle((geometry as ICircularArc).CenterPoint, (geometry as ICircularArc).Radius);
-                return (IGeometry)segmentCollecttion;
+                return (IGeometry) segmentCollecttion;
             }
             else
                 return null;
@@ -292,8 +291,8 @@ namespace Yutai.ArcGIS.Common.Helpers
         {
             if ((IsValidGeometry(geometry)) && (geometry is IEnvelope))
             {
-                IEnvelope envelope = (IEnvelope)geometry;
-                IPoint point = CreatePointByCoord((envelope.XMin + envelope.XMax) / 2, envelope.YMin);
+                IEnvelope envelope = (IEnvelope) geometry;
+                IPoint point = CreatePointByCoord((envelope.XMin + envelope.XMax)/2, envelope.YMin);
                 IEllipticArc ellipticArc = new EllipticArc();
                 (ellipticArc as IConstructEllipticArc).ConstructTwoPointsEnvelope(point, point,
                     envelope, esriArcOrientation.esriArcClockwise);
@@ -314,8 +313,8 @@ namespace Yutai.ArcGIS.Common.Helpers
             {
                 ISegmentCollection segmentCollecttion = new Polyline() as ISegmentCollection;
                 object Missing = Type.Missing;
-                segmentCollecttion.AddSegment((ISegment)geometry, ref Missing, ref Missing);
-                return (IGeometry)segmentCollecttion;
+                segmentCollecttion.AddSegment((ISegment) geometry, ref Missing, ref Missing);
+                return (IGeometry) segmentCollecttion;
             }
             else
                 return null;
@@ -332,8 +331,8 @@ namespace Yutai.ArcGIS.Common.Helpers
             {
                 ISegmentCollection segmentCollecttion = new Polygon() as ISegmentCollection;
                 object Missing = Type.Missing;
-                segmentCollecttion.AddSegment((ISegment)geometry, ref Missing, ref Missing);
-                return (IGeometry)segmentCollecttion;
+                segmentCollecttion.AddSegment((ISegment) geometry, ref Missing, ref Missing);
+                return (IGeometry) segmentCollecttion;
             }
             else
                 return null;
@@ -349,7 +348,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             if ((IsValidGeometry(geometry)) && (geometry is IPath) && (geometry is ISegmentCollection))
             {
                 IGeometry polyline = new Polyline() as IGeometry;
-                (polyline as ISegmentCollection).AddSegmentCollection((ISegmentCollection)geometry);
+                (polyline as ISegmentCollection).AddSegmentCollection((ISegmentCollection) geometry);
                 return polyline;
             }
             else
@@ -366,7 +365,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             if ((IsValidGeometry(geometry)) && (geometry is IRing) && (geometry is ISegmentCollection))
             {
                 IGeometry polygon = new Polygon() as IGeometry;
-                (polygon as ISegmentCollection).AddSegmentCollection((ISegmentCollection)geometry);
+                (polygon as ISegmentCollection).AddSegmentCollection((ISegmentCollection) geometry);
                 return polygon;
             }
             else
@@ -413,9 +412,9 @@ namespace Yutai.ArcGIS.Common.Helpers
         {
             if ((IsValidGeometry(geometry)) && (geometry is IEnvelope))
             {
-                IEnvelope envelope = (IEnvelope)geometry;
+                IEnvelope envelope = (IEnvelope) geometry;
                 IGeometry polygon = new Polygon() as IGeometry;
-                IPointCollection pointCollection = (IPointCollection)polygon;
+                IPointCollection pointCollection = (IPointCollection) polygon;
                 IPoint point = envelope.LowerLeft;
                 pointCollection.AddPoints(1, ref point);
                 point = envelope.LowerRight;
@@ -424,7 +423,7 @@ namespace Yutai.ArcGIS.Common.Helpers
                 pointCollection.AddPoints(1, ref point);
                 point = envelope.UpperLeft;
                 pointCollection.AddPoints(1, ref point);
-                ITopologicalOperator topoOp = (ITopologicalOperator)polygon;
+                ITopologicalOperator topoOp = (ITopologicalOperator) polygon;
                 topoOp.Simplify();
                 return polygon;
             }
@@ -460,13 +459,13 @@ namespace Yutai.ArcGIS.Common.Helpers
                         if ((envelope1 as IArea).Area >= (envelope2 as IArea).Area)
                         {
                             (lpEnvelope2 as IEnvelope).Expand(1.001, 1.001, true);
-                            isCompatible = (lpEnvelope1 as IRelationalOperator).Contains((IEnvelope)lpEnvelope2);
+                            isCompatible = (lpEnvelope1 as IRelationalOperator).Contains((IEnvelope) lpEnvelope2);
                             return !isCompatible;
                         }
                         else
                         {
                             (lpEnvelope1 as IEnvelope).Expand(1.001, 1.001, true);
-                            isCompatible = (lpEnvelope2 as IRelationalOperator).Contains((IEnvelope)lpEnvelope1);
+                            isCompatible = (lpEnvelope2 as IRelationalOperator).Contains((IEnvelope) lpEnvelope1);
                             return !isCompatible;
                         }
                     }
@@ -542,7 +541,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             if (IsValidGeometry(geometry))
             {
                 if (geometry.GeometryType == esriGeometryType.esriGeometryPoint)
-                    centroid = (IPoint)geometry;
+                    centroid = (IPoint) geometry;
                 else
                 {
                     if (geometry.Envelope is IArea)
@@ -578,7 +577,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             hit = false;
             if (IsValidGeometry(geometry) && (geometry is IHitTest))
             {
-                IHitTest hitTest = (IHitTest)geometry;
+                IHitTest hitTest = (IHitTest) geometry;
                 geometryPart = esriGeometryHitPartType.esriGeometryPartVertex;
                 hit = hitTest.HitTest(queryPoint, searchRadius, geometryPart, hitPoint,
                     ref hitDistance, ref hitPartIndex, ref hitSegmentIndex, ref bRightSide);
@@ -587,35 +586,30 @@ namespace Yutai.ArcGIS.Common.Helpers
                     geometryPart = esriGeometryHitPartType.esriGeometryPartBoundary;
                     hit = hitTest.HitTest(queryPoint, searchRadius, geometryPart, hitPoint,
                         ref hitDistance, ref hitPartIndex, ref hitSegmentIndex, ref bRightSide);
-
                 }
                 if (!hit)
                 {
                     geometryPart = esriGeometryHitPartType.esriGeometryPartMidpoint;
                     hit = hitTest.HitTest(queryPoint, searchRadius, geometryPart, hitPoint,
                         ref hitDistance, ref hitPartIndex, ref hitSegmentIndex, ref bRightSide);
-
                 }
                 if (!hit)
                 {
                     geometryPart = esriGeometryHitPartType.esriGeometryPartEndpoint;
                     hit = hitTest.HitTest(queryPoint, searchRadius, geometryPart, hitPoint,
                         ref hitDistance, ref hitPartIndex, ref hitSegmentIndex, ref bRightSide);
-
                 }
                 if (!hit)
                 {
                     geometryPart = esriGeometryHitPartType.esriGeometryPartCentroid;
                     hit = hitTest.HitTest(queryPoint, searchRadius, geometryPart, hitPoint,
                         ref hitDistance, ref hitPartIndex, ref hitSegmentIndex, ref bRightSide);
-
                 }
                 if (!hit)
                 {
                     geometryPart = esriGeometryHitPartType.esriGeometryPartSurface;
                     hit = hitTest.HitTest(queryPoint, searchRadius, geometryPart, hitPoint,
                         ref hitDistance, ref hitPartIndex, ref hitSegmentIndex, ref bRightSide);
-
                 }
             }
         }
@@ -707,7 +701,9 @@ namespace Yutai.ArcGIS.Common.Helpers
                 switch (geometry.GeometryType)
                 {
                     case esriGeometryType.esriGeometryPoint:
+
                         #region 点几何形状
+
                         if (geometry is IPoint)
                         {
                             if ((geometry as IPoint).Compare(point) == 0)
@@ -716,10 +712,14 @@ namespace Yutai.ArcGIS.Common.Helpers
                                 deleted = true;
                             }
                         }
+
                         #endregion
+
                         break;
                     case esriGeometryType.esriGeometryMultipoint:
+
                         #region 多点几何形状
+
                         if (geometry is IPointCollection)
                         {
                             for (int i = 0; i <= (geometry as IPointCollection).PointCount - 1; i++)
@@ -732,10 +732,14 @@ namespace Yutai.ArcGIS.Common.Helpers
                                 }
                             }
                         }
+
                         #endregion
+
                         break;
                     case esriGeometryType.esriGeometryPolyline:
+
                         #region 多义线几何形状
+
                         if (geometry is IPointCollection)
                         {
                             for (int i = 0; i <= (geometry as IPointCollection).PointCount - 1; i++)
@@ -748,10 +752,14 @@ namespace Yutai.ArcGIS.Common.Helpers
                                 }
                             }
                         }
+
                         #endregion
+
                         break;
                     case esriGeometryType.esriGeometryPolygon:
+
                         #region 面几何形状
+
                         if (geometry is IGeometryCollection)
                         {
                             bool removed = false;
@@ -763,6 +771,7 @@ namespace Yutai.ArcGIS.Common.Helpers
                                     if ((partGeom as IRing).IsClosed)
                                     {
                                         #region 闭合的环（在编辑草图中存在）
+
                                         if ((partGeom as IRing).FromPoint.Compare(point) == 0 ||
                                             (partGeom as IRing).ToPoint.Compare(point) == 0)
                                         {
@@ -774,7 +783,8 @@ namespace Yutai.ArcGIS.Common.Helpers
                                             else
                                             {
                                                 IPoint startPoint = (partGeom as IPointCollection).get_Point(1);
-                                                (partGeom as IPointCollection).RemovePoints((partGeom as IPointCollection).PointCount - 1, 1);
+                                                (partGeom as IPointCollection).RemovePoints(
+                                                    (partGeom as IPointCollection).PointCount - 1, 1);
                                                 (partGeom as IPointCollection).RemovePoints(0, 1);
                                                 //(partGeom as IRing).FromPoint = startPoint;
                                                 (partGeom as IRing).Close();
@@ -793,11 +803,13 @@ namespace Yutai.ArcGIS.Common.Helpers
                                                 }
                                             }
                                         }
+
                                         #endregion
                                     }
                                     else
                                     {
                                         #region 非闭合的环（在编辑草图中应该不存在）
+
                                         for (int j = 0; j <= (partGeom as IPointCollection).PointCount - 1; j++)
                                         {
                                             if ((partGeom as IPointCollection).get_Point(j).Compare(point) == 0)
@@ -807,6 +819,7 @@ namespace Yutai.ArcGIS.Common.Helpers
                                                 break;
                                             }
                                         }
+
                                         #endregion
                                     }
                                 }
@@ -817,15 +830,18 @@ namespace Yutai.ArcGIS.Common.Helpers
                                     {
                                         IGeometryCollection geometryCollection = new Multipoint() as IGeometryCollection;
                                         IGeometryBridge geometryBridge = new GeometryEnvironment() as IGeometryBridge;
-                                        IGeometry[] geometryArray = { partGeom };
-                                        geometryBridge.InsertGeometries((IGeometryCollection)geometry, i, ref geometryArray);
+                                        IGeometry[] geometryArray = {partGeom};
+                                        geometryBridge.InsertGeometries((IGeometryCollection) geometry, i,
+                                            ref geometryArray);
                                     }
                                     deleted = true;
                                     break;
                                 }
                             }
                         }
+
                         #endregion
+
                         break;
                     default:
                         break;
@@ -846,9 +862,9 @@ namespace Yutai.ArcGIS.Common.Helpers
                 try
                 {
                     IPolycurve lineShape = new Polyline() as IPolycurve;
-                    object shapeLineObj = (object)lineShape;
+                    object shapeLineObj = (object) lineShape;
                     SystemUtility.ObjectCopy(geometry, ref shapeLineObj);
-                    lineShape = (IPolycurve)shapeLineObj;
+                    lineShape = (IPolycurve) shapeLineObj;
                     return lineShape;
                 }
                 catch

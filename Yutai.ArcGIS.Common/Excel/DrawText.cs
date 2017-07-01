@@ -46,8 +46,11 @@ namespace Yutai.ArcGIS.Common.Excel
             {
                 int num;
                 int num2;
-                base.Graphics.MeasureString(this.string_0.Substring(this.int_0), this.font_0, new SizeF((float) base.Rectangle.Width, (float) base.Rectangle.Height), this.stringFormat_0, out num, out num2);
-                base.Graphics.DrawString(this.string_0.Substring(this.int_0), this.font_0, base.Brush, base.Rectangle, this.stringFormat_0);
+                base.Graphics.MeasureString(this.string_0.Substring(this.int_0), this.font_0,
+                    new SizeF((float) base.Rectangle.Width, (float) base.Rectangle.Height), this.stringFormat_0, out num,
+                    out num2);
+                base.Graphics.DrawString(this.string_0.Substring(this.int_0), this.font_0, base.Brush, base.Rectangle,
+                    this.stringFormat_0);
                 this.int_1 = num2;
                 this.int_2 = num;
             }
@@ -69,18 +72,12 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public int CharsFitted
         {
-            get
-            {
-                return this.int_2;
-            }
+            get { return this.int_2; }
         }
 
         public System.Drawing.Font Font
         {
-            get
-            {
-                return this.font_0;
-            }
+            get { return this.font_0; }
             set
             {
                 if (value != null)
@@ -92,18 +89,12 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public int LinesFilled
         {
-            get
-            {
-                return this.int_1;
-            }
+            get { return this.int_1; }
         }
 
         public int StartChar
         {
-            get
-            {
-                return this.int_0;
-            }
+            get { return this.int_0; }
             set
             {
                 this.int_0 = value;
@@ -120,27 +111,14 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public System.Drawing.StringFormat StringFormat
         {
-            get
-            {
-                return this.stringFormat_0;
-            }
-            set
-            {
-                this.stringFormat_0 = value;
-            }
+            get { return this.stringFormat_0; }
+            set { this.stringFormat_0 = value; }
         }
 
         public string Text
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

@@ -24,27 +24,14 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         public TreeNode Node
         {
-            get
-            {
-                return this.treeNode_0;
-            }
-            set
-            {
-                this.treeNode_0 = value;
-            }
+            get { return this.treeNode_0; }
+            set { this.treeNode_0 = value; }
         }
 
         public TreeNodeCollection Nodes
         {
-            get
-            {
-                return this.treeNodeCollection_0;
-            }
-            set
-            {
-                this.treeNodeCollection_0 = value;
-            }
+            get { return this.treeNodeCollection_0; }
+            set { this.treeNodeCollection_0 = value; }
         }
     }
 }
-

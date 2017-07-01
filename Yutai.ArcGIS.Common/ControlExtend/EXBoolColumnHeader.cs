@@ -50,39 +50,20 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         public bool Editable
         {
-            get
-            {
-                return this.bool_0;
-            }
-            set
-            {
-                this.bool_0 = value;
-            }
+            get { return this.bool_0; }
+            set { this.bool_0 = value; }
         }
 
         public Image FalseImage
         {
-            get
-            {
-                return this.image_1;
-            }
-            set
-            {
-                this.image_1 = value;
-            }
+            get { return this.image_1; }
+            set { this.image_1 = value; }
         }
 
         public Image TrueImage
         {
-            get
-            {
-                return this.image_0;
-            }
-            set
-            {
-                this.image_0 = value;
-            }
+            get { return this.image_0; }
+            set { this.image_0 = value; }
         }
     }
 }
-

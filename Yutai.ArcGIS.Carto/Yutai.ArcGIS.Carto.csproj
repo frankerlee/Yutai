@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
   <PropertyGroup>
     <ProjectType>local</ProjectType>
@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\Yutai\bin\Debug\</OutputPath>
+    <OutputPath>bin\x86\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -48,9 +48,8 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\CatoTemplateApplySelect.Designer.cs">
-        <DependentUpon>CatoTemplateApplySelect.cs</DependentUpon>
+      <DependentUpon>CatoTemplateApplySelect.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\CommandFunction.cs" />
     <Compile Include="DesignLib\DeleteElement.cs" />
     <Compile Include="DesignLib\DeleteElementOperation.cs" />
@@ -60,49 +59,43 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\ElementGeometryInfoPropertyPage.Designer.cs">
-        <DependentUpon>ElementGeometryInfoPropertyPage.cs</DependentUpon>
+      <DependentUpon>ElementGeometryInfoPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\ElementPosition.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\ElementPosition.Designer.cs">
-        <DependentUpon>ElementPosition.cs</DependentUpon>
+      <DependentUpon>ElementPosition.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\ElementSelectTool.cs" />
     <Compile Include="DesignLib\ElementSizeAndPositionCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\ElementSizeAndPositionCtrl.Designer.cs">
-        <DependentUpon>ElementSizeAndPositionCtrl.cs</DependentUpon>
+      <DependentUpon>ElementSizeAndPositionCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\ElementsTableStruct.cs" />
     <Compile Include="DesignLib\ElementSymbolSetPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\ElementSymbolSetPage.Designer.cs">
-        <DependentUpon>ElementSymbolSetPage.cs</DependentUpon>
+      <DependentUpon>ElementSymbolSetPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\ElementType.cs" />
     <Compile Include="DesignLib\ElementTypeSelectPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\ElementTypeSelectPage.Designer.cs">
-        <DependentUpon>ElementTypeSelectPage.cs</DependentUpon>
+      <DependentUpon>ElementTypeSelectPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\ElementWizardHelp.cs" />
     <Compile Include="DesignLib\ElmentProperty.cs" />
     <Compile Include="DesignLib\FillSymbolPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\FillSymbolPropertyPage.Designer.cs">
-        <DependentUpon>FillSymbolPropertyPage.cs</DependentUpon>
+      <DependentUpon>FillSymbolPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\frmNewElement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,51 +103,44 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DesignLib\frmNewLegendItem.Designer.cs">
-        <DependentUpon>frmNewLegendItem.cs</DependentUpon>
+      <DependentUpon>frmNewLegendItem.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\frmParamProperty.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DesignLib\frmParamProperty.Designer.cs">
-        <DependentUpon>frmParamProperty.cs</DependentUpon>
+      <DependentUpon>frmParamProperty.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\frmPropertySheet.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DesignLib\frmPropertySheet.Designer.cs">
-        <DependentUpon>frmPropertySheet.cs</DependentUpon>
+      <DependentUpon>frmPropertySheet.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\frmSelectCartoTemplateWizard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DesignLib\frmSelectCartoTemplateWizard.Designer.cs">
-        <DependentUpon>frmSelectCartoTemplateWizard.cs</DependentUpon>
+      <DependentUpon>frmSelectCartoTemplateWizard.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\frmSelectParam.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DesignLib\frmSelectParam.Designer.cs">
-        <DependentUpon>frmSelectParam.cs</DependentUpon>
+      <DependentUpon>frmSelectParam.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\frmTLConfig.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\frmTLConfig.Designer.cs">
-        <DependentUpon>frmTLConfig.cs</DependentUpon>
+      <DependentUpon>frmTLConfig.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\GridAxisPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\GridAxisPropertyPage.Designer.cs">
-        <DependentUpon>GridAxisPropertyPage.cs</DependentUpon>
+      <DependentUpon>GridAxisPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\IDeleteElementOperation.cs" />
     <Compile Include="DesignLib\IEditElementPropertiesOperation.cs" />
     <Compile Include="DesignLib\IMoveElementOperation.cs" />
@@ -165,105 +151,91 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DesignLib\JLKElementWizardForm.Designer.cs">
-        <DependentUpon>JLKElementWizardForm.cs</DependentUpon>
+      <DependentUpon>JLKElementWizardForm.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\JLKLegendAssiatant.cs" />
     <Compile Include="DesignLib\JLKLenendItem.cs" />
     <Compile Include="DesignLib\JLKMapTemplateWizard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DesignLib\JLKMapTemplateWizard.Designer.cs">
-        <DependentUpon>JLKMapTemplateWizard.cs</DependentUpon>
+      <DependentUpon>JLKMapTemplateWizard.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\JLKTKAssiatant.cs" />
     <Compile Include="DesignLib\JLKTransformation.cs" />
     <Compile Include="DesignLib\JLKWizardForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DesignLib\JLKWizardForm.Designer.cs">
-        <DependentUpon>JLKWizardForm.cs</DependentUpon>
+      <DependentUpon>JLKWizardForm.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\LabelFormatPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\LabelFormatPropertyPage.Designer.cs">
-        <DependentUpon>LabelFormatPropertyPage.cs</DependentUpon>
+      <DependentUpon>LabelFormatPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\LabelSetPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\LabelSetPage.Designer.cs">
-        <DependentUpon>LabelSetPage.cs</DependentUpon>
+      <DependentUpon>LabelSetPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\LegendFormatSetupCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\LegendFormatSetupCtrl.Designer.cs">
-        <DependentUpon>LegendFormatSetupCtrl.cs</DependentUpon>
+      <DependentUpon>LegendFormatSetupCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\LegendFrameUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\LegendFrameUserControl.Designer.cs">
-        <DependentUpon>LegendFrameUserControl.cs</DependentUpon>
+      <DependentUpon>LegendFrameUserControl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\LegendInfoPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\LegendInfoPage.Designer.cs">
-        <DependentUpon>LegendInfoPage.cs</DependentUpon>
+      <DependentUpon>LegendInfoPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\LegendItemArrangementPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\LegendItemArrangementPropertyPage.Designer.cs">
-        <DependentUpon>LegendItemArrangementPropertyPage.cs</DependentUpon>
+      <DependentUpon>LegendItemArrangementPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\LegendItemGeneralPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\LegendItemGeneralPropertyPage.Designer.cs">
-        <DependentUpon>LegendItemGeneralPropertyPage.cs</DependentUpon>
+      <DependentUpon>LegendItemGeneralPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\LegendItemPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\LegendItemPropertyPage.Designer.cs">
-        <DependentUpon>LegendItemPropertyPage.cs</DependentUpon>
+      <DependentUpon>LegendItemPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\LegendObject.cs" />
     <Compile Include="DesignLib\LegendPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\LegendPropertyPage.Designer.cs">
-        <DependentUpon>LegendPropertyPage.cs</DependentUpon>
+      <DependentUpon>LegendPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\LegendTitleUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\LegendTitleUserControl.Designer.cs">
-        <DependentUpon>LegendTitleUserControl.cs</DependentUpon>
+      <DependentUpon>LegendTitleUserControl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\LineSymbolPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\LineSymbolPropertyPage.Designer.cs">
-        <DependentUpon>LineSymbolPropertyPage.cs</DependentUpon>
+      <DependentUpon>LineSymbolPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\ListViewItemEx.cs" />
     <Compile Include="DesignLib\LoadTemplate.cs" />
     <Compile Include="DesignLib\MapFenFuInfoTableStruct.cs" />
@@ -273,45 +245,39 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\MapTemplateGeneralPage.Designer.cs">
-        <DependentUpon>MapTemplateGeneralPage.cs</DependentUpon>
+      <DependentUpon>MapTemplateGeneralPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\MapTemplateTypePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\MapTemplateTypePage.Designer.cs">
-        <DependentUpon>MapTemplateTypePage.cs</DependentUpon>
+      <DependentUpon>MapTemplateTypePage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\MarkerElementPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\MarkerElementPropertyPage.Designer.cs">
-        <DependentUpon>MarkerElementPropertyPage.cs</DependentUpon>
+      <DependentUpon>MarkerElementPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\MoveElementOperation.cs" />
     <Compile Include="DesignLib\NorthArrowPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\NorthArrowPropertyPage.Designer.cs">
-        <DependentUpon>NorthArrowPropertyPage.cs</DependentUpon>
+      <DependentUpon>NorthArrowPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\NumberAndLabelPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\NumberAndLabelPropertyPage.Designer.cs">
-        <DependentUpon>NumberAndLabelPropertyPage.cs</DependentUpon>
+      <DependentUpon>NumberAndLabelPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\OLESelectPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\OLESelectPage.Designer.cs">
-        <DependentUpon>OLESelectPage.cs</DependentUpon>
+      <DependentUpon>OLESelectPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\OnDeleteElementHandler.cs" />
     <Compile Include="DesignLib\OnEditElementPropertyHandler.cs" />
     <Compile Include="DesignLib\OnElementPositionChangeHandler.cs" />
@@ -323,17 +289,15 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\OtherGridPropertyPage.Designer.cs">
-        <DependentUpon>OtherGridPropertyPage.cs</DependentUpon>
+      <DependentUpon>OtherGridPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\ParamInfo.cs" />
     <Compile Include="DesignLib\PictureSelectPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\PictureSelectPage.Designer.cs">
-        <DependentUpon>PictureSelectPage.cs</DependentUpon>
+      <DependentUpon>PictureSelectPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\RenderInfoListView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -342,32 +306,28 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\ScaleAndUnitsPropertyPage.Designer.cs">
-        <DependentUpon>ScaleAndUnitsPropertyPage.cs</DependentUpon>
+      <DependentUpon>ScaleAndUnitsPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\ScaleBarEventsClass.cs" />
     <Compile Include="DesignLib\ScaleBarFormatPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\ScaleBarFormatPropertyPage.Designer.cs">
-        <DependentUpon>ScaleBarFormatPropertyPage.cs</DependentUpon>
+      <DependentUpon>ScaleBarFormatPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\ScaleTextEventsClass.cs" />
     <Compile Include="DesignLib\ScaleTextFormatPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\ScaleTextFormatPropertyPage.Designer.cs">
-        <DependentUpon>ScaleTextFormatPropertyPage.cs</DependentUpon>
+      <DependentUpon>ScaleTextFormatPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\ScaleTextTextPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\ScaleTextTextPropertyPage.Designer.cs">
-        <DependentUpon>ScaleTextTextPropertyPage.cs</DependentUpon>
+      <DependentUpon>ScaleTextTextPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\ShowMapFrameProperty.cs" />
     <Compile Include="DesignLib\SnapGridSet.cs" />
     <Compile Include="DesignLib\SpheroidType.cs" />
@@ -375,55 +335,48 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\StandardTickSymbolPropertyPage.Designer.cs">
-        <DependentUpon>StandardTickSymbolPropertyPage.cs</DependentUpon>
+      <DependentUpon>StandardTickSymbolPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\StandardTypeEnum.cs" />
     <Compile Include="DesignLib\StarndFenFuMapTemplatePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\StarndFenFuMapTemplatePage.Designer.cs">
-        <DependentUpon>StarndFenFuMapTemplatePage.cs</DependentUpon>
+      <DependentUpon>StarndFenFuMapTemplatePage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\StripType.cs" />
     <Compile Include="DesignLib\TableStruct.cs" />
     <Compile Include="DesignLib\TemplateParamSetPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\TemplateParamSetPage.Designer.cs">
-        <DependentUpon>TemplateParamSetPage.cs</DependentUpon>
+      <DependentUpon>TemplateParamSetPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\TemplatePropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\TemplatePropertyPage.Designer.cs">
-        <DependentUpon>TemplatePropertyPage.cs</DependentUpon>
+      <DependentUpon>TemplatePropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\TextElementValueSetPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\TextElementValueSetPage.Designer.cs">
-        <DependentUpon>TextElementValueSetPage.cs</DependentUpon>
+      <DependentUpon>TextElementValueSetPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\TFInfoPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\TFInfoPage.Designer.cs">
-        <DependentUpon>TFInfoPage.cs</DependentUpon>
+      <DependentUpon>TFInfoPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\THTools.cs" />
     <Compile Include="DesignLib\TickSymbolPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DesignLib\TickSymbolPropertyPage.Designer.cs">
-        <DependentUpon>TickSymbolPropertyPage.cs</DependentUpon>
+      <DependentUpon>TickSymbolPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="DesignLib\TKType.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -514,9 +467,8 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\TKStyleSelectPage.Designer.cs">
-        <DependentUpon>TKStyleSelectPage.cs</DependentUpon>
+      <DependentUpon>TKStyleSelectPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="YTTKAssiatant.cs" />
     <Compile Include="TKType.cs" />
     <Compile Include="BaseMap.cs" />
@@ -525,17 +477,15 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmLabelRotateAngles.Designer.cs">
-        <DependentUpon>frmLabelRotateAngles.cs</DependentUpon>
+      <DependentUpon>frmLabelRotateAngles.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\ILayerAndStandaloneTablePropertyPage.cs" />
     <Compile Include="UI\ToplogyLayerSymbolCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\ToplogyLayerSymbolCtrl.Designer.cs">
-        <DependentUpon>ToplogyLayerSymbolCtrl.cs</DependentUpon>
+      <DependentUpon>ToplogyLayerSymbolCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\RenderInfoListView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -545,117 +495,101 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\TinSimpleRenderCtrl.Designer.cs">
-        <DependentUpon>TinSimpleRenderCtrl.cs</DependentUpon>
+      <DependentUpon>TinSimpleRenderCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\JoiningAndRelatingPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\JoiningAndRelatingPropertyPage.Designer.cs">
-        <DependentUpon>JoiningAndRelatingPropertyPage.cs</DependentUpon>
+      <DependentUpon>JoiningAndRelatingPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\OnJoinAndRelationChangeHandler.cs" />
     <Compile Include="UI\frmJoining.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmJoining.Designer.cs">
-        <DependentUpon>frmJoining.cs</DependentUpon>
+      <DependentUpon>frmJoining.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmRelating.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmRelating.Designer.cs">
-        <DependentUpon>frmRelating.cs</DependentUpon>
+      <DependentUpon>frmRelating.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmPageSetup.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmPageSetup.Designer.cs">
-        <DependentUpon>frmPageSetup.cs</DependentUpon>
+      <DependentUpon>frmPageSetup.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\PageSetupControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\PageSetupControl.Designer.cs">
-        <DependentUpon>PageSetupControl.cs</DependentUpon>
+      <DependentUpon>PageSetupControl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmElementProperty.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmElementProperty.Designer.cs">
-        <DependentUpon>frmElementProperty.cs</DependentUpon>
+      <DependentUpon>frmElementProperty.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\UniqueValueRendererCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\UniqueValueRendererCtrl.Designer.cs">
-        <DependentUpon>UniqueValueRendererCtrl.cs</DependentUpon>
+      <DependentUpon>UniqueValueRendererCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\FieldWrap.cs" />
     <Compile Include="UI\frmAddValues.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmAddValues.Designer.cs">
-        <DependentUpon>frmAddValues.cs</DependentUpon>
+      <DependentUpon>frmAddValues.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\MapDataFramePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\MapDataFramePage.Designer.cs">
-        <DependentUpon>MapDataFramePage.cs</DependentUpon>
+      <DependentUpon>MapDataFramePage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmExtendSet.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmExtendSet.Designer.cs">
-        <DependentUpon>frmExtendSet.cs</DependentUpon>
+      <DependentUpon>frmExtendSet.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\ExtendSetType.cs" />
     <Compile Include="UI\frmLayerCheck.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmLayerCheck.Designer.cs">
-        <DependentUpon>frmLayerCheck.cs</DependentUpon>
+      <DependentUpon>frmLayerCheck.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\FormPageSetup.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\FormPageSetup.Designer.cs">
-        <DependentUpon>FormPageSetup.cs</DependentUpon>
+      <DependentUpon>FormPageSetup.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmGeographicTransformationConvert.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmGeographicTransformationConvert.Designer.cs">
-        <DependentUpon>frmGeographicTransformationConvert.cs</DependentUpon>
+      <DependentUpon>frmGeographicTransformationConvert.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmGaphicTransformation.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmGaphicTransformation.Designer.cs">
-        <DependentUpon>frmGaphicTransformation.cs</DependentUpon>
+      <DependentUpon>frmGaphicTransformation.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\BufferGeometrySetCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\BufferGeometrySetCtrl.Designer.cs">
-        <DependentUpon>BufferGeometrySetCtrl.cs</DependentUpon>
+      <DependentUpon>BufferGeometrySetCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\BufferHelper.cs" />
     <Compile Include="MapCartoTemplateLib\DataType.cs" />
     <Compile Include="MapCartoTemplateLib\MapTemplateParam.cs" />
@@ -668,39 +602,34 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Library\MapCoordinateInputPage.Designer.cs">
-        <DependentUpon>MapCoordinateInputPage.cs</DependentUpon>
+      <DependentUpon>MapCoordinateInputPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Library\MapTemplateApplyHelp.cs" />
     <Compile Include="MapCartoTemplateLib\LegendPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\LegendPropertyPage.Designer.cs">
-        <DependentUpon>LegendPropertyPage.cs</DependentUpon>
+      <DependentUpon>LegendPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\LegendObject.cs" />
     <Compile Include="Library\frmInputText.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Library\frmInputText.Designer.cs">
-        <DependentUpon>frmInputText.cs</DependentUpon>
+      <DependentUpon>frmInputText.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Library\frmInputCoordinate.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Library\frmInputCoordinate.Designer.cs">
-        <DependentUpon>frmInputCoordinate.cs</DependentUpon>
+      <DependentUpon>frmInputCoordinate.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Library\frmInputXY.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Library\frmInputXY.Designer.cs">
-        <DependentUpon>frmInputXY.cs</DependentUpon>
+      <DependentUpon>frmInputXY.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\MapTemplateElement.cs" />
     <Compile Include="MapCartoTemplateLib\MapTemplateElementType.cs" />
     <Compile Include="MapCartoTemplateLib\ElementLocation.cs" />
@@ -712,94 +641,81 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\ElementPosition.Designer.cs">
-        <DependentUpon>ElementPosition.cs</DependentUpon>
+      <DependentUpon>ElementPosition.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\MapGridControlFourth.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\MapGridControlFourth.Designer.cs">
-        <DependentUpon>MapGridControlFourth.cs</DependentUpon>
+      <DependentUpon>MapGridControlFourth.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\NumberAndLabelPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\NumberAndLabelPropertyPage.Designer.cs">
-        <DependentUpon>NumberAndLabelPropertyPage.cs</DependentUpon>
+      <DependentUpon>NumberAndLabelPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\ScaleBarEventsClass.cs" />
     <Compile Include="UI\ScaleBarFormatPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\ScaleBarFormatPropertyPage.Designer.cs">
-        <DependentUpon>ScaleBarFormatPropertyPage.cs</DependentUpon>
+      <DependentUpon>ScaleBarFormatPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmLabelToAnnoSetup.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmLabelToAnnoSetup.Designer.cs">
-        <DependentUpon>frmLabelToAnnoSetup.cs</DependentUpon>
+      <DependentUpon>frmLabelToAnnoSetup.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmAddTinRender.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmAddTinRender.Designer.cs">
-        <DependentUpon>frmAddTinRender.cs</DependentUpon>
+      <DependentUpon>frmAddTinRender.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\MatchStyleGrallyCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\MatchStyleGrallyCtrl.Designer.cs">
-        <DependentUpon>MatchStyleGrallyCtrl.cs</DependentUpon>
+      <DependentUpon>MatchStyleGrallyCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\DataExclusionLegendCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\DataExclusionLegendCtrl.Designer.cs">
-        <DependentUpon>DataExclusionLegendCtrl.cs</DependentUpon>
+      <DependentUpon>DataExclusionLegendCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmBookMark.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmBookMark.Designer.cs">
-        <DependentUpon>frmBookMark.cs</DependentUpon>
+      <DependentUpon>frmBookMark.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmPageLayoutTemp.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmPageLayoutTemp.Designer.cs">
-        <DependentUpon>frmPageLayoutTemp.cs</DependentUpon>
+      <DependentUpon>frmPageLayoutTemp.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\StandardTickSymbolPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\StandardTickSymbolPropertyPage.Designer.cs">
-        <DependentUpon>StandardTickSymbolPropertyPage.cs</DependentUpon>
+      <DependentUpon>StandardTickSymbolPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\MapTemplateTypePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\MapTemplateTypePage.Designer.cs">
-        <DependentUpon>MapTemplateTypePage.cs</DependentUpon>
+      <DependentUpon>MapTemplateTypePage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Library\MapCoordinatePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Library\MapCoordinatePage.Designer.cs">
-        <DependentUpon>MapCoordinatePage.cs</DependentUpon>
+      <DependentUpon>MapCoordinatePage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\MapNoAssistant.cs" />
     <Compile Include="MapCartoTemplateLib\MapNoAssistantFactory.cs" />
     <Compile Include="MapCartoTemplateLib\MapTemplateJoinTableElement.cs" />
@@ -807,17 +723,15 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\ScaleTextTextPropertyPage.Designer.cs">
-        <DependentUpon>ScaleTextTextPropertyPage.cs</DependentUpon>
+      <DependentUpon>ScaleTextTextPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\ScaleTextEventsClass.cs" />
     <Compile Include="MapCartoTemplateLib\ScaleTextFormatPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\ScaleTextFormatPropertyPage.Designer.cs">
-        <DependentUpon>ScaleTextFormatPropertyPage.cs</DependentUpon>
+      <DependentUpon>ScaleTextFormatPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\ElementUI\frmExpressSet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -826,279 +740,240 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\TopologyRulesPropertyPage.Designer.cs">
-        <DependentUpon>TopologyRulesPropertyPage.cs</DependentUpon>
+      <DependentUpon>TopologyRulesPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\TinLayerRenderPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\TinLayerRenderPropertyPage.Designer.cs">
-        <DependentUpon>TinLayerRenderPropertyPage.cs</DependentUpon>
+      <DependentUpon>TinLayerRenderPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\TinColorRampRenderPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\TinColorRampRenderPropertyPage.Designer.cs">
-        <DependentUpon>TinColorRampRenderPropertyPage.cs</DependentUpon>
+      <DependentUpon>TinColorRampRenderPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\TinUniqueRenderPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\TinUniqueRenderPropertyPage.Designer.cs">
-        <DependentUpon>TinUniqueRenderPropertyPage.cs</DependentUpon>
+      <DependentUpon>TinUniqueRenderPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\TextSetupCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\TextSetupCtrl.Designer.cs">
-        <DependentUpon>TextSetupCtrl.cs</DependentUpon>
+      <DependentUpon>TextSetupCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\LegendFrameUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\LegendFrameUserControl.Designer.cs">
-        <DependentUpon>LegendFrameUserControl.cs</DependentUpon>
+      <DependentUpon>LegendFrameUserControl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmOutline.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmOutline.Designer.cs">
-        <DependentUpon>frmOutline.cs</DependentUpon>
+      <DependentUpon>frmOutline.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmLayerPropertyEx.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmLayerPropertyEx.Designer.cs">
-        <DependentUpon>frmLayerPropertyEx.cs</DependentUpon>
+      <DependentUpon>frmLayerPropertyEx.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\LayerGeneralPropertyCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\LayerGeneralPropertyCtrl.Designer.cs">
-        <DependentUpon>LayerGeneralPropertyCtrl.cs</DependentUpon>
+      <DependentUpon>LayerGeneralPropertyCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\GroupLayerPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\GroupLayerPropertyPage.Designer.cs">
-        <DependentUpon>GroupLayerPropertyPage.cs</DependentUpon>
+      <DependentUpon>GroupLayerPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\LayerDataSourcePropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\LayerDataSourcePropertyPage.Designer.cs">
-        <DependentUpon>LayerDataSourcePropertyPage.cs</DependentUpon>
+      <DependentUpon>LayerDataSourcePropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\FeatureSelectionSetCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\FeatureSelectionSetCtrl.Designer.cs">
-        <DependentUpon>FeatureSelectionSetCtrl.cs</DependentUpon>
+      <DependentUpon>FeatureSelectionSetCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\TopologyErrorSelectionCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\TopologyErrorSelectionCtrl.Designer.cs">
-        <DependentUpon>TopologyErrorSelectionCtrl.cs</DependentUpon>
+      <DependentUpon>TopologyErrorSelectionCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\CADDrawingLayersPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\CADDrawingLayersPropertyPage.Designer.cs">
-        <DependentUpon>CADDrawingLayersPropertyPage.cs</DependentUpon>
+      <DependentUpon>CADDrawingLayersPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\CADTransformationPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\CADTransformationPropertyPage.Designer.cs">
-        <DependentUpon>CADTransformationPropertyPage.cs</DependentUpon>
+      <DependentUpon>CADTransformationPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\LayerDisplaySetCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\LayerDisplaySetCtrl.Designer.cs">
-        <DependentUpon>LayerDisplaySetCtrl.cs</DependentUpon>
+      <DependentUpon>LayerDisplaySetCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\TopologyClassesPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\TopologyClassesPropertyPage.Designer.cs">
-        <DependentUpon>TopologyClassesPropertyPage.cs</DependentUpon>
+      <DependentUpon>TopologyClassesPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\LayerRenderCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\LayerRenderCtrl.Designer.cs">
-        <DependentUpon>LayerRenderCtrl.cs</DependentUpon>
+      <DependentUpon>LayerRenderCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\LayerDefinitionExpressionCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\LayerDefinitionExpressionCtrl.Designer.cs">
-        <DependentUpon>LayerDefinitionExpressionCtrl.cs</DependentUpon>
+      <DependentUpon>LayerDefinitionExpressionCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\LayerLabelPropertyCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\LayerLabelPropertyCtrl.Designer.cs">
-        <DependentUpon>LayerLabelPropertyCtrl.cs</DependentUpon>
+      <DependentUpon>LayerLabelPropertyCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\HatchLayerExtensionPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\HatchLayerExtensionPropertyPage.Designer.cs">
-        <DependentUpon>HatchLayerExtensionPropertyPage.cs</DependentUpon>
+      <DependentUpon>HatchLayerExtensionPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\RasterRenderPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\RasterRenderPropertyPage.Designer.cs">
-        <DependentUpon>RasterRenderPropertyPage.cs</DependentUpon>
+      <DependentUpon>RasterRenderPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\LayerFieldsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\LayerFieldsPage.Designer.cs">
-        <DependentUpon>LayerFieldsPage.cs</DependentUpon>
+      <DependentUpon>LayerFieldsPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\BaseHeightPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\BaseHeightPropertyPage.Designer.cs">
-        <DependentUpon>BaseHeightPropertyPage.cs</DependentUpon>
+      <DependentUpon>BaseHeightPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\SceneRenderPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\SceneRenderPropertyPage.Designer.cs">
-        <DependentUpon>SceneRenderPropertyPage.cs</DependentUpon>
+      <DependentUpon>SceneRenderPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\ExtrusionPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\ExtrusionPropertyPage.Designer.cs">
-        <DependentUpon>ExtrusionPropertyPage.cs</DependentUpon>
+      <DependentUpon>ExtrusionPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\FillSymbolPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\FillSymbolPropertyPage.Designer.cs">
-        <DependentUpon>FillSymbolPropertyPage.cs</DependentUpon>
+      <DependentUpon>FillSymbolPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\ElementSizeAndPositionCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\ElementSizeAndPositionCtrl.Designer.cs">
-        <DependentUpon>ElementSizeAndPositionCtrl.cs</DependentUpon>
+      <DependentUpon>ElementSizeAndPositionCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\ElementGeometryInfoPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\ElementGeometryInfoPropertyPage.Designer.cs">
-        <DependentUpon>ElementGeometryInfoPropertyPage.cs</DependentUpon>
+      <DependentUpon>ElementGeometryInfoPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\LabelLineElementProperty.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\LabelLineElementProperty.Designer.cs">
-        <DependentUpon>LabelLineElementProperty.cs</DependentUpon>
+      <DependentUpon>LabelLineElementProperty.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmFeatureRender.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmFeatureRender.Designer.cs">
-        <DependentUpon>frmFeatureRender.cs</DependentUpon>
+      <DependentUpon>frmFeatureRender.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\FormPrinterSetup.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\FormPrinterSetup.Designer.cs">
-        <DependentUpon>FormPrinterSetup.cs</DependentUpon>
+      <DependentUpon>FormPrinterSetup.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmExpressionSet.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmExpressionSet.Designer.cs">
-        <DependentUpon>frmExpressionSet.cs</DependentUpon>
+      <DependentUpon>frmExpressionSet.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\LabelExpressionSetPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\LabelExpressionSetPropertyPage.Designer.cs">
-        <DependentUpon>LabelExpressionSetPropertyPage.cs</DependentUpon>
+      <DependentUpon>LabelExpressionSetPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmExpressionBuild.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmExpressionBuild.Designer.cs">
-        <DependentUpon>frmExpressionBuild.cs</DependentUpon>
+      <DependentUpon>frmExpressionBuild.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\LandUseMapNoAssistant.cs" />
     <Compile Include="MapCartoTemplateLib\MapNoFormatException.cs" />
     <Compile Include="Library\frmClipOutSet.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Library\frmClipOutSet.Designer.cs">
-        <DependentUpon>frmClipOutSet.cs</DependentUpon>
+      <DependentUpon>frmClipOutSet.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\GroupElementExPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\GroupElementExPropertyPage.Designer.cs">
-        <DependentUpon>GroupElementExPropertyPage.cs</DependentUpon>
+      <DependentUpon>GroupElementExPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\SizeStyle.cs" />
     <Compile Include="MapCartoTemplateLib\MapTemplateGroupElement.cs" />
     <Compile Include="MapCartoTemplateLib\ElementSymbolSetPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\ElementSymbolSetPage.Designer.cs">
-        <DependentUpon>ElementSymbolSetPage.cs</DependentUpon>
+      <DependentUpon>ElementSymbolSetPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\CustomLegendConfigPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\CustomLegendConfigPage.Designer.cs">
-        <DependentUpon>CustomLegendConfigPage.cs</DependentUpon>
+      <DependentUpon>CustomLegendConfigPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\RenderInfoListView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1107,336 +982,290 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\frmNewLegendItem.Designer.cs">
-        <DependentUpon>frmNewLegendItem.cs</DependentUpon>
+      <DependentUpon>frmNewLegendItem.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\ListViewItemEx.cs" />
     <Compile Include="MapCartoTemplateLib\JLKLenendItem.cs" />
     <Compile Include="UI\TFInfoPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\TFInfoPage.Designer.cs">
-        <DependentUpon>TFInfoPage.cs</DependentUpon>
+      <DependentUpon>TFInfoPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="StripType.cs" />
     <Compile Include="SpheroidType.cs" />
     <Compile Include="UI\frmTLConfig.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmTLConfig.Designer.cs">
-        <DependentUpon>frmTLConfig.cs</DependentUpon>
+      <DependentUpon>frmTLConfig.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmNewLegendItem.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmNewLegendItem.Designer.cs">
-        <DependentUpon>frmNewLegendItem.cs</DependentUpon>
+      <DependentUpon>frmNewLegendItem.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\JLKLenendItem.cs" />
     <Compile Include="UI\frmTKWizard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmTKWizard.Designer.cs">
-        <DependentUpon>frmTKWizard.cs</DependentUpon>
+      <DependentUpon>frmTKWizard.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\TKConfigPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\TKConfigPage.Designer.cs">
-        <DependentUpon>TKConfigPage.cs</DependentUpon>
+      <DependentUpon>TKConfigPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\TFTextInfoPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\TFTextInfoPage.Designer.cs">
-        <DependentUpon>TFTextInfoPage.cs</DependentUpon>
+      <DependentUpon>TFTextInfoPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\MapGridTypeProperty.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\MapGridTypeProperty.Designer.cs">
-        <DependentUpon>MapGridTypeProperty.cs</DependentUpon>
+      <DependentUpon>MapGridTypeProperty.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\MapGridControlSecond.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\MapGridControlSecond.Designer.cs">
-        <DependentUpon>MapGridControlSecond.cs</DependentUpon>
+      <DependentUpon>MapGridControlSecond.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\ScaleAndUnitsPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\ScaleAndUnitsPropertyPage.Designer.cs">
-        <DependentUpon>ScaleAndUnitsPropertyPage.cs</DependentUpon>
+      <DependentUpon>ScaleAndUnitsPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\LegendWizard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\LegendWizard.Designer.cs">
-        <DependentUpon>LegendWizard.cs</DependentUpon>
+      <DependentUpon>LegendWizard.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\LegendLayerUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\LegendLayerUserControl.Designer.cs">
-        <DependentUpon>LegendLayerUserControl.cs</DependentUpon>
+      <DependentUpon>LegendLayerUserControl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\LegendSetupUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\LegendSetupUserControl.Designer.cs">
-        <DependentUpon>LegendSetupUserControl.cs</DependentUpon>
+      <DependentUpon>LegendSetupUserControl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\LegendTitleUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\LegendTitleUserControl.Designer.cs">
-        <DependentUpon>LegendTitleUserControl.cs</DependentUpon>
+      <DependentUpon>LegendTitleUserControl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\LegendFormatSetupCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\LegendFormatSetupCtrl.Designer.cs">
-        <DependentUpon>LegendFormatSetupCtrl.cs</DependentUpon>
+      <DependentUpon>LegendFormatSetupCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\LegendLayer.cs" />
     <Compile Include="UI\SimpleRenderControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\SimpleRenderControl.Designer.cs">
-        <DependentUpon>SimpleRenderControl.cs</DependentUpon>
+      <DependentUpon>SimpleRenderControl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\UniqueValueRendererMoreAttributeCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\UniqueValueRendererMoreAttributeCtrl.Designer.cs">
-        <DependentUpon>UniqueValueRendererMoreAttributeCtrl.cs</DependentUpon>
+      <DependentUpon>UniqueValueRendererMoreAttributeCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\ClassBreaksRendererCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\ClassBreaksRendererCtrl.Designer.cs">
-        <DependentUpon>ClassBreaksRendererCtrl.cs</DependentUpon>
+      <DependentUpon>ClassBreaksRendererCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\ProportionalSymbolRendererCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\ProportionalSymbolRendererCtrl.Designer.cs">
-        <DependentUpon>ProportionalSymbolRendererCtrl.cs</DependentUpon>
+      <DependentUpon>ProportionalSymbolRendererCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\DotDensityRendererCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\DotDensityRendererCtrl.Designer.cs">
-        <DependentUpon>DotDensityRendererCtrl.cs</DependentUpon>
+      <DependentUpon>DotDensityRendererCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\ChartRendererCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\ChartRendererCtrl.Designer.cs">
-        <DependentUpon>ChartRendererCtrl.cs</DependentUpon>
+      <DependentUpon>ChartRendererCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\RepresentationRendererPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\RepresentationRendererPage.Designer.cs">
-        <DependentUpon>RepresentationRendererPage.cs</DependentUpon>
+      <DependentUpon>RepresentationRendererPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\FieldWrapEx.cs" />
     <Compile Include="UI\StatisticsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\StatisticsControl.Designer.cs">
-        <DependentUpon>StatisticsControl.cs</DependentUpon>
+      <DependentUpon>StatisticsControl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\TLConfigPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\TLConfigPropertyPage.Designer.cs">
-        <DependentUpon>TLConfigPropertyPage.cs</DependentUpon>
+      <DependentUpon>TLConfigPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\MapTemplateGeneralPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\MapTemplateGeneralPage.Designer.cs">
-        <DependentUpon>MapTemplateGeneralPage.cs</DependentUpon>
+      <DependentUpon>MapTemplateGeneralPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\TemplateSizeStyle.cs" />
     <Compile Include="MapCartoTemplateLib\JLKMapTemplateWizard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\JLKMapTemplateWizard.Designer.cs">
-        <DependentUpon>JLKMapTemplateWizard.cs</DependentUpon>
+      <DependentUpon>JLKMapTemplateWizard.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\LabelFormatPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\LabelFormatPropertyPage.Designer.cs">
-        <DependentUpon>LabelFormatPropertyPage.cs</DependentUpon>
+      <DependentUpon>LabelFormatPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\GridAxisPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\GridAxisPropertyPage.Designer.cs">
-        <DependentUpon>GridAxisPropertyPage.cs</DependentUpon>
+      <DependentUpon>GridAxisPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\TickSymbolPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\TickSymbolPropertyPage.Designer.cs">
-        <DependentUpon>TickSymbolPropertyPage.cs</DependentUpon>
+      <DependentUpon>TickSymbolPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\OtherGridPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\OtherGridPropertyPage.Designer.cs">
-        <DependentUpon>OtherGridPropertyPage.cs</DependentUpon>
+      <DependentUpon>OtherGridPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\StarndFenFuMapTemplatePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\StarndFenFuMapTemplatePage.Designer.cs">
-        <DependentUpon>StarndFenFuMapTemplatePage.cs</DependentUpon>
+      <DependentUpon>StarndFenFuMapTemplatePage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\MapTemplateClass.cs" />
     <Compile Include="MapCartoTemplateLib\MapTemplateOLEElement.cs" />
     <Compile Include="UI\frmDataFrameProperty.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmDataFrameProperty.Designer.cs">
-        <DependentUpon>frmDataFrameProperty.cs</DependentUpon>
+      <DependentUpon>frmDataFrameProperty.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\MapGridControlThird.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\MapGridControlThird.Designer.cs">
-        <DependentUpon>MapGridControlThird.cs</DependentUpon>
+      <DependentUpon>MapGridControlThird.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\LayerFieldsPageExtend.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\LayerFieldsPageExtend.Designer.cs">
-        <DependentUpon>LayerFieldsPageExtend.cs</DependentUpon>
+      <DependentUpon>LayerFieldsPageExtend.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\LegendItemWrap.cs" />
     <Compile Include="UI\HatchClassCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\HatchClassCtrl.Designer.cs">
-        <DependentUpon>HatchClassCtrl.cs</DependentUpon>
+      <DependentUpon>HatchClassCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="EditElementPropertiesOperation.cs" />
     <Compile Include="UI\frmJTBElement.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmJTBElement.Designer.cs">
-        <DependentUpon>frmJTBElement.cs</DependentUpon>
+      <DependentUpon>frmJTBElement.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\MapGeneralInfoCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\MapGeneralInfoCtrl.Designer.cs">
-        <DependentUpon>MapGeneralInfoCtrl.cs</DependentUpon>
+      <DependentUpon>MapGeneralInfoCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\MapCoordinateCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\MapCoordinateCtrl.Designer.cs">
-        <DependentUpon>MapCoordinateCtrl.cs</DependentUpon>
+      <DependentUpon>MapCoordinateCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\FrameProprtyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\FrameProprtyPage.Designer.cs">
-        <DependentUpon>FrameProprtyPage.cs</DependentUpon>
+      <DependentUpon>FrameProprtyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\PicturePropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\PicturePropertyPage.Designer.cs">
-        <DependentUpon>PicturePropertyPage.cs</DependentUpon>
+      <DependentUpon>PicturePropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\NorthArrowPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\NorthArrowPropertyPage.Designer.cs">
-        <DependentUpon>NorthArrowPropertyPage.cs</DependentUpon>
+      <DependentUpon>NorthArrowPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\ScaleTextTextPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\ScaleTextTextPropertyPage.Designer.cs">
-        <DependentUpon>ScaleTextTextPropertyPage.cs</DependentUpon>
+      <DependentUpon>ScaleTextTextPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\ScaleTextFormatPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\ScaleTextFormatPropertyPage.Designer.cs">
-        <DependentUpon>ScaleTextFormatPropertyPage.cs</DependentUpon>
+      <DependentUpon>ScaleTextFormatPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\LegendPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\LegendPropertyPage.Designer.cs">
-        <DependentUpon>LegendPropertyPage.cs</DependentUpon>
+      <DependentUpon>LegendPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\LegendItemPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\LegendItemPropertyPage.Designer.cs">
-        <DependentUpon>LegendItemPropertyPage.cs</DependentUpon>
+      <DependentUpon>LegendItemPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\LineSymbolPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\LineSymbolPropertyPage.Designer.cs">
-        <DependentUpon>LineSymbolPropertyPage.cs</DependentUpon>
+      <DependentUpon>LineSymbolPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\JLKTransformation.cs" />
     <Compile Include="MapCartoTemplateLib\GBMapNoAssistant.cs" />
     <Compile Include="MapCartoTemplateLib\ExpressionTree.cs" />
@@ -1444,96 +1273,83 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\TextElementValueSetPage.Designer.cs">
-        <DependentUpon>TextElementValueSetPage.cs</DependentUpon>
+      <DependentUpon>TextElementValueSetPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\MapTemplateTextElement.cs" />
     <Compile Include="MapCartoTemplateLib\frmExpressBulider.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\frmExpressBulider.Designer.cs">
-        <DependentUpon>frmExpressBulider.cs</DependentUpon>
+      <DependentUpon>frmExpressBulider.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\TableCellSetPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\TableCellSetPage.Designer.cs">
-        <DependentUpon>TableCellSetPage.cs</DependentUpon>
+      <DependentUpon>TableCellSetPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\frmSetTabelCell.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\frmSetTabelCell.Designer.cs">
-        <DependentUpon>frmSetTabelCell.cs</DependentUpon>
+      <DependentUpon>frmSetTabelCell.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\ScaleBarFormatPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\ScaleBarFormatPropertyPage.Designer.cs">
-        <DependentUpon>ScaleBarFormatPropertyPage.cs</DependentUpon>
+      <DependentUpon>ScaleBarFormatPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\ScaleBarEventsClass.cs" />
     <Compile Include="MapCartoTemplateLib\ScaleAndUnitsPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\ScaleAndUnitsPropertyPage.Designer.cs">
-        <DependentUpon>ScaleAndUnitsPropertyPage.cs</DependentUpon>
+      <DependentUpon>ScaleAndUnitsPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\PictureSelectPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\PictureSelectPage.Designer.cs">
-        <DependentUpon>PictureSelectPage.cs</DependentUpon>
+      <DependentUpon>PictureSelectPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\MapTemplatePictureElement.cs" />
     <Compile Include="MapCartoTemplateLib\JLKElementWizardForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\JLKElementWizardForm.Designer.cs">
-        <DependentUpon>JLKElementWizardForm.cs</DependentUpon>
+      <DependentUpon>JLKElementWizardForm.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\ElementTypeSelectPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\ElementTypeSelectPage.Designer.cs">
-        <DependentUpon>ElementTypeSelectPage.cs</DependentUpon>
+      <DependentUpon>ElementTypeSelectPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\LegendTitleUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\LegendTitleUserControl.Designer.cs">
-        <DependentUpon>LegendTitleUserControl.cs</DependentUpon>
+      <DependentUpon>LegendTitleUserControl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\LegendFrameUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\LegendFrameUserControl.Designer.cs">
-        <DependentUpon>LegendFrameUserControl.cs</DependentUpon>
+      <DependentUpon>LegendFrameUserControl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\LegendFormatSetupCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\LegendFormatSetupCtrl.Designer.cs">
-        <DependentUpon>LegendFormatSetupCtrl.cs</DependentUpon>
+      <DependentUpon>LegendFormatSetupCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\TableGeneralPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\TableGeneralPage.Designer.cs">
-        <DependentUpon>TableGeneralPage.cs</DependentUpon>
+      <DependentUpon>TableGeneralPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\MapTemplateScaleTextElement.cs" />
     <Compile Include="MapCartoTemplateLib\MapTemplateScaleBarElement.cs" />
     <Compile Include="MapCartoTemplateLib\MapTemplateLegendElement.cs" />
@@ -1542,9 +1358,8 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmLayerRender.Designer.cs">
-        <DependentUpon>frmLayerRender.cs</DependentUpon>
+      <DependentUpon>frmLayerRender.cs</DependentUpon>
     </Compile>
-
     <Compile Include="XiangMapClass.cs" />
     <Compile Include="YTTransformation.cs" />
     <Compile Include="YTLegendAssiatant.cs" />
@@ -1553,58 +1368,50 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmFenFuTKCreate.Designer.cs">
-        <DependentUpon>frmFenFuTKCreate.cs</DependentUpon>
+      <DependentUpon>frmFenFuTKCreate.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\LineLabelSetCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\LineLabelSetCtrl.Designer.cs">
-        <DependentUpon>LineLabelSetCtrl.cs</DependentUpon>
+      <DependentUpon>LineLabelSetCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmAnnoScaleSet.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmAnnoScaleSet.Designer.cs">
-        <DependentUpon>frmAnnoScaleSet.cs</DependentUpon>
+      <DependentUpon>frmAnnoScaleSet.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmLayerProperty.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmLayerProperty.Designer.cs">
-        <DependentUpon>frmLayerProperty.cs</DependentUpon>
+      <DependentUpon>frmLayerProperty.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\ScenceGeneralPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\ScenceGeneralPropertyPage.Designer.cs">
-        <DependentUpon>ScenceGeneralPropertyPage.cs</DependentUpon>
+      <DependentUpon>ScenceGeneralPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmJoinTypeSet.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmJoinTypeSet.Designer.cs">
-        <DependentUpon>frmJoinTypeSet.cs</DependentUpon>
+      <DependentUpon>frmJoinTypeSet.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\LegendItemGeneralPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\LegendItemGeneralPropertyPage.Designer.cs">
-        <DependentUpon>LegendItemGeneralPropertyPage.cs</DependentUpon>
+      <DependentUpon>LegendItemGeneralPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\NorthArrowPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\NorthArrowPropertyPage.Designer.cs">
-        <DependentUpon>NorthArrowPropertyPage.cs</DependentUpon>
+      <DependentUpon>NorthArrowPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\RepresentationruleListBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1612,324 +1419,279 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmHatchAlignment.Designer.cs">
-        <DependentUpon>frmHatchAlignment.cs</DependentUpon>
+      <DependentUpon>frmHatchAlignment.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmBufferWizard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmBufferWizard.Designer.cs">
-        <DependentUpon>frmBufferWizard.cs</DependentUpon>
+      <DependentUpon>frmBufferWizard.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\BufferParameterSetCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\BufferParameterSetCtrl.Designer.cs">
-        <DependentUpon>BufferParameterSetCtrl.cs</DependentUpon>
+      <DependentUpon>BufferParameterSetCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\BufferOutputSetCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\BufferOutputSetCtrl.Designer.cs">
-        <DependentUpon>BufferOutputSetCtrl.cs</DependentUpon>
+      <DependentUpon>BufferOutputSetCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\FractionTextSymbolPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\FractionTextSymbolPage.Designer.cs">
-        <DependentUpon>FractionTextSymbolPage.cs</DependentUpon>
+      <DependentUpon>FractionTextSymbolPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmPageAndPrinterSetup.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmPageAndPrinterSetup.Designer.cs">
-        <DependentUpon>frmPageAndPrinterSetup.cs</DependentUpon>
+      <DependentUpon>frmPageAndPrinterSetup.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Library\MapTemplateList.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Library\MapTemplateList.Designer.cs">
-        <DependentUpon>MapTemplateList.cs</DependentUpon>
+      <DependentUpon>MapTemplateList.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Library\frmImportExcelSet.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Library\frmImportExcelSet.Designer.cs">
-        <DependentUpon>frmImportExcelSet.cs</DependentUpon>
+      <DependentUpon>frmImportExcelSet.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Library\ExcelTools.cs" />
     <Compile Include="MapCartoTemplateLib\CoordinateType.cs" />
     <Compile Include="UI\LegendItemGeneralPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\LegendItemGeneralPropertyPage.Designer.cs">
-        <DependentUpon>LegendItemGeneralPropertyPage.cs</DependentUpon>
+      <DependentUpon>LegendItemGeneralPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\LegendItemArrangementPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\LegendItemArrangementPropertyPage.Designer.cs">
-        <DependentUpon>LegendItemArrangementPropertyPage.cs</DependentUpon>
+      <DependentUpon>LegendItemArrangementPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\RasterStretchedRenderPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\RasterStretchedRenderPage.Designer.cs">
-        <DependentUpon>RasterStretchedRenderPage.cs</DependentUpon>
+      <DependentUpon>RasterStretchedRenderPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmRasteStrechSet.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmRasteStrechSet.Designer.cs">
-        <DependentUpon>frmRasteStrechSet.cs</DependentUpon>
+      <DependentUpon>frmRasteStrechSet.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmRender.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmRender.Designer.cs">
-        <DependentUpon>frmRender.cs</DependentUpon>
+      <DependentUpon>frmRender.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmManageBookMarker.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmManageBookMarker.Designer.cs">
-        <DependentUpon>frmManageBookMarker.cs</DependentUpon>
+      <DependentUpon>frmManageBookMarker.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Library\frmMapTemplateApplyWizard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Library\frmMapTemplateApplyWizard.Designer.cs">
-        <DependentUpon>frmMapTemplateApplyWizard.cs</DependentUpon>
+      <DependentUpon>frmMapTemplateApplyWizard.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Library\MapTemplateParamPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Library\MapTemplateParamPage.Designer.cs">
-        <DependentUpon>MapTemplateParamPage.cs</DependentUpon>
+      <DependentUpon>MapTemplateParamPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\BLL\MapTemplateBLL.cs" />
     <Compile Include="UI\RepresentationRuleListBox1.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\RepresentationRuleListBox1.Designer.cs">
-        <DependentUpon>RepresentationRuleListBox1.cs</DependentUpon>
+      <DependentUpon>RepresentationRuleListBox1.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmCalibratedMapBorder.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmCalibratedMapBorder.Designer.cs">
-        <DependentUpon>frmCalibratedMapBorder.cs</DependentUpon>
+      <DependentUpon>frmCalibratedMapBorder.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmLableRotateField.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmLableRotateField.Designer.cs">
-        <DependentUpon>frmLableRotateField.cs</DependentUpon>
+      <DependentUpon>frmLableRotateField.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\HatchDefinitionCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\HatchDefinitionCtrl.Designer.cs">
-        <DependentUpon>HatchDefinitionCtrl.cs</DependentUpon>
+      <DependentUpon>HatchDefinitionCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmNewHatchClassName.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmNewHatchClassName.Designer.cs">
-        <DependentUpon>frmNewHatchClassName.cs</DependentUpon>
+      <DependentUpon>frmNewHatchClassName.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmTextDisplaySet.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmTextDisplaySet.Designer.cs">
-        <DependentUpon>frmTextDisplaySet.cs</DependentUpon>
+      <DependentUpon>frmTextDisplaySet.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\RasterClassifiedRenderPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\RasterClassifiedRenderPage.Designer.cs">
-        <DependentUpon>RasterClassifiedRenderPage.cs</DependentUpon>
+      <DependentUpon>RasterClassifiedRenderPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\RasterRGBRendererPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\RasterRGBRendererPage.Designer.cs">
-        <DependentUpon>RasterRGBRendererPage.cs</DependentUpon>
+      <DependentUpon>RasterRGBRendererPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\FindResultControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\FindResultControl.Designer.cs">
-        <DependentUpon>FindResultControl.cs</DependentUpon>
+      <DependentUpon>FindResultControl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmInfo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmInfo.Designer.cs">
-        <DependentUpon>frmInfo.cs</DependentUpon>
+      <DependentUpon>frmInfo.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\FindControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\FindControl.Designer.cs">
-        <DependentUpon>FindControl.cs</DependentUpon>
+      <DependentUpon>FindControl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\LayerObject.cs" />
     <Compile Include="Library\frmCartoConfig.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Library\frmCartoConfig.Designer.cs">
-        <DependentUpon>frmCartoConfig.cs</DependentUpon>
+      <DependentUpon>frmCartoConfig.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\MapTemplateGraphicsElement.cs" />
     <Compile Include="UI\LegendObject.cs" />
     <Compile Include="UI\frmScaleSet.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmScaleSet.Designer.cs">
-        <DependentUpon>frmScaleSet.cs</DependentUpon>
+      <DependentUpon>frmScaleSet.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmAddValuesEx.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmAddValuesEx.Designer.cs">
-        <DependentUpon>frmAddValuesEx.cs</DependentUpon>
+      <DependentUpon>frmAddValuesEx.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmDataExclusion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmDataExclusion.Designer.cs">
-        <DependentUpon>frmDataExclusion.cs</DependentUpon>
+      <DependentUpon>frmDataExclusion.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\AddClassCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\AddClassCtrl.Designer.cs">
-        <DependentUpon>AddClassCtrl.cs</DependentUpon>
+      <DependentUpon>AddClassCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmLabelManager.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmLabelManager.Designer.cs">
-        <DependentUpon>frmLabelManager.cs</DependentUpon>
+      <DependentUpon>frmLabelManager.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\LayerRenderCtrlExtend.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\LayerRenderCtrlExtend.Designer.cs">
-        <DependentUpon>LayerRenderCtrlExtend.cs</DependentUpon>
+      <DependentUpon>LayerRenderCtrlExtend.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmInput.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmInput.Designer.cs">
-        <DependentUpon>frmInput.cs</DependentUpon>
+      <DependentUpon>frmInput.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Library\frmCircleInput.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Library\frmCircleInput.Designer.cs">
-        <DependentUpon>frmCircleInput.cs</DependentUpon>
+      <DependentUpon>frmCircleInput.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\OLESelectPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\OLESelectPage.Designer.cs">
-        <DependentUpon>OLESelectPage.cs</DependentUpon>
+      <DependentUpon>OLESelectPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\MapGridStylePropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\MapGridStylePropertyPage.Designer.cs">
-        <DependentUpon>MapGridStylePropertyPage.cs</DependentUpon>
+      <DependentUpon>MapGridStylePropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\PointLabelSetCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\PointLabelSetCtrl.Designer.cs">
-        <DependentUpon>PointLabelSetCtrl.cs</DependentUpon>
+      <DependentUpon>PointLabelSetCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\FillLabelSetCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\FillLabelSetCtrl.Designer.cs">
-        <DependentUpon>FillLabelSetCtrl.cs</DependentUpon>
+      <DependentUpon>FillLabelSetCtrl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\MarkerElementPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\MarkerElementPropertyPage.Designer.cs">
-        <DependentUpon>MarkerElementPropertyPage.cs</DependentUpon>
+      <DependentUpon>MarkerElementPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\ScaleTextEventsClass.cs" />
     <Compile Include="UI\RouteLayerPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\RouteLayerPropertyPage.Designer.cs">
-        <DependentUpon>RouteLayerPropertyPage.cs</DependentUpon>
+      <DependentUpon>RouteLayerPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\MatchStyleGrallyControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\MatchStyleGrallyControl.Designer.cs">
-        <DependentUpon>MatchStyleGrallyControl.cs</DependentUpon>
+      <DependentUpon>MatchStyleGrallyControl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\FeatureInfoControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\FeatureInfoControl.Designer.cs">
-        <DependentUpon>FeatureInfoControl.cs</DependentUpon>
+      <DependentUpon>FeatureInfoControl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmMatchStyleGrally.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmMatchStyleGrally.Designer.cs">
-        <DependentUpon>frmMatchStyleGrally.cs</DependentUpon>
+      <DependentUpon>frmMatchStyleGrally.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Library\IMapAndPageLayoutCtrlForm.cs" />
     <Compile Include="Library\IMxDocument.cs" />
     <Compile Include="Library\MxDocument.cs" />
@@ -1937,58 +1699,50 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\LegendItemArrangementPropertyPage.Designer.cs">
-        <DependentUpon>LegendItemArrangementPropertyPage.cs</DependentUpon>
+      <DependentUpon>LegendItemArrangementPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\LegendItemPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\LegendItemPropertyPage.Designer.cs">
-        <DependentUpon>LegendItemPropertyPage.cs</DependentUpon>
+      <DependentUpon>LegendItemPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmConvertSymToRep.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmConvertSymToRep.Designer.cs">
-        <DependentUpon>frmConvertSymToRep.cs</DependentUpon>
+      <DependentUpon>frmConvertSymToRep.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\NewMapGridWizard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\NewMapGridWizard.Designer.cs">
-        <DependentUpon>NewMapGridWizard.cs</DependentUpon>
+      <DependentUpon>NewMapGridWizard.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\IndexGridLabelPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\IndexGridLabelPropertyPage.Designer.cs">
-        <DependentUpon>IndexGridLabelPropertyPage.cs</DependentUpon>
+      <DependentUpon>IndexGridLabelPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\MapGridBorderPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\MapGridBorderPropertyPage.Designer.cs">
-        <DependentUpon>MapGridBorderPropertyPage.cs</DependentUpon>
+      <DependentUpon>MapGridBorderPropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\MapGridCoordinatePropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\MapGridCoordinatePropertyPage.Designer.cs">
-        <DependentUpon>MapGridCoordinatePropertyPage.cs</DependentUpon>
+      <DependentUpon>MapGridCoordinatePropertyPage.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmMapGridsProperty.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmMapGridsProperty.Designer.cs">
-        <DependentUpon>frmMapGridsProperty.cs</DependentUpon>
+      <DependentUpon>frmMapGridsProperty.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\FindControlEx.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1996,69 +1750,60 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\FindResultControlEx.Designer.cs">
-        <DependentUpon>FindResultControlEx.cs</DependentUpon>
+      <DependentUpon>FindResultControlEx.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmPrint.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmPrint.Designer.cs">
-        <DependentUpon>frmPrint.cs</DependentUpon>
+      <DependentUpon>frmPrint.cs</DependentUpon>
     </Compile>
-
     <Compile Include="JoiningRelatingHelper.cs" />
     <Compile Include="UI\MapGridControlFirst.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\MapGridControlFirst.Designer.cs">
-        <DependentUpon>MapGridControlFirst.cs</DependentUpon>
+      <DependentUpon>MapGridControlFirst.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\AttributeQueryControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\AttributeQueryControl.Designer.cs">
-        <DependentUpon>AttributeQueryControl.cs</DependentUpon>
+      <DependentUpon>AttributeQueryControl.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmFindResult.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmFindResult.Designer.cs">
-        <DependentUpon>frmFindResult.cs</DependentUpon>
+      <DependentUpon>frmFindResult.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\FormPrinterSetupEx.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\FormPrinterSetupEx.Designer.cs">
-        <DependentUpon>FormPrinterSetupEx.cs</DependentUpon>
+      <DependentUpon>FormPrinterSetupEx.cs</DependentUpon>
     </Compile>
-
     <Compile Include="MapCartoTemplateLib\BLL\MapTemplateElementBLL.cs" />
     <Compile Include="UI\frmLayerPropertyExtend.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmLayerPropertyExtend.Designer.cs">
-        <DependentUpon>frmLayerPropertyExtend.cs</DependentUpon>
+      <DependentUpon>frmLayerPropertyExtend.cs</DependentUpon>
     </Compile>
-
     <Compile Include="UI\frmFind.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmFind.Designer.cs">
-        <DependentUpon>frmFind.cs</DependentUpon>
+      <DependentUpon>frmFind.cs</DependentUpon>
     </Compile>
-
     <Compile Include="OnActivePageLayoutHandler.cs" />
     <Compile Include="ApplyMapTemplateAssist.cs" />
     <Compile Include="MapCartoTemplateLib\NumberAndLabelPropertyPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MapCartoTemplateLib\NumberAndLabelPropertyPage.Designer.cs">
-        <DependentUpon>NumberAndLabelPropertyPage.cs</DependentUpon>
+      <DependentUpon>NumberAndLabelPropertyPage.cs</DependentUpon>
     </Compile>
-
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DesignLib\CatoTemplateApplySelect.resx">
@@ -2845,22 +2590,27 @@
     <ProjectReference Include="..\Yutai.ArcGIS.Catalog\Yutai.ArcGIS.Catalog.csproj">
       <Project>{A71076F2-B2ED-4522-8DBF-BCA1689EB637}</Project>
       <Name>Yutai.ArcGIS.Catalog</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.ArcGIS.Common\Yutai.ArcGIS.Common.csproj">
       <Project>{1938b3f8-8ede-48f7-9594-eeb1f126e622}</Project>
       <Name>Yutai.ArcGIS.Common</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.ArcGIS.Controls\Yutai.ArcGIS.Controls.csproj">
       <Project>{0E17B019-EE36-46B7-8B96-C0A3CA666430}</Project>
       <Name>Yutai.ArcGIS.Controls</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.Plugins\Yutai.Plugins.csproj">
       <Project>{800f2ee4-47ab-4cd4-934d-a64980d98a23}</Project>
       <Name>Yutai.Plugins</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.Shared\Yutai.Shared.csproj">
       <Project>{4a9b3243-2b0a-4e87-9b23-71a58c1f318d}</Project>
       <Name>Yutai.Shared</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

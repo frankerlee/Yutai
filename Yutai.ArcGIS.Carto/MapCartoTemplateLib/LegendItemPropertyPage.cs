@@ -38,7 +38,9 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 this.ilegend_0.ClearItems();
                 for (int i = 0; i < this.listLegendLayers.ItemCount; i++)
                 {
-                    ILegendItem item = ((this.listLegendLayers.Items[i] as LegendItemObject).LegendItem as IClone).Clone() as ILegendItem;
+                    ILegendItem item =
+                        ((this.listLegendLayers.Items[i] as LegendItemObject).LegendItem as IClone).Clone() as
+                            ILegendItem;
                     this.ilegend_0.AddItem(item);
                 }
                 this.ilegend_0.AutoReorder = this.chkAutoReorder.Checked;
@@ -123,7 +125,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         {
             if (this.bool_0)
             {
-                (this.listLegendLayers.SelectedItem as LegendItemObject).LegendItem.NewColumn = this.chkNewColumn.Checked;
+                (this.listLegendLayers.SelectedItem as LegendItemObject).LegendItem.NewColumn =
+                    this.chkNewColumn.Checked;
                 this.method_2();
             }
         }
@@ -132,7 +135,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         {
         }
 
- private void LegendItemPropertyPage_Load(object sender, EventArgs e)
+        private void LegendItemPropertyPage_Load(object sender, EventArgs e)
         {
             IMap map = this.ilegend_0.Map;
             for (int i = 0; i < map.LayerCount; i++)
@@ -257,7 +260,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             {
                 try
                 {
-                    (this.listLegendLayers.SelectedItem as LegendItemObject).LegendItem.Columns = short.Parse(this.txtColumns.Text);
+                    (this.listLegendLayers.SelectedItem as LegendItemObject).LegendItem.Columns =
+                        short.Parse(this.txtColumns.Text);
                     this.method_2();
                 }
                 catch
@@ -268,39 +272,23 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

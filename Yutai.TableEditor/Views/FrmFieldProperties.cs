@@ -22,6 +22,7 @@ namespace Yutai.Plugins.TableEditor.Views
         }
 
         private IField _field;
+
         public FrmFieldProperties(IField field)
         {
             InitializeComponent();
@@ -35,7 +36,6 @@ namespace Yutai.Plugins.TableEditor.Views
         }
 
 
-
         public IField NewField
         {
             get
@@ -44,9 +44,10 @@ namespace Yutai.Plugins.TableEditor.Views
                 IFieldEdit pFieldEdit = pField as IFieldEdit;
                 pFieldEdit.Name_2 = txtName.Text;
                 pFieldEdit.AliasName_2 = txtAlias.Text;
-                pFieldEdit.Type_2 = (esriFieldType)Enum.Parse(typeof(esriFieldType), cboDataType.SelectedItem.ToString(), false);
-                pFieldEdit.Precision_2 = (int)udPrecision.Value;
-                pFieldEdit.Length_2 = (int)udWidth.Value;
+                pFieldEdit.Type_2 =
+                    (esriFieldType) Enum.Parse(typeof(esriFieldType), cboDataType.SelectedItem.ToString(), false);
+                pFieldEdit.Precision_2 = (int) udPrecision.Value;
+                pFieldEdit.Length_2 = (int) udWidth.Value;
 
                 return pFieldEdit as IField;
             }
@@ -65,7 +66,6 @@ namespace Yutai.Plugins.TableEditor.Views
             udWidth.Enabled = false;
             udPrecision.Enabled = false;
             txtExpression.Enabled = false;
-
         }
     }
 }

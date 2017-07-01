@@ -25,25 +25,18 @@ namespace Yutai.ArcGIS.Carto.UI
             this.pageSetupControl_0.Do();
         }
 
- private void frmPageSetup_Load(object sender, EventArgs e)
+        private void frmPageSetup_Load(object sender, EventArgs e)
         {
         }
 
- public IMapFrame MapFrame
+        public IMapFrame MapFrame
         {
-            set
-            {
-                this.pageSetupControl_0.MapFrame = value;
-            }
+            set { this.pageSetupControl_0.MapFrame = value; }
         }
 
         public IPageLayout PageLayout
         {
-            set
-            {
-                this.pageSetupControl_0.PageLayout = value;
-            }
+            set { this.pageSetupControl_0.PageLayout = value; }
         }
     }
 }
-

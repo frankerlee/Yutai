@@ -1,10 +1,8 @@
-﻿
-using ESRI.ArcGIS.Carto;
+﻿using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -38,22 +36,18 @@ namespace Yutai.Pipeline.Analysis.QueryForms
         {
             set { _plugin = value; }
         }
+
         public IGeometry m_ipGeo;
         public IAppContext m_context;
         public IMapControl3 MapControl;
         public IPipelineConfig pPipeCfg;
         private ArrayList m_alPipeLine = new ArrayList();
         private ArrayList m_alPipePoint = new ArrayList();
+
         public bool SelectGeometry
         {
-            get
-            {
-                return this.GeometrySet.Checked;
-            }
-            set
-            {
-                this.GeometrySet.Checked = value;
-            }
+            get { return this.GeometrySet.Checked; }
+            set { this.GeometrySet.Checked = value; }
         }
 
         public RelateQueryUI()
@@ -118,13 +112,17 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 string text = this.cmbPipeLine.Text.Trim();
                 if (text.Length >= 2)
                 {
-                    int length = text.LastIndexOf("线", StringComparison.Ordinal) > 0 ? text.LastIndexOf("线", StringComparison.Ordinal) : 2;
+                    int length = text.LastIndexOf("线", StringComparison.Ordinal) > 0
+                        ? text.LastIndexOf("线", StringComparison.Ordinal)
+                        : 2;
                     text = text.Substring(0, length);
                     int count = this.cmbPipePoint.Items.Count;
                     for (int i = 0; i < count; i++)
                     {
                         string text2 = this.cmbPipePoint.Items[i].ToString();
-                        int length2 = text2.LastIndexOf("点", StringComparison.Ordinal) > 0 ? text2.LastIndexOf("点", StringComparison.Ordinal) : 2;
+                        int length2 = text2.LastIndexOf("点", StringComparison.Ordinal) > 0
+                            ? text2.LastIndexOf("点", StringComparison.Ordinal)
+                            : 2;
                         text2 = text2.Substring(0, length2);
                         if (text2.Equals(text))
                         {
@@ -145,13 +143,17 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 string text = this.cmbPipePoint.Text.Trim();
                 if (text.Length >= 2)
                 {
-                    int length = text.LastIndexOf("点", StringComparison.Ordinal) > 0 ? text.LastIndexOf("点", StringComparison.Ordinal) : 2;
+                    int length = text.LastIndexOf("点", StringComparison.Ordinal) > 0
+                        ? text.LastIndexOf("点", StringComparison.Ordinal)
+                        : 2;
                     text = text.Substring(0, length);
                     int count = this.cmbPipeLine.Items.Count;
                     for (int i = 0; i < count; i++)
                     {
                         string text2 = this.cmbPipeLine.Items[i].ToString();
-                        int length2 = text2.LastIndexOf("线", StringComparison.Ordinal) > 0 ? text2.LastIndexOf("线", StringComparison.Ordinal) : 2;
+                        int length2 = text2.LastIndexOf("线", StringComparison.Ordinal) > 0
+                            ? text2.LastIndexOf("线", StringComparison.Ordinal)
+                            : 2;
                         text2 = text2.Substring(0, length2);
                         if (text2.Equals(text))
                         {
@@ -196,11 +198,11 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             {
                 lbVal.Items.Clear();
                 List<string> values = new List<string>();
-                CommonHelper.GetUniqueValues((ITable)featureClass, strFieldName, values);
+                CommonHelper.GetUniqueValues((ITable) featureClass, strFieldName, values);
                 lbVal.Items.AddRange(values.ToArray());
             }
         }
-        
+
         private void btnPipeLineQuery_Click(object sender, EventArgs e)
         {
             if (this.cmbPipeLineFields.Text == "")
@@ -222,7 +224,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 this.Walk();
                 RelateQueryUI.LayerboxItem layerboxItem = this.cmbPipeLine.SelectedItem as RelateQueryUI.LayerboxItem;
                 IFeatureLayer pPipeLayer = layerboxItem.m_pPipeLayer;
-                IFeatureSelection featureSelection = (IFeatureSelection)pPipeLayer;
+                IFeatureSelection featureSelection = (IFeatureSelection) pPipeLayer;
                 featureSelection.Clear();
                 ISelectionSet selectionSet = featureSelection.SelectionSet;
                 selectionSet.IDs.Reset();
@@ -260,7 +262,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 this.Walk();
                 RelateQueryUI.LayerboxItem layerboxItem = this.cmbPipePoint.SelectedItem as RelateQueryUI.LayerboxItem;
                 IFeatureLayer pPipeLayer = layerboxItem.m_pPipeLayer;
-                IFeatureSelection featureSelection = (IFeatureSelection)pPipeLayer;
+                IFeatureSelection featureSelection = (IFeatureSelection) pPipeLayer;
                 featureSelection.Clear();
                 ISelectionSet selectionSet = featureSelection.SelectionSet;
                 selectionSet.IDs.Reset();
@@ -295,24 +297,28 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                     IFeatureClass featureClass = pPipeLayer.FeatureClass;
                     ISpatialFilter spatialFilter = new SpatialFilter();
                     int num = featureClass.Fields.FindField(this.cmbPipeLineFields.Text.Trim());
-                    if (featureClass.Fields.Field[num].Type == (esriFieldType)4)
+                    if (featureClass.Fields.Field[num].Type == (esriFieldType) 4)
                     {
-                        spatialFilter.WhereClause = this.cmbPipeLineFields.Text.Trim() + " = '" + this.lstBoxPipeLineValues.Text.Trim() + "'";
+                        spatialFilter.WhereClause = this.cmbPipeLineFields.Text.Trim() + " = '" +
+                                                    this.lstBoxPipeLineValues.Text.Trim() + "'";
                     }
-                    else if (featureClass.Fields.Field[num].Type == (esriFieldType)5)
+                    else if (featureClass.Fields.Field[num].Type == (esriFieldType) 5)
                     {
                         if (pPipeLayer.DataSourceType == "Personal Geodatabase Feature Class")
                         {
-                            spatialFilter.WhereClause = this.cmbPipeLineFields.Text.Trim() + " = #" + this.lstBoxPipeLineValues.Text.Trim() + "#";
+                            spatialFilter.WhereClause = this.cmbPipeLineFields.Text.Trim() + " = #" +
+                                                        this.lstBoxPipeLineValues.Text.Trim() + "#";
                         }
                         else
                         {
-                            spatialFilter.WhereClause = this.cmbPipeLineFields.Text.Trim() + "= TO_DATE('" + this.lstBoxPipeLineValues.Text.Trim() + "','YYYY-MM-DD')";
+                            spatialFilter.WhereClause = this.cmbPipeLineFields.Text.Trim() + "= TO_DATE('" +
+                                                        this.lstBoxPipeLineValues.Text.Trim() + "','YYYY-MM-DD')";
                         }
                     }
                     else
                     {
-                        spatialFilter.WhereClause = this.cmbPipeLineFields.Text.Trim() + " = " + this.lstBoxPipeLineValues.Text.Trim();
+                        spatialFilter.WhereClause = this.cmbPipeLineFields.Text.Trim() + " = " +
+                                                    this.lstBoxPipeLineValues.Text.Trim();
                     }
                     if (this.GeometrySet.Checked)
                     {
@@ -320,7 +326,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                         {
                             spatialFilter.Geometry = (this.m_ipGeo);
                         }
-                        spatialFilter.SpatialRel = (esriSpatialRelEnum)(1);
+                        spatialFilter.SpatialRel = (esriSpatialRelEnum) (1);
                     }
                     IFeatureCursor featureCursor = featureClass.Search(spatialFilter, false);
                     IFeature feature = featureCursor.NextFeature();
@@ -341,7 +347,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 }
             }
         }
-        
+
         private bool JustifyPipeLine(IFeature pFeatureLine)
         {
             IEdgeFeature edgeFeature = null;
@@ -388,7 +394,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             }
             return flag || flag2;
         }
-        
+
         private void axMap_OnAfterDraw(object sender, IMapControlEvents2_OnAfterDrawEvent e)
         {
             int viewDrawPhase = e.viewDrawPhase;
@@ -427,37 +433,38 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 object obj = null;
                 int selectionBufferInPixels = this.m_context.Config.SelectionEnvironment.SearchTolerance;
                 ISymbol symbol = null;
-                switch ((int)this.m_ipGeo.GeometryType)
+                switch ((int) this.m_ipGeo.GeometryType)
                 {
                     case 1:
-                        {
-                            ISimpleMarkerSymbol simpleMarkerSymbol = new SimpleMarkerSymbol();
-                            symbol = (ISymbol)simpleMarkerSymbol;
-                            symbol.ROP2 = (esriRasterOpCode)(10);
-                            simpleMarkerSymbol.Color = (rgbColor);
-                            simpleMarkerSymbol.Size = ((double)(selectionBufferInPixels + selectionBufferInPixels + selectionBufferInPixels));
-                            break;
-                        }
+                    {
+                        ISimpleMarkerSymbol simpleMarkerSymbol = new SimpleMarkerSymbol();
+                        symbol = (ISymbol) simpleMarkerSymbol;
+                        symbol.ROP2 = (esriRasterOpCode) (10);
+                        simpleMarkerSymbol.Color = (rgbColor);
+                        simpleMarkerSymbol.Size =
+                            ((double) (selectionBufferInPixels + selectionBufferInPixels + selectionBufferInPixels));
+                        break;
+                    }
                     case 3:
-                        {
-                            ISimpleLineSymbol simpleLineSymbol = new SimpleLineSymbol();
-                            symbol = (ISymbol)simpleLineSymbol;
-                            symbol.ROP2 = (esriRasterOpCode)(10);
-                            simpleLineSymbol.Color = (rgbColor);
-                            simpleLineSymbol.Color.Transparency = (1);
-                            simpleLineSymbol.Width = ((double)selectionBufferInPixels);
-                            break;
-                        }
+                    {
+                        ISimpleLineSymbol simpleLineSymbol = new SimpleLineSymbol();
+                        symbol = (ISymbol) simpleLineSymbol;
+                        symbol.ROP2 = (esriRasterOpCode) (10);
+                        simpleLineSymbol.Color = (rgbColor);
+                        simpleLineSymbol.Color.Transparency = (1);
+                        simpleLineSymbol.Width = ((double) selectionBufferInPixels);
+                        break;
+                    }
                     case 4:
                     case 5:
-                        {
-                            ISimpleFillSymbol simpleFillSymbol = new SimpleFillSymbol();
-                            symbol = (ISymbol)simpleFillSymbol;
-                            symbol.ROP2 = (esriRasterOpCode)(10);
-                            simpleFillSymbol.Color = (rgbColor);
-                            simpleFillSymbol.Color.Transparency = (1);
-                            break;
-                        }
+                    {
+                        ISimpleFillSymbol simpleFillSymbol = new SimpleFillSymbol();
+                        symbol = (ISymbol) simpleFillSymbol;
+                        symbol.ROP2 = (esriRasterOpCode) (10);
+                        simpleFillSymbol.Color = (rgbColor);
+                        simpleFillSymbol.Color.Transparency = (1);
+                        break;
+                    }
                 }
                 obj = symbol;
                 this.MapControl.DrawShape(this.m_ipGeo, ref obj);
@@ -479,7 +486,6 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             }
             else
             {
-
                 IMapControlEvents2_Event axMapControl = this.m_context.MapControl as IMapControlEvents2_Event;
                 axMapControl.OnAfterDraw -= AxMapControlOnOnAfterDraw;
             }
@@ -501,7 +507,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 IFeatureLayer pPipeLayer = layerboxItem.m_pPipeLayer;
                 if (pPipeLayer != null)
                 {
-                    this.FillFieldValuesToListBox(pPipeLayer, this.cmbPipeLineFields.Text.Trim(), this.lstBoxPipeLineValues);
+                    this.FillFieldValuesToListBox(pPipeLayer, this.cmbPipeLineFields.Text.Trim(),
+                        this.lstBoxPipeLineValues);
                 }
             }
         }
@@ -514,7 +521,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 IFeatureLayer pPipeLayer = layerboxItem.m_pPipeLayer;
                 if (pPipeLayer != null)
                 {
-                    this.FillFieldValuesToListBox(pPipeLayer, this.cmbPipePointFields.Text.Trim(), this.lstBoxPipePointValues);
+                    this.FillFieldValuesToListBox(pPipeLayer, this.cmbPipePointFields.Text.Trim(),
+                        this.lstBoxPipePointValues);
                 }
             }
         }

@@ -46,13 +46,15 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
 
         private void btnChangeEffic_Click(object sender, EventArgs e)
         {
-            frmMarkerPlacementList list = new frmMarkerPlacementList {
+            frmMarkerPlacementList list = new frmMarkerPlacementList
+            {
                 BasicSymbolLayerBaseControl = base.m_pControl
             };
             if ((list.ShowDialog() == DialogResult.OK) && (base.m_pControl != null))
             {
                 base.m_pControl.ReplaceControl(this, list.SelectControl);
-                base.m_pBasicMarkerSymbol.MarkerPlacement = (list.SelectControl as MarkerPlacementBaseControl).GeometricEffect as IMarkerPlacement;
+                base.m_pBasicMarkerSymbol.MarkerPlacement =
+                    (list.SelectControl as MarkerPlacementBaseControl).GeometricEffect as IMarkerPlacement;
                 (list.SelectControl as MarkerPlacementBaseControl).BasicMarkerSymbol = base.m_pBasicMarkerSymbol;
             }
         }
@@ -65,7 +67,7 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
             }
         }
 
- private void MarkerPlacementRandomInPolygonPage_Load(object sender, EventArgs e)
+        private void MarkerPlacementRandomInPolygonPage_Load(object sender, EventArgs e)
         {
             if (base.m_pGeometricEffect == null)
             {
@@ -102,4 +104,3 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
         }
     }
 }
-

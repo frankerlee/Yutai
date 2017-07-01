@@ -228,7 +228,7 @@ namespace Yutai.ArcGIS.Carto.UI
             return "";
         }
 
- private void Fieldlist_DoubleClick(object sender, EventArgs e)
+        private void Fieldlist_DoubleClick(object sender, EventArgs e)
         {
             string selectedItem = this.Fieldlist.SelectedItem as string;
             string text = this.memEditWhereCaluse.Text;
@@ -260,7 +260,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     str = string_1;
                 }
                 ICursor cursor = table.Search(null, false);
-                IDataStatistics statistics = new DataStatisticsClass {
+                IDataStatistics statistics = new DataStatisticsClass
+                {
                     Field = str,
                     Cursor = cursor
                 };
@@ -279,7 +280,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void method_0(object sender, EventArgs e)
+        private void method_0(object sender, EventArgs e)
         {
             this.memEditWhereCaluse.Text = "";
         }
@@ -291,7 +292,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 this.textEdit1.Text = "Select * From " + this.ilayer_0.Name + " Where ";
                 this.method_3(this.ilayer_0, this.Fieldlist.Items);
                 this.memEditWhereCaluse.Text = this.string_0;
-                if (((this.ilayer_0 as IFeatureLayer).FeatureClass as IDataset).Workspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace)
+                if (((this.ilayer_0 as IFeatureLayer).FeatureClass as IDataset).Workspace.Type ==
+                    esriWorkspaceType.esriLocalDatabaseWorkspace)
                 {
                     this.btnMatchOneChar.Text = "?";
                     this.btnMatchString.Text = "*";
@@ -344,7 +346,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 for (int i = 0; i < fields.FieldCount; i++)
                 {
                     IField field = fields.get_Field(i);
-                    if ((field.Type != esriFieldType.esriFieldTypeGeometry) && (field.Type != esriFieldType.esriFieldTypeBlob))
+                    if ((field.Type != esriFieldType.esriFieldTypeGeometry) &&
+                        (field.Type != esriFieldType.esriFieldTypeBlob))
                     {
                         listBoxItemCollection_0.Add(str + field.Name + str2);
                     }
@@ -379,23 +382,13 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public ILayer CurrentLayer
         {
-            set
-            {
-                this.ilayer_0 = value;
-            }
+            set { this.ilayer_0 = value; }
         }
 
         public string WhereCaluse
         {
-            get
-            {
-                return this.memEditWhereCaluse.Text;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.memEditWhereCaluse.Text; }
+            set { this.string_0 = value; }
         }
     }
 }
-

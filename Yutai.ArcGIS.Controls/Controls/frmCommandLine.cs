@@ -17,7 +17,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             base.Load += new EventHandler(this.frmCommandLine_Load);
         }
 
- private void frmCommandLine_Load(object sender, EventArgs e)
+        private void frmCommandLine_Load(object sender, EventArgs e)
         {
             this.ctrl.Dock = DockStyle.Fill;
             base.Controls.Add(this.ctrl);
@@ -28,7 +28,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             this.ctrl.Init();
         }
 
- public void LockCommandLine(bool flag)
+        public void LockCommandLine(bool flag)
         {
             this.ctrl.LockCommandLine(flag);
         }
@@ -40,27 +40,14 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         public object Framework
         {
-            get
-            {
-                return this.ctrl.Framework;
-            }
-            set
-            {
-                this.ctrl.Framework = value;
-            }
+            get { return this.ctrl.Framework; }
+            set { this.ctrl.Framework = value; }
         }
 
         public int MaxCommandLine
         {
-            get
-            {
-                return this.ctrl.MaxCommandLine;
-            }
-            set
-            {
-                this.ctrl.MaxCommandLine = value;
-            }
+            get { return this.ctrl.MaxCommandLine; }
+            set { this.ctrl.MaxCommandLine = value; }
         }
     }
 }
-

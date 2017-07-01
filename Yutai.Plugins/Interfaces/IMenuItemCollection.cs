@@ -13,7 +13,7 @@ namespace Yutai.Plugins.Interfaces
         IMenuItem AddButton(string text, string key, PluginIdentity identity);
         IMenuItem AddButton(string text, string key, Bitmap icon, PluginIdentity identity);
         IDropDownMenuItem AddDropDown(string text, string key, PluginIdentity identity);
-        IDropDownMenuItem AddDropDown(string text, string key, PluginIdentity identity,bool isFirst);
+        IDropDownMenuItem AddDropDown(string text, string key, PluginIdentity identity, bool isFirst);
         IDropDownMenuItem AddDropDown(string text, Bitmap icon, PluginIdentity identity);
         IComboBoxMenuItem AddComboBox(string text, string key, PluginIdentity identity);
         IMenuItem this[int menuItemIndex] { get; }

@@ -14,15 +14,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
 
         public IGeometricEffect GeometricEffect
         {
-            get
-            {
-                return this.m_pGeometricEffect;
-            }
-            set
-            {
-                this.m_pGeometricEffect = value;
-            }
+            get { return this.m_pGeometricEffect; }
+            set { this.m_pGeometricEffect = value; }
         }
     }
 }
-

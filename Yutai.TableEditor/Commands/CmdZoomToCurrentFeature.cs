@@ -20,6 +20,7 @@ namespace Yutai.Plugins.TableEditor.Commands
     public class CmdZoomToCurrentFeature : YutaiCommand
     {
         private ITableEditorView _view;
+
         public CmdZoomToCurrentFeature(IAppContext context, ITableEditorView view)
         {
             _context = context;

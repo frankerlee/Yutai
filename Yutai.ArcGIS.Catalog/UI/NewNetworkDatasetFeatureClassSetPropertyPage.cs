@@ -21,7 +21,8 @@ namespace Yutai.ArcGIS.Catalog.UI
         {
             for (int i = 0; i < this.chkListUseFeatureClass.Items.Count; i++)
             {
-                NewNetworkDatasetHelper.FeatureClassWrap wrap = this.chkListUseFeatureClass.Items[i] as NewNetworkDatasetHelper.FeatureClassWrap;
+                NewNetworkDatasetHelper.FeatureClassWrap wrap =
+                    this.chkListUseFeatureClass.Items[i] as NewNetworkDatasetHelper.FeatureClassWrap;
                 if (wrap.IsUse)
                 {
                     return true;
@@ -35,7 +36,8 @@ namespace Yutai.ArcGIS.Catalog.UI
         {
             for (int i = 0; i < this.chkListUseFeatureClass.Items.Count; i++)
             {
-                NewNetworkDatasetHelper.FeatureClassWrap wrap = this.chkListUseFeatureClass.Items[i] as NewNetworkDatasetHelper.FeatureClassWrap;
+                NewNetworkDatasetHelper.FeatureClassWrap wrap =
+                    this.chkListUseFeatureClass.Items[i] as NewNetworkDatasetHelper.FeatureClassWrap;
                 if (wrap.IsUse)
                 {
                     this.chkListUseFeatureClass.SetItemChecked(i, false);
@@ -48,7 +50,8 @@ namespace Yutai.ArcGIS.Catalog.UI
         {
             for (int i = 0; i < this.chkListUseFeatureClass.Items.Count; i++)
             {
-                NewNetworkDatasetHelper.FeatureClassWrap wrap = this.chkListUseFeatureClass.Items[i] as NewNetworkDatasetHelper.FeatureClassWrap;
+                NewNetworkDatasetHelper.FeatureClassWrap wrap =
+                    this.chkListUseFeatureClass.Items[i] as NewNetworkDatasetHelper.FeatureClassWrap;
                 if (!wrap.IsUse)
                 {
                     this.chkListUseFeatureClass.SetItemChecked(i, true);
@@ -59,7 +62,8 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         private void chkListUseFeatureClass_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            NewNetworkDatasetHelper.FeatureClassWrap wrap = this.chkListUseFeatureClass.Items[e.Index] as NewNetworkDatasetHelper.FeatureClassWrap;
+            NewNetworkDatasetHelper.FeatureClassWrap wrap =
+                this.chkListUseFeatureClass.Items[e.Index] as NewNetworkDatasetHelper.FeatureClassWrap;
             if (e.NewValue == CheckState.Checked)
             {
                 wrap.IsUse = true;
@@ -70,7 +74,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
         }
 
- private void NewNetworkDatasetFeatureClassSetPropertyPage_Load(object sender, EventArgs e)
+        private void NewNetworkDatasetFeatureClassSetPropertyPage_Load(object sender, EventArgs e)
         {
             try
             {
@@ -82,9 +86,13 @@ namespace Yutai.ArcGIS.Catalog.UI
                         subsets.Reset();
                         for (IDataset dataset2 = subsets.Next(); dataset2 != null; dataset2 = subsets.Next())
                         {
-                            if (((dataset2 is IFeatureClass) && ((dataset2 as IFeatureClass).FeatureType == esriFeatureType.esriFTSimple)) && (((dataset2 as IFeatureClass).ShapeType == esriGeometryType.esriGeometryPolyline) || ((dataset2 as IFeatureClass).ShapeType == esriGeometryType.esriGeometryPoint)))
+                            if (((dataset2 is IFeatureClass) &&
+                                 ((dataset2 as IFeatureClass).FeatureType == esriFeatureType.esriFTSimple)) &&
+                                (((dataset2 as IFeatureClass).ShapeType == esriGeometryType.esriGeometryPolyline) ||
+                                 ((dataset2 as IFeatureClass).ShapeType == esriGeometryType.esriGeometryPoint)))
                             {
-                                NewNetworkDatasetHelper.FeatureClassWrap item = new NewNetworkDatasetHelper.FeatureClassWrap(dataset2 as IFeatureClass);
+                                NewNetworkDatasetHelper.FeatureClassWrap item =
+                                    new NewNetworkDatasetHelper.FeatureClassWrap(dataset2 as IFeatureClass);
                                 NewNetworkDatasetHelper.NewNetworkDataset.FeatureClassWraps.Add(item);
                                 this.chkListUseFeatureClass.Items.Add(item, item.IsUse);
                             }
@@ -98,4 +106,3 @@ namespace Yutai.ArcGIS.Catalog.UI
         }
     }
 }
-

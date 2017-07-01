@@ -31,7 +31,8 @@ namespace Yutai.Plugins.Editor.Commands
                     {
                         result = false;
                     }
-                    else if (Yutai.ArcGIS.Common.Editor.Editor.EditMap != null && Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
+                    else if (Yutai.ArcGIS.Common.Editor.Editor.EditMap != null &&
+                             Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
                     {
                         result = false;
                     }
@@ -50,7 +51,8 @@ namespace Yutai.Plugins.Editor.Commands
                                 result = false;
                                 return result;
                             }
-                            if (Yutai.ArcGIS.Common.Editor.Editor.CheckWorkspaceEdit(feature.Class as IDataset, "IsBeingEdited"))
+                            if (Yutai.ArcGIS.Common.Editor.Editor.CheckWorkspaceEdit(feature.Class as IDataset,
+                                "IsBeingEdited"))
                             {
                                 result = true;
                                 return result;
@@ -82,7 +84,7 @@ namespace Yutai.Plugins.Editor.Commands
 
             _context = hook as IAppContext;
             this._key = "Edit_StretchLine";
-            
+
             this.m_bitmap = Properties.Resources.icon_edit_strecthline;
             base._itemType = RibbonItemType.Tool;
         }
@@ -95,7 +97,7 @@ namespace Yutai.Plugins.Editor.Commands
         private IFeature FindFeature(IPoint ipoint_0)
         {
             IFeature feature = null;
-            double mapUnits = Common.ConvertPixelsToMapUnits((IActiveView)_context.FocusMap, this.double_0);
+            double mapUnits = Common.ConvertPixelsToMapUnits((IActiveView) _context.FocusMap, this.double_0);
             IEnvelope envelope = ipoint_0.Envelope;
             envelope.Height = mapUnits;
             envelope.Width = mapUnits;
@@ -108,7 +110,8 @@ namespace Yutai.Plugins.Editor.Commands
             for (int i = 0; i < _context.FocusMap.LayerCount; i++)
             {
                 IFeatureLayer layer = _context.FocusMap.Layer[i] as IFeatureLayer;
-                if (layer != null && layer.Visible && layer.FeatureClass != null && layer.FeatureClass.ShapeType == esriGeometryType.esriGeometryPolyline)
+                if (layer != null && layer.Visible && layer.FeatureClass != null &&
+                    layer.FeatureClass.ShapeType == esriGeometryType.esriGeometryPolyline)
                 {
                     spatialFilterClass.GeometryField = layer.FeatureClass.ShapeFieldName;
                     IFeatureCursor featureCursor = layer.Search(spatialFilterClass, false);
@@ -122,7 +125,7 @@ namespace Yutai.Plugins.Editor.Commands
         private void GetProximityFeature(IPoint ipoint_0, IFeatureCursor ifeatureCursor_0, ref IFeature ifeature_1)
         {
             ifeature_1 = null;
-            IProximityOperator ipoint0 = (IProximityOperator)ipoint_0;
+            IProximityOperator ipoint0 = (IProximityOperator) ipoint_0;
             IFeature feature = ifeatureCursor_0.NextFeature();
             if (feature != null)
             {

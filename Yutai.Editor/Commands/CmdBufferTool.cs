@@ -36,11 +36,15 @@ namespace Yutai.Plugins.Editor.Commands
         {
             get
             {
-                return _context.FocusMap != null && (Yutai.ArcGIS.Common.Editor.Editor.EditMap == null || Yutai.ArcGIS.Common.Editor.Editor.EditMap == _context.FocusMap) && Yutai.ArcGIS.Common.Editor.Editor.EditWorkspace != null && _context.FocusMap.SelectionCount != 0 && Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate != null && !(Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass is ICoverageFeatureClass);
+                return _context.FocusMap != null &&
+                       (Yutai.ArcGIS.Common.Editor.Editor.EditMap == null ||
+                        Yutai.ArcGIS.Common.Editor.Editor.EditMap == _context.FocusMap) &&
+                       Yutai.ArcGIS.Common.Editor.Editor.EditWorkspace != null && _context.FocusMap.SelectionCount != 0 &&
+                       Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate != null &&
+                       !(Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass is
+                           ICoverageFeatureClass);
             }
         }
-
-
 
 
         public override void OnClick(object sender, EventArgs args)
@@ -60,7 +64,8 @@ namespace Yutai.Plugins.Editor.Commands
                 enumFeature.Reset();
                 IFeature feature = enumFeature.Next();
                 new GeometryBag();
-                IFeatureClass featureClass = Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass;
+                IFeatureClass featureClass =
+                    Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass;
                 Yutai.ArcGIS.Common.Editor.Editor.EditWorkspace.StartEditOperation();
                 int index = featureClass.FindField(featureClass.ShapeFieldName);
                 IGeometryDef geometryDef = featureClass.Fields.get_Field(index).GeometryDef;
@@ -114,7 +119,5 @@ namespace Yutai.Plugins.Editor.Commands
                 _context.ActiveView.Refresh();
             }
         }
-
-       
     }
 }

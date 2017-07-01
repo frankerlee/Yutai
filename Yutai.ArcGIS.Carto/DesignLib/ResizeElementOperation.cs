@@ -56,26 +56,17 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         public IActiveView ActiveView
         {
-            set
-            {
-                this.iactiveView_0 = value;
-            }
+            set { this.iactiveView_0 = value; }
         }
 
         public bool CanRedo
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public bool CanUndo
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public IElement Element
@@ -98,11 +89,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         public string MenuString
         {
-            get
-            {
-                return "缩放元素";
-            }
+            get { return "缩放元素"; }
         }
     }
 }
-

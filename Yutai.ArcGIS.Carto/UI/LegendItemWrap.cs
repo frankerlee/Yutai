@@ -18,11 +18,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public ILegendItem LegendItem
         {
-            get
-            {
-                return this.ilegendItem_0;
-            }
+            get { return this.ilegendItem_0; }
         }
     }
 }
-

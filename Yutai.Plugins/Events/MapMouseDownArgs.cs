@@ -12,6 +12,10 @@ namespace Yutai.Plugins.Events
             _envelope = envelope;
         }
 
-       public IEnvelope Envelope { get { return _envelope; } set { _envelope = value; } }
+        public IEnvelope Envelope
+        {
+            get { return _envelope; }
+            set { _envelope = value; }
+        }
     }
 }

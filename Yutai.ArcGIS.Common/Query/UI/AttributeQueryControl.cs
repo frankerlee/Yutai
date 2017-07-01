@@ -38,7 +38,8 @@ namespace Yutai.ArcGIS.Common.Query.UI
                 this.attributeQueryBuliderControl_0.Apply();
                 try
                 {
-                    IQueryFilter filter = new QueryFilter{
+                    IQueryFilter filter = new QueryFilter
+                    {
                         WhereClause = this.attributeQueryBuliderControl_0.WhereCaluse
                     };
                     IFeatureSelection selection = this.ilayer_0 as IFeatureSelection;
@@ -77,7 +78,8 @@ namespace Yutai.ArcGIS.Common.Query.UI
             for (int i = 0; i < this.ibasicMap_0.LayerCount; i++)
             {
                 ILayer layer = this.ibasicMap_0.get_Layer(i);
-                if ((layer is IFeatureLayer) && (!this.chkShowSelectbaleLayer.Checked || (layer as IFeatureLayer).Selectable))
+                if ((layer is IFeatureLayer) &&
+                    (!this.chkShowSelectbaleLayer.Checked || (layer as IFeatureLayer).Selectable))
                 {
                     this.comboBoxLayer.Properties.Items.Add(new LayerObject(layer));
                 }
@@ -97,7 +99,7 @@ namespace Yutai.ArcGIS.Common.Query.UI
             }
         }
 
- private void method_0(ICompositeLayer icompositeLayer_0)
+        private void method_0(ICompositeLayer icompositeLayer_0)
         {
             for (int i = 0; i < icompositeLayer_0.Count; i++)
             {
@@ -136,35 +138,22 @@ namespace Yutai.ArcGIS.Common.Query.UI
 
         public DockingStyle DefaultDockingStyle
         {
-            get
-            {
-                return DockingStyle.Float;
-            }
+            get { return DockingStyle.Float; }
         }
 
         string IDockContent.Name
         {
-            get
-            {
-                return base.Name;
-            }
+            get { return base.Name; }
         }
 
         int IDockContent.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public IBasicMap Map
         {
-            set
-            {
-                this.ibasicMap_0 = value;
-            }
+            set { this.ibasicMap_0 = value; }
         }
     }
 }
-

@@ -62,15 +62,15 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.axSceneControl1.SceneGraph.RefreshViewers();
         }
 
- public void InitControl()
+        public void InitControl()
         {
             double num;
             double num2;
             double num3;
             this.m_CanDo = false;
-            this.txtOffsetX.Value = (decimal) (this.m_pMarker3DSymbol.XOffset * this.m_unit);
-            this.txtOffsetY.Value = (decimal) (this.m_pMarker3DSymbol.YOffset * this.m_unit);
-            this.txtOffsetZ.Value = (decimal) (this.m_pMarker3DSymbol.ZOffset * this.m_unit);
+            this.txtOffsetX.Value = (decimal) (this.m_pMarker3DSymbol.XOffset*this.m_unit);
+            this.txtOffsetY.Value = (decimal) (this.m_pMarker3DSymbol.YOffset*this.m_unit);
+            this.txtOffsetZ.Value = (decimal) (this.m_pMarker3DSymbol.ZOffset*this.m_unit);
             this.m_pMarker3DSymbol.QueryRotationAngles(out num, out num2, out num3);
             this.txtRotateX.Value = (decimal) num;
             this.txtRotateY.Value = (decimal) num2;
@@ -83,7 +83,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.m_CanDo = true;
         }
 
- private void Marker3DEvent_Marker3DChanged(object sender)
+        private void Marker3DEvent_Marker3DChanged(object sender)
         {
             if (sender != this)
             {
@@ -143,7 +143,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         {
             if (this.m_CanDo)
             {
-                this.m_pMarker3DSymbol.XOffset = ((double) this.txtOffsetX.Value) / this.m_unit;
+                this.m_pMarker3DSymbol.XOffset = ((double) this.txtOffsetX.Value)/this.m_unit;
                 this.refresh(e);
             }
         }
@@ -152,7 +152,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         {
             if (this.m_CanDo)
             {
-                this.m_pMarker3DSymbol.YOffset = ((double) this.txtOffsetY.Value) / this.m_unit;
+                this.m_pMarker3DSymbol.YOffset = ((double) this.txtOffsetY.Value)/this.m_unit;
                 this.refresh(e);
             }
         }
@@ -161,7 +161,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         {
             if (this.m_CanDo)
             {
-                this.m_pMarker3DSymbol.ZOffset = ((double) this.txtOffsetZ.Value) / this.m_unit;
+                this.m_pMarker3DSymbol.ZOffset = ((double) this.txtOffsetZ.Value)/this.m_unit;
                 this.refresh(e);
             }
         }
@@ -209,4 +209,3 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         }
     }
 }
-

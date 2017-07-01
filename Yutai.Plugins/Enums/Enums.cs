@@ -13,12 +13,14 @@ namespace Yutai.Plugins.Enums
         Scene,
         Globe
     }
+
     public enum PyramidPromptType
     {
         AlwaysPrompt,
         AlwaysBuildNoPrompt,
         NeverBuildNoPrompt
     }
+
     public enum CommandTipsType
     {
         CTTCommandName,
@@ -29,6 +31,7 @@ namespace Yutai.Plugins.Enums
         CTTActiveEnd,
         CTTUnKnown
     }
+
     public enum TextImageRelationYT
     {
         ImageAboveText = 1,
@@ -37,6 +40,7 @@ namespace Yutai.Plugins.Enums
         TextAboveImage = 2,
         TextBeforeImage = 8
     }
+
     public enum DisplayStyleYT
     {
         None,
@@ -59,24 +63,27 @@ namespace Yutai.Plugins.Enums
         Flow,
         Table
     }
+
     public enum RibbonItemType
     {
         Page = 0,
         PageGroup = 1,
         ButtonGroup = 2,
-        LinkGroup=3,
+        LinkGroup = 3,
         Button = 4,
         Tool = 5,
         DropDown = 6,
-        ComboBox=7,
-        CheckBox=8,
-        Label=9
+        ComboBox = 7,
+        CheckBox = 8,
+        Label = 9
     }
+
     public enum MenuStyle
     {
         Ribbon = 0,
         Normal = 1
     }
+
     public enum CommandType
     {
         MapCommand = 0,
@@ -86,14 +93,15 @@ namespace Yutai.Plugins.Enums
         SceneTool = 4,
         OtherCommand = 5
     }
+
     public enum DataSourceType
     {
         Vector = 0,
         Raster = 1,
         All = 2,
         SpatiaLite = 3
-
     }
+
     public enum LayerType
     {
         Invalid = -1,
@@ -131,12 +139,14 @@ namespace Yutai.Plugins.Enums
         Identifier = 13,
         ShapeEditor = 14,
     }
+
     public enum MapViewStyle
     {
         View2D = 0,
         View3D = 1,
         ViewAll = 2
     }
+
     public enum DockPanelState
     {
         None = 0,
@@ -147,12 +157,14 @@ namespace Yutai.Plugins.Enums
         Tabbed = 5,
         Fill = 6,
     }
+
     public enum MenuIndexType
     {
         MainMenu = 0,
         Toolbar = 1,
         StatusBar = 2,
     }
+
     public enum ToolbarDockState
     {
         //
@@ -182,8 +194,7 @@ namespace Yutai.Plugins.Enums
         MapLegend = 0,
         Toolbox = 1,
         Overview = 2,
-        Locator=3
-
+        Locator = 3
     }
 
     public enum DockPanels
@@ -191,5 +202,4 @@ namespace Yutai.Plugins.Enums
         MapLegend = 0,
         Preview = 1,
     }
-
 }

@@ -9,12 +9,15 @@ namespace Yutai.ArcGIS.Common.BaseClasses
         protected System.Windows.Forms.Cursor m_cursor;
         protected bool m_deactivate;
 
-     
-        protected BaseTool(IAppContext context):base( context) { 
+
+        protected BaseTool(IAppContext context) : base(context)
+        {
             this.m_deactivate = true;
         }
 
-        protected BaseTool(Bitmap bitmap_0, string string_0, string string_1, System.Windows.Forms.Cursor cursor_0, int int_0, string string_2, string string_3, string string_4, string string_5) : base(bitmap_0, string_0, string_1, int_0, string_2, string_3, string_4, string_5)
+        protected BaseTool(Bitmap bitmap_0, string string_0, string string_1, System.Windows.Forms.Cursor cursor_0,
+            int int_0, string string_2, string string_3, string string_4, string string_5)
+            : base(bitmap_0, string_0, string_1, int_0, string_2, string_3, string_4, string_5)
         {
             this.m_deactivate = true;
             this.m_cursor = cursor_0;
@@ -71,4 +74,3 @@ namespace Yutai.ArcGIS.Common.BaseClasses
         }
     }
 }
-

@@ -145,13 +145,15 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                                 }
                                 catch
                                 {
-                                    CErrorLog.writeErrorLog("null", null, string.Format("创建{0}中的类{1}的子命令设置失败", itemAttribute[4], itemAttribute[5]));
+                                    CErrorLog.writeErrorLog("null", null,
+                                        string.Format("创建{0}中的类{1}的子命令设置失败", itemAttribute[4], itemAttribute[5]));
                                 }
                             }
                         }
                         else
                         {
-                            CErrorLog.writeErrorLog("null", null, string.Format("创建{0}中的类{1}的失败，无法创建该工具", itemAttribute[4], itemAttribute[5]));
+                            CErrorLog.writeErrorLog("null", null,
+                                string.Format("创建{0}中的类{1}的失败，无法创建该工具", itemAttribute[4], itemAttribute[5]));
                         }
                     }
                     else
@@ -161,7 +163,8 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                 }
                 catch (Exception exception)
                 {
-                    CErrorLog.writeErrorLog("null", exception, string.Format("创建{0}中的类{1}的失败", itemAttribute[4], itemAttribute[5]));
+                    CErrorLog.writeErrorLog("null", exception,
+                        string.Format("创建{0}中的类{1}的失败", itemAttribute[4], itemAttribute[5]));
                 }
             }
             if ((itemAttribute[0] != null) || (command != null))
@@ -253,7 +256,9 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
             }
         }
 
-        internal void StartCreateBar(string XMLConfig, TOCTreeViewEx pTOCTreeView, IApplication pApp, IMapControl2 pInMapCtrl, IPageLayoutControl2 pPageLayoutCtrl, BarManager barManager1, List<BarItem> baritems, List<bool> isgroups)
+        internal void StartCreateBar(string XMLConfig, TOCTreeViewEx pTOCTreeView, IApplication pApp,
+            IMapControl2 pInMapCtrl, IPageLayoutControl2 pPageLayoutCtrl, BarManager barManager1, List<BarItem> baritems,
+            List<bool> isgroups)
         {
             try
             {
@@ -287,11 +292,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 
         internal IApplication Application
         {
-            set
-            {
-                this.m_pApp = value;
-            }
+            set { this.m_pApp = value; }
         }
     }
 }
-

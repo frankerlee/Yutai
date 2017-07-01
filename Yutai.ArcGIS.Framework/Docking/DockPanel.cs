@@ -50,69 +50,42 @@ namespace Yutai.ArcGIS.Framework.Docking
         private bool m_showDocumentIcon = false;
         private SplitterDragHandler m_splitterDragHandler = null;
 
-        [LocalizedDescription("DockPanel_ActiveContentChanged_Description"), LocalizedCategory("Category_PropertyChanged")]
+        [LocalizedDescription("DockPanel_ActiveContentChanged_Description"),
+         LocalizedCategory("Category_PropertyChanged")]
         public event EventHandler ActiveContentChanged
         {
-            add
-            {
-                base.Events.AddHandler(ActiveContentChangedEvent, value);
-            }
-            remove
-            {
-                base.Events.RemoveHandler(ActiveContentChangedEvent, value);
-            }
+            add { base.Events.AddHandler(ActiveContentChangedEvent, value); }
+            remove { base.Events.RemoveHandler(ActiveContentChangedEvent, value); }
         }
 
-        [LocalizedDescription("DockPanel_ActiveDocumentChanged_Description"), LocalizedCategory("Category_PropertyChanged")]
+        [LocalizedDescription("DockPanel_ActiveDocumentChanged_Description"),
+         LocalizedCategory("Category_PropertyChanged")]
         public event EventHandler ActiveDocumentChanged
         {
-            add
-            {
-                base.Events.AddHandler(ActiveDocumentChangedEvent, value);
-            }
-            remove
-            {
-                base.Events.RemoveHandler(ActiveDocumentChangedEvent, value);
-            }
+            add { base.Events.AddHandler(ActiveDocumentChangedEvent, value); }
+            remove { base.Events.RemoveHandler(ActiveDocumentChangedEvent, value); }
         }
 
         [LocalizedCategory("Category_PropertyChanged"), LocalizedDescription("DockPanel_ActivePaneChanged_Description")]
         public event EventHandler ActivePaneChanged
         {
-            add
-            {
-                base.Events.AddHandler(ActivePaneChangedEvent, value);
-            }
-            remove
-            {
-                base.Events.RemoveHandler(ActivePaneChangedEvent, value);
-            }
+            add { base.Events.AddHandler(ActivePaneChangedEvent, value); }
+            remove { base.Events.RemoveHandler(ActivePaneChangedEvent, value); }
         }
 
         [LocalizedCategory("Category_DockingNotification"), LocalizedDescription("DockPanel_ContentAdded_Description")]
         public event EventHandler<DockContentEventArgs> ContentAdded
         {
-            add
-            {
-                base.Events.AddHandler(ContentAddedEvent, value);
-            }
-            remove
-            {
-                base.Events.RemoveHandler(ContentAddedEvent, value);
-            }
+            add { base.Events.AddHandler(ContentAddedEvent, value); }
+            remove { base.Events.RemoveHandler(ContentAddedEvent, value); }
         }
 
-        [LocalizedCategory("Category_DockingNotification"), LocalizedDescription("DockPanel_ContentRemoved_Description")]
+        [LocalizedCategory("Category_DockingNotification"), LocalizedDescription("DockPanel_ContentRemoved_Description")
+        ]
         public event EventHandler<DockContentEventArgs> ContentRemoved
         {
-            add
-            {
-                base.Events.AddHandler(ContentRemovedEvent, value);
-            }
-            remove
-            {
-                base.Events.RemoveHandler(ContentRemovedEvent, value);
-            }
+            add { base.Events.AddHandler(ContentRemovedEvent, value); }
+            remove { base.Events.RemoveHandler(ContentRemovedEvent, value); }
         }
 
         public DockPanel()
@@ -129,7 +102,12 @@ namespace Yutai.ArcGIS.Framework.Docking
             this.m_dummyControl.Bounds = new Rectangle(0, 0, 1, 1);
             base.Controls.Add(this.m_dummyControl);
             this.m_dockWindows = new DockWindowCollection(this);
-            base.Controls.AddRange(new Control[] { this.DockWindows[DockState.Document], this.DockWindows[DockState.DockLeft], this.DockWindows[DockState.DockRight], this.DockWindows[DockState.DockTop], this.DockWindows[DockState.DockBottom] });
+            base.Controls.AddRange(new Control[]
+            {
+                this.DockWindows[DockState.Document], this.DockWindows[DockState.DockLeft],
+                this.DockWindows[DockState.DockRight], this.DockWindows[DockState.DockTop],
+                this.DockWindows[DockState.DockBottom]
+            });
             this.m_dummyContent = new DockContent();
             base.ResumeLayout();
         }
@@ -260,8 +238,12 @@ namespace Yutai.ArcGIS.Framework.Docking
             if ((dockState == DockState.DockLeft) || (dockState == DockState.DockRight))
             {
                 int num = (base.ClientRectangle.Width - base.DockPadding.Left) - base.DockPadding.Right;
-                int num2 = (this.m_dockLeftPortion >= 1.0) ? ((int) this.m_dockLeftPortion) : ((int) (num * this.m_dockLeftPortion));
-                int num3 = (this.m_dockRightPortion >= 1.0) ? ((int) this.m_dockRightPortion) : ((int) (num * this.m_dockRightPortion));
+                int num2 = (this.m_dockLeftPortion >= 1.0)
+                    ? ((int) this.m_dockLeftPortion)
+                    : ((int) (num*this.m_dockLeftPortion));
+                int num3 = (this.m_dockRightPortion >= 1.0)
+                    ? ((int) this.m_dockRightPortion)
+                    : ((int) (num*this.m_dockRightPortion));
                 if (num2 < 24)
                 {
                     num2 = 24;
@@ -273,16 +255,20 @@ namespace Yutai.ArcGIS.Framework.Docking
                 if ((num2 + num3) > (num - 24))
                 {
                     num4 = (num2 + num3) - (num - 24);
-                    num2 -= num4 / 2;
-                    num3 -= num4 / 2;
+                    num2 -= num4/2;
+                    num3 -= num4/2;
                 }
                 return ((dockState == DockState.DockLeft) ? num2 : num3);
             }
             if ((dockState == DockState.DockTop) || (dockState == DockState.DockBottom))
             {
                 int num5 = (base.ClientRectangle.Height - base.DockPadding.Top) - base.DockPadding.Bottom;
-                int num6 = (this.m_dockTopPortion >= 1.0) ? ((int) this.m_dockTopPortion) : ((int) (num5 * this.m_dockTopPortion));
-                int num7 = (this.m_dockBottomPortion >= 1.0) ? ((int) this.m_dockBottomPortion) : ((int) (num5 * this.m_dockBottomPortion));
+                int num6 = (this.m_dockTopPortion >= 1.0)
+                    ? ((int) this.m_dockTopPortion)
+                    : ((int) (num5*this.m_dockTopPortion));
+                int num7 = (this.m_dockBottomPortion >= 1.0)
+                    ? ((int) this.m_dockBottomPortion)
+                    : ((int) (num5*this.m_dockBottomPortion));
                 if (num6 < 24)
                 {
                     num6 = 24;
@@ -294,8 +280,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                 if ((num6 + num7) > (num5 - 24))
                 {
                     num4 = (num6 + num7) - (num5 - 24);
-                    num6 -= num4 / 2;
-                    num7 -= num4 / 2;
+                    num6 -= num4/2;
+                    num7 -= num4/2;
                 }
                 return ((dockState == DockState.DockTop) ? num6 : num7);
             }
@@ -464,7 +450,8 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         protected virtual void OnContentAdded(DockContentEventArgs e)
         {
-            EventHandler<DockContentEventArgs> handler = (EventHandler<DockContentEventArgs>) base.Events[ContentAddedEvent];
+            EventHandler<DockContentEventArgs> handler =
+                (EventHandler<DockContentEventArgs>) base.Events[ContentAddedEvent];
             if (handler != null)
             {
                 handler(this, e);
@@ -473,7 +460,8 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         protected virtual void OnContentRemoved(DockContentEventArgs e)
         {
-            EventHandler<DockContentEventArgs> handler = (EventHandler<DockContentEventArgs>) base.Events[ContentRemovedEvent];
+            EventHandler<DockContentEventArgs> handler =
+                (EventHandler<DockContentEventArgs>) base.Events[ContentRemovedEvent];
             if (handler != null)
             {
                 handler(this, e);
@@ -545,7 +533,8 @@ namespace Yutai.ArcGIS.Framework.Docking
             if (this.GetMdiClientController().ParentForm != null)
             {
                 IDockContent activeMdiChild = this.GetMdiClientController().ParentForm.ActiveMdiChild as IDockContent;
-                if ((activeMdiChild != null) && ((activeMdiChild.DockHandler.DockPanel == this) && (activeMdiChild.DockHandler.Pane != null)))
+                if ((activeMdiChild != null) &&
+                    ((activeMdiChild.DockHandler.DockPanel == this) && (activeMdiChild.DockHandler.Pane != null)))
                 {
                     activeMdiChild.DockHandler.Pane.ActiveContent = activeMdiChild;
                 }
@@ -859,7 +848,7 @@ namespace Yutai.ArcGIS.Framework.Docking
         private void UpdateWindowRegion_EmptyDocumentArea()
         {
             Rectangle documentWindowBounds = this.DocumentWindowBounds;
-            Rectangle[] clipRects = new Rectangle[] { documentWindowBounds };
+            Rectangle[] clipRects = new Rectangle[] {documentWindowBounds};
             this.SetRegion(clipRects);
         }
 
@@ -871,84 +860,53 @@ namespace Yutai.ArcGIS.Framework.Docking
         [Browsable(false)]
         public IDockContent ActiveAutoHideContent
         {
-            get
-            {
-                return this.AutoHideWindow.ActiveContent;
-            }
-            set
-            {
-                this.AutoHideWindow.ActiveContent = value;
-            }
+            get { return this.AutoHideWindow.ActiveContent; }
+            set { this.AutoHideWindow.ActiveContent = value; }
         }
 
         [Browsable(false)]
         public IDockContent ActiveContent
         {
-            get
-            {
-                return this.FocusManager.ActiveContent;
-            }
+            get { return this.FocusManager.ActiveContent; }
         }
 
         [Browsable(false)]
         public IDockContent ActiveDocument
         {
-            get
-            {
-                return this.FocusManager.ActiveDocument;
-            }
+            get { return this.FocusManager.ActiveDocument; }
         }
 
         [Browsable(false)]
         public DockPane ActiveDocumentPane
         {
-            get
-            {
-                return this.FocusManager.ActiveDocumentPane;
-            }
+            get { return this.FocusManager.ActiveDocumentPane; }
         }
 
         [Browsable(false)]
         public DockPane ActivePane
         {
-            get
-            {
-                return this.FocusManager.ActivePane;
-            }
+            get { return this.FocusManager.ActivePane; }
         }
 
-        [LocalizedCategory("Category_Docking"), DefaultValue(true), LocalizedDescription("DockPanel_AllowEndUserDocking_Description")]
+        [LocalizedCategory("Category_Docking"), DefaultValue(true),
+         LocalizedDescription("DockPanel_AllowEndUserDocking_Description")]
         public bool AllowEndUserDocking
         {
-            get
-            {
-                return this.m_allowEndUserDocking;
-            }
-            set
-            {
-                this.m_allowEndUserDocking = value;
-            }
+            get { return this.m_allowEndUserDocking; }
+            set { this.m_allowEndUserDocking = value; }
         }
 
-        [LocalizedDescription("DockPanel_AllowEndUserNestedDocking_Description"), LocalizedCategory("Category_Docking"), DefaultValue(true)]
+        [LocalizedDescription("DockPanel_AllowEndUserNestedDocking_Description"), LocalizedCategory("Category_Docking"),
+         DefaultValue(true)]
         public bool AllowEndUserNestedDocking
         {
-            get
-            {
-                return this.m_allowEndUserNestedDocking;
-            }
-            set
-            {
-                this.m_allowEndUserNestedDocking = value;
-            }
+            get { return this.m_allowEndUserNestedDocking; }
+            set { this.m_allowEndUserNestedDocking = value; }
         }
 
         internal Control AutoHideControl
         {
-            get
-            {
-                return this.m_autoHideWindow;
-            }
+            get { return this.m_autoHideWindow; }
         }
 
         internal AutoHideStripBase AutoHideStripControl
@@ -966,18 +924,12 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         internal DockPanelExtender.IAutoHideStripFactory AutoHideStripFactory
         {
-            get
-            {
-                return this.Extender.AutoHideStripFactory;
-            }
+            get { return this.Extender.AutoHideStripFactory; }
         }
 
         private AutoHideWindowControl AutoHideWindow
         {
-            get
-            {
-                return this.m_autoHideWindow;
-            }
+            get { return this.m_autoHideWindow; }
         }
 
         internal Rectangle AutoHideWindowRectangle
@@ -1001,7 +953,7 @@ namespace Yutai.ArcGIS.Framework.Docking
                     case DockState.DockLeftAutoHide:
                         if (autoHidePortion < 1.0)
                         {
-                            autoHidePortion = dockArea.Width * autoHidePortion;
+                            autoHidePortion = dockArea.Width*autoHidePortion;
                         }
                         if (autoHidePortion > (dockArea.Width - 24))
                         {
@@ -1016,7 +968,7 @@ namespace Yutai.ArcGIS.Framework.Docking
                     case DockState.DockRightAutoHide:
                         if (autoHidePortion < 1.0)
                         {
-                            autoHidePortion = dockArea.Width * autoHidePortion;
+                            autoHidePortion = dockArea.Width*autoHidePortion;
                         }
                         if (autoHidePortion > (dockArea.Width - 24))
                         {
@@ -1031,7 +983,7 @@ namespace Yutai.ArcGIS.Framework.Docking
                     case DockState.DockTopAutoHide:
                         if (autoHidePortion < 1.0)
                         {
-                            autoHidePortion = dockArea.Height * autoHidePortion;
+                            autoHidePortion = dockArea.Height*autoHidePortion;
                         }
                         if (autoHidePortion > (dockArea.Height - 24))
                         {
@@ -1046,7 +998,7 @@ namespace Yutai.ArcGIS.Framework.Docking
                     case DockState.DockBottomAutoHide:
                         if (autoHidePortion < 1.0)
                         {
-                            autoHidePortion = dockArea.Height * autoHidePortion;
+                            autoHidePortion = dockArea.Height*autoHidePortion;
                         }
                         if (autoHidePortion > (dockArea.Height - 24))
                         {
@@ -1064,49 +1016,37 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         internal IContentFocusManager ContentFocusManager
         {
-            get
-            {
-                return this.m_focusManager;
-            }
+            get { return this.m_focusManager; }
         }
 
         [Browsable(false)]
         public DockContentCollection Contents
         {
-            get
-            {
-                return this.m_contents;
-            }
+            get { return this.m_contents; }
         }
 
         [LocalizedDescription("DockPanel_DefaultFloatWindowSize_Description"), Category("Layout")]
         public Size DefaultFloatWindowSize
         {
-            get
-            {
-                return this.m_defaultFloatWindowSize;
-            }
-            set
-            {
-                this.m_defaultFloatWindowSize = value;
-            }
+            get { return this.m_defaultFloatWindowSize; }
+            set { this.m_defaultFloatWindowSize = value; }
         }
 
         internal Rectangle DockArea
         {
             get
             {
-                return new Rectangle(base.DockPadding.Left, base.DockPadding.Top, (base.ClientRectangle.Width - base.DockPadding.Left) - base.DockPadding.Right, (base.ClientRectangle.Height - base.DockPadding.Top) - base.DockPadding.Bottom);
+                return new Rectangle(base.DockPadding.Left, base.DockPadding.Top,
+                    (base.ClientRectangle.Width - base.DockPadding.Left) - base.DockPadding.Right,
+                    (base.ClientRectangle.Height - base.DockPadding.Top) - base.DockPadding.Bottom);
             }
         }
 
-        [LocalizedCategory("Category_Docking"), LocalizedDescription("DockPanel_DockBottomPortion_Description"), DefaultValue((double) 0.25)]
+        [LocalizedCategory("Category_Docking"), LocalizedDescription("DockPanel_DockBottomPortion_Description"),
+         DefaultValue((double) 0.25)]
         public double DockBottomPortion
         {
-            get
-            {
-                return this.m_dockBottomPortion;
-            }
+            get { return this.m_dockBottomPortion; }
             set
             {
                 if (value <= 0.0)
@@ -1116,7 +1056,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                 if (value != this.m_dockBottomPortion)
                 {
                     this.m_dockBottomPortion = value;
-                    if (((this.m_dockBottomPortion < 1.0) && (this.m_dockTopPortion < 1.0)) && ((this.m_dockTopPortion + this.m_dockBottomPortion) > 1.0))
+                    if (((this.m_dockBottomPortion < 1.0) && (this.m_dockTopPortion < 1.0)) &&
+                        ((this.m_dockTopPortion + this.m_dockBottomPortion) > 1.0))
                     {
                         this.m_dockTopPortion = 1.0 - this.m_dockBottomPortion;
                     }
@@ -1125,13 +1066,11 @@ namespace Yutai.ArcGIS.Framework.Docking
             }
         }
 
-        [LocalizedCategory("Category_Docking"), LocalizedDescription("DockPanel_DockLeftPortion_Description"), DefaultValue((double) 0.25)]
+        [LocalizedCategory("Category_Docking"), LocalizedDescription("DockPanel_DockLeftPortion_Description"),
+         DefaultValue((double) 0.25)]
         public double DockLeftPortion
         {
-            get
-            {
-                return this.m_dockLeftPortion;
-            }
+            get { return this.m_dockLeftPortion; }
             set
             {
                 if (value <= 0.0)
@@ -1141,7 +1080,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                 if (value != this.m_dockLeftPortion)
                 {
                     this.m_dockLeftPortion = value;
-                    if (((this.m_dockLeftPortion < 1.0) && (this.m_dockRightPortion < 1.0)) && ((this.m_dockLeftPortion + this.m_dockRightPortion) > 1.0))
+                    if (((this.m_dockLeftPortion < 1.0) && (this.m_dockRightPortion < 1.0)) &&
+                        ((this.m_dockLeftPortion + this.m_dockRightPortion) > 1.0))
                     {
                         this.m_dockRightPortion = 1.0 - this.m_dockLeftPortion;
                     }
@@ -1152,35 +1092,24 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         internal DockPanelExtender.IDockPaneCaptionFactory DockPaneCaptionFactory
         {
-            get
-            {
-                return this.Extender.DockPaneCaptionFactory;
-            }
+            get { return this.Extender.DockPaneCaptionFactory; }
         }
 
         public DockPanelExtender.IDockPaneFactory DockPaneFactory
         {
-            get
-            {
-                return this.Extender.DockPaneFactory;
-            }
+            get { return this.Extender.DockPaneFactory; }
         }
 
         internal DockPanelExtender.IDockPaneStripFactory DockPaneStripFactory
         {
-            get
-            {
-                return this.Extender.DockPaneStripFactory;
-            }
+            get { return this.Extender.DockPaneStripFactory; }
         }
 
-        [DefaultValue((double) 0.25), LocalizedDescription("DockPanel_DockRightPortion_Description"), LocalizedCategory("Category_Docking")]
+        [DefaultValue((double) 0.25), LocalizedDescription("DockPanel_DockRightPortion_Description"),
+         LocalizedCategory("Category_Docking")]
         public double DockRightPortion
         {
-            get
-            {
-                return this.m_dockRightPortion;
-            }
+            get { return this.m_dockRightPortion; }
             set
             {
                 if (value <= 0.0)
@@ -1190,7 +1119,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                 if (value != this.m_dockRightPortion)
                 {
                     this.m_dockRightPortion = value;
-                    if (((this.m_dockLeftPortion < 1.0) && (this.m_dockRightPortion < 1.0)) && ((this.m_dockLeftPortion + this.m_dockRightPortion) > 1.0))
+                    if (((this.m_dockLeftPortion < 1.0) && (this.m_dockRightPortion < 1.0)) &&
+                        ((this.m_dockLeftPortion + this.m_dockRightPortion) > 1.0))
                     {
                         this.m_dockLeftPortion = 1.0 - this.m_dockRightPortion;
                     }
@@ -1199,13 +1129,11 @@ namespace Yutai.ArcGIS.Framework.Docking
             }
         }
 
-        [LocalizedCategory("Category_Docking"), LocalizedDescription("DockPanel_DockTopPortion_Description"), DefaultValue((double) 0.25)]
+        [LocalizedCategory("Category_Docking"), LocalizedDescription("DockPanel_DockTopPortion_Description"),
+         DefaultValue((double) 0.25)]
         public double DockTopPortion
         {
-            get
-            {
-                return this.m_dockTopPortion;
-            }
+            get { return this.m_dockTopPortion; }
             set
             {
                 if (value <= 0.0)
@@ -1215,7 +1143,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                 if (value != this.m_dockTopPortion)
                 {
                     this.m_dockTopPortion = value;
-                    if (((this.m_dockTopPortion < 1.0) && (this.m_dockBottomPortion < 1.0)) && ((this.m_dockTopPortion + this.m_dockBottomPortion) > 1.0))
+                    if (((this.m_dockTopPortion < 1.0) && (this.m_dockBottomPortion < 1.0)) &&
+                        ((this.m_dockTopPortion + this.m_dockBottomPortion) > 1.0))
                     {
                         this.m_dockBottomPortion = 1.0 - this.m_dockTopPortion;
                     }
@@ -1227,10 +1156,7 @@ namespace Yutai.ArcGIS.Framework.Docking
         [Browsable(false)]
         public DockWindowCollection DockWindows
         {
-            get
-            {
-                return this.m_dockWindows;
-            }
+            get { return this.m_dockWindows; }
         }
 
         private Rectangle DocumentRectangle
@@ -1240,21 +1166,21 @@ namespace Yutai.ArcGIS.Framework.Docking
                 Rectangle dockArea = this.DockArea;
                 if (this.DockWindows[DockState.DockLeft].VisibleNestedPanes.Count != 0)
                 {
-                    dockArea.X += (int) (this.DockArea.Width * this.DockLeftPortion);
-                    dockArea.Width -= (int) (this.DockArea.Width * this.DockLeftPortion);
+                    dockArea.X += (int) (this.DockArea.Width*this.DockLeftPortion);
+                    dockArea.Width -= (int) (this.DockArea.Width*this.DockLeftPortion);
                 }
                 if (this.DockWindows[DockState.DockRight].VisibleNestedPanes.Count != 0)
                 {
-                    dockArea.Width -= (int) (this.DockArea.Width * this.DockRightPortion);
+                    dockArea.Width -= (int) (this.DockArea.Width*this.DockRightPortion);
                 }
                 if (this.DockWindows[DockState.DockTop].VisibleNestedPanes.Count != 0)
                 {
-                    dockArea.Y += (int) (this.DockArea.Height * this.DockTopPortion);
-                    dockArea.Height -= (int) (this.DockArea.Height * this.DockTopPortion);
+                    dockArea.Y += (int) (this.DockArea.Height*this.DockTopPortion);
+                    dockArea.Height -= (int) (this.DockArea.Height*this.DockTopPortion);
                 }
                 if (this.DockWindows[DockState.DockBottom].VisibleNestedPanes.Count != 0)
                 {
-                    dockArea.Height -= (int) (this.DockArea.Height * this.DockBottomPortion);
+                    dockArea.Height -= (int) (this.DockArea.Height*this.DockBottomPortion);
                 }
                 return dockArea;
             }
@@ -1288,13 +1214,11 @@ namespace Yutai.ArcGIS.Framework.Docking
             }
         }
 
-        [DefaultValue(0), LocalizedDescription("DockPanel_DocumentStyle_Description"), LocalizedCategory("Category_Docking")]
+        [DefaultValue(0), LocalizedDescription("DockPanel_DocumentStyle_Description"),
+         LocalizedCategory("Category_Docking")]
         public DocumentStyle DocumentStyle
         {
-            get
-            {
-                return this.m_documentStyle;
-            }
+            get { return this.m_documentStyle; }
             set
             {
                 if (value != this.m_documentStyle)
@@ -1303,7 +1227,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                     {
                         throw new InvalidEnumArgumentException();
                     }
-                    if ((value == DocumentStyle.SystemMdi) && (this.DockWindows[DockState.Document].VisibleNestedPanes.Count > 0))
+                    if ((value == DocumentStyle.SystemMdi) &&
+                        (this.DockWindows[DockState.Document].VisibleNestedPanes.Count > 0))
                     {
                         throw new InvalidEnumArgumentException();
                     }
@@ -1353,69 +1278,45 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         internal DockContent DummyContent
         {
-            get
-            {
-                return this.m_dummyContent;
-            }
+            get { return this.m_dummyContent; }
         }
 
         private Control DummyControl
         {
-            get
-            {
-                return this.m_dummyControl;
-            }
+            get { return this.m_dummyControl; }
         }
 
         [Browsable(false)]
         public DockPanelExtender Extender
         {
-            get
-            {
-                return this.m_extender;
-            }
+            get { return this.m_extender; }
         }
 
         public DockPanelExtender.IFloatWindowFactory FloatWindowFactory
         {
-            get
-            {
-                return this.Extender.FloatWindowFactory;
-            }
+            get { return this.Extender.FloatWindowFactory; }
         }
 
         [Browsable(false)]
         public FloatWindowCollection FloatWindows
         {
-            get
-            {
-                return this.m_floatWindows;
-            }
+            get { return this.m_floatWindows; }
         }
 
         private IFocusManager FocusManager
         {
-            get
-            {
-                return this.m_focusManager;
-            }
+            get { return this.m_focusManager; }
         }
 
         private bool MdiClientExists
         {
-            get
-            {
-                return (this.GetMdiClientController().MdiClient != null);
-            }
+            get { return (this.GetMdiClientController().MdiClient != null); }
         }
 
         [Browsable(false)]
         public DockPaneCollection Panes
         {
-            get
-            {
-                return this.m_panes;
-            }
+            get { return this.m_panes; }
         }
 
         internal Form ParentForm
@@ -1430,13 +1331,11 @@ namespace Yutai.ArcGIS.Framework.Docking
             }
         }
 
-        [LocalizedCategory("Appearance"), DefaultValue(false), LocalizedDescription("DockPanel_RightToLeftLayout_Description")]
+        [LocalizedCategory("Appearance"), DefaultValue(false),
+         LocalizedDescription("DockPanel_RightToLeftLayout_Description")]
         public bool RightToLeftLayout
         {
-            get
-            {
-                return this.m_rightToLeftLayout;
-            }
+            get { return this.m_rightToLeftLayout; }
             set
             {
                 if (this.m_rightToLeftLayout != value)
@@ -1450,13 +1349,11 @@ namespace Yutai.ArcGIS.Framework.Docking
             }
         }
 
-        [LocalizedCategory("Category_Docking"), DefaultValue(false), LocalizedDescription("DockPanel_ShowDocumentIcon_Description")]
+        [LocalizedCategory("Category_Docking"), DefaultValue(false),
+         LocalizedDescription("DockPanel_ShowDocumentIcon_Description")]
         public bool ShowDocumentIcon
         {
-            get
-            {
-                return this.m_showDocumentIcon;
-            }
+            get { return this.m_showDocumentIcon; }
             set
             {
                 if (this.m_showDocumentIcon != value)
@@ -1536,7 +1433,9 @@ namespace Yutai.ArcGIS.Framework.Docking
                     }
                     if (show)
                     {
-                        base.Bounds = this.DockPanel.GetAutoHideWindowBounds(new Rectangle(-rectangle.Width, -rectangle.Height, rectangle.Width, rectangle.Height));
+                        base.Bounds =
+                            this.DockPanel.GetAutoHideWindowBounds(new Rectangle(-rectangle.Width, -rectangle.Height,
+                                rectangle.Width, rectangle.Height));
                         if (!base.Visible)
                         {
                             base.Visible = true;
@@ -1550,17 +1449,19 @@ namespace Yutai.ArcGIS.Framework.Docking
                         base.Visible = true;
                     }
                     int num5 = 1;
-                    int num7 = (rect.Width != rectangle.Width) ? Math.Abs((int) (rect.Width - rectangle.Width)) : Math.Abs((int) (rect.Height - rectangle.Height));
+                    int num7 = (rect.Width != rectangle.Width)
+                        ? Math.Abs((int) (rect.Width - rectangle.Width))
+                        : Math.Abs((int) (rect.Height - rectangle.Height));
                     DateTime now = DateTime.Now;
                     while (rect != rectangle)
                     {
                         TimeSpan span;
                         bool flag;
                         DateTime time2 = DateTime.Now;
-                        rect.X += num * num5;
-                        rect.Y += num2 * num5;
-                        rect.Width += num3 * num5;
-                        rect.Height += num4 * num5;
+                        rect.X += num*num5;
+                        rect.Y += num2*num5;
+                        rect.Width += num3*num5;
+                        rect.Height += num4*num5;
                         if (Math.Sign((int) (rectangle.X - rect.X)) != Math.Sign(num))
                         {
                             rect.X = rectangle.X;
@@ -1584,7 +1485,7 @@ namespace Yutai.ArcGIS.Framework.Docking
                         }
                         num7 -= num5;
                         goto Label_036B;
-                    Label_02EE:
+                        Label_02EE:
                         span = new TimeSpan(0, 0, 0, 0, 100);
                         TimeSpan span2 = (TimeSpan) (DateTime.Now - time2);
                         TimeSpan span3 = (TimeSpan) (DateTime.Now - now);
@@ -1595,12 +1496,12 @@ namespace Yutai.ArcGIS.Framework.Docking
                             continue;
                         }
                         span4 = span - span3;
-                        num5 = (num7 * ((int) span2.TotalMilliseconds)) / ((int) span4.TotalMilliseconds);
+                        num5 = (num7*((int) span2.TotalMilliseconds))/((int) span4.TotalMilliseconds);
                         if (num5 >= 1)
                         {
                             continue;
                         }
-                    Label_036B:
+                        Label_036B:
                         flag = true;
                         goto Label_02EE;
                     }
@@ -1672,7 +1573,7 @@ namespace Yutai.ArcGIS.Framework.Docking
                     if (activeContent.DockHandler.AutoHidePortion < 1.0)
                     {
                         DockContentHandler dockHandler = activeContent.DockHandler;
-                        dockHandler.AutoHidePortion += ((double) offset) / ((double) dockArea.Width);
+                        dockHandler.AutoHidePortion += ((double) offset)/((double) dockArea.Width);
                     }
                     else
                     {
@@ -1684,7 +1585,7 @@ namespace Yutai.ArcGIS.Framework.Docking
                     if (activeContent.DockHandler.AutoHidePortion < 1.0)
                     {
                         DockContentHandler handler2 = activeContent.DockHandler;
-                        handler2.AutoHidePortion -= ((double) offset) / ((double) dockArea.Width);
+                        handler2.AutoHidePortion -= ((double) offset)/((double) dockArea.Width);
                     }
                     else
                     {
@@ -1696,7 +1597,7 @@ namespace Yutai.ArcGIS.Framework.Docking
                     if (activeContent.DockHandler.AutoHidePortion < 1.0)
                     {
                         DockContentHandler handler3 = activeContent.DockHandler;
-                        handler3.AutoHidePortion -= ((double) offset) / ((double) dockArea.Height);
+                        handler3.AutoHidePortion -= ((double) offset)/((double) dockArea.Height);
                     }
                     else
                     {
@@ -1708,7 +1609,7 @@ namespace Yutai.ArcGIS.Framework.Docking
                     if (activeContent.DockHandler.AutoHidePortion < 1.0)
                     {
                         DockContentHandler handler4 = activeContent.DockHandler;
-                        handler4.AutoHidePortion += ((double) offset) / ((double) dockArea.Height);
+                        handler4.AutoHidePortion += ((double) offset)/((double) dockArea.Height);
                     }
                     else
                     {
@@ -1723,11 +1624,13 @@ namespace Yutai.ArcGIS.Framework.Docking
                 Rectangle clientRectangle = base.ClientRectangle;
                 if (this.DockState == DockState.DockLeftAutoHide)
                 {
-                    this.ActivePane.Location = new Point(((clientRectangle.Right - 2) - 4) - this.ActivePane.Width, this.ActivePane.Location.Y);
+                    this.ActivePane.Location = new Point(((clientRectangle.Right - 2) - 4) - this.ActivePane.Width,
+                        this.ActivePane.Location.Y);
                 }
                 else if (this.DockState == DockState.DockTopAutoHide)
                 {
-                    this.ActivePane.Location = new Point(this.ActivePane.Location.X, ((clientRectangle.Bottom - 2) - 4) - this.ActivePane.Height);
+                    this.ActivePane.Location = new Point(this.ActivePane.Location.X,
+                        ((clientRectangle.Bottom - 2) - 4) - this.ActivePane.Height);
                 }
             }
 
@@ -1755,7 +1658,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                     this.m_splitter.Dock = DockStyle.Top;
                 }
                 Rectangle displayingRectangle = this.DisplayingRectangle;
-                Rectangle rectangle2 = new Rectangle(-displayingRectangle.Width, displayingRectangle.Y, displayingRectangle.Width, displayingRectangle.Height);
+                Rectangle rectangle2 = new Rectangle(-displayingRectangle.Width, displayingRectangle.Y,
+                    displayingRectangle.Width, displayingRectangle.Height);
                 foreach (Control control in base.Controls)
                 {
                     DockPane pane = control as DockPane;
@@ -1787,20 +1691,25 @@ namespace Yutai.ArcGIS.Framework.Docking
                 }
                 else if (this.DockState == DockState.DockTopAutoHide)
                 {
-                    graphics.DrawLine(SystemPens.ControlDark, 0, base.ClientRectangle.Height - 2, base.ClientRectangle.Right, base.ClientRectangle.Height - 2);
-                    graphics.DrawLine(SystemPens.ControlDarkDark, 0, base.ClientRectangle.Height - 1, base.ClientRectangle.Right, base.ClientRectangle.Height - 1);
+                    graphics.DrawLine(SystemPens.ControlDark, 0, base.ClientRectangle.Height - 2,
+                        base.ClientRectangle.Right, base.ClientRectangle.Height - 2);
+                    graphics.DrawLine(SystemPens.ControlDarkDark, 0, base.ClientRectangle.Height - 1,
+                        base.ClientRectangle.Right, base.ClientRectangle.Height - 1);
                 }
                 else if (this.DockState == DockState.DockLeftAutoHide)
                 {
-                    graphics.DrawLine(SystemPens.ControlDark, base.ClientRectangle.Width - 2, 0, base.ClientRectangle.Width - 2, base.ClientRectangle.Bottom);
-                    graphics.DrawLine(SystemPens.ControlDarkDark, base.ClientRectangle.Width - 1, 0, base.ClientRectangle.Width - 1, base.ClientRectangle.Bottom);
+                    graphics.DrawLine(SystemPens.ControlDark, base.ClientRectangle.Width - 2, 0,
+                        base.ClientRectangle.Width - 2, base.ClientRectangle.Bottom);
+                    graphics.DrawLine(SystemPens.ControlDarkDark, base.ClientRectangle.Width - 1, 0,
+                        base.ClientRectangle.Width - 1, base.ClientRectangle.Bottom);
                 }
                 base.OnPaint(e);
             }
 
             public void RefreshActiveContent()
             {
-                if ((this.ActiveContent != null) && !DockHelper.IsDockStateAutoHide(this.ActiveContent.DockHandler.DockState))
+                if ((this.ActiveContent != null) &&
+                    !DockHelper.IsDockStateAutoHide(this.ActiveContent.DockHandler.DockState))
                 {
                     this.FlagAnimate = false;
                     this.ActiveContent = null;
@@ -1835,7 +1744,7 @@ namespace Yutai.ArcGIS.Framework.Docking
                     {
                         mouseHoverTime = 400;
                     }
-                    this.m_timerMouseTrack.Interval = 2 * mouseHoverTime;
+                    this.m_timerMouseTrack.Interval = 2*mouseHoverTime;
                     this.m_timerMouseTrack.Enabled = true;
                 }
             }
@@ -1862,15 +1771,14 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             public IDockContent ActiveContent
             {
-                get
-                {
-                    return this.m_activeContent;
-                }
+                get { return this.m_activeContent; }
                 set
                 {
                     if (value != this.m_activeContent)
                     {
-                        if ((value != null) && !(DockHelper.IsDockStateAutoHide(value.DockHandler.DockState) && (value.DockHandler.DockPanel == this.DockPanel)))
+                        if ((value != null) &&
+                            !(DockHelper.IsDockStateAutoHide(value.DockHandler.DockState) &&
+                              (value.DockHandler.DockPanel == this.DockPanel)))
                         {
                             throw new InvalidOperationException(Strings.DockPanel_ActiveAutoHideContent_InvalidValue);
                         }
@@ -1902,10 +1810,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             public DockPane ActivePane
             {
-                get
-                {
-                    return this.m_activePane;
-                }
+                get { return this.m_activePane; }
             }
 
             protected virtual Rectangle DisplayingRectangle
@@ -1940,10 +1845,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             public DockPanel DockPanel
             {
-                get
-                {
-                    return this.m_dockPanel;
-                }
+                get { return this.m_dockPanel; }
             }
 
             public DockState DockState
@@ -1956,22 +1858,13 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             private bool FlagAnimate
             {
-                get
-                {
-                    return this.m_flagAnimate;
-                }
-                set
-                {
-                    this.m_flagAnimate = value;
-                }
+                get { return this.m_flagAnimate; }
+                set { this.m_flagAnimate = value; }
             }
 
             internal bool FlagDragging
             {
-                get
-                {
-                    return this.m_flagDragging;
-                }
+                get { return this.m_flagDragging; }
                 set
                 {
                     if (this.m_flagDragging != value)
@@ -1984,10 +1877,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             Control IDragSource.DragControl
             {
-                get
-                {
-                    return this;
-                }
+                get { return this; }
             }
 
             Rectangle ISplitterDragSource.DragLimitBounds
@@ -2013,7 +1903,8 @@ namespace Yutai.ArcGIS.Framework.Docking
             {
                 get
                 {
-                    return ((this.DockState == DockState.DockLeftAutoHide) || (this.DockState == DockState.DockRightAutoHide));
+                    return ((this.DockState == DockState.DockLeftAutoHide) ||
+                            (this.DockState == DockState.DockRightAutoHide));
                 }
             }
 
@@ -2028,23 +1919,18 @@ namespace Yutai.ArcGIS.Framework.Docking
 
                 protected override void StartDrag()
                 {
-                    this.AutoHideWindow.DockPanel.BeginDrag(this.AutoHideWindow, this.AutoHideWindow.RectangleToScreen(base.Bounds));
+                    this.AutoHideWindow.DockPanel.BeginDrag(this.AutoHideWindow,
+                        this.AutoHideWindow.RectangleToScreen(base.Bounds));
                 }
 
                 private DockPanel.AutoHideWindowControl AutoHideWindow
                 {
-                    get
-                    {
-                        return this.m_autoHideWindow;
-                    }
+                    get { return this.m_autoHideWindow; }
                 }
 
                 protected override int SplitterSize
                 {
-                    get
-                    {
-                        return 4;
-                    }
+                    get { return 4; }
                 }
             }
         }
@@ -2143,7 +2029,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                 if (!this.Outline.FlagTestDrop && this.DragSource.IsDockStateValid(DockState.Float))
                 {
                     Rectangle floatOutlineBounds = this.FloatOutlineBounds;
-                    floatOutlineBounds.Offset(Control.MousePosition.X - base.StartMousePosition.X, Control.MousePosition.Y - base.StartMousePosition.Y);
+                    floatOutlineBounds.Offset(Control.MousePosition.X - base.StartMousePosition.X,
+                        Control.MousePosition.Y - base.StartMousePosition.Y);
                     this.Outline.Show(floatOutlineBounds);
                 }
                 if (!this.Outline.FlagTestDrop)
@@ -2159,50 +2046,26 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             public IDockDragSource DragSource
             {
-                get
-                {
-                    return (base.DragSource as IDockDragSource);
-                }
-                set
-                {
-                    base.DragSource = value;
-                }
+                get { return (base.DragSource as IDockDragSource); }
+                set { base.DragSource = value; }
             }
 
             private Rectangle FloatOutlineBounds
             {
-                get
-                {
-                    return this.m_floatOutlineBounds;
-                }
-                set
-                {
-                    this.m_floatOutlineBounds = value;
-                }
+                get { return this.m_floatOutlineBounds; }
+                set { this.m_floatOutlineBounds = value; }
             }
 
             private DockIndicator Indicator
             {
-                get
-                {
-                    return this.m_indicator;
-                }
-                set
-                {
-                    this.m_indicator = value;
-                }
+                get { return this.m_indicator; }
+                set { this.m_indicator = value; }
             }
 
             public DockOutlineBase Outline
             {
-                get
-                {
-                    return this.m_outline;
-                }
-                private set
-                {
-                    this.m_outline = value;
-                }
+                get { return this.m_outline; }
+                private set { this.m_outline = value; }
             }
 
             private class DockIndicator : DragForm
@@ -2222,7 +2085,11 @@ namespace Yutai.ArcGIS.Framework.Docking
                 public DockIndicator(DockPanel.DockDragHandler dragHandler)
                 {
                     this.m_dragHandler = dragHandler;
-                    base.Controls.AddRange(new Control[] { this.PaneDiamond, this.PanelLeft, this.PanelRight, this.PanelTop, this.PanelBottom, this.PanelFill });
+                    base.Controls.AddRange(new Control[]
+                    {
+                        this.PaneDiamond, this.PanelLeft, this.PanelRight, this.PanelTop, this.PanelBottom,
+                        this.PanelFill
+                    });
                     base.Region = new Region(Rectangle.Empty);
                 }
 
@@ -2261,7 +2128,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                     r = base.RectangleToClient(this.DockPanel.RectangleToScreen(r));
                     if (this.ShouldPanelIndicatorVisible(DockState.DockLeft))
                     {
-                        this.PanelLeft.Location = new Point(r.X + this._PanelIndicatorMargin, r.Y + ((r.Height - this.PanelRight.Height) / 2));
+                        this.PanelLeft.Location = new Point(r.X + this._PanelIndicatorMargin,
+                            r.Y + ((r.Height - this.PanelRight.Height)/2));
                         this.PanelLeft.Visible = true;
                         region.Union(this.PanelLeft.Bounds);
                     }
@@ -2271,7 +2139,9 @@ namespace Yutai.ArcGIS.Framework.Docking
                     }
                     if (this.ShouldPanelIndicatorVisible(DockState.DockRight))
                     {
-                        this.PanelRight.Location = new Point(((r.X + r.Width) - this.PanelRight.Width) - this._PanelIndicatorMargin, r.Y + ((r.Height - this.PanelRight.Height) / 2));
+                        this.PanelRight.Location =
+                            new Point(((r.X + r.Width) - this.PanelRight.Width) - this._PanelIndicatorMargin,
+                                r.Y + ((r.Height - this.PanelRight.Height)/2));
                         this.PanelRight.Visible = true;
                         region.Union(this.PanelRight.Bounds);
                     }
@@ -2281,7 +2151,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                     }
                     if (this.ShouldPanelIndicatorVisible(DockState.DockTop))
                     {
-                        this.PanelTop.Location = new Point(r.X + ((r.Width - this.PanelTop.Width) / 2), r.Y + this._PanelIndicatorMargin);
+                        this.PanelTop.Location = new Point(r.X + ((r.Width - this.PanelTop.Width)/2),
+                            r.Y + this._PanelIndicatorMargin);
                         this.PanelTop.Visible = true;
                         region.Union(this.PanelTop.Bounds);
                     }
@@ -2291,7 +2162,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                     }
                     if (this.ShouldPanelIndicatorVisible(DockState.DockBottom))
                     {
-                        this.PanelBottom.Location = new Point(r.X + ((r.Width - this.PanelBottom.Width) / 2), ((r.Y + r.Height) - this.PanelBottom.Height) - this._PanelIndicatorMargin);
+                        this.PanelBottom.Location = new Point(r.X + ((r.Width - this.PanelBottom.Width)/2),
+                            ((r.Y + r.Height) - this.PanelBottom.Height) - this._PanelIndicatorMargin);
                         this.PanelBottom.Visible = true;
                         region.Union(this.PanelBottom.Bounds);
                     }
@@ -2301,8 +2173,11 @@ namespace Yutai.ArcGIS.Framework.Docking
                     }
                     if (this.ShouldPanelIndicatorVisible(DockState.Document))
                     {
-                        Rectangle rectangle2 = base.RectangleToClient(this.DockPanel.RectangleToScreen(this.DockPanel.DocumentWindowBounds));
-                        this.PanelFill.Location = new Point(rectangle2.X + ((rectangle2.Width - this.PanelFill.Width) / 2), rectangle2.Y + ((rectangle2.Height - this.PanelFill.Height) / 2));
+                        Rectangle rectangle2 =
+                            base.RectangleToClient(this.DockPanel.RectangleToScreen(this.DockPanel.DocumentWindowBounds));
+                        this.PanelFill.Location = new Point(
+                            rectangle2.X + ((rectangle2.Width - this.PanelFill.Width)/2),
+                            rectangle2.Y + ((rectangle2.Height - this.PanelFill.Height)/2));
                         this.PanelFill.Visible = true;
                         region.Union(this.PanelFill.Bounds);
                     }
@@ -2312,12 +2187,20 @@ namespace Yutai.ArcGIS.Framework.Docking
                     }
                     if (this.ShouldPaneDiamondVisible())
                     {
-                        Rectangle rectangle3 = base.RectangleToClient(this.DockPane.RectangleToScreen(this.DockPane.ClientRectangle));
-                        this.PaneDiamond.Location = new Point(rectangle3.Left + ((rectangle3.Width - this.PaneDiamond.Width) / 2), rectangle3.Top + ((rectangle3.Height - this.PaneDiamond.Height) / 2));
+                        Rectangle rectangle3 =
+                            base.RectangleToClient(this.DockPane.RectangleToScreen(this.DockPane.ClientRectangle));
+                        this.PaneDiamond.Location =
+                            new Point(rectangle3.Left + ((rectangle3.Width - this.PaneDiamond.Width)/2),
+                                rectangle3.Top + ((rectangle3.Height - this.PaneDiamond.Height)/2));
                         this.PaneDiamond.Visible = true;
                         using (GraphicsPath path = PaneIndicator.DisplayingGraphicsPath.Clone() as GraphicsPath)
                         {
-                            Point[] plgpts = new Point[] { new Point(this.PaneDiamond.Left, this.PaneDiamond.Top), new Point(this.PaneDiamond.Right, this.PaneDiamond.Top), new Point(this.PaneDiamond.Left, this.PaneDiamond.Bottom) };
+                            Point[] plgpts = new Point[]
+                            {
+                                new Point(this.PaneDiamond.Left, this.PaneDiamond.Top),
+                                new Point(this.PaneDiamond.Right, this.PaneDiamond.Top),
+                                new Point(this.PaneDiamond.Left, this.PaneDiamond.Bottom)
+                            };
                             using (Matrix matrix = new Matrix(this.PaneDiamond.ClientRectangle, plgpts))
                             {
                                 path.Transform(matrix);
@@ -2417,18 +2300,12 @@ namespace Yutai.ArcGIS.Framework.Docking
 
                 private DockPane DisplayingPane
                 {
-                    get
-                    {
-                        return (this.ShouldPaneDiamondVisible() ? this.DockPane : null);
-                    }
+                    get { return (this.ShouldPaneDiamondVisible() ? this.DockPane : null); }
                 }
 
                 public DockPane DockPane
                 {
-                    get
-                    {
-                        return this.m_dockPane;
-                    }
+                    get { return this.m_dockPane; }
                     internal set
                     {
                         if (this.m_dockPane != value)
@@ -2445,26 +2322,17 @@ namespace Yutai.ArcGIS.Framework.Docking
 
                 public DockPanel DockPanel
                 {
-                    get
-                    {
-                        return this.DragHandler.DockPanel;
-                    }
+                    get { return this.DragHandler.DockPanel; }
                 }
 
                 public DockPanel.DockDragHandler DragHandler
                 {
-                    get
-                    {
-                        return this.m_dragHandler;
-                    }
+                    get { return this.m_dragHandler; }
                 }
 
                 public bool FullPanelEdge
                 {
-                    get
-                    {
-                        return this.m_fullPanelEdge;
-                    }
+                    get { return this.m_fullPanelEdge; }
                     set
                     {
                         if (this.m_fullPanelEdge != value)
@@ -2477,10 +2345,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
                 private IHitTest HitTestResult
                 {
-                    get
-                    {
-                        return this.m_hitTest;
-                    }
+                    get { return this.m_hitTest; }
                     set
                     {
                         if (this.m_hitTest != value)
@@ -2579,12 +2444,24 @@ namespace Yutai.ArcGIS.Framework.Docking
                     private static Bitmap _bitmapPaneDiamondBottom = Resources.DockIndicator_PaneDiamond_Bottom;
                     private static Bitmap _bitmapPaneDiamondFill = Resources.DockIndicator_PaneDiamond_Fill;
                     private static Bitmap _bitmapPaneDiamondHotSpot = Resources.DockIndicator_PaneDiamond_HotSpot;
-                    private static Bitmap _bitmapPaneDiamondHotSpotIndex = Resources.DockIndicator_PaneDiamond_HotSpotIndex;
+
+                    private static Bitmap _bitmapPaneDiamondHotSpotIndex =
+                        Resources.DockIndicator_PaneDiamond_HotSpotIndex;
+
                     private static Bitmap _bitmapPaneDiamondLeft = Resources.DockIndicator_PaneDiamond_Left;
                     private static Bitmap _bitmapPaneDiamondRight = Resources.DockIndicator_PaneDiamond_Right;
                     private static Bitmap _bitmapPaneDiamondTop = Resources.DockIndicator_PaneDiamond_Top;
-                    private static GraphicsPath _displayingGraphicsPath = DrawHelper.CalculateGraphicsPathFromBitmap(_bitmapPaneDiamond);
-                    private static HotSpotIndex[] _hotSpots = new HotSpotIndex[] { new HotSpotIndex(1, 0, DockStyle.Top), new HotSpotIndex(0, 1, DockStyle.Left), new HotSpotIndex(1, 1, DockStyle.Fill), new HotSpotIndex(2, 1, DockStyle.Right), new HotSpotIndex(1, 2, DockStyle.Bottom) };
+
+                    private static GraphicsPath _displayingGraphicsPath =
+                        DrawHelper.CalculateGraphicsPathFromBitmap(_bitmapPaneDiamond);
+
+                    private static HotSpotIndex[] _hotSpots = new HotSpotIndex[]
+                    {
+                        new HotSpotIndex(1, 0, DockStyle.Top), new HotSpotIndex(0, 1, DockStyle.Left),
+                        new HotSpotIndex(1, 1, DockStyle.Fill), new HotSpotIndex(2, 1, DockStyle.Right),
+                        new HotSpotIndex(1, 2, DockStyle.Bottom)
+                    };
+
                     private DockStyle m_status = DockStyle.None;
 
                     public PaneIndicator()
@@ -2605,7 +2482,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                             }
                             for (int i = _hotSpots.GetLowerBound(0); i <= _hotSpots.GetUpperBound(0); i++)
                             {
-                                if (_bitmapPaneDiamondHotSpot.GetPixel(pt.X, pt.Y) == _bitmapPaneDiamondHotSpotIndex.GetPixel(_hotSpots[i].X, _hotSpots[i].Y))
+                                if (_bitmapPaneDiamondHotSpot.GetPixel(pt.X, pt.Y) ==
+                                    _bitmapPaneDiamondHotSpotIndex.GetPixel(_hotSpots[i].X, _hotSpots[i].Y))
                                 {
                                     return _hotSpots[i].DockStyle;
                                 }
@@ -2616,18 +2494,12 @@ namespace Yutai.ArcGIS.Framework.Docking
 
                     public static GraphicsPath DisplayingGraphicsPath
                     {
-                        get
-                        {
-                            return _displayingGraphicsPath;
-                        }
+                        get { return _displayingGraphicsPath; }
                     }
 
                     public DockStyle Status
                     {
-                        get
-                        {
-                            return this.m_status;
-                        }
+                        get { return this.m_status; }
                         set
                         {
                             this.m_status = value;
@@ -2664,6 +2536,7 @@ namespace Yutai.ArcGIS.Framework.Docking
                         private int m_x;
                         private int m_y;
                         private System.Windows.Forms.DockStyle m_dockStyle;
+
                         public HotSpotIndex(int x, int y, System.Windows.Forms.DockStyle dockStyle)
                         {
                             this.m_x = x;
@@ -2673,24 +2546,17 @@ namespace Yutai.ArcGIS.Framework.Docking
 
                         public int X
                         {
-                            get
-                            {
-                                return this.m_x;
-                            }
+                            get { return this.m_x; }
                         }
+
                         public int Y
                         {
-                            get
-                            {
-                                return this.m_y;
-                            }
+                            get { return this.m_y; }
                         }
+
                         public System.Windows.Forms.DockStyle DockStyle
                         {
-                            get
-                            {
-                                return this.m_dockStyle;
-                            }
+                            get { return this.m_dockStyle; }
                         }
                     }
                 }
@@ -2720,15 +2586,14 @@ namespace Yutai.ArcGIS.Framework.Docking
 
                     public System.Windows.Forms.DockStyle HitTest(Point pt)
                     {
-                        return (base.ClientRectangle.Contains(base.PointToClient(pt)) ? this.DockStyle : System.Windows.Forms.DockStyle.None);
+                        return (base.ClientRectangle.Contains(base.PointToClient(pt))
+                            ? this.DockStyle
+                            : System.Windows.Forms.DockStyle.None);
                     }
 
                     private System.Windows.Forms.DockStyle DockStyle
                     {
-                        get
-                        {
-                            return this.m_dockStyle;
-                        }
+                        get { return this.m_dockStyle; }
                     }
 
                     private Image ImageActive
@@ -2789,10 +2654,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
                     private bool IsActivated
                     {
-                        get
-                        {
-                            return this.m_isActivated;
-                        }
+                        get { return this.m_isActivated; }
                         set
                         {
                             this.m_isActivated = value;
@@ -2802,10 +2664,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
                     public System.Windows.Forms.DockStyle Status
                     {
-                        get
-                        {
-                            return this.m_status;
-                        }
+                        get { return this.m_status; }
                         set
                         {
                             if ((value != this.DockStyle) && (value != System.Windows.Forms.DockStyle.None))
@@ -2904,19 +2763,19 @@ namespace Yutai.ArcGIS.Framework.Docking
                         displayingRectangle = pane.DisplayingRectangle;
                         if (dock == DockStyle.Right)
                         {
-                            displayingRectangle.X += displayingRectangle.Width / 2;
+                            displayingRectangle.X += displayingRectangle.Width/2;
                         }
                         if (dock == DockStyle.Bottom)
                         {
-                            displayingRectangle.Y += displayingRectangle.Height / 2;
+                            displayingRectangle.Y += displayingRectangle.Height/2;
                         }
                         if ((dock == DockStyle.Left) || (dock == DockStyle.Right))
                         {
-                            displayingRectangle.Width -= displayingRectangle.Width / 2;
+                            displayingRectangle.Width -= displayingRectangle.Width/2;
                         }
                         if ((dock == DockStyle.Top) || (dock == DockStyle.Bottom))
                         {
-                            displayingRectangle.Height -= displayingRectangle.Height / 2;
+                            displayingRectangle.Height -= displayingRectangle.Height/2;
                         }
                         displayingRectangle.Location = pane.PointToScreen(displayingRectangle.Location);
                         this.SetDragForm(displayingRectangle);
@@ -2932,8 +2791,13 @@ namespace Yutai.ArcGIS.Framework.Docking
                         using (GraphicsPath path = pane.TabStripControl.GetOutline(contentIndex))
                         {
                             RectangleF bounds = path.GetBounds();
-                            displayingRectangle = new Rectangle((int) bounds.X, (int) bounds.Y, (int) bounds.Width, (int) bounds.Height);
-                            Point[] plgpts = new Point[] { new Point(0, 0), new Point(displayingRectangle.Width, 0), new Point(0, displayingRectangle.Height) };
+                            displayingRectangle = new Rectangle((int) bounds.X, (int) bounds.Y, (int) bounds.Width,
+                                (int) bounds.Height);
+                            Point[] plgpts = new Point[]
+                            {
+                                new Point(0, 0), new Point(displayingRectangle.Width, 0),
+                                new Point(0, displayingRectangle.Height)
+                            };
                             using (Matrix matrix = new Matrix(displayingRectangle, plgpts))
                             {
                                 path.Transform(matrix);
@@ -2983,10 +2847,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
                 private DragForm DragForm
                 {
-                    get
-                    {
-                        return this.m_dragForm;
-                    }
+                    get { return this.m_dragForm; }
                 }
             }
         }
@@ -3012,30 +2873,18 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             public DockPanel DockPanel
             {
-                get
-                {
-                    return this.m_dockPanel;
-                }
+                get { return this.m_dockPanel; }
             }
 
             protected sealed override Control DragControl
             {
-                get
-                {
-                    return ((this.DragSource == null) ? null : this.DragSource.DragControl);
-                }
+                get { return ((this.DragSource == null) ? null : this.DragSource.DragControl); }
             }
 
             protected IDragSource DragSource
             {
-                get
-                {
-                    return this.m_dragSource;
-                }
-                set
-                {
-                    this.m_dragSource = value;
-                }
+                get { return this.m_dragSource; }
+                set { this.m_dragSource = value; }
             }
         }
 
@@ -3077,6 +2926,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             protected abstract void OnDragging();
             protected abstract void OnEndDrag(bool abort);
+
             protected virtual bool OnPreFilterMessage(ref Message m)
             {
                 return false;
@@ -3116,14 +2966,8 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             protected Point StartMousePosition
             {
-                get
-                {
-                    return this.m_startMousePosition;
-                }
-                private set
-                {
-                    this.m_startMousePosition = value;
-                }
+                get { return this.m_startMousePosition; }
+                private set { this.m_startMousePosition = value; }
             }
         }
 
@@ -3147,7 +2991,8 @@ namespace Yutai.ArcGIS.Framework.Docking
             {
                 this.m_dockPanel = dockPanel;
                 this.m_localWindowsHook = new LocalWindowsHook(HookType.WH_CALLWNDPROCRET);
-                this.m_hookEventHandler = new DockPanel.FocusManagerImpl.LocalWindowsHook.HookEventHandler(this.HookEventHandler);
+                this.m_hookEventHandler =
+                    new DockPanel.FocusManagerImpl.LocalWindowsHook.HookEventHandler(this.HookEventHandler);
                 this.m_localWindowsHook.HookInvoked += this.m_hookEventHandler;
                 this.m_localWindowsHook.Install();
             }
@@ -3165,7 +3010,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                     {
                         NativeMethods.SetFocus(dockHandler.ActiveWindowHandle);
                     }
-                    if (!dockHandler.Form.ContainsFocus && !dockHandler.Form.SelectNextControl(dockHandler.Form.ActiveControl, true, true, true, true))
+                    if (!dockHandler.Form.ContainsFocus &&
+                        !dockHandler.Form.SelectNextControl(dockHandler.Form.ActiveControl, true, true, true, true))
                     {
                         NativeMethods.SetFocus(dockHandler.Form.Handle);
                     }
@@ -3285,11 +3131,11 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             private void HookEventHandler(object sender, HookEventArgs e)
             {
-                switch (((Msgs) Marshal.ReadInt32(e.lParam, IntPtr.Size * 3)))
+                switch (((Msgs) Marshal.ReadInt32(e.lParam, IntPtr.Size*3)))
                 {
                     case Msgs.WM_KILLFOCUS:
                     {
-                        IntPtr hWnd = Marshal.ReadIntPtr(e.lParam, IntPtr.Size * 2);
+                        IntPtr hWnd = Marshal.ReadIntPtr(e.lParam, IntPtr.Size*2);
                         if (this.GetPaneFromHandle(hWnd) == null)
                         {
                             this.RefreshActiveWindow();
@@ -3431,7 +3277,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                     {
                         activePane = this.DockPanel.DockWindows[DockState.Document].DefaultPane;
                     }
-                    else if ((this.ActiveDocumentPane.DockPanel != this.DockPanel) || (this.ActiveDocumentPane.DockState != DockState.Document))
+                    else if ((this.ActiveDocumentPane.DockPanel != this.DockPanel) ||
+                             (this.ActiveDocumentPane.DockState != DockState.Document))
                     {
                         activePane = this.DockPanel.DockWindows[DockState.Document].DefaultPane;
                     }
@@ -3479,90 +3326,54 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             public IDockContent ActiveContent
             {
-                get
-                {
-                    return this.m_activeContent;
-                }
+                get { return this.m_activeContent; }
             }
 
             public IDockContent ActiveDocument
             {
-                get
-                {
-                    return this.m_activeDocument;
-                }
+                get { return this.m_activeDocument; }
             }
 
             public DockPane ActiveDocumentPane
             {
-                get
-                {
-                    return this.m_activeDocumentPane;
-                }
+                get { return this.m_activeDocumentPane; }
             }
 
             public DockPane ActivePane
             {
-                get
-                {
-                    return this.m_activePane;
-                }
+                get { return this.m_activePane; }
             }
 
             private IDockContent ContentActivating
             {
-                get
-                {
-                    return this.m_contentActivating;
-                }
-                set
-                {
-                    this.m_contentActivating = value;
-                }
+                get { return this.m_contentActivating; }
+                set { this.m_contentActivating = value; }
             }
 
             public DockPanel DockPanel
             {
-                get
-                {
-                    return this.m_dockPanel;
-                }
+                get { return this.m_dockPanel; }
             }
 
             private bool InRefreshActiveWindow
             {
-                get
-                {
-                    return this.m_inRefreshActiveWindow;
-                }
+                get { return this.m_inRefreshActiveWindow; }
             }
 
             public bool IsFocusTrackingSuspended
             {
-                get
-                {
-                    return (this.m_countSuspendFocusTracking != 0);
-                }
+                get { return (this.m_countSuspendFocusTracking != 0); }
             }
 
             private IDockContent LastActiveContent
             {
-                get
-                {
-                    return this.m_lastActiveContent;
-                }
-                set
-                {
-                    this.m_lastActiveContent = value;
-                }
+                get { return this.m_lastActiveContent; }
+                set { this.m_lastActiveContent = value; }
             }
 
             private List<IDockContent> ListContent
             {
-                get
-                {
-                    return this.m_listContent;
-                }
+                get { return this.m_listContent; }
             }
 
             private class HookEventArgs : EventArgs
@@ -3590,7 +3401,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                 {
                     if (code >= 0)
                     {
-                        DockPanel.FocusManagerImpl.HookEventArgs e = new DockPanel.FocusManagerImpl.HookEventArgs {
+                        DockPanel.FocusManagerImpl.HookEventArgs e = new DockPanel.FocusManagerImpl.HookEventArgs
+                        {
                             HookCode = code,
                             wParam = wParam,
                             lParam = lParam
@@ -3623,7 +3435,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                         this.Uninstall();
                     }
                     int currentThreadId = NativeMethods.GetCurrentThreadId();
-                    this.m_hHook = NativeMethods.SetWindowsHookEx(this.m_hookType, this.m_filterFunc, IntPtr.Zero, currentThreadId);
+                    this.m_hHook = NativeMethods.SetWindowsHookEx(this.m_hookType, this.m_filterFunc, IntPtr.Zero,
+                        currentThreadId);
                 }
 
                 protected void OnHookInvoked(DockPanel.FocusManagerImpl.HookEventArgs e)
@@ -3803,7 +3616,9 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             private void UpdateStyles()
             {
-                NativeMethods.SetWindowPos(this.MdiClient.Handle, IntPtr.Zero, 0, 0, 0, 0, FlagsSetWindowPos.SWP_DRAWFRAME | FlagsSetWindowPos.SWP_NOACTIVATE | FlagsSetWindowPos.SWP_NOMOVE | FlagsSetWindowPos.SWP_NOOWNERZORDER | FlagsSetWindowPos.SWP_NOSIZE | FlagsSetWindowPos.SWP_NOZORDER);
+                NativeMethods.SetWindowPos(this.MdiClient.Handle, IntPtr.Zero, 0, 0, 0, 0,
+                    FlagsSetWindowPos.SWP_DRAWFRAME | FlagsSetWindowPos.SWP_NOACTIVATE | FlagsSetWindowPos.SWP_NOMOVE |
+                    FlagsSetWindowPos.SWP_NOOWNERZORDER | FlagsSetWindowPos.SWP_NOSIZE | FlagsSetWindowPos.SWP_NOZORDER);
             }
 
             protected override void WndProc(ref Message m)
@@ -3817,10 +3632,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             public bool AutoScroll
             {
-                get
-                {
-                    return this.m_autoScroll;
-                }
+                get { return this.m_autoScroll; }
                 set
                 {
                     this.m_autoScroll = value;
@@ -3870,19 +3682,13 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             public System.Windows.Forms.MdiClient MdiClient
             {
-                get
-                {
-                    return this.m_mdiClient;
-                }
+                get { return this.m_mdiClient; }
             }
 
             [Browsable(false)]
             public Form ParentForm
             {
-                get
-                {
-                    return this.m_parentForm;
-                }
+                get { return this.m_parentForm; }
                 set
                 {
                     if (this.m_parentForm != null)
@@ -3909,10 +3715,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             public ISite Site
             {
-                get
-                {
-                    return this.m_site;
-                }
+                get { return this.m_site; }
                 set
                 {
                     this.m_site = value;
@@ -3966,9 +3769,12 @@ namespace Yutai.ArcGIS.Framework.Docking
                         throw new ArgumentException(Strings.DockPanel_LoadFromXml_InvalidXmlFormat);
                     }
                     structArray[i].PersistString = xmlIn.GetAttribute("PersistString");
-                    structArray[i].AutoHidePortion = Convert.ToDouble(xmlIn.GetAttribute("AutoHidePortion"), CultureInfo.InvariantCulture);
-                    structArray[i].IsHidden = Convert.ToBoolean(xmlIn.GetAttribute("IsHidden"), CultureInfo.InvariantCulture);
-                    structArray[i].IsFloat = Convert.ToBoolean(xmlIn.GetAttribute("IsFloat"), CultureInfo.InvariantCulture);
+                    structArray[i].AutoHidePortion = Convert.ToDouble(xmlIn.GetAttribute("AutoHidePortion"),
+                        CultureInfo.InvariantCulture);
+                    structArray[i].IsHidden = Convert.ToBoolean(xmlIn.GetAttribute("IsHidden"),
+                        CultureInfo.InvariantCulture);
+                    structArray[i].IsFloat = Convert.ToBoolean(xmlIn.GetAttribute("IsFloat"),
+                        CultureInfo.InvariantCulture);
                     MoveToNextElement(xmlIn);
                 }
                 return structArray;
@@ -3989,7 +3795,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                         throw new ArgumentException(Strings.DockPanel_LoadFromXml_InvalidXmlFormat);
                     }
                     structArray[i].DockState = (DockState) converter.ConvertFrom(xmlIn.GetAttribute("DockState"));
-                    structArray[i].ZOrderIndex = Convert.ToInt32(xmlIn.GetAttribute("ZOrderIndex"), CultureInfo.InvariantCulture);
+                    structArray[i].ZOrderIndex = Convert.ToInt32(xmlIn.GetAttribute("ZOrderIndex"),
+                        CultureInfo.InvariantCulture);
                     MoveToNextElement(xmlIn);
                     if ((xmlIn.Name != "DockList") && (xmlIn.Name != "NestedPanes"))
                     {
@@ -4005,10 +3812,14 @@ namespace Yutai.ArcGIS.Framework.Docking
                         {
                             throw new ArgumentException(Strings.DockPanel_LoadFromXml_InvalidXmlFormat);
                         }
-                        structArray[i].NestedPanes[j].IndexPane = Convert.ToInt32(xmlIn.GetAttribute("RefID"), CultureInfo.InvariantCulture);
-                        structArray[i].NestedPanes[j].IndexPrevPane = Convert.ToInt32(xmlIn.GetAttribute("PrevPane"), CultureInfo.InvariantCulture);
-                        structArray[i].NestedPanes[j].Alignment = (DockAlignment) converter2.ConvertFrom(xmlIn.GetAttribute("Alignment"));
-                        structArray[i].NestedPanes[j].Proportion = Convert.ToDouble(xmlIn.GetAttribute("Proportion"), CultureInfo.InvariantCulture);
+                        structArray[i].NestedPanes[j].IndexPane = Convert.ToInt32(xmlIn.GetAttribute("RefID"),
+                            CultureInfo.InvariantCulture);
+                        structArray[i].NestedPanes[j].IndexPrevPane = Convert.ToInt32(xmlIn.GetAttribute("PrevPane"),
+                            CultureInfo.InvariantCulture);
+                        structArray[i].NestedPanes[j].Alignment =
+                            (DockAlignment) converter2.ConvertFrom(xmlIn.GetAttribute("Alignment"));
+                        structArray[i].NestedPanes[j].Proportion = Convert.ToDouble(xmlIn.GetAttribute("Proportion"),
+                            CultureInfo.InvariantCulture);
                         MoveToNextElement(xmlIn);
                     }
                 }
@@ -4029,8 +3840,10 @@ namespace Yutai.ArcGIS.Framework.Docking
                     {
                         throw new ArgumentException(Strings.DockPanel_LoadFromXml_InvalidXmlFormat);
                     }
-                    structArray[i].Bounds = (Rectangle) converter2.ConvertFromInvariantString(xmlIn.GetAttribute("Bounds"));
-                    structArray[i].ZOrderIndex = Convert.ToInt32(xmlIn.GetAttribute("ZOrderIndex"), CultureInfo.InvariantCulture);
+                    structArray[i].Bounds =
+                        (Rectangle) converter2.ConvertFromInvariantString(xmlIn.GetAttribute("Bounds"));
+                    structArray[i].ZOrderIndex = Convert.ToInt32(xmlIn.GetAttribute("ZOrderIndex"),
+                        CultureInfo.InvariantCulture);
                     MoveToNextElement(xmlIn);
                     if ((xmlIn.Name != "DockList") && (xmlIn.Name != "NestedPanes"))
                     {
@@ -4046,10 +3859,14 @@ namespace Yutai.ArcGIS.Framework.Docking
                         {
                             throw new ArgumentException(Strings.DockPanel_LoadFromXml_InvalidXmlFormat);
                         }
-                        structArray[i].NestedPanes[j].IndexPane = Convert.ToInt32(xmlIn.GetAttribute("RefID"), CultureInfo.InvariantCulture);
-                        structArray[i].NestedPanes[j].IndexPrevPane = Convert.ToInt32(xmlIn.GetAttribute("PrevPane"), CultureInfo.InvariantCulture);
-                        structArray[i].NestedPanes[j].Alignment = (DockAlignment) converter.ConvertFrom(xmlIn.GetAttribute("Alignment"));
-                        structArray[i].NestedPanes[j].Proportion = Convert.ToDouble(xmlIn.GetAttribute("Proportion"), CultureInfo.InvariantCulture);
+                        structArray[i].NestedPanes[j].IndexPane = Convert.ToInt32(xmlIn.GetAttribute("RefID"),
+                            CultureInfo.InvariantCulture);
+                        structArray[i].NestedPanes[j].IndexPrevPane = Convert.ToInt32(xmlIn.GetAttribute("PrevPane"),
+                            CultureInfo.InvariantCulture);
+                        structArray[i].NestedPanes[j].Alignment =
+                            (DockAlignment) converter.ConvertFrom(xmlIn.GetAttribute("Alignment"));
+                        structArray[i].NestedPanes[j].Proportion = Convert.ToDouble(xmlIn.GetAttribute("Proportion"),
+                            CultureInfo.InvariantCulture);
                         MoveToNextElement(xmlIn);
                     }
                 }
@@ -4061,7 +3878,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                 LoadFromXml(dockPanel, stream, deserializeContent, true);
             }
 
-            public static void LoadFromXml(DockPanel dockPanel, string fileName, DeserializeDockContent deserializeContent)
+            public static void LoadFromXml(DockPanel dockPanel, string fileName,
+                DeserializeDockContent deserializeContent)
             {
                 FileStream stream = new FileStream(fileName, FileMode.Open);
                 try
@@ -4074,7 +3892,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                 }
             }
 
-            public static void LoadFromXml(DockPanel dockPanel, Stream stream, DeserializeDockContent deserializeContent, bool closeStream)
+            public static void LoadFromXml(DockPanel dockPanel, Stream stream, DeserializeDockContent deserializeContent,
+                bool closeStream)
             {
                 int num2;
                 int num5;
@@ -4089,7 +3908,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                 {
                     throw new InvalidOperationException(Strings.DockPanel_LoadFromXml_AlreadyInitialized);
                 }
-                XmlTextReader xmlIn = new XmlTextReader(stream) {
+                XmlTextReader xmlIn = new XmlTextReader(stream)
+                {
                     WhitespaceHandling = WhitespaceHandling.None
                 };
                 xmlIn.MoveToContent();
@@ -4104,12 +3924,18 @@ namespace Yutai.ArcGIS.Framework.Docking
                 {
                     throw new ArgumentException(Strings.DockPanel_LoadFromXml_InvalidFormatVersion);
                 }
-                DockPanelStruct struct2 = new DockPanelStruct {
-                    DockLeftPortion = Convert.ToDouble(xmlIn.GetAttribute("DockLeftPortion"), CultureInfo.InvariantCulture),
-                    DockRightPortion = Convert.ToDouble(xmlIn.GetAttribute("DockRightPortion"), CultureInfo.InvariantCulture),
-                    DockTopPortion = Convert.ToDouble(xmlIn.GetAttribute("DockTopPortion"), CultureInfo.InvariantCulture),
-                    DockBottomPortion = Convert.ToDouble(xmlIn.GetAttribute("DockBottomPortion"), CultureInfo.InvariantCulture),
-                    IndexActiveDocumentPane = Convert.ToInt32(xmlIn.GetAttribute("ActiveDocumentPane"), CultureInfo.InvariantCulture),
+                DockPanelStruct struct2 = new DockPanelStruct
+                {
+                    DockLeftPortion =
+                        Convert.ToDouble(xmlIn.GetAttribute("DockLeftPortion"), CultureInfo.InvariantCulture),
+                    DockRightPortion =
+                        Convert.ToDouble(xmlIn.GetAttribute("DockRightPortion"), CultureInfo.InvariantCulture),
+                    DockTopPortion =
+                        Convert.ToDouble(xmlIn.GetAttribute("DockTopPortion"), CultureInfo.InvariantCulture),
+                    DockBottomPortion =
+                        Convert.ToDouble(xmlIn.GetAttribute("DockBottomPortion"), CultureInfo.InvariantCulture),
+                    IndexActiveDocumentPane =
+                        Convert.ToInt32(xmlIn.GetAttribute("ActiveDocumentPane"), CultureInfo.InvariantCulture),
                     IndexActivePane = Convert.ToInt32(xmlIn.GetAttribute("ActivePane"), CultureInfo.InvariantCulture)
                 };
                 MoveToNextElement(xmlIn);
@@ -4203,7 +4029,9 @@ namespace Yutai.ArcGIS.Framework.Docking
                         indexPane = structArray3[num2].NestedPanes[num5].IndexPane;
                         pane = dockPanel.Panes[indexPane];
                         indexPrevPane = structArray3[num2].NestedPanes[num5].IndexPrevPane;
-                        pane2 = (indexPrevPane == -1) ? container.NestedPanes.GetDefaultPreviousPane(pane) : dockPanel.Panes[indexPrevPane];
+                        pane2 = (indexPrevPane == -1)
+                            ? container.NestedPanes.GetDefaultPreviousPane(pane)
+                            : dockPanel.Panes[indexPrevPane];
                         alignment = structArray3[num2].NestedPanes[num5].Alignment;
                         proportion = structArray3[num2].NestedPanes[num5].Proportion;
                         pane.DockTo(container, pane2, alignment, proportion);
@@ -4224,7 +4052,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                         pane = dockPanel.Panes[indexPane];
                         if (num5 == 0)
                         {
-                            window2 = dockPanel.FloatWindowFactory.CreateFloatWindow(dockPanel, pane, structArray4[num2].Bounds);
+                            window2 = dockPanel.FloatWindowFactory.CreateFloatWindow(dockPanel, pane,
+                                structArray4[num2].Bounds);
                         }
                         else
                         {
@@ -4287,7 +4116,9 @@ namespace Yutai.ArcGIS.Framework.Docking
                 }
                 for (num2 = 0; num2 < structArray2.Length; num2++)
                 {
-                    dockPanel.Panes[num2].ActiveContent = (structArray2[num2].IndexActiveContent == -1) ? null : dockPanel.Contents[structArray2[num2].IndexActiveContent];
+                    dockPanel.Panes[num2].ActiveContent = (structArray2[num2].IndexActiveContent == -1)
+                        ? null
+                        : dockPanel.Contents[structArray2[num2].IndexActiveContent];
                 }
                 if (struct2.IndexActiveDocumentPane != -1)
                 {
@@ -4321,7 +4152,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                         throw new ArgumentException(Strings.DockPanel_LoadFromXml_InvalidXmlFormat);
                     }
                     structArray[i].DockState = (DockState) converter.ConvertFrom(xmlIn.GetAttribute("DockState"));
-                    structArray[i].IndexActiveContent = Convert.ToInt32(xmlIn.GetAttribute("ActiveContent"), CultureInfo.InvariantCulture);
+                    structArray[i].IndexActiveContent = Convert.ToInt32(xmlIn.GetAttribute("ActiveContent"),
+                        CultureInfo.InvariantCulture);
                     structArray[i].ZOrderIndex = -1;
                     MoveToNextElement(xmlIn);
                     if (xmlIn.Name != "Contents")
@@ -4338,7 +4170,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                         {
                             throw new ArgumentException(Strings.DockPanel_LoadFromXml_InvalidXmlFormat);
                         }
-                        structArray[i].IndexContents[j] = Convert.ToInt32(xmlIn.GetAttribute("RefID"), CultureInfo.InvariantCulture);
+                        structArray[i].IndexContents[j] = Convert.ToInt32(xmlIn.GetAttribute("RefID"),
+                            CultureInfo.InvariantCulture);
                         MoveToNextElement(xmlIn);
                     }
                 }
@@ -4387,7 +4220,8 @@ namespace Yutai.ArcGIS.Framework.Docking
             public static void SaveAsXml(DockPanel dockPanel, Stream stream, Encoding encoding, bool upstream)
             {
                 NestedDockingStatus nestedDockingStatus;
-                XmlTextWriter writer = new XmlTextWriter(stream, encoding) {
+                XmlTextWriter writer = new XmlTextWriter(stream, encoding)
+                {
                     Formatting = Formatting.Indented
                 };
                 if (!upstream)
@@ -4398,22 +4232,32 @@ namespace Yutai.ArcGIS.Framework.Docking
                 writer.WriteComment(Strings.DockPanel_Persistor_XmlFileComment2);
                 writer.WriteStartElement("DockPanel");
                 writer.WriteAttributeString("FormatVersion", "1.0");
-                writer.WriteAttributeString("DockLeftPortion", dockPanel.DockLeftPortion.ToString(CultureInfo.InvariantCulture));
-                writer.WriteAttributeString("DockRightPortion", dockPanel.DockRightPortion.ToString(CultureInfo.InvariantCulture));
-                writer.WriteAttributeString("DockTopPortion", dockPanel.DockTopPortion.ToString(CultureInfo.InvariantCulture));
-                writer.WriteAttributeString("DockBottomPortion", dockPanel.DockBottomPortion.ToString(CultureInfo.InvariantCulture));
-                writer.WriteAttributeString("ActiveDocumentPane", dockPanel.Panes.IndexOf(dockPanel.ActiveDocumentPane).ToString(CultureInfo.InvariantCulture));
-                writer.WriteAttributeString("ActivePane", dockPanel.Panes.IndexOf(dockPanel.ActivePane).ToString(CultureInfo.InvariantCulture));
+                writer.WriteAttributeString("DockLeftPortion",
+                    dockPanel.DockLeftPortion.ToString(CultureInfo.InvariantCulture));
+                writer.WriteAttributeString("DockRightPortion",
+                    dockPanel.DockRightPortion.ToString(CultureInfo.InvariantCulture));
+                writer.WriteAttributeString("DockTopPortion",
+                    dockPanel.DockTopPortion.ToString(CultureInfo.InvariantCulture));
+                writer.WriteAttributeString("DockBottomPortion",
+                    dockPanel.DockBottomPortion.ToString(CultureInfo.InvariantCulture));
+                writer.WriteAttributeString("ActiveDocumentPane",
+                    dockPanel.Panes.IndexOf(dockPanel.ActiveDocumentPane).ToString(CultureInfo.InvariantCulture));
+                writer.WriteAttributeString("ActivePane",
+                    dockPanel.Panes.IndexOf(dockPanel.ActivePane).ToString(CultureInfo.InvariantCulture));
                 writer.WriteStartElement("Contents");
                 writer.WriteAttributeString("Count", dockPanel.Contents.Count.ToString(CultureInfo.InvariantCulture));
                 foreach (IDockContent content in dockPanel.Contents)
                 {
                     writer.WriteStartElement("Content");
-                    writer.WriteAttributeString("ID", dockPanel.Contents.IndexOf(content).ToString(CultureInfo.InvariantCulture));
+                    writer.WriteAttributeString("ID",
+                        dockPanel.Contents.IndexOf(content).ToString(CultureInfo.InvariantCulture));
                     writer.WriteAttributeString("PersistString", content.DockHandler.PersistString);
-                    writer.WriteAttributeString("AutoHidePortion", content.DockHandler.AutoHidePortion.ToString(CultureInfo.InvariantCulture));
-                    writer.WriteAttributeString("IsHidden", content.DockHandler.IsHidden.ToString(CultureInfo.InvariantCulture));
-                    writer.WriteAttributeString("IsFloat", content.DockHandler.IsFloat.ToString(CultureInfo.InvariantCulture));
+                    writer.WriteAttributeString("AutoHidePortion",
+                        content.DockHandler.AutoHidePortion.ToString(CultureInfo.InvariantCulture));
+                    writer.WriteAttributeString("IsHidden",
+                        content.DockHandler.IsHidden.ToString(CultureInfo.InvariantCulture));
+                    writer.WriteAttributeString("IsFloat",
+                        content.DockHandler.IsFloat.ToString(CultureInfo.InvariantCulture));
                     writer.WriteEndElement();
                 }
                 writer.WriteEndElement();
@@ -4422,16 +4266,20 @@ namespace Yutai.ArcGIS.Framework.Docking
                 foreach (DockPane pane in dockPanel.Panes)
                 {
                     writer.WriteStartElement("Pane");
-                    writer.WriteAttributeString("ID", dockPanel.Panes.IndexOf(pane).ToString(CultureInfo.InvariantCulture));
+                    writer.WriteAttributeString("ID",
+                        dockPanel.Panes.IndexOf(pane).ToString(CultureInfo.InvariantCulture));
                     writer.WriteAttributeString("DockState", pane.DockState.ToString());
-                    writer.WriteAttributeString("ActiveContent", dockPanel.Contents.IndexOf(pane.ActiveContent).ToString(CultureInfo.InvariantCulture));
+                    writer.WriteAttributeString("ActiveContent",
+                        dockPanel.Contents.IndexOf(pane.ActiveContent).ToString(CultureInfo.InvariantCulture));
                     writer.WriteStartElement("Contents");
                     writer.WriteAttributeString("Count", pane.Contents.Count.ToString(CultureInfo.InvariantCulture));
                     foreach (IDockContent content in pane.Contents)
                     {
                         writer.WriteStartElement("Content");
-                        writer.WriteAttributeString("ID", pane.Contents.IndexOf(content).ToString(CultureInfo.InvariantCulture));
-                        writer.WriteAttributeString("RefID", dockPanel.Contents.IndexOf(content).ToString(CultureInfo.InvariantCulture));
+                        writer.WriteAttributeString("ID",
+                            pane.Contents.IndexOf(content).ToString(CultureInfo.InvariantCulture));
+                        writer.WriteAttributeString("RefID",
+                            dockPanel.Contents.IndexOf(content).ToString(CultureInfo.InvariantCulture));
                         writer.WriteEndElement();
                     }
                     writer.WriteEndElement();
@@ -4446,18 +4294,24 @@ namespace Yutai.ArcGIS.Framework.Docking
                     writer.WriteAttributeString("ID", num.ToString(CultureInfo.InvariantCulture));
                     num++;
                     writer.WriteAttributeString("DockState", window.DockState.ToString());
-                    writer.WriteAttributeString("ZOrderIndex", dockPanel.Controls.IndexOf(window).ToString(CultureInfo.InvariantCulture));
+                    writer.WriteAttributeString("ZOrderIndex",
+                        dockPanel.Controls.IndexOf(window).ToString(CultureInfo.InvariantCulture));
                     writer.WriteStartElement("NestedPanes");
                     writer.WriteAttributeString("Count", window.NestedPanes.Count.ToString(CultureInfo.InvariantCulture));
                     foreach (DockPane pane in window.NestedPanes)
                     {
                         writer.WriteStartElement("Pane");
-                        writer.WriteAttributeString("ID", window.NestedPanes.IndexOf(pane).ToString(CultureInfo.InvariantCulture));
-                        writer.WriteAttributeString("RefID", dockPanel.Panes.IndexOf(pane).ToString(CultureInfo.InvariantCulture));
+                        writer.WriteAttributeString("ID",
+                            window.NestedPanes.IndexOf(pane).ToString(CultureInfo.InvariantCulture));
+                        writer.WriteAttributeString("RefID",
+                            dockPanel.Panes.IndexOf(pane).ToString(CultureInfo.InvariantCulture));
                         nestedDockingStatus = pane.NestedDockingStatus;
-                        writer.WriteAttributeString("PrevPane", dockPanel.Panes.IndexOf(nestedDockingStatus.PreviousPane).ToString(CultureInfo.InvariantCulture));
+                        writer.WriteAttributeString("PrevPane",
+                            dockPanel.Panes.IndexOf(nestedDockingStatus.PreviousPane)
+                                .ToString(CultureInfo.InvariantCulture));
                         writer.WriteAttributeString("Alignment", nestedDockingStatus.Alignment.ToString());
-                        writer.WriteAttributeString("Proportion", nestedDockingStatus.Proportion.ToString(CultureInfo.InvariantCulture));
+                        writer.WriteAttributeString("Proportion",
+                            nestedDockingStatus.Proportion.ToString(CultureInfo.InvariantCulture));
                         writer.WriteEndElement();
                     }
                     writer.WriteEndElement();
@@ -4470,20 +4324,28 @@ namespace Yutai.ArcGIS.Framework.Docking
                 foreach (FloatWindow window2 in dockPanel.FloatWindows)
                 {
                     writer.WriteStartElement("FloatWindow");
-                    writer.WriteAttributeString("ID", dockPanel.FloatWindows.IndexOf(window2).ToString(CultureInfo.InvariantCulture));
+                    writer.WriteAttributeString("ID",
+                        dockPanel.FloatWindows.IndexOf(window2).ToString(CultureInfo.InvariantCulture));
                     writer.WriteAttributeString("Bounds", converter.ConvertToInvariantString(window2.Bounds));
-                    writer.WriteAttributeString("ZOrderIndex", window2.DockPanel.FloatWindows.IndexOf(window2).ToString(CultureInfo.InvariantCulture));
+                    writer.WriteAttributeString("ZOrderIndex",
+                        window2.DockPanel.FloatWindows.IndexOf(window2).ToString(CultureInfo.InvariantCulture));
                     writer.WriteStartElement("NestedPanes");
-                    writer.WriteAttributeString("Count", window2.NestedPanes.Count.ToString(CultureInfo.InvariantCulture));
+                    writer.WriteAttributeString("Count",
+                        window2.NestedPanes.Count.ToString(CultureInfo.InvariantCulture));
                     foreach (DockPane pane in window2.NestedPanes)
                     {
                         writer.WriteStartElement("Pane");
-                        writer.WriteAttributeString("ID", window2.NestedPanes.IndexOf(pane).ToString(CultureInfo.InvariantCulture));
-                        writer.WriteAttributeString("RefID", dockPanel.Panes.IndexOf(pane).ToString(CultureInfo.InvariantCulture));
+                        writer.WriteAttributeString("ID",
+                            window2.NestedPanes.IndexOf(pane).ToString(CultureInfo.InvariantCulture));
+                        writer.WriteAttributeString("RefID",
+                            dockPanel.Panes.IndexOf(pane).ToString(CultureInfo.InvariantCulture));
                         nestedDockingStatus = pane.NestedDockingStatus;
-                        writer.WriteAttributeString("PrevPane", dockPanel.Panes.IndexOf(nestedDockingStatus.PreviousPane).ToString(CultureInfo.InvariantCulture));
+                        writer.WriteAttributeString("PrevPane",
+                            dockPanel.Panes.IndexOf(nestedDockingStatus.PreviousPane)
+                                .ToString(CultureInfo.InvariantCulture));
                         writer.WriteAttributeString("Alignment", nestedDockingStatus.Alignment.ToString());
-                        writer.WriteAttributeString("Proportion", nestedDockingStatus.Proportion.ToString(CultureInfo.InvariantCulture));
+                        writer.WriteAttributeString("Proportion",
+                            nestedDockingStatus.Proportion.ToString(CultureInfo.InvariantCulture));
                         writer.WriteEndElement();
                     }
                     writer.WriteEndElement();
@@ -4509,49 +4371,29 @@ namespace Yutai.ArcGIS.Framework.Docking
                 private double m_autoHidePortion;
                 private bool m_isHidden;
                 private bool m_isFloat;
+
                 public string PersistString
                 {
-                    get
-                    {
-                        return this.m_persistString;
-                    }
-                    set
-                    {
-                        this.m_persistString = value;
-                    }
+                    get { return this.m_persistString; }
+                    set { this.m_persistString = value; }
                 }
+
                 public double AutoHidePortion
                 {
-                    get
-                    {
-                        return this.m_autoHidePortion;
-                    }
-                    set
-                    {
-                        this.m_autoHidePortion = value;
-                    }
+                    get { return this.m_autoHidePortion; }
+                    set { this.m_autoHidePortion = value; }
                 }
+
                 public bool IsHidden
                 {
-                    get
-                    {
-                        return this.m_isHidden;
-                    }
-                    set
-                    {
-                        this.m_isHidden = value;
-                    }
+                    get { return this.m_isHidden; }
+                    set { this.m_isHidden = value; }
                 }
+
                 public bool IsFloat
                 {
-                    get
-                    {
-                        return this.m_isFloat;
-                    }
-                    set
-                    {
-                        this.m_isFloat = value;
-                    }
+                    get { return this.m_isFloat; }
+                    set { this.m_isFloat = value; }
                 }
             }
 
@@ -4564,71 +4406,41 @@ namespace Yutai.ArcGIS.Framework.Docking
                 private double m_dockBottomPortion;
                 private int m_indexActiveDocumentPane;
                 private int m_indexActivePane;
+
                 public double DockLeftPortion
                 {
-                    get
-                    {
-                        return this.m_dockLeftPortion;
-                    }
-                    set
-                    {
-                        this.m_dockLeftPortion = value;
-                    }
+                    get { return this.m_dockLeftPortion; }
+                    set { this.m_dockLeftPortion = value; }
                 }
+
                 public double DockRightPortion
                 {
-                    get
-                    {
-                        return this.m_dockRightPortion;
-                    }
-                    set
-                    {
-                        this.m_dockRightPortion = value;
-                    }
+                    get { return this.m_dockRightPortion; }
+                    set { this.m_dockRightPortion = value; }
                 }
+
                 public double DockTopPortion
                 {
-                    get
-                    {
-                        return this.m_dockTopPortion;
-                    }
-                    set
-                    {
-                        this.m_dockTopPortion = value;
-                    }
+                    get { return this.m_dockTopPortion; }
+                    set { this.m_dockTopPortion = value; }
                 }
+
                 public double DockBottomPortion
                 {
-                    get
-                    {
-                        return this.m_dockBottomPortion;
-                    }
-                    set
-                    {
-                        this.m_dockBottomPortion = value;
-                    }
+                    get { return this.m_dockBottomPortion; }
+                    set { this.m_dockBottomPortion = value; }
                 }
+
                 public int IndexActiveDocumentPane
                 {
-                    get
-                    {
-                        return this.m_indexActiveDocumentPane;
-                    }
-                    set
-                    {
-                        this.m_indexActiveDocumentPane = value;
-                    }
+                    get { return this.m_indexActiveDocumentPane; }
+                    set { this.m_indexActiveDocumentPane = value; }
                 }
+
                 public int IndexActivePane
                 {
-                    get
-                    {
-                        return this.m_indexActivePane;
-                    }
-                    set
-                    {
-                        this.m_indexActivePane = value;
-                    }
+                    get { return this.m_indexActivePane; }
+                    set { this.m_indexActivePane = value; }
                 }
             }
 
@@ -4638,38 +4450,23 @@ namespace Yutai.ArcGIS.Framework.Docking
                 private DockState m_dockState;
                 private int m_zOrderIndex;
                 private DockPanel.Persistor.NestedPane[] m_nestedPanes;
+
                 public DockState DockState
                 {
-                    get
-                    {
-                        return this.m_dockState;
-                    }
-                    set
-                    {
-                        this.m_dockState = value;
-                    }
+                    get { return this.m_dockState; }
+                    set { this.m_dockState = value; }
                 }
+
                 public int ZOrderIndex
                 {
-                    get
-                    {
-                        return this.m_zOrderIndex;
-                    }
-                    set
-                    {
-                        this.m_zOrderIndex = value;
-                    }
+                    get { return this.m_zOrderIndex; }
+                    set { this.m_zOrderIndex = value; }
                 }
+
                 public DockPanel.Persistor.NestedPane[] NestedPanes
                 {
-                    get
-                    {
-                        return this.m_nestedPanes;
-                    }
-                    set
-                    {
-                        this.m_nestedPanes = value;
-                    }
+                    get { return this.m_nestedPanes; }
+                    set { this.m_nestedPanes = value; }
                 }
             }
 
@@ -4683,38 +4480,23 @@ namespace Yutai.ArcGIS.Framework.Docking
                 private Rectangle m_bounds;
                 private int m_zOrderIndex;
                 private DockPanel.Persistor.NestedPane[] m_nestedPanes;
+
                 public Rectangle Bounds
                 {
-                    get
-                    {
-                        return this.m_bounds;
-                    }
-                    set
-                    {
-                        this.m_bounds = value;
-                    }
+                    get { return this.m_bounds; }
+                    set { this.m_bounds = value; }
                 }
+
                 public int ZOrderIndex
                 {
-                    get
-                    {
-                        return this.m_zOrderIndex;
-                    }
-                    set
-                    {
-                        this.m_zOrderIndex = value;
-                    }
+                    get { return this.m_zOrderIndex; }
+                    set { this.m_zOrderIndex = value; }
                 }
+
                 public DockPanel.Persistor.NestedPane[] NestedPanes
                 {
-                    get
-                    {
-                        return this.m_nestedPanes;
-                    }
-                    set
-                    {
-                        this.m_nestedPanes = value;
-                    }
+                    get { return this.m_nestedPanes; }
+                    set { this.m_nestedPanes = value; }
                 }
             }
 
@@ -4725,49 +4507,29 @@ namespace Yutai.ArcGIS.Framework.Docking
                 private int m_indexPrevPane;
                 private DockAlignment m_alignment;
                 private double m_proportion;
+
                 public int IndexPane
                 {
-                    get
-                    {
-                        return this.m_indexPane;
-                    }
-                    set
-                    {
-                        this.m_indexPane = value;
-                    }
+                    get { return this.m_indexPane; }
+                    set { this.m_indexPane = value; }
                 }
+
                 public int IndexPrevPane
                 {
-                    get
-                    {
-                        return this.m_indexPrevPane;
-                    }
-                    set
-                    {
-                        this.m_indexPrevPane = value;
-                    }
+                    get { return this.m_indexPrevPane; }
+                    set { this.m_indexPrevPane = value; }
                 }
+
                 public DockAlignment Alignment
                 {
-                    get
-                    {
-                        return this.m_alignment;
-                    }
-                    set
-                    {
-                        this.m_alignment = value;
-                    }
+                    get { return this.m_alignment; }
+                    set { this.m_alignment = value; }
                 }
+
                 public double Proportion
                 {
-                    get
-                    {
-                        return this.m_proportion;
-                    }
-                    set
-                    {
-                        this.m_proportion = value;
-                    }
+                    get { return this.m_proportion; }
+                    set { this.m_proportion = value; }
                 }
             }
 
@@ -4778,49 +4540,29 @@ namespace Yutai.ArcGIS.Framework.Docking
                 private int m_indexActiveContent;
                 private int[] m_indexContents;
                 private int m_zOrderIndex;
+
                 public DockState DockState
                 {
-                    get
-                    {
-                        return this.m_dockState;
-                    }
-                    set
-                    {
-                        this.m_dockState = value;
-                    }
+                    get { return this.m_dockState; }
+                    set { this.m_dockState = value; }
                 }
+
                 public int IndexActiveContent
                 {
-                    get
-                    {
-                        return this.m_indexActiveContent;
-                    }
-                    set
-                    {
-                        this.m_indexActiveContent = value;
-                    }
+                    get { return this.m_indexActiveContent; }
+                    set { this.m_indexActiveContent = value; }
                 }
+
                 public int[] IndexContents
                 {
-                    get
-                    {
-                        return this.m_indexContents;
-                    }
-                    set
-                    {
-                        this.m_indexContents = value;
-                    }
+                    get { return this.m_indexContents; }
+                    set { this.m_indexContents = value; }
                 }
+
                 public int ZOrderIndex
                 {
-                    get
-                    {
-                        return this.m_zOrderIndex;
-                    }
-                    set
-                    {
-                        this.m_zOrderIndex = value;
-                    }
+                    get { return this.m_zOrderIndex; }
+                    set { this.m_zOrderIndex = value; }
                 }
             }
         }
@@ -4915,38 +4657,20 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             public ISplitterDragSource DragSource
             {
-                get
-                {
-                    return (base.DragSource as ISplitterDragSource);
-                }
-                private set
-                {
-                    base.DragSource = value;
-                }
+                get { return (base.DragSource as ISplitterDragSource); }
+                private set { base.DragSource = value; }
             }
 
             private SplitterOutline Outline
             {
-                get
-                {
-                    return this.m_outline;
-                }
-                set
-                {
-                    this.m_outline = value;
-                }
+                get { return this.m_outline; }
+                set { this.m_outline = value; }
             }
 
             private Rectangle RectSplitter
             {
-                get
-                {
-                    return this.m_rectSplitter;
-                }
-                set
-                {
-                    this.m_rectSplitter = value;
-                }
+                get { return this.m_rectSplitter; }
+                set { this.m_rectSplitter = value; }
             }
 
             private class SplitterOutline
@@ -4986,13 +4710,9 @@ namespace Yutai.ArcGIS.Framework.Docking
 
                 private DragForm DragForm
                 {
-                    get
-                    {
-                        return this.m_dragForm;
-                    }
+                    get { return this.m_dragForm; }
                 }
             }
         }
     }
 }
-

@@ -13,4 +13,3 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         IPoint Point { set; }
     }
 }
-

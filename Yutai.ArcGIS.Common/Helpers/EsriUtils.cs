@@ -1096,8 +1096,8 @@ namespace Yutai.ArcGIS.Common.Helpers
             }
             //if (!GeometryUtility.IsCompatibleEnvlope(activeView.Extent, envelope))
             //{
-                activeView.Extent = envelope;
-                activeView.Refresh();
+            activeView.Extent = envelope;
+            activeView.Refresh();
             //}
         }
 

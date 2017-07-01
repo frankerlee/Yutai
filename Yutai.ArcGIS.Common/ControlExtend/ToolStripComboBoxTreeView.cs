@@ -7,7 +7,9 @@ using System.Windows.Forms.Design;
 
 namespace Yutai.ArcGIS.Common.ControlExtend
 {
-    [ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.ContextMenuStrip | ToolStripItemDesignerAvailability.MenuStrip | ToolStripItemDesignerAvailability.ToolStrip), DefaultProperty("Items")]
+    [ToolStripItemDesignerAvailability(
+         ToolStripItemDesignerAvailability.ContextMenuStrip | ToolStripItemDesignerAvailability.MenuStrip |
+         ToolStripItemDesignerAvailability.ToolStrip), DefaultProperty("Items")]
     public class ToolStripComboBoxTreeView : ToolStripControlHost
     {
         public event EventHandler DropDown;
@@ -33,103 +35,61 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             this.ComboBox.SelectAll();
         }
 
-        [Editor("System.Windows.Forms.Design.ListControlStringCollectionEditor, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor)), Localizable(true), EditorBrowsable(EditorBrowsableState.Always), DesignerSerializationVisibility(DesignerSerializationVisibility.Content), Browsable(true)]
+        [Editor(
+             "System.Windows.Forms.Design.ListControlStringCollectionEditor, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+             typeof(UITypeEditor)), Localizable(true), EditorBrowsable(EditorBrowsableState.Always),
+         DesignerSerializationVisibility(DesignerSerializationVisibility.Content), Browsable(true)]
         public AutoCompleteStringCollection AutoCompleteCustomSource
         {
-            get
-            {
-                return this.ComboBox.AutoCompleteCustomSource;
-            }
-            set
-            {
-                this.ComboBox.AutoCompleteCustomSource = value;
-            }
+            get { return this.ComboBox.AutoCompleteCustomSource; }
+            set { this.ComboBox.AutoCompleteCustomSource = value; }
         }
 
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public System.Windows.Forms.ComboBox ComboBox
         {
-            get
-            {
-                return (base.Control as System.Windows.Forms.ComboBox);
-            }
+            get { return (base.Control as System.Windows.Forms.ComboBox); }
         }
 
         [DefaultValue(106), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         public int DropDownHeight
         {
-            get
-            {
-                return this.ComboBox.DropDownHeight;
-            }
-            set
-            {
-                this.ComboBox.DropDownHeight = value;
-            }
+            get { return this.ComboBox.DropDownHeight; }
+            set { this.ComboBox.DropDownHeight = value; }
         }
 
         [DefaultValue(1), RefreshProperties(RefreshProperties.Repaint)]
         public ComboBoxStyle DropDownStyle
         {
-            get
-            {
-                return this.ComboBox.DropDownStyle;
-            }
-            set
-            {
-                this.ComboBox.DropDownStyle = value;
-            }
+            get { return this.ComboBox.DropDownStyle; }
+            set { this.ComboBox.DropDownStyle = value; }
         }
 
         public int DropDownWidth
         {
-            get
-            {
-                return this.ComboBox.DropDownWidth;
-            }
-            set
-            {
-                this.ComboBox.DropDownWidth = value;
-            }
+            get { return this.ComboBox.DropDownWidth; }
+            set { this.ComboBox.DropDownWidth = value; }
         }
 
         [Description("下拉框最大长度"), DefaultValue(0), Localizable(true)]
         public int MaxLength
         {
-            get
-            {
-                return this.ComboBox.MaxLength;
-            }
-            set
-            {
-                this.ComboBox.MaxLength = value;
-            }
+            get { return this.ComboBox.MaxLength; }
+            set { this.ComboBox.MaxLength = value; }
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
         public int SelectionLength
         {
-            get
-            {
-                return this.ComboBox.SelectionLength;
-            }
-            set
-            {
-                this.ComboBox.SelectionLength = value;
-            }
+            get { return this.ComboBox.SelectionLength; }
+            set { this.ComboBox.SelectionLength = value; }
         }
 
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int SelectionStart
         {
-            get
-            {
-                return this.ComboBox.SelectionStart;
-            }
-            set
-            {
-                this.ComboBox.SelectionStart = value;
-            }
+            get { return this.ComboBox.SelectionStart; }
+            set { this.ComboBox.SelectionStart = value; }
         }
 
         [Browsable(true)]
@@ -204,24 +164,14 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
             public ToolStripComboBoxTreeView Owner
             {
-                get
-                {
-                    return this.toolStripComboBoxTreeView_0;
-                }
-                set
-                {
-                    this.toolStripComboBoxTreeView_0 = value;
-                }
+                get { return this.toolStripComboBoxTreeView_0; }
+                set { this.toolStripComboBoxTreeView_0 = value; }
             }
 
             public System.Windows.Forms.TreeView TreeView
             {
-                get
-                {
-                    return (this.toolStripControlHost_0.Control as System.Windows.Forms.TreeView);
-                }
+                get { return (this.toolStripControlHost_0.Control as System.Windows.Forms.TreeView); }
             }
         }
     }
 }
-

@@ -57,19 +57,19 @@ namespace Yutai.Plugins.Concrete
 
         public List<Guid> DefaultApplicationPlugins
         {
-            [SuppressMessage("StyleCop.CSharp.LayoutRules", "SA1500:CurlyBracketsForMultiLineStatementsMustNotShareLine", Justification = "Reviewed. Suppression is OK here.")]
+            [SuppressMessage("StyleCop.CSharp.LayoutRules", "SA1500:CurlyBracketsForMultiLineStatementsMustNotShareLine",
+                 Justification = "Reviewed. Suppression is OK here.")]
             get
             {
                 return new List<Guid>
                 {
-                   // new Guid("2b81c89a-ee45-4276-9dc1-72bbbf07f53f"), //定位器
+                    // new Guid("2b81c89a-ee45-4276-9dc1-72bbbf07f53f"), //定位器
                     new Guid("e7598649-d49b-45fa-b020-57e2dd777337"), //信息查看器
                     new Guid("01f8e32a-5837-431f-9c1b-5d0f195fb93e"), // 书签管理
-                   // new Guid("4a3bcaab-9d3e-4ca7-a19d-7ee08fb0629e"), // 编辑
-                   // new Guid("7da6c412-c345-4ccc-9f22-ef7eb3757898"), // 属性表
-                   // new Guid("5e857d4e-1a77-46d8-b1bb-b36548be7333"),//Catalog功能
+                    // new Guid("4a3bcaab-9d3e-4ca7-a19d-7ee08fb0629e"), // 编辑
+                    // new Guid("7da6c412-c345-4ccc-9f22-ef7eb3757898"), // 属性表
+                    // new Guid("5e857d4e-1a77-46d8-b1bb-b36548be7333"),//Catalog功能
                 };
-
             }
         }
 
@@ -82,7 +82,10 @@ namespace Yutai.Plugins.Concrete
         [DataMember]
         public CoordinatesDisplay CoordinatesDisplay
         {
-            get { return _coordinatesDisplay == CoordinatesDisplay.None ? CoordinatesDisplay.Auto : _coordinatesDisplay; }
+            get
+            {
+                return _coordinatesDisplay == CoordinatesDisplay.None ? CoordinatesDisplay.Auto : _coordinatesDisplay;
+            }
             set { _coordinatesDisplay = value == CoordinatesDisplay.None ? CoordinatesDisplay.Auto : value; }
         }
 
@@ -94,8 +97,10 @@ namespace Yutai.Plugins.Concrete
 
         [DataMember]
         public bool LoadLastProject { get; set; }
+
         [DataMember]
         public bool LocalDocumentation { get; set; }
+
         [DataMember]
         public string LastConfigPage { get; set; }
 
@@ -173,6 +178,7 @@ namespace Yutai.Plugins.Concrete
 
         [DataMember]
         public bool ShowPluginInToolTip { get; set; }
+
         [DataMember]
         public bool ShowScalebar { get; set; }
 
@@ -199,70 +205,81 @@ namespace Yutai.Plugins.Concrete
 
         [DataMember]
         public IFeatureLayer SelectionCurrentLayerName { get; set; }
-        
+
 
         [DataMember]
         public int LocatorMaxCount { get; set; }
+
         [DataMember]
         public PyramidPromptType PyramidPromptType
         {
             get { return _pyramidPromptType; }
             set { _pyramidPromptType = value; }
         }
+
         [DataMember]
         public bool UseSnap
         {
             get { return _useSnap; }
             set { _useSnap = value; }
         }
+
         [DataMember]
         public bool IsSnapSketch
         {
             get { return _isSnapSketch; }
             set { _isSnapSketch = value; }
         }
+
         [DataMember]
         public IEngineSnapEnvironment EngineSnapEnvironment
         {
             get { return _engineSnapEnvironment; }
             set { _engineSnapEnvironment = value; }
         }
+
         [DataMember]
         public bool IsSnapPoint
         {
             get { return _isSnapPoint; }
             set { _isSnapPoint = value; }
         }
+
         [DataMember]
         public bool IsSnapIntersectionPoint
         {
             get { return _isSnapIntersectionPoint; }
             set { _isSnapIntersectionPoint = value; }
         }
+
         [DataMember]
         public bool IsSnapEndPoint
         {
             get { return _isSnapEndPoint; }
             set { _isSnapEndPoint = value; }
         }
+
         [DataMember]
         public bool IsSnapVertexPoint
         {
             get { return _isSnapVertexPoint; }
             set { _isSnapVertexPoint = value; }
         }
+
         [DataMember]
         public bool IsSnapMiddlePoint
         {
             get { return _isSnapMiddlePoint; }
             set { _isSnapMiddlePoint = value; }
         }
+
         [DataMember]
         public bool IsSnapBoundary
         {
             get { return _isSnapBoundary; }
             set { _isSnapBoundary = value; }
         }
+
         [DataMember]
         public bool IsSupportZD
         {
@@ -311,20 +328,21 @@ namespace Yutai.Plugins.Concrete
         internal void SetDefaults()
         {
             Logger.Current.Trace("开始设置配置默认值");
+
             #region 编辑部分设置
 
             _canEdited = true;
             _isInEdit = false;
-          
+
             IsSnapTangent = false;
             UseSnap = false;
-            _engineSnapEnvironment=new EngineEditorClass();
+            _engineSnapEnvironment = new EngineEditorClass();
             ((IEngineEditProperties2) _engineSnapEnvironment).SnapTips = true;
             _engineSnapEnvironment.SnapTolerance = 10;
             SnapTolerance = 10;
 
-
             #endregion
+
             LocatorMaxCount = 100;
 
             MapViewStyle = MapViewStyle.View2D;
@@ -341,9 +359,8 @@ namespace Yutai.Plugins.Concrete
             FirstRun = true;
             IdentifierMode = IdentifierMode.AllLayer;
             IdentifierToPixel = 5;
-            SelectionEnvironment=new SelectionEnvironmentClass()
+            SelectionEnvironment = new SelectionEnvironmentClass()
             {
-                
             };
 
             LoadLastProject = true;
@@ -422,10 +439,10 @@ namespace Yutai.Plugins.Concrete
             ShowCoordinates = true;
             ShowMenuToolTips = false;
             ShowPluginInToolTip = false; // perhaps some kind of debug mode will be enough
-                                         /*         ShowProjectionAbsenceDialog = true;
-                                                  ShowProjectionMismatchDialog = true;
-                                                  ShowPyramidDialog = true;
-                                                  ShowRedrawTime = false;*/
+            /*         ShowProjectionAbsenceDialog = true;
+                     ShowProjectionMismatchDialog = true;
+                     ShowPyramidDialog = true;
+                     ShowRedrawTime = false;*/
             ShowScalebar = true;
             /*         ShowSpatialIndexDialog = false;
                      ShowValuesOnMouseMove = true;*/
@@ -462,7 +479,6 @@ namespace Yutai.Plugins.Concrete
                   ZoomBehavior = ZoomBehavior.UseTileLevels;
                   ZoomBoxStyle = ZoomBoxStyle.Blue;*/
             Logger.Current.Trace("End AppConfig.SetDefaults()");
-
         }
 
         [OnDeserializing]
@@ -470,7 +486,5 @@ namespace Yutai.Plugins.Concrete
         {
             SetDefaults();
         }
-
-
     }
 }

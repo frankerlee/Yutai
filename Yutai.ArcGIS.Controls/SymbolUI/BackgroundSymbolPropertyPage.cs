@@ -111,7 +111,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- private void GetRGB(uint rgb, out int r, out int g, out int b)
+        private void GetRGB(uint rgb, out int r, out int g, out int b)
         {
             uint num = rgb & 16711680;
             b = (int) (num >> 16);
@@ -158,7 +158,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- private void refresh(EventArgs e)
+        private void refresh(EventArgs e)
         {
             if (this.OnValueChange != null)
             {
@@ -244,26 +244,17 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.m_IsPageDirty;
-            }
+            get { return this.m_IsPageDirty; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public ISymbolBackground SymbolBackground
@@ -284,15 +275,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         public string Title
         {
-            get
-            {
-                return this.m_Title;
-            }
-            set
-            {
-                this.m_Title = value;
-            }
+            get { return this.m_Title; }
+            set { this.m_Title = value; }
         }
     }
 }
-

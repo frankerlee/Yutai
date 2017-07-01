@@ -20,7 +20,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnConfigKey_Click(object sender, EventArgs e)
         {
-            new frmConfigKey { Configuration = this.iworkspace_0 as IWorkspaceConfiguration }.ShowDialog();
+            new frmConfigKey {Configuration = this.iworkspace_0 as IWorkspaceConfiguration}.ShowDialog();
         }
 
         private void btnProperty_Click(object sender, EventArgs e)
@@ -49,12 +49,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void GDBGeneralCtrl_Load(object sender, EventArgs e)
+        private void GDBGeneralCtrl_Load(object sender, EventArgs e)
         {
             this.method_0();
         }
 
- private void method_0()
+        private void method_0()
         {
             this.textEditName.Text = this.iworkspace_0.PathName;
             switch (this.iworkspace_0.Type)
@@ -134,11 +134,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IWorkspace Workspace
         {
-            set
-            {
-                this.iworkspace_0 = value;
-            }
+            set { this.iworkspace_0 = value; }
         }
     }
 }
-

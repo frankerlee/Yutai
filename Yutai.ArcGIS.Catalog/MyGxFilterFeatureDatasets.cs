@@ -69,7 +69,7 @@ namespace Yutai.ArcGIS.Catalog
             name.Reset();
             for (IDatasetName name2 = name.Next(); name2 != null; name2 = name.Next())
             {
-                string[] strArray = name2.Name.Split(new char[] { '.' });
+                string[] strArray = name2.Name.Split(new char[] {'.'});
                 string str = strArray[strArray.Length - 1].ToLower();
                 if (string_0 == str)
                 {
@@ -81,19 +81,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public string Description
         {
-            get
-            {
-                return "要素集";
-            }
+            get { return "要素集"; }
         }
 
         public string Name
         {
-            get
-            {
-                return "要素集";
-            }
+            get { return "要素集"; }
         }
     }
 }
-

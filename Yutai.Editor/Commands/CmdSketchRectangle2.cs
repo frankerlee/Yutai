@@ -26,7 +26,6 @@ namespace Yutai.Plugins.Editor.Commands
 {
     public class CmdSketchRectangle2 : YutaiTool, IShapeConstructorTool
     {
-      
         private IPointSnapper pointSnapper = new PointSnapper();
         private ISimpleMarkerSymbol simpleMarkerSymbol = new SimpleMarkerSymbol();
         private ISimpleFillSymbol simpleFillSymbol = new SimpleFillSymbol();
@@ -160,11 +159,10 @@ namespace Yutai.Plugins.Editor.Commands
             if (snappingResult != null)
             {
                 mapPoint = snappingResult.Location;
-             
-               // anchorPoint.MoveTo(mapPoint, activeView.ScreenDisplay);
-               
+
+                // anchorPoint.MoveTo(mapPoint, activeView.ScreenDisplay);
             }
-          
+
             if (_order == 0)
             {
                 rectangleFeedback = new NewRectangleFeedback() as INewRectangleFeedback;
@@ -183,14 +181,14 @@ namespace Yutai.Plugins.Editor.Commands
 
 
             IPolygon rectangle = rectangleFeedback.Stop(mapPoint) as IPolygon;
-            
-           
+
+
             IFeatureLayer featureLayer = Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer;
             if (featureLayer.FeatureClass.ShapeType == esriGeometryType.esriGeometryPolyline)
             {
-                IPointCollection polylineClass  = new Polyline() as IPointCollection;
+                IPointCollection polylineClass = new Polyline() as IPointCollection;
                 object value = Missing.Value;
-                IPointCollection segmentCollection=rectangle as IPointCollection;
+                IPointCollection segmentCollection = rectangle as IPointCollection;
                 polylineClass.AddPointCollection(segmentCollection);
                 CreateFeatureTool.CreateFeature(polylineClass as IGeometry, _context.FocusMap as IActiveView,
                     Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
@@ -201,11 +199,9 @@ namespace Yutai.Plugins.Editor.Commands
             }
             else
             {
-              
                 CreateFeatureTool.CreateFeature(rectangle as IGeometry, _context.FocusMap as IActiveView,
                     Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
             }
-          
 
 
             _order = 0;
@@ -215,7 +211,7 @@ namespace Yutai.Plugins.Editor.Commands
         public override void OnMouseMove(int int_0, int int_1, int int_2, int int_3)
         {
             if (_order == 0) return;
-           
+
             IPoint mapPoint = activeView.ScreenDisplay.DisplayTransformation.ToMapPoint(int_2, int_3);
             ISnappingResult snappingResult = this.pointSnapper.Snap(mapPoint);
             if (anchorPoint == null)
@@ -225,14 +221,13 @@ namespace Yutai.Plugins.Editor.Commands
                     Symbol = simpleMarkerSymbol as ISymbol
                 };
             }
-           
+
             if (snappingResult != null)
             {
                 mapPoint = snappingResult.Location;
             }
             anchorPoint.MoveTo(mapPoint, activeView.ScreenDisplay);
             rectangleFeedback.MoveTo(mapPoint);
-           
         }
     }
 }

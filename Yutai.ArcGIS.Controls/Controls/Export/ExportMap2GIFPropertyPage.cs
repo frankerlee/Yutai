@@ -50,7 +50,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             }
         }
 
- private void ExportMap2EMFPropertyPage_Load(object sender, EventArgs e)
+        private void ExportMap2EMFPropertyPage_Load(object sender, EventArgs e)
         {
             if (this.m_pExport != null)
             {
@@ -83,7 +83,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             r = (int) num;
         }
 
- private int RGB(int r, int g, int b)
+        private int RGB(int r, int g, int b)
         {
             uint num = 0;
             num |= (uint) b;
@@ -123,11 +123,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
 
         public IExport Export
         {
-            set
-            {
-                this.m_pExport = value;
-            }
+            set { this.m_pExport = value; }
         }
     }
 }
-

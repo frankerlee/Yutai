@@ -25,7 +25,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnApply_Click(object sender, EventArgs e)
         {
-            if (!ObjectClassShareData.m_IsShapeFile && (this.objectClassGeneral_0.AliasName != this.iobjectClass_0.AliasName))
+            if (!ObjectClassShareData.m_IsShapeFile &&
+                (this.objectClassGeneral_0.AliasName != this.iobjectClass_0.AliasName))
             {
                 (this.iobjectClass_0 as IClassSchemaEdit).AlterAliasName(this.objectClassGeneral_0.AliasName);
             }
@@ -55,7 +56,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.Close();
         }
 
- private void method_0()
+        private void method_0()
         {
         }
 
@@ -102,7 +103,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     }
                 }
                 return true;
-            Label_0041:
+                Label_0041:
                 flag = false;
             }
             catch
@@ -168,14 +169,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IFieldsEdit FiedsEdit
         {
-            get
-            {
-                return this.ifieldsEdit_0;
-            }
-            set
-            {
-                this.ifieldsEdit_0 = value;
-            }
+            get { return this.ifieldsEdit_0; }
+            set { this.ifieldsEdit_0 = value; }
         }
 
         public IObjectClass ObjectClass
@@ -211,4 +206,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

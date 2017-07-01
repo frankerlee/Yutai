@@ -66,7 +66,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     {
                         m_pScaleText = selector.GetSymbol() as IScaleText;
                         this.Init();
-                        IStyleGalleryItem styleGalleryItemAt = this.cboStyle.GetStyleGalleryItemAt(this.cboStyle.Items.Count - 1);
+                        IStyleGalleryItem styleGalleryItemAt =
+                            this.cboStyle.GetStyleGalleryItemAt(this.cboStyle.Items.Count - 1);
                         if (styleGalleryItemAt != null)
                         {
                             if (styleGalleryItemAt.Name == "<定制>")
@@ -75,7 +76,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                             }
                             else
                             {
-                                styleGalleryItemAt = new MyStyleGalleryItem {
+                                styleGalleryItemAt = new MyStyleGalleryItem
+                                {
                                     Name = "<定制>",
                                     Item = m_pScaleText
                                 };
@@ -85,7 +87,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                         }
                         else
                         {
-                            styleGalleryItemAt = new MyStyleGalleryItem {
+                            styleGalleryItemAt = new MyStyleGalleryItem
+                            {
                                 Name = "<定制>",
                                 Item = m_pScaleText
                             };
@@ -256,7 +259,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- public static int EsriRGB(int r, int g, int b)
+        public static int EsriRGB(int r, int g, int b)
         {
             uint num = 0;
             num |= (uint) b;
@@ -295,7 +298,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- private void ScaleTextFormatPropertyPage_Load(object sender, EventArgs e)
+        private void ScaleTextFormatPropertyPage_Load(object sender, EventArgs e)
         {
             IStyleGalleryItem item;
             this.cboFontName.Items.Clear();
@@ -322,7 +325,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
             if (m_pScaleText != null)
             {
-                item = new MyStyleGalleryItem {
+                item = new MyStyleGalleryItem
+                {
                     Name = "<定制>",
                     Item = m_pScaleText
                 };
@@ -392,39 +396,23 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.m_IsPageDirty;
-            }
+            get { return this.m_IsPageDirty; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.m_Title;
-            }
-            set
-            {
-                this.m_Title = value;
-            }
+            get { return this.m_Title; }
+            set { this.m_Title = value; }
         }
     }
 }
-

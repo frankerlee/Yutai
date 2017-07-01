@@ -17,8 +17,8 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
         private SimpleStat QueryUI;
 
 
-
         private PipelineAnalysisPlugin _plugin;
+
         public CmdQueryByGJJTJ(IAppContext context, PipelineAnalysisPlugin plugin)
         {
             OnCreate(context);
@@ -34,7 +34,7 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
                 this.QueryUI.MinimizeBox = false;
                 this.QueryUI.MaximizeBox = false;
                 this.QueryUI.TopMost = true;
-                this.QueryUI.MapControl = (IMapControl3)_context.MapControl;
+                this.QueryUI.MapControl = (IMapControl3) _context.MapControl;
                 this.QueryUI.PPipeCfg = _plugin.PipeConfig;
                 this.QueryUI.MContext = this._context;
                 this.QueryUI.Closing += new CancelEventHandler(this.QueryUI_Closing);
@@ -54,7 +54,6 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
 
         public override void OnClick(object sender, EventArgs args)
         {
-
             OnClick();
         }
 
@@ -74,6 +73,7 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
 
             CommonUtils.AppContext = _context;
         }
+
         public override void OnMouseDown(int Button, int Shift, int X, int Y)
         {
             if (this.QueryUI.SelectGeometry && Button == 1)
@@ -81,9 +81,10 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
                 IGeometry ipGeo = null;
                 ipGeo = _context.MapControl.TrackRectangle();
                 this.QueryUI.MIpGeo = ipGeo;
-                _context.ActiveView.PartialRefresh((esriViewDrawPhase)32, null, null);
+                _context.ActiveView.PartialRefresh((esriViewDrawPhase) 32, null, null);
             }
         }
+
         private void QueryUI_Closing(object sender, CancelEventArgs e)
         {
             e.Cancel = true;

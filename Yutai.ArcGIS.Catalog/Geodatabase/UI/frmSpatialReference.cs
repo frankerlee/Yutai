@@ -32,12 +32,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void frmSpatialReference_Load(object sender, EventArgs e)
+        private void frmSpatialReference_Load(object sender, EventArgs e)
         {
             this.method_1();
         }
 
- private ISpatialReference method_0(bool bool_5)
+        private ISpatialReference method_0(bool bool_5)
         {
             ISpatialReference reference = new UnknownCoordinateSystemClass();
             IControlPrecision2 precision = reference as IControlPrecision2;
@@ -57,7 +57,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
             this.coordinateControl_0 = new CoordinateControl();
             this.coordinateControl_0.IsEdit = this.bool_0;
-            this.coordinateControl_0.SpatialReferenceChanged += new CoordinateControl.SpatialReferenceChangedHandler(this.method_4);
+            this.coordinateControl_0.SpatialReferenceChanged +=
+                new CoordinateControl.SpatialReferenceChangedHandler(this.method_4);
             this.coordinateControl_0.SpatialRefrence = this.ispatialReference_0;
             TabPage page = new TabPage("坐标系统");
             page.Controls.Add(this.coordinateControl_0);
@@ -139,62 +140,35 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public bool HasM
         {
-            get
-            {
-                return this.bool_2;
-            }
-            set
-            {
-                this.bool_2 = value;
-            }
+            get { return this.bool_2; }
+            set { this.bool_2 = value; }
         }
 
         public bool HasXY
         {
-            get
-            {
-                return this.bool_1;
-            }
-            set
-            {
-                this.bool_1 = value;
-            }
+            get { return this.bool_1; }
+            set { this.bool_1 = value; }
         }
 
         public bool HasZ
         {
-            get
-            {
-                return this.bool_3;
-            }
-            set
-            {
-                this.bool_3 = value;
-            }
+            get { return this.bool_3; }
+            set { this.bool_3 = value; }
         }
 
         public bool IsEdit
         {
-            set
-            {
-                this.bool_0 = value;
-            }
+            set { this.bool_0 = value; }
         }
 
         public bool IsHighPrecision
         {
-            set
-            {
-                this.bool_4 = value;
-            }
+            set { this.bool_4 = value; }
         }
 
         public ISpatialReference SpatialRefrence
         {
-            get
-            {
-                return this.ispatialReference_0;
-            }
+            get { return this.ispatialReference_0; }
             set
             {
                 this.ispatialReference_0 = value;
@@ -210,4 +184,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

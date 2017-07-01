@@ -18,15 +18,8 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         public ListViewColumnStyle ColumnStyle
         {
-            get
-            {
-                return this.listViewColumnStyle_0;
-            }
-            set
-            {
-                this.listViewColumnStyle_0 = value;
-            }
+            get { return this.listViewColumnStyle_0; }
+            set { this.listViewColumnStyle_0 = value; }
         }
     }
 }
-

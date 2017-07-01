@@ -20,6 +20,7 @@ namespace Yutai.Plugins.TableEditor.Commands
     public class CmdBuildQuery : YutaiCommand
     {
         private ITableEditorView _view;
+
         public CmdBuildQuery(IAppContext context, ITableEditorView view)
         {
             _context = context;

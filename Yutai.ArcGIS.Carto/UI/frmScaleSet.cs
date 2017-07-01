@@ -37,7 +37,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     }
                 }
                 IEnvelope envelope2 = (this.imapFrame_0 as IElement).Geometry.Envelope;
-                envelope.PutCoords(xMin, yMin, xMin + ((envelope2.Width * this.imap_0.MapScale) * 0.01), yMin + ((envelope2.Height * this.imap_0.MapScale) * 0.01));
+                envelope.PutCoords(xMin, yMin, xMin + ((envelope2.Width*this.imap_0.MapScale)*0.01),
+                    yMin + ((envelope2.Height*this.imap_0.MapScale)*0.01));
                 (this.imap_0 as IActiveView).Extent = envelope;
                 (this.imap_0 as IActiveView).Refresh();
             }
@@ -47,12 +48,12 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void frmScaleSet_Load(object sender, EventArgs e)
+        private void frmScaleSet_Load(object sender, EventArgs e)
         {
             this.method_0();
         }
 
- private void method_0()
+        private void method_0()
         {
             try
             {
@@ -76,4 +77,3 @@ namespace Yutai.ArcGIS.Carto.UI
         }
     }
 }
-

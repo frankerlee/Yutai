@@ -322,14 +322,12 @@ namespace Yutai.UI.Menu.Ribbon
 
         public void RefreshContextMenu()
         {
-          
-
             PopupMenu mPCurrentPopupMenu = this.m_pCurrentPopupMenu;
             if (mPCurrentPopupMenu == null) return;
 
             for (int i = 0; i < mPCurrentPopupMenu.ItemLinks.Count; i++)
             {
-                YutaiCommand command=mPCurrentPopupMenu.ItemLinks[i].Item.Tag as YutaiCommand;
+                YutaiCommand command = mPCurrentPopupMenu.ItemLinks[i].Item.Tag as YutaiCommand;
                 if (command == null) continue;
                 mPCurrentPopupMenu.ItemLinks[i].Item.Enabled = command.Enabled;
             }
@@ -484,7 +482,6 @@ namespace Yutai.UI.Menu.Ribbon
             BarItem item = null;
             try
             {
-               
                 if (command.ItemType == RibbonItemType.Button || command.ItemType == RibbonItemType.Tool)
                 {
                     item = CreateButton(command);
@@ -521,7 +518,6 @@ namespace Yutai.UI.Menu.Ribbon
             {
                 return null;
             }
-            
         }
 
         private BarItem CreateLabel(IRibbonItem item)

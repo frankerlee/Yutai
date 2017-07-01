@@ -14,6 +14,7 @@ namespace Yutai.Plugins.Catalog.Views
     {
         Close
     }
+
     public class CatalogPresenter : CommandDispatcher<ICatalogView, CatalogViewCommand>, IDockPanelPresenter
     {
         private readonly IAppContext _context;
@@ -27,8 +28,8 @@ namespace Yutai.Plugins.Catalog.Views
             _context = context;
 
             View.Initialize(context);
-            
-           // EditorEvent.OnStopEditing += EditorEvent_OnStopEditing;
+
+            // EditorEvent.OnStopEditing += EditorEvent_OnStopEditing;
             //View.Panels.BeforePanelClosed += (s, e) => View.BeforeClose();
         }
 

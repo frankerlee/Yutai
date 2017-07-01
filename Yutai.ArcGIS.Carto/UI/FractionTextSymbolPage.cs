@@ -144,7 +144,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.bool_1 = false;
         }
 
- private void FractionTextSymbolPage_Load(object sender, EventArgs e)
+        private void FractionTextSymbolPage_Load(object sender, EventArgs e)
         {
             if (this.m_FractionTextSymbol != null)
             {
@@ -163,7 +163,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.bool_0 = true;
         }
 
- private void method_0(EventArgs eventArgs_0)
+        private void method_0(EventArgs eventArgs_0)
         {
             this.bool_1 = true;
             if (this.OnValueChange != null)
@@ -181,27 +181,32 @@ namespace Yutai.ArcGIS.Carto.UI
                 double num9;
                 double num10;
                 iactiveView_1.ScreenDisplay.StartDrawing(0, 0);
-                IPoint geometry = new PointClass {
+                IPoint geometry = new PointClass
+                {
                     X = 3.0,
                     Y = 3.0
                 };
                 IElement fractionTextSymbol = this.m_FractionTextSymbol as IElement;
                 IEnvelope envelope = fractionTextSymbol.Geometry.Envelope;
                 IPolygon boundary = new PolygonClass();
-                ((fractionTextSymbol as IFractionTextElement).NumeratorTextSymbol as ISymbol).QueryBoundary(iactiveView_1.ScreenDisplay.hDC, iactiveView_1.ScreenDisplay.DisplayTransformation, geometry, boundary);
+                ((fractionTextSymbol as IFractionTextElement).NumeratorTextSymbol as ISymbol).QueryBoundary(
+                    iactiveView_1.ScreenDisplay.hDC, iactiveView_1.ScreenDisplay.DisplayTransformation, geometry,
+                    boundary);
                 double width = boundary.Envelope.Width;
                 double height = boundary.Envelope.Height;
-                ((fractionTextSymbol as IFractionTextElement).DenominatorTextSymbol as ISymbol).QueryBoundary(iactiveView_1.ScreenDisplay.hDC, iactiveView_1.ScreenDisplay.DisplayTransformation, geometry, boundary);
+                ((fractionTextSymbol as IFractionTextElement).DenominatorTextSymbol as ISymbol).QueryBoundary(
+                    iactiveView_1.ScreenDisplay.hDC, iactiveView_1.ScreenDisplay.DisplayTransformation, geometry,
+                    boundary);
                 double num3 = boundary.Envelope.Width;
                 double num4 = boundary.Envelope.Height;
                 double num5 = (width > num3) ? width : num3;
                 double num6 = height + num4;
                 iactiveView_1.ScreenDisplay.FinishDrawing();
                 envelope.QueryCoords(out num7, out num8, out num9, out num10);
-                num7 = (num7 + num9) / 2.0;
-                num8 = (num8 + num10) / 2.0;
-                num9 = num7 + (1.1 * num5);
-                num10 = num8 + (1.1 * num6);
+                num7 = (num7 + num9)/2.0;
+                num8 = (num8 + num10)/2.0;
+                num9 = num7 + (1.1*num5);
+                num10 = num8 + (1.1*num6);
                 geometry.X = num7;
                 geometry.Y = num8;
                 envelope.PutCoords(num7, num8, num9, num10);
@@ -240,47 +245,28 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IActiveView ActiveView
         {
-            set
-            {
-                this.iactiveView_0 = value;
-            }
+            set { this.iactiveView_0 = value; }
         }
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

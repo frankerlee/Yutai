@@ -21,31 +21,18 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
 
         public object this[string key]
         {
-            get
-            {
-                return base.Dictionary[key];
-            }
-            set
-            {
-                base.Dictionary[key] = value;
-            }
+            get { return base.Dictionary[key]; }
+            set { base.Dictionary[key] = value; }
         }
 
         public ICollection Keys
         {
-            get
-            {
-                return base.Dictionary.Keys;
-            }
+            get { return base.Dictionary.Keys; }
         }
 
         public ICollection Values
         {
-            get
-            {
-                return base.Dictionary.Values;
-            }
+            get { return base.Dictionary.Values; }
         }
     }
 }
-

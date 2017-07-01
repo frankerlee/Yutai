@@ -20,62 +20,32 @@
 
         public string DatasetName
         {
-            get
-            {
-                return this._datasetName;
-            }
-            set
-            {
-                this._datasetName = value;
-            }
+            get { return this._datasetName; }
+            set { this._datasetName = value; }
         }
 
         public int ID
         {
-            get
-            {
-                return this._id;
-            }
-            set
-            {
-                this._id = value;
-            }
+            get { return this._id; }
+            set { this._id = value; }
         }
 
         public int Code
         {
-            get
-            {
-                return this._code;
-            }
-            set
-            {
-                this._code = value;
-            }
+            get { return this._code; }
+            set { this._code = value; }
         }
 
         public string Material
         {
-            get
-            {
-                return this._material;
-            }
-            set
-            {
-                this._material = value;
-            }
+            get { return this._material; }
+            set { this._material = value; }
         }
 
         public string PipeWidthHeight
         {
-            get
-            {
-                return this._pipeWidthHeight;
-            }
-            set
-            {
-                this._pipeWidthHeight = value;
-            }
+            get { return this._pipeWidthHeight; }
+            set { this._pipeWidthHeight = value; }
         }
 
         public new float Length
@@ -86,9 +56,9 @@
                 float num = 0f;
                 for (int i = 0; i < count - 1; i++)
                 {
-                    GPoint gPoint = (GPoint)this.m_vtPoints[i];
-                    GPoint toPoint = (GPoint)this.m_vtPoints[i + 1];
-                    float num2 = (float)gPoint.DistanceToPt(toPoint);
+                    GPoint gPoint = (GPoint) this.m_vtPoints[i];
+                    GPoint toPoint = (GPoint) this.m_vtPoints[i + 1];
+                    float num2 = (float) gPoint.DistanceToPt(toPoint);
                     num += num2;
                 }
                 return num;

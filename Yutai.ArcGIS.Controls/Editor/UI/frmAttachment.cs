@@ -21,7 +21,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
                 Filter = "所有文件|*.*",
                 Multiselect = true
             };
@@ -36,7 +37,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                     IMemoryBlobStream stream = new MemoryBlobStreamClass();
                     stream.LoadFromFile(str);
                     string fileName = Path.GetFileName(str);
-                    AttachmentClass class2 = new AttachmentClass {
+                    AttachmentClass class2 = new AttachmentClass
+                    {
                         ContentType = this.GetType(str),
                         Data = stream,
                         Name = fileName
@@ -44,7 +46,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                     IAttachment attachment = class2;
                     items[0] = attachment.Name;
                     items[1] = attachment.Size.ToString();
-                    item = new ListViewItem(items) {
+                    item = new ListViewItem(items)
+                    {
                         Tag = attachment
                     };
                     this.listView1.Items.Add(item);
@@ -125,7 +128,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             {
                 ListViewItem item = this.listView1.SelectedItems[0];
                 IAttachment tag = item.Tag as IAttachment;
-                SaveFileDialog dialog = new SaveFileDialog {
+                SaveFileDialog dialog = new SaveFileDialog
+                {
                     FileName = tag.Name
                 };
                 if (dialog.ShowDialog() == DialogResult.OK)
@@ -136,7 +140,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
- private void frmAttachment_Load(object sender, EventArgs e)
+        private void frmAttachment_Load(object sender, EventArgs e)
         {
             ListViewItem item;
             string[] strArray;
@@ -150,7 +154,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 {
                     strArray[0] = attachment.Name;
                     strArray[1] = attachment.Size.ToString();
-                    item = new ListViewItem(strArray) {
+                    item = new ListViewItem(strArray)
+                    {
                         Tag = attachment
                     };
                     this.listView1.Items.Add(item);
@@ -172,7 +177,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 {
                     strArray[0] = attachment.Name;
                     strArray[1] = attachment.Size.ToString();
-                    item = new ListViewItem(strArray) {
+                    item = new ListViewItem(strArray)
+                    {
                         Tag = attachment
                     };
                     this.listView1.Items.Add(item);
@@ -202,7 +208,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             return "Unknown";
         }
 
- private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (this.listView1.SelectedIndices.Count > 0)
             {
@@ -233,4 +239,3 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         public IObject Object { get; set; }
     }
 }
-

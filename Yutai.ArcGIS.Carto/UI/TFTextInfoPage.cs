@@ -24,7 +24,7 @@ namespace Yutai.ArcGIS.Carto.UI
             return true;
         }
 
- public void Init()
+        public void Init()
         {
             this.txtLeftLowTxt.Text = this.jlktkassiatant_0.LeftLowText;
             this.txtRightLowTxt.Text = this.jlktkassiatant_0.RightLowText;
@@ -32,18 +32,14 @@ namespace Yutai.ArcGIS.Carto.UI
             this.txtZTDW.Text = this.jlktkassiatant_0.LeftBorderOutText;
         }
 
- private void TFTextInfoPage_Load(object sender, EventArgs e)
+        private void TFTextInfoPage_Load(object sender, EventArgs e)
         {
             this.Init();
         }
 
         internal YTTKAssiatant YTTKAssiatant
         {
-            set
-            {
-                this.jlktkassiatant_0 = value;
-            }
+            set { this.jlktkassiatant_0 = value; }
         }
     }
 }
-

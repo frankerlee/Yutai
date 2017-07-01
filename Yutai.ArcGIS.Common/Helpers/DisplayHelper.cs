@@ -15,16 +15,17 @@ namespace Yutai.ArcGIS.Common.Helpers
 
         public static double GetMax(double pMinValue, double pUnits)
         {
-            return pMinValue + (double)((long)2147483647) / pUnits;
+            return pMinValue + (double) ((long) 2147483647)/pUnits;
         }
 
         public static double GetUnits(double pMinValue, double pMaxValue)
         {
-            long num = (long)2147483647;
+            long num = (long) 2147483647;
             double num1 = Math.Abs(pMaxValue - pMinValue);
-            return (double)num / num1;
+            return (double) num/num1;
         }
     }
+
     public class DisplayHelper
     {
         public DisplayHelper()
@@ -35,7 +36,7 @@ namespace Yutai.ArcGIS.Common.Helpers
         {
             ITransformation transformation;
             IEnvelope envelopeClass = new Envelope() as IEnvelope;
-            envelopeClass.PutCoords(0, 0, (double)width, (double)height);
+            envelopeClass.PutCoords(0, 0, (double) width, (double) height);
             tagRECT _tagRECT = new tagRECT()
             {
                 left = 0,
@@ -43,15 +44,16 @@ namespace Yutai.ArcGIS.Common.Helpers
                 right = width,
                 bottom = height
             };
-            double dpiY = (double)Graphics.FromHdc(HDC).DpiY;
-            if ((long)dpiY != (long)0)
+            double dpiY = (double) Graphics.FromHdc(HDC).DpiY;
+            if ((long) dpiY != (long) 0)
             {
-                IDisplayTransformation displayTransformationClass = new DisplayTransformation() as IDisplayTransformation;
+                IDisplayTransformation displayTransformationClass =
+                    new DisplayTransformation() as IDisplayTransformation;
                 displayTransformationClass.Bounds = envelopeClass;
                 displayTransformationClass.VisibleBounds = envelopeClass;
                 displayTransformationClass.set_DeviceFrame(ref _tagRECT);
                 displayTransformationClass.Resolution = dpiY;
-                
+
                 transformation = displayTransformationClass;
             }
             else
@@ -84,9 +86,12 @@ namespace Yutai.ArcGIS.Common.Helpers
             }
         }
 
-        public static void DrawText(IScreenDisplay paramScreenDisplay, IGeometry paramGeom, string paramText, ISymbol paramSymbol)
+        public static void DrawText(IScreenDisplay paramScreenDisplay, IGeometry paramGeom, string paramText,
+            ISymbol paramSymbol)
         {
-            if ((paramScreenDisplay == null || paramGeom == null || paramGeom.IsEmpty || paramSymbol == null ? false : paramSymbol is ITextSymbol))
+            if ((paramScreenDisplay == null || paramGeom == null || paramGeom.IsEmpty || paramSymbol == null
+                ? false
+                : paramSymbol is ITextSymbol))
             {
                 paramScreenDisplay.StartDrawing(paramScreenDisplay.hDC, -2);
                 paramScreenDisplay.UpdateWindow();
@@ -107,11 +112,11 @@ namespace Yutai.ArcGIS.Common.Helpers
             {
                 int exportFrame = pView.ExportFrame.right - pView.ExportFrame.left;
                 double width = pView.Extent.Width;
-                num = (double)pixes * width / (double)exportFrame;
+                num = (double) pixes*width/(double) exportFrame;
             }
             else
             {
-                num = (double)pixes;
+                num = (double) pixes;
             }
             return num;
         }

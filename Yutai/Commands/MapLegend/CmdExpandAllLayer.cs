@@ -11,9 +11,8 @@ namespace Yutai.Commands.MapLegend
 {
     public class CmdExpandAllLayer : YutaiCommand
     {
-        
         private IMapLegendView _view;
-      
+
         public CmdExpandAllLayer(IAppContext context, IMapLegendView view)
         {
             _context = context;
@@ -50,8 +49,8 @@ namespace Yutai.Commands.MapLegend
             base.m_checked = false;
             base.m_enabled = true;
             base._itemType = RibbonItemType.Button;
-
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
@@ -67,22 +66,22 @@ namespace Yutai.Commands.MapLegend
             switch (_view.SelectedItemType)
             {
                 case esriTOCControlItem.esriTOCControlItemMap:
-                    {
-                        IEnumLayer pEnumLayer = _view.SelectedMap.Layers;
+                {
+                    IEnumLayer pEnumLayer = _view.SelectedMap.Layers;
 
-                        if (pEnumLayer == null) return;
-                        ILayer pLayer;
-                        pEnumLayer.Reset();
-                        for (pLayer = pEnumLayer.Next(); pLayer != null; pLayer = pEnumLayer.Next())
-                        {
-                            ExpandedLayers(pLayer, true);
-                        }
+                    if (pEnumLayer == null) return;
+                    ILayer pLayer;
+                    pEnumLayer.Reset();
+                    for (pLayer = pEnumLayer.Next(); pLayer != null; pLayer = pEnumLayer.Next())
+                    {
+                        ExpandedLayers(pLayer, true);
                     }
+                }
                     break;
                 case esriTOCControlItem.esriTOCControlItemLayer:
-                    {
-                        ExpandedLayers(_view.SelectedLayer, true);
-                    }
+                {
+                    ExpandedLayers(_view.SelectedLayer, true);
+                }
                     break;
                 case esriTOCControlItem.esriTOCControlItemHeading:
                     break;
@@ -99,13 +98,13 @@ namespace Yutai.Commands.MapLegend
         {
             if (layer is IGroupLayer)
             {
-                ICompositeLayer pCompositeLayer = (ICompositeLayer)layer;
+                ICompositeLayer pCompositeLayer = (ICompositeLayer) layer;
                 for (int i = 0; i < pCompositeLayer.Count; i++)
                 {
                     ILayer pLayer = pCompositeLayer.Layer[i];
                     ExpandedLayers(pLayer, expended);
                 }
-                ((IGroupLayer)layer).Expanded = expended;
+                ((IGroupLayer) layer).Expanded = expended;
             }
             else if (layer is ILegendInfo)
             {

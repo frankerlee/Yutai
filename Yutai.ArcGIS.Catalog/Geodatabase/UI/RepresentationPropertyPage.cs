@@ -34,15 +34,22 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            frmNewReprensentationWizard wizard = new frmNewReprensentationWizard {
+            frmNewReprensentationWizard wizard = new frmNewReprensentationWizard
+            {
                 FeatureClass = this.ifeatureClass_0
             };
             if (wizard.ShowDialog() == DialogResult.OK)
             {
                 IDatasetName fullName = (wizard.RepresentationClass as IDataset).FullName as IDatasetName;
-                ListViewItem item = new ListViewItem(new string[] { fullName.Name, (fullName as IRepresentationClassName).RuleIDFieldName, (fullName as IRepresentationClassName).OverrideFieldName }) {
-                    Tag = fullName
-                };
+                ListViewItem item =
+                    new ListViewItem(new string[]
+                    {
+                        fullName.Name, (fullName as IRepresentationClassName).RuleIDFieldName,
+                        (fullName as IRepresentationClassName).OverrideFieldName
+                    })
+                    {
+                        Tag = fullName
+                    };
                 this.listView1.Items.Add(item);
             }
         }
@@ -52,20 +59,21 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             ListViewItem item = this.listView1.SelectedItems[0];
             IDatasetName tag = item.Tag as IDatasetName;
             IDataset dataset = (tag as IName).Open() as IDataset;
-            new frmEidtReprensentation { RepresentationClass = dataset as IRepresentationClass }.ShowDialog();
+            new frmEidtReprensentation {RepresentationClass = dataset as IRepresentationClass}.ShowDialog();
         }
 
         private void btnReName_Click(object sender, EventArgs e)
         {
         }
 
- public IRepresentationWorkspaceExtension GetRepWSExtFromFClass(IFeatureClass ifeatureClass_1)
+        public IRepresentationWorkspaceExtension GetRepWSExtFromFClass(IFeatureClass ifeatureClass_1)
         {
             try
             {
                 IDataset dataset = ifeatureClass_1 as IDataset;
                 IWorkspaceExtensionManager workspace = dataset.Workspace as IWorkspaceExtensionManager;
-                UID gUID = new UIDClass {
+                UID gUID = new UIDClass
+                {
                     Value = "{FD05270A-8E0B-4823-9DEE-F149347C32B6}"
                 };
                 return (workspace.FindExtension(gUID) as IRepresentationWorkspaceExtension);
@@ -76,7 +84,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             return null;
         }
 
- private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.btnDelete.Enabled = this.listView1.SelectedItems.Count > 0;
             this.btnProperty.Enabled = this.listView1.SelectedItems.Count == 1;
@@ -96,7 +104,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     items[0] = name2.Name;
                     items[1] = (name2 as IRepresentationClassName).RuleIDFieldName;
                     items[2] = (name2 as IRepresentationClassName).OverrideFieldName;
-                    ListViewItem item = new ListViewItem(items) {
+                    ListViewItem item = new ListViewItem(items)
+                    {
                         Tag = name2
                     };
                     this.listView1.Items.Add(item);
@@ -107,11 +116,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IFeatureClass FeatureClass
         {
-            set
-            {
-                this.ifeatureClass_0 = value;
-            }
+            set { this.ifeatureClass_0 = value; }
         }
     }
 }
-

@@ -43,7 +43,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             double aspectRatio = 0.12;
             try
             {
-                aspectRatio = this.m_Scence.Extent.Width / this.m_Scence.Extent.Height;
+                aspectRatio = this.m_Scence.Extent.Width/this.m_Scence.Extent.Height;
             }
             catch
             {
@@ -73,7 +73,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             }
         }
 
- public void ResetControl()
+        public void ResetControl()
         {
         }
 
@@ -103,47 +103,28 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.m_IsPageDirty;
-            }
+            get { return this.m_IsPageDirty; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public IScene Scence
         {
-            set
-            {
-                this.m_Scence = value;
-            }
+            set { this.m_Scence = value; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.m_Title;
-            }
-            set
-            {
-                this.m_Title = value;
-            }
+            get { return this.m_Title; }
+            set { this.m_Title = value; }
         }
     }
 }
-

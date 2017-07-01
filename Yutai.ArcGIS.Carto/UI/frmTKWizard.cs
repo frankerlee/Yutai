@@ -96,7 +96,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.short_0 = (short) (this.short_0 + 1);
         }
 
- private void frmTKWizard_Load(object sender, EventArgs e)
+        private void frmTKWizard_Load(object sender, EventArgs e)
         {
             this.tkstyleSelectPage_0.YTTKAssiatant = this.jlktkassiatant_0;
             this.tfinfoPage_0.YTTKAssiatant = this.jlktkassiatant_0;
@@ -111,13 +111,9 @@ namespace Yutai.ArcGIS.Carto.UI
             this.tftextInfoPage_0.Visible = false;
         }
 
- public IActiveView ActiveView
+        public IActiveView ActiveView
         {
-            set
-            {
-                this.iactiveView_0 = value;
-            }
+            set { this.iactiveView_0 = value; }
         }
     }
 }
-

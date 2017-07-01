@@ -16,7 +16,7 @@ namespace Yutai.Commands.MapLegend
     public class CmdClearScaleRange : YutaiCommand
     {
         private IMapLegendView _view;
-       
+
         public CmdClearScaleRange(IAppContext context, IMapLegendView view)
         {
             _context = context;
@@ -52,8 +52,8 @@ namespace Yutai.Commands.MapLegend
             base.m_checked = false;
             base.m_enabled = true;
             base._itemType = RibbonItemType.Button;
-
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();

@@ -45,7 +45,9 @@ namespace Yutai.ArcGIS.Carto.UI
                 for (int i = 0; i < fields.FieldCount; i++)
                 {
                     IField field = fields.get_Field(i);
-                    if (((field.Type != esriFieldType.esriFieldTypeGeometry) && (field.Type != esriFieldType.esriFieldTypeBlob)) && (field.Type != esriFieldType.esriFieldTypeRaster))
+                    if (((field.Type != esriFieldType.esriFieldTypeGeometry) &&
+                         (field.Type != esriFieldType.esriFieldTypeBlob)) &&
+                        (field.Type != esriFieldType.esriFieldTypeRaster))
                     {
                         this.cboFields.Properties.Items.Add(field.AliasName);
                     }
@@ -61,7 +63,7 @@ namespace Yutai.ArcGIS.Carto.UI
         {
         }
 
- public IArray Find()
+        public IArray Find()
         {
             if (this.cboLayers.SelectedIndex < 0)
             {
@@ -114,7 +116,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.method_0();
         }
 
- private void method_0()
+        private void method_0()
         {
             this.method_2();
         }
@@ -203,12 +205,14 @@ namespace Yutai.ArcGIS.Carto.UI
             {
                 this.imap_0 = value;
                 this.iactiveViewEvents_Event_0 = value as IActiveViewEvents_Event;
-                this.iactiveViewEvents_Event_0.ItemAdded+=(new IActiveViewEvents_ItemAddedEventHandler(this.method_3));
-                this.iactiveViewEvents_Event_0.ItemDeleted+=(new IActiveViewEvents_ItemDeletedEventHandler(this.method_4));
-                this.iactiveViewEvents_Event_0.ItemReordered+=(new IActiveViewEvents_ItemReorderedEventHandler(this.method_5));
-                this.iactiveViewEvents_Event_0.ContentsCleared+=(new IActiveViewEvents_ContentsClearedEventHandler(this.method_6));
+                this.iactiveViewEvents_Event_0.ItemAdded += (new IActiveViewEvents_ItemAddedEventHandler(this.method_3));
+                this.iactiveViewEvents_Event_0.ItemDeleted +=
+                    (new IActiveViewEvents_ItemDeletedEventHandler(this.method_4));
+                this.iactiveViewEvents_Event_0.ItemReordered +=
+                    (new IActiveViewEvents_ItemReorderedEventHandler(this.method_5));
+                this.iactiveViewEvents_Event_0.ContentsCleared +=
+                    (new IActiveViewEvents_ContentsClearedEventHandler(this.method_6));
             }
         }
     }
 }
-

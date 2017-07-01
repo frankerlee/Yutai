@@ -7,4 +7,3 @@
         int Width { get; set; }
     }
 }
-

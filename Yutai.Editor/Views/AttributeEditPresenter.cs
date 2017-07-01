@@ -6,7 +6,8 @@ using Yutai.Plugins.Mvp;
 
 namespace Yutai.Plugins.Editor.Views
 {
-    public class AttributeEditPresenter : CommandDispatcher<IAttributeEditView, AttributeEditCommand>, IDockPanelPresenter
+    public class AttributeEditPresenter : CommandDispatcher<IAttributeEditView, AttributeEditCommand>,
+        IDockPanelPresenter
     {
         private readonly IAppContext _context;
 
@@ -26,7 +27,7 @@ namespace Yutai.Plugins.Editor.Views
 
         private void EditorEvent_OnStopEditing()
         {
-            _context.DockPanels.ShowDockPanel(((IDockPanelView)View).DockName, false, false);
+            _context.DockPanels.ShowDockPanel(((IDockPanelView) View).DockName, false, false);
         }
 
         #endregion

@@ -35,42 +35,29 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void frmFeatureDataset_Load(object sender, EventArgs e)
+        private void frmFeatureDataset_Load(object sender, EventArgs e)
         {
             this.panel1.Controls.Add(this.featureDatasetControl_0);
         }
 
- private void method_0()
+        private void method_0()
         {
         }
 
         public IFeatureDataset FeatureDataset
         {
-            get
-            {
-                return this.featureDatasetControl_0.FeatureDataset;
-            }
-            set
-            {
-                this.featureDatasetControl_0.FeatureDataset = value;
-            }
+            get { return this.featureDatasetControl_0.FeatureDataset; }
+            set { this.featureDatasetControl_0.FeatureDataset = value; }
         }
 
         public IFeatureWorkspace FeatureWorkspace
         {
-            set
-            {
-                this.featureDatasetControl_0.FeatureWorkspace = value;
-            }
+            set { this.featureDatasetControl_0.FeatureWorkspace = value; }
         }
 
         public bool IsEdit
         {
-            set
-            {
-                this.featureDatasetControl_0.IsEdit = value;
-            }
+            set { this.featureDatasetControl_0.IsEdit = value; }
         }
     }
 }
-

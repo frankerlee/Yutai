@@ -15,7 +15,6 @@ namespace Yutai.Plugins.Identifer.Query
 {
     public partial class frmSelectByLocation : MetroForm
     {
-
         private UcSelectByLocation _ucSelectByLocation = new UcSelectByLocation();
 
         private IAppContext _context;
@@ -26,10 +25,7 @@ namespace Yutai.Plugins.Identifer.Query
         /// </summary>
         public IMap Map
         {
-            set
-            {
-                this._ucSelectByLocation.Map = value;
-            }
+            set { this._ucSelectByLocation.Map = value; }
         }
 
         public bool CloseButton
@@ -59,7 +55,5 @@ namespace Yutai.Plugins.Identifer.Query
             _context = context;
             _ucSelectByLocation.Map = _context.MapControl.Map;
         }
-
-
     }
 }

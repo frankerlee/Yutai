@@ -14,6 +14,9 @@ namespace Yutai.Plugins.Events
 
         public int Percent { get; private set; }
 
-        public bool Finished { get { return Percent >= 100; } }
+        public bool Finished
+        {
+            get { return Percent >= 100; }
+        }
     }
 }

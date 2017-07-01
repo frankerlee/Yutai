@@ -11,6 +11,7 @@ namespace Yutai.Plugins.Catalog.Commands
     class CmdEnableArchiving : YutaiCommand
     {
         private IVersionedObject3 iversionedObject3_0 = null;
+
         public CmdEnableArchiving(IAppContext context)
         {
             OnCreate(context);
@@ -58,15 +59,16 @@ namespace Yutai.Plugins.Catalog.Commands
                                 result = false;
                                 return result;
                             }
-                            if (dataset.Workspace.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace && dataset is IVersionedObject3)
+                            if (dataset.Workspace.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace &&
+                                dataset is IVersionedObject3)
                             {
-                                this.iversionedObject3_0 = (IVersionedObject3)dataset;
+                                this.iversionedObject3_0 = (IVersionedObject3) dataset;
                                 bool flag;
                                 bool flag2;
                                 this.iversionedObject3_0.GetVersionRegistrationInfo(out flag, out flag2);
                                 if (flag && !flag2)
                                 {
-                                    IArchivableObject archivableObject = (IArchivableObject)this.iversionedObject3_0;
+                                    IArchivableObject archivableObject = (IArchivableObject) this.iversionedObject3_0;
                                     if (!archivableObject.IsArchiving)
                                     {
                                         result = true;
@@ -95,10 +97,9 @@ namespace Yutai.Plugins.Catalog.Commands
 
         public override void OnClick()
         {
-
             try
             {
-                IArchivableObject archivableObject = (IArchivableObject)this.iversionedObject3_0;
+                IArchivableObject archivableObject = (IArchivableObject) this.iversionedObject3_0;
                 archivableObject.EnableArchiving(null, null, true);
             }
             catch (Exception ex)
@@ -111,7 +112,7 @@ namespace Yutai.Plugins.Catalog.Commands
         {
             bool flag = false;
             bool flag2 = false;
-            IVersionedObject3 versionedObject = (IVersionedObject3)ifeatureClass_0;
+            IVersionedObject3 versionedObject = (IVersionedObject3) ifeatureClass_0;
             versionedObject.GetVersionRegistrationInfo(out flag, out flag2);
             if (!flag)
             {
@@ -122,7 +123,7 @@ namespace Yutai.Plugins.Catalog.Commands
                 versionedObject.UnRegisterAsVersioned3(false);
                 versionedObject.RegisterAsVersioned3(false);
             }
-            IArchivableObject archivableObject = (IArchivableObject)versionedObject;
+            IArchivableObject archivableObject = (IArchivableObject) versionedObject;
             if (archivableObject.IsArchiving)
             {
                 archivableObject.DisableArchiving(true, true);

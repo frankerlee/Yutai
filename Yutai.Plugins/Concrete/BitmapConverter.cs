@@ -5,5 +5,4 @@ using ESRI.ArcGIS.ADF;
 
 namespace Yutai.Plugins.Concrete
 {
-   
 }

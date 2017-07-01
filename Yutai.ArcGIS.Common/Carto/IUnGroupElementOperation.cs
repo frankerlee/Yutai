@@ -3,16 +3,10 @@ using ESRI.ArcGIS.SystemUI;
 
 namespace Yutai.ArcGIS.Common.Carto
 {
-	public interface IUnGroupElementOperation : IOperation
-	{
-		IActiveView ActiveView
-		{
-			set;
-		}
+    public interface IUnGroupElementOperation : IOperation
+    {
+        IActiveView ActiveView { set; }
 
-		IEnumElement Elements
-		{
-			set;
-		}
-	}
+        IEnumElement Elements { set; }
+    }
 }

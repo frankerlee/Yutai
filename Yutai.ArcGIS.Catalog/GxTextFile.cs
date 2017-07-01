@@ -4,7 +4,8 @@ using ESRI.ArcGIS.Geodatabase;
 
 namespace Yutai.ArcGIS.Catalog
 {
-    public class GxTextFile : IGxObject, IGxDataset, IGxFile, IGxObjectEdit, IGxObjectInternalName, IGxObjectProperties, IGxObjectUI, IGxFileSetup, IGxTextFile
+    public class GxTextFile : IGxObject, IGxDataset, IGxFile, IGxObjectEdit, IGxObjectInternalName, IGxObjectProperties,
+        IGxObjectUI, IGxFileSetup, IGxTextFile
     {
         private IDatasetName idatasetName_0;
         private IGxCatalog igxCatalog_0 = null;
@@ -79,11 +80,13 @@ namespace Yutai.ArcGIS.Catalog
             {
                 return null;
             }
-            IWorkspaceName name2 = new WorkspaceNameClass {
+            IWorkspaceName name2 = new WorkspaceNameClass
+            {
                 WorkspaceFactoryProgID = "esriDataSourcesOleDB.TextFileWorkspaceFactory",
                 PathName = System.IO.Path.GetDirectoryName(this.string_0)
             };
-            IDatasetName name3 = new TableNameClass {
+            IDatasetName name3 = new TableNameClass
+            {
                 Name = System.IO.Path.GetFileName(this.string_0),
                 WorkspaceName = name2
             };
@@ -125,33 +128,22 @@ namespace Yutai.ArcGIS.Catalog
 
         public string BaseName
         {
-            get
-            {
-                return System.IO.Path.GetFileNameWithoutExtension(this.string_0);
-            }
+            get { return System.IO.Path.GetFileNameWithoutExtension(this.string_0); }
         }
 
         public string Category
         {
-            set
-            {
-            }
+            set { }
         }
 
         public UID ClassID
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public UID ContextMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IDataset Dataset
@@ -186,18 +178,12 @@ namespace Yutai.ArcGIS.Catalog
                 }
                 return this.idatasetName_0;
             }
-            set
-            {
-                this.idatasetName_0 = value;
-            }
+            set { this.idatasetName_0 = value; }
         }
 
         public string FullName
         {
-            get
-            {
-                return this.string_0;
-            }
+            get { return this.string_0; }
         }
 
         public IName InternalObjectName
@@ -214,18 +200,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public bool IsValid
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         string IGxObject.Category
         {
-            get
-            {
-                return "文本文件";
-            }
+            get { return "文本文件"; }
         }
 
         IName IGxObjectInternalName.InternalObjectName
@@ -238,95 +218,58 @@ namespace Yutai.ArcGIS.Catalog
                 }
                 return (this.idatasetName_0 as IName);
             }
-            set
-            {
-                this.idatasetName_0 = value as IDatasetName;
-            }
+            set { this.idatasetName_0 = value as IDatasetName; }
         }
 
         public Bitmap LargeImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(26);
-            }
+            get { return ImageLib.GetSmallImage(26); }
         }
 
         public Bitmap LargeSelectedImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(26);
-            }
+            get { return ImageLib.GetSmallImage(26); }
         }
 
         public string Name
         {
-            get
-            {
-                return System.IO.Path.GetFileName(this.string_0);
-            }
+            get { return System.IO.Path.GetFileName(this.string_0); }
         }
 
         public UID NewMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IGxObject Parent
         {
-            get
-            {
-                return this.igxObject_0;
-            }
+            get { return this.igxObject_0; }
         }
 
         public string Path
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
 
         public int PropertyCount
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         public Bitmap SmallImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(26);
-            }
+            get { return ImageLib.GetSmallImage(26); }
         }
 
         public Bitmap SmallSelectedImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(26);
-            }
+            get { return ImageLib.GetSmallImage(26); }
         }
 
         public esriDatasetType Type
         {
-            get
-            {
-                return esriDatasetType.esriDTText;
-            }
+            get { return esriDatasetType.esriDTText; }
         }
     }
 }
-

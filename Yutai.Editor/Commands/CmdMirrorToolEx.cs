@@ -24,13 +24,13 @@ namespace Yutai.Plugins.Editor.Commands
 
         private double double_1 = -1.0;
 
-     
+
         private IPoint ipoint_0 = null;
 
         private IDisplayFeedback idisplayFeedback_0 = null;
 
         private IDisplayFeedback idisplayFeedback_1 = null;
-        
+
 
         private bool bool_0 = false;
 
@@ -40,12 +40,15 @@ namespace Yutai.Plugins.Editor.Commands
 
         private IPointCollection ipointCollection_0 = null;
 
-        
+
         public override bool Enabled
         {
             get
             {
-                return _context.FocusMap != null && _context.FocusMap.LayerCount != 0 && Yutai.ArcGIS.Common.Editor.Editor.EditWorkspace != null && (Yutai.ArcGIS.Common.Editor.Editor.EditMap == null || Yutai.ArcGIS.Common.Editor.Editor.EditMap == _context.FocusMap);
+                return _context.FocusMap != null && _context.FocusMap.LayerCount != 0 &&
+                       Yutai.ArcGIS.Common.Editor.Editor.EditWorkspace != null &&
+                       (Yutai.ArcGIS.Common.Editor.Editor.EditMap == null ||
+                        Yutai.ArcGIS.Common.Editor.Editor.EditMap == _context.FocusMap);
             }
         }
 
@@ -61,10 +64,9 @@ namespace Yutai.Plugins.Editor.Commands
             this.bool_0 = false;
             this.idisplayFeedback_0 = null;
             this.idisplayFeedback_1 = null;
-
         }
 
-    
+
         public override void OnClick()
         {
             this.ActiveCommand();
@@ -89,7 +91,6 @@ namespace Yutai.Plugins.Editor.Commands
             base.TextImageRelationYT = TextImageRelationYT.ImageAboveText;
             base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
             _itemType = RibbonItemType.Tool;
-
         }
 
         public override void OnKeyDown(int int_0, int int_1)
@@ -101,13 +102,12 @@ namespace Yutai.Plugins.Editor.Commands
                 this.bool_0 = false;
                 this.idisplayFeedback_0 = null;
                 this.idisplayFeedback_1 = null;
-
             }
         }
 
         public override void OnMouseDown(int int_0, int int_1, int int_2, int int_3)
         {
-            IActiveView focusMap = (IActiveView)_context.FocusMap;
+            IActiveView focusMap = (IActiveView) _context.FocusMap;
             IPoint mapPoint = focusMap.ScreenDisplay.DisplayTransformation.ToMapPoint(int_2, int_3);
             string str = mapPoint.X.ToString();
             double y = mapPoint.Y;
@@ -115,14 +115,14 @@ namespace Yutai.Plugins.Editor.Commands
             _context.ShowCommandString("", CommandTipsType.CTTInput);
             TryPrase(mapPoint);
         }
-       
+
         private void StartQuery(IEnvelope ienvelope_0)
         {
             ISpatialReference spatialReference = _context.FocusMap.SpatialReference;
             ienvelope_0.SpatialReference = spatialReference;
             IMap focusMap = _context.FocusMap;
             IActiveView activeView = focusMap as IActiveView;
-            ISelectionEnvironment selectionEnvironment =_context.Config.SelectionEnvironment;
+            ISelectionEnvironment selectionEnvironment = _context.Config.SelectionEnvironment;
             selectionEnvironment.CombinationMethod = esriSelectionResultEnum.esriSelectionResultAdd;
             esriSpatialRelEnum linearSelectionMethod = selectionEnvironment.LinearSelectionMethod;
             esriSpatialRelEnum areaSelectionMethod = selectionEnvironment.AreaSelectionMethod;
@@ -171,11 +171,11 @@ namespace Yutai.Plugins.Editor.Commands
             selectionEnvironment.LinearSelectionMethod = linearSelectionMethod;
             selectionEnvironment.AreaSelectionMethod = areaSelectionMethod;
         }
+
         private void TryPrase(IPoint point)
         {
             if (this.int_0 == 0)
             {
-                    
                 if (this.idisplayFeedback_0 != null)
                 {
                     IEnvelope ienvelope_ = (this.idisplayFeedback_0 as INewEnvelopeFeedback).Stop();
@@ -188,11 +188,13 @@ namespace Yutai.Plugins.Editor.Commands
                 {
                     double num = Common.ConvertPixelsToMapUnits(_context.FocusMap as IActiveView, 6.0);
                     IFeatureLayer layer;
-                    IFeature hitFeature = Yutai.ArcGIS.Common.Editor.Editor.GetHitFeature(_context.FocusMap, point, num, out layer);
+                    IFeature hitFeature = Yutai.ArcGIS.Common.Editor.Editor.GetHitFeature(_context.FocusMap, point, num,
+                        out layer);
                     if (hitFeature != null)
                     {
                         _context.FocusMap.SelectFeature(layer, this.ifeature_0);
-                        (_context.FocusMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
+                        (_context.FocusMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null,
+                            null);
                         int_0 = 1;
                     }
                     else
@@ -201,31 +203,26 @@ namespace Yutai.Plugins.Editor.Commands
                         this.idisplayFeedback_0.Display = (_context.FocusMap as IActiveView).ScreenDisplay;
                         (this.idisplayFeedback_0 as INewEnvelopeFeedback).Start(point);
                         this.double_0 = point.X;
-                            
                     }
                 }
                 return;
             }
             else if (this.int_0 == 1)
             {
-               
-                 
                 this.idisplayFeedback_1 = new NewLineFeedback();
                 this.idisplayFeedback_1.Display = (_context.FocusMap as IActiveView).ScreenDisplay;
                 (this.idisplayFeedback_1 as INewLineFeedback).Start(point);
                 this.int_0 = 2;
 
                 return;
-
             }
             else if (this.int_0 == 2)
             {
-              
                 (this.idisplayFeedback_1 as INewLineFeedback).AddPoint(point);
                 IPolyline ipolyline_ = (this.idisplayFeedback_1 as INewLineFeedback).Stop();
                 this.idisplayFeedback_1 = null;
                 this.MirrorCopy(ipolyline_);
-              
+
                 this.bool_0 = true;
                 return;
             }
@@ -255,10 +252,9 @@ namespace Yutai.Plugins.Editor.Commands
         }
 
 
-
         public override void OnMouseMove(int int_0, int int_1, int int_2, int int_3)
         {
-            IActiveView focusMap = (IActiveView)_context.FocusMap;
+            IActiveView focusMap = (IActiveView) _context.FocusMap;
             IPoint mapPoint = focusMap.ScreenDisplay.DisplayTransformation.ToMapPoint(int_2, int_3);
             if (this.idisplayFeedback_0 != null)
             {

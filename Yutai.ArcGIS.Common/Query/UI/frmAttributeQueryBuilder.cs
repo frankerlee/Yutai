@@ -37,37 +37,24 @@ namespace Yutai.ArcGIS.Common.Query.UI
             base.Close();
         }
 
- private void frmAttributeQueryBuilder_Load(object sender, EventArgs e)
+        private void frmAttributeQueryBuilder_Load(object sender, EventArgs e)
         {
         }
 
- public ILayer CurrentLayer
+        public ILayer CurrentLayer
         {
-            set
-            {
-                this.attributeQueryBuliderControl_0.CurrentLayer = value;
-            }
+            set { this.attributeQueryBuliderControl_0.CurrentLayer = value; }
         }
 
         public ITable Table
         {
-            set
-            {
-                this.attributeQueryBuliderControl_0.Table = value;
-            }
+            set { this.attributeQueryBuliderControl_0.Table = value; }
         }
 
         public string WhereCaluse
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.attributeQueryBuliderControl_0.WhereCaluse = value;
-            }
+            get { return this.string_0; }
+            set { this.attributeQueryBuliderControl_0.WhereCaluse = value; }
         }
     }
 }
-

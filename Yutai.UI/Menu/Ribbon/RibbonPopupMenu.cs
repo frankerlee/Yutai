@@ -15,7 +15,6 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.UI.Menu.Ribbon
 {
-
     public class RibbonPopupMenu : IPopuMenu
     {
         private OnItemClickEventHandler onItemClickEventHandler_0;
@@ -37,10 +36,7 @@ namespace Yutai.UI.Menu.Ribbon
 
         public bool Visible
         {
-            get
-            {
-                return this.pPopupMenu.Visible;
-            }
+            get { return this.pPopupMenu.Visible; }
             set
             {
                 if (!value)
@@ -54,7 +50,7 @@ namespace Yutai.UI.Menu.Ribbon
         {
         }
 
-      public void AddItem(string key, bool isGroup)
+        public void AddItem(string key, bool isGroup)
         {
             BarItem item = this.FindInPop(key);
             if (item == null)
@@ -220,7 +216,7 @@ namespace Yutai.UI.Menu.Ribbon
                 barSubItem.ItemLinks.Clear();
             }
         }
-   
+
 
         public BarItem FindInPop(string string_0, BarSubItem barSubItem_0)
         {
@@ -376,7 +372,6 @@ namespace Yutai.UI.Menu.Ribbon
             return item;
         }
 
-     
 
         private void method_2(BarSubItem barSubItem_0)
         {
@@ -449,10 +444,12 @@ namespace Yutai.UI.Menu.Ribbon
                 do
                 {
                     onItemClickEventHandler = onItemClickEventHandler0;
-                    OnItemClickEventHandler onItemClickEventHandler1 = (OnItemClickEventHandler)Delegate.Combine(onItemClickEventHandler, value);
-                    onItemClickEventHandler0 = Interlocked.CompareExchange<OnItemClickEventHandler>(ref this.onItemClickEventHandler_0, onItemClickEventHandler1, onItemClickEventHandler);
-                }
-                while ((object)onItemClickEventHandler0 != (object)onItemClickEventHandler);
+                    OnItemClickEventHandler onItemClickEventHandler1 =
+                        (OnItemClickEventHandler) Delegate.Combine(onItemClickEventHandler, value);
+                    onItemClickEventHandler0 =
+                        Interlocked.CompareExchange<OnItemClickEventHandler>(ref this.onItemClickEventHandler_0,
+                            onItemClickEventHandler1, onItemClickEventHandler);
+                } while ((object) onItemClickEventHandler0 != (object) onItemClickEventHandler);
             }
             remove
             {
@@ -461,10 +458,12 @@ namespace Yutai.UI.Menu.Ribbon
                 do
                 {
                     onItemClickEventHandler = onItemClickEventHandler0;
-                    OnItemClickEventHandler onItemClickEventHandler1 = (OnItemClickEventHandler)Delegate.Remove(onItemClickEventHandler, value);
-                    onItemClickEventHandler0 = Interlocked.CompareExchange<OnItemClickEventHandler>(ref this.onItemClickEventHandler_0, onItemClickEventHandler1, onItemClickEventHandler);
-                }
-                while ((object)onItemClickEventHandler0 != (object)onItemClickEventHandler);
+                    OnItemClickEventHandler onItemClickEventHandler1 =
+                        (OnItemClickEventHandler) Delegate.Remove(onItemClickEventHandler, value);
+                    onItemClickEventHandler0 =
+                        Interlocked.CompareExchange<OnItemClickEventHandler>(ref this.onItemClickEventHandler_0,
+                            onItemClickEventHandler1, onItemClickEventHandler);
+                } while ((object) onItemClickEventHandler0 != (object) onItemClickEventHandler);
             }
         }
     }

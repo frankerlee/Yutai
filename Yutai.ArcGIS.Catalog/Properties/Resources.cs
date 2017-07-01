@@ -6,7 +6,8 @@ using System.Runtime.CompilerServices;
 
 namespace Yutai.ArcGIS.Catalog.Properties
 {
-    [GeneratedCode("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0"), CompilerGenerated, DebuggerNonUserCode]
+    [GeneratedCode("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0"), CompilerGenerated,
+     DebuggerNonUserCode]
     internal class Resources
     {
         private static CultureInfo resourceCulture;
@@ -19,14 +20,8 @@ namespace Yutai.ArcGIS.Catalog.Properties
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         internal static CultureInfo Culture
         {
-            get
-            {
-                return resourceCulture;
-            }
-            set
-            {
-                resourceCulture = value;
-            }
+            get { return resourceCulture; }
+            set { resourceCulture = value; }
         }
 
         [EditorBrowsable(EditorBrowsableState.Advanced)]
@@ -36,7 +31,9 @@ namespace Yutai.ArcGIS.Catalog.Properties
             {
                 if (object.ReferenceEquals(resourceMan, null))
                 {
-                    System.Resources.ResourceManager manager = new System.Resources.ResourceManager("Yutai.ArcGIS.Catalog.Properties.Resources", typeof(Resources).Assembly);
+                    System.Resources.ResourceManager manager =
+                        new System.Resources.ResourceManager("Yutai.ArcGIS.Catalog.Properties.Resources",
+                            typeof(Resources).Assembly);
                     resourceMan = manager;
                 }
                 return resourceMan;
@@ -44,4 +41,3 @@ namespace Yutai.ArcGIS.Catalog.Properties
         }
     }
 }
-

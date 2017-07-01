@@ -7,7 +7,6 @@ using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 using ESRI.ArcGIS.NetworkAnalysis;
-
 using Yutai.Pipeline.Analysis.Forms;
 using Yutai.Pipeline.Analysis.Helpers;
 using Yutai.Pipeline.Config.Interfaces;
@@ -19,7 +18,6 @@ namespace Yutai.Pipeline.Analysis.Commands
 {
     class CmdTrackAnalysis : YutaiTool
     {
-
         private IPipelineConfig ipipeConfig_0;
 
         private IMapControl3 mapControl;
@@ -28,7 +26,7 @@ namespace Yutai.Pipeline.Analysis.Commands
         private object object_0;
         private PipelineAnalysisPlugin _plugin;
 
-        public CmdTrackAnalysis(IAppContext context,PipelineAnalysisPlugin plugin)
+        public CmdTrackAnalysis(IAppContext context, PipelineAnalysisPlugin plugin)
         {
             OnCreate(context);
             _plugin = plugin;
@@ -37,7 +35,6 @@ namespace Yutai.Pipeline.Analysis.Commands
 
         public override void OnClick()
         {
-
             _context.SetCurrentTool(this);
             if (this.trackingAnalyForm == null || this.trackingAnalyForm.IsDisposed)
             {
@@ -45,7 +42,7 @@ namespace Yutai.Pipeline.Analysis.Commands
                 this.trackingAnalyForm.MapControl = this._context.MapControl as IMapControl3;
                 this.trackingAnalyForm.pPipeCfg = this._plugin.PipeConfig;
                 this.trackingAnalyForm.m_iApp = _context;
-                this.trackingAnalyForm.Show((Form)this.object_0);
+                this.trackingAnalyForm.Show((Form) this.object_0);
             }
             else if (!this.trackingAnalyForm.Visible)
             {
@@ -56,9 +53,9 @@ namespace Yutai.Pipeline.Analysis.Commands
                 }
             }
             this.trackingAnalyForm.MapControl = this._context.MapControl as IMapControl3;
-            this.trackingAnalyForm.pPipeCfg = this._plugin.PipeConfig; ;
+            this.trackingAnalyForm.pPipeCfg = this._plugin.PipeConfig;
+            ;
             this.trackingAnalyForm.Show();
-
         }
 
 
@@ -90,10 +87,10 @@ namespace Yutai.Pipeline.Analysis.Commands
             {
                 ISimpleMarkerSymbol simpleMarkerSymbol = new SimpleMarkerSymbol();
                 IRgbColor rgbColor = new RgbColor();
-                simpleMarkerSymbol.Style=(esriSimpleMarkerStyle) (1);
-                rgbColor.RGB=(Color.FromArgb(0, 255, 0).ToArgb());
-                simpleMarkerSymbol.Color=(rgbColor);
-                ISymbol symbol = (ISymbol)simpleMarkerSymbol;
+                simpleMarkerSymbol.Style = (esriSimpleMarkerStyle) (1);
+                rgbColor.RGB = (Color.FromArgb(0, 255, 0).ToArgb());
+                simpleMarkerSymbol.Color = (rgbColor);
+                ISymbol symbol = (ISymbol) simpleMarkerSymbol;
                 object obj = symbol;
                 this.mapControl.DrawShape(geometry, ref obj);
             }
@@ -101,12 +98,12 @@ namespace Yutai.Pipeline.Analysis.Commands
             {
                 ISimpleMarkerSymbol simpleMarkerSymbol2 = new SimpleMarkerSymbol();
                 IRgbColor rgbColor2 = new RgbColor();
-                simpleMarkerSymbol2.Style=(esriSimpleMarkerStyle) (2);
-                rgbColor2.RGB=(Color.FromArgb(0, 0, 255).ToArgb());
-                simpleMarkerSymbol2.Color=(rgbColor2);
-                simpleMarkerSymbol2.Size=(12.0);
-                simpleMarkerSymbol2.Angle=(45.0);
-                ISymbol symbol2 = (ISymbol)simpleMarkerSymbol2;
+                simpleMarkerSymbol2.Style = (esriSimpleMarkerStyle) (2);
+                rgbColor2.RGB = (Color.FromArgb(0, 0, 255).ToArgb());
+                simpleMarkerSymbol2.Color = (rgbColor2);
+                simpleMarkerSymbol2.Size = (12.0);
+                simpleMarkerSymbol2.Angle = (45.0);
+                ISymbol symbol2 = (ISymbol) simpleMarkerSymbol2;
                 object obj2 = symbol2;
                 this.mapControl.DrawShape(geometry, ref obj2);
             }
@@ -119,11 +116,11 @@ namespace Yutai.Pipeline.Analysis.Commands
             {
                 activeView.ScreenDisplay.StartDrawing(0, -1);
                 IActiveView activeView2 = _context.ActiveView;
-               _context.FocusMap.ClearSelection();
+                _context.FocusMap.ClearSelection();
                 activeView2.PartialRefresh((esriViewDrawPhase) 4, null, null);
                 IPoint point = activeView.ScreenDisplay.DisplayTransformation.ToMapPoint(X, Y);
                 IEnvelope envelope = new Envelope() as IEnvelope;
-                double num = activeView.Extent.Width / 200.0;
+                double num = activeView.Extent.Width/200.0;
                 envelope.XMax = (point.X + num);
                 envelope.XMin = (point.X - num);
                 envelope.YMax = (point.Y + num);
@@ -131,68 +128,68 @@ namespace Yutai.Pipeline.Analysis.Commands
                 switch (this.trackingAnalyForm.DrawType)
                 {
                     case 1:
+                    {
+                        IFeatureClass pSelectPointLayer = this.trackingAnalyForm.pSelectPointLayer;
+
+                        ISpatialFilter spatialFilterClass = new SpatialFilter();
+                        spatialFilterClass.Geometry = (envelope);
+                        spatialFilterClass.SpatialRel = (esriSpatialRelEnum) (8);
+                        IFeatureCursor featureCursor = pSelectPointLayer.Search(spatialFilterClass, false);
+                        IFeature feature = featureCursor.NextFeature();
+                        if (feature != null)
                         {
-                            IFeatureClass pSelectPointLayer = this.trackingAnalyForm.pSelectPointLayer;
-                           
-                            ISpatialFilter spatialFilterClass = new SpatialFilter();
-                            spatialFilterClass.Geometry=(envelope);
-                            spatialFilterClass.SpatialRel=(esriSpatialRelEnum) (8);
-                            IFeatureCursor featureCursor = pSelectPointLayer.Search(spatialFilterClass, false);
-                            IFeature feature = featureCursor.NextFeature();
-                            if (feature != null)
-                            {
-                                this.trackingAnalyForm.AddJunctionFlag(feature);
-                                this.method_0(0, point);
-                            }
-                            break;
+                            this.trackingAnalyForm.AddJunctionFlag(feature);
+                            this.method_0(0, point);
                         }
+                        break;
+                    }
                     case 2:
+                    {
+                        ISpatialFilter spatialFilter = new SpatialFilter();
+                        IFeatureClass pSelectLineLayer = this.trackingAnalyForm.pSelectLineLayer;
+                        spatialFilter.Geometry = (envelope);
+                        spatialFilter.SpatialRel = (esriSpatialRelEnum) (6);
+                        IFeatureCursor featureCursor2 = pSelectLineLayer.Search(spatialFilter, false);
+                        IFeature feature2 = featureCursor2.NextFeature();
+                        if (feature2 != null)
                         {
-                            ISpatialFilter spatialFilter = new SpatialFilter();
-                            IFeatureClass pSelectLineLayer = this.trackingAnalyForm.pSelectLineLayer;
-                            spatialFilter.Geometry=(envelope);
-                            spatialFilter.SpatialRel=(esriSpatialRelEnum) (6);
-                            IFeatureCursor featureCursor2 = pSelectLineLayer.Search(spatialFilter, false);
-                            IFeature feature2 = featureCursor2.NextFeature();
-                            if (feature2 != null)
-                            {
-                                this.trackingAnalyForm.AddEdgeFlag(feature2);
-                                this.method_0(0, point);
-                            }
-                            break;
+                            this.trackingAnalyForm.AddEdgeFlag(feature2);
+                            this.method_0(0, point);
                         }
+                        break;
+                    }
                     case 3:
+                    {
+                        IFeatureClass pSelectPointLayer2 = this.trackingAnalyForm.pSelectPointLayer;
+
+                        ISpatialFilter spatialFilterClass2 = new SpatialFilter();
+                        spatialFilterClass2.Geometry = (envelope);
+                        spatialFilterClass2.SpatialRel = (esriSpatialRelEnum) (8);
+                        IFeatureCursor featureCursor3 = pSelectPointLayer2.Search(spatialFilterClass2, false);
+                        IFeature feature3 = featureCursor3.NextFeature();
+                        if (feature3 != null)
                         {
-                            IFeatureClass pSelectPointLayer2 = this.trackingAnalyForm.pSelectPointLayer;
-                          
-                            ISpatialFilter spatialFilterClass2 = new SpatialFilter();
-                            spatialFilterClass2.Geometry=(envelope);
-                            spatialFilterClass2.SpatialRel=(esriSpatialRelEnum) (8);
-                            IFeatureCursor featureCursor3 = pSelectPointLayer2.Search(spatialFilterClass2, false);
-                            IFeature feature3 = featureCursor3.NextFeature();
-                            if (feature3 != null)
-                            {
-                                this.trackingAnalyForm.AddJunctionBarrierFlag(feature3);
-                                this.method_0(1, point);
-                            }
-                            break;
+                            this.trackingAnalyForm.AddJunctionBarrierFlag(feature3);
+                            this.method_0(1, point);
                         }
+                        break;
+                    }
                     case 4:
+                    {
+                        IFeatureClass pSelectLineLayer2 = this.trackingAnalyForm.pSelectLineLayer;
+
+                        ISpatialFilter spatialFilterClass3 = new SpatialFilter();
+                        spatialFilterClass3.Geometry = (envelope);
+                        spatialFilterClass3.SpatialRel = (esriSpatialRelEnum) (6);
+                        IFeatureCursor featureCursor4 = pSelectLineLayer2.Search(spatialFilterClass3, false);
+                        IFeature feature4 = featureCursor4.NextFeature();
+                        if (feature4 != null)
                         {
-                            IFeatureClass pSelectLineLayer2 = this.trackingAnalyForm.pSelectLineLayer;
-                          
-                            ISpatialFilter spatialFilterClass3 = new SpatialFilter();
-                            spatialFilterClass3.Geometry = (envelope);
-                            spatialFilterClass3.SpatialRel = (esriSpatialRelEnum)(6);
-                            IFeatureCursor featureCursor4 = pSelectLineLayer2.Search(spatialFilterClass3, false);
-                            IFeature feature4 = featureCursor4.NextFeature();
-                            if (feature4 != null)
-                            {
-                                this.trackingAnalyForm.AddEdgeBarrierFlag(feature4);
-                                this.method_0(1, point);
-                            }
-                            break;
+                            this.trackingAnalyForm.AddEdgeBarrierFlag(feature4);
+                            this.method_0(1, point);
                         }
+                        break;
+                    }
                 }
                 activeView.ScreenDisplay.FinishDrawing();
             }

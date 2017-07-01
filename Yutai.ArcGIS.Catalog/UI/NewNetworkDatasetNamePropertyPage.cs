@@ -40,10 +40,9 @@ namespace Yutai.ArcGIS.Catalog.UI
             return true;
         }
 
- private void NewNetworkDatasetNamePropertyPage_Load(object sender, EventArgs e)
+        private void NewNetworkDatasetNamePropertyPage_Load(object sender, EventArgs e)
         {
             this.txtNetworkDatasetName.Text = NewNetworkDatasetHelper.NewNetworkDataset.NetworkDatasetName;
         }
     }
 }
-

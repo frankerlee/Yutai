@@ -56,23 +56,13 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IWorkspaceName CheckoutWorkspaceName
         {
-            get
-            {
-                return this.iworkspaceName_0;
-            }
-            set
-            {
-                this.iworkspaceName_0 = value;
-            }
+            get { return this.iworkspaceName_0; }
+            set { this.iworkspaceName_0 = value; }
         }
 
         public string DeltaFileName
         {
-            set
-            {
-                this.string_0 = value;
-            }
+            set { this.string_0 = value; }
         }
     }
 }
-

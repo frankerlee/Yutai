@@ -25,7 +25,8 @@ namespace Yutai.ArcGIS.Controls.Controls
         public void CopyMapToPageLayOutDataFrameforPrint(IMap MapControlOfMap)
         {
             this.m_OldMap = MapControlOfMap;
-            IGraphicsContainerSelect graphicsContainer = this.axPageLayoutControl1.ActiveView.GraphicsContainer as IGraphicsContainerSelect;
+            IGraphicsContainerSelect graphicsContainer =
+                this.axPageLayoutControl1.ActiveView.GraphicsContainer as IGraphicsContainerSelect;
             IElement element = null;
             IMapFrame frame = null;
             if (graphicsContainer.ElementSelectionCount <= 0)
@@ -46,13 +47,15 @@ namespace Yutai.ArcGIS.Controls.Controls
                 if (frame != null)
                 {
                     SimpleLineSymbolClass class2 = new SimpleLineSymbolClass();
-                    IRgbColor color = new RgbColorClass {
+                    IRgbColor color = new RgbColorClass
+                    {
                         Red = 255,
                         Green = 255,
                         Blue = 255
                     };
                     class2.Color = color;
-                    ISymbolBorder border = new SymbolBorderClass {
+                    ISymbolBorder border = new SymbolBorderClass
+                    {
                         LineSymbol = class2
                     };
                     frame.Border = border;
@@ -61,7 +64,8 @@ namespace Yutai.ArcGIS.Controls.Controls
                     object obj3 = copy.Copy(pInObject);
                     object map = frame.Map;
                     copy.Overwrite(obj3, ref map);
-                    this.fullPageLayerOut(this.axPageLayoutControl1.ActiveView.FocusMap, (MapControlOfMap as IActiveView).Extent);
+                    this.fullPageLayerOut(this.axPageLayoutControl1.ActiveView.FocusMap,
+                        (MapControlOfMap as IActiveView).Extent);
                     this.axPageLayoutControl1.ActiveView.Refresh();
                 }
                 else
@@ -82,15 +86,18 @@ namespace Yutai.ArcGIS.Controls.Controls
                 object obj3 = copy.Copy(pInObject);
                 object focusMap = this.axPageLayoutControl1.ActiveView.FocusMap;
                 copy.Overwrite(obj3, ref focusMap);
-                this.fullPageLayerOut(this.axPageLayoutControl1.ActiveView.FocusMap, (MapControlOfMap as IActiveView).Extent);
+                this.fullPageLayerOut(this.axPageLayoutControl1.ActiveView.FocusMap,
+                    (MapControlOfMap as IActiveView).Extent);
                 SimpleLineSymbolClass class2 = new SimpleLineSymbolClass();
-                IRgbColor color = new RgbColorClass {
+                IRgbColor color = new RgbColorClass
+                {
                     Red = 255,
                     Green = 255,
                     Blue = 255
                 };
                 class2.Color = color;
-                ISymbolBorder border = new SymbolBorderClass {
+                ISymbolBorder border = new SymbolBorderClass
+                {
                     LineSymbol = class2
                 };
                 IElement element = this.axPageLayoutControl1.ActiveView.GraphicsContainer.Next();
@@ -106,7 +113,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             }
         }
 
- private void frmPageLayoutPage_Load(object sender, EventArgs e)
+        private void frmPageLayoutPage_Load(object sender, EventArgs e)
         {
             this.CopyMapToPageLayOutDataFrameforPrint(this.FocusMap);
             this.axPageLayoutControl1.Page.PageToPrinterMapping = esriPageToPrinterMapping.esriPageMappingScale;
@@ -125,7 +132,6 @@ namespace Yutai.ArcGIS.Controls.Controls
             }
         }
 
- public IMap FocusMap { get; set; }
+        public IMap FocusMap { get; set; }
     }
 }
-

@@ -11,14 +11,6 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
     public class MapTemplateTableElement : MapTemplateElement
     {
         private bool bool_0;
-        [CompilerGenerated]
-        private double double_0;
-        [CompilerGenerated]
-        private double double_1;
-        [CompilerGenerated]
-        private int int_1;
-        [CompilerGenerated]
-        private int int_2;
         private SortedList<int, SortedList<int, string>> sortedList_0;
 
         public MapTemplateTableElement(MapTemplate mapTemplate_1) : base(mapTemplate_1)
@@ -65,7 +57,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         public override IElement CreateElement(IPageLayout ipageLayout_0)
         {
             IPoint position = this.GetPosition(ipageLayout_0);
-            TableElement element = new TableElement {
+            TableElement element = new TableElement
+            {
                 Height = this.Height,
                 Width = this.Width,
                 RowNumber = this.RowNumber,
@@ -175,7 +168,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 {
                     IAffineTransformation2D transformation = new AffineTransformation2DClass();
                     transformation.DefineFromEnvelopes(envelope, to);
-                    (base.m_pElement as ITransform2D).Transform(esriTransformDirection.esriTransformForward, transformation);
+                    (base.m_pElement as ITransform2D).Transform(esriTransformDirection.esriTransformForward,
+                        transformation);
                 }
                 catch
                 {
@@ -186,33 +180,9 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
-        public int ColumnNumber
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.int_2;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.int_2 = value;
-            }
-        }
+        public int ColumnNumber { get; set; }
 
-        public double Height
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.double_1;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.double_1 = value;
-            }
-        }
+        public double Height { get; set; }
 
         protected override IPropertySet PropertySet
         {
@@ -254,33 +224,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
-        public int RowNumber
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.int_1;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.int_1 = value;
-            }
-        }
+        public int RowNumber { get; set; }
 
-        public double Width
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.double_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.double_0 = value;
-            }
-        }
+        public double Width { get; set; }
     }
 }
-

@@ -9,4 +9,3 @@ namespace Yutai.ArcGIS.Catalog
         LayerType LayerType { get; }
     }
 }
-

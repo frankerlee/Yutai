@@ -19,7 +19,7 @@ namespace Yutai.Shared
                 return;
             }
 
-            if (value <= (double)control.Minimum)
+            if (value <= (double) control.Minimum)
             {
                 control.Value = control.Minimum;
             }

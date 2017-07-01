@@ -45,7 +45,7 @@ namespace Yutai.Plugins.Editor.Menu
             }
             else
             {
-                ((IEditTemplateView)_presenter.GetInternalObject()).ValidateWorkspace();
+                ((IEditTemplateView) _presenter.GetInternalObject()).ValidateWorkspace();
             }
             _context.DockPanels.ShowDockPanel(((IDockPanelView) _presenter.GetInternalObject()).DockName, true, true);
         }

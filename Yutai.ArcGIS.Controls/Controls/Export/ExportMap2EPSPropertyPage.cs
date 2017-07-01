@@ -22,7 +22,8 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
         {
             if (this.m_CanDo && (this.cboColorspace.SelectedIndex != -1))
             {
-                (this.m_pExport as IExportColorspaceSettings).Colorspace = (esriExportColorspace) this.cboColorspace.SelectedIndex;
+                (this.m_pExport as IExportColorspaceSettings).Colorspace =
+                    (esriExportColorspace) this.cboColorspace.SelectedIndex;
             }
         }
 
@@ -38,7 +39,8 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
         {
             if (this.m_CanDo && (this.cboImageCompression.SelectedIndex != -1))
             {
-                (this.m_pExport as IExportPS).ImageCompression = (esriExportImageCompression) this.cboImageCompression.SelectedIndex;
+                (this.m_pExport as IExportPS).ImageCompression =
+                    (esriExportImageCompression) this.cboImageCompression.SelectedIndex;
             }
         }
 
@@ -46,7 +48,8 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
         {
             if (this.m_CanDo && (this.cboPSLangugeLevel.SelectedIndex != -1))
             {
-                (this.m_pExport as IExportPS).LanguageLevel = (esriExportPSLanguageLevel) (this.cboPSLangugeLevel.SelectedIndex + 2);
+                (this.m_pExport as IExportPS).LanguageLevel =
+                    (esriExportPSLanguageLevel) (this.cboPSLangugeLevel.SelectedIndex + 2);
             }
         }
 
@@ -66,7 +69,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             }
         }
 
- private void ExportMap2EMFPropertyPage_Load(object sender, EventArgs e)
+        private void ExportMap2EMFPropertyPage_Load(object sender, EventArgs e)
         {
             if (this.m_pExport != null)
             {
@@ -80,13 +83,9 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             }
         }
 
- public IExport Export
+        public IExport Export
         {
-            set
-            {
-                this.m_pExport = value;
-            }
+            set { this.m_pExport = value; }
         }
     }
 }
-

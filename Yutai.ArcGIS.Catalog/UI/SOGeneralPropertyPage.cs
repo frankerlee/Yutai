@@ -27,7 +27,8 @@ namespace Yutai.ArcGIS.Catalog.UI
         {
             if (this.iserverObjectConfiguration_0 == null)
             {
-                this.iserverObjectConfiguration_0 = (this.iagsserverConnection_0 as IAGSServerConnectionAdmin).ServerObjectAdmin.CreateConfiguration();
+                this.iserverObjectConfiguration_0 =
+                    (this.iagsserverConnection_0 as IAGSServerConnectionAdmin).ServerObjectAdmin.CreateConfiguration();
             }
             this.iserverObjectConfiguration_0.Name = this.txtSOName.Text;
             this.iserverObjectConfiguration_0.TypeName = this.cboSOType.Text;
@@ -39,7 +40,8 @@ namespace Yutai.ArcGIS.Catalog.UI
         {
             if (this.iserverObjectConfiguration_0 == null)
             {
-                this.iserverObjectConfiguration_0 = (this.iagsserverConnection_0 as IAGSServerConnectionAdmin).ServerObjectAdmin.CreateConfiguration();
+                this.iserverObjectConfiguration_0 =
+                    (this.iagsserverConnection_0 as IAGSServerConnectionAdmin).ServerObjectAdmin.CreateConfiguration();
             }
             this.iserverObjectConfiguration_0.Name = this.txtSOName.Text;
             this.iserverObjectConfiguration_0.TypeName = this.cboSOType.Text;
@@ -48,7 +50,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             return this.iserverObjectConfiguration_0;
         }
 
- private void SOGeneralPropertyPage_Load(object sender, EventArgs e)
+        private void SOGeneralPropertyPage_Load(object sender, EventArgs e)
         {
         }
 
@@ -59,47 +61,25 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         public IAGSServerConnection AGSServerConnection
         {
-            set
-            {
-                this.iagsserverConnection_0 = value;
-            }
+            set { this.iagsserverConnection_0 = value; }
         }
 
         public IServerObject ServerObject
         {
-            get
-            {
-                return this.iserverObject_0;
-            }
-            set
-            {
-                this.iserverObject_0 = value;
-            }
+            get { return this.iserverObject_0; }
+            set { this.iserverObject_0 = value; }
         }
 
         public string SOName
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
 
         public string SOType
         {
-            get
-            {
-                return this.string_1;
-            }
-            set
-            {
-                this.string_1 = value;
-            }
+            get { return this.string_1; }
+            set { this.string_1 = value; }
         }
     }
 }
-

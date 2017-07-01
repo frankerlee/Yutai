@@ -98,11 +98,13 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             if (JuncfromValues != null)
             {
                 sgen.SetFilterRanges(esriElementType.esriETJunction, ref JuncfromValues, ref JunctoValues);
-                sgen.SetFilterType(esriElementType.esriETJunction, esriWeightFilterType.esriWFRange, ApplyJuncFilterWeight);
+                sgen.SetFilterType(esriElementType.esriETJunction, esriWeightFilterType.esriWFRange,
+                    ApplyJuncFilterWeight);
             }
             else
             {
-                sgen.SetFilterType(esriElementType.esriETJunction, esriWeightFilterType.esriWFNone, ApplyJuncFilterWeight);
+                sgen.SetFilterType(esriElementType.esriETJunction, esriWeightFilterType.esriWFNone,
+                    ApplyJuncFilterWeight);
             }
             if (EdgefromValues != null)
             {
@@ -131,7 +133,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             if ((m_JunBarriers.Count + m_EdgeBarriers.Count) != 0)
             {
                 int num;
-                ISimpleMarkerSymbol symbol = new SimpleMarkerSymbolClass {
+                ISimpleMarkerSymbol symbol = new SimpleMarkerSymbolClass
+                {
                     Style = esriSimpleMarkerStyle.esriSMSX,
                     Size = 8.0,
                     Color = ColorManage.Red
@@ -155,7 +158,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             if ((m_JunFlags.Count + m_EdgeFlags.Count) != 0)
             {
                 int num;
-                ISimpleMarkerSymbol symbol = new SimpleMarkerSymbolClass {
+                ISimpleMarkerSymbol symbol = new SimpleMarkerSymbolClass
+                {
                     Style = esriSimpleMarkerStyle.esriSMSSquare,
                     Size = 8.0,
                     Color = ColorManage.Green
@@ -180,14 +184,16 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             {
                 if ((m_ipEnumNetEID_Junctions != null) && (m_ipEnumNetEID_Junctions.Count == 1))
                 {
-                    IEIDHelper helper = new EIDHelperClass {
+                    IEIDHelper helper = new EIDHelperClass
+                    {
                         GeometricNetwork = m_pAnalystGN,
                         ReturnGeometries = true
                     };
                     IEnumEIDInfo info = helper.CreateEnumEIDInfo(m_ipEnumNetEID_Junctions);
                     info.Reset();
                     IGeometry point = info.Next().Geometry;
-                    ISimpleMarkerSymbol symbol = new SimpleMarkerSymbolClass {
+                    ISimpleMarkerSymbol symbol = new SimpleMarkerSymbolClass
+                    {
                         Style = esriSimpleMarkerStyle.esriSMSCircle,
                         Size = 2.0,
                         Color = ColorManage.Red
@@ -200,7 +206,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             }
             else
             {
-                ISimpleLineSymbol symbol2 = new SimpleLineSymbolClass {
+                ISimpleLineSymbol symbol2 = new SimpleLineSymbolClass
+                {
                     Style = esriSimpleLineStyle.esriSLSSolid,
                     Width = 2.0,
                     Color = ColorManage.Red
@@ -239,7 +246,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
         {
             str = "";
             m_ipPolyline = null;
-            (CreateTraceFlowSolver() as ITraceFlowSolverGEN).FindCommonAncestors(esriFlowElements.esriFEJunctionsAndEdges, out m_ipEnumNetEID_Junctions, out m_ipEnumNetEID_Edges);
+            (CreateTraceFlowSolver() as ITraceFlowSolverGEN).FindCommonAncestors(
+                esriFlowElements.esriFEJunctionsAndEdges, out m_ipEnumNetEID_Junctions, out m_ipEnumNetEID_Edges);
             m_ipPolyline = PathPolyLine;
             return true;
         }
@@ -247,7 +255,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
         public static bool FindConnectedFeature()
         {
             m_ipPolyline = null;
-            (CreateTraceFlowSolver() as ITraceFlowSolverGEN).FindFlowElements(esriFlowMethod.esriFMConnected, esriFlowElements.esriFEJunctionsAndEdges, out m_ipEnumNetEID_Junctions, out m_ipEnumNetEID_Edges);
+            (CreateTraceFlowSolver() as ITraceFlowSolverGEN).FindFlowElements(esriFlowMethod.esriFMConnected,
+                esriFlowElements.esriFEJunctionsAndEdges, out m_ipEnumNetEID_Junctions, out m_ipEnumNetEID_Edges);
             m_ipPolyline = PathPolyLine;
             return true;
         }
@@ -255,7 +264,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
         public static bool FindLoop()
         {
             m_ipPolyline = null;
-            (CreateTraceFlowSolver() as ITraceFlowSolverGEN).FindCircuits(esriFlowElements.esriFEJunctionsAndEdges, out m_ipEnumNetEID_Junctions, out m_ipEnumNetEID_Edges);
+            (CreateTraceFlowSolver() as ITraceFlowSolverGEN).FindCircuits(esriFlowElements.esriFEJunctionsAndEdges,
+                out m_ipEnumNetEID_Junctions, out m_ipEnumNetEID_Edges);
             m_ipPolyline = PathPolyLine;
             return true;
         }
@@ -263,7 +273,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
         public static bool FindUnConnectdeFeature()
         {
             m_ipPolyline = null;
-            (CreateTraceFlowSolver() as ITraceFlowSolverGEN).FindFlowUnreachedElements(esriFlowMethod.esriFMConnected, esriFlowElements.esriFEJunctionsAndEdges, out m_ipEnumNetEID_Junctions, out m_ipEnumNetEID_Edges);
+            (CreateTraceFlowSolver() as ITraceFlowSolverGEN).FindFlowUnreachedElements(esriFlowMethod.esriFMConnected,
+                esriFlowElements.esriFEJunctionsAndEdges, out m_ipEnumNetEID_Junctions, out m_ipEnumNetEID_Edges);
             m_ipPolyline = PathPolyLine;
             return true;
         }
@@ -272,7 +283,9 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
         {
             object obj2;
             m_ipPolyline = null;
-            (CreateTraceFlowSolver() as ITraceFlowSolverGEN).FindAccumulation(esriFlowMethod.esriFMUpstream, esriFlowElements.esriFEJunctionsAndEdges, out m_ipEnumNetEID_Junctions, out m_ipEnumNetEID_Edges, out obj2);
+            (CreateTraceFlowSolver() as ITraceFlowSolverGEN).FindAccumulation(esriFlowMethod.esriFMUpstream,
+                esriFlowElements.esriFEJunctionsAndEdges, out m_ipEnumNetEID_Junctions, out m_ipEnumNetEID_Edges,
+                out obj2);
             m_ipPolyline = PathPolyLine;
             return true;
         }
@@ -281,7 +294,9 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
         {
             object[] segmentCosts = new object[m_JunFlags.Count + m_EdgeFlags.Count];
             m_ipPolyline = null;
-            (CreateTraceFlowSolver() as ITraceFlowSolverGEN).FindSource(esriFlowMethod.esriFMConnected, esriShortestPathObjFn.esriSPObjFnMinSum, out m_ipEnumNetEID_Junctions, out m_ipEnumNetEID_Edges, segmentCosts.Length, ref segmentCosts);
+            (CreateTraceFlowSolver() as ITraceFlowSolverGEN).FindSource(esriFlowMethod.esriFMConnected,
+                esriShortestPathObjFn.esriSPObjFnMinSum, out m_ipEnumNetEID_Junctions, out m_ipEnumNetEID_Edges,
+                segmentCosts.Length, ref segmentCosts);
             m_dblPathCost = 0.0;
             for (int i = 0; i < segmentCosts.Length; i++)
             {
@@ -316,7 +331,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             {
                 return null;
             }
-            sgen = new NetElementBarriersClass {
+            sgen = new NetElementBarriersClass
+            {
                 ElementType = type,
                 Network = m_pAnalystGN.Network
             };
@@ -361,7 +377,9 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             str = "";
             object[] segmentCosts = new object[m_JunFlags.Count + m_EdgeFlags.Count];
             m_ipPolyline = null;
-            (CreateTraceFlowSolver() as ITraceFlowSolverGEN).FindSource(esriFlowMethod.esriFMDownstream, esriShortestPathObjFn.esriSPObjFnMinSum, out m_ipEnumNetEID_Junctions, out m_ipEnumNetEID_Edges, segmentCosts.Length, ref segmentCosts);
+            (CreateTraceFlowSolver() as ITraceFlowSolverGEN).FindSource(esriFlowMethod.esriFMDownstream,
+                esriShortestPathObjFn.esriSPObjFnMinSum, out m_ipEnumNetEID_Junctions, out m_ipEnumNetEID_Edges,
+                segmentCosts.Length, ref segmentCosts);
             m_dblPathCost = 0.0;
             for (int i = 0; i < segmentCosts.Length; i++)
             {
@@ -377,7 +395,9 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             str = "";
             object[] segmentCosts = new object[m_JunFlags.Count + m_EdgeFlags.Count];
             m_ipPolyline = null;
-            (CreateTraceFlowSolver() as ITraceFlowSolverGEN).FindSource(esriFlowMethod.esriFMUpstream, esriShortestPathObjFn.esriSPObjFnMinSum, out m_ipEnumNetEID_Junctions, out m_ipEnumNetEID_Edges, segmentCosts.Length, ref segmentCosts);
+            (CreateTraceFlowSolver() as ITraceFlowSolverGEN).FindSource(esriFlowMethod.esriFMUpstream,
+                esriShortestPathObjFn.esriSPObjFnMinSum, out m_ipEnumNetEID_Junctions, out m_ipEnumNetEID_Edges,
+                segmentCosts.Length, ref segmentCosts);
             m_dblPathCost = 0.0;
             for (int i = 0; i < segmentCosts.Length; i++)
             {
@@ -398,7 +418,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
                     IGeometryCollection ipPolyline = (IGeometryCollection) m_ipPolyline;
                     if (m_ipEnumNetEID_Edges != null)
                     {
-                        IEIDHelper helper = new EIDHelperClass {
+                        IEIDHelper helper = new EIDHelperClass
+                        {
                             GeometricNetwork = m_pAnalystGN,
                             ReturnGeometries = true
                         };
@@ -428,18 +449,12 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
 
             public IPoint Location
             {
-                get
-                {
-                    return this.m_pt;
-                }
+                get { return this.m_pt; }
             }
 
             public INetFlag NetFlag
             {
-                get
-                {
-                    return this.m_NetFlag;
-                }
+                get { return this.m_NetFlag; }
             }
         }
 
@@ -456,20 +471,13 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
 
             public IPoint Location
             {
-                get
-                {
-                    return this.m_pt;
-                }
+                get { return this.m_pt; }
             }
 
             public INetFlag NetFlag
             {
-                get
-                {
-                    return this.m_NetFlag;
-                }
+                get { return this.m_NetFlag; }
             }
         }
     }
 }
-

@@ -22,7 +22,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         private bool bool_1 = false;
         private IGridLabel igridLabel_0 = null;
         protected IMapGrid m_pMapGrid = null;
-        [CompilerGenerated]
+
         private string string_0 = "标注";
 
         public event OnValueChangeEventHandler OnValueChange;
@@ -45,8 +45,10 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             if (this.bool_1)
             {
                 this.bool_1 = false;
-                this.m_pMapGrid.SetLabelVisibility(this.chkLabelLeft.Checked, this.chkLabelTop.Checked, this.chkLabelRight.Checked, this.chkLabelBottom.Checked);
-                this.igridLabel_0.set_LabelAlignment(esriGridAxisEnum.esriGridAxisBottom, !this.chkverticalBottom.Checked);
+                this.m_pMapGrid.SetLabelVisibility(this.chkLabelLeft.Checked, this.chkLabelTop.Checked,
+                    this.chkLabelRight.Checked, this.chkLabelBottom.Checked);
+                this.igridLabel_0.set_LabelAlignment(esriGridAxisEnum.esriGridAxisBottom,
+                    !this.chkverticalBottom.Checked);
                 this.igridLabel_0.set_LabelAlignment(esriGridAxisEnum.esriGridAxisLeft, !this.chkverticalLeft.Checked);
                 this.igridLabel_0.set_LabelAlignment(esriGridAxisEnum.esriGridAxisRight, !this.chkverticalRight.Checked);
                 this.igridLabel_0.set_LabelAlignment(esriGridAxisEnum.esriGridAxisTop, !this.chkverticalTop.Checked);
@@ -70,7 +72,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         private void btnProperty_Click(object sender, EventArgs e)
         {
-            frmElementProperty property = new frmElementProperty {
+            frmElementProperty property = new frmElementProperty
+            {
                 Text = "格网标注属性"
             };
             bool flag = false;
@@ -203,11 +206,11 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
- public void Hide()
+        public void Hide()
         {
         }
 
- private void LabelFormatPropertyPage_Load(object sender, EventArgs e)
+        private void LabelFormatPropertyPage_Load(object sender, EventArgs e)
         {
             this.m_pMapGrid = this.MapTemplate.MapGrid;
             if (this.m_pMapGrid != null)
@@ -259,7 +262,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         private void method_1(uint uint_0, out int int_0, out int int_1, out int int_2)
         {
             uint num = uint_0 & 16711680;
-             int_2 = (int) (num >> 16);
+            int_2 = (int) (num >> 16);
             num = uint_0 & 65280;
             int_1 = (int) (num >> 8);
             num = uint_0 & 255;
@@ -271,7 +274,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             uint num = 0;
             num = (uint) (0 | int_2);
             num = num << 8;
-            num |=(uint) int_1;
+            num |= (uint) int_1;
             num = num << 8;
             return (int) (num | int_0);
         }
@@ -333,53 +336,25 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
-        public MapCartoTemplateLib.MapTemplate MapTemplate
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.mapTemplate_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.mapTemplate_0 = value;
-            }
-        }
+        public MapCartoTemplateLib.MapTemplate MapTemplate { get; set; }
 
         public string Title
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

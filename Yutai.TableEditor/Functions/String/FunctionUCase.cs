@@ -17,7 +17,7 @@ namespace Yutai.Plugins.TableEditor.Functions.String
             _description = "UCase 函数可把指定的字符串转换为大写。";
             _parameters = new List<Parameter>()
             {
-                new Parameter() { Order = 0, Name = "string", Description = "必需的。需被转换为大写的字符串。"}
+                new Parameter() {Order = 0, Name = "string", Description = "必需的。需被转换为大写的字符串。"}
             };
         }
     }

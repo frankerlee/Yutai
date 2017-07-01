@@ -64,7 +64,6 @@ namespace Yutai.Views
                                 find = true;
                                 break;
                             }
-                           
                         }
                         if (find) break;
                     }
@@ -84,8 +83,6 @@ namespace Yutai.Views
             //_pages.Add(new MeasuringConfigPage(_configeService));
 
             //_pages.Add(new PluginsConfigPage(_pluginManager, _context));
-
-
         }
 
         public void ReloadPage(ConfigPageType type)
@@ -111,6 +108,4 @@ namespace Yutai.Views
             return _pages.FirstOrDefault(p => p.PageType == pageType);
         }
     }
-
-    
 }

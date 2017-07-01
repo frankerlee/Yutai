@@ -48,7 +48,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 this.progressBarFN.Minimum = 0;
                 this.progressBarFN.Maximum = this.ilist_0.Count;
                 Dataloaders dataloaders = new Dataloaders();
-                dataloaders.Step+=(new IFeatureProgress_StepEventHandler(this.method_3));
+                dataloaders.Step += (new IFeatureProgress_StepEventHandler(this.method_3));
                 System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
                 for (int i = 0; i < this.ilist_0.Count; i++)
                 {
@@ -96,7 +96,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnSelectInputFeatures_Click(object sender, EventArgs e)
         {
-            frmOpenFile file = new frmOpenFile {
+            frmOpenFile file = new frmOpenFile
+            {
                 Text = "添加数据"
             };
             file.RemoveAllFilters();
@@ -113,11 +114,16 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         if (obj2 is IGxDataset)
                         {
                             IGxDataset dataset = obj2 as IGxDataset;
-                            if ((this.igxDataset_0.Type == esriDatasetType.esriDTFeatureClass) && (dataset.Type == esriDatasetType.esriDTFeatureClass))
+                            if ((this.igxDataset_0.Type == esriDatasetType.esriDTFeatureClass) &&
+                                (dataset.Type == esriDatasetType.esriDTFeatureClass))
                             {
-                                if ((this.igxDataset_0.Dataset as IFeatureClass).ShapeType == (dataset.Dataset as IFeatureClass).ShapeType)
+                                if ((this.igxDataset_0.Dataset as IFeatureClass).ShapeType ==
+                                    (dataset.Dataset as IFeatureClass).ShapeType)
                                 {
-                                    if (this.method_0(this.igxDataset_0.DatasetName.WorkspaceName, dataset.DatasetName.WorkspaceName) && (this.igxDataset_0.DatasetName.Name == dataset.DatasetName.Name))
+                                    if (
+                                        this.method_0(this.igxDataset_0.DatasetName.WorkspaceName,
+                                            dataset.DatasetName.WorkspaceName) &&
+                                        (this.igxDataset_0.DatasetName.Name == dataset.DatasetName.Name))
                                     {
                                         MessageBox.Show("源对象类和目标对象类必须不同!" + obj2.FullName + "不能导入");
                                     }
@@ -132,12 +138,14 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                                     MessageBox.Show("装载数据必须和源数据有相同的几何数据类型!" + obj2.FullName + "不能导入");
                                 }
                             }
-                            else if ((this.igxDataset_0.Type == esriDatasetType.esriDTTable) && (dataset.Type == esriDatasetType.esriDTTable))
+                            else if ((this.igxDataset_0.Type == esriDatasetType.esriDTTable) &&
+                                     (dataset.Type == esriDatasetType.esriDTTable))
                             {
                                 this.ilist_0.Add(obj2.InternalObjectName);
                                 this.listView1.Items.Add(obj2.FullName);
                             }
-                            else if ((this.igxDataset_0.Type == esriDatasetType.esriDTFeatureClass) && (dataset.Type == esriDatasetType.esriDTTable))
+                            else if ((this.igxDataset_0.Type == esriDatasetType.esriDTFeatureClass) &&
+                                     (dataset.Type == esriDatasetType.esriDTTable))
                             {
                                 this.ilist_0.Add(obj2.InternalObjectName);
                                 this.listView1.Items.Add(obj2.FullName);
@@ -152,7 +160,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.btnDelete.Enabled = this.listView1.SelectedItems.Count > 0;
         }
@@ -180,11 +188,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IGxDataset OutLocation
         {
-            set
-            {
-                this.igxDataset_0 = value;
-            }
+            set { this.igxDataset_0 = value; }
         }
     }
 }
-

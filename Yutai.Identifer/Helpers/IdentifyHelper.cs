@@ -9,5 +9,4 @@ using Yutai.Api.Enums;
 
 namespace Yutai.Plugins.Identifer.Helpers
 {
-    
 }

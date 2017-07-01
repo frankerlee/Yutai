@@ -52,7 +52,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- private void HashLineSymbolControl_Load(object sender, EventArgs e)
+        private void HashLineSymbolControl_Load(object sender, EventArgs e)
         {
             this.InitControl();
         }
@@ -65,7 +65,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.m_CanDo = true;
         }
 
- public static bool IsNmuber(string str)
+        public static bool IsNmuber(string str)
         {
             if (str.Length > 0)
             {
@@ -175,4 +175,3 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         }
     }
 }
-

@@ -5,17 +5,9 @@ namespace Yutai.ArcGIS.Common
 {
     public class ApplicationRef
     {
-        public static int ControlType
-        {
-            get;
-            set;
-        }
+        public static int ControlType { get; set; }
 
-        public static IAppContext AppContext
-        {
-            get;
-            set;
-        }
+        public static IAppContext AppContext { get; set; }
 
         public static PyramidPromptType PyramidPromptType
         {
@@ -34,11 +26,7 @@ namespace Yutai.ArcGIS.Common
             }
         }
 
-        public static object BarManage
-        {
-            get;
-            set;
-        }
+        public static object BarManage { get; set; }
 
         public static ApplicationBase Application { get; set; }
     }

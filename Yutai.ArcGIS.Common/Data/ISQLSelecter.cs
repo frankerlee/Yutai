@@ -1,17 +1,13 @@
 namespace Yutai.ArcGIS.Common.Data
 {
-	public interface ISQLSelecter
-	{
-		string SQL
-		{
-			get;
-			set;
-		}
+    public interface ISQLSelecter
+    {
+        string SQL { get; set; }
 
-		void Dispose();
+        void Dispose();
 
-		void Execute();
+        void Execute();
 
-		string getFieldValue(string string_0);
-	}
+        string getFieldValue(string string_0);
+    }
 }

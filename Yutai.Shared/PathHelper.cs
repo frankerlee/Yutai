@@ -67,7 +67,10 @@ namespace Yutai.Shared
             basePath += Path.DirectorySeparatorChar;
 
             var folderUri = new Uri(basePath);
-            return Uri.UnescapeDataString(folderUri.MakeRelativeUri(pathUri).ToString().Replace('/', Path.DirectorySeparatorChar));
+            return
+                Uri.UnescapeDataString(folderUri.MakeRelativeUri(pathUri)
+                    .ToString()
+                    .Replace('/', Path.DirectorySeparatorChar));
         }
 
         /// <summary>
@@ -89,7 +92,7 @@ namespace Yutai.Shared
             {
                 string args = string.Format("/e, /select, \"{0}\"", path);
 
-                var info = new ProcessStartInfo { FileName = "explorer", Arguments = args };
+                var info = new ProcessStartInfo {FileName = "explorer", Arguments = args};
                 Process.Start(info);
             }
             catch (Exception ex)

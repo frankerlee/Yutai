@@ -15,11 +15,7 @@ namespace Yutai.Controls
 
         IBasicMap SelectedMap { get; }
 
-        ILayer SelectedLayer
-        {
-            get;
-
-        }
+        ILayer SelectedLayer { get; }
 
         esriTOCControlItem SelectedItemType { get; }
     }

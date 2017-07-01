@@ -9,12 +9,9 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 {
     internal partial class LineMaplexLabelCtrl : UserControl
     {
-
         public LineMaplexLabelCtrl()
         {
             this.InitializeComponent();
         }
-
-
     }
 }

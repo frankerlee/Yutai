@@ -13,6 +13,7 @@ namespace Yutai.Shared
     {
         /// <summary>Stores the queued tasks to be executed by our pool of STA threads.</summary>
         private BlockingCollection<Task> _tasks;
+
         /// <summary>The STA threads used by the scheduler.</summary>
         private readonly List<Thread> _threads;
 

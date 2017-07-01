@@ -47,7 +47,6 @@ namespace Yutai.Pipeline.Analysis.Commands
         {
             _context.SetCurrentTool(this);
             _pipelineConfig = _plugin.PipeConfig;
-
         }
 
 
@@ -79,7 +78,7 @@ namespace Yutai.Pipeline.Analysis.Commands
             {
                 IActiveView activeView = _context.ActiveView;
                 _context.FocusMap.ClearSelection();
-                activeView.PartialRefresh((esriViewDrawPhase)4, null, null);
+                activeView.PartialRefresh((esriViewDrawPhase) 4, null, null);
                 IPoint point = _context.ActiveView.ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
                 StartQueryJunction(point);
                 //IEnvelope envelope = new Envelope() as IEnvelope;
@@ -117,9 +116,9 @@ namespace Yutai.Pipeline.Analysis.Commands
             envelope.YMax = (point.Y + dist);
             envelope.YMin = (point.Y - dist);
             _context.FocusMap.SelectByShape(envelope, null, true);
-            _context.ActiveView.PartialRefresh((esriViewDrawPhase)4, null, null);
+            _context.ActiveView.PartialRefresh((esriViewDrawPhase) 4, null, null);
             IEnumFeature enumFeature =
-                (MapSelection)_context.FocusMap.FeatureSelection;
+                (MapSelection) _context.FocusMap.FeatureSelection;
             if (enumFeature != null)
             {
                 IFeature feature = enumFeature.Next();
@@ -137,11 +136,11 @@ namespace Yutai.Pipeline.Analysis.Commands
                 _context.ActiveView.ScreenDisplay.StartDrawing(_context.ActiveView.ScreenDisplay.hDC, -1);
                 ISimpleTextSymbol simpleTextSymbol = new TextSymbol() as ISimpleTextSymbol;
                 ISimpleTextSymbol arg_72_0 = simpleTextSymbol;
-                IRgbColor rgbColorClass = new RgbColor() { Blue = 255, Green = 0, Red = 0, Transparency = 30 };
+                IRgbColor rgbColorClass = new RgbColor() {Blue = 255, Green = 0, Red = 0, Transparency = 30};
 
                 arg_72_0.Color = (rgbColorClass);
                 simpleTextSymbol.Size = (15.0);
-                _context.ActiveView.ScreenDisplay.SetSymbol((ISymbol)simpleTextSymbol);
+                _context.ActiveView.ScreenDisplay.SetSymbol((ISymbol) simpleTextSymbol);
                 _context.ActiveView.ScreenDisplay.DrawText(this.ifeature_1.Shape, "起点");
                 _context.ActiveView.ScreenDisplay.FinishDrawing();
             }
@@ -149,11 +148,11 @@ namespace Yutai.Pipeline.Analysis.Commands
             {
                 _context.ActiveView.ScreenDisplay.StartDrawing(_context.ActiveView.ScreenDisplay.hDC, -1);
                 ISimpleLineSymbol simpleLineSymbol = new SimpleLineSymbol();
-                IRgbColor rgbColor = new RgbColor() { Blue = 0, Red = 255, Green = 0, Transparency = 30 };
+                IRgbColor rgbColor = new RgbColor() {Blue = 0, Red = 255, Green = 0, Transparency = 30};
 
                 simpleLineSymbol.Color = (rgbColor);
                 simpleLineSymbol.Width = (2.0);
-                _context.ActiveView.ScreenDisplay.SetSymbol((ISymbol)simpleLineSymbol);
+                _context.ActiveView.ScreenDisplay.SetSymbol((ISymbol) simpleLineSymbol);
                 _context.ActiveView.ScreenDisplay.DrawPolyline(this.ipolyline_0);
                 ISimpleTextSymbol simpleTextSymbol2 = new TextSymbol() as ISimpleTextSymbol;
                 rgbColor.Blue = (255);
@@ -162,7 +161,7 @@ namespace Yutai.Pipeline.Analysis.Commands
                 rgbColor.Transparency = (30);
                 simpleTextSymbol2.Color = (rgbColor);
                 simpleTextSymbol2.Size = (15.0);
-                _context.ActiveView.ScreenDisplay.SetSymbol((ISymbol)simpleTextSymbol2);
+                _context.ActiveView.ScreenDisplay.SetSymbol((ISymbol) simpleTextSymbol2);
                 _context.ActiveView.ScreenDisplay.DrawText(this.ifeature_1.Shape, "起点");
                 _context.ActiveView.ScreenDisplay.DrawText(this.ifeature_2.Shape, "终点");
                 _context.ActiveView.ScreenDisplay.FinishDrawing();
@@ -171,7 +170,6 @@ namespace Yutai.Pipeline.Analysis.Commands
 
         private void StartAnalysis(IFeature feature)
         {
-
             if (feature.FeatureType != esriFeatureType.esriFTSimpleJunction)
             {
                 MessageService.Current.Warn("请选择管线点");
@@ -183,9 +181,9 @@ namespace Yutai.Pipeline.Analysis.Commands
                 return;
             }
             double snapDist = CommonUtils.ConvertPixelsToMapUnits(_context.ActiveView,
-               _context.Config.SnapTolerance);
+                _context.Config.SnapTolerance);
             IBasicLayerInfo lineConfig =
-                    _plugin.PipeConfig.GetBasicLayerInfo(feature.Class as IFeatureClass) as IBasicLayerInfo;
+                _plugin.PipeConfig.GetBasicLayerInfo(feature.Class as IFeatureClass) as IBasicLayerInfo;
 
             if (this._startPoint == null && _startEid == 0)
             {
@@ -215,7 +213,7 @@ namespace Yutai.Pipeline.Analysis.Commands
                 return;
             }
             IPipelineLayer newLayer = _pipelineConfig.GetPipelineLayer(feature.Class.AliasName,
-               enumPipelineDataType.Point);
+                enumPipelineDataType.Point);
             if (newLayer == null)
             {
                 MessageService.Current.Warn("你选择的图层不是合法的管线图层!");
@@ -273,7 +271,7 @@ namespace Yutai.Pipeline.Analysis.Commands
                 int userClassID;
                 int userID;
                 int userSubID;
-                netElements.QueryIDs(_endEid, esriElementType.esriETJunction, out userClassID,out userID, out userSubID);
+                netElements.QueryIDs(_endEid, esriElementType.esriETJunction, out userClassID, out userID, out userSubID);
                 netFlag.UserClassID = (userClassID);
                 netFlag.UserID = (userID);
                 netFlag.UserSubID = (userSubID);
@@ -294,7 +292,8 @@ namespace Yutai.Pipeline.Analysis.Commands
                 object[] array2 = new object[1];
                 IEnumNetEID enumNetEID;
                 IEnumNetEID enumNetEID2;
-                traceFlowSolverGEN.FindPath((esriFlowMethod)2, (esriShortestPathObjFn)1, out enumNetEID, out enumNetEID2, 1, ref array2);
+                traceFlowSolverGEN.FindPath((esriFlowMethod) 2, (esriShortestPathObjFn) 1, out enumNetEID,
+                    out enumNetEID2, 1, ref array2);
                 if (this.ipolyline_0 == null)
                 {
                     this.ipolyline_0 = new Polyline() as IPolyline;
@@ -341,7 +340,6 @@ namespace Yutai.Pipeline.Analysis.Commands
                     _geometricNetwork = null;
                     showShortObjectForm.Show();
                 }
-
             }
             catch (Exception ex)
             {
@@ -350,5 +348,4 @@ namespace Yutai.Pipeline.Analysis.Commands
             }
         }
     }
-
 }

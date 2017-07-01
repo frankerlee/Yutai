@@ -40,7 +40,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         {
         }
 
- public void Hide()
+        public void Hide()
         {
         }
 
@@ -54,11 +54,12 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             else if (m_pLegendItem is IHorizontalLegendItem)
             {
                 this.panel1.Visible = true;
-                this.rdoHLegendItemArrangement.SelectedIndex = (int) (m_pLegendItem as IHorizontalLegendItem).Arrangement;
+                this.rdoHLegendItemArrangement.SelectedIndex =
+                    (int) (m_pLegendItem as IHorizontalLegendItem).Arrangement;
             }
         }
 
- private void LegendItemArrangementPropertyPage_Load(object sender, EventArgs e)
+        private void LegendItemArrangementPropertyPage_Load(object sender, EventArgs e)
         {
             this.Init();
             this.m_CanDo = true;
@@ -68,7 +69,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         {
             if (this.m_CanDo && (m_pLegendItem != null))
             {
-                (m_pLegendItem as IHorizontalLegendItem).Arrangement = (esriLegendItemArrangement) this.rdoHLegendItemArrangement.SelectedIndex;
+                (m_pLegendItem as IHorizontalLegendItem).Arrangement =
+                    (esriLegendItemArrangement) this.rdoHLegendItemArrangement.SelectedIndex;
                 this.ValueChanged();
             }
         }
@@ -77,7 +79,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         {
             if (this.m_CanDo && (m_pLegendItem != null))
             {
-                (m_pLegendItem as IVerticalLegendItem).Arrangement = (esriLegendItemArrangement) this.rdoVLegendItemArrangement.SelectedIndex;
+                (m_pLegendItem as IVerticalLegendItem).Arrangement =
+                    (esriLegendItemArrangement) this.rdoVLegendItemArrangement.SelectedIndex;
                 this.ValueChanged();
             }
         }
@@ -102,39 +105,23 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.m_IsPageDirty;
-            }
+            get { return this.m_IsPageDirty; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.m_Title;
-            }
-            set
-            {
-                this.m_Title = value;
-            }
+            get { return this.m_Title; }
+            set { this.m_Title = value; }
         }
     }
 }
-

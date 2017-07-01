@@ -98,10 +98,10 @@ namespace Yutai.ArcGIS.Catalog.ISConfig
                     directory2 = serverDirectories.Next();
                 }
                 goto Label_019A;
-            Label_0176:
+                Label_0176:
                 properties.SetProperty("OutputDir", directory2.Path);
                 properties.SetProperty("VirtualOutputDir", directory2.URL);
-            Label_019A:
+                Label_019A:
                 properties.SetProperty("CopyRight", "");
                 if (sourceType == esriImageServiceSourceType.esriImageServiceSourceTypeMosaicDataset)
                 {
@@ -130,7 +130,8 @@ namespace Yutai.ArcGIS.Catalog.ISConfig
                     }
                     if (list.Contains("DefaultCompressionQuality"))
                     {
-                        properties.SetProperty("DefaultCompressionQuality", set3.GetProperty("DefaultCompressionQuality"));
+                        properties.SetProperty("DefaultCompressionQuality",
+                            set3.GetProperty("DefaultCompressionQuality"));
                     }
                     if (list.Contains("MaxRecordCount"))
                     {
@@ -162,11 +163,13 @@ namespace Yutai.ArcGIS.Catalog.ISConfig
                     }
                     if (list.Contains("AllowedMensurationCapabilities"))
                     {
-                        properties.SetProperty("AllowedMensurationCapabilities", set3.GetProperty("AllowedMensurationCapabilities"));
+                        properties.SetProperty("AllowedMensurationCapabilities",
+                            set3.GetProperty("AllowedMensurationCapabilities"));
                     }
                     if (list.Contains("DefaultCompressionTolerance"))
                     {
-                        properties.SetProperty("DefaultCompressionTolerance", set3.GetProperty("DefaultCompressionTolerance"));
+                        properties.SetProperty("DefaultCompressionTolerance",
+                            set3.GetProperty("DefaultCompressionTolerance"));
                     }
                 }
                 else
@@ -177,7 +180,8 @@ namespace Yutai.ArcGIS.Catalog.ISConfig
                     properties.SetProperty("DefaultResamplingMethod", 0);
                     properties.SetProperty("DefaultCompressionQuality", 75);
                     properties.SetProperty("DefaultCompressionTolerance", 0.01);
-                    IMensuration mensuration = new MensurationClass {
+                    IMensuration mensuration = new MensurationClass
+                    {
                         Raster = ((IRasterDataset2) ISConfig.rasterDataset).CreateFullRaster()
                     };
                     string str2 = "";
@@ -231,13 +235,15 @@ namespace Yutai.ArcGIS.Catalog.ISConfig
                 config.set_ExtensionProperties("WMSServer", set7);
                 soAdmin.AddConfiguration(config);
                 soAdmin.StartConfiguration(serviceName, "ImageServer");
-                if (soAdmin.GetConfigurationStatus(serviceName, "ImageServer").Status == esriConfigurationStatus.esriCSStarted)
+                if (soAdmin.GetConfigurationStatus(serviceName, "ImageServer").Status ==
+                    esriConfigurationStatus.esriCSStarted)
                 {
                     Console.WriteLine("{0} on {1} has been configured and started.", serviceName, restAdmin);
                 }
                 else
                 {
-                    Console.WriteLine("{0} on {1} was configured but can not be started, please investigate.", serviceName, restAdmin);
+                    Console.WriteLine("{0} on {1} was configured but can not be started, please investigate.",
+                        serviceName, restAdmin);
                 }
                 if (ISConfig.rasterDataset != null)
                 {
@@ -306,13 +312,15 @@ namespace Yutai.ArcGIS.Catalog.ISConfig
                     IWorkspaceName2 fullName = ((IDataset) workspace).FullName as IWorkspaceName2;
                     string connectionString = fullName.ConnectionString;
                     builder.AppendFormat("{0}: {1},", QuoteString("connectionString"), QuoteString(connectionString));
-                    builder.AppendFormat("{0}: {1},", QuoteString("raster"), QuoteString(((IDataset) ISConfig.rasterDataset).Name));
+                    builder.AppendFormat("{0}: {1},", QuoteString("raster"),
+                        QuoteString(((IDataset) ISConfig.rasterDataset).Name));
                 }
                 else
                 {
                     builder.AppendFormat("{0}: {1},", QuoteString("path"), QuoteString(sourcePath.Replace(@"\", @"\\")));
                 }
-                builder.AppendFormat("{0}: {1},", QuoteString("esriImageServiceSourceType"), QuoteString(sourceType.ToString()));
+                builder.AppendFormat("{0}: {1},", QuoteString("esriImageServiceSourceType"),
+                    QuoteString(sourceType.ToString()));
                 string str6 = "";
                 string str7 = "";
                 GetServerDirectory_RESTAdmin("arcgisoutput", out str6, out str7);
@@ -336,59 +344,73 @@ namespace Yutai.ArcGIS.Catalog.ISConfig
                     list.AddRange((string[]) obj2);
                     if (list.Contains("AllowedCompressions"))
                     {
-                        builder.AppendFormat("{0}: {1},", QuoteString("allowedCompressions"), QuoteString(properties.GetProperty("AllowedCompressions").ToString()));
+                        builder.AppendFormat("{0}: {1},", QuoteString("allowedCompressions"),
+                            QuoteString(properties.GetProperty("AllowedCompressions").ToString()));
                     }
                     if (list.Contains("MaxImageHeight"))
                     {
-                        builder.AppendFormat("{0}: {1},", QuoteString("maxImageHeight"), QuoteString(properties.GetProperty("MaxImageHeight").ToString()));
+                        builder.AppendFormat("{0}: {1},", QuoteString("maxImageHeight"),
+                            QuoteString(properties.GetProperty("MaxImageHeight").ToString()));
                     }
                     if (list.Contains("MaxImageWidth"))
                     {
-                        builder.AppendFormat("{0}: {1},", QuoteString("maxImageWidth"), QuoteString(properties.GetProperty("MaxImageWidth").ToString()));
+                        builder.AppendFormat("{0}: {1},", QuoteString("maxImageWidth"),
+                            QuoteString(properties.GetProperty("MaxImageWidth").ToString()));
                     }
                     if (list.Contains("DefaultResamplingMethod"))
                     {
-                        builder.AppendFormat("{0}: {1},", QuoteString("defaultResamplingMethod"), QuoteString(properties.GetProperty("DefaultResamplingMethod").ToString()));
+                        builder.AppendFormat("{0}: {1},", QuoteString("defaultResamplingMethod"),
+                            QuoteString(properties.GetProperty("DefaultResamplingMethod").ToString()));
                     }
                     if (list.Contains("DefaultCompressionQuality"))
                     {
-                        builder.AppendFormat("{0}: {1},", QuoteString("defaultCompressionQuality"), QuoteString(properties.GetProperty("DefaultCompressionQuality").ToString()));
+                        builder.AppendFormat("{0}: {1},", QuoteString("defaultCompressionQuality"),
+                            QuoteString(properties.GetProperty("DefaultCompressionQuality").ToString()));
                     }
                     if (list.Contains("MaxRecordCount"))
                     {
-                        builder.AppendFormat("{0}: {1},", QuoteString("maxRecordCount"), QuoteString(properties.GetProperty("MaxRecordCount").ToString()));
+                        builder.AppendFormat("{0}: {1},", QuoteString("maxRecordCount"),
+                            QuoteString(properties.GetProperty("MaxRecordCount").ToString()));
                     }
                     if (list.Contains("MaxMosaicImageCount"))
                     {
-                        builder.AppendFormat("{0}: {1},", QuoteString("maxMosaicImageCount"), QuoteString(properties.GetProperty("MaxMosaicImageCount").ToString()));
+                        builder.AppendFormat("{0}: {1},", QuoteString("maxMosaicImageCount"),
+                            QuoteString(properties.GetProperty("MaxMosaicImageCount").ToString()));
                     }
                     if (list.Contains("MaxDownloadImageCount"))
                     {
-                        builder.AppendFormat("{0}: {1},", QuoteString("maxDownloadImageCount"), QuoteString(properties.GetProperty("MaxDownloadImageCount").ToString()));
+                        builder.AppendFormat("{0}: {1},", QuoteString("maxDownloadImageCount"),
+                            QuoteString(properties.GetProperty("MaxDownloadImageCount").ToString()));
                     }
                     if (list.Contains("MaxDownloadSizeLimit"))
                     {
-                        builder.AppendFormat("{0}: {1},", QuoteString("MaxDownloadSizeLimit"), QuoteString(properties.GetProperty("MaxDownloadSizeLimit").ToString()));
+                        builder.AppendFormat("{0}: {1},", QuoteString("MaxDownloadSizeLimit"),
+                            QuoteString(properties.GetProperty("MaxDownloadSizeLimit").ToString()));
                     }
                     if (list.Contains("AllowedFields"))
                     {
-                        builder.AppendFormat("{0}: {1},", QuoteString("allowedFields"), QuoteString(properties.GetProperty("AllowedFields").ToString()));
+                        builder.AppendFormat("{0}: {1},", QuoteString("allowedFields"),
+                            QuoteString(properties.GetProperty("AllowedFields").ToString()));
                     }
                     if (list.Contains("AllowedMosaicMethods"))
                     {
-                        builder.AppendFormat("{0}: {1},", QuoteString("allowedMosaicMethods"), QuoteString(properties.GetProperty("AllowedMosaicMethods").ToString()));
+                        builder.AppendFormat("{0}: {1},", QuoteString("allowedMosaicMethods"),
+                            QuoteString(properties.GetProperty("AllowedMosaicMethods").ToString()));
                     }
                     if (list.Contains("AllowedItemMetadata"))
                     {
-                        builder.AppendFormat("{0}: {1},", QuoteString("allowedItemMetadata"), QuoteString(properties.GetProperty("AllowedItemMetadata").ToString()));
+                        builder.AppendFormat("{0}: {1},", QuoteString("allowedItemMetadata"),
+                            QuoteString(properties.GetProperty("AllowedItemMetadata").ToString()));
                     }
                     if (list.Contains("AllowedMensurationCapabilities"))
                     {
-                        builder.AppendFormat("{0}: {1},", QuoteString("AllowedMensurationCapabilities"), QuoteString(properties.GetProperty("AllowedMensurationCapabilities").ToString()));
+                        builder.AppendFormat("{0}: {1},", QuoteString("AllowedMensurationCapabilities"),
+                            QuoteString(properties.GetProperty("AllowedMensurationCapabilities").ToString()));
                     }
                     if (list.Contains("DefaultCompressionTolerance"))
                     {
-                        builder.AppendFormat("{0}: {1},", QuoteString("defaultCompressionTolerance"), QuoteString(properties.GetProperty("DefaultCompressionTolerance").ToString()));
+                        builder.AppendFormat("{0}: {1},", QuoteString("defaultCompressionTolerance"),
+                            QuoteString(properties.GetProperty("DefaultCompressionTolerance").ToString()));
                     }
                 }
                 else if (sourceType != esriImageServiceSourceType.esriImageServiceSourceTypeCatalog)
@@ -399,7 +421,8 @@ namespace Yutai.ArcGIS.Catalog.ISConfig
                     builder.AppendFormat("{0}: {1},", QuoteString("defaultResamplingMethod"), QuoteString("0"));
                     builder.AppendFormat("{0}: {1},", QuoteString("defaultCompressionQuality"), QuoteString("75"));
                     builder.AppendFormat("{0}: {1},", QuoteString("defaultCompressionTolerance"), QuoteString("0.01"));
-                    IMensuration mensuration = new MensurationClass {
+                    IMensuration mensuration = new MensurationClass
+                    {
                         Raster = ((IRasterDataset2) ISConfig.rasterDataset).CreateFullRaster()
                     };
                     string str10 = "";
@@ -425,11 +448,18 @@ namespace Yutai.ArcGIS.Catalog.ISConfig
                 builder.AppendFormat("{0}: {1},", QuoteString("returnJPGPNGAsJPG"), QuoteString("false"));
                 builder.AppendFormat("{0}: {1},", QuoteString("allowFunction"), QuoteString("true"));
                 string str11 = "";
-                builder.AppendFormat("{0}: {1},", QuoteString("rasterFunctions"), QuoteString(str11).Replace(@"\", @"\\"));
+                builder.AppendFormat("{0}: {1},", QuoteString("rasterFunctions"),
+                    QuoteString(str11).Replace(@"\", @"\\"));
                 string str12 = "";
                 builder.AppendFormat("{0}: {1}", QuoteString("rasterTypes"), QuoteString(str12).Replace(@"\", @"\\"));
                 builder.Append("},");
-                builder.AppendFormat("{0}: {1}", QuoteString("extensions"), string.Concat(new object[] { "[{\"typeName\":\"WCSServer\",\"enabled\":\"", true, "\",\"capabilities\":null,\"properties\":{}},{\"typeName\":\"WMSServer\",\"enabled\":\"", true, "\",\"capabilities\":null,\"properties\":{\"title\":\"WMS\",\"name\":\"WMS\",\"inheritLayerNames\":\"false\"}}" }));
+                builder.AppendFormat("{0}: {1}", QuoteString("extensions"),
+                    string.Concat(new object[]
+                    {
+                        "[{\"typeName\":\"WCSServer\",\"enabled\":\"", true,
+                        "\",\"capabilities\":null,\"properties\":{}},{\"typeName\":\"WMSServer\",\"enabled\":\"", true,
+                        "\",\"capabilities\":null,\"properties\":{\"title\":\"WMS\",\"name\":\"WMS\",\"inheritLayerNames\":\"false\"}}"
+                    }));
                 builder.Append("],");
                 builder.AppendFormat("{0}: {1}", QuoteString("datasets"), "[]");
                 builder.Append("}");
@@ -460,7 +490,11 @@ namespace Yutai.ArcGIS.Catalog.ISConfig
             {
                 string str = GenerateAGSToken_RESTAdmin();
                 restAdmin = restAdmin.EndsWith("/") ? restAdmin.Substring(0, restAdmin.Length - 1) : restAdmin;
-                StreamReader reader = new StreamReader(WebRequest.Create(restAdmin + "/services/" + string_0 + "?f=json&token=" + str).GetResponse().GetResponseStream());
+                StreamReader reader =
+                    new StreamReader(
+                        WebRequest.Create(restAdmin + "/services/" + string_0 + "?f=json&token=" + str)
+                            .GetResponse()
+                            .GetResponseStream());
                 if (!reader.ReadToEnd().Contains("error"))
                 {
                     return true;
@@ -566,7 +600,11 @@ namespace Yutai.ArcGIS.Catalog.ISConfig
                 string str = GenerateAGSToken_RESTAdmin();
                 restAdmin = restAdmin.EndsWith("/") ? restAdmin.Substring(0, restAdmin.Length - 1) : restAdmin;
                 string str2 = string_0.ToString().ToLower().Replace("esrisdtype", "arcgis");
-                string str4 = new StreamReader(WebRequest.Create(restAdmin + "/system/directories/" + str2 + "?f=json&token=" + str).GetResponse().GetResponseStream()).ReadToEnd();
+                string str4 =
+                    new StreamReader(
+                        WebRequest.Create(restAdmin + "/system/directories/" + str2 + "?f=json&token=" + str)
+                            .GetResponse()
+                            .GetResponseStream()).ReadToEnd();
                 try
                 {
                     int index = str4.IndexOf(string_0);
@@ -660,7 +698,8 @@ namespace Yutai.ArcGIS.Catalog.ISConfig
                 {
                     index += "folders\":[".Length;
                     int num2 = str4.IndexOf("]", index);
-                    foreach (string str6 in str4.Substring(index, num2 - index).Replace("\"", "").Split(new char[] { ',' }))
+                    foreach (
+                        string str6 in str4.Substring(index, num2 - index).Replace("\"", "").Split(new char[] {','}))
                     {
                         ListServices_RESTAdmin(requestUriString, str6);
                     }
@@ -750,7 +789,7 @@ namespace Yutai.ArcGIS.Catalog.ISConfig
                     }
                 }
                 return;
-            Label_00A2:
+                Label_00A2:
                 CreateISConfig_RESTAdmin();
             }
             catch (Exception exception)
@@ -785,19 +824,26 @@ namespace Yutai.ArcGIS.Catalog.ISConfig
                         {
                             goto Label_00AB;
                         }
-                        factory = Activator.CreateInstance(Type.GetTypeFromProgID("esriDataSourcesGDB.SdeWorkspaceFactory")) as IWorkspaceFactory;
+                        factory =
+                            Activator.CreateInstance(Type.GetTypeFromProgID("esriDataSourcesGDB.SdeWorkspaceFactory"))
+                                as IWorkspaceFactory;
                         ex = (IRasterWorkspaceEx) factory.OpenFromFile(string_0, 1);
                         rasterDataset = ex.OpenRasterDataset(string_1);
                     }
                     else
                     {
-                        factory = Activator.CreateInstance(Type.GetTypeFromProgID("esriDataSourcesGDB.FileGDBWorkspaceFactory")) as IWorkspaceFactory;
-                        rasterDataset = ((IRasterWorkspaceEx) factory.OpenFromFile(string_0, 1)).OpenRasterDataset(string_1);
+                        factory =
+                            Activator.CreateInstance(Type.GetTypeFromProgID("esriDataSourcesGDB.FileGDBWorkspaceFactory"))
+                                as IWorkspaceFactory;
+                        rasterDataset =
+                            ((IRasterWorkspaceEx) factory.OpenFromFile(string_0, 1)).OpenRasterDataset(string_1);
                     }
                     return;
                 }
-            Label_00AB:
-                factory = Activator.CreateInstance(Type.GetTypeFromProgID("esriDataSourcesRaster.RasterWorkspaceFactory")) as IWorkspaceFactory;
+                Label_00AB:
+                factory =
+                    Activator.CreateInstance(Type.GetTypeFromProgID("esriDataSourcesRaster.RasterWorkspaceFactory")) as
+                        IWorkspaceFactory;
                 rasterDataset = ((IRasterWorkspace) factory.OpenFromFile(string_0, 1)).OpenRasterDataset(string_1);
             }
             catch (Exception)
@@ -812,20 +858,23 @@ namespace Yutai.ArcGIS.Catalog.ISConfig
             {
                 if (ConnectAGS(restAdmin) && ValidateServiceName(soAdmin, ref serviceName, restAdmin))
                 {
-                    if (soAdmin.GetConfigurationStatus(serviceName, "ImageServer").Status == esriConfigurationStatus.esriCSStopped)
+                    if (soAdmin.GetConfigurationStatus(serviceName, "ImageServer").Status ==
+                        esriConfigurationStatus.esriCSStopped)
                     {
                         Console.WriteLine("{0} on {1} is currently stopped --- not paused.", serviceName, restAdmin);
                     }
                     else
                     {
                         soAdmin.PauseConfiguration(serviceName, "ImageServer");
-                        if (soAdmin.GetConfigurationStatus(serviceName, "ImageServer").Status == esriConfigurationStatus.esriCSPaused)
+                        if (soAdmin.GetConfigurationStatus(serviceName, "ImageServer").Status ==
+                            esriConfigurationStatus.esriCSPaused)
                         {
                             Console.WriteLine("{0} on {1} was paused successfully.", serviceName, restAdmin);
                         }
                         else
                         {
-                            Console.WriteLine("{0} on {1} couldn't be paused, please investigate.", serviceName, restAdmin);
+                            Console.WriteLine("{0} on {1} couldn't be paused, please investigate.", serviceName,
+                                restAdmin);
                         }
                     }
                 }
@@ -883,11 +932,14 @@ namespace Yutai.ArcGIS.Catalog.ISConfig
         private static void ShowUsage()
         {
             Console.WriteLine();
-            Console.WriteLine("ArcObject Sample: command line image service publishing and configuration utility (10.1 ArcGIS Server). Data is not copied to server using this tool. source data must be accessible by ArcGIS Server running account. CachingScheme can't be defined through this tool but can be done through Caching geoprocessing tools. REST Metadata/thumbnail/iteminfo resource are not available through this app but can be developed using a similar approach to server admin endpoint.");
+            Console.WriteLine(
+                "ArcObject Sample: command line image service publishing and configuration utility (10.1 ArcGIS Server). Data is not copied to server using this tool. source data must be accessible by ArcGIS Server running account. CachingScheme can't be defined through this tool but can be done through Caching geoprocessing tools. REST Metadata/thumbnail/iteminfo resource are not available through this app but can be developed using a similar approach to server admin endpoint.");
             Console.WriteLine();
             Console.WriteLine("Usage. <>: required parameter; |: pick one.");
-            Console.WriteLine("isconfig -o publish -h <host_admin_url> -u <adminuser> -p <adminpassword> -d <datapath> -n <serviceName>");
-            Console.WriteLine("isconfig -o <delete|start|stop> -h <host_admin_url> -u <adminuser> -p <adminpassword> -n <serviceName>");
+            Console.WriteLine(
+                "isconfig -o publish -h <host_admin_url> -u <adminuser> -p <adminpassword> -d <datapath> -n <serviceName>");
+            Console.WriteLine(
+                "isconfig -o <delete|start|stop> -h <host_admin_url> -u <adminuser> -p <adminpassword> -n <serviceName>");
             Console.WriteLine("isconfig -o <list> -h <host_admin_url> -u <adminuser> -p <adminpassword>");
             Console.WriteLine("e.g. isconfig -o list -h http://myserver:6080/arcgis/admin -u username -p password");
         }
@@ -899,7 +951,8 @@ namespace Yutai.ArcGIS.Catalog.ISConfig
                 if (ConnectAGS(restAdmin) && ValidateServiceName(soAdmin, ref serviceName, restAdmin))
                 {
                     soAdmin.StartConfiguration(serviceName, "ImageServer");
-                    if (soAdmin.GetConfigurationStatus(serviceName, "ImageServer").Status == esriConfigurationStatus.esriCSStarted)
+                    if (soAdmin.GetConfigurationStatus(serviceName, "ImageServer").Status ==
+                        esriConfigurationStatus.esriCSStarted)
                     {
                         Console.WriteLine("{0} on {1} was started successfully.", serviceName, restAdmin);
                     }
@@ -947,7 +1000,8 @@ namespace Yutai.ArcGIS.Catalog.ISConfig
                 if (ConnectAGS(restAdmin) && ValidateServiceName(soAdmin, ref serviceName, restAdmin))
                 {
                     soAdmin.StopConfiguration(serviceName, "ImageServer");
-                    if (soAdmin.GetConfigurationStatus(serviceName, "ImageServer").Status == esriConfigurationStatus.esriCSStopped)
+                    if (soAdmin.GetConfigurationStatus(serviceName, "ImageServer").Status ==
+                        esriConfigurationStatus.esriCSStopped)
                     {
                         Console.WriteLine("{0} on {1} was stopped successfully.", serviceName, restAdmin);
                     }
@@ -1014,14 +1068,15 @@ namespace Yutai.ArcGIS.Catalog.ISConfig
                 ShowUsage();
                 return false;
             }
-            string[] strArray2 = new string[] { "publish", "delete", "start", "stop", "pause", "list" };
+            string[] strArray2 = new string[] {"publish", "delete", "start", "stop", "pause", "list"};
             if (!(string_0[0].StartsWith("-o") && strInArray(string_0[1].ToLower(), strArray2)))
             {
                 Console.WriteLine("Incorrect operation");
                 ShowUsage();
                 return false;
             }
-            if ((((string_0[1].ToLower() == "stop") || (string_0[1].ToLower() == "start")) || (string_0[1].ToLower() == "pause")) || (string_0[1].ToLower() == "delete"))
+            if ((((string_0[1].ToLower() == "stop") || (string_0[1].ToLower() == "start")) ||
+                 (string_0[1].ToLower() == "pause")) || (string_0[1].ToLower() == "delete"))
             {
                 if (!strInArray("-h", string_0))
                 {
@@ -1067,7 +1122,7 @@ namespace Yutai.ArcGIS.Catalog.ISConfig
                     return false;
                 }
             }
-            string[] strArray3 = new string[] { "-h", "-d", "-n", "-u", "-p" };
+            string[] strArray3 = new string[] {"-h", "-d", "-n", "-u", "-p"};
             int index = 2;
             while (index < string_0.Length)
             {
@@ -1157,16 +1212,19 @@ namespace Yutai.ArcGIS.Catalog.ISConfig
                 index++;
             }
             return true;
-        Label_0431:
+            Label_0431:
             Console.WriteLine("Incorrect parameter switch: {0} is not a recognized.", string_0[index]);
             return false;
         }
 
-        private static bool ValidateServiceName(IServerObjectAdmin iserverObjectAdmin_0, ref string string_0, string string_1)
+        private static bool ValidateServiceName(IServerObjectAdmin iserverObjectAdmin_0, ref string string_0,
+            string string_1)
         {
             IEnumServerObjectConfiguration configurations = iserverObjectAdmin_0.GetConfigurations();
             configurations.Reset();
-            for (IServerObjectConfiguration configuration2 = configurations.Next(); configuration2 != null; configuration2 = configurations.Next())
+            for (IServerObjectConfiguration configuration2 = configurations.Next();
+                configuration2 != null;
+                configuration2 = configurations.Next())
             {
                 if (configuration2.Name.ToUpper() == string_0.ToUpper())
                 {
@@ -1179,4 +1237,3 @@ namespace Yutai.ArcGIS.Catalog.ISConfig
         }
     }
 }
-

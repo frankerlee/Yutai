@@ -37,33 +37,23 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void frmDataConvert_Load(object sender, EventArgs e)
+        private void frmDataConvert_Load(object sender, EventArgs e)
         {
         }
 
- public esriDatasetType ImportDatasetType
+        public esriDatasetType ImportDatasetType
         {
-            set
-            {
-                this.objectSelectControl_0.ImportDatasetType = value;
-            }
+            set { this.objectSelectControl_0.ImportDatasetType = value; }
         }
 
         public IGxObject InGxObject
         {
-            set
-            {
-                this.objectSelectControl_0.InGxObject = value;
-            }
+            set { this.objectSelectControl_0.InGxObject = value; }
         }
 
         public IGxObject OutGxObject
         {
-            set
-            {
-                this.objectSelectControl_0.OutGxObject = value;
-            }
+            set { this.objectSelectControl_0.OutGxObject = value; }
         }
     }
 }
-

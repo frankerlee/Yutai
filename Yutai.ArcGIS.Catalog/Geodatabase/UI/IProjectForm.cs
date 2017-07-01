@@ -7,4 +7,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         IFeatureDataConverter FeatureProgress { set; }
     }
 }
-

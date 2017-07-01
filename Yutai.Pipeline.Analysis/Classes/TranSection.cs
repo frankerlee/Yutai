@@ -24,9 +24,9 @@ namespace Yutai.Pipeline.Analysis.Classes
         public ArrayList m_arrPipePoints = new ArrayList();
 
         public ArrayList m_arrPipePointsDraw = new ArrayList();
-        private char[] char_0 = new char[] { 'x', 'X', 'Х' };
+        private char[] char_0 = new char[] {'x', 'X', 'Х'};
 
-        public TranSection(object objForm, IAppContext pApp,IPipelineConfig config) : base(objForm, pApp, config)
+        public TranSection(object objForm, IAppContext pApp, IPipelineConfig config) : base(objForm, pApp, config)
         {
         }
 
@@ -51,7 +51,7 @@ namespace Yutai.Pipeline.Analysis.Classes
                 int num = 0;
                 for (int i = 0; i < count; i++)
                 {
-                    PipePoint pipePoint = (PipePoint)this.m_arrPipePoints[i];
+                    PipePoint pipePoint = (PipePoint) this.m_arrPipePoints[i];
                     if (pipePoint.PointType == PipePoint.SectionPointType.sptPipe)
                     {
                         if (num == this.m_nSelectIndex)
@@ -114,9 +114,9 @@ namespace Yutai.Pipeline.Analysis.Classes
             xmlTextWriter.WriteAttributeString("PipePointCount", count.ToString());
             for (int i = 0; i < count; i++)
             {
-                PipePoint pipePoint = (PipePoint)this.m_arrPipePoints[i];
+                PipePoint pipePoint = (PipePoint) this.m_arrPipePoints[i];
                 xmlTextWriter.WriteStartElement("PipePoint");
-                xmlTextWriter.WriteAttributeString("PointType", ((int)pipePoint.PointType).ToString());
+                xmlTextWriter.WriteAttributeString("PointType", ((int) pipePoint.PointType).ToString());
                 xmlTextWriter.WriteAttributeString("X", pipePoint.x.ToString("f3"));
                 xmlTextWriter.WriteAttributeString("Y", pipePoint.y.ToString("f3"));
                 xmlTextWriter.WriteAttributeString("Z", pipePoint.z.ToString("f3"));
@@ -158,7 +158,8 @@ namespace Yutai.Pipeline.Analysis.Classes
                 {
                     xmlReader.ReadToFollowing("PipePoint");
                     PipePoint pipePoint = new PipePoint();
-                    PipePoint.SectionPointType pointType = (PipePoint.SectionPointType)Convert.ToInt32(xmlReader.GetAttribute("PointType"));
+                    PipePoint.SectionPointType pointType =
+                        (PipePoint.SectionPointType) Convert.ToInt32(xmlReader.GetAttribute("PointType"));
                     pipePoint.PointType = pointType;
                     pipePoint.nID = Convert.ToInt32(xmlReader.GetAttribute("ID"));
                     pipePoint.x = Convert.ToDouble(xmlReader.GetAttribute("X"));
@@ -183,16 +184,15 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         public IPolyline PolygonToPolyline(IPolygon pPolygon)
         {
-            
             IGeometryCollection geometryCollection = new Polyline() as IGeometryCollection;
-            IClone clone = (IClone)pPolygon;
-            IGeometryCollection geometryCollection2 = (IGeometryCollection)clone.Clone();
+            IClone clone = (IClone) pPolygon;
+            IGeometryCollection geometryCollection2 = (IGeometryCollection) clone.Clone();
             object missing = Type.Missing;
             for (int i = 0; i < geometryCollection2.GeometryCount; i++)
             {
                 ISegmentCollection segmentCollection = new Path() as ISegmentCollection;
-                segmentCollection.AddSegmentCollection((ISegmentCollection)geometryCollection2.get_Geometry(i));
-                geometryCollection.AddGeometry((IGeometry)segmentCollection, ref missing, ref missing);
+                segmentCollection.AddSegmentCollection((ISegmentCollection) geometryCollection2.get_Geometry(i));
+                geometryCollection.AddGeometry((IGeometry) segmentCollection, ref missing, ref missing);
             }
             return geometryCollection as IPolyline;
         }
@@ -201,25 +201,25 @@ namespace Yutai.Pipeline.Analysis.Classes
         {
             this.method_3();
             IMap map = this.m_context.FocusMap;
-            ITopologicalOperator topologicalOperator = (ITopologicalOperator)this.m_pBaseLine;
+            ITopologicalOperator topologicalOperator = (ITopologicalOperator) this.m_pBaseLine;
             IGeometry geometry = topologicalOperator.Buffer(0.0);
             map.ClearSelection();
             ISelectionEnvironment selectionEnvironment = new SelectionEnvironment();
             map.SelectByShape(geometry, selectionEnvironment, false);
-            IEnumFeature enumFeature = (IEnumFeature)map.FeatureSelection;
+            IEnumFeature enumFeature = (IEnumFeature) map.FeatureSelection;
             IFeature feature = enumFeature.Next();
-            
+
             while (feature != null)
             {
                 if (feature.FeatureType == esriFeatureType.esriFTSimpleEdge)
                 {
                     IPolyline egLine = feature.Shape as IPolyline;
-                    IPoint newCenter=new PointClass();
+                    IPoint newCenter = new PointClass();
                     egLine.QueryPoint(esriSegmentExtension.esriNoExtension, 0.01, true, newCenter);
-                   
-                    IEdgeFeature pEgFeature =feature as IEdgeFeature;
-                    
-                    
+
+                    IEdgeFeature pEgFeature = feature as IEdgeFeature;
+
+
                     IFeatureClass pClass = feature.Class as IFeatureClass;
                     INetworkClass pNetworkClass = pClass as INetworkClass;
                     INetElements network = pNetworkClass.GeometricNetwork.Network as INetElements;
@@ -230,23 +230,23 @@ namespace Yutai.Pipeline.Analysis.Classes
                     double percent;
                     int edgeID;
                     IPoint location;
-                    pntEID.GetNearestEdge(newCenter,out edgeID,out location,out percent);
+                    pntEID.GetNearestEdge(newCenter, out edgeID, out location, out percent);
                     if (percent == 0)
                     {
                         feature = enumFeature.Next();
                         continue;
                     }
-                   
+
                     int userClassID, userID, userSubID;
-                   
-                    network.QueryIDs(edgeID, esriElementType.esriETEdge,out userClassID,out userID,out userSubID);
+
+                    network.QueryIDs(edgeID, esriElementType.esriETEdge, out userClassID, out userID, out userSubID);
                     if (pClass.FeatureClassID == userClassID)
                     {
                         feature = pClass.GetFeature(userID);
                     }
                     else
                     {
-                       IEnumDataset dses= pNetworkClass.FeatureDataset.Subsets;
+                        IEnumDataset dses = pNetworkClass.FeatureDataset.Subsets;
                         dses.Reset();
                         IDataset ds = dses.Next();
                         while (ds != null)
@@ -264,18 +264,20 @@ namespace Yutai.Pipeline.Analysis.Classes
                     }
                 }
                 string smpClassName = CommonUtils.GetSmpClassName(feature.Class.AliasName);
-                IMAware mWAware=feature.Shape as IMAware;
+                IMAware mWAware = feature.Shape as IMAware;
                 bool isMUsing = mWAware.MAware;
-                
+
                 IBasicLayerInfo lineConfig = PipeConfig.GetBasicLayerInfo(feature.Class.AliasName) as IBasicLayerInfo;
-                if (lineConfig==null && !smpClassName.ToUpper().Contains("JT_JT_L") && !smpClassName.ToUpper().Contains("SY_ZX_L") && !smpClassName.ToUpper().Contains("ZB_LD_R"))
+                if (lineConfig == null && !smpClassName.ToUpper().Contains("JT_JT_L") &&
+                    !smpClassName.ToUpper().Contains("SY_ZX_L") && !smpClassName.ToUpper().Contains("ZB_LD_R"))
                 {
                     feature = enumFeature.Next();
                 }
                 else
                 {
                     IGeometry shape = feature.Shape;
-                    if (shape.GeometryType != esriGeometryType.esriGeometryPolyline && shape.GeometryType != esriGeometryType.esriGeometryPolygon)
+                    if (shape.GeometryType != esriGeometryType.esriGeometryPolyline &&
+                        shape.GeometryType != esriGeometryType.esriGeometryPolygon)
                     {
                         feature = enumFeature.Next();
                     }
@@ -284,18 +286,18 @@ namespace Yutai.Pipeline.Analysis.Classes
                         IPolyline polyline;
                         if (shape.GeometryType == esriGeometryType.esriGeometryPolygon)
                         {
-                            polyline = this.PolygonToPolyline((IPolygon)shape);
+                            polyline = this.PolygonToPolyline((IPolygon) shape);
                         }
                         else
                         {
-                            polyline = (IPolyline)shape;
+                            polyline = (IPolyline) shape;
                         }
                         GPoints gPoints = null;
-                        if(isMUsing)
+                        if (isMUsing)
                             gPoints = this.CalculateIntersections(this.m_pBaseLine, polyline);
                         else
                             gPoints = this.CalculateIntersections(this.m_pBaseLine, feature, lineConfig);
-                     
+
                         //string text = "管线性质";
                         string text = lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GDXZ);
                         string bstrDatasetName = "";
@@ -322,7 +324,7 @@ namespace Yutai.Pipeline.Analysis.Classes
                             for (int i = 0; i < num2; i++)
                             {
                                 GPoint gPoint = gPoints[i];
-                                
+
                                 PipePoint pipePoint = new PipePoint();
                                 if (smpClassName.ToUpper().Contains("JT_JT_L"))
                                 {
@@ -346,7 +348,8 @@ namespace Yutai.Pipeline.Analysis.Classes
                                 pipePoint.m = gPoint.M;
                                 pipePoint.bstrDatasetName = bstrDatasetName;
                                 //  int num3 = feature.Fields.FindField(base.PipeConfig.get_Material());
-                                int num3 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GXCZ));
+                                int num3 =
+                                    feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GXCZ));
                                 if (num3 == -1)
                                 {
                                     pipePoint.strMaterial = "";
@@ -364,7 +367,8 @@ namespace Yutai.Pipeline.Analysis.Classes
                                     }
                                 }
                                 // num3 = feature.Fields.FindField(base.PipeConfig.get_Diameter());
-                                num3 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GJ));
+                                num3 =
+                                    feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GJ));
                                 string text2;
                                 if (num3 != -1 && feature.get_Value(num3) != null)
                                 {
@@ -374,7 +378,8 @@ namespace Yutai.Pipeline.Analysis.Classes
                                 {
                                     text2 = "";
                                 }
-                                num3 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.DMCC));
+                                num3 =
+                                    feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.DMCC));
                                 string text3;
                                 if (num3 != -1 && feature.get_Value(num3) != null)
                                 {
@@ -393,9 +398,9 @@ namespace Yutai.Pipeline.Analysis.Classes
                                     pipePoint.strPipeWidthHeight = text3;
                                 }
                                 Color featureColor = CommonUtils.GetFeatureColor(map, feature.Class.AliasName, feature);
-                                pipePoint.Red = (int)featureColor.R;
-                                pipePoint.Green = (int)featureColor.G;
-                                pipePoint.Blue = (int)featureColor.B;
+                                pipePoint.Red = (int) featureColor.R;
+                                pipePoint.Green = (int) featureColor.G;
+                                pipePoint.Blue = (int) featureColor.B;
                                 this.m_arrPipePoints.Add(pipePoint);
                             }
                             feature = enumFeature.Next();
@@ -404,7 +409,7 @@ namespace Yutai.Pipeline.Analysis.Classes
                 }
             }
             map.ClearSelection();
-            IPointCollection pointCollection = (IPointCollection)this.m_pBaseLine;
+            IPointCollection pointCollection = (IPointCollection) this.m_pBaseLine;
             int pointCount = pointCollection.PointCount;
             if (pointCount != 0)
             {
@@ -419,7 +424,7 @@ namespace Yutai.Pipeline.Analysis.Classes
                     pipePoint2.PointType = PipePoint.SectionPointType.sptDrawPoint;
                     this.m_arrPipePoints.Add(pipePoint2);
                 }
-                this.fEswZsmwIx((PipePoint)this.m_arrPipePoints[this.m_arrPipePoints.Count - 2]);
+                this.fEswZsmwIx((PipePoint) this.m_arrPipePoints[this.m_arrPipePoints.Count - 2]);
                 this.method_1();
                 if (this.method_2())
                 {
@@ -434,17 +439,20 @@ namespace Yutai.Pipeline.Analysis.Classes
         {
             for (int i = 0; i < this.m_arrPipePoints.Count; i++)
             {
-                if ((((PipePoint)this.m_arrPipePoints[i]).PointType == PipePoint.SectionPointType.sptRoadBorder || ((PipePoint)this.m_arrPipePoints[i]).PointType == PipePoint.SectionPointType.sptMidRoadLine ? true : ((PipePoint)this.m_arrPipePoints[i]).PointType == PipePoint.SectionPointType.sptMidGreen))
+                if ((((PipePoint) this.m_arrPipePoints[i]).PointType == PipePoint.SectionPointType.sptRoadBorder ||
+                     ((PipePoint) this.m_arrPipePoints[i]).PointType == PipePoint.SectionPointType.sptMidRoadLine
+                    ? true
+                    : ((PipePoint) this.m_arrPipePoints[i]).PointType == PipePoint.SectionPointType.sptMidGreen))
                 {
                     if (i == 1)
                     {
                         int num = 1;
                         while (num < this.m_arrPipePoints.Count)
                         {
-                            if (((PipePoint)this.m_arrPipePoints[num]).PointType == PipePoint.SectionPointType.sptPipe)
+                            if (((PipePoint) this.m_arrPipePoints[num]).PointType == PipePoint.SectionPointType.sptPipe)
                             {
-                                ((PipePoint)this.m_arrPipePoints[i]).m = ((PipePoint)this.m_arrPipePoints[num]).m;
-                                ((PipePoint)this.m_arrPipePoints[i]).z = ((PipePoint)this.m_arrPipePoints[num]).z;
+                                ((PipePoint) this.m_arrPipePoints[i]).m = ((PipePoint) this.m_arrPipePoints[num]).m;
+                                ((PipePoint) this.m_arrPipePoints[i]).z = ((PipePoint) this.m_arrPipePoints[num]).z;
                                 continue;
                             }
                             else
@@ -466,9 +474,9 @@ namespace Yutai.Pipeline.Analysis.Classes
                             {
                                 break;
                             }
-                            else if (((PipePoint)this.m_arrPipePoints[num1]).PointType == PipePoint.SectionPointType.sptPipe)
+                            else if (((PipePoint) this.m_arrPipePoints[num1]).PointType == PipePoint.SectionPointType.sptPipe)
                             {
-                                item = (float)((PipePoint)this.m_arrPipePoints[num1]).m;
+                                item = (float) ((PipePoint) this.m_arrPipePoints[num1]).m;
                                 flag = true;
                                 break;
                             }
@@ -484,9 +492,9 @@ namespace Yutai.Pipeline.Analysis.Classes
                             {
                                 break;
                             }
-                            else if (((PipePoint)this.m_arrPipePoints[num2]).PointType == PipePoint.SectionPointType.sptPipe)
+                            else if (((PipePoint) this.m_arrPipePoints[num2]).PointType == PipePoint.SectionPointType.sptPipe)
                             {
-                                single = (float)((PipePoint)this.m_arrPipePoints[num2]).m;
+                                single = (float) ((PipePoint) this.m_arrPipePoints[num2]).m;
                                 flag1 = true;
                                 break;
                             }
@@ -497,18 +505,18 @@ namespace Yutai.Pipeline.Analysis.Classes
                         }
                         if (!flag1)
                         {
-                            ((PipePoint)this.m_arrPipePoints[i]).m = (double)item;
-                            ((PipePoint)this.m_arrPipePoints[i]).z = (double)item;
+                            ((PipePoint) this.m_arrPipePoints[i]).m = (double) item;
+                            ((PipePoint) this.m_arrPipePoints[i]).z = (double) item;
                         }
                         else if (flag)
                         {
-                            ((PipePoint)this.m_arrPipePoints[i]).m = (double)((item + single) / 2f);
-                            ((PipePoint)this.m_arrPipePoints[i]).z = (double)((item + single) / 2f);
+                            ((PipePoint) this.m_arrPipePoints[i]).m = (double) ((item + single)/2f);
+                            ((PipePoint) this.m_arrPipePoints[i]).z = (double) ((item + single)/2f);
                         }
                         else
                         {
-                            ((PipePoint)this.m_arrPipePoints[i]).m = (double)single;
-                            ((PipePoint)this.m_arrPipePoints[i]).z = (double)single;
+                            ((PipePoint) this.m_arrPipePoints[i]).m = (double) single;
+                            ((PipePoint) this.m_arrPipePoints[i]).z = (double) single;
                         }
                     }
                     else
@@ -516,10 +524,11 @@ namespace Yutai.Pipeline.Analysis.Classes
                         int count = this.m_arrPipePoints.Count - 2;
                         while (count > -1)
                         {
-                            if (((PipePoint)this.m_arrPipePoints[count]).PointType == PipePoint.SectionPointType.sptPipe)
+                            if (((PipePoint) this.m_arrPipePoints[count]).PointType ==
+                                PipePoint.SectionPointType.sptPipe)
                             {
-                                ((PipePoint)this.m_arrPipePoints[i]).m = ((PipePoint)this.m_arrPipePoints[count]).m;
-                                ((PipePoint)this.m_arrPipePoints[i]).z = ((PipePoint)this.m_arrPipePoints[count]).z;
+                                ((PipePoint) this.m_arrPipePoints[i]).m = ((PipePoint) this.m_arrPipePoints[count]).m;
+                                ((PipePoint) this.m_arrPipePoints[i]).z = ((PipePoint) this.m_arrPipePoints[count]).z;
                                 break;
                             }
                             else
@@ -546,7 +555,7 @@ namespace Yutai.Pipeline.Analysis.Classes
                     {
                         break;
                     }
-                    else if (((PipePoint)this.m_arrPipePoints[num]).PointType == PipePoint.SectionPointType.sptPipe)
+                    else if (((PipePoint) this.m_arrPipePoints[num]).PointType == PipePoint.SectionPointType.sptPipe)
                     {
                         flag1 = true;
                         break;
@@ -558,10 +567,10 @@ namespace Yutai.Pipeline.Analysis.Classes
                 }
                 if (flag1)
                 {
-                    ((PipePoint)this.m_arrPipePoints[0]).z = ((PipePoint)this.m_arrPipePoints[1]).z;
-                    ((PipePoint)this.m_arrPipePoints[0]).m = ((PipePoint)this.m_arrPipePoints[1]).m;
-                    ((PipePoint)this.m_arrPipePoints[count - 1]).z = ((PipePoint)this.m_arrPipePoints[count - 2]).z;
-                    ((PipePoint)this.m_arrPipePoints[count - 1]).m = ((PipePoint)this.m_arrPipePoints[count - 2]).m;
+                    ((PipePoint) this.m_arrPipePoints[0]).z = ((PipePoint) this.m_arrPipePoints[1]).z;
+                    ((PipePoint) this.m_arrPipePoints[0]).m = ((PipePoint) this.m_arrPipePoints[1]).m;
+                    ((PipePoint) this.m_arrPipePoints[count - 1]).z = ((PipePoint) this.m_arrPipePoints[count - 2]).z;
+                    ((PipePoint) this.m_arrPipePoints[count - 1]).m = ((PipePoint) this.m_arrPipePoints[count - 2]).m;
                     flag = true;
                 }
                 else
@@ -587,8 +596,8 @@ namespace Yutai.Pipeline.Analysis.Classes
                 {
                     for (int j = 0; j < i; j++)
                     {
-                        PipePoint pipePoint = (PipePoint)this.m_arrPipePoints[j];
-                        PipePoint pipePoint2 = (PipePoint)this.m_arrPipePoints[j + 1];
+                        PipePoint pipePoint = (PipePoint) this.m_arrPipePoints[j];
+                        PipePoint pipePoint2 = (PipePoint) this.m_arrPipePoints[j + 1];
                         double num = pipePoint.DistanceToPipePoint(ppDst);
                         double num2 = pipePoint2.DistanceToPipePoint(ppDst);
                         if (num > num2)
@@ -604,7 +613,7 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         private void method_3()
         {
-            IPointCollection pointCollection = (IPointCollection)this.m_pBaseLine;
+            IPointCollection pointCollection = (IPointCollection) this.m_pBaseLine;
             int pointCount = pointCollection.PointCount;
             if (pointCount != 0)
             {
@@ -629,10 +638,10 @@ namespace Yutai.Pipeline.Analysis.Classes
             double num2 = 0.0;
             for (int i = 0; i < count; i++)
             {
-                PipePoint pipePoint2 = (PipePoint)this.m_arrPipePointsDraw[i];
+                PipePoint pipePoint2 = (PipePoint) this.m_arrPipePointsDraw[i];
                 if (i < count - 1)
                 {
-                    PipePoint deepCopy = ((PipePoint)this.m_arrPipePointsDraw[i + 1]).GetDeepCopy();
+                    PipePoint deepCopy = ((PipePoint) this.m_arrPipePointsDraw[i + 1]).GetDeepCopy();
                     num = pipePoint2.DistanceToPipePoint(deepCopy);
                 }
                 if (i != 0)
@@ -642,7 +651,6 @@ namespace Yutai.Pipeline.Analysis.Classes
                 num2 = num;
                 pipePoint = pipePoint2.GetDeepCopy();
             }
-           
         }
 
         private void method_5(ArrayList arrayList, ArrayList arrayList2)
@@ -651,14 +659,14 @@ namespace Yutai.Pipeline.Analysis.Classes
             arrayList.Clear();
             for (int i = 0; i < count; i++)
             {
-                PipePoint deepCopy = ((PipePoint)arrayList2[i]).GetDeepCopy();
+                PipePoint deepCopy = ((PipePoint) arrayList2[i]).GetDeepCopy();
                 arrayList.Add(deepCopy);
             }
         }
 
         private GPoints CalculateIntersections(IPolyline baseline, IFeature pFeature, IBasicLayerInfo lineConfig)
         {
-            IPointCollection pointCollection = (IPointCollection)baseline;
+            IPointCollection pointCollection = (IPointCollection) baseline;
             int pointCount = pointCollection.PointCount;
             GPoints result;
             if (pointCount == 0)
@@ -684,7 +692,7 @@ namespace Yutai.Pipeline.Analysis.Classes
                         M = z2
                     });
                 }
-                pointCollection = (IPointCollection)pFeature.Shape;
+                pointCollection = (IPointCollection) pFeature.Shape;
                 pointCount = pointCollection.PointCount;
                 if (pointCount == 0)
                 {
@@ -695,10 +703,14 @@ namespace Yutai.Pipeline.Analysis.Classes
                     GPolyLine gPolyLine2 = new GPolyLine();
                     gPolyLine2.Clear();
 
-                    int qdgcIndex = pFeature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.QDGC));
-                    int qdmsIndex = pFeature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.QDMS));
-                    int zdgcIndex = pFeature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.ZDGC));
-                    int zdmsIndex = pFeature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.ZDMS));
+                    int qdgcIndex =
+                        pFeature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.QDGC));
+                    int qdmsIndex =
+                        pFeature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.QDMS));
+                    int zdgcIndex =
+                        pFeature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.ZDGC));
+                    int zdmsIndex =
+                        pFeature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.ZDMS));
                     double height = 0;
                     double qdgc = GetDoubleValue(pFeature, qdgcIndex, out height);
                     double zdgc = GetDoubleValue(pFeature, zdgcIndex, out height);
@@ -713,7 +725,7 @@ namespace Yutai.Pipeline.Analysis.Classes
                     {
                         X = startPoint.X,
                         Y = startPoint.Y,
-                        Z = qdgc-qdms,
+                        Z = qdgc - qdms,
                         M = qdgc
                     });
                     gPolyLine2.PushBack(new GPoint
@@ -794,7 +806,7 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         private GPoints CalculateIntersections(IPolyline polyline, IPolyline polyline2)
         {
-            IPointCollection pointCollection = (IPointCollection)polyline;
+            IPointCollection pointCollection = (IPointCollection) polyline;
             int pointCount = pointCollection.PointCount;
             GPoints result;
             if (pointCount == 0)
@@ -820,7 +832,7 @@ namespace Yutai.Pipeline.Analysis.Classes
                         M = z2
                     });
                 }
-                pointCollection = (IPointCollection)polyline2;
+                pointCollection = (IPointCollection) polyline2;
                 pointCount = pointCollection.PointCount;
                 if (pointCount == 0)
                 {
@@ -866,8 +878,9 @@ namespace Yutai.Pipeline.Analysis.Classes
             int num = 0;
             for (int i = 0; i < count; i++)
             {
-                PipePoint pipePoint = (PipePoint)arrayList[i];
-                if (pipePoint.PointType == PipePoint.SectionPointType.sptPipe || pipePoint.PointType == PipePoint.SectionPointType.sptDrawPoint)
+                PipePoint pipePoint = (PipePoint) arrayList[i];
+                if (pipePoint.PointType == PipePoint.SectionPointType.sptPipe ||
+                    pipePoint.PointType == PipePoint.SectionPointType.sptDrawPoint)
                 {
                     if (num == 0)
                     {

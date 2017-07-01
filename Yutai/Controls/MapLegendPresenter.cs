@@ -22,7 +22,7 @@ namespace Yutai.Controls
         private readonly MapLegendDockPanel _legendDockPanel;
 
         public MapLegendPresenter(IAppContext context, IBroadcasterService broadcaster,
-                               MapLegendDockPanel legendDockPanel)
+            MapLegendDockPanel legendDockPanel)
             : base(legendDockPanel)
         {
             if (context == null) throw new ArgumentNullException("context");
@@ -32,7 +32,7 @@ namespace Yutai.Controls
             _context = context;
             _broadcaster = broadcaster;
             _legendDockPanel = legendDockPanel;
-            ((IAppContextEvents)_context).OnActiveHookChanged+= OnOnActiveHookChanged;
+            // ((IAppContextEvents)_context).OnActiveHookChanged+= OnOnActiveHookChanged;
             //_context.MainView.ArcGISControlChanging += MainView_ArcGISControlChanging;
             //View.LegendKeyDown += OnLegendKeyDown;
         }
@@ -50,11 +50,10 @@ namespace Yutai.Controls
             }
         }
 
-       
 
         private void OnLegendKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Delete )//&& _legendDockPanel.Legend.SelectedLayer != null)
+            if (e.KeyCode == Keys.Delete) //&& _legendDockPanel.Legend.SelectedLayer != null)
             {
                 RunCommand(MapLegendCommand.RemoveLayer);
             }
@@ -67,7 +66,6 @@ namespace Yutai.Controls
 
         public override void RunCommand(MapLegendCommand command)
         {
-        
         }
     }
 }

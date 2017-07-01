@@ -70,7 +70,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnSelectLegend_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
                 Filter = "*.xml|*.xml"
             };
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -85,7 +86,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.txtLegendItem.Enabled = this.checkBox1.Checked;
         }
 
- public void Init()
+        public void Init()
         {
             this.txtInOutDis.Text = this.jlktkassiatant_0.InOutDist.ToString();
             this.txtOutBorderWidth.Text = this.jlktkassiatant_0.OutBorderWidth.ToString();
@@ -100,18 +101,14 @@ namespace Yutai.ArcGIS.Carto.UI
             this.txtR3C3.Text = this.jlktkassiatant_0.Row3Col3Text;
         }
 
- private void TKConfigPage_Load(object sender, EventArgs e)
+        private void TKConfigPage_Load(object sender, EventArgs e)
         {
             this.Init();
         }
 
         internal YTTKAssiatant YTTKAssiatant
         {
-            set
-            {
-                this.jlktkassiatant_0 = value;
-            }
+            set { this.jlktkassiatant_0 = value; }
         }
     }
 }
-

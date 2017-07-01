@@ -31,8 +31,6 @@ namespace Yutai.Plugins.Catalog.Commands
         }
 
 
-
-
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();

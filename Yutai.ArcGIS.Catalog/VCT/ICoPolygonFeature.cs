@@ -7,4 +7,3 @@ namespace Yutai.ArcGIS.Catalog.VCT
         List<CoPointCollection> Points { get; }
     }
 }
-

@@ -36,7 +36,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
- private void frmTemplatesGroup_Load(object sender, EventArgs e)
+        private void frmTemplatesGroup_Load(object sender, EventArgs e)
         {
             this.InitControl();
         }
@@ -45,14 +45,16 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         {
             this.listView1.Items.Clear();
             this.listView2.Items.Clear();
-            UID uid = new UIDClass {
+            UID uid = new UIDClass
+            {
                 Value = "{40A9E885-5533-11d0-98BE-00805F7CED21}"
             };
             IEnumLayer layer = this.Map.get_Layers(uid, true);
             layer.Reset();
             for (ILayer layer2 = layer.Next(); layer2 != null; layer2 = layer.Next())
             {
-                if (!(layer2 is IFeatureLayer) || !Yutai.ArcGIS.Common.Editor.Editor.LayerCanEdit(layer2 as IFeatureLayer))
+                if (!(layer2 is IFeatureLayer) ||
+                    !Yutai.ArcGIS.Common.Editor.Editor.LayerCanEdit(layer2 as IFeatureLayer))
                 {
                     continue;
                 }
@@ -86,7 +88,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                             case esriFeatureType.esriFTSimple:
                             {
                                 esriGeometryType shapeType = (layer2 as IFeatureLayer2).ShapeType;
-                                if ((shapeType == esriGeometryType.esriGeometryMultipoint) || (shapeType == esriGeometryType.esriGeometryPoint))
+                                if ((shapeType == esriGeometryType.esriGeometryMultipoint) ||
+                                    (shapeType == esriGeometryType.esriGeometryPoint))
                                 {
                                     item.ImageKey = "PointLayer";
                                     break;
@@ -113,7 +116,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
- private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.listView2.Items.Clear();
             if (this.listView1.SelectedItems.Count != 0)
@@ -124,7 +127,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 this.删除ToolStripMenuItem.Enabled = list.Count > 0;
                 foreach (YTEditTemplate template in list)
                 {
-                    ListViewItem item = new ListViewItem {
+                    ListViewItem item = new ListViewItem
+                    {
                         Text = template.Name,
                         Tag = template
                     };
@@ -162,12 +166,15 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            frmNewTemplate template = new frmNewTemplate {
+            frmNewTemplate template = new frmNewTemplate
+            {
                 Map = this.Map
             };
             if (template.ShowDialog() == DialogResult.OK)
             {
-                foreach (KeyValuePair<IFeatureLayer, List<Yutai.ArcGIS.Common.Editor.YTEditTemplate>> pair in template.TemplateList)
+                foreach (
+                    KeyValuePair<IFeatureLayer, List<Yutai.ArcGIS.Common.Editor.YTEditTemplate>> pair in
+                    template.TemplateList)
                 {
                     List<YTEditTemplate> list = null;
                     if (this.Templates.ContainsKey(pair.Key))
@@ -237,4 +244,3 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         public Dictionary<IFeatureLayer, List<YTEditTemplate>> Templates { get; set; }
     }
 }
-

@@ -39,7 +39,7 @@ namespace Yutai.Plugins.Identifer.Helpers
                 }
                 case esriDatasetType.esriDTFeatureClass:
                 {
-                    IFeatureClass idataset0 = (IFeatureClass)pDataset;
+                    IFeatureClass idataset0 = (IFeatureClass) pDataset;
                     if (idataset0.FeatureType == esriFeatureType.esriFTAnnotation)
                     {
                         fDOGraphicsLayerClass = new FDOGraphicsLayerClass();
@@ -91,7 +91,8 @@ namespace Yutai.Plugins.Identifer.Helpers
                     {
                         return;
                     }
-                    IEnumFeatureClass classesByType = geometricNetwork.ClassesByType[esriFeatureType.esriFTSimpleJunction];
+                    IEnumFeatureClass classesByType =
+                        geometricNetwork.ClassesByType[esriFeatureType.esriFTSimpleJunction];
                     classesByType.Reset();
                     for (j = classesByType.Next(); j != null; j = classesByType.Next())
                     {
@@ -153,7 +154,7 @@ namespace Yutai.Plugins.Identifer.Helpers
                     {
                         IRasterCatalogTable rasterCatalogTableClass = new RasterCatalogTable()
                         {
-                            Table = (ITable)pDataset
+                            Table = (ITable) pDataset
                         };
                         rasterCatalogTableClass.Update();
                         IRasterCatalogLayer rasterCatalogLayerClass = new RasterCatalogLayerClass();
@@ -175,7 +176,9 @@ namespace Yutai.Plugins.Identifer.Helpers
                                 if (num < ibasicMap0.StandaloneTableCount)
                                 {
                                     ITable table = ibasicMap0.StandaloneTable[num].Table;
-                                    if (!connectionProperties.IsEqual((table as IDataset).Workspace.ConnectionProperties) || !((table as IDataset).Name == pDataset.Name))
+                                    if (
+                                        !connectionProperties.IsEqual((table as IDataset).Workspace.ConnectionProperties) ||
+                                        !((table as IDataset).Name == pDataset.Name))
                                     {
                                         num++;
                                     }
@@ -200,7 +203,7 @@ namespace Yutai.Plugins.Identifer.Helpers
                         }
                         catch (Exception exception1)
                         {
-                           Logger.Current.Write(exception1.Message,LogLevel.Error,null);
+                            Logger.Current.Write(exception1.Message, LogLevel.Error, null);
                         }
                         return;
                     }
@@ -210,7 +213,7 @@ namespace Yutai.Plugins.Identifer.Helpers
                 case esriDatasetType.esriDTRasterBand:
                 {
                     IRasterLayer rasterLayerClass = new RasterLayerClass();
-                    rasterLayerClass.CreateFromDataset((IRasterDataset)pDataset);
+                    rasterLayerClass.CreateFromDataset((IRasterDataset) pDataset);
                     rasterLayerClass.Name = string.Concat(dsName, pDataset.Name);
                     pMap.AddLayer(rasterLayerClass);
                     return;
@@ -219,7 +222,7 @@ namespace Yutai.Plugins.Identifer.Helpers
                 {
                     ITinLayer tinLayerClass = new TinLayerClass()
                     {
-                        Dataset = (ITin)pDataset,
+                        Dataset = (ITin) pDataset,
                         Name = string.Concat(dsName, pDataset.Name)
                     };
                     pMap.AddLayer(tinLayerClass);
@@ -251,7 +254,7 @@ namespace Yutai.Plugins.Identifer.Helpers
                 {
                     MapHelper.AddEditLayerToList(layer as ICompositeLayer, layerList);
                 }
-                else if (layer is IFeatureLayer )//&& Editor.CheckWorkspaceEdit(layer, "IsBeingEdited"))
+                else if (layer is IFeatureLayer) //&& Editor.CheckWorkspaceEdit(layer, "IsBeingEdited"))
                 {
                     layerList.Add(new LayerObject(layer));
                 }
@@ -267,7 +270,7 @@ namespace Yutai.Plugins.Identifer.Helpers
                 {
                     MapHelper.AddEditLayerToList(layer as ICompositeLayer, layerList);
                 }
-                else if (layer is IFeatureLayer)// && Editor.CheckWorkspaceEdit(layer, "IsBeingEdited"))
+                else if (layer is IFeatureLayer) // && Editor.CheckWorkspaceEdit(layer, "IsBeingEdited"))
                 {
                     layerList.Add(new LayerObject(layer));
                 }
@@ -286,7 +289,7 @@ namespace Yutai.Plugins.Identifer.Helpers
 
         public static void AddFeatureLayer(IBasicMap compLayer, IFeatureClass[] pFClasses)
         {
-            for (int i = 0; i < (int)pFClasses.Length; i++)
+            for (int i = 0; i < (int) pFClasses.Length; i++)
             {
                 IFeatureLayer featureLayerClass = new FeatureLayerClass()
                 {
@@ -373,7 +376,7 @@ namespace Yutai.Plugins.Identifer.Helpers
 
         public static void DeleteLayer(IBasicMap pMap, string[] string_0)
         {
-            for (int i = 0; i < (int)string_0.Length; i++)
+            for (int i = 0; i < (int) string_0.Length; i++)
             {
                 MapHelper.DeleteLayer(pMap, string_0[i]);
             }
@@ -397,15 +400,17 @@ namespace Yutai.Plugins.Identifer.Helpers
                     if (layer is IFeatureLayer)
                     {
                         string name = ((layer as IFeatureLayer).FeatureClass as IDataset).Name;
-                        string[] strArrays = name.Split(new char[] { '.' });
-                        if (strArrays[(int)strArrays.Length - 1].ToLower() == lower)
+                        string[] strArrays = name.Split(new char[] {'.'});
+                        if (strArrays[(int) strArrays.Length - 1].ToLower() == lower)
                         {
                             if (!bool_0)
                             {
                                 featureLayer = layer as IFeatureLayer;
                                 break;
                             }
-                            else if ((((layer as IFeatureLayer).FeatureClass as IDataset).Workspace as IWorkspaceEdit).IsBeingEdited())
+                            else if (
+                                (((layer as IFeatureLayer).FeatureClass as IDataset).Workspace as IWorkspaceEdit)
+                                    .IsBeingEdited())
                             {
                                 featureLayer = layer as IFeatureLayer;
                                 break;
@@ -570,7 +575,8 @@ namespace Yutai.Plugins.Identifer.Helpers
                 if (num < pMap.LayerCount)
                 {
                     IFeatureLayer layer = pMap.Layer[num] as IFeatureLayer;
-                    if ((layer == null ? false : layer.FeatureClass != null) && layer.FeatureClass.AliasName.ToLower() == lower)
+                    if ((layer == null ? false : layer.FeatureClass != null) &&
+                        layer.FeatureClass.AliasName.ToLower() == lower)
                     {
                         if (!bool_0)
                         {
@@ -673,14 +679,15 @@ namespace Yutai.Plugins.Identifer.Helpers
             {
                 IActiveView imap0 = imap_0 as IActiveView;
                 tagRECT deviceFrame = imap0.ScreenDisplay.DisplayTransformation.get_DeviceFrame();
-                double num = (double)(deviceFrame.right - deviceFrame.left);
-                double width = imap0.Extent.Width * imap0.ScreenDisplay.DisplayTransformation.Resolution;
-                mapScale = width / num;
+                double num = (double) (deviceFrame.right - deviceFrame.left);
+                double width = imap0.Extent.Width*imap0.ScreenDisplay.DisplayTransformation.Resolution;
+                mapScale = width/num;
             }
             return mapScale;
         }
 
-        internal static IRepresentationClass GetRepresentationClassByFeature(ICompositeLayer compLayer, IFeature pFeature)
+        internal static IRepresentationClass GetRepresentationClassByFeature(ICompositeLayer compLayer,
+            IFeature pFeature)
         {
             IRepresentationClass representationClass;
             IRepresentationClass representationClassByFeature = null;
@@ -692,16 +699,19 @@ namespace Yutai.Plugins.Identifer.Helpers
                     ILayer layer = compLayer.Layer[num];
                     if (layer is IGroupLayer)
                     {
-                        representationClassByFeature = MapHelper.GetRepresentationClassByFeature(layer as ICompositeLayer, pFeature);
+                        representationClassByFeature =
+                            MapHelper.GetRepresentationClassByFeature(layer as ICompositeLayer, pFeature);
                         if (representationClassByFeature != null)
                         {
                             representationClass = representationClassByFeature;
                             break;
                         }
                     }
-                    else if (layer is IFeatureLayer && (layer as IFeatureLayer).FeatureClass == pFeature.Class && (layer as IGeoFeatureLayer).Renderer is IRepresentationRenderer)
+                    else if (layer is IFeatureLayer && (layer as IFeatureLayer).FeatureClass == pFeature.Class &&
+                             (layer as IGeoFeatureLayer).Renderer is IRepresentationRenderer)
                     {
-                        representationClass = ((layer as IGeoFeatureLayer).Renderer as IRepresentationRenderer).RepresentationClass;
+                        representationClass =
+                            ((layer as IGeoFeatureLayer).Renderer as IRepresentationRenderer).RepresentationClass;
                         break;
                     }
                     num++;
@@ -727,16 +737,19 @@ namespace Yutai.Plugins.Identifer.Helpers
                     ILayer layer = pMap.Layer[num];
                     if (layer is IGroupLayer)
                     {
-                        representationClassByFeature = MapHelper.GetRepresentationClassByFeature(layer as ICompositeLayer, pFeature);
+                        representationClassByFeature =
+                            MapHelper.GetRepresentationClassByFeature(layer as ICompositeLayer, pFeature);
                         if (representationClassByFeature != null)
                         {
                             representationClass = representationClassByFeature;
                             break;
                         }
                     }
-                    else if (layer is IFeatureLayer && (layer as IFeatureLayer).FeatureClass == pFeature.Class && (layer as IGeoFeatureLayer).Renderer is IRepresentationRenderer)
+                    else if (layer is IFeatureLayer && (layer as IFeatureLayer).FeatureClass == pFeature.Class &&
+                             (layer as IGeoFeatureLayer).Renderer is IRepresentationRenderer)
                     {
-                        representationClass = ((layer as IGeoFeatureLayer).Renderer as IRepresentationRenderer).RepresentationClass;
+                        representationClass =
+                            ((layer as IGeoFeatureLayer).Renderer as IRepresentationRenderer).RepresentationClass;
                         break;
                     }
                     num++;

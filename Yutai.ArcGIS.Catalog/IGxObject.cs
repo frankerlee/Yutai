@@ -25,4 +25,3 @@ namespace Yutai.ArcGIS.Catalog
         IGxObject Parent { get; }
     }
 }
-

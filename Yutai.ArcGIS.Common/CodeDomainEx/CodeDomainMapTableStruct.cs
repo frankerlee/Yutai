@@ -22,14 +22,8 @@
 
         public static string TableName
         {
-            get
-            {
-                return _TableName;
-            }
-            set
-            {
-            }
+            get { return _TableName; }
+            set { }
         }
     }
 }
-

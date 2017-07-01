@@ -19,10 +19,10 @@ using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Controls.SymbolUI
 {
-  //  [LicenseProvider(typeof(AELicenseProviderEx)), Guid("E8A66E3D-33F6-42e4-84AE-701A02ACF4D1")]
+    //  [LicenseProvider(typeof(AELicenseProviderEx)), Guid("E8A66E3D-33F6-42e4-84AE-701A02ACF4D1")]
     public partial class frmSymbolSelector : Form
     {
-    //    private License _license = null;
+        //    private License _license = null;
         private bool m_CanDo = false;
         private string m_Category = "";
         private string m_ClassName = "";
@@ -35,7 +35,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         public frmSymbolSelector()
         {
             this.InitializeComponent();
-           // this._license = LicenseManager.Validate(typeof(frmSymbolSelector), this);
+            // this._license = LicenseManager.Validate(typeof(frmSymbolSelector), this);
         }
 
         private void AddSymbol(string FileName)
@@ -150,7 +150,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                         BarButtonItem item = this.barManager1.Items[fileNameWithoutExtension] as BarButtonItem;
                         if (item == null)
                         {
-                            item = new BarButtonItem {
+                            item = new BarButtonItem
+                            {
                                 Name = fileNameWithoutExtension,
                                 Caption = fileNameWithoutExtension,
                                 Id = this.barManager1.GetNewItemId(),
@@ -171,13 +172,14 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     {
                         this.popupMenu1.AddItem(this.menuItemAddStyleSet).BeginGroup = true;
                     }
-                    Point p = new Point(this.btnMoreSymbol.Location.X, this.btnMoreSymbol.Location.Y + this.btnMoreSymbol.Height);
+                    Point p = new Point(this.btnMoreSymbol.Location.X,
+                        this.btnMoreSymbol.Location.Y + this.btnMoreSymbol.Height);
                     p = base.PointToScreen(p);
                     this.popupMenu1.ShowPopup(p);
                 }
                 catch (Exception exception)
                 {
-                   Logger.Current.Error("", exception, "");
+                    Logger.Current.Error("", exception, "");
                 }
             }
         }
@@ -205,7 +207,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
             else if (this.m_pPreviewSelSymbol is ILineSymbol)
             {
-                frmLineSymbolEdit edit2 = new frmLineSymbolEdit {
+                frmLineSymbolEdit edit2 = new frmLineSymbolEdit
+                {
                     m_pSG = this.m_pSG
                 };
                 edit2.SetSymbol(this.m_pPreviewSelSymbol as ISymbol);
@@ -221,7 +224,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
             else if (this.m_pPreviewSelSymbol is IFillSymbol)
             {
-                frmFillSymbolEdit edit3 = new frmFillSymbolEdit {
+                frmFillSymbolEdit edit3 = new frmFillSymbolEdit
+                {
                     m_pSG = this.m_pSG
                 };
                 edit3.SetSymbol(this.m_pPreviewSelSymbol as ISymbol);
@@ -237,7 +241,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
             else if (this.m_pPreviewSelSymbol is ITextSymbol)
             {
-                frmTextSymbolEdit edit4 = new frmTextSymbolEdit {
+                frmTextSymbolEdit edit4 = new frmTextSymbolEdit
+                {
                     m_pSG = this.m_pSG
                 };
                 edit4.SetSymbol(this.m_pPreviewSelSymbol as ISymbol);
@@ -307,7 +312,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     IPropertyPage page5;
                     if (this.m_pPreviewSelSymbol is IScaleBar)
                     {
-                        property = new frmElementProperty {
+                        property = new frmElementProperty
+                        {
                             Text = "比例尺"
                         };
                         page5 = new ScaleBarFormatPropertyPage();
@@ -324,7 +330,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     }
                     else if (this.m_pPreviewSelSymbol is IScaleText)
                     {
-                        property = new frmElementProperty {
+                        property = new frmElementProperty
+                        {
                             Text = "比例尺文本"
                         };
                         page5 = new ScaleTextTextPropertyPage();
@@ -339,7 +346,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     }
                     else if (this.m_pPreviewSelSymbol is ILegendItem)
                     {
-                        property = new frmElementProperty {
+                        property = new frmElementProperty
+                        {
                             Text = "图例项"
                         };
                         page5 = new LegendItemArrangementPropertyPage();
@@ -418,7 +426,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- private void frmSymbolSelector_Load(object sender, EventArgs e)
+        private void frmSymbolSelector_Load(object sender, EventArgs e)
         {
             this.symbolItem1.HasDrawLine = false;
             this.m_CanDo = false;
@@ -608,11 +616,11 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
             catch (Exception exception)
             {
-               Logger.Current.Error("", exception, "");
+                Logger.Current.Error("", exception, "");
             }
         }
 
- public bool IsNmuber(string str)
+        public bool IsNmuber(string str)
         {
             if (str.Length > 0)
             {
@@ -808,7 +816,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     {
                         string path = (this.m_pSG as IStyleGalleryStorage).get_File(i);
                         string str2 = Path.GetExtension(path).ToLower();
-                        if ((!(this.m_pSG is ESRI.ArcGIS.esriSystem.IPersistStream) || (str2 == ".serverstyle")) && (!(this.m_pSG is MyStyleGallery) || !(str2 != ".style")))
+                        if ((!(this.m_pSG is ESRI.ArcGIS.esriSystem.IPersistStream) || (str2 == ".serverstyle")) &&
+                            (!(this.m_pSG is MyStyleGallery) || !(str2 != ".style")))
                         {
                             item = this.m_pSG.get_Items(this.m_ClassName, path, this.m_Category);
                             if (item != null)
@@ -816,13 +825,16 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                                 try
                                 {
                                     item.Reset();
-                                    for (styleGalleryItem = item.Next(); styleGalleryItem != null; styleGalleryItem = item.Next())
+                                    for (styleGalleryItem = item.Next();
+                                        styleGalleryItem != null;
+                                        styleGalleryItem = item.Next())
                                     {
                                         this.symbolListView1.Add(styleGalleryItem, path);
                                         if (styleGalleryItem.Name.ToLower() == this.m_styleName)
                                         {
                                             this.symbolListView1.SelectedIndices.Clear();
-                                            this.symbolListView1.SelectedIndices.Add(this.symbolListView1.Items.Count - 1);
+                                            this.symbolListView1.SelectedIndices.Add(this.symbolListView1.Items.Count -
+                                                                                     1);
                                             if (this.m_pPreviewSelSymbol == null)
                                             {
                                                 this.m_pPreviewSelSymbol = (styleGalleryItem.Item as IClone).Clone();
@@ -1058,4 +1070,3 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         }
     }
 }
-

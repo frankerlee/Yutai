@@ -55,7 +55,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 {
                     items[0] = this.ilist_0[i].ToString();
                     items[1] = this.ilist_0[i].ToString();
-                    queryFilter.WhereClause = field.Name + " = " + this.ConvertFieldValueToString(field.Type, this.ilist_0[i]);
+                    queryFilter.WhereClause = field.Name + " = " +
+                                              this.ConvertFieldValueToString(field.Type, this.ilist_0[i]);
                     items[2] = layer.FeatureClass.FeatureCount(queryFilter).ToString();
                     ListViewItem item = new ListViewItem(items);
                     this.listView1.Items.Add(item);
@@ -85,7 +86,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnLookUp_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
                 Filter = "符号库 (*.Style)|*.Style",
                 RestoreDirectory = true
             };
@@ -123,7 +125,10 @@ namespace Yutai.ArcGIS.Carto.UI
             for (int i = 0; i < fields.FieldCount; i++)
             {
                 IField field = fields.get_Field(i);
-                if ((((field.Type != esriFieldType.esriFieldTypeOID) && (field.Type != esriFieldType.esriFieldTypeGeometry)) && (field.Type != esriFieldType.esriFieldTypeBlob)) && (field.Type != esriFieldType.esriFieldTypeRaster))
+                if ((((field.Type != esriFieldType.esriFieldTypeOID) &&
+                      (field.Type != esriFieldType.esriFieldTypeGeometry)) &&
+                     (field.Type != esriFieldType.esriFieldTypeBlob)) &&
+                    (field.Type != esriFieldType.esriFieldTypeRaster))
                 {
                     this.cboFields.Properties.Items.Add(field.AliasName);
                 }
@@ -159,7 +164,7 @@ namespace Yutai.ArcGIS.Carto.UI
             return "";
         }
 
- public bool GetUniqueValues(ILayer ilayer_0, string string_0, IList ilist_1)
+        public bool GetUniqueValues(ILayer ilayer_0, string string_0, IList ilist_1)
         {
             try
             {
@@ -169,16 +174,19 @@ namespace Yutai.ArcGIS.Carto.UI
                     return false;
                 }
                 ITable attributeTable = table.AttributeTable;
-                IQueryFilter queryFilter = new QueryFilterClass {
+                IQueryFilter queryFilter = new QueryFilterClass
+                {
                     WhereClause = "1=1"
                 };
                 (queryFilter as IQueryFilterDefinition).PostfixClause = "Order by " + string_0;
                 ICursor cursor = attributeTable.Search(queryFilter, false);
-                IDataStatistics statistics = new DataStatisticsClass {
+                IDataStatistics statistics = new DataStatisticsClass
+                {
                     Field = string_0,
                     Cursor = cursor
                 };
-                if ((statistics.UniqueValueCount > 500) && (MessageBox.Show("唯一值数大于500，是否继续", "提示", MessageBoxButtons.YesNo) == DialogResult.No))
+                if ((statistics.UniqueValueCount > 500) &&
+                    (MessageBox.Show("唯一值数大于500，是否继续", "提示", MessageBoxButtons.YesNo) == DialogResult.No))
                 {
                     return false;
                 }
@@ -197,7 +205,7 @@ namespace Yutai.ArcGIS.Carto.UI
             return false;
         }
 
- private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.listView1.SelectedIndices.Count > 0)
             {
@@ -233,7 +241,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     {
                         ISymbol symbol2;
                         ListViewItem item = this.listView1.Items[i];
-                        IStyleGalleryItem item2 = SymbolFind.FindStyleGalleryItem(item.SubItems[0].Text, this.m_pSG, this.cboStyleGrally.Text, str, "");
+                        IStyleGalleryItem item2 = SymbolFind.FindStyleGalleryItem(item.SubItems[0].Text, this.m_pSG,
+                            this.cboStyleGrally.Text, str, "");
                         if (item2 == null)
                         {
                             IColor color = colors.Next();
@@ -370,7 +379,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 {
                     items[0] = values.SelectedItems[i].ToString();
                     items[1] = values.SelectedItems[i].ToString();
-                    queryFilter.WhereClause = field.Name + " = " + this.ConvertFieldValueToString(field.Type, values.SelectedItems[i]);
+                    queryFilter.WhereClause = field.Name + " = " +
+                                              this.ConvertFieldValueToString(field.Type, values.SelectedItems[i]);
                     items[2] = layer.FeatureClass.FeatureCount(queryFilter).ToString();
                     ListViewItem item = new ListViewItem(items);
                     this.listView1.Items.Add(item);
@@ -381,19 +391,12 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IFeatureLayer FeatureLayer
         {
-            set
-            {
-                this.ifeatureLayer_0 = value;
-            }
+            set { this.ifeatureLayer_0 = value; }
         }
 
         public IMap FocusMap
         {
-            set
-            {
-                this.imap_0 = value;
-            }
+            set { this.imap_0 = value; }
         }
     }
 }
-

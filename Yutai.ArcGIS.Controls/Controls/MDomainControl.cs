@@ -18,7 +18,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             this.InitializeComponent();
         }
 
- public void InitControl()
+        public void InitControl()
         {
             double outMMin = -10000.0;
             double outMMax = 11474.83645;
@@ -27,7 +27,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             {
                 ((ISpatialReference2GEN) this.m_pSpatialRefrence).GetMDomain(ref outMMin, ref outMMax);
                 double num4 = outMMax - outMMin;
-                num3 = 2147483645.0 / num4;
+                num3 = 2147483645.0/num4;
             }
             else
             {
@@ -38,7 +38,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             this.textBoxPrecision.Text = num3.ToString();
         }
 
- private void MDomainControl_Load(object sender, EventArgs e)
+        private void MDomainControl_Load(object sender, EventArgs e)
         {
             if (!this.m_IsEdit)
             {
@@ -79,7 +79,7 @@ namespace Yutai.ArcGIS.Controls.Controls
                 {
                     this.textBoxPrecision.ForeColor = SystemColors.WindowText;
                     double num3 = Convert.ToDouble(this.textBoxPrecision.Text);
-                    double num4 = 2147483645.0 / num3;
+                    double num4 = 2147483645.0/num3;
                     double inMMin = Convert.ToDouble(this.textBoxMinValue.Text);
                     double inMMax = inMMin + num4;
                     this.m_pSpatialRefrence.SetMDomain(inMMin, inMMax);
@@ -111,31 +111,25 @@ namespace Yutai.ArcGIS.Controls.Controls
             if (num4 < 0.0)
             {
                 double num3 = Convert.ToDouble(this.textBoxPrecision.Text);
-                num4 = 2147483645.0 / num3;
+                num4 = 2147483645.0/num3;
                 inMMax = inMMin + num4;
                 this.textBoxMaxValue.Text = inMMax.ToString();
             }
             else
             {
-                this.textBoxPrecision.Text = (2147483645.0 / num4).ToString();
+                this.textBoxPrecision.Text = (2147483645.0/num4).ToString();
             }
             this.m_pSpatialRefrence.SetMDomain(inMMin, inMMax);
         }
 
         public bool IsEdit
         {
-            set
-            {
-                this.m_IsEdit = value;
-            }
+            set { this.m_IsEdit = value; }
         }
 
         public ISpatialReference SpatialRefrence
         {
-            get
-            {
-                return this.m_pSpatialRefrence;
-            }
+            get { return this.m_pSpatialRefrence; }
             set
             {
                 this.m_pSpatialRefrence = value;
@@ -149,4 +143,3 @@ namespace Yutai.ArcGIS.Controls.Controls
         }
     }
 }
-

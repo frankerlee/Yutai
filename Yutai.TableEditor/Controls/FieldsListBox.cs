@@ -30,7 +30,7 @@ namespace Yutai.Plugins.TableEditor.Controls
         {
             set
             {
-                _fields = value; 
+                _fields = value;
                 InitControl();
             }
         }

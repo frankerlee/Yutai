@@ -15,47 +15,32 @@ namespace Yutai.Pipeline.Analysis.QueryForms
         private static bool frmIsResizing;
         private Rectangle frmRectangle = default(Rectangle);
         private DevExpress.XtraCharts.Series _series;
+
         /// <summary>
         /// 统计方式
         /// </summary>
         public string Form_StatWay
         {
-            get
-            {
-                return this.statWay;
-            }
-            set
-            {
-                this.statWay = value;
-            }
+            get { return this.statWay; }
+            set { this.statWay = value; }
         }
+
         /// <summary>
         /// 统计字段
         /// </summary>
         public string Form_StatField
         {
-            get
-            {
-                return this.statField;
-            }
-            set
-            {
-                this.statField = value;
-            }
+            get { return this.statField; }
+            set { this.statField = value; }
         }
+
         /// <summary>
         /// 计算字段
         /// </summary>
         public string Form_CalField
         {
-            get
-            {
-                return this.calField;
-            }
-            set
-            {
-                this.calField = value;
-            }
+            get { return this.calField; }
+            set { this.calField = value; }
         }
 
         public StatForm()
@@ -71,7 +56,6 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             this.ds = new DataSet("tableCol");
             this.MakeData();
             Splash.Close();
-            
         }
 
         private void MakeData()
@@ -186,7 +170,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             }
             if (this.statWay == "平均值")
             {
-                num2 /= (double)num;
+                num2 /= (double) num;
             }
             num2 = Math.Round(num2, 3);
             this.dt.Rows.Add(objValue, num);
@@ -226,7 +210,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                     break;
             }
         }
-        
+
         private void StatForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Splash.Close();

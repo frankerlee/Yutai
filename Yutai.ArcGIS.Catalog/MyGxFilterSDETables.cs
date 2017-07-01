@@ -19,19 +19,12 @@
 
         public string Description
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public string Name
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
     }
 }
-

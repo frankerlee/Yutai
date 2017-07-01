@@ -60,7 +60,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             this.int_0++;
         }
 
- private void frmSelectCartoTemplateWizard_Load(object sender, EventArgs e)
+        private void frmSelectCartoTemplateWizard_Load(object sender, EventArgs e)
         {
             this.catoTemplateApplySelect_0.Dock = DockStyle.Fill;
             this.panel1.Controls.Add(this.catoTemplateApplySelect_0);
@@ -69,29 +69,19 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             this.panel1.Controls.Add(this.templateParamSetPage_0);
         }
 
- internal CartoTemplateData CartoTemplateData
+        internal CartoTemplateData CartoTemplateData
         {
-            get
-            {
-                return this.cartoTemplateData_0;
-            }
+            get { return this.cartoTemplateData_0; }
         }
 
         public System.Collections.Hashtable Hashtable
         {
-            set
-            {
-                this.templateParamSetPage_0.Hashtable = value;
-            }
+            set { this.templateParamSetPage_0.Hashtable = value; }
         }
 
         public IRow Row
         {
-            get
-            {
-                return this.cartoTemplateData_0.Row;
-            }
+            get { return this.cartoTemplateData_0.Row; }
         }
     }
 }
-

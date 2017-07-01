@@ -64,7 +64,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnOpenCoordinateFile_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
                 Filter = "*.txt|*.txt"
             };
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -80,7 +81,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             {
                 tag = new UnknownCoordinateSystemClass();
             }
-            frmSpatialReference reference2 = new frmSpatialReference {
+            frmSpatialReference reference2 = new frmSpatialReference
+            {
                 SpatialRefrence = tag
             };
             if (reference2.ShowDialog() == DialogResult.OK)
@@ -92,7 +94,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnSelectOutLocation_Click(object sender, EventArgs e)
         {
-            frmOpenFile file = new frmOpenFile {
+            frmOpenFile file = new frmOpenFile
+            {
                 Text = "保存位置"
             };
             file.RemoveAllFilters();
@@ -111,7 +114,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     }
                     else if (this.igxObject_0 is IGxFolder)
                     {
-                        IWorkspaceName name = new WorkspaceNameClass {
+                        IWorkspaceName name = new WorkspaceNameClass
+                        {
                             WorkspaceFactoryProgID = "esriDataSourcesFile.ShapefileWorkspaceFactory",
                             PathName = (this.igxObject_0.InternalObjectName as IFileName).Path
                         };
@@ -131,12 +135,13 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private string method_0(IWorkspace iworkspace_0, string string_0)
+        private string method_0(IWorkspace iworkspace_0, string string_0)
         {
             string str2;
             int num;
             string str = string_0;
-            if ((iworkspace_0.Type == esriWorkspaceType.esriLocalDatabaseWorkspace) || (iworkspace_0.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace))
+            if ((iworkspace_0.Type == esriWorkspaceType.esriLocalDatabaseWorkspace) ||
+                (iworkspace_0.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace))
             {
                 IWorkspace2 o = iworkspace_0 as IWorkspace2;
                 str2 = str;
@@ -220,7 +225,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             {
                 if (dataset == null)
                 {
-                    class2 = (workspace as IFeatureWorkspace).CreateFeatureClass(name, requiredFields, null, null, esriFTSimple, "Shape", "");
+                    class2 = (workspace as IFeatureWorkspace).CreateFeatureClass(name, requiredFields, null, null,
+                        esriFTSimple, "Shape", "");
                 }
                 else
                 {
@@ -229,7 +235,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
             return class2;
         }
@@ -237,7 +243,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         private IPoint method_2(string string_0, bool bool_0, out int int_0)
         {
             int_0 = -1;
-            string[] strArray = string_0.Split(new char[] { ',' });
+            string[] strArray = string_0.Split(new char[] {','});
             if (bool_0 && (strArray.Length < 3))
             {
                 return null;
@@ -564,4 +570,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

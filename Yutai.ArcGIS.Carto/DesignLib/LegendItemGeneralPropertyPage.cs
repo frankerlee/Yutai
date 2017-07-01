@@ -191,7 +191,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             }
         }
 
- private void LegendItemGeneralPropertyPage_Load(object sender, EventArgs e)
+        private void LegendItemGeneralPropertyPage_Load(object sender, EventArgs e)
         {
             if (this.istyleGallery_0 != null)
             {
@@ -240,13 +240,15 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 this.btnLabelSymbol.Enabled = this.chkShowLabel.Checked;
                 this.chkShowDescription.Checked = this.ilegendItem_0.ShowDescriptions;
                 this.btnDescriptionSymbol.Enabled = this.chkShowDescription.Checked;
-                if ((this.ilegendItem_0.LegendClassFormat.AreaPatch != null) || (this.ilegendItem_0.LegendClassFormat.LinePatch != null))
+                if ((this.ilegendItem_0.LegendClassFormat.AreaPatch != null) ||
+                    (this.ilegendItem_0.LegendClassFormat.LinePatch != null))
                 {
                     IStyleGalleryItem item;
                     this.chkOveralpDefaultPatch.Checked = true;
                     if (this.ilegendItem_0.LegendClassFormat.LinePatch != null)
                     {
-                        item = new MyStyleGalleryItem {
+                        item = new MyStyleGalleryItem
+                        {
                             Name = "<定制>",
                             Item = this.ilegendItem_0.LegendClassFormat.LinePatch
                         };
@@ -254,7 +256,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                     }
                     if (this.ilegendItem_0.LegendClassFormat.AreaPatch != null)
                     {
-                        item = new MyStyleGalleryItem {
+                        item = new MyStyleGalleryItem
+                        {
                             Name = "<定制>",
                             Item = this.ilegendItem_0.LegendClassFormat.AreaPatch
                         };
@@ -267,7 +270,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 }
                 this.cboLinePatches.Enabled = this.chkOveralpDefaultPatch.Checked;
                 this.cboAreaPatches.Enabled = this.chkOveralpDefaultPatch.Checked;
-                if ((this.ilegendItem_0.LegendClassFormat.PatchHeight != 0.0) && (this.ilegendItem_0.LegendClassFormat.PatchHeight != 0.0))
+                if ((this.ilegendItem_0.LegendClassFormat.PatchHeight != 0.0) &&
+                    (this.ilegendItem_0.LegendClassFormat.PatchHeight != 0.0))
                 {
                     this.chkOveralpDefaultPatchSize.Checked = true;
                     this.txtDefaultPatchHeight.Text = "24";
@@ -318,39 +322,23 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

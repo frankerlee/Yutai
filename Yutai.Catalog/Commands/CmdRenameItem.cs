@@ -41,7 +41,8 @@ namespace Yutai.Plugins.Catalog.Commands
                 else
                 {
                     IGxObject firstObject = ((IGxSelection) _context.GxSelection).FirstObject;
-                    result = (firstObject != null && firstObject is IGxObjectEdit && (firstObject as IGxObjectEdit).CanRename());
+                    result = (firstObject != null && firstObject is IGxObjectEdit &&
+                              (firstObject as IGxObjectEdit).CanRename());
                 }
                 return result;
             }
@@ -55,7 +56,6 @@ namespace Yutai.Plugins.Catalog.Commands
 
         public override void OnClick()
         {
-
             IGxObject firstObject = ((IGxSelection) _context.GxSelection).FirstObject;
         }
     }

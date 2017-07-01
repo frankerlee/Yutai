@@ -39,33 +39,23 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.caddataConvertControl_0.Clear();
         }
 
- private void frmCADDataConvert_Load(object sender, EventArgs e)
+        private void frmCADDataConvert_Load(object sender, EventArgs e)
         {
         }
 
- public IGxObject InGxObject
+        public IGxObject InGxObject
         {
-            set
-            {
-                this.caddataConvertControl_0.InGxObject = value;
-            }
+            set { this.caddataConvertControl_0.InGxObject = value; }
         }
 
         public IGxObject OutGxObject
         {
-            set
-            {
-                this.caddataConvertControl_0.OutGxObject = value;
-            }
+            set { this.caddataConvertControl_0.OutGxObject = value; }
         }
 
         public IGxObjectFilter OutGxObjectFilter
         {
-            set
-            {
-                this.caddataConvertControl_0.OutGxObjectFilter = value;
-            }
+            set { this.caddataConvertControl_0.OutGxObjectFilter = value; }
         }
     }
 }
-

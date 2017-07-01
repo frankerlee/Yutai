@@ -31,7 +31,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         private void btnExpress_Click(object sender, EventArgs e)
         {
-            frmExpressBulider bulider2 = new frmExpressBulider {
+            frmExpressBulider bulider2 = new frmExpressBulider
+            {
                 MapTemplate = this.mapTemplateElement_0.MapTemplate,
                 Expression = this.textBox1.Text
             };
@@ -58,7 +59,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
- private void method_0()
+        private void method_0()
         {
             if (this.mapTemplateElement_0 is MapTemplateTextElement)
             {
@@ -101,26 +102,17 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public MapCartoTemplateLib.MapTemplateElement MapTemplateElement
@@ -134,14 +126,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public string Title
         {
-            get
-            {
-                return "文本";
-            }
-            set
-            {
-            }
+            get { return "文本"; }
+            set { }
         }
     }
 }
-

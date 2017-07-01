@@ -6,11 +6,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
     {
         public override string Message
         {
-            get
-            {
-                return "图号格式错误!";
-            }
+            get { return "图号格式错误!"; }
         }
     }
 }
-

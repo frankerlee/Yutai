@@ -7,7 +7,8 @@ using ESRI.ArcGIS.esriSystem;
 
 namespace Yutai.ArcGIS.Catalog
 {
-    public class GxMap : IGxObject, IGxFile, IGxObjectEdit, IGxObjectInternalName, IGxObjectProperties, IGxObjectUI, IGxMap, IGxMapPageLayout
+    public class GxMap : IGxObject, IGxFile, IGxObjectEdit, IGxObjectInternalName, IGxObjectProperties, IGxObjectUI,
+        IGxMap, IGxMapPageLayout
     {
         private IGxCatalog igxCatalog_0 = null;
         private IGxObject igxObject_0 = null;
@@ -148,10 +149,7 @@ namespace Yutai.ArcGIS.Catalog
 
         public string BaseName
         {
-            get
-            {
-                return System.IO.Path.GetFileNameWithoutExtension(this.string_0);
-            }
+            get { return System.IO.Path.GetFileNameWithoutExtension(this.string_0); }
         }
 
         public string Category
@@ -168,33 +166,25 @@ namespace Yutai.ArcGIS.Catalog
 
         public UID ClassID
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public UID ContextMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public string FullName
         {
-            get
-            {
-                return this.string_0;
-            }
+            get { return this.string_0; }
         }
 
         public IName InternalObjectName
         {
             get
             {
-                IFileName name = new FileNameClass {
+                IFileName name = new FileNameClass
+                {
                     Path = this.string_0
                 };
                 return (name as IName);
@@ -203,56 +193,40 @@ namespace Yutai.ArcGIS.Catalog
 
         public bool IsValid
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         IName IGxObjectInternalName.InternalObjectName
         {
             get
             {
-                IFileName name = new FileNameClass {
+                IFileName name = new FileNameClass
+                {
                     Path = this.string_0
                 };
                 return (name as IName);
             }
-            set
-            {
-            }
+            set { }
         }
 
         public Bitmap LargeImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(27);
-            }
+            get { return ImageLib.GetSmallImage(27); }
         }
 
         public Bitmap LargeSelectedImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(27);
-            }
+            get { return ImageLib.GetSmallImage(27); }
         }
 
         public string Name
         {
-            get
-            {
-                return System.IO.Path.GetFileName(this.string_0);
-            }
+            get { return System.IO.Path.GetFileName(this.string_0); }
         }
 
         public UID NewMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IPageLayout PageLayout
@@ -272,18 +246,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public IGxObject Parent
         {
-            get
-            {
-                return this.igxObject_0;
-            }
+            get { return this.igxObject_0; }
         }
 
         public string Path
         {
-            get
-            {
-                return this.string_0;
-            }
+            get { return this.string_0; }
             set
             {
                 this.string_0 = value;
@@ -293,10 +261,7 @@ namespace Yutai.ArcGIS.Catalog
 
         public int PropertyCount
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         public Bitmap SmallImage
@@ -324,4 +289,3 @@ namespace Yutai.ArcGIS.Catalog
         }
     }
 }
-

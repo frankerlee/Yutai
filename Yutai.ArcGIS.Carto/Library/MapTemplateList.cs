@@ -11,7 +11,7 @@ namespace Yutai.ArcGIS.Carto.Library
     public partial class MapTemplateList : UserControl
     {
         private bool bool_0 = false;
-        [CompilerGenerated]
+
         private IContainer icontainer_0 = null;
         private MapTemplateApplyHelp mapTemplateApplyHelp_0 = null;
         private MapTemplateGallery mapTemplateGallery_0 = new MapTemplateGallery();
@@ -32,7 +32,7 @@ namespace Yutai.ArcGIS.Carto.Library
             return true;
         }
 
- public int GetScale(string string_0)
+        public int GetScale(string string_0)
         {
             if (string_0.Length >= 10)
             {
@@ -72,7 +72,7 @@ namespace Yutai.ArcGIS.Carto.Library
             return 0;
         }
 
- private void MapTemplateList_Load(object sender, EventArgs e)
+        private void MapTemplateList_Load(object sender, EventArgs e)
         {
             this.mapTemplateGallery_0.Init();
             foreach (MapTemplateClass class2 in this.mapTemplateGallery_0.MapTemplateClass)
@@ -98,7 +98,8 @@ namespace Yutai.ArcGIS.Carto.Library
                     else if (!string.IsNullOrEmpty(this.mapTemplateApplyHelp_0.MapNo))
                     {
                         int scale = this.GetScale(this.mapTemplateApplyHelp_0.MapNo);
-                        if (((scale != 0) && (template.MapFramingType == MapFramingType.StandardFraming)) && ((template.MapFrameType == MapFrameType.MFTTrapezoid) && (scale == template.Scale)))
+                        if (((scale != 0) && (template.MapFramingType == MapFramingType.StandardFraming)) &&
+                            ((template.MapFrameType == MapFrameType.MFTTrapezoid) && (scale == template.Scale)))
                         {
                             this.listBox1.Items.Add(template);
                         }
@@ -109,53 +110,25 @@ namespace Yutai.ArcGIS.Carto.Library
 
         public bool HasMosueClick
         {
-            set
-            {
-                this.bool_0 = value;
-            }
+            set { this.bool_0 = value; }
         }
 
-        public bool IsInputTF
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.bool_1;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.bool_1 = value;
-            }
-        }
+        public bool IsInputTF { get; set; }
 
         public MapTemplateApplyHelp MapTemplateHelp
         {
-            get
-            {
-                return this.mapTemplateApplyHelp_0;
-            }
-            set
-            {
-                this.mapTemplateApplyHelp_0 = value;
-            }
+            get { return this.mapTemplateApplyHelp_0; }
+            set { this.mapTemplateApplyHelp_0 = value; }
         }
 
         public MapTemplate SelectCartoTemplateData
         {
-            get
-            {
-                return (this.listBox1.SelectedItem as MapTemplate);
-            }
+            get { return (this.listBox1.SelectedItem as MapTemplate); }
         }
 
         public IWorkspace Workspace
         {
-            set
-            {
-                this.mapTemplateGallery_0.Workspace = value;
-            }
+            set { this.mapTemplateGallery_0.Workspace = value; }
         }
     }
 }
-

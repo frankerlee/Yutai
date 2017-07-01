@@ -112,7 +112,8 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         private void btnUpper_Click(object sender, EventArgs e)
         {
-            ImageComboBoxItemEx ex = this.imageComboBoxEdit1.Properties.Items[this.imageComboBoxEdit1.SelectedIndex] as ImageComboBoxItemEx;
+            ImageComboBoxItemEx ex =
+                this.imageComboBoxEdit1.Properties.Items[this.imageComboBoxEdit1.SelectedIndex] as ImageComboBoxItemEx;
             if (ex.Degree != 0)
             {
                 if (ex.Degree == 1)
@@ -138,12 +139,13 @@ namespace Yutai.ArcGIS.Catalog.UI
                 this.igxObjectFilter_0 = this.iarray_0.get_Element(this.cboShowType.SelectedIndex) as IGxObjectFilter;
             }
             this.method_8();
-            ImageComboBoxItemEx ex = this.imageComboBoxEdit1.Properties.Items[this.imageComboBoxEdit1.SelectedIndex] as ImageComboBoxItemEx;
+            ImageComboBoxItemEx ex =
+                this.imageComboBoxEdit1.Properties.Items[this.imageComboBoxEdit1.SelectedIndex] as ImageComboBoxItemEx;
             IGxObject tag = ex.Tag as IGxObject;
             this.method_10(tag);
         }
 
- public DialogResult DoModalOpen()
+        public DialogResult DoModalOpen()
         {
             try
             {
@@ -182,7 +184,9 @@ namespace Yutai.ArcGIS.Catalog.UI
             {
                 this.igxCatalog_0 = new GxCatalog();
             }
-            ImageComboBoxItemEx item = new ImageComboBoxItemEx((this.igxCatalog_0 as IGxObject).Name, this.igxCatalog_0, this.method_2(this.igxCatalog_0 as IGxObject), 0) {
+            ImageComboBoxItemEx item = new ImageComboBoxItemEx((this.igxCatalog_0 as IGxObject).Name, this.igxCatalog_0,
+                this.method_2(this.igxCatalog_0 as IGxObject), 0)
+            {
                 Tag = this.igxCatalog_0
             };
             this.imageComboBoxEdit1.Properties.Items.Add(item);
@@ -190,7 +194,8 @@ namespace Yutai.ArcGIS.Catalog.UI
             children.Reset();
             for (IGxObject obj3 = children.Next(); obj3 != null; obj3 = children.Next())
             {
-                item = new ImageComboBoxItemEx(obj3.Name, obj3.FullName, this.method_2(obj3), 1) {
+                item = new ImageComboBoxItemEx(obj3.Name, obj3.FullName, this.method_2(obj3), 1)
+                {
                     Tag = obj3
                 };
                 this.imageComboBoxEdit1.Properties.Items.Add(item);
@@ -227,7 +232,9 @@ namespace Yutai.ArcGIS.Catalog.UI
             if (this.bool_0)
             {
                 System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
-                ImageComboBoxItemEx ex = this.imageComboBoxEdit1.Properties.Items[this.imageComboBoxEdit1.SelectedIndex] as ImageComboBoxItemEx;
+                ImageComboBoxItemEx ex =
+                    this.imageComboBoxEdit1.Properties.Items[this.imageComboBoxEdit1.SelectedIndex] as
+                        ImageComboBoxItemEx;
                 IGxObject tag = ex.Tag as IGxObject;
                 this.method_10(tag);
                 this.method_12();
@@ -235,7 +242,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
         }
 
- private void listView1_Click(object sender, EventArgs e)
+        private void listView1_Click(object sender, EventArgs e)
         {
         }
 
@@ -266,7 +273,8 @@ namespace Yutai.ArcGIS.Catalog.UI
                         {
                             try
                             {
-                                string path = Environment.SystemDirectory.Substring(0, 2) + @"\Documents and Settings\Administrator\Application Data\ESRI\ArcCatalog\";
+                                string path = Environment.SystemDirectory.Substring(0, 2) +
+                                              @"\Documents and Settings\Administrator\Application Data\ESRI\ArcCatalog\";
                                 string str2 = path + "OLE DB Connection.odc";
                                 if (Directory.Exists(path))
                                 {
@@ -276,7 +284,8 @@ namespace Yutai.ArcGIS.Catalog.UI
                                     obj3 = new GxDatabase();
                                     (obj3 as IGxDatabase).WorkspaceName = name;
                                     obj3.Attach(tag.Parent, this.igxCatalog_0);
-                                    item = new ListViewItem(new string[] { obj3.Name, obj3.Category }, this.method_2(obj3)) {
+                                    item = new ListViewItem(new string[] {obj3.Name, obj3.Category}, this.method_2(obj3))
+                                    {
                                         Tag = obj3
                                     };
                                     this.listView1.Items.Add(item);
@@ -289,19 +298,22 @@ namespace Yutai.ArcGIS.Catalog.UI
                         }
                         else if (tag.FullName == "添加空间数据库连接")
                         {
-                            frmCreateGDBConnection connection = new frmCreateGDBConnection {
+                            frmCreateGDBConnection connection = new frmCreateGDBConnection
+                            {
                                 TopMost = true
                             };
                             if (connection.ShowDialog() == DialogResult.OK)
                             {
                                 obj3 = new GxDatabase();
-                                name = new WorkspaceNameClass {
+                                name = new WorkspaceNameClass
+                                {
                                     WorkspaceFactoryProgID = "esriDataSourcesGDB.SdeWorkspaceFactory",
                                     PathName = connection.ConnectionPath
                                 };
                                 (obj3 as IGxDatabase).WorkspaceName = name;
                                 obj3.Attach(tag.Parent, this.igxCatalog_0);
-                                item = new ListViewItem(new string[] { obj3.Name, obj3.Category }, this.method_2(obj3)) {
+                                item = new ListViewItem(new string[] {obj3.Name, obj3.Category}, this.method_2(obj3))
+                                {
                                     Tag = obj3
                                 };
                                 this.listView1.Items.Add(item);
@@ -321,7 +333,11 @@ namespace Yutai.ArcGIS.Catalog.UI
                         esriDatasetType type = (tag as IGxDataset).Type;
                         myDCRShowChildren = MyDoubleClickResult.myDCRShowChildren;
                         this.igxObjectFilter_0.CanChooseObject(tag, ref myDCRShowChildren);
-                        if ((((type != esriDatasetType.esriDTFeatureDataset) && (type != esriDatasetType.esriDTContainer)) && ((type != esriDatasetType.esriDTRasterCatalog) && (type != esriDatasetType.esriDTCadDrawing))) && (type != esriDatasetType.esriDTRasterDataset))
+                        if ((((type != esriDatasetType.esriDTFeatureDataset) &&
+                              (type != esriDatasetType.esriDTContainer)) &&
+                             ((type != esriDatasetType.esriDTRasterCatalog) &&
+                              (type != esriDatasetType.esriDTCadDrawing))) &&
+                            (type != esriDatasetType.esriDTRasterDataset))
                         {
                             this.method_4();
                             return;
@@ -343,9 +359,12 @@ namespace Yutai.ArcGIS.Catalog.UI
                     }
                     else
                     {
-                        ex = this.imageComboBoxEdit1.Properties.Items[this.imageComboBoxEdit1.SelectedIndex] as ImageComboBoxItemEx;
+                        ex =
+                            this.imageComboBoxEdit1.Properties.Items[this.imageComboBoxEdit1.SelectedIndex] as
+                                ImageComboBoxItemEx;
                         int degree = ex.Degree;
-                        ex = new ImageComboBoxItemEx(tag.Name, tag.FullName, this.method_2(tag), degree + 1) {
+                        ex = new ImageComboBoxItemEx(tag.Name, tag.FullName, this.method_2(tag), degree + 1)
+                        {
                             Tag = tag
                         };
                         int selectedIndex = this.imageComboBoxEdit1.SelectedIndex;
@@ -490,7 +509,8 @@ namespace Yutai.ArcGIS.Catalog.UI
                     {
                         items[0] = obj3.Name;
                         items[1] = obj3.Category;
-                        ListViewItem item = new ListViewItem(items, this.method_2(obj3)) {
+                        ListViewItem item = new ListViewItem(items, this.method_2(obj3))
+                        {
                             Tag = obj3
                         };
                         this.listView1.Items.Add(item);
@@ -515,13 +535,15 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         private void method_12()
         {
-            ImageComboBoxItemEx ex = this.imageComboBoxEdit1.Properties.Items[this.imageComboBoxEdit1.SelectedIndex] as ImageComboBoxItemEx;
+            ImageComboBoxItemEx ex =
+                this.imageComboBoxEdit1.Properties.Items[this.imageComboBoxEdit1.SelectedIndex] as ImageComboBoxItemEx;
             IGxObject tag = ex.Tag as IGxObject;
             for (int i = this.imageComboBoxEdit1.Properties.Items.Count - 1; i > 0; i--)
             {
                 ex = this.imageComboBoxEdit1.Properties.Items[i] as ImageComboBoxItemEx;
                 IGxObject obj3 = ex.Tag as IGxObject;
-                if ((!(obj3 is IGxCatalog) && !(obj3.Parent is IGxCatalog)) && ((obj3 != tag) && !this.method_11(obj3, tag)))
+                if ((!(obj3 is IGxCatalog) && !(obj3.Parent is IGxCatalog)) &&
+                    ((obj3 != tag) && !this.method_11(obj3, tag)))
                 {
                     this.imageComboBoxEdit1.Properties.Items.RemoveAt(i);
                 }
@@ -631,7 +653,8 @@ namespace Yutai.ArcGIS.Catalog.UI
                                     IWorkspaceFactory factory = new AccessWorkspaceFactoryClass();
                                     try
                                     {
-                                        factory.Create(System.IO.Path.GetDirectoryName(path), System.IO.Path.GetFileNameWithoutExtension(path), null, 0);
+                                        factory.Create(System.IO.Path.GetDirectoryName(path),
+                                            System.IO.Path.GetFileNameWithoutExtension(path), null, 0);
                                     }
                                     catch (Exception exception)
                                     {
@@ -794,7 +817,7 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         private void method_3(string string_2)
         {
-            string[] strArray = string_2.Split(new char[] { '\\' });
+            string[] strArray = string_2.Split(new char[] {'\\'});
             IEnumGxObject children = (this.igxCatalog_0 as IGxObjectContainer).Children;
             children.Reset();
             IGxObject obj3 = null;
@@ -953,9 +976,13 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
             else
             {
-                ex = this.imageComboBoxEdit1.Properties.Items[this.imageComboBoxEdit1.SelectedIndex] as ImageComboBoxItemEx;
+                ex =
+                    this.imageComboBoxEdit1.Properties.Items[this.imageComboBoxEdit1.SelectedIndex] as
+                        ImageComboBoxItemEx;
                 int degree = ex.Degree;
-                ex = new ImageComboBoxItemEx(igxObject_1.Name, igxObject_1.FullName, this.method_2(igxObject_1), degree + 1) {
+                ex = new ImageComboBoxItemEx(igxObject_1.Name, igxObject_1.FullName, this.method_2(igxObject_1),
+                    degree + 1)
+                {
                     Tag = igxObject_1
                 };
                 this.imageComboBoxEdit1.Properties.Items.Insert(this.imageComboBoxEdit1.SelectedIndex + 1, ex);
@@ -994,9 +1021,13 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
             else
             {
-                ex = this.imageComboBoxEdit1.Properties.Items[this.imageComboBoxEdit1.SelectedIndex] as ImageComboBoxItemEx;
+                ex =
+                    this.imageComboBoxEdit1.Properties.Items[this.imageComboBoxEdit1.SelectedIndex] as
+                        ImageComboBoxItemEx;
                 int degree = ex.Degree;
-                ex = new ImageComboBoxItemEx(igxObject_1.Name, igxObject_1.FullName, this.method_2(igxObject_1), degree + 1) {
+                ex = new ImageComboBoxItemEx(igxObject_1.Name, igxObject_1.FullName, this.method_2(igxObject_1),
+                    degree + 1)
+                {
                     Tag = igxObject_1
                 };
                 this.imageComboBoxEdit1.Properties.Items.Insert(this.imageComboBoxEdit1.SelectedIndex + 1, ex);
@@ -1017,7 +1048,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             {
                 Class1 class2 = (Class1) object_0;
                 class2.Set();
-                base.Invoke(new Delegate0(this.method_10), new object[] { class2.PGxObject });
+                base.Invoke(new Delegate0(this.method_10), new object[] {class2.PGxObject});
             }
         }
 
@@ -1033,50 +1064,32 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         public bool AllowMultiSelect
         {
-            set
-            {
-                this.bool_1 = value;
-            }
+            set { this.bool_1 = value; }
         }
 
         public string ButtonCaption
         {
-            set
-            {
-                this.btnAdd.Text = value;
-            }
+            set { this.btnAdd.Text = value; }
         }
 
         public IGxObject FinalLocation
         {
-            get
-            {
-                return this.igxObject_0;
-            }
+            get { return this.igxObject_0; }
         }
 
         public IGxCatalog GxCatalog
         {
-            set
-            {
-                this.igxCatalog_0 = value;
-            }
+            set { this.igxCatalog_0 = value; }
         }
 
         public IArray Items
         {
-            get
-            {
-                return this.iarray_1;
-            }
+            get { return this.iarray_1; }
         }
 
         public IGxObjectFilter ObjectFilter
         {
-            get
-            {
-                return this.igxObjectFilter_0;
-            }
+            get { return this.igxObjectFilter_0; }
             set
             {
                 for (int i = 0; i < this.iarray_0.Count; i++)
@@ -1095,38 +1108,23 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         public bool ReplacingObject
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         public string SaveName
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
 
         public IList SelectedItems
         {
-            get
-            {
-                return this.ilist_0;
-            }
+            get { return this.ilist_0; }
         }
 
         public object StartingLocation
         {
-            set
-            {
-                m_pStartingLocation = value;
-            }
+            set { m_pStartingLocation = value; }
         }
 
         private partial class Class1
@@ -1152,4 +1150,3 @@ namespace Yutai.ArcGIS.Catalog.UI
         private delegate void Delegate0(IGxObject igxObject_0);
     }
 }
-

@@ -24,12 +24,13 @@ namespace Yutai.Plugins.TableEditor.Editor
         private double expandNum = 5;
         private IMap _map;
         private IActiveView _activeView;
+
         public MapView(IMap map)
         {
             _map = map;
             _activeView = _map as IActiveView;
         }
-        
+
         public IFeature SelectFeature(IFeatureLayer featureLayer, int oid)
         {
             IFeature pFeature = featureLayer.FeatureClass.GetFeature(oid);

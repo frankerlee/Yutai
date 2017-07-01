@@ -11,6 +11,7 @@ namespace Yutai.ArcGIS.Common.Helpers
         {
             CopyFeature(pSrcFea, pDestFea, true);
         }
+
         public static void CopyFeature(IFeature pSrcFea, IFeature pDestFea, bool pOverwrite)
         {
             try
@@ -22,8 +23,8 @@ namespace Yutai.ArcGIS.Common.Helpers
                 {
                     IField field = class2.Fields.get_Field(i);
                     if ((((field.Type != esriFieldType.esriFieldTypeOID) &&
-                        (field.Type != esriFieldType.esriFieldTypeGeometry))
-                        && (field != class2.LengthField)) && (field != class2.AreaField))
+                          (field.Type != esriFieldType.esriFieldTypeGeometry))
+                         && (field != class2.LengthField)) && (field != class2.AreaField))
                     {
                         string str = field.Name.ToUpper();
                         int num3 = class3.Fields.FindField(str);
@@ -31,8 +32,8 @@ namespace Yutai.ArcGIS.Common.Helpers
                         {
                             IField field2 = class3.Fields.get_Field(num3);
                             if ((((field2.Type != esriFieldType.esriFieldTypeOID) &&
-                        (field2.Type != esriFieldType.esriFieldTypeGeometry))
-                        && (field2 != class3.LengthField)) && (field2 != class3.AreaField))
+                                  (field2.Type != esriFieldType.esriFieldTypeGeometry))
+                                 && (field2 != class3.LengthField)) && (field2 != class3.AreaField))
                             {
                                 object obj2 = pSrcFea.get_Value(i);
                                 if (pOverwrite)
@@ -83,6 +84,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             {
             }
         }
+
         public static void CopyRow(IRow pSrcFea, IRow pDestFea)
         {
             try
@@ -108,7 +110,8 @@ namespace Yutai.ArcGIS.Common.Helpers
                 {
                     IField field5 = table.Fields.get_Field(i);
                     if ((((field5.Type != esriFieldType.esriFieldTypeOID)
-                        && (field5.Type != esriFieldType.esriFieldTypeGeometry)) && (field5 != field)) && (field5 != field2))
+                          && (field5.Type != esriFieldType.esriFieldTypeGeometry)) && (field5 != field)) &&
+                        (field5 != field2))
                     {
                         string str = field5.Name.ToUpper();
                         object obj2 = pSrcFea.get_Value(i);
@@ -119,7 +122,9 @@ namespace Yutai.ArcGIS.Common.Helpers
                             {
                                 IField field6 = table2.Fields.get_Field(num3);
                                 if (((((field6.Type != esriFieldType.esriFieldTypeOID) &&
-                                    (field6.Type != esriFieldType.esriFieldTypeGeometry)) && (field6 != field3)) && (field6 != field4)) && (((obj2 != null) && !(obj2 is DBNull)) && field6.CheckValue(obj2)))
+                                       (field6.Type != esriFieldType.esriFieldTypeGeometry)) && (field6 != field3)) &&
+                                     (field6 != field4)) &&
+                                    (((obj2 != null) && !(obj2 is DBNull)) && field6.CheckValue(obj2)))
                                 {
                                     try
                                     {
@@ -139,6 +144,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             {
             }
         }
+
         public static void CopyRow(IRow pSrcFea, IRow pDestFea, List<int> pSrcField, List<int> pDestField)
         {
             for (int i = 0; i < pSrcField.Count; i++)
@@ -169,6 +175,7 @@ namespace Yutai.ArcGIS.Common.Helpers
                 }
             }
         }
+
         public static void CopyTable(ITable pSrcTable, ITable pDestTable)
         {
             Exception exception;
@@ -183,7 +190,7 @@ namespace Yutai.ArcGIS.Common.Helpers
                     int num = pSrcTable.RowCount(null);
                     if (num > 0)
                     {
-                        int num2 = (num / 10) + 1;
+                        int num2 = (num/10) + 1;
                         IWorkspaceEdit edit = (pDestTable as IDataset).Workspace as IWorkspaceEdit;
                         edit.StartEditing(false);
                         edit.StartEditOperation();
@@ -193,7 +200,7 @@ namespace Yutai.ArcGIS.Common.Helpers
                         {
                             try
                             {
-                                if ((num2 >= 1000) && ((num3++ % num2) == 0))
+                                if ((num2 >= 1000) && ((num3++%num2) == 0))
                                 {
                                     edit.StopEditOperation();
                                     edit.StopEditing(true);
@@ -225,7 +232,9 @@ namespace Yutai.ArcGIS.Common.Helpers
                 exception = exception2;
             }
         }
-        public static void CreateFieldMap(ITable pSrcTable, ITable pDestTable, out List<int> pSrcField, out List<int> pDestField)
+
+        public static void CreateFieldMap(ITable pSrcTable, ITable pDestTable, out List<int> pSrcField,
+            out List<int> pDestField)
         {
             Exception exception;
             pSrcField = new List<int>();
@@ -283,7 +292,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             {
                 IField field5 = pSrcTable.Fields.get_Field(i);
                 if ((((field5.Type != esriFieldType.esriFieldTypeOID) &&
-                    (field5.Type != esriFieldType.esriFieldTypeGeometry)) && (field5 != field)) && (field5 != field2))
+                      (field5.Type != esriFieldType.esriFieldTypeGeometry)) && (field5 != field)) && (field5 != field2))
                 {
                     string str = field5.Name.ToUpper();
                     int item = pDestTable.Fields.FindField(str);
@@ -291,7 +300,8 @@ namespace Yutai.ArcGIS.Common.Helpers
                     {
                         IField field6 = pDestTable.Fields.get_Field(item);
                         if ((((field6.Type != esriFieldType.esriFieldTypeOID) &&
-                            (field6.Type != esriFieldType.esriFieldTypeGeometry)) && (field6 != field3)) && (field6 != field4))
+                              (field6.Type != esriFieldType.esriFieldTypeGeometry)) && (field6 != field3)) &&
+                            (field6 != field4))
                         {
                             pSrcField.Add(i);
                             pDestField.Add(item);
@@ -300,22 +310,27 @@ namespace Yutai.ArcGIS.Common.Helpers
                 }
             }
         }
+
         public static double GetFeatureDoubleValue(IFeature pFea, string pField)
         {
             return ConvertHelper.ObjectToDouble(GetRowValue(pFea, pField));
         }
+
         public static int GetFeatureIntValue(IFeature pFea, string pField)
         {
             return ConvertHelper.ObjectToInt(GetRowValue(pFea, pField));
         }
+
         public static string GetFeatureStringValue(IFeature pFea, string pField)
         {
             return GetRowValue(pFea, pField).ToString();
         }
+
         public static object GetFeatureValue(IFeature pFea, string pField)
         {
             return GetRowValue(pFea, pField);
         }
+
         public static object GetRowValue(IRow pRow, string pField)
         {
             if ((pRow != null) && (pField != null))
@@ -333,14 +348,17 @@ namespace Yutai.ArcGIS.Common.Helpers
             }
             return "";
         }
+
         public static void SetFeatureValue(IFeature pFea, string pField, object pValue)
         {
             SetRowValue(pFea, pField, pValue);
         }
+
         public static void SetFeatureValue(IFeatureBuffer pFea, string pField, object pValue)
         {
             SetRowValue(pFea as IRow, pField, pValue);
         }
+
         public static void SetRowValue(IRow pRow, string pField, object pValue)
         {
             if ((pRow != null) && (pField != null))
@@ -355,11 +373,13 @@ namespace Yutai.ArcGIS.Common.Helpers
                     IField field = pRow.Fields.get_Field(num);
                     if (field.CheckValue(pValue))
                     {
-                        if ((field.Type == esriFieldType.esriFieldTypeInteger) && ((pValue == null) || (pValue.ToString() == "")))
+                        if ((field.Type == esriFieldType.esriFieldTypeInteger) &&
+                            ((pValue == null) || (pValue.ToString() == "")))
                         {
                             pRow.set_Value(num, 0);
                         }
-                        else if ((field.Type == esriFieldType.esriFieldTypeDouble) && ((pValue == null) || (pValue.ToString() == "")))
+                        else if ((field.Type == esriFieldType.esriFieldTypeDouble) &&
+                                 ((pValue == null) || (pValue.ToString() == "")))
                         {
                             pRow.set_Value(num, 0.0);
                         }
@@ -381,6 +401,5 @@ namespace Yutai.ArcGIS.Common.Helpers
                 }
             }
         }
-
     }
 }

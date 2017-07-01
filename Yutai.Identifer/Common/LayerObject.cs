@@ -13,14 +13,8 @@ namespace Yutai.Plugins.Identifer.Common
 
         public ILayer Layer
         {
-            get
-            {
-                return this._layer;
-            }
-            set
-            {
-                this._layer = null;
-            }
+            get { return this._layer; }
+            set { this._layer = null; }
         }
 
         public LayerObject(ILayer layer)

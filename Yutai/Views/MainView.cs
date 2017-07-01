@@ -32,7 +32,7 @@ namespace Yutai.Views
         private readonly IAppContext _context;
         private bool _locked;
         private bool _rendered;
-       
+
 
         public MainView(IAppContext context)
         {
@@ -101,8 +101,16 @@ namespace Yutai.Views
             }
         }
 
-        public IMapControl3 MapControl { get { return (IMapControl3)axMapControl1.Object; } }
-        public AxMapControl MapControlContainer { get { return axMapControl1; } }
+        public IMapControl3 MapControl
+        {
+            get { return (IMapControl3) axMapControl1.Object; }
+        }
+
+        public AxMapControl MapControlContainer
+        {
+            get { return axMapControl1; }
+        }
+
         public YutaiTool CurrentTool { get; set; }
         public IActiveView ActiveView { get; set; }
         public IMap FocusMap { get; set; }
@@ -110,12 +118,18 @@ namespace Yutai.Views
         public string ActiveViewType { get; }
         public object ActiveGISControl { get; }
         public object ActiveControl { get; }
+
         public void ActivateMap()
         {
             throw new NotImplementedException();
         }
 
         public void ActivatePageLayout()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddFrameworkControl(object control)
         {
             throw new NotImplementedException();
         }
@@ -128,6 +142,7 @@ namespace Yutai.Views
         public event EventHandler<EventArgs> ArcGISControlChanging;
 
         public event Action BeforeShow;
+
         public void Lock()
         {
             _locked = true;
@@ -138,6 +153,7 @@ namespace Yutai.Views
             _locked = false;
             UpdateView();
         }
+
         private bool FireViewClosing()
         {
             var handler = ViewClosing;
@@ -158,13 +174,12 @@ namespace Yutai.Views
             var handler = ViewUpdating;
             if (handler != null)
             {
-                handler(this, new RenderedEventArgs { Rendered = rendered });
+                handler(this, new RenderedEventArgs {Rendered = rendered});
             }
         }
 
-
-
         #region IView implementation
+
         private void RestorePreviousState()
         {
             //_dockingManager1.TryRestoreLayout(SerializationKey);
@@ -206,12 +221,10 @@ namespace Yutai.Views
 
         private void UpdateStatusBarCustomizationMenu()
         {
-           
         }
 
         private void OnStatusBarCustomizationMenuOpening(object sender, CancelEventArgs e)
         {
-           
         }
 
         private string GetCaption()
@@ -257,8 +270,8 @@ namespace Yutai.Views
 
         public void SetTooltip(string msg)
         {
-           // ToolTipInfo info=new ToolTipInfo();
-           //this.superToolTip1.SetToolTip(this.axMapControl1,new ToolTipInfo() { });
+            // ToolTipInfo info=new ToolTipInfo();
+            //this.superToolTip1.SetToolTip(this.axMapControl1,new ToolTipInfo() { });
         }
 
         public override void UpdateView()
@@ -270,6 +283,7 @@ namespace Yutai.Views
         {
             get { return null; }
         }
+
         #endregion
 
         #region IMainView implementation
@@ -289,7 +303,10 @@ namespace Yutai.Views
             get { return ribbonControlAdv1; }
         }
 
-        public object RibbonStatusBar { get { return null; } }
+        public object RibbonStatusBar
+        {
+            get { return null; }
+        }
 
         public object StatusBar
         {
@@ -305,7 +322,6 @@ namespace Yutai.Views
         {
             get { return this; }
         }
-
 
         #endregion
     }

@@ -17,8 +17,6 @@ using Action = System.Action;
 
 namespace Yutai.UI.Forms
 {
-
-
     public partial class MainWindowView : XtraForm, IViewInternal
 
     {
@@ -112,7 +110,6 @@ namespace Yutai.UI.Forms
         private void MainWindowView_Load(object sender, EventArgs e)
         {
             // Fixing CORE-160
-           
         }
     }
 

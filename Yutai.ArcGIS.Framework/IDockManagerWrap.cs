@@ -12,4 +12,3 @@ namespace Yutai.ArcGIS.Framework
         object DockManager { set; }
     }
 }
-

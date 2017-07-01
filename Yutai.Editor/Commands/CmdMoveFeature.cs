@@ -66,8 +66,6 @@ namespace Yutai.Plugins.Editor.Commands
         }
 
 
-
-
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
@@ -75,7 +73,6 @@ namespace Yutai.Plugins.Editor.Commands
 
         public override void OnClick()
         {
-
             frmInputValue1 frmInputValue = new frmInputValue1();
             frmInputValue.Text = "输入移动增量";
             if (frmInputValue.ShowDialog() == System.Windows.Forms.DialogResult.OK)

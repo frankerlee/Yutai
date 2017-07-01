@@ -9,6 +9,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 {
     partial class TableGeneralPage
     {
+        private IContainer icontainer_0;
         protected override void Dispose(bool bool_3)
         {
             if (bool_3 && (this.icontainer_0 != null))

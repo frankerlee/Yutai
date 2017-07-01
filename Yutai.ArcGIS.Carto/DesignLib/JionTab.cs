@@ -36,8 +36,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             new TextElementClass();
             ILineElement element2 = null;
             ILineSymbol symbol = null;
-            double num = this.double_1 / 3.0;
-            double num2 = this.double_0 / 3.0;
+            double num = this.double_1/3.0;
+            double num2 = this.double_0/3.0;
             double num3 = 0.3;
             object missing = Type.Missing;
             IElement element3 = new LineElementClass();
@@ -88,8 +88,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 points.AddPoint(point6, ref missing, ref missing);
                 element4.Geometry = polyline2;
                 element.AddElement(element4);
-                point5.PutCoords(inPoint.X, inPoint.Y - (num * 2.0));
-                point6.PutCoords(point4.X, point4.Y - (num * 2.0));
+                point5.PutCoords(inPoint.X, inPoint.Y - (num*2.0));
+                point6.PutCoords(point4.X, point4.Y - (num*2.0));
                 points = polyline3 as IPointCollection;
                 points.AddPoint(point5, ref missing, ref missing);
                 points.AddPoint(point6, ref missing, ref missing);
@@ -102,8 +102,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 points.AddPoint(point6, ref missing, ref missing);
                 element6.Geometry = polyline4;
                 element.AddElement(element6);
-                point5.PutCoords(inPoint.X + (num2 * 2.0), inPoint.Y);
-                point6.PutCoords(inPoint.X + (num2 * 2.0), point2.Y);
+                point5.PutCoords(inPoint.X + (num2*2.0), inPoint.Y);
+                point6.PutCoords(inPoint.X + (num2*2.0), point2.Y);
                 points = polyline5 as IPointCollection;
                 points.AddPoint(point5, ref missing, ref missing);
                 points.AddPoint(point6, ref missing, ref missing);
@@ -114,7 +114,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 IPolygonElement element9 = element8 as IPolygonElement;
                 ISimpleFillSymbol symbol2 = new SimpleFillSymbolClass();
                 IFillShapeElement element10 = element9 as IFillShapeElement;
-                IRgbColor color = new RgbColorClass {
+                IRgbColor color = new RgbColorClass
+                {
                     Red = 0,
                     Green = 0,
                     Blue = 0
@@ -126,11 +127,11 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 points = polygon as IPointCollection;
                 point5.PutCoords(inPoint.X + num2, inPoint.Y - num);
                 points.AddPoint(point5, ref missing, ref missing);
-                point5.PutCoords(inPoint.X + (num2 * 2.0), inPoint.Y - num);
+                point5.PutCoords(inPoint.X + (num2*2.0), inPoint.Y - num);
                 points.AddPoint(point5, ref missing, ref missing);
-                point5.PutCoords(inPoint.X + (num2 * 2.0), inPoint.Y - (num * 2.0));
+                point5.PutCoords(inPoint.X + (num2*2.0), inPoint.Y - (num*2.0));
                 points.AddPoint(point5, ref missing, ref missing);
-                point5.PutCoords(inPoint.X + num2, inPoint.Y - (num * 2.0));
+                point5.PutCoords(inPoint.X + num2, inPoint.Y - (num*2.0));
                 points.AddPoint(point5, ref missing, ref missing);
                 polygon.Close();
                 element8.Geometry = polygon;
@@ -139,35 +140,43 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 new EnvelopeClass();
                 if (this.string_0.Trim().Length > 0)
                 {
-                    element.AddElement(this.method_0(iactiveView_0, this.string_0, inPoint.X + (num2 / 2.0), inPoint.Y - (num / 2.0), envelope));
+                    element.AddElement(this.method_0(iactiveView_0, this.string_0, inPoint.X + (num2/2.0),
+                        inPoint.Y - (num/2.0), envelope));
                 }
                 if (this.string_1.Trim().Length > 0)
                 {
-                    element.AddElement(this.method_0(iactiveView_0, this.string_1, inPoint.X + (num2 / 2.0), inPoint.Y - (1.5 * num), envelope));
+                    element.AddElement(this.method_0(iactiveView_0, this.string_1, inPoint.X + (num2/2.0),
+                        inPoint.Y - (1.5*num), envelope));
                 }
                 if (this.string_2.Trim().Length > 0)
                 {
-                    element.AddElement(this.method_0(iactiveView_0, this.string_2, inPoint.X + (num2 / 2.0), inPoint.Y - (2.5 * num), envelope));
+                    element.AddElement(this.method_0(iactiveView_0, this.string_2, inPoint.X + (num2/2.0),
+                        inPoint.Y - (2.5*num), envelope));
                 }
                 if (this.string_3.Trim().Length > 0)
                 {
-                    element.AddElement(this.method_0(iactiveView_0, this.string_3, inPoint.X + (1.5 * num2), inPoint.Y - (0.5 * num), envelope));
+                    element.AddElement(this.method_0(iactiveView_0, this.string_3, inPoint.X + (1.5*num2),
+                        inPoint.Y - (0.5*num), envelope));
                 }
                 if (this.string_4.Trim().Length > 0)
                 {
-                    element.AddElement(this.method_0(iactiveView_0, this.string_4, inPoint.X + (1.5 * num2), inPoint.Y - (2.5 * num), envelope));
+                    element.AddElement(this.method_0(iactiveView_0, this.string_4, inPoint.X + (1.5*num2),
+                        inPoint.Y - (2.5*num), envelope));
                 }
                 if (this.string_5.Trim().Length > 0)
                 {
-                    element.AddElement(this.method_0(iactiveView_0, this.string_5, inPoint.X + (2.5 * num2), inPoint.Y - (0.5 * num), envelope));
+                    element.AddElement(this.method_0(iactiveView_0, this.string_5, inPoint.X + (2.5*num2),
+                        inPoint.Y - (0.5*num), envelope));
                 }
                 if (this.string_6.Trim().Length > 0)
                 {
-                    element.AddElement(this.method_0(iactiveView_0, this.string_6, inPoint.X + (2.5 * num2), inPoint.Y - (1.5 * num), envelope));
+                    element.AddElement(this.method_0(iactiveView_0, this.string_6, inPoint.X + (2.5*num2),
+                        inPoint.Y - (1.5*num), envelope));
                 }
                 if (this.string_7.Trim().Length > 0)
                 {
-                    element.AddElement(this.method_0(iactiveView_0, this.string_7, inPoint.X + (2.5 * num2), inPoint.Y - (2.5 * num), envelope));
+                    element.AddElement(this.method_0(iactiveView_0, this.string_7, inPoint.X + (2.5*num2),
+                        inPoint.Y - (2.5*num), envelope));
                 }
             }
             catch (Exception)
@@ -176,10 +185,12 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             return (element as IElement);
         }
 
-        private IElement method_0(IActiveView iactiveView_0, string string_8, double double_2, double double_3, IEnvelope ienvelope_0)
+        private IElement method_0(IActiveView iactiveView_0, string string_8, double double_2, double double_3,
+            IEnvelope ienvelope_0)
         {
             ITextElement element = new TextElementClass();
-            ITextSymbol symbol = new TextSymbolClass {
+            ITextSymbol symbol = new TextSymbolClass
+            {
                 HorizontalAlignment = esriTextHorizontalAlignment.esriTHACenter,
                 VerticalAlignment = esriTextVerticalAlignment.esriTVACenter
             };
@@ -196,8 +207,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             element2.QueryBounds(iactiveView_0.ScreenDisplay, bounds);
             if (bounds.Width > ienvelope_0.Width)
             {
-                double sx = ienvelope_0.Width / bounds.Width;
-                double sy = ienvelope_0.Height / bounds.Height;
+                double sx = ienvelope_0.Width/bounds.Width;
+                double sy = ienvelope_0.Height/bounds.Height;
                 (element2 as ITransform2D).Scale(origin, sx, sy);
             }
             return element2;
@@ -205,99 +216,50 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         public string Row1Col1Text
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
 
         public string Row1Col2Text
         {
-            get
-            {
-                return this.string_3;
-            }
-            set
-            {
-                this.string_3 = value;
-            }
+            get { return this.string_3; }
+            set { this.string_3 = value; }
         }
 
         public string Row1Col3Text
         {
-            get
-            {
-                return this.string_5;
-            }
-            set
-            {
-                this.string_5 = value;
-            }
+            get { return this.string_5; }
+            set { this.string_5 = value; }
         }
 
         public string Row2Col1Text
         {
-            get
-            {
-                return this.string_1;
-            }
-            set
-            {
-                this.string_1 = value;
-            }
+            get { return this.string_1; }
+            set { this.string_1 = value; }
         }
 
         public string Row2Col3Text
         {
-            get
-            {
-                return this.string_6;
-            }
-            set
-            {
-                this.string_6 = value;
-            }
+            get { return this.string_6; }
+            set { this.string_6 = value; }
         }
 
         public string Row3Col1Text
         {
-            get
-            {
-                return this.string_2;
-            }
-            set
-            {
-                this.string_2 = value;
-            }
+            get { return this.string_2; }
+            set { this.string_2 = value; }
         }
 
         public string Row3Col2Text
         {
-            get
-            {
-                return this.string_4;
-            }
-            set
-            {
-                this.string_4 = value;
-            }
+            get { return this.string_4; }
+            set { this.string_4 = value; }
         }
 
         public string Row3Col3Text
         {
-            get
-            {
-                return this.string_7;
-            }
-            set
-            {
-                this.string_7 = value;
-            }
+            get { return this.string_7; }
+            set { this.string_7 = value; }
         }
     }
 }
-

@@ -21,7 +21,7 @@ namespace Yutai.Shared
 
         public static T Deserialize<T>(this string xml, IEnumerable<Type> knownTypes)
         {
-            return (T)Deserialize(xml, typeof(T), knownTypes);
+            return (T) Deserialize(xml, typeof(T), knownTypes);
         }
 
         public static object Deserialize(this string xml, Type type, IEnumerable<Type> knownTypes)
@@ -30,7 +30,7 @@ namespace Yutai.Shared
 
             using (var stream = new MemoryStream(encoding.GetBytes(xml)))
             {
-                var quota = new XmlDictionaryReaderQuotas() { MaxStringContentLength = MaxStringContentLength };
+                var quota = new XmlDictionaryReaderQuotas() {MaxStringContentLength = MaxStringContentLength};
                 using (var reader = XmlDictionaryReader.CreateTextReader(stream, quota))
                 {
                     var ser = new DataContractSerializer(type, knownTypes, Int32.MaxValue, false, false, null);
@@ -56,7 +56,8 @@ namespace Yutai.Shared
                 using (XmlTextWriter xmlWriter = new XmlTextWriter(writer))
                 {
                     xmlWriter.Formatting = Formatting.Indented;
-                    var ser = new DataContractSerializer(typeof(T), knownTypes, Int32.MaxValue, false, preserveObjectReferences, null);
+                    var ser = new DataContractSerializer(typeof(T), knownTypes, Int32.MaxValue, false,
+                        preserveObjectReferences, null);
                     ser.WriteObject(xmlWriter, target);
 
                     return writer.ToString();
@@ -70,14 +71,16 @@ namespace Yutai.Shared
 
             var ser = new DataContractSerializer(typeof(T), knownTypes, Int32.MaxValue, false, false, null);
             var o = ser.ReadObject(reader);
-            return (T)o;
+            return (T) o;
         }
 
-        public static XmlElement SerializeToElement<T>(this T target, IEnumerable<Type> knownTypes, bool preserveObjectReferences)
+        public static XmlElement SerializeToElement<T>(this T target, IEnumerable<Type> knownTypes,
+            bool preserveObjectReferences)
         {
             using (var stream = new MemoryStream())
             {
-                var ser = new DataContractSerializer(typeof(T), knownTypes, Int32.MaxValue, false, preserveObjectReferences, null);
+                var ser = new DataContractSerializer(typeof(T), knownTypes, Int32.MaxValue, false,
+                    preserveObjectReferences, null);
 
                 ser.WriteObject(stream, target);
                 var doc = new XmlDocument();

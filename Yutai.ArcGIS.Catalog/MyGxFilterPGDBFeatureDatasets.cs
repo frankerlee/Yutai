@@ -16,7 +16,8 @@ namespace Yutai.ArcGIS.Catalog
                 myDoubleClickResult_0 = MyDoubleClickResult.myDCRShowChildren;
                 return true;
             }
-            if ((igxObject_0 is IGxDataset) && ((igxObject_0 as IGxDataset).Type == esriDatasetType.esriDTFeatureDataset))
+            if ((igxObject_0 is IGxDataset) &&
+                ((igxObject_0 as IGxDataset).Type == esriDatasetType.esriDTFeatureDataset))
             {
                 myDoubleClickResult_0 = MyDoubleClickResult.myDCRChooseAndDismiss;
                 return true;
@@ -37,7 +38,8 @@ namespace Yutai.ArcGIS.Catalog
                     return true;
                 }
             }
-            else if ((igxObject_0 is IGxDataset) && ((igxObject_0 as IGxDataset).Type == esriDatasetType.esriDTFeatureDataset))
+            else if ((igxObject_0 is IGxDataset) &&
+                     ((igxObject_0 as IGxDataset).Type == esriDatasetType.esriDTFeatureDataset))
             {
                 return true;
             }
@@ -48,7 +50,9 @@ namespace Yutai.ArcGIS.Catalog
         {
             if (igxObject_0 is IGxDatabase)
             {
-                bool_0 = ((igxObject_0 as IGxDatabase).Workspace as IWorkspace2).get_NameExists(esriDatasetType.esriDTFeatureDataset, string_0);
+                bool_0 =
+                    ((igxObject_0 as IGxDatabase).Workspace as IWorkspace2).get_NameExists(
+                        esriDatasetType.esriDTFeatureDataset, string_0);
                 return true;
             }
             return false;
@@ -56,19 +60,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public string Description
         {
-            get
-            {
-                return "个人数据库要素集";
-            }
+            get { return "个人数据库要素集"; }
         }
 
         public string Name
         {
-            get
-            {
-                return "个人数据库要素集";
-            }
+            get { return "个人数据库要素集"; }
         }
     }
 }
-

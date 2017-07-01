@@ -14,7 +14,7 @@ namespace Yutai.Plugins.Interfaces
         void RemoveItemsForPlugin(PluginIdentity identity);
         IRibbonMenuIndex SubItems { get; }
         void AddCommand(YutaiCommand command);
-      
+
         void Remove(IRibbonItem item);
         void Clear();
         void ChangeCurrentTool(string oldToolName, string nowToolName);
@@ -26,7 +26,7 @@ namespace Yutai.Plugins.Interfaces
         void SetStatusValue(string statusKey, object objValue);
 
         void SetCurrentTool(object control, YutaiTool tool);
-        void SetCurrentTool(object control,string toolName);
+        void SetCurrentTool(object control, string toolName);
 
 
         void SetContextMenu(Control mainViewMapControlContainer);

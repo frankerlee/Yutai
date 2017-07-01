@@ -55,22 +55,13 @@ namespace Yutai.ArcGIS.Framework
 
         public override int Count
         {
-            get
-            {
-                return this.repositoryItemComboBox_0.Items.Count;
-            }
+            get { return this.repositoryItemComboBox_0.Items.Count; }
         }
 
         public override object EditValue
         {
-            get
-            {
-                return this.barEditItem_0.EditValue;
-            }
-            set
-            {
-                this.barEditItem_0.EditValue = value;
-            }
+            get { return this.barEditItem_0.EditValue; }
+            set { this.barEditItem_0.EditValue = value; }
         }
 
         public override bool Enabled
@@ -94,23 +85,13 @@ namespace Yutai.ArcGIS.Framework
 
         public override object this[int int_0]
         {
-            get
-            {
-                return this.repositoryItemComboBox_0.Items[int_0];
-            }
+            get { return this.repositoryItemComboBox_0.Items[int_0]; }
         }
 
         public override string Text
         {
-            get
-            {
-                return this.barEditItem_0.Caption;
-            }
-            set
-            {
-                this.barEditItem_0.Caption = value;
-            }
+            get { return this.barEditItem_0.Caption; }
+            set { this.barEditItem_0.Caption = value; }
         }
     }
 }
-

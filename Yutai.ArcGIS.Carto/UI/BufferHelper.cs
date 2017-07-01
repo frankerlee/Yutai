@@ -35,7 +35,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public void Do()
         {
-            IFeatureCursorBuffer2 buffer = new FeatureCursorBufferClass {
+            IFeatureCursorBuffer2 buffer = new FeatureCursorBufferClass
+            {
                 BufferSpatialReference = this.m_pFocusMap.SpatialReference,
                 DataFrameSpatialReference = this.m_pFocusMap.SpatialReference,
                 SourceSpatialReference = this.m_pFocusMap.SpatialReference,
@@ -45,7 +46,8 @@ namespace Yutai.ArcGIS.Carto.UI
             {
                 int num;
                 bool flag;
-                buffer.GraphicsLayer2(this.m_pFocusMap.ActiveGraphicsLayer as IGraphicsLayer, this.bUseSelect, out num, out flag);
+                buffer.GraphicsLayer2(this.m_pFocusMap.ActiveGraphicsLayer as IGraphicsLayer, this.bUseSelect, out num,
+                    out flag);
             }
             else
             {
@@ -104,7 +106,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 if (this.m_OutputType == 0)
                 {
                     (buffer as IBufferProcessingParameter).SaveAsGraphics = true;
-                    ICompositeGraphicsLayer basicGraphicsLayer = this.m_pFocusMap.BasicGraphicsLayer as ICompositeGraphicsLayer;
+                    ICompositeGraphicsLayer basicGraphicsLayer =
+                        this.m_pFocusMap.BasicGraphicsLayer as ICompositeGraphicsLayer;
                     buffer.BufferToGraphics(basicGraphicsLayer);
                 }
                 else if (this.m_OutputType == 1)
@@ -122,7 +125,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     IGeometryDefEdit geometryDef = edit.GeometryDef as IGeometryDefEdit;
                     geometryDef.SpatialReference_2 = this.m_pFocusMap.SpatialReference;
                     geometryDef.GeometryType_2 = esriGeometryType.esriGeometryPolygon;
-                    IFeatureClass o = this.m_pOutFeatureWorksapce.CreateFeatureClass(this.m_FeatClassName, requiredFields, null, null, esriFeatureType.esriFTSimple, "Shape", "");
+                    IFeatureClass o = this.m_pOutFeatureWorksapce.CreateFeatureClass(this.m_FeatClassName,
+                        requiredFields, null, null, esriFeatureType.esriFTSimple, "Shape", "");
                     IFeatureClassName fullName = (o as IDataset).FullName as IFeatureClassName;
                     Marshal.ReleaseComObject(o);
                     o = null;
@@ -142,4 +146,3 @@ namespace Yutai.ArcGIS.Carto.UI
         }
     }
 }
-

@@ -66,7 +66,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void frmLabelRotateAngles_Load(object sender, EventArgs e)
+        private void frmLabelRotateAngles_Load(object sender, EventArgs e)
         {
             if (this.double_0 != null)
             {
@@ -78,7 +78,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- public object Angles
+        public object Angles
         {
             get
             {
@@ -89,11 +89,7 @@ namespace Yutai.ArcGIS.Carto.UI
                 }
                 return this.double_0;
             }
-            set
-            {
-                this.double_0 = value as double[];
-            }
+            set { this.double_0 = value as double[]; }
         }
     }
 }
-

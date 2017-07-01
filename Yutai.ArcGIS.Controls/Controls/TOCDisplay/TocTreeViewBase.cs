@@ -38,21 +38,14 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 
         public TOCTreeNodeCollection Nodes
         {
-            get
-            {
-                return this.m_pNodes;
-            }
+            get { return this.m_pNodes; }
         }
 
         public TOCTreeNode SelectedNode { get; set; }
 
         public TOCTreeNodeCollection SelectedNodes
         {
-            get
-            {
-                return this.m_pSelectedNodes;
-            }
+            get { return this.m_pSelectedNodes; }
         }
     }
 }
-

@@ -12,9 +12,8 @@ namespace Yutai.Commands.MapLegend
 {
     public class CmdExportData : YutaiCommand
     {
-       
         private IMapLegendView _view;
-        
+
         public CmdExportData(IAppContext context, IMapLegendView view)
         {
             _context = context;
@@ -52,8 +51,8 @@ namespace Yutai.Commands.MapLegend
             base.m_checked = false;
             base.m_enabled = true;
             base._itemType = RibbonItemType.Button;
-
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
@@ -67,7 +66,6 @@ namespace Yutai.Commands.MapLegend
 
         public void OnClick()
         {
-
             if (_view.SelectedItemType == esriTOCControlItem.esriTOCControlItemMap)
             {
                 return;
@@ -78,7 +76,6 @@ namespace Yutai.Commands.MapLegend
             data.FocusMap = _view.SelectedMap;
             data.FeatureLayer = _view.SelectedLayer as IFeatureLayer;
             data.ShowDialog();
-
         }
     }
 }

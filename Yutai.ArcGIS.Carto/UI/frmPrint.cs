@@ -58,7 +58,8 @@ namespace Yutai.ArcGIS.Carto.UI
             {
                 if (!(this.iprinter_0 is IEmfPrinter))
                 {
-                    printer = new EmfPrinterClass {
+                    printer = new EmfPrinterClass
+                    {
                         Paper = this.iprinter_0.Paper
                     };
                     this.iprinter_0 = printer;
@@ -71,7 +72,8 @@ namespace Yutai.ArcGIS.Carto.UI
             }
             else if (!(this.iprinter_0 is IPsPrinter))
             {
-                printer = new PsPrinterClass {
+                printer = new PsPrinterClass
+                {
                     Paper = this.iprinter_0.Paper
                 };
                 this.iprinter_0 = printer;
@@ -85,7 +87,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         [DllImport("GDI32.dll")]
         public static extern int CreateDC(string string_0, string string_1, string string_2, IntPtr intptr_0);
- private void frmPrint_Load(object sender, EventArgs e)
+
+        private void frmPrint_Load(object sender, EventArgs e)
         {
             PrintDocument document;
             IPaper paper;
@@ -99,7 +102,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 {
                     this.iprinter_0 = new EmfPrinterClass();
                     document = new PrintDocument();
-                    paper = new PaperClass {
+                    paper = new PaperClass
+                    {
                         PrinterName = document.PrinterSettings.PrinterName,
                         Orientation = (this.iactiveView_0 as IPageLayout2).Page.Orientation
                     };
@@ -110,48 +114,52 @@ namespace Yutai.ArcGIS.Carto.UI
             {
                 this.iprinter_0 = new EmfPrinterClass();
                 document = new PrintDocument();
-                paper = new PaperClass {
+                paper = new PaperClass
+                {
                     PrinterName = document.PrinterSettings.PrinterName
                 };
                 this.iprinter_0.Paper = paper;
             }
-            this.trackBar1.Value = (this.iactiveView_0.ScreenDisplay.DisplayTransformation as IOutputRasterSettings).ResampleRatio;
+            this.trackBar1.Value =
+                (this.iactiveView_0.ScreenDisplay.DisplayTransformation as IOutputRasterSettings).ResampleRatio;
             this.txtQulity.Text = this.trackBar1.Value.ToString();
             this.method_2();
             this.method_3();
             this.bool_0 = true;
             if (this.iactiveView_0 is IPageLayout)
             {
-                this.rdoTitle.Checked = (this.iactiveView_0 as IPageLayout).Page.PageToPrinterMapping == esriPageToPrinterMapping.esriPageMappingTile;
+                this.rdoTitle.Checked = (this.iactiveView_0 as IPageLayout).Page.PageToPrinterMapping ==
+                                        esriPageToPrinterMapping.esriPageMappingTile;
             }
         }
 
         [DllImport("GDI32.dll")]
         public static extern int GetDeviceCaps(int int_0, int int_1);
- private double method_0(esriUnits esriUnits_0, double double_0)
+
+        private double method_0(esriUnits esriUnits_0, double double_0)
         {
             switch (esriUnits_0)
             {
                 case esriUnits.esriMillimeters:
-                    return (double_0 * 0.1);
+                    return (double_0*0.1);
 
                 case esriUnits.esriCentimeters:
                     return double_0;
 
                 case esriUnits.esriMeters:
-                    return (double_0 * 100.0);
+                    return (double_0*100.0);
 
                 case esriUnits.esriKilometers:
-                    return (double_0 * 100000.0);
+                    return (double_0*100000.0);
 
                 case esriUnits.esriDecimalDegrees:
                     return double_0;
 
                 case esriUnits.esriDecimeters:
-                    return (double_0 * 10.0);
+                    return (double_0*10.0);
 
                 case esriUnits.esriInches:
-                    return (double_0 * 2.54);
+                    return (double_0*2.54);
             }
             return double_0;
         }
@@ -161,25 +169,25 @@ namespace Yutai.ArcGIS.Carto.UI
             switch (esriUnits_0)
             {
                 case esriUnits.esriMillimeters:
-                    return (double_0 * 10.0);
+                    return (double_0*10.0);
 
                 case esriUnits.esriCentimeters:
                     return double_0;
 
                 case esriUnits.esriMeters:
-                    return (double_0 * 0.01);
+                    return (double_0*0.01);
 
                 case esriUnits.esriKilometers:
-                    return (double_0 * 1E-05);
+                    return (double_0*1E-05);
 
                 case esriUnits.esriDecimalDegrees:
                     return double_0;
 
                 case esriUnits.esriDecimeters:
-                    return (double_0 * 0.1);
+                    return (double_0*0.1);
 
                 case esriUnits.esriInches:
-                    return (double_0 / 2.54);
+                    return (double_0/2.54);
             }
             return double_0;
         }
@@ -218,7 +226,8 @@ namespace Yutai.ArcGIS.Carto.UI
             if (this.iactiveView_0 is IPageLayout)
             {
                 short num2;
-                (this.iactiveView_0 as IPageLayout2).Page.PrinterPageCount(this.iprinter_0, Convert.ToDouble(this.txbOverlap.Text), out num2);
+                (this.iactiveView_0 as IPageLayout2).Page.PrinterPageCount(this.iprinter_0,
+                    Convert.ToDouble(this.txbOverlap.Text), out num2);
                 this.lblPageCount.Text = "页数: " + num2.ToString();
                 int num3 = Convert.ToInt32(this.txbStartPage.Text);
                 int num4 = Convert.ToInt32(this.txbEndPage.Text);
@@ -297,7 +306,8 @@ namespace Yutai.ArcGIS.Carto.UI
             IActiveView view = this.iactiveView_0;
             IEnvelope deviceBounds = new EnvelopeClass();
             IEnvelope pageBounds = new EnvelopeClass();
-            IOutputRasterSettings displayTransformation = view.ScreenDisplay.DisplayTransformation as IOutputRasterSettings;
+            IOutputRasterSettings displayTransformation =
+                view.ScreenDisplay.DisplayTransformation as IOutputRasterSettings;
             long resampleRatio = displayTransformation.ResampleRatio;
             this.method_4(view, long_0);
             this.iprinter_0.SpoolFileName = "打印地图";
@@ -313,7 +323,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     (this.iactiveView_0 as IPageLayout).Page.PrinterPageCount(this.iprinter_0, 0.0, out num6);
                     if (this.rdoAll.Checked)
                     {
-                        (this.iactiveView_0 as IPageLayout2).Page.PrinterPageCount(this.iprinter_0, Convert.ToDouble(this.txbOverlap.Text), out pageCount);
+                        (this.iactiveView_0 as IPageLayout2).Page.PrinterPageCount(this.iprinter_0,
+                            Convert.ToDouble(this.txbOverlap.Text), out pageCount);
                     }
                     else
                     {
@@ -325,12 +336,14 @@ namespace Yutai.ArcGIS.Carto.UI
                 int hDC = 0;
                 for (short i = num4; i < pageCount; i = (short) (i + 1))
                 {
-                    (this.iactiveView_0 as IPageLayout).Page.GetDeviceBounds(this.iprinter_0, i, overlap, this.iprinter_0.Resolution, deviceBounds);
+                    (this.iactiveView_0 as IPageLayout).Page.GetDeviceBounds(this.iprinter_0, i, overlap,
+                        this.iprinter_0.Resolution, deviceBounds);
                     grect.bottom = ((int) deviceBounds.YMax) - GetDeviceCaps(num2, 113);
                     grect.left = ((int) deviceBounds.XMin) - GetDeviceCaps(num2, 112);
                     grect.right = ((int) deviceBounds.XMax) - GetDeviceCaps(num2, 112);
                     grect.top = ((int) deviceBounds.YMin) - GetDeviceCaps(num2, 113);
-                    deviceBounds.PutCoords(0.0, 0.0, (double) (grect.right - grect.left), (double) (grect.bottom - grect.top));
+                    deviceBounds.PutCoords(0.0, 0.0, (double) (grect.right - grect.left),
+                        (double) (grect.bottom - grect.top));
                     (this.iactiveView_0 as IPageLayout).Page.GetPageBounds(this.iprinter_0, i, overlap, pageBounds);
                     hDC = this.iprinter_0.StartPrinting(deviceBounds, 0);
                     this.iactiveView_0.Output(hDC, this.iprinter_0.Resolution, ref grect, pageBounds, null);
@@ -343,7 +356,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 pageBounds = null;
                 if (this.ipageLayoutControl_0 != null)
                 {
-                    this.ipageLayoutControl_0.Page.GetDeviceBounds(this.iprinter_0, 0, 0.0, this.iprinter_0.Resolution, deviceBounds);
+                    this.ipageLayoutControl_0.Page.GetDeviceBounds(this.iprinter_0, 0, 0.0, this.iprinter_0.Resolution,
+                        deviceBounds);
                     grect.bottom = ((int) deviceBounds.YMax) - GetDeviceCaps(num2, 113);
                     grect.left = ((int) deviceBounds.XMin) - GetDeviceCaps(num2, 112);
                     grect.right = ((int) deviceBounds.XMax) - GetDeviceCaps(num2, 112);
@@ -353,16 +367,17 @@ namespace Yutai.ArcGIS.Carto.UI
                 {
                     WKSEnvelope envelope3;
                     this.iprinter_0.PrintableBounds.QueryWKSCoords(out envelope3);
-                    double a = envelope3.XMin * this.iprinter_0.Resolution;
-                    double num10 = envelope3.XMax * this.iprinter_0.Resolution;
-                    double num11 = envelope3.YMin * this.iprinter_0.Resolution;
-                    double num12 = envelope3.YMax * this.iprinter_0.Resolution;
+                    double a = envelope3.XMin*this.iprinter_0.Resolution;
+                    double num10 = envelope3.XMax*this.iprinter_0.Resolution;
+                    double num11 = envelope3.YMin*this.iprinter_0.Resolution;
+                    double num12 = envelope3.YMax*this.iprinter_0.Resolution;
                     grect.left = (int) Math.Round(a);
                     grect.top = (int) Math.Round(num11);
                     grect.right = (int) Math.Round(num10);
                     grect.bottom = (int) Math.Round(num12);
                 }
-                this.iactiveView_0.Output(this.iprinter_0.StartPrinting(deviceBounds, 0), this.iprinter_0.Resolution, ref grect, pageBounds, null);
+                this.iactiveView_0.Output(this.iprinter_0.StartPrinting(deviceBounds, 0), this.iprinter_0.Resolution,
+                    ref grect, pageBounds, null);
                 this.iprinter_0.FinishPrinting();
             }
             this.method_4(view, resampleRatio);
@@ -386,18 +401,21 @@ namespace Yutai.ArcGIS.Carto.UI
             {
                 if (this.rdoTitle.Checked)
                 {
-                    (this.iactiveView_0 as IPageLayout).Page.PageToPrinterMapping = esriPageToPrinterMapping.esriPageMappingTile;
+                    (this.iactiveView_0 as IPageLayout).Page.PageToPrinterMapping =
+                        esriPageToPrinterMapping.esriPageMappingTile;
                     this.method_3();
                 }
                 else
                 {
-                    (this.iactiveView_0 as IPageLayout).Page.PageToPrinterMapping = esriPageToPrinterMapping.esriPageMappingScale;
+                    (this.iactiveView_0 as IPageLayout).Page.PageToPrinterMapping =
+                        esriPageToPrinterMapping.esriPageMappingScale;
                 }
             }
         }
 
         [DllImport("User32.dll")]
         public static extern int ReleaseDC(int int_0, int int_1);
+
         private void textBox_copied_Leave(object sender, EventArgs e)
         {
             if (!this.method_5(this.textBox_copied.Text))
@@ -464,11 +482,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IPageLayoutControl PageLayoutControl
         {
-            set
-            {
-                this.ipageLayoutControl_0 = value;
-            }
+            set { this.ipageLayoutControl_0 = value; }
         }
     }
 }
-

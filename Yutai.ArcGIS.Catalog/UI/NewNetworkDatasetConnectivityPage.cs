@@ -18,7 +18,5 @@ namespace Yutai.ArcGIS.Catalog.UI
         {
             return true;
         }
-
-
     }
 }

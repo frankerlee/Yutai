@@ -46,11 +46,13 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             {
                 style = new HollowScaleBarClass();
             }
-            UIDClass class2 = new UIDClass {
+            UIDClass class2 = new UIDClass
+            {
                 Value = "esriCarto.ScaleBar"
             };
             UID clsid = class2;
-            IMapFrame frame = (ipageLayout_0 as IGraphicsContainer).FindFrame((ipageLayout_0 as IActiveView).FocusMap) as IMapFrame;
+            IMapFrame frame =
+                (ipageLayout_0 as IGraphicsContainer).FindFrame((ipageLayout_0 as IActiveView).FocusMap) as IMapFrame;
             style.Units = frame.Map.DistanceUnits;
             INumberFormat numberFormat = style.NumberFormat;
             if (numberFormat is INumericFormat)
@@ -141,11 +143,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 set.SetProperty("Style", base.Style);
                 return set;
             }
-            set
-            {
-                base.Style = value.GetProperty("Style");
-            }
+            set { base.Style = value.GetProperty("Style"); }
         }
     }
 }
-

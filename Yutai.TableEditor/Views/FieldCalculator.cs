@@ -62,7 +62,7 @@ namespace Yutai.Plugins.TableEditor.Views
 
         public string Expression
         {
-            get { return txtExpression.Text; } 
+            get { return txtExpression.Text; }
         }
 
         private void functionTreeView_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)

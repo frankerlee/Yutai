@@ -19,7 +19,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.InitializeComponent();
         }
 
- public void Do()
+        public void Do()
         {
             try
             {
@@ -40,7 +40,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void method_0()
+        private void method_0()
         {
             double num;
             double num2;
@@ -62,19 +62,12 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IMapFrame MapFrame
         {
-            set
-            {
-                this.m_pMapFrame = value;
-            }
+            set { this.m_pMapFrame = value; }
         }
 
         public IPageLayout PageLayout
         {
-            set
-            {
-                this.m_pPageLayout = value;
-            }
+            set { this.m_pPageLayout = value; }
         }
     }
 }
-

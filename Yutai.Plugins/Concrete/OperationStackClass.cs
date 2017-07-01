@@ -58,10 +58,7 @@ namespace Yutai.Plugins.Concrete
         // Properties
         public int Count
         {
-            get
-            {
-                return this.iarray_0.Count;
-            }
+            get { return this.iarray_0.Count; }
         }
 
         public IOperation this[int int_1]
@@ -90,7 +87,7 @@ namespace Yutai.Plugins.Concrete
 
         IOperation IOperationStack.get_Item(int index)
         {
-            return this.iarray_0.Element[index] as IOperation ;
+            return this.iarray_0.Element[index] as IOperation;
         }
 
         public IOperation UndoOperation
@@ -105,6 +102,4 @@ namespace Yutai.Plugins.Concrete
             }
         }
     }
-
-
 }

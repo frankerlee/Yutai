@@ -14,20 +14,21 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Commands.Views
 {
-    public class CmdViewFullExtent:YutaiCommand
+    public class CmdViewFullExtent : YutaiCommand
     {
         public CmdViewFullExtent(IAppContext context)
         {
             OnCreate(context);
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
         }
+
         public override void OnClick()
         {
-
-            IActiveView activeView = (IActiveView)this._context.FocusMap;
+            IActiveView activeView = (IActiveView) this._context.FocusMap;
             UID uID = new UIDClass();
             uID.Value = "{6CA416B1-E160-11D2-9F4E-00C04F6BC78E}";
             IEnumLayer enumLayer = this._context.FocusMap.get_Layers(uID, true);

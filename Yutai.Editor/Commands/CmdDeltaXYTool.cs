@@ -33,13 +33,8 @@ namespace Yutai.Plugins.Editor.Commands
 
         public override bool Enabled
         {
-            get
-            {
-                return SkectchAssist.CheckEnable2(_context) && SketchShareEx.PointCount > 0;
-            }
+            get { return SkectchAssist.CheckEnable2(_context) && SketchShareEx.PointCount > 0; }
         }
-
-
 
 
         public override void OnClick(object sender, EventArgs args)
@@ -67,7 +62,8 @@ namespace Yutai.Plugins.Editor.Commands
             SketchShareEx.m_pAnchorPoint.PutCoords(x, y);
             point.X = x;
             point.Y = y;
-            SketchShareEx.SketchMouseDown(point, _context.ActiveView, Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
+            SketchShareEx.SketchMouseDown(point, _context.ActiveView,
+                Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
             SketchShareEx.IsFixDirection = false;
             SketchShareEx.IsFixLength = false;
         }

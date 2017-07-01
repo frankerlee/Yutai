@@ -31,9 +31,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void method_0()
+        private void method_0()
         {
-            string[] strArray = this.iversion_0.VersionName.Split(new char[] { '.' });
+            string[] strArray = this.iversion_0.VersionName.Split(new char[] {'.'});
             this.txtName.Text = strArray[1];
             this.txtOwner.Text = strArray[0];
             IVersionInfo parent = null;
@@ -65,11 +65,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IVersion Version
         {
-            set
-            {
-                this.iversion_0 = value;
-            }
+            set { this.iversion_0 = value; }
         }
     }
 }
-

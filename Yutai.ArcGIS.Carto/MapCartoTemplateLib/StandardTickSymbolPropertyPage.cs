@@ -104,11 +104,11 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
- public void Hide()
+        public void Hide()
         {
         }
 
- private void rdoLine_CheckedChanged(object sender, EventArgs e)
+        private void rdoLine_CheckedChanged(object sender, EventArgs e)
         {
             if (this.bool_0 && this.rdoLine.Checked)
             {
@@ -176,51 +176,29 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public MapCartoTemplateLib.MapTemplate MapTemplate
         {
-            get
-            {
-                return this.mapTemplate_0;
-            }
-            set
-            {
-                this.mapTemplate_0 = value;
-            }
+            get { return this.mapTemplate_0; }
+            set { this.mapTemplate_0 = value; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

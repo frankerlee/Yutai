@@ -46,7 +46,7 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             }
         }
 
- private void Init()
+        private void Init()
         {
             this.m_CanDo = false;
             this.txtSnapTol.Text = NetworkAnalyst.SnapTolerance.ToString();
@@ -54,7 +54,7 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             this.m_CanDo = true;
         }
 
- private void NAGeneralPropertyPage_Load(object sender, EventArgs e)
+        private void NAGeneralPropertyPage_Load(object sender, EventArgs e)
         {
             this.Init();
         }
@@ -88,4 +88,3 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
         }
     }
 }
-

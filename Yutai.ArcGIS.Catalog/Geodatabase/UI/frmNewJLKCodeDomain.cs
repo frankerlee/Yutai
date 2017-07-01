@@ -60,7 +60,11 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 for (int i = 0; i < fields.FieldCount; i++)
                 {
                     IField field = fields.get_Field(i);
-                    if ((((field.Editable && (field.Type != esriFieldType.esriFieldTypeOID)) && ((field.Type != esriFieldType.esriFieldTypeRaster) && (field.Type != esriFieldType.esriFieldTypeGeometry))) && (field.Type != esriFieldType.esriFieldTypeBlob)) && (field.Type != esriFieldType.esriFieldTypeXML))
+                    if ((((field.Editable && (field.Type != esriFieldType.esriFieldTypeOID)) &&
+                          ((field.Type != esriFieldType.esriFieldTypeRaster) &&
+                           (field.Type != esriFieldType.esriFieldTypeGeometry))) &&
+                         (field.Type != esriFieldType.esriFieldTypeBlob)) &&
+                        (field.Type != esriFieldType.esriFieldTypeXML))
                     {
                         this.cboNameField.Items.Add(field.Name);
                         this.cboValueField.Items.Add(field.Name);
@@ -74,7 +78,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void frmNewJLKCodeDomain_Load(object sender, EventArgs e)
+        private void frmNewJLKCodeDomain_Load(object sender, EventArgs e)
         {
             IEnumDataset dataset = this.iworkspace_0.get_Datasets(esriDatasetType.esriDTTable);
             dataset.Reset();
@@ -91,7 +95,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void txtCode_EditValueChanged(object sender, EventArgs e)
+        private void txtCode_EditValueChanged(object sender, EventArgs e)
         {
         }
 
@@ -101,71 +105,37 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public string DomainDescription
         {
-            get
-            {
-                return this.string_4;
-            }
-            set
-            {
-                this.string_4 = value;
-            }
+            get { return this.string_4; }
+            set { this.string_4 = value; }
         }
 
         public string DomainName
         {
-            get
-            {
-                return this.string_3;
-            }
-            set
-            {
-                this.string_3 = value;
-            }
+            get { return this.string_3; }
+            set { this.string_3 = value; }
         }
 
         public string NameField
         {
-            get
-            {
-                return this.string_1;
-            }
-            set
-            {
-                this.string_1 = value;
-            }
+            get { return this.string_1; }
+            set { this.string_1 = value; }
         }
 
         public string TableName
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
 
         public string ValueField
         {
-            get
-            {
-                return this.string_2;
-            }
-            set
-            {
-                this.string_2 = value;
-            }
+            get { return this.string_2; }
+            set { this.string_2 = value; }
         }
 
         public IWorkspace Workspace
         {
-            set
-            {
-                this.iworkspace_0 = value;
-            }
+            set { this.iworkspace_0 = value; }
         }
     }
 }
-

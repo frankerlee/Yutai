@@ -13,7 +13,7 @@ namespace Yutai.Plugins.TableEditor.Functions.Conversion
             _description = "Chr 函数可把指定的 ANSI 字符代码转换为字符。";
             _parameters = new List<Parameter>()
             {
-                new Parameter() { Order = 0, Name = "x", Description = "必需的。标识某个字符的数字。"}
+                new Parameter() {Order = 0, Name = "x", Description = "必需的。标识某个字符的数字。"}
             };
         }
     }

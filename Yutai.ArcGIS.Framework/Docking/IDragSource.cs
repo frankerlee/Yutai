@@ -7,4 +7,3 @@ namespace Yutai.ArcGIS.Framework.Docking
         Control DragControl { get; }
     }
 }
-

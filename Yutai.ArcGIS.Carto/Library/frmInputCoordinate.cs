@@ -25,7 +25,7 @@ namespace Yutai.ArcGIS.Carto.Library
             frmInputXY txy = new frmInputXY();
             if (txy.ShowDialog() == DialogResult.OK)
             {
-                ListViewItem item = new ListViewItem(new string[] { txy.X.ToString(), txy.Y.ToString() });
+                ListViewItem item = new ListViewItem(new string[] {txy.X.ToString(), txy.Y.ToString()});
                 this.listView1.Items.Add(item);
             }
         }
@@ -45,7 +45,8 @@ namespace Yutai.ArcGIS.Carto.Library
                 ListViewItem item = this.listView1.SelectedItems[0];
                 double num = double.Parse(item.Text);
                 double num2 = double.Parse(item.SubItems[1].Text);
-                frmInputXY txy = new frmInputXY {
+                frmInputXY txy = new frmInputXY
+                {
                     X = num,
                     Y = num2
                 };
@@ -104,7 +105,8 @@ namespace Yutai.ArcGIS.Carto.Library
                         num2 *= 1000.0;
                         num3 *= 1000.0;
                     }
-                    IPoint inPoint = new PointClass {
+                    IPoint inPoint = new PointClass
+                    {
                         X = num2,
                         Y = num3
                     };
@@ -117,25 +119,18 @@ namespace Yutai.ArcGIS.Carto.Library
             }
         }
 
- private void frmInputCoordinate_Load(object sender, EventArgs e)
+        private void frmInputCoordinate_Load(object sender, EventArgs e)
         {
         }
 
- public IGeometry Geometry
+        public IGeometry Geometry
         {
-            get
-            {
-                return this.igeometry_0;
-            }
+            get { return this.igeometry_0; }
         }
 
         public IMap Map
         {
-            set
-            {
-                this.imap_0 = value;
-            }
+            set { this.imap_0 = value; }
         }
     }
 }
-

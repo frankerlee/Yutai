@@ -22,7 +22,7 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
             base.DialogResult = DialogResult.OK;
         }
 
- private void frmGPSDisplaySet_Load(object sender, EventArgs e)
+        private void frmGPSDisplaySet_Load(object sender, EventArgs e)
         {
             TabPage page = new TabPage("跟踪线");
             this.m_TrailsSetCtrl.StyleGallery = this.m_pSG;
@@ -31,13 +31,9 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
             this.tabControl1.TabPages.Add(page);
         }
 
- public IStyleGallery StyleGallery
+        public IStyleGallery StyleGallery
         {
-            set
-            {
-                this.m_pSG = value;
-            }
+            set { this.m_pSG = value; }
         }
     }
 }
-

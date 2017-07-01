@@ -17,7 +17,7 @@ namespace Yutai.Plugins.TableEditor.Functions.Conversion
             _description = "CLng 函数可把表达式转换为长整形（Long）类型。";
             _parameters = new List<Parameter>()
             {
-                new Parameter() { Order = 0, Name = "expression", Description = "必需的。任何有效的表达式。"}
+                new Parameter() {Order = 0, Name = "expression", Description = "必需的。任何有效的表达式。"}
             };
         }
     }

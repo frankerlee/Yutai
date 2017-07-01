@@ -10,7 +10,7 @@ using Yutai.Plugins.Mvp;
 
 namespace Yutai.Plugins.Interfaces
 {
-    public interface IMainView:IView
+    public interface IMainView : IView
     {
         object DockingManager { get; }
         object MenuManager { get; }
@@ -22,16 +22,18 @@ namespace Yutai.Plugins.Interfaces
         AxMapControl MapControlContainer { get; }
 
         YutaiTool CurrentTool { get; set; }
-        IActiveView ActiveView { get;}
+        IActiveView ActiveView { get; }
         IMap FocusMap { get; }
 
-        IPageLayoutControl2 PageLayoutControl { get;  }
+        IPageLayoutControl2 PageLayoutControl { get; }
 
         string ActiveViewType { get; }
         object ActiveGISControl { get; }
 
         void ActivateMap();
         void ActivatePageLayout();
+
+        void AddFrameworkControl(object control);
 
         GISControlType ControlType { get; }
 
@@ -45,7 +47,5 @@ namespace Yutai.Plugins.Interfaces
         void DoUpdateView(bool focusMap = true);
         void SetMapTooltip(string msg);
         string GetMapTooltip();
-
-
     }
 }

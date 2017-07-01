@@ -17,7 +17,5 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         private void btnOK_Click(object sender, EventArgs e)
         {
         }
-
-
     }
 }

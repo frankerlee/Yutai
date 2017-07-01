@@ -19,13 +19,15 @@ namespace Yutai.ArcGIS.Common.Excel
         //如行数、列数、行高、列宽的改变会引起相应的改变
 
         //用ArrayList便于插入行列，因为ArrayList有Insert()方法，直接用RowHeight/PreferredColWidth初始插入的行高或列宽
-        protected ArrayList _arrRowsHeight;                 //行高数组，内部用，可用Set/GetRowHeight()设置或取指定行的行高
-        protected ArrayList _arrColsWidth;                  //列宽数组，内部用，可用Set/GetColWidth()设置或取指定列的列宽
-        protected ArrayList _arrColsAlign;                  //列对齐数组，内部用，可用Set/GetColAlign()设置或取指定列的列宽
+        protected ArrayList _arrRowsHeight; //行高数组，内部用，可用Set/GetRowHeight()设置或取指定行的行高
+        protected ArrayList _arrColsWidth; //列宽数组，内部用，可用Set/GetColWidth()设置或取指定列的列宽
+        protected ArrayList _arrColsAlign; //列对齐数组，内部用，可用Set/GetColAlign()设置或取指定列的列宽
         protected string[,] _arrStrGrid = new string[0, 0]; //△网格数据(二维数组)，属性改变会重新设置行与列数
 
         //我想到一个很好的方法，解决了行列的插入、增加，还能容纳单元格文本、行高、列宽等等，这样不用重新定义数组什么的，效率大大提高
+
         #region 想法
+
         //用DataTable，将所要保留的东东以二维表的形式保存，每一个字段是一个要记载的东东
 
         //protected System.Data.DataTable mdtGridAttributes = new System.Data.DataTable("GridAttributes");	//记录网格属性
@@ -51,15 +53,15 @@ namespace Yutai.ArcGIS.Common.Excel
 		...				...
 		100		100		100*100	无		blank	white
 		*/
-        #endregion
 
+        #endregion
 
         #region IGridBase 成员*********网格通用*********
 
-        private Point _location = new Point(0, 0);          //网格起点坐标
-        private int _Width = 300;                           //网格宽
-        private int _Height = 200;                          //网格高
-        private Font _font = new Font("宋体", 10);            //文本字体
+        private Point _location = new Point(0, 0); //网格起点坐标
+        private int _Width = 300; //网格宽
+        private int _Height = 200; //网格高
+        private Font _font = new Font("宋体", 10); //文本字体
 
         #region 网格起点及宽、高
 
@@ -68,14 +70,8 @@ namespace Yutai.ArcGIS.Common.Excel
         /// </summary>
         public Point Location
         {
-            get
-            {
-                return this._location;
-            }
-            set
-            {
-                this._location = value;
-            }
+            get { return this._location; }
+            set { this._location = value; }
         }
 
         /// <summary>
@@ -83,14 +79,8 @@ namespace Yutai.ArcGIS.Common.Excel
         /// </summary>
         public int Width
         {
-            get
-            {
-                return this._Width;
-            }
-            set
-            {
-                this._Width = this.GetValidIntValue(value);
-            }
+            get { return this._Width; }
+            set { this._Width = this.GetValidIntValue(value); }
         }
 
         /// <summary>
@@ -98,14 +88,8 @@ namespace Yutai.ArcGIS.Common.Excel
         /// </summary>
         public int Height
         {
-            get
-            {
-                return this._Height;
-            }
-            set
-            {
-                this._Height = this.GetValidIntValue(value);
-            }
+            get { return this._Height; }
+            set { this._Height = this.GetValidIntValue(value); }
         }
 
         /// <summary>
@@ -113,21 +97,15 @@ namespace Yutai.ArcGIS.Common.Excel
         /// </summary>
         public Font Font
         {
-            get
-            {
-                return this._font;
-            }
-            set
-            {
-                this._font = value;
-            }
+            get { return this._font; }
+            set { this._font = value; }
         }
 
         #endregion
 
-        private AlignFlag _alignFlag = AlignFlag.Left;          //△网格整体对齐方式，属性改变会改变列宽字符串列表
-        private GridLineFlag _gridLineFlag = GridLineFlag.Both;     //网格线类型
-        private GridMergeFlag _gridMergeFlag = GridMergeFlag.None;      //单元格合并方式
+        private AlignFlag _alignFlag = AlignFlag.Left; //△网格整体对齐方式，属性改变会改变列宽字符串列表
+        private GridLineFlag _gridLineFlag = GridLineFlag.Both; //网格线类型
+        private GridMergeFlag _gridMergeFlag = GridMergeFlag.None; //单元格合并方式
         private GridBorderFlag _gridBorderFlag = GridBorderFlag.Single; //网格边框类型
 
         #region 字段属性AlignMent\Line\Merge\Border
@@ -137,10 +115,7 @@ namespace Yutai.ArcGIS.Common.Excel
         /// </summary>
         public AlignFlag AlignMent
         {
-            get
-            {
-                return this._alignFlag;
-            }
+            get { return this._alignFlag; }
             set
             {
                 this._alignFlag = value;
@@ -153,14 +128,8 @@ namespace Yutai.ArcGIS.Common.Excel
         /// </summary>
         public GridLineFlag Line
         {
-            get
-            {
-                return this._gridLineFlag;
-            }
-            set
-            {
-                this._gridLineFlag = value;
-            }
+            get { return this._gridLineFlag; }
+            set { this._gridLineFlag = value; }
         }
 
         /// <summary>
@@ -168,14 +137,8 @@ namespace Yutai.ArcGIS.Common.Excel
         /// </summary>
         public GridMergeFlag Merge
         {
-            get
-            {
-                return this._gridMergeFlag;
-            }
-            set
-            {
-                this._gridMergeFlag = value;
-            }
+            get { return this._gridMergeFlag; }
+            set { this._gridMergeFlag = value; }
         }
 
         /// <summary>
@@ -183,29 +146,23 @@ namespace Yutai.ArcGIS.Common.Excel
         /// </summary>
         public GridBorderFlag Border
         {
-            get
-            {
-                return this._gridBorderFlag;
-            }
-            set
-            {
-                this._gridBorderFlag = value;
-            }
+            get { return this._gridBorderFlag; }
+            set { this._gridBorderFlag = value; }
         }
 
         #endregion
 
-        private int _rows = 0;                      //△行数，属性改变会重定义数组，并且会重设置行高
-        private int _cols = 0;                      //△列数，属性改变会重定义数组，并会重新设置列对齐列表
+        private int _rows = 0; //△行数，属性改变会重定义数组，并且会重设置行高
+        private int _cols = 0; //△列数，属性改变会重定义数组，并会重新设置列对齐列表
 
-        private int _fixedRows = 0;                 //固定行数，打印时也重复打印，滚动滚动条时固定
-        private int _fixedCols = 0;                 //固定列数，打印时也重复打印，滚动滚动条时固定
+        private int _fixedRows = 0; //固定行数，打印时也重复打印，滚动滚动条时固定
+        private int _fixedCols = 0; //固定列数，打印时也重复打印，滚动滚动条时固定
 
-        private int _row = 0;                       //当前行，当前选定范围起始行
-        private int _col = 0;                       //当前列，当前选定范围起始列
+        private int _row = 0; //当前行，当前选定范围起始行
+        private int _col = 0; //当前列，当前选定范围起始列
 
-        private int _rowSel = 0;                        //当前选定范围结束行
-        private int _colSel = 0;                        //当前选定范围结束列
+        private int _rowSel = 0; //当前选定范围结束行
+        private int _colSel = 0; //当前选定范围结束列
 
         //获取有效的行列数、整数，这是对属性赋值时要调用的
         private int GetValidIntValue(int val)
@@ -223,15 +180,13 @@ namespace Yutai.ArcGIS.Common.Excel
         }
 
         #region 字段属性Rows\Cols\FixedRows\FixedCols\Row\Col\RowSel\ColSel（行列数、固定行列数、当前行列、选定行列数）
+
         /// <summary>
         /// 行数，注意改变行数会，会影响网格文本，并且会重设置行高
         /// </summary>
         public int Rows
         {
-            get
-            {
-                return this._rows;
-            }
+            get { return this._rows; }
             set
             {
                 this._rows = GetValidIntValue(value);
@@ -245,10 +200,7 @@ namespace Yutai.ArcGIS.Common.Excel
         /// </summary>
         public int Cols
         {
-            get
-            {
-                return this._cols;
-            }
+            get { return this._cols; }
             set
             {
                 this._cols = GetValidIntValue(value);
@@ -262,10 +214,7 @@ namespace Yutai.ArcGIS.Common.Excel
         /// </summary>
         public int FixedRows
         {
-            get
-            {
-                return this._fixedRows;
-            }
+            get { return this._fixedRows; }
             set
             {
                 this._fixedRows = GetValidIntValue(value);
@@ -281,10 +230,7 @@ namespace Yutai.ArcGIS.Common.Excel
         /// </summary>
         public int FixedCols
         {
-            get
-            {
-                return this._fixedCols;
-            }
+            get { return this._fixedCols; }
             set
             {
                 this._fixedCols = GetValidIntValue(value);
@@ -300,10 +246,7 @@ namespace Yutai.ArcGIS.Common.Excel
         /// </summary>
         public int Row
         {
-            get
-            {
-                return this._row;
-            }
+            get { return this._row; }
             set
             {
                 this._row = GetValidIntValue(value);
@@ -320,10 +263,7 @@ namespace Yutai.ArcGIS.Common.Excel
         /// </summary>
         public int Col
         {
-            get
-            {
-                return this._col;
-            }
+            get { return this._col; }
             set
             {
                 this._col = GetValidIntValue(value);
@@ -341,10 +281,7 @@ namespace Yutai.ArcGIS.Common.Excel
         /// </summary>
         public int RowSel
         {
-            get
-            {
-                return this._rowSel;
-            }
+            get { return this._rowSel; }
             set
             {
                 int mrow = GetValidIntValue(value);
@@ -362,10 +299,7 @@ namespace Yutai.ArcGIS.Common.Excel
         /// </summary>
         public int ColSel
         {
-            get
-            {
-                return this._colSel;
-            }
+            get { return this._colSel; }
             set
             {
                 int mcol = GetValidIntValue(value);
@@ -375,14 +309,13 @@ namespace Yutai.ArcGIS.Common.Excel
                     mcol = this._cols - 1;
                 }
                 this._rowSel = mcol;
-
             }
         }
 
         #endregion
 
-        private int _rowheight = 20;                    //△行高，用于初始每行的行高。属性改变会使_arrRowsHeight重新设置
-        private int _colWidth = 75;                 //△列宽，用于初始每列的列宽。属性改变会使_arrColsWidth重新设置，基本是5个汉字的宽
+        private int _rowheight = 20; //△行高，用于初始每行的行高。属性改变会使_arrRowsHeight重新设置
+        private int _colWidth = 75; //△列宽，用于初始每列的列宽。属性改变会使_arrColsWidth重新设置，基本是5个汉字的宽
 
         #region （每）行高、列宽 及RowHeight、PreferredColWidth及返回对应的数组
 
@@ -391,10 +324,7 @@ namespace Yutai.ArcGIS.Common.Excel
         /// </summary>
         public int PreferredRowHeight
         {
-            get
-            {
-                return this._rowheight;
-            }
+            get { return this._rowheight; }
             set
             {
                 this._rowheight = GetValidIntValue(value);
@@ -407,11 +337,7 @@ namespace Yutai.ArcGIS.Common.Excel
         /// </summary>
         public int PreferredColWidth
         {
-            get
-            {
-
-                return this._rowheight;
-            }
+            get { return this._rowheight; }
             set
             {
                 this._rowheight = GetValidIntValue(value);
@@ -426,7 +352,7 @@ namespace Yutai.ArcGIS.Common.Excel
         /// <returns></returns>
         public int get_RowHeight(int index)
         {
-            return (int)(_arrRowsHeight[index]);
+            return (int) (_arrRowsHeight[index]);
         }
 
         /// <summary>
@@ -447,7 +373,7 @@ namespace Yutai.ArcGIS.Common.Excel
         /// <returns></returns>
         public int get_ColWidth(int index)
         {
-            return (int)(_arrColsWidth[index]);
+            return (int) (_arrColsWidth[index]);
         }
 
         /// <summary>
@@ -469,7 +395,7 @@ namespace Yutai.ArcGIS.Common.Excel
         /// <returns></returns>
         public AlignFlag get_ColAlignment(int index)
         {
-            return (AlignFlag)(_arrColsAlign[index]);
+            return (AlignFlag) (_arrColsAlign[index]);
         }
 
         /// <summary>
@@ -498,7 +424,7 @@ namespace Yutai.ArcGIS.Common.Excel
 
                 for (int i = 0; i < this._rows; i++)
                 {
-                    arr[i] = (int)(this._arrRowsHeight[i]);
+                    arr[i] = (int) (this._arrRowsHeight[i]);
                 }
 
                 return arr;
@@ -530,7 +456,7 @@ namespace Yutai.ArcGIS.Common.Excel
 
                 for (int i = 0; i < this._cols; i++)
                 {
-                    arr[i] = (int)(this._arrColsWidth[i]);
+                    arr[i] = (int) (this._arrColsWidth[i]);
                 }
 
                 return arr;
@@ -555,7 +481,6 @@ namespace Yutai.ArcGIS.Common.Excel
         {
             get
             {
-
                 //定义返回的列宽数组
                 AlignFlag[] arr = new AlignFlag[this._cols];
 
@@ -563,14 +488,13 @@ namespace Yutai.ArcGIS.Common.Excel
 
                 for (int i = 0; i < this._cols; i++)
                 {
-                    arr[i] = (AlignFlag)(this._arrColsAlign[i]);
+                    arr[i] = (AlignFlag) (this._arrColsAlign[i]);
                 }
 
                 return arr;
             }
             set
             {
-
                 //定义返回的列宽数组
                 AlignFlag[] arr = new AlignFlag[this._cols];
 
@@ -592,14 +516,8 @@ namespace Yutai.ArcGIS.Common.Excel
         /// </summary>		
         public string Text
         {
-            get
-            {
-                return _arrStrGrid[this._row, this._col];
-            }
-            set
-            {
-                _arrStrGrid[this._row, this._col] = value;
-            }
+            get { return _arrStrGrid[this._row, this._col]; }
+            set { _arrStrGrid[this._row, this._col] = value; }
         }
 
         /// <summary>
@@ -630,6 +548,7 @@ namespace Yutai.ArcGIS.Common.Excel
         #endregion
 
         //Begin*****IGridBase支持函数*****
+
         #region 相应字段属性改变时，引发的过程调用
 
         //改变了行高字段，当RowHeight属性set时调用
@@ -768,8 +687,8 @@ namespace Yutai.ArcGIS.Common.Excel
         }
 
         #endregion
-        //End*****IGridBase支持函数*****
 
+        //End*****IGridBase支持函数*****
 
         #region IDisposable 成员
 
@@ -787,7 +706,6 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public GridBase() : this(3, 4)
         {
-
         }
 
         public GridBase(int rows, int cols)
@@ -797,7 +715,6 @@ namespace Yutai.ArcGIS.Common.Excel
             this._cols = cols;
 
             Initialize(rows, cols);
-
         }
 
         #endregion
@@ -808,7 +725,7 @@ namespace Yutai.ArcGIS.Common.Excel
         /// <returns></returns>
         public IGrid Clone()
         {
-            return (IGrid)(base.MemberwiseClone());
+            return (IGrid) (base.MemberwiseClone());
         }
 
         /// <summary>
@@ -834,12 +751,14 @@ namespace Yutai.ArcGIS.Common.Excel
         public int GetAllColsWidthSum()
         {
             #region 实现...
+
             int mwidth = 0;
             for (int i = 0; i < this.Cols; i++)
             {
-                mwidth += (int)_arrColsWidth[i];
+                mwidth += (int) _arrColsWidth[i];
             }
             return mwidth;
+
             #endregion
         }
 
@@ -849,22 +768,21 @@ namespace Yutai.ArcGIS.Common.Excel
         public int GetAllRowsHeightSum()
         {
             #region 实现...
+
             int mheight = 0;
             for (int i = 0; i < this.Rows; i++)
             {
-                mheight += (int)_arrRowsHeight[i];
+                mheight += (int) _arrRowsHeight[i];
             }
             return mheight;
+
             #endregion
         }
 
 
         public string[,] GridText
         {
-            get
-            {
-                return _arrStrGrid;
-            }
+            get { return _arrStrGrid; }
             set
             {
                 _arrStrGrid = value;
@@ -876,7 +794,6 @@ namespace Yutai.ArcGIS.Common.Excel
                 InitRowHeight();
                 InitColWidth();
                 InitColAlignMent();
-
             }
         }
 
@@ -895,14 +812,14 @@ namespace Yutai.ArcGIS.Common.Excel
             int c = 0;
 
             //平均列宽
-            int avgWidth = this._Width / this._cols;
+            int avgWidth = this._Width/this._cols;
             for (int i = 0; i < this._cols - 1; i++)
             {
                 arrReturn[i] = avgWidth;
                 c++;
             }
             //最后一列为剩下的值，这样做是为了平均时产生的小数和与总宽不相等
-            arrReturn[arrReturn.Length - 1] = this._Width - avgWidth * c;
+            arrReturn[arrReturn.Length - 1] = this._Width - avgWidth*c;
 
             return arrReturn;
 
@@ -911,7 +828,9 @@ namespace Yutai.ArcGIS.Common.Excel
 
 
         //支持函数
+
         #region	重定义二维字符数组并保留原有数据 protected void ReDimArrString(string[,] arrStr,int rows,int cols)
+
         /// <summary>
         /// 用指定的行列重定义二维字符数组，数组将保留交集范围内的原有数据，扩充的用空串""填充
         /// </summary>
@@ -931,25 +850,26 @@ namespace Yutai.ArcGIS.Common.Excel
                         arrStr[i, j] = "";
                     }
                 }
-
             }
             else
             {
                 string[,] arr = new string[rows, cols];
-                int mOriginalRows = arrStr.GetLength(0);        //原有的行数
-                int mOriginalCols = arrStr.GetLength(1);        //原有的列数
+                int mOriginalRows = arrStr.GetLength(0); //原有的行数
+                int mOriginalCols = arrStr.GetLength(1); //原有的列数
 
-                int mBackRows = 0;                              //需要备份原有数据的行列数，以便用原有数据初始
+                int mBackRows = 0; //需要备份原有数据的行列数，以便用原有数据初始
                 int mBackcols = 0;
 
                 //排列组合...
 
                 #region 增加了行数，列可能变大也可能变小
+
                 if (rows >= mOriginalRows)
                 {
                     //列变大
                     if (cols >= mOriginalCols)
-                    {   //完全在原有网格范围内或完全包含原有网格，用原有数据初始
+                    {
+                        //完全在原有网格范围内或完全包含原有网格，用原有数据初始
                         mBackRows = mOriginalRows;
                         mBackcols = mOriginalCols;
 
@@ -970,7 +890,6 @@ namespace Yutai.ArcGIS.Common.Excel
                                 arr[i, j] = "";
                             }
                         }
-
                     }
 
                     //列变小
@@ -989,10 +908,11 @@ namespace Yutai.ArcGIS.Common.Excel
                         }
                     }
                 }
+
                 #endregion
 
-
                 #region 减少了行数，列可能变大也可能变小
+
                 if (rows <= mOriginalRows)
                 {
                     //列变大
@@ -1013,13 +933,14 @@ namespace Yutai.ArcGIS.Common.Excel
 
                     //列变小
                     if (cols <= mOriginalCols)
-                    {   //完全在原有网格范围内或完全包含原有网格，用原有数据初始
+                    {
+                        //完全在原有网格范围内或完全包含原有网格，用原有数据初始
                         mBackRows = rows;
                         mBackcols = cols;
                     }
                 }
-                #endregion
 
+                #endregion
 
                 //用原有数据填充
                 for (int i = 0; i < mBackRows; i++)
@@ -1033,8 +954,7 @@ namespace Yutai.ArcGIS.Common.Excel
                 arrStr = arr;
             }
         }
+
         #endregion
-
-    }//End Class
-
-}//End Namespace
+    } //End Class
+} //End Namespace

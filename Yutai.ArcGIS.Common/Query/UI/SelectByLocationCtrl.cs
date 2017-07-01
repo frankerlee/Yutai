@@ -183,14 +183,17 @@ namespace Yutai.ArcGIS.Common.Query.UI
             }
         }
 
- private void method_0(ICompositeLayer icompositeLayer_0)
+        private void method_0(ICompositeLayer icompositeLayer_0)
         {
             for (int i = 0; i < icompositeLayer_0.Count; i++)
             {
                 ILayer layer = icompositeLayer_0.get_Layer(i);
                 if (layer is IFeatureLayer)
                 {
-                    if (((layer as IFeatureLayer).FeatureClass != null) && !((!this.chkUsetSelectedLayer.Checked || !(layer as IFeatureLayer).Selectable) ? this.chkUsetSelectedLayer.Checked : false))
+                    if (((layer as IFeatureLayer).FeatureClass != null) &&
+                        !((!this.chkUsetSelectedLayer.Checked || !(layer as IFeatureLayer).Selectable)
+                            ? this.chkUsetSelectedLayer.Checked
+                            : false))
                     {
                         this.checkedListBoxLayer.Items.Add(new LayerObject(layer));
                     }
@@ -210,11 +213,15 @@ namespace Yutai.ArcGIS.Common.Query.UI
                 ILayer layer = this.imap_0.get_Layer(i);
                 if (layer is IFeatureLayer)
                 {
-                    if (((layer as IFeatureLayer).FeatureClass != null) && !((!this.chkUsetSelectedLayer.Checked || !(layer as IFeatureLayer).Selectable) ? this.chkUsetSelectedLayer.Checked : false))
+                    if (((layer as IFeatureLayer).FeatureClass != null) &&
+                        !((!this.chkUsetSelectedLayer.Checked || !(layer as IFeatureLayer).Selectable)
+                            ? this.chkUsetSelectedLayer.Checked
+                            : false))
                     {
                         if (layer is IFeatureLayerSelectionEvents_Event)
                         {
-                            (layer as IFeatureLayerSelectionEvents_Event).FeatureLayerSelectionChanged+=(new IFeatureLayerSelectionEvents_FeatureLayerSelectionChangedEventHandler(this.method_4));
+                            (layer as IFeatureLayerSelectionEvents_Event).FeatureLayerSelectionChanged +=
+                                (new IFeatureLayerSelectionEvents_FeatureLayerSelectionChangedEventHandler(this.method_4));
                         }
                         this.checkedListBoxLayer.Items.Add(new LayerObject(layer));
                     }
@@ -309,7 +316,8 @@ namespace Yutai.ArcGIS.Common.Query.UI
             return false;
         }
 
-        private void method_6(IFeatureLayer ifeatureLayer_0, IFeatureCursor ifeatureCursor_0, esriSpatialRelEnum esriSpatialRelEnum_0, esriSelectionResultEnum esriSelectionResultEnum_0)
+        private void method_6(IFeatureLayer ifeatureLayer_0, IFeatureCursor ifeatureCursor_0,
+            esriSpatialRelEnum esriSpatialRelEnum_0, esriSelectionResultEnum esriSelectionResultEnum_0)
         {
             IFeature feature = ifeatureCursor_0.NextFeature();
             IFeatureSelection selection = ifeatureLayer_0 as IFeatureSelection;
@@ -339,7 +347,8 @@ namespace Yutai.ArcGIS.Common.Query.UI
                 {
                     try
                     {
-                        ISpatialFilter filter = new SpatialFilter {
+                        ISpatialFilter filter = new SpatialFilter
+                        {
                             SpatialRel = esriSpatialRelEnum_0
                         };
                         if (selection.BufferDistance > 0.0)
@@ -378,11 +387,7 @@ namespace Yutai.ArcGIS.Common.Query.UI
 
         public IMap Map
         {
-            set
-            {
-                this.imap_0 = value;
-            }
+            set { this.imap_0 = value; }
         }
     }
 }
-

@@ -64,7 +64,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             return true;
         }
 
- private void EditorEvent_OnSaveEditing()
+        private void EditorEvent_OnSaveEditing()
         {
             base.Visible = false;
             base.Visible = true;
@@ -151,7 +151,9 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                         IEnumSubtype subtype = subtypes.Subtypes;
                         subtype.Reset();
                         int subtypeCode = 0;
-                        for (string str = subtype.Next(out subtypeCode); str != null; str = subtype.Next(out subtypeCode))
+                        for (string str = subtype.Next(out subtypeCode);
+                            str != null;
+                            str = subtype.Next(out subtypeCode))
                         {
                             if (e.Value.ToString() == str)
                             {
@@ -260,7 +262,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
             else
             {
-                this.toolStripDropDownButton1.DropDownItemClicked += new ToolStripItemClickedEventHandler(this.toolStripDropDownButton1_DropDownItemClicked);
+                this.toolStripDropDownButton1.DropDownItemClicked +=
+                    new ToolStripItemClickedEventHandler(this.toolStripDropDownButton1_DropDownItemClicked);
                 try
                 {
                     ITableAttachments attachments = (ITableAttachments) this.m_pObject.Class;
@@ -320,7 +323,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                                     int num3;
                                     try
                                     {
-                                        strArray[1] = subtypes.get_SubtypeName((this.m_pObject as IRowSubtypes).SubtypeCode);
+                                        strArray[1] =
+                                            subtypes.get_SubtypeName((this.m_pObject as IRowSubtypes).SubtypeCode);
                                     }
                                     catch
                                     {
@@ -332,11 +336,13 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                                     {
                                         list.Add(str);
                                     }
-                                    this.m_pVertXtraGrid.AddComBoBox(strArray[0], strArray[1], list, !this.FieldCanEdit(pField));
+                                    this.m_pVertXtraGrid.AddComBoBox(strArray[0], strArray[1], list,
+                                        !this.FieldCanEdit(pField));
                                 }
                                 else
                                 {
-                                    domain = subtypes.get_Domain((this.m_pObject as IRowSubtypes).SubtypeCode, pField.Name);
+                                    domain = subtypes.get_Domain((this.m_pObject as IRowSubtypes).SubtypeCode,
+                                        pField.Name);
                                     if (domain is ICodedValueDomain)
                                     {
                                         domain2 = domain as ICodedValueDomain;
@@ -355,9 +361,13 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                                             }
                                             num4++;
                                         }
-                                        this.m_pVertXtraGrid.AddComBoBox(strArray[0], strArray[1], list, !this.FieldCanEdit(pField));
+                                        this.m_pVertXtraGrid.AddComBoBox(strArray[0], strArray[1], list,
+                                            !this.FieldCanEdit(pField));
                                     }
-                                    else if ((((pField.Type == esriFieldType.esriFieldTypeSmallInteger) || (pField.Type == esriFieldType.esriFieldTypeSingle)) || (pField.Type == esriFieldType.esriFieldTypeDouble)) || (pField.Type == esriFieldType.esriFieldTypeInteger))
+                                    else if ((((pField.Type == esriFieldType.esriFieldTypeSmallInteger) ||
+                                               (pField.Type == esriFieldType.esriFieldTypeSingle)) ||
+                                              (pField.Type == esriFieldType.esriFieldTypeDouble)) ||
+                                             (pField.Type == esriFieldType.esriFieldTypeInteger))
                                     {
                                         minValue = 0.0;
                                         maxValue = 0.0;
@@ -368,7 +378,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                                         }
                                         if (pField.Editable)
                                         {
-                                            this.m_pVertXtraGrid.AddSpinEdit(strArray[0], obj2, false, minValue, maxValue);
+                                            this.m_pVertXtraGrid.AddSpinEdit(strArray[0], obj2, false, minValue,
+                                                maxValue);
                                         }
                                         else
                                         {
@@ -382,7 +393,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                                     else
                                     {
                                         strArray[1] = obj2.ToString();
-                                        this.m_pVertXtraGrid.AddTextEdit(strArray[0], strArray[1], !this.FieldCanEdit(pField));
+                                        this.m_pVertXtraGrid.AddTextEdit(strArray[0], strArray[1],
+                                            !this.FieldCanEdit(pField));
                                     }
                                 }
                             }
@@ -409,9 +421,13 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                                             }
                                             num4++;
                                         }
-                                        this.m_pVertXtraGrid.AddComBoBox(strArray[0], strArray[1], list, !this.FieldCanEdit(pField));
+                                        this.m_pVertXtraGrid.AddComBoBox(strArray[0], strArray[1], list,
+                                            !this.FieldCanEdit(pField));
                                     }
-                                    else if ((((pField.Type == esriFieldType.esriFieldTypeSmallInteger) || (pField.Type == esriFieldType.esriFieldTypeSingle)) || (pField.Type == esriFieldType.esriFieldTypeDouble)) || (pField.Type == esriFieldType.esriFieldTypeInteger))
+                                    else if ((((pField.Type == esriFieldType.esriFieldTypeSmallInteger) ||
+                                               (pField.Type == esriFieldType.esriFieldTypeSingle)) ||
+                                              (pField.Type == esriFieldType.esriFieldTypeDouble)) ||
+                                             (pField.Type == esriFieldType.esriFieldTypeInteger))
                                     {
                                         minValue = 0.0;
                                         maxValue = 0.0;
@@ -422,7 +438,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                                         }
                                         if (pField.Editable)
                                         {
-                                            this.m_pVertXtraGrid.AddSpinEdit(strArray[0], obj2, false, minValue, maxValue);
+                                            this.m_pVertXtraGrid.AddSpinEdit(strArray[0], obj2, false, minValue,
+                                                maxValue);
                                         }
                                         else
                                         {
@@ -436,7 +453,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                                     else
                                     {
                                         strArray[1] = obj2.ToString();
-                                        this.m_pVertXtraGrid.AddTextEdit(strArray[0], strArray[1], !this.FieldCanEdit(pField));
+                                        this.m_pVertXtraGrid.AddTextEdit(strArray[0], strArray[1],
+                                            !this.FieldCanEdit(pField));
                                     }
                                 }
                                 else
@@ -445,7 +463,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                                     CodeDomainEx codeDomainEx = CodeDomainManage.GetCodeDomainEx(pField.Name, name);
                                     if (codeDomainEx != null)
                                     {
-                                        if ((codeDomainEx.ParentIDFieldName == null) || (codeDomainEx.ParentIDFieldName.Length == 0))
+                                        if ((codeDomainEx.ParentIDFieldName == null) ||
+                                            (codeDomainEx.ParentIDFieldName.Length == 0))
                                         {
                                             NameValueCollection codeDomain = codeDomainEx.GetCodeDomain();
                                             if (pField.IsNullable)
@@ -462,17 +481,23 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                                                     strArray[1] = str3;
                                                 }
                                             }
-                                            this.m_pVertXtraGrid.AddComBoBox(strArray[0], strArray[1], list, !this.FieldCanEdit(pField));
+                                            this.m_pVertXtraGrid.AddComBoBox(strArray[0], strArray[1], list,
+                                                !this.FieldCanEdit(pField));
                                         }
                                         else
                                         {
                                             strArray[1] = obj2.ToString();
-                                            this.m_pVertXtraGrid.AddTreeviewComBoBox(strArray[0], codeDomainEx.FindName(strArray[1]), codeDomainEx, !this.FieldCanEdit(pField));
+                                            this.m_pVertXtraGrid.AddTreeviewComBoBox(strArray[0],
+                                                codeDomainEx.FindName(strArray[1]), codeDomainEx,
+                                                !this.FieldCanEdit(pField));
                                         }
                                     }
                                     else
                                     {
-                                        if ((((pField.Type == esriFieldType.esriFieldTypeSmallInteger) || (pField.Type == esriFieldType.esriFieldTypeSingle)) || (pField.Type == esriFieldType.esriFieldTypeDouble)) || (pField.Type == esriFieldType.esriFieldTypeInteger))
+                                        if ((((pField.Type == esriFieldType.esriFieldTypeSmallInteger) ||
+                                              (pField.Type == esriFieldType.esriFieldTypeSingle)) ||
+                                             (pField.Type == esriFieldType.esriFieldTypeDouble)) ||
+                                            (pField.Type == esriFieldType.esriFieldTypeInteger))
                                         {
                                             if (pField.Editable)
                                             {
@@ -485,12 +510,14 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                                         }
                                         else if (pField.Type == esriFieldType.esriFieldTypeDate)
                                         {
-                                            this.m_pVertXtraGrid.AddDateEdit(strArray[0], obj2, !this.FieldCanEdit(pField));
+                                            this.m_pVertXtraGrid.AddDateEdit(strArray[0], obj2,
+                                                !this.FieldCanEdit(pField));
                                         }
                                         else
                                         {
                                             strArray[1] = obj2.ToString();
-                                            this.m_pVertXtraGrid.AddTextEdit(strArray[0], strArray[1], !this.FieldCanEdit(pField));
+                                            this.m_pVertXtraGrid.AddTextEdit(strArray[0], strArray[1],
+                                                !this.FieldCanEdit(pField));
                                         }
                                         if (strArray[0] == this.m_EditFeildName)
                                         {
@@ -531,7 +558,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                     int num = 0;
                     while ((attachment2 = attachmentsByParentIDs.Next()) != null)
                     {
-                        item = new ToolStripButton(attachment2.Name) {
+                        item = new ToolStripButton(attachment2.Name)
+                        {
                             Tag = attachment2
                         };
                         this.toolStripDropDownButton1.DropDownItems.Add(item);
@@ -544,11 +572,11 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
- private void toolStripDropDownButton1_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void toolStripDropDownButton1_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             if (e.ClickedItem.Tag == null)
             {
-                new frmAttachment { Object = this.m_pObject }.ShowDialog();
+                new frmAttachment {Object = this.m_pObject}.ShowDialog();
             }
             else
             {
@@ -575,7 +603,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 {
                     if ((this.m_pObject is IFeature) && ((this.m_pObject as IFeature).Shape != null))
                     {
-                        this.m_pActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeography, null, (this.m_pObject as IFeature).Shape.Envelope);
+                        this.m_pActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeography, null,
+                            (this.m_pObject as IFeature).Shape.Envelope);
                     }
                 }
                 catch
@@ -600,7 +629,10 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             for (int i = 0; i < fields.FieldCount; i++)
             {
                 IField field = fields.get_Field(i);
-                if (((((field.Type != esriFieldType.esriFieldTypeGeometry) && (field.Type != esriFieldType.esriFieldTypeOID)) && (field.Type != esriFieldType.esriFieldTypeRaster)) && field.Editable) && (subtypes.SubtypeFieldName != field.Name))
+                if (((((field.Type != esriFieldType.esriFieldTypeGeometry) &&
+                       (field.Type != esriFieldType.esriFieldTypeOID)) &&
+                      (field.Type != esriFieldType.esriFieldTypeRaster)) && field.Editable) &&
+                    (subtypes.SubtypeFieldName != field.Name))
                 {
                     domain = subtypes.get_Domain((this.m_pObject as IRowSubtypes).SubtypeCode, field.Name);
                     if (domain is ICodedValueDomain)
@@ -617,7 +649,10 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                         }
                         this.m_pVertXtraGrid.ChangeItem(i, ColumnAttribute.CA_COMBOBOX, list, 0.0, 0.0);
                     }
-                    else if ((((field.Type == esriFieldType.esriFieldTypeSmallInteger) || (field.Type == esriFieldType.esriFieldTypeSingle)) || (field.Type == esriFieldType.esriFieldTypeDouble)) || (field.Type == esriFieldType.esriFieldTypeInteger))
+                    else if ((((field.Type == esriFieldType.esriFieldTypeSmallInteger) ||
+                               (field.Type == esriFieldType.esriFieldTypeSingle)) ||
+                              (field.Type == esriFieldType.esriFieldTypeDouble)) ||
+                             (field.Type == esriFieldType.esriFieldTypeInteger))
                     {
                         double minValue = 0.0;
                         double maxValue = 0.0;
@@ -642,18 +677,12 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         public IActiveView ActiveView
         {
-            set
-            {
-                this.m_pActiveView = value;
-            }
+            set { this.m_pActiveView = value; }
         }
 
         public IFeatureLayer FeatureLayer
         {
-            set
-            {
-                this.m_pFeatureLayer = value;
-            }
+            set { this.m_pFeatureLayer = value; }
         }
 
         public List<string> LockFields { get; set; }
@@ -677,4 +706,3 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         }
     }
 }
-

@@ -20,7 +20,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.m_SelectIndex = this.listBox1.SelectedIndex;
         }
 
- private void frmSelectMergeFeature_Load(object sender, EventArgs e)
+        private void frmSelectMergeFeature_Load(object sender, EventArgs e)
         {
             for (int i = 0; i < this.m_FeatureInfos.Length; i++)
             {
@@ -28,7 +28,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
- private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.listBox1.SelectedIndices.Count == 0)
             {
@@ -42,19 +42,12 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         public string[] FeatureInfos
         {
-            set
-            {
-                this.m_FeatureInfos = value;
-            }
+            set { this.m_FeatureInfos = value; }
         }
 
         public int SelectedIndex
         {
-            get
-            {
-                return this.m_SelectIndex;
-            }
+            get { return this.m_SelectIndex; }
         }
     }
 }
-

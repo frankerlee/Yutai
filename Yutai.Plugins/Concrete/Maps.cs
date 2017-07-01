@@ -9,10 +9,12 @@ namespace Yutai.Plugins.Concrete
         private IList<IMap> _mapList = null;
 
         #region class constructor
+
         public Maps()
         {
             _mapList = new List<IMap>();
         }
+
         #endregion
 
         #region IDisposable Members
@@ -30,7 +32,6 @@ namespace Yutai.Plugins.Concrete
 
         #region IMaps Members
 
-   
         public void RemoveAt(int Index)
         {
             if (Index > _mapList.Count || Index < 0)
@@ -39,22 +40,19 @@ namespace Yutai.Plugins.Concrete
             _mapList.RemoveAt(Index);
         }
 
-    
+
         public void Reset()
         {
             _mapList.Clear();
         }
 
-  
+
         public int Count
         {
-            get
-            {
-                return _mapList.Count;
-            }
+            get { return _mapList.Count; }
         }
 
-    
+
         public IMap get_Item(int Index)
         {
             if (Index > _mapList.Count || Index < 0)
@@ -63,13 +61,13 @@ namespace Yutai.Plugins.Concrete
             return _mapList[Index];
         }
 
- 
+
         public void Remove(IMap Map)
         {
             _mapList.Remove(Map);
         }
 
-     
+
         public IMap Create()
         {
             IMap newMap = new MapClass();
@@ -78,7 +76,7 @@ namespace Yutai.Plugins.Concrete
             return newMap;
         }
 
-   
+
         public void Add(IMap Map)
         {
             if (Map == null)

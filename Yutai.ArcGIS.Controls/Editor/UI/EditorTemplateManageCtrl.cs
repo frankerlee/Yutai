@@ -16,7 +16,9 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 {
     public partial class EditorTemplateManageCtrl : UserControl, IDockContent
     {
-        public static Dictionary<IMap, Dictionary<IFeatureLayer, List<YTEditTemplate>>> EditMap = new Dictionary<IMap, Dictionary<IFeatureLayer, List<YTEditTemplate>>>();
+        public static Dictionary<IMap, Dictionary<IFeatureLayer, List<YTEditTemplate>>> EditMap =
+            new Dictionary<IMap, Dictionary<IFeatureLayer, List<YTEditTemplate>>>();
+
         private List<IFeatureLayer> FilterLayers = new List<IFeatureLayer>();
         private bool IsLoad = false;
         private FilterType m_FilterType = FilterType.NoFilter;
@@ -29,15 +31,21 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.InitializeComponent();
             base.VisibleChanged += new EventHandler(this.EditorTemplateManageCtrl_VisibleChanged);
             this.Text = "创建属性";
-            EditTemplateManager.OnDeleteTemplate += new OnDeleteTemplateHandler(this.EditTemplateManager_OnDeleteTemplate);
+            EditTemplateManager.OnDeleteTemplate +=
+                new OnDeleteTemplateHandler(this.EditTemplateManager_OnDeleteTemplate);
             EditTemplateManager.OnAddTemplate += new OnAddTemplateHandler(this.EditTemplateManager_OnAddTemplate);
-            EditTemplateManager.OnAddMoreTemplate += new OnAddMoreTemplateHandler(this.EditTemplateManager_OnAddMoreTemplate);
-            if( ApplicationRef.Application != null)
-            (ApplicationRef.Application as IApplicationEvents).OnMapDocumentChangedEvent += new OnMapDocumentChangedEventHandler(this.EditorTemplateManageCtrl_OnMapDocumentChangedEvent);
-            EditTemplateManager.OnTemplatePropertyChange += new OnTemplatePropertyChangeHandler(this.EditTemplateManager_OnTemplatePropertyChange);
-            EditTemplateManager.OnDeleteMoreTemplate += new OnDeleteMoreTemplateHandler(this.EditTemplateManager_OnDeleteMoreTemplate);
+            EditTemplateManager.OnAddMoreTemplate +=
+                new OnAddMoreTemplateHandler(this.EditTemplateManager_OnAddMoreTemplate);
             if (ApplicationRef.Application != null)
-                (ApplicationRef.Application as IApplicationEvents).OnMapCloseEvent += new OnMapCloseEventHandler(this.EditorTemplateManageCtrl_OnMapCloseEvent);
+                (ApplicationRef.Application as IApplicationEvents).OnMapDocumentChangedEvent +=
+                    new OnMapDocumentChangedEventHandler(this.EditorTemplateManageCtrl_OnMapDocumentChangedEvent);
+            EditTemplateManager.OnTemplatePropertyChange +=
+                new OnTemplatePropertyChangeHandler(this.EditTemplateManager_OnTemplatePropertyChange);
+            EditTemplateManager.OnDeleteMoreTemplate +=
+                new OnDeleteMoreTemplateHandler(this.EditTemplateManager_OnDeleteMoreTemplate);
+            if (ApplicationRef.Application != null)
+                (ApplicationRef.Application as IApplicationEvents).OnMapCloseEvent +=
+                    new OnMapCloseEventHandler(this.EditorTemplateManageCtrl_OnMapCloseEvent);
         }
 
         private void AddTemplate(YTEditTemplate template)
@@ -63,7 +71,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 {
                     if (this.IsAdd(featureLayer))
                     {
-                        item = new ListViewItem {
+                        item = new ListViewItem
+                        {
                             Text = template.Name,
                             Tag = template
                         };
@@ -119,7 +128,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 }
                 if ((group == null) && this.IsAdd(featureLayer))
                 {
-                    group = new ListViewGroup {
+                    group = new ListViewGroup
+                    {
                         Tag = featureLayer,
                         Name = featureLayer.Name,
                         Header = featureLayer.Name
@@ -128,7 +138,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 }
                 if (group != null)
                 {
-                    item = new ListViewItem {
+                    item = new ListViewItem
+                    {
                         Text = template.Name,
                         Tag = template,
                         Group = group
@@ -139,7 +150,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
             if ((group == null) && this.IsAdd(featureLayer))
             {
-                group = new ListViewGroup {
+                group = new ListViewGroup
+                {
                     Name = str,
                     Header = str
                 };
@@ -147,7 +159,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
             if (group != null)
             {
-                item = new ListViewItem {
+                item = new ListViewItem
+                {
                     Text = template.Name,
                     Tag = template,
                     Group = group
@@ -171,7 +184,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             {
                 YTEditTemplate template = (item.Tag as YTEditTemplate).Clone();
                 m_list[template.FeatureLayer].Add(template);
-                ListViewItem li = new ListViewItem {
+                ListViewItem li = new ListViewItem
+                {
                     Text = template.Name,
                     Tag = template,
                     Group = item.Group
@@ -209,7 +223,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
- private void EditorEvent_OnStopEditing()
+        private void EditorEvent_OnStopEditing()
         {
             ApplicationRef.Application.HideDockWindow(this);
         }
@@ -360,14 +374,16 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
             if (m_list.Count == 0)
             {
-                UID uid = new UIDClass {
+                UID uid = new UIDClass
+                {
                     Value = "{40A9E885-5533-11d0-98BE-00805F7CED21}"
                 };
                 IEnumLayer layer = this.Map.get_Layers(uid, true);
                 layer.Reset();
                 for (ILayer layer2 = layer.Next(); layer2 != null; layer2 = layer.Next())
                 {
-                    if ((layer2 is IFeatureLayer) && Yutai.ArcGIS.Common.Editor.Editor.LayerCanEdit(layer2 as IFeatureLayer))
+                    if ((layer2 is IFeatureLayer) &&
+                        Yutai.ArcGIS.Common.Editor.Editor.LayerCanEdit(layer2 as IFeatureLayer))
                     {
                         List<YTEditTemplate> list = YTEditTemplateFactory.Create(layer2 as IFeatureLayer);
                         m_list.Add(layer2 as IFeatureLayer, list);
@@ -389,7 +405,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 {
                     if (this.IsAdd(pair.Key))
                     {
-                        group = new ListViewGroup {
+                        group = new ListViewGroup
+                        {
                             Tag = pair.Key,
                             Name = pair.Key.Name,
                             Header = pair.Key.Name
@@ -399,7 +416,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                         {
                             foreach (YTEditTemplate template in pair.Value)
                             {
-                                item = new ListViewItem {
+                                item = new ListViewItem
+                                {
                                     Text = template.Name,
                                     Tag = template,
                                     Group = group
@@ -429,7 +447,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                     {
                         if (group5 == null)
                         {
-                            group5 = new ListViewGroup {
+                            group5 = new ListViewGroup
+                            {
                                 Name = "注记",
                                 Header = "注记"
                             };
@@ -443,7 +462,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                             case esriGeometryType.esriGeometryPolyline:
                                 if (group3 == null)
                                 {
-                                    group3 = new ListViewGroup {
+                                    group3 = new ListViewGroup
+                                    {
                                         Name = "线",
                                         Header = "线"
                                     };
@@ -454,7 +474,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                             case esriGeometryType.esriGeometryPolygon:
                                 if (group2 == null)
                                 {
-                                    group2 = new ListViewGroup {
+                                    group2 = new ListViewGroup
+                                    {
                                         Name = "面",
                                         Header = "面"
                                     };
@@ -462,26 +483,29 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                                 group = group2;
                                 goto Label_0337;
                         }
-                        if ((shapeType != esriGeometryType.esriGeometryPoint) && (shapeType != esriGeometryType.esriGeometryMultipoint))
+                        if ((shapeType != esriGeometryType.esriGeometryPoint) &&
+                            (shapeType != esriGeometryType.esriGeometryMultipoint))
                         {
                             continue;
                         }
                         if (group4 == null)
                         {
-                            group4 = new ListViewGroup {
+                            group4 = new ListViewGroup
+                            {
                                 Name = "点",
                                 Header = "点"
                             };
                         }
                         group = group4;
                     }
-                Label_0337:
+                    Label_0337:
                     this.listView1.Groups.Add(group);
                     if (pair.Value != null)
                     {
                         foreach (YTEditTemplate template in pair.Value)
                         {
-                            item = new ListViewItem {
+                            item = new ListViewItem
+                            {
                                 Text = template.Name,
                                 Tag = template,
                                 Group = group
@@ -499,7 +523,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                     {
                         foreach (YTEditTemplate template in pair.Value)
                         {
-                            item = new ListViewItem {
+                            item = new ListViewItem
+                            {
                                 Text = template.Name,
                                 Tag = template
                             };
@@ -510,7 +535,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
- private bool IsAdd(IFeatureLayer template)
+        private bool IsAdd(IFeatureLayer template)
         {
             if (this.m_FilterType == FilterType.NoFilter)
             {
@@ -520,14 +545,17 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             esriFeatureType featureType = template.FeatureClass.FeatureType;
             if (this.m_FilterType == FilterType.Point)
             {
-                if ((featureType == esriFeatureType.esriFTSimple) && ((shapeType == esriGeometryType.esriGeometryPoint) || (shapeType == esriGeometryType.esriGeometryMultipoint)))
+                if ((featureType == esriFeatureType.esriFTSimple) &&
+                    ((shapeType == esriGeometryType.esriGeometryPoint) ||
+                     (shapeType == esriGeometryType.esriGeometryMultipoint)))
                 {
                     return true;
                 }
             }
             else if (this.m_FilterType == FilterType.Line)
             {
-                if ((featureType == esriFeatureType.esriFTSimple) && (shapeType == esriGeometryType.esriGeometryPolyline))
+                if ((featureType == esriFeatureType.esriFTSimple) &&
+                    (shapeType == esriGeometryType.esriGeometryPolyline))
                 {
                     return true;
                 }
@@ -563,14 +591,17 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             esriFeatureType featureType = template.FeatureLayer.FeatureClass.FeatureType;
             if (this.m_FilterType == FilterType.Point)
             {
-                if ((featureType == esriFeatureType.esriFTSimple) && ((shapeType == esriGeometryType.esriGeometryPoint) || (shapeType == esriGeometryType.esriGeometryMultipoint)))
+                if ((featureType == esriFeatureType.esriFTSimple) &&
+                    ((shapeType == esriGeometryType.esriGeometryPoint) ||
+                     (shapeType == esriGeometryType.esriGeometryMultipoint)))
                 {
                     return true;
                 }
             }
             else if (this.m_FilterType == FilterType.Line)
             {
-                if ((featureType == esriFeatureType.esriFTSimple) && (shapeType == esriGeometryType.esriGeometryPolyline))
+                if ((featureType == esriFeatureType.esriFTSimple) &&
+                    (shapeType == esriGeometryType.esriGeometryPolyline))
                 {
                     return true;
                 }
@@ -605,7 +636,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
             if (list.Count > 0)
             {
-                frmFilterLayerSelect select = new frmFilterLayerSelect {
+                frmFilterLayerSelect select = new frmFilterLayerSelect
+                {
                     FilterLayers = this.FilterLayers,
                     Layers = list
                 };
@@ -639,7 +671,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         {
             if (this.listView1.SelectedItems.Count > 0)
             {
-                Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate = this.listView1.SelectedItems[0].Tag as YTEditTemplate;
+                Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate =
+                    this.listView1.SelectedItems[0].Tag as YTEditTemplate;
                 ApplicationRef.Application.UpdateUI();
             }
             else
@@ -696,7 +729,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            new frmTemplatesGroup { Map = this.Map, Templates = m_list }.ShowDialog();
+            new frmTemplatesGroup {Map = this.Map, Templates = m_list}.ShowDialog();
         }
 
         private void 清除分组ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -719,42 +752,32 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         public DockingStyle DefaultDockingStyle
         {
-            get
-            {
-                return DockingStyle.Right;
-            }
+            get { return DockingStyle.Right; }
         }
 
         string IDockContent.Name
         {
-            get
-            {
-                return base.Name;
-            }
+            get { return base.Name; }
         }
 
         int IDockContent.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public IMap Map
         {
-            get
-            {
-                return this.m_Map;
-            }
+            get { return this.m_Map; }
             set
             {
                 if (this.m_Map != null)
                 {
-                    (this.m_Map as IActiveViewEvents_Event).ItemDeleted-=(new IActiveViewEvents_ItemDeletedEventHandler(this.EditorTemplateManageCtrl_ItemDeleted));
+                    (this.m_Map as IActiveViewEvents_Event).ItemDeleted -=
+                        (new IActiveViewEvents_ItemDeletedEventHandler(this.EditorTemplateManageCtrl_ItemDeleted));
                 }
                 this.m_Map = value;
-                (this.m_Map as IActiveViewEvents_Event).ItemDeleted+=(new IActiveViewEvents_ItemDeletedEventHandler(this.EditorTemplateManageCtrl_ItemDeleted));
+                (this.m_Map as IActiveViewEvents_Event).ItemDeleted +=
+                    (new IActiveViewEvents_ItemDeletedEventHandler(this.EditorTemplateManageCtrl_ItemDeleted));
                 if (EditMap.ContainsKey(this.m_Map))
                 {
                     m_list = EditMap[this.Map];
@@ -787,4 +810,3 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         }
     }
 }
-

@@ -30,7 +30,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             {
                 this.m_IsPageDirty = false;
                 ImageComboBoxItem item = this.imageComboBoxEdit1.Properties.Items[this.imageComboBoxEdit1.SelectedIndex];
-                this.m_OverLayerProperty.PointPlacementMethod = (esriOverposterPointPlacementMethod) this.rdoPointPlacementMethod.SelectedIndex;
+                this.m_OverLayerProperty.PointPlacementMethod =
+                    (esriOverposterPointPlacementMethod) this.rdoPointPlacementMethod.SelectedIndex;
                 switch (this.rdoPointPlacementMethod.SelectedIndex)
                 {
                     case 0:
@@ -177,7 +178,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- private int GetNumber(char c)
+        private int GetNumber(char c)
         {
             switch (c)
             {
@@ -254,7 +255,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- private void listPointPlacementAngles_SelectedIndexChanged(object sender, EventArgs e)
+        private void listPointPlacementAngles_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.listPointPlacementAngles.SelectedIndex != -1)
             {
@@ -393,38 +394,23 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.m_IsPageDirty;
-            }
+            get { return this.m_IsPageDirty; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return "";
-            }
-            set
-            {
-            }
+            get { return ""; }
+            set { }
         }
     }
 }
-

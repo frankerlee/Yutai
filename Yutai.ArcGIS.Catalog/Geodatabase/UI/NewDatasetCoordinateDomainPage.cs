@@ -42,7 +42,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             return true;
         }
 
- private void method_0()
+        private void method_0()
         {
             if (NewObjectClassHelper.m_pObjectClassHelper.IsEdit)
             {
@@ -107,7 +107,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             {
                 double num5;
                 double num8;
-                if ((NewObjectClassHelper.m_pObjectClassHelper.FeatureDataset != null) && !NewObjectClassHelper.m_pObjectClassHelper.IsEdit)
+                if ((NewObjectClassHelper.m_pObjectClassHelper.FeatureDataset != null) &&
+                    !NewObjectClassHelper.m_pObjectClassHelper.IsEdit)
                 {
                     this.groupXY.Visible = false;
                     this.groupZ.Visible = false;
@@ -123,7 +124,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         this.double_0 = 2147483645.0;
                     }
                     num8 = double.Parse(this.txtMPrecision.Text);
-                    num5 = (num8 * this.double_0) - 100000.0;
+                    num5 = (num8*this.double_0) - 100000.0;
                     this.txtMMaxValue.Text = num5.ToString();
                 }
                 else
@@ -139,22 +140,22 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     num8 = double.Parse(this.txtZPrecision.Text);
                     this.txtZMinValue.Text = "-100000";
                     this.lblMResolution.Text = "未知单位";
-                    num5 = (num8 * this.double_0) - 100000.0;
+                    num5 = (num8*this.double_0) - 100000.0;
                     this.txtZMaxValue.Text = num5.ToString();
                     num8 = double.Parse(this.txtMPrecision.Text);
                     this.txtMMinValue.Text = "-100000";
-                    num5 = (num8 * this.double_0) - 100000.0;
+                    num5 = (num8*this.double_0) - 100000.0;
                     this.txtMMaxValue.Text = num5.ToString();
                     if (NewObjectClassHelper.m_pObjectClassHelper.SpatialReference is IUnknownCoordinateSystem)
                     {
                         this.txtXYPrecision.Text = "0.0001";
-                        num5 = (this.double_0 / 2.0) * 0.0001;
+                        num5 = (this.double_0/2.0)*0.0001;
                         this.textBoxMinX.Text = "-" + num5.ToString();
-                        num5 = (this.double_0 / 2.0) * 0.0001;
+                        num5 = (this.double_0/2.0)*0.0001;
                         this.textBoxMaxX.Text = num5.ToString();
-                        num5 = (this.double_0 / 2.0) * 0.0001;
+                        num5 = (this.double_0/2.0)*0.0001;
                         this.textBoxMinY.Text = "-" + num5.ToString();
-                        this.textBoxMaxY.Text = ((this.double_0 / 2.0) * 0.0001).ToString();
+                        this.textBoxMaxY.Text = ((this.double_0/2.0)*0.0001).ToString();
                         this.lblXYResolution.Text = "未知单位";
                         this.lblZResolution.Text = "未知单位";
                         this.groupXY.Size = new Size(390, 154);
@@ -182,7 +183,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         {
                             this.txtXYPrecision.Text = "0.000000001";
                             this.lblXYResolution.Text = "度";
-                            if ((NewObjectClassHelper.m_pObjectClassHelper.SpatialReference as ISpatialReference3).VerticalCoordinateSystem == null)
+                            if (
+                                (NewObjectClassHelper.m_pObjectClassHelper.SpatialReference as ISpatialReference3)
+                                    .VerticalCoordinateSystem == null)
                             {
                                 this.lblZResolution.Text = "未知单位";
                             }
@@ -195,7 +198,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         {
                             this.txtXYPrecision.Text = "0.0001";
                             this.lblXYResolution.Text = "米";
-                            if ((NewObjectClassHelper.m_pObjectClassHelper.SpatialReference as ISpatialReference3).VerticalCoordinateSystem == null)
+                            if (
+                                (NewObjectClassHelper.m_pObjectClassHelper.SpatialReference as ISpatialReference3)
+                                    .VerticalCoordinateSystem == null)
                             {
                                 this.lblZResolution.Text = "未知单位";
                             }
@@ -235,7 +240,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 double num = double.Parse(this.txtXYPrecision.Text);
                 double num2 = double.Parse(this.textBoxMinX.Text);
                 this.bool_0 = false;
-                this.textBoxMaxX.Text = ((num * this.double_0) + num2).ToString();
+                this.textBoxMaxX.Text = ((num*this.double_0) + num2).ToString();
                 this.bool_0 = true;
             }
             catch
@@ -288,18 +293,18 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         MessageBox.Show("最大的X值应比最小X值大!");
                         num3 = double.Parse(this.txtXYPrecision.Text);
                         this.bool_0 = false;
-                        this.textBoxMinX.Text = (num - (num3 * this.double_0)).ToString();
+                        this.textBoxMinX.Text = (num - (num3*this.double_0)).ToString();
                         this.bool_0 = true;
                     }
                     else
                     {
-                        num3 = (num - num2) / this.double_0;
+                        num3 = (num - num2)/this.double_0;
                         double num5 = double.Parse(this.txtXYPrecision.Text);
                         try
                         {
                             double num6 = double.Parse(this.textBoxMaxX.Text);
                             double num7 = double.Parse(this.textBoxMinX.Text);
-                            num5 = (num6 - num7) / this.double_0;
+                            num5 = (num6 - num7)/this.double_0;
                         }
                         catch
                         {
@@ -346,18 +351,18 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         MessageBox.Show("最大的Y值应比最小Y值大!");
                         num3 = double.Parse(this.txtXYPrecision.Text);
                         this.bool_0 = false;
-                        this.textBoxMinY.Text = (num - (num3 * this.double_0)).ToString();
+                        this.textBoxMinY.Text = (num - (num3*this.double_0)).ToString();
                         this.bool_0 = true;
                     }
                     else
                     {
-                        num3 = (num - num2) / this.double_0;
+                        num3 = (num - num2)/this.double_0;
                         double num5 = double.Parse(this.txtXYPrecision.Text);
                         try
                         {
                             double num6 = double.Parse(this.textBoxMaxX.Text);
                             double num7 = double.Parse(this.textBoxMinX.Text);
-                            num5 = (num6 - num7) / this.double_0;
+                            num5 = (num6 - num7)/this.double_0;
                         }
                         catch
                         {
@@ -385,7 +390,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     double num = double.Parse(this.txtXYPrecision.Text);
                     double num2 = double.Parse(this.textBoxMinX.Text);
                     this.bool_0 = false;
-                    this.textBoxMaxX.Text = ((num * this.double_0) + num2).ToString();
+                    this.textBoxMaxX.Text = ((num*this.double_0) + num2).ToString();
                     this.bool_0 = true;
                     this.textBoxMinX.ForeColor = Color.Black;
                 }
@@ -405,7 +410,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     double num = double.Parse(this.txtXYPrecision.Text);
                     double num2 = double.Parse(this.textBoxMinY.Text);
                     this.bool_0 = false;
-                    this.textBoxMaxY.Text = ((num * this.double_0) + num2).ToString();
+                    this.textBoxMaxY.Text = ((num*this.double_0) + num2).ToString();
                     this.bool_0 = true;
                     this.textBoxMinY.ForeColor = Color.Black;
                 }
@@ -425,7 +430,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     double num = double.Parse(this.txtMPrecision.Text);
                     double num2 = double.Parse(this.txtMMinValue.Text);
                     this.bool_0 = false;
-                    this.txtMMaxValue.Text = ((num * this.double_0) + num2).ToString();
+                    this.txtMMaxValue.Text = ((num*this.double_0) + num2).ToString();
                     this.bool_0 = true;
                     this.txtMMinValue.ForeColor = Color.Black;
                 }
@@ -445,7 +450,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     double num = double.Parse(this.txtMPrecision.Text);
                     double num2 = double.Parse(this.txtMMinValue.Text);
                     this.bool_0 = false;
-                    this.txtMMaxValue.Text = ((num * this.double_0) + num2).ToString();
+                    this.txtMMaxValue.Text = ((num*this.double_0) + num2).ToString();
                     this.bool_0 = true;
                     this.txtMPrecision.ForeColor = Color.Black;
                 }
@@ -466,9 +471,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     double num2 = double.Parse(this.textBoxMinX.Text);
                     double num3 = double.Parse(this.textBoxMinY.Text);
                     this.bool_0 = false;
-                    double num4 = (num * this.double_0) + num2;
+                    double num4 = (num*this.double_0) + num2;
                     this.textBoxMaxX.Text = num4.ToString();
-                    this.textBoxMaxY.Text = ((num * this.double_0) + num3).ToString();
+                    this.textBoxMaxY.Text = ((num*this.double_0) + num3).ToString();
                     this.bool_0 = true;
                     this.txtXYPrecision.ForeColor = Color.Black;
                 }
@@ -488,7 +493,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     double num = double.Parse(this.txtZPrecision.Text);
                     double num2 = double.Parse(this.txtZMinValue.Text);
                     this.bool_0 = false;
-                    this.txtZMaxValue.Text = ((num * this.double_0) + num2).ToString();
+                    this.txtZMaxValue.Text = ((num*this.double_0) + num2).ToString();
                     this.bool_0 = true;
                     this.txtZMinValue.ForeColor = Color.Black;
                 }
@@ -508,7 +513,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     double num = double.Parse(this.txtZPrecision.Text);
                     double num2 = double.Parse(this.txtZMinValue.Text);
                     this.bool_0 = false;
-                    this.txtZMaxValue.Text = ((num * this.double_0) + num2).ToString();
+                    this.txtZMaxValue.Text = ((num*this.double_0) + num2).ToString();
                     this.bool_0 = true;
                     this.txtZPrecision.ForeColor = Color.Black;
                 }
@@ -520,4 +525,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

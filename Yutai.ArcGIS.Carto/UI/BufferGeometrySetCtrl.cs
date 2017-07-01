@@ -29,8 +29,10 @@ namespace Yutai.ArcGIS.Carto.UI
         {
             if (this.cboLayers.SelectedIndex != -1)
             {
-                BufferHelper.m_BufferHelper.m_pFeatureLayer = (this.cboLayers.SelectedItem as ObjectWrap).Object as IFeatureLayer;
-                this.lblSelectInfo.Text = (BufferHelper.m_BufferHelper.m_pFeatureLayer as IFeatureSelection).SelectionSet.Count.ToString();
+                BufferHelper.m_BufferHelper.m_pFeatureLayer =
+                    (this.cboLayers.SelectedItem as ObjectWrap).Object as IFeatureLayer;
+                this.lblSelectInfo.Text =
+                    (BufferHelper.m_BufferHelper.m_pFeatureLayer as IFeatureSelection).SelectionSet.Count.ToString();
                 if ((BufferHelper.m_BufferHelper.m_pFeatureLayer as IFeatureSelection).SelectionSet.Count > 0)
                 {
                     this.chkOnlyUseSelectedFeature.Enabled = true;
@@ -49,16 +51,18 @@ namespace Yutai.ArcGIS.Carto.UI
             BufferHelper.m_BufferHelper.bUseSelect = this.chkOnlyUseSelectedFeature.Checked;
         }
 
- private void method_0()
+        private void method_0()
         {
-            UID uid = new UIDClass {
+            UID uid = new UIDClass
+            {
                 Value = "{6CA416B1-E160-11D2-9F4E-00C04F6BC78E}"
             };
             IEnumLayer layer = BufferHelper.m_BufferHelper.m_pFocusMap.get_Layers(uid, true);
             layer.Reset();
             for (ILayer layer2 = layer.Next(); layer2 is IFeatureLayer; layer2 = layer.Next())
             {
-                if (((layer2 as IFeatureLayer).FeatureClass != null) && ((layer2 as IFeatureLayer).FeatureClass.FeatureType == esriFeatureType.esriFTSimple))
+                if (((layer2 as IFeatureLayer).FeatureClass != null) &&
+                    ((layer2 as IFeatureLayer).FeatureClass.FeatureType == esriFeatureType.esriFTSimple))
                 {
                     this.cboLayers.Properties.Items.Add(new ObjectWrap(layer2));
                 }
@@ -75,8 +79,10 @@ namespace Yutai.ArcGIS.Carto.UI
                 this.cboLayers.Enabled = true;
                 if (this.cboLayers.SelectedIndex != -1)
                 {
-                    BufferHelper.m_BufferHelper.m_pFeatureLayer = (this.cboLayers.SelectedItem as ObjectWrap).Object as IFeatureLayer;
-                    this.lblSelectInfo.Text = (BufferHelper.m_BufferHelper.m_pFeatureLayer as IFeatureSelection).SelectionSet.Count.ToString();
+                    BufferHelper.m_BufferHelper.m_pFeatureLayer =
+                        (this.cboLayers.SelectedItem as ObjectWrap).Object as IFeatureLayer;
+                    this.lblSelectInfo.Text =
+                        (BufferHelper.m_BufferHelper.m_pFeatureLayer as IFeatureSelection).SelectionSet.Count.ToString();
                     if ((BufferHelper.m_BufferHelper.m_pFeatureLayer as IFeatureSelection).SelectionSet.Count > 0)
                     {
                         this.chkOnlyUseSelectedFeature.Enabled = true;
@@ -91,7 +97,8 @@ namespace Yutai.ArcGIS.Carto.UI
             }
             else
             {
-                this.chkOnlyUseSelectedFeature.Enabled = (BufferHelper.m_BufferHelper.m_pFocusMap as IGraphicsContainerSelect).ElementSelectionCount > 0;
+                this.chkOnlyUseSelectedFeature.Enabled =
+                    (BufferHelper.m_BufferHelper.m_pFocusMap as IGraphicsContainerSelect).ElementSelectionCount > 0;
                 if (this.chkOnlyUseSelectedFeature.Enabled)
                 {
                     BufferHelper.m_BufferHelper.bUseSelect = this.chkOnlyUseSelectedFeature.Checked;
@@ -111,7 +118,8 @@ namespace Yutai.ArcGIS.Carto.UI
             this.cboLayers.Enabled = true;
             if (this.cboLayers.SelectedIndex != -1)
             {
-                BufferHelper.m_BufferHelper.m_pFeatureLayer = (this.cboLayers.SelectedItem as ObjectWrap).Object as IFeatureLayer;
+                BufferHelper.m_BufferHelper.m_pFeatureLayer =
+                    (this.cboLayers.SelectedItem as ObjectWrap).Object as IFeatureLayer;
                 if ((BufferHelper.m_BufferHelper.m_pFeatureLayer as IFeatureSelection).SelectionSet.Count > 0)
                 {
                     this.chkOnlyUseSelectedFeature.Enabled = true;
@@ -131,7 +139,8 @@ namespace Yutai.ArcGIS.Carto.UI
             this.rdoUseGraphic.Checked = true;
             this.rdoUseFeature.Checked = false;
             this.cboLayers.Enabled = false;
-            this.chkOnlyUseSelectedFeature.Enabled = (BufferHelper.m_BufferHelper.m_pFocusMap as IGraphicsContainerSelect).ElementSelectionCount > 0;
+            this.chkOnlyUseSelectedFeature.Enabled =
+                (BufferHelper.m_BufferHelper.m_pFocusMap as IGraphicsContainerSelect).ElementSelectionCount > 0;
             if (this.chkOnlyUseSelectedFeature.Enabled)
             {
                 BufferHelper.m_BufferHelper.bUseSelect = this.chkOnlyUseSelectedFeature.Checked;
@@ -143,4 +152,3 @@ namespace Yutai.ArcGIS.Carto.UI
         }
     }
 }
-

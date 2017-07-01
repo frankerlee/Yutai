@@ -17,7 +17,7 @@ namespace Yutai.Pipeline.Config.Helpers
     {
         public static bool ValidateLayerGeometryType(IFeatureLayer pLayer, enumPipelineDataType pType)
         {
-            esriGeometryType geometryType=pLayer.FeatureClass.ShapeType;
+            esriGeometryType geometryType = pLayer.FeatureClass.ShapeType;
             switch (pType)
             {
                 case enumPipelineDataType.Point:
@@ -52,7 +52,7 @@ namespace Yutai.Pipeline.Config.Helpers
 
         public static string GetBasicClassName(IFeatureClass featureClass)
         {
-            string[] strArray = (featureClass as IDataset).Name.Split(new char[] { '.' });
+            string[] strArray = (featureClass as IDataset).Name.Split(new char[] {'.'});
             string str = strArray[strArray.Length - 1];
             return str;
         }
@@ -71,6 +71,7 @@ namespace Yutai.Pipeline.Config.Helpers
             pDSName = pDSName.ToUpper();
             return pDSName;
         }
+
         public static string GetClassShortName(IDataset paramDS)
         {
             if (paramDS == null)
@@ -98,6 +99,7 @@ namespace Yutai.Pipeline.Config.Helpers
                 return "";
             }
         }
+
         public static string GetClassShortName(string paramName)
         {
             string str = paramName;

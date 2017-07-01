@@ -19,19 +19,12 @@
 
         public string Description
         {
-            get
-            {
-                return "Info表";
-            }
+            get { return "Info表"; }
         }
 
         public string Name
         {
-            get
-            {
-                return "GxFilterInfoTables";
-            }
+            get { return "GxFilterInfoTables"; }
         }
     }
 }
-

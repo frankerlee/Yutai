@@ -3,9 +3,7 @@
     public enum LocatorCommand
     {
         Clear = 0,
-        Search=1,
+        Search = 1,
         SearchKey = 2
     }
-
- 
 }

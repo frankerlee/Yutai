@@ -27,34 +27,21 @@ namespace Yutai.Plugins.Identifer.Query
 
         private Button btnClear;
 
-    
 
         public ILayer CurrentLayer
         {
-            set
-            {
-                this.ucBuilder.CurrentLayer = value;
-            }
+            set { this.ucBuilder.CurrentLayer = value; }
         }
 
         public ITable Table
         {
-            set
-            {
-                this.ucBuilder.Table = value;
-            }
+            set { this.ucBuilder.Table = value; }
         }
 
         public string WhereCaluse
         {
-            get
-            {
-                return this._whereCaluse;
-            }
-            set
-            {
-                this.ucBuilder.WhereCaluse = value;
-            }
+            get { return this._whereCaluse; }
+            set { this.ucBuilder.WhereCaluse = value; }
         }
 
         public frmSimpleAttributeQueryBuilder()
@@ -80,13 +67,9 @@ namespace Yutai.Plugins.Identifer.Query
             base.Close();
         }
 
-        
 
         private void frmAttributeQueryBuilder_Load(object sender, EventArgs e)
         {
         }
-
-       
     }
 }
-

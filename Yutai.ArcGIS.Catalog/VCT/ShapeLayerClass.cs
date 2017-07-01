@@ -110,9 +110,9 @@ namespace Yutai.ArcGIS.Catalog.VCT
         {
             Vertex vertex = new Vertex();
             vertex.set(0.0, 0.0, 0.0);
-            vertex.I = (vertex_0.J * vertex_1.I) - (vertex_0.K * vertex_1.J);
-            vertex.J = (vertex_0.K * vertex_1.I) - (vertex_0.I * vertex_1.K);
-            vertex.K = (vertex_0.I * vertex_1.J) - (vertex_0.J * vertex_1.I);
+            vertex.I = (vertex_0.J*vertex_1.I) - (vertex_0.K*vertex_1.J);
+            vertex.J = (vertex_0.K*vertex_1.I) - (vertex_0.I*vertex_1.K);
+            vertex.K = (vertex_0.I*vertex_1.J) - (vertex_0.J*vertex_1.I);
             return vertex;
         }
 
@@ -120,12 +120,12 @@ namespace Yutai.ArcGIS.Catalog.VCT
         {
             double d = 0.0;
             double num2 = 0.0;
-            num2 = ((vertex_0.I * vertex_1.I) + (vertex_0.J * vertex_1.J)) + (vertex_0.K * vertex_1.K);
+            num2 = ((vertex_0.I*vertex_1.I) + (vertex_0.J*vertex_1.J)) + (vertex_0.K*vertex_1.K);
             double num3 = Math.Sqrt((Math.Pow(vertex_0.I, 2.0) + Math.Pow(vertex_0.J, 2.0)) + Math.Pow(vertex_0.K, 2.0));
             double num4 = Math.Sqrt((Math.Pow(vertex_1.I, 2.0) + Math.Pow(vertex_1.J, 2.0)) + Math.Pow(vertex_1.K, 2.0));
-            d = num2 / (num3 * num4);
+            d = num2/(num3*num4);
             double a = 0.0;
-            a = (Math.Acos(d) * 180.0) / 3.1415926535897931;
+            a = (Math.Acos(d)*180.0)/3.1415926535897931;
             a = Math.Round(a);
             return (180.0 - a);
         }
@@ -232,7 +232,8 @@ namespace Yutai.ArcGIS.Catalog.VCT
                             this.double_1 = new double[1];
                             this.double_0[0] = point.X;
                             this.double_1[0] = point.Y;
-                            this.intptr_2 = ShapeLib.SHPCreateObject(this.shapeType_0, -1, 0, null, null, 1, this.double_0, this.double_1, null, null);
+                            this.intptr_2 = ShapeLib.SHPCreateObject(this.shapeType_0, -1, 0, null, null, 1,
+                                this.double_0, this.double_1, null, null);
                             num2 = ShapeLib.SHPWriteObject(this.intptr_0, -1, this.intptr_2);
                             ShapeLib.SHPDestroyObject(this.intptr_2);
                             this.method_3(icoFeature_0, num2);
@@ -310,7 +311,8 @@ namespace Yutai.ArcGIS.Catalog.VCT
                                 }
                                 num6++;
                             }
-                            this.intptr_2 = ShapeLib.SHPCreateObject(this.shapeType_0, -1, count, numArray, typeArray, num3, this.double_0, this.double_1, null, null);
+                            this.intptr_2 = ShapeLib.SHPCreateObject(this.shapeType_0, -1, count, numArray, typeArray,
+                                num3, this.double_0, this.double_1, null, null);
                             try
                             {
                                 num2 = ShapeLib.SHPWriteObject(this.intptr_0, -1, this.intptr_2);
@@ -353,7 +355,8 @@ namespace Yutai.ArcGIS.Catalog.VCT
                         index++;
                     }
                 }
-                this.intptr_2 = ShapeLib.SHPCreateObject(this.shapeType_0, -1, count, numArray, typeArray, num3, this.double_0, this.double_1, null, null);
+                this.intptr_2 = ShapeLib.SHPCreateObject(this.shapeType_0, -1, count, numArray, typeArray, num3,
+                    this.double_0, this.double_1, null, null);
                 num2 = ShapeLib.SHPWriteObject(this.intptr_0, -1, this.intptr_2);
                 ShapeLib.SHPDestroyObject(this.intptr_2);
                 this.method_3(icoFeature_0, num2);
@@ -374,7 +377,7 @@ namespace Yutai.ArcGIS.Catalog.VCT
                     goto Label_016A;
                 }
                 int num = 0;
-            Label_0011:
+                Label_0011:
                 if (num >= this.coLayerMapper_0.FieldRelation.Count)
                 {
                     return;
@@ -392,25 +395,25 @@ namespace Yutai.ArcGIS.Catalog.VCT
                     obj2 = "";
                 }
                 goto Label_010A;
-            Label_006B:
+                Label_006B:
                 ShapeLib.DBFWriteStringAttribute(this.intptr_1, int_0, num2, obj2.ToString().ToUpper());
                 goto Label_0101;
-            Label_0088:
+                Label_0088:
                 ShapeLib.DBFWriteIntegerAttribute(this.intptr_1, int_0, num2, this.method_7(obj2.ToString()));
                 goto Label_0101;
-            Label_00A6:
+                Label_00A6:
                 ShapeLib.DBFWriteDoubleAttribute(this.intptr_1, int_0, num2, this.method_6(obj2.ToString()));
                 goto Label_0101;
-            Label_00C4:
+                Label_00C4:
                 ShapeLib.DBFWriteLogicalAttribute(this.intptr_1, int_0, num2, this.method_5(obj2.ToString()));
                 goto Label_0101;
-            Label_00E2:
+                Label_00E2:
                 time = DateTime.Parse(obj2.ToString());
                 ShapeLib.DBFWriteDateAttribute(this.intptr_1, int_0, num2, time);
-            Label_0101:
+                Label_0101:
                 num++;
                 goto Label_0011;
-            Label_010A:
+                Label_010A:
                 num2 = ShapeLib.DBFGetFieldIndex(this.intptr_1, destField.Name);
                 int num3 = 0;
                 int num4 = 0;
@@ -438,10 +441,10 @@ namespace Yutai.ArcGIS.Catalog.VCT
                     default:
                         goto Label_0101;
                 }
-            Label_016A:
+                Label_016A:
                 using (List<ICoField>.Enumerator enumerator = icoFeature_0.Layer.Fields.GetEnumerator())
                 {
-                Label_017D:
+                    Label_017D:
                     if (!enumerator.MoveNext())
                     {
                         return;
@@ -457,23 +460,23 @@ namespace Yutai.ArcGIS.Catalog.VCT
                         obj2 = "";
                     }
                     goto Label_0256;
-                Label_01B5:
+                    Label_01B5:
                     ShapeLib.DBFWriteStringAttribute(this.intptr_1, int_0, num2, obj2.ToString().ToUpper());
                     goto Label_017D;
-                Label_01D2:
+                    Label_01D2:
                     ShapeLib.DBFWriteIntegerAttribute(this.intptr_1, int_0, num2, this.method_7(obj2.ToString()));
                     goto Label_017D;
-                Label_01F0:
+                    Label_01F0:
                     ShapeLib.DBFWriteDoubleAttribute(this.intptr_1, int_0, num2, this.method_6(obj2.ToString()));
                     goto Label_017D;
-                Label_0211:
+                    Label_0211:
                     ShapeLib.DBFWriteLogicalAttribute(this.intptr_1, int_0, num2, this.method_5(obj2.ToString()));
                     goto Label_017D;
-                Label_0232:
+                    Label_0232:
                     time = DateTime.Parse(obj2.ToString());
                     ShapeLib.DBFWriteDateAttribute(this.intptr_1, int_0, num2, time);
                     goto Label_017D;
-                Label_0256:
+                    Label_0256:
                     num2 = ShapeLib.DBFGetFieldIndex(this.intptr_1, current.Name);
                     num3 = 0;
                     num4 = 0;
@@ -565,11 +568,13 @@ namespace Yutai.ArcGIS.Catalog.VCT
             {
                 if (i == (coPointCollection_0.Count - 1))
                 {
-                    num2 = ((coPointCollection_0[0].Y + coPointCollection_0[i].Y) * (coPointCollection_0[0].X - coPointCollection_0[i].X)) / 2.0;
+                    num2 = ((coPointCollection_0[0].Y + coPointCollection_0[i].Y)*
+                            (coPointCollection_0[0].X - coPointCollection_0[i].X))/2.0;
                 }
                 else
                 {
-                    num2 = ((coPointCollection_0[i + 1].Y + coPointCollection_0[i].Y) * (coPointCollection_0[i + 1].X - coPointCollection_0[i].X)) / 2.0;
+                    num2 = ((coPointCollection_0[i + 1].Y + coPointCollection_0[i].Y)*
+                            (coPointCollection_0[i + 1].X - coPointCollection_0[i].X))/2.0;
                 }
                 num += num2;
             }
@@ -593,10 +598,7 @@ namespace Yutai.ArcGIS.Catalog.VCT
 
         public override int FeatureCount
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            get { throw new NotImplementedException(); }
         }
 
         [StructLayout(LayoutKind.Sequential)]
@@ -605,6 +607,7 @@ namespace Yutai.ArcGIS.Catalog.VCT
             public double I;
             public double J;
             public double K;
+
             public void set(double double_0, double double_1, double double_2)
             {
                 this.I = double_0;
@@ -614,4 +617,3 @@ namespace Yutai.ArcGIS.Catalog.VCT
         }
     }
 }
-

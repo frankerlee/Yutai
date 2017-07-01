@@ -23,7 +23,8 @@ namespace Yutai.ArcGIS.Common.Helpers
             return class2;
         }
 
-        public static IFillSymbol CreateFillSymbol(Color fillColor, esriSimpleFillStyle eFillStyle, ISimpleLineSymbol aOutline)
+        public static IFillSymbol CreateFillSymbol(Color fillColor, esriSimpleFillStyle eFillStyle,
+            ISimpleLineSymbol aOutline)
         {
             SimpleFillSymbol class2 = new SimpleFillSymbol();
             class2.Style = eFillStyle;
@@ -32,7 +33,8 @@ namespace Yutai.ArcGIS.Common.Helpers
             return class2;
         }
 
-        public static IFillSymbol CreateFillSymbol(Color fillColor, esriSimpleFillStyle eFillStyle, Color outlineColor, double outlineWidth, esriSimpleLineStyle outlineStyle)
+        public static IFillSymbol CreateFillSymbol(Color fillColor, esriSimpleFillStyle eFillStyle, Color outlineColor,
+            double outlineWidth, esriSimpleLineStyle outlineStyle)
         {
             SimpleFillSymbol class2 = new SimpleFillSymbol();
             class2.Style = eFillStyle;
@@ -57,7 +59,8 @@ namespace Yutai.ArcGIS.Common.Helpers
             return (class2 as IFontDisp);
         }
 
-        public static IFontDisp CreateFont(string pFontName, float pSize, bool pBold, bool pItalic, bool pUnderline, bool pStroke)
+        public static IFontDisp CreateFont(string pFontName, float pSize, bool pBold, bool pItalic, bool pUnderline,
+            bool pStroke)
         {
             StdFont class2 = new StdFont();
             class2.Name = pFontName;
@@ -74,17 +77,17 @@ namespace Yutai.ArcGIS.Common.Helpers
             IPoint point;
             if (sym is IMarkerSymbol)
             {
-                IArea area = (IArea)env;
+                IArea area = (IArea) env;
                 return area.Centroid;
             }
             if ((sym is ILineSymbol) || (sym is ITextSymbol))
             {
                 IPolyline polyline = new Polyline() as IPolyline;
                 point = new ESRI.ArcGIS.Geometry.Point() as IPoint;
-                point.PutCoords(env.LowerLeft.X, (env.LowerLeft.Y + env.UpperRight.Y) / 2.0);
+                point.PutCoords(env.LowerLeft.X, (env.LowerLeft.Y + env.UpperRight.Y)/2.0);
                 polyline.FromPoint = point;
                 point = new ESRI.ArcGIS.Geometry.Point() as IPoint;
-                point.PutCoords(env.UpperRight.X, (env.LowerLeft.Y + env.UpperRight.Y) / 2.0);
+                point.PutCoords(env.UpperRight.X, (env.LowerLeft.Y + env.UpperRight.Y)/2.0);
                 polyline.ToPoint = point;
                 if (sym is ITextSymbol)
                 {
@@ -95,7 +98,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             if (sym is IFillSymbol)
             {
                 IPolygon polygon = new Polygon() as IPolygon;
-                IPointCollection points = (IPointCollection)polygon;
+                IPointCollection points = (IPointCollection) polygon;
                 point = new ESRI.ArcGIS.Geometry.Point() as IPoint;
                 point.PutCoords(env.LowerLeft.X, env.LowerLeft.Y);
                 points.AddPoints(1, ref point);
@@ -201,7 +204,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             frame.right = width;
             frame.bottom = height;
             double dpi = Graphics.FromHdc(HDC).DpiY;
-            long lDpi = (long)dpi;
+            long lDpi = (long) dpi;
             if (lDpi == 0)
             {
                 System.Windows.Forms.MessageBox.Show("获取设备比例尺失败!");
@@ -214,6 +217,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             dispTrans.Resolution = dpi;
             return dispTrans;
         }
+
         public static Image StyleToImage(ISymbol sym, int width, int height)
         {
             if (sym == null)
@@ -234,7 +238,7 @@ namespace Yutai.ArcGIS.Common.Helpers
                 if (geometry != null)
                 {
                     ITransformation transformation = CreateTransformationFromHDC(hdc, width, height);
-                    sym.SetupDC((int)hdc, transformation);
+                    sym.SetupDC((int) hdc, transformation);
                     sym.Draw(geometry);
                     sym.ResetDC();
                 }

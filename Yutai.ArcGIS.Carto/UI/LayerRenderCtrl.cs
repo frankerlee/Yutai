@@ -26,7 +26,9 @@ namespace Yutai.ArcGIS.Carto.UI
         private RepresentationRendererPage representationRendererPage_0 = new RepresentationRendererPage();
         private SimpleRenderControl simpleRenderControl_0 = new SimpleRenderControl();
         private UniqueValueRendererCtrl uniqueValueRendererCtrl_0 = new UniqueValueRendererCtrl();
-        private UniqueValueRendererMoreAttributeCtrl uniqueValueRendererMoreAttributeCtrl_0 = new UniqueValueRendererMoreAttributeCtrl();
+
+        private UniqueValueRendererMoreAttributeCtrl uniqueValueRendererMoreAttributeCtrl_0 =
+            new UniqueValueRendererMoreAttributeCtrl();
 
         public LayerRenderCtrl()
         {
@@ -43,7 +45,7 @@ namespace Yutai.ArcGIS.Carto.UI
             return true;
         }
 
- private void LayerRenderCtrl_Load(object sender, EventArgs e)
+        private void LayerRenderCtrl_Load(object sender, EventArgs e)
         {
             this.method_0();
             this.method_1();
@@ -64,7 +66,14 @@ namespace Yutai.ArcGIS.Carto.UI
             this.matchStyleGrallyCtrl_0.CurrentLayer = this.ilayer_0;
             if (this.ilayer_0 is IGeoFeatureLayer)
             {
-                this.treeView1.Nodes.AddRange(new TreeNode[] { new TreeNode("要素", new TreeNode[] { new TreeNode("简单渲染") }), new TreeNode("类别", new TreeNode[] { new TreeNode("唯一值渲染"), new TreeNode("唯一值渲染,多字段"), new TreeNode("匹配符号库") }), new TreeNode("数量", new TreeNode[] { new TreeNode("渐变颜色渲染"), new TreeNode("比例符号") }), new TreeNode("图表", new TreeNode[] { new TreeNode("饼图"), new TreeNode("直方图") }) });
+                this.treeView1.Nodes.AddRange(new TreeNode[]
+                {
+                    new TreeNode("要素", new TreeNode[] {new TreeNode("简单渲染")}),
+                    new TreeNode("类别",
+                        new TreeNode[] {new TreeNode("唯一值渲染"), new TreeNode("唯一值渲染,多字段"), new TreeNode("匹配符号库")}),
+                    new TreeNode("数量", new TreeNode[] {new TreeNode("渐变颜色渲染"), new TreeNode("比例符号")}),
+                    new TreeNode("图表", new TreeNode[] {new TreeNode("饼图"), new TreeNode("直方图")})
+                });
                 this.treeView1.Nodes[0].Tag = this.simpleRenderControl_0;
                 this.treeView1.Nodes[0].Nodes[0].Tag = this.simpleRenderControl_0;
                 this.treeView1.Nodes[1].Tag = this.uniqueValueRendererCtrl_0;
@@ -114,12 +123,14 @@ namespace Yutai.ArcGIS.Carto.UI
                     this.representationRendererPage_0.Visible = false;
                     this.panel.Controls.Add(this.representationRendererPage_0);
                     IFeatureClass featureClass = (this.ilayer_0 as IFeatureLayer).FeatureClass;
-                    IRepresentationWorkspaceExtension repWSExtFromFClass = RepresentationAssist.GetRepWSExtFromFClass(featureClass);
+                    IRepresentationWorkspaceExtension repWSExtFromFClass =
+                        RepresentationAssist.GetRepWSExtFromFClass(featureClass);
                     this.representationRendererPage_0.RepresentationWorkspaceExtension = repWSExtFromFClass;
                     IEnumDatasetName name = repWSExtFromFClass.get_FeatureClassRepresentationNames(featureClass);
                     for (IDatasetName name2 = name.Next(); name2 != null; name2 = name.Next())
                     {
-                        TreeNode node2 = new TreeNode(name2.Name) {
+                        TreeNode node2 = new TreeNode(name2.Name)
+                        {
                             Tag = this.representationRendererPage_0
                         };
                         node.Nodes.Add(node2);
@@ -129,7 +140,8 @@ namespace Yutai.ArcGIS.Carto.UI
             }
             else if (this.ilayer_0 is IRasterLayer)
             {
-                this.treeView1.Nodes.AddRange(new TreeNode[] { new TreeNode("唯一值"), new TreeNode("分类"), new TreeNode("拉伸") });
+                this.treeView1.Nodes.AddRange(new TreeNode[]
+                    {new TreeNode("唯一值"), new TreeNode("分类"), new TreeNode("拉伸")});
                 this.treeView1.Nodes[0].Tag = this.uniqueValueRendererCtrl_0;
                 this.treeView1.Nodes[1].Tag = this.classBreaksRendererCtrl_0;
                 this.uniqueValueRendererCtrl_0.Visible = false;
@@ -182,7 +194,8 @@ namespace Yutai.ArcGIS.Carto.UI
                         }
                         else if ((renderer as IUniqueValueRenderer).FieldCount == 1)
                         {
-                            if (((renderer as IUniqueValueRenderer).LookupStyleset != null) && ((renderer as IUniqueValueRenderer).LookupStyleset.Length > 0))
+                            if (((renderer as IUniqueValueRenderer).LookupStyleset != null) &&
+                                ((renderer as IUniqueValueRenderer).LookupStyleset.Length > 0))
                             {
                                 this.treeView1.SelectedNode = this.treeView1.Nodes[1].Nodes[2];
                                 this.iuserControl_0 = this.matchStyleGrallyCtrl_0;
@@ -286,34 +299,22 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IBasicMap FocusMap
         {
-            set
-            {
-                this.ibasicMap_0 = value;
-            }
+            set { this.ibasicMap_0 = value; }
         }
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         public ILayer Layer
         {
-            set
-            {
-                this.ilayer_0 = value;
-            }
+            set { this.ilayer_0 = value; }
         }
 
         public object SelectItem
         {
-            set
-            {
-                this.ilayer_0 = value as ILayer;
-            }
+            set { this.ilayer_0 = value as ILayer; }
         }
 
         public IStyleGallery StyleGallery
@@ -333,4 +334,3 @@ namespace Yutai.ArcGIS.Carto.UI
         }
     }
 }
-

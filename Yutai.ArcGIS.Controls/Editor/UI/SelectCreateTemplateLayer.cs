@@ -117,7 +117,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                     {
                         this.NexHasEnable = true;
                     }
-                    else if ((obj2.Layer is IGeoFeatureLayer) && ((obj2.Layer as IGeoFeatureLayer).Renderer is IUniqueValueRenderer))
+                    else if ((obj2.Layer is IGeoFeatureLayer) &&
+                             ((obj2.Layer as IGeoFeatureLayer).Renderer is IUniqueValueRenderer))
                     {
                         this.NexHasEnable = true;
                     }
@@ -133,7 +134,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                             {
                                 this.NexHasEnable = true;
                             }
-                            else if ((obj2.Layer is IGeoFeatureLayer) && ((obj2.Layer as IGeoFeatureLayer).Renderer is IUniqueValueRenderer))
+                            else if ((obj2.Layer is IGeoFeatureLayer) &&
+                                     ((obj2.Layer as IGeoFeatureLayer).Renderer is IUniqueValueRenderer))
                             {
                                 this.NexHasEnable = true;
                             }
@@ -151,9 +153,10 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
- private void SelectCreateTemplateLayer_Load(object sender, EventArgs e)
+        private void SelectCreateTemplateLayer_Load(object sender, EventArgs e)
         {
-            UID uid = new UIDClass {
+            UID uid = new UIDClass
+            {
                 Value = "{40A9E885-5533-11d0-98BE-00805F7CED21}"
             };
             IEnumLayer layer = this.Map.get_Layers(uid, true);
@@ -172,4 +175,3 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         internal Dictionary<IFeatureLayer, List<YTEditTemplateWrap>> Templates { get; set; }
     }
 }
-

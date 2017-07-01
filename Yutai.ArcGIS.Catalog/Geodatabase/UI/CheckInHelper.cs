@@ -27,7 +27,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         private void method_11()
         {
             ICheckIn @in = new CheckInClass();
-            ESRI.ArcGIS.GeoDatabaseDistributed.IFeatureProgress_Event event2 = @in as ESRI.ArcGIS.GeoDatabaseDistributed.IFeatureProgress_Event;
+            ESRI.ArcGIS.GeoDatabaseDistributed.IFeatureProgress_Event event2 =
+                @in as ESRI.ArcGIS.GeoDatabaseDistributed.IFeatureProgress_Event;
             base.InitEvent(event2);
             if (this.bool_0)
             {
@@ -37,7 +38,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 IReplica replica = replicas.Replicas.Next();
                 try
                 {
-                    @in.CheckInFromGDB(base.m_MasterWorkspaceName, replica.Name, this.iworkspaceName_0, this.bool_1, false);
+                    @in.CheckInFromGDB(base.m_MasterWorkspaceName, replica.Name, this.iworkspaceName_0, this.bool_1,
+                        false);
                 }
                 catch
                 {
@@ -52,7 +54,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 }
                 try
                 {
-                    @in.CheckInFromDeltaFile(base.m_MasterWorkspaceName, this.string_1, this.string_0, esriExportToAccess, this.bool_1, false);
+                    @in.CheckInFromDeltaFile(base.m_MasterWorkspaceName, this.string_1, this.string_0,
+                        esriExportToAccess, this.bool_1, false);
                 }
                 catch
                 {
@@ -68,47 +71,28 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public bool CheckInfromGDB
         {
-            set
-            {
-                this.bool_0 = value;
-            }
+            set { this.bool_0 = value; }
         }
 
         public string CheckInName
         {
-            set
-            {
-                this.string_1 = value;
-            }
+            set { this.string_1 = value; }
         }
 
         public IWorkspaceName CheckoutWorkspaceName
         {
-            get
-            {
-                return this.iworkspaceName_0;
-            }
-            set
-            {
-                this.iworkspaceName_0 = value;
-            }
+            get { return this.iworkspaceName_0; }
+            set { this.iworkspaceName_0 = value; }
         }
 
         public string DeltaFileName
         {
-            set
-            {
-                this.string_0 = value;
-            }
+            set { this.string_0 = value; }
         }
 
         public bool ReconcileCheckout
         {
-            set
-            {
-                this.bool_1 = value;
-            }
+            set { this.bool_1 = value; }
         }
     }
 }
-

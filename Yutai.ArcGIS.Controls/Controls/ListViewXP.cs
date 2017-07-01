@@ -10,8 +10,9 @@ namespace Yutai.ArcGIS.Controls.Controls
     {
         private LVS_EX styles;
 
-        [DllImport("user32.dll", CharSet=CharSet.Auto)]
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
         public static extern int SendMessage(IntPtr handle, int messg, int wparam, int lparam);
+
         public void SetExStyles()
         {
             this.styles = (LVS_EX) SendMessage(base.Handle, 4151, 0, 0);
@@ -27,4 +28,3 @@ namespace Yutai.ArcGIS.Controls.Controls
         }
     }
 }
-

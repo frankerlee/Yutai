@@ -17,7 +17,7 @@ namespace Yutai.Plugins.TableEditor.Functions.Math
             _description = "Int 函数可返回指定数字的整数部分。";
             _parameters = new List<Parameter>()
             {
-                new Parameter() { Order = 0, Name = "number"}
+                new Parameter() {Order = 0, Name = "number"}
             };
         }
     }

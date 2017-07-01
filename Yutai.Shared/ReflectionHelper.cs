@@ -11,7 +11,8 @@ namespace Yutai.Shared
     {
         public static object GetInstanceField(object instance, string fieldName)
         {
-            const BindingFlags bindFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static;
+            const BindingFlags bindFlags =
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static;
             FieldInfo field = instance.GetType().GetField(fieldName, bindFlags);
             return field != null ? field.GetValue(instance) : null;
         }

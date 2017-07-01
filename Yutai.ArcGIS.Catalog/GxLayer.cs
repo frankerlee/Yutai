@@ -10,7 +10,8 @@ using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Catalog
 {
-    public class GxLayer : IGxObject, IGxLayer, IGxFile, IGxObjectEdit, IGxObjectInternalName, IGxObjectProperties, IGxObjectUI
+    public class GxLayer : IGxObject, IGxLayer, IGxFile, IGxObjectEdit, IGxObjectInternalName, IGxObjectProperties,
+        IGxObjectUI
     {
         private IGxCatalog igxCatalog_0 = null;
         private IGxObject igxObject_0 = null;
@@ -115,7 +116,8 @@ namespace Yutai.ArcGIS.Catalog
 
         private ILayer method_1(string string_1)
         {
-            IFileName name = new FileNameClass {
+            IFileName name = new FileNameClass
+            {
                 Path = string_1
             };
             ILayerFactoryHelper helper = new LayerFactoryHelperClass();
@@ -127,7 +129,7 @@ namespace Yutai.ArcGIS.Catalog
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
             return null;
         }
@@ -182,49 +184,35 @@ namespace Yutai.ArcGIS.Catalog
 
         public string BaseName
         {
-            get
-            {
-                return System.IO.Path.GetFileNameWithoutExtension(this.string_0);
-            }
+            get { return System.IO.Path.GetFileNameWithoutExtension(this.string_0); }
         }
 
         public string Category
         {
-            get
-            {
-                return "图层";
-            }
+            get { return "图层"; }
         }
 
         public UID ClassID
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public UID ContextMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public string FullName
         {
-            get
-            {
-                return this.string_0;
-            }
+            get { return this.string_0; }
         }
 
         public IName InternalObjectName
         {
             get
             {
-                IFileName name = new FileNameClass {
+                IFileName name = new FileNameClass
+                {
                     Path = this.string_0
                 };
                 return (name as IName);
@@ -233,40 +221,30 @@ namespace Yutai.ArcGIS.Catalog
 
         public bool IsValid
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         IName IGxObjectInternalName.InternalObjectName
         {
             get
             {
-                IFileName name = new FileNameClass {
+                IFileName name = new FileNameClass
+                {
                     Path = this.string_0
                 };
                 return (name as IName);
             }
-            set
-            {
-            }
+            set { }
         }
 
         public Bitmap LargeImage
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public Bitmap LargeSelectedImage
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public ILayer Layer
@@ -279,10 +257,7 @@ namespace Yutai.ArcGIS.Catalog
                 }
                 return this.method_1(this.string_0);
             }
-            set
-            {
-                this.ilayer_0 = value;
-            }
+            set { this.ilayer_0 = value; }
         }
 
         public LayerType LayerType
@@ -315,46 +290,28 @@ namespace Yutai.ArcGIS.Catalog
 
         public string Name
         {
-            get
-            {
-                return System.IO.Path.GetFileName(this.string_0);
-            }
+            get { return System.IO.Path.GetFileName(this.string_0); }
         }
 
         public UID NewMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IGxObject Parent
         {
-            get
-            {
-                return this.igxObject_0;
-            }
+            get { return this.igxObject_0; }
         }
 
         public string Path
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
 
         public int PropertyCount
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         public Bitmap SmallImage
@@ -526,4 +483,3 @@ namespace Yutai.ArcGIS.Catalog
         }
     }
 }
-

@@ -10,71 +10,66 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Analysis.Forms
 {
-	public partial class ShowShortObjectForm : Form
-	{
-		private IContainer icontainer_0 = null;
+    public partial class ShowShortObjectForm : Form
+    {
+        private IContainer icontainer_0 = null;
 
 
+        public IAppContext pApp
+        {
+            set { this._context = value; }
+        }
 
+        public ShowShortObjectForm(IAppContext context)
+        {
+            this.InitializeComponent();
+            _context = context;
+        }
 
-		public IAppContext pApp
-		{
-			set
-			{
-				this._context = value;
-			}
-		}
+        public void AddLenght(double dbLen)
+        {
+            this.label1.Text = string.Format("最短路径长度为{0}米", dbLen.ToString("f2"));
+        }
 
-	public ShowShortObjectForm(IAppContext context)
-		{
-			this.InitializeComponent();
-		    _context = context;
-		}
+        public void AddPipeName(string strPipeName)
+        {
+            this.treeView1.Nodes.Add(strPipeName);
+        }
 
-		public void AddLenght(double dbLen)
-		{
-			this.label1.Text = string.Format("最短路径长度为{0}米", dbLen.ToString("f2"));
-		}
+        public void AddFeature(IFeature pFeature)
+        {
+            TreeNode treeNode = this.treeView1.Nodes[0].Nodes.Add(pFeature.OID.ToString());
+            treeNode.Tag = pFeature;
+        }
 
-		public void AddPipeName(string strPipeName)
-		{
-			this.treeView1.Nodes.Add(strPipeName);
-		}
+        public void AddShortPath(IPolyline pShortPath)
+        {
+            this.treeView1.Nodes[0].Tag = pShortPath;
+        }
 
-		public void AddFeature(IFeature pFeature)
-		{
-			TreeNode treeNode = this.treeView1.Nodes[0].Nodes.Add(pFeature.OID.ToString());
-			treeNode.Tag = pFeature;
-		}
-
-		public void AddShortPath(IPolyline pShortPath)
-		{
-			this.treeView1.Nodes[0].Tag = pShortPath;
-		}
-
-		private void treeView1_AfterSelect(object obj, TreeViewEventArgs treeViewEventArgs)
-		{
-			if (this.treeView1.SelectedNode != null)
-			{
-				if (this.treeView1.SelectedNode.Parent == null)
-				{
-					IPolyline polyline = this.treeView1.SelectedNode.Tag as IPolyline;
-					if (polyline != null)
-					{
-						CMapOperator.ShowFeatureWithWink(_context.ActiveView.ScreenDisplay, polyline);
-                       // FlashUtility.FlashGeometry(polyline,_context.MapControl);
-					}
-				}
-				else
-				{
-					IFeature feature = this.treeView1.SelectedNode.Tag as IFeature;
-					if (feature != null)
-					{
-                      //  FlashUtility.FlashGeometry(feature.Shape, _context.MapControl);
+        private void treeView1_AfterSelect(object obj, TreeViewEventArgs treeViewEventArgs)
+        {
+            if (this.treeView1.SelectedNode != null)
+            {
+                if (this.treeView1.SelectedNode.Parent == null)
+                {
+                    IPolyline polyline = this.treeView1.SelectedNode.Tag as IPolyline;
+                    if (polyline != null)
+                    {
+                        CMapOperator.ShowFeatureWithWink(_context.ActiveView.ScreenDisplay, polyline);
+                        // FlashUtility.FlashGeometry(polyline,_context.MapControl);
+                    }
+                }
+                else
+                {
+                    IFeature feature = this.treeView1.SelectedNode.Tag as IFeature;
+                    if (feature != null)
+                    {
+                        //  FlashUtility.FlashGeometry(feature.Shape, _context.MapControl);
                         CMapOperator.ShowFeatureWithWink(_context.ActiveView.ScreenDisplay, feature.Shape);
                     }
-				}
-			}
-		}
-	}
+                }
+            }
+        }
+    }
 }

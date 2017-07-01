@@ -32,7 +32,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             {
                 try
                 {
-                    string[] items = new string[] { host.HostName, host.Description };
+                    string[] items = new string[] {host.HostName, host.Description};
                     IServerObjectAdmin serverObjectAdmin = this.iagsserverConnectionAdmin_0.ServerObjectAdmin;
                     IServerMachine machine = serverObjectAdmin.CreateMachine();
                     machine.Name = items[0];
@@ -46,13 +46,13 @@ namespace Yutai.ArcGIS.Catalog.UI
                     if (exception.ErrorCode == -2147467259)
                     {
                         MessageBox.Show("服务器不存在!");
-                        Logger.Current.Error("",exception, "");
+                        Logger.Current.Error("", exception, "");
                     }
                 }
                 catch (Exception exception2)
                 {
                     MessageBox.Show(exception2.ToString());
-                    Logger.Current.Error("",exception2, "");
+                    Logger.Current.Error("", exception2, "");
                 }
             }
         }
@@ -69,7 +69,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
         }
 
- private void Hostlist_SelectedIndexChanged(object sender, EventArgs e)
+        private void Hostlist_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.Hostlist.SelectedItems.Count > 0)
             {
@@ -83,7 +83,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
         }
 
- private void method_0()
+        private void method_0()
         {
             IEnumServerMachine machines = this.iagsserverConnectionAdmin_0.ServerObjectAdmin.GetMachines();
             machines.Reset();
@@ -101,11 +101,7 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         public IAGSServerConnectionAdmin AGSServerConnectionAdmin
         {
-            set
-            {
-                this.iagsserverConnectionAdmin_0 = value;
-            }
+            set { this.iagsserverConnectionAdmin_0 = value; }
         }
     }
 }
-

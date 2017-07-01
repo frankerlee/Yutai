@@ -12,7 +12,7 @@ namespace Yutai.Plugins.Catalog
     {
         private IAppContext _context;
         private MenuGenerator _menuGenerator;
-      
+
 
         protected override void RegisterServices(IApplicationContainer container)
         {
@@ -36,7 +36,5 @@ namespace Yutai.Plugins.Catalog
                 handler(this, args);
             }
         }
-
-      
     }
 }

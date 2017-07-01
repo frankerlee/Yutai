@@ -49,7 +49,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- public IDataExclusion DataExclusion
+        public IDataExclusion DataExclusion
         {
             set
             {
@@ -71,11 +71,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IStyleGallery StyleGallery
         {
-            set
-            {
-                this.dataExclusionLegendCtrl_0.StyleGallery = value;
-            }
+            set { this.dataExclusionLegendCtrl_0.StyleGallery = value; }
         }
     }
 }
-

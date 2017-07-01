@@ -266,7 +266,7 @@ namespace Yutai.ArcGIS.Common.Query.UI
             this.memEditWhereCaluse.Text = "";
         }
 
- private void Fieldlist_DoubleClick(object sender, EventArgs e)
+        private void Fieldlist_DoubleClick(object sender, EventArgs e)
         {
             string selectedItem = this.Fieldlist.SelectedItem as string;
             string text = this.memEditWhereCaluse.Text;
@@ -298,7 +298,7 @@ namespace Yutai.ArcGIS.Common.Query.UI
             CommonHelper.GetUniqueValuesEx(itable_1, string_2, listBoxItemCollection_0);
         }
 
- private ITable method_0()
+        private ITable method_0()
         {
             if (this.ilayer_0 == null)
             {
@@ -336,7 +336,8 @@ namespace Yutai.ArcGIS.Common.Query.UI
                     this.btnMatchOneChar.Text = "_";
                     this.btnMatchString.Text = "%";
                     IWorkspace workspace = (this.itable_0 as IDataset).Workspace;
-                    if (((workspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace) && (workspace.PathName != null)) && (Path.GetExtension(workspace.PathName).ToLower() == ".mdb"))
+                    if (((workspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace) &&
+                         (workspace.PathName != null)) && (Path.GetExtension(workspace.PathName).ToLower() == ".mdb"))
                     {
                         this.btnMatchOneChar.Text = "?";
                         this.btnMatchString.Text = "*";
@@ -370,7 +371,8 @@ namespace Yutai.ArcGIS.Common.Query.UI
                 for (int i = 0; i < fields.FieldCount; i++)
                 {
                     IField field = fields.get_Field(i);
-                    if ((field.Type != esriFieldType.esriFieldTypeGeometry) && (field.Type != esriFieldType.esriFieldTypeBlob))
+                    if ((field.Type != esriFieldType.esriFieldTypeGeometry) &&
+                        (field.Type != esriFieldType.esriFieldTypeBlob))
                     {
                         listBoxItemCollection_0.Add(str + field.Name + str2);
                     }
@@ -425,15 +427,8 @@ namespace Yutai.ArcGIS.Common.Query.UI
 
         public string WhereCaluse
         {
-            get
-            {
-                return this.memEditWhereCaluse.Text;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.memEditWhereCaluse.Text; }
+            set { this.string_0 = value; }
         }
     }
 }
-

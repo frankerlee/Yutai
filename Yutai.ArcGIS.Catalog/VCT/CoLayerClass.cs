@@ -31,7 +31,8 @@ namespace Yutai.ArcGIS.Catalog.VCT
 
         public virtual object Clone()
         {
-            ICoLayer layer = new CoLayerClass {
+            ICoLayer layer = new CoLayerClass
+            {
                 AliasName = this.string_1,
                 Name = this.string_0,
                 Categorie = this.string_2,
@@ -45,8 +46,10 @@ namespace Yutai.ArcGIS.Catalog.VCT
             layer.Parameter.ScaleM = this.coLayerHead_0.ScaleM;
             layer.Parameter.Spheroid = this.coLayerHead_0.Spheroid;
             layer.Parameter.Unit = this.coLayerHead_0.Unit;
-            layer.Parameter.MaxPoint = new CoPointClass(this.coLayerHead_0.MaxPoint.X, this.coLayerHead_0.MaxPoint.Y, this.coLayerHead_0.MaxPoint.Z);
-            layer.Parameter.MinPoint = new CoPointClass(this.coLayerHead_0.MinPoint.X, this.coLayerHead_0.MinPoint.Y, this.coLayerHead_0.MinPoint.Z);
+            layer.Parameter.MaxPoint = new CoPointClass(this.coLayerHead_0.MaxPoint.X, this.coLayerHead_0.MaxPoint.Y,
+                this.coLayerHead_0.MaxPoint.Z);
+            layer.Parameter.MinPoint = new CoPointClass(this.coLayerHead_0.MinPoint.X, this.coLayerHead_0.MinPoint.Y,
+                this.coLayerHead_0.MinPoint.Z);
             foreach (ICoField field in this.Fields)
             {
                 ICoField item = (field as ICoClone).Clone() as ICoField;
@@ -77,7 +80,7 @@ namespace Yutai.ArcGIS.Catalog.VCT
                     }
                 }
                 return;
-            Label_0033:
+                Label_0033:
                 this.coRuleCollection_0.Remove(current);
             }
         }
@@ -171,10 +174,7 @@ namespace Yutai.ArcGIS.Catalog.VCT
         [DisplayName("图层别名"), Description("图层别名")]
         public string AliasName
         {
-            get
-            {
-                return this.string_1;
-            }
+            get { return this.string_1; }
             set
             {
                 if (this.string_1 != value)
@@ -187,10 +187,7 @@ namespace Yutai.ArcGIS.Catalog.VCT
         [Description("图层分类"), DisplayName("分类")]
         public string Categorie
         {
-            get
-            {
-                return this.string_2;
-            }
+            get { return this.string_2; }
             set
             {
                 if (this.string_2 != value)
@@ -203,10 +200,7 @@ namespace Yutai.ArcGIS.Catalog.VCT
         [DisplayName("是否检查"), Description("设置此图层是否参与检查")]
         public bool Enable
         {
-            get
-            {
-                return this.bool_0;
-            }
+            get { return this.bool_0; }
             set
             {
                 if (this.bool_0 != value)
@@ -219,28 +213,19 @@ namespace Yutai.ArcGIS.Catalog.VCT
         [Browsable(false)]
         public int FeatureCount
         {
-            get
-            {
-                return this.list_0.Count;
-            }
+            get { return this.list_0.Count; }
         }
 
         [XmlIgnore, Browsable(false)]
         public List<ICoField> Fields
         {
-            get
-            {
-                return this.list_1;
-            }
+            get { return this.list_1; }
         }
 
         [Browsable(false)]
         public string ID
         {
-            get
-            {
-                return this.string_3;
-            }
+            get { return this.string_3; }
             set
             {
                 if (this.string_3 != value)
@@ -253,10 +238,7 @@ namespace Yutai.ArcGIS.Catalog.VCT
         [Description("图层类型"), DisplayName("类型")]
         public CoLayerType LayerType
         {
-            get
-            {
-                return this.coLayerType_0;
-            }
+            get { return this.coLayerType_0; }
             set
             {
                 if (this.coLayerType_0 != value)
@@ -269,10 +251,7 @@ namespace Yutai.ArcGIS.Catalog.VCT
         [DisplayName("图层名称"), Description("图层名称")]
         public string Name
         {
-            get
-            {
-                return this.string_0;
-            }
+            get { return this.string_0; }
             set
             {
                 if (this.string_0 != value)
@@ -285,10 +264,7 @@ namespace Yutai.ArcGIS.Catalog.VCT
         [Browsable(false)]
         public CoLayerHead Parameter
         {
-            get
-            {
-                return this.coLayerHead_0;
-            }
+            get { return this.coLayerHead_0; }
             set
             {
                 if (this.coLayerHead_0 != value)
@@ -301,19 +277,13 @@ namespace Yutai.ArcGIS.Catalog.VCT
         [DisplayName("检查规则"), Browsable(false), Description("检查规则")]
         public CoRuleCollection Rules
         {
-            get
-            {
-                return this.coRuleCollection_0;
-            }
+            get { return this.coRuleCollection_0; }
         }
 
         [Browsable(false)]
         public object Tag
         {
-            get
-            {
-                return this.object_0;
-            }
+            get { return this.object_0; }
             set
             {
                 if (this.object_0 != value)
@@ -324,4 +294,3 @@ namespace Yutai.ArcGIS.Catalog.VCT
         }
     }
 }
-

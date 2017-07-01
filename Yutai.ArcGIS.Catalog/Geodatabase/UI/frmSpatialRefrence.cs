@@ -55,12 +55,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 MessageBox.Show(exception.Message);
             }
             return;
-        Label_0065:
+            Label_0065:
             base.DialogResult = DialogResult.OK;
             base.Close();
         }
 
- private void frmSpatialRefrence_Load(object sender, EventArgs e)
+        private void frmSpatialRefrence_Load(object sender, EventArgs e)
         {
             switch (this.enumSpatialRefrenceType_0)
             {
@@ -71,7 +71,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         break;
                     }
                     this.Text = "投影坐标系统属性";
-                    this.projCoordSys_0.ProjectedCoordinateSystem = (IProjectedCoordinateSystem) this.ispatialReference_0;
+                    this.projCoordSys_0.ProjectedCoordinateSystem =
+                        (IProjectedCoordinateSystem) this.ispatialReference_0;
                     break;
 
                 case enumSpatialRefrenceType.enumGeographicCoord:
@@ -82,7 +83,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     else
                     {
                         this.Text = "地理坐标系统属性";
-                        this.geoCoordSys_0.GeographicCoordinateSystem = (IGeographicCoordinateSystem) this.ispatialReference_0;
+                        this.geoCoordSys_0.GeographicCoordinateSystem =
+                            (IGeographicCoordinateSystem) this.ispatialReference_0;
                     }
                     base.Controls.Add(this.geoCoordSys_0);
                     return;
@@ -93,12 +95,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.Controls.Add(this.projCoordSys_0);
         }
 
- public ISpatialReference SpatialRefrence
+        public ISpatialReference SpatialRefrence
         {
-            get
-            {
-                return this.ispatialReference_0;
-            }
+            get { return this.ispatialReference_0; }
             set
             {
                 this.ispatialReference_0 = value;
@@ -115,14 +114,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public enumSpatialRefrenceType SpatialRefrenceType
         {
-            get
-            {
-                return this.enumSpatialRefrenceType_0;
-            }
-            set
-            {
-                this.enumSpatialRefrenceType_0 = value;
-            }
+            get { return this.enumSpatialRefrenceType_0; }
+            set { this.enumSpatialRefrenceType_0 = value; }
         }
 
         public enum enumSpatialRefrenceType
@@ -132,4 +125,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

@@ -109,10 +109,7 @@ namespace Yutai.Plugins.TableEditor.Controls
         public int LabelWidth
         {
             get { return this.splitContainer1.SplitterDistance; }
-            set
-            {
-                this.splitContainer1.SplitterDistance = value;
-            }
+            set { this.splitContainer1.SplitterDistance = value; }
         }
 
         [Browsable(true)]
@@ -141,7 +138,7 @@ namespace Yutai.Plugins.TableEditor.Controls
             comboBoxField.Text = null;
         }
 
-        private void SetItems(ComboBox comboBox,IFields fields)
+        private void SetItems(ComboBox comboBox, IFields fields)
         {
             if (comboBox.Items.Count > 0)
                 comboBox.Items.Clear();

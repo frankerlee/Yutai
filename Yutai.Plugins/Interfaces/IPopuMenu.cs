@@ -6,11 +6,7 @@ namespace Yutai.Plugins.Interfaces
 {
     public interface IPopuMenu
     {
-        bool Visible
-        {
-            get;
-            set;
-        }
+        bool Visible { get; set; }
 
         void AddItem(string string_0, bool bool_0);
 

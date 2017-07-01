@@ -35,7 +35,9 @@ namespace Yutai.Pipeline.Analysis
             _dockPanelService = context.Container.GetInstance<DockPanelService>();
             if (string.IsNullOrEmpty(_config.XmlFile))
             {
-                string fileName = ((ISecureContext)_context).YutaiProject.FindPlugin("f804e812-481e-45c3-be08-749da82075d1").ConfigXML;
+                string fileName =
+                    ((ISecureContext) _context).YutaiProject.FindPlugin("f804e812-481e-45c3-be08-749da82075d1")
+                        .ConfigXML;
                 if (string.IsNullOrEmpty(fileName)) return;
                 fileName = FileHelper.GetFullPath(fileName);
                 _config.LoadFromXml(fileName);
@@ -57,6 +59,7 @@ namespace Yutai.Pipeline.Analysis
         {
             get { return _config; }
         }
+
         public void FireQueryResultChanged(QueryResultArgs e)
         {
             FireEvent(QueryResultChanged, e);

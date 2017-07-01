@@ -31,7 +31,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                     }
                 }
                 return;
-            Label_004F:
+                Label_004F:
                 document.IsDocumentChange = true;
             }
             catch
@@ -110,11 +110,13 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                     break;
                 }
             }
-            OpenFileDialog dialog = new OpenFileDialog {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
                 CheckFileExists = true,
                 Multiselect = false,
                 RestoreDirectory = true,
-                Filter = "ArcMap Document (*.mxd)|*.mxd|ArcMap Template (*.mxt)|*.mxt|Published Maps (*.pmf)|*.pmf|所有支持Map格式|*.mxd;*.mxt;*.pmf"
+                Filter =
+                    "ArcMap Document (*.mxd)|*.mxd|ArcMap Template (*.mxt)|*.mxt|Published Maps (*.pmf)|*.pmf|所有支持Map格式|*.mxd;*.mxt;*.pmf"
             };
             if (dialog.ShowDialog() == DialogResult.OK)
             {
@@ -168,10 +170,12 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             }
             if (document != null)
             {
-                SaveFileDialog dialog = new SaveFileDialog {
+                SaveFileDialog dialog = new SaveFileDialog
+                {
                     OverwritePrompt = true,
                     Title = "保存为",
-                    Filter = "ArcMap Document (*.mxd)|*.mxd|ArcMap Template (*.mxt)|*.mxt|Published Maps (*.pmf)|*.pmf|所有支持Map格式|*.mxd;*.mxt;*.pmf",
+                    Filter =
+                        "ArcMap Document (*.mxd)|*.mxd|ArcMap Template (*.mxt)|*.mxt|Published Maps (*.pmf)|*.pmf|所有支持Map格式|*.mxd;*.mxt;*.pmf",
                     FilterIndex = 0,
                     RestoreDirectory = true,
                     FileName = document.DocumentFilename
@@ -213,11 +217,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
 
         public static bool IsCancel
         {
-            get
-            {
-                return (m_pList.Count > 0);
-            }
+            get { return (m_pList.Count > 0); }
         }
     }
 }
-

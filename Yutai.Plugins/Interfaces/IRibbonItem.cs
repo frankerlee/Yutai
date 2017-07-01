@@ -8,17 +8,17 @@ namespace Yutai.Plugins.Interfaces
     {
         int Position { get; set; }
         string ParentName { get; set; }
-        string Name { get;  }
-        string Key { get;  }
-        string Caption { get;  }
-        Bitmap Image { get;  }
+        string Name { get; }
+        string Key { get; }
+        string Caption { get; }
+        Bitmap Image { get; }
         string Tooltip { get; }
         string Category { get; }
         RibbonItemType ItemType { get; set; }
         bool Checked { get; }
         bool Enabled { get; }
         PluginIdentity PluginIdentity { get; }
-     
+
         TextImageRelationYT TextImageRelationYT { get; set; }
         DisplayStyleYT DisplayStyleYT { get; set; }
 
@@ -30,6 +30,6 @@ namespace Yutai.Plugins.Interfaces
         //对ToolStripEx起作用
         bool IsGroup { get; set; }
         bool NeedUpdateEvent { get; set; }
-        string Message { get;  }
+        string Message { get; }
     }
 }

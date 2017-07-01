@@ -9,10 +9,10 @@ namespace Yutai.Pipeline.Config.Interfaces
 {
     public interface ICommonConfig
     {
-         string Name { get; set; }
+        string Name { get; set; }
         string Value { get; set; }
         void ReadFromXml(XmlNode xml);
- 
+
         XmlNode ToXml(XmlDocument doc);
     }
 }

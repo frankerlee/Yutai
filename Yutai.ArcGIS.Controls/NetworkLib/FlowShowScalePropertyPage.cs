@@ -7,13 +7,12 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
 {
     internal partial class FlowShowScalePropertyPage : UserControl
     {
-
         public FlowShowScalePropertyPage()
         {
             this.InitializeComponent();
         }
 
- private void rdoNoScale_CheckedChanged(object sender, EventArgs e)
+        private void rdoNoScale_CheckedChanged(object sender, EventArgs e)
         {
             this.txtMaxScale.Enabled = false;
             this.txtMinScale.Enabled = false;
@@ -30,4 +29,3 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
         }
     }
 }
-

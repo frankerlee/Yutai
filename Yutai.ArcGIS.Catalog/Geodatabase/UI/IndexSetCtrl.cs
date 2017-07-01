@@ -26,7 +26,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
         }
 
- private void IndexSetCtrl_Load(object sender, EventArgs e)
+        private void IndexSetCtrl_Load(object sender, EventArgs e)
         {
             int num;
             if ((this.ifeatureClass_0 as IDataset).Workspace.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace)
@@ -59,7 +59,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.btnAddGridIndex.Enabled = geometryDef.GridCount == 0;
         }
 
- internal partial class IndexWrap
+        internal partial class IndexWrap
         {
             private IIndex iindex_0 = null;
 
@@ -75,12 +75,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
             public IIndex Index
             {
-                get
-                {
-                    return this.iindex_0;
-                }
+                get { return this.iindex_0; }
             }
         }
     }
 }
-

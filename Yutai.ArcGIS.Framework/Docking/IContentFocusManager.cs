@@ -8,4 +8,3 @@
         void RemoveFromList(IDockContent content);
     }
 }
-

@@ -58,7 +58,8 @@ namespace Yutai.ArcGIS.Catalog.UI
             {
                 new AGSServerConnectionFactoryClass();
                 IPropertySet set = this.method_5();
-                IAGSServerConnectionName name = new AGSServerConnectionNameClass {
+                IAGSServerConnectionName name = new AGSServerConnectionNameClass
+                {
                     ConnectionProperties = set
                 };
                 try
@@ -74,14 +75,16 @@ namespace Yutai.ArcGIS.Catalog.UI
                     MessageBox.Show(exception.ToString());
                     return;
                 }
-                string path = Environment.SystemDirectory.Substring(0, 2) + @"\Documents and Settings\Administrator\Application Data\ESRI\ArcCatalog\";
+                string path = Environment.SystemDirectory.Substring(0, 2) +
+                              @"\Documents and Settings\Administrator\Application Data\ESRI\ArcCatalog\";
                 if (Directory.Exists(path))
                 {
                     string str2 = path + this.txtServer.Text + ".ags";
                     str2 = this.method_4(str2);
                     IGxAGSConnection connection2 = new GxAGSConnection();
                     object obj2 = null;
-                    if ((this.rdoResourceUse.SelectedIndex == 1) && (this.ResourcescheckedListBox.CheckedItems.Count > 0))
+                    if ((this.rdoResourceUse.SelectedIndex == 1) &&
+                        (this.ResourcescheckedListBox.CheckedItems.Count > 0))
                     {
                         string[] strArray = new string[this.ResourcescheckedListBox.CheckedItems.Count];
                         for (int i = 0; i < this.ResourcescheckedListBox.CheckedItems.Count; i++)
@@ -100,7 +103,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
         }
 
- private void method_0(object sender, EventArgs e)
+        private void method_0(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
             this.imapServer_0 = null;
@@ -183,10 +186,7 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         public IGxObject NewObject
         {
-            get
-            {
-                return this.igxObject_0;
-            }
+            get { return this.igxObject_0; }
         }
 
         private partial class Class7
@@ -209,12 +209,8 @@ namespace Yutai.ArcGIS.Catalog.UI
 
             public IAGSServerObjectName AGSServerObjectName
             {
-                get
-                {
-                    return this.iagsserverObjectName_0;
-                }
+                get { return this.iagsserverObjectName_0; }
             }
         }
     }
 }
-

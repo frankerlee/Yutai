@@ -19,4 +19,3 @@
         public abstract string TableName { get; }
     }
 }
-

@@ -48,7 +48,7 @@ namespace Yutai.Shared
                 box.SelectionFont = new Font(box.Font, FontStyle.Bold);
             }
         }
-        
+
         /// <summary>
         /// Initializes the dock panel footer.
         /// </summary>

@@ -15,6 +15,7 @@ namespace Yutai.Plugins.TableEditor.Views
     public partial class FieldStatistics : Form
     {
         private ITableView _view;
+
         public FieldStatistics(ITableView view, string fieldName)
         {
             InitializeComponent();
@@ -46,7 +47,7 @@ namespace Yutai.Plugins.TableEditor.Views
             if (cboField.SelectedItem == null)
                 return;
             string fieldName = cboField.SelectedItem.ToString();
-            
+
             _fieldStatsGrid.FieldName = fieldName;
             _fieldStatsGrid.Statistics();
             _fieldStatsGrid.ShowResult();

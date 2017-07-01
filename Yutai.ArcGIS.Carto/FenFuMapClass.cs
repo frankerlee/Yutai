@@ -59,7 +59,8 @@ namespace Yutai.ArcGIS.Carto
                 ILayer graphicsLayer = base.m_GraphicsLayer as ILayer;
                 graphicsLayer.SpatialReference = base.m_pActiveView.FocusMap.SpatialReference;
                 graphicsLayer.Name = "制图层";
-                (base.m_GraphicsLayer as IGeoDatasetSchemaEdit).AlterSpatialReference(base.m_pActiveView.FocusMap.SpatialReference);
+                (base.m_GraphicsLayer as IGeoDatasetSchemaEdit).AlterSpatialReference(
+                    base.m_pActiveView.FocusMap.SpatialReference);
                 IGraphicsContainer container = base.m_GraphicsLayer as IGraphicsContainer;
                 element = this.method_8();
                 if (element != null)
@@ -71,12 +72,14 @@ namespace Yutai.ArcGIS.Carto
                     container.AddElement(this.ilist_0[num], 0);
                 }
                 base.m_pActiveView.FocusMap.AddLayer(graphicsLayer);
-                envelope = this.method_9(base.InOutDist, base.InOutDist, base.InOutDist + this.double_3, base.InOutDist + this.double_2);
+                envelope = this.method_9(base.InOutDist, base.InOutDist, base.InOutDist + this.double_3,
+                    base.InOutDist + this.double_2);
                 if (envelope != null)
                 {
                     base.m_pActiveView.Extent = envelope;
                 }
-                base.m_pActiveView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, base.m_GraphicsLayer, base.m_pActiveView.Extent);
+                base.m_pActiveView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, base.m_GraphicsLayer,
+                    base.m_pActiveView.Extent);
             }
             this.method_11();
         }
@@ -117,7 +120,8 @@ namespace Yutai.ArcGIS.Carto
             IMarkerElement element6 = null;
             ISymbol symbol7 = new SimpleMarkerSymbolClass();
             ISimpleMarkerSymbol symbol8 = symbol7 as ISimpleMarkerSymbol;
-            IRgbColor color = new RgbColorClass {
+            IRgbColor color = new RgbColorClass
+            {
                 Red = 0,
                 Blue = 0,
                 Green = 0
@@ -140,12 +144,18 @@ namespace Yutai.ArcGIS.Carto
             double num23 = 0.0;
             try
             {
-                symbol = base.FontStyle((double) num4, esriTextHorizontalAlignment.esriTHARight, esriTextVerticalAlignment.esriTVABottom);
-                symbol2 = base.FontStyle((double) num5, esriTextHorizontalAlignment.esriTHALeft, esriTextVerticalAlignment.esriTVABottom);
-                symbol3 = base.FontStyle((double) num5, esriTextHorizontalAlignment.esriTHARight, esriTextVerticalAlignment.esriTVATop);
-                symbol4 = base.FontStyle((double) num4, esriTextHorizontalAlignment.esriTHALeft, esriTextVerticalAlignment.esriTVATop);
-                symbol5 = base.FontStyle((double) num5, esriTextHorizontalAlignment.esriTHARight, esriTextVerticalAlignment.esriTVABottom);
-                symbol6 = base.FontStyle((double) num4, esriTextHorizontalAlignment.esriTHALeft, esriTextVerticalAlignment.esriTVABottom);
+                symbol = base.FontStyle((double) num4, esriTextHorizontalAlignment.esriTHARight,
+                    esriTextVerticalAlignment.esriTVABottom);
+                symbol2 = base.FontStyle((double) num5, esriTextHorizontalAlignment.esriTHALeft,
+                    esriTextVerticalAlignment.esriTVABottom);
+                symbol3 = base.FontStyle((double) num5, esriTextHorizontalAlignment.esriTHARight,
+                    esriTextVerticalAlignment.esriTVATop);
+                symbol4 = base.FontStyle((double) num4, esriTextHorizontalAlignment.esriTHALeft,
+                    esriTextVerticalAlignment.esriTVATop);
+                symbol5 = base.FontStyle((double) num5, esriTextHorizontalAlignment.esriTHARight,
+                    esriTextVerticalAlignment.esriTVABottom);
+                symbol6 = base.FontStyle((double) num4, esriTextHorizontalAlignment.esriTHALeft,
+                    esriTextVerticalAlignment.esriTVABottom);
                 if (base.LeftUp.Y < base.RightUp.Y)
                 {
                     y = Math.Truncate(base.LeftUp.Y);
@@ -156,7 +166,7 @@ namespace Yutai.ArcGIS.Carto
                     y = Math.Truncate(base.RightUp.Y);
                     num23 = (base.LeftUp.Y + base.InOutDist) + 1.0;
                 }
-                num15 = (int) (y % ((double) num8));
+                num15 = (int) (y%((double) num8));
                 if (num15 != 0)
                 {
                     num12 = y - num15;
@@ -175,7 +185,7 @@ namespace Yutai.ArcGIS.Carto
                     x = Math.Truncate((double) (base.LeftLow.X + 1.0));
                     num20 = (base.LeftUp.X - base.InOutDist) - 1.0;
                 }
-                num15 = (int) (x % ((double) num8));
+                num15 = (int) (x%((double) num8));
                 if (num15 != 0)
                 {
                     num11 = x + (num8 - num15);
@@ -194,7 +204,7 @@ namespace Yutai.ArcGIS.Carto
                     y = Math.Truncate(base.RightLow.Y);
                     num21 = (base.RightLow.Y - base.InOutDist) - 1.0;
                 }
-                num15 = (int) (y % ((double) num8));
+                num15 = (int) (y%((double) num8));
                 if (num15 != 0)
                 {
                     num14 = y + (num8 - num15);
@@ -213,7 +223,7 @@ namespace Yutai.ArcGIS.Carto
                     x = Math.Truncate(base.RightUp.X);
                     num22 = (base.RightLow.X + base.InOutDist) + 1.0;
                 }
-                num15 = (int) (x % ((double) num8));
+                num15 = (int) (x%((double) num8));
                 if (num15 != 0)
                 {
                     num13 = x - num15;
@@ -222,16 +232,17 @@ namespace Yutai.ArcGIS.Carto
                 {
                     num13 = x;
                 }
-                num16 = ((int) (num12 - num14)) / num8;
-                num17 = ((int) (num13 - num11)) / num8;
+                num16 = ((int) (num12 - num14))/num8;
+                num17 = ((int) (num13 - num11))/num8;
                 for (num18 = 0; num18 <= num16; num18++)
                 {
-                    y = num12 - (num18 * num8);
+                    y = num12 - (num18*num8);
                     for (num19 = 0; num19 <= num17; num19++)
                     {
-                        x = num11 + (num19 * num8);
+                        x = num11 + (num19*num8);
                         point2.PutCoords(x, y);
-                        item = new MarkerElementClass {
+                        item = new MarkerElementClass
+                        {
                             Geometry = point2
                         };
                         element6 = item as IMarkerElement;
@@ -265,7 +276,7 @@ namespace Yutai.ArcGIS.Carto
                 ILineSymbol symbol9 = this.method_2();
                 for (num18 = 0; num18 <= num16; num18++)
                 {
-                    y = num12 - (num18 * num8);
+                    y = num12 - (num18*num8);
                     point7 = new PointClass();
                     point8 = new PointClass();
                     point7.PutCoords(num20, y);
@@ -310,9 +321,9 @@ namespace Yutai.ArcGIS.Carto
                     element2 = new TextElementClass();
                     element3 = new TextElementClass();
                     element4 = new TextElementClass();
-                    num6 = (int) Math.Truncate((double) (y / 100000.0));
+                    num6 = (int) Math.Truncate((double) (y/100000.0));
                     str = num6.ToString();
-                    num7 = (int) Math.Truncate((double) ((y - (num6 * 100000)) / 1000.0));
+                    num7 = (int) Math.Truncate((double) ((y - (num6*100000))/1000.0));
                     str2 = num7.ToString();
                     if (str2.Length < 2)
                     {
@@ -355,7 +366,7 @@ namespace Yutai.ArcGIS.Carto
                 }
                 for (num18 = 0; num18 <= num17; num18++)
                 {
-                    x = num11 + (num18 * num8);
+                    x = num11 + (num18*num8);
                     point7 = new PointClass();
                     point8 = new PointClass();
                     point7.PutCoords(x, num23);
@@ -400,9 +411,9 @@ namespace Yutai.ArcGIS.Carto
                     element2 = new TextElementClass();
                     element3 = new TextElementClass();
                     element4 = new TextElementClass();
-                    num6 = (int) Math.Truncate((double) (x / 100000.0));
+                    num6 = (int) Math.Truncate((double) (x/100000.0));
                     str = num6.ToString();
-                    str2 = ((int) Math.Truncate((double) ((x - (num6 * 100000)) / 1000.0))).ToString();
+                    str2 = ((int) Math.Truncate((double) ((x - (num6*100000))/1000.0))).ToString();
                     if (str2.Length < 2)
                     {
                         str2 = "0" + str2;
@@ -579,8 +590,8 @@ namespace Yutai.ArcGIS.Carto
             ILineSymbol symbol = null;
             double num = 390.0;
             double num2 = 210.0;
-            double num3 = num2 / 3.0;
-            double num4 = num / 3.0;
+            double num3 = num2/3.0;
+            double num4 = num/3.0;
             double num5 = 20.0 + base.InOutDist;
             this.double_3 = num2;
             object missing = System.Type.Missing;
@@ -632,8 +643,8 @@ namespace Yutai.ArcGIS.Carto
                 points.AddPoint(point7, ref missing, ref missing);
                 element12.Geometry = polyline2;
                 this.ilist_0.Add(element12);
-                point6.PutCoords(inPoint.X, inPoint.Y - (num3 * 2.0));
-                point7.PutCoords(point5.X, point5.Y - (num3 * 2.0));
+                point6.PutCoords(inPoint.X, inPoint.Y - (num3*2.0));
+                point7.PutCoords(point5.X, point5.Y - (num3*2.0));
                 points = polyline3 as IPointCollection;
                 points.AddPoint(point6, ref missing, ref missing);
                 points.AddPoint(point7, ref missing, ref missing);
@@ -646,8 +657,8 @@ namespace Yutai.ArcGIS.Carto
                 points.AddPoint(point7, ref missing, ref missing);
                 element14.Geometry = polyline4;
                 this.ilist_0.Add(element14);
-                point6.PutCoords(inPoint.X + (num4 * 2.0), inPoint.Y);
-                point7.PutCoords(inPoint.X + (num4 * 2.0), point3.Y);
+                point6.PutCoords(inPoint.X + (num4*2.0), inPoint.Y);
+                point7.PutCoords(inPoint.X + (num4*2.0), point3.Y);
                 points = polyline5 as IPointCollection;
                 points.AddPoint(point6, ref missing, ref missing);
                 points.AddPoint(point7, ref missing, ref missing);
@@ -658,7 +669,8 @@ namespace Yutai.ArcGIS.Carto
                 IPolygonElement element17 = element16 as IPolygonElement;
                 ISimpleFillSymbol symbol2 = new SimpleFillSymbolClass();
                 IFillShapeElement element18 = element17 as IFillShapeElement;
-                IRgbColor color = new RgbColorClass {
+                IRgbColor color = new RgbColorClass
+                {
                     Red = 0,
                     Green = 0,
                     Blue = 0
@@ -670,11 +682,11 @@ namespace Yutai.ArcGIS.Carto
                 points = polygon as IPointCollection;
                 point6.PutCoords(inPoint.X + num4, inPoint.Y - num3);
                 points.AddPoint(point6, ref missing, ref missing);
-                point6.PutCoords(inPoint.X + (num4 * 2.0), inPoint.Y - num3);
+                point6.PutCoords(inPoint.X + (num4*2.0), inPoint.Y - num3);
                 points.AddPoint(point6, ref missing, ref missing);
-                point6.PutCoords(inPoint.X + (num4 * 2.0), inPoint.Y - (num3 * 2.0));
+                point6.PutCoords(inPoint.X + (num4*2.0), inPoint.Y - (num3*2.0));
                 points.AddPoint(point6, ref missing, ref missing);
-                point6.PutCoords(inPoint.X + num4, inPoint.Y - (num3 * 2.0));
+                point6.PutCoords(inPoint.X + num4, inPoint.Y - (num3*2.0));
                 points.AddPoint(point6, ref missing, ref missing);
                 polygon.Close();
                 element16.Geometry = polygon;
@@ -688,35 +700,35 @@ namespace Yutai.ArcGIS.Carto
                 element8.Text = this.string_14;
                 element9.Text = this.string_15;
                 item = element2 as IElement;
-                point.PutCoords(inPoint.X + (num4 / 2.0), inPoint.Y - (num3 / 2.0));
+                point.PutCoords(inPoint.X + (num4/2.0), inPoint.Y - (num3/2.0));
                 item.Geometry = point;
                 this.ilist_0.Add(item);
                 item = element3 as IElement;
-                point.PutCoords(inPoint.X + (num4 / 2.0), inPoint.Y - ((3.0 * num3) / 2.0));
+                point.PutCoords(inPoint.X + (num4/2.0), inPoint.Y - ((3.0*num3)/2.0));
                 item.Geometry = point;
                 this.ilist_0.Add(item);
                 item = element4 as IElement;
-                point.PutCoords(inPoint.X + (num4 / 2.0), inPoint.Y - ((5.0 * num3) / 2.0));
+                point.PutCoords(inPoint.X + (num4/2.0), inPoint.Y - ((5.0*num3)/2.0));
                 item.Geometry = point;
                 this.ilist_0.Add(item);
                 item = element5 as IElement;
-                point.PutCoords(inPoint.X + ((3.0 * num4) / 2.0), inPoint.Y - (num3 / 2.0));
+                point.PutCoords(inPoint.X + ((3.0*num4)/2.0), inPoint.Y - (num3/2.0));
                 item.Geometry = point;
                 this.ilist_0.Add(item);
                 item = element6 as IElement;
-                point.PutCoords(inPoint.X + ((3.0 * num4) / 2.0), inPoint.Y - ((5.0 * num3) / 2.0));
+                point.PutCoords(inPoint.X + ((3.0*num4)/2.0), inPoint.Y - ((5.0*num3)/2.0));
                 item.Geometry = point;
                 this.ilist_0.Add(item);
                 item = element7 as IElement;
-                point.PutCoords(inPoint.X + ((5.0 * num4) / 2.0), inPoint.Y - (num3 / 2.0));
+                point.PutCoords(inPoint.X + ((5.0*num4)/2.0), inPoint.Y - (num3/2.0));
                 item.Geometry = point;
                 this.ilist_0.Add(item);
                 item = element8 as IElement;
-                point.PutCoords(inPoint.X + ((5.0 * num4) / 2.0), inPoint.Y - ((3.0 * num3) / 2.0));
+                point.PutCoords(inPoint.X + ((5.0*num4)/2.0), inPoint.Y - ((3.0*num3)/2.0));
                 item.Geometry = point;
                 this.ilist_0.Add(item);
                 item = element9 as IElement;
-                point.PutCoords(inPoint.X + ((5.0 * num4) / 2.0), inPoint.Y - ((5.0 * num3) / 2.0));
+                point.PutCoords(inPoint.X + ((5.0*num4)/2.0), inPoint.Y - ((5.0*num3)/2.0));
                 item.Geometry = point;
                 this.ilist_0.Add(item);
             }
@@ -810,22 +822,27 @@ namespace Yutai.ArcGIS.Carto
             try
             {
                 element2.Text = this.string_4;
-                symbol = base.FontStyle(15.0, esriTextHorizontalAlignment.esriTHARight, esriTextVerticalAlignment.esriTVABottom);
+                symbol = base.FontStyle(15.0, esriTextHorizontalAlignment.esriTHARight,
+                    esriTextVerticalAlignment.esriTVABottom);
                 element2.Symbol = symbol;
                 element3.Text = this.string_5;
-                symbol = base.FontStyle(15.0, esriTextHorizontalAlignment.esriTHARight, esriTextVerticalAlignment.esriTVATop);
+                symbol = base.FontStyle(15.0, esriTextHorizontalAlignment.esriTHARight,
+                    esriTextVerticalAlignment.esriTVATop);
                 element3.Symbol = symbol;
                 element4.Text = this.string_6;
-                symbol = base.FontStyle(15.0, esriTextHorizontalAlignment.esriTHALeft, esriTextVerticalAlignment.esriTVATop);
+                symbol = base.FontStyle(15.0, esriTextHorizontalAlignment.esriTHALeft,
+                    esriTextVerticalAlignment.esriTVATop);
                 element4.Symbol = symbol;
                 element5.Text = this.method_0(this.string_7);
-                symbol = base.FontStyle(20.0, esriTextHorizontalAlignment.esriTHALeft, esriTextVerticalAlignment.esriTVATop);
+                symbol = base.FontStyle(20.0, esriTextHorizontalAlignment.esriTHALeft,
+                    esriTextVerticalAlignment.esriTVATop);
                 element5.Symbol = symbol;
                 element7.Text = this.string_7;
                 element7.Symbol = symbol;
                 this.method_1(element5, out num3, out num2);
                 element6.Text = this.string_16;
-                symbol = base.FontStyle(15.0, esriTextHorizontalAlignment.esriTHACenter, esriTextVerticalAlignment.esriTVATop);
+                symbol = base.FontStyle(15.0, esriTextHorizontalAlignment.esriTHACenter,
+                    esriTextVerticalAlignment.esriTVATop);
                 element6.Symbol = symbol;
                 item = element2 as IElement;
                 point.PutCoords(base.RightUp.X, (base.RightUp.Y + base.InOutDist) + num);
@@ -844,7 +861,7 @@ namespace Yutai.ArcGIS.Carto
                 item.Geometry = point;
                 this.ilist_0.Add(item);
                 item = element6 as IElement;
-                point.PutCoords((base.LeftLow.X + base.RightLow.X) / 2.0, (base.LeftLow.Y - base.InOutDist) - num);
+                point.PutCoords((base.LeftLow.X + base.RightLow.X)/2.0, (base.LeftLow.Y - base.InOutDist) - num);
                 item.Geometry = point;
                 this.ilist_0.Add(item);
             }
@@ -859,14 +876,16 @@ namespace Yutai.ArcGIS.Carto
             try
             {
                 IPoint point = new PointClass();
-                point.PutCoords((base.LeftUp.X + base.RightUp.X) / 2.0, (base.RightUp.Y + base.InOutDist) + base.TitleDist);
-                IElement item = new TextElementClass {
+                point.PutCoords((base.LeftUp.X + base.RightUp.X)/2.0, (base.RightUp.Y + base.InOutDist) + base.TitleDist);
+                IElement item = new TextElementClass
+                {
                     Geometry = point
                 };
                 ITextElement element2 = item as ITextElement;
                 element2.Text = base.MapTM + "\n" + base.MapTH;
                 IElementProperties2 properties = element2 as IElementProperties2;
-                ITextSymbol symbol = base.FontStyle(25.0, esriTextHorizontalAlignment.esriTHACenter, esriTextVerticalAlignment.esriTVABottom);
+                ITextSymbol symbol = base.FontStyle(25.0, esriTextHorizontalAlignment.esriTHACenter,
+                    esriTextVerticalAlignment.esriTVABottom);
                 element2.Symbol = symbol;
                 properties.Type = "图名";
                 this.ilist_0.Add(item);
@@ -900,10 +919,11 @@ namespace Yutai.ArcGIS.Carto
             try
             {
                 base.m_pActiveView.ScreenDisplay.StartDrawing(base.m_pActiveView.ScreenDisplay.hDC, 0);
-                itextElement_0.Symbol.GetTextSize(base.m_pActiveView.ScreenDisplay.hDC, base.m_pActiveView.ScreenDisplay.DisplayTransformation, itextElement_0.Text, out xSize, out ySize);
+                itextElement_0.Symbol.GetTextSize(base.m_pActiveView.ScreenDisplay.hDC,
+                    base.m_pActiveView.ScreenDisplay.DisplayTransformation, itextElement_0.Text, out xSize, out ySize);
                 base.m_pActiveView.ScreenDisplay.FinishDrawing();
-                double_4 = ((xSize * (num3 / 72.0)) / 100.0) * base.m_ReferenceScale;
-                double_5 = ((ySize * (num3 / 72.0)) / 100.0) * base.m_ReferenceScale;
+                double_4 = ((xSize*(num3/72.0))/100.0)*base.m_ReferenceScale;
+                double_5 = ((ySize*(num3/72.0))/100.0)*base.m_ReferenceScale;
             }
             catch (Exception exception)
             {
@@ -963,7 +983,8 @@ namespace Yutai.ArcGIS.Carto
         private ILineSymbol method_2()
         {
             ISimpleLineSymbol symbol2 = new SimpleLineSymbolClass();
-            IRgbColor color = new RgbColorClass {
+            IRgbColor color = new RgbColorClass
+            {
                 Red = 0,
                 Blue = 0,
                 Green = 0
@@ -976,7 +997,8 @@ namespace Yutai.ArcGIS.Carto
         private ILineSymbol method_3()
         {
             ISimpleLineSymbol symbol2 = new SimpleLineSymbolClass();
-            IRgbColor color = new RgbColorClass {
+            IRgbColor color = new RgbColorClass
+            {
                 Red = 0,
                 Blue = 0,
                 Green = 0
@@ -1012,9 +1034,11 @@ namespace Yutai.ArcGIS.Carto
             ITextSymbol symbol2 = null;
             ITextSymbol symbol3 = null;
             ITextSymbol symbol4 = null;
-            symbol = base.FontStyle(8.0, esriTextHorizontalAlignment.esriTHALeft, esriTextVerticalAlignment.esriTVABottom);
+            symbol = base.FontStyle(8.0, esriTextHorizontalAlignment.esriTHALeft,
+                esriTextVerticalAlignment.esriTVABottom);
             symbol2 = base.FontStyle(8.0, esriTextHorizontalAlignment.esriTHALeft, esriTextVerticalAlignment.esriTVATop);
-            symbol3 = base.FontStyle(8.0, esriTextHorizontalAlignment.esriTHACenter, esriTextVerticalAlignment.esriTVABottom);
+            symbol3 = base.FontStyle(8.0, esriTextHorizontalAlignment.esriTHACenter,
+                esriTextVerticalAlignment.esriTVABottom);
             symbol4 = base.FontStyle(8.0, esriTextHorizontalAlignment.esriTHALeft, esriTextVerticalAlignment.esriTVATop);
             x = base.LeftLow.X;
             y = base.LeftLow.Y;
@@ -1074,28 +1098,28 @@ namespace Yutai.ArcGIS.Carto
                     element2 = item as ITextElement;
                     element2.Text = num.ToString() + str2;
                     element2.Symbol = symbol3;
-                    point.PutCoords(base.LeftLow.X - (base.InOutDist / 2.0), base.LeftLow.Y);
+                    point.PutCoords(base.LeftLow.X - (base.InOutDist/2.0), base.LeftLow.Y);
                     item.Geometry = point;
                     this.ilist_0.Add(item);
                     item = new TextElementClass();
                     element2 = item as ITextElement;
                     element2.Symbol = symbol4;
                     element2.Text = num2.ToString() + str3 + num3.ToString() + str4;
-                    point.PutCoords(base.LeftLow.X - ((base.InOutDist * 9.0) / 10.0), base.LeftLow.Y);
+                    point.PutCoords(base.LeftLow.X - ((base.InOutDist*9.0)/10.0), base.LeftLow.Y);
                     item.Geometry = point;
                     this.ilist_0.Add(item);
                     item = new TextElementClass();
                     element2 = item as ITextElement;
                     element2.Text = num.ToString() + str2;
                     element2.Symbol = symbol3;
-                    point.PutCoords(base.LeftUp.X - (base.InOutDist / 2.0), base.LeftUp.Y);
+                    point.PutCoords(base.LeftUp.X - (base.InOutDist/2.0), base.LeftUp.Y);
                     item.Geometry = point;
                     this.ilist_0.Add(item);
                     item = new TextElementClass();
                     element2 = item as ITextElement;
                     element2.Text = num2.ToString() + str3 + num3.ToString() + str4;
                     element2.Symbol = symbol4;
-                    point.PutCoords(base.LeftUp.X - ((base.InOutDist * 9.0) / 10.0), base.LeftUp.Y);
+                    point.PutCoords(base.LeftUp.X - ((base.InOutDist*9.0)/10.0), base.LeftUp.Y);
                     item.Geometry = point;
                     this.ilist_0.Add(item);
                     num5 += num7;
@@ -1104,14 +1128,14 @@ namespace Yutai.ArcGIS.Carto
                     element2 = item as ITextElement;
                     element2.Text = num.ToString() + str2;
                     element2.Symbol = symbol3;
-                    point.PutCoords(base.RightLow.X + (base.InOutDist / 2.0), base.RightLow.Y);
+                    point.PutCoords(base.RightLow.X + (base.InOutDist/2.0), base.RightLow.Y);
                     item.Geometry = point;
                     this.ilist_0.Add(item);
                     item = new TextElementClass();
                     element2 = item as ITextElement;
                     element2.Symbol = symbol4;
                     element2.Text = num2.ToString() + str3 + num3.ToString() + str4;
-                    point.PutCoords(base.RightLow.X + ((base.InOutDist * 1.0) / 10.0), base.RightLow.Y);
+                    point.PutCoords(base.RightLow.X + ((base.InOutDist*1.0)/10.0), base.RightLow.Y);
                     item.Geometry = point;
                     this.ilist_0.Add(item);
                     this.method_1(element2, out num10, out num11);
@@ -1120,14 +1144,14 @@ namespace Yutai.ArcGIS.Carto
                     element2 = item as ITextElement;
                     element2.Text = num.ToString() + str2;
                     element2.Symbol = symbol3;
-                    point.PutCoords(base.RightUp.X + (base.InOutDist / 2.0), base.RightUp.Y);
+                    point.PutCoords(base.RightUp.X + (base.InOutDist/2.0), base.RightUp.Y);
                     item.Geometry = point;
                     this.ilist_0.Add(item);
                     item = new TextElementClass();
                     element2 = item as ITextElement;
                     element2.Text = num2.ToString() + str3 + num3.ToString() + str4;
                     element2.Symbol = symbol4;
-                    point.PutCoords(base.RightUp.X + ((base.InOutDist * 1.0) / 10.0), base.RightUp.Y);
+                    point.PutCoords(base.RightUp.X + ((base.InOutDist*1.0)/10.0), base.RightUp.Y);
                     item.Geometry = point;
                     this.ilist_0.Add(item);
                 }
@@ -1181,13 +1205,15 @@ namespace Yutai.ArcGIS.Carto
             IFillSymbol symbol = null;
             ILineSymbol symbol2 = null;
             IColor color = null;
-            color = new RgbColorClass {
+            color = new RgbColorClass
+            {
                 NullColor = true
             };
             symbol = new SimpleFillSymbolClass();
             symbol2 = new SimpleLineSymbolClass();
             symbol.Color = color;
-            IRgbColor color2 = new RgbColorClass {
+            IRgbColor color2 = new RgbColorClass
+            {
                 Red = 0,
                 Blue = 0,
                 Green = 0
@@ -1274,107 +1300,67 @@ namespace Yutai.ArcGIS.Carto
 
         public string MapLeftBorderOutText
         {
-            set
-            {
-                this.string_7 = value;
-            }
+            set { this.string_7 = value; }
         }
 
         public string MapLeftLowText
         {
-            set
-            {
-                this.string_6 = value;
-            }
+            set { this.string_6 = value; }
         }
 
         public string MapRightLowTex
         {
-            set
-            {
-                this.string_5 = value;
-            }
+            set { this.string_5 = value; }
         }
 
         public string MapRightUpText
         {
-            set
-            {
-                this.string_4 = value;
-            }
+            set { this.string_4 = value; }
         }
 
         public string MapRow1Col1Text
         {
-            set
-            {
-                this.string_8 = value;
-            }
+            set { this.string_8 = value; }
         }
 
         public string MapRow1Col2Text
         {
-            set
-            {
-                this.string_11 = value;
-            }
+            set { this.string_11 = value; }
         }
 
         public string MapRow1Col3Text
         {
-            set
-            {
-                this.string_13 = value;
-            }
+            set { this.string_13 = value; }
         }
 
         public string MapRow2Col1Text
         {
-            set
-            {
-                this.string_9 = value;
-            }
+            set { this.string_9 = value; }
         }
 
         public string MapRow2Col3Text
         {
-            set
-            {
-                this.string_14 = value;
-            }
+            set { this.string_14 = value; }
         }
 
         public string MapRow3Col1Text
         {
-            set
-            {
-                this.string_10 = value;
-            }
+            set { this.string_10 = value; }
         }
 
         public string MapRow3Col2Text
         {
-            set
-            {
-                this.string_12 = value;
-            }
+            set { this.string_12 = value; }
         }
 
         public string MapRow3Col3Text
         {
-            set
-            {
-                this.string_15 = value;
-            }
+            set { this.string_15 = value; }
         }
 
         public string MapScaleText
         {
-            set
-            {
-                this.string_16 = value;
-            }
+            set { this.string_16 = value; }
         }
     }
 }
-

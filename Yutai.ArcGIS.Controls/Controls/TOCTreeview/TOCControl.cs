@@ -17,7 +17,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCTreeview
             this.InitializeComponent();
         }
 
- public void SetMapCtrl(object MapCtrl)
+        public void SetMapCtrl(object MapCtrl)
         {
             this.tocTreeViewEx1.SetMapCtrl(MapCtrl);
         }
@@ -76,10 +76,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCTreeview
 
         public IApplication Application
         {
-            set
-            {
-                this.tocTreeViewEx1.Application = value;
-            }
+            set { this.tocTreeViewEx1.Application = value; }
         }
 
         public object Hook
@@ -105,11 +102,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCTreeview
 
         public TOCTreeViewEx TocTreeView
         {
-            get
-            {
-                return this.tocTreeViewEx1;
-            }
+            get { return this.tocTreeViewEx1; }
         }
     }
 }
-

@@ -10,7 +10,7 @@ using Yutai.Plugins.Services;
 
 namespace Yutai.Commands.Document
 {
-    public class CmdCloseYutaiDoc:YutaiCommand
+    public class CmdCloseYutaiDoc : YutaiCommand
     {
         public CmdCloseYutaiDoc(IAppContext context)
         {
@@ -19,7 +19,6 @@ namespace Yutai.Commands.Document
 
         public override void OnClick()
         {
-
         }
 
         public override void OnClick(object sender, EventArgs args)
@@ -38,8 +37,8 @@ namespace Yutai.Commands.Document
             base.m_toolTip = "关闭项目";
             base.m_checked = false;
             base.m_enabled = true;
-            base.TextImageRelationYT= TextImageRelationYT.ImageBeforeText;
-            
+            base.TextImageRelationYT = TextImageRelationYT.ImageBeforeText;
+
             base._itemType = RibbonItemType.Button;
         }
     }

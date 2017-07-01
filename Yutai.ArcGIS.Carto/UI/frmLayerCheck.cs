@@ -11,7 +11,6 @@ namespace Yutai.ArcGIS.Carto.UI
     public partial class frmLayerCheck : Form
     {
         private IContainer icontainer_0 = null;
-        [CompilerGenerated]
 
         public frmLayerCheck()
         {
@@ -71,7 +70,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void frmLayerCheck_Load(object sender, EventArgs e)
+        private void frmLayerCheck_Load(object sender, EventArgs e)
         {
             ISet clipFilter = (this.Map as IMapClipOptions).ClipFilter;
             for (int i = 0; i < this.Map.LayerCount; i++)
@@ -86,19 +85,6 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- public IMap Map
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.imap_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.imap_0 = value;
-            }
-        }
+        public IMap Map { get; set; }
     }
 }
-

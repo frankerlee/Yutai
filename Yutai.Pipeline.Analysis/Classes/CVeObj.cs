@@ -10,26 +10,14 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         public double X
         {
-            get
-            {
-                return this.double_0;
-            }
-            set
-            {
-                this.double_0 = value;
-            }
+            get { return this.double_0; }
+            set { this.double_0 = value; }
         }
 
         public double Y
         {
-            get
-            {
-                return this.double_1;
-            }
-            set
-            {
-                this.double_1 = value;
-            }
+            get { return this.double_1; }
+            set { this.double_1 = value; }
         }
 
         public CVeObj()
@@ -52,14 +40,14 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         public double GetLength()
         {
-            return Math.Sqrt(this.double_0 * this.double_0 + this.double_1 * this.double_1);
+            return Math.Sqrt(this.double_0*this.double_0 + this.double_1*this.double_1);
         }
 
         public double GetAngle()
         {
             CVeObj cVeObj = new CVeObj(1.0, 0.0);
             double dotProduct = this.GetDotProduct(cVeObj);
-            double num = this.GetLength() * cVeObj.GetLength();
+            double num = this.GetLength()*cVeObj.GetLength();
             double result;
             if (1E-10 >= Math.Abs(num))
             {
@@ -67,10 +55,10 @@ namespace Yutai.Pipeline.Analysis.Classes
             }
             else
             {
-                double num2 = dotProduct / num;
+                double num2 = dotProduct/num;
                 if (Math.Abs(num2) > 0.99999999 && Math.Abs(num2) < 1.00000001)
                 {
-                    num2 = (double)((num2 > 0.0) ? 1 : -1);
+                    num2 = (double) ((num2 > 0.0) ? 1 : -1);
                 }
                 double num3 = Math.Acos(num2);
                 num3 *= 57.295779513082323;
@@ -87,25 +75,25 @@ namespace Yutai.Pipeline.Analysis.Classes
         {
             return new CVeObj
             {
-                X = this.double_0 * dNum,
-                Y = this.double_1 * dNum
+                X = this.double_0*dNum,
+                Y = this.double_1*dNum
             };
         }
 
         public double GetDotProduct(CVeObj veObj)
         {
-            return this.double_0 * veObj.X + this.double_1 * veObj.Y;
+            return this.double_0*veObj.X + this.double_1*veObj.Y;
         }
 
         public double GetArrowProduct(CVeObj veObj)
         {
-            return this.double_0 * veObj.Y - this.double_1 * veObj.X;
+            return this.double_0*veObj.Y - this.double_1*veObj.X;
         }
 
         public double GetAngleToVe(CVeObj veObj)
         {
             double dotProduct = this.GetDotProduct(veObj);
-            double num = this.GetLength() * veObj.GetLength();
+            double num = this.GetLength()*veObj.GetLength();
             double result;
             if (1E-10 >= Math.Abs(num))
             {
@@ -113,13 +101,13 @@ namespace Yutai.Pipeline.Analysis.Classes
             }
             else
             {
-                double num2 = dotProduct / num;
+                double num2 = dotProduct/num;
                 if (Math.Abs(num2) > 0.99999999 && Math.Abs(num2) < 1.00000001)
                 {
-                    num2 = (double)((num2 > 0.0) ? 1 : -1);
+                    num2 = (double) ((num2 > 0.0) ? 1 : -1);
                 }
                 double num3 = Math.Acos(num2);
-                result = num3 * 57.295779513082323;
+                result = num3*57.295779513082323;
             }
             return result;
         }
@@ -153,8 +141,8 @@ namespace Yutai.Pipeline.Analysis.Classes
             }
             else
             {
-                cVeObj.X = this.double_0 / length;
-                cVeObj.Y = this.double_1 / length;
+                cVeObj.X = this.double_0/length;
+                cVeObj.Y = this.double_1/length;
                 result = cVeObj;
             }
             return result;
@@ -189,8 +177,8 @@ namespace Yutai.Pipeline.Analysis.Classes
         {
             return new CVeObj
             {
-                X = Math.Cos(dAgl * 0.017453292519943295),
-                Y = Math.Sin(dAgl * 0.017453292519943295)
+                X = Math.Cos(dAgl*0.017453292519943295),
+                Y = Math.Sin(dAgl*0.017453292519943295)
             };
         }
 

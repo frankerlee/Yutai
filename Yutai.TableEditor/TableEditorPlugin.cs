@@ -17,7 +17,7 @@ using Yutai.Plugins.TableEditor.Services;
 namespace Yutai.Plugins.TableEditor
 {
     [YutaiPlugin()]
-    public class TableEditorPlugin:BasePlugin
+    public class TableEditorPlugin : BasePlugin
     {
         private IAppContext _context;
         private DockPanelService _dockPanelService;

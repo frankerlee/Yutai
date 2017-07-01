@@ -33,7 +33,7 @@ namespace Yutai.ArcGIS.Carto.UI
             base.Close();
         }
 
- private void frmJTBElement_Load(object sender, EventArgs e)
+        private void frmJTBElement_Load(object sender, EventArgs e)
         {
             this.txtB.Text = this.ijtbelement_0.BottomName;
             this.txtC.Text = this.ijtbelement_0.TFName;
@@ -47,25 +47,15 @@ namespace Yutai.ArcGIS.Carto.UI
             this.txtT.Text = this.ijtbelement_0.TopName;
         }
 
- public IJTBElement JTBElement
+        public IJTBElement JTBElement
         {
-            set
-            {
-                this.ijtbelement_0 = value;
-            }
+            set { this.ijtbelement_0 = value; }
         }
 
         public string MapName
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

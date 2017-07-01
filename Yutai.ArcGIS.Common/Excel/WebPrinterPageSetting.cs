@@ -22,36 +22,20 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public ImportExcelDelegate ImportExcelValue
         {
-            get
-            {
-                return null;
-            }
-            set
-            {
-            }
+            get { return null; }
+            set { }
         }
 
         public System.Drawing.Printing.PrintDocument PrintDocument
         {
-            get
-            {
-                return null;
-            }
-            set
-            {
-            }
+            get { return null; }
+            set { }
         }
 
         public PrintPageDelegate PrintPageValue
         {
-            get
-            {
-                return null;
-            }
-            set
-            {
-            }
+            get { return null; }
+            set { }
         }
     }
 }
-

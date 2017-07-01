@@ -11,7 +11,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
     {
         private IActiveView iactiveView_0 = null;
         private IActiveView iactiveView_1 = null;
-        [CompilerGenerated]
+      
         private string string_0;
 
         public YTTransformation(IActiveView iactiveView_2)
@@ -156,18 +156,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         }
 
         public string Name
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.string_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.string_0 = value;
-            }
-        }
+        { get; set; }
     }
 }
 

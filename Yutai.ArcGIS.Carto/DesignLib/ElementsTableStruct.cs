@@ -4,91 +4,57 @@
     {
         public string AttributesFieldName
         {
-            get
-            {
-                return "Attributes";
-            }
+            get { return "Attributes"; }
         }
 
         public override string DescriptionFieldName
         {
-            get
-            {
-                return "Description";
-            }
+            get { return "Description"; }
         }
 
         public string ElementTypeFieldName
         {
-            get
-            {
-                return "ElementType";
-            }
+            get { return "ElementType"; }
         }
 
         public string ExtendPropertyFieldName
         {
-            get
-            {
-                return "ExtendProperty";
-            }
+            get { return "ExtendProperty"; }
         }
 
         public override string IDFieldName
         {
-            get
-            {
-                return "ObjectID";
-            }
+            get { return "ObjectID"; }
         }
 
         public string LocationFieldName
         {
-            get
-            {
-                return "Location";
-            }
+            get { return "Location"; }
         }
 
         public override string NameFieldName
         {
-            get
-            {
-                return "Name";
-            }
+            get { return "Name"; }
         }
 
         public override string OrderIDFieldName
         {
-            get
-            {
-                return "";
-            }
+            get { return ""; }
         }
 
         public override string ParentIDFieldName
         {
-            get
-            {
-                return "";
-            }
+            get { return ""; }
         }
 
         public override string TableName
         {
-            get
-            {
-                return "Elements";
-            }
+            get { return "Elements"; }
         }
 
         public string TemplateIDFieldName
         {
-            get
-            {
-                return "TemplateID";
-            }
+            get { return "TemplateID"; }
         }
     }
 }
-

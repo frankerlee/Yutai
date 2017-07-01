@@ -9,13 +9,6 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 {
     public class MapTemplateTextElement : MapTemplateElement
     {
-        [CompilerGenerated]
-        private bool bool_0;
-        [CompilerGenerated]
-        private bool bool_1;
-        [CompilerGenerated]
-        private string string_1;
-
         public MapTemplateTextElement(MapTemplate mapTemplate_1) : base(mapTemplate_1)
         {
             base.MapTemplateElementType = MapTemplateElementType.TextElement;
@@ -32,7 +25,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public override MapTemplateElement Clone(MapTemplate mapTemplate_1)
         {
-            MapTemplateTextElement element = new MapTemplateTextElement(mapTemplate_1) {
+            MapTemplateTextElement element = new MapTemplateTextElement(mapTemplate_1)
+            {
                 IsVerticalText = this.IsVerticalText,
                 Multiline = this.Multiline,
                 Text = this.Text
@@ -389,33 +383,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
-        public bool IsVerticalText
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.bool_1;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.bool_1 = value;
-            }
-        }
-
-        public bool Multiline
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.bool_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.bool_0 = value;
-            }
-        }
+        public bool IsVerticalText { get; set; }
+        public bool Multiline { get; set; }
 
         protected override IPropertySet PropertySet
         {
@@ -442,19 +411,6 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
-        public string Text
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.string_1;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.string_1 = value;
-            }
-        }
+        public string Text { get; set; }
     }
 }
-

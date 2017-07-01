@@ -29,7 +29,7 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
             }
         }
 
- private void frmLayerConfigTable_Load(object sender, EventArgs e)
+        private void frmLayerConfigTable_Load(object sender, EventArgs e)
         {
             IEnumDataset dataset = this.m_pWorkspace.get_Datasets(esriDatasetType.esriDTTable);
             dataset.Reset();
@@ -38,7 +38,8 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
             for (ITable table = dataset.Next() as ITable; table != null; table = dataset.Next() as ITable)
             {
                 IFields fields = table.Fields;
-                TreeNode node2 = new TreeNode((table as IDataset).Name) {
+                TreeNode node2 = new TreeNode((table as IDataset).Name)
+                {
                     Tag = table
                 };
                 node.Nodes.Add(node2);
@@ -49,25 +50,15 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
             }
         }
 
- public string LayerConfig
+        public string LayerConfig
         {
-            get
-            {
-                return this.m_pLayerConfig;
-            }
-            set
-            {
-                this.m_pLayerConfig = value;
-            }
+            get { return this.m_pLayerConfig; }
+            set { this.m_pLayerConfig = value; }
         }
 
         public IWorkspace Workspace
         {
-            set
-            {
-                this.m_pWorkspace = value;
-            }
+            set { this.m_pWorkspace = value; }
         }
     }
 }
-

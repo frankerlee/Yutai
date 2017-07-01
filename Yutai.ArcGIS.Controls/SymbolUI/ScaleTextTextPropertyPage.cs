@@ -22,7 +22,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         public ScaleTextTextPropertyPage()
         {
             this.InitializeComponent();
-            ScaleTextEventsClass.ValueChange += new ScaleTextEventsClass.ValueChangeHandler(this.ScaleTextEventsClass_ValueChange);
+            ScaleTextEventsClass.ValueChange +=
+                new ScaleTextEventsClass.ValueChangeHandler(this.ScaleTextEventsClass_ValueChange);
         }
 
         public void Apply()
@@ -31,7 +32,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             {
                 ScaleTextFormatPropertyPage.m_pScaleText.Name = "sdfsf";
                 this.m_IsPageDirty = false;
-                (ScaleTextFormatPropertyPage.m_pOldScaleText as IClone).Assign(ScaleTextFormatPropertyPage.m_pScaleText as IClone);
+                (ScaleTextFormatPropertyPage.m_pOldScaleText as IClone).Assign(
+                    ScaleTextFormatPropertyPage.m_pScaleText as IClone);
             }
         }
 
@@ -68,7 +70,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- public void Hide()
+        public void Hide()
         {
         }
 
@@ -99,7 +101,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- private void rdoStyle_SelectedIndexChanged(object sender, EventArgs e)
+        private void rdoStyle_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.m_CanDo)
             {
@@ -164,39 +166,23 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.m_IsPageDirty;
-            }
+            get { return this.m_IsPageDirty; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.m_Title;
-            }
-            set
-            {
-                this.m_Title = value;
-            }
+            get { return this.m_Title; }
+            set { this.m_Title = value; }
         }
     }
 }
-

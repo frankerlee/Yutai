@@ -111,4 +111,3 @@ namespace Yutai.ArcGIS.Common
         bool UseSnap { get; set; }
     }
 }
-

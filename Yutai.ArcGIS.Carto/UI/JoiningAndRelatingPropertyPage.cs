@@ -30,7 +30,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnAddJoining_Click(object sender, EventArgs e)
         {
-            frmJoining joining = new frmJoining {
+            frmJoining joining = new frmJoining
+            {
                 FocusMap = this.ibasicMap_0,
                 CurrentSelectItem = this.itable_0
             };
@@ -51,7 +52,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnAddRelating_Click(object sender, EventArgs e)
         {
-            frmRelating relating = new frmRelating {
+            frmRelating relating = new frmRelating
+            {
                 FocusMap = this.ibasicMap_0,
                 CurrentSelectItem = this.itable_0
             };
@@ -99,7 +101,8 @@ namespace Yutai.ArcGIS.Carto.UI
             }
             catch (COMException exception)
             {
-                MessageBox.Show(exception.Message, "COM Error: " + exception.ErrorCode.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(exception.Message, "COM Error: " + exception.ErrorCode.ToString(), MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
             }
             catch (Exception exception2)
             {
@@ -178,7 +181,7 @@ namespace Yutai.ArcGIS.Carto.UI
                     this.OnJoinAndRelationChange();
                 }
                 return;
-            Label_0075:
+                Label_0075:
                 (classs as IRelationshipClassCollectionEdit).RemoveRelationshipClass(relationshipClass);
                 this.RelatingDataList.Items.Clear();
                 this.method_2(this.itable_0);
@@ -193,7 +196,8 @@ namespace Yutai.ArcGIS.Carto.UI
             }
             catch (COMException exception)
             {
-                MessageBox.Show(exception.Message, "COM Error: " + exception.ErrorCode.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(exception.Message, "COM Error: " + exception.ErrorCode.ToString(), MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
             }
             catch (Exception exception2)
             {
@@ -201,7 +205,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void JoiningAndRelatingPropertyPage_Load(object sender, EventArgs e)
+        private void JoiningAndRelatingPropertyPage_Load(object sender, EventArgs e)
         {
             this.method_0();
         }
@@ -257,7 +261,8 @@ namespace Yutai.ArcGIS.Carto.UI
             }
             catch (COMException exception)
             {
-                MessageBox.Show(exception.Message, "COM Error: " + exception.ErrorCode.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(exception.Message, "COM Error: " + exception.ErrorCode.ToString(), MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
             }
             catch (Exception exception2)
             {
@@ -272,14 +277,17 @@ namespace Yutai.ArcGIS.Carto.UI
                 IRelationshipClassCollection classs = itable_1 as IRelationshipClassCollection;
                 IEnumRelationshipClass relationshipClasses = classs.RelationshipClasses;
                 relationshipClasses.Reset();
-                for (IRelationshipClass class3 = relationshipClasses.Next(); class3 != null; class3 = relationshipClasses.Next())
+                for (IRelationshipClass class3 = relationshipClasses.Next();
+                    class3 != null;
+                    class3 = relationshipClasses.Next())
                 {
                     this.RelatingDataList.Items.Add(new ObjectWrap(class3));
                 }
             }
             catch (COMException exception)
             {
-                MessageBox.Show(exception.Message, "COM Error: " + exception.ErrorCode.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(exception.Message, "COM Error: " + exception.ErrorCode.ToString(), MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
             }
             catch (Exception exception2)
             {
@@ -301,26 +309,17 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IBasicMap FocusMap
         {
-            set
-            {
-                this.ibasicMap_0 = value;
-            }
+            set { this.ibasicMap_0 = value; }
         }
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_0;
-            }
+            get { return this.bool_0; }
         }
 
         public object SelectItem
         {
-            set
-            {
-                this.itable_0 = value as ITable;
-            }
+            set { this.itable_0 = value as ITable; }
         }
 
         internal partial class ObjectWrap
@@ -347,16 +346,9 @@ namespace Yutai.ArcGIS.Carto.UI
 
             public object Object
             {
-                get
-                {
-                    return this.object_0;
-                }
-                set
-                {
-                    this.object_0 = null;
-                }
+                get { return this.object_0; }
+                set { this.object_0 = null; }
             }
         }
     }
 }
-

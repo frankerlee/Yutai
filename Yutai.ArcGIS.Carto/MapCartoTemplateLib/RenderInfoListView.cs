@@ -91,7 +91,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     this.imageList_0.ImageSize = new Size(size, size);
                 }
             }
-            ListViewItemEx ex = new ListViewItemEx(strArray) {
+            ListViewItemEx ex = new ListViewItemEx(strArray)
+            {
                 Style = obj2
             };
             base.Items.Add(ex);
@@ -100,7 +101,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public void Add(IStyleGalleryItem istyleGalleryItem_0)
         {
-            ListViewItemEx ex = new ListViewItemEx(new string[] { istyleGalleryItem_0.Name, istyleGalleryItem_0.Category }) {
+            ListViewItemEx ex = new ListViewItemEx(new string[] {istyleGalleryItem_0.Name, istyleGalleryItem_0.Category})
+            {
                 Tag = istyleGalleryItem_0
             };
             base.Items.Add(ex);
@@ -150,7 +152,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             base.Dispose(bool_1);
         }
 
-        protected  void DrawSymbol(int int_3, Rectangle rectangle_0, object object_0)
+        protected void DrawSymbol(int int_3, Rectangle rectangle_0, object object_0)
         {
             if (object_0 != null)
             {
@@ -158,7 +160,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 ISymbol symbol;
                 IDisplayTransformation transformation = new DisplayTransformationClass();
                 IEnvelope bounds = new EnvelopeClass();
-                bounds.PutCoords((double) rectangle_0.Left, (double) rectangle_0.Top, (double) rectangle_0.Right, (double) rectangle_0.Bottom);
+                bounds.PutCoords((double) rectangle_0.Left, (double) rectangle_0.Top, (double) rectangle_0.Right,
+                    (double) rectangle_0.Bottom);
                 grect.left = rectangle_0.Left;
                 grect.right = rectangle_0.Right;
                 grect.bottom = rectangle_0.Bottom;
@@ -187,7 +190,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 }
                 else if (object_0 is IColor)
                 {
-                    IColorSymbol symbol4 = new ColorSymbolClass {
+                    IColorSymbol symbol4 = new ColorSymbolClass
+                    {
                         Color = object_0 as IColor
                     };
                     symbol = (ISymbol) symbol4;
@@ -195,7 +199,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 else if (object_0 is IAreaPatch)
                 {
                     symbol = new SimpleFillSymbolClass();
-                    IRgbColor color = new RgbColorClass {
+                    IRgbColor color = new RgbColorClass
+                    {
                         Red = 227,
                         Green = 236,
                         Blue = 19
@@ -223,7 +228,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                             display.StartDrawing(int_3, 0);
                             display.DisplayTransformation = transformation;
                             IEnvelope newBounds = new EnvelopeClass();
-                            newBounds.PutCoords((double) (rectangle_0.Left + 5), (double) (rectangle_0.Top + 5), (double) (rectangle_0.Right - 5), (double) (rectangle_0.Bottom - 5));
+                            newBounds.PutCoords((double) (rectangle_0.Left + 5), (double) (rectangle_0.Top + 5),
+                                (double) (rectangle_0.Right - 5), (double) (rectangle_0.Bottom - 5));
                             ((IMapSurround) object_0).QueryBounds(display, bounds, newBounds);
                             ((IMapSurround) object_0).FitToBounds(display, newBounds, out flag);
                             ((IMapSurround) object_0).Draw(display, null, newBounds);
@@ -365,7 +371,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     this.imageList_0.ImageSize = new Size(size, size);
                 }
             }
-            ListViewItemEx item = new ListViewItemEx(strArray) {
+            ListViewItemEx item = new ListViewItemEx(strArray)
+            {
                 Style = obj2
             };
             base.Items.Insert(int_3, item);
@@ -438,9 +445,10 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         private void method_2(IMarkerSymbol imarkerSymbol_0, Rectangle rectangle_0)
         {
-            IPoint geometry = new PointClass {
-                X = (rectangle_0.Left + rectangle_0.Right) / 2,
-                Y = (rectangle_0.Bottom + rectangle_0.Top) / 2
+            IPoint geometry = new PointClass
+            {
+                X = (rectangle_0.Left + rectangle_0.Right)/2,
+                Y = (rectangle_0.Bottom + rectangle_0.Top)/2
             };
             ((ISymbol) imarkerSymbol_0).Draw(geometry);
         }
@@ -448,7 +456,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         private void method_3(ISymbol isymbol_0, IPatch ipatch_0, Rectangle rectangle_0)
         {
             IEnvelope bounds = new EnvelopeClass();
-            bounds.PutCoords((double) rectangle_0.Left, (double) rectangle_0.Top, (double) rectangle_0.Right, (double) rectangle_0.Bottom);
+            bounds.PutCoords((double) rectangle_0.Left, (double) rectangle_0.Top, (double) rectangle_0.Right,
+                (double) rectangle_0.Bottom);
             IGeometry geometry = ipatch_0.get_Geometry(bounds);
             isymbol_0.Draw(geometry);
         }
@@ -488,9 +497,9 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             object before = Missing.Value;
             IPointCollection points = new PolylineClass();
             IPoint inPoint = new PointClass();
-            inPoint.PutCoords((double) (rectangle_0.Left + 3), (double) ((rectangle_0.Bottom + rectangle_0.Top) / 2));
+            inPoint.PutCoords((double) (rectangle_0.Left + 3), (double) ((rectangle_0.Bottom + rectangle_0.Top)/2));
             points.AddPoint(inPoint, ref before, ref before);
-            inPoint.PutCoords((double) (rectangle_0.Right - 3), (double) ((rectangle_0.Bottom + rectangle_0.Top) / 2));
+            inPoint.PutCoords((double) (rectangle_0.Right - 3), (double) ((rectangle_0.Bottom + rectangle_0.Top)/2));
             points.AddPoint(inPoint, ref before, ref before);
             ((ISymbol) ilineSymbol_0).Draw((IGeometry) points);
         }
@@ -533,9 +542,10 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         private void method_7(ITextSymbol itextSymbol_0, Rectangle rectangle_0)
         {
-            IPoint geometry = new PointClass {
-                X = (rectangle_0.Left + rectangle_0.Right) / 2,
-                Y = (rectangle_0.Bottom + rectangle_0.Top) / 2
+            IPoint geometry = new PointClass
+            {
+                X = (rectangle_0.Left + rectangle_0.Right)/2,
+                Y = (rectangle_0.Bottom + rectangle_0.Top)/2
             };
             ISimpleTextSymbol symbol = (ISimpleTextSymbol) itextSymbol_0;
             string text = symbol.Text;
@@ -558,7 +568,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             SolidBrush brush;
             SolidBrush brush2;
             base.OnPaint(paintEventArgs_0);
-            StringFormat format = new StringFormat {
+            StringFormat format = new StringFormat
+            {
                 LineAlignment = StringAlignment.Center
             };
             if (base.View == View.Details)
@@ -588,7 +599,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                             {
                                 if ((base.Items[num].Tag as YTLegendItem).BackSymbol != null)
                                 {
-                                    this.DrawSymbol(hdc.ToInt32(), bounds, (base.Items[num].Tag as YTLegendItem).BackSymbol);
+                                    this.DrawSymbol(hdc.ToInt32(), bounds,
+                                        (base.Items[num].Tag as YTLegendItem).BackSymbol);
                                 }
                                 this.DrawSymbol(hdc.ToInt32(), bounds, (base.Items[num].Tag as YTLegendItem).Symbol);
                             }
@@ -598,7 +610,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                             }
                             else if ((base.Items[num] as ListViewItemEx).Style is IStyleGalleryItem)
                             {
-                                this.DrawSymbol(hdc.ToInt32(), bounds, ((base.Items[num] as ListViewItemEx).Style as IStyleGalleryItem).Item);
+                                this.DrawSymbol(hdc.ToInt32(), bounds,
+                                    ((base.Items[num] as ListViewItemEx).Style as IStyleGalleryItem).Item);
                             }
                             graphics.ReleaseHdc(hdc);
                         }
@@ -635,12 +648,14 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                                 if ((i != 0) || (base.Items[num].SubItems[i].Text.Length != 0))
                                 {
                                     paintEventArgs_0.Graphics.FillRectangle(brush, ef);
-                                    paintEventArgs_0.Graphics.DrawString(base.Items[num].SubItems[i].Text, this.Font, brush2, ef, format);
+                                    paintEventArgs_0.Graphics.DrawString(base.Items[num].SubItems[i].Text, this.Font,
+                                        brush2, ef, format);
                                 }
                             }
                             else
                             {
-                                paintEventArgs_0.Graphics.DrawString(base.Items[num].SubItems[i].Text, this.Font, Brushes.Black, ef, format);
+                                paintEventArgs_0.Graphics.DrawString(base.Items[num].SubItems[i].Text, this.Font,
+                                    Brushes.Black, ef, format);
                             }
                         }
                         brush.Dispose();
@@ -665,7 +680,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                             }
                             else if ((base.Items[num] as ListViewItemEx).Style is IStyleGalleryItem)
                             {
-                                this.DrawSymbol(hdc.ToInt32(), bounds, ((base.Items[num] as ListViewItemEx).Style as IStyleGalleryItem).Item);
+                                this.DrawSymbol(hdc.ToInt32(), bounds,
+                                    ((base.Items[num] as ListViewItemEx).Style as IStyleGalleryItem).Item);
                             }
                             graphics.ReleaseHdc(hdc);
                         }
@@ -682,7 +698,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                         if (base.Items[num].SubItems.Count > 1)
                         {
                             rectangle3 = base.Items[num].GetBounds(ItemBoundsPortion.Label);
-                            ef = new RectangleF((float) rectangle3.X, (float) rectangle3.Y, (float) rectangle3.Width, (float) rectangle3.Height);
+                            ef = new RectangleF((float) rectangle3.X, (float) rectangle3.Y, (float) rectangle3.Width,
+                                (float) rectangle3.Height);
                             paintEventArgs_0.Graphics.FillRectangle(brush, ef);
                             paintEventArgs_0.Graphics.DrawString(base.Items[num].SubItems[1].Text, this.Font, brush2, ef);
                         }
@@ -714,7 +731,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 }
                 if (index != 0)
                 {
-                    if (((base.SelectedItems.Count == 1) && (this.ColumnEditables != null)) && this.ColumnEditables[index])
+                    if (((base.SelectedItems.Count == 1) && (this.ColumnEditables != null)) &&
+                        this.ColumnEditables[index])
                     {
                         this.int_2 = index;
                         this.listViewItem_0 = base.SelectedItems[0];
@@ -802,7 +820,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
             else
             {
-                if (((this.listViewItem_0 != null) && (this.int_2 != -1)) && (this.listViewItem_0.SubItems[this.int_2].Text != this.textBox.Text))
+                if (((this.listViewItem_0 != null) && (this.int_2 != -1)) &&
+                    (this.listViewItem_0.SubItems[this.int_2].Text != this.textBox.Text))
                 {
                     this.listViewItem_0.SubItems[this.int_2].Text = this.textBox.Text;
                     if (this.OnValueChanged != null)
@@ -817,13 +836,9 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public IStyleGallery StyleGallery
         {
-            set
-            {
-                this.istyleGallery_0 = value;
-            }
+            set { this.istyleGallery_0 = value; }
         }
 
         public delegate void OnValueChangedHandler(int int_0, object object_0);
     }
 }
-

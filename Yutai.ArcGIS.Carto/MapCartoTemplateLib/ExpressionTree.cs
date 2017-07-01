@@ -66,21 +66,21 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                             {
                                 return 0;
                             }
-                            return (Convert.ToDouble(obj4) * Convert.ToDouble(obj5));
+                            return (Convert.ToDouble(obj4)*Convert.ToDouble(obj5));
 
                         case "/":
                             if (!(obj4 is double) || !(obj5 is double))
                             {
                                 return 0;
                             }
-                            return (Convert.ToDouble(obj4) / Convert.ToDouble(obj5));
+                            return (Convert.ToDouble(obj4)/Convert.ToDouble(obj5));
 
                         case "%":
                             if (!(obj4 is double) || !(obj5 is double))
                             {
                                 return 0;
                             }
-                            return (Convert.ToDouble(obj4) % Convert.ToDouble(obj5));
+                            return (Convert.ToDouble(obj4)%Convert.ToDouble(obj5));
 
                         case "<":
                             if (!(obj4 is double) || !(obj5 is double))
@@ -307,10 +307,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public ExpressionTree LeftTree
         {
-            get
-            {
-                return this.expressionTree_0;
-            }
+            get { return this.expressionTree_0; }
             set
             {
                 this.expressionTree_0 = value;
@@ -320,22 +317,13 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public ExpressionTree Parent
         {
-            get
-            {
-                return this.expressionTree_2;
-            }
-            set
-            {
-                this.expressionTree_2 = value;
-            }
+            get { return this.expressionTree_2; }
+            set { this.expressionTree_2 = value; }
         }
 
         public ExpressionTree RightTree
         {
-            get
-            {
-                return this.expressionTree_1;
-            }
+            get { return this.expressionTree_1; }
             set
             {
                 this.expressionTree_1 = value;
@@ -345,27 +333,14 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public ExpressionTree SecondTree
         {
-            get
-            {
-                return this.expressionTree_3;
-            }
-            set
-            {
-                this.expressionTree_3 = value;
-            }
+            get { return this.expressionTree_3; }
+            set { this.expressionTree_3 = value; }
         }
 
         public string Tag
         {
-            get
-            {
-                return this._Tag;
-            }
-            set
-            {
-                this._Tag = value;
-            }
+            get { return this._Tag; }
+            set { this._Tag = value; }
         }
     }
 }
-

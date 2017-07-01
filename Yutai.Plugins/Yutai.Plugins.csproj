@@ -37,7 +37,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>bin\x86\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -128,6 +128,7 @@
     <Compile Include="Concrete\YutaiCommand.cs" />
     <Compile Include="Concrete\YutaiMenuCommand.cs" />
     <Compile Include="Concrete\YutaiTool.cs" />
+    <Compile Include="Interfaces\IOverviewControl.cs" />
     <Compile Include="Interfaces\IPopuMenu.cs" />
     <Compile Include="Interfaces\IShapeConstructorTool.cs" />
     <Compile Include="Interfaces\IAppContextEvents.cs" />
@@ -235,10 +236,12 @@
     <ProjectReference Include="..\Yutai.Api\Yutai.Api.csproj">
       <Project>{C0A8949E-D665-4044-8950-1A71C9B2D081}</Project>
       <Name>Yutai.Api</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.Shared\Yutai.Shared.csproj">
       <Project>{4a9b3243-2b0a-4e87-9b23-71a58c1f318d}</Project>
       <Name>Yutai.Shared</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

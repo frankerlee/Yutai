@@ -3,7 +3,7 @@
     <Pages>
       <Page Key="View" Caption="视图" Index="0" Visible="true">
         <PageGroup Key="View_Locator" Caption="定位" Visible="true" Index="0">
-          <BarItem  Key="View_StartLocator" Visible="true"></BarItem>
+          <BarItem Key="View_StartLocator" Visible="true"></BarItem>
         </PageGroup>
       </Page>
     </Pages>

@@ -10,4 +10,3 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         IElement Element { set; }
     }
 }
-

@@ -10,7 +10,9 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 {
     public partial class frmNewTemplate : Form
     {
-        private Dictionary<IFeatureLayer, List<YTEditTemplate>> m_list = new Dictionary<IFeatureLayer, List<YTEditTemplate>>();
+        private Dictionary<IFeatureLayer, List<YTEditTemplate>> m_list =
+            new Dictionary<IFeatureLayer, List<YTEditTemplate>>();
+
         private int m_step = 0;
         private SelectCreateTemplateLayer selectLayerCtrl = new SelectCreateTemplateLayer();
         private SelectTemplateCtrl selectTemplateCtrl = new SelectTemplateCtrl();
@@ -81,7 +83,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.m_step++;
         }
 
- private void frmNewTemplate_Load(object sender, EventArgs e)
+        private void frmNewTemplate_Load(object sender, EventArgs e)
         {
             this.btnNext.Enabled = false;
             this.btnLast.Enabled = false;
@@ -95,7 +97,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.panel1.Controls.Add(this.selectLayerCtrl);
         }
 
- private void selectLayerCtrl_OnValueChange(bool b)
+        private void selectLayerCtrl_OnValueChange(bool b)
         {
             this.btnNext.Enabled = this.selectLayerCtrl.NexHasEnable;
             this.btnFinish.Enabled = this.selectLayerCtrl.CanApply;
@@ -105,11 +107,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         public Dictionary<IFeatureLayer, List<YTEditTemplate>> TemplateList
         {
-            get
-            {
-                return this.m_list;
-            }
+            get { return this.m_list; }
         }
     }
 }
-

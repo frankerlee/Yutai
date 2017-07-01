@@ -53,7 +53,9 @@ namespace Yutai.Pipeline.Analysis.Controls
         private List<int[]> mColumnPoints;
         private List<float> mColumnPointsWidth;
         private int mColumnPoint;
-        public GridPrinter(DataGridView objDataGridView, PrintDocument objPrintDocument, bool bCenterOnPage, bool bHasTitle, string sTitle, Font objTitleFont, Color objTitleColor, bool bPaging)
+
+        public GridPrinter(DataGridView objDataGridView, PrintDocument objPrintDocument, bool bCenterOnPage,
+            bool bHasTitle, string sTitle, Font objTitleFont, Color objTitleColor, bool bPaging)
         {
             dataGridView = objDataGridView;
             printDocument = objPrintDocument;
@@ -84,6 +86,7 @@ namespace Yutai.Pipeline.Analysis.Controls
             bottomMargin = printDocument.DefaultPageSettings.Margins.Bottom;
             currentRow = 0;
         }
+
         // calculate printing metrics
         private void Calculate(Graphics g)
         {
@@ -132,7 +135,7 @@ namespace Yutai.Pipeline.Analysis.Controls
                         break;
                     }
                 float mTempWidth = dataGridViewWidth;
-                float mTempPrintArea = (float)pageWidth - (float)leftMargin - (float)rightMargin;
+                float mTempPrintArea = (float) pageWidth - (float) leftMargin - (float) rightMargin;
 
                 if (dataGridViewWidth > mTempPrintArea)
                 {
@@ -145,7 +148,7 @@ namespace Yutai.Pipeline.Analysis.Controls
                             if (mTempWidth > mTempPrintArea)
                             {
                                 mTempWidth -= columnsWidth[k];
-                                mColumnPoints.Add(new int[] { mStartPoint, mEndPoint });
+                                mColumnPoints.Add(new int[] {mStartPoint, mEndPoint});
                                 mColumnPointsWidth.Add(mTempWidth);
                                 mStartPoint = k;
                                 mTempWidth = columnsWidth[k];
@@ -154,44 +157,53 @@ namespace Yutai.Pipeline.Analysis.Controls
                         mEndPoint = k + 1;
                     }
                 }
-                mColumnPoints.Add(new int[] { mStartPoint, mEndPoint });
+                mColumnPoints.Add(new int[] {mStartPoint, mEndPoint});
                 mColumnPointsWidth.Add(mTempWidth);
                 mColumnPoint = 0;
             }
         }
+
         // header printing
         private void DrawHeader(Graphics g)
         {
-            currentY = (float)topMargin;
+            currentY = (float) topMargin;
             if (paging)
             {
                 pageNumber++;
                 string PageString = "Page " + pageNumber.ToString();
                 StringFormat PageStringFormat = new StringFormat();
                 PageStringFormat.Trimming = StringTrimming.Word;
-                PageStringFormat.FormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+                PageStringFormat.FormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit |
+                                               StringFormatFlags.NoClip;
                 PageStringFormat.Alignment = StringAlignment.Far;
                 Font PageStringFont = new Font("Arial", 8, FontStyle.Regular, GraphicsUnit.Point);
-                RectangleF PageStringRectangle = new RectangleF((float)leftMargin, currentY, (float)pageWidth - (float)rightMargin - (float)leftMargin, g.MeasureString(PageString, PageStringFont).Height);
-                g.DrawString(PageString, PageStringFont, new SolidBrush(Color.Black), PageStringRectangle, PageStringFormat);
+                RectangleF PageStringRectangle = new RectangleF((float) leftMargin, currentY,
+                    (float) pageWidth - (float) rightMargin - (float) leftMargin,
+                    g.MeasureString(PageString, PageStringFont).Height);
+                g.DrawString(PageString, PageStringFont, new SolidBrush(Color.Black), PageStringRectangle,
+                    PageStringFormat);
                 currentY += g.MeasureString(PageString, PageStringFont).Height;
             }
             if (hasTitle)
             {
                 StringFormat TitleFormat = new StringFormat();
                 TitleFormat.Trimming = StringTrimming.Word;
-                TitleFormat.FormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+                TitleFormat.FormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit |
+                                          StringFormatFlags.NoClip;
                 if (centerOnPage)
                     TitleFormat.Alignment = StringAlignment.Center;
                 else
                     TitleFormat.Alignment = StringAlignment.Near;
-                RectangleF TitleRectangle = new RectangleF((float)leftMargin, currentY, (float)pageWidth - (float)rightMargin - (float)leftMargin, g.MeasureString(title, titleFont).Height);
+                RectangleF TitleRectangle = new RectangleF((float) leftMargin, currentY,
+                    (float) pageWidth - (float) rightMargin - (float) leftMargin,
+                    g.MeasureString(title, titleFont).Height);
                 g.DrawString(title, titleFont, new SolidBrush(titleColor), TitleRectangle, TitleFormat);
                 currentY += g.MeasureString(title, titleFont).Height;
             }
-            float CurrentX = (float)leftMargin;
+            float CurrentX = (float) leftMargin;
             if (centerOnPage)
-                CurrentX += (((float)pageWidth - (float)rightMargin - (float)leftMargin) - mColumnPointsWidth[mColumnPoint]) / 2.0F;
+                CurrentX += (((float) pageWidth - (float) rightMargin - (float) leftMargin) -
+                             mColumnPointsWidth[mColumnPoint])/2.0F;
             Color HeaderForeColor = dataGridView.ColumnHeadersDefaultCellStyle.ForeColor;
             if (HeaderForeColor.IsEmpty)
                 HeaderForeColor = dataGridView.DefaultCellStyle.ForeColor;
@@ -204,14 +216,17 @@ namespace Yutai.Pipeline.Analysis.Controls
             Font HeaderFont = dataGridView.ColumnHeadersDefaultCellStyle.Font;
             if (HeaderFont == null)
                 HeaderFont = dataGridView.DefaultCellStyle.Font;
-            RectangleF HeaderBounds = new RectangleF(CurrentX, currentY, mColumnPointsWidth[mColumnPoint], rowHeaderHeight);
+            RectangleF HeaderBounds = new RectangleF(CurrentX, currentY, mColumnPointsWidth[mColumnPoint],
+                rowHeaderHeight);
             g.FillRectangle(HeaderBackBrush, HeaderBounds);
             StringFormat CellFormat = new StringFormat();
             CellFormat.Trimming = StringTrimming.Word;
             CellFormat.FormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
             RectangleF CellBounds;
             float ColumnWidth;
-            for (int i = (int)mColumnPoints[mColumnPoint].GetValue(0); i < (int)mColumnPoints[mColumnPoint].GetValue(1); i++)
+            for (int i = (int) mColumnPoints[mColumnPoint].GetValue(0);
+                i < (int) mColumnPoints[mColumnPoint].GetValue(1);
+                i++)
             {
                 if (!dataGridView.Columns[i].Visible) continue;
                 ColumnWidth = columnsWidth[i];
@@ -229,6 +244,7 @@ namespace Yutai.Pipeline.Analysis.Controls
             }
             currentY += rowHeaderHeight;
         }
+
         // common row printing function
         private bool DrawRows(Graphics g)
         {
@@ -267,15 +283,19 @@ namespace Yutai.Pipeline.Analysis.Controls
                         RowBackBrush = new SolidBrush(RowBackColor);
                         RowAlternatingBackBrush = new SolidBrush(RowBackColor);
                     }
-                    CurrentX = (float)leftMargin;
+                    CurrentX = (float) leftMargin;
                     if (centerOnPage)
-                        CurrentX += (((float)pageWidth - (float)rightMargin - (float)leftMargin) - mColumnPointsWidth[mColumnPoint]) / 2.0F;
-                    RowBounds = new RectangleF(CurrentX, currentY, mColumnPointsWidth[mColumnPoint], rowsHeight[currentRow]);
-                    if (currentRow % 2 == 0)
+                        CurrentX += (((float) pageWidth - (float) rightMargin - (float) leftMargin) -
+                                     mColumnPointsWidth[mColumnPoint])/2.0F;
+                    RowBounds = new RectangleF(CurrentX, currentY, mColumnPointsWidth[mColumnPoint],
+                        rowsHeight[currentRow]);
+                    if (currentRow%2 == 0)
                         g.FillRectangle(RowBackBrush, RowBounds);
                     else
                         g.FillRectangle(RowAlternatingBackBrush, RowBounds);
-                    for (int CurrentCell = (int)mColumnPoints[mColumnPoint].GetValue(0); CurrentCell < (int)mColumnPoints[mColumnPoint].GetValue(1); CurrentCell++)
+                    for (int CurrentCell = (int) mColumnPoints[mColumnPoint].GetValue(0);
+                        CurrentCell < (int) mColumnPoints[mColumnPoint].GetValue(1);
+                        CurrentCell++)
                     {
                         if (!dataGridView.Columns[CurrentCell].Visible) continue;
                         if (dataGridView.Columns[CurrentCell].DefaultCellStyle.Alignment.ToString().Contains("Right"))
@@ -287,14 +307,15 @@ namespace Yutai.Pipeline.Analysis.Controls
 
                         ColumnWidth = columnsWidth[CurrentCell];
                         RectangleF CellBounds = new RectangleF(CurrentX, currentY, ColumnWidth, rowsHeight[currentRow]);
-                        g.DrawString(dataGridView.Rows[currentRow].Cells[CurrentCell].EditedFormattedValue.ToString(), RowFont, RowForeBrush, CellBounds, CellFormat);
+                        g.DrawString(dataGridView.Rows[currentRow].Cells[CurrentCell].EditedFormattedValue.ToString(),
+                            RowFont, RowForeBrush, CellBounds, CellFormat);
 
                         if (dataGridView.CellBorderStyle != DataGridViewCellBorderStyle.None)
                             g.DrawRectangle(TheLinePen, CurrentX, currentY, ColumnWidth, rowsHeight[currentRow]);
                         CurrentX += ColumnWidth;
                     }
                     currentY += rowsHeight[currentRow];
-                    if ((int)currentY > (pageHeight - topMargin - bottomMargin))
+                    if ((int) currentY > (pageHeight - topMargin - bottomMargin))
                     {
                         currentRow++;
                         return true;
@@ -312,6 +333,7 @@ namespace Yutai.Pipeline.Analysis.Controls
             else
                 return true;
         }
+
         // the main grid printing method
         public bool DrawDataGridView(Graphics g)
         {
@@ -324,7 +346,8 @@ namespace Yutai.Pipeline.Analysis.Controls
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR: " + ex.Message.ToString(), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR: " + ex.Message.ToString(), Application.ProductName, MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 return false;
             }
         }

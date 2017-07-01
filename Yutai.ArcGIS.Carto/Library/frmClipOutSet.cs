@@ -61,7 +61,8 @@ namespace Yutai.ArcGIS.Carto.Library
             }
             else if (this.radioButton3.Checked)
             {
-                SaveFileDialog dialog2 = new SaveFileDialog {
+                SaveFileDialog dialog2 = new SaveFileDialog
+                {
                     Filter = "*.vct|*.vct"
                 };
                 if (dialog2.ShowDialog() == DialogResult.OK)
@@ -71,7 +72,7 @@ namespace Yutai.ArcGIS.Carto.Library
             }
         }
 
- private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             this.textBox1.Text = "";
             this.textBox1.Tag = null;
@@ -96,27 +97,22 @@ namespace Yutai.ArcGIS.Carto.Library
 
         public string OutPath
         {
-            get
-            {
-                return this.textBox1.Text;
-            }
+            get { return this.textBox1.Text; }
         }
 
         public IWorkspace OutWorspace
         {
-            get
-            {
-                return this.iworkspace_0;
-            }
+            get { return this.iworkspace_0; }
         }
 
         public int Type
         {
-            get
-            {
-                return this.int_1;
-            }
+            get { return this.int_1; }
+        }
+
+        private void btnCancle_Click(object sender, EventArgs e)
+        {
+            base.DialogResult = DialogResult.Cancel;
         }
     }
 }
-

@@ -19,13 +19,13 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
     {
         private bool m_CanDo = true;
         private IFillSymbol m_CopySymbol = null;
-        private double[] m_dblScaleRatio = new double[] { 0.25, 0.5, 1.0, 1.25, 2.0 };
+        private double[] m_dblScaleRatio = new double[] {0.25, 0.5, 1.0, 1.25, 2.0};
         private int m_oldSel = -1;
         private int m_OldSelItem = 0;
         private int m_oldSelType = -1;
         public IStyleGallery m_pSG;
         private int m_ScaleIndex = 2;
-        private double[] point_unit_to = new double[] { 1.0, 0.01388889, 0.0352777778, 0.352777778 };
+        private double[] point_unit_to = new double[] {1.0, 0.01388889, 0.0352777778, 0.352777778};
 
         public frmFillSymbolEdit()
         {
@@ -215,7 +215,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             return null;
         }
 
- private void frmFillSymbolEdit_Load(object sender, EventArgs e)
+        private void frmFillSymbolEdit_Load(object sender, EventArgs e)
         {
             this.m_CanDo = false;
             this.cboUnit.SelectedIndex = 0;
@@ -242,7 +242,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             {
                 for (int i = 0; i < ((IMultiLayerFillSymbol) pSym).LayerCount; i++)
                 {
-                    SymbolListItem item = new SymbolListItem {
+                    SymbolListItem item = new SymbolListItem
+                    {
                         m_pSymbol = (ISymbol) ((IMultiLayerFillSymbol) pSym).get_Layer(i),
                         m_bVisible = ((ILayerVisible) pSym).get_LayerVisible(i),
                         m_bLockColor = ((ILayerColorLock) pSym).get_LayerColorLock(i)
@@ -256,7 +257,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- public void SetSymbol(ISymbol pSym)
+        public void SetSymbol(ISymbol pSym)
         {
             this.m_pOldSymbol = pSym;
             if (pSym is IMultiLayerFillSymbol)
@@ -295,10 +296,12 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 if (symbol is ISimpleFillSymbol)
                 {
                     this.cboFillType.SelectedIndex = 0;
-                    XtraTabPage page = new XtraTabPage {
+                    XtraTabPage page = new XtraTabPage
+                    {
                         Text = "简单面"
                     };
-                    SimpleFillControl control = new SimpleFillControl {
+                    SimpleFillControl control = new SimpleFillControl
+                    {
                         m_unit = this.point_unit_to[this.cboUnit.SelectedIndex],
                         m_pSG = this.m_pSG
                     };
@@ -314,19 +317,23 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     if (symbol is IMarkerFillSymbol)
                     {
                         this.cboFillType.SelectedIndex = 1;
-                        XtraTabPage page2 = new XtraTabPage {
+                        XtraTabPage page2 = new XtraTabPage
+                        {
                             Text = "标记填充"
                         };
-                        MarkFillControl control2 = new MarkFillControl {
+                        MarkFillControl control2 = new MarkFillControl
+                        {
                             m_MarkerFillSymbol = (IMarkerFillSymbol) symbol,
                             m_pSG = this.m_pSG
                         };
                         control2.ValueChanged += new ValueChangedHandler(this.ValueChanged);
                         page2.Controls.Add(control2);
-                        page3 = new XtraTabPage {
+                        page3 = new XtraTabPage
+                        {
                             Text = "填充属性"
                         };
-                        control3 = new FillPropertyControl {
+                        control3 = new FillPropertyControl
+                        {
                             m_unit = this.point_unit_to[this.cboUnit.SelectedIndex],
                             m_FillProperties = (IFillProperties) symbol
                         };
@@ -338,10 +345,12 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     else if (symbol is ILineFillSymbol)
                     {
                         this.cboFillType.SelectedIndex = 2;
-                        XtraTabPage page4 = new XtraTabPage {
+                        XtraTabPage page4 = new XtraTabPage
+                        {
                             Text = "线填充属性"
                         };
-                        LineFillControl control4 = new LineFillControl {
+                        LineFillControl control4 = new LineFillControl
+                        {
                             m_unit = this.point_unit_to[this.cboUnit.SelectedIndex],
                             m_LineFillSymbol = (ILineFillSymbol) symbol,
                             m_pSG = this.m_pSG
@@ -353,10 +362,12 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     else if (symbol is IGradientFillSymbol)
                     {
                         this.cboFillType.SelectedIndex = 3;
-                        XtraTabPage page5 = new XtraTabPage {
+                        XtraTabPage page5 = new XtraTabPage
+                        {
                             Text = "渐变填充"
                         };
-                        GradientFillControl control5 = new GradientFillControl {
+                        GradientFillControl control5 = new GradientFillControl
+                        {
                             m_GradientFillSymbol = (IGradientFillSymbol) symbol
                         };
                         control5.ValueChanged += new ValueChangedHandler(this.ValueChanged);
@@ -370,19 +381,23 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                         if (symbol is IPictureFillSymbol)
                         {
                             this.cboFillType.SelectedIndex = 4;
-                            page6 = new XtraTabPage {
+                            page6 = new XtraTabPage
+                            {
                                 Text = "图片填充"
                             };
-                            PictureFillControl control6 = new PictureFillControl {
+                            PictureFillControl control6 = new PictureFillControl
+                            {
                                 m_PictureFillSymbol = (IPictureFillSymbol) symbol,
                                 m_pSG = this.m_pSG
                             };
                             control6.ValueChanged += new ValueChangedHandler(this.ValueChanged);
                             page6.Controls.Add(control6);
-                            page3 = new XtraTabPage {
+                            page3 = new XtraTabPage
+                            {
                                 Text = "填充属性"
                             };
-                            control3 = new FillPropertyControl {
+                            control3 = new FillPropertyControl
+                            {
                                 m_unit = this.point_unit_to[this.cboUnit.SelectedIndex],
                                 m_FillProperties = (IFillProperties) symbol
                             };
@@ -394,10 +409,12 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                         else if (symbol is ITextureFillSymbol)
                         {
                             this.cboFillType.SelectedIndex = 5;
-                            page6 = new XtraTabPage {
+                            page6 = new XtraTabPage
+                            {
                                 Text = "3D纹理填充"
                             };
-                            TextureFillSymbolCtrl ctrl = new TextureFillSymbolCtrl {
+                            TextureFillSymbolCtrl ctrl = new TextureFillSymbolCtrl
+                            {
                                 m_pTextureFillSymbol = (ITextureFillSymbol) symbol,
                                 m_pSG = this.m_pSG
                             };
@@ -434,4 +451,3 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         }
     }
 }
-

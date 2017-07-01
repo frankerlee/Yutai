@@ -52,7 +52,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
         }
 
- public void ResetControl()
+        public void ResetControl()
         {
         }
 
@@ -120,39 +120,23 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

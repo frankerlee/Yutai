@@ -7,4 +7,3 @@
         LVM_SETEXTENDEDLISTVIEWSTYLE = 4150
     }
 }
-

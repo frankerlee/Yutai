@@ -24,10 +24,6 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
 
         internal static string authentication_mode { get; set; }
 
-        internal static string dbclient
-        {
-            get; set;
-        }
+        internal static string dbclient { get; set; }
     }
 }
-

@@ -23,7 +23,6 @@ namespace Yutai.UI.Menu.Ribbon
             _context = context;
             _identity = identity;
             _ribbonManager = _context.RibbonMenu;
-
         }
     }
 }

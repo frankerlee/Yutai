@@ -50,7 +50,10 @@ namespace Yutai.ArcGIS.Catalog
         {
             if (igxObject_0 is IGxDataset)
             {
-                if (((((igxObject_0 as IGxDataset).Type == esriDatasetType.esriDTRasterBand) || ((igxObject_0 as IGxDataset).Type == esriDatasetType.esriDTRasterDataset)) || ((igxObject_0 as IGxDataset).Type == esriDatasetType.esriDTRasterBand)) || ((igxObject_0 as IGxDataset).Type == esriDatasetType.esriDTTin))
+                if (((((igxObject_0 as IGxDataset).Type == esriDatasetType.esriDTRasterBand) ||
+                      ((igxObject_0 as IGxDataset).Type == esriDatasetType.esriDTRasterDataset)) ||
+                     ((igxObject_0 as IGxDataset).Type == esriDatasetType.esriDTRasterBand)) ||
+                    ((igxObject_0 as IGxDataset).Type == esriDatasetType.esriDTTin))
                 {
                     return true;
                 }
@@ -69,19 +72,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public string Description
         {
-            get
-            {
-                return "表面数据集";
-            }
+            get { return "表面数据集"; }
         }
 
         public string Name
         {
-            get
-            {
-                return "GxFilterSurfaceDatasets";
-            }
+            get { return "GxFilterSurfaceDatasets"; }
         }
     }
 }
-

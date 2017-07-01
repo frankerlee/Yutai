@@ -18,17 +18,13 @@ namespace Yutai.Plugins.Identifer.Query
 {
     public partial class UcSelectByLocation : UserControl
     {
-        
         private IMap _map = null;
 
         private bool _isBusy = true;
 
         public IMap Map
         {
-            set
-            {
-                this._map = value;
-            }
+            set { this._map = value; }
         }
 
         public UcSelectByLocation()
@@ -85,25 +81,25 @@ namespace Yutai.Plugins.Identifer.Query
                 switch (this.cboOperationType.SelectedIndex)
                 {
                     case 0:
-                        {
-                            _esriSelectionResultEnum = esriSelectionResultEnum.esriSelectionResultNew;
-                            break;
-                        }
+                    {
+                        _esriSelectionResultEnum = esriSelectionResultEnum.esriSelectionResultNew;
+                        break;
+                    }
                     case 1:
-                        {
-                            _esriSelectionResultEnum = esriSelectionResultEnum.esriSelectionResultAdd;
-                            break;
-                        }
+                    {
+                        _esriSelectionResultEnum = esriSelectionResultEnum.esriSelectionResultAdd;
+                        break;
+                    }
                     case 2:
-                        {
-                            _esriSelectionResultEnum = esriSelectionResultEnum.esriSelectionResultSubtract;
-                            break;
-                        }
+                    {
+                        _esriSelectionResultEnum = esriSelectionResultEnum.esriSelectionResultSubtract;
+                        break;
+                    }
                     case 3:
-                        {
-                            _esriSelectionResultEnum = esriSelectionResultEnum.esriSelectionResultAnd;
-                            break;
-                        }
+                    {
+                        _esriSelectionResultEnum = esriSelectionResultEnum.esriSelectionResultAnd;
+                        break;
+                    }
                 }
                 IFeatureLayer featureLayer = null;
                 for (int i = 0; i < this.checkedListBoxLayer.CheckedItems.Count; i++)
@@ -191,9 +187,6 @@ namespace Yutai.Plugins.Identifer.Query
             }
         }
 
-        
-
-        
 
         private void LoadGroupLayer(ICompositeLayer icompositeLayer_0)
         {
@@ -204,7 +197,9 @@ namespace Yutai.Plugins.Identifer.Query
                 {
                     if ((layer as IFeatureLayer).FeatureClass != null)
                     {
-                        if ((!this.chkUsetSelectedLayer.Checked || !(layer as IFeatureLayer).Selectable ? !this.chkUsetSelectedLayer.Checked : true))
+                        if ((!this.chkUsetSelectedLayer.Checked || !(layer as IFeatureLayer).Selectable
+                            ? !this.chkUsetSelectedLayer.Checked
+                            : true))
                         {
                             this.checkedListBoxLayer.Items.Add(new LayerObject(layer));
                         }
@@ -227,11 +222,15 @@ namespace Yutai.Plugins.Identifer.Query
                 {
                     if ((layer as IFeatureLayer).FeatureClass != null)
                     {
-                        if ((!this.chkUsetSelectedLayer.Checked || !(layer as IFeatureLayer).Selectable ? !this.chkUsetSelectedLayer.Checked : true))
+                        if ((!this.chkUsetSelectedLayer.Checked || !(layer as IFeatureLayer).Selectable
+                            ? !this.chkUsetSelectedLayer.Checked
+                            : true))
                         {
                             if (layer is IFeatureLayerSelectionEvents_Event)
                             {
-                                (layer as IFeatureLayerSelectionEvents_Event).FeatureLayerSelectionChanged += new IFeatureLayerSelectionEvents_FeatureLayerSelectionChangedEventHandler(this.FeatureSelectionChanged);
+                                (layer as IFeatureLayerSelectionEvents_Event).FeatureLayerSelectionChanged +=
+                                    new IFeatureLayerSelectionEvents_FeatureLayerSelectionChangedEventHandler(
+                                        this.FeatureSelectionChanged);
                             }
                             this.checkedListBoxLayer.Items.Add(new LayerObject(layer));
                         }
@@ -331,7 +330,8 @@ namespace Yutai.Plugins.Identifer.Query
             return itemChecked;
         }
 
-        private void method_6(IFeatureLayer featureLayer, IFeatureCursor featureCursor, esriSpatialRelEnum pSpatialRelEnum, esriSelectionResultEnum pSelectionResultEnum)
+        private void method_6(IFeatureLayer featureLayer, IFeatureCursor featureCursor,
+            esriSpatialRelEnum pSpatialRelEnum, esriSelectionResultEnum pSelectionResultEnum)
         {
             IFeature feature = featureCursor.NextFeature();
             IFeatureSelection ifeatureLayer0 = featureLayer as IFeatureSelection;
@@ -372,7 +372,8 @@ namespace Yutai.Plugins.Identifer.Query
                         }
                         if (!flag)
                         {
-                            ifeatureLayer0.SelectFeatures(spatialFilterClass, esriSelectionResultEnum.esriSelectionResultAdd, false);
+                            ifeatureLayer0.SelectFeatures(spatialFilterClass,
+                                esriSelectionResultEnum.esriSelectionResultAdd, false);
                         }
                         else
                         {
@@ -404,7 +405,7 @@ namespace Yutai.Plugins.Identifer.Query
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.ParentForm.DialogResult= DialogResult.Cancel;
+            this.ParentForm.DialogResult = DialogResult.Cancel;
         }
     }
 }

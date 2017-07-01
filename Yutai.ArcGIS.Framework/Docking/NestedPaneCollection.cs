@@ -19,7 +19,9 @@ namespace Yutai.ArcGIS.Framework.Docking
         {
             if (pane != null)
             {
-                NestedPaneCollection panes = (pane.NestedPanesContainer == null) ? null : pane.NestedPanesContainer.NestedPanes;
+                NestedPaneCollection panes = (pane.NestedPanesContainer == null)
+                    ? null
+                    : pane.NestedPanesContainer.NestedPanes;
                 if (panes != null)
                 {
                     panes.InternalRemove(pane);
@@ -76,7 +78,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                     int index = base.IndexOf(pane2);
                     base.Items.Remove(pane2);
                     base.Items[base.IndexOf(pane)] = pane2;
-                    pane2.NestedDockingStatus.SetStatus(this, nestedDockingStatus.PreviousPane, nestedDockingStatus.Alignment, nestedDockingStatus.Proportion);
+                    pane2.NestedDockingStatus.SetStatus(this, nestedDockingStatus.PreviousPane,
+                        nestedDockingStatus.Alignment, nestedDockingStatus.Proportion);
                     for (num = index - 1; num > base.IndexOf(pane2); num--)
                     {
                         NestedDockingStatus status3 = base[num].NestedDockingStatus;
@@ -104,35 +107,22 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         public INestedPanesContainer Container
         {
-            get
-            {
-                return this.m_container;
-            }
+            get { return this.m_container; }
         }
 
         public DockState DockState
         {
-            get
-            {
-                return this.Container.DockState;
-            }
+            get { return this.Container.DockState; }
         }
 
         public bool IsFloat
         {
-            get
-            {
-                return (this.DockState == DockState.Float);
-            }
+            get { return (this.DockState == DockState.Float); }
         }
 
         public VisibleNestedPaneCollection VisibleNestedPanes
         {
-            get
-            {
-                return this.m_visibleNestedPanes;
-            }
+            get { return this.m_visibleNestedPanes; }
         }
     }
 }
-

@@ -23,9 +23,9 @@ namespace Yutai.ArcGIS.Common.Helpers
                 }
                 else
                 {
-                    int red = esriColor.RGB % 256;
-                    int green = (esriColor.RGB / 256) % 256;
-                    int blue = ((esriColor.RGB / 256) / 256) % 256;
+                    int red = esriColor.RGB%256;
+                    int green = (esriColor.RGB/256)%256;
+                    int blue = ((esriColor.RGB/256)/256)%256;
                     black = Color.FromArgb(red, green, blue);
                 }
             }

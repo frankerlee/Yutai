@@ -1,5 +1,4 @@
-﻿
-using ESRI.ArcGIS.Controls;
+﻿using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Geometry;
 using System;
 using System.ComponentModel;
@@ -79,10 +78,10 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                             point.X = (num2);
                             point.Y = (num3);
                             IEnvelope envelope = new Envelope() as IEnvelope;
-                            decimal value3 = this.numericUpDown1.Value / 2m;
+                            decimal value3 = this.numericUpDown1.Value/2m;
                             double num4 = Convert.ToDouble(value3);
-                            double num5 = m_context.ActiveView.Extent.Height / m_context.ActiveView.Extent.Width;
-                            envelope.PutCoords(num2 - num4, num3 - num4 * num5, num2 + num4, num3 + num4 * num5);
+                            double num5 = m_context.ActiveView.Extent.Height/m_context.ActiveView.Extent.Width;
+                            envelope.PutCoords(num2 - num4, num3 - num4*num5, num2 + num4, num3 + num4*num5);
                             m_context.ActiveView.Extent = (envelope);
                             m_context.ActiveView.Refresh();
                         }

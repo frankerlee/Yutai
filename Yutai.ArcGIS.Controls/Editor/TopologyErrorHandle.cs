@@ -119,7 +119,9 @@ namespace Yutai.ArcGIS.Controls.Editor
                     return feature;
 
                 case esriTopologyRuleType.esriTRTAreaBoundaryCoveredByLine:
-                    feature = (pTopology as IFeatureClassContainer).get_ClassByID(pTopoErrorFeat.DestinationClassID).CreateFeature();
+                    feature =
+                        (pTopology as IFeatureClassContainer).get_ClassByID(pTopoErrorFeat.DestinationClassID)
+                            .CreateFeature();
                     subtypes = (IRowSubtypes) feature;
                     polygon = (pTopoErrorFeat as IFeature).Shape as IPolygon;
                     shape = new PolylineClass();
@@ -142,7 +144,9 @@ namespace Yutai.ArcGIS.Controls.Editor
                     return feature;
 
                 case esriTopologyRuleType.esriTRTAreaContainPoint:
-                    feature = (pTopology as IFeatureClassContainer).get_ClassByID(pTopoErrorFeat.DestinationClassID).CreateFeature();
+                    feature =
+                        (pTopology as IFeatureClassContainer).get_ClassByID(pTopoErrorFeat.DestinationClassID)
+                            .CreateFeature();
                     subtypes = (IRowSubtypes) feature;
                     polygon = (pTopoErrorFeat as IFeature).Shape as IPolygon;
                     shape = (polygon as IArea).LabelPoint;
@@ -168,7 +172,8 @@ namespace Yutai.ArcGIS.Controls.Editor
                 object before = Missing.Value;
                 for (int i = 0; i < (shapeCopy as ISegmentCollection).SegmentCount; i++)
                 {
-                    (shape as ISegmentCollection).AddSegment((shapeCopy as ISegmentCollection).get_Segment(i), ref before, ref before);
+                    (shape as ISegmentCollection).AddSegment((shapeCopy as ISegmentCollection).get_Segment(i),
+                        ref before, ref before);
                 }
                 if (!(shape as IPolygon).IsClosed)
                 {
@@ -253,7 +258,10 @@ namespace Yutai.ArcGIS.Controls.Editor
 
         public static void DoExplode(ITopology pTopology, ITopologyErrorFeature pTopoErrorFeat)
         {
-            ITopologicalOperator shapeCopy = (pTopology as IFeatureClassContainer).get_ClassByID(pTopoErrorFeat.OriginClassID).GetFeature(pTopoErrorFeat.OriginOID).ShapeCopy as ITopologicalOperator;
+            ITopologicalOperator shapeCopy =
+                (pTopology as IFeatureClassContainer).get_ClassByID(pTopoErrorFeat.OriginClassID)
+                    .GetFeature(pTopoErrorFeat.OriginOID)
+                    .ShapeCopy as ITopologicalOperator;
             if (pTopoErrorFeat.TopologyRuleType == esriTopologyRuleType.esriTRTLineNoMultipart)
             {
             }
@@ -274,7 +282,9 @@ namespace Yutai.ArcGIS.Controls.Editor
             {
             }
             esriTopologyRuleType topologyRuleType = pTopoErrorFeat.TopologyRuleType;
-            if (((topologyRuleType == esriTopologyRuleType.esriTRTLineNoIntersection) || (topologyRuleType == esriTopologyRuleType.esriTRTLineNoIntersectOrInteriorTouch)) && ((pTopoErrorFeat as IFeature).Shape is IPoint))
+            if (((topologyRuleType == esriTopologyRuleType.esriTRTLineNoIntersection) ||
+                 (topologyRuleType == esriTopologyRuleType.esriTRTLineNoIntersectOrInteriorTouch)) &&
+                ((pTopoErrorFeat as IFeature).Shape is IPoint))
             {
                 int num;
                 IFeature feature2;
@@ -361,7 +371,8 @@ namespace Yutai.ArcGIS.Controls.Editor
                 IPolyline polyline2 = new PolylineClass();
                 object before = Missing.Value;
                 (polyline2 as ISegmentCollection).AddSegment(line2 as ISegment, ref before, ref before);
-                ISpatialFilter filter = new SpatialFilterClass {
+                ISpatialFilter filter = new SpatialFilterClass
+                {
                     Geometry = polyline2,
                     SpatialRel = esriSpatialRelEnum.esriSpatialRelIntersects
                 };
@@ -378,7 +389,8 @@ namespace Yutai.ArcGIS.Controls.Editor
                     if (feature3.OID != feature.OID)
                     {
                         double num4;
-                        IGeometry geometry2 = operator2.Intersect(feature3.Shape, esriGeometryDimension.esriGeometry0Dimension);
+                        IGeometry geometry2 = operator2.Intersect(feature3.Shape,
+                            esriGeometryDimension.esriGeometry0Dimension);
                         if (geometry2 is IPoint)
                         {
                             num4 = CommonHelper.distance(geometry2 as IPoint, shape);
@@ -481,7 +493,8 @@ namespace Yutai.ArcGIS.Controls.Editor
                 case esriTopologyRuleType.esriTRTAreaNoOverlap:
                     strArray[0] = class2.AliasName + "-" + pTopoErrorFeat.OriginOID;
                     strArray[1] = class2.AliasName + "-" + pTopoErrorFeat.DestinationOID;
-                    feature = new frmSelectMergeFeature {
+                    feature = new frmSelectMergeFeature
+                    {
                         FeatureInfos = strArray
                     };
                     if (feature.ShowDialog() == DialogResult.OK)
@@ -510,7 +523,8 @@ namespace Yutai.ArcGIS.Controls.Editor
                 case esriTopologyRuleType.esriTRTAreaNoOverlapArea:
                     strArray[0] = class2.AliasName + "-" + pTopoErrorFeat.OriginOID;
                     strArray[1] = class3.AliasName + "-" + pTopoErrorFeat.DestinationOID;
-                    feature = new frmSelectMergeFeature {
+                    feature = new frmSelectMergeFeature
+                    {
                         FeatureInfos = strArray
                     };
                     if (feature.ShowDialog() == DialogResult.OK)
@@ -539,7 +553,8 @@ namespace Yutai.ArcGIS.Controls.Editor
                 case esriTopologyRuleType.esriTRTLineNoPseudos:
                     strArray[0] = class2.AliasName + "-" + pTopoErrorFeat.OriginOID;
                     strArray[1] = class3.AliasName + "-" + pTopoErrorFeat.DestinationOID;
-                    feature = new frmSelectMergeFeature {
+                    feature = new frmSelectMergeFeature
+                    {
                         FeatureInfos = strArray
                     };
                     if (feature.ShowDialog() == DialogResult.OK)
@@ -582,7 +597,8 @@ namespace Yutai.ArcGIS.Controls.Editor
                     IGeometryCollection geometrys = new PolylineClass();
                     for (num3 = 0; num3 < num2; num3++)
                     {
-                        geometrys.AddGeometry((pPolycurve as IGeometryCollection).get_Geometry(num3), ref before, ref before);
+                        geometrys.AddGeometry((pPolycurve as IGeometryCollection).get_Geometry(num3), ref before,
+                            ref before);
                     }
                     if ((geometrys as IPointCollection).PointCount > 1)
                     {
@@ -591,7 +607,8 @@ namespace Yutai.ArcGIS.Controls.Editor
                     geometrys = new PolylineClass();
                     for (num3 = num2; num3 < (pPolycurve as IGeometryCollection).GeometryCount; num3++)
                     {
-                        geometrys.AddGeometry((pPolycurve as IGeometryCollection).get_Geometry(num3), ref before, ref before);
+                        geometrys.AddGeometry((pPolycurve as IGeometryCollection).get_Geometry(num3), ref before,
+                            ref before);
                     }
                     if ((geometrys as IPointCollection).PointCount > 1)
                     {
@@ -608,7 +625,9 @@ namespace Yutai.ArcGIS.Controls.Editor
 
         public static void Simply(ITopology pTopology, ITopologyErrorFeature pTopoErrorFeat)
         {
-            IFeature feature = (pTopology as IFeatureClassContainer).get_ClassByID(pTopoErrorFeat.OriginClassID).GetFeature(pTopoErrorFeat.OriginOID);
+            IFeature feature =
+                (pTopology as IFeatureClassContainer).get_ClassByID(pTopoErrorFeat.OriginClassID)
+                    .GetFeature(pTopoErrorFeat.OriginOID);
             ITopologicalOperator shapeCopy = feature.ShapeCopy as ITopologicalOperator;
             switch (pTopoErrorFeat.TopologyRuleType)
             {
@@ -670,8 +689,13 @@ namespace Yutai.ArcGIS.Controls.Editor
                     return;
 
                 case esriTopologyRuleType.esriTRTAreaAreaCoverEachOther:
-                    strArray = new string[] { class2.AliasName + "-" + pTopoErrorFeat.OriginOID, class3.AliasName + "-" + pTopoErrorFeat.DestinationOID };
-                    feature3 = new frmSelectMergeFeature {
+                    strArray = new string[]
+                    {
+                        class2.AliasName + "-" + pTopoErrorFeat.OriginOID,
+                        class3.AliasName + "-" + pTopoErrorFeat.DestinationOID
+                    };
+                    feature3 = new frmSelectMergeFeature
+                    {
                         FeatureInfos = strArray,
                         Text = "删除"
                     };
@@ -714,7 +738,8 @@ namespace Yutai.ArcGIS.Controls.Editor
                     if (pTopoErrorFeat.OriginOID <= 0)
                     {
                         feature2 = class3.GetFeature(pTopoErrorFeat.DestinationOID);
-                        geometry = (feature2.ShapeCopy as ITopologicalOperator).Difference((pTopoErrorFeat as IFeature).Shape);
+                        geometry =
+                            (feature2.ShapeCopy as ITopologicalOperator).Difference((pTopoErrorFeat as IFeature).Shape);
                         if (geometry.IsEmpty)
                         {
                             feature2.Delete();
@@ -750,7 +775,8 @@ namespace Yutai.ArcGIS.Controls.Editor
                     {
                         feature.Delete();
                     }
-                    geometry = (feature2.ShapeCopy as ITopologicalOperator).Difference((pTopoErrorFeat as IFeature).Shape);
+                    geometry =
+                        (feature2.ShapeCopy as ITopologicalOperator).Difference((pTopoErrorFeat as IFeature).Shape);
                     if (geometry.IsEmpty)
                     {
                         feature2.Delete();
@@ -776,8 +802,13 @@ namespace Yutai.ArcGIS.Controls.Editor
                     return;
 
                 case esriTopologyRuleType.esriTRTLineNoOverlap:
-                    strArray = new string[] { class2.AliasName + "-" + pTopoErrorFeat.OriginOID, class2.AliasName + "-" + pTopoErrorFeat.DestinationOID };
-                    feature3 = new frmSelectMergeFeature {
+                    strArray = new string[]
+                    {
+                        class2.AliasName + "-" + pTopoErrorFeat.OriginOID,
+                        class2.AliasName + "-" + pTopoErrorFeat.DestinationOID
+                    };
+                    feature3 = new frmSelectMergeFeature
+                    {
                         FeatureInfos = strArray
                     };
                     if (feature3.ShowDialog() == DialogResult.OK)
@@ -812,8 +843,13 @@ namespace Yutai.ArcGIS.Controls.Editor
                     return;
 
                 case esriTopologyRuleType.esriTRTLineNoIntersection:
-                    strArray = new string[] { class2.AliasName + "-" + pTopoErrorFeat.OriginOID, class2.AliasName + "-" + pTopoErrorFeat.DestinationOID };
-                    feature3 = new frmSelectMergeFeature {
+                    strArray = new string[]
+                    {
+                        class2.AliasName + "-" + pTopoErrorFeat.OriginOID,
+                        class2.AliasName + "-" + pTopoErrorFeat.DestinationOID
+                    };
+                    feature3 = new frmSelectMergeFeature
+                    {
                         FeatureInfos = strArray
                     };
                     if (feature3.ShowDialog() == DialogResult.OK)
@@ -848,8 +884,13 @@ namespace Yutai.ArcGIS.Controls.Editor
                     return;
 
                 case esriTopologyRuleType.esriTRTLineNoIntersectOrInteriorTouch:
-                    strArray = new string[] { class2.AliasName + "-" + pTopoErrorFeat.OriginOID, class2.AliasName + "-" + pTopoErrorFeat.DestinationOID };
-                    feature3 = new frmSelectMergeFeature {
+                    strArray = new string[]
+                    {
+                        class2.AliasName + "-" + pTopoErrorFeat.OriginOID,
+                        class2.AliasName + "-" + pTopoErrorFeat.DestinationOID
+                    };
+                    feature3 = new frmSelectMergeFeature
+                    {
                         FeatureInfos = strArray,
                         Text = "删除"
                     };
@@ -859,7 +900,9 @@ namespace Yutai.ArcGIS.Controls.Editor
                         feature2 = class2.GetFeature(pTopoErrorFeat.DestinationOID);
                         if (feature3.SelectedIndex != 0)
                         {
-                            geometry = (feature2.ShapeCopy as ITopologicalOperator).Difference((pTopoErrorFeat as IFeature).Shape);
+                            geometry =
+                                (feature2.ShapeCopy as ITopologicalOperator).Difference(
+                                    (pTopoErrorFeat as IFeature).Shape);
                             if (geometry.IsEmpty)
                             {
                                 feature2.Delete();
@@ -871,7 +914,8 @@ namespace Yutai.ArcGIS.Controls.Editor
                             }
                             return;
                         }
-                        geometry = (feature.ShapeCopy as ITopologicalOperator).Difference((pTopoErrorFeat as IFeature).Shape);
+                        geometry =
+                            (feature.ShapeCopy as ITopologicalOperator).Difference((pTopoErrorFeat as IFeature).Shape);
                         if (geometry.IsEmpty)
                         {
                             feature.Delete();
@@ -935,7 +979,8 @@ namespace Yutai.ArcGIS.Controls.Editor
                 IPolyline polyline2 = new PolylineClass();
                 object before = Missing.Value;
                 (polyline2 as ISegmentCollection).AddSegment(line as ISegment, ref before, ref before);
-                ISpatialFilter filter = new SpatialFilterClass {
+                ISpatialFilter filter = new SpatialFilterClass
+                {
                     Geometry = polyline2,
                     SpatialRel = esriSpatialRelEnum.esriSpatialRelIntersects
                 };
@@ -952,7 +997,8 @@ namespace Yutai.ArcGIS.Controls.Editor
                     if (feature3.OID != feature.OID)
                     {
                         double num4;
-                        IGeometry geometry2 = operator2.Intersect(feature3.Shape, esriGeometryDimension.esriGeometry0Dimension);
+                        IGeometry geometry2 = operator2.Intersect(feature3.Shape,
+                            esriGeometryDimension.esriGeometry0Dimension);
                         if (geometry2 is IPoint)
                         {
                             num4 = CommonHelper.distance(geometry2 as IPoint, shape);
@@ -1021,11 +1067,13 @@ namespace Yutai.ArcGIS.Controls.Editor
                     {
                         if (num6 > 0)
                         {
-                            (polyline as IGeometryCollection).RemoveGeometries(num6 + 1, (polyline as IGeometryCollection).GeometryCount - num6);
+                            (polyline as IGeometryCollection).RemoveGeometries(num6 + 1,
+                                (polyline as IGeometryCollection).GeometryCount - num6);
                         }
                         if (num7 > 0)
                         {
-                            (polyline as ISegmentCollection).RemoveSegments(num7 + 1, (polyline as ISegmentCollection).SegmentCount - num7, false);
+                            (polyline as ISegmentCollection).RemoveSegments(num7 + 1,
+                                (polyline as ISegmentCollection).SegmentCount - num7, false);
                         }
                     }
                     if (polyline.IsEmpty)
@@ -1047,4 +1095,3 @@ namespace Yutai.ArcGIS.Controls.Editor
         }
     }
 }
-

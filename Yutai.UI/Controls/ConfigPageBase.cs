@@ -17,6 +17,7 @@ namespace Yutai.UI.Controls
         {
             InitializeComponent();
         }
+
         public virtual ConfigPageType ParentPage
         {
             get { return ConfigPageType.None; }

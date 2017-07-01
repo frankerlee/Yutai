@@ -28,7 +28,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnSetSR_Click(object sender, EventArgs e)
         {
-            frmSpatialReference reference = new frmSpatialReference {
+            frmSpatialReference reference = new frmSpatialReference
+            {
                 SpatialRefrence = this.igeometryDefEdit_0.SpatialReference
             };
             if (reference.ShowDialog() == DialogResult.OK)
@@ -100,7 +101,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
         }
 
- private void FieldTypeGeometryCtrl1_Load(object sender, EventArgs e)
+        private void FieldTypeGeometryCtrl1_Load(object sender, EventArgs e)
         {
             this.method_0();
         }
@@ -117,7 +118,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
         }
 
- private void method_0()
+        private void method_0()
         {
             this.bool_0 = false;
             this.txtAlias.Text = this.ifieldEdit_0.AliasName;
@@ -273,27 +274,17 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public bool IsEdit
         {
-            set
-            {
-                this.bool_2 = value;
-            }
+            set { this.bool_2 = value; }
         }
 
         public string ShapfileName
         {
-            set
-            {
-                this.string_0 = value;
-            }
+            set { this.string_0 = value; }
         }
 
         public IWorkspace Workspace
         {
-            set
-            {
-                this.iworkspace_0 = value;
-            }
+            set { this.iworkspace_0 = value; }
         }
     }
 }
-

@@ -70,19 +70,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public string Description
         {
-            get
-            {
-                return "栅格数据集";
-            }
+            get { return "栅格数据集"; }
         }
 
         public string Name
         {
-            get
-            {
-                return "GxFilterRasterDatasets2";
-            }
+            get { return "GxFilterRasterDatasets2"; }
         }
     }
 }
-

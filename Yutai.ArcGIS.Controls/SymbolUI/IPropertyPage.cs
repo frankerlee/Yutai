@@ -16,4 +16,3 @@
         int Width { get; }
     }
 }
-

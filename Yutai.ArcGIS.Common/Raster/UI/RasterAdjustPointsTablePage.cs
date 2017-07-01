@@ -83,7 +83,7 @@ namespace Yutai.ArcGIS.Common.Raster.UI
         {
         }
 
- internal void InitControl()
+        internal void InitControl()
         {
             this.LinkPointlist.Items.Clear();
             this.iarray_0.RemoveAll();
@@ -109,7 +109,7 @@ namespace Yutai.ArcGIS.Common.Raster.UI
             }
         }
 
- private void LinkPointlist_KeyPress(object sender, KeyPressEventArgs e)
+        private void LinkPointlist_KeyPress(object sender, KeyPressEventArgs e)
         {
         }
 
@@ -127,7 +127,11 @@ namespace Yutai.ArcGIS.Common.Raster.UI
 
         private void method_0(IPoint ipoint_0, IPoint ipoint_1)
         {
-            string[] items = new string[] { (this.LinkPointlist.Items.Count + 1).ToString(), ipoint_0.X.ToString(), ipoint_0.Y.ToString(), ipoint_1.X.ToString(), ipoint_1.Y.ToString() };
+            string[] items = new string[]
+            {
+                (this.LinkPointlist.Items.Count + 1).ToString(), ipoint_0.X.ToString(), ipoint_0.Y.ToString(),
+                ipoint_1.X.ToString(), ipoint_1.Y.ToString()
+            };
             this.LinkPointlist.Items.Add(new ListViewItem(items));
         }
 
@@ -157,7 +161,8 @@ namespace Yutai.ArcGIS.Common.Raster.UI
 
         private void method_2()
         {
-            OpenFileDialog dialog = new OpenFileDialog {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
                 Filter = "文本文件|*.txt",
                 RestoreDirectory = true
             };
@@ -219,27 +224,17 @@ namespace Yutai.ArcGIS.Common.Raster.UI
 
         public DockingStyle DefaultDockingStyle
         {
-            get
-            {
-                return DockingStyle.Bottom;
-            }
+            get { return DockingStyle.Bottom; }
         }
 
         string IDockContent.Name
         {
-            get
-            {
-                return base.Name;
-            }
+            get { return base.Name; }
         }
 
         int IDockContent.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
     }
 }
-

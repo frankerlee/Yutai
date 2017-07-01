@@ -56,17 +56,20 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         private void CoverageTicPropertyPage_Load(object sender, EventArgs e)
         {
-            DataColumn column = new DataColumn("ID") {
+            DataColumn column = new DataColumn("ID")
+            {
                 DataType = System.Type.GetType("System.Int32"),
                 Caption = "ID"
             };
             this.dataTable_0.Columns.Add(column);
-            column = new DataColumn("X") {
+            column = new DataColumn("X")
+            {
                 DataType = System.Type.GetType("System.Double"),
                 Caption = "X"
             };
             this.dataTable_0.Columns.Add(column);
-            column = new DataColumn("Y") {
+            column = new DataColumn("Y")
+            {
                 DataType = System.Type.GetType("System.Double"),
                 Caption = "Y"
             };
@@ -116,13 +119,9 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
         }
 
- public ICoverageName CoverageName
+        public ICoverageName CoverageName
         {
-            set
-            {
-                this.icoverageName_0 = value;
-            }
+            set { this.icoverageName_0 = value; }
         }
     }
 }
-

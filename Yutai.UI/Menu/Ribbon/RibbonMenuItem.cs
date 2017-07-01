@@ -10,8 +10,6 @@ using IRibbonItem = Yutai.Plugins.Interfaces.IRibbonItem;
 
 namespace Yutai.UI.Menu.Ribbon
 {
-   
-
     internal class RibbonMenuItem : IRibbonMenuItem
     {
         private string _key;
@@ -63,7 +61,5 @@ namespace Yutai.UI.Menu.Ribbon
             get { return _object; }
             set { _object = value; }
         }
-
-
     }
 }

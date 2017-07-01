@@ -10,7 +10,8 @@ namespace Yutai.ArcGIS.Carto
         internal static IBasicSymbol CreateBasicSymbol(IFeatureClass ifeatureClass_0)
         {
             IBasicSymbol symbol = null;
-            if ((ifeatureClass_0.ShapeType == esriGeometryType.esriGeometryMultipoint) || (ifeatureClass_0.ShapeType == esriGeometryType.esriGeometryPoint))
+            if ((ifeatureClass_0.ShapeType == esriGeometryType.esriGeometryMultipoint) ||
+                (ifeatureClass_0.ShapeType == esriGeometryType.esriGeometryPoint))
             {
                 return new BasicMarkerSymbolClass();
             }
@@ -32,7 +33,8 @@ namespace Yutai.ArcGIS.Carto
             if (repWSExt != null)
             {
                 IRepresentationRules rules = new RepresentationRulesClass();
-                return repWSExt.CreateRepresentationClass(ifeatureClass_0, ifeatureClass_0.AliasName + "_Rep", "My_RuleID", "My_Override", false, rules, null);
+                return repWSExt.CreateRepresentationClass(ifeatureClass_0, ifeatureClass_0.AliasName + "_Rep",
+                    "My_RuleID", "My_Override", false, rules, null);
             }
             return null;
         }
@@ -50,7 +52,8 @@ namespace Yutai.ArcGIS.Carto
             try
             {
                 IWorkspaceExtensionManager manager = iworkspace_0 as IWorkspaceExtensionManager;
-                UID gUID = new UIDClass {
+                UID gUID = new UIDClass
+                {
                     Value = "{FD05270A-8E0B-4823-9DEE-F149347C32B6}"
                 };
                 return (manager.FindExtension(gUID) as IRepresentationWorkspaceExtension);
@@ -67,7 +70,8 @@ namespace Yutai.ArcGIS.Carto
             {
                 IDataset dataset = ifeatureClass_0 as IDataset;
                 IWorkspaceExtensionManager workspace = dataset.Workspace as IWorkspaceExtensionManager;
-                UID gUID = new UIDClass {
+                UID gUID = new UIDClass
+                {
                     Value = "{FD05270A-8E0B-4823-9DEE-F149347C32B6}"
                 };
                 return (workspace.FindExtension(gUID) as IRepresentationWorkspaceExtension);
@@ -86,10 +90,12 @@ namespace Yutai.ArcGIS.Carto
                 {
                     IDataset dataset = ifeatureClass_0 as IDataset;
                     IWorkspaceExtensionManager workspace = dataset.Workspace as IWorkspaceExtensionManager;
-                    UID gUID = new UIDClass {
+                    UID gUID = new UIDClass
+                    {
                         Value = "{FD05270A-8E0B-4823-9DEE-F149347C32B6}"
                     };
-                    IRepresentationWorkspaceExtension extension = workspace.FindExtension(gUID) as IRepresentationWorkspaceExtension;
+                    IRepresentationWorkspaceExtension extension =
+                        workspace.FindExtension(gUID) as IRepresentationWorkspaceExtension;
                     if (extension == null)
                     {
                         return false;
@@ -104,4 +110,3 @@ namespace Yutai.ArcGIS.Carto
         }
     }
 }
-

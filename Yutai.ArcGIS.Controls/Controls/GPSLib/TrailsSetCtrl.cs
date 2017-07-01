@@ -25,12 +25,12 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
 
 
         public event OnValueChangeEventHandler OnValueChange;
+
         public TrailsSetCtrl()
         {
             this.InitializeComponent();
         }
 
-    
 
         public void Apply()
         {
@@ -144,7 +144,7 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
             }
         }
 
- public void ResetControl()
+        public void ResetControl()
         {
         }
 
@@ -167,7 +167,8 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
                 this.txtLineLength.Text = this.m_pPositionTrails.LinearTrailDistance.ToString();
                 if (this.m_pPositionTrails.MarkerTrailColorRamp != null)
                 {
-                    item = new ServerStyleGalleryItemClass {
+                    item = new ServerStyleGalleryItemClass
+                    {
                         Item = this.m_pPositionTrails.MarkerTrailColorRamp
                     };
                     this.cboSpeedColorRamp.Add(item);
@@ -230,47 +231,28 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.m_IsPageDirty;
-            }
+            get { return this.m_IsPageDirty; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public IStyleGallery StyleGallery
         {
-            set
-            {
-                this.m_pSG = value;
-            }
+            set { this.m_pSG = value; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.m_Title;
-            }
-            set
-            {
-                this.m_Title = value;
-            }
+            get { return this.m_Title; }
+            set { this.m_Title = value; }
         }
     }
 }
-

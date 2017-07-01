@@ -103,11 +103,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
 
         public string FileName
         {
-            get
-            {
-                return this.string_0;
-            }
+            get { return this.string_0; }
         }
     }
 }
-

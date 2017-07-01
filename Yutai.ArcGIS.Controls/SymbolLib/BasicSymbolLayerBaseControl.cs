@@ -57,7 +57,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
             base.Controls.Add(c);
             if (c is GeometricEffectBaseControl)
             {
-                (this.m_pBasicSymbol as IGeometricEffects).Insert(index, (c as GeometricEffectBaseControl).GeometricEffect);
+                (this.m_pBasicSymbol as IGeometricEffects).Insert(index,
+                    (c as GeometricEffectBaseControl).GeometricEffect);
             }
             base.AutoScrollMinSize = new Size(base.Width, this.m_clist[this.m_clist.Count - 1].Bottom);
         }
@@ -208,7 +209,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
                 newc.Location = location;
                 if (newc is GeometricEffectBaseControl)
                 {
-                    (this.m_pBasicSymbol as IGeometricEffects).Insert(index, (newc as GeometricEffectBaseControl).GeometricEffect);
+                    (this.m_pBasicSymbol as IGeometricEffects).Insert(index,
+                        (newc as GeometricEffectBaseControl).GeometricEffect);
                     (this.m_pBasicSymbol as IGeometricEffects).Remove(index + 1);
                 }
                 base.Controls.Remove(oldc);
@@ -257,27 +259,14 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
 
         public IBasicSymbol BasicSymbol
         {
-            get
-            {
-                return this.m_pBasicSymbol;
-            }
-            set
-            {
-                this.m_pBasicSymbol = value;
-            }
+            get { return this.m_pBasicSymbol; }
+            set { this.m_pBasicSymbol = value; }
         }
 
         public esriGeometryType GeometryType
         {
-            get
-            {
-                return this.m_GeometryType;
-            }
-            set
-            {
-                this.m_GeometryType = value;
-            }
+            get { return this.m_GeometryType; }
+            set { this.m_GeometryType = value; }
         }
     }
 }
-

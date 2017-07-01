@@ -21,9 +21,8 @@ using Cursor = System.Windows.Forms.Cursor;
 
 namespace Yutai.Plugins.Identifer.Commands
 {
-    public class CmdSelectByMouse:YutaiTool, ICommandSubType
+    public class CmdSelectByMouse : YutaiTool, ICommandSubType
     {
-      
         public static esriSelectionResultEnum m_SelectionResultEnum;
 
         private bool _isFree = false;
@@ -40,14 +39,15 @@ namespace Yutai.Plugins.Identifer.Commands
 
         private string _basicName;
 
-     
 
         public override bool Enabled
         {
             get
             {
                 bool flag;
-                flag = (this._context.MapControl.Map == null || this._context.MapControl.Map.LayerCount<= 0 ? false : true);
+                flag = (this._context.MapControl.Map == null || this._context.MapControl.Map.LayerCount <= 0
+                    ? false
+                    : true);
                 return flag;
             }
         }
@@ -57,20 +57,20 @@ namespace Yutai.Plugins.Identifer.Commands
             _context = context as IAppContext;
             m_SelectionResultEnum = esriSelectionResultEnum.esriSelectionResultNew;
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
-            
-            ToolStripItem strip= sender as ToolStripItem;
+            ToolStripItem strip = sender as ToolStripItem;
             if (strip.Name == _basicName) return;
             //CmdSelectByMouse tag = strip.Tag as CmdSelectByMouse;
             SetSubType(RibbonHelper.CalculateSubTypeFromName(strip.Name));
             _context.SetCurrentTool(this);
         }
-        
+
 
         public override void OnCreate(object hook)
         {
-            _context=hook as IAppContext;
+            _context = hook as IAppContext;
             m_SelectionResultEnum = esriSelectionResultEnum.esriSelectionResultNew;
         }
 
@@ -84,7 +84,6 @@ namespace Yutai.Plugins.Identifer.Commands
             return this._context.MapControl.Map;
         }
 
-        
 
         public override void OnDblClick()
         {
@@ -96,12 +95,12 @@ namespace Yutai.Plugins.Identifer.Commands
                 {
                     pPoint = this._mPoint;
                 }
-                pPoint.SpatialReference =GetMap().SpatialReference;
-                IMap focusMap =GetMap();
+                pPoint.SpatialReference = GetMap().SpatialReference;
+                IMap focusMap = GetMap();
                 IActiveView activeView = focusMap as IActiveView;
 
                 selectionEnvironment = _context.Config.SelectionEnvironment;
-                
+
                 if (this.int_2 <= 0)
                 {
                     selectionEnvironment.CombinationMethod = m_SelectionResultEnum;
@@ -130,7 +129,7 @@ namespace Yutai.Plugins.Identifer.Commands
                 }
                 catch (Exception exception)
                 {
-                   // CErrorLog.writeErrorLog(this, exception, "");
+                    // CErrorLog.writeErrorLog(this, exception, "");
                 }
                 selectionEnvironment.CombinationMethod = m_SelectionResultEnum;
                 activeView.PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
@@ -166,7 +165,7 @@ namespace Yutai.Plugins.Identifer.Commands
                     _context.MapControl.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
                 }
                 this.int_1 = x;
-                IActiveView focusMap =GetMap() as IActiveView;
+                IActiveView focusMap = GetMap() as IActiveView;
                 this._mPoint = focusMap.ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
                 this._isFree = true;
                 if (this._subType == 1)
@@ -191,29 +190,29 @@ namespace Yutai.Plugins.Identifer.Commands
         {
             if (this._isFree)
             {
-                IActiveView focusMap =GetMap() as IActiveView;
+                IActiveView focusMap = GetMap() as IActiveView;
                 if (this._displayFeedback == null)
                 {
                     switch (this._subType)
                     {
                         case 0:
+                        {
+                            this._displayFeedback = new NewEnvelopeFeedback()
                             {
-                                this._displayFeedback = new NewEnvelopeFeedback()
-                                {
-                                    Display = focusMap.ScreenDisplay
-                                };
-                                (this._displayFeedback as INewEnvelopeFeedback).Start(this._mPoint);
-                                break;
-                            }
+                                Display = focusMap.ScreenDisplay
+                            };
+                            (this._displayFeedback as INewEnvelopeFeedback).Start(this._mPoint);
+                            break;
+                        }
                         case 2:
+                        {
+                            this._displayFeedback = new NewCircleFeedback()
                             {
-                                this._displayFeedback = new NewCircleFeedback()
-                                {
-                                    Display = focusMap.ScreenDisplay
-                                };
-                                (this._displayFeedback as INewCircleFeedback).Start(this._mPoint);
-                                break;
-                            }
+                                Display = focusMap.ScreenDisplay
+                            };
+                            (this._displayFeedback as INewCircleFeedback).Start(this._mPoint);
+                            break;
+                        }
                     }
                 }
                 this._displayFeedback.MoveTo(focusMap.ScreenDisplay.DisplayTransformation.ToMapPoint(x, y));
@@ -245,25 +244,26 @@ namespace Yutai.Plugins.Identifer.Commands
                 }
                 else
                 {
-                    IActiveView focusMap =GetMap() as IActiveView;
+                    IActiveView focusMap = GetMap() as IActiveView;
                     IEnvelope envelope = this._mPoint.Envelope;
                     double searchTolerance = 8;
-                   
-                     searchTolerance = (double)_context.Config.SelectionEnvironment.SearchTolerance;
-                    
-                    searchTolerance = CommonHelper.ConvertPixelsToMapUnits((IActiveView)_context.MapControl.ActiveView, searchTolerance);
+
+                    searchTolerance = (double) _context.Config.SelectionEnvironment.SearchTolerance;
+
+                    searchTolerance = CommonHelper.ConvertPixelsToMapUnits(
+                        (IActiveView) _context.MapControl.ActiveView, searchTolerance);
                     envelope.Height = searchTolerance;
                     envelope.Width = searchTolerance;
                     envelope.CenterAt(this._mPoint);
                     ipoint0 = envelope;
                     flag = true;
                 }
-                ipoint0.SpatialReference =GetMap().SpatialReference;
-                IMap map =GetMap();
+                ipoint0.SpatialReference = GetMap().SpatialReference;
+                IMap map = GetMap();
                 IActiveView activeView = map as IActiveView;
-                
-                    selectionEnvironmentClass =_context.Config.SelectionEnvironment;
-              
+
+                selectionEnvironmentClass = _context.Config.SelectionEnvironment;
+
                 if (shift <= 0)
                 {
                     selectionEnvironmentClass.CombinationMethod = m_SelectionResultEnum;
@@ -293,14 +293,14 @@ namespace Yutai.Plugins.Identifer.Commands
                 try
                 {
                     map.SelectByShape(ipoint0, selectionEnvironmentClass, flag);
-                   // this.m_HookHelper.UpdateUI();
+                    // this.m_HookHelper.UpdateUI();
                 }
                 catch (COMException cOMException1)
                 {
                     COMException cOMException = cOMException1;
                     if (cOMException.ErrorCode != -2147467259)
                     {
-                       // CErrorLog.writeErrorLog(this, cOMException, "");
+                        // CErrorLog.writeErrorLog(this, cOMException, "");
                     }
                     else
                     {
@@ -309,7 +309,7 @@ namespace Yutai.Plugins.Identifer.Commands
                 }
                 catch (Exception exception)
                 {
-                   // CErrorLog.writeErrorLog(this, exception, "");
+                    // CErrorLog.writeErrorLog(this, exception, "");
                 }
                 activeView.PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
                 selectionEnvironmentClass.CombinationMethod = m_SelectionResultEnum;
@@ -320,13 +320,10 @@ namespace Yutai.Plugins.Identifer.Commands
             }
         }
 
-        public   int SubType
-            {
+        public int SubType
+        {
             get { return _subType; }
-            set
-            {
-                SetSubType(value);
-            }
+            set { SetSubType(value); }
         }
 
         public void SetSubType(int subType)
@@ -335,51 +332,59 @@ namespace Yutai.Plugins.Identifer.Commands
             switch (subType)
             {
                 case -1:
-                    {
-                        base.m_bitmap = Properties.Resources.icon_select_mouse;
-                        base.m_toolTip = "图形选择";
-                        base.m_name = "Query_SelectionTools_Selector";
-                        _basicName = this.m_name;
-                        base.m_message = "图形选择";
-                        base.m_caption = "图形选择";
-                        base.m_category = "Query";
-                        base._key = "Query_SelectionTools_Selector";
-                        base._itemType = RibbonItemType.DropDown;
-                        base.ToolStripItemImageScalingYT= ToolStripItemImageScalingYT.None;
-                        base.DisplayStyleYT= DisplayStyleYT.ImageAndText;
-                        base.TextImageRelationYT = TextImageRelationYT.ImageAboveText;
-                        break;
-                    }
+                {
+                    base.m_bitmap = Properties.Resources.icon_select_mouse;
+                    base.m_toolTip = "图形选择";
+                    base.m_name = "Query_SelectionTools_Selector";
+                    _basicName = this.m_name;
+                    base.m_message = "图形选择";
+                    base.m_caption = "图形选择";
+                    base.m_category = "Query";
+                    base._key = "Query_SelectionTools_Selector";
+                    base._itemType = RibbonItemType.DropDown;
+                    base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
+                    base.DisplayStyleYT = DisplayStyleYT.ImageAndText;
+                    base.TextImageRelationYT = TextImageRelationYT.ImageAboveText;
+                    break;
+                }
                 case 0:
                 {
-                        base.m_bitmap = Properties.Resources.SelectFeatures;
-                        base.m_cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.Plugins.Identifer.Resources.Cursor.MoveSelectFeatures.cur"));
-                        base.m_toolTip = "矩形选择";
-                        base.m_name = "Query_SelectionTools_RectangleSelector";
-                        base.m_message = "矩形选择";
-                        base.m_caption = "矩形选择";
-                        base.m_category = "Query";
-                        base._key = "Query_SelectionTools_RectangleSelector";
-                        base._itemType = RibbonItemType.Tool;
-                        base.DisplayStyleYT= DisplayStyleYT.ImageAndText;
-                        base.TextImageRelationYT= TextImageRelationYT.ImageBeforeText;
-                        break;
-                    }
+                    base.m_bitmap = Properties.Resources.SelectFeatures;
+                    base.m_cursor =
+                        new Cursor(
+                            base.GetType()
+                                .Assembly.GetManifestResourceStream(
+                                    "Yutai.Plugins.Identifer.Resources.Cursor.MoveSelectFeatures.cur"));
+                    base.m_toolTip = "矩形选择";
+                    base.m_name = "Query_SelectionTools_RectangleSelector";
+                    base.m_message = "矩形选择";
+                    base.m_caption = "矩形选择";
+                    base.m_category = "Query";
+                    base._key = "Query_SelectionTools_RectangleSelector";
+                    base._itemType = RibbonItemType.Tool;
+                    base.DisplayStyleYT = DisplayStyleYT.ImageAndText;
+                    base.TextImageRelationYT = TextImageRelationYT.ImageBeforeText;
+                    break;
+                }
                 case 1:
                 {
-                        base.m_bitmap = Properties.Resources.PolygonSelectFeatures;
-                        base.m_cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.Plugins.Identifer.Resources.Cursor.PolygonMoveSelectFeatures.cur"));
-                        base.m_toolTip = "多边形选择";
-                        base.m_name = "Query_SelectionTools_PolygonSelector";
-                        base.m_message = "多边形选择";
-                        base.m_caption = "多边形选择";
-                        base.m_category = "Query";
-                        base._key = "Query_SelectionTools_PolygonSelector";
-                        base._itemType = RibbonItemType.Tool;
-                        base.DisplayStyleYT = DisplayStyleYT.ImageAndText;
-                        base.TextImageRelationYT = TextImageRelationYT.ImageBeforeText;
-                        break;
-                    }
+                    base.m_bitmap = Properties.Resources.PolygonSelectFeatures;
+                    base.m_cursor =
+                        new Cursor(
+                            base.GetType()
+                                .Assembly.GetManifestResourceStream(
+                                    "Yutai.Plugins.Identifer.Resources.Cursor.PolygonMoveSelectFeatures.cur"));
+                    base.m_toolTip = "多边形选择";
+                    base.m_name = "Query_SelectionTools_PolygonSelector";
+                    base.m_message = "多边形选择";
+                    base.m_caption = "多边形选择";
+                    base.m_category = "Query";
+                    base._key = "Query_SelectionTools_PolygonSelector";
+                    base._itemType = RibbonItemType.Tool;
+                    base.DisplayStyleYT = DisplayStyleYT.ImageAndText;
+                    base.TextImageRelationYT = TextImageRelationYT.ImageBeforeText;
+                    break;
+                }
             }
         }
 
@@ -391,4 +396,3 @@ namespace Yutai.Plugins.Identifer.Commands
         //}
     }
 }
-

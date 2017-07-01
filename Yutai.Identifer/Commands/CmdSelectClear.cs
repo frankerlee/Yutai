@@ -12,8 +12,6 @@ namespace Yutai.Plugins.Identifer.Commands
 {
     class CmdSelectClear : YutaiCommand
     {
-       
-       
         public override bool Enabled
         {
             get
@@ -38,17 +36,14 @@ namespace Yutai.Plugins.Identifer.Commands
             base.TextImageRelationYT = TextImageRelationYT.ImageAboveText;
             base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
             _context = context;
-           
         }
 
         public override void OnCreate(object hook)
         {
-
         }
 
         public override void OnClick()
         {
-           
             IMap pMap = _context.MapControl.Map;
             (pMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, false, null);
             pMap.ClearSelection();

@@ -24,8 +24,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         private ILineSymbol ilineSymbol_0 = null;
         private IMarkerSymbol imarkerSymbol_0 = null;
         protected IMapGrid m_pMapGrid = null;
-        [CompilerGenerated]
-        private string string_0 = "线";
+
 
         public event OnValueChangeEventHandler OnValueChange;
 
@@ -88,11 +87,11 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         {
         }
 
- public void Hide()
+        public void Hide()
         {
         }
 
- private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
+        private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.radioGroup1.SelectedIndex == 2)
             {
@@ -158,53 +157,21 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
-        public MapCartoTemplateLib.MapTemplate MapTemplate
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.mapTemplate_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.mapTemplate_0 = value;
-            }
-        }
+        public MapCartoTemplateLib.MapTemplate MapTemplate { get; set; }
 
-        public string Title
-        {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
-        }
+        public string Title { get; set; }
     }
 }
-

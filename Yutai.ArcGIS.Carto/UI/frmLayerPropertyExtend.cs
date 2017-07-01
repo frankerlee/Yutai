@@ -24,7 +24,9 @@ namespace Yutai.ArcGIS.Carto.UI
         {
             for (int i = 0; i < this.tabControl1.Controls.Count; i++)
             {
-                if (!((this.tabControl1.Controls[i] as TabPage).Controls[0] as ILayerAndStandaloneTablePropertyPage).Apply())
+                if (
+                    !((this.tabControl1.Controls[i] as TabPage).Controls[0] as ILayerAndStandaloneTablePropertyPage)
+                        .Apply())
                 {
                     return;
                 }
@@ -32,7 +34,7 @@ namespace Yutai.ArcGIS.Carto.UI
             base.DialogResult = DialogResult.OK;
         }
 
- private void frmLayerPropertyExtend_Load(object sender, EventArgs e)
+        private void frmLayerPropertyExtend_Load(object sender, EventArgs e)
         {
             this.tabControl1.Controls.Clear();
             ILayerAndStandaloneTablePropertyPage page = null;
@@ -50,7 +52,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 page2 = new TabPage();
                 this.tabControl1.Controls.Add(page2);
                 page2.Text = "常规";
-                page = new LayerGeneralPropertyCtrl {
+                page = new LayerGeneralPropertyCtrl
+                {
                     FocusMap = this.ibasicMap_0,
                     SelectItem = this.object_0
                 };
@@ -67,10 +70,12 @@ namespace Yutai.ArcGIS.Carto.UI
                     page.SelectItem = this.object_0;
                     (page as Control).Dock = DockStyle.Fill;
                     page2.Controls.Add(page as Control);
-                    page2 = new TabPage {
+                    page2 = new TabPage
+                    {
                         Text = "定义查询"
                     };
-                    page = new LayerDefinitionExpressionCtrl {
+                    page = new LayerDefinitionExpressionCtrl
+                    {
                         FocusMap = this.ibasicMap_0,
                         SelectItem = this.object_0
                     };
@@ -80,7 +85,8 @@ namespace Yutai.ArcGIS.Carto.UI
                         page2 = new TabPage();
                         this.tabControl1.Controls.Add(page2);
                         page2.Text = "标注";
-                        page = new LayerLabelPropertyCtrl {
+                        page = new LayerLabelPropertyCtrl
+                        {
                             FocusMap = this.ibasicMap_0,
                             SelectItem = this.object_0
                         };
@@ -106,7 +112,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 page2 = new TabPage();
                 this.tabControl1.Controls.Add(page2);
                 page2.Text = "字段";
-                page = new LayerFieldsPageExtend {
+                page = new LayerFieldsPageExtend
+                {
                     FocusMap = this.ibasicMap_0,
                     SelectItem = this.object_0
                 };
@@ -115,36 +122,24 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- public IBasicMap FocusMap
+        public IBasicMap FocusMap
         {
-            set
-            {
-                this.ibasicMap_0 = value;
-            }
+            set { this.ibasicMap_0 = value; }
         }
 
         internal ILayer Layer
         {
-            set
-            {
-            }
+            set { }
         }
 
         public object SelectItem
         {
-            set
-            {
-                this.object_0 = value;
-            }
+            set { this.object_0 = value; }
         }
 
         public IStyleGallery StyleGallery
         {
-            set
-            {
-                this.istyleGallery_0 = value;
-            }
+            set { this.istyleGallery_0 = value; }
         }
     }
 }
-

@@ -33,7 +33,9 @@ namespace Yutai.ArcGIS.Common.Raster
             };
         }
 
-        public IRasterDataset createSDERasterDs(IRasterWorkspaceEx irasterWorkspaceEx_0, string string_0, int int_0, rstPixelType rstPixelType_0, ISpatialReference ispatialReference_0, IRasterStorageDef irasterStorageDef_0, IRasterDef irasterDef_0, string string_1)
+        public IRasterDataset createSDERasterDs(IRasterWorkspaceEx irasterWorkspaceEx_0, string string_0, int int_0,
+            rstPixelType rstPixelType_0, ISpatialReference ispatialReference_0, IRasterStorageDef irasterStorageDef_0,
+            IRasterDef irasterDef_0, string string_1)
         {
             IRasterDataset rasterDataset = null;
             if (irasterDef_0 == null)
@@ -49,7 +51,8 @@ namespace Yutai.ArcGIS.Common.Raster
             {
                 string_1 = "DEFAULTS";
             }
-            rasterDataset = irasterWorkspaceEx_0.CreateRasterDataset(string_0, int_0, rstPixelType_0, irasterStorageDef_0, string_1, irasterDef_0, geometryDef);
+            rasterDataset = irasterWorkspaceEx_0.CreateRasterDataset(string_0, int_0, rstPixelType_0,
+                irasterStorageDef_0, string_1, irasterDef_0, geometryDef);
             return rasterDataset;
         }
 
@@ -108,7 +111,7 @@ namespace Yutai.ArcGIS.Common.Raster
             IRasterEdit rasterEdit = raster2 as IRasterEdit;
             if (rasterEdit.CanEdit())
             {
-                long count = (long)(irasterDataset2_0 as IRasterBandCollection).Count;
+                long count = (long) (irasterDataset2_0 as IRasterBandCollection).Count;
                 IRasterProps rasterProp = raster2 as IRasterProps;
                 object noDataValue = rasterProp.NoDataValue;
                 rasterProp.NoDataValue = 255;
@@ -132,7 +135,8 @@ namespace Yutai.ArcGIS.Common.Raster
 
         public void WriteToSDEFromPixelArray(IRasterWorkspaceEx irasterWorkspaceEx_0, string string_0)
         {
-            IRasterDataset rasterDataset = irasterWorkspaceEx_0.CreateRasterDataset(string_0, 3, rstPixelType.PT_SHORT, new RasterStorageDef(), "", new RasterDef(), null);
+            IRasterDataset rasterDataset = irasterWorkspaceEx_0.CreateRasterDataset(string_0, 3, rstPixelType.PT_SHORT,
+                new RasterStorageDef(), "", new RasterDef(), null);
             IRaster raster = rasterDataset.CreateDefaultRaster();
             IRasterProps rasterProp = raster as IRasterProps;
             int num = 1000;
@@ -148,7 +152,7 @@ namespace Yutai.ArcGIS.Common.Raster
             rasterProp.Width = 1000;
             rasterProp.Height = 1000;
             IPnt pntClass = new Pnt();
-            pntClass.SetCoords((double)1000, (double)1000);
+            pntClass.SetCoords((double) 1000, (double) 1000);
             IPixelBlock3 pixelBlock3 = raster.CreatePixelBlock(pntClass) as IPixelBlock3;
             pntClass.SetCoords(0, 0);
             for (int i = 0; i < 3; i++)

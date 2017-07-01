@@ -50,7 +50,8 @@ namespace Yutai.ArcGIS.Carto.Library
         private void btnModify_Click(object sender, EventArgs e)
         {
             ListViewItem item = this.listView2.SelectedItems[0];
-            frmInputText text = new frmInputText {
+            frmInputText text = new frmInputText
+            {
                 Text = item.Text,
                 InputText = item.SubItems[1].Text
             };
@@ -60,7 +61,7 @@ namespace Yutai.ArcGIS.Carto.Library
             }
         }
 
- public void Init()
+        public void Init()
         {
             this.mapTemplateJoinTableElement_0 = null;
             this.listView2.Items.Clear();
@@ -68,11 +69,13 @@ namespace Yutai.ArcGIS.Carto.Library
             int num = 0;
             while (num < this.mapTemplate_0.MapTemplateElement.Count)
             {
-                if (this.mapTemplate_0.MapTemplateElement[num].MapTemplateElementType == MapTemplateElementType.JoinTableElement)
+                if (this.mapTemplate_0.MapTemplateElement[num].MapTemplateElementType ==
+                    MapTemplateElementType.JoinTableElement)
                 {
                     flag = true;
                     this.panelJTB.Tag = this.mapTemplate_0.MapTemplateElement[num];
-                    this.mapTemplateJoinTableElement_0 = this.mapTemplate_0.MapTemplateElement[num] as MapTemplateJoinTableElement;
+                    this.mapTemplateJoinTableElement_0 =
+                        this.mapTemplate_0.MapTemplateElement[num] as MapTemplateJoinTableElement;
                     break;
                 }
                 num++;
@@ -84,14 +87,15 @@ namespace Yutai.ArcGIS.Carto.Library
                 MapTemplateParam param = this.mapTemplate_0.MapTemplateParam[num];
                 items[0] = param.Name;
                 items[1] = "";
-                ListViewItem item = new ListViewItem(items) {
+                ListViewItem item = new ListViewItem(items)
+                {
                     Tag = param
                 };
                 this.listView2.Items.Add(item);
             }
         }
 
- private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.btnModify.Enabled = this.listView2.SelectedItems.Count > 0;
         }
@@ -138,23 +142,13 @@ namespace Yutai.ArcGIS.Carto.Library
 
         public MapTemplate CartoTemplateData
         {
-            set
-            {
-                this.mapTemplate_0 = value;
-            }
+            set { this.mapTemplate_0 = value; }
         }
 
         public MapTemplateApplyHelp MapTemplateHelp
         {
-            get
-            {
-                return this.mapTemplateApplyHelp_0;
-            }
-            set
-            {
-                this.mapTemplateApplyHelp_0 = value;
-            }
+            get { return this.mapTemplateApplyHelp_0; }
+            set { this.mapTemplateApplyHelp_0 = value; }
         }
     }
 }
-

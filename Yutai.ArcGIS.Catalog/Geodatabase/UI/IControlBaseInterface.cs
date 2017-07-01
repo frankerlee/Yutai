@@ -13,4 +13,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         IWorkspace Workspace { set; }
     }
 }
-

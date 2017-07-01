@@ -12,7 +12,8 @@ namespace Yutai.UI.Controls
 
         public NodeData(string name) :
             this(name, string.Empty)
-        { }
+        {
+        }
 
         public NodeData(string name, string value)
         {

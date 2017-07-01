@@ -18,7 +18,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private ILegendItem method_0()
         {
-            return new HorizontalLegendItemClass { Layer = this.ilayer_0 };
+            return new HorizontalLegendItemClass {Layer = this.ilayer_0};
         }
 
         public override string ToString()
@@ -32,22 +32,13 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IStyleGalleryItem AreaPatchStyleGalleryItem
         {
-            get
-            {
-                return this.istyleGalleryItem_1;
-            }
-            set
-            {
-                this.istyleGalleryItem_1 = value;
-            }
+            get { return this.istyleGalleryItem_1; }
+            set { this.istyleGalleryItem_1 = value; }
         }
 
         public ILayer Layer
         {
-            get
-            {
-                return this.ilayer_0;
-            }
+            get { return this.ilayer_0; }
             set
             {
                 this.ilayer_0 = value;
@@ -57,23 +48,13 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public ILegendItem LegendItem
         {
-            get
-            {
-                return this.ilegendItem_0;
-            }
+            get { return this.ilegendItem_0; }
         }
 
         public IStyleGalleryItem LinePatchStyleGalleryItem
         {
-            get
-            {
-                return this.istyleGalleryItem_0;
-            }
-            set
-            {
-                this.istyleGalleryItem_0 = value;
-            }
+            get { return this.istyleGalleryItem_0; }
+            set { this.istyleGalleryItem_0 = value; }
         }
     }
 }
-

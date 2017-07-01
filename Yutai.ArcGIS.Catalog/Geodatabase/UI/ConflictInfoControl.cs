@@ -27,7 +27,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.method_0();
         }
 
- private void method_0()
+        private void method_0()
         {
             TreeNode node = new TreeNode("冲突");
             IVersionEdit edit = this.ifeatureWorkspace_0 as IVersionEdit;
@@ -65,7 +65,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             for (int i = iDs.Next(); i != -1; i = iDs.Next())
             {
                 TreeNode node = new TreeNode(i.ToString());
-                RowCollection unk = new RowCollection {
+                RowCollection unk = new RowCollection
+                {
                     ConflictClass = iconflictClass_0
                 };
                 this.iarray_0.Add(unk);
@@ -75,14 +76,16 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
-        private void method_3(TreeNode treeNode_0, ISelectionSet iselectionSet_0, IConflictClass iconflictClass_0, enumConflictType enumConflictType_0)
+        private void method_3(TreeNode treeNode_0, ISelectionSet iselectionSet_0, IConflictClass iconflictClass_0,
+            enumConflictType enumConflictType_0)
         {
             IEnumIDs iDs = iselectionSet_0.IDs;
             iDs.Reset();
             for (int i = iDs.Next(); i != -1; i = iDs.Next())
             {
                 TreeNode node = new TreeNode(i.ToString());
-                RowCollection unk = new RowCollection {
+                RowCollection unk = new RowCollection
+                {
                     ConflictClass = iconflictClass_0
                 };
                 this.iarray_0.Add(unk);
@@ -266,19 +269,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IWorkspace EditWorkspace
         {
-            set
-            {
-                this.ifeatureWorkspace_0 = value as IFeatureWorkspace;
-            }
+            set { this.ifeatureWorkspace_0 = value as IFeatureWorkspace; }
         }
 
         public IMap FocusMap
         {
-            set
-            {
-                this.m_FocusMap = value;
-            }
+            set { this.m_FocusMap = value; }
         }
     }
 }
-

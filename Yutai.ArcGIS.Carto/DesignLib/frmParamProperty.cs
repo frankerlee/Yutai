@@ -35,7 +35,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             }
         }
 
- private void frmParamProperty_Load(object sender, EventArgs e)
+        private void frmParamProperty_Load(object sender, EventArgs e)
         {
             if (this.paramInfo_0 != null)
             {
@@ -44,17 +44,10 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             }
         }
 
- public ParamInfo ParamInfo
+        public ParamInfo ParamInfo
         {
-            get
-            {
-                return this.paramInfo_0;
-            }
-            set
-            {
-                this.paramInfo_0 = value;
-            }
+            get { return this.paramInfo_0; }
+            set { this.paramInfo_0 = value; }
         }
     }
 }
-

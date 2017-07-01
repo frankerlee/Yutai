@@ -68,14 +68,16 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 double num2;
                 pTemplate.GetPatternElement(i, out num, out num2);
                 items[0] = "实部长";
-                items[1] = (num * this.m_unit).ToString("0.####");
-                ListViewItem item = new ListViewItem(items) {
+                items[1] = (num*this.m_unit).ToString("0.####");
+                ListViewItem item = new ListViewItem(items)
+                {
                     Tag = i
                 };
                 this.TemplatelistView.Items.Add(item);
                 items[0] = "虚部长";
-                items[1] = (num2 * this.m_unit).ToString("0.####");
-                item = new ListViewItem(items) {
+                items[1] = (num2*this.m_unit).ToString("0.####");
+                item = new ListViewItem(items)
+                {
                     Tag = i
                 };
                 this.TemplatelistView.Items.Add(item);
@@ -92,8 +94,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 {
                     num = Convert.ToDouble(this.TemplatelistView.Items[i].SubItems[1].Text);
                     num2 = Convert.ToDouble(this.TemplatelistView.Items[i + 1].SubItems[1].Text);
-                    num = (num / this.m_unit) * newunit;
-                    num2 = (num2 / this.m_unit) * newunit;
+                    num = (num/this.m_unit)*newunit;
+                    num2 = (num2/this.m_unit)*newunit;
                     this.TemplatelistView.Items[i].SubItems[1].Text = num.ToString("0.####");
                     this.TemplatelistView.Items[i + 1].SubItems[1].Text = num2.ToString("0.####");
                 }
@@ -105,7 +107,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.m_unit = newunit;
         }
 
- private void InitControl()
+        private void InitControl()
         {
             this.m_CanDo = false;
             string[] items = new string[2];
@@ -117,14 +119,16 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     double num2;
                     this.m_LineProperties.Template.GetPatternElement(i, out num, out num2);
                     items[0] = "实部长";
-                    items[1] = (num * this.m_unit).ToString("0.####");
-                    ListViewItem item = new ListViewItem(items) {
+                    items[1] = (num*this.m_unit).ToString("0.####");
+                    ListViewItem item = new ListViewItem(items)
+                    {
                         Tag = i
                     };
                     this.TemplatelistView.Items.Add(item);
                     items[0] = "虚部长";
-                    items[1] = (num2 * this.m_unit).ToString("0.####");
-                    item = new ListViewItem(items) {
+                    items[1] = (num2*this.m_unit).ToString("0.####");
+                    item = new ListViewItem(items)
+                    {
                         Tag = i
                     };
                     this.TemplatelistView.Items.Add(item);
@@ -134,7 +138,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.m_CanDo = true;
         }
 
- public static bool IsNmuber(string str)
+        public static bool IsNmuber(string str)
         {
             if (str.Length > 0)
             {
@@ -246,7 +250,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         private void ReadTemplate(EventArgs e)
         {
             this.TemplatelistView.ForeColor = SystemColors.WindowText;
-            ITemplate template = new TemplateClass {
+            ITemplate template = new TemplateClass
+            {
                 Interval = this.m_LineProperties.Template.Interval
             };
             double mark = 0.0;
@@ -306,4 +311,3 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         }
     }
 }
-

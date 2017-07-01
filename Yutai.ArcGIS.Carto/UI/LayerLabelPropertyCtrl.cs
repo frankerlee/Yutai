@@ -83,14 +83,16 @@ namespace Yutai.ArcGIS.Carto.UI
                 {
                     for (int i = 0; i < this.cboClass.Properties.Items.Count; i++)
                     {
-                        AnnotateLayerPropertiesWrap wrap = this.cboClass.Properties.Items[i] as AnnotateLayerPropertiesWrap;
+                        AnnotateLayerPropertiesWrap wrap =
+                            this.cboClass.Properties.Items[i] as AnnotateLayerPropertiesWrap;
                         if (wrap.AnnotateLayerProperties.Class == input.InputValue)
                         {
                             MessageBox.Show("类名必须唯一!");
                             return;
                         }
                     }
-                    IAnnotateLayerProperties properties = new LabelEngineLayerPropertiesClass {
+                    IAnnotateLayerProperties properties = new LabelEngineLayerPropertiesClass
+                    {
                         Class = input.InputValue,
                         FeatureLinked = this.iannotateLayerProperties_0.FeatureLinked,
                         FeatureLayer = this.iannotateLayerProperties_0.FeatureLayer,
@@ -105,7 +107,8 @@ namespace Yutai.ArcGIS.Carto.UI
                         WhereClause = this.iannotateLayerProperties_0.WhereClause
                     };
                     ILabelEngineLayerProperties properties2 = properties as ILabelEngineLayerProperties;
-                    ILabelEngineLayerProperties properties3 = this.iannotateLayerProperties_0 as ILabelEngineLayerProperties;
+                    ILabelEngineLayerProperties properties3 =
+                        this.iannotateLayerProperties_0 as ILabelEngineLayerProperties;
                     properties2.Expression = properties3.Expression;
                     properties2.IsExpressionSimple = properties3.IsExpressionSimple;
                     int num2 = this.method_2();
@@ -149,7 +152,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnRename_Click(object sender, EventArgs e)
         {
-            frmInput input = new frmInput("名称:", this.iannotateLayerProperties_0.Class) {
+            frmInput input = new frmInput("名称:", this.iannotateLayerProperties_0.Class)
+            {
                 Text = "输入新类名"
             };
             if (input.ShowDialog() == DialogResult.OK)
@@ -180,7 +184,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnScaleSet_Click(object sender, EventArgs e)
         {
-            frmAnnoScaleSet set = new frmAnnoScaleSet {
+            frmAnnoScaleSet set = new frmAnnoScaleSet
+            {
                 AnnotateLayerProperties = this.iannotateLayerProperties_0
             };
             if (set.ShowDialog() == DialogResult.OK)
@@ -193,7 +198,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnSQL_Click(object sender, EventArgs e)
         {
-            frmAttributeQueryBuilder builder = new frmAttributeQueryBuilder {
+            frmAttributeQueryBuilder builder = new frmAttributeQueryBuilder
+            {
                 Table = this.igeoFeatureLayer_0.FeatureClass as ITable,
                 WhereCaluse = this.iannotateLayerProperties_0.WhereClause
             };
@@ -211,10 +217,12 @@ namespace Yutai.ArcGIS.Carto.UI
             if (this.cboClass.SelectedItem != null)
             {
                 this.bool_0 = false;
-                this.iannotateLayerProperties_0 = (this.cboClass.SelectedItem as AnnotateLayerPropertiesWrap).AnnotateLayerProperties;
+                this.iannotateLayerProperties_0 =
+                    (this.cboClass.SelectedItem as AnnotateLayerPropertiesWrap).AnnotateLayerProperties;
                 this.string_0 = (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).Expression.Trim();
                 this.bool_1 = (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).IsExpressionSimple;
-                this.iannotationExpressionEngine_0 = (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).ExpressionParser;
+                this.iannotationExpressionEngine_0 =
+                    (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).ExpressionParser;
                 this.chkLabel.Checked = this.iannotateLayerProperties_0.DisplayAnnotation;
                 if (this.string_0.IndexOf("[", 1) != -1)
                 {
@@ -292,7 +300,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void LayerLabelPropertyCtrl_Load(object sender, EventArgs e)
+        private void LayerLabelPropertyCtrl_Load(object sender, EventArgs e)
         {
             this.method_0();
         }
@@ -310,7 +318,15 @@ namespace Yutai.ArcGIS.Carto.UI
                     for (num = 0; num < fields.FieldCount; num++)
                     {
                         IField field = fields.get_Field(num);
-                        if (((((field.Type == esriFieldType.esriFieldTypeDate) || (field.Type == esriFieldType.esriFieldTypeDouble)) || ((field.Type == esriFieldType.esriFieldTypeGlobalID) || (field.Type == esriFieldType.esriFieldTypeGUID))) || (((field.Type == esriFieldType.esriFieldTypeInteger) || (field.Type == esriFieldType.esriFieldTypeOID)) || ((field.Type == esriFieldType.esriFieldTypeSingle) || (field.Type == esriFieldType.esriFieldTypeSmallInteger)))) || (field.Type == esriFieldType.esriFieldTypeString))
+                        if (((((field.Type == esriFieldType.esriFieldTypeDate) ||
+                               (field.Type == esriFieldType.esriFieldTypeDouble)) ||
+                              ((field.Type == esriFieldType.esriFieldTypeGlobalID) ||
+                               (field.Type == esriFieldType.esriFieldTypeGUID))) ||
+                             (((field.Type == esriFieldType.esriFieldTypeInteger) ||
+                               (field.Type == esriFieldType.esriFieldTypeOID)) ||
+                              ((field.Type == esriFieldType.esriFieldTypeSingle) ||
+                               (field.Type == esriFieldType.esriFieldTypeSmallInteger)))) ||
+                            (field.Type == esriFieldType.esriFieldTypeString))
                         {
                             this.cboFields.Properties.Items.Add(field.AliasName);
                         }
@@ -321,7 +337,9 @@ namespace Yutai.ArcGIS.Carto.UI
                         IAnnotateLayerProperties properties;
                         int num2;
                         this.iannotateLayerPropertiesCollection2_0.QueryItem(num, out properties, out num2);
-                        this.cboClass.Properties.Items.Add(new AnnotateLayerPropertiesWrap((properties as IClone).Clone() as IAnnotateLayerProperties, num2, false));
+                        this.cboClass.Properties.Items.Add(
+                            new AnnotateLayerPropertiesWrap((properties as IClone).Clone() as IAnnotateLayerProperties,
+                                num2, false));
                     }
                 }
                 this.bool_0 = true;
@@ -371,7 +389,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            frmExpressionSet set = new frmExpressionSet {
+            frmExpressionSet set = new frmExpressionSet
+            {
                 LabelExpression = this.string_0,
                 AnnotationExpressionEngine = this.iannotationExpressionEngine_0,
                 IsExpressionSimple = this.bool_1,
@@ -383,7 +402,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 this.iannotationExpressionEngine_0 = set.AnnotationExpressionEngine;
                 this.bool_1 = set.IsExpressionSimple;
                 (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).Expression = this.string_0;
-                (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).ExpressionParser = this.iannotationExpressionEngine_0;
+                (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).ExpressionParser =
+                    this.iannotationExpressionEngine_0;
                 (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).IsExpressionSimple = this.bool_1;
                 this.bool_3 = true;
                 AnnotateLayerPropertiesWrap selectedItem = this.cboClass.SelectedItem as AnnotateLayerPropertiesWrap;
@@ -417,9 +437,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IBasicMap FocusMap
         {
-            set
-            {
-            }
+            set { }
         }
 
         public IGeoFeatureLayer GeoFeatureLayer
@@ -427,16 +445,14 @@ namespace Yutai.ArcGIS.Carto.UI
             set
             {
                 this.igeoFeatureLayer_0 = value;
-                this.iannotateLayerPropertiesCollection2_0 = this.igeoFeatureLayer_0.AnnotationProperties as IAnnotateLayerPropertiesCollection2;
+                this.iannotateLayerPropertiesCollection2_0 =
+                    this.igeoFeatureLayer_0.AnnotationProperties as IAnnotateLayerPropertiesCollection2;
             }
         }
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_3;
-            }
+            get { return this.bool_3; }
         }
 
         public object SelectItem
@@ -446,7 +462,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 this.igeoFeatureLayer_0 = value as IGeoFeatureLayer;
                 if (this.igeoFeatureLayer_0 != null)
                 {
-                    this.iannotateLayerPropertiesCollection2_0 = this.igeoFeatureLayer_0.AnnotationProperties as IAnnotateLayerPropertiesCollection2;
+                    this.iannotateLayerPropertiesCollection2_0 =
+                        this.igeoFeatureLayer_0.AnnotationProperties as IAnnotateLayerPropertiesCollection2;
                 }
             }
         }
@@ -458,7 +475,8 @@ namespace Yutai.ArcGIS.Carto.UI
             private IAnnotateLayerProperties iannotateLayerProperties_0 = null;
             private int int_0 = -1;
 
-            internal AnnotateLayerPropertiesWrap(IAnnotateLayerProperties iannotateLayerProperties_1, int int_1, bool bool_2)
+            internal AnnotateLayerPropertiesWrap(IAnnotateLayerProperties iannotateLayerProperties_1, int int_1,
+                bool bool_2)
             {
                 this.iannotateLayerProperties_0 = iannotateLayerProperties_1;
                 this.bool_0 = bool_2;
@@ -472,44 +490,25 @@ namespace Yutai.ArcGIS.Carto.UI
 
             public IAnnotateLayerProperties AnnotateLayerProperties
             {
-                get
-                {
-                    return this.iannotateLayerProperties_0;
-                }
+                get { return this.iannotateLayerProperties_0; }
             }
 
             public int ID
             {
-                get
-                {
-                    return this.int_0;
-                }
+                get { return this.int_0; }
             }
 
             public bool IsNew
             {
-                get
-                {
-                    return this.bool_0;
-                }
-                set
-                {
-                    this.bool_0 = value;
-                }
+                get { return this.bool_0; }
+                set { this.bool_0 = value; }
             }
 
             public bool Update
             {
-                get
-                {
-                    return this.bool_1;
-                }
-                set
-                {
-                    this.bool_1 = value;
-                }
+                get { return this.bool_1; }
+                set { this.bool_1 = value; }
             }
         }
     }
 }
-

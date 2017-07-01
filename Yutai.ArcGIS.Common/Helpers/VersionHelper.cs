@@ -50,16 +50,18 @@ namespace Yutai.ArcGIS.Common.Helpers
             return flag;
         }
 
-        public IFIDSet FindHistoricalDifferences(IWorkspace workspace, string historicalMarkerName, string tableName, esriDifferenceType differenceType)
+        public IFIDSet FindHistoricalDifferences(IWorkspace workspace, string historicalMarkerName, string tableName,
+            esriDifferenceType differenceType)
         {
-            IHistoricalWorkspace historicalWorkspace = (IHistoricalWorkspace)workspace;
-            IHistoricalVersion historicalVersion = historicalWorkspace.FindHistoricalVersionByName(historicalWorkspace.DefaultMarkerName);
+            IHistoricalWorkspace historicalWorkspace = (IHistoricalWorkspace) workspace;
+            IHistoricalVersion historicalVersion =
+                historicalWorkspace.FindHistoricalVersionByName(historicalWorkspace.DefaultMarkerName);
             IHistoricalVersion historicalVersion1 = historicalWorkspace.FindHistoricalVersionByName(historicalMarkerName);
-            IFeatureWorkspace featureWorkspace = (IFeatureWorkspace)historicalVersion;
-            IFeatureWorkspace featureWorkspace1 = (IFeatureWorkspace)historicalVersion1;
+            IFeatureWorkspace featureWorkspace = (IFeatureWorkspace) historicalVersion;
+            IFeatureWorkspace featureWorkspace1 = (IFeatureWorkspace) historicalVersion1;
             ITable table = featureWorkspace.OpenTable(tableName);
             ITable table1 = featureWorkspace1.OpenTable(tableName);
-            IDifferenceCursor differenceCursor = ((IVersionedTable)table).Differences(table1, differenceType, null);
+            IDifferenceCursor differenceCursor = ((IVersionedTable) table).Differences(table1, differenceType, null);
             IFIDSet fIDSetClass = new FIDSet();
             IRow row = null;
             int num = -1;
@@ -73,15 +75,16 @@ namespace Yutai.ArcGIS.Common.Helpers
             return fIDSetClass;
         }
 
-        public static IFIDSet FindVersionDifferences(IWorkspace workspace, string childVersionName, string parentVersionName, string tableName, esriDifferenceType differenceType)
+        public static IFIDSet FindVersionDifferences(IWorkspace workspace, string childVersionName,
+            string parentVersionName, string tableName, esriDifferenceType differenceType)
         {
-            IVersionedWorkspace versionedWorkspace = (IVersionedWorkspace)workspace;
+            IVersionedWorkspace versionedWorkspace = (IVersionedWorkspace) workspace;
             IVersion version = versionedWorkspace.FindVersion(childVersionName);
             IVersion version1 = versionedWorkspace.FindVersion(parentVersionName);
-            IVersion commonAncestor = ((IVersion2)version).GetCommonAncestor(version1);
-            ITable table = ((IFeatureWorkspace)version).OpenTable(tableName);
-            ITable table1 = ((IFeatureWorkspace)commonAncestor).OpenTable(tableName);
-            IDifferenceCursor differenceCursor = ((IVersionedTable)table).Differences(table1, differenceType, null);
+            IVersion commonAncestor = ((IVersion2) version).GetCommonAncestor(version1);
+            ITable table = ((IFeatureWorkspace) version).OpenTable(tableName);
+            ITable table1 = ((IFeatureWorkspace) commonAncestor).OpenTable(tableName);
+            IDifferenceCursor differenceCursor = ((IVersionedTable) table).Differences(table1, differenceType, null);
             IFIDSet fIDSetClass = new FIDSet();
             IRow row = null;
             int num = -1;

@@ -13,15 +13,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public object Style
         {
-            get
-            {
-                return this.object_0;
-            }
-            set
-            {
-                this.object_0 = value;
-            }
+            get { return this.object_0; }
+            set { this.object_0 = value; }
         }
     }
 }
-

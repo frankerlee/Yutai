@@ -35,8 +35,10 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
 
         private void btnSelectOutLocation_Click(object sender, EventArgs e)
         {
-            SaveFileDialog dialog = new SaveFileDialog {
-                Filter = "EMF(*.emf)|*.emf|EPS(*.eps)|*.eps|AI(*.ai)|*.ai|PDF(*.pdf)|*.pdf|SVG(*.svg)|*.svg|BMP(*.bmp)|*.bmp|JPEG(*.jpg)|*.jpg|PNG(*.png)|*.png|TIFF(*.tif)|*.tif|GIF(*.gif)|*.gif"
+            SaveFileDialog dialog = new SaveFileDialog
+            {
+                Filter =
+                    "EMF(*.emf)|*.emf|EPS(*.eps)|*.eps|AI(*.ai)|*.ai|PDF(*.pdf)|*.pdf|SVG(*.svg)|*.svg|BMP(*.bmp)|*.bmp|JPEG(*.jpg)|*.jpg|PNG(*.png)|*.png|TIFF(*.tif)|*.tif|GIF(*.gif)|*.gif"
             };
             if (dialog.ShowDialog() == DialogResult.OK)
             {
@@ -103,7 +105,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             return null;
         }
 
- public void Export()
+        public void Export()
         {
             if (this.m_pLayer == null)
             {
@@ -149,8 +151,8 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
                 int resolution = (int) pExport.Resolution;
                 grect.left = 0;
                 grect.top = 0;
-                grect.right = pActiveView.ExportFrame.right * (resolution / num2);
-                grect.bottom = pActiveView.ExportFrame.bottom * (resolution / num2);
+                grect.right = pActiveView.ExportFrame.right*(resolution/num2);
+                grect.bottom = pActiveView.ExportFrame.bottom*(resolution/num2);
                 IEnvelope envelope = new EnvelopeClass();
                 envelope.PutCoords((double) grect.left, (double) grect.top, (double) grect.right, (double) grect.bottom);
                 pExport.PixelBounds = envelope;
@@ -171,7 +173,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             }
         }
 
- private void SetTabControl(IExport pExport)
+        private void SetTabControl(IExport pExport)
         {
             this.tabControl1.TabPages.Clear();
             if (pExport == null)
@@ -318,19 +320,12 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
 
         public IActiveView ActiveView
         {
-            set
-            {
-                this.m_pActiveView = value;
-            }
+            set { this.m_pActiveView = value; }
         }
 
         public ILayer Layer
         {
-            set
-            {
-                this.m_pLayer = value;
-            }
+            set { this.m_pLayer = value; }
         }
     }
 }
-

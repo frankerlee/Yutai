@@ -24,13 +24,15 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
             {
                 return false;
             }
-            (base.m_pGeometricEffect as IGraphicAttributes).set_Value((int) this.comboBox1.Tag, this.comboBox1.SelectedIndex);
+            (base.m_pGeometricEffect as IGraphicAttributes).set_Value((int) this.comboBox1.Tag,
+                this.comboBox1.SelectedIndex);
             return true;
         }
 
         private void btnAddGemoetricEffic_Click(object sender, EventArgs e)
         {
-            frmGeometricEffectList list = new frmGeometricEffectList {
+            frmGeometricEffectList list = new frmGeometricEffectList
+            {
                 BasicSymbolLayerBaseControl = this.m_pControl
             };
             if ((list.ShowDialog() == DialogResult.OK) && (this.m_pControl != null))
@@ -48,11 +50,12 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
         {
             if (this.m_CanDo)
             {
-                (base.m_pGeometricEffect as IGraphicAttributes).set_Value((int) (sender as ComboBox).Tag, (sender as ComboBox).SelectedIndex);
+                (base.m_pGeometricEffect as IGraphicAttributes).set_Value((int) (sender as ComboBox).Tag,
+                    (sender as ComboBox).SelectedIndex);
             }
         }
 
- private void GeometricEffectEnclosingPolygonPage_Load(object sender, EventArgs e)
+        private void GeometricEffectEnclosingPolygonPage_Load(object sender, EventArgs e)
         {
             if (base.m_pGeometricEffect == null)
             {
@@ -65,7 +68,7 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
             this.m_CanDo = true;
         }
 
- private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (this.m_pControl != null)
             {
@@ -75,7 +78,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
 
         private void 修改ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmGeometricEffectList list = new frmGeometricEffectList {
+            frmGeometricEffectList list = new frmGeometricEffectList
+            {
                 BasicSymbolLayerBaseControl = this.m_pControl
             };
             if ((list.ShowDialog() == DialogResult.OK) && (this.m_pControl != null))
@@ -85,4 +89,3 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
         }
     }
 }
-

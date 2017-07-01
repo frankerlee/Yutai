@@ -19,12 +19,13 @@ namespace Yutai.Shared
     public class WorkspaceOperator
     {
         // Methods
-        public static IFeatureClass CreateAnnoFeatureClass(string string_0, IFeatureDataset ifeatureDataset_0, double double_0)
+        public static IFeatureClass CreateAnnoFeatureClass(string string_0, IFeatureDataset ifeatureDataset_0,
+            double double_0)
         {
             IObjectClassDescription description = new AnnotationFeatureClassDescription();
-            IFeatureClassDescription description2 = (IFeatureClassDescription)description;
+            IFeatureClassDescription description2 = (IFeatureClassDescription) description;
             IFields requiredFields = description.RequiredFields;
-            IFeatureWorkspaceAnno workspace = (IFeatureWorkspaceAnno)ifeatureDataset_0.Workspace;
+            IFeatureWorkspaceAnno workspace = (IFeatureWorkspaceAnno) ifeatureDataset_0.Workspace;
             IGraphicsLayerScale referenceScale = new GraphicsLayerScale
             {
                 ReferenceScale = double_0,
@@ -33,26 +34,29 @@ namespace Yutai.Shared
             UID instanceCLSID = description.InstanceCLSID;
             UID classExtensionCLSID = description.ClassExtensionCLSID;
             ISymbolCollection symbolCollection = new SymbolCollection();
-            symbolCollection.set_Symbol(0, (ISymbol)MakeTextSymbol("宋体", 3.0));
-            symbolCollection.set_Symbol(1, (ISymbol)MakeTextSymbol("宋体", 3.5));
-            symbolCollection.set_Symbol(2, (ISymbol)MakeTextSymbol("宋体", 3.0));
-            symbolCollection.set_Symbol(3, (ISymbol)MakeTextSymbol("宋体", 2.5));
-            symbolCollection.set_Symbol(4, (ISymbol)MakeTextSymbol("黑体", 2.0));
-            symbolCollection.set_Symbol(5, (ISymbol)MakeTextSymbol("黑体", 1.5));
-            symbolCollection.set_Symbol(6, (ISymbol)MakeTextSymbol("宋体", 1.0));
-            symbolCollection.set_Symbol(7, (ISymbol)MakeTextSymbol("宋体", 0.4));
-            symbolCollection.set_Symbol(8, (ISymbol)MakeTextSymbol("宋体", 0.3));
-            symbolCollection.set_Symbol(9, (ISymbol)MakeTextSymbol("黑体", 1.0));
-            symbolCollection.set_Symbol(10, (ISymbol)MakeTextSymbol("宋体", 0.5));
-            symbolCollection.set_Symbol(11, (ISymbol)MakeTextSymbol("宋体", 0.6));
-            symbolCollection.set_Symbol(12, (ISymbol)MakeTextSymbol("宋体", 0.7));
-            symbolCollection.set_Symbol(13, (ISymbol)MakeTextSymbol("宋体", 0.8));
-            symbolCollection.set_Symbol(14, (ISymbol)MakeTextSymbol("宋体", 0.9));
-            symbolCollection.set_Symbol(15, (ISymbol)MakeTextSymbol("宋体", 1.2));
-            return workspace.CreateAnnotationClass(string_0, requiredFields, instanceCLSID, classExtensionCLSID, description2.ShapeFieldName, "", ifeatureDataset_0, null, null, referenceScale, symbolCollection, true);
+            symbolCollection.set_Symbol(0, (ISymbol) MakeTextSymbol("宋体", 3.0));
+            symbolCollection.set_Symbol(1, (ISymbol) MakeTextSymbol("宋体", 3.5));
+            symbolCollection.set_Symbol(2, (ISymbol) MakeTextSymbol("宋体", 3.0));
+            symbolCollection.set_Symbol(3, (ISymbol) MakeTextSymbol("宋体", 2.5));
+            symbolCollection.set_Symbol(4, (ISymbol) MakeTextSymbol("黑体", 2.0));
+            symbolCollection.set_Symbol(5, (ISymbol) MakeTextSymbol("黑体", 1.5));
+            symbolCollection.set_Symbol(6, (ISymbol) MakeTextSymbol("宋体", 1.0));
+            symbolCollection.set_Symbol(7, (ISymbol) MakeTextSymbol("宋体", 0.4));
+            symbolCollection.set_Symbol(8, (ISymbol) MakeTextSymbol("宋体", 0.3));
+            symbolCollection.set_Symbol(9, (ISymbol) MakeTextSymbol("黑体", 1.0));
+            symbolCollection.set_Symbol(10, (ISymbol) MakeTextSymbol("宋体", 0.5));
+            symbolCollection.set_Symbol(11, (ISymbol) MakeTextSymbol("宋体", 0.6));
+            symbolCollection.set_Symbol(12, (ISymbol) MakeTextSymbol("宋体", 0.7));
+            symbolCollection.set_Symbol(13, (ISymbol) MakeTextSymbol("宋体", 0.8));
+            symbolCollection.set_Symbol(14, (ISymbol) MakeTextSymbol("宋体", 0.9));
+            symbolCollection.set_Symbol(15, (ISymbol) MakeTextSymbol("宋体", 1.2));
+            return workspace.CreateAnnotationClass(string_0, requiredFields, instanceCLSID, classExtensionCLSID,
+                description2.ShapeFieldName, "", ifeatureDataset_0, null, null, referenceScale, symbolCollection, true);
         }
 
-        public static IFeatureClass CreateFeatureClass(object object_0, string string_0, ISpatialReference ispatialReference_0, esriFeatureType esriFeatureType_0, esriGeometryType esriGeometryType_0, IFields ifields_0, UID uid_0, UID uid_1, string string_1)
+        public static IFeatureClass CreateFeatureClass(object object_0, string string_0,
+            ISpatialReference ispatialReference_0, esriFeatureType esriFeatureType_0,
+            esriGeometryType esriGeometryType_0, IFields ifields_0, UID uid_0, UID uid_1, string string_1)
         {
             if (object_0 == null)
             {
@@ -127,9 +131,9 @@ namespace Yutai.Shared
             if (ifields_0 == null)
             {
                 ifields_0 = new Fields();
-                IFieldsEdit edit = (IFieldsEdit)ifields_0;
+                IFieldsEdit edit = (IFieldsEdit) ifields_0;
                 IGeometryDef def = new GeometryDef();
-                IGeometryDefEdit edit2 = (IGeometryDefEdit)def;
+                IGeometryDefEdit edit2 = (IGeometryDefEdit) def;
                 edit2.GeometryType_2 = esriGeometryType_0;
                 edit2.GridCount_2 = 1;
                 edit2.set_GridSize(0, 8555.04939799);
@@ -141,13 +145,13 @@ namespace Yutai.Shared
                     edit2.SpatialReference_2 = ispatialReference_0;
                 }
                 IField field = new Field();
-                IFieldEdit edit3 = (IFieldEdit)field;
+                IFieldEdit edit3 = (IFieldEdit) field;
                 edit3.Name_2 = "OBJECTID";
-                edit3.AliasName_2= "OBJECTID";
+                edit3.AliasName_2 = "OBJECTID";
                 edit3.Type_2 = esriFieldType.esriFieldTypeOID;
                 edit.AddField(field);
                 IField field2 = new Field();
-                IFieldEdit edit4 = (IFieldEdit)field2;
+                IFieldEdit edit4 = (IFieldEdit) field2;
                 edit4.Name_2 = "SHAPE";
                 edit4.AliasName_2 = "SHAPE";
                 edit4.Type_2 = esriFieldType.esriFieldTypeGeometry;
@@ -170,18 +174,21 @@ namespace Yutai.Shared
             IFeatureClass class2 = null;
             if (object_0 is IWorkspace)
             {
-                IWorkspace workspace = (IWorkspace)object_0;
-                IFeatureWorkspace workspace2 = (IFeatureWorkspace)workspace;
-                return workspace2.CreateFeatureClass(string_0, ifields_0, uid_0, uid_1, esriFeatureType_0, shapeFieldName, string_1);
+                IWorkspace workspace = (IWorkspace) object_0;
+                IFeatureWorkspace workspace2 = (IFeatureWorkspace) workspace;
+                return workspace2.CreateFeatureClass(string_0, ifields_0, uid_0, uid_1, esriFeatureType_0,
+                    shapeFieldName, string_1);
             }
             if (object_0 is IFeatureDataset)
             {
-                class2 = ((IFeatureDataset)object_0).CreateFeatureClass(string_0, ifields_0, uid_0, uid_1, esriFeatureType_0, shapeFieldName, string_1);
+                class2 = ((IFeatureDataset) object_0).CreateFeatureClass(string_0, ifields_0, uid_0, uid_1,
+                    esriFeatureType_0, shapeFieldName, string_1);
             }
             return class2;
         }
 
-        public static IDataset CreateFeatureDataSet(IWorkspace iworkspace_0, string string_0, ISpatialReference ispatialReference_0)
+        public static IDataset CreateFeatureDataSet(IWorkspace iworkspace_0, string string_0,
+            ISpatialReference ispatialReference_0)
         {
             if (iworkspace_0 == null)
             {
@@ -200,7 +207,7 @@ namespace Yutai.Shared
                 return null;
             }
             IWorkspace workspace = iworkspace_0;
-            IFeatureWorkspace workspace2 = (IFeatureWorkspace)workspace;
+            IFeatureWorkspace workspace2 = (IFeatureWorkspace) workspace;
             IDataset dataset2 = null;
             try
             {
@@ -218,7 +225,9 @@ namespace Yutai.Shared
             IWorkspaceFactory o = new FileGDBWorkspaceFactory();
             try
             {
-                workspace = (o.Create(System.IO.Path.GetDirectoryName(string_0), System.IO.Path.GetFileNameWithoutExtension(string_0), null, 0) as IName).Open() as IWorkspace;
+                workspace =
+                (o.Create(System.IO.Path.GetDirectoryName(string_0),
+                    System.IO.Path.GetFileNameWithoutExtension(string_0), null, 0) as IName).Open() as IWorkspace;
             }
             catch (COMException exception)
             {
@@ -247,7 +256,9 @@ namespace Yutai.Shared
             IWorkspaceFactory o = new AccessWorkspaceFactory();
             try
             {
-                workspace = (o.Create(System.IO.Path.GetDirectoryName(string_0), System.IO.Path.GetFileNameWithoutExtension(string_0), null, 0) as IName).Open() as IWorkspace;
+                workspace =
+                (o.Create(System.IO.Path.GetDirectoryName(string_0),
+                    System.IO.Path.GetFileNameWithoutExtension(string_0), null, 0) as IName).Open() as IWorkspace;
             }
             catch (COMException exception)
             {
@@ -287,9 +298,10 @@ namespace Yutai.Shared
             };
             checker.ValidateTableName(string_0, out str2);
             name = str2;
-            if ((iworkspace_0.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace) || (iworkspace_0.Type == esriWorkspaceType.esriLocalDatabaseWorkspace))
+            if ((iworkspace_0.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace) ||
+                (iworkspace_0.Type == esriWorkspaceType.esriLocalDatabaseWorkspace))
             {
-                while (((IWorkspace2)iworkspace_0).get_NameExists(esriDatasetType.esriDTFeatureClass, name))
+                while (((IWorkspace2) iworkspace_0).get_NameExists(esriDatasetType.esriDTFeatureClass, name))
                 {
                     name = str2 + "_" + num.ToString();
                     num++;
@@ -302,7 +314,8 @@ namespace Yutai.Shared
             return name;
         }
 
-        public static string GetFinalName2(IWorkspace iworkspace_0, esriDatasetType esriDatasetType_0, string string_0, string string_1, string string_2)
+        public static string GetFinalName2(IWorkspace iworkspace_0, esriDatasetType esriDatasetType_0, string string_0,
+            string string_1, string string_2)
         {
             string str2;
             string name = string_0 + string_1 + string_2;
@@ -328,9 +341,10 @@ namespace Yutai.Shared
             };
             checker.ValidateTableName(string_1, out str2);
             name = string_0 + str2 + string_2;
-            if ((iworkspace_0.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace) || (iworkspace_0.Type == esriWorkspaceType.esriLocalDatabaseWorkspace))
+            if ((iworkspace_0.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace) ||
+                (iworkspace_0.Type == esriWorkspaceType.esriLocalDatabaseWorkspace))
             {
-                while (((IWorkspace2)iworkspace_0).get_NameExists(esriDatasetType.esriDTFeatureClass, name))
+                while (((IWorkspace2) iworkspace_0).get_NameExists(esriDatasetType.esriDTFeatureClass, name))
                 {
                     name = string_0 + str2 + string_2 + "_" + num.ToString();
                     num++;
@@ -377,7 +391,8 @@ namespace Yutai.Shared
                 return "";
             }
             StringBuilder builder = new StringBuilder();
-            if ((iworkspace_0.Type == esriWorkspaceType.esriLocalDatabaseWorkspace) || (iworkspace_0.Type == esriWorkspaceType.esriFileSystemWorkspace))
+            if ((iworkspace_0.Type == esriWorkspaceType.esriLocalDatabaseWorkspace) ||
+                (iworkspace_0.Type == esriWorkspaceType.esriFileSystemWorkspace))
             {
                 builder.Append(iworkspace_0.PathName);
             }
@@ -386,7 +401,9 @@ namespace Yutai.Shared
                 string str2 = Convert.ToString(iworkspace_0.ConnectionProperties.GetProperty("DBCLIENT")).ToLower();
                 builder.Append(str2);
                 builder.Append(",");
-                str2 = Convert.ToString(iworkspace_0.ConnectionProperties.GetProperty("DB_CONNECTION_PROPERTIES")).ToLower();
+                str2 =
+                    Convert.ToString(iworkspace_0.ConnectionProperties.GetProperty("DB_CONNECTION_PROPERTIES"))
+                        .ToLower();
                 builder.Append(str2);
                 builder.Append(",");
                 str2 = Convert.ToString(iworkspace_0.ConnectionProperties.GetProperty("Database")).ToLower();
@@ -397,8 +414,10 @@ namespace Yutai.Shared
 
         public static bool IsConnectedToGeodatabase(IWorkspace iworkspace_0)
         {
-            IWorkspaceProperties properties = (IWorkspaceProperties)iworkspace_0;
-            return Convert.ToBoolean(properties.get_Property(esriWorkspacePropertyGroupType.esriWorkspacePropertyGroup, 7).PropertyValue);
+            IWorkspaceProperties properties = (IWorkspaceProperties) iworkspace_0;
+            return
+                Convert.ToBoolean(
+                    properties.get_Property(esriWorkspacePropertyGroupType.esriWorkspacePropertyGroup, 7).PropertyValue);
         }
 
         public static bool IsConnectedToGeodatabase(IWorkspaceName iworkspaceName_0)
@@ -425,7 +444,7 @@ namespace Yutai.Shared
             try
             {
                 ISimpleTextSymbol symbol = new TextSymbol() as ISimpleTextSymbol;
-                IFontDisp disp = (IFontDisp)new StdFont();
+                IFontDisp disp = (IFontDisp) new StdFont();
                 disp.Name = string_0;
                 symbol.Font = disp;
                 symbol.Angle = 0.0;
@@ -512,9 +531,9 @@ namespace Yutai.Shared
                 object obj3;
                 string str2 = "";
                 ipropertySet_0.GetAllProperties(out obj2, out obj3);
-                if (((string[])obj2)[0] == "DATABASE")
+                if (((string[]) obj2)[0] == "DATABASE")
                 {
-                    str2 = System.IO.Path.GetExtension(((object[])obj3)[0].ToString()).ToLower();
+                    str2 = System.IO.Path.GetExtension(((object[]) obj3)[0].ToString()).ToLower();
                 }
                 if (str2 == ".mdb")
                 {
@@ -587,7 +606,8 @@ namespace Yutai.Shared
                 return false;
             }
             bool flag2 = false;
-            if ((iworkspace_0.Type == esriWorkspaceType.esriLocalDatabaseWorkspace) || (iworkspace_0.Type == esriWorkspaceType.esriFileSystemWorkspace))
+            if ((iworkspace_0.Type == esriWorkspaceType.esriLocalDatabaseWorkspace) ||
+                (iworkspace_0.Type == esriWorkspaceType.esriFileSystemWorkspace))
             {
                 flag2 = string.Compare(iworkspace_0.PathName, iworkspace_1.PathName, true) == 0;
             }
@@ -598,8 +618,12 @@ namespace Yutai.Shared
                 if (str == str2)
                 {
                     string str3 = str;
-                    str = Convert.ToString(iworkspace_0.ConnectionProperties.GetProperty("DB_CONNECTION_PROPERTIES")).ToLower();
-                    str2 = Convert.ToString(iworkspace_1.ConnectionProperties.GetProperty("DB_CONNECTION_PROPERTIES")).ToLower();
+                    str =
+                        Convert.ToString(iworkspace_0.ConnectionProperties.GetProperty("DB_CONNECTION_PROPERTIES"))
+                            .ToLower();
+                    str2 =
+                        Convert.ToString(iworkspace_1.ConnectionProperties.GetProperty("DB_CONNECTION_PROPERTIES"))
+                            .ToLower();
                     if (str == str2)
                     {
                         if (str3 == "sqlserver")
@@ -618,6 +642,4 @@ namespace Yutai.Shared
             return flag2;
         }
     }
-
-
 }

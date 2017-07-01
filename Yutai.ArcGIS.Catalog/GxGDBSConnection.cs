@@ -6,7 +6,8 @@ using Yutai.ArcGIS.Common.Framework;
 
 namespace Yutai.ArcGIS.Catalog
 {
-    public class GxGDBSConnection : IGxObject, IGxObjectContainer, IGxObjectProperties, IGxObjectUI, IGxContextMenuWap, IGxGDSConnection
+    public class GxGDBSConnection : IGxObject, IGxObjectContainer, IGxObjectProperties, IGxObjectUI, IGxContextMenuWap,
+        IGxGDSConnection
     {
         private IDataServerManager idataServerManager_0 = new DataServerManagerClass();
         private IGxCatalog igxCatalog_0 = null;
@@ -151,106 +152,67 @@ namespace Yutai.ArcGIS.Catalog
 
         public bool AreChildrenViewable
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public string BaseName
         {
-            get
-            {
-                return this.string_0;
-            }
+            get { return this.string_0; }
         }
 
         public string Category
         {
-            get
-            {
-                return "Database Server ";
-            }
+            get { return "Database Server "; }
         }
 
         public IEnumGxObject Children
         {
-            get
-            {
-                return (this.igxObjectArray_0 as IEnumGxObject);
-            }
+            get { return (this.igxObjectArray_0 as IEnumGxObject); }
         }
 
         public UID ClassID
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public UID ContextMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public object DataServerManager
         {
-            get
-            {
-                return this.idataServerManager_0;
-            }
+            get { return this.idataServerManager_0; }
         }
 
         public string FullName
         {
-            get
-            {
-                return this.string_0;
-            }
+            get { return this.string_0; }
         }
 
         public bool HasChildren
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public IName InternalObjectName
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public bool IsAdministrator
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         public bool IsConnected
         {
-            get
-            {
-                return this.idataServerManager_0.IsConnected;
-            }
+            get { return this.idataServerManager_0.IsConnected; }
         }
 
         public bool IsValid
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         public Bitmap LargeImage
@@ -279,42 +241,27 @@ namespace Yutai.ArcGIS.Catalog
 
         public string Name
         {
-            get
-            {
-                return Path.GetFileNameWithoutExtension(this.string_0);
-            }
+            get { return Path.GetFileNameWithoutExtension(this.string_0); }
         }
 
         public UID NewMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IGxObject Parent
         {
-            get
-            {
-                return this.igxObject_0;
-            }
+            get { return this.igxObject_0; }
         }
 
         public int PropertyCount
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         public string ServerName
         {
-            get
-            {
-                return this.idataServerManager_0.ServerName;
-            }
+            get { return this.idataServerManager_0.ServerName; }
         }
 
         public Bitmap SmallImage
@@ -342,4 +289,3 @@ namespace Yutai.ArcGIS.Catalog
         }
     }
 }
-

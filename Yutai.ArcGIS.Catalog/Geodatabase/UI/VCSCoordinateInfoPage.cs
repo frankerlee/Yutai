@@ -21,7 +21,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.InitializeComponent();
         }
 
- private string method_0(ISpatialReferenceInfo ispatialReferenceInfo_0)
+        private string method_0(ISpatialReferenceInfo ispatialReferenceInfo_0)
         {
             IGeographicCoordinateSystem geographicCoordinateSystem;
             string str2;
@@ -44,17 +44,28 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 builder.Append((ispatialReferenceInfo_0 as IVerticalCoordinateSystem).VerticalShift.ToString());
                 builder.Append("\r\n");
                 builder.Append("垂直坐标框架:");
-                builder.Append(((ispatialReferenceInfo_0 as IVerticalCoordinateSystem).Datum as ISpatialReferenceInfo).Name);
+                builder.Append(
+                    ((ispatialReferenceInfo_0 as IVerticalCoordinateSystem).Datum as ISpatialReferenceInfo).Name);
                 return builder.ToString();
             }
             if (ispatialReferenceInfo_0 is IGeographicCoordinateSystem)
             {
                 geographicCoordinateSystem = (IGeographicCoordinateSystem) ispatialReferenceInfo_0;
-                str2 = ("别名: " + geographicCoordinateSystem.Alias + "\r\n") + "缩略名: " + geographicCoordinateSystem.Abbreviation + "\r\n";
-                string[] strArray = new string[] { 
-                    str2, "说明: ", geographicCoordinateSystem.Remarks, "\r\n角度单位: ", geographicCoordinateSystem.CoordinateUnit.Name, " (", geographicCoordinateSystem.CoordinateUnit.RadiansPerUnit.ToString(), ")\r\n本初子午线: ", geographicCoordinateSystem.PrimeMeridian.Name, " (", geographicCoordinateSystem.PrimeMeridian.Longitude.ToString(), ")\r\n数据: ", geographicCoordinateSystem.Datum.Name, "\r\n  椭球体: ", geographicCoordinateSystem.Datum.Spheroid.Name, "\r\n    长半轴: ", 
-                    geographicCoordinateSystem.Datum.Spheroid.SemiMajorAxis.ToString(), "\r\n    短半轴: ", geographicCoordinateSystem.Datum.Spheroid.SemiMinorAxis.ToString(), "\r\n    扁率倒数: ", (1.0 / geographicCoordinateSystem.Datum.Spheroid.Flattening).ToString()
-                 };
+                str2 = ("别名: " + geographicCoordinateSystem.Alias + "\r\n") + "缩略名: " +
+                       geographicCoordinateSystem.Abbreviation + "\r\n";
+                string[] strArray = new string[]
+                {
+                    str2, "说明: ", geographicCoordinateSystem.Remarks, "\r\n角度单位: ",
+                    geographicCoordinateSystem.CoordinateUnit.Name, " (",
+                    geographicCoordinateSystem.CoordinateUnit.RadiansPerUnit.ToString(), ")\r\n本初子午线: ",
+                    geographicCoordinateSystem.PrimeMeridian.Name, " (",
+                    geographicCoordinateSystem.PrimeMeridian.Longitude.ToString(), ")\r\n数据: ",
+                    geographicCoordinateSystem.Datum.Name, "\r\n  椭球体: ", geographicCoordinateSystem.Datum.Spheroid.Name,
+                    "\r\n    长半轴: ",
+                    geographicCoordinateSystem.Datum.Spheroid.SemiMajorAxis.ToString(), "\r\n    短半轴: ",
+                    geographicCoordinateSystem.Datum.Spheroid.SemiMinorAxis.ToString(), "\r\n    扁率倒数: ",
+                    (1.0/geographicCoordinateSystem.Datum.Spheroid.Flattening).ToString()
+                };
                 return string.Concat(strArray);
             }
             if (!(ispatialReferenceInfo_0 is IProjectedCoordinateSystem))
@@ -75,11 +86,22 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 }
                 str3 = str3 + parameters[i].Name + ": " + parameters[i].Value.ToString() + "\r\n ";
             }
-            str2 = (((("别名: " + system2.Alias + "\r\n") + "缩略名: " + system2.Abbreviation + "\r\n") + "说明: " + system2.Remarks + "\r\n") + "投影: " + system2.Projection.Name + "\r\n") + "参数:\r\n" + str3;
-            str2 = ((((str2 + "线性单位: " + system2.CoordinateUnit.Name + " (" + system2.CoordinateUnit.MetersPerUnit.ToString() + ")\r\n") + "地理坐标系:\r\n") + "  名称: " + geographicCoordinateSystem.Name + "\r\n") + "  缩略名: " + geographicCoordinateSystem.Abbreviation + "\r\n") + "  说明: " + geographicCoordinateSystem.Remarks + "\r\n";
-            str2 = str2 + "  角度单位: " + geographicCoordinateSystem.CoordinateUnit.Name + " (" + geographicCoordinateSystem.CoordinateUnit.RadiansPerUnit.ToString() + ")\r\n";
-            double num = 1.0 / geographicCoordinateSystem.Datum.Spheroid.Flattening;
-            return ((((((str2 + "  本初子午线: " + geographicCoordinateSystem.PrimeMeridian.Name + " (" + geographicCoordinateSystem.PrimeMeridian.Longitude.ToString() + ")\r\n") + "  数据: " + geographicCoordinateSystem.Datum.Name + "\r\n") + "    椭球体: " + geographicCoordinateSystem.Datum.Spheroid.Name + "\r\n") + "    长半轴: " + geographicCoordinateSystem.Datum.Spheroid.SemiMajorAxis.ToString() + "\r\n") + "    短半轴: " + geographicCoordinateSystem.Datum.Spheroid.SemiMinorAxis.ToString() + "\r\n") + "    扁率倒数: " + num.ToString());
+            str2 = (((("别名: " + system2.Alias + "\r\n") + "缩略名: " + system2.Abbreviation + "\r\n") + "说明: " +
+                     system2.Remarks + "\r\n") + "投影: " + system2.Projection.Name + "\r\n") + "参数:\r\n" + str3;
+            str2 = ((((str2 + "线性单位: " + system2.CoordinateUnit.Name + " (" +
+                       system2.CoordinateUnit.MetersPerUnit.ToString() + ")\r\n") + "地理坐标系:\r\n") + "  名称: " +
+                     geographicCoordinateSystem.Name + "\r\n") + "  缩略名: " + geographicCoordinateSystem.Abbreviation +
+                    "\r\n") + "  说明: " + geographicCoordinateSystem.Remarks + "\r\n";
+            str2 = str2 + "  角度单位: " + geographicCoordinateSystem.CoordinateUnit.Name + " (" +
+                   geographicCoordinateSystem.CoordinateUnit.RadiansPerUnit.ToString() + ")\r\n";
+            double num = 1.0/geographicCoordinateSystem.Datum.Spheroid.Flattening;
+            return ((((((str2 + "  本初子午线: " + geographicCoordinateSystem.PrimeMeridian.Name + " (" +
+                         geographicCoordinateSystem.PrimeMeridian.Longitude.ToString() + ")\r\n") + "  数据: " +
+                        geographicCoordinateSystem.Datum.Name + "\r\n") + "    椭球体: " +
+                       geographicCoordinateSystem.Datum.Spheroid.Name + "\r\n") + "    长半轴: " +
+                      geographicCoordinateSystem.Datum.Spheroid.SemiMajorAxis.ToString() + "\r\n") + "    短半轴: " +
+                     geographicCoordinateSystem.Datum.Spheroid.SemiMinorAxis.ToString() + "\r\n") + "    扁率倒数: " +
+                    num.ToString());
         }
 
         private void VCSCoordinateInfoPage_Load(object sender, EventArgs e)
@@ -103,25 +125,15 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public bool IsEdit
         {
-            set
-            {
-                this.bool_0 = value;
-            }
+            set { this.bool_0 = value; }
         }
 
         public ISpatialReferenceInfo SpatialReference
         {
-            get
-            {
-                return this.iverticalCoordinateSystem_0;
-            }
-            set
-            {
-                this.iverticalCoordinateSystem_0 = value as IVerticalCoordinateSystem;
-            }
+            get { return this.iverticalCoordinateSystem_0; }
+            set { this.iverticalCoordinateSystem_0 = value as IVerticalCoordinateSystem; }
         }
 
         internal delegate void SpatialReferenceChangedHandler(object object_0);
     }
 }
-

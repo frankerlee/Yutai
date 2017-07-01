@@ -28,7 +28,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.m_property.Apply();
         }
 
- private void frmEditTemplateProperty_Load(object sender, EventArgs e)
+        private void frmEditTemplateProperty_Load(object sender, EventArgs e)
         {
             this.txtName.Text = this.EditTemplate.Name;
             this.txtDescription.Text = this.EditTemplate.Description;
@@ -40,7 +40,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.panel1.Controls.Add(this.m_property);
         }
 
- private void label6_Paint(object sender, PaintEventArgs e)
+        private void label6_Paint(object sender, PaintEventArgs e)
         {
             if (this.EditTemplate.Symbol != null)
             {
@@ -55,4 +55,3 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         public YTEditTemplate EditTemplate { get; set; }
     }
 }
-

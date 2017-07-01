@@ -38,7 +38,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnSelectInputFeatures_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
                 Filter = "VCT文件(*.vct)|*.vct",
                 Multiselect = true
             };
@@ -53,7 +54,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnSelectOutLocation_Click(object sender, EventArgs e)
         {
-            frmOpenFile file = new frmOpenFile {
+            frmOpenFile file = new frmOpenFile
+            {
                 Text = "保存位置"
             };
             file.RemoveAllFilters();
@@ -72,7 +74,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     }
                     else if (this.igxObject_0 is IGxFolder)
                     {
-                        IWorkspaceName name = new WorkspaceNameClass {
+                        IWorkspaceName name = new WorkspaceNameClass
+                        {
                             WorkspaceFactoryProgID = "esriDataSourcesFile.ShapefileWorkspaceFactory",
                             PathName = (this.igxObject_0.InternalObjectName as IFileName).Path
                         };
@@ -107,7 +110,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             return true;
         }
 
- private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.listView1.SelectedItems.Count > 0)
             {
@@ -194,7 +197,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     }
                     catch (Exception exception)
                     {
-                        Logger.Current.Error("",exception, "");
+                        Logger.Current.Error("", exception, "");
                         MessageBox.Show(exception.Message);
                     }
                     num++;
@@ -209,4 +212,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

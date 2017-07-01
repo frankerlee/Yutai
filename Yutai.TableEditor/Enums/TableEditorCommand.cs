@@ -15,7 +15,6 @@ namespace Yutai.Plugins.TableEditor.Enums
     {
         Clear = 0,
         Close = 1,
-
     }
 
     public enum ItemDisplayStyle
@@ -38,7 +37,7 @@ namespace Yutai.Plugins.TableEditor.Enums
         Integer = 1,
         Double = 2
     }
-    
+
     public enum MatchType
     {
         Contains = 0,

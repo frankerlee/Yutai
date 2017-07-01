@@ -21,13 +21,9 @@ namespace Yutai.ArcGIS.Carto.UI
             this.string_0 = this.txtHatchClassName.Text;
         }
 
- public string HatchClassName
+        public string HatchClassName
         {
-            get
-            {
-                return this.string_0;
-            }
+            get { return this.string_0; }
         }
     }
 }
-

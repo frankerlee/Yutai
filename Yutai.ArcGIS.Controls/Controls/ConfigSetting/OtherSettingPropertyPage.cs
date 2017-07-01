@@ -92,14 +92,15 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
                     }
                 }
             }
-        Label_01E2:
+            Label_01E2:
             System.Windows.Forms.Cursor.Current = Cursors.Default;
-        Label_01EE:
+            Label_01EE:
             if (AppConfig.m_pWorkspace != null)
             {
                 try
                 {
-                    frmLayerConfigTable table = new frmLayerConfigTable {
+                    frmLayerConfigTable table = new frmLayerConfigTable
+                    {
                         Workspace = AppConfig.m_pWorkspace,
                         LayerConfig = this.layerconfig
                     };
@@ -214,7 +215,7 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
             }
         }
 
- private IPropertySet GetConnectionProperty()
+        private IPropertySet GetConnectionProperty()
         {
             IPropertySet set = new PropertySetClass();
             set.SetProperty("SERVER", AppConfig.server);
@@ -288,7 +289,7 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
             this.m_CanDo = true;
         }
 
- private void OtherSettingPropertyPage_Load(object sender, EventArgs e)
+        private void OtherSettingPropertyPage_Load(object sender, EventArgs e)
         {
             this.Init();
         }
@@ -366,14 +367,15 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
                     }
                 }
             }
-        Label_01E2:
+            Label_01E2:
             System.Windows.Forms.Cursor.Current = Cursors.Default;
-        Label_01EE:
+            Label_01EE:
             if (AppConfig.m_pWorkspace != null)
             {
                 try
                 {
-                    frmLayerConfigTable table = new frmLayerConfigTable {
+                    frmLayerConfigTable table = new frmLayerConfigTable
+                    {
                         Workspace = AppConfig.m_pWorkspace,
                         LayerConfig = this.MenuConfig
                     };
@@ -463,4 +465,3 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
         }
     }
 }
-

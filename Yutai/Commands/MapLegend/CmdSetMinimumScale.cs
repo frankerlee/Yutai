@@ -20,9 +20,8 @@ namespace Yutai.Commands.MapLegend
 {
     public class CmdSetMinimumScale : YutaiCommand
     {
-     
         private IMapLegendView _view;
-      
+
 
         public CmdSetMinimumScale(IAppContext context, IMapLegendView view)
         {
@@ -30,7 +29,7 @@ namespace Yutai.Commands.MapLegend
             _view = view;
             OnCreate();
         }
-        
+
         private void OnCreate()
         {
             base.m_caption = "设置最小比例";
@@ -42,8 +41,8 @@ namespace Yutai.Commands.MapLegend
             base.m_checked = false;
             base.m_enabled = true;
             base._itemType = RibbonItemType.Button;
-
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();

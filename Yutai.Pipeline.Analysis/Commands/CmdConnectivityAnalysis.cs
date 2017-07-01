@@ -288,14 +288,14 @@ namespace Yutai.Pipeline.Analysis.Commands
 
                     EsriUtils.ZoomToGeometry(this.ipolyline_0, _context.MapControl.Map, 1.3);
                     FlashUtility.FlashGeometry(this.ipolyline_0, _context.MapControl);
-                   
+
                     //_context.ActiveView.Refresh();
                     //CMapOperator.ShowFeatureWithWink(_context.ActiveView.ScreenDisplay, this.ipolyline_0);
                     this._iFeature = null;
                     _startEid = 0;
                     _startPoint = null;
                     _geometricNetwork = null;
-                   
+
                     string text3 = string.Format("两个管线点之间连通,最短路径为{0}米", num2.ToString("f2"));
                     MessageService.Current.Info(text3);
                 }

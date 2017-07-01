@@ -101,7 +101,6 @@ namespace Yutai.Pipeline.Analysis.Commands
             }
             if (this._inLine)
             {
-                
                 this.m_cursor = this._cursor;
                 this._inLine = false;
                 if (this._lineFeedback != null)
@@ -136,26 +135,26 @@ namespace Yutai.Pipeline.Analysis.Commands
         public IElement GetTextElement(double dblAngle, string sNoteText, IPoint PosPt, int iColor)
         {
             IRgbColor rgbColorClass = new RgbColor();
-            rgbColorClass.RGB=(iColor);
+            rgbColorClass.RGB = (iColor);
             IFont systemFontClass = new SystemFont()
             {
                 Name = "宋体",
                 Size = new decimal(8)
             } as IFont;
             ITextSymbol textSymbolClass = new TextSymbol();
-            textSymbolClass.Color=(rgbColorClass);
-            textSymbolClass.Font=((IFontDisp)systemFontClass);
-            textSymbolClass.Angle=(dblAngle);
-            textSymbolClass.RightToLeft=(false);
-            textSymbolClass.VerticalAlignment=(esriTextVerticalAlignment)0;
-            textSymbolClass.HorizontalAlignment=(esriTextHorizontalAlignment)(0);
+            textSymbolClass.Color = (rgbColorClass);
+            textSymbolClass.Font = ((IFontDisp) systemFontClass);
+            textSymbolClass.Angle = (dblAngle);
+            textSymbolClass.RightToLeft = (false);
+            textSymbolClass.VerticalAlignment = (esriTextVerticalAlignment) 0;
+            textSymbolClass.HorizontalAlignment = (esriTextHorizontalAlignment) (0);
             ITextElement textElementClass = new TextElement() as ITextElement;
-            textElementClass.Symbol=(textSymbolClass);
-            textElementClass.Text=(sNoteText);
-            textElementClass.ScaleText=(true);
-            ((IElement)textElementClass).Geometry=(PosPt);
-            ((IElementProperties)textElementClass).Name=("EMMapNote");
-            return (IElement)textElementClass;
+            textElementClass.Symbol = (textSymbolClass);
+            textElementClass.Text = (sNoteText);
+            textElementClass.ScaleText = (true);
+            ((IElement) textElementClass).Geometry = (PosPt);
+            ((IElementProperties) textElementClass).Name = ("EMMapNote");
+            return (IElement) textElementClass;
         }
 
         private void StartSection()
@@ -191,7 +190,7 @@ namespace Yutai.Pipeline.Analysis.Commands
                 ((IGraphicsContainer) _context.ActiveView).AddElement(textElement, 0);
                 this._lineFeedback = null;
                 SectionViewFrm sectionViewFrm = new SectionViewFrm(SectionViewFrm.SectionType.SectionTypeTransect,
-                    _context,_plugin.PipeConfig);
+                    _context, _plugin.PipeConfig);
                 sectionViewFrm.PutBaseLine(_sectLine);
                 sectionViewFrm.ShowDialog();
             }

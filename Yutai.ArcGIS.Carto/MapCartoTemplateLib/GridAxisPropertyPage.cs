@@ -24,7 +24,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         private IMapGridBorder imapGridBorder_0 = null;
         internal static IMapGrid m_pOldMapGrid;
         public static IStyleGallery m_pSG;
-        [CompilerGenerated]
+
         private string string_0 = "坐标轴";
 
         public event OnValueChangeEventHandler OnValueChange;
@@ -45,7 +45,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             if (this.bool_1)
             {
                 this.bool_1 = false;
-                this.imapGrid_0.SetTickVisibility(this.chkMainLeft.Checked, this.chkMainTop.Checked, this.chkMainRight.Checked, this.chkMainBottom.Checked);
+                this.imapGrid_0.SetTickVisibility(this.chkMainLeft.Checked, this.chkMainTop.Checked,
+                    this.chkMainRight.Checked, this.chkMainBottom.Checked);
                 this.imapGrid_0.TickLineSymbol = this.btnStyle.Style as ILineSymbol;
                 double num = Convert.ToDouble(this.txtTikLength.Text);
                 if (this.rdoInInner.Checked)
@@ -53,7 +54,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     num = -num;
                 }
                 this.imapGrid_0.TickLength = num;
-                this.imapGrid_0.SetSubTickVisibility(this.chkSubLeft.Checked, this.chkSubTop.Checked, this.chkSubRight.Checked, this.chkSubBottom.Checked);
+                this.imapGrid_0.SetSubTickVisibility(this.chkSubLeft.Checked, this.chkSubTop.Checked,
+                    this.chkSubRight.Checked, this.chkSubBottom.Checked);
                 this.imapGrid_0.SubTickLineSymbol = this.btnSubStyle.Style as ILineSymbol;
                 num = Convert.ToDouble(this.txtSubTickLength.Text);
                 if (this.rdoSubTickInner.Checked)
@@ -140,7 +142,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
- private void GridAxisPropertyPage_Load(object sender, EventArgs e)
+        private void GridAxisPropertyPage_Load(object sender, EventArgs e)
         {
             this.imapGrid_0 = this.MapTemplate.MapGrid;
             this.Text = "坐标轴";
@@ -203,7 +205,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         {
         }
 
- private void method_0(object sender, EventArgs e)
+        private void method_0(object sender, EventArgs e)
         {
             if (this.bool_0)
             {
@@ -250,53 +252,25 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
-        public MapCartoTemplateLib.MapTemplate MapTemplate
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.mapTemplate_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.mapTemplate_0 = value;
-            }
-        }
+        public MapCartoTemplateLib.MapTemplate MapTemplate { get; set; }
 
         public string Title
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

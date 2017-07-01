@@ -18,11 +18,7 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
 
         public INetWeight NetWeight
         {
-            get
-            {
-                return this.m_pNetWeight;
-            }
+            get { return this.m_pNetWeight; }
         }
     }
 }
-

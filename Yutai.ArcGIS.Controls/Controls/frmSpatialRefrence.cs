@@ -51,12 +51,12 @@ namespace Yutai.ArcGIS.Controls.Controls
                 MessageBox.Show(exception.Message);
             }
             return;
-        Label_0072:
+            Label_0072:
             base.DialogResult = DialogResult.OK;
             base.Close();
         }
 
- private void frmSpatialRefrence_Load(object sender, EventArgs e)
+        private void frmSpatialRefrence_Load(object sender, EventArgs e)
         {
             switch (this.m_SRType)
             {
@@ -78,7 +78,8 @@ namespace Yutai.ArcGIS.Controls.Controls
                     else
                     {
                         this.Text = "地理坐标系统属性";
-                        this.m_GeoCoordSys.GeographicCoordinateSystem = (IGeographicCoordinateSystem) this.m_pSpatialRefrence;
+                        this.m_GeoCoordSys.GeographicCoordinateSystem =
+                            (IGeographicCoordinateSystem) this.m_pSpatialRefrence;
                     }
                     base.Controls.Add(this.m_GeoCoordSys);
                     return;
@@ -89,12 +90,9 @@ namespace Yutai.ArcGIS.Controls.Controls
             base.Controls.Add(this.m_ProjCoordSys);
         }
 
- public ISpatialReference SpatialRefrence
+        public ISpatialReference SpatialRefrence
         {
-            get
-            {
-                return this.m_pSpatialRefrence;
-            }
+            get { return this.m_pSpatialRefrence; }
             set
             {
                 this.m_pSpatialRefrence = value;
@@ -111,14 +109,8 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         public enumSpatialRefrenceType SpatialRefrenceType
         {
-            get
-            {
-                return this.m_SRType;
-            }
-            set
-            {
-                this.m_SRType = value;
-            }
+            get { return this.m_SRType; }
+            set { this.m_SRType = value; }
         }
 
         public enum enumSpatialRefrenceType
@@ -128,4 +120,3 @@ namespace Yutai.ArcGIS.Controls.Controls
         }
     }
 }
-

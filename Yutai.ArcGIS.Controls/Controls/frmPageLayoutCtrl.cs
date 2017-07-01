@@ -10,13 +10,12 @@ namespace Yutai.ArcGIS.Controls.Controls
 {
     public partial class frmPageLayoutCtrl : DockContent
     {
-
         public frmPageLayoutCtrl()
         {
             this.InitializeComponent();
         }
 
- private void frmPageLayoutCtrl_Load(object sender, EventArgs e)
+        private void frmPageLayoutCtrl_Load(object sender, EventArgs e)
         {
             IActiveView activeView = this.axPageLayoutControl1.ActiveView;
             if (activeView.Selection == null)
@@ -30,13 +29,9 @@ namespace Yutai.ArcGIS.Controls.Controls
             }
         }
 
- public AxPageLayoutControl PageLayoutControl
+        public AxPageLayoutControl PageLayoutControl
         {
-            get
-            {
-                return this.axPageLayoutControl1;
-            }
+            get { return this.axPageLayoutControl1; }
         }
     }
 }
-

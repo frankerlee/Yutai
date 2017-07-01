@@ -16,10 +16,7 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
 
         public IBasicMarkerSymbol BasicMarkerSymbol
         {
-            get
-            {
-                return this.m_pBasicMarkerSymbol;
-            }
+            get { return this.m_pBasicMarkerSymbol; }
             set
             {
                 this.m_pBasicMarkerSymbol = value;
@@ -29,15 +26,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
 
         public IGraphicAttributes GeometricEffect
         {
-            get
-            {
-                return this.m_pGeometricEffect;
-            }
-            set
-            {
-                this.m_pGeometricEffect = value;
-            }
+            get { return this.m_pGeometricEffect; }
+            set { this.m_pGeometricEffect = value; }
         }
     }
 }
-

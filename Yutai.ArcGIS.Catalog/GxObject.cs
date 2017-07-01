@@ -6,10 +6,6 @@ namespace Yutai.ArcGIS.Catalog
 {
     public class GxObject : IGxObject, IGxObjectUI
     {
-        [CompilerGenerated]
-        private bool bool_0;
-        [CompilerGenerated]
-        private IName iname_0;
         protected string m_Catalog = "";
         protected string m_fullname = "";
         protected Bitmap m_largeimage = null;
@@ -19,8 +15,7 @@ namespace Yutai.ArcGIS.Catalog
         protected IGxObject m_pParent = null;
         protected Bitmap m_smallimage = null;
         protected Bitmap m_smallselectedimage = null;
-        [CompilerGenerated]
-        private UID uid_0;
+
 
         public virtual void Attach(IGxObject igxObject_0, IGxCatalog igxCatalog_0)
         {
@@ -53,148 +48,60 @@ namespace Yutai.ArcGIS.Catalog
 
         public virtual string BaseName
         {
-            get
-            {
-                return this.m_name;
-            }
-            protected set
-            {
-            }
+            get { return this.m_name; }
+            protected set { }
         }
 
         public virtual string Category
         {
-            get
-            {
-                return this.m_Catalog;
-            }
-            protected set
-            {
-                this.m_Catalog = value;
-            }
+            get { return this.m_Catalog; }
+            protected set { this.m_Catalog = value; }
         }
 
-        public UID ClassID
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.uid_0;
-            }
-            [CompilerGenerated]
-            protected set
-            {
-                this.uid_0 = value;
-            }
-        }
+        public UID ClassID { get; set; }
 
         public virtual string FullName
         {
-            get
-            {
-                return this.m_fullname;
-            }
-            protected set
-            {
-                this.m_fullname = value;
-            }
+            get { return this.m_fullname; }
+            protected set { this.m_fullname = value; }
         }
 
-        public IName InternalObjectName
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.iname_0;
-            }
-            [CompilerGenerated]
-            protected set
-            {
-                this.iname_0 = value;
-            }
-        }
-
-        public bool IsValid
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.bool_0;
-            }
-            [CompilerGenerated]
-            protected set
-            {
-                this.bool_0 = value;
-            }
-        }
+        public IName InternalObjectName { get; set; }
+        public bool IsValid { get; set; }
 
         public virtual Bitmap LargeImage
         {
-            get
-            {
-                return this.m_largeimage;
-            }
-            protected set
-            {
-                this.m_largeimage = value;
-            }
+            get { return this.m_largeimage; }
+            protected set { this.m_largeimage = value; }
         }
 
         public virtual Bitmap LargeSelectedImage
         {
-            get
-            {
-                return this.m_largeselectedimage;
-            }
-            protected set
-            {
-                this.m_largeselectedimage = value;
-            }
+            get { return this.m_largeselectedimage; }
+            protected set { this.m_largeselectedimage = value; }
         }
 
         public virtual string Name
         {
-            get
-            {
-                return this.m_name;
-            }
-            protected set
-            {
-                this.m_name = value;
-            }
+            get { return this.m_name; }
+            protected set { this.m_name = value; }
         }
 
         public virtual IGxObject Parent
         {
-            get
-            {
-                return this.m_pParent;
-            }
+            get { return this.m_pParent; }
         }
 
         public virtual Bitmap SmallImage
         {
-            get
-            {
-                return this.m_smallimage;
-            }
-            protected set
-            {
-                this.m_smallimage = value;
-            }
+            get { return this.m_smallimage; }
+            protected set { this.m_smallimage = value; }
         }
 
         public virtual Bitmap SmallSelectedImage
         {
-            get
-            {
-                return this.m_smallselectedimage;
-            }
-            protected set
-            {
-                this.m_smallselectedimage = value;
-            }
+            get { return this.m_smallselectedimage; }
+            protected set { this.m_smallselectedimage = value; }
         }
     }
 }
-

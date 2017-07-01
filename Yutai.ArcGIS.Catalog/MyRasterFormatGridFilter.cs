@@ -61,19 +61,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public string Description
         {
-            get
-            {
-                return "GRID";
-            }
+            get { return "GRID"; }
         }
 
         public string Name
         {
-            get
-            {
-                return "RasterFormatGridFilter";
-            }
+            get { return "RasterFormatGridFilter"; }
         }
     }
 }
-

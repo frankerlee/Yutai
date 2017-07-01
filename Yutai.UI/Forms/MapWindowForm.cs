@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DevExpress.XtraEditors;
-
 using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Mvp;
 using Yutai.UI.Properties;
@@ -25,7 +24,6 @@ namespace Yutai.UI.Forms
         public MapWindowForm()
         {
             Icon = Resources.MapWindow;
-
         }
 
         public MapWindowForm(IAppContext context)
@@ -45,18 +43,16 @@ namespace Yutai.UI.Forms
             // 
             // MapWindowForm
             // 
-            
+
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Name = "MapWindowForm";
             this.Load += new System.EventHandler(this.MapWindowForm_Load);
             this.ResumeLayout(false);
-
         }
 
         private void MapWindowForm_Load(object sender, EventArgs e)
         {
             // Fixing CORE-160
-           
         }
     }
 }

@@ -23,7 +23,8 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if (((this.radioGroup1.SelectedIndex >= 1) && !this.chkUseDefaultFolder.Checked) && (this.txtTempFolder.Text.Trim().Length == 0))
+            if (((this.radioGroup1.SelectedIndex >= 1) && !this.chkUseDefaultFolder.Checked) &&
+                (this.txtTempFolder.Text.Trim().Length == 0))
             {
                 MessageBox.Show("请输入过渡文件夹");
             }
@@ -32,7 +33,8 @@ namespace Yutai.ArcGIS.Catalog.UI
                 IPropertySet set;
                 object obj2;
                 object obj3;
-                string path = Environment.SystemDirectory.Substring(0, 2) + @"\Users\Administrator\AppData\Roaming\ESRI\Desktop10.2\ArcCatalog\";
+                string path = Environment.SystemDirectory.Substring(0, 2) +
+                              @"\Users\Administrator\AppData\Roaming\ESRI\Desktop10.2\ArcCatalog\";
                 if (!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);
@@ -68,7 +70,7 @@ namespace Yutai.ArcGIS.Catalog.UI
                 {
                     this.txtServer.Text = "http://" + this.txtServer.Text;
                 }
-                string[] strArray = text.Split(new char[] { '/' });
+                string[] strArray = text.Split(new char[] {'/'});
                 string str5 = strArray[0];
                 if (strArray.Length > 0)
                 {
@@ -105,7 +107,8 @@ namespace Yutai.ArcGIS.Catalog.UI
                 }
                 if (Directory.Exists(path))
                 {
-                    IGxAGSConnection connection2 = new GxAGSConnection {
+                    IGxAGSConnection connection2 = new GxAGSConnection
+                    {
                         AGSServerConnectionName = connection.FullName as IAGSServerConnectionName
                     };
                     connection2.SaveToFile(str2);
@@ -121,12 +124,12 @@ namespace Yutai.ArcGIS.Catalog.UI
             this.btnSelect.Enabled = this.chkUseDefaultFolder.Checked;
         }
 
- private void frmNewArcGISServer_Load(object sender, EventArgs e)
+        private void frmNewArcGISServer_Load(object sender, EventArgs e)
         {
             this.txtTempFolder.Text = Path.GetTempPath();
         }
 
- private IMapServer method_0(string string_2)
+        private IMapServer method_0(string string_2)
         {
             IAGSEnumServerObjectName serverObjectNames = this.iagsserverConnection_0.ServerObjectNames;
             IAGSServerObjectName name2 = null;
@@ -158,7 +161,8 @@ namespace Yutai.ArcGIS.Catalog.UI
             {
                 set.SetProperty("USER", this.txtUser.Text.Trim());
             }
-            set.SetProperty("Modulus", "dba16ec2c39b37a983b29026dca2859b28cc07bed0a9662bdea17d9fe486fed4d0e2e8a27ca1de05f186d2377da7ced5661e159d10abf5999258d11cb06b2fb3");
+            set.SetProperty("Modulus",
+                "dba16ec2c39b37a983b29026dca2859b28cc07bed0a9662bdea17d9fe486fed4d0e2e8a27ca1de05f186d2377da7ced5661e159d10abf5999258d11cb06b2fb3");
             if (!this.chkSaveUserNameAndPsw.Checked)
             {
                 set.SetProperty("Exponent", "1001");
@@ -210,7 +214,8 @@ namespace Yutai.ArcGIS.Catalog.UI
             {
                 set.SetProperty("USER", this.txtUserManage.Text.Trim());
             }
-            set.SetProperty("Modulus", "dba16ec2c39b37a983b29026dca2859b28cc07bed0a9662bdea17d9fe486fed4d0e2e8a27ca1de05f186d2377da7ced5661e159d10abf5999258d11cb06b2fb3");
+            set.SetProperty("Modulus",
+                "dba16ec2c39b37a983b29026dca2859b28cc07bed0a9662bdea17d9fe486fed4d0e2e8a27ca1de05f186d2377da7ced5661e159d10abf5999258d11cb06b2fb3");
             if (!this.chkSaveManage.Checked)
             {
                 set.SetProperty("Exponent", "1001");
@@ -280,11 +285,7 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         public IGxObject NewObject
         {
-            get
-            {
-                return this.igxObject_0;
-            }
+            get { return this.igxObject_0; }
         }
     }
 }
-

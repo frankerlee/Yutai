@@ -10,7 +10,7 @@ namespace Yutai.Shared
     /// Specifies that R# cleanup should not reorder class members.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface, AllowMultiple = false, Inherited = true)]
-    public class CustomLayoutAttribute: Attribute
+    public class CustomLayoutAttribute : Attribute
     {
     }
 }

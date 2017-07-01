@@ -17,14 +17,16 @@ namespace Yutai.ArcGIS.Common
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ApplicationRef.Application.PyramidPromptType = this.checkBox1.Checked ? PyramidPromptType.AlwaysBuildNoPrompt : PyramidPromptType.AlwaysPrompt;
+            ApplicationRef.Application.PyramidPromptType = this.checkBox1.Checked
+                ? PyramidPromptType.AlwaysBuildNoPrompt
+                : PyramidPromptType.AlwaysPrompt;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ApplicationRef.Application.PyramidPromptType = this.checkBox1.Checked ? PyramidPromptType.NeverBuildNoPrompt : PyramidPromptType.AlwaysPrompt;
+            ApplicationRef.Application.PyramidPromptType = this.checkBox1.Checked
+                ? PyramidPromptType.NeverBuildNoPrompt
+                : PyramidPromptType.AlwaysPrompt;
         }
-
-
     }
 }

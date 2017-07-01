@@ -11,4 +11,3 @@ namespace Yutai.ArcGIS.Carto.UI
         bool Visible { get; set; }
     }
 }
-

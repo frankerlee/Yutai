@@ -2,7 +2,7 @@
 {
     internal class ScaleTextEventsClass
     {
-        internal static  event ValueChangeHandler ValueChange;
+        internal static event ValueChangeHandler ValueChange;
 
         internal static void ScaleTextChage(object sender)
         {
@@ -15,4 +15,3 @@
         internal delegate void ValueChangeHandler(object sender);
     }
 }
-

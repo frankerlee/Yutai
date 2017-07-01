@@ -91,7 +91,8 @@ namespace Yutai.Commands.Views
                         this._context.ActiveView.Refresh();
                     }
                 }
-                this._iPoint = ((IActiveView)this._context.FocusMap).ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
+                this._iPoint = ((IActiveView) this._context.FocusMap).ScreenDisplay.DisplayTransformation.ToMapPoint(x,
+                    y);
                 this._inZoom = true;
                 this.m_cursor = this._cursor1;
             }
@@ -101,7 +102,7 @@ namespace Yutai.Commands.Views
         {
             if (this._inZoom)
             {
-                IActiveView activeView = (IActiveView)this._context.FocusMap;
+                IActiveView activeView = (IActiveView) this._context.FocusMap;
                 if (this._envelopeFeedback == null)
                 {
                     this._envelopeFeedback = new NewEnvelopeFeedback();
@@ -117,7 +118,7 @@ namespace Yutai.Commands.Views
             if (!this._inZoom) return;
             this._inZoom = false;
             this.m_cursor = this._cursor;
-            IActiveView activeView = (IActiveView)this._context.FocusMap;
+            IActiveView activeView = (IActiveView) this._context.FocusMap;
             IEnvelope envelope;
             if (this._envelopeFeedback == null)
             {
@@ -136,18 +137,23 @@ namespace Yutai.Commands.Views
                 }
                 else
                 {
-                    double num = activeView.Extent.Width * (activeView.Extent.Width / envelope2.Width);
-                    double num2 = activeView.Extent.Height * (activeView.Extent.Height / envelope2.Height);
+                    double num = activeView.Extent.Width*(activeView.Extent.Width/envelope2.Width);
+                    double num2 = activeView.Extent.Height*(activeView.Extent.Height/envelope2.Height);
                     envelope = new EnvelopeClass();
-                    envelope.PutCoords(activeView.Extent.XMin - (envelope2.XMin - activeView.Extent.XMin) * (activeView.Extent.Width / envelope2.Width), activeView.Extent.YMin - (envelope2.YMin - activeView.Extent.YMin) * (activeView.Extent.Height / envelope2.Height), activeView.Extent.XMin - (envelope2.XMin - activeView.Extent.XMin) * (activeView.Extent.Width / envelope2.Width) + num, activeView.Extent.YMin - (envelope2.YMin - activeView.Extent.YMin) * (activeView.Extent.Height / envelope2.Height) + num2);
+                    envelope.PutCoords(
+                        activeView.Extent.XMin -
+                        (envelope2.XMin - activeView.Extent.XMin)*(activeView.Extent.Width/envelope2.Width),
+                        activeView.Extent.YMin -
+                        (envelope2.YMin - activeView.Extent.YMin)*(activeView.Extent.Height/envelope2.Height),
+                        activeView.Extent.XMin -
+                        (envelope2.XMin - activeView.Extent.XMin)*(activeView.Extent.Width/envelope2.Width) + num,
+                        activeView.Extent.YMin -
+                        (envelope2.YMin - activeView.Extent.YMin)*(activeView.Extent.Height/envelope2.Height) + num2);
                 }
             }
             activeView.Extent = envelope;
             this._envelopeFeedback = null;
             activeView.Refresh();
-            
         }
-        
     }
 }
-

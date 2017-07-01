@@ -14,10 +14,10 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         private bool bool_0 = false;
         private Container container_0 = null;
         private int int_0 = 0;
-        private int[] int_1 = new int[] { 6214, 6024, 6326, 6610 };
-        private int[] int_2 = new int[] { 7024, 7030, 7049 };
-        private int[] int_3 = new int[] { 9102, 9106, 9103, 9104, 9101 };
-        private int[] int_4 = new int[] { 8901, 8912, 8907 };
+        private int[] int_1 = new int[] {6214, 6024, 6326, 6610};
+        private int[] int_2 = new int[] {7024, 7030, 7049};
+        private int[] int_3 = new int[] {9102, 9106, 9103, 9104, 9101};
+        private int[] int_4 = new int[] {8901, 8912, 8907};
         private ISpatialReferenceFactory ispatialReferenceFactory_0 = new SpatialReferenceEnvironmentClass();
 
         public GeoCoordSys()
@@ -36,7 +36,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 this.method_5(this.txtValue, true);
                 if (this.bool_0)
                 {
-                    this.iunit_0 = this.ispatialReferenceFactory_0.CreateUnit(this.int_3[this.cboAngleName.SelectedIndex - 1]);
+                    this.iunit_0 =
+                        this.ispatialReferenceFactory_0.CreateUnit(this.int_3[this.cboAngleName.SelectedIndex - 1]);
                 }
                 if (this.iunit_0 != null)
                 {
@@ -72,7 +73,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     this.cboSpheres.Enabled = false;
                     if (this.bool_0)
                     {
-                        this.idatum_0 = this.ispatialReferenceFactory_0.CreateDatum(this.int_1[this.cboDatumName.SelectedIndex - 1]);
+                        this.idatum_0 =
+                            this.ispatialReferenceFactory_0.CreateDatum(this.int_1[this.cboDatumName.SelectedIndex - 1]);
                         this.ispheroid_0 = this.idatum_0.Spheroid;
                         this.bool_0 = false;
                     }
@@ -101,14 +103,16 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 this.method_5(this.txtSecond, true);
                 if (this.bool_0)
                 {
-                    this.iprimeMeridian_0 = this.ispatialReferenceFactory_0.CreatePrimeMeridian(this.int_4[this.cboPrimeMeridians.SelectedIndex - 1]);
+                    this.iprimeMeridian_0 =
+                        this.ispatialReferenceFactory_0.CreatePrimeMeridian(
+                            this.int_4[this.cboPrimeMeridians.SelectedIndex - 1]);
                 }
                 if (this.iprimeMeridian_0 != null)
                 {
                     int longitude = (int) this.iprimeMeridian_0.Longitude;
-                    double num2 = (this.iprimeMeridian_0.Longitude - longitude) * 60.0;
+                    double num2 = (this.iprimeMeridian_0.Longitude - longitude)*60.0;
                     int num3 = (int) num2;
-                    num2 = (num2 - num3) * 60.0;
+                    num2 = (num2 - num3)*60.0;
                     this.txtDegree.Text = longitude.ToString();
                     this.txtMinute.Text = num3.ToString();
                     this.txtSecond.Text = num2.ToString();
@@ -131,18 +135,19 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 this.method_5(this.txtFlattening, true);
                 if (this.bool_0)
                 {
-                    this.ispheroid_0 = this.ispatialReferenceFactory_0.CreateSpheroid(this.int_2[this.cboSpheres.SelectedIndex - 1]);
+                    this.ispheroid_0 =
+                        this.ispatialReferenceFactory_0.CreateSpheroid(this.int_2[this.cboSpheres.SelectedIndex - 1]);
                 }
                 if (this.ispheroid_0 != null)
                 {
                     this.txtMajorAxis.Text = this.ispheroid_0.SemiMajorAxis.ToString();
                     this.txtMiniorAxis.Text = this.ispheroid_0.SemiMinorAxis.ToString();
-                    this.txtFlattening.Text = (1.0 / this.ispheroid_0.Flattening).ToString();
+                    this.txtFlattening.Text = (1.0/this.ispheroid_0.Flattening).ToString();
                 }
             }
         }
 
- private void GeoCoordSys_Load(object sender, EventArgs e)
+        private void GeoCoordSys_Load(object sender, EventArgs e)
         {
             this.method_0();
             this.method_1();
@@ -173,12 +178,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 num = Convert.ToDouble(this.txtMajorAxis.Text);
                 if (this.rdoFlattening.Checked)
                 {
-                    num2 = 1.0 / Convert.ToDouble(this.txtFlattening.Text);
+                    num2 = 1.0/Convert.ToDouble(this.txtFlattening.Text);
                 }
                 else
                 {
                     double num3 = Convert.ToDouble(this.txtMiniorAxis.Text);
-                    num2 = (num - num3) / num;
+                    num2 = (num - num3)/num;
                 }
                 ((ISpheroidEdit) this.ispheroid_0).DefineEx(this.cboSpheres.Text, null, null, null, ref num, ref num2);
             }
@@ -196,13 +201,16 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 double num4 = Convert.ToDouble(this.txtDegree.Text);
                 if (num4 < 0.0)
                 {
-                    num = (num4 - (Convert.ToDouble(this.txtMinute.Text) / 60.0)) - (Convert.ToDouble(this.txtSecond.Text) / 3600.0);
+                    num = (num4 - (Convert.ToDouble(this.txtMinute.Text)/60.0)) -
+                          (Convert.ToDouble(this.txtSecond.Text)/3600.0);
                 }
                 else
                 {
-                    num = (num4 + (Convert.ToDouble(this.txtMinute.Text) / 60.0)) + (Convert.ToDouble(this.txtSecond.Text) / 3600.0);
+                    num = (num4 + (Convert.ToDouble(this.txtMinute.Text)/60.0)) +
+                          (Convert.ToDouble(this.txtSecond.Text)/3600.0);
                 }
-                ((IPrimeMeridianEdit) this.iprimeMeridian_0).DefineEx(this.cboPrimeMeridians.Text, null, null, null, ref num);
+                ((IPrimeMeridianEdit) this.iprimeMeridian_0).DefineEx(this.cboPrimeMeridians.Text, null, null, null,
+                    ref num);
             }
             this.igeographicCoordinateSystem_0 = new GeographicCoordinateSystemClass();
             IGeographicCoordinateSystemEdit edit = this.igeographicCoordinateSystem_0 as IGeographicCoordinateSystemEdit;
@@ -210,7 +218,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             string alias = "";
             try
             {
-                edit.DefineEx(this.textEditName.Text, alias, alias, alias, alias, this.idatum_0, this.iprimeMeridian_0, geographicUnit);
+                edit.DefineEx(this.textEditName.Text, alias, alias, alias, alias, this.idatum_0, this.iprimeMeridian_0,
+                    geographicUnit);
             }
             catch
             {
@@ -220,7 +229,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             return this.igeographicCoordinateSystem_0;
         }
 
- private void method_0()
+        private void method_0()
         {
             this.cboDatumName.Properties.Items.Add("自定义");
             this.cboDatumName.Properties.Items.Add("D_Beijing_1954");
@@ -280,7 +289,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         this.cboSpheres.Text = this.idatum_0.Spheroid.Name;
                         this.txtMajorAxis.Text = this.ispheroid_0.SemiMajorAxis.ToString();
                         this.txtMiniorAxis.Text = this.ispheroid_0.SemiMinorAxis.ToString();
-                        this.txtFlattening.Text = (1.0 / this.ispheroid_0.Flattening).ToString();
+                        this.txtFlattening.Text = (1.0/this.ispheroid_0.Flattening).ToString();
                     }
                 }
                 this.iunit_0 = this.igeographicCoordinateSystem_0.CoordinateUnit;
@@ -304,9 +313,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 {
                     this.cboPrimeMeridians.Text = this.iprimeMeridian_0.Name;
                     int longitude = (int) this.iprimeMeridian_0.Longitude;
-                    double num4 = (this.iprimeMeridian_0.Longitude - longitude) * 60.0;
+                    double num4 = (this.iprimeMeridian_0.Longitude - longitude)*60.0;
                     int num5 = (int) num4;
-                    num4 = (num4 - num5) * 60.0;
+                    num4 = (num4 - num5)*60.0;
                     this.txtDegree.Text = longitude.ToString();
                     this.txtMinute.Text = num5.ToString();
                     this.txtSecond.Text = num4.ToString();
@@ -687,11 +696,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IGeographicCoordinateSystem GeographicCoordinateSystem
         {
-            set
-            {
-                this.igeographicCoordinateSystem_0 = value;
-            }
+            set { this.igeographicCoordinateSystem_0 = value; }
         }
     }
 }
-

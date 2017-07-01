@@ -5,14 +5,9 @@ using ESRI.ArcGIS.Geometry;
 
 namespace Yutai.ArcGIS.Common
 {
-
-
     public interface ISnapEnvironment : IEngineSnapEnvironment
     {
-        double MapUnitTolerance
-        {
-            get;
-        }
+        double MapUnitTolerance { get; }
 
         bool SnapPoint(IPoint ipoint_0, IPoint ipoint_1);
     }

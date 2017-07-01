@@ -73,7 +73,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 {
                     if (this.Line(str2))
                     {
-                        this.ispatialReference_0 = ((ISpatialReferenceFactory2) this.ispatialReferenceFactory_0).CreateESRISpatialReferenceFromPRJFile(this.string_0);
+                        this.ispatialReference_0 =
+                            ((ISpatialReferenceFactory2) this.ispatialReferenceFactory_0)
+                                .CreateESRISpatialReferenceFromPRJFile(this.string_0);
                         this.method_0();
                         this.ispatialReference_0.SetDomain(this.double_0, this.double_1, this.double_2, this.double_3);
                         base.DialogResult = DialogResult.OK;
@@ -95,7 +97,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
         }
 
- public bool Line(string string_2)
+        public bool Line(string string_2)
         {
             StreamWriter writer = new StreamWriter(this.string_0, false);
             bool flag = false;
@@ -147,7 +149,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             try
             {
-                string[] strArray = string_2.Split(new char[] { char_0 });
+                string[] strArray = string_2.Split(new char[] {char_0});
                 if (strArray.GetUpperBound(0) >= 0)
                 {
                     return strArray[int_0];
@@ -224,11 +226,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public ISpatialReference SpatialRefrence
         {
-            get
-            {
-                return this.ispatialReference_0;
-            }
+            get { return this.ispatialReference_0; }
         }
     }
 }
-

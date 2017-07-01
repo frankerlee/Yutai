@@ -5,9 +5,6 @@ namespace Yutai.ArcGIS.Common
 {
     public abstract class TableCreate
     {
-        [CompilerGenerated]
-        private string string_0;
-
         protected TableCreate()
         {
         }
@@ -61,23 +58,11 @@ namespace Yutai.ArcGIS.Common
         }
 
         public abstract IFields GetFields();
+
         public virtual void UpdateStruct(ITable itable_0)
         {
         }
 
-        public string TableName
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.string_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.string_0 = value;
-            }
-        }
+        public string TableName { get; set; }
     }
 }
-

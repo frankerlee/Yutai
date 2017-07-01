@@ -56,7 +56,8 @@ namespace Yutai.ArcGIS.Controls.Controls
                 try
                 {
                     IField field = pFields.get_Field(i);
-                    DataColumn column = new DataColumn(field.Name) {
+                    DataColumn column = new DataColumn(field.Name)
+                    {
                         Caption = field.AliasName
                     };
                     if (!(field.Domain is ICodedValueDomain))
@@ -204,7 +205,8 @@ namespace Yutai.ArcGIS.Controls.Controls
                                     IRow row2;
                                     if (this.m_pDataTable.Rows.Count > 0)
                                     {
-                                        DataRow[] rowArray = this.m_pDataTable.Select(string.Format("{0}={1}", oIDFieldName, num2));
+                                        DataRow[] rowArray =
+                                            this.m_pDataTable.Select(string.Format("{0}={1}", oIDFieldName, num2));
                                         if (rowArray.Length > 0)
                                         {
                                             foreach (DataRow row in rowArray)
@@ -282,7 +284,8 @@ namespace Yutai.ArcGIS.Controls.Controls
                     selectedRows = ((GridView) this.dataGrid1.MainView).GetSelectedRows();
                     if (this.IsShowAll)
                     {
-                        if ((selectedRows[0] == (this.m_pDataTable.Rows.Count - 2)) && (this.m_pDataTable.Rows.Count < this.m_RecordNum))
+                        if ((selectedRows[0] == (this.m_pDataTable.Rows.Count - 2)) &&
+                            (this.m_pDataTable.Rows.Count < this.m_RecordNum))
                         {
                             this.LoadToDataTable(this.m_pCursor, this.m_pDataTable, this.m_RecordNum, true);
                         }
@@ -300,7 +303,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             }
         }
 
- private void EditorEvent_OnAddFeature(ILayer pLayer, IFeature pFeature)
+        private void EditorEvent_OnAddFeature(ILayer pLayer, IFeature pFeature)
         {
             if (pLayer == this.m_pTable)
             {
@@ -341,7 +344,8 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         private void EditorEvent_OnAfterNewRow(IRow pRow)
         {
-            if (((this.m_pTable is IFeatureLayer) && (pRow.Table == (this.m_pTable as IFeatureLayer).FeatureClass)) && ((this.m_RecordNum > 0) && (this.m_RecordNum == this.m_pDataTable.Rows.Count)))
+            if (((this.m_pTable is IFeatureLayer) && (pRow.Table == (this.m_pTable as IFeatureLayer).FeatureClass)) &&
+                ((this.m_RecordNum > 0) && (this.m_RecordNum == this.m_pDataTable.Rows.Count)))
             {
                 this.m_RecordNum++;
                 IFeature feature = pRow as IFeature;
@@ -401,7 +405,8 @@ namespace Yutai.ArcGIS.Controls.Controls
                                 IWorkspaceEdit workspace = (this.m_pTable as IDataset).Workspace as IWorkspaceEdit;
                                 if (this.m_pDataTable.Rows.Count > 0)
                                 {
-                                    DataRow[] rowArray = this.m_pDataTable.Select(string.Format("{0}={1}", oIDFieldName, OID));
+                                    DataRow[] rowArray =
+                                        this.m_pDataTable.Select(string.Format("{0}={1}", oIDFieldName, OID));
                                     if (rowArray.Length > 0)
                                     {
                                         foreach (DataRow row in rowArray)
@@ -769,7 +774,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             }
         }
 
- private void LoadToDataTable(ICursor pCursor, DataTable pDataTable, int ReocrdNum, bool bAll)
+        private void LoadToDataTable(ICursor pCursor, DataTable pDataTable, int ReocrdNum, bool bAll)
         {
             try
             {
@@ -871,7 +876,8 @@ namespace Yutai.ArcGIS.Controls.Controls
                                 {
                                     for (num2 = 0; num2 < (field.Domain as ICodedValueDomain).CodeCount; num2++)
                                     {
-                                        if (e.ProposedValue.ToString() == (field.Domain as ICodedValueDomain).get_Name(num2))
+                                        if (e.ProposedValue.ToString() ==
+                                            (field.Domain as ICodedValueDomain).get_Name(num2))
                                         {
                                             row.set_Value(num, (field.Domain as ICodedValueDomain).get_Value(num2));
                                             break;
@@ -902,7 +908,8 @@ namespace Yutai.ArcGIS.Controls.Controls
                     else
                     {
                         int num3 = Convert.ToInt32(itemArray[0]);
-                        IQueryFilter queryFilter = new QueryFilterClass {
+                        IQueryFilter queryFilter = new QueryFilterClass
+                        {
                             WhereClause = this.m_pTable.OIDFieldName + " = " + num3.ToString()
                         };
                         ICursor o = this.m_pTable.Search(queryFilter, false);
@@ -918,7 +925,8 @@ namespace Yutai.ArcGIS.Controls.Controls
                                 {
                                     for (num2 = 0; num2 < (field.Domain as ICodedValueDomain).CodeCount; num2++)
                                     {
-                                        if (e.ProposedValue.ToString() == (field.Domain as ICodedValueDomain).get_Name(num2))
+                                        if (e.ProposedValue.ToString() ==
+                                            (field.Domain as ICodedValueDomain).get_Name(num2))
                                         {
                                             row.set_Value(num, (field.Domain as ICodedValueDomain).get_Value(num2));
                                             break;
@@ -969,7 +977,8 @@ namespace Yutai.ArcGIS.Controls.Controls
                     if (!(itemArray[0] is DBNull))
                     {
                         int num = Convert.ToInt32(itemArray[0]);
-                        IQueryFilter queryFilter = new QueryFilterClass {
+                        IQueryFilter queryFilter = new QueryFilterClass
+                        {
                             WhereClause = this.m_pTable.OIDFieldName + " = " + num.ToString()
                         };
                         IRow row = this.m_pTable.Search(queryFilter, false).NextRow();
@@ -982,7 +991,8 @@ namespace Yutai.ArcGIS.Controls.Controls
                         row = null;
                         if (this.m_pTable is IFeatureLayer)
                         {
-                            (this.m_pMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeography, this.m_pTable, null);
+                            (this.m_pMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeography,
+                                this.m_pTable, null);
                         }
                     }
                 }
@@ -1025,7 +1035,8 @@ namespace Yutai.ArcGIS.Controls.Controls
                         IQueryFilter queryFilter = null;
                         if (this.m_strWhere.Length > 1)
                         {
-                            queryFilter = new QueryFilterClass {
+                            queryFilter = new QueryFilterClass
+                            {
                                 WhereClause = this.m_strWhere
                             };
                         }
@@ -1085,9 +1096,15 @@ namespace Yutai.ArcGIS.Controls.Controls
                                 }
                                 this.m_pXtraGrid.SetColumnAttr(i, ColumnAttribute.CA_COMBOBOX, list);
                             }
-                            else if ((field.Domain is IRangeDomain) && ((((field.Type == esriFieldType.esriFieldTypeDouble) || (field.Type == esriFieldType.esriFieldTypeSingle)) || (field.Type == esriFieldType.esriFieldTypeSmallInteger)) || (field.Type == esriFieldType.esriFieldTypeInteger)))
+                            else if ((field.Domain is IRangeDomain) &&
+                                     ((((field.Type == esriFieldType.esriFieldTypeDouble) ||
+                                        (field.Type == esriFieldType.esriFieldTypeSingle)) ||
+                                       (field.Type == esriFieldType.esriFieldTypeSmallInteger)) ||
+                                      (field.Type == esriFieldType.esriFieldTypeInteger)))
                             {
-                                this.m_pXtraGrid.SetColumnAttr(i, ColumnAttribute.CA_SPINEDIT, (double) (field.Domain as IRangeDomain).MinValue, (double) (field.Domain as IRangeDomain).MaxValue);
+                                this.m_pXtraGrid.SetColumnAttr(i, ColumnAttribute.CA_SPINEDIT,
+                                    (double) (field.Domain as IRangeDomain).MinValue,
+                                    (double) (field.Domain as IRangeDomain).MaxValue);
                             }
                         }
                         else
@@ -1097,7 +1114,8 @@ namespace Yutai.ArcGIS.Controls.Controls
                             CodeDomainEx codeDomainEx = CodeDomainManage.GetCodeDomainEx(field.Name, name);
                             if (codeDomainEx != null)
                             {
-                                if ((codeDomainEx.ParentIDFieldName == null) || (codeDomainEx.ParentIDFieldName.Length == 0))
+                                if ((codeDomainEx.ParentIDFieldName == null) ||
+                                    (codeDomainEx.ParentIDFieldName.Length == 0))
                                 {
                                     NameValueCollection codeDomain = codeDomainEx.GetCodeDomain();
                                     if (field.IsNullable)
@@ -1116,7 +1134,10 @@ namespace Yutai.ArcGIS.Controls.Controls
                                     this.m_pXtraGrid.SetColumnAttr(i, ColumnAttribute.CA_TREEVIEWCOMBOX, codeDomainEx);
                                 }
                             }
-                            else if ((((field.Type == esriFieldType.esriFieldTypeDouble) || (field.Type == esriFieldType.esriFieldTypeSingle)) || (field.Type == esriFieldType.esriFieldTypeSmallInteger)) || (field.Type == esriFieldType.esriFieldTypeInteger))
+                            else if ((((field.Type == esriFieldType.esriFieldTypeDouble) ||
+                                       (field.Type == esriFieldType.esriFieldTypeSingle)) ||
+                                      (field.Type == esriFieldType.esriFieldTypeSmallInteger)) ||
+                                     (field.Type == esriFieldType.esriFieldTypeInteger))
                             {
                                 this.m_pXtraGrid.SetColumnAttr(i, ColumnAttribute.CA_SPINEDIT);
                             }
@@ -1134,18 +1155,12 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         public IBasicMap Map
         {
-            set
-            {
-                this.m_pMap = value;
-            }
+            set { this.m_pMap = value; }
         }
 
         public ITable Table
         {
-            get
-            {
-                return this.m_pTable;
-            }
+            get { return this.m_pTable; }
             set
             {
                 this.m_pTable = value;
@@ -1160,10 +1175,11 @@ namespace Yutai.ArcGIS.Controls.Controls
                 }
                 if (this.m_pTable is IFeatureLayerSelectionEvents_Event)
                 {
-                    (this.m_pTable as IFeatureLayerSelectionEvents_Event).FeatureLayerSelectionChanged+=(new IFeatureLayerSelectionEvents_FeatureLayerSelectionChangedEventHandler(this.frmAttributeTable_FeatureLayerSelectionChanged));
+                    (this.m_pTable as IFeatureLayerSelectionEvents_Event).FeatureLayerSelectionChanged +=
+                    (new IFeatureLayerSelectionEvents_FeatureLayerSelectionChangedEventHandler(
+                        this.frmAttributeTable_FeatureLayerSelectionChanged));
                 }
             }
         }
     }
 }
-

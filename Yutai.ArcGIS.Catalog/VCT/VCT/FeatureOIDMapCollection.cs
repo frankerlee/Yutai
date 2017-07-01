@@ -48,7 +48,7 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
             int num2 = this.Count - 1;
             while (num < num2)
             {
-                int num3 = (num + num2) / 2;
+                int num3 = (num + num2)/2;
                 FeatureOIDMap map2 = this[num3] as FeatureOIDMap;
                 if (map2.CompareTo(map) < 0)
                 {
@@ -103,4 +103,3 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
         }
     }
 }
-

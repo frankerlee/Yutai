@@ -17,7 +17,5 @@ namespace Yutai.Services.Serialization
         Control GetDockPanelObject(string dockName);
 
         XmlProject YutaiProject { get; set; }
-
-       
     }
 }

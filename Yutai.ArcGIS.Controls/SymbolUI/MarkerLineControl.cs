@@ -50,7 +50,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- private void MarkerLineControl_Load(object sender, EventArgs e)
+        private void MarkerLineControl_Load(object sender, EventArgs e)
         {
             this.btnMarkSymbol.Style = this.m_pMarkerLineSymbol.MarkerSymbol;
         }
@@ -64,4 +64,3 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         }
     }
 }
-

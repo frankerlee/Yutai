@@ -13,8 +13,6 @@ namespace Yutai.Plugins.Editor.Commands
 {
     public class CmdTrimLineEx : YutaiTool
     {
-      
-
         private IPointCollection ipointCollection_0 = null;
 
         private double double_0 = -1.0;
@@ -46,7 +44,7 @@ namespace Yutai.Plugins.Editor.Commands
                     {
                         flag = false;
                     }
-                    else if ( _context.Config.CanEdited)
+                    else if (_context.Config.CanEdited)
                     {
                         IEnumFeature featureSelection = _context.FocusMap.FeatureSelection as IEnumFeature;
                         featureSelection.Reset();
@@ -58,7 +56,8 @@ namespace Yutai.Plugins.Editor.Commands
                                 flag = false;
                                 return flag;
                             }
-                            else if (Yutai.ArcGIS.Common.Editor.Editor.CheckWorkspaceEdit(feature.Class as IDataset, "IsBeingEdited"))
+                            else if (Yutai.ArcGIS.Common.Editor.Editor.CheckWorkspaceEdit(feature.Class as IDataset,
+                                "IsBeingEdited"))
                             {
                                 flag = true;
                                 return flag;
@@ -93,7 +92,7 @@ namespace Yutai.Plugins.Editor.Commands
             if (!this.Enabled)
             {
                 _context.ShowCommandString("", CommandTipsType.CTTCommandTip);
-                if ( !_context.Config.IsInEdit)
+                if (!_context.Config.IsInEdit)
                 {
                     _context.ShowCommandString("还未启动编辑，请先启动编辑", CommandTipsType.CTTUnKnown);
                 }
@@ -125,12 +124,15 @@ namespace Yutai.Plugins.Editor.Commands
             this.m_name = "Edit_TrimLineEx";
             this.m_message = "裁剪线";
             this.m_toolTip = "裁剪线";
-            
-            this.m_cursor = new System.Windows.Forms.Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.Plugins.Editor.Resources.Cursor.ExtendLine.cur"));
+
+            this.m_cursor =
+                new System.Windows.Forms.Cursor(
+                    base.GetType()
+                        .Assembly.GetManifestResourceStream("Yutai.Plugins.Editor.Resources.Cursor.ExtendLine.cur"));
 
             _context = object_0 as IAppContext;
             this._key = "Edit_TrimLineEx";
-            
+
             this.m_bitmap = Properties.Resources.icon_edit_trimline;
             base._itemType = RibbonItemType.Tool;
             // this.trimCommandFlow_0.Application = object_0 as IApplication;
@@ -149,7 +151,7 @@ namespace Yutai.Plugins.Editor.Commands
 
         public override void OnMouseDown(int int_0, int int_1, int int_2, int int_3)
         {
-            IActiveView focusMap = (IActiveView)_context.FocusMap;
+            IActiveView focusMap = (IActiveView) _context.FocusMap;
             IPoint mapPoint = focusMap.ScreenDisplay.DisplayTransformation.ToMapPoint(int_2, int_3);
             TryTrim(mapPoint);
         }
@@ -163,11 +165,13 @@ namespace Yutai.Plugins.Editor.Commands
                 this.double_1 = point.X;
                 //this.iapplication_0.ShowCommandString("找到" + _context.FocusMap.SelectionCount.ToString() + "个对象", CommandTipsType.CTTLog);
                 double double_ = Common.ConvertPixelsToMapUnits(_context.FocusMap as IActiveView, 6.0);
-                System.Collections.Generic.IList<IFeature> intersectsLineFeatures = Yutai.ArcGIS.Common.Editor.Editor.GetIntersectsLineFeatures(_context.FocusMap, ienvelope_);
+                System.Collections.Generic.IList<IFeature> intersectsLineFeatures =
+                    Yutai.ArcGIS.Common.Editor.Editor.GetIntersectsLineFeatures(_context.FocusMap, ienvelope_);
                 IWorkspaceEdit workspaceEdit = null;
                 for (int i = 0; i < intersectsLineFeatures.Count; i++)
                 {
-                    IWorkspaceEdit workspaceEdit2 = (intersectsLineFeatures[i].Class as IDataset).Workspace as IWorkspaceEdit;
+                    IWorkspaceEdit workspaceEdit2 =
+                        (intersectsLineFeatures[i].Class as IDataset).Workspace as IWorkspaceEdit;
                     if (workspaceEdit2.IsBeingEdited())
                     {
                         if (workspaceEdit == null)
@@ -183,16 +187,17 @@ namespace Yutai.Plugins.Editor.Commands
                     workspaceEdit.StopEditOperation();
                     _context.ActiveView.Refresh();
                 }
-               
             }
             else
             {
                 double double_ = Common.ConvertPixelsToMapUnits(_context.FocusMap as IActiveView, 6.0);
                 IFeatureLayer layer;
-                IFeature hitLineFeature = Yutai.ArcGIS.Common.Editor.Editor.GetHitLineFeature(_context.FocusMap, point, double_, out layer);
+                IFeature hitLineFeature = Yutai.ArcGIS.Common.Editor.Editor.GetHitLineFeature(_context.FocusMap, point,
+                    double_, out layer);
                 if (hitLineFeature != null)
                 {
-                    IPolyline polyline = Yutai.ArcGIS.Common.Editor.Editor.TrimPolyLine(_context.FocusMap, hitLineFeature.Shape, point, double_);
+                    IPolyline polyline = Yutai.ArcGIS.Common.Editor.Editor.TrimPolyLine(_context.FocusMap,
+                        hitLineFeature.Shape, point, double_);
                     if (polyline != null && !polyline.IsEmpty && (polyline as IPointCollection).PointCount > 1)
                     {
                         (polyline as ITopologicalOperator).Simplify();
@@ -218,7 +223,7 @@ namespace Yutai.Plugins.Editor.Commands
 
         public override void OnMouseMove(int int_0, int int_1, int int_2, int int_3)
         {
-            IActiveView focusMap = (IActiveView)_context.FocusMap;
+            IActiveView focusMap = (IActiveView) _context.FocusMap;
             IPoint mapPoint = focusMap.ScreenDisplay.DisplayTransformation.ToMapPoint(int_2, int_3);
             if (this.idisplayFeedback_0 != null)
             {
@@ -230,7 +235,8 @@ namespace Yutai.Plugins.Editor.Commands
         {
             try
             {
-                IPolyline polyline = Yutai.ArcGIS.Common.Editor.Editor.TrimPolyLine(_context.FocusMap, ifeature_1.Shape, ienvelope_0, double_2);
+                IPolyline polyline = Yutai.ArcGIS.Common.Editor.Editor.TrimPolyLine(_context.FocusMap, ifeature_1.Shape,
+                    ienvelope_0, double_2);
                 if (polyline != null && !polyline.IsEmpty && (polyline as IPointCollection).PointCount > 1)
                 {
                     (polyline as ITopologicalOperator).Simplify();

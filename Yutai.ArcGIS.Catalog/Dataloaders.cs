@@ -47,34 +47,22 @@ namespace Yutai.ArcGIS.Catalog
 
         public IFeatureDataConverter Converter
         {
-            get
-            {
-                return this.ifeatureDataConverter_0;
-            }
+            get { return this.ifeatureDataConverter_0; }
         }
 
         public bool RelpaceObject
         {
-            set
-            {
-                this.bool_1 = value;
-            }
+            set { this.bool_1 = value; }
         }
 
         public double Scale
         {
-            set
-            {
-                this.double_0 = value;
-            }
+            set { this.double_0 = value; }
         }
 
         public bool UseExitName
         {
-            set
-            {
-                this.bool_0 = value;
-            }
+            set { this.bool_0 = value; }
         }
 
         public Dataloaders()
@@ -88,7 +76,9 @@ namespace Yutai.ArcGIS.Catalog
             for (int i = 0; i < field.FieldCount; i++)
             {
                 IField field1 = field.Field[i];
-                if ((field1.Type == esriFieldType.esriFieldTypeGeometry || field1.Type == esriFieldType.esriFieldTypeOID ? false : field1.Editable))
+                if ((field1.Type == esriFieldType.esriFieldTypeGeometry || field1.Type == esriFieldType.esriFieldTypeOID
+                    ? false
+                    : field1.Editable))
                 {
                     int value = fields.FindField(field1.Name);
                     if (value != -1)
@@ -106,7 +96,9 @@ namespace Yutai.ArcGIS.Catalog
             for (int i = 0; i < fields.FieldCount; i++)
             {
                 IField field1 = fields.Field[i];
-                if ((field1.Type == esriFieldType.esriFieldTypeGeometry || field1.Type == esriFieldType.esriFieldTypeOID ? false : field1.Editable))
+                if ((field1.Type == esriFieldType.esriFieldTypeGeometry || field1.Type == esriFieldType.esriFieldTypeOID
+                    ? false
+                    : field1.Editable))
                 {
                     string name = field1.Name;
                     if (sortedList_0.ContainsKey(name))
@@ -134,7 +126,9 @@ namespace Yutai.ArcGIS.Catalog
             for (int i = 0; i < field.FieldCount; i++)
             {
                 IField field1 = field.Field[i];
-                if ((field1.Type == esriFieldType.esriFieldTypeGeometry || field1.Type == esriFieldType.esriFieldTypeOID ? false : field1.Editable))
+                if ((field1.Type == esriFieldType.esriFieldTypeGeometry || field1.Type == esriFieldType.esriFieldTypeOID
+                    ? false
+                    : field1.Editable))
                 {
                     int value = fields.FindField(field1.Name);
                     if (value != -1)
@@ -152,7 +146,9 @@ namespace Yutai.ArcGIS.Catalog
             for (int i = 0; i < field.FieldCount; i++)
             {
                 IField field1 = field.Field[i];
-                if ((field1.Type == esriFieldType.esriFieldTypeGeometry || field1.Type == esriFieldType.esriFieldTypeOID ? false : field1.Editable))
+                if ((field1.Type == esriFieldType.esriFieldTypeGeometry || field1.Type == esriFieldType.esriFieldTypeOID
+                    ? false
+                    : field1.Editable))
                 {
                     string lower = field1.Name.ToLower();
                     if (sortedList_0.ContainsKey(lower))
@@ -167,21 +163,24 @@ namespace Yutai.ArcGIS.Catalog
             }
         }
 
-        public string ConvertData(IFeatureDatasetName ifeatureDatasetName_0, IName iname_0, string string_0, IQueryFilter iqueryFilter_0)
+        public string ConvertData(IFeatureDatasetName ifeatureDatasetName_0, IName iname_0, string string_0,
+            IQueryFilter iqueryFilter_0)
         {
             string str = "";
             try
             {
                 IWorkspaceName workspaceName = (ifeatureDatasetName_0 as IDatasetName).WorkspaceName;
                 IFeatureDataset featureDataset = (ifeatureDatasetName_0 as IName).Open() as IFeatureDataset;
-                if ((iname_0.Open() as IFeatureWorkspace as IWorkspace).Type != esriWorkspaceType.esriFileSystemWorkspace)
+                if ((iname_0.Open() as IFeatureWorkspace as IWorkspace).Type !=
+                    esriWorkspaceType.esriFileSystemWorkspace)
                 {
                     IFeatureDatasetName ifeatureDatasetName0 = ifeatureDatasetName_0;
                     IFeatureDatasetName featureDatasetNameClass = new FeatureDatasetName() as IFeatureDatasetName;
-                    IDatasetName iname0 = (IDatasetName)featureDatasetNameClass;
+                    IDatasetName iname0 = (IDatasetName) featureDatasetNameClass;
                     iname0.WorkspaceName = iname_0 as IWorkspaceName;
                     iname0.Name = string_0;
-                    this.ifeatureDataConverter_0.ConvertFeatureDataset(ifeatureDatasetName0, featureDatasetNameClass, null, "", 1000, 0);
+                    this.ifeatureDataConverter_0.ConvertFeatureDataset(ifeatureDatasetName0, featureDatasetNameClass,
+                        null, "", 1000, 0);
                 }
                 else
                 {
@@ -199,7 +198,8 @@ namespace Yutai.ArcGIS.Catalog
             return str;
         }
 
-        public string ConvertData(IDatasetName idatasetName_0, IName iname_0, string string_0, IQueryFilter iqueryFilter_0)
+        public string ConvertData(IDatasetName idatasetName_0, IName iname_0, string string_0,
+            IQueryFilter iqueryFilter_0)
         {
             string str;
             IFeatureDatasetName iname0;
@@ -225,14 +225,12 @@ namespace Yutai.ArcGIS.Catalog
                     {
                         iname0 = iname_0 as IFeatureDatasetName;
                         workspaceName = (iname_0 as IDatasetName).WorkspaceName;
-
                     }
                     else
                     {
                         str = "";
                         return str;
                     }
-
                 }
                 else
                 {
@@ -255,7 +253,8 @@ namespace Yutai.ArcGIS.Catalog
                     {
                         IField field2 = fields.Field[i.FieldIndex];
                         IField field3 = field.Field[i.FieldIndex];
-                        string[] name = new string[] { str3, field3.Name, "reason: ", field2.Name, "  ", this.method_1(i.FieldError) };
+                        string[] name = new string[]
+                            {str3, field3.Name, "reason: ", field2.Name, "  ", this.method_1(i.FieldError)};
                         str3 = string.Concat(name);
                     }
                     Logger.Current.Info(string.Concat(Application.StartupPath, "\\DataConvert.log"), str3);
@@ -268,10 +267,14 @@ namespace Yutai.ArcGIS.Catalog
                     tableNameClass.WorkspaceName = workspaceName;
                     tableNameClass.Name = string_0;
 
-                    enumInvalidObject = this.ifeatureDataConverter_0.ConvertTable(idatasetName_0, null, tableNameClass, field, "", 1000, 0);
+                    enumInvalidObject = this.ifeatureDataConverter_0.ConvertTable(idatasetName_0, null, tableNameClass,
+                        field, "", 1000, 0);
                     this.method_13(enumInvalidObject);
                 }
-                else if ((idatasetName_0.Name.IndexOf("Annotation", StringComparison.CurrentCultureIgnoreCase) >= 0 || (idatasetName_0 as IFeatureClassName).FeatureType == esriFeatureType.esriFTAnnotation ? false : (idatasetName_0 as IFeatureClassName).FeatureType != esriFeatureType.esriFTCoverageAnnotation))
+                else if ((idatasetName_0.Name.IndexOf("Annotation", StringComparison.CurrentCultureIgnoreCase) >= 0 ||
+                          (idatasetName_0 as IFeatureClassName).FeatureType == esriFeatureType.esriFTAnnotation
+                    ? false
+                    : (idatasetName_0 as IFeatureClassName).FeatureType != esriFeatureType.esriFTCoverageAnnotation))
                 {
                     tableNameClass = new FeatureClassName() as IDatasetName;
 
@@ -302,12 +305,15 @@ namespace Yutai.ArcGIS.Catalog
                     geometryDef = field1.GeometryDef;
                     spatialReference = geometryDef as IGeometryDefEdit;
                     spatialReference.GridCount_2 = 1;
-                    spatialReference.GridSize_2[0] = this.method_9((IFeatureClass)table);
+                    spatialReference.GridSize_2[0] = this.method_9((IFeatureClass) table);
                     spatialReference1 = field1.GeometryDef.SpatialReference;
-                    SpatialReferenctOperator.ChangeCoordinateSystem(workspace as IGeodatabaseRelease, spatialReference1, false);
+                    SpatialReferenctOperator.ChangeCoordinateSystem(workspace as IGeodatabaseRelease, spatialReference1,
+                        false);
                     spatialReference.SpatialReference_2 = field1.GeometryDef.SpatialReference;
                     (field1 as IFieldEdit).GeometryDef_2 = spatialReference;
-                    enumInvalidObject = this.ifeatureDataConverter_0.ConvertFeatureClass(idatasetName_0 as IFeatureClassName, iqueryFilter_0, iname0, tableNameClass as IFeatureClassName, geometryDef, field, "", 1000, 0);
+                    enumInvalidObject =
+                        this.ifeatureDataConverter_0.ConvertFeatureClass(idatasetName_0 as IFeatureClassName,
+                            iqueryFilter_0, iname0, tableNameClass as IFeatureClassName, geometryDef, field, "", 1000, 0);
                     this.method_13(enumInvalidObject);
                 }
                 else if (workspaceName.Type == esriWorkspaceType.esriFileSystemWorkspace)
@@ -341,12 +347,15 @@ namespace Yutai.ArcGIS.Catalog
                     geometryDef = field1.GeometryDef;
                     spatialReference = geometryDef as IGeometryDefEdit;
                     spatialReference.GridCount_2 = 1;
-                    spatialReference.GridSize_2[0] = this.method_9((IFeatureClass)table);
+                    spatialReference.GridSize_2[0] = this.method_9((IFeatureClass) table);
                     spatialReference1 = field1.GeometryDef.SpatialReference;
-                    SpatialReferenctOperator.ChangeCoordinateSystem(workspace as IGeodatabaseRelease, spatialReference1, false);
+                    SpatialReferenctOperator.ChangeCoordinateSystem(workspace as IGeodatabaseRelease, spatialReference1,
+                        false);
                     spatialReference.SpatialReference_2 = field1.GeometryDef.SpatialReference;
                     (field1 as IFieldEdit).GeometryDef_2 = spatialReference;
-                    enumInvalidObject = this.ifeatureDataConverter_0.ConvertFeatureClass(idatasetName_0 as IFeatureClassName, iqueryFilter_0, iname0, tableNameClass as IFeatureClassName, geometryDef, field, "", 1000, 0);
+                    enumInvalidObject =
+                        this.ifeatureDataConverter_0.ConvertFeatureClass(idatasetName_0 as IFeatureClassName,
+                            iqueryFilter_0, iname0, tableNameClass as IFeatureClassName, geometryDef, field, "", 1000, 0);
                     this.method_13(enumInvalidObject);
                 }
                 else
@@ -361,10 +370,10 @@ namespace Yutai.ArcGIS.Catalog
                 str = this.ConvertData(idatasetName_0 as IFeatureDatasetName, iname_0, string_0, iqueryFilter_0);
             }
             return str;
-
         }
 
-        public string ConvertData(IPropertySet ipropertySet_0, string string_0, convDataType convDataType_0, IPropertySet ipropertySet_1, string string_1, string string_2, convDataType convDataType_1, bool bool_2)
+        public string ConvertData(IPropertySet ipropertySet_0, string string_0, convDataType convDataType_0,
+            IPropertySet ipropertySet_1, string string_1, string string_2, convDataType convDataType_1, bool bool_2)
         {
             string result = "";
             IWorkspaceName workspaceName = new WorkspaceName() as IWorkspaceName;
@@ -401,7 +410,7 @@ namespace Yutai.ArcGIS.Catalog
                 datasetName3 = new FeatureClassName() as IDatasetName;
                 if (datasetName2 != null)
                 {
-                    IFeatureClassName featureClassName = (IFeatureClassName)datasetName3;
+                    IFeatureClassName featureClassName = (IFeatureClassName) datasetName3;
                     featureClassName.FeatureDatasetName = datasetName2;
                 }
             }
@@ -411,8 +420,8 @@ namespace Yutai.ArcGIS.Catalog
             }
             datasetName3.WorkspaceName = workspaceName2;
             datasetName3.Name = string_1;
-            IName name = (IName)datasetName;
-            ITable table = (ITable)name.Open();
+            IName name = (IName) datasetName;
+            ITable table = (ITable) name.Open();
             IFields fields = table.Fields;
             IFieldChecker fieldChecker = new FieldChecker();
             IEnumFieldError enumFieldError;
@@ -421,7 +430,9 @@ namespace Yutai.ArcGIS.Catalog
             if (enumFieldError != null)
             {
                 string text = "Some columns will be given new names as follows:";
-                for (IFieldError fieldError = enumFieldError.Next(); fieldError != null; fieldError = enumFieldError.Next())
+                for (IFieldError fieldError = enumFieldError.Next();
+                    fieldError != null;
+                    fieldError = enumFieldError.Next())
                 {
                     IField field = fields.get_Field(fieldError.FieldIndex);
                     IField field2 = fields2.get_Field(fieldError.FieldIndex);
@@ -436,7 +447,8 @@ namespace Yutai.ArcGIS.Catalog
                     });
                 }
                 text += "Continue?";
-                System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.MessageBox.Show(text, "错误提示信息", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question);
+                System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.MessageBox.Show(text, "错误提示信息",
+                    System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question);
                 if (dialogResult == System.Windows.Forms.DialogResult.Yes)
                 {
                     result = "Load cancelled";
@@ -453,21 +465,25 @@ namespace Yutai.ArcGIS.Catalog
                     }
                 }
                 IGeometryDef geometryDef = field3.GeometryDef;
-                IGeometryDefEdit geometryDefEdit = (IGeometryDefEdit)geometryDef;
+                IGeometryDefEdit geometryDefEdit = (IGeometryDefEdit) geometryDef;
                 geometryDefEdit.GridCount_2 = 1;
-                geometryDefEdit.set_GridSize(0, this.method_9((IFeatureClass)table));
+                geometryDefEdit.set_GridSize(0, this.method_9((IFeatureClass) table));
                 ISpatialReference spatialReference = field3.GeometryDef.SpatialReference;
-                SpatialReferenctOperator.ChangeCoordinateSystem((workspaceName2 as IName).Open() as IGeodatabaseRelease, spatialReference, false);
+                SpatialReferenctOperator.ChangeCoordinateSystem(
+                    (workspaceName2 as IName).Open() as IGeodatabaseRelease, spatialReference, false);
                 geometryDefEdit.SpatialReference_2 = field3.GeometryDef.SpatialReference;
                 (field3 as IFieldEdit).GeometryDef_2 = geometryDefEdit;
                 IEnumInvalidObject enumInvalidObject;
                 if (bool_2)
                 {
-                    enumInvalidObject = this.ifeatureDataConverter_0.ConvertFeatureClass((IFeatureClassName)datasetName, null, (IFeatureDatasetName)datasetName2, (IFeatureClassName)datasetName3, geometryDef, fields2, "", 1000, 0);
+                    enumInvalidObject = this.ifeatureDataConverter_0.ConvertFeatureClass(
+                        (IFeatureClassName) datasetName, null, (IFeatureDatasetName) datasetName2,
+                        (IFeatureClassName) datasetName3, geometryDef, fields2, "", 1000, 0);
                 }
                 else
                 {
-                    enumInvalidObject = this.ifeatureDataConverter_0.ConvertTable(datasetName, null, datasetName3, fields2, "", 1000, 0);
+                    enumInvalidObject = this.ifeatureDataConverter_0.ConvertTable(datasetName, null, datasetName3,
+                        fields2, "", 1000, 0);
                 }
                 IInvalidObjectInfo invalidObjectInfo = enumInvalidObject.Next();
                 if (invalidObjectInfo == null)
@@ -479,7 +495,8 @@ namespace Yutai.ArcGIS.Catalog
         }
 
 
-        public string ConvertDataEx(IDatasetName idatasetName_0, IName iname_0, ref string string_0, IQueryFilter iqueryFilter_0)
+        public string ConvertDataEx(IDatasetName idatasetName_0, IName iname_0, ref string string_0,
+            IQueryFilter iqueryFilter_0)
         {
             string str;
             IFeatureDatasetName iname0;
@@ -511,7 +528,6 @@ namespace Yutai.ArcGIS.Catalog
                         str = "";
                         return str;
                     }
-
                 }
                 else
                 {
@@ -534,7 +550,8 @@ namespace Yutai.ArcGIS.Catalog
                     {
                         IField field2 = fields.Field[i.FieldIndex];
                         IField field3 = field.Field[i.FieldIndex];
-                        string[] name = new string[] { str3, field3.Name, "reason: ", field2.Name, "  ", this.method_1(i.FieldError) };
+                        string[] name = new string[]
+                            {str3, field3.Name, "reason: ", field2.Name, "  ", this.method_1(i.FieldError)};
                         str3 = string.Concat(name);
                     }
                     Logger.Current.Info(string.Concat(Application.StartupPath, "\\DataConvert.log"), str3);
@@ -547,10 +564,14 @@ namespace Yutai.ArcGIS.Catalog
                     tableNameClass.WorkspaceName = workspaceName;
                     tableNameClass.Name = string_0;
 
-                    enumInvalidObject = this.ifeatureDataConverter_0.ConvertTable(idatasetName_0, null, tableNameClass, field, "", 1000, 0);
+                    enumInvalidObject = this.ifeatureDataConverter_0.ConvertTable(idatasetName_0, null, tableNameClass,
+                        field, "", 1000, 0);
                     this.method_13(enumInvalidObject);
                 }
-                else if ((idatasetName_0.Name.IndexOf("Annotation", StringComparison.CurrentCultureIgnoreCase) >= 0 || (idatasetName_0 as IFeatureClassName).FeatureType == esriFeatureType.esriFTAnnotation ? false : (idatasetName_0 as IFeatureClassName).FeatureType != esriFeatureType.esriFTCoverageAnnotation))
+                else if ((idatasetName_0.Name.IndexOf("Annotation", StringComparison.CurrentCultureIgnoreCase) >= 0 ||
+                          (idatasetName_0 as IFeatureClassName).FeatureType == esriFeatureType.esriFTAnnotation
+                    ? false
+                    : (idatasetName_0 as IFeatureClassName).FeatureType != esriFeatureType.esriFTCoverageAnnotation))
                 {
                     tableNameClass = new FeatureClassName() as IDatasetName;
 
@@ -581,10 +602,13 @@ namespace Yutai.ArcGIS.Catalog
                     geometryDef = field1.GeometryDef;
                     spatialReference = geometryDef as IGeometryDefEdit;
                     spatialReference1 = field1.GeometryDef.SpatialReference;
-                    SpatialReferenctOperator.ChangeCoordinateSystem(workspace as IGeodatabaseRelease, spatialReference1, false);
+                    SpatialReferenctOperator.ChangeCoordinateSystem(workspace as IGeodatabaseRelease, spatialReference1,
+                        false);
                     spatialReference.SpatialReference_2 = field1.GeometryDef.SpatialReference;
                     (field1 as IFieldEdit).GeometryDef_2 = spatialReference;
-                    enumInvalidObject = this.ifeatureDataConverter_0.ConvertFeatureClass(idatasetName_0 as IFeatureClassName, iqueryFilter_0, iname0, tableNameClass as IFeatureClassName, geometryDef, field, "", 1000, 0);
+                    enumInvalidObject =
+                        this.ifeatureDataConverter_0.ConvertFeatureClass(idatasetName_0 as IFeatureClassName,
+                            iqueryFilter_0, iname0, tableNameClass as IFeatureClassName, geometryDef, field, "", 1000, 0);
                     this.method_13(enumInvalidObject);
                 }
                 else if (workspaceName.Type == esriWorkspaceType.esriFileSystemWorkspace)
@@ -618,10 +642,13 @@ namespace Yutai.ArcGIS.Catalog
                     geometryDef = field1.GeometryDef;
                     spatialReference = geometryDef as IGeometryDefEdit;
                     spatialReference1 = field1.GeometryDef.SpatialReference;
-                    SpatialReferenctOperator.ChangeCoordinateSystem(workspace as IGeodatabaseRelease, spatialReference1, false);
+                    SpatialReferenctOperator.ChangeCoordinateSystem(workspace as IGeodatabaseRelease, spatialReference1,
+                        false);
                     spatialReference.SpatialReference_2 = field1.GeometryDef.SpatialReference;
                     (field1 as IFieldEdit).GeometryDef_2 = spatialReference;
-                    enumInvalidObject = this.ifeatureDataConverter_0.ConvertFeatureClass(idatasetName_0 as IFeatureClassName, iqueryFilter_0, iname0, tableNameClass as IFeatureClassName, geometryDef, field, "", 1000, 0);
+                    enumInvalidObject =
+                        this.ifeatureDataConverter_0.ConvertFeatureClass(idatasetName_0 as IFeatureClassName,
+                            iqueryFilter_0, iname0, tableNameClass as IFeatureClassName, geometryDef, field, "", 1000, 0);
                     this.method_13(enumInvalidObject);
                 }
                 else
@@ -636,7 +663,6 @@ namespace Yutai.ArcGIS.Catalog
                 str = this.ConvertData(idatasetName_0 as IFeatureDatasetName, iname_0, string_0, iqueryFilter_0);
             }
             return str;
-
         }
 
         public string GetFinalName(IFeatureWorkspace ifeatureWorkspace_0, string string_0)
@@ -756,7 +782,8 @@ namespace Yutai.ArcGIS.Catalog
                         COMException cOMException = cOMException1;
                         if (cOMException.ErrorCode != -2147220936)
                         {
-                            Logger.Current.Info(string.Concat(Application.StartupPath, "\\DataLoad.log"), cOMException.ToString());
+                            Logger.Current.Info(string.Concat(Application.StartupPath, "\\DataLoad.log"),
+                                cOMException.ToString());
                         }
                         else
                         {
@@ -768,7 +795,8 @@ namespace Yutai.ArcGIS.Catalog
                     catch (Exception exception1)
                     {
                         Exception exception = exception1;
-                        Logger.Current.Info(string.Concat(Application.StartupPath, "\\DataLoad.log"), exception.ToString());
+                        Logger.Current.Info(string.Concat(Application.StartupPath, "\\DataLoad.log"),
+                            exception.ToString());
                     }
                     if (this.ifeatureProgress_StepEventHandler_0 != null)
                     {
@@ -784,7 +812,8 @@ namespace Yutai.ArcGIS.Catalog
             }
         }
 
-        public void LoadData(ITable itable_0, IQueryFilter iqueryFilter_0, ITable itable_1, SortedList<string, string> sortedList_0, int int_0)
+        public void LoadData(ITable itable_0, IQueryFilter iqueryFilter_0, ITable itable_1,
+            SortedList<string, string> sortedList_0, int int_0)
         {
             int num = itable_0.RowCount(iqueryFilter_0);
             if (this.assist != null)
@@ -868,7 +897,8 @@ namespace Yutai.ArcGIS.Catalog
                         COMException cOMException = cOMException1;
                         if (cOMException.ErrorCode != -2147220936)
                         {
-                            Logger.Current.Info(string.Concat(Application.StartupPath, "\\DataLoad.log"), cOMException.ToString());
+                            Logger.Current.Info(string.Concat(Application.StartupPath, "\\DataLoad.log"),
+                                cOMException.ToString());
                         }
                         else
                         {
@@ -880,7 +910,8 @@ namespace Yutai.ArcGIS.Catalog
                     catch (Exception exception1)
                     {
                         Exception exception = exception1;
-                        Logger.Current.Info(string.Concat(Application.StartupPath, "\\DataLoad.log"), exception.ToString());
+                        Logger.Current.Info(string.Concat(Application.StartupPath, "\\DataLoad.log"),
+                            exception.ToString());
                     }
                     if (this.ifeatureProgress_StepEventHandler_0 != null)
                     {
@@ -896,7 +927,8 @@ namespace Yutai.ArcGIS.Catalog
             }
         }
 
-        public void LoadData(List<ITable> list_0, string string_0, ITable itable_0, SortedList<string, string> sortedList_0, int int_0)
+        public void LoadData(List<ITable> list_0, string string_0, ITable itable_0,
+            SortedList<string, string> sortedList_0, int int_0)
         {
             if (this.assist == null)
             {
@@ -913,7 +945,8 @@ namespace Yutai.ArcGIS.Catalog
             {
                 int num1 = num;
                 num = num1 + 1;
-                this.assist.SetMessage(string.Format("正在加载数据[{0}]....,第{1}/{2}个数据集", (list0 as IDataset).Name, num1, count));
+                this.assist.SetMessage(string.Format("正在加载数据[{0}]....,第{1}/{2}个数据集", (list0 as IDataset).Name, num1,
+                    count));
                 this.assist.Increment(1);
                 IQueryFilter queryFilter = null;
                 if (string_0.Length > 0)
@@ -1013,7 +1046,8 @@ namespace Yutai.ArcGIS.Catalog
                             COMException cOMException = cOMException1;
                             if (cOMException.ErrorCode != -2147220936)
                             {
-                                Logger.Current.Info(string.Concat(Application.StartupPath, "\\DataLoad.log"), cOMException.ToString());
+                                Logger.Current.Info(string.Concat(Application.StartupPath, "\\DataLoad.log"),
+                                    cOMException.ToString());
                             }
                             else
                             {
@@ -1025,7 +1059,8 @@ namespace Yutai.ArcGIS.Catalog
                         catch (Exception exception1)
                         {
                             Exception exception = exception1;
-                            Logger.Current.Info(string.Concat(Application.StartupPath, "\\DataLoad.log"), exception.ToString());
+                            Logger.Current.Info(string.Concat(Application.StartupPath, "\\DataLoad.log"),
+                                exception.ToString());
                         }
                     }
                     if (this.ifeatureProgress_StepEventHandler_0 != null)
@@ -1145,7 +1180,8 @@ namespace Yutai.ArcGIS.Catalog
             return str;
         }
 
-        private IFeatureClass method_10(IFeatureClass ifeatureClass_0, IFeatureWorkspaceAnno ifeatureWorkspaceAnno_0, IFeatureDataset ifeatureDataset_0, IFeatureClass ifeatureClass_1, string string_0)
+        private IFeatureClass method_10(IFeatureClass ifeatureClass_0, IFeatureWorkspaceAnno ifeatureWorkspaceAnno_0,
+            IFeatureDataset ifeatureDataset_0, IFeatureClass ifeatureClass_1, string string_0)
         {
             IAnnotateLayerPropertiesCollection annotateLayerPropertiesCollectionClass;
             ISymbolCollection symbolCollectionClass;
@@ -1165,10 +1201,12 @@ namespace Yutai.ArcGIS.Catalog
             if (num != -1)
             {
                 spatialReference = fields.Field[num].GeometryDef.SpatialReference;
-                SpatialReferenctOperator.ChangeCoordinateSystem(ifeatureWorkspaceAnno_0 as IGeodatabaseRelease, spatialReference, true);
+                SpatialReferenctOperator.ChangeCoordinateSystem(ifeatureWorkspaceAnno_0 as IGeodatabaseRelease,
+                    spatialReference, true);
             }
             IObjectClassDescription annotationFeatureClassDescriptionClass = new AnnotationFeatureClassDescription();
-            IFeatureClassDescription featureClassDescription = annotationFeatureClassDescriptionClass as IFeatureClassDescription;
+            IFeatureClassDescription featureClassDescription =
+                annotationFeatureClassDescriptionClass as IFeatureClassDescription;
             IFields requiredFields = annotationFeatureClassDescriptionClass.RequiredFields;
             IFieldEdit field = null;
             int num1 = requiredFields.FindField(featureClassDescription.ShapeFieldName);
@@ -1177,7 +1215,8 @@ namespace Yutai.ArcGIS.Catalog
             if (spatialReference == null)
             {
                 spatialReference = geometryDef.SpatialReference;
-                SpatialReferenctOperator.ChangeCoordinateSystem(ifeatureWorkspaceAnno_0 as IGeodatabaseRelease, spatialReference, true);
+                SpatialReferenctOperator.ChangeCoordinateSystem(ifeatureWorkspaceAnno_0 as IGeodatabaseRelease,
+                    spatialReference, true);
             }
             geometryDef.SpatialReference_2 = spatialReference;
             field.GeometryDef_2 = geometryDef;
@@ -1207,7 +1246,8 @@ namespace Yutai.ArcGIS.Catalog
                 labelEngineLayerPropertiesClass.DisplayAnnotation = true;
                 labelEngineLayerPropertiesClass.UseOutput = true;
 
-                ILabelEngineLayerProperties labelEngineLayerProperty = labelEngineLayerPropertiesClass as ILabelEngineLayerProperties;
+                ILabelEngineLayerProperties labelEngineLayerProperty =
+                    labelEngineLayerPropertiesClass as ILabelEngineLayerProperties;
                 labelEngineLayerProperty.Offset = 0;
                 labelEngineLayerProperty.SymbolID = 0;
                 labelEngineLayerProperty.Symbol = textSymbolClass;
@@ -1226,7 +1266,10 @@ namespace Yutai.ArcGIS.Catalog
             };
             UID instanceCLSID = annotationFeatureClassDescriptionClass.InstanceCLSID;
             UID classExtensionCLSID = annotationFeatureClassDescriptionClass.ClassExtensionCLSID;
-            IFeatureClass featureClass = ifeatureWorkspaceAnno_0.CreateAnnotationClass(string_0, requiredFields, instanceCLSID, classExtensionCLSID, featureClassDescription.ShapeFieldName, "", ifeatureDataset_0, ifeatureClass_1, annotateLayerPropertiesCollectionClass, graphicsLayerScaleClass, symbolCollectionClass, true);
+            IFeatureClass featureClass = ifeatureWorkspaceAnno_0.CreateAnnotationClass(string_0, requiredFields,
+                instanceCLSID, classExtensionCLSID, featureClassDescription.ShapeFieldName, "", ifeatureDataset_0,
+                ifeatureClass_1, annotateLayerPropertiesCollectionClass, graphicsLayerScaleClass, symbolCollectionClass,
+                true);
             return featureClass;
         }
 
@@ -1245,7 +1288,8 @@ namespace Yutai.ArcGIS.Catalog
             }
             string finalTableName = this.GetFinalTableName(workspace as IFeatureWorkspace, string_0);
             IFeatureClass featureClass = null;
-            IRelationshipClass relationshipClass = ifeatureClass_0.RelationshipClasses[esriRelRole.esriRelRoleOrigin].Next();
+            IRelationshipClass relationshipClass =
+                ifeatureClass_0.RelationshipClasses[esriRelRole.esriRelRoleOrigin].Next();
             if (relationshipClass != null)
             {
                 try
@@ -1253,15 +1297,17 @@ namespace Yutai.ArcGIS.Catalog
                     if (relationshipClass.OriginClass != null)
                     {
                         string name = (relationshipClass.OriginClass as IDataset).Name;
-                        string[] strArrays = name.Split(new char[] { '.' });
-                        featureClass = (workspace as IFeatureWorkspace).OpenFeatureClass(strArrays[(int)strArrays.Length - 1]);
+                        string[] strArrays = name.Split(new char[] {'.'});
+                        featureClass =
+                            (workspace as IFeatureWorkspace).OpenFeatureClass(strArrays[(int) strArrays.Length - 1]);
                     }
                 }
                 catch
                 {
                 }
             }
-            IFeatureClass featureClass1 = this.method_10(ifeatureClass_0, workspace as IFeatureWorkspaceAnno, featureDataset, featureClass, finalTableName);
+            IFeatureClass featureClass1 = this.method_10(ifeatureClass_0, workspace as IFeatureWorkspaceAnno,
+                featureDataset, featureClass, finalTableName);
             this.method_12(ifeatureClass_0, featureClass1);
         }
 
@@ -1315,7 +1361,6 @@ namespace Yutai.ArcGIS.Catalog
                             if (num1 != -1)
                             {
                                 value = feature.Value[num1];
-
                             }
                             featureBuffer = ifeatureClass_1.CreateFeatureBuffer();
                             annotationClassID = featureBuffer as IAnnotationFeature2;
@@ -1406,7 +1451,8 @@ namespace Yutai.ArcGIS.Catalog
                         {
                             if (i is IFeature)
                             {
-                                CreateFeatureTool.SetGeometry((i as IFeature).Shape, rowBuffer as IFeatureBuffer, itable_1 as IFeatureClass);
+                                CreateFeatureTool.SetGeometry((i as IFeature).Shape, rowBuffer as IFeatureBuffer,
+                                    itable_1 as IFeatureClass);
                             }
                             Dataloaders.AddFields(rowBuffer, i);
                             cursor.InsertRow(rowBuffer);
@@ -1423,7 +1469,8 @@ namespace Yutai.ArcGIS.Catalog
                             COMException cOMException = cOMException1;
                             if (cOMException.ErrorCode != -2147220936)
                             {
-                                Logger.Current.Info(string.Concat(Application.StartupPath, "\\DataLoad.log"), cOMException.ToString());
+                                Logger.Current.Info(string.Concat(Application.StartupPath, "\\DataLoad.log"),
+                                    cOMException.ToString());
                             }
                             else
                             {
@@ -1435,7 +1482,8 @@ namespace Yutai.ArcGIS.Catalog
                         catch (Exception exception1)
                         {
                             Exception exception = exception1;
-                            Logger.Current.Info(string.Concat(Application.StartupPath, "\\DataLoad.log"), exception.ToString());
+                            Logger.Current.Info(string.Concat(Application.StartupPath, "\\DataLoad.log"),
+                                exception.ToString());
                         }
                         if (this.ifeatureProgress_StepEventHandler_0 != null)
                         {
@@ -1495,8 +1543,8 @@ namespace Yutai.ArcGIS.Catalog
             int num1 = ifeatureClass_0.FeatureCount(null);
             if ((num1 == 0 ? false : !extent.IsEmpty))
             {
-                double height = extent.Height * extent.Width;
-                num = Math.Sqrt(height / (double)num1);
+                double height = extent.Height*extent.Width;
+                num = Math.Sqrt(height/(double) num1);
             }
             else
             {
@@ -1526,16 +1574,18 @@ namespace Yutai.ArcGIS.Catalog
             }
             if (num7 > 0)
             {
-                if ((ifeatureClass_0.ShapeType == esriGeometryType.esriGeometryMultipoint ? true : ifeatureClass_0.ShapeType == esriGeometryType.esriGeometryPoint))
+                if ((ifeatureClass_0.ShapeType == esriGeometryType.esriGeometryMultipoint
+                    ? true
+                    : ifeatureClass_0.ShapeType == esriGeometryType.esriGeometryPoint))
                 {
                     num1 = this.method_8(ifeatureClass_0);
                 }
-                int num8 = num7 * num5;
+                int num8 = num7*num5;
                 if (num8 > 1000)
                 {
                     num8 = 1000;
                 }
-                int num9 = num7 / num8;
+                int num9 = num7/num8;
                 for (int i = 0; i < num7; i = i + num9)
                 {
                     arrayLists.Add(i);
@@ -1560,11 +1610,14 @@ namespace Yutai.ArcGIS.Catalog
                         IEnvelope extent = l.Extent;
                         num2 = this.method_5(num2, this.method_5(extent.Width, extent.Height));
                         num3 = this.method_4(num3, this.method_4(extent.Width, extent.Height));
-                        num4 = (num3 == 0 ? num4 + 0.0001 : num4 + this.method_4(extent.Width, extent.Height) / this.method_5(extent.Width, extent.Height));
+                        num4 = (num3 == 0
+                            ? num4 + 0.0001
+                            : num4 +
+                              this.method_4(extent.Width, extent.Height)/this.method_5(extent.Width, extent.Height));
                     }
                     Marshal.ReleaseComObject(featureCursor);
                     featureCursor = null;
-                    num1 = (num4 / (double)num8 <= 0.5 ? num2 / 2 * (double)num6 : (num3 + (num2 - num3) / 2) * (double)num6);
+                    num1 = (num4/(double) num8 <= 0.5 ? num2/2*(double) num6 : (num3 + (num2 - num3)/2)*(double) num6);
                 }
                 num = num1;
             }
@@ -1584,10 +1637,10 @@ namespace Yutai.ArcGIS.Catalog
                 do
                 {
                     finishHander = finishHander0;
-                    FinishHander finishHander1 = (FinishHander)Delegate.Combine(finishHander, value);
-                    finishHander0 = Interlocked.CompareExchange<FinishHander>(ref this.finishHander_0, finishHander1, finishHander);
-                }
-                while ((object)finishHander0 != (object)finishHander);
+                    FinishHander finishHander1 = (FinishHander) Delegate.Combine(finishHander, value);
+                    finishHander0 = Interlocked.CompareExchange<FinishHander>(ref this.finishHander_0, finishHander1,
+                        finishHander);
+                } while ((object) finishHander0 != (object) finishHander);
             }
             remove
             {
@@ -1596,10 +1649,10 @@ namespace Yutai.ArcGIS.Catalog
                 do
                 {
                     finishHander = finishHander0;
-                    FinishHander finishHander1 = (FinishHander)Delegate.Remove(finishHander, value);
-                    finishHander0 = Interlocked.CompareExchange<FinishHander>(ref this.finishHander_0, finishHander1, finishHander);
-                }
-                while ((object)finishHander0 != (object)finishHander);
+                    FinishHander finishHander1 = (FinishHander) Delegate.Remove(finishHander, value);
+                    finishHander0 = Interlocked.CompareExchange<FinishHander>(ref this.finishHander_0, finishHander1,
+                        finishHander);
+                } while ((object) finishHander0 != (object) finishHander);
             }
         }
 
@@ -1608,26 +1661,34 @@ namespace Yutai.ArcGIS.Catalog
             add
             {
                 SetFeatureClassNameEnventHandler setFeatureClassNameEnventHandler;
-                SetFeatureClassNameEnventHandler setFeatureClassNameEnventHandler0 = this.setFeatureClassNameEnventHandler_0;
+                SetFeatureClassNameEnventHandler setFeatureClassNameEnventHandler0 =
+                    this.setFeatureClassNameEnventHandler_0;
                 do
                 {
                     setFeatureClassNameEnventHandler = setFeatureClassNameEnventHandler0;
-                    SetFeatureClassNameEnventHandler setFeatureClassNameEnventHandler1 = (SetFeatureClassNameEnventHandler)Delegate.Combine(setFeatureClassNameEnventHandler, value);
-                    setFeatureClassNameEnventHandler0 = Interlocked.CompareExchange<SetFeatureClassNameEnventHandler>(ref this.setFeatureClassNameEnventHandler_0, setFeatureClassNameEnventHandler1, setFeatureClassNameEnventHandler);
-                }
-                while ((object)setFeatureClassNameEnventHandler0 != (object)setFeatureClassNameEnventHandler);
+                    SetFeatureClassNameEnventHandler setFeatureClassNameEnventHandler1 =
+                        (SetFeatureClassNameEnventHandler) Delegate.Combine(setFeatureClassNameEnventHandler, value);
+                    setFeatureClassNameEnventHandler0 =
+                        Interlocked.CompareExchange<SetFeatureClassNameEnventHandler>(
+                            ref this.setFeatureClassNameEnventHandler_0, setFeatureClassNameEnventHandler1,
+                            setFeatureClassNameEnventHandler);
+                } while ((object) setFeatureClassNameEnventHandler0 != (object) setFeatureClassNameEnventHandler);
             }
             remove
             {
                 SetFeatureClassNameEnventHandler setFeatureClassNameEnventHandler;
-                SetFeatureClassNameEnventHandler setFeatureClassNameEnventHandler0 = this.setFeatureClassNameEnventHandler_0;
+                SetFeatureClassNameEnventHandler setFeatureClassNameEnventHandler0 =
+                    this.setFeatureClassNameEnventHandler_0;
                 do
                 {
                     setFeatureClassNameEnventHandler = setFeatureClassNameEnventHandler0;
-                    SetFeatureClassNameEnventHandler setFeatureClassNameEnventHandler1 = (SetFeatureClassNameEnventHandler)Delegate.Remove(setFeatureClassNameEnventHandler, value);
-                    setFeatureClassNameEnventHandler0 = Interlocked.CompareExchange<SetFeatureClassNameEnventHandler>(ref this.setFeatureClassNameEnventHandler_0, setFeatureClassNameEnventHandler1, setFeatureClassNameEnventHandler);
-                }
-                while ((object)setFeatureClassNameEnventHandler0 != (object)setFeatureClassNameEnventHandler);
+                    SetFeatureClassNameEnventHandler setFeatureClassNameEnventHandler1 =
+                        (SetFeatureClassNameEnventHandler) Delegate.Remove(setFeatureClassNameEnventHandler, value);
+                    setFeatureClassNameEnventHandler0 =
+                        Interlocked.CompareExchange<SetFeatureClassNameEnventHandler>(
+                            ref this.setFeatureClassNameEnventHandler_0, setFeatureClassNameEnventHandler1,
+                            setFeatureClassNameEnventHandler);
+                } while ((object) setFeatureClassNameEnventHandler0 != (object) setFeatureClassNameEnventHandler);
             }
         }
 
@@ -1640,10 +1701,13 @@ namespace Yutai.ArcGIS.Catalog
                 do
                 {
                     setFeatureCountEnventHandler = setFeatureCountEnventHandler0;
-                    SetFeatureCountEnventHandler setFeatureCountEnventHandler1 = (SetFeatureCountEnventHandler)Delegate.Combine(setFeatureCountEnventHandler, value);
-                    setFeatureCountEnventHandler0 = Interlocked.CompareExchange<SetFeatureCountEnventHandler>(ref this.setFeatureCountEnventHandler_0, setFeatureCountEnventHandler1, setFeatureCountEnventHandler);
-                }
-                while ((object)setFeatureCountEnventHandler0 != (object)setFeatureCountEnventHandler);
+                    SetFeatureCountEnventHandler setFeatureCountEnventHandler1 =
+                        (SetFeatureCountEnventHandler) Delegate.Combine(setFeatureCountEnventHandler, value);
+                    setFeatureCountEnventHandler0 =
+                        Interlocked.CompareExchange<SetFeatureCountEnventHandler>(
+                            ref this.setFeatureCountEnventHandler_0, setFeatureCountEnventHandler1,
+                            setFeatureCountEnventHandler);
+                } while ((object) setFeatureCountEnventHandler0 != (object) setFeatureCountEnventHandler);
             }
             remove
             {
@@ -1652,10 +1716,13 @@ namespace Yutai.ArcGIS.Catalog
                 do
                 {
                     setFeatureCountEnventHandler = setFeatureCountEnventHandler0;
-                    SetFeatureCountEnventHandler setFeatureCountEnventHandler1 = (SetFeatureCountEnventHandler)Delegate.Remove(setFeatureCountEnventHandler, value);
-                    setFeatureCountEnventHandler0 = Interlocked.CompareExchange<SetFeatureCountEnventHandler>(ref this.setFeatureCountEnventHandler_0, setFeatureCountEnventHandler1, setFeatureCountEnventHandler);
-                }
-                while ((object)setFeatureCountEnventHandler0 != (object)setFeatureCountEnventHandler);
+                    SetFeatureCountEnventHandler setFeatureCountEnventHandler1 =
+                        (SetFeatureCountEnventHandler) Delegate.Remove(setFeatureCountEnventHandler, value);
+                    setFeatureCountEnventHandler0 =
+                        Interlocked.CompareExchange<SetFeatureCountEnventHandler>(
+                            ref this.setFeatureCountEnventHandler_0, setFeatureCountEnventHandler1,
+                            setFeatureCountEnventHandler);
+                } while ((object) setFeatureCountEnventHandler0 != (object) setFeatureCountEnventHandler);
             }
         }
 
@@ -1668,10 +1735,11 @@ namespace Yutai.ArcGIS.Catalog
                 do
                 {
                     setMaxValueHandler = setMaxValueHandler0;
-                    SetMaxValueHandler setMaxValueHandler1 = (SetMaxValueHandler)Delegate.Combine(setMaxValueHandler, value);
-                    setMaxValueHandler0 = Interlocked.CompareExchange<SetMaxValueHandler>(ref this.setMaxValueHandler_0, setMaxValueHandler1, setMaxValueHandler);
-                }
-                while ((object)setMaxValueHandler0 != (object)setMaxValueHandler);
+                    SetMaxValueHandler setMaxValueHandler1 =
+                        (SetMaxValueHandler) Delegate.Combine(setMaxValueHandler, value);
+                    setMaxValueHandler0 = Interlocked.CompareExchange<SetMaxValueHandler>(
+                        ref this.setMaxValueHandler_0, setMaxValueHandler1, setMaxValueHandler);
+                } while ((object) setMaxValueHandler0 != (object) setMaxValueHandler);
             }
             remove
             {
@@ -1680,10 +1748,11 @@ namespace Yutai.ArcGIS.Catalog
                 do
                 {
                     setMaxValueHandler = setMaxValueHandler0;
-                    SetMaxValueHandler setMaxValueHandler1 = (SetMaxValueHandler)Delegate.Remove(setMaxValueHandler, value);
-                    setMaxValueHandler0 = Interlocked.CompareExchange<SetMaxValueHandler>(ref this.setMaxValueHandler_0, setMaxValueHandler1, setMaxValueHandler);
-                }
-                while ((object)setMaxValueHandler0 != (object)setMaxValueHandler);
+                    SetMaxValueHandler setMaxValueHandler1 =
+                        (SetMaxValueHandler) Delegate.Remove(setMaxValueHandler, value);
+                    setMaxValueHandler0 = Interlocked.CompareExchange<SetMaxValueHandler>(
+                        ref this.setMaxValueHandler_0, setMaxValueHandler1, setMaxValueHandler);
+                } while ((object) setMaxValueHandler0 != (object) setMaxValueHandler);
             }
         }
 
@@ -1696,10 +1765,11 @@ namespace Yutai.ArcGIS.Catalog
                 do
                 {
                     setMessageHandler = setMessageHandler0;
-                    SetMessageHandler setMessageHandler1 = (SetMessageHandler)Delegate.Combine(setMessageHandler, value);
-                    setMessageHandler0 = Interlocked.CompareExchange<SetMessageHandler>(ref this.setMessageHandler_0, setMessageHandler1, setMessageHandler);
-                }
-                while ((object)setMessageHandler0 != (object)setMessageHandler);
+                    SetMessageHandler setMessageHandler1 =
+                        (SetMessageHandler) Delegate.Combine(setMessageHandler, value);
+                    setMessageHandler0 = Interlocked.CompareExchange<SetMessageHandler>(ref this.setMessageHandler_0,
+                        setMessageHandler1, setMessageHandler);
+                } while ((object) setMessageHandler0 != (object) setMessageHandler);
             }
             remove
             {
@@ -1708,10 +1778,10 @@ namespace Yutai.ArcGIS.Catalog
                 do
                 {
                     setMessageHandler = setMessageHandler0;
-                    SetMessageHandler setMessageHandler1 = (SetMessageHandler)Delegate.Remove(setMessageHandler, value);
-                    setMessageHandler0 = Interlocked.CompareExchange<SetMessageHandler>(ref this.setMessageHandler_0, setMessageHandler1, setMessageHandler);
-                }
-                while ((object)setMessageHandler0 != (object)setMessageHandler);
+                    SetMessageHandler setMessageHandler1 = (SetMessageHandler) Delegate.Remove(setMessageHandler, value);
+                    setMessageHandler0 = Interlocked.CompareExchange<SetMessageHandler>(ref this.setMessageHandler_0,
+                        setMessageHandler1, setMessageHandler);
+                } while ((object) setMessageHandler0 != (object) setMessageHandler);
             }
         }
 
@@ -1724,10 +1794,11 @@ namespace Yutai.ArcGIS.Catalog
                 do
                 {
                     setMinValueHandler = setMinValueHandler0;
-                    SetMinValueHandler setMinValueHandler1 = (SetMinValueHandler)Delegate.Combine(setMinValueHandler, value);
-                    setMinValueHandler0 = Interlocked.CompareExchange<SetMinValueHandler>(ref this.setMinValueHandler_0, setMinValueHandler1, setMinValueHandler);
-                }
-                while ((object)setMinValueHandler0 != (object)setMinValueHandler);
+                    SetMinValueHandler setMinValueHandler1 =
+                        (SetMinValueHandler) Delegate.Combine(setMinValueHandler, value);
+                    setMinValueHandler0 = Interlocked.CompareExchange<SetMinValueHandler>(
+                        ref this.setMinValueHandler_0, setMinValueHandler1, setMinValueHandler);
+                } while ((object) setMinValueHandler0 != (object) setMinValueHandler);
             }
             remove
             {
@@ -1736,10 +1807,11 @@ namespace Yutai.ArcGIS.Catalog
                 do
                 {
                     setMinValueHandler = setMinValueHandler0;
-                    SetMinValueHandler setMinValueHandler1 = (SetMinValueHandler)Delegate.Remove(setMinValueHandler, value);
-                    setMinValueHandler0 = Interlocked.CompareExchange<SetMinValueHandler>(ref this.setMinValueHandler_0, setMinValueHandler1, setMinValueHandler);
-                }
-                while ((object)setMinValueHandler0 != (object)setMinValueHandler);
+                    SetMinValueHandler setMinValueHandler1 =
+                        (SetMinValueHandler) Delegate.Remove(setMinValueHandler, value);
+                    setMinValueHandler0 = Interlocked.CompareExchange<SetMinValueHandler>(
+                        ref this.setMinValueHandler_0, setMinValueHandler1, setMinValueHandler);
+                } while ((object) setMinValueHandler0 != (object) setMinValueHandler);
             }
         }
 
@@ -1752,10 +1824,11 @@ namespace Yutai.ArcGIS.Catalog
                 do
                 {
                     setPositionHandler = setPositionHandler0;
-                    SetPositionHandler setPositionHandler1 = (SetPositionHandler)Delegate.Combine(setPositionHandler, value);
-                    setPositionHandler0 = Interlocked.CompareExchange<SetPositionHandler>(ref this.setPositionHandler_0, setPositionHandler1, setPositionHandler);
-                }
-                while ((object)setPositionHandler0 != (object)setPositionHandler);
+                    SetPositionHandler setPositionHandler1 =
+                        (SetPositionHandler) Delegate.Combine(setPositionHandler, value);
+                    setPositionHandler0 = Interlocked.CompareExchange<SetPositionHandler>(
+                        ref this.setPositionHandler_0, setPositionHandler1, setPositionHandler);
+                } while ((object) setPositionHandler0 != (object) setPositionHandler);
             }
             remove
             {
@@ -1764,10 +1837,11 @@ namespace Yutai.ArcGIS.Catalog
                 do
                 {
                     setPositionHandler = setPositionHandler0;
-                    SetPositionHandler setPositionHandler1 = (SetPositionHandler)Delegate.Remove(setPositionHandler, value);
-                    setPositionHandler0 = Interlocked.CompareExchange<SetPositionHandler>(ref this.setPositionHandler_0, setPositionHandler1, setPositionHandler);
-                }
-                while ((object)setPositionHandler0 != (object)setPositionHandler);
+                    SetPositionHandler setPositionHandler1 =
+                        (SetPositionHandler) Delegate.Remove(setPositionHandler, value);
+                    setPositionHandler0 = Interlocked.CompareExchange<SetPositionHandler>(
+                        ref this.setPositionHandler_0, setPositionHandler1, setPositionHandler);
+                } while ((object) setPositionHandler0 != (object) setPositionHandler);
             }
         }
 
@@ -1776,26 +1850,36 @@ namespace Yutai.ArcGIS.Catalog
             add
             {
                 ESRI.ArcGIS.Geodatabase.IFeatureProgress_StepEventHandler featureProgressStepEventHandler;
-                ESRI.ArcGIS.Geodatabase.IFeatureProgress_StepEventHandler ifeatureProgressStepEventHandler0 = this.ifeatureProgress_StepEventHandler_0;
+                ESRI.ArcGIS.Geodatabase.IFeatureProgress_StepEventHandler ifeatureProgressStepEventHandler0 =
+                    this.ifeatureProgress_StepEventHandler_0;
                 do
                 {
                     featureProgressStepEventHandler = ifeatureProgressStepEventHandler0;
-                    ESRI.ArcGIS.Geodatabase.IFeatureProgress_StepEventHandler featureProgressStepEventHandler1 = (ESRI.ArcGIS.Geodatabase.IFeatureProgress_StepEventHandler)Delegate.Combine(featureProgressStepEventHandler, value);
-                    ifeatureProgressStepEventHandler0 = Interlocked.CompareExchange<ESRI.ArcGIS.Geodatabase.IFeatureProgress_StepEventHandler>(ref this.ifeatureProgress_StepEventHandler_0, featureProgressStepEventHandler1, featureProgressStepEventHandler);
-                }
-                while ((object)ifeatureProgressStepEventHandler0 != (object)featureProgressStepEventHandler);
+                    ESRI.ArcGIS.Geodatabase.IFeatureProgress_StepEventHandler featureProgressStepEventHandler1 =
+                        (ESRI.ArcGIS.Geodatabase.IFeatureProgress_StepEventHandler)
+                        Delegate.Combine(featureProgressStepEventHandler, value);
+                    ifeatureProgressStepEventHandler0 =
+                        Interlocked.CompareExchange<ESRI.ArcGIS.Geodatabase.IFeatureProgress_StepEventHandler>(
+                            ref this.ifeatureProgress_StepEventHandler_0, featureProgressStepEventHandler1,
+                            featureProgressStepEventHandler);
+                } while ((object) ifeatureProgressStepEventHandler0 != (object) featureProgressStepEventHandler);
             }
             remove
             {
                 ESRI.ArcGIS.Geodatabase.IFeatureProgress_StepEventHandler featureProgressStepEventHandler;
-                ESRI.ArcGIS.Geodatabase.IFeatureProgress_StepEventHandler ifeatureProgressStepEventHandler0 = this.ifeatureProgress_StepEventHandler_0;
+                ESRI.ArcGIS.Geodatabase.IFeatureProgress_StepEventHandler ifeatureProgressStepEventHandler0 =
+                    this.ifeatureProgress_StepEventHandler_0;
                 do
                 {
                     featureProgressStepEventHandler = ifeatureProgressStepEventHandler0;
-                    ESRI.ArcGIS.Geodatabase.IFeatureProgress_StepEventHandler featureProgressStepEventHandler1 = (ESRI.ArcGIS.Geodatabase.IFeatureProgress_StepEventHandler)Delegate.Remove(featureProgressStepEventHandler, value);
-                    ifeatureProgressStepEventHandler0 = Interlocked.CompareExchange<ESRI.ArcGIS.Geodatabase.IFeatureProgress_StepEventHandler>(ref this.ifeatureProgress_StepEventHandler_0, featureProgressStepEventHandler1, featureProgressStepEventHandler);
-                }
-                while ((object)ifeatureProgressStepEventHandler0 != (object)featureProgressStepEventHandler);
+                    ESRI.ArcGIS.Geodatabase.IFeatureProgress_StepEventHandler featureProgressStepEventHandler1 =
+                        (ESRI.ArcGIS.Geodatabase.IFeatureProgress_StepEventHandler)
+                        Delegate.Remove(featureProgressStepEventHandler, value);
+                    ifeatureProgressStepEventHandler0 =
+                        Interlocked.CompareExchange<ESRI.ArcGIS.Geodatabase.IFeatureProgress_StepEventHandler>(
+                            ref this.ifeatureProgress_StepEventHandler_0, featureProgressStepEventHandler1,
+                            featureProgressStepEventHandler);
+                } while ((object) ifeatureProgressStepEventHandler0 != (object) featureProgressStepEventHandler);
             }
         }
     }

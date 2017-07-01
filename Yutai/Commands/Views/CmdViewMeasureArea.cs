@@ -38,12 +38,12 @@ namespace Yutai.Commands.Views
 
         public override void OnClick()
         {
-            map = _context.MapControl.ActiveView as IMap;
-            activeView = _context.MapControl.ActiveView;
+            map = _context.FocusMap as IMap;
+            activeView = _context.ActiveView;
             graphicsContainer = map as IGraphicsContainer;
             _pointnum = 0;
             graphicsContainer.DeleteAllElements();
-            activeView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
+            ((IActiveView) this._context.FocusMap).PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
             _context.SetCurrentTool(this);
         }
 
@@ -90,7 +90,7 @@ namespace Yutai.Commands.Views
                 Color = pRgb2,
                 Size = 10
             };
-          
+
 
             pDistSymbol = new TextSymbolClass()
             {
@@ -100,7 +100,6 @@ namespace Yutai.Commands.Views
 
             pDistSymbol.HorizontalAlignment = esriTextHorizontalAlignment.esriTHACenter;
             pDistSymbol.VerticalAlignment = esriTextVerticalAlignment.esriTVACenter;
-            
         }
 
         private string GetUnitDesc(esriUnits esriUnits_0)
@@ -189,6 +188,11 @@ namespace Yutai.Commands.Views
                 _pointnum++;
                 this.CalculateArea(x, y, 1);
             }
+            else
+            {
+                graphicsContainer.DeleteAllElements();
+                ((IActiveView) this._context.FocusMap).PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
+            }
         }
 
         public override void OnMouseMove(int Button, int Shift, int x, int y)
@@ -205,18 +209,18 @@ namespace Yutai.Commands.Views
         {
             double num;
             string str;
-            string str1 = string.Concat(" 平方", this.GetUnitDesc(_context.MapControl.ActiveView.FocusMap.MapUnits));
+            string str1 = string.Concat(" 平方", this.GetUnitDesc(_context.FocusMap.MapUnits));
             object value = Missing.Value;
-            IPoint mapPoint = activeView.ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
+            IPoint mapPoint = ((IActiveView) this._context.FocusMap).ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
             if (!(pntnum != 1 ? true : this._polygonFeedback != null))
             {
                 this._polygonFeedback = new NewPolygonFeedbackClass();
                 this._polygonFeedback.Start(mapPoint);
-                this._polygonFeedback.Display = activeView.ScreenDisplay;
+                this._polygonFeedback.Display = ((IActiveView) this._context.FocusMap).ScreenDisplay;
                 this._pointCollection = new Polygon() as IPointCollection;
                 this._pointCollection.AddPoint(mapPoint, ref value, ref value);
                 graphicsContainer.DeleteAllElements();
-                activeView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
+                ((IActiveView) this._context.FocusMap).PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
             }
             else if (this._polygonFeedback != null)
             {
@@ -240,7 +244,8 @@ namespace Yutai.Commands.Views
                             element.Geometry = polygonClass as IGeometry;
                             graphicsContainer.DeleteAllElements();
                             graphicsContainer.AddElement(element, 0);
-                            activeView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
+                            ((IActiveView) this._context.FocusMap).PartialRefresh(esriViewDrawPhase.esriViewGraphics,
+                                null, null);
                         }
                         break;
                     }
@@ -285,11 +290,12 @@ namespace Yutai.Commands.Views
                             element.Geometry = polygon as IGeometry;
                             graphicsContainer.DeleteAllElements();
                             graphicsContainer.AddElement(element, 0);
-                            activeView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
+                            ((IActiveView) this._context.FocusMap).PartialRefresh(esriViewDrawPhase.esriViewGraphics,
+                                null, null);
                         }
                         this._polygonFeedback = null;
                         this._pointCollection = null;
-                        activeView.Refresh();
+                        ((IActiveView) this._context.FocusMap).Refresh();
                         break;
                     }
                 }

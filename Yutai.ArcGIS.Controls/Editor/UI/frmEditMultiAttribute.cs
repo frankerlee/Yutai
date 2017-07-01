@@ -6,12 +6,9 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 {
     internal partial class frmEditMultiAttribute : Form
     {
-
         public frmEditMultiAttribute()
         {
             this.InitializeComponent();
         }
-
-
     }
 }

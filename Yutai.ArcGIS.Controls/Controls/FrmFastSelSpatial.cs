@@ -72,7 +72,9 @@ namespace Yutai.ArcGIS.Controls.Controls
                 {
                     if (this.Line(pRJ))
                     {
-                        this.m_pSpatialRefrence = ((ISpatialReferenceFactory2) this.m_SpatialFactory).CreateESRISpatialReferenceFromPRJFile(this.m_FilePathName);
+                        this.m_pSpatialRefrence =
+                            ((ISpatialReferenceFactory2) this.m_SpatialFactory).CreateESRISpatialReferenceFromPRJFile(
+                                this.m_FilePathName);
                         this.IniBound();
                         this.m_pSpatialRefrence.SetDomain(this.xmin, this.xmax, this.ymin, this.ymax);
                         base.DialogResult = DialogResult.OK;
@@ -94,7 +96,7 @@ namespace Yutai.ArcGIS.Controls.Controls
         {
         }
 
- private void EnableControl(bool isValue)
+        private void EnableControl(bool isValue)
         {
             this.groupBox2.Enabled = isValue;
             this.rdBand3.Enabled = isValue;
@@ -119,7 +121,7 @@ namespace Yutai.ArcGIS.Controls.Controls
         {
             try
             {
-                string[] strArray = str.Split(new char[] { car });
+                string[] strArray = str.Split(new char[] {car});
                 if (strArray.GetUpperBound(0) >= 0)
                 {
                     return strArray[index];
@@ -157,7 +159,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             }
         }
 
- public bool Line(string strPrj)
+        public bool Line(string strPrj)
         {
             StreamWriter writer = new StreamWriter(this.m_FilePathName, false);
             bool flag = false;
@@ -223,15 +225,8 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         public ISpatialReference SpatialRefrence
         {
-            get
-            {
-                return this.m_pSpatialRefrence;
-            }
-            set
-            {
-                this.m_pSpatialRefrence = value;
-            }
+            get { return this.m_pSpatialRefrence; }
+            set { this.m_pSpatialRefrence = value; }
         }
     }
 }
-

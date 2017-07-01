@@ -78,11 +78,7 @@ namespace Yutai.ArcGIS.Catalog
 
         public int Count
         {
-            get
-            {
-                return this.ilist_0.Count;
-            }
+            get { return this.ilist_0.Count; }
         }
     }
 }
-

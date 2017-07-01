@@ -24,14 +24,16 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
         {
             this.m_nIndex++;
             this.frm.progressBar1.Increment(1);
-            this.frm.Caption1.Text = string.Format("处理图层<{0}> ,转换第{1}/{2}个对象...", this.m_str, this.m_nIndex, this.m_count);
+            this.frm.Caption1.Text = string.Format("处理图层<{0}> ,转换第{1}/{2}个对象...", this.m_str, this.m_nIndex,
+                this.m_count);
             Application.DoEvents();
         }
 
         private List<IDataset> GetAllDataset(IMap pMap)
         {
             List<IDataset> list = new List<IDataset>();
-            UID uid = new UIDClass {
+            UID uid = new UIDClass
+            {
                 Value = "{6CA416B1-E160-11D2-9F4E-00C04F6BC78E}"
             };
             IEnumLayer layer = pMap.get_Layers(uid, true);
@@ -49,7 +51,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 
         private void p_SetFeatureClassNameEnvent(string str)
         {
-            string[] strArray = str.Split(new char[] { '.' });
+            string[] strArray = str.Split(new char[] {'.'});
             str = strArray[strArray.Length - 1];
             if (str.Length > 36)
             {
@@ -74,19 +76,21 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                 Dataloaders dataloaders = new Dataloaders();
                 IPropertySet set = new PropertySetClass();
                 set.SetProperty("DATABASE", dialog.SelectedPath);
-                IWorkspaceName name = new WorkspaceNameClass {
+                IWorkspaceName name = new WorkspaceNameClass
+                {
                     ConnectionProperties = set,
                     WorkspaceFactoryProgID = "esriDataSourcesFile.ShapefileWorkspaceFactory"
                 };
-                frmProgressBar1 bar = new frmProgressBar1 {
-                    progressBar1 = { Maximum = allDataset.Count, Value = 0 }
+                frmProgressBar1 bar = new frmProgressBar1
+                {
+                    progressBar1 = {Maximum = allDataset.Count, Value = 0}
                 };
                 bar.Show();
                 bar.Text = "导出shapefile";
                 foreach (IDataset dataset in allDataset)
                 {
-                    string[] strArray = dataset.Name.Split(new char[] { '.' });
-                    strArray = strArray[strArray.Length - 1].Split(new char[] { '_' });
+                    string[] strArray = dataset.Name.Split(new char[] {'.'});
+                    strArray = strArray[strArray.Length - 1].Split(new char[] {'_'});
                     bar.Caption1.Text = string.Format("导出[{0}]", strArray[0]);
                     Application.DoEvents();
                     bar.progressBar1.Value++;
@@ -105,7 +109,8 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 
         public void ToVCT(IMap pMap)
         {
-            SaveFileDialog dialog = new SaveFileDialog {
+            SaveFileDialog dialog = new SaveFileDialog
+            {
                 Filter = "VCT文件(*.vct)|*.vct"
             };
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -120,8 +125,10 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     this.frm.Text = "导出VCT";
                     VCTWrite write = new VCTWrite();
                     write.ProgressMessage += new ProgressMessageHandle(this.BatchConvertToSHP_ProgressMessage);
-                    write.Step+=(new ESRI.ArcGIS.Geodatabase.IFeatureProgress_StepEventHandler(this.BatchConvertToSHP_Step));
-                    write.SetFeatureClassNameEnvent += new SetFeatureClassNameEnventHandler(this.p_SetFeatureClassNameEnvent);
+                    write.Step +=
+                        (new ESRI.ArcGIS.Geodatabase.IFeatureProgress_StepEventHandler(this.BatchConvertToSHP_Step));
+                    write.SetFeatureClassNameEnvent +=
+                        new SetFeatureClassNameEnventHandler(this.p_SetFeatureClassNameEnvent);
                     write.SetFeatureCountEnvent += new SetFeatureCountEnventHandler(this.p_SetFeatureCountEnvent);
                     for (int i = 0; i < allDataset.Count; i++)
                     {
@@ -135,4 +142,3 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
         }
     }
 }
-

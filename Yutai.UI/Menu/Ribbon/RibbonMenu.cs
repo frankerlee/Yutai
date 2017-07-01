@@ -23,7 +23,6 @@ namespace Yutai.UI.Menu.Ribbon
         public RibbonMenu(IRibbonMenuIndex menuIndex)
         {
             _menuIndex = menuIndex;
-          
         }
 
         public void ChangeCurrentTool(string oldToolName, string nowToolName)
@@ -80,7 +79,7 @@ namespace Yutai.UI.Menu.Ribbon
         {
             return _menuIndex.FindItem(key);
         }
-        
+
         public void RemoveItemsForPlugin(PluginIdentity identity)
         {
             _menuIndex.RemoveItemsForPlugin(identity);
@@ -98,7 +97,7 @@ namespace Yutai.UI.Menu.Ribbon
 
         public void Remove(IRibbonItem item)
         {
-           _menuIndex.Remove(item.Key);
+            _menuIndex.Remove(item.Key);
         }
 
         public void Clear()
@@ -108,7 +107,6 @@ namespace Yutai.UI.Menu.Ribbon
 
         #region 重新编写的关于界面的方法
 
-        
         #endregion
     }
 }

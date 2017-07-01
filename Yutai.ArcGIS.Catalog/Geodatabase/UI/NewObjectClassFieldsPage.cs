@@ -35,8 +35,11 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         private ITable itable_0 = null;
         private IWorkspace iworkspace_0 = null;
         private string string_0 = "SHAPE";
-        private string[] string_1 = new string[] { "短整形", "长整形", "单精度", "双精度", "字符串", "日期型", "Blob", "Guid", "几何对象", "Raster" };
-        private string[] string_2 = new string[] { "短整形", "长整形", "单精度", "双精度", "字符串", "日期型", "Blob", "Guid", "Raster" };
+
+        private string[] string_1 = new string[]
+            {"短整形", "长整形", "单精度", "双精度", "字符串", "日期型", "Blob", "Guid", "几何对象", "Raster"};
+
+        private string[] string_2 = new string[] {"短整形", "长整形", "单精度", "双精度", "字符串", "日期型", "Blob", "Guid", "Raster"};
         private string[] string_3;
         private string[] string_4;
 
@@ -65,7 +68,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             typeArray[7] = esriFieldType.esriFieldTypeGUID;
             typeArray[8] = esriFieldType.esriFieldTypeRaster;
             this.esriFieldType_1 = typeArray;
-            this.string_3 = new string[] { "短整形", "长整形", "单精度", "双精度", "字符串", "日期型", "几何对象" };
+            this.string_3 = new string[] {"短整形", "长整形", "单精度", "双精度", "字符串", "日期型", "几何对象"};
             typeArray = new esriFieldType[7];
             typeArray[1] = esriFieldType.esriFieldTypeInteger;
             typeArray[2] = esriFieldType.esriFieldTypeSingle;
@@ -74,8 +77,14 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             typeArray[5] = esriFieldType.esriFieldTypeDate;
             typeArray[6] = esriFieldType.esriFieldTypeGeometry;
             this.esriFieldType_2 = typeArray;
-            this.icontrolBaseInterface_0 = new IControlBaseInterface[] { new FieldTypeIntegerCtrl(), new FieldTypeIntegerCtrl(), new FieldTypeDoubleCtrl(), new FieldTypeDoubleCtrl(), new FieldTypeTextCtrl(), new FieldTypeDateCtrl(), new FieldTypeObjectIDCtrl(), new FieldTypeGeometryCtrl(), new FieldTypeBlobCtrl(), new FieldTypeRasterCtrl(), new FieldTypeGuidCtrl() };
-            this.string_4 = new string[] { "短整形", "长整形", "单精度", "双精度", "字符串", "日期型", "OBJECT ID", "几何对象", "Blob", "Raster", "Guid" };
+            this.icontrolBaseInterface_0 = new IControlBaseInterface[]
+            {
+                new FieldTypeIntegerCtrl(), new FieldTypeIntegerCtrl(), new FieldTypeDoubleCtrl(),
+                new FieldTypeDoubleCtrl(), new FieldTypeTextCtrl(), new FieldTypeDateCtrl(), new FieldTypeObjectIDCtrl(),
+                new FieldTypeGeometryCtrl(), new FieldTypeBlobCtrl(), new FieldTypeRasterCtrl(), new FieldTypeGuidCtrl()
+            };
+            this.string_4 = new string[]
+                {"短整形", "长整形", "单精度", "双精度", "字符串", "日期型", "OBJECT ID", "几何对象", "Blob", "Raster", "Guid"};
             this.bool_3 = false;
             this.InitializeComponent();
         }
@@ -97,7 +106,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 try
                 {
                     IField field;
-                   CodeDomainEx ex;
+                    CodeDomainEx ex;
                     try
                     {
                         for (num = 0; num < this.ifieldsEdit_1.FieldCount; num++)
@@ -108,7 +117,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                             if (index != -1)
                             {
                                 this.itable_0.DeleteField(fields.get_Field(index));
-                                if ((NewObjectClassHelper.m_pObjectClassHelper != null) && NewObjectClassHelper.m_pObjectClassHelper.FieldDomains.ContainsKey(field))
+                                if ((NewObjectClassHelper.m_pObjectClassHelper != null) &&
+                                    NewObjectClassHelper.m_pObjectClassHelper.FieldDomains.ContainsKey(field))
                                 {
                                     ex = NewObjectClassHelper.m_pObjectClassHelper.FieldDomains[field];
                                     if (ex != null)
@@ -122,14 +132,14 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     catch (COMException exception1)
                     {
                         exception = exception1;
-                        Logger.Current.Error("",exception, "");
+                        Logger.Current.Error("", exception, "");
                         MessageBox.Show(exception.Message);
                         return false;
                     }
                     catch (Exception exception3)
                     {
                         exception2 = exception3;
-                        Logger.Current.Error("",exception2, "");
+                        Logger.Current.Error("", exception2, "");
                     }
                     try
                     {
@@ -137,7 +147,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         {
                             IField key = this.ifieldsEdit_0.get_Field(num);
                             this.itable_0.AddField(this.ifieldsEdit_0.get_Field(num));
-                            if ((NewObjectClassHelper.m_pObjectClassHelper != null) && NewObjectClassHelper.m_pObjectClassHelper.FieldDomains.ContainsKey(key))
+                            if ((NewObjectClassHelper.m_pObjectClassHelper != null) &&
+                                NewObjectClassHelper.m_pObjectClassHelper.FieldDomains.ContainsKey(key))
                             {
                                 ex = NewObjectClassHelper.m_pObjectClassHelper.FieldDomains[key];
                                 if (ex != null)
@@ -160,14 +171,14 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         }
                         else
                         {
-                            Logger.Current.Error("",exception, "");
+                            Logger.Current.Error("", exception, "");
                             MessageBox.Show(exception.Message);
                         }
                     }
                     catch (Exception exception5)
                     {
                         exception2 = exception5;
-                        Logger.Current.Error("",exception2, "");
+                        Logger.Current.Error("", exception2, "");
                     }
                     if (!ObjectClassShareData.m_IsShapeFile)
                     {
@@ -185,7 +196,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                                 else if (((FieldChangeType) this.ilist_1[num]) == FieldChangeType.FCTDomain)
                                 {
                                     edit.AlterDomain(field.Name, field.Domain);
-                                    if ((NewObjectClassHelper.m_pObjectClassHelper != null) && NewObjectClassHelper.m_pObjectClassHelper.FieldDomains.ContainsKey(field))
+                                    if ((NewObjectClassHelper.m_pObjectClassHelper != null) &&
+                                        NewObjectClassHelper.m_pObjectClassHelper.FieldDomains.ContainsKey(field))
                                     {
                                         ex = NewObjectClassHelper.m_pObjectClassHelper.FieldDomains[field];
                                         if (ex != null)
@@ -213,7 +225,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                                 }
                                 else
                                 {
-                                    Logger.Current.Error("",exception, "");
+                                    Logger.Current.Error("", exception, "");
                                     MessageBox.Show(exception.Message);
                                 }
                                 return false;
@@ -221,7 +233,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                             catch (Exception exception7)
                             {
                                 exception2 = exception7;
-                                Logger.Current.Error("",exception2, "");
+                                Logger.Current.Error("", exception2, "");
                             }
                             num++;
                         }
@@ -248,7 +260,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     }
                     else
                     {
-                        Logger.Current.Error("",exception, "");
+                        Logger.Current.Error("", exception, "");
                         MessageBox.Show(exception.Message);
                     }
                     return false;
@@ -256,7 +268,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 catch (Exception exception9)
                 {
                     exception2 = exception9;
-                    Logger.Current.Error("",exception2, "");
+                    Logger.Current.Error("", exception2, "");
                     MessageBox.Show(exception2.Message);
                     return false;
                 }
@@ -268,7 +280,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     (this.ifields_0 as IFieldsEdit).AddField(this.ifieldsEdit_0.get_Field(num));
                 }
             }
-        Label_0512:
+            Label_0512:
             return true;
         }
 
@@ -290,7 +302,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         for (num = this.ifields_0.FieldCount - 1; num > 1; num--)
                         {
                             field = this.ifields_0.get_Field(num);
-                            if ((field.Type != esriFieldType.esriFieldTypeOID) && (field.Type != esriFieldType.esriFieldTypeGeometry))
+                            if ((field.Type != esriFieldType.esriFieldTypeOID) &&
+                                (field.Type != esriFieldType.esriFieldTypeGeometry))
                             {
                                 (this.ifields_0 as IFieldsEdit).DeleteField(field);
                                 if (this.bool_2)
@@ -303,7 +316,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         for (num = 0; num < fields.FieldCount; num++)
                         {
                             field = fields.get_Field(num);
-                            if ((field.Type != esriFieldType.esriFieldTypeOID) && (field.Type != esriFieldType.esriFieldTypeGeometry))
+                            if ((field.Type != esriFieldType.esriFieldTypeOID) &&
+                                (field.Type != esriFieldType.esriFieldTypeGeometry))
                             {
                                 (this.ifields_0 as IFieldsEdit).AddField(field);
                                 if (this.bool_2)
@@ -319,7 +333,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- public void InitControl()
+        public void InitControl()
         {
             NewObjectClassHelper.m_pObjectClassHelper.InitFields();
             this.ifields_0 = NewObjectClassHelper.m_pObjectClassHelper.Fields;
@@ -330,7 +344,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.listView2.SelectedItems.Count > 0)
             {
@@ -379,7 +393,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     requiredFields = (description as IObjectClassDescription).RequiredFields;
                     IField field = requiredFields.get_Field(requiredFields.FindField(description.ShapeFieldName));
                     geometryDef = (field as IFieldEdit2).GeometryDef;
-                    (geometryDef as IGeometryDefEdit).GeometryType_2 = NewObjectClassHelper.m_pObjectClassHelper.ShapeType;
+                    (geometryDef as IGeometryDefEdit).GeometryType_2 =
+                        NewObjectClassHelper.m_pObjectClassHelper.ShapeType;
                     (field as IFieldEdit).GeometryDef_2 = geometryDef as IGeometryDefEdit;
                     return requiredFields;
                 }
@@ -387,14 +402,18 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 {
                     description = new AnnotationFeatureClassDescriptionClass();
                     requiredFields = (description as IObjectClassDescription).RequiredFields;
-                    geometryDef = (requiredFields.get_Field(requiredFields.FindField(description.ShapeFieldName)) as IFieldEdit2).GeometryDef;
+                    geometryDef =
+                        (requiredFields.get_Field(requiredFields.FindField(description.ShapeFieldName)) as IFieldEdit2)
+                            .GeometryDef;
                     return requiredFields;
                 }
                 if (NewObjectClassHelper.m_pObjectClassHelper.FeatureType == esriFeatureType.esriFTDimension)
                 {
                     description = new DimensionClassDescriptionClass();
                     requiredFields = (description as IObjectClassDescription).RequiredFields;
-                    geometryDef = (requiredFields.get_Field(requiredFields.FindField(description.ShapeFieldName)) as IFieldEdit2).GeometryDef;
+                    geometryDef =
+                        (requiredFields.get_Field(requiredFields.FindField(description.ShapeFieldName)) as IFieldEdit2)
+                            .GeometryDef;
                     return requiredFields;
                 }
                 return null;
@@ -414,7 +433,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 IField field = ifields_1.get_Field(num);
                 items[0] = field.Name;
                 items[1] = this.string_4[(int) field.Type];
-                item = new ListViewItem(items) {
+                item = new ListViewItem(items)
+                {
                     Tag = field
                 };
                 editListView_0.Items.Add(item);
@@ -439,7 +459,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             {
                 for (int i = 0; i < this.ilist_0.Count; i++)
                 {
-                    if ((this.ilist_0[i].Name == ifield_1.Name) && (((FieldChangeType) this.ilist_1[i]) == fieldChangeType_0))
+                    if ((this.ilist_0[i].Name == ifield_1.Name) &&
+                        (((FieldChangeType) this.ilist_1[i]) == fieldChangeType_0))
                     {
                         return;
                     }
@@ -511,7 +532,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     this.ifieldsEdit_0.AddField(tag);
                     item.Tag = tag;
                     this.method_0();
-                    string[] items = new string[] { "", "" };
+                    string[] items = new string[] {"", ""};
                     this.listView2.Items.Add(new ListViewItem(items));
                     if (item == this.listView2.SelectedItems[0])
                     {
@@ -531,7 +552,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     {
                         tag.Domain_2 = null;
                     }
-                    else if ((NewObjectClassHelper.m_pObjectClassHelper != null) && NewObjectClassHelper.m_pObjectClassHelper.FieldDomains.ContainsKey(tag))
+                    else if ((NewObjectClassHelper.m_pObjectClassHelper != null) &&
+                             NewObjectClassHelper.m_pObjectClassHelper.FieldDomains.ContainsKey(tag))
                     {
                         NewObjectClassHelper.m_pObjectClassHelper.FieldDomains.Remove(tag);
                     }
@@ -657,28 +679,44 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             {
                 this.icontrolBaseInterface_0[i].Workspace = this.iworkspace_0;
             }
-            (this.icontrolBaseInterface_0[0] as FieldTypeIntegerCtrl).ValueChanged += new ValueChangedHandler(this.method_4);
-            (this.icontrolBaseInterface_0[1] as FieldTypeIntegerCtrl).ValueChanged += new ValueChangedHandler(this.method_4);
-            (this.icontrolBaseInterface_0[2] as FieldTypeDoubleCtrl).ValueChanged += new ValueChangedHandler(this.method_4);
-            (this.icontrolBaseInterface_0[3] as FieldTypeDoubleCtrl).ValueChanged += new ValueChangedHandler(this.method_4);
+            (this.icontrolBaseInterface_0[0] as FieldTypeIntegerCtrl).ValueChanged +=
+                new ValueChangedHandler(this.method_4);
+            (this.icontrolBaseInterface_0[1] as FieldTypeIntegerCtrl).ValueChanged +=
+                new ValueChangedHandler(this.method_4);
+            (this.icontrolBaseInterface_0[2] as FieldTypeDoubleCtrl).ValueChanged +=
+                new ValueChangedHandler(this.method_4);
+            (this.icontrolBaseInterface_0[3] as FieldTypeDoubleCtrl).ValueChanged +=
+                new ValueChangedHandler(this.method_4);
             (this.icontrolBaseInterface_0[4] as FieldTypeTextCtrl).ValueChanged += new ValueChangedHandler(this.method_4);
             (this.icontrolBaseInterface_0[5] as FieldTypeDateCtrl).ValueChanged += new ValueChangedHandler(this.method_4);
-            (this.icontrolBaseInterface_0[6] as FieldTypeObjectIDCtrl).ValueChanged += new ValueChangedHandler(this.method_4);
-            (this.icontrolBaseInterface_0[7] as FieldTypeGeometryCtrl).ValueChanged += new ValueChangedHandler(this.method_4);
+            (this.icontrolBaseInterface_0[6] as FieldTypeObjectIDCtrl).ValueChanged +=
+                new ValueChangedHandler(this.method_4);
+            (this.icontrolBaseInterface_0[7] as FieldTypeGeometryCtrl).ValueChanged +=
+                new ValueChangedHandler(this.method_4);
             (this.icontrolBaseInterface_0[8] as FieldTypeBlobCtrl).ValueChanged += new ValueChangedHandler(this.method_4);
-            (this.icontrolBaseInterface_0[9] as FieldTypeRasterCtrl).ValueChanged += new ValueChangedHandler(this.method_4);
-            (this.icontrolBaseInterface_0[10] as FieldTypeGuidCtrl).ValueChanged += new ValueChangedHandler(this.method_4);
-            (this.icontrolBaseInterface_0[0] as FieldTypeIntegerCtrl).FieldChanged += new FieldChangedHandler(this.method_3);
-            (this.icontrolBaseInterface_0[1] as FieldTypeIntegerCtrl).FieldChanged += new FieldChangedHandler(this.method_3);
-            (this.icontrolBaseInterface_0[2] as FieldTypeDoubleCtrl).FieldChanged += new FieldChangedHandler(this.method_3);
-            (this.icontrolBaseInterface_0[3] as FieldTypeDoubleCtrl).FieldChanged += new FieldChangedHandler(this.method_3);
+            (this.icontrolBaseInterface_0[9] as FieldTypeRasterCtrl).ValueChanged +=
+                new ValueChangedHandler(this.method_4);
+            (this.icontrolBaseInterface_0[10] as FieldTypeGuidCtrl).ValueChanged +=
+                new ValueChangedHandler(this.method_4);
+            (this.icontrolBaseInterface_0[0] as FieldTypeIntegerCtrl).FieldChanged +=
+                new FieldChangedHandler(this.method_3);
+            (this.icontrolBaseInterface_0[1] as FieldTypeIntegerCtrl).FieldChanged +=
+                new FieldChangedHandler(this.method_3);
+            (this.icontrolBaseInterface_0[2] as FieldTypeDoubleCtrl).FieldChanged +=
+                new FieldChangedHandler(this.method_3);
+            (this.icontrolBaseInterface_0[3] as FieldTypeDoubleCtrl).FieldChanged +=
+                new FieldChangedHandler(this.method_3);
             (this.icontrolBaseInterface_0[4] as FieldTypeTextCtrl).FieldChanged += new FieldChangedHandler(this.method_3);
             (this.icontrolBaseInterface_0[5] as FieldTypeDateCtrl).FieldChanged += new FieldChangedHandler(this.method_3);
-            (this.icontrolBaseInterface_0[6] as FieldTypeObjectIDCtrl).FieldChanged += new FieldChangedHandler(this.method_3);
-            (this.icontrolBaseInterface_0[7] as FieldTypeGeometryCtrl).FieldChanged += new FieldChangedHandler(this.method_3);
+            (this.icontrolBaseInterface_0[6] as FieldTypeObjectIDCtrl).FieldChanged +=
+                new FieldChangedHandler(this.method_3);
+            (this.icontrolBaseInterface_0[7] as FieldTypeGeometryCtrl).FieldChanged +=
+                new FieldChangedHandler(this.method_3);
             (this.icontrolBaseInterface_0[8] as FieldTypeBlobCtrl).FieldChanged += new FieldChangedHandler(this.method_3);
-            (this.icontrolBaseInterface_0[9] as FieldTypeRasterCtrl).FieldChanged += new FieldChangedHandler(this.method_3);
-            (this.icontrolBaseInterface_0[10] as FieldTypeGuidCtrl).FieldChanged += new FieldChangedHandler(this.method_3);
+            (this.icontrolBaseInterface_0[9] as FieldTypeRasterCtrl).FieldChanged +=
+                new FieldChangedHandler(this.method_3);
+            (this.icontrolBaseInterface_0[10] as FieldTypeGuidCtrl).FieldChanged +=
+                new FieldChangedHandler(this.method_3);
             this.ifields_0 = NewObjectClassHelper.m_pObjectClassHelper.Fields;
             if (this.enumUseType_0 == enumUseType.enumUTFeatureClass)
             {
@@ -702,59 +740,34 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IFields Fields
         {
-            get
-            {
-                return this.ifields_0;
-            }
-            set
-            {
-                this.ifields_0 = (value as IClone).Clone() as IFields;
-            }
+            get { return this.ifields_0; }
+            set { this.ifields_0 = (value as IClone).Clone() as IFields; }
         }
 
         public bool IsEdit
         {
-            set
-            {
-                this.bool_2 = value;
-            }
+            set { this.bool_2 = value; }
         }
 
         public string ShapeFieldName
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
 
         public ITable Table
         {
-            set
-            {
-                this.itable_0 = value;
-            }
+            set { this.itable_0 = value; }
         }
 
         public enumUseType UseType
         {
-            set
-            {
-                this.enumUseType_0 = value;
-            }
+            set { this.enumUseType_0 = value; }
         }
 
         public IWorkspace Workspace
         {
-            set
-            {
-                this.iworkspace_0 = value;
-            }
+            set { this.iworkspace_0 = value; }
         }
     }
 }
-

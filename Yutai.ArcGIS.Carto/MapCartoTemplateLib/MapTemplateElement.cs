@@ -11,21 +11,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 {
     public abstract class MapTemplateElement
     {
-        [CompilerGenerated]
-        private MapCartoTemplateLib.ElementLocation elementLocation_0;
-        [CompilerGenerated]
-        private int int_0;
         protected IElement m_pElement;
-        [CompilerGenerated]
-        private MapCartoTemplateLib.MapTemplate mapTemplate_0;
-        [CompilerGenerated]
-        private MapCartoTemplateLib.MapTemplateElementType mapTemplateElementType_0;
-        [CompilerGenerated]
-        private MapCartoTemplateLib.MapTemplateGallery mapTemplateGallery_0;
-        [CompilerGenerated]
-        private object object_0;
-        [CompilerGenerated]
-        private string string_0;
         public string TempleteGuid;
 
         public MapTemplateElement(MapCartoTemplateLib.MapTemplate mapTemplate_1)
@@ -93,6 +79,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         }
 
         public abstract MapTemplateElement Clone(MapCartoTemplateLib.MapTemplate mapTemplate_1);
+
         public virtual void CopyTo(MapTemplateElement mapTemplateElement_0)
         {
             mapTemplateElement_0.Name = this.Name;
@@ -119,14 +106,16 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             return null;
         }
 
-        public static MapTemplateElement CreateMapTemplateElement(IPropertySet ipropertySet_0, MapCartoTemplateLib.MapTemplate mapTemplate_1)
+        public static MapTemplateElement CreateMapTemplateElement(IPropertySet ipropertySet_0,
+            MapCartoTemplateLib.MapTemplate mapTemplate_1)
         {
             string typeName = Convert.ToString(ipropertySet_0.GetProperty("ElementType"));
             MapCartoTemplateLib.MapTemplateGallery mapTemplateGallery = mapTemplate_1.MapTemplateGallery;
             Type type = Type.GetType(typeName);
             try
             {
-                MapTemplateElement element = Activator.CreateInstance(type, new object[] { -1, mapTemplate_1 }) as MapTemplateElement;
+                MapTemplateElement element =
+                    Activator.CreateInstance(type, new object[] {-1, mapTemplate_1}) as MapTemplateElement;
                 element.Load(ipropertySet_0);
                 return element;
             }
@@ -136,7 +125,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             return null;
         }
 
-        public static MapTemplateElement CreateMapTemplateElement(int int_1, MapCartoTemplateLib.MapTemplate mapTemplate_1)
+        public static MapTemplateElement CreateMapTemplateElement(int int_1,
+            MapCartoTemplateLib.MapTemplate mapTemplate_1)
         {
             MapCartoTemplateLib.MapTemplateGallery mapTemplateGallery = mapTemplate_1.MapTemplateGallery;
             IRow row = null;
@@ -145,7 +135,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             Type type = Type.GetType(row.get_Value(index).ToString());
             try
             {
-                MapTemplateElement element = Activator.CreateInstance(type, new object[] { int_1, mapTemplate_1 }) as MapTemplateElement;
+                MapTemplateElement element =
+                    Activator.CreateInstance(type, new object[] {int_1, mapTemplate_1}) as MapTemplateElement;
                 element.Initlize();
                 return element;
             }
@@ -268,46 +259,53 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 double num = 0.0;
                 if (this.MapTemplate.BorderSymbol is ILineSymbol)
                 {
-                    num = this.MapTemplate.OutBorderWidth / 2.0;
+                    num = this.MapTemplate.OutBorderWidth/2.0;
                 }
                 switch (this.ElementLocation.LocationType)
                 {
                     case LocationType.UpperLeft:
                         upperLeft = bounds.UpperLeft;
-                        point.PutCoords(upperLeft.X + this.ElementLocation.XOffset, (upperLeft.Y + this.ElementLocation.YOffset) + num);
+                        point.PutCoords(upperLeft.X + this.ElementLocation.XOffset,
+                            (upperLeft.Y + this.ElementLocation.YOffset) + num);
                         return point;
 
                     case LocationType.UpperrCenter:
                         upperLeft = new PointClass();
-                        upperLeft.PutCoords((bounds.XMin + bounds.XMax) / 2.0, bounds.YMax);
-                        point.PutCoords(upperLeft.X + this.ElementLocation.XOffset, (upperLeft.Y + this.ElementLocation.YOffset) + num);
+                        upperLeft.PutCoords((bounds.XMin + bounds.XMax)/2.0, bounds.YMax);
+                        point.PutCoords(upperLeft.X + this.ElementLocation.XOffset,
+                            (upperLeft.Y + this.ElementLocation.YOffset) + num);
                         return point;
 
                     case LocationType.UpperRight:
                         upperLeft = bounds.UpperRight;
-                        point.PutCoords(upperLeft.X + this.ElementLocation.XOffset, (upperLeft.Y + this.ElementLocation.YOffset) + num);
+                        point.PutCoords(upperLeft.X + this.ElementLocation.XOffset,
+                            (upperLeft.Y + this.ElementLocation.YOffset) + num);
                         return point;
 
                     case LocationType.LeftUpper:
                         upperLeft = bounds.UpperLeft;
-                        point.PutCoords((upperLeft.X + this.ElementLocation.XOffset) - num, upperLeft.Y + this.ElementLocation.YOffset);
+                        point.PutCoords((upperLeft.X + this.ElementLocation.XOffset) - num,
+                            upperLeft.Y + this.ElementLocation.YOffset);
                         return point;
 
                     case LocationType.RightUpper:
                         upperLeft = bounds.UpperRight;
-                        point.PutCoords((upperLeft.X + this.ElementLocation.XOffset) + num, upperLeft.Y + this.ElementLocation.YOffset);
+                        point.PutCoords((upperLeft.X + this.ElementLocation.XOffset) + num,
+                            upperLeft.Y + this.ElementLocation.YOffset);
                         return point;
 
                     case LocationType.LeftCenter:
                         upperLeft = new PointClass();
-                        upperLeft.PutCoords(bounds.XMin, (bounds.YMin + bounds.YMax) / 2.0);
-                        point.PutCoords((upperLeft.X + this.ElementLocation.XOffset) - num, upperLeft.Y + this.ElementLocation.YOffset);
+                        upperLeft.PutCoords(bounds.XMin, (bounds.YMin + bounds.YMax)/2.0);
+                        point.PutCoords((upperLeft.X + this.ElementLocation.XOffset) - num,
+                            upperLeft.Y + this.ElementLocation.YOffset);
                         return point;
 
                     case LocationType.RightCenter:
                         upperLeft = new PointClass();
-                        upperLeft.PutCoords(bounds.XMax, (bounds.YMin + bounds.YMax) / 2.0);
-                        point.PutCoords((upperLeft.X + this.ElementLocation.XOffset) + num, upperLeft.Y + this.ElementLocation.YOffset);
+                        upperLeft.PutCoords(bounds.XMax, (bounds.YMin + bounds.YMax)/2.0);
+                        point.PutCoords((upperLeft.X + this.ElementLocation.XOffset) + num,
+                            upperLeft.Y + this.ElementLocation.YOffset);
                         return point;
 
                     case LocationType.LeftLower:
@@ -316,7 +314,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                         {
                             break;
                         }
-                        point.PutCoords((upperLeft.X + this.ElementLocation.XOffset) - num, upperLeft.Y + (this.ElementLocation.YOffset * this.MapTemplate.BottomLengthScale));
+                        point.PutCoords((upperLeft.X + this.ElementLocation.XOffset) - num,
+                            upperLeft.Y + (this.ElementLocation.YOffset*this.MapTemplate.BottomLengthScale));
                         return point;
 
                     case LocationType.RightLower:
@@ -325,7 +324,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                         {
                             goto Label_03FF;
                         }
-                        point.PutCoords((upperLeft.X + this.ElementLocation.XOffset) + num, upperLeft.Y + (this.ElementLocation.YOffset * this.MapTemplate.BottomLengthScale));
+                        point.PutCoords((upperLeft.X + this.ElementLocation.XOffset) + num,
+                            upperLeft.Y + (this.ElementLocation.YOffset*this.MapTemplate.BottomLengthScale));
                         return point;
 
                     case LocationType.LowerLeft:
@@ -334,17 +334,19 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                         {
                             goto Label_048B;
                         }
-                        point.PutCoords(upperLeft.X + this.ElementLocation.XOffset, (upperLeft.Y + (this.ElementLocation.YOffset * this.MapTemplate.BottomLengthScale)) - num);
+                        point.PutCoords(upperLeft.X + this.ElementLocation.XOffset,
+                            (upperLeft.Y + (this.ElementLocation.YOffset*this.MapTemplate.BottomLengthScale)) - num);
                         return point;
 
                     case LocationType.LowerCenter:
                         upperLeft = new PointClass();
-                        upperLeft.PutCoords((bounds.XMin + bounds.XMax) / 2.0, bounds.YMin);
+                        upperLeft.PutCoords((bounds.XMin + bounds.XMax)/2.0, bounds.YMin);
                         if (!this.MapTemplate.IsChangeBottomLength)
                         {
                             goto Label_053A;
                         }
-                        point.PutCoords(upperLeft.X + this.ElementLocation.XOffset, (upperLeft.Y + (this.ElementLocation.YOffset * this.MapTemplate.BottomLengthScale)) - num);
+                        point.PutCoords(upperLeft.X + this.ElementLocation.XOffset,
+                            (upperLeft.Y + (this.ElementLocation.YOffset*this.MapTemplate.BottomLengthScale)) - num);
                         return point;
 
                     case LocationType.LowerRight:
@@ -353,25 +355,31 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                         {
                             goto Label_05C3;
                         }
-                        point.PutCoords(upperLeft.X + this.ElementLocation.XOffset, (upperLeft.Y + (this.ElementLocation.YOffset * this.MapTemplate.BottomLengthScale)) - num);
+                        point.PutCoords(upperLeft.X + this.ElementLocation.XOffset,
+                            (upperLeft.Y + (this.ElementLocation.YOffset*this.MapTemplate.BottomLengthScale)) - num);
                         return point;
 
                     default:
                         return point;
                 }
-                point.PutCoords((upperLeft.X + this.ElementLocation.XOffset) - num, upperLeft.Y + this.ElementLocation.YOffset);
+                point.PutCoords((upperLeft.X + this.ElementLocation.XOffset) - num,
+                    upperLeft.Y + this.ElementLocation.YOffset);
                 return point;
-            Label_03FF:
-                point.PutCoords((upperLeft.X + this.ElementLocation.XOffset) + num, upperLeft.Y + this.ElementLocation.YOffset);
+                Label_03FF:
+                point.PutCoords((upperLeft.X + this.ElementLocation.XOffset) + num,
+                    upperLeft.Y + this.ElementLocation.YOffset);
                 return point;
-            Label_048B:
-                point.PutCoords(upperLeft.X + this.ElementLocation.XOffset, (upperLeft.Y + this.ElementLocation.YOffset) - num);
+                Label_048B:
+                point.PutCoords(upperLeft.X + this.ElementLocation.XOffset,
+                    (upperLeft.Y + this.ElementLocation.YOffset) - num);
                 return point;
-            Label_053A:
-                point.PutCoords(upperLeft.X + this.ElementLocation.XOffset, (upperLeft.Y + this.ElementLocation.YOffset) - num);
+                Label_053A:
+                point.PutCoords(upperLeft.X + this.ElementLocation.XOffset,
+                    (upperLeft.Y + this.ElementLocation.YOffset) - num);
                 return point;
-            Label_05C3:
-                point.PutCoords(upperLeft.X + this.ElementLocation.XOffset, (upperLeft.Y + this.ElementLocation.YOffset) - num);
+                Label_05C3:
+                point.PutCoords(upperLeft.X + this.ElementLocation.XOffset,
+                    (upperLeft.Y + this.ElementLocation.YOffset) - num);
             }
             catch
             {
@@ -431,7 +439,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         {
             IClone clone = ielement_0 as IClone;
             IMemoryBlobStream stream = new MemoryBlobStreamClass();
-            IObjectStream pstm = new ObjectStreamClass {
+            IObjectStream pstm = new ObjectStreamClass
+            {
                 Stream = stream
             };
             IPropertySet set = new PropertySetClass();
@@ -455,7 +464,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
             IMemoryBlobStream o = object_1 as IMemoryBlobStream;
             IPropertySet set = new PropertySetClass();
-            IObjectStream pstm = new ObjectStreamClass {
+            IObjectStream pstm = new ObjectStreamClass
+            {
                 Stream = o
             };
             IPersistStream stream3 = set as IPersistStream;
@@ -478,7 +488,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         private object method_2(IPropertySet ipropertySet_0)
         {
             IMemoryBlobStream stream = new MemoryBlobStreamClass();
-            IObjectStream pstm = new ObjectStreamClass {
+            IObjectStream pstm = new ObjectStreamClass
+            {
                 Stream = stream
             };
             (ipropertySet_0 as IPersistStream).Save(pstm, 0);
@@ -493,7 +504,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
             IMemoryBlobStream o = object_1 as IMemoryBlobStream;
             IPropertySet set2 = new PropertySetClass();
-            IObjectStream pstm = new ObjectStreamClass {
+            IObjectStream pstm = new ObjectStreamClass
+            {
                 Stream = o
             };
             (set2 as IPersistStream).Load(pstm);
@@ -542,115 +554,28 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public virtual IElement Element
         {
-            get
-            {
-                return this.m_pElement;
-            }
-            set
-            {
-                this.m_pElement = value;
-            }
+            get { return this.m_pElement; }
+            set { this.m_pElement = value; }
         }
 
-        public MapCartoTemplateLib.ElementLocation ElementLocation
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.elementLocation_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.elementLocation_0 = value;
-            }
-        }
+        public MapCartoTemplateLib.ElementLocation ElementLocation { get; set; }
 
-        public MapCartoTemplateLib.MapTemplate MapTemplate
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.mapTemplate_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.mapTemplate_0 = value;
-            }
-        }
 
-        public MapCartoTemplateLib.MapTemplateElementType MapTemplateElementType
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.mapTemplateElementType_0;
-            }
-            [CompilerGenerated]
-            protected set
-            {
-                this.mapTemplateElementType_0 = value;
-            }
-        }
+        public MapCartoTemplateLib.MapTemplate MapTemplate { get; set; }
 
-        public MapCartoTemplateLib.MapTemplateGallery MapTemplateGallery
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.mapTemplateGallery_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.mapTemplateGallery_0 = value;
-            }
-        }
 
-        public string Name
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.string_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.string_0 = value;
-            }
-        }
+        public MapCartoTemplateLib.MapTemplateElementType MapTemplateElementType { get; set; }
 
-        public int OID
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.int_0;
-            }
-            [CompilerGenerated]
-            protected set
-            {
-                this.int_0 = value;
-            }
-        }
+        public MapCartoTemplateLib.MapTemplateGallery MapTemplateGallery { get; set; }
+
+
+        public string Name { get; set; }
+
+
+        public int OID { get; set; }
 
         protected abstract IPropertySet PropertySet { get; set; }
 
-        public object Style
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.object_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.object_0 = value;
-            }
-        }
+        public object Style { get; set; }
     }
 }
-

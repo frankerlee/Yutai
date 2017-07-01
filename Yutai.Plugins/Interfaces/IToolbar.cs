@@ -20,6 +20,4 @@ namespace Yutai.Plugins.Interfaces
         void Update();
         void Refresh();
     }
-
-   
 }

@@ -9,7 +9,8 @@ using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Catalog
 {
-    public class GxCoverageDataset : IGxObject, IGxDataset, IGxObjectContainer, IGxObjectEdit, IGxObjectInternalName, IGxObjectProperties, IGxObjectUI, IGxPasteTarget
+    public class GxCoverageDataset : IGxObject, IGxDataset, IGxObjectContainer, IGxObjectEdit, IGxObjectInternalName,
+        IGxObjectProperties, IGxObjectUI, IGxPasteTarget
     {
         private IDatasetName idatasetName_0 = null;
         private IGxCatalog igxCatalog_0 = null;
@@ -132,7 +133,7 @@ namespace Yutai.ArcGIS.Catalog
 
         public void EditProperties(int int_0)
         {
-            new frmCoveragePropertySheet { CoverageName = this.idatasetName_0 as ICoverageName }.ShowDialog();
+            new frmCoveragePropertySheet {CoverageName = this.idatasetName_0 as ICoverageName}.ShowDialog();
         }
 
         public void GetPropByIndex(int int_0, ref string string_0, ref object object_0)
@@ -154,7 +155,9 @@ namespace Yutai.ArcGIS.Catalog
                 if ((children as IGxObjectArray).Count == 2)
                 {
                     children.Reset();
-                    for (dataset = children.Next() as IGxDataset; dataset != null; dataset = children.Next() as IGxDataset)
+                    for (dataset = children.Next() as IGxDataset;
+                        dataset != null;
+                        dataset = children.Next() as IGxDataset)
                     {
                         datasetName = dataset.DatasetName as ICoverageFeatureClassName;
                         switch (datasetName.FeatureClassType)
@@ -179,7 +182,9 @@ namespace Yutai.ArcGIS.Catalog
                     if ((children as IGxObjectArray).Count == 4)
                     {
                         children.Reset();
-                        for (dataset = children.Next() as IGxDataset; dataset != null; dataset = children.Next() as IGxDataset)
+                        for (dataset = children.Next() as IGxDataset;
+                            dataset != null;
+                            dataset = children.Next() as IGxDataset)
                         {
                             datasetName = dataset.DatasetName as ICoverageFeatureClassName;
                             switch (datasetName.FeatureClassType)
@@ -235,7 +240,8 @@ namespace Yutai.ArcGIS.Catalog
         {
             if (this.igxCatalog_0 != null)
             {
-                if ((this.idatasetName_0.Type == esriDatasetType.esriDTContainer) || (this.idatasetName_0.Type == esriDatasetType.esriDTFeatureDataset))
+                if ((this.idatasetName_0.Type == esriDatasetType.esriDTContainer) ||
+                    (this.idatasetName_0.Type == esriDatasetType.esriDTFeatureDataset))
                 {
                     this.igxObjectArray_0.Empty();
                     this.method_1();
@@ -270,18 +276,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public bool AreChildrenViewable
         {
-            get
-            {
-                return (this.idatasetName_0 is ICoverageName);
-            }
+            get { return (this.idatasetName_0 is ICoverageName); }
         }
 
         public string BaseName
         {
-            get
-            {
-                return this.idatasetName_0.Name;
-            }
+            get { return this.idatasetName_0.Name; }
         }
 
         public string Category
@@ -370,18 +370,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public UID ClassID
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public UID ContextMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IDataset Dataset
@@ -396,7 +390,7 @@ namespace Yutai.ArcGIS.Catalog
                     }
                     catch (Exception exception)
                     {
-                        Logger.Current.Error("",exception, "打开");
+                        Logger.Current.Error("", exception, "打开");
                     }
                 }
                 return null;
@@ -405,14 +399,8 @@ namespace Yutai.ArcGIS.Catalog
 
         public IDatasetName DatasetName
         {
-            get
-            {
-                return this.idatasetName_0;
-            }
-            set
-            {
-                this.idatasetName_0 = value;
-            }
+            get { return this.idatasetName_0; }
+            set { this.idatasetName_0 = value; }
         }
 
         public string FullName
@@ -434,85 +422,53 @@ namespace Yutai.ArcGIS.Catalog
 
         public bool HasChildren
         {
-            get
-            {
-                return (this.idatasetName_0 is ICoverageName);
-            }
+            get { return (this.idatasetName_0 is ICoverageName); }
         }
 
         public IName InternalObjectName
         {
-            get
-            {
-                return (this.idatasetName_0 as IName);
-            }
+            get { return (this.idatasetName_0 as IName); }
         }
 
         public bool IsValid
         {
-            get
-            {
-                return (this.idatasetName_0 != null);
-            }
+            get { return (this.idatasetName_0 != null); }
         }
 
         IName IGxObjectInternalName.InternalObjectName
         {
-            get
-            {
-                return null;
-            }
-            set
-            {
-            }
+            get { return null; }
+            set { }
         }
 
         public Bitmap LargeImage
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public Bitmap LargeSelectedImage
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public string Name
         {
-            get
-            {
-                return this.idatasetName_0.Name;
-            }
+            get { return this.idatasetName_0.Name; }
         }
 
         public UID NewMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IGxObject Parent
         {
-            get
-            {
-                return this.igxObject_0;
-            }
+            get { return this.igxObject_0; }
         }
 
         public int PropertyCount
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         public Bitmap SmallImage
@@ -636,4 +592,3 @@ namespace Yutai.ArcGIS.Catalog
         }
     }
 }
-

@@ -21,17 +21,16 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         private CharacterMarkerControl charactermarkcontrol = new CharacterMarkerControl();
         private bool m_CanDo = true;
         private IMarkerSymbol m_CopySymbol = null;
-        private double[] m_dblScaleRatio = new double[] { 0.25, 0.5, 1.0, 1.25, 2.0 };
+        private double[] m_dblScaleRatio = new double[] {0.25, 0.5, 1.0, 1.25, 2.0};
         private MaskControl m_Maskcontrol = new MaskControl();
         private int m_oldSel = -1;
         private int m_OldSelItem = 0;
         private int m_oldSelType = -1;
         public IStyleGallery m_pSG;
         private int m_ScaleIndex = 2;
-        private double[] point_unit_to = new double[] { 1.0, 0.01388889, 0.0352777778, 0.352777778 };
+        private double[] point_unit_to = new double[] {1.0, 0.01388889, 0.0352777778, 0.352777778};
 
 
-      
         public frmPointSymbolEdit()
         {
             this.InitializeComponent();
@@ -163,7 +162,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 this.m_OldSelItem = this.symbolListBox1.SelectedIndex;
                 this.m_pMultiMarkerSymbol.AddLayer(markerLayer);
                 this.m_pMultiMarkerSymbol.MoveLayer(markerLayer, this.symbolListBox1.SelectedIndex);
-                ((ILayerColorLock) this.m_pMultiMarkerSymbol).set_LayerColorLock(this.symbolListBox1.SelectedIndex, false);
+                ((ILayerColorLock) this.m_pMultiMarkerSymbol).set_LayerColorLock(this.symbolListBox1.SelectedIndex,
+                    false);
                 this.m_pMultiMarkerSymbol.DeleteLayer(symbol2);
                 this.InitControl((ISymbol) this.m_pMultiMarkerSymbol);
                 this.symbolListBox1.Invalidate();
@@ -230,7 +230,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             return null;
         }
 
- private void frmPointSymbolEdit_Load(object sender, EventArgs e)
+        private void frmPointSymbolEdit_Load(object sender, EventArgs e)
         {
             this.m_CanDo = false;
             this.cboUnit.SelectedIndex = 0;
@@ -262,7 +262,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 this.m_oldSel = -1;
                 for (int i = 0; i < ((IMultiLayerMarkerSymbol) pSym).LayerCount; i++)
                 {
-                    SymbolListItem item = new SymbolListItem {
+                    SymbolListItem item = new SymbolListItem
+                    {
                         m_pSymbol = (ISymbol) ((IMultiLayerMarkerSymbol) pSym).get_Layer(i),
                         m_bVisible = ((ILayerVisible) pSym).get_LayerVisible(i),
                         m_bLockColor = ((ILayerColorLock) pSym).get_LayerColorLock(i)
@@ -276,7 +277,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- public void SetSymbol(ISymbol pSym)
+        public void SetSymbol(ISymbol pSym)
         {
             this.m_pOldSymbol = pSym;
             if (pSym is IMultiLayerMarkerSymbol)
@@ -293,7 +294,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         private void symbolListBox1_LayerColorLockedChanged(object sender, EventArgs e)
         {
-            bool flag = ((ILayerColorLock) this.m_pMultiMarkerSymbol).get_LayerColorLock(this.symbolListBox1.SelectedIndex);
+            bool flag =
+                ((ILayerColorLock) this.m_pMultiMarkerSymbol).get_LayerColorLock(this.symbolListBox1.SelectedIndex);
             ((ILayerColorLock) this.m_pMultiMarkerSymbol).set_LayerColorLock(this.symbolListBox1.SelectedIndex, !flag);
         }
 
@@ -319,7 +321,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     if (symbol is ICharacterMarker3DSymbol)
                     {
                         this.cboMarkerType.SelectedIndex = 4;
-                        page = new XtraTabPage {
+                        page = new XtraTabPage
+                        {
                             Text = "3D字符点属性"
                         };
                         CharacterMarker3DSymbolCtrl ctrl = new CharacterMarker3DSymbolCtrl();
@@ -333,7 +336,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     else if (symbol is ISimpleMarker3DSymbol)
                     {
                         this.cboMarkerType.SelectedIndex = 5;
-                        page = new XtraTabPage {
+                        page = new XtraTabPage
+                        {
                             Text = "3D简单点属性"
                         };
                         SimpleMarker3DSymbolCtrl ctrl2 = new SimpleMarker3DSymbolCtrl();
@@ -347,7 +351,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     else if (symbol is IMarker3DSymbol)
                     {
                         this.cboMarkerType.SelectedIndex = 6;
-                        page = new XtraTabPage {
+                        page = new XtraTabPage
+                        {
                             Text = "3D点属性"
                         };
                         Marker3DSymbolCtrl ctrl3 = new Marker3DSymbolCtrl();
@@ -359,7 +364,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                         ctrl3.InitControl();
                     }
                     Marker3DPlacementCtrl ctrl4 = new Marker3DPlacementCtrl();
-                    page2 = new XtraTabPage {
+                    page2 = new XtraTabPage
+                    {
                         Text = "3D放置"
                     };
                     ctrl4.ValueChanged += new ValueChangedHandler(this.ValueChanged);
@@ -374,7 +380,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     if (symbol is ICharacterMarkerSymbol)
                     {
                         this.cboMarkerType.SelectedIndex = 3;
-                        page = new XtraTabPage {
+                        page = new XtraTabPage
+                        {
                             Text = "字符点属性"
                         };
                         CharacterMarkerControl charactermarkcontrol = this.charactermarkcontrol;
@@ -387,10 +394,12 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     else if (symbol is IArrowMarkerSymbol)
                     {
                         this.cboMarkerType.SelectedIndex = 1;
-                        XtraTabPage page3 = new XtraTabPage {
+                        XtraTabPage page3 = new XtraTabPage
+                        {
                             Text = "箭头点属性"
                         };
-                        ArrowMarkerControl control2 = new ArrowMarkerControl {
+                        ArrowMarkerControl control2 = new ArrowMarkerControl
+                        {
                             m_unit = this.point_unit_to[this.cboUnit.SelectedIndex],
                             m_ArrowMarkerSymbol = (IArrowMarkerSymbol) symbol
                         };
@@ -401,10 +410,12 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     else if (symbol is IPictureMarkerSymbol)
                     {
                         this.cboMarkerType.SelectedIndex = 2;
-                        XtraTabPage page4 = new XtraTabPage {
+                        XtraTabPage page4 = new XtraTabPage
+                        {
                             Text = "图片点属性"
                         };
-                        PictureMarkerControl control3 = new PictureMarkerControl {
+                        PictureMarkerControl control3 = new PictureMarkerControl
+                        {
                             m_unit = this.point_unit_to[this.cboUnit.SelectedIndex],
                             m_PictureMarkerSymbol = (IPictureMarkerSymbol) symbol
                         };
@@ -415,10 +426,12 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     else if (symbol is ISimpleMarkerSymbol)
                     {
                         this.cboMarkerType.SelectedIndex = 0;
-                        XtraTabPage page5 = new XtraTabPage {
+                        XtraTabPage page5 = new XtraTabPage
+                        {
                             Text = "简单点属性"
                         };
-                        SimpleMarkerControl control4 = new SimpleMarkerControl {
+                        SimpleMarkerControl control4 = new SimpleMarkerControl
+                        {
                             m_unit = this.point_unit_to[this.cboUnit.SelectedIndex],
                             m_SimpleMarkerSymbol = (ISimpleMarkerSymbol) symbol
                         };
@@ -426,7 +439,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                         page5.Controls.Add(control4);
                         this.tabControl1.TabPages.Add(page5);
                     }
-                    page2 = new XtraTabPage {
+                    page2 = new XtraTabPage
+                    {
                         Text = "掩模"
                     };
                     page2.Controls.Add(this.m_Maskcontrol);
@@ -460,4 +474,3 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         }
     }
 }
-

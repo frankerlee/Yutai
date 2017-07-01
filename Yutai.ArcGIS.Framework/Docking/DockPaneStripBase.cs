@@ -28,6 +28,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         protected internal abstract void EnsureTabVisible(IDockContent content);
         protected internal abstract GraphicsPath GetOutline(int index);
+
         protected int HitTest()
         {
             return this.HitTest(base.PointToClient(Control.MousePosition));
@@ -35,6 +36,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         protected internal abstract int HitTest(Point point);
         protected internal abstract int MeasureHeight();
+
         protected override void OnDragOver(DragEventArgs drgevent)
         {
             base.OnDragOver(drgevent);
@@ -61,7 +63,9 @@ namespace Yutai.ArcGIS.Framework.Docking
                     this.DockPane.ActiveContent = content;
                 }
             }
-            if ((e.Button == MouseButtons.Left) && ((this.DockPane.DockPanel.AllowEndUserDocking && this.DockPane.AllowDockDragAndDrop) && this.DockPane.ActiveContent.DockHandler.AllowEndUserDocking))
+            if ((e.Button == MouseButtons.Left) &&
+                ((this.DockPane.DockPanel.AllowEndUserDocking && this.DockPane.AllowDockDragAndDrop) &&
+                 this.DockPane.ActiveContent.DockHandler.AllowEndUserDocking))
             {
                 this.DockPane.DockPanel.BeginDrag(this.DockPane.ActiveContent.DockHandler);
             }
@@ -93,7 +97,7 @@ namespace Yutai.ArcGIS.Framework.Docking
             this.DockPane.ShowTabPageContextMenu(this, position);
         }
 
-        [SecurityPermission(SecurityAction.LinkDemand, Flags=SecurityPermissionFlag.UnmanagedCode)]
+        [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)]
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == 515)
@@ -117,26 +121,17 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         protected DockPane.AppearanceStyle Appearance
         {
-            get
-            {
-                return this.DockPane.Appearance;
-            }
+            get { return this.DockPane.Appearance; }
         }
 
         protected DockPane DockPane
         {
-            get
-            {
-                return this.m_dockPane;
-            }
+            get { return this.m_dockPane; }
         }
 
         protected bool HasTabPageContextMenu
         {
-            get
-            {
-                return this.DockPane.HasTabPageContextMenu;
-            }
+            get { return this.DockPane.HasTabPageContextMenu; }
         }
 
         protected TabCollection Tabs
@@ -177,18 +172,12 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             public IDockContent Content
             {
-                get
-                {
-                    return this.m_content;
-                }
+                get { return this.m_content; }
             }
 
             public Form ContentForm
             {
-                get
-                {
-                    return (this.m_content as Form);
-                }
+                get { return (this.m_content as Form); }
             }
         }
 
@@ -243,18 +232,12 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             public int Count
             {
-                get
-                {
-                    return this.DockPane.DisplayingContents.Count;
-                }
+                get { return this.DockPane.DisplayingContents.Count; }
             }
 
             public DockPane DockPane
             {
-                get
-                {
-                    return this.m_dockPane;
-                }
+                get { return this.m_dockPane; }
             }
 
             public DockPaneStripBase.Tab this[int index]
@@ -269,9 +252,6 @@ namespace Yutai.ArcGIS.Framework.Docking
                     return content.DockHandler.GetTab(this.DockPane.TabStripControl);
                 }
             }
-
-
         }
     }
 }
-

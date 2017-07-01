@@ -32,7 +32,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             return true;
         }
 
- private void FeatureDatasetGeneralPage_Load(object sender, EventArgs e)
+        private void FeatureDatasetGeneralPage_Load(object sender, EventArgs e)
         {
             if (NewObjectClassHelper.m_pObjectClassHelper.FeatureDataset != null)
             {
@@ -41,7 +41,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void method_0()
+        private void method_0()
         {
             this.bool_0 = true;
             if (this.ValueChanged != null)
@@ -56,4 +56,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

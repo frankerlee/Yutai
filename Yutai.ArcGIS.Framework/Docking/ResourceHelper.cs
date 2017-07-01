@@ -15,11 +15,11 @@
             {
                 if (_resourceManager == null)
                 {
-                    _resourceManager = new System.Resources.ResourceManager("JLK.WinFormsUI.Docking.Strings", typeof(ResourceHelper).Assembly);
+                    _resourceManager = new System.Resources.ResourceManager("JLK.WinFormsUI.Docking.Strings",
+                        typeof(ResourceHelper).Assembly);
                 }
                 return _resourceManager;
             }
         }
     }
 }
-

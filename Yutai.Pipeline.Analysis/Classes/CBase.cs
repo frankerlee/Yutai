@@ -24,7 +24,9 @@ namespace Yutai.Pipeline.Analysis.Classes
                 if (iFLayer != null)
                 {
                     IFeatureClass featureClass = iFLayer.FeatureClass;
-                    if ((featureClass.ShapeType == (esriGeometryType.esriGeometryLine)  ? true : featureClass.ShapeType == (esriGeometryType.esriGeometryPolyline)))
+                    if ((featureClass.ShapeType == (esriGeometryType.esriGeometryLine)
+                        ? true
+                        : featureClass.ShapeType == (esriGeometryType.esriGeometryPolyline)))
                     {
                         INetworkClass networkClass = featureClass as INetworkClass;
                         if ((networkClass == null ? false : networkClass.GeometricNetwork != null))
@@ -41,7 +43,7 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         public void AddGroupLayer(IGroupLayer iGLayer, List<IFeatureLayer> pListLayers)
         {
-            ICompositeLayer compositeLayer = (ICompositeLayer)iGLayer;
+            ICompositeLayer compositeLayer = (ICompositeLayer) iGLayer;
             if (compositeLayer != null)
             {
                 int count = compositeLayer.Count;
@@ -56,11 +58,11 @@ namespace Yutai.Pipeline.Analysis.Classes
         {
             if (ipLay is IFeatureLayer)
             {
-                this.AddFeatureLayer((IFeatureLayer)ipLay, pListLayers);
+                this.AddFeatureLayer((IFeatureLayer) ipLay, pListLayers);
             }
             else if (ipLay is IGroupLayer)
             {
-                this.AddGroupLayer((IGroupLayer)ipLay, pListLayers);
+                this.AddGroupLayer((IGroupLayer) ipLay, pListLayers);
             }
         }
     }

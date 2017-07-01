@@ -7,7 +7,8 @@ using Yutai.ArcGIS.Common.Framework;
 
 namespace Yutai.ArcGIS.Catalog
 {
-    public class GxGISServersFolder : IGxObject, IGxObjectContainer, IGxObjectUI, IGxContextMenuWap, IGxRemoteContainer, IGxGISServersFolder
+    public class GxGISServersFolder : IGxObject, IGxObjectContainer, IGxObjectUI, IGxContextMenuWap, IGxRemoteContainer,
+        IGxGISServersFolder
     {
         private IGxCatalog igxCatalog_0 = null;
         private IGxObject igxObject_0 = null;
@@ -17,7 +18,8 @@ namespace Yutai.ArcGIS.Catalog
 
         public GxGISServersFolder()
         {
-            this.string_0 = Environment.SystemDirectory.Substring(0, 2) + @"\Users\Administrator\AppData\Roaming\ESRI\Desktop10.2\ArcCatalog";
+            this.string_0 = Environment.SystemDirectory.Substring(0, 2) +
+                            @"\Users\Administrator\AppData\Roaming\ESRI\Desktop10.2\ArcCatalog";
             if (!Directory.Exists(this.string_0))
             {
                 try
@@ -127,26 +129,17 @@ namespace Yutai.ArcGIS.Catalog
 
         public bool AreChildrenViewable
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public string BaseName
         {
-            get
-            {
-                return "GIS服务器";
-            }
+            get { return "GIS服务器"; }
         }
 
         public string Category
         {
-            get
-            {
-                return "GIS服务器文件夹";
-            }
+            get { return "GIS服务器文件夹"; }
         }
 
         public IEnumGxObject Children
@@ -163,118 +156,73 @@ namespace Yutai.ArcGIS.Catalog
 
         public UID ClassID
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public UID ContextMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public string FullName
         {
-            get
-            {
-                return "GIS服务器";
-            }
+            get { return "GIS服务器"; }
         }
 
         public bool HasChildren
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public IName InternalObjectName
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public bool IsValid
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         public Bitmap LargeImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(3);
-            }
+            get { return ImageLib.GetSmallImage(3); }
         }
 
         public Bitmap LargeSelectedImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(3);
-            }
+            get { return ImageLib.GetSmallImage(3); }
         }
 
         public string Name
         {
-            get
-            {
-                return "GIS服务器";
-            }
+            get { return "GIS服务器"; }
         }
 
         public UID NewMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IGxObject Parent
         {
-            get
-            {
-                return this.igxObject_0;
-            }
+            get { return this.igxObject_0; }
         }
 
         public string Path
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-            }
+            get { return this.string_0; }
+            set { }
         }
 
         public Bitmap SmallImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(3);
-            }
+            get { return ImageLib.GetSmallImage(3); }
         }
 
         public Bitmap SmallSelectedImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(3);
-            }
+            get { return ImageLib.GetSmallImage(3); }
         }
     }
 }
-

@@ -33,7 +33,8 @@ namespace Yutai.ArcGIS.Carto.UI
             try
             {
                 IObjectCopy copy = new ObjectCopyClass();
-                IRasterStretchColorRampRenderer renderer1 = copy.Copy(this.irasterStretchColorRampRenderer_0) as IRasterStretchColorRampRenderer;
+                IRasterStretchColorRampRenderer renderer1 =
+                    copy.Copy(this.irasterStretchColorRampRenderer_0) as IRasterStretchColorRampRenderer;
                 this.irasterLayer_0.Renderer = this.irasterStretchColorRampRenderer_0 as IRasterRenderer;
             }
             catch (Exception)
@@ -43,7 +44,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnStretch_Click(object sender, EventArgs e)
         {
-            new frmRasteStrechSet { RasterStretch = this.irasterStretchColorRampRenderer_0 as IRasterStretch2 }.ShowDialog();
+            new frmRasteStrechSet {RasterStretch = this.irasterStretchColorRampRenderer_0 as IRasterStretch2}.ShowDialog
+                ();
         }
 
         private void cboBand_SelectedIndexChanged(object sender, EventArgs e)
@@ -83,7 +85,8 @@ namespace Yutai.ArcGIS.Carto.UI
             {
                 bool flag;
                 this.icolorRamp_0 = this.cboColorRamp.GetSelectStyleGalleryItem().Item as IColorRamp;
-                (this.irasterStretchColorRampRenderer_0 as IRasterRendererColorRamp).ColorScheme = this.cboColorRamp.Text;
+                (this.irasterStretchColorRampRenderer_0 as IRasterRendererColorRamp).ColorScheme =
+                    this.cboColorRamp.Text;
                 IRasterStretchColorRampRenderer renderer = this.irasterStretchColorRampRenderer_0;
                 IRasterRenderer renderer2 = (IRasterRenderer) renderer;
                 if (this.icolorRamp_0 == null)
@@ -154,7 +157,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void method_0()
+        private void method_0()
         {
             IRasterBandCollection raster = this.irasterLayer_0.Raster as IRasterBandCollection;
             if (this.irasterLayer_0.BandCount == 1)
@@ -191,8 +194,10 @@ namespace Yutai.ArcGIS.Carto.UI
             {
                 this.method_1(this.colorEdit2, backgroundColor);
             }
-            this.lblHight.Text = (this.irasterStretchColorRampRenderer_0 as IRasterStretchMinMax).CustomStretchMax.ToString("0.###");
-            this.lblLow.Text = (this.irasterStretchColorRampRenderer_0 as IRasterStretchMinMax).CustomStretchMin.ToString("0.###");
+            this.lblHight.Text =
+                (this.irasterStretchColorRampRenderer_0 as IRasterStretchMinMax).CustomStretchMax.ToString("0.###");
+            this.lblLow.Text =
+                (this.irasterStretchColorRampRenderer_0 as IRasterStretchMinMax).CustomStretchMin.ToString("0.###");
             this.chkHillshade.Checked = (this.irasterStretchColorRampRenderer_0 as IHillShadeInfo).UseHillShade;
             this.txtZFactor.Text = (this.irasterStretchColorRampRenderer_0 as IHillShadeInfo).ZScale.ToString();
             this.txtHeight.Text = this.irasterStretchColorRampRenderer_0.LabelHigh;
@@ -202,7 +207,8 @@ namespace Yutai.ArcGIS.Carto.UI
             this.txtZFactor.Enabled = this.chkHillshade.Checked;
             this.chkShowBackground.Checked = (this.irasterStretchColorRampRenderer_0 as IRasterStretch2).Background;
             this.txtBackground.Enabled = this.chkShowBackground.Checked;
-            this.txtBackground.Text = (this.irasterStretchColorRampRenderer_0 as IRasterStretch2).BackgroundValue.ToString();
+            this.txtBackground.Text =
+                (this.irasterStretchColorRampRenderer_0 as IRasterStretch2).BackgroundValue.ToString();
         }
 
         private void method_1(ColorEdit colorEdit_0, IColor icolor_0)
@@ -237,9 +243,9 @@ namespace Yutai.ArcGIS.Carto.UI
             uint num = 0;
             num = (uint) (0 | int_2);
             num = num << 8;
-            num |= ((uint)int_1);
+            num |= ((uint) int_1);
             num = num << 8;
-            return (int) (num | (uint)int_0);
+            return (int) (num | (uint) int_0);
         }
 
         private void method_4(ColorEdit colorEdit_0, IColor icolor_0)
@@ -276,7 +282,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 if (this.cboColorRamp.Items.Count == 0)
                 {
                     this.cboColorRamp.Enabled = false;
-                    IRandomColorRamp ramp = new RandomColorRampClass {
+                    IRandomColorRamp ramp = new RandomColorRampClass
+                    {
                         StartHue = 40,
                         EndHue = 120,
                         MinValue = 65,
@@ -296,7 +303,8 @@ namespace Yutai.ArcGIS.Carto.UI
                         this.cboColorRamp.SelectedIndex = 0;
                     }
                     this.icolorRamp_0 = this.cboColorRamp.GetSelectStyleGalleryItem().Item as IColorRamp;
-                    (this.irasterStretchColorRampRenderer_0 as IRasterRendererColorRamp).ColorScheme = this.cboColorRamp.Text;
+                    (this.irasterStretchColorRampRenderer_0 as IRasterRendererColorRamp).ColorScheme =
+                        this.cboColorRamp.Text;
                 }
                 if (this.irasterLayer_0 != null)
                 {
@@ -312,7 +320,8 @@ namespace Yutai.ArcGIS.Carto.UI
             {
                 try
                 {
-                    (this.irasterStretchColorRampRenderer_0 as IRasterStretch2).BackgroundValue = double.Parse(this.txtBackground.Text);
+                    (this.irasterStretchColorRampRenderer_0 as IRasterStretch2).BackgroundValue =
+                        double.Parse(this.txtBackground.Text);
                 }
                 catch
                 {
@@ -350,7 +359,8 @@ namespace Yutai.ArcGIS.Carto.UI
             {
                 try
                 {
-                    (this.irasterStretchColorRampRenderer_0 as IHillShadeInfo).ZScale = double.Parse(this.txtZFactor.Text);
+                    (this.irasterStretchColorRampRenderer_0 as IHillShadeInfo).ZScale =
+                        double.Parse(this.txtZFactor.Text);
                 }
                 catch
                 {
@@ -369,12 +379,14 @@ namespace Yutai.ArcGIS.Carto.UI
                 }
                 else
                 {
-                    IRasterStretchColorRampRenderer pInObject = this.irasterLayer_0.Renderer as IRasterStretchColorRampRenderer;
+                    IRasterStretchColorRampRenderer pInObject =
+                        this.irasterLayer_0.Renderer as IRasterStretchColorRampRenderer;
                     if (pInObject == null)
                     {
                         if (this.irasterStretchColorRampRenderer_0 == null)
                         {
-                            this.irasterStretchColorRampRenderer_0 = RenderHelper.RasterStretchRenderer(this.irasterLayer_0);
+                            this.irasterStretchColorRampRenderer_0 =
+                                RenderHelper.RasterStretchRenderer(this.irasterLayer_0);
                         }
                     }
                     else
@@ -394,22 +406,13 @@ namespace Yutai.ArcGIS.Carto.UI
 
         bool IUserControl.Visible
         {
-            get
-            {
-                return base.Visible;
-            }
-            set
-            {
-                base.Visible = value;
-            }
+            get { return base.Visible; }
+            set { base.Visible = value; }
         }
 
         public IStyleGallery StyleGallery
         {
-            set
-            {
-                this.istyleGallery_0 = value;
-            }
+            set { this.istyleGallery_0 = value; }
         }
 
         internal partial class BandWrap
@@ -428,12 +431,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
             internal IRasterBand RasterBand
             {
-                get
-                {
-                    return this.irasterBand_0;
-                }
+                get { return this.irasterBand_0; }
             }
         }
     }
 }
-

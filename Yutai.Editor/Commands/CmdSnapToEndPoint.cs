@@ -15,7 +15,10 @@ namespace Yutai.Plugins.Editor.Commands
             OnCreate(context);
         }
 
-        public override bool Checked { get { return _context.Config.IsSnapEndPoint; } }
+        public override bool Checked
+        {
+            get { return _context.Config.IsSnapEndPoint; }
+        }
 
         public override void OnCreate(object hook)
         {
@@ -37,7 +40,6 @@ namespace Yutai.Plugins.Editor.Commands
         {
             get { return true; }
         }
-
 
 
         public override void OnClick(object sender, EventArgs args)
@@ -64,18 +66,22 @@ namespace Yutai.Plugins.Editor.Commands
                     bool flag = false;
                     IPoint point2 = new Point();
                     point2.PutCoords(0.0, 0.0);
-                    if (shapeCopy.GeometryType == esriGeometryType.esriGeometryPolyline || shapeCopy.GeometryType == esriGeometryType.esriGeometryPolygon)
+                    if (shapeCopy.GeometryType == esriGeometryType.esriGeometryPolyline ||
+                        shapeCopy.GeometryType == esriGeometryType.esriGeometryPolygon)
                     {
-                        if ((shapeCopy as IHitTest).HitTest(point, 4.0, esriGeometryHitPartType.esriGeometryPartBoundary, point2, ref num, ref num2, ref num3, ref flag))
+                        if ((shapeCopy as IHitTest).HitTest(point, 4.0, esriGeometryHitPartType.esriGeometryPartBoundary,
+                            point2, ref num, ref num2, ref num3, ref flag))
                         {
                             double num4 = 0.0;
                             ISegmentCollection segmentCollection;
                             for (int i = 0; i < num2; i++)
                             {
-                                segmentCollection = ((shapeCopy as IGeometryCollection).get_Geometry(i) as ISegmentCollection);
+                                segmentCollection =
+                                    ((shapeCopy as IGeometryCollection).get_Geometry(i) as ISegmentCollection);
                                 num4 += (segmentCollection as ICurve).Length;
                             }
-                            segmentCollection = ((shapeCopy as IGeometryCollection).get_Geometry(num2) as ISegmentCollection);
+                            segmentCollection =
+                                ((shapeCopy as IGeometryCollection).get_Geometry(num2) as ISegmentCollection);
                             ISegment segment;
                             for (int i = 0; i < num3; i++)
                             {
@@ -96,26 +102,34 @@ namespace Yutai.Plugins.Editor.Commands
                             }
                             for (int i = num2 + 1; i < (shapeCopy as IGeometryCollection).GeometryCount; i++)
                             {
-                                segmentCollection = ((shapeCopy as IGeometryCollection).get_Geometry(i) as ISegmentCollection);
+                                segmentCollection =
+                                    ((shapeCopy as IGeometryCollection).get_Geometry(i) as ISegmentCollection);
                                 num5 += (segmentCollection as ICurve).Length;
                             }
                             IPoint point3;
                             if (num4 < num5)
                             {
-                                point3 = (shapeCopy as IPointCollection).get_Point((shapeCopy as IPointCollection).PointCount);
+                                point3 =
+                                    (shapeCopy as IPointCollection).get_Point((shapeCopy as IPointCollection).PointCount);
                             }
                             else
                             {
-                                point3 = (shapeCopy as IPointCollection).get_Point((shapeCopy as IPointCollection).PointCount);
+                                point3 =
+                                    (shapeCopy as IPointCollection).get_Point((shapeCopy as IPointCollection).PointCount);
                             }
                             SketchShareEx.m_pAnchorPoint.PutCoords(point3.X, point3.Y);
-                            SketchShareEx.SketchMouseDown(SketchShareEx.m_pAnchorPoint, _context.ActiveView, Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
+                            SketchShareEx.SketchMouseDown(SketchShareEx.m_pAnchorPoint, _context.ActiveView,
+                                Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
                         }
                     }
-                    else if ((shapeCopy.GeometryType == esriGeometryType.esriGeometryMultipoint || shapeCopy.GeometryType == esriGeometryType.esriGeometryPoint) && (shapeCopy as IHitTest).HitTest(point, 4.0, esriGeometryHitPartType.esriGeometryPartVertex, point2, ref num, ref num2, ref num3, ref flag))
+                    else if ((shapeCopy.GeometryType == esriGeometryType.esriGeometryMultipoint ||
+                              shapeCopy.GeometryType == esriGeometryType.esriGeometryPoint) &&
+                             (shapeCopy as IHitTest).HitTest(point, 4.0, esriGeometryHitPartType.esriGeometryPartVertex,
+                                 point2, ref num, ref num2, ref num3, ref flag))
                     {
                         SketchShareEx.m_pAnchorPoint.PutCoords(point2.X, point2.Y);
-                        SketchShareEx.SketchMouseDown(SketchShareEx.m_pAnchorPoint, _context.ActiveView, Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
+                        SketchShareEx.SketchMouseDown(SketchShareEx.m_pAnchorPoint, _context.ActiveView,
+                            Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
                     }
                 }
             }

@@ -18,7 +18,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.InitializeComponent();
         }
 
- private void Flash(int x, int y)
+        private void Flash(int x, int y)
         {
             try
             {
@@ -51,12 +51,14 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 if (pFC != parent2.m_pFC)
                 {
                     pFC = parent2.m_pFC;
-                    node = new TreeNode(pFC.AliasName) {
+                    node = new TreeNode(pFC.AliasName)
+                    {
                         Tag = pFC
                     };
                     this.treeView1.Nodes.Add(node);
                 }
-                TreeNode node2 = new TreeNode(parent2.m_FID.ToString()) {
+                TreeNode node2 = new TreeNode(parent2.m_FID.ToString())
+                {
                     Tag = parent2.m_FID
                 };
                 node.Nodes.Add(node2);
@@ -64,7 +66,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
- private void treeView1_Click(object sender, EventArgs e)
+        private void treeView1_Click(object sender, EventArgs e)
         {
         }
 
@@ -75,19 +77,12 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         public IMap FocusMap
         {
-            set
-            {
-                this.m_pFocusMap = value;
-            }
+            set { this.m_pFocusMap = value; }
         }
 
         public ITopologyGraph TopologyGraph
         {
-            set
-            {
-                this.m_pTopologyGraph = value;
-            }
+            set { this.m_pTopologyGraph = value; }
         }
     }
 }
-

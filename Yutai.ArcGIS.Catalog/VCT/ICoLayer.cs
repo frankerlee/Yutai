@@ -35,4 +35,3 @@ namespace Yutai.ArcGIS.Catalog.VCT
         object Tag { get; set; }
     }
 }
-

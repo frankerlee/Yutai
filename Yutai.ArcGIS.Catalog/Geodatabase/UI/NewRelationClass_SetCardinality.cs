@@ -29,7 +29,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void NewRelationClass_SetCardinality_Load(object sender, EventArgs e)
+        private void NewRelationClass_SetCardinality_Load(object sender, EventArgs e)
         {
             NewRelationClassHelper.IsAttributed = false;
             NewRelationClassHelper.Cardinality = esriRelCardinality.esriRelCardinalityOneToOne;
@@ -60,4 +60,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

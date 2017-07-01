@@ -4,21 +4,12 @@ using ESRI.ArcGIS.SystemUI;
 
 namespace Yutai.ArcGIS.Common.Carto
 {
-	public interface IResizeElementOperation : IOperation
-	{
-		IActiveView ActiveView
-		{
-			set;
-		}
+    public interface IResizeElementOperation : IOperation
+    {
+        IActiveView ActiveView { set; }
 
-		IElement Element
-		{
-			set;
-		}
+        IElement Element { set; }
 
-		IGeometry Geometry
-		{
-			set;
-		}
-	}
+        IGeometry Geometry { set; }
+    }
 }

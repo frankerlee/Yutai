@@ -43,19 +43,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IDomain Domain
         {
-            get
-            {
-                return this.idomain_0;
-            }
+            get { return this.idomain_0; }
         }
 
         public CodeDomainEx DomainEx
         {
-            get
-            {
-                return this.codeDomainEx_0;
-            }
+            get { return this.codeDomainEx_0; }
         }
     }
 }
-

@@ -23,9 +23,8 @@ namespace Yutai.Commands.MapLegend
 {
     public class CmdPanToSelectedFeature : YutaiCommand
     {
-       
         private IMapLegendView _view;
-    
+
 
         public CmdPanToSelectedFeature(IAppContext context, IMapLegendView view)
         {
@@ -46,6 +45,7 @@ namespace Yutai.Commands.MapLegend
             base.m_enabled = true;
             base._itemType = RibbonItemType.Button;
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();

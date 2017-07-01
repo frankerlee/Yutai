@@ -1,6 +1,6 @@
 ﻿namespace Yutai.Plugins.Identifer.Query
 {
-    public class LayerItem:object
+    public class LayerItem : object
     {
         public string Text { get; set; }
         public object Value { get; set; }

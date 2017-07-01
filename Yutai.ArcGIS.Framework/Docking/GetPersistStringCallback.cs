@@ -2,4 +2,3 @@
 {
     public delegate string GetPersistStringCallback();
 }
-

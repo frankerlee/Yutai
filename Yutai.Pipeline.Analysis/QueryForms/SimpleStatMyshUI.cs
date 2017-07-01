@@ -1,10 +1,8 @@
-﻿
-using ESRI.ArcGIS.Carto;
+﻿using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
-
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -44,14 +42,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
         public bool SelectGeometry
         {
-            get
-            {
-                return this.GeometrySet.Checked;
-            }
-            set
-            {
-                this.GeometrySet.Checked = value;
-            }
+            get { return this.GeometrySet.Checked; }
+            set { this.GeometrySet.Checked = value; }
         }
 
         public SimpleStatMyshUI()
@@ -91,7 +83,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                     this.myfield = this.myfields.Field[num];
                     this.listBox1.Items.Clear();
                     List<string> values = new List<string>();
-                    CommonHelper.GetUniqueValues((ITable)featureClass, layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.QDMS), values);
+                    CommonHelper.GetUniqueValues((ITable) featureClass,
+                        layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.QDMS), values);
                     this.listBox1.Items.AddRange(values.ToArray());
                 }
             }
@@ -101,17 +94,17 @@ namespace Yutai.Pipeline.Analysis.QueryForms
         {
             if (ipLay is IFeatureLayer)
             {
-                this.AddFeatureLayer((IFeatureLayer)ipLay);
+                this.AddFeatureLayer((IFeatureLayer) ipLay);
             }
             else if (ipLay is IGroupLayer)
             {
-                this.AddGroupLayer((IGroupLayer)ipLay);
+                this.AddGroupLayer((IGroupLayer) ipLay);
             }
         }
 
         private void AddGroupLayer(IGroupLayer iGLayer)
         {
-            ICompositeLayer compositeLayer = (ICompositeLayer)iGLayer;
+            ICompositeLayer compositeLayer = (ICompositeLayer) iGLayer;
             if (compositeLayer != null)
             {
                 int count = compositeLayer.Count;
@@ -182,8 +175,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                         for (int j = 0; j < count2; j++)
                         {
                             this.DXArray.Clear();
-                            string text = (string)this.dataGridView1[0, j].Value;
-                            string text2 = (string)this.dataGridView1[1, j].Value;
+                            string text = (string) this.dataGridView1[0, j].Value;
+                            string text2 = (string) this.dataGridView1[1, j].Value;
                             if (text == null || text2 == null)
                             {
                                 MessageBox.Show(@"请确定上下限的值，其值不能为空");
@@ -203,7 +196,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                             }
                             int num3 = 0;
                             int num4 = 0;
-                            IFeatureLayer pPipeLayer = ((SimpleStatMyshUI.LayerboxItem)this.checkedListBox1.CheckedItems[i]).m_pPipeLayer;
+                            IFeatureLayer pPipeLayer =
+                                ((SimpleStatMyshUI.LayerboxItem) this.checkedListBox1.CheckedItems[i]).m_pPipeLayer;
                             ISpatialFilter spatialFilter = new SpatialFilter();
                             if (this.GeometrySet.Checked)
                             {
@@ -211,7 +205,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                                 {
                                     spatialFilter.Geometry = (this.m_ipGeo);
                                 }
-                                spatialFilter.SpatialRel = (esriSpatialRelEnum)(1);
+                                spatialFilter.SpatialRel = (esriSpatialRelEnum) (1);
                             }
                             IFeatureCursor featureCursor = pPipeLayer.FeatureClass.Search(spatialFilter, false);
                             IFeature feature = featureCursor.NextFeature();
@@ -224,8 +218,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                                 }
                                 else
                                 {
-                                    IPolyline polyline = (IPolyline)feature.Shape;
-                                    IPointCollection pointCollection = (IPointCollection)polyline;
+                                    IPolyline polyline = (IPolyline) feature.Shape;
+                                    IPointCollection pointCollection = (IPointCollection) polyline;
                                     IPoint point = pointCollection.Point[0];
                                     IPoint point2 = pointCollection.Point[1];
                                     double m = point.M;
@@ -276,7 +270,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             {
                 for (int j = 0; j < count; j++)
                 {
-                    IFeatureLayer pPipeLayer = ((SimpleStatMyshUI.LayerboxItem)this.checkedListBox1.CheckedItems[j]).m_pPipeLayer;
+                    IFeatureLayer pPipeLayer =
+                        ((SimpleStatMyshUI.LayerboxItem) this.checkedListBox1.CheckedItems[j]).m_pPipeLayer;
                     this.FillFieldValuesToListBox(pPipeLayer, this.listBox1);
                 }
             }
@@ -293,11 +288,11 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             }
             else
             {
-                double num2 = (this.maxNum - this.minNum) / num;
+                double num2 = (this.maxNum - this.minNum)/num;
                 int num3 = 0;
-                while ((double)num3 < num + 1.0)
+                while ((double) num3 < num + 1.0)
                 {
-                    string text = (this.minNum + (double)num3 * num2).ToString("f2");
+                    string text = (this.minNum + (double) num3*num2).ToString("f2");
                     if (!this.listBox1.Items.Contains(text))
                     {
                         this.listBox1.Items.Add(text);
@@ -389,7 +384,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             {
                 for (int j = 0; j < count; j++)
                 {
-                    IFeatureLayer pPipeLayer = ((SimpleStatMyshUI.LayerboxItem)this.checkedListBox1.CheckedItems[j]).m_pPipeLayer;
+                    IFeatureLayer pPipeLayer =
+                        ((SimpleStatMyshUI.LayerboxItem) this.checkedListBox1.CheckedItems[j]).m_pPipeLayer;
                     this.FillFieldValuesToListBox(pPipeLayer, this.listBox1);
                 }
             }
@@ -495,7 +491,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             {
                 for (int i = 0; i < count; i++)
                 {
-                    IFeatureLayer pPipeLayer = ((SimpleStatMyshUI.LayerboxItem)this.checkedListBox1.CheckedItems[i]).m_pPipeLayer;
+                    IFeatureLayer pPipeLayer =
+                        ((SimpleStatMyshUI.LayerboxItem) this.checkedListBox1.CheckedItems[i]).m_pPipeLayer;
                     this.FillFieldValuesToListBox(pPipeLayer, this.listBox1);
                 }
             }
@@ -549,7 +546,6 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             }
             else
             {
-
                 IMapControlEvents2_Event axMapControl = this.m_context.MapControl as IMapControlEvents2_Event;
                 axMapControl.OnAfterDraw -= AxMapControlOnOnAfterDraw;
             }
@@ -557,7 +553,6 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
         private void AxMapControlOnOnAfterDraw(object display, int viewDrawPhase)
         {
-
             if (viewDrawPhase == 32)
             {
                 this.DrawSelGeometry();
@@ -583,37 +578,38 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 object obj = null;
                 int selectionBufferInPixels = this.m_context.Config.SelectionEnvironment.SearchTolerance;
                 ISymbol symbol = null;
-                switch ((int)this.m_ipGeo.GeometryType)
+                switch ((int) this.m_ipGeo.GeometryType)
                 {
                     case 1:
-                        {
-                            ISimpleMarkerSymbol simpleMarkerSymbol = new SimpleMarkerSymbol();
-                            symbol = (ISymbol)simpleMarkerSymbol;
-                            symbol.ROP2 = esriRasterOpCode.esriROPNotXOrPen;
-                            simpleMarkerSymbol.Color = (rgbColor);
-                            simpleMarkerSymbol.Size = ((double)(selectionBufferInPixels + selectionBufferInPixels + selectionBufferInPixels));
-                            break;
-                        }
+                    {
+                        ISimpleMarkerSymbol simpleMarkerSymbol = new SimpleMarkerSymbol();
+                        symbol = (ISymbol) simpleMarkerSymbol;
+                        symbol.ROP2 = esriRasterOpCode.esriROPNotXOrPen;
+                        simpleMarkerSymbol.Color = (rgbColor);
+                        simpleMarkerSymbol.Size =
+                            ((double) (selectionBufferInPixels + selectionBufferInPixels + selectionBufferInPixels));
+                        break;
+                    }
                     case 3:
-                        {
-                            ISimpleLineSymbol simpleLineSymbol = new SimpleLineSymbol();
-                            symbol = (ISymbol)simpleLineSymbol;
-                            symbol.ROP2 = esriRasterOpCode.esriROPNotXOrPen;
-                            simpleLineSymbol.Color = rgbColor;
-                            simpleLineSymbol.Color.Transparency = 1;
-                            simpleLineSymbol.Width = ((double)selectionBufferInPixels);
-                            break;
-                        }
+                    {
+                        ISimpleLineSymbol simpleLineSymbol = new SimpleLineSymbol();
+                        symbol = (ISymbol) simpleLineSymbol;
+                        symbol.ROP2 = esriRasterOpCode.esriROPNotXOrPen;
+                        simpleLineSymbol.Color = rgbColor;
+                        simpleLineSymbol.Color.Transparency = 1;
+                        simpleLineSymbol.Width = ((double) selectionBufferInPixels);
+                        break;
+                    }
                     case 4:
                     case 5:
-                        {
-                            ISimpleFillSymbol simpleFillSymbol = new SimpleFillSymbol();
-                            symbol = (ISymbol)simpleFillSymbol;
-                            symbol.ROP2 = esriRasterOpCode.esriROPNotXOrPen;
-                            simpleFillSymbol.Color = rgbColor;
-                            simpleFillSymbol.Color.Transparency = 1;
-                            break;
-                        }
+                    {
+                        ISimpleFillSymbol simpleFillSymbol = new SimpleFillSymbol();
+                        symbol = (ISymbol) simpleFillSymbol;
+                        symbol.ROP2 = esriRasterOpCode.esriROPNotXOrPen;
+                        simpleFillSymbol.Color = rgbColor;
+                        simpleFillSymbol.Color.Transparency = 1;
+                        break;
+                    }
                 }
                 obj = symbol;
                 this.MapControl.DrawShape(this.m_ipGeo, ref obj);

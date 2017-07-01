@@ -34,7 +34,9 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
 
         public int ComboBoxAddItem(ImageComboBoxItem imageComboBoxItem_0)
         {
-            imageComboBoxItem_0.Text = (imageComboBoxItem_0.Text.Length == 0) ? (imageComboBoxItem_0.GetType().Name + base.Items.Count.ToString()) : imageComboBoxItem_0.Text;
+            imageComboBoxItem_0.Text = (imageComboBoxItem_0.Text.Length == 0)
+                ? (imageComboBoxItem_0.GetType().Name + base.Items.Count.ToString())
+                : imageComboBoxItem_0.Text;
             base.Items.Add(imageComboBoxItem_0);
             return (base.Items.Count - 1);
         }
@@ -66,7 +68,9 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
 
         public int ComboBoxInsertItem(int int_2, ImageComboBoxItem imageComboBoxItem_0)
         {
-            imageComboBoxItem_0.Text = (imageComboBoxItem_0.Text.Length == 0) ? (imageComboBoxItem_0.GetType().Name + int_2.ToString()) : imageComboBoxItem_0.Text;
+            imageComboBoxItem_0.Text = (imageComboBoxItem_0.Text.Length == 0)
+                ? (imageComboBoxItem_0.GetType().Name + int_2.ToString())
+                : imageComboBoxItem_0.Text;
             base.Items.Insert(int_2, imageComboBoxItem_0);
             return int_2;
         }
@@ -86,8 +90,10 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
             base.Items[int_2] = object_1;
         }
 
-        [DllImport("user32", CharSet=CharSet.Auto)]
-        private static extern IntPtr FindWindowEx(IntPtr intptr_0, IntPtr intptr_1, [MarshalAs(UnmanagedType.LPTStr)] string string_2, [MarshalAs(UnmanagedType.LPTStr)] string string_3);
+        [DllImport("user32", CharSet = CharSet.Auto)]
+        private static extern IntPtr FindWindowEx(IntPtr intptr_0, IntPtr intptr_1,
+            [MarshalAs(UnmanagedType.LPTStr)] string string_2, [MarshalAs(UnmanagedType.LPTStr)] string string_3);
+
         private void method_0(DrawItemEventArgs drawItemEventArgs_0)
         {
             drawItemEventArgs_0.DrawFocusRectangle();
@@ -97,53 +103,75 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
             {
                 item.Font = this.Font;
             }
-            StringFormat format = new StringFormat {
+            StringFormat format = new StringFormat
+            {
                 FormatFlags = StringFormatFlags.NoClip
             };
-            int num = item.IndentLevel * this.Indent;
+            int num = item.IndentLevel*this.Indent;
             if (item.ImageIndex != -1)
             {
                 RectangleF ef;
                 Rectangle rectangle2;
                 Image original = this.ImageList.Images[item.ImageIndex];
-                Bitmap image = new Bitmap(original, drawItemEventArgs_0.Bounds.Height - 1, drawItemEventArgs_0.Bounds.Height - 1);
+                Bitmap image = new Bitmap(original, drawItemEventArgs_0.Bounds.Height - 1,
+                    drawItemEventArgs_0.Bounds.Height - 1);
                 int height = image.Height;
                 int width = image.Width;
-                int num4 = 1 + (item.IndentLevel * this.int_1);
+                int num4 = 1 + (item.IndentLevel*this.int_1);
                 if (this.RightToLeft == RightToLeft.Yes)
                 {
                     image.RotateFlip(RotateFlipType.RotateNoneFlipX);
                     format.Alignment = StringAlignment.Far;
-                    ef = new RectangleF((float) (drawItemEventArgs_0.Bounds.X - num4), (float) drawItemEventArgs_0.Bounds.Y, (float) (((drawItemEventArgs_0.Bounds.Width - width) - num) - num4), (float) drawItemEventArgs_0.Bounds.Height);
-                    drawItemEventArgs_0.Graphics.DrawString(item.Text, item.Font, new SolidBrush(drawItemEventArgs_0.ForeColor), ef, format);
-                    rectangle2 = new Rectangle((drawItemEventArgs_0.Bounds.X + num4) + (drawItemEventArgs_0.Bounds.Width - (width + num)), drawItemEventArgs_0.Bounds.Y, width, height);
+                    ef = new RectangleF((float) (drawItemEventArgs_0.Bounds.X - num4),
+                        (float) drawItemEventArgs_0.Bounds.Y,
+                        (float) (((drawItemEventArgs_0.Bounds.Width - width) - num) - num4),
+                        (float) drawItemEventArgs_0.Bounds.Height);
+                    drawItemEventArgs_0.Graphics.DrawString(item.Text, item.Font,
+                        new SolidBrush(drawItemEventArgs_0.ForeColor), ef, format);
+                    rectangle2 =
+                        new Rectangle(
+                            (drawItemEventArgs_0.Bounds.X + num4) + (drawItemEventArgs_0.Bounds.Width - (width + num)),
+                            drawItemEventArgs_0.Bounds.Y, width, height);
                     drawItemEventArgs_0.Graphics.DrawImage(image, rectangle2);
                 }
                 else
                 {
                     format.Alignment = StringAlignment.Near;
-                    ef = new RectangleF((float) (((drawItemEventArgs_0.Bounds.X + width) + num) + num4), (float) drawItemEventArgs_0.Bounds.Y, (float) (((drawItemEventArgs_0.Bounds.Width - width) - num) - num4), (float) drawItemEventArgs_0.Bounds.Height);
-                    drawItemEventArgs_0.Graphics.DrawString(item.Text, item.Font, new SolidBrush(drawItemEventArgs_0.ForeColor), ef, format);
-                    rectangle2 = new Rectangle((drawItemEventArgs_0.Bounds.X + num4) + num, drawItemEventArgs_0.Bounds.Y, width, height);
+                    ef = new RectangleF((float) (((drawItemEventArgs_0.Bounds.X + width) + num) + num4),
+                        (float) drawItemEventArgs_0.Bounds.Y,
+                        (float) (((drawItemEventArgs_0.Bounds.Width - width) - num) - num4),
+                        (float) drawItemEventArgs_0.Bounds.Height);
+                    drawItemEventArgs_0.Graphics.DrawString(item.Text, item.Font,
+                        new SolidBrush(drawItemEventArgs_0.ForeColor), ef, format);
+                    rectangle2 = new Rectangle((drawItemEventArgs_0.Bounds.X + num4) + num, drawItemEventArgs_0.Bounds.Y,
+                        width, height);
                     drawItemEventArgs_0.Graphics.DrawImage(image, rectangle2);
                 }
             }
             else if (this.RightToLeft == RightToLeft.Yes)
             {
                 format.Alignment = StringAlignment.Far;
-                drawItemEventArgs_0.Graphics.DrawString(item.Text, item.Font, new SolidBrush(drawItemEventArgs_0.ForeColor), new RectangleF((float) drawItemEventArgs_0.Bounds.X, (float) drawItemEventArgs_0.Bounds.Y, (float) (drawItemEventArgs_0.Bounds.Width - num), (float) drawItemEventArgs_0.Bounds.Height), format);
+                drawItemEventArgs_0.Graphics.DrawString(item.Text, item.Font,
+                    new SolidBrush(drawItemEventArgs_0.ForeColor),
+                    new RectangleF((float) drawItemEventArgs_0.Bounds.X, (float) drawItemEventArgs_0.Bounds.Y,
+                        (float) (drawItemEventArgs_0.Bounds.Width - num), (float) drawItemEventArgs_0.Bounds.Height),
+                    format);
             }
             else
             {
                 format.Alignment = StringAlignment.Near;
-                drawItemEventArgs_0.Graphics.DrawString(item.Text, item.Font, new SolidBrush(drawItemEventArgs_0.ForeColor), new RectangleF((float) (drawItemEventArgs_0.Bounds.X + num), (float) drawItemEventArgs_0.Bounds.Y, (float) drawItemEventArgs_0.Bounds.Width, (float) drawItemEventArgs_0.Bounds.Height), format);
+                drawItemEventArgs_0.Graphics.DrawString(item.Text, item.Font,
+                    new SolidBrush(drawItemEventArgs_0.ForeColor),
+                    new RectangleF((float) (drawItemEventArgs_0.Bounds.X + num), (float) drawItemEventArgs_0.Bounds.Y,
+                        (float) drawItemEventArgs_0.Bounds.Width, (float) drawItemEventArgs_0.Bounds.Height), format);
             }
         }
 
         protected override void OnDrawItem(DrawItemEventArgs drawItemEventArgs_0)
         {
             base.OnDrawItem(drawItemEventArgs_0);
-            if (((drawItemEventArgs_0.Index >= 0) && (this.Items.Count > 0)) && (drawItemEventArgs_0.Index < this.Items.Count))
+            if (((drawItemEventArgs_0.Index >= 0) && (this.Items.Count > 0)) &&
+                (drawItemEventArgs_0.Index < this.Items.Count))
             {
                 this.method_0(drawItemEventArgs_0);
             }
@@ -161,10 +189,15 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
         protected override void OnMeasureItem(MeasureItemEventArgs measureItemEventArgs_0)
         {
             base.OnMeasureItem(measureItemEventArgs_0);
-            if ((base.DataSource == null) && (((measureItemEventArgs_0.Index >= 0) && (this.Items.Count > 0)) && (measureItemEventArgs_0.Index < this.Items.Count)))
+            if ((base.DataSource == null) &&
+                (((measureItemEventArgs_0.Index >= 0) && (this.Items.Count > 0)) &&
+                 (measureItemEventArgs_0.Index < this.Items.Count)))
             {
-                Font font = (this.Items[measureItemEventArgs_0.Index].Font == null) ? this.Font : this.Items[measureItemEventArgs_0.Index].Font;
-                SizeF ef = measureItemEventArgs_0.Graphics.MeasureString(this.Items[measureItemEventArgs_0.Index].Text, font);
+                Font font = (this.Items[measureItemEventArgs_0.Index].Font == null)
+                    ? this.Font
+                    : this.Items[measureItemEventArgs_0.Index].Font;
+                SizeF ef = measureItemEventArgs_0.Graphics.MeasureString(this.Items[measureItemEventArgs_0.Index].Text,
+                    font);
                 measureItemEventArgs_0.ItemHeight = (int) ef.Height;
                 measureItemEventArgs_0.ItemWidth = (int) ef.Width;
             }
@@ -199,7 +232,8 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
             }
         }
 
-        [Editor(typeof(DropDownDrawModes), typeof(UITypeEditor)), DesignerSerializationVisibility(DesignerSerializationVisibility.Visible), Browsable(true)]
+        [Editor(typeof(DropDownDrawModes), typeof(UITypeEditor)),
+         DesignerSerializationVisibility(DesignerSerializationVisibility.Visible), Browsable(true)]
         public System.Windows.Forms.DrawMode DrawMode
         {
             get
@@ -219,7 +253,8 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
                 {
                     if (value != System.Windows.Forms.DrawMode.OwnerDrawVariable)
                     {
-                        throw new Exception("The JLK.ControlExtend.ImageComboBox does not support the " + value.ToString() + " mode.");
+                        throw new Exception("The JLK.ControlExtend.ImageComboBox does not support the " +
+                                            value.ToString() + " mode.");
                     }
                     this.drawMode_0 = System.Windows.Forms.DrawMode.OwnerDrawVariable;
                     base.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
@@ -227,13 +262,12 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
             }
         }
 
-        [Browsable(true), Description("The ImageList control from which the images to be displayed with the items are taken."), Category("Behavior"), DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [Browsable(true),
+         Description("The ImageList control from which the images to be displayed with the items are taken."),
+         Category("Behavior"), DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public System.Windows.Forms.ImageList ImageList
         {
-            get
-            {
-                return this.imageList_0;
-            }
+            get { return this.imageList_0; }
             set
             {
                 this.imageList_0 = value;
@@ -241,33 +275,26 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
             }
         }
 
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible), Browsable(true), Description("The Indentation width of an item in pixels."), Category("Behavior")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible), Browsable(true),
+         Description("The Indentation width of an item in pixels."), Category("Behavior")]
         public int Indent
         {
-            get
-            {
-                return this.int_0;
-            }
-            set
-            {
-                this.int_0 = value;
-            }
+            get { return this.int_0; }
+            set { this.int_0 = value; }
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public int ItemHeight
         {
-            get
-            {
-                return base.ItemHeight;
-            }
-            set
-            {
-                base.ItemHeight = value;
-            }
+            get { return base.ItemHeight; }
+            set { base.ItemHeight = value; }
         }
 
-        [MergableProperty(false), Localizable(true), Description("The collection of items in the JLK.ControlExtend.ImageComboBox."), DesignerSerializationVisibility(DesignerSerializationVisibility.Content), Editor(typeof(CollectionEditor), typeof(UITypeEditor)), Category("Behavior"), TypeConverter(typeof(ImageComboBoxItemCollection))]
+        [MergableProperty(false), Localizable(true),
+         Description("The collection of items in the JLK.ControlExtend.ImageComboBox."),
+         DesignerSerializationVisibility(DesignerSerializationVisibility.Content),
+         Editor(typeof(CollectionEditor), typeof(UITypeEditor)), Category("Behavior"),
+         TypeConverter(typeof(ImageComboBoxItemCollection))]
         public ImageComboBoxItemCollection Items
         {
             get
@@ -295,4 +322,3 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
         }
     }
 }
-

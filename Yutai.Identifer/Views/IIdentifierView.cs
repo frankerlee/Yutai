@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geometry;
 using Yutai.Api.Enums;
-
 using Yutai.Plugins.Identifer.Enums;
 using Yutai.Plugins.Mvp;
 
@@ -26,6 +25,7 @@ namespace Yutai.Plugins.Identifer.Views
             //新建结果列表对象
             identifiedFeatureObjList = new List<IFeatureIdentifyObj>();
         }
+
         /// <summary>
         /// 图层要素的集合类型
         /// </summary>
@@ -34,6 +34,7 @@ namespace Yutai.Plugins.Identifer.Views
             get { return geometryType; }
             set { geometryType = value; }
         }
+
         /// <summary>
         /// 查询的对象图层
         /// </summary>
@@ -42,6 +43,7 @@ namespace Yutai.Plugins.Identifer.Views
             get { return identifyLayer; }
             set { identifyLayer = value; }
         }
+
         /// <summary>
         /// 此图层的要素查询列表
         /// </summary>
@@ -62,7 +64,6 @@ namespace Yutai.Plugins.Identifer.Views
         //private MapWindow               mapWindow;
         //////////////////////////////////////////////////////
 
-
         #region < 上述私有变量的属性 >
 
         /// <summary>
@@ -73,6 +74,7 @@ namespace Yutai.Plugins.Identifer.Views
             get { return targetLayer; }
             set { targetLayer = value; }
         }
+
         /// <summary>
         /// 获取或设置图层在下拉列表中次序
         /// </summary>
@@ -81,6 +83,7 @@ namespace Yutai.Plugins.Identifer.Views
             get { return layerFilterIndex; }
             set { layerFilterIndex = value; }
         }
+
         /// <summary>
         /// 获取或设置对应的图层显示名称
         /// </summary>
@@ -89,6 +92,7 @@ namespace Yutai.Plugins.Identifer.Views
             get { return layerFilterName; }
             set { layerFilterName = value; }
         }
+
         /// <summary>
         /// 获取或设置对应的图层的显示图标
         /// </summary>
@@ -105,6 +109,7 @@ namespace Yutai.Plugins.Identifer.Views
             get { return layerCategory; }
             set { layerCategory = value; }
         }
+
         /// <summary>
         /// 获取或设置对应的图层的要素类型
         /// </summary>
@@ -113,6 +118,7 @@ namespace Yutai.Plugins.Identifer.Views
             get { return layerFeatureType; }
             set { layerFeatureType = value; }
         }
+
         /// <summary>
         /// 设置查询所在的地图窗口
         /// </summary>
@@ -123,6 +129,7 @@ namespace Yutai.Plugins.Identifer.Views
 
         #endregion
     }
+
     public interface IIdentifierView : IMenuProvider
     {
         IdentifierMode Mode { get; }
@@ -136,6 +143,5 @@ namespace Yutai.Plugins.Identifer.Views
         void ClearActiveViewEvents();
 
         void InitializeActiveViewEvents();
-
     }
 }

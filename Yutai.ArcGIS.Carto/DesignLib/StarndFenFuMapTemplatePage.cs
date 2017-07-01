@@ -45,7 +45,9 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             this.mapTemplate_0.InOutSpace = double.Parse(this.textBox2.Text);
             this.mapTemplate_0.BorderSymbol = this.styleButton1.Style as ISymbol;
             this.mapTemplate_0.OutBorderWidth = double.Parse(this.txtOutBorderWidth.Text);
-            this.mapTemplate_0.SpheroidType = (this.cboDataum.SelectedIndex == 0) ? SpheroidType.Beijing54 : SpheroidType.Xian1980;
+            this.mapTemplate_0.SpheroidType = (this.cboDataum.SelectedIndex == 0)
+                ? SpheroidType.Beijing54
+                : SpheroidType.Xian1980;
             if (this.rdo3.Checked)
             {
                 this.mapTemplate_0.StripType = StripType.STThreeDeg;
@@ -100,7 +102,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             }
         }
 
- private void rdo3_CheckedChanged(object sender, EventArgs e)
+        private void rdo3_CheckedChanged(object sender, EventArgs e)
         {
             if (this.bool_0)
             {
@@ -326,50 +328,29 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public MapTemplate MapTemplate
         {
-            get
-            {
-                return this.mapTemplate_0;
-            }
-            set
-            {
-                this.mapTemplate_0 = value;
-            }
+            get { return this.mapTemplate_0; }
+            set { this.mapTemplate_0 = value; }
         }
 
         public string Title
         {
-            get
-            {
-                return "常规";
-            }
-            set
-            {
-            }
+            get { return "常规"; }
+            set { }
         }
     }
 }
-

@@ -201,7 +201,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.int_0++;
         }
 
- private void frmNewFeatureDataset_Load(object sender, EventArgs e)
+        private void frmNewFeatureDataset_Load(object sender, EventArgs e)
         {
             this.newDatasetTolerancePage_0.Dock = DockStyle.Fill;
             this.newDatasetTolerancePage_0.Visible = false;
@@ -220,7 +220,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.btnLast.Enabled = false;
         }
 
- private void method_0(object sender, EventArgs e)
+        private void method_0(object sender, EventArgs e)
         {
             if (this.newDatasetTolerancePage_0.chkUseDefault.Checked)
             {
@@ -234,19 +234,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IFeatureDataset FeatureDataset
         {
-            get
-            {
-                return this.ifeatureDataset_0;
-            }
+            get { return this.ifeatureDataset_0; }
         }
 
         public IWorkspace Workspace
         {
-            set
-            {
-                NewObjectClassHelper.m_pObjectClassHelper.Workspace = value;
-            }
+            set { NewObjectClassHelper.m_pObjectClassHelper.Workspace = value; }
         }
     }
 }
-

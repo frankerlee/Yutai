@@ -11,10 +11,12 @@ namespace Yutai.ArcGIS.Carto.Library
         public static void CreateExcelFile2(string string_0, string string_1)
         {
             string str = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + string_0 + "; Extended Properties=Excel 8.0;";
-            OleDbConnection connection = new OleDbConnection {
+            OleDbConnection connection = new OleDbConnection
+            {
                 ConnectionString = str
             };
-            OleDbCommand command = new OleDbCommand {
+            OleDbCommand command = new OleDbCommand
+            {
                 Connection = connection,
                 CommandText = string_1
             };
@@ -26,7 +28,8 @@ namespace Yutai.ArcGIS.Carto.Library
         public static List<string> GetExcelColumns(string string_0, string string_1)
         {
             List<string> list = new List<string>();
-            string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + string_0 + ";Extended Properties='Excel 8.0;HDR=YES;IMEX=2'";
+            string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + string_0 +
+                                      ";Extended Properties='Excel 8.0;HDR=YES;IMEX=2'";
             string cmdText = "SELECT * FROM [" + string_1 + "]";
             DataSet dataSet = new DataSet();
             dataSet.Tables.Add("XYDATA");
@@ -62,7 +65,11 @@ namespace Yutai.ArcGIS.Carto.Library
             if (File.Exists(string_0))
             {
                 list = new List<string>();
-                using (OleDbConnection connection = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Extended Properties=\"Excel 8.0\";Data Source=" + string_0))
+                using (
+                    OleDbConnection connection =
+                        new OleDbConnection(
+                            "Provider=Microsoft.Jet.OLEDB.4.0;Extended Properties=\"Excel 8.0\";Data Source=" + string_0)
+                )
                 {
                     connection.Open();
                     DataTable oleDbSchemaTable = connection.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
@@ -82,7 +89,10 @@ namespace Yutai.ArcGIS.Carto.Library
             {
                 return str;
             }
-            using (OleDbConnection connection = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Extended Properties=\"Excel 8.0\";Data Source=" + string_0))
+            using (
+                OleDbConnection connection =
+                    new OleDbConnection(
+                        "Provider=Microsoft.Jet.OLEDB.4.0;Extended Properties=\"Excel 8.0\";Data Source=" + string_0))
             {
                 connection.Open();
                 return connection.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null).Rows[0][2].ToString().Trim();
@@ -91,7 +101,8 @@ namespace Yutai.ArcGIS.Carto.Library
 
         public static DataRowCollection GetExcelRows(string string_0, string string_1)
         {
-            string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + string_0 + ";Extended Properties='Excel 8.0;HDR=YES;IMEX=2'";
+            string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + string_0 +
+                                      ";Extended Properties='Excel 8.0;HDR=YES;IMEX=2'";
             string cmdText = "SELECT * FROM [" + string_1 + "]";
             DataSet dataSet = new DataSet();
             dataSet.Tables.Add("XYDATA");
@@ -119,4 +130,3 @@ namespace Yutai.ArcGIS.Carto.Library
         }
     }
 }
-

@@ -340,7 +340,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
             this.Calculate();
         }
 
- public void Draw()
+        public void Draw()
         {
             Graphics pGraphics = base.CreateGraphics();
             for (int i = 0; i < base.m_pNodes.Count; i++)
@@ -378,7 +378,8 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
         {
             if (pChildNode.Parent != null)
             {
-                if ((pChildNode.Parent.GetNodeType() == NodeType.Map) || (pChildNode.Parent.GetNodeType() == NodeType.MapFrame))
+                if ((pChildNode.Parent.GetNodeType() == NodeType.Map) ||
+                    (pChildNode.Parent.GetNodeType() == NodeType.MapFrame))
                 {
                     return pChildNode.Parent;
                 }
@@ -389,6 +390,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 
         [DllImport("user32")]
         public static extern int GetKeyState(int nVirtKey);
+
         public TOCTreeNode GetNodeAt(Point point)
         {
             return this.GetNodeAt(point.X, point.Y);
@@ -447,7 +449,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
             return count;
         }
 
- private void InsertToSelection(TOCTreeNode pSelNode)
+        private void InsertToSelection(TOCTreeNode pSelNode)
         {
             if (base.m_pSelectedNodes.IndexOf(pSelNode) == -1)
             {
@@ -539,7 +541,8 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
             }
             if (base.m_pNodes.Count > 0)
             {
-                height = (height + (base.m_pNodes[base.m_pNodes.Count - 1] as TOCTreeNode).Bounds.Bottom) - (base.m_pNodes[0] as TOCTreeNode).Bounds.Top;
+                height = (height + (base.m_pNodes[base.m_pNodes.Count - 1] as TOCTreeNode).Bounds.Bottom) -
+                         (base.m_pNodes[0] as TOCTreeNode).Bounds.Top;
                 height += 10;
             }
             else
@@ -580,7 +583,8 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     base.Invalidate();
                     return;
                 }
-                if (((e.Button == MouseButtons.Right) && (base.m_pSelectedNodes.Count > 0)) && (base.m_pSelectedNodes.IndexOf(nodeAt) != -1))
+                if (((e.Button == MouseButtons.Right) && (base.m_pSelectedNodes.Count > 0)) &&
+                    (base.m_pSelectedNodes.IndexOf(nodeAt) != -1))
                 {
                     return;
                 }
@@ -591,7 +595,9 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     goto Label_02A9;
                 }
                 TOCTreeNode node2 = base.m_pSelectedNodes[0] as TOCTreeNode;
-                if (((node2.TOCNodeType != nodeAt.TOCNodeType) && ((node2.TOCNodeType != NodeType.GroupLayer) || (nodeAt.TOCNodeType != NodeType.Layer))) && ((node2.TOCNodeType != NodeType.Layer) || (nodeAt.TOCNodeType != NodeType.GroupLayer)))
+                if (((node2.TOCNodeType != nodeAt.TOCNodeType) &&
+                     ((node2.TOCNodeType != NodeType.GroupLayer) || (nodeAt.TOCNodeType != NodeType.Layer))) &&
+                    ((node2.TOCNodeType != NodeType.Layer) || (nodeAt.TOCNodeType != NodeType.GroupLayer)))
                 {
                     goto Label_0290;
                 }
@@ -623,23 +629,23 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     node5 = pLHitNode;
                 }
                 goto Label_0210;
-            Label_01EB:
+                Label_01EB:
                 this.AddToSelection(pSelNode);
                 pSelNode = pSelNode.NextNode;
                 if (pSelNode == node5)
                 {
                     goto Label_0215;
                 }
-            Label_0210:
+                Label_0210:
                 flag = true;
                 goto Label_01EB;
-            Label_0215:
+                Label_0215:
                 this.AddToSelection(node5);
                 goto Label_02A1;
-            Label_0221:
+                Label_0221:
                 this.AddToSelection(nodeAt);
                 goto Label_02A1;
-            Label_022E:
+                Label_022E:
                 if (this.IsCtrlDown())
                 {
                     if (base.m_pSelectedNodes.IndexOf(nodeAt) == -1)
@@ -658,12 +664,12 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     this.AddToSelection(nodeAt);
                 }
                 goto Label_02A1;
-            Label_0290:
+                Label_0290:
                 this.ClearSelection();
                 this.AddToSelection(nodeAt);
-            Label_02A1:
+                Label_02A1:
                 this.m_pLHitNode = nodeAt;
-            Label_02A9:
+                Label_02A9:
                 if (base.m_pSelectedNodes.Count != 1)
                 {
                     goto Label_096E;
@@ -719,13 +725,20 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                                     {
                                         if (node2.Tag is IBasicMap)
                                         {
-                                            TreeViewEvent.OnLayerPropertyChanged(this, node2.Tag as IBasicMap, this.m_pSelectedNode.Parent.Tag as ILayer);
-                                            (node2.Tag as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeography, this.m_pSelectedNode.Parent.Tag, null);
+                                            TreeViewEvent.OnLayerPropertyChanged(this, node2.Tag as IBasicMap,
+                                                this.m_pSelectedNode.Parent.Tag as ILayer);
+                                            (node2.Tag as IActiveView).PartialRefresh(
+                                                esriViewDrawPhase.esriViewGeography, this.m_pSelectedNode.Parent.Tag,
+                                                null);
                                         }
                                         else if (node2.Tag is IMapFrame)
                                         {
-                                            TreeViewEvent.OnLayerPropertyChanged(this, (node2.Tag as IMapFrame).Map as IBasicMap, this.m_pSelectedNode.Parent.Tag as ILayer);
-                                            ((node2.Tag as IMapFrame).Map as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeography, this.m_pSelectedNode.Parent.Tag, null);
+                                            TreeViewEvent.OnLayerPropertyChanged(this,
+                                                (node2.Tag as IMapFrame).Map as IBasicMap,
+                                                this.m_pSelectedNode.Parent.Tag as ILayer);
+                                            ((node2.Tag as IMapFrame).Map as IActiveView).PartialRefresh(
+                                                esriViewDrawPhase.esriViewGeography, this.m_pSelectedNode.Parent.Tag,
+                                                null);
                                         }
                                         DocumentManager.DocumentChanged(this.m_hook);
                                     }
@@ -741,9 +754,9 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     }
                 }
                 return;
-            Label_037E:
+                Label_037E:
                 this.m_pSelectedNode.Expand();
-            Label_038C:
+                Label_038C:
                 this.Calculate();
                 this.SetScroll();
                 base.Invalidate();
@@ -752,7 +765,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     ApplicationRef.Application.ActiveControl.Invalidate();
                 }
                 return;
-            Label_03C9:
+                Label_03C9:
                 this.m_pSelectedNode.Checked = !this.m_pSelectedNode.Checked;
                 base.Invalidate(this.m_pSelectedNode.Bounds);
                 if (ApplicationRef.Application.ActiveControl != null)
@@ -767,13 +780,17 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     {
                         if (node2.Tag is IBasicMap)
                         {
-                            TreeViewEvent.OnLayerVisibleChanged(this, node2.Tag as IBasicMap, this.m_pSelectedNode.Tag as ILayer);
-                            (node2.Tag as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeography, this.m_pSelectedNode.Tag, null);
+                            TreeViewEvent.OnLayerVisibleChanged(this, node2.Tag as IBasicMap,
+                                this.m_pSelectedNode.Tag as ILayer);
+                            (node2.Tag as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeography,
+                                this.m_pSelectedNode.Tag, null);
                         }
                         else if (node2.Tag is IMapFrame)
                         {
-                            TreeViewEvent.OnLayerVisibleChanged(this, (node2.Tag as IMapFrame).Map as IBasicMap, this.m_pSelectedNode.Tag as ILayer);
-                            ((node2.Tag as IMapFrame).Map as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeography, this.m_pSelectedNode.Tag, null);
+                            TreeViewEvent.OnLayerVisibleChanged(this, (node2.Tag as IMapFrame).Map as IBasicMap,
+                                this.m_pSelectedNode.Tag as ILayer);
+                            ((node2.Tag as IMapFrame).Map as IActiveView).PartialRefresh(
+                                esriViewDrawPhase.esriViewGeography, this.m_pSelectedNode.Tag, null);
                         }
                         DocumentManager.DocumentChanged(this.m_hook);
                     }
@@ -783,7 +800,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     this.LayerVisibleChanged(this.m_pSelectedNode);
                 }
                 return;
-            Label_0727:
+                Label_0727:
                 if (this.m_pSelectedNode.Tag is ILegendClass)
                 {
                     try
@@ -804,13 +821,17 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                             {
                                 if (node2.Tag is IBasicMap)
                                 {
-                                    TreeViewEvent.OnLayerPropertyChanged(this, node2.Tag as IBasicMap, this.m_pSelectedNode.Parent.Tag as ILayer);
-                                    (node2.Tag as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeography, this.m_pSelectedNode.Parent.Tag, null);
+                                    TreeViewEvent.OnLayerPropertyChanged(this, node2.Tag as IBasicMap,
+                                        this.m_pSelectedNode.Parent.Tag as ILayer);
+                                    (node2.Tag as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeography,
+                                        this.m_pSelectedNode.Parent.Tag, null);
                                 }
                                 else if (node2.Tag is IMapFrame)
                                 {
-                                    TreeViewEvent.OnLayerPropertyChanged(this, (node2.Tag as IMapFrame).Map as IBasicMap, this.m_pSelectedNode.Parent.Tag as ILayer);
-                                    ((node2.Tag as IMapFrame).Map as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeography, this.m_pSelectedNode.Parent.Tag, null);
+                                    TreeViewEvent.OnLayerPropertyChanged(this, (node2.Tag as IMapFrame).Map as IBasicMap,
+                                        this.m_pSelectedNode.Parent.Tag as ILayer);
+                                    ((node2.Tag as IMapFrame).Map as IActiveView).PartialRefresh(
+                                        esriViewDrawPhase.esriViewGeography, this.m_pSelectedNode.Parent.Tag, null);
                                 }
                                 DocumentManager.DocumentChanged(this.m_hook);
                             }
@@ -820,7 +841,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     {
                     }
                 }
-            Label_08D9:
+                Label_08D9:
                 this.Calculate();
                 this.SetScroll();
                 base.Invalidate();
@@ -829,7 +850,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     ApplicationRef.Application.ActiveControl.Invalidate();
                 }
                 return;
-            Label_0914:
+                Label_0914:
                 if (this.m_CanDrag)
                 {
                     switch (this.m_pSelectedNode.GetNodeType())
@@ -844,7 +865,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                 }
                 base.Invalidate();
                 return;
-            Label_096E:
+                Label_096E:
                 if (this.AfterSelect != null)
                 {
                     this.AfterSelect(null);
@@ -924,7 +945,8 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                                     {
                                         if (this.m_pLastHitNode.NextNode != null)
                                         {
-                                            point4 = new Point(parent.NextNode.NodeRect.Left, parent.NextNode.NodeRect.Top);
+                                            point4 = new Point(parent.NextNode.NodeRect.Left,
+                                                parent.NextNode.NodeRect.Top);
                                             if (point4.Y != this.m_MarkerPoint.Y)
                                             {
                                                 startPt = new Point(0, this.m_MarkerPoint.Y);
@@ -947,7 +969,8 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                                             {
                                                 if (parent.Parent.NextNode != null)
                                                 {
-                                                    point4 = new Point(parent.Parent.NextNode.NodeRect.Left, parent.Parent.NextNode.NodeRect.Top);
+                                                    point4 = new Point(parent.Parent.NextNode.NodeRect.Left,
+                                                        parent.Parent.NextNode.NodeRect.Top);
                                                 }
                                                 else
                                                 {
@@ -978,7 +1001,8 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                                     }
                                     else
                                     {
-                                        point4 = new Point(this.m_pLastHitNode.NodeRect.Left, this.m_pLastHitNode.NodeRect.Top);
+                                        point4 = new Point(this.m_pLastHitNode.NodeRect.Left,
+                                            this.m_pLastHitNode.NodeRect.Top);
                                         if (point4.Y != this.m_MarkerPoint.Y)
                                         {
                                             startPt = new Point(0, this.m_MarkerPoint.Y);
@@ -1041,7 +1065,8 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                                     {
                                         if (nodeAt.Parent.NextNode != null)
                                         {
-                                            point4 = new Point(nodeAt.Parent.NextNode.NodeRect.Left, nodeAt.Parent.NextNode.NodeRect.Top);
+                                            point4 = new Point(nodeAt.Parent.NextNode.NodeRect.Left,
+                                                nodeAt.Parent.NextNode.NodeRect.Top);
                                         }
                                         else
                                         {
@@ -1116,7 +1141,8 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     this.DrawMarker(base.CreateGraphics(), new Pen(Color.White, 3f), startPt, endPt);
                     this.m_MarkerPoint.X = -10;
                     this.m_MarkerPoint.Y = -10;
-                    if (((this.m_pFirstHitNode != null) && (this.m_pLastHitNode != null)) && (this.m_pLastHitNode != this.m_pFirstHitNode))
+                    if (((this.m_pFirstHitNode != null) && (this.m_pLastHitNode != null)) &&
+                        (this.m_pLastHitNode != this.m_pFirstHitNode))
                     {
                         this.ChageNode(this.m_pFirstHitNode, this.m_pLastHitNode);
                         this.Calculate();
@@ -1143,10 +1169,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 
         public object BarManager
         {
-            get
-            {
-                return this.barManager1;
-            }
+            get { return this.barManager1; }
         }
 
         public Rectangle Bounds
@@ -1159,7 +1182,8 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                 int width = base.ClientRectangle.Width;
                 if (base.m_pNodes.Count > 1)
                 {
-                    height = (base.m_pNodes[base.m_pNodes.Count - 1] as TOCTreeNode).Bounds.Bottom - (base.m_pNodes[0] as TOCTreeNode).Bounds.Top;
+                    height = (base.m_pNodes[base.m_pNodes.Count - 1] as TOCTreeNode).Bounds.Bottom -
+                             (base.m_pNodes[0] as TOCTreeNode).Bounds.Top;
                 }
                 else
                 {
@@ -1171,135 +1195,78 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 
         public bool CanDrag
         {
-            get
-            {
-                return this.m_CanDrag;
-            }
-            set
-            {
-                this.m_CanDrag = value;
-            }
+            get { return this.m_CanDrag; }
+            set { this.m_CanDrag = value; }
         }
 
         public bool CanEditStyle
         {
-            get
-            {
-                return this.m_CanEditStyle;
-            }
-            set
-            {
-                this.m_CanEditStyle = value;
-            }
+            get { return this.m_CanEditStyle; }
+            set { this.m_CanEditStyle = value; }
         }
 
         internal object Hook
         {
-            set
-            {
-                this.m_hook = value;
-            }
+            set { this.m_hook = value; }
         }
 
         public int Indent
         {
-            get
-            {
-                return this.m_Indent;
-            }
-            set
-            {
-                this.m_Indent = value;
-            }
+            get { return this.m_Indent; }
+            set { this.m_Indent = value; }
         }
 
         public object PopupMenu
         {
-            get
-            {
-                return this.popupMenu1;
-            }
+            get { return this.popupMenu1; }
         }
 
         public TOCTreeNode SelectedNode
         {
-            get
-            {
-                return this.m_pSelectedNode;
-            }
-            set
-            {
-                this.m_pSelectedNode = value;
-            }
+            get { return this.m_pSelectedNode; }
+            set { this.m_pSelectedNode = value; }
         }
 
         public bool ShowLines
         {
-            get
-            {
-                return this.m_ShowLines;
-            }
-            set
-            {
-                this.m_ShowLines = value;
-            }
+            get { return this.m_ShowLines; }
+            set { this.m_ShowLines = value; }
         }
 
         public bool ShowPlusMinus
         {
-            get
-            {
-                return this.m_ShowPlusMinus;
-            }
-            set
-            {
-                this.m_ShowPlusMinus = value;
-            }
+            get { return this.m_ShowPlusMinus; }
+            set { this.m_ShowPlusMinus = value; }
         }
 
         public bool ShowRootLines
         {
-            get
-            {
-                return this.m_ShowRootLines;
-            }
-            set
-            {
-                this.m_ShowRootLines = value;
-            }
+            get { return this.m_ShowRootLines; }
+            set { this.m_ShowRootLines = value; }
         }
 
         public IStyleGallery StyleGallery
         {
-            set
-            {
-                this.m_pSG = value;
-            }
+            set { this.m_pSG = value; }
         }
 
         public TOCTreeNode TopNode
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public int VisibleCount
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         public delegate void AfterSelectEventHandler(TOCTreeNode pSelectNode);
 
         public delegate void LayerVisibleChangedEventHandler(TOCTreeNode pSelectNode);
 
-        public delegate void NodeReorderedEventHandler(TOCTreeNode pFirstOldParent, TOCTreeNode FirstNode, TOCTreeNode pLastOldParent, TOCTreeNode LastNode);
+        public delegate void NodeReorderedEventHandler(
+            TOCTreeNode pFirstOldParent, TOCTreeNode FirstNode, TOCTreeNode pLastOldParent, TOCTreeNode LastNode);
 
         public delegate void NodeReorderingEventHandler(TOCTreeNode FirstNode, TOCTreeNode LastNode);
     }
 }
-

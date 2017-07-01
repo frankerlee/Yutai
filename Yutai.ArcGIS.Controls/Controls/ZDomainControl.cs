@@ -18,7 +18,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             this.InitializeComponent();
         }
 
- public void InitControl()
+        public void InitControl()
         {
             double outZMin = -10000.0;
             double outZMax = 11474.83645;
@@ -27,7 +27,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             {
                 ((ISpatialReference2GEN) this.m_pSpatialRefrence).GetZDomain(ref outZMin, ref outZMax);
                 double num4 = outZMax - outZMin;
-                num3 = 2147483645.0 / num4;
+                num3 = 2147483645.0/num4;
             }
             else
             {
@@ -38,7 +38,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             this.textBoxPrecision.Text = num3.ToString();
         }
 
- private void textBoxMaxValue_TextChanged(object sender, EventArgs e)
+        private void textBoxMaxValue_TextChanged(object sender, EventArgs e)
         {
             if (this.m_CanDo)
             {
@@ -67,7 +67,7 @@ namespace Yutai.ArcGIS.Controls.Controls
                 {
                     this.textBoxPrecision.ForeColor = SystemColors.WindowText;
                     double num3 = Convert.ToDouble(this.textBoxPrecision.Text);
-                    double num4 = 2147483645.0 / num3;
+                    double num4 = 2147483645.0/num3;
                     double inZMin = Convert.ToDouble(this.textBoxMinValue.Text);
                     double inZMax = inZMin + num4;
                     this.m_pSpatialRefrence.SetZDomain(inZMin, inZMax);
@@ -99,13 +99,13 @@ namespace Yutai.ArcGIS.Controls.Controls
             if (num4 < 0.0)
             {
                 double num3 = Convert.ToDouble(this.textBoxPrecision.Text);
-                num4 = 2147483645.0 / num3;
+                num4 = 2147483645.0/num3;
                 inZMax = inZMin + num4;
                 this.textBoxMaxValue.Text = inZMax.ToString();
             }
             else
             {
-                this.textBoxPrecision.Text = (2147483645.0 / num4).ToString();
+                this.textBoxPrecision.Text = (2147483645.0/num4).ToString();
             }
             this.m_pSpatialRefrence.SetZDomain(inZMin, inZMax);
         }
@@ -124,18 +124,12 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         public bool IsEdit
         {
-            set
-            {
-                this.m_IsEdit = value;
-            }
+            set { this.m_IsEdit = value; }
         }
 
         public ISpatialReference SpatialRefrence
         {
-            get
-            {
-                return this.m_pSpatialRefrence;
-            }
+            get { return this.m_pSpatialRefrence; }
             set
             {
                 this.m_pSpatialRefrence = value;
@@ -149,4 +143,3 @@ namespace Yutai.ArcGIS.Controls.Controls
         }
     }
 }
-

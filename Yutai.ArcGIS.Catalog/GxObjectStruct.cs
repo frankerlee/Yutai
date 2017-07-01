@@ -9,4 +9,3 @@ namespace Yutai.ArcGIS.Catalog
         public string Type;
     }
 }
-

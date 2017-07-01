@@ -22,6 +22,7 @@ namespace Yutai.Plugins.TableEditor.Views
         private IFeatureLayer _featureLayer;
         private DataTable _dataTable;
         private string _strGeometry;
+
         public AttributeExplorer(IAppContext context, IMapView mapView, IFeatureLayer featureLayer, string strGeometry)
         {
             InitializeComponent();
@@ -163,4 +164,3 @@ namespace Yutai.Plugins.TableEditor.Views
         }
     }
 }
-

@@ -16,13 +16,9 @@ namespace Yutai.ArcGIS.Controls.Controls
             this.InitializeComponent();
         }
 
- public IApplication Application
+        public IApplication Application
         {
-            set
-            {
-                this.tocTreeView1.Application = value;
-            }
+            set { this.tocTreeView1.Application = value; }
         }
     }
 }
-

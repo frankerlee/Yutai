@@ -34,38 +34,20 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         public event EventHandler DockStateChanged
         {
-            add
-            {
-                base.Events.AddHandler(DockStateChangedEvent, value);
-            }
-            remove
-            {
-                base.Events.RemoveHandler(DockStateChangedEvent, value);
-            }
+            add { base.Events.AddHandler(DockStateChangedEvent, value); }
+            remove { base.Events.RemoveHandler(DockStateChangedEvent, value); }
         }
 
         public event EventHandler IsActivatedChanged
         {
-            add
-            {
-                base.Events.AddHandler(IsActivatedChangedEvent, value);
-            }
-            remove
-            {
-                base.Events.RemoveHandler(IsActivatedChangedEvent, value);
-            }
+            add { base.Events.AddHandler(IsActivatedChangedEvent, value); }
+            remove { base.Events.RemoveHandler(IsActivatedChangedEvent, value); }
         }
 
         public event EventHandler IsActiveDocumentPaneChanged
         {
-            add
-            {
-                base.Events.AddHandler(IsActiveDocumentPaneChangedEvent, value);
-            }
-            remove
-            {
-                base.Events.RemoveHandler(IsActiveDocumentPaneChangedEvent, value);
-            }
+            add { base.Events.AddHandler(IsActiveDocumentPaneChangedEvent, value); }
+            remove { base.Events.RemoveHandler(IsActiveDocumentPaneChangedEvent, value); }
         }
 
         protected internal DockPane(IDockContent content, DockState visibleState, bool show)
@@ -97,7 +79,8 @@ namespace Yutai.ArcGIS.Framework.Docking
             {
                 throw new ArgumentNullException("floatWindow");
             }
-            this.InternalConstruct(content, DockState.Float, false, Rectangle.Empty, floatWindow.NestedPanes.GetDefaultPreviousPane(this), DockAlignment.Right, 0.5, show);
+            this.InternalConstruct(content, DockState.Float, false, Rectangle.Empty,
+                floatWindow.NestedPanes.GetDefaultPreviousPane(this), DockAlignment.Right, 0.5, show);
         }
 
         protected internal DockPane(IDockContent content, Rectangle floatWindowBounds, bool show)
@@ -111,10 +94,12 @@ namespace Yutai.ArcGIS.Framework.Docking
             this.m_isHidden = true;
             this.m_dockState = DockState.Unknown;
             this.m_countRefreshStateChange = 0;
-            this.InternalConstruct(content, DockState.Float, true, floatWindowBounds, null, DockAlignment.Right, 0.5, show);
+            this.InternalConstruct(content, DockState.Float, true, floatWindowBounds, null, DockAlignment.Right, 0.5,
+                show);
         }
 
-        protected internal DockPane(IDockContent content, DockPane previousPane, DockAlignment alignment, double proportion, bool show)
+        protected internal DockPane(IDockContent content, DockPane previousPane, DockAlignment alignment,
+            double proportion, bool show)
         {
             this.m_activeContent = null;
             this.m_allowDockDragAndDrop = true;
@@ -129,12 +114,14 @@ namespace Yutai.ArcGIS.Framework.Docking
             {
                 throw new ArgumentNullException("previousPane");
             }
-            this.InternalConstruct(content, previousPane.DockState, false, Rectangle.Empty, previousPane, alignment, proportion, show);
+            this.InternalConstruct(content, previousPane.DockState, false, Rectangle.Empty, previousPane, alignment,
+                proportion, show);
         }
 
         public void Activate()
         {
-            if (DockHelper.IsDockStateAutoHide(this.DockState) && (this.DockPanel.ActiveAutoHideContent != this.ActiveContent))
+            if (DockHelper.IsDockStateAutoHide(this.DockState) &&
+                (this.DockPanel.ActiveAutoHideContent != this.ActiveContent))
             {
                 this.DockPanel.ActiveAutoHideContent = this.ActiveContent;
             }
@@ -287,7 +274,8 @@ namespace Yutai.ArcGIS.Framework.Docking
             }
         }
 
-        public DockPane DockTo(INestedPanesContainer container, DockPane previousPane, DockAlignment alignment, double proportion)
+        public DockPane DockTo(INestedPanesContainer container, DockPane previousPane, DockAlignment alignment,
+            double proportion)
         {
             DockPane pane;
             if (container == null)
@@ -306,11 +294,13 @@ namespace Yutai.ArcGIS.Framework.Docking
             this.DockPanel.DummyContent.DockPanel = this.DockPanel;
             if (container.IsFloat)
             {
-                pane = this.DockPanel.DockPaneFactory.CreateDockPane(this.DockPanel.DummyContent, (FloatWindow) container, true);
+                pane = this.DockPanel.DockPaneFactory.CreateDockPane(this.DockPanel.DummyContent,
+                    (FloatWindow) container, true);
             }
             else
             {
-                pane = this.DockPanel.DockPaneFactory.CreateDockPane(this.DockPanel.DummyContent, container.DockState, true);
+                pane = this.DockPanel.DockPaneFactory.CreateDockPane(this.DockPanel.DummyContent, container.DockState,
+                    true);
             }
             pane.DockTo(container, previousPane, alignment, proportion);
             this.SetVisibleContentsToPane(pane);
@@ -331,7 +321,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                     this.DockPanel.ResumeLayout(true, true);
                     return null;
                 }
-                floatPaneFromContents = this.DockPanel.DockPaneFactory.CreateDockPane(firstContent, DockState.Float, true);
+                floatPaneFromContents = this.DockPanel.DockPaneFactory.CreateDockPane(firstContent, DockState.Float,
+                    true);
             }
             this.SetVisibleContentsToPane(floatPaneFromContents, activeContent);
             this.DockPanel.ResumeLayout(true, true);
@@ -342,7 +333,8 @@ namespace Yutai.ArcGIS.Framework.Docking
         {
             if ((this.FloatWindow == null) || (this.FloatWindow.NestedPanes.Count != 1))
             {
-                this.FloatWindow = this.DockPanel.FloatWindowFactory.CreateFloatWindow(this.DockPanel, this, floatWindowBounds);
+                this.FloatWindow = this.DockPanel.FloatWindowFactory.CreateFloatWindow(this.DockPanel, this,
+                    floatWindowBounds);
             }
             else
             {
@@ -407,12 +399,14 @@ namespace Yutai.ArcGIS.Framework.Docking
             }
             if (this.TabStripRectangle.Contains(pt))
             {
-                return new HitTestResult(HitTestArea.TabStrip, this.TabStripControl.HitTest(this.TabStripControl.PointToClient(ptMouse)));
+                return new HitTestResult(HitTestArea.TabStrip,
+                    this.TabStripControl.HitTest(this.TabStripControl.PointToClient(ptMouse)));
             }
             return new HitTestResult(HitTestArea.None, -1);
         }
 
-        private void InternalAddToDockList(INestedPanesContainer container, DockPane prevPane, DockAlignment alignment, double proportion)
+        private void InternalAddToDockList(INestedPanesContainer container, DockPane prevPane, DockAlignment alignment,
+            double proportion)
         {
             if ((container.DockState == DockState.Float) != this.IsFloat)
             {
@@ -446,7 +440,8 @@ namespace Yutai.ArcGIS.Framework.Docking
             this.RefreshStateChange(nestedPanesContainer, dockState);
         }
 
-        private void InternalConstruct(IDockContent content, DockState dockState, bool flagBounds, Rectangle floatWindowBounds, DockPane prevPane, DockAlignment alignment, double proportion, bool show)
+        private void InternalConstruct(IDockContent content, DockState dockState, bool flagBounds,
+            Rectangle floatWindowBounds, DockPane prevPane, DockAlignment alignment, double proportion, bool show)
         {
             if ((dockState == DockState.Hidden) || (dockState == DockState.Unknown))
             {
@@ -471,11 +466,12 @@ namespace Yutai.ArcGIS.Framework.Docking
             this.m_nestedDockingStatus = new NestedDockingStatus(this);
             this.m_captionControl = this.DockPanel.DockPaneCaptionFactory.CreateDockPaneCaption(this);
             this.m_tabStripControl = this.DockPanel.DockPaneStripFactory.CreateDockPaneStrip(this);
-            base.Controls.AddRange(new Control[] { this.m_captionControl, this.m_tabStripControl });
+            base.Controls.AddRange(new Control[] {this.m_captionControl, this.m_tabStripControl});
             this.DockPanel.SuspendLayout(true);
             if (flagBounds)
             {
-                this.FloatWindow = this.DockPanel.FloatWindowFactory.CreateFloatWindow(this.DockPanel, this, floatWindowBounds);
+                this.FloatWindow = this.DockPanel.FloatWindowFactory.CreateFloatWindow(this.DockPanel, this,
+                    floatWindowBounds);
             }
             else if (prevPane != null)
             {
@@ -544,7 +540,8 @@ namespace Yutai.ArcGIS.Framework.Docking
             Size defaultFloatWindowSize;
             Point location = base.PointToScreen(new Point(0, 0));
             DockPane floatPane = this.ActiveContent.DockHandler.FloatPane;
-            if (((this.DockState == DockState.Float) || (floatPane == null)) || (floatPane.FloatWindow.NestedPanes.Count != 1))
+            if (((this.DockState == DockState.Float) || (floatPane == null)) ||
+                (floatPane.FloatWindow.NestedPanes.Count != 1))
             {
                 defaultFloatWindowSize = this.DockPanel.DefaultFloatWindowSize;
             }
@@ -614,7 +611,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                 this.SetContentBounds();
                 foreach (IDockContent content in this.Contents)
                 {
-                    if (this.DisplayingContents.Contains(content) && (content.DockHandler.FlagClipWindow && content.DockHandler.Form.Visible))
+                    if (this.DisplayingContents.Contains(content) &&
+                        (content.DockHandler.FlagClipWindow && content.DockHandler.Form.Visible))
                     {
                         content.DockHandler.FlagClipWindow = false;
                     }
@@ -669,13 +667,15 @@ namespace Yutai.ArcGIS.Framework.Docking
             this.SetParent();
             if (this.ActiveContent != null)
             {
-                this.ActiveContent.DockHandler.SetDockState(this.ActiveContent.DockHandler.IsHidden, this.DockState, this.ActiveContent.DockHandler.Pane);
+                this.ActiveContent.DockHandler.SetDockState(this.ActiveContent.DockHandler.IsHidden, this.DockState,
+                    this.ActiveContent.DockHandler.Pane);
             }
             foreach (IDockContent content2 in this.Contents)
             {
                 if (content2.DockHandler.Pane == this)
                 {
-                    content2.DockHandler.SetDockState(content2.DockHandler.IsHidden, this.DockState, content2.DockHandler.Pane);
+                    content2.DockHandler.SetDockState(content2.DockHandler.IsHidden, this.DockState,
+                        content2.DockHandler.Pane);
                 }
             }
             if (oldContainer != null)
@@ -758,7 +758,8 @@ namespace Yutai.ArcGIS.Framework.Docking
             {
                 contentRectangle = this.DockPanel.RectangleToMdiClient(base.RectangleToScreen(contentRectangle));
             }
-            Rectangle rectangle2 = new Rectangle(-contentRectangle.Width, contentRectangle.Y, contentRectangle.Width, contentRectangle.Height);
+            Rectangle rectangle2 = new Rectangle(-contentRectangle.Width, contentRectangle.Y, contentRectangle.Width,
+                contentRectangle.Height);
             foreach (IDockContent content in this.Contents)
             {
                 if (content.DockHandler.Pane == this)
@@ -896,7 +897,8 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         public void SetNestedDockingProportion(double proportion)
         {
-            this.NestedDockingStatus.SetStatus(this.NestedDockingStatus.NestedPanes, this.NestedDockingStatus.PreviousPane, this.NestedDockingStatus.Alignment, proportion);
+            this.NestedDockingStatus.SetStatus(this.NestedDockingStatus.NestedPanes,
+                this.NestedDockingStatus.PreviousPane, this.NestedDockingStatus.Alignment, proportion);
             if (this.NestedPanesContainer != null)
             {
                 ((Control) this.NestedPanesContainer).PerformLayout();
@@ -1060,7 +1062,7 @@ namespace Yutai.ArcGIS.Framework.Docking
             }
         }
 
-        [SecurityPermission(SecurityAction.LinkDemand, Flags=SecurityPermissionFlag.UnmanagedCode)]
+        [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)]
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == 33)
@@ -1072,10 +1074,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         public virtual IDockContent ActiveContent
         {
-            get
-            {
-                return this.m_activeContent;
-            }
+            get { return this.m_activeContent; }
             set
             {
                 if (this.ActiveContent != value)
@@ -1097,7 +1096,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                         this.DockPanel.ActiveAutoHideContent = null;
                     }
                     this.m_activeContent = value;
-                    if ((this.DockPanel.DocumentStyle == DocumentStyle.DockingMdi) && (this.DockState == DockState.Document))
+                    if ((this.DockPanel.DocumentStyle == DocumentStyle.DockingMdi) &&
+                        (this.DockState == DockState.Document))
                     {
                         if (this.m_activeContent != null)
                         {
@@ -1123,7 +1123,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                     {
                         this.FloatWindow.SetText();
                     }
-                    if ((this.DockPanel.DocumentStyle == DocumentStyle.DockingMdi) && (this.DockState == DockState.Document))
+                    if ((this.DockPanel.DocumentStyle == DocumentStyle.DockingMdi) &&
+                        (this.DockState == DockState.Document))
                     {
                         this.RefreshChanges(false);
                     }
@@ -1141,14 +1142,8 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         public virtual bool AllowDockDragAndDrop
         {
-            get
-            {
-                return this.m_allowDockDragAndDrop;
-            }
-            set
-            {
-                this.m_allowDockDragAndDrop = value;
-            }
+            get { return this.m_allowDockDragAndDrop; }
+            set { this.m_allowDockDragAndDrop = value; }
         }
 
         public AppearanceStyle Appearance
@@ -1161,34 +1156,19 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         internal IDisposable AutoHidePane
         {
-            get
-            {
-                return this.m_autoHidePane;
-            }
-            set
-            {
-                this.m_autoHidePane = value;
-            }
+            get { return this.m_autoHidePane; }
+            set { this.m_autoHidePane = value; }
         }
 
         internal object AutoHideTabs
         {
-            get
-            {
-                return this.m_autoHideTabs;
-            }
-            set
-            {
-                this.m_autoHideTabs = value;
-            }
+            get { return this.m_autoHideTabs; }
+            set { this.m_autoHideTabs = value; }
         }
 
         private DockPaneCaptionBase CaptionControl
         {
-            get
-            {
-                return this.m_captionControl;
-            }
+            get { return this.m_captionControl; }
         }
 
         private Rectangle CaptionRectangle
@@ -1209,10 +1189,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         public virtual string CaptionText
         {
-            get
-            {
-                return ((this.ActiveContent == null) ? string.Empty : this.ActiveContent.DockHandler.TabText);
-            }
+            get { return ((this.ActiveContent == null) ? string.Empty : this.ActiveContent.DockHandler.TabText); }
         }
 
         internal Rectangle ContentRectangle
@@ -1223,61 +1200,47 @@ namespace Yutai.ArcGIS.Framework.Docking
                 Rectangle captionRectangle = this.CaptionRectangle;
                 Rectangle tabStripRectangle = this.TabStripRectangle;
                 int x = displayingRectangle.X;
-                int y = (displayingRectangle.Y + (captionRectangle.IsEmpty ? 0 : captionRectangle.Height)) + ((this.DockState == DockState.Document) ? tabStripRectangle.Height : 0);
+                int y = (displayingRectangle.Y + (captionRectangle.IsEmpty ? 0 : captionRectangle.Height)) +
+                        ((this.DockState == DockState.Document) ? tabStripRectangle.Height : 0);
                 int width = displayingRectangle.Width;
-                return new Rectangle(x, y, width, (displayingRectangle.Height - captionRectangle.Height) - tabStripRectangle.Height);
+                return new Rectangle(x, y, width,
+                    (displayingRectangle.Height - captionRectangle.Height) - tabStripRectangle.Height);
             }
         }
 
         public DockContentCollection Contents
         {
-            get
-            {
-                return this.m_contents;
-            }
+            get { return this.m_contents; }
         }
 
         public DockContentCollection DisplayingContents
         {
-            get
-            {
-                return this.m_displayingContents;
-            }
+            get { return this.m_displayingContents; }
         }
 
         internal Rectangle DisplayingRectangle
         {
-            get
-            {
-                return base.ClientRectangle;
-            }
+            get { return base.ClientRectangle; }
         }
 
         public DockPanel DockPanel
         {
-            get
-            {
-                return this.m_dockPanel;
-            }
+            get { return this.m_dockPanel; }
         }
 
         public DockState DockState
         {
-            get
-            {
-                return this.m_dockState;
-            }
-            set
-            {
-                this.SetDockState(value);
-            }
+            get { return this.m_dockState; }
+            set { this.SetDockState(value); }
         }
 
         public DockWindow DockWindow
         {
             get
             {
-                return ((this.m_nestedDockingStatus.NestedPanes == null) ? null : (this.m_nestedDockingStatus.NestedPanes.Container as DockWindow));
+                return ((this.m_nestedDockingStatus.NestedPanes == null)
+                    ? null
+                    : (this.m_nestedDockingStatus.NestedPanes.Container as DockWindow));
             }
             set
             {
@@ -1292,7 +1255,9 @@ namespace Yutai.ArcGIS.Framework.Docking
         {
             get
             {
-                return ((this.m_nestedDockingStatus.NestedPanes == null) ? null : (this.m_nestedDockingStatus.NestedPanes.Container as FloatWindow));
+                return ((this.m_nestedDockingStatus.NestedPanes == null)
+                    ? null
+                    : (this.m_nestedDockingStatus.NestedPanes.Container as FloatWindow));
             }
             set
             {
@@ -1307,7 +1272,9 @@ namespace Yutai.ArcGIS.Framework.Docking
         {
             get
             {
-                if ((((this.DockState == DockState.Document) || (this.DockState == DockState.Hidden)) || (this.DockState == DockState.Unknown)) || ((this.DockState == DockState.Float) && (this.FloatWindow.VisibleNestedPanes.Count <= 1)))
+                if ((((this.DockState == DockState.Document) || (this.DockState == DockState.Hidden)) ||
+                     (this.DockState == DockState.Unknown)) ||
+                    ((this.DockState == DockState.Float) && (this.FloatWindow.VisibleNestedPanes.Count <= 1)))
                 {
                     return false;
                 }
@@ -1317,74 +1284,47 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         internal bool HasTabPageContextMenu
         {
-            get
-            {
-                return (this.TabPageContextMenu != null);
-            }
+            get { return (this.TabPageContextMenu != null); }
         }
 
         public bool IsActivated
         {
-            get
-            {
-                return this.m_isActivated;
-            }
+            get { return this.m_isActivated; }
         }
 
         public bool IsActiveDocumentPane
         {
-            get
-            {
-                return this.m_isActiveDocumentPane;
-            }
+            get { return this.m_isActiveDocumentPane; }
         }
 
         public bool IsAutoHide
         {
-            get
-            {
-                return DockHelper.IsDockStateAutoHide(this.DockState);
-            }
+            get { return DockHelper.IsDockStateAutoHide(this.DockState); }
         }
 
         public bool IsFloat
         {
-            get
-            {
-                return this.m_isFloat;
-            }
+            get { return this.m_isFloat; }
         }
 
         public bool IsHidden
         {
-            get
-            {
-                return this.m_isHidden;
-            }
+            get { return this.m_isHidden; }
         }
 
         private bool IsRefreshStateChangeSuspended
         {
-            get
-            {
-                return (this.m_countRefreshStateChange != 0);
-            }
+            get { return (this.m_countRefreshStateChange != 0); }
         }
 
         Control IDragSource.DragControl
         {
-            get
-            {
-                return this;
-            }
+            get { return this; }
         }
 
         public NestedDockingStatus NestedDockingStatus
         {
-            get
-            {
-                return this.m_nestedDockingStatus;
-            }
+            get { return this.m_nestedDockingStatus; }
         }
 
         public INestedPanesContainer NestedPanesContainer
@@ -1401,26 +1341,17 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         private SplitterControl Splitter
         {
-            get
-            {
-                return this.m_splitter;
-            }
+            get { return this.m_splitter; }
         }
 
         internal DockAlignment SplitterAlignment
         {
-            set
-            {
-                this.Splitter.Alignment = value;
-            }
+            set { this.Splitter.Alignment = value; }
         }
 
         internal Rectangle SplitterBounds
         {
-            set
-            {
-                this.Splitter.Bounds = value;
-            }
+            set { this.Splitter.Bounds = value; }
         }
 
         private object TabPageContextMenu
@@ -1445,10 +1376,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         internal DockPaneStripBase TabStripControl
         {
-            get
-            {
-                return this.m_tabStripControl;
-            }
+            get { return this.m_tabStripControl; }
         }
 
         internal Rectangle TabStripRectangle
@@ -1524,6 +1452,7 @@ namespace Yutai.ArcGIS.Framework.Docking
         {
             public DockPane.HitTestArea HitArea;
             public int Index;
+
             public HitTestResult(DockPane.HitTestArea hitTestArea, int index)
             {
                 this.HitArea = hitTestArea;
@@ -1558,19 +1487,19 @@ namespace Yutai.ArcGIS.Framework.Docking
                 {
                     if (nestedDockingStatus.DisplayingAlignment == DockAlignment.Left)
                     {
-                        proportion += ((double) offset) / ((double) nestedDockingStatus.LogicalBounds.Width);
+                        proportion += ((double) offset)/((double) nestedDockingStatus.LogicalBounds.Width);
                     }
                     else if (nestedDockingStatus.DisplayingAlignment == DockAlignment.Right)
                     {
-                        proportion -= ((double) offset) / ((double) nestedDockingStatus.LogicalBounds.Width);
+                        proportion -= ((double) offset)/((double) nestedDockingStatus.LogicalBounds.Width);
                     }
                     else if (nestedDockingStatus.DisplayingAlignment == DockAlignment.Top)
                     {
-                        proportion += ((double) offset) / ((double) nestedDockingStatus.LogicalBounds.Height);
+                        proportion += ((double) offset)/((double) nestedDockingStatus.LogicalBounds.Height);
                     }
                     else
                     {
-                        proportion -= ((double) offset) / ((double) nestedDockingStatus.LogicalBounds.Height);
+                        proportion -= ((double) offset)/((double) nestedDockingStatus.LogicalBounds.Height);
                     }
                     this.DockPane.SetNestedDockingProportion(proportion);
                 }
@@ -1594,21 +1523,20 @@ namespace Yutai.ArcGIS.Framework.Docking
                     Rectangle clientRectangle = base.ClientRectangle;
                     if ((this.Alignment == DockAlignment.Top) || (this.Alignment == DockAlignment.Bottom))
                     {
-                        graphics.DrawLine(SystemPens.ControlDark, clientRectangle.Left, clientRectangle.Bottom - 1, clientRectangle.Right, clientRectangle.Bottom - 1);
+                        graphics.DrawLine(SystemPens.ControlDark, clientRectangle.Left, clientRectangle.Bottom - 1,
+                            clientRectangle.Right, clientRectangle.Bottom - 1);
                     }
                     else if ((this.Alignment == DockAlignment.Left) || (this.Alignment == DockAlignment.Right))
                     {
-                        graphics.DrawLine(SystemPens.ControlDarkDark, clientRectangle.Right - 1, clientRectangle.Top, clientRectangle.Right - 1, clientRectangle.Bottom);
+                        graphics.DrawLine(SystemPens.ControlDarkDark, clientRectangle.Right - 1, clientRectangle.Top,
+                            clientRectangle.Right - 1, clientRectangle.Bottom);
                     }
                 }
             }
 
             public DockAlignment Alignment
             {
-                get
-                {
-                    return this.m_alignment;
-                }
+                get { return this.m_alignment; }
                 set
                 {
                     this.m_alignment = value;
@@ -1633,18 +1561,12 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             public DockPane DockPane
             {
-                get
-                {
-                    return this.m_pane;
-                }
+                get { return this.m_pane; }
             }
 
             Control IDragSource.DragControl
             {
-                get
-                {
-                    return this;
-                }
+                get { return this; }
             }
 
             Rectangle ISplitterDragSource.DragLimitBounds
@@ -1670,10 +1592,10 @@ namespace Yutai.ArcGIS.Framework.Docking
                 get
                 {
                     NestedDockingStatus nestedDockingStatus = this.DockPane.NestedDockingStatus;
-                    return ((nestedDockingStatus.DisplayingAlignment == DockAlignment.Left) || (nestedDockingStatus.DisplayingAlignment == DockAlignment.Right));
+                    return ((nestedDockingStatus.DisplayingAlignment == DockAlignment.Left) ||
+                            (nestedDockingStatus.DisplayingAlignment == DockAlignment.Right));
                 }
             }
         }
     }
 }
-

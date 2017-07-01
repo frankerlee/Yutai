@@ -20,7 +20,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             return true;
         }
 
- private void NewNetworkDatasetTurnsPage_Load(object sender, EventArgs e)
+        private void NewNetworkDatasetTurnsPage_Load(object sender, EventArgs e)
         {
             this.checkedListBox1.SetItemChecked(0, true);
         }
@@ -30,4 +30,3 @@ namespace Yutai.ArcGIS.Catalog.UI
         }
     }
 }
-

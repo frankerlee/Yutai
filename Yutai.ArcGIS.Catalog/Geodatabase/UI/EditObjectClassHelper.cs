@@ -13,15 +13,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IObjectClass ObjectClass
         {
-            get
-            {
-                return this.iobjectClass_0;
-            }
-            set
-            {
-                this.iobjectClass_0 = value;
-            }
+            get { return this.iobjectClass_0; }
+            set { this.iobjectClass_0 = value; }
         }
     }
 }
-

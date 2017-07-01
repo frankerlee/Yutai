@@ -41,10 +41,12 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             IEnvelope oldBounds = new EnvelopeClass();
             IPoint position = this.GetPosition(ipageLayout_0);
             oldBounds.PutCoords(position.X, position.Y, position.X + 3.0, position.Y + 3.0);
-            UID clsid = new UIDClass {
+            UID clsid = new UIDClass
+            {
                 Value = "esriCarto.MarkerNorthArrow"
             };
-            IMapFrame frame = (ipageLayout_0 as IGraphicsContainer).FindFrame((ipageLayout_0 as IActiveView).FocusMap) as IMapFrame;
+            IMapFrame frame =
+                (ipageLayout_0 as IGraphicsContainer).FindFrame((ipageLayout_0 as IActiveView).FocusMap) as IMapFrame;
             IElement element = frame.CreateSurroundFrame(clsid, optionalStyle) as IElement;
             IEnvelope newBounds = new EnvelopeClass();
             optionalStyle.QueryBounds((ipageLayout_0 as IActiveView).ScreenDisplay, oldBounds, newBounds);
@@ -104,26 +106,14 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public override IElement Element
         {
-            get
-            {
-                return base.Element;
-            }
-            set
-            {
-                base.Element = value;
-            }
+            get { return base.Element; }
+            set { base.Element = value; }
         }
 
         protected override IPropertySet PropertySet
         {
-            get
-            {
-                return new PropertySetClass();
-            }
-            set
-            {
-            }
+            get { return new PropertySetClass(); }
+            set { }
         }
     }
 }
-

@@ -63,7 +63,7 @@ namespace Yutai.ArcGIS.Common.Helpers
                 {
                     float single = 0f;
                     float.TryParse(str.ToString(), out single);
-                    num = (double)single;
+                    num = (double) single;
                 }
                 else
                 {
@@ -86,7 +86,7 @@ namespace Yutai.ArcGIS.Common.Helpers
                 {
                     float single = 0f;
                     float.TryParse(str, out single);
-                    num = (double)single;
+                    num = (double) single;
                 }
                 else
                 {

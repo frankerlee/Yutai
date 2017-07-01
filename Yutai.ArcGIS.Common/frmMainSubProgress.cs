@@ -24,7 +24,6 @@ namespace Yutai.ArcGIS.Common
 
         private IContainer icontainer_1 = null;
 
-        
 
         public override ProcessAssist ProcessAssist
         {
@@ -45,11 +44,16 @@ namespace Yutai.ArcGIS.Common
                 this.mainSunProcessAssist_0.OnSetMessage += new OnSetMessageHandler(this.method_8);
                 this.mainSunProcessAssist_0.OnSetMaxValue += new OnSetMaxValueHandler(this.method_9);
                 this.mainSunProcessAssist_0.OnSetAutoProcess += new OnSetAutoProcessHandler(this.method_10);
-                this.mainSunProcessAssist_0.OnSubIncrement += new MainSunProcessAssist.OnSubIncrementHandler(this.method_5);
-                this.mainSunProcessAssist_0.OnSetSubMaxValue += new MainSunProcessAssist.OnSetSubMaxValueHandler(this.method_4);
-                this.mainSunProcessAssist_0.OnSetSubMessage += new MainSunProcessAssist.OnSetSubMessageHandler(this.method_3);
-                this.mainSunProcessAssist_0.OnSetSubPostion += new MainSunProcessAssist.OnSetSubPostionHandler(this.method_2);
-                this.mainSunProcessAssist_0.OnResetSubInfo += new MainSunProcessAssist.OnResetSubInfoHandler(this.method_1);
+                this.mainSunProcessAssist_0.OnSubIncrement +=
+                    new MainSunProcessAssist.OnSubIncrementHandler(this.method_5);
+                this.mainSunProcessAssist_0.OnSetSubMaxValue +=
+                    new MainSunProcessAssist.OnSetSubMaxValueHandler(this.method_4);
+                this.mainSunProcessAssist_0.OnSetSubMessage +=
+                    new MainSunProcessAssist.OnSetSubMessageHandler(this.method_3);
+                this.mainSunProcessAssist_0.OnSetSubPostion +=
+                    new MainSunProcessAssist.OnSetSubPostionHandler(this.method_2);
+                this.mainSunProcessAssist_0.OnResetSubInfo +=
+                    new MainSunProcessAssist.OnResetSubInfoHandler(this.method_1);
             }
         }
 
@@ -133,9 +137,5 @@ namespace Yutai.ArcGIS.Common
                 this.timer_0.Enabled = true;
             }
         }
-
-      
-
-       
     }
 }

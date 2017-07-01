@@ -13,4 +13,3 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
         TocTreeViewBase TreeView { get; set; }
     }
 }
-

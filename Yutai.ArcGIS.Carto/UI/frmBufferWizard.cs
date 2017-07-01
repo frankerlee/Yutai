@@ -68,7 +68,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.int_0++;
         }
 
- private void frmBufferWizard_Load(object sender, EventArgs e)
+        private void frmBufferWizard_Load(object sender, EventArgs e)
         {
             this.bufferGeometrySetCtrl_0.Dock = DockStyle.Fill;
             this.panel1.Controls.Add(this.bufferGeometrySetCtrl_0);
@@ -80,13 +80,9 @@ namespace Yutai.ArcGIS.Carto.UI
             this.bufferOutputSetCtrl_0.Visible = false;
         }
 
- public IMap FocusMap
+        public IMap FocusMap
         {
-            set
-            {
-                BufferHelper.m_BufferHelper.m_pFocusMap = value;
-            }
+            set { BufferHelper.m_BufferHelper.m_pFocusMap = value; }
         }
     }
 }
-

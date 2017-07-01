@@ -20,7 +20,10 @@ namespace Yutai.ArcGIS.Catalog.UI
         private SODocumentPropertyPage sodocumentPropertyPage_0 = new SODocumentPropertyPage();
         private SOGeneralPropertyPage sogeneralPropertyPage_0 = new SOGeneralPropertyPage();
         private SOPoolPropertyPage sopoolPropertyPage_0 = new SOPoolPropertyPage();
-        private SOProcessManagementPropertyPage soprocessManagementPropertyPage_0 = new SOProcessManagementPropertyPage();
+
+        private SOProcessManagementPropertyPage soprocessManagementPropertyPage_0 =
+            new SOProcessManagementPropertyPage();
+
         private SOSummaryPropertyPage sosummaryPropertyPage_0 = new SOSummaryPropertyPage();
 
         public frmNewServerObject()
@@ -73,7 +76,8 @@ namespace Yutai.ArcGIS.Catalog.UI
                             this.iserverObjectConfiguration_0 = this.sogeneralPropertyPage_0.CreateServerObjectConfig();
                             this.sodocumentPropertyPage_0.ServerObjectConfiguration = this.iserverObjectConfiguration_0;
                             this.sopoolPropertyPage_0.ServerObjectConfiguration = this.iserverObjectConfiguration_0;
-                            this.soprocessManagementPropertyPage_0.ServerObjectConfiguration = this.iserverObjectConfiguration_0;
+                            this.soprocessManagementPropertyPage_0.ServerObjectConfiguration =
+                                this.iserverObjectConfiguration_0;
                             this.sosummaryPropertyPage_0.ServerObjectConfiguration = this.iserverObjectConfiguration_0;
                         }
                         this.sogeneralPropertyPage_0.Apply();
@@ -111,16 +115,19 @@ namespace Yutai.ArcGIS.Catalog.UI
                 case 4:
                     try
                     {
-                        (this.iagsserverConnection_0 as IAGSServerConnectionAdmin).ServerObjectAdmin.AddConfiguration(this.iserverObjectConfiguration_0);
+                        (this.iagsserverConnection_0 as IAGSServerConnectionAdmin).ServerObjectAdmin.AddConfiguration(
+                            this.iserverObjectConfiguration_0);
                         if (this.sosummaryPropertyPage_0.isStart)
                         {
-                            (this.iagsserverConnection_0 as IAGSServerConnectionAdmin).ServerObjectAdmin.StartConfiguration(this.iserverObjectConfiguration_0.Name, this.iserverObjectConfiguration_0.TypeName);
+                            (this.iagsserverConnection_0 as IAGSServerConnectionAdmin).ServerObjectAdmin
+                                .StartConfiguration(this.iserverObjectConfiguration_0.Name,
+                                    this.iserverObjectConfiguration_0.TypeName);
                         }
                     }
                     catch (Exception exception)
                     {
                         MessageBox.Show(exception.ToString());
-                        Logger.Current.Error("",exception, "");
+                        Logger.Current.Error("", exception, "");
                     }
                     base.DialogResult = DialogResult.OK;
                     base.Close();
@@ -129,7 +136,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             this.int_0++;
         }
 
- private void frmNewServerObject_Load(object sender, EventArgs e)
+        private void frmNewServerObject_Load(object sender, EventArgs e)
         {
             this.sogeneralPropertyPage_0.AGSServerConnection = this.iagsserverConnection_0;
             this.sogeneralPropertyPage_0.Dock = DockStyle.Fill;
@@ -148,7 +155,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             this.panel2.Controls.Add(this.sosummaryPropertyPage_0);
         }
 
- public IAGSServerConnectionName AGSServerConnectionName
+        public IAGSServerConnectionName AGSServerConnectionName
         {
             set
             {
@@ -158,4 +165,3 @@ namespace Yutai.ArcGIS.Catalog.UI
         }
     }
 }
-

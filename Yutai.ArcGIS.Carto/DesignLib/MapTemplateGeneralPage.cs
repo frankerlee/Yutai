@@ -61,7 +61,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         private void button1_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
                 Filter = "*.xml|*.xml"
             };
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -119,7 +120,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         {
         }
 
- private void MapTemplateGeneralPage_Load(object sender, EventArgs e)
+        private void MapTemplateGeneralPage_Load(object sender, EventArgs e)
         {
             this.styleButton1.Style = this.ilineSymbol_0;
             if (this.mapTemplate_0 != null)
@@ -327,62 +328,35 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public MapTemplate MapTemplate
         {
-            get
-            {
-                return this.mapTemplate_0;
-            }
-            set
-            {
-                this.mapTemplate_0 = value;
-            }
+            get { return this.mapTemplate_0; }
+            set { this.mapTemplate_0 = value; }
         }
 
         public string Title
         {
-            get
-            {
-                return "常规";
-            }
-            set
-            {
-            }
+            get { return "常规"; }
+            set { }
         }
 
         public bool UseMapGrid
         {
-            get
-            {
-                return this.chkMapGrid.Checked;
-            }
-            set
-            {
-                this.chkMapGrid.Visible = false;
-            }
+            get { return this.chkMapGrid.Checked; }
+            set { this.chkMapGrid.Visible = false; }
         }
     }
 }
-

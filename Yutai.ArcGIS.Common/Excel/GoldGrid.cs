@@ -3,7 +3,6 @@ using System.Drawing;
 
 namespace Yutai.ArcGIS.Common.Excel
 {
-
     /// <summary>
     /// GoldGrid 的摘要说明。
     /// 
@@ -20,7 +19,6 @@ namespace Yutai.ArcGIS.Common.Excel
             //
             // TODO: 在此处添加构造函数逻辑
             //			
-
         }
 
         #region	_arrStrGrid相关的属性与方法 GridText获取设置_arrStrGrid、SetText(int row,int col,string text)、GetText(int row,int col)获取单元格文本
@@ -35,6 +33,7 @@ namespace Yutai.ArcGIS.Common.Excel
         {
             _arrStrGrid[row, col] = text;
         }
+
         public void SetText(string text)
         {
             _arrStrGrid[RowSel, ColSel] = text;
@@ -50,6 +49,7 @@ namespace Yutai.ArcGIS.Common.Excel
         {
             return _arrStrGrid[row, col];
         }
+
         public string GetText()
         {
             return _arrStrGrid[RowSel, ColSel];
@@ -57,17 +57,14 @@ namespace Yutai.ArcGIS.Common.Excel
 
         #endregion
 
-        private string _colsAlignList = "";             //列对齐列表,由Left，Center，Right第一个字母组成的串的对齐方式的串
+        private string _colsAlignList = ""; //列对齐列表,由Left，Center，Right第一个字母组成的串的对齐方式的串
 
         /// <summary>
         /// 获取或设置列对齐列表对象，由Left，Center，Right第一个字母组成的串的对齐方式的串
         /// </summary>
         public string ColsAlignString
         {
-            get
-            {
-                return this._colsAlignList;
-            }
+            get { return this._colsAlignList; }
             set
             {
                 if (value != null)
@@ -79,17 +76,16 @@ namespace Yutai.ArcGIS.Common.Excel
 
 
         //重要属性									
-        private object _DataSource = null;              //△会改变行列及其它属性
+        private object _DataSource = null; //△会改变行列及其它属性
+
         #region DataSource
+
         /// <summary>
         /// 或取或设置数据源，可以是任意的二维数组型的，如二维数组、网格等
         /// </summary>
         public object DataSource
         {
-            get
-            {
-                return this._DataSource;
-            }
+            get { return this._DataSource; }
             set
             {
                 if (value != null)
@@ -99,11 +95,11 @@ namespace Yutai.ArcGIS.Common.Excel
                     //将数据转换成二维数组
                     switch (value.GetType().ToString())
                     {
-                        case "System.String":           //字符串
-                                                        //...
+                        case "System.String": //字符串
+                            //...
                             break;
-                        case "System.String[]":         //一维数组
-                            string[] arr1 = (System.String[])_DataSource;
+                        case "System.String[]": //一维数组
+                            string[] arr1 = (System.String[]) _DataSource;
                             string[,] arr2 = new string[1, arr1.Length];
                             for (int i = 0; i < arr1.Length; i++)
                             {
@@ -111,33 +107,31 @@ namespace Yutai.ArcGIS.Common.Excel
                             }
                             this.DataSource = arr2;
                             break;
-                        case "System.String[,]":        //二维数组
-                            this.GridText = (System.String[,])_DataSource;
+                        case "System.String[,]": //二维数组
+                            this.GridText = (System.String[,]) _DataSource;
                             break;
-                        case "System.Data.DataTable":   //数据表格							
-                            this.GridText = ToArrFromDataTable((System.Data.DataTable)_DataSource);
+                        case "System.Data.DataTable": //数据表格							
+                            this.GridText = ToArrFromDataTable((System.Data.DataTable) _DataSource);
                             break;
                         case "System.Windows.Forms.DataGrid":
-                            this.GridText = ToArrFromDataGrid((System.Windows.Forms.DataGrid)_DataSource);
+                            this.GridText = ToArrFromDataGrid((System.Windows.Forms.DataGrid) _DataSource);
                             break;
                         case "System.Web.UI.WebControls.DataGrid":
-                            this.GridText = ToArrFromDataGrid((System.Web.UI.WebControls.DataGrid)_DataSource);
+                            this.GridText = ToArrFromDataGrid((System.Web.UI.WebControls.DataGrid) _DataSource);
                             break;
                         case "System.Web.UI.HtmlControls.HtmlTable":
-                            this.GridText = ToArrFromHtmlTable((System.Web.UI.HtmlControls.HtmlTable)_DataSource);
+                            this.GridText = ToArrFromHtmlTable((System.Web.UI.HtmlControls.HtmlTable) _DataSource);
                             break;
-                            //...太多了，不够的自己加，只要能转换成二维数组
-                            //						case "MSHFlexGrid的类型，自己转吧";
-                            //							this.GridText = ToArrFromMSHFlexGrid((MSHFlexGrid的类型，自己转吧)_DataSource);
-                            //							break;
+                        //...太多了，不够的自己加，只要能转换成二维数组
+                        //						case "MSHFlexGrid的类型，自己转吧";
+                        //							this.GridText = ToArrFromMSHFlexGrid((MSHFlexGrid的类型，自己转吧)_DataSource);
+                        //							break;
                     }
-
-
                 }
             }
         }
-        #endregion
 
+        #endregion
 
         public void SetTextOnRowSel(int rowSel, int startCol, int endCol, string text)
         {
@@ -163,7 +157,6 @@ namespace Yutai.ArcGIS.Common.Excel
         {
             return GetMergeCell(this.Location, _arrStrGrid, this.PreferredRowHeight, this.ColsWidth, RowSel, ColSel);
         }
-
 
 
         /// <summary>
@@ -199,8 +192,8 @@ namespace Yutai.ArcGIS.Common.Excel
             }
         }
 
-
         #region 所有要用到的二维表格的东东都放到这里吧，不过，最好独立于一个类中
+
         public string[,] ToArrFromDataTable(System.Data.DataTable source)
         {
             if (source == null)
@@ -229,7 +222,6 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public string[,] ToArrFromDataGrid(System.Windows.Forms.DataGrid source)
         {
-
             if (source == null)
             {
                 return new string[0, 0];
@@ -254,7 +246,9 @@ namespace Yutai.ArcGIS.Common.Excel
                     mCols++;
                 }
             }
-            catch (Exception e) { }
+            catch (Exception e)
+            {
+            }
 
             try
             {
@@ -265,7 +259,9 @@ namespace Yutai.ArcGIS.Common.Excel
                     mRows++;
                 }
             }
-            catch (Exception e) { }
+            catch (Exception e)
+            {
+            }
             //TimeDef.End();
 
 
@@ -273,7 +269,6 @@ namespace Yutai.ArcGIS.Common.Excel
 
             try
             {
-
                 for (int i = 0; i < mRows; i++)
                 {
                     for (int j = 0; j < mCols; j++)
@@ -283,7 +278,8 @@ namespace Yutai.ArcGIS.Common.Excel
                 }
             }
             catch (Exception e)
-            { }
+            {
+            }
 
             return arrGridText;
         }
@@ -336,10 +332,11 @@ namespace Yutai.ArcGIS.Common.Excel
 
             return arrGridText;
         }
+
         #endregion
 
-
         #region protected virtual GetAlignFlag[] GetColsAlign(string alignment)	
+
         /// <summary>
         /// 返回由Left，Center，Right第一个字母组成的串的对齐方式的数组
         /// </summary>
@@ -375,9 +372,11 @@ namespace Yutai.ArcGIS.Common.Excel
             }
             return arrAlign;
         }
+
         #endregion
 
         #region protected virtual Cell GetMergeCell(Point GridLocation,string[,] arrStrGrid,int rowHeight,int[] ArrColWidth,int rowSel,int colSel)
+
         /// <summary>
         /// 任意合并方式下返回指定单元格左顶宽高
         /// </summary>
@@ -388,21 +387,22 @@ namespace Yutai.ArcGIS.Common.Excel
         /// <param name="rowSel">指定单元格行</param>
         /// <param name="colSel">指定单元格列</param>
         /// <returns></returns>
-        protected virtual CellRectangle GetMergeCell(Point GridLocation, string[,] arrStrGrid, int rowHeight, int[] ArrColWidth, int rowSel, int colSel)
+        protected virtual CellRectangle GetMergeCell(Point GridLocation, string[,] arrStrGrid, int rowHeight,
+            int[] ArrColWidth, int rowSel, int colSel)
         {
             CellRectangle cell = new CellRectangle(0, 0, 0, 0);
 
-            int lngRows = arrStrGrid.GetLength(0);  //行数
-            int lngCols = arrStrGrid.GetLength(1);  //列数
+            int lngRows = arrStrGrid.GetLength(0); //行数
+            int lngCols = arrStrGrid.GetLength(1); //列数
 
-            int lngMergeRows = 1;                   //合并的行数
-            int lngMergeCols = 1;                   //合并的列数
+            int lngMergeRows = 1; //合并的行数
+            int lngMergeCols = 1; //合并的列数
 
-            int lngStartRow = rowSel;               //记录与此单元格合并的起始行
-            int lngEndRow = rowSel;                 //以便计算高及起点Y坐标
+            int lngStartRow = rowSel; //记录与此单元格合并的起始行
+            int lngEndRow = rowSel; //以便计算高及起点Y坐标
 
-            int lngStartCol = colSel;               //记录与此单元格合并的起始列
-            int lngEndCol = colSel;                 //以便计算宽及起点X坐标
+            int lngStartCol = colSel; //记录与此单元格合并的起始列
+            int lngEndCol = colSel; //以便计算宽及起点X坐标
 
             //计算在"列"上进行行合并时起始行与合并的多少
             //往上查合并(列不变)
@@ -463,7 +463,7 @@ namespace Yutai.ArcGIS.Common.Excel
 
             //******************计算左顶宽高******************
             int cellLeft = GridLocation.X;
-            int cellTop = GridLocation.Y + lngStartRow * rowHeight; //若行高不是固定行高，可以计算之前行的行高总和
+            int cellTop = GridLocation.Y + lngStartRow*rowHeight; //若行高不是固定行高，可以计算之前行的行高总和
 
             int cellWidth = 0;
             int cellHeight = 0;
@@ -480,16 +480,13 @@ namespace Yutai.ArcGIS.Common.Excel
                 cellWidth += ArrColWidth[i];
             }
 
-            cellHeight = lngMergeRows * rowHeight;                  //若行高不是固定行高，可以计算所有行的行高总和
+            cellHeight = lngMergeRows*rowHeight; //若行高不是固定行高，可以计算所有行的行高总和
 
             cell = new CellRectangle(cellLeft, cellTop, cellWidth, cellHeight);
 
             return cell;
         }
+
         #endregion
-
-
-
-    }//End Class
-
-}//End Namespace
+    } //End Class
+} //End Namespace

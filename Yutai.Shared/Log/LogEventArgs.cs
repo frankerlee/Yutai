@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Yutai.Shared.Log
 {
-    public class LogEventArgs: EventArgs
+    public class LogEventArgs : EventArgs
     {
         public LogEventArgs(ILogEntry entry)
         {

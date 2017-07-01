@@ -36,7 +36,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void FieldTypeGeometryCtrl_Load(object sender, EventArgs e)
+        private void FieldTypeGeometryCtrl_Load(object sender, EventArgs e)
         {
             this.method_3();
         }
@@ -53,7 +53,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
         }
 
- private void method_0(IField ifield_0, FieldChangeType fieldChangeType_0)
+        private void method_0(IField ifield_0, FieldChangeType fieldChangeType_0)
         {
             if (this.FieldChanged != null)
             {
@@ -215,27 +215,17 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public bool IsEdit
         {
-            set
-            {
-                this.bool_2 = value;
-            }
+            set { this.bool_2 = value; }
         }
 
         public string ShapfileName
         {
-            set
-            {
-                this.string_0 = value;
-            }
+            set { this.string_0 = value; }
         }
 
         public IWorkspace Workspace
         {
-            set
-            {
-                this.iworkspace_0 = value;
-            }
+            set { this.iworkspace_0 = value; }
         }
     }
 }
-

@@ -20,7 +20,8 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         public static bool IsDockStateAutoHide(DockState dockState)
         {
-            return ((((dockState == DockState.DockLeftAutoHide) || (dockState == DockState.DockRightAutoHide)) || (dockState == DockState.DockTopAutoHide)) || (dockState == DockState.DockBottomAutoHide));
+            return ((((dockState == DockState.DockLeftAutoHide) || (dockState == DockState.DockRightAutoHide)) ||
+                     (dockState == DockState.DockTopAutoHide)) || (dockState == DockState.DockBottomAutoHide));
         }
 
         public static bool IsDockStateValid(DockState dockState, DockAreas dockableAreas)
@@ -33,19 +34,23 @@ namespace Yutai.ArcGIS.Framework.Docking
             {
                 return false;
             }
-            if (((dockableAreas & DockAreas.DockLeft) == 0) && ((dockState == DockState.DockLeft) || (dockState == DockState.DockLeftAutoHide)))
+            if (((dockableAreas & DockAreas.DockLeft) == 0) &&
+                ((dockState == DockState.DockLeft) || (dockState == DockState.DockLeftAutoHide)))
             {
                 return false;
             }
-            if (((dockableAreas & DockAreas.DockRight) == 0) && ((dockState == DockState.DockRight) || (dockState == DockState.DockRightAutoHide)))
+            if (((dockableAreas & DockAreas.DockRight) == 0) &&
+                ((dockState == DockState.DockRight) || (dockState == DockState.DockRightAutoHide)))
             {
                 return false;
             }
-            if (((dockableAreas & DockAreas.DockTop) == 0) && ((dockState == DockState.DockTop) || (dockState == DockState.DockTopAutoHide)))
+            if (((dockableAreas & DockAreas.DockTop) == 0) &&
+                ((dockState == DockState.DockTop) || (dockState == DockState.DockTopAutoHide)))
             {
                 return false;
             }
-            if (((dockableAreas & DockAreas.DockBottom) == 0) && ((dockState == DockState.DockBottom) || (dockState == DockState.DockBottomAutoHide)))
+            if (((dockableAreas & DockAreas.DockBottom) == 0) &&
+                ((dockState == DockState.DockBottom) || (dockState == DockState.DockBottomAutoHide)))
             {
                 return false;
             }
@@ -54,7 +59,8 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         public static bool IsDockWindowState(DockState state)
         {
-            return ((((state == DockState.DockTop) || (state == DockState.DockBottom)) || ((state == DockState.DockLeft) || (state == DockState.DockRight))) || (state == DockState.Document));
+            return ((((state == DockState.DockTop) || (state == DockState.DockBottom)) ||
+                     ((state == DockState.DockLeft) || (state == DockState.DockRight))) || (state == DockState.Document));
         }
 
         public static DockPane PaneAtPoint(Point pt, DockPanel dockPanel)
@@ -113,4 +119,3 @@ namespace Yutai.ArcGIS.Framework.Docking
         }
     }
 }
-

@@ -10,7 +10,7 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Commands.Views
 {
-    public class CmdViewZoomNext:YutaiCommand
+    public class CmdViewZoomNext : YutaiCommand
     {
         private bool _enabled;
 
@@ -18,13 +18,15 @@ namespace Yutai.Commands.Views
         {
             OnCreate(context);
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
         }
+
         public override void OnClick()
         {
-            IActiveView focusMap = (IActiveView)_context.FocusMap;
+            IActiveView focusMap = (IActiveView) _context.FocusMap;
             IExtentStack extentStack = focusMap.ExtentStack;
             if (extentStack.CanRedo())
             {
@@ -35,7 +37,8 @@ namespace Yutai.Commands.Views
 
         public override bool Enabled
         {
-            get {
+            get
+            {
                 if (this._context.FocusMap == null)
                 {
                     return false;
@@ -43,12 +46,12 @@ namespace Yutai.Commands.Views
                 if (this._context.FocusMap is IMapAutoExtentOptions)
                 {
                     bool flag = false;
-                    ((IMapAutoExtentOptions)this._context.FocusMap).LockedZoom(ref flag);
+                    ((IMapAutoExtentOptions) this._context.FocusMap).LockedZoom(ref flag);
                     if (flag)
                     {
                         return false;
                     }
-                    IActiveView focusMap = (IActiveView)_context.FocusMap;
+                    IActiveView focusMap = (IActiveView) _context.FocusMap;
                     IExtentStack extentStack = focusMap.ExtentStack;
                     if (extentStack.CanRedo())
                     {

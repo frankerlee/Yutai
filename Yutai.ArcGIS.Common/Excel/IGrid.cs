@@ -13,45 +13,29 @@ namespace Yutai.ArcGIS.Common.Excel
     /// </summary>
     public interface IGrid
     {
-
         //*****************属性*****************	
+
         #region 网格起点及高、宽、使用的字体
 
         /// <summary>
         /// 网格起点坐标
         /// </summary>
-        Point Location
-        {
-            get;
-            set;
-        }
+        Point Location { get; set; }
 
         /// <summary>
         /// 网格宽
         /// </summary>
-        int Width
-        {
-            get;
-            set;
-        }
+        int Width { get; set; }
 
         /// <summary>
         /// 网格高
         /// </summary>
-        int Height
-        {
-            get;
-            set;
-        }
+        int Height { get; set; }
 
         /// <summary>
         /// 网格文本字体
         /// </summary>
-        Font Font
-        {
-            get;
-            set;
-        }
+        Font Font { get; set; }
 
         #endregion
 
@@ -60,38 +44,22 @@ namespace Yutai.ArcGIS.Common.Excel
         /// <summary>
         /// 网格整体对齐方式
         /// </summary>
-        AlignFlag AlignMent
-        {
-            get;
-            set;
-        }
+        AlignFlag AlignMent { get; set; }
 
         /// <summary>
         /// 网格线类型
         /// </summary>
-        GridLineFlag Line
-        {
-            get;
-            set;
-        }
+        GridLineFlag Line { get; set; }
 
         /// <summary>
         /// 单元格合并方式
         /// </summary>
-        GridMergeFlag Merge
-        {
-            get;
-            set;
-        }
+        GridMergeFlag Merge { get; set; }
 
         /// <summary>
         /// 网格边框类型
         /// </summary>
-        GridBorderFlag Border
-        {
-            get;
-            set;
-        }
+        GridBorderFlag Border { get; set; }
 
         #endregion
 
@@ -100,38 +68,22 @@ namespace Yutai.ArcGIS.Common.Excel
         /// <summary>
         /// 行数
         /// </summary>
-        int Rows
-        {
-            get;
-            set;
-        }
+        int Rows { get; set; }
 
         /// <summary>
         /// 列数
         /// </summary>
-        int Cols
-        {
-            get;
-            set;
-        }
+        int Cols { get; set; }
 
         /// <summary>
         /// 固定行数
         /// </summary>
-        int FixedRows
-        {
-            get;
-            set;
-        }
+        int FixedRows { get; set; }
 
         /// <summary>
         /// 固定列数
         /// </summary>
-        int FixedCols
-        {
-            get;
-            set;
-        }
+        int FixedCols { get; set; }
 
         #endregion
 
@@ -140,51 +92,31 @@ namespace Yutai.ArcGIS.Common.Excel
         /// <summary>
         /// 获取或设置首选行高
         /// </summary>
-        int PreferredRowHeight
-        {
-            get;
-            set;
-        }
+        int PreferredRowHeight { get; set; }
 
         /// <summary>
         /// 获取或设置默认的列宽
         /// </summary>
-        int PreferredColWidth
-        {
-            get;
-            set;
-        }
+        int PreferredColWidth { get; set; }
 
         //*********下面是对应的数组*********
         /// <summary>
         /// 获取或设置行高数组
         /// </summary>
         /// <returns></returns>
-        int[] RowsHeight
-        {
-            get;
-            set;
-        }
+        int[] RowsHeight { get; set; }
 
         /// <summary>
         /// 返回列宽数组
         /// </summary>
         /// <returns></returns>
-        int[] ColsWidth
-        {
-            get;
-            set;
-        }
+        int[] ColsWidth { get; set; }
 
         /// <summary>
         /// 返回列对齐数组
         /// </summary>
         /// <returns></returns>
-        AlignFlag[] ColsAlignment
-        {
-            get;
-            set;
-        }
+        AlignFlag[] ColsAlignment { get; set; }
 
         #endregion
 
@@ -193,11 +125,7 @@ namespace Yutai.ArcGIS.Common.Excel
         /// <summary>
         /// 获取或设置当前单元格文本
         /// </summary>		
-        string Text
-        {
-            get;
-            set;
-        }
+        string Text { get; set; }
 
         /// <summary>
         /// 获取指定行列单元格文本
@@ -219,52 +147,31 @@ namespace Yutai.ArcGIS.Common.Excel
         /// <summary>
         /// 获取或设置二维网格的文本
         /// </summary>
-        string[,] GridText
-        {
-            get;
-            set;
-        }
+        string[,] GridText { get; set; }
 
         #endregion
-
 
         #region 当前行列、选定行列数
 
         /// <summary>
         /// 当前行
         /// </summary>
-        int Row
-        {
-            get;
-            set;
-        }
+        int Row { get; set; }
 
         /// <summary>
         /// 当前列
         /// </summary>
-        int Col
-        {
-            get;
-            set;
-        }
+        int Col { get; set; }
 
         /// <summary>
         /// 选择行
         /// </summary>
-        int RowSel
-        {
-            get;
-            set;
-        }
+        int RowSel { get; set; }
 
         /// <summary>
         /// 选择列
         /// </summary>
-        int ColSel
-        {
-            get;
-            set;
-        }
+        int ColSel { get; set; }
 
         #endregion
 
@@ -315,26 +222,20 @@ namespace Yutai.ArcGIS.Common.Excel
 
         #endregion
 
-
-
-
-
-
-        /*
-		bool get_ColIsVisible(int index);
-		bool set_ColIsVisible(int index);
-
-
-
-		bool get_RowIsVisible(int index);
-
-		bool get_MergeCol(int index);
-		void set_MergeCol(int index,bool mergeCol);
-
-		bool get_MergeRow(int index);
-		bool set_MergeRow(int index,bool mergeRow);
-
-		*/
-
-    }//End Class
-}//End NameSpace
+/*
+                bool get_ColIsVisible(int index);
+                bool set_ColIsVisible(int index);
+        
+        
+        
+                bool get_RowIsVisible(int index);
+        
+                bool get_MergeCol(int index);
+                void set_MergeCol(int index,bool mergeCol);
+        
+                bool get_MergeRow(int index);
+                bool set_MergeRow(int index,bool mergeRow);
+        
+                */
+    } //End Class
+} //End NameSpace

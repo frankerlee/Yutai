@@ -33,15 +33,9 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
 
         event Common.BaseClasses.OnValueChangeEventHandler IPropertyPageEvents.OnValueChange
         {
-            add
-            {
-                throw new NotImplementedException();
-            }
+            add { throw new NotImplementedException(); }
 
-            remove
-            {
-                throw new NotImplementedException();
-            }
+            remove { throw new NotImplementedException(); }
         }
 
         public void Apply()
@@ -49,8 +43,10 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
             if (this.m_IsPageDirty)
             {
                 this.m_IsPageDirty = false;
-                this.m_RealTimeDestination.BearingToDestinationSymbol = (this.btnBearingSymbol.Style as IClone).Clone() as IMarkerSymbol;
-                this.m_RealTimeDestination.DestinationTextSymbol = (this.btnLabelSymbol.Style as IClone).Clone() as ITextSymbol;
+                this.m_RealTimeDestination.BearingToDestinationSymbol =
+                    (this.btnBearingSymbol.Style as IClone).Clone() as IMarkerSymbol;
+                this.m_RealTimeDestination.DestinationTextSymbol =
+                    (this.btnLabelSymbol.Style as IClone).Clone() as ITextSymbol;
                 this.m_RealTimeDestination.DestinationSymbol = (this.btnSymbol.Style as IClone).Clone() as IMarkerSymbol;
                 this.m_RealTimeDestination.DestinationLabel = this.txtLabel.Text;
                 this.m_RealTimeDestination.ShowBearingToDestination = this.chkShowBearingSymbol.Checked;
@@ -146,7 +142,7 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
             }
         }
 
- public void ResetControl()
+        public void ResetControl()
         {
         }
 
@@ -174,55 +170,33 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.m_IsPageDirty;
-            }
+            get { return this.m_IsPageDirty; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public IRealTimeDestination RealTimeDestination
         {
-            set
-            {
-                this.m_RealTimeDestination = value;
-            }
+            set { this.m_RealTimeDestination = value; }
         }
 
         public IStyleGallery StyleGallery
         {
-            set
-            {
-                this.m_pSG = value;
-            }
+            set { this.m_pSG = value; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.m_Title;
-            }
-            set
-            {
-                this.m_Title = value;
-            }
+            get { return this.m_Title; }
+            set { this.m_Title = value; }
         }
     }
 }
-

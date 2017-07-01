@@ -10,7 +10,6 @@ namespace Yutai.ArcGIS.Catalog.UI
 {
     public partial class ServerLogPropertyPage : UserControl
     {
-        [CompilerGenerated]
         private IContainer icontainer_0 = null;
 
         public ServerLogPropertyPage()
@@ -18,24 +17,11 @@ namespace Yutai.ArcGIS.Catalog.UI
             this.InitializeComponent();
         }
 
- private void ServerLogPropertyPage_Load(object sender, EventArgs e)
+        private void ServerLogPropertyPage_Load(object sender, EventArgs e)
         {
             IServerLog serverLog = (this.AGSServerConnectionAdmin.ServerObjectAdmin as IServerObjectAdmin8).ServerLog;
         }
 
-        public IAGSServerConnectionAdmin AGSServerConnectionAdmin
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.iagsserverConnectionAdmin_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.iagsserverConnectionAdmin_0 = value;
-            }
-        }
+        public IAGSServerConnectionAdmin AGSServerConnectionAdmin { get; set; }
     }
 }
-

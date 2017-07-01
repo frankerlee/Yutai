@@ -67,7 +67,8 @@ namespace Yutai.ArcGIS.Carto.UI
                         if (selector.ShowDialog() == DialogResult.OK)
                         {
                             this.btnSymbol.Style = selector.GetSymbol();
-                            IFeatureRenderer renderer = this.ilist_1[this.chkListRender.SelectedIndex] as IFeatureRenderer;
+                            IFeatureRenderer renderer =
+                                this.ilist_1[this.chkListRender.SelectedIndex] as IFeatureRenderer;
                             (renderer as ISimpleRenderer).Symbol = this.btnSymbol.Style as ISymbol;
                         }
                     }
@@ -125,7 +126,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void method_0()
+        private void method_0()
         {
             IFeatureRenderer pInObject = null;
             IFillSymbol symbol;
@@ -137,10 +138,12 @@ namespace Yutai.ArcGIS.Carto.UI
             if (pInObject == null)
             {
                 pInObject = new SimpleRendererClass();
-                symbol = new SimpleFillSymbolClass {
+                symbol = new SimpleFillSymbolClass
+                {
                     Color = ColorManage.CreatColor(255, 128, 128)
                 };
-                symbol2 = new SimpleLineSymbolClass {
+                symbol2 = new SimpleLineSymbolClass
+                {
                     Width = 2.5,
                     Color = ColorManage.CreatColor(255, 0, 0)
                 };
@@ -168,7 +171,8 @@ namespace Yutai.ArcGIS.Carto.UI
             if (pInObject == null)
             {
                 pInObject = new SimpleRendererClass();
-                symbol2 = new SimpleLineSymbolClass {
+                symbol2 = new SimpleLineSymbolClass
+                {
                     Width = 2.5,
                     Color = ColorManage.CreatColor(255, 128, 128)
                 };
@@ -195,7 +199,8 @@ namespace Yutai.ArcGIS.Carto.UI
             if (pInObject == null)
             {
                 pInObject = new SimpleRendererClass();
-                symbol3 = new SimpleMarkerSymbolClass {
+                symbol3 = new SimpleMarkerSymbolClass
+                {
                     Size = 6.0,
                     Style = esriSimpleMarkerStyle.esriSMSSquare,
                     Color = ColorManage.CreatColor(255, 128, 128)
@@ -223,10 +228,12 @@ namespace Yutai.ArcGIS.Carto.UI
             if (pInObject == null)
             {
                 pInObject = new SimpleRendererClass();
-                symbol = new SimpleFillSymbolClass {
+                symbol = new SimpleFillSymbolClass
+                {
                     Color = ColorManage.CreatColor(255, 255, 255)
                 };
-                symbol2 = new SimpleLineSymbolClass {
+                symbol2 = new SimpleLineSymbolClass
+                {
                     Width = 1.0,
                     Color = ColorManage.CreatColor(128, 255, 128)
                 };
@@ -254,7 +261,8 @@ namespace Yutai.ArcGIS.Carto.UI
             if (pInObject == null)
             {
                 pInObject = new SimpleRendererClass();
-                symbol2 = new SimpleLineSymbolClass {
+                symbol2 = new SimpleLineSymbolClass
+                {
                     Width = 1.0,
                     Color = ColorManage.CreatColor(128, 255, 128)
                 };
@@ -281,7 +289,8 @@ namespace Yutai.ArcGIS.Carto.UI
             if (pInObject == null)
             {
                 pInObject = new SimpleRendererClass();
-                symbol3 = new SimpleMarkerSymbolClass {
+                symbol3 = new SimpleMarkerSymbolClass
+                {
                     Size = 5.0,
                     Style = esriSimpleMarkerStyle.esriSMSSquare,
                     Color = ColorManage.CreatColor(128, 255, 128)
@@ -296,7 +305,8 @@ namespace Yutai.ArcGIS.Carto.UI
             if (pInObject is ISimpleRenderer)
             {
                 this.ilist_1.Add(pInObject);
-                this.ilist_2.Add(this.method_6(this.itopologyLayer_0.Topology, esriTopologyRenderer.esriTRPointExceptions));
+                this.ilist_2.Add(this.method_6(this.itopologyLayer_0.Topology,
+                    esriTopologyRenderer.esriTRPointExceptions));
             }
             else
             {
@@ -312,7 +322,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 symbol = new SimpleFillSymbolClass();
                 (symbol as ISimpleFillSymbol).Style = esriSimpleFillStyle.esriSFSForwardDiagonal;
                 symbol.Color = ColorManage.CreatColor(128, 128, 255);
-                symbol2 = new SimpleLineSymbolClass {
+                symbol2 = new SimpleLineSymbolClass
+                {
                     Width = 1.0,
                     Color = ColorManage.CreatColor(128, 128, 255)
                 };
@@ -347,10 +358,12 @@ namespace Yutai.ArcGIS.Carto.UI
             {
                 case esriTopologyRenderer.esriTRAreaErrors:
                     renderer = new SimpleRendererClass();
-                    symbol = new SimpleFillSymbolClass {
+                    symbol = new SimpleFillSymbolClass
+                    {
                         Color = ColorManage.CreatColor(255, 128, 128)
                     };
-                    symbol2 = new SimpleLineSymbolClass {
+                    symbol2 = new SimpleLineSymbolClass
+                    {
                         Width = 2.5,
                         Color = ColorManage.CreatColor(255, 0, 0)
                     };
@@ -360,7 +373,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
                 case esriTopologyRenderer.esriTRLineErrors:
                     renderer = new SimpleRendererClass();
-                    symbol2 = new SimpleLineSymbolClass {
+                    symbol2 = new SimpleLineSymbolClass
+                    {
                         Width = 2.5,
                         Color = ColorManage.CreatColor(255, 128, 128)
                     };
@@ -369,7 +383,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
                 case esriTopologyRenderer.esriTRPointErrors:
                     renderer = new SimpleRendererClass();
-                    symbol3 = new SimpleMarkerSymbolClass {
+                    symbol3 = new SimpleMarkerSymbolClass
+                    {
                         Size = 6.0,
                         Style = esriSimpleMarkerStyle.esriSMSSquare,
                         Color = ColorManage.CreatColor(255, 128, 128)
@@ -379,10 +394,12 @@ namespace Yutai.ArcGIS.Carto.UI
 
                 case esriTopologyRenderer.esriTRAreaExceptions:
                     renderer = new SimpleRendererClass();
-                    symbol = new SimpleFillSymbolClass {
+                    symbol = new SimpleFillSymbolClass
+                    {
                         Color = ColorManage.CreatColor(255, 255, 255)
                     };
-                    symbol2 = new SimpleLineSymbolClass {
+                    symbol2 = new SimpleLineSymbolClass
+                    {
                         Width = 1.0,
                         Color = ColorManage.CreatColor(128, 255, 128)
                     };
@@ -392,7 +409,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
                 case esriTopologyRenderer.esriTRLineExceptions:
                     renderer = new SimpleRendererClass();
-                    symbol2 = new SimpleLineSymbolClass {
+                    symbol2 = new SimpleLineSymbolClass
+                    {
                         Width = 1.0,
                         Color = ColorManage.CreatColor(128, 255, 128)
                     };
@@ -401,7 +419,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
                 case esriTopologyRenderer.esriTRPointExceptions:
                     renderer = new SimpleRendererClass();
-                    symbol3 = new SimpleMarkerSymbolClass {
+                    symbol3 = new SimpleMarkerSymbolClass
+                    {
                         Size = 5.0,
                         Style = esriSimpleMarkerStyle.esriSMSSquare,
                         Color = ColorManage.CreatColor(128, 255, 128)
@@ -414,7 +433,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     symbol = new SimpleFillSymbolClass();
                     (symbol as ISimpleFillSymbol).Style = esriSimpleFillStyle.esriSFSForwardDiagonal;
                     symbol.Color = ColorManage.CreatColor(128, 128, 255);
-                    symbol2 = new SimpleLineSymbolClass {
+                    symbol2 = new SimpleLineSymbolClass
+                    {
                         Width = 1.0,
                         Color = ColorManage.CreatColor(128, 128, 255)
                     };
@@ -431,7 +451,9 @@ namespace Yutai.ArcGIS.Carto.UI
             ITopologyRuleContainer container = itopology_0 as ITopologyRuleContainer;
             IEnumRule rules = container.Rules;
             rules.Reset();
-            for (ITopologyRule rule2 = rules.Next() as ITopologyRule; rule2 != null; rule2 = rules.Next() as ITopologyRule)
+            for (ITopologyRule rule2 = rules.Next() as ITopologyRule;
+                rule2 != null;
+                rule2 = rules.Next() as ITopologyRule)
             {
                 bool flag;
                 bool flag2;
@@ -451,7 +473,9 @@ namespace Yutai.ArcGIS.Carto.UI
             ITopologyRuleContainer container = itopology_0 as ITopologyRuleContainer;
             IEnumRule rules = container.Rules;
             rules.Reset();
-            for (ITopologyRule rule2 = rules.Next() as ITopologyRule; rule2 != null; rule2 = rules.Next() as ITopologyRule)
+            for (ITopologyRule rule2 = rules.Next() as ITopologyRule;
+                rule2 != null;
+                rule2 = rules.Next() as ITopologyRule)
             {
                 bool flag;
                 bool flag2;
@@ -471,7 +495,9 @@ namespace Yutai.ArcGIS.Carto.UI
             ITopologyRuleContainer container = itopology_0 as ITopologyRuleContainer;
             IEnumRule rules = container.Rules;
             rules.Reset();
-            for (ITopologyRule rule2 = rules.Next() as ITopologyRule; rule2 != null; rule2 = rules.Next() as ITopologyRule)
+            for (ITopologyRule rule2 = rules.Next() as ITopologyRule;
+                rule2 != null;
+                rule2 = rules.Next() as ITopologyRule)
             {
                 bool flag;
                 bool flag2;
@@ -588,7 +614,8 @@ namespace Yutai.ArcGIS.Carto.UI
             ILineSymbol symbol4;
             ISimpleMarkerSymbol symbol5;
             ISimpleMarkerSymbol symbol6;
-            IRandomColorRamp ramp = new RandomColorRampClass {
+            IRandomColorRamp ramp = new RandomColorRampClass
+            {
                 StartHue = 40,
                 EndHue = 120,
                 MinValue = 65,
@@ -603,10 +630,12 @@ namespace Yutai.ArcGIS.Carto.UI
                 case esriTopologyRenderer.esriTRAreaErrors:
                     renderer = new UniqueValueRendererClass();
                     list = this.method_4(itopology_0);
-                    symbol = new SimpleFillSymbolClass {
+                    symbol = new SimpleFillSymbolClass
+                    {
                         Color = ColorManage.CreatColor(255, 128, 128)
                     };
-                    symbol2 = new SimpleLineSymbolClass {
+                    symbol2 = new SimpleLineSymbolClass
+                    {
                         Width = 2.5,
                         Color = ColorManage.CreatColor(255, 0, 0)
                     };
@@ -626,7 +655,8 @@ namespace Yutai.ArcGIS.Carto.UI
                         symbol3 = (symbol as IClone).Clone() as IFillSymbol;
                         symbol3.Color = colors.Next();
                         topologyRuleType = (int) rule.TopologyRuleType;
-                        renderer.AddValue(topologyRuleType.ToString(), this.method_5(rule.TopologyRuleType), symbol3 as ISymbol);
+                        renderer.AddValue(topologyRuleType.ToString(), this.method_5(rule.TopologyRuleType),
+                            symbol3 as ISymbol);
                         renderer.set_Label(topologyRuleType.ToString(), this.method_5(rule.TopologyRuleType));
                     }
                     break;
@@ -634,7 +664,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 case esriTopologyRenderer.esriTRLineErrors:
                     renderer = new UniqueValueRendererClass();
                     list = this.method_3(itopology_0);
-                    symbol2 = new SimpleLineSymbolClass {
+                    symbol2 = new SimpleLineSymbolClass
+                    {
                         Width = 2.5,
                         Color = ColorManage.CreatColor(255, 128, 128)
                     };
@@ -653,7 +684,8 @@ namespace Yutai.ArcGIS.Carto.UI
                         symbol4 = (symbol2 as IClone).Clone() as ILineSymbol;
                         symbol4.Color = colors.Next();
                         topologyRuleType = (int) rule.TopologyRuleType;
-                        renderer.AddValue(topologyRuleType.ToString(), this.method_5(rule.TopologyRuleType), symbol4 as ISymbol);
+                        renderer.AddValue(topologyRuleType.ToString(), this.method_5(rule.TopologyRuleType),
+                            symbol4 as ISymbol);
                         renderer.set_Label(topologyRuleType.ToString(), this.method_5(rule.TopologyRuleType));
                     }
                     break;
@@ -661,7 +693,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 case esriTopologyRenderer.esriTRPointErrors:
                     renderer = new UniqueValueRendererClass();
                     list = this.method_2(itopology_0);
-                    symbol5 = new SimpleMarkerSymbolClass {
+                    symbol5 = new SimpleMarkerSymbolClass
+                    {
                         Size = 6.0,
                         Style = esriSimpleMarkerStyle.esriSMSSquare,
                         Color = ColorManage.CreatColor(255, 128, 128)
@@ -680,7 +713,8 @@ namespace Yutai.ArcGIS.Carto.UI
                             symbol6 = (symbol5 as IClone).Clone() as ISimpleMarkerSymbol;
                             symbol6.Color = colors.Next();
                             topologyRuleType = (int) rule.TopologyRuleType;
-                            renderer.AddValue(topologyRuleType.ToString(), this.method_5(rule.TopologyRuleType), symbol6 as ISymbol);
+                            renderer.AddValue(topologyRuleType.ToString(), this.method_5(rule.TopologyRuleType),
+                                symbol6 as ISymbol);
                             renderer.set_Label(topologyRuleType.ToString(), this.method_5(rule.TopologyRuleType));
                         }
                     }
@@ -689,10 +723,12 @@ namespace Yutai.ArcGIS.Carto.UI
                 case esriTopologyRenderer.esriTRAreaExceptions:
                     renderer = new UniqueValueRendererClass();
                     list = this.method_4(itopology_0);
-                    symbol = new SimpleFillSymbolClass {
+                    symbol = new SimpleFillSymbolClass
+                    {
                         Color = ColorManage.CreatColor(255, 255, 255)
                     };
-                    symbol2 = new SimpleLineSymbolClass {
+                    symbol2 = new SimpleLineSymbolClass
+                    {
                         Width = 1.0,
                         Color = ColorManage.CreatColor(128, 255, 128)
                     };
@@ -712,7 +748,8 @@ namespace Yutai.ArcGIS.Carto.UI
                         symbol3 = (symbol as IClone).Clone() as IFillSymbol;
                         symbol3.Color = colors.Next();
                         topologyRuleType = (int) rule.TopologyRuleType;
-                        renderer.AddValue(topologyRuleType.ToString(), this.method_5(rule.TopologyRuleType), symbol3 as ISymbol);
+                        renderer.AddValue(topologyRuleType.ToString(), this.method_5(rule.TopologyRuleType),
+                            symbol3 as ISymbol);
                         renderer.set_Label(topologyRuleType.ToString(), this.method_5(rule.TopologyRuleType));
                     }
                     break;
@@ -720,7 +757,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 case esriTopologyRenderer.esriTRLineExceptions:
                     renderer = new UniqueValueRendererClass();
                     list = this.method_3(itopology_0);
-                    symbol2 = new SimpleLineSymbolClass {
+                    symbol2 = new SimpleLineSymbolClass
+                    {
                         Width = 1.0,
                         Color = ColorManage.CreatColor(128, 255, 128)
                     };
@@ -739,7 +777,8 @@ namespace Yutai.ArcGIS.Carto.UI
                         symbol4 = (symbol2 as IClone).Clone() as ILineSymbol;
                         symbol4.Color = colors.Next();
                         topologyRuleType = (int) rule.TopologyRuleType;
-                        renderer.AddValue(topologyRuleType.ToString(), this.method_5(rule.TopologyRuleType), symbol4 as ISymbol);
+                        renderer.AddValue(topologyRuleType.ToString(), this.method_5(rule.TopologyRuleType),
+                            symbol4 as ISymbol);
                         renderer.set_Label(topologyRuleType.ToString(), this.method_5(rule.TopologyRuleType));
                     }
                     break;
@@ -747,7 +786,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 case esriTopologyRenderer.esriTRPointExceptions:
                     renderer = new UniqueValueRendererClass();
                     list = this.method_2(itopology_0);
-                    symbol5 = new SimpleMarkerSymbolClass {
+                    symbol5 = new SimpleMarkerSymbolClass
+                    {
                         Size = 5.0,
                         Style = esriSimpleMarkerStyle.esriSMSSquare,
                         Color = ColorManage.CreatColor(128, 255, 128)
@@ -766,7 +806,8 @@ namespace Yutai.ArcGIS.Carto.UI
                             symbol6 = (symbol5 as IClone).Clone() as ISimpleMarkerSymbol;
                             symbol6.Color = colors.Next();
                             topologyRuleType = (int) rule.TopologyRuleType;
-                            renderer.AddValue(topologyRuleType.ToString(), this.method_5(rule.TopologyRuleType), symbol6 as ISymbol);
+                            renderer.AddValue(topologyRuleType.ToString(), this.method_5(rule.TopologyRuleType),
+                                symbol6 as ISymbol);
                             renderer.set_Label(topologyRuleType.ToString(), this.method_5(rule.TopologyRuleType));
                         }
                     }
@@ -786,11 +827,13 @@ namespace Yutai.ArcGIS.Carto.UI
                     {
                         if (this.rdoRenderType.SelectedIndex == 0)
                         {
-                            this.ilist_0[this.chkListRender.SelectedIndex] = this.ilist_1[this.chkListRender.SelectedIndex];
+                            this.ilist_0[this.chkListRender.SelectedIndex] =
+                                this.ilist_1[this.chkListRender.SelectedIndex];
                         }
                         else
                         {
-                            this.ilist_0[this.chkListRender.SelectedIndex] = this.ilist_2[this.chkListRender.SelectedIndex];
+                            this.ilist_0[this.chkListRender.SelectedIndex] =
+                                this.ilist_2[this.chkListRender.SelectedIndex];
                         }
                     }
                     else if (this.rdoRenderType.SelectedIndex == 1)
@@ -811,25 +854,17 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IBasicMap FocusMap
         {
-            set
-            {
-            }
+            set { }
         }
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         public object SelectItem
         {
-            set
-            {
-                this.itopologyLayer_0 = value as ITopologyLayer;
-            }
+            set { this.itopologyLayer_0 = value as ITopologyLayer; }
         }
 
         public IStyleGallery StyleGallery
@@ -842,4 +877,3 @@ namespace Yutai.ArcGIS.Carto.UI
         }
     }
 }
-

@@ -20,7 +20,5 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         private void AfterCheckOutSetupCtrl_Load(object sender, EventArgs e)
         {
         }
-
-
     }
 }

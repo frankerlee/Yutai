@@ -58,7 +58,8 @@ namespace Yutai.ArcGIS.Carto.UI
         {
             for (int i = 0; i < this.listMapLayers.SelectedIndices.Count; i++)
             {
-                ILayer layer = (this.listMapLayers.Items[this.listMapLayers.SelectedIndices[i]] as ObjectWrap).Object as ILayer;
+                ILayer layer =
+                    (this.listMapLayers.Items[this.listMapLayers.SelectedIndices[i]] as ObjectWrap).Object as ILayer;
                 ILegendItem item = this.method_2(layer);
                 this.listLegendLayers.Items.Add(new LegendItemWrap(item));
                 this.ilegend_0.AddItem(item);
@@ -91,7 +92,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.listLegendLayers.Items.Clear();
         }
 
- public IArray GetSelectLegendItem()
+        public IArray GetSelectLegendItem()
         {
             IArray array = new ArrayClass();
             for (int i = 0; i < this.listLegendLayers.Items.Count; i++)
@@ -101,7 +102,7 @@ namespace Yutai.ArcGIS.Carto.UI
             return array;
         }
 
- private void LegendLayerUserControl_Load(object sender, EventArgs e)
+        private void LegendLayerUserControl_Load(object sender, EventArgs e)
         {
             this.method_1();
             this.bool_0 = true;
@@ -191,7 +192,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private ILegendItem method_2(ILayer ilayer_0)
         {
-            return new HorizontalLegendItemClass { Layer = ilayer_0 };
+            return new HorizontalLegendItemClass {Layer = ilayer_0};
         }
 
         private void spinEdit1_EditValueChanged(object sender, EventArgs e)
@@ -200,19 +201,12 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IMap FocusMap
         {
-            set
-            {
-                this.imap_0 = value;
-            }
+            set { this.imap_0 = value; }
         }
 
         public ILegend Legend
         {
-            set
-            {
-                this.ilegend_0 = value;
-            }
+            set { this.ilegend_0 = value; }
         }
     }
 }
-

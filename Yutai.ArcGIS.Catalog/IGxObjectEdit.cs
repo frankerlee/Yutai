@@ -10,4 +10,3 @@
         void Rename(string string_0);
     }
 }
-

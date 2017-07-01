@@ -15,7 +15,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
     {
         private bool m_CanDo = false;
         private bool m_IsPageDirty = false;
-        private IStyleGallery m_pSG ;//= ApplicationBase.StyleGallery;
+        private IStyleGallery m_pSG; //= ApplicationBase.StyleGallery;
         private string m_Title = "比例和单位";
 
         public event OnValueChangeEventHandler OnValueChange;
@@ -25,19 +25,23 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.InitializeComponent();
             _context = context;
             this.m_pSG = _context.StyleGallery;
-            ScaleBarEventsClass.ValueChange += new ScaleBarEventsClass.ValueChangeHandler(this.ScaleBarEventsClass_ValueChange);
+            ScaleBarEventsClass.ValueChange +=
+                new ScaleBarEventsClass.ValueChangeHandler(this.ScaleBarEventsClass_ValueChange);
         }
+
         public ScaleAndUnitsPropertyPage()
         {
             this.InitializeComponent();
-            ScaleBarEventsClass.ValueChange += new ScaleBarEventsClass.ValueChangeHandler(this.ScaleBarEventsClass_ValueChange);
+            ScaleBarEventsClass.ValueChange +=
+                new ScaleBarEventsClass.ValueChangeHandler(this.ScaleBarEventsClass_ValueChange);
         }
 
         public void Apply()
         {
             if (this.m_IsPageDirty)
             {
-                (ScaleBarFormatPropertyPage.m_pOldScaleBar as IClone).Assign(ScaleBarFormatPropertyPage.m_pScaleBar as IClone);
+                (ScaleBarFormatPropertyPage.m_pOldScaleBar as IClone).Assign(
+                    ScaleBarFormatPropertyPage.m_pScaleBar as IClone);
                 this.m_IsPageDirty = false;
             }
         }
@@ -144,7 +148,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         {
         }
 
- public void Hide()
+        public void Hide()
         {
             base.Hide();
         }
@@ -162,7 +166,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.txtGap.Text = pScaleBar.UnitLabelGap.ToString("#.##");
         }
 
- private void ScaleAndUnitsPropertyPage_Load(object sender, EventArgs e)
+        private void ScaleAndUnitsPropertyPage_Load(object sender, EventArgs e)
         {
             this.Init();
             this.m_CanDo = true;
@@ -259,39 +263,23 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.m_IsPageDirty;
-            }
+            get { return this.m_IsPageDirty; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.m_Title;
-            }
-            set
-            {
-                this.m_Title = value;
-            }
+            get { return this.m_Title; }
+            set { this.m_Title = value; }
         }
     }
 }
-

@@ -24,7 +24,6 @@ namespace Yutai.Plugins.Helpers
             providers.Clear(false);
             return providers.AddCustom(provider.Id, provider.Name, provider.Url, provider.Projection, provider.MinZoom, provider.MaxZoom);
         }*/
-
         /// <summary>
         /// Activates the panel. Use DockPanelKeys members to specify correct key.
         /// </summary>
@@ -32,7 +31,5 @@ namespace Yutai.Plugins.Helpers
         {
             context.DockPanels.SetActivePanel(dockPanelKey);
         }
-
-       
     }
 }

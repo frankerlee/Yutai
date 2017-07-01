@@ -13,8 +13,6 @@ namespace Yutai.Plugins.Editor.Commands
 {
     class CmdEditPaste : YutaiCommand
     {
-
-
         private bool bool_0 = false;
 
         public CmdEditPaste(IAppContext context)
@@ -36,8 +34,6 @@ namespace Yutai.Plugins.Editor.Commands
             base.TextImageRelationYT = TextImageRelationYT.ImageAboveText;
             base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
             _itemType = RibbonItemType.Button;
-
-
         }
 
         public override bool Enabled
@@ -67,8 +63,6 @@ namespace Yutai.Plugins.Editor.Commands
         }
 
 
-
-
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
@@ -76,10 +70,10 @@ namespace Yutai.Plugins.Editor.Commands
 
         public override void OnClick()
         {
-
             int i;
             IFeature feature;
-            if (Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate == null || Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer == null) return;
+            if (Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate == null ||
+                Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer == null) return;
             IFeatureLayer featureLayer = Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer;
             esriGeometryType shapeType = featureLayer.FeatureClass.ShapeType;
             CmdEditCopy.m_pEnumFeature.Reset();
@@ -106,7 +100,9 @@ namespace Yutai.Plugins.Editor.Commands
                         CErrorLog.writeErrorLog(this, exception, "");
                     }
                 }
-                else if ((item.Shape.GeometryType != esriGeometryType.esriGeometryPolygon ? false : shapeType == esriGeometryType.esriGeometryPolyline))
+                else if ((item.Shape.GeometryType != esriGeometryType.esriGeometryPolygon
+                    ? false
+                    : shapeType == esriGeometryType.esriGeometryPolyline))
                 {
                     feature = featureClass.CreateFeature();
                     try
@@ -115,7 +111,8 @@ namespace Yutai.Plugins.Editor.Commands
                         IPolygon shape = item.Shape as IPolygon;
                         for (int j = 0; j < (shape as IGeometryCollection).GeometryCount; j++)
                         {
-                            ISegmentCollection geometry = (shape as IGeometryCollection).Geometry[j] as ISegmentCollection;
+                            ISegmentCollection geometry =
+                                (shape as IGeometryCollection).Geometry[j] as ISegmentCollection;
                             IPath pathClass = new Path() as IPath;
                             (pathClass as ISegmentCollection).AddSegmentCollection(geometry);
                             (polylineClass as IGeometryCollection).AddGeometry(pathClass, ref value, ref value);
@@ -136,7 +133,8 @@ namespace Yutai.Plugins.Editor.Commands
             _context.FocusMap.ClearSelection();
             for (i = 0; i < arrayClass.Count; i++)
             {
-                _context.FocusMap.SelectFeature(Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer, arrayClass.Element[i] as IFeature);
+                _context.FocusMap.SelectFeature(Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer,
+                    arrayClass.Element[i] as IFeature);
             }
             _context.ActiveView.Refresh();
         }

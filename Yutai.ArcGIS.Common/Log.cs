@@ -14,7 +14,8 @@ namespace Yutai.ArcGIS.Common
             {
                 if (File.Exists(string_0))
                 {
-                    string destFileName = string_0 + "_" + DateTime.Now.ToShortDateString() + "_" + DateTime.Now.ToLongTimeString().Replace(":", "-") + ".bak";
+                    string destFileName = string_0 + "_" + DateTime.Now.ToShortDateString() + "_" +
+                                          DateTime.Now.ToLongTimeString().Replace(":", "-") + ".bak";
                     File.Copy(string_0, destFileName, true);
                 }
             }
@@ -189,4 +190,3 @@ namespace Yutai.ArcGIS.Common
         }
     }
 }
-

@@ -1,7 +1,6 @@
 namespace Yutai.ArcGIS.Common.SymbolEx
 {
-	public interface ILabelSymbol
-	{
-
-	}
+    public interface ILabelSymbol
+    {
+    }
 }

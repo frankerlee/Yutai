@@ -32,7 +32,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void EditWorkspacelist_SelectedIndexChanged(object sender, EventArgs e)
+        private void EditWorkspacelist_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.CanEditDatasetList.Items.Clear();
             if (this.EditWorkspacelist.SelectedItems.Count != 0)
@@ -61,14 +61,15 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             {
                 CheckInOutWorkspaceInfo info = this.iarray_0.get_Element(i) as CheckInOutWorkspaceInfo;
                 this.method_2(info.Workspace, out items[0], out items[1]);
-                ListViewItem item = new ListViewItem(items) {
+                ListViewItem item = new ListViewItem(items)
+                {
                     Tag = info
                 };
                 this.EditWorkspacelist.Items.Add(item);
             }
         }
 
- private void method_0(IMap imap_0)
+        private void method_0(IMap imap_0)
         {
             int num;
             IDataset featureClass;
@@ -96,7 +97,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                             obj2 = layer.FeatureClass as IVersionedObject;
                             if (obj2.IsRegisteredAsVersioned)
                             {
-                                (this.method_3(this.iarray_0, workspace).EnumName as IEnumNameEdit).Add(featureClass.FullName);
+                                (this.method_3(this.iarray_0, workspace).EnumName as IEnumNameEdit).Add(
+                                    featureClass.FullName);
                             }
                         }
                     }
@@ -110,12 +112,14 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 {
                     featureClass = table as IDataset;
                     workspace = featureClass.Workspace;
-                    if ((workspace.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace) && (workspace is IWorkspaceEdit))
+                    if ((workspace.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace) &&
+                        (workspace is IWorkspaceEdit))
                     {
                         obj2 = table as IVersionedObject;
                         if (obj2.IsRegisteredAsVersioned)
                         {
-                            (this.method_3(this.iarray_0, workspace).EnumName as IEnumNameEdit).Add(featureClass.FullName);
+                            (this.method_3(this.iarray_0, workspace).EnumName as IEnumNameEdit).Add(
+                                featureClass.FullName);
                         }
                     }
                 }
@@ -198,19 +202,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IWorkspace Workspace
         {
-            get
-            {
-                return this.iworkspace_0;
-            }
+            get { return this.iworkspace_0; }
         }
 
         public IArray WorkspaceArray
         {
-            set
-            {
-                this.iarray_0 = value;
-            }
+            set { this.iarray_0 = value; }
         }
     }
 }
-

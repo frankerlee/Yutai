@@ -61,7 +61,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void LayerFieldsPage_Load(object sender, EventArgs e)
+        private void LayerFieldsPage_Load(object sender, EventArgs e)
         {
             this.listView1.ItemChecked += new ItemCheckedEventHandler(this.listView1_ItemChecked);
             if (this.ilayerFields_0 != null)
@@ -88,11 +88,14 @@ namespace Yutai.ArcGIS.Carto.UI
                         items[2] = this.method_0(field.Type);
                         items[3] = field.Length.ToString();
                         items[4] = field.Precision.ToString();
-                        ListViewItem item = new ListViewItem(items) {
+                        ListViewItem item = new ListViewItem(items)
+                        {
                             Checked = info.Visible
                         };
                         this.listView1.Items.Add(item);
-                        if (((field.Type != esriFieldType.esriFieldTypeGeometry) && (field.Type != esriFieldType.esriFieldTypeRaster)) && (field.Type != esriFieldType.esriFieldTypeBlob))
+                        if (((field.Type != esriFieldType.esriFieldTypeGeometry) &&
+                             (field.Type != esriFieldType.esriFieldTypeRaster)) &&
+                            (field.Type != esriFieldType.esriFieldTypeBlob))
                         {
                             this.cboFields.Properties.Items.Add(field.Name);
                             if (field.Name == displayField)
@@ -205,17 +208,12 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IBasicMap FocusMap
         {
-            set
-            {
-            }
+            set { }
         }
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_0;
-            }
+            get { return this.bool_0; }
         }
 
         public object SelectItem
@@ -228,4 +226,3 @@ namespace Yutai.ArcGIS.Carto.UI
         }
     }
 }
-

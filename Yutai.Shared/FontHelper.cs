@@ -16,7 +16,7 @@ namespace Yutai.Shared
         {
             if (font != null && font.FontFamily != null)
             {
-                var newFont = new Font(font.FontFamily, font.Size * scaleFactor, font.Style);
+                var newFont = new Font(font.FontFamily, font.Size*scaleFactor, font.Style);
                 return newFont;
             }
             return null;

@@ -32,8 +32,11 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnAngles_Click(object sender, EventArgs e)
         {
-            IBasicOverposterLayerProperties4 basicOverposterLayerProperties = (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties as IBasicOverposterLayerProperties4;
-            frmLabelRotateAngles angles = new frmLabelRotateAngles {
+            IBasicOverposterLayerProperties4 basicOverposterLayerProperties =
+                (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties as
+                    IBasicOverposterLayerProperties4;
+            frmLabelRotateAngles angles = new frmLabelRotateAngles
+            {
                 Angles = basicOverposterLayerProperties.PointPlacementAngles
             };
             if (angles.ShowDialog() == DialogResult.OK)
@@ -57,8 +60,11 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnRotateField_Click(object sender, EventArgs e)
         {
-            IBasicOverposterLayerProperties4 basicOverposterLayerProperties = (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties as IBasicOverposterLayerProperties4;
-            frmLableRotateField field = new frmLableRotateField {
+            IBasicOverposterLayerProperties4 basicOverposterLayerProperties =
+                (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties as
+                    IBasicOverposterLayerProperties4;
+            frmLableRotateField field = new frmLableRotateField
+            {
                 m_pFields = this.igeoFeatureLayer_0.FeatureClass.Fields,
                 m_PerpendicularToAngle = basicOverposterLayerProperties.PerpendicularToAngle,
                 m_RotationType = basicOverposterLayerProperties.RotationType,
@@ -74,12 +80,13 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnScaleSet_Click(object sender, EventArgs e)
         {
-            new frmAnnoScaleSet { AnnotateLayerProperties = this.iannotateLayerProperties_0 }.ShowDialog();
+            new frmAnnoScaleSet {AnnotateLayerProperties = this.iannotateLayerProperties_0}.ShowDialog();
         }
 
         private void btnSQL_Click(object sender, EventArgs e)
         {
-            frmAttributeQueryBuilder builder = new frmAttributeQueryBuilder {
+            frmAttributeQueryBuilder builder = new frmAttributeQueryBuilder
+            {
                 Table = this.igeoFeatureLayer_0.FeatureClass as ITable,
                 WhereCaluse = this.iannotateLayerProperties_0.WhereClause
             };
@@ -104,19 +111,22 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void imageComboBoxEdit1_SelectedIndexChanged(object sender, EventArgs e)
+        private void imageComboBoxEdit1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.bool_0)
             {
-                IBasicOverposterLayerProperties4 basicOverposterLayerProperties = (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties as IBasicOverposterLayerProperties4;
-                IPointPlacementPriorities pointPlacementPriorities = basicOverposterLayerProperties.PointPlacementPriorities;
+                IBasicOverposterLayerProperties4 basicOverposterLayerProperties =
+                    (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties as
+                        IBasicOverposterLayerProperties4;
+                IPointPlacementPriorities pointPlacementPriorities =
+                    basicOverposterLayerProperties.PointPlacementPriorities;
                 ImageComboBoxItem item = this.imageComboBoxEdit1.Properties.Items[this.imageComboBoxEdit1.SelectedIndex];
                 this.method_0(item.Value.ToString(), pointPlacementPriorities);
                 basicOverposterLayerProperties.PointPlacementPriorities = pointPlacementPriorities;
             }
         }
 
- private void method_0(string string_1, IPointPlacementPriorities ipointPlacementPriorities_0)
+        private void method_0(string string_1, IPointPlacementPriorities ipointPlacementPriorities_0)
         {
             ipointPlacementPriorities_0.AboveLeft = this.method_3(string_1[0]);
             ipointPlacementPriorities_0.AboveCenter = this.method_3(string_1[1]);
@@ -191,7 +201,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void method_4()
         {
-            if (((this.igeoFeatureLayer_0 != null) && (this.iannotateLayerProperties_0 != null)) && (this.igeoFeatureLayer_0.FeatureClass != null))
+            if (((this.igeoFeatureLayer_0 != null) && (this.iannotateLayerProperties_0 != null)) &&
+                (this.igeoFeatureLayer_0.FeatureClass != null))
             {
                 int num;
                 this.bool_0 = false;
@@ -199,14 +210,23 @@ namespace Yutai.ArcGIS.Carto.UI
                 for (num = 0; num < fields.FieldCount; num++)
                 {
                     IField field = fields.get_Field(num);
-                    if (((((field.Type == esriFieldType.esriFieldTypeDate) || (field.Type == esriFieldType.esriFieldTypeDouble)) || ((field.Type == esriFieldType.esriFieldTypeGlobalID) || (field.Type == esriFieldType.esriFieldTypeGUID))) || (((field.Type == esriFieldType.esriFieldTypeInteger) || (field.Type == esriFieldType.esriFieldTypeOID)) || ((field.Type == esriFieldType.esriFieldTypeSingle) || (field.Type == esriFieldType.esriFieldTypeSmallInteger)))) || (field.Type == esriFieldType.esriFieldTypeString))
+                    if (((((field.Type == esriFieldType.esriFieldTypeDate) ||
+                           (field.Type == esriFieldType.esriFieldTypeDouble)) ||
+                          ((field.Type == esriFieldType.esriFieldTypeGlobalID) ||
+                           (field.Type == esriFieldType.esriFieldTypeGUID))) ||
+                         (((field.Type == esriFieldType.esriFieldTypeInteger) ||
+                           (field.Type == esriFieldType.esriFieldTypeOID)) ||
+                          ((field.Type == esriFieldType.esriFieldTypeSingle) ||
+                           (field.Type == esriFieldType.esriFieldTypeSmallInteger)))) ||
+                        (field.Type == esriFieldType.esriFieldTypeString))
                     {
                         this.cboFields.Properties.Items.Add(field.AliasName);
                     }
                 }
                 this.string_0 = (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).Expression.Trim();
                 this.bool_1 = (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).IsExpressionSimple;
-                this.iannotationExpressionEngine_0 = (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).ExpressionParser;
+                this.iannotationExpressionEngine_0 =
+                    (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).ExpressionParser;
                 if (this.string_0.IndexOf("[", 1) != -1)
                 {
                     this.cboFields.Enabled = false;
@@ -232,7 +252,10 @@ namespace Yutai.ArcGIS.Carto.UI
                 this.itextSymbol_0 = (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).Symbol;
                 this.symbolItem.Symbol = this.itextSymbol_0;
                 this.symbolItem.Invalidate();
-                this.rdoPointPlacementMethod.SelectedIndex = (int) (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties.PointPlacementMethod;
+                this.rdoPointPlacementMethod.SelectedIndex =
+                    (int)
+                    (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties
+                        .PointPlacementMethod;
                 if (this.rdoPointPlacementMethod.SelectedIndex != 0)
                 {
                     if (this.rdoPointPlacementMethod.SelectedIndex == 2)
@@ -256,7 +279,9 @@ namespace Yutai.ArcGIS.Carto.UI
                 }
                 else
                 {
-                    IPointPlacementPriorities pointPlacementPriorities = (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties.PointPlacementPriorities;
+                    IPointPlacementPriorities pointPlacementPriorities =
+                        (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties
+                            .PointPlacementPriorities;
                     string str2 = this.method_2(pointPlacementPriorities);
                     for (num = 0; num < this.imageComboBoxEdit1.Properties.Items.Count; num++)
                     {
@@ -311,14 +336,18 @@ namespace Yutai.ArcGIS.Carto.UI
             }
             if (this.bool_0)
             {
-                IBasicOverposterLayerProperties4 basicOverposterLayerProperties = (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties as IBasicOverposterLayerProperties4;
-                basicOverposterLayerProperties.PointPlacementMethod = (esriOverposterPointPlacementMethod) this.rdoPointPlacementMethod.SelectedIndex;
+                IBasicOverposterLayerProperties4 basicOverposterLayerProperties =
+                    (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties as
+                        IBasicOverposterLayerProperties4;
+                basicOverposterLayerProperties.PointPlacementMethod =
+                    (esriOverposterPointPlacementMethod) this.rdoPointPlacementMethod.SelectedIndex;
             }
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            frmExpressionSet set = new frmExpressionSet {
+            frmExpressionSet set = new frmExpressionSet
+            {
                 LabelExpression = this.string_0,
                 AnnotationExpressionEngine = this.iannotationExpressionEngine_0,
                 IsExpressionSimple = this.bool_1,
@@ -330,7 +359,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 this.iannotationExpressionEngine_0 = set.AnnotationExpressionEngine;
                 this.bool_1 = set.IsExpressionSimple;
                 (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).Expression = this.string_0;
-                (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).ExpressionParser = this.iannotationExpressionEngine_0;
+                (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).ExpressionParser =
+                    this.iannotationExpressionEngine_0;
                 (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).IsExpressionSimple = this.bool_1;
                 int index = this.string_0.IndexOf("[", 1);
                 IFields fields = this.igeoFeatureLayer_0.FeatureClass.Fields;
@@ -373,11 +403,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IGeoFeatureLayer GeoFeatureLayer
         {
-            set
-            {
-                this.igeoFeatureLayer_0 = value;
-            }
+            set { this.igeoFeatureLayer_0 = value; }
         }
     }
 }
-

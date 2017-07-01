@@ -56,12 +56,17 @@ namespace Yutai.ArcGIS.Catalog
         {
             if (igxObject_0 is IGxDatabase)
             {
-                bool_0 = ((igxObject_0 as IGxDatabase).Workspace as IWorkspace2).get_NameExists(esriDatasetType.esriDTFeatureClass, string_0);
+                bool_0 =
+                    ((igxObject_0 as IGxDatabase).Workspace as IWorkspace2).get_NameExists(
+                        esriDatasetType.esriDTFeatureClass, string_0);
                 return true;
             }
-            if ((igxObject_0 is IGxDataset) && ((igxObject_0 as IGxDataset).Type == esriDatasetType.esriDTFeatureDataset))
+            if ((igxObject_0 is IGxDataset) &&
+                ((igxObject_0 as IGxDataset).Type == esriDatasetType.esriDTFeatureDataset))
             {
-                bool_0 = ((igxObject_0 as IGxDataset).Dataset.Workspace as IWorkspace2).get_NameExists(esriDatasetType.esriDTFeatureClass, string_0);
+                bool_0 =
+                    ((igxObject_0 as IGxDataset).Dataset.Workspace as IWorkspace2).get_NameExists(
+                        esriDatasetType.esriDTFeatureClass, string_0);
                 return true;
             }
             return false;
@@ -69,19 +74,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public string Description
         {
-            get
-            {
-                return "个人数据库要素类";
-            }
+            get { return "个人数据库要素类"; }
         }
 
         public string Name
         {
-            get
-            {
-                return "个人数据库要素类";
-            }
+            get { return "个人数据库要素类"; }
         }
     }
 }
-

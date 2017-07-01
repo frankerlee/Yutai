@@ -9,4 +9,3 @@
         double Z { get; set; }
     }
 }
-

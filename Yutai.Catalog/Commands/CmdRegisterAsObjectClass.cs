@@ -56,7 +56,8 @@ namespace Yutai.Plugins.Catalog.Commands
                 {
                     if (((IGxSelection) _context.GxSelection).FirstObject is IGxDataset)
                     {
-                        IObjectClass objectClass = (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Dataset as IObjectClass;
+                        IObjectClass objectClass =
+                            (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Dataset as IObjectClass;
                         if (objectClass != null && objectClass.ObjectClassID == -1)
                         {
                             IWorkspace workspace = (objectClass as IDataset).Workspace;
@@ -93,7 +94,8 @@ namespace Yutai.Plugins.Catalog.Commands
                     {
                         string startupPath = System.Windows.Forms.Application.StartupPath;
                         string text2 = Guid.NewGuid().ToString() + ".sde";
-                        (table as IDataset).Workspace.WorkspaceFactory.Create(startupPath, text2, (table as IDataset).Workspace.ConnectionProperties, 0);
+                        (table as IDataset).Workspace.WorkspaceFactory.Create(startupPath, text2,
+                            (table as IDataset).Workspace.ConnectionProperties, 0);
                         text = System.IO.Path.Combine(startupPath, text2);
                         flag = true;
                     }
@@ -117,7 +119,7 @@ namespace Yutai.Plugins.Catalog.Commands
                 }
                 else
                 {
-                    ISchemaLock schemaLock = (ISchemaLock)table;
+                    ISchemaLock schemaLock = (ISchemaLock) table;
                     schemaLock.ChangeSchemaLock(esriSchemaLock.esriExclusiveSchemaLock);
                     (table as IClassSchemaEdit).RegisterAsObjectClass("ObjectID", "");
                     schemaLock.ChangeSchemaLock(esriSchemaLock.esriSharedSchemaLock);

@@ -15,19 +15,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IEnumName EnumName
         {
-            get
-            {
-                return this.ienumName_0;
-            }
+            get { return this.ienumName_0; }
         }
 
         public IWorkspace Workspace
         {
-            get
-            {
-                return this.iworkspace_0;
-            }
+            get { return this.iworkspace_0; }
         }
     }
 }
-

@@ -4,13 +4,14 @@ using ESRI.ArcGIS.GeoDatabaseDistributed;
 
 namespace Yutai.ArcGIS.Common.Geodatabase
 {
-	internal class CheckOutCheckIn
-	{
-		public CheckOutCheckIn()
-		{
-		}
+    internal class CheckOutCheckIn
+    {
+        public CheckOutCheckIn()
+        {
+        }
 
-        public static void SimpleCheckOut(IWorkspaceName iworkspaceName_0, IWorkspaceName iworkspaceName_1, IEnumName ienumName_0, bool bool_0, bool bool_1, string string_0)
+        public static void SimpleCheckOut(IWorkspaceName iworkspaceName_0, IWorkspaceName iworkspaceName_1,
+            IEnumName ienumName_0, bool bool_0, bool bool_1, string string_0)
         {
             IName name = iworkspaceName_1 as IName;
             IWorkspace arg_12_0 = name.Open() as IWorkspace;
@@ -29,7 +30,8 @@ namespace Yutai.ArcGIS.Common.Geodatabase
             }
         }
 
-        public static void SimpleCheckIn(IWorkspaceName iworkspaceName_0, IWorkspaceName iworkspaceName_1, IEnumName ienumName_0, bool bool_0, bool bool_1, string string_0)
+        public static void SimpleCheckIn(IWorkspaceName iworkspaceName_0, IWorkspaceName iworkspaceName_1,
+            IEnumName ienumName_0, bool bool_0, bool bool_1, string string_0)
         {
             IName name = iworkspaceName_1 as IName;
             IWorkspace workspace = name.Open() as IWorkspace;

@@ -37,19 +37,18 @@ namespace Yutai.Pipeline.Analysis.Commands
             _context.SetCurrentTool(this);
             if (_analyseDlg == null)
             {
-                _analyseDlg=new BufferAnalyseDlg()
+                _analyseDlg = new BufferAnalyseDlg()
                 {
                     m_app = _context,
-                    m_PipeConfig=_plugin.PipeConfig
+                    m_PipeConfig = _plugin.PipeConfig
                 };
                 _analyseDlg.Show();
-                _analyseDlg.Closing+= AnalyseDlgOnClosing;
+                _analyseDlg.Closing += AnalyseDlgOnClosing;
             }
             else if (!_analyseDlg.Visible)
             {
                 _analyseDlg.Visible = true;
             }
-
         }
 
         private void AnalyseDlgOnClosing(object sender, CancelEventArgs cancelEventArgs)
@@ -100,8 +99,8 @@ namespace Yutai.Pipeline.Analysis.Commands
         public override void OnMouseDown(int button, int Shift, int x, int y)
         {
             if (button == 2) return;
-            IActiveView focusMap = (IActiveView)_context.ActiveView;
-            _pPoint=focusMap.ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
+            IActiveView focusMap = (IActiveView) _context.ActiveView;
+            _pPoint = focusMap.ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
             if (!this._analyseDlg.SelectGeometry)
             {
                 GetAnalysisEnvelope(x, y);
@@ -112,7 +111,7 @@ namespace Yutai.Pipeline.Analysis.Commands
                 _analyseDlg.m_pDrawGeo = geometry;
                 _analyseDlg.bDrawRed = true;
             }
-            
+
             _context.ActiveView.PartialRefresh((esriViewDrawPhase) 32, null, null);
         }
 
@@ -120,24 +119,20 @@ namespace Yutai.Pipeline.Analysis.Commands
         {
             IMap map = _context.FocusMap;
             IEnvelope envelopeClass = new Envelope() as IEnvelope;
-            IPoint mapPoint = ((IActiveView)map).ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
-            IActiveView activeView = (IActiveView)map;
+            IPoint mapPoint = ((IActiveView) map).ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
+            IActiveView activeView = (IActiveView) map;
             envelopeClass.PutCoords(mapPoint.X, mapPoint.Y, mapPoint.X, mapPoint.Y);
-            double width = activeView.Extent.Width / 200;
+            double width = activeView.Extent.Width/200;
             IEnvelope envelope = envelopeClass;
-            envelope.XMin=(envelope.XMin - width);
+            envelope.XMin = (envelope.XMin - width);
             IEnvelope envelope1 = envelopeClass;
-            envelope1.YMin=(envelope1.YMin - width);
+            envelope1.YMin = (envelope1.YMin - width);
             IEnvelope envelope2 = envelopeClass;
-            envelope2.YMax=(envelope2.YMax + width);
+            envelope2.YMax = (envelope2.YMax + width);
             IEnvelope envelope3 = envelopeClass;
-            envelope3.XMax=(envelope3.XMax + width);
-            map.SelectByShape(envelopeClass, new SelectionEnvironment() , true);
-            ((IActiveView)map).PartialRefresh((esriViewDrawPhase.esriViewGeoSelection), null, null);
+            envelope3.XMax = (envelope3.XMax + width);
+            map.SelectByShape(envelopeClass, new SelectionEnvironment(), true);
+            ((IActiveView) map).PartialRefresh((esriViewDrawPhase.esriViewGeoSelection), null, null);
         }
-
-      
-      
-        
     }
 }

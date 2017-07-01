@@ -20,7 +20,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             this.InitializeComponent();
         }
 
- private void LegendFormatSetupCtrl_Load(object sender, EventArgs e)
+        private void LegendFormatSetupCtrl_Load(object sender, EventArgs e)
         {
             this.method_0();
             this.bool_0 = true;
@@ -326,11 +326,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         public ILegend Legend
         {
-            set
-            {
-                this.ilegend_0 = value;
-            }
+            set { this.ilegend_0 = value; }
         }
     }
 }
-

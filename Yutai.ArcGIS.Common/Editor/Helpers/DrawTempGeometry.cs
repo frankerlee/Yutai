@@ -1,10 +1,10 @@
 namespace Yutai.ArcGIS.Common.Editor.Helpers
 {
-	public enum DrawTempGeometry
-	{
-		None,
-		Point,
-		Line,
-		Fill
-	}
+    public enum DrawTempGeometry
+    {
+        None,
+        Point,
+        Line,
+        Fill
+    }
 }

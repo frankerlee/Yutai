@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Yutai.Plugins.TableEditor.Functions.Math
 {
-    class FunctionAtn: FunctionBase
+    class FunctionAtn : FunctionBase
     {
         public FunctionAtn()
         {
@@ -17,7 +17,7 @@ namespace Yutai.Plugins.TableEditor.Functions.Math
             _description = "Atn 函数可返回指定数字的正切。";
             _parameters = new List<Parameter>()
             {
-                new Parameter() { Order = 0, Name = "number", Description = "必需的。一个数值表达式。"}
+                new Parameter() {Order = 0, Name = "number", Description = "必需的。一个数值表达式。"}
             };
         }
     }

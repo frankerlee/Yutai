@@ -15,7 +15,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         private IContainer icontainer_0 = null;
         private IFeatureClass ifeatureClass_0 = null;
         private IRepresentationRules irepresentationRules_0 = null;
-    //
+        //
         public RepresentationRulesPage()
         {
             this.InitializeComponent();
@@ -47,18 +47,19 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.contextMenuStrip1.Show(this, this.btnOther.Right, this.btnOther.Top);
         }
 
- private void importSymbolToolStripMenuItem_Click(object sender, EventArgs e)
+        private void importSymbolToolStripMenuItem_Click(object sender, EventArgs e)
         {
         }
 
- private void loadRuleToolStripMenuItem_Click(object sender, EventArgs e)
+        private void loadRuleToolStripMenuItem_Click(object sender, EventArgs e)
         {
         }
 
         private IBasicSymbol method_0(IFeatureClass ifeatureClass_1)
         {
             IBasicSymbol symbol = null;
-            if ((ifeatureClass_1.ShapeType == esriGeometryType.esriGeometryMultipoint) || (ifeatureClass_1.ShapeType == esriGeometryType.esriGeometryPoint))
+            if ((ifeatureClass_1.ShapeType == esriGeometryType.esriGeometryMultipoint) ||
+                (ifeatureClass_1.ShapeType == esriGeometryType.esriGeometryPoint))
             {
                 return new BasicMarkerSymbolClass();
             }
@@ -92,7 +93,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 if (this.representationruleListBox1.Items.Count > 1)
                 {
                     this.btnMoveUp.Enabled = this.representationruleListBox1.SelectedIndex != 0;
-                    this.tnMoveDown.Enabled = this.representationruleListBox1.SelectedIndex != (this.representationruleListBox1.Items.Count - 1);
+                    this.tnMoveDown.Enabled = this.representationruleListBox1.SelectedIndex !=
+                                              (this.representationruleListBox1.Items.Count - 1);
                 }
                 else
                 {
@@ -129,19 +131,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IFeatureClass FeatureClass
         {
-            set
-            {
-                this.ifeatureClass_0 = value;
-            }
+            set { this.ifeatureClass_0 = value; }
         }
 
         public IRepresentationRules RepresentationRules
         {
-            set
-            {
-                this.irepresentationRules_0 = value;
-            }
+            set { this.irepresentationRules_0 = value; }
         }
     }
 }
-

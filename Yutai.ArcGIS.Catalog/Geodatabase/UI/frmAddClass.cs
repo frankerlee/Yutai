@@ -25,17 +25,19 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             {
                 for (int i = 0; i < this.listBoxControl1.SelectedIndices.Count; i++)
                 {
-                    this.ilist_0.Add((this.listBoxControl1.Items[this.listBoxControl1.SelectedIndices[i]] as FeatureClassWrap).FeatureClass);
+                    this.ilist_0.Add(
+                        (this.listBoxControl1.Items[this.listBoxControl1.SelectedIndices[i]] as FeatureClassWrap)
+                            .FeatureClass);
                 }
             }
         }
 
- private void frmAddClass_Load(object sender, EventArgs e)
+        private void frmAddClass_Load(object sender, EventArgs e)
         {
             this.method_0();
         }
 
- private void listBoxControl1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBoxControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.listBoxControl1.SelectedIndices.Count > 0)
             {
@@ -55,7 +57,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             {
                 IVersionedObject obj2;
                 int num;
-                if ((dataset3.Type != esriDatasetType.esriDTFeatureClass) || ((dataset3 as IFeatureClass).FeatureType != esriFeatureType.esriFTSimple))
+                if ((dataset3.Type != esriDatasetType.esriDTFeatureClass) ||
+                    ((dataset3 as IFeatureClass).FeatureType != esriFeatureType.esriFTSimple))
                 {
                     continue;
                 }
@@ -85,15 +88,15 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     }
                 }
                 goto Label_00C5;
-            Label_00C3:
+                Label_00C3:
                 flag = false;
-            Label_00C5:
+                Label_00C5:
                 if (flag)
                 {
                     this.listBoxControl1.Items.Add(new FeatureClassWrap(dataset3 as IFeatureClass));
                 }
                 continue;
-            Label_00EF:
+                Label_00EF:
                 flag = true;
                 if (dataset3.Workspace is IVersionedWorkspace)
                 {
@@ -114,9 +117,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     }
                 }
                 goto Label_0157;
-            Label_0155:
+                Label_0155:
                 flag = false;
-            Label_0157:
+                Label_0157:
                 if (flag)
                 {
                     this.listBoxControl1.Items.Add(new FeatureClassWrap(dataset3 as IFeatureClass));
@@ -126,18 +129,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IList List
         {
-            get
-            {
-                return this.ilist_0;
-            }
+            get { return this.ilist_0; }
         }
 
         public ITopology Topology
         {
-            set
-            {
-                this.itopology_0 = value;
-            }
+            set { this.itopology_0 = value; }
         }
 
         protected partial class FeatureClassWrap
@@ -156,12 +153,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
             public IFeatureClass FeatureClass
             {
-                get
-                {
-                    return this.ifeatureClass_0;
-                }
+                get { return this.ifeatureClass_0; }
             }
         }
     }
 }
-

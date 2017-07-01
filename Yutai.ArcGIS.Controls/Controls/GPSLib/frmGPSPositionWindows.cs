@@ -8,22 +8,25 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
 {
     public partial class frmGPSPositionWindows : Form
     {
-
         public frmGPSPositionWindows()
         {
             this.InitializeComponent();
         }
 
- private void frmGPSPositionWindows_Load(object sender, EventArgs e)
+        private void frmGPSPositionWindows_Load(object sender, EventArgs e)
         {
             GPSManager.GpsPositionUpdated += new GPSManager.GpsPositionUpdatedHandler(this.GPSManager_GpsPositionUpdated);
-            GPSManager.ConnectionStatusUpdated += new GPSManager.ConnectionStatusUpdatedEventHandler(this.GPSManager_ConnectionStatusUpdated);
+            GPSManager.ConnectionStatusUpdated +=
+                new GPSManager.ConnectionStatusUpdatedEventHandler(this.GPSManager_ConnectionStatusUpdated);
             GPSManager.DateTimeUpdated += new GPSManager.DateTimeUpdatedEventHandler(this.GPSManager_DateTimeUpdated);
             GPSManager.DgpsInfoUpdated += new GPSManager.DgpsInfoUpdatedEventHandler(this.GPSManager_DgpsInfoUpdated);
             GPSManager.DopInfoUpdated += new GPSManager.DopInfoUpdatedEventHandler(this.GPSManager_DopInfoUpdated);
-            GPSManager.GroundCourseUpdated += new GPSManager.GroundCourseUpdatedEventHandler(this.GPSManager_GroundCourseUpdated);
-            GPSManager.MagneticVarianceUpdated += new GPSManager.MagneticVarianceUpdatedEventHandler(this.GPSManager_MagneticVarianceUpdated);
-            GPSManager.SatelliteInfoUpdated += new GPSManager.SatelliteInfoUpdatedEventHandler(this.GPSManager_SatelliteInfoUpdated);
+            GPSManager.GroundCourseUpdated +=
+                new GPSManager.GroundCourseUpdatedEventHandler(this.GPSManager_GroundCourseUpdated);
+            GPSManager.MagneticVarianceUpdated +=
+                new GPSManager.MagneticVarianceUpdatedEventHandler(this.GPSManager_MagneticVarianceUpdated);
+            GPSManager.SatelliteInfoUpdated +=
+                new GPSManager.SatelliteInfoUpdatedEventHandler(this.GPSManager_SatelliteInfoUpdated);
             if (GPSManager.CurrentGpsPositionInfoIsValid)
             {
                 this.lblLat.Text = GPSManager.CurrentGpsPositionInfo.latitude.ToString("0.###");
@@ -70,7 +73,8 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
         {
             if (pNewDateTime.dateValid == 1)
             {
-                this.lblUCTDate.Text = pNewDateTime.year.ToString() + "-" + pNewDateTime.month.ToString() + "-" + pNewDateTime.day.ToString();
+                this.lblUCTDate.Text = pNewDateTime.year.ToString() + "-" + pNewDateTime.month.ToString() + "-" +
+                                       pNewDateTime.day.ToString();
             }
             else
             {
@@ -78,7 +82,8 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
             }
             if (pNewDateTime.timeValid == 1)
             {
-                this.lblUCTTime.Text = pNewDateTime.hour.ToString() + ":" + pNewDateTime.minute.ToString() + ":" + pNewDateTime.seconds.ToString("0.###");
+                this.lblUCTTime.Text = pNewDateTime.hour.ToString() + ":" + pNewDateTime.minute.ToString() + ":" +
+                                       pNewDateTime.seconds.ToString("0.###");
             }
             else
             {
@@ -223,7 +228,5 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
                 this.lblSNR.Text = "N/A";
             }
         }
-
-
     }
 }

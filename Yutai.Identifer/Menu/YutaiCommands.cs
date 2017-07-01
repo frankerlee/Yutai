@@ -15,6 +15,7 @@ namespace Yutai.Plugins.Identifer.Menu
         private List<YutaiCommand> _commands;
         private IdentifierPlugin _plugin;
         private List<string> _commandKeys;
+
         public YutaiCommands(IAppContext context, PluginIdentity identity)
             : base(context, identity)
         {
@@ -25,10 +26,12 @@ namespace Yutai.Plugins.Identifer.Menu
             get { return _plugin; }
             set { _plugin = value; }
         }
+
         public List<string> GetKeys()
         {
             return _commandKeys;
         }
+
         public override IEnumerable<YutaiCommand> GetCommands()
         {
             //第一次被初始化的时候Plugin为空，出现错误，所以在创建菜单的时候重新进行了初始化。
@@ -63,26 +66,24 @@ namespace Yutai.Plugins.Identifer.Menu
 
             _commands = new List<YutaiCommand>()
             {
-             
                 new CmdViewIdentifier(_context, _plugin) as YutaiCommand,
                 new CmdStartQueryBuilder(_context) as YutaiCommand,
                 new CmdStartQueryLocation(_context) as YutaiCommand,
                 new CmdStartQueryAttributeAndLocation(_context) as YutaiCommand,
                 new CmdSetSelectableLayer(_context) as YutaiCommand,
-                new CmdSetCurrentLayer(_context,_plugin) as YutaiCommand,
-                new CmdSetSelectRelation(_context,_plugin) as YutaiCommand,
-                new CmdSelectByMouse(_context) {SubType = 0}  as YutaiCommand,
-                 new CmdSelectByMouse(_context) {SubType =1}  as YutaiCommand,
-                new CmdSelectByMouse(_context) {SubType = -1}  as YutaiCommand,
-                 new CmdSelectByBuffer(_context) {SubType = 0}  as YutaiCommand,
-                 new CmdSelectByBuffer(_context) {SubType = 1}  as YutaiCommand,
-                 new CmdSelectByBuffer(_context) {SubType = -1}  as YutaiCommand,
-                 new CmdSelectAll(_context,_plugin) as YutaiCommand,
-                 new CmdSelectByScreen(_context,_plugin) as YutaiCommand,
+                new CmdSetCurrentLayer(_context, _plugin) as YutaiCommand,
+                new CmdSetSelectRelation(_context, _plugin) as YutaiCommand,
+                new CmdSelectByMouse(_context) {SubType = 0} as YutaiCommand,
+                new CmdSelectByMouse(_context) {SubType = 1} as YutaiCommand,
+                new CmdSelectByMouse(_context) {SubType = -1} as YutaiCommand,
+                new CmdSelectByBuffer(_context) {SubType = 0} as YutaiCommand,
+                new CmdSelectByBuffer(_context) {SubType = 1} as YutaiCommand,
+                new CmdSelectByBuffer(_context) {SubType = -1} as YutaiCommand,
+                new CmdSelectAll(_context, _plugin) as YutaiCommand,
+                new CmdSelectByScreen(_context, _plugin) as YutaiCommand,
                 new CmdSwitchSelection(_context, _plugin) as YutaiCommand,
                 new CmdZoomToSelection(_context) as YutaiCommand,
                 new CmdSelectClear(_context) as YutaiCommand
-
             };
             _commandKeys = new List<string>();
             foreach (var command in _commands)
@@ -92,7 +93,7 @@ namespace Yutai.Plugins.Identifer.Menu
                     continue;
                 _commandKeys.Add(command.Name);
             }
-           //}
+            //}
             return _commands;
         }
     }

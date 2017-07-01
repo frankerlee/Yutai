@@ -40,10 +40,13 @@ namespace Yutai.ArcGIS.Common
                 do
                 {
                     onSetSubMaxValueHandler2 = onSetSubMaxValueHandler;
-                    MainSunProcessAssist.OnSetSubMaxValueHandler value2 = (MainSunProcessAssist.OnSetSubMaxValueHandler)System.Delegate.Combine(onSetSubMaxValueHandler2, value);
-                    onSetSubMaxValueHandler = System.Threading.Interlocked.CompareExchange<MainSunProcessAssist.OnSetSubMaxValueHandler>(ref this.onSetSubMaxValueHandler_0, value2, onSetSubMaxValueHandler2);
-                }
-                while (onSetSubMaxValueHandler != onSetSubMaxValueHandler2);
+                    MainSunProcessAssist.OnSetSubMaxValueHandler value2 =
+                        (MainSunProcessAssist.OnSetSubMaxValueHandler)
+                        System.Delegate.Combine(onSetSubMaxValueHandler2, value);
+                    onSetSubMaxValueHandler =
+                        System.Threading.Interlocked.CompareExchange<MainSunProcessAssist.OnSetSubMaxValueHandler>(
+                            ref this.onSetSubMaxValueHandler_0, value2, onSetSubMaxValueHandler2);
+                } while (onSetSubMaxValueHandler != onSetSubMaxValueHandler2);
             }
             remove
             {
@@ -52,10 +55,13 @@ namespace Yutai.ArcGIS.Common
                 do
                 {
                     onSetSubMaxValueHandler2 = onSetSubMaxValueHandler;
-                    MainSunProcessAssist.OnSetSubMaxValueHandler value2 = (MainSunProcessAssist.OnSetSubMaxValueHandler)System.Delegate.Remove(onSetSubMaxValueHandler2, value);
-                    onSetSubMaxValueHandler = System.Threading.Interlocked.CompareExchange<MainSunProcessAssist.OnSetSubMaxValueHandler>(ref this.onSetSubMaxValueHandler_0, value2, onSetSubMaxValueHandler2);
-                }
-                while (onSetSubMaxValueHandler != onSetSubMaxValueHandler2);
+                    MainSunProcessAssist.OnSetSubMaxValueHandler value2 =
+                        (MainSunProcessAssist.OnSetSubMaxValueHandler)
+                        System.Delegate.Remove(onSetSubMaxValueHandler2, value);
+                    onSetSubMaxValueHandler =
+                        System.Threading.Interlocked.CompareExchange<MainSunProcessAssist.OnSetSubMaxValueHandler>(
+                            ref this.onSetSubMaxValueHandler_0, value2, onSetSubMaxValueHandler2);
+                } while (onSetSubMaxValueHandler != onSetSubMaxValueHandler2);
             }
         }
 
@@ -68,10 +74,13 @@ namespace Yutai.ArcGIS.Common
                 do
                 {
                     onSetSubMessageHandler2 = onSetSubMessageHandler;
-                    MainSunProcessAssist.OnSetSubMessageHandler value2 = (MainSunProcessAssist.OnSetSubMessageHandler)System.Delegate.Combine(onSetSubMessageHandler2, value);
-                    onSetSubMessageHandler = System.Threading.Interlocked.CompareExchange<MainSunProcessAssist.OnSetSubMessageHandler>(ref this.onSetSubMessageHandler_0, value2, onSetSubMessageHandler2);
-                }
-                while (onSetSubMessageHandler != onSetSubMessageHandler2);
+                    MainSunProcessAssist.OnSetSubMessageHandler value2 =
+                        (MainSunProcessAssist.OnSetSubMessageHandler)
+                        System.Delegate.Combine(onSetSubMessageHandler2, value);
+                    onSetSubMessageHandler =
+                        System.Threading.Interlocked.CompareExchange<MainSunProcessAssist.OnSetSubMessageHandler>(
+                            ref this.onSetSubMessageHandler_0, value2, onSetSubMessageHandler2);
+                } while (onSetSubMessageHandler != onSetSubMessageHandler2);
             }
             remove
             {
@@ -80,10 +89,13 @@ namespace Yutai.ArcGIS.Common
                 do
                 {
                     onSetSubMessageHandler2 = onSetSubMessageHandler;
-                    MainSunProcessAssist.OnSetSubMessageHandler value2 = (MainSunProcessAssist.OnSetSubMessageHandler)System.Delegate.Remove(onSetSubMessageHandler2, value);
-                    onSetSubMessageHandler = System.Threading.Interlocked.CompareExchange<MainSunProcessAssist.OnSetSubMessageHandler>(ref this.onSetSubMessageHandler_0, value2, onSetSubMessageHandler2);
-                }
-                while (onSetSubMessageHandler != onSetSubMessageHandler2);
+                    MainSunProcessAssist.OnSetSubMessageHandler value2 =
+                        (MainSunProcessAssist.OnSetSubMessageHandler)
+                        System.Delegate.Remove(onSetSubMessageHandler2, value);
+                    onSetSubMessageHandler =
+                        System.Threading.Interlocked.CompareExchange<MainSunProcessAssist.OnSetSubMessageHandler>(
+                            ref this.onSetSubMessageHandler_0, value2, onSetSubMessageHandler2);
+                } while (onSetSubMessageHandler != onSetSubMessageHandler2);
             }
         }
 
@@ -96,10 +108,13 @@ namespace Yutai.ArcGIS.Common
                 do
                 {
                     onResetSubInfoHandler2 = onResetSubInfoHandler;
-                    MainSunProcessAssist.OnResetSubInfoHandler value2 = (MainSunProcessAssist.OnResetSubInfoHandler)System.Delegate.Combine(onResetSubInfoHandler2, value);
-                    onResetSubInfoHandler = System.Threading.Interlocked.CompareExchange<MainSunProcessAssist.OnResetSubInfoHandler>(ref this.onResetSubInfoHandler_0, value2, onResetSubInfoHandler2);
-                }
-                while (onResetSubInfoHandler != onResetSubInfoHandler2);
+                    MainSunProcessAssist.OnResetSubInfoHandler value2 =
+                        (MainSunProcessAssist.OnResetSubInfoHandler)
+                        System.Delegate.Combine(onResetSubInfoHandler2, value);
+                    onResetSubInfoHandler =
+                        System.Threading.Interlocked.CompareExchange<MainSunProcessAssist.OnResetSubInfoHandler>(
+                            ref this.onResetSubInfoHandler_0, value2, onResetSubInfoHandler2);
+                } while (onResetSubInfoHandler != onResetSubInfoHandler2);
             }
             remove
             {
@@ -108,10 +123,13 @@ namespace Yutai.ArcGIS.Common
                 do
                 {
                     onResetSubInfoHandler2 = onResetSubInfoHandler;
-                    MainSunProcessAssist.OnResetSubInfoHandler value2 = (MainSunProcessAssist.OnResetSubInfoHandler)System.Delegate.Remove(onResetSubInfoHandler2, value);
-                    onResetSubInfoHandler = System.Threading.Interlocked.CompareExchange<MainSunProcessAssist.OnResetSubInfoHandler>(ref this.onResetSubInfoHandler_0, value2, onResetSubInfoHandler2);
-                }
-                while (onResetSubInfoHandler != onResetSubInfoHandler2);
+                    MainSunProcessAssist.OnResetSubInfoHandler value2 =
+                        (MainSunProcessAssist.OnResetSubInfoHandler)
+                        System.Delegate.Remove(onResetSubInfoHandler2, value);
+                    onResetSubInfoHandler =
+                        System.Threading.Interlocked.CompareExchange<MainSunProcessAssist.OnResetSubInfoHandler>(
+                            ref this.onResetSubInfoHandler_0, value2, onResetSubInfoHandler2);
+                } while (onResetSubInfoHandler != onResetSubInfoHandler2);
             }
         }
 
@@ -124,10 +142,13 @@ namespace Yutai.ArcGIS.Common
                 do
                 {
                     onSetSubPostionHandler2 = onSetSubPostionHandler;
-                    MainSunProcessAssist.OnSetSubPostionHandler value2 = (MainSunProcessAssist.OnSetSubPostionHandler)System.Delegate.Combine(onSetSubPostionHandler2, value);
-                    onSetSubPostionHandler = System.Threading.Interlocked.CompareExchange<MainSunProcessAssist.OnSetSubPostionHandler>(ref this.onSetSubPostionHandler_0, value2, onSetSubPostionHandler2);
-                }
-                while (onSetSubPostionHandler != onSetSubPostionHandler2);
+                    MainSunProcessAssist.OnSetSubPostionHandler value2 =
+                        (MainSunProcessAssist.OnSetSubPostionHandler)
+                        System.Delegate.Combine(onSetSubPostionHandler2, value);
+                    onSetSubPostionHandler =
+                        System.Threading.Interlocked.CompareExchange<MainSunProcessAssist.OnSetSubPostionHandler>(
+                            ref this.onSetSubPostionHandler_0, value2, onSetSubPostionHandler2);
+                } while (onSetSubPostionHandler != onSetSubPostionHandler2);
             }
             remove
             {
@@ -136,10 +157,13 @@ namespace Yutai.ArcGIS.Common
                 do
                 {
                     onSetSubPostionHandler2 = onSetSubPostionHandler;
-                    MainSunProcessAssist.OnSetSubPostionHandler value2 = (MainSunProcessAssist.OnSetSubPostionHandler)System.Delegate.Remove(onSetSubPostionHandler2, value);
-                    onSetSubPostionHandler = System.Threading.Interlocked.CompareExchange<MainSunProcessAssist.OnSetSubPostionHandler>(ref this.onSetSubPostionHandler_0, value2, onSetSubPostionHandler2);
-                }
-                while (onSetSubPostionHandler != onSetSubPostionHandler2);
+                    MainSunProcessAssist.OnSetSubPostionHandler value2 =
+                        (MainSunProcessAssist.OnSetSubPostionHandler)
+                        System.Delegate.Remove(onSetSubPostionHandler2, value);
+                    onSetSubPostionHandler =
+                        System.Threading.Interlocked.CompareExchange<MainSunProcessAssist.OnSetSubPostionHandler>(
+                            ref this.onSetSubPostionHandler_0, value2, onSetSubPostionHandler2);
+                } while (onSetSubPostionHandler != onSetSubPostionHandler2);
             }
         }
 
@@ -152,10 +176,13 @@ namespace Yutai.ArcGIS.Common
                 do
                 {
                     onSubIncrementHandler2 = onSubIncrementHandler;
-                    MainSunProcessAssist.OnSubIncrementHandler value2 = (MainSunProcessAssist.OnSubIncrementHandler)System.Delegate.Combine(onSubIncrementHandler2, value);
-                    onSubIncrementHandler = System.Threading.Interlocked.CompareExchange<MainSunProcessAssist.OnSubIncrementHandler>(ref this.onSubIncrementHandler_0, value2, onSubIncrementHandler2);
-                }
-                while (onSubIncrementHandler != onSubIncrementHandler2);
+                    MainSunProcessAssist.OnSubIncrementHandler value2 =
+                        (MainSunProcessAssist.OnSubIncrementHandler)
+                        System.Delegate.Combine(onSubIncrementHandler2, value);
+                    onSubIncrementHandler =
+                        System.Threading.Interlocked.CompareExchange<MainSunProcessAssist.OnSubIncrementHandler>(
+                            ref this.onSubIncrementHandler_0, value2, onSubIncrementHandler2);
+                } while (onSubIncrementHandler != onSubIncrementHandler2);
             }
             remove
             {
@@ -164,10 +191,13 @@ namespace Yutai.ArcGIS.Common
                 do
                 {
                     onSubIncrementHandler2 = onSubIncrementHandler;
-                    MainSunProcessAssist.OnSubIncrementHandler value2 = (MainSunProcessAssist.OnSubIncrementHandler)System.Delegate.Remove(onSubIncrementHandler2, value);
-                    onSubIncrementHandler = System.Threading.Interlocked.CompareExchange<MainSunProcessAssist.OnSubIncrementHandler>(ref this.onSubIncrementHandler_0, value2, onSubIncrementHandler2);
-                }
-                while (onSubIncrementHandler != onSubIncrementHandler2);
+                    MainSunProcessAssist.OnSubIncrementHandler value2 =
+                        (MainSunProcessAssist.OnSubIncrementHandler)
+                        System.Delegate.Remove(onSubIncrementHandler2, value);
+                    onSubIncrementHandler =
+                        System.Threading.Interlocked.CompareExchange<MainSunProcessAssist.OnSubIncrementHandler>(
+                            ref this.onSubIncrementHandler_0, value2, onSubIncrementHandler2);
+                } while (onSubIncrementHandler != onSubIncrementHandler2);
             }
         }
 

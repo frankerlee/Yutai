@@ -19,4 +19,3 @@
         IEnumGxObject SelectedObjects { get; }
     }
 }
-

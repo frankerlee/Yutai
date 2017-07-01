@@ -17,7 +17,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.InitializeComponent();
         }
 
- public bool Do()
+        public bool Do()
         {
             if (this.EditWorkspacelist.SelectedItems.Count == 0)
             {
@@ -50,7 +50,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void SelectExportChangeWKCtrl_Load(object sender, EventArgs e)
+        private void SelectExportChangeWKCtrl_Load(object sender, EventArgs e)
         {
             if (this.iarray_0 != null)
             {
@@ -60,7 +60,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     CheckInOutWorkspaceInfo info = this.iarray_0.get_Element(i) as CheckInOutWorkspaceInfo;
                     items[0] = info.Workspace.PathName;
                     items[1] = "空间数据库连接";
-                    ListViewItem item = new ListViewItem(items) {
+                    ListViewItem item = new ListViewItem(items)
+                    {
                         Tag = info
                     };
                     this.EditWorkspacelist.Items.Add(item);
@@ -70,11 +71,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IArray WorkspaceArray
         {
-            set
-            {
-                this.iarray_0 = value;
-            }
+            set { this.iarray_0 = value; }
         }
     }
 }
-

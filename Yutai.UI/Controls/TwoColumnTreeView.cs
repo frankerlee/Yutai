@@ -28,9 +28,11 @@ namespace Yutai.UI.Controls
             treeColumnAdv2.Highlighted = false;
             treeColumnAdv2.Text = "Value";
             treeColumnAdv2.Width = 200;
-            Columns.AddRange(new[] {
-            treeColumnAdv1,
-            treeColumnAdv2});
+            Columns.AddRange(new[]
+            {
+                treeColumnAdv1,
+                treeColumnAdv2
+            });
 
             FullRowSelect = true;
             GutterSpace = 12;
@@ -55,7 +57,7 @@ namespace Yutai.UI.Controls
 
             if (data.ImageIndex != -1)
             {
-                node.LeftImageIndices = new[] { data.ImageIndex };
+                node.LeftImageIndices = new[] {data.ImageIndex};
             }
             node.SubItems.Add(new TreeNodeAdvSubItem(data.Value));
 
@@ -87,7 +89,7 @@ namespace Yutai.UI.Controls
         {
             var icons = OnCreateImageList();
 
-            var list = new ImageList() { ColorDepth = ColorDepth.Depth32Bit };
+            var list = new ImageList() {ColorDepth = ColorDepth.Depth32Bit};
 
             const int size = 16;
             foreach (var icon in icons)

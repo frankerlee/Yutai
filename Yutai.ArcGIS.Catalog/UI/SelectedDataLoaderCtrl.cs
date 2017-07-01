@@ -13,7 +13,6 @@ namespace Yutai.ArcGIS.Catalog.UI
     public partial class SelectedDataLoaderCtrl : UserControl
     {
         private IContainer icontainer_0 = null;
-        [CompilerGenerated]
 
         public SelectedDataLoaderCtrl()
         {
@@ -41,7 +40,8 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         private void btnSelectInputFeatures_Click(object sender, EventArgs e)
         {
-            frmOpenFile file = new frmOpenFile {
+            frmOpenFile file = new frmOpenFile
+            {
                 Text = "选择要素"
             };
             file.RemoveAllFilters();
@@ -55,11 +55,13 @@ namespace Yutai.ArcGIS.Catalog.UI
                 IGxDataset dataset = file.Items.get_Element(0) as IGxDataset;
                 if (dataset != null)
                 {
-                    if ((this.Table.Type == esriDatasetType.esriDTFeatureClass) && (dataset.Type == esriDatasetType.esriDTFeatureClass))
+                    if ((this.Table.Type == esriDatasetType.esriDTFeatureClass) &&
+                        (dataset.Type == esriDatasetType.esriDTFeatureClass))
                     {
                         if (this.FeatureClass.ShapeType == (dataset.Dataset as IFeatureClass).ShapeType)
                         {
-                            if (this.method_1(this.Table.Workspace, dataset.DatasetName.WorkspaceName) && ((this.FeatureClass as IDataset).Name == dataset.DatasetName.Name))
+                            if (this.method_1(this.Table.Workspace, dataset.DatasetName.WorkspaceName) &&
+                                ((this.FeatureClass as IDataset).Name == dataset.DatasetName.Name))
                             {
                                 MessageBox.Show("源对象类和目标对象类必须不同!");
                                 return;
@@ -72,9 +74,11 @@ namespace Yutai.ArcGIS.Catalog.UI
                             MessageBox.Show("装载数据必须和源数据有相同的几何数据类型!");
                         }
                     }
-                    else if ((this.Table.Type == esriDatasetType.esriDTTable) && (dataset.Type == esriDatasetType.esriDTTable))
+                    else if ((this.Table.Type == esriDatasetType.esriDTTable) &&
+                             (dataset.Type == esriDatasetType.esriDTTable))
                     {
-                        if (this.method_1(this.Table.Workspace, dataset.DatasetName.WorkspaceName) && (this.Table.Name == dataset.DatasetName.Name))
+                        if (this.method_1(this.Table.Workspace, dataset.DatasetName.WorkspaceName) &&
+                            (this.Table.Name == dataset.DatasetName.Name))
                         {
                             MessageBox.Show("源对象类和目标对象类必须不同!");
                             return;
@@ -95,7 +99,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
         }
 
- private bool method_0(IWorkspaceName iworkspaceName_0, IWorkspaceName iworkspaceName_1)
+        private bool method_0(IWorkspaceName iworkspaceName_0, IWorkspaceName iworkspaceName_1)
         {
             return iworkspaceName_0.ConnectionProperties.IsEqual(iworkspaceName_1.ConnectionProperties);
         }
@@ -144,10 +148,7 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         public IFeatureClass FeatureClass
         {
-            get
-            {
-                return (this.Table as IFeatureClass);
-            }
+            get { return (this.Table as IFeatureClass); }
         }
 
         public List<ITable> LoadTables
@@ -168,25 +169,9 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         public IList SelectDataset
         {
-            get
-            {
-                return this.SourceDatalistBox.Items;
-            }
+            get { return this.SourceDatalistBox.Items; }
         }
 
-        public IDataset Table
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.idataset_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.idataset_0 = value;
-            }
-        }
+        public IDataset Table { get; set; }
     }
 }
-

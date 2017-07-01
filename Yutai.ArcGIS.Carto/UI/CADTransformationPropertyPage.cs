@@ -127,7 +127,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnOpenWFName_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
                 Filter = "CAD World Files(*.wld)|*.wld",
                 Multiselect = false
             };
@@ -160,7 +161,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void method_0()
+        private void method_0()
         {
             WKSPoint point;
             WKSPoint point3;
@@ -411,26 +412,17 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IBasicMap FocusMap
         {
-            set
-            {
-            }
+            set { }
         }
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_0;
-            }
+            get { return this.bool_0; }
         }
 
         public object SelectItem
         {
-            set
-            {
-                this.icadTransformations_0 = value as ICadTransformations;
-            }
+            set { this.icadTransformations_0 = value as ICadTransformations; }
         }
     }
 }
-

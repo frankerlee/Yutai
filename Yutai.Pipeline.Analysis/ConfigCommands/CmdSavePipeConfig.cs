@@ -12,14 +12,15 @@ namespace Yutai.Pipeline.Analysis.ConfigCommands
     {
         private PipelineAnalysisPlugin _plugin;
         private frmMapLayerOrganize frmOrganize = null;
+
         public CmdSavePipeConfig(IAppContext context, PipelineAnalysisPlugin plugin)
         {
             OnCreate(context);
             _plugin = plugin;
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
-
             OnClick();
         }
 
@@ -42,7 +43,7 @@ namespace Yutai.Pipeline.Analysis.ConfigCommands
 
         public void OnClick()
         {
-            SaveFileDialog dialog=new SaveFileDialog();
+            SaveFileDialog dialog = new SaveFileDialog();
             dialog.Filter = "XML配置文件(*.xml)|*.xml";
             dialog.OverwritePrompt = true;
             dialog.Title = "保存管线配置文件";
@@ -51,7 +52,6 @@ namespace Yutai.Pipeline.Analysis.ConfigCommands
                 _plugin.PipeConfig.SaveToXml(dialog.FileName);
             }
             dialog = null;
-
         }
     }
 }

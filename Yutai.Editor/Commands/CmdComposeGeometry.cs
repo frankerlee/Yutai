@@ -30,7 +30,9 @@ namespace Yutai.Plugins.Editor.Commands
                     IFeature feature = featureSelection.Next();
                     while (feature != null)
                     {
-                        if ((feature.Shape.GeometryType == esriGeometryType.esriGeometryPoint ? true : feature.Shape.GeometryType == esriGeometryType.esriGeometryMultipoint))
+                        if ((feature.Shape.GeometryType == esriGeometryType.esriGeometryPoint
+                            ? true
+                            : feature.Shape.GeometryType == esriGeometryType.esriGeometryMultipoint))
                         {
                             flag = false;
                             return flag;
@@ -68,8 +70,7 @@ namespace Yutai.Plugins.Editor.Commands
         {
             OnCreate(context);
         }
-            
-      
+
 
         public override void OnCreate(object hook)
         {
@@ -85,7 +86,6 @@ namespace Yutai.Plugins.Editor.Commands
             base._itemType = RibbonItemType.Button;
         }
 
-    
 
         public override void OnClick()
         {

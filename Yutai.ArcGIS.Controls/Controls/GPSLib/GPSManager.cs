@@ -13,21 +13,21 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
         private static IRealTimeFeedEvents_Event m_RealTimeFeedEvents_Event = null;
         private static IRealTimeFeedManager m_RealTimeFeedManager = null;
 
-        public static  event ConnectionStatusUpdatedEventHandler ConnectionStatusUpdated;
+        public static event ConnectionStatusUpdatedEventHandler ConnectionStatusUpdated;
 
-        public static  event DateTimeUpdatedEventHandler DateTimeUpdated;
+        public static event DateTimeUpdatedEventHandler DateTimeUpdated;
 
-        public static  event DgpsInfoUpdatedEventHandler DgpsInfoUpdated;
+        public static event DgpsInfoUpdatedEventHandler DgpsInfoUpdated;
 
-        public static  event DopInfoUpdatedEventHandler DopInfoUpdated;
+        public static event DopInfoUpdatedEventHandler DopInfoUpdated;
 
-        public static  event GpsPositionUpdatedHandler GpsPositionUpdated;
+        public static event GpsPositionUpdatedHandler GpsPositionUpdated;
 
-        public static  event GroundCourseUpdatedEventHandler GroundCourseUpdated;
+        public static event GroundCourseUpdatedEventHandler GroundCourseUpdated;
 
-        public static  event MagneticVarianceUpdatedEventHandler MagneticVarianceUpdated;
+        public static event MagneticVarianceUpdatedEventHandler MagneticVarianceUpdated;
 
-        public static  event SatelliteInfoUpdatedEventHandler SatelliteInfoUpdated;
+        public static event SatelliteInfoUpdatedEventHandler SatelliteInfoUpdated;
 
         public static IPoint GetFitCurrentPosition(IMap pMap, ISpatialReference pSR)
         {
@@ -43,7 +43,8 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
             }
             if (m_CurrentPosition.SpatialReference is IProjectedCoordinateSystem)
             {
-                geographicCoordinateSystem = (m_CurrentPosition.SpatialReference as IProjectedCoordinateSystem).GeographicCoordinateSystem;
+                geographicCoordinateSystem =
+                    (m_CurrentPosition.SpatialReference as IProjectedCoordinateSystem).GeographicCoordinateSystem;
             }
             else
             {
@@ -58,7 +59,8 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
                 system2 = pSR as IGeographicCoordinateSystem;
             }
             IPoint point = (m_CurrentPosition as IClone).Clone() as IPoint;
-            IGeoTransformationOperationSet geographicTransformations = (pMap as IMapGeographicTransformations).GeographicTransformations;
+            IGeoTransformationOperationSet geographicTransformations =
+                (pMap as IMapGeographicTransformations).GeographicTransformations;
             if (geographicTransformations != null)
             {
                 esriTransformDirection direction;
@@ -84,7 +86,8 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
             }
         }
 
-        private static void m_RealTimeFeedEvents_Event_ConnectionStatusUpdated(ref esriGpsConnectionStatus pConnectionStatus)
+        private static void m_RealTimeFeedEvents_Event_ConnectionStatusUpdated(
+            ref esriGpsConnectionStatus pConnectionStatus)
         {
             OnConnectionStatusUpdated(pConnectionStatus);
         }
@@ -130,7 +133,9 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
             if ((m_RealTimeFeedManager.Map != null) && (m_RealTimeFeedManager as IGpsDisplayProperties).AutoPan)
             {
                 IActiveView map = m_RealTimeFeedManager.Map as IActiveView;
-                if (!((p.SpatialReference is IUnknownCoordinateSystem) || (m_RealTimeFeedManager.Map.SpatialReference is IUnknownCoordinateSystem)))
+                if (
+                    !((p.SpatialReference is IUnknownCoordinateSystem) ||
+                      (m_RealTimeFeedManager.Map.SpatialReference is IUnknownCoordinateSystem)))
                 {
                     p.Project(m_RealTimeFeedManager.Map.SpatialReference);
                 }
@@ -213,18 +218,12 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
 
         public static IPoint CurrentPosition
         {
-            get
-            {
-                return m_CurrentPosition;
-            }
+            get { return m_CurrentPosition; }
         }
 
         public static bool IsInit
         {
-            get
-            {
-                return (m_RealTimeFeedManager != null);
-            }
+            get { return (m_RealTimeFeedManager != null); }
         }
 
         public static IMap Map
@@ -265,14 +264,30 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
                 }
                 m_RealTimeFeedManager.RealTimeFeed = value;
                 m_RealTimeFeedEvents_Event = value as IRealTimeFeedEvents_Event;
-                m_RealTimeFeedEvents_Event.PositionUpdated+=(new IRealTimeFeedEvents_PositionUpdatedEventHandler(GPSManager.m_RealTimeFeedEvents_Event_PositionUpdated));
-                m_RealTimeFeedEvents_Event.SatelliteInfoUpdated+=(new IRealTimeFeedEvents_SatelliteInfoUpdatedEventHandler(GPSManager.m_RealTimeFeedEvents_Event_SatelliteInfoUpdated));
-                m_RealTimeFeedEvents_Event.MagneticVarianceUpdated+=(new IRealTimeFeedEvents_MagneticVarianceUpdatedEventHandler(GPSManager.m_RealTimeFeedEvents_Event_MagneticVarianceUpdated));
-                m_RealTimeFeedEvents_Event.GroundCourseUpdated+=(new IRealTimeFeedEvents_GroundCourseUpdatedEventHandler(GPSManager.m_RealTimeFeedEvents_Event_GroundCourseUpdated));
-                m_RealTimeFeedEvents_Event.DopInfoUpdated+=(new IRealTimeFeedEvents_DopInfoUpdatedEventHandler(GPSManager.m_RealTimeFeedEvents_Event_DopInfoUpdated));
-                m_RealTimeFeedEvents_Event.DgpsInfoUpdated+=(new IRealTimeFeedEvents_DgpsInfoUpdatedEventHandler(GPSManager.m_RealTimeFeedEvents_Event_DgpsInfoUpdated));
-                m_RealTimeFeedEvents_Event.DateTimeUpdated+=(new IRealTimeFeedEvents_DateTimeUpdatedEventHandler(GPSManager.m_RealTimeFeedEvents_Event_DateTimeUpdated));
-                m_RealTimeFeedEvents_Event.ConnectionStatusUpdated+=(new IRealTimeFeedEvents_ConnectionStatusUpdatedEventHandler(GPSManager.m_RealTimeFeedEvents_Event_ConnectionStatusUpdated));
+                m_RealTimeFeedEvents_Event.PositionUpdated +=
+                (new IRealTimeFeedEvents_PositionUpdatedEventHandler(
+                    GPSManager.m_RealTimeFeedEvents_Event_PositionUpdated));
+                m_RealTimeFeedEvents_Event.SatelliteInfoUpdated +=
+                (new IRealTimeFeedEvents_SatelliteInfoUpdatedEventHandler(
+                    GPSManager.m_RealTimeFeedEvents_Event_SatelliteInfoUpdated));
+                m_RealTimeFeedEvents_Event.MagneticVarianceUpdated +=
+                (new IRealTimeFeedEvents_MagneticVarianceUpdatedEventHandler(
+                    GPSManager.m_RealTimeFeedEvents_Event_MagneticVarianceUpdated));
+                m_RealTimeFeedEvents_Event.GroundCourseUpdated +=
+                (new IRealTimeFeedEvents_GroundCourseUpdatedEventHandler(
+                    GPSManager.m_RealTimeFeedEvents_Event_GroundCourseUpdated));
+                m_RealTimeFeedEvents_Event.DopInfoUpdated +=
+                (new IRealTimeFeedEvents_DopInfoUpdatedEventHandler(
+                    GPSManager.m_RealTimeFeedEvents_Event_DopInfoUpdated));
+                m_RealTimeFeedEvents_Event.DgpsInfoUpdated +=
+                (new IRealTimeFeedEvents_DgpsInfoUpdatedEventHandler(
+                    GPSManager.m_RealTimeFeedEvents_Event_DgpsInfoUpdated));
+                m_RealTimeFeedEvents_Event.DateTimeUpdated +=
+                (new IRealTimeFeedEvents_DateTimeUpdatedEventHandler(
+                    GPSManager.m_RealTimeFeedEvents_Event_DateTimeUpdated));
+                m_RealTimeFeedEvents_Event.ConnectionStatusUpdated +=
+                (new IRealTimeFeedEvents_ConnectionStatusUpdatedEventHandler(
+                    GPSManager.m_RealTimeFeedEvents_Event_ConnectionStatusUpdated));
             }
         }
 
@@ -305,4 +320,3 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
         public delegate void SatelliteInfoUpdatedEventHandler(int satelliteCount);
     }
 }
-

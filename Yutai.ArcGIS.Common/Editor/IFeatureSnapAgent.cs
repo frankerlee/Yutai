@@ -11,22 +11,10 @@ namespace Yutai.ArcGIS.Common.Editor
 {
     public interface IFeatureSnapAgent : IEngineSnapAgent
     {
-        IFeatureClass FeatureClass
-        {
-            get;
-            set;
-        }
+        IFeatureClass FeatureClass { get; set; }
 
-        IFeatureCache FeatureCache
-        {
-            get;
-            set;
-        }
+        IFeatureCache FeatureCache { get; set; }
 
-        int GeometryHitType
-        {
-            get;
-            set;
-        }
+        int GeometryHitType { get; set; }
     }
 }

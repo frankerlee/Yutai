@@ -79,7 +79,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void rdordoRenderCache_CheckedChanged(object sender, EventArgs e)
+        private void rdordoRenderCache_CheckedChanged(object sender, EventArgs e)
         {
             if (this.bool_1)
             {
@@ -168,27 +168,17 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IBasicMap FocusMap
         {
-            set
-            {
-                this.ibasicMap_0 = value;
-            }
+            set { this.ibasicMap_0 = value; }
         }
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_0;
-            }
+            get { return this.bool_0; }
         }
 
         public object SelectItem
         {
-            set
-            {
-                this.ilayer_0 = value as ILayer;
-            }
+            set { this.ilayer_0 = value as ILayer; }
         }
     }
 }
-

@@ -83,7 +83,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void IndexGridLabelPropertyPage_Load(object sender, EventArgs e)
+        private void IndexGridLabelPropertyPage_Load(object sender, EventArgs e)
         {
             this.Init();
             this.bool_1 = true;
@@ -105,7 +105,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.bool_0 = true;
         }
 
- private void method_0(uint uint_0, out int int_0, out int int_1, out int int_2)
+        private void method_0(uint uint_0, out int int_0, out int int_1, out int int_2)
         {
             uint num = uint_0 & 16711680;
             int_2 = (int) (num >> 16);
@@ -120,7 +120,7 @@ namespace Yutai.ArcGIS.Carto.UI
             uint num = 0;
             num = (uint) (0 | int_2);
             num = num << 8;
-            num |=(uint) int_1;
+            num |= (uint) int_1;
             num = num << 8;
             return (int) (num | int_0);
         }
@@ -170,4 +170,3 @@ namespace Yutai.ArcGIS.Carto.UI
         }
     }
 }
-

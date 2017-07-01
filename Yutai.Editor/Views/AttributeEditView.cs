@@ -25,14 +25,15 @@ namespace Yutai.Plugins.Editor.Views
     public partial class AttributeEditView : DockPanelControlBase, IAttributeEditView
     {
         private IAppContext _context;
+
         public AttributeEditView(IAppContext context)
         {
             InitializeComponent();
             _context = context;
-
         }
 
         #region Override DockPanelControlBase
+
         public override Bitmap Image
         {
             get { return Properties.Resources.icon_edit_attribute; }
@@ -60,16 +61,22 @@ namespace Yutai.Plugins.Editor.Views
         }
 
         public const string DefaultDockName = "Editor_Attribute";
+
         #endregion
 
-        public IEnumerable<ToolStripItemCollection> ToolStrips { get {yield break;} }
-        public IEnumerable<Control> Buttons { get {yield break;} }
+        public IEnumerable<ToolStripItemCollection> ToolStrips
+        {
+            get { yield break; }
+        }
+
+        public IEnumerable<Control> Buttons
+        {
+            get { yield break; }
+        }
+
         public void Initialize(IAppContext context)
         {
             attributeEditControlExtendEx1.FocusMap = _context.FocusMap;
         }
     }
-    }
-
-
-
+}

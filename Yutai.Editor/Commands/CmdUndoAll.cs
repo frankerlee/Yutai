@@ -9,8 +9,6 @@ namespace Yutai.Plugins.Editor.Commands
 {
     class CmdUndoAll : YutaiCommand
     {
-
-
         public CmdUndoAll(IAppContext context)
         {
             OnCreate(context);
@@ -30,8 +28,6 @@ namespace Yutai.Plugins.Editor.Commands
             base.TextImageRelationYT = TextImageRelationYT.ImageAboveText;
             base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
             _itemType = RibbonItemType.Button;
-
-
         }
 
         public override bool Enabled
@@ -47,7 +43,8 @@ namespace Yutai.Plugins.Editor.Commands
                 {
                     result = false;
                 }
-                else if ( Yutai.ArcGIS.Common.Editor.Editor.EditMap != null && Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
+                else if (Yutai.ArcGIS.Common.Editor.Editor.EditMap != null &&
+                         Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
                 {
                     result = false;
                 }
@@ -71,8 +68,6 @@ namespace Yutai.Plugins.Editor.Commands
                 return result;
             }
         }
-
-
 
 
         public override void OnClick(object sender, EventArgs args)

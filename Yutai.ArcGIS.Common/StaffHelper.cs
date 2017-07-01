@@ -25,7 +25,8 @@ namespace Yutai.ArcGIS.Common
                 ICursor o = table.Search(null, false);
                 for (IRow row = o.NextRow(); row != null; row = o.NextRow())
                 {
-                    Staff item = new Staff {
+                    Staff item = new Staff
+                    {
                         StaffID = Convert.ToString(row.get_Value(table.FindField("ID"))),
                         LoginName = Convert.ToString(row.get_Value(table.FindField("NAME"))),
                         RealName = Convert.ToString(row.get_Value(table.FindField("REALNAME"))),
@@ -63,7 +64,8 @@ namespace Yutai.ArcGIS.Common
             {
                 return false;
             }
-            IQueryFilter queryFilter = new QueryFilter {
+            IQueryFilter queryFilter = new QueryFilter
+            {
                 WhereClause = "ID='" + string_1 + "' and PASSWORD_ = '" + string_2 + "'"
             };
             if (table.RowCount(queryFilter) == 0)
@@ -74,4 +76,3 @@ namespace Yutai.ArcGIS.Common
         }
     }
 }
-

@@ -13,12 +13,25 @@ namespace Yutai.ArcGIS.Catalog.UI
         private IFeatureDataset ifeatureDataset_0 = null;
         private INetworkDataset inetworkDataset_0 = null;
         private int int_0 = 0;
-        private NewNetworkDatasetAttributePropertyPage newNetworkDatasetAttributePropertyPage_0 = new NewNetworkDatasetAttributePropertyPage();
-        private NewNetworkDatasetConnectivityPage newNetworkDatasetConnectivityPage_0 = new NewNetworkDatasetConnectivityPage();
-        private NewNetworkDatasetDirectionPropertyPage newNetworkDatasetDirectionPropertyPage_0 = new NewNetworkDatasetDirectionPropertyPage();
-        private NewNetworkDatasetFeatureClassSetPropertyPage newNetworkDatasetFeatureClassSetPropertyPage_0 = new NewNetworkDatasetFeatureClassSetPropertyPage();
-        private NewNetworkDatasetModifyConnectivityPage newNetworkDatasetModifyConnectivityPage_0 = new NewNetworkDatasetModifyConnectivityPage();
-        private NewNetworkDatasetNamePropertyPage newNetworkDatasetNamePropertyPage_0 = new NewNetworkDatasetNamePropertyPage();
+
+        private NewNetworkDatasetAttributePropertyPage newNetworkDatasetAttributePropertyPage_0 =
+            new NewNetworkDatasetAttributePropertyPage();
+
+        private NewNetworkDatasetConnectivityPage newNetworkDatasetConnectivityPage_0 =
+            new NewNetworkDatasetConnectivityPage();
+
+        private NewNetworkDatasetDirectionPropertyPage newNetworkDatasetDirectionPropertyPage_0 =
+            new NewNetworkDatasetDirectionPropertyPage();
+
+        private NewNetworkDatasetFeatureClassSetPropertyPage newNetworkDatasetFeatureClassSetPropertyPage_0 =
+            new NewNetworkDatasetFeatureClassSetPropertyPage();
+
+        private NewNetworkDatasetModifyConnectivityPage newNetworkDatasetModifyConnectivityPage_0 =
+            new NewNetworkDatasetModifyConnectivityPage();
+
+        private NewNetworkDatasetNamePropertyPage newNetworkDatasetNamePropertyPage_0 =
+            new NewNetworkDatasetNamePropertyPage();
+
         private NewNetworkDatasetTurnsPage newNetworkDatasetTurnsPage_0 = new NewNetworkDatasetTurnsPage();
 
         public frmNewNetworkDatasetWizard()
@@ -112,7 +125,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             this.int_0++;
         }
 
- private void frmNewNetworkDatasetWizard_Load(object sender, EventArgs e)
+        private void frmNewNetworkDatasetWizard_Load(object sender, EventArgs e)
         {
             this.newNetworkDatasetNamePropertyPage_0.Dock = DockStyle.Fill;
             this.newNetworkDatasetNamePropertyPage_0.Visible = true;
@@ -137,21 +150,14 @@ namespace Yutai.ArcGIS.Catalog.UI
             this.panel1.Controls.Add(this.newNetworkDatasetDirectionPropertyPage_0);
         }
 
- public IFeatureDataset FeatureDataset
+        public IFeatureDataset FeatureDataset
         {
-            set
-            {
-                NewNetworkDatasetHelper.NewNetworkDataset.FeatureDataset = value;
-            }
+            set { NewNetworkDatasetHelper.NewNetworkDataset.FeatureDataset = value; }
         }
 
         public INetworkDataset NetworkDataset
         {
-            get
-            {
-                return this.inetworkDataset_0;
-            }
+            get { return this.inetworkDataset_0; }
         }
     }
 }
-

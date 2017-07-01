@@ -22,6 +22,7 @@ namespace Yutai.Plugins.TableEditor.Commands.ContextMenu
     public class CmdSortDescending : YutaiCommand
     {
         private CompContextMenuStrip _menuStrip;
+
         public CmdSortDescending(IAppContext context, CompContextMenuStrip menuStrip)
         {
             _context = context;
@@ -56,6 +57,5 @@ namespace Yutai.Plugins.TableEditor.Commands.ContextMenu
         {
             _menuStrip.TableView.VirtualGridView.Sort(_menuStrip.ColumnIndex, ListSortDirection.Descending);
         }
-
     }
 }

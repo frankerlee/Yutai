@@ -94,7 +94,8 @@ namespace Yutai.ArcGIS.Common.Helpers
             return innerText;
         }
 
-        public static string XmlReadValue(XmlDocument doc, string Section, string Section1, string Section2, string Section3, string Key)
+        public static string XmlReadValue(XmlDocument doc, string Section, string Section1, string Section2,
+            string Section3, string Key)
         {
             string innerText;
             try
@@ -160,7 +161,8 @@ namespace Yutai.ArcGIS.Common.Helpers
             doc.Save(sXMLPath);
         }
 
-        public static void XmlWriteValue(XmlDocument doc, string sXMLPath, string Section, string sValue1, string Key, string Value)
+        public static void XmlWriteValue(XmlDocument doc, string sXMLPath, string Section, string sValue1, string Key,
+            string Value)
         {
             XmlNode xmlNodes = doc.SelectSingleNode(string.Concat("//", Section));
             if (null != xmlNodes)
@@ -185,7 +187,8 @@ namespace Yutai.ArcGIS.Common.Helpers
             doc.Save(sXMLPath);
         }
 
-        public static void XmlWriteValue(XmlDocument doc, string sXMLPath, string Section, string sValue1, string sValue2, string Key, string Value)
+        public static void XmlWriteValue(XmlDocument doc, string sXMLPath, string Section, string sValue1,
+            string sValue2, string Key, string Value)
         {
             XmlNode xmlNodes = doc.SelectSingleNode(string.Concat("//", Section));
             if (null != xmlNodes)
@@ -218,7 +221,8 @@ namespace Yutai.ArcGIS.Common.Helpers
             doc.Save(sXMLPath);
         }
 
-        public static void XmlWriteValue(XmlDocument doc, string sXMLPath, string Section, string sValue1, string sValue2, string sValue3, string Key, string Value)
+        public static void XmlWriteValue(XmlDocument doc, string sXMLPath, string Section, string sValue1,
+            string sValue2, string sValue3, string Key, string Value)
         {
             XmlNode xmlNodes = doc.SelectSingleNode(string.Concat("//", Section));
             if (null != xmlNodes)

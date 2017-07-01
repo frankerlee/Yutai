@@ -18,9 +18,11 @@ namespace Yutai.ArcGIS.Controls.Historical
 
         private void AddToList(IHistoricalMarker pHistoricalMarker)
         {
-            ListViewItem item = new ListViewItem(new string[] { pHistoricalMarker.Name, pHistoricalMarker.TimeStamp.ToString() }) {
-                Tag = pHistoricalMarker
-            };
+            ListViewItem item =
+                new ListViewItem(new string[] {pHistoricalMarker.Name, pHistoricalMarker.TimeStamp.ToString()})
+                {
+                    Tag = pHistoricalMarker
+                };
             this.listView1.Items.Add(item);
         }
 
@@ -45,13 +47,15 @@ namespace Yutai.ArcGIS.Controls.Historical
         {
             ListViewItem item = this.listView1.SelectedItems[0];
             IHistoricalMarker tag = item.Tag as IHistoricalMarker;
-            frmHistoricalMarker marker2 = new frmHistoricalMarker {
+            frmHistoricalMarker marker2 = new frmHistoricalMarker
+            {
                 HistoricalMarker = tag
             };
             if (marker2.ShowDialog() == DialogResult.OK)
             {
                 this.m_pHistoricalWorkspace.RemoveHistoricalMarker(tag.Name);
-                tag = this.m_pHistoricalWorkspace.AddHistoricalMarker(marker2.HistoricalMarkerName, marker2.HistoricalMarkerTimeStamp);
+                tag = this.m_pHistoricalWorkspace.AddHistoricalMarker(marker2.HistoricalMarkerName,
+                    marker2.HistoricalMarkerTimeStamp);
                 item.Text = tag.Name;
                 item.SubItems[1].Text = tag.TimeStamp.ToString();
             }
@@ -59,7 +63,8 @@ namespace Yutai.ArcGIS.Controls.Historical
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            frmHistoricalMarker marker = new frmHistoricalMarker {
+            frmHistoricalMarker marker = new frmHistoricalMarker
+            {
                 DatabaseConnectionInfo = this.m_pHistoricalWorkspace as IDatabaseConnectionInfo2
             };
             if (marker.ShowDialog() == DialogResult.OK)
@@ -71,12 +76,13 @@ namespace Yutai.ArcGIS.Controls.Historical
                 }
                 else
                 {
-                    this.AddToList(this.m_pHistoricalWorkspace.AddHistoricalMarker(marker.HistoricalMarkerName, marker.HistoricalMarkerTimeStamp));
+                    this.AddToList(this.m_pHistoricalWorkspace.AddHistoricalMarker(marker.HistoricalMarkerName,
+                        marker.HistoricalMarkerTimeStamp));
                 }
             }
         }
 
- private void frmHistorialMarkerManager_Load(object sender, EventArgs e)
+        private void frmHistorialMarkerManager_Load(object sender, EventArgs e)
         {
             IEnumHistoricalMarker historicalMarkers = this.m_pHistoricalWorkspace.HistoricalMarkers;
             historicalMarkers.Reset();
@@ -89,7 +95,8 @@ namespace Yutai.ArcGIS.Controls.Historical
                 {
                     items[0] = marker2.Name;
                     items[1] = marker2.TimeStamp.ToString();
-                    ListViewItem item = new ListViewItem(items) {
+                    ListViewItem item = new ListViewItem(items)
+                    {
                         Tag = marker2
                     };
                     this.listView1.Items.Add(item);
@@ -98,7 +105,7 @@ namespace Yutai.ArcGIS.Controls.Historical
             }
         }
 
- private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.btnDelete.Enabled = this.listView1.SelectedIndices.Count > 0;
             this.btnEdit.Enabled = this.listView1.SelectedIndices.Count == 1;
@@ -106,11 +113,7 @@ namespace Yutai.ArcGIS.Controls.Historical
 
         public IHistoricalWorkspace HistoricalWorkspace
         {
-            set
-            {
-                this.m_pHistoricalWorkspace = value;
-            }
+            set { this.m_pHistoricalWorkspace = value; }
         }
     }
 }
-

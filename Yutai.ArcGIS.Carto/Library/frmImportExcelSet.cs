@@ -29,7 +29,8 @@ namespace Yutai.ArcGIS.Carto.Library
                 {
                     double num = double.Parse(row[this.cboX.Text].ToString());
                     double num2 = double.Parse(row[this.cboY.Text].ToString());
-                    IPoint inPoint = new PointClass {
+                    IPoint inPoint = new PointClass
+                    {
                         X = num,
                         Y = num2
                     };
@@ -47,7 +48,8 @@ namespace Yutai.ArcGIS.Carto.Library
 
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
                 Filter = "*.xls|*.xls"
             };
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -71,17 +73,20 @@ namespace Yutai.ArcGIS.Carto.Library
 
         private void cboX_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.btnOK.Enabled = ((this.comboBox1.SelectedIndex >= 0) && (this.cboX.SelectedIndex >= 0)) && (this.cboY.SelectedIndex >= 0);
+            this.btnOK.Enabled = ((this.comboBox1.SelectedIndex >= 0) && (this.cboX.SelectedIndex >= 0)) &&
+                                 (this.cboY.SelectedIndex >= 0);
         }
 
         private void cboY_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.btnOK.Enabled = ((this.comboBox1.SelectedIndex >= 0) && (this.cboX.SelectedIndex >= 0)) && (this.cboY.SelectedIndex >= 0);
+            this.btnOK.Enabled = ((this.comboBox1.SelectedIndex >= 0) && (this.cboX.SelectedIndex >= 0)) &&
+                                 (this.cboY.SelectedIndex >= 0);
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.btnOK.Enabled = ((this.comboBox1.SelectedIndex >= 0) && (this.cboX.SelectedIndex >= 0)) && (this.cboY.SelectedIndex >= 0);
+            this.btnOK.Enabled = ((this.comboBox1.SelectedIndex >= 0) && (this.cboX.SelectedIndex >= 0)) &&
+                                 (this.cboY.SelectedIndex >= 0);
             if (this.comboBox1.SelectedIndex >= 0)
             {
                 List<string> excelColumns = ExcelTools.GetExcelColumns(this.textBox1.Text, this.comboBox1.Text);
@@ -102,17 +107,10 @@ namespace Yutai.ArcGIS.Carto.Library
             }
         }
 
- public IGeometry Geometry
+        public IGeometry Geometry
         {
-            get
-            {
-                return this.igeometry_0;
-            }
-            set
-            {
-                this.igeometry_0 = value;
-            }
+            get { return this.igeometry_0; }
+            set { this.igeometry_0 = value; }
         }
     }
 }
-

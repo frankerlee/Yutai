@@ -9,7 +9,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
     public partial class MapTemplateTypePage : UserControl
     {
         private IContainer icontainer_0 = null;
-        [CompilerGenerated]
+
 
         public MapTemplateTypePage()
         {
@@ -28,7 +28,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
- private void MapTemplateTypePage_Load(object sender, EventArgs e)
+        private void MapTemplateTypePage_Load(object sender, EventArgs e)
         {
         }
 
@@ -40,19 +40,6 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         {
         }
 
-        public MapCartoTemplateLib.MapTemplate MapTemplate
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.mapTemplate_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.mapTemplate_0 = value;
-            }
-        }
+        public MapCartoTemplateLib.MapTemplate MapTemplate { get; set; }
     }
 }
-

@@ -34,7 +34,7 @@ namespace Yutai.ArcGIS.Carto.UI
                 this.ibasicMap_0.Name = this.txtName.Text;
                 if (this.ibasicMap_0 is IMap)
                 {
-                    string[] strArray = this.txtRefrenceScale.Text.Split(new char[] { ':' });
+                    string[] strArray = this.txtRefrenceScale.Text.Split(new char[] {':'});
                     try
                     {
                         (this.ibasicMap_0 as IMap).ReferenceScale = double.Parse(strArray[strArray.Length - 1]);
@@ -44,7 +44,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     }
                     try
                     {
-                        (this.ibasicMap_0 as IActiveView).ScreenDisplay.DisplayTransformation.Rotation = double.Parse(this.txtRotate.Text);
+                        (this.ibasicMap_0 as IActiveView).ScreenDisplay.DisplayTransformation.Rotation =
+                            double.Parse(this.txtRotate.Text);
                     }
                     catch
                     {
@@ -78,7 +79,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.method_1();
         }
 
- private void MapGeneralInfoCtrl_Load(object sender, EventArgs e)
+        private void MapGeneralInfoCtrl_Load(object sender, EventArgs e)
         {
             this.method_0();
         }
@@ -106,7 +107,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 this.cboMapUnit.SelectedIndex = (int) (this.ibasicMap_0 as IMap).MapUnits;
                 this.cboDisplayUnit.Enabled = this.cboMapUnit.SelectedIndex > 0;
                 this.cboDisplayUnit.SelectedIndex = (int) (this.ibasicMap_0 as IMap).DistanceUnits;
-                this.txtRotate.Text = (this.ibasicMap_0 as IActiveView).ScreenDisplay.DisplayTransformation.Rotation.ToString();
+                this.txtRotate.Text =
+                    (this.ibasicMap_0 as IActiveView).ScreenDisplay.DisplayTransformation.Rotation.ToString();
             }
             else
             {
@@ -202,39 +204,23 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

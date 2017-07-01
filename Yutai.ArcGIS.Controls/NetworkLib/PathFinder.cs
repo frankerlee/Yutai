@@ -48,7 +48,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
                     for (num = 0; num < ipGeometricNetwork.ClassCount; num++)
                     {
                         IFeatureClass class2 = ipGeometricNetwork.get_Class(num);
-                        layer = new FeatureLayerClass {
+                        layer = new FeatureLayerClass
+                        {
                             FeatureClass = class2
                         };
                         this.m_ipMap.AddLayer(layer);
@@ -69,11 +70,11 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
                 double height = envelope.Height;
                 if (width > height)
                 {
-                    this.m_ipPointToEID.SnapTolerance = width / 100.0;
+                    this.m_ipPointToEID.SnapTolerance = width/100.0;
                 }
                 else
                 {
-                    this.m_ipPointToEID.SnapTolerance = height / 100.0;
+                    this.m_ipPointToEID.SnapTolerance = height/100.0;
                 }
                 flag = true;
             }
@@ -87,7 +88,9 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
         public void OpenAccessNetwork(string AccessFileName, string FeatureDatasetName)
         {
             this.CloseWorkspace();
-            IFeatureDataset featureDataset = ((IFeatureWorkspace) new AccessWorkspaceFactoryClass().OpenFromFile(AccessFileName, 0)).OpenFeatureDataset(FeatureDatasetName);
+            IFeatureDataset featureDataset =
+                ((IFeatureWorkspace) new AccessWorkspaceFactoryClass().OpenFromFile(AccessFileName, 0))
+                    .OpenFeatureDataset(FeatureDatasetName);
             if (!this.InitializeNetworkAndMap(featureDataset))
             {
                 MessageBox.Show("Error initializing Network and Map", "OpenAccessNetwork");
@@ -141,7 +144,9 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             {
             }
             object[] segmentCosts = new object[this.m_ipPoints.PointCount];
-            (solver as ITraceFlowSolverGEN).FindPath(esriFlowMethod.esriFMConnected, esriShortestPathObjFn.esriSPObjFnMinSum, out this.m_ipEnumNetEID_Junctions, out this.m_ipEnumNetEID_Edges, this.m_ipPoints.PointCount - 1, ref segmentCosts);
+            (solver as ITraceFlowSolverGEN).FindPath(esriFlowMethod.esriFMConnected,
+                esriShortestPathObjFn.esriSPObjFnMinSum, out this.m_ipEnumNetEID_Junctions,
+                out this.m_ipEnumNetEID_Edges, this.m_ipPoints.PointCount - 1, ref segmentCosts);
             this.m_dblPathCost = 0.0;
             for (num = 0; num < segmentCosts.Length; num++)
             {
@@ -152,22 +157,13 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
 
         public IMap Map
         {
-            get
-            {
-                return this.m_ipMap;
-            }
-            set
-            {
-                this.m_ipMap = value;
-            }
+            get { return this.m_ipMap; }
+            set { this.m_ipMap = value; }
         }
 
         public double PathCost
         {
-            get
-            {
-                return this.m_dblPathCost;
-            }
+            get { return this.m_dblPathCost; }
         }
 
         public IPolyline PathPolyLine
@@ -178,7 +174,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
                 {
                     this.m_ipPolyline = new PolylineClass();
                     IGeometryCollection ipPolyline = (IGeometryCollection) this.m_ipPolyline;
-                    IEIDHelper helper = new EIDHelperClass {
+                    IEIDHelper helper = new EIDHelperClass
+                    {
                         GeometricNetwork = this.m_ipGeometricNetwork
                     };
                     ISpatialReference spatialReference = this.m_ipMap.SpatialReference;
@@ -198,15 +195,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
 
         public IPointCollection StopPoints
         {
-            get
-            {
-                return this.m_ipPoints;
-            }
-            set
-            {
-                this.m_ipPoints = value;
-            }
+            get { return this.m_ipPoints; }
+            set { this.m_ipPoints = value; }
         }
     }
 }
-

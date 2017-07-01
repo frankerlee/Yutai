@@ -7,4 +7,3 @@ namespace Yutai.ArcGIS.Catalog
         IPageLayout PageLayout { get; }
     }
 }
-

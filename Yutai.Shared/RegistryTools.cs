@@ -33,7 +33,7 @@ namespace Yutai.Shared
                 {
                     return "";
                 }
-                foreach (string str2 in string_1.Split(new char[] { '\\' }))
+                foreach (string str2 in string_1.Split(new char[] {'\\'}))
                 {
                     key = key.OpenSubKey(str2);
                     if (key == null)
@@ -81,10 +81,12 @@ namespace Yutai.Shared
 
         [DllImport("kernel32.dll")]
         internal static extern void GetNativeSystemInfo(ref SYSTEM_INFO system_INFO_0);
+
         public static Platform GetPlatform()
         {
             SYSTEM_INFO system_info = new SYSTEM_INFO();
-            if ((Environment.OSVersion.Version.Major > 5) || ((Environment.OSVersion.Version.Major == 5) && (Environment.OSVersion.Version.Minor >= 1)))
+            if ((Environment.OSVersion.Version.Major > 5) ||
+                ((Environment.OSVersion.Version.Major == 5) && (Environment.OSVersion.Version.Minor >= 1)))
             {
                 GetNativeSystemInfo(ref system_info);
             }
@@ -115,23 +117,30 @@ namespace Yutai.Shared
 
         [DllImport("kernel32.dll")]
         internal static extern void GetSystemInfo(ref SYSTEM_INFO system_INFO_0);
+
         private static void old_acctor_mc()
         {
-            HKEY_CLASSES_ROOT = (UIntPtr)(-2147483648);
-            HKEY_CURRENT_USER = (UIntPtr)(-2147483647);
-            HKEY_LOCAL_MACHINE = (UIntPtr)(-2147483646);
-            HKEY_USERS = (UIntPtr)(-2147483645);
-            HKEY_CURRENT_CONFIG = (UIntPtr)(-2147483643);
+            HKEY_CLASSES_ROOT = (UIntPtr) (-2147483648);
+            HKEY_CURRENT_USER = (UIntPtr) (-2147483647);
+            HKEY_LOCAL_MACHINE = (UIntPtr) (-2147483646);
+            HKEY_USERS = (UIntPtr) (-2147483645);
+            HKEY_CURRENT_CONFIG = (UIntPtr) (-2147483643);
         }
 
         [DllImport("Advapi32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern long RegDisableReflectionKey(IntPtr intptr_0);
+
         [DllImport("Advapi32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern long RegEnableReflectionKey(IntPtr intptr_0);
+
         [DllImport("Advapi32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        public static extern uint RegOpenKeyEx(UIntPtr uintptr_0, string string_0, uint uint_0, int int_0, out IntPtr intptr_0);
+        public static extern uint RegOpenKeyEx(UIntPtr uintptr_0, string string_0, uint uint_0, int int_0,
+            out IntPtr intptr_0);
+
         [DllImport("Advapi32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        private static extern int RegQueryValueEx(IntPtr intptr_0, string string_0, int int_0, out uint uint_0, StringBuilder stringBuilder_0, ref uint uint_1);
+        private static extern int RegQueryValueEx(IntPtr intptr_0, string string_0, int int_0, out uint uint_0,
+            StringBuilder stringBuilder_0, ref uint uint_1);
+
         private static UIntPtr TransferKeyName(string string_0)
         {
             string str = string_0;
@@ -202,6 +211,7 @@ namespace Yutai.Shared
 
         [DllImport("Kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern bool Wow64DisableWow64FsRedirection(ref IntPtr intptr_0);
+
         [DllImport("Kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern bool Wow64RevertWow64FsRedirection(IntPtr intptr_0);
 

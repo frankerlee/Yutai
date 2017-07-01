@@ -34,7 +34,8 @@ namespace Yutai.ArcGIS.Carto.UI
             try
             {
                 IObjectCopy copy = new ObjectCopyClass();
-                IRasterClassifyColorRampRenderer renderer1 = copy.Copy(this.irasterClassifyColorRampRenderer_0) as IRasterClassifyColorRampRenderer;
+                IRasterClassifyColorRampRenderer renderer1 =
+                    copy.Copy(this.irasterClassifyColorRampRenderer_0) as IRasterClassifyColorRampRenderer;
                 this.irasterLayer_0.Renderer = this.irasterClassifyColorRampRenderer_0 as IRasterRenderer;
             }
             catch (Exception)
@@ -64,8 +65,9 @@ namespace Yutai.ArcGIS.Carto.UI
                 }
             }
             return;
-        Label_0043:
-            (this.irasterClassifyColorRampRenderer_0 as IRasterClassifyUIProperties).ClassificationMethod = classify.ClassID;
+            Label_0043:
+            (this.irasterClassifyColorRampRenderer_0 as IRasterClassifyUIProperties).ClassificationMethod =
+                classify.ClassID;
             if (this.cboClassifyNum.SelectedIndex >= 0)
             {
                 this.method_3();
@@ -89,7 +91,8 @@ namespace Yutai.ArcGIS.Carto.UI
             if (this.bool_0)
             {
                 this.icolorRamp_0 = this.cboColorRamp.GetSelectStyleGalleryItem().Item as IColorRamp;
-                (this.irasterClassifyColorRampRenderer_0 as IRasterClassifyUIProperties).ColorRamp = this.cboColorRamp.Text;
+                (this.irasterClassifyColorRampRenderer_0 as IRasterClassifyUIProperties).ColorRamp =
+                    this.cboColorRamp.Text;
                 if (this.irasterClassifyColorRampRenderer_0.ClassCount > 0)
                 {
                     bool flag;
@@ -157,7 +160,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private object method_0(UID uid_0)
+        private object method_0(UID uid_0)
         {
             if (uid_0 == null)
             {
@@ -206,7 +209,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     }
                 }
             }
-            if ((this.irasterClassifyColorRampRenderer_0.ClassField == "<VALUE>") || (this.irasterClassifyColorRampRenderer_0.ClassField == ""))
+            if ((this.irasterClassifyColorRampRenderer_0.ClassField == "<VALUE>") ||
+                (this.irasterClassifyColorRampRenderer_0.ClassField == ""))
             {
                 this.cboValueFields.SelectedIndex = 0;
             }
@@ -215,7 +219,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 num = 1;
                 while (num < this.cboValueFields.Properties.Items.Count)
                 {
-                    if ((this.cboValueFields.Properties.Items[num] as FieldWrap).Name == this.irasterClassifyColorRampRenderer_0.ClassField)
+                    if ((this.cboValueFields.Properties.Items[num] as FieldWrap).Name ==
+                        this.irasterClassifyColorRampRenderer_0.ClassField)
                     {
                         this.cboValueFields.SelectedIndex = num;
                         break;
@@ -240,13 +245,18 @@ namespace Yutai.ArcGIS.Carto.UI
                 }
                 else
                 {
-                    objArray[1] = this.irasterClassifyColorRampRenderer_0.get_Break(num - 1).ToString("0.####") + " - " + this.irasterClassifyColorRampRenderer_0.get_Break(num).ToString("0.####");
+                    objArray[1] = this.irasterClassifyColorRampRenderer_0.get_Break(num - 1).ToString("0.####") + " - " +
+                                  this.irasterClassifyColorRampRenderer_0.get_Break(num).ToString("0.####");
                 }
                 objArray[2] = this.irasterClassifyColorRampRenderer_0.get_Label(num);
                 this.listView1.Add(objArray);
             }
             this.cboClassifyNum.SelectedIndex = this.irasterClassifyColorRampRenderer_0.ClassCount - 1;
-            IClassify classify = this.method_0((this.irasterClassifyColorRampRenderer_0 as IRasterClassifyUIProperties).ClassificationMethod) as IClassify;
+            IClassify classify =
+                this.method_0(
+                        (this.irasterClassifyColorRampRenderer_0 as IRasterClassifyUIProperties).ClassificationMethod)
+                    as
+                    IClassify;
             if (classify != null)
             {
                 this.Classifygroup.Enabled = true;
@@ -312,7 +322,8 @@ namespace Yutai.ArcGIS.Carto.UI
             {
                 name = "";
             }
-            this.method_4(this.icolorRamp_0, this.irasterClassifyColorRampRenderer_0, this.cboClassifyNum.SelectedIndex + 1, this.method_2(), name, text);
+            this.method_4(this.icolorRamp_0, this.irasterClassifyColorRampRenderer_0,
+                this.cboClassifyNum.SelectedIndex + 1, this.method_2(), name, text);
             this.listView1.Items.Clear();
             string[] strArray = new string[3];
             int index = 0;
@@ -329,7 +340,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 }
                 else
                 {
-                    strArray[1] = this.irasterClassifyColorRampRenderer_0.get_Break(index - 1).ToString() + " - " + this.irasterClassifyColorRampRenderer_0.get_Break(index).ToString();
+                    strArray[1] = this.irasterClassifyColorRampRenderer_0.get_Break(index - 1).ToString() + " - " +
+                                  this.irasterClassifyColorRampRenderer_0.get_Break(index).ToString();
                 }
                 strArray[2] = this.irasterClassifyColorRampRenderer_0.get_Label(index);
                 ListViewItemEx ex = new ListViewItemEx(strArray);
@@ -347,7 +359,9 @@ namespace Yutai.ArcGIS.Carto.UI
             this.cboClassifyNum.SelectedIndex = this.irasterClassifyColorRampRenderer_0.ClassCount - 1;
         }
 
-        private void method_4(IColorRamp icolorRamp_1, IRasterClassifyColorRampRenderer irasterClassifyColorRampRenderer_1, int int_0, ITable itable_0, string string_0, string string_1)
+        private void method_4(IColorRamp icolorRamp_1,
+            IRasterClassifyColorRampRenderer irasterClassifyColorRampRenderer_1, int int_0, ITable itable_0,
+            string string_0, string string_1)
         {
             try
             {
@@ -375,7 +389,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 {
                     string str;
                     IColor color = colors.Next();
-                    ISimpleFillSymbol symbol2 = new SimpleFillSymbolClass {
+                    ISimpleFillSymbol symbol2 = new SimpleFillSymbolClass
+                    {
                         Color = color,
                         Style = esriSimpleFillStyle.esriSFSSolid
                     };
@@ -387,7 +402,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     }
                     else
                     {
-                        str = irasterClassifyColorRampRenderer_1.get_Break(i).ToString("0.####") + " - " + irasterClassifyColorRampRenderer_1.get_Break(i + 1).ToString("0.####");
+                        str = irasterClassifyColorRampRenderer_1.get_Break(i).ToString("0.####") + " - " +
+                              irasterClassifyColorRampRenderer_1.get_Break(i + 1).ToString("0.####");
                     }
                     irasterClassifyColorRampRenderer_1.set_Label(i, str);
                 }
@@ -409,7 +425,7 @@ namespace Yutai.ArcGIS.Carto.UI
                 int num2;
                 int num3;
                 int num4;
-                uint rGB =(uint) icolor_0.RGB;
+                uint rGB = (uint) icolor_0.RGB;
                 this.method_6(rGB, out num2, out num3, out num4);
                 colorEdit_0.Color = Color.FromArgb(icolor_0.Transparency, num2, num3, num4);
             }
@@ -418,7 +434,7 @@ namespace Yutai.ArcGIS.Carto.UI
         private void method_6(uint uint_0, out int int_0, out int int_1, out int int_2)
         {
             uint num = uint_0 & 16711680;
-             int_2 = (int) (num >> 16);
+            int_2 = (int) (num >> 16);
             num = uint_0 & 65280;
             int_1 = (int) (num >> 8);
             num = uint_0 & 255;
@@ -430,7 +446,7 @@ namespace Yutai.ArcGIS.Carto.UI
             uint num = 0;
             num = (uint) (0 | int_2);
             num = num << 8;
-            num |=(uint) int_1;
+            num |= (uint) int_1;
             num = num << 8;
             return (int) (num | int_0);
         }
@@ -469,7 +485,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 if (this.cboColorRamp.Items.Count == 0)
                 {
                     this.cboColorRamp.Enabled = false;
-                    IRandomColorRamp ramp = new RandomColorRampClass {
+                    IRandomColorRamp ramp = new RandomColorRampClass
+                    {
                         StartHue = 40,
                         EndHue = 120,
                         MinValue = 65,
@@ -489,7 +506,8 @@ namespace Yutai.ArcGIS.Carto.UI
                         this.cboColorRamp.SelectedIndex = 0;
                     }
                     this.icolorRamp_0 = this.cboColorRamp.GetSelectStyleGalleryItem().Item as IColorRamp;
-                    (this.irasterClassifyColorRampRenderer_0 as IRasterClassifyUIProperties).ColorRamp = this.cboColorRamp.Text;
+                    (this.irasterClassifyColorRampRenderer_0 as IRasterClassifyUIProperties).ColorRamp =
+                        this.cboColorRamp.Text;
                 }
                 if (this.irasterLayer_0 != null)
                 {
@@ -505,7 +523,8 @@ namespace Yutai.ArcGIS.Carto.UI
             {
                 try
                 {
-                    (this.irasterClassifyColorRampRenderer_0 as IHillShadeInfo).ZScale = double.Parse(this.txtZFactor.Text);
+                    (this.irasterClassifyColorRampRenderer_0 as IHillShadeInfo).ZScale =
+                        double.Parse(this.txtZFactor.Text);
                 }
                 catch
                 {
@@ -524,18 +543,21 @@ namespace Yutai.ArcGIS.Carto.UI
                 }
                 else
                 {
-                    IRasterClassifyColorRampRenderer pInObject = this.irasterLayer_0.Renderer as IRasterClassifyColorRampRenderer;
+                    IRasterClassifyColorRampRenderer pInObject =
+                        this.irasterLayer_0.Renderer as IRasterClassifyColorRampRenderer;
                     if (pInObject == null)
                     {
                         if (this.irasterClassifyColorRampRenderer_0 == null)
                         {
-                            this.irasterClassifyColorRampRenderer_0 = RenderHelper.RasterClassifyRenderer(this.irasterLayer_0);
+                            this.irasterClassifyColorRampRenderer_0 =
+                                RenderHelper.RasterClassifyRenderer(this.irasterLayer_0);
                         }
                     }
                     else
                     {
                         IObjectCopy copy = new ObjectCopyClass();
-                        this.irasterClassifyColorRampRenderer_0 = copy.Copy(pInObject) as IRasterClassifyColorRampRenderer;
+                        this.irasterClassifyColorRampRenderer_0 =
+                            copy.Copy(pInObject) as IRasterClassifyColorRampRenderer;
                     }
                     if (this.bool_0)
                     {
@@ -549,14 +571,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         bool IUserControl.Visible
         {
-            get
-            {
-                return base.Visible;
-            }
-            set
-            {
-                base.Visible = value;
-            }
+            get { return base.Visible; }
+            set { base.Visible = value; }
         }
 
         public IStyleGallery StyleGallery
@@ -569,4 +585,3 @@ namespace Yutai.ArcGIS.Carto.UI
         }
     }
 }
-

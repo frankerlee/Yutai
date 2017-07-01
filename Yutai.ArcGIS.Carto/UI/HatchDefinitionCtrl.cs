@@ -45,7 +45,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void HatchDefinitionCtrl_Load(object sender, EventArgs e)
+        private void HatchDefinitionCtrl_Load(object sender, EventArgs e)
         {
             this.Init();
         }
@@ -93,7 +93,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void method_0(object sender, EventArgs e)
+        private void method_0(object sender, EventArgs e)
         {
             if (this.bool_0)
             {
@@ -114,7 +114,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 IHatchDefinition definition = null;
                 if (this.radioGroup1.SelectedIndex == 0)
                 {
-                    definition = new HatchLineDefinitionClass {
+                    definition = new HatchLineDefinitionClass
+                    {
                         HatchSymbol = new SimpleLineSymbolClass()
                     };
                     try
@@ -142,7 +143,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 }
                 else
                 {
-                    definition = new HatchMarkerDefinitionClass {
+                    definition = new HatchMarkerDefinitionClass
+                    {
                         HatchSymbol = new SimpleMarkerSymbolClass()
                     };
                     if (this.ihatchDefinition_0 != null)
@@ -179,12 +181,12 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            new frmHatchAlignment { HatchDefinition = this.ihatchDefinition_0 }.ShowDialog();
+            new frmHatchAlignment {HatchDefinition = this.ihatchDefinition_0}.ShowDialog();
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            new frmTextDisplaySet { HatchDefinition = this.ihatchDefinition_0 }.ShowDialog();
+            new frmTextDisplaySet {HatchDefinition = this.ihatchDefinition_0}.ShowDialog();
         }
 
         private void txtLength_EditValueChanged(object sender, EventArgs e)
@@ -211,29 +213,16 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IHatchDefinition HatchDefinition
         {
-            get
-            {
-                return this.ihatchDefinition_0;
-            }
-            set
-            {
-                this.ihatchDefinition_0 = value;
-            }
+            get { return this.ihatchDefinition_0; }
+            set { this.ihatchDefinition_0 = value; }
         }
 
         public int HatchInterval
         {
-            get
-            {
-                return this.int_0;
-            }
-            set
-            {
-                this.int_0 = value;
-            }
+            get { return this.int_0; }
+            set { this.int_0 = value; }
         }
 
         public delegate void ValueChangedHandler(object sender, EventArgs e);
     }
 }
-

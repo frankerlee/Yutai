@@ -17,17 +17,16 @@ namespace Yutai.Pipeline.Analysis.Classes
         public double CxdDepth { get; set; }
 
         public string Remark { get; set; }
-
     }
+
     public class RuleMs
     {
-
         public List<RuleMsItem> _rules;
 
         public RuleMs(IPipelineConfig config)
         {
-            ITable table = ((IFeatureWorkspace)config.Workspace).OpenTable("YT_PIPE_DEPTH");
-            _rules=new List<RuleMsItem>();
+            ITable table = ((IFeatureWorkspace) config.Workspace).OpenTable("YT_PIPE_DEPTH");
+            _rules = new List<RuleMsItem>();
             ICursor cursor = table.Search(null, false);
             int codeIdx = cursor.FindField("PipeCode");
             int nameIdx = cursor.FindField("PipeName");
@@ -38,19 +37,17 @@ namespace Yutai.Pipeline.Analysis.Classes
             IRow row = cursor.NextRow();
             while (row != null)
             {
-                RuleMsItem item=new RuleMsItem()
+                RuleMsItem item = new RuleMsItem()
                 {
-                    Code= row.get_Value(codeIdx).ToString(),
-                    Name= row.get_Value(nameIdx).ToString(),
-                    MSFS= row.get_Value(msfsIdx).ToString(),
-                    RxdDepth=Convert.ToDouble(row.get_Value(rxdIdx).ToString()),
+                    Code = row.get_Value(codeIdx).ToString(),
+                    Name = row.get_Value(nameIdx).ToString(),
+                    MSFS = row.get_Value(msfsIdx).ToString(),
+                    RxdDepth = Convert.ToDouble(row.get_Value(rxdIdx).ToString()),
                     CxdDepth = Convert.ToDouble(row.get_Value(cxdIdx).ToString()),
                     Remark = row.get_Value(bzIdx).ToString()
-
                 };
-              _rules.Add(item);
-                    row = cursor.NextRow();
-             
+                _rules.Add(item);
+                row = cursor.NextRow();
             }
             Marshal.ReleaseComObject(cursor);
             Marshal.ReleaseComObject(table);
@@ -68,7 +65,6 @@ namespace Yutai.Pipeline.Analysis.Classes
             if (item == null)
             {
                 item = _rules.FirstOrDefault(c => c.Code == sPipeCode);
-
             }
             if (item == null) return 0.0;
             if (string.IsNullOrEmpty(sDepPosition))
@@ -82,8 +78,8 @@ namespace Yutai.Pipeline.Analysis.Classes
             }
             else
             {
-                return item.CxdDepth;}
-          
+                return item.CxdDepth;
+            }
         }
     }
 }

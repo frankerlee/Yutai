@@ -44,7 +44,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             catch (Exception exception)
             {
                 MessageBox.Show("该组对象中存在不能转入到目标对象中数据!", "数据转换", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
             base.Close();
         }
@@ -60,12 +60,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.method_2();
         }
 
- private void frmGeoDBDataTransfer_Load(object sender, EventArgs e)
+        private void frmGeoDBDataTransfer_Load(object sender, EventArgs e)
         {
             this.method_1();
         }
 
- private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
         }
 
@@ -124,7 +124,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         mapping.TargetName = mapping.GetSuggestedName(this.iname_0);
                     }
                     items[2] = mapping.TargetName;
-                    item = new ListViewItem(items) {
+                    item = new ListViewItem(items)
+                    {
                         Tag = mapping
                     };
                     this.listView1.Items.Add(item);
@@ -139,7 +140,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         mapping.TargetName = mapping.GetSuggestedName(this.iname_0);
                     }
                     items[2] = mapping.TargetName;
-                    item = new ListViewItem(items) {
+                    item = new ListViewItem(items)
+                    {
                         Tag = mapping
                     };
                     this.listView1.Items.Add(item);
@@ -157,7 +159,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                                 mapping3.TargetName = mapping3.GetSuggestedName(this.iname_0);
                             }
                             items[2] = mapping3.TargetName;
-                            item = new ListViewItem(items) {
+                            item = new ListViewItem(items)
+                            {
                                 Tag = mapping3
                             };
                             this.listView1.Items.Add(item);
@@ -209,7 +212,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         private void method_3()
         {
             this.ienumNameMapping_0.Reset();
-            for (INameMapping mapping = this.ienumNameMapping_0.Next(); mapping != null; mapping = this.ienumNameMapping_0.Next())
+            for (INameMapping mapping = this.ienumNameMapping_0.Next();
+                mapping != null;
+                mapping = this.ienumNameMapping_0.Next())
             {
                 if (mapping.SourceObject is IName)
                 {
@@ -247,7 +252,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             try
             {
-                this.txtObjectClass.Text = string.Concat(new object[] { "传送第 ", this.progressBarObjectClass.Value.ToString(), "个对象，共 ", this.int_0, "个对象" });
+                this.txtObjectClass.Text =
+                    string.Concat(new object[]
+                        {"传送第 ", this.progressBarObjectClass.Value.ToString(), "个对象，共 ", this.int_0, "个对象"});
                 this.thread_0.Join(3);
             }
             catch
@@ -259,7 +266,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             try
             {
-                this.txtObject.Text = "传送" + this.string_0 + " ，第 " + this.progressBarObject.Value.ToString() + " 个对象, 共" + this.int_4.ToString() + " 个对象";
+                this.txtObject.Text = "传送" + this.string_0 + " ，第 " + this.progressBarObject.Value.ToString() +
+                                      " 个对象, 共" + this.int_4.ToString() + " 个对象";
                 this.thread_0.Join(3);
             }
             catch
@@ -275,7 +283,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.int_2 = 0;
             this.progressBarObject.Minimum = 0;
             this.progressBarObject.Maximum = 100;
-            this.txtObjectClass.Text = string.Concat(new object[] { "传送第 ", this.progressBarObjectClass.Value.ToString(), "个对象，共 ", this.int_0, "个对象" });
+            this.txtObjectClass.Text =
+                string.Concat(new object[]
+                    {"传送第 ", this.progressBarObjectClass.Value.ToString(), "个对象，共 ", this.int_0, "个对象"});
             Application.DoEvents();
         }
 
@@ -297,10 +307,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IEnumNameMapping EnumNameMapping
         {
-            set
-            {
-                this.ienumNameMapping_0 = value;
-            }
+            set { this.ienumNameMapping_0 = value; }
         }
 
         public IGeoDBDataTransfer GeoDBTransfer
@@ -308,17 +315,14 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             set
             {
                 this.igeoDBDataTransfer_0 = value;
-                (this.igeoDBDataTransfer_0 as IFeatureProgress_Event).Step+=(new IFeatureProgress_StepEventHandler(this.method_12));
+                (this.igeoDBDataTransfer_0 as IFeatureProgress_Event).Step +=
+                    (new IFeatureProgress_StepEventHandler(this.method_12));
             }
         }
 
         public IName ToName
         {
-            set
-            {
-                this.iname_0 = value;
-            }
+            set { this.iname_0 = value; }
         }
     }
 }
-

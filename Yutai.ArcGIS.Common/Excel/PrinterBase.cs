@@ -38,42 +38,27 @@
 
         public int BottomMargin
         {
-            get
-            {
-                return this.int_5;
-            }
+            get { return this.int_5; }
         }
 
         public int LeftMargin
         {
-            get
-            {
-                return this.int_2;
-            }
+            get { return this.int_2; }
         }
 
         public int PageHeight
         {
-            get
-            {
-                return this.int_1;
-            }
+            get { return this.int_1; }
         }
 
         public int PageWidth
         {
-            get
-            {
-                return this.int_0;
-            }
+            get { return this.int_0; }
         }
 
         public System.Drawing.Printing.PrintDocument PrintDocument
         {
-            get
-            {
-                return this.printDocument_0;
-            }
+            get { return this.printDocument_0; }
             set
             {
                 if (value != null)
@@ -85,10 +70,7 @@
 
         public PrinterMargins PrinterMargins
         {
-            get
-            {
-                return this.printerMargins_0;
-            }
+            get { return this.printerMargins_0; }
             set
             {
                 if (value != null)
@@ -101,19 +83,12 @@
 
         public int RightMargin
         {
-            get
-            {
-                return this.int_3;
-            }
+            get { return this.int_3; }
         }
 
         public int TopMargin
         {
-            get
-            {
-                return this.int_4;
-            }
+            get { return this.int_4; }
         }
     }
 }
-

@@ -73,299 +73,187 @@ namespace Yutai.ArcGIS.Common.ControlExtenders.Renderer
 
         public override Color ButtonPressedGradientBegin
         {
-            get
-            {
-                return _buttonPressedBegin;
-            }
+            get { return _buttonPressedBegin; }
         }
 
         public override Color ButtonPressedGradientEnd
         {
-            get
-            {
-                return _buttonPressedEnd;
-            }
+            get { return _buttonPressedEnd; }
         }
 
         public override Color ButtonPressedGradientMiddle
         {
-            get
-            {
-                return _buttonPressedMiddle;
-            }
+            get { return _buttonPressedMiddle; }
         }
 
         public override Color ButtonSelectedGradientBegin
         {
-            get
-            {
-                return _buttonSelectedBegin;
-            }
+            get { return _buttonSelectedBegin; }
         }
 
         public override Color ButtonSelectedGradientEnd
         {
-            get
-            {
-                return _buttonSelectedEnd;
-            }
+            get { return _buttonSelectedEnd; }
         }
 
         public override Color ButtonSelectedGradientMiddle
         {
-            get
-            {
-                return _buttonSelectedMiddle;
-            }
+            get { return _buttonSelectedMiddle; }
         }
 
         public override Color ButtonSelectedHighlightBorder
         {
-            get
-            {
-                return _buttonBorder;
-            }
+            get { return _buttonBorder; }
         }
 
         public override Color CheckBackground
         {
-            get
-            {
-                return _checkBack;
-            }
+            get { return _checkBack; }
         }
 
         public override Color GripDark
         {
-            get
-            {
-                return _gripDark;
-            }
+            get { return _gripDark; }
         }
 
         public override Color GripLight
         {
-            get
-            {
-                return _gripLight;
-            }
+            get { return _gripLight; }
         }
 
         public override Color ImageMarginGradientBegin
         {
-            get
-            {
-                return _imageMargin;
-            }
+            get { return _imageMargin; }
         }
 
         public override Color MenuBorder
         {
-            get
-            {
-                return _menuBorder;
-            }
+            get { return _menuBorder; }
         }
 
         public override Color MenuItemPressedGradientBegin
         {
-            get
-            {
-                return _toolStripBegin;
-            }
+            get { return _toolStripBegin; }
         }
 
         public override Color MenuItemPressedGradientEnd
         {
-            get
-            {
-                return _toolStripEnd;
-            }
+            get { return _toolStripEnd; }
         }
 
         public override Color MenuItemPressedGradientMiddle
         {
-            get
-            {
-                return _toolStripMiddle;
-            }
+            get { return _toolStripMiddle; }
         }
 
         public override Color MenuItemSelectedGradientBegin
         {
-            get
-            {
-                return _menuItemSelectedBegin;
-            }
+            get { return _menuItemSelectedBegin; }
         }
 
         public override Color MenuItemSelectedGradientEnd
         {
-            get
-            {
-                return _menuItemSelectedEnd;
-            }
+            get { return _menuItemSelectedEnd; }
         }
 
         public override Color MenuStripGradientBegin
         {
-            get
-            {
-                return _menuToolBack;
-            }
+            get { return _menuToolBack; }
         }
 
         public override Color MenuStripGradientEnd
         {
-            get
-            {
-                return _menuToolBack;
-            }
+            get { return _menuToolBack; }
         }
 
         public override Color OverflowButtonGradientBegin
         {
-            get
-            {
-                return _overflowBegin;
-            }
+            get { return _overflowBegin; }
         }
 
         public override Color OverflowButtonGradientEnd
         {
-            get
-            {
-                return _overflowEnd;
-            }
+            get { return _overflowEnd; }
         }
 
         public override Color OverflowButtonGradientMiddle
         {
-            get
-            {
-                return _overflowMiddle;
-            }
+            get { return _overflowMiddle; }
         }
 
         public override Color RaftingContainerGradientBegin
         {
-            get
-            {
-                return _menuToolBack;
-            }
+            get { return _menuToolBack; }
         }
 
         public override Color RaftingContainerGradientEnd
         {
-            get
-            {
-                return _menuToolBack;
-            }
+            get { return _menuToolBack; }
         }
 
         public override Color SeparatorDark
         {
-            get
-            {
-                return _separatorDark;
-            }
+            get { return _separatorDark; }
         }
 
         public override Color SeparatorLight
         {
-            get
-            {
-                return _separatorLight;
-            }
+            get { return _separatorLight; }
         }
 
         public override Color StatusStripGradientBegin
         {
-            get
-            {
-                return _statusStripLight;
-            }
+            get { return _statusStripLight; }
         }
 
         public override Color StatusStripGradientEnd
         {
-            get
-            {
-                return _statusStripDark;
-            }
+            get { return _statusStripDark; }
         }
 
         public override Color ToolStripBorder
         {
-            get
-            {
-                return _toolStripBorder;
-            }
+            get { return _toolStripBorder; }
         }
 
         public override Color ToolStripContentPanelGradientBegin
         {
-            get
-            {
-                return _toolStripContentEnd;
-            }
+            get { return _toolStripContentEnd; }
         }
 
         public override Color ToolStripContentPanelGradientEnd
         {
-            get
-            {
-                return _menuToolBack;
-            }
+            get { return _menuToolBack; }
         }
 
         public override Color ToolStripDropDownBackground
         {
-            get
-            {
-                return _contextMenuBack;
-            }
+            get { return _contextMenuBack; }
         }
 
         public override Color ToolStripGradientBegin
         {
-            get
-            {
-                return _toolStripBegin;
-            }
+            get { return _toolStripBegin; }
         }
 
         public override Color ToolStripGradientEnd
         {
-            get
-            {
-                return _toolStripEnd;
-            }
+            get { return _toolStripEnd; }
         }
 
         public override Color ToolStripGradientMiddle
         {
-            get
-            {
-                return _toolStripMiddle;
-            }
+            get { return _toolStripMiddle; }
         }
 
         public override Color ToolStripPanelGradientBegin
         {
-            get
-            {
-                return _menuToolBack;
-            }
+            get { return _menuToolBack; }
         }
 
         public override Color ToolStripPanelGradientEnd
         {
-            get
-            {
-                return _menuToolBack;
-            }
+            get { return _menuToolBack; }
         }
     }
 }
-

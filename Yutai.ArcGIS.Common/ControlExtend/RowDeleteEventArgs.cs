@@ -13,11 +13,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         public int Row
         {
-            get
-            {
-                return this.int_0;
-            }
+            get { return this.int_0; }
         }
     }
 }
-

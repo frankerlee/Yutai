@@ -121,58 +121,34 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 
         public bool CanDrag
         {
-            get
-            {
-                return this.m_CanDrag;
-            }
-            set
-            {
-                this.m_CanDrag = value;
-            }
+            get { return this.m_CanDrag; }
+            set { this.m_CanDrag = value; }
         }
 
         public int Count
         {
-            get
-            {
-                return this.m_pTOCTreeNodeCollection.Count;
-            }
+            get { return this.m_pTOCTreeNodeCollection.Count; }
         }
 
         public bool IsFixedSize
         {
-            get
-            {
-                return this.m_pTOCTreeNodeCollection.IsFixedSize;
-            }
+            get { return this.m_pTOCTreeNodeCollection.IsFixedSize; }
         }
 
         public bool IsReadOnly
         {
-            get
-            {
-                return this.m_pTOCTreeNodeCollection.IsReadOnly;
-            }
+            get { return this.m_pTOCTreeNodeCollection.IsReadOnly; }
         }
 
         public bool IsSynchronized
         {
-            get
-            {
-                return this.m_pTOCTreeNodeCollection.IsSynchronized;
-            }
+            get { return this.m_pTOCTreeNodeCollection.IsSynchronized; }
         }
 
         public object this[int index]
         {
-            get
-            {
-                return this.m_pTOCTreeNodeCollection[index];
-            }
-            set
-            {
-                this.m_pTOCTreeNodeCollection[index] = value;
-            }
+            get { return this.m_pTOCTreeNodeCollection[index]; }
+            set { this.m_pTOCTreeNodeCollection[index] = value; }
         }
 
         internal object Owner
@@ -194,19 +170,12 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 
         public object SyncRoot
         {
-            get
-            {
-                return this.m_pTOCTreeNodeCollection.SyncRoot;
-            }
+            get { return this.m_pTOCTreeNodeCollection.SyncRoot; }
         }
 
         internal TocTreeViewBase TreeView
         {
-            set
-            {
-                this.m_pTreeView = value;
-            }
+            set { this.m_pTreeView = value; }
         }
     }
 }
-

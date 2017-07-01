@@ -4,7 +4,6 @@ using Yutai.Plugins.Mvp;
 
 namespace Yutai.Plugins.Locator.Views
 {
-   
     public interface ILocatorView : IMenuProvider
     {
         //定位器改变事件触发

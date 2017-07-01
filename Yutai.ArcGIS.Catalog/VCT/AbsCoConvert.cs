@@ -12,6 +12,7 @@ namespace Yutai.ArcGIS.Catalog.VCT
         }
 
         public abstract void Close();
+
         public void ConvertFlush()
         {
             this.ConvertFlush(null);
@@ -63,25 +64,15 @@ namespace Yutai.ArcGIS.Catalog.VCT
 
         public ICoConvert DestConvert
         {
-            set
-            {
-                this.icoConvert_0 = value;
-            }
+            set { this.icoConvert_0 = value; }
         }
 
         public abstract int FeatureCount { get; }
 
         public ICoLayer XpgisLayer
         {
-            get
-            {
-                return this.icoLayer_0;
-            }
-            set
-            {
-                this.icoLayer_0 = value;
-            }
+            get { return this.icoLayer_0; }
+            set { this.icoLayer_0 = value; }
         }
     }
 }
-

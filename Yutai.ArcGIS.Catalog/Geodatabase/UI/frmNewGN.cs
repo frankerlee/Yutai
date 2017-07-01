@@ -9,7 +9,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 {
     public partial class frmNewGN : Form
     {
-        private BulidGeometryNetwork_SelectFeatureClass bulidGeometryNetwork_SelectFeatureClass_0 = new BulidGeometryNetwork_SelectFeatureClass();
+        private BulidGeometryNetwork_SelectFeatureClass bulidGeometryNetwork_SelectFeatureClass_0 =
+            new BulidGeometryNetwork_SelectFeatureClass();
+
         private BulidGeometryNetworkType bulidGeometryNetworkType_0 = new BulidGeometryNetworkType();
         private BulidGN_Configuration bulidGN_Configuration_0 = new BulidGN_Configuration();
         private BulidGN_EnableFieldSet bulidGN_EnableFieldSet_0 = new BulidGN_EnableFieldSet();
@@ -130,7 +132,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                             else
                             {
                                 this.bulidGN_Weights_0.Visible = false;
-                                if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace)
+                                if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type ==
+                                    esriWorkspaceType.esriLocalDatabaseWorkspace)
                                 {
                                     this.btnNext.Text = "下一步";
                                 }
@@ -140,7 +143,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         {
                             this.bulidGN_SourceSkin_0.Visible = true;
                             this.bulidGN_Weights_0.Visible = false;
-                            if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace)
+                            if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type ==
+                                esriWorkspaceType.esriLocalDatabaseWorkspace)
                             {
                                 this.btnNext.Text = "下一步";
                             }
@@ -164,7 +168,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         {
                             this.bulidGN_SourceSkin_0.Visible = true;
                             this.bulidGN_Weights_0.Visible = false;
-                            if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace)
+                            if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type ==
+                                esriWorkspaceType.esriLocalDatabaseWorkspace)
                             {
                                 this.btnNext.Text = "下一步";
                             }
@@ -181,7 +186,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     {
                         this.bulidGN_SourceSkin_0.Visible = true;
                         this.bulidGN_Weights_0.Visible = false;
-                        if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace)
+                        if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type ==
+                            esriWorkspaceType.esriLocalDatabaseWorkspace)
                         {
                             this.btnNext.Text = "下一步";
                         }
@@ -191,7 +197,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     if (!BulidGeometryNetworkHelper.BulidGNHelper.HasPointFeatureClass())
                     {
                         this.bulidGN_Weights_0.Visible = false;
-                        if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace)
+                        if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type ==
+                            esriWorkspaceType.esriLocalDatabaseWorkspace)
                         {
                             this.btnNext.Text = "下一步";
                         }
@@ -224,7 +231,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         {
                             this.bulidGN_Summary_0.Visible = false;
                             this.btnNext.Text = "下一步";
-                            if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace)
+                            if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type ==
+                                esriWorkspaceType.esriLocalDatabaseWorkspace)
                             {
                                 if (BulidGeometryNetworkHelper.BulidGNHelper.Weights.Count == 0)
                                 {
@@ -272,7 +280,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         if (BulidGeometryNetworkHelper.BulidGNHelper.Weights.Count > 0)
                         {
                             this.bulidGN_WeightAssociation_0.Visible = true;
-                            if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace)
+                            if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type ==
+                                esriWorkspaceType.esriLocalDatabaseWorkspace)
                             {
                                 this.bulidGN_Summary_0.Visible = false;
                                 this.btnNext.Text = "下一步";
@@ -294,7 +303,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     {
                         if (this.bulidGN_Summary_0.Visible)
                         {
-                            if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace)
+                            if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type ==
+                                esriWorkspaceType.esriLocalDatabaseWorkspace)
                             {
                                 if (BulidGeometryNetworkHelper.BulidGNHelper.Weights.Count > 0)
                                 {
@@ -312,7 +322,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                             this.bulidGN_Summary_0.Visible = false;
                             this.btnNext.Text = "下一步";
                         }
-                        else if ((BulidGeometryNetworkHelper.BulidGNHelper.Weights.Count > 0) && this.bulidGN_Configuration_0.Visible)
+                        else if ((BulidGeometryNetworkHelper.BulidGNHelper.Weights.Count > 0) &&
+                                 this.bulidGN_Configuration_0.Visible)
                         {
                             this.bulidGN_WeightAssociation_0.Visible = true;
                             this.bulidGN_Configuration_0.Visible = false;
@@ -345,7 +356,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         break;
                     }
                     this.bulidGN_WeightAssociation_0.Visible = true;
-                    if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type != esriWorkspaceType.esriLocalDatabaseWorkspace)
+                    if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type !=
+                        esriWorkspaceType.esriLocalDatabaseWorkspace)
                     {
                         this.bulidGN_Configuration_0.Visible = false;
                         break;
@@ -472,7 +484,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                             {
                                 this.bulidGN_WeightAssociation_0.Visible = true;
                             }
-                            else if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace)
+                            else if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type ==
+                                     esriWorkspaceType.esriLocalDatabaseWorkspace)
                             {
                                 this.bulidGN_Summary_0.Visible = true;
                                 this.btnNext.Text = "完成";
@@ -509,7 +522,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                             {
                                 this.bulidGN_WeightAssociation_0.Visible = true;
                             }
-                            else if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace)
+                            else if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type ==
+                                     esriWorkspaceType.esriLocalDatabaseWorkspace)
                             {
                                 this.bulidGN_Summary_0.Visible = true;
                                 this.btnNext.Text = "完成";
@@ -530,7 +544,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         if (this.bulidGN_WeightAssociation_0.Visible)
                         {
                             this.bulidGN_WeightAssociation_0.Visible = false;
-                            if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace)
+                            if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type ==
+                                esriWorkspaceType.esriLocalDatabaseWorkspace)
                             {
                                 this.bulidGN_Summary_0.Visible = true;
                                 this.btnNext.Text = "完成";
@@ -541,7 +556,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                             }
                             break;
                         }
-                        if (BulidGeometryNetworkHelper.BulidGNHelper.CreateGeometricNetwork(BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset) != null)
+                        if (
+                            BulidGeometryNetworkHelper.BulidGNHelper.CreateGeometricNetwork(
+                                BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset) != null)
                         {
                             base.DialogResult = DialogResult.OK;
                             base.Close();
@@ -555,7 +572,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         {
                             this.bulidGN_WeightAssociation_0.Visible = true;
                         }
-                        else if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace)
+                        else if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type ==
+                                 esriWorkspaceType.esriLocalDatabaseWorkspace)
                         {
                             this.bulidGN_Summary_0.Visible = true;
                             this.btnNext.Text = "完成";
@@ -576,7 +594,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         if (this.bulidGN_WeightAssociation_0.Visible)
                         {
                             this.bulidGN_WeightAssociation_0.Visible = false;
-                            if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace)
+                            if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type ==
+                                esriWorkspaceType.esriLocalDatabaseWorkspace)
                             {
                                 this.bulidGN_Summary_0.Visible = true;
                                 this.btnNext.Text = "完成";
@@ -594,7 +613,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                             this.btnNext.Text = "完成";
                             break;
                         }
-                        if (BulidGeometryNetworkHelper.BulidGNHelper.CreateGeometricNetwork(BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset) != null)
+                        if (
+                            BulidGeometryNetworkHelper.BulidGNHelper.CreateGeometricNetwork(
+                                BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset) != null)
                         {
                             base.DialogResult = DialogResult.OK;
                             base.Close();
@@ -613,7 +634,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         if (this.bulidGN_WeightAssociation_0.Visible)
                         {
                             this.bulidGN_WeightAssociation_0.Visible = false;
-                            if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace)
+                            if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type ==
+                                esriWorkspaceType.esriLocalDatabaseWorkspace)
                             {
                                 this.bulidGN_Summary_0.Visible = true;
                                 this.btnNext.Text = "完成";
@@ -624,7 +646,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                             }
                             break;
                         }
-                        if (BulidGeometryNetworkHelper.BulidGNHelper.CreateGeometricNetwork(BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset) != null)
+                        if (
+                            BulidGeometryNetworkHelper.BulidGNHelper.CreateGeometricNetwork(
+                                BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset) != null)
                         {
                             base.DialogResult = DialogResult.OK;
                             base.Close();
@@ -634,7 +658,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     this.bulidGN_Weights_0.Visible = false;
                     if (BulidGeometryNetworkHelper.BulidGNHelper.Weights.Count <= 0)
                     {
-                        if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace)
+                        if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type ==
+                            esriWorkspaceType.esriLocalDatabaseWorkspace)
                         {
                             this.bulidGN_Summary_0.Visible = true;
                             this.btnNext.Text = "完成";
@@ -668,7 +693,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                             this.btnNext.Text = "完成";
                             break;
                         }
-                        if (BulidGeometryNetworkHelper.BulidGNHelper.CreateGeometricNetwork(BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset) != null)
+                        if (
+                            BulidGeometryNetworkHelper.BulidGNHelper.CreateGeometricNetwork(
+                                BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset) != null)
                         {
                             base.DialogResult = DialogResult.OK;
                             base.Close();
@@ -676,7 +703,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         return;
                     }
                     this.bulidGN_WeightAssociation_0.Visible = false;
-                    if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type != esriWorkspaceType.esriLocalDatabaseWorkspace)
+                    if (BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace.Type !=
+                        esriWorkspaceType.esriLocalDatabaseWorkspace)
                     {
                         this.bulidGN_Configuration_0.Visible = true;
                         break;
@@ -688,7 +716,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 case 8:
                     if (!BulidGeometryNetworkHelper.BulidGNHelper.HasEnabeldField())
                     {
-                        if (BulidGeometryNetworkHelper.BulidGNHelper.CreateGeometricNetwork(BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset) != null)
+                        if (
+                            BulidGeometryNetworkHelper.BulidGNHelper.CreateGeometricNetwork(
+                                BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset) != null)
                         {
                             base.DialogResult = DialogResult.OK;
                             base.Close();
@@ -704,7 +734,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     break;
 
                 case 9:
-                    if (BulidGeometryNetworkHelper.BulidGNHelper.CreateGeometricNetwork(BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset) != null)
+                    if (
+                        BulidGeometryNetworkHelper.BulidGNHelper.CreateGeometricNetwork(
+                            BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset) != null)
                     {
                         base.DialogResult = DialogResult.OK;
                         base.Close();
@@ -714,13 +746,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.int_0++;
         }
 
- public IFeatureDataset FeatureDataset
+        public IFeatureDataset FeatureDataset
         {
-            set
-            {
-                BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset = value;
-            }
+            set { BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset = value; }
         }
     }
 }
-

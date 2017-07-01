@@ -5,4 +5,3 @@
         void Init(object object_0);
     }
 }
-

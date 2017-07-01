@@ -10,8 +10,8 @@ namespace Yutai.Commands.MapLegend
 {
     public class CmdCreateLayerBySelection : YutaiCommand
     {
-      private IMapLegendView _view;
-      
+        private IMapLegendView _view;
+
         public CmdCreateLayerBySelection(IAppContext context, IMapLegendView view)
         {
             _context = context;
@@ -49,8 +49,8 @@ namespace Yutai.Commands.MapLegend
             base.m_checked = false;
             base.m_enabled = true;
             base._itemType = RibbonItemType.Button;
-
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
@@ -75,15 +75,15 @@ namespace Yutai.Commands.MapLegend
             }
             return lyrName;
         }
+
         public void OnClick()
         {
-
             IFeatureLayer pLayer = _view.SelectedLayer as IFeatureLayer;
             IFeatureSelection selection = pLayer as IFeatureSelection;
             if (selection != null && selection.SelectionSet.Count > 0)
             {
                 string lyrName = GetLayerName(_view.SelectedMap, "选择集");
-                IFeatureLayer newLayer = ((IFeatureLayerDefinition2)pLayer).CreateSelectionLayer(lyrName, true, "", "");
+                IFeatureLayer newLayer = ((IFeatureLayerDefinition2) pLayer).CreateSelectionLayer(lyrName, true, "", "");
                 selection.Clear();
                 _view.SelectedMap.AddLayer(newLayer);
                 (_view.SelectedMap as IActiveView).Refresh();

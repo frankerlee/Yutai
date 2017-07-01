@@ -29,7 +29,8 @@ namespace Yutai.ArcGIS.Framework.Docking
             this.m_splitterBounds = splitterBounds;
         }
 
-        internal void SetDisplayingStatus(bool isDisplaying, DockPane displayingPreviousPane, DockAlignment displayingAlignment, double displayingProportion)
+        internal void SetDisplayingStatus(bool isDisplaying, DockPane displayingPreviousPane,
+            DockAlignment displayingAlignment, double displayingProportion)
         {
             this.m_isDisplaying = isDisplaying;
             this.m_displayingPreviousPane = displayingPreviousPane;
@@ -37,7 +38,8 @@ namespace Yutai.ArcGIS.Framework.Docking
             this.m_displayingProportion = displayingProportion;
         }
 
-        internal void SetStatus(NestedPaneCollection nestedPanes, DockPane previousPane, DockAlignment alignment, double proportion)
+        internal void SetStatus(NestedPaneCollection nestedPanes, DockPane previousPane, DockAlignment alignment,
+            double proportion)
         {
             this.m_nestedPanes = nestedPanes;
             this.m_previousPane = previousPane;
@@ -47,99 +49,62 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         public DockAlignment Alignment
         {
-            get
-            {
-                return this.m_alignment;
-            }
+            get { return this.m_alignment; }
         }
 
         public DockAlignment DisplayingAlignment
         {
-            get
-            {
-                return this.m_displayingAlignment;
-            }
+            get { return this.m_displayingAlignment; }
         }
 
         public DockPane DisplayingPreviousPane
         {
-            get
-            {
-                return this.m_displayingPreviousPane;
-            }
+            get { return this.m_displayingPreviousPane; }
         }
 
         public double DisplayingProportion
         {
-            get
-            {
-                return this.m_displayingProportion;
-            }
+            get { return this.m_displayingProportion; }
         }
 
         public DockPane DockPane
         {
-            get
-            {
-                return this.m_dockPane;
-            }
+            get { return this.m_dockPane; }
         }
 
         public bool IsDisplaying
         {
-            get
-            {
-                return this.m_isDisplaying;
-            }
+            get { return this.m_isDisplaying; }
         }
 
         public Rectangle LogicalBounds
         {
-            get
-            {
-                return this.m_logicalBounds;
-            }
+            get { return this.m_logicalBounds; }
         }
 
         public NestedPaneCollection NestedPanes
         {
-            get
-            {
-                return this.m_nestedPanes;
-            }
+            get { return this.m_nestedPanes; }
         }
 
         public Rectangle PaneBounds
         {
-            get
-            {
-                return this.m_paneBounds;
-            }
+            get { return this.m_paneBounds; }
         }
 
         public DockPane PreviousPane
         {
-            get
-            {
-                return this.m_previousPane;
-            }
+            get { return this.m_previousPane; }
         }
 
         public double Proportion
         {
-            get
-            {
-                return this.m_proportion;
-            }
+            get { return this.m_proportion; }
         }
 
         public Rectangle SplitterBounds
         {
-            get
-            {
-                return this.m_splitterBounds;
-            }
+            get { return this.m_splitterBounds; }
         }
     }
 }
-

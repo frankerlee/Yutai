@@ -19,7 +19,5 @@ namespace Yutai.Plugins.Interfaces
         void RemoveItemsForPlugin(PluginIdentity identity);
 
         IEnumerable<IMenuItem> ItemsForPlugin(PluginIdentity identity);
-
-
     }
 }

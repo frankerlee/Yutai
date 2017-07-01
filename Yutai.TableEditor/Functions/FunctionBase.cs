@@ -54,6 +54,7 @@ namespace Yutai.Plugins.TableEditor.Functions
         {
             get { return _parameters; }
         }
+
         public List<IFunction> GetFunctions()
         {
             _functions = new List<IFunction>()
@@ -70,7 +71,6 @@ namespace Yutai.Plugins.TableEditor.Functions
                 new FunctionSin(),
                 new FunctionSqr(),
                 new FunctionTan(),
-                
                 new FunctionInStr(),
                 new FunctionLCase(),
                 new FunctionLeft(),
@@ -84,7 +84,6 @@ namespace Yutai.Plugins.TableEditor.Functions
                 new FunctionString(),
                 new FunctionStrReverse(),
                 new FunctionUCase(),
-
                 new FunctionAsc(),
                 new FunctionCBool(),
                 new FunctionCDate(),
@@ -96,7 +95,6 @@ namespace Yutai.Plugins.TableEditor.Functions
                 new FunctionCStr(),
                 new FunctionHex(),
                 new FunctionOct(),
-
                 new FunctionDate(),
                 new FunctionDateAdd(),
                 new FunctionDateDiff(),

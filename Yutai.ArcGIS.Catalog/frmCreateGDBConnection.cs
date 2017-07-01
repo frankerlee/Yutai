@@ -17,7 +17,7 @@ namespace Yutai.ArcGIS.Catalog
         private IContainer icontainer_0 = null;
         private string string_0 = "";
         private string string_1 = "";
-        [CompilerGenerated]
+
 
         public frmCreateGDBConnection()
         {
@@ -31,9 +31,13 @@ namespace Yutai.ArcGIS.Catalog
                 IPropertySet connectionProperties = this.method_1(true);
                 if (connectionProperties != null)
                 {
-                    string path = Environment.SystemDirectory.Substring(0, 2) + @"Users\Administrator\AppData\Roaming\ESRI\Desktop10.2\ArcCatalog\";
-                    string str2 = RegistryTools.GetRegistryKey("HKEY_CURRENT_USER", @"Software\ESRI\Desktop10.2\CoreRuntime\Locator\Settings", "LocatorDirectory");
-                    if (!string.IsNullOrEmpty(str2) && ((str2.IndexOf(@"Locators\", StringComparison.OrdinalIgnoreCase) > 0) && (str2.IndexOf("ArcCatalog", StringComparison.OrdinalIgnoreCase) == -1)))
+                    string path = Environment.SystemDirectory.Substring(0, 2) +
+                                  @"Users\Administrator\AppData\Roaming\ESRI\Desktop10.2\ArcCatalog\";
+                    string str2 = RegistryTools.GetRegistryKey("HKEY_CURRENT_USER",
+                        @"Software\ESRI\Desktop10.2\CoreRuntime\Locator\Settings", "LocatorDirectory");
+                    if (!string.IsNullOrEmpty(str2) &&
+                        ((str2.IndexOf(@"Locators\", StringComparison.OrdinalIgnoreCase) > 0) &&
+                         (str2.IndexOf("ArcCatalog", StringComparison.OrdinalIgnoreCase) == -1)))
                     {
                         path = str2.Replace("Locators", "ArcCatalog");
                     }
@@ -56,7 +60,10 @@ namespace Yutai.ArcGIS.Catalog
                         string str4 = path + "连接到" + str3 + ".sde";
                         str4 = this.method_2(str4);
                         this.ConnectionPath = str4;
-                        ((IWorkspaceFactory) Activator.CreateInstance(System.Type.GetTypeFromProgID("esriDataSourcesGDB.SdeWorkspaceFactory"))).Create(path, Path.GetFileName(str4), connectionProperties, 0);
+                        ((IWorkspaceFactory)
+                            Activator.CreateInstance(
+                                System.Type.GetTypeFromProgID("esriDataSourcesGDB.SdeWorkspaceFactory"))).Create(path,
+                            Path.GetFileName(str4), connectionProperties, 0);
                         base.DialogResult = DialogResult.OK;
                     }
                 }
@@ -98,7 +105,9 @@ namespace Yutai.ArcGIS.Catalog
                 IPropertySet connectionProperties = this.method_1(true);
                 if (connectionProperties != null)
                 {
-                    ((IWorkspaceFactory) Activator.CreateInstance(System.Type.GetTypeFromProgID("esriDataSourcesGDB.SdeWorkspaceFactory"))).Open(connectionProperties, 0);
+                    ((IWorkspaceFactory)
+                            Activator.CreateInstance(System.Type.GetTypeFromProgID("esriDataSourcesGDB.SdeWorkspaceFactory")))
+                        .Open(connectionProperties, 0);
                     System.Windows.Forms.Cursor.Current = Cursors.Default;
                     this.btnOK.Enabled = true;
                     MessageBox.Show("连接成功！");
@@ -220,20 +229,24 @@ namespace Yutai.ArcGIS.Catalog
             }
         }
 
- private void frmCreateGDBConnection_Load(object sender, EventArgs e)
+        private void frmCreateGDBConnection_Load(object sender, EventArgs e)
         {
             this.string_0 = this.cboServerType.Text;
             this.string_1 = this.cboYZType.Text;
             this.btnOK.Enabled = false;
         }
 
- private string method_0()
+        private string method_0()
         {
             if (this.cboYZType.SelectedIndex == 0)
             {
-                return string.Format("Data Source={0};Initial Catalog=master;Integrated Security=False;User Id={1};Password={2} ", this.txtDatabaseInstace.Text, this.txtUser.Text, this.txtPassword.Text);
+                return
+                    string.Format(
+                        "Data Source={0};Initial Catalog=master;Integrated Security=False;User Id={1};Password={2} ",
+                        this.txtDatabaseInstace.Text, this.txtUser.Text, this.txtPassword.Text);
             }
-            return string.Format("Data Source={0};Initial Catalog=master;Integrated Security=SSPI;", this.txtDatabaseInstace.Text);
+            return string.Format("Data Source={0};Initial Catalog=master;Integrated Security=SSPI;",
+                this.txtDatabaseInstace.Text);
         }
 
         private IPropertySet method_1(bool bool_0)
@@ -301,19 +314,6 @@ namespace Yutai.ArcGIS.Catalog
             this.cboDatabase.Items.Clear();
         }
 
-        public string ConnectionPath
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.string_2;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.string_2 = value;
-            }
-        }
+        public string ConnectionPath { get; set; }
     }
 }
-

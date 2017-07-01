@@ -23,7 +23,7 @@
 
         private string method_1(string string_0)
         {
-            string[] strArray2 = new string[] { "", "十", "百", "千" };
+            string[] strArray2 = new string[] {"", "十", "百", "千"};
             string str = "";
             int startIndex = string_0.Length - 1;
             while (startIndex >= 0)
@@ -151,7 +151,8 @@
             }
             if (string_0.IndexOf(".") > -1)
             {
-                str2 = str2 + this.method_2(string_0.Substring(0, string_0.IndexOf("."))) + "点" + this.method_3(string_0.Substring(string_0.IndexOf(".") + 1));
+                str2 = str2 + this.method_2(string_0.Substring(0, string_0.IndexOf("."))) + "点" +
+                       this.method_3(string_0.Substring(string_0.IndexOf(".") + 1));
             }
             else
             {
@@ -184,7 +185,25 @@
             {
                 str2 = "负" + str2;
             }
-            str2 = str2.Replace("0", "零").Replace("1", "壹").Replace("2", "贰").Replace("3", "叁").Replace("4", "肆").Replace("5", "伍").Replace("6", "陆").Replace("7", "柒").Replace("8", "捌").Replace("9", "玖").Replace("M", "亿").Replace("W", "万").Replace("S", "仟").Replace("H", "佰").Replace("T", "拾").Replace("Y", "圆").Replace("J", "角").Replace("F", "分");
+            str2 =
+                str2.Replace("0", "零")
+                    .Replace("1", "壹")
+                    .Replace("2", "贰")
+                    .Replace("3", "叁")
+                    .Replace("4", "肆")
+                    .Replace("5", "伍")
+                    .Replace("6", "陆")
+                    .Replace("7", "柒")
+                    .Replace("8", "捌")
+                    .Replace("9", "玖")
+                    .Replace("M", "亿")
+                    .Replace("W", "万")
+                    .Replace("S", "仟")
+                    .Replace("H", "佰")
+                    .Replace("T", "拾")
+                    .Replace("Y", "圆")
+                    .Replace("J", "角")
+                    .Replace("F", "分");
             if (str2.Substring(str2.Length - 1, 1) != "分")
             {
                 str2 = str2 + "整";
@@ -207,7 +226,7 @@
                 string str2 = string_0.Substring(i - 1, 1);
                 if ((str2 != "0") && (num2 > 1))
                 {
-                    str = str + str2 + strArray[(num2 - 2) % 4];
+                    str = str + str2 + strArray[(num2 - 2)%4];
                 }
                 if (!(!(str2 == "0") || flag))
                 {
@@ -299,7 +318,9 @@
             {
                 str = str.Substring(1);
             }
-            if ((((str.Substring(str.Length - 1, 1) == "M") || (str.Substring(str.Length - 1, 1) == "W")) || ((str.Substring(str.Length - 1, 1) == "S") || (str.Substring(str.Length - 1, 1) == "H"))) || (str.Substring(str.Length - 1, 1) == "T"))
+            if ((((str.Substring(str.Length - 1, 1) == "M") || (str.Substring(str.Length - 1, 1) == "W")) ||
+                 ((str.Substring(str.Length - 1, 1) == "S") || (str.Substring(str.Length - 1, 1) == "H"))) ||
+                (str.Substring(str.Length - 1, 1) == "T"))
             {
                 str = str + "Y";
             }
@@ -307,4 +328,3 @@
         }
     }
 }
-

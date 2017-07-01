@@ -34,48 +34,33 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         {
         }
 
- public void Hide()
+        public void Hide()
         {
         }
 
- public void SetObjects(object @object)
+        public void SetObjects(object @object)
         {
         }
 
         public int Height
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.m_IsPageDirty;
-            }
+            get { return this.m_IsPageDirty; }
         }
 
         public string Title
         {
-            get
-            {
-                return "定制覆盖";
-            }
-            set
-            {
-            }
+            get { return "定制覆盖"; }
+            set { }
         }
 
         public int Width
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
     }
 }
-

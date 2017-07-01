@@ -8,4 +8,3 @@ namespace Yutai.ArcGIS.Catalog
         bool Paste(IEnumName ienumName_0, ref bool bool_0);
     }
 }
-

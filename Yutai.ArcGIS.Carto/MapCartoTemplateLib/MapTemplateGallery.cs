@@ -19,8 +19,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         private ITable itable_1 = null;
         private ITable itable_2 = null;
         private ITable itable_3 = null;
-        [CompilerGenerated]
-        private IWorkspace iworkspace_0;
+
         private List<MapCartoTemplateLib.MapTemplateClass> list_0;
         private static string SDEDatabase;
         private static string SDEInstance;
@@ -66,9 +65,9 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 {
                     str = ConfigurationManager.AppSettings["GDBConnection"];
                 }
-                foreach (string str2 in str.Split(new char[] { ';' }))
+                foreach (string str2 in str.Split(new char[] {';'}))
                 {
-                    string[] strArray3 = str2.Split(new char[] { '=' });
+                    string[] strArray3 = str2.Split(new char[] {'='});
                     switch (strArray3[0].ToLower())
                     {
                         case "dbclient":
@@ -152,7 +151,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public bool MapTemplateClassIsExist(string string_0)
         {
-            QueryFilterClass class2 = new QueryFilterClass {
+            QueryFilterClass class2 = new QueryFilterClass
+            {
                 WhereClause = string.Format("Name='{0}'", string_0)
             };
             IQueryFilter queryFilter = class2;
@@ -199,7 +199,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             {
                 string str = o.get_Value(index).ToString();
                 string str2 = o.get_Value(num2).ToString();
-                MapCartoTemplateLib.MapTemplateClass class3 = new MapCartoTemplateLib.MapTemplateClass(o.OID, this) {
+                MapCartoTemplateLib.MapTemplateClass class3 = new MapCartoTemplateLib.MapTemplateClass(o.OID, this)
+                {
                     Name = str,
                     Description = str2
                 };
@@ -239,14 +240,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public string Connection
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get { throw new NotImplementedException(); }
+            set { throw new NotImplementedException(); }
         }
 
         public List<MapCartoTemplateLib.MapTemplateClass> MapTemplateClass
@@ -274,65 +269,28 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public ITable MapTemplateClassTable
         {
-            get
-            {
-                return this.itable_1;
-            }
-            set
-            {
-                this.itable_1 = value;
-            }
+            get { return this.itable_1; }
+            set { this.itable_1 = value; }
         }
 
         public ITable MapTemplateElementTable
         {
-            get
-            {
-                return this.itable_2;
-            }
-            set
-            {
-                this.itable_2 = value;
-            }
+            get { return this.itable_2; }
+            set { this.itable_2 = value; }
         }
 
         public ITable MapTemplateParamTable
         {
-            get
-            {
-                return this.itable_3;
-            }
-            set
-            {
-                this.itable_3 = value;
-            }
+            get { return this.itable_3; }
+            set { this.itable_3 = value; }
         }
 
         public ITable MapTemplateTable
         {
-            get
-            {
-                return this.itable_0;
-            }
-            set
-            {
-                this.itable_0 = value;
-            }
+            get { return this.itable_0; }
+            set { this.itable_0 = value; }
         }
 
-        public IWorkspace Workspace
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.iworkspace_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.iworkspace_0 = value;
-            }
-        }
+        public IWorkspace Workspace { get; set; }
     }
 }
-

@@ -48,7 +48,8 @@ namespace Yutai.ArcGIS.Controls.Controls
                 else if (pLayer is IFeatureLayer)
                 {
                     IFeatureLayer layer2 = pLayer as IFeatureLayer;
-                    if (((layer2 != null) && !(layer2 is IFDOGraphicsLayer)) && (layer2.FeatureClass.ShapeType == esriGeometryType.esriGeometryPolygon))
+                    if (((layer2 != null) && !(layer2 is IFDOGraphicsLayer)) &&
+                        (layer2.FeatureClass.ShapeType == esriGeometryType.esriGeometryPolygon))
                     {
                         this.AddLayer(pLayer, 0);
                         return true;
@@ -120,31 +121,33 @@ namespace Yutai.ArcGIS.Controls.Controls
                 if ((envelope.IsEmpty || (envelope.Width == 0.0)) || (envelope.Height == 0.0))
                 {
                     extent = this.m_pMainAvtiveView.Extent;
-                    envelope.XMin = e.mapX - ((extent.XMax - extent.XMin) / 2.0);
-                    envelope.XMax = e.mapX + ((extent.XMax - extent.XMin) / 2.0);
-                    envelope.YMin = e.mapY - ((extent.YMax - extent.YMin) / 2.0);
-                    envelope.YMax = e.mapY + ((extent.YMax - extent.YMin) / 2.0);
+                    envelope.XMin = e.mapX - ((extent.XMax - extent.XMin)/2.0);
+                    envelope.XMax = e.mapX + ((extent.XMax - extent.XMin)/2.0);
+                    envelope.YMin = e.mapY - ((extent.YMax - extent.YMin)/2.0);
+                    envelope.YMax = e.mapY + ((extent.YMax - extent.YMin)/2.0);
                 }
                 else
                 {
                     extent = this.m_pMainAvtiveView.Extent;
-                    double num = extent.Width / extent.Height;
-                    if (envelope.Width > (envelope.Height * num))
+                    double num = extent.Width/extent.Height;
+                    if (envelope.Width > (envelope.Height*num))
                     {
-                        envelope.YMin = envelope.YMax - (envelope.Width / num);
+                        envelope.YMin = envelope.YMax - (envelope.Width/num);
                     }
                     else
                     {
-                        envelope.XMax = envelope.XMin + (envelope.Height * num);
+                        envelope.XMax = envelope.XMin + (envelope.Height*num);
                     }
                 }
                 if (!((this.m_pElement.Geometry == null) && this.m_pElement.Geometry.IsEmpty))
                 {
-                    this.axMapControl1.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewBackground, this.m_pElement, this.m_pEnvelope);
+                    this.axMapControl1.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewBackground, this.m_pElement,
+                        this.m_pEnvelope);
                 }
                 this.m_pEnvelope = envelope;
                 this.m_pElement.Geometry = envelope;
-                this.axMapControl1.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, this.m_pElement, this.m_pEnvelope);
+                this.axMapControl1.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, this.m_pElement,
+                    this.m_pEnvelope);
                 this.m_CanDo = false;
                 Cursor.Current = Cursors.WaitCursor;
                 this.m_pMainAvtiveView.Extent = envelope;
@@ -162,7 +165,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             }
         }
 
- public void DrawRectangle(IActiveView pActiveView)
+        public void DrawRectangle(IActiveView pActiveView)
         {
             if ((this.m_pElement != null) && (pActiveView.FocusMap.LayerCount > 0))
             {
@@ -199,7 +202,8 @@ namespace Yutai.ArcGIS.Controls.Controls
             this.m_pFillSymbol = new SimpleFillSymbolClass();
             ((ISimpleFillSymbol) this.m_pFillSymbol).Style = esriSimpleFillStyle.esriSFSNull;
             ILineSymbol symbol = new SimpleLineSymbolClass();
-            IRgbColor color = new RgbColorClass {
+            IRgbColor color = new RgbColorClass
+            {
                 Red = 0,
                 Green = 0,
                 Blue = 255
@@ -221,7 +225,8 @@ namespace Yutai.ArcGIS.Controls.Controls
             {
                 this.m_pEnvelope = this.m_pMainMapControl.ActiveView.Extent;
                 IPoint point = new PointClass();
-                point.PutCoords((this.m_pEnvelope.XMin + this.m_pEnvelope.XMax) / 2.0, (this.m_pEnvelope.YMin + this.m_pEnvelope.YMax) / 2.0);
+                point.PutCoords((this.m_pEnvelope.XMin + this.m_pEnvelope.XMax)/2.0,
+                    (this.m_pEnvelope.YMin + this.m_pEnvelope.YMax)/2.0);
                 if (this.m_ZoomWithMainView)
                 {
                     this.axMapControl1.ActiveView.Extent = this.m_pEnvelope.Envelope;
@@ -235,15 +240,19 @@ namespace Yutai.ArcGIS.Controls.Controls
             }
         }
 
-        private void frmOverwindows_OnViewRefreshed(object ActiveView, int viewDrawPhase, object layerOrElement, object envelope)
+        private void frmOverwindows_OnViewRefreshed(object ActiveView, int viewDrawPhase, object layerOrElement,
+            object envelope)
         {
         }
 
         private void Init()
         {
-            (this.m_pMainMapControl as IMapControlEvents2_Event).OnMapReplaced+=(new IMapControlEvents2_OnMapReplacedEventHandler(this.OverviewWindowCtrl_OnMapReplaced));
-            (this.m_pMainMapControl as IMapControlEvents2_Event).OnViewRefreshed+=(new IMapControlEvents2_OnViewRefreshedEventHandler(this.frmOverwindows_OnViewRefreshed));
-            (this.m_pMainMapControl as IMapControlEvents2_Event).OnExtentUpdated+=(new IMapControlEvents2_OnExtentUpdatedEventHandler(this.frmOverwindows_OnExtentUpdated));
+            (this.m_pMainMapControl as IMapControlEvents2_Event).OnMapReplaced +=
+                (new IMapControlEvents2_OnMapReplacedEventHandler(this.OverviewWindowCtrl_OnMapReplaced));
+            (this.m_pMainMapControl as IMapControlEvents2_Event).OnViewRefreshed +=
+                (new IMapControlEvents2_OnViewRefreshedEventHandler(this.frmOverwindows_OnViewRefreshed));
+            (this.m_pMainMapControl as IMapControlEvents2_Event).OnExtentUpdated +=
+                (new IMapControlEvents2_OnExtentUpdatedEventHandler(this.frmOverwindows_OnExtentUpdated));
             if (this.m_OverwindowsLayersType == OverwindowsLayersType.LayerSettings)
             {
                 this.AddLayer();
@@ -271,9 +280,11 @@ namespace Yutai.ArcGIS.Controls.Controls
                 if (layer2 is IFeatureLayer)
                 {
                     layer = layer2 as IFeatureLayer;
-                    if ((layer.FeatureClass != null) && (layer.FeatureClass.ShapeType == esriGeometryType.esriGeometryPolygon))
+                    if ((layer.FeatureClass != null) &&
+                        (layer.FeatureClass.ShapeType == esriGeometryType.esriGeometryPolygon))
                     {
-                        layer3 = new FeatureLayerClass {
+                        layer3 = new FeatureLayerClass
+                        {
                             FeatureClass = layer.FeatureClass
                         };
                         this.axMapControl1.Map.AddLayer(layer3);
@@ -296,7 +307,8 @@ namespace Yutai.ArcGIS.Controls.Controls
             }
             if (layer != null)
             {
-                layer3 = new FeatureLayerClass {
+                layer3 = new FeatureLayerClass
+                {
                     FeatureClass = layer.FeatureClass
                 };
                 this.axMapControl1.Map.AddLayer(layer3);
@@ -316,7 +328,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             }
         }
 
- public void InitLayerSettings()
+        public void InitLayerSettings()
         {
             try
             {
@@ -391,7 +403,8 @@ namespace Yutai.ArcGIS.Controls.Controls
                 }
                 else if (pLayer is IGroupLayer)
                 {
-                    if (this.AddGroupLayer(pLayer as IGroupLayer) && (this.m_OverwindowsLayersType == OverwindowsLayersType.BottomPolygonLayer))
+                    if (this.AddGroupLayer(pLayer as IGroupLayer) &&
+                        (this.m_OverwindowsLayersType == OverwindowsLayersType.BottomPolygonLayer))
                     {
                         break;
                     }
@@ -399,7 +412,8 @@ namespace Yutai.ArcGIS.Controls.Controls
                 else if (pLayer is IFeatureLayer)
                 {
                     IFeatureLayer layer2 = pLayer as IFeatureLayer;
-                    if (((layer2 != null) && !(layer2 is IFDOGraphicsLayer)) && (layer2.FeatureClass.ShapeType == esriGeometryType.esriGeometryPolygon))
+                    if (((layer2 != null) && !(layer2 is IFDOGraphicsLayer)) &&
+                        (layer2.FeatureClass.ShapeType == esriGeometryType.esriGeometryPolygon))
                     {
                         this.AddLayer(pLayer, 0);
                         if (this.m_OverwindowsLayersType == OverwindowsLayersType.BottomPolygonLayer)
@@ -409,7 +423,8 @@ namespace Yutai.ArcGIS.Controls.Controls
                     }
                 }
             }
-            if (((this.m_pMainMapControl.Map.LayerCount > 0) && (this.axMapControl1.Map.LayerCount == 0)) && this.m_MustOneLayer)
+            if (((this.m_pMainMapControl.Map.LayerCount > 0) && (this.axMapControl1.Map.LayerCount == 0)) &&
+                this.m_MustOneLayer)
             {
                 pLayer = this.m_pMainMapControl.Map.get_Layer(this.m_pMainMapControl.Map.LayerCount - 1);
                 this.AddLayer(pLayer, 0);
@@ -474,7 +489,8 @@ namespace Yutai.ArcGIS.Controls.Controls
             if (Item is ILayer)
             {
                 IFeatureLayer layer = Item as IFeatureLayer;
-                if (((layer != null) && !(layer is IFDOGraphicsLayer)) && (layer.FeatureClass.ShapeType == esriGeometryType.esriGeometryPolygon))
+                if (((layer != null) && !(layer is IFDOGraphicsLayer)) &&
+                    (layer.FeatureClass.ShapeType == esriGeometryType.esriGeometryPolygon))
                 {
                     this.AddLayer(Item as ILayer, 0);
                     if (this.m_ClipBounds != null)
@@ -536,7 +552,8 @@ namespace Yutai.ArcGIS.Controls.Controls
                 ILayer layer = this.axMapControl1.get_Layer(i);
                 if (this.m_layersettings.LayerSettings.ContainsKey(layer.Name))
                 {
-                    OverviewLayerSetting setting = this.m_layersettings.LayerSettings[layer.Name] as OverviewLayerSetting;
+                    OverviewLayerSetting setting =
+                        this.m_layersettings.LayerSettings[layer.Name] as OverviewLayerSetting;
                     if ((setting.MinScale == 0.0) && (setting.MaxScale == 0.0))
                     {
                         if (areaOfInterest == null)
@@ -587,12 +604,18 @@ namespace Yutai.ArcGIS.Controls.Controls
             {
                 try
                 {
-                    (this.m_pMainAvtiveView as IActiveViewEvents_Event).ItemAdded-=(new IActiveViewEvents_ItemAddedEventHandler(this.OverviewWindow_ItemAdded));
-                    (this.m_pMainAvtiveView as IActiveViewEvents_Event).ItemDeleted-=(new IActiveViewEvents_ItemDeletedEventHandler(this.OverviewWindow_ItemDeleted));
-                    (this.m_pMainAvtiveView as IActiveViewEvents_Event).ItemReordered-=(new IActiveViewEvents_ItemReorderedEventHandler(this.OverviewWindow_ItemReordered));
-                    (this.m_pMainAvtiveView as IActiveViewEvents_Event).AfterDraw-=(new IActiveViewEvents_AfterDrawEventHandler(this.OverviewWindow_AfterDraw));
-                    (this.m_pMainAvtiveView as IActiveViewEvents_Event).ContentsCleared-=(new IActiveViewEvents_ContentsClearedEventHandler(this.OverviewWindow_ContentsCleared));
-                    (this.m_pMainAvtiveView as IActiveViewEvents_Event).ContentsChanged-=(new IActiveViewEvents_ContentsChangedEventHandler(this.frmOverviewWindow_ContentsChanged));
+                    (this.m_pMainAvtiveView as IActiveViewEvents_Event).ItemAdded -=
+                        (new IActiveViewEvents_ItemAddedEventHandler(this.OverviewWindow_ItemAdded));
+                    (this.m_pMainAvtiveView as IActiveViewEvents_Event).ItemDeleted -=
+                        (new IActiveViewEvents_ItemDeletedEventHandler(this.OverviewWindow_ItemDeleted));
+                    (this.m_pMainAvtiveView as IActiveViewEvents_Event).ItemReordered -=
+                        (new IActiveViewEvents_ItemReorderedEventHandler(this.OverviewWindow_ItemReordered));
+                    (this.m_pMainAvtiveView as IActiveViewEvents_Event).AfterDraw -=
+                        (new IActiveViewEvents_AfterDrawEventHandler(this.OverviewWindow_AfterDraw));
+                    (this.m_pMainAvtiveView as IActiveViewEvents_Event).ContentsCleared -=
+                        (new IActiveViewEvents_ContentsClearedEventHandler(this.OverviewWindow_ContentsCleared));
+                    (this.m_pMainAvtiveView as IActiveViewEvents_Event).ContentsChanged -=
+                        (new IActiveViewEvents_ContentsChangedEventHandler(this.frmOverviewWindow_ContentsChanged));
                 }
                 catch
                 {
@@ -603,12 +626,18 @@ namespace Yutai.ArcGIS.Controls.Controls
             this.m_pEnvelope = this.m_pMainAvtiveView.Extent;
             try
             {
-                (this.m_pMainAvtiveView as IActiveViewEvents_Event).ItemAdded+=(new IActiveViewEvents_ItemAddedEventHandler(this.OverviewWindow_ItemAdded));
-                (this.m_pMainAvtiveView as IActiveViewEvents_Event).ItemDeleted+=(new IActiveViewEvents_ItemDeletedEventHandler(this.OverviewWindow_ItemDeleted));
-                (this.m_pMainAvtiveView as IActiveViewEvents_Event).ItemReordered+=(new IActiveViewEvents_ItemReorderedEventHandler(this.OverviewWindow_ItemReordered));
-                (this.m_pMainAvtiveView as IActiveViewEvents_Event).AfterDraw+=(new IActiveViewEvents_AfterDrawEventHandler(this.OverviewWindow_AfterDraw));
-                (this.m_pMainAvtiveView as IActiveViewEvents_Event).ContentsCleared+=(new IActiveViewEvents_ContentsClearedEventHandler(this.OverviewWindow_ContentsCleared));
-                (this.m_pMainAvtiveView as IActiveViewEvents_Event).ContentsChanged+=(new IActiveViewEvents_ContentsChangedEventHandler(this.frmOverviewWindow_ContentsChanged));
+                (this.m_pMainAvtiveView as IActiveViewEvents_Event).ItemAdded +=
+                    (new IActiveViewEvents_ItemAddedEventHandler(this.OverviewWindow_ItemAdded));
+                (this.m_pMainAvtiveView as IActiveViewEvents_Event).ItemDeleted +=
+                    (new IActiveViewEvents_ItemDeletedEventHandler(this.OverviewWindow_ItemDeleted));
+                (this.m_pMainAvtiveView as IActiveViewEvents_Event).ItemReordered +=
+                    (new IActiveViewEvents_ItemReorderedEventHandler(this.OverviewWindow_ItemReordered));
+                (this.m_pMainAvtiveView as IActiveViewEvents_Event).AfterDraw +=
+                    (new IActiveViewEvents_AfterDrawEventHandler(this.OverviewWindow_AfterDraw));
+                (this.m_pMainAvtiveView as IActiveViewEvents_Event).ContentsCleared +=
+                    (new IActiveViewEvents_ContentsClearedEventHandler(this.OverviewWindow_ContentsCleared));
+                (this.m_pMainAvtiveView as IActiveViewEvents_Event).ContentsChanged +=
+                    (new IActiveViewEvents_ContentsChangedEventHandler(this.frmOverviewWindow_ContentsChanged));
             }
             catch
             {
@@ -622,7 +651,8 @@ namespace Yutai.ArcGIS.Controls.Controls
             IEnvelope extent;
             if (this.m_OverwindowsLayersType == OverwindowsLayersType.AllLayer)
             {
-                OverviewWindowsAllLayerProperty property = new OverviewWindowsAllLayerProperty {
+                OverviewWindowsAllLayerProperty property = new OverviewWindowsAllLayerProperty
+                {
                     Map = this.m_pMainAvtiveView.FocusMap,
                     OverviewMap = this.axMapControl1.Map,
                     MapCtrlBackgroundColor = this.axMapControl1.BackColor,
@@ -672,7 +702,8 @@ namespace Yutai.ArcGIS.Controls.Controls
             }
             else
             {
-                OverviewWindowsProperty property2 = new OverviewWindowsProperty {
+                OverviewWindowsProperty property2 = new OverviewWindowsProperty
+                {
                     Map = this.m_pMainAvtiveView.FocusMap,
                     OverviewMap = this.axMapControl1.Map,
                     MapCtrlBackgroundColor = this.axMapControl1.BackColor,
@@ -748,12 +779,18 @@ namespace Yutai.ArcGIS.Controls.Controls
                 {
                     try
                     {
-                        (this.m_pMainAvtiveView as IActiveViewEvents_Event).ItemAdded-=(new IActiveViewEvents_ItemAddedEventHandler(this.OverviewWindow_ItemAdded));
-                        (this.m_pMainAvtiveView as IActiveViewEvents_Event).ItemDeleted-=(new IActiveViewEvents_ItemDeletedEventHandler(this.OverviewWindow_ItemDeleted));
-                        (this.m_pMainAvtiveView as IActiveViewEvents_Event).ItemReordered-=(new IActiveViewEvents_ItemReorderedEventHandler(this.OverviewWindow_ItemReordered));
-                        (this.m_pMainAvtiveView as IActiveViewEvents_Event).AfterDraw-=(new IActiveViewEvents_AfterDrawEventHandler(this.OverviewWindow_AfterDraw));
-                        (this.m_pMainAvtiveView as IActiveViewEvents_Event).ContentsCleared-=(new IActiveViewEvents_ContentsClearedEventHandler(this.OverviewWindow_ContentsCleared));
-                        (this.m_pMainAvtiveView as IActiveViewEvents_Event).ContentsChanged-=(new IActiveViewEvents_ContentsChangedEventHandler(this.frmOverviewWindow_ContentsChanged));
+                        (this.m_pMainAvtiveView as IActiveViewEvents_Event).ItemAdded -=
+                            (new IActiveViewEvents_ItemAddedEventHandler(this.OverviewWindow_ItemAdded));
+                        (this.m_pMainAvtiveView as IActiveViewEvents_Event).ItemDeleted -=
+                            (new IActiveViewEvents_ItemDeletedEventHandler(this.OverviewWindow_ItemDeleted));
+                        (this.m_pMainAvtiveView as IActiveViewEvents_Event).ItemReordered -=
+                            (new IActiveViewEvents_ItemReorderedEventHandler(this.OverviewWindow_ItemReordered));
+                        (this.m_pMainAvtiveView as IActiveViewEvents_Event).AfterDraw -=
+                            (new IActiveViewEvents_AfterDrawEventHandler(this.OverviewWindow_AfterDraw));
+                        (this.m_pMainAvtiveView as IActiveViewEvents_Event).ContentsCleared -=
+                            (new IActiveViewEvents_ContentsClearedEventHandler(this.OverviewWindow_ContentsCleared));
+                        (this.m_pMainAvtiveView as IActiveViewEvents_Event).ContentsChanged -=
+                            (new IActiveViewEvents_ContentsChangedEventHandler(this.frmOverviewWindow_ContentsChanged));
                     }
                     catch
                     {
@@ -764,9 +801,12 @@ namespace Yutai.ArcGIS.Controls.Controls
                 {
                     try
                     {
-                        (this.m_pMainMapControl as IMapControlEvents2_Event).OnMapReplaced-=(new IMapControlEvents2_OnMapReplacedEventHandler(this.OverviewWindowCtrl_OnMapReplaced));
-                        (this.m_pMainMapControl as IMapControlEvents2_Event).OnViewRefreshed-=(new IMapControlEvents2_OnViewRefreshedEventHandler(this.frmOverwindows_OnViewRefreshed));
-                        (this.m_pMainMapControl as IMapControlEvents2_Event).OnExtentUpdated-=(new IMapControlEvents2_OnExtentUpdatedEventHandler(this.frmOverwindows_OnExtentUpdated));
+                        (this.m_pMainMapControl as IMapControlEvents2_Event).OnMapReplaced -=
+                            (new IMapControlEvents2_OnMapReplacedEventHandler(this.OverviewWindowCtrl_OnMapReplaced));
+                        (this.m_pMainMapControl as IMapControlEvents2_Event).OnViewRefreshed -=
+                            (new IMapControlEvents2_OnViewRefreshedEventHandler(this.frmOverwindows_OnViewRefreshed));
+                        (this.m_pMainMapControl as IMapControlEvents2_Event).OnExtentUpdated -=
+                            (new IMapControlEvents2_OnExtentUpdatedEventHandler(this.frmOverwindows_OnExtentUpdated));
                     }
                     catch
                     {
@@ -794,7 +834,8 @@ namespace Yutai.ArcGIS.Controls.Controls
                 {
                     try
                     {
-                        (this.m_pMainMapControl as IMapControlEvents2_Event).OnExtentUpdated-=(new IMapControlEvents2_OnExtentUpdatedEventHandler(this.frmOverwindows_OnExtentUpdated));
+                        (this.m_pMainMapControl as IMapControlEvents2_Event).OnExtentUpdated -=
+                            (new IMapControlEvents2_OnExtentUpdatedEventHandler(this.frmOverwindows_OnExtentUpdated));
                     }
                     catch
                     {
@@ -807,11 +848,15 @@ namespace Yutai.ArcGIS.Controls.Controls
                     this.m_pEnvelope = this.m_pMainAvtiveView.Extent;
                     if (flag)
                     {
-                        (this.m_pMainMapControl as IMapControlEvents2_Event).OnMapReplaced+=(new IMapControlEvents2_OnMapReplacedEventHandler(this.OverviewWindowCtrl_OnMapReplaced));
-                        (this.m_pMainMapControl as IMapControlEvents2_Event).OnViewRefreshed+=(new IMapControlEvents2_OnViewRefreshedEventHandler(this.frmOverwindows_OnViewRefreshed));
-                        (this.m_pMainMapControl as IMapControlEvents2_Event).OnExtentUpdated+=(new IMapControlEvents2_OnExtentUpdatedEventHandler(this.frmOverwindows_OnExtentUpdated));
+                        (this.m_pMainMapControl as IMapControlEvents2_Event).OnMapReplaced +=
+                            (new IMapControlEvents2_OnMapReplacedEventHandler(this.OverviewWindowCtrl_OnMapReplaced));
+                        (this.m_pMainMapControl as IMapControlEvents2_Event).OnViewRefreshed +=
+                            (new IMapControlEvents2_OnViewRefreshedEventHandler(this.frmOverwindows_OnViewRefreshed));
+                        (this.m_pMainMapControl as IMapControlEvents2_Event).OnExtentUpdated +=
+                            (new IMapControlEvents2_OnExtentUpdatedEventHandler(this.frmOverwindows_OnExtentUpdated));
                     }
-                    (this.m_pMainMapControl as IMapControlEvents2_Event).OnExtentUpdated+=(new IMapControlEvents2_OnExtentUpdatedEventHandler(this.frmOverwindows_OnExtentUpdated));
+                    (this.m_pMainMapControl as IMapControlEvents2_Event).OnExtentUpdated +=
+                        (new IMapControlEvents2_OnExtentUpdatedEventHandler(this.frmOverwindows_OnExtentUpdated));
                     (this.axMapControl1.Map as IMapAdmin2).ClipBounds = this.m_pMainMapControl.Map.ClipGeometry;
                     if (this.m_pMainMapControl.Map.ClipGeometry != null)
                     {
@@ -828,10 +873,7 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         public bool MustOneLayer
         {
-            set
-            {
-                this.m_MustOneLayer = value;
-            }
+            set { this.m_MustOneLayer = value; }
         }
 
         public OverwindowsLayersType OverwindowsLayersType
@@ -848,22 +890,13 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         public bool UseMainActiveViewLayerCopy
         {
-            get
-            {
-                return this.m_UseMainActiveViewLayerCopy;
-            }
-            set
-            {
-                this.m_UseMainActiveViewLayerCopy = value;
-            }
+            get { return this.m_UseMainActiveViewLayerCopy; }
+            set { this.m_UseMainActiveViewLayerCopy = value; }
         }
 
         public bool ZoomWithMainView
         {
-            get
-            {
-                return this.m_ZoomWithMainView;
-            }
+            get { return this.m_ZoomWithMainView; }
             set
             {
                 this.m_ZoomWithMainView = value;
@@ -897,4 +930,3 @@ namespace Yutai.ArcGIS.Controls.Controls
         }
     }
 }
-

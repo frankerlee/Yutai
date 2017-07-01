@@ -25,4 +25,3 @@
         LVS_EX_UNDERLINEHOT = 2048
     }
 }
-

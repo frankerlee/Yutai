@@ -17,7 +17,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
         private static MenuItem miClearLocations;
         private static MenuItem miLoadLocations;
 
-        public static INALayer CreateClosestFacilityLayer(string layerName, INetworkDataset networkDataset, INAClosestFacilitySolver naClosesFacilitySolver)
+        public static INALayer CreateClosestFacilityLayer(string layerName, INetworkDataset networkDataset,
+            INAClosestFacilitySolver naClosesFacilitySolver)
         {
             INASolverSettings settings = naClosesFacilitySolver as INASolverSettings;
             INASolver solver = naClosesFacilitySolver as INASolver;
@@ -37,7 +38,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             return layer;
         }
 
-        public static INALayer CreateNetworkAnalysisLayer(string name, INetworkDataset networkDataset, INASolver naSolver)
+        public static INALayer CreateNetworkAnalysisLayer(string name, INetworkDataset networkDataset,
+            INASolver naSolver)
         {
             if (naSolver is INARouteSolver)
             {
@@ -56,7 +58,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             return layer;
         }
 
-        public static INALayer CreateRouteAnalysisLayer(string layerName, INetworkDataset networkDataset, INARouteSolver naRouteSolver)
+        public static INALayer CreateRouteAnalysisLayer(string layerName, INetworkDataset networkDataset,
+            INARouteSolver naRouteSolver)
         {
             INASolverSettings settings = naRouteSolver as INASolverSettings;
             INASolver solver = naRouteSolver as INASolver;
@@ -85,7 +88,7 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             contextMenu1 = new ContextMenu();
             miLoadLocations = new MenuItem();
             miClearLocations = new MenuItem();
-            contextMenu1.MenuItems.AddRange(new MenuItem[] { miLoadLocations, miClearLocations });
+            contextMenu1.MenuItems.AddRange(new MenuItem[] {miLoadLocations, miClearLocations});
             miLoadLocations.Index = 0;
             miLoadLocations.Text = "Load Locations...";
             miLoadLocations.Click += new EventHandler(NetworkAnalystTools.miLoadLocations_Click);
@@ -108,4 +111,3 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
         }
     }
 }
-

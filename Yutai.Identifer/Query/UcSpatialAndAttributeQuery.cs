@@ -17,15 +17,11 @@ namespace Yutai.Plugins.Identifer.Query
 {
     public partial class UcSpatialAndAttributeQuery : UserControl
     {
-
         private IMap _pMap = null;
 
         public IMap Map
         {
-            set
-            {
-                this._pMap = value;
-            }
+            set { this._pMap = value; }
         }
 
         public UcSpatialAndAttributeQuery()
@@ -38,7 +34,9 @@ namespace Yutai.Plugins.Identifer.Query
             if ((this.cboSourceLayer.SelectedIndex == -1 ? false : this.comboBoxLayer.SelectedIndex != -1))
             {
                 IFeatureLayer layer = null;
-                layer = (this.cboSourceLayer.SelectedItem as UcSpatialAndAttributeQuery.LayerObjectWrap).Layer as IFeatureLayer;
+                layer =
+                    (this.cboSourceLayer.SelectedItem as UcSpatialAndAttributeQuery.LayerObjectWrap).Layer as
+                        IFeatureLayer;
                 ICursor cursor = null;
                 if (!this.chkUseSelectFeature.Checked)
                 {
@@ -81,29 +79,32 @@ namespace Yutai.Plugins.Identifer.Query
                 switch (this.cboOperationType.SelectedIndex)
                 {
                     case 0:
-                        {
-                            _esriSelectionResultEnum = esriSelectionResultEnum.esriSelectionResultNew;
-                            break;
-                        }
+                    {
+                        _esriSelectionResultEnum = esriSelectionResultEnum.esriSelectionResultNew;
+                        break;
+                    }
                     case 1:
-                        {
-                            _esriSelectionResultEnum = esriSelectionResultEnum.esriSelectionResultAdd;
-                            break;
-                        }
+                    {
+                        _esriSelectionResultEnum = esriSelectionResultEnum.esriSelectionResultAdd;
+                        break;
+                    }
                     case 2:
-                        {
-                            _esriSelectionResultEnum = esriSelectionResultEnum.esriSelectionResultSubtract;
-                            break;
-                        }
+                    {
+                        _esriSelectionResultEnum = esriSelectionResultEnum.esriSelectionResultSubtract;
+                        break;
+                    }
                     case 3:
-                        {
-                            _esriSelectionResultEnum = esriSelectionResultEnum.esriSelectionResultAnd;
-                            break;
-                        }
+                    {
+                        _esriSelectionResultEnum = esriSelectionResultEnum.esriSelectionResultAnd;
+                        break;
+                    }
                 }
                 IFeatureLayer featureLayer = null;
-                featureLayer = (this.comboBoxLayer.SelectedItem as UcSpatialAndAttributeQuery.LayerObjectWrap).Layer as IFeatureLayer;
-                this.StartQuery(featureLayer, cursor as IFeatureCursor, _esriSpatialRelEnum, _esriSelectionResultEnum, this.memEditWhereCaluse.Text);
+                featureLayer =
+                    (this.comboBoxLayer.SelectedItem as UcSpatialAndAttributeQuery.LayerObjectWrap).Layer as
+                        IFeatureLayer;
+                this.StartQuery(featureLayer, cursor as IFeatureCursor, _esriSpatialRelEnum, _esriSelectionResultEnum,
+                    this.memEditWhereCaluse.Text);
                 (this._pMap as IActiveView).Refresh();
                 ComReleaser.ReleaseCOMObject(cursor);
             }
@@ -146,7 +147,9 @@ namespace Yutai.Plugins.Identifer.Query
         {
             if (this.cboSourceLayer.SelectedIndex > -1)
             {
-                IFeatureLayer layer = (this.cboSourceLayer.SelectedItem as UcSpatialAndAttributeQuery.LayerObjectWrap).Layer as IFeatureLayer;
+                IFeatureLayer layer =
+                    (this.cboSourceLayer.SelectedItem as UcSpatialAndAttributeQuery.LayerObjectWrap).Layer as
+                        IFeatureLayer;
                 if ((layer as IFeatureSelection).SelectionSet.Count != 0)
                 {
                     this.chkUseSelectFeature.Checked = true;
@@ -192,9 +195,6 @@ namespace Yutai.Plugins.Identifer.Query
             }
         }
 
-   
-
-       
 
         private void LoadGroupLayer(ComboBox comboBoxEdit_0, ICompositeLayer compLayer, bool bool_0)
         {
@@ -236,7 +236,10 @@ namespace Yutai.Plugins.Identifer.Query
         private bool CompareSelectedLayer(ILayer pLayer)
         {
             bool flag;
-            flag = (this.comboBoxLayer.SelectedIndex == -1 || (this.comboBoxLayer.SelectedItem as UcSpatialAndAttributeQuery.LayerObjectWrap).Layer != pLayer ? false : true);
+            flag = (this.comboBoxLayer.SelectedIndex == -1 ||
+                    (this.comboBoxLayer.SelectedItem as UcSpatialAndAttributeQuery.LayerObjectWrap).Layer != pLayer
+                ? false
+                : true);
             return flag;
         }
 
@@ -251,7 +254,7 @@ namespace Yutai.Plugins.Identifer.Query
                 {
                     if ((layer as IFeatureLayer).FeatureClass != null)
                     {
-                        if (!(!bool_0 ? true : ! this.CompareSelectedLayer(layer)))
+                        if (!(!bool_0 ? true : !this.CompareSelectedLayer(layer)))
                         {
                             if ((layer as IFeatureLayer as IFeatureSelection).SelectionSet.Count > 0)
                             {
@@ -279,7 +282,8 @@ namespace Yutai.Plugins.Identifer.Query
             }
         }
 
-        private void StartQuery(IFeatureLayer fLayer, IFeatureCursor fCursor, esriSpatialRelEnum pSpatialRelEnum, esriSelectionResultEnum pSelectionResultEnum, string whereClause)
+        private void StartQuery(IFeatureLayer fLayer, IFeatureCursor fCursor, esriSpatialRelEnum pSpatialRelEnum,
+            esriSelectionResultEnum pSelectionResultEnum, string whereClause)
         {
             IFeature feature = fCursor.NextFeature();
             IFeatureSelection fSelection = fLayer as IFeatureSelection;
@@ -321,7 +325,8 @@ namespace Yutai.Plugins.Identifer.Query
                         }
                         if (!flag)
                         {
-                            fSelection.SelectFeatures(spatialFilterClass, esriSelectionResultEnum.esriSelectionResultAdd, false);
+                            fSelection.SelectFeatures(spatialFilterClass, esriSelectionResultEnum.esriSelectionResultAdd,
+                                false);
                         }
                         else
                         {
@@ -357,10 +362,7 @@ namespace Yutai.Plugins.Identifer.Query
 
             public ILayer Layer
             {
-                get
-                {
-                    return this._layer;
-                }
+                get { return this._layer; }
             }
 
             public LayerObjectWrap(ILayer pLayer)

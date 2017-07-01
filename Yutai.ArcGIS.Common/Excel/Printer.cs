@@ -36,7 +36,8 @@ namespace Yutai.ArcGIS.Common.Excel
         public virtual void DrawPrinterMargins()
         {
             this.CheckGraphics();
-            Rectangle rect = new Rectangle(base.PrinterMargins.Left, base.PrinterMargins.Top, base.PrinterMargins.Width, base.PrinterMargins.Height);
+            Rectangle rect = new Rectangle(base.PrinterMargins.Left, base.PrinterMargins.Top, base.PrinterMargins.Width,
+                base.PrinterMargins.Height);
             base.Graphics.DrawRectangle(base.Pen, rect);
         }
 
@@ -78,10 +79,7 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public virtual Font Font
         {
-            get
-            {
-                return this.font_0;
-            }
+            get { return this.font_0; }
             set
             {
                 if (value != null)
@@ -93,10 +91,7 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public virtual int Height
         {
-            get
-            {
-                return this.int_6;
-            }
+            get { return this.int_6; }
             set
             {
                 this.int_6 = value;
@@ -109,46 +104,25 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public virtual bool IsDrawAllPage
         {
-            get
-            {
-                return this.bool_0;
-            }
-            set
-            {
-                this.bool_0 = value;
-            }
+            get { return this.bool_0; }
+            set { this.bool_0 = value; }
         }
 
         public int MoveX
         {
-            get
-            {
-                return this.int_7;
-            }
-            set
-            {
-                this.int_7 = value;
-            }
+            get { return this.int_7; }
+            set { this.int_7 = value; }
         }
 
         public int MoveY
         {
-            get
-            {
-                return this.int_8;
-            }
-            set
-            {
-                this.int_8 = value;
-            }
+            get { return this.int_8; }
+            set { this.int_8 = value; }
         }
 
         public virtual Sewing Sewing
         {
-            get
-            {
-                return this.sewing_0;
-            }
+            get { return this.sewing_0; }
             set
             {
                 if (value != null)
@@ -159,4 +133,3 @@ namespace Yutai.ArcGIS.Common.Excel
         }
     }
 }
-

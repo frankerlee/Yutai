@@ -12,7 +12,7 @@ namespace Yutai.Shared
     {
         public static string GetRelativePath(string relativeFile, string fileName)
         {
-            FileInfo fileInfo=new FileInfo(relativeFile);
+            FileInfo fileInfo = new FileInfo(relativeFile);
             return fileInfo.DirectoryName + "\\" + fileName;
         }
 

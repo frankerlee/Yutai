@@ -29,19 +29,12 @@
 
         public string Description
         {
-            get
-            {
-                return "图层文件";
-            }
+            get { return "图层文件"; }
         }
 
         public string Name
         {
-            get
-            {
-                return "GxFilterLayers";
-            }
+            get { return "GxFilterLayers"; }
         }
     }
 }
-

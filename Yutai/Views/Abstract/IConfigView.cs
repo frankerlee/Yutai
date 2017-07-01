@@ -11,6 +11,4 @@ namespace Yutai.Views.Abstract
     {
         event Action PageShown;
     }
-
-  
 }

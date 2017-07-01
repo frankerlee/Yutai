@@ -20,21 +20,24 @@ namespace Yutai.Plugins.Locator.Commands
     public class CmdStartLocator : YutaiCommand
     {
         private DockPanelService _dockService;
+
         public CmdStartLocator(IAppContext context)
         {
             OnCreate(context);
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
         }
+
         public override void OnClick()
         {
             ISecureContext sContext = _context as ISecureContext;
             if (_dockService == null)
                 _dockService = _context.Container.GetInstance<DockPanelService>();
-          
-            if (sContext.YutaiProject == null )
+
+            if (sContext.YutaiProject == null)
             {
                 MessageService.Current.Warn("当前项目没有设置定位器");
 
@@ -42,7 +45,7 @@ namespace Yutai.Plugins.Locator.Commands
             }
             else
             {
-               _dockService.Show();
+                _dockService.Show();
             }
         }
 

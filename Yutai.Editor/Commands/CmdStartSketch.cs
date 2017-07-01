@@ -540,7 +540,6 @@ namespace Yutai.Plugins.Editor.Commands
 
         public override void OnClick()
         {
-            
             if (SketchToolAssist.CurrentTask == null)
             {
                 _context.SetCurrentTool(this);
@@ -922,7 +921,8 @@ namespace Yutai.Plugins.Editor.Commands
                     y = SketchShareEx.LastPoint.Y + y;
                     mapPoint.PutCoords(x, y);
                 }
-                string str = SketchShareEx.SketchMouseMove(mapPoint, _context.FocusMap, _context.Config.EngineSnapEnvironment);
+                string str = SketchShareEx.SketchMouseMove(mapPoint, _context.FocusMap,
+                    _context.Config.EngineSnapEnvironment);
                 if (this.bool_0)
                 {
                     _context.SetStatus(str);
@@ -967,11 +967,11 @@ namespace Yutai.Plugins.Editor.Commands
                 string[] keys = new string[]
                 {
                     "Edit_Snap_SnapSegment", "Edit_Snap_SnapVertex", "Edit_Snap_SnapMidPoint", "Edit_Snap_SnapEndPoint",
-                    "-","Edit_DirectionTool","Edit_LengthTool","Edit_DirectionLengthTool",
-                    "Edit_AbsoluteXYTool","Edit_DeltaXYTool","Edit_CompletePartTool",
-                    "Edit_SquareFinishTool","Edit_DeleteSketchTool","Edit_CompleteSketchTool"
+                    "-", "Edit_DirectionTool", "Edit_LengthTool", "Edit_DirectionLengthTool",
+                    "Edit_AbsoluteXYTool", "Edit_DeltaXYTool", "Edit_CompletePartTool",
+                    "Edit_SquareFinishTool", "Edit_DeleteSketchTool", "Edit_CompleteSketchTool"
                 };
-             
+
                 return keys;
             }
         }

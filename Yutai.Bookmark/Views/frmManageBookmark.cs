@@ -16,11 +16,12 @@ namespace Yutai.Plugins.Bookmark.Views
     {
         private IAppContext _context;
         private IBasicMap m_pMap;
+
         public frmManageBookmark(IAppContext context)
         {
             InitializeComponent();
             _context = context;
-            m_pMap = _context.MapControl.Map as IBasicMap;
+            m_pMap = _context.FocusMap as IBasicMap;
         }
 
         private void lstBookmarks_SelectedIndexChanged(object sender, EventArgs e)
@@ -59,7 +60,7 @@ namespace Yutai.Plugins.Bookmark.Views
                 ListViewItem item = this.lstBookmarks.SelectedItems[0];
                 if (item.Tag is ISpatialBookmark)
                 {
-                  (item.Tag as ISpatialBookmark).ZoomTo(m_pMap as IMap);
+                    (item.Tag as ISpatialBookmark).ZoomTo(m_pMap as IMap);
                 }
             }
         }

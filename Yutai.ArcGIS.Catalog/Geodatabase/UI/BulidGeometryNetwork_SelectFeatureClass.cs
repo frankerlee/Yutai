@@ -22,7 +22,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             for (int i = 0; i < this.chkListUseFeatureClass.Items.Count; i++)
             {
-                BulidGeometryNetworkHelper.FeatureClassWrap wrap = this.chkListUseFeatureClass.Items[i] as BulidGeometryNetworkHelper.FeatureClassWrap;
+                BulidGeometryNetworkHelper.FeatureClassWrap wrap =
+                    this.chkListUseFeatureClass.Items[i] as BulidGeometryNetworkHelper.FeatureClassWrap;
                 if (wrap.IsUse)
                 {
                     this.chkListUseFeatureClass.SetItemChecked(i, false);
@@ -35,7 +36,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             for (int i = 0; i < this.chkListUseFeatureClass.Items.Count; i++)
             {
-                BulidGeometryNetworkHelper.FeatureClassWrap wrap = this.chkListUseFeatureClass.Items[i] as BulidGeometryNetworkHelper.FeatureClassWrap;
+                BulidGeometryNetworkHelper.FeatureClassWrap wrap =
+                    this.chkListUseFeatureClass.Items[i] as BulidGeometryNetworkHelper.FeatureClassWrap;
                 if (!wrap.IsUse)
                 {
                     this.chkListUseFeatureClass.SetItemChecked(i, true);
@@ -46,7 +48,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void BulidGeometryNetwork_SelectFeatureClass_Load(object sender, EventArgs e)
         {
-            string[] strArray = BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Name.Split(new char[] { '.' });
+            string[] strArray = BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Name.Split(new char[] {'.'});
             string str = strArray[strArray.Length - 1];
             BulidGeometryNetworkHelper.BulidGNHelper.Name = str + "_Net";
             if (BulidGeometryNetworkHelper.BulidGNHelper.IsEmpty)
@@ -68,14 +70,18 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         subsets.Reset();
                         for (IDataset dataset2 = subsets.Next(); dataset2 != null; dataset2 = subsets.Next())
                         {
-                            if (((dataset2 is IFeatureClass) && ((dataset2 as IFeatureClass).FeatureType == esriFeatureType.esriFTSimple)) && (((dataset2 as IFeatureClass).ShapeType == esriGeometryType.esriGeometryPolyline) || ((dataset2 as IFeatureClass).ShapeType == esriGeometryType.esriGeometryPoint)))
+                            if (((dataset2 is IFeatureClass) &&
+                                 ((dataset2 as IFeatureClass).FeatureType == esriFeatureType.esriFTSimple)) &&
+                                (((dataset2 as IFeatureClass).ShapeType == esriGeometryType.esriGeometryPolyline) ||
+                                 ((dataset2 as IFeatureClass).ShapeType == esriGeometryType.esriGeometryPoint)))
                             {
                                 BulidGeometryNetworkHelper.FeatureClassWrap wrap;
                                 int index = (dataset2 as IFeatureClass).Fields.FindField("Enabled");
                                 if (index != -1)
                                 {
                                     IField field = (dataset2 as IFeatureClass).Fields.get_Field(index);
-                                    if ((field.Type == esriFieldType.esriFieldTypeSmallInteger) || (field.Type == esriFieldType.esriFieldTypeInteger))
+                                    if ((field.Type == esriFieldType.esriFieldTypeSmallInteger) ||
+                                        (field.Type == esriFieldType.esriFieldTypeInteger))
                                     {
                                         wrap = new BulidGeometryNetworkHelper.FeatureClassWrap(dataset2 as IFeatureClass);
                                         BulidGeometryNetworkHelper.BulidGNHelper.FeatureClassWraps.Add(wrap);
@@ -97,7 +103,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void chkListUseFeatureClass_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            BulidGeometryNetworkHelper.FeatureClassWrap wrap = this.chkListUseFeatureClass.Items[e.Index] as BulidGeometryNetworkHelper.FeatureClassWrap;
+            BulidGeometryNetworkHelper.FeatureClassWrap wrap =
+                this.chkListUseFeatureClass.Items[e.Index] as BulidGeometryNetworkHelper.FeatureClassWrap;
             if (e.NewValue == CheckState.Checked)
             {
                 wrap.IsUse = true;
@@ -108,7 +115,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void method_0(object sender, EventArgs e)
+        private void method_0(object sender, EventArgs e)
         {
         }
 
@@ -135,4 +142,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

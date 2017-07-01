@@ -36,7 +36,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     (this.mapTemplateElement_0 as MapTemplateGroupElement).SizeStyle = SizeStyle.InsideWidthScale;
                     try
                     {
-                        (this.mapTemplateElement_0 as MapTemplateGroupElement).SizeScale = Convert.ToDouble(this.txtScale.Text);
+                        (this.mapTemplateElement_0 as MapTemplateGroupElement).SizeScale =
+                            Convert.ToDouble(this.txtScale.Text);
                     }
                     catch
                     {
@@ -53,12 +54,12 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             this.bool_1 = false;
         }
 
- private void GroupElementExPropertyPage_Load(object sender, EventArgs e)
+        private void GroupElementExPropertyPage_Load(object sender, EventArgs e)
         {
             this.method_1();
         }
 
- private void method_0()
+        private void method_0()
         {
             this.bool_1 = true;
             if (this.OnValueChange != null)
@@ -132,26 +133,17 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public MapCartoTemplateLib.MapTemplateElement MapTemplateElement
@@ -165,14 +157,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public string Title
         {
-            get
-            {
-                return "组合元素缩放";
-            }
-            set
-            {
-            }
+            get { return "组合元素缩放"; }
+            set { }
         }
     }
 }
-

@@ -56,14 +56,15 @@ namespace Yutai.ArcGIS.Controls.ClosestFacilitySolver
                             {
                                 goto Label_0116;
                             }
-                            this.lstOutput.Items.Add("Error " + messages.GetMessage(i).ErrorCode.ToString() + " " + messages.GetMessage(i).Description);
+                            this.lstOutput.Items.Add("Error " + messages.GetMessage(i).ErrorCode.ToString() + " " +
+                                                     messages.GetMessage(i).Description);
                         }
                         else
                         {
                             this.lstOutput.Items.Add("Warning " + messages.GetMessage(i).Description);
                         }
                         continue;
-                    Label_0116:
+                        Label_0116:
                         this.lstOutput.Items.Add("Information " + messages.GetMessage(i).Description);
                     }
                 }
@@ -92,7 +93,7 @@ namespace Yutai.ArcGIS.Controls.ClosestFacilitySolver
             return (edit as INAContext);
         }
 
- private void frmClosesFacilitySolver_Load(object sender, EventArgs e)
+        private void frmClosesFacilitySolver_Load(object sender, EventArgs e)
         {
         }
 
@@ -114,8 +115,10 @@ namespace Yutai.ArcGIS.Controls.ClosestFacilitySolver
                     long num2 = long.Parse(row.get_Value(table.FindField("IncidentID")).ToString());
                     long num3 = long.Parse(row.get_Value(table.FindField("FacilityID")).ToString());
                     long num4 = long.Parse(row.get_Value(table.FindField("FacilityRank")).ToString());
-                    double num = double.Parse(row.get_Value(table.FindField("Total_" + this.cboCostAttribute.Text)).ToString());
-                    this.lstOutput.Items.Add(num2.ToString() + ",\t" + num3.ToString() + ",\t" + num4.ToString() + ",\t" + num.ToString("F2"));
+                    double num =
+                        double.Parse(row.get_Value(table.FindField("Total_" + this.cboCostAttribute.Text)).ToString());
+                    this.lstOutput.Items.Add(num2.ToString() + ",\t" + num3.ToString() + ",\t" + num4.ToString() + ",\t" +
+                                             num.ToString("F2"));
                 }
             }
             this.lstOutput.Refresh();
@@ -130,7 +133,8 @@ namespace Yutai.ArcGIS.Controls.ClosestFacilitySolver
         private void Initialize()
         {
             this.CheckOutNetworkAnalystExtension();
-            IFeatureWorkspace workspace = this.OpenWorkspace(Application.StartupPath + @"\..\..\..\..\Data\NetworkAnalyst") as IFeatureWorkspace;
+            IFeatureWorkspace workspace =
+                this.OpenWorkspace(Application.StartupPath + @"\..\..\..\..\Data\NetworkAnalyst") as IFeatureWorkspace;
             INetworkDataset pNetDataset = this.OpenNetworkDataset(workspace as IWorkspace, "Streets_nd");
             this.m_pNAContext = this.CreateSolverContext(pNetDataset);
             for (int i = 0; i < (pNetDataset.AttributeCount - 1); i++)
@@ -148,7 +152,8 @@ namespace Yutai.ArcGIS.Controls.ClosestFacilitySolver
             this.LoadNANetworkLocations("Incidents", pInputFC, 100.0);
             pInputFC = workspace.OpenFeatureClass("BayAreaLocations");
             this.LoadNANetworkLocations("Facilities", pInputFC, 100.0);
-            INetworkLayer layer2 = new NetworkLayerClass {
+            INetworkLayer layer2 = new NetworkLayerClass
+            {
                 NetworkDataset = pNetDataset
             };
             ILayer layer = layer2 as ILayer;
@@ -157,7 +162,7 @@ namespace Yutai.ArcGIS.Controls.ClosestFacilitySolver
             layer.Name = this.m_pNAContext.Solver.DisplayName;
         }
 
- private bool IsNumeric(string str)
+        private bool IsNumeric(string str)
         {
             try
             {
@@ -174,7 +179,8 @@ namespace Yutai.ArcGIS.Controls.ClosestFacilitySolver
         {
             INAClass class2 = this.m_pNAContext.NAClasses.get_ItemByName(strNAClassName) as INAClass;
             class2.DeleteAllRows();
-            INAClassLoader loader = new NAClassLoaderClass {
+            INAClassLoader loader = new NAClassLoaderClass
+            {
                 Locator = this.m_pNAContext.Locator
             };
             if (SnapTolerance > 0.0)
@@ -201,7 +207,8 @@ namespace Yutai.ArcGIS.Controls.ClosestFacilitySolver
                 if (extension.Name.Equals("Network Dataset"))
                 {
                     IDatasetContainer2 container = extension as IDatasetContainer2;
-                    return (container.get_DatasetByName(esriDatasetType.esriDTNetworkDataset, sNDSName) as INetworkDataset);
+                    return
+                        (container.get_DatasetByName(esriDatasetType.esriDTNetworkDataset, sNDSName) as INetworkDataset);
                 }
             }
             return null;
@@ -256,7 +263,8 @@ namespace Yutai.ArcGIS.Controls.ClosestFacilitySolver
                 settings.set_MaxValueForHierarchy(2, 2);
                 settings.set_NumTransitionToHierarchy(2, 9);
             }
-            solver.UpdateContext(this.m_pNAContext, this.GetDENetworkDataset(this.m_pNAContext.NetworkDataset), new GPMessagesClass());
+            solver.UpdateContext(this.m_pNAContext, this.GetDENetworkDataset(this.m_pNAContext.NetworkDataset),
+                new GPMessagesClass());
         }
 
         public string Solve(INAContext pNAContext, IGPMessages pGPMessages)
@@ -279,11 +287,7 @@ namespace Yutai.ArcGIS.Controls.ClosestFacilitySolver
 
         private IMap FocusMap
         {
-            set
-            {
-                this.m_pFocusMap = value;
-            }
+            set { this.m_pFocusMap = value; }
         }
     }
 }
-

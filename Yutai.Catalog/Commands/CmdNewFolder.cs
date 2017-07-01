@@ -87,7 +87,7 @@ namespace Yutai.Plugins.Catalog.Commands
     }
 
 
-    class CmdStartServer: YutaiCommand
+    class CmdStartServer : YutaiCommand
     {
         public CmdStartServer(IAppContext context)
         {
@@ -114,7 +114,10 @@ namespace Yutai.Plugins.Catalog.Commands
         {
             get
             {
-                return _context.GxSelection != null && (((IGxSelection) _context.GxSelection).FirstObject is IGxAGSObject && (((IGxSelection) _context.GxSelection).FirstObject as IGxAGSObject).Status != "Started" && (((IGxSelection) _context.GxSelection).FirstObject as IGxAGSObject).Status != "Starting");
+                return _context.GxSelection != null &&
+                       (((IGxSelection) _context.GxSelection).FirstObject is IGxAGSObject &&
+                        (((IGxSelection) _context.GxSelection).FirstObject as IGxAGSObject).Status != "Started" &&
+                        (((IGxSelection) _context.GxSelection).FirstObject as IGxAGSObject).Status != "Starting");
             }
         }
 
@@ -126,10 +129,14 @@ namespace Yutai.Plugins.Catalog.Commands
 
         public override void OnClick()
         {
-            ESRI.ArcGIS.GISClient.IAGSServerObjectName aGSServerObjectName = (((IGxSelection) _context.GxSelection).FirstObject as IGxAGSObject).AGSServerObjectName;
-            ESRI.ArcGIS.GISClient.IAGSServerConnection iAGSServerConnection = (aGSServerObjectName.AGSServerConnectionName as IName).Open() as ESRI.ArcGIS.GISClient.IAGSServerConnection;
-            (iAGSServerConnection as ESRI.ArcGIS.GISClient.IAGSServerConnectionAdmin).ServerObjectAdmin.StartConfiguration(aGSServerObjectName.Name, aGSServerObjectName.Type);
-            ((IGxCatalog)_context.GxCatalog).ObjectRefreshed(((IGxSelection) _context.GxSelection).FirstObject);
+            ESRI.ArcGIS.GISClient.IAGSServerObjectName aGSServerObjectName =
+                (((IGxSelection) _context.GxSelection).FirstObject as IGxAGSObject).AGSServerObjectName;
+            ESRI.ArcGIS.GISClient.IAGSServerConnection iAGSServerConnection =
+                (aGSServerObjectName.AGSServerConnectionName as IName).Open() as
+                    ESRI.ArcGIS.GISClient.IAGSServerConnection;
+            (iAGSServerConnection as ESRI.ArcGIS.GISClient.IAGSServerConnectionAdmin).ServerObjectAdmin
+                .StartConfiguration(aGSServerObjectName.Name, aGSServerObjectName.Type);
+            ((IGxCatalog) _context.GxCatalog).ObjectRefreshed(((IGxSelection) _context.GxSelection).FirstObject);
         }
     }
 
@@ -161,7 +168,10 @@ namespace Yutai.Plugins.Catalog.Commands
         {
             get
             {
-                return _context.GxSelection != null && (((IGxSelection) _context.GxSelection).FirstObject is IGxAGSObject && (((IGxSelection) _context.GxSelection).FirstObject as IGxAGSObject).Status != "Stopped" && (((IGxSelection) _context.GxSelection).FirstObject as IGxAGSObject).Status != "Stopping");
+                return _context.GxSelection != null &&
+                       (((IGxSelection) _context.GxSelection).FirstObject is IGxAGSObject &&
+                        (((IGxSelection) _context.GxSelection).FirstObject as IGxAGSObject).Status != "Stopped" &&
+                        (((IGxSelection) _context.GxSelection).FirstObject as IGxAGSObject).Status != "Stopping");
             }
         }
 
@@ -173,10 +183,14 @@ namespace Yutai.Plugins.Catalog.Commands
 
         public override void OnClick()
         {
-            ESRI.ArcGIS.GISClient.IAGSServerObjectName aGSServerObjectName = (((IGxSelection) _context.GxSelection).FirstObject as IGxAGSObject).AGSServerObjectName;
-            ESRI.ArcGIS.GISClient.IAGSServerConnection iAGSServerConnection = (aGSServerObjectName.AGSServerConnectionName as IName).Open() as ESRI.ArcGIS.GISClient.IAGSServerConnection;
-            (iAGSServerConnection as ESRI.ArcGIS.GISClient.IAGSServerConnectionAdmin).ServerObjectAdmin.StopConfiguration(aGSServerObjectName.Name, aGSServerObjectName.Type);
-            ((IGxCatalog)_context.GxCatalog).ObjectRefreshed(((IGxSelection) _context.GxSelection).FirstObject);
+            ESRI.ArcGIS.GISClient.IAGSServerObjectName aGSServerObjectName =
+                (((IGxSelection) _context.GxSelection).FirstObject as IGxAGSObject).AGSServerObjectName;
+            ESRI.ArcGIS.GISClient.IAGSServerConnection iAGSServerConnection =
+                (aGSServerObjectName.AGSServerConnectionName as IName).Open() as
+                    ESRI.ArcGIS.GISClient.IAGSServerConnection;
+            (iAGSServerConnection as ESRI.ArcGIS.GISClient.IAGSServerConnectionAdmin).ServerObjectAdmin
+                .StopConfiguration(aGSServerObjectName.Name, aGSServerObjectName.Type);
+            ((IGxCatalog) _context.GxCatalog).ObjectRefreshed(((IGxSelection) _context.GxSelection).FirstObject);
         }
     }
 
@@ -208,7 +222,8 @@ namespace Yutai.Plugins.Catalog.Commands
         {
             get
             {
-                return _context.GxSelection != null && (!(((IGxSelection) _context.GxSelection).FirstObject is IGxAGSObject) || true);
+                return _context.GxSelection != null &&
+                       (!(((IGxSelection) _context.GxSelection).FirstObject is IGxAGSObject) || true);
             }
         }
 
@@ -252,7 +267,8 @@ namespace Yutai.Plugins.Catalog.Commands
         {
             get
             {
-                return _context.GxSelection != null && (!(((IGxSelection) _context.GxSelection).FirstObject is IGxAGSConnection) || true);
+                return _context.GxSelection != null &&
+                       (!(((IGxSelection) _context.GxSelection).FirstObject is IGxAGSConnection) || true);
             }
         }
 

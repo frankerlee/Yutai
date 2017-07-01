@@ -25,7 +25,8 @@ namespace Yutai.Plugins.Services
 
         public bool Ask(string message)
         {
-            return MessageBox.Show(message, AppName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+            return MessageBox.Show(message, AppName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
+                   DialogResult.Yes;
         }
 
         public DialogResult AskWithCancel(string message)

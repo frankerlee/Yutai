@@ -15,27 +15,14 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         public string Description
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
 
         public ISymbol Symbol
         {
-            get
-            {
-                return this.isymbol_0;
-            }
-            set
-            {
-                this.isymbol_0 = value;
-            }
+            get { return this.isymbol_0; }
+            set { this.isymbol_0 = value; }
         }
     }
 }
-

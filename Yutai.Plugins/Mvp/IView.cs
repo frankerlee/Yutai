@@ -12,6 +12,7 @@ namespace Yutai.Plugins.Mvp
 
         Form AsForm { get; }
     }
+
     public interface IView<TModel> : IView, IViewInternal<TModel>
     {
         /// <summary>

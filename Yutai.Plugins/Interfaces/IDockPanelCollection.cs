@@ -10,7 +10,7 @@ namespace Yutai.Plugins.Interfaces
         void Lock();
         void Unlock();
         bool Locked { get; }
-        DockPanel Add(IDockPanelView view,  PluginIdentity identity);
+        DockPanel Add(IDockPanelView view, PluginIdentity identity);
         void Remove(string panelName, PluginIdentity identity);
         void RemoveItemsForPlugin(PluginIdentity identity);
         DockPanel GetDockPanel(string key);

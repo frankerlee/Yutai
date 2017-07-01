@@ -17,7 +17,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.m_pMapGrid = pMapGrid;
         }
 
- private void frmMapGridSheet_Load(object sender, EventArgs e)
+        private void frmMapGridSheet_Load(object sender, EventArgs e)
         {
             XtraTabPage page;
             IPropertyPage page2;
@@ -152,7 +152,5 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 this.xtraTabControl1.TabPages.Add(page);
             }
         }
-
-
     }
 }

@@ -16,7 +16,7 @@ namespace Yutai.Menu
         private readonly IBroadcasterService _broadcaster;
         //private readonly ContextMenuPresenter _contextMenuPresenter;
         private readonly IProjectService _projectService;
-        private readonly IMapControlEvents2_Event  _mapEvents;
+        private readonly IMapControlEvents2_Event _mapEvents;
         private readonly IActiveViewEvents_Event _activeViewEvents;
         private readonly IAppContext _context;
 
@@ -29,7 +29,7 @@ namespace Yutai.Menu
             _context = context;
             _broadcaster = broadcaster;
             _projectService = projectService;
-            
+
 
             _mapEvents = _context.MapControl as IMapControlEvents2_Event;
             if (_mapEvents == null)
@@ -43,11 +43,10 @@ namespace Yutai.Menu
         //这儿的事件监控主要用来发布一些对全局可能产生影响的事件，如选择集的变化需要重新刷新按钮等。
         private void RegisterEvents()
         {
-            _mapEvents.OnExtentUpdated+= MapEventsOnOnExtentUpdated;
-            _mapEvents.OnSelectionChanged+= MapEventsOnOnSelectionChanged;
+            _mapEvents.OnExtentUpdated += MapEventsOnOnExtentUpdated;
+            _mapEvents.OnSelectionChanged += MapEventsOnOnSelectionChanged;
         }
 
-       
 
         private void MapEventsOnOnSelectionChanged()
         {
@@ -57,11 +56,8 @@ namespace Yutai.Menu
 
         private void MapEventsOnOnExtentUpdated(object displayTransformation, bool sizeChanged, object newEnvelope)
         {
-            _broadcaster.BroadcastEvent(p=>p.ViewUpdating_,_context.View,null);
+            _broadcaster.BroadcastEvent(p => p.ViewUpdating_, _context.View, null);
             _context.View.Update();
         }
-
-        
-
     }
 }

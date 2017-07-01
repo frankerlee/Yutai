@@ -8,7 +8,6 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
 {
     internal partial class frmLayerInfo : Form
     {
-
         public frmLayerInfo()
         {
             this.InitializeComponent();
@@ -17,14 +16,14 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
             this.MaxScale = 0.0;
         }
 
- private void frmLayerInfo_Load(object sender, EventArgs e)
+        private void frmLayerInfo_Load(object sender, EventArgs e)
         {
             this.txtLayerName.Text = this.LayerName;
             this.txtMinScale.Text = this.MinScale.ToString();
             this.txtMaxScale.Text = this.MaxScale.ToString();
         }
 
- private void simpleButton1_Click(object sender, EventArgs e)
+        private void simpleButton1_Click(object sender, EventArgs e)
         {
             if (this.txtLayerName.Text.Trim().Length == 0)
             {
@@ -55,4 +54,3 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
         public double MinScale { get; set; }
     }
 }
-

@@ -29,7 +29,8 @@ namespace Yutai.ArcGIS.Common.Excel
             this.method_2();
         }
 
-        public PrinterMargins(int int_6, int int_7, int int_8, int int_9, int int_10, int int_11) : base(int_6, int_7, int_8, int_9)
+        public PrinterMargins(int int_6, int int_7, int int_8, int int_9, int int_10, int int_11)
+            : base(int_6, int_7, int_8, int_9)
         {
             this.int_0 = int_10;
             this.int_1 = int_11;
@@ -69,59 +70,34 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public int Height
         {
-            get
-            {
-                return this.int_1;
-            }
-            set
-            {
-                this.int_1 = value;
-            }
+            get { return this.int_1; }
+            set { this.int_1 = value; }
         }
 
         public int Width
         {
-            get
-            {
-                return this.int_0;
-            }
-            set
-            {
-                this.int_0 = value;
-            }
+            get { return this.int_0; }
+            set { this.int_0 = value; }
         }
 
         public int X1
         {
-            get
-            {
-                return this.int_2;
-            }
+            get { return this.int_2; }
         }
 
         public int X2
         {
-            get
-            {
-                return this.int_3;
-            }
+            get { return this.int_3; }
         }
 
         public int Y1
         {
-            get
-            {
-                return this.int_4;
-            }
+            get { return this.int_4; }
         }
 
         public int Y2
         {
-            get
-            {
-                return this.int_5;
-            }
+            get { return this.int_5; }
         }
     }
 }
-

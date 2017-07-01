@@ -3,7 +3,6 @@ using DevExpress.XtraEditors.Controls;
 
 namespace Yutai.ArcGIS.Common.ControlExtend
 {
-  
     public class ImageComboBoxItemEx : ImageComboBoxItem
     {
         private int int_0;
@@ -45,13 +44,15 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             this.int_0 = int_2;
         }
 
-        public ImageComboBoxItemEx([Localizable(true)] string string_0, object object_1, int int_1) : base(string_0, object_1)
+        public ImageComboBoxItemEx([Localizable(true)] string string_0, object object_1, int int_1)
+            : base(string_0, object_1)
         {
             this.object_0 = null;
             this.int_0 = int_1;
         }
 
-        public ImageComboBoxItemEx([Localizable(true)] string string_0, object object_1, int int_1, int int_2) : base(string_0, object_1, int_1)
+        public ImageComboBoxItemEx([Localizable(true)] string string_0, object object_1, int int_1, int int_2)
+            : base(string_0, object_1, int_1)
         {
             this.object_0 = null;
             this.int_0 = int_2;
@@ -84,27 +85,14 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         public int Degree
         {
-            get
-            {
-                return this.int_0;
-            }
-            set
-            {
-                this.int_0 = value;
-            }
+            get { return this.int_0; }
+            set { this.int_0 = value; }
         }
 
         public object Tag
         {
-            get
-            {
-                return this.object_0;
-            }
-            set
-            {
-                this.object_0 = value;
-            }
+            get { return this.object_0; }
+            set { this.object_0 = value; }
         }
     }
 }
-

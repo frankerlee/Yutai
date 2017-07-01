@@ -9,7 +9,7 @@ namespace Yutai.Plugins.Interfaces
 {
     public interface ICommandSubType
     {
-        void SetSubType( int SubType);
+        void SetSubType(int SubType);
         int GetCount();
 
         int SubType { get; set; }

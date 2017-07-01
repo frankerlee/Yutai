@@ -44,7 +44,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnSelectInputFeatures_Click(object sender, EventArgs e)
         {
-            frmOpenFile file = new frmOpenFile {
+            frmOpenFile file = new frmOpenFile
+            {
                 Text = "选择要素"
             };
             file.RemoveAllFilters();
@@ -66,7 +67,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void SelectLoadDataControl_Load(object sender, EventArgs e)
+        private void SelectLoadDataControl_Load(object sender, EventArgs e)
         {
         }
 
@@ -84,11 +85,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IList Items
         {
-            get
-            {
-                return this.SourceDatalistBox.Items;
-            }
+            get { return this.SourceDatalistBox.Items; }
         }
     }
 }
-

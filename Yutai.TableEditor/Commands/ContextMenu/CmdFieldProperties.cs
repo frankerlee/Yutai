@@ -61,11 +61,10 @@ namespace Yutai.Plugins.TableEditor.Commands.ContextMenu
                 FrmFieldProperties view = new FrmFieldProperties(pField);
                 if (view.ShowDialog() == DialogResult.OK)
                 {
-                    
                     IFieldEdit pFieldEdit = pField as IFieldEdit;
                     pFieldEdit.Name_2 = view.NewField.Name;
                     pFieldEdit.AliasName_2 = view.NewField.AliasName;
-                    
+
                     _menuStrip.TableView.VirtualGridView.UpdateField(_menuStrip.ColumnIndex, pField);
                 }
             }
@@ -73,7 +72,6 @@ namespace Yutai.Plugins.TableEditor.Commands.ContextMenu
             {
                 MessageBox.Show(exception.Message);
             }
-
         }
     }
 }

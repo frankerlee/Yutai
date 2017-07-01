@@ -58,17 +58,20 @@ namespace Yutai.ArcGIS.Carto.UI
                     break;
 
                 case 5:
-                    this.irasterStretch2_0.StretchType = esriRasterStretchTypesEnum.esriRasterStretch_HistogramSpecification;
+                    this.irasterStretch2_0.StretchType =
+                        esriRasterStretchTypesEnum.esriRasterStretch_HistogramSpecification;
                     break;
             }
             switch (this.comboBox2.SelectedIndex)
             {
                 case 0:
-                    this.irasterStretch2_0.StretchStatsType = esriRasterStretchStatsTypeEnum.esriRasterStretchStats_Dataset;
+                    this.irasterStretch2_0.StretchStatsType =
+                        esriRasterStretchStatsTypeEnum.esriRasterStretchStats_Dataset;
                     break;
 
                 case 1:
-                    this.irasterStretch2_0.StretchStatsType = esriRasterStretchStatsTypeEnum.esriRasterStretchStats_GlobalStats;
+                    this.irasterStretch2_0.StretchStatsType =
+                        esriRasterStretchStatsTypeEnum.esriRasterStretchStats_GlobalStats;
                     break;
             }
             base.DialogResult = DialogResult.OK;
@@ -85,7 +88,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.tabControl1.Visible = this.comboBox2.SelectedIndex == 1;
         }
 
- private void frmRasteStrechSet_Load(object sender, EventArgs e)
+        private void frmRasteStrechSet_Load(object sender, EventArgs e)
         {
             IArray stretchStats = this.irasterStretch2_0.StretchStats;
             for (int i = 0; i < stretchStats.Count; i++)
@@ -93,7 +96,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 object obj2 = stretchStats.get_Element(i);
                 if (obj2 is IStatsHistogram)
                 {
-                    StatisticsControl control = new StatisticsControl {
+                    StatisticsControl control = new StatisticsControl
+                    {
                         StatsHistogram = obj2 as IStatsHistogram,
                         Dock = DockStyle.Fill
                     };
@@ -158,13 +162,9 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- public IRasterStretch2 RasterStretch
+        public IRasterStretch2 RasterStretch
         {
-            set
-            {
-                this.irasterStretch2_0 = value;
-            }
+            set { this.irasterStretch2_0 = value; }
         }
     }
 }
-

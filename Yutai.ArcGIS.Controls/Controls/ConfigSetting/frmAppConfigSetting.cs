@@ -66,11 +66,11 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
             }
         }
 
- private void Init()
+        private void Init()
         {
         }
 
- private void simpleButton1_Click(object sender, EventArgs e)
+        private void simpleButton1_Click(object sender, EventArgs e)
         {
         }
 
@@ -80,11 +80,7 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
 
         public bool IsChange
         {
-            get
-            {
-                return this.m_IsChange;
-            }
+            get { return this.m_IsChange; }
         }
     }
 }
-

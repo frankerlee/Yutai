@@ -15,9 +15,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         private double[] double_0;
         private IContainer icontainer_0 = null;
         private int int_0 = 0;
-        private int[] int_1 = new int[] { 9001, 9036 };
-        private int[] int_2 = new int[] { 6214, 6024, 6326, 6610 };
-        private int[] int_3 = new int[] { 7024, 7030, 7049 };
+        private int[] int_1 = new int[] {9001, 9036};
+        private int[] int_2 = new int[] {6214, 6024, 6326, 6610};
+        private int[] int_3 = new int[] {7024, 7030, 7049};
         private IParameter[] iparameter_0 = new IParameter[2];
         private ISpatialReferenceFactory ispatialReferenceFactory_0 = new SpatialReferenceEnvironmentClass();
         private IVerticalCoordinateSystem iverticalCoordinateSystem_0 = null;
@@ -69,19 +69,21 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         num = Convert.ToDouble(this.txtMajorAxis.Text);
                         if (this.rdoFlattening.Checked)
                         {
-                            num2 = 1.0 / Convert.ToDouble(this.txtFlattening.Text);
+                            num2 = 1.0/Convert.ToDouble(this.txtFlattening.Text);
                         }
                         else
                         {
                             double num3 = Convert.ToDouble(this.txtMiniorAxis.Text);
-                            num2 = (num - num3) / num;
+                            num2 = (num - num3)/num;
                         }
-                        ((ISpheroidEdit) this.ispheroid_0).DefineEx(this.cboSpheres.Text, null, null, null, ref num, ref num2);
+                        ((ISpheroidEdit) this.ispheroid_0).DefineEx(this.cboSpheres.Text, null, null, null, ref num,
+                            ref num2);
                     }
                     if (this.cboDatumName.SelectedIndex <= 0)
                     {
                         this.ihvdatum_0 = new DatumClass();
-                        ((IDatumEdit) this.ihvdatum_0).DefineEx(this.cboDatumName.Text, null, null, null, this.ispheroid_0);
+                        ((IDatumEdit) this.ihvdatum_0).DefineEx(this.cboDatumName.Text, null, null, null,
+                            this.ispheroid_0);
                     }
                 }
                 object text = this.textEditName.Text;
@@ -97,7 +99,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 {
                     this.iverticalCoordinateSystem_0 = new VerticalCoordinateSystemClass();
                 }
-                (this.iverticalCoordinateSystem_0 as IVerticalCoordinateSystemEdit).Define(ref text, ref alias, ref abbreviation, ref remarks, ref useage, ref hvDatum, ref projectedUnit, ref verticalShift, ref positiveDirection);
+                (this.iverticalCoordinateSystem_0 as IVerticalCoordinateSystemEdit).Define(ref text, ref alias,
+                    ref abbreviation, ref remarks, ref useage, ref hvDatum, ref projectedUnit, ref verticalShift,
+                    ref positiveDirection);
                 base.DialogResult = DialogResult.OK;
             }
         }
@@ -117,7 +121,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 this.cboSpheres.Enabled = false;
                 if (this.bool_0)
                 {
-                    this.ihvdatum_0 = this.ispatialReferenceFactory_0.CreateDatum(this.int_2[this.cboDatumName.SelectedIndex - 1]) as IHVDatum;
+                    this.ihvdatum_0 =
+                        this.ispatialReferenceFactory_0.CreateDatum(this.int_2[this.cboDatumName.SelectedIndex - 1]) as
+                            IHVDatum;
                     this.ispheroid_0 = (this.ihvdatum_0 as IDatum).Spheroid;
                     this.bool_0 = false;
                 }
@@ -141,7 +147,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 this.method_1(this.txtValue, true);
                 if (this.bool_0)
                 {
-                    this.iunit_0 = this.ispatialReferenceFactory_0.CreateUnit(this.int_1[this.cboLineUnitName.SelectedIndex - 1]);
+                    this.iunit_0 =
+                        this.ispatialReferenceFactory_0.CreateUnit(this.int_1[this.cboLineUnitName.SelectedIndex - 1]);
                 }
                 this.txtValue.Text = (this.iunit_0 as ILinearUnit).MetersPerUnit.ToString();
             }
@@ -166,15 +173,16 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 this.method_1(this.txtFlattening, true);
                 if (this.bool_0)
                 {
-                    this.ispheroid_0 = this.ispatialReferenceFactory_0.CreateSpheroid(this.int_3[this.cboSpheres.SelectedIndex - 1]);
+                    this.ispheroid_0 =
+                        this.ispatialReferenceFactory_0.CreateSpheroid(this.int_3[this.cboSpheres.SelectedIndex - 1]);
                 }
                 this.txtMajorAxis.Text = this.ispheroid_0.SemiMajorAxis.ToString();
                 this.txtMiniorAxis.Text = this.ispheroid_0.SemiMinorAxis.ToString();
-                this.txtFlattening.Text = (1.0 / this.ispheroid_0.Flattening).ToString();
+                this.txtFlattening.Text = (1.0/this.ispheroid_0.Flattening).ToString();
             }
         }
 
- private void frmNewVCS_Load(object sender, EventArgs e)
+        private void frmNewVCS_Load(object sender, EventArgs e)
         {
             int index;
             if (this.bool_1)
@@ -222,7 +230,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                                 this.cboSpheres.Text = (this.ihvdatum_0 as IDatum).Spheroid.Name;
                                 this.txtMajorAxis.Text = this.ispheroid_0.SemiMajorAxis.ToString();
                                 this.txtMiniorAxis.Text = this.ispheroid_0.SemiMinorAxis.ToString();
-                                double num2 = 1.0 / this.ispheroid_0.Flattening;
+                                double num2 = 1.0/this.ispheroid_0.Flattening;
                                 this.txtFlattening.Text = num2.ToString();
                             }
                         }
@@ -273,7 +281,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                             this.cboSpheres.Text = (this.ihvdatum_0 as IDatum).Spheroid.Name;
                             this.txtMajorAxis.Text = this.ispheroid_0.SemiMajorAxis.ToString();
                             this.txtMiniorAxis.Text = this.ispheroid_0.SemiMinorAxis.ToString();
-                            this.txtFlattening.Text = (1.0 / this.ispheroid_0.Flattening).ToString();
+                            this.txtFlattening.Text = (1.0/this.ispheroid_0.Flattening).ToString();
                         }
                     }
                 }
@@ -306,10 +314,10 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.method_0(this.iparameter_0);
         }
 
- private void method_0(IParameter[] iparameter_1)
+        private void method_0(IParameter[] iparameter_1)
         {
             this.paramlistView.Items.Clear();
-            string[] items = new string[] { "垂直偏移", this.double_0[0].ToString() };
+            string[] items = new string[] {"垂直偏移", this.double_0[0].ToString()};
             this.paramlistView.Items.Add(new ListViewItem(items));
             items[0] = "方向";
             items[1] = this.double_0[1].ToString();
@@ -374,10 +382,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IVerticalCoordinateSystem VerticalCoordinateSystem
         {
-            get
-            {
-                return this.iverticalCoordinateSystem_0;
-            }
+            get { return this.iverticalCoordinateSystem_0; }
             set
             {
                 this.bool_1 = true;
@@ -386,4 +391,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

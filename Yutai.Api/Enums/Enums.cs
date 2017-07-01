@@ -13,6 +13,7 @@ namespace Yutai.Api.Enums
         Degrees = 2,
         MapUnits = 3,
     }
+
     public enum AutoToggle
     {
         Auto = 0,
@@ -53,6 +54,7 @@ namespace Yutai.Api.Enums
         Metric = 0,
         American = 1,
     }
+
     public enum AreaUnits
     {
         SquareMeters = 0,
@@ -73,11 +75,10 @@ namespace Yutai.Api.Enums
 
     public enum IdentifierMode
     {
-        TopLayer=0,
+        TopLayer = 0,
         SelectableLayer = 1,
-        VisibleLayer=2,
-        AllLayer=3,
-        CurrentLayer=4
+        VisibleLayer = 2,
+        AllLayer = 3,
+        CurrentLayer = 4
     }
-
 }

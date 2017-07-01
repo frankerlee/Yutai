@@ -61,7 +61,9 @@ namespace Yutai.Plugins.Mvp
         /// <summary>
         /// Called after the view was closed and presenter is about to return control flow to the external code.
         /// </summary>
-        protected virtual void OnClosed() { }
+        protected virtual void OnClosed()
+        {
+        }
 
         /// <summary>
         /// A handler for the IView.OkButton.Click event. 
@@ -130,7 +132,6 @@ namespace Yutai.Plugins.Mvp
         /// </summary>
         protected virtual void Initialize()
         {
-
         }
 
         private void Init(TModel model)

@@ -29,9 +29,8 @@ namespace Yutai.Commands.Views
         public override void OnClick()
         {
             _inZoom = false;
-           _context.SetCurrentTool(this);
+            _context.SetCurrentTool(this);
         }
-
 
 
         public override void OnClick(object sender, EventArgs args)
@@ -46,7 +45,8 @@ namespace Yutai.Commands.Views
             base.m_category = "View";
             base.m_bitmap = Properties.Resources.icon_pan;
             _cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.Resource.Cursor.Hand.cur"));
-            _cursor1 = new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.Resource.Cursor.MoveHand.cur"));
+            _cursor1 =
+                new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.Resource.Cursor.MoveHand.cur"));
             base.m_name = "View_Pan";
             base._key = "View_Pan";
             base.m_toolTip = "平移";
@@ -74,17 +74,19 @@ namespace Yutai.Commands.Views
                     this._context.ActiveView.FocusMap = map;
                     this._context.ActiveView.Refresh();
                 }
-                point = ((IActiveView)this._context.MainView.PageLayoutControl.ActiveView.FocusMap).ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
-                ((IActiveView)this._context.MainView.PageLayoutControl.ActiveView.FocusMap).ScreenDisplay.PanStart(point);
+                point =
+                    ((IActiveView) this._context.MainView.PageLayoutControl.ActiveView.FocusMap).ScreenDisplay
+                        .DisplayTransformation.ToMapPoint(x, y);
+                ((IActiveView) this._context.MainView.PageLayoutControl.ActiveView.FocusMap).ScreenDisplay.PanStart(
+                    point);
                 this.m_cursor = this._cursor1;
                 this._inZoom = true;
                 return;
             }
-            point = ((IActiveView)this._context.FocusMap).ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
-            ((IActiveView)this._context.FocusMap).ScreenDisplay.PanStart(point);
+            point = ((IActiveView) this._context.FocusMap).ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
+            ((IActiveView) this._context.FocusMap).ScreenDisplay.PanStart(point);
             this.m_cursor = this._cursor1;
             this._inZoom = true;
-           
         }
 
         public override void OnMouseMove(int Button, int Shift, int x, int y)
@@ -93,11 +95,14 @@ namespace Yutai.Commands.Views
             {
                 if (this._context.ActiveView is IPageLayout)
                 {
-                    IPoint point = ((IActiveView)this._context.MainView.PageLayoutControl.ActiveView.FocusMap).ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
-                    ((IActiveView)this._context.MainView.PageLayoutControl.ActiveView.FocusMap).ScreenDisplay.PanMoveTo(point);
+                    IPoint point =
+                        ((IActiveView) this._context.MainView.PageLayoutControl.ActiveView.FocusMap).ScreenDisplay
+                            .DisplayTransformation.ToMapPoint(x, y);
+                    ((IActiveView) this._context.MainView.PageLayoutControl.ActiveView.FocusMap).ScreenDisplay.PanMoveTo
+                        (point);
                     return;
                 }
-                IActiveView focusMap = (IActiveView)_context.FocusMap;
+                IActiveView focusMap = (IActiveView) _context.FocusMap;
                 focusMap.ScreenDisplay.PanMoveTo(focusMap.ScreenDisplay.DisplayTransformation.ToMapPoint(x, y));
             }
         }
@@ -117,12 +122,10 @@ namespace Yutai.Commands.Views
                     return;
                 }
 
-                IActiveView focusMap = (IActiveView)_context.FocusMap;
+                IActiveView focusMap = (IActiveView) _context.FocusMap;
                 focusMap.Extent = focusMap.ScreenDisplay.PanStop();
                 focusMap.Refresh();
             }
         }
     }
-
 }
-

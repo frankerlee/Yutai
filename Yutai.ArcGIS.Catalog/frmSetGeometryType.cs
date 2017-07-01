@@ -9,7 +9,6 @@ namespace Yutai.ArcGIS.Catalog
 {
     public partial class frmSetGeometryType : Form
     {
-        [CompilerGenerated]
         private IContainer icontainer_0 = null;
 
         public frmSetGeometryType()
@@ -41,24 +40,11 @@ namespace Yutai.ArcGIS.Catalog
             }
         }
 
- private void frmSetGeometryType_Load(object sender, EventArgs e)
+        private void frmSetGeometryType_Load(object sender, EventArgs e)
         {
             this.comboBox1.SelectedIndex = 0;
         }
 
- public esriGeometryType ShapeType
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.esriGeometryType_0;
-            }
-            [CompilerGenerated]
-            protected set
-            {
-                this.esriGeometryType_0 = value;
-            }
-        }
+        public esriGeometryType ShapeType { get; set; }
     }
 }
-

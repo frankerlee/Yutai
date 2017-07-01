@@ -70,7 +70,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     this.panel1.Controls.Add(this.annoClassSetCtrl_0);
                 }
             }
-            else if ((this.int_0 == 4) && (ObjectClassHelper.m_pObjectClassHelper.m_FeatreType == esriFeatureType.esriFTAnnotation))
+            else if ((this.int_0 == 4) &&
+                     (ObjectClassHelper.m_pObjectClassHelper.m_FeatreType == esriFeatureType.esriFTAnnotation))
             {
                 this.panel1.Controls.Clear();
                 this.panel1.Controls.Add(this.objectClassKeyConfig_0);
@@ -119,12 +120,14 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     }
                     else
                     {
-                        if (ObjectClassHelper.m_pObjectClassHelper.Workspace.Type == esriWorkspaceType.esriFileSystemWorkspace)
+                        if (ObjectClassHelper.m_pObjectClassHelper.Workspace.Type ==
+                            esriWorkspaceType.esriFileSystemWorkspace)
                         {
                             try
                             {
                                 this.objectFieldsPage_0.Apply();
-                                ObjectClassHelper.m_pObjectClassHelper.m_pFieds = this.objectFieldsPage_0.Fields as IFieldsEdit;
+                                ObjectClassHelper.m_pObjectClassHelper.m_pFieds =
+                                    this.objectFieldsPage_0.Fields as IFieldsEdit;
                                 this.iobjectClass_0 = ObjectClassHelper.m_pObjectClassHelper.CreateObjectClass();
                                 if (this.iobjectClass_0 != null)
                                 {
@@ -136,7 +139,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                             {
                                 exception = exception1;
                                 MessageBox.Show(exception.Message);
-                                Logger.Current.Error("",exception, "");
+                                Logger.Current.Error("", exception, "");
                             }
                             return;
                         }
@@ -154,7 +157,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         try
                         {
                             this.objectFieldsPage_0.Apply();
-                            ObjectClassHelper.m_pObjectClassHelper.m_pFieds = this.objectFieldsPage_0.Fields as IFieldsEdit;
+                            ObjectClassHelper.m_pObjectClassHelper.m_pFieds =
+                                this.objectFieldsPage_0.Fields as IFieldsEdit;
                             this.iobjectClass_0 = ObjectClassHelper.m_pObjectClassHelper.CreateObjectClass();
                             if (this.iobjectClass_0 != null)
                             {
@@ -166,7 +170,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         {
                             exception = exception2;
                             MessageBox.Show(exception.Message);
-                            Logger.Current.Error("",exception, "");
+                            Logger.Current.Error("", exception, "");
                         }
                         return;
                     }
@@ -201,7 +205,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     {
                         exception = exception3;
                         MessageBox.Show(exception.Message);
-                        Logger.Current.Error("",exception, "");
+                        Logger.Current.Error("", exception, "");
                     }
                     return;
                 }
@@ -209,7 +213,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.int_0++;
         }
 
- private void frmObjectClass_Load(object sender, EventArgs e)
+        private void frmObjectClass_Load(object sender, EventArgs e)
         {
             if (this.ifeatureWorkspace_0 != null)
             {
@@ -222,7 +226,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.panel1.Controls.Add(this.objectClassGeneral_0);
         }
 
- private void method_0()
+        private void method_0()
         {
             this.btnLast.Enabled = false;
             this.btnNext.Enabled = false;
@@ -292,10 +296,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IObjectClass ObjectClass
         {
-            get
-            {
-                return this.iobjectClass_0;
-            }
+            get { return this.iobjectClass_0; }
         }
 
         public enumUseType UseType
@@ -309,4 +310,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

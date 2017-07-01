@@ -17,7 +17,7 @@ namespace Yutai.Plugins.TableEditor.Functions.String
             _description = "LTrim 函数可删除字符串左侧的空格。";
             _parameters = new List<Parameter>()
             {
-                new Parameter() { Order = 0, Name = "string", Description = "字符串表达式。"}
+                new Parameter() {Order = 0, Name = "string", Description = "字符串表达式。"}
             };
         }
     }

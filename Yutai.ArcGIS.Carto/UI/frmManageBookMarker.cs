@@ -43,7 +43,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void frmManageBookMarker_Load(object sender, EventArgs e)
+        private void frmManageBookMarker_Load(object sender, EventArgs e)
         {
             IEnumSpatialBookmark bookmarks = (this.imap_0 as IMapBookmarks).Bookmarks;
             bookmarks.Reset();
@@ -53,7 +53,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.listView1.SelectedItems.Count == 1)
             {
@@ -69,11 +69,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IMap Map
         {
-            set
-            {
-                this.imap_0 = value;
-            }
+            set { this.imap_0 = value; }
         }
     }
 }
-

@@ -112,8 +112,8 @@ namespace Yutai.Plugins.Catalog.Commands
                     IGxObjectEdit gxObjectEdit = gxObject as IGxObjectEdit;
                     try
                     {
-                        if(gxObjectEdit.CanDelete())
-                        gxObjectEdit.Delete();
+                        if (gxObjectEdit.CanDelete())
+                            gxObjectEdit.Delete();
                         else
                         {
                             flag = true;
@@ -133,9 +133,7 @@ namespace Yutai.Plugins.Catalog.Commands
                     }
                     catch (Exception ex)
                     {
-                       
                     }
-                   
                 }
                 if (flag)
                 {

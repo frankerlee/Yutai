@@ -111,7 +111,8 @@ namespace Yutai.ArcGIS.Common.Excel
         protected virtual void ShowPrintPreviewDialog(System.Drawing.Printing.PrintDocument printDocument_1)
         {
             this.ThrowPrintDocumentNullException(printDocument_1);
-            PrintPreviewDialog dialog = new PrintPreviewDialog {
+            PrintPreviewDialog dialog = new PrintPreviewDialog
+            {
                 Text = printDocument_1.DocumentName,
                 WindowState = FormWindowState.Maximized
             };
@@ -121,7 +122,8 @@ namespace Yutai.ArcGIS.Common.Excel
                 if (dialog.Controls[1] is ToolBar)
                 {
                     bar = (ToolBar) dialog.Controls[1];
-                    ToolBarButton button = new ToolBarButton {
+                    ToolBarButton button = new ToolBarButton
+                    {
                         ToolTipText = "Import Excel",
                         ImageIndex = 2
                     };
@@ -197,34 +199,19 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public ImportExcelDelegate ImportExcelValue
         {
-            get
-            {
-                return this.importExcelDelegate_0;
-            }
-            set
-            {
-                this.importExcelDelegate_0 = value;
-            }
+            get { return this.importExcelDelegate_0; }
+            set { this.importExcelDelegate_0 = value; }
         }
 
         public System.Drawing.Printing.PrintDocument PrintDocument
         {
-            get
-            {
-                return this.printDocument_0;
-            }
-            set
-            {
-                this.printDocument_0 = value;
-            }
+            get { return this.printDocument_0; }
+            set { this.printDocument_0 = value; }
         }
 
         public PrintPageDelegate PrintPageValue
         {
-            get
-            {
-                return this.printPageDelegate_0;
-            }
+            get { return this.printPageDelegate_0; }
             set
             {
                 this.printPageDelegate_0 = value;
@@ -233,4 +220,3 @@ namespace Yutai.ArcGIS.Common.Excel
         }
     }
 }
-

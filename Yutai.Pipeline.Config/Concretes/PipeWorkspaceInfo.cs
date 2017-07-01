@@ -12,6 +12,7 @@ namespace Yutai.Pipeline.Config.Concretes
     {
         private IWorkspace m_workspace = null;
         private IArray m_array = new ESRI.ArcGIS.esriSystem.Array();
+
         public IArray ClassArray
         {
             get { return m_array; }
@@ -21,6 +22,7 @@ namespace Yutai.Pipeline.Config.Concretes
         {
             get { return m_workspace; }
         }
+
         public PipeWorkspaceInfo(IWorkspace workspace)
         {
             m_workspace = workspace;
@@ -28,7 +30,7 @@ namespace Yutai.Pipeline.Config.Concretes
 
         public void AddClass(IFeatureClass pClass)
         {
-            for(int i=0; i<m_array.Count;i++)
+            for (int i = 0; i < m_array.Count; i++)
             {
                 IFeatureClass pClass1 = m_array.Element[i] as IFeatureClass;
                 if (pClass == pClass1) return;

@@ -22,9 +22,8 @@ namespace Yutai.Commands.MapLegend
 {
     public class CmdZoomToSelectFeatures : YutaiCommand
     {
-       
         private IMapLegendView _view;
-     
+
 
         public CmdZoomToSelectFeatures(IAppContext context, IMapLegendView view)
         {
@@ -45,6 +44,7 @@ namespace Yutai.Commands.MapLegend
             base.m_enabled = true;
             base._itemType = RibbonItemType.Button;
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();

@@ -52,10 +52,12 @@ namespace Yutai.Plugins.Editor
             _dockPanelService = context.Container.GetInstance<TemplateDockPanelService>();
 
             //获取配置对象
-           // _pipelineConfig = context.Container.GetSingleton<PipelineConfig>();
+            // _pipelineConfig = context.Container.GetSingleton<PipelineConfig>();
             if (string.IsNullOrEmpty(_pipelineConfig.XmlFile))
             {
-                string fileName = ((ISecureContext) _context).YutaiProject.FindPlugin("4a3bcaab-9d3e-4ca7-a19d-7ee08fb0629e").ConfigXML;
+                string fileName =
+                    ((ISecureContext) _context).YutaiProject.FindPlugin("4a3bcaab-9d3e-4ca7-a19d-7ee08fb0629e")
+                        .ConfigXML;
                 if (string.IsNullOrEmpty(fileName)) return;
                 //fileName = FileHelper.GetFullPath(fileName);
                 //_pipelineConfig.LoadFromXml(fileName);

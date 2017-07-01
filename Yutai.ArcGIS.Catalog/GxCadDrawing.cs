@@ -7,7 +7,8 @@ using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Catalog
 {
-    public class GxCadDrawing : IGxObject, IGxDataset, IGxObjectEdit, IGxObjectInternalName, IGxObjectProperties, IGxObjectUI
+    public class GxCadDrawing : IGxObject, IGxDataset, IGxObjectEdit, IGxObjectInternalName, IGxObjectProperties,
+        IGxObjectUI
     {
         private IDatasetName idatasetName_0 = null;
         private IGxCatalog igxCatalog_0 = null;
@@ -88,34 +89,22 @@ namespace Yutai.ArcGIS.Catalog
 
         public string BaseName
         {
-            get
-            {
-                return Path.GetFileNameWithoutExtension(this.string_0);
-            }
+            get { return Path.GetFileNameWithoutExtension(this.string_0); }
         }
 
         public string Category
         {
-            get
-            {
-                return "CAD绘图";
-            }
+            get { return "CAD绘图"; }
         }
 
         public UID ClassID
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public UID ContextMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IDataset Dataset
@@ -131,7 +120,7 @@ namespace Yutai.ArcGIS.Catalog
                 }
                 catch (Exception exception)
                 {
-                    Logger.Current.Error("",exception, "");
+                    Logger.Current.Error("", exception, "");
                 }
                 return null;
             }
@@ -139,10 +128,7 @@ namespace Yutai.ArcGIS.Catalog
 
         public IDatasetName DatasetName
         {
-            get
-            {
-                return this.idatasetName_0;
-            }
+            get { return this.idatasetName_0; }
             set
             {
                 this.idatasetName_0 = value;
@@ -152,110 +138,68 @@ namespace Yutai.ArcGIS.Catalog
 
         public string FullName
         {
-            get
-            {
-                return this.string_0;
-            }
+            get { return this.string_0; }
         }
 
         public IName InternalObjectName
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public bool IsValid
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         IName IGxObjectInternalName.InternalObjectName
         {
-            get
-            {
-                return (this.idatasetName_0 as IName);
-            }
-            set
-            {
-            }
+            get { return (this.idatasetName_0 as IName); }
+            set { }
         }
 
         public Bitmap LargeImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(56);
-            }
+            get { return ImageLib.GetSmallImage(56); }
         }
 
         public Bitmap LargeSelectedImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(56);
-            }
+            get { return ImageLib.GetSmallImage(56); }
         }
 
         public string Name
         {
-            get
-            {
-                return Path.GetFileName(this.string_0);
-            }
+            get { return Path.GetFileName(this.string_0); }
         }
 
         public UID NewMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IGxObject Parent
         {
-            get
-            {
-                return this.igxObject_0;
-            }
+            get { return this.igxObject_0; }
         }
 
         public int PropertyCount
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         public Bitmap SmallImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(56);
-            }
+            get { return ImageLib.GetSmallImage(56); }
         }
 
         public Bitmap SmallSelectedImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(56);
-            }
+            get { return ImageLib.GetSmallImage(56); }
         }
 
         public esriDatasetType Type
         {
-            get
-            {
-                return esriDatasetType.esriDTCadDrawing;
-            }
+            get { return esriDatasetType.esriDTCadDrawing; }
         }
     }
 }
-

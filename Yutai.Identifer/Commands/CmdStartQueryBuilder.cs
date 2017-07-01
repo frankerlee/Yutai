@@ -19,16 +19,18 @@ namespace Yutai.Plugins.Identifer.Commands
         {
             OnCreate(context);
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
         }
+
         public override void OnClick()
         {
-           frmAttributeQueryBuilder queryBuilder=new frmAttributeQueryBuilder(_context)
-           {
-               Map = _context.MapControl.Map as IBasicMap
-           };
+            frmAttributeQueryBuilder queryBuilder = new frmAttributeQueryBuilder(_context)
+            {
+                Map = _context.MapControl.Map as IBasicMap
+            };
             queryBuilder.ShowDialog();
         }
 

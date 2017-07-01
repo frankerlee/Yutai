@@ -53,7 +53,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private string method_0(esriVersionAccess esriVersionAccess_0)
+        private string method_0(esriVersionAccess esriVersionAccess_0)
         {
             switch (esriVersionAccess_0)
             {
@@ -77,7 +77,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 string[] items = new string[5];
                 while (info2 != null)
                 {
-                    string[] strArray2 = info2.VersionName.Split(new char[] { '.' });
+                    string[] strArray2 = info2.VersionName.Split(new char[] {'.'});
                     if (strArray2.Length > 1)
                     {
                         items[0] = strArray2[1];
@@ -107,7 +107,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 unk = this.iversionedWorkspace_0.FindVersion(name);
                 IArray array = new ArrayClass();
                 array.Add(unk);
-                frmNewVersion version2 = new frmNewVersion {
+                frmNewVersion version2 = new frmNewVersion
+                {
                     ParentVersions = array
                 };
                 if (version2.ShowDialog() == DialogResult.OK)
@@ -128,7 +129,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             try
             {
                 IVersion version = this.iversionedWorkspace_0.FindVersion(name);
-                frmVersionProperty property = new frmVersionProperty {
+                frmVersionProperty property = new frmVersionProperty
+                {
                     Version = version
                 };
                 if (property.ShowDialog() == DialogResult.OK)
@@ -253,11 +255,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IVersionedWorkspace VersionWorkspace
         {
-            set
-            {
-                this.iversionedWorkspace_0 = value;
-            }
+            set { this.iversionedWorkspace_0 = value; }
         }
     }
 }
-

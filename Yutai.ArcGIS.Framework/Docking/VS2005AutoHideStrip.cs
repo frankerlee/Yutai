@@ -27,7 +27,9 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         public VS2005AutoHideStrip(DockPanel panel) : base(panel)
         {
-            base.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.ResizeRedraw | ControlStyles.UserPaint, true);
+            base.SetStyle(
+                ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.ResizeRedraw |
+                ControlStyles.UserPaint, true);
             this.BackColor = SystemColors.ControlLight;
         }
 
@@ -46,14 +48,16 @@ namespace Yutai.ArcGIS.Framework.Docking
             int imageWidth = ImageWidth;
             if (num > ImageHeight)
             {
-                imageWidth = ImageWidth * (num / ImageHeight);
+                imageWidth = ImageWidth*(num/ImageHeight);
             }
             int num3 = TabGapLeft + logicalTabStripRectangle.X;
             foreach (AutoHideStripBase.Pane pane in (IEnumerable<AutoHideStripBase.Pane>) base.GetPanes(dockState))
             {
                 foreach (TabVS2005 bvs in (IEnumerable<AutoHideStripBase.Tab>) pane.AutoHideTabs)
                 {
-                    int num4 = ((((imageWidth + ImageGapLeft) + ImageGapRight) + TextRenderer.MeasureText(bvs.Content.DockHandler.TabText, TextFont).Width) + TextGapLeft) + TextGapRight;
+                    int num4 = ((((imageWidth + ImageGapLeft) + ImageGapRight) +
+                                 TextRenderer.MeasureText(bvs.Content.DockHandler.TabText, TextFont).Width) +
+                                TextGapLeft) + TextGapRight;
                     bvs.TabX = num3;
                     bvs.TabWidth = num4;
                     num3 += num4;
@@ -86,7 +90,7 @@ namespace Yutai.ArcGIS.Framework.Docking
                 int imageWidth = ImageWidth;
                 if (num > ImageHeight)
                 {
-                    imageWidth = ImageWidth * (num / ImageHeight);
+                    imageWidth = ImageWidth*(num/ImageHeight);
                 }
                 rect.Height = num;
                 rect.Width = imageWidth;
@@ -98,11 +102,13 @@ namespace Yutai.ArcGIS.Framework.Docking
                 rectangle3 = this.RtlTransform(this.GetTransformedRectangle(dockState, rectangle3), dockState);
                 if ((dockState == DockState.DockLeftAutoHide) || (dockState == DockState.DockRightAutoHide))
                 {
-                    g.DrawString(content.DockHandler.TabText, TextFont, BrushTabText, rectangle3, this.StringFormatTabVertical);
+                    g.DrawString(content.DockHandler.TabText, TextFont, BrushTabText, rectangle3,
+                        this.StringFormatTabVertical);
                 }
                 else
                 {
-                    g.DrawString(content.DockHandler.TabText, TextFont, BrushTabText, rectangle3, this.StringFormatTabHorizontal);
+                    g.DrawString(content.DockHandler.TabText, TextFont, BrushTabText, rectangle3,
+                        this.StringFormatTabHorizontal);
                 }
                 g.Transform = transform;
             }
@@ -125,7 +131,9 @@ namespace Yutai.ArcGIS.Framework.Docking
                 if ((dockState == DockState.DockLeftAutoHide) || (dockState == DockState.DockRightAutoHide))
                 {
                     Matrix matrix2 = new Matrix();
-                    matrix2.RotateAt(90f, new PointF(logicalTabStripRectangle.X + (((float) logicalTabStripRectangle.Height) / 2f), logicalTabStripRectangle.Y + (((float) logicalTabStripRectangle.Height) / 2f)));
+                    matrix2.RotateAt(90f,
+                        new PointF(logicalTabStripRectangle.X + (((float) logicalTabStripRectangle.Height)/2f),
+                            logicalTabStripRectangle.Y + (((float) logicalTabStripRectangle.Height)/2f)));
                     g.Transform = matrix2;
                 }
                 foreach (AutoHideStripBase.Pane pane in (IEnumerable<AutoHideStripBase.Pane>) base.GetPanes(dockState))
@@ -195,7 +203,7 @@ namespace Yutai.ArcGIS.Framework.Docking
                 }
             }
             return Rectangle.Empty;
-        Label_01A2:
+            Label_01A2:
             if (!transformed)
             {
                 return new Rectangle(num5, num6, num7, num8);
@@ -230,7 +238,10 @@ namespace Yutai.ArcGIS.Framework.Docking
                 return Rectangle.Empty;
             }
             int tabX = tab.TabX;
-            int y = logicalTabStripRectangle.Y + (((dockState == DockState.DockTopAutoHide) || (dockState == DockState.DockRightAutoHide)) ? 0 : TabGapTop);
+            int y = logicalTabStripRectangle.Y +
+                    (((dockState == DockState.DockTopAutoHide) || (dockState == DockState.DockRightAutoHide))
+                        ? 0
+                        : TabGapTop);
             int tabWidth = tab.TabWidth;
             int height = logicalTabStripRectangle.Height - TabGapTop;
             if (!transformed)
@@ -247,13 +258,16 @@ namespace Yutai.ArcGIS.Framework.Docking
                 return rect;
             }
             PointF[] pts = new PointF[1];
-            pts[0].X = rect.X + (((float) rect.Width) / 2f);
-            pts[0].Y = rect.Y + (((float) rect.Height) / 2f);
+            pts[0].X = rect.X + (((float) rect.Width)/2f);
+            pts[0].Y = rect.Y + (((float) rect.Height)/2f);
             Rectangle logicalTabStripRectangle = this.GetLogicalTabStripRectangle(dockState);
             Matrix matrix = new Matrix();
-            matrix.RotateAt(90f, new PointF(logicalTabStripRectangle.X + (((float) logicalTabStripRectangle.Height) / 2f), logicalTabStripRectangle.Y + (((float) logicalTabStripRectangle.Height) / 2f)));
+            matrix.RotateAt(90f,
+                new PointF(logicalTabStripRectangle.X + (((float) logicalTabStripRectangle.Height)/2f),
+                    logicalTabStripRectangle.Y + (((float) logicalTabStripRectangle.Height)/2f)));
             matrix.TransformPoints(pts);
-            return new Rectangle((int) ((pts[0].X - (((float) rect.Height) / 2f)) + 0.5f), (int) ((pts[0].Y - (((float) rect.Width) / 2f)) + 0.5f), rect.Height, rect.Width);
+            return new Rectangle((int) ((pts[0].X - (((float) rect.Height)/2f)) + 0.5f),
+                (int) ((pts[0].Y - (((float) rect.Width)/2f)) + 0.5f), rect.Height, rect.Width);
         }
 
         protected override IDockContent HitTest(Point ptMouse)
@@ -312,18 +326,12 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         private static Brush BrushTabBackground
         {
-            get
-            {
-                return SystemBrushes.Control;
-            }
+            get { return SystemBrushes.Control; }
         }
 
         private static Brush BrushTabText
         {
-            get
-            {
-                return SystemBrushes.FromSystemColor(SystemColors.ControlDarkDark);
-            }
+            get { return SystemBrushes.FromSystemColor(SystemColors.ControlDarkDark); }
         }
 
         private static DockState[] DockStates
@@ -332,7 +340,11 @@ namespace Yutai.ArcGIS.Framework.Docking
             {
                 if (_dockStates == null)
                 {
-                    _dockStates = new DockState[] { DockState.DockLeftAutoHide, DockState.DockRightAutoHide, DockState.DockTopAutoHide, DockState.DockBottomAutoHide };
+                    _dockStates = new DockState[]
+                    {
+                        DockState.DockLeftAutoHide, DockState.DockRightAutoHide, DockState.DockTopAutoHide,
+                        DockState.DockBottomAutoHide
+                    };
                 }
                 return _dockStates;
             }
@@ -352,66 +364,42 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         private static int ImageGapBottom
         {
-            get
-            {
-                return 2;
-            }
+            get { return 2; }
         }
 
         private static int ImageGapLeft
         {
-            get
-            {
-                return 4;
-            }
+            get { return 4; }
         }
 
         private static int ImageGapRight
         {
-            get
-            {
-                return 2;
-            }
+            get { return 2; }
         }
 
         private static int ImageGapTop
         {
-            get
-            {
-                return 2;
-            }
+            get { return 2; }
         }
 
         private static int ImageHeight
         {
-            get
-            {
-                return 16;
-            }
+            get { return 16; }
         }
 
         private static int ImageWidth
         {
-            get
-            {
-                return 16;
-            }
+            get { return 16; }
         }
 
         private static Matrix MatrixIdentity
         {
-            get
-            {
-                return _matrixIdentity;
-            }
+            get { return _matrixIdentity; }
         }
 
         private static Pen PenTabBorder
         {
-            get
-            {
-                return SystemPens.GrayText;
-            }
+            get { return SystemPens.GrayText; }
         }
 
         private StringFormat StringFormatTabHorizontal
@@ -446,7 +434,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                     _stringFormatTabVertical = new StringFormat();
                     _stringFormatTabVertical.Alignment = StringAlignment.Near;
                     _stringFormatTabVertical.LineAlignment = StringAlignment.Center;
-                    _stringFormatTabVertical.FormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.DirectionVertical;
+                    _stringFormatTabVertical.FormatFlags = StringFormatFlags.NoWrap |
+                                                           StringFormatFlags.DirectionVertical;
                 }
                 if (this.RightToLeft == RightToLeft.Yes)
                 {
@@ -462,50 +451,32 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         private static int TabGapBetween
         {
-            get
-            {
-                return 10;
-            }
+            get { return 10; }
         }
 
         private static int TabGapLeft
         {
-            get
-            {
-                return 4;
-            }
+            get { return 4; }
         }
 
         private static int TabGapTop
         {
-            get
-            {
-                return 3;
-            }
+            get { return 3; }
         }
 
         private static Font TextFont
         {
-            get
-            {
-                return SystemInformation.MenuFont;
-            }
+            get { return SystemInformation.MenuFont; }
         }
 
         private static int TextGapLeft
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         private static int TextGapRight
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         private class TabVS2005 : AutoHideStripBase.Tab
@@ -521,28 +492,15 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             public int TabWidth
             {
-                get
-                {
-                    return this.m_tabWidth;
-                }
-                set
-                {
-                    this.m_tabWidth = value;
-                }
+                get { return this.m_tabWidth; }
+                set { this.m_tabWidth = value; }
             }
 
             public int TabX
             {
-                get
-                {
-                    return this.m_tabX;
-                }
-                set
-                {
-                    this.m_tabX = value;
-                }
+                get { return this.m_tabX; }
+                set { this.m_tabX = value; }
             }
         }
     }
 }
-

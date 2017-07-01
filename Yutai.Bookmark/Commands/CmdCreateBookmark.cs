@@ -18,6 +18,11 @@ namespace Yutai.Plugins.Bookmark.Commands
 {
     public class CmdCreateBookmark : YutaiCommand
     {
+        public override bool Enabled
+        {
+            get { return this._context.FocusMap != null; }
+        }
+
         public CmdCreateBookmark(IAppContext context)
         {
             OnCreate(context);

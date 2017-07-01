@@ -60,7 +60,7 @@ namespace Yutai.ArcGIS.Carto.UI
                 }
             }
             return;
-        Label_006D:
+            Label_006D:
             this.cboClassifyNum.Enabled = true;
             (this.itinColorRampRenderer_0 as IClassBreaksUIProperties).Method = classify.ClassID;
             if (this.cboClassifyNum.SelectedIndex >= 0)
@@ -119,7 +119,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void method_0(int int_0, object object_0)
+        private void method_0(int int_0, object object_0)
         {
             if (object_0 is ISymbol)
             {
@@ -139,7 +139,11 @@ namespace Yutai.ArcGIS.Carto.UI
             for (int i = 0; i < this.itinColorRampRenderer_0.BreakCount; i++)
             {
                 objArray[0] = this.itinColorRampRenderer_0.get_Symbol(i);
-                objArray[1] = (this.itinColorRampRenderer_0 as IClassBreaksUIProperties).get_LowBreak((this.itinColorRampRenderer_0.BreakCount - 1) - i).ToString("0.###") + " - " + this.itinColorRampRenderer_0.get_Break((this.itinColorRampRenderer_0.BreakCount - 1) - i).ToString("0.###");
+                objArray[1] =
+                    (this.itinColorRampRenderer_0 as IClassBreaksUIProperties).get_LowBreak(
+                        (this.itinColorRampRenderer_0.BreakCount - 1) - i).ToString("0.###") + " - " +
+                    this.itinColorRampRenderer_0.get_Break((this.itinColorRampRenderer_0.BreakCount - 1) - i)
+                        .ToString("0.###");
                 objArray[2] = this.itinColorRampRenderer_0.get_Label(i);
                 this.listView1.Add(objArray);
             }
@@ -199,9 +203,11 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
-        private void method_3(IColorRamp icolorRamp_1, ITinColorRampRenderer itinColorRampRenderer_1, int int_0, ITin itin_0)
+        private void method_3(IColorRamp icolorRamp_1, ITinColorRampRenderer itinColorRampRenderer_1, int int_0,
+            ITin itin_0)
         {
-            IClassify classify = this.method_2((itinColorRampRenderer_1 as IClassBreaksUIProperties).Method) as IClassify;
+            IClassify classify =
+                this.method_2((itinColorRampRenderer_1 as IClassBreaksUIProperties).Method) as IClassify;
             if (classify != null)
             {
                 bool flag;
@@ -236,7 +242,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     IColor color = colors.Next();
                     if ((itinColorRampRenderer_1 as ITinRenderer).Name == "Elevation")
                     {
-                        ISimpleFillSymbol symbol2 = new SimpleFillSymbolClass {
+                        ISimpleFillSymbol symbol2 = new SimpleFillSymbolClass
+                        {
                             Color = color,
                             Style = esriSimpleFillStyle.esriSFSSolid
                         };
@@ -244,7 +251,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     }
                     else if ((itinColorRampRenderer_1 as ITinRenderer).Name == "Node elevation")
                     {
-                        IMarkerSymbol symbol3 = new SimpleMarkerSymbolClass {
+                        IMarkerSymbol symbol3 = new SimpleMarkerSymbolClass
+                        {
                             Color = color
                         };
                         sym = symbol3 as ISymbol;
@@ -260,9 +268,11 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void method_4()
         {
-            if (((this.itinColorRampRenderer_0 as ITinRenderer).Name == "Elevation") || ((this.itinColorRampRenderer_0 as ITinRenderer).Name == "Node elevation"))
+            if (((this.itinColorRampRenderer_0 as ITinRenderer).Name == "Elevation") ||
+                ((this.itinColorRampRenderer_0 as ITinRenderer).Name == "Node elevation"))
             {
-                this.method_3(this.icolorRamp_0, this.itinColorRampRenderer_0, this.cboClassifyNum.SelectedIndex + 1, this.itinLayer_0.Dataset);
+                this.method_3(this.icolorRamp_0, this.itinColorRampRenderer_0, this.cboClassifyNum.SelectedIndex + 1,
+                    this.itinLayer_0.Dataset);
             }
             this.listView1.Items.Clear();
             string[] strArray = new string[3];
@@ -274,7 +284,9 @@ namespace Yutai.ArcGIS.Carto.UI
                     break;
                 }
                 strArray[0] = "";
-                strArray[1] = (this.itinColorRampRenderer_0 as IClassBreaksUIProperties).get_LowBreak(index).ToString() + " - " + this.itinColorRampRenderer_0.get_Break(index).ToString();
+                strArray[1] =
+                    (this.itinColorRampRenderer_0 as IClassBreaksUIProperties).get_LowBreak(index).ToString() + " - " +
+                    this.itinColorRampRenderer_0.get_Break(index).ToString();
                 strArray[2] = this.itinColorRampRenderer_0.get_Label(index);
                 ListViewItemEx ex = new ListViewItemEx(strArray);
                 try
@@ -313,7 +325,8 @@ namespace Yutai.ArcGIS.Carto.UI
             if (this.colorRampComboBox1.Items.Count == 0)
             {
                 this.colorRampComboBox1.Enabled = false;
-                IRandomColorRamp ramp = new RandomColorRampClass {
+                IRandomColorRamp ramp = new RandomColorRampClass
+                {
                     StartHue = 40,
                     EndHue = 120,
                     MinValue = 65,
@@ -341,30 +354,18 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public ILayer CurrentLayer
         {
-            set
-            {
-                this.itinLayer_0 = value as ITinLayer;
-            }
+            set { this.itinLayer_0 = value as ITinLayer; }
         }
 
         bool IUserControl.Visible
         {
-            get
-            {
-                return base.Visible;
-            }
-            set
-            {
-                base.Visible = value;
-            }
+            get { return base.Visible; }
+            set { base.Visible = value; }
         }
 
         public IStyleGallery StyleGallery
         {
-            set
-            {
-                this.istyleGallery_0 = value;
-            }
+            set { this.istyleGallery_0 = value; }
         }
 
         public ITinRenderer TinRenderer
@@ -382,4 +383,3 @@ namespace Yutai.ArcGIS.Carto.UI
         }
     }
 }
-

@@ -33,7 +33,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             if (workspace != null)
             {
                 IEnumVersionInfo versions = (workspace as IVersionedWorkspace2).Versions;
-                frmSelectVersion version = new frmSelectVersion {
+                frmSelectVersion version = new frmSelectVersion
+                {
                     EnumVersionInfo = versions
                 };
                 if (version.ShowDialog() == DialogResult.OK)
@@ -48,7 +49,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             try
             {
-                IPropertySet connectionProperties = this.method_3(this.chkSaveUserandPsw.Checked, this.chkSaveVersion.Checked);
+                IPropertySet connectionProperties = this.method_3(this.chkSaveUserandPsw.Checked,
+                    this.chkSaveVersion.Checked);
                 File.Delete(this.string_2);
                 string directoryName = Path.GetDirectoryName(this.string_2);
                 IWorkspaceFactory factory = new SdeWorkspaceFactoryClass();
@@ -57,7 +59,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
             base.Close();
         }
@@ -98,11 +100,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
         }
 
- private void frmEditGDBConnection_Load(object sender, EventArgs e)
+        private void frmEditGDBConnection_Load(object sender, EventArgs e)
         {
             if (this.string_2 != null)
             {
-                IWorkspaceName name = new WorkspaceNameClass {
+                IWorkspaceName name = new WorkspaceNameClass
+                {
                     WorkspaceFactoryProgID = "esriDataSourcesGDB.SdeWorkspaceFactory",
                     PathName = this.string_2
                 };
@@ -158,7 +161,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void method_0()
+        private void method_0()
         {
             if (this.txtUser.Text.Trim().Length == 0)
             {
@@ -285,11 +288,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public string PathName
         {
-            set
-            {
-                this.string_2 = value;
-            }
+            set { this.string_2 = value; }
         }
     }
 }
-

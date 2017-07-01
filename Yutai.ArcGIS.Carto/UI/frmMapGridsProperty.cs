@@ -25,7 +25,8 @@ namespace Yutai.ArcGIS.Carto.UI
         private void btnAdd_Click(object sender, EventArgs e)
         {
             IGraphicsContainer container = this.ipageLayout_0 as IGraphicsContainer;
-            NewMapGridWizard wizard = new NewMapGridWizard {
+            NewMapGridWizard wizard = new NewMapGridWizard
+            {
                 MapFrame = this.imapGrids_0 as IMapFrame,
                 GraphicsContainer = container
             };
@@ -57,7 +58,8 @@ namespace Yutai.ArcGIS.Carto.UI
             {
                 int selectedIndex = this.checkedListBox1.SelectedIndex;
                 IMapGrid mapGrid = (this.checkedListBox1.SelectedItem as MapGridWrap).MapGrid;
-                frmElementProperty property = new frmElementProperty {
+                frmElementProperty property = new frmElementProperty
+                {
                     Text = "参考系"
                 };
                 IPropertyPage page = null;
@@ -149,7 +151,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void frmMapGridsProperty_Load(object sender, EventArgs e)
+        private void frmMapGridsProperty_Load(object sender, EventArgs e)
         {
             for (int i = 0; i < this.imapGrids_0.MapGridCount; i++)
             {
@@ -158,7 +160,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- internal partial class MapGridWrap
+        internal partial class MapGridWrap
         {
             private IMapGrid imapGrid_0 = null;
 
@@ -174,12 +176,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
             internal IMapGrid MapGrid
             {
-                get
-                {
-                    return this.imapGrid_0;
-                }
+                get { return this.imapGrid_0; }
             }
         }
     }
 }
-

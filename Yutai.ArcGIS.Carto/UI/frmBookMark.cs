@@ -38,7 +38,8 @@ namespace Yutai.ArcGIS.Carto.UI
             }
             if (bookmark != null)
             {
-                if (MessageBox.Show("书签已存在，是否替换!", "书签", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("书签已存在，是否替换!", "书签", MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
+                    DialogResult.Yes)
                 {
                     (bookmark as IAOIBookmark).Location = (this.imap_0 as IActiveView).Extent;
                     base.DialogResult = DialogResult.OK;
@@ -48,7 +49,8 @@ namespace Yutai.ArcGIS.Carto.UI
             else
             {
                 nIndex++;
-                bookmark = new AOIBookmarkClass {
+                bookmark = new AOIBookmarkClass
+                {
                     Name = this.txtBookMarker.Text
                 };
                 (bookmark as IAOIBookmark).Location = (this.imap_0 as IActiveView).Extent;
@@ -58,24 +60,20 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void frmBookMark_Load(object sender, EventArgs e)
+        private void frmBookMark_Load(object sender, EventArgs e)
         {
             string str = "书签 " + nIndex.ToString();
             this.txtBookMarker.Text = str;
         }
 
- private static void old_acctor_mc()
+        private static void old_acctor_mc()
         {
             nIndex = 1;
         }
 
         public IMap Map
         {
-            set
-            {
-                this.imap_0 = value;
-            }
+            set { this.imap_0 = value; }
         }
     }
 }
-

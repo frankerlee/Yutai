@@ -34,12 +34,14 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             base.MyValue = string_2;
         }
 
-        public override int DoDraw(DrawListViewSubItemEventArgs drawListViewSubItemEventArgs_0, int int_0, EXColumnHeader excolumnHeader_0)
+        public override int DoDraw(DrawListViewSubItemEventArgs drawListViewSubItemEventArgs_0, int int_0,
+            EXColumnHeader excolumnHeader_0)
         {
             if (this.MyImage != null)
             {
                 Image myImage = this.MyImage;
-                int y = (drawListViewSubItemEventArgs_0.Bounds.Y + (drawListViewSubItemEventArgs_0.Bounds.Height / 2)) - (myImage.Height / 2);
+                int y = (drawListViewSubItemEventArgs_0.Bounds.Y + (drawListViewSubItemEventArgs_0.Bounds.Height/2)) -
+                        (myImage.Height/2);
                 drawListViewSubItemEventArgs_0.Graphics.DrawImage(myImage, int_0, y, myImage.Width, myImage.Height);
                 int_0 += myImage.Width + 2;
             }
@@ -48,15 +50,8 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         public Image MyImage
         {
-            get
-            {
-                return this.image_0;
-            }
-            set
-            {
-                this.image_0 = value;
-            }
+            get { return this.image_0; }
+            set { this.image_0 = value; }
         }
     }
 }
-

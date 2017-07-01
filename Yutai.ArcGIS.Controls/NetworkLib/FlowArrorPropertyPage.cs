@@ -10,7 +10,6 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
 {
     internal partial class FlowArrorPropertyPage : UserControl
     {
-
         public FlowArrorPropertyPage()
         {
             this.InitializeComponent();
@@ -43,7 +42,7 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             }
         }
 
- private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (this.listBox1.SelectedIndex)
             {
@@ -62,4 +61,3 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
         }
     }
 }
-

@@ -36,7 +36,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             base.GridLines = true;
             this.textBox_0.Size = new Size(0, 0);
             this.textBox_0.Location = new Point(0, 0);
-            base.Controls.AddRange(new Control[] { this.textBox_0 });
+            base.Controls.AddRange(new Control[] {this.textBox_0});
             this.textBox_0.KeyPress += new KeyPressEventHandler(this.textBox_0_KeyPress);
             this.textBox_0.LostFocus += new EventHandler(this.textBox_0_LostFocus);
             this.textBox_0.AutoSize = false;
@@ -64,7 +64,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             }
             box.Size = new Size(0, 0);
             box.Location = new Point(0, 0);
-            base.Controls.AddRange(new Control[] { box });
+            base.Controls.AddRange(new Control[] {box});
             box.SelectedIndexChanged += new EventHandler(this.method_1);
             box.LostFocus += new EventHandler(this.method_2);
             box.KeyPress += new KeyPressEventHandler(this.method_0);
@@ -105,8 +105,10 @@ namespace Yutai.ArcGIS.Common.ControlExtend
                         {
                             throw new Exception("The ComboxBox control bind to current column is null");
                         }
-                        rectangle2 = new Rectangle(left, this.listViewItem_0.Bounds.Y, width, this.listViewItem_0.Bounds.Bottom);
-                        box.Size = new Size(width - left, this.listViewItem_0.Bounds.Bottom - this.listViewItem_0.Bounds.Top);
+                        rectangle2 = new Rectangle(left, this.listViewItem_0.Bounds.Y, width,
+                            this.listViewItem_0.Bounds.Bottom);
+                        box.Size = new Size(width - left,
+                            this.listViewItem_0.Bounds.Bottom - this.listViewItem_0.Bounds.Top);
                         box.Location = new Point(left, this.listViewItem_0.Bounds.Y);
                         box.Show();
                         box.Text = this.string_0;
@@ -115,7 +117,8 @@ namespace Yutai.ArcGIS.Common.ControlExtend
                     }
                     if (header.ColumnStyle == ListViewColumnStyle.EditBox)
                     {
-                        rectangle2 = new Rectangle(left, this.listViewItem_0.Bounds.Y, width, this.listViewItem_0.Bounds.Bottom);
+                        rectangle2 = new Rectangle(left, this.listViewItem_0.Bounds.Y, width,
+                            this.listViewItem_0.Bounds.Bottom);
                         this.textBox_0.Size = new Size(width - left, this.listViewItem_0.Bounds.Height);
                         this.textBox_0.Location = new Point(left, this.listViewItem_0.Bounds.Y);
                         this.textBox_0.Show();
@@ -154,7 +157,9 @@ namespace Yutai.ArcGIS.Common.ControlExtend
                 this.listViewItem_0.SubItems[this.int_3].Text = str;
                 if (this.ValueChanged != null)
                 {
-                    this.ValueChanged(this, new ValueChangedEventArgs(this.textBox_0.Text, base.Items.IndexOf(this.listViewItem_0), this.int_3));
+                    this.ValueChanged(this,
+                        new ValueChangedEventArgs(this.textBox_0.Text, base.Items.IndexOf(this.listViewItem_0),
+                            this.int_3));
                 }
             }
         }
@@ -218,7 +223,9 @@ namespace Yutai.ArcGIS.Common.ControlExtend
                     this.listViewItem_1.SubItems[this.int_3].Text = this.textBox_0.Text;
                     if (this.ValueChanged != null)
                     {
-                        this.ValueChanged(this, new ValueChangedEventArgs(this.textBox_0.Text, base.Items.IndexOf(this.listViewItem_1), this.int_3));
+                        this.ValueChanged(this,
+                            new ValueChangedEventArgs(this.textBox_0.Text, base.Items.IndexOf(this.listViewItem_1),
+                                this.int_3));
                     }
                 }
                 this.textBox_0.Hide();
@@ -227,10 +234,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         public Color ComboBoxBgColor
         {
-            get
-            {
-                return this.color_0;
-            }
+            get { return this.color_0; }
             set
             {
                 this.color_0 = value;
@@ -246,22 +250,13 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         public Font ComboBoxFont
         {
-            get
-            {
-                return this.font_0;
-            }
-            set
-            {
-                this.font_0 = value;
-            }
+            get { return this.font_0; }
+            set { this.font_0 = value; }
         }
 
         public Color EditBgColor
         {
-            get
-            {
-                return this.color_1;
-            }
+            get { return this.color_1; }
             set
             {
                 this.color_1 = value;
@@ -271,10 +266,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         public Font EditFont
         {
-            get
-            {
-                return this.font_1;
-            }
+            get { return this.font_1; }
             set
             {
                 this.font_1 = value;
@@ -284,15 +276,8 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         public int LockRowCount
         {
-            get
-            {
-                return this.int_0;
-            }
-            set
-            {
-                this.int_0 = value;
-            }
+            get { return this.int_0; }
+            set { this.int_0 = value; }
         }
     }
 }
-

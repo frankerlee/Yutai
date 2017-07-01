@@ -76,7 +76,7 @@ namespace Yutai.DI.Ninject
             var o = _kernel.CanResolve(type);
             if (o == null)
             {
-                _kernel.Bind(new[] { type }).ToSelf();
+                _kernel.Bind(new[] {type}).ToSelf();
             }
 
             return _kernel.Get(type);
@@ -96,7 +96,8 @@ namespace Yutai.DI.Ninject
             return this;
         }
 
-        public bool Run<TPresenter, TArgumnent>(TArgumnent arg, IWin32Window parent = null) where TPresenter : class, IPresenter<TArgumnent>
+        public bool Run<TPresenter, TArgumnent>(TArgumnent arg, IWin32Window parent = null)
+            where TPresenter : class, IPresenter<TArgumnent>
         {
             var presenter = GetInstance<TPresenter>();
             return presenter.Run(arg, parent);
@@ -123,4 +124,3 @@ namespace Yutai.DI.Ninject
         }
     }
 }
-

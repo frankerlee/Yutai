@@ -21,7 +21,8 @@ namespace Yutai.Plugins.Editor.Commands
                 {
                     result = false;
                 }
-                else if ( Yutai.ArcGIS.Common.Editor.Editor.EditMap != null && Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
+                else if (Yutai.ArcGIS.Common.Editor.Editor.EditMap != null &&
+                         Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
                 {
                     result = false;
                 }
@@ -48,7 +49,8 @@ namespace Yutai.Plugins.Editor.Commands
                             result = false;
                             return result;
                         }
-                        if (feature.Shape.GeometryType == esriGeometryType.esriGeometryPoint || feature.Shape.GeometryType == esriGeometryType.esriGeometryMultipoint)
+                        if (feature.Shape.GeometryType == esriGeometryType.esriGeometryPoint ||
+                            feature.Shape.GeometryType == esriGeometryType.esriGeometryMultipoint)
                         {
                             result = false;
                             return result;

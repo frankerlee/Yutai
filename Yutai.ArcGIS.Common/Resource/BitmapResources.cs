@@ -7,7 +7,8 @@ using System.Runtime.CompilerServices;
 
 namespace Yutai.ArcGIS.Common.Resource
 {
-    [GeneratedCode("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0"), DebuggerNonUserCode, CompilerGenerated]
+    [GeneratedCode("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0"), DebuggerNonUserCode,
+     CompilerGenerated]
     internal class BitmapResources
     {
         private static CultureInfo resourceCulture;
@@ -19,47 +20,29 @@ namespace Yutai.ArcGIS.Common.Resource
 
         internal static Bitmap Anno
         {
-            get
-            {
-                return (Bitmap) ResourceManager.GetObject("Anno", resourceCulture);
-            }
+            get { return (Bitmap) ResourceManager.GetObject("Anno", resourceCulture); }
         }
 
         internal static Bitmap Area
         {
-            get
-            {
-                return (Bitmap) ResourceManager.GetObject("Area", resourceCulture);
-            }
+            get { return (Bitmap) ResourceManager.GetObject("Area", resourceCulture); }
         }
 
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         internal static CultureInfo Culture
         {
-            get
-            {
-                return resourceCulture;
-            }
-            set
-            {
-                resourceCulture = value;
-            }
+            get { return resourceCulture; }
+            set { resourceCulture = value; }
         }
 
         internal static Bitmap Line
         {
-            get
-            {
-                return (Bitmap) ResourceManager.GetObject("Line", resourceCulture);
-            }
+            get { return (Bitmap) ResourceManager.GetObject("Line", resourceCulture); }
         }
 
         internal static Bitmap Point
         {
-            get
-            {
-                return (Bitmap) ResourceManager.GetObject("Point", resourceCulture);
-            }
+            get { return (Bitmap) ResourceManager.GetObject("Point", resourceCulture); }
         }
 
         [EditorBrowsable(EditorBrowsableState.Advanced)]
@@ -69,7 +52,9 @@ namespace Yutai.ArcGIS.Common.Resource
             {
                 if (object.ReferenceEquals(resourceMan, null))
                 {
-                    System.Resources.ResourceManager manager = new System.Resources.ResourceManager("Yutai.ArcGIS.Common.Resource.BitmapResources", typeof(BitmapResources).Assembly);
+                    System.Resources.ResourceManager manager =
+                        new System.Resources.ResourceManager("Yutai.ArcGIS.Common.Resource.BitmapResources",
+                            typeof(BitmapResources).Assembly);
                     resourceMan = manager;
                 }
                 return resourceMan;
@@ -77,4 +62,3 @@ namespace Yutai.ArcGIS.Common.Resource
         }
     }
 }
-

@@ -2,4 +2,3 @@
 {
     public delegate IDockContent DeserializeDockContent(string persistString);
 }
-

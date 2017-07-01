@@ -144,27 +144,14 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public Color BackColor
         {
-            get
-            {
-                return this.color_0;
-            }
-            set
-            {
-                this.color_0 = value;
-            }
+            get { return this.color_0; }
+            set { this.color_0 = value; }
         }
 
         public BordersEdgeFlag BordersEdge
         {
-            get
-            {
-                return this.bordersEdgeFlag_0;
-            }
-            set
-            {
-                this.bordersEdgeFlag_0 = value;
-            }
+            get { return this.bordersEdgeFlag_0; }
+            set { this.bordersEdgeFlag_0 = value; }
         }
     }
 }
-

@@ -39,7 +39,7 @@ namespace Yutai.Services.Concrete
         public bool Restore(XmlProject project)
         {
             _context.MainView.Lock();
-            System.IO.FileInfo fileInfo=new FileInfo(project.Settings.LoadAsFilename);
+            System.IO.FileInfo fileInfo = new FileInfo(project.Settings.LoadAsFilename);
             _basePath = fileInfo.DirectoryName;
 
             try
@@ -47,25 +47,24 @@ namespace Yutai.Services.Concrete
                 //因为插件引导的时候需要读取项目文档里面的配置，因此，这个参数必须在插件引导前赋值
                 _context.YutaiProject = project;
                 RestoreMxdDocument(project);
-              //  RestoreSxdDocument(project);
+                //  RestoreSxdDocument(project);
 
                 RestorePlugins(project);
 
                 RestoreExtents(project);
 
-                
 
                 return true;
             }
             finally
             {
                 _context.YutaiProject = project;
-               _context.MainView.Unlock();
-                _broadcaster.BroadcastEvent(p=>p.ProjectOpened_,this,null);
+                _context.MainView.Unlock();
+                _broadcaster.BroadcastEvent(p => p.ProjectOpened_, this, null);
             }
         }
 
-      
+
         private void RestorePlugins(XmlProject project)
         {
             foreach (var p in project.Plugins)
@@ -78,7 +77,7 @@ namespace Yutai.Services.Concrete
         {
             if (project.Envelope != null)
             {
-                IEnvelope  env=new Envelope() as IEnvelope;
+                IEnvelope env = new Envelope() as IEnvelope;
                 env.XMin = project.Envelope.XMin;
                 env.XMax = project.Envelope.XMax;
                 env.YMin = project.Envelope.YMin;
@@ -108,7 +107,7 @@ namespace Yutai.Services.Concrete
                 _context.SceneControl.LoadSxFile(sxdPath);
             else
             {
-                MessageService.Current.Warn("三维文档不存在，"+sxdPath);
+                MessageService.Current.Warn("三维文档不存在，" + sxdPath);
             }
         }
 
@@ -119,8 +118,8 @@ namespace Yutai.Services.Concrete
                 return;
             }
             string mxdPath = _basePath + "\\" + project.MapDocumentName;
-            if(File.Exists(mxdPath))
-                _context.MapControl.LoadMxFile(mxdPath, null,null);
+            if (File.Exists(mxdPath))
+                _context.MapControl.LoadMxFile(mxdPath, null, null);
             else
             {
                 MessageService.Current.Warn("二维文档不存在，" + mxdPath);

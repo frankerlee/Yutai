@@ -15,9 +15,8 @@ namespace Yutai.Commands.MapLegend
 {
     class CmdLegendAddGroupLayer : YutaiCommand
     {
-       
         private IMapLegendView _view;
-      
+
 
         public CmdLegendAddGroupLayer(IAppContext context, IMapLegendView view)
         {
@@ -53,13 +52,14 @@ namespace Yutai.Commands.MapLegend
             base.m_enabled = true;
             base._itemType = RibbonItemType.Button;
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
-            IGroupLayer grpLayer = new GroupLayerClass() { Name = "新图层组" };
+            IGroupLayer grpLayer = new GroupLayerClass() {Name = "新图层组"};
             if (_view.SelectedItemType == esriTOCControlItem.esriTOCControlItemLayer)
             {
                 if (_view.SelectedLayer is IGroupLayer)
-                    ((IGroupLayer)_view.SelectedLayer).Add(grpLayer);
+                    ((IGroupLayer) _view.SelectedLayer).Add(grpLayer);
             }
             else if (_view.SelectedItemType == esriTOCControlItem.esriTOCControlItemMap)
             {

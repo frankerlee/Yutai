@@ -80,10 +80,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         protected override IPropertySet PropertySet
         {
-            get
-            {
-                return new PropertySetClass();
-            }
+            get { return new PropertySetClass(); }
             set
             {
                 try
@@ -96,4 +93,3 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         }
     }
 }
-

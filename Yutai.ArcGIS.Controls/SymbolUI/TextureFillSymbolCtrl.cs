@@ -31,8 +31,10 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         private void btnSelectPicture_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog {
-                Filter = "JPEG文件交换格式(*.jpg;*jpeg)|*.jpg;*jpeg|移动网络图形(*.png)|*.png|Windows位图(*.bmp)|*.bmp|tiff(*.tif)|*.tif|GIF(*.gif)|*.gif|动画文件(*.cel)|*.cel|Targa文件(*.tga)|*.tga|SGI图像文件格式(*.rgb;*.rgba)|*.rgb;*.rgba|INT(*.int;*.inta)|*.int;*.inta"
+            OpenFileDialog dialog = new OpenFileDialog
+            {
+                Filter =
+                    "JPEG文件交换格式(*.jpg;*jpeg)|*.jpg;*jpeg|移动网络图形(*.png)|*.png|Windows位图(*.bmp)|*.bmp|tiff(*.tif)|*.tif|GIF(*.gif)|*.gif|动画文件(*.cel)|*.cel|Targa文件(*.tga)|*.tga|SGI图像文件格式(*.rgb;*.rgba)|*.rgb;*.rgba|INT(*.int;*.inta)|*.int;*.inta"
             };
             if (dialog.ShowDialog() == DialogResult.OK)
             {
@@ -44,7 +46,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         public void ChangeUnit(double newunit)
         {
             this.m_CanDo = false;
-            this.txtSize.Value = (decimal) ((((double) this.txtSize.Value) / this.m_unit) * newunit);
+            this.txtSize.Value = (decimal) ((((double) this.txtSize.Value)/this.m_unit)*newunit);
             this.m_unit = newunit;
             this.m_CanDo = true;
         }
@@ -138,7 +140,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.axSceneControl1.SceneGraph.RefreshViewers();
         }
 
- private void GetRGB(uint rgb, out int r, out int g, out int b)
+        private void GetRGB(uint rgb, out int r, out int g, out int b)
         {
             uint num = rgb & 16711680;
             b = (int) (num >> 16);
@@ -151,7 +153,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         public void InitControl()
         {
             this.m_CanDo = false;
-            this.txtSize.Value = (decimal) (this.m_pTextureFillSymbol.Size * this.m_unit);
+            this.txtSize.Value = (decimal) (this.m_pTextureFillSymbol.Size*this.m_unit);
             this.txtAngle.Value = (decimal) this.m_pTextureFillSymbol.Angle;
             this.SetColorEdit(this.colorEditForeColor, this.m_pTextureFillSymbol.Color);
             if (this.m_pTextureFillSymbol.BitmapTransparencyColor != null)
@@ -162,7 +164,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.m_CanDo = true;
         }
 
- private void refresh(EventArgs e)
+        private void refresh(EventArgs e)
         {
             this.DisplaySymbol();
             if (this.ValueChanged != null)
@@ -240,7 +242,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     this.txtSize.ForeColor = SystemColors.WindowText;
-                    this.m_pTextureFillSymbol.Size = ((double) this.txtSize.Value) / this.m_unit;
+                    this.m_pTextureFillSymbol.Size = ((double) this.txtSize.Value)/this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -257,4 +259,3 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         }
     }
 }
-

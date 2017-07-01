@@ -26,7 +26,8 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
 
         private void btnSelectMDB_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
                 Filter = "*.mdb|*.mdb"
             };
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -225,7 +226,7 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
             this.txtPassword.Enabled = !this.chkIsOperateSystemYZ.Checked;
         }
 
- private void EnableControl()
+        private void EnableControl()
         {
             this.btnTestConnection.Enabled = true;
             string str = this.txtServer.Text.Trim();
@@ -278,14 +279,22 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
         {
             if (!this.chkIsOperateSystemYZ.Checked)
             {
-                return string.Format("Data Source={0};Initial Catalog=master;Integrated Security=False;User Id={1};Password={2} ", this.txtServer.Text, this.txtUser.Text, this.txtPassword.Text);
+                return
+                    string.Format(
+                        "Data Source={0};Initial Catalog=master;Integrated Security=False;User Id={1};Password={2} ",
+                        this.txtServer.Text, this.txtUser.Text, this.txtPassword.Text);
             }
             return string.Format("Data Source={0};Initial Catalog=master;Integrated Security=SSPI;", this.txtServer.Text);
         }
 
         private string GetEntConnection()
         {
-            return string.Format("dbclient={0};server={1};authentication_mode={2};user={3};password={4};database={5}", new object[] { AppConfig.dbclient, this.txtServer.Text, this.chkIsOperateSystemYZ.Checked ? "OSA" : "DBMS", this.txtUser.Text, this.txtPassword.Text, this.cboDatabase.Text });
+            return string.Format("dbclient={0};server={1};authentication_mode={2};user={3};password={4};database={5}",
+                new object[]
+                {
+                    AppConfig.dbclient, this.txtServer.Text, this.chkIsOperateSystemYZ.Checked ? "OSA" : "DBMS",
+                    this.txtUser.Text, this.txtPassword.Text, this.cboDatabase.Text
+                });
         }
 
         public void Init()
@@ -328,10 +337,10 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
                             string str3 = attributes["value"].Value;
                             if (str2 == "gdbconnection")
                             {
-                                string[] strArray = str3.Split(new char[] { ';' });
+                                string[] strArray = str3.Split(new char[] {';'});
                                 foreach (string str5 in strArray)
                                 {
-                                    string[] strArray2 = str5.Split(new char[] { '=' });
+                                    string[] strArray2 = str5.Split(new char[] {'='});
                                     switch (strArray2[0].ToLower())
                                     {
                                         case "dbclient":
@@ -384,7 +393,8 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
                                             AppConfig.layerconfigdb = strArray2[1];
                                             if (AppConfig.layerconfigdb[1] != ':')
                                             {
-                                                AppConfig.layerconfigdb = Path.Combine(Application.StartupPath, AppConfig.layerconfigdb);
+                                                AppConfig.layerconfigdb = Path.Combine(Application.StartupPath,
+                                                    AppConfig.layerconfigdb);
                                             }
                                             this.txtMDB.Text = AppConfig.layerconfigdb;
                                             continue;
@@ -407,7 +417,7 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
                                         this.radioGroup1.SelectedIndex = 2;
                                     }
                                     continue;
-                                Label_041E:
+                                    Label_041E:
                                     this.chkIsOperateSystemYZ.Checked = false;
                                 }
                             }
@@ -423,7 +433,7 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
             }
         }
 
- private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
+        private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
         {
             string str = "";
             if (this.radioGroup1.SelectedIndex == 0)
@@ -432,7 +442,13 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
                 this.groupBox2.Enabled = false;
                 AppConfig.dbclient = "sqlserver";
                 this.chkIsOperateSystemYZ.Enabled = true;
-                str = string.Format("dbclient={0};server={1};authentication_mode={2};user={3};password={4};database={5}", new object[] { AppConfig.dbclient, this.txtServer.Text, this.chkIsOperateSystemYZ.Checked ? "OSA" : "DBMS", this.txtUser.Text, this.txtPassword.Text, "", this.cboDatabase.Text });
+                str = string.Format(
+                    "dbclient={0};server={1};authentication_mode={2};user={3};password={4};database={5}",
+                    new object[]
+                    {
+                        AppConfig.dbclient, this.txtServer.Text, this.chkIsOperateSystemYZ.Checked ? "OSA" : "DBMS",
+                        this.txtUser.Text, this.txtPassword.Text, "", this.cboDatabase.Text
+                    });
                 this.cboDatabase.Visible = true;
                 this.label3.Visible = true;
             }
@@ -447,7 +463,13 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
                 AppConfig.dbclient = "Oracle";
                 this.cboDatabase.Visible = false;
                 this.label3.Visible = false;
-                str = string.Format("dbclient={0};server={1};authentication_mode={2};user={3};password={4};database={5}", new object[] { AppConfig.dbclient, this.txtServer.Text, this.chkIsOperateSystemYZ.Checked ? "OSA" : "DBMS", this.txtUser.Text, this.txtPassword.Text, "", this.cboDatabase.Text });
+                str = string.Format(
+                    "dbclient={0};server={1};authentication_mode={2};user={3};password={4};database={5}",
+                    new object[]
+                    {
+                        AppConfig.dbclient, this.txtServer.Text, this.chkIsOperateSystemYZ.Checked ? "OSA" : "DBMS",
+                        this.txtUser.Text, this.txtPassword.Text, "", this.cboDatabase.Text
+                    });
             }
             else
             {
@@ -513,4 +535,3 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
         }
     }
 }
-

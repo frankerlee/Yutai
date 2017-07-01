@@ -34,7 +34,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             }
         }
 
- public bool Do()
+        public bool Do()
         {
             if (this.cboLayers.SelectedItem == null)
             {
@@ -71,16 +71,10 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             }
         }
 
- public IMap Map
+        public IMap Map
         {
-            get
-            {
-                return this.m_pMap;
-            }
-            set
-            {
-                this.m_pMap = value;
-            }
+            get { return this.m_pMap; }
+            set { this.m_pMap = value; }
         }
 
         protected partial class LayerObjectWrap
@@ -103,12 +97,8 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
 
             public ILayer Layer
             {
-                get
-                {
-                    return this.m_pLayer;
-                }
+                get { return this.m_pLayer; }
             }
         }
     }
 }
-

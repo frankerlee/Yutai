@@ -14,7 +14,12 @@ namespace Yutai.Plugins.Editor.Commands
         {
             OnCreate(context);
         }
-        public override bool Checked { get { return _context.Config.IsSnapSketch; } }
+
+        public override bool Checked
+        {
+            get { return _context.Config.IsSnapSketch; }
+        }
+
         public override void OnCreate(object hook)
         {
             this.m_bitmap = Properties.Resources.icon_snap_boundary;
@@ -28,7 +33,7 @@ namespace Yutai.Plugins.Editor.Commands
             DisplayStyleYT = DisplayStyleYT.Image;
             base.TextImageRelationYT = TextImageRelationYT.ImageBeforeText;
             base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
-           
+
             _itemType = RibbonItemType.CheckBox;
         }
 
@@ -36,7 +41,7 @@ namespace Yutai.Plugins.Editor.Commands
         {
             get { return true; }
         }
-        
+
 
         public override void OnClick(object sender, EventArgs args)
         {
@@ -62,10 +67,14 @@ namespace Yutai.Plugins.Editor.Commands
                     bool flag = false;
                     IPoint point2 = new Point();
                     point2.PutCoords(0.0, 0.0);
-                    if ((shapeCopy.GeometryType == esriGeometryType.esriGeometryPolygon || shapeCopy.GeometryType == esriGeometryType.esriGeometryPolyline) && (shapeCopy as IHitTest).HitTest(point, 4.0, esriGeometryHitPartType.esriGeometryPartBoundary, point2, ref num, ref num2, ref num3, ref flag))
+                    if ((shapeCopy.GeometryType == esriGeometryType.esriGeometryPolygon ||
+                         shapeCopy.GeometryType == esriGeometryType.esriGeometryPolyline) &&
+                        (shapeCopy as IHitTest).HitTest(point, 4.0, esriGeometryHitPartType.esriGeometryPartBoundary,
+                            point2, ref num, ref num2, ref num3, ref flag))
                     {
                         SketchShareEx.m_pAnchorPoint.PutCoords(point2.X, point2.Y);
-                        SketchShareEx.SketchMouseDown(SketchShareEx.m_pAnchorPoint, _context.ActiveView, Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
+                        SketchShareEx.SketchMouseDown(SketchShareEx.m_pAnchorPoint, _context.ActiveView,
+                            Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
                     }
                 }
             }

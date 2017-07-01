@@ -22,7 +22,6 @@ namespace Yutai.Plugins.Identifer.Helpers
 {
     public class CommonHelper
     {
-
         public const string C_TEMP_DIRECTORY = "TempDirectory";
 
         // Methods
@@ -1803,7 +1802,5 @@ namespace Yutai.Plugins.Identifer.Helpers
                 // Logger.Current.Error("",exception, "");
             }
         }
-
-
     }
 }

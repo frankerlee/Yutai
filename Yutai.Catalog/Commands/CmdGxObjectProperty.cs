@@ -31,10 +31,7 @@ namespace Yutai.Plugins.Catalog.Commands
 
         public override bool Enabled
         {
-            get
-            {
-                return _context.GxSelection != null && (((IGxSelection) _context.GxSelection).Count != 1 || true);
-            }
+            get { return _context.GxSelection != null && (((IGxSelection) _context.GxSelection).Count != 1 || true); }
         }
 
 
@@ -45,7 +42,7 @@ namespace Yutai.Plugins.Catalog.Commands
 
         public override void OnClick()
         {
-            (((IGxSelection) _context.GxSelection).FirstObject as IGxObjectEdit).EditProperties(0); 
+            (((IGxSelection) _context.GxSelection).FirstObject as IGxObjectEdit).EditProperties(0);
         }
     }
 }

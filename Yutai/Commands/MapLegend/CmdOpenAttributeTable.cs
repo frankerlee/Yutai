@@ -25,7 +25,6 @@ namespace Yutai.Commands.MapLegend
 {
     public class CmdOpenAttributeTable : YutaiCommand
     {
-
         private IMapLegendView _view;
 
 
@@ -48,6 +47,7 @@ namespace Yutai.Commands.MapLegend
             base.m_enabled = true;
             base._itemType = RibbonItemType.Button;
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
@@ -60,13 +60,12 @@ namespace Yutai.Commands.MapLegend
 
         public override void OnClick()
         {
-
             if (_view.SelectedItemType == esriTOCControlItem.esriTOCControlItemLayer && _view.SelectedLayer != null)
             {
                 if (_view.SelectedLayer is IFeatureLayer)
                 {
                     var args = new PluginMessageEventArgs(PluginMessages.ShowAttributeTable);
-                    _context.Broadcaster.BroadcastEvent(t=>t.MessageBroadcasted_, _view, args);
+                    _context.Broadcaster.BroadcastEvent(t => t.MessageBroadcasted_, _view, args);
                     // 显示属性表
                     //IDockPanel dock = _context.DockPanels.Find(DockPanelKeys.TableEditor);
                     //if (dock == null)

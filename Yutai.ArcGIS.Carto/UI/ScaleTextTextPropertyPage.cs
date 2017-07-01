@@ -32,7 +32,8 @@ namespace Yutai.ArcGIS.Carto.UI
             if (this.bool_1)
             {
                 this.bool_1 = false;
-                this.imapSurroundFrame_0.MapSurround = (ScaleTextFormatPropertyPage.m_pScaleText as IClone).Clone() as IMapSurround;
+                this.imapSurroundFrame_0.MapSurround =
+                    (ScaleTextFormatPropertyPage.m_pScaleText as IClone).Clone() as IMapSurround;
             }
         }
 
@@ -69,7 +70,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void method_0()
+        private void method_0()
         {
             if (ScaleTextFormatPropertyPage.m_pScaleText != null)
             {
@@ -144,7 +145,8 @@ namespace Yutai.ArcGIS.Carto.UI
             this.imapSurroundFrame_0 = object_0 as IMapSurroundFrame;
             if ((this.imapSurroundFrame_0 != null) && (ScaleTextFormatPropertyPage.m_pScaleText == null))
             {
-                ScaleTextFormatPropertyPage.m_pScaleText = (this.imapSurroundFrame_0.MapSurround as IClone).Clone() as IScaleText;
+                ScaleTextFormatPropertyPage.m_pScaleText =
+                    (this.imapSurroundFrame_0.MapSurround as IClone).Clone() as IScaleText;
             }
         }
 
@@ -168,39 +170,23 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

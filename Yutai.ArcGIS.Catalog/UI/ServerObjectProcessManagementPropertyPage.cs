@@ -33,7 +33,7 @@ namespace Yutai.ArcGIS.Catalog.UI
                 int num = 36000;
                 try
                 {
-                    num = (int) (double.Parse(this.txtRecycleInterval.Text) * 3600.0);
+                    num = (int) (double.Parse(this.txtRecycleInterval.Text)*3600.0);
                 }
                 catch
                 {
@@ -53,7 +53,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
         }
 
- private void method_0()
+        private void method_0()
         {
             object obj2;
             object obj3;
@@ -63,8 +63,9 @@ namespace Yutai.ArcGIS.Catalog.UI
             try
             {
                 int num = int.Parse(recycleProperties.GetProperty("Interval").ToString());
-                this.txtRecycleInterval.Text = ((double) (num / 3600)).ToString();
-                this.timeEdit1.Text = this.iserverObjectConfiguration_0.RecycleProperties.GetProperty("Start").ToString();
+                this.txtRecycleInterval.Text = ((double) (num/3600)).ToString();
+                this.timeEdit1.Text =
+                    this.iserverObjectConfiguration_0.RecycleProperties.GetProperty("Start").ToString();
             }
             catch
             {
@@ -107,31 +108,18 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         public IAGSServerConnectionAdmin AGSConnectionAdmin
         {
-            set
-            {
-                this.iagsserverConnectionAdmin_0 = value;
-            }
+            set { this.iagsserverConnectionAdmin_0 = value; }
         }
 
         public IServerObjectConfiguration ServerObjectConfiguration
         {
-            get
-            {
-                return this.iserverObjectConfiguration_0;
-            }
-            set
-            {
-                this.iserverObjectConfiguration_0 = value;
-            }
+            get { return this.iserverObjectConfiguration_0; }
+            set { this.iserverObjectConfiguration_0 = value; }
         }
 
         public string Status
         {
-            set
-            {
-                this.string_0 = value;
-            }
+            set { this.string_0 = value; }
         }
     }
 }
-

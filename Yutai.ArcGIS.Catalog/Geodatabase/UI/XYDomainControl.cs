@@ -20,7 +20,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.InitializeComponent();
         }
 
- public void InitControl()
+        public void InitControl()
         {
             double xMin = -10000.0;
             double xMax = 11474.83645;
@@ -33,7 +33,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 double num6 = xMax - xMin;
                 double num7 = yMax - yMin;
                 num6 = (num6 > num7) ? num6 : num7;
-                num5 = 2147483645.0 / num6;
+                num5 = 2147483645.0/num6;
             }
             else
             {
@@ -46,7 +46,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.textBoxPrecision.Text = num5.ToString();
         }
 
- private void method_0(TextEdit textEdit_0)
+        private void method_0(TextEdit textEdit_0)
         {
             if (CommonHelper.IsNmuber(textEdit_0.Text))
             {
@@ -60,14 +60,14 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 if (xMin > xMax)
                 {
                     num5 = Convert.ToDouble(this.textBoxPrecision.Text);
-                    num6 = 2147483645.0 / num5;
+                    num6 = 2147483645.0/num5;
                     xMax = xMin + num6;
                     this.textBoxMaxX.Text = xMax.ToString();
                 }
                 else if (yMin > yMax)
                 {
                     num5 = Convert.ToDouble(this.textBoxPrecision.Text);
-                    num6 = 2147483645.0 / num5;
+                    num6 = 2147483645.0/num5;
                     yMax = yMin + num6;
                     this.textBoxMaxY.Text = yMax.ToString();
                 }
@@ -76,7 +76,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     num6 = xMax - xMin;
                     double num7 = yMax - yMin;
                     num6 = (num6 > num7) ? num6 : num7;
-                    this.textBoxPrecision.Text = (2147483645.0 / num6).ToString();
+                    this.textBoxPrecision.Text = (2147483645.0/num6).ToString();
                 }
                 this.ispatialReference_0.SetDomain(xMin, xMax, yMin, yMax);
             }
@@ -95,7 +95,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 {
                     this.textBoxPrecision.ForeColor = SystemColors.WindowText;
                     double num = Convert.ToDouble(this.textBoxPrecision.Text);
-                    double num2 = 2147483645.0 / num;
+                    double num2 = 2147483645.0/num;
                     double xMin = Convert.ToDouble(this.textBoxMinX.Text);
                     double yMin = Convert.ToDouble(this.textBoxMinY.Text);
                     double xMax = xMin + num2;
@@ -169,26 +169,17 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public bool IsEdit
         {
-            set
-            {
-                this.bool_1 = value;
-            }
+            set { this.bool_1 = value; }
         }
 
         public bool IsHighPrecision
         {
-            set
-            {
-                this.bool_2 = value;
-            }
+            set { this.bool_2 = value; }
         }
 
         public ISpatialReference SpatialRefrence
         {
-            get
-            {
-                return this.ispatialReference_0;
-            }
+            get { return this.ispatialReference_0; }
             set
             {
                 this.ispatialReference_0 = value;
@@ -204,4 +195,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

@@ -49,7 +49,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
 
         private void btnAddGemoetricEffic_Click(object sender, EventArgs e)
         {
-            frmGeometricEffectList list = new frmGeometricEffectList {
+            frmGeometricEffectList list = new frmGeometricEffectList
+            {
                 BasicSymbolLayerBaseControl = this.m_pControl
             };
             if ((list.ShowDialog() == DialogResult.OK) && (this.m_pControl != null))
@@ -63,7 +64,7 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
             this.contextMenuStrip1.Show(this, this.btnChangeEffic.Right, this.btnChangeEffic.Bottom);
         }
 
- private void GeometricEffectDashesPage_Load(object sender, EventArgs e)
+        private void GeometricEffectDashesPage_Load(object sender, EventArgs e)
         {
             if (base.m_pGeometricEffect == null)
             {
@@ -85,11 +86,11 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
             this.textBox2.Tag = attrId;
         }
 
- private void textBox1_Leave(object sender, EventArgs e)
+        private void textBox1_Leave(object sender, EventArgs e)
         {
             if (sender == this.textBox1)
             {
-                string[] strArray = (sender as TextBox).Text.Split(new char[] { ',' });
+                string[] strArray = (sender as TextBox).Text.Split(new char[] {','});
                 double[] val = new double[strArray.Length];
                 for (int i = 0; i < val.Length; i++)
                 {
@@ -129,7 +130,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
 
         private void 修改ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmGeometricEffectList list = new frmGeometricEffectList {
+            frmGeometricEffectList list = new frmGeometricEffectList
+            {
                 BasicSymbolLayerBaseControl = this.m_pControl
             };
             if ((list.ShowDialog() == DialogResult.OK) && (this.m_pControl != null))
@@ -139,4 +141,3 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
         }
     }
 }
-

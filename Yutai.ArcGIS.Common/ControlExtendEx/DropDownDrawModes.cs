@@ -18,12 +18,14 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
             this.listBox_0.Click += new EventHandler(this.listBox_0_Click);
         }
 
-        public override object EditValue(ITypeDescriptorContext itypeDescriptorContext_0, IServiceProvider iserviceProvider_0, object object_0)
+        public override object EditValue(ITypeDescriptorContext itypeDescriptorContext_0,
+            IServiceProvider iserviceProvider_0, object object_0)
         {
             this.listBox_0.Items.Clear();
             this.listBox_0.Items.AddRange(List);
             this.listBox_0.Height = this.listBox_0.PreferredHeight;
-            this.iwindowsFormsEditorService_0 = (IWindowsFormsEditorService) iserviceProvider_0.GetService(typeof(IWindowsFormsEditorService));
+            this.iwindowsFormsEditorService_0 =
+                (IWindowsFormsEditorService) iserviceProvider_0.GetService(typeof(IWindowsFormsEditorService));
             if (this.iwindowsFormsEditorService_0 != null)
             {
                 this.iwindowsFormsEditorService_0.DropDownControl(this.listBox_0);
@@ -43,4 +45,3 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
         }
     }
 }
-

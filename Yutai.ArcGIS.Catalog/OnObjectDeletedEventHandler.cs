@@ -2,4 +2,3 @@
 {
     public delegate void OnObjectDeletedEventHandler(IGxObject igxObject_0);
 }
-

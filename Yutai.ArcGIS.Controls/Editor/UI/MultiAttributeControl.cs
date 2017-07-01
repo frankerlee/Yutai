@@ -54,7 +54,9 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                             IVersionedObject obj2 = pDataset as IVersionedObject;
                             if (obj2.IsRegisteredAsVersioned)
                             {
-                                return (((AppConfigInfo.UserID.Length == 0) || (AppConfigInfo.UserID.ToLower() == "admin")) || this.m_sysGrants.GetStaffAndRolesLayerPri(AppConfigInfo.UserID, 2, pDataset.Name));
+                                return (((AppConfigInfo.UserID.Length == 0) ||
+                                         (AppConfigInfo.UserID.ToLower() == "admin")) ||
+                                        this.m_sysGrants.GetStaffAndRolesLayerPri(AppConfigInfo.UserID, 2, pDataset.Name));
                             }
                         }
                     }
@@ -67,7 +69,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             return false;
         }
 
- public void FlashGeometry(IScreenDisplay pScreenDisplay, IGeometry pGeometry)
+        public void FlashGeometry(IScreenDisplay pScreenDisplay, IGeometry pGeometry)
         {
             pScreenDisplay.StartDrawing(0, -1);
             switch (pGeometry.GeometryType)
@@ -89,10 +91,12 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         public void FlashLine(IScreenDisplay pDisplay, IGeometry pGeometry)
         {
-            ISimpleLineSymbol symbol = new SimpleLineSymbolClass {
+            ISimpleLineSymbol symbol = new SimpleLineSymbolClass
+            {
                 Width = 4.0
             };
-            IRgbColor color = new RgbColorClass {
+            IRgbColor color = new RgbColorClass
+            {
                 Green = 128
             };
             ISymbol sym = (ISymbol) symbol;
@@ -105,10 +109,12 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         public void FlashPoint(IScreenDisplay pDisplay, IGeometry pGeometry)
         {
-            ISimpleMarkerSymbol symbol = new SimpleMarkerSymbolClass {
+            ISimpleMarkerSymbol symbol = new SimpleMarkerSymbolClass
+            {
                 Style = esriSimpleMarkerStyle.esriSMSCircle
             };
-            IRgbColor color = new RgbColorClass {
+            IRgbColor color = new RgbColorClass
+            {
                 Green = 128
             };
             ISymbol sym = (ISymbol) symbol;
@@ -121,10 +127,12 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         public void FlashPolygon(IScreenDisplay pDisplay, IGeometry pGeometry)
         {
-            ISimpleFillSymbol symbol = new SimpleFillSymbolClass {
+            ISimpleFillSymbol symbol = new SimpleFillSymbolClass
+            {
                 Outline = null
             };
-            IRgbColor color = new RgbColorClass {
+            IRgbColor color = new RgbColorClass
+            {
                 Green = 128
             };
             ISymbol sym = (ISymbol) symbol;
@@ -143,16 +151,19 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 this.textBox1.Text = "编辑" + this.m_pMap.SelectionCount.ToString() + "个要素";
                 if (this.m_pMap.SelectionCount != 0)
                 {
-                    UID uid = new UIDClass {
+                    UID uid = new UIDClass
+                    {
                         Value = "{6CA416B1-E160-11D2-9F4E-00C04F6BC78E}"
                     };
                     IEnumLayer layer = this.m_pMap.get_Layers(uid, true);
                     layer.Reset();
                     for (ILayer layer2 = layer.Next(); layer2 != null; layer2 = layer.Next())
                     {
-                        if (((layer2 is IFeatureLayer) && this.CheckIsEdit(layer2 as IFeatureLayer)) && ((layer2 as IFeatureSelection).SelectionSet.Count > 0))
+                        if (((layer2 is IFeatureLayer) && this.CheckIsEdit(layer2 as IFeatureLayer)) &&
+                            ((layer2 as IFeatureSelection).SelectionSet.Count > 0))
                         {
-                            TreeNode node = new TreeNode(layer2.Name) {
+                            TreeNode node = new TreeNode(layer2.Name)
+                            {
                                 Tag = layer2
                             };
                             this.treeView1.Nodes.Add(node);
@@ -166,11 +177,11 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
             catch (Exception exception)
             {
-               Logger.Current.Error("", exception, "");
+                Logger.Current.Error("", exception, "");
             }
         }
 
- private void m_pActiveViewEvents_SelectionChanged()
+        private void m_pActiveViewEvents_SelectionChanged()
         {
             if (base.Visible)
             {
@@ -194,18 +205,12 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         public DockingStyle DefaultDockingStyle
         {
-            get
-            {
-                return DockingStyle.Right;
-            }
+            get { return DockingStyle.Right; }
         }
 
         public IWorkspace EditWorkspace
         {
-            set
-            {
-                this.m_pEditWorkspace = value;
-            }
+            set { this.m_pEditWorkspace = value; }
         }
 
         public IMap FocusMap
@@ -214,26 +219,20 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             {
                 this.m_pMap = value;
                 this.m_pActiveViewEvents = this.m_pMap as IActiveViewEvents_Event;
-                this.m_pActiveViewEvents.SelectionChanged+=(new IActiveViewEvents_SelectionChangedEventHandler(this.m_pActiveViewEvents_SelectionChanged));
+                this.m_pActiveViewEvents.SelectionChanged +=
+                    (new IActiveViewEvents_SelectionChangedEventHandler(this.m_pActiveViewEvents_SelectionChanged));
                 this.m_pAttributeListControl.ActiveView = this.m_pMap as IActiveView;
             }
         }
 
         string IDockContent.Name
         {
-            get
-            {
-                return base.Name;
-            }
+            get { return base.Name; }
         }
 
         int IDockContent.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
     }
 }
-

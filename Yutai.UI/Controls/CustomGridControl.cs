@@ -75,7 +75,7 @@ namespace Yutai.UI.Controls
             var cellType = model.CellType;
             if (!string.IsNullOrWhiteSpace(cellType) && cellType.EqualsIgnoreCase("CheckBox"))
             {
-                model.CellValue = !(bool)(model.CellValue);
+                model.CellValue = !(bool) (model.CellValue);
             }
         }
 

@@ -69,7 +69,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     {
                         m_pScaleText = selector.GetSymbol() as IScaleText;
                         this.method_0();
-                        IStyleGalleryItem styleGalleryItemAt = this.cboStyle.GetStyleGalleryItemAt(this.cboStyle.Items.Count - 1);
+                        IStyleGalleryItem styleGalleryItemAt =
+                            this.cboStyle.GetStyleGalleryItemAt(this.cboStyle.Items.Count - 1);
                         if (styleGalleryItemAt != null)
                         {
                             if (styleGalleryItemAt.Name == "<定制>")
@@ -78,7 +79,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                             }
                             else
                             {
-                                styleGalleryItemAt = new MyStyleGalleryItem {
+                                styleGalleryItemAt = new MyStyleGalleryItem
+                                {
                                     Name = "<定制>",
                                     Item = m_pScaleText
                                 };
@@ -88,7 +90,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                         }
                         else
                         {
-                            styleGalleryItemAt = new MyStyleGalleryItem {
+                            styleGalleryItemAt = new MyStyleGalleryItem
+                            {
                                 Name = "<定制>",
                                 Item = m_pScaleText
                             };
@@ -259,7 +262,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
- private void method_0()
+        private void method_0()
         {
             if (m_pScaleText != null)
             {
@@ -352,7 +355,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
             if (m_pScaleText != null)
             {
-                item = new MyStyleGalleryItem {
+                item = new MyStyleGalleryItem
+                {
                     Name = "<定制>",
                     Item = m_pScaleText
                 };
@@ -374,39 +378,23 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

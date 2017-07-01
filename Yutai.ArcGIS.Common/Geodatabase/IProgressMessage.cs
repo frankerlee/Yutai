@@ -1,7 +1,7 @@
 namespace Yutai.ArcGIS.Common.Geodatabase
 {
-	public interface IProgressMessage
-	{
-		event ProgressMessageHandle ProgressMessage;
-	}
+    public interface IProgressMessage
+    {
+        event ProgressMessageHandle ProgressMessage;
+    }
 }

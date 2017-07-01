@@ -31,14 +31,14 @@ namespace Yutai.Menu
         public MenuGenerator(IAppContext context, IPluginManager pluginManager, IMainView mainView)
         {
             if (context == null) throw new ArgumentNullException("context");
-           // if (pluginManager == null) throw new ArgumentNullException("pluginManager");
+            // if (pluginManager == null) throw new ArgumentNullException("pluginManager");
             if (mainView == null) throw new ArgumentNullException("mainView");
 
             _context = context;
             _pluginManager = pluginManager;
             _menuManager = mainView.RibbonManager;
             _dockingManager = mainView.DockingManager;
-            _commands = new YutaiCommands(_context,PluginIdentity.Default);
+            _commands = new YutaiCommands(_context, PluginIdentity.Default);
             _statusManager = mainView.RibbonStatusBar;
             InitMenus();
         }
@@ -47,13 +47,13 @@ namespace Yutai.Menu
         {
             return _commands.GetKeys();
         }
+
         private void InitMenus()
         {
             XmlDocument doc = new XmlDocument();
             doc.Load(base.GetType().Assembly.GetManifestResourceStream("Yutai.Menu.MenuLayout.xml"));
-            RibbonFactory.CreateMenus(_commands.GetCommands(), (RibbonControl) _menuManager, (RibbonStatusBar)_statusManager,doc);
-
+            RibbonFactory.CreateMenus(_commands.GetCommands(), (RibbonControl) _menuManager,
+                (RibbonStatusBar) _statusManager, doc);
         }
-        
     }
 }

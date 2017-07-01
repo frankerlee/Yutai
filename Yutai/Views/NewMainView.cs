@@ -36,7 +36,8 @@ namespace Yutai.Views
         private IPageLayoutControl2 _layoutControl;
         private ControlsSynchronizer _controlsSynchronizer;
 
-#region Events
+        #region Events
+
         private OnActiveHookChangedHandler onActiveHookChangedHandler;
         private OnMousePostionHandler onMousePostionHandler;
 
@@ -71,6 +72,7 @@ namespace Yutai.Views
                 } while (onActiveHookChangedHandler != onActiveHookChangedHandler2);
             }
         }
+
         public event OnMousePostionHandler OnMousePostion
         {
             add
@@ -102,17 +104,16 @@ namespace Yutai.Views
                 } while (onMousePostionHandler != onMousePostionHandler2);
             }
         }
-#endregion
 
+        #endregion
 
         public NewMainView(IAppContext context)
         {
             _context = context;
             InitializeComponent();
             _mapControl = this.axMapControl1.Object as IMapControl3;
-            _layoutControl=this.axPageLayoutControl1.Object as IPageLayoutControl2;
-            
-
+            _layoutControl = this.axPageLayoutControl1.Object as IPageLayoutControl2;
+            _controlsSynchronizer = new ControlsSynchronizer(_mapControl, _layoutControl);
             this.FormClosing += MainView_FormClosing;
             this.Shown += MainView_Shown;
             Logger.Current.Trace("End MainView");
@@ -121,7 +122,7 @@ namespace Yutai.Views
         private void MainView_Shown(object sender, EventArgs e)
         {
             _rendered = true;
-            _controlsSynchronizer = new ControlsSynchronizer(_mapControl, _layoutControl);
+
             this.tabContent.SelectedTabPageIndex = 0;
             IMap map = new MapClass();
             map.Name = "地图";
@@ -167,30 +168,65 @@ namespace Yutai.Views
         //    get { return _mapControl; }
         //}
 
-        public IMapControl3 MapControl { get{return _mapControl;} }
+        public IMapControl3 MapControl
+        {
+            get { return _mapControl; }
+        }
 
         public AxMapControl MapControlContainer
         {
             get { return axMapControl1; }
         }
 
-        public YutaiTool CurrentTool { get{return _controlsSynchronizer.CurrentTool;} set { _controlsSynchronizer.CurrentTool=value; } }
-        public IActiveView ActiveView { get { return _controlsSynchronizer.ActiveView; } }
-        public IMap FocusMap { get { return _controlsSynchronizer.FocusMap; } }
-        public IPageLayoutControl2 PageLayoutControl { get {return _layoutControl;} }
-        public string ActiveViewType { get { return _controlsSynchronizer.ActiveViewType; } }
-        public object ActiveGISControl { get { return _controlsSynchronizer.ActiveControl; } }
+        public YutaiTool CurrentTool
+        {
+            get { return _controlsSynchronizer.CurrentTool; }
+            set { _controlsSynchronizer.CurrentTool = value; }
+        }
+
+        public IActiveView ActiveView
+        {
+            get { return _controlsSynchronizer.ActiveView; }
+        }
+
+        public IMap FocusMap
+        {
+            get { return _controlsSynchronizer.FocusMap; }
+        }
+
+        public IPageLayoutControl2 PageLayoutControl
+        {
+            get { return _layoutControl; }
+        }
+
+        public string ActiveViewType
+        {
+            get { return _controlsSynchronizer.ActiveViewType; }
+        }
+
+        public object ActiveGISControl
+        {
+            get { return _controlsSynchronizer.ActiveControl; }
+        }
+
         public void ActivateMap()
         {
+            if (tabContent.SelectedTabPageIndex == 0) return;
             tabContent.TabPages[0].PageVisible = true;
             tabContent.SelectedTabPageIndex = 0;
         }
 
         public void ActivatePageLayout()
         {
-          //  _controlsSynchronizer.ActivatePageLayout();
+            if (tabContent.SelectedTabPageIndex == 1) return;
+            //  _controlsSynchronizer.ActivatePageLayout();
             tabContent.TabPages[1].PageVisible = true;
             tabContent.SelectedTabPageIndex = 1;
+        }
+
+        public void AddFrameworkControl(object control)
+        {
+            _controlsSynchronizer.AddFrameworkControl(control);
         }
 
         public GISControlType ControlType { get; }
@@ -362,7 +398,7 @@ namespace Yutai.Views
 
         public void SetMapTooltip(string msg)
         {
-           // this.toolTipController1.SetToolTip(this.axMapControl1, msg);
+            // this.toolTipController1.SetToolTip(this.axMapControl1, msg);
         }
 
         public string GetMapTooltip()
@@ -372,7 +408,7 @@ namespace Yutai.Views
 
         public void SetTooltip(string msg)
         {
-           // this.toolTipController1.SetToolTip(this.axMapControl1, msg);
+            // this.toolTipController1.SetToolTip(this.axMapControl1, msg);
         }
 
 
@@ -421,9 +457,6 @@ namespace Yutai.Views
         }
 
         #endregion
-
-       
-        
 
         private void tabContent_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {

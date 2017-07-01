@@ -24,25 +24,18 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.m_pSnapConfigCtrl.InitSnapEnvironment();
         }
 
- private void frmSnapConfig_Load(object sender, EventArgs e)
+        private void frmSnapConfig_Load(object sender, EventArgs e)
         {
         }
 
- public IMap FocusMap
+        public IMap FocusMap
         {
-            set
-            {
-                this.m_pSnapConfigCtrl.Map = value;
-            }
+            set { this.m_pSnapConfigCtrl.Map = value; }
         }
 
         public ISnapEnvironment SnapEnvironment
         {
-            set
-            {
-                this.m_pSnapConfigCtrl.SnapEnvironment = value;
-            }
+            set { this.m_pSnapConfigCtrl.SnapEnvironment = value; }
         }
     }
 }
-

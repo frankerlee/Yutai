@@ -44,7 +44,11 @@ namespace Yutai.Plugins.Catalog.Commands
                 bool flag;
                 if (_context.GxSelection != null)
                 {
-                    flag = ((((IGxSelection) _context.GxSelection).FirstObject is IGxDiskConnection ? false : !(((IGxSelection) _context.GxSelection).FirstObject is IGxFolder)) ? false : true);
+                    flag = ((((IGxSelection) _context.GxSelection).FirstObject is IGxDiskConnection
+                        ? false
+                        : !(((IGxSelection) _context.GxSelection).FirstObject is IGxFolder))
+                        ? false
+                        : true);
                 }
                 else
                 {
@@ -68,7 +72,9 @@ namespace Yutai.Plugins.Catalog.Commands
             };
             IObjectClass objectClass = null;
             IWorkspaceFactory shapefileWorkspaceFactoryClass = new ShapefileWorkspaceFactory();
-            IWorkspace workspace = shapefileWorkspaceFactoryClass.OpenFromFile(((IGxSelection) _context.GxSelection).FirstObject.FullName, 0);
+            IWorkspace workspace =
+                shapefileWorkspaceFactoryClass.OpenFromFile(((IGxSelection) _context.GxSelection).FirstObject.FullName,
+                    0);
             _frmObjectClass.Dataset = workspace;
             if (_frmObjectClass.ShowDialog() == DialogResult.OK)
             {

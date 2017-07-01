@@ -111,7 +111,8 @@ namespace Yutai.ArcGIS.Framework
         public void CreateBars(string string_1)
         {
             this.string_0 = string_1;
-            this.createBarsHelper_0 = new CreateBarsHelper(this.barManager1, this.m_pSystemPopupMenu, this.iframework_0, this.list_0, this.ipopuMenuWrap_0);
+            this.createBarsHelper_0 = new CreateBarsHelper(this.barManager1, this.m_pSystemPopupMenu, this.iframework_0,
+                this.list_0, this.ipopuMenuWrap_0);
             this.createBarsHelper_0.OnCreateComplete += new CreateBarsHelper.OnCreateCompleteHandler(this.method_22);
             this.createBarsHelper_0.HasMainMenu = this.bool_0;
             new Thread(new ThreadStart(this.method_21)).Start();
@@ -121,7 +122,8 @@ namespace Yutai.ArcGIS.Framework
         public void CreateBars2(string string_1)
         {
             this.string_0 = string_1;
-            this.createBarsHelper_0 = new CreateBarsHelper(this.barManager1, this.m_pSystemPopupMenu, this.iframework_0, this.list_0, this.ipopuMenuWrap_0);
+            this.createBarsHelper_0 = new CreateBarsHelper(this.barManager1, this.m_pSystemPopupMenu, this.iframework_0,
+                this.list_0, this.ipopuMenuWrap_0);
             this.createBarsHelper_0.StartCreateBar(string_1);
             this.method_22();
             this.UpdateUI(null);
@@ -290,7 +292,8 @@ namespace Yutai.ArcGIS.Framework
         {
             BarItem item = null;
             BarManagerCategory category;
-            item = new BarButtonItem {
+            item = new BarButtonItem
+            {
                 Id = this.barManager1.GetNewItemId(),
                 Name = menuItemDef_0.Name,
                 Tag = icommand_0,
@@ -1392,7 +1395,8 @@ namespace Yutai.ArcGIS.Framework
                     {
                         text = control.Text;
                     }
-                    BarButtonItem item = new BarButtonItem {
+                    BarButtonItem item = new BarButtonItem
+                    {
                         Tag = control,
                         Id = this.barManager1.GetNewItemId(),
                         Caption = text,
@@ -1766,7 +1770,8 @@ namespace Yutai.ArcGIS.Framework
             {
                 string_1 = control_0.Text;
             }
-            BarButtonItem item = new BarButtonItem {
+            BarButtonItem item = new BarButtonItem
+            {
                 Tag = control_0,
                 Id = this.barManager1.GetNewItemId(),
                 Caption = string_1,
@@ -1842,7 +1847,7 @@ namespace Yutai.ArcGIS.Framework
                 XmlElement documentElement = document.DocumentElement;
                 Bar bar = null;
                 int num = 0;
-            Label_002E:
+                Label_002E:
                 if (num >= documentElement.ChildNodes.Count)
                 {
                     goto Label_01DE;
@@ -1879,7 +1884,7 @@ namespace Yutai.ArcGIS.Framework
                 {
                     goto Label_01CD;
                 }
-            Label_0105:
+                Label_0105:
                 bar = new Bar();
                 bool flag = true;
                 bar.BarName = this.barManager1.GetNewBarName();
@@ -1895,24 +1900,24 @@ namespace Yutai.ArcGIS.Framework
                 {
                     this.method_19(bar, def);
                 }
-            Label_017C:
+                Label_017C:
                 this.method_15(bar, node);
                 if (flag && (bar.ItemLinks.Count == 0))
                 {
                     int index = this.barManager1.Bars.IndexOf(bar);
                     this.barManager1.Bars.RemoveAt(index);
                 }
-            Label_01C4:
+                Label_01C4:
                 num++;
                 goto Label_002E;
-            Label_01CD:
+                Label_01CD:
                 flag = false;
                 if (bar != null)
                 {
                     goto Label_017C;
                 }
                 goto Label_0105;
-            Label_01DE:
+                Label_01DE:
                 if ((this.barManager1.MainMenu == null) && (this.barManager1.Bars.Count > 0))
                 {
                     bar = this.barManager1.Bars[1];
@@ -1994,22 +1999,13 @@ namespace Yutai.ArcGIS.Framework
 
         public object Framework
         {
-            get
-            {
-                return this.iframework_0;
-            }
-            set
-            {
-                this.iframework_0 = value as IFramework;
-            }
+            get { return this.iframework_0; }
+            set { this.iframework_0 = value as IFramework; }
         }
 
         public bool HasMainMenu
         {
-            set
-            {
-                this.bool_0 = value;
-            }
+            set { this.bool_0 = value; }
         }
 
         public string PaintStyleName
@@ -2031,10 +2027,7 @@ namespace Yutai.ArcGIS.Framework
 
         public PopupMenu PopupMenu
         {
-            set
-            {
-                this.m_pSystemPopupMenu = value;
-            }
+            set { this.m_pSystemPopupMenu = value; }
         }
 
         private delegate void Delegate4(string string_0);
@@ -2042,4 +2035,3 @@ namespace Yutai.ArcGIS.Framework
         private delegate void Delegate5(Bar bar_0, bool bool_0);
     }
 }
-

@@ -71,7 +71,7 @@ namespace Yutai.ArcGIS.Carto.UI
             return true;
         }
 
- public void Init()
+        public void Init()
         {
             if (this.jlktkassiatant_0.TKType == TKType.TKStandard)
             {
@@ -111,18 +111,14 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void TFInfoPage_Load(object sender, EventArgs e)
+        private void TFInfoPage_Load(object sender, EventArgs e)
         {
             this.Init();
         }
 
         internal YTTKAssiatant YTTKAssiatant
         {
-            set
-            {
-                this.jlktkassiatant_0 = value;
-            }
+            set { this.jlktkassiatant_0 = value; }
         }
     }
 }
-

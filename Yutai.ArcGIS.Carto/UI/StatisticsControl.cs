@@ -32,7 +32,7 @@ namespace Yutai.ArcGIS.Carto.UI
             return true;
         }
 
- private void StatisticsControl_Load(object sender, EventArgs e)
+        private void StatisticsControl_Load(object sender, EventArgs e)
         {
             double num;
             double num2;
@@ -49,11 +49,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IStatsHistogram StatsHistogram
         {
-            set
-            {
-                this.istatsHistogram_0 = value;
-            }
+            set { this.istatsHistogram_0 = value; }
         }
     }
 }
-

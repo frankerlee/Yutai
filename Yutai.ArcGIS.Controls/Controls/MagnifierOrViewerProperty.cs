@@ -8,4 +8,3 @@
         public ZoomType m_ZoomType = ZoomType.MagnifyBy;
     }
 }
-

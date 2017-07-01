@@ -30,7 +30,8 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
                         break;
 
                     case 1:
-                        (this.m_pExport as IExportImage).ImageType = esriExportImageType.esriExportImageTypeBiLevelThreshold;
+                        (this.m_pExport as IExportImage).ImageType =
+                            esriExportImageType.esriExportImageTypeBiLevelThreshold;
                         break;
 
                     case 2:
@@ -58,7 +59,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             }
         }
 
- private void ExportMapGeneralPropertyPage_Load(object sender, EventArgs e)
+        private void ExportMapGeneralPropertyPage_Load(object sender, EventArgs e)
         {
             this.txtHeight.Value = (this.m_pExport as IExportImage).Height;
             this.txtWidth.Value = (this.m_pExport as IExportImage).Width;
@@ -98,7 +99,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             r = (int) num;
         }
 
- private int RGB(int r, int g, int b)
+        private int RGB(int r, int g, int b)
         {
             uint num = 0;
             num |= (uint) b;
@@ -174,11 +175,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
 
         public IExport Export
         {
-            set
-            {
-                this.m_pExport = value;
-            }
+            set { this.m_pExport = value; }
         }
     }
 }
-

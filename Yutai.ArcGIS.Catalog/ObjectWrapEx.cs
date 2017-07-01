@@ -18,4 +18,3 @@ namespace Yutai.ArcGIS.Catalog
         }
     }
 }
-

@@ -3,7 +3,8 @@ using ESRI.ArcGIS.esriSystem;
 
 namespace Yutai.ArcGIS.Catalog
 {
-    public class GxSpatialReferencesFolder : IGxObject, IGxObjectContainer, IGxObjectEdit, IGxObjectProperties, IGxObjectUI, IGxPasteTarget, IGxSpatialReferencesFolder
+    public class GxSpatialReferencesFolder : IGxObject, IGxObjectContainer, IGxObjectEdit, IGxObjectProperties,
+        IGxObjectUI, IGxPasteTarget, IGxSpatialReferencesFolder
     {
         private IGxCatalog igxCatalog_0 = null;
         private IGxObject igxObject_0 = null;
@@ -103,158 +104,98 @@ namespace Yutai.ArcGIS.Catalog
 
         public bool AreChildrenViewable
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public string BaseName
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public string Category
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IEnumGxObject Children
         {
-            get
-            {
-                return (this.igxObjectArray_0 as IEnumGxObject);
-            }
+            get { return (this.igxObjectArray_0 as IEnumGxObject); }
         }
 
         public UID ClassID
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public UID ContextMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public string FullName
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public bool HasChildren
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public IName InternalObjectName
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public bool IsValid
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         public Bitmap LargeImage
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public Bitmap LargeSelectedImage
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public string Name
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public UID NewMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IGxObject Parent
         {
-            get
-            {
-                return this.igxObject_0;
-            }
+            get { return this.igxObject_0; }
         }
 
         public string Path
         {
-            get
-            {
-                return null;
-            }
-            set
-            {
-            }
+            get { return null; }
+            set { }
         }
 
         public int PropertyCount
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         public Bitmap SmallImage
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public Bitmap SmallSelectedImage
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
     }
 }
-

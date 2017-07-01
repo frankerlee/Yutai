@@ -3,7 +3,7 @@ using Yutai.Pipeline.Config.Interfaces;
 
 namespace Yutai.Pipeline.Config.Concretes
 {
-    public class CommonConfig:ICommonConfig
+    public class CommonConfig : ICommonConfig
     {
         private string _name;
         private string _value;
@@ -22,17 +22,19 @@ namespace Yutai.Pipeline.Config.Concretes
 
         public CommonConfig()
         {
-            
         }
+
         public CommonConfig(string name, string value)
         {
             _name = name;
             _value = value;
         }
+
         public CommonConfig(XmlNode node)
         {
             ReadFromXml(node);
         }
+
         public void ReadFromXml(XmlNode xml)
         {
             if (xml == null)
@@ -41,7 +43,6 @@ namespace Yutai.Pipeline.Config.Concretes
             {
                 _name = xml.Attributes["Name"] == null ? "" : xml.Attributes["Name"].Value;
                 _value = xml.Attributes["Value"] == null ? "" : xml.Attributes["Value"].Value;
-                
             }
         }
 

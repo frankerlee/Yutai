@@ -12,7 +12,8 @@ using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Catalog
 {
-    public class GxDataset : IGxObject, IGxDataset, IGxObjectContainer, IGxObjectEdit, IGxObjectInternalName, IGxObjectProperties, IGxObjectUI, IGxPasteTarget, IGxContextMenuWap
+    public class GxDataset : IGxObject, IGxDataset, IGxObjectContainer, IGxObjectEdit, IGxObjectInternalName,
+        IGxObjectProperties, IGxObjectUI, IGxPasteTarget, IGxContextMenuWap
     {
         private bool bool_0 = false;
         private bool bool_1 = true;
@@ -91,9 +92,12 @@ namespace Yutai.ArcGIS.Catalog
                     }
                     if (name is IFeatureClassName)
                     {
-                        if (flag = (name as IDatasetName).WorkspaceName.Type != esriWorkspaceType.esriFileSystemWorkspace)
+                        if (
+                            flag =
+                                (name as IDatasetName).WorkspaceName.Type != esriWorkspaceType.esriFileSystemWorkspace)
                         {
-                            if ((name as IDatasetName).WorkspaceName.PathName == this.idatasetName_0.WorkspaceName.PathName)
+                            if ((name as IDatasetName).WorkspaceName.PathName ==
+                                this.idatasetName_0.WorkspaceName.PathName)
                             {
                                 bool_2 = true;
                             }
@@ -218,7 +222,7 @@ namespace Yutai.ArcGIS.Catalog
                 {
                     try
                     {
-                        new frmEditObjectClass { ObjectClass = dataset as IObjectClass }.ShowDialog();
+                        new frmEditObjectClass {ObjectClass = dataset as IObjectClass}.ShowDialog();
                     }
                     catch (Exception)
                     {
@@ -226,11 +230,11 @@ namespace Yutai.ArcGIS.Catalog
                 }
                 else if (dataset is IObjectClass)
                 {
-                    new ObjectClassInfoEdit { ObjectClass = dataset as IObjectClass }.ShowDialog();
+                    new ObjectClassInfoEdit {ObjectClass = dataset as IObjectClass}.ShowDialog();
                 }
                 else if (dataset is IFeatureDataset)
                 {
-                    new frmEditFeatureDataset { FeatureDataset = dataset as IFeatureDataset }.ShowDialog();
+                    new frmEditFeatureDataset {FeatureDataset = dataset as IFeatureDataset}.ShowDialog();
                 }
                 else if (dataset.Type == esriDatasetType.esriDTTopology)
                 {
@@ -245,11 +249,11 @@ namespace Yutai.ArcGIS.Catalog
                 }
                 else if (dataset.Type == esriDatasetType.esriDTGeometricNetwork)
                 {
-                    new frmGNPropertySheet { GeometricNetwork = dataset as IGeometricNetwork }.ShowDialog();
+                    new frmGNPropertySheet {GeometricNetwork = dataset as IGeometricNetwork}.ShowDialog();
                 }
                 else if (dataset.Type == esriDatasetType.esriDTNetworkDataset)
                 {
-                    new frmNetworkPropertySheet { NetworkDataset = dataset as INetworkDataset }.ShowDialog();
+                    new frmNetworkPropertySheet {NetworkDataset = dataset as INetworkDataset}.ShowDialog();
                 }
                 dataset = null;
             }
@@ -323,7 +327,8 @@ namespace Yutai.ArcGIS.Catalog
                     this.ipopuMenuWrap_0.AddItem("Catalog_Rename", false);
                     this.ipopuMenuWrap_0.ClearSubItem("ArchivingSubItem");
                     this.ipopuMenuWrap_0.AddSubmenuItem("ArchivingSubItem", "管理", "", true);
-                    if ((this.idatasetName_0.WorkspaceName.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace) && ((this.idatasetName_0 as IFeatureClassName).FeatureDatasetName == null))
+                    if ((this.idatasetName_0.WorkspaceName.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace) &&
+                        ((this.idatasetName_0 as IFeatureClassName).FeatureDatasetName == null))
                     {
                         this.ipopuMenuWrap_0.AddItem("Catalog_RegisterAsVersion", "ArchivingSubItem", true);
                         this.ipopuMenuWrap_0.AddItem("Catalog_UnregisterVersion", "ArchivingSubItem", false);
@@ -412,7 +417,8 @@ namespace Yutai.ArcGIS.Catalog
                     case esriDatasetType.esriDTFeatureDataset:
                         if (!flag)
                         {
-                            if (idatasetName_1.WorkspaceName.WorkspaceFactoryProgID == "esriDataSourcesGDB.FileGDBWorkspaceFactory.1")
+                            if (idatasetName_1.WorkspaceName.WorkspaceFactoryProgID ==
+                                "esriDataSourcesGDB.FileGDBWorkspaceFactory.1")
                             {
                                 return "文件型空间数据库要素集";
                             }
@@ -423,7 +429,8 @@ namespace Yutai.ArcGIS.Catalog
                     case esriDatasetType.esriDTFeatureClass:
                         if (!flag)
                         {
-                            if (idatasetName_1.WorkspaceName.WorkspaceFactoryProgID == "esriDataSourcesGDB.FileGDBWorkspaceFactory.1")
+                            if (idatasetName_1.WorkspaceName.WorkspaceFactoryProgID ==
+                                "esriDataSourcesGDB.FileGDBWorkspaceFactory.1")
                             {
                                 return "文件型空间数据库要素类";
                             }
@@ -434,7 +441,8 @@ namespace Yutai.ArcGIS.Catalog
                     case esriDatasetType.esriDTGeometricNetwork:
                         if (!flag)
                         {
-                            if (idatasetName_1.WorkspaceName.WorkspaceFactoryProgID == "esriDataSourcesGDB.FileGDBWorkspaceFactory.1")
+                            if (idatasetName_1.WorkspaceName.WorkspaceFactoryProgID ==
+                                "esriDataSourcesGDB.FileGDBWorkspaceFactory.1")
                             {
                                 return "文件型空间数据库几何网络";
                             }
@@ -445,7 +453,8 @@ namespace Yutai.ArcGIS.Catalog
                     case esriDatasetType.esriDTTopology:
                         if (!this.bool_0)
                         {
-                            if (idatasetName_1.WorkspaceName.WorkspaceFactoryProgID == "esriDataSourcesGDB.FileGDBWorkspaceFactory.1")
+                            if (idatasetName_1.WorkspaceName.WorkspaceFactoryProgID ==
+                                "esriDataSourcesGDB.FileGDBWorkspaceFactory.1")
                             {
                                 return "文件型空间数据库拓扑";
                             }
@@ -461,7 +470,8 @@ namespace Yutai.ArcGIS.Catalog
                     case esriDatasetType.esriDTRelationshipClass:
                         if (!flag)
                         {
-                            if (idatasetName_1.WorkspaceName.WorkspaceFactoryProgID == "esriDataSourcesGDB.FileGDBWorkspaceFactory.1")
+                            if (idatasetName_1.WorkspaceName.WorkspaceFactoryProgID ==
+                                "esriDataSourcesGDB.FileGDBWorkspaceFactory.1")
                             {
                                 return "文件型空间数据库关系类";
                             }
@@ -482,7 +492,8 @@ namespace Yutai.ArcGIS.Catalog
                     case esriDatasetType.esriDTNetworkDataset:
                         if (!flag)
                         {
-                            if (idatasetName_1.WorkspaceName.WorkspaceFactoryProgID == "esriDataSourcesGDB.FileGDBWorkspaceFactory.1")
+                            if (idatasetName_1.WorkspaceName.WorkspaceFactoryProgID ==
+                                "esriDataSourcesGDB.FileGDBWorkspaceFactory.1")
                             {
                                 return "文件型空间数据库网络要素集";
                             }
@@ -495,7 +506,8 @@ namespace Yutai.ArcGIS.Catalog
                         {
                             return "SDE宗地结构";
                         }
-                        if (idatasetName_1.WorkspaceName.WorkspaceFactoryProgID == "esriDataSourcesGDB.FileGDBWorkspaceFactory.1")
+                        if (idatasetName_1.WorkspaceName.WorkspaceFactoryProgID ==
+                            "esriDataSourcesGDB.FileGDBWorkspaceFactory.1")
                         {
                             return "文件型空间数据库宗地结构";
                         }
@@ -584,7 +596,8 @@ namespace Yutai.ArcGIS.Catalog
                 {
                     ienumName_0.Reset();
                     IName name = ienumName_0.Next();
-                    if (((name as IDatasetName).WorkspaceName.Type != esriWorkspaceType.esriFileSystemWorkspace) && ((name as IDatasetName).WorkspaceName.PathName == this.idatasetName_0.WorkspaceName.PathName))
+                    if (((name as IDatasetName).WorkspaceName.Type != esriWorkspaceType.esriFileSystemWorkspace) &&
+                        ((name as IDatasetName).WorkspaceName.PathName == this.idatasetName_0.WorkspaceName.PathName))
                     {
                         IDatasetContainer container = (this.idatasetName_0 as IName).Open() as IDatasetContainer;
                         if (container != null)
@@ -596,7 +609,9 @@ namespace Yutai.ArcGIS.Catalog
                                 {
                                     IEnumDatasetName subsetNames = (name as IDatasetName).SubsetNames;
                                     subsetNames.Reset();
-                                    for (IDatasetName name3 = subsetNames.Next(); name3 != null; name3 = subsetNames.Next())
+                                    for (IDatasetName name3 = subsetNames.Next();
+                                        name3 != null;
+                                        name3 = subsetNames.Next())
                                     {
                                         container.AddDataset((name3 as IName).Open() as IDataset);
                                         obj2 = new GxDataset();
@@ -649,7 +664,8 @@ namespace Yutai.ArcGIS.Catalog
                     ienumName_0.Reset();
                     IGeoDBDataTransfer transfer = new GeoDBDataTransferClass();
                     transfer.GenerateNameMapping(ienumName_0, this.idatasetName_0.WorkspaceName as IName, out mapping);
-                    frmGeoDBDataTransfer transfer2 = new frmGeoDBDataTransfer {
+                    frmGeoDBDataTransfer transfer2 = new frmGeoDBDataTransfer
+                    {
                         EnumNameMapping = mapping,
                         ToName = this.idatasetName_0 as IName,
                         GeoDBTransfer = transfer
@@ -673,7 +689,8 @@ namespace Yutai.ArcGIS.Catalog
         {
             if (this.igxCatalog_0 != null)
             {
-                if ((this.idatasetName_0.Type == esriDatasetType.esriDTContainer) || (this.idatasetName_0.Type == esriDatasetType.esriDTFeatureDataset))
+                if ((this.idatasetName_0.Type == esriDatasetType.esriDTContainer) ||
+                    (this.idatasetName_0.Type == esriDatasetType.esriDTFeatureDataset))
                 {
                     this.igxObjectArray_0.Empty();
                     GC.Collect();
@@ -729,7 +746,8 @@ namespace Yutai.ArcGIS.Catalog
         {
             get
             {
-                return ((this.idatasetName_0.Type == esriDatasetType.esriDTContainer) || (this.idatasetName_0.Type == esriDatasetType.esriDTFeatureDataset));
+                return ((this.idatasetName_0.Type == esriDatasetType.esriDTContainer) ||
+                        (this.idatasetName_0.Type == esriDatasetType.esriDTFeatureDataset));
             }
         }
 
@@ -747,10 +765,7 @@ namespace Yutai.ArcGIS.Catalog
 
         public string Category
         {
-            get
-            {
-                return this.string_2;
-            }
+            get { return this.string_2; }
         }
 
         public IEnumGxObject Children
@@ -767,18 +782,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public UID ClassID
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public UID ContextMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IDataset Dataset
@@ -802,7 +811,7 @@ namespace Yutai.ArcGIS.Catalog
                                 case 2147751224:
                                     throw new Exception("打开对象类错误!");
                             }
-                            Logger.Current.Error("",exception, "");
+                            Logger.Current.Error("", exception, "");
                         }
                         else
                         {
@@ -816,10 +825,7 @@ namespace Yutai.ArcGIS.Catalog
 
         public IDatasetName DatasetName
         {
-            get
-            {
-                return this.idatasetName_0;
-            }
+            get { return this.idatasetName_0; }
             set
             {
                 this.idatasetName_0 = value;
@@ -861,51 +867,35 @@ namespace Yutai.ArcGIS.Catalog
         {
             get
             {
-                return ((this.idatasetName_0.Type == esriDatasetType.esriDTContainer) || (this.idatasetName_0.Type == esriDatasetType.esriDTFeatureDataset));
+                return ((this.idatasetName_0.Type == esriDatasetType.esriDTContainer) ||
+                        (this.idatasetName_0.Type == esriDatasetType.esriDTFeatureDataset));
             }
         }
 
         public IName InternalObjectName
         {
-            get
-            {
-                return (this.idatasetName_0 as IName);
-            }
+            get { return (this.idatasetName_0 as IName); }
         }
 
         public bool IsValid
         {
-            get
-            {
-                return (this.idatasetName_0 != null);
-            }
+            get { return (this.idatasetName_0 != null); }
         }
 
         IName IGxObjectInternalName.InternalObjectName
         {
-            get
-            {
-                return null;
-            }
-            set
-            {
-            }
+            get { return null; }
+            set { }
         }
 
         public Bitmap LargeImage
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public Bitmap LargeSelectedImage
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public string Name
@@ -922,26 +912,17 @@ namespace Yutai.ArcGIS.Catalog
 
         public UID NewMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IGxObject Parent
         {
-            get
-            {
-                return this.igxObject_0;
-            }
+            get { return this.igxObject_0; }
         }
 
         public int PropertyCount
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         public Bitmap SmallImage
@@ -1101,4 +1082,3 @@ namespace Yutai.ArcGIS.Catalog
         }
     }
 }
-

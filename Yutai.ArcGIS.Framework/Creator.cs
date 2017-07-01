@@ -8,26 +8,11 @@ namespace Yutai.ArcGIS.Framework
     {
         protected BarManager barManager1;
         protected PopupMenu m_pPopupMenu;
-        [CompilerGenerated]
-        private object object_0;
 
         public virtual void Create(XmlNode xmlNode_0)
         {
         }
 
-        public object Parent
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.object_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.object_0 = value;
-            }
-        }
+        public object Parent { get; set; }
     }
 }
-

@@ -46,15 +46,22 @@ namespace Yutai.ArcGIS.Common
             IFeatureClass featureClass;
             try
             {
-                IFeatureClassDescription featureClassDescriptionClass = new FeatureClassDescription() as IFeatureClassDescription;
+                IFeatureClassDescription featureClassDescriptionClass =
+                    new FeatureClassDescription() as IFeatureClassDescription;
                 IFields requiredFields = (featureClassDescriptionClass as IObjectClassDescription).RequiredFields;
-                IField field = requiredFields.Field[requiredFields.FindField(featureClassDescriptionClass.ShapeFieldName)];
+                IField field =
+                    requiredFields.Field[requiredFields.FindField(featureClassDescriptionClass.ShapeFieldName)];
                 IGeometryDef geometryDef = field.GeometryDef;
-                if (!(igeometry_0.GeometryType == esriGeometryType.esriGeometryMultipoint ? false : igeometry_0.GeometryType != esriGeometryType.esriGeometryPoint))
+                if (
+                    !(igeometry_0.GeometryType == esriGeometryType.esriGeometryMultipoint
+                        ? false
+                        : igeometry_0.GeometryType != esriGeometryType.esriGeometryPoint))
                 {
                     (geometryDef as IGeometryDefEdit).GeometryType_2 = igeometry_0.GeometryType;
                 }
-                else if ((igeometry_0.GeometryType == esriGeometryType.esriGeometryPolygon ? false : igeometry_0.GeometryType != esriGeometryType.esriGeometryPolyline))
+                else if ((igeometry_0.GeometryType == esriGeometryType.esriGeometryPolygon
+                    ? false
+                    : igeometry_0.GeometryType != esriGeometryType.esriGeometryPolyline))
                 {
                     featureClass = null;
                     return featureClass;
@@ -74,7 +81,10 @@ namespace Yutai.ArcGIS.Common
                 }
                 IWorkspace workspace = (this.iworkspaceName_0 as IName).Open() as IWorkspace;
                 string str = "tempfc";
-                IFeatureClass featureClass1 = (workspace as IFeatureWorkspace).CreateFeatureClass(str, requiredFields, (featureClassDescriptionClass as IObjectClassDescription).InstanceCLSID, (featureClassDescriptionClass as IObjectClassDescription).ClassExtensionCLSID, esriFeatureType.esriFTSimple, featureClassDescriptionClass.ShapeFieldName, "");
+                IFeatureClass featureClass1 = (workspace as IFeatureWorkspace).CreateFeatureClass(str, requiredFields,
+                    (featureClassDescriptionClass as IObjectClassDescription).InstanceCLSID,
+                    (featureClassDescriptionClass as IObjectClassDescription).ClassExtensionCLSID,
+                    esriFeatureType.esriFTSimple, featureClassDescriptionClass.ShapeFieldName, "");
                 this.AddGeometry(featureClass1, igeometry_0);
                 featureClass = featureClass1;
                 return featureClass;

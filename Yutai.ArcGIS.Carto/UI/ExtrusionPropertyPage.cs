@@ -57,7 +57,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void ExtrusionPropertyPage_Load(object sender, EventArgs e)
+        private void ExtrusionPropertyPage_Load(object sender, EventArgs e)
         {
             ILayerExtensions extensions = this.ilayer_0 as ILayerExtensions;
             this.cboExtrusionType.SelectedIndex = 0;
@@ -84,7 +84,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.bool_0 = true;
         }
 
- private void txtExtrusionValue_TextChanged(object sender, EventArgs e)
+        private void txtExtrusionValue_TextChanged(object sender, EventArgs e)
         {
             if (this.bool_0)
             {
@@ -94,27 +94,17 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IBasicMap FocusMap
         {
-            set
-            {
-                this.ibasicMap_0 = value;
-            }
+            set { this.ibasicMap_0 = value; }
         }
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         public object SelectItem
         {
-            set
-            {
-                this.ilayer_0 = value as ILayer;
-            }
+            set { this.ilayer_0 = value as ILayer; }
         }
     }
 }
-

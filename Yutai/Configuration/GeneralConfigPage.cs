@@ -16,7 +16,7 @@ using Yutai.Views;
 
 namespace Yutai.Configuration
 {
-    public partial class GeneralConfigPage :  ConfigPageBase, IConfigPage
+    public partial class GeneralConfigPage : ConfigPageBase, IConfigPage
     {
         private readonly IConfigService _configService;
 
@@ -72,7 +72,10 @@ namespace Yutai.Configuration
             //config.LegendExpandLayersOnAdding = chkLegendExpanded.Checked;
         }
 
-        public string Key { get { return "General"; } }
+        public string Key
+        {
+            get { return "General"; }
+        }
 
         public Bitmap Icon
         {

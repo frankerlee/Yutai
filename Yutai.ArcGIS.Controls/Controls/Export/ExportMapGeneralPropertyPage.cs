@@ -19,7 +19,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             this.InitializeComponent();
         }
 
- private void ExportMapGeneralPropertyPage_Load(object sender, EventArgs e)
+        private void ExportMapGeneralPropertyPage_Load(object sender, EventArgs e)
         {
             this.txtResolution.Value = (decimal) this.m_pExport.Resolution;
             if (this.m_pExport is IOutputRasterSettings)
@@ -34,7 +34,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             this.m_CanDo = true;
         }
 
- private void txtResampleRatio_EditValueChanged(object sender, EventArgs e)
+        private void txtResampleRatio_EditValueChanged(object sender, EventArgs e)
         {
             if (this.m_CanDo)
             {
@@ -72,11 +72,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
 
         public IExport Export
         {
-            set
-            {
-                this.m_pExport = value;
-            }
+            set { this.m_pExport = value; }
         }
     }
 }
-

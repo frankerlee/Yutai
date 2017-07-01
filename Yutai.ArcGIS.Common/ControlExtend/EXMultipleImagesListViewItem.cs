@@ -35,15 +35,8 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         public ArrayList MyImages
         {
-            get
-            {
-                return this.arrayList_0;
-            }
-            set
-            {
-                this.arrayList_0 = value;
-            }
+            get { return this.arrayList_0; }
+            set { this.arrayList_0 = value; }
         }
     }
 }
-

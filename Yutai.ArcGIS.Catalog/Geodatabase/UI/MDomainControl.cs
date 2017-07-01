@@ -19,7 +19,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.InitializeComponent();
         }
 
- public void InitControl()
+        public void InitControl()
         {
             double outMMin = -10000.0;
             double outMMax = 11474.83645;
@@ -28,7 +28,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             {
                 ((ISpatialReference2GEN) this.ispatialReference_0).GetMDomain(ref outMMin, ref outMMax);
                 double num4 = outMMax - outMMin;
-                num3 = 2147483645.0 / num4;
+                num3 = 2147483645.0/num4;
             }
             else
             {
@@ -39,7 +39,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.textBoxPrecision.Text = num3.ToString();
         }
 
- private void MDomainControl_Load(object sender, EventArgs e)
+        private void MDomainControl_Load(object sender, EventArgs e)
         {
             if (!this.bool_1)
             {
@@ -62,13 +62,13 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 if (num3 < 0.0)
                 {
                     double num4 = Convert.ToDouble(this.textBoxPrecision.Text);
-                    num3 = 2147483645.0 / num4;
+                    num3 = 2147483645.0/num4;
                     inMMax = inMMin + num3;
                     this.textBoxMaxValue.Text = inMMax.ToString();
                 }
                 else
                 {
-                    this.textBoxPrecision.Text = (2147483645.0 / num3).ToString();
+                    this.textBoxPrecision.Text = (2147483645.0/num3).ToString();
                 }
                 this.ispatialReference_0.SetMDomain(inMMin, inMMax);
             }
@@ -107,7 +107,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 {
                     this.textBoxPrecision.ForeColor = SystemColors.WindowText;
                     double num = Convert.ToDouble(this.textBoxPrecision.Text);
-                    double num2 = 2147483645.0 / num;
+                    double num2 = 2147483645.0/num;
                     double inMMin = Convert.ToDouble(this.textBoxMinValue.Text);
                     double inMMax = inMMin + num2;
                     this.ispatialReference_0.SetMDomain(inMMin, inMMax);
@@ -124,18 +124,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public bool IsEdit
         {
-            set
-            {
-                this.bool_1 = value;
-            }
+            set { this.bool_1 = value; }
         }
 
         public ISpatialReference SpatialRefrence
         {
-            get
-            {
-                return this.ispatialReference_0;
-            }
+            get { return this.ispatialReference_0; }
             set
             {
                 this.ispatialReference_0 = value;
@@ -149,4 +143,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

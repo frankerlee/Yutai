@@ -37,19 +37,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public string Description
         {
-            get
-            {
-                return "空间数据库";
-            }
+            get { return "空间数据库"; }
         }
 
         public string Name
         {
-            get
-            {
-                return "空间数据库";
-            }
+            get { return "空间数据库"; }
         }
     }
 }
-

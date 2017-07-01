@@ -57,7 +57,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                                 this.newDatasetCoordinateDomainPage_0.Visible = false;
                                 break;
                             }
-                            if ((NewObjectClassHelper.m_pObjectClassHelper.SpatialReference is IUnknownCoordinateSystem) || !NewObjectClassHelper.m_pObjectClassHelper.HasZ)
+                            if ((NewObjectClassHelper.m_pObjectClassHelper.SpatialReference is IUnknownCoordinateSystem) ||
+                                !NewObjectClassHelper.m_pObjectClassHelper.HasZ)
                             {
                                 this.newDatasetTolerancePage_0.Visible = false;
                                 break;
@@ -73,7 +74,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                                 this.btnNext.Text = "下一步";
                                 break;
                             }
-                            if ((NewObjectClassHelper.m_pObjectClassHelper.SpatialReference is IUnknownCoordinateSystem) || !NewObjectClassHelper.m_pObjectClassHelper.HasZ)
+                            if ((NewObjectClassHelper.m_pObjectClassHelper.SpatialReference is IUnknownCoordinateSystem) ||
+                                !NewObjectClassHelper.m_pObjectClassHelper.HasZ)
                             {
                                 this.newDatasetTolerancePage_0.Visible = true;
                                 if (NewObjectClassHelper.m_pObjectClassHelper.UseDefaultDomain)
@@ -92,7 +94,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                             break;
 
                         case 4:
-                            if ((NewObjectClassHelper.m_pObjectClassHelper.SpatialReference is IUnknownCoordinateSystem) || !NewObjectClassHelper.m_pObjectClassHelper.HasZ)
+                            if ((NewObjectClassHelper.m_pObjectClassHelper.SpatialReference is IUnknownCoordinateSystem) ||
+                                !NewObjectClassHelper.m_pObjectClassHelper.HasZ)
                             {
                                 this.newDatasetCoordinateDomainPage_0.Visible = true;
                                 this.newObjectClassFieldsPage_0.Visible = false;
@@ -271,7 +274,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         break;
 
                     case 3:
-                        if (NewObjectClassHelper.m_pObjectClassHelper.IsHighPrecision && !NewObjectClassHelper.m_pObjectClassHelper.UseDefaultDomain)
+                        if (NewObjectClassHelper.m_pObjectClassHelper.IsHighPrecision &&
+                            !NewObjectClassHelper.m_pObjectClassHelper.UseDefaultDomain)
                         {
                             this.newDatasetCoordinateDomainPage_0.Visible = true;
                             this.newObjectClassFieldsPage_0.Visible = false;
@@ -311,7 +315,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                                     this.newDatasetCoordinateDomainPage_0.Visible = true;
                                     break;
                                 }
-                                if ((NewObjectClassHelper.m_pObjectClassHelper.SpatialReference is IUnknownCoordinateSystem) || !NewObjectClassHelper.m_pObjectClassHelper.HasZ)
+                                if (
+                                (NewObjectClassHelper.m_pObjectClassHelper.SpatialReference is
+                                    IUnknownCoordinateSystem) || !NewObjectClassHelper.m_pObjectClassHelper.HasZ)
                                 {
                                     this.newDatasetTolerancePage_0.Visible = true;
                                     break;
@@ -331,7 +337,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                                     this.btnNext.Text = "完成";
                                     break;
                                 }
-                                if ((NewObjectClassHelper.m_pObjectClassHelper.SpatialReference is IUnknownCoordinateSystem) || !NewObjectClassHelper.m_pObjectClassHelper.HasZ)
+                                if (
+                                (NewObjectClassHelper.m_pObjectClassHelper.SpatialReference is
+                                    IUnknownCoordinateSystem) || !NewObjectClassHelper.m_pObjectClassHelper.HasZ)
                                 {
                                     if (!this.newDatasetTolerancePage_0.Apply())
                                     {
@@ -357,7 +365,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                             case 3:
                                 if (!this.newObjectClassFieldsPage_0.Visible)
                                 {
-                                    if (!(NewObjectClassHelper.m_pObjectClassHelper.SpatialReference is IUnknownCoordinateSystem) && NewObjectClassHelper.m_pObjectClassHelper.HasZ)
+                                    if (
+                                        !(NewObjectClassHelper.m_pObjectClassHelper.SpatialReference is
+                                            IUnknownCoordinateSystem) && NewObjectClassHelper.m_pObjectClassHelper.HasZ)
                                     {
                                         if (!this.newDatasetTolerancePage_0.Apply())
                                         {
@@ -397,7 +407,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                                 return;
 
                             case 4:
-                                if ((NewObjectClassHelper.m_pObjectClassHelper.SpatialReference is IUnknownCoordinateSystem) || !NewObjectClassHelper.m_pObjectClassHelper.HasZ)
+                                if (
+                                (NewObjectClassHelper.m_pObjectClassHelper.SpatialReference is
+                                    IUnknownCoordinateSystem) || !NewObjectClassHelper.m_pObjectClassHelper.HasZ)
                                 {
                                     this.newObjectClassFieldsPage_0.Apply();
                                     this.iobjectClass_0 = NewObjectClassHelper.m_pObjectClassHelper.CreateObjectClass();
@@ -702,7 +714,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void frmNewObjectClass_Load(object sender, EventArgs e)
+        private void frmNewObjectClass_Load(object sender, EventArgs e)
         {
             this.annoReferenceScaleSetCtrl_0.Dock = DockStyle.Fill;
             this.annoReferenceScaleSetCtrl_0.Visible = false;
@@ -730,20 +742,14 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.btnLast.Enabled = false;
         }
 
- public bool IsFeatureClass
+        public bool IsFeatureClass
         {
-            set
-            {
-                NewObjectClassHelper.m_pObjectClassHelper.IsFeatureClass = value;
-            }
+            set { NewObjectClassHelper.m_pObjectClassHelper.IsFeatureClass = value; }
         }
 
         public IObjectClass ObjectClass
         {
-            get
-            {
-                return this.iobjectClass_0;
-            }
+            get { return this.iobjectClass_0; }
         }
 
         public object Workspace
@@ -762,4 +768,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

@@ -6,7 +6,8 @@ using ESRI.ArcGIS.esriSystem;
 
 namespace Yutai.ArcGIS.Catalog
 {
-    public class GxFile : IGxObject, IGxFile, IGxObjectEdit, IGxObjectInternalName, IGxObjectProperties, IGxObjectUI, IGxFileSetup
+    public class GxFile : IGxObject, IGxFile, IGxObjectEdit, IGxObjectInternalName, IGxObjectProperties, IGxObjectUI,
+        IGxFileSetup
     {
         private IGxObject igxObject_0;
         private string string_0 = "";
@@ -104,48 +105,35 @@ namespace Yutai.ArcGIS.Catalog
 
         public string BaseName
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public string Category
         {
-            set
-            {
-            }
+            set { }
         }
 
         public UID ClassID
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public UID ContextMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public string FullName
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IName InternalObjectName
         {
             get
             {
-                IFileName name = new FileNameClass {
+                IFileName name = new FileNameClass
+                {
                     Path = this.string_0
                 };
                 return (name as IName);
@@ -154,109 +142,71 @@ namespace Yutai.ArcGIS.Catalog
 
         public bool IsValid
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         string IGxObject.Category
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         IName IGxObjectInternalName.InternalObjectName
         {
             get
             {
-                IFileName name = new FileNameClass {
+                IFileName name = new FileNameClass
+                {
                     Path = this.string_0
                 };
                 return (name as IName);
             }
-            set
-            {
-            }
+            set { }
         }
 
         public Bitmap LargeImage
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public Bitmap LargeSelectedImage
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public string Name
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public UID NewMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IGxObject Parent
         {
-            get
-            {
-                return this.igxObject_0;
-            }
+            get { return this.igxObject_0; }
         }
 
         public string Path
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
 
         public int PropertyCount
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         public Bitmap SmallImage
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public Bitmap SmallSelectedImage
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
     }
 }
-

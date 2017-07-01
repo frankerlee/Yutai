@@ -70,7 +70,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.method_0();
         }
 
- private void method_0()
+        private void method_0()
         {
             bool showExclusionClass = false;
             if (this.idataExclusion_0 != null)
@@ -100,14 +100,16 @@ namespace Yutai.ArcGIS.Carto.UI
                 case esriGeometryType.esriGeometryPoint:
                 case esriGeometryType.esriGeometryMultipoint:
                 {
-                    IMarkerSymbol symbol = new SimpleMarkerSymbolClass {
+                    IMarkerSymbol symbol = new SimpleMarkerSymbolClass
+                    {
                         Size = 3.0
                     };
                     return (symbol as ISymbol);
                 }
                 case esriGeometryType.esriGeometryPolyline:
                 {
-                    ILineSymbol symbol2 = new SimpleLineSymbolClass {
+                    ILineSymbol symbol2 = new SimpleLineSymbolClass
+                    {
                         Width = 0.2
                     };
                     return (symbol2 as ISymbol);
@@ -120,27 +122,17 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IDataExclusion DataExclusion
         {
-            set
-            {
-                this.idataExclusion_0 = value;
-            }
+            set { this.idataExclusion_0 = value; }
         }
 
         public esriGeometryType GeometryType
         {
-            set
-            {
-                this.esriGeometryType_0 = value;
-            }
+            set { this.esriGeometryType_0 = value; }
         }
 
         public IStyleGallery StyleGallery
         {
-            set
-            {
-                this.istyleGallery_0 = value;
-            }
+            set { this.istyleGallery_0 = value; }
         }
     }
 }
-

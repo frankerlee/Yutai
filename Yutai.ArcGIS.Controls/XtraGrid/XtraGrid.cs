@@ -41,22 +41,29 @@ namespace Yutai.ArcGIS.Controls.XtraGrid
             this.SetColumnAttr(iColumnIndex, ColumnAttribute, "", "", null, "", iMinValue, iMaxValue);
         }
 
-        public void SetColumnAttr(string sColumnName, ColumnAttribute ColumnAttribute, double iMinValue, double iMaxValue)
+        public void SetColumnAttr(string sColumnName, ColumnAttribute ColumnAttribute, double iMinValue,
+            double iMaxValue)
         {
             this.SetColumnAttr(-1, ColumnAttribute, "", "", null, sColumnName, iMinValue, iMaxValue);
         }
 
-        public void SetColumnAttr(int iColumnIndex, ColumnAttribute ColumnAttribute, string ColumnValueFieldName, string ColumnDisplayFieldName, object columnDataTable)
+        public void SetColumnAttr(int iColumnIndex, ColumnAttribute ColumnAttribute, string ColumnValueFieldName,
+            string ColumnDisplayFieldName, object columnDataTable)
         {
-            this.SetColumnAttr(iColumnIndex, ColumnAttribute, ColumnValueFieldName, ColumnDisplayFieldName, columnDataTable, "", 0.0, 0.0);
+            this.SetColumnAttr(iColumnIndex, ColumnAttribute, ColumnValueFieldName, ColumnDisplayFieldName,
+                columnDataTable, "", 0.0, 0.0);
         }
 
-        public void SetColumnAttr(string sColumnName, ColumnAttribute ColumnAttribute, string ColumnValueFieldName, string ColumnDisplayFieldName, object columnDataTable)
+        public void SetColumnAttr(string sColumnName, ColumnAttribute ColumnAttribute, string ColumnValueFieldName,
+            string ColumnDisplayFieldName, object columnDataTable)
         {
-            this.SetColumnAttr(-1, ColumnAttribute, ColumnValueFieldName, ColumnDisplayFieldName, columnDataTable, sColumnName, 0.0, 0.0);
+            this.SetColumnAttr(-1, ColumnAttribute, ColumnValueFieldName, ColumnDisplayFieldName, columnDataTable,
+                sColumnName, 0.0, 0.0);
         }
 
-        private void SetColumnAttr(int iColumnIndex, ColumnAttribute ColumnAttribute, string ColumnValueFieldName, string ColumnDisplayFieldName, object columnDataTable, string sColumnName, double iMinValue, double iMaxValue)
+        private void SetColumnAttr(int iColumnIndex, ColumnAttribute ColumnAttribute, string ColumnValueFieldName,
+            string ColumnDisplayFieldName, object columnDataTable, string sColumnName, double iMinValue,
+            double iMaxValue)
         {
             int num;
             if (iColumnIndex < 0)
@@ -99,8 +106,10 @@ namespace Yutai.ArcGIS.Controls.XtraGrid
 
                 case ColumnAttribute.CA_SPINEDIT:
                     this.xGridColumns[iColumnIndex].ColumnEdit = new RepositoryItemSpinEdit();
-                    ((RepositoryItemSpinEdit) ((GridView) this.xGrid.MainView).Columns[iColumnIndex].ColumnEdit).MaxValue = (decimal) iMaxValue;
-                    ((RepositoryItemSpinEdit) ((GridView) this.xGrid.MainView).Columns[iColumnIndex].ColumnEdit).MinValue = (decimal) iMinValue;
+                    ((RepositoryItemSpinEdit) ((GridView) this.xGrid.MainView).Columns[iColumnIndex].ColumnEdit)
+                        .MaxValue = (decimal) iMaxValue;
+                    ((RepositoryItemSpinEdit) ((GridView) this.xGrid.MainView).Columns[iColumnIndex].ColumnEdit)
+                        .MinValue = (decimal) iMinValue;
                     break;
 
                 case ColumnAttribute.CA_TIMEEDIT:
@@ -153,22 +162,13 @@ namespace Yutai.ArcGIS.Controls.XtraGrid
 
         public DataTable mainDataTable
         {
-            get
-            {
-                return this._mainDataTable;
-            }
-            set
-            {
-                this._mainDataTable = value;
-            }
+            get { return this._mainDataTable; }
+            set { this._mainDataTable = value; }
         }
 
         public bool ReadOnly
         {
-            get
-            {
-                return this.m_ReadOnly;
-            }
+            get { return this.m_ReadOnly; }
             set
             {
                 this.m_ReadOnly = value;
@@ -178,15 +178,8 @@ namespace Yutai.ArcGIS.Controls.XtraGrid
 
         public GridControl xGrid
         {
-            get
-            {
-                return this._xGrid;
-            }
-            set
-            {
-                this._xGrid = value;
-            }
+            get { return this._xGrid; }
+            set { this._xGrid = value; }
         }
     }
 }
-

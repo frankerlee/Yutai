@@ -16,7 +16,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         public override void OnCreate(object object_0)
         {
-            this._hookHelper= object_0 as IYTHookHelper;
+            this._hookHelper = object_0 as IYTHookHelper;
         }
 
         public override void OnMouseDown(int int_0, int int_1, int int_2, int int_3)
@@ -35,4 +35,3 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         }
     }
 }
-

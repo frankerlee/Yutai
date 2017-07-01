@@ -48,12 +48,14 @@ namespace Yutai.ArcGIS.Catalog
                                 if (datasetName.ShapeType == esriGeometryType.esriGeometryNull)
                                 {
                                     IFeatureClass dataset = (igxObject_0 as IGxDataset).Dataset as IFeatureClass;
-                                    if ((dataset.ShapeType == esriGeometryType.esriGeometryMultipoint) || (dataset.ShapeType == esriGeometryType.esriGeometryPoint))
+                                    if ((dataset.ShapeType == esriGeometryType.esriGeometryMultipoint) ||
+                                        (dataset.ShapeType == esriGeometryType.esriGeometryPoint))
                                     {
                                         return true;
                                     }
                                 }
-                                else if ((datasetName.ShapeType == esriGeometryType.esriGeometryMultipoint) || (datasetName.ShapeType == esriGeometryType.esriGeometryPoint))
+                                else if ((datasetName.ShapeType == esriGeometryType.esriGeometryMultipoint) ||
+                                         (datasetName.ShapeType == esriGeometryType.esriGeometryPoint))
                                 {
                                     return true;
                                 }
@@ -71,7 +73,7 @@ namespace Yutai.ArcGIS.Catalog
             catch
             {
             }
-        Label_00CB:
+            Label_00CB:
             return false;
         }
 
@@ -94,12 +96,16 @@ namespace Yutai.ArcGIS.Catalog
                 }
                 if (igxObject_0 is IGxDatabase)
                 {
-                    bool_0 = ((igxObject_0 as IGxDatabase).Workspace as IWorkspace2).get_NameExists(esriDatasetType.esriDTFeatureClass, string_0);
+                    bool_0 =
+                        ((igxObject_0 as IGxDatabase).Workspace as IWorkspace2).get_NameExists(
+                            esriDatasetType.esriDTFeatureClass, string_0);
                     return true;
                 }
                 if (igxObject_0 is IGxDataset)
                 {
-                    bool_0 = ((igxObject_0 as IGxDataset).Dataset.Workspace as IWorkspace2).get_NameExists(esriDatasetType.esriDTFeatureClass, string_0);
+                    bool_0 =
+                        ((igxObject_0 as IGxDataset).Dataset.Workspace as IWorkspace2).get_NameExists(
+                            esriDatasetType.esriDTFeatureClass, string_0);
                     if ((igxObject_0 as IGxDataset).Type == esriDatasetType.esriDTFeatureDataset)
                     {
                         return true;
@@ -114,19 +120,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public string Description
         {
-            get
-            {
-                return "点要素类";
-            }
+            get { return "点要素类"; }
         }
 
         public string Name
         {
-            get
-            {
-                return "GxFilterPointFeatureClasses";
-            }
+            get { return "GxFilterPointFeatureClasses"; }
         }
     }
 }
-

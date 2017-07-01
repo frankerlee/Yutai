@@ -17,9 +17,8 @@ namespace Yutai
 {
     static class Program
     {
-      
         public static Stopwatch Timer = new Stopwatch();
-        private static  LicenseInitializer m_AOLicenseInitializer=new LicenseInitializer();
+        private static LicenseInitializer m_AOLicenseInitializer = new LicenseInitializer();
 
         private static IApplicationContainer CreateContainer()
         {
@@ -36,7 +35,7 @@ namespace Yutai
         private static void LoadConfig(IApplicationContainer container)
         {
             Logger.Current.Trace("Start LoadConfig");
-           // MapInitializer.InitMapConfig();
+            // MapInitializer.InitMapConfig();
 
             Logger.Current.Trace("Before container.GetSingleton");
             var configService = container.GetSingleton<IConfigService>();
@@ -45,13 +44,13 @@ namespace Yutai
             configService.LoadAll();
             Logger.Current.Trace("End LoadConfig");
         }
+
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
         [STAThread]
         static void Main()
         {
-           
             //{
             //    if (!RuntimeManager.Bind(ProductCode.Desktop))
             //    {
@@ -62,7 +61,7 @@ namespace Yutai
             ESRI.ArcGIS.RuntimeManager.Bind(ESRI.ArcGIS.ProductCode.Desktop);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-           // Application.Run(new Form1());
+            // Application.Run(new Form1());
             ExceptionHandler.Attach();
 
             //DumpFormats();
@@ -74,9 +73,22 @@ namespace Yutai
 
             Timer.Start();
             SplashView.Instance.ShowStatus("正在检查许可...");
-            m_AOLicenseInitializer.InitializeApplication(new esriLicenseProductCode[] { esriLicenseProductCode.esriLicenseProductCodeEngine, esriLicenseProductCode.esriLicenseProductCodeEngineGeoDB },
-           new esriLicenseExtensionCode[] { esriLicenseExtensionCode.esriLicenseExtensionCode3DAnalyst, esriLicenseExtensionCode.esriLicenseExtensionCodeNetwork, esriLicenseExtensionCode.esriLicenseExtensionCodeSpatialAnalyst, esriLicenseExtensionCode.esriLicenseExtensionCodeSchematics, esriLicenseExtensionCode.esriLicenseExtensionCodeMLE, esriLicenseExtensionCode.esriLicenseExtensionCodeTracking });
-            
+            m_AOLicenseInitializer.InitializeApplication(
+                new esriLicenseProductCode[]
+                {
+                    esriLicenseProductCode.esriLicenseProductCodeEngine,
+                    esriLicenseProductCode.esriLicenseProductCodeEngineGeoDB
+                },
+                new esriLicenseExtensionCode[]
+                {
+                    esriLicenseExtensionCode.esriLicenseExtensionCode3DAnalyst,
+                    esriLicenseExtensionCode.esriLicenseExtensionCodeNetwork,
+                    esriLicenseExtensionCode.esriLicenseExtensionCodeSpatialAnalyst,
+                    esriLicenseExtensionCode.esriLicenseExtensionCodeSchematics,
+                    esriLicenseExtensionCode.esriLicenseExtensionCodeMLE,
+                    esriLicenseExtensionCode.esriLicenseExtensionCodeTracking
+                });
+
 
             var container = CreateContainer();
             CompositionRoot.Compose(container);
@@ -97,4 +109,3 @@ namespace Yutai
         }
     }
 }
-

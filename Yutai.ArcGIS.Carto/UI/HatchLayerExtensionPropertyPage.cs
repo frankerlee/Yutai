@@ -81,12 +81,12 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void HatchLayerExtensionPropertyPage_Load(object sender, EventArgs e)
+        private void HatchLayerExtensionPropertyPage_Load(object sender, EventArgs e)
         {
             this.method_0();
         }
 
- private void method_0()
+        private void method_0()
         {
             object extension;
             if (this.ilayerExtensions_0 != null)
@@ -119,7 +119,7 @@ namespace Yutai.ArcGIS.Carto.UI
                     extension = hatchLayerExtension.HatchClassNames();
                     if (hatchLayerExtension.HatchClassCount() != 0)
                     {
-                        IEnumerator enumerator = ((System.Array)extension).GetEnumerator();
+                        IEnumerator enumerator = ((System.Array) extension).GetEnumerator();
                         enumerator.Reset();
                         enumerator.MoveNext();
                         for (i = 0; i < hatchLayerExtension.HatchClassCount(); i++)
@@ -144,7 +144,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void method_1(string string_0, IHatchClass ihatchClass_0, TreeView treeView_0)
         {
-            TreeNode node = new TreeNode(string_0) {
+            TreeNode node = new TreeNode(string_0)
+            {
                 Tag = ihatchClass_0
             };
             treeView_0.Nodes.Add(node);
@@ -155,7 +156,8 @@ namespace Yutai.ArcGIS.Carto.UI
             enumHatchDefinitions.Next(ref pHatchInterval, ref pHatchDefinition);
             while (pHatchDefinition != null)
             {
-                TreeNode node2 = new TreeNode("Hatch Def(" + pHatchInterval.ToString() + ")") {
+                TreeNode node2 = new TreeNode("Hatch Def(" + pHatchInterval.ToString() + ")")
+                {
                     Tag = new HatchDef(pHatchInterval, pHatchDefinition)
                 };
                 node.Nodes.Add(node2);
@@ -173,7 +175,8 @@ namespace Yutai.ArcGIS.Carto.UI
             enumHatchDefinitions.Next(ref pHatchInterval, ref pHatchDefinition);
             while (pHatchDefinition != null)
             {
-                TreeNode node = new TreeNode("Hatch Def(" + pHatchInterval.ToString() + ")") {
+                TreeNode node = new TreeNode("Hatch Def(" + pHatchInterval.ToString() + ")")
+                {
                     Tag = new HatchDef(pHatchInterval, pHatchDefinition)
                 };
                 treeNode_0.Nodes.Add(node);
@@ -184,13 +187,15 @@ namespace Yutai.ArcGIS.Carto.UI
         private IHatchClass method_3()
         {
             IHatchClass class2 = new HatchClassClass();
-            IHatchInputValue value2 = new HatchInputValueClass {
+            IHatchInputValue value2 = new HatchInputValueClass
+            {
                 Value = 0
             };
             class2.HatchInterval = value2;
             IHatchTemplate template = new HatchTemplateClass();
             ISymbol symbol = new SimpleLineSymbolClass();
-            IHatchDefinition hatchDefinition = new HatchLineDefinitionClass {
+            IHatchDefinition hatchDefinition = new HatchLineDefinitionClass
+            {
                 HatchSymbol = symbol,
                 DisplayPrecision = 0
             };
@@ -207,7 +212,8 @@ namespace Yutai.ArcGIS.Carto.UI
         {
             if (this.treeView1.SelectedNode != null)
             {
-                (this.treeView1.SelectedNode.Tag as HatchDef).HatchDefinition = this.hatchDefinitionCtrl1.HatchDefinition;
+                (this.treeView1.SelectedNode.Tag as HatchDef).HatchDefinition =
+                    this.hatchDefinitionCtrl1.HatchDefinition;
             }
         }
 
@@ -257,7 +263,8 @@ namespace Yutai.ArcGIS.Carto.UI
             if (this.hatchDefinitionCtrl1.HatchInterval != multipleHatchInterval)
             {
                 TreeNode selectedNode = this.treeView1.SelectedNode;
-                IEnumHatchDefinition enumHatchDefinitions = (selectedNode.Parent.Tag as IHatchClass).HatchTemplate.EnumHatchDefinitions;
+                IEnumHatchDefinition enumHatchDefinitions =
+                    (selectedNode.Parent.Tag as IHatchClass).HatchTemplate.EnumHatchDefinitions;
                 enumHatchDefinitions.Reset();
                 IHatchDefinition pHatchDefinition = null;
                 int pHatchInterval = 0;
@@ -274,7 +281,8 @@ namespace Yutai.ArcGIS.Carto.UI
                             return;
                         }
                         (selectedNode.Parent.Tag as IHatchClass).HatchTemplate.RemoveHatchDefinition(index);
-                        (selectedNode.Parent.Tag as IHatchClass).HatchTemplate.AddHatchDefinition(multipleHatchInterval, this.hatchDefinitionCtrl1.HatchDefinition);
+                        (selectedNode.Parent.Tag as IHatchClass).HatchTemplate.AddHatchDefinition(
+                            multipleHatchInterval, this.hatchDefinitionCtrl1.HatchDefinition);
                         flag = false;
                         break;
                     }
@@ -294,7 +302,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 }
                 if (flag)
                 {
-                    (selectedNode.Parent.Tag as IHatchClass).HatchTemplate.AddHatchDefinition(multipleHatchInterval, this.hatchDefinitionCtrl1.HatchDefinition);
+                    (selectedNode.Parent.Tag as IHatchClass).HatchTemplate.AddHatchDefinition(multipleHatchInterval,
+                        this.hatchDefinitionCtrl1.HatchDefinition);
                 }
                 TreeNode parent = selectedNode.Parent;
                 this.method_2(selectedNode.Parent.Tag as IHatchClass, parent);
@@ -304,33 +313,22 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IBasicMap FocusMap
         {
-            set
-            {
-            }
+            set { }
         }
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.IsPageDirty;
-            }
+            get { return this.IsPageDirty; }
         }
 
         public ILayerExtensions LayerExtensions
         {
-            set
-            {
-                this.ilayerExtensions_0 = value;
-            }
+            set { this.ilayerExtensions_0 = value; }
         }
 
         public object SelectItem
         {
-            set
-            {
-                this.ilayerExtensions_0 = value as ILayerExtensions;
-            }
+            set { this.ilayerExtensions_0 = value as ILayerExtensions; }
         }
 
         internal partial class HatchDef
@@ -346,28 +344,15 @@ namespace Yutai.ArcGIS.Carto.UI
 
             public IHatchDefinition HatchDefinition
             {
-                get
-                {
-                    return this.ihatchDefinition_0;
-                }
-                set
-                {
-                    this.ihatchDefinition_0 = value;
-                }
+                get { return this.ihatchDefinition_0; }
+                set { this.ihatchDefinition_0 = value; }
             }
 
             public int HatchInterval
             {
-                get
-                {
-                    return this.int_0;
-                }
-                set
-                {
-                    this.int_0 = value;
-                }
+                get { return this.int_0; }
+                set { this.int_0 = value; }
             }
         }
     }
 }
-

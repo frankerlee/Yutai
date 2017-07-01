@@ -231,7 +231,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             this.m_esriCommandList.Add(command);
         }
 
- private ICommand FindCommand(string Name)
+        private ICommand FindCommand(string Name)
         {
             ICommand command = null;
             int num;
@@ -264,7 +264,8 @@ namespace Yutai.ArcGIS.Controls.Controls
         {
             ApplicationBase.IsPrintForm = true;
             this.m_pApp.Hook = this.axPageLayoutControl1.Object;
-            this.fullPageLayerOut(this.axPageLayoutControl1.ActiveView.FocusMap, (this.m_pSourcesMap as IActiveView).Extent);
+            this.fullPageLayerOut(this.axPageLayoutControl1.ActiveView.FocusMap,
+                (this.m_pSourcesMap as IActiveView).Extent);
             this.CopyMap(this.m_pSourcesMap, this.axPageLayoutControl1.ActiveView.FocusMap);
             if (this.m_pClipGeometry != null)
             {
@@ -299,7 +300,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             return ((IPageLayoutControl2) this.axPageLayoutControl1.Object).CurrentTool;
         }
 
- public void LoadTools(IApplication pApp, string FileName)
+        public void LoadTools(IApplication pApp, string FileName)
         {
             LoadComponent component = new LoadComponent();
             ComponentList list = new ComponentList(FileName);
@@ -319,7 +320,7 @@ namespace Yutai.ArcGIS.Controls.Controls
                     pCommand = component.LoadClass(str2) as ICommand;
                     if (pCommand == null)
                     {
-                       Logger.Current.Error("", null, "无法创建:" + str2);
+                        Logger.Current.Error("", null, "无法创建:" + str2);
                     }
                     else
                     {
@@ -496,18 +497,12 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         public IGeometry ClipGeometry
         {
-            set
-            {
-                this.m_pClipGeometry = value;
-            }
+            set { this.m_pClipGeometry = value; }
         }
 
         public IMap SourcesMap
         {
-            set
-            {
-                this.m_pSourcesMap = value;
-            }
+            set { this.m_pSourcesMap = value; }
         }
 
         public IPageLayout SourcesPgeLayout
@@ -521,11 +516,7 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         public IStyleGallery StyleGallery
         {
-            set
-            {
-                ApplicationBase.StyleGallery = value;
-            }
+            set { ApplicationBase.StyleGallery = value; }
         }
     }
 }
-

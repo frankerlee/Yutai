@@ -50,27 +50,14 @@
 
         public static System.Drawing.Printing.PrintDocument PrintDocument
         {
-            get
-            {
-                return GetPrintDocumentInstance();
-            }
-            set
-            {
-                thePrintDocumentInstance = value;
-            }
+            get { return GetPrintDocumentInstance(); }
+            set { thePrintDocumentInstance = value; }
         }
 
         public static PrinterMargins PrinterMargins
         {
-            get
-            {
-                return GetPrinterMarginsInstance();
-            }
-            set
-            {
-                thePrinterMarginsInstance = value;
-            }
+            get { return GetPrinterMarginsInstance(); }
+            set { thePrinterMarginsInstance = value; }
         }
     }
 }
-

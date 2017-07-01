@@ -17,7 +17,8 @@ namespace Yutai.Plugins.Editor.Commands
             {
                 result = false;
             }
-            else if (Yutai.ArcGIS.Common.Editor.Editor.EditMap != null && Yutai.ArcGIS.Common.Editor.Editor.EditMap != context.FocusMap)
+            else if (Yutai.ArcGIS.Common.Editor.Editor.EditMap != null &&
+                     Yutai.ArcGIS.Common.Editor.Editor.EditMap != context.FocusMap)
             {
                 result = false;
             }
@@ -34,7 +35,9 @@ namespace Yutai.Plugins.Editor.Commands
                         result = true;
                         return result;
                     }
-                    if (Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass != null && Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass.ShapeType == esriGeometryType.esriGeometryPoint)
+                    if (Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass != null &&
+                        Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass.ShapeType ==
+                        esriGeometryType.esriGeometryPoint)
                     {
                         result = true;
                         return result;
@@ -47,7 +50,10 @@ namespace Yutai.Plugins.Editor.Commands
 
         internal static bool CheckEnable2(IAppContext context)
         {
-            return context.FocusMap != null && context.FocusMap.LayerCount != 0 && Yutai.ArcGIS.Common.Editor.Editor.EditMap == context.FocusMap && Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate != null && Yutai.ArcGIS.Common.Editor.Editor.EditWorkspace != null;
+            return context.FocusMap != null && context.FocusMap.LayerCount != 0 &&
+                   Yutai.ArcGIS.Common.Editor.Editor.EditMap == context.FocusMap &&
+                   Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate != null &&
+                   Yutai.ArcGIS.Common.Editor.Editor.EditWorkspace != null;
         }
     }
 }

@@ -13,21 +13,23 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Plugins.Identifer.Commands
 {
-    class CmdSwitchSelection:YutaiCommand
+    class CmdSwitchSelection : YutaiCommand
     {
-    
         private BasePlugin _plugin;
+
         public override bool Enabled
         {
             get
             {
                 bool flag;
-                flag = (this._context.MapControl.Map == null || this._context.MapControl.Map.SelectionCount <= 0 ? false : true);
+                flag = (this._context.MapControl.Map == null || this._context.MapControl.Map.SelectionCount <= 0
+                    ? false
+                    : true);
                 return flag;
             }
         }
 
-        public CmdSwitchSelection(IAppContext context,BasePlugin plugin)
+        public CmdSwitchSelection(IAppContext context, BasePlugin plugin)
         {
             this.m_bitmap = Properties.Resources.icon_select_switch;
             this.m_caption = "切换选择";
@@ -36,7 +38,7 @@ namespace Yutai.Plugins.Identifer.Commands
             this.m_name = "Query_SelectionTools_SwitchSelection";
             this._key = "Query_SelectionTools_SwitchSelection";
             this.m_toolTip = "切换选择";
-            
+
             base.DisplayStyleYT = DisplayStyleYT.ImageAndText;
             base.TextImageRelationYT = TextImageRelationYT.ImageAboveText;
             base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
@@ -46,7 +48,6 @@ namespace Yutai.Plugins.Identifer.Commands
 
         public override void OnCreate(object hook)
         {
-
         }
 
         public override void OnClick()
@@ -60,19 +61,23 @@ namespace Yutai.Plugins.Identifer.Commands
                 int count = (pFLayer as IFeatureSelection).SelectionSet.Count;
                 int num = (pFLayer as IFeatureLayer).FeatureClass.FeatureCount(null);
                 count = num - count;
-                
-                selectionEnvironmentClass = ((IdentifierPlugin)_plugin).QuerySettings.SelectionEnvironment;
-                
-                if (count <= (selectionEnvironmentClass as ISelectionEnvironmentThreshold).WarningThreshold || MessageBox.Show("所选择记录较多，执行将花较长时间，是否继续？", "选择", MessageBoxButtons.YesNo) != DialogResult.No)
+
+                selectionEnvironmentClass = ((IdentifierPlugin) _plugin).QuerySettings.SelectionEnvironment;
+
+                if (count <= (selectionEnvironmentClass as ISelectionEnvironmentThreshold).WarningThreshold ||
+                    MessageBox.Show("所选择记录较多，执行将花较长时间，是否继续？", "选择", MessageBoxButtons.YesNo) != DialogResult.No)
                 {
-                    (_context.MapControl.ActiveView as  IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, pFLayer, null);
-                    (pFLayer as IFeatureSelection).SelectFeatures(null, esriSelectionResultEnum.esriSelectionResultXOR, false);
-                    (_context.MapControl.ActiveView as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, pFLayer, null);
+                    (_context.MapControl.ActiveView as IActiveView).PartialRefresh(
+                        esriViewDrawPhase.esriViewGeoSelection, pFLayer, null);
+                    (pFLayer as IFeatureSelection).SelectFeatures(null, esriSelectionResultEnum.esriSelectionResultXOR,
+                        false);
+                    (_context.MapControl.ActiveView as IActiveView).PartialRefresh(
+                        esriViewDrawPhase.esriViewGeoSelection, pFLayer, null);
                 }
             }
             catch (Exception exception)
             {
-               // CErrorLog.writeErrorLog(this, exception, "");
+                // CErrorLog.writeErrorLog(this, exception, "");
             }
         }
 

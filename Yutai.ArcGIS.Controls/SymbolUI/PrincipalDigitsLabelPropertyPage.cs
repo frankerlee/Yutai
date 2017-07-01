@@ -117,7 +117,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         {
         }
 
- private void GetRGB(uint rgb, out int r, out int g, out int b)
+        private void GetRGB(uint rgb, out int r, out int g, out int b)
         {
             uint num = rgb & 16711680;
             b = (int) (num >> 16);
@@ -131,7 +131,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         {
         }
 
- private void PrincipalDigitsLabelPropertyPage_Load(object sender, EventArgs e)
+        private void PrincipalDigitsLabelPropertyPage_Load(object sender, EventArgs e)
         {
             string name = this.m_GridLable.SmallLabelFont.Name;
             for (int i = 0; i < this.cboFontName.Items.Count; i++)
@@ -260,38 +260,23 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.m_IsPageDirty;
-            }
+            get { return this.m_IsPageDirty; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.m_Title;
-            }
-            set
-            {
-            }
+            get { return this.m_Title; }
+            set { }
         }
     }
 }
-

@@ -10,7 +10,7 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.UI.Menu.Ribbon
 {
-    public class RibbonItem:IRibbonItem
+    public class RibbonItem : IRibbonItem
     {
         private string _name;
         private string _key;
@@ -32,7 +32,7 @@ namespace Yutai.UI.Menu.Ribbon
         private bool _isGroup;
         private bool _needUpdateEvent;
 
-        public RibbonItem(IRibbonItem source,string newName)
+        public RibbonItem(IRibbonItem source, string newName)
         {
             this._name = newName;
             this._key = source.Key;
@@ -47,6 +47,7 @@ namespace Yutai.UI.Menu.Ribbon
             _parentName = source.ParentName;
             _position = source.Position;
         }
+
         public RibbonItem(YutaiCommand command)
         {
             IRibbonItem source = (IRibbonItem) command;

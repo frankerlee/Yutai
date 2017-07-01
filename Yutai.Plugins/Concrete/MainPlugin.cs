@@ -12,17 +12,14 @@ namespace Yutai.Plugins.Concrete
 
         public override void Initialize(IAppContext context)
         {
-
         }
 
         public override void Terminate()
         {
-
         }
 
         protected override void RegisterServices(IApplicationContainer container)
         {
-
         }
     }
 }

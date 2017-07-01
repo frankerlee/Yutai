@@ -57,7 +57,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             this.int_0++;
         }
 
- private void JLKWizardForm_Load(object sender, EventArgs e)
+        private void JLKWizardForm_Load(object sender, EventArgs e)
         {
             this.templatePropertyPage_0.Dock = DockStyle.Fill;
             this.panel1.Controls.Add(this.templatePropertyPage_0);
@@ -67,4 +67,3 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         }
     }
 }
-

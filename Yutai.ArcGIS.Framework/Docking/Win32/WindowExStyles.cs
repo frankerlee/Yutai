@@ -26,4 +26,3 @@
         WS_EX_WINDOWEDGE = 256
     }
 }
-

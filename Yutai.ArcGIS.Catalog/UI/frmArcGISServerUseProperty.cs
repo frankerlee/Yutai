@@ -14,10 +14,9 @@ namespace Yutai.ArcGIS.Catalog.UI
 {
     public partial class frmArcGISServerUseProperty : Form
     {
-       
         private IContainer icontainer_0 = null;
         private IGxObject igxObject_0 = null;
-     
+
 
         public frmArcGISServerUseProperty()
         {
@@ -26,7 +25,8 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            string path = Environment.SystemDirectory.Substring(0, 2) + @"\Users\Administrator\AppData\Roaming\ESRI\Desktop10.2\ArcCatalog\";
+            string path = Environment.SystemDirectory.Substring(0, 2) +
+                          @"\Users\Administrator\AppData\Roaming\ESRI\Desktop10.2\ArcCatalog\";
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
@@ -40,7 +40,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             {
                 this.txtServer.Text = "http://" + this.txtServer.Text;
             }
-            string[] strArray = text.Split(new char[] { '/' });
+            string[] strArray = text.Split(new char[] {'/'});
             IAGSServerConnectionFactory factory = new AGSServerConnectionFactoryClass();
             IPropertySet pConnectionProperties = this.method_2(this.ConnectionFile, strArray[0]);
             IAGSServerConnection connection = null;
@@ -59,7 +59,8 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
             if (Directory.Exists(path))
             {
-                IGxAGSConnection connection2 = new GxAGSConnection {
+                IGxAGSConnection connection2 = new GxAGSConnection
+                {
                     AGSServerConnectionName = connection.FullName as IAGSServerConnectionName
                 };
                 connection2.SaveToFile(this.ConnectionFile);
@@ -68,7 +69,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             base.DialogResult = DialogResult.OK;
         }
 
- private void frmArcGISServerUseProperty_Load(object sender, EventArgs e)
+        private void frmArcGISServerUseProperty_Load(object sender, EventArgs e)
         {
             IPropertySet connectionProperties = null;
             if (this.AGSServerConnectionName != null)
@@ -80,7 +81,8 @@ namespace Yutai.ArcGIS.Catalog.UI
                 connectionProperties = this.ConnectionProperties;
             }
             this.txtServer.Text = Convert.ToString(connectionProperties.GetProperty("URL"));
-            this.chkSaveUserNameAndPsw.Checked = !Convert.ToBoolean(connectionProperties.GetProperty("HIDEUSERPROPERTY"));
+            this.chkSaveUserNameAndPsw.Checked =
+                !Convert.ToBoolean(connectionProperties.GetProperty("HIDEUSERPROPERTY"));
             if (this.chkSaveUserNameAndPsw.Checked)
             {
                 this.txtUser.Text = Convert.ToString(connectionProperties.GetProperty("USER"));
@@ -91,7 +93,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             this.groupBox2.Enabled = true;
         }
 
- private IMapServer method_0(string string_3)
+        private IMapServer method_0(string string_3)
         {
             IAGSEnumServerObjectName serverObjectNames = this.iagsserverConnection_0.ServerObjectNames;
             IAGSServerObjectName name2 = null;
@@ -123,7 +125,8 @@ namespace Yutai.ArcGIS.Catalog.UI
             {
                 set.SetProperty("USER", this.txtUser.Text.Trim());
             }
-            set.SetProperty("Modulus", "dba16ec2c39b37a983b29026dca2859b28cc07bed0a9662bdea17d9fe486fed4d0e2e8a27ca1de05f186d2377da7ced5661e159d10abf5999258d11cb06b2fb3");
+            set.SetProperty("Modulus",
+                "dba16ec2c39b37a983b29026dca2859b28cc07bed0a9662bdea17d9fe486fed4d0e2e8a27ca1de05f186d2377da7ced5661e159d10abf5999258d11cb06b2fb3");
             if (!this.chkSaveUserNameAndPsw.Checked)
             {
                 set.SetProperty("Exponent", "1001");
@@ -180,55 +183,15 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
         }
 
-        public IAGSServerConnectionName AGSServerConnectionName
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.iagsserverConnectionName_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.iagsserverConnectionName_0 = value;
-            }
-        }
+        public IAGSServerConnectionName AGSServerConnectionName { get; set; }
 
-        public string ConnectionFile
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.string_2;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.string_2 = value;
-            }
-        }
+        public string ConnectionFile { get; set; }
 
-        public IPropertySet ConnectionProperties
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.ipropertySet_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.ipropertySet_0 = value;
-            }
-        }
+        public IPropertySet ConnectionProperties { get; set; }
 
         public IGxObject NewObject
         {
-            get
-            {
-                return this.igxObject_0;
-            }
+            get { return this.igxObject_0; }
         }
     }
 }
-

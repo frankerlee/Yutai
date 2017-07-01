@@ -49,7 +49,7 @@ namespace Yutai.Plugins.TableEditor.Views
 
         public MatchType MatchType
         {
-            get { return (MatchType)Enum.Parse(typeof(MatchType), cboMatch.SelectedItem.ToString(), false); }
+            get { return (MatchType) Enum.Parse(typeof(MatchType), cboMatch.SelectedItem.ToString(), false); }
         }
 
         public string FieldName
@@ -101,9 +101,8 @@ namespace Yutai.Plugins.TableEditor.Views
                 rowIdx = 0;
             }
             return _view.GridView.Rows[rowIdx].Cells[colIdx];
-
         }
-        
+
         public void Find(DataGridViewCell cell, bool isClick = false)
         {
             int columnIndex = -1;

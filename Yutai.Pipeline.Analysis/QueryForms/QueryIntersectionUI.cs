@@ -1,10 +1,8 @@
-﻿
-using ESRI.ArcGIS.Carto;
+﻿using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
-
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,10 +26,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
             public int OID
             {
-                get
-                {
-                    return this.m_iOID;
-                }
+                get { return this.m_iOID; }
             }
 
             public ItemInfo(int iOID, string strName)
@@ -60,17 +55,17 @@ namespace Yutai.Pipeline.Analysis.QueryForms
         {
             if (ipLay is IFeatureLayer)
             {
-                this.AddFeatureLayer((IFeatureLayer)ipLay);
+                this.AddFeatureLayer((IFeatureLayer) ipLay);
             }
             else if (ipLay is IGroupLayer)
             {
-                this.AddGroupLayer((IGroupLayer)ipLay);
+                this.AddGroupLayer((IGroupLayer) ipLay);
             }
         }
 
         private void AddGroupLayer(IGroupLayer iGLayer)
         {
-            ICompositeLayer compositeLayer = (ICompositeLayer)iGLayer;
+            ICompositeLayer compositeLayer = (ICompositeLayer) iGLayer;
             if (compositeLayer != null)
             {
                 int count = compositeLayer.Count;
@@ -98,7 +93,6 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             {
                 ILayer ipLay = this.m_MapControl.Layer[i];
                 this.AddLayer(ipLay);
-
             }
             if (this.m_pFtLayer == null)
             {
@@ -115,7 +109,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 if (num >= 0)
                 {
                     List<string> values = new List<string>();
-                    CommonHelper.GetUniqueValues((ITable)featureClass, layer.GetFieldName(PipeConfigWordHelper.FunctionLayerWorkds.DLMC), values);
+                    CommonHelper.GetUniqueValues((ITable) featureClass,
+                        layer.GetFieldName(PipeConfigWordHelper.FunctionLayerWorkds.DLMC), values);
                     this.comboRoad1.Items.AddRange(values.ToArray());
                     this.comboRoad2.Items.AddRange(values.ToArray());
                 }
@@ -162,7 +157,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                         IGeometry geometry = null;
                         if (topologicalOperator != null)
                         {
-                            geometry = topologicalOperator.Intersect(feature2.Shape, (esriGeometryDimension)1);
+                            geometry = topologicalOperator.Intersect(feature2.Shape, (esriGeometryDimension) 1);
                         }
                         if (!geometry.IsEmpty)
                         {
@@ -178,7 +173,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                                 envelope = this.m_MapControl.Extent;
                                 envelope.CenterAt(point);
                                 this.m_MapControl.Extent = (envelope);
-                                this.m_MapControl.Refresh((esriViewDrawPhase)32, null, envelope);
+                                this.m_MapControl.Refresh((esriViewDrawPhase) 32, null, envelope);
                                 this.m_nTimerCount = 0;
                                 QueryIntersectionUI.NewBasePointElement(this.m_MapControl, point);
                             }
@@ -213,7 +208,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 this.m_nTimerCount = 0;
                 this.timer1.Stop();
                 IActiveView activeView = m_context.ActiveView;
-                activeView.PartialRefresh((esriViewDrawPhase)8, null, null);
+                activeView.PartialRefresh((esriViewDrawPhase) 8, null, null);
                 this.m_pGeoFlash = null;
             }
             else
@@ -225,7 +220,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
         public static void NewBasePointElement(IMapControl3 pMapCtrl, IPoint pPoint)
         {
-            IGraphicsContainer graphicsContainer = (IGraphicsContainer)pMapCtrl.ActiveView;
+            IGraphicsContainer graphicsContainer = (IGraphicsContainer) pMapCtrl.ActiveView;
 
             ISimpleMarkerSymbol simpleMarkerSymbol = new SimpleMarkerSymbol();
             IRgbColor rgbColor = new RgbColor();
@@ -236,7 +231,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             rgbColor2.Red = 0;
             rgbColor2.Green = 0;
             rgbColor2.Blue = 0;
-            simpleMarkerSymbol.Style = (esriSimpleMarkerStyle)(3);
+            simpleMarkerSymbol.Style = (esriSimpleMarkerStyle) (3);
             simpleMarkerSymbol.Color = (rgbColor);
             simpleMarkerSymbol.Outline = (true);
             simpleMarkerSymbol.OutlineSize = (1.0);
@@ -251,10 +246,10 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
         public static void DeleteAllElements(IMapControl3 pMapCtrl)
         {
-            IGraphicsContainer graphicsContainer = (IGraphicsContainer)pMapCtrl.Map;
+            IGraphicsContainer graphicsContainer = (IGraphicsContainer) pMapCtrl.Map;
             graphicsContainer.DeleteAllElements();
             IActiveView activeView = pMapCtrl.ActiveView;
-            activeView.PartialRefresh((esriViewDrawPhase)8, null, null);
+            activeView.PartialRefresh((esriViewDrawPhase) 8, null, null);
             activeView.Refresh();
         }
 

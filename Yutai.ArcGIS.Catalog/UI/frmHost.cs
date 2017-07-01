@@ -31,7 +31,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
         }
 
- private void frmHost_Load(object sender, EventArgs e)
+        private void frmHost_Load(object sender, EventArgs e)
         {
             if (!(this.string_0 == ""))
             {
@@ -41,29 +41,16 @@ namespace Yutai.ArcGIS.Catalog.UI
             this.txtDescription.Text = this.string_1;
         }
 
- public string Description
+        public string Description
         {
-            get
-            {
-                return this.string_1;
-            }
-            set
-            {
-                this.string_1 = value;
-            }
+            get { return this.string_1; }
+            set { this.string_1 = value; }
         }
 
         public string HostName
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

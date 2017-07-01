@@ -60,4 +60,3 @@ namespace Yutai.ArcGIS.Framework
         IAppContext AppContext { get; set; }
     }
 }
-

@@ -1,7 +1,6 @@
 namespace Yutai.ArcGIS.Common.Geodatabase
 {
-	public interface IMyEnumNameMapping
-	{
-
-	}
+    public interface IMyEnumNameMapping
+    {
+    }
 }

@@ -7,16 +7,22 @@ namespace Yutai.Plugins.Locator
     [DataContract(Name = "PluginConfig", Namespace = "")]
     public class PluginConfig
     {
-        public PluginConfig() { }
+        public PluginConfig()
+        {
+        }
+
         [DataMember(Name = "Locators", Order = 0)]
         public List<XmlLocator> Locators { get; set; }
     }
-    [DataContract(Name="Locator",Namespace = "")]
+
+    [DataContract(Name = "Locator", Namespace = "")]
     public class XmlLocator
     {
         public XmlLocator()
-        { }
-        [DataMember(IsRequired = true,Order = 0)]
+        {
+        }
+
+        [DataMember(IsRequired = true, Order = 0)]
         public string Name { get; set; }
 
         [DataMember(IsRequired = false, Order = 1)]

@@ -12,6 +12,7 @@ namespace Yutai.Plugins.Locator.Menu
         private IAppContext _context;
         private LocatorPresenter _presenter;
         private LocatorPlugin _plugin;
+
         public DockPanelService(IAppContext context, LocatorPresenter presenter, LocatorPlugin plugin)
         {
             if (context == null) throw new ArgumentNullException("context");
@@ -37,7 +38,7 @@ namespace Yutai.Plugins.Locator.Menu
         public void Show()
         {
             DockPanel panel =
-                _context.DockPanels.GetDockPanel(((IDockPanelView)_presenter.GetInternalObject()).DockName);
+                _context.DockPanels.GetDockPanel(((IDockPanelView) _presenter.GetInternalObject()).DockName);
             if (panel == null)
             {
                 panel = AddPanel();
@@ -46,26 +47,26 @@ namespace Yutai.Plugins.Locator.Menu
             {
                 // ((IdentifierDockPanel)_presenter.GetInternalObject()).ValidateWorkspace();
             }
-            _context.DockPanels.ShowDockPanel(((IDockPanelView)_presenter.GetInternalObject()).DockName, true, true);
+            _context.DockPanels.ShowDockPanel(((IDockPanelView) _presenter.GetInternalObject()).DockName, true, true);
         }
 
         public bool Visible
         {
             get
             {
-                return _context.DockPanels.GetDockVisible(((IDockPanelView)_presenter.GetInternalObject()).DockName);
+                return _context.DockPanels.GetDockVisible(((IDockPanelView) _presenter.GetInternalObject()).DockName);
             }
         }
 
         public void Hide()
         {
             DockPanel panel =
-                _context.DockPanels.GetDockPanel(((IDockPanelView)_presenter.GetInternalObject()).DockName);
+                _context.DockPanels.GetDockPanel(((IDockPanelView) _presenter.GetInternalObject()).DockName);
             if (panel == null)
             {
                 return;
             }
-            _context.DockPanels.ShowDockPanel(((IDockPanelView)_presenter.GetInternalObject()).DockName, false, false);
+            _context.DockPanels.ShowDockPanel(((IDockPanelView) _presenter.GetInternalObject()).DockName, false, false);
         }
     }
 }

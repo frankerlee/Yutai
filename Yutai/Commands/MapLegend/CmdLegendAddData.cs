@@ -16,10 +16,9 @@ namespace Yutai.Commands.MapLegend
 {
     public class CmdLegendAddData : YutaiCommand
     {
-       
         private IMapLegendView _view;
         private ICommand _command;
-      
+
         public CmdLegendAddData(IAppContext context, IMapLegendView view)
         {
             _context = context;
@@ -55,8 +54,8 @@ namespace Yutai.Commands.MapLegend
             base.m_checked = false;
             base.m_enabled = true;
             base._itemType = RibbonItemType.Button;
-
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             if (_command == null)

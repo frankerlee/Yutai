@@ -32,7 +32,8 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             }
         }
 
-        private void method_1(int int_1, ColumnAttribute columnAttribute_0, string string_0, string string_1, object object_0, string string_2, double double_0, double double_1)
+        private void method_1(int int_1, ColumnAttribute columnAttribute_0, string string_0, string string_1,
+            object object_0, string string_2, double double_0, double double_1)
         {
             int num;
             if (int_1 < 0)
@@ -75,8 +76,10 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
                 case ColumnAttribute.CA_SPINEDIT:
                     this.gridColumn_0[int_1].ColumnEdit = new RepositoryItemSpinEdit();
-                    ((RepositoryItemSpinEdit) ((GridView) this.xGrid.MainView).Columns[int_1].ColumnEdit).MaxValue = (decimal) double_1;
-                    ((RepositoryItemSpinEdit) ((GridView) this.xGrid.MainView).Columns[int_1].ColumnEdit).MinValue = (decimal) double_0;
+                    ((RepositoryItemSpinEdit) ((GridView) this.xGrid.MainView).Columns[int_1].ColumnEdit).MaxValue =
+                        (decimal) double_1;
+                    ((RepositoryItemSpinEdit) ((GridView) this.xGrid.MainView).Columns[int_1].ColumnEdit).MinValue =
+                        (decimal) double_0;
                     break;
 
                 case ColumnAttribute.CA_TIMEEDIT:
@@ -87,7 +90,8 @@ namespace Yutai.ArcGIS.Common.ControlExtend
                 {
                     RepositoryItemTreeViewComboBoxEdit edit = new RepositoryItemTreeViewComboBoxEdit();
                     CodeDomainEx.CodeDomainEx ex = object_0 as CodeDomainEx.CodeDomainEx;
-                    DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(DataProviderType.OleDb, ex.ConnectionStr);
+                    DataAccessLayerBaseClass dataAccessLayer =
+                        DataAccessLayerFactory.GetDataAccessLayer(DataProviderType.OleDb, ex.ConnectionStr);
                     edit.DataAccessLayerBaseClass = dataAccessLayer;
                     edit.TableName = ex.TableFieldName;
                     edit.CodeFieldName = ex.CodeFieldName;
@@ -130,12 +134,14 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             this.method_1(-1, columnAttribute_0, "", "", null, string_0, double_0, double_1);
         }
 
-        public void SetColumnAttr(int int_1, ColumnAttribute columnAttribute_0, string string_0, string string_1, object object_0)
+        public void SetColumnAttr(int int_1, ColumnAttribute columnAttribute_0, string string_0, string string_1,
+            object object_0)
         {
             this.method_1(int_1, columnAttribute_0, string_0, string_1, object_0, "", 0.0, 0.0);
         }
 
-        public void SetColumnAttr(string string_0, ColumnAttribute columnAttribute_0, string string_1, string string_2, object object_0)
+        public void SetColumnAttr(string string_0, ColumnAttribute columnAttribute_0, string string_1, string string_2,
+            object object_0)
         {
             this.method_1(-1, columnAttribute_0, string_1, string_2, object_0, string_0, 0.0, 0.0);
         }
@@ -178,22 +184,13 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         public DataTable mainDataTable
         {
-            get
-            {
-                return this.dataTable_0;
-            }
-            set
-            {
-                this.dataTable_0 = value;
-            }
+            get { return this.dataTable_0; }
+            set { this.dataTable_0 = value; }
         }
 
         public bool ReadOnly
         {
-            get
-            {
-                return this.bool_0;
-            }
+            get { return this.bool_0; }
             set
             {
                 this.bool_0 = value;
@@ -203,15 +200,8 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         public GridControl xGrid
         {
-            get
-            {
-                return this.gridControl_0;
-            }
-            set
-            {
-                this.gridControl_0 = value;
-            }
+            get { return this.gridControl_0; }
+            set { this.gridControl_0 = value; }
         }
     }
 }
-

@@ -39,7 +39,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- public void Init()
+        public void Init()
         {
             this.cboDisField.Properties.Items.Clear();
             if (BufferHelper.m_BufferHelper.m_SourceType == 0)
@@ -59,7 +59,10 @@ namespace Yutai.ArcGIS.Carto.UI
                 for (int i = 0; i < fields.FieldCount; i++)
                 {
                     IField field = fields.get_Field(i);
-                    if ((((field.Type == esriFieldType.esriFieldTypeDouble) || (field.Type == esriFieldType.esriFieldTypeSingle)) || (field.Type == esriFieldType.esriFieldTypeSmallInteger)) || (field.Type == esriFieldType.esriFieldTypeInteger))
+                    if ((((field.Type == esriFieldType.esriFieldTypeDouble) ||
+                          (field.Type == esriFieldType.esriFieldTypeSingle)) ||
+                         (field.Type == esriFieldType.esriFieldTypeSmallInteger)) ||
+                        (field.Type == esriFieldType.esriFieldTypeInteger))
                     {
                         this.cboDisField.Properties.Items.Add(field.AliasName);
                     }
@@ -82,7 +85,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.method_0();
         }
 
- private void method_0()
+        private void method_0()
         {
             this.txtDistances.Enabled = this.rdoSetDis.Checked;
             this.cboDisField.Enabled = this.rdoFromProperty.Checked;
@@ -138,4 +141,3 @@ namespace Yutai.ArcGIS.Carto.UI
         }
     }
 }
-

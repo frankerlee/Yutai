@@ -1,12 +1,9 @@
 namespace Yutai.ArcGIS.Common.Geodatabase
 {
-	public interface IObjectProvider
-	{
-		int Count
-		{
-			get;
-		}
+    public interface IObjectProvider
+    {
+        int Count { get; }
 
-		object GetObj(int int_0);
-	}
+        object GetObj(int int_0);
+    }
 }

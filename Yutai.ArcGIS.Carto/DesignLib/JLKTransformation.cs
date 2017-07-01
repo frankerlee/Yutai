@@ -39,18 +39,19 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             {
                 IEnvelope bounds = new EnvelopeClass();
                 view.ScreenDisplay.StartDrawing(view.ScreenDisplay.hDC, 0);
-                itextElement_0.Symbol.GetTextSize(view.ScreenDisplay.hDC, view.ScreenDisplay.DisplayTransformation, itextElement_0.Text, out xSize, out ySize);
+                itextElement_0.Symbol.GetTextSize(view.ScreenDisplay.hDC, view.ScreenDisplay.DisplayTransformation,
+                    itextElement_0.Text, out xSize, out ySize);
                 (itextElement_0 as IElement).QueryBounds(view.ScreenDisplay, bounds);
                 view.ScreenDisplay.FinishDrawing();
                 if (view is IPageLayout)
                 {
-                    double_0 = xSize * (num3 / 72.0);
-                    double_1 = ySize * (num3 / 72.0);
+                    double_0 = xSize*(num3/72.0);
+                    double_1 = ySize*(num3/72.0);
                 }
                 else
                 {
-                    double_0 = ((xSize * (num3 / 72.0)) / 100.0) * view.FocusMap.ReferenceScale;
-                    double_1 = ((ySize * (num3 / 72.0)) / 100.0) * view.FocusMap.ReferenceScale;
+                    double_0 = ((xSize*(num3/72.0))/100.0)*view.FocusMap.ReferenceScale;
+                    double_1 = ((ySize*(num3/72.0))/100.0)*view.FocusMap.ReferenceScale;
                 }
             }
             catch (Exception exception)
@@ -99,11 +100,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         public IEnvelope MapExtent
         {
-            get
-            {
-                return this.iactiveView_0.Extent;
-            }
+            get { return this.iactiveView_0.Extent; }
         }
     }
 }
-

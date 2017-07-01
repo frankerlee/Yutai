@@ -13,7 +13,6 @@ namespace Yutai.Pipeline.Analysis.Commands
 {
     class CmdStartHoriDistAnalysis : YutaiTool
     {
-
         public HrzDistDlg hrzDistDlg;
         public Form m_pParentFrom;
 
@@ -29,13 +28,12 @@ namespace Yutai.Pipeline.Analysis.Commands
 
         public override void OnClick()
         {
-
             _context.SetCurrentTool(this);
 
             if (this.hrzDistDlg == null)
             {
-                this.hrzDistDlg = new HrzDistDlg(_context,_plugin.PipeConfig);
-                
+                this.hrzDistDlg = new HrzDistDlg(_context, _plugin.PipeConfig);
+
                 this.hrzDistDlg.Show();
             }
             else if (!this.hrzDistDlg.Visible)
@@ -70,16 +68,14 @@ namespace Yutai.Pipeline.Analysis.Commands
 
         public override void OnDblClick()
         {
-
         }
-
 
 
         public override void OnMouseDown(int button, int Shift, int x, int y)
         {
-            if (button == 1 && this.hrzDistDlg.Visible )
+            if (button == 1 && this.hrzDistDlg.Visible)
             {
-                this.StartAnalysis(x,y);
+                this.StartAnalysis(x, y);
                 IPoint point = _context.ActiveView.ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
                 this.hrzDistDlg.GetBaseLine(point);
             }
@@ -87,7 +83,6 @@ namespace Yutai.Pipeline.Analysis.Commands
 
         public override void OnMouseUp(int button, int shift, int x, int y)
         {
-
             //if (button == 1)
             //{
             //    if (this.m_hitAlsDlg.HitType == HitAnalyseDlg.HitAnalyseType.emHitAnalyseSelect)
@@ -119,9 +114,9 @@ namespace Yutai.Pipeline.Analysis.Commands
             IMap map = this._context.FocusMap;
             IEnvelope envelope = new Envelope() as IEnvelope;
             IPoint point = _context.ActiveView.ScreenDisplay.DisplayTransformation.ToMapPoint(num, num2);
-            IActiveView activeView = (IActiveView)map;
+            IActiveView activeView = (IActiveView) map;
             envelope.PutCoords(point.X, point.Y, point.X, point.Y);
-            double num3 = activeView.Extent.Width / 200.0;
+            double num3 = activeView.Extent.Width/200.0;
             IEnvelope expr_67 = envelope;
             expr_67.XMin = (expr_67.XMin - num3);
             IEnvelope expr_76 = envelope;
@@ -132,10 +127,8 @@ namespace Yutai.Pipeline.Analysis.Commands
             expr_94.XMax = (expr_94.XMax + num3);
             ISelectionEnvironment selectionEnvironment = new SelectionEnvironment();
             map.SelectByShape(envelope, selectionEnvironment, true);
-            activeView = (IActiveView)map;
-            activeView.PartialRefresh((esriViewDrawPhase)4, null, null);
+            activeView = (IActiveView) map;
+            activeView.PartialRefresh((esriViewDrawPhase) 4, null, null);
         }
-
-
     }
 }

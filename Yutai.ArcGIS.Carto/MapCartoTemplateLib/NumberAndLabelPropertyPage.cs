@@ -30,7 +30,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         public NumberAndLabelPropertyPage()
         {
             this.InitializeComponent();
-            MapCartoTemplateLib.ScaleBarEventsClass.ValueChange += new MapCartoTemplateLib.ScaleBarEventsClass.ValueChangeHandler(this.method_1);
+            MapCartoTemplateLib.ScaleBarEventsClass.ValueChange +=
+                new MapCartoTemplateLib.ScaleBarEventsClass.ValueChangeHandler(this.method_1);
         }
 
         public void Apply()
@@ -38,7 +39,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             if (this.bool_1)
             {
                 this.bool_1 = false;
-                this.imapSurroundFrame_0.MapSurround = (MapCartoTemplateLib.ScaleBarFormatPropertyPage.m_pScaleBar as IClone).Clone() as IMapSurround;
+                this.imapSurroundFrame_0.MapSurround =
+                    (MapCartoTemplateLib.ScaleBarFormatPropertyPage.m_pScaleBar as IClone).Clone() as IMapSurround;
             }
         }
 
@@ -121,7 +123,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         {
             if (this.bool_0)
             {
-                MapCartoTemplateLib.ScaleBarFormatPropertyPage.m_pScaleBar.LabelFrequency = (esriScaleBarFrequency) this.cboLabelFrequency.SelectedIndex;
+                MapCartoTemplateLib.ScaleBarFormatPropertyPage.m_pScaleBar.LabelFrequency =
+                    (esriScaleBarFrequency) this.cboLabelFrequency.SelectedIndex;
                 this.method_2();
             }
         }
@@ -130,7 +133,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         {
             if (this.bool_0)
             {
-                MapCartoTemplateLib.ScaleBarFormatPropertyPage.m_pScaleBar.LabelPosition = (esriVertPosEnum) this.cboLabelPosition.SelectedIndex;
+                MapCartoTemplateLib.ScaleBarFormatPropertyPage.m_pScaleBar.LabelPosition =
+                    (esriVertPosEnum) this.cboLabelPosition.SelectedIndex;
                 this.method_2();
             }
         }
@@ -155,7 +159,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
- private void method_0()
+        private void method_0()
         {
             IScaleBar pScaleBar = MapCartoTemplateLib.ScaleBarFormatPropertyPage.m_pScaleBar;
             IScaleMarks marks = pScaleBar as IScaleMarks;
@@ -221,7 +225,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             this.imapSurroundFrame_0 = this.mapTemplateElement_0.Element as IMapSurroundFrame;
             if (MapCartoTemplateLib.ScaleBarFormatPropertyPage.m_pScaleBar == null)
             {
-                MapCartoTemplateLib.ScaleBarFormatPropertyPage.m_pScaleBar = (this.imapSurroundFrame_0.MapSurround as IClone).Clone() as IScaleBar;
+                MapCartoTemplateLib.ScaleBarFormatPropertyPage.m_pScaleBar =
+                    (this.imapSurroundFrame_0.MapSurround as IClone).Clone() as IScaleBar;
             }
         }
 
@@ -275,39 +280,23 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

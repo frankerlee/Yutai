@@ -18,16 +18,15 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             this.InitializeComponent();
         }
 
- private void Init()
+        private void Init()
         {
             this.m_CanDo = false;
             this.m_CanDo = true;
         }
 
- private void NAResultSetPropertyPage_Load(object sender, EventArgs e)
+        private void NAResultSetPropertyPage_Load(object sender, EventArgs e)
         {
             this.Init();
         }
     }
 }
-

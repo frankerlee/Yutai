@@ -23,6 +23,4 @@ namespace Yutai.Plugins.Interfaces
         event EventHandler<MenuItemEventArgs> ItemClicked;
         void FireItemClicked(object sender, MenuItemEventArgs e);
     }
-
-   
 }

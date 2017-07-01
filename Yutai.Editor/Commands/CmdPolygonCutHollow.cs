@@ -32,10 +32,7 @@ namespace Yutai.Plugins.Editor.Commands
 
         public string DefaultTool
         {
-            get
-            {
-                return "Editor_Sketch_Line";
-            }
+            get { return "Editor_Sketch_Line"; }
         }
 
         public override bool Enabled
@@ -47,13 +44,13 @@ namespace Yutai.Plugins.Editor.Commands
                 {
                     result = false;
                 }
-                else if ( Yutai.ArcGIS.Common.Editor.Editor.EditMap != null && Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
+                else if (Yutai.ArcGIS.Common.Editor.Editor.EditMap != null &&
+                         Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
                 {
                     result = false;
                 }
                 else if (_context.FocusMap.LayerCount == 0)
                 {
-                  
                     result = false;
                 }
                 else
@@ -63,7 +60,8 @@ namespace Yutai.Plugins.Editor.Commands
                         IEnumFeature enumFeature = _context.FocusMap.FeatureSelection as IEnumFeature;
                         enumFeature.Reset();
                         IFeature feature = enumFeature.Next();
-                        if (feature != null && feature.Shape != null && feature.Shape.GeometryType == esriGeometryType.esriGeometryPolygon)
+                        if (feature != null && feature.Shape != null &&
+                            feature.Shape.GeometryType == esriGeometryType.esriGeometryPolygon)
                         {
                             result = Yutai.ArcGIS.Common.Editor.Editor.CheckLayerCanEdit(feature.Class as IFeatureClass);
                             return result;
@@ -145,14 +143,14 @@ namespace Yutai.Plugins.Editor.Commands
                         //CErrorLog.writeErrorLog(this, exception, "");
                     }
                     Yutai.ArcGIS.Common.Editor.Editor.EditWorkspace.StopEditOperation();
-                    (_context.FocusMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeography, null, shapeCopy.Envelope);
+                    (_context.FocusMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeography, null,
+                        shapeCopy.Envelope);
                     (_context.FocusMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
                     _context.UpdateUI();
                 }
             }
         }
 
-      
 
         public override void OnCreate(object hook)
         {

@@ -7,4 +7,3 @@ namespace Yutai.ArcGIS.Controls.Editor
         public static EditorTemplateManageCtrl EditTemplateCtrl = new EditorTemplateManageCtrl();
     }
 }
-

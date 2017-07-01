@@ -9,27 +9,14 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
 
         public IEnvelope Extent
         {
-            get
-            {
-                return this.m_extent;
-            }
-            set
-            {
-                this.m_extent = value;
-            }
+            get { return this.m_extent; }
+            set { this.m_extent = value; }
         }
 
         public NetworkAnalystRouteResult[] RouteResults
         {
-            get
-            {
-                return this.m_routeResults;
-            }
-            set
-            {
-                this.m_routeResults = value;
-            }
+            get { return this.m_routeResults; }
+            set { this.m_routeResults = value; }
         }
     }
 }
-

@@ -27,13 +27,15 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnAddCode_Click(object sender, EventArgs e)
         {
-            frmNewJLKCodeDomain domain = new frmNewJLKCodeDomain {
+            frmNewJLKCodeDomain domain = new frmNewJLKCodeDomain
+            {
                 Workspace = this.iworkspace_0
             };
             string[] items = new string[2];
             if (domain.ShowDialog() == DialogResult.OK)
             {
-                IJLKCodeValueDomain domain2 = new JLKCodeValueDomain {
+                IJLKCodeValueDomain domain2 = new JLKCodeValueDomain
+                {
                     Workspace = this.iworkspace_0,
                     TableName = domain.TableName
                 };
@@ -43,7 +45,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 domain2.ValueFieldName = domain.ValueField;
                 items[0] = (domain2 as IDomain).Name;
                 items[1] = (domain2 as IDomain).Description;
-                ListViewItem item = new ListViewItem(items) {
+                ListViewItem item = new ListViewItem(items)
+                {
                     Tag = new Class3(domain2 as IDomain, true)
                 };
                 this.ilist_0.Add(item.Tag);
@@ -72,7 +75,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void DomainListView_SelectedIndexChanged(object sender, EventArgs e)
+        private void DomainListView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.btnDeleteCode.Enabled = this.DomainListView.SelectedItems.Count > 0;
             this.btnEditCode.Enabled = this.DomainListView.SelectedItems.Count > 0;
@@ -98,7 +101,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         {
                             items[0] = domain2.Name;
                             items[1] = domain2.Description;
-                            ListViewItem item = new ListViewItem(items) {
+                            ListViewItem item = new ListViewItem(items)
+                            {
                                 Tag = new Class3(domain2)
                             };
                             this.ilist_0.Add(item.Tag);
@@ -109,12 +113,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- public IWorkspace Workspace
+        public IWorkspace Workspace
         {
-            set
-            {
-                this.iworkspace_0 = value;
-            }
+            set { this.iworkspace_0 = value; }
         }
 
         private partial class Class3
@@ -128,6 +129,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             private bool bool_0 = true;
             private bool bool_1 = false;
             private int int_2 = -1;
+
             public Class3(IDomain idomain_2)
             {
                 this.string_0 = "";
@@ -189,12 +191,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     }
                     else
                     {
-                        Logger.Current.Error("",exception, "");
+                        Logger.Current.Error("", exception, "");
                     }
                 }
                 catch (Exception exception2)
                 {
-                    Logger.Current.Error("",exception2, "");
+                    Logger.Current.Error("", exception2, "");
                 }
                 this.bool_0 = false;
                 this.bool_1 = false;
@@ -215,7 +217,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         domain = null;
                         if (esriDomainType_0 == esriDomainType.esriDTCodedValue)
                         {
-                            domain = new CodedValueDomainClass {
+                            domain = new CodedValueDomainClass
+                            {
                                 FieldType = this.idomain_1.FieldType
                             };
                         }
@@ -247,7 +250,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     domain = null;
                     if (esriDomainType_0 == esriDomainType.esriDTCodedValue)
                     {
-                        domain = new CodedValueDomainClass {
+                        domain = new CodedValueDomainClass
+                        {
                             FieldType = this.idomain_1.FieldType
                         };
                     }
@@ -284,7 +288,10 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     IDomain domain = (this.idomain_1 as IClone).Clone() as IDomain;
                     if (fieldType == esriFieldType.esriFieldTypeString)
                     {
-                        if ((((esriFieldType_0 == esriFieldType.esriFieldTypeDouble) || (esriFieldType_0 == esriFieldType.esriFieldTypeInteger)) || (esriFieldType_0 == esriFieldType.esriFieldTypeSingle)) || (esriFieldType_0 == esriFieldType.esriFieldTypeSmallInteger))
+                        if ((((esriFieldType_0 == esriFieldType.esriFieldTypeDouble) ||
+                              (esriFieldType_0 == esriFieldType.esriFieldTypeInteger)) ||
+                             (esriFieldType_0 == esriFieldType.esriFieldTypeSingle)) ||
+                            (esriFieldType_0 == esriFieldType.esriFieldTypeSmallInteger))
                         {
                             if (domain is ICodedValueDomain)
                             {
@@ -305,7 +312,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                                     try
                                     {
                                         double num2 = double.Parse(obj2.ToString());
-                                        (this.idomain_1 as ICodedValueDomain).AddCode(num2, (domain as ICodedValueDomain).get_Name(num));
+                                        (this.idomain_1 as ICodedValueDomain).AddCode(num2,
+                                            (domain as ICodedValueDomain).get_Name(num));
                                     }
                                     catch
                                     {
@@ -342,7 +350,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                             for (num = 0; num < (domain as ICodedValueDomain).CodeCount; num++)
                             {
                                 obj2 = (domain as ICodedValueDomain).get_Value(num);
-                                (this.idomain_1 as ICodedValueDomain).AddCode(obj2.ToString(), (domain as ICodedValueDomain).get_Name(num));
+                                (this.idomain_1 as ICodedValueDomain).AddCode(obj2.ToString(),
+                                    (domain as ICodedValueDomain).get_Name(num));
                             }
                         }
                     }
@@ -360,10 +369,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         this.idomain_1.SplitPolicy = this.idomain_0.SplitPolicy;
                         for (num = 0; num < (domain as ICodedValueDomain).CodeCount; num++)
                         {
-                            obj2 = this.method_0((domain as ICodedValueDomain).get_Value(num), fieldType, esriFieldType_0);
+                            obj2 = this.method_0((domain as ICodedValueDomain).get_Value(num), fieldType,
+                                esriFieldType_0);
                             if (obj2 != null)
                             {
-                                (this.idomain_1 as ICodedValueDomain).AddCode(obj2, (domain as ICodedValueDomain).get_Name(num));
+                                (this.idomain_1 as ICodedValueDomain).AddCode(obj2,
+                                    (domain as ICodedValueDomain).get_Name(num));
                             }
                         }
                     }
@@ -416,7 +427,11 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                                 return null;
                             }
                         }
-                        if ((esriFieldType_0 != esriFieldType.esriFieldTypeDate) && ((((esriFieldType_0 == esriFieldType.esriFieldTypeDouble) || (esriFieldType_0 == esriFieldType.esriFieldTypeInteger)) || (esriFieldType_0 == esriFieldType.esriFieldTypeSingle)) || (esriFieldType_0 == esriFieldType.esriFieldTypeSmallInteger)))
+                        if ((esriFieldType_0 != esriFieldType.esriFieldTypeDate) &&
+                            ((((esriFieldType_0 == esriFieldType.esriFieldTypeDouble) ||
+                               (esriFieldType_0 == esriFieldType.esriFieldTypeInteger)) ||
+                              (esriFieldType_0 == esriFieldType.esriFieldTypeSingle)) ||
+                             (esriFieldType_0 == esriFieldType.esriFieldTypeSmallInteger)))
                         {
                             try
                             {
@@ -453,7 +468,10 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                                 return null;
                             }
                         }
-                        if ((((esriFieldType_0 == esriFieldType.esriFieldTypeDouble) || (esriFieldType_0 == esriFieldType.esriFieldTypeInteger)) || (esriFieldType_0 == esriFieldType.esriFieldTypeSingle)) || (esriFieldType_0 == esriFieldType.esriFieldTypeSmallInteger))
+                        if ((((esriFieldType_0 == esriFieldType.esriFieldTypeDouble) ||
+                              (esriFieldType_0 == esriFieldType.esriFieldTypeInteger)) ||
+                             (esriFieldType_0 == esriFieldType.esriFieldTypeSingle)) ||
+                            (esriFieldType_0 == esriFieldType.esriFieldTypeSmallInteger))
                         {
                             try
                             {
@@ -490,7 +508,10 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                                 return null;
                             }
                         }
-                        if ((((esriFieldType_0 == esriFieldType.esriFieldTypeDouble) || (esriFieldType_0 == esriFieldType.esriFieldTypeInteger)) || (esriFieldType_0 == esriFieldType.esriFieldTypeSingle)) || (esriFieldType_0 == esriFieldType.esriFieldTypeSmallInteger))
+                        if ((((esriFieldType_0 == esriFieldType.esriFieldTypeDouble) ||
+                              (esriFieldType_0 == esriFieldType.esriFieldTypeInteger)) ||
+                             (esriFieldType_0 == esriFieldType.esriFieldTypeSingle)) ||
+                            (esriFieldType_0 == esriFieldType.esriFieldTypeSmallInteger))
                         {
                             try
                             {
@@ -527,7 +548,10 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                                 return null;
                             }
                         }
-                        if ((((esriFieldType_0 == esriFieldType.esriFieldTypeDouble) || (esriFieldType_0 == esriFieldType.esriFieldTypeInteger)) || (esriFieldType_0 == esriFieldType.esriFieldTypeSingle)) || (esriFieldType_0 == esriFieldType.esriFieldTypeSmallInteger))
+                        if ((((esriFieldType_0 == esriFieldType.esriFieldTypeDouble) ||
+                              (esriFieldType_0 == esriFieldType.esriFieldTypeInteger)) ||
+                             (esriFieldType_0 == esriFieldType.esriFieldTypeSingle)) ||
+                            (esriFieldType_0 == esriFieldType.esriFieldTypeSmallInteger))
                         {
                             try
                             {
@@ -555,7 +579,10 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                                 return null;
                             }
                         }
-                        if ((((esriFieldType_0 == esriFieldType.esriFieldTypeDouble) || (esriFieldType_0 == esriFieldType.esriFieldTypeInteger)) || (esriFieldType_0 == esriFieldType.esriFieldTypeSingle)) || (esriFieldType_0 == esriFieldType.esriFieldTypeSmallInteger))
+                        if ((((esriFieldType_0 == esriFieldType.esriFieldTypeDouble) ||
+                              (esriFieldType_0 == esriFieldType.esriFieldTypeInteger)) ||
+                             (esriFieldType_0 == esriFieldType.esriFieldTypeSingle)) ||
+                            (esriFieldType_0 == esriFieldType.esriFieldTypeSmallInteger))
                         {
                             try
                             {
@@ -573,32 +600,19 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
             public IDomain Domain
             {
-                get
-                {
-                    return this.idomain_1;
-                }
-                set
-                {
-                    this.idomain_1 = value;
-                }
+                get { return this.idomain_1; }
+                set { this.idomain_1 = value; }
             }
 
             public bool IsNew
             {
-                get
-                {
-                    return this.bool_0;
-                }
+                get { return this.bool_0; }
             }
 
             public bool Modify
             {
-                set
-                {
-                    this.bool_2 = value;
-                }
+                set { this.bool_2 = value; }
             }
         }
     }
 }
-

@@ -25,7 +25,8 @@ namespace Yutai.Plugins.Editor.Commands
                     SketchShareEx.m_bInStreaming = false;
                     result = false;
                 }
-                else if ( Yutai.ArcGIS.Common.Editor.Editor.EditMap != null && Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
+                else if (Yutai.ArcGIS.Common.Editor.Editor.EditMap != null &&
+                         Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
                 {
                     result = false;
                 }
@@ -33,7 +34,8 @@ namespace Yutai.Plugins.Editor.Commands
                 {
                     result = false;
                 }
-                else if (_context.CurrentTool is CmdStartSketch && this.ValidateLayer(Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer))
+                else if (_context.CurrentTool is CmdStartSketch &&
+                         this.ValidateLayer(Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer))
                 {
                     result = true;
                 }
@@ -48,7 +50,7 @@ namespace Yutai.Plugins.Editor.Commands
 
         public StreamingFlag(IAppContext context)
         {
-           OnCreate(context);
+            OnCreate(context);
         }
 
         private bool ValidateLayer(IFeatureLayer pFeatureLayer)
@@ -60,7 +62,11 @@ namespace Yutai.Plugins.Editor.Commands
             }
             else if (pFeatureLayer.FeatureClass != null)
             {
-                flag = ((pFeatureLayer.FeatureClass.ShapeType == esriGeometryType.esriGeometryPolyline ? false : pFeatureLayer.FeatureClass.ShapeType != esriGeometryType.esriGeometryPolygon) ? false : true);
+                flag = ((pFeatureLayer.FeatureClass.ShapeType == esriGeometryType.esriGeometryPolyline
+                    ? false
+                    : pFeatureLayer.FeatureClass.ShapeType != esriGeometryType.esriGeometryPolygon)
+                    ? false
+                    : true);
             }
             else
             {

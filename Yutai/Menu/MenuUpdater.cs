@@ -14,11 +14,11 @@ namespace Yutai.Menu
 {
     internal class MenuUpdater : MenuServiceBase
     {
-        private readonly IMap  _map;
+        private readonly IMap _map;
         private readonly IActiveView _activeView;
         private List<string> _commandKeys;
 
-        public MenuUpdater(IAppContext context, PluginIdentity identity,List<string> commandKeys )
+        public MenuUpdater(IAppContext context, PluginIdentity identity, List<string> commandKeys)
             : base(context, identity)
         {
             _map = context.MapControl.Map;
@@ -34,8 +34,6 @@ namespace Yutai.Menu
         private void UpdateMenu()
         {
             _context.RibbonMenu.UpdateMenu();
-         
         }
-
     }
 }

@@ -2,4 +2,3 @@
 {
     public delegate void OnObjectRefreshedEventHandler(IGxObject igxObject_0);
 }
-

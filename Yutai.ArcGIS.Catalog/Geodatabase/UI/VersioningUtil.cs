@@ -17,13 +17,16 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         private IFeatureClass ifeatureClass_0;
         private IFeatureClass ifeatureClass_1;
 
-        public void CheckDatasetForDifferences(TreeNodeCollection treeNodeCollection_0, IFeatureWorkspace ifeatureWorkspace_0, IFeatureWorkspace ifeatureWorkspace_1, IFeatureWorkspace ifeatureWorkspace_2, string string_0, string string_1, IList ilist_0)
+        public void CheckDatasetForDifferences(TreeNodeCollection treeNodeCollection_0,
+            IFeatureWorkspace ifeatureWorkspace_0, IFeatureWorkspace ifeatureWorkspace_1,
+            IFeatureWorkspace ifeatureWorkspace_2, string string_0, string string_1, IList ilist_0)
         {
             for (int i = 0; i < treeNodeCollection_0.Count; i++)
             {
                 if (treeNodeCollection_0[i].Nodes.Count > 0)
                 {
-                    this.CheckDatasetForDifferences(treeNodeCollection_0[i].Nodes, ifeatureWorkspace_0, ifeatureWorkspace_1, ifeatureWorkspace_2, string_0, string_1, ilist_0);
+                    this.CheckDatasetForDifferences(treeNodeCollection_0[i].Nodes, ifeatureWorkspace_0,
+                        ifeatureWorkspace_1, ifeatureWorkspace_2, string_0, string_1, ilist_0);
                 }
                 else if ((treeNodeCollection_0[i].Nodes.Count == 0) && treeNodeCollection_0[i].Checked)
                 {
@@ -38,7 +41,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public void DrawDifferenceGeometry(IGeometry igeometry_0, IScreenDisplay iscreenDisplay_0)
         {
-            IRgbColor color = new RgbColorClass {
+            IRgbColor color = new RgbColorClass
+            {
                 Red = 255
             };
             iscreenDisplay_0.StartDrawing(iscreenDisplay_0.hDC, -1);
@@ -46,7 +50,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             {
                 case esriGeometryType.esriGeometryPoint:
                 {
-                    ISimpleMarkerSymbol symbol = new SimpleMarkerSymbolClass {
+                    ISimpleMarkerSymbol symbol = new SimpleMarkerSymbolClass
+                    {
                         Color = color,
                         Size = 10.0
                     };
@@ -56,7 +61,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 }
                 case esriGeometryType.esriGeometryPolyline:
                 {
-                    ISimpleLineSymbol symbol2 = new SimpleLineSymbolClass {
+                    ISimpleLineSymbol symbol2 = new SimpleLineSymbolClass
+                    {
                         Color = color,
                         Width = 2.0
                     };
@@ -66,8 +72,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 }
                 case esriGeometryType.esriGeometryPolygon:
                 {
-                    ISimpleFillSymbol symbol3 = new SimpleFillSymbolClass {
-                        Outline = { Color = color, Width = 2.0 },
+                    ISimpleFillSymbol symbol3 = new SimpleFillSymbolClass
+                    {
+                        Outline = {Color = color, Width = 2.0},
                         Style = esriSimpleFillStyle.esriSFSForwardDiagonal
                     };
                     iscreenDisplay_0.SetSymbol(symbol3 as ISymbol);
@@ -78,7 +85,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             iscreenDisplay_0.FinishDrawing();
         }
 
-        public void GetDifferences1(IWorkspace iworkspace_0, string string_0, string string_1, TreeNodeCollection treeNodeCollection_0, IList ilist_0)
+        public void GetDifferences1(IWorkspace iworkspace_0, string string_0, string string_1,
+            TreeNodeCollection treeNodeCollection_0, IList ilist_0)
         {
             try
             {
@@ -92,7 +100,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 ilist_0.Add("Parent/Grandparent/.. Version: " + string_0);
                 ilist_0.Add("Child Version: " + string_1);
                 ilist_0.Add("________________________________________________________");
-                this.CheckDatasetForDifferences(treeNodeCollection_0, workspace, workspace3, workspace4, string_0, string_1, ilist_0);
+                this.CheckDatasetForDifferences(treeNodeCollection_0, workspace, workspace3, workspace4, string_0,
+                    string_1, ilist_0);
                 if (!this.bool_0)
                 {
                     ilist_0.Add("No differences found.");
@@ -103,16 +112,19 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
-        private void method_0(IFeatureWorkspace ifeatureWorkspace_0, IFeatureWorkspace ifeatureWorkspace_1, string string_0, string string_1, IDataset idataset_0, IList ilist_0)
+        private void method_0(IFeatureWorkspace ifeatureWorkspace_0, IFeatureWorkspace ifeatureWorkspace_1,
+            string string_0, string string_1, IDataset idataset_0, IList ilist_0)
         {
             IFeatureClass class2 = ifeatureWorkspace_0.OpenFeatureClass(idataset_0.Name);
             IFeatureClass class3 = ifeatureWorkspace_1.OpenFeatureClass(idataset_0.Name);
             this.ifeatureClass_1 = class2;
             this.ifeatureClass_0 = class3;
-            this.method_5(class2 as IVersionedTable, class3 as IVersionedTable, string_0, string_1, idataset_0.Name, ilist_0);
+            this.method_5(class2 as IVersionedTable, class3 as IVersionedTable, string_0, string_1, idataset_0.Name,
+                ilist_0);
         }
 
-        private void method_1(IVersionedTable iversionedTable_0, IVersionedTable iversionedTable_1, string string_0, string string_1, esriDifferenceType esriDifferenceType_0, string string_2, bool bool_2, IList ilist_0)
+        private void method_1(IVersionedTable iversionedTable_0, IVersionedTable iversionedTable_1, string string_0,
+            string string_1, esriDifferenceType esriDifferenceType_0, string string_2, bool bool_2, IList ilist_0)
         {
             try
             {
@@ -121,7 +133,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 IQueryFilter queryFilter = new QueryFilterClass();
                 IObjectClass class2 = iversionedTable_0 as IObjectClass;
                 queryFilter.SubFields = class2.OIDFieldName;
-                IDifferenceCursor cursor = iversionedTable_0.Differences(iversionedTable_1 as ITable, esriDifferenceType_0, queryFilter);
+                IDifferenceCursor cursor = iversionedTable_0.Differences(iversionedTable_1 as ITable,
+                    esriDifferenceType_0, queryFilter);
                 cursor.Next(out num, out row);
                 while (num != -1)
                 {
@@ -155,7 +168,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
-        private void method_2(int int_0, esriDifferenceType esriDifferenceType_0, string string_0, string string_1, string string_2, IList ilist_0)
+        private void method_2(int int_0, esriDifferenceType esriDifferenceType_0, string string_0, string string_1,
+            string string_2, IList ilist_0)
         {
             string str = "";
             this.bool_0 = true;
@@ -187,11 +201,14 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
             ilist_0.Add(string_2.ToUpper() + ": 对象OID " + int_0.ToString());
             ilist_0.Add(str);
-            if (((esriDifferenceType_0 == esriDifferenceType.esriDifferenceTypeUpdateUpdate) || (esriDifferenceType_0 == esriDifferenceType.esriDifferenceTypeUpdateDelete)) || (esriDifferenceType_0 == esriDifferenceType.esriDifferenceTypeDeleteUpdate))
+            if (((esriDifferenceType_0 == esriDifferenceType.esriDifferenceTypeUpdateUpdate) ||
+                 (esriDifferenceType_0 == esriDifferenceType.esriDifferenceTypeUpdateDelete)) ||
+                (esriDifferenceType_0 == esriDifferenceType.esriDifferenceTypeDeleteUpdate))
             {
                 ilist_0.Add("发现冲突");
             }
-            if ((esriDifferenceType_0 == esriDifferenceType.esriDifferenceTypeUpdateNoChange) || (esriDifferenceType_0 == esriDifferenceType.esriDifferenceTypeUpdateUpdate))
+            if ((esriDifferenceType_0 == esriDifferenceType.esriDifferenceTypeUpdateNoChange) ||
+                (esriDifferenceType_0 == esriDifferenceType.esriDifferenceTypeUpdateUpdate))
             {
                 this.method_3(int_0, string_0, string_1, ilist_0);
             }
@@ -210,7 +227,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 {
                     if (!this.method_4(feature.get_Value(i), feature2.get_Value(i)))
                     {
-                        if (((feature.Fields.get_Field(i).Name.ToUpper() == str) || (feature.Fields.get_Field(i).Name.ToUpper() == "SHAPE.AREA")) || (feature.Fields.get_Field(i).Name.ToUpper() == "SHAPE.LEN"))
+                        if (((feature.Fields.get_Field(i).Name.ToUpper() == str) ||
+                             (feature.Fields.get_Field(i).Name.ToUpper() == "SHAPE.AREA")) ||
+                            (feature.Fields.get_Field(i).Name.ToUpper() == "SHAPE.LEN"))
                         {
                             if (!this.bool_1)
                             {
@@ -283,18 +302,28 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             return false;
         }
 
-        private void method_5(IVersionedTable iversionedTable_0, IVersionedTable iversionedTable_1, string string_0, string string_1, string string_2, IList ilist_0)
+        private void method_5(IVersionedTable iversionedTable_0, IVersionedTable iversionedTable_1, string string_0,
+            string string_1, string string_2, IList ilist_0)
         {
             this.bool_1 = false;
-            this.method_1(iversionedTable_1, iversionedTable_0, string_0, string_1, esriDifferenceType.esriDifferenceTypeDeleteNoChange, string_2, true, ilist_0);
-            this.method_1(iversionedTable_1, iversionedTable_0, string_0, string_1, esriDifferenceType.esriDifferenceTypeDeleteUpdate, string_2, true, ilist_0);
-            this.method_1(iversionedTable_1, iversionedTable_0, string_0, string_1, esriDifferenceType.esriDifferenceTypeInsert, string_2, true, ilist_0);
-            this.method_1(iversionedTable_1, iversionedTable_0, string_0, string_1, esriDifferenceType.esriDifferenceTypeUpdateDelete, string_2, true, ilist_0);
-            this.method_1(iversionedTable_1, iversionedTable_0, string_0, string_1, esriDifferenceType.esriDifferenceTypeUpdateNoChange, string_2, true, ilist_0);
-            this.method_1(iversionedTable_1, iversionedTable_0, string_0, string_1, esriDifferenceType.esriDifferenceTypeUpdateUpdate, string_2, true, ilist_0);
-            this.method_1(iversionedTable_0, iversionedTable_1, string_0, string_1, esriDifferenceType.esriDifferenceTypeDeleteNoChange, string_2, false, ilist_0);
-            this.method_1(iversionedTable_0, iversionedTable_1, string_0, string_1, esriDifferenceType.esriDifferenceTypeInsert, string_2, false, ilist_0);
-            this.method_1(iversionedTable_0, iversionedTable_1, string_0, string_1, esriDifferenceType.esriDifferenceTypeUpdateNoChange, string_2, false, ilist_0);
+            this.method_1(iversionedTable_1, iversionedTable_0, string_0, string_1,
+                esriDifferenceType.esriDifferenceTypeDeleteNoChange, string_2, true, ilist_0);
+            this.method_1(iversionedTable_1, iversionedTable_0, string_0, string_1,
+                esriDifferenceType.esriDifferenceTypeDeleteUpdate, string_2, true, ilist_0);
+            this.method_1(iversionedTable_1, iversionedTable_0, string_0, string_1,
+                esriDifferenceType.esriDifferenceTypeInsert, string_2, true, ilist_0);
+            this.method_1(iversionedTable_1, iversionedTable_0, string_0, string_1,
+                esriDifferenceType.esriDifferenceTypeUpdateDelete, string_2, true, ilist_0);
+            this.method_1(iversionedTable_1, iversionedTable_0, string_0, string_1,
+                esriDifferenceType.esriDifferenceTypeUpdateNoChange, string_2, true, ilist_0);
+            this.method_1(iversionedTable_1, iversionedTable_0, string_0, string_1,
+                esriDifferenceType.esriDifferenceTypeUpdateUpdate, string_2, true, ilist_0);
+            this.method_1(iversionedTable_0, iversionedTable_1, string_0, string_1,
+                esriDifferenceType.esriDifferenceTypeDeleteNoChange, string_2, false, ilist_0);
+            this.method_1(iversionedTable_0, iversionedTable_1, string_0, string_1,
+                esriDifferenceType.esriDifferenceTypeInsert, string_2, false, ilist_0);
+            this.method_1(iversionedTable_0, iversionedTable_1, string_0, string_1,
+                esriDifferenceType.esriDifferenceTypeUpdateNoChange, string_2, false, ilist_0);
         }
 
         private string method_6(IFeature ifeature_0, int int_0)
@@ -326,7 +355,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             return "";
         }
 
-        private bool method_7(IVersionedWorkspace iversionedWorkspace_0, IEnumVersionInfo ienumVersionInfo_0, string string_0, bool bool_2, bool bool_3)
+        private bool method_7(IVersionedWorkspace iversionedWorkspace_0, IEnumVersionInfo ienumVersionInfo_0,
+            string string_0, bool bool_2, bool bool_3)
         {
             bool flag = true;
             try
@@ -406,7 +436,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             iworkspaceEdit_0.StartEditOperation();
         }
 
-        public void ShowDifferenceGeometry(IVersionedWorkspace iversionedWorkspace_0, int int_0, IMap imap_0, string string_0, string string_1)
+        public void ShowDifferenceGeometry(IVersionedWorkspace iversionedWorkspace_0, int int_0, IMap imap_0,
+            string string_0, string string_1)
         {
             try
             {
@@ -444,4 +475,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

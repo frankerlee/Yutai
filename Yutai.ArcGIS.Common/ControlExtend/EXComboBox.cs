@@ -34,7 +34,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
                     if (item2.MyImage != null)
                     {
                         myImage = item2.MyImage;
-                        num2 = ((bounds.Y + (bounds.Height / 2)) - (myImage.Height / 2)) + 1;
+                        num2 = ((bounds.Y + (bounds.Height/2)) - (myImage.Height/2)) + 1;
                         e.Graphics.DrawImage(myImage, x, num2, myImage.Width, myImage.Height);
                         x += myImage.Width + 2;
                     }
@@ -47,13 +47,13 @@ namespace Yutai.ArcGIS.Common.ControlExtend
                         for (int i = 0; i < item3.MyImages.Count; i++)
                         {
                             myImage = (Image) item3.MyImages[i];
-                            num2 = ((bounds.Y + (bounds.Height / 2)) - (myImage.Height / 2)) + 1;
+                            num2 = ((bounds.Y + (bounds.Height/2)) - (myImage.Height/2)) + 1;
                             e.Graphics.DrawImage(myImage, x, num2, myImage.Width, myImage.Height);
                             x += myImage.Width + 2;
                         }
                     }
                 }
-                int num4 = (bounds.Y + (bounds.Height / 2)) - (e.Font.Height / 2);
+                int num4 = (bounds.Y + (bounds.Height/2)) - (e.Font.Height/2);
                 e.Graphics.DrawString(item.Text, e.Font, new SolidBrush(e.ForeColor), (float) x, (float) num4);
                 e.DrawFocusRectangle();
             }
@@ -61,14 +61,8 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         public Brush MyHighlightBrush
         {
-            get
-            {
-                return this.brush_0;
-            }
-            set
-            {
-                this.brush_0 = value;
-            }
+            get { return this.brush_0; }
+            set { this.brush_0 = value; }
         }
 
         public class EXImageItem : EXComboBox.EXItem
@@ -110,14 +104,8 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
             public Image MyImage
             {
-                get
-                {
-                    return this.image_0;
-                }
-                set
-                {
-                    this.image_0 = value;
-                }
+                get { return this.image_0; }
+                set { this.image_0 = value; }
             }
         }
 
@@ -146,26 +134,14 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
             public string MyValue
             {
-                get
-                {
-                    return this.string_1;
-                }
-                set
-                {
-                    this.string_1 = value;
-                }
+                get { return this.string_1; }
+                set { this.string_1 = value; }
             }
 
             public string Text
             {
-                get
-                {
-                    return this.string_0;
-                }
-                set
-                {
-                    this.string_0 = value;
-                }
+                get { return this.string_0; }
+                set { this.string_0 = value; }
             }
         }
 
@@ -208,16 +184,9 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
             public ArrayList MyImages
             {
-                get
-                {
-                    return this.arrayList_0;
-                }
-                set
-                {
-                    this.arrayList_0 = value;
-                }
+                get { return this.arrayList_0; }
+                set { this.arrayList_0 = value; }
             }
         }
     }
 }
-

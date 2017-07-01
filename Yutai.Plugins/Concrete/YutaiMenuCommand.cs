@@ -8,11 +8,10 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Plugins.Concrete
 {
-    public class YutaiMenuCommand:YutaiCommand
+    public class YutaiMenuCommand : YutaiCommand
     {
         public override void OnClick(object sender, EventArgs args)
         {
-            
         }
 
         public override void OnCreate(object hook)
@@ -30,7 +29,8 @@ namespace Yutai.Plugins.Concrete
             InitType();
         }
 
-        public YutaiMenuCommand(RibbonItemType itemType, string category, string key, string name, string caption, string tooltip, string message)
+        public YutaiMenuCommand(RibbonItemType itemType, string category, string key, string name, string caption,
+            string tooltip, string message)
         {
             this.m_name = name;
             this.m_message = message;
@@ -42,7 +42,8 @@ namespace Yutai.Plugins.Concrete
         }
 
 
-        public YutaiMenuCommand(System.Drawing.Bitmap bitmap, string caption, string category, int helpContextId, string helpFile, string message, string name, string toolTip)
+        public YutaiMenuCommand(System.Drawing.Bitmap bitmap, string caption, string category, int helpContextId,
+            string helpFile, string message, string name, string toolTip)
         {
             this.m_bitmap = bitmap;
             this.m_name = name;

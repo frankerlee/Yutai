@@ -12,7 +12,8 @@ using Yutai.ArcGIS.Common.ControlExtend;
 
 namespace Yutai.ArcGIS.Controls.Controls
 {
-    public partial class frmGeoProcessorInfo : Form, IGeoProcessorEvents, ITrackCancel, IGPMessagesCallback, IGPServerTrackCancel, IStepProgressor, IProgressor
+    public partial class frmGeoProcessorInfo : Form, IGeoProcessorEvents, ITrackCancel, IGPMessagesCallback,
+        IGPServerTrackCancel, IStepProgressor, IProgressor
     {
         private Form m_attchForm = null;
         private string m_GeoProcessor = "";
@@ -37,7 +38,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             return false;
         }
 
- public bool Excute()
+        public bool Excute()
         {
             bool flag = false;
             this.m_sb.Remove(0, this.m_sb.Length);
@@ -121,7 +122,7 @@ namespace Yutai.ArcGIS.Controls.Controls
         {
         }
 
- public void MessageAdded(IGPMessage Message)
+        public void MessageAdded(IGPMessage Message)
         {
         }
 
@@ -193,157 +194,87 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         public Form AttchForm
         {
-            set
-            {
-                this.m_attchForm = value;
-            }
+            set { this.m_attchForm = value; }
         }
 
         public bool AutoClose
         {
-            get
-            {
-                return this.chkAutoCompleteSucc.Checked;
-            }
+            get { return this.chkAutoCompleteSucc.Checked; }
         }
 
         public bool CancelOnClick
         {
-            get
-            {
-                return false;
-            }
-            set
-            {
-            }
+            get { return false; }
+            set { }
         }
 
         public bool CancelOnKeyPress
         {
-            get
-            {
-                return false;
-            }
-            set
-            {
-            }
+            get { return false; }
+            set { }
         }
 
         public int CheckTime
         {
-            get
-            {
-                return 0;
-            }
-            set
-            {
-            }
+            get { return 0; }
+            set { }
         }
 
         public string GeoProcessor
         {
-            set
-            {
-                this.m_GeoProcessor = value;
-            }
+            set { this.m_GeoProcessor = value; }
         }
 
         public IGPProcess GPProcess
         {
-            set
-            {
-                this.m_pGPProcess = value;
-            }
+            set { this.m_pGPProcess = value; }
         }
 
         public int MaxRange
         {
-            get
-            {
-                return 100;
-            }
-            set
-            {
-                this.progressBar1.Maximum = value;
-            }
+            get { return 100; }
+            set { this.progressBar1.Maximum = value; }
         }
 
         public string Message
         {
-            get
-            {
-                return "";
-            }
-            set
-            {
-            }
+            get { return ""; }
+            set { }
         }
 
         public int MinRange
         {
-            get
-            {
-                return 0;
-            }
-            set
-            {
-                this.progressBar1.Minimum = value;
-            }
+            get { return 0; }
+            set { this.progressBar1.Minimum = value; }
         }
 
         public int Position
         {
-            get
-            {
-                return this.progressBar1.Value;
-            }
-            set
-            {
-                this.progressBar1.Value = value;
-            }
+            get { return this.progressBar1.Value; }
+            set { this.progressBar1.Value = value; }
         }
 
         public bool ProcessMessages
         {
-            get
-            {
-                return false;
-            }
-            set
-            {
-            }
+            get { return false; }
+            set { }
         }
 
         public IProgressor Progressor
         {
-            get
-            {
-                return null;
-            }
-            set
-            {
-            }
+            get { return null; }
+            set { }
         }
 
         public int StepValue
         {
-            get
-            {
-                return this.progressBar1.Step;
-            }
-            set
-            {
-                this.progressBar1.Step = value;
-            }
+            get { return this.progressBar1.Step; }
+            set { this.progressBar1.Step = value; }
         }
 
         public bool TimerFired
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
     }
 }
-

@@ -2,4 +2,3 @@
 {
     public delegate void SetPositionEventHandler(int int_0);
 }
-

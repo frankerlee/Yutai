@@ -41,7 +41,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
                 MessageBox.Show("请出入数字型数据！");
                 return false;
             }
-            (base.m_pGeometricEffect as IGraphicAttributes).set_Value((int) this.symbolItem1.Tag, this.symbolItem1.Symbol);
+            (base.m_pGeometricEffect as IGraphicAttributes).set_Value((int) this.symbolItem1.Tag,
+                this.symbolItem1.Symbol);
             (base.m_pGeometricEffect as IGraphicAttributes).set_Value((int) this.textBox1.Tag, val);
             (base.m_pGeometricEffect as IGraphicAttributes).set_Value((int) this.textBox2.Tag, num2);
             return true;
@@ -49,7 +50,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
 
         private void btnAddGemoetricEffic_Click(object sender, EventArgs e)
         {
-            frmGeometricEffectList list = new frmGeometricEffectList {
+            frmGeometricEffectList list = new frmGeometricEffectList
+            {
                 BasicSymbolLayerBaseControl = this.m_pControl
             };
             if ((list.ShowDialog() == DialogResult.OK) && (this.m_pControl != null))
@@ -60,10 +62,11 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
 
         private void btnChangeEffic_Click(object sender, EventArgs e)
         {
-            (base.m_pGeometricEffect as IGraphicAttributes).set_Value((int) (sender as CheckBox).Tag, (sender as CheckBox).Checked);
+            (base.m_pGeometricEffect as IGraphicAttributes).set_Value((int) (sender as CheckBox).Tag,
+                (sender as CheckBox).Checked);
         }
 
- private void GeometricEffectMarkerPage_Load(object sender, EventArgs e)
+        private void GeometricEffectMarkerPage_Load(object sender, EventArgs e)
         {
             if (base.m_pGeometricEffect == null)
             {
@@ -84,7 +87,7 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
             this.textBox2.Tag = attrId;
         }
 
- private void symbolItem1_Click(object sender, EventArgs e)
+        private void symbolItem1_Click(object sender, EventArgs e)
         {
             frmSymbolSelector selector = new frmSymbolSelector();
             selector.SetSymbol(this.symbolItem1.Symbol);
@@ -92,7 +95,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
             if (selector.ShowDialog() == DialogResult.OK)
             {
                 this.symbolItem1.Symbol = selector.GetSymbol();
-                (base.m_pGeometricEffect as IGraphicAttributes).set_Value((int) this.symbolItem1.Tag, selector.GetSymbol());
+                (base.m_pGeometricEffect as IGraphicAttributes).set_Value((int) this.symbolItem1.Tag,
+                    selector.GetSymbol());
             }
         }
 
@@ -120,7 +124,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
 
         private void 修改ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmGeometricEffectList list = new frmGeometricEffectList {
+            frmGeometricEffectList list = new frmGeometricEffectList
+            {
                 BasicSymbolLayerBaseControl = this.m_pControl
             };
             if ((list.ShowDialog() == DialogResult.OK) && (this.m_pControl != null))
@@ -130,4 +135,3 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
         }
     }
 }
-

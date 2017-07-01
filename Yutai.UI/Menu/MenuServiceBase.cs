@@ -20,7 +20,7 @@ namespace Yutai.UI.Menu
             _identity = identity;
             _ribbonMenu = context.RibbonMenu;
         }
-    
+
         protected BarItem FindRibbonMenuItem(string itemKey)
         {
             return _ribbonMenu.FindItem(itemKey);

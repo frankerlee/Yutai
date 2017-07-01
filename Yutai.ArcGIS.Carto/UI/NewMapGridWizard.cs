@@ -111,7 +111,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.mapGridTypeProperty_0.Visible = false;
             this.mapGridStylePropertyPage_0.Visible = true;
             this.btnLast.Enabled = true;
-        Label_0166:
+            Label_0166:
             this.short_0 = (short) (this.short_0 + 1);
         }
 
@@ -120,7 +120,8 @@ namespace Yutai.ArcGIS.Carto.UI
             if (this.mapGridBorderPropertyPage_0.OutlineSymbol != null)
             {
                 IElement element = new RectangleElementClass();
-                IFillSymbol symbol = new SimpleFillSymbolClass {
+                IFillSymbol symbol = new SimpleFillSymbolClass
+                {
                     Outline = this.mapGridBorderPropertyPage_0.OutlineSymbol
                 };
                 (symbol as ISimpleFillSymbol).Style = esriSimpleFillStyle.esriSFSNull;
@@ -141,7 +142,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void NewMapGridWizard_Load(object sender, EventArgs e)
+        private void NewMapGridWizard_Load(object sender, EventArgs e)
         {
             this.mapGridTypeProperty_0.Dock = DockStyle.Fill;
             this.panel1.Controls.Add(this.mapGridTypeProperty_0);
@@ -161,10 +162,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IGraphicsContainer GraphicsContainer
         {
-            set
-            {
-                this.igraphicsContainer_0 = value;
-            }
+            set { this.igraphicsContainer_0 = value; }
         }
 
         public IMapFrame MapFrame
@@ -179,11 +177,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IMapGrid MapGrid
         {
-            get
-            {
-                return this.m_pMapGrid;
-            }
+            get { return this.m_pMapGrid; }
         }
     }
 }
-

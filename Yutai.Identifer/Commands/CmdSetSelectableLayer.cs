@@ -11,16 +11,18 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Plugins.Identifer.Commands
 {
-    class CmdSetSelectableLayer:YutaiCommand
+    class CmdSetSelectableLayer : YutaiCommand
     {
         public CmdSetSelectableLayer(IAppContext context)
         {
             OnCreate(context);
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
         }
+
         public override void OnClick()
         {
             frmSetSelectableLayer queryBuilder = new frmSetSelectableLayer()
@@ -41,9 +43,9 @@ namespace Yutai.Plugins.Identifer.Commands
             base.m_toolTip = "设置可选图层";
             base.m_checked = false;
             base.m_enabled = true;
-            base.DisplayStyleYT= DisplayStyleYT.ImageAndText;
-            base.TextImageRelationYT= TextImageRelationYT.ImageAboveText;
-            base.ToolStripItemImageScalingYT= ToolStripItemImageScalingYT.None;
+            base.DisplayStyleYT = DisplayStyleYT.ImageAndText;
+            base.TextImageRelationYT = TextImageRelationYT.ImageAboveText;
+            base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
             base._itemType = RibbonItemType.Button;
         }
     }

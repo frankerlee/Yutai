@@ -35,12 +35,15 @@ namespace Yutai.ArcGIS.Common
             this.arrayList_0 = new ArrayList();
         }
 
-        public MapAndPageLayoutControlsold(IMapControl3 imapControl3_1, IPageLayoutControl2 ipageLayoutControl2_1) : this()
+        public MapAndPageLayoutControlsold(IMapControl3 imapControl3_1, IPageLayoutControl2 ipageLayoutControl2_1)
+            : this()
         {
             this.imapControl3_0 = imapControl3_1;
             this.ipageLayoutControl2_0 = ipageLayoutControl2_1;
-            (this.ipageLayoutControl2_0 as IPageLayoutControlEvents_Event).OnMouseMove+=(new IPageLayoutControlEvents_OnMouseMoveEventHandler(this.method_3));
-            (this.imapControl3_0 as IMapControlEvents2_Event).OnMouseMove+=(new IMapControlEvents2_OnMouseMoveEventHandler(this.method_2));
+            (this.ipageLayoutControl2_0 as IPageLayoutControlEvents_Event).OnMouseMove +=
+                (new IPageLayoutControlEvents_OnMouseMoveEventHandler(this.method_3));
+            (this.imapControl3_0 as IMapControlEvents2_Event).OnMouseMove +=
+                (new IMapControlEvents2_OnMouseMoveEventHandler(this.method_2));
         }
 
         public void ActivateMap()
@@ -49,7 +52,8 @@ namespace Yutai.ArcGIS.Common
             {
                 if ((this.ipageLayoutControl2_0 == null) || (this.imapControl3_0 == null))
                 {
-                    throw new Exception("ControlsSynchronizer::ActivateMap:\r\nEither MapControl or PageLayoutControl are not initialized!");
+                    throw new Exception(
+                        "ControlsSynchronizer::ActivateMap:\r\nEither MapControl or PageLayoutControl are not initialized!");
                 }
                 if (this.ipageLayoutControl2_0.CurrentTool != null)
                 {
@@ -79,7 +83,8 @@ namespace Yutai.ArcGIS.Common
             {
                 if ((this.ipageLayoutControl2_0 == null) || (this.imapControl3_0 == null))
                 {
-                    throw new Exception("ControlsSynchronizer::ActivatePageLayout:\r\nEither MapControl or PageLayoutControl are not initialized!");
+                    throw new Exception(
+                        "ControlsSynchronizer::ActivatePageLayout:\r\nEither MapControl or PageLayoutControl are not initialized!");
                 }
                 if (this.imapControl3_0.CurrentTool != null)
                 {
@@ -116,9 +121,11 @@ namespace Yutai.ArcGIS.Common
         {
             if ((this.ipageLayoutControl2_0 == null) || (this.imapControl3_0 == null))
             {
-                throw new Exception("ControlsSynchronizer::BindControls:\r\nEither MapControl or PageLayoutControl are not initialized!");
+                throw new Exception(
+                    "ControlsSynchronizer::BindControls:\r\nEither MapControl or PageLayoutControl are not initialized!");
             }
-            IMap map = new Map {
+            IMap map = new Map
+            {
                 Name = "Map"
             };
             IMaps maps = new Maps();
@@ -142,11 +149,13 @@ namespace Yutai.ArcGIS.Common
         {
             if ((imapControl3_1 == null) || (ipageLayoutControl2_1 == null))
             {
-                throw new Exception("ControlsSynchronizer::BindControls:\r\nEither MapControl or PageLayoutControl are not initialized!");
+                throw new Exception(
+                    "ControlsSynchronizer::BindControls:\r\nEither MapControl or PageLayoutControl are not initialized!");
             }
             this.imapControl3_0 = this.MapControl;
             this.ipageLayoutControl2_0 = ipageLayoutControl2_1;
-            (this.ipageLayoutControl2_0 as IPageLayoutControlEvents_Event).OnFocusMapChanged+=(new IPageLayoutControlEvents_OnFocusMapChangedEventHandler(this.method_4));
+            (this.ipageLayoutControl2_0 as IPageLayoutControlEvents_Event).OnFocusMapChanged +=
+                (new IPageLayoutControlEvents_OnFocusMapChangedEventHandler(this.method_4));
             this.BindControls(bool_2);
         }
 
@@ -159,9 +168,9 @@ namespace Yutai.ArcGIS.Common
                 flag = true;
             }
             int num = (int) double_0;
-            double_0 = (double_0 - num) * 60.0;
+            double_0 = (double_0 - num)*60.0;
             int num2 = (int) double_0;
-            double num3 = Math.Round((double) ((double_0 - num2) * 60.0), 2);
+            double num3 = Math.Round((double) ((double_0 - num2)*60.0), 2);
             string str = num.ToString() + "\x00b0" + num2.ToString("00") + "′" + num3.ToString("00.00") + "″";
             if (flag)
             {
@@ -333,7 +342,8 @@ namespace Yutai.ArcGIS.Common
         {
             if (object_0 == null)
             {
-                throw new Exception("ControlsSynchronizer::RemoveFrameworkControl:\r\nControl to be removed is not initialized!");
+                throw new Exception(
+                    "ControlsSynchronizer::RemoveFrameworkControl:\r\nControl to be removed is not initialized!");
             }
             this.arrayList_0.Remove(object_0);
         }
@@ -355,7 +365,8 @@ namespace Yutai.ArcGIS.Common
             }
             if ((this.ipageLayoutControl2_0 == null) || (this.imapControl3_0 == null))
             {
-                throw new Exception("ControlsSynchronizer::ReplaceMap:\r\nEither MapControl or PageLayoutControl are not initialized!");
+                throw new Exception(
+                    "ControlsSynchronizer::ReplaceMap:\r\nEither MapControl or PageLayoutControl are not initialized!");
             }
             IMaps maps = new Maps();
             maps.Add(imap_0);
@@ -383,7 +394,8 @@ namespace Yutai.ArcGIS.Common
         {
             if ((this.ipageLayoutControl2_0 == null) || (this.imapControl3_0 == null))
             {
-                throw new Exception("ControlsSynchronizer::ReplaceMap:\r\nEither MapControl or PageLayoutControl are not initialized!");
+                throw new Exception(
+                    "ControlsSynchronizer::ReplaceMap:\r\nEither MapControl or PageLayoutControl are not initialized!");
             }
             bool flag = this.bool_0;
             this.ActivatePageLayout();
@@ -411,7 +423,8 @@ namespace Yutai.ArcGIS.Common
             {
                 if ((this.imapControl3_0 == null) || (this.ipageLayoutControl2_0 == null))
                 {
-                    throw new Exception("ControlsSynchronizer::ActiveControl:\r\nEither MapControl or PageLayoutControl are not initialized!");
+                    throw new Exception(
+                        "ControlsSynchronizer::ActiveControl:\r\nEither MapControl or PageLayoutControl are not initialized!");
                 }
                 if (this.bool_0)
                 {
@@ -480,27 +493,14 @@ namespace Yutai.ArcGIS.Common
 
         public IMapControl3 MapControl
         {
-            get
-            {
-                return this.imapControl3_0;
-            }
-            set
-            {
-                this.imapControl3_0 = value;
-            }
+            get { return this.imapControl3_0; }
+            set { this.imapControl3_0 = value; }
         }
 
         public IPageLayoutControl2 PageLayoutControl
         {
-            get
-            {
-                return this.ipageLayoutControl2_0;
-            }
-            set
-            {
-                this.ipageLayoutControl2_0 = value;
-            }
+            get { return this.ipageLayoutControl2_0; }
+            set { this.ipageLayoutControl2_0 = value; }
         }
     }
 }
-

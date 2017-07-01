@@ -31,7 +31,7 @@ namespace Yutai.Plugins.Catalog.Menu
         public override IEnumerable<YutaiCommand> GetCommands()
         {
             //第一次被初始化的时候Plugin为空，出现错误，所以在创建菜单的时候重新进行了初始化。
-           
+
             try
             {
                 _commands = new List<YutaiCommand>()
@@ -82,8 +82,6 @@ namespace Yutai.Plugins.Catalog.Menu
                     new CmdStartServer(_context),
                     new CmdStoptServer(_context),
                     new CmdServiceProperty(_context),
-
-
                 };
             }
             catch (Exception ex)
@@ -91,7 +89,7 @@ namespace Yutai.Plugins.Catalog.Menu
                 string msg = ex.Message;
             }
 
-         
+
             return _commands;
         }
     }

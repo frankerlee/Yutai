@@ -85,11 +85,11 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         {
         }
 
- public void Hide()
+        public void Hide()
         {
         }
 
- private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
+        private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.radioGroup1.SelectedIndex == 2)
             {
@@ -153,39 +153,23 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

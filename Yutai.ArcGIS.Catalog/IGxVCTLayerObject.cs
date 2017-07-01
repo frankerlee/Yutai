@@ -7,4 +7,3 @@
         object VCTLayer { get; set; }
     }
 }
-

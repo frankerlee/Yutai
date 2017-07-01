@@ -28,7 +28,8 @@ namespace Yutai.ArcGIS.Carto.UI
         {
             if (this.imapGrid_0.Border is ICalibratedMapGridBorder)
             {
-                frmCalibratedMapBorder border = new frmCalibratedMapBorder {
+                frmCalibratedMapBorder border = new frmCalibratedMapBorder
+                {
                     CalibratedMapGridBorder = this.imapGrid_0.Border as ICalibratedMapGridBorder
                 };
                 if (border.ShowDialog() == DialogResult.OK)
@@ -63,7 +64,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 this.btnSimpleBorderLine.Style = selector.GetSymbol();
                 if (this.imapGrid_0.Border is ISimpleMapGridBorder)
                 {
-                    (this.imapGrid_0.Border as ISimpleMapGridBorder).LineSymbol = this.btnSimpleBorderLine.Style as ILineSymbol;
+                    (this.imapGrid_0.Border as ISimpleMapGridBorder).LineSymbol =
+                        this.btnSimpleBorderLine.Style as ILineSymbol;
                 }
             }
         }
@@ -83,7 +85,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 this.btnSimpleBorderLineSymbol.Style = selector.GetSymbol();
                 if (this.imapGrid_0.Border is ISimpleMapGridBorder)
                 {
-                    (this.imapGrid_0.Border as ISimpleMapGridBorder).LineSymbol = this.btnSimpleBorderLineSymbol.Style as ILineSymbol;
+                    (this.imapGrid_0.Border as ISimpleMapGridBorder).LineSymbol =
+                        this.btnSimpleBorderLineSymbol.Style as ILineSymbol;
                 }
             }
         }
@@ -98,14 +101,15 @@ namespace Yutai.ArcGIS.Carto.UI
             this.btnSimpleBorderLine.Enabled = this.chkUseSimpleBorder.Checked;
             if (this.chkUseSimpleBorder.Checked && !(this.imapGrid_0.Border is ISimpleMapGridBorder))
             {
-                ISimpleMapGridBorder border = new SimpleMapGridBorderClass {
+                ISimpleMapGridBorder border = new SimpleMapGridBorderClass
+                {
                     LineSymbol = this.btnSimpleBorderLine.Style as ILineSymbol
                 };
                 this.imapGrid_0.Border = border as IMapGridBorder;
             }
         }
 
- public void Init()
+        public void Init()
         {
             if (this.imapGrid_0 != null)
             {
@@ -125,7 +129,8 @@ namespace Yutai.ArcGIS.Carto.UI
                         this.rdoGraticuleBorderType.SelectedIndex = 0;
                         this.btnSimpleBorderLineSymbol.Enabled = true;
                         this.btnCalibratedMapBorder.Enabled = false;
-                        this.btnSimpleBorderLineSymbol.Style = (this.imapGrid_0.Border as ISimpleMapGridBorder).LineSymbol;
+                        this.btnSimpleBorderLineSymbol.Style =
+                            (this.imapGrid_0.Border as ISimpleMapGridBorder).LineSymbol;
                     }
                 }
                 else
@@ -148,9 +153,10 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void MapGridBorderPropertyPage_Load(object sender, EventArgs e)
+        private void MapGridBorderPropertyPage_Load(object sender, EventArgs e)
         {
-            ILineSymbol symbol = new SimpleLineSymbolClass {
+            ILineSymbol symbol = new SimpleLineSymbolClass
+            {
                 Width = 1.0
             };
             this.btnOutlineSymbol.Style = symbol;
@@ -166,7 +172,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 this.btnCalibratedMapBorder.Enabled = false;
                 if (!(this.imapGrid_0.Border is ISimpleMapGridBorder))
                 {
-                    ISimpleMapGridBorder border = new SimpleMapGridBorderClass {
+                    ISimpleMapGridBorder border = new SimpleMapGridBorderClass
+                    {
                         LineSymbol = this.btnSimpleBorderLineSymbol.Style as ILineSymbol
                     };
                     this.imapGrid_0.Border = border as IMapGridBorder;
@@ -185,10 +192,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public bool IsGenerateGraphics
         {
-            get
-            {
-                return (this.rdoGenerateGraphicsType.SelectedIndex == 0);
-            }
+            get { return (this.rdoGenerateGraphicsType.SelectedIndex == 0); }
         }
 
         public IMapGrid MapGrid
@@ -216,4 +220,3 @@ namespace Yutai.ArcGIS.Carto.UI
         }
     }
 }
-

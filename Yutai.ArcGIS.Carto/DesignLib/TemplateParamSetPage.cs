@@ -27,7 +27,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             }
         }
 
- private void TemplateParamSetPage_Load(object sender, EventArgs e)
+        private void TemplateParamSetPage_Load(object sender, EventArgs e)
         {
             if (this.int_0 == -1)
             {
@@ -36,19 +36,12 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         public System.Collections.Hashtable Hashtable
         {
-            set
-            {
-                this.hashtable_0 = value;
-            }
+            set { this.hashtable_0 = value; }
         }
 
         public int TemplateOID
         {
-            set
-            {
-                this.int_0 = value;
-            }
+            set { this.int_0 = value; }
         }
     }
 }
-

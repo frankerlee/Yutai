@@ -88,12 +88,12 @@ namespace Yutai.ArcGIS.Controls.Controls
             }
         }
 
- public void Init()
+        public void Init()
         {
             this.m_CurrentLine = 1;
         }
 
- public void LockCommandLine(bool flag)
+        public void LockCommandLine(bool flag)
         {
         }
 
@@ -271,27 +271,14 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         public object Framework
         {
-            get
-            {
-                return this.m_pFrameWork;
-            }
-            set
-            {
-                this.m_pFrameWork = value as IFramework;
-            }
+            get { return this.m_pFrameWork; }
+            set { this.m_pFrameWork = value as IFramework; }
         }
 
         public int MaxCommandLine
         {
-            get
-            {
-                return this.m_MaxCommandLine;
-            }
-            set
-            {
-                this.m_MaxCommandLine = value;
-            }
+            get { return this.m_MaxCommandLine; }
+            set { this.m_MaxCommandLine = value; }
         }
     }
 }
-

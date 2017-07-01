@@ -30,7 +30,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         private void btnSelectPicture_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
                 Filter = "3DS Files (*.3DS)|*.3ds|Open Flight Files (*.flt)|*.flt|VRML Files (*.wrl)|*.wrl"
             };
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -45,9 +46,9 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         public void ChangeUnit(double newunit)
         {
             this.m_CanDo = false;
-            this.txtSize.Value = (decimal) ((((double) this.txtSize.Value) / this.m_unit) * newunit);
-            this.txtDepth1.Value = (decimal) ((((double) this.txtDepth1.Value) / this.m_unit) * newunit);
-            this.txtWidth.Value = (decimal) ((((double) this.txtWidth.Value) / this.m_unit) * newunit);
+            this.txtSize.Value = (decimal) ((((double) this.txtSize.Value)/this.m_unit)*newunit);
+            this.txtDepth1.Value = (decimal) ((((double) this.txtDepth1.Value)/this.m_unit)*newunit);
+            this.txtWidth.Value = (decimal) ((((double) this.txtWidth.Value)/this.m_unit)*newunit);
             this.m_unit = newunit;
             this.m_CanDo = true;
         }
@@ -84,9 +85,9 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         private double DegreesToRadians(double dDeg)
         {
-            double num = 4.0 * Math.Atan(1.0);
-            double num2 = num / 180.0;
-            return (dDeg * num2);
+            double num = 4.0*Math.Atan(1.0);
+            double num2 = num/180.0;
+            return (dDeg*num2);
         }
 
         public void DisplaySymbol()
@@ -120,7 +121,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.axSceneControl1.SceneGraph.RefreshViewers();
         }
 
- private void GetRGB(uint rgb, out int r, out int g, out int b)
+        private void GetRGB(uint rgb, out int r, out int g, out int b)
         {
             uint num = rgb & 16711680;
             b = (int) (num >> 16);
@@ -133,9 +134,9 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         public void InitControl()
         {
             this.m_CanDo = false;
-            this.txtSize.Value = (decimal) ((this.m_pMarker3DSymbol as IMarker3DPlacement).Size * this.m_unit);
-            this.txtDepth1.Value = (decimal) ((this.m_pMarker3DSymbol as IMarker3DPlacement).Depth * this.m_unit);
-            this.txtWidth.Value = (decimal) ((this.m_pMarker3DSymbol as IMarker3DPlacement).Width * this.m_unit);
+            this.txtSize.Value = (decimal) ((this.m_pMarker3DSymbol as IMarker3DPlacement).Size*this.m_unit);
+            this.txtDepth1.Value = (decimal) ((this.m_pMarker3DSymbol as IMarker3DPlacement).Depth*this.m_unit);
+            this.txtWidth.Value = (decimal) ((this.m_pMarker3DSymbol as IMarker3DPlacement).Width*this.m_unit);
             this.chkMaintainAspectRatio.Checked = (this.m_pMarker3DSymbol as IMarker3DPlacement).MaintainAspectRatio;
             this.SetColorEdit(this.colorEdit1, (this.m_pMarker3DSymbol as IMarkerSymbol).Color);
             this.checkEdit1.Checked = this.m_pMarker3DSymbol.UseMaterialDraping;
@@ -143,7 +144,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.m_CanDo = true;
         }
 
- public void LoadModel(string sFile)
+        public void LoadModel(string sFile)
         {
             IImport3DFile file = new Import3DFileClass();
             file.CreateFromFile(sFile);
@@ -208,7 +209,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 IMarker3DPlacement placement = pSymbol as IMarker3DPlacement;
                 IGeometry shape = placement.Shape;
                 IEnvelope envelope = shape.Envelope;
-                IPoint point = new PointClass {
+                IPoint point = new PointClass
+                {
                     X = envelope.XMin + (envelope.XMax - envelope.XMin),
                     Y = envelope.YMin + (envelope.YMax - envelope.YMin),
                     Z = envelope.ZMin + (envelope.ZMax - envelope.ZMin)
@@ -249,7 +251,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     this.txtDepth1.ForeColor = SystemColors.WindowText;
-                    (this.m_pMarker3DSymbol as IMarker3DPlacement).Depth = ((double) this.txtDepth1.Value) / this.m_unit;
+                    (this.m_pMarker3DSymbol as IMarker3DPlacement).Depth = ((double) this.txtDepth1.Value)/this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -266,7 +268,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     this.txtSize.ForeColor = SystemColors.WindowText;
-                    (this.m_pMarker3DSymbol as IMarker3DPlacement).Size = ((double) this.txtSize.Value) / this.m_unit;
+                    (this.m_pMarker3DSymbol as IMarker3DPlacement).Size = ((double) this.txtSize.Value)/this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -283,7 +285,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     this.txtWidth.ForeColor = SystemColors.WindowText;
-                    (this.m_pMarker3DSymbol as IMarker3DPlacement).Width = ((double) this.txtWidth.Value) / this.m_unit;
+                    (this.m_pMarker3DSymbol as IMarker3DPlacement).Width = ((double) this.txtWidth.Value)/this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -300,4 +302,3 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         }
     }
 }
-

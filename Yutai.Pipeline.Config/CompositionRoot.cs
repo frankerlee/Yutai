@@ -13,7 +13,6 @@ namespace Yutai.Services
         public static void Compose(IApplicationContainer container)
         {
             container.RegisterSingleton<IPipelineConfig, IPipelineConfig>();
-
         }
     }
 }

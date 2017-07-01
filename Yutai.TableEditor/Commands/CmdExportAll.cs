@@ -21,6 +21,7 @@ namespace Yutai.Plugins.TableEditor.Commands
     public class CmdExportAll : YutaiCommand
     {
         private ITableEditorView _view;
+
         public CmdExportAll(IAppContext context, ITableEditorView view)
         {
             _context = context;

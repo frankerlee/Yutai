@@ -17,7 +17,7 @@ namespace Yutai.Plugins.TableEditor.Functions.String
             _description = "Space 函数可返回一个由指定数目的空格组成的字符串。";
             _parameters = new List<Parameter>()
             {
-                new Parameter() { Order = 0, Name = "number", Description = "必需的。字符串中的空格数目。"}
+                new Parameter() {Order = 0, Name = "number", Description = "必需的。字符串中的空格数目。"}
             };
         }
     }

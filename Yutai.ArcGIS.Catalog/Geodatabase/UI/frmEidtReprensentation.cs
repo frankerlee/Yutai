@@ -29,7 +29,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.DialogResult = DialogResult.OK;
         }
 
- private void frmEidtReprensentation_Load(object sender, EventArgs e)
+        private void frmEidtReprensentation_Load(object sender, EventArgs e)
         {
             this.reprensationGeneralPage_0.RepresentationClass = this.irepresentationClass_0;
             this.reprensationGeneralPage_0.Dock = DockStyle.Fill;
@@ -40,20 +40,14 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.tabPage2.Controls.Add(this.representationRulesPage_0);
         }
 
- public IFeatureClass FeatureClass
+        public IFeatureClass FeatureClass
         {
-            set
-            {
-                this.ifeatureClass_0 = value;
-            }
+            set { this.ifeatureClass_0 = value; }
         }
 
         public IRepresentationClass RepresentationClass
         {
-            get
-            {
-                return this.irepresentationClass_0;
-            }
+            get { return this.irepresentationClass_0; }
             set
             {
                 this.irepresentationClass_0 = value;
@@ -63,4 +57,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

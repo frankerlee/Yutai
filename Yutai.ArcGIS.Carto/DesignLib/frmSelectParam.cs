@@ -14,10 +14,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             this.InitializeComponent();
         }
 
- private void frmSelectParam_Load(object sender, EventArgs e)
+        private void frmSelectParam_Load(object sender, EventArgs e)
         {
         }
-
-
     }
 }

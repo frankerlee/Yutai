@@ -54,13 +54,14 @@ namespace Yutai.ArcGIS.Carto.UI
             base.Close();
         }
 
- private void frmAnnoScaleSet_Load(object sender, EventArgs e)
+        private void frmAnnoScaleSet_Load(object sender, EventArgs e)
         {
             if (this.iannotateLayerProperties_0 != null)
             {
                 this.txtMaxScale.Text = this.iannotateLayerProperties_0.AnnotationMaximumScale.ToString();
                 this.txtMinScale.Text = this.iannotateLayerProperties_0.AnnotationMinimumScale.ToString();
-                if ((this.iannotateLayerProperties_0.AnnotationMinimumScale == 0.0) && (this.iannotateLayerProperties_0.AnnotationMaximumScale == 0.0))
+                if ((this.iannotateLayerProperties_0.AnnotationMinimumScale == 0.0) &&
+                    (this.iannotateLayerProperties_0.AnnotationMaximumScale == 0.0))
                 {
                     this.rdoDisplayScale.SelectedIndex = 0;
                 }
@@ -79,7 +80,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void rdoDisplayScale_SelectedIndexChanged(object sender, EventArgs e)
+        private void rdoDisplayScale_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.rdoDisplayScale.SelectedIndex == 0)
             {
@@ -93,11 +94,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IAnnotateLayerProperties AnnotateLayerProperties
         {
-            set
-            {
-                this.iannotateLayerProperties_0 = value;
-            }
+            set { this.iannotateLayerProperties_0 = value; }
         }
     }
 }
-

@@ -1,4 +1,4 @@
 namespace Yutai.ArcGIS.Common.Geodatabase
 {
-	public delegate void FinishHander();
+    public delegate void FinishHander();
 }

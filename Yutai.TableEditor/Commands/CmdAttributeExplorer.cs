@@ -18,6 +18,7 @@ namespace Yutai.Plugins.TableEditor.Commands
     public class CmdAttributeExplorer : YutaiCommand
     {
         private ITableEditorView _view;
+
         public CmdAttributeExplorer(IAppContext context, ITableEditorView view)
         {
             _context = context;
@@ -50,7 +51,8 @@ namespace Yutai.Plugins.TableEditor.Commands
 
         public override void OnClick()
         {
-            AttributeExplorer frm = new AttributeExplorer(_context, _view.MapView, _view.CurrentGridView.FeatureLayer, _view.CurrentGridView.VirtualGridView.StrGeometry);
+            AttributeExplorer frm = new AttributeExplorer(_context, _view.MapView, _view.CurrentGridView.FeatureLayer,
+                _view.CurrentGridView.VirtualGridView.StrGeometry);
             frm.ShowDialog();
         }
     }

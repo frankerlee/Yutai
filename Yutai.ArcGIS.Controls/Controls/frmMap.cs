@@ -91,7 +91,8 @@ namespace Yutai.ArcGIS.Controls.Controls
                         }
                         else
                         {
-                            IFileName name = new FileNameClass {
+                            IFileName name = new FileNameClass
+                            {
                                 Path = files.GetValue(num).ToString()
                             };
                             this.CreateLayer((IName) name);
@@ -117,7 +118,9 @@ namespace Yutai.ArcGIS.Controls.Controls
                 }
                 if (dataObjectHelper.InternalObject is IDataObject)
                 {
-                    IList data = (dataObjectHelper.InternalObject as IDataObject).GetData("System.Collections.ArrayList") as IList;
+                    IList data =
+                        (dataObjectHelper.InternalObject as IDataObject).GetData("System.Collections.ArrayList") as
+                            IList;
                     for (num = 0; num < data.Count; num++)
                     {
                         IWorkspaceName workspaceName;
@@ -127,7 +130,8 @@ namespace Yutai.ArcGIS.Controls.Controls
                         {
                             IFeatureDatasetName name4 = new FeatureDatasetNameClass();
                             workspaceName = (obj3 as IDatasetName).WorkspaceName;
-                            name6 = new WorkspaceNameClass {
+                            name6 = new WorkspaceNameClass
+                            {
                                 WorkspaceFactoryProgID = workspaceName.WorkspaceFactoryProgID
                             };
                             if (workspaceName.ConnectionProperties != null)
@@ -146,7 +150,8 @@ namespace Yutai.ArcGIS.Controls.Controls
                         {
                             IRasterDatasetName name7 = new RasterDatasetNameClass();
                             workspaceName = (obj3 as IDatasetName).WorkspaceName;
-                            name6 = new WorkspaceNameClass {
+                            name6 = new WorkspaceNameClass
+                            {
                                 WorkspaceFactoryProgID = workspaceName.WorkspaceFactoryProgID
                             };
                             if (workspaceName.ConnectionProperties != null)
@@ -171,7 +176,8 @@ namespace Yutai.ArcGIS.Controls.Controls
                             if ((obj3 as IDatasetName).Type == esriDatasetType.esriDTFeatureClass)
                             {
                                 name8 = new FeatureClassNameClass();
-                                (name8 as IFeatureClassName).FeatureDatasetName = (obj3 as IFeatureClassName).FeatureDatasetName;
+                                (name8 as IFeatureClassName).FeatureDatasetName =
+                                    (obj3 as IFeatureClassName).FeatureDatasetName;
                             }
                             else if ((obj3 as IDatasetName).Type == esriDatasetType.esriDTTopology)
                             {
@@ -181,29 +187,34 @@ namespace Yutai.ArcGIS.Controls.Controls
                             else if ((obj3 as IDatasetName).Type == esriDatasetType.esriDTRasterBand)
                             {
                                 name8 = new RasterBandNameClass();
-                                (name8 as IRasterBandName).RasterDatasetName = (obj3 as IRasterBandName).RasterDatasetName;
+                                (name8 as IRasterBandName).RasterDatasetName =
+                                    (obj3 as IRasterBandName).RasterDatasetName;
                             }
                             else if ((obj3 as IDatasetName).Type == esriDatasetType.esriDTGeometricNetwork)
                             {
                                 name8 = new GeometricNetworkNameClass();
-                                (name8 as IGeometricNetworkName).FeatureDatasetName = (obj3 as IGeometricNetworkName).FeatureDatasetName;
+                                (name8 as IGeometricNetworkName).FeatureDatasetName =
+                                    (obj3 as IGeometricNetworkName).FeatureDatasetName;
                             }
                             else if ((obj3 as IDatasetName).Type == esriDatasetType.esriDTRasterCatalog)
                             {
                                 name8 = new RasterCatalogNameClass();
-                                (name8 as IFeatureClassName).FeatureDatasetName = (obj3 as IFeatureClassName).FeatureDatasetName;
+                                (name8 as IFeatureClassName).FeatureDatasetName =
+                                    (obj3 as IFeatureClassName).FeatureDatasetName;
                             }
                             else if ((obj3 as IDatasetName).Type == esriDatasetType.esriDTNetworkDataset)
                             {
                                 name8 = new NetworkDatasetNameClass();
-                                (name8 as INetworkDatasetName).FeatureDatasetName = (obj3 as INetworkDatasetName).FeatureDatasetName;
+                                (name8 as INetworkDatasetName).FeatureDatasetName =
+                                    (obj3 as INetworkDatasetName).FeatureDatasetName;
                             }
                             if (name8 != null)
                             {
                                 if (name8.WorkspaceName == null)
                                 {
                                     workspaceName = (obj3 as IDatasetName).WorkspaceName;
-                                    name6 = new WorkspaceNameClass {
+                                    name6 = new WorkspaceNameClass
+                                    {
                                         WorkspaceFactoryProgID = workspaceName.WorkspaceFactoryProgID
                                     };
                                     if (workspaceName.ConnectionProperties != null)
@@ -223,7 +234,8 @@ namespace Yutai.ArcGIS.Controls.Controls
                         else if (obj3 is IWorkspaceName)
                         {
                             workspaceName = obj3 as IWorkspaceName;
-                            name6 = new WorkspaceNameClass {
+                            name6 = new WorkspaceNameClass
+                            {
                                 WorkspaceFactoryProgID = workspaceName.WorkspaceFactoryProgID
                             };
                             if (workspaceName.ConnectionProperties != null)
@@ -359,9 +371,10 @@ namespace Yutai.ArcGIS.Controls.Controls
             }
         }
 
- private void frmMap_Load(object sender, EventArgs e)
+        private void frmMap_Load(object sender, EventArgs e)
         {
-            (ApplicationRef.Application as IApplicationEvents).OnUpdateUIEvent += new OnUpdateUIEventHandler(this.DataEditControl_OnUpdateUIEvent);
+            (ApplicationRef.Application as IApplicationEvents).OnUpdateUIEvent +=
+                new OnUpdateUIEventHandler(this.DataEditControl_OnUpdateUIEvent);
             this.InitToolsBar();
             if (this.m_IsRegisterAsDocument)
             {
@@ -379,7 +392,7 @@ namespace Yutai.ArcGIS.Controls.Controls
         {
         }
 
- public void InitPopuMenu(string xml)
+        public void InitPopuMenu(string xml)
         {
         }
 
@@ -455,21 +468,14 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         public bool IsRegisterAsDocument
         {
-            set
-            {
-                this.m_IsRegisterAsDocument = value;
-            }
+            set { this.m_IsRegisterAsDocument = value; }
         }
 
         public AxMapControl MapControl
         {
-            get
-            {
-                return this.axMapControl1;
-            }
+            get { return this.axMapControl1; }
         }
 
         public string TJID { get; set; }
     }
 }
-

@@ -45,13 +45,15 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.dt.DefaultView.AllowNew = false;
             this.dt.DefaultView.AllowEdit = true;
             DataGridTableStyle table = new DataGridTableStyle();
-            DataGridTextBoxColumn column = new DataGridTextBoxColumn {
+            DataGridTextBoxColumn column = new DataGridTextBoxColumn
+            {
                 MappingName = "层名",
                 HeaderText = "层名",
                 Alignment = HorizontalAlignment.Center
             };
             table.GridColumnStyles.Add(column);
-            DataGridBoolColumn column2 = new DataGridBoolColumn {
+            DataGridBoolColumn column2 = new DataGridBoolColumn
+            {
                 MappingName = "顶点",
                 Width = 50,
                 HeaderText = "顶点",
@@ -59,7 +61,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 Alignment = HorizontalAlignment.Center
             };
             table.GridColumnStyles.Add(column2);
-            DataGridBoolColumn column3 = new DataGridBoolColumn {
+            DataGridBoolColumn column3 = new DataGridBoolColumn
+            {
                 MappingName = "边",
                 Width = 50,
                 AllowNull = false,
@@ -67,7 +70,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 Alignment = HorizontalAlignment.Center
             };
             table.GridColumnStyles.Add(column3);
-            DataGridBoolColumn column4 = new DataGridBoolColumn {
+            DataGridBoolColumn column4 = new DataGridBoolColumn
+            {
                 MappingName = "端点",
                 Width = 50,
                 HeaderText = "端点",
@@ -75,7 +79,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 Alignment = HorizontalAlignment.Center
             };
             table.GridColumnStyles.Add(column4);
-            DataGridBoolColumn column5 = new DataGridBoolColumn {
+            DataGridBoolColumn column5 = new DataGridBoolColumn
+            {
                 MappingName = "垂足点",
                 Width = 50,
                 HeaderText = "垂足点",
@@ -101,12 +106,17 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 }
                 else if ((layer is IFeatureLayer) && !this.LayerIsInSnapConfig(layer as IFeatureLayer))
                 {
-                    LayerSnapInfo lSInfo = new LayerSnapInfo {
+                    LayerSnapInfo lSInfo = new LayerSnapInfo
+                    {
                         Layer = layer as IFeatureLayer
                     };
                     this.GetSnapInfo(ref lSInfo);
                     this.m_pArray.Add(lSInfo);
-                    object[] values = new object[] { layer.Name, lSInfo.bSnapVertex, lSInfo.bSnapBoundary, lSInfo.bSnapEndPoint, lSInfo.bVerticalSnap };
+                    object[] values = new object[]
+                    {
+                        layer.Name, lSInfo.bSnapVertex, lSInfo.bSnapBoundary, lSInfo.bSnapEndPoint,
+                        lSInfo.bVerticalSnap
+                    };
                     this.dt.Rows.Add(values);
                 }
             }
@@ -123,12 +133,17 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 }
                 else if ((layer is IFeatureLayer) && !this.LayerIsInSnapConfig(layer as IFeatureLayer))
                 {
-                    LayerSnapInfo lSInfo = new LayerSnapInfo {
+                    LayerSnapInfo lSInfo = new LayerSnapInfo
+                    {
                         Layer = layer as IFeatureLayer
                     };
                     this.GetSnapInfo(ref lSInfo);
                     this.m_pArray.Add(lSInfo);
-                    object[] values = new object[] { layer.Name, lSInfo.bSnapVertex, lSInfo.bSnapBoundary, lSInfo.bSnapEndPoint, lSInfo.bVerticalSnap };
+                    object[] values = new object[]
+                    {
+                        layer.Name, lSInfo.bSnapVertex, lSInfo.bSnapBoundary, lSInfo.bSnapEndPoint,
+                        lSInfo.bVerticalSnap
+                    };
                     this.dt.Rows.Add(values);
                 }
             }
@@ -156,7 +171,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
- private void dt_ColumnChanged(object sender, DataColumnChangeEventArgs e)
+        private void dt_ColumnChanged(object sender, DataColumnChangeEventArgs e)
         {
             if (this.m_CanDo)
             {
@@ -280,12 +295,17 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 else if (layer2 is IFeatureLayer)
                 {
                     IFeatureLayer layer = layer2 as IFeatureLayer;
-                    LayerSnapInfo lSInfo = new LayerSnapInfo {
+                    LayerSnapInfo lSInfo = new LayerSnapInfo
+                    {
                         Layer = layer
                     };
                     this.GetSnapInfo(ref lSInfo);
                     this.m_pArray.Add(lSInfo);
-                    object[] values = new object[] { layer.Name, lSInfo.bSnapVertex, lSInfo.bSnapBoundary, lSInfo.bSnapEndPoint, lSInfo.bVerticalSnap };
+                    object[] values = new object[]
+                    {
+                        layer.Name, lSInfo.bSnapVertex, lSInfo.bSnapBoundary, lSInfo.bSnapEndPoint,
+                        lSInfo.bVerticalSnap
+                    };
                     this.dt.Rows.Add(values);
                 }
             }
@@ -302,7 +322,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
- public void InitSnapEnvironment()
+        public void InitSnapEnvironment()
         {
             SnapConfigControl.LayerSnapInfo element;
             int i;
@@ -330,12 +350,13 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
             if (this.m_pEngineSnapEnvironment == null)
             {
-                this.m_pSnapEnvironment.SnapToleranceUnits = (esriEngineSnapToleranceUnits)this.cboSnapUnits.SelectedIndex;
+                this.m_pSnapEnvironment.SnapToleranceUnits =
+                    (esriEngineSnapToleranceUnits) this.cboSnapUnits.SelectedIndex;
                 ApplicationRef.Application.UseSnap = this.chkStartSnap.Checked;
                 this.m_pSnapEnvironment.ClearSnapAgents();
                 for (i = 0; i < this.m_pArray.Count; i++)
                 {
-                    element = (SnapConfigControl.LayerSnapInfo)this.m_pArray.Element[i];
+                    element = (SnapConfigControl.LayerSnapInfo) this.m_pArray.Element[i];
                     hitType = element.HitType;
                     if (hitType != 0)
                     {
@@ -359,17 +380,18 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             else
             {
                 this.m_pEngineSnapEnvironment.ClearSnapAgents();
-                this.m_pEngineSnapEnvironment.SnapToleranceUnits = (esriEngineSnapToleranceUnits)this.cboSnapUnits.SelectedIndex;
+                this.m_pEngineSnapEnvironment.SnapToleranceUnits =
+                    (esriEngineSnapToleranceUnits) this.cboSnapUnits.SelectedIndex;
                 for (i = 0; i < this.m_pArray.Count; i++)
                 {
-                    element = (SnapConfigControl.LayerSnapInfo)this.m_pArray.Element[i];
+                    element = (SnapConfigControl.LayerSnapInfo) this.m_pArray.Element[i];
                     hitType = element.HitType;
                     if (hitType != 0)
                     {
                         IEngineFeatureSnapAgent engineFeatureSnapClass = new EngineFeatureSnapClass()
                         {
                             FeatureClass = element.Layer.FeatureClass,
-                            HitType = (esriGeometryHitPartType)hitType
+                            HitType = (esriGeometryHitPartType) hitType
                         };
                         this.m_pEngineSnapEnvironment.AddSnapAgent(engineFeatureSnapClass);
                     }
@@ -382,9 +404,6 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
-       
-
-       
 
         private bool LayerIsExit(IGroupLayer pGroupLayer, ILayer pFindLayer)
         {
@@ -445,12 +464,17 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 else if (layer is IFeatureLayer)
                 {
                     IFeatureLayer layer2 = layer as IFeatureLayer;
-                    LayerSnapInfo lSInfo = new LayerSnapInfo {
+                    LayerSnapInfo lSInfo = new LayerSnapInfo
+                    {
                         Layer = layer2
                     };
                     this.GetSnapInfo(ref lSInfo);
                     this.m_pArray.Add(lSInfo);
-                    object[] values = new object[] { layer2.Name, lSInfo.bSnapVertex, lSInfo.bSnapBoundary, lSInfo.bSnapEndPoint, lSInfo.bVerticalSnap };
+                    object[] values = new object[]
+                    {
+                        layer2.Name, lSInfo.bSnapVertex, lSInfo.bSnapBoundary, lSInfo.bSnapEndPoint,
+                        lSInfo.bVerticalSnap
+                    };
                     this.dt.Rows.Add(values);
                 }
             }
@@ -463,12 +487,17 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 IFeatureLayer pFindLayer = Item as IFeatureLayer;
                 if (!this.LayerIsInSnapConfig(pFindLayer))
                 {
-                    LayerSnapInfo lSInfo = new LayerSnapInfo {
+                    LayerSnapInfo lSInfo = new LayerSnapInfo
+                    {
                         Layer = pFindLayer
                     };
                     this.GetSnapInfo(ref lSInfo);
                     this.m_pArray.Add(lSInfo);
-                    object[] values = new object[] { pFindLayer.Name, lSInfo.bSnapVertex, lSInfo.bSnapBoundary, lSInfo.bSnapEndPoint, lSInfo.bVerticalSnap };
+                    object[] values = new object[]
+                    {
+                        pFindLayer.Name, lSInfo.bSnapVertex, lSInfo.bSnapBoundary, lSInfo.bSnapEndPoint,
+                        lSInfo.bVerticalSnap
+                    };
                     this.dt.Rows.Add(values);
                 }
             }
@@ -542,10 +571,14 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 }
                 this.m_pApp = value;
                 this.m_pMap = this.m_pApp.FocusMap;
-                (this.m_pMap as IActiveViewEvents_Event).ItemAdded+=(new IActiveViewEvents_ItemAddedEventHandler(this.SnapConfigControl_ItemAdded));
-                (this.m_pMap as IActiveViewEvents_Event).ItemDeleted+=(new IActiveViewEvents_ItemDeletedEventHandler(this.SnapConfigControl_ItemDeleted));
-                (this.m_pApp as IApplicationEvents).OnLayerDeleted += new OnLayerDeletedHandler(this.SnapConfigControl_OnLayerDeleted);
-                (this.m_pApp as IApplicationEvents).OnMapDocumentChangedEvent += new OnMapDocumentChangedEventHandler(this.SnapConfigControl_OnMapDocumentChangedEvent);
+                (this.m_pMap as IActiveViewEvents_Event).ItemAdded +=
+                    (new IActiveViewEvents_ItemAddedEventHandler(this.SnapConfigControl_ItemAdded));
+                (this.m_pMap as IActiveViewEvents_Event).ItemDeleted +=
+                    (new IActiveViewEvents_ItemDeletedEventHandler(this.SnapConfigControl_ItemDeleted));
+                (this.m_pApp as IApplicationEvents).OnLayerDeleted +=
+                    new OnLayerDeletedHandler(this.SnapConfigControl_OnLayerDeleted);
+                (this.m_pApp as IApplicationEvents).OnMapDocumentChangedEvent +=
+                    new OnMapDocumentChangedEventHandler(this.SnapConfigControl_OnMapDocumentChangedEvent);
                 if (flag)
                 {
                     this.m_CanDo = false;
@@ -557,38 +590,26 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         public DockingStyle DefaultDockingStyle
         {
-            get
-            {
-                return DockingStyle.Left;
-            }
+            get { return DockingStyle.Left; }
         }
 
         public IEngineSnapEnvironment EngineSnapEnvironment
         {
-            set
-            {
-                this.m_pEngineSnapEnvironment = value;
-            }
+            set { this.m_pEngineSnapEnvironment = value; }
         }
 
         public DockContentHandler DockHandler { get; }
 
         string IDockContent.Name
         {
-            get
-            {
-                return base.Name;
-            }
+            get { return base.Name; }
         }
 
         public int Width { get; set; }
 
         int IDockContent.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
             set { base.Width = value; }
         }
 
@@ -602,8 +623,10 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                     flag = true;
                 }
                 this.m_pMap = value;
-                (this.m_pMap as IActiveViewEvents_Event).ItemAdded+=(new IActiveViewEvents_ItemAddedEventHandler(this.SnapConfigControl_ItemAdded));
-                (this.m_pMap as IActiveViewEvents_Event).ItemDeleted+=(new IActiveViewEvents_ItemDeletedEventHandler(this.SnapConfigControl_ItemDeleted));
+                (this.m_pMap as IActiveViewEvents_Event).ItemAdded +=
+                    (new IActiveViewEvents_ItemAddedEventHandler(this.SnapConfigControl_ItemAdded));
+                (this.m_pMap as IActiveViewEvents_Event).ItemDeleted +=
+                    (new IActiveViewEvents_ItemDeletedEventHandler(this.SnapConfigControl_ItemDeleted));
                 if (flag)
                 {
                     this.m_CanDo = false;
@@ -615,10 +638,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         public ISnapEnvironment SnapEnvironment
         {
-            set
-            {
-                this.m_pSnapEnvironment = value;
-            }
+            set { this.m_pSnapEnvironment = value; }
         }
 
         private partial class LayerSnapInfo
@@ -652,4 +672,3 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         }
     }
 }
-

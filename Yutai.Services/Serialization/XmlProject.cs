@@ -10,7 +10,7 @@ namespace Yutai.Services.Serialization
     [DataContract(Name = "YutaiGIS", Namespace = "")]
     public class XmlProject
     {
-       public XmlProject(ISecureContext context, string filename)
+        public XmlProject(ISecureContext context, string filename)
         {
             /*int selectedHandle = context.Legend.SelectedLayerHandle;
 
@@ -42,29 +42,28 @@ namespace Yutai.Services.Serialization
 
         public XmlPlugin FindPlugin(string pluginGuid)
         {
-            Guid findGuid=new Guid(pluginGuid);
+            Guid findGuid = new Guid(pluginGuid);
             return Plugins.FirstOrDefault(c => c.Guid == findGuid);
         }
 
-        
 
-        [DataMember(Name = "MapDoc",Order=0)]
+        [DataMember(Name = "MapDoc", Order = 0)]
         public string MapDocumentName { get; set; }
 
         [DataMember(Name = "SceneDoc", Order = 1)]
         public string SceneDocumentName { get; set; }
 
-        [DataMember(Name="ViewStyle", Order = 2)]
+        [DataMember(Name = "ViewStyle", Order = 2)]
         public int ViewStyle { get; set; }
 
-        [DataMember(IsRequired = false,Order = 3)]
+        [DataMember(IsRequired = false, Order = 3)]
         public XmlEnvelope Envelope { get; set; }
 
-        [DataMember(IsRequired = false,Order = 4)]
+        [DataMember(IsRequired = false, Order = 4)]
         public List<XmlPlugin> Plugins { get; set; }
 
-      
-        [DataMember(IsRequired = false,Order = 5)]
+
+        [DataMember(IsRequired = false, Order = 5)]
         public XmlProjectSettings Settings { get; set; }
 
         [DataMember(IsRequired = false, Order = 6)]

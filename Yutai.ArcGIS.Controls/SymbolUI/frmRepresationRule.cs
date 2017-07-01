@@ -23,22 +23,15 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             base.Close();
         }
 
- private void frmRepresationRule_Load(object sender, EventArgs e)
+        private void frmRepresationRule_Load(object sender, EventArgs e)
         {
             base.Controls.Add(this.m_RepresationRuleCtrl);
         }
 
- public IRepresentationRuleItem RepresentationRuleItem
+        public IRepresentationRuleItem RepresentationRuleItem
         {
-            get
-            {
-                return this.m_RepresationRuleCtrl.RepresentationRuleItem;
-            }
-            set
-            {
-                this.m_RepresationRuleCtrl.RepresentationRuleItem = value;
-            }
+            get { return this.m_RepresationRuleCtrl.RepresentationRuleItem; }
+            set { this.m_RepresationRuleCtrl.RepresentationRuleItem = value; }
         }
     }
 }
-

@@ -83,6 +83,7 @@ namespace Yutai.ArcGIS.Common
                 throw new Exception(exception.Message);
             }
         }
+
         public static void AddDataset(IBasicMap ibasicMap_0, IDataset idataset_0, string string_0)
         {
             if (string_0 == null)
@@ -109,7 +110,7 @@ namespace Yutai.ArcGIS.Common
                     {
                         if (class2.FeatureType == esriFeatureType.esriFTDimension)
                         {
-                                IFeatureLayer dimensionLayer = new DimensionLayer() as IFeatureLayer;
+                            IFeatureLayer dimensionLayer = new DimensionLayer() as IFeatureLayer;
                             dimensionLayer.FeatureClass = class2;
                             dimensionLayer.Name = string_0 + class2.AliasName;
                             layer = dimensionLayer as IFeatureLayer;
@@ -117,7 +118,8 @@ namespace Yutai.ArcGIS.Common
                         }
                         else
                         {
-                            layer = new FeatureLayer{
+                            layer = new FeatureLayer
+                            {
                                 FeatureClass = class2,
                                 Name = string_0 + class2.AliasName
                             };
@@ -149,7 +151,8 @@ namespace Yutai.ArcGIS.Common
                         IFeatureClass class4 = class3.Next();
                         while (class4 != null)
                         {
-                            layer7 = new FeatureLayer{
+                            layer7 = new FeatureLayer
+                            {
                                 FeatureClass = class4,
                                 Name = string_0 + (class4 as IDataset).Name
                             };
@@ -160,7 +163,8 @@ namespace Yutai.ArcGIS.Common
                         class3.Reset();
                         for (class4 = class3.Next(); class4 != null; class4 = class3.Next())
                         {
-                            layer7 = new FeatureLayer{
+                            layer7 = new FeatureLayer
+                            {
                                 FeatureClass = class4,
                                 Name = string_0 + (class4 as IDataset).Name
                             };
@@ -170,7 +174,8 @@ namespace Yutai.ArcGIS.Common
                         class3.Reset();
                         for (class4 = class3.Next(); class4 != null; class4 = class3.Next())
                         {
-                            layer7 = new FeatureLayer{
+                            layer7 = new FeatureLayer
+                            {
                                 FeatureClass = class4,
                                 Name = string_0 + (class4 as IDataset).Name
                             };
@@ -180,7 +185,8 @@ namespace Yutai.ArcGIS.Common
                         class3.Reset();
                         for (class4 = class3.Next(); class4 != null; class4 = class3.Next())
                         {
-                            layer7 = new FeatureLayer{
+                            layer7 = new FeatureLayer
+                            {
                                 FeatureClass = class4,
                                 Name = string_0 + (class4 as IDataset).Name
                             };
@@ -201,7 +207,8 @@ namespace Yutai.ArcGIS.Common
                 case esriDatasetType.esriDTTable:
                     try
                     {
-                        IRasterCatalogTable pCatalog = new RasterCatalogTable{
+                        IRasterCatalogTable pCatalog = new RasterCatalogTable
+                        {
                             Table = (ITable) idataset_0
                         };
                         pCatalog.Update();
@@ -220,18 +227,20 @@ namespace Yutai.ArcGIS.Common
                             for (int i = 0; i < tables.StandaloneTableCount; i++)
                             {
                                 ITable table = tables.get_StandaloneTable(i).Table;
-                                if (connectionProperties.IsEqual((table as IDataset).Workspace.ConnectionProperties) && ((table as IDataset).Name == idataset_0.Name))
+                                if (connectionProperties.IsEqual((table as IDataset).Workspace.ConnectionProperties) &&
+                                    ((table as IDataset).Name == idataset_0.Name))
                                 {
                                     goto Label_03E1;
                                 }
                             }
                             goto Label_03E4;
-                        Label_03E1:
+                            Label_03E1:
                             flag = true;
-                        Label_03E4:
+                            Label_03E4:
                             if (!flag)
                             {
-                                IStandaloneTable table3 = new StandaloneTable{
+                                IStandaloneTable table3 = new StandaloneTable
+                                {
                                     Table = idataset_0 as ITable
                                 };
                                 tables.AddStandaloneTable(table3);
@@ -255,7 +264,8 @@ namespace Yutai.ArcGIS.Common
                 }
                 case esriDatasetType.esriDTTin:
                 {
-                    ITinLayer layer4 = new TinLayer{
+                    ITinLayer layer4 = new TinLayer
+                    {
                         Dataset = (ITin) idataset_0,
                         Name = string_0 + idataset_0.Name
                     };
@@ -307,7 +317,8 @@ namespace Yutai.ArcGIS.Common
 
         public static void AddFeatureLayer(IBasicMap ibasicMap_0, IFeatureClass ifeatureClass_0)
         {
-            IFeatureLayer pLayer = new FeatureLayer{
+            IFeatureLayer pLayer = new FeatureLayer
+            {
                 FeatureClass = ifeatureClass_0,
                 Name = ifeatureClass_0.AliasName
             };
@@ -318,7 +329,8 @@ namespace Yutai.ArcGIS.Common
         {
             for (int i = 0; i < ifeatureClass_0.Length; i++)
             {
-                IFeatureLayer pLayer = new FeatureLayer{
+                IFeatureLayer pLayer = new FeatureLayer
+                {
                     FeatureClass = ifeatureClass_0[i],
                     Name = ifeatureClass_0[i].AliasName
                 };
@@ -400,7 +412,8 @@ namespace Yutai.ArcGIS.Common
         public static IFeatureLayer FindFeatureLayerByFCName(IBasicMap pMap, string fcName, bool checkEdit)
         {
             string str = fcName.ToLower();
-            UID uid = new UID{
+            UID uid = new UID
+            {
                 Value = "{6CA416B1-E160-11D2-9F4E-00C04F6BC78E}"
             };
             IEnumLayer layer = pMap.get_Layers(uid, true);
@@ -409,14 +422,15 @@ namespace Yutai.ArcGIS.Common
             {
                 if (layer2 is IFeatureLayer)
                 {
-                    string[] strArray = ((layer2 as IFeatureLayer).FeatureClass as IDataset).Name.Split(new char[] { '.' });
+                    string[] strArray = ((layer2 as IFeatureLayer).FeatureClass as IDataset).Name.Split(new char[] {'.'});
                     if (strArray[strArray.Length - 1].ToLower() == str)
                     {
                         if (!checkEdit)
                         {
                             return (layer2 as IFeatureLayer);
                         }
-                        IWorkspaceEdit workspace = ((layer2 as IFeatureLayer).FeatureClass as IDataset).Workspace as IWorkspaceEdit;
+                        IWorkspaceEdit workspace =
+                            ((layer2 as IFeatureLayer).FeatureClass as IDataset).Workspace as IWorkspaceEdit;
                         if (workspace.IsBeingEdited())
                         {
                             return (layer2 as IFeatureLayer);
@@ -576,8 +590,8 @@ namespace Yutai.ArcGIS.Common
                 IActiveView view = imap_0 as IActiveView;
                 tagRECT deviceFrame = view.ScreenDisplay.DisplayTransformation.get_DeviceFrame();
                 double num = deviceFrame.right - deviceFrame.left;
-                double num2 = view.Extent.Width * view.ScreenDisplay.DisplayTransformation.Resolution;
-                return (num2 / num);
+                double num2 = view.Extent.Width*view.ScreenDisplay.DisplayTransformation.Resolution;
+                return (num2/num);
             }
             return imap_0.MapScale;
         }
@@ -596,7 +610,8 @@ namespace Yutai.ArcGIS.Common
                         return representationClassByFeature;
                     }
                 }
-                else if (((layer is IFeatureLayer) && ((layer as IFeatureLayer).FeatureClass == ifeature_0.Class)) && ((layer as IGeoFeatureLayer).Renderer is IRepresentationRenderer))
+                else if (((layer is IFeatureLayer) && ((layer as IFeatureLayer).FeatureClass == ifeature_0.Class)) &&
+                         ((layer as IGeoFeatureLayer).Renderer is IRepresentationRenderer))
                 {
                     return ((layer as IGeoFeatureLayer).Renderer as IRepresentationRenderer).RepresentationClass;
                 }
@@ -604,7 +619,8 @@ namespace Yutai.ArcGIS.Common
             return null;
         }
 
-        internal static IRepresentationClass GetRepresentationClassByFeature(ICompositeLayer icompositeLayer_0, IFeature ifeature_0)
+        internal static IRepresentationClass GetRepresentationClassByFeature(ICompositeLayer icompositeLayer_0,
+            IFeature ifeature_0)
         {
             IRepresentationClass representationClassByFeature = null;
             for (int i = 0; i < icompositeLayer_0.Count; i++)
@@ -618,7 +634,8 @@ namespace Yutai.ArcGIS.Common
                         return representationClassByFeature;
                     }
                 }
-                else if (((layer is IFeatureLayer) && ((layer as IFeatureLayer).FeatureClass == ifeature_0.Class)) && ((layer as IGeoFeatureLayer).Renderer is IRepresentationRenderer))
+                else if (((layer is IFeatureLayer) && ((layer as IFeatureLayer).FeatureClass == ifeature_0.Class)) &&
+                         ((layer as IGeoFeatureLayer).Renderer is IRepresentationRenderer))
                 {
                     return ((layer as IGeoFeatureLayer).Renderer as IRepresentationRenderer).RepresentationClass;
                 }
@@ -653,4 +670,3 @@ namespace Yutai.ArcGIS.Common
         }
     }
 }
-

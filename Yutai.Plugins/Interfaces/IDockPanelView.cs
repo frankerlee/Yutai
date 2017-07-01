@@ -5,7 +5,7 @@ namespace Yutai.Plugins.Interfaces
 {
     public interface IDockPanelView
     {
-        string DockName { get;  }
+        string DockName { get; }
         Bitmap Image { get; }
         string Caption { get; set; }
         Size DefaultSize { get; }

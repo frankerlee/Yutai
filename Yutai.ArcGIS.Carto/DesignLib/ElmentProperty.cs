@@ -50,13 +50,15 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 return false;
             }
             IElement element = select.SelectedElement(0);
-            IEditElementPropertiesOperation operation = new EditElementPropertiesOperation {
+            IEditElementPropertiesOperation operation = new EditElementPropertiesOperation
+            {
                 ActiveView = this._hookHelper.ActiveView,
                 Element = element
             };
             if (element is ITextElement)
             {
-                sheet = new frmElementProperty {
+                sheet = new frmElementProperty
+                {
                     Title = "属性"
                 };
                 page = new TextSetupCtrl();
@@ -77,7 +79,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 IEnvelope envelope;
                 if (element is IMapFrame)
                 {
-                    sheet = new frmElementProperty {
+                    sheet = new frmElementProperty
+                    {
                         Title = "数据框 属性"
                     };
                     page = null;
@@ -99,7 +102,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 }
                 else if (element is IPictureElement)
                 {
-                    sheet = new frmElementProperty {
+                    sheet = new frmElementProperty
+                    {
                         Title = "图像 属性"
                     };
                     page = null;
@@ -119,7 +123,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 }
                 else if (element is IMapSurroundFrame)
                 {
-                    sheet = new frmElementProperty {
+                    sheet = new frmElementProperty
+                    {
                         Title = "属性"
                     };
                     page = null;
@@ -166,7 +171,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 }
                 else if (element is IFrameElement)
                 {
-                    sheet = new frmElementProperty {
+                    sheet = new frmElementProperty
+                    {
                         Title = "属性"
                     };
                     page = null;
@@ -186,7 +192,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 }
                 else if (element is IFillShapeElement)
                 {
-                    sheet = new frmElementProperty {
+                    sheet = new frmElementProperty
+                    {
                         Title = "属性"
                     };
                     page = null;
@@ -206,7 +213,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 }
                 else if (element is ILineElement)
                 {
-                    sheet = new frmElementProperty {
+                    sheet = new frmElementProperty
+                    {
                         Title = "属性"
                     };
                     page = null;
@@ -224,7 +232,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 }
                 else if (element is IMarkerElement)
                 {
-                    sheet = new frmElementProperty {
+                    sheet = new frmElementProperty
+                    {
                         Title = "属性"
                     };
                     page = null;
@@ -267,4 +276,3 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         }
     }
 }
-

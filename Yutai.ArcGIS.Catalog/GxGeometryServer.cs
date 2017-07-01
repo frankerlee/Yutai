@@ -10,7 +10,8 @@ using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Catalog
 {
-    public class GxGeometryServer : IGxObject, IGxObjectEdit, IGxObjectProperties, IGxObjectUI, IGxContextMenuWap, IGxAGSObject, IGxLayerSource
+    public class GxGeometryServer : IGxObject, IGxObjectEdit, IGxObjectProperties, IGxObjectUI, IGxContextMenuWap,
+        IGxAGSObject, IGxLayerSource
     {
         private IAGSServerConnection iagsserverConnection_0 = null;
         private IAGSServerObjectName iagsserverObjectName_0 = null;
@@ -53,13 +54,14 @@ namespace Yutai.ArcGIS.Catalog
             {
                 string name = this.iagsserverObjectName_0.Name;
                 string type = this.iagsserverObjectName_0.Type;
-                (this.iagsserverConnection_0 as IAGSServerConnectionAdmin).ServerObjectAdmin.DeleteConfiguration(name, type);
+                (this.iagsserverConnection_0 as IAGSServerConnectionAdmin).ServerObjectAdmin.DeleteConfiguration(name,
+                    type);
                 this.Detach();
             }
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
         }
 
@@ -126,24 +128,22 @@ namespace Yutai.ArcGIS.Catalog
 
         public IAGSServerObjectName AGSServerObjectName
         {
-            get
-            {
-                return this.iagsserverObjectName_0;
-            }
+            get { return this.iagsserverObjectName_0; }
             set
             {
                 this.iagsserverObjectName_0 = value;
-                this.iagsserverConnection_0 = (this.iagsserverObjectName_0.AGSServerConnectionName as IName).Open() as IAGSServerConnection;
-                this.int_0 = Convert.ToInt32(this.iagsserverObjectName_0.AGSServerConnectionName.ConnectionProperties.GetProperty("CONNECTIONMODE"));
+                this.iagsserverConnection_0 =
+                    (this.iagsserverObjectName_0.AGSServerConnectionName as IName).Open() as IAGSServerConnection;
+                this.int_0 =
+                    Convert.ToInt32(
+                        this.iagsserverObjectName_0.AGSServerConnectionName.ConnectionProperties.GetProperty(
+                            "CONNECTIONMODE"));
             }
         }
 
         public string BaseName
         {
-            get
-            {
-                return "";
-            }
+            get { return ""; }
         }
 
         public string Category
@@ -160,18 +160,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public UID ClassID
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public UID ContextMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public string DefaultMapName
@@ -205,18 +199,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public IName InternalObjectName
         {
-            get
-            {
-                return (this.iagsserverObjectName_0 as IName);
-            }
+            get { return (this.iagsserverObjectName_0 as IName); }
         }
 
         public bool IsValid
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         public Bitmap LargeImage
@@ -263,7 +251,7 @@ namespace Yutai.ArcGIS.Catalog
             {
                 if (this.iagsserverObjectName_0 != null)
                 {
-                    string[] strArray = this.iagsserverObjectName_0.Name.Split(new char[] { '/' });
+                    string[] strArray = this.iagsserverObjectName_0.Name.Split(new char[] {'/'});
                     return strArray[strArray.Length - 1];
                 }
                 return "";
@@ -272,17 +260,16 @@ namespace Yutai.ArcGIS.Catalog
 
         public UID NewMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public int NumInstancesInUse
         {
             get
             {
-                return (this.iagsserverConnection_0 as IAGSServerConnectionAdmin).ServerObjectAdmin.GetConfigurationStatus(this.iagsserverObjectName_0.Name, this.iagsserverObjectName_0.Type).InstanceInUseCount;
+                return
+                    (this.iagsserverConnection_0 as IAGSServerConnectionAdmin).ServerObjectAdmin.GetConfigurationStatus(
+                        this.iagsserverObjectName_0.Name, this.iagsserverObjectName_0.Type).InstanceInUseCount;
             }
         }
 
@@ -290,24 +277,20 @@ namespace Yutai.ArcGIS.Catalog
         {
             get
             {
-                return (this.iagsserverConnection_0 as IAGSServerConnectionAdmin).ServerObjectAdmin.GetConfigurationStatus(this.iagsserverObjectName_0.Name, this.iagsserverObjectName_0.Type).InstanceCount;
+                return
+                    (this.iagsserverConnection_0 as IAGSServerConnectionAdmin).ServerObjectAdmin.GetConfigurationStatus(
+                        this.iagsserverObjectName_0.Name, this.iagsserverObjectName_0.Type).InstanceCount;
             }
         }
 
         public IGxObject Parent
         {
-            get
-            {
-                return this.igxObject_0;
-            }
+            get { return this.igxObject_0; }
         }
 
         public int PropertyCount
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         public Bitmap SmallImage
@@ -354,7 +337,9 @@ namespace Yutai.ArcGIS.Catalog
             {
                 try
                 {
-                    IServerObjectConfigurationStatus configurationStatus = (this.iagsserverConnection_0 as IAGSServerConnectionAdmin).ServerObjectAdmin.GetConfigurationStatus(this.iagsserverObjectName_0.Name, this.iagsserverObjectName_0.Type);
+                    IServerObjectConfigurationStatus configurationStatus =
+                        (this.iagsserverConnection_0 as IAGSServerConnectionAdmin).ServerObjectAdmin
+                            .GetConfigurationStatus(this.iagsserverObjectName_0.Name, this.iagsserverObjectName_0.Type);
                     if (configurationStatus.Status == esriConfigurationStatus.esriCSStarted)
                     {
                         return "Started";
@@ -388,4 +373,3 @@ namespace Yutai.ArcGIS.Catalog
         }
     }
 }
-

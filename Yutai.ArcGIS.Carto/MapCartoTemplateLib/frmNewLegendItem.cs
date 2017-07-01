@@ -36,7 +36,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         {
             if (this.jlklenendItem_0 == null)
             {
-                this.jlklenendItem_0 = new MapCartoTemplateLib.YTLegendItem(this.btnStyle.Style as ISymbol, this.txtLegendItemName.Text, this.newSymbolButton1.Style as ISymbol);
+                this.jlklenendItem_0 = new MapCartoTemplateLib.YTLegendItem(this.btnStyle.Style as ISymbol,
+                    this.txtLegendItemName.Text, this.newSymbolButton1.Style as ISymbol);
             }
             else
             {
@@ -69,7 +70,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
- private void frmNewLegendItem_Load(object sender, EventArgs e)
+        private void frmNewLegendItem_Load(object sender, EventArgs e)
         {
             this.bool_0 = true;
             if (this.jlklenendItem_0 != null)
@@ -106,7 +107,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
- private void newSymbolButton1_Click(object sender, EventArgs e)
+        private void newSymbolButton1_Click(object sender, EventArgs e)
         {
             frmSymbolSelector selector = new frmSymbolSelector();
             selector.SetStyleGallery(ApplicationBase.StyleGallery);
@@ -149,10 +150,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         internal MapCartoTemplateLib.YTLegendItem YTLegendItem
         {
-            get
-            {
-                return this.jlklenendItem_0;
-            }
+            get { return this.jlklenendItem_0; }
             set
             {
                 this.bool_1 = false;
@@ -162,11 +160,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public IStyleGallery StyleGallery
         {
-            set
-            {
-                this.istyleGallery_0 = value;
-            }
+            set { this.istyleGallery_0 = value; }
         }
     }
 }
-

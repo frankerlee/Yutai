@@ -99,10 +99,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="TeeChart, Version=7.0.0.0, Culture=neutral, PublicKeyToken=5bb62f07d0104414, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\成都领君科技有限公司\JLKEngine中间件平台V8.0\JLKEngine8.9\TeeChart.DLL</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\CmdSelectAll.cs" />

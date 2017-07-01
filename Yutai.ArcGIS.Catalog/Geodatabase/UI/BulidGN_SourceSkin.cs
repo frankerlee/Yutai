@@ -23,7 +23,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             for (int i = 0; i < this.chkChangeFC.Items.Count; i++)
             {
-                BulidGeometryNetworkHelper.FeatureClassWrap wrap1 = this.chkChangeFC.Items[i] as BulidGeometryNetworkHelper.FeatureClassWrap;
+                BulidGeometryNetworkHelper.FeatureClassWrap wrap1 =
+                    this.chkChangeFC.Items[i] as BulidGeometryNetworkHelper.FeatureClassWrap;
                 this.chkChangeFC.SetItemChecked(i, false);
             }
         }
@@ -32,7 +33,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             for (int i = 0; i < this.chkChangeFC.Items.Count; i++)
             {
-                BulidGeometryNetworkHelper.FeatureClassWrap wrap1 = this.chkChangeFC.Items[i] as BulidGeometryNetworkHelper.FeatureClassWrap;
+                BulidGeometryNetworkHelper.FeatureClassWrap wrap1 =
+                    this.chkChangeFC.Items[i] as BulidGeometryNetworkHelper.FeatureClassWrap;
                 this.chkChangeFC.SetItemChecked(i, true);
             }
         }
@@ -41,10 +43,13 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             for (int i = 0; i < BulidGeometryNetworkHelper.BulidGNHelper.FeatureClassWraps.Count; i++)
             {
-                BulidGeometryNetworkHelper.FeatureClassWrap item = BulidGeometryNetworkHelper.BulidGNHelper.FeatureClassWraps[i] as BulidGeometryNetworkHelper.FeatureClassWrap;
+                BulidGeometryNetworkHelper.FeatureClassWrap item =
+                    BulidGeometryNetworkHelper.BulidGNHelper.FeatureClassWraps[i] as
+                        BulidGeometryNetworkHelper.FeatureClassWrap;
                 if ((item.GeometryType == esriGeometryType.esriGeometryPoint) && item.IsUse)
                 {
-                    this.chkChangeFC.Items.Add(item, item.NetworkClassAncillaryRole == esriNetworkClassAncillaryRole.esriNCARSourceSink);
+                    this.chkChangeFC.Items.Add(item,
+                        item.NetworkClassAncillaryRole == esriNetworkClassAncillaryRole.esriNCARSourceSink);
                 }
             }
             this.bool_0 = true;
@@ -54,7 +59,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             if (this.bool_0)
             {
-                BulidGeometryNetworkHelper.FeatureClassWrap wrap = this.chkChangeFC.Items[e.Index] as BulidGeometryNetworkHelper.FeatureClassWrap;
+                BulidGeometryNetworkHelper.FeatureClassWrap wrap =
+                    this.chkChangeFC.Items[e.Index] as BulidGeometryNetworkHelper.FeatureClassWrap;
                 if (e.NewValue == CheckState.Checked)
                 {
                     wrap.NetworkClassAncillaryRole = esriNetworkClassAncillaryRole.esriNCARSourceSink;
@@ -66,7 +72,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
+        private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.radioGroup1.SelectedIndex == 0)
             {
@@ -83,4 +89,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

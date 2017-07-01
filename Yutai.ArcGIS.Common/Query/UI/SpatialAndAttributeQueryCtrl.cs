@@ -94,7 +94,8 @@ namespace Yutai.ArcGIS.Common.Query.UI
                 }
                 IFeatureLayer layer2 = null;
                 layer2 = (this.comboBoxLayer.SelectedItem as LayerObjectWrap).Layer as IFeatureLayer;
-                this.method_3(layer2, cursor as IFeatureCursor, esriSpatialRelIntersects, esriSelectionResultNew, this.memEditWhereCaluse.Text);
+                this.method_3(layer2, cursor as IFeatureCursor, esriSpatialRelIntersects, esriSelectionResultNew,
+                    this.memEditWhereCaluse.Text);
                 (this.imap_0 as IActiveView).Refresh();
                 ComReleaser.ReleaseCOMObject(cursor);
             }
@@ -182,7 +183,7 @@ namespace Yutai.ArcGIS.Common.Query.UI
             }
         }
 
- private void method_0(ComboBoxEdit comboBoxEdit_0, ICompositeLayer icompositeLayer_0, bool bool_0)
+        private void method_0(ComboBoxEdit comboBoxEdit_0, ICompositeLayer icompositeLayer_0, bool bool_0)
         {
             for (int i = 0; i < icompositeLayer_0.Count; i++)
             {
@@ -228,7 +229,8 @@ namespace Yutai.ArcGIS.Common.Query.UI
 
         private bool method_1(ILayer ilayer_0)
         {
-            return ((this.comboBoxLayer.SelectedIndex != -1) && ((this.comboBoxLayer.SelectedItem as LayerObjectWrap).Layer == ilayer_0));
+            return ((this.comboBoxLayer.SelectedIndex != -1) &&
+                    ((this.comboBoxLayer.SelectedItem as LayerObjectWrap).Layer == ilayer_0));
         }
 
         private void method_2(ComboBoxEdit comboBoxEdit_0, bool bool_0)
@@ -277,7 +279,8 @@ namespace Yutai.ArcGIS.Common.Query.UI
             }
         }
 
-        private void method_3(IFeatureLayer ifeatureLayer_0, IFeatureCursor ifeatureCursor_0, esriSpatialRelEnum esriSpatialRelEnum_0, esriSelectionResultEnum esriSelectionResultEnum_0, string string_0)
+        private void method_3(IFeatureLayer ifeatureLayer_0, IFeatureCursor ifeatureCursor_0,
+            esriSpatialRelEnum esriSpatialRelEnum_0, esriSelectionResultEnum esriSelectionResultEnum_0, string string_0)
         {
             IFeature feature = ifeatureCursor_0.NextFeature();
             IFeatureSelection selection = ifeatureLayer_0 as IFeatureSelection;
@@ -307,7 +310,8 @@ namespace Yutai.ArcGIS.Common.Query.UI
                 {
                     try
                     {
-                        ISpatialFilter filter = new SpatialFilter {
+                        ISpatialFilter filter = new SpatialFilter
+                        {
                             SpatialRel = esriSpatialRelEnum_0,
                             WhereClause = string_0
                         };
@@ -349,10 +353,7 @@ namespace Yutai.ArcGIS.Common.Query.UI
 
         public IMap Map
         {
-            set
-            {
-                this.imap_0 = value;
-            }
+            set { this.imap_0 = value; }
         }
 
         internal partial class LayerObjectWrap
@@ -375,12 +376,8 @@ namespace Yutai.ArcGIS.Common.Query.UI
 
             public ILayer Layer
             {
-                get
-                {
-                    return this.ilayer_0;
-                }
+                get { return this.ilayer_0; }
             }
         }
     }
 }
-

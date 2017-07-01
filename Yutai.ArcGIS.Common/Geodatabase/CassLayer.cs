@@ -2,22 +2,22 @@ using System.Collections;
 
 namespace Yutai.ArcGIS.Common.Geodatabase
 {
-	internal class CassLayer
-	{
-		public string Name = "";
+    internal class CassLayer
+    {
+        public string Name = "";
 
-		public int Type = 0;
+        public int Type = 0;
 
-		public string FeatureType = "";
+        public string FeatureType = "";
 
-		public bool HasClosedLine = false;
+        public bool HasClosedLine = false;
 
-		public bool HasUnClosedLine = false;
+        public bool HasUnClosedLine = false;
 
-		public IList AttributeList = new ArrayList();
+        public IList AttributeList = new ArrayList();
 
-		public CassLayer()
-		{
-		}
-	}
+        public CassLayer()
+        {
+        }
+    }
 }

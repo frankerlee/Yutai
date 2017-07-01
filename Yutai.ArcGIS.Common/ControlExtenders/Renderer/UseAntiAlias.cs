@@ -22,4 +22,3 @@ namespace Yutai.ArcGIS.Common.ControlExtenders.Renderer
         }
     }
 }
-

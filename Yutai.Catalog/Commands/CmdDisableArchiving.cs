@@ -11,6 +11,7 @@ namespace Yutai.Plugins.Catalog.Commands
     {
         private IVersionedObject3 iversionedObject3_0 = null;
         private string string_0 = "#NAME#停用存档。\r\n停用存档不删除关联的存档表。是否强制删除关联的存档表？\r\n警告：删除的关联存档表不能恢复。";
+
         public CmdDisableArchiving(IAppContext context)
         {
             OnCreate(context);
@@ -54,10 +55,11 @@ namespace Yutai.Plugins.Catalog.Commands
                                 result = false;
                                 return result;
                             }
-                            if (dataset.Workspace.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace && dataset is IVersionedObject3)
+                            if (dataset.Workspace.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace &&
+                                dataset is IVersionedObject3)
                             {
-                                this.iversionedObject3_0 = (IVersionedObject3)dataset;
-                                IArchivableObject archivableObject = (IArchivableObject)this.iversionedObject3_0;
+                                this.iversionedObject3_0 = (IVersionedObject3) dataset;
+                                IArchivableObject archivableObject = (IArchivableObject) this.iversionedObject3_0;
                                 if (archivableObject.IsArchiving)
                                 {
                                     result = true;
@@ -85,12 +87,12 @@ namespace Yutai.Plugins.Catalog.Commands
 
         public override void OnClick()
         {
-
             try
             {
-                IArchivableObject archivableObject = (IArchivableObject)this.iversionedObject3_0;
+                IArchivableObject archivableObject = (IArchivableObject) this.iversionedObject3_0;
                 string text = this.string_0.Replace("#NAME#", (this.iversionedObject3_0 as IDataset).Name);
-                System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.MessageBox.Show(text, "停用存档", System.Windows.Forms.MessageBoxButtons.YesNoCancel, System.Windows.Forms.MessageBoxIcon.Asterisk);
+                System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.MessageBox.Show(text, "停用存档",
+                    System.Windows.Forms.MessageBoxButtons.YesNoCancel, System.Windows.Forms.MessageBoxIcon.Asterisk);
                 if (dialogResult == System.Windows.Forms.DialogResult.Yes)
                 {
                     archivableObject.DisableArchiving(true, true);
@@ -110,7 +112,7 @@ namespace Yutai.Plugins.Catalog.Commands
         {
             bool flag = false;
             bool flag2 = false;
-            IVersionedObject3 versionedObject = (IVersionedObject3)ifeatureClass_0;
+            IVersionedObject3 versionedObject = (IVersionedObject3) ifeatureClass_0;
             versionedObject.GetVersionRegistrationInfo(out flag, out flag2);
             if (!flag)
             {
@@ -121,7 +123,7 @@ namespace Yutai.Plugins.Catalog.Commands
                 versionedObject.UnRegisterAsVersioned3(false);
                 versionedObject.RegisterAsVersioned3(false);
             }
-            IArchivableObject archivableObject = (IArchivableObject)versionedObject;
+            IArchivableObject archivableObject = (IArchivableObject) versionedObject;
             if (archivableObject.IsArchiving)
             {
                 archivableObject.DisableArchiving(true, true);

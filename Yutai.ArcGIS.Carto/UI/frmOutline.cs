@@ -53,7 +53,8 @@ namespace Yutai.ArcGIS.Carto.UI
                         }
                         else
                         {
-                            selectStyleGalleryItem = new MyStyleGalleryItem {
+                            selectStyleGalleryItem = new MyStyleGalleryItem
+                            {
                                 Name = "<定制>",
                                 Item = item
                             };
@@ -63,7 +64,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     }
                     else
                     {
-                        selectStyleGalleryItem = new MyStyleGalleryItem {
+                        selectStyleGalleryItem = new MyStyleGalleryItem
+                        {
                             Name = "<定制>",
                             Item = item
                         };
@@ -101,7 +103,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     {
                         pSym = selector.GetSymbol() as IBackground;
                         this.bool_0 = false;
-                        selectStyleGalleryItem = this.cboBackground.GetStyleGalleryItemAt(this.cboBackground.Items.Count - 1);
+                        selectStyleGalleryItem =
+                            this.cboBackground.GetStyleGalleryItemAt(this.cboBackground.Items.Count - 1);
                         if (selectStyleGalleryItem != null)
                         {
                             if (selectStyleGalleryItem.Name == "<定制>")
@@ -110,7 +113,8 @@ namespace Yutai.ArcGIS.Carto.UI
                             }
                             else
                             {
-                                selectStyleGalleryItem = new MyStyleGalleryItem {
+                                selectStyleGalleryItem = new MyStyleGalleryItem
+                                {
                                     Name = "<定制>",
                                     Item = pSym
                                 };
@@ -120,7 +124,8 @@ namespace Yutai.ArcGIS.Carto.UI
                         }
                         else
                         {
-                            selectStyleGalleryItem = new MyStyleGalleryItem {
+                            selectStyleGalleryItem = new MyStyleGalleryItem
+                            {
                                 Name = "<定制>",
                                 Item = pSym
                             };
@@ -161,7 +166,8 @@ namespace Yutai.ArcGIS.Carto.UI
                         }
                         else
                         {
-                            selectStyleGalleryItem = new MyStyleGalleryItem {
+                            selectStyleGalleryItem = new MyStyleGalleryItem
+                            {
                                 Name = "<定制>",
                                 Item = item
                             };
@@ -171,7 +177,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     }
                     else
                     {
-                        selectStyleGalleryItem = new MyStyleGalleryItem {
+                        selectStyleGalleryItem = new MyStyleGalleryItem
+                        {
                             Name = "<定制>",
                             Item = item
                         };
@@ -218,7 +225,8 @@ namespace Yutai.ArcGIS.Carto.UI
                             }
                             else
                             {
-                                selectStyleGalleryItem = new MyStyleGalleryItem {
+                                selectStyleGalleryItem = new MyStyleGalleryItem
+                                {
                                     Name = "<定制>",
                                     Item = pSym
                                 };
@@ -228,7 +236,8 @@ namespace Yutai.ArcGIS.Carto.UI
                         }
                         else
                         {
-                            selectStyleGalleryItem = new MyStyleGalleryItem {
+                            selectStyleGalleryItem = new MyStyleGalleryItem
+                            {
                                 Name = "<定制>",
                                 Item = pSym
                             };
@@ -387,7 +396,8 @@ namespace Yutai.ArcGIS.Carto.UI
                         }
                         else
                         {
-                            selectStyleGalleryItem = new MyStyleGalleryItem {
+                            selectStyleGalleryItem = new MyStyleGalleryItem
+                            {
                                 Name = "<定制>",
                                 Item = item
                             };
@@ -397,7 +407,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     }
                     else
                     {
-                        selectStyleGalleryItem = new MyStyleGalleryItem {
+                        selectStyleGalleryItem = new MyStyleGalleryItem
+                        {
                             Name = "<定制>",
                             Item = item
                         };
@@ -444,7 +455,8 @@ namespace Yutai.ArcGIS.Carto.UI
                             }
                             else
                             {
-                                selectStyleGalleryItem = new MyStyleGalleryItem {
+                                selectStyleGalleryItem = new MyStyleGalleryItem
+                                {
                                     Name = "<定制>",
                                     Item = pSym
                                 };
@@ -454,7 +466,8 @@ namespace Yutai.ArcGIS.Carto.UI
                         }
                         else
                         {
-                            selectStyleGalleryItem = new MyStyleGalleryItem {
+                            selectStyleGalleryItem = new MyStyleGalleryItem
+                            {
                                 Name = "<定制>",
                                 Item = pSym
                             };
@@ -486,7 +499,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void frmOutline_Load(object sender, EventArgs e)
+        private void frmOutline_Load(object sender, EventArgs e)
         {
             this.cboBorder.Add(null);
             this.cboBackground.Add(null);
@@ -529,7 +542,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.bool_0 = true;
         }
 
- private void method_0()
+        private void method_0()
         {
             IElement element2;
             IGraphicsContainerSelect select = this.ipageLayout_0 as IGraphicsContainerSelect;
@@ -600,7 +613,8 @@ namespace Yutai.ArcGIS.Carto.UI
             }
             else
             {
-                oO = new MyStyleGalleryItem {
+                oO = new MyStyleGalleryItem
+                {
                     Name = "<定制>",
                     Item = border
                 };
@@ -615,7 +629,8 @@ namespace Yutai.ArcGIS.Carto.UI
             }
             else
             {
-                oO = new MyStyleGalleryItem {
+                oO = new MyStyleGalleryItem
+                {
                     Name = "<定制>",
                     Item = background
                 };
@@ -633,7 +648,8 @@ namespace Yutai.ArcGIS.Carto.UI
             }
             else
             {
-                oO = new MyStyleGalleryItem {
+                oO = new MyStyleGalleryItem
+                {
                     Name = "<定制>",
                     Item = shadow
                 };
@@ -705,11 +721,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IPageLayout PageLayout
         {
-            set
-            {
-                this.ipageLayout_0 = value;
-            }
+            set { this.ipageLayout_0 = value; }
         }
     }
 }
-

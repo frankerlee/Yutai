@@ -26,6 +26,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             pDSName = pDSName.ToUpper();
             return pDSName;
         }
+
         public static string GetClassShortName(IDataset paramDS)
         {
             if (paramDS == null)
@@ -53,6 +54,7 @@ namespace Yutai.ArcGIS.Common.Helpers
                 return "";
             }
         }
+
         public static string GetClassShortName(string paramName)
         {
             string str = paramName;
@@ -63,6 +65,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             }
             return str;
         }
+
         public static ArrayList GetIntersectFeature(IGeoFeatureLayer pLayer, IGeometry pGeom)
         {
             ArrayList list = new ArrayList();
@@ -90,10 +93,12 @@ namespace Yutai.ArcGIS.Common.Helpers
             }
             return list;
         }
+
         public static ArrayList GetIntersectFeature(IGeoFeatureLayer pLayer, IPolygon pPoly)
         {
-            return GetIntersectFeature(pLayer, (IGeometry)pPoly);
+            return GetIntersectFeature(pLayer, (IGeometry) pPoly);
         }
+
         public static List<IFeature> GetIntersectFeature(IFeatureClass pClass, IGeometry pGeom)
         {
             List<IFeature> list = new List<IFeature>();
@@ -121,6 +126,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             }
             return list;
         }
+
         public static string GetLayerAliasName(IMap pMap, string sLayerName)
         {
             return QueryLayerByModelName(pMap, sLayerName).FeatureClass.AliasName;
@@ -138,6 +144,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             }
             return -1;
         }
+
         public static int IndexOfLayer(IMap pMap, string sAliasName)
         {
             if (pMap != null)
@@ -156,6 +163,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             }
             return -1;
         }
+
         public static string LayerTypeName(ILayer paramLayer)
         {
             string str = "";
@@ -182,6 +190,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             }
             return str;
         }
+
         public static void LoadLayerFromStream(ILayer paramLayer, byte[] paramLayerContent)
         {
             if (((paramLayer != null) && (paramLayerContent != null)) && (paramLayerContent.Length != 0))
@@ -189,9 +198,10 @@ namespace Yutai.ArcGIS.Common.Helpers
                 IPersistStream stream = paramLayer as IPersistStream;
                 XMLStream class2 = new XMLStream();
                 class2.LoadFromBytes(ref paramLayerContent);
-                stream.Load((IStream)class2);
+                stream.Load((IStream) class2);
             }
         }
+
         public static ILayer QueryLayerByDisplayName(IMap paramMap, string layerName)
         {
             int num = paramMap.LayerCount;
@@ -206,6 +216,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             }
             return null;
         }
+
         public static IGeoFeatureLayer QueryLayerByModelName(IMap paramMap, string paramModelName)
         {
             if (paramMap != null)
@@ -219,7 +230,10 @@ namespace Yutai.ArcGIS.Common.Helpers
                 for (int i = 0; i < num; i++)
                 {
                     ILayer layer = paramMap.get_Layer(i);
-                    if ((layer is IGeoFeatureLayer) && GetClassShortName((layer as IGeoFeatureLayer).FeatureClass as IDataset).ToUpper().Equals(paramModelName))
+                    if ((layer is IGeoFeatureLayer) &&
+                        GetClassShortName((layer as IGeoFeatureLayer).FeatureClass as IDataset)
+                            .ToUpper()
+                            .Equals(paramModelName))
                     {
                         return (layer as IGeoFeatureLayer);
                     }
@@ -227,6 +241,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             }
             return null;
         }
+
         public static string QueryLayerModelName(ILayer curLayer)
         {
             if (curLayer == null)
@@ -239,6 +254,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             }
             return curLayer.Name;
         }
+
         public static double QueryXYUnit(IGeoFeatureLayer paramLayer)
         {
             if (paramLayer != null)
@@ -247,6 +263,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             }
             return double.NaN;
         }
+
         public static double QueryXYUnit(IFeatureClass paramClass)
         {
             IGeoDataset dataset = paramClass as IGeoDataset;
@@ -261,12 +278,13 @@ namespace Yutai.ArcGIS.Common.Helpers
                     reference.GetFalseOriginAndUnits(out num, out num2, out num3);
                     if (num3 != 0.0)
                     {
-                        return (1.0 / num3);
+                        return (1.0/num3);
                     }
                 }
             }
             return double.NaN;
         }
+
         public static byte[] SaveLayerToStream(ILayer paramLayer)
         {
             byte[] buffer = null;
@@ -274,7 +292,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             {
                 IPersistStream stream = paramLayer as IPersistStream;
                 XMLStream class2 = new XMLStream();
-                stream.Save((IStream)class2, 0);
+                stream.Save((IStream) class2, 0);
                 buffer = class2.SaveToBytes();
             }
             return buffer;
@@ -302,7 +320,10 @@ namespace Yutai.ArcGIS.Common.Helpers
 
                 return pFC;
             }
-            catch (Exception ex) { return null; }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
 
@@ -314,7 +335,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             workspaceName = pDS.FullName as IWorkspaceName;
 
             IFeatureClassName featureClassName = new FeatureClassName() as IFeatureClassName;
-            IDatasetName datasetName = (IDatasetName)featureClassName;
+            IDatasetName datasetName = (IDatasetName) featureClassName;
             datasetName.Name = pDS.Name;
             datasetName.WorkspaceName = workspaceName;
             return featureClassName;

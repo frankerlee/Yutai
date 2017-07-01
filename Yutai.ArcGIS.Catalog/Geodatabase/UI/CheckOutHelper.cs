@@ -29,10 +29,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         private void method_11()
         {
             IReplicaDescription rDDescription = new ReplicaDescriptionClass();
-            rDDescription.Init(this.ienumName_0, this.iworkspaceName_0, this.bool_1, esriDataExtractionType.esriDataCheckOut);
+            rDDescription.Init(this.ienumName_0, this.iworkspaceName_0, this.bool_1,
+                esriDataExtractionType.esriDataCheckOut);
             rDDescription.ReplicaModelType = esriReplicaModelType.esriModelTypeFullGeodatabase;
             ICheckOut @out = new CheckOutClass();
-            ESRI.ArcGIS.GeoDatabaseDistributed.IFeatureProgress_Event event2 = @out as ESRI.ArcGIS.GeoDatabaseDistributed.IFeatureProgress_Event;
+            ESRI.ArcGIS.GeoDatabaseDistributed.IFeatureProgress_Event event2 =
+                @out as ESRI.ArcGIS.GeoDatabaseDistributed.IFeatureProgress_Event;
             base.InitEvent(event2);
             try
             {
@@ -62,59 +64,34 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public bool CheckOnlySchema
         {
-            set
-            {
-                this.bool_2 = value;
-            }
+            set { this.bool_2 = value; }
         }
 
         public string CheckOutName
         {
-            set
-            {
-                this.string_0 = value;
-            }
+            set { this.string_0 = value; }
         }
 
         public IWorkspaceName CheckoutWorkspaceName
         {
-            get
-            {
-                return this.iworkspaceName_0;
-            }
-            set
-            {
-                this.iworkspaceName_0 = value;
-            }
+            get { return this.iworkspaceName_0; }
+            set { this.iworkspaceName_0 = value; }
         }
 
         public IEnumName EnumName
         {
-            get
-            {
-                return this.ienumName_0;
-            }
-            set
-            {
-                this.ienumName_0 = value;
-            }
+            get { return this.ienumName_0; }
+            set { this.ienumName_0 = value; }
         }
 
         public bool ReuseSchema
         {
-            set
-            {
-                this.bool_1 = value;
-            }
+            set { this.bool_1 = value; }
         }
 
         public bool TransferRelObjects
         {
-            set
-            {
-                this.bool_0 = value;
-            }
+            set { this.bool_0 = value; }
         }
     }
 }
-

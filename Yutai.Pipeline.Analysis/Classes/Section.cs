@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using ESRI.ArcGIS.Geometry;
-
 using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Interfaces;
 using Point = System.Drawing.Point;
@@ -45,14 +44,8 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         public IPipelineConfig PipeConfig
         {
-            get
-            {
-                return this.m_PipeConfig;
-            }
-            set
-            {
-                this.m_PipeConfig = value;
-            }
+            get { return this.m_PipeConfig; }
+            set { this.m_PipeConfig = value; }
         }
 
         public bool IsMUsing
@@ -60,24 +53,16 @@ namespace Yutai.Pipeline.Analysis.Classes
             get { return _isMUsing; }
             set { _isMUsing = value; }
         }
+
         public Section.Section_Action ActionType
         {
-            get
-            {
-                return this._sectionAction;
-            }
-            set
-            {
-                this._sectionAction = value;
-            }
+            get { return this._sectionAction; }
+            set { this._sectionAction = value; }
         }
 
         public IPolyline BaseLine
         {
-            get
-            {
-                return this.m_pBaseLine;
-            }
+            get { return this.m_pBaseLine; }
             set
             {
                 this.m_pBaseLine = value;
@@ -85,7 +70,7 @@ namespace Yutai.Pipeline.Analysis.Classes
             }
         }
 
-        public Section(object objFrom, IAppContext pApp,IPipelineConfig pipeConfig)
+        public Section(object objFrom, IAppContext pApp, IPipelineConfig pipeConfig)
         {
             this.m_context = pApp;
             this.PipeConfig = pipeConfig;

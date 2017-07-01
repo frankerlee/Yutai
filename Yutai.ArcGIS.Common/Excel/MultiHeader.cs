@@ -50,8 +50,9 @@ namespace Yutai.ArcGIS.Common.Excel
                 int x = base.mdrawGrid.Rectangle.X;
                 int y = base.mdrawGrid.Rectangle.Y;
                 int num3 = x + base.mdrawGrid.ColsWidth[0];
-                int num4 = y + ((int) (base.mdrawGrid.PreferredRowHeight * this.float_0));
-                base.Graphics.SetClip(new Rectangle(x, y, base.mdrawGrid.ColsWidth[0], base.mdrawGrid.PreferredRowHeight * base.mdrawGrid.Rows));
+                int num4 = y + ((int) (base.mdrawGrid.PreferredRowHeight*this.float_0));
+                base.Graphics.SetClip(new Rectangle(x, y, base.mdrawGrid.ColsWidth[0],
+                    base.mdrawGrid.PreferredRowHeight*base.mdrawGrid.Rows));
                 base.Graphics.DrawLine(Pens.Black, x, y, num3, num4);
             }
             catch (Exception)
@@ -80,39 +81,20 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public string ColsAlign
         {
-            get
-            {
-                return base.mdrawGrid.ColsAlignString;
-            }
-            set
-            {
-                base.mdrawGrid.ColsAlignString = value;
-            }
+            get { return base.mdrawGrid.ColsAlignString; }
+            set { base.mdrawGrid.ColsAlignString = value; }
         }
 
         public float DiagonalLineRows
         {
-            get
-            {
-                return this.float_0;
-            }
-            set
-            {
-                this.float_0 = value;
-            }
+            get { return this.float_0; }
+            set { this.float_0 = value; }
         }
 
         public bool IsDrawDiagonalLine
         {
-            get
-            {
-                return this.bool_2;
-            }
-            set
-            {
-                this.bool_2 = value;
-            }
+            get { return this.bool_2; }
+            set { this.bool_2 = value; }
         }
     }
 }
-

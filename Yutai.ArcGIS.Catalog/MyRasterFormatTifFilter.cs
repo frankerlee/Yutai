@@ -73,19 +73,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public string Description
         {
-            get
-            {
-                return "TIFF";
-            }
+            get { return "TIFF"; }
         }
 
         public string Name
         {
-            get
-            {
-                return "RasterFormatTifFilter";
-            }
+            get { return "RasterFormatTifFilter"; }
         }
     }
 }
-

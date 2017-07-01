@@ -8,8 +8,6 @@ namespace Yutai.Pipeline.Analysis.Helpers
 {
     public class CMapOperator
     {
-
-
         public static ILayer GetILayerByAliasName(IMap XMap, ILayer ilayer_0, string sAliasName)
         {
             ILayer layer;
@@ -253,28 +251,25 @@ namespace Yutai.Pipeline.Analysis.Helpers
                     }
                 }
             }
-
-
         }
 
         public static void ShowFeatureWithWink(IDisplay ipDisplay, IGeometry pShape)
         {
-            ipDisplay.DisplayTransformation.FromPoints((double)3);
-            
+            ipDisplay.DisplayTransformation.FromPoints((double) 3);
+
             for (int i = 0; i < 3; i++)
             {
                 DrawWinkFeature(ipDisplay as IScreenDisplay, pShape);
             }
         }
 
-        public static  void DrawWinkFeature(IScreenDisplay pDisplay, IGeometry pGeo)
+        public static void DrawWinkFeature(IScreenDisplay pDisplay, IGeometry pGeo)
         {
             IRgbColor rgbColorClass = new RgbColor()
             {
                 Blue = 0,
-                Green =0,
+                Green = 0,
                 Red = 255,
-               
             };
             short activeCache = pDisplay.ActiveCache;
             pDisplay.ActiveCache = -1;
@@ -282,73 +277,72 @@ namespace Yutai.Pipeline.Analysis.Helpers
             switch (pGeo.GeometryType)
             {
                 case esriGeometryType.esriGeometryPoint:
-                    {
-                        ISimpleMarkerSymbol simpleMarkerSymbolClass = new SimpleMarkerSymbol();
-                        ((ISymbol)simpleMarkerSymbolClass).ROP2 = esriRasterOpCode.esriROPNotXOrPen;
-                        simpleMarkerSymbolClass.Color = rgbColorClass;
-                        simpleMarkerSymbolClass.Size = (double)9;
-                        pDisplay.SetSymbol((ISymbol)simpleMarkerSymbolClass);
-                        pDisplay.DrawPoint(pGeo);
-                        Thread.Sleep((int)1000);
-                        pDisplay.DrawPoint(pGeo);
-                        Thread.Sleep((int)1000);
-                        pDisplay.FinishDrawing();
-                        pDisplay.ActiveCache = activeCache;
-                        //mUiCurrentCounter = this;
-                        //mUiCurrentCounter.m_uiCurrentCounter = mUiCurrentCounter.m_uiCurrentCounter + 1;
-                        return;
-                    }
+                {
+                    ISimpleMarkerSymbol simpleMarkerSymbolClass = new SimpleMarkerSymbol();
+                    ((ISymbol) simpleMarkerSymbolClass).ROP2 = esriRasterOpCode.esriROPNotXOrPen;
+                    simpleMarkerSymbolClass.Color = rgbColorClass;
+                    simpleMarkerSymbolClass.Size = (double) 9;
+                    pDisplay.SetSymbol((ISymbol) simpleMarkerSymbolClass);
+                    pDisplay.DrawPoint(pGeo);
+                    Thread.Sleep((int) 1000);
+                    pDisplay.DrawPoint(pGeo);
+                    Thread.Sleep((int) 1000);
+                    pDisplay.FinishDrawing();
+                    pDisplay.ActiveCache = activeCache;
+                    //mUiCurrentCounter = this;
+                    //mUiCurrentCounter.m_uiCurrentCounter = mUiCurrentCounter.m_uiCurrentCounter + 1;
+                    return;
+                }
                 case esriGeometryType.esriGeometryMultipoint:
-                    {
-                        pDisplay.FinishDrawing();
-                        pDisplay.ActiveCache = activeCache;
-                        //mUiCurrentCounter = this;
-                        //mUiCurrentCounter.m_uiCurrentCounter = mUiCurrentCounter.m_uiCurrentCounter + 1;
-                        return;
-                    }
+                {
+                    pDisplay.FinishDrawing();
+                    pDisplay.ActiveCache = activeCache;
+                    //mUiCurrentCounter = this;
+                    //mUiCurrentCounter.m_uiCurrentCounter = mUiCurrentCounter.m_uiCurrentCounter + 1;
+                    return;
+                }
                 case esriGeometryType.esriGeometryPolyline:
-                    {
-                        ISimpleLineSymbol simpleLineSymbolClass = new SimpleLineSymbol();
-                        ((ISymbol)simpleLineSymbolClass).ROP2 = esriRasterOpCode.esriROPNotXOrPen;
-                        simpleLineSymbolClass.Color = rgbColorClass;
-                        simpleLineSymbolClass.Width = (double)3;
-                        pDisplay.SetSymbol((ISymbol)simpleLineSymbolClass);
-                        pDisplay.DrawPolyline(pGeo);
-                        Thread.Sleep((int)1000);
-                        pDisplay.DrawPolyline(pGeo);
-                        Thread.Sleep((int)1000);
-                        pDisplay.FinishDrawing();
-                        pDisplay.ActiveCache = activeCache;
-                        //mUiCurrentCounter = this;
-                        //mUiCurrentCounter.m_uiCurrentCounter = mUiCurrentCounter.m_uiCurrentCounter + 1;
-                        return;
-                    }
+                {
+                    ISimpleLineSymbol simpleLineSymbolClass = new SimpleLineSymbol();
+                    ((ISymbol) simpleLineSymbolClass).ROP2 = esriRasterOpCode.esriROPNotXOrPen;
+                    simpleLineSymbolClass.Color = rgbColorClass;
+                    simpleLineSymbolClass.Width = (double) 3;
+                    pDisplay.SetSymbol((ISymbol) simpleLineSymbolClass);
+                    pDisplay.DrawPolyline(pGeo);
+                    Thread.Sleep((int) 1000);
+                    pDisplay.DrawPolyline(pGeo);
+                    Thread.Sleep((int) 1000);
+                    pDisplay.FinishDrawing();
+                    pDisplay.ActiveCache = activeCache;
+                    //mUiCurrentCounter = this;
+                    //mUiCurrentCounter.m_uiCurrentCounter = mUiCurrentCounter.m_uiCurrentCounter + 1;
+                    return;
+                }
                 case esriGeometryType.esriGeometryPolygon:
-                    {
-                        ISimpleFillSymbol simpleFillSymbolClass = new SimpleFillSymbol();
-                        ((ISymbol)simpleFillSymbolClass).ROP2 = esriRasterOpCode.esriROPNotXOrPen;
-                        simpleFillSymbolClass.Color = rgbColorClass;
-                        pDisplay.SetSymbol((ISymbol)simpleFillSymbolClass);
-                        pDisplay.DrawPolygon(pGeo);
-                        Thread.Sleep((int)1000);
-                        pDisplay.DrawPolygon(pGeo);
-                        Thread.Sleep((int)1000);
-                        pDisplay.FinishDrawing();
-                        pDisplay.ActiveCache = activeCache;
-                        //mUiCurrentCounter = this;
-                        //mUiCurrentCounter.m_uiCurrentCounter = mUiCurrentCounter.m_uiCurrentCounter + 1;
-                        return;
-                    }
+                {
+                    ISimpleFillSymbol simpleFillSymbolClass = new SimpleFillSymbol();
+                    ((ISymbol) simpleFillSymbolClass).ROP2 = esriRasterOpCode.esriROPNotXOrPen;
+                    simpleFillSymbolClass.Color = rgbColorClass;
+                    pDisplay.SetSymbol((ISymbol) simpleFillSymbolClass);
+                    pDisplay.DrawPolygon(pGeo);
+                    Thread.Sleep((int) 1000);
+                    pDisplay.DrawPolygon(pGeo);
+                    Thread.Sleep((int) 1000);
+                    pDisplay.FinishDrawing();
+                    pDisplay.ActiveCache = activeCache;
+                    //mUiCurrentCounter = this;
+                    //mUiCurrentCounter.m_uiCurrentCounter = mUiCurrentCounter.m_uiCurrentCounter + 1;
+                    return;
+                }
                 default:
-                    {
-                        pDisplay.FinishDrawing();
-                        pDisplay.ActiveCache = activeCache;
-                        //mUiCurrentCounter = this;
-                        //mUiCurrentCounter.m_uiCurrentCounter = mUiCurrentCounter.m_uiCurrentCounter + 1;
-                        return;
-                    }
+                {
+                    pDisplay.FinishDrawing();
+                    pDisplay.ActiveCache = activeCache;
+                    //mUiCurrentCounter = this;
+                    //mUiCurrentCounter.m_uiCurrentCounter = mUiCurrentCounter.m_uiCurrentCounter + 1;
+                    return;
+                }
             }
         }
-
     }
 }

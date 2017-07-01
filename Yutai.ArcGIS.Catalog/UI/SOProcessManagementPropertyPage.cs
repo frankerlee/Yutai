@@ -25,7 +25,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             int num = 36000;
             try
             {
-                num = (int) (double.Parse(this.txtRecycleInterval.Text) * 3600.0);
+                num = (int) (double.Parse(this.txtRecycleInterval.Text)*3600.0);
             }
             catch
             {
@@ -36,7 +36,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             recycleProperties.SetProperty("Start", str);
         }
 
- private void method_0()
+        private void method_0()
         {
             object obj2;
             object obj3;
@@ -46,8 +46,9 @@ namespace Yutai.ArcGIS.Catalog.UI
             try
             {
                 int num = int.Parse(recycleProperties.GetProperty("Interval").ToString());
-                this.txtRecycleInterval.Text = ((double) (num / 3600)).ToString();
-                this.timeEdit1.Text = this.iserverObjectConfiguration_0.RecycleProperties.GetProperty("Start").ToString();
+                this.txtRecycleInterval.Text = ((double) (num/3600)).ToString();
+                this.timeEdit1.Text =
+                    this.iserverObjectConfiguration_0.RecycleProperties.GetProperty("Start").ToString();
             }
             catch
             {
@@ -61,15 +62,8 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         public IServerObjectConfiguration ServerObjectConfiguration
         {
-            get
-            {
-                return this.iserverObjectConfiguration_0;
-            }
-            set
-            {
-                this.iserverObjectConfiguration_0 = value;
-            }
+            get { return this.iserverObjectConfiguration_0; }
+            set { this.iserverObjectConfiguration_0 = value; }
         }
     }
 }
-

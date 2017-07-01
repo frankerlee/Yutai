@@ -32,7 +32,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnSetDatasources_Click(object sender, EventArgs e)
         {
-            frmOpenFile file = new frmOpenFile {
+            frmOpenFile file = new frmOpenFile
+            {
                 Text = "设置数据源",
                 AllowMultiSelect = false
             };
@@ -45,7 +46,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 IGxObject obj2 = file.Items.get_Element(0) as IGxObject;
                 IName internalObjectName = obj2.InternalObjectName;
                 bool flag = false;
-                if ((this.idataLayer_0.get_DataSourceSupported(internalObjectName) && (this.idataLayer_0 is IFeatureLayer)) && (obj2 is IGxDataset))
+                if ((this.idataLayer_0.get_DataSourceSupported(internalObjectName) &&
+                     (this.idataLayer_0 is IFeatureLayer)) && (obj2 is IGxDataset))
                 {
                     IDataset dataset = (obj2 as IGxDataset).Dataset;
                     if (dataset is IFeatureClass)
@@ -68,7 +70,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void LayerDataSourcePropertyPage_Load(object sender, EventArgs e)
+        private void LayerDataSourcePropertyPage_Load(object sender, EventArgs e)
         {
             this.method_0();
         }
@@ -82,7 +84,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 {
                     this.lblTop.Text = "顶: " + extent.YMax.ToString("0.######");
                     this.lblBottom.Text = "底: " + extent.YMin.ToString("0.######");
-                    this.lblLR.Text = "左: " + extent.XMin.ToString("0.######") + "        右: " + extent.XMax.ToString("0.######");
+                    this.lblLR.Text = "左: " + extent.XMin.ToString("0.######") + "        右: " +
+                                      extent.XMax.ToString("0.######");
                 }
                 IName dataSourceName = this.idataLayer_0.DataSourceName;
                 if (dataSourceName is IDatasetName)
@@ -113,7 +116,9 @@ namespace Yutai.ArcGIS.Carto.UI
                         {
                             if (string.Compare(strArray[i], "PASSWORD", true) != 0)
                             {
-                                nameString = string.Concat(new object[] { nameString, "   ", strArray[i], ": ", objArray[i], "\r\n" });
+                                nameString =
+                                    string.Concat(new object[]
+                                        {nameString, "   ", strArray[i], ": ", objArray[i], "\r\n"});
                             }
                         }
                     }
@@ -159,27 +164,17 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IBasicMap FocusMap
         {
-            set
-            {
-                this.ibasicMap_0 = value;
-            }
+            set { this.ibasicMap_0 = value; }
         }
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.IsPageDirty;
-            }
+            get { return this.IsPageDirty; }
         }
 
         public object SelectItem
         {
-            set
-            {
-                this.idataLayer_0 = value as IDataLayer;
-            }
+            set { this.idataLayer_0 = value as IDataLayer; }
         }
     }
 }
-

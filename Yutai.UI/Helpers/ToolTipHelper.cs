@@ -30,6 +30,7 @@ namespace Yutai.UI.Helpers
             tooltip.MetroColor = Color.White;
             tooltip.UseFading = SuperToolTip.FadingType.System;
         }
+
         public static void UpdateTooltip(object sender)
         {
             if (_toolTipManager == null)
@@ -67,8 +68,8 @@ namespace Yutai.UI.Helpers
             }
 
             info.Body.Text = string.IsNullOrWhiteSpace(item.Description)
-                                 ? "There is no description for the item."
-                                 : item.Description;
+                ? "There is no description for the item."
+                : item.Description;
 
             if (AppConfig.Instance.ShowPluginInToolTip && item.PluginIdentity != PluginIdentity.Default)
             {
@@ -81,7 +82,8 @@ namespace Yutai.UI.Helpers
                 _toolTipManager.SetToolTip(comp, info);
             }
         }
-        public static void UpdateTooltip(object sender,IRibbonItem item)
+
+        public static void UpdateTooltip(object sender, IRibbonItem item)
         {
             if (_toolTipManager == null)
             {
@@ -93,7 +95,7 @@ namespace Yutai.UI.Helpers
             {
                 return;
             }
-           
+
 
             var info = _toolTipManager.GetToolTip(item2);
             bool hasToolTip = info != null;
@@ -105,13 +107,13 @@ namespace Yutai.UI.Helpers
 
             info.Header.Text = item.Caption;
 
-           
-                info.Header.Font = new Font(info.Header.Font, FontStyle.Bold);
-           
+
+            info.Header.Font = new Font(info.Header.Font, FontStyle.Bold);
+
 
             info.Body.Text = string.IsNullOrWhiteSpace(item.Tooltip)
-                                 ? "目前没有进一步的提示信息"
-                                 : item.Tooltip;
+                ? "目前没有进一步的提示信息"
+                : item.Tooltip;
 
             if (AppConfig.Instance.ShowPluginInToolTip && item.PluginIdentity != PluginIdentity.Default)
             {
@@ -123,7 +125,6 @@ namespace Yutai.UI.Helpers
             {
                 _toolTipManager.SetToolTip(item2, info);
             }
-
         }
     }
 }

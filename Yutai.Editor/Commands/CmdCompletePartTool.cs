@@ -36,11 +36,11 @@ namespace Yutai.Plugins.Editor.Commands
         {
             get
             {
-                return SketchToolAssist.Feedback != null && ((SketchToolAssist.Feedback is INewLineFeedback && SketchShareEx.PointCount > 1) || (SketchToolAssist.Feedback is INewPolygonFeedback && SketchShareEx.PointCount > 2));
+                return SketchToolAssist.Feedback != null &&
+                       ((SketchToolAssist.Feedback is INewLineFeedback && SketchShareEx.PointCount > 1) ||
+                        (SketchToolAssist.Feedback is INewPolygonFeedback && SketchShareEx.PointCount > 2));
             }
         }
-
-
 
 
         public override void OnClick(object sender, EventArgs args)
@@ -70,15 +70,16 @@ namespace Yutai.Plugins.Editor.Commands
                 {
                     if (SketchToolAssist.Feedback is INewLineFeedback)
                     {
-                        INewLineFeedback newLineFeedback = (INewLineFeedback)SketchToolAssist.Feedback;
+                        INewLineFeedback newLineFeedback = (INewLineFeedback) SketchToolAssist.Feedback;
                         IPolyline polyline = newLineFeedback.Stop();
                         if (polyline != null)
                         {
-                            IPointCollection pointCollection = (IPointCollection)polyline;
+                            IPointCollection pointCollection = (IPointCollection) polyline;
                             if (pointCollection.PointCount >= 2)
                             {
-                                IGeometry geometry = (IGeometry)pointCollection;
-                                if (SketchShareEx.m_LastPartGeometry != null && SketchShareEx.m_LastPartGeometry is IPolyline)
+                                IGeometry geometry = (IGeometry) pointCollection;
+                                if (SketchShareEx.m_LastPartGeometry != null &&
+                                    SketchShareEx.m_LastPartGeometry is IPolyline)
                                 {
                                     if ((SketchShareEx.m_LastPartGeometry as ITopologicalOperator).IsSimple)
                                     {
@@ -88,7 +89,9 @@ namespace Yutai.Plugins.Editor.Commands
                                     {
                                         (geometry as ITopologicalOperator).Simplify();
                                     }
-                                    geometry = (SketchShareEx.m_LastPartGeometry as ITopologicalOperator).Union((IGeometry)pointCollection);
+                                    geometry =
+                                        (SketchShareEx.m_LastPartGeometry as ITopologicalOperator).Union(
+                                            (IGeometry) pointCollection);
                                 }
                                 SketchShareEx.m_LastPartGeometry = geometry;
                             }
@@ -96,14 +99,14 @@ namespace Yutai.Plugins.Editor.Commands
                     }
                     else if (SketchToolAssist.Feedback is INewPolygonFeedback)
                     {
-                        INewPolygonFeedback newPolygonFeedback = (INewPolygonFeedback)SketchToolAssist.Feedback;
+                        INewPolygonFeedback newPolygonFeedback = (INewPolygonFeedback) SketchToolAssist.Feedback;
                         IPolygon polygon = newPolygonFeedback.Stop();
                         if (polygon != null)
                         {
-                            IPointCollection pointCollection = (IPointCollection)polygon;
+                            IPointCollection pointCollection = (IPointCollection) polygon;
                             if (pointCollection.PointCount >= 3)
                             {
-                                IGeometry geometry = (IGeometry)pointCollection;
+                                IGeometry geometry = (IGeometry) pointCollection;
                                 if (SketchShareEx.m_LastPartGeometry != null)
                                 {
                                     if (SketchShareEx.m_LastPartGeometry is IPolygon)
@@ -116,7 +119,8 @@ namespace Yutai.Plugins.Editor.Commands
                                         {
                                             (geometry as ITopologicalOperator).Simplify();
                                         }
-                                        IGeometryCollection geometryCollection = SketchShareEx.m_LastPartGeometry as IGeometryCollection;
+                                        IGeometryCollection geometryCollection =
+                                            SketchShareEx.m_LastPartGeometry as IGeometryCollection;
                                         geometryCollection.AddGeometryCollection(polygon as IGeometryCollection);
                                     }
                                 }
@@ -134,6 +138,5 @@ namespace Yutai.Plugins.Editor.Commands
                 _context.ActiveView.Refresh();
             }
         }
-    
     }
 }

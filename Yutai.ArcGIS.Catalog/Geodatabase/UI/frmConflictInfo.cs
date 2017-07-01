@@ -18,21 +18,14 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.Controls.Add(this.conflictInfoControl_0);
         }
 
- public IWorkspace EditWorkspace
+        public IWorkspace EditWorkspace
         {
-            set
-            {
-                this.conflictInfoControl_0.EditWorkspace = value;
-            }
+            set { this.conflictInfoControl_0.EditWorkspace = value; }
         }
 
         public IMap FocusMap
         {
-            set
-            {
-                this.conflictInfoControl_0.FocusMap = value;
-            }
+            set { this.conflictInfoControl_0.FocusMap = value; }
         }
     }
 }
-

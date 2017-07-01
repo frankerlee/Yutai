@@ -43,13 +43,9 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- public IMapGrid MapGrid
+        public IMapGrid MapGrid
         {
-            get
-            {
-                return this.m_pMapGrid;
-            }
+            get { return this.m_pMapGrid; }
         }
     }
 }
-

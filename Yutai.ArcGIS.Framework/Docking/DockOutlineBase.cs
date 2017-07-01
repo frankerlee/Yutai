@@ -33,6 +33,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         protected abstract void OnClose();
         protected abstract void OnShow();
+
         private void SaveOldValues()
         {
             this.m_oldDockTo = this.m_dockTo;
@@ -87,7 +88,8 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         private void TestChange()
         {
-            if ((((this.m_floatWindowBounds != this.m_oldFloatWindowBounds) || (this.m_dockTo != this.m_oldDockTo)) || (this.m_dock != this.m_oldDock)) || (this.m_contentIndex != this.m_oldContentIndex))
+            if ((((this.m_floatWindowBounds != this.m_oldFloatWindowBounds) || (this.m_dockTo != this.m_oldDockTo)) ||
+                 (this.m_dock != this.m_oldDock)) || (this.m_contentIndex != this.m_oldContentIndex))
             {
                 this.OnShow();
             }
@@ -95,95 +97,62 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         public int ContentIndex
         {
-            get
-            {
-                return this.m_contentIndex;
-            }
+            get { return this.m_contentIndex; }
         }
 
         public DockStyle Dock
         {
-            get
-            {
-                return this.m_dock;
-            }
+            get { return this.m_dock; }
         }
 
         public Control DockTo
         {
-            get
-            {
-                return this.m_dockTo;
-            }
+            get { return this.m_dockTo; }
         }
 
         public bool FlagFullEdge
         {
-            get
-            {
-                return (this.m_contentIndex != 0);
-            }
+            get { return (this.m_contentIndex != 0); }
         }
 
         public bool FlagTestDrop
         {
-            get
-            {
-                return this.m_flagTestDrop;
-            }
-            set
-            {
-                this.m_flagTestDrop = value;
-            }
+            get { return this.m_flagTestDrop; }
+            set { this.m_flagTestDrop = value; }
         }
 
         public Rectangle FloatWindowBounds
         {
-            get
-            {
-                return this.m_floatWindowBounds;
-            }
+            get { return this.m_floatWindowBounds; }
         }
 
         protected int OldContentIndex
         {
-            get
-            {
-                return this.m_oldContentIndex;
-            }
+            get { return this.m_oldContentIndex; }
         }
 
         protected DockStyle OldDock
         {
-            get
-            {
-                return this.m_oldDock;
-            }
+            get { return this.m_oldDock; }
         }
 
         protected Control OldDockTo
         {
-            get
-            {
-                return this.m_oldDockTo;
-            }
+            get { return this.m_oldDockTo; }
         }
 
         protected Rectangle OldFloatWindowBounds
         {
-            get
-            {
-                return this.m_oldFloatWindowBounds;
-            }
+            get { return this.m_oldFloatWindowBounds; }
         }
 
         protected bool SameAsOldValue
         {
             get
             {
-                return ((((this.FloatWindowBounds == this.OldFloatWindowBounds) && (this.DockTo == this.OldDockTo)) && (this.Dock == this.OldDock)) && (this.ContentIndex == this.OldContentIndex));
+                return ((((this.FloatWindowBounds == this.OldFloatWindowBounds) && (this.DockTo == this.OldDockTo)) &&
+                         (this.Dock == this.OldDock)) && (this.ContentIndex == this.OldContentIndex));
             }
         }
     }
 }
-

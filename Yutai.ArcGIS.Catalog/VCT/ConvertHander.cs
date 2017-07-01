@@ -16,7 +16,7 @@ namespace Yutai.ArcGIS.Catalog.VCT
                 while (icoConvert_0.NextFeature() != -1)
                 {
                     num++;
-                    if ((num % num2) == 0)
+                    if ((num%num2) == 0)
                     {
                         icoConvert_0.ConvertFlush(this.coLayerMapper_0);
                         icoConvert_0.XpgisLayer.RemoveAllFeature();
@@ -45,11 +45,7 @@ namespace Yutai.ArcGIS.Catalog.VCT
 
         public CoLayerMapper Mapper
         {
-            set
-            {
-                this.coLayerMapper_0 = value;
-            }
+            set { this.coLayerMapper_0 = value; }
         }
     }
 }
-

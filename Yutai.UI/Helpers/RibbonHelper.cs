@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Yutai.UI.Helpers
 {
-   public  class RibbonHelper
+    public class RibbonHelper
     {
         public static int CalculateSubTypeFromName(string menuName)
         {

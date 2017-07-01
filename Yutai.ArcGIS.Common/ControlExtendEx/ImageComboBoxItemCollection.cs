@@ -105,68 +105,40 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
 
         public int Count
         {
-            get
-            {
-                return this.imageComboBox_0.ComboBoxGetItemCount();
-            }
+            get { return this.imageComboBox_0.ComboBoxGetItemCount(); }
         }
 
         public bool IsReadOnly
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         [Browsable(false)]
         public ImageComboBoxItem this[int int_0]
         {
-            get
-            {
-                return this.imageComboBox_0.ComboBoxGetElement(int_0);
-            }
-            set
-            {
-                this.imageComboBox_0.ComboBoxSetElement(int_0, value);
-            }
+            get { return this.imageComboBox_0.ComboBoxGetElement(int_0); }
+            set { this.imageComboBox_0.ComboBoxSetElement(int_0, value); }
         }
 
         bool ICollection.IsSynchronized
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         object ICollection.SyncRoot
         {
-            get
-            {
-                return this;
-            }
+            get { return this; }
         }
 
         bool IList.IsFixedSize
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         object IList.this[int int_0]
         {
-            get
-            {
-                return this[int_0];
-            }
-            set
-            {
-                this[int_0] = (ImageComboBoxItem) value;
-            }
+            get { return this[int_0]; }
+            set { this[int_0] = (ImageComboBoxItem) value; }
         }
     }
 }
-

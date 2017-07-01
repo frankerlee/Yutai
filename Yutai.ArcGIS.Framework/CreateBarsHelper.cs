@@ -32,7 +32,8 @@ namespace Yutai.ArcGIS.Framework
 
         internal event OnCreateCompleteHandler OnCreateComplete;
 
-        public CreateBarsHelper(BarManager barManager_1, PopupMenu popupMenu_1, IFramework iframework_1, List<ICommand> list_1, IPopuMenuWrap ipopuMenuWrap_1)
+        public CreateBarsHelper(BarManager barManager_1, PopupMenu popupMenu_1, IFramework iframework_1,
+            List<ICommand> list_1, IPopuMenuWrap ipopuMenuWrap_1)
         {
             this.CreateHandle();
             base.CreateControl();
@@ -51,7 +52,7 @@ namespace Yutai.ArcGIS.Framework
             {
                 try
                 {
-                    base.Invoke(new MessageHandler(this.StartCreateBar), new object[] { string_0 });
+                    base.Invoke(new MessageHandler(this.StartCreateBar), new object[] {string_0});
                 }
                 catch (Exception)
                 {
@@ -64,7 +65,7 @@ namespace Yutai.ArcGIS.Framework
             if (bool_1)
             {
                 Delegate3 method = new Delegate3(this.method_0);
-                base.Invoke(method, new object[] { bar_0, false });
+                base.Invoke(method, new object[] {bar_0, false});
             }
             else
             {
@@ -357,7 +358,8 @@ namespace Yutai.ArcGIS.Framework
             {
                 try
                 {
-                    if ((AppConfigInfo.UserID != "admin") && !this.sysGrants_0.StaffIsHasMenuPri(this.menuInfoHelper_0, strArray[4], strArray[5]))
+                    if ((AppConfigInfo.UserID != "admin") &&
+                        !this.sysGrants_0.StaffIsHasMenuPri(this.menuInfoHelper_0, strArray[4], strArray[5]))
                     {
                         return;
                     }
@@ -383,17 +385,19 @@ namespace Yutai.ArcGIS.Framework
                                 }
                                 catch
                                 {
-                                    Logger.Current.Error("", null, string.Format("创建{0}中的类{1}的子命令设置失败", strArray[4], strArray[5]));
+                                    Logger.Current.Error("", null,
+                                        string.Format("创建{0}中的类{1}的子命令设置失败", strArray[4], strArray[5]));
                                 }
                             }
                             if ((strArray[14] != null) && bool.Parse(strArray[14]))
                             {
-                               // this.iframework_0.Application.AddCommands(command);
+                                // this.iframework_0.Application.AddCommands(command);
                             }
                         }
                         else
                         {
-                            Logger.Current.Error("", null, string.Format("创建{0}中的类{1}的失败，无法创建该工具", strArray[4], strArray[5]));
+                            Logger.Current.Error("", null,
+                                string.Format("创建{0}中的类{1}的失败，无法创建该工具", strArray[4], strArray[5]));
                         }
                     }
                     else
@@ -411,7 +415,8 @@ namespace Yutai.ArcGIS.Framework
             {
                 try
                 {
-                    if ((AppConfigInfo.UserID != "admin") && !this.sysGrants_0.StaffIsHasMenuPri(this.menuInfoHelper_0, strArray[8]))
+                    if ((AppConfigInfo.UserID != "admin") &&
+                        !this.sysGrants_0.StaffIsHasMenuPri(this.menuInfoHelper_0, strArray[8]))
                     {
                         return;
                     }
@@ -431,7 +436,8 @@ namespace Yutai.ArcGIS.Framework
                             }
                             catch
                             {
-                                Logger.Current.Error("", null, string.Format("创建{0}中的类{1}的子命令设置失败", strArray[4], strArray[5]));
+                                Logger.Current.Error("", null,
+                                    string.Format("创建{0}中的类{1}的子命令设置失败", strArray[4], strArray[5]));
                             }
                         }
                         if ((strArray[14] != null) && bool.Parse(strArray[14]))
@@ -473,12 +479,13 @@ namespace Yutai.ArcGIS.Framework
                             }
                             catch
                             {
-                                Logger.Current.Error("", null, string.Format("创建{0}中的类{1}的子命令设置失败", strArray[4], strArray[5]));
+                                Logger.Current.Error("", null,
+                                    string.Format("创建{0}中的类{1}的子命令设置失败", strArray[4], strArray[5]));
                             }
                         }
                         if ((strArray[14] != null) && bool.Parse(strArray[14]))
                         {
-                         //   this.iframework_0.Application.AddCommands(command);
+                            //   this.iframework_0.Application.AddCommands(command);
                         }
                     }
                     else
@@ -516,7 +523,7 @@ namespace Yutai.ArcGIS.Framework
                     string caption;
                     if (command != null)
                     {
-                        command.OnCreate((object)this.iframework_0.Application);
+                        command.OnCreate((object) this.iframework_0.Application);
                     }
                     if ((str != "0") && (command != null))
                     {
@@ -677,7 +684,7 @@ namespace Yutai.ArcGIS.Framework
                             else if (item is BarSubItem)
                             {
                                 caption = (item as BarSubItem).Caption;
-                                string[] strArray3 = strArray[9].Split(new char[] { '+' });
+                                string[] strArray3 = strArray[9].Split(new char[] {'+'});
                                 if ((strArray3.Length == 2) && (strArray3[0].ToLower() == "alt"))
                                 {
                                     (item as BarSubItem).Caption = caption + "(&" + strArray3[1] + ")";
@@ -1051,7 +1058,7 @@ namespace Yutai.ArcGIS.Framework
                 XmlElement documentElement = document.DocumentElement;
                 Bar bar = null;
                 int num = 0;
-            Label_0029:
+                Label_0029:
                 if (num >= documentElement.ChildNodes.Count)
                 {
                     goto Label_01EB;
@@ -1088,7 +1095,7 @@ namespace Yutai.ArcGIS.Framework
                 {
                     goto Label_01DA;
                 }
-            Label_0100:
+                Label_0100:
                 bar = new Bar();
                 bool flag = true;
                 bar.BarName = this.barManager_0.GetNewBarName();
@@ -1105,24 +1112,24 @@ namespace Yutai.ArcGIS.Framework
                 {
                     this.method_4(bar, def);
                 }
-            Label_0189:
+                Label_0189:
                 this.method_3(bar, node);
                 if (flag && (bar.ItemLinks.Count == 0))
                 {
                     int index = this.barManager_0.Bars.IndexOf(bar);
                     this.barManager_0.Bars.RemoveAt(index);
                 }
-            Label_01D1:
+                Label_01D1:
                 num++;
                 goto Label_0029;
-            Label_01DA:
+                Label_01DA:
                 flag = false;
                 if (bar != null)
                 {
                     goto Label_0189;
                 }
                 goto Label_0100;
-            Label_01EB:
+                Label_01EB:
                 if ((this.bool_0 && (this.barManager_0.MainMenu == null)) && (this.barManager_0.Bars.Count > 1))
                 {
                     bar = this.barManager_0.Bars[1];
@@ -1147,10 +1154,7 @@ namespace Yutai.ArcGIS.Framework
 
         public bool HasMainMenu
         {
-            set
-            {
-                this.bool_0 = value;
-            }
+            set { this.bool_0 = value; }
         }
 
         private delegate void Delegate3(Bar bar_0, bool bool_0);
@@ -1160,4 +1164,3 @@ namespace Yutai.ArcGIS.Framework
         internal delegate void OnCreateCompleteHandler();
     }
 }
-

@@ -23,7 +23,7 @@ namespace Yutai.Plugins.TableEditor.Controls
 
             InitializeComponent();
         }
-        
+
         public void Add(IFunction function)
         {
             int startIndex = this.SelectionStart;
@@ -37,7 +37,8 @@ namespace Yutai.Plugins.TableEditor.Controls
             }
             if (function.Parameters != null && function.Parameters.Count > 0)
             {
-                this.SelectionStart = this.Text.IndexOf(function.Parameters[0].Name, startIndex, StringComparison.Ordinal);
+                this.SelectionStart = this.Text.IndexOf(function.Parameters[0].Name, startIndex,
+                    StringComparison.Ordinal);
                 this.SelectionLength = function.Parameters[0].Name.Length;
             }
             else

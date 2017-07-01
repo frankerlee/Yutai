@@ -61,7 +61,7 @@ namespace Yutai.ArcGIS.Carto.UI
                 }
                 else
                 {
-                    mapScale = double.Parse(this.cboMapScale.Text.Split(new char[] { ':' })[1]);
+                    mapScale = double.Parse(this.cboMapScale.Text.Split(new char[] {':'})[1]);
                 }
                 (this.ibasicMap_0 as IMapAutoExtentOptions).AutoExtentScale = mapScale;
             }
@@ -94,7 +94,8 @@ namespace Yutai.ArcGIS.Carto.UI
                         MessageBox.Show("右边值输入错误!");
                         return;
                     }
-                    IEnvelope envelope = new EnvelopeClass {
+                    IEnvelope envelope = new EnvelopeClass
+                    {
                         XMin = num3,
                         XMax = num5,
                         YMax = num4,
@@ -146,7 +147,8 @@ namespace Yutai.ArcGIS.Carto.UI
                         }
                         else
                         {
-                            selectStyleGalleryItem = new MyStyleGalleryItem {
+                            selectStyleGalleryItem = new MyStyleGalleryItem
+                            {
                                 Name = "<定制>",
                                 Item = item
                             };
@@ -156,7 +158,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     }
                     else
                     {
-                        selectStyleGalleryItem = new MyStyleGalleryItem {
+                        selectStyleGalleryItem = new MyStyleGalleryItem
+                        {
                             Name = "<定制>",
                             Item = item
                         };
@@ -203,7 +206,8 @@ namespace Yutai.ArcGIS.Carto.UI
                             }
                             else
                             {
-                                selectStyleGalleryItem = new MyStyleGalleryItem {
+                                selectStyleGalleryItem = new MyStyleGalleryItem
+                                {
                                     Name = "<定制>",
                                     Item = pSym
                                 };
@@ -213,7 +217,8 @@ namespace Yutai.ArcGIS.Carto.UI
                         }
                         else
                         {
-                            selectStyleGalleryItem = new MyStyleGalleryItem {
+                            selectStyleGalleryItem = new MyStyleGalleryItem
+                            {
                                 Name = "<定制>",
                                 Item = pSym
                             };
@@ -231,12 +236,13 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnExclude_Click(object sender, EventArgs e)
         {
-            new frmLayerCheck { Map = this.ibasicMap_0 as IMap }.ShowDialog();
+            new frmLayerCheck {Map = this.ibasicMap_0 as IMap}.ShowDialog();
         }
 
         private void btnFullExtend_Click(object sender, EventArgs e)
         {
-            frmExtendSet set = new frmExtendSet {
+            frmExtendSet set = new frmExtendSet
+            {
                 Text = "全图",
                 Map = this.ibasicMap_0,
                 ExtendType = ExtendSetType.FullExtentRange
@@ -248,7 +254,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnSetClipEnt_Click(object sender, EventArgs e)
         {
-            frmExtendSet set = new frmExtendSet {
+            frmExtendSet set = new frmExtendSet
+            {
                 Text = "裁剪",
                 Map = this.ibasicMap_0,
                 ExtendType = ExtendSetType.ClipRange,
@@ -262,7 +269,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnSetExtend_Click(object sender, EventArgs e)
         {
-            frmExtendSet set = new frmExtendSet {
+            frmExtendSet set = new frmExtendSet
+            {
                 Text = "范围",
                 Map = this.ibasicMap_0,
                 ExtendType = ExtendSetType.Range,
@@ -294,7 +302,8 @@ namespace Yutai.ArcGIS.Carto.UI
             {
                 try
                 {
-                    this.cboMapScale.Text = "1:" + (this.ibasicMap_0 as IMapAutoExtentOptions).AutoExtentScale.ToString("0");
+                    this.cboMapScale.Text = "1:" +
+                                            (this.ibasicMap_0 as IMapAutoExtentOptions).AutoExtentScale.ToString("0");
                 }
                 catch
                 {
@@ -322,11 +331,11 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void groupBox2_Enter(object sender, EventArgs e)
+        private void groupBox2_Enter(object sender, EventArgs e)
         {
         }
 
- private void MapDataFramePage_Load(object sender, EventArgs e)
+        private void MapDataFramePage_Load(object sender, EventArgs e)
         {
             this.cboBorder.Add(null);
             if (ApplicationBase.StyleGallery != null)
@@ -376,7 +385,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 this.checkBox1.Checked = (this.ibasicMap_0 as IMapClipOptions).ClipGridAndGraticules;
                 if ((this.ibasicMap_0 as IMapClipOptions).ClipBorder != null)
                 {
-                    IStyleGalleryItem item3 = new MyStyleGalleryItem {
+                    IStyleGalleryItem item3 = new MyStyleGalleryItem
+                    {
                         Item = (this.ibasicMap_0 as IMapClipOptions).ClipBorder,
                         Name = ""
                     };
@@ -420,34 +430,22 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public bool IsPageDirty
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            get { throw new NotImplementedException(); }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public IBasicMap Map
         {
-            set
-            {
-                this.ibasicMap_0 = value;
-            }
+            set { this.ibasicMap_0 = value; }
         }
 
         public IMapFrame MapFrame
@@ -461,14 +459,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public string Title
         {
-            get
-            {
-                return "框架";
-            }
-            set
-            {
-            }
+            get { return "框架"; }
+            set { }
         }
     }
 }
-

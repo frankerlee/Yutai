@@ -1,6 +1,5 @@
 ﻿namespace Yutai.Pipeline.Analysis.Classes
 {
-
     public class ApplyConst
     {
         public const double _RADIAN_PER_DEGREE = 0.017453292519943295;

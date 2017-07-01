@@ -14,6 +14,7 @@ namespace Yutai.UI.Controls
     internal partial class GISDataComboBox : UserControl
     {
         public delegate void SelectedItemChangedEvent(GISDataComboItem item);
+
         public event SelectedItemChangedEvent SelectedItemChanged = null;
         private ImageList _imageList;
 
@@ -30,13 +31,9 @@ namespace Yutai.UI.Controls
 
         public ImageList GISDataImageList
         {
-            set
-            {
-                _imageList = value; 
-                
-            }
+            set { _imageList = value; }
         }
-        
+
         public void InitComboBox()
         {
             cmbCatalog.Items.Clear();
@@ -48,6 +45,7 @@ namespace Yutai.UI.Controls
         {
             get { return cmbCatalog.Items; }
         }
+
         public GISDataComboItem SelectedItem
         {
             get { return cmbCatalog.SelectedItem as GISDataComboItem; }
@@ -58,13 +56,15 @@ namespace Yutai.UI.Controls
             get { return cmbCatalog.SelectedIndex; }
             set { cmbCatalog.SelectedIndex = value; }
         }
+
         public void AddChildNode(GISDataComboItem exObject)
         {
             int index = cmbCatalog.SelectedIndex;
-            if (index == -1) index = cmbCatalog.Items.Count-1;
+            if (index == -1) index = cmbCatalog.Items.Count - 1;
 
-            int level = ((GISDataComboItem)exObject).Level;
-            cmbCatalog.Items.Insert(index + 1, new GISDataComboItem(exObject.Text, exObject.FullName, exObject.ImageIndex, level ) { Tag = exObject.Tag });
+            int level = ((GISDataComboItem) exObject).Level;
+            cmbCatalog.Items.Insert(index + 1,
+                new GISDataComboItem(exObject.Text, exObject.FullName, exObject.ImageIndex, level) {Tag = exObject.Tag});
 
             cmbCatalog.SelectedIndex = index + 1;
         }
@@ -76,7 +76,7 @@ namespace Yutai.UI.Controls
             if (!(cmbCatalog.Items[e.Index] is GISDataComboItem)) return;
 
             //DrawItemState.
-            GISDataComboItem item = (GISDataComboItem)cmbCatalog.Items[e.Index];
+            GISDataComboItem item = (GISDataComboItem) cmbCatalog.Items[e.Index];
             int level = item.Level;
             if ((e.State & DrawItemState.ComboBoxEdit) == DrawItemState.ComboBoxEdit)
             {
@@ -85,7 +85,7 @@ namespace Yutai.UI.Controls
 
             using (SolidBrush brush = new SolidBrush(Color.Black))
             {
-                Rectangle rect = new Rectangle(e.Bounds.X + level * 11 + 18, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height);
+                Rectangle rect = new Rectangle(e.Bounds.X + level*11 + 18, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height);
                 if ((e.State & DrawItemState.Selected) == DrawItemState.Selected &&
                     (e.State & DrawItemState.ComboBoxEdit) != DrawItemState.ComboBoxEdit)
                 {
@@ -102,16 +102,19 @@ namespace Yutai.UI.Controls
                 try
                 {
                     Image image = _imageList.Images[item.ImageIndex];
-                    e.Graphics.DrawImage(image, e.Bounds.X + level * 11 + 3, e.Bounds.Y,16,16);
+                    e.Graphics.DrawImage(image, e.Bounds.X + level*11 + 3, e.Bounds.Y, 16, 16);
                 }
-                catch { }
-                e.Graphics.DrawString(item.ToString(), cmbCatalog.Font, brush, e.Bounds.X + level * 11 + 40, e.Bounds.Y + 2);
+                catch
+                {
+                }
+                e.Graphics.DrawString(item.ToString(), cmbCatalog.Font, brush, e.Bounds.X + level*11 + 40,
+                    e.Bounds.Y + 2);
             }
         }
 
         private void cmbCatalog_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SelectedItemChanged((GISDataComboItem)cmbCatalog.SelectedItem);
+            SelectedItemChanged((GISDataComboItem) cmbCatalog.SelectedItem);
         }
     }
 
@@ -121,6 +124,7 @@ namespace Yutai.UI.Controls
         private int _level, _imageIndex;
         object _tag;
         private string _fullName;
+
         public GISDataComboItem(string text, string fullName, int imageIndex, int level)
         {
             _text = text;

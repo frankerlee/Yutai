@@ -4,6 +4,7 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.SystemUI;
 using Yutai.Plugins.Enums;
+using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Plugins.Concrete
 {
@@ -13,15 +14,17 @@ namespace Yutai.Plugins.Concrete
     public class ControlsSynchronizer
     {
         #region class members
+
         private IMapControl3 m_mapControl = null;
         private IPageLayoutControl2 m_pageLayoutControl = null;
         private ITool m_mapActiveTool = null;
         private ITool m_pageLayoutActiveTool = null;
         private bool m_IsMapCtrlactive = true;
         private GISControlType _conrolType;
-       
+
 
         private ArrayList m_frameworkControls = null;
+
         #endregion
 
         #region constructor
@@ -41,15 +44,17 @@ namespace Yutai.Plugins.Concrete
         /// <param name="mapControl"></param>
         /// <param name="pageLayoutControl"></param>
         public ControlsSynchronizer(IMapControl3 mapControl, IPageLayoutControl2 pageLayoutControl)
-          : this()
+            : this()
         {
             //assign the class members
             m_mapControl = mapControl;
             m_pageLayoutControl = pageLayoutControl;
         }
+
         #endregion
 
         #region properties
+
         /// <summary>
         /// Gets or sets the MapControl
         /// </summary>
@@ -90,7 +95,8 @@ namespace Yutai.Plugins.Concrete
             get
             {
                 if (m_mapControl == null || m_pageLayoutControl == null)
-                    throw new Exception("ControlsSynchronizer::ActiveControl:\r\nEither MapControl or PageLayoutControl are not initialized!");
+                    throw new Exception(
+                        "ControlsSynchronizer::ActiveControl:\r\nEither MapControl or PageLayoutControl are not initialized!");
 
                 if (m_IsMapCtrlactive)
                     return m_mapControl.Object;
@@ -125,7 +131,6 @@ namespace Yutai.Plugins.Concrete
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
-               
             }
             set
             {
@@ -138,10 +143,10 @@ namespace Yutai.Plugins.Concrete
                         m_pageLayoutControl.CurrentTool = value;
                         break;
                     case GISControlType.Scene:
-                      
+
                         break;
                     case GISControlType.Globe:
-                        
+
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -149,7 +154,8 @@ namespace Yutai.Plugins.Concrete
             }
         }
 
-        public IActiveView ActiveView {
+        public IActiveView ActiveView
+        {
             get
             {
                 switch (_conrolType)
@@ -170,8 +176,7 @@ namespace Yutai.Plugins.Concrete
                         throw new ArgumentOutOfRangeException();
                 }
             }
-           
-                }
+        }
 
         public IMap FocusMap
         {
@@ -200,6 +205,7 @@ namespace Yutai.Plugins.Concrete
         #endregion
 
         #region Methods
+
         /// <summary>
         /// Activate the MapControl and deactivate the PagleLayoutControl
         /// </summary>
@@ -208,7 +214,8 @@ namespace Yutai.Plugins.Concrete
             try
             {
                 if (m_pageLayoutControl == null || m_mapControl == null)
-                    throw new Exception("ControlsSynchronizer::ActivateMap:\r\nEither MapControl or PageLayoutControl are not initialized!");
+                    throw new Exception(
+                        "ControlsSynchronizer::ActivateMap:\r\nEither MapControl or PageLayoutControl are not initialized!");
 
                 //cache the current tool of the PageLayoutControl
                 if (m_pageLayoutControl.CurrentTool != null) m_pageLayoutActiveTool = m_pageLayoutControl.CurrentTool;
@@ -226,7 +233,7 @@ namespace Yutai.Plugins.Concrete
 
                 //on each of the framework controls, set the Buddy control to the MapControl
                 this.SetBuddies(m_mapControl.Object);
-                _conrolType= GISControlType.MapControl;
+                _conrolType = GISControlType.MapControl;
             }
             catch (Exception ex)
             {
@@ -242,7 +249,8 @@ namespace Yutai.Plugins.Concrete
             try
             {
                 if (m_pageLayoutControl == null || m_mapControl == null)
-                    throw new Exception("ControlsSynchronizer::ActivatePageLayout:\r\nEither MapControl or PageLayoutControl are not initialized!");
+                    throw new Exception(
+                        "ControlsSynchronizer::ActivatePageLayout:\r\nEither MapControl or PageLayoutControl are not initialized!");
 
                 //cache the current tool of the MapControl
                 if (m_mapControl.CurrentTool != null) m_mapActiveTool = m_mapControl.CurrentTool;
@@ -272,7 +280,7 @@ namespace Yutai.Plugins.Concrete
 
                 //on each of the framework controls, set the Buddy control to the PageLayoutControl
                 this.SetBuddies(m_pageLayoutControl.Object);
-                _conrolType= GISControlType.PageLayout;
+                _conrolType = GISControlType.PageLayout;
             }
             catch (Exception ex)
             {
@@ -288,22 +296,20 @@ namespace Yutai.Plugins.Concrete
             IElement element = graphicsContainer.Next();
             while (element != null)
             {
-               if (element is IMapFrame)
+                if (element is IMapFrame)
                 {
                     IMapFrame mapFrame = element as IMapFrame;
                     pMaps.Add(mapFrame.Map);
-                    
                 }
-              
-                 element = graphicsContainer.Next();
-                
+
+                element = graphicsContainer.Next();
             }
             return pMaps;
         }
-       
+
         internal IMapFrame GetFocusMapFrame(IPageLayout pageLayout)
         {
-            IMapFrame mapFrame=null;
+            IMapFrame mapFrame = null;
             IGraphicsContainer graphicsContainer = pageLayout as IGraphicsContainer;
             graphicsContainer.Reset();
             IElement element = graphicsContainer.Next();
@@ -314,9 +320,8 @@ namespace Yutai.Plugins.Concrete
                     mapFrame = element as IMapFrame;
                     break;
                 }
-               
-                 element = graphicsContainer.Next();
-               
+
+                element = graphicsContainer.Next();
             }
             return mapFrame;
         }
@@ -331,7 +336,8 @@ namespace Yutai.Plugins.Concrete
                 throw new Exception("ControlsSynchronizer::ReplaceMap:\r\nNew map for replacement is not initialized!");
 
             if (m_pageLayoutControl == null || m_mapControl == null)
-                throw new Exception("ControlsSynchronizer::ReplaceMap:\r\nEither MapControl or PageLayoutControl are not initialized!");
+                throw new Exception(
+                    "ControlsSynchronizer::ReplaceMap:\r\nEither MapControl or PageLayoutControl are not initialized!");
 
             //create a new instance of IMaps collection which is needed by the PageLayout
             IMaps maps = new Maps();
@@ -374,7 +380,8 @@ namespace Yutai.Plugins.Concrete
         public void BindControls(IMapControl3 mapControl, IPageLayoutControl2 pageLayoutControl, bool activateMapFirst)
         {
             if (mapControl == null || pageLayoutControl == null)
-                throw new Exception("ControlsSynchronizer::BindControls:\r\nEither MapControl or PageLayoutControl are not initialized!");
+                throw new Exception(
+                    "ControlsSynchronizer::BindControls:\r\nEither MapControl or PageLayoutControl are not initialized!");
 
             m_mapControl = MapControl;
             m_pageLayoutControl = pageLayoutControl;
@@ -389,7 +396,8 @@ namespace Yutai.Plugins.Concrete
         public void BindControls(bool activateMapFirst)
         {
             if (m_pageLayoutControl == null || m_mapControl == null)
-                throw new Exception("ControlsSynchronizer::BindControls:\r\nEither MapControl or PageLayoutControl are not initialized!");
+                throw new Exception(
+                    "ControlsSynchronizer::BindControls:\r\nEither MapControl or PageLayoutControl are not initialized!");
 
             //create a new instance of IMap
             IMap newMap = new MapClass();
@@ -438,7 +446,8 @@ namespace Yutai.Plugins.Concrete
         public void RemoveFrameworkControl(object control)
         {
             if (control == null)
-                throw new Exception("ControlsSynchronizer::RemoveFrameworkControl:\r\nControl to be removed is not initialized!");
+                throw new Exception(
+                    "ControlsSynchronizer::RemoveFrameworkControl:\r\nControl to be removed is not initialized!");
 
             m_frameworkControls.Remove(control);
         }
@@ -471,11 +480,15 @@ namespace Yutai.Plugins.Concrete
                 {
                     if (obj is IToolbarControl)
                     {
-                        ((IToolbarControl)obj).SetBuddyControl(buddy);
+                        ((IToolbarControl) obj).SetBuddyControl(buddy);
                     }
                     else if (obj is ITOCControl)
                     {
-                        ((ITOCControl)obj).SetBuddyControl(buddy);
+                        ((ITOCControl) obj).SetBuddyControl(buddy);
+                    }
+                    else if (obj is IOverviewControl)
+                    {
+                        ((IOverviewControl) obj).SetBuddyControl(buddy);
                     }
                 }
             }
@@ -484,6 +497,7 @@ namespace Yutai.Plugins.Concrete
                 throw new Exception(string.Format("ControlsSynchronizer::SetBuddies:\r\n{0}", ex.Message));
             }
         }
+
         #endregion
     }
 }

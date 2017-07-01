@@ -98,7 +98,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- public static int EsriRGB(int r, int g, int b)
+        public static int EsriRGB(int r, int g, int b)
         {
             uint num = 0;
             num |= (uint) b;
@@ -135,7 +135,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- private void NorthArrowPropertyPage_Load(object sender, EventArgs e)
+        private void NorthArrowPropertyPage_Load(object sender, EventArgs e)
         {
             this.Init();
             this.m_CanDo = true;
@@ -222,39 +222,23 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.m_IsPageDirty;
-            }
+            get { return this.m_IsPageDirty; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.m_Title;
-            }
-            set
-            {
-                this.m_Title = value;
-            }
+            get { return this.m_Title; }
+            set { this.m_Title = value; }
         }
     }
 }
-

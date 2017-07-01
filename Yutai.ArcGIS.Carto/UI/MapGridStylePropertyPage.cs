@@ -103,7 +103,8 @@ namespace Yutai.ArcGIS.Carto.UI
         {
             if (this.txtSpatialReference.Tag != null)
             {
-                frmSpatialReference reference = new frmSpatialReference {
+                frmSpatialReference reference = new frmSpatialReference
+                {
                     SpatialRefrence = this.txtSpatialReference.Tag as ISpatialReference
                 };
                 if (reference.ShowDialog() == DialogResult.OK)
@@ -119,12 +120,12 @@ namespace Yutai.ArcGIS.Carto.UI
             Math.Sign(double_0);
             double_0 = Math.Abs(double_0);
             double_1 = Math.Floor(double_0);
-            double_0 = (double_0 - double_1) * 60.0;
+            double_0 = (double_0 - double_1)*60.0;
             double_2 = Math.Floor(double_0);
-            double_3 = (double_0 - double_2) * 60.0;
+            double_3 = (double_0 - double_2)*60.0;
         }
 
- public bool Do()
+        public bool Do()
         {
             double num6;
             double num7;
@@ -167,11 +168,11 @@ namespace Yutai.ArcGIS.Carto.UI
                 }
                 if (num3 < 0.0)
                 {
-                    num6 = (num3 - (num4 / 60.0)) - (num5 / 3600.0);
+                    num6 = (num3 - (num4/60.0)) - (num5/3600.0);
                 }
                 else
                 {
-                    num6 = (num3 + (num4 / 60.0)) + (num5 / 3600.0);
+                    num6 = (num3 + (num4/60.0)) + (num5/3600.0);
                 }
                 try
                 {
@@ -186,11 +187,11 @@ namespace Yutai.ArcGIS.Carto.UI
                 }
                 if (num3 < 0.0)
                 {
-                    num7 = (num3 - (num4 / 60.0)) - (num5 / 3600.0);
+                    num7 = (num3 - (num4/60.0)) - (num5/3600.0);
                 }
                 else
                 {
-                    num7 = (num3 + (num4 / 60.0)) + (num5 / 3600.0);
+                    num7 = (num3 + (num4/60.0)) + (num5/3600.0);
                 }
                 (this.imapGrid_0 as IMeasuredGrid).XIntervalSize = num6;
                 (this.imapGrid_0 as IMeasuredGrid).YIntervalSize = num7;
@@ -210,7 +211,7 @@ namespace Yutai.ArcGIS.Carto.UI
                 (this.imapGrid_0 as IMeasuredGrid).XIntervalSize = num6;
                 (this.imapGrid_0 as IMeasuredGrid).YIntervalSize = num7;
             }
-        Label_023F:
+            Label_023F:
             return true;
         }
 
@@ -328,7 +329,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.bool_0 = true;
         }
 
- private void MapGridStylePropertyPage_Load(object sender, EventArgs e)
+        private void MapGridStylePropertyPage_Load(object sender, EventArgs e)
         {
             this.Init();
             this.bool_1 = true;
@@ -351,7 +352,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     case 1:
                     {
                         this.imapGrid_0.LineSymbol = null;
-                        ISimpleMarkerSymbol symbol2 = new SimpleMarkerSymbolClass {
+                        ISimpleMarkerSymbol symbol2 = new SimpleMarkerSymbolClass
+                        {
                             Style = esriSimpleMarkerStyle.esriSMSCross
                         };
                         this.imapGrid_0.TickMarkSymbol = symbol2;
@@ -361,7 +363,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     default:
                     {
                         this.imapGrid_0.TickMarkSymbol = null;
-                        ISimpleLineSymbol symbol = new SimpleLineSymbolClass {
+                        ISimpleLineSymbol symbol = new SimpleLineSymbolClass
+                        {
                             Width = 1.0
                         };
                         this.imapGrid_0.LineSymbol = symbol;
@@ -388,7 +391,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
                     case 1:
                     {
-                        ISimpleLineSymbol symbol = new SimpleLineSymbolClass {
+                        ISimpleLineSymbol symbol = new SimpleLineSymbolClass
+                        {
                             Width = 1.0
                         };
                         this.imapGrid_0.LineSymbol = symbol;
@@ -417,7 +421,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     case 1:
                     {
                         this.imapGrid_0.LineSymbol = null;
-                        ISimpleMarkerSymbol symbol2 = new SimpleMarkerSymbolClass {
+                        ISimpleMarkerSymbol symbol2 = new SimpleMarkerSymbolClass
+                        {
                             Style = esriSimpleMarkerStyle.esriSMSCross
                         };
                         this.imapGrid_0.TickMarkSymbol = symbol2;
@@ -426,7 +431,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     }
                     default:
                     {
-                        ISimpleLineSymbol symbol = new SimpleLineSymbolClass {
+                        ISimpleLineSymbol symbol = new SimpleLineSymbolClass
+                        {
                             Width = 1.0
                         };
                         this.imapGrid_0.TickMarkSymbol = null;
@@ -441,10 +447,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IMapFrame MapFrame
         {
-            set
-            {
-                this.imapFrame_0 = value;
-            }
+            set { this.imapFrame_0 = value; }
         }
 
         public IMapGrid MapGrid
@@ -460,4 +463,3 @@ namespace Yutai.ArcGIS.Carto.UI
         }
     }
 }
-

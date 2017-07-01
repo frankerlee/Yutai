@@ -44,9 +44,9 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         public void ChangeUnit(double newunit)
         {
             this.m_CanDo = false;
-            this.spinEditXOffset.Value = (decimal) ((((double) this.spinEditXOffset.Value) / this.m_unit) * newunit);
-            this.spinEditYOffset.Value = (decimal) ((((double) this.spinEditYOffset.Value) / this.m_unit) * newunit);
-            this.numUpDownSize.Value = (decimal) ((((double) this.numUpDownSize.Value) / this.m_unit) * newunit);
+            this.spinEditXOffset.Value = (decimal) ((((double) this.spinEditXOffset.Value)/this.m_unit)*newunit);
+            this.spinEditYOffset.Value = (decimal) ((((double) this.spinEditYOffset.Value)/this.m_unit)*newunit);
+            this.numUpDownSize.Value = (decimal) ((((double) this.numUpDownSize.Value)/this.m_unit)*newunit);
             this.m_unit = newunit;
             this.m_CanDo = true;
         }
@@ -107,7 +107,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- private void GetRGB(uint rgb, out int r, out int g, out int b)
+        private void GetRGB(uint rgb, out int r, out int g, out int b)
         {
             uint num = rgb & 16711680;
             b = (int) (num >> 16);
@@ -126,8 +126,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
             this.SetColorEdit(this.colorEdit1, this.m_pTextSymbol.Color);
             this.numUpDownSize.Value = (decimal) this.m_pTextSymbol.Size;
-            this.spinEditXOffset.Value = (decimal) ((this.m_pTextSymbol as ISimpleTextSymbol).XOffset * this.m_unit);
-            this.spinEditYOffset.Value = (decimal) ((this.m_pTextSymbol as ISimpleTextSymbol).YOffset * this.m_unit);
+            this.spinEditXOffset.Value = (decimal) ((this.m_pTextSymbol as ISimpleTextSymbol).XOffset*this.m_unit);
+            this.spinEditYOffset.Value = (decimal) ((this.m_pTextSymbol as ISimpleTextSymbol).YOffset*this.m_unit);
             this.spinEditAngle.Value = (decimal) (this.m_pTextSymbol as ISimpleTextSymbol).Angle;
             this.radioGroupHor.SelectedIndex = (int) this.m_pTextSymbol.HorizontalAlignment;
             this.radioGroupVert.SelectedIndex = (int) this.m_pTextSymbol.VerticalAlignment;
@@ -148,7 +148,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.m_CanDo = true;
         }
 
- private void numUpDownSize_EditValueChanged(object sender, EventArgs e)
+        private void numUpDownSize_EditValueChanged(object sender, EventArgs e)
         {
         }
 
@@ -158,11 +158,11 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             {
                 if (this.numUpDownSize.Value <= 0M)
                 {
-                    this.numUpDownSize.Value = (decimal) (this.m_pTextSymbol.Size * this.m_unit);
+                    this.numUpDownSize.Value = (decimal) (this.m_pTextSymbol.Size*this.m_unit);
                 }
                 else
                 {
-                    this.m_pTextSymbol.Size = ((double) this.numUpDownSize.Value) / this.m_unit;
+                    this.m_pTextSymbol.Size = ((double) this.numUpDownSize.Value)/this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -237,11 +237,13 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             {
                 if (this.spinEditAngle.Value < 0M)
                 {
-                    this.spinEditXOffset.Value = (decimal) ((this.m_pTextSymbol as ISimpleTextSymbol).XOffset * this.m_unit);
+                    this.spinEditXOffset.Value =
+                        (decimal) ((this.m_pTextSymbol as ISimpleTextSymbol).XOffset*this.m_unit);
                 }
                 else
                 {
-                    (this.m_pTextSymbol as ISimpleTextSymbol).XOffset = ((double) this.spinEditXOffset.Value) / this.m_unit;
+                    (this.m_pTextSymbol as ISimpleTextSymbol).XOffset = ((double) this.spinEditXOffset.Value)/
+                                                                        this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -253,11 +255,13 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             {
                 if (this.spinEditAngle.Value < 0M)
                 {
-                    this.spinEditYOffset.Value = (decimal) ((this.m_pTextSymbol as ISimpleTextSymbol).YOffset * this.m_unit);
+                    this.spinEditYOffset.Value =
+                        (decimal) ((this.m_pTextSymbol as ISimpleTextSymbol).YOffset*this.m_unit);
                 }
                 else
                 {
-                    (this.m_pTextSymbol as ISimpleTextSymbol).YOffset = ((double) this.spinEditYOffset.Value) / this.m_unit;
+                    (this.m_pTextSymbol as ISimpleTextSymbol).YOffset = ((double) this.spinEditYOffset.Value)/
+                                                                        this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -279,4 +283,3 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         }
     }
 }
-

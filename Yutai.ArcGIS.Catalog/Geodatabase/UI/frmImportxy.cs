@@ -81,7 +81,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
                 MessageBox.Show(exception.ToString());
             }
         }
@@ -109,7 +109,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
-        public IFeatureClass CreateFeatureClass(object object_0, string string_2, ISpatialReference ispatialReference_0, esriFeatureType esriFeatureType_0, esriGeometryType esriGeometryType_0, IFields ifields_0, UID uid_0, UID uid_1, string string_3)
+        public IFeatureClass CreateFeatureClass(object object_0, string string_2, ISpatialReference ispatialReference_0,
+            esriFeatureType esriFeatureType_0, esriGeometryType esriGeometryType_0, IFields ifields_0, UID uid_0,
+            UID uid_1, string string_3)
         {
             if (object_0 == null)
             {
@@ -229,18 +231,21 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             {
                 IWorkspace workspace = (IWorkspace) object_0;
                 IFeatureWorkspace workspace2 = (IFeatureWorkspace) workspace;
-                return workspace2.CreateFeatureClass(string_2, ifields_0, uid_0, uid_1, esriFeatureType_0, shapeFieldName, string_3);
+                return workspace2.CreateFeatureClass(string_2, ifields_0, uid_0, uid_1, esriFeatureType_0,
+                    shapeFieldName, string_3);
             }
             if (object_0 is IFeatureDataset)
             {
-                class2 = ((IFeatureDataset) object_0).CreateFeatureClass(string_2, ifields_0, uid_0, uid_1, esriFeatureType_0, shapeFieldName, string_3);
+                class2 = ((IFeatureDataset) object_0).CreateFeatureClass(string_2, ifields_0, uid_0, uid_1,
+                    esriFeatureType_0, shapeFieldName, string_3);
             }
             return class2;
         }
 
- private void method_0()
+        private void method_0()
         {
-            string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + this.string_0 + @"\" + this.string_1 + ";Extended Properties='Excel 8.0;HDR=YES;IMEX=2'";
+            string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + this.string_0 + @"\" +
+                                      this.string_1 + ";Extended Properties='Excel 8.0;HDR=YES;IMEX=2'";
             string cmdText = "SELECT * FROM [XYDATA$]";
             DataSet dataSet = new DataSet();
             dataSet.Tables.Add("XYDATA");
@@ -308,7 +313,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void method_1(IFeatureClass ifeatureClass_0)
         {
-            string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + this.string_0 + @"\" + this.string_1 + ";Extended Properties='Excel 8.0;HDR=YES;IMEX=2'";
+            string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + this.string_0 + @"\" +
+                                      this.string_1 + ";Extended Properties='Excel 8.0;HDR=YES;IMEX=2'";
             string cmdText = "SELECT * FROM [XYDATA$]";
             DataSet dataSet = new DataSet();
             dataSet.Tables.Add("XYDATA");
@@ -333,7 +339,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             foreach (DataRow row in rows)
             {
                 IPoint point = null;
-                point = new PointClass {
+                point = new PointClass
+                {
                     X = Convert.ToDouble(row[this.cboXField.Text].ToString()),
                     Y = Convert.ToDouble(row[this.cboYField.Text].ToString())
                 };
@@ -371,7 +378,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 }
                 catch (Exception exception)
                 {
-                    Logger.Current.Error("",exception, "");
+                    Logger.Current.Error("", exception, "");
                 }
             }
             workspace.StopEditing(true);
@@ -412,8 +419,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             edit4.Type_2 = esriFieldType.esriFieldTypeGeometry;
             edit4.GeometryDef_2 = def;
             edit.AddField(field2);
-            return this.CreateFeatureClass(idataset_1, string_2, new UnknownCoordinateSystemClass(), esriFeatureType.esriFTSimple, esriGeometryType.esriGeometryPoint, fields, null, null, null);
+            return this.CreateFeatureClass(idataset_1, string_2, new UnknownCoordinateSystemClass(),
+                esriFeatureType.esriFTSimple, esriGeometryType.esriGeometryPoint, fields, null, null, null);
         }
     }
 }
-

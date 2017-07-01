@@ -20,7 +20,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.int_0 = int_1;
         }
 
- public bool Do()
+        public bool Do()
         {
             IEnumNameEdit edit;
             IEnumName enumName;
@@ -105,7 +105,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
             else if (this.int_0 == 2)
             {
-                ExtractionDataHelper.m_pHelper.MasterWorkspaceName = (tag.Workspace as IDataset).FullName as IWorkspaceName;
+                ExtractionDataHelper.m_pHelper.MasterWorkspaceName =
+                    (tag.Workspace as IDataset).FullName as IWorkspaceName;
                 edit = new NamesEnumeratorClass();
                 enumName = tag.EnumName;
                 enumName.Reset();
@@ -160,7 +161,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
             else if (this.int_0 == 3)
             {
-                ExportChangesHelper.m_pHelper.CheckoutWorkspaceName = (tag.Workspace as IDataset).FullName as IWorkspaceName;
+                ExportChangesHelper.m_pHelper.CheckoutWorkspaceName =
+                    (tag.Workspace as IDataset).FullName as IWorkspaceName;
             }
             return true;
         }
@@ -187,7 +189,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void method_0(IWorkspace iworkspace_0, out string string_0, out string string_1)
+        private void method_0(IWorkspace iworkspace_0, out string string_0, out string string_1)
         {
             string_0 = iworkspace_0.PathName;
             if (iworkspace_0.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace)
@@ -228,7 +230,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 {
                     CheckInOutWorkspaceInfo info = this.iarray_0.get_Element(i) as CheckInOutWorkspaceInfo;
                     this.method_0(info.Workspace, out items[0], out items[1]);
-                    ListViewItem item = new ListViewItem(items) {
+                    ListViewItem item = new ListViewItem(items)
+                    {
                         Tag = info
                     };
                     this.EditWorkspacelist.Items.Add(item);
@@ -238,11 +241,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IArray WorkspaceArray
         {
-            set
-            {
-                this.iarray_0 = value;
-            }
+            set { this.iarray_0 = value; }
         }
     }
 }
-

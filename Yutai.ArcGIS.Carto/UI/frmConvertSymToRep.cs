@@ -40,16 +40,20 @@ namespace Yutai.ArcGIS.Carto.UI
                 try
                 {
                     IFeatureClass featureClass = this.ifeatureLayer_0.FeatureClass;
-                    IRepresentationWorkspaceExtension repWSExtFromFClass = RepresentationAssist.GetRepWSExtFromFClass(featureClass);
+                    IRepresentationWorkspaceExtension repWSExtFromFClass =
+                        RepresentationAssist.GetRepWSExtFromFClass(featureClass);
                     if (repWSExtFromFClass != null)
                     {
                         IRepresentationRule repRule = RepresentationAssist.CreateRepresentationRule(featureClass);
                         IRepresentationRules rules = new RepresentationRulesClass();
                         rules.Add(repRule);
-                        IRepresentationClass class3 = repWSExtFromFClass.CreateRepresentationClass(featureClass, this.txtRepresentationName.Text, this.txtruleIDFldName.Text, this.txtoverrideFldName.Text, this.rdoRequireShapeOverride.Checked, rules, null);
+                        IRepresentationClass class3 = repWSExtFromFClass.CreateRepresentationClass(featureClass,
+                            this.txtRepresentationName.Text, this.txtruleIDFldName.Text, this.txtoverrideFldName.Text,
+                            this.rdoRequireShapeOverride.Checked, rules, null);
                         if ((this.imap_0 != null) && this.chkAddLayer.Checked)
                         {
-                            IFeatureLayer layer = new FeatureLayerClass {
+                            IFeatureLayer layer = new FeatureLayerClass
+                            {
                                 FeatureClass = featureClass
                             };
                             IFeatureRenderer renderer = new RepresentationRendererClass();
@@ -88,15 +92,16 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void frmConvertSymToRep_Load(object sender, EventArgs e)
+        private void frmConvertSymToRep_Load(object sender, EventArgs e)
         {
             this.method_0();
         }
 
- private void method_0()
+        private void method_0()
         {
             IFeatureClass featureClass = this.ifeatureLayer_0.FeatureClass;
-            IRepresentationWorkspaceExtension repWSExtFromFClass = RepresentationAssist.GetRepWSExtFromFClass(featureClass);
+            IRepresentationWorkspaceExtension repWSExtFromFClass =
+                RepresentationAssist.GetRepWSExtFromFClass(featureClass);
             string str = this.ifeatureLayer_0.FeatureClass.AliasName + "_Rep";
             string str2 = "RuleID";
             string str3 = "Override";
@@ -142,19 +147,12 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IFeatureLayer FeatureLayer
         {
-            set
-            {
-                this.ifeatureLayer_0 = value;
-            }
+            set { this.ifeatureLayer_0 = value; }
         }
 
         public IMap FocusMap
         {
-            set
-            {
-                this.imap_0 = value;
-            }
+            set { this.imap_0 = value; }
         }
     }
 }
-

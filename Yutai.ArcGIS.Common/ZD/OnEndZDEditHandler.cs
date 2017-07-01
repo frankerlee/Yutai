@@ -1,4 +1,4 @@
 namespace Yutai.ArcGIS.Common.ZD
 {
-	public delegate void OnEndZDEditHandler();
+    public delegate void OnEndZDEditHandler();
 }

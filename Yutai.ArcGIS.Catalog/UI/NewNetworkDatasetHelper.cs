@@ -52,7 +52,8 @@ namespace Yutai.ArcGIS.Catalog.UI
         {
             for (int i = 0; i < this.list_0.Count; i++)
             {
-                if (this.list_0[i].IsUse && (this.list_0[i].FeatureClass.ShapeType == esriGeometryType.esriGeometryPolyline))
+                if (this.list_0[i].IsUse &&
+                    (this.list_0[i].FeatureClass.ShapeType == esriGeometryType.esriGeometryPolyline))
                 {
                     return true;
                 }
@@ -68,7 +69,7 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         private string method_0(IDataset idataset_0)
         {
-            string[] strArray = idataset_0.BrowseName.Split(new char[] { '.' });
+            string[] strArray = idataset_0.BrowseName.Split(new char[] {'.'});
             return strArray[strArray.Length - 1];
         }
 
@@ -82,7 +83,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             IDEGeoDataset dataset3 = (IDEGeoDataset) dataset2;
             element.Name = string_1;
             dataset2.Buildable = true;
-            dataset3.SpatialReference= spatialReference;
+            dataset3.SpatialReference = spatialReference;
             IArray array = new ArrayClass();
             for (num = 0; num < this.FeatureClassWraps.Count; num++)
             {
@@ -92,11 +93,14 @@ namespace Yutai.ArcGIS.Catalog.UI
                     IFeatureClass featureClass = this.FeatureClassWraps[num].FeatureClass;
                     if (featureClass.ShapeType == esriGeometryType.esriGeometryPoint)
                     {
-                        source = new JunctionFeatureSourceClass {
+                        source = new JunctionFeatureSourceClass
+                        {
                             Name = this.FeatureClassWraps[num].ToString()
                         };
                         IJunctionFeatureSource source2 = (IJunctionFeatureSource) source;
-                        source2.ClassConnectivityPolicy = (esriNetworkJunctionConnectivityPolicy) this.FeatureClassWraps[num].NetworkConnectivityPolicy;
+                        source2.ClassConnectivityPolicy =
+                            (esriNetworkJunctionConnectivityPolicy)
+                            this.FeatureClassWraps[num].NetworkConnectivityPolicy;
                         if (this.ModifyConnectivity)
                         {
                             source2.ElevationFieldName = this.FeatureClassWraps[num].ElevationFieldName;
@@ -109,7 +113,8 @@ namespace Yutai.ArcGIS.Catalog.UI
                         IEdgeFeatureSource source3 = (IEdgeFeatureSource) source;
                         source.Name = this.FeatureClassWraps[num].ToString();
                         source3.ClassConnectivityGroup = 1;
-                        source3.ClassConnectivityPolicy = (esriNetworkEdgeConnectivityPolicy) this.FeatureClassWraps[num].NetworkConnectivityPolicy;
+                        source3.ClassConnectivityPolicy =
+                            (esriNetworkEdgeConnectivityPolicy) this.FeatureClassWraps[num].NetworkConnectivityPolicy;
                         if (this.ModifyConnectivity)
                         {
                             source3.FromElevationFieldName = this.FeatureClassWraps[num].FromElevationFieldName;
@@ -126,7 +131,8 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
             dataset2.SupportsTurns = this.bool_2;
             IFeatureDatasetExtensionContainer container = (IFeatureDatasetExtensionContainer) ifeatureDataset_1;
-            IDatasetContainer2 container2 = (IDatasetContainer2) container.FindExtension(esriDatasetType.esriDTNetworkDataset);
+            IDatasetContainer2 container2 =
+                (IDatasetContainer2) container.FindExtension(esriDatasetType.esriDTNetworkDataset);
             return (INetworkDataset) container2.CreateDataset((IDEDataset) dataset2);
         }
 
@@ -137,42 +143,24 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         public IArray Attributes
         {
-            get
-            {
-                return this.iarray_0;
-            }
-            set
-            {
-                this.iarray_0 = value;
-            }
+            get { return this.iarray_0; }
+            set { this.iarray_0 = value; }
         }
 
         public int ClassConnectivityGroups
         {
-            get
-            {
-                return this.int_0;
-            }
-            set
-            {
-                this.int_0 = value;
-            }
+            get { return this.int_0; }
+            set { this.int_0 = value; }
         }
 
         public List<FeatureClassWrap> FeatureClassWraps
         {
-            get
-            {
-                return this.list_0;
-            }
+            get { return this.list_0; }
         }
 
         public IFeatureDataset FeatureDataset
         {
-            get
-            {
-                return this.ifeatureDataset_0;
-            }
+            get { return this.ifeatureDataset_0; }
             set
             {
                 this.ifeatureDataset_0 = value;
@@ -185,82 +173,43 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         public bool IsEstablishDirection
         {
-            get
-            {
-                return this.bool_4;
-            }
-            set
-            {
-                this.bool_4 = value;
-            }
+            get { return this.bool_4; }
+            set { this.bool_4 = value; }
         }
 
         public bool ModifyConnectivity
         {
-            get
-            {
-                return this.bool_1;
-            }
-            set
-            {
-                this.bool_1 = value;
-            }
+            get { return this.bool_1; }
+            set { this.bool_1 = value; }
         }
 
         public string NetworkDatasetName
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
 
         public INetworkDirections NetworkDirections
         {
-            get
-            {
-                return this.inetworkDirections_0;
-            }
-            set
-            {
-                this.inetworkDirections_0 = value;
-            }
+            get { return this.inetworkDirections_0; }
+            set { this.inetworkDirections_0 = value; }
         }
 
         public static NewNetworkDatasetHelper NewNetworkDataset
         {
-            get
-            {
-                return m_helper;
-            }
+            get { return m_helper; }
         }
 
         public bool SupportsTurns
         {
-            get
-            {
-                return this.bool_2;
-            }
-            set
-            {
-                this.bool_2 = value;
-            }
+            get { return this.bool_2; }
+            set { this.bool_2 = value; }
         }
 
         public bool UseElevationFieldName
         {
-            get
-            {
-                return this.bool_3;
-            }
-            set
-            {
-                this.bool_3 = value;
-            }
+            get { return this.bool_3; }
+            set { this.bool_3 = value; }
         }
 
         public class FeatureClassWrap
@@ -293,58 +242,31 @@ namespace Yutai.ArcGIS.Catalog.UI
 
             public string ElevationFieldName
             {
-                get
-                {
-                    return this.string_0;
-                }
-                set
-                {
-                    this.string_0 = value;
-                }
+                get { return this.string_0; }
+                set { this.string_0 = value; }
             }
 
             public IFeatureClass FeatureClass
             {
-                get
-                {
-                    return this.ifeatureClass_0;
-                }
+                get { return this.ifeatureClass_0; }
             }
 
             public string FromElevationFieldName
             {
-                get
-                {
-                    return this.string_1;
-                }
-                set
-                {
-                    this.string_1 = value;
-                }
+                get { return this.string_1; }
+                set { this.string_1 = value; }
             }
 
             public bool IsUse
             {
-                get
-                {
-                    return this.bool_0;
-                }
-                set
-                {
-                    this.bool_0 = value;
-                }
+                get { return this.bool_0; }
+                set { this.bool_0 = value; }
             }
 
             public int NetworkConnectivityPolicy
             {
-                get
-                {
-                    return this.int_0;
-                }
-                set
-                {
-                    this.int_0 = 0;
-                }
+                get { return this.int_0; }
+                set { this.int_0 = 0; }
             }
 
             public INetworkSourceDirections NetworkSourceDirections
@@ -361,24 +283,14 @@ namespace Yutai.ArcGIS.Catalog.UI
                     }
                     return this.inetworkSourceDirections_0;
                 }
-                set
-                {
-                    this.inetworkSourceDirections_0 = value;
-                }
+                set { this.inetworkSourceDirections_0 = value; }
             }
 
             public string ToElevationFieldName
             {
-                get
-                {
-                    return this.string_2;
-                }
-                set
-                {
-                    this.string_2 = value;
-                }
+                get { return this.string_2; }
+                set { this.string_2 = value; }
             }
         }
     }
 }
-

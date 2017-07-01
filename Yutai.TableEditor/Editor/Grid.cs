@@ -118,7 +118,8 @@ namespace Yutai.Plugins.TableEditor.Editor
             return ConvertITableToDataTable(table, strGeometry, featureClass.AliasName, fields);
         }
 
-        public DataTable ConvertITableToDataTable(ITable table, string strGeometry, string name, List<string> displayFields)
+        public DataTable ConvertITableToDataTable(ITable table, string strGeometry, string name,
+            List<string> displayFields)
         {
             DataTable dataTable = new DataTable(name);
             try
@@ -264,8 +265,8 @@ namespace Yutai.Plugins.TableEditor.Editor
             this._dataGridView.ReadOnly = true;
 
             this._dataGridView.ClearSelection();
-            this._dataGridView.SelectionChanged += _dataGridView_SelectionChanged; ;
-
+            this._dataGridView.SelectionChanged += _dataGridView_SelectionChanged;
+            ;
         }
 
         public void Sort(int columnIndex, ListSortDirection direction)
@@ -282,7 +283,8 @@ namespace Yutai.Plugins.TableEditor.Editor
             pColumn.Caption = field.AliasName;
         }
 
-        public void JoinTable(IFeatureClass featureClass, string parentFieldName, string childFieldName, List<string> fields)
+        public void JoinTable(IFeatureClass featureClass, string parentFieldName, string childFieldName,
+            List<string> fields)
         {
             DataTable childDataTable = ConvertITableToDataTable(featureClass, fields);
             string childName = featureClass.AliasName;
@@ -311,7 +313,7 @@ namespace Yutai.Plugins.TableEditor.Editor
                 }
             }
         }
-        
+
         public void StopJoin(string tableName)
         {
             for (int i = _dataTable.Columns.Count - 1; i >= 0; i--)
@@ -331,33 +333,33 @@ namespace Yutai.Plugins.TableEditor.Editor
                 switch (pFeatClass.ShapeType)
                 {
                     case esriGeometryType.esriGeometryPoint:
-                        {
-                            str1 = "点";
-                            break;
-                        }
+                    {
+                        str1 = "点";
+                        break;
+                    }
                     case esriGeometryType.esriGeometryMultipoint:
-                        {
-                            str1 = "多点";
-                            break;
-                        }
+                    {
+                        str1 = "多点";
+                        break;
+                    }
                     case esriGeometryType.esriGeometryPolyline:
-                        {
-                            str1 = "线";
-                            break;
-                        }
+                    {
+                        str1 = "线";
+                        break;
+                    }
                     case esriGeometryType.esriGeometryPolygon:
-                        {
-                            str1 = "多边形";
-                            break;
-                        }
+                    {
+                        str1 = "多边形";
+                        break;
+                    }
                     case esriGeometryType.esriGeometryEnvelope:
                     case esriGeometryType.esriGeometryPath:
                     case esriGeometryType.esriGeometryAny:
                     case esriGeometryType.esriGeometryMultiPatch:
-                        {
-                            str1 = "多面";
-                            break;
-                        }
+                    {
+                        str1 = "多面";
+                        break;
+                    }
                     default:
                         break;
                 }
@@ -462,7 +464,6 @@ namespace Yutai.Plugins.TableEditor.Editor
             {
                 OnColumnHeaderRightClick(e);
             }
-
         }
 
         private void _dataGridView_CurrentCellChanged(object sender, EventArgs e)
@@ -514,7 +515,6 @@ namespace Yutai.Plugins.TableEditor.Editor
             }
             else
             {
-
                 string values = $"({string.Join(",", _selectedRowIdList)})";
                 _dataViewSelected.RowFilter = $" {_dataTable.Columns[0].ColumnName} IN {values} ";
                 _dataGridView.DataSource = _dataViewSelected;

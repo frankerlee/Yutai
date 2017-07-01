@@ -36,7 +36,9 @@ namespace Yutai.Plugins.Editor.Commands
                             flag = false;
                             return flag;
                         }
-                        else if ((feature.Shape.GeometryType == esriGeometryType.esriGeometryPoint ? true : feature.Shape.GeometryType == esriGeometryType.esriGeometryMultipoint))
+                        else if ((feature.Shape.GeometryType == esriGeometryType.esriGeometryPoint
+                            ? true
+                            : feature.Shape.GeometryType == esriGeometryType.esriGeometryMultipoint))
                         {
                             flag = false;
                             return flag;
@@ -64,7 +66,6 @@ namespace Yutai.Plugins.Editor.Commands
         public CmdGeometrySmooth(IAppContext context)
         {
             OnCreate(context);
-
         }
 
         public override void OnCreate(object hook)

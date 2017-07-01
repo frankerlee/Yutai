@@ -31,7 +31,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         public void ChangeUnit(double newunit)
         {
             this.m_CanDo = false;
-            this.numericUpDownWidth.Value = (decimal) ((((double) this.numericUpDownWidth.Value) / this.m_unit) * newunit);
+            this.numericUpDownWidth.Value = (decimal) ((((double) this.numericUpDownWidth.Value)/this.m_unit)*newunit);
             this.m_unit = newunit;
             this.m_CanDo = true;
         }
@@ -78,7 +78,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- private void GetRGB(uint rgb, out int r, out int g, out int b)
+        private void GetRGB(uint rgb, out int r, out int g, out int b)
         {
             uint num = rgb & 16711680;
             b = (int) (num >> 16);
@@ -133,7 +133,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.m_CanDo = true;
         }
 
- public static bool IsNmuber(string str)
+        public static bool IsNmuber(string str)
         {
             if (str.Length > 0)
             {
@@ -219,7 +219,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         private void LoadPictureFile(EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
                 Filter = "Bitmaps (*.bmp)|*.bmp|Enhanced Metafiles (*.emf)|*.emf",
                 RestoreDirectory = true
             };
@@ -254,7 +255,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     this.numericUpDownWidth.ForeColor = SystemColors.WindowText;
-                    this.m_PictureLineSymbol.Width = ((double) this.numericUpDownWidth.Value) / this.m_unit;
+                    this.m_PictureLineSymbol.Width = ((double) this.numericUpDownWidth.Value)/this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -358,4 +359,3 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         }
     }
 }
-

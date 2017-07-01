@@ -31,16 +31,20 @@ namespace Yutai.ArcGIS.Carto.UI
             this.exListView1.MySortBrush = SystemBrushes.ControlLight;
             this.exListView1.MyHighlightBrush = Brushes.Goldenrod;
             this.exListView1.GridLines = true;
-            ColumnHeader header = new ColumnHeader {
+            ColumnHeader header = new ColumnHeader
+            {
                 Text = "通道"
             };
             this.exListView1.Columns.Add(header);
             EXEditableColumnHeader header2 = new EXEditableColumnHeader("波段", this.comboBox_0, 80);
             this.exListView1.Columns.Add(header2);
-            EXBoolColumnHeader header3 = new EXBoolColumnHeader("可见性", 80) {
+            EXBoolColumnHeader header3 = new EXBoolColumnHeader("可见性", 80)
+            {
                 Editable = true,
-                TrueImage = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Carto.checked.bmp")),
-                FalseImage = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Carto.uncheck.bmp"))
+                TrueImage =
+                    new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Carto.checked.bmp")),
+                FalseImage =
+                    new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Carto.uncheck.bmp"))
             };
             this.exListView1.Columns.Add(header3);
         }
@@ -64,9 +68,9 @@ namespace Yutai.ArcGIS.Carto.UI
                         num3++;
                     }
                     goto Label_007B;
-                Label_0078:
+                    Label_0078:
                     num2 = num3;
-                Label_007B:
+                    Label_007B:
                     if (i == 0)
                     {
                         this.irasterRGBRenderer_0.RedBandIndex = num2;
@@ -87,7 +91,11 @@ namespace Yutai.ArcGIS.Carto.UI
                 {
                     try
                     {
-                        double[] numArray = new double[] { double.Parse(this.txtBackgroundR.Text), double.Parse(this.txtBackgroundG.Text), double.Parse(this.txtBackgroundB.Text) };
+                        double[] numArray = new double[]
+                        {
+                            double.Parse(this.txtBackgroundR.Text), double.Parse(this.txtBackgroundG.Text),
+                            double.Parse(this.txtBackgroundB.Text)
+                        };
                         (this.irasterRGBRenderer_0 as IRasterStretch2).BackgroundValue = numArray;
                     }
                     catch
@@ -105,7 +113,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnStretch_Click(object sender, EventArgs e)
         {
-            new frmRasteStrechSet { RasterStretch = this.irasterRGBRenderer_0 as IRasterStretch2 }.ShowDialog();
+            new frmRasteStrechSet {RasterStretch = this.irasterRGBRenderer_0 as IRasterStretch2}.ShowDialog();
         }
 
         private void chkShowBackground_CheckedChanged(object sender, EventArgs e)
@@ -145,7 +153,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void method_0()
+        private void method_0()
         {
             IRasterBandCollection raster = this.irasterLayer_0.Raster as IRasterBandCollection;
             if (raster.Count != this.irasterLayer_0.BandCount)
@@ -162,7 +170,7 @@ namespace Yutai.ArcGIS.Carto.UI
             {
                 this.comboBox_0.Items.Add(new BandWrap(band2));
             }
-            string[] strArray = new string[] { "红色", raster.Item(this.irasterRGBRenderer_0.RedBandIndex).Bandname };
+            string[] strArray = new string[] {"红色", raster.Item(this.irasterRGBRenderer_0.RedBandIndex).Bandname};
             EXListViewItem item = new EXListViewItem(strArray);
             item.SubItems.Add(new EXBoolListViewSubItem(this.irasterRGBRenderer_0.UseRedBand));
             this.exListView1.Items.Add(item);
@@ -208,7 +216,7 @@ namespace Yutai.ArcGIS.Carto.UI
                 int num2;
                 int num3;
                 int num4;
-                uint rGB =(uint) icolor_0.RGB;
+                uint rGB = (uint) icolor_0.RGB;
                 this.method_2(rGB, out num2, out num3, out num4);
                 colorEdit_0.Color = Color.FromArgb(icolor_0.Transparency, num2, num3, num4);
             }
@@ -217,7 +225,7 @@ namespace Yutai.ArcGIS.Carto.UI
         private void method_2(uint uint_0, out int int_0, out int int_1, out int int_2)
         {
             uint num = uint_0 & 16711680;
-             int_2 = (int) (num >> 16);
+            int_2 = (int) (num >> 16);
             num = uint_0 & 65280;
             int_1 = (int) (num >> 8);
             num = uint_0 & 255;
@@ -229,7 +237,7 @@ namespace Yutai.ArcGIS.Carto.UI
             uint num = 0;
             num = (uint) (0 | int_2);
             num = num << 8;
-            num |=(uint) int_1;
+            num |= (uint) int_1;
             num = num << 8;
             return (int) (num | int_0);
         }
@@ -304,14 +312,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         bool IUserControl.Visible
         {
-            get
-            {
-                return base.Visible;
-            }
-            set
-            {
-                base.Visible = value;
-            }
+            get { return base.Visible; }
+            set { base.Visible = value; }
         }
 
         internal partial class BandWrap
@@ -330,12 +332,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
             internal IRasterBand RasterBand
             {
-                get
-                {
-                    return this.irasterBand_0;
-                }
+                get { return this.irasterBand_0; }
             }
         }
     }
 }
-

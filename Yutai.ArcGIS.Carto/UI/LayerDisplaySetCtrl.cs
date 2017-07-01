@@ -48,8 +48,10 @@ namespace Yutai.ArcGIS.Carto.UI
                 {
                     if (this.cboFields.SelectedIndex > 0)
                     {
-                        (this.ilayer_0 as IHotlinkContainer).HotlinkField = (this.cboFields.SelectedItem as FieldWrapEx).Name;
-                        (this.ilayer_0 as IHotlinkContainer).HotlinkType = (esriHyperlinkType) this.rdoHyperLinkeType.SelectedIndex;
+                        (this.ilayer_0 as IHotlinkContainer).HotlinkField =
+                            (this.cboFields.SelectedItem as FieldWrapEx).Name;
+                        (this.ilayer_0 as IHotlinkContainer).HotlinkType =
+                            (esriHyperlinkType) this.rdoHyperLinkeType.SelectedIndex;
                     }
                     else
                     {
@@ -85,7 +87,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void LayerDisplaySetCtrl_Load(object sender, EventArgs e)
+        private void LayerDisplaySetCtrl_Load(object sender, EventArgs e)
         {
             this.chkShowMapTip.Checked = this.ilayer_0.ShowTips;
             if (this.ilayer_0 is ILayerEffects)
@@ -185,34 +187,22 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IBasicMap FocusMap
         {
-            set
-            {
-            }
+            set { }
         }
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         public ILayer Layer
         {
-            set
-            {
-                this.ilayer_0 = value;
-            }
+            set { this.ilayer_0 = value; }
         }
 
         public object SelectItem
         {
-            set
-            {
-                this.ilayer_0 = value as ILayer;
-            }
+            set { this.ilayer_0 = value as ILayer; }
         }
     }
 }
-

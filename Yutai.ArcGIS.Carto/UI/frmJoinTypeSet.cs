@@ -30,7 +30,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void frmJoinTypeSet_Load(object sender, EventArgs e)
+        private void frmJoinTypeSet_Load(object sender, EventArgs e)
         {
             if (this.esriJoinType_0 == esriJoinType.esriLeftOuterJoin)
             {
@@ -42,21 +42,14 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
+        private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
         {
         }
 
         public esriJoinType JoinType
         {
-            get
-            {
-                return this.esriJoinType_0;
-            }
-            set
-            {
-                this.esriJoinType_0 = value;
-            }
+            get { return this.esriJoinType_0; }
+            set { this.esriJoinType_0 = value; }
         }
     }
 }
-

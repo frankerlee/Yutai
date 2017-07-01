@@ -14,7 +14,5 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
         {
             this.InitializeComponent();
         }
-
-
     }
 }

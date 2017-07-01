@@ -55,19 +55,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public string Description
         {
-            get
-            {
-                return "Shapefile";
-            }
+            get { return "Shapefile"; }
         }
 
         public string Name
         {
-            get
-            {
-                return "Shapefiles";
-            }
+            get { return "Shapefiles"; }
         }
     }
 }
-

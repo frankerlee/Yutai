@@ -28,7 +28,7 @@ namespace Yutai.Shared
             target.Height = source.Height;
         }
 
-        public static void MakeSameLocation(this Control target , Control source)
+        public static void MakeSameLocation(this Control target, Control source)
         {
             target.Left = source.Left;
             target.Top = source.Top;

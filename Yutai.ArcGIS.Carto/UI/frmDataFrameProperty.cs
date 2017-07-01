@@ -34,11 +34,11 @@ namespace Yutai.ArcGIS.Carto.UI
             base.Close();
         }
 
- private void frmDataFrameProperty_Load(object sender, EventArgs e)
+        private void frmDataFrameProperty_Load(object sender, EventArgs e)
         {
         }
 
- public IBasicMap FocusMap
+        public IBasicMap FocusMap
         {
             set
             {
@@ -60,4 +60,3 @@ namespace Yutai.ArcGIS.Carto.UI
         }
     }
 }
-

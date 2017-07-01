@@ -9,7 +9,6 @@ namespace Yutai.ArcGIS.Controls.Controls.EditorUI
 {
     public partial class frmSelectSymbolClass : Form
     {
-
         public frmSelectSymbolClass()
         {
             this.InitializeComponent();
@@ -25,7 +24,7 @@ namespace Yutai.ArcGIS.Controls.Controls.EditorUI
             }
         }
 
- private void frmSelectSymbolClass_Load(object sender, EventArgs e)
+        private void frmSelectSymbolClass_Load(object sender, EventArgs e)
         {
             this.button1.Enabled = false;
             string[] items = new string[3];
@@ -35,14 +34,15 @@ namespace Yutai.ArcGIS.Controls.Controls.EditorUI
                 items[0] = schem.Value;
                 items[1] = schem.Label;
                 items[2] = schem.Description;
-                ListViewItem item = new ListViewItem(items) {
+                ListViewItem item = new ListViewItem(items)
+                {
                     Tag = schem
                 };
                 this.listView1.Items.Add(item);
             }
         }
 
- private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.button1.Enabled = this.listView1.SelectedIndices.Count > 0;
         }
@@ -50,4 +50,3 @@ namespace Yutai.ArcGIS.Controls.Controls.EditorUI
         public YTEditTemplate EditTemplate { get; set; }
     }
 }
-

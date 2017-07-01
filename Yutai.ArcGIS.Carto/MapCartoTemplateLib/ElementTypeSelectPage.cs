@@ -12,7 +12,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         private bool bool_0 = false;
         private bool bool_1 = false;
         private IContainer icontainer_0 = null;
-     
+
         public event OnValueChangeEventHandler OnValueChange;
 
         public ElementTypeSelectPage()
@@ -71,13 +71,13 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             this.bool_1 = false;
         }
 
- private void ElementTypeSelectPage_Load(object sender, EventArgs e)
+        private void ElementTypeSelectPage_Load(object sender, EventArgs e)
         {
             this.cboMapTemplateElementType.SelectedIndex = 0;
             this.bool_0 = true;
         }
 
- private void method_0(object sender, EventArgs e)
+        private void method_0(object sender, EventArgs e)
         {
         }
 
@@ -91,66 +91,27 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
-        public MapCartoTemplateLib.MapTemplate MapTemplate
-        {
-            [CompilerGenerated]
-            protected get
-            {
-                return this.mapTemplate_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.mapTemplate_0 = value;
-            }
-        }
+        public MapCartoTemplateLib.MapTemplate MapTemplate { get; set; }
 
-        public MapCartoTemplateLib.MapTemplateElement MapTemplateElement
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.mapTemplateElement_0;
-            }
-            [CompilerGenerated]
-            protected set
-            {
-                this.mapTemplateElement_0 = value;
-            }
-        }
+        public MapCartoTemplateLib.MapTemplateElement MapTemplateElement { get; set; }
 
         public string Title
         {
-            get
-            {
-                return "类型";
-            }
-            set
-            {
-            }
+            get { return "类型"; }
+            set { }
         }
     }
 }
-

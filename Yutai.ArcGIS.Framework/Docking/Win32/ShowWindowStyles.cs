@@ -19,4 +19,3 @@
         SW_SHOWNORMAL = 1
     }
 }
-

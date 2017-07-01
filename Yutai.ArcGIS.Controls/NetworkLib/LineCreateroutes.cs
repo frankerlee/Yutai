@@ -10,7 +10,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
 {
     internal class LineCreateroutes
     {
-        public void CreateRoutes(IFeatureClass pLineFC, string InputRouteIDFieldName, string fromMeasureField, string toMeasureField)
+        public void CreateRoutes(IFeatureClass pLineFC, string InputRouteIDFieldName, string fromMeasureField,
+            string toMeasureField)
         {
             try
             {
@@ -26,22 +27,29 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
                 IClone geometryDef = (IClone) fields.get_Field(index).GeometryDef;
                 IGeometryDef outputGeometryDef = (IGeometryDef) geometryDef.Clone();
                 ((ISpatialReference2) outputGeometryDef.SpatialReference).SetMFalseOriginAndUnits(-1000.0, 1000.0);
-                IQueryFilter queryFilter = new QueryFilterClass {
+                IQueryFilter queryFilter = new QueryFilterClass
+                {
                     WhereClause = "[ROUTE1] <> 0"
                 };
-                ISelectionSet2 set = (ISelectionSet2) pLineFC.Select(queryFilter, esriSelectionType.esriSelectionTypeIDSet, esriSelectionOption.esriSelectionOptionNormal, selectionContainer);
-                IRouteMeasureCreator creator = new RouteMeasureCreatorClass {
+                ISelectionSet2 set =
+                    (ISelectionSet2)
+                    pLineFC.Select(queryFilter, esriSelectionType.esriSelectionTypeIDSet,
+                        esriSelectionOption.esriSelectionOptionNormal, selectionContainer);
+                IRouteMeasureCreator creator = new RouteMeasureCreatorClass
+                {
                     InputFeatureSelection = set,
                     InputRouteIDFieldName = InputRouteIDFieldName
                 };
-                IEnumBSTR mbstr = creator.CreateUsing2Fields(fromMeasureField, toMeasureField, outputFClassName, outputGeometryDef, "", null);
+                IEnumBSTR mbstr = creator.CreateUsing2Fields(fromMeasureField, toMeasureField, outputFClassName,
+                    outputGeometryDef, "", null);
                 for (string str = mbstr.Next(); str != null; str = mbstr.Next())
                 {
                 }
             }
             catch (COMException exception)
             {
-                MessageBox.Show(exception.Message, "COM Error: " + exception.ErrorCode.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(exception.Message, "COM Error: " + exception.ErrorCode.ToString(), MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
             }
             catch (Exception exception2)
             {
@@ -50,4 +58,3 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
         }
     }
 }
-

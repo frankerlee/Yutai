@@ -70,7 +70,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            frmAddTinRender render = new frmAddTinRender {
+            frmAddTinRender render = new frmAddTinRender
+            {
                 TinLayer = this.itinLayer_0
             };
             render.OnAddTinRender += new frmAddTinRender.OnAddTinRenderHander(this.method_0);
@@ -126,7 +127,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void method_0(ITinRenderer itinRenderer_0)
+        private void method_0(ITinRenderer itinRenderer_0)
         {
             this.checkedListBox1.Items.Add(new TinRenderWrap(itinRenderer_0, true), itinRenderer_0.Visible);
         }
@@ -146,26 +147,17 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IBasicMap FocusMap
         {
-            set
-            {
-                this.ibasicMap_0 = value;
-            }
+            set { this.ibasicMap_0 = value; }
         }
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_0;
-            }
+            get { return this.bool_0; }
         }
 
         public object SelectItem
         {
-            set
-            {
-                this.itinLayer_0 = value as ITinLayer;
-            }
+            set { this.itinLayer_0 = value as ITinLayer; }
         }
 
         internal partial class TinRenderWrap
@@ -197,28 +189,18 @@ namespace Yutai.ArcGIS.Carto.UI
 
             public bool IsNew
             {
-                get
-                {
-                    return this.bool_0;
-                }
+                get { return this.bool_0; }
             }
 
             internal ITinRenderer OldTinRender
             {
-                get
-                {
-                    return this.itinRenderer_1;
-                }
+                get { return this.itinRenderer_1; }
             }
 
             internal ITinRenderer TinRender
             {
-                get
-                {
-                    return this.itinRenderer_0;
-                }
+                get { return this.itinRenderer_0; }
             }
         }
     }
 }
-

@@ -23,7 +23,8 @@ namespace Yutai.ArcGIS.Controls.Controls
         {
             this.InitializeComponent();
             this.m_pTOCTreeViewWrap = new TOCTreeViewWrapEx(this.tocTreeView1);
-            this.m_pTOCTreeViewWrap.CurrentLayerChanged += new CurrentLayerChangedHandler(this.m_pTOCTreeViewWrap_CurrentLayerChanged);
+            this.m_pTOCTreeViewWrap.CurrentLayerChanged +=
+                new CurrentLayerChangedHandler(this.m_pTOCTreeViewWrap_CurrentLayerChanged);
         }
 
         public void BindControl(IPageLayoutControl pPageLayout, IMapControl2 pMapControl)
@@ -32,7 +33,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             this.m_pTOCTreeViewWrap.SetMapCtrl(pMapControl);
         }
 
- private void frmDatasourceTreeView_OnMapReplaced(object newMap)
+        private void frmDatasourceTreeView_OnMapReplaced(object newMap)
         {
             this.m_pTOCTreeViewWrap.RefreshTree();
         }
@@ -42,7 +43,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             this.m_pTOCTreeViewWrap.RefreshTree();
         }
 
- private void m_pTOCTreeViewWrap_CurrentLayerChanged(object sender, EventArgs e)
+        private void m_pTOCTreeViewWrap_CurrentLayerChanged(object sender, EventArgs e)
         {
             if (this.CurrentLayerChanged != null)
             {
@@ -57,18 +58,12 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         public IApplication Application
         {
-            set
-            {
-                this.m_pTOCTreeViewWrap.Application = value;
-            }
+            set { this.m_pTOCTreeViewWrap.Application = value; }
         }
 
         public ILayer CurrentLayer
         {
-            get
-            {
-                return this.m_pTOCTreeViewWrap.CurrentLayer;
-            }
+            get { return this.m_pTOCTreeViewWrap.CurrentLayer; }
         }
 
         public IMapControl2 MainMapControl
@@ -80,7 +75,8 @@ namespace Yutai.ArcGIS.Controls.Controls
                 this.m_pTOCTreeViewWrap.Hook = this.m_pMainMapControl;
                 if (this.m_pMainMapControl != null)
                 {
-                    (this.m_pMainMapControl as IMapControlEvents2_Event).OnMapReplaced+=(new IMapControlEvents2_OnMapReplacedEventHandler(this.frmDatasourceTreeView_OnMapReplaced));
+                    (this.m_pMainMapControl as IMapControlEvents2_Event).OnMapReplaced +=
+                        (new IMapControlEvents2_OnMapReplacedEventHandler(this.frmDatasourceTreeView_OnMapReplaced));
                 }
                 this.m_pTOCTreeViewWrap.RefreshTree();
             }
@@ -94,7 +90,9 @@ namespace Yutai.ArcGIS.Controls.Controls
                 this.m_pTOCTreeViewWrap.Hook = this.m_PageLayoutControl;
                 if (this.m_PageLayoutControl != null)
                 {
-                    (this.m_PageLayoutControl as IPageLayoutControlEvents_Event).OnPageLayoutReplaced+=(new IPageLayoutControlEvents_OnPageLayoutReplacedEventHandler(this.frmTOCTreeView_OnPageLayoutReplaced));
+                    (this.m_PageLayoutControl as IPageLayoutControlEvents_Event).OnPageLayoutReplaced +=
+                    (new IPageLayoutControlEvents_OnPageLayoutReplacedEventHandler(
+                        this.frmTOCTreeView_OnPageLayoutReplaced));
                 }
                 this.m_pTOCTreeViewWrap.RefreshTree();
             }
@@ -102,11 +100,7 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         public IStyleGallery StyleGallery
         {
-            set
-            {
-                this.m_pTOCTreeViewWrap.StyleGallery = value;
-            }
+            set { this.m_pTOCTreeViewWrap.StyleGallery = value; }
         }
     }
 }
-

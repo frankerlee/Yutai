@@ -13,4 +13,3 @@ namespace Yutai.ArcGIS.Carto.UI
         object SelectItem { set; }
     }
 }
-

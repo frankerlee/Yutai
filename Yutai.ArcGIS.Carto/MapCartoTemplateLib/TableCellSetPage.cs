@@ -39,7 +39,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         private void btnSetCell_Click(object sender, EventArgs e)
         {
-            frmSetTabelCell cell = new frmSetTabelCell {
+            frmSetTabelCell cell = new frmSetTabelCell
+            {
                 MapTemplateTableElement = this.mapTemplateElement_0 as MapTemplateTableElement,
                 m_tabcell = this.sortedList_0
             };
@@ -70,14 +71,15 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         {
         }
 
- public void Init()
+        public void Init()
         {
             int num3;
             MapTemplateTableElement element = this.mapTemplateElement_0 as MapTemplateTableElement;
             int rowNumber = element.RowNumber;
             int columnNumber = element.ColumnNumber;
             this.listView1.Clear();
-            ColumnHeader header = new ColumnHeader {
+            ColumnHeader header = new ColumnHeader
+            {
                 Text = "  "
             };
             this.listView1.Columns.Add(header);
@@ -104,7 +106,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
- private void method_0(int int_0, int int_1, string string_0)
+        private void method_0(int int_0, int int_1, string string_0)
         {
             SortedList<int, string> list;
             if (this.sortedList_0.ContainsKey(int_0))
@@ -175,39 +177,23 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_0;
-            }
+            get { return this.bool_0; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return "单元格";
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get { return "单元格"; }
+            set { throw new NotImplementedException(); }
         }
     }
 }
-

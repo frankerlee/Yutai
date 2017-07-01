@@ -40,41 +40,28 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.multiObjectClassSelectControl_0.Clear();
         }
 
- private void frmMultiDataConvert_Load(object sender, EventArgs e)
+        private void frmMultiDataConvert_Load(object sender, EventArgs e)
         {
         }
 
- public esriDatasetType ImportDatasetType
+        public esriDatasetType ImportDatasetType
         {
-            set
-            {
-                this.multiObjectClassSelectControl_0.ImportDatasetType = value;
-            }
+            set { this.multiObjectClassSelectControl_0.ImportDatasetType = value; }
         }
 
         public IGxObject InGxObject
         {
-            set
-            {
-                this.multiObjectClassSelectControl_0.InGxObject = value;
-            }
+            set { this.multiObjectClassSelectControl_0.InGxObject = value; }
         }
 
         public bool IsAnnotation
         {
-            set
-            {
-                this.multiObjectClassSelectControl_0.IsAnnotation = value;
-            }
+            set { this.multiObjectClassSelectControl_0.IsAnnotation = value; }
         }
 
         public IGxObject OutGxObject
         {
-            set
-            {
-                this.multiObjectClassSelectControl_0.OutGxObject = value;
-            }
+            set { this.multiObjectClassSelectControl_0.OutGxObject = value; }
         }
     }
 }
-

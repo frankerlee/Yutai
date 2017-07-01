@@ -68,11 +68,7 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         public int Count
         {
-            get
-            {
-                return this.m_array.Count;
-            }
+            get { return this.m_array.Count; }
         }
     }
 }
-

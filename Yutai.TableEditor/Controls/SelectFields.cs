@@ -56,7 +56,9 @@ namespace Yutai.Plugins.TableEditor.Controls
             _selectFields = null;
             foreach (object checkedItem in this.CheckedItems)
             {
-                _selectFields = string.IsNullOrWhiteSpace(_selectFields) ? $"{this.GetItemText(checkedItem).Split('(')[0]}" : $"{_selectFields}{splitChar}{this.GetItemText(checkedItem).Split('(')[0]}";
+                _selectFields = string.IsNullOrWhiteSpace(_selectFields)
+                    ? $"{this.GetItemText(checkedItem).Split('(')[0]}"
+                    : $"{_selectFields}{splitChar}{this.GetItemText(checkedItem).Split('(')[0]}";
             }
             return _selectFields;
         }

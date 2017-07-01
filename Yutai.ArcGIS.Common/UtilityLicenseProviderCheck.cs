@@ -20,7 +20,7 @@ namespace Yutai.ArcGIS.Common
 
         internal UtilityLicenseProviderCheck()
         {
-          //  this.license_0 = LicenseManager.Validate(typeof(UtilityLicenseProviderCheck), this);
+            //  this.license_0 = LicenseManager.Validate(typeof(UtilityLicenseProviderCheck), this);
         }
 
         internal static void Init()
@@ -45,7 +45,8 @@ namespace Yutai.ArcGIS.Common
             bool result;
             if (UtilityLicenseProviderCheck._licenceseCheck == null)
             {
-                System.Windows.Forms.MessageBox.Show("无法验证基础模块的的使用许可!", "许可", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Asterisk);
+                System.Windows.Forms.MessageBox.Show("无法验证基础模块的的使用许可!", "许可", System.Windows.Forms.MessageBoxButtons.OK,
+                    System.Windows.Forms.MessageBoxIcon.Asterisk);
                 result = false;
             }
             else

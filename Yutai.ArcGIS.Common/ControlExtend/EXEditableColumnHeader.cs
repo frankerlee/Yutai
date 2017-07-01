@@ -36,10 +36,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         public Control MyControl
         {
-            get
-            {
-                return this.control_0;
-            }
+            get { return this.control_0; }
             set
             {
                 this.control_0 = value;
@@ -49,4 +46,3 @@ namespace Yutai.ArcGIS.Common.ControlExtend
         }
     }
 }
-

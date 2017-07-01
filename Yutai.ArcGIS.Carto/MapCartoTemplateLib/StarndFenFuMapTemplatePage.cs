@@ -79,7 +79,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         {
         }
 
- private void method_0(object sender, EventArgs e)
+        private void method_0(object sender, EventArgs e)
         {
             if (this.bool_0)
             {
@@ -307,50 +307,29 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public MapCartoTemplateLib.MapTemplate MapTemplate
         {
-            get
-            {
-                return this.mapTemplate_0;
-            }
-            set
-            {
-                this.mapTemplate_0 = value;
-            }
+            get { return this.mapTemplate_0; }
+            set { this.mapTemplate_0 = value; }
         }
 
         public string Title
         {
-            get
-            {
-                return "常规";
-            }
-            set
-            {
-            }
+            get { return "常规"; }
+            set { }
         }
     }
 }
-

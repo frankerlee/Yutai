@@ -6,4 +6,3 @@ namespace Yutai.ArcGIS.Catalog.VCT
     {
     }
 }
-

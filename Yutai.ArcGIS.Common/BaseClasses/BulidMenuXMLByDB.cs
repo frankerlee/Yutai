@@ -37,7 +37,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             this.string_0 = string_3;
             this.sysGrants_0 = new SysGrants();
             this.dataProviderType_0 = DataProviderType.Sql;
-            string[] strArray2 = ConfigurationManager.AppSettings["SYSPRIVDB"].Split(new string[] { "||" }, StringSplitOptions.RemoveEmptyEntries);
+            string[] strArray2 = ConfigurationManager.AppSettings["SYSPRIVDB"].Split(new string[] {"||"},
+                StringSplitOptions.RemoveEmptyEntries);
             if ((strArray2[0].ToLower() == "sqlserver") || (strArray2[0].ToLower() == "sql"))
             {
                 this.dataProviderType_0 = DataProviderType.Sql;
@@ -73,7 +74,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             this.string_1 = string_4.ToLower();
             this.sysGrants_0 = new SysGrants(string_4);
             this.dataProviderType_0 = DataProviderType.Sql;
-            string[] strArray2 = ConfigurationManager.AppSettings["SYSPRIVDB"].Split(new string[] { "||" }, StringSplitOptions.RemoveEmptyEntries);
+            string[] strArray2 = ConfigurationManager.AppSettings["SYSPRIVDB"].Split(new string[] {"||"},
+                StringSplitOptions.RemoveEmptyEntries);
             if ((strArray2[0].ToLower() == "sqlserver") || (strArray2[0].ToLower() == "sql"))
             {
                 this.dataProviderType_0 = DataProviderType.Sql;
@@ -104,7 +106,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                 string str2;
                 string str3;
                 ITable table = AppConfigInfo.OpenTable(this.string_0);
-                IQueryFilter filter = new QueryFilter {
+                IQueryFilter filter = new QueryFilter
+                {
                     WhereClause = "  ParentIDS = '0'"
                 };
                 (filter as IQueryFilterDefinition).PostfixClause = " order by menuid ";
@@ -120,7 +123,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                 IRow row = o.NextRow();
                 int num = 0;
                 SortedList<int, XmlNode> list = new SortedList<int, XmlNode>();
-            Label_009C:
+                Label_009C:
                 if (row == null)
                 {
                     goto Label_0384;
@@ -173,12 +176,13 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                     }
                 }
                 goto Label_036D;
-            Label_0232:
+                Label_0232:
                 attribute = document.CreateAttribute("col");
                 attribute.Value = "0";
                 node2.Attributes.Append(attribute);
                 goto Label_029A;
-            Label_025C:;
+                Label_025C:
+                ;
                 try
                 {
                     int num3 = int.Parse(obj2.ToString());
@@ -189,7 +193,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                 catch
                 {
                 }
-            Label_029A:
+                Label_029A:
                 attribute = document.CreateAttribute("visible");
                 if (obj6 is DBNull)
                 {
@@ -223,13 +227,13 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                 num++;
                 row = o.NextRow();
                 goto Label_009C;
-            Label_036D:
+                Label_036D:
                 if (!(obj2 is DBNull))
                 {
                     goto Label_025C;
                 }
                 goto Label_0232;
-            Label_0384:
+                Label_0384:
                 ComReleaser.ReleaseCOMObject(o);
                 foreach (KeyValuePair<int, XmlNode> pair in list)
                 {
@@ -255,7 +259,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
         private void method_0(XmlNode xmlNode_0, XmlDocument xmlDocument_0, int int_1, ITable itable_0)
         {
             SortedList<int, XmlNode> list = new SortedList<int, XmlNode>();
-            IQueryFilter filter = new QueryFilter {
+            IQueryFilter filter = new QueryFilter
+            {
                 WhereClause = "  ParentIDS like '%" + int_1.ToString() + "%' "
             };
             (filter as IQueryFilterDefinition).PostfixClause = " order by menuid ";
@@ -263,7 +268,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             ICursor o = itable_0.Search(null, false);
             IRow row = o.NextRow();
             int num = 0;
-        Label_004F:
+            Label_004F:
             if (row == null)
             {
                 ComReleaser.ReleaseCOMObject(o);
@@ -274,7 +279,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             }
             else
             {
-                string[] strArray = row.get_Value(itable_0.FindField("ParentIDS")).ToString().Split(new char[] { ',' });
+                string[] strArray = row.get_Value(itable_0.FindField("ParentIDS")).ToString().Split(new char[] {','});
                 int index = 0;
                 index = 0;
                 while (index < strArray.Length)
@@ -498,7 +503,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                         int num4 = 0;
                         if (byName == null)
                         {
-                            byName = new MenuInfo {
+                            byName = new MenuInfo
+                            {
                                 PARENTIDS = int_1.ToString(),
                                 NAME = strArray[0]
                             };
@@ -621,7 +627,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             }
         }
 
-        private void method_2(XmlNode xmlNode_0, XmlDocument xmlDocument_0, int int_1, int int_2, string string_3, string string_4)
+        private void method_2(XmlNode xmlNode_0, XmlDocument xmlDocument_0, int int_1, int int_2, string string_3,
+            string string_4)
         {
             xmlNode_0.AppendChild(this.method_1(xmlDocument_0, "DockRow", int_1.ToString()));
             xmlNode_0.AppendChild(this.method_1(xmlDocument_0, "DockCol", int_2.ToString()));
@@ -783,7 +790,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             row["ParentIDs"] = "0";
             int num2 = this.int_0;
             int num3 = 0;
-        Label_0041:
+            Label_0041:
             if (num3 >= xmlNode_0.Attributes.Count)
             {
                 dataTable_0.Rows.Add(row);
@@ -1010,4 +1017,3 @@ namespace Yutai.ArcGIS.Common.BaseClasses
         }
     }
 }
-

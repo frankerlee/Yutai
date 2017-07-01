@@ -27,7 +27,7 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
             base.DialogResult = DialogResult.OK;
         }
 
- private void frmGeometricEffectList_Load(object sender, EventArgs e)
+        private void frmGeometricEffectList_Load(object sender, EventArgs e)
         {
             TreeNode node;
             IMarkerPlacement placement;
@@ -149,34 +149,24 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
             }
         }
 
- private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
             this.btnOK.Enabled = (this.treeView1.SelectedNode != null) && (this.treeView1.SelectedNode.Tag != null);
         }
 
         public BasicSymbolLayerBaseControl BasicSymbolLayerBaseControl
         {
-            set
-            {
-                this.m_pControl = value;
-            }
+            set { this.m_pControl = value; }
         }
 
         public IMarkerPlacement MarkerPlacement
         {
-            get
-            {
-                return this.m_MarkerPlacement;
-            }
+            get { return this.m_MarkerPlacement; }
         }
 
         public Control SelectControl
         {
-            get
-            {
-                return this.m_SelControl;
-            }
+            get { return this.m_SelControl; }
         }
     }
 }
-

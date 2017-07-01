@@ -4,26 +4,14 @@ using ESRI.ArcGIS.SystemUI;
 
 namespace Yutai.ArcGIS.Common.Carto
 {
-	public interface IAlignElementsOperation : IOperation
-	{
-		IActiveView ActiveView
-		{
-			set;
-		}
+    public interface IAlignElementsOperation : IOperation
+    {
+        IActiveView ActiveView { set; }
 
-		IEnvelope AlignEnvelope
-		{
-			set;
-		}
+        IEnvelope AlignEnvelope { set; }
 
-		enumAlignType AlignType
-		{
-			set;
-		}
+        enumAlignType AlignType { set; }
 
-		IEnumElement Elements
-		{
-			set;
-		}
-	}
+        IEnumElement Elements { set; }
+    }
 }

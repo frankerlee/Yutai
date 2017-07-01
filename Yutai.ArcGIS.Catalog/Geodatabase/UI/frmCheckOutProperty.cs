@@ -20,7 +20,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.iworkspace_0 = iworkspace_1;
         }
 
- private void frmCheckOutProperty_Load(object sender, EventArgs e)
+        private void frmCheckOutProperty_Load(object sender, EventArgs e)
         {
             this.lblName.Text = this.ireplica_0.Name;
             this.lblOwner.Text = this.ireplica_0.Owner;
@@ -62,7 +62,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private string method_0(string string_0)
+        private string method_0(string string_0)
         {
             if (this.iworkspace_0 is IVersionedWorkspace)
             {
@@ -84,11 +84,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IReplica Replica
         {
-            set
-            {
-                this.ireplica_0 = value;
-            }
+            set { this.ireplica_0 = value; }
         }
     }
 }
-

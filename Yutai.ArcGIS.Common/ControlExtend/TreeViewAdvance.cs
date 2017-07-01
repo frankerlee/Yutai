@@ -134,9 +134,9 @@ namespace Yutai.ArcGIS.Common.ControlExtend
                     nextNode = nextNode.NextNode;
                 }
                 goto Label_0034;
-            Label_0032:
+                Label_0032:
                 flag = true;
-            Label_0034:
+                Label_0034:
                 if (!flag)
                 {
                     for (nextNode = treeNode_2.PrevNode; nextNode != null; nextNode = nextNode.PrevNode)
@@ -148,9 +148,9 @@ namespace Yutai.ArcGIS.Common.ControlExtend
                     }
                 }
                 goto Label_005F;
-            Label_005D:
+                Label_005D:
                 flag = true;
-            Label_005F:
+                Label_005F:
                 if (flag)
                 {
                     break;
@@ -309,7 +309,8 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             TreeNode nodeAt = base.GetNodeAt(base.PointToClient(new Point(e.X, e.Y)));
             if (this.treeNode_0 != nodeAt)
             {
-                TreeViewDragDropEventArgs args = new TreeViewDragDropEventArgs {
+                TreeViewDragDropEventArgs args = new TreeViewDragDropEventArgs
+                {
                     Node = this.treeNode_0,
                     PreviousParent = this.treeNode_0.Parent
                 };
@@ -392,7 +393,8 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             this.treeNode_0 = (TreeNode) e.Item;
             base.SelectedNode = this.treeNode_0;
             this.imageList_0.Images.Clear();
-            this.imageList_0.ImageSize = new Size(this.treeNode_0.Bounds.Size.Width + base.Indent, this.treeNode_0.Bounds.Height);
+            this.imageList_0.ImageSize = new Size(this.treeNode_0.Bounds.Size.Width + base.Indent,
+                this.treeNode_0.Bounds.Height);
             Bitmap image = new Bitmap(this.treeNode_0.Bounds.Width + base.Indent, this.treeNode_0.Bounds.Height);
             Graphics graphics = Graphics.FromImage(image);
             if (base.ImageList != null)
@@ -421,7 +423,9 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             {
                 int index;
                 TreeNode selectedNode = base.SelectedNode;
-                TreeNodeCollection nodes = (base.SelectedNode.Parent == null) ? base.Nodes : base.SelectedNode.Parent.Nodes;
+                TreeNodeCollection nodes = (base.SelectedNode.Parent == null)
+                    ? base.Nodes
+                    : base.SelectedNode.Parent.Nodes;
                 switch (e.KeyCode)
                 {
                     case Keys.Left:
@@ -429,7 +433,8 @@ namespace Yutai.ArcGIS.Common.ControlExtend
                         {
                             TreeNode parent = selectedNode.Parent;
                             nodes.Remove(selectedNode);
-                            ((parent.Parent == null) ? base.Nodes : parent.Parent.Nodes).Insert(parent.Index + 1, selectedNode);
+                            ((parent.Parent == null) ? base.Nodes : parent.Parent.Nodes).Insert(parent.Index + 1,
+                                selectedNode);
                         }
                         break;
 
@@ -488,38 +493,20 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         public bool AllowReorder
         {
-            get
-            {
-                return this.bool_0;
-            }
-            set
-            {
-                this.bool_0 = value;
-            }
+            get { return this.bool_0; }
+            set { this.bool_0 = value; }
         }
 
         public bool RelationCheckBoxs
         {
-            get
-            {
-                return this.bool_2;
-            }
-            set
-            {
-                this.bool_2 = value;
-            }
+            get { return this.bool_2; }
+            set { this.bool_2 = value; }
         }
 
         public bool ShowPopupMenu
         {
-            get
-            {
-                return this.bool_1;
-            }
-            set
-            {
-                this.bool_1 = value;
-            }
+            get { return this.bool_1; }
+            set { this.bool_1 = value; }
         }
 
         public delegate void AfterNodeAddedHandle(object sender, TreeViewEventArgs e);
@@ -535,4 +522,3 @@ namespace Yutai.ArcGIS.Common.ControlExtend
         public delegate void BeforeSubNodesDeletedHandle(object sender, TreeViewChildrenDelEventArgs e);
     }
 }
-

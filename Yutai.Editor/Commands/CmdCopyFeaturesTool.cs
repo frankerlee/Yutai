@@ -44,7 +44,8 @@ namespace Yutai.Plugins.Editor.Commands
                 {
                     result = false;
                 }
-                else if (Yutai.ArcGIS.Common.Editor.Editor.EditMap != null && Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
+                else if (Yutai.ArcGIS.Common.Editor.Editor.EditMap != null &&
+                         Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
                 {
                     result = false;
                 }
@@ -60,7 +61,10 @@ namespace Yutai.Plugins.Editor.Commands
                 {
                     result = false;
                 }
-                else if (Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass.ShapeType != esriGeometryType.esriGeometryPolyline && Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass.ShapeType != esriGeometryType.esriGeometryPolygon)
+                else if (Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass.ShapeType !=
+                         esriGeometryType.esriGeometryPolyline &&
+                         Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass.ShapeType !=
+                         esriGeometryType.esriGeometryPolygon)
                 {
                     result = false;
                 }
@@ -70,7 +74,8 @@ namespace Yutai.Plugins.Editor.Commands
                     enumFeature.Reset();
                     IFeature feature = enumFeature.Next();
                     esriGeometryType geometryType = feature.Shape.GeometryType;
-                    if (geometryType != Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass.ShapeType)
+                    if (geometryType !=
+                        Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass.ShapeType)
                     {
                         result = false;
                     }
@@ -96,14 +101,12 @@ namespace Yutai.Plugins.Editor.Commands
             OnClick();
         }
 
-      
-
-     
 
         public CmdCopyFeaturesTool(IAppContext context)
         {
-          OnCreate(context);
+            OnCreate(context);
         }
+
         public override void OnCreate(object hook)
         {
             _context = hook as IAppContext;
@@ -115,10 +118,10 @@ namespace Yutai.Plugins.Editor.Commands
             this.m_toolTip = "复制对象工具";
             this.m_bitmap = Properties.Resources.icon_edit_copyfeatures;
             this.m_cursor = new Cursor(
-                            base.GetType()
-                                .Assembly.GetManifestResourceStream(
-                                    "Yutai.Plugins.Editor.Resources.Cursor.CopyFeaturesTool.cur"));
-            
+                base.GetType()
+                    .Assembly.GetManifestResourceStream(
+                        "Yutai.Plugins.Editor.Resources.Cursor.CopyFeaturesTool.cur"));
+
             DisplayStyleYT = DisplayStyleYT.Image;
             base.TextImageRelationYT = TextImageRelationYT.ImageBeforeText;
             base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
@@ -144,7 +147,8 @@ namespace Yutai.Plugins.Editor.Commands
                         _context.ActiveView.Refresh();
                     }
                 }
-                this.ipoint_0 = ((IActiveView)_context.FocusMap).ScreenDisplay.DisplayTransformation.ToMapPoint(int_2, int_3);
+                this.ipoint_0 = ((IActiveView) _context.FocusMap).ScreenDisplay.DisplayTransformation.ToMapPoint(int_2,
+                    int_3);
                 this.bool_0 = true;
             }
         }
@@ -153,14 +157,15 @@ namespace Yutai.Plugins.Editor.Commands
         {
             if (this.bool_0)
             {
-                IActiveView activeView = (IActiveView)_context.FocusMap;
+                IActiveView activeView = (IActiveView) _context.FocusMap;
                 if (this.inewEnvelopeFeedback_0 == null)
                 {
                     this.inewEnvelopeFeedback_0 = new NewEnvelopeFeedback();
                     this.inewEnvelopeFeedback_0.Display = activeView.ScreenDisplay;
                     this.inewEnvelopeFeedback_0.Start(this.ipoint_0);
                 }
-                this.inewEnvelopeFeedback_0.MoveTo(activeView.ScreenDisplay.DisplayTransformation.ToMapPoint(int_2, int_3));
+                this.inewEnvelopeFeedback_0.MoveTo(activeView.ScreenDisplay.DisplayTransformation.ToMapPoint(int_2,
+                    int_3));
             }
         }
 
@@ -169,7 +174,7 @@ namespace Yutai.Plugins.Editor.Commands
             if (int_0 != 2 && this.bool_0)
             {
                 this.bool_0 = false;
-                IActiveView activeView = (IActiveView)_context.FocusMap;
+                IActiveView activeView = (IActiveView) _context.FocusMap;
                 IEnvelope envelope = null;
                 IPoint point = null;
                 if (this.inewEnvelopeFeedback_0 == null)
@@ -201,8 +206,8 @@ namespace Yutai.Plugins.Editor.Commands
                 IEnvelope envelope2 = (geometryCollection as IGeometryBag).Envelope;
                 IPoint point2 = new Point
                 {
-                    X = (envelope2.XMax + envelope2.XMin) / 2.0,
-                    Y = (envelope2.YMax + envelope2.YMin) / 2.0
+                    X = (envelope2.XMax + envelope2.XMin)/2.0,
+                    Y = (envelope2.YMax + envelope2.YMin)/2.0
                 };
                 double num;
                 double num2;
@@ -210,13 +215,13 @@ namespace Yutai.Plugins.Editor.Commands
                 {
                     IPoint point3 = new Point
                     {
-                        X = (envelope.XMax + envelope.XMin) / 2.0,
-                        Y = (envelope.YMax + envelope.YMin) / 2.0
+                        X = (envelope.XMax + envelope.XMin)/2.0,
+                        Y = (envelope.YMax + envelope.YMin)/2.0
                     };
                     num = point2.X - point3.X;
                     num2 = point2.Y - point3.Y;
-                    double num3 = envelope.Width / envelope2.Width;
-                    double num4 = envelope.Height / envelope2.Height;
+                    double num3 = envelope.Width/envelope2.Width;
+                    double num4 = envelope.Height/envelope2.Height;
                     num3 = ((num3 > num4) ? num4 : num3);
                     (geometryCollection as ITransform2D).Scale(point2, num3, num3);
                 }
@@ -246,7 +251,6 @@ namespace Yutai.Plugins.Editor.Commands
             }
         }
 
-      
 
         //public void Init()
         //{
@@ -254,6 +258,9 @@ namespace Yutai.Plugins.Editor.Commands
         //    this.ipopuMenuWrap_0.AddItem("CopyFeaturesInPoint", false);
         //}
 
-        public string[] ContextMenuKeys { get {return new string[] {"Edit_CopyFeatures_InPoint"};} }
+        public string[] ContextMenuKeys
+        {
+            get { return new string[] {"Edit_CopyFeatures_InPoint"}; }
+        }
     }
 }

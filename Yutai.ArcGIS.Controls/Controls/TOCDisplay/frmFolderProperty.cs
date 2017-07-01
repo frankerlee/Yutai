@@ -15,27 +15,20 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
             this.InitializeComponent();
         }
 
- private void frmFolderProperty_Load(object sender, EventArgs e)
+        private void frmFolderProperty_Load(object sender, EventArgs e)
         {
             this.textEdit1.Text = this.m_FolderName;
         }
 
- private void simpleButton1_Click(object sender, EventArgs e)
+        private void simpleButton1_Click(object sender, EventArgs e)
         {
             this.m_FolderName = this.textEdit1.Text;
         }
 
         public string FolderName
         {
-            get
-            {
-                return this.m_FolderName;
-            }
-            set
-            {
-                this.m_FolderName = value;
-            }
+            get { return this.m_FolderName; }
+            set { this.m_FolderName = value; }
         }
     }
 }
-

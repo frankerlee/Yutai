@@ -87,7 +87,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- public void Init()
+        public void Init()
         {
             this.bool_0 = false;
             if (this.imapGrid_0 != null)
@@ -118,7 +118,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 }
                 if (labelFormat is IFormattedGridLabel)
                 {
-                    INumericFormat format = new NumericFormatClass {
+                    INumericFormat format = new NumericFormatClass
+                    {
                         RoundingValue = 0
                     };
                     (labelFormat as IFormattedGridLabel).Format = format as INumberFormat;
@@ -128,7 +129,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.bool_0 = true;
         }
 
- private void MapGridCoordinatePropertyPage_Load(object sender, EventArgs e)
+        private void MapGridCoordinatePropertyPage_Load(object sender, EventArgs e)
         {
         }
 
@@ -171,11 +172,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IMapGrid MapGrid
         {
-            set
-            {
-                this.imapGrid_0 = value;
-            }
+            set { this.imapGrid_0 = value; }
         }
     }
 }
-

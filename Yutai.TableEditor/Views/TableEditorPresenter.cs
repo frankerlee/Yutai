@@ -22,6 +22,7 @@ namespace Yutai.Plugins.TableEditor.Views
     {
         private readonly IAppContext _context;
         private TableEditorPlugin _plugin;
+
         public TableEditorPresenter(IAppContext context, ITableEditorView view, TableEditorPlugin plugin) : base(view)
         {
             if (context == null) throw new ArgumentNullException("context");

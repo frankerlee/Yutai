@@ -10,14 +10,8 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public event PrintPageDelegate PrintPage
         {
-            add
-            {
-                this.iprinterPageSetting_0.PrintPage += new PrintPageDelegate(value.Invoke);
-            }
-            remove
-            {
-                this.iprinterPageSetting_0.PrintPage -= new PrintPageDelegate(value.Invoke);
-            }
+            add { this.iprinterPageSetting_0.PrintPage += new PrintPageDelegate(value.Invoke); }
+            remove { this.iprinterPageSetting_0.PrintPage -= new PrintPageDelegate(value.Invoke); }
         }
 
         public PrinterPageSetting() : this(null)
@@ -63,34 +57,19 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public ImportExcelDelegate ImportExcelValue
         {
-            get
-            {
-                return this.iprinterPageSetting_0.ImportExcelValue;
-            }
-            set
-            {
-                this.iprinterPageSetting_0.ImportExcelValue = value;
-            }
+            get { return this.iprinterPageSetting_0.ImportExcelValue; }
+            set { this.iprinterPageSetting_0.ImportExcelValue = value; }
         }
 
         public System.Drawing.Printing.PrintDocument PrintDocument
         {
-            get
-            {
-                return this.iprinterPageSetting_0.PrintDocument;
-            }
-            set
-            {
-                this.iprinterPageSetting_0.PrintDocument = value;
-            }
+            get { return this.iprinterPageSetting_0.PrintDocument; }
+            set { this.iprinterPageSetting_0.PrintDocument = value; }
         }
 
         public PrintModeFlag PrintMode
         {
-            get
-            {
-                return this.printModeFlag_0;
-            }
+            get { return this.printModeFlag_0; }
             set
             {
                 this.printModeFlag_0 = value;
@@ -107,15 +86,8 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public PrintPageDelegate PrintPageValue
         {
-            get
-            {
-                return this.iprinterPageSetting_0.PrintPageValue;
-            }
-            set
-            {
-                this.iprinterPageSetting_0.PrintPageValue = value;
-            }
+            get { return this.iprinterPageSetting_0.PrintPageValue; }
+            set { this.iprinterPageSetting_0.PrintPageValue = value; }
         }
     }
 }
-

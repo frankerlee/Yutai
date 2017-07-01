@@ -19,4 +19,3 @@ namespace Yutai.ArcGIS.Common
         }
     }
 }
-

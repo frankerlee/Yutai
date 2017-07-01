@@ -20,7 +20,7 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             this.InitializeComponent();
         }
 
- private void sbCalculatePointSurfaceHeight()
+        private void sbCalculatePointSurfaceHeight()
         {
             IFields fields = this.m_pPipePointLayer.FeatureClass.Fields;
             int index = fields.FindField(this.m_strSURFH);
@@ -35,7 +35,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             }
             else
             {
-                ISpatialFilter filter = new SpatialFilterClass {
+                ISpatialFilter filter = new SpatialFilterClass
+                {
                     Geometry = this.m_pPipePolyLine,
                     GeometryField = this.m_pPipePointLayer.FeatureClass.ShapeFieldName,
                     SpatialRel = esriSpatialRelEnum.esriSpatialRelTouches
@@ -48,13 +49,15 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
                     {
                         double num3 = (double) feature.get_Value(index);
                         double num4 = (double) feature.get_Value(num2);
-                        IPoint point = new PointClass {
+                        IPoint point = new PointClass
+                        {
                             X = this.m_pPipePolyLine.FromPoint.X,
                             Y = this.m_pPipePolyLine.FromPoint.Y,
                             Z = num4
                         };
                         this.m_pPipePolyLine.FromPoint = point;
-                        point = new PointClass {
+                        point = new PointClass
+                        {
                             X = this.m_pTerrainPolyLine.FromPoint.X,
                             Y = this.m_pTerrainPolyLine.FromPoint.Y,
                             Z = num3
@@ -65,13 +68,15 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
                         {
                             double num5 = (double) feature.get_Value(index);
                             double num6 = (double) feature.get_Value(num2);
-                            point = new PointClass {
+                            point = new PointClass
+                            {
                                 X = this.m_pPipePolyLine.ToPoint.X,
                                 Y = this.m_pPipePolyLine.ToPoint.Y,
                                 Z = num6
                             };
                             this.m_pPipePolyLine.ToPoint = point;
-                            point = new PointClass {
+                            point = new PointClass
+                            {
                                 X = this.m_pTerrainPolyLine.ToPoint.X,
                                 Y = this.m_pTerrainPolyLine.ToPoint.Y,
                                 Z = num5
@@ -84,4 +89,3 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
         }
     }
 }
-

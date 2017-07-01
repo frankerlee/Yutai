@@ -95,7 +95,8 @@ namespace Yutai.ArcGIS.Catalog.UI
                         }
                         if (this.rdoDatasetType.SelectedIndex == 0)
                         {
-                            if (this.method_0(this.iworkspace_0, esriDatasetType.esriDTFeatureClass, this.txtDatasetName.Text.Trim()))
+                            if (this.method_0(this.iworkspace_0, esriDatasetType.esriDTFeatureClass,
+                                this.txtDatasetName.Text.Trim()))
                             {
                                 MessageBox.Show("指定的要素类名已存在,请输入其它名字!");
                                 return;
@@ -112,15 +113,20 @@ namespace Yutai.ArcGIS.Catalog.UI
                                 return;
                             }
                             fields = (dataset.Dataset as ITable).Fields;
-                            checker = new FieldCheckerClass {
+                            checker = new FieldCheckerClass
+                            {
                                 ValidateWorkspace = this.iworkspace_0
                             };
                             checker.Validate(fields, out error, out fields2);
-                            table = (this.iworkspace_0 as IFeatureWorkspace).CreateFeatureClass(this.txtDatasetName.Text.Trim(), fields2, null, null, esriFeatureType.esriFTSimple, "Shape", "") as ITable;
+                            table =
+                                (this.iworkspace_0 as IFeatureWorkspace).CreateFeatureClass(
+                                    this.txtDatasetName.Text.Trim(), fields2, null, null, esriFeatureType.esriFTSimple,
+                                    "Shape", "") as ITable;
                         }
                         else
                         {
-                            if (this.method_0(this.iworkspace_0, esriDatasetType.esriDTTable, this.txtDatasetName.Text.Trim()))
+                            if (this.method_0(this.iworkspace_0, esriDatasetType.esriDTTable,
+                                this.txtDatasetName.Text.Trim()))
                             {
                                 MessageBox.Show("指定的表名已存在,请输入其它名字!");
                                 return;
@@ -137,11 +143,13 @@ namespace Yutai.ArcGIS.Catalog.UI
                                 return;
                             }
                             fields = (dataset.Dataset as ITable).Fields;
-                            checker = new FieldCheckerClass {
+                            checker = new FieldCheckerClass
+                            {
                                 ValidateWorkspace = this.iworkspace_0
                             };
                             checker.Validate(fields, out error, out fields2);
-                            table = (this.iworkspace_0 as IFeatureWorkspace).CreateTable(this.txtDatasetName.Text.Trim(), fields2, null, null, "");
+                            table = (this.iworkspace_0 as IFeatureWorkspace).CreateTable(
+                                this.txtDatasetName.Text.Trim(), fields2, null, null, "");
                         }
                         break;
                     }
@@ -185,7 +193,8 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         private void btnSelectInputFeatures_Click(object sender, EventArgs e)
         {
-            frmOpenFile file = new frmOpenFile {
+            frmOpenFile file = new frmOpenFile
+            {
                 Text = "选择数据集"
             };
             file.RemoveAllFilters();
@@ -209,7 +218,8 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         private void btnSelectOutDataset_Click(object sender, EventArgs e)
         {
-            frmOpenFile file = new frmOpenFile {
+            frmOpenFile file = new frmOpenFile
+            {
                 Text = "选择数据集"
             };
             file.RemoveAllFilters();
@@ -228,7 +238,8 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         private void btnSelectWorkspace_Click(object sender, EventArgs e)
         {
-            frmOpenFile file = new frmOpenFile {
+            frmOpenFile file = new frmOpenFile
+            {
                 Text = "选择工作空间"
             };
             file.RemoveAllFilters();
@@ -245,7 +256,8 @@ namespace Yutai.ArcGIS.Catalog.UI
                     }
                     else if (obj2 is IGxFolder)
                     {
-                        IWorkspaceName name = new WorkspaceNameClass {
+                        IWorkspaceName name = new WorkspaceNameClass
+                        {
                             WorkspaceFactoryProgID = "esriDataSourcesFile.ShapefileWorkspaceFactory",
                             PathName = (obj2.InternalObjectName as IFileName).Path
                         };
@@ -257,14 +269,15 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
         }
 
- private bool method_0(IWorkspace iworkspace_1, esriDatasetType esriDatasetType_0, string string_0)
+        private bool method_0(IWorkspace iworkspace_1, esriDatasetType esriDatasetType_0, string string_0)
         {
             bool flag = false;
             if (iworkspace_1 == null)
             {
                 return false;
             }
-            if ((iworkspace_1.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace) || (iworkspace_1.Type == esriWorkspaceType.esriLocalDatabaseWorkspace))
+            if ((iworkspace_1.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace) ||
+                (iworkspace_1.Type == esriWorkspaceType.esriLocalDatabaseWorkspace))
             {
                 return ((IWorkspace2) iworkspace_1).get_NameExists(esriDatasetType_0, string_0);
             }
@@ -288,7 +301,8 @@ namespace Yutai.ArcGIS.Catalog.UI
                 {
                     return false;
                 }
-                if ((dataset.Type == esriDatasetType.esriDTFeatureClass) && ((dataset.DatasetName as IFeatureClassName).ShapeType != (idataset_0 as IFeatureClass).ShapeType))
+                if ((dataset.Type == esriDatasetType.esriDTFeatureClass) &&
+                    ((dataset.DatasetName as IFeatureClassName).ShapeType != (idataset_0 as IFeatureClass).ShapeType))
                 {
                     return false;
                 }
@@ -325,4 +339,3 @@ namespace Yutai.ArcGIS.Catalog.UI
         }
     }
 }
-

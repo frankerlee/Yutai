@@ -20,9 +20,8 @@ namespace Yutai.Commands.MapLegend
 {
     public class CmdHideAllLayer : YutaiCommand
     {
-       
         private IMapLegendView _view;
-       
+
 
         public CmdHideAllLayer(IAppContext context, IMapLegendView view)
         {
@@ -59,17 +58,17 @@ namespace Yutai.Commands.MapLegend
             switch (_view.SelectedItemType)
             {
                 case esriTOCControlItem.esriTOCControlItemMap:
-                    {
-                        IEnumLayer pEnumLayer = _view.SelectedMap.Layers;
+                {
+                    IEnumLayer pEnumLayer = _view.SelectedMap.Layers;
 
-                        if (pEnumLayer == null) return;
-                        ILayer pLayer;
-                        pEnumLayer.Reset();
-                        for (pLayer = pEnumLayer.Next(); pLayer != null; pLayer = pEnumLayer.Next())
-                        {
-                            ShowLayers(pLayer, false);
-                        }
+                    if (pEnumLayer == null) return;
+                    ILayer pLayer;
+                    pEnumLayer.Reset();
+                    for (pLayer = pEnumLayer.Next(); pLayer != null; pLayer = pEnumLayer.Next())
+                    {
+                        ShowLayers(pLayer, false);
                     }
+                }
                     break;
                 default:
                     if (_view.SelectedLayer != null)
@@ -86,13 +85,13 @@ namespace Yutai.Commands.MapLegend
         {
             if (layer is IGroupLayer)
             {
-                ICompositeLayer pCompositeLayer = (ICompositeLayer)layer;
+                ICompositeLayer pCompositeLayer = (ICompositeLayer) layer;
                 for (int i = 0; i < pCompositeLayer.Count; i++)
                 {
                     ILayer pLayer = pCompositeLayer.Layer[i];
                     ShowLayers(pLayer, show);
                 }
-                ((IGroupLayer)layer).Visible = show;
+                ((IGroupLayer) layer).Visible = show;
             }
             else
             {

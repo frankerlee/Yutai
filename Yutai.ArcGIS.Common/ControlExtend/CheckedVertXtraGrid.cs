@@ -145,13 +145,20 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             this.repositoryItemImageEdit_0.PopupStartSize = new Size(250, 300);
         }
 
-        public void AddLookUpEdit(DataTable dataTable_0, string string_2, object object_0, object object_1, object object_2, object object_3, bool bool_0)
+        public void AddLookUpEdit(DataTable dataTable_0, string string_2, object object_0, object object_1,
+            object object_2, object object_3, bool bool_0)
         {
             this.repositoryItemLookUpEdit_0 = new RepositoryItemLookUpEdit();
             this.gridEditorCollection_0.Add(this.repositoryItemLookUpEdit_0, string_2, object_0);
             this.repositoryItemLookUpEdit_0.AutoHeight = false;
             this.repositoryItemLookUpEdit_0.BorderStyle = BorderStyles.NoBorder;
-            this.repositoryItemLookUpEdit_0.Columns.AddRange(new LookUpColumnInfo[] { new LookUpColumnInfo((string) object_2, (string) object_2, 160, FormatType.None, "", true, HorzAlignment.Near), new LookUpColumnInfo((string) object_0, (string) object_1, 140, FormatType.None, "", true, HorzAlignment.Near) });
+            this.repositoryItemLookUpEdit_0.Columns.AddRange(new LookUpColumnInfo[]
+            {
+                new LookUpColumnInfo((string) object_2, (string) object_2, 160, FormatType.None, "", true,
+                    HorzAlignment.Near),
+                new LookUpColumnInfo((string) object_0, (string) object_1, 140, FormatType.None, "", true,
+                    HorzAlignment.Near)
+            });
             this.repositoryItemLookUpEdit_0.DataSource = dataTable_0;
             this.repositoryItemLookUpEdit_0.DisplayMember = (string) object_2;
             this.repositoryItemLookUpEdit_0.Name = "repositoryItemLookUpEdit";
@@ -221,7 +228,8 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             if (object_1 is CodeDomainEx.CodeDomainEx)
             {
                 CodeDomainEx.CodeDomainEx ex = object_1 as CodeDomainEx.CodeDomainEx;
-                DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(DataProviderType.OleDb, ex.ConnectionStr);
+                DataAccessLayerBaseClass dataAccessLayer =
+                    DataAccessLayerFactory.GetDataAccessLayer(DataProviderType.OleDb, ex.ConnectionStr);
                 this.repositoryItemTreeViewComboBoxEdit_0.DataAccessLayerBaseClass = dataAccessLayer;
                 this.repositoryItemTreeViewComboBoxEdit_0.TableName = ex.TableFieldName;
                 this.repositoryItemTreeViewComboBoxEdit_0.CodeFieldName = ex.CodeFieldName;
@@ -239,7 +247,8 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             if (object_1 is CodeDomainEx.CodeDomainEx)
             {
                 CodeDomainEx.CodeDomainEx ex = object_1 as CodeDomainEx.CodeDomainEx;
-                DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(DataProviderType.OleDb, ex.ConnectionStr);
+                DataAccessLayerBaseClass dataAccessLayer =
+                    DataAccessLayerFactory.GetDataAccessLayer(DataProviderType.OleDb, ex.ConnectionStr);
                 this.repositoryItemTreeViewComboBoxEdit_0.DataAccessLayerBaseClass = dataAccessLayer;
                 this.repositoryItemTreeViewComboBoxEdit_0.TableName = ex.TableFieldName;
                 this.repositoryItemTreeViewComboBoxEdit_0.CodeFieldName = ex.CodeFieldName;
@@ -251,7 +260,8 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             this.repositoryItemTreeViewComboBoxEdit_0.ReadOnly = bool_0;
         }
 
-        public void ChangeItem(int int_0, ColumnAttribute columnAttribute_0, object object_0, double double_0, double double_1)
+        public void ChangeItem(int int_0, ColumnAttribute columnAttribute_0, object object_0, double double_0,
+            double double_1)
         {
             GridEditorItem item = this.gridEditorCollection_0[int_0];
             RepositoryItem repositoryItem = item.RepositoryItem;
@@ -329,7 +339,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         private void method_1()
         {
-            this.gridView_0.Columns.AddRange(new GridColumn[] { this.gridColumn_0, this.gridColumn_1, this.gridColumn_2 });
+            this.gridView_0.Columns.AddRange(new GridColumn[] {this.gridColumn_0, this.gridColumn_1, this.gridColumn_2});
             this.gridView_0.FocusedRowChanged += new FocusedRowChangedEventHandler(this.gridView_0_FocusedRowChanged);
             this.gridView_0.CustomRowCellEdit += new CustomRowCellEditEventHandler(this.gridView_0_CustomRowCellEdit);
             this.gridColumn_0.FieldName = "Check";
@@ -380,10 +390,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         public string EditorName
         {
-            get
-            {
-                return this.string_1;
-            }
+            get { return this.string_1; }
             set
             {
                 this.string_1 = value;
@@ -396,10 +403,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         public string EditorValue
         {
-            get
-            {
-                return this.string_0;
-            }
+            get { return this.string_0; }
             set
             {
                 this.string_0 = value;
@@ -411,4 +415,3 @@ namespace Yutai.ArcGIS.Common.ControlExtend
         }
     }
 }
-

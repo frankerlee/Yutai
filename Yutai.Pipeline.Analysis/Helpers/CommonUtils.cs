@@ -25,9 +25,10 @@ namespace Yutai.Pipeline.Analysis.Helpers
             {
                 return pPixel;
             }
-            double num4 = pActiveView.ScreenDisplay.DisplayTransformation.VisibleBounds.Width / ((double)num);
-            return (pPixel * num4);
+            double num4 = pActiveView.ScreenDisplay.DisplayTransformation.VisibleBounds.Width/((double) num);
+            return (pPixel*num4);
         }
+
         public static ILayer GetLayerByName(IMap pMap, string strDstName)
         {
             ILayer layer;
@@ -62,31 +63,32 @@ namespace Yutai.Pipeline.Analysis.Helpers
             }
             return layer;
         }
+
         public static void NumberText_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox textBox = (TextBox)sender;
+            TextBox textBox = (TextBox) sender;
             char keyChar = e.KeyChar;
             if (keyChar != '\b')
             {
                 switch (keyChar)
                 {
                     case '.':
+                    {
+                        if ((textBox.Text.IndexOf('.') != -1 ? false : textBox.SelectionStart != 0))
                         {
-                            if ((textBox.Text.IndexOf('.') != -1 ? false : textBox.SelectionStart != 0))
-                            {
-                                break;
-                            }
-                            else
-                            {
-                                e.KeyChar = '\0';
-                                break;
-                            }
+                            break;
                         }
-                    case '/':
+                        else
                         {
                             e.KeyChar = '\0';
                             break;
                         }
+                    }
+                    case '/':
+                    {
+                        e.KeyChar = '\0';
+                        break;
+                    }
                     case '0':
                     case '1':
                     case '2':
@@ -97,27 +99,27 @@ namespace Yutai.Pipeline.Analysis.Helpers
                     case '7':
                     case '8':
                     case '9':
-                        {
-                            break;
-                        }
+                    {
+                        break;
+                    }
                     default:
-                        {
-                            goto case '/';
-                        }
+                    {
+                        goto case '/';
+                    }
                 }
             }
         }
 
         public static void DeleteAllElements(IMap pMap)
         {
-            ((IGraphicsContainer)pMap).DeleteAllElements();
-            ((IActiveView)pMap).Refresh();
+            ((IGraphicsContainer) pMap).DeleteAllElements();
+            ((IActiveView) pMap).Refresh();
         }
 
         public static string GetFeatureClassNameFromLayerName(IPipelineConfig config, string strLayerName)
         {
-            object valueFromTable = GetValueFromTable(config,"EmFeatureClassInfo", "层名", strLayerName, "表名");
-            return (valueFromTable != null ? (string)valueFromTable : "");
+            object valueFromTable = GetValueFromTable(config, "EmFeatureClassInfo", "层名", strLayerName, "表名");
+            return (valueFromTable != null ? (string) valueFromTable : "");
         }
 
         public static Color GetFeatureColor(IMap pMap, string strLayerName, IFeature pFeaVal)
@@ -129,38 +131,39 @@ namespace Yutai.Pipeline.Analysis.Helpers
                 if (layerByFeatureClassName != null)
                 {
                     esriGeometryType geometryType = pFeaVal.Shape.GeometryType;
-                    ISymbol symbolByFeature = ((IGeoFeatureLayer)layerByFeatureClassName).Renderer.get_SymbolByFeature(pFeaVal);
+                    ISymbol symbolByFeature =
+                        ((IGeoFeatureLayer) layerByFeatureClassName).Renderer.get_SymbolByFeature(pFeaVal);
                     IRgbColor rgbColorClass = new RgbColor();
                     IColor color = null;
                     if (geometryType == esriGeometryType.esriGeometryPolyline)
                     {
                         if (symbolByFeature is ISimpleLineSymbol)
                         {
-                            color = ((ISimpleLineSymbol)symbolByFeature).Color;
+                            color = ((ISimpleLineSymbol) symbolByFeature).Color;
                         }
                         if (symbolByFeature is ILineSymbol)
                         {
-                            color = ((ILineSymbol)symbolByFeature).Color;
+                            color = ((ILineSymbol) symbolByFeature).Color;
                         }
                     }
                     if (geometryType == esriGeometryType.esriGeometryPoint)
                     {
                         if (symbolByFeature is IMarkerFillSymbol)
                         {
-                            color = ((IMarkerFillSymbol)symbolByFeature).Color;
+                            color = ((IMarkerFillSymbol) symbolByFeature).Color;
                         }
                         if (symbolByFeature is IMarkerLineSymbol)
                         {
-                            color = ((IMarkerLineSymbol)symbolByFeature).Color;
+                            color = ((IMarkerLineSymbol) symbolByFeature).Color;
                         }
                         if (symbolByFeature is IMarkerSymbol)
                         {
-                            color = ((IMarkerSymbol)symbolByFeature).Color;
+                            color = ((IMarkerSymbol) symbolByFeature).Color;
                         }
                     }
                     if (color != null)
                     {
-                        rgbColorClass.RGB=(color.RGB);
+                        rgbColorClass.RGB = (color.RGB);
                         int red = rgbColorClass.Red;
                         int green = rgbColorClass.Green;
                         black = Color.FromArgb(red, green, rgbColorClass.Blue);
@@ -204,7 +207,7 @@ namespace Yutai.Pipeline.Analysis.Helpers
                     ILayer layer1 = pMap.get_Layer(num);
                     if (layer1 is ICompositeLayer)
                     {
-                        ILayer layer2 =CommonUtils.VerifyLayer(layer1, strDstName);
+                        ILayer layer2 = CommonUtils.VerifyLayer(layer1, strDstName);
                         if (layer2 != null)
                         {
                             layer = layer2;
@@ -234,8 +237,8 @@ namespace Yutai.Pipeline.Analysis.Helpers
             int num = (strVal.IndexOf('[') > strVal.IndexOf('(') ? strVal.IndexOf('[') : strVal.IndexOf('('));
             int num1 = (strVal.IndexOf(']') > strVal.IndexOf(')') ? strVal.IndexOf(']') : strVal.IndexOf(')'));
             string str = strVal.Substring(num + 1, num1 - num - 1);
-            string[] strArrays = str.Split(new char[] { ',' });
-            for (int i = 0; i < (int)strArrays.Length; i++)
+            string[] strArrays = str.Split(new char[] {','});
+            for (int i = 0; i < (int) strArrays.Length; i++)
             {
                 double num2 = Convert.ToDouble(strArrays[i]);
                 if (i == 0)
@@ -252,16 +255,18 @@ namespace Yutai.Pipeline.Analysis.Helpers
 
         public static string GetPipeCatNameFromLayerName(IPipelineConfig config, string strLayerName)
         {
-            object valueFromTable =CommonUtils.GetValueFromTable(config,"EmFeatureClassInfo", "层名", strLayerName, "管线类别");
-            return (valueFromTable != null ? (string)valueFromTable : "");
+            object valueFromTable = CommonUtils.GetValueFromTable(config, "EmFeatureClassInfo", "层名", strLayerName,
+                "管线类别");
+            return (valueFromTable != null ? (string) valueFromTable : "");
         }
 
         public static object GetPipeLineAlarmHrzDist(IPipelineConfig config, string strPipeLine1, string strPipeLine2)
         {
-            return CommonUtils.GetValueFromTable(config,"EmPipeDists", "管线1", strPipeLine1, "管线2", strPipeLine2, "水平净距");
+            return CommonUtils.GetValueFromTable(config, "EmPipeDists", "管线1", strPipeLine1, "管线2", strPipeLine2, "水平净距");
         }
 
-        public static object GetPipeLineAlarmHrzDist2(IPipelineConfig config,string strPipeLine1, string strPipeLine2, IFeature pFeature1, IFeature pFeature2,IBasicLayerInfo basicLayer1, IBasicLayerInfo basicLayer2)
+        public static object GetPipeLineAlarmHrzDist2(IPipelineConfig config, string strPipeLine1, string strPipeLine2,
+            IFeature pFeature1, IFeature pFeature2, IBasicLayerInfo basicLayer1, IBasicLayerInfo basicLayer2)
         {
             object obj;
             double num;
@@ -272,22 +277,24 @@ namespace Yutai.Pipeline.Analysis.Helpers
             double num5;
             double num6;
             double num7;
-            ITable table =CommonUtils.GetTable(config,"YT_PIPE_HORLIMITED");
+            ITable table = CommonUtils.GetTable(config, "YT_PIPE_HORLIMITED");
             if (table != null)
             {
-                string[] strArrays = new string[] { "(CLASSCODE1 = '", strPipeLine1, "' AND CLASSCODE2 = '", strPipeLine2, "')" };
+                string[] strArrays = new string[]
+                    {"(CLASSCODE1 = '", strPipeLine1, "' AND CLASSCODE2 = '", strPipeLine2, "')"};
                 string str = string.Concat(strArrays);
-                strArrays = new string[] { str, " OR (CLASSCODE1 = '", strPipeLine2, "' AND CLASSCODE2 = '", strPipeLine1, "')" };
+                strArrays = new string[]
+                    {str, " OR (CLASSCODE1 = '", strPipeLine2, "' AND CLASSCODE2 = '", strPipeLine1, "')"};
                 string str1 = string.Concat(strArrays);
                 IQueryFilter queryFilterClass = new QueryFilter();
-                queryFilterClass.WhereClause=(str1);
+                queryFilterClass.WhereClause = (str1);
                 ICursor cursor = table.Search(queryFilterClass, false);
                 IRow row = cursor.NextRow();
-                int fieldIndex =CommonUtils.GetFieldIndex(table, "CONDITION1");
-                int fieldIndex1 =CommonUtils.GetFieldIndex(table, "CONDITION2");
-                int fieldIndex2 =CommonUtils.GetFieldIndex(table, "RANGE1");
-                int fieldIndex3 =CommonUtils.GetFieldIndex(table, "RANGE2");
-                int fieldIndex4 =CommonUtils.GetFieldIndex(table, "LIMITED");
+                int fieldIndex = CommonUtils.GetFieldIndex(table, "CONDITION1");
+                int fieldIndex1 = CommonUtils.GetFieldIndex(table, "CONDITION2");
+                int fieldIndex2 = CommonUtils.GetFieldIndex(table, "RANGE1");
+                int fieldIndex3 = CommonUtils.GetFieldIndex(table, "RANGE2");
+                int fieldIndex4 = CommonUtils.GetFieldIndex(table, "LIMITED");
                 string strCondition1 = "";
                 string strCondition2 = "";
                 string strRange1 = "";
@@ -298,11 +305,11 @@ namespace Yutai.Pipeline.Analysis.Helpers
                 double num11 = -1;
                 while (row != null)
                 {
-                    strCondition1 =CommonUtils.ObjToString(row.get_Value(fieldIndex));
-                    strCondition2 =CommonUtils.ObjToString(row.get_Value(fieldIndex1));
-                    strRange1 =CommonUtils.ObjToString(row.get_Value(fieldIndex2));
-                    strRange2 =CommonUtils.ObjToString(row.get_Value(fieldIndex3));
-                    double dblLimited =CommonUtils.ObjToDouble(row.get_Value(fieldIndex4));
+                    strCondition1 = CommonUtils.ObjToString(row.get_Value(fieldIndex));
+                    strCondition2 = CommonUtils.ObjToString(row.get_Value(fieldIndex1));
+                    strRange1 = CommonUtils.ObjToString(row.get_Value(fieldIndex2));
+                    strRange2 = CommonUtils.ObjToString(row.get_Value(fieldIndex3));
+                    double dblLimited = CommonUtils.ObjToDouble(row.get_Value(fieldIndex4));
                     if ((strCondition1 != "" ? false : strCondition2 == ""))
                     {
                         num8 = dblLimited;
@@ -314,7 +321,7 @@ namespace Yutai.Pipeline.Analysis.Helpers
                         int num13 = pFeature1.Fields.FindField(lineTableFieldName);
                         if (num13 != -1)
                         {
-                            string str6 =CommonUtils.ObjToString(pFeature1.get_Value(num13));
+                            string str6 = CommonUtils.ObjToString(pFeature1.get_Value(num13));
                             double num14 = -1;
                             try
                             {
@@ -323,7 +330,7 @@ namespace Yutai.Pipeline.Analysis.Helpers
                             catch (Exception exception)
                             {
                             }
-                           CommonUtils.GetMaxAndMinValue(strRange1, out num, out num1);
+                            CommonUtils.GetMaxAndMinValue(strRange1, out num, out num1);
                             if ((num14 > num ? false : num14 >= num1))
                             {
                                 num9 = dblLimited;
@@ -336,7 +343,7 @@ namespace Yutai.Pipeline.Analysis.Helpers
                         int num15 = pFeature2.Fields.FindField(lineTableFieldName1);
                         if (num15 != -1)
                         {
-                            string str7 =CommonUtils.ObjToString(pFeature2.get_Value(num15));
+                            string str7 = CommonUtils.ObjToString(pFeature2.get_Value(num15));
                             double num16 = -1;
                             try
                             {
@@ -345,7 +352,7 @@ namespace Yutai.Pipeline.Analysis.Helpers
                             catch (Exception exception1)
                             {
                             }
-                           CommonUtils.GetMaxAndMinValue(strRange2, out num2, out num3);
+                            CommonUtils.GetMaxAndMinValue(strRange2, out num2, out num3);
                             if ((num16 > num2 ? false : num16 >= num3))
                             {
                                 num10 = dblLimited;
@@ -358,7 +365,7 @@ namespace Yutai.Pipeline.Analysis.Helpers
                         int num17 = pFeature1.Fields.FindField(lineTableFieldName);
                         if (num17 != -1)
                         {
-                            string str8 =CommonUtils.ObjToString(pFeature1.get_Value(num17));
+                            string str8 = CommonUtils.ObjToString(pFeature1.get_Value(num17));
                             if (str8 == "低压")
                             {
                                 str8 = "0.043";
@@ -379,7 +386,7 @@ namespace Yutai.Pipeline.Analysis.Helpers
                             catch (Exception exception2)
                             {
                             }
-                           CommonUtils.GetMaxAndMinValue(strRange1, out num4, out num5);
+                            CommonUtils.GetMaxAndMinValue(strRange1, out num4, out num5);
                             if ((num18 > num4 ? false : num18 >= num5))
                             {
                                 num9 = dblLimited;
@@ -392,7 +399,7 @@ namespace Yutai.Pipeline.Analysis.Helpers
                         int num19 = pFeature2.Fields.FindField(lineTableFieldName);
                         if (num19 != -1)
                         {
-                            string str9 =CommonUtils.ObjToString(pFeature2.get_Value(num19));
+                            string str9 = CommonUtils.ObjToString(pFeature2.get_Value(num19));
                             if (str9 == "低压")
                             {
                                 str9 = "0.043";
@@ -413,27 +420,31 @@ namespace Yutai.Pipeline.Analysis.Helpers
                             catch (Exception exception3)
                             {
                             }
-                           CommonUtils.GetMaxAndMinValue(strRange2, out num6, out num7);
+                            CommonUtils.GetMaxAndMinValue(strRange2, out num6, out num7);
                             if ((num20 > num6 ? false : num20 >= num7))
                             {
                                 num10 = dblLimited;
                             }
                         }
                     }
-                    lineTableFieldName = basicLayer1.GetFieldName(PipeConfigWordHelper.LineWords.MSFS); ;
+                    lineTableFieldName = basicLayer1.GetFieldName(PipeConfigWordHelper.LineWords.MSFS);
+                    ;
                     if ((pFeature1 == null ? false : strCondition1 == PipeConfigWordHelper.LineWords.MSFS))
                     {
                         int num21 = pFeature1.Fields.FindField(lineTableFieldName);
-                        if (num21 != -1 &&CommonUtils.ObjToString(pFeature1.get_Value(num21)).Trim().ToUpper() == strRange1.ToUpper())
+                        if (num21 != -1 &&
+                            CommonUtils.ObjToString(pFeature1.get_Value(num21)).Trim().ToUpper() == strRange1.ToUpper())
                         {
                             num9 = dblLimited;
                         }
                     }
-                    lineTableFieldName = basicLayer2.GetFieldName(PipeConfigWordHelper.LineWords.MSFS); ;
+                    lineTableFieldName = basicLayer2.GetFieldName(PipeConfigWordHelper.LineWords.MSFS);
+                    ;
                     if (strCondition2 == PipeConfigWordHelper.LineWords.MSFS)
                     {
                         int num22 = pFeature2.Fields.FindField(lineTableFieldName);
-                        if (num22 != -1 &&CommonUtils.ObjToString(pFeature2.get_Value(num22)).Trim().ToUpper() == strRange2.ToUpper())
+                        if (num22 != -1 &&
+                            CommonUtils.ObjToString(pFeature2.get_Value(num22)).Trim().ToUpper() == strRange2.ToUpper())
                         {
                             num9 = dblLimited;
                         }
@@ -467,16 +478,19 @@ namespace Yutai.Pipeline.Analysis.Helpers
             return obj;
         }
 
-        public static float GetPipeLineAlarmHrzDistByFeatureClassName(IPipelineConfig config, string strFeaClassName1, string strFeaClassName2)
+        public static float GetPipeLineAlarmHrzDistByFeatureClassName(IPipelineConfig config, string strFeaClassName1,
+            string strFeaClassName2)
         {
             float single;
             string str;
             string str1;
-            object valueFromTable =CommonUtils.GetValueFromTable(config,"EMFeatureClassInfo", "要素类", strFeaClassName1, "管线类别");
+            object valueFromTable = CommonUtils.GetValueFromTable(config, "EMFeatureClassInfo", "要素类", strFeaClassName1,
+                "管线类别");
             if (valueFromTable != null)
             {
                 str = (!Convert.IsDBNull(valueFromTable) ? valueFromTable.ToString() : "");
-                valueFromTable =CommonUtils.GetValueFromTable(config,"EMFeatureClassInfo", "要素类", strFeaClassName2, "管线类别");
+                valueFromTable = CommonUtils.GetValueFromTable(config, "EMFeatureClassInfo", "要素类", strFeaClassName2,
+                    "管线类别");
                 if (valueFromTable != null)
                 {
                     str1 = (!Convert.IsDBNull(valueFromTable) ? valueFromTable.ToString() : "");
@@ -488,7 +502,7 @@ namespace Yutai.Pipeline.Analysis.Helpers
                     {
                         str1 = str1.Substring(0, 2);
                     }
-                    object pipeLineAlarmHrzDist =CommonUtils.GetPipeLineAlarmHrzDist(config, str, str1);
+                    object pipeLineAlarmHrzDist = CommonUtils.GetPipeLineAlarmHrzDist(config, str, str1);
                     if (pipeLineAlarmHrzDist != null)
                     {
                         single = (!Convert.IsDBNull(pipeLineAlarmHrzDist) ? Convert.ToSingle(pipeLineAlarmHrzDist) : 0f);
@@ -510,7 +524,8 @@ namespace Yutai.Pipeline.Analysis.Helpers
             return single;
         }
 
-        public static float GetPipeLineAlarmHrzDistByFeatureClassName2(IPipelineConfig config,string strFeaClassName1, string strFeaClassName2, IFeature pFeature1, IFeature pFeature2)
+        public static float GetPipeLineAlarmHrzDistByFeatureClassName2(IPipelineConfig config, string strFeaClassName1,
+            string strFeaClassName2, IFeature pFeature1, IFeature pFeature2)
         {
             float single;
             string str;
@@ -519,45 +534,49 @@ namespace Yutai.Pipeline.Analysis.Helpers
             IBasicLayerInfo pipeLayer2 = config.GetBasicLayerInfo(strFeaClassName2);
             IPipelineLayer pipeline1 = config.GetPipelineLayer(pipeLayer1.FeatureClass);
             IPipelineLayer pipeline2 = config.GetPipelineLayer(pipeLayer2.FeatureClass);
-            object pipeLineAlarmHrzDist2 =CommonUtils.GetPipeLineAlarmHrzDist2(config,pipeline1.ClassCode, pipeline2.ClassCode, pFeature1, pFeature2,pipeLayer1,pipeLayer2);
-                    if (pipeLineAlarmHrzDist2 != null)
-                    {
-                        single = (!Convert.IsDBNull(pipeLineAlarmHrzDist2) ? Convert.ToSingle(pipeLineAlarmHrzDist2) : 0f);
-                    }
-                    else
-                    {
-                        single = 0f;
-                    }
-           
+            object pipeLineAlarmHrzDist2 = CommonUtils.GetPipeLineAlarmHrzDist2(config, pipeline1.ClassCode,
+                pipeline2.ClassCode, pFeature1, pFeature2, pipeLayer1, pipeLayer2);
+            if (pipeLineAlarmHrzDist2 != null)
+            {
+                single = (!Convert.IsDBNull(pipeLineAlarmHrzDist2) ? Convert.ToSingle(pipeLineAlarmHrzDist2) : 0f);
+            }
+            else
+            {
+                single = 0f;
+            }
+
             return single;
         }
 
-        public static object GetPipeLineAlarmVerDist(IPipelineConfig config, string strPipeLine1, string strPipeLine2, string strBuryKind1, string strBuryKind2)
+        public static object GetPipeLineAlarmVerDist(IPipelineConfig config, string strPipeLine1, string strPipeLine2,
+            string strBuryKind1, string strBuryKind2)
         {
             object obj;
-            ITable table =CommonUtils.GetTable(config,"YT_PIPE_DISTLIMITED");
+            ITable table = CommonUtils.GetTable(config, "YT_PIPE_DISTLIMITED");
             if (table != null)
             {
-                string[] strArrays = new string[] { "(CLASSCODE_UP = '", strPipeLine1, "' AND CLASSCODE_DOWN = '", strPipeLine2, "')" };
+                string[] strArrays = new string[]
+                    {"(CLASSCODE_UP = '", strPipeLine1, "' AND CLASSCODE_DOWN = '", strPipeLine2, "')"};
                 string str = string.Concat(strArrays);
-                strArrays = new string[] { str, "OR (CLASSCODE_UP = '", strPipeLine2, "' AND CLASSCODE_DOWN = '", strPipeLine1, "')" };
+                strArrays = new string[]
+                    {str, "OR (CLASSCODE_UP = '", strPipeLine2, "' AND CLASSCODE_DOWN = '", strPipeLine1, "')"};
                 string str1 = string.Concat(strArrays);
                 IQueryFilter queryFilterClass = new QueryFilter();
-                queryFilterClass.WhereClause=(str1);
+                queryFilterClass.WhereClause = (str1);
                 ICursor cursor = table.Search(queryFilterClass, false);
                 IRow row = cursor.NextRow();
-                int fieldIndex =CommonUtils.GetFieldIndex(table, "CONDITION_UP");
-                int num =CommonUtils.GetFieldIndex(table, "CONDITION_DOWN");
-                int fieldIndex1 =CommonUtils.GetFieldIndex(table, "LIMITED");
+                int fieldIndex = CommonUtils.GetFieldIndex(table, "CONDITION_UP");
+                int num = CommonUtils.GetFieldIndex(table, "CONDITION_DOWN");
+                int fieldIndex1 = CommonUtils.GetFieldIndex(table, "LIMITED");
                 double num1 = -1;
                 double num2 = -1;
                 double num3 = -1;
                 double num4 = -1;
                 while (row != null)
                 {
-                    string str2 =CommonUtils.ObjToString(row.get_Value(fieldIndex));
-                    string str3 =CommonUtils.ObjToString(row.get_Value(num));
-                    double num5 =CommonUtils.ObjToDouble(row.get_Value(fieldIndex1));
+                    string str2 = CommonUtils.ObjToString(row.get_Value(fieldIndex));
+                    string str3 = CommonUtils.ObjToString(row.get_Value(num));
+                    double num5 = CommonUtils.ObjToDouble(row.get_Value(fieldIndex1));
                     if ((str2 == strBuryKind1 ? false : str3 != strBuryKind2))
                     {
                         num1 = num5;
@@ -603,7 +622,8 @@ namespace Yutai.Pipeline.Analysis.Helpers
             return obj;
         }
 
-        public static float GetPipeLineAlarmVerDistByFeatureClassName(IPipelineConfig config, string className1, string className2, string strBuryKind1, string strBuryKind2)
+        public static float GetPipeLineAlarmVerDistByFeatureClassName(IPipelineConfig config, string className1,
+            string className2, string strBuryKind1, string strBuryKind2)
         {
             float single;
             string str;
@@ -612,32 +632,33 @@ namespace Yutai.Pipeline.Analysis.Helpers
             IBasicLayerInfo pipeLayer2 = config.GetBasicLayerInfo(className2);
             IPipelineLayer pipeline1 = config.GetPipelineLayer(pipeLayer1.FeatureClass);
             IPipelineLayer pipeline2 = config.GetPipelineLayer(pipeLayer2.FeatureClass);
-            object pipeLineAlarmVerDist =CommonUtils.GetPipeLineAlarmVerDist(config, pipeline1.ClassCode, pipeline2.ClassCode, strBuryKind1, strBuryKind2);
-                    if (pipeLineAlarmVerDist != null)
-                    {
-                        single = (!Convert.IsDBNull(pipeLineAlarmVerDist) ? Convert.ToSingle(pipeLineAlarmVerDist) : 0f);
-                    }
-                    else
-                    {
-                        single = 0f;
-                    }
-           
+            object pipeLineAlarmVerDist = CommonUtils.GetPipeLineAlarmVerDist(config, pipeline1.ClassCode,
+                pipeline2.ClassCode, strBuryKind1, strBuryKind2);
+            if (pipeLineAlarmVerDist != null)
+            {
+                single = (!Convert.IsDBNull(pipeLineAlarmVerDist) ? Convert.ToSingle(pipeLineAlarmVerDist) : 0f);
+            }
+            else
+            {
+                single = 0f;
+            }
+
             return single;
         }
 
         public static IPolyline GetPolylineDeepCopy(IPolyline pSrcLine)
         {
             IPolyline polylineClass = new Polyline() as IPolyline;
-            IPointCollection pointCollection = (IPointCollection)pSrcLine;
-            IPointCollection pointCollection1 = (IPointCollection)polylineClass;
+            IPointCollection pointCollection = (IPointCollection) pSrcLine;
+            IPointCollection pointCollection1 = (IPointCollection) polylineClass;
             for (int i = 0; i < pointCollection.PointCount; i++)
             {
                 IPoint point = pointCollection.get_Point(i);
                 IPoint pointClass = new ESRI.ArcGIS.Geometry.Point();
-                pointClass.X=(point.X);
-                pointClass.Y=(point.Y);
-                pointClass.Z=(point.Z);
-                pointClass.M=(point.M);
+                pointClass.X = (point.X);
+                pointClass.Y = (point.Y);
+                pointClass.Z = (point.Z);
+                pointClass.M = (point.M);
                 object missing = Type.Missing;
                 pointCollection1.AddPoint(pointClass, ref missing, ref missing);
             }
@@ -657,7 +678,7 @@ namespace Yutai.Pipeline.Analysis.Helpers
             return CommonUtils.GetSmpClassName((pLayer as IFeatureLayer).FeatureClass.AliasName);
         }
 
-        public static ITable GetTable(IPipelineConfig config,string strTableName)
+        public static ITable GetTable(IPipelineConfig config, string strTableName)
         {
             ITable table;
             if (config.Workspace != null)
@@ -679,18 +700,19 @@ namespace Yutai.Pipeline.Analysis.Helpers
             return table;
         }
 
-        public static object GetValueFromTable(IPipelineConfig config,string strTableName, string strKeyFieldName, string strKeyFieldValue, string strDstFieldName)
+        public static object GetValueFromTable(IPipelineConfig config, string strTableName, string strKeyFieldName,
+            string strKeyFieldValue, string strDstFieldName)
         {
             object obj;
-            ITable table =CommonUtils.GetTable(config,strTableName);
+            ITable table = CommonUtils.GetTable(config, strTableName);
             if (table != null)
             {
                 string str = string.Concat(strKeyFieldName, " = '", strKeyFieldValue, "'");
                 IQueryFilter queryFilterClass = new QueryFilter();
-                queryFilterClass.WhereClause=(str);
+                queryFilterClass.WhereClause = (str);
                 ICursor cursor = table.Search(queryFilterClass, false);
                 IRow row = cursor.NextRow();
-                int fieldIndex =CommonUtils.GetFieldIndex(table, strDstFieldName);
+                int fieldIndex = CommonUtils.GetFieldIndex(table, strDstFieldName);
                 if (row != null)
                 {
                     object value = row.get_Value(fieldIndex);
@@ -710,19 +732,24 @@ namespace Yutai.Pipeline.Analysis.Helpers
             return obj;
         }
 
-        public static object GetValueFromTable(IPipelineConfig config, string strTableName, string strKeyFieldName1, string strKeyFieldValue1, string strKeyFieldName2, string strKeyFieldValue2, string strDstFieldName)
+        public static object GetValueFromTable(IPipelineConfig config, string strTableName, string strKeyFieldName1,
+            string strKeyFieldValue1, string strKeyFieldName2, string strKeyFieldValue2, string strDstFieldName)
         {
             object obj;
-            ITable table =CommonUtils.GetTable(config,strTableName);
+            ITable table = CommonUtils.GetTable(config, strTableName);
             if (table != null)
             {
-                string[] strArrays = new string[] { strKeyFieldName1, " = '", strKeyFieldValue1, "' AND ", strKeyFieldName2, " = '", strKeyFieldValue2, "'" };
+                string[] strArrays = new string[]
+                {
+                    strKeyFieldName1, " = '", strKeyFieldValue1, "' AND ", strKeyFieldName2, " = '", strKeyFieldValue2,
+                    "'"
+                };
                 string str = string.Concat(strArrays);
                 IQueryFilter queryFilterClass = new QueryFilter();
-                queryFilterClass.WhereClause=(str);
+                queryFilterClass.WhereClause = (str);
                 ICursor cursor = table.Search(queryFilterClass, false);
                 IRow row = cursor.NextRow();
-                int fieldIndex =CommonUtils.GetFieldIndex(table, strDstFieldName);
+                int fieldIndex = CommonUtils.GetFieldIndex(table, strDstFieldName);
                 if (row != null)
                 {
                     object value = row.get_Value(fieldIndex);
@@ -744,17 +771,19 @@ namespace Yutai.Pipeline.Analysis.Helpers
 
         public static bool IsPipeLine(IPipelineConfig config, string strLayerName)
         {
-            object valueFromTable =CommonUtils.GetValueFromTable(config,"EmFeatureClassInfo", "层名", strLayerName, "管线类别");
+            object valueFromTable = CommonUtils.GetValueFromTable(config, "EmFeatureClassInfo", "层名", strLayerName,
+                "管线类别");
             return (valueFromTable == null ? false : !Convert.IsDBNull(valueFromTable));
         }
 
         public static bool IsPipeLineByFeatureClassName(IPipelineConfig config, string strFeaClassName)
         {
             bool flag;
-            object valueFromTable =CommonUtils.GetValueFromTable(config,"EmFeatureClassInfo", "要素类", strFeaClassName, "管线类别");
+            object valueFromTable = CommonUtils.GetValueFromTable(config, "EmFeatureClassInfo", "要素类", strFeaClassName,
+                "管线类别");
             if (valueFromTable != null)
             {
-                flag = (!Convert.IsDBNull(valueFromTable) ? ((string)valueFromTable).Trim() != "" : false);
+                flag = (!Convert.IsDBNull(valueFromTable) ? ((string) valueFromTable).Trim() != "" : false);
             }
             else
             {
@@ -766,37 +795,37 @@ namespace Yutai.Pipeline.Analysis.Helpers
         public static void NewLineElement(IMap pMap, IPolyline pPolyLine)
         {
             IActiveView pActiveView = pMap as IActiveView;
-            IGraphicsContainer activeView = (IGraphicsContainer)pActiveView;
+            IGraphicsContainer activeView = (IGraphicsContainer) pActiveView;
             RubberLine rubberLineClass = new RubberLine();
             ISimpleLineSymbol simpleLineSymbolClass = new SimpleLineSymbol();
             IRgbColor rgbColorClass = new RgbColor();
-            rgbColorClass.Red=(0);
-            rgbColorClass.Green=(255);
-            rgbColorClass.Blue=(255);
-            simpleLineSymbolClass.Color=(rgbColorClass);
-            simpleLineSymbolClass.Width=(8);
-            simpleLineSymbolClass.Style=(esriSimpleLineStyle)(2);
+            rgbColorClass.Red = (0);
+            rgbColorClass.Green = (255);
+            rgbColorClass.Blue = (255);
+            simpleLineSymbolClass.Color = (rgbColorClass);
+            simpleLineSymbolClass.Width = (8);
+            simpleLineSymbolClass.Style = (esriSimpleLineStyle) (2);
             LineElement lineElementClass = new LineElement();
-            ((IElement)lineElementClass).Geometry=(pPolyLine);
+            ((IElement) lineElementClass).Geometry = (pPolyLine);
             activeView.AddElement(lineElementClass, 0);
-            pActiveView.PartialRefresh((esriViewDrawPhase)8, null, null);
+            pActiveView.PartialRefresh((esriViewDrawPhase) 8, null, null);
         }
 
-        public static void NewPointElement(IMap pMap , IPoint pPoint)
+        public static void NewPointElement(IMap pMap, IPoint pPoint)
         {
             IActiveView pActiveView = pMap as IActiveView;
-            IGraphicsContainer activeView = (IGraphicsContainer)pActiveView;
+            IGraphicsContainer activeView = (IGraphicsContainer) pActiveView;
             RubberPoint rubberPointClass = new RubberPoint();
             ISimpleMarkerSymbol simpleMarkerSymbolClass = new SimpleMarkerSymbol();
             IRgbColor rgbColorClass = new RgbColor();
-            rgbColorClass.Red=(0);
-            rgbColorClass.Green=(255);
-            rgbColorClass.Blue=(255);
-            simpleMarkerSymbolClass.Color=(rgbColorClass);
-            simpleMarkerSymbolClass.Size=(8);
-            simpleMarkerSymbolClass.Style=(0);
+            rgbColorClass.Red = (0);
+            rgbColorClass.Green = (255);
+            rgbColorClass.Blue = (255);
+            simpleMarkerSymbolClass.Color = (rgbColorClass);
+            simpleMarkerSymbolClass.Size = (8);
+            simpleMarkerSymbolClass.Style = (0);
             LineElement lineElementClass = new LineElement();
-            ((IElement)lineElementClass).Geometry=(pPoint);
+            ((IElement) lineElementClass).Geometry = (pPoint);
             activeView.AddElement(lineElementClass, 0);
             pActiveView.Refresh();
         }
@@ -804,38 +833,38 @@ namespace Yutai.Pipeline.Analysis.Helpers
         public static void NewPolygonElement(IMap pMap, IPolygon pPolygon)
         {
             IActiveView pActiveView = pMap as IActiveView;
-            IGraphicsContainer activeView = (IGraphicsContainer)pActiveView;
+            IGraphicsContainer activeView = (IGraphicsContainer) pActiveView;
             RubberPolygon rubberPolygonClass = new RubberPolygon();
             ISimpleLineSymbol simpleLineSymbolClass = new SimpleLineSymbol();
             IRgbColor rgbColorClass = new RgbColor();
-            rgbColorClass.Red=(0);
-            rgbColorClass.Green=(255);
-            rgbColorClass.Blue=(255);
-            simpleLineSymbolClass.Color=(rgbColorClass);
-            simpleLineSymbolClass.Width=(8);
-            simpleLineSymbolClass.Style= (esriSimpleLineStyle)(2);
+            rgbColorClass.Red = (0);
+            rgbColorClass.Green = (255);
+            rgbColorClass.Blue = (255);
+            simpleLineSymbolClass.Color = (rgbColorClass);
+            simpleLineSymbolClass.Width = (8);
+            simpleLineSymbolClass.Style = (esriSimpleLineStyle) (2);
             PolygonElement polygonElementClass = new PolygonElement();
-            polygonElementClass.Geometry=(pPolygon);
+            polygonElementClass.Geometry = (pPolygon);
             activeView.AddElement(polygonElementClass, 0);
-            pActiveView.PartialRefresh((esriViewDrawPhase)8, null, null);
+            pActiveView.PartialRefresh((esriViewDrawPhase) 8, null, null);
         }
 
         public static void NewPolygonElement(IMap pMap, IPolygon pPolygon, bool bRefresh)
         {
-            IActiveView pActiveView=pMap as IActiveView;
-            
-            IGraphicsContainer activeView = (IGraphicsContainer)pActiveView;
+            IActiveView pActiveView = pMap as IActiveView;
+
+            IGraphicsContainer activeView = (IGraphicsContainer) pActiveView;
             RubberPolygon rubberPolygonClass = new RubberPolygon();
             ISimpleLineSymbol simpleLineSymbolClass = new SimpleLineSymbol();
             IRgbColor rgbColorClass = new RgbColor();
-            rgbColorClass.Red=(0);
-            rgbColorClass.Green=(255);
-            rgbColorClass.Blue=(255);
-            simpleLineSymbolClass.Color=(rgbColorClass);
-            simpleLineSymbolClass.Width=(8);
-            simpleLineSymbolClass.Style=(esriSimpleLineStyle)(2);
+            rgbColorClass.Red = (0);
+            rgbColorClass.Green = (255);
+            rgbColorClass.Blue = (255);
+            simpleLineSymbolClass.Color = (rgbColorClass);
+            simpleLineSymbolClass.Width = (8);
+            simpleLineSymbolClass.Style = (esriSimpleLineStyle) (2);
             PolygonElement polygonElementClass = new PolygonElement();
-            polygonElementClass.Geometry=(pPolygon);
+            polygonElementClass.Geometry = (pPolygon);
             activeView.AddElement(polygonElementClass, 0);
             if (bRefresh)
             {
@@ -846,29 +875,29 @@ namespace Yutai.Pipeline.Analysis.Helpers
         public static void NewPolygonElementTran(IMap pMap, IPolygon pPolygon, bool bRefresh)
         {
             IActiveView pActiveView = pMap as IActiveView;
-            IGraphicsContainer activeView = (IGraphicsContainer)pActiveView;
+            IGraphicsContainer activeView = (IGraphicsContainer) pActiveView;
             RubberPolygon rubberPolygonClass = new RubberPolygon();
             ISimpleLineSymbol simpleLineSymbolClass = new SimpleLineSymbol();
             IRgbColor rgbColorClass = new RgbColor();
-            rgbColorClass.Red=(0);
-            rgbColorClass.Green=(255);
-            rgbColorClass.Blue=(255);
-            rgbColorClass.Transparency=(1);
+            rgbColorClass.Red = (0);
+            rgbColorClass.Green = (255);
+            rgbColorClass.Blue = (255);
+            rgbColorClass.Transparency = (1);
             IRgbColor rgbColor = new RgbColor();
-            rgbColor.Red=(255);
-            rgbColor.Green=(0);
-            rgbColor.Blue=(0);
-            rgbColor.Transparency=(1);
-            simpleLineSymbolClass.Color=(rgbColorClass);
-            simpleLineSymbolClass.Width=(8);
-            simpleLineSymbolClass.Style= esriSimpleLineStyle.esriSLSSolid;
+            rgbColor.Red = (255);
+            rgbColor.Green = (0);
+            rgbColor.Blue = (0);
+            rgbColor.Transparency = (1);
+            simpleLineSymbolClass.Color = (rgbColorClass);
+            simpleLineSymbolClass.Width = (8);
+            simpleLineSymbolClass.Style = esriSimpleLineStyle.esriSLSSolid;
             ISimpleFillSymbol simpleFillSymbolClass = new SimpleFillSymbol();
-            ((ISymbol)simpleFillSymbolClass).ROP2=(esriRasterOpCode)(10);
-            simpleFillSymbolClass.Color=(rgbColorClass);
-            simpleFillSymbolClass.Color.Transparency=(1);
+            ((ISymbol) simpleFillSymbolClass).ROP2 = (esriRasterOpCode) (10);
+            simpleFillSymbolClass.Color = (rgbColorClass);
+            simpleFillSymbolClass.Color.Transparency = (1);
             IElement polygonElementClass = new PolygonElement();
-            polygonElementClass.Geometry=(pPolygon);
-            (polygonElementClass as IFillShapeElement).Symbol=(simpleFillSymbolClass);
+            polygonElementClass.Geometry = (pPolygon);
+            (polygonElementClass as IFillShapeElement).Symbol = (simpleFillSymbolClass);
             activeView.AddElement(polygonElementClass, 0);
             if (bRefresh)
             {
@@ -890,7 +919,7 @@ namespace Yutai.Pipeline.Analysis.Helpers
         {
             IEnvelope envelope = pGeo.Envelope;
             envelope.Expand(3, 3, true);
-            ((IActiveView)pMap).Extent=(envelope);
+            ((IActiveView) pMap).Extent = (envelope);
         }
 
         public static void ScaleToTwoGeo(IMap pMap, IGeometry pGeo1, IGeometry pGeo2)
@@ -899,10 +928,14 @@ namespace Yutai.Pipeline.Analysis.Helpers
             IEnvelope envelope1 = pGeo2.Envelope;
             IEnvelope envelope2 = envelope;
             envelope2.Union(envelope1);
-            if ((((IActiveView)pMap).Extent.LowerLeft.X > envelope2.LowerLeft.X || ((IActiveView)pMap).Extent.LowerLeft.Y > envelope2.LowerLeft.Y || ((IActiveView)pMap).Extent.UpperRight.X < envelope2.UpperRight.X ? true : ((IActiveView)pMap).Extent.UpperRight.Y < envelope2.UpperRight.Y))
+            if ((((IActiveView) pMap).Extent.LowerLeft.X > envelope2.LowerLeft.X ||
+                 ((IActiveView) pMap).Extent.LowerLeft.Y > envelope2.LowerLeft.Y ||
+                 ((IActiveView) pMap).Extent.UpperRight.X < envelope2.UpperRight.X
+                ? true
+                : ((IActiveView) pMap).Extent.UpperRight.Y < envelope2.UpperRight.Y))
             {
                 envelope2.Expand(1.5, 1.5, true);
-                ((IActiveView)pMap).Extent = (envelope2);
+                ((IActiveView) pMap).Extent = (envelope2);
             }
         }
 
@@ -912,7 +945,7 @@ namespace Yutai.Pipeline.Analysis.Helpers
             MessageBox.Show(string.Concat(featureLayer.Name, pLay.Name));
         }
 
-        public static void ThrougAllLayer(IMap pMap,CommonUtils.DealLayer dlFunVal)
+        public static void ThrougAllLayer(IMap pMap, CommonUtils.DealLayer dlFunVal)
         {
             int layerCount = pMap.LayerCount;
             for (int i = 0; i < layerCount; i++)
@@ -924,12 +957,12 @@ namespace Yutai.Pipeline.Analysis.Helpers
                 }
                 else
                 {
-                   CommonUtils.VerifyLayer(layer, dlFunVal);
+                    CommonUtils.VerifyLayer(layer, dlFunVal);
                 }
             }
         }
 
-        public static ILayer VerifyLayer(ILayer pLayVal,CommonUtils.DealLayer dlFunVal)
+        public static ILayer VerifyLayer(ILayer pLayVal, CommonUtils.DealLayer dlFunVal)
         {
             ICompositeLayer compositeLayer = pLayVal as ICompositeLayer;
             int count = compositeLayer.Count;
@@ -942,7 +975,7 @@ namespace Yutai.Pipeline.Analysis.Helpers
                 }
                 else
                 {
-                   CommonUtils.VerifyLayer(layer, dlFunVal);
+                    CommonUtils.VerifyLayer(layer, dlFunVal);
                 }
             }
             return null;
@@ -961,7 +994,7 @@ namespace Yutai.Pipeline.Analysis.Helpers
                     ILayer layer1 = compositeLayer.get_Layer(num);
                     if (layer1 is ICompositeLayer)
                     {
-                        ILayer layer2 =CommonUtils.VerifyLayer(layer1, strDstName);
+                        ILayer layer2 = CommonUtils.VerifyLayer(layer1, strDstName);
                         if (layer2 != null)
                         {
                             layer = layer2;

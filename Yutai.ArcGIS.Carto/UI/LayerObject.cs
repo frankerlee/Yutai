@@ -18,15 +18,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public ILayer Layer
         {
-            get
-            {
-                return this.ilayer_0;
-            }
-            set
-            {
-                this.ilayer_0 = null;
-            }
+            get { return this.ilayer_0; }
+            set { this.ilayer_0 = null; }
         }
     }
 }
-

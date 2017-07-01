@@ -79,37 +79,29 @@ namespace Yutai.ArcGIS.Carto.UI
             this.bool_0 = true;
         }
 
- private void method_0()
+        private void method_0()
         {
             this.checkedListBoxControl1.Items.Clear();
             for (int i = 0; i < this.icadDrawingLayers_0.DrawingLayerCount; i++)
             {
-                this.checkedListBoxControl1.Items.Add(this.icadDrawingLayers_0.get_DrawingLayerName(i), this.icadDrawingLayers_0.get_DrawingLayerVisible(i));
+                this.checkedListBoxControl1.Items.Add(this.icadDrawingLayers_0.get_DrawingLayerName(i),
+                    this.icadDrawingLayers_0.get_DrawingLayerVisible(i));
             }
         }
 
         public IBasicMap FocusMap
         {
-            set
-            {
-            }
+            set { }
         }
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_0;
-            }
+            get { return this.bool_0; }
         }
 
         public object SelectItem
         {
-            set
-            {
-                this.icadDrawingLayers_0 = value as ICadDrawingLayers;
-            }
+            set { this.icadDrawingLayers_0 = value as ICadDrawingLayers; }
         }
     }
 }
-

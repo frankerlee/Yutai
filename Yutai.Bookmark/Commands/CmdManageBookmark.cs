@@ -8,6 +8,7 @@
 // 更新时间 :  2017/06/01  10:59
 
 using System;
+using ESRI.ArcGIS.Carto;
 using Yutai.Plugins.Bookmark.Views;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
@@ -15,12 +16,41 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Plugins.Bookmark.Commands
 {
-    public class CmdManageBookmark:YutaiCommand
+    public class CmdManageBookmark : YutaiCommand
     {
+        public override bool Enabled
+        {
+            get
+            {
+                bool result;
+                if (this._context.FocusMap == null)
+                {
+                    return false;
+                }
+
+                try
+                {
+                    IEnumSpatialBookmark bookmarks = (this._context.FocusMap as IMapBookmarks).Bookmarks;
+                    bookmarks.Reset();
+                    ISpatialBookmark spatialBookmark = bookmarks.Next();
+                    if (spatialBookmark != null)
+                    {
+                        return true;
+                    }
+                }
+                catch
+                {
+                }
+
+                return false;
+            }
+        }
+
         public CmdManageBookmark(IAppContext context)
         {
             OnCreate(context);
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();

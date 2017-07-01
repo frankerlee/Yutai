@@ -47,7 +47,8 @@ namespace Yutai.Plugins.Editor.Commands
                     if (feature != null)
                     {
                         esriGeometryType geometryType = feature.Shape.GeometryType;
-                        if (geometryType == esriGeometryType.esriGeometryPolygon || geometryType == esriGeometryType.esriGeometryPolyline)
+                        if (geometryType == esriGeometryType.esriGeometryPolygon ||
+                            geometryType == esriGeometryType.esriGeometryPolyline)
                         {
                             this.pFeature = feature;
                             result = true;
@@ -62,35 +63,27 @@ namespace Yutai.Plugins.Editor.Commands
 
         public override bool Checked
         {
-            get
-            {
-                return this.Enabled && SketchToolAssist.CurrentTask == this;
-            }
+            get { return this.Enabled && SketchToolAssist.CurrentTask == this; }
         }
 
         public string DefaultTool
         {
-            get
-            {
-                return "Editor_Sketch_Line";
-            }
-            set
-            {
-            }
+            get { return "Editor_Sketch_Line"; }
+            set { }
         }
 
         public CmdFeatureReShapeTool(IAppContext context)
         {
-           OnCreate(context);
+            OnCreate(context);
         }
 
         public override void OnCreate(object hook)
         {
-            _context=hook as IAppContext;
+            _context = hook as IAppContext;
             this.m_caption = "要素整形工具";
             this.m_name = "Edit_FeatureReShapeTool";
             this._key = "Edit_FeatureReShapeTool";
-            this._itemType= RibbonItemType.Tool;
+            this._itemType = RibbonItemType.Tool;
             this.m_toolTip = "要素整形工具";
             this.m_message = "要素整形工具";
             this.m_category = "编辑";
@@ -119,7 +112,8 @@ namespace Yutai.Plugins.Editor.Commands
             IInvalidArea invalidArea = new InvalidArea();
             invalidArea.Display = (_context.FocusMap as IActiveView).ScreenDisplay;
             invalidArea.Add(SketchToolAssist.TempLine);
-            IGeometry geometry = geometryServer.Reshape(shapeCopy.SpatialReference, shapeCopy, SketchToolAssist.TempLine as IPolyline);
+            IGeometry geometry = geometryServer.Reshape(shapeCopy.SpatialReference, shapeCopy,
+                SketchToolAssist.TempLine as IPolyline);
             if (geometry != null && !geometry.IsEmpty)
             {
                 Yutai.ArcGIS.Common.Editor.Editor.EditWorkspace.StartEditOperation();

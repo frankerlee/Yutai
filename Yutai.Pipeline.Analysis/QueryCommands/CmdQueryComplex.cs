@@ -18,6 +18,7 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
 
 
         private PipelineAnalysisPlugin _plugin;
+
         public CmdQueryComplex(IAppContext context, PipelineAnalysisPlugin plugin)
         {
             OnCreate(context);
@@ -35,10 +36,10 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
                 this.QueryUI.MaximizeBox = false;
                 this.QueryUI.TopMost = true;
                 this.QueryUI.Plugin = _plugin;
-                this.QueryUI.MapControl = (IMapControl3)_context.MapControl;
-                this.QueryUI.pPipeCfg =_plugin.PipeConfig;
+                this.QueryUI.MapControl = (IMapControl3) _context.MapControl;
+                this.QueryUI.pPipeCfg = _plugin.PipeConfig;
                 this.QueryUI.m_context = this._context;
-                
+
                 this.QueryUI.Closing += new CancelEventHandler(this.QueryUI_Closing);
                 this.QueryUI.Show();
             }
@@ -56,10 +57,9 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
 
         public override void OnClick(object sender, EventArgs args)
         {
-
             OnClick();
         }
-     
+
         public override void OnCreate(object hook)
         {
             _context = hook as IAppContext;
@@ -76,6 +76,7 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
 
             CommonUtils.AppContext = _context;
         }
+
         public override void OnMouseDown(int Button, int Shift, int X, int Y)
         {
             if (this.QueryUI.SelectGeometry && Button == 1)
@@ -102,7 +103,7 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
                     }
                     else
                     {
-                        IGeometry geometry1 = ((ITopologicalOperator)ipGeo).Buffer(this.QueryUI.GlacisNum);
+                        IGeometry geometry1 = ((ITopologicalOperator) ipGeo).Buffer(this.QueryUI.GlacisNum);
                         this.QueryUI.m_ipGeo = geometry1;
                     }
                 }
@@ -112,9 +113,10 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
                     this.QueryUI.GlacisNum = 0;
                     this.QueryUI.m_ipGeo = ipGeo;
                 }
-                _context.ActiveView.PartialRefresh((esriViewDrawPhase)32, null, null);
+                _context.ActiveView.PartialRefresh((esriViewDrawPhase) 32, null, null);
             }
         }
+
         private void QueryUI_Closing(object sender, CancelEventArgs e)
         {
             e.Cancel = true;

@@ -19,7 +19,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             this.InitializeComponent();
         }
 
- private void LegendFormatSetupCtrl_Load(object sender, EventArgs e)
+        private void LegendFormatSetupCtrl_Load(object sender, EventArgs e)
         {
             this.method_0();
             this.bool_0 = true;
@@ -328,10 +328,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public ILegend Legend
         {
-            set
-            {
-                this.ilegend_0 = value;
-            }
+            set { this.ilegend_0 = value; }
         }
 
         public MapCartoTemplateLib.MapTemplateElement MapTemplateElement
@@ -345,4 +342,3 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         }
     }
 }
-

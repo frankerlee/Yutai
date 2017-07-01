@@ -10,7 +10,6 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 {
     public partial class frmFilterLayerSelect : Form
     {
-
         public frmFilterLayerSelect()
         {
             this.InitializeComponent();
@@ -71,7 +70,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
- private void frmFilterLayerSelect_Load(object sender, EventArgs e)
+        private void frmFilterLayerSelect_Load(object sender, EventArgs e)
         {
             foreach (IFeatureLayer layer in this.Layers)
             {
@@ -80,9 +79,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
- internal List<IFeatureLayer> FilterLayers { get; set; }
+        internal List<IFeatureLayer> FilterLayers { get; set; }
 
         internal List<IFeatureLayer> Layers { get; set; }
     }
 }
-

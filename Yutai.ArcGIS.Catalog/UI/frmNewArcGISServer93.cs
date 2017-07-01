@@ -44,7 +44,9 @@ namespace Yutai.ArcGIS.Catalog.UI
             {
                 IAGSEnumServerObjectName serverObjectNames = connection.ServerObjectNames;
                 serverObjectNames.Reset();
-                for (IAGSServerObjectName name2 = serverObjectNames.Next(); name2 != null; name2 = serverObjectNames.Next())
+                for (IAGSServerObjectName name2 = serverObjectNames.Next();
+                    name2 != null;
+                    name2 = serverObjectNames.Next())
                 {
                     this.ilist_0.Add(name2);
                     this.ResourcescheckedListBox.Items.Add(new Class0(name2));
@@ -67,7 +69,8 @@ namespace Yutai.ArcGIS.Catalog.UI
             {
                 new AGSServerConnectionFactoryClass();
                 IPropertySet set = this.method_4();
-                IAGSServerConnectionName name = new AGSServerConnectionNameClass {
+                IAGSServerConnectionName name = new AGSServerConnectionNameClass
+                {
                     ConnectionProperties = set
                 };
                 try
@@ -83,14 +86,16 @@ namespace Yutai.ArcGIS.Catalog.UI
                     MessageBox.Show(exception.ToString());
                     return;
                 }
-                string path = Environment.SystemDirectory.Substring(0, 2) + @"\Documents and Settings\Administrator\Application Data\ESRI\ArcCatalog\";
+                string path = Environment.SystemDirectory.Substring(0, 2) +
+                              @"\Documents and Settings\Administrator\Application Data\ESRI\ArcCatalog\";
                 if (Directory.Exists(path))
                 {
                     string str2 = path + this.txtServer.Text + ".ags";
                     str2 = this.method_3(str2);
                     IGxAGSConnection connection2 = new GxAGSConnection();
                     object obj2 = null;
-                    if ((this.rdoResourceUse.SelectedIndex == 1) && (this.ResourcescheckedListBox.CheckedItems.Count > 0))
+                    if ((this.rdoResourceUse.SelectedIndex == 1) &&
+                        (this.ResourcescheckedListBox.CheckedItems.Count > 0))
                     {
                         string[] strArray = new string[this.ResourcescheckedListBox.CheckedItems.Count];
                         for (int i = 0; i < this.ResourcescheckedListBox.CheckedItems.Count; i++)
@@ -109,7 +114,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
         }
 
- private void method_0(object sender, EventArgs e)
+        private void method_0(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
             this.imapServer_0 = null;
@@ -261,10 +266,7 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         public IGxObject NewObject
         {
-            get
-            {
-                return this.igxObject_0;
-            }
+            get { return this.igxObject_0; }
         }
 
         private partial class Class0
@@ -287,12 +289,8 @@ namespace Yutai.ArcGIS.Catalog.UI
 
             public IAGSServerObjectName AGSServerObjectName
             {
-                get
-                {
-                    return this.iagsserverObjectName_0;
-                }
+                get { return this.iagsserverObjectName_0; }
             }
         }
     }
 }
-

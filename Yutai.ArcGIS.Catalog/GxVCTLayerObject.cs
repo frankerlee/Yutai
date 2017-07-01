@@ -17,16 +17,7 @@ namespace Yutai.ArcGIS.Catalog
         private IGxCatalog igxCatalog_0 = null;
         private IGxObject igxObject_0 = null;
         private ILayer ilayer_0 = null;
-        [CompilerGenerated]
-        private LayerType layerType_0;
-        [CompilerGenerated]
-        private string string_0;
-        [CompilerGenerated]
-        private string string_1;
-        [CompilerGenerated]
-        private string string_2;
-        [CompilerGenerated]
-        private string string_3;
+
 
         public GxVCTLayerObject()
         {
@@ -85,7 +76,10 @@ namespace Yutai.ArcGIS.Catalog
                 ICoConvert convert = null;
                 if (str != "Text")
                 {
-                    convert = new ShapeLayerClass(parent.GetTemplatePath() + @"\" + this.icoConvert_0.XpgisLayer.Name + ".shp", str, this.icoConvert_0.XpgisLayer);
+                    convert =
+                        new ShapeLayerClass(
+                            parent.GetTemplatePath() + @"\" + this.icoConvert_0.XpgisLayer.Name + ".shp", str,
+                            this.icoConvert_0.XpgisLayer);
                 }
                 else
                 {
@@ -139,7 +133,9 @@ namespace Yutai.ArcGIS.Catalog
                         }
                         edit.AddField(edit2);
                     }
-                    class2 = this.method_2(parent.GetTemplateTextWorksoace() as IFeatureWorkspace, this.icoConvert_0.XpgisLayer.Name, esriFeatureType.esriFTAnnotation, esriGeometryType.esriGeometryPolygon, edit);
+                    class2 = this.method_2(parent.GetTemplateTextWorksoace() as IFeatureWorkspace,
+                        this.icoConvert_0.XpgisLayer.Name, esriFeatureType.esriFTAnnotation,
+                        esriGeometryType.esriGeometryPolygon, edit);
                     convert = new GeodatabaseLayerClass(class2);
                 }
                 ConvertHander hander = new ConvertHander();
@@ -147,7 +143,8 @@ namespace Yutai.ArcGIS.Catalog
                 bar.Show();
                 bar.progressBar1.Maximum = featureCount;
                 bar.progressBar1.Value = 0;
-                bar.Caption1.Text = "正在载入图层:" + this.icoConvert_0.XpgisLayer.AliasName + " [要素总数:" + featureCount.ToString() + "]";
+                bar.Caption1.Text = "正在载入图层:" + this.icoConvert_0.XpgisLayer.AliasName + " [要素总数:" +
+                                    featureCount.ToString() + "]";
                 hander.Convert(this.icoConvert_0, convert, bar.progressBar1);
                 string name = this.icoConvert_0.XpgisLayer.Name;
                 convert.Dispose();
@@ -157,7 +154,8 @@ namespace Yutai.ArcGIS.Catalog
                 }
                 if (class2.FeatureType == esriFeatureType.esriFTAnnotation)
                 {
-                    FDOGraphicsLayerClass class3 = new FDOGraphicsLayerClass {
+                    FDOGraphicsLayerClass class3 = new FDOGraphicsLayerClass
+                    {
                         Cached = true
                     };
                     layer = class3;
@@ -166,7 +164,8 @@ namespace Yutai.ArcGIS.Catalog
                 }
                 else if (class2.FeatureType == esriFeatureType.esriFTDimension)
                 {
-                    DimensionLayerClass class4 = new DimensionLayerClass {
+                    DimensionLayerClass class4 = new DimensionLayerClass
+                    {
                         Cached = true
                     };
                     layer = class4;
@@ -175,7 +174,8 @@ namespace Yutai.ArcGIS.Catalog
                 }
                 else
                 {
-                    FeatureLayerClass class5 = new FeatureLayerClass {
+                    FeatureLayerClass class5 = new FeatureLayerClass
+                    {
                         Cached = true
                     };
                     layer = class5;
@@ -190,7 +190,8 @@ namespace Yutai.ArcGIS.Catalog
             }
         }
 
-        private IFeatureClass method_1(IFeatureWorkspace ifeatureWorkspace_0, string string_4, double double_0, ITextSymbol itextSymbol_0, IFields ifields_0)
+        private IFeatureClass method_1(IFeatureWorkspace ifeatureWorkspace_0, string string_4, double double_0,
+            ITextSymbol itextSymbol_0, IFields ifields_0)
         {
             IObjectClassDescription description = new AnnotationFeatureClassDescriptionClass();
             IFeatureClassDescription description2 = description as IFeatureClassDescription;
@@ -201,7 +202,8 @@ namespace Yutai.ArcGIS.Catalog
             edit = fields.get_Field(index) as IFieldEdit;
             IGeometryDefEdit geometryDef = edit.GeometryDef as IGeometryDefEdit;
             IFeatureWorkspaceAnno anno = ifeatureWorkspace_0 as IFeatureWorkspaceAnno;
-            IGraphicsLayerScale referenceScale = new GraphicsLayerScaleClass {
+            IGraphicsLayerScale referenceScale = new GraphicsLayerScaleClass
+            {
                 ReferenceScale = double_0,
                 Units = esriUnits.esriMeters
             };
@@ -210,7 +212,8 @@ namespace Yutai.ArcGIS.Catalog
             ISymbolCollection symbolCollection = new SymbolCollectionClass();
             symbolCollection.set_Symbol(0, itextSymbol_0 as ISymbol);
             IAnnotateLayerPropertiesCollection2 annoProperties = new AnnotateLayerPropertiesCollectionClass();
-            IAnnotateLayerProperties item = new LabelEngineLayerPropertiesClass {
+            IAnnotateLayerProperties item = new LabelEngineLayerPropertiesClass
+            {
                 Class = "要素类 1",
                 FeatureLinked = false,
                 AddUnplacedToGraphicsContainer = false,
@@ -232,20 +235,23 @@ namespace Yutai.ArcGIS.Catalog
             }
             try
             {
-                return anno.CreateAnnotationClass(string_4, fields, instanceCLSID, classExtensionCLSID, description2.ShapeFieldName, "", null, null, annoProperties, referenceScale, symbolCollection, false);
+                return anno.CreateAnnotationClass(string_4, fields, instanceCLSID, classExtensionCLSID,
+                    description2.ShapeFieldName, "", null, null, annoProperties, referenceScale, symbolCollection, false);
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
             return null;
         }
 
-        private IFeatureClass method_2(IFeatureWorkspace ifeatureWorkspace_0, string string_4, esriFeatureType esriFeatureType_0, esriGeometryType esriGeometryType_0, IFields ifields_0)
+        private IFeatureClass method_2(IFeatureWorkspace ifeatureWorkspace_0, string string_4,
+            esriFeatureType esriFeatureType_0, esriGeometryType esriGeometryType_0, IFields ifields_0)
         {
             IFeatureClass class2 = null;
             string str;
-            IFieldChecker checker = new FieldCheckerClass {
+            IFieldChecker checker = new FieldCheckerClass
+            {
                 ValidateWorkspace = ifeatureWorkspace_0 as IWorkspace
             };
             checker.ValidateTableName(string_4, out str);
@@ -268,11 +274,12 @@ namespace Yutai.ArcGIS.Catalog
             }
             try
             {
-                class2 = ifeatureWorkspace_0.CreateFeatureClass(string_4, requiredFields, null, null, esriFTSimple, (description as IFeatureClassDescription).ShapeFieldName, "");
+                class2 = ifeatureWorkspace_0.CreateFeatureClass(string_4, requiredFields, null, null, esriFTSimple,
+                    (description as IFeatureClassDescription).ShapeFieldName, "");
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
             return class2;
         }
@@ -282,70 +289,25 @@ namespace Yutai.ArcGIS.Catalog
             this.igxCatalog_0.ObjectRefreshed(this);
         }
 
-        public string BaseName
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.string_2;
-            }
-            [CompilerGenerated]
-            protected set
-            {
-                this.string_2 = value;
-            }
-        }
+        public string BaseName { get; set; }
 
-        public string Category
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.string_3;
-            }
-            [CompilerGenerated]
-            protected set
-            {
-                this.string_3 = value;
-            }
-        }
+        public string Category { get; set; }
 
         public UID ClassID
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
-        public string FullName
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.string_1;
-            }
-            [CompilerGenerated]
-            protected set
-            {
-                this.string_1 = value;
-            }
-        }
+        public string FullName { get; set; }
 
         public IName InternalObjectName
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public bool IsValid
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public Bitmap LargeImage
@@ -426,25 +388,10 @@ namespace Yutai.ArcGIS.Catalog
                 }
                 return this.ilayer_0;
             }
-            set
-            {
-                this.ilayer_0 = value;
-            }
+            set { this.ilayer_0 = value; }
         }
 
-        public LayerType LayerType
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.layerType_0;
-            }
-            [CompilerGenerated]
-            protected set
-            {
-                this.layerType_0 = value;
-            }
-        }
+        public LayerType LayerType { get; set; }
 
         public string LayerTypeName
         {
@@ -471,26 +418,11 @@ namespace Yutai.ArcGIS.Catalog
             }
         }
 
-        public string Name
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.string_0;
-            }
-            [CompilerGenerated]
-            protected set
-            {
-                this.string_0 = value;
-            }
-        }
+        public string Name { get; set; }
 
         public IGxObject Parent
         {
-            get
-            {
-                return this.igxObject_0;
-            }
+            get { return this.igxObject_0; }
         }
 
         public Bitmap SmallImage
@@ -549,10 +481,7 @@ namespace Yutai.ArcGIS.Catalog
 
         public object VCTLayer
         {
-            get
-            {
-                return this.icoConvert_0;
-            }
+            get { return this.icoConvert_0; }
             set
             {
                 this.icoConvert_0 = value as ICoConvert;
@@ -562,4 +491,3 @@ namespace Yutai.ArcGIS.Catalog
         }
     }
 }
-

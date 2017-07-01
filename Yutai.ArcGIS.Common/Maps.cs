@@ -8,10 +8,7 @@ namespace Yutai.ArcGIS.Common
 
         public int Count
         {
-            get
-            {
-                return this.arrayList_0.Count;
-            }
+            get { return this.arrayList_0.Count; }
         }
 
         public IMap get_Item(int Index)
@@ -23,7 +20,6 @@ namespace Yutai.ArcGIS.Common
             return this.arrayList_0[Index] as IMap;
         }
 
-           
 
         public Maps()
         {
@@ -73,6 +69,5 @@ namespace Yutai.ArcGIS.Common
             }
             this.arrayList_0.Add(imap_0);
         }
-        
     }
 }

@@ -18,15 +18,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         public static IRow Row
         {
-            get
-            {
-                return m_pRow;
-            }
-            set
-            {
-                m_pRow = value;
-            }
+            get { return m_pRow; }
+            set { m_pRow = value; }
         }
     }
 }
-

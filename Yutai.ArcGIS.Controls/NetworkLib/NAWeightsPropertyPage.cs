@@ -70,7 +70,7 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             this.m_IsDirty = true;
         }
 
- private void Init()
+        private void Init()
         {
             IEnumNetWeightAssociation association;
             INetWeightAssociation association2;
@@ -85,7 +85,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             int num2 = 0;
             int num3 = 0;
             INetSchema network = NetworkAnalyst.m_pAnalystGN.Network as INetSchema;
-            IEnumFeatureClass class2 = NetworkAnalyst.m_pAnalystGN.get_ClassesByType(esriFeatureType.esriFTSimpleJunction);
+            IEnumFeatureClass class2 =
+                NetworkAnalyst.m_pAnalystGN.get_ClassesByType(esriFeatureType.esriFTSimpleJunction);
             class2.Reset();
             IFeatureClass class3 = class2.Next();
             IList list = new ArrayList();
@@ -100,7 +101,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
                     {
                         list.Add(association2.WeightID);
                         this.cboJunWeight.Properties.Items.Add(new WeightWrap(network.get_Weight(association2.WeightID)));
-                        if ((NetworkAnalyst.JunctionWeight != null) && (association2.WeightID == NetworkAnalyst.JunctionWeight.WeightID))
+                        if ((NetworkAnalyst.JunctionWeight != null) &&
+                            (association2.WeightID == NetworkAnalyst.JunctionWeight.WeightID))
                         {
                             num = this.cboJunWeight.Properties.Items.Count - 1;
                         }
@@ -122,7 +124,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
                     {
                         list.Add(association2.WeightID);
                         this.cboJunWeight.Properties.Items.Add(new WeightWrap(network.get_Weight(association2.WeightID)));
-                        if ((NetworkAnalyst.JunctionWeight != null) && (association2.WeightID == NetworkAnalyst.JunctionWeight.WeightID))
+                        if ((NetworkAnalyst.JunctionWeight != null) &&
+                            (association2.WeightID == NetworkAnalyst.JunctionWeight.WeightID))
                         {
                             num = this.cboJunWeight.Properties.Items.Count - 1;
                         }
@@ -144,13 +147,17 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
                     if (list.IndexOf(association2.WeightID) == -1)
                     {
                         list.Add(association2.WeightID);
-                        this.cbofromToEdgeWeight.Properties.Items.Add(new WeightWrap(network.get_Weight(association2.WeightID)));
-                        this.cboToFromEdgeWeight.Properties.Items.Add(new WeightWrap(network.get_Weight(association2.WeightID)));
-                        if ((NetworkAnalyst.FromToEdgeWeight != null) && (association2.WeightID == NetworkAnalyst.FromToEdgeWeight.WeightID))
+                        this.cbofromToEdgeWeight.Properties.Items.Add(
+                            new WeightWrap(network.get_Weight(association2.WeightID)));
+                        this.cboToFromEdgeWeight.Properties.Items.Add(
+                            new WeightWrap(network.get_Weight(association2.WeightID)));
+                        if ((NetworkAnalyst.FromToEdgeWeight != null) &&
+                            (association2.WeightID == NetworkAnalyst.FromToEdgeWeight.WeightID))
                         {
                             num2 = this.cbofromToEdgeWeight.Properties.Items.Count - 1;
                         }
-                        if ((NetworkAnalyst.ToFromEdgeWeight != null) && (association2.WeightID == NetworkAnalyst.ToFromEdgeWeight.WeightID))
+                        if ((NetworkAnalyst.ToFromEdgeWeight != null) &&
+                            (association2.WeightID == NetworkAnalyst.ToFromEdgeWeight.WeightID))
                         {
                             num3 = this.cboToFromEdgeWeight.Properties.Items.Count - 1;
                         }
@@ -170,13 +177,17 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
                     if (list.IndexOf(association2.WeightID) == -1)
                     {
                         list.Add(association2.WeightID);
-                        this.cbofromToEdgeWeight.Properties.Items.Add(new WeightWrap(network.get_Weight(association2.WeightID)));
-                        this.cboToFromEdgeWeight.Properties.Items.Add(new WeightWrap(network.get_Weight(association2.WeightID)));
-                        if ((NetworkAnalyst.FromToEdgeWeight != null) && (association2.WeightID == NetworkAnalyst.FromToEdgeWeight.WeightID))
+                        this.cbofromToEdgeWeight.Properties.Items.Add(
+                            new WeightWrap(network.get_Weight(association2.WeightID)));
+                        this.cboToFromEdgeWeight.Properties.Items.Add(
+                            new WeightWrap(network.get_Weight(association2.WeightID)));
+                        if ((NetworkAnalyst.FromToEdgeWeight != null) &&
+                            (association2.WeightID == NetworkAnalyst.FromToEdgeWeight.WeightID))
                         {
                             num2 = this.cbofromToEdgeWeight.Properties.Items.Count - 1;
                         }
-                        if ((NetworkAnalyst.ToFromEdgeWeight != null) && (association2.WeightID == NetworkAnalyst.ToFromEdgeWeight.WeightID))
+                        if ((NetworkAnalyst.ToFromEdgeWeight != null) &&
+                            (association2.WeightID == NetworkAnalyst.ToFromEdgeWeight.WeightID))
                         {
                             num3 = this.cboToFromEdgeWeight.Properties.Items.Count - 1;
                         }
@@ -189,10 +200,9 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             this.m_CanDo = true;
         }
 
- private void NAWeightsPropertyPage_Load(object sender, EventArgs e)
+        private void NAWeightsPropertyPage_Load(object sender, EventArgs e)
         {
             this.Init();
         }
     }
 }
-

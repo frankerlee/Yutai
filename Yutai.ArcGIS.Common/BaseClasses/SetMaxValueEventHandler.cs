@@ -2,4 +2,3 @@
 {
     public delegate void SetMaxValueEventHandler(int int_0);
 }
-

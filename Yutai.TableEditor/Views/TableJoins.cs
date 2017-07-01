@@ -29,7 +29,7 @@ namespace Yutai.Plugins.TableEditor.Views
                 }
             }
         }
-        
+
         private void btnStop_Click(object sender, EventArgs e)
         {
             _joinsGrid1.StopJoin();

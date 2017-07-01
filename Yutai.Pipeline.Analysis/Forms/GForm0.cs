@@ -1,5 +1,4 @@
-﻿
-using ESRI.ArcGIS.Carto;
+﻿using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
@@ -23,14 +22,13 @@ namespace Yutai.Pipeline.Analysis.Forms
 {
     public partial class GForm0 : XtraForm
     {
-
         public IAppContext m_app;
 
         private List<IFeatureLayer> list_0 = new List<IFeatureLayer>();
 
         private List<IFeatureLayer> list_1 = new List<IFeatureLayer>();
 
-        private CHitAnalyse chitAnalyse_0 ;//= new CHitAnalyse();
+        private CHitAnalyse chitAnalyse_0; //= new CHitAnalyse();
 
         public CommonDistAnalyse m_commonDistAls;
 
@@ -48,7 +46,6 @@ namespace Yutai.Pipeline.Analysis.Forms
         private string string_2 = "沟截面宽高";
 
 
-
         private List<CHitAnalyse.CItem> list_3 = new List<CHitAnalyse.CItem>();
 
         private List<CHitAnalyse.CItem> list_4 = new List<CHitAnalyse.CItem>();
@@ -63,7 +60,7 @@ namespace Yutai.Pipeline.Analysis.Forms
         private IContainer icontainer_0 = null;
 
 
-        public GForm0(IAppContext pApp,IPipelineConfig config)
+        public GForm0(IAppContext pApp, IPipelineConfig config)
         {
             this.InitializeComponent();
             this.m_commonDistAls = new CommonDistAnalyse()
@@ -72,7 +69,7 @@ namespace Yutai.Pipeline.Analysis.Forms
             };
             this.m_app = pApp;
             _config = config;
-            chitAnalyse_0 =new CHitAnalyse(config);
+            chitAnalyse_0 = new CHitAnalyse(config);
             this.m_commonDistAls.PipeConfig = config;
             this.m_nTimerCount = 0;
             this.dataGridViewSelectItem.Columns[0].ReadOnly = true;
@@ -88,7 +85,9 @@ namespace Yutai.Pipeline.Analysis.Forms
                 if (iFLayer != null)
                 {
                     IFeatureClass featureClass = iFLayer.FeatureClass;
-                    if ((featureClass.ShapeType == esriGeometryType.esriGeometryPoint ? true : featureClass.ShapeType == esriGeometryType.esriGeometryPolyline))
+                    if ((featureClass.ShapeType == esriGeometryType.esriGeometryPoint
+                        ? true
+                        : featureClass.ShapeType == esriGeometryType.esriGeometryPolyline))
                     {
                         if ((featureClass.AliasName == "SY_ZX_L" ? true : featureClass.AliasName == "SDE.SY_ZX_L"))
                         {
@@ -109,7 +108,7 @@ namespace Yutai.Pipeline.Analysis.Forms
 
         public void AddGroupLayer(IGroupLayer iGLayer, List<IFeatureLayer> pListLayers)
         {
-            ICompositeLayer compositeLayer = (ICompositeLayer)iGLayer;
+            ICompositeLayer compositeLayer = (ICompositeLayer) iGLayer;
             if (compositeLayer != null)
             {
                 int count = compositeLayer.Count;
@@ -124,11 +123,11 @@ namespace Yutai.Pipeline.Analysis.Forms
         {
             if (ipLay is IFeatureLayer)
             {
-                this.AddFeatureLayer((IFeatureLayer)ipLay, pListLayers);
+                this.AddFeatureLayer((IFeatureLayer) ipLay, pListLayers);
             }
             else if (ipLay is IGroupLayer)
             {
-                this.AddGroupLayer((IGroupLayer)ipLay, pListLayers);
+                this.AddGroupLayer((IGroupLayer) ipLay, pListLayers);
             }
         }
 
@@ -140,7 +139,8 @@ namespace Yutai.Pipeline.Analysis.Forms
                 {
                     IFeatureLayer featureLayer = pLayer as IFeatureLayer;
                     IFeatureClass featureClass = featureLayer.FeatureClass;
-                    if (featureLayer.FeatureClass.FeatureType != (esriFeatureType)11 && this._config.IsPipelineLayer(featureClass.AliasName))
+                    if (featureLayer.FeatureClass.FeatureType != (esriFeatureType) 11 &&
+                        this._config.IsPipelineLayer(featureClass.AliasName))
                     {
                         this.dictionary_0.Add(featureLayer.Name, featureClass.AliasName);
                     }
@@ -157,8 +157,8 @@ namespace Yutai.Pipeline.Analysis.Forms
             {
                 IPoint fromPoint = this.ipolyline_0.FromPoint;
                 IPoint toPoint = this.ipolyline_0.ToPoint;
-                fromPoint.Z = ((double)this.int_1);
-                toPoint.Z = ((double)this.int_2);
+                fromPoint.Z = ((double) this.int_1);
+                toPoint.Z = ((double) this.int_2);
                 this.ipolyline_0.FromPoint = (fromPoint);
                 this.ipolyline_0.ToPoint = (toPoint);
                 this.method_0();
@@ -190,7 +190,7 @@ namespace Yutai.Pipeline.Analysis.Forms
                 {
                     int num = Convert.ToInt32(this.dataGridViewCenterLine[2, rowIndex].Value);
                     DataGridViewRow item = this.dataGridViewCenterLine.Rows[dataGridViewCellEventArg.RowIndex];
-                    IFeatureClass tag = (IFeatureClass)item.Tag;
+                    IFeatureClass tag = (IFeatureClass) item.Tag;
                     if (tag != null)
                     {
                         IFeature feature = tag.GetFeature(num);
@@ -221,7 +221,7 @@ namespace Yutai.Pipeline.Analysis.Forms
                 {
                     int num = Convert.ToInt32(this.dataGridViewHor[2, rowIndex].Value);
                     DataGridViewRow item = this.dataGridViewHor.Rows[dataGridViewCellEventArg.RowIndex];
-                    IFeatureClass tag = (IFeatureClass)item.Tag;
+                    IFeatureClass tag = (IFeatureClass) item.Tag;
                     if (tag != null)
                     {
                         IFeature feature = tag.GetFeature(num);
@@ -252,7 +252,7 @@ namespace Yutai.Pipeline.Analysis.Forms
                 {
                     int num = Convert.ToInt32(this.dataGridViewSelectItem[2, rowIndex].Value);
                     DataGridViewRow item = this.dataGridViewSelectItem.Rows[dataGridViewCellEventArg.RowIndex];
-                    IFeatureLayer tag = (IFeatureLayer)item.Tag;
+                    IFeatureLayer tag = (IFeatureLayer) item.Tag;
                     IFeatureClass featureClass = tag.FeatureClass;
                     if (featureClass != null)
                     {
@@ -264,7 +264,7 @@ namespace Yutai.Pipeline.Analysis.Forms
                             map.ClearSelection();
                             map.SelectFeature(tag, feature);
                             this.GetBaseLine();
-                            ((IActiveView)map).PartialRefresh((esriViewDrawPhase)4, null, null);
+                            ((IActiveView) map).PartialRefresh((esriViewDrawPhase) 4, null, null);
                             CommonUtils.ScaleToTwoGeo(this.m_app.FocusMap, this.ipolyline_0, this.m_pFlashGeo);
                         }
                     }
@@ -280,7 +280,7 @@ namespace Yutai.Pipeline.Analysis.Forms
         private void dataGridViewSelectItem_CellEndEdit(object obj, DataGridViewCellEventArgs dataGridViewCellEventArg)
         {
             DataGridViewRow item = this.dataGridViewSelectItem.Rows[dataGridViewCellEventArg.RowIndex];
-            this.dataGridViewComboBoxCell_0 = (DataGridViewComboBoxCell)item.Cells["comboLineType"];
+            this.dataGridViewComboBoxCell_0 = (DataGridViewComboBoxCell) item.Cells["comboLineType"];
             this.int_1 = Convert.ToInt16(item.Cells["editHeightStartPoint"].Value);
             this.int_2 = Convert.ToInt16(item.Cells["editHeightEndPoint"].Value);
         }
@@ -294,7 +294,7 @@ namespace Yutai.Pipeline.Analysis.Forms
                 {
                     int num = Convert.ToInt32(this.dataGridViewVer[2, rowIndex].Value);
                     DataGridViewRow item = this.dataGridViewVer.Rows[dataGridViewCellEventArg.RowIndex];
-                    IFeatureClass tag = (IFeatureClass)item.Tag;
+                    IFeatureClass tag = (IFeatureClass) item.Tag;
                     if (tag != null)
                     {
                         IFeature feature = tag.GetFeature(num);
@@ -322,9 +322,9 @@ namespace Yutai.Pipeline.Analysis.Forms
             Color randColor = (new CRandomColor()).GetRandColor();
             ISimpleLineSymbol simpleLineSymbolClass = new SimpleLineSymbol();
             IRgbColor rgbColorClass = new RgbColor();
-            rgbColorClass.Red = ((int)randColor.R);
-            rgbColorClass.Green = ((int)randColor.G);
-            rgbColorClass.Blue = ((int)randColor.B);
+            rgbColorClass.Red = ((int) randColor.R);
+            rgbColorClass.Green = ((int) randColor.G);
+            rgbColorClass.Blue = ((int) randColor.B);
             simpleLineSymbolClass.Color = (rgbColorClass);
             simpleLineSymbolClass.Width = (5);
             object obj = simpleLineSymbolClass;
@@ -357,18 +357,20 @@ namespace Yutai.Pipeline.Analysis.Forms
             string str2;
             this.timer_0.Stop();
             IMap map = this.m_app.FocusMap;
-            IFeature feature = ((IEnumFeature)map.FeatureSelection).Next();
+            IFeature feature = ((IEnumFeature) map.FeatureSelection).Next();
             if (feature != null)
             {
                 CommonUtils.GetSmpClassName(feature.Class.AliasName);
-                if ((this._config.IsPipelineLayer(feature.Class.AliasName) ? true : !(feature.Class.AliasName != "Polyline")))
+                if ((this._config.IsPipelineLayer(feature.Class.AliasName)
+                    ? true
+                    : !(feature.Class.AliasName != "Polyline")))
                 {
                     IGeometry shape = feature.Shape;
                     if (shape.GeometryType == esriGeometryType.esriGeometryPolyline)
                     {
                         IBasicLayerInfo layerInfo = _config.GetBasicLayerInfo(feature.Class.AliasName);
-                        
-                        this.ipolyline_0 = CommonUtils.GetPolylineDeepCopy((IPolyline)shape);
+
+                        this.ipolyline_0 = CommonUtils.GetPolylineDeepCopy((IPolyline) shape);
                         this.m_commonDistAls.m_pFeature = feature;
                         this.m_commonDistAls.m_pBaseLine = this.ipolyline_0;
                         this.m_commonDistAls.m_strLayerName = feature.Class.AliasName;
@@ -476,14 +478,14 @@ namespace Yutai.Pipeline.Analysis.Forms
         {
             CommonUtils.AppContext = this.m_app;
             this.ipolyline_1 = this.method_13(this.ipolyline_0);
-            ITopologicalOperator ipolyline0 = (ITopologicalOperator)this.ipolyline_0;
+            ITopologicalOperator ipolyline0 = (ITopologicalOperator) this.ipolyline_0;
             double num = Convert.ToDouble(this.tbBufferRadius.Text);
             if (num > 0)
             {
                 IGeometry geometry = ipolyline0.Buffer(num);
                 ISpatialFilter spatialFilterClass = new SpatialFilter();
                 spatialFilterClass.Geometry = (geometry);
-                spatialFilterClass.SpatialRel = (esriSpatialRelEnum)(1);
+                spatialFilterClass.SpatialRel = (esriSpatialRelEnum) (1);
                 if (this.list_2.Count >= 1)
                 {
                     this.list_4.Clear();
@@ -496,7 +498,9 @@ namespace Yutai.Pipeline.Analysis.Forms
                             continue;
                         }
                         IFeatureClass featureClass = list2.FeatureClass;
-                        if ((featureClass.AliasName == this.ifeatureClass_0.AliasName ? true : featureClass.ShapeType != esriGeometryType.esriGeometryPolyline))
+                        if ((featureClass.AliasName == this.ifeatureClass_0.AliasName
+                            ? true
+                            : featureClass.ShapeType != esriGeometryType.esriGeometryPolyline))
                         {
                             continue;
                         }
@@ -526,8 +530,8 @@ namespace Yutai.Pipeline.Analysis.Forms
 
         private void method_1(IFeatureCursor featureCursor)
         {
-            double double1 = this.double_1 * 0.0005;
-            IProximityOperator ipolyline1 = (IProximityOperator)this.ipolyline_1;
+            double double1 = this.double_1*0.0005;
+            IProximityOperator ipolyline1 = (IProximityOperator) this.ipolyline_1;
             IFeature feature = featureCursor.NextFeature();
             int num = -1;
             int num1 = -1;
@@ -552,7 +556,7 @@ namespace Yutai.Pipeline.Analysis.Forms
                         {
                             num4 = 10;
                         }
-                        num4 = num4 * 0.0005;
+                        num4 = num4*0.0005;
                         double num5 = ipolyline1.ReturnDistance(polyline);
                         if (num5 >= 0.001)
                         {
@@ -573,14 +577,18 @@ namespace Yutai.Pipeline.Analysis.Forms
                             _sKind = str,
                             _dHorDistance = num5,
                             _dHorBase = 0,
-                            _pClass = (IFeatureClass)feature.Class
+                            _pClass = (IFeatureClass) feature.Class
                         };
                         string value = this.dataGridViewComboBoxCell_0.Value as string;
                         if (this.dictionary_0.ContainsKey(value))
                         {
                             value = this.dictionary_0[value].ToString();
                         }
-                        cItem._dHorBase = (double)CommonUtils.GetPipeLineAlarmHrzDistByFeatureClassName2(_config,CommonUtils.GetSmpClassName(value), CommonUtils.GetSmpClassName(feature.Class.AliasName), this.ifeature_0, feature);
+                        cItem._dHorBase =
+                            (double)
+                            CommonUtils.GetPipeLineAlarmHrzDistByFeatureClassName2(_config,
+                                CommonUtils.GetSmpClassName(value), CommonUtils.GetSmpClassName(feature.Class.AliasName),
+                                this.ifeature_0, feature);
                         this.list_3.Add(cItem);
                         feature = featureCursor.NextFeature();
                     }
@@ -636,8 +644,8 @@ namespace Yutai.Pipeline.Analysis.Forms
         {
             object missing = Type.Missing;
             IPolyline polylineClass = new Polyline() as IPolyline;
-            IPointCollection pointCollection = (IPointCollection)polylineClass;
-            IPointCollection pointCollection1 = (IPointCollection)polyline;
+            IPointCollection pointCollection = (IPointCollection) polylineClass;
+            IPointCollection pointCollection1 = (IPointCollection) polyline;
             for (int i = 0; i <= pointCollection1.PointCount - 1; i++)
             {
                 IPoint point = pointCollection1.get_Point(i);
@@ -701,10 +709,10 @@ namespace Yutai.Pipeline.Analysis.Forms
                 {
                     char[] separator = new char[]
                     {
-                'x',
-                'X',
-                'Х',
-                '×'
+                        'x',
+                        'X',
+                        'Х',
+                        '×'
                     };
                     string[] array = text.Split(separator);
                     result = Convert.ToDouble(array[0]);
@@ -755,8 +763,8 @@ namespace Yutai.Pipeline.Analysis.Forms
 
         private void method_3(IFeatureCursor featureCursor)
         {
-            double double0 = this.double_0 * 0.0005;
-            ITopologicalOperator ipolyline1 = (ITopologicalOperator)this.ipolyline_1;
+            double double0 = this.double_0*0.0005;
+            ITopologicalOperator ipolyline1 = (ITopologicalOperator) this.ipolyline_1;
             IFeature feature = featureCursor.NextFeature();
             int num = -1;
             int num1 = -1;
@@ -765,7 +773,6 @@ namespace Yutai.Pipeline.Analysis.Forms
             IBasicLayerInfo layerInfo = _config.GetBasicLayerInfo(feature.Class.AliasName);
             if (feature != null)
             {
-                
                 num = feature.Fields.FindField(layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.GJ));
                 num1 = feature.Fields.FindField(layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.DMCC));
                 num2 = feature.Fields.FindField(layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.GDXZ));
@@ -777,7 +784,8 @@ namespace Yutai.Pipeline.Analysis.Forms
             {
                 if ((num >= 0 ? true : num1 >= 0))
                 {
-                    int lineConfigHeightFlag = (int) layerInfo.HeightType;// this.m_app.PipeConfig.getLineConfig_HeightFlag(CommonUtils.GetSmpClassName(feature.Class.AliasName));
+                    int lineConfigHeightFlag = (int) layerInfo.HeightType;
+                        // this.m_app.PipeConfig.getLineConfig_HeightFlag(CommonUtils.GetSmpClassName(feature.Class.AliasName));
                     while (feature != null)
                     {
                         IPolyline shape = feature.Shape as IPolyline;
@@ -788,18 +796,18 @@ namespace Yutai.Pipeline.Analysis.Forms
                         {
                             num3 = 10;
                         }
-                        num3 = num3 * 0.0005;
-                        IGeometry geometry = ipolyline1.Intersect(polyline, (esriGeometryDimension)1);
+                        num3 = num3*0.0005;
+                        IGeometry geometry = ipolyline1.Intersect(polyline, (esriGeometryDimension) 1);
                         if (geometry != null)
                         {
                             IPoint point = null;
                             if (geometry is IPoint)
                             {
-                                point = (IPoint)geometry;
+                                point = (IPoint) geometry;
                             }
                             else if (geometry is IMultipoint)
                             {
-                                IPointCollection pointCollection = (IPointCollection)geometry;
+                                IPointCollection pointCollection = (IPointCollection) geometry;
                                 if (pointCollection.PointCount > 0)
                                 {
                                     point = pointCollection.get_Point(0);
@@ -840,7 +848,7 @@ namespace Yutai.Pipeline.Analysis.Forms
                                     _sKind = str,
                                     _dVerDistance = num8,
                                     _dVerBase = 0,
-                                    _pClass = (IFeatureClass)feature.Class
+                                    _pClass = (IFeatureClass) feature.Class
                                 };
                                 string str1 = this.method_7(feature);
                                 string str2 = this.method_7(this.ifeature_0);
@@ -849,7 +857,11 @@ namespace Yutai.Pipeline.Analysis.Forms
                                 {
                                     value = this.dictionary_0[value].ToString();
                                 }
-                                cItem._dVerBase = (double)CommonUtils.GetPipeLineAlarmVerDistByFeatureClassName(_config,CommonUtils.GetSmpClassName(value), CommonUtils.GetSmpClassName(feature.Class.AliasName), str2, str1);
+                                cItem._dVerBase =
+                                    (double)
+                                    CommonUtils.GetPipeLineAlarmVerDistByFeatureClassName(_config,
+                                        CommonUtils.GetSmpClassName(value),
+                                        CommonUtils.GetSmpClassName(feature.Class.AliasName), str2, str1);
                                 this.list_4.Add(cItem);
                             }
                         }
@@ -896,10 +908,10 @@ namespace Yutai.Pipeline.Analysis.Forms
         {
             int num;
             int num1 = -1;
-            IPointCollection pointCollection = (IPointCollection)polyline;
+            IPointCollection pointCollection = (IPointCollection) polyline;
             if (pointCollection.PointCount != 2)
             {
-                ISegmentCollection segmentCollection = (ISegmentCollection)polyline;
+                ISegmentCollection segmentCollection = (ISegmentCollection) polyline;
                 int pointCount = pointCollection.PointCount;
                 bool[] flagArray = new bool[pointCount];
                 bool[] flagArray1 = new bool[2];
@@ -947,7 +959,9 @@ namespace Yutai.Pipeline.Analysis.Forms
                         {
                             flagArray1[1] = false;
                         }
-                        if (flagArray1[0] != flagArray1[1] && Math.Abs(((IProximityOperator)segmentCollection.get_Segment(j)).ReturnDistance(point)) < 0.001)
+                        if (flagArray1[0] != flagArray1[1] &&
+                            Math.Abs(((IProximityOperator) segmentCollection.get_Segment(j)).ReturnDistance(point)) <
+                            0.001)
                         {
                             num = j;
                             return num;
@@ -982,7 +996,7 @@ namespace Yutai.Pipeline.Analysis.Forms
         private double method_6(IPolyline polyline, IPoint point, int num)
         {
             double z;
-            IPointCollection pointCollection = (IPointCollection)polyline;
+            IPointCollection pointCollection = (IPointCollection) polyline;
             IPoint point1 = pointCollection.get_Point(num);
             IPoint point2 = pointCollection.get_Point(num + 1);
             double x = point2.X - point1.X;
@@ -990,12 +1004,12 @@ namespace Yutai.Pipeline.Analysis.Forms
             double z1 = point2.Z - point1.Z;
             double x1 = point.X - point1.X;
             double y1 = point.Y - point1.Y;
-            double num1 = Math.Sqrt(x * x + y * y);
-            double num2 = Math.Sqrt(x1 * x1 + y1 * y1);
+            double num1 = Math.Sqrt(x*x + y*y);
+            double num2 = Math.Sqrt(x1*x1 + y1*y1);
             if (num1 >= 0.001)
             {
-                double num3 = num2 / num1;
-                z = num3 * z1 + point1.Z;
+                double num3 = num2/num1;
+                z = num3*z1 + point1.Z;
             }
             else
             {
@@ -1023,8 +1037,8 @@ namespace Yutai.Pipeline.Analysis.Forms
 
         private void method_8(IFeatureCursor featureCursor)
         {
-            double double1 = this.double_1 * 0.0005;
-            IProximityOperator ipolyline1 = (IProximityOperator)this.ipolyline_1;
+            double double1 = this.double_1*0.0005;
+            IProximityOperator ipolyline1 = (IProximityOperator) this.ipolyline_1;
             IFeature feature = featureCursor.NextFeature();
             int num = -1;
             if (feature != null)
@@ -1056,7 +1070,7 @@ namespace Yutai.Pipeline.Analysis.Forms
                         _sKind = str,
                         _dHorDistance = num1,
                         _dHorBase = 0,
-                        _pClass = (IFeatureClass)feature.Class
+                        _pClass = (IFeatureClass) feature.Class
                     };
                     this.list_5.Add(cItem);
                     feature = featureCursor.NextFeature();
@@ -1115,15 +1129,15 @@ namespace Yutai.Pipeline.Analysis.Forms
                     if (featureDataset != null)
                     {
                         IFeatureClassContainer featureClassContainer = featureDataset as IFeatureClassContainer;
-                        long classCount = (long)featureClassContainer.ClassCount;
+                        long classCount = (long) featureClassContainer.ClassCount;
                         this.textBoxLoadCADName.Text = openFileDialog.FileName;
                         this.list_0.Clear();
-                        for (int i = 0; (long)i < classCount; i++)
+                        for (int i = 0; (long) i < classCount; i++)
                         {
                             IFeatureClass pclass = featureClassContainer.get_Class(i);
                             if (pclass != null)
                             {
-                                if (pclass.FeatureType != (esriFeatureType)12)
+                                if (pclass.FeatureType != (esriFeatureType) 12)
                                 {
                                     cadFeatureLayerClass = new CadFeatureLayer() as IFeatureLayer;
                                 }
@@ -1167,7 +1181,8 @@ namespace Yutai.Pipeline.Analysis.Forms
                                     name.Cells[2].Value = feature.OID;
                                     name.Cells[3].Value = 0;
                                     name.Cells[4].Value = 0;
-                                    DataGridViewComboBoxCell dataGridViewComboBoxCell = (DataGridViewComboBoxCell)name.Cells[5];
+                                    DataGridViewComboBoxCell dataGridViewComboBoxCell =
+                                        (DataGridViewComboBoxCell) name.Cells[5];
                                     IEnumerator enumerator = this.dictionary_0.Keys.GetEnumerator();
                                     enumerator.Reset();
                                     for (int l = 0; l < this.dictionary_0.Keys.Count; l++)
@@ -1193,7 +1208,7 @@ namespace Yutai.Pipeline.Analysis.Forms
                 this.m_nTimerCount = 0;
                 this.timer_0.Stop();
                 IActiveView activeView = this.m_app.ActiveView;
-                activeView.PartialRefresh((esriViewDrawPhase)8, null, null);
+                activeView.PartialRefresh((esriViewDrawPhase) 8, null, null);
             }
             this.FlashDstItem();
             GForm0 mNTimerCount = this;

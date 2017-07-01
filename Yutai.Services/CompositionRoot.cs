@@ -24,14 +24,14 @@ namespace Yutai.Services
                 .RegisterService<ImageSerializationService>()
                 .RegisterService<ProjectLoaderLegacy>()
                 .RegisterSingleton<ITempFileService, TempFileService>()
-            .RegisterSingleton<IProjectLoader, ProjectLoader>();
+                .RegisterSingleton<IProjectLoader, ProjectLoader>();
             // .RegisterSingleton<ILayerService, LayerService>()
             // .RegisterSingleton<IGeoLocationService, NominatimGeoLocationService>()               
             //.RegisterSingleton<ISelectLayerService, SelectLayerService>()                
             //.RegisterService<ICreateLayerView, CreateLayerView>()
             //               
             //          
-    
+
             //.RegisterView<IMissingLayersView, MissingLayersView>()
             //.RegisterView<ISelectLayerView, SelectLayerView>();
 

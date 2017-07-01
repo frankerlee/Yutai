@@ -15,6 +15,7 @@ namespace Yutai.Forms
     {
         private const string ReportIssueUrl = "http://www.cigis.com.cn";
         private readonly Exception _exception;
+
         public ErrorView(Exception ex, bool needClose)
         {
             InitializeComponent();
@@ -39,7 +40,7 @@ namespace Yutai.Forms
                 return;
             }
 
-            var node = new TreeNodeAdv { Text = @"Details", Expanded = true };
+            var node = new TreeNodeAdv {Text = @"Details", Expanded = true};
 
             treeViewAdv1.Nodes.Add(node);
 
@@ -50,9 +51,10 @@ namespace Yutai.Forms
                 treeViewAdv1.SelectedNode = node.Nodes[0];
             }
         }
+
         private void AddExceptionNodesToTree(Exception ex, TreeNodeAdv parent)
         {
-            var node = new TreeNodeAdv { Text = ex.Message, MultiLine = true, Tag = ex, Expanded = true };
+            var node = new TreeNodeAdv {Text = ex.Message, MultiLine = true, Tag = ex, Expanded = true};
 
             parent.Nodes.Add(node);
 
@@ -102,11 +104,12 @@ namespace Yutai.Forms
 
             btnContinue.Visible = !needClose;
         }
+
         private void ErrorView_Load(object sender, EventArgs e)
         {
             // Fixing CORE-160
-          
         }
+
         private void btnReport_Click(object sender, EventArgs e)
         {
             try

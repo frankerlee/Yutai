@@ -17,19 +17,13 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             base.Text = string_1;
         }
 
-        public abstract int DoDraw(DrawListViewSubItemEventArgs drawListViewSubItemEventArgs_0, int int_0, EXColumnHeader excolumnHeader_0);
+        public abstract int DoDraw(DrawListViewSubItemEventArgs drawListViewSubItemEventArgs_0, int int_0,
+            EXColumnHeader excolumnHeader_0);
 
         public string MyValue
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

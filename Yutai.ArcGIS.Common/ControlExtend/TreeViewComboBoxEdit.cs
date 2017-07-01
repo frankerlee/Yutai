@@ -116,7 +116,8 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             base.DoShowPopup();
         }
 
-        internal static bool DoSynchronizeEditValueWithCheckedItems(TreeNode treeNode_0, RepositoryItemCheckedComboBoxEdit repositoryItemCheckedComboBoxEdit_0, object object_0)
+        internal static bool DoSynchronizeEditValueWithCheckedItems(TreeNode treeNode_0,
+            RepositoryItemCheckedComboBoxEdit repositoryItemCheckedComboBoxEdit_0, object object_0)
         {
             return false;
         }
@@ -161,14 +162,16 @@ namespace Yutai.ArcGIS.Common.ControlExtend
                 this.treeView_0.Nodes.Clear();
                 if (this.Properties.DataAccessLayerBaseClass != null)
                 {
-                    string str = string.Format("select * from {0} where {1}={2}", this.Properties.TableName, this.Properties.IDFieldName, this.Properties.ParentIDFieldName);
+                    string str = string.Format("select * from {0} where {1}={2}", this.Properties.TableName,
+                        this.Properties.IDFieldName, this.Properties.ParentIDFieldName);
                     this.Properties.DataAccessLayerBaseClass.Open();
                     IDataReader reader = this.Properties.DataAccessLayerBaseClass.ExecuteDataReader(str);
                     while (reader.Read())
                     {
                         NameValueCollection values = new NameValueCollection();
                         string text = reader[this.Properties.NameFieldName].ToString();
-                        TreeNode node = new TreeNode(text) {
+                        TreeNode node = new TreeNode(text)
+                        {
                             Tag = values
                         };
                         values.Add(this.Properties.NameFieldName, text);
@@ -202,13 +205,14 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             }
         }
 
-        private void method_5(SimpleButton simpleButton_2, SimpleButton simpleButton_3, PanelControl panelControl_2, int int_0)
+        private void method_5(SimpleButton simpleButton_2, SimpleButton simpleButton_3, PanelControl panelControl_2,
+            int int_0)
         {
             Size size = simpleButton_2.CalcBestSize();
             Size size2 = simpleButton_3.CalcBestSize();
             size.Height = Math.Max(size.Height, size2.Height);
-            size.Width = Math.Max(size.Width, size2.Width) + (int_0 * 4);
-            panelControl_2.Height = size.Height + (int_0 * 2);
+            size.Width = Math.Max(size.Width, size2.Width) + (int_0*4);
+            panelControl_2.Height = size.Height + (int_0*2);
             simpleButton_2.Size = size;
             simpleButton_3.Size = size;
         }
@@ -256,14 +260,17 @@ namespace Yutai.ArcGIS.Common.ControlExtend
                 e.Node.Nodes.Clear();
                 NameValueCollection tag = e.Node.Tag as NameValueCollection;
                 string str = tag[this.Properties.IDFieldName];
-                string str2 = string.Format("select * from {0} where {1}<>{2} and {2}='{3}'", new object[] { this.Properties.TableName, this.Properties.IDFieldName, this.Properties.ParentIDFieldName, str });
+                string str2 = string.Format("select * from {0} where {1}<>{2} and {2}='{3}'",
+                    new object[]
+                        {this.Properties.TableName, this.Properties.IDFieldName, this.Properties.ParentIDFieldName, str});
                 this.Properties.DataAccessLayerBaseClass.Open();
                 IDataReader reader = this.Properties.DataAccessLayerBaseClass.ExecuteDataReader(str2);
                 while (reader.Read())
                 {
                     NameValueCollection values2 = new NameValueCollection();
                     string text = reader[this.Properties.NameFieldName].ToString();
-                    TreeNode node = new TreeNode(text) {
+                    TreeNode node = new TreeNode(text)
+                    {
                         Tag = values2
                     };
                     values2.Add(this.Properties.NameFieldName, text);
@@ -293,19 +300,18 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         protected virtual int DefaultPopupHeight
         {
-            get
-            {
-                return 151;
-            }
+            get { return 151; }
         }
 
-        protected override  EditorClassInfo EditorClassInfo
+        protected override EditorClassInfo EditorClassInfo
         {
             get
             {
                 if (this.editorClassInfo_0 == null)
                 {
-                    this.editorClassInfo_0 = new  EditorClassInfo("TreeViewComboBoxEdit", typeof(TreeViewComboBoxEdit), typeof(RepositoryItemTreeViewComboBoxEdit), typeof(PopupContainerEditViewInfo), new ButtonEditPainter(), true, null, typeof(PopupEditAccessible));
+                    this.editorClassInfo_0 = new EditorClassInfo("TreeViewComboBoxEdit", typeof(TreeViewComboBoxEdit),
+                        typeof(RepositoryItemTreeViewComboBoxEdit), typeof(PopupContainerEditViewInfo),
+                        new ButtonEditPainter(), true, null, typeof(PopupEditAccessible));
                 }
                 return this.editorClassInfo_0;
             }
@@ -313,20 +319,13 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         public override string EditorTypeName
         {
-            get
-            {
-                return "TreeViewComboBoxEdit";
-            }
+            get { return "TreeViewComboBoxEdit"; }
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public RepositoryItemTreeViewComboBoxEdit Properties
         {
-            get
-            {
-                return (base.Properties as RepositoryItemTreeViewComboBoxEdit);
-            }
+            get { return (base.Properties as RepositoryItemTreeViewComboBoxEdit); }
         }
     }
 }
-

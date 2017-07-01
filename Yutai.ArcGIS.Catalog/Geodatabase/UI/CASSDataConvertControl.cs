@@ -57,7 +57,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnSelectInputFeatures_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
                 Filter = "CASS交换文件(*.cas)|*.cas",
                 Multiselect = true
             };
@@ -66,7 +67,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 for (int i = 0; i < dialog.FileNames.Length; i++)
                 {
                     IDatasetName unk = new CadDrawingNameClass();
-                    IWorkspaceName name2 = new WorkspaceNameClass {
+                    IWorkspaceName name2 = new WorkspaceNameClass
+                    {
                         WorkspaceFactoryProgID = "esriDataSourcesFile.CadWorkspaceFactory",
                         PathName = Path.GetDirectoryName(dialog.FileNames[i])
                     };
@@ -80,7 +82,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnSelectOutLocation_Click(object sender, EventArgs e)
         {
-            frmOpenFile file = new frmOpenFile {
+            frmOpenFile file = new frmOpenFile
+            {
                 Text = "保存位置"
             };
             file.RemoveAllFilters();
@@ -106,7 +109,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     }
                     else if (this.igxObject_1 is IGxFolder)
                     {
-                        IWorkspaceName name = new WorkspaceNameClass {
+                        IWorkspaceName name = new WorkspaceNameClass
+                        {
                             WorkspaceFactoryProgID = "esriDataSourcesFile.ShapefileWorkspaceFactory",
                             PathName = (this.igxObject_1.InternalObjectName as IFileName).Path
                         };
@@ -151,13 +155,14 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.iarray_1.RemoveAll();
         }
 
- public void Do()
+        public void Do()
         {
             try
             {
                 this.panel1.Visible = true;
                 Dataloaders dataloaders = new Dataloaders();
-                (dataloaders.Converter as IFeatureProgress_Event).Step+=(new IFeatureProgress_StepEventHandler(this.method_12));
+                (dataloaders.Converter as IFeatureProgress_Event).Step +=
+                    (new IFeatureProgress_StepEventHandler(this.method_12));
                 this.progressBar1.Minimum = 0;
                 this.progressBar1.Maximum = this.iarray_0.Count;
                 for (int i = 0; i < this.iarray_0.Count; i++)
@@ -170,12 +175,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
                 MessageBox.Show(exception.Message);
             }
         }
 
- private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.btnDelete.Enabled = this.listView1.SelectedItems.Count > 0;
         }
@@ -200,15 +205,16 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             try
             {
-                IWorkspaceName name = new WorkspaceNameClass {
+                IWorkspaceName name = new WorkspaceNameClass
+                {
                     WorkspaceFactoryProgID = "esriDataSourcesFile.CadWorkspaceFactory",
                     PathName = idatasetName_0.WorkspaceName.PathName
                 };
-                return new FeatureClassNameClass { Name = idatasetName_0.Name + ":" + string_0, WorkspaceName = name };
+                return new FeatureClassNameClass {Name = idatasetName_0.Name + ":" + string_0, WorkspaceName = name};
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
             return null;
         }
@@ -236,7 +242,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             {
                 new GxCadDataset();
                 IDatasetName name = new FeatureDatasetNameClass();
-                IWorkspaceName name2 = new WorkspaceNameClass {
+                IWorkspaceName name2 = new WorkspaceNameClass
+                {
                     WorkspaceFactoryProgID = "esriDataSourcesFile.CadWorkspaceFactory",
                     PathName = idatasetName_0.WorkspaceName.PathName
                 };
@@ -246,7 +253,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
             return null;
         }
@@ -257,7 +264,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             {
                 new GxCadDataset();
                 IDatasetName name = new TableNameClass();
-                IWorkspaceName name2 = new WorkspaceNameClass {
+                IWorkspaceName name2 = new WorkspaceNameClass
+                {
                     WorkspaceFactoryProgID = "esriDataSourcesFile.CadWorkspaceFactory",
                     PathName = idatasetName_0.WorkspaceName.PathName
                 };
@@ -267,7 +275,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
             return null;
         }
@@ -282,7 +290,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             Application.DoEvents();
             if (this.iname_1 is IWorkspaceName)
             {
-                if (((this.iname_1 as IWorkspaceName).Type == esriWorkspaceType.esriLocalDatabaseWorkspace) || ((this.iname_1 as IWorkspaceName).Type == esriWorkspaceType.esriRemoteDatabaseWorkspace))
+                if (((this.iname_1 as IWorkspaceName).Type == esriWorkspaceType.esriLocalDatabaseWorkspace) ||
+                    ((this.iname_1 as IWorkspaceName).Type == esriWorkspaceType.esriRemoteDatabaseWorkspace))
                 {
                     workspace = this.iname_1.Open() as IWorkspace2;
                     str2 = name;
@@ -340,7 +349,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 }
                 else if (this.igxObject_1 is IGxFolder)
                 {
-                    IWorkspaceName name = new WorkspaceNameClass {
+                    IWorkspaceName name = new WorkspaceNameClass
+                    {
                         WorkspaceFactoryProgID = "esriDataSourcesFile.ShapefileWorkspaceFactory",
                         PathName = (this.igxObject_1.InternalObjectName as IFileName).Path
                     };
@@ -374,27 +384,17 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IGxObject InGxObject
         {
-            set
-            {
-                this.igxObject_0 = value;
-            }
+            set { this.igxObject_0 = value; }
         }
 
         public IGxObject OutGxObject
         {
-            set
-            {
-                this.igxObject_1 = value;
-            }
+            set { this.igxObject_1 = value; }
         }
 
         public IGxObjectFilter OutGxObjectFilter
         {
-            set
-            {
-                this.igxObjectFilter_0 = value;
-            }
+            set { this.igxObjectFilter_0 = value; }
         }
     }
 }
-

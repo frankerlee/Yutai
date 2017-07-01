@@ -159,10 +159,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         private DockPane DockPane
         {
-            get
-            {
-                return this.m_dockPane;
-            }
+            get { return this.m_dockPane; }
         }
 
         public IDockContent this[int index]
@@ -178,4 +175,3 @@ namespace Yutai.ArcGIS.Framework.Docking
         }
     }
 }
-

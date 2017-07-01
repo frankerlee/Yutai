@@ -20,12 +20,15 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
 
         public DropDownImages()
         {
-            this.itemImagesContainer_0.AfterSelectEvent += new ItemImagesContainer.AfterSelectEventHandler(this.itemImagesContainer_0_AfterSelectEvent);
+            this.itemImagesContainer_0.AfterSelectEvent +=
+                new ItemImagesContainer.AfterSelectEventHandler(this.itemImagesContainer_0_AfterSelectEvent);
         }
 
-        public override object EditValue(ITypeDescriptorContext itypeDescriptorContext_0, IServiceProvider iserviceProvider_0, object object_0)
+        public override object EditValue(ITypeDescriptorContext itypeDescriptorContext_0,
+            IServiceProvider iserviceProvider_0, object object_0)
         {
-            this.iwindowsFormsEditorService_0 = (IWindowsFormsEditorService) iserviceProvider_0.GetService(typeof(IWindowsFormsEditorService));
+            this.iwindowsFormsEditorService_0 =
+                (IWindowsFormsEditorService) iserviceProvider_0.GetService(typeof(IWindowsFormsEditorService));
             this.itemImagesContainer_0.ImageList = imageList;
             if (this.iwindowsFormsEditorService_0 != null)
             {
@@ -65,9 +68,14 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
         {
             if (paintValueEventArgs_0.Value.ToString().CompareTo("(none)") == 0)
             {
-                paintValueEventArgs_0.Graphics.DrawImage(this.itemImagesContainer_0.ListBoxIcon, paintValueEventArgs_0.Bounds);
+                paintValueEventArgs_0.Graphics.DrawImage(this.itemImagesContainer_0.ListBoxIcon,
+                    paintValueEventArgs_0.Bounds);
                 string s = paintValueEventArgs_0.Value.ToString();
-                paintValueEventArgs_0.Graphics.DrawString(s, this.itemImagesContainer_0.Font, new SolidBrush(this.itemImagesContainer_0.ForeColor), new Rectangle(paintValueEventArgs_0.Bounds.Width + 10, 0, ((int) paintValueEventArgs_0.Graphics.MeasureString(s, this.itemImagesContainer_0.Font).Width) + 10, paintValueEventArgs_0.Bounds.Height));
+                paintValueEventArgs_0.Graphics.DrawString(s, this.itemImagesContainer_0.Font,
+                    new SolidBrush(this.itemImagesContainer_0.ForeColor),
+                    new Rectangle(paintValueEventArgs_0.Bounds.Width + 10, 0,
+                        ((int) paintValueEventArgs_0.Graphics.MeasureString(s, this.itemImagesContainer_0.Font).Width) +
+                        10, paintValueEventArgs_0.Bounds.Height));
             }
             if ((imageList != null) && (imageList.Images.Count > 0))
             {
@@ -77,4 +85,3 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
         }
     }
 }
-

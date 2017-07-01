@@ -9,7 +9,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
 {
     internal class NetworkAnalystUtility
     {
-        public static bool AddLocation(INALayer layer, string locationClassName, IPoint point, string locationName, StringObjectDictionary locationProperties, double tolerance)
+        public static bool AddLocation(INALayer layer, string locationClassName, IPoint point, string locationName,
+            StringObjectDictionary locationProperties, double tolerance)
         {
             INALocator locator = layer.Context.Locator;
             locator.SnapTolerance = tolerance;
@@ -65,7 +66,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             return location.IsLocated;
         }
 
-        public static void GetClasses(INALayer layer, out NameValueCollection inputClasses, out NameValueCollection outputClasses)
+        public static void GetClasses(INALayer layer, out NameValueCollection inputClasses,
+            out NameValueCollection outputClasses)
         {
             INamedSet nAClasses = layer.Context.NAClasses;
             inputClasses = new NameValueCollection();
@@ -129,7 +131,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             return hashtable;
         }
 
-        public static void GetPermittedAttributes(INALayer layer, out string[] impedences, out string[] restrictions, out string[] hierarchies)
+        public static void GetPermittedAttributes(INALayer layer, out string[] impedences, out string[] restrictions,
+            out string[] hierarchies)
         {
             ArrayList list = new ArrayList();
             ArrayList list2 = new ArrayList();
@@ -191,4 +194,3 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
         }
     }
 }
-

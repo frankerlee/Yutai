@@ -14,7 +14,7 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Plugins.Editor.Commands
 {
-    class CmdZoom2SelectedFeature:YutaiCommand
+    class CmdZoom2SelectedFeature : YutaiCommand
     {
         public CmdZoom2SelectedFeature(IAppContext context)
         {
@@ -39,13 +39,8 @@ namespace Yutai.Plugins.Editor.Commands
 
         public override bool Enabled
         {
-            get
-            {
-                return _context.FocusMap != null && _context.FocusMap.SelectionCount > 0;
-            }
+            get { return _context.FocusMap != null && _context.FocusMap.SelectionCount > 0; }
         }
-
-
 
 
         public override void OnClick(object sender, EventArgs args)
@@ -57,7 +52,6 @@ namespace Yutai.Plugins.Editor.Commands
         {
             Yutai.ArcGIS.Common.Helpers.CommonHelper.Zoom2SelectedFeature(_context.ActiveView as IActiveView);
         }
-        
     }
 
     class CmdDeleteSelectedFeature : YutaiCommand
@@ -85,13 +79,8 @@ namespace Yutai.Plugins.Editor.Commands
 
         public override bool Enabled
         {
-            get
-            {
-                return _context.FocusMap != null && _context.FocusMap.SelectionCount > 0;
-            }
+            get { return _context.FocusMap != null && _context.FocusMap.SelectionCount > 0; }
         }
-
-
 
 
         public override void OnClick(object sender, EventArgs args)
@@ -101,9 +90,9 @@ namespace Yutai.Plugins.Editor.Commands
 
         public override void OnClick()
         {
-            Yutai.ArcGIS.Common.Editor.Editor.DeletedSelectedFeatures(_context.FocusMap, Yutai.ArcGIS.Common.Editor.Editor.EditWorkspace as IWorkspace);
+            Yutai.ArcGIS.Common.Editor.Editor.DeletedSelectedFeatures(_context.FocusMap,
+                Yutai.ArcGIS.Common.Editor.Editor.EditWorkspace as IWorkspace);
         }
-
     }
 
 
@@ -132,13 +121,8 @@ namespace Yutai.Plugins.Editor.Commands
 
         public override bool Enabled
         {
-            get
-            {
-                return _context.FocusMap != null && _context.FocusMap.SelectionCount > 0;
-            }
+            get { return _context.FocusMap != null && _context.FocusMap.SelectionCount > 0; }
         }
-
-
 
 
         public override void OnClick(object sender, EventArgs args)
@@ -152,6 +136,5 @@ namespace Yutai.Plugins.Editor.Commands
             _context.FocusMap.ClearSelection();
             (_context.FocusMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, false, null);
         }
-
     }
 }

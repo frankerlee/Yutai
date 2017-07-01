@@ -20,4 +20,3 @@ namespace Yutai.ArcGIS.Common.ControlExtend
         }
     }
 }
-

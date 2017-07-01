@@ -51,7 +51,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         }
                         catch (Exception exception)
                         {
-                            Logger.Current.Error("",exception, "");
+                            Logger.Current.Error("", exception, "");
                         }
                     }
                 }
@@ -60,7 +60,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnAddRule_Click(object sender, EventArgs e)
         {
-            frmRule rule = new frmRule {
+            frmRule rule = new frmRule
+            {
                 OriginClassArray = TopologyEditHelper.m_pList
             };
             if (rule.ShowDialog() == DialogResult.OK)
@@ -77,13 +78,19 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         if (!this.method_2(topologyRule))
                         {
                             string[] items = new string[3];
-                            items[0] = (this.itopology_0 as IFeatureClassContainer).get_ClassByID(topologyRule.OriginClassID).AliasName;
+                            items[0] =
+                                (this.itopology_0 as IFeatureClassContainer).get_ClassByID(topologyRule.OriginClassID)
+                                    .AliasName;
                             items[1] = this.method_0(topologyRule.TopologyRuleType);
-                            if ((topologyRule.OriginClassID != topologyRule.DestinationClassID) && (topologyRule.DestinationClassID > 0))
+                            if ((topologyRule.OriginClassID != topologyRule.DestinationClassID) &&
+                                (topologyRule.DestinationClassID > 0))
                             {
-                                items[2] = (this.itopology_0 as IFeatureClassContainer).get_ClassByID(topologyRule.DestinationClassID).AliasName;
+                                items[2] =
+                                    (this.itopology_0 as IFeatureClassContainer).get_ClassByID(
+                                        topologyRule.DestinationClassID).AliasName;
                             }
-                            ListViewItem item = new ListViewItem(items) {
+                            ListViewItem item = new ListViewItem(items)
+                            {
                                 Tag = new Class2(topologyRule, true)
                             };
                             this.listView1.Items.Add(item);
@@ -101,14 +108,15 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 }
                 catch (Exception exception)
                 {
-                    Logger.Current.Error("",exception, "");
+                    Logger.Current.Error("", exception, "");
                 }
             }
         }
 
         private void btnAddRule1_Click(object sender, EventArgs e)
         {
-            frmAddRuleByClass class2 = new frmAddRuleByClass {
+            frmAddRuleByClass class2 = new frmAddRuleByClass
+            {
                 OriginClassArray = TopologyEditHelper.m_pList
             };
             if (class2.ShowDialog() == DialogResult.OK)
@@ -122,13 +130,17 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         if (!this.method_2(rule))
                         {
                             string[] items = new string[3];
-                            items[0] = (this.itopology_0 as IFeatureClassContainer).get_ClassByID(rule.OriginClassID).AliasName;
+                            items[0] =
+                                (this.itopology_0 as IFeatureClassContainer).get_ClassByID(rule.OriginClassID).AliasName;
                             items[1] = this.method_0(rule.TopologyRuleType);
                             if ((rule.OriginClassID != rule.DestinationClassID) && (rule.DestinationClassID > 0))
                             {
-                                items[2] = (this.itopology_0 as IFeatureClassContainer).get_ClassByID(rule.DestinationClassID).AliasName;
+                                items[2] =
+                                    (this.itopology_0 as IFeatureClassContainer).get_ClassByID(rule.DestinationClassID)
+                                        .AliasName;
                             }
-                            ListViewItem item = new ListViewItem(items) {
+                            ListViewItem item = new ListViewItem(items)
+                            {
                                 Tag = new Class2(rule, true)
                             };
                             this.listView1.Items.Add(item);
@@ -167,7 +179,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
         }
 
@@ -195,7 +207,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
         }
 
@@ -215,7 +227,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.ilist_0.Clear();
         }
 
- private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.listView1.SelectedItems.Count > 0)
             {
@@ -334,13 +346,19 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 rules.Reset();
                 for (IRule rule2 = rules.Next(); rule2 != null; rule2 = rules.Next())
                 {
-                    items[0] = (this.itopology_0 as IFeatureClassContainer).get_ClassByID((rule2 as ITopologyRule).OriginClassID).AliasName;
+                    items[0] =
+                        (this.itopology_0 as IFeatureClassContainer).get_ClassByID(
+                            (rule2 as ITopologyRule).OriginClassID).AliasName;
                     items[1] = this.method_0((rule2 as ITopologyRule).TopologyRuleType);
-                    if (((rule2 as ITopologyRule).OriginClassID != (rule2 as ITopologyRule).DestinationClassID) && ((rule2 as ITopologyRule).DestinationClassID != 0))
+                    if (((rule2 as ITopologyRule).OriginClassID != (rule2 as ITopologyRule).DestinationClassID) &&
+                        ((rule2 as ITopologyRule).DestinationClassID != 0))
                     {
-                        items[2] = (this.itopology_0 as IFeatureClassContainer).get_ClassByID((rule2 as ITopologyRule).DestinationClassID).AliasName;
+                        items[2] =
+                            (this.itopology_0 as IFeatureClassContainer).get_ClassByID(
+                                (rule2 as ITopologyRule).DestinationClassID).AliasName;
                     }
-                    ListViewItem item = new ListViewItem(items) {
+                    ListViewItem item = new ListViewItem(items)
+                    {
                         Tag = new Class2(rule2 as ITopologyRule, false)
                     };
                     this.listView1.Items.Add(item);
@@ -348,7 +366,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
         }
 
@@ -357,7 +375,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             for (int i = 0; i < this.listView1.Items.Count; i++)
             {
                 ITopologyRule topoRule = (this.listView1.Items[i].Tag as Class2).TopoRule;
-                if (((topoRule.Name == itopologyRule_0.Name) && (topoRule.OriginClassID == itopologyRule_0.OriginClassID)) && (topoRule.DestinationClassID == itopologyRule_0.DestinationClassID))
+                if (((topoRule.Name == itopologyRule_0.Name) &&
+                     (topoRule.OriginClassID == itopologyRule_0.OriginClassID)) &&
+                    (topoRule.DestinationClassID == itopologyRule_0.DestinationClassID))
                 {
                     return true;
                 }
@@ -382,7 +402,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     index--;
                 }
                 continue;
-            Label_0071:
+                Label_0071:
                 this.listView1.Items.RemoveAt(index);
             }
         }
@@ -408,38 +428,23 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_0;
-            }
+            get { return this.bool_0; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
 
         private partial class Class2
@@ -455,24 +460,14 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
             public bool IsNew
             {
-                get
-                {
-                    return this.bool_0;
-                }
-                set
-                {
-                    this.bool_0 = value;
-                }
+                get { return this.bool_0; }
+                set { this.bool_0 = value; }
             }
 
             public ITopologyRule TopoRule
             {
-                get
-                {
-                    return this.itopologyRule_0;
-                }
+                get { return this.itopologyRule_0; }
             }
         }
     }
 }
-

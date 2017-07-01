@@ -13,4 +13,3 @@
         COMMANDTYPE CommandType { get; }
     }
 }
-

@@ -20,6 +20,7 @@ namespace Yutai.Plugins.TableEditor.Commands
     public class CmdShowAliases : YutaiCommand
     {
         private ITableEditorView _view;
+
         public CmdShowAliases(IAppContext context, ITableEditorView view)
         {
             _context = context;

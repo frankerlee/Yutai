@@ -26,15 +26,17 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         public void ChangeUnit(double newunit)
         {
             this.m_CanDo = false;
-            this.numericUpDownXOffset.Value = (decimal) ((((double) this.numericUpDownXOffset.Value) / this.m_unit) * newunit);
-            this.numericUpDownYOffset.Value = (decimal) ((((double) this.numericUpDownYOffset.Value) / this.m_unit) * newunit);
-            this.numericUpDownXSpace.Value = (decimal) ((((double) this.numericUpDownXSpace.Value) / this.m_unit) * newunit);
-            this.numericUpDownYSpace.Value = (decimal) ((((double) this.numericUpDownYSpace.Value) / this.m_unit) * newunit);
+            this.numericUpDownXOffset.Value =
+                (decimal) ((((double) this.numericUpDownXOffset.Value)/this.m_unit)*newunit);
+            this.numericUpDownYOffset.Value =
+                (decimal) ((((double) this.numericUpDownYOffset.Value)/this.m_unit)*newunit);
+            this.numericUpDownXSpace.Value = (decimal) ((((double) this.numericUpDownXSpace.Value)/this.m_unit)*newunit);
+            this.numericUpDownYSpace.Value = (decimal) ((((double) this.numericUpDownYSpace.Value)/this.m_unit)*newunit);
             this.m_unit = newunit;
             this.m_CanDo = true;
         }
 
- private void FillPropertyControl_Load(object sender, EventArgs e)
+        private void FillPropertyControl_Load(object sender, EventArgs e)
         {
             this.InitControl();
         }
@@ -42,14 +44,14 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         private void InitControl()
         {
             this.m_CanDo = false;
-            this.numericUpDownXOffset.Value = (decimal) (this.m_FillProperties.XOffset * this.m_unit);
-            this.numericUpDownYOffset.Value = (decimal) (this.m_FillProperties.YOffset * this.m_unit);
-            this.numericUpDownXSpace.Value = (decimal) (this.m_FillProperties.XSeparation * this.m_unit);
-            this.numericUpDownYSpace.Value = (decimal) (this.m_FillProperties.YSeparation * this.m_unit);
+            this.numericUpDownXOffset.Value = (decimal) (this.m_FillProperties.XOffset*this.m_unit);
+            this.numericUpDownYOffset.Value = (decimal) (this.m_FillProperties.YOffset*this.m_unit);
+            this.numericUpDownXSpace.Value = (decimal) (this.m_FillProperties.XSeparation*this.m_unit);
+            this.numericUpDownYSpace.Value = (decimal) (this.m_FillProperties.YSeparation*this.m_unit);
             this.m_CanDo = true;
         }
 
- public static bool IsNmuber(string str)
+        public static bool IsNmuber(string str)
         {
             if (str.Length > 0)
             {
@@ -144,7 +146,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     this.numericUpDownXOffset.ForeColor = SystemColors.WindowText;
-                    this.m_FillProperties.XOffset = ((double) this.numericUpDownXOffset.Value) / this.m_unit;
+                    this.m_FillProperties.XOffset = ((double) this.numericUpDownXOffset.Value)/this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -161,7 +163,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     this.numericUpDownXSpace.ForeColor = SystemColors.WindowText;
-                    this.m_FillProperties.XSeparation = ((double) this.numericUpDownXSpace.Value) / this.m_unit;
+                    this.m_FillProperties.XSeparation = ((double) this.numericUpDownXSpace.Value)/this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -178,7 +180,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     this.numericUpDownYOffset.ForeColor = SystemColors.WindowText;
-                    this.m_FillProperties.YOffset = ((double) this.numericUpDownYOffset.Value) / this.m_unit;
+                    this.m_FillProperties.YOffset = ((double) this.numericUpDownYOffset.Value)/this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -195,7 +197,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     this.numericUpDownYSpace.ForeColor = SystemColors.WindowText;
-                    this.m_FillProperties.YSeparation = ((double) this.numericUpDownYSpace.Value) / this.m_unit;
+                    this.m_FillProperties.YSeparation = ((double) this.numericUpDownYSpace.Value)/this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -210,4 +212,3 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         }
     }
 }
-

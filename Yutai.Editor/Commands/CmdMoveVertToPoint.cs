@@ -40,11 +40,10 @@ namespace Yutai.Plugins.Editor.Commands
         {
             get
             {
-                return _context.FocusMap != null && _context.FocusMap.LayerCount != 0 && (EditTools.EditFeature != null && EditTools.HitType == HitType.HitNode);
+                return _context.FocusMap != null && _context.FocusMap.LayerCount != 0 &&
+                       (EditTools.EditFeature != null && EditTools.HitType == HitType.HitNode);
             }
         }
-
-
 
 
         public override void OnClick(object sender, EventArgs args)
@@ -54,7 +53,6 @@ namespace Yutai.Plugins.Editor.Commands
 
         public override void OnClick()
         {
-
             frmInputValue1 frmInputValue = new frmInputValue1();
             frmInputValue.Text = "输入X, Y值";
             if (frmInputValue.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -62,9 +60,12 @@ namespace Yutai.Plugins.Editor.Commands
                 double inputValue = frmInputValue.InputValue1;
                 double inputValue2 = frmInputValue.InputValue2;
                 IGeometry shape = EditTools.EditFeature.Shape;
-                if (shape != null && EditTools.PartIndex != -1 && EditTools.PointIndex != -1 && (shape.GeometryType == esriGeometryType.esriGeometryPolyline || shape.GeometryType == esriGeometryType.esriGeometryPolygon))
+                if (shape != null && EditTools.PartIndex != -1 && EditTools.PointIndex != -1 &&
+                    (shape.GeometryType == esriGeometryType.esriGeometryPolyline ||
+                     shape.GeometryType == esriGeometryType.esriGeometryPolygon))
                 {
-                    IPointCollection pointCollection = (shape as IGeometryCollection).get_Geometry(EditTools.PartIndex) as IPointCollection;
+                    IPointCollection pointCollection =
+                        (shape as IGeometryCollection).get_Geometry(EditTools.PartIndex) as IPointCollection;
                     IPoint point = pointCollection.get_Point(EditTools.PointIndex);
                     point.PutCoords(inputValue, inputValue2);
                     pointCollection.UpdatePoint(EditTools.PointIndex, point);
@@ -77,7 +78,5 @@ namespace Yutai.Plugins.Editor.Commands
                 }
             }
         }
-
-        
     }
 }

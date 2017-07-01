@@ -8,6 +8,7 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geometry;
+using ESRI.ArcGIS.SystemUI;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Mvp;
@@ -54,11 +55,7 @@ namespace Yutai.Plugins.Interfaces
 
         YutaiTool CurrentTool { get; set; }
 
-        IGeometry BufferGeometry
-        {
-            get;
-            set;
-        }
+        IGeometry BufferGeometry { get; set; }
 
         IStyleGallery StyleGallery { get; set; }
         PyramidPromptType PyramidPromptType { get; set; }
@@ -80,13 +77,17 @@ namespace Yutai.Plugins.Interfaces
         //事件
         void AcvtiveHookChanged(object hook);
         void AddAfterDrawCallBack(AfterDraw afterDraw);
-        void AddCommands(YutaiCommand  command);
+        void AddCommands(YutaiCommand command);
         void Close();
-      
+
         void MapClipChanged(object clip);
         void MapDocumentChanged();
         void MapDocumentSave(string fileName);
         void ResetCurrentTool();
+
+        object Hook { get; set; }
+
+        IOperationStack OperationStack { get; }
 
         void ShowSplashMessage(string msg);
         IBroadcasterService Broadcaster { get; }
@@ -102,5 +103,6 @@ namespace Yutai.Plugins.Interfaces
     {
         void ShowStatus(string message);
     }
+
     public delegate void AfterDraw(IDisplay display, esriViewDrawPhase drawPhase);
 }

@@ -9,4 +9,3 @@ namespace Yutai.ArcGIS.Catalog
         IGxSelection GxSelection { get; set; }
     }
 }
-

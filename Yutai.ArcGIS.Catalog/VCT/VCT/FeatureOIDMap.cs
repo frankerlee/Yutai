@@ -37,4 +37,3 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
         }
     }
 }
-

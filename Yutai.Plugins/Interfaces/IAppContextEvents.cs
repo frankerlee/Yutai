@@ -33,6 +33,5 @@
         event OnApplicationClosedHandler OnApplicationClosed;
 
         event MapReplacedHandler MapReplaced;
-
     }
 }

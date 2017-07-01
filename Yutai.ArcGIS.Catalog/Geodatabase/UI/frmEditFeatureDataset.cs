@@ -48,7 +48,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void frmEditFeatureDataset_Load(object sender, EventArgs e)
+        private void frmEditFeatureDataset_Load(object sender, EventArgs e)
         {
             this.btnApply.Enabled = false;
             TabPage page = new TabPage("常规");
@@ -70,12 +70,17 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             page.Controls.Add(this.coordinateControl_0);
             this.tabControl1.TabPages.Add(page);
             this.coordinateControl_0.ValueChanged += new ValueChangedHandler(this.method_1);
-            if ((NewObjectClassHelper.m_pObjectClassHelper.IsHighPrecision && (NewObjectClassHelper.m_pObjectClassHelper.SpatialReference is ISpatialReference3)) && ((NewObjectClassHelper.m_pObjectClassHelper.SpatialReference as ISpatialReference3).VerticalCoordinateSystem != null))
+            if ((NewObjectClassHelper.m_pObjectClassHelper.IsHighPrecision &&
+                 (NewObjectClassHelper.m_pObjectClassHelper.SpatialReference is ISpatialReference3)) &&
+                ((NewObjectClassHelper.m_pObjectClassHelper.SpatialReference as ISpatialReference3)
+                     .VerticalCoordinateSystem != null))
             {
                 page = new TabPage("Z坐标系统");
                 this.vcscoordinateInfoPage_0.Dock = DockStyle.Fill;
                 this.vcscoordinateInfoPage_0.IsEdit = false;
-                this.vcscoordinateInfoPage_0.SpatialReference = (NewObjectClassHelper.m_pObjectClassHelper.SpatialReference as ISpatialReference3).VerticalCoordinateSystem;
+                this.vcscoordinateInfoPage_0.SpatialReference =
+                    (NewObjectClassHelper.m_pObjectClassHelper.SpatialReference as ISpatialReference3)
+                        .VerticalCoordinateSystem;
                 page.Controls.Add(this.vcscoordinateInfoPage_0);
                 this.tabControl1.TabPages.Add(page);
             }
@@ -85,7 +90,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.tabControl1.TabPages.Add(page);
         }
 
- private void method_0(object sender, EventArgs e)
+        private void method_0(object sender, EventArgs e)
         {
             this.btnApply.Enabled = true;
         }
@@ -112,13 +117,13 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             {
                 exception = exception1;
                 MessageBox.Show(exception.Message);
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
                 NewObjectClassHelper.m_pObjectClassHelper.Name = featureDataset.Name;
             }
             catch (Exception exception3)
             {
                 exception2 = exception3;
-                Logger.Current.Error("",exception2, "");
+                Logger.Current.Error("", exception2, "");
             }
             try
             {
@@ -136,12 +141,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             {
                 exception = exception4;
                 MessageBox.Show(exception.Message);
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
             catch (Exception exception5)
             {
                 exception2 = exception5;
-                Logger.Current.Error("",exception2, "");
+                Logger.Current.Error("", exception2, "");
             }
             return true;
         }
@@ -152,9 +157,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             {
                 NewObjectClassHelper.m_pObjectClassHelper.FeatureDataset = value;
                 NewObjectClassHelper.m_pObjectClassHelper.HasZ = true;
-                NewObjectClassHelper.m_pObjectClassHelper.HasM= true;
+                NewObjectClassHelper.m_pObjectClassHelper.HasM = true;
             }
         }
     }
 }
-

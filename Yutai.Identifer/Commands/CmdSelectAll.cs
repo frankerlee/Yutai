@@ -13,8 +13,8 @@ namespace Yutai.Plugins.Identifer.Commands
 {
     class CmdSelectAll : YutaiCommand
     {
-       
         private IdentifierPlugin _plugin;
+
         public override bool Enabled
         {
             get
@@ -22,7 +22,9 @@ namespace Yutai.Plugins.Identifer.Commands
                 bool flag;
                 if (_context.MapControl.Map != null)
                 {
-                    if ((_context.MapControl.Map.LayerCount <= 0 ? true : !(_plugin.QuerySettings.CurrentLayer is IFeatureSelection)))
+                    if ((_context.MapControl.Map.LayerCount <= 0
+                        ? true
+                        : !(_plugin.QuerySettings.CurrentLayer is IFeatureSelection)))
                     {
                         flag = false;
                         return flag;
@@ -53,7 +55,6 @@ namespace Yutai.Plugins.Identifer.Commands
 
         public override void OnCreate(object hook)
         {
-
         }
 
         public override void OnClick()
@@ -63,11 +64,15 @@ namespace Yutai.Plugins.Identifer.Commands
             if (_plugin.QuerySettings.CurrentLayer == null) return;
             int num = (_plugin.QuerySettings.CurrentLayer as IFeatureLayer).FeatureClass.FeatureCount(null);
 
-            if (num <= (selectionEnvironmentClass as ISelectionEnvironmentThreshold).WarningThreshold || MessageService.Current.Ask("所选择记录较多，执行将花较长时间，是否继续？") != false)
+            if (num <= (selectionEnvironmentClass as ISelectionEnvironmentThreshold).WarningThreshold ||
+                MessageService.Current.Ask("所选择记录较多，执行将花较长时间，是否继续？") != false)
             {
-                (pMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeoSelection,_plugin.QuerySettings.CurrentLayer, null);
-                (_plugin.QuerySettings.CurrentLayer as IFeatureSelection).SelectFeatures(null, esriSelectionResultEnum.esriSelectionResultAdd, false);
-                ( pMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, _plugin.QuerySettings.CurrentLayer, null);
+                (pMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeoSelection,
+                    _plugin.QuerySettings.CurrentLayer, null);
+                (_plugin.QuerySettings.CurrentLayer as IFeatureSelection).SelectFeatures(null,
+                    esriSelectionResultEnum.esriSelectionResultAdd, false);
+                (pMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeoSelection,
+                    _plugin.QuerySettings.CurrentLayer, null);
             }
         }
 

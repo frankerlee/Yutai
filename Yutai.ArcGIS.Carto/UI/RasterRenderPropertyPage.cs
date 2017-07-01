@@ -36,7 +36,7 @@ namespace Yutai.ArcGIS.Carto.UI
             return true;
         }
 
- private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.bool_0)
             {
@@ -72,7 +72,9 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void method_0()
         {
-            if (((this.irasterLayer_1 != null) && ((this.ibasicMap_0 == null) || this.irasterLayer_1.Renderer.CanRender(this.irasterLayer_1.Raster))) && (this.irasterLayer_1.Raster != null))
+            if (((this.irasterLayer_1 != null) &&
+                 ((this.ibasicMap_0 == null) || this.irasterLayer_1.Renderer.CanRender(this.irasterLayer_1.Raster))) &&
+                (this.irasterLayer_1.Raster != null))
             {
                 int count = 1;
                 if (this.irasterLayer_1.Raster is IRasterBandCollection)
@@ -142,26 +144,17 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IBasicMap FocusMap
         {
-            set
-            {
-                this.ibasicMap_0 = value;
-            }
+            set { this.ibasicMap_0 = value; }
         }
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         public ILayer Layer
         {
-            set
-            {
-                this.irasterLayer_1 = value as IRasterLayer;
-            }
+            set { this.irasterLayer_1 = value as IRasterLayer; }
         }
 
         public object SelectItem
@@ -186,4 +179,3 @@ namespace Yutai.ArcGIS.Carto.UI
         }
     }
 }
-

@@ -25,6 +25,7 @@ namespace Yutai.Plugins.TableEditor.Views
     {
         private readonly IAppContext _context;
         private List<YutaiCommand> _commands;
+
         public TableEditorDockPanel(IAppContext context)
         {
             if (context == null) throw new ArgumentNullException("context");
@@ -109,7 +110,7 @@ namespace Yutai.Plugins.TableEditor.Views
             {
                 _commands = new List<YutaiCommand>()
                 {
-                    new YutaiMenuCommand("tedSelection", "tedSelection","tedSelection", "选择",""),
+                    new YutaiMenuCommand("tedSelection", "tedSelection", "tedSelection", "选择", ""),
                     new CmdZoomToCurrentFeature(_context, this),
                     new CmdZoomToSelectedFeatures(_context, this),
                     new YutaiSeparatorCommand("tedSelection"),
@@ -123,17 +124,17 @@ namespace Yutai.Plugins.TableEditor.Views
                     new YutaiSeparatorCommand("tedSelection"),
                     new CmdExportAll(_context, this),
                     //new CmdExportSelection(_context, this),
-                    new YutaiMenuCommand("tedFields", "tedFields","tedFields", "字段",""),
+                    new YutaiMenuCommand("tedFields", "tedFields", "tedFields", "字段", ""),
                     new CmdAddField(_context, this),
                     new YutaiSeparatorCommand("tedFields"),
                     new CmdShowAliases(_context, this),
                     new CmdShowAllFields(_context, this),
-                    new YutaiMenuCommand("tedTools", "tedTools","tedTools", "工具",""),
+                    new YutaiMenuCommand("tedTools", "tedTools", "tedTools", "工具", ""),
                     new CmdFind(_context, this),
                     new YutaiSeparatorCommand("tedTools"),
                     new CmdJoinDatasource(_context, this),
                     new YutaiSeparatorCommand(),
-                    new YutaiMenuCommand("tedLayout", "tedLayout","tedLayout", "布局",""),
+                    new YutaiMenuCommand("tedLayout", "tedLayout", "tedLayout", "布局", ""),
                     new CmdReloadTable(_context, this),
                     new CmdClearSorting(_context, this),
                 };
@@ -142,18 +143,12 @@ namespace Yutai.Plugins.TableEditor.Views
 
         public IEnumerable<ToolStripItemCollection> ToolStrips
         {
-            get
-            {
-                yield break;
-            }
+            get { yield break; }
         }
 
         public IEnumerable<Control> Buttons
         {
-            get
-            {
-                yield break;
-            }
+            get { yield break; }
         }
 
         public IMapView MapView { get; }
@@ -205,21 +200,35 @@ namespace Yutai.Plugins.TableEditor.Views
 
         public ITableView CurrentGridView
         {
-            get
-            {
-                return tabControl.SelectedTab as ITableView;
-            }
+            get { return tabControl.SelectedTab as ITableView; }
         }
 
-        public override Bitmap Image { get { return Properties.Resources.icon_attribute_table; } }
+        public override Bitmap Image
+        {
+            get { return Properties.Resources.icon_attribute_table; }
+        }
+
         public override string Caption
         {
             get { return "属性表"; }
             set { Caption = value; }
         }
-        public override DockPanelState DefaultDock { get { return DockPanelState.Bottom; } }
-        public override string DockName { get { return DefaultDockName; } }
-        public virtual string DefaultNestDockName { get { return ""; } }
+
+        public override DockPanelState DefaultDock
+        {
+            get { return DockPanelState.Bottom; }
+        }
+
+        public override string DockName
+        {
+            get { return DefaultDockName; }
+        }
+
+        public virtual string DefaultNestDockName
+        {
+            get { return ""; }
+        }
+
         public const string DefaultDockName = "Plug_TableEditor_View";
     }
 }

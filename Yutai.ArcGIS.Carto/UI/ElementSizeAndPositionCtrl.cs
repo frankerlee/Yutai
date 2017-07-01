@@ -51,12 +51,14 @@ namespace Yutai.ArcGIS.Carto.UI
                             {
                                 object missing = System.Type.Missing;
                                 IPointCollection points2 = new PolylineClass();
-                                PointClass class2 = new PointClass {
+                                PointClass class2 = new PointClass
+                                {
                                     X = xMin,
                                     Y = yMin
                                 };
                                 IPoint inPoint = class2;
-                                PointClass class3 = new PointClass {
+                                PointClass class3 = new PointClass
+                                {
                                     X = xMin + num3,
                                     Y = yMin + num4
                                 };
@@ -71,7 +73,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     {
                         IAffineTransformation2D transformation = new AffineTransformation2DClass();
                         transformation.DefineFromEnvelopes(envelope, to);
-                        (this.ielement_0 as ITransform2D).Transform(esriTransformDirection.esriTransformForward, transformation);
+                        (this.ielement_0 as ITransform2D).Transform(esriTransformDirection.esriTransformForward,
+                            transformation);
                     }
                     this.bool_1 = false;
                 }
@@ -86,7 +89,7 @@ namespace Yutai.ArcGIS.Carto.UI
         {
         }
 
- private void ElementSizeAndPositionCtrl_Load(object sender, EventArgs e)
+        private void ElementSizeAndPositionCtrl_Load(object sender, EventArgs e)
         {
             try
             {
@@ -130,7 +133,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.bool_0 = true;
         }
 
- private void method_0(EventArgs eventArgs_0)
+        private void method_0(EventArgs eventArgs_0)
         {
             if (this.OnValueChange != null)
             {
@@ -228,39 +231,23 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

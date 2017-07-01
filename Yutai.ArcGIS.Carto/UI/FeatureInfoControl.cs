@@ -46,7 +46,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new frmAttachment { Attachments = this.button1.Tag as List<IAttachment> }.ShowDialog();
+            new frmAttachment {Attachments = this.button1.Tag as List<IAttachment>}.ShowDialog();
         }
 
         private void combLayer_SelectedIndexChanged(object sender, EventArgs e)
@@ -75,7 +75,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void FeatureInfoControl_Load(object sender, EventArgs e)
+        private void FeatureInfoControl_Load(object sender, EventArgs e)
         {
             this.bool_0 = true;
             this.method_11();
@@ -87,7 +87,7 @@ namespace Yutai.ArcGIS.Carto.UI
         {
         }
 
- private void method_0()
+        private void method_0()
         {
             this.objTree.Nodes.Clear();
             this.Infolist.Items.Clear();
@@ -105,7 +105,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     if (obj4 is IIdentifyObj)
                     {
                         obj3 = obj4 as IIdentifyObj;
-                        if ((this.identifyTypeEnum_0 != IdentifyTypeEnum.enumITCurrentLayer) || (obj3.Layer == this.ilayer_0))
+                        if ((this.identifyTypeEnum_0 != IdentifyTypeEnum.enumITCurrentLayer) ||
+                            (obj3.Layer == this.ilayer_0))
                         {
                             if (obj3 is IFeatureIdentifyObj)
                             {
@@ -134,7 +135,8 @@ namespace Yutai.ArcGIS.Carto.UI
                                 this.method_3(row as IFeature, node3);
                                 if (obj3.Layer is IRelationshipClassCollection)
                                 {
-                                    this.method_1((obj3.Layer as IRelationshipClassCollection).RelationshipClasses, row as IObject, node3, false);
+                                    this.method_1((obj3.Layer as IRelationshipClassCollection).RelationshipClasses,
+                                        row as IObject, node3, false);
                                 }
                                 node.Nodes.Add(node3);
                             }
@@ -145,7 +147,8 @@ namespace Yutai.ArcGIS.Carto.UI
                                 this.objTree.Nodes.Add(node);
                                 node.Tag = obj3.Layer;
                                 node.ExpandAll();
-                                node3 = new TreeNode(obj3.Name) {
+                                node3 = new TreeNode(obj3.Name)
+                                {
                                     Tag = obj3
                                 };
                                 if (node2 == null)
@@ -161,7 +164,8 @@ namespace Yutai.ArcGIS.Carto.UI
                                 this.objTree.Nodes.Add(node);
                                 node.Tag = obj3.Layer;
                                 node.ExpandAll();
-                                node3 = new TreeNode(obj3.Name) {
+                                node3 = new TreeNode(obj3.Name)
+                                {
                                     Tag = obj3
                                 };
                                 if (node2 == null)
@@ -182,7 +186,8 @@ namespace Yutai.ArcGIS.Carto.UI
                             this.objTree.Nodes.Add(node);
                             node.Tag = feature.Class;
                             node.ExpandAll();
-                            node3 = new TreeNode(feature.OID.ToString()) {
+                            node3 = new TreeNode(feature.OID.ToString())
+                            {
                                 Tag = feature
                             };
                             if (node2 == null)
@@ -202,7 +207,8 @@ namespace Yutai.ArcGIS.Carto.UI
                                 this.objTree.Nodes.Add(node);
                                 node.Tag = feature.Class;
                                 node.ExpandAll();
-                                node3 = new TreeNode(feature.OID.ToString()) {
+                                node3 = new TreeNode(feature.OID.ToString())
+                                {
                                     Tag = feature
                                 };
                                 if (node2 == null)
@@ -223,10 +229,13 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
-        private void method_1(IEnumRelationshipClass ienumRelationshipClass_0, IObject iobject_0, TreeNode treeNode_0, bool bool_3)
+        private void method_1(IEnumRelationshipClass ienumRelationshipClass_0, IObject iobject_0, TreeNode treeNode_0,
+            bool bool_3)
         {
             ienumRelationshipClass_0.Reset();
-            for (IRelationshipClass class2 = ienumRelationshipClass_0.Next(); class2 != null; class2 = ienumRelationshipClass_0.Next())
+            for (IRelationshipClass class2 = ienumRelationshipClass_0.Next();
+                class2 != null;
+                class2 = ienumRelationshipClass_0.Next())
             {
                 try
                 {
@@ -239,14 +248,18 @@ namespace Yutai.ArcGIS.Carto.UI
                     {
                         destinationClass = class2.OriginClass;
                     }
-                    TreeNode node = new TreeNode(destinationClass.AliasName) {
+                    TreeNode node = new TreeNode(destinationClass.AliasName)
+                    {
                         Tag = destinationClass
                     };
                     ISet objectsRelatedToObject = class2.GetObjectsRelatedToObject(iobject_0);
                     objectsRelatedToObject.Reset();
-                    for (IRowBuffer buffer = objectsRelatedToObject.Next() as IRowBuffer; buffer != null; buffer = objectsRelatedToObject.Next() as IRowBuffer)
+                    for (IRowBuffer buffer = objectsRelatedToObject.Next() as IRowBuffer;
+                        buffer != null;
+                        buffer = objectsRelatedToObject.Next() as IRowBuffer)
                     {
-                        TreeNode node2 = new TreeNode(buffer.get_Value(0).ToString()) {
+                        TreeNode node2 = new TreeNode(buffer.get_Value(0).ToString())
+                        {
                             Tag = buffer
                         };
                         node.Nodes.Add(node2);
@@ -494,7 +507,8 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
-        private void method_2(IRelationshipClass irelationshipClass_0, IObject iobject_0, TreeNode treeNode_0, bool bool_3)
+        private void method_2(IRelationshipClass irelationshipClass_0, IObject iobject_0, TreeNode treeNode_0,
+            bool bool_3)
         {
             try
             {
@@ -507,16 +521,20 @@ namespace Yutai.ArcGIS.Carto.UI
                 {
                     destinationClass = irelationshipClass_0.OriginClass;
                 }
-                TreeNode node = new TreeNode(destinationClass.AliasName) {
+                TreeNode node = new TreeNode(destinationClass.AliasName)
+                {
                     Tag = destinationClass
                 };
                 IEnumRelationship relationshipsForObject = irelationshipClass_0.GetRelationshipsForObject(iobject_0);
                 relationshipsForObject.Reset();
-                for (IRelationship relationship2 = relationshipsForObject.Next(); relationship2 != null; relationship2 = relationshipsForObject.Next())
+                for (IRelationship relationship2 = relationshipsForObject.Next();
+                    relationship2 != null;
+                    relationship2 = relationshipsForObject.Next())
                 {
                     if (relationship2.DestinationObject != null)
                     {
-                        TreeNode node2 = new TreeNode(relationship2.DestinationObject.OID.ToString()) {
+                        TreeNode node2 = new TreeNode(relationship2.DestinationObject.OID.ToString())
+                        {
                             Tag = relationship2.DestinationObject
                         };
                         node.Nodes.Add(node2);
@@ -551,7 +569,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 try
                 {
                     destinationClass = class3.DestinationClass;
-                    node = new TreeNode(destinationClass.AliasName) {
+                    node = new TreeNode(destinationClass.AliasName)
+                    {
                         Tag = destinationClass
                     };
                     relationshipsForObject = class3.GetRelationshipsForObject(ifeature_2);
@@ -561,7 +580,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     {
                         if (relationship2.DestinationObject != null)
                         {
-                            node2 = new TreeNode(relationship2.DestinationObject.OID.ToString()) {
+                            node2 = new TreeNode(relationship2.DestinationObject.OID.ToString())
+                            {
                                 Tag = relationship2.DestinationObject
                             };
                             node.Nodes.Add(node2);
@@ -583,16 +603,20 @@ namespace Yutai.ArcGIS.Carto.UI
             for (class3 = class2.Next(); class3 != null; class3 = class2.Next())
             {
                 destinationClass = class3.OriginClass;
-                node = new TreeNode(destinationClass.AliasName) {
+                node = new TreeNode(destinationClass.AliasName)
+                {
                     Tag = destinationClass
                 };
                 relationshipsForObject = class3.GetRelationshipsForObject(ifeature_2);
                 relationshipsForObject.Reset();
-                for (relationship2 = relationshipsForObject.Next(); relationship2 != null; relationship2 = relationshipsForObject.Next())
+                for (relationship2 = relationshipsForObject.Next();
+                    relationship2 != null;
+                    relationship2 = relationshipsForObject.Next())
                 {
                     if (relationship2.OriginObject != null)
                     {
-                        node2 = new TreeNode(relationship2.OriginObject.OID.ToString()) {
+                        node2 = new TreeNode(relationship2.OriginObject.OID.ToString())
+                        {
                             Tag = relationship2.OriginObject
                         };
                         node.Nodes.Add(node2);
@@ -718,7 +742,8 @@ namespace Yutai.ArcGIS.Carto.UI
                         }
                         else if (field.Type == esriFieldType.esriFieldTypeOID)
                         {
-                            this.Infolist.Items[this.Infolist.Items.Count - 1].SubItems.Add(iobject_0.get_Value(num).ToString());
+                            this.Infolist.Items[this.Infolist.Items.Count - 1].SubItems.Add(
+                                iobject_0.get_Value(num).ToString());
                         }
                         else
                         {
@@ -749,7 +774,8 @@ namespace Yutai.ArcGIS.Carto.UI
                         }
                         else if (field.Type == esriFieldType.esriFieldTypeOID)
                         {
-                            this.Infolist.Items[this.Infolist.Items.Count - 1].SubItems.Add(row.get_Value(num).ToString());
+                            this.Infolist.Items[this.Infolist.Items.Count - 1].SubItems.Add(
+                                row.get_Value(num).ToString());
                         }
                         else
                         {
@@ -875,7 +901,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 {
                     this.method_9(layer as ICompositeLayer, ref int_0, ref int_1);
                 }
-                else if ((((layer is IFeatureLayer) || (layer is IRasterLayer)) || (layer is IMapServerLayer)) && this.method_10(layer))
+                else if ((((layer is IFeatureLayer) || (layer is IRasterLayer)) || (layer is IMapServerLayer)) &&
+                         this.method_10(layer))
                 {
                     this.combLayer.Properties.Items.Add(new LayerObject(layer));
                     int_0++;
@@ -1079,7 +1106,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 {
                     if (this.ipoint_0 != null)
                     {
-                        string str = "位置：(" + this.ipoint_0.X.ToString("#.#####") + ", " + this.ipoint_0.Y.ToString("#.#####") + ")";
+                        string str = "位置：(" + this.ipoint_0.X.ToString("#.#####") + ", " +
+                                     this.ipoint_0.Y.ToString("#.#####") + ")";
                         this.txtPos.Text = str;
                     }
                     else
@@ -1124,18 +1152,12 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public ILayer CurrentLayer
         {
-            set
-            {
-                this.ilayer_0 = value;
-            }
+            set { this.ilayer_0 = value; }
         }
 
         public DockingStyle DefaultDockingStyle
         {
-            get
-            {
-                return DockingStyle.Right;
-            }
+            get { return DockingStyle.Right; }
         }
 
         public IBasicMap FocusMap
@@ -1150,10 +1172,14 @@ namespace Yutai.ArcGIS.Carto.UI
                 try
                 {
                     this.iactiveViewEvents_Event_0 = value as ESRI.ArcGIS.Carto.IActiveViewEvents_Event;
-                    this.iactiveViewEvents_Event_0.ItemAdded+=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemAddedEventHandler(this.method_14));
-                    this.iactiveViewEvents_Event_0.ItemDeleted+=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemDeletedEventHandler(this.method_15));
-                    this.iactiveViewEvents_Event_0.ItemReordered+=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemReorderedEventHandler(this.method_16));
-                    this.iactiveViewEvents_Event_0.ContentsCleared+=(new ESRI.ArcGIS.Carto.IActiveViewEvents_ContentsClearedEventHandler(this.method_17));
+                    this.iactiveViewEvents_Event_0.ItemAdded +=
+                        (new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemAddedEventHandler(this.method_14));
+                    this.iactiveViewEvents_Event_0.ItemDeleted +=
+                        (new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemDeletedEventHandler(this.method_15));
+                    this.iactiveViewEvents_Event_0.ItemReordered +=
+                        (new ESRI.ArcGIS.Carto.IActiveViewEvents_ItemReorderedEventHandler(this.method_16));
+                    this.iactiveViewEvents_Event_0.ContentsCleared +=
+                        (new ESRI.ArcGIS.Carto.IActiveViewEvents_ContentsClearedEventHandler(this.method_17));
                     if (this.bool_2)
                     {
                         this.bool_2 = false;
@@ -1170,42 +1196,27 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IList<string> IdentifyLayers
         {
-            set
-            {
-                this.ilist_0 = value;
-            }
+            set { this.ilist_0 = value; }
         }
 
         public IdentifyTypeEnum IdentifyType
         {
-            set
-            {
-                this.identifyTypeEnum_0 = value;
-            }
+            set { this.identifyTypeEnum_0 = value; }
         }
 
         public bool IsIdentify
         {
-            set
-            {
-                this.bool_1 = value;
-            }
+            set { this.bool_1 = value; }
         }
 
         string IDockContent.Name
         {
-            get
-            {
-                return base.Name;
-            }
+            get { return base.Name; }
         }
 
         int IDockContent.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public delegate void IdentifyLayerChangedHandler(object object_0, object object_1);
@@ -1213,4 +1224,3 @@ namespace Yutai.ArcGIS.Carto.UI
         public delegate void IdentifyTypeChangedHandler(object object_0, object object_1);
     }
 }
-

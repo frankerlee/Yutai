@@ -15,7 +15,6 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Plugins.Identifer.Commands
 {
-   
     public class CmdViewIdentifier : YutaiTool
     {
         private IEnvelope _envelope;
@@ -26,7 +25,7 @@ namespace Yutai.Plugins.Identifer.Commands
         private bool _inIdentify;
         private DockPanelService _dockService;
 
-        public CmdViewIdentifier(IAppContext context,IdentifierPlugin plugin)
+        public CmdViewIdentifier(IAppContext context, IdentifierPlugin plugin)
         {
             OnCreate(context);
             _plugin = plugin;
@@ -46,7 +45,6 @@ namespace Yutai.Plugins.Identifer.Commands
                 _dockService.Show();
                 return;
             }
-
         }
 
         public override bool Deactivate()
@@ -66,7 +64,9 @@ namespace Yutai.Plugins.Identifer.Commands
             base.m_caption = "查看地图要素";
             base.m_category = "View";
             base.m_bitmap = Properties.Resources.icon_identify;
-            base.m_cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.Plugins.Identifer.Resources.Identify.cur"));
+            base.m_cursor =
+                new Cursor(
+                    base.GetType().Assembly.GetManifestResourceStream("Yutai.Plugins.Identifer.Resources.Identify.cur"));
             base.m_name = "View_Identify";
             base._key = "View_Identify";
             base.m_toolTip = "查看地图要素";
@@ -88,7 +88,7 @@ namespace Yutai.Plugins.Identifer.Commands
         {
             if (this._inIdentify)
             {
-                IActiveView focusMap = (IActiveView)_context.MapControl.ActiveView;
+                IActiveView focusMap = (IActiveView) _context.MapControl.ActiveView;
                 if (_envelopeFeedback == null)
                 {
                     _envelopeFeedback = new NewEnvelopeFeedback()
@@ -107,23 +107,20 @@ namespace Yutai.Plugins.Identifer.Commands
             if (this._inIdentify)
             {
                 this._inIdentify = false;
-                IActiveView focusMap = (IActiveView)_context.MapControl.ActiveView;
+                IActiveView focusMap = (IActiveView) _context.MapControl.ActiveView;
                 if (this._envelopeFeedback != null)
                 {
                     extent = this._envelopeFeedback.Stop();
                 }
                 else
                 {
-
                     IPoint point =
                         _context.MapControl.ActiveView.ScreenDisplay.DisplayTransformation.ToMapPoint(x, y) as IPoint;
                     extent = point.Envelope;
-
                 }
-               
+
                 this._envelopeFeedback = null;
                 _plugin.FireMapIdentifying(new MapIdentifyArgs(extent));
-                
             }
         }
     }

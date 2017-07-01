@@ -6,7 +6,7 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using Yutai.ArcGIS.Common.BaseClasses;
 using Yutai.ArcGIS.Framework.Docking;
-using Editor2=Yutai.ArcGIS.Common.Editor;
+using Editor2 = Yutai.ArcGIS.Common.Editor;
 
 namespace Yutai.ArcGIS.Controls.Controls
 {
@@ -20,10 +20,13 @@ namespace Yutai.ArcGIS.Controls.Controls
         public MapFrame()
         {
             this.InitializeComponent();
-            this.axPageLayoutControl.OnPageLayoutReplaced += new IPageLayoutControlEvents_Ax_OnPageLayoutReplacedEventHandler(this.axPageLayoutControl_OnPageLayoutReplaced);
+            this.axPageLayoutControl.OnPageLayoutReplaced +=
+                new IPageLayoutControlEvents_Ax_OnPageLayoutReplacedEventHandler(
+                    this.axPageLayoutControl_OnPageLayoutReplaced);
         }
 
-        private void axPageLayoutControl_OnPageLayoutReplaced(object sender, IPageLayoutControlEvents_OnPageLayoutReplacedEvent e)
+        private void axPageLayoutControl_OnPageLayoutReplaced(object sender,
+            IPageLayoutControlEvents_OnPageLayoutReplacedEvent e)
         {
             int num;
             IMap focusMap = this.axPageLayoutControl.ActiveView.FocusMap;
@@ -60,7 +63,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             this.axMapControl.ActiveView.Refresh();
         }
 
- private void MapFrame_Load(object sender, EventArgs e)
+        private void MapFrame_Load(object sender, EventArgs e)
         {
             DocumentManager.Register(this.axPageLayoutControl.Object);
             this.axMapControl.ShowMapTips = true;
@@ -76,7 +79,8 @@ namespace Yutai.ArcGIS.Controls.Controls
                 Editor2.Editor.EditWorkspace.HasEdits(ref hasEdits);
                 if (hasEdits)
                 {
-                    DialogResult result = MessageBox.Show("数据已经被修改过，保存修改吗?", "更改提示", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                    DialogResult result = MessageBox.Show("数据已经被修改过，保存修改吗?", "更改提示", MessageBoxButtons.YesNoCancel,
+                        MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
                         Editor2.Editor.EditWorkspace.StopEditing(true);
@@ -127,27 +131,14 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         public AxMapControl MapControl
         {
-            get
-            {
-                return this.axMapControl;
-            }
-            set
-            {
-                this.axMapControl = value;
-            }
+            get { return this.axMapControl; }
+            set { this.axMapControl = value; }
         }
 
         public AxPageLayoutControl PageLayoutControl
         {
-            get
-            {
-                return this.axPageLayoutControl;
-            }
-            set
-            {
-                this.axPageLayoutControl = value;
-            }
+            get { return this.axPageLayoutControl; }
+            set { this.axPageLayoutControl = value; }
         }
     }
 }
-

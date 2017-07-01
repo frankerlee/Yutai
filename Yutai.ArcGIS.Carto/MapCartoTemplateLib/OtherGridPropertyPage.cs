@@ -26,15 +26,18 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         public OtherGridPropertyPage()
         {
             this.InitializeComponent();
-            SimpleMarkerSymbolClass class2 = new SimpleMarkerSymbolClass {
+            SimpleMarkerSymbolClass class2 = new SimpleMarkerSymbolClass
+            {
                 Style = esriSimpleMarkerStyle.esriSMSCross,
                 Size = 28.0
             };
             this.imarkerSymbol_0 = class2;
-            CartographicLineSymbolClass class3 = new CartographicLineSymbolClass {
+            CartographicLineSymbolClass class3 = new CartographicLineSymbolClass
+            {
                 Cap = esriLineCapStyle.esriLCSSquare
             };
-            RgbColorClass class4 = new RgbColorClass {
+            RgbColorClass class4 = new RgbColorClass
+            {
                 Red = 0,
                 Blue = 0,
                 Green = 0
@@ -67,7 +70,9 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 this.mapTemplate_0.BigFontSize = double.Parse(this.cboFontSize.Text);
                 this.mapTemplate_0.SmallFontSize = this.mapTemplate_0.BigFontSize + 3.0;
                 this.mapTemplate_0.FontName = this.cboFontName.Text;
-                this.mapTemplate_0.AnnoUnit = (this.cboAnnoUnit.SelectedIndex == 0) ? esriUnits.esriMeters : esriUnits.esriKilometers;
+                this.mapTemplate_0.AnnoUnit = (this.cboAnnoUnit.SelectedIndex == 0)
+                    ? esriUnits.esriMeters
+                    : esriUnits.esriKilometers;
                 this.mapTemplate_0.AnnoUnitZoomScale = Convert.ToDouble(this.txtAnnUnitScale.Text);
                 this.MapTemplate.DrawCornerShortLine = this.chkDrawCornerShortLine.Checked;
                 this.MapTemplate.DrawRoundText = this.chkRoundText.Checked;
@@ -185,7 +190,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
- private void method_0()
+        private void method_0()
         {
             this.btnStyle.Style = this.mapTemplate_0.GridSymbol;
             if (this.mapTemplate_0.GridSymbol is IMarkerSymbol)
@@ -319,50 +324,29 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public MapCartoTemplateLib.MapTemplate MapTemplate
         {
-            get
-            {
-                return this.mapTemplate_0;
-            }
-            set
-            {
-                this.mapTemplate_0 = value;
-            }
+            get { return this.mapTemplate_0; }
+            set { this.mapTemplate_0 = value; }
         }
 
         public string Title
         {
-            get
-            {
-                return "其他";
-            }
-            set
-            {
-            }
+            get { return "其他"; }
+            set { }
         }
     }
 }
-

@@ -82,7 +82,7 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
             this.dockState_0.Container.Hide();
         }
 
- private Rectangle method_0(Control control_0)
+        private Rectangle method_0(Control control_0)
         {
             Rectangle bounds = control_0.Bounds;
             if (control_0.Parent != null)
@@ -90,7 +90,7 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
                 bounds = control_0.Parent.RectangleToScreen(bounds);
             }
             Rectangle clientRectangle = control_0.ClientRectangle;
-            int num = (bounds.Width - clientRectangle.Width) / 2;
+            int num = (bounds.Width - clientRectangle.Width)/2;
             bounds.X += num;
             bounds.Y += (bounds.Height - clientRectangle.Height) - num;
             if (!this.bool_3)
@@ -134,8 +134,8 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
         {
             Rectangle rectangle = this.method_0(control_0);
             Rectangle rectangle2 = rectangle;
-            float num = ((float) (point_0.X - rectangle.Left)) / ((float) rectangle.Width);
-            float num2 = ((float) (point_0.Y - rectangle.Top)) / ((float) rectangle.Height);
+            float num = ((float) (point_0.X - rectangle.Left))/((float) rectangle.Width);
+            float num2 = ((float) (point_0.Y - rectangle.Top))/((float) rectangle.Height);
             this.dockExtender_0.Overlay.Dock = DockStyle.None;
             if ((((num > 0f) && (num < num2)) && ((num < 0.25) && (num2 < 0.75))) && (num2 > 0.25))
             {
@@ -288,13 +288,15 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
             {
                 this.dockState_0.OrgDockStyle = DockStyle.Bottom;
                 this.dockExtender_0.Overlay.Dock = DockStyle.Bottom;
-                rectangle5 = this.method_2(point_0, (control_0 as ToolStripContainer).BottomToolStripPanel, DockStyle.Bottom);
+                rectangle5 = this.method_2(point_0, (control_0 as ToolStripContainer).BottomToolStripPanel,
+                    DockStyle.Bottom);
             }
             else if (rectangle3.Contains(point_0))
             {
                 this.dockState_0.OrgDockStyle = DockStyle.Right;
                 this.dockExtender_0.Overlay.Dock = DockStyle.Right;
-                rectangle5 = this.method_2(point_0, (control_0 as ToolStripContainer).RightToolStripPanel, DockStyle.Right);
+                rectangle5 = this.method_2(point_0, (control_0 as ToolStripContainer).RightToolStripPanel,
+                    DockStyle.Right);
             }
             else if (rectangle4.Contains(point_0))
             {
@@ -437,7 +439,8 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
             {
                 this.dockState_0.Container.BringToFront();
             }
-            if (((this.dockState_0.Splitter != null) && (this.dockState_0.OrgDockStyle != DockStyle.Fill)) && (this.dockState_0.OrgDockStyle != DockStyle.None))
+            if (((this.dockState_0.Splitter != null) && (this.dockState_0.OrgDockStyle != DockStyle.Fill)) &&
+                (this.dockState_0.OrgDockStyle != DockStyle.None))
             {
                 this.dockState_0.Splitter.Parent = this.dockState_0.OrgDockingParent;
                 this.dockState_0.Splitter.Dock = this.dockState_0.OrgDockStyle;
@@ -527,7 +530,8 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
             if (this.dockExtender_0.Overlay.Visible && (this.dockExtender_0.Overlay.DockHostControl != null))
             {
                 this.dockState_0.OrgDockingParent = this.dockExtender_0.Overlay.DockHostControl;
-                this.dockState_0.OrgBounds = this.dockState_0.Container.RectangleToClient(this.dockExtender_0.Overlay.Bounds);
+                this.dockState_0.OrgBounds =
+                    this.dockState_0.Container.RectangleToClient(this.dockExtender_0.Overlay.Bounds);
                 this.dockState_0.OrgDockStyle = this.dockExtender_0.Overlay.Dock;
                 this.dockExtender_0.Overlay.Hide();
                 this.method_7();
@@ -539,6 +543,7 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
 
         [DllImport("User32.dll")]
         private static extern int SendMessage(int int_0, int int_1, int int_2, int int_3);
+
         public void Show()
         {
             if (!(base.Visible || !this.bool_1))
@@ -564,43 +569,24 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
 
         public bool DockOnHostOnly
         {
-            get
-            {
-                return this.bool_2;
-            }
-            set
-            {
-                this.bool_2 = value;
-            }
+            get { return this.bool_2; }
+            set { this.bool_2 = value; }
         }
 
         public bool DockOnInside
         {
-            get
-            {
-                return this.bool_3;
-            }
-            set
-            {
-                this.bool_3 = value;
-            }
+            get { return this.bool_3; }
+            set { this.bool_3 = value; }
         }
 
         internal DockState DockState
         {
-            get
-            {
-                return this.dockState_0;
-            }
+            get { return this.dockState_0; }
         }
 
         public bool IsFloating
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
     }
 }
-

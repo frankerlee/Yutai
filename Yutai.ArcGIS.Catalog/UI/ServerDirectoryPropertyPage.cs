@@ -12,7 +12,6 @@ namespace Yutai.ArcGIS.Catalog.UI
 {
     public partial class ServerDirectoryPropertyPage : UserControl
     {
-        [CompilerGenerated]
         private IContainer icontainer_0 = null;
 
         public ServerDirectoryPropertyPage()
@@ -22,7 +21,8 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         private void cboDirectoryType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            IEnumServerDirectory serverDirectories = this.AGSServerConnectionAdmin.ServerObjectAdmin.GetServerDirectories();
+            IEnumServerDirectory serverDirectories =
+                this.AGSServerConnectionAdmin.ServerObjectAdmin.GetServerDirectories();
             serverDirectories.Reset();
             IServerDirectory directory2 = serverDirectories.Next();
             this.lstDir.Items.Clear();
@@ -49,7 +49,8 @@ namespace Yutai.ArcGIS.Catalog.UI
                         this.lstDir.Items.Add(this.method_0(directory2));
                     }
                 }
-                else if ((this.cboDirectoryType.SelectedIndex == 3) && ((directory2 as IServerDirectory2).Type == esriServerDirectoryType.esriSDTypeSystem))
+                else if ((this.cboDirectoryType.SelectedIndex == 3) &&
+                         ((directory2 as IServerDirectory2).Type == esriServerDirectoryType.esriSDTypeSystem))
                 {
                     this.lstDir.Items.Add(this.method_0(directory2));
                 }
@@ -57,13 +58,13 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
         }
 
- private ListViewItem method_0(IServerDirectory iserverDirectory_0)
+        private ListViewItem method_0(IServerDirectory iserverDirectory_0)
         {
             string[] items = new string[2];
-            string[] strArray2 = iserverDirectory_0.URL.Split(new char[] { '/' });
+            string[] strArray2 = iserverDirectory_0.URL.Split(new char[] {'/'});
             items[0] = strArray2[strArray2.Length - 1];
             items[1] = iserverDirectory_0.Path;
-            return new ListViewItem(items) { Tag = iserverDirectory_0 };
+            return new ListViewItem(items) {Tag = iserverDirectory_0};
         }
 
         private void ServerDirectoryPropertyPage_Load(object sender, EventArgs e)
@@ -71,19 +72,6 @@ namespace Yutai.ArcGIS.Catalog.UI
             this.cboDirectoryType_SelectedIndexChanged(this, e);
         }
 
-        public IAGSServerConnectionAdmin AGSServerConnectionAdmin
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.iagsserverConnectionAdmin_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.iagsserverConnectionAdmin_0 = value;
-            }
-        }
+        public IAGSServerConnectionAdmin AGSServerConnectionAdmin { get; set; }
     }
 }
-

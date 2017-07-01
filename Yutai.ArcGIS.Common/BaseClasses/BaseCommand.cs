@@ -24,14 +24,14 @@ namespace Yutai.ArcGIS.Common.BaseClasses
         protected BaseCommand(IAppContext context)
         {
             this.m_HookHelper = context as IYTHookHelper;
-            
+
             this.uint_0 = 2147942487;
             this.m_enabled = true;
         }
 
-        protected BaseCommand(System.Drawing.Bitmap bitmap_0, string string_0, string string_1, int int_0, string string_2, string string_3, string string_4, string string_5)
+        protected BaseCommand(System.Drawing.Bitmap bitmap_0, string string_0, string string_1, int int_0,
+            string string_2, string string_3, string string_4, string string_5)
         {
-            
             this.uint_0 = 2147942487;
             this.m_enabled = true;
             this.m_bitmap = bitmap_0;
@@ -46,6 +46,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
 
         [DllImport("gdi32.dll")]
         private static extern bool DeleteObject(IntPtr intptr_1);
+
         ~BaseCommand()
         {
             if (this.intptr_0.ToInt32() != 0)
@@ -113,10 +114,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
 
         public virtual string Caption
         {
-            get
-            {
-                return this.m_caption;
-            }
+            get { return this.m_caption; }
         }
 
         public virtual string Category
@@ -133,67 +131,42 @@ namespace Yutai.ArcGIS.Common.BaseClasses
 
         public virtual bool Checked
         {
-            get
-            {
-                return this.m_checked;
-            }
+            get { return this.m_checked; }
         }
 
         public virtual bool Enabled
         {
-            get
-            {
-                return this.m_enabled;
-            }
+            get { return this.m_enabled; }
         }
 
         public virtual int HelpContextID
         {
-            get
-            {
-                return this.m_helpID;
-            }
+            get { return this.m_helpID; }
         }
 
         public virtual string HelpFile
         {
-            get
-            {
-                return this.m_helpFile;
-            }
+            get { return this.m_helpFile; }
         }
 
         protected IYTHookHelper HookHelper
         {
-            get
-            {
-                return this.m_HookHelper;
-            }
+            get { return this.m_HookHelper; }
         }
 
         public virtual string Message
         {
-            get
-            {
-                return this.m_message;
-            }
+            get { return this.m_message; }
         }
 
         public virtual string Name
         {
-            get
-            {
-                return this.m_name;
-            }
+            get { return this.m_name; }
         }
 
         public virtual string Tooltip
         {
-            get
-            {
-                return this.m_toolTip;
-            }
+            get { return this.m_toolTip; }
         }
     }
 }
-

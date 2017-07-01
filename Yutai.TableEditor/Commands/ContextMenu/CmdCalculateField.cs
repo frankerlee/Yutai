@@ -23,6 +23,7 @@ namespace Yutai.Plugins.TableEditor.Commands.ContextMenu
     public class CmdCalculateField : YutaiCommand
     {
         private CompContextMenuStrip _menuStrip;
+
         public CmdCalculateField(IAppContext context, CompContextMenuStrip menuStrip)
         {
             _context = context;

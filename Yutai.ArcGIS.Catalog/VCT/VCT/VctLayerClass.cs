@@ -121,7 +121,8 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                         s = this.method_1(ref this.streamReader_0);
                     }
                     str2 = this.method_1(ref this.streamReader_0);
-                    if (this.vctClass_0.FindLayerIndex(str2, CoLayerType.Line) != this.vctClass_0.FindLayerIndexByName(base.XpgisLayer.Name))
+                    if (this.vctClass_0.FindLayerIndex(str2, CoLayerType.Line) !=
+                        this.vctClass_0.FindLayerIndexByName(base.XpgisLayer.Name))
                     {
                         return -1;
                     }
@@ -163,11 +164,14 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                         this.streamReader_0 = this.vctClass_0.CreateReader(this.long_0 - 1L);
                         this.long_3 = this.long_0 - 1L;
                     }
-                    for (s = this.method_1(ref this.streamReader_0); s.Length <= 0; s = this.method_1(ref this.streamReader_0))
+                    for (s = this.method_1(ref this.streamReader_0);
+                        s.Length <= 0;
+                        s = this.method_1(ref this.streamReader_0))
                     {
                     }
                     str2 = this.method_1(ref this.streamReader_0);
-                    if (this.vctClass_0.FindLayerIndex(str2, CoLayerType.Region) != this.vctClass_0.FindLayerIndexByName(base.XpgisLayer.Name))
+                    if (this.vctClass_0.FindLayerIndex(str2, CoLayerType.Region) !=
+                        this.vctClass_0.FindLayerIndexByName(base.XpgisLayer.Name))
                     {
                         return -1;
                     }
@@ -185,15 +189,18 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                             num4 = 0;
                             int.TryParse(this.method_1(ref this.streamReader_0).Trim(), out num4);
                             int num5 = 0;
-                            num5 = num4 / 8;
-                            if ((num4 % 8) > 0)
+                            num5 = num4/8;
+                            if ((num4%8) > 0)
                             {
                                 num5++;
                             }
                             (feature as CoPolygonFeature).Points.Add(new CoPointCollection());
                             for (num3 = 0; num3 < num5; num3++)
                             {
-                                foreach (string str6 in this.method_1(ref this.streamReader_0).Split(new char[] { this.vctClass_0.Separator }))
+                                foreach (
+                                    string str6 in
+                                    this.method_1(ref this.streamReader_0).Split(new char[] {this.vctClass_0.Separator})
+                                )
                                 {
                                     int num7 = 0;
                                     int.TryParse(str6.Trim(), out num7);
@@ -204,14 +211,16 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                                         {
                                             foreach (CoPointClass class4 in points3)
                                             {
-                                                (feature as CoPolygonFeature).Points[(feature as CoPolygonFeature).Points.Count - 1].Add(class4);
+                                                (feature as CoPolygonFeature).Points[
+                                                    (feature as CoPolygonFeature).Points.Count - 1].Add(class4);
                                             }
                                         }
                                         else if (num7 < 0)
                                         {
                                             for (int i = points3.Count - 1; i > -1; i--)
                                             {
-                                                (feature as CoPolygonFeature).Points[(feature as CoPolygonFeature).Points.Count - 1].Add(points3[i]);
+                                                (feature as CoPolygonFeature).Points[
+                                                    (feature as CoPolygonFeature).Points.Count - 1].Add(points3[i]);
                                             }
                                         }
                                     }
@@ -244,7 +253,8 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                                     this.long_0 = this.long_3;
                                     return -2;
                                 }
-                                (feature as CoPolygonFeature).Points[(feature as CoPolygonFeature).Points.Count - 1].Add(class4);
+                                (feature as CoPolygonFeature).Points[(feature as CoPolygonFeature).Points.Count - 1].Add
+                                    (class4);
                                 num3++;
                             }
                             int.TryParse(this.method_1(ref this.streamReader_0).Trim(), out num4);
@@ -267,14 +277,16 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                         s = this.streamReader_0.ReadLine();
                     }
                     str2 = this.method_1(ref this.streamReader_0);
-                    if (this.vctClass_0.FindLayerIndex(str2, CoLayerType.Annotation) != this.vctClass_0.FindLayerIndexByName(base.XpgisLayer.Name))
+                    if (this.vctClass_0.FindLayerIndex(str2, CoLayerType.Annotation) !=
+                        this.vctClass_0.FindLayerIndexByName(base.XpgisLayer.Name))
                     {
                         return -1;
                     }
                     this.method_1(ref this.streamReader_0);
                     str7 = this.method_1(ref this.streamReader_0).Trim();
                     color = this.vctClass_0.LineToColor(this.method_1(ref this.streamReader_0).Trim());
-                    string[] strArray4 = this.method_1(ref this.streamReader_0).Trim().Split(new char[] { this.vctClass_0.Separator });
+                    string[] strArray4 =
+                        this.method_1(ref this.streamReader_0).Trim().Split(new char[] {this.vctClass_0.Separator});
                     int num9 = 0;
                     int.TryParse(strArray4[0].Trim(), out num9);
                     uint num10 = 0;
@@ -327,7 +339,7 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                 this.long_0 = this.long_3;
                 return -2;
             }
-        Label_034A:
+            Label_034A:
             feature = new CoPointFeature(base.XpgisLayer);
             s = string.Empty;
             if (this.streamReader_0 == null)
@@ -341,7 +353,8 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                 s = this.method_1(ref this.streamReader_0);
             }
             str2 = this.method_1(ref this.streamReader_0);
-            if (this.vctClass_0.FindLayerIndex(str2, CoLayerType.Point) != this.vctClass_0.FindLayerIndexByName(base.XpgisLayer.Name))
+            if (this.vctClass_0.FindLayerIndex(str2, CoLayerType.Point) !=
+                this.vctClass_0.FindLayerIndexByName(base.XpgisLayer.Name))
             {
                 return -1;
             }
@@ -359,7 +372,7 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
             }
             (feature as CoPointFeature).Point.Add(class2);
             feature.OID = int.Parse(s);
-        Label_0AA8:
+            Label_0AA8:
             if (feature != null)
             {
                 str3 = string.Empty;
@@ -368,7 +381,7 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                     this.streamReader_1 = this.vctClass_0.CreateReader(this.long_2 - 1L);
                     this.long_4 = this.long_2 - 1L;
                 }
-                strArray = this.method_1(ref this.streamReader_1).Split(new char[] { this.vctClass_0.Separator });
+                strArray = this.method_1(ref this.streamReader_1).Split(new char[] {this.vctClass_0.Separator});
                 StringBuilder builder = new StringBuilder();
                 string str10 = string.Empty;
                 for (num3 = 0; num3 < feature.Values.Length; num3++)
@@ -419,11 +432,7 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
 
         public override int FeatureCount
         {
-            get
-            {
-                return this.vctClass_0.GetLayerFeatureCount(base.XpgisLayer);
-            }
+            get { return this.vctClass_0.GetLayerFeatureCount(base.XpgisLayer); }
         }
     }
 }
-

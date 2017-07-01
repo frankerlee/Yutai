@@ -76,7 +76,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             }
         }
 
- public void InitControl()
+        public void InitControl()
         {
             this.bool_0 = false;
             if (this.itextSymbol_0 == null)
@@ -96,7 +96,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             this.bool_0 = true;
         }
 
- private void LegendTitleUserControl_Load(object sender, EventArgs e)
+        private void LegendTitleUserControl_Load(object sender, EventArgs e)
         {
             this.memoEditTitle.Text = this.ilegend_0.Title;
             this.InitControl();
@@ -131,7 +131,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         private void method_1(uint uint_0, out int int_0, out int int_1, out int int_2)
         {
             uint num = uint_0 & 16711680;
-             int_2 = (int) (num >> 16);
+            int_2 = (int) (num >> 16);
             num = uint_0 & 65280;
             int_1 = (int) (num >> 8);
             num = uint_0 & 255;
@@ -143,7 +143,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             uint num = 0;
             num = (uint) (0 | int_2);
             num = num << 8;
-            num |=(uint) int_1;
+            num |= (uint) int_1;
             num = num << 8;
             return (int) (num | int_0);
         }
@@ -184,4 +184,3 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         }
     }
 }
-

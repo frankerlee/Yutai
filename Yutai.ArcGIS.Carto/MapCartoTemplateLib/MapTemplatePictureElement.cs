@@ -8,9 +8,6 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 {
     public class MapTemplatePictureElement : MapTemplateElement
     {
-        [CompilerGenerated]
-        private string string_1;
-
         public MapTemplatePictureElement(MapTemplate mapTemplate_1) : base(mapTemplate_1)
         {
             base.MapTemplateElementType = MapTemplateElementType.PictureElement;
@@ -79,7 +76,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     goto Label_009C;
             }
             element2 = new PngPictureElementClass();
-        Label_009C:
+            Label_009C:
             (element2 as IPictureElement).ImportPictureFromFile(this.PitcuteFile);
             (element2 as IPictureElement).MaintainAspectRatio = true;
             double widthPoints = 0.0;
@@ -109,7 +106,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     if (!bounds.IsEmpty)
                     {
                         IEnvelope envelope2 = new EnvelopeClass();
-                        envelope2.PutCoords(position.X, position.Y, position.X + bounds.Width, position.Y + bounds.Height);
+                        envelope2.PutCoords(position.X, position.Y, position.X + bounds.Width,
+                            position.Y + bounds.Height);
                         base.m_pElement.Geometry = envelope2;
                     }
                 }
@@ -122,30 +120,12 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
-        public string PitcuteFile
-        {
-            [CompilerGenerated]
-            private get
-            {
-                return this.string_1;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.string_1 = value;
-            }
-        }
+        public string PitcuteFile { get; set; }
 
         protected override IPropertySet PropertySet
         {
-            get
-            {
-                return new PropertySetClass();
-            }
-            set
-            {
-            }
+            get { return new PropertySetClass(); }
+            set { }
         }
     }
 }
-

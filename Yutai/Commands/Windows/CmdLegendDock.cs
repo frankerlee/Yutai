@@ -26,7 +26,6 @@ namespace Yutai.Commands.Windows
             DockPanel dock = _context.DockPanels.GetDockPanel(MapLegendDockPanel.DefaultDockName);
             if (dock == null) return;
             dock.Visible = !dock.Visible;
-
         }
 
         public override void OnClick(object sender, EventArgs args)

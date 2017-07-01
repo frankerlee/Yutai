@@ -13,14 +13,15 @@ namespace Yutai.Plugins.Identifer.Commands
 {
     class CmdSelectByScreen : YutaiCommand
     {
-        
         private IdentifierPlugin _plugin;
+
         public override bool Enabled
         {
             get
             {
                 bool flag;
-                flag = (_context.MapControl.Map == null || _context.MapControl.Map.LayerCount <= 0 ? false : true); ;
+                flag = (_context.MapControl.Map == null || _context.MapControl.Map.LayerCount <= 0 ? false : true);
+                ;
                 return flag;
             }
         }
@@ -43,7 +44,6 @@ namespace Yutai.Plugins.Identifer.Commands
 
         public override void OnCreate(object hook)
         {
-
         }
 
         public override void OnClick()

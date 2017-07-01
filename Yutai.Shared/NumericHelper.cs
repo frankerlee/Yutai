@@ -18,7 +18,6 @@ namespace Yutai.Shared
 
         public static bool ParseDoubleInvariant(this string s, out double result)
         {
-            double val;
             return double.TryParse(s, NumberStyles.Any, CultureInfo.InvariantCulture, out result);
         }
 
@@ -64,13 +63,13 @@ namespace Yutai.Shared
 
         public static string FormatFileSize(double size)
         {
-            string[] sizes = { "B", "KB", "MB", "GB" };
-            
+            string[] sizes = {"B", "KB", "MB", "GB"};
+
             int order = 0;
             while (size >= 1024 && order + 1 < sizes.Length)
             {
                 order++;
-                size = size / 1024;
+                size = size/1024;
             }
 
             // Adjust the format string to your preferences. For example "{0:0.#}{1}" would

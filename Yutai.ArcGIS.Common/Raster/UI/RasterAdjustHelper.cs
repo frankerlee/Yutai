@@ -17,7 +17,7 @@ namespace Yutai.ArcGIS.Common.Raster.UI
         public IKHookHelper m_HookHelper = null;
         public static RasterAdjustHelper m_RasterAdjustHelper;
 
-        public static  event OnAddPointsHandler OnAddPoints;
+        public static event OnAddPointsHandler OnAddPoints;
 
         static RasterAdjustHelper()
         {
@@ -57,7 +57,8 @@ namespace Yutai.ArcGIS.Common.Raster.UI
             }
             else if (this.DestPointCollection.PointCount >= 3)
             {
-                proc.Warp(this.SourcePointCollection, this.DestPointCollection, this.GeoTransType, this.OperatorLayer.Raster);
+                proc.Warp(this.SourcePointCollection, this.DestPointCollection, this.GeoTransType,
+                    this.OperatorLayer.Raster);
             }
             proc.Register(this.OperatorLayer.Raster);
             proc = null;
@@ -123,79 +124,49 @@ namespace Yutai.ArcGIS.Common.Raster.UI
             this.SourcePointCollection.RemovePoints(0, this.SourcePointCollection.PointCount);
             if (this.m_HookHelper.FocusMap != null)
             {
-                (this.m_HookHelper.FocusMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeography, this.OperatorLayer, null);
+                (this.m_HookHelper.FocusMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeography,
+                    this.OperatorLayer, null);
             }
         }
 
         public bool AutoAdjust
         {
-            get
-            {
-                return this.bool_0;
-            }
-            set
-            {
-                this.bool_0 = value;
-            }
+            get { return this.bool_0; }
+            set { this.bool_0 = value; }
         }
 
         public IPointCollection DestPointCollection
         {
-            get
-            {
-                return this.ipointCollection_1;
-            }
+            get { return this.ipointCollection_1; }
         }
 
         public IMap FocusMap
         {
-            set
-            {
-                this.imap_0 = value;
-            }
+            set { this.imap_0 = value; }
         }
 
         public esriGeoTransTypeEnum GeoTransType
         {
-            get
-            {
-                return this.esriGeoTransTypeEnum_0;
-            }
-            set
-            {
-                this.esriGeoTransTypeEnum_0 = value;
-            }
+            get { return this.esriGeoTransTypeEnum_0; }
+            set { this.esriGeoTransTypeEnum_0 = value; }
         }
 
         public IRasterLayer OperatorLayer
         {
-            get
-            {
-                return this.irasterLayer_0;
-            }
-            set
-            {
-                this.irasterLayer_0 = value;
-            }
+            get { return this.irasterLayer_0; }
+            set { this.irasterLayer_0 = value; }
         }
 
         public static RasterAdjustHelper RasterAdjust
         {
-            get
-            {
-                return m_RasterAdjustHelper;
-            }
+            get { return m_RasterAdjustHelper; }
         }
 
         public IPointCollection SourcePointCollection
         {
-            get
-            {
-                return this.ipointCollection_0;
-            }
+            get { return this.ipointCollection_0; }
         }
 
         public delegate void OnAddPointsHandler(IPoint ipoint_0, IPoint ipoint_1);
     }
 }
-

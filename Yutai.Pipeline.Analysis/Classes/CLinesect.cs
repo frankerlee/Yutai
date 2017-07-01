@@ -74,14 +74,14 @@ namespace Yutai.Pipeline.Analysis.Classes
         {
             double num = this.gpoint_1.X - this.gpoint_0.X;
             double num2 = this.gpoint_1.Y - this.gpoint_0.Y;
-            return Math.Sqrt(num * num + num2 * num2);
+            return Math.Sqrt(num*num + num2*num2);
         }
 
         public double GetLength2()
         {
             double num = this.gpoint_1.X - this.gpoint_0.X;
             double num2 = this.gpoint_1.Y - this.gpoint_0.Y;
-            return num * num + num2 * num2;
+            return num*num + num2*num2;
         }
 
         public double GetAngle()
@@ -94,8 +94,8 @@ namespace Yutai.Pipeline.Analysis.Classes
         {
             return new GPoint
             {
-                X = (this.gpoint_0.X + this.gpoint_1.X) / 2.0,
-                Y = (this.gpoint_0.Y + this.gpoint_1.Y) / 2.0
+                X = (this.gpoint_0.X + this.gpoint_1.X)/2.0,
+                Y = (this.gpoint_0.Y + this.gpoint_1.Y)/2.0
             };
         }
 
@@ -147,7 +147,7 @@ namespace Yutai.Pipeline.Analysis.Classes
         {
             CVeObj cVeObj = new CVeObj(this.gpoint_0, tPoint);
             CVeObj cVeObj2 = new CVeObj(tPoint, this.gpoint_1);
-            return cVeObj.X * cVeObj2.Y - cVeObj2.X * cVeObj.Y < 1E-08;
+            return cVeObj.X*cVeObj2.Y - cVeObj2.X*cVeObj.Y < 1E-08;
         }
 
         public bool IsPtOnLineExt(double tX, double tY)
@@ -210,7 +210,7 @@ namespace Yutai.Pipeline.Analysis.Classes
             else
             {
                 double num = Math.Abs(cVeObj2.GetArrowProduct(cVeObj));
-                result = num / length;
+                result = num/length;
             }
             return result;
         }
@@ -222,12 +222,14 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         public long GetInterSectPointofTwoLinesect(CLinesect lnObj, ref GPoint ptInsect)
         {
-            return ApplyMath.GetInterSectPointofTwoLinesect(this.gpoint_0, this.gpoint_1, lnObj.GetFirstPt(), lnObj.GetSecondPt(), ref ptInsect);
+            return ApplyMath.GetInterSectPointofTwoLinesect(this.gpoint_0, this.gpoint_1, lnObj.GetFirstPt(),
+                lnObj.GetSecondPt(), ref ptInsect);
         }
 
         public long GetInterSectPointofTwoLinesectWithHeight(CLinesect lnObj, ref GPoint ptInsect)
         {
-            long interSectPointofTwoLinesect = ApplyMath.GetInterSectPointofTwoLinesect(this.gpoint_0, this.gpoint_1, lnObj.GetFirstPt(), lnObj.GetSecondPt(), ref ptInsect);
+            long interSectPointofTwoLinesect = ApplyMath.GetInterSectPointofTwoLinesect(this.gpoint_0, this.gpoint_1,
+                lnObj.GetFirstPt(), lnObj.GetSecondPt(), ref ptInsect);
             long result;
             if (interSectPointofTwoLinesect == 0L)
             {
@@ -236,10 +238,12 @@ namespace Yutai.Pipeline.Analysis.Classes
             else
             {
                 double z;
-                ApplyMath.GetPointOnLineZ(this.gpoint_0.X, this.gpoint_0.Y, this.gpoint_0.Z, this.gpoint_1.X, this.gpoint_1.Y, this.gpoint_1.Z, ptInsect.X, ptInsect.Y, out z);
+                ApplyMath.GetPointOnLineZ(this.gpoint_0.X, this.gpoint_0.Y, this.gpoint_0.Z, this.gpoint_1.X,
+                    this.gpoint_1.Y, this.gpoint_1.Z, ptInsect.X, ptInsect.Y, out z);
                 ptInsect.Z = z;
                 double m;
-                ApplyMath.GetPointOnLineZ(lnObj.gpoint_0.X, lnObj.gpoint_0.Y, lnObj.gpoint_0.Z, lnObj.gpoint_1.X, lnObj.gpoint_1.Y, lnObj.gpoint_1.Z, ptInsect.X, ptInsect.Y, out m);
+                ApplyMath.GetPointOnLineZ(lnObj.gpoint_0.X, lnObj.gpoint_0.Y, lnObj.gpoint_0.Z, lnObj.gpoint_1.X,
+                    lnObj.gpoint_1.Y, lnObj.gpoint_1.Z, ptInsect.X, ptInsect.Y, out m);
                 ptInsect.M = m;
                 result = 1L;
             }
@@ -248,7 +252,8 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         public long GetInterSectPointofTwoLinesectWithHeightForTranSect(CLinesect lnObj, ref GPoint ptInsect)
         {
-            long interSectPointofTwoLinesect = ApplyMath.GetInterSectPointofTwoLinesect(this.gpoint_0, this.gpoint_1, lnObj.GetFirstPt(), lnObj.GetSecondPt(), ref ptInsect);
+            long interSectPointofTwoLinesect = ApplyMath.GetInterSectPointofTwoLinesect(this.gpoint_0, this.gpoint_1,
+                lnObj.GetFirstPt(), lnObj.GetSecondPt(), ref ptInsect);
             long result;
             if (interSectPointofTwoLinesect == 0L)
             {
@@ -257,9 +262,11 @@ namespace Yutai.Pipeline.Analysis.Classes
             else
             {
                 double num;
-                ApplyMath.GetPointOnLineZ(lnObj.gpoint_0.X, lnObj.gpoint_0.Y, lnObj.gpoint_0.Z, lnObj.gpoint_1.X, lnObj.gpoint_1.Y, lnObj.gpoint_1.Z, ptInsect.X, ptInsect.Y, out num);
+                ApplyMath.GetPointOnLineZ(lnObj.gpoint_0.X, lnObj.gpoint_0.Y, lnObj.gpoint_0.Z, lnObj.gpoint_1.X,
+                    lnObj.gpoint_1.Y, lnObj.gpoint_1.Z, ptInsect.X, ptInsect.Y, out num);
                 ptInsect.Z = num;
-                ApplyMath.GetPointOnLineZ(lnObj.gpoint_0.X, lnObj.gpoint_0.Y, lnObj.gpoint_0.M, lnObj.gpoint_1.X, lnObj.gpoint_1.Y, lnObj.gpoint_1.M, ptInsect.X, ptInsect.Y, out num);
+                ApplyMath.GetPointOnLineZ(lnObj.gpoint_0.X, lnObj.gpoint_0.Y, lnObj.gpoint_0.M, lnObj.gpoint_1.X,
+                    lnObj.gpoint_1.Y, lnObj.gpoint_1.M, ptInsect.X, ptInsect.Y, out num);
                 ptInsect.M = num;
                 result = 1L;
             }

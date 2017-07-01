@@ -99,7 +99,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.m_SelectType = 0;
         }
 
- private void EditorEvent_OnStartEditing()
+        private void EditorEvent_OnStartEditing()
         {
             this.m_EditMap = this.m_pMap;
             this.m_CanEdit = true;
@@ -144,7 +144,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 else
                 {
                     List<object> list = new List<object>();
-                    UID uid = new UIDClass {
+                    UID uid = new UIDClass
+                    {
                         Value = "{6CA416B1-E160-11D2-9F4E-00C04F6BC78E}"
                     };
                     IEnumLayer layer2 = this.m_pMap.get_Layers(uid, true);
@@ -152,7 +153,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                     for (ILayer layer3 = layer2.Next(); layer3 != null; layer3 = layer2.Next())
                     {
                         IFeatureLayer layer = layer3 as IFeatureLayer;
-                        if (((layer != null) && Yutai.ArcGIS.Common.Editor.Editor.CheckLayerCanEdit(layer)) && ((layer as IFeatureSelection).SelectionSet.Count > 0))
+                        if (((layer != null) && Yutai.ArcGIS.Common.Editor.Editor.CheckLayerCanEdit(layer)) &&
+                            ((layer as IFeatureSelection).SelectionSet.Count > 0))
                         {
                             ICursor cursor;
                             list.Add(layer);
@@ -236,7 +238,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
- private void m_pActiveViewEvents_SelectionChanged()
+        private void m_pActiveViewEvents_SelectionChanged()
         {
             this.Init();
         }
@@ -257,10 +259,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         public DockingStyle DefaultDockingStyle
         {
-            get
-            {
-                return DockingStyle.Right;
-            }
+            get { return DockingStyle.Right; }
         }
 
         public IMap FocusMap
@@ -271,7 +270,9 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 {
                     try
                     {
-                        this.m_pActiveViewEvents.SelectionChanged-=(new IActiveViewEvents_SelectionChangedEventHandler(this.m_pActiveViewEvents_SelectionChanged));
+                        this.m_pActiveViewEvents.SelectionChanged -=
+                        (new IActiveViewEvents_SelectionChangedEventHandler(
+                            this.m_pActiveViewEvents_SelectionChanged));
                     }
                     catch
                     {
@@ -292,7 +293,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 if (this.m_pMap != null)
                 {
                     this.m_pActiveViewEvents = this.m_pMap as IActiveViewEvents_Event;
-                    this.m_pActiveViewEvents.SelectionChanged+=(new IActiveViewEvents_SelectionChangedEventHandler(this.m_pActiveViewEvents_SelectionChanged));
+                    this.m_pActiveViewEvents.SelectionChanged +=
+                        (new IActiveViewEvents_SelectionChangedEventHandler(this.m_pActiveViewEvents_SelectionChanged));
                     this.m_pAnnoEditControl.ActiveView = this.m_pMap as IActiveView;
                     this.m_pAttributeListControl.ActiveView = this.m_pMap as IActiveView;
                     this.m_pAttributeListControl1.ActiveView = this.m_pMap as IActiveView;
@@ -308,19 +310,12 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         string IDockContent.Name
         {
-            get
-            {
-                return base.Name;
-            }
+            get { return base.Name; }
         }
 
         int IDockContent.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
     }
 }
-

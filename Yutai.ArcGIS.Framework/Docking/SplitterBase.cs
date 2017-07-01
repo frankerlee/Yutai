@@ -33,10 +33,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         public override DockStyle Dock
         {
-            get
-            {
-                return base.Dock;
-            }
+            get { return base.Dock; }
             set
             {
                 base.SuspendLayout();
@@ -71,11 +68,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         protected virtual int SplitterSize
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
     }
 }
-

@@ -16,12 +16,13 @@ namespace Yutai.Plugins.TableEditor.Menu
     {
         public YutaiSeparatorCommand()
         {
-            
         }
+
         public YutaiSeparatorCommand(string key)
         {
             this._key = key;
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
         }

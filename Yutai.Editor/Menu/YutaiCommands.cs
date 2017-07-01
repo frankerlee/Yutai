@@ -32,7 +32,7 @@ namespace Yutai.Plugins.Editor.Menu
         public override IEnumerable<YutaiCommand> GetCommands()
         {
             //第一次被初始化的时候Plugin为空，出现错误，所以在创建菜单的时候重新进行了初始化。
-           
+
             try
             {
                 _commands = new List<YutaiCommand>()
@@ -108,9 +108,6 @@ namespace Yutai.Plugins.Editor.Menu
                     new CmdPolygonCutByPolygon(_context),
                     new CmdPolygonCutHollow(_context),
                     new CmdConstructParallel(_context),
-
-
-
                 };
             }
             catch (Exception ex)

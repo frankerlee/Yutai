@@ -10,15 +10,16 @@ namespace Yutai.Plugins.Services
         /// <summary>
         /// Broadcasts map event to all the listening plugins.
         /// </summary>
-       /* void BroadcastEvent<T>(Expression<Func<BasePlugin, MapEventHandler<T>>> eventHandler, IMuteMap sender, T args)
-            where T : EventArgs;
-
-        void BroadcastEvent<T>(Expression<Func<BasePlugin, LegendEventHandler<T>>> eventHandler, IMuteLegend sender, T args)
-            where T : EventArgs;*/
-
+        /* void BroadcastEvent<T>(Expression<Func<BasePlugin, MapEventHandler<T>>> eventHandler, IMuteMap sender, T args)
+             where T : EventArgs;
+ 
+         void BroadcastEvent<T>(Expression<Func<BasePlugin, LegendEventHandler<T>>> eventHandler, IMuteLegend sender, T args)
+             where T : EventArgs;*/
         void BroadcastEvent<T>(Expression<Func<BasePlugin, EventHandler<T>>> eventHandler, object sender, T args)
             where T : EventArgs;
-        void BroadcastEvent<T>(Expression<Func<BasePlugin, EventHandler<T>>> eventHandler, object sender, T args, PluginIdentity identity)
+
+        void BroadcastEvent<T>(Expression<Func<BasePlugin, EventHandler<T>>> eventHandler, object sender, T args,
+            PluginIdentity identity)
             where T : EventArgs;
 
         event EventHandler<EventArgs> ItemClicked;

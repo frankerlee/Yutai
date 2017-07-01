@@ -24,10 +24,9 @@ namespace Yutai.ArcGIS.Catalog.UI
         {
         }
 
- private void rdoTrue_CheckedChanged(object sender, EventArgs e)
+        private void rdoTrue_CheckedChanged(object sender, EventArgs e)
         {
             this.btnDirections.Enabled = this.rdoTrue.Checked;
         }
     }
 }
-

@@ -9,7 +9,7 @@ namespace Yutai.ArcGIS.Common.Helpers
         {
         }
 
-        public static IEnvelope GetIdentifyEnvelope(IEnvelope inGeom, double dist )
+        public static IEnvelope GetIdentifyEnvelope(IEnvelope inGeom, double dist)
         {
             if (inGeom.Width == 0 || inGeom.Height == 0)
             {
@@ -20,6 +20,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             }
             return inGeom;
         }
+
         public static void QueryGeometryLocation(IGeometry feaGeom, out double px, out double py)
         {
             px = double.NaN;

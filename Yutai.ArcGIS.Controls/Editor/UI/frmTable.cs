@@ -35,7 +35,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             for (int i = 0; i < pFields.FieldCount; i++)
             {
                 IField field = pFields.get_Field(i);
-                DataColumn column = new DataColumn(field.AliasName) {
+                DataColumn column = new DataColumn(field.AliasName)
+                {
                     Caption = field.Name
                 };
                 if (field.Type == esriFieldType.esriFieldTypeBlob)
@@ -63,7 +64,9 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
             else
             {
-                num = ((this.m_RecordNum - this.m_pDataTable.Rows.Count) > this.m_MaxRecord) ? this.m_MaxRecord : this.m_RecordNum;
+                num = ((this.m_RecordNum - this.m_pDataTable.Rows.Count) > this.m_MaxRecord)
+                    ? this.m_MaxRecord
+                    : this.m_RecordNum;
             }
             IFields fields = this.m_pCursor.Fields;
             int num2 = 0;
@@ -225,7 +228,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
- private void frmTable_Load(object sender, EventArgs e)
+        private void frmTable_Load(object sender, EventArgs e)
         {
             this.Text = "属性表";
             this.Init();
@@ -322,7 +325,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
- private void m_pDataTable_ColumnChanged(object sender, DataColumnChangeEventArgs e)
+        private void m_pDataTable_ColumnChanged(object sender, DataColumnChangeEventArgs e)
         {
             if (this.m_InEditing && this.m_CanDo)
             {
@@ -353,7 +356,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                     else
                     {
                         int num2 = Convert.ToInt32(itemArray[0]);
-                        IQueryFilter queryFilter = new QueryFilterClass {
+                        IQueryFilter queryFilter = new QueryFilterClass
+                        {
                             WhereClause = this.m_pTable.OIDFieldName + " = " + num2.ToString()
                         };
                         ICursor o = this.m_pTable.Search(queryFilter, false);
@@ -440,4 +444,3 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         }
     }
 }
-

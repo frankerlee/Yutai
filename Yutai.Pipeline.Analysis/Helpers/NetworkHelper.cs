@@ -30,8 +30,9 @@ namespace Yutai.Pipeline.Analysis.Helpers
         public IFeature GetEIDFeature(IGeometricNetwork geometricNetwork, int eid, esriElementType elementType)
         {
             int userClassId, userId, userSubId;
-            bool isValid = ((INetElements)geometricNetwork.Network).IsValidElement(eid, elementType);
-            ((INetElements)geometricNetwork.Network).QueryIDs(eid,elementType,out userClassId,out userId,out userSubId);
+            bool isValid = ((INetElements) geometricNetwork.Network).IsValidElement(eid, elementType);
+            ((INetElements) geometricNetwork.Network).QueryIDs(eid, elementType, out userClassId, out userId,
+                out userSubId);
             if (!isValid) return null;
             return FindFeature(GetEnumFeatureClasses(geometricNetwork, esriFeatureType.esriFTSimpleEdge), userClassId,
                 userId);

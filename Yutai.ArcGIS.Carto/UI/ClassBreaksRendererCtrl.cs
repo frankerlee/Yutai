@@ -60,7 +60,7 @@ namespace Yutai.ArcGIS.Carto.UI
                 }
             }
             return;
-        Label_0043:
+            Label_0043:
             (this.iclassBreaksRenderer_0 as IClassBreaksUIProperties).Method = classify.ClassID;
             if (this.cboClassifyNum.SelectedIndex >= 0)
             {
@@ -87,21 +87,25 @@ namespace Yutai.ArcGIS.Carto.UI
                 if (this.cboNormFields.SelectedIndex == 0)
                 {
                     this.iclassBreaksRenderer_0.NormField = "";
-                    (this.iclassBreaksRenderer_0 as IDataNormalization).NormalizationType = esriDataNormalization.esriNormalizeByNothing;
+                    (this.iclassBreaksRenderer_0 as IDataNormalization).NormalizationType =
+                        esriDataNormalization.esriNormalizeByNothing;
                 }
                 else if (this.cboNormFields.SelectedIndex == 1)
                 {
                     this.iclassBreaksRenderer_0.NormField = "";
-                    (this.iclassBreaksRenderer_0 as IDataNormalization).NormalizationType = esriDataNormalization.esriNormalizeByLog;
+                    (this.iclassBreaksRenderer_0 as IDataNormalization).NormalizationType =
+                        esriDataNormalization.esriNormalizeByLog;
                 }
                 else if (this.cboNormFields.SelectedIndex == 2)
                 {
                     this.iclassBreaksRenderer_0.NormField = "";
-                    (this.iclassBreaksRenderer_0 as IDataNormalization).NormalizationType = esriDataNormalization.esriNormalizeByPercentOfTotal;
+                    (this.iclassBreaksRenderer_0 as IDataNormalization).NormalizationType =
+                        esriDataNormalization.esriNormalizeByPercentOfTotal;
                 }
                 else if (this.cboNormFields.SelectedIndex > 2)
                 {
-                    (this.iclassBreaksRenderer_0 as IDataNormalization).NormalizationType = esriDataNormalization.esriNormalizeByField;
+                    (this.iclassBreaksRenderer_0 as IDataNormalization).NormalizationType =
+                        esriDataNormalization.esriNormalizeByField;
                     this.iclassBreaksRenderer_0.NormField = (this.cboNormFields.SelectedItem as FieldWrap).Name;
                 }
                 if (this.cboValueFields.SelectedIndex > 0)
@@ -165,7 +169,8 @@ namespace Yutai.ArcGIS.Carto.UI
             if (this.colorRampComboBox1.Items.Count == 0)
             {
                 this.colorRampComboBox1.Enabled = false;
-                IRandomColorRamp ramp = new RandomColorRampClass {
+                IRandomColorRamp ramp = new RandomColorRampClass
+                {
                     StartHue = 40,
                     EndHue = 120,
                     MinValue = 65,
@@ -236,7 +241,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void method_0()
+        private void method_0()
         {
             IFields fields;
             this.cboValueFields.Properties.Items.Clear();
@@ -278,7 +283,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 index = 1;
                 while (index < this.cboValueFields.Properties.Items.Count)
                 {
-                    if ((this.cboValueFields.Properties.Items[index] as FieldWrap).Name == this.iclassBreaksRenderer_0.Field)
+                    if ((this.cboValueFields.Properties.Items[index] as FieldWrap).Name ==
+                        this.iclassBreaksRenderer_0.Field)
                     {
                         this.cboValueFields.SelectedIndex = index;
                         break;
@@ -286,15 +292,18 @@ namespace Yutai.ArcGIS.Carto.UI
                     index++;
                 }
             }
-            if ((this.iclassBreaksRenderer_0 as IDataNormalization).NormalizationType == esriDataNormalization.esriNormalizeByLog)
+            if ((this.iclassBreaksRenderer_0 as IDataNormalization).NormalizationType ==
+                esriDataNormalization.esriNormalizeByLog)
             {
                 this.cboNormFields.Text = "<LOG>";
             }
-            else if ((this.iclassBreaksRenderer_0 as IDataNormalization).NormalizationType == esriDataNormalization.esriNormalizeByNothing)
+            else if ((this.iclassBreaksRenderer_0 as IDataNormalization).NormalizationType ==
+                     esriDataNormalization.esriNormalizeByNothing)
             {
                 this.cboNormFields.Text = "<无>";
             }
-            else if ((this.iclassBreaksRenderer_0 as IDataNormalization).NormalizationType == esriDataNormalization.esriNormalizeByPercentOfTotal)
+            else if ((this.iclassBreaksRenderer_0 as IDataNormalization).NormalizationType ==
+                     esriDataNormalization.esriNormalizeByPercentOfTotal)
             {
                 this.cboNormFields.Text = "<百分比>";
             }
@@ -303,7 +312,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 index = 3;
                 while (index < this.cboNormFields.Properties.Items.Count)
                 {
-                    if ((this.cboNormFields.Properties.Items[index] as FieldWrap).Name == this.iclassBreaksRenderer_0.NormField)
+                    if ((this.cboNormFields.Properties.Items[index] as FieldWrap).Name ==
+                        this.iclassBreaksRenderer_0.NormField)
                     {
                         this.cboNormFields.SelectedIndex = index;
                         break;
@@ -316,12 +326,14 @@ namespace Yutai.ArcGIS.Carto.UI
             for (index = 0; index < this.iclassBreaksRenderer_0.BreakCount; index++)
             {
                 objArray[0] = this.iclassBreaksRenderer_0.get_Symbol(index);
-                objArray[1] = (this.iclassBreaksRenderer_0 as IClassBreaksUIProperties).get_LowBreak(index).ToString() + " - " + this.iclassBreaksRenderer_0.get_Break(index).ToString();
+                objArray[1] = (this.iclassBreaksRenderer_0 as IClassBreaksUIProperties).get_LowBreak(index).ToString() +
+                              " - " + this.iclassBreaksRenderer_0.get_Break(index).ToString();
                 objArray[2] = this.iclassBreaksRenderer_0.get_Label(index);
                 this.listView1.Add(objArray);
             }
             this.cboClassifyNum.SelectedIndex = this.iclassBreaksRenderer_0.BreakCount - 1;
-            IClassify classify = this.method_2((this.iclassBreaksRenderer_0 as IClassBreaksUIProperties).Method) as IClassify;
+            IClassify classify =
+                this.method_2((this.iclassBreaksRenderer_0 as IClassBreaksUIProperties).Method) as IClassify;
             if (classify != null)
             {
                 this.Classifygroup.Enabled = true;
@@ -411,7 +423,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 name = (this.cboNormFields.SelectedItem as FieldWrap).Name;
                 esriNormalizeByNothing = esriDataNormalization.esriNormalizeByField;
             }
-            this.method_5(this.icolorRamp_0, this.iclassBreaksRenderer_0, this.cboClassifyNum.SelectedIndex + 1, this.method_4(), (this.cboValueFields.SelectedItem as FieldWrap).Name, name, esriNormalizeByNothing);
+            this.method_5(this.icolorRamp_0, this.iclassBreaksRenderer_0, this.cboClassifyNum.SelectedIndex + 1,
+                this.method_4(), (this.cboValueFields.SelectedItem as FieldWrap).Name, name, esriNormalizeByNothing);
             this.listView1.Items.Clear();
             string[] strArray = new string[3];
             int index = 0;
@@ -422,7 +435,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     break;
                 }
                 strArray[0] = "";
-                strArray[1] = (this.iclassBreaksRenderer_0 as IClassBreaksUIProperties).get_LowBreak(index).ToString() + " - " + this.iclassBreaksRenderer_0.get_Break(index).ToString();
+                strArray[1] = (this.iclassBreaksRenderer_0 as IClassBreaksUIProperties).get_LowBreak(index).ToString() +
+                              " - " + this.iclassBreaksRenderer_0.get_Break(index).ToString();
                 strArray[2] = this.iclassBreaksRenderer_0.get_Label(index);
                 ListViewItemEx ex = new ListViewItemEx(strArray);
                 try
@@ -460,7 +474,8 @@ namespace Yutai.ArcGIS.Carto.UI
             return (this.igeoFeatureLayer_0 as ITable);
         }
 
-        private void method_5(IColorRamp icolorRamp_1, IClassBreaksRenderer iclassBreaksRenderer_1, int int_0, ITable itable_0, string string_0, string string_1, esriDataNormalization esriDataNormalization_0)
+        private void method_5(IColorRamp icolorRamp_1, IClassBreaksRenderer iclassBreaksRenderer_1, int int_0,
+            ITable itable_0, string string_0, string string_1, esriDataNormalization esriDataNormalization_0)
         {
             try
             {
@@ -469,13 +484,15 @@ namespace Yutai.ArcGIS.Carto.UI
                 {
                     esriGeometryAny = this.igeoFeatureLayer_0.FeatureClass.ShapeType;
                 }
-                IClassify classify = this.method_2((iclassBreaksRenderer_1 as IClassBreaksUIProperties).Method) as IClassify;
+                IClassify classify =
+                    this.method_2((iclassBreaksRenderer_1 as IClassBreaksUIProperties).Method) as IClassify;
                 if (classify != null)
                 {
                     object obj2;
                     object obj3;
                     bool flag;
-                    ITableHistogram histogram = new BasicTableHistogramClass {
+                    ITableHistogram histogram = new BasicTableHistogramClass
+                    {
                         Field = string_0,
                         Table = itable_0,
                         NormField = string_1
@@ -491,7 +508,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     else if (classify is IDeviationInterval)
                     {
                         (classify as IDeviationInterval).Mean = (histogram as IStatisticsResults).Mean;
-                        (classify as IDeviationInterval).StandardDev = (histogram as IStatisticsResults).StandardDeviation;
+                        (classify as IDeviationInterval).StandardDev =
+                            (histogram as IStatisticsResults).StandardDeviation;
                         (classify as IDeviationInterval).DeviationInterval = 0.5;
                         classify.Classify(ref int_0);
                     }
@@ -523,7 +541,8 @@ namespace Yutai.ArcGIS.Carto.UI
                             case esriGeometryType.esriGeometryLine:
                             case esriGeometryType.esriGeometryPolyline:
                             {
-                                ILineSymbol symbol2 = new SimpleLineSymbolClass {
+                                ILineSymbol symbol2 = new SimpleLineSymbolClass
+                                {
                                     Color = color
                                 };
                                 sym = symbol2 as ISymbol;
@@ -531,7 +550,8 @@ namespace Yutai.ArcGIS.Carto.UI
                             }
                             case esriGeometryType.esriGeometryPolygon:
                             {
-                                ISimpleFillSymbol symbol3 = new SimpleFillSymbolClass {
+                                ISimpleFillSymbol symbol3 = new SimpleFillSymbolClass
+                                {
                                     Color = color,
                                     Style = esriSimpleFillStyle.esriSFSSolid
                                 };
@@ -541,7 +561,8 @@ namespace Yutai.ArcGIS.Carto.UI
                             case esriGeometryType.esriGeometryPoint:
                             case esriGeometryType.esriGeometryMultipoint:
                             {
-                                IMarkerSymbol symbol4 = new SimpleMarkerSymbolClass {
+                                IMarkerSymbol symbol4 = new SimpleMarkerSymbolClass
+                                {
                                     Color = color
                                 };
                                 sym = symbol4 as ISymbol;
@@ -591,14 +612,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         bool IUserControl.Visible
         {
-            get
-            {
-                return base.Visible;
-            }
-            set
-            {
-                base.Visible = value;
-            }
+            get { return base.Visible; }
+            set { base.Visible = value; }
         }
 
         public IStyleGallery StyleGallery
@@ -611,4 +626,3 @@ namespace Yutai.ArcGIS.Carto.UI
         }
     }
 }
-

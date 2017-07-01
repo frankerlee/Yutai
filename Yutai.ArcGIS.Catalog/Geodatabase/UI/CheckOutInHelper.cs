@@ -17,8 +17,10 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         protected void InitEvent(ESRI.ArcGIS.GeoDatabaseDistributed.IFeatureProgress_Event ifeatureProgress_Event_0)
         {
-            ifeatureProgress_Event_0.Step+=(new ESRI.ArcGIS.GeoDatabaseDistributed.IFeatureProgress_StepEventHandler(this.method_6));
-            (ifeatureProgress_Event_0 as IReplicaProgress_Event).Startup+=(new IReplicaProgress_StartupEventHandler(this.method_10));
+            ifeatureProgress_Event_0.Step +=
+                (new ESRI.ArcGIS.GeoDatabaseDistributed.IFeatureProgress_StepEventHandler(this.method_6));
+            (ifeatureProgress_Event_0 as IReplicaProgress_Event).Startup +=
+                (new IReplicaProgress_StartupEventHandler(this.method_10));
         }
 
         private bool method_0()
@@ -76,21 +78,16 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         protected void ReleaseEvent(ESRI.ArcGIS.GeoDatabaseDistributed.IFeatureProgress_Event ifeatureProgress_Event_0)
         {
-            ifeatureProgress_Event_0.Step-=(new ESRI.ArcGIS.GeoDatabaseDistributed.IFeatureProgress_StepEventHandler(this.method_6));
-            (ifeatureProgress_Event_0 as IReplicaProgress_Event).Startup-=(new IReplicaProgress_StartupEventHandler(this.method_10));
+            ifeatureProgress_Event_0.Step -=
+                (new ESRI.ArcGIS.GeoDatabaseDistributed.IFeatureProgress_StepEventHandler(this.method_6));
+            (ifeatureProgress_Event_0 as IReplicaProgress_Event).Startup -=
+                (new IReplicaProgress_StartupEventHandler(this.method_10));
         }
 
         public IWorkspaceName MasterWorkspaceName
         {
-            get
-            {
-                return this.m_MasterWorkspaceName;
-            }
-            set
-            {
-                this.m_MasterWorkspaceName = value;
-            }
+            get { return this.m_MasterWorkspaceName; }
+            set { this.m_MasterWorkspaceName = value; }
         }
     }
 }
-

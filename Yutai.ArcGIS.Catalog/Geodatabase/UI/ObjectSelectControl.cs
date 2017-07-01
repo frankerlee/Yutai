@@ -16,7 +16,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
     public partial class ObjectSelectControl : UserControl
     {
         private Container container_0 = null;
-        [CompilerGenerated]
+
         private frmOpenFile frmOpenFile_0 = new frmOpenFile();
         private IGxObject igxObject_0 = null;
         private IGxObject igxObject_1 = null;
@@ -34,7 +34,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             if (this.igxObject_0 != null)
             {
-                frmAttributeQueryBuilder builder = new frmAttributeQueryBuilder {
+                frmAttributeQueryBuilder builder = new frmAttributeQueryBuilder
+                {
                     Table = (this.igxObject_0 as IGxDataset).Dataset as ITable,
                     WhereCaluse = this.txtWhere.Text
                 };
@@ -91,7 +92,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         }
                         else if (this.igxObject_1 is IGxFolder)
                         {
-                            IWorkspaceName name = new WorkspaceNameClass {
+                            IWorkspaceName name = new WorkspaceNameClass
+                            {
                                 WorkspaceFactoryProgID = "esriDataSourcesFile.ShapefileWorkspaceFactory",
                                 PathName = (this.igxObject_1.InternalObjectName as IFileName).Path
                             };
@@ -138,22 +140,25 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             return true;
         }
 
- public void Do()
+        public void Do()
         {
             try
             {
                 IDatasetName name;
                 this.panel1.Visible = true;
                 Dataloaders dataloaders = new Dataloaders();
-                (dataloaders.Converter as IFeatureProgress_Event).Step+=(new IFeatureProgress_StepEventHandler(this.method_6));
+                (dataloaders.Converter as IFeatureProgress_Event).Step +=
+                    (new IFeatureProgress_StepEventHandler(this.method_6));
                 IQueryFilter filter = null;
                 if (this.txtWhere.Text.Length > 0)
                 {
-                    filter = new QueryFilterClass {
+                    filter = new QueryFilterClass
+                    {
                         WhereClause = this.txtWhere.Text
                     };
                 }
-                dataloaders.ConvertData(this.iname_0 as IDatasetName, this.iname_1, this.txtOutFeatureClassName.Text, filter);
+                dataloaders.ConvertData(this.iname_0 as IDatasetName, this.iname_1, this.txtOutFeatureClassName.Text,
+                    filter);
                 IGxObject obj2 = null;
                 this.method_0(this.igxObject_1);
                 if (this.iname_1 is IWorkspaceName)
@@ -198,11 +203,11 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
         }
 
- private IGxCatalog method_0(IGxObject igxObject_2)
+        private IGxCatalog method_0(IGxObject igxObject_2)
         {
             if (igxObject_2 is IGxCatalog)
             {
@@ -239,7 +244,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 }
                 else if (this.igxObject_1 is IGxFolder)
                 {
-                    IWorkspaceName name = new WorkspaceNameClass {
+                    IWorkspaceName name = new WorkspaceNameClass
+                    {
                         WorkspaceFactoryProgID = "esriDataSourcesFile.ShapefileWorkspaceFactory",
                         PathName = (this.igxObject_1.InternalObjectName as IFileName).Path
                     };
@@ -282,35 +288,16 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.method_1();
         }
 
-        public esriDatasetType ImportDatasetType
-        {
-            [CompilerGenerated]
-            protected get
-            {
-                return this.esriDatasetType_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.esriDatasetType_0 = value;
-            }
-        }
+        public esriDatasetType ImportDatasetType { get; set; }
 
         public IGxObject InGxObject
         {
-            set
-            {
-                this.igxObject_0 = value;
-            }
+            set { this.igxObject_0 = value; }
         }
 
         public IGxObject OutGxObject
         {
-            set
-            {
-                this.igxObject_1 = value;
-            }
+            set { this.igxObject_1 = value; }
         }
     }
 }
-

@@ -34,6 +34,9 @@ namespace Yutai.Controls
         private string _caption;
         private Bitmap _bitmap;
         public static string DefaultDockName = "Dock_Main_Overview";
+        private IMap _map;
+        private IActiveView _activeView;
+
         public OverviewDockPanel(IAppContext context)
         {
             if (context == null) throw new ArgumentNullException("context");
@@ -46,9 +49,32 @@ namespace Yutai.Controls
             //axMapControl1.MouseDown+= AxMapControl1OnMouseDown;
         }
 
-        public void InitMainMap()
+        public void InitMainMap(object control)
         {
-            _mainMapControl = _context.MapControl;
+            if (_activeView != null)
+            {
+                _activeViewEvents.ViewRefreshed -= ActiveViewEventsOnViewRefreshed;
+            }
+            if (mapControlEvents2 != null)
+            {
+                mapControlEvents2.OnViewRefreshed -= MapControlEvents2OnOnViewRefreshed;
+                mapControlEvents2.OnExtentUpdated -= MapControlEvents2OnOnExtentUpdated;
+            }
+            if (control is IPageLayoutControl2)
+            {
+                _map = _context.FocusMap;
+                _activeViewEvents = _context.FocusMap as IActiveViewEvents_Event;
+                _activeViewEvents.ViewRefreshed += ActiveViewEventsOnViewRefreshed;
+            }
+            else if (control is IMapControl3)
+            {
+                _mainMapControl = control as IMapControl2;
+                _map = _mainMapControl.Map;
+                mapControlEvents2 = _mainMapControl as IMapControlEvents2_Event;
+                mapControlEvents2.OnViewRefreshed += MapControlEvents2OnOnViewRefreshed;
+                mapControlEvents2.OnExtentUpdated += MapControlEvents2OnOnExtentUpdated;
+            }
+
             _rectangleElement = new RectangleElementClass();
             _fillSymbol = new SimpleFillSymbolClass();
             _fillSymbol.Style = esriSimpleFillStyle.esriSFSNull;
@@ -62,22 +88,47 @@ namespace Yutai.Controls
             simpleLineSymbol.Color = color;
             simpleLineSymbol.Width = 2;
             _fillSymbol.Outline = simpleLineSymbol;
-            ((IFillShapeElement)_rectangleElement).Symbol = _fillSymbol;
+            ((IFillShapeElement) _rectangleElement).Symbol = _fillSymbol;
             axMapControl1.ActiveView.GraphicsContainer.AddElement(_rectangleElement as IElement, 0);
             _canDo = true;
-            mapControlEvents2 = _mainMapControl as IMapControlEvents2_Event;
-            mapControlEvents2.OnViewRefreshed += MapControlEvents2OnOnViewRefreshed;
-            mapControlEvents2.OnExtentUpdated += MapControlEvents2OnOnExtentUpdated;
         }
 
-        public override Bitmap Image { get { return _bitmap; } }
+        private void ActiveViewEventsOnViewRefreshed(IActiveView view, esriViewDrawPhase phase, object data,
+            IEnvelope envelope)
+        {
+            if (phase != esriViewDrawPhase.esriViewAll) return;
+            if (this.axMapControl1.LayerCount == 0) return;
+            if (this.CanDo)
+            {
+                this._envelope = envelope;
+                IPoint pointClass = new ESRI.ArcGIS.Geometry.Point();
+                pointClass.PutCoords((this._envelope.XMin + this._envelope.XMax)/2,
+                    (this._envelope.YMin + this._envelope.YMax)/2);
 
-        public override string Caption {
+                this.DrawRectangle(this.axMapControl1.ActiveView);
+            }
+        }
+
+        public override Bitmap Image
+        {
+            get { return _bitmap; }
+        }
+
+        public override string Caption
+        {
             get { return _caption; }
-            set { _caption = value; } }
+            set { _caption = value; }
+        }
 
-        public override string DockName { get { return "DockPanel_Main_Overview"; } }
-        public override string DefaultNestDockName { get { return "Dock_Main_MapLegend"; } }
+        public override string DockName
+        {
+            get { return "DockPanel_Main_Overview"; }
+        }
+
+        public override string DefaultNestDockName
+        {
+            get { return "Dock_Main_MapLegend"; }
+        }
 
         public IGeometry ClipBounds
         {
@@ -149,11 +200,9 @@ namespace Yutai.Controls
 
         private void AddLayer(ILayer pLayer, int nIndex)
         {
-
             ILayer layer = (new ObjectCopyClass()).Copy(pLayer) as ILayer;
             layer.Visible = true;
             this.axMapControl1.AddLayer(layer, nIndex);
-
         }
 
 
@@ -163,19 +212,18 @@ namespace Yutai.Controls
             if (this.axMapControl1.LayerCount == 0) return;
             if (this.CanDo)
             {
-                this._envelope  = this._mainMapControl.ActiveView.Extent;
+                this._envelope = this._mainMapControl.ActiveView.Extent;
                 IPoint pointClass = new ESRI.ArcGIS.Geometry.Point();
-                pointClass.PutCoords((this._envelope.XMin + this._envelope.XMax) / 2, (this._envelope.YMin + this._envelope.YMax) / 2);
-               
+                pointClass.PutCoords((this._envelope.XMin + this._envelope.XMax)/2,
+                    (this._envelope.YMin + this._envelope.YMax)/2);
+
                 this.DrawRectangle(this.axMapControl1.ActiveView);
             }
-
         }
 
         private void MapControlEvents2OnOnViewRefreshed(object activeView, int viewDrawPhase, object layerOrElement,
             object envelope)
         {
-
         }
 
         public IEnumerable<ToolStripItemCollection> ToolStrips
@@ -203,7 +251,8 @@ namespace Yutai.Controls
                 if (oType == "MXD")
                 {
                     string mxdName = project.Overview.ObjectName;
-                    FileInfo fileInfo = new FileInfo(FileHelper.GetRelativePath(project.Settings.LoadAsFilename, mxdName));
+                    FileInfo fileInfo =
+                        new FileInfo(FileHelper.GetRelativePath(project.Settings.LoadAsFilename, mxdName));
 
                     if (fileInfo.Exists)
                     {
@@ -232,8 +281,8 @@ namespace Yutai.Controls
                 CopyLastLayerToOverview();
             }
             this.axMapControl1.ActiveView.Refresh();
-           
-           this.ClipBounds = _mainMapControl.Map.ClipGeometry;
+
+            this.ClipBounds = _mainMapControl.Map.ClipGeometry;
             this.axMapControl1.Map.ClearSelection();
         }
 
@@ -268,12 +317,10 @@ namespace Yutai.Controls
             newLayer.Visible = true;
             axMapControl1.Map.AddLayer(newLayer);
             this.axMapControl1.Extent = _mainMapControl.FullExtent;
-            
         }
 
         private void axMapControl1_OnMouseDown(object sender, IMapControlEvents2_OnMouseDownEvent e)
         {
-
             IEnvelope extent;
             if (e.button != 2)
             {
@@ -327,8 +374,8 @@ namespace Yutai.Controls
         {
             if (e.button == 2)
                 this.contextMenuOverview.Show(this.axMapControl1, new System.Drawing.Point(e.x, e.y));
-
         }
+
         public void DrawRectangle(IActiveView pActiveView)
         {
             if (this._rectangleElement != null)
@@ -341,9 +388,9 @@ namespace Yutai.Controls
                     {
                         pActiveView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, this._rectangleElement, null);
                     }
-                    this._rectangleElement.Geometry = GeometryUtility.ConvertEnvelopeToPolygon((IGeometry)_envelope);
-                   
-                    pActiveView.GraphicsContainer.AddElement(_rectangleElement,0);
+                    this._rectangleElement.Geometry = GeometryUtility.ConvertEnvelopeToPolygon((IGeometry) _envelope);
+
+                    pActiveView.GraphicsContainer.AddElement(_rectangleElement, 0);
                     if ((this._rectangleElement.Geometry != null ? true : !this._rectangleElement.Geometry.IsEmpty))
                     {
                         pActiveView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, this._rectangleElement, null);
@@ -363,14 +410,12 @@ namespace Yutai.Controls
             axMapControl1.Refresh();
             return;
         }
+
         public void Current()
         {
-            axMapControl1.ActiveView.Extent = _mainMapControl.Extent;
+            axMapControl1.ActiveView.Extent = ((IActiveView) _map).Extent;
             axMapControl1.Refresh();
             return;
         }
     }
 }
-
-    
-

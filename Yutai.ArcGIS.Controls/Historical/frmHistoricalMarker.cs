@@ -41,7 +41,7 @@ namespace Yutai.ArcGIS.Controls.Historical
             }
         }
 
- private void frmHistoricalMarker_Load(object sender, EventArgs e)
+        private void frmHistoricalMarker_Load(object sender, EventArgs e)
         {
             if (this.m_IsEdit)
             {
@@ -56,12 +56,9 @@ namespace Yutai.ArcGIS.Controls.Historical
             }
         }
 
- public IDatabaseConnectionInfo2 DatabaseConnectionInfo
+        public IDatabaseConnectionInfo2 DatabaseConnectionInfo
         {
-            set
-            {
-                this.m_pDatabaseConnectionInfo = value;
-            }
+            set { this.m_pDatabaseConnectionInfo = value; }
         }
 
         public IHistoricalMarker HistoricalMarker
@@ -75,19 +72,12 @@ namespace Yutai.ArcGIS.Controls.Historical
 
         public string HistoricalMarkerName
         {
-            get
-            {
-                return this.m_HistoricalMarkerName;
-            }
+            get { return this.m_HistoricalMarkerName; }
         }
 
         public object HistoricalMarkerTimeStamp
         {
-            get
-            {
-                return this.m_HistoricalMarkerTimeStamp;
-            }
+            get { return this.m_HistoricalMarkerTimeStamp; }
         }
     }
 }
-

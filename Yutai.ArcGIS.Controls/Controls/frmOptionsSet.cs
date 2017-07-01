@@ -11,7 +11,6 @@ namespace Yutai.ArcGIS.Controls.Controls
 {
     public partial class frmOptionsSet : Form
     {
-
         public frmOptionsSet()
         {
             this.InitializeComponent();
@@ -23,7 +22,7 @@ namespace Yutai.ArcGIS.Controls.Controls
                     string str2 = reader.ReadLine();
                     if (str2.Length > 0)
                     {
-                        string[] strArray = str2.Split(new char[] { '=' });
+                        string[] strArray = str2.Split(new char[] {'='});
                         if ((strArray.Length > 1) && (strArray[0].ToLower() == "pyramiddialogset"))
                         {
                             try
@@ -61,11 +60,11 @@ namespace Yutai.ArcGIS.Controls.Controls
             base.DialogResult = DialogResult.OK;
         }
 
- private void frmOptionsSet_Load(object sender, EventArgs e)
+        private void frmOptionsSet_Load(object sender, EventArgs e)
         {
         }
 
- private void WriteRasterCfg(TextWriter reader)
+        private void WriteRasterCfg(TextWriter reader)
         {
             PyramidPromptType alwaysPrompt = PyramidPromptType.AlwaysPrompt;
             if (this.rdoAlwaysBuild.Checked)
@@ -82,4 +81,3 @@ namespace Yutai.ArcGIS.Controls.Controls
         }
     }
 }
-

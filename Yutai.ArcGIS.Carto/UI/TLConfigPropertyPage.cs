@@ -60,8 +60,10 @@ namespace Yutai.ArcGIS.Carto.UI
                 if (item.Tag is YTLegendItem)
                 {
                     XmlNode node3 = document.CreateElement("LegendItem");
-                    node3.Attributes.Append(this.method_5(document, "description", (item.Tag as YTLegendItem).Description));
-                    node3.Attributes.Append(this.method_5(document, "symbol", this.method_6((item.Tag as YTLegendItem).Symbol)));
+                    node3.Attributes.Append(this.method_5(document, "description",
+                        (item.Tag as YTLegendItem).Description));
+                    node3.Attributes.Append(this.method_5(document, "symbol",
+                        this.method_6((item.Tag as YTLegendItem).Symbol)));
                     newChild.AppendChild(node3);
                 }
             }
@@ -124,7 +126,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
                 Filter = "*.xml|*.xml"
             };
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -144,12 +147,13 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void butNewRow_Click(object sender, EventArgs e)
         {
-            frmNewLegendItem item = new frmNewLegendItem {
+            frmNewLegendItem item = new frmNewLegendItem
+            {
                 StyleGallery = ApplicationBase.StyleGallery
             };
             if (item.ShowDialog() == DialogResult.OK)
             {
-                object[] objArray = new object[] { item.YTLegendItem.Symbol, item.YTLegendItem.Description };
+                object[] objArray = new object[] {item.YTLegendItem.Symbol, item.YTLegendItem.Description};
                 this.renderInfoListView1.Add(objArray).Tag = item.YTLegendItem;
                 this.btnDeleteAll.Enabled = this.renderInfoListView1.Items.Count > 0;
             }
@@ -161,7 +165,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SaveFileDialog dialog = new SaveFileDialog {
+            SaveFileDialog dialog = new SaveFileDialog
+            {
                 Filter = "*.xml|*.xml"
             };
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -190,7 +195,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void method_0(string string_1)
+        private void method_0(string string_1)
         {
         }
 
@@ -238,7 +243,7 @@ namespace Yutai.ArcGIS.Carto.UI
         private void method_10(XmlNode xmlNode_0)
         {
             int num = 0;
-        Label_0002:
+            Label_0002:
             if (num >= xmlNode_0.Attributes.Count)
             {
                 for (int i = 0; i < xmlNode_0.ChildNodes.Count; i++)
@@ -303,7 +308,7 @@ namespace Yutai.ArcGIS.Carto.UI
             if (symbol != null)
             {
                 YTLegendItem item = new YTLegendItem(symbol, str);
-                object[] objArray = new object[] { item.Symbol, item.Description };
+                object[] objArray = new object[] {item.Symbol, item.Description};
                 this.renderInfoListView1.Add(objArray).Tag = item;
             }
         }
@@ -320,7 +325,8 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
-        private bool method_2(string string_1, string string_2, Image image_3, string string_3, string string_4, string string_5)
+        private bool method_2(string string_1, string string_2, Image image_3, string string_3, string string_4,
+            string string_5)
         {
             return false;
         }
@@ -347,7 +353,8 @@ namespace Yutai.ArcGIS.Carto.UI
             object obj2;
             ESRI.ArcGIS.esriSystem.IPersistStream stream = (ESRI.ArcGIS.esriSystem.IPersistStream) isymbol_0;
             IMemoryBlobStream pstm = new MemoryBlobStreamClass();
-            IObjectStream stream3 = new ObjectStreamClass {
+            IObjectStream stream3 = new ObjectStreamClass
+            {
                 Stream = pstm
             };
             stream.GetClassID(out guid);
@@ -371,7 +378,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 b[num2] = buffer[num2];
             }
             Guid clsid = new Guid(b);
-            ESRI.ArcGIS.esriSystem.IPersistStream stream = Activator.CreateInstance(System.Type.GetTypeFromCLSID(clsid)) as IPersistStream;
+            ESRI.ArcGIS.esriSystem.IPersistStream stream =
+                Activator.CreateInstance(System.Type.GetTypeFromCLSID(clsid)) as IPersistStream;
             byte[] buffer3 = new byte[num];
             for (num2 = 0; num2 < num; num2++)
             {
@@ -409,8 +417,10 @@ namespace Yutai.ArcGIS.Carto.UI
                 if (item.Tag is YTLegendItem)
                 {
                     XmlNode node3 = document.CreateElement("LegendItem");
-                    node3.Attributes.Append(this.method_5(document, "description", (item.Tag as YTLegendItem).Description));
-                    node3.Attributes.Append(this.method_5(document, "symbol", this.method_6((item.Tag as YTLegendItem).Symbol)));
+                    node3.Attributes.Append(this.method_5(document, "description",
+                        (item.Tag as YTLegendItem).Description));
+                    node3.Attributes.Append(this.method_5(document, "symbol",
+                        this.method_6((item.Tag as YTLegendItem).Symbol)));
                     newChild.AppendChild(node3);
                 }
             }
@@ -424,7 +434,7 @@ namespace Yutai.ArcGIS.Carto.UI
         private void method_9(XmlNode xmlNode_0)
         {
             int num = 0;
-        Label_0002:
+            Label_0002:
             if (num >= xmlNode_0.Attributes.Count)
             {
                 for (int i = 0; i < xmlNode_0.ChildNodes.Count; i++)
@@ -547,38 +557,23 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return "图例";
-            }
-            set
-            {
-            }
+            get { return "图例"; }
+            set { }
         }
     }
 }
-

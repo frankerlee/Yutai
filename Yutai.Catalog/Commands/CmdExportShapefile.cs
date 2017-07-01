@@ -43,7 +43,9 @@ namespace Yutai.Plugins.Catalog.Commands
             {
                 Text = "要素类 To 要素类"
             };
-            if (((IGxSelection) _context.GxSelection).FirstObject is IGxDataset && (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).DatasetName.Type == esriDatasetType.esriDTFeatureClass)
+            if (((IGxSelection) _context.GxSelection).FirstObject is IGxDataset &&
+                (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).DatasetName.Type ==
+                esriDatasetType.esriDTFeatureClass)
             {
                 _frmDataConvert.InGxObject = ((IGxSelection) _context.GxSelection).FirstObject;
             }

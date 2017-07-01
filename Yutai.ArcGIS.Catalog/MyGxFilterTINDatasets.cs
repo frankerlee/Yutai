@@ -48,19 +48,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public string Description
         {
-            get
-            {
-                return "TIN数据集";
-            }
+            get { return "TIN数据集"; }
         }
 
         public string Name
         {
-            get
-            {
-                return "GxFilterTINDatasets";
-            }
+            get { return "GxFilterTINDatasets"; }
         }
     }
 }
-

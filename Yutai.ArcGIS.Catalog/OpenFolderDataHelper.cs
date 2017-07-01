@@ -19,7 +19,8 @@ namespace Yutai.ArcGIS.Catalog
 
         internal event OnReadCompletedHander OnReadCompleted;
 
-        public OpenFolderDataHelper(IGxObjectArray igxObjectArray_1, string string_1, IGxCatalog igxCatalog_1, IGxObject igxObject_1)
+        public OpenFolderDataHelper(IGxObjectArray igxObjectArray_1, string string_1, IGxCatalog igxCatalog_1,
+            IGxObject igxObject_1)
         {
             this.CreateHandle();
             base.CreateControl();
@@ -52,7 +53,8 @@ namespace Yutai.ArcGIS.Catalog
                         GxObjectStruct struct2;
                         foreach (string str in Directory.GetDirectories(this.string_0))
                         {
-                            struct2 = new GxObjectStruct {
+                            struct2 = new GxObjectStruct
+                            {
                                 Type = this.method_1(str),
                                 Path = str
                             };
@@ -70,7 +72,8 @@ namespace Yutai.ArcGIS.Catalog
                             string str3 = Path.GetExtension(str2).ToLower();
                             if (this.method_2(str2, str3))
                             {
-                                struct2 = new GxObjectStruct {
+                                struct2 = new GxObjectStruct
+                                {
                                     Type = str3,
                                     Path = str2
                                 };
@@ -112,7 +115,7 @@ namespace Yutai.ArcGIS.Catalog
                     }
                     string[] directories = Directory.GetDirectories(this.string_0);
                     state.Set();
-                    base.Invoke(new MessageHandler1(this.method_3), new object[] { directories });
+                    base.Invoke(new MessageHandler1(this.method_3), new object[] {directories});
                     state.Reset();
                     state.Set();
                     base.Invoke(new MessageHandler(this.method_4));
@@ -121,7 +124,7 @@ namespace Yutai.ArcGIS.Catalog
                     state.Set();
                     foreach (string str in files)
                     {
-                        base.Invoke(new MessageHandler2(this.method_5), new object[] { str });
+                        base.Invoke(new MessageHandler2(this.method_5), new object[] {str});
                     }
                 }
                 catch
@@ -157,7 +160,8 @@ namespace Yutai.ArcGIS.Catalog
                 case ".sid":
                     obj2 = new GxRasterDataset();
                     name = new RasterDatasetNameClass();
-                    name2 = new WorkspaceNameClass {
+                    name2 = new WorkspaceNameClass
+                    {
                         WorkspaceFactoryProgID = "esriDataSourcesFile.RasterWorkspaceFactory",
                         PathName = Path.GetDirectoryName(string_1)
                     };
@@ -173,7 +177,8 @@ namespace Yutai.ArcGIS.Catalog
 
                 case ".mdb":
                     obj2 = new GxDatabase();
-                    name2 = new WorkspaceNameClass {
+                    name2 = new WorkspaceNameClass
+                    {
                         WorkspaceFactoryProgID = "esriDataSourcesGDB.AccessWorkspaceFactory",
                         PathName = string_1
                     };
@@ -188,7 +193,8 @@ namespace Yutai.ArcGIS.Catalog
                 case ".shp":
                     obj2 = new GxShapefileDataset();
                     name = new FeatureClassNameClass();
-                    name2 = new WorkspaceNameClass {
+                    name2 = new WorkspaceNameClass
+                    {
                         WorkspaceFactoryProgID = "esriDataSourcesFile.ShapefileWorkspaceFactory",
                         PathName = Path.GetDirectoryName(string_1)
                     };
@@ -203,11 +209,14 @@ namespace Yutai.ArcGIS.Catalog
                     return true;
 
                 case ".dbf":
-                    if (!File.Exists(Path.Combine(Path.GetDirectoryName(string_1), Path.GetFileNameWithoutExtension(string_1) + ".shp")))
+                    if (
+                        !File.Exists(Path.Combine(Path.GetDirectoryName(string_1),
+                            Path.GetFileNameWithoutExtension(string_1) + ".shp")))
                     {
                         obj2 = new GxDataset();
                         name = new TableNameClass();
-                        name2 = new WorkspaceNameClass {
+                        name2 = new WorkspaceNameClass
+                        {
                             WorkspaceFactoryProgID = "esriDataSourcesFile.ShapefileWorkspaceFactory",
                             PathName = Path.GetDirectoryName(string_1)
                         };
@@ -225,7 +234,8 @@ namespace Yutai.ArcGIS.Catalog
 
                 case ".sde":
                     obj2 = new GxDatabase();
-                    name2 = new WorkspaceNameClass {
+                    name2 = new WorkspaceNameClass
+                    {
                         WorkspaceFactoryProgID = "esriDataSourcesGDB.SdeWorkspaceFactory",
                         PathName = string_1
                     };
@@ -251,7 +261,8 @@ namespace Yutai.ArcGIS.Catalog
                 case ".dxf":
                     obj2 = new GxCadDataset();
                     name = new CadDrawingNameClass();
-                    name2 = new WorkspaceNameClass {
+                    name2 = new WorkspaceNameClass
+                    {
                         WorkspaceFactoryProgID = "esriDataSourcesFile.CadWorkspaceFactory",
                         PathName = Path.GetDirectoryName(string_1)
                     };
@@ -336,7 +347,9 @@ namespace Yutai.ArcGIS.Catalog
                     return true;
 
                 case ".dbf":
-                    return !File.Exists(Path.Combine(Path.GetDirectoryName(string_1), Path.GetFileNameWithoutExtension(string_1) + ".shp"));
+                    return
+                        !File.Exists(Path.Combine(Path.GetDirectoryName(string_1),
+                            Path.GetFileNameWithoutExtension(string_1) + ".shp"));
 
                 case ".sde":
                     return true;
@@ -377,7 +390,8 @@ namespace Yutai.ArcGIS.Catalog
                     case "TIN":
                         unk = new GxDataset();
                         name = new TinNameClass();
-                        name2 = new WorkspaceNameClass {
+                        name2 = new WorkspaceNameClass
+                        {
                             WorkspaceFactoryProgID = "esriDataSourcesFile.TinWorkspaceFactory",
                             PathName = Path.GetDirectoryName(str)
                         };
@@ -390,7 +404,8 @@ namespace Yutai.ArcGIS.Catalog
                     case "GRID":
                         unk = new GxRasterDataset();
                         name = new RasterDatasetNameClass();
-                        name2 = new WorkspaceNameClass {
+                        name2 = new WorkspaceNameClass
+                        {
                             WorkspaceFactoryProgID = "esriDataSourcesFile.RasterWorkspaceFactory",
                             PathName = Path.GetDirectoryName(str)
                         };
@@ -406,7 +421,8 @@ namespace Yutai.ArcGIS.Catalog
                             if (str2 == "FILEGDB")
                             {
                                 unk = new GxDatabase();
-                                name2 = new WorkspaceNameClass {
+                                name2 = new WorkspaceNameClass
+                                {
                                     WorkspaceFactoryProgID = "esriDataSourcesGDB.FileGDBWorkspaceFactory.1",
                                     PathName = str
                                 };
@@ -418,7 +434,8 @@ namespace Yutai.ArcGIS.Catalog
                         {
                             unk = new GxCoverageDataset();
                             name = new CoverageNameClass();
-                            name2 = new WorkspaceNameClass {
+                            name2 = new WorkspaceNameClass
+                            {
                                 WorkspaceFactoryProgID = "esriDataSourcesFile.ArcInfoWorkspaceFactory.1",
                                 PathName = Path.GetDirectoryName(str)
                             };
@@ -495,7 +512,8 @@ namespace Yutai.ArcGIS.Catalog
                             case "TIN":
                                 obj2 = new GxDataset();
                                 name = new TinNameClass();
-                                name2 = new WorkspaceNameClass {
+                                name2 = new WorkspaceNameClass
+                                {
                                     WorkspaceFactoryProgID = "esriDataSourcesFile.TinWorkspaceFactory",
                                     PathName = Path.GetDirectoryName(str)
                                 };
@@ -508,7 +526,8 @@ namespace Yutai.ArcGIS.Catalog
                             case "GRID":
                                 obj2 = new GxRasterDataset();
                                 name = new RasterDatasetNameClass();
-                                name2 = new WorkspaceNameClass {
+                                name2 = new WorkspaceNameClass
+                                {
                                     WorkspaceFactoryProgID = "esriDataSourcesFile.RasterWorkspaceFactory",
                                     PathName = Path.GetDirectoryName(str)
                                 };
@@ -524,7 +543,8 @@ namespace Yutai.ArcGIS.Catalog
                                     if (str2 == "FILEGDB")
                                     {
                                         obj2 = new GxDatabase();
-                                        name2 = new WorkspaceNameClass {
+                                        name2 = new WorkspaceNameClass
+                                        {
                                             WorkspaceFactoryProgID = "esriDataSourcesGDB.FileGDBWorkspaceFactory.1",
                                             PathName = str
                                         };
@@ -536,7 +556,8 @@ namespace Yutai.ArcGIS.Catalog
                                 {
                                     obj2 = new GxCoverageDataset();
                                     name = new CoverageNameClass();
-                                    name2 = new WorkspaceNameClass {
+                                    name2 = new WorkspaceNameClass
+                                    {
                                         WorkspaceFactoryProgID = "esriDataSourcesFile.ArcInfoWorkspaceFactory.1",
                                         PathName = Path.GetDirectoryName(str)
                                     };
@@ -581,4 +602,3 @@ namespace Yutai.ArcGIS.Catalog
         public delegate void MessageHandler2(string string_0);
     }
 }
-

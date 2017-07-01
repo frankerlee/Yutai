@@ -22,7 +22,9 @@ namespace Yutai.ArcGIS.Common
             {
                 if (File.Exists(path))
                 {
-                    string destFileName = m_ErrorLogFullPath + m_ErrorLogFileName + "_" + DateTime.Now.ToShortDateString() + "_" + DateTime.Now.ToLongTimeString().Replace(":", "-") + ".bak";
+                    string destFileName = m_ErrorLogFullPath + m_ErrorLogFileName + "_" +
+                                          DateTime.Now.ToShortDateString() + "_" +
+                                          DateTime.Now.ToLongTimeString().Replace(":", "-") + ".bak";
                     File.Copy(path, destFileName, true);
                 }
             }
@@ -144,22 +146,13 @@ namespace Yutai.ArcGIS.Common
 
         public static string ErrorLogFileName
         {
-            get
-            {
-                return m_ErrorLogFileName;
-            }
-            set
-            {
-                m_ErrorLogFileName = value;
-            }
+            get { return m_ErrorLogFileName; }
+            set { m_ErrorLogFileName = value; }
         }
 
         public static string ErrorLogFullPath
         {
-            get
-            {
-                return m_ErrorLogFullPath;
-            }
+            get { return m_ErrorLogFullPath; }
             set
             {
                 string str = value;
@@ -175,4 +168,3 @@ namespace Yutai.ArcGIS.Common
         }
     }
 }
-

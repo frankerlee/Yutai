@@ -70,13 +70,9 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
         {
         }
 
- public IMap Map
+        public IMap Map
         {
-            set
-            {
-                this.m_pExcelSelectData.Map = value;
-            }
+            set { this.m_pExcelSelectData.Map = value; }
         }
     }
 }
-

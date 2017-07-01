@@ -26,8 +26,10 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             if (this.m_IsPageDirty)
             {
                 this.m_IsPageDirty = false;
-                this.m_pOverposterLayerProperties.FeatureWeight = (esriBasicOverposterWeight) this.cboFeatureType.SelectedIndex;
-                this.m_pOverposterLayerProperties.LabelWeight = (esriBasicOverposterWeight) (this.cboLabelWeight.SelectedIndex - 1);
+                this.m_pOverposterLayerProperties.FeatureWeight =
+                    (esriBasicOverposterWeight) this.cboFeatureType.SelectedIndex;
+                this.m_pOverposterLayerProperties.LabelWeight =
+                    (esriBasicOverposterWeight) (this.cboLabelWeight.SelectedIndex - 1);
                 double num = 0.0;
                 try
                 {
@@ -72,11 +74,11 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- public void Hide()
+        public void Hide()
         {
         }
 
- private void LabelConficPropertyPage_Load(object sender, EventArgs e)
+        private void LabelConficPropertyPage_Load(object sender, EventArgs e)
         {
             if (this.m_pOverposterLayerProperties != null)
             {
@@ -123,38 +125,23 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.m_IsPageDirty;
-            }
+            get { return this.m_IsPageDirty; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return "冲突检测";
-            }
-            set
-            {
-            }
+            get { return "冲突检测"; }
+            set { }
         }
     }
 }
-

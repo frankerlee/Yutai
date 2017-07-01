@@ -26,10 +26,7 @@ namespace Yutai.Plugins.Concrete
 
         public Image Image
         {
-            get
-            {
-                return _image;
-            }
+            get { return _image; }
         }
 
         public static void AssignIcon(IMenuItem menuItem, Bitmap icon)

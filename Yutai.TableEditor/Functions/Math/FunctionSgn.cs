@@ -21,7 +21,7 @@ namespace Yutai.Plugins.TableEditor.Functions.Math
 = 0 - Sgn 会返回 0。";
             _parameters = new List<Parameter>()
             {
-                new Parameter() { Order = 0, Name = "number", Description = "可选的。合法的数值表达式。"}
+                new Parameter() {Order = 0, Name = "number", Description = "可选的。合法的数值表达式。"}
             };
         }
     }

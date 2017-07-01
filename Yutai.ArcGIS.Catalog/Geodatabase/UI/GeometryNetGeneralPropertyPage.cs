@@ -17,7 +17,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.InitializeComponent();
         }
 
- private void GeometryNetGeneralPropertyPage_Load(object sender, EventArgs e)
+        private void GeometryNetGeneralPropertyPage_Load(object sender, EventArgs e)
         {
             ListViewItem item;
             this.textEdit1.Text = (this.igeometricNetwork_0 as IDataset).Name;
@@ -62,13 +62,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- public IGeometricNetwork GeometricNetwork
+        public IGeometricNetwork GeometricNetwork
         {
-            set
-            {
-                this.igeometricNetwork_0 = value;
-            }
+            set { this.igeometricNetwork_0 = value; }
         }
     }
 }
-

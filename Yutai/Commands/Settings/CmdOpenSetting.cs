@@ -12,11 +12,8 @@ namespace Yutai.Commands.Settings
 {
     public class CmdOpenSetting : YutaiCommand
     {
-
-        
         public CmdOpenSetting(IAppContext context)
         {
-            
             OnCreate(context);
         }
 
@@ -25,7 +22,7 @@ namespace Yutai.Commands.Settings
             get { return true; }
         }
 
-      
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
@@ -42,12 +39,12 @@ namespace Yutai.Commands.Settings
             base.m_checked = false;
             base.m_enabled = true;
             base._itemType = RibbonItemType.Button;
-            DisplayStyleYT= DisplayStyleYT.ImageAndText;
-            TextImageRelationYT= TextImageRelationYT.ImageAboveText;
+            DisplayStyleYT = DisplayStyleYT.ImageAndText;
+            TextImageRelationYT = TextImageRelationYT.ImageAboveText;
             _context = hook as IAppContext;
         }
 
-      
+
         public override void OnClick()
         {
             _context.Config.LoadAllConfigPages = true;

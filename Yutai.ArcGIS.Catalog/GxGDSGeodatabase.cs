@@ -7,7 +7,8 @@ using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Catalog
 {
-    public class GxGDSGeodatabase : IGxObject, IGxDatabase, IGxObjectContainer, IGxObjectUI, IGxPasteTarget, IGxGeodatabase, IGxRemoteConnection
+    public class GxGDSGeodatabase : IGxObject, IGxDatabase, IGxObjectContainer, IGxObjectUI, IGxPasteTarget,
+        IGxGeodatabase, IGxRemoteConnection
     {
         internal IDataServerManager dataServerManager = null;
         private IGxCatalog igxCatalog_0 = null;
@@ -47,7 +48,7 @@ namespace Yutai.ArcGIS.Catalog
             int count = this.igxObjectArray_0.Count;
             int num4 = 0;
             goto Label_0115;
-        Label_00AC:
+            Label_00AC:
             num = obj3.Name.ToUpper().CompareTo(strB);
             if (num == 0)
             {
@@ -66,8 +67,8 @@ namespace Yutai.ArcGIS.Catalog
                 this.igxObjectArray_0.Insert(num2, igxObject_1);
                 return igxObject_1;
             }
-        Label_0115:
-            num4 = (num2 + count) / 2;
+            Label_0115:
+            num4 = (num2 + count)/2;
             obj3 = this.igxObjectArray_0.Item(num4);
             if (!flag)
             {
@@ -111,7 +112,8 @@ namespace Yutai.ArcGIS.Catalog
             string serverName = this.dataServerManager.ServerName;
             bool_0 = false;
             (this.dataServerManager as IDataServerManagerAdmin).IsSimpleRecoveryModel(this.string_1, ref bool_0);
-            (this.dataServerManager as IDataServerManagerAdmin).BackupGeodatabase(this.string_1, string_3, string_2, string_4);
+            (this.dataServerManager as IDataServerManagerAdmin).BackupGeodatabase(this.string_1, string_3, string_2,
+                string_4);
         }
 
         public bool CanPaste(IEnumName ienumName_0, ref bool bool_0)
@@ -163,9 +165,11 @@ namespace Yutai.ArcGIS.Catalog
             string_2 = this.string_1;
         }
 
-        public void GetProperties(out string string_2, out object object_0, out int int_0, out string string_3, out object object_1)
+        public void GetProperties(out string string_2, out object object_0, out int int_0, out string string_3,
+            out object object_1)
         {
-            (this.dataServerManager as IDataServerManagerAdmin).GetDBProperties(this.string_1, out string_3, out int_0, out string_2, out object_0, out object_1);
+            (this.dataServerManager as IDataServerManagerAdmin).GetDBProperties(this.string_1, out string_3, out int_0,
+                out string_2, out object_0, out object_1);
         }
 
         private void method_0(IWorkspace iworkspace_1)
@@ -179,11 +183,13 @@ namespace Yutai.ArcGIS.Catalog
                 while (name2 != null)
                 {
                     obj2 = null;
-                    if ((name2.Type == esriDatasetType.esriDTRasterDataset) || (name2.Type == esriDatasetType.esriDTRasterCatalog))
+                    if ((name2.Type == esriDatasetType.esriDTRasterDataset) ||
+                        (name2.Type == esriDatasetType.esriDTRasterCatalog))
                     {
                         obj2 = new GxRasterDataset();
                     }
-                    else if ((name2.Type == esriDatasetType.esriDTFeatureClass) || (name2.Type == esriDatasetType.esriDTTable))
+                    else if ((name2.Type == esriDatasetType.esriDTFeatureClass) ||
+                             (name2.Type == esriDatasetType.esriDTTable))
                     {
                         obj2 = new GxDataset();
                     }
@@ -201,7 +207,7 @@ namespace Yutai.ArcGIS.Catalog
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
         }
 
@@ -229,26 +235,17 @@ namespace Yutai.ArcGIS.Catalog
 
         public bool AreChildrenViewable
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public string BaseName
         {
-            get
-            {
-                return string.Format("{0} ({1})", this.string_1, this.string_0);
-            }
+            get { return string.Format("{0} ({1})", this.string_1, this.string_0); }
         }
 
         public string Category
         {
-            get
-            {
-                return "空间数据库";
-            }
+            get { return "空间数据库"; }
         }
 
         public IEnumGxObject Children
@@ -257,7 +254,9 @@ namespace Yutai.ArcGIS.Catalog
             {
                 if (this.igxObjectArray_0.Count == 0)
                 {
-                    IWorkspaceName name = ((IDataServerManagerAdmin) this.dataServerManager).CreateWorkspaceName(this.string_1, "VERSION", "dbo.Default");
+                    IWorkspaceName name =
+                        ((IDataServerManagerAdmin) this.dataServerManager).CreateWorkspaceName(this.string_1, "VERSION",
+                            "dbo.Default");
                     this.iworkspace_0 = (name as IName).Open() as IWorkspace;
                     this.method_0(this.iworkspace_0);
                 }
@@ -267,158 +266,98 @@ namespace Yutai.ArcGIS.Catalog
 
         public UID ClassID
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public UID ContextMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public object DataServerManager
         {
-            get
-            {
-                return this.dataServerManager;
-            }
+            get { return this.dataServerManager; }
         }
 
         public string FullName
         {
-            get
-            {
-                return string.Format("{0} ({1})", this.string_1, this.string_0);
-            }
+            get { return string.Format("{0} ({1})", this.string_1, this.string_0); }
         }
 
         public bool HasChildren
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public IName InternalObjectName
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public bool IsConnected
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         public bool IsEnterpriseGeodatabase
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         public bool IsRemoteDatabase
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         public bool IsValid
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public Bitmap LargeImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(15);
-            }
+            get { return ImageLib.GetSmallImage(15); }
         }
 
         public Bitmap LargeSelectedImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(15);
-            }
+            get { return ImageLib.GetSmallImage(15); }
         }
 
         public string Name
         {
-            get
-            {
-                return string.Format("{0} ({1})", this.string_1, this.string_0);
-            }
+            get { return string.Format("{0} ({1})", this.string_1, this.string_0); }
         }
 
         public UID NewMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IGxObject Parent
         {
-            get
-            {
-                return this.igxObject_0;
-            }
+            get { return this.igxObject_0; }
         }
 
         public Bitmap SmallImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(15);
-            }
+            get { return ImageLib.GetSmallImage(15); }
         }
 
         public Bitmap SmallSelectedImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(15);
-            }
+            get { return ImageLib.GetSmallImage(15); }
         }
 
         public IWorkspace Workspace
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IWorkspaceName WorkspaceName
         {
-            get
-            {
-                return null;
-            }
-            set
-            {
-            }
+            get { return null; }
+            set { }
         }
     }
 }
-

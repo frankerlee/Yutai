@@ -9,7 +9,8 @@ using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Catalog
 {
-    public class GxCadDataset : IGxObject, IGxDataset, IGxObjectContainer, IGxObjectEdit, IGxObjectInternalName, IGxObjectProperties, IGxObjectUI, IGxPasteTarget
+    public class GxCadDataset : IGxObject, IGxDataset, IGxObjectContainer, IGxObjectEdit, IGxObjectInternalName,
+        IGxObjectProperties, IGxObjectUI, IGxPasteTarget
     {
         private IDatasetName idatasetName_0 = null;
         private IGxCatalog igxCatalog_0 = null;
@@ -125,7 +126,7 @@ namespace Yutai.ArcGIS.Catalog
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
         }
 
@@ -170,7 +171,8 @@ namespace Yutai.ArcGIS.Catalog
             {
                 IGxObject obj2 = new GxCadDataset();
                 IDatasetName name = new FeatureClassNameClass();
-                IWorkspaceName name2 = new WorkspaceNameClass {
+                IWorkspaceName name2 = new WorkspaceNameClass
+                {
                     WorkspaceFactoryProgID = "esriDataSourcesFile.CadWorkspaceFactory",
                     PathName = this.idatasetName_0.WorkspaceName.PathName
                 };
@@ -181,7 +183,7 @@ namespace Yutai.ArcGIS.Catalog
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
         }
 
@@ -189,7 +191,8 @@ namespace Yutai.ArcGIS.Catalog
         {
             IGxObject obj2 = new GxCadDrawing();
             IDatasetName name2 = new CadDrawingNameClass();
-            IWorkspaceName name = new WorkspaceNameClass {
+            IWorkspaceName name = new WorkspaceNameClass
+            {
                 WorkspaceFactoryProgID = "esriDataSourcesFile.CadWorkspaceFactory",
                 PathName = Path.GetDirectoryName(this.string_0)
             };
@@ -235,7 +238,7 @@ namespace Yutai.ArcGIS.Catalog
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
         }
 
@@ -254,18 +257,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public bool AreChildrenViewable
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         public string BaseName
         {
-            get
-            {
-                return Path.GetFileNameWithoutExtension(this.string_0);
-            }
+            get { return Path.GetFileNameWithoutExtension(this.string_0); }
         }
 
         public string Category
@@ -331,18 +328,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public UID ClassID
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public UID ContextMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IDataset Dataset
@@ -358,7 +349,7 @@ namespace Yutai.ArcGIS.Catalog
                 }
                 catch (Exception exception)
                 {
-                    Logger.Current.Error("",exception, "");
+                    Logger.Current.Error("", exception, "");
                 }
                 return null;
             }
@@ -366,10 +357,7 @@ namespace Yutai.ArcGIS.Catalog
 
         public IDatasetName DatasetName
         {
-            get
-            {
-                return this.idatasetName_0;
-            }
+            get { return this.idatasetName_0; }
             set
             {
                 this.idatasetName_0 = value;
@@ -379,93 +367,62 @@ namespace Yutai.ArcGIS.Catalog
 
         public string FullName
         {
-            get
-            {
-                return this.string_0;
-            }
+            get { return this.string_0; }
         }
 
         public bool HasChildren
         {
             get
             {
-                return ((this.idatasetName_0.Type == esriDatasetType.esriDTContainer) || (this.idatasetName_0.Type == esriDatasetType.esriDTCadDrawing));
+                return ((this.idatasetName_0.Type == esriDatasetType.esriDTContainer) ||
+                        (this.idatasetName_0.Type == esriDatasetType.esriDTCadDrawing));
             }
         }
 
         public IName InternalObjectName
         {
-            get
-            {
-                return (this.idatasetName_0 as IName);
-            }
+            get { return (this.idatasetName_0 as IName); }
         }
 
         public bool IsValid
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         IName IGxObjectInternalName.InternalObjectName
         {
-            get
-            {
-                return (this.idatasetName_0 as IName);
-            }
-            set
-            {
-            }
+            get { return (this.idatasetName_0 as IName); }
+            set { }
         }
 
         public Bitmap LargeImage
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public Bitmap LargeSelectedImage
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public string Name
         {
-            get
-            {
-                return Path.GetFileName(this.string_0);
-            }
+            get { return Path.GetFileName(this.string_0); }
         }
 
         public UID NewMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IGxObject Parent
         {
-            get
-            {
-                return this.igxObject_0;
-            }
+            get { return this.igxObject_0; }
         }
 
         public int PropertyCount
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         public Bitmap SmallImage
@@ -480,7 +437,8 @@ namespace Yutai.ArcGIS.Catalog
                     }
                     if (this.idatasetName_0.Type == esriDatasetType.esriDTFeatureClass)
                     {
-                        if ((this.idatasetName_0 as IFeatureClassName).FeatureType == esriFeatureType.esriFTCoverageAnnotation)
+                        if ((this.idatasetName_0 as IFeatureClassName).FeatureType ==
+                            esriFeatureType.esriFTCoverageAnnotation)
                         {
                             return ImageLib.GetSmallImage(44);
                         }
@@ -514,9 +472,9 @@ namespace Yutai.ArcGIS.Catalog
                 }
                 catch (Exception exception)
                 {
-                    Logger.Current.Error("",exception, "");
+                    Logger.Current.Error("", exception, "");
                 }
-            Label_00EE:
+                Label_00EE:
                 return ImageLib.GetSmallImage(40);
             }
         }
@@ -533,7 +491,8 @@ namespace Yutai.ArcGIS.Catalog
                     }
                     if (this.idatasetName_0 is IFeatureClassName)
                     {
-                        if ((this.idatasetName_0 as IFeatureClassName).FeatureType == esriFeatureType.esriFTCoverageAnnotation)
+                        if ((this.idatasetName_0 as IFeatureClassName).FeatureType ==
+                            esriFeatureType.esriFTCoverageAnnotation)
                         {
                             return ImageLib.GetSmallImage(44);
                         }
@@ -567,9 +526,9 @@ namespace Yutai.ArcGIS.Catalog
                 }
                 catch (Exception exception)
                 {
-                    Logger.Current.Error("",exception, "");
+                    Logger.Current.Error("", exception, "");
                 }
-            Label_00EE:
+                Label_00EE:
                 return ImageLib.GetSmallImage(40);
             }
         }
@@ -587,4 +546,3 @@ namespace Yutai.ArcGIS.Catalog
         }
     }
 }
-

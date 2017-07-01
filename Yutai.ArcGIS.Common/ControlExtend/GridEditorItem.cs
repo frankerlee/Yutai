@@ -31,59 +31,31 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         public bool Check
         {
-            get
-            {
-                return this.bool_0;
-            }
-            set
-            {
-                this.bool_0 = value;
-            }
+            get { return this.bool_0; }
+            set { this.bool_0 = value; }
         }
 
         public string Name
         {
-            get
-            {
-                return this.string_0;
-            }
+            get { return this.string_0; }
         }
 
         public RepositoryItem RepositoryItem
         {
-            get
-            {
-                return this.repositoryItem_0;
-            }
-            set
-            {
-                this.repositoryItem_0 = value;
-            }
+            get { return this.repositoryItem_0; }
+            set { this.repositoryItem_0 = value; }
         }
 
         public object Tag
         {
-            get
-            {
-                return this.object_1;
-            }
-            set
-            {
-                this.object_1 = value;
-            }
+            get { return this.object_1; }
+            set { this.object_1 = value; }
         }
 
         public object Value
         {
-            get
-            {
-                return this.object_0;
-            }
-            set
-            {
-                this.object_0 = value;
-            }
+            get { return this.object_0; }
+            set { this.object_0 = value; }
         }
     }
 }
-

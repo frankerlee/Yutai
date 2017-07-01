@@ -73,7 +73,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- public bool EditProperties(object @object)
+        public bool EditProperties(object @object)
         {
             for (int i = 0; i < this.tabControl1.TabPages.Count; i++)
             {
@@ -95,46 +95,27 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             return this.m_bChanged;
         }
 
- private void Property_OnValueChange()
+        private void Property_OnValueChange()
         {
             this.btnApply.Enabled = true;
         }
 
         public short ActivePage
         {
-            get
-            {
-                return this.m_ActivePage;
-            }
-            set
-            {
-                this.m_ActivePage = value;
-            }
+            get { return this.m_ActivePage; }
+            set { this.m_ActivePage = value; }
         }
 
         public bool HideApplyButton
         {
-            get
-            {
-                return this.m_HideApplyButton;
-            }
-            set
-            {
-                this.m_HideApplyButton = value;
-            }
+            get { return this.m_HideApplyButton; }
+            set { this.m_HideApplyButton = value; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.Text;
-            }
-            set
-            {
-                this.Text = value;
-            }
+            get { return this.Text; }
+            set { this.Text = value; }
         }
     }
 }
-

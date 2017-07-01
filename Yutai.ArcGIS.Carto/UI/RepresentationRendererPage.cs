@@ -33,7 +33,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.igeoFeatureLayer_0.Renderer = renderer as IFeatureRenderer;
         }
 
- private void method_0()
+        private void method_0()
         {
         }
 
@@ -47,7 +47,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void representationruleListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RepresentationruleListBox.RepresentationRuleWrap selectedItem = this.representationruleListBox1.SelectedItem as RepresentationruleListBox.RepresentationRuleWrap;
+            RepresentationruleListBox.RepresentationRuleWrap selectedItem =
+                this.representationruleListBox1.SelectedItem as RepresentationruleListBox.RepresentationRuleWrap;
             if (selectedItem != null)
             {
                 this.represationRuleCtrl_0.RepresentationRule = selectedItem.RepresentationRule;
@@ -85,8 +86,10 @@ namespace Yutai.ArcGIS.Carto.UI
                             if (this.irepresentationClass_0 == null)
                             {
                                 IFeatureClass featureClass = this.igeoFeatureLayer_0.FeatureClass;
-                                IRepresentationWorkspaceExtension repWSExtFromFClass = RepresentationAssist.GetRepWSExtFromFClass(featureClass);
-                                IDatasetName name2 = repWSExtFromFClass.get_FeatureClassRepresentationNames(featureClass).Next();
+                                IRepresentationWorkspaceExtension repWSExtFromFClass =
+                                    RepresentationAssist.GetRepWSExtFromFClass(featureClass);
+                                IDatasetName name2 =
+                                    repWSExtFromFClass.get_FeatureClassRepresentationNames(featureClass).Next();
                                 this.irepresentationClass_0 = repWSExtFromFClass.OpenRepresentationClass(name2.Name);
                             }
                             this.irepresentationRenderer_0.RepresentationClass = this.irepresentationClass_0;
@@ -98,7 +101,8 @@ namespace Yutai.ArcGIS.Carto.UI
                         IObjectCopy copy = new ObjectCopyClass();
                         this.irepresentationRenderer_0 = copy.Copy(pInObject) as IRepresentationRenderer;
                         this.irepresentationClass_0 = this.irepresentationRenderer_0.RepresentationClass;
-                        this.representationruleListBox1.Init(this.irepresentationRenderer_0.RepresentationClass.RepresentationRules);
+                        this.representationruleListBox1.Init(
+                            this.irepresentationRenderer_0.RepresentationClass.RepresentationRules);
                     }
                     if (this.bool_0)
                     {
@@ -110,26 +114,14 @@ namespace Yutai.ArcGIS.Carto.UI
 
         bool IUserControl.Visible
         {
-            get
-            {
-                return base.Visible;
-            }
-            set
-            {
-                base.Visible = value;
-            }
+            get { return base.Visible; }
+            set { base.Visible = value; }
         }
 
         public IRepresentationClass RepresentationClass
         {
-            get
-            {
-                return this.irepresentationClass_0;
-            }
-            set
-            {
-                this.irepresentationClass_0 = value;
-            }
+            get { return this.irepresentationClass_0; }
+            set { this.irepresentationClass_0 = value; }
         }
 
         public string RepresentationClassName
@@ -144,11 +136,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IRepresentationWorkspaceExtension RepresentationWorkspaceExtension
         {
-            set
-            {
-                this.irepresentationWorkspaceExtension_0 = value;
-            }
+            set { this.irepresentationWorkspaceExtension_0 = value; }
         }
     }
 }
-

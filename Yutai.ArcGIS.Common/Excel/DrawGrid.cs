@@ -15,27 +15,22 @@ namespace Yutai.ArcGIS.Common.Excel
     public class DrawGrid : GoldGrid, IDraw, IDisposable
     {
         //************字    段************		
-        private Graphics _graphics;             //绘图表面
-        private Rectangle _rectangle;           //绘制区
+        private Graphics _graphics; //绘图表面
+        private Rectangle _rectangle; //绘制区
 
         //绘笔
         private Brush _brush;
         private Pen _pen;
 
         #region IDraw 成员
+
         /// <summary>
         /// 获取或设置绘图表面
         /// </summary>
         public Graphics Graphics
         {
-            get
-            {
-                return this._graphics;
-            }
-            set
-            {
-                this._graphics = value;
-            }
+            get { return this._graphics; }
+            set { this._graphics = value; }
         }
 
         /// <summary>
@@ -43,14 +38,8 @@ namespace Yutai.ArcGIS.Common.Excel
         /// </summary>
         public System.Drawing.Rectangle Rectangle
         {
-            get
-            {
-                return _rectangle;
-            }
-            set
-            {
-                _rectangle = value;
-            }
+            get { return _rectangle; }
+            set { _rectangle = value; }
         }
 
         /// <summary>
@@ -58,10 +47,7 @@ namespace Yutai.ArcGIS.Common.Excel
         /// </summary>
         public Pen Pen
         {
-            get
-            {
-                return _pen;
-            }
+            get { return _pen; }
             set
             {
                 if (value != null)
@@ -76,10 +62,7 @@ namespace Yutai.ArcGIS.Common.Excel
         /// </summary>
         public Brush Brush
         {
-            get
-            {
-                return _brush;
-            }
+            get { return _brush; }
             set
             {
                 if (value != null)
@@ -113,7 +96,8 @@ namespace Yutai.ArcGIS.Common.Excel
         /// </summary>
         public void DrawGridLine()
         {
-            DrawGridLine(this._graphics, this._rectangle, this.Pen, this.GridText, this.PreferredRowHeight, this.ColsWidth, this.Line, this.Border, new PointF(1.0F, 1.0F), this.Merge);
+            DrawGridLine(this._graphics, this._rectangle, this.Pen, this.GridText, this.PreferredRowHeight,
+                this.ColsWidth, this.Line, this.Border, new PointF(1.0F, 1.0F), this.Merge);
         }
 
         /// <summary>
@@ -121,7 +105,8 @@ namespace Yutai.ArcGIS.Common.Excel
         /// </summary>
         public void DrawGridText()
         {
-            DrawGridText(this._graphics, this._rectangle, this.Brush, this.GridText, this.PreferredRowHeight, this.ColsWidth, this.ColsAlignString, this.Font, new PointF(1.0F, 1.0F), this.Merge);
+            DrawGridText(this._graphics, this._rectangle, this.Brush, this.GridText, this.PreferredRowHeight,
+                this.ColsWidth, this.ColsAlignString, this.Font, new PointF(1.0F, 1.0F), this.Merge);
         }
 
         /// <summary>
@@ -159,12 +144,12 @@ namespace Yutai.ArcGIS.Common.Excel
 			Console.WriteLine(secondDef.ToString());
 			*/
             DrawGridBorder();
-
         }
 
         #region	绘制核心
 
         #region 画标准横坚网格线核心 protected void DrawGridLine(Graphics g,Rectangle p_rec,int p_rows,int p_cols,int p_rowHeight,int[] p_arrColsWidth,GridLineFlag p_gridLineFlag,GridBorderFlag p_gridBorderFlag,PointF p_scaleXY)
+
         /// <summary>
         /// 画网格线，标准备的横竖线交叉的线
         /// </summary>
@@ -182,7 +167,8 @@ namespace Yutai.ArcGIS.Common.Excel
         /// 作    者：周方勇
         /// 修改日期：2004-08-07
         /// </remarks>
-        protected void DrawGridLine(Graphics g, Rectangle p_rec, Pen p_pen, int p_rows, int p_cols, int p_rowHeight, int[] p_arrColsWidth, GridLineFlag p_gridLineFlag, GridBorderFlag p_gridBorderFlag, PointF p_scaleXY)
+        protected void DrawGridLine(Graphics g, Rectangle p_rec, Pen p_pen, int p_rows, int p_cols, int p_rowHeight,
+            int[] p_arrColsWidth, GridLineFlag p_gridLineFlag, GridBorderFlag p_gridBorderFlag, PointF p_scaleXY)
         {
             //缩放矩阵，用于绘图
             Rectangle rec = new Rectangle(p_rec.X, p_rec.Y, p_rec.Width, p_rec.Height);
@@ -191,19 +177,20 @@ namespace Yutai.ArcGIS.Common.Excel
             this.TransGrid(g, rec, p_scaleXY);
 
             #region 有网格线才画
+
             if (p_gridLineFlag != GridLineFlag.None)
             {
-                int lngRows = p_rows;   //arrStrGrid.GetLength(0);			//行数，也可由二维数组算出
-                int lngCols = p_cols;   //arrStrGrid.GetLength(1);			//列数
+                int lngRows = p_rows; //arrStrGrid.GetLength(0);			//行数，也可由二维数组算出
+                int lngCols = p_cols; //arrStrGrid.GetLength(1);			//列数
 
-                int lngRowIndex;        //当前行
-                int lngColIndex;        //当前列
+                int lngRowIndex; //当前行
+                int lngColIndex; //当前列
 
                 //起止坐标
                 int X1, X2, Y1, Y2;
 
-                int lngLineLen;         //线长
-                int lngLineHei;         //线高
+                int lngLineLen; //线长
+                int lngLineHei; //线高
 
 
                 //计算坐标、线长、线高
@@ -211,6 +198,7 @@ namespace Yutai.ArcGIS.Common.Excel
                 lngLineHei = rec.Height;
 
                 #region 包括横线就画
+
                 if (p_gridLineFlag == GridLineFlag.Horizontal || p_gridLineFlag == GridLineFlag.Both)
                 {
                     //******先画横线******
@@ -221,7 +209,7 @@ namespace Yutai.ArcGIS.Common.Excel
                     //最上边与最下边的线不画
                     for (lngRowIndex = 1; lngRowIndex < lngRows; lngRowIndex++)
                     {
-                        Y1 += p_rowHeight;                      //这里可以换成行高数组
+                        Y1 += p_rowHeight; //这里可以换成行高数组
 
                         //Y1 += p_arrRowsWidth[lngRowIndex - 1];//这里可以换成行高数组
 
@@ -229,9 +217,11 @@ namespace Yutai.ArcGIS.Common.Excel
                         g.DrawLine(p_pen, X1, Y1, X2, Y2);
                     }
                 }
+
                 #endregion
 
                 #region 包括竖线就画
+
                 if (p_gridLineFlag == GridLineFlag.Vertical || p_gridLineFlag == GridLineFlag.Both)
                 {
                     //******再画竖线******
@@ -252,9 +242,10 @@ namespace Yutai.ArcGIS.Common.Excel
                         g.DrawLine(p_pen, X1, Y1, X2, Y2);
                     }
                 }
-                #endregion
 
-            }//End If
+                #endregion
+            } //End If
+
             #endregion
 
             //******边框******
@@ -265,11 +256,12 @@ namespace Yutai.ArcGIS.Common.Excel
 
             //重置，不再变换
             this.ResetTransGrid();
-
         }
+
         #endregion
 
         #region protected void DrawGridLine(Graphics g,Rectangle p_rec,Pen p_pen,string[,] arrStrGrid,int p_rowHeight,int[] p_arrColsWidth,GridLineFlag p_gridLineFlag,GridBorderFlag p_gridBorderFlag,PointF p_scaleXY)
+
         /// <summary>
         /// 画网格线，标准备的横竖线交叉的线
         /// </summary>
@@ -286,15 +278,19 @@ namespace Yutai.ArcGIS.Common.Excel
         /// 作    者：周方勇
         /// 修改日期：2004-08-07
         /// </remarks>
-        protected void DrawGridLine(Graphics g, Rectangle p_rec, Pen p_pen, string[,] arrStrGrid, int p_rowHeight, int[] p_arrColsWidth, GridLineFlag p_gridLineFlag, GridBorderFlag p_gridBorderFlag, PointF p_scaleXY)
+        protected void DrawGridLine(Graphics g, Rectangle p_rec, Pen p_pen, string[,] arrStrGrid, int p_rowHeight,
+            int[] p_arrColsWidth, GridLineFlag p_gridLineFlag, GridBorderFlag p_gridBorderFlag, PointF p_scaleXY)
         {
-            int lngRows = arrStrGrid.GetLength(0);          //行数
-            int lngCols = arrStrGrid.GetLength(1);          //列数
-            DrawGridLine(g, p_rec, p_pen, lngRows, lngCols, p_rowHeight, p_arrColsWidth, p_gridLineFlag, p_gridBorderFlag, p_scaleXY);
+            int lngRows = arrStrGrid.GetLength(0); //行数
+            int lngCols = arrStrGrid.GetLength(1); //列数
+            DrawGridLine(g, p_rec, p_pen, lngRows, lngCols, p_rowHeight, p_arrColsWidth, p_gridLineFlag,
+                p_gridBorderFlag, p_scaleXY);
         }
+
         #endregion
 
         #region 画合并线的核心 protected void DrawGridMergeLine(Graphics g,Rectangle p_rec,Pen p_pen,string[,] arrStrGrid,int p_rowHeight,int[] p_arrColsWidth,GridLineFlag p_gridLineFlag,GridBorderFlag p_gridBorderFlag,PointF p_scaleXY,GridMergeFlag gridMergeFlag)
+
         /// <summary>
         /// 画网格线，根据合并方式判断相邻单元格内容一格一格的画
         /// </summary>
@@ -312,23 +308,27 @@ namespace Yutai.ArcGIS.Common.Excel
         /// 作    者：周方勇
         /// 修改日期：2004-08-07
         /// </remarks>
-        protected void DrawGridMergeLine(Graphics g, Rectangle p_rec, Pen p_pen, string[,] arrStrGrid, int p_rowHeight, int[] p_arrColsWidth, GridLineFlag p_gridLineFlag, GridBorderFlag p_gridBorderFlag, PointF p_scaleXY, GridMergeFlag gridMergeFlag)
+        protected void DrawGridMergeLine(Graphics g, Rectangle p_rec, Pen p_pen, string[,] arrStrGrid, int p_rowHeight,
+            int[] p_arrColsWidth, GridLineFlag p_gridLineFlag, GridBorderFlag p_gridBorderFlag, PointF p_scaleXY,
+            GridMergeFlag gridMergeFlag)
         {
             //缩放矩阵，用于绘图
             Rectangle rec = new Rectangle(p_rec.X, p_rec.Y, p_rec.Width, p_rec.Height);
 
-            int lngRows = arrStrGrid.GetLength(0);          //行数
-            int lngCols = arrStrGrid.GetLength(1);          //列数
+            int lngRows = arrStrGrid.GetLength(0); //行数
+            int lngCols = arrStrGrid.GetLength(1); //列数
 
             //网格不合并直接画标准网格线，否则一个单元格一个单元格的画
             if (gridMergeFlag == GridMergeFlag.None)
             {
-                this.DrawGridLine(g, rec, p_pen, lngRows, lngCols, p_rowHeight, p_arrColsWidth, p_gridLineFlag, p_gridBorderFlag, p_scaleXY);
+                this.DrawGridLine(g, rec, p_pen, lngRows, lngCols, p_rowHeight, p_arrColsWidth, p_gridLineFlag,
+                    p_gridBorderFlag, p_scaleXY);
                 return;
             }
             else
             {
                 #region 有网格线才画
+
                 if (p_gridLineFlag != GridLineFlag.None)
                 {
                     //变换
@@ -354,7 +354,7 @@ namespace Yutai.ArcGIS.Common.Excel
                             //－－－－－水平线－－－－－
                             X2 = X1 + mArrColWidth[j];
 
-                            Y1 = rec.Y + p_rowHeight * i;       //****可用行高数组
+                            Y1 = rec.Y + p_rowHeight*i; //****可用行高数组
                             Y2 = Y1;
                             //画第二行开始及以下的横线，当前行与上一行文本不同
                             if (i > 0)
@@ -374,7 +374,7 @@ namespace Yutai.ArcGIS.Common.Excel
                             //画第二列以后的竖线，当前列与上一列比较
                             if (j > 0)
                             {
-                                Y2 = Y2 + p_rowHeight;          //****可用行高数组
+                                Y2 = Y2 + p_rowHeight; //****可用行高数组
                                 X2 = X1;
                                 //任意合并，只要相邻单元格内容不同就画线，即只要相邻单元格内容相同就合并
                                 if (gridMergeFlag == GridMergeFlag.Any)
@@ -389,9 +389,9 @@ namespace Yutai.ArcGIS.Common.Excel
 
                             //下一列,宽加上						
                             X1 += mArrColWidth[j];
+                        } //End For 列	
+                    } //End For 行					
 
-                        }//End For 列	
-                    }//End For 行					
                     #endregion
 
                     //******边框******
@@ -402,14 +402,16 @@ namespace Yutai.ArcGIS.Common.Excel
 
                     //重置，不再变换
                     this.ResetTransGrid();
-                }//End If
-                #endregion
+                } //End If
 
-            }//End If		
-        }//End Function
+                #endregion
+            } //End If		
+        } //End Function
+
         #endregion
 
         #region 标准不合并网格的文本 protected void DrawGridText(Graphics g,Rectangle p_rec,Brush p_brush,string[,] arrStrGrid,int p_rowHeight,int[] p_arrColsWidth,string alignment,Font p_font,PointF p_scaleXY)
+
         /// <summary>
         /// 绘制网格文本，标准的行与列单元格，无合并
         /// </summary>
@@ -425,7 +427,8 @@ namespace Yutai.ArcGIS.Common.Excel
         /// 作    者：周方勇
         /// 修改日期：2004-08-07
         /// </remarks>
-        protected void DrawGridText(Graphics g, Rectangle p_rec, Brush p_brush, string[,] arrStrGrid, int p_rowHeight, int[] p_arrColsWidth, string alignment, Font p_font, PointF p_scaleXY)
+        protected void DrawGridText(Graphics g, Rectangle p_rec, Brush p_brush, string[,] arrStrGrid, int p_rowHeight,
+            int[] p_arrColsWidth, string alignment, Font p_font, PointF p_scaleXY)
         {
             try
             {
@@ -438,8 +441,8 @@ namespace Yutai.ArcGIS.Common.Excel
                     font = new Font("宋体", 12.0F);
                 }
 
-                int lngRows = arrStrGrid.GetLength(0);          //行数
-                int lngCols = arrStrGrid.GetLength(1);          //列数
+                int lngRows = arrStrGrid.GetLength(0); //行数
+                int lngCols = arrStrGrid.GetLength(1); //列数
 
                 //列宽
                 int[] mArrColWidth = new int[lngCols];
@@ -457,42 +460,41 @@ namespace Yutai.ArcGIS.Common.Excel
 
                 #region	画单元格文本
 
-                StringFormat sf = new StringFormat();           //字符格式
-                sf.LineAlignment = StringAlignment.Center;      //垂直居中
+                StringFormat sf = new StringFormat(); //字符格式
+                sf.LineAlignment = StringAlignment.Center; //垂直居中
                 sf.FormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoWrap;
 
                 for (int i = 0; i < lngRows; i++)
                 {
                     X1 = rec.X;
-                    Y1 = rec.Y + p_rowHeight * i;                   //****可用行数组
+                    Y1 = rec.Y + p_rowHeight*i; //****可用行数组
 
                     for (int j = 0; j < lngCols; j++)
                     {
                         width = mArrColWidth[j];
 
-                        Rectangle recCell = new Rectangle(X1, Y1, width, p_rowHeight + 4);  //实际上居中会稍微偏上，因为字体有预留边距
+                        Rectangle recCell = new Rectangle(X1, Y1, width, p_rowHeight + 4); //实际上居中会稍微偏上，因为字体有预留边距
 
-                        sf.Alignment = StringAlignment.Near;                //默认左对齐						
+                        sf.Alignment = StringAlignment.Near; //默认左对齐						
 
                         if (arrAlign.Length > j)
                         {
                             if (arrAlign[j] == AlignFlag.Center)
                             {
-                                sf.Alignment = StringAlignment.Center;      //居中
+                                sf.Alignment = StringAlignment.Center; //居中
                             }
                             else if (arrAlign[j] == AlignFlag.Right)
                             {
-                                sf.Alignment = StringAlignment.Far;     //居右
+                                sf.Alignment = StringAlignment.Far; //居右
                             }
                         }
 
                         g.DrawString(arrStrGrid[i, j], font, p_brush, recCell, sf);
 
                         X1 += width;
+                    } //End For 列	
+                } //End For 行					
 
-                    }//End For 列	
-
-                }//End For 行					
                 #endregion
 
                 //重置，不再变换
@@ -506,13 +508,13 @@ namespace Yutai.ArcGIS.Common.Excel
             }
             finally
             {
-
             }
+        } //End Function
 
-        }//End Function
         #endregion
 
         #region 合并方式下的网格文本 protected void DrawGridText(Graphics g,Rectangle p_rec,Brush p_brush,string[,] arrStrGrid,int p_rowHeight,int[] p_arrColsWidth,string alignment,Font p_font,PointF p_scaleXY,GridMergeFlag gridMergeFlag)
+
         /// <summary>
         /// 绘制网格文本，标准的行与列单元格，无合并
         /// </summary>
@@ -528,7 +530,9 @@ namespace Yutai.ArcGIS.Common.Excel
         /// 作    者：周方勇
         /// 修改日期：2004-08-07
         /// </remarks>
-        protected void DrawGridMergeText(Graphics g, Rectangle p_rec, Brush p_brush, string[,] arrStrGrid, int p_rowHeight, int[] p_arrColsWidth, string alignment, Font p_font, PointF p_scaleXY, GridMergeFlag gridMergeFlag)
+        protected void DrawGridMergeText(Graphics g, Rectangle p_rec, Brush p_brush, string[,] arrStrGrid,
+            int p_rowHeight, int[] p_arrColsWidth, string alignment, Font p_font, PointF p_scaleXY,
+            GridMergeFlag gridMergeFlag)
         {
             if (gridMergeFlag == GridMergeFlag.None)
             {
@@ -547,8 +551,8 @@ namespace Yutai.ArcGIS.Common.Excel
                     font = new Font("宋体", 12.0F);
                 }
 
-                int lngRows = arrStrGrid.GetLength(0);          //行数
-                int lngCols = arrStrGrid.GetLength(1);          //列数
+                int lngRows = arrStrGrid.GetLength(0); //行数
+                int lngCols = arrStrGrid.GetLength(1); //列数
 
                 //列宽
                 int[] mArrColWidth = new int[lngCols];
@@ -563,11 +567,11 @@ namespace Yutai.ArcGIS.Common.Excel
 
                 #region	画单元格文本
 
-                StringFormat sf = new StringFormat();           //字符格式
-                sf.LineAlignment = StringAlignment.Center;      //垂直居中
+                StringFormat sf = new StringFormat(); //字符格式
+                sf.LineAlignment = StringAlignment.Center; //垂直居中
                 sf.FormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoWrap;
 
-                CellRectangle cell = new CellRectangle(rec.X, rec.Y, 0, p_rowHeight);   //单元格
+                CellRectangle cell = new CellRectangle(rec.X, rec.Y, 0, p_rowHeight); //单元格
 
                 for (int i = 0; i < lngRows; i++)
                 {
@@ -576,26 +580,27 @@ namespace Yutai.ArcGIS.Common.Excel
                         //.....
                         cell = this.GetMergeCell(new Point(rec.X, rec.Y), arrStrGrid, p_rowHeight, mArrColWidth, i, j);
 
-                        Rectangle recCell = new Rectangle(cell.Left, cell.Top, cell.Width, cell.Height + 4);  //实际上居中会稍微偏上，因为字体有预留边距
+                        Rectangle recCell = new Rectangle(cell.Left, cell.Top, cell.Width, cell.Height + 4);
+                            //实际上居中会稍微偏上，因为字体有预留边距
 
-                        sf.Alignment = StringAlignment.Near;                //默认左对齐						
+                        sf.Alignment = StringAlignment.Near; //默认左对齐						
 
                         if (arrAlign.Length > j)
                         {
                             if (arrAlign[j] == AlignFlag.Center)
                             {
-                                sf.Alignment = StringAlignment.Center;      //居中
+                                sf.Alignment = StringAlignment.Center; //居中
                             }
                             else if (arrAlign[j] == AlignFlag.Right)
                             {
-                                sf.Alignment = StringAlignment.Far;     //居右
+                                sf.Alignment = StringAlignment.Far; //居右
                             }
                         }
 
                         g.DrawString(arrStrGrid[i, j], font, p_brush, recCell, sf);
-                    }//End For 列	
+                    } //End For 列	
+                } //End For 行					
 
-                }//End For 行					
                 #endregion
 
                 //重置，不再变换
@@ -609,12 +614,13 @@ namespace Yutai.ArcGIS.Common.Excel
             }
             finally
             {
-
             }
-        }//End Function
+        } //End Function
+
         #endregion
 
         #region protected void DrawGridBorder(Graphics g,Rectangle rec,Pen p_pen,GridBorderFlag p_gridBorderFlag)
+
         /// <summary>
         /// 绘制网格边框
         /// </summary>
@@ -629,8 +635,8 @@ namespace Yutai.ArcGIS.Common.Excel
                 return;
             }
 
-            float penwidth = 1F;        //笔宽
-            int movXY = 0;              //根据笔的粗细要相应的调整矩形
+            float penwidth = 1F; //笔宽
+            int movXY = 0; //根据笔的粗细要相应的调整矩形
 
             switch (p_gridBorderFlag)
             {
@@ -653,7 +659,7 @@ namespace Yutai.ArcGIS.Common.Excel
             }
 
 
-            Pen pen = (Pen)(p_pen.Clone());
+            Pen pen = (Pen) (p_pen.Clone());
             pen.Width = penwidth;
 
             //g.DrawRectangle(pen,rec);			
@@ -661,8 +667,8 @@ namespace Yutai.ArcGIS.Common.Excel
             Rectangle recBorder = rec;
             recBorder.X = rec.X - movXY;
             recBorder.Y = rec.Y - movXY;
-            recBorder.Width = rec.Width + movXY * 2;
-            recBorder.Height = rec.Height + movXY * 2;
+            recBorder.Width = rec.Width + movXY*2;
+            recBorder.Height = rec.Height + movXY*2;
             //外边框
             g.DrawRectangle(pen, recBorder);
 
@@ -694,10 +700,11 @@ namespace Yutai.ArcGIS.Common.Excel
         {
             //this.Graphics.ResetTransform();
         }
+
         #endregion
 
-
         #region 画合并线的核心 protected void DrawGridLine(Graphics g,Rectangle p_rec,Pen p_pen,string[,] arrStrGrid,int p_rowHeight,int[] p_arrColsWidth,GridLineFlag p_gridLineFlag,GridBorderFlag p_gridBorderFlag,PointF p_scaleXY,GridMergeFlag gridMergeFlag)
+
         /// <summary>
         /// 画网格线，根据合并方式判断相邻单元格内容一格一格的画
         /// </summary>
@@ -715,23 +722,27 @@ namespace Yutai.ArcGIS.Common.Excel
         /// 作    者：周方勇
         /// 修改日期：2004-08-07
         /// </remarks>
-        protected void DrawGridLine(Graphics g, Rectangle p_rec, Pen p_pen, string[,] arrStrGrid, int p_rowHeight, int[] p_arrColsWidth, GridLineFlag p_gridLineFlag, GridBorderFlag p_gridBorderFlag, PointF p_scaleXY, GridMergeFlag gridMergeFlag)
+        protected void DrawGridLine(Graphics g, Rectangle p_rec, Pen p_pen, string[,] arrStrGrid, int p_rowHeight,
+            int[] p_arrColsWidth, GridLineFlag p_gridLineFlag, GridBorderFlag p_gridBorderFlag, PointF p_scaleXY,
+            GridMergeFlag gridMergeFlag)
         {
             //缩放矩阵，用于绘图
             Rectangle rec = new Rectangle(p_rec.X, p_rec.Y, p_rec.Width, p_rec.Height);
 
-            int lngRows = arrStrGrid.GetLength(0);          //行数
-            int lngCols = arrStrGrid.GetLength(1);          //列数
+            int lngRows = arrStrGrid.GetLength(0); //行数
+            int lngCols = arrStrGrid.GetLength(1); //列数
 
             //网格不合并直接画标准网格线，否则一个单元格一个单元格的画
             if (gridMergeFlag == GridMergeFlag.None)
             {
-                this.DrawGridLine(g, rec, p_pen, lngRows, lngCols, p_rowHeight, p_arrColsWidth, p_gridLineFlag, p_gridBorderFlag, p_scaleXY);
+                this.DrawGridLine(g, rec, p_pen, lngRows, lngCols, p_rowHeight, p_arrColsWidth, p_gridLineFlag,
+                    p_gridBorderFlag, p_scaleXY);
                 return;
             }
             else
             {
                 #region 有网格线才画
+
                 if (p_gridLineFlag != GridLineFlag.None)
                 {
                     //变换
@@ -757,7 +768,7 @@ namespace Yutai.ArcGIS.Common.Excel
                             //－－－－－水平线－－－－－
                             X2 = X1 + mArrColWidth[j];
 
-                            Y1 = rec.Y + p_rowHeight * i;       //****可用行高数组
+                            Y1 = rec.Y + p_rowHeight*i; //****可用行高数组
                             Y2 = Y1;
                             //画第二行开始及以下的横线，当前行与上一行文本不同
                             if (i > 0)
@@ -790,14 +801,13 @@ namespace Yutai.ArcGIS.Common.Excel
                                         }
                                         break;
                                 }
-
                             }
 
                             //－－－－－'竖线－－－－－
                             //画第二列以后的竖线，当前列与上一列比较
                             if (j > 0)
                             {
-                                Y2 = Y2 + p_rowHeight;          //****可用行高数组
+                                Y2 = Y2 + p_rowHeight; //****可用行高数组
                                 X2 = X1;
 
                                 switch (gridMergeFlag)
@@ -832,9 +842,9 @@ namespace Yutai.ArcGIS.Common.Excel
 
                             //下一列,宽加上						
                             X1 += mArrColWidth[j];
+                        } //End For 列	
+                    } //End For 行					
 
-                        }//End For 列	
-                    }//End For 行					
                     #endregion
 
                     //******边框******
@@ -845,15 +855,16 @@ namespace Yutai.ArcGIS.Common.Excel
 
                     //重置，不再变换
                     this.ResetTransGrid();
-                }//End If
-                #endregion
+                } //End If
 
-            }//End If		
-        }//End Function
+                #endregion
+            } //End If		
+        } //End Function
+
         #endregion
 
-
-        protected void DrawGridText(Graphics g, Rectangle p_rec, Brush p_brush, string[,] arrStrGrid, int p_rowHeight, int[] p_arrColsWidth, string alignment, Font p_font, PointF p_scaleXY, GridMergeFlag gridMergeFlag)
+        protected void DrawGridText(Graphics g, Rectangle p_rec, Brush p_brush, string[,] arrStrGrid, int p_rowHeight,
+            int[] p_arrColsWidth, string alignment, Font p_font, PointF p_scaleXY, GridMergeFlag gridMergeFlag)
         {
             if (gridMergeFlag == GridMergeFlag.None)
             {
@@ -872,8 +883,8 @@ namespace Yutai.ArcGIS.Common.Excel
                     font = new Font("宋体", 12.0F);
                 }
 
-                int lngRows = arrStrGrid.GetLength(0);          //行数
-                int lngCols = arrStrGrid.GetLength(1);          //列数
+                int lngRows = arrStrGrid.GetLength(0); //行数
+                int lngCols = arrStrGrid.GetLength(1); //列数
 
                 //列宽
                 int[] mArrColWidth = new int[lngCols];
@@ -888,39 +899,41 @@ namespace Yutai.ArcGIS.Common.Excel
 
                 #region	画单元格文本
 
-                StringFormat sf = new StringFormat();           //字符格式
-                sf.LineAlignment = StringAlignment.Center;      //垂直居中
-                sf.FormatFlags = StringFormatFlags.LineLimit;   //| StringFormatFlags.NoWrap; //可换行否
+                StringFormat sf = new StringFormat(); //字符格式
+                sf.LineAlignment = StringAlignment.Center; //垂直居中
+                sf.FormatFlags = StringFormatFlags.LineLimit; //| StringFormatFlags.NoWrap; //可换行否
 
-                CellRectangle cell = new CellRectangle(rec.X, rec.Y, 0, p_rowHeight);   //单元格
+                CellRectangle cell = new CellRectangle(rec.X, rec.Y, 0, p_rowHeight); //单元格
 
                 for (int i = 0; i < lngRows; i++)
                 {
                     for (int j = 0; j < lngCols; j++)
                     {
                         //.....
-                        cell = this.GetMergeCell(new Point(rec.X, rec.Y), arrStrGrid, p_rowHeight, mArrColWidth, i, j, gridMergeFlag);
+                        cell = this.GetMergeCell(new Point(rec.X, rec.Y), arrStrGrid, p_rowHeight, mArrColWidth, i, j,
+                            gridMergeFlag);
 
-                        Rectangle recCell = new Rectangle(cell.Left, cell.Top, cell.Width, cell.Height + 4);  //实际上居中会稍微偏上，因为字体有预留边距
+                        Rectangle recCell = new Rectangle(cell.Left, cell.Top, cell.Width, cell.Height + 4);
+                            //实际上居中会稍微偏上，因为字体有预留边距
 
-                        sf.Alignment = StringAlignment.Near;                //默认左对齐						
+                        sf.Alignment = StringAlignment.Near; //默认左对齐						
 
                         if (arrAlign.Length > j)
                         {
                             if (arrAlign[j] == AlignFlag.Center)
                             {
-                                sf.Alignment = StringAlignment.Center;      //居中
+                                sf.Alignment = StringAlignment.Center; //居中
                             }
                             else if (arrAlign[j] == AlignFlag.Right)
                             {
-                                sf.Alignment = StringAlignment.Far;     //居右
+                                sf.Alignment = StringAlignment.Far; //居右
                             }
                         }
 
                         g.DrawString(arrStrGrid[i, j], font, p_brush, recCell, sf);
-                    }//End For 列	
+                    } //End For 列	
+                } //End For 行					
 
-                }//End For 行					
                 #endregion
 
                 //重置，不再变换
@@ -934,10 +947,8 @@ namespace Yutai.ArcGIS.Common.Excel
             }
             finally
             {
-
             }
-        }//End Function
-
+        } //End Function
 
         #region protected virtual Cell GetMergeCell(Point GridLocation,string[,] arrStrGrid,int rowHeight,int[] ArrColWidth,int rowSel,int colSel,GridMergeFlag gridMergeFlag)
 
@@ -951,23 +962,25 @@ namespace Yutai.ArcGIS.Common.Excel
         /// <param name="rowSel">指定单元格行</param>
         /// <param name="colSel">指定单元格列</param>
         /// <returns></returns>
-        protected virtual CellRectangle GetMergeCell(Point GridLocation, string[,] arrStrGrid, int rowHeight, int[] ArrColWidth, int rowSel, int colSel, GridMergeFlag gridMergeFlag)
+        protected virtual CellRectangle GetMergeCell(Point GridLocation, string[,] arrStrGrid, int rowHeight,
+            int[] ArrColWidth, int rowSel, int colSel, GridMergeFlag gridMergeFlag)
         {
             CellRectangle cell = new CellRectangle(0, 0, 0, 0);
 
-            int lngRows = arrStrGrid.GetLength(0);  //行数
-            int lngCols = arrStrGrid.GetLength(1);  //列数
+            int lngRows = arrStrGrid.GetLength(0); //行数
+            int lngCols = arrStrGrid.GetLength(1); //列数
 
-            int lngMergeRows = 1;                   //合并的行数（本身为1）
-            int lngMergeCols = 1;                   //合并的列数
+            int lngMergeRows = 1; //合并的行数（本身为1）
+            int lngMergeCols = 1; //合并的列数
 
-            int lngStartRow = rowSel;               //记录与此单元格合并的起始行
-            int lngEndRow = rowSel;                 //以便计算高及起点Y坐标
+            int lngStartRow = rowSel; //记录与此单元格合并的起始行
+            int lngEndRow = rowSel; //以便计算高及起点Y坐标
 
-            int lngStartCol = colSel;               //记录与此单元格合并的起始列
-            int lngEndCol = colSel;                 //以便计算宽及起点X坐标
+            int lngStartCol = colSel; //记录与此单元格合并的起始列
+            int lngEndCol = colSel; //以便计算宽及起点X坐标
 
-            if (gridMergeFlag == GridMergeFlag.Any || gridMergeFlag == GridMergeFlag.Col || gridMergeFlag == GridMergeFlag.ColDependOnBeforeGroup)
+            if (gridMergeFlag == GridMergeFlag.Any || gridMergeFlag == GridMergeFlag.Col ||
+                gridMergeFlag == GridMergeFlag.ColDependOnBeforeGroup)
             {
                 //计算在"列"上进行行合并时起始行与合并的多少
                 //往上查合并(列不变)
@@ -1000,7 +1013,6 @@ namespace Yutai.ArcGIS.Common.Excel
 
             if (gridMergeFlag == GridMergeFlag.Any || gridMergeFlag == GridMergeFlag.Row)
             {
-
                 //计算在"行"上进行列合并时起始列与合并的多少
                 //往左查合并(行不变)
                 for (int colIndex = colSel - 1; colIndex >= 0; colIndex--)
@@ -1028,12 +1040,11 @@ namespace Yutai.ArcGIS.Common.Excel
                         break;
                     }
                 }
-
             }
 
             //******************计算左顶宽高******************
             int cellLeft = GridLocation.X;
-            int cellTop = GridLocation.Y + lngStartRow * rowHeight; //若行高不是固定行高，可以计算之前行的行高总和
+            int cellTop = GridLocation.Y + lngStartRow*rowHeight; //若行高不是固定行高，可以计算之前行的行高总和
 
             int cellWidth = 0;
             int cellHeight = 0;
@@ -1050,7 +1061,7 @@ namespace Yutai.ArcGIS.Common.Excel
                 cellWidth += ArrColWidth[i];
             }
 
-            cellHeight = lngMergeRows * rowHeight;                  //若行高不是固定行高，可以计算所有行的行高总和
+            cellHeight = lngMergeRows*rowHeight; //若行高不是固定行高，可以计算所有行的行高总和
 
             cell = new CellRectangle(cellLeft, cellTop, cellWidth, cellHeight);
 
@@ -1058,8 +1069,5 @@ namespace Yutai.ArcGIS.Common.Excel
         }
 
         #endregion
-
-    }//End Class
-}//End NameSpace
-
-
+    } //End Class
+} //End NameSpace

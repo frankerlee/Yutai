@@ -13,6 +13,7 @@ namespace Yutai.Plugins.TableEditor.Controls
     public partial class FunctionTreeView : TreeView
     {
         private IFunction _function;
+
         public FunctionTreeView()
         {
             InitializeComponent();
@@ -43,7 +44,7 @@ namespace Yutai.Plugins.TableEditor.Controls
                 if (parrentNode == null)
                     continue;
                 TreeNode node = parrentNode.Nodes.Add(function.Key, function.Caption, 1, 2);
-                
+
                 node.ToolTipText = function.GetDescription();
                 node.Tag = function;
             }

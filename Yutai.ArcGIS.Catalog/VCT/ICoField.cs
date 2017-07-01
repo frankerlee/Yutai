@@ -21,4 +21,3 @@
         CoFieldType Type { get; set; }
     }
 }
-

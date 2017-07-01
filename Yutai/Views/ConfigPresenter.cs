@@ -24,10 +24,10 @@ namespace Yutai.Views
         private readonly IConfigService _configService;
         private readonly IStyleService _styleService;
         private readonly IPluginManager _pluginManger;
-        
+
 
         public ConfigPresenter(IAppContext context, IConfigView view, IConfigService configService,
-        IStyleService styleService, IPluginManager pluginManger)
+            IStyleService styleService, IPluginManager pluginManger)
             : base(view)
         {
             if (context == null) throw new ArgumentNullException("context");
@@ -35,13 +35,13 @@ namespace Yutai.Views
             if (configService == null) throw new ArgumentNullException("configService");
             if (styleService == null) throw new ArgumentNullException("styleService");
             if (pluginManger == null) throw new ArgumentNullException("pluginManger");
-           
+
 
             _context = context;
             _configService = configService;
             _styleService = styleService;
             _pluginManger = pluginManger;
-           
+
 
             view.PageShown += OnPageShown;
         }
@@ -95,7 +95,9 @@ namespace Yutai.Views
 
         private void RestorePlugins()
         {
-            if (!MessageService.Current.Ask("Do you want to restore default set of plugins and location of their panels?"))
+            if (
+                !MessageService.Current.Ask(
+                    "Do you want to restore default set of plugins and location of their panels?"))
             {
                 return;
             }
@@ -139,7 +141,4 @@ namespace Yutai.Views
             return true;
         }
     }
-
-
-   
 }

@@ -13,4 +13,3 @@ namespace Yutai.ArcGIS.Catalog
         Bitmap SmallSelectedImage { get; }
     }
 }
-

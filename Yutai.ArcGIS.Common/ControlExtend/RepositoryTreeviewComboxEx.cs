@@ -18,11 +18,10 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             Brush brush = null;
             ImageComboBoxItemEx item = e.Item as ImageComboBoxItemEx;
             RectangleF layoutRectangle = RectangleF.Inflate(e.Bounds, -2f, -1f);
-            layoutRectangle.X += item.Degree * this.int_0;
+            layoutRectangle.X += item.Degree*this.int_0;
             Font font = new Font("宋体", 8f);
             e.Graphics.DrawString(e.Item.ToString() + "_MyTest", font, brush, layoutRectangle);
             e.Handled = true;
         }
     }
 }
-

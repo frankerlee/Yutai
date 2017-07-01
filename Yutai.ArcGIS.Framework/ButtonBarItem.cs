@@ -9,4 +9,3 @@
         public abstract string Caption { set; }
     }
 }
-

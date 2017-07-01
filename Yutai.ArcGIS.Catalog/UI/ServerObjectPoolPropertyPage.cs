@@ -44,7 +44,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
         }
 
- private void method_0()
+        private void method_0()
         {
             if (this.iserverObjectConfiguration_0.IsPooled)
             {
@@ -147,31 +147,18 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         public IAGSServerConnectionAdmin AGSConnectionAdmin
         {
-            set
-            {
-                this.iagsserverConnectionAdmin_0 = value;
-            }
+            set { this.iagsserverConnectionAdmin_0 = value; }
         }
 
         public IServerObjectConfiguration ServerObjectConfiguration
         {
-            get
-            {
-                return this.iserverObjectConfiguration_0;
-            }
-            set
-            {
-                this.iserverObjectConfiguration_0 = value;
-            }
+            get { return this.iserverObjectConfiguration_0; }
+            set { this.iserverObjectConfiguration_0 = value; }
         }
 
         public string Status
         {
-            set
-            {
-                this.string_0 = value;
-            }
+            set { this.string_0 = value; }
         }
     }
 }
-

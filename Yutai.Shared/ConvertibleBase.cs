@@ -12,7 +12,7 @@ namespace Yutai.Shared
     /// Wouldn't it be better if Syncfusion guys added this check in their source, rather than force everybody to maim
     /// their business objects?
     /// </summary>
-    public class ConvertibleBase: IConvertible
+    public class ConvertibleBase : IConvertible
     {
         TypeCode IConvertible.GetTypeCode()
         {

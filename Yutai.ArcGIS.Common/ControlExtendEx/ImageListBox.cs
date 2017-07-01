@@ -30,26 +30,40 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
         protected override void OnDrawItem(DrawItemEventArgs drawItemEventArgs_0)
         {
             base.OnDrawItem(drawItemEventArgs_0);
-            if (((drawItemEventArgs_0.Index >= 0) && (base.Items.Count > 0)) && (drawItemEventArgs_0.Index < base.Items.Count))
+            if (((drawItemEventArgs_0.Index >= 0) && (base.Items.Count > 0)) &&
+                (drawItemEventArgs_0.Index < base.Items.Count))
             {
                 drawItemEventArgs_0.DrawBackground();
                 drawItemEventArgs_0.DrawFocusRectangle();
-                if (((this.ImageList == null) || (this.ImageList.Images.Count == 0)) || (drawItemEventArgs_0.Index == (base.Items.Count - 1)))
+                if (((this.ImageList == null) || (this.ImageList.Images.Count == 0)) ||
+                    (drawItemEventArgs_0.Index == (base.Items.Count - 1)))
                 {
-                    drawItemEventArgs_0.Graphics.DrawIcon(this.icon_0, new Rectangle(drawItemEventArgs_0.Bounds.X + 2, drawItemEventArgs_0.Bounds.Y + 5, this.icon_0.Width, this.icon_0.Height));
-                    drawItemEventArgs_0.Graphics.DrawString(base.Items[drawItemEventArgs_0.Index].ToString(), drawItemEventArgs_0.Font, new SolidBrush(drawItemEventArgs_0.ForeColor), (float) ((drawItemEventArgs_0.Bounds.X + 16) + 3), (float) (drawItemEventArgs_0.Bounds.Y + 5));
+                    drawItemEventArgs_0.Graphics.DrawIcon(this.icon_0,
+                        new Rectangle(drawItemEventArgs_0.Bounds.X + 2, drawItemEventArgs_0.Bounds.Y + 5,
+                            this.icon_0.Width, this.icon_0.Height));
+                    drawItemEventArgs_0.Graphics.DrawString(base.Items[drawItemEventArgs_0.Index].ToString(),
+                        drawItemEventArgs_0.Font, new SolidBrush(drawItemEventArgs_0.ForeColor),
+                        (float) ((drawItemEventArgs_0.Bounds.X + 16) + 3), (float) (drawItemEventArgs_0.Bounds.Y + 5));
                 }
                 else
                 {
                     if (drawItemEventArgs_0.Index < (base.Items.Count - 1))
                     {
-                        drawItemEventArgs_0.Graphics.DrawImage(this.ImageList.Images[drawItemEventArgs_0.Index], new Rectangle(drawItemEventArgs_0.Bounds.X + 2, drawItemEventArgs_0.Bounds.Y + 5, this.ImageList.ImageSize.Width, this.ImageList.ImageSize.Height));
+                        drawItemEventArgs_0.Graphics.DrawImage(this.ImageList.Images[drawItemEventArgs_0.Index],
+                            new Rectangle(drawItemEventArgs_0.Bounds.X + 2, drawItemEventArgs_0.Bounds.Y + 5,
+                                this.ImageList.ImageSize.Width, this.ImageList.ImageSize.Height));
                     }
                     else
                     {
-                        drawItemEventArgs_0.Graphics.DrawIcon(this.icon_0, new Rectangle(drawItemEventArgs_0.Bounds.X + 2, drawItemEventArgs_0.Bounds.Y + 5, this.icon_0.Width, this.icon_0.Height));
+                        drawItemEventArgs_0.Graphics.DrawIcon(this.icon_0,
+                            new Rectangle(drawItemEventArgs_0.Bounds.X + 2, drawItemEventArgs_0.Bounds.Y + 5,
+                                this.icon_0.Width, this.icon_0.Height));
                     }
-                    drawItemEventArgs_0.Graphics.DrawString(base.Items[drawItemEventArgs_0.Index].ToString(), drawItemEventArgs_0.Font, new SolidBrush(drawItemEventArgs_0.ForeColor), (float) ((drawItemEventArgs_0.Bounds.X + this.ImageList.Images[drawItemEventArgs_0.Index].Width) + 3), (float) (drawItemEventArgs_0.Bounds.Y + 5));
+                    drawItemEventArgs_0.Graphics.DrawString(base.Items[drawItemEventArgs_0.Index].ToString(),
+                        drawItemEventArgs_0.Font, new SolidBrush(drawItemEventArgs_0.ForeColor),
+                        (float)
+                        ((drawItemEventArgs_0.Bounds.X + this.ImageList.Images[drawItemEventArgs_0.Index].Width) + 3),
+                        (float) (drawItemEventArgs_0.Bounds.Y + 5));
                 }
             }
         }
@@ -57,10 +71,7 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public System.Windows.Forms.ImageList ImageList
         {
-            get
-            {
-                return this.imageList_0;
-            }
+            get { return this.imageList_0; }
             set
             {
                 this.imageList_0 = value;
@@ -85,15 +96,8 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Icon ListBoxIcon
         {
-            get
-            {
-                return this.icon_0;
-            }
-            set
-            {
-                this.icon_0 = value;
-            }
+            get { return this.icon_0; }
+            set { this.icon_0 = value; }
         }
     }
 }
-

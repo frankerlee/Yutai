@@ -31,14 +31,14 @@ namespace Yutai.Pipeline.Config.Concretes
             _code = layer.Code;
             _classCode = layer.ClassCode;
             _autoNames = layer.AutoNames;
-            _layers=new List<IBasicLayerInfo>();
+            _layers = new List<IBasicLayerInfo>();
             foreach (IBasicLayerInfo basicLayerInfo in layer.Layers)
             {
                 IBasicLayerInfo newBasicLayerInfo = basicLayerInfo.Clone(keepClass);
                 _layers.Add(newBasicLayerInfo);
             }
 
-            if(keepClass)
+            if (keepClass)
             {
                 _workspace = layer.Workspace;
             }
@@ -78,10 +78,12 @@ namespace Yutai.Pipeline.Config.Concretes
             get { return _autoNames; }
             set { _autoNames = value; }
         }
+
         public string FixAutoNames
         {
             get { return "/" + _autoNames + "/"; }
         }
+
         public List<IBasicLayerInfo> Layers
         {
             get { return _layers; }
@@ -90,15 +92,9 @@ namespace Yutai.Pipeline.Config.Concretes
 
         public IWorkspace Workspace
         {
-            get
-            {
-                return _workspace;
-            }
+            get { return _workspace; }
 
-            set
-            {
-                _workspace = value;
-            }
+            set { _workspace = value; }
         }
 
         public List<IBasicLayerInfo> GetLayers(enumPipelineDataType dataType)
@@ -112,12 +108,13 @@ namespace Yutai.Pipeline.Config.Concretes
                 return;
             if (xml.Attributes != null)
             {
-                _name = xml.Attributes["Name"]==null?"" : xml.Attributes["Name"].Value;
+                _name = xml.Attributes["Name"] == null ? "" : xml.Attributes["Name"].Value;
                 _code = xml.Attributes["Code"] == null ? "" : xml.Attributes["Code"].Value;
                 _classCode = xml.Attributes["ClassCode"] == null ? "" : xml.Attributes["ClassCode"].Value;
-                _autoNames = xml.Attributes["AutoNames"]==null ? "" :xml.Attributes["AutoNames"].Value;
+                _autoNames = xml.Attributes["AutoNames"] == null ? "" : xml.Attributes["AutoNames"].Value;
             }
-            XmlNodeList nodeList = xml.SelectNodes($"/PipelineConfig/PipelineLayers/PipelineLayer[@Name='{_name}']/Layers/Layer");
+            XmlNodeList nodeList =
+                xml.SelectNodes($"/PipelineConfig/PipelineLayers/PipelineLayer[@Name='{_name}']/Layers/Layer");
             foreach (XmlNode node in nodeList)
             {
                 string template = node.Attributes["Template"].Value;
@@ -132,9 +129,8 @@ namespace Yutai.Pipeline.Config.Concretes
                     else
                         layerInfo = new BasicLayerInfo(node);
                 }
-                 _layers.Add(layerInfo);
+                _layers.Add(layerInfo);
             }
-           
         }
 
         public XmlNode ToXml(XmlDocument doc)
@@ -161,16 +157,19 @@ namespace Yutai.Pipeline.Config.Concretes
             layerNode.AppendChild(subNodes);
             return layerNode;
         }
+
         //!+ 自动识别图层并匹配配置,这个时候是这个图层组中有图层已经被识别
         public bool OrganizeFeatureClass(IFeatureClass featureClass)
         {
             //! 因为图层是按照工作空间组织的，所以图层不可能被重复，也就是说一个工作控件里面的图层只可能识别一次
-            string ownerName = ConfigHelper.GetClassOwnerName(((IDataset)featureClass).FullName.NameString);
+            string ownerName = ConfigHelper.GetClassOwnerName(((IDataset) featureClass).FullName.NameString);
             string baseName = ConfigHelper.GetClassShortName(featureClass);
             string classAliasName = featureClass.AliasName;
             string autoStr = "/" + _autoNames + "/";
-            IBasicLayerInfo layerInfo = _layers.FirstOrDefault(c => c.Name == baseName || c.AliasName==baseName || c.FixAutoNames.Contains("/"+baseName+"/"));
-            if (layerInfo != null && layerInfo.FeatureClass==null)
+            IBasicLayerInfo layerInfo =
+                _layers.FirstOrDefault(
+                    c => c.Name == baseName || c.AliasName == baseName || c.FixAutoNames.Contains("/" + baseName + "/"));
+            if (layerInfo != null && layerInfo.FeatureClass == null)
             {
                 layerInfo.FeatureClass = featureClass;
                 return true;
@@ -180,15 +179,19 @@ namespace Yutai.Pipeline.Config.Concretes
 
         public IPipelineLayer NewOrganizeFeatureClass(IFeatureClass featureClass)
         {
-            string ownerName = ConfigHelper.GetClassOwnerName(((IDataset)featureClass).Name);
+            string ownerName = ConfigHelper.GetClassOwnerName(((IDataset) featureClass).Name);
             string baseName = ConfigHelper.GetClassShortName(featureClass);
             string classAliasName = featureClass.AliasName;
             string autoStr = "/" + _autoNames + "/";
-            IBasicLayerInfo layerInfo = _layers.FirstOrDefault(c => c.Name == baseName || c.AliasName == baseName || autoStr.Contains("/" + baseName + "/"));
-            if (layerInfo != null )
+            IBasicLayerInfo layerInfo =
+                _layers.FirstOrDefault(
+                    c => c.Name == baseName || c.AliasName == baseName || autoStr.Contains("/" + baseName + "/"));
+            if (layerInfo != null)
             {
                 IPipelineLayer pipeLayer = new PipelineLayer(this, false);
-                layerInfo = pipeLayer.Layers.FirstOrDefault(c => c.Name == baseName || c.AliasName == baseName || autoStr.Contains("/" + baseName + "/"));
+                layerInfo =
+                    pipeLayer.Layers.FirstOrDefault(
+                        c => c.Name == baseName || c.AliasName == baseName || autoStr.Contains("/" + baseName + "/"));
                 layerInfo.FeatureClass = featureClass;
                 return pipeLayer;
             }
@@ -197,8 +200,8 @@ namespace Yutai.Pipeline.Config.Concretes
 
         public IPipelineLayer Clone(bool keepClass)
         {
-            IPipelineLayer pClone=new PipelineLayer(this,keepClass);
-            
+            IPipelineLayer pClone = new PipelineLayer(this, keepClass);
+
             return pClone;
         }
     }

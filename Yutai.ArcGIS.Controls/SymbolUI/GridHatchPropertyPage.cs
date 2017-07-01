@@ -32,11 +32,11 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 double num = double.Parse(this.txtHatchIntervalXDegree.Text);
                 double num2 = double.Parse(this.txtHatchIntervalXMinute.Text);
                 double num3 = double.Parse(this.txtHatchIntervalXSecond.Text);
-                pMapGrid.HatchIntervalX = (num + (num2 / 60.0)) + (num3 / 3600.0);
+                pMapGrid.HatchIntervalX = (num + (num2/60.0)) + (num3/3600.0);
                 num = double.Parse(this.txtHatchIntervalYDegree.Text);
                 num2 = double.Parse(this.txtHatchIntervalYMinute.Text);
                 num3 = double.Parse(this.txtHatchIntervalYSecond.Text);
-                pMapGrid.HatchIntervalY = (num + (num2 / 60.0)) + (num3 / 3600.0);
+                pMapGrid.HatchIntervalY = (num + (num2/60.0)) + (num3/3600.0);
                 pMapGrid.HatchLength = double.Parse(this.txtHatchLength.Text);
                 pMapGrid.HatchDirectional = this.chkHatchDirectional.Checked;
                 if (this.btnStyle.Style is ILineSymbol)
@@ -72,12 +72,12 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             int num = Math.Sign(Degree);
             Degree = Math.Abs(Degree);
             d = Math.Floor(Degree);
-            Degree = (Degree - d) * 60.0;
+            Degree = (Degree - d)*60.0;
             m = Math.Floor(Degree);
-            s = (Degree - m) * 60.0;
+            s = (Degree - m)*60.0;
         }
 
- private void GridHatchPropertyPage_Load(object sender, EventArgs e)
+        private void GridHatchPropertyPage_Load(object sender, EventArgs e)
         {
             double num;
             double num2;
@@ -109,7 +109,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         {
         }
 
- public void SetObjects(object @object)
+        public void SetObjects(object @object)
         {
         }
 
@@ -151,39 +151,23 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.m_IsPageDirty;
-            }
+            get { return this.m_IsPageDirty; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.m_Title;
-            }
-            set
-            {
-                this.m_Title = value;
-            }
+            get { return this.m_Title; }
+            set { this.m_Title = value; }
         }
     }
 }
-

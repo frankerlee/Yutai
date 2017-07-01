@@ -12,7 +12,7 @@ namespace Yutai.ArcGIS.Catalog.UI
     public partial class SetImportRecordCtrl : UserControl
     {
         private IContainer icontainer_0 = null;
-        [CompilerGenerated]
+
 
         public SetImportRecordCtrl()
         {
@@ -21,7 +21,8 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         private void btnQueryDialog_Click(object sender, EventArgs e)
         {
-            frmAttributeQueryBuilder builder = new frmAttributeQueryBuilder {
+            frmAttributeQueryBuilder builder = new frmAttributeQueryBuilder
+            {
                 Table = this.Table,
                 WhereCaluse = this.memoEdit.Text
             };
@@ -31,25 +32,13 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
         }
 
- private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             this.btnQueryDialog.Enabled = this.radioButton2.Checked;
             this.memoEdit.Visible = this.radioButton2.Checked;
         }
 
-        public ITable Table
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.itable_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.itable_0 = value;
-            }
-        }
+        public ITable Table { get; set; }
 
         public string Where
         {
@@ -64,4 +53,3 @@ namespace Yutai.ArcGIS.Catalog.UI
         }
     }
 }
-

@@ -7,5 +7,4 @@ using System.Threading.Tasks;
 namespace Yutai.ArcGIS.Common.SymbolUI
 {
     public delegate void ValueChangedHandler(object sender, EventArgs e);
-
 }

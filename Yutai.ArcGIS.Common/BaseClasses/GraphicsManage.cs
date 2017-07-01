@@ -62,4 +62,3 @@ namespace Yutai.ArcGIS.Common.BaseClasses
         }
     }
 }
-

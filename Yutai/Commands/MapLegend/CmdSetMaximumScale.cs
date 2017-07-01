@@ -20,9 +20,8 @@ namespace Yutai.Commands.MapLegend
 {
     public class CmdSetMaximumScale : YutaiCommand
     {
-       
         private IMapLegendView _view;
-   
+
 
         public CmdSetMaximumScale(IAppContext context, IMapLegendView view)
         {
@@ -42,8 +41,8 @@ namespace Yutai.Commands.MapLegend
             base.m_checked = false;
             base.m_enabled = true;
             base._itemType = RibbonItemType.Button;
-
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
@@ -63,6 +62,5 @@ namespace Yutai.Commands.MapLegend
                     _view.SelectedLayer.MaximumScale = map.MapScale;
             }
         }
-
     }
 }

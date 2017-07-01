@@ -29,35 +29,22 @@ namespace Yutai.ArcGIS.Carto.Library
             }
         }
 
- private void frmInputXY_Load(object sender, EventArgs e)
+        private void frmInputXY_Load(object sender, EventArgs e)
         {
             this.txtX.Text = this.double_0.ToString();
             this.txtY.Text = this.double_1.ToString();
         }
 
- public double X
+        public double X
         {
-            get
-            {
-                return this.double_0;
-            }
-            set
-            {
-                this.double_0 = value;
-            }
+            get { return this.double_0; }
+            set { this.double_0 = value; }
         }
 
         public double Y
         {
-            get
-            {
-                return this.double_1;
-            }
-            set
-            {
-                this.double_1 = value;
-            }
+            get { return this.double_1; }
+            set { this.double_1 = value; }
         }
     }
 }
-

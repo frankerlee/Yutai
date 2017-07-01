@@ -20,13 +20,12 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
     [Guid("8FB4B208-6846-4144-A4DA-52650462479E")]
     public partial class frmLineSymbolEdit : Form
     {
-        private double[] point_unit_to = new double[] { 1, 0.01388889, 0.0352777778, 0.352777778 };
-
+        private double[] point_unit_to = new double[] {1, 0.01388889, 0.0352777778, 0.352777778};
 
 
         private bool m_CanDo = true;
 
-        private double[] m_dblScaleRatio = new double[] { 0.25, 0.5, 1, 1.25, 2 };
+        private double[] m_dblScaleRatio = new double[] {0.25, 0.5, 1, 1.25, 2};
 
         private int m_ScaleIndex = 2;
 
@@ -41,34 +40,9 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         private ILineSymbol m_CopySymbol = null;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         /// <summary>
         /// 必需的设计器变量。
         /// </summary>
-
         public frmLineSymbolEdit()
         {
             this.InitializeComponent();
@@ -80,8 +54,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.m_pMultiLineSymbol.AddLayer(lineSymbol);
             this.m_OldSelItem = 0;
             this.m_pMultiLineSymbol.MoveLayer(lineSymbol, 0);
-            ((ILayerColorLock)this.m_pMultiLineSymbol).LayerColorLock[0] = false;
-            this.InitControl((ISymbol)this.m_pMultiLineSymbol);
+            ((ILayerColorLock) this.m_pMultiLineSymbol).LayerColorLock[0] = false;
+            this.InitControl((ISymbol) this.m_pMultiLineSymbol);
             this.symbolListBox1.Invalidate();
             this.symbolItem1.Invalidate();
         }
@@ -95,7 +69,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         private void btnCopy_Click(object sender, EventArgs e)
         {
             ILineSymbol layer = this.m_pMultiLineSymbol.Layer[this.symbolListBox1.SelectedIndex];
-            this.m_CopySymbol = (ILineSymbol)((IClone)layer).Clone();
+            this.m_CopySymbol = (ILineSymbol) ((IClone) layer).Clone();
         }
 
         private void btnDeleteLayer_Click(object sender, EventArgs e)
@@ -109,7 +83,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     this.m_OldSelItem = 0;
                 }
                 this.m_pMultiLineSymbol.DeleteLayer(layer);
-                this.InitControl((ISymbol)this.m_pMultiLineSymbol);
+                this.InitControl((ISymbol) this.m_pMultiLineSymbol);
                 this.symbolListBox1.Invalidate();
                 this.symbolItem1.Invalidate();
             }
@@ -151,7 +125,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 ILineSymbol layer = this.m_pMultiLineSymbol.Layer[this.symbolListBox1.SelectedIndex];
                 this.m_pMultiLineSymbol.MoveLayer(layer, this.m_OldSelItem);
                 this.m_CanDo = false;
-                this.InitControl((ISymbol)this.m_pMultiLineSymbol);
+                this.InitControl((ISymbol) this.m_pMultiLineSymbol);
                 this.m_CanDo = true;
                 this.symbolListBox1.Invalidate();
                 this.symbolItem1.Invalidate();
@@ -181,11 +155,11 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         {
             if (this.m_CopySymbol != null)
             {
-                ILineSymbol lineSymbol = (ILineSymbol)((IClone)this.m_CopySymbol).Clone();
+                ILineSymbol lineSymbol = (ILineSymbol) ((IClone) this.m_CopySymbol).Clone();
                 this.m_pMultiLineSymbol.AddLayer(lineSymbol);
                 this.m_OldSelItem = 0;
                 this.m_pMultiLineSymbol.MoveLayer(lineSymbol, 0);
-                this.InitControl((ISymbol)this.m_pMultiLineSymbol);
+                this.InitControl((ISymbol) this.m_pMultiLineSymbol);
                 this.symbolListBox1.Invalidate();
                 this.symbolItem1.Invalidate();
             }
@@ -203,9 +177,10 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     this.m_OldSelItem = this.symbolListBox1.SelectedIndex;
                     this.m_pMultiLineSymbol.AddLayer(lineSymbol);
                     this.m_pMultiLineSymbol.MoveLayer(lineSymbol, this.symbolListBox1.SelectedIndex);
-                    ((ILayerColorLock)this.m_pMultiLineSymbol).LayerColorLock [this.symbolListBox1.SelectedIndex] = false;
+                    ((ILayerColorLock) this.m_pMultiLineSymbol).LayerColorLock[this.symbolListBox1.SelectedIndex] =
+                        false;
                     this.m_pMultiLineSymbol.DeleteLayer(layer);
-                    this.InitControl((ISymbol)this.m_pMultiLineSymbol);
+                    this.InitControl((ISymbol) this.m_pMultiLineSymbol);
                     this.symbolListBox1.Invalidate();
                     this.symbolItem1.Invalidate();
                 }
@@ -243,40 +218,40 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             switch (type)
             {
                 case 0:
-                    {
-                        simpleLineSymbolClass = new SimpleLineSymbolClass();
-                        break;
-                    }
+                {
+                    simpleLineSymbolClass = new SimpleLineSymbolClass();
+                    break;
+                }
                 case 1:
-                    {
-                        simpleLineSymbolClass = new CartographicLineSymbolClass();
-                        break;
-                    }
+                {
+                    simpleLineSymbolClass = new CartographicLineSymbolClass();
+                    break;
+                }
                 case 2:
-                    {
-                        simpleLineSymbolClass = new MarkerLineSymbolClass();
-                        break;
-                    }
+                {
+                    simpleLineSymbolClass = new MarkerLineSymbolClass();
+                    break;
+                }
                 case 3:
-                    {
-                        simpleLineSymbolClass = new HashLineSymbolClass();
-                        break;
-                    }
+                {
+                    simpleLineSymbolClass = new HashLineSymbolClass();
+                    break;
+                }
                 case 4:
-                    {
-                        simpleLineSymbolClass = new PictureLineSymbolClass();
-                        break;
-                    }
+                {
+                    simpleLineSymbolClass = new PictureLineSymbolClass();
+                    break;
+                }
                 case 5:
-                    {
-                        simpleLineSymbolClass = new SimpleLine3DSymbolClass();
-                        break;
-                    }
+                {
+                    simpleLineSymbolClass = new SimpleLine3DSymbolClass();
+                    break;
+                }
                 case 6:
-                    {
-                        simpleLineSymbolClass = new TextureLineSymbolClass();
-                        break;
-                    }
+                {
+                    simpleLineSymbolClass = new TextureLineSymbolClass();
+                    break;
+                }
             }
             return simpleLineSymbolClass;
         }
@@ -284,20 +259,22 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         /// <summary>
         /// 清理所有正在使用的资源。
         /// </summary>
- private void frmLineSymbolEdit_Load(object sender, EventArgs e)
+        private void frmLineSymbolEdit_Load(object sender, EventArgs e)
         {
             this.m_CanDo = false;
             this.cboUnit.SelectedIndex = 0;
             this.cboScale.SelectedIndex = this.m_ScaleIndex;
             this.m_CanDo = true;
             this.rdoLine.Checked = true;
-            this.InitControl((ISymbol)this.m_pMultiLineSymbol);
+            this.InitControl((ISymbol) this.m_pMultiLineSymbol);
         }
 
         public ISymbol GetSymbol()
         {
             ISymbol symbol;
-            symbol = (!(this.m_pOldSymbol is IMultiLayerLineSymbol) ? (ISymbol)this.m_pMultiLineSymbol : (ISymbol)this.m_pMultiLineSymbol);
+            symbol = (!(this.m_pOldSymbol is IMultiLayerLineSymbol)
+                ? (ISymbol) this.m_pMultiLineSymbol
+                : (ISymbol) this.m_pMultiLineSymbol);
             return symbol;
         }
 
@@ -308,13 +285,13 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             {
                 this.symbolListBox1.Items.Clear();
                 this.m_oldSel = -1;
-                for (int i = 0; i < ((IMultiLayerLineSymbol)pSym).LayerCount; i++)
+                for (int i = 0; i < ((IMultiLayerLineSymbol) pSym).LayerCount; i++)
                 {
                     SymbolListItem symbolListItem = new SymbolListItem()
                     {
-                        m_pSymbol = (ISymbol)((IMultiLayerLineSymbol)pSym).Layer [i],
-                        m_bVisible = ((ILayerVisible)pSym).LayerVisible[i],
-                        m_bLockColor = ((ILayerColorLock)pSym).LayerColorLock[i]
+                        m_pSymbol = (ISymbol) ((IMultiLayerLineSymbol) pSym).Layer[i],
+                        m_bVisible = ((ILayerVisible) pSym).LayerVisible[i],
+                        m_bLockColor = ((ILayerColorLock) pSym).LayerColorLock[i]
                     };
                     this.symbolListBox1.Items.Add(symbolListItem);
                 }
@@ -329,7 +306,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         /// 设计器支持所需的方法 - 不要使用代码编辑器修改
         /// 此方法的内容。
         /// </summary>
- private void rdoLine_Click(object sender, EventArgs e)
+        private void rdoLine_Click(object sender, EventArgs e)
         {
             if (this.rdoLine.Checked)
             {
@@ -352,26 +329,29 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.m_pOldSymbol = pSym;
             if (pSym is IMultiLayerLineSymbol)
             {
-                this.m_pMultiLineSymbol = (IMultiLayerLineSymbol)((IClone)pSym).Clone();
+                this.m_pMultiLineSymbol = (IMultiLayerLineSymbol) ((IClone) pSym).Clone();
             }
             else if (pSym is ILineSymbol)
             {
                 this.m_pMultiLineSymbol = new MultiLayerLineSymbolClass();
-                this.m_pMultiLineSymbol.AddLayer((ILineSymbol)((IClone)pSym).Clone());
-                (this.m_pMultiLineSymbol as ILayerColorLock).LayerColorLock [0] = false;
+                this.m_pMultiLineSymbol.AddLayer((ILineSymbol) ((IClone) pSym).Clone());
+                (this.m_pMultiLineSymbol as ILayerColorLock).LayerColorLock[0] = false;
             }
         }
 
         private void symbolListBox1_LayerColorLockedChanged(object sender, EventArgs e)
         {
-            bool layerColorLock = ((ILayerColorLock)this.m_pMultiLineSymbol).LayerColorLock [this.symbolListBox1.SelectedIndex];
-            ((ILayerColorLock)this.m_pMultiLineSymbol).LayerColorLock [this.symbolListBox1.SelectedIndex] = !layerColorLock;
+            bool layerColorLock =
+                ((ILayerColorLock) this.m_pMultiLineSymbol).LayerColorLock[this.symbolListBox1.SelectedIndex];
+            ((ILayerColorLock) this.m_pMultiLineSymbol).LayerColorLock[this.symbolListBox1.SelectedIndex] =
+                !layerColorLock;
         }
 
         private void symbolListBox1_LayerVisibleChanged(object sender, EventArgs e)
         {
-            bool layerVisible = ((ILayerVisible)this.m_pMultiLineSymbol).LayerVisible [this.symbolListBox1.SelectedIndex];
-            ((ILayerVisible)this.m_pMultiLineSymbol).LayerVisible [this.symbolListBox1.SelectedIndex] = !layerVisible;
+            bool layerVisible =
+                ((ILayerVisible) this.m_pMultiLineSymbol).LayerVisible[this.symbolListBox1.SelectedIndex];
+            ((ILayerVisible) this.m_pMultiLineSymbol).LayerVisible[this.symbolListBox1.SelectedIndex] = !layerVisible;
             this.symbolItem1.Invalidate();
         }
 
@@ -400,7 +380,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     SimpleLineControl simpleLineControl = new SimpleLineControl()
                     {
                         m_unit = this.point_unit_to[this.cboUnit.SelectedIndex],
-                        m_pSimpleLineSymbol = (ISimpleLineSymbol)layer
+                        m_pSimpleLineSymbol = (ISimpleLineSymbol) layer
                     };
                     simpleLineControl.ValueChanged += new ValueChangedHandler(this.ValueChanged);
                     xtraTabPage4.Controls.Add(simpleLineControl);
@@ -415,7 +395,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     };
                     MarkerLineControl markerLineControl = new MarkerLineControl()
                     {
-                        m_pMarkerLineSymbol = (IMarkerLineSymbol)layer,
+                        m_pMarkerLineSymbol = (IMarkerLineSymbol) layer,
                         m_pSG = this.m_pSG
                     };
                     markerLineControl.ValueChanged += new ValueChangedHandler(this.ValueChanged);
@@ -427,7 +407,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     cartoLineControl = new CartoLineControl()
                     {
                         m_unit = this.point_unit_to[this.cboUnit.SelectedIndex],
-                        m_CartographLineSymbol = (ICartographicLineSymbol)layer
+                        m_CartographLineSymbol = (ICartographicLineSymbol) layer
                     };
                     cartoLineControl.ValueChanged += new ValueChangedHandler(this.ValueChanged);
                     xtraTabPage.Controls.Add(cartoLineControl);
@@ -438,7 +418,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     templateControl = new TemplateControl()
                     {
                         m_unit = this.point_unit_to[this.cboUnit.SelectedIndex],
-                        m_LineProperties = (ILineProperties)layer
+                        m_LineProperties = (ILineProperties) layer
                     };
                     templateControl.ValueChanged += new ValueChangedHandler(this.ValueChanged);
                     xtraTabPage1.Controls.Add(templateControl);
@@ -448,7 +428,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     };
                     linePropertyControl = new LinePropertyControl()
                     {
-                        m_LineProperties = (ILineProperties)layer,
+                        m_LineProperties = (ILineProperties) layer,
                         m_unit = this.point_unit_to[this.cboUnit.SelectedIndex]
                     };
                     linePropertyControl.ValueChanged += new ValueChangedHandler(this.ValueChanged);
@@ -467,7 +447,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     };
                     HashLineSymbolControl hashLineSymbolControl = new HashLineSymbolControl()
                     {
-                        m_pHashLineSymbol = (IHashLineSymbol)layer,
+                        m_pHashLineSymbol = (IHashLineSymbol) layer,
                         m_pSG = this.m_pSG
                     };
                     hashLineSymbolControl.ValueChanged += new ValueChangedHandler(this.ValueChanged);
@@ -479,7 +459,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     cartoLineControl = new CartoLineControl()
                     {
                         m_unit = this.point_unit_to[this.cboUnit.SelectedIndex],
-                        m_CartographLineSymbol = (ICartographicLineSymbol)layer
+                        m_CartographLineSymbol = (ICartographicLineSymbol) layer
                     };
                     cartoLineControl.ValueChanged += new ValueChangedHandler(this.ValueChanged);
                     xtraTabPage.Controls.Add(cartoLineControl);
@@ -489,7 +469,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     };
                     templateControl = new TemplateControl()
                     {
-                        m_LineProperties = (ILineProperties)layer,
+                        m_LineProperties = (ILineProperties) layer,
                         m_unit = this.point_unit_to[this.cboUnit.SelectedIndex]
                     };
                     templateControl.ValueChanged += new ValueChangedHandler(this.ValueChanged);
@@ -500,7 +480,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     };
                     linePropertyControl = new LinePropertyControl()
                     {
-                        m_LineProperties = (ILineProperties)layer,
+                        m_LineProperties = (ILineProperties) layer,
                         m_unit = this.point_unit_to[this.cboUnit.SelectedIndex]
                     };
                     linePropertyControl.ValueChanged += new ValueChangedHandler(this.ValueChanged);
@@ -520,7 +500,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     cartoLineControl = new CartoLineControl()
                     {
                         m_unit = this.point_unit_to[this.cboUnit.SelectedIndex],
-                        m_CartographLineSymbol = (ICartographicLineSymbol)layer
+                        m_CartographLineSymbol = (ICartographicLineSymbol) layer
                     };
                     cartoLineControl.ValueChanged += new ValueChangedHandler(this.ValueChanged);
                     xtraTabPage.Controls.Add(cartoLineControl);
@@ -530,7 +510,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     };
                     templateControl = new TemplateControl()
                     {
-                        m_LineProperties = (ILineProperties)layer,
+                        m_LineProperties = (ILineProperties) layer,
                         m_unit = this.point_unit_to[this.cboUnit.SelectedIndex]
                     };
                     templateControl.ValueChanged += new ValueChangedHandler(this.ValueChanged);
@@ -541,7 +521,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     };
                     linePropertyControl = new LinePropertyControl()
                     {
-                        m_LineProperties = (ILineProperties)layer,
+                        m_LineProperties = (ILineProperties) layer,
                         m_unit = this.point_unit_to[this.cboUnit.SelectedIndex]
                     };
                     linePropertyControl.ValueChanged += new ValueChangedHandler(this.ValueChanged);
@@ -560,7 +540,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     PictureLineControl pictureLineControl = new PictureLineControl()
                     {
                         m_unit = this.point_unit_to[this.cboUnit.SelectedIndex],
-                        m_PictureLineSymbol = (IPictureLineSymbol)layer
+                        m_PictureLineSymbol = (IPictureLineSymbol) layer
                     };
                     pictureLineControl.ValueChanged += new ValueChangedHandler(this.ValueChanged);
                     xtraTabPage3.Controls.Add(pictureLineControl);
@@ -576,7 +556,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     Simple3DLineSymbolCtrl simple3DLineSymbolCtrl = new Simple3DLineSymbolCtrl()
                     {
                         m_unit = this.point_unit_to[this.cboUnit.SelectedIndex],
-                        m_pSimpleLine3DSymbol = (ISimpleLine3DSymbol)layer
+                        m_pSimpleLine3DSymbol = (ISimpleLine3DSymbol) layer
                     };
                     simple3DLineSymbolCtrl.ValueChanged += new ValueChangedHandler(this.ValueChanged);
                     xtraTabPage3.Controls.Add(simple3DLineSymbolCtrl);
@@ -592,7 +572,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     TextureLineSymbolCtrl textureLineSymbolCtrl = new TextureLineSymbolCtrl()
                     {
                         m_unit = this.point_unit_to[this.cboUnit.SelectedIndex],
-                        m_pTextureLineSymbol = (ITextureLineSymbol)layer
+                        m_pTextureLineSymbol = (ITextureLineSymbol) layer
                     };
                     textureLineSymbolCtrl.ValueChanged += new ValueChangedHandler(this.ValueChanged);
                     xtraTabPage3.Controls.Add(textureLineSymbolCtrl);
@@ -624,7 +604,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     SimpleLineControl simpleLineControl = new SimpleLineControl()
                     {
                         m_unit = this.point_unit_to[this.cboUnit.SelectedIndex],
-                        m_pSimpleLineSymbol = (ISimpleLineSymbol)layer
+                        m_pSimpleLineSymbol = (ISimpleLineSymbol) layer
                     };
                     simpleLineControl.ValueChanged += new ValueChangedHandler(this.ValueChanged);
                     tabPage3.Controls.Add(simpleLineControl);
@@ -636,7 +616,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     TabPage tabPage4 = new TabPage("标记线");
                     MarkerLineControl markerLineControl = new MarkerLineControl()
                     {
-                        m_pMarkerLineSymbol = (IMarkerLineSymbol)layer,
+                        m_pMarkerLineSymbol = (IMarkerLineSymbol) layer,
                         m_pSG = this.m_pSG
                     };
                     markerLineControl.ValueChanged += new ValueChangedHandler(this.ValueChanged);
@@ -645,7 +625,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     cartoLineControl = new CartoLineControl()
                     {
                         m_unit = this.point_unit_to[this.cboUnit.SelectedIndex],
-                        m_CartographLineSymbol = (ICartographicLineSymbol)layer
+                        m_CartographLineSymbol = (ICartographicLineSymbol) layer
                     };
                     cartoLineControl.ValueChanged += new ValueChangedHandler(this.ValueChanged);
                     tabPage.Controls.Add(cartoLineControl);
@@ -653,14 +633,14 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     templateControl = new TemplateControl()
                     {
                         m_unit = this.point_unit_to[this.cboUnit.SelectedIndex],
-                        m_LineProperties = (ILineProperties)layer
+                        m_LineProperties = (ILineProperties) layer
                     };
                     templateControl.ValueChanged += new ValueChangedHandler(this.ValueChanged);
                     tabPage1.Controls.Add(templateControl);
                     tabPage2 = new TabPage("线属性");
                     linePropertyControl = new LinePropertyControl()
                     {
-                        m_LineProperties = (ILineProperties)layer,
+                        m_LineProperties = (ILineProperties) layer,
                         m_unit = this.point_unit_to[this.cboUnit.SelectedIndex]
                     };
                     linePropertyControl.ValueChanged += new ValueChangedHandler(this.ValueChanged);
@@ -676,7 +656,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     TabPage tabPage5 = new TabPage("细切线");
                     HashLineSymbolControl hashLineSymbolControl = new HashLineSymbolControl()
                     {
-                        m_pHashLineSymbol = (IHashLineSymbol)layer,
+                        m_pHashLineSymbol = (IHashLineSymbol) layer,
                         m_pSG = this.m_pSG
                     };
                     hashLineSymbolControl.ValueChanged += new ValueChangedHandler(this.ValueChanged);
@@ -685,14 +665,14 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     cartoLineControl = new CartoLineControl()
                     {
                         m_unit = this.point_unit_to[this.cboUnit.SelectedIndex],
-                        m_CartographLineSymbol = (ICartographicLineSymbol)layer
+                        m_CartographLineSymbol = (ICartographicLineSymbol) layer
                     };
                     cartoLineControl.ValueChanged += new ValueChangedHandler(this.ValueChanged);
                     tabPage.Controls.Add(cartoLineControl);
                     tabPage1 = new TabPage("模板");
                     templateControl = new TemplateControl()
                     {
-                        m_LineProperties = (ILineProperties)layer,
+                        m_LineProperties = (ILineProperties) layer,
                         m_unit = this.point_unit_to[this.cboUnit.SelectedIndex]
                     };
                     templateControl.ValueChanged += new ValueChangedHandler(this.ValueChanged);
@@ -700,7 +680,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     tabPage2 = new TabPage("线属性");
                     linePropertyControl = new LinePropertyControl()
                     {
-                        m_LineProperties = (ILineProperties)layer,
+                        m_LineProperties = (ILineProperties) layer,
                         m_unit = this.point_unit_to[this.cboUnit.SelectedIndex]
                     };
                     linePropertyControl.ValueChanged += new ValueChangedHandler(this.ValueChanged);
@@ -717,14 +697,14 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     cartoLineControl = new CartoLineControl()
                     {
                         m_unit = this.point_unit_to[this.cboUnit.SelectedIndex],
-                        m_CartographLineSymbol = (ICartographicLineSymbol)layer
+                        m_CartographLineSymbol = (ICartographicLineSymbol) layer
                     };
                     cartoLineControl.ValueChanged += new ValueChangedHandler(this.ValueChanged);
                     tabPage.Controls.Add(cartoLineControl);
                     tabPage1 = new TabPage("模板");
                     templateControl = new TemplateControl()
                     {
-                        m_LineProperties = (ILineProperties)layer,
+                        m_LineProperties = (ILineProperties) layer,
                         m_unit = this.point_unit_to[this.cboUnit.SelectedIndex]
                     };
                     templateControl.ValueChanged += new ValueChangedHandler(this.ValueChanged);
@@ -732,7 +712,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     tabPage2 = new TabPage("线属性");
                     linePropertyControl = new LinePropertyControl()
                     {
-                        m_LineProperties = (ILineProperties)layer,
+                        m_LineProperties = (ILineProperties) layer,
                         m_unit = this.point_unit_to[this.cboUnit.SelectedIndex]
                     };
                     linePropertyControl.ValueChanged += new ValueChangedHandler(this.ValueChanged);
@@ -748,7 +728,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     PictureLineControl pictureLineControl = new PictureLineControl()
                     {
                         m_unit = this.point_unit_to[this.cboUnit.SelectedIndex],
-                        m_PictureLineSymbol = (IPictureLineSymbol)layer
+                        m_PictureLineSymbol = (IPictureLineSymbol) layer
                     };
                     pictureLineControl.ValueChanged += new ValueChangedHandler(this.ValueChanged);
                     tabPage6.Controls.Add(pictureLineControl);
@@ -767,7 +747,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 ILineSymbol layer = this.m_pMultiLineSymbol.Layer[this.symbolListBox1.SelectedIndex];
                 this.m_pMultiLineSymbol.MoveLayer(layer, this.m_OldSelItem);
                 this.m_CanDo = false;
-                this.InitControl((ISymbol)this.m_pMultiLineSymbol);
+                this.InitControl((ISymbol) this.m_pMultiLineSymbol);
                 this.m_CanDo = true;
                 this.symbolListBox1.Invalidate();
                 this.symbolItem1.Invalidate();

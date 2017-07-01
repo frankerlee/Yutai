@@ -45,12 +45,12 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                     }
                     else
                     {
-                        num = (double_0 / 15.0) * 10000.0;
+                        num = (double_0/15.0)*10000.0;
                     }
                 }
                 else
                 {
-                    num = double_0 * 10000.0;
+                    num = double_0*10000.0;
                 }
             }
             str = string_1;
@@ -60,7 +60,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                     return num2;
 
                 case "公顷":
-                    return (num / 10000.0);
+                    return (num/10000.0);
             }
             if (!(str == "亩"))
             {
@@ -70,7 +70,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                 }
                 return num2;
             }
-            return ((num / 10000.0) * 15.0);
+            return ((num/10000.0)*15.0);
         }
 
         public static List<T> ArrayToList<T>(T[] gparam_0)
@@ -87,7 +87,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
         {
             double x = ipoint_1.X - ipoint_0.X;
             double y = ipoint_1.Y - ipoint_0.Y;
-            double num3 = Math.Atan2(y, x) * 57.295779513082323;
+            double num3 = Math.Atan2(y, x)*57.295779513082323;
             if (num3 < 0.0)
             {
                 num3 = 360.0 + num3;
@@ -99,7 +99,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
         {
             double x = double_2 - double_0;
             double y = double_3 - double_1;
-            double num3 = Math.Atan2(y, x) * 57.295779513082323;
+            double num3 = Math.Atan2(y, x)*57.295779513082323;
             if (num3 < 0.0)
             {
                 num3 = 360.0 + num3;
@@ -134,29 +134,32 @@ namespace Yutai.ArcGIS.Common.BaseClasses
 
         public static double ConvertPixelsToMapUnits(IActiveView iactiveView_0, double double_0)
         {
-            int num = iactiveView_0.ScreenDisplay.DisplayTransformation.get_DeviceFrame().right - iactiveView_0.ScreenDisplay.DisplayTransformation.get_DeviceFrame().left;
+            int num = iactiveView_0.ScreenDisplay.DisplayTransformation.get_DeviceFrame().right -
+                      iactiveView_0.ScreenDisplay.DisplayTransformation.get_DeviceFrame().left;
             if (num == 0)
             {
                 return double_0;
             }
-            double num4 = iactiveView_0.ScreenDisplay.DisplayTransformation.VisibleBounds.Width / ((double) num);
-            return (double_0 * num4);
+            double num4 = iactiveView_0.ScreenDisplay.DisplayTransformation.VisibleBounds.Width/((double) num);
+            return (double_0*num4);
         }
 
         public static double ConvertPixelsToMapUnits(IScreenDisplay iscreenDisplay_0, double double_0)
         {
-            int num = iscreenDisplay_0.DisplayTransformation.get_DeviceFrame().right - iscreenDisplay_0.DisplayTransformation.get_DeviceFrame().left;
+            int num = iscreenDisplay_0.DisplayTransformation.get_DeviceFrame().right -
+                      iscreenDisplay_0.DisplayTransformation.get_DeviceFrame().left;
             if (num == 0)
             {
                 return double_0;
             }
-            double num4 = iscreenDisplay_0.DisplayTransformation.VisibleBounds.Width / ((double) num);
-            return (double_0 * num4);
+            double num4 = iscreenDisplay_0.DisplayTransformation.VisibleBounds.Width/((double) num);
+            return (double_0*num4);
         }
 
         public static ToolStripItem CreateBarItem(ICommand icommand_0)
         {
-            ToolStripItem item = new ToolStripButton {
+            ToolStripItem item = new ToolStripButton
+            {
                 Name = icommand_0.Name,
                 Tag = icommand_0,
                 Text = icommand_0.Caption,
@@ -227,9 +230,9 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                 flag = true;
             }
             int num = (int) double_0;
-            double_0 = (double_0 - num) * 60.0;
+            double_0 = (double_0 - num)*60.0;
             int num2 = (int) double_0;
-            double num3 = Math.Round((double) ((double_0 - num2) * 60.0), 2);
+            double num3 = Math.Round((double) ((double_0 - num2)*60.0), 2);
             string str = num.ToString() + "\x00b0" + num2.ToString("00") + "′" + num3.ToString("00.00") + "″";
             if (flag)
             {
@@ -241,7 +244,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
         public static double DefaultIndexGrid(IFeatureClass ifeatureClass_0)
         {
             int num5;
-            if ((ifeatureClass_0.ShapeType == esriGeometryType.esriGeometryMultipoint) || (ifeatureClass_0.ShapeType == esriGeometryType.esriGeometryPoint))
+            if ((ifeatureClass_0.ShapeType == esriGeometryType.esriGeometryMultipoint) ||
+                (ifeatureClass_0.ShapeType == esriGeometryType.esriGeometryPoint))
             {
                 return DefaultIndexGridPoint(ifeatureClass_0);
             }
@@ -251,7 +255,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             {
                 return 1000.0;
             }
-            int num3 = num2 * 1;
+            int num3 = num2*1;
             if (num3 > 1000)
             {
                 num3 = 1000;
@@ -260,7 +264,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             for (int i = 0; i < num2; i += int.Parse(num5.ToString()))
             {
                 list.Add(i);
-                num5 = num2 / num3;
+                num5 = num2/num3;
             }
             double num6 = 1.0;
             double num7 = 0.0;
@@ -275,7 +279,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                     str2 = str2 + list[j + k].ToString() + ",";
                 }
                 str2 = str2.Substring(0, str2.Length - 1) + ")";
-                IQueryFilter filter = new QueryFilter {
+                IQueryFilter filter = new QueryFilter
+                {
                     WhereClause = str2
                 };
                 IFeatureCursor o = ifeatureClass_0.Search(filter, true);
@@ -286,7 +291,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                     num8 = MinValue(num8, MinValue(extent.Width, extent.Height));
                     if (num8 != 0.0)
                     {
-                        num6 += MinValue(extent.Width, extent.Height) / MaxValue(extent.Width, extent.Height);
+                        num6 += MinValue(extent.Width, extent.Height)/MaxValue(extent.Width, extent.Height);
                     }
                     else
                     {
@@ -295,11 +300,11 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                 }
                 ComReleaser.ReleaseCOMObject(o);
             }
-            if ((num6 / ((double) num3)) > 0.5)
+            if ((num6/((double) num3)) > 0.5)
             {
-                return ((num8 + ((num7 - num8) / 2.0)) * num9);
+                return ((num8 + ((num7 - num8)/2.0))*num9);
             }
-            return ((num7 / 2.0) * num9);
+            return ((num7/2.0)*num9);
         }
 
         protected static double DefaultIndexGridPoint(IFeatureClass ifeatureClass_0)
@@ -311,8 +316,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             {
                 return 1000.0;
             }
-            double num3 = extent.Height * extent.Width;
-            return Math.Sqrt(num3 / ((double) num2));
+            double num3 = extent.Height*extent.Width;
+            return Math.Sqrt(num3/((double) num2));
         }
 
         public static void DeleteAllTempFile()
@@ -341,7 +346,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                     {
                         if (str4.Contains(fileNameWithoutExtension))
                         {
-                            FileInfo info = new FileInfo(str4) {
+                            FileInfo info = new FileInfo(str4)
+                            {
                                 Attributes = FileAttributes.Normal
                             };
                             File.Delete(str4);
@@ -359,7 +365,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
         {
             double num = ipoint_1.X - ipoint_0.X;
             double num2 = ipoint_1.Y - ipoint_0.Y;
-            double d = (num * num) + (num2 * num2);
+            double d = (num*num) + (num2*num2);
             return Math.Sqrt(d);
         }
 
@@ -367,16 +373,16 @@ namespace Yutai.ArcGIS.Common.BaseClasses
         {
             double num = double_0 - double_2;
             double num2 = double_1 - double_3;
-            double d = (num * num) + (num2 * num2);
+            double d = (num*num) + (num2*num2);
             return Math.Sqrt(d);
         }
 
         public static double DistanceToLine(IPoint ipoint_0, IPoint ipoint_1, double double_0)
         {
-            double_0 = (double_0 / 180.0) * 3.1415926535897931;
+            double_0 = (double_0/180.0)*3.1415926535897931;
             double num = ipoint_0.X - ipoint_1.X;
             double num2 = ipoint_0.Y - ipoint_1.Y;
-            return ((num2 * Math.Cos(double_0)) - (num * Math.Sin(double_0)));
+            return ((num2*Math.Cos(double_0)) - (num*Math.Sin(double_0)));
         }
 
         public static bool FeatureClassHasData(IFeatureClass ifeatureClass_0)
@@ -478,7 +484,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                     IFeatureClass featureClass = layer3.FeatureClass;
                     if (featureClass != null)
                     {
-                        string[] strArray = (featureClass as IDataset).Name.Split(new char[] { '.' });
+                        string[] strArray = (featureClass as IDataset).Name.Split(new char[] {'.'});
                         string str = strArray[strArray.Length - 1];
                         if (str == string_0)
                         {
@@ -494,8 +500,12 @@ namespace Yutai.ArcGIS.Common.BaseClasses
         {
             double num = azimuth(ipoint_0, ipoint_1);
             double num2 = Math.Abs(DistanceToLine(ipoint_2, ipoint_0, num));
-            double d = ((num + 270.0) / 180.0) * 3.1415926535897931;
-            return new ESRI.ArcGIS.Geometry.Point { X = ipoint_1.X + (num2 * Math.Cos(d)), Y = ipoint_1.Y + (num2 * Math.Sin(d)) };
+            double d = ((num + 270.0)/180.0)*3.1415926535897931;
+            return new ESRI.ArcGIS.Geometry.Point
+            {
+                X = ipoint_1.X + (num2*Math.Cos(d)),
+                Y = ipoint_1.Y + (num2*Math.Sin(d))
+            };
         }
 
         public static int GetLayerIndex(IGroupLayer igroupLayer_0, ILayer ilayer_0)
@@ -539,7 +549,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                                 return num2;
                         }
                     }
-                    else if ((type2 == esriGeometryType.esriGeometryPolygon) && (shapeType == esriGeometryType.esriGeometryPolygon))
+                    else if ((type2 == esriGeometryType.esriGeometryPolygon) &&
+                             (shapeType == esriGeometryType.esriGeometryPolygon))
                     {
                         return num2;
                     }
@@ -602,7 +613,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                                 return num2;
                         }
                     }
-                    else if ((type2 == esriGeometryType.esriGeometryPolygon) && (shapeType == esriGeometryType.esriGeometryPolygon))
+                    else if ((type2 == esriGeometryType.esriGeometryPolygon) &&
+                             (shapeType == esriGeometryType.esriGeometryPolygon))
                     {
                         return num2;
                     }
@@ -652,7 +664,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                                 return num2;
                         }
                     }
-                    else if ((type2 == esriGeometryType.esriGeometryPolygon) && (shapeType == esriGeometryType.esriGeometryPolygon))
+                    else if ((type2 == esriGeometryType.esriGeometryPolygon) &&
+                             (shapeType == esriGeometryType.esriGeometryPolygon))
                     {
                         return num2;
                     }
@@ -735,7 +748,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             RegistryKey localMachine = Registry.LocalMachine;
             try
             {
-                RegistryKey key2 = localMachine.OpenSubKey(@"SOFTWARE\" + Application.CompanyName + @"\" + Application.ProductName);
+                RegistryKey key2 =
+                    localMachine.OpenSubKey(@"SOFTWARE\" + Application.CompanyName + @"\" + Application.ProductName);
                 if (key2 == null)
                 {
                     return obj2;
@@ -935,13 +949,15 @@ namespace Yutai.ArcGIS.Common.BaseClasses
         {
             try
             {
-                IQueryFilter queryFilter = new QueryFilter {
+                IQueryFilter queryFilter = new QueryFilter
+                {
                     SubFields = string_0,
                     WhereClause = ""
                 };
                 (queryFilter as IQueryFilterDefinition).PostfixClause = "Order by " + string_0;
                 ICursor o = itable_0.Search(queryFilter, false);
-                IDataStatistics statistics = new DataStatistics {
+                IDataStatistics statistics = new DataStatistics
+                {
                     Field = string_0,
                     Cursor = o
                 };
@@ -980,13 +996,15 @@ namespace Yutai.ArcGIS.Common.BaseClasses
         {
             try
             {
-                IQueryFilter queryFilter = new QueryFilter {
+                IQueryFilter queryFilter = new QueryFilter
+                {
                     SubFields = string_0,
                     WhereClause = ""
                 };
                 (queryFilter as IQueryFilterDefinition).PostfixClause = "Order by " + string_0;
                 ICursor o = itable_0.Search(queryFilter, false);
-                IDataStatistics statistics = new DataStatistics {
+                IDataStatistics statistics = new DataStatistics
+                {
                     Field = string_0,
                     Cursor = o
                 };
@@ -1095,7 +1113,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
         {
             try
             {
-                return (double_0 * 0.0001);
+                return (double_0*0.0001);
             }
             catch
             {
@@ -1107,7 +1125,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
         {
             try
             {
-                return (double_0 * 0.0015);
+                return (double_0*0.0015);
             }
             catch
             {
@@ -1178,7 +1196,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             return -1.0;
         }
 
-        public static double measureLength(IPoint ipoint_0, int int_0, ref IPoint ipoint_1, ref IPoint ipoint_2, ref double double_0)
+        public static double measureLength(IPoint ipoint_0, int int_0, ref IPoint ipoint_1, ref IPoint ipoint_2,
+            ref double double_0)
         {
             ILine line = new Line();
             double length = 0.0;
@@ -1216,7 +1235,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             return -1.0;
         }
 
-        private double method_0(IActiveView iactiveView_0, IPoint ipoint_0, int int_0, ref INewLineFeedback inewLineFeedback_0, ref IPoint ipoint_1, ref IPoint ipoint_2, ref double double_0)
+        private double method_0(IActiveView iactiveView_0, IPoint ipoint_0, int int_0,
+            ref INewLineFeedback inewLineFeedback_0, ref IPoint ipoint_1, ref IPoint ipoint_2, ref double double_0)
         {
             ILine line = new Line();
             double length = 0.0;
@@ -1261,7 +1281,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             return -1.0;
         }
 
-        private double method_1(IActiveView iactiveView_0, IPoint ipoint_0, int int_0, ref INewPolygonFeedback inewPolygonFeedback_0, ref IPointCollection ipointCollection_0)
+        private double method_1(IActiveView iactiveView_0, IPoint ipoint_0, int int_0,
+            ref INewPolygonFeedback inewPolygonFeedback_0, ref IPointCollection ipointCollection_0)
         {
             object before = Missing.Value;
             if ((int_0 == 1) && (inewPolygonFeedback_0 == null))
@@ -1343,10 +1364,10 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                 if (envelope != null)
                 {
                     IEnvelope extent = iactiveView_0.Extent;
-                    IPoint p= new ESRI.ArcGIS.Geometry.Point
+                    IPoint p = new ESRI.ArcGIS.Geometry.Point
                     {
-                        X = (envelope.XMin + envelope.XMax) / 2.0,
-                        Y = (envelope.YMin + envelope.YMax) / 2.0
+                        X = (envelope.XMin + envelope.XMax)/2.0,
+                        Y = (envelope.YMin + envelope.YMax)/2.0
                     };
                     extent.CenterAt(p);
                     iactiveView_0.Extent = extent;
@@ -1370,7 +1391,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             }
         }
 
-        public static bool RunTool(ESRI.ArcGIS.Geoprocessor.Geoprocessor geoprocessor_0, IGPProcess igpprocess_0, ITrackCancel itrackCancel_0)
+        public static bool RunTool(ESRI.ArcGIS.Geoprocessor.Geoprocessor geoprocessor_0, IGPProcess igpprocess_0,
+            ITrackCancel itrackCancel_0)
         {
             geoprocessor_0.OverwriteOutput = true;
             geoprocessor_0.ClearMessages();
@@ -1412,7 +1434,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
         public static void SetRegistryValue(string string_0, object object_0, RegistryValueKind registryValueKind_0)
         {
             RegistryKey localMachine = Registry.LocalMachine;
-            RegistryKey key2 = localMachine.CreateSubKey(@"SOFTWARE\" + Application.CompanyName + @"\" + Application.ProductName);
+            RegistryKey key2 =
+                localMachine.CreateSubKey(@"SOFTWARE\" + Application.CompanyName + @"\" + Application.ProductName);
             key2.SetValue(string_0, object_0, registryValueKind_0);
             key2.Close();
             localMachine.Close();
@@ -1497,7 +1520,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             try
             {
                 DateTime time = Convert.ToDateTime(string_0);
-                return (FormatLen(time.Year.ToString(), "0", 4) + "-" + FormatLen(time.Month.ToString(), "0", 2) + "-" + FormatLen(time.Day.ToString(), "0", 2));
+                return (FormatLen(time.Year.ToString(), "0", 4) + "-" + FormatLen(time.Month.ToString(), "0", 2) + "-" +
+                        FormatLen(time.Day.ToString(), "0", 2));
             }
             catch
             {
@@ -1536,9 +1560,15 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                 ienvelope_0.PutCoords(ienvelope_1.XMin, ienvelope_1.YMin, ienvelope_1.XMax, ienvelope_1.YMax);
             }
             IEnvelope inEnvelope = ienvelope_1;
-            if (((!(inEnvelope.SpatialReference is IUnknownCoordinateSystem) && !(ienvelope_0.SpatialReference is IUnknownCoordinateSystem)) && (ienvelope_0.SpatialReference != null)) && (inEnvelope.SpatialReference != null))
+            if (((!(inEnvelope.SpatialReference is IUnknownCoordinateSystem) &&
+                  !(ienvelope_0.SpatialReference is IUnknownCoordinateSystem)) && (ienvelope_0.SpatialReference != null)) &&
+                (inEnvelope.SpatialReference != null))
             {
-                if (!((!(inEnvelope.SpatialReference is IUnknownCoordinateSystem) || !(ienvelope_0.SpatialReference is IUnknownCoordinateSystem)) ? ((ienvelope_0.SpatialReference != null) || (inEnvelope.SpatialReference != null)) : false))
+                if (
+                    !((!(inEnvelope.SpatialReference is IUnknownCoordinateSystem) ||
+                       !(ienvelope_0.SpatialReference is IUnknownCoordinateSystem))
+                        ? ((ienvelope_0.SpatialReference != null) || (inEnvelope.SpatialReference != null))
+                        : false))
                 {
                     ienvelope_0.Union(inEnvelope);
                 }
@@ -1592,7 +1622,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
         }
 
@@ -1632,7 +1662,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("" ,exception, "");
+                Logger.Current.Error("", exception, "");
             }
         }
 
@@ -1657,9 +1687,9 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                     if (iscene_0 is IGlobe)
                     {
                         ICamera camera = (iscene_0 as IGlobe).GlobeDisplay.ActiveViewer.Camera;
-                        double num1 = (pExtent.XMin + pExtent.XMax) / 2.0;
-                        double num2 = (pExtent.YMin + pExtent.YMax) / 2.0;
-                        double num3 = (pExtent.ZMin + pExtent.ZMax) / 2.0;
+                        double num1 = (pExtent.XMin + pExtent.XMax)/2.0;
+                        double num2 = (pExtent.YMin + pExtent.YMax)/2.0;
+                        double num3 = (pExtent.ZMin + pExtent.ZMax)/2.0;
                         camera.ZoomToRect(pExtent);
                         (iscene_0 as IGlobe).GlobeDisplay.RefreshViewers();
                     }
@@ -1726,7 +1756,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("" ,exception, "");
+                Logger.Current.Error("", exception, "");
             }
         }
 
@@ -1771,9 +1801,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("" ,exception, "");
+                Logger.Current.Error("", exception, "");
             }
         }
     }
 }
-

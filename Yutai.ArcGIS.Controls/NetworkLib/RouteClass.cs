@@ -48,11 +48,14 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
         {
             IFeatureWorkspace pWorkspace = this.m_pWorkspace as IFeatureWorkspace;
             IWorkspaceExtensionManager manager = this.m_pWorkspace as IWorkspaceExtensionManager;
-            UID gUID = new UIDClass {
+            UID gUID = new UIDClass
+            {
                 Value = "esriGeoDatabase.NetworkDatasetWorkspaceExtension"
             };
             IDatasetContainer2 container = manager.FindExtension(gUID) as IDatasetContainer2;
-            this.m_pNetworkDataset = container.get_DatasetByName(esriDatasetType.esriDTNetworkDataset, this.NETWORK_DATASET) as INetworkDataset;
+            this.m_pNetworkDataset =
+                container.get_DatasetByName(esriDatasetType.esriDTNetworkDataset, this.NETWORK_DATASET) as
+                    INetworkDataset;
             this.m_pInputStopsFClass = pWorkspace.OpenFeatureClass(this.INPUT_STOPS_FC);
         }
 
@@ -64,14 +67,16 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             IFeatureClass class3 = nAContext.NAClasses.get_ItemByName("Routes") as IFeatureClass;
             INAClassFieldMap map = new NAClassFieldMapClass();
             map.set_MappedField("Name", this.SHAPE_INPUT_NAME_FIELD);
-            INAClassLoader loader = new NAClassLoaderClass {
+            INAClassLoader loader = new NAClassLoaderClass
+            {
                 Locator = nAContext.Locator,
                 NAClass = class2,
                 FieldMap = map
             };
             int rowsInCursor = 0;
             int rowsLocated = 0;
-            loader.Load(this.m_pInputStopsFClass.Search(new QueryFilterClass(), false) as ICursor, new CancelTrackerClass(), ref rowsInCursor, ref rowsLocated);
+            loader.Load(this.m_pInputStopsFClass.Search(new QueryFilterClass(), false) as ICursor,
+                new CancelTrackerClass(), ref rowsInCursor, ref rowsLocated);
             nAContext.Solver.Solve(nAContext, new GPMessagesClass(), new CancelTrackerClass());
             this.SaveLayerToDisk(layer as ILayer, Environment.CurrentDirectory + @"\Route.lyr");
         }
@@ -88,4 +93,3 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
         }
     }
 }
-

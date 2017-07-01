@@ -24,57 +24,32 @@ namespace Yutai.ArcGIS.Carto.UI
             this.labelExpressionSetPropertyPage_0.Apply();
         }
 
- public IAnnotationExpressionEngine AnnotationExpressionEngine
+        public IAnnotationExpressionEngine AnnotationExpressionEngine
         {
-            get
-            {
-                return this.labelExpressionSetPropertyPage_0.AnnotationExpressionEngine;
-            }
-            set
-            {
-                this.labelExpressionSetPropertyPage_0.AnnotationExpressionEngine = value;
-            }
+            get { return this.labelExpressionSetPropertyPage_0.AnnotationExpressionEngine; }
+            set { this.labelExpressionSetPropertyPage_0.AnnotationExpressionEngine = value; }
         }
 
         public IGeoFeatureLayer GeoFeatureLayer
         {
-            set
-            {
-                this.labelExpressionSetPropertyPage_0.GeoFeatureLayer = value;
-            }
+            set { this.labelExpressionSetPropertyPage_0.GeoFeatureLayer = value; }
         }
 
         public bool IsExpressionSimple
         {
-            get
-            {
-                return this.labelExpressionSetPropertyPage_0.IsExpressionSimple;
-            }
-            set
-            {
-                this.labelExpressionSetPropertyPage_0.IsExpressionSimple = value;
-            }
+            get { return this.labelExpressionSetPropertyPage_0.IsExpressionSimple; }
+            set { this.labelExpressionSetPropertyPage_0.IsExpressionSimple = value; }
         }
 
         public ILabelEngineLayerProperties LabelEngineLayerProp
         {
-            set
-            {
-                this.labelExpressionSetPropertyPage_0.LabelEngineLayerProp = value;
-            }
+            set { this.labelExpressionSetPropertyPage_0.LabelEngineLayerProp = value; }
         }
 
         public string LabelExpression
         {
-            get
-            {
-                return this.labelExpressionSetPropertyPage_0.LabelExpression;
-            }
-            set
-            {
-                this.labelExpressionSetPropertyPage_0.LabelExpression = value;
-            }
+            get { return this.labelExpressionSetPropertyPage_0.LabelExpression; }
+            set { this.labelExpressionSetPropertyPage_0.LabelExpression = value; }
         }
     }
 }
-

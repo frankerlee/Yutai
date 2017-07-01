@@ -9,13 +9,16 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase
 {
     public class ChangeVersionUtil
     {
-        public void ChangeHistoricalVersionByName(IGraphicsContainer igraphicsContainer_0, IFeatureWorkspace ifeatureWorkspace_0, string string_0)
+        public void ChangeHistoricalVersionByName(IGraphicsContainer igraphicsContainer_0,
+            IFeatureWorkspace ifeatureWorkspace_0, string string_0)
         {
             try
             {
-                if ((((igraphicsContainer_0 != null) && (ifeatureWorkspace_0 != null)) && (string_0.Length != 0)) && (ifeatureWorkspace_0 is IHistoricalWorkspace))
+                if ((((igraphicsContainer_0 != null) && (ifeatureWorkspace_0 != null)) && (string_0.Length != 0)) &&
+                    (ifeatureWorkspace_0 is IHistoricalWorkspace))
                 {
-                    IHistoricalVersion version = (ifeatureWorkspace_0 as IHistoricalWorkspace).FindHistoricalVersionByName(string_0);
+                    IHistoricalVersion version =
+                        (ifeatureWorkspace_0 as IHistoricalWorkspace).FindHistoricalVersionByName(string_0);
                     if (version != null)
                     {
                         this.ChangeVersion(igraphicsContainer_0, ifeatureWorkspace_0, version as IFeatureWorkspace);
@@ -28,11 +31,13 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase
             }
         }
 
-        public void ChangeHistoricalVersionByTimeStamp(IGraphicsContainer igraphicsContainer_0, IFeatureWorkspace ifeatureWorkspace_0, object object_0)
+        public void ChangeHistoricalVersionByTimeStamp(IGraphicsContainer igraphicsContainer_0,
+            IFeatureWorkspace ifeatureWorkspace_0, object object_0)
         {
             try
             {
-                if ((((igraphicsContainer_0 != null) && (ifeatureWorkspace_0 != null)) && (object_0 != null)) && (ifeatureWorkspace_0 is IHistoricalWorkspace))
+                if ((((igraphicsContainer_0 != null) && (ifeatureWorkspace_0 != null)) && (object_0 != null)) &&
+                    (ifeatureWorkspace_0 is IHistoricalWorkspace))
                 {
                     object obj2;
                     object obj3;
@@ -63,7 +68,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase
                                 break;
 
                             case "AUTHENTICATION_MODE":
-                                connectionProperties.SetProperty("AUTHENTICATION_MODE", ((System.Array) obj3).GetValue(i));
+                                connectionProperties.SetProperty("AUTHENTICATION_MODE",
+                                    ((System.Array) obj3).GetValue(i));
                                 break;
                         }
                     }
@@ -84,7 +90,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase
             }
         }
 
-        public void ChangeVersion(IGraphicsContainer igraphicsContainer_0, IFeatureWorkspace ifeatureWorkspace_0, IFeatureWorkspace ifeatureWorkspace_1)
+        public void ChangeVersion(IGraphicsContainer igraphicsContainer_0, IFeatureWorkspace ifeatureWorkspace_0,
+            IFeatureWorkspace ifeatureWorkspace_1)
         {
             try
             {
@@ -114,7 +121,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase
                             admin = map as IMapAdmin2;
                             admin.FireChangeVersion(ifeatureWorkspace_0 as IVersion, ifeatureWorkspace_1 as IVersion);
                             this.method_5(map, ifeatureWorkspace_0, ifeatureWorkspace_1, changes);
-                            this.method_4(map as IStandaloneTableCollection, ifeatureWorkspace_0, ifeatureWorkspace_1, changes);
+                            this.method_4(map as IStandaloneTableCollection, ifeatureWorkspace_0, ifeatureWorkspace_1,
+                                changes);
                             this.method_0(admin, changes as IEnumTableVersionChanges);
                             changes.RemoveAll();
                             (map as IActiveView).Refresh();
@@ -122,16 +130,20 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase
                         else
                         {
                             igraphicsContainer_0.Reset();
-                            for (IElement element = igraphicsContainer_0.Next(); element != null; element = igraphicsContainer_0.Next())
+                            for (IElement element = igraphicsContainer_0.Next();
+                                element != null;
+                                element = igraphicsContainer_0.Next())
                             {
                                 if (element is IMapFrame)
                                 {
                                     map = (element as IMapFrame).Map;
                                     map.ClearSelection();
                                     admin = map as IMapAdmin2;
-                                    admin.FireChangeVersion(ifeatureWorkspace_0 as IVersion, ifeatureWorkspace_1 as IVersion);
+                                    admin.FireChangeVersion(ifeatureWorkspace_0 as IVersion,
+                                        ifeatureWorkspace_1 as IVersion);
                                     this.method_5(map, ifeatureWorkspace_0, ifeatureWorkspace_1, changes);
-                                    this.method_4(map as IStandaloneTableCollection, ifeatureWorkspace_0, ifeatureWorkspace_1, changes);
+                                    this.method_4(map as IStandaloneTableCollection, ifeatureWorkspace_0,
+                                        ifeatureWorkspace_1, changes);
                                     this.method_0(admin, changes as IEnumTableVersionChanges);
                                     changes.RemoveAll();
                                     (map as IActiveView).Refresh();
@@ -147,11 +159,13 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase
             }
         }
 
-        public void ChangeVersion(IMap imap_0, IFeatureWorkspace ifeatureWorkspace_0, IFeatureWorkspace ifeatureWorkspace_1)
+        public void ChangeVersion(IMap imap_0, IFeatureWorkspace ifeatureWorkspace_0,
+            IFeatureWorkspace ifeatureWorkspace_1)
         {
             try
             {
-                if ((((imap_0 != null) && (ifeatureWorkspace_0 != null)) && (ifeatureWorkspace_1 != null)) && !this.method_6(ifeatureWorkspace_0))
+                if ((((imap_0 != null) && (ifeatureWorkspace_0 != null)) && (ifeatureWorkspace_1 != null)) &&
+                    !this.method_6(ifeatureWorkspace_0))
                 {
                     ICollectionTableVersionChanges changes = new EnumTableVersionChangesClass();
                     (ifeatureWorkspace_1 as IVersion).RefreshVersion();
@@ -159,7 +173,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase
                     IMapAdmin2 admin = imap_0 as IMapAdmin2;
                     admin.FireChangeVersion(ifeatureWorkspace_0 as IVersion, ifeatureWorkspace_1 as IVersion);
                     this.method_5(imap_0, ifeatureWorkspace_0, ifeatureWorkspace_1, changes);
-                    this.method_4(imap_0 as IStandaloneTableCollection, ifeatureWorkspace_0, ifeatureWorkspace_1, changes);
+                    this.method_4(imap_0 as IStandaloneTableCollection, ifeatureWorkspace_0, ifeatureWorkspace_1,
+                        changes);
                     this.method_0(admin, changes as IEnumTableVersionChanges);
                     changes.RemoveAll();
                     (imap_0 as IActiveView).Refresh();
@@ -170,11 +185,13 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase
             }
         }
 
-        public void ChangeVersionByName(IGraphicsContainer igraphicsContainer_0, IFeatureWorkspace ifeatureWorkspace_0, string string_0)
+        public void ChangeVersionByName(IGraphicsContainer igraphicsContainer_0, IFeatureWorkspace ifeatureWorkspace_0,
+            string string_0)
         {
             try
             {
-                if ((((igraphicsContainer_0 != null) && (ifeatureWorkspace_0 != null)) && (string_0.Length != 0)) && (ifeatureWorkspace_0 is IVersionedWorkspace))
+                if ((((igraphicsContainer_0 != null) && (ifeatureWorkspace_0 != null)) && (string_0.Length != 0)) &&
+                    (ifeatureWorkspace_0 is IVersionedWorkspace))
                 {
                     IVersionedWorkspace workspace = ifeatureWorkspace_0 as IVersionedWorkspace;
                     string versionName = (workspace as IVersion).VersionName;
@@ -256,7 +273,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase
                 IRelationshipClass relationshipClass = irelQueryTable_0.RelationshipClass;
                 if (relationshipClass != null)
                 {
-                    idisplayRelationshipClass_0.DisplayRelationshipClass(relationshipClass, idisplayRelationshipClass_0.JoinType);
+                    idisplayRelationshipClass_0.DisplayRelationshipClass(relationshipClass,
+                        idisplayRelationshipClass_0.JoinType);
                 }
             }
             catch
@@ -264,13 +282,15 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase
             }
         }
 
-        private bool method_3(IDataset idataset_0, IFeatureWorkspace ifeatureWorkspace_0, IFeatureWorkspace ifeatureWorkspace_1, ICollectionTableVersionChanges icollectionTableVersionChanges_0)
+        private bool method_3(IDataset idataset_0, IFeatureWorkspace ifeatureWorkspace_0,
+            IFeatureWorkspace ifeatureWorkspace_1, ICollectionTableVersionChanges icollectionTableVersionChanges_0)
         {
             try
             {
                 if (idataset_0 is IRelQueryTableManage)
                 {
-                    (idataset_0 as IRelQueryTableManage).VersionChanged(ifeatureWorkspace_0 as IVersion, ifeatureWorkspace_1 as IVersion, icollectionTableVersionChanges_0 as IEnumTableVersionChanges);
+                    (idataset_0 as IRelQueryTableManage).VersionChanged(ifeatureWorkspace_0 as IVersion,
+                        ifeatureWorkspace_1 as IVersion, icollectionTableVersionChanges_0 as IEnumTableVersionChanges);
                     icollectionTableVersionChanges_0.Add(idataset_0 as ITable, idataset_0 as ITable);
                     return true;
                 }
@@ -281,7 +301,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase
             return false;
         }
 
-        private void method_4(IStandaloneTableCollection istandaloneTableCollection_0, IFeatureWorkspace ifeatureWorkspace_0, IFeatureWorkspace ifeatureWorkspace_1, ICollectionTableVersionChanges icollectionTableVersionChanges_0)
+        private void method_4(IStandaloneTableCollection istandaloneTableCollection_0,
+            IFeatureWorkspace ifeatureWorkspace_0, IFeatureWorkspace ifeatureWorkspace_1,
+            ICollectionTableVersionChanges icollectionTableVersionChanges_0)
         {
             try
             {
@@ -292,7 +314,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase
                     if (table2 is IDisplayTable)
                     {
                         table = table2 as IDisplayTable;
-                        if (this.method_3(table.DisplayTable as IDataset, ifeatureWorkspace_0, ifeatureWorkspace_1, icollectionTableVersionChanges_0))
+                        if (this.method_3(table.DisplayTable as IDataset, ifeatureWorkspace_0, ifeatureWorkspace_1,
+                            icollectionTableVersionChanges_0))
                         {
                             this.method_2(table2 as IDisplayRelationshipClass, table.DisplayTable as IRelQueryTable);
                         }
@@ -300,7 +323,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase
                     IDataset dataset = table2.Table as IDataset;
                     if (dataset != null)
                     {
-                        this.method_3(dataset, ifeatureWorkspace_0, ifeatureWorkspace_1, icollectionTableVersionChanges_0);
+                        this.method_3(dataset, ifeatureWorkspace_0, ifeatureWorkspace_1,
+                            icollectionTableVersionChanges_0);
                         if (dataset.Workspace == ifeatureWorkspace_0)
                         {
                             ITable newTable = this.method_1(ifeatureWorkspace_1, dataset);
@@ -319,7 +343,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase
             }
         }
 
-        private void method_5(IMap imap_0, IFeatureWorkspace ifeatureWorkspace_0, IFeatureWorkspace ifeatureWorkspace_1, ICollectionTableVersionChanges icollectionTableVersionChanges_0)
+        private void method_5(IMap imap_0, IFeatureWorkspace ifeatureWorkspace_0, IFeatureWorkspace ifeatureWorkspace_1,
+            ICollectionTableVersionChanges icollectionTableVersionChanges_0)
         {
             try
             {
@@ -331,7 +356,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase
                         if (layer2 is IDisplayTable)
                         {
                             IDisplayTable table = layer2 as IDisplayTable;
-                            if (this.method_3(table.DisplayTable as IDataset, ifeatureWorkspace_0, ifeatureWorkspace_1, icollectionTableVersionChanges_0))
+                            if (this.method_3(table.DisplayTable as IDataset, ifeatureWorkspace_0, ifeatureWorkspace_1,
+                                icollectionTableVersionChanges_0))
                             {
                                 this.method_2(layer2 as IDisplayRelationshipClass, table.DisplayTable as IRelQueryTable);
                             }
@@ -342,10 +368,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase
                             IDataset featureClass = layer3.FeatureClass as IDataset;
                             if (featureClass != null)
                             {
-                                this.method_3(featureClass, ifeatureWorkspace_0, ifeatureWorkspace_1, icollectionTableVersionChanges_0);
+                                this.method_3(featureClass, ifeatureWorkspace_0, ifeatureWorkspace_1,
+                                    icollectionTableVersionChanges_0);
                                 if (featureClass.Workspace == ifeatureWorkspace_0)
                                 {
-                                    IFeatureClass class2 = this.method_1(ifeatureWorkspace_1, featureClass) as IFeatureClass;
+                                    IFeatureClass class2 =
+                                        this.method_1(ifeatureWorkspace_1, featureClass) as IFeatureClass;
                                     if (class2 != null)
                                     {
                                         layer3.FeatureClass = class2;
@@ -370,4 +398,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase
         }
     }
 }
-

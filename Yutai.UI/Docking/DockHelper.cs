@@ -37,6 +37,7 @@ namespace Yutai.UI.Docking
                     return DockPanelState.None;
             }
         }
+
         internal static DockPanelState SyncfusionToMapWindow(DockingStyle style)
         {
             switch (style)
@@ -59,7 +60,7 @@ namespace Yutai.UI.Docking
             }
         }
 
-        internal static DevExpress.XtraBars.Docking.DockingStyle  MapWindowToDevExpress(DockPanelState state)
+        internal static DevExpress.XtraBars.Docking.DockingStyle MapWindowToDevExpress(DockPanelState state)
         {
             switch (state)
             {

@@ -28,21 +28,14 @@ namespace Yutai.ArcGIS.Carto.UI
             base.Close();
         }
 
- public IMap FocusMap
+        public IMap FocusMap
         {
-            set
-            {
-                this.matchStyleGrally1.FocusMap = value;
-            }
+            set { this.matchStyleGrally1.FocusMap = value; }
         }
 
         public IStyleGallery StyleGallery
         {
-            set
-            {
-                this.matchStyleGrally1.m_pSG = value;
-            }
+            set { this.matchStyleGrally1.m_pSG = value; }
         }
     }
 }
-

@@ -28,7 +28,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
         }
 
- private void FieldTypeRasterCtrl_Load(object sender, EventArgs e)
+        private void FieldTypeRasterCtrl_Load(object sender, EventArgs e)
         {
             this.method_1();
         }
@@ -46,7 +46,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.method_1();
         }
 
- private void method_0(IField ifield_0, FieldChangeType fieldChangeType_0)
+        private void method_0(IField ifield_0, FieldChangeType fieldChangeType_0)
         {
             if (this.FieldChanged != null)
             {
@@ -80,27 +80,17 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IField Filed
         {
-            set
-            {
-                this.ifieldEdit_0 = value as IFieldEdit;
-            }
+            set { this.ifieldEdit_0 = value as IFieldEdit; }
         }
 
         public bool IsEdit
         {
-            set
-            {
-                this.bool_1 = value;
-            }
+            set { this.bool_1 = value; }
         }
 
         public IWorkspace Workspace
         {
-            set
-            {
-                this.iworkspace_0 = value;
-            }
+            set { this.iworkspace_0 = value; }
         }
     }
 }
-

@@ -19,7 +19,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.InitializeComponent();
         }
 
- private void MapGridControlThird_Load(object sender, EventArgs e)
+        private void MapGridControlThird_Load(object sender, EventArgs e)
         {
             if (this.bool_0)
             {
@@ -43,11 +43,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IMapGrid MapGrid
         {
-            set
-            {
-                this.imapGrid_0 = value;
-            }
+            set { this.imapGrid_0 = value; }
         }
     }
 }
-

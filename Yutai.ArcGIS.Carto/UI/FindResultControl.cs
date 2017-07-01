@@ -24,7 +24,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.InitializeComponent();
         }
 
- private void FindResultControl_Load(object sender, EventArgs e)
+        private void FindResultControl_Load(object sender, EventArgs e)
         {
             this.method_0();
         }
@@ -70,14 +70,15 @@ namespace Yutai.ArcGIS.Carto.UI
                 tag = this.listView1.SelectedItems[i].Tag as IFeatureFindData2;
                 array.Add(tag.Feature);
             }
-            frmInfo info = new frmInfo {
+            frmInfo info = new frmInfo
+            {
                 FocusMap = this.iactiveView_0.FocusMap as IBasicMap
             };
             info.SetInfo(null, array, array.get_Element(0) as IFeature);
             info.ShowDialog();
         }
 
- private void listView1_MouseUp(object sender, MouseEventArgs e)
+        private void listView1_MouseUp(object sender, MouseEventArgs e)
         {
             if ((e.Button == MouseButtons.Right) && (this.listView1.Items.Count > 0))
             {
@@ -223,19 +224,12 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IActiveView ActiveView
         {
-            set
-            {
-                this.iactiveView_0 = value;
-            }
+            set { this.iactiveView_0 = value; }
         }
 
         public IArray FindResults
         {
-            set
-            {
-                this.iarray_0 = value;
-            }
+            set { this.iarray_0 = value; }
         }
     }
 }
-

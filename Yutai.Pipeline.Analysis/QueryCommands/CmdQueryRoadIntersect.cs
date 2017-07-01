@@ -16,6 +16,7 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
 
 
         private PipelineAnalysisPlugin _plugin;
+
         public CmdQueryRoadIntersect(IAppContext context, PipelineAnalysisPlugin plugin)
         {
             OnCreate(context);
@@ -32,7 +33,7 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
                 this.QueryUI.MinimizeBox = false;
                 this.QueryUI.MaximizeBox = false;
                 this.QueryUI.TopMost = true;
-                this.QueryUI.m_MapControl = (IMapControl3)_context.MapControl;
+                this.QueryUI.m_MapControl = (IMapControl3) _context.MapControl;
                 this.QueryUI.m_pPipeCfg = _plugin.PipeConfig;
                 this.QueryUI.m_context = this._context;
                 this.QueryUI.Closing += new CancelEventHandler(this.QueryUI_Closing);
@@ -52,7 +53,6 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
 
         public override void OnClick(object sender, EventArgs args)
         {
-
             OnClick();
         }
 
@@ -72,6 +72,7 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
 
             CommonUtils.AppContext = _context;
         }
+
         //public override void OnMouseDown(int Button, int Shift, int X, int Y)
         //{
         //    if (this.QueryUI.SelectGeometry && Button == 1)

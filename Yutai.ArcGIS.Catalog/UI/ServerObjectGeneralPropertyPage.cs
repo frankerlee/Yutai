@@ -44,7 +44,8 @@ namespace Yutai.ArcGIS.Catalog.UI
         {
             if (this.iagsserverConnectionAdmin_0 != null)
             {
-                this.iagsserverConnectionAdmin_0.ServerObjectAdmin.PauseConfiguration(this.iserverObjectConfiguration_0.Name, this.iserverObjectConfiguration_0.TypeName);
+                this.iagsserverConnectionAdmin_0.ServerObjectAdmin.PauseConfiguration(
+                    this.iserverObjectConfiguration_0.Name, this.iserverObjectConfiguration_0.TypeName);
             }
         }
 
@@ -52,7 +53,8 @@ namespace Yutai.ArcGIS.Catalog.UI
         {
             if (this.iagsserverConnectionAdmin_0 != null)
             {
-                this.iagsserverConnectionAdmin_0.ServerObjectAdmin.StartConfiguration(this.iserverObjectConfiguration_0.Name, this.iserverObjectConfiguration_0.TypeName);
+                this.iagsserverConnectionAdmin_0.ServerObjectAdmin.StartConfiguration(
+                    this.iserverObjectConfiguration_0.Name, this.iserverObjectConfiguration_0.TypeName);
             }
         }
 
@@ -60,7 +62,8 @@ namespace Yutai.ArcGIS.Catalog.UI
         {
             if (this.iagsserverConnectionAdmin_0 != null)
             {
-                this.iagsserverConnectionAdmin_0.ServerObjectAdmin.StopConfiguration(this.iserverObjectConfiguration_0.Name, this.iserverObjectConfiguration_0.TypeName);
+                this.iagsserverConnectionAdmin_0.ServerObjectAdmin.StopConfiguration(
+                    this.iserverObjectConfiguration_0.Name, this.iserverObjectConfiguration_0.TypeName);
             }
         }
 
@@ -80,7 +83,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
         }
 
- private void method_0()
+        private void method_0()
         {
             if (this.iserverObjectConfiguration_0 != null)
             {
@@ -165,55 +168,30 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         public IAGSServerConnectionAdmin AGSConnectionAdmin
         {
-            set
-            {
-                this.iagsserverConnectionAdmin_0 = value;
-            }
+            set { this.iagsserverConnectionAdmin_0 = value; }
         }
 
         public IServerObjectConfiguration ServerObjectConfiguration
         {
-            get
-            {
-                return this.iserverObjectConfiguration_0;
-            }
-            set
-            {
-                this.iserverObjectConfiguration_0 = value;
-            }
+            get { return this.iserverObjectConfiguration_0; }
+            set { this.iserverObjectConfiguration_0 = value; }
         }
 
         public string SOName
         {
-            get
-            {
-                return this.string_1;
-            }
-            set
-            {
-                this.string_1 = value;
-            }
+            get { return this.string_1; }
+            set { this.string_1 = value; }
         }
 
         public string SOType
         {
-            get
-            {
-                return this.string_2;
-            }
-            set
-            {
-                this.string_2 = value;
-            }
+            get { return this.string_2; }
+            set { this.string_2 = value; }
         }
 
         public string Status
         {
-            set
-            {
-                this.string_0 = value;
-            }
+            set { this.string_0 = value; }
         }
     }
 }
-

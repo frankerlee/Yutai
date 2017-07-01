@@ -19,7 +19,8 @@ namespace Yutai.ArcGIS.Framework.Docking
             this.m_dockState = dockState;
             base.Visible = false;
             base.SuspendLayout();
-            if ((((this.DockState == DockState.DockLeft) || (this.DockState == DockState.DockRight)) || (this.DockState == DockState.DockTop)) || (this.DockState == DockState.DockBottom))
+            if ((((this.DockState == DockState.DockLeft) || (this.DockState == DockState.DockRight)) ||
+                 (this.DockState == DockState.DockTop)) || (this.DockState == DockState.DockBottom))
             {
                 this.m_splitter = new SplitterControl();
                 base.Controls.Add(this.m_splitter);
@@ -75,7 +76,7 @@ namespace Yutai.ArcGIS.Framework.Docking
                 else
                 {
                     DockPanel dockPanel = this.DockPanel;
-                    dockPanel.DockLeftPortion += ((double) offset) / ((double) dockArea.Width);
+                    dockPanel.DockLeftPortion += ((double) offset)/((double) dockArea.Width);
                 }
             }
             else if ((this.DockState == DockState.DockRight) && (dockArea.Width > 0))
@@ -87,7 +88,7 @@ namespace Yutai.ArcGIS.Framework.Docking
                 else
                 {
                     DockPanel panel2 = this.DockPanel;
-                    panel2.DockRightPortion -= ((double) offset) / ((double) dockArea.Width);
+                    panel2.DockRightPortion -= ((double) offset)/((double) dockArea.Width);
                 }
             }
             else if ((this.DockState == DockState.DockBottom) && (dockArea.Height > 0))
@@ -99,7 +100,7 @@ namespace Yutai.ArcGIS.Framework.Docking
                 else
                 {
                     DockPanel panel3 = this.DockPanel;
-                    panel3.DockBottomPortion -= ((double) offset) / ((double) dockArea.Height);
+                    panel3.DockBottomPortion -= ((double) offset)/((double) dockArea.Height);
                 }
             }
             else if ((this.DockState == DockState.DockTop) && (dockArea.Height > 0))
@@ -111,7 +112,7 @@ namespace Yutai.ArcGIS.Framework.Docking
                 else
                 {
                     DockPanel panel4 = this.DockPanel;
-                    panel4.DockTopPortion += ((double) offset) / ((double) dockArea.Height);
+                    panel4.DockTopPortion += ((double) offset)/((double) dockArea.Height);
                 }
             }
         }
@@ -138,17 +139,15 @@ namespace Yutai.ArcGIS.Framework.Docking
         {
             if (this.DockState == DockState.Document)
             {
-                e.Graphics.DrawRectangle(SystemPens.ControlDark, base.ClientRectangle.X, base.ClientRectangle.Y, base.ClientRectangle.Width - 1, base.ClientRectangle.Height - 1);
+                e.Graphics.DrawRectangle(SystemPens.ControlDark, base.ClientRectangle.X, base.ClientRectangle.Y,
+                    base.ClientRectangle.Width - 1, base.ClientRectangle.Height - 1);
             }
             base.OnPaint(e);
         }
 
         internal DockPane DefaultPane
         {
-            get
-            {
-                return ((this.VisibleNestedPanes.Count == 0) ? null : this.VisibleNestedPanes[0]);
-            }
+            get { return ((this.VisibleNestedPanes.Count == 0) ? null : this.VisibleNestedPanes[0]); }
         }
 
         public virtual Rectangle DisplayingRectangle
@@ -191,34 +190,22 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         public DockPanel DockPanel
         {
-            get
-            {
-                return this.m_dockPanel;
-            }
+            get { return this.m_dockPanel; }
         }
 
         public DockState DockState
         {
-            get
-            {
-                return this.m_dockState;
-            }
+            get { return this.m_dockState; }
         }
 
         public bool IsFloat
         {
-            get
-            {
-                return (this.DockState == DockState.Float);
-            }
+            get { return (this.DockState == DockState.Float); }
         }
 
         Control IDragSource.DragControl
         {
-            get
-            {
-                return this;
-            }
+            get { return this; }
         }
 
         Rectangle ISplitterDragSource.DragLimitBounds
@@ -261,26 +248,17 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         bool ISplitterDragSource.IsVertical
         {
-            get
-            {
-                return ((this.DockState == DockState.DockLeft) || (this.DockState == DockState.DockRight));
-            }
+            get { return ((this.DockState == DockState.DockLeft) || (this.DockState == DockState.DockRight)); }
         }
 
         public NestedPaneCollection NestedPanes
         {
-            get
-            {
-                return this.m_nestedPanes;
-            }
+            get { return this.m_nestedPanes; }
         }
 
         public VisibleNestedPaneCollection VisibleNestedPanes
         {
-            get
-            {
-                return this.NestedPanes.VisibleNestedPanes;
-            }
+            get { return this.NestedPanes.VisibleNestedPanes; }
         }
 
         private class SplitterControl : SplitterBase
@@ -296,12 +274,8 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             protected override int SplitterSize
             {
-                get
-                {
-                    return 4;
-                }
+                get { return 4; }
             }
         }
     }
 }
-

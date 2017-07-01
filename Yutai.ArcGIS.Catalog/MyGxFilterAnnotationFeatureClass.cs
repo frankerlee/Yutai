@@ -13,7 +13,8 @@ namespace Yutai.ArcGIS.Catalog
                 return true;
             }
             IName internalObjectName = igxObject_0.InternalObjectName;
-            if ((internalObjectName is IFeatureClassName) && ((internalObjectName as IFeatureClassName).FeatureType == esriFeatureType.esriFTAnnotation))
+            if ((internalObjectName is IFeatureClassName) &&
+                ((internalObjectName as IFeatureClassName).FeatureType == esriFeatureType.esriFTAnnotation))
             {
                 myDoubleClickResult_0 = MyDoubleClickResult.myDCRChooseAndDismiss;
                 return true;
@@ -26,7 +27,8 @@ namespace Yutai.ArcGIS.Catalog
             if (igxObject_0 is IGxDataset)
             {
                 IName internalObjectName = igxObject_0.InternalObjectName;
-                if ((internalObjectName is IFeatureClassName) && ((internalObjectName as IFeatureClassName).FeatureType == esriFeatureType.esriFTAnnotation))
+                if ((internalObjectName is IFeatureClassName) &&
+                    ((internalObjectName as IFeatureClassName).FeatureType == esriFeatureType.esriFTAnnotation))
                 {
                     return true;
                 }
@@ -42,12 +44,17 @@ namespace Yutai.ArcGIS.Catalog
         {
             if (igxObject_0 is IGxDatabase)
             {
-                bool_0 = ((igxObject_0 as IGxDatabase).Workspace as IWorkspace2).get_NameExists(esriDatasetType.esriDTFeatureClass, string_0);
+                bool_0 =
+                    ((igxObject_0 as IGxDatabase).Workspace as IWorkspace2).get_NameExists(
+                        esriDatasetType.esriDTFeatureClass, string_0);
                 return true;
             }
-            if ((igxObject_0 is IGxDataset) && ((igxObject_0 as IGxDataset).Type == esriDatasetType.esriDTFeatureDataset))
+            if ((igxObject_0 is IGxDataset) &&
+                ((igxObject_0 as IGxDataset).Type == esriDatasetType.esriDTFeatureDataset))
             {
-                bool_0 = ((igxObject_0 as IGxDataset).Dataset.Workspace as IWorkspace2).get_NameExists(esriDatasetType.esriDTFeatureClass, string_0);
+                bool_0 =
+                    ((igxObject_0 as IGxDataset).Dataset.Workspace as IWorkspace2).get_NameExists(
+                        esriDatasetType.esriDTFeatureClass, string_0);
                 return true;
             }
             return false;
@@ -55,19 +62,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public string Description
         {
-            get
-            {
-                return "注记类";
-            }
+            get { return "注记类"; }
         }
 
         public string Name
         {
-            get
-            {
-                return "GxFilterAnnotationFeatureClass";
-            }
+            get { return "GxFilterAnnotationFeatureClass"; }
         }
     }
 }
-

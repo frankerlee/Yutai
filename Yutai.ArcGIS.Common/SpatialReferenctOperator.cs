@@ -8,7 +8,8 @@ namespace Yutai.ArcGIS.Common
 {
     public class SpatialReferenctOperator
     {
-        public static void ChangeCoordinateSystem(IGeodatabaseRelease igeodatabaseRelease_0, ISpatialReference ispatialReference_0, bool bool_0)
+        public static void ChangeCoordinateSystem(IGeodatabaseRelease igeodatabaseRelease_0,
+            ISpatialReference ispatialReference_0, bool bool_0)
         {
             if (ispatialReference_0 != null)
             {
@@ -24,10 +25,12 @@ namespace Yutai.ArcGIS.Common
                     ispatialReference_0.GetDomain(out num, out num2, out num3, out num4);
                     if (bool_0)
                     {
-                        ISpatialReferenceResolution spatialReferenceResolution = ispatialReference_0 as ISpatialReferenceResolution;
+                        ISpatialReferenceResolution spatialReferenceResolution =
+                            ispatialReference_0 as ISpatialReferenceResolution;
                         spatialReferenceResolution.ConstructFromHorizon();
                         spatialReferenceResolution.SetDefaultXYResolution();
-                        ISpatialReferenceTolerance spatialReferenceTolerance = ispatialReference_0 as ISpatialReferenceTolerance;
+                        ISpatialReferenceTolerance spatialReferenceTolerance =
+                            ispatialReference_0 as ISpatialReferenceTolerance;
                         spatialReferenceTolerance.SetDefaultXYTolerance();
                     }
                 }
@@ -37,7 +40,7 @@ namespace Yutai.ArcGIS.Common
         public static ISpatialReference ConstructCoordinateSystem(IGeodatabaseRelease igeodatabaseRelease_0)
         {
             bool geoDatasetPrecision = GeodatabaseTools.GetGeoDatasetPrecision(igeodatabaseRelease_0);
-           
+
             ISpatialReference spatialReference = new UnknownCoordinateSystem() as ISpatialReference;
             IControlPrecision2 controlPrecision = spatialReference as IControlPrecision2;
             controlPrecision.IsHighPrecision = geoDatasetPrecision;
@@ -83,8 +86,8 @@ namespace Yutai.ArcGIS.Common
                         return result;
                     }
                     ILinearUnit coordinateUnit = (spatialReference as IProjectedCoordinateSystem).CoordinateUnit;
-                    double num = -10001858.0 / coordinateUnit.MetersPerUnit + falseNorthing;
-                    double num2 = 10001858.0 / coordinateUnit.MetersPerUnit + falseNorthing;
+                    double num = -10001858.0/coordinateUnit.MetersPerUnit + falseNorthing;
+                    double num2 = 10001858.0/coordinateUnit.MetersPerUnit + falseNorthing;
                     if (extent.YMin < num || extent.YMax > num2)
                     {
                         result = false;

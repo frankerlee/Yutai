@@ -6,16 +6,16 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Commands.Document
 {
-    public class CmdOpenMapDocument:YutaiCommand
+    public class CmdOpenMapDocument : YutaiCommand
     {
         public CmdOpenMapDocument(IAppContext context)
         {
-           OnCreate(context);
+            OnCreate(context);
         }
 
         public override void OnClick()
         {
-           OpenFileDialog dialog=new OpenFileDialog();
+            OpenFileDialog dialog = new OpenFileDialog();
             dialog.Title = "打开Mxd文档";
             dialog.Filter = "MXD文档(*.mxd)|*.mxd";
             dialog.Multiselect = false;
@@ -23,7 +23,7 @@ namespace Yutai.Commands.Document
             DialogResult result = dialog.ShowDialog();
             if (result != DialogResult.OK) return;
             string fileName = dialog.FileName;
-            _context.MapControl.LoadMxFile(fileName,null,null);
+            _context.MapControl.LoadMxFile(fileName, null, null);
         }
 
         public override void OnClick(object sender, EventArgs args)

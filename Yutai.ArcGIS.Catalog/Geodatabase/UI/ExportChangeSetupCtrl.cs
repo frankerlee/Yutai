@@ -20,7 +20,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnSelectOutGDB_Click(object sender, EventArgs e)
         {
-            SaveFileDialog dialog = new SaveFileDialog {
+            SaveFileDialog dialog = new SaveFileDialog
+            {
                 Filter = "增量数据库|*.mdb|增量xml|*.xml"
             };
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -29,7 +30,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- public bool Do()
+        public bool Do()
         {
             string str = this.txtDeltaFile.Text.Trim();
             if (str.Length == 0)
@@ -55,7 +56,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private string method_0(IWorkspaceName iworkspaceName_0)
+        private string method_0(IWorkspaceName iworkspaceName_0)
         {
             string pathName = iworkspaceName_0.PathName;
             if (iworkspaceName_0.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace)
@@ -69,4 +70,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

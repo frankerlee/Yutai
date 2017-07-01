@@ -32,13 +32,8 @@ namespace Yutai.Plugins.Editor.Commands
 
         public override bool Enabled
         {
-            get
-            {
-                return SketchToolAssist.Feedback != null && SketchShareEx.PointCount >= 1;
-            }
+            get { return SketchToolAssist.Feedback != null && SketchShareEx.PointCount >= 1; }
         }
-
-
 
 
         public override void OnClick(object sender, EventArgs args)
@@ -48,14 +43,12 @@ namespace Yutai.Plugins.Editor.Commands
 
         public override void OnClick()
         {
-            SketchShareEx.EndSketch(false, _context.FocusMap as IActiveView, Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
+            SketchShareEx.EndSketch(false, _context.FocusMap as IActiveView,
+                Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
             SketchToolAssist.Feedback = null;
             SketchShareEx.PointCount = 0;
             SketchShareEx.m_bInUse = false;
             SketchShareEx.m_pSketchCommandFolw.Reset();
         }
-
-
-
     }
 }

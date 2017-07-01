@@ -16,7 +16,9 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
         private int m_type = 0;
         private string OLETemplete = "Provider=Microsoft.Jet.OLEDB.4.0; Data source= #DATABASE#";
         private string OraceleTemplete = "Provider=MSDAORA.1;Data Source=#SERVER#;User Id=#USER#;Password=#PASSWORD#";
-        private string SQLTemplete = "Integrated Security=False; Data Source=#SERVER#;User Id=#USER#;Password=#PASSWORD#;Initial Catalog= #DATABASE#";
+
+        private string SQLTemplete =
+            "Integrated Security=False; Data Source=#SERVER#;User Id=#USER#;Password=#PASSWORD#;Initial Catalog= #DATABASE#";
 
         public OLEDBSettingPropertyPage(int type)
         {
@@ -26,7 +28,8 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
 
         private void btnSelectMDB_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
                 Filter = "*.mdb|*.mdb"
             };
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -51,12 +54,19 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
             string str = "";
             if (this.radioGroup1.SelectedIndex == 0)
             {
-                str = this.SQLTemplete.Replace("#SERVER#", this.txtServer.Text).Replace("#USER#", this.txtUser.Text).Replace("#PASSWORD#", this.txtPassword.Text).Replace("#DATABASE#", this.txtDatabase.Text);
+                str =
+                    this.SQLTemplete.Replace("#SERVER#", this.txtServer.Text)
+                        .Replace("#USER#", this.txtUser.Text)
+                        .Replace("#PASSWORD#", this.txtPassword.Text)
+                        .Replace("#DATABASE#", this.txtDatabase.Text);
                 oleDb = DataProviderType.Sql;
             }
             else if (this.radioGroup1.SelectedIndex == 1)
             {
-                str = this.OraceleTemplete.Replace("#SERVER#", this.txtServer.Text).Replace("#USER#", this.txtUser.Text).Replace("#PASSWORD#", this.txtPassword.Text);
+                str =
+                    this.OraceleTemplete.Replace("#SERVER#", this.txtServer.Text)
+                        .Replace("#USER#", this.txtUser.Text)
+                        .Replace("#PASSWORD#", this.txtPassword.Text);
                 oleDb = DataProviderType.OleDb;
             }
             else
@@ -121,7 +131,7 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
             }
         }
 
- private void EnableControl()
+        private void EnableControl()
         {
             this.btnTestConnection.Enabled = true;
             if (this.txtUser.Text.Trim().Length == 0)
@@ -184,7 +194,8 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
             {
                 str = str + "MSDAORA.1;";
             }
-            str = ((str + " Data Source= " + this.txtServer.Text.Trim() + ";") + "User Id= " + this.txtUser.Text.Trim() + ";") + "Password= " + this.txtPassword.Text.Trim();
+            str = ((str + " Data Source= " + this.txtServer.Text.Trim() + ";") + "User Id= " + this.txtUser.Text.Trim() +
+                   ";") + "Password= " + this.txtPassword.Text.Trim();
             if (this.radioGroup1.SelectedIndex != 0)
             {
                 return str;
@@ -251,7 +262,7 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
                         }
                         else if ((this.m_type == 1) && (str == "sysprivdb"))
                         {
-                            string[] strArray = str2.Split(new string[] { "||" }, StringSplitOptions.RemoveEmptyEntries);
+                            string[] strArray = str2.Split(new string[] {"||"}, StringSplitOptions.RemoveEmptyEntries);
                             this.SplitString(strArray[1]);
                         }
                     }
@@ -260,7 +271,7 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
             this.m_CanDo = true;
         }
 
- private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
+        private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.m_CanDo)
             {
@@ -319,10 +330,10 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
 
         private void SplitString(string Value)
         {
-            string[] strArray = Value.Split(new char[] { ';' });
+            string[] strArray = Value.Split(new char[] {';'});
             for (int i = 0; i < strArray.Length; i++)
             {
-                string[] strArray2 = strArray[i].Split(new char[] { '=' });
+                string[] strArray2 = strArray[i].Split(new char[] {'='});
                 strArray2[0] = strArray2[0].Trim();
                 strArray2[1] = strArray2[1].Trim();
                 if (strArray2[0].ToLower() == "provider")
@@ -447,4 +458,3 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
         }
     }
 }
-

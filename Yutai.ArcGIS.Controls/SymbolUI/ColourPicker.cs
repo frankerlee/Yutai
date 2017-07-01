@@ -45,4 +45,3 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         }
     }
 }
-

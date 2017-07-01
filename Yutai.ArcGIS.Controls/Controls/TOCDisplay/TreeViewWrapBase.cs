@@ -8,4 +8,3 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
         public TOCTreeNode m_FocusMapNode = null;
     }
 }
-

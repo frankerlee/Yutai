@@ -70,10 +70,7 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public Sewing Sewing
         {
-            get
-            {
-                return this.sewing_0;
-            }
+            get { return this.sewing_0; }
             set
             {
                 if (value != null)
@@ -89,94 +86,49 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public string DocumentName
         {
-            get
-            {
-                return this.printDocument_0.DocumentName;
-            }
-            set
-            {
-                this.printDocument_0.DocumentName = value;
-            }
+            get { return this.printDocument_0.DocumentName; }
+            set { this.printDocument_0.DocumentName = value; }
         }
 
         public int RowsPerPage
         {
-            get
-            {
-                return this.int_5;
-            }
-            set
-            {
-                this.int_5 = value;
-            }
+            get { return this.int_5; }
+            set { this.int_5 = value; }
         }
 
         public bool IsSubTotalPerPage
         {
-            get
-            {
-                return this.bool_1;
-            }
-            set
-            {
-                this.bool_1 = value;
-            }
+            get { return this.bool_1; }
+            set { this.bool_1 = value; }
         }
 
         public string SubTotalColsList
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
 
         public bool IsSewingLine
         {
-            get
-            {
-                return this.bool_2;
-            }
-            set
-            {
-                this.bool_2 = value;
-            }
+            get { return this.bool_2; }
+            set { this.bool_2 = value; }
         }
 
         public bool IsPrinterMargins
         {
-            get
-            {
-                return this.bool_3;
-            }
-            set
-            {
-                this.bool_3 = value;
-            }
+            get { return this.bool_3; }
+            set { this.bool_3 = value; }
         }
 
         public GridBorderFlag GridBorder
         {
-            get
-            {
-                return this.gridBorderFlag_0;
-            }
-            set
-            {
-                this.gridBorderFlag_0 = value;
-            }
+            get { return this.gridBorderFlag_0; }
+            set { this.gridBorderFlag_0 = value; }
         }
 
         public object Title
         {
-            get
-            {
-                return this.title_0;
-            }
+            get { return this.title_0; }
             set
             {
                 if (value != null)
@@ -187,11 +139,11 @@ namespace Yutai.ArcGIS.Common.Excel
                         {
                             this.title_0 = new Title();
                         }
-                        this.title_0.Text = (string)value;
+                        this.title_0.Text = (string) value;
                     }
                     else if (value.GetType().ToString() == "JLK.Utility.Excel.Title")
                     {
-                        this.title_0 = (Title)value;
+                        this.title_0 = (Title) value;
                     }
                 }
             }
@@ -199,10 +151,7 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public object Caption
         {
-            get
-            {
-                return this.caption_0;
-            }
+            get { return this.caption_0; }
             set
             {
                 if (value != null)
@@ -213,11 +162,11 @@ namespace Yutai.ArcGIS.Common.Excel
                         {
                             this.caption_0 = new Caption();
                         }
-                        this.caption_0.Text = (string)value;
+                        this.caption_0.Text = (string) value;
                     }
                     else if (value.GetType().ToString() == "JLK.Utility.Excel.Caption")
                     {
-                        this.caption_0 = (Caption)value;
+                        this.caption_0 = (Caption) value;
                     }
                 }
             }
@@ -225,10 +174,7 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public object Top
         {
-            get
-            {
-                return this.top_0;
-            }
+            get { return this.top_0; }
             set
             {
                 if (value != null)
@@ -243,7 +189,7 @@ namespace Yutai.ArcGIS.Common.Excel
                     }
                     else if (value.GetType().ToString() == "JLK.Utility.Excel.Top")
                     {
-                        this.top_0 = (Top)value;
+                        this.top_0 = (Top) value;
                     }
                 }
             }
@@ -251,10 +197,7 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public object Bottom
         {
-            get
-            {
-                return this.bottom_0;
-            }
+            get { return this.bottom_0; }
             set
             {
                 if (value != null)
@@ -265,11 +208,11 @@ namespace Yutai.ArcGIS.Common.Excel
                         {
                             this.bottom_0 = new Bottom();
                         }
-                        this.bottom_0.DataSource = (string)value;
+                        this.bottom_0.DataSource = (string) value;
                     }
                     else if (value.GetType().ToString() == "JLK.Utility.Excel.Bottom")
                     {
-                        this.bottom_0 = (Bottom)value;
+                        this.bottom_0 = (Bottom) value;
                     }
                 }
             }
@@ -277,15 +220,14 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public object Header
         {
-            get
-            {
-                return this.header_0;
-            }
+            get { return this.header_0; }
             set
             {
                 if (value != null)
                 {
-                    if (value.GetType().ToString() == "System.String[]" || value.GetType().ToString() == "System.String[,]" || value.GetType().ToString() == "System.Data.DataTable")
+                    if (value.GetType().ToString() == "System.String[]" ||
+                        value.GetType().ToString() == "System.String[,]" ||
+                        value.GetType().ToString() == "System.Data.DataTable")
                     {
                         if (this.header_0 == null)
                         {
@@ -295,7 +237,7 @@ namespace Yutai.ArcGIS.Common.Excel
                     }
                     else if (value.GetType().ToString() == "JLK.Utility.Excel.Header")
                     {
-                        this.header_0 = (Header)value;
+                        this.header_0 = (Header) value;
                     }
                 }
             }
@@ -303,15 +245,14 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public object Footer
         {
-            get
-            {
-                return this._footer;
-            }
+            get { return this._footer; }
             set
             {
                 if (value != null)
                 {
-                    if (value.GetType().ToString() == "System.String[]" || value.GetType().ToString() == "System.String[,]" || value.GetType().ToString() == "System.Data.DataTable")
+                    if (value.GetType().ToString() == "System.String[]" ||
+                        value.GetType().ToString() == "System.String[,]" ||
+                        value.GetType().ToString() == "System.Data.DataTable")
                     {
                         if (this._footer == null)
                         {
@@ -321,7 +262,7 @@ namespace Yutai.ArcGIS.Common.Excel
                     }
                     else if (value.GetType().ToString() == "JLK.Utility.Excel.Footer")
                     {
-                        this._footer = (Footer)value;
+                        this._footer = (Footer) value;
                     }
                 }
             }
@@ -329,15 +270,14 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public object MultiHeader
         {
-            get
-            {
-                return this.multiHeader_0;
-            }
+            get { return this.multiHeader_0; }
             set
             {
                 if (value != null)
                 {
-                    if (value.GetType().ToString() == "System.String[]" || value.GetType().ToString() == "System.String[,]" || value.GetType().ToString() == "System.Data.DataTable")
+                    if (value.GetType().ToString() == "System.String[]" ||
+                        value.GetType().ToString() == "System.String[,]" ||
+                        value.GetType().ToString() == "System.Data.DataTable")
                     {
                         if (this.multiHeader_0 == null)
                         {
@@ -347,7 +287,7 @@ namespace Yutai.ArcGIS.Common.Excel
                     }
                     else if (value.GetType().ToString() == "JLK.Utility.Excel.MultiHeader")
                     {
-                        this.multiHeader_0 = (MultiHeader)value;
+                        this.multiHeader_0 = (MultiHeader) value;
                     }
                 }
             }
@@ -355,15 +295,14 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public object Body
         {
-            get
-            {
-                return this.body_0;
-            }
+            get { return this.body_0; }
             set
             {
                 if (value != null)
                 {
-                    if (value.GetType().ToString() == "System.String[]" || value.GetType().ToString() == "System.String[,]" || value.GetType().ToString() == "System.Data.DataTable")
+                    if (value.GetType().ToString() == "System.String[]" ||
+                        value.GetType().ToString() == "System.String[,]" ||
+                        value.GetType().ToString() == "System.Data.DataTable")
                     {
                         if (this.body_0 == null)
                         {
@@ -373,7 +312,7 @@ namespace Yutai.ArcGIS.Common.Excel
                     }
                     else if (value.GetType().ToString() == "JLK.Utility.Excel.Body")
                     {
-                        this.body_0 = (Body)value;
+                        this.body_0 = (Body) value;
                     }
                 }
             }
@@ -381,14 +320,8 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public object DataSource
         {
-            get
-            {
-                return this.body_0.DataSource;
-            }
-            set
-            {
-                this.body_0.DataSource = value;
-            }
+            get { return this.body_0.DataSource; }
+            set { this.body_0.DataSource = value; }
         }
 
         public MisGoldPrinter() : this(false)
@@ -462,15 +395,17 @@ namespace Yutai.ArcGIS.Common.Excel
             excelAccess.MergeCells(1, 1, 1, this.body_0.Cols);
             excelAccess.SetFont(1, 1, 1, this.body_0.Cols, this.title_0.Font);
             excelAccess.SetCellText(1, 1, 1, this.body_0.Cols, this.title_0.Text);
-            excelAccess.SetCellText((DataTable)this.DataSource, 3, 1, true);
+            excelAccess.SetCellText((DataTable) this.DataSource, 3, 1, true);
             System.Windows.Forms.FileDialog fileDialog = new System.Windows.Forms.SaveFileDialog();
             fileDialog.AddExtension = true;
             fileDialog.DefaultExt = ".xls";
             fileDialog.Title = "保存到Excel文件";
             fileDialog.Filter = "Microsoft Office Excel 工作簿(*.xls)|*.xls|模板(*.xlt)|*.xlt";
-            if (fileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK && excelAccess.SaveAs(fileDialog.FileName, true))
+            if (fileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK &&
+                excelAccess.SaveAs(fileDialog.FileName, true))
             {
-                System.Windows.Forms.MessageBox.Show("数据成功保存到Excel文件！", "JLK.Utility.Excel", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Asterisk);
+                System.Windows.Forms.MessageBox.Show("数据成功保存到Excel文件！", "JLK.Utility.Excel",
+                    System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Asterisk);
             }
             fileDialog.Dispose();
             excelAccess.Close();
@@ -560,12 +495,12 @@ namespace Yutai.ArcGIS.Common.Excel
                 }
                 if (num > this.printerMargins_0.Width)
                 {
-                    this.float_0 = (float)(this.printerMargins_0.Width / num);
+                    this.float_0 = (float) (this.printerMargins_0.Width/num);
                 }
                 else
                 {
                     this.int_2 = num;
-                    this.int_0 += (this.printerMargins_0.Width - this.int_2) / 2;
+                    this.int_0 += (this.printerMargins_0.Width - this.int_2)/2;
                 }
             }
             if (this.top_0 != null && (this.int_3 == 1 || this.top_0.IsDrawAllPage))
@@ -576,7 +511,9 @@ namespace Yutai.ArcGIS.Common.Excel
             {
                 this.method_1(this.header_0);
             }
-            if ((this.top_0 != null || this.header_0 != null) && (this.int_3 == 1 || (this.top_0 != null && this.top_0.IsDrawAllPage) || (this.header_0 != null && this.header_0.IsDrawAllPage)))
+            if ((this.top_0 != null || this.header_0 != null) &&
+                (this.int_3 == 1 || (this.top_0 != null && this.top_0.IsDrawAllPage) ||
+                 (this.header_0 != null && this.header_0.IsDrawAllPage)))
             {
                 this.int_1 += 5;
             }
@@ -584,20 +521,21 @@ namespace Yutai.ArcGIS.Common.Excel
             {
                 this.method_1(this.multiHeader_0);
             }
-            float num2 = (float)(this.printer_0.PrinterMargins.Height - (this.int_1 - this.printer_0.PrinterMargins.Top));
+            float num2 =
+                (float) (this.printer_0.PrinterMargins.Height - (this.int_1 - this.printer_0.PrinterMargins.Top));
             if (this._footer != null && this._footer.IsDrawAllPage)
             {
-                num2 -= (float)this._footer.Height;
+                num2 -= (float) this._footer.Height;
             }
             if (this.bottom_0 != null && this.bottom_0.IsDrawAllPage)
             {
-                num2 -= (float)this.bottom_0.Height;
+                num2 -= (float) this.bottom_0.Height;
             }
             if (num2 < 0f)
             {
                 throw new System.Exception("预留给打印主要网格的空间太小，请适当调整！");
             }
-            int num3 = (int)(num2 / (float)this.body_0.RowHeight);
+            int num3 = (int) (num2/(float) this.body_0.RowHeight);
             if (this.RowsPerPage > 0 && this.RowsPerPage < num3)
             {
                 num3 = this.RowsPerPage;
@@ -674,7 +612,9 @@ namespace Yutai.ArcGIS.Common.Excel
                 {
                 }
             }
-            if ((this._footer != null || this.bottom_0 != null) && (this.int_3 == 1 || (this.top_0 != null && this.top_0.IsDrawAllPage) || (this.header_0 != null && this.header_0.IsDrawAllPage)))
+            if ((this._footer != null || this.bottom_0 != null) &&
+                (this.int_3 == 1 || (this.top_0 != null && this.top_0.IsDrawAllPage) ||
+                 (this.header_0 != null && this.header_0.IsDrawAllPage)))
             {
                 this.int_1 += 5;
             }
@@ -690,8 +630,10 @@ namespace Yutai.ArcGIS.Common.Excel
                 }
                 else
                 {
-                    num2 = (float)(this.printer_0.PrinterMargins.Height - (this.int_1 - this.printer_0.PrinterMargins.Top));
-                    if (num2 < (float)this.bottom_0.Height)
+                    num2 =
+                        (float)
+                        (this.printer_0.PrinterMargins.Height - (this.int_1 - this.printer_0.PrinterMargins.Top));
+                    if (num2 < (float) this.bottom_0.Height)
                     {
                         flag = true;
                     }
@@ -812,8 +754,10 @@ namespace Yutai.ArcGIS.Common.Excel
             Graphics arg_06_0 = printPageEventArgs_0.Graphics;
             System.Console.WriteLine("*****Information about the printer*****");
             System.Console.WriteLine("纸张的大小  ev.PageSettings.PaperSize:" + printPageEventArgs_0.PageSettings.PaperSize);
-            System.Console.WriteLine("打印分辨率  ev.PageSettings.PrinterResolution:" + printPageEventArgs_0.PageSettings.PrinterResolution);
-            System.Console.WriteLine("旋转的角度  ev.PageSettings.PrinterSettings.LandscapeAngle" + printPageEventArgs_0.PageSettings.PrinterSettings.LandscapeAngle);
+            System.Console.WriteLine("打印分辨率  ev.PageSettings.PrinterResolution:" +
+                                     printPageEventArgs_0.PageSettings.PrinterResolution);
+            System.Console.WriteLine("旋转的角度  ev.PageSettings.PrinterSettings.LandscapeAngle" +
+                                     printPageEventArgs_0.PageSettings.PrinterSettings.LandscapeAngle);
             System.Console.WriteLine("");
             System.Console.WriteLine("*****Information about the page*****");
             System.Console.WriteLine("页面的大小  ev.PageSettings.Bounds:" + printPageEventArgs_0.PageSettings.Bounds);
@@ -824,7 +768,10 @@ namespace Yutai.ArcGIS.Common.Excel
             System.Console.WriteLine("垂直分辨率    ev.Graphics.DpiY:" + printPageEventArgs_0.Graphics.DpiY);
             printPageEventArgs_0.Graphics.SetClip(printPageEventArgs_0.PageBounds);
             System.Console.WriteLine("ev.Graphics.VisibleClipBounds:" + printPageEventArgs_0.Graphics.VisibleClipBounds);
-            SizeF sizeF = new SizeF(printPageEventArgs_0.Graphics.VisibleClipBounds.Width * printPageEventArgs_0.Graphics.DpiX / 100f, printPageEventArgs_0.Graphics.VisibleClipBounds.Height * printPageEventArgs_0.Graphics.DpiY / 100f);
+            SizeF sizeF =
+                new SizeF(
+                    printPageEventArgs_0.Graphics.VisibleClipBounds.Width*printPageEventArgs_0.Graphics.DpiX/100f,
+                    printPageEventArgs_0.Graphics.VisibleClipBounds.Height*printPageEventArgs_0.Graphics.DpiY/100f);
             System.Console.WriteLine("drawing Surface Size in Pixels" + sizeF);
         }
     }

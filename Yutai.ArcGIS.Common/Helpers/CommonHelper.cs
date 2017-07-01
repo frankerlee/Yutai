@@ -23,7 +23,6 @@ namespace Yutai.ArcGIS.Common.Helpers
 {
     public class CommonHelper
     {
-
         public const string C_TEMP_DIRECTORY = "TempDirectory";
 
         // Methods
@@ -975,7 +974,7 @@ namespace Yutai.ArcGIS.Common.Helpers
                 MessageBox.Show(exception.Message);
             }
         }
-        
+
         public static void GetUniqueValuesEx(ILayer ilayer_0, string string_0, IList ilist_0)
         {
             try
@@ -1804,6 +1803,7 @@ namespace Yutai.ArcGIS.Common.Helpers
                 // Logger.Current.Error("",exception, "");
             }
         }
+
         public static BarButtonItem CreateJLKBarItem(BarManager barManager_0, ICommand icommand_0)
         {
             BarButtonItem barButtonItem = new BarButtonItem();
@@ -1835,6 +1835,5 @@ namespace Yutai.ArcGIS.Common.Helpers
             }
             return barButtonItem;
         }
-
     }
 }

@@ -12,6 +12,5 @@ namespace Yutai.UI.Style
         {
             Logger.Current.Trace("In ControlStyleSettings");
         }
-
     }
 }

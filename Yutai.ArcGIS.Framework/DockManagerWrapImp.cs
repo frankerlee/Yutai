@@ -100,11 +100,11 @@ namespace Yutai.ArcGIS.Framework
                             @float = DockingStyle.Left;
                             break;
 
-                        case  DockingStyle.Right:
+                        case DockingStyle.Right:
                             @float = DockingStyle.Right;
                             break;
 
-                        case  DockingStyle.Fill:
+                        case DockingStyle.Fill:
                             @float = DockingStyle.Fill;
                             break;
 
@@ -126,12 +126,12 @@ namespace Yutai.ArcGIS.Framework
                         exception.ToString();
                     }
                     if ((DevExpress.XtraBars.Docking.DockingStyle)
-                        ((int)(object_0 as IDockContent).DefaultDockingStyle) == DockingStyle.Float)
+                        ((int) (object_0 as IDockContent).DefaultDockingStyle) == DockingStyle.Float)
                     {
                         panel.FloatSize = (object_0 as Control).Size;
                         panel.Dock = @float;
-                        int x = Screen.PrimaryScreen.WorkingArea.X + (Screen.PrimaryScreen.WorkingArea.Width / 2);
-                        int y = (Screen.PrimaryScreen.WorkingArea.Top + Screen.PrimaryScreen.WorkingArea.Bottom) / 2;
+                        int x = Screen.PrimaryScreen.WorkingArea.X + (Screen.PrimaryScreen.WorkingArea.Width/2);
+                        int y = (Screen.PrimaryScreen.WorkingArea.Top + Screen.PrimaryScreen.WorkingArea.Bottom)/2;
                         Point point = new Point(x, y);
                         panel.Show();
                     }
@@ -139,7 +139,8 @@ namespace Yutai.ArcGIS.Framework
                     {
                         for (int i = 0; i < this.dockManager_0.Panels.Count; i++)
                         {
-                            if ((this.dockManager_0.Panels[i] != panel) && (this.dockManager_0.Panels[i].Dock == panel.Dock))
+                            if ((this.dockManager_0.Panels[i] != panel) &&
+                                (this.dockManager_0.Panels[i].Dock == panel.Dock))
                             {
                                 panel2 = this.dockManager_0.Panels[i];
                                 if (panel2.Visibility != DockVisibility.Hidden)
@@ -177,7 +178,8 @@ namespace Yutai.ArcGIS.Framework
         {
             for (int i = 0; i < this.dockManager_0.Panels.Count; i++)
             {
-                if ((this.dockManager_0.Panels[i] != dockPanel_0) && (this.dockManager_0.Panels[i].Dock == dockPanel_0.Dock))
+                if ((this.dockManager_0.Panels[i] != dockPanel_0) &&
+                    (this.dockManager_0.Panels[i].Dock == dockPanel_0.Dock))
                 {
                     DockPanel panel = this.dockManager_0.Panels[i];
                     if (panel.Visibility != DockVisibility.Hidden)
@@ -196,9 +198,9 @@ namespace Yutai.ArcGIS.Framework
             set
             {
                 this.dockManager_0 = value as DockManager;
-                this.dockManager_0.VisibilityChanged += new VisibilityChangedEventHandler(this.dockManager_0_VisibilityChanged);
+                this.dockManager_0.VisibilityChanged +=
+                    new VisibilityChangedEventHandler(this.dockManager_0_VisibilityChanged);
             }
         }
     }
 }
-

@@ -46,9 +46,13 @@ namespace Yutai.Plugins.Catalog.Commands
                 }
                 else if (((IGxSelection) _context.GxSelection).FirstObject is IGxDataset)
                 {
-                    if ((((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).DatasetName is IFeatureClassName)
+                    if (
+                        (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).DatasetName is
+                            IFeatureClassName)
                     {
-                        if (((((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).DatasetName as IFeatureClassName).FeatureDatasetName != null)
+                        if (
+                        ((((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).DatasetName as
+                            IFeatureClassName).FeatureDatasetName != null)
                         {
                             result = false;
                             return result;
@@ -56,7 +60,9 @@ namespace Yutai.Plugins.Catalog.Commands
                     }
                     try
                     {
-                        IVersionedObject3 versionedObject = (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Dataset as IVersionedObject3;
+                        IVersionedObject3 versionedObject =
+                            (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Dataset as
+                                IVersionedObject3;
                         if (versionedObject == null)
                         {
                             result = false;
@@ -67,9 +73,13 @@ namespace Yutai.Plugins.Catalog.Commands
                         versionedObject.GetVersionRegistrationInfo(out flag, out flag2);
                         if (!versionedObject.IsRegisteredAsVersioned)
                         {
-                            if ((((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Dataset is IFeatureDataset)
+                            if (
+                                (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Dataset is
+                                    IFeatureDataset)
                             {
-                                IEnumDataset subsets = ((((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Dataset as IFeatureDataset).Subsets;
+                                IEnumDataset subsets =
+                                ((((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Dataset as
+                                    IFeatureDataset).Subsets;
                                 subsets.Reset();
                                 for (IDataset dataset = subsets.Next(); dataset != null; dataset = subsets.Next())
                                 {
@@ -111,12 +121,12 @@ namespace Yutai.Plugins.Catalog.Commands
 
         public override void OnClick()
         {
-
             if (this.Enabled)
             {
                 try
                 {
-                    IVersionedObject3 versionedObject = (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Dataset as IVersionedObject3;
+                    IVersionedObject3 versionedObject =
+                        (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Dataset as IVersionedObject3;
                     bool flag;
                     bool flag2;
                     versionedObject.GetVersionRegistrationInfo(out flag, out flag2);
@@ -131,7 +141,9 @@ namespace Yutai.Plugins.Catalog.Commands
                     COMException ex = ex2 as COMException;
                     if (ex != null && ex.ErrorCode == -2147467259)
                     {
-                        System.Windows.Forms.MessageBox.Show("表[" + (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).DatasetName + "]正在使用");
+                        System.Windows.Forms.MessageBox.Show("表[" +
+                                                             (((IGxSelection) _context.GxSelection).FirstObject as
+                                                                 IGxDataset).DatasetName + "]正在使用");
                     }
                     // CErrorLog.writeErrorLog(this, ex2, "");
                 }

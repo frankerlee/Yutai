@@ -15,9 +15,9 @@ using Steema.TeeChart.Styles;
 
 namespace Yutai.ArcGIS.Common.ExtendClass
 {
-	[Guid("C86B5915-443F-4108-8FE7-386FCBD038DB")]
-   
-    public class DataGraphicsElement : IElement, IClone, ITransform2D, IElementProperties, IElementProperties2, IBoundsProperties, IPersistVariant
+    [Guid("C86B5915-443F-4108-8FE7-386FCBD038DB")]
+    public class DataGraphicsElement : IElement, IClone, ITransform2D, IElementProperties, IElementProperties2,
+        IBoundsProperties, IPersistVariant
     {
         // Fields
         private ChartType _Type = ChartType.Line;
@@ -51,13 +51,13 @@ namespace Yutai.ArcGIS.Common.ExtendClass
             {
                 Title = "实例1"
             };
-            s.Add(new List<double> { 30.0, 50.0, 60.0, 80.0 });
+            s.Add(new List<double> {30.0, 50.0, 60.0, 80.0});
             this.m_chart.Series.Add(s);
             s = new Bar
             {
                 Title = "实例1"
             };
-            s.Add(new List<double> { 20.0, 50.0, 20.0, 60.0 });
+            s.Add(new List<double> {20.0, 50.0, 20.0, 60.0});
             this.m_chart.Series.Add(s);
         }
 
@@ -150,7 +150,7 @@ namespace Yutai.ArcGIS.Common.ExtendClass
             double num6 = num2 - num4;
             IntPtr hdc = new IntPtr(Display.hDC);
             Graphics g = Graphics.FromHdc(hdc);
-            Rectangle r = new Rectangle(num, num4, (int)num5, (int)num6);
+            Rectangle r = new Rectangle(num, num4, (int) num5, (int) num6);
             this.m_chart.Draw(g, r);
             g.Dispose();
         }
@@ -194,7 +194,8 @@ namespace Yutai.ArcGIS.Common.ExtendClass
         {
             IPolygon boundary = new ESRI.ArcGIS.Geometry.Polygon() as IPolygon;
             boundary.SetEmpty();
-            ((ISymbol)this.m_pFillSymbol1).QueryBoundary(Display.hDC, Display.DisplayTransformation, this.m_pGeometry, boundary);
+            ((ISymbol) this.m_pFillSymbol1).QueryBoundary(Display.hDC, Display.DisplayTransformation, this.m_pGeometry,
+                boundary);
             Bounds.XMin = boundary.Envelope.XMin;
             Bounds.XMax = boundary.Envelope.XMax;
             Bounds.YMin = boundary.Envelope.YMin;
@@ -206,8 +207,9 @@ namespace Yutai.ArcGIS.Common.ExtendClass
         {
             IPolygon boundary = new ESRI.ArcGIS.Geometry.Polygon() as IPolygon;
             boundary.SetEmpty();
-            ((ISymbol)this.m_pFillSymbol1).QueryBoundary(Display.hDC, Display.DisplayTransformation, this.m_pGeometry, boundary);
-            ((IPointCollection)Outline).AddPointCollection((IPointCollection)boundary);
+            ((ISymbol) this.m_pFillSymbol1).QueryBoundary(Display.hDC, Display.DisplayTransformation, this.m_pGeometry,
+                boundary);
+            ((IPointCollection) Outline).AddPointCollection((IPointCollection) boundary);
         }
 
         private void RefreshTracker()
@@ -265,131 +267,71 @@ namespace Yutai.ArcGIS.Common.ExtendClass
         // Properties
         public bool AutoTransform
         {
-            get
-            {
-                return true;
-            }
-            set
-            {
-            }
+            get { return true; }
+            set { }
         }
 
         public string ChartTitle
         {
-            get
-            {
-                return this.m_chart.Header.Text;
-            }
-            set
-            {
-                this.m_chart.Header.Text = value;
-            }
+            get { return this.m_chart.Header.Text; }
+            set { this.m_chart.Header.Text = value; }
         }
 
         public object CustomProperty
         {
-            get
-            {
-                return this.m_pCustomProperty;
-            }
-            set
-            {
-                this.m_pCustomProperty = value;
-            }
+            get { return this.m_pCustomProperty; }
+            set { this.m_pCustomProperty = value; }
         }
 
         public bool FixedAspectRatio
         {
-            get
-            {
-                return false;
-            }
-            set
-            {
-            }
+            get { return false; }
+            set { }
         }
 
         public bool FixedSize
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public IGeometry Geometry
         {
-            get
-            {
-                return this.m_pGeometry;
-            }
-            set
-            {
-                this.m_pGeometry = value.Envelope;
-            }
+            get { return this.m_pGeometry; }
+            set { this.m_pGeometry = value.Envelope; }
         }
 
         public UID ID
         {
-            get
-            {
-                return new UID { Value = "{C86B5915-443F-4108-8FE7-386FCBD038DB}" };
-            }
+            get { return new UID {Value = "{C86B5915-443F-4108-8FE7-386FCBD038DB}"}; }
         }
 
         public bool Locked
         {
-            get
-            {
-                return this.m_bLocked;
-            }
-            set
-            {
-                this.m_bLocked = value;
-            }
+            get { return this.m_bLocked; }
+            set { this.m_bLocked = value; }
         }
 
         public string Name
         {
-            get
-            {
-                return this.m_sElementName;
-            }
-            set
-            {
-                this.m_sElementName = value;
-            }
+            get { return this.m_sElementName; }
+            set { this.m_sElementName = value; }
         }
 
         public double ReferenceScale
         {
-            get
-            {
-                return 0.0;
-            }
-            set
-            {
-            }
+            get { return 0.0; }
+            set { }
         }
 
         public ISelectionTracker SelectionTracker
         {
-            get
-            {
-                return this.m_pSelectionTracker;
-            }
+            get { return this.m_pSelectionTracker; }
         }
 
         public string Type
         {
-            get
-            {
-                return this.m_sElementType;
-            }
-            set
-            {
-                this.m_sElementType = value;
-            }
+            get { return this.m_sElementType; }
+            set { this.m_sElementType = value; }
         }
 
         // Nested Types
@@ -401,10 +343,4 @@ namespace Yutai.ArcGIS.Common.ExtendClass
             Area
         }
     }
-
-
-
-
-
-
 }

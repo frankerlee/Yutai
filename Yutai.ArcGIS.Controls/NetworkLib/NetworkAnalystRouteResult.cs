@@ -15,75 +15,38 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
 
         public DataTable Directions
         {
-            get
-            {
-                return this.m_directions;
-            }
-            set
-            {
-                this.m_directions = value;
-            }
+            get { return this.m_directions; }
+            set { this.m_directions = value; }
         }
 
         public IEnvelope RouteExtent
         {
-            get
-            {
-                return this.m_extent;
-            }
-            set
-            {
-                this.m_extent = value;
-            }
+            get { return this.m_extent; }
+            set { this.m_extent = value; }
         }
 
         public int RouteID
         {
-            get
-            {
-                return this.m_routeID;
-            }
-            set
-            {
-                this.m_routeID = value;
-            }
+            get { return this.m_routeID; }
+            set { this.m_routeID = value; }
         }
 
         public IEnvelope[] StepExtents
         {
-            get
-            {
-                return this.m_directionsExtents;
-            }
-            set
-            {
-                this.m_directionsExtents = value;
-            }
+            get { return this.m_directionsExtents; }
+            set { this.m_directionsExtents = value; }
         }
 
         public Point[] StepManeuverPoints
         {
-            get
-            {
-                return this.m_maneuverPoints;
-            }
-            set
-            {
-                this.m_maneuverPoints = value;
-            }
+            get { return this.m_maneuverPoints; }
+            set { this.m_maneuverPoints = value; }
         }
 
         public StringDictionary Summary
         {
-            get
-            {
-                return this.m_summary;
-            }
-            set
-            {
-                this.m_summary = value;
-            }
+            get { return this.m_summary; }
+            set { this.m_summary = value; }
         }
     }
 }
-

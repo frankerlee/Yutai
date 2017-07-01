@@ -7,4 +7,3 @@ namespace Yutai.ArcGIS.Framework
         event OnItemClickEventHandler OnItemClickEvent;
     }
 }
-

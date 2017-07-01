@@ -15,4 +15,3 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         internal bool IsUse { get; set; }
     }
 }
-

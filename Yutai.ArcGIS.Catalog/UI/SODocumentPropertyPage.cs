@@ -37,7 +37,8 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         private void btnOpenDocment_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
                 Filter = "地图文档 (*.mxd;*.pmf)|*.mxd;*.pmf"
             };
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -47,7 +48,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
         }
 
- private void method_0()
+        private void method_0()
         {
         }
 
@@ -66,27 +67,14 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         public string Docunment
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
 
         public IServerObjectConfiguration ServerObjectConfiguration
         {
-            get
-            {
-                return this.iserverObjectConfiguration_0;
-            }
-            set
-            {
-                this.iserverObjectConfiguration_0 = value;
-            }
+            get { return this.iserverObjectConfiguration_0; }
+            set { this.iserverObjectConfiguration_0 = value; }
         }
     }
 }
-

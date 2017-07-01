@@ -85,42 +85,26 @@ namespace Yutai.ArcGIS.Catalog.VCT
         [Browsable(false)]
         public ICoLayer Layer
         {
-            get
-            {
-                return this.icoLayer_0;
-            }
+            get { return this.icoLayer_0; }
         }
 
         [DisplayName("标识码"), Browsable(false)]
         public int OID
         {
-            get
-            {
-                return this.int_0;
-            }
-            set
-            {
-                this.int_0 = value;
-            }
+            get { return this.int_0; }
+            set { this.int_0 = value; }
         }
 
         [DisplayName("要素类型"), Browsable(false)]
         public CoFeatureType Type
         {
-            get
-            {
-                return this.coFeatureType_0;
-            }
+            get { return this.coFeatureType_0; }
         }
 
         [XmlElement(typeof(List<object>)), Browsable(false), DisplayName("属性值集合")]
         public object[] Values
         {
-            get
-            {
-                return this.list_0.ToArray();
-            }
+            get { return this.list_0.ToArray(); }
         }
     }
 }
-

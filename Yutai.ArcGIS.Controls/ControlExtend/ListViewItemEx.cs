@@ -15,27 +15,14 @@ namespace Yutai.ArcGIS.Controls.ControlExtend
 
         public object Style
         {
-            get
-            {
-                return this.m_Style;
-            }
-            set
-            {
-                this.m_Style = value;
-            }
+            get { return this.m_Style; }
+            set { this.m_Style = value; }
         }
 
         public string StyleFileName
         {
-            get
-            {
-                return this.m_styleFilename;
-            }
-            set
-            {
-                this.m_styleFilename = value;
-            }
+            get { return this.m_styleFilename; }
+            set { this.m_styleFilename = value; }
         }
     }
 }
-

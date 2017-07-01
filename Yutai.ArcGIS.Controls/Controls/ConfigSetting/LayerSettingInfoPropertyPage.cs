@@ -21,7 +21,7 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
             frmLayerInfo info = new frmLayerInfo();
             if (info.ShowDialog() == DialogResult.OK)
             {
-                string[] items = new string[] { info.LayerName, info.MinScale.ToString(), info.MaxScale.ToString() };
+                string[] items = new string[] {info.LayerName, info.MinScale.ToString(), info.MaxScale.ToString()};
                 if (this.LayerNameIsExist(items[0]))
                 {
                     MessageBox.Show("图层已存在");
@@ -50,7 +50,8 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
         private void btnEdit_Click(object sender, EventArgs e)
         {
             ListViewItem item = this.listView1.SelectedItems[0];
-            frmLayerInfo info = new frmLayerInfo {
+            frmLayerInfo info = new frmLayerInfo
+            {
                 LayerName = item.Text,
                 MinScale = double.Parse(item.SubItems[1].Text),
                 MaxScale = double.Parse(item.SubItems[2].Text)
@@ -114,7 +115,8 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
             node.Value = "LayerSettings";
             newChild.Attributes.Append(node);
             node = AppConfig.m_AppConfig.CreateAttribute("type");
-            node.Value = "JLK.ControlExtend.Configuration.OverviewWindowsLayerSettingsSectionHandler,JLK.ControlExtend.v.4.0,Version=4.0, Culture=neutral, PublicKeyToken=null";
+            node.Value =
+                "JLK.ControlExtend.Configuration.OverviewWindowsLayerSettingsSectionHandler,JLK.ControlExtend.v.4.0,Version=4.0, Culture=neutral, PublicKeyToken=null";
             newChild.Attributes.Append(node);
             node = AppConfig.m_AppConfig.CreateAttribute("requirePermission");
             node.Value = "false";
@@ -124,7 +126,7 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
             newChild.Attributes.Append(node);
         }
 
- private XmlNode FindNode(string name)
+        private XmlNode FindNode(string name)
         {
             for (int i = 0; i < this.m_pLayerSettingsNode.ChildNodes[0].ChildNodes.Count; i++)
             {
@@ -201,14 +203,15 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
                         items[2] = attribute.Value;
                     }
                 }
-                ListViewItem item = new ListViewItem(items) {
+                ListViewItem item = new ListViewItem(items)
+                {
                     Tag = node
                 };
                 this.listView1.Items.Add(item);
             }
         }
 
- private bool IsExistLayerSection(XmlNode pParentNode)
+        private bool IsExistLayerSection(XmlNode pParentNode)
         {
             for (int i = 0; i < pParentNode.ChildNodes.Count; i++)
             {
@@ -252,4 +255,3 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
         }
     }
 }
-

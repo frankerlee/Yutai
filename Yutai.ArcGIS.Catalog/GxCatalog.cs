@@ -9,7 +9,8 @@ using Yutai.ArcGIS.Common.Framework;
 
 namespace Yutai.ArcGIS.Catalog
 {
-    public class GxCatalog : IGxObject, IGxObjectContainer, IGxCatalog, IGxFile, IGxObjectEdit, IGxObjectUI, IGxPasteTarget, IGxContextMenuWap, IGxObjectFactories, IGxPasteTargetHelper, IGxCatalogEvents
+    public class GxCatalog : IGxObject, IGxObjectContainer, IGxCatalog, IGxFile, IGxObjectEdit, IGxObjectUI,
+        IGxPasteTarget, IGxContextMenuWap, IGxObjectFactories, IGxPasteTargetHelper, IGxCatalogEvents
     {
         private IGxObjectArray igxObjectArray_0 = new GxObjectArray();
         private IGxSelection igxSelection_0 = new GxSelection();
@@ -389,229 +390,144 @@ namespace Yutai.ArcGIS.Catalog
 
         public bool AreChildrenViewable
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public string BaseName
         {
-            get
-            {
-                return "目录";
-            }
+            get { return "目录"; }
         }
 
         public string Category
         {
-            get
-            {
-                return "目录";
-            }
+            get { return "目录"; }
         }
 
         public IEnumGxObject Children
         {
-            get
-            {
-                return (this.igxObjectArray_0 as IEnumGxObject);
-            }
+            get { return (this.igxObjectArray_0 as IEnumGxObject); }
         }
 
         public UID ClassID
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public UID ContextMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public int Count
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         public IEnumGxObjectFactory EnabledGxObjectFactories
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
-        public bool IsEnabled {
-            get
-            {
-                return false;
-            }
+        public bool IsEnabled
+        {
+            get { return false; }
         }
 
         public IGxFileFilter FileFilter
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public string FullName
         {
-            get
-            {
-                return "目录";
-            }
+            get { return "目录"; }
         }
 
         public IGxObjectFactory GxObjectFactory
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
 
         public UID GxObjectFactoryCLSID
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public bool HasChildren
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public IName InternalObjectName
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public bool this[int int_0]
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         public bool IsValid
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         public Bitmap LargeImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(0);
-            }
+            get { return ImageLib.GetSmallImage(0); }
         }
 
         public Bitmap LargeSelectedImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(0);
-            }
+            get { return ImageLib.GetSmallImage(0); }
         }
 
         public string Location
         {
-            set
-            {
-            }
+            set { }
         }
 
         public string Name
         {
-            get
-            {
-                return "目录";
-            }
+            get { return "目录"; }
         }
 
         public UID NewMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IGxObject Parent
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public string Path
         {
-            get
-            {
-                return "目录";
-            }
-            set
-            {
-            }
+            get { return "目录"; }
+            set { }
         }
 
         public IGxObject SelectedObject
         {
-            get
-            {
-                return this.igxSelection_0.FirstObject;
-            }
+            get { return this.igxSelection_0.FirstObject; }
         }
 
         public IGxSelection Selection
         {
-            get
-            {
-                return this.igxSelection_0;
-            }
+            get { return this.igxSelection_0; }
         }
 
         public Bitmap SmallImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(0);
-            }
+            get { return ImageLib.GetSmallImage(0); }
         }
 
         public Bitmap SmallSelectedImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(0);
-            }
+            get { return ImageLib.GetSmallImage(0); }
         }
     }
 }
-

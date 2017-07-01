@@ -19,6 +19,7 @@ namespace Yutai.Plugins.TableEditor.Commands
     public class CmdSelectAll : YutaiCommand
     {
         private ITableEditorView _view;
+
         public CmdSelectAll(IAppContext context, ITableEditorView view)
         {
             _context = context;

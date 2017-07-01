@@ -13,4 +13,3 @@ namespace Yutai.ArcGIS.Framework.Docking
         bool IsDockStateValid(DockState dockState);
     }
 }
-

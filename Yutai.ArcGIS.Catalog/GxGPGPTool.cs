@@ -8,12 +8,6 @@ namespace Yutai.ArcGIS.Catalog
 {
     public class GxGPGPTool : IGxObject, IGxObjectProperties, IGxObjectUI, IGxGPGPTool
     {
-        [CompilerGenerated]
-        private IAGSServerConnection iagsserverConnection_0;
-        [CompilerGenerated]
-        private IAGSServerObjectName iagsserverObjectName_0;
-        [CompilerGenerated]
-        private IGPToolInfo igptoolInfo_0;
         private IGxCatalog igxCatalog_0 = null;
         private IGxObject igxObject_0 = null;
 
@@ -89,118 +83,55 @@ namespace Yutai.ArcGIS.Catalog
         {
         }
 
-        public IAGSServerConnection AGSServerConnection
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.iagsserverConnection_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.iagsserverConnection_0 = value;
-            }
-        }
+        public IAGSServerConnection AGSServerConnection { get; set; }
 
-        public IAGSServerObjectName AGSServerObjectName
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.iagsserverObjectName_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.iagsserverObjectName_0 = value;
-            }
-        }
+        public IAGSServerObjectName AGSServerObjectName { get; set; }
 
         public string BaseName
         {
-            get
-            {
-                return this.Name;
-            }
+            get { return this.Name; }
         }
 
         public string Category
         {
-            get
-            {
-                return "工具箱工具";
-            }
+            get { return "工具箱工具"; }
         }
 
         public UID ClassID
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public UID ContextMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public string FullName
         {
-            get
-            {
-                return this.Name;
-            }
+            get { return this.Name; }
         }
 
-        public IGPToolInfo GPToolInfo
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.igptoolInfo_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.igptoolInfo_0 = value;
-            }
-        }
+        public IGPToolInfo GPToolInfo { get; set; }
 
         public IName InternalObjectName
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public bool IsValid
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         public Bitmap LargeImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(90);
-            }
+            get { return ImageLib.GetSmallImage(90); }
         }
 
         public Bitmap LargeSelectedImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(90);
-            }
+            get { return ImageLib.GetSmallImage(90); }
         }
 
         public string Name
@@ -217,43 +148,27 @@ namespace Yutai.ArcGIS.Catalog
 
         public UID NewMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IGxObject Parent
         {
-            get
-            {
-                return this.igxObject_0;
-            }
+            get { return this.igxObject_0; }
         }
 
         public int PropertyCount
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         public Bitmap SmallImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(90);
-            }
+            get { return ImageLib.GetSmallImage(90); }
         }
 
         public Bitmap SmallSelectedImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(90);
-            }
+            get { return ImageLib.GetSmallImage(90); }
         }
     }
 }
-

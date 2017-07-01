@@ -36,7 +36,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             if (this.m_IsPageDirty)
             {
                 this.m_IsPageDirty = false;
-                GridAxisPropertyPage.m_pMapGrid.SetLabelVisibility(this.chkLabelLeft.Checked, this.chkLabelTop.Checked, this.chkLabelRight.Checked, this.chkLabelBottom.Checked);
+                GridAxisPropertyPage.m_pMapGrid.SetLabelVisibility(this.chkLabelLeft.Checked, this.chkLabelTop.Checked,
+                    this.chkLabelRight.Checked, this.chkLabelBottom.Checked);
                 this.pGridLabel.set_LabelAlignment(esriGridAxisEnum.esriGridAxisBottom, !this.chkverticalBottom.Checked);
                 this.pGridLabel.set_LabelAlignment(esriGridAxisEnum.esriGridAxisLeft, !this.chkverticalLeft.Checked);
                 this.pGridLabel.set_LabelAlignment(esriGridAxisEnum.esriGridAxisRight, !this.chkverticalRight.Checked);
@@ -61,7 +62,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         private void btnProperty_Click(object sender, EventArgs e)
         {
-            frmElementProperty property = new frmElementProperty {
+            frmElementProperty property = new frmElementProperty
+            {
                 Text = "格网标注属性"
             };
             bool flag = false;
@@ -195,7 +197,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- private void GetRGB(uint rgb, out int r, out int g, out int b)
+        private void GetRGB(uint rgb, out int r, out int g, out int b)
         {
             uint num = rgb & 16711680;
             b = (int) (num >> 16);
@@ -209,7 +211,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         {
         }
 
- private void LabelFormatPropertyPage_Load(object sender, EventArgs e)
+        private void LabelFormatPropertyPage_Load(object sender, EventArgs e)
         {
             if (GridAxisPropertyPage.m_pMapGrid != null)
             {
@@ -217,7 +219,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 bool topVis = false;
                 bool rightVis = false;
                 bool bottomVis = false;
-                GridAxisPropertyPage.m_pMapGrid.QueryLabelVisibility(ref leftVis, ref topVis, ref rightVis, ref bottomVis);
+                GridAxisPropertyPage.m_pMapGrid.QueryLabelVisibility(ref leftVis, ref topVis, ref rightVis,
+                    ref bottomVis);
                 this.chkLabelBottom.Checked = bottomVis;
                 this.chkLabelLeft.Checked = leftVis;
                 this.chkLabelRight.Checked = rightVis;
@@ -319,39 +322,23 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.m_IsPageDirty;
-            }
+            get { return this.m_IsPageDirty; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.m_Title;
-            }
-            set
-            {
-                this.m_Title = value;
-            }
+            get { return this.m_Title; }
+            set { this.m_Title = value; }
         }
     }
 }
-

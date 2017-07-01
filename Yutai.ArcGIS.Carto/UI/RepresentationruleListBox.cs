@@ -31,12 +31,13 @@ namespace Yutai.ArcGIS.Carto.UI
             base.Dispose(bool_0);
         }
 
-        protected  void DrawSymbol(int int_0, Rectangle rectangle_0, object object_0)
+        protected void DrawSymbol(int int_0, Rectangle rectangle_0, object object_0)
         {
             tagRECT grect;
             IDisplayTransformation transformation = new DisplayTransformationClass();
             IEnvelope envelope = new EnvelopeClass();
-            envelope.PutCoords((double) rectangle_0.Left, (double) rectangle_0.Top, (double) rectangle_0.Right, (double) rectangle_0.Bottom);
+            envelope.PutCoords((double) rectangle_0.Left, (double) rectangle_0.Top, (double) rectangle_0.Right,
+                (double) rectangle_0.Bottom);
             grect.left = rectangle_0.Left;
             grect.right = rectangle_0.Right;
             grect.bottom = rectangle_0.Bottom;
@@ -114,10 +115,10 @@ namespace Yutai.ArcGIS.Carto.UI
             IPoint inPoint = new PointClass();
             object before = Missing.Value;
             IGeometry geometry = new PolylineClass();
-            inPoint.PutCoords((double) (tagRECT_0.left + 5), (double) ((tagRECT_0.top + tagRECT_0.bottom) / 2));
+            inPoint.PutCoords((double) (tagRECT_0.left + 5), (double) ((tagRECT_0.top + tagRECT_0.bottom)/2));
             (geometry as IPointCollection).AddPoint(inPoint, ref before, ref before);
             inPoint = new PointClass();
-            inPoint.PutCoords((double) (tagRECT_0.left + 5), (double) ((tagRECT_0.top + tagRECT_0.bottom) / 2));
+            inPoint.PutCoords((double) (tagRECT_0.left + 5), (double) ((tagRECT_0.top + tagRECT_0.bottom)/2));
             (geometry as IPointCollection).AddPoint(inPoint, ref before, ref before);
             return geometry;
         }
@@ -140,9 +141,10 @@ namespace Yutai.ArcGIS.Carto.UI
                         return;
                     }
                 }
-                IPoint geometry = new PointClass {
-                    X = (rectangle_0.Left + rectangle_0.Right) / 2,
-                    Y = (rectangle_0.Bottom + rectangle_0.Top) / 2
+                IPoint geometry = new PointClass
+                {
+                    X = (rectangle_0.Left + rectangle_0.Right)/2,
+                    Y = (rectangle_0.Bottom + rectangle_0.Top)/2
                 };
                 ((ISymbol) imarkerSymbol_0).Draw(geometry);
             }
@@ -183,9 +185,9 @@ namespace Yutai.ArcGIS.Carto.UI
             object before = Missing.Value;
             IPointCollection points = new PolylineClass();
             IPoint inPoint = new PointClass();
-            inPoint.PutCoords((double) (rectangle_0.Left + 3), (double) ((rectangle_0.Bottom + rectangle_0.Top) / 2));
+            inPoint.PutCoords((double) (rectangle_0.Left + 3), (double) ((rectangle_0.Bottom + rectangle_0.Top)/2));
             points.AddPoint(inPoint, ref before, ref before);
-            inPoint.PutCoords((double) (rectangle_0.Right - 3), (double) ((rectangle_0.Bottom + rectangle_0.Top) / 2));
+            inPoint.PutCoords((double) (rectangle_0.Right - 3), (double) ((rectangle_0.Bottom + rectangle_0.Top)/2));
             points.AddPoint(inPoint, ref before, ref before);
             ((ISymbol) ilineSymbol_0).Draw((IGeometry) points);
         }
@@ -224,8 +226,10 @@ namespace Yutai.ArcGIS.Carto.UI
                 IntPtr hdc = e.Graphics.GetHdc();
                 IOutputContext context = new OutputContextClass();
                 IPoint currentScreenCenter = new PointClass();
-                currentScreenCenter.PutCoords((double) (e.Bounds.X + (e.Bounds.Width / 2)), (double) ((e.Bounds.Y + (e.Bounds.Height / 2)) + 10));
-                tagRECT deviceRect = new tagRECT {
+                currentScreenCenter.PutCoords((double) (e.Bounds.X + (e.Bounds.Width/2)),
+                    (double) ((e.Bounds.Y + (e.Bounds.Height/2)) + 10));
+                tagRECT deviceRect = new tagRECT
+                {
                     left = e.Bounds.Left + 10,
                     right = e.Bounds.Right - 10,
                     top = e.Bounds.Top + 10,
@@ -244,7 +248,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 else
                 {
                     geometry = new PointClass();
-                    (geometry as IPoint).PutCoords((double) ((deviceRect.left + deviceRect.right) / 2), (double) ((deviceRect.top + deviceRect.bottom) / 2));
+                    (geometry as IPoint).PutCoords((double) ((deviceRect.left + deviceRect.right)/2),
+                        (double) ((deviceRect.top + deviceRect.bottom)/2));
                 }
                 wrap.RepresentationRule.Draw(-1, context, geometry, geometry.Envelope);
                 e.Graphics.ReleaseHdc(hdc);
@@ -262,10 +267,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public esriGeometryType GeometryType
         {
-            set
-            {
-                this.esriGeometryType_0 = value;
-            }
+            set { this.esriGeometryType_0 = value; }
         }
 
         internal class RepresentationRuleWrap
@@ -283,28 +285,18 @@ namespace Yutai.ArcGIS.Carto.UI
 
             public string Name
             {
-                get
-                {
-                    return this.string_0;
-                }
+                get { return this.string_0; }
             }
 
             public IRepresentationRule RepresentationRule
             {
-                get
-                {
-                    return this.irepresentationRule_0;
-                }
+                get { return this.irepresentationRule_0; }
             }
 
             public int RuleID
             {
-                get
-                {
-                    return this.int_0;
-                }
+                get { return this.int_0; }
             }
         }
     }
 }
-

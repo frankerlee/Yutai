@@ -9,17 +9,15 @@ using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Catalog
 {
-    public class GxServersFolder : IGxObject, IGxObjectContainer, IGxObjectUI, IGxContextMenuWap, IGxRemoteContainer, IGxServersFolder
+    public class GxServersFolder : IGxObject, IGxObjectContainer, IGxObjectUI, IGxContextMenuWap, IGxRemoteContainer,
+        IGxServersFolder
     {
-        [CompilerGenerated]
-        private IAGSServerConnection2 iagsserverConnection2_0;
         private IGxCatalog igxCatalog_0 = null;
         private IGxObject igxObject_0 = null;
         private IGxObjectArray igxObjectArray_0 = new GxObjectArray();
         private IPopuMenuWrap ipopuMenuWrap_0 = null;
         private string string_0 = "";
-        [CompilerGenerated]
-        private string string_1;
+
 
         public IGxObject AddChild(IGxObject igxObject_1)
         {
@@ -87,7 +85,8 @@ namespace Yutai.ArcGIS.Catalog
                             obj2 = new GxAGSMap();
                             (obj2 as IGxAGSObject).AGSServerObjectName = name2;
                             flag = true;
-                            if (((this.Parent as IGxAGSConnection).ConnectionMode == 0) && ((obj2 as IGxAGSObject).Status != "Started"))
+                            if (((this.Parent as IGxAGSConnection).ConnectionMode == 0) &&
+                                ((obj2 as IGxAGSObject).Status != "Started"))
                             {
                                 flag = false;
                             }
@@ -113,7 +112,8 @@ namespace Yutai.ArcGIS.Catalog
                             obj2 = new GxGPServer();
                             (obj2 as IGxAGSObject).AGSServerObjectName = name2;
                             flag = true;
-                            if (((this.Parent as IGxAGSConnection).ConnectionMode == 0) && ((obj2 as IGxAGSObject).Status != "Started"))
+                            if (((this.Parent as IGxAGSConnection).ConnectionMode == 0) &&
+                                ((obj2 as IGxAGSObject).Status != "Started"))
                             {
                                 flag = false;
                             }
@@ -136,7 +136,8 @@ namespace Yutai.ArcGIS.Catalog
                             obj2 = new GxSearchServer();
                             (obj2 as IGxAGSObject).AGSServerObjectName = name2;
                             flag = true;
-                            if (((this.Parent as IGxAGSConnection).ConnectionMode == 0) && ((obj2 as IGxAGSObject).Status != "Started"))
+                            if (((this.Parent as IGxAGSConnection).ConnectionMode == 0) &&
+                                ((obj2 as IGxAGSObject).Status != "Started"))
                             {
                                 flag = false;
                             }
@@ -151,7 +152,7 @@ namespace Yutai.ArcGIS.Catalog
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
         }
 
@@ -171,42 +172,21 @@ namespace Yutai.ArcGIS.Catalog
             return "GxServersFolder";
         }
 
-        public IAGSServerConnection2 AGSServerConnection
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.iagsserverConnection2_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.iagsserverConnection2_0 = value;
-            }
-        }
+        public IAGSServerConnection2 AGSServerConnection { get; set; }
 
         public bool AreChildrenViewable
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public string BaseName
         {
-            get
-            {
-                return this.FolderName;
-            }
+            get { return this.FolderName; }
         }
 
         public string Category
         {
-            get
-            {
-                return "ArcGIS Server文件夹";
-            }
+            get { return "ArcGIS Server文件夹"; }
         }
 
         public IEnumGxObject Children
@@ -223,132 +203,75 @@ namespace Yutai.ArcGIS.Catalog
 
         public UID ClassID
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public UID ContextMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
-        public string FolderName
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.string_1;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.string_1 = value;
-            }
-        }
+        public string FolderName { get; set; }
 
         public string FullName
         {
-            get
-            {
-                return this.FolderName;
-            }
+            get { return this.FolderName; }
         }
 
         public bool HasChildren
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public IName InternalObjectName
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public bool IsValid
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         public Bitmap LargeImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(6);
-            }
+            get { return ImageLib.GetSmallImage(6); }
         }
 
         public Bitmap LargeSelectedImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(7);
-            }
+            get { return ImageLib.GetSmallImage(7); }
         }
 
         public string Name
         {
-            get
-            {
-                return this.FolderName;
-            }
+            get { return this.FolderName; }
         }
 
         public UID NewMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IGxObject Parent
         {
-            get
-            {
-                return this.igxObject_0;
-            }
+            get { return this.igxObject_0; }
         }
 
         public string Path
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-            }
+            get { return this.string_0; }
+            set { }
         }
 
         public Bitmap SmallImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(6);
-            }
+            get { return ImageLib.GetSmallImage(6); }
         }
 
         public Bitmap SmallSelectedImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(7);
-            }
+            get { return ImageLib.GetSmallImage(7); }
         }
     }
 }
-

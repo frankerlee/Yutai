@@ -47,12 +47,14 @@ namespace Yutai.ArcGIS.Common.Excel
             Rectangle rectangle;
             Font font = new Font("宋体", 8f);
             string s = "装                    订                    线";
-            StringFormat format = new StringFormat {
+            StringFormat format = new StringFormat
+            {
                 Alignment = StringAlignment.Center
             };
             int num2 = num = this.int_0;
             int num4 = num3 = this.int_1;
-            Pen pen = new Pen(Color.Red) {
+            Pen pen = new Pen(Color.Red)
+            {
                 DashStyle = DashStyle.Dot
             };
             if (this.sewingDirectionFlag_0 == SewingDirectionFlag.Left)
@@ -79,39 +81,20 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public int LineLen
         {
-            get
-            {
-                return this.int_1;
-            }
-            set
-            {
-                this.int_1 = value;
-            }
+            get { return this.int_1; }
+            set { this.int_1 = value; }
         }
 
         public int Margin
         {
-            get
-            {
-                return this.int_0;
-            }
-            set
-            {
-                this.int_0 = value;
-            }
+            get { return this.int_0; }
+            set { this.int_0 = value; }
         }
 
         public SewingDirectionFlag SewingDirection
         {
-            get
-            {
-                return this.sewingDirectionFlag_0;
-            }
-            set
-            {
-                this.sewingDirectionFlag_0 = value;
-            }
+            get { return this.sewingDirectionFlag_0; }
+            set { this.sewingDirectionFlag_0 = value; }
         }
     }
 }
-

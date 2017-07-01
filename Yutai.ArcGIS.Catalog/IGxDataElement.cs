@@ -7,4 +7,3 @@ namespace Yutai.ArcGIS.Catalog
         IDataElement GetDataElement(IDEBrowseOptions idebrowseOptions_0);
     }
 }
-

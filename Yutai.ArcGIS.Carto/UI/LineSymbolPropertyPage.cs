@@ -84,7 +84,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void LineSymbolPropertyPage_Load(object sender, EventArgs e)
+        private void LineSymbolPropertyPage_Load(object sender, EventArgs e)
         {
             this.method_0();
             this.bool_0 = true;
@@ -143,7 +143,7 @@ namespace Yutai.ArcGIS.Carto.UI
             uint num = 0;
             num = (uint) (0 | int_2);
             num = num << 8;
-            num |=(uint) int_1;
+            num |= (uint) int_1;
             num = num << 8;
             return (int) (num | int_0);
         }
@@ -199,39 +199,23 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

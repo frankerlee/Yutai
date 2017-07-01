@@ -10,15 +10,8 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
 
         public ArrayList Map
         {
-            get
-            {
-                return this.arrayList_0;
-            }
-            set
-            {
-                this.arrayList_0 = value;
-            }
+            get { return this.arrayList_0; }
+            set { this.arrayList_0 = value; }
         }
     }
 }
-

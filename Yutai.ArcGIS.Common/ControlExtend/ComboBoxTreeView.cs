@@ -60,11 +60,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         public System.Windows.Forms.TreeView TreeView
         {
-            get
-            {
-                return (this.toolStripControlHost_0.Control as System.Windows.Forms.TreeView);
-            }
+            get { return (this.toolStripControlHost_0.Control as System.Windows.Forms.TreeView); }
         }
     }
 }
-

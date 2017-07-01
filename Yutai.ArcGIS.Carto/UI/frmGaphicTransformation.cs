@@ -12,14 +12,25 @@ namespace Yutai.ArcGIS.Carto.UI
     {
         private bool bool_0 = false;
         private IContainer icontainer_0 = null;
-        private IGeoTransformation[] igeoTransformation_0 = new IGeoTransformation[] { new GeocentricTranslationClass(), new MolodenskyTransformationClass(), new AbridgedMolodenskyTransformationClass(), new PositionVectorTransformationClass(), new CoordinateFrameTransformationClass(), new NADCONTransformationClass(), new HARNTransformationClass(), new LongitudeRotationTransformationClass() };
+
+        private IGeoTransformation[] igeoTransformation_0 = new IGeoTransformation[]
+        {
+            new GeocentricTranslationClass(), new MolodenskyTransformationClass(),
+            new AbridgedMolodenskyTransformationClass(), new PositionVectorTransformationClass(),
+            new CoordinateFrameTransformationClass(), new NADCONTransformationClass(), new HARNTransformationClass(),
+            new LongitudeRotationTransformationClass()
+        };
+
         private IGeoTransformation igeoTransformation_1 = null;
-        private int[] int_0 = new int[] { 4214, 4610, 4326 };
+        private int[] int_0 = new int[] {4214, 4610, 4326};
         private ISpatialReference ispatialReference_0 = null;
         private ISpatialReference ispatialReference_1 = null;
-        private string[] string_0 = new string[] { "地心装换", "Molodendky装换", "简化Molodendky装换", "位置矢量装换", "坐标框架装换", "基于NADCON装换", "基于HRAN装换", "经度旋转装换" };
-        private string[] string_1 = new string[] { "X轴平移", "Y轴平移", "Z轴平移", "X轴旋转", "Y轴旋转", "Z轴旋转", "缩放" };
-        private string[] string_2 = new string[] { "X轴平移", "Y轴平移", "Z轴平移" };
+
+        private string[] string_0 = new string[]
+            {"地心装换", "Molodendky装换", "简化Molodendky装换", "位置矢量装换", "坐标框架装换", "基于NADCON装换", "基于HRAN装换", "经度旋转装换"};
+
+        private string[] string_1 = new string[] {"X轴平移", "Y轴平移", "Z轴平移", "X轴旋转", "Y轴旋转", "Z轴旋转", "缩放"};
+        private string[] string_2 = new string[] {"X轴平移", "Y轴平移", "Z轴平移"};
 
         public frmGaphicTransformation()
         {
@@ -64,7 +75,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     }
                     else
                     {
-                        IGeoTransformation geoTransformation = (this.cboHCSTransformMethod.SelectedItem as Class1).GeoTransformation;
+                        IGeoTransformation geoTransformation =
+                            (this.cboHCSTransformMethod.SelectedItem as Class1).GeoTransformation;
                         geoTransformation.PutSpatialReferences(this.txtSourGCS.Tag as ISpatialReference, to);
                         geoTransformation.Name = this.txtName.Text;
                         this.igeoTransformation_1 = geoTransformation;
@@ -92,12 +104,15 @@ namespace Yutai.ArcGIS.Carto.UI
                     else
                     {
                         geoTransformation = (this.cboHCSTransformMethod.SelectedItem as Class1).GeoTransformation;
-                        ISpatialReference to = (this.cboTargetGCS.SelectedItem as ObjectWrap).Object as ISpatialReference;
+                        ISpatialReference to =
+                            (this.cboTargetGCS.SelectedItem as ObjectWrap).Object as ISpatialReference;
                         geoTransformation.PutSpatialReferences(this.txtSourGCS.Tag as ISpatialReference, to);
                     }
                     if (geoTransformation is ICoordinateFrameTransformation)
                     {
-                        (geoTransformation as ICoordinateFrameTransformation).GetParameters(out numArray[0], out numArray[1], out numArray[2], out numArray[3], out numArray[4], out numArray[5], out numArray[6]);
+                        (geoTransformation as ICoordinateFrameTransformation).GetParameters(out numArray[0],
+                            out numArray[1], out numArray[2], out numArray[3], out numArray[4], out numArray[5],
+                            out numArray[6]);
                         for (num = 0; num < this.string_1.Length; num++)
                         {
                             items[0] = this.string_1[num];
@@ -107,7 +122,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     }
                     else if (geoTransformation is IMolodenskyTransformation)
                     {
-                        (geoTransformation as IMolodenskyTransformation).GetParameters(out numArray[0], out numArray[1], out numArray[2]);
+                        (geoTransformation as IMolodenskyTransformation).GetParameters(out numArray[0], out numArray[1],
+                            out numArray[2]);
                         for (num = 0; num < this.string_2.Length; num++)
                         {
                             items[0] = this.string_2[num];
@@ -117,7 +133,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     }
                     else if (geoTransformation is IGeocentricTranslation)
                     {
-                        (geoTransformation as IGeocentricTranslation).GetParameters(out numArray[0], out numArray[1], out numArray[2]);
+                        (geoTransformation as IGeocentricTranslation).GetParameters(out numArray[0], out numArray[1],
+                            out numArray[2]);
                         for (num = 0; num < this.string_2.Length; num++)
                         {
                             items[0] = this.string_2[num];
@@ -127,7 +144,9 @@ namespace Yutai.ArcGIS.Carto.UI
                     }
                     else if (geoTransformation is IPositionVectorTransformation)
                     {
-                        (geoTransformation as IPositionVectorTransformation).GetParameters(out numArray[0], out numArray[1], out numArray[2], out numArray[3], out numArray[4], out numArray[5], out numArray[6]);
+                        (geoTransformation as IPositionVectorTransformation).GetParameters(out numArray[0],
+                            out numArray[1], out numArray[2], out numArray[3], out numArray[4], out numArray[5],
+                            out numArray[6]);
                         for (num = 0; num < this.string_1.Length; num++)
                         {
                             items[0] = this.string_1[num];
@@ -135,7 +154,8 @@ namespace Yutai.ArcGIS.Carto.UI
                             this.paramlistView.Items.Add(new ListViewItem(items));
                         }
                     }
-                    else if (!(geoTransformation is IGridTransformation) && !(geoTransformation is ILongitudeRotationTransformation))
+                    else if (!(geoTransformation is IGridTransformation) &&
+                             !(geoTransformation is ILongitudeRotationTransformation))
                     {
                     }
                 }
@@ -150,7 +170,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void frmGaphicTransformation_Load(object sender, EventArgs e)
+        private void frmGaphicTransformation_Load(object sender, EventArgs e)
         {
             int num;
             for (num = 0; num < this.igeoTransformation_0.Length; num++)
@@ -178,8 +198,10 @@ namespace Yutai.ArcGIS.Carto.UI
             this.paramlistView.ValueChanged += new ValueChangedHandler(this.method_0);
             if (this.ispatialReference_0 is IProjectedCoordinateSystem)
             {
-                this.txtSourGCS.Text = (this.ispatialReference_0 as IProjectedCoordinateSystem).GeographicCoordinateSystem.Name;
-                this.txtSourGCS.Tag = (this.ispatialReference_0 as IProjectedCoordinateSystem).GeographicCoordinateSystem;
+                this.txtSourGCS.Text =
+                    (this.ispatialReference_0 as IProjectedCoordinateSystem).GeographicCoordinateSystem.Name;
+                this.txtSourGCS.Tag =
+                    (this.ispatialReference_0 as IProjectedCoordinateSystem).GeographicCoordinateSystem;
             }
             else if (this.ispatialReference_0 is IGeographicCoordinateSystem)
             {
@@ -236,7 +258,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void method_0(object sender, ValueChangedEventArgs e)
+        private void method_0(object sender, ValueChangedEventArgs e)
         {
             IGeoTransformation geoTransformation;
             double[] numArray = new double[7];
@@ -250,11 +272,13 @@ namespace Yutai.ArcGIS.Carto.UI
             }
             if (geoTransformation is ICoordinateFrameTransformation)
             {
-                (geoTransformation as ICoordinateFrameTransformation).GetParameters(out numArray[0], out numArray[1], out numArray[2], out numArray[3], out numArray[4], out numArray[5], out numArray[6]);
+                (geoTransformation as ICoordinateFrameTransformation).GetParameters(out numArray[0], out numArray[1],
+                    out numArray[2], out numArray[3], out numArray[4], out numArray[5], out numArray[6]);
                 try
                 {
                     numArray[e.Row] = int.Parse(e.NewValue.ToString());
-                    (geoTransformation as ICoordinateFrameTransformation).PutParameters(numArray[0], numArray[1], numArray[2], numArray[3], numArray[4], numArray[5], numArray[6]);
+                    (geoTransformation as ICoordinateFrameTransformation).PutParameters(numArray[0], numArray[1],
+                        numArray[2], numArray[3], numArray[4], numArray[5], numArray[6]);
                 }
                 catch
                 {
@@ -262,7 +286,8 @@ namespace Yutai.ArcGIS.Carto.UI
             }
             else if (geoTransformation is IMolodenskyTransformation)
             {
-                (geoTransformation as IMolodenskyTransformation).GetParameters(out numArray[0], out numArray[1], out numArray[2]);
+                (geoTransformation as IMolodenskyTransformation).GetParameters(out numArray[0], out numArray[1],
+                    out numArray[2]);
                 try
                 {
                     numArray[e.Row] = int.Parse(e.NewValue.ToString());
@@ -274,7 +299,8 @@ namespace Yutai.ArcGIS.Carto.UI
             }
             else if (geoTransformation is IGeocentricTranslation)
             {
-                (geoTransformation as IGeocentricTranslation).GetParameters(out numArray[0], out numArray[1], out numArray[2]);
+                (geoTransformation as IGeocentricTranslation).GetParameters(out numArray[0], out numArray[1],
+                    out numArray[2]);
                 try
                 {
                     numArray[e.Row] = int.Parse(e.NewValue.ToString());
@@ -286,11 +312,13 @@ namespace Yutai.ArcGIS.Carto.UI
             }
             else if (geoTransformation is IPositionVectorTransformation)
             {
-                (geoTransformation as IPositionVectorTransformation).GetParameters(out numArray[0], out numArray[1], out numArray[2], out numArray[3], out numArray[4], out numArray[5], out numArray[6]);
+                (geoTransformation as IPositionVectorTransformation).GetParameters(out numArray[0], out numArray[1],
+                    out numArray[2], out numArray[3], out numArray[4], out numArray[5], out numArray[6]);
                 try
                 {
                     numArray[e.Row] = int.Parse(e.NewValue.ToString());
-                    (geoTransformation as IPositionVectorTransformation).PutParameters(numArray[0], numArray[1], numArray[2], numArray[3], numArray[4], numArray[5], numArray[6]);
+                    (geoTransformation as IPositionVectorTransformation).PutParameters(numArray[0], numArray[1],
+                        numArray[2], numArray[3], numArray[4], numArray[5], numArray[6]);
                 }
                 catch
                 {
@@ -300,31 +328,23 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IGeoTransformation GeoTransformations
         {
-            get
-            {
-                return this.igeoTransformation_1;
-            }
+            get { return this.igeoTransformation_1; }
             set
             {
                 this.igeoTransformation_1 = value;
-                this.igeoTransformation_1.GetSpatialReferences(out this.ispatialReference_0, out this.ispatialReference_1);
+                this.igeoTransformation_1.GetSpatialReferences(out this.ispatialReference_0,
+                    out this.ispatialReference_1);
             }
         }
 
         public ISpatialReference SourceSpatialReference
         {
-            set
-            {
-                this.ispatialReference_0 = value;
-            }
+            set { this.ispatialReference_0 = value; }
         }
 
         public ISpatialReference TargetSpatialReference
         {
-            set
-            {
-                this.ispatialReference_1 = value;
-            }
+            set { this.ispatialReference_1 = value; }
         }
 
         private partial class Class1
@@ -354,12 +374,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
             internal IGeoTransformation GeoTransformation
             {
-                get
-                {
-                    return this.igeoTransformation_0;
-                }
+                get { return this.igeoTransformation_0; }
             }
         }
     }
 }
-

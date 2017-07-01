@@ -39,11 +39,11 @@ namespace Yutai.Plugins.Editor.Commands
         {
             get
             {
-                return _context.FocusMap != null && _context.FocusMap.LayerCount != 0 && Yutai.ArcGIS.Common.Editor.Editor.EditMap == _context.FocusMap && (EditTools.EditFeature != null && EditTools.HitType == HitType.HitSegment);
+                return _context.FocusMap != null && _context.FocusMap.LayerCount != 0 &&
+                       Yutai.ArcGIS.Common.Editor.Editor.EditMap == _context.FocusMap &&
+                       (EditTools.EditFeature != null && EditTools.HitType == HitType.HitSegment);
             }
         }
-
-
 
 
         public override void OnClick(object sender, EventArgs args)
@@ -53,7 +53,6 @@ namespace Yutai.Plugins.Editor.Commands
 
         public override void OnClick()
         {
-
             frmInputValue1 frmInputValue = new frmInputValue1();
             frmInputValue.Text = "输入X, Y值";
             frmInputValue.InputValue1 = EditTools.CurrentPosition.X;
@@ -63,28 +62,33 @@ namespace Yutai.Plugins.Editor.Commands
                 double inputValue = frmInputValue.InputValue1;
                 double inputValue2 = frmInputValue.InputValue2;
                 IGeometry shape = EditTools.EditFeature.Shape;
-                if (shape != null && EditTools.PartIndex != -1 && EditTools.PointIndex != -1 && (shape.GeometryType == esriGeometryType.esriGeometryPolyline || shape.GeometryType == esriGeometryType.esriGeometryPolygon))
+                if (shape != null && EditTools.PartIndex != -1 && EditTools.PointIndex != -1 &&
+                    (shape.GeometryType == esriGeometryType.esriGeometryPolyline ||
+                     shape.GeometryType == esriGeometryType.esriGeometryPolygon))
                 {
                     double num = 0.0;
                     int index = -1;
                     int num2 = -1;
-                    double double_ = CommonHelper.ConvertPixelsToMapUnits((IActiveView)_context.FocusMap, 4.0);
+                    double double_ = CommonHelper.ConvertPixelsToMapUnits((IActiveView) _context.FocusMap, 4.0);
                     IPoint point;
                     bool flag;
-                    if (GeometryOperator.TestGeometryHit(double_, EditTools.CurrentPosition, shape, out point, ref num, ref index, ref num2, out flag) && !flag)
+                    if (
+                        GeometryOperator.TestGeometryHit(double_, EditTools.CurrentPosition, shape, out point, ref num,
+                            ref index, ref num2, out flag) && !flag)
                     {
-                        IPath path = (IPath)((IGeometryCollection)shape).get_Geometry(index);
+                        IPath path = (IPath) ((IGeometryCollection) shape).get_Geometry(index);
                         IPoint point2 = new Point();
                         point2.PutCoords(inputValue, inputValue2);
                         object value = Missing.Value;
                         object obj = num2;
-                        ((IPointCollection)path).AddPoint(point2, ref value, ref obj);
+                        ((IPointCollection) path).AddPoint(point2, ref value, ref obj);
                         (shape as IGeometryCollection).GeometriesChanged();
                         Yutai.ArcGIS.Common.Editor.Editor.EditWorkspace.StartEditOperation();
                         EditTools.EditFeature.Shape = shape;
                         EditTools.EditFeature.Store();
                         Yutai.ArcGIS.Common.Editor.Editor.EditWorkspace.StopEditOperation();
-                        (_context.FocusMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
+                        (_context.FocusMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null,
+                            null);
                     }
                 }
             }

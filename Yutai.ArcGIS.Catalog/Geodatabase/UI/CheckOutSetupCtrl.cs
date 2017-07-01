@@ -33,7 +33,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.txtCheckOutName.Text = Path.GetFileNameWithoutExtension(path);
         }
 
- public bool Do()
+        public bool Do()
         {
             string str = this.txtCheckOutName.Text.Trim();
             if (str.Length == 0)
@@ -41,7 +41,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 MessageBox.Show("请输入检出名称!");
                 return false;
             }
-            IVersionedWorkspace workspace = (CheckOutHelper.m_pHelper.MasterWorkspaceName as IName).Open() as IVersionedWorkspace;
+            IVersionedWorkspace workspace =
+                (CheckOutHelper.m_pHelper.MasterWorkspaceName as IName).Open() as IVersionedWorkspace;
             try
             {
                 if (workspace.FindVersion(str) != null)
@@ -69,7 +70,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 IWorkspaceFactory factory = new AccessWorkspaceFactoryClass();
                 try
                 {
-                    IWorkspaceName name = factory.Create(Path.GetDirectoryName(path), Path.GetFileNameWithoutExtension(path), null, 0);
+                    IWorkspaceName name = factory.Create(Path.GetDirectoryName(path),
+                        Path.GetFileNameWithoutExtension(path), null, 0);
                     this.txtOutGDB.Tag = name;
                     goto Label_016D;
                 }
@@ -79,7 +81,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     return false;
                 }
             }
-            IWorkspaceName name2 = new WorkspaceNameClass {
+            IWorkspaceName name2 = new WorkspaceNameClass
+            {
                 WorkspaceFactoryProgID = "esriDataSourcesGDB.AccessWorkspaceFactory",
                 PathName = path
             };
@@ -89,7 +92,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 return false;
             }
             this.txtOutGDB.Tag = name2;
-        Label_016D:
+            Label_016D:
             CheckOutHelper.m_pHelper.ReuseSchema = this.chkResueSchema.Checked;
             CheckOutHelper.m_pHelper.CheckOutName = str;
             CheckOutHelper.m_pHelper.CheckOnlySchema = this.rdoType.SelectedIndex == 1;
@@ -97,9 +100,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             return true;
         }
 
- private string method_0(IDatasetName idatasetName_0)
+        private string method_0(IDatasetName idatasetName_0)
         {
-            string[] strArray = idatasetName_0.Name.Split(new char[] { '.' });
+            string[] strArray = idatasetName_0.Name.Split(new char[] {'.'});
             return strArray[strArray.Length - 1];
         }
 
@@ -111,7 +114,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 name.Reset();
                 for (IDatasetName name2 = name.Next(); name2 != null; name2 = name.Next())
                 {
-                    string[] strArray = name2.Name.Split(new char[] { '.' });
+                    string[] strArray = name2.Name.Split(new char[] {'.'});
                     string str = strArray[strArray.Length - 1].ToLower();
                     if (string_0 == str)
                     {
@@ -135,7 +138,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     return false;
                 }
                 ienumName_0.Reset();
-                for (IDatasetName name = ienumName_0.Next() as IDatasetName; name != null; name = ienumName_0.Next() as IDatasetName)
+                for (IDatasetName name = ienumName_0.Next() as IDatasetName;
+                    name != null;
+                    name = ienumName_0.Next() as IDatasetName)
                 {
                     if (this.method_1(iworkspace_0, name.Type, this.method_0(name).ToLower()))
                     {
@@ -152,4 +157,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

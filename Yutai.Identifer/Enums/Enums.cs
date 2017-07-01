@@ -39,5 +39,4 @@
         View2D,
         View3D
     }
-   
 }

@@ -55,7 +55,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     newChild.Attributes.Append(this.method_5(document, "width", this.txtWidth.Text));
                     newChild.Attributes.Append(this.method_5(document, "height", this.txtHeight.Text));
                     newChild.Attributes.Append(this.method_5(document, "labelspace", this.txtLabelSpace.Text));
-                    newChild.Attributes.Append(this.method_5(document, "HasBorder", this.chkItemHasBorder.Checked.ToString()));
+                    newChild.Attributes.Append(this.method_5(document, "HasBorder",
+                        this.chkItemHasBorder.Checked.ToString()));
                     node.AppendChild(newChild);
                     for (int i = 0; i < this.renderInfoListView1.Items.Count; i++)
                     {
@@ -63,11 +64,14 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                         if (item.Tag is YTLegendItem)
                         {
                             XmlNode node3 = document.CreateElement("LegendItem");
-                            node3.Attributes.Append(this.method_5(document, "description", (item.Tag as YTLegendItem).Description));
-                            node3.Attributes.Append(this.method_5(document, "symbol", this.method_6((item.Tag as YTLegendItem).Symbol)));
+                            node3.Attributes.Append(this.method_5(document, "description",
+                                (item.Tag as YTLegendItem).Description));
+                            node3.Attributes.Append(this.method_5(document, "symbol",
+                                this.method_6((item.Tag as YTLegendItem).Symbol)));
                             if ((item.Tag as YTLegendItem).BackSymbol != null)
                             {
-                                node3.Attributes.Append(this.method_5(document, "backsymbol", this.method_6((item.Tag as YTLegendItem).BackSymbol)));
+                                node3.Attributes.Append(this.method_5(document, "backsymbol",
+                                    this.method_6((item.Tag as YTLegendItem).BackSymbol)));
                             }
                             newChild.AppendChild(node3);
                         }
@@ -106,7 +110,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             if (this.renderInfoListView1.SelectedIndices.Count != 0)
             {
                 ListViewItemEx ex = this.renderInfoListView1.SelectedItems[0] as ListViewItemEx;
-                frmNewLegendItem item = new frmNewLegendItem {
+                frmNewLegendItem item = new frmNewLegendItem
+                {
                     StyleGallery = ApplicationBase.StyleGallery,
                     YTLegendItem = ex.Tag as YTLegendItem
                 };
@@ -152,7 +157,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
                 Filter = "*.xml|*.xml"
             };
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -172,12 +178,13 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         private void butNewRow_Click(object sender, EventArgs e)
         {
-            frmNewLegendItem item = new frmNewLegendItem {
+            frmNewLegendItem item = new frmNewLegendItem
+            {
                 StyleGallery = ApplicationBase.StyleGallery
             };
             if (item.ShowDialog() == DialogResult.OK)
             {
-                object[] objArray = new object[] { item.YTLegendItem.Symbol, item.YTLegendItem.Description };
+                object[] objArray = new object[] {item.YTLegendItem.Symbol, item.YTLegendItem.Description};
                 ListViewItemEx ex = null;
                 if (this.renderInfoListView1.SelectedItems.Count > 0)
                 {
@@ -199,7 +206,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SaveFileDialog dialog = new SaveFileDialog {
+            SaveFileDialog dialog = new SaveFileDialog
+            {
                 Filter = "*.xml|*.xml"
             };
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -239,7 +247,9 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         private void CustomLegendConfigPage_Load(object sender, EventArgs e)
         {
             this.renderInfoListView1.SetColumnEditable(1, true);
-            if ((this.mapTemplateElement_0 != null) && (((this.mapTemplateElement_0 as MapTemplateCustomLegendElement).LegendInfo != null) && ((this.mapTemplateElement_0 as MapTemplateCustomLegendElement).LegendInfo != "")))
+            if ((this.mapTemplateElement_0 != null) &&
+                (((this.mapTemplateElement_0 as MapTemplateCustomLegendElement).LegendInfo != null) &&
+                 ((this.mapTemplateElement_0 as MapTemplateCustomLegendElement).LegendInfo != "")))
             {
                 XmlDocument document = new XmlDocument();
                 document.LoadXml((this.mapTemplateElement_0 as MapTemplateCustomLegendElement).LegendInfo);
@@ -250,7 +260,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             this.bool_0 = true;
         }
 
- private void method_0(string string_1)
+        private void method_0(string string_1)
         {
         }
 
@@ -266,7 +276,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
             try
             {
-                   byte[] buffer = object_0 as byte[];
+                byte[] buffer = object_0 as byte[];
                 stream = new MemoryStream(buffer);
                 image = new Bitmap(stream);
                 bitmap2 = new Bitmap(image.Width, image.Height, PixelFormat.Format16bppRgb555);
@@ -298,7 +308,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         private void method_10(XmlNode xmlNode_0)
         {
             int num = 0;
-        Label_0002:
+            Label_0002:
             if (num >= xmlNode_0.Attributes.Count)
             {
                 for (int i = 0; i < xmlNode_0.ChildNodes.Count; i++)
@@ -368,7 +378,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             if (symbol != null)
             {
                 YTLegendItem item = new YTLegendItem(symbol, str, symbol2);
-                object[] objArray = new object[] { item.Symbol, item.Description };
+                object[] objArray = new object[] {item.Symbol, item.Description};
                 this.renderInfoListView1.Add(objArray).Tag = item;
             }
         }
@@ -385,7 +395,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
-        private bool method_2(string string_1, string string_2, Image image_3, string string_3, string string_4, string string_5)
+        private bool method_2(string string_1, string string_2, Image image_3, string string_3, string string_4,
+            string string_5)
         {
             return false;
         }
@@ -412,7 +423,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             object obj2;
             ESRI.ArcGIS.esriSystem.IPersistStream stream = (ESRI.ArcGIS.esriSystem.IPersistStream) isymbol_0;
             IMemoryBlobStream pstm = new MemoryBlobStreamClass();
-            IObjectStream stream3 = new ObjectStreamClass {
+            IObjectStream stream3 = new ObjectStreamClass
+            {
                 Stream = pstm
             };
             stream.GetClassID(out guid);
@@ -436,7 +448,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 b[num2] = buffer[num2];
             }
             Guid clsid = new Guid(b);
-            ESRI.ArcGIS.esriSystem.IPersistStream stream = Activator.CreateInstance(System.Type.GetTypeFromCLSID(clsid)) as IPersistStream;
+            ESRI.ArcGIS.esriSystem.IPersistStream stream =
+                Activator.CreateInstance(System.Type.GetTypeFromCLSID(clsid)) as IPersistStream;
             byte[] buffer3 = new byte[num];
             for (num2 = 0; num2 < num; num2++)
             {
@@ -474,11 +487,14 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 if (item.Tag is YTLegendItem)
                 {
                     XmlNode node3 = document.CreateElement("LegendItem");
-                    node3.Attributes.Append(this.method_5(document, "description", (item.Tag as YTLegendItem).Description));
-                    node3.Attributes.Append(this.method_5(document, "symbol", this.method_6((item.Tag as YTLegendItem).Symbol)));
+                    node3.Attributes.Append(this.method_5(document, "description",
+                        (item.Tag as YTLegendItem).Description));
+                    node3.Attributes.Append(this.method_5(document, "symbol",
+                        this.method_6((item.Tag as YTLegendItem).Symbol)));
                     if ((item.Tag as YTLegendItem).BackSymbol != null)
                     {
-                        node3.Attributes.Append(this.method_5(document, "backsymbol", this.method_6((item.Tag as YTLegendItem).BackSymbol)));
+                        node3.Attributes.Append(this.method_5(document, "backsymbol",
+                            this.method_6((item.Tag as YTLegendItem).BackSymbol)));
                     }
                     newChild.AppendChild(node3);
                 }
@@ -493,7 +509,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         private void method_9(XmlNode xmlNode_0)
         {
             int num = 0;
-        Label_0002:
+            Label_0002:
             if (num >= xmlNode_0.Attributes.Count)
             {
                 for (int i = 0; i < xmlNode_0.ChildNodes.Count; i++)
@@ -613,46 +629,28 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public MapCartoTemplateLib.MapTemplateElement MapTemplateElement
         {
-            set
-            {
-                this.mapTemplateElement_0 = value;
-            }
+            set { this.mapTemplateElement_0 = value; }
         }
 
         public string Title
         {
-            get
-            {
-                return "图例";
-            }
-            set
-            {
-            }
+            get { return "图例"; }
+            set { }
         }
     }
 }
-

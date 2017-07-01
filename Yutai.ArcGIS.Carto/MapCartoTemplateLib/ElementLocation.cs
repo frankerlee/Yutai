@@ -7,13 +7,6 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 {
     public class ElementLocation
     {
-        [CompilerGenerated]
-        private double double_0;
-        [CompilerGenerated]
-        private double double_1;
-        [CompilerGenerated]
-        private MapCartoTemplateLib.LocationType locationType_0;
-
         public ElementLocation()
         {
             this.LocationType = MapCartoTemplateLib.LocationType.UpperrCenter;
@@ -26,7 +19,12 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public ElementLocation Clone()
         {
-            return new ElementLocation { LocationType = this.LocationType, XOffset = this.XOffset, YOffset = this.YOffset };
+            return new ElementLocation
+            {
+                LocationType = this.LocationType,
+                XOffset = this.XOffset,
+                YOffset = this.YOffset
+            };
         }
 
         private string method_0()
@@ -92,47 +90,9 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             return this.method_0();
         }
 
-        public MapCartoTemplateLib.LocationType LocationType
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.locationType_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.locationType_0 = value;
-            }
-        }
+        public MapCartoTemplateLib.LocationType LocationType { get; set; }
 
-        public double XOffset
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.double_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.double_0 = value;
-            }
-        }
-
-        public double YOffset
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.double_1;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.double_1 = value;
-            }
-        }
+        public double XOffset { get; set; }
+        public double YOffset { get; set; }
     }
 }
-

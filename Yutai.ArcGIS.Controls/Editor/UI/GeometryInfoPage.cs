@@ -38,13 +38,15 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             (this.m_pSymbol as ISimpleMarkerSymbol).Style = esriSimpleMarkerStyle.esriSMSSquare;
             (this.m_pSymbol as ISimpleMarkerSymbol).Size = 6.0;
             (this.m_pSymbol as ISimpleMarkerSymbol).Outline = true;
-            IRgbColor color = new RgbColorClass {
+            IRgbColor color = new RgbColorClass
+            {
                 Red = 183,
                 Green = 120,
                 Blue = 245
             };
             (this.m_pSymbol as IMarkerSymbol).Color = color;
-            color = new RgbColorClass {
+            color = new RgbColorClass
+            {
                 Red = 255,
                 Green = 0,
                 Blue = 0
@@ -77,7 +79,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                         if (obj2.IsRegisteredAsVersioned)
                         {
                             SysGrants grants = new SysGrants();
-                            return (((AppConfigInfo.UserID.Length == 0) || (AppConfigInfo.UserID.ToLower() == "admin")) || grants.GetStaffAndRolesLayerPri(AppConfigInfo.UserID, 2, pDataset.Name));
+                            return (((AppConfigInfo.UserID.Length == 0) || (AppConfigInfo.UserID.ToLower() == "admin")) ||
+                                    grants.GetStaffAndRolesLayerPri(AppConfigInfo.UserID, 2, pDataset.Name));
                         }
                     }
                 }
@@ -100,13 +103,13 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                         string str2;
                         IPoint inPoint = new PointClass();
                         num++;
-                        string[] strArray = str.Split(new char[] { ',' });
+                        string[] strArray = str.Split(new char[] {','});
                         try
                         {
                             if (strArray.Length < 2)
                             {
                                 str2 = filename + " 中第 " + num.ToString() + "行数据有错误";
-                               Logger.Current.Error("", null, str2);
+                                Logger.Current.Error("", null, str2);
                                 continue;
                             }
                             inPoint.X = double.Parse(strArray[0]);
@@ -124,11 +127,12 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                         catch
                         {
                             str2 = filename + " 中第 " + num.ToString() + "行数据有错误";
-                           Logger.Current.Error("", null, str2);
+                            Logger.Current.Error("", null, str2);
                         }
                     }
                     this.SetZMProperty(points as IGeometry);
-                    IFeature feature = Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass.CreateFeature();
+                    IFeature feature =
+                        Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass.CreateFeature();
                     try
                     {
                         feature.Shape = points as IGeometry;
@@ -137,17 +141,18 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                     catch (Exception exception)
                     {
                         feature.Delete();
-                       Logger.Current.Error("", exception, "");
+                        Logger.Current.Error("", exception, "");
                     }
                     IActiveView pMap = (IActiveView) this.m_pMap;
                     this.m_pMap.ClearSelection();
-                    this.m_pMap.SelectFeature(Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer, feature);
+                    this.m_pMap.SelectFeature(Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer,
+                        feature);
                     pMap.Refresh();
                 }
             }
             catch (Exception exception2)
             {
-               Logger.Current.Error("", exception2, "");
+                Logger.Current.Error("", exception2, "");
             }
         }
 
@@ -155,7 +160,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         {
             try
             {
-                IFeatureClass featureClass = Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass;
+                IFeatureClass featureClass =
+                    Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer.FeatureClass;
                 int index = featureClass.FindField(featureClass.ShapeFieldName);
                 IGeometryDef geometryDef = featureClass.Fields.get_Field(index).GeometryDef;
                 using (StreamReader reader = new StreamReader(filename))
@@ -167,13 +173,13 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                     {
                         string str2;
                         num2++;
-                        string[] strArray = str.Split(new char[] { ',' });
+                        string[] strArray = str.Split(new char[] {','});
                         try
                         {
                             if (strArray.Length < 2)
                             {
                                 str2 = filename + " 中第 " + num2.ToString() + "行数据有错误";
-                               Logger.Current.Error("", null, str2);
+                                Logger.Current.Error("", null, str2);
                                 continue;
                             }
                             pGeom.X = double.Parse(strArray[0]);
@@ -209,20 +215,20 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                             }
                             catch (Exception exception)
                             {
-                               Logger.Current.Error("", exception, "");
+                                Logger.Current.Error("", exception, "");
                             }
                         }
                         catch
                         {
                             str2 = filename + " 中第 " + num2.ToString() + "行数据有错误";
-                           Logger.Current.Error("", null, str2);
+                            Logger.Current.Error("", null, str2);
                         }
                     }
                 }
             }
             catch (Exception exception2)
             {
-               Logger.Current.Error("", exception2, "");
+                Logger.Current.Error("", exception2, "");
             }
         }
 
@@ -232,7 +238,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             int index = featureClass.FindField(featureClass.ShapeFieldName);
             IGeometryDef geometryDef = featureClass.Fields.get_Field(index).GeometryDef;
             IPoint point = new PointClass();
-            string[] strArray = line.Split(new char[] { ',' });
+            string[] strArray = line.Split(new char[] {','});
             try
             {
                 if (strArray.Length < 2)
@@ -298,7 +304,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                             if (point == null)
                             {
                                 str2 = string.Format("{0} 中第 {1}行数据有错误", filename, nIndex);
-                               Logger.Current.Error("", null, str2);
+                                Logger.Current.Error("", null, str2);
                             }
                             else
                             {
@@ -328,7 +334,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                                     else
                                     {
                                         str2 = filename + " 中第 " + nIndex.ToString() + "行数据有错误";
-                                       Logger.Current.Error("", null, str2);
+                                        Logger.Current.Error("", null, str2);
                                     }
                                 }
                                 else
@@ -337,7 +343,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                                     if (point == null)
                                     {
                                         str2 = filename + " 中第 " + nIndex.ToString() + "行数据有错误";
-                                       Logger.Current.Error("", null, str2);
+                                        Logger.Current.Error("", null, str2);
                                     }
                                     else
                                     {
@@ -358,7 +364,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                         {
                             if (geometrys.GeometryCount > 0)
                             {
-                                IFeatureLayer featureLayer = Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer;
+                                IFeatureLayer featureLayer =
+                                    Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer;
                                 this.SetZMProperty(geometrys as IGeometry);
                                 IFeature feature = featureLayer.FeatureClass.CreateFeature();
                                 feature.Shape = geometrys as IGeometry;
@@ -375,14 +382,14 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                         }
                         catch (Exception exception)
                         {
-                           Logger.Current.Error("", exception, "");
+                            Logger.Current.Error("", exception, "");
                         }
                     }
                 }
             }
             catch (Exception exception2)
             {
-               Logger.Current.Error("", exception2, "");
+                Logger.Current.Error("", exception2, "");
             }
         }
 
@@ -412,7 +419,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                             if (point == null)
                             {
                                 str2 = string.Format("{0} 中第 {1}行数据有错误", filename, nIndex);
-                               Logger.Current.Error("", null, str2);
+                                Logger.Current.Error("", null, str2);
                             }
                             else
                             {
@@ -439,7 +446,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                                     else
                                     {
                                         str2 = filename + " 中第 " + nIndex.ToString() + "行数据有错误";
-                                       Logger.Current.Error("", null, str2);
+                                        Logger.Current.Error("", null, str2);
                                     }
                                 }
                                 else
@@ -447,8 +454,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                                     point = this.CreatePoint(line, nIndex);
                                     if (point == null)
                                     {
-                                        str2 = string.Concat(new object[] { filename, " 中第 ", nIndex, "行数据有错误" });
-                                       Logger.Current.Error("", null, str2);
+                                        str2 = string.Concat(new object[] {filename, " 中第 ", nIndex, "行数据有错误"});
+                                        Logger.Current.Error("", null, str2);
                                     }
                                     else
                                     {
@@ -463,7 +470,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                         }
                         try
                         {
-                            IFeatureLayer featureLayer = Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer;
+                            IFeatureLayer featureLayer =
+                                Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer;
                             this.SetZMProperty(geometrys as IGeometry);
                             IFeature feature = featureLayer.FeatureClass.CreateFeature();
                             feature.Shape = geometrys as IGeometry;
@@ -475,14 +483,14 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                         }
                         catch (Exception exception)
                         {
-                           Logger.Current.Error("", exception, "");
+                            Logger.Current.Error("", exception, "");
                         }
                     }
                 }
             }
             catch (Exception exception2)
             {
-               Logger.Current.Error("", exception2, "");
+                Logger.Current.Error("", exception2, "");
             }
         }
 
@@ -520,11 +528,11 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
             catch (Exception exception)
             {
-               Logger.Current.Error("", exception, "");
+                Logger.Current.Error("", exception, "");
             }
         }
 
- private void EditorEvent_OnEditTemplateChange(YTEditTemplate template)
+        private void EditorEvent_OnEditTemplateChange(YTEditTemplate template)
         {
             this.ImportGeometryData.Enabled = Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate != null;
         }
@@ -548,14 +556,17 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         {
             if (this.m_pGeometry != null)
             {
-                SaveFileDialog dialog = new SaveFileDialog {
+                SaveFileDialog dialog = new SaveFileDialog
+                {
                     Filter = "文本文件 (*.txt)|*.txt"
                 };
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     try
                     {
-                        int index = this.m_pEditFeature.Fields.FindField((this.m_pEditFeature.Class as IFeatureClass).ShapeFieldName);
+                        int index =
+                            this.m_pEditFeature.Fields.FindField(
+                                (this.m_pEditFeature.Class as IFeatureClass).ShapeFieldName);
                         IGeometryDef geometryDef = this.m_pEditFeature.Fields.get_Field(index).GeometryDef;
                         this.m_HasZ = geometryDef.HasZ;
                         this.m_HasM = geometryDef.HasM;
@@ -569,7 +580,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                             {
                                 this.WritePointCollection(writer, this.m_pGeometry as IPointCollection);
                             }
-                            else if ((this.m_pGeometry.GeometryType == esriGeometryType.esriGeometryPolyline) || (this.m_pGeometry.GeometryType == esriGeometryType.esriGeometryPolygon))
+                            else if ((this.m_pGeometry.GeometryType == esriGeometryType.esriGeometryPolyline) ||
+                                     (this.m_pGeometry.GeometryType == esriGeometryType.esriGeometryPolygon))
                             {
                                 IGeometryCollection pGeometry = this.m_pGeometry as IGeometryCollection;
                                 if (pGeometry.GeometryCount > 1)
@@ -599,15 +611,16 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             if (EditorLicenseProviderCheck.Check())
             {
                 this.m_HasLicense = true;
-                EditorEvent.OnEditTemplateChange += new EditorEvent.OnEditTemplateChangeHandler(this.EditorEvent_OnEditTemplateChange);
-                EditorEvent.OnFeatureGeometryChanged += new EditorEvent.OnFeatureGeometryChangedHandler(this.EditorEvent_OnFeatureGeometryChanged);
+                EditorEvent.OnEditTemplateChange +=
+                    new EditorEvent.OnEditTemplateChangeHandler(this.EditorEvent_OnEditTemplateChange);
+                EditorEvent.OnFeatureGeometryChanged +=
+                    new EditorEvent.OnFeatureGeometryChangedHandler(this.EditorEvent_OnFeatureGeometryChanged);
                 EditorEvent.OnStopEditing += new EditorEvent.OnStopEditingHandler(this.EditorEvent_OnStopEditing);
                 this.Init();
                 this.m_CanDo = true;
             }
         }
 
-       
 
         private string GetUnitName(string s)
         {
@@ -621,13 +634,16 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         private void ImportGeometryData_ItemClick(object sender, ItemClickEventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
                 Filter = "文本文件 (*.txt)|*.txt"
             };
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                Yutai.ArcGIS.Common.Editor.Editor.ImportGeometryData(dialog.FileName, this.m_pMap, Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
-                (this.m_pMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeography, Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer, null);
+                Yutai.ArcGIS.Common.Editor.Editor.ImportGeometryData(dialog.FileName, this.m_pMap,
+                    Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
+                (this.m_pMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeography,
+                    Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer, null);
             }
         }
 
@@ -670,7 +686,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
- private void InsertPointAfter_ItemClick(object sender, ItemClickEventArgs e)
+        private void InsertPointAfter_ItemClick(object sender, ItemClickEventArgs e)
         {
             try
             {
@@ -691,14 +707,14 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 IPoint point = pGeometry.get_Point(i);
                 IPoint point2 = pGeometry.get_Point(i + 1);
                 IPoint inPoint = new PointClass();
-                inPoint.PutCoords((point.X + point2.X) / 2.0, (point.Y + point2.Y) / 2.0);
+                inPoint.PutCoords((point.X + point2.X)/2.0, (point.Y + point2.Y)/2.0);
                 if (this.m_HasZ)
                 {
-                    inPoint.Z = (point.Z + point2.Z) / 2.0;
+                    inPoint.Z = (point.Z + point2.Z)/2.0;
                 }
                 if (this.m_HasM)
                 {
-                    inPoint.M = (point.M + point2.M) / 2.0;
+                    inPoint.M = (point.M + point2.M)/2.0;
                 }
                 object after = i;
                 object before = Missing.Value;
@@ -717,7 +733,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
             catch (Exception exception)
             {
-               Logger.Current.Error("", exception, "");
+                Logger.Current.Error("", exception, "");
             }
         }
 
@@ -742,14 +758,14 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 IPoint point = pGeometry.get_Point(i - 1);
                 IPoint point2 = pGeometry.get_Point(i);
                 IPoint inPoint = new PointClass();
-                inPoint.PutCoords((point.X + point2.X) / 2.0, (point.Y + point2.Y) / 2.0);
+                inPoint.PutCoords((point.X + point2.X)/2.0, (point.Y + point2.Y)/2.0);
                 if (this.m_HasZ)
                 {
-                    inPoint.Z = (point.Z + point2.Z) / 2.0;
+                    inPoint.Z = (point.Z + point2.Z)/2.0;
                 }
                 if (this.m_HasM)
                 {
-                    inPoint.M = (point.M + point2.M) / 2.0;
+                    inPoint.M = (point.M + point2.M)/2.0;
                 }
                 object before = i;
                 object after = Missing.Value;
@@ -768,7 +784,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
             catch (Exception exception)
             {
-               Logger.Current.Error("", exception, "");
+                Logger.Current.Error("", exception, "");
             }
         }
 
@@ -790,7 +806,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.InsertPointAfter.Enabled = false;
             this.InsertPointBefore.Enabled = false;
             IEnvelope envelope = null;
-            if ((this.listView1.SelectedItems.Count == 1) && (this.m_pGeometry.GeometryType != esriGeometryType.esriGeometryPoint))
+            if ((this.listView1.SelectedItems.Count == 1) &&
+                (this.m_pGeometry.GeometryType != esriGeometryType.esriGeometryPoint))
             {
                 this.InsertPointBefore.Enabled = true;
                 this.InsertPointAfter.Enabled = true;
@@ -852,7 +869,9 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                     }
                     if ((this.m_pGeometry is IPolygon) || (this.m_pGeometry is IPolyline))
                     {
-                        IPointCollection points = (this.m_pGeometry as IGeometryCollection).get_Geometry(this.listBox1.SelectedIndex) as IPointCollection;
+                        IPointCollection points =
+                            (this.m_pGeometry as IGeometryCollection).get_Geometry(this.listBox1.SelectedIndex) as
+                                IPointCollection;
                         points.UpdatePoint(e.Row, tag);
                         if ((points as ICurve).IsClosed && (e.Row == 0))
                         {
@@ -860,12 +879,14 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                         }
                     }
                     IWorkspaceEdit workspace = (this.m_pEditFeature.Class as IDataset).Workspace as IWorkspaceEdit;
-                    (this.m_pMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeography, null, this.m_pEditFeature.Extent);
+                    (this.m_pMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeography, null,
+                        this.m_pEditFeature.Extent);
                     workspace.StartEditOperation();
                     this.m_pEditFeature.Shape = this.m_pGeometry;
                     this.m_pEditFeature.Store();
                     workspace.StopEditOperation();
-                    (this.m_pMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeography, null, this.m_pGeometry.Envelope);
+                    (this.m_pMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeography, null,
+                        this.m_pGeometry.Envelope);
                     this.SetStatus();
                 }
             }
@@ -911,18 +932,21 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.m_HasM = geometryDef.HasM;
             this.m_HasZ = geometryDef.HasZ;
             this.SetStatus();
-            LVColumnHeader header = new LVColumnHeader {
+            LVColumnHeader header = new LVColumnHeader
+            {
                 Text = "序号",
                 Width = 80
             };
             this.listView1.Columns.Add(header);
-            header = new LVColumnHeader {
+            header = new LVColumnHeader
+            {
                 ColumnStyle = ListViewColumnStyle.EditBox,
                 Text = "x",
                 Width = 80
             };
             this.listView1.Columns.Add(header);
-            header = new LVColumnHeader {
+            header = new LVColumnHeader
+            {
                 ColumnStyle = ListViewColumnStyle.EditBox,
                 Text = "y",
                 Width = 80
@@ -930,7 +954,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.listView1.Columns.Add(header);
             if (this.m_HasZ)
             {
-                header = new LVColumnHeader {
+                header = new LVColumnHeader
+                {
                     ColumnStyle = ListViewColumnStyle.EditBox,
                     Text = "z",
                     Width = 80
@@ -939,7 +964,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
             if (this.m_HasM)
             {
-                header = new LVColumnHeader {
+                header = new LVColumnHeader
+                {
                     ColumnStyle = ListViewColumnStyle.EditBox,
                     Text = "m",
                     Width = 80
@@ -985,7 +1011,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                     {
                         items[4] = (this.m_pGeometry as IPoint).M.ToString("0.###");
                     }
-                    item = new ListViewItem(items) {
+                    item = new ListViewItem(items)
+                    {
                         Tag = this.m_pGeometry
                     };
                     this.listView1.Items.Add(item);
@@ -1012,7 +1039,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                             {
                                 items[4] = point.M.ToString("0.###");
                             }
-                            item = new ListViewItem(items) {
+                            item = new ListViewItem(items)
+                            {
                                 Tag = point
                             };
                             this.listView1.Items.Add(item);
@@ -1041,7 +1069,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                             {
                                 items[4] = point.M.ToString("0.###");
                             }
-                            item = new ListViewItem(items) {
+                            item = new ListViewItem(items)
+                            {
                                 Tag = point
                             };
                             this.listView1.Items.Add(item);
@@ -1064,7 +1093,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             string str3 = "";
             if (this.m_pGeometry.GeometryType == esriGeometryType.esriGeometryPolygon)
             {
-                str3 = ("周长 = " + (this.m_pGeometry as ICurve).Length.ToString() + unitName) + ", 面积 = " + (this.m_pGeometry as IArea).Area.ToString() + str2;
+                str3 = ("周长 = " + (this.m_pGeometry as ICurve).Length.ToString() + unitName) + ", 面积 = " +
+                       (this.m_pGeometry as IArea).Area.ToString() + str2;
             }
             else if (this.m_pGeometry.GeometryType == esriGeometryType.esriGeometryPolyline)
             {
@@ -1116,26 +1146,17 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         public IApplication Application
         {
-            set
-            {
-                this.m_pApp = value;
-            }
+            set { this.m_pApp = value; }
         }
 
         public DockingStyle DefaultDockingStyle
         {
-            get
-            {
-                return DockingStyle.Right;
-            }
+            get { return DockingStyle.Right; }
         }
 
         public IWorkspace EditWorkspace
         {
-            set
-            {
-                this.m_pEditWorkspace = value;
-            }
+            set { this.m_pEditWorkspace = value; }
         }
 
         public IMap FocusMap
@@ -1144,26 +1165,21 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             {
                 this.m_pMap = value;
                 this.m_pActiveViewEvents = this.m_pMap as IActiveViewEvents_Event;
-                this.m_pActiveViewEvents.SelectionChanged+=(new IActiveViewEvents_SelectionChangedEventHandler(this.m_pActiveViewEvents_SelectionChanged));
-                this.m_pActiveViewEvents.AfterDraw+=(new IActiveViewEvents_AfterDrawEventHandler(this.m_pActiveViewEvents_AfterDraw));
+                this.m_pActiveViewEvents.SelectionChanged +=
+                    (new IActiveViewEvents_SelectionChangedEventHandler(this.m_pActiveViewEvents_SelectionChanged));
+                this.m_pActiveViewEvents.AfterDraw +=
+                    (new IActiveViewEvents_AfterDrawEventHandler(this.m_pActiveViewEvents_AfterDraw));
             }
         }
 
         string IDockContent.Name
         {
-            get
-            {
-                return base.Name;
-            }
+            get { return base.Name; }
         }
 
         int IDockContent.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
     }
 }
-

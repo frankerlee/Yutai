@@ -34,7 +34,7 @@ namespace Yutai.ArcGIS.Carto.Library
             }
         }
 
- private void MapCoordinateInputPage_Load(object sender, EventArgs e)
+        private void MapCoordinateInputPage_Load(object sender, EventArgs e)
         {
             if (this.bool_0)
             {
@@ -53,15 +53,8 @@ namespace Yutai.ArcGIS.Carto.Library
 
         public MapTemplateApplyHelp MapTemplateHelp
         {
-            get
-            {
-                return this.mapTemplateApplyHelp_0;
-            }
-            set
-            {
-                this.mapTemplateApplyHelp_0 = value;
-            }
+            get { return this.mapTemplateApplyHelp_0; }
+            set { this.mapTemplateApplyHelp_0 = value; }
         }
     }
 }
-

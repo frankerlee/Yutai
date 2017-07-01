@@ -9,18 +9,12 @@ namespace Yutai.ArcGIS.Common.Symbol
     {
         public System.Guid ItemClass
         {
-            get
-            {
-                return default(System.Guid);
-            }
+            get { return default(System.Guid); }
         }
 
         public IEnumBSTR NewObjectTypes
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public object get_NewObject(string newType)
@@ -30,37 +24,26 @@ namespace Yutai.ArcGIS.Common.Symbol
 
         public double PreviewRatio
         {
-            get
-            {
-                return 0.0;
-            }
+            get { return 0.0; }
         }
 
         public string Description
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public string Name
         {
-            get
-            {
-                return "Area Patches";
-            }
+            get { return "Area Patches"; }
         }
 
         public object NewObject
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
-        public void EditProperties(ref object object_0, IComPropertySheetEvents icomPropertySheetEvents_0, int int_0, out bool bool_0)
+        public void EditProperties(ref object object_0, IComPropertySheetEvents icomPropertySheetEvents_0, int int_0,
+            out bool bool_0)
         {
             bool_0 = false;
         }

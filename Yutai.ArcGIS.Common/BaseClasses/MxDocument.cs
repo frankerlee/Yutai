@@ -23,7 +23,9 @@ namespace Yutai.ArcGIS.Common.BaseClasses
         {
             if (this.bool_0)
             {
-                switch (MessageBox.Show("是否将改动保存到 " + Path.GetFileNameWithoutExtension(this.string_0), "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Asterisk))
+                switch (
+                    MessageBox.Show("是否将改动保存到 " + Path.GetFileNameWithoutExtension(this.string_0), "",
+                        MessageBoxButtons.YesNoCancel, MessageBoxIcon.Asterisk))
                 {
                     case DialogResult.Cancel:
                         this.bool_1 = true;
@@ -68,7 +70,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             }
             else if (this.object_0 is MapAndPageLayoutControls)
             {
-                imapDocument_0.ReplaceContents((this.object_0 as MapAndPageLayoutControls).PageLayoutControl.PageLayout as IMxdContents);
+                imapDocument_0.ReplaceContents(
+                    (this.object_0 as MapAndPageLayoutControls).PageLayoutControl.PageLayout as IMxdContents);
                 imapDocument_0.Save(true, true);
             }
         }
@@ -92,7 +95,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             }
             else if (this.object_0 is MapAndPageLayoutControls)
             {
-                ((this.object_0 as MapAndPageLayoutControls).PageLayoutControl.PageLayout as IGraphicsContainer).DeleteAllElements();
+                ((this.object_0 as MapAndPageLayoutControls).PageLayoutControl.PageLayout as IGraphicsContainer)
+                    .DeleteAllElements();
             }
             //if (ApplicationRef.Application != null)
             //{
@@ -104,7 +108,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
         {
             if (this.bool_0)
             {
-                DialogResult result = MessageBox.Show("是否将改动保存到 " + Path.GetFileNameWithoutExtension(this.string_0), "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Asterisk);
+                DialogResult result = MessageBox.Show("是否将改动保存到 " + Path.GetFileNameWithoutExtension(this.string_0), "",
+                    MessageBoxButtons.YesNoCancel, MessageBoxIcon.Asterisk);
                 if (result == DialogResult.Cancel)
                 {
                     return true;
@@ -124,7 +129,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
         {
             if (this.bool_0)
             {
-                DialogResult result = MessageBox.Show("是否将改动保存到 " + Path.GetFileNameWithoutExtension(this.string_0), "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Asterisk);
+                DialogResult result = MessageBox.Show("是否将改动保存到 " + Path.GetFileNameWithoutExtension(this.string_0), "",
+                    MessageBoxButtons.YesNoCancel, MessageBoxIcon.Asterisk);
                 if (result == DialogResult.Cancel)
                 {
                     return true;
@@ -150,7 +156,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                 if (document.get_IsPresent(string_1) && !document.get_IsPasswordProtected(string_1))
                 {
                     document.Open(string_1, string.Empty);
-                    IMaps maps =new Maps();
+                    IMaps maps = new Maps();
                     for (int i = 0; i < document.MapCount; i++)
                     {
                         IMap map = document.get_Map(i);
@@ -171,10 +177,12 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             {
                 if (this.string_0 == "新文档.mxd")
                 {
-                    SaveFileDialog dialog = new SaveFileDialog {
+                    SaveFileDialog dialog = new SaveFileDialog
+                    {
                         OverwritePrompt = true,
                         Title = "保存为",
-                        Filter = "ArcMap Document (*.mxd)|*.mxd|ArcMap Template (*.mxt)|*.mxt|Published Maps (*.pmf)|*.pmf|所有支持Map格式|*.mxd;*.mxt;*.pmf",
+                        Filter =
+                            "ArcMap Document (*.mxd)|*.mxd|ArcMap Template (*.mxt)|*.mxt|Published Maps (*.pmf)|*.pmf|所有支持Map格式|*.mxd;*.mxt;*.pmf",
                         FilterIndex = 0,
                         RestoreDirectory = true,
                         FileName = this.string_0
@@ -246,35 +254,19 @@ namespace Yutai.ArcGIS.Common.BaseClasses
 
         public string DocumentFilename
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
 
         public object Hook
         {
-            get
-            {
-                return this.object_0;
-            }
+            get { return this.object_0; }
         }
 
         public bool IsDocumentChange
         {
-            get
-            {
-                return this.bool_0;
-            }
-            set
-            {
-                this.bool_0 = value;
-            }
+            get { return this.bool_0; }
+            set { this.bool_0 = value; }
         }
     }
 }
-

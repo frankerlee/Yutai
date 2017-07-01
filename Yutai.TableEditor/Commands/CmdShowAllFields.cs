@@ -18,6 +18,7 @@ namespace Yutai.Plugins.TableEditor.Commands
     public class CmdShowAllFields : YutaiCommand
     {
         private ITableEditorView _view;
+
         public CmdShowAllFields(IAppContext context, ITableEditorView view)
         {
             _context = context;

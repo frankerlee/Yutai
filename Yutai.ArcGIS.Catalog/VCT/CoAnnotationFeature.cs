@@ -20,63 +20,32 @@ namespace Yutai.ArcGIS.Catalog.VCT
 
         public double Angle
         {
-            get
-            {
-                return this.double_0;
-            }
-            set
-            {
-                this.double_0 = value;
-            }
+            get { return this.double_0; }
+            set { this.double_0 = value; }
         }
 
         public System.Drawing.Color Color
         {
-            get
-            {
-                return this.color_0;
-            }
-            set
-            {
-                this.color_0 = value;
-            }
+            get { return this.color_0; }
+            set { this.color_0 = value; }
         }
 
         public System.Drawing.Font Font
         {
-            get
-            {
-                return this.font_0;
-            }
-            set
-            {
-                this.font_0 = value;
-            }
+            get { return this.font_0; }
+            set { this.font_0 = value; }
         }
 
         public CoPointCollection Point
         {
-            get
-            {
-                return this.coPointCollection_0;
-            }
-            set
-            {
-                this.coPointCollection_0 = value;
-            }
+            get { return this.coPointCollection_0; }
+            set { this.coPointCollection_0 = value; }
         }
 
         public string Text
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

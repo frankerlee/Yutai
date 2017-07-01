@@ -36,7 +36,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void method_0()
+        private void method_0()
         {
             if (this.iarray_0 != null)
             {
@@ -57,11 +57,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IArray ParentVersions
         {
-            set
-            {
-                this.iarray_0 = value;
-            }
+            set { this.iarray_0 = value; }
         }
     }
 }
-

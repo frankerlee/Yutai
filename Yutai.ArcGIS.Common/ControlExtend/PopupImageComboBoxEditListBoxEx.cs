@@ -28,7 +28,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
                 Brush foreBrush = null;
                 ImageComboBoxItemEx item = listBoxDrawItemEventArgs_0.Item as ImageComboBoxItemEx;
                 Rectangle bounds = Rectangle.Inflate(listBoxDrawItemEventArgs_0.Bounds, -2, -1);
-                bounds.X += item.Degree * 16;
+                bounds.X += item.Degree*16;
                 Rectangle empty = Rectangle.Empty;
                 ImageList images = this.Images as ImageList;
                 if ((images != null) && !images.ImageSize.IsEmpty)
@@ -47,11 +47,13 @@ namespace Yutai.ArcGIS.Common.ControlExtend
                     bounds.Width -= empty.Size.Width + 4;
                     if (((item != null) && (item.ImageIndex >= 0)) && (item.ImageIndex < images.Images.Count))
                     {
-                        GraphicsInfoArgs info = new GraphicsInfoArgs(new GraphicsCache(listBoxDrawItemEventArgs_0.Graphics), Rectangle.Empty);
+                        GraphicsInfoArgs info =
+                            new GraphicsInfoArgs(new GraphicsCache(listBoxDrawItemEventArgs_0.Graphics), Rectangle.Empty);
                         XPaint.Graphics.DrawImage(info, images, item.ImageIndex, empty, true);
                     }
                 }
-                this.PaintAppearance.DrawString(listBoxDrawItemEventArgs_0.Cache, this.GetItemText(listBoxDrawItemEventArgs_0.Item), bounds, foreBrush);
+                this.PaintAppearance.DrawString(listBoxDrawItemEventArgs_0.Cache,
+                    this.GetItemText(listBoxDrawItemEventArgs_0.Item), bounds, foreBrush);
                 listBoxDrawItemEventArgs_0.Handled = true;
             }
         }
@@ -66,4 +68,3 @@ namespace Yutai.ArcGIS.Common.ControlExtend
         }
     }
 }
-

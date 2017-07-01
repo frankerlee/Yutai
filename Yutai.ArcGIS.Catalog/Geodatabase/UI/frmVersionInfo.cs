@@ -17,13 +17,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.Controls.Add(this.versionInfoControl_0);
         }
 
- public IVersionedWorkspace VersionWorkspace
+        public IVersionedWorkspace VersionWorkspace
         {
-            set
-            {
-                this.versionInfoControl_0.VersionWorkspace = value;
-            }
+            set { this.versionInfoControl_0.VersionWorkspace = value; }
         }
     }
 }
-

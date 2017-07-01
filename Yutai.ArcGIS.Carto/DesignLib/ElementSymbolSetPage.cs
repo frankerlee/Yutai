@@ -38,13 +38,13 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             this.bool_1 = false;
         }
 
- private void ElementSymbolSetPage_Load(object sender, EventArgs e)
+        private void ElementSymbolSetPage_Load(object sender, EventArgs e)
         {
             this.styleButton1.Style = ElementWizardHelp.Style;
             this.bool_0 = true;
         }
 
- public void ResetControl()
+        public void ResetControl()
         {
         }
 
@@ -81,38 +81,23 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return "符号";
-            }
-            set
-            {
-            }
+            get { return "符号"; }
+            set { }
         }
     }
 }
-

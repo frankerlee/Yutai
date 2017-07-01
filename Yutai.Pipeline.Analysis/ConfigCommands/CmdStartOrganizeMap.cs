@@ -11,14 +11,15 @@ namespace Yutai.Pipeline.Analysis.ConfigCommands
     {
         private PipelineAnalysisPlugin _plugin;
         private frmMapLayerOrganize frmOrganize = null;
+
         public CmdStartOrganizeMap(IAppContext context, PipelineAnalysisPlugin plugin)
         {
             OnCreate(context);
             _plugin = plugin;
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
-
             OnClick();
         }
 
@@ -35,13 +36,13 @@ namespace Yutai.Pipeline.Analysis.ConfigCommands
             base.m_message = "管线识别";
             base.m_enabled = true;
             base._itemType = RibbonItemType.Button;
-            
+
             CommonUtils.AppContext = _context;
         }
 
         public void OnClick()
         {
-            if(frmOrganize == null)
+            if (frmOrganize == null)
             {
                 frmOrganize = new frmMapLayerOrganize(_context.FocusMap, _plugin.PipeConfig);
             }
@@ -50,7 +51,6 @@ namespace Yutai.Pipeline.Analysis.ConfigCommands
                 frmOrganize.InitMap(_context.FocusMap);
             }
             frmOrganize.ShowDialog();
-
         }
     }
 }

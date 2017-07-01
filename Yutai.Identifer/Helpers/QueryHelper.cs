@@ -21,8 +21,8 @@ namespace Yutai.Plugins.Identifer.Helpers
         public static void GetClosestSelectedFeature(IPoint inPoint, IMap pMap, out IFeature pFeature)
         {
             pFeature = null;
-            IProximityOperator ipoint0 = (IProximityOperator)inPoint;
-            IEnumFeature featureSelection = (IEnumFeature)pMap.FeatureSelection;
+            IProximityOperator ipoint0 = (IProximityOperator) inPoint;
+            IEnumFeature featureSelection = (IEnumFeature) pMap.FeatureSelection;
             featureSelection.Reset();
             IFeature i = featureSelection.Next();
             if (i != null)
@@ -46,7 +46,7 @@ namespace Yutai.Plugins.Identifer.Helpers
             pFeature = null;
             if (inFeatures.Count != 0)
             {
-                IProximityOperator ipoint0 = (IProximityOperator)inPoint;
+                IProximityOperator ipoint0 = (IProximityOperator) inPoint;
                 double num = -1;
                 for (int i = 0; i < inFeatures.Count; i++)
                 {
@@ -68,7 +68,7 @@ namespace Yutai.Plugins.Identifer.Helpers
         public static void GetClosestSelectedFeature(IPoint inPoint, IFeatureCursor pCursor, out IFeature pFeature)
         {
             pFeature = null;
-            IProximityOperator ipoint0 = (IProximityOperator)inPoint;
+            IProximityOperator ipoint0 = (IProximityOperator) inPoint;
             IFeature feature = pCursor.NextFeature();
             if (feature != null)
             {
@@ -107,7 +107,8 @@ namespace Yutai.Plugins.Identifer.Helpers
             for (int i = 0; i < pMap.LayerCount; i++)
             {
                 IFeatureLayer layer = pMap.Layer[i] as IFeatureLayer;
-                if (layer != null && layer.Visible && layer.FeatureClass.ShapeType == esriGeometryType.esriGeometryPolyline)
+                if (layer != null && layer.Visible &&
+                    layer.FeatureClass.ShapeType == esriGeometryType.esriGeometryPolyline)
                 {
                     spatialFilterClass.GeometryField = layer.FeatureClass.ShapeFieldName;
                     IFeatureCursor featureCursor = layer.Search(spatialFilterClass, false);
@@ -146,7 +147,8 @@ namespace Yutai.Plugins.Identifer.Helpers
             return featureCursor;
         }
 
-        public IFeatureCursor Search(IMap pMap, string lyrName, string whereClause, IGeometry pGeometry, esriSpatialRelEnum pSpatialRelEnum)
+        public IFeatureCursor Search(IMap pMap, string lyrName, string whereClause, IGeometry pGeometry,
+            esriSpatialRelEnum pSpatialRelEnum)
         {
             IFeatureCursor featureCursor;
             IFeatureLayer featureLayer = MapHelper.FindLayer(pMap as IBasicMap, lyrName) as IFeatureLayer;
@@ -166,7 +168,8 @@ namespace Yutai.Plugins.Identifer.Helpers
             return this.SearchShape(pGeometry, pFeatureClass, string_0, esriSpatialRelEnum.esriSpatialRelIntersects);
         }
 
-        public IFeatureCursor SearchShape(IGeometry pGeometry, IFeatureClass pFeatureClass, string whereClause, esriSpatialRelEnum pSpatialRelEnum)
+        public IFeatureCursor SearchShape(IGeometry pGeometry, IFeatureClass pFeatureClass, string whereClause,
+            esriSpatialRelEnum pSpatialRelEnum)
         {
             ISpatialFilter spatialFilterClass = new SpatialFilter()
             {
@@ -188,7 +191,7 @@ namespace Yutai.Plugins.Identifer.Helpers
             {
                 if (pGeometry is IPoint)
                 {
-                    featureCursor = this.SelectByPoint((IFeatureLayer)object0, (IPoint)pGeometry, torelance);
+                    featureCursor = this.SelectByPoint((IFeatureLayer) object0, (IPoint) pGeometry, torelance);
                 }
                 else if (!(pGeometry is IPolyline))
                 {
@@ -201,7 +204,7 @@ namespace Yutai.Plugins.Identifer.Helpers
                 }
                 else
                 {
-                    featureCursor = this.SelectByLine((IFeatureLayer)object0, (IPolyline)pGeometry, torelance);
+                    featureCursor = this.SelectByLine((IFeatureLayer) object0, (IPolyline) pGeometry, torelance);
                 }
             }
             else if (!(object0 is IFeatureClass))
@@ -211,7 +214,7 @@ namespace Yutai.Plugins.Identifer.Helpers
             }
             else if (pGeometry is IPoint)
             {
-                featureCursor = this.SelectByPoint((IFeatureClass)object0, (IPoint)pGeometry, torelance);
+                featureCursor = this.SelectByPoint((IFeatureClass) object0, (IPoint) pGeometry, torelance);
             }
             else if (!(pGeometry is IPolyline))
             {
@@ -224,7 +227,7 @@ namespace Yutai.Plugins.Identifer.Helpers
             }
             else
             {
-                featureCursor = this.SelectByLine((IFeatureClass)object0, (IPolyline)pGeometry, torelance);
+                featureCursor = this.SelectByLine((IFeatureClass) object0, (IPolyline) pGeometry, torelance);
             }
             return featureCursor;
         }
@@ -234,12 +237,11 @@ namespace Yutai.Plugins.Identifer.Helpers
             IEnumFeature enumFeature;
             if (pGeometry is IPoint)
             {
-                enumFeature = this.SelectByPoint(pMap, (IPoint)pGeometry, torelance);
+                enumFeature = this.SelectByPoint(pMap, (IPoint) pGeometry, torelance);
             }
             else if ((pGeometry is IPolyline))
             {
-                enumFeature = this.SelectByLine(pMap, (IPolyline)pGeometry, torelance);
-                
+                enumFeature = this.SelectByLine(pMap, (IPolyline) pGeometry, torelance);
             }
             else
             {
@@ -248,7 +250,8 @@ namespace Yutai.Plugins.Identifer.Helpers
             return enumFeature;
         }
 
-        public IFeatureCursor SelectByLine(IFeatureClass pFeatureClass, IPolyline pLine, double pDist, string whereClause)
+        public IFeatureCursor SelectByLine(IFeatureClass pFeatureClass, IPolyline pLine, double pDist,
+            string whereClause)
         {
             IGeometry ipolyline0;
             ISpatialFilter spatialFilterClass = new SpatialFilter();
@@ -259,7 +262,7 @@ namespace Yutai.Plugins.Identifer.Helpers
             }
             else
             {
-                ipolyline0 = ((ITopologicalOperator)pLine).Buffer(pDist);
+                ipolyline0 = ((ITopologicalOperator) pLine).Buffer(pDist);
                 if (pFeatureClass.ShapeType != esriGeometryType.esriGeometryPoint)
                 {
                     spatialFilterClass.SpatialRel = esriSpatialRelEnum.esriSpatialRelIntersects;
@@ -286,7 +289,7 @@ namespace Yutai.Plugins.Identifer.Helpers
             }
             else
             {
-                ipolyline0 = ((ITopologicalOperator)pLine).Buffer(pDist);
+                ipolyline0 = ((ITopologicalOperator) pLine).Buffer(pDist);
                 if (pFeatureClass.ShapeType != esriGeometryType.esriGeometryPoint)
                 {
                     spatialFilterClass.SpatialRel = esriSpatialRelEnum.esriSpatialRelIntersects;
@@ -313,7 +316,7 @@ namespace Yutai.Plugins.Identifer.Helpers
             }
             else
             {
-                ipolyline0 = ((ITopologicalOperator)pLine).Buffer(pDist);
+                ipolyline0 = ((ITopologicalOperator) pLine).Buffer(pDist);
                 if (pFLayer.FeatureClass.ShapeType != esriGeometryType.esriGeometryPoint)
                 {
                     spatialFilterClass.SpatialRel = esriSpatialRelEnum.esriSpatialRelIntersects;
@@ -326,10 +329,10 @@ namespace Yutai.Plugins.Identifer.Helpers
             spatialFilterClass.GeometryField = "shape";
             spatialFilterClass.Geometry = ipolyline0;
             spatialFilterClass.WhereClause = whereClause;
-            IFeatureSelection ifeatureLayer0 = (IFeatureSelection)pFLayer;
+            IFeatureSelection ifeatureLayer0 = (IFeatureSelection) pFLayer;
             ifeatureLayer0.SelectFeatures(spatialFilterClass, esriSelectionResultEnum.esriSelectionResultNew, false);
             ifeatureLayer0.SelectionSet.Search(null, false, out cursor);
-            return (IFeatureCursor)cursor;
+            return (IFeatureCursor) cursor;
         }
 
         public IFeatureCursor SelectByLine(IFeatureLayer pFLayer, IPolyline pLine, double pDist)
@@ -344,7 +347,7 @@ namespace Yutai.Plugins.Identifer.Helpers
             }
             else
             {
-                ipolyline0 = ((ITopologicalOperator)pLine).Buffer(pDist);
+                ipolyline0 = ((ITopologicalOperator) pLine).Buffer(pDist);
                 if (pFLayer.FeatureClass.ShapeType != esriGeometryType.esriGeometryPoint)
                 {
                     spatialFilterClass.SpatialRel = esriSpatialRelEnum.esriSpatialRelIntersects;
@@ -356,10 +359,10 @@ namespace Yutai.Plugins.Identifer.Helpers
             }
             spatialFilterClass.GeometryField = "shape";
             spatialFilterClass.Geometry = ipolyline0;
-            IFeatureSelection ifeatureLayer0 = (IFeatureSelection)pFLayer;
+            IFeatureSelection ifeatureLayer0 = (IFeatureSelection) pFLayer;
             ifeatureLayer0.SelectFeatures(spatialFilterClass, esriSelectionResultEnum.esriSelectionResultNew, false);
             ifeatureLayer0.SelectionSet.Search(null, false, out cursor);
-            return (IFeatureCursor)cursor;
+            return (IFeatureCursor) cursor;
         }
 
         public IEnumFeature SelectByLine(IMap pMap, IPolyline pLine, double pDist)
@@ -377,7 +380,7 @@ namespace Yutai.Plugins.Identifer.Helpers
             }
             else
             {
-                ipolyline0 = ((ITopologicalOperator)pLine).Buffer(pDist);
+                ipolyline0 = ((ITopologicalOperator) pLine).Buffer(pDist);
                 selectionEnvironmentClass.PointSelectionMethod = esriSpatialRelEnum.esriSpatialRelContains;
             }
             selectionEnvironmentClass.CombinationMethod = esriSelectionResultEnum.esriSelectionResultNew;
@@ -390,7 +393,6 @@ namespace Yutai.Plugins.Identifer.Helpers
                 COMException cOMException = cOMException1;
                 if (cOMException.ErrorCode != -2147467259)
                 {
-                    
                 }
                 else
                 {
@@ -399,9 +401,8 @@ namespace Yutai.Plugins.Identifer.Helpers
             }
             catch (Exception exception)
             {
-               
             }
-            return (IEnumFeature)pMap.FeatureSelection;
+            return (IEnumFeature) pMap.FeatureSelection;
         }
 
         public IFeatureCursor SelectByPoint(IFeatureLayer pFLayer, IPoint inPoint, double pDist)
@@ -416,7 +417,7 @@ namespace Yutai.Plugins.Identifer.Helpers
             }
             else
             {
-                ipoint0 = ((ITopologicalOperator)inPoint).Buffer(pDist);
+                ipoint0 = ((ITopologicalOperator) inPoint).Buffer(pDist);
                 if (pFLayer.FeatureClass.ShapeType != esriGeometryType.esriGeometryPoint)
                 {
                     spatialFilterClass.SpatialRel = esriSpatialRelEnum.esriSpatialRelIntersects;
@@ -428,10 +429,10 @@ namespace Yutai.Plugins.Identifer.Helpers
             }
             spatialFilterClass.GeometryField = "shape";
             spatialFilterClass.Geometry = ipoint0;
-            IFeatureSelection ifeatureLayer0 = (IFeatureSelection)pFLayer;
+            IFeatureSelection ifeatureLayer0 = (IFeatureSelection) pFLayer;
             ifeatureLayer0.SelectFeatures(spatialFilterClass, esriSelectionResultEnum.esriSelectionResultNew, false);
             ifeatureLayer0.SelectionSet.Search(null, false, out cursor);
-            return (IFeatureCursor)cursor;
+            return (IFeatureCursor) cursor;
         }
 
         public IFeatureCursor SelectByPoint(IFeatureClass pFeatureClass, IPoint inPoint, double pDist)
@@ -445,7 +446,7 @@ namespace Yutai.Plugins.Identifer.Helpers
             }
             else
             {
-                ipoint0 = ((ITopologicalOperator)inPoint).Buffer(pDist);
+                ipoint0 = ((ITopologicalOperator) inPoint).Buffer(pDist);
                 if (pFeatureClass.ShapeType != esriGeometryType.esriGeometryPoint)
                 {
                     spatialFilterClass.SpatialRel = esriSpatialRelEnum.esriSpatialRelIntersects;
@@ -472,7 +473,7 @@ namespace Yutai.Plugins.Identifer.Helpers
             }
             else
             {
-                ipoint0 = ((ITopologicalOperator)inPoint).Buffer(pDist);
+                ipoint0 = ((ITopologicalOperator) inPoint).Buffer(pDist);
                 if (pFLayer.FeatureClass.ShapeType != esriGeometryType.esriGeometryPoint)
                 {
                     spatialFilterClass.SpatialRel = esriSpatialRelEnum.esriSpatialRelIntersects;
@@ -485,13 +486,14 @@ namespace Yutai.Plugins.Identifer.Helpers
             spatialFilterClass.GeometryField = "shape";
             spatialFilterClass.Geometry = ipoint0;
             spatialFilterClass.WhereClause = whereClause;
-            IFeatureSelection ifeatureLayer0 = (IFeatureSelection)pFLayer;
+            IFeatureSelection ifeatureLayer0 = (IFeatureSelection) pFLayer;
             ifeatureLayer0.SelectFeatures(spatialFilterClass, esriSelectionResultEnum.esriSelectionResultNew, false);
             ifeatureLayer0.SelectionSet.Search(null, false, out cursor);
-            return (IFeatureCursor)cursor;
+            return (IFeatureCursor) cursor;
         }
 
-        public IFeatureCursor SelectByPoint(IFeatureClass pFeatureClass, IPoint inPoint, double pDist, string whereClause)
+        public IFeatureCursor SelectByPoint(IFeatureClass pFeatureClass, IPoint inPoint, double pDist,
+            string whereClause)
         {
             IGeometry ipoint0;
             ISpatialFilter spatialFilterClass = new SpatialFilter();
@@ -502,7 +504,7 @@ namespace Yutai.Plugins.Identifer.Helpers
             }
             else
             {
-                ipoint0 = ((ITopologicalOperator)inPoint).Buffer(pDist);
+                ipoint0 = ((ITopologicalOperator) inPoint).Buffer(pDist);
                 if (pFeatureClass.ShapeType != esriGeometryType.esriGeometryPoint)
                 {
                     spatialFilterClass.SpatialRel = esriSpatialRelEnum.esriSpatialRelIntersects;
@@ -533,7 +535,7 @@ namespace Yutai.Plugins.Identifer.Helpers
             }
             else
             {
-                ipoint0 = ((ITopologicalOperator)inPoint).Buffer(pDist);
+                ipoint0 = ((ITopologicalOperator) inPoint).Buffer(pDist);
                 selectionEnvironmentClass.PointSelectionMethod = esriSpatialRelEnum.esriSpatialRelContains;
             }
             selectionEnvironmentClass.CombinationMethod = esriSelectionResultEnum.esriSelectionResultNew;
@@ -546,7 +548,7 @@ namespace Yutai.Plugins.Identifer.Helpers
                 COMException cOMException = cOMException1;
                 if (cOMException.ErrorCode != -2147467259)
                 {
-                   // CErrorLog.writeErrorLog(this, cOMException, "");
+                    // CErrorLog.writeErrorLog(this, cOMException, "");
                 }
                 else
                 {
@@ -557,10 +559,10 @@ namespace Yutai.Plugins.Identifer.Helpers
             {
                 //CErrorLog.writeErrorLog(this, exception, "");
             }
-            return (IEnumFeature)imap_0.FeatureSelection;
+            return (IEnumFeature) imap_0.FeatureSelection;
         }
 
-        public  static IEnumFeature SelectByPolygon(IMap pMap, IPolygon pPolygon, esriSpatialRelEnum pSpatialRelEnum)
+        public static IEnumFeature SelectByPolygon(IMap pMap, IPolygon pPolygon, esriSpatialRelEnum pSpatialRelEnum)
         {
             ISelectionEnvironment selectionEnvironmentClass = new SelectionEnvironmentClass()
             {
@@ -589,7 +591,7 @@ namespace Yutai.Plugins.Identifer.Helpers
             {
                 //Logger.Current.Error("",exception, "");
             }
-            return (IEnumFeature)pMap.FeatureSelection;
+            return (IEnumFeature) pMap.FeatureSelection;
         }
     }
 }

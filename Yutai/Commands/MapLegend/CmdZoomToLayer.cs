@@ -20,9 +20,8 @@ namespace Yutai.Commands.MapLegend
 {
     public class CmdZoomToLayer : YutaiCommand
     {
-       
         private IMapLegendView _view;
-       
+
 
         public CmdZoomToLayer(IAppContext context, IMapLegendView view)
         {
@@ -43,6 +42,7 @@ namespace Yutai.Commands.MapLegend
             base.m_enabled = true;
             base._itemType = RibbonItemType.Button;
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
@@ -57,7 +57,7 @@ namespace Yutai.Commands.MapLegend
         {
             if (_view.SelectedItemType == esriTOCControlItem.esriTOCControlItemLayer && _view.SelectedLayer != null)
             {
-                IActiveView pActiveView = _view.SelectedMap as IActiveView;
+                IActiveView pActiveView = _context.FocusMap as IActiveView;
                 if (pActiveView != null)
                 {
                     pActiveView.Extent = _view.SelectedLayer.AreaOfInterest;
@@ -65,6 +65,5 @@ namespace Yutai.Commands.MapLegend
                 }
             }
         }
-
     }
 }

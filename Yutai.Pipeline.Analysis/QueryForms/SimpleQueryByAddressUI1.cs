@@ -1,9 +1,7 @@
-﻿
-using ESRI.ArcGIS.Carto;
+﻿using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
-
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,12 +27,10 @@ namespace Yutai.Pipeline.Analysis.QueryForms
         }
 
         private PipelineAnalysisPlugin _plugin;
+
         public PipelineAnalysisPlugin Plugin
         {
-            set
-            {
-                _plugin = value;
-            }
+            set { _plugin = value; }
         }
 
         public IGeometry m_ipGeo;
@@ -56,17 +52,17 @@ namespace Yutai.Pipeline.Analysis.QueryForms
         {
             if (ipLay is IFeatureLayer)
             {
-                this.AddFeatureLayer((IFeatureLayer)ipLay);
+                this.AddFeatureLayer((IFeatureLayer) ipLay);
             }
             else if (ipLay is IGroupLayer)
             {
-                this.AddGroupLayer((IGroupLayer)ipLay);
+                this.AddGroupLayer((IGroupLayer) ipLay);
             }
         }
 
         private void AddGroupLayer(IGroupLayer iGLayer)
         {
-            ICompositeLayer compositeLayer = (ICompositeLayer)iGLayer;
+            ICompositeLayer compositeLayer = (ICompositeLayer) iGLayer;
             if (compositeLayer != null)
             {
                 int count = compositeLayer.Count;
@@ -135,7 +131,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 }
                 else
                 {
-                    this.SelectLayer = ((SimpleQueryByAddressUI1.LayerboxItem)this.LayerBox.SelectedItem).m_pPipeLayer;
+                    this.SelectLayer = ((SimpleQueryByAddressUI1.LayerboxItem) this.LayerBox.SelectedItem).m_pPipeLayer;
                     if (this.SelectLayer == null)
                     {
                         result = false;
@@ -146,16 +142,19 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                         IBasicLayerInfo layerInfo = pPipeCfg.GetBasicLayerInfo(this.SelectLayer.FeatureClass);
                         if (this.radioButton1.Checked)
                         {
-
-                            this.FieldBox.Text = layerInfo.GetFieldName(PipeConfigWordHelper.PointWords.SZDL);// this.pPipeCfg.GetPointTableFieldName("所在道路");
-                            this.FindField = layerInfo.GetFieldName(PipeConfigWordHelper.PointWords.TZW);// this.pPipeCfg.GetPointTableFieldName("点性");
+                            this.FieldBox.Text = layerInfo.GetFieldName(PipeConfigWordHelper.PointWords.SZDL);
+                                // this.pPipeCfg.GetPointTableFieldName("所在道路");
+                            this.FindField = layerInfo.GetFieldName(PipeConfigWordHelper.PointWords.TZW);
+                                // this.pPipeCfg.GetPointTableFieldName("点性");
                         }
                         else
                         {
-
-                            this.FieldBox.Text = layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.SZDL);// this.pPipeCfg.GetLineTableFieldName("所在道路");
-                            this.FindField = layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.GJ);// this.pPipeCfg.GetLineTableFieldName("管径");
-                            this.FindField1 = layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.DMCC);// this.pPipeCfg.GetLineTableFieldName("断面尺寸");
+                            this.FieldBox.Text = layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.SZDL);
+                                // this.pPipeCfg.GetLineTableFieldName("所在道路");
+                            this.FindField = layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.GJ);
+                                // this.pPipeCfg.GetLineTableFieldName("管径");
+                            this.FindField1 = layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.DMCC);
+                                // this.pPipeCfg.GetLineTableFieldName("断面尺寸");
                         }
                         if (this.myfields.FindField(this.FindField) < 0 && this.myfields.FindField(this.FindField1) < 0)
                         {
@@ -186,7 +185,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             }
             return result;
         }
-        
+
         public void AutoFlash()
         {
             this.FillLayerBox();
@@ -253,7 +252,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
         {
             if (this.SelectLayer != null)
             {
-                IFeatureSelection featureSelection = (IFeatureSelection)this.SelectLayer;
+                IFeatureSelection featureSelection = (IFeatureSelection) this.SelectLayer;
                 featureSelection.Clear();
                 featureSelection.SelectionSet.Refresh();
                 IActiveView activeView = m_context.ActiveView;
@@ -284,7 +283,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 else
                 {
                     IDataset dataset = this.SelectLayer.FeatureClass as IDataset;
-                    if (dataset != null && dataset.Workspace.Type == (esriWorkspaceType)2)
+                    if (dataset != null && dataset.Workspace.Type == (esriWorkspaceType) 2)
                     {
                         text = this.FieldBox.Text;
                         text += " LIKE '%";
@@ -369,17 +368,17 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                     MessageBox.Show(@"查询条件过于复杂,请减少条件项。" + ex.Message);
                 }
                 //修改为插件事件，因为结果显示窗体为插件拥有。
-                _plugin.FireQueryResultChanged(new QueryResultArgs(pCursor, (IFeatureSelection)this.SelectLayer));
+                _plugin.FireQueryResultChanged(new QueryResultArgs(pCursor, (IFeatureSelection) this.SelectLayer));
             }
         }
-        
+
         private void FillValueBox(string whereClause = "")
         {
             if (this.myfields != null)
             {
                 int num = -1;
                 IFeatureClass featureClass = this.SelectLayer.FeatureClass;
-                
+
                 this.ValueBox.Items.Clear();
                 int num2 = this.myfields.FindField(this.FindField);
                 if (!this.radioButton1.Checked)
@@ -389,11 +388,11 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 List<string> values = new List<string>();
                 if (num2 > 0)
                 {
-                    CommonHelper.GetUniqueValues((ITable)featureClass, this.FindField, values, whereClause);
+                    CommonHelper.GetUniqueValues((ITable) featureClass, this.FindField, values, whereClause);
                 }
                 if (num > 0)
                 {
-                    CommonHelper.GetUniqueValues((ITable)featureClass, this.FindField1, values, whereClause);
+                    CommonHelper.GetUniqueValues((ITable) featureClass, this.FindField1, values, whereClause);
                 }
                 this.ValueBox.Items.AddRange(values.ToArray());
             }
@@ -406,7 +405,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 IFeatureClass featureClass = this.SelectLayer.FeatureClass;
                 this.FieldValueBox.Items.Clear();
                 List<string> fieldValues = new List<string>();
-                CommonHelper.GetUniqueValues((ITable)featureClass, this.FieldBox.Text, fieldValues);
+                CommonHelper.GetUniqueValues((ITable) featureClass, this.FieldBox.Text, fieldValues);
                 this.FieldValueBox.Items.AddRange(fieldValues.ToArray());
                 if (this.FieldValueBox.Items.Count > 0)
                 {
@@ -435,7 +434,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             }
             FillValueBox(text);
         }
-        
+
         private void FillAllBut_Click(object sender, EventArgs e)
         {
             this.bUnWipe = true;

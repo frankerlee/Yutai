@@ -16,7 +16,7 @@ namespace Yutai.Shared
         /// Gets or sets a value indicating whether HEAD rather than GET request must be sent.
         /// </summary>
         public bool HeadOnly { get; set; }
-        
+
         /// <summary>
         /// Returns a <see cref="T:System.Net.WebRequest" /> object for the specified resource.
         /// </summary>

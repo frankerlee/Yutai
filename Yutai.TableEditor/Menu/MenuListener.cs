@@ -23,7 +23,9 @@ namespace Yutai.Plugins.TableEditor.Menu
     public class MenuListener : MenuServiceBase
     {
         private readonly TableEditorPresenter _presenter;
-        public MenuListener(IAppContext context, TableEditorPlugin plugin, TableEditorPresenter presenter) : base(context, plugin.Identity)
+
+        public MenuListener(IAppContext context, TableEditorPlugin plugin, TableEditorPresenter presenter)
+            : base(context, plugin.Identity)
         {
             if (context == null) throw new ArgumentNullException("context");
             if (presenter == null) throw new ArgumentNullException("presenter");
@@ -56,6 +58,5 @@ namespace Yutai.Plugins.TableEditor.Menu
             _presenter.OpenTable(layer);
             _context.DockPanels.ShowDockPanel(TableEditorDockPanel.DefaultDockName, true, true);
         }
-
     }
 }

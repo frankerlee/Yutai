@@ -13,11 +13,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         public IDockContent Content
         {
-            get
-            {
-                return this.m_content;
-            }
+            get { return this.m_content; }
         }
     }
 }
-

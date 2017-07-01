@@ -19,6 +19,7 @@ namespace Yutai.Plugins.TableEditor.Commands
     public class CmdInvertSelection : YutaiCommand
     {
         private ITableEditorView _view;
+
         public CmdInvertSelection(IAppContext context, ITableEditorView view)
         {
             _context = context;

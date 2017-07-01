@@ -19,11 +19,7 @@ namespace Yutai.ArcGIS.Catalog.VCT
 
         public List<CoPointCollection> Points
         {
-            get
-            {
-                return this.list_1;
-            }
+            get { return this.list_1; }
         }
     }
 }
-

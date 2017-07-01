@@ -7,7 +7,7 @@ namespace Yutai.Plugins.Locator
     {
         public static void Compose(IApplicationContainer container)
         {
-            container.RegisterService<ILocatorView,LocatorDockPanel>()
+            container.RegisterService<ILocatorView, LocatorDockPanel>()
                 .RegisterSingleton<LocatorPresenter>();
         }
     }

@@ -25,10 +25,10 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         private void ArrowMarkerControl_Load(object sender, EventArgs e)
         {
-            this.numericUpDownLength.Value = (decimal) (this.m_ArrowMarkerSymbol.Length * this.m_unit);
-            this.numericUpDownWidth.Value = (decimal) (this.m_ArrowMarkerSymbol.Width * this.m_unit);
-            this.numericUpDownXOffset.Value = (decimal) (this.m_ArrowMarkerSymbol.XOffset * this.m_unit);
-            this.numericUpDownYOffset.Value = (decimal) (this.m_ArrowMarkerSymbol.YOffset * this.m_unit);
+            this.numericUpDownLength.Value = (decimal) (this.m_ArrowMarkerSymbol.Length*this.m_unit);
+            this.numericUpDownWidth.Value = (decimal) (this.m_ArrowMarkerSymbol.Width*this.m_unit);
+            this.numericUpDownXOffset.Value = (decimal) (this.m_ArrowMarkerSymbol.XOffset*this.m_unit);
+            this.numericUpDownYOffset.Value = (decimal) (this.m_ArrowMarkerSymbol.YOffset*this.m_unit);
             this.numericUpDownAngle.Value = (decimal) this.m_ArrowMarkerSymbol.Angle;
             this.SetColorEdit(this.colorEdit1, this.m_ArrowMarkerSymbol.Color);
             this.m_CanDo = true;
@@ -37,10 +37,12 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         public void ChangeUnit(double newunit)
         {
             this.m_CanDo = false;
-            this.numericUpDownLength.Value = (decimal) ((((double) this.numericUpDownLength.Value) / this.m_unit) * newunit);
-            this.numericUpDownWidth.Value = (decimal) ((((double) this.numericUpDownWidth.Value) / this.m_unit) * newunit);
-            this.numericUpDownXOffset.Value = (decimal) ((((double) this.numericUpDownXOffset.Value) / this.m_unit) * newunit);
-            this.numericUpDownYOffset.Value = (decimal) ((((double) this.numericUpDownYOffset.Value) / this.m_unit) * newunit);
+            this.numericUpDownLength.Value = (decimal) ((((double) this.numericUpDownLength.Value)/this.m_unit)*newunit);
+            this.numericUpDownWidth.Value = (decimal) ((((double) this.numericUpDownWidth.Value)/this.m_unit)*newunit);
+            this.numericUpDownXOffset.Value =
+                (decimal) ((((double) this.numericUpDownXOffset.Value)/this.m_unit)*newunit);
+            this.numericUpDownYOffset.Value =
+                (decimal) ((((double) this.numericUpDownYOffset.Value)/this.m_unit)*newunit);
             this.m_unit = newunit;
             this.m_CanDo = true;
         }
@@ -56,7 +58,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- private void GetRGB(uint rgb, out int r, out int g, out int b)
+        private void GetRGB(uint rgb, out int r, out int g, out int b)
         {
             uint num = rgb & 16711680;
             b = (int) (num >> 16);
@@ -66,7 +68,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             r = (int) num;
         }
 
- public static bool IsNmuber(string str)
+        public static bool IsNmuber(string str)
         {
             if (str.Length > 0)
             {
@@ -178,7 +180,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     this.numericUpDownLength.ForeColor = SystemColors.WindowText;
-                    this.m_ArrowMarkerSymbol.Length = ((double) this.numericUpDownLength.Value) / this.m_unit;
+                    this.m_ArrowMarkerSymbol.Length = ((double) this.numericUpDownLength.Value)/this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -195,7 +197,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     this.numericUpDownWidth.ForeColor = SystemColors.WindowText;
-                    this.m_ArrowMarkerSymbol.Width = ((double) this.numericUpDownWidth.Value) / this.m_unit;
+                    this.m_ArrowMarkerSymbol.Width = ((double) this.numericUpDownWidth.Value)/this.m_unit;
                     this.refresh(e);
                     if (this.ValueChanged != null)
                     {
@@ -216,7 +218,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     this.numericUpDownXOffset.ForeColor = SystemColors.WindowText;
-                    this.m_ArrowMarkerSymbol.XOffset = ((double) this.numericUpDownXOffset.Value) / this.m_unit;
+                    this.m_ArrowMarkerSymbol.XOffset = ((double) this.numericUpDownXOffset.Value)/this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -233,7 +235,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     this.numericUpDownYOffset.ForeColor = SystemColors.WindowText;
-                    this.m_ArrowMarkerSymbol.YOffset = ((double) this.numericUpDownYOffset.Value) / this.m_unit;
+                    this.m_ArrowMarkerSymbol.YOffset = ((double) this.numericUpDownYOffset.Value)/this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -286,4 +288,3 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         }
     }
 }
-

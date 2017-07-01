@@ -26,10 +26,14 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             if (this.m_IsPageDirty)
             {
                 this.m_IsPageDirty = false;
-                this.m_pCornerGridLabel.set_CornerLabel(esriGridCornerEnum.esriGridCornerLowerLeft, this.chkLowerLeft.Checked);
-                this.m_pCornerGridLabel.set_CornerLabel(esriGridCornerEnum.esriGridCornerLowerRight, this.chkLowerRight.Checked);
-                this.m_pCornerGridLabel.set_CornerLabel(esriGridCornerEnum.esriGridCornerUpperLeft, this.chkUpperLeft.Checked);
-                this.m_pCornerGridLabel.set_CornerLabel(esriGridCornerEnum.esriGridCornerUpperRight, this.chkUpperRight.Checked);
+                this.m_pCornerGridLabel.set_CornerLabel(esriGridCornerEnum.esriGridCornerLowerLeft,
+                    this.chkLowerLeft.Checked);
+                this.m_pCornerGridLabel.set_CornerLabel(esriGridCornerEnum.esriGridCornerLowerRight,
+                    this.chkLowerRight.Checked);
+                this.m_pCornerGridLabel.set_CornerLabel(esriGridCornerEnum.esriGridCornerUpperLeft,
+                    this.chkUpperLeft.Checked);
+                this.m_pCornerGridLabel.set_CornerLabel(esriGridCornerEnum.esriGridCornerUpperRight,
+                    this.chkUpperRight.Checked);
             }
         }
 
@@ -87,56 +91,45 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         private void CornerGridLabelPropertyPage_Load(object sender, EventArgs e)
         {
-            this.chkLowerLeft.Checked = this.m_pCornerGridLabel.get_CornerLabel(esriGridCornerEnum.esriGridCornerLowerLeft);
-            this.chkLowerRight.Checked = this.m_pCornerGridLabel.get_CornerLabel(esriGridCornerEnum.esriGridCornerLowerRight);
-            this.chkUpperLeft.Checked = this.m_pCornerGridLabel.get_CornerLabel(esriGridCornerEnum.esriGridCornerUpperLeft);
-            this.chkUpperRight.Checked = this.m_pCornerGridLabel.get_CornerLabel(esriGridCornerEnum.esriGridCornerUpperRight);
+            this.chkLowerLeft.Checked =
+                this.m_pCornerGridLabel.get_CornerLabel(esriGridCornerEnum.esriGridCornerLowerLeft);
+            this.chkLowerRight.Checked =
+                this.m_pCornerGridLabel.get_CornerLabel(esriGridCornerEnum.esriGridCornerLowerRight);
+            this.chkUpperLeft.Checked =
+                this.m_pCornerGridLabel.get_CornerLabel(esriGridCornerEnum.esriGridCornerUpperLeft);
+            this.chkUpperRight.Checked =
+                this.m_pCornerGridLabel.get_CornerLabel(esriGridCornerEnum.esriGridCornerUpperRight);
             this.m_CanDo = true;
         }
 
- public void Hide()
+        public void Hide()
         {
         }
 
- public void SetObjects(object @object)
+        public void SetObjects(object @object)
         {
             this.m_pCornerGridLabel = @object as ICornerGridLabel;
         }
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.m_IsPageDirty;
-            }
+            get { return this.m_IsPageDirty; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.m_Title;
-            }
-            set
-            {
-            }
+            get { return this.m_Title; }
+            set { }
         }
     }
 }
-

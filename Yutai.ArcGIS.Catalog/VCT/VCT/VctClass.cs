@@ -51,7 +51,8 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
             {
                 if (File.Exists(this.string_1))
                 {
-                    FileInfo info = new FileInfo(this.string_1) {
+                    FileInfo info = new FileInfo(this.string_1)
+                    {
                         Attributes = FileAttributes.Normal
                     };
                     File.Delete(this.string_1);
@@ -72,7 +73,7 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                 ICoLayer layer;
                 bool flag = false;
                 this.method_0(reader, "HEADBEGIN");
-            Label_0149:
+                Label_0149:
                 if (reader.EndOfStream)
                 {
                     goto Label_04CF;
@@ -86,7 +87,7 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                 {
                     goto Label_04CD;
                 }
-                string[] strArray = str.Split(new char[] { ':' });
+                string[] strArray = str.Split(new char[] {':'});
                 if (strArray.Length == 2)
                 {
                     str2 = strArray[1].Trim();
@@ -165,7 +166,7 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                     }
                 }
                 goto Label_0149;
-            Label_0474:
+                Label_0474:
                 time = DateTime.Now;
                 try
                 {
@@ -175,7 +176,7 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                 {
                 }
                 goto Label_04BB;
-            Label_0489:
+                Label_0489:
                 if (str2.Length == 1)
                 {
                     this.char_0 = str2[0];
@@ -185,12 +186,12 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                     this.WriteLog("Separator字符不正确，将采用默认字符“,”。");
                 }
                 goto Label_0149;
-            Label_04BB:
+                Label_04BB:
                 this.coLayerHead_0.Date = time;
                 goto Label_0149;
-            Label_04CD:
+                Label_04CD:
                 flag = true;
-            Label_04CF:
+                Label_04CF:
                 if (!flag)
                 {
                     this.WriteLog(string.Format(this.string_2, "HEADBEGIN", "HEADEND"));
@@ -208,14 +209,15 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                     {
                         goto Label_07AF;
                     }
-                    strArray = str.Split(new char[] { this.Separator });
+                    strArray = str.Split(new char[] {this.Separator});
                     layer = null;
                     if (strArray.Length < 3)
                     {
                         goto Label_0714;
                     }
                     layer = new CoLayerClass();
-                    List<string> list = new List<string> {
+                    List<string> list = new List<string>
+                    {
                         strArray[0].Trim()
                     };
                     layer.Tag = list;
@@ -255,7 +257,7 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                     }
                     layer.LayerType = CoLayerType.Region;
                     this.WriteLog(string.Format("行\"{0}\"不能获取图层类型，将采用多边形为默认类型", str));
-                Label_065B:
+                    Label_065B:
                     if (this.coLayerHead_0.Version.Length > 0)
                     {
                         if ((this.coLayerHead_0.Version.Substring(0, 1) == "2") && (strArray.Length >= 7))
@@ -276,9 +278,9 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                         this.WriteLog("没有版本信息。");
                     }
                     goto Label_072B;
-                Label_0714:
+                    Label_0714:
                     this.WriteLog("行\"" + str + "\"不能获取图层的信息");
-                Label_072B:
+                    Label_072B:
                     if (layer != null)
                     {
                         layer.Parameter = this.coLayerHead_0;
@@ -298,9 +300,9 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                     }
                 }
                 goto Label_07B1;
-            Label_07AF:
+                Label_07AF:
                 flag = true;
-            Label_07B1:
+                Label_07B1:
                 if (!flag)
                 {
                     this.WriteLog(string.Format(this.string_2, "FEATURECODEBEGIN", "FEATURECODEEND"));
@@ -318,7 +320,7 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                     {
                         goto Label_0BDA;
                     }
-                    strArray = str.Split(new char[] { this.Separator });
+                    strArray = str.Split(new char[] {this.Separator});
                     if (strArray.Length == 2)
                     {
                         string str4 = strArray[0].Trim();
@@ -334,7 +336,7 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                             {
                                 str5 = reader.ReadLine();
                             }
-                            string[] strArray2 = str5.Split(new char[] { this.Separator });
+                            string[] strArray2 = str5.Split(new char[] {this.Separator});
                             if (strArray2.Length < 2)
                             {
                                 goto Label_0B8D;
@@ -400,10 +402,10 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                             item.Length = 20;
                             this.WriteLog("行\"" + str5 + "\"不能获取字符长度，将采用20作为默认长度");
                             goto Label_0BA4;
-                        Label_0AD2:
+                            Label_0AD2:
                             item.Length = num7;
                             goto Label_0BA4;
-                        Label_0AE0:
+                            Label_0AE0:
                             if (strArray2.Length >= 3)
                             {
                                 num7 = 0;
@@ -414,7 +416,7 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                                 }
                                 else
                                 {
-                                    item.Precision= num7;
+                                    item.Precision = num7;
                                 }
                             }
                             else
@@ -424,9 +426,9 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                                 this.WriteLog("行\"" + str5 + "\"不能获取浮点数长度和精度，将采用8位小数位。");
                             }
                             goto Label_0BA4;
-                        Label_0B8D:
+                            Label_0B8D:
                             this.WriteLog("行\"" + str5 + "\"不能获取字段信息");
-                        Label_0BA4:
+                            Label_0BA4:
                             if (layer != null)
                             {
                                 layer.Fields.Add(item);
@@ -435,9 +437,9 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                     }
                 }
                 goto Label_0BDC;
-            Label_0BDA:
+                Label_0BDA:
                 flag = true;
-            Label_0BDC:
+                Label_0BDC:
                 if (!flag)
                 {
                     this.WriteLog(string.Format(this.string_2, "TABLESTRUCTUREBEGIN", "TABLESTRUCTUREEND"));
@@ -498,9 +500,9 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                     this.method_1(ref reader);
                 }
                 goto Label_01A2;
-            Label_019F:
+                Label_019F:
                 flag = true;
-            Label_01A2:
+                Label_01A2:
                 if (!flag)
                 {
                     this.WriteLog(string.Format(this.string_2, "POINTBEGIN", "POINTEND"));
@@ -508,7 +510,7 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                 flag = false;
                 str = string.Empty;
                 this.method_0(reader, "LINEBEGIN");
-            Label_01D7:
+                Label_01D7:
                 if (!reader.EndOfStream)
                 {
                     str2 = this.method_1(ref reader);
@@ -595,8 +597,8 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
 
                         case 1:
                         {
-                            int num6 = num3 / 8;
-                            if ((num3 % 8) > 0)
+                            int num6 = num3/8;
+                            if ((num3%8) > 0)
                             {
                                 num6++;
                             }
@@ -613,7 +615,7 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                             continue;
                         }
                     }
-                Label_045E:
+                    Label_045E:
                     num4 = 0;
                     while (num4 < num3)
                     {
@@ -621,16 +623,16 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                         num4++;
                     }
                     int.TryParse(this.method_1(ref reader).Trim(), out num3);
-                Label_048F:
+                    Label_048F:
                     if (num3 != 0)
                     {
                         goto Label_045E;
                     }
                 }
                 goto Label_04E2;
-            Label_04DF:
+                Label_04DF:
                 flag = true;
-            Label_04E2:
+                Label_04E2:
                 if (!flag)
                 {
                     this.WriteLog(string.Format(this.string_2, "POLYGONBEGIN", "POLYGONEND"));
@@ -670,9 +672,9 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                     this.method_1(ref reader);
                 }
                 goto Label_0624;
-            Label_0621:
+                Label_0621:
                 flag = true;
-            Label_0624:
+                Label_0624:
                 if (!flag)
                 {
                     this.WriteLog(string.Format(this.string_2, "ANNOTATIONBEGIN", "ANNOTATIONEND"));
@@ -696,7 +698,9 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                         this.arrayList_1[num2] = this.long_0;
                     }
                     int num7 = 0;
-                    for (string str7 = this.method_1(ref reader); str7.Trim().ToUpper() != "TABLEEND"; str7 = this.method_1(ref reader))
+                    for (string str7 = this.method_1(ref reader);
+                        str7.Trim().ToUpper() != "TABLEEND";
+                        str7 = this.method_1(ref reader))
                     {
                         if (str7.Trim().Length > 0)
                         {
@@ -709,9 +713,9 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
                     }
                 }
                 goto Label_0742;
-            Label_073F:
+                Label_073F:
                 flag = true;
-            Label_0742:
+                Label_0742:
                 if (!flag)
                 {
                     this.WriteLog(string.Format(this.string_2, "ATTRIBUTEBEGIN", "ATTRIBUTEEND"));
@@ -731,13 +735,13 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
             FileStream stream = new FileStream(this.dataFile.fileName, FileMode.Open, FileAccess.Read);
             BufferedStream stream2 = new BufferedStream(stream, FileConfig.STREAM_BUFFER_SIZE);
             StreamReader reader = null;
-            int num = ((int) long_1) / FileConfig.MAP_DISTANCE;
+            int num = ((int) long_1)/FileConfig.MAP_DISTANCE;
             long offset = long.Parse(this.dataFile.Map[num].ToString());
             stream2.Seek(offset, SeekOrigin.Begin);
             bool flag = true;
             reader = new StreamReader(stream2, Encoding.Default);
             reader.DiscardBufferedData();
-            for (int i = 1; i <= (long_1 - (num * FileConfig.MAP_DISTANCE)); i++)
+            for (int i = 1; i <= (long_1 - (num*FileConfig.MAP_DISTANCE)); i++)
             {
                 string str = reader.ReadLine();
                 offset += this.method_3(str) + 2;
@@ -860,7 +864,7 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
 
         internal Color LineToColor(string string_5)
         {
-            string[] strArray = string_5.Split(new char[] { this.Separator });
+            string[] strArray = string_5.Split(new char[] {this.Separator});
             if (strArray.Length > 2)
             {
                 int result = 0;
@@ -888,7 +892,7 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
             {
                 return class2;
             }
-            string[] strArray = string_5.Split(new char[] { this.Separator });
+            string[] strArray = string_5.Split(new char[] {this.Separator});
             if (strArray.Length > 1)
             {
                 double result = 0.0;
@@ -927,7 +931,7 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
             {
                 string str = streamReader_0.ReadLine();
                 this.dataFile.Position += this.method_3(str) + 2;
-                if ((this.long_0 % ((long) FileConfig.MAP_DISTANCE)) == 0L)
+                if ((this.long_0%((long) FileConfig.MAP_DISTANCE)) == 0L)
                 {
                     this.dataFile.Map.Add(this.dataFile.Position);
                 }
@@ -985,43 +989,27 @@ namespace Yutai.ArcGIS.Catalog.VCT.VCT
 
         public string FileName
         {
-            get
-            {
-                return this.string_0;
-            }
+            get { return this.string_0; }
         }
 
         internal CoLayerHead Head
         {
-            get
-            {
-                return this.coLayerHead_0;
-            }
+            get { return this.coLayerHead_0; }
         }
 
         public ICoLayer[] Layers
         {
-            get
-            {
-                return this.list_0.ToArray();
-            }
+            get { return this.list_0.ToArray(); }
         }
 
         public string LogFileName
         {
-            get
-            {
-                return this.string_1;
-            }
+            get { return this.string_1; }
         }
 
         internal char Separator
         {
-            get
-            {
-                return this.char_0;
-            }
+            get { return this.char_0; }
         }
     }
 }
-

@@ -80,7 +80,8 @@ namespace Yutai.ArcGIS.Controls.ControlExtend
                         this.sImageList.ImageSize = new Size(size, size);
                     }
                 }
-                ListViewItemEx ex = new ListViewItemEx(s) {
+                ListViewItemEx ex = new ListViewItemEx(s)
+                {
                     Style = obj2
                 };
                 base.Items.Add(ex);
@@ -89,7 +90,8 @@ namespace Yutai.ArcGIS.Controls.ControlExtend
 
         public void Add(IStyleGalleryItem si)
         {
-            ListViewItemEx ex = new ListViewItemEx(new string[] { si.Name, si.Category }) {
+            ListViewItemEx ex = new ListViewItemEx(new string[] {si.Name, si.Category})
+            {
                 Tag = si
             };
             base.Items.Add(ex);
@@ -130,7 +132,7 @@ namespace Yutai.ArcGIS.Controls.ControlExtend
             base.Items.Add(item);
         }
 
- private void DrawSymbol(IFillSymbol pSymbol, Rectangle rect)
+        private void DrawSymbol(IFillSymbol pSymbol, Rectangle rect)
         {
             object before = Missing.Value;
             IPoint inPoint = new PointClass();
@@ -183,27 +185,29 @@ namespace Yutai.ArcGIS.Controls.ControlExtend
             object before = Missing.Value;
             IPointCollection points = new PolylineClass();
             IPoint inPoint = new PointClass();
-            inPoint.PutCoords((double) (rect.Left + 3), (double) ((rect.Bottom + rect.Top) / 2));
+            inPoint.PutCoords((double) (rect.Left + 3), (double) ((rect.Bottom + rect.Top)/2));
             points.AddPoint(inPoint, ref before, ref before);
-            inPoint.PutCoords((double) (rect.Right - 3), (double) ((rect.Bottom + rect.Top) / 2));
+            inPoint.PutCoords((double) (rect.Right - 3), (double) ((rect.Bottom + rect.Top)/2));
             points.AddPoint(inPoint, ref before, ref before);
             ((ISymbol) pSymbol).Draw((IGeometry) points);
         }
 
         private void DrawSymbol(IMarkerSymbol pSymbol, Rectangle rect)
         {
-            IPoint geometry = new PointClass {
-                X = (rect.Left + rect.Right) / 2,
-                Y = (rect.Bottom + rect.Top) / 2
+            IPoint geometry = new PointClass
+            {
+                X = (rect.Left + rect.Right)/2,
+                Y = (rect.Bottom + rect.Top)/2
             };
             ((ISymbol) pSymbol).Draw(geometry);
         }
 
         private void DrawSymbol(ITextSymbol pSymbol, Rectangle rect)
         {
-            IPoint geometry = new PointClass {
-                X = (rect.Left + rect.Right) / 2,
-                Y = (rect.Bottom + rect.Top) / 2
+            IPoint geometry = new PointClass
+            {
+                X = (rect.Left + rect.Right)/2,
+                Y = (rect.Bottom + rect.Top)/2
             };
             ISimpleTextSymbol symbol = (ISimpleTextSymbol) pSymbol;
             string text = symbol.Text;
@@ -241,7 +245,7 @@ namespace Yutai.ArcGIS.Controls.ControlExtend
             pSymbol.Draw(geometry);
         }
 
-        protected  void DrawSymbol(int hdc, Rectangle rect, object symbol)
+        protected void DrawSymbol(int hdc, Rectangle rect, object symbol)
         {
             IDisplayTransformation transformation;
             ISymbol symbol2;
@@ -282,7 +286,8 @@ namespace Yutai.ArcGIS.Controls.ControlExtend
                 }
                 if (symbol is IColor)
                 {
-                    IColorSymbol symbol5 = new ColorSymbolClass {
+                    IColorSymbol symbol5 = new ColorSymbolClass
+                    {
                         Color = (IColor) symbol
                     };
                     symbol2 = (ISymbol) symbol5;
@@ -291,7 +296,8 @@ namespace Yutai.ArcGIS.Controls.ControlExtend
                 if (symbol is IAreaPatch)
                 {
                     symbol2 = new SimpleFillSymbolClass();
-                    IRgbColor color = new RgbColorClass {
+                    IRgbColor color = new RgbColorClass
+                    {
                         Red = 227,
                         Green = 236,
                         Blue = 19
@@ -320,7 +326,8 @@ namespace Yutai.ArcGIS.Controls.ControlExtend
                     display.StartDrawing(hdc, 0);
                     display.DisplayTransformation = transformation;
                     IEnvelope newBounds = new EnvelopeClass();
-                    newBounds.PutCoords((double) (rect.Left + 5), (double) (rect.Top + 5), (double) (rect.Right - 5), (double) (rect.Bottom - 5));
+                    newBounds.PutCoords((double) (rect.Left + 5), (double) (rect.Top + 5), (double) (rect.Right - 5),
+                        (double) (rect.Bottom - 5));
                     ((IMapSurround) symbol).QueryBounds(display, bounds, newBounds);
                     ((IMapSurround) symbol).FitToBounds(display, newBounds, out flag);
                     ((IMapSurround) symbol).Draw(display, null, newBounds);
@@ -375,7 +382,7 @@ namespace Yutai.ArcGIS.Controls.ControlExtend
                 }
             }
             return;
-        Label_0532:
+            Label_0532:
             if ((symbol2 is IPictureFillSymbol) || (symbol2 is IPictureLineSymbol))
             {
                 symbol2.SetupDC(hdc, null);
@@ -407,7 +414,7 @@ namespace Yutai.ArcGIS.Controls.ControlExtend
             symbol2.ResetDC();
         }
 
- protected override void OnPaint(PaintEventArgs e)
+        protected override void OnPaint(PaintEventArgs e)
         {
             Rectangle bounds;
             int num;
@@ -418,7 +425,8 @@ namespace Yutai.ArcGIS.Controls.ControlExtend
             SolidBrush brush;
             SolidBrush brush2;
             base.OnPaint(e);
-            StringFormat format = new StringFormat {
+            StringFormat format = new StringFormat
+            {
                 LineAlignment = StringAlignment.Center
             };
             if (base.View == View.Details)
@@ -450,7 +458,8 @@ namespace Yutai.ArcGIS.Controls.ControlExtend
                             }
                             else if ((base.Items[num] as ListViewItemEx).Style is IStyleGalleryItem)
                             {
-                                this.DrawSymbol(hdc.ToInt32(), bounds, ((base.Items[num] as ListViewItemEx).Style as IStyleGalleryItem).Item);
+                                this.DrawSymbol(hdc.ToInt32(), bounds,
+                                    ((base.Items[num] as ListViewItemEx).Style as IStyleGalleryItem).Item);
                             }
                             graphics.ReleaseHdc(hdc);
                         }
@@ -487,12 +496,14 @@ namespace Yutai.ArcGIS.Controls.ControlExtend
                                 if ((i != 0) || (base.Items[num].SubItems[i].Text.Length != 0))
                                 {
                                     e.Graphics.FillRectangle(brush, ef);
-                                    e.Graphics.DrawString(base.Items[num].SubItems[i].Text, this.Font, brush2, ef, format);
+                                    e.Graphics.DrawString(base.Items[num].SubItems[i].Text, this.Font, brush2, ef,
+                                        format);
                                 }
                             }
                             else
                             {
-                                e.Graphics.DrawString(base.Items[num].SubItems[i].Text, this.Font, Brushes.Black, ef, format);
+                                e.Graphics.DrawString(base.Items[num].SubItems[i].Text, this.Font, Brushes.Black, ef,
+                                    format);
                             }
                         }
                         brush.Dispose();
@@ -517,7 +528,8 @@ namespace Yutai.ArcGIS.Controls.ControlExtend
                             }
                             else if ((base.Items[num] as ListViewItemEx).Style is IStyleGalleryItem)
                             {
-                                this.DrawSymbol(hdc.ToInt32(), bounds, ((base.Items[num] as ListViewItemEx).Style as IStyleGalleryItem).Item);
+                                this.DrawSymbol(hdc.ToInt32(), bounds,
+                                    ((base.Items[num] as ListViewItemEx).Style as IStyleGalleryItem).Item);
                             }
                             graphics.ReleaseHdc(hdc);
                         }
@@ -534,7 +546,8 @@ namespace Yutai.ArcGIS.Controls.ControlExtend
                         if (base.Items[num].SubItems.Count > 1)
                         {
                             rectangle2 = base.Items[num].GetBounds(ItemBoundsPortion.Label);
-                            ef = new RectangleF((float) rectangle2.X, (float) rectangle2.Y, (float) rectangle2.Width, (float) rectangle2.Height);
+                            ef = new RectangleF((float) rectangle2.X, (float) rectangle2.Y, (float) rectangle2.Width,
+                                (float) rectangle2.Height);
                             e.Graphics.FillRectangle(brush, ef);
                             e.Graphics.DrawString(base.Items[num].SubItems[1].Text, this.Font, brush2, ef);
                         }
@@ -566,7 +579,8 @@ namespace Yutai.ArcGIS.Controls.ControlExtend
                 }
                 if (index != 0)
                 {
-                    if (((base.SelectedItems.Count == 1) && (this.ColumnEditables != null)) && this.ColumnEditables[index])
+                    if (((base.SelectedItems.Count == 1) && (this.ColumnEditables != null)) &&
+                        this.ColumnEditables[index])
                     {
                         this.m_EditColumIndex = index;
                         this.m_preListViewItem = base.SelectedItems[0];
@@ -695,7 +709,8 @@ namespace Yutai.ArcGIS.Controls.ControlExtend
             }
             else
             {
-                if (((this.m_preListViewItem != null) && (this.m_EditColumIndex != -1)) && (this.m_preListViewItem.SubItems[this.m_EditColumIndex].Text != this.textBox.Text))
+                if (((this.m_preListViewItem != null) && (this.m_EditColumIndex != -1)) &&
+                    (this.m_preListViewItem.SubItems[this.m_EditColumIndex].Text != this.textBox.Text))
                 {
                     this.m_preListViewItem.SubItems[this.m_EditColumIndex].Text = this.textBox.Text;
                     if (this.OnValueChanged != null)
@@ -710,13 +725,9 @@ namespace Yutai.ArcGIS.Controls.ControlExtend
 
         public IStyleGallery StyleGallery
         {
-            set
-            {
-                this.m_pSG = value;
-            }
+            set { this.m_pSG = value; }
         }
 
         public delegate void OnValueChangedHandler(int nIndex, object newValue);
     }
 }
-

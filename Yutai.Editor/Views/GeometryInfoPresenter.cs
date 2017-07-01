@@ -26,11 +26,19 @@ namespace Yutai.Plugins.Editor.Views
             //View.Panels.BeforePanelClosed += (s, e) => View.BeforeClose();
         }
 
-        public IWorkspace EditWorkspace { set { ((IGeometryInfoView) View).EditWorkspace = value; } }
-        public IMap FocusMap { set { View.FocusMap = value; } }
+        public IWorkspace EditWorkspace
+        {
+            set { ((IGeometryInfoView) View).EditWorkspace = value; }
+        }
+
+        public IMap FocusMap
+        {
+            set { View.FocusMap = value; }
+        }
+
         private void EditorEvent_OnStopEditing()
         {
-            _context.DockPanels.ShowDockPanel(((IDockPanelView)View).DockName, false, false);
+            _context.DockPanels.ShowDockPanel(((IDockPanelView) View).DockName, false, false);
         }
 
         #endregion

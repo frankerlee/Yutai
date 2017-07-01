@@ -10,7 +10,6 @@ namespace Yutai.Pipeline.Analysis.Commands
 {
     class CmdPreAlarmAnalysis : YutaiCommand
     {
-
         private PreAlarmDlg preAlarmDlg_0;
         private PipelineAnalysisPlugin _plugin;
 
@@ -23,11 +22,9 @@ namespace Yutai.Pipeline.Analysis.Commands
 
         public override void OnClick()
         {
-
-          
             if (this.preAlarmDlg_0 == null)
             {
-                this.preAlarmDlg_0 = new PreAlarmDlg(_context,_plugin.PipeConfig);
+                this.preAlarmDlg_0 = new PreAlarmDlg(_context, _plugin.PipeConfig);
                 this.preAlarmDlg_0.App = _context;
                 this.preAlarmDlg_0.pPipeCfg = _plugin.PipeConfig;
                 this.preAlarmDlg_0.Show();
@@ -36,8 +33,6 @@ namespace Yutai.Pipeline.Analysis.Commands
             {
                 this.preAlarmDlg_0.Visible = true;
             }
-
-
         }
 
 
@@ -62,9 +57,5 @@ namespace Yutai.Pipeline.Analysis.Commands
 
             CommonUtils.AppContext = _context;
         }
-
-
-    
-      
     }
 }

@@ -12,9 +12,11 @@ using Yutai.Plugins.TableEditor.Enums;
 namespace Yutai.Plugins.TableEditor.Editor
 {
     public delegate void TableEditEventHandler(object sender, TableType args);
+
     public partial class NavigationBar : UserControl
     {
         public event TableEditEventHandler SwitchTableEventHandler;
+
         public NavigationBar()
         {
             InitializeComponent();
@@ -89,6 +91,7 @@ namespace Yutai.Plugins.TableEditor.Editor
                 }
             }
         }
+
         public void MoveToFirst()
         {
             MoveTo(0);
@@ -111,7 +114,6 @@ namespace Yutai.Plugins.TableEditor.Editor
             if (this.View.CurrentRow == null)
                 return;
             MoveTo(this.View.CurrentRow.Index + 1);
-
         }
 
         public void MoveTo(int rowIndex)

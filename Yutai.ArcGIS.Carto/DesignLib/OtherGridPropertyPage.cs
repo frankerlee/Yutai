@@ -103,7 +103,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             }
         }
 
- private void OtherGridPropertyPage_Load(object sender, EventArgs e)
+        private void OtherGridPropertyPage_Load(object sender, EventArgs e)
         {
             this.btnStyle.Style = this.mapTemplate_0.GridSymbol;
             if (this.mapTemplate_0.GridSymbol is IMarkerSymbol)
@@ -163,50 +163,29 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public MapTemplate MapTemplate
         {
-            get
-            {
-                return this.mapTemplate_0;
-            }
-            set
-            {
-                this.mapTemplate_0 = value;
-            }
+            get { return this.mapTemplate_0; }
+            set { this.mapTemplate_0 = value; }
         }
 
         public string Title
         {
-            get
-            {
-                return "其他";
-            }
-            set
-            {
-            }
+            get { return "其他"; }
+            set { }
         }
     }
 }
-

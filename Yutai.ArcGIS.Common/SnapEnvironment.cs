@@ -14,7 +14,8 @@ namespace Yutai.ArcGIS.Common
 
         private double double_0 = 10.0;
 
-        private esriEngineSnapToleranceUnits esriEngineSnapToleranceUnits_0 = esriEngineSnapToleranceUnits.esriEngineSnapToleranceMapUnits;
+        private esriEngineSnapToleranceUnits esriEngineSnapToleranceUnits_0 =
+            esriEngineSnapToleranceUnits.esriEngineSnapToleranceMapUnits;
 
         private IAppContext _appContext = null;
 
@@ -22,14 +23,8 @@ namespace Yutai.ArcGIS.Common
 
         public double SnapTolerance
         {
-            get
-            {
-                return this.double_0;
-            }
-            set
-            {
-                this.double_0 = value;
-            }
+            get { return this.double_0; }
+            set { this.double_0 = value; }
         }
 
         public double MapUnitTolerance
@@ -41,7 +36,8 @@ namespace Yutai.ArcGIS.Common
                 {
                     if (this._appContext.MapControl.Map != null)
                     {
-                        if (this.esriEngineSnapToleranceUnits_0 == esriEngineSnapToleranceUnits.esriEngineSnapToleranceMapUnits)
+                        if (this.esriEngineSnapToleranceUnits_0 ==
+                            esriEngineSnapToleranceUnits.esriEngineSnapToleranceMapUnits)
                         {
                             result = this.double_0;
                         }
@@ -65,47 +61,29 @@ namespace Yutai.ArcGIS.Common
 
         public bool UseSnap
         {
-            get
-            {
-                return this.bool_0;
-            }
-            set
-            {
-                this.bool_0 = value;
-            }
+            get { return this.bool_0; }
+            set { this.bool_0 = value; }
         }
 
         public int SnapAgentCount
         {
-            get
-            {
-                return this.iarray_0.Count;
-            }
+            get { return this.iarray_0.Count; }
         }
 
         public IEngineSnapAgent get_SnapAgent(int index)
         {
-            return (IEngineSnapAgent)this.iarray_0.Element[index];
+            return (IEngineSnapAgent) this.iarray_0.Element[index];
         }
 
         public esriEngineSnapToleranceUnits SnapToleranceUnits
         {
-            get
-            {
-                return this.esriEngineSnapToleranceUnits_0;
-            }
-            set
-            {
-                this.esriEngineSnapToleranceUnits_0 = value;
-            }
+            get { return this.esriEngineSnapToleranceUnits_0; }
+            set { this.esriEngineSnapToleranceUnits_0 = value; }
         }
 
         public IEngineSnapAgent this[int int_0]
         {
-            get
-            {
-                return (IEngineSnapAgent)this.iarray_0.Element[int_0];
-            }
+            get { return (IEngineSnapAgent) this.iarray_0.Element[int_0]; }
         }
 
         public SnapEnvironment(IAppContext iapplication_1)
@@ -138,7 +116,8 @@ namespace Yutai.ArcGIS.Common
             else
             {
                 double num = this.double_0;
-                if (this._appContext != null && this.esriEngineSnapToleranceUnits_0 == esriEngineSnapToleranceUnits.esriEngineSnapTolerancePixels)
+                if (this._appContext != null &&
+                    this.esriEngineSnapToleranceUnits_0 == esriEngineSnapToleranceUnits.esriEngineSnapTolerancePixels)
                 {
                     num = this.method_0(this._appContext.MapControl.Map as IActiveView, this.double_0);
                     if (num == 0.0)
@@ -149,7 +128,7 @@ namespace Yutai.ArcGIS.Common
                 System.Collections.Hashtable hashtable = new System.Collections.Hashtable();
                 for (int i = 0; i < this.iarray_0.Count; i++)
                 {
-                    IEngineSnapAgent engineSnapAgent = (IEngineSnapAgent)this.iarray_0.get_Element(i);
+                    IEngineSnapAgent engineSnapAgent = (IEngineSnapAgent) this.iarray_0.get_Element(i);
                     IFeatureCache featureCache = null;
                     if (engineSnapAgent is IFeatureSnapAgent)
                     {
@@ -194,7 +173,8 @@ namespace Yutai.ArcGIS.Common
 
         private double method_0(IActiveView iactiveView_0, double double_1)
         {
-            int num = iactiveView_0.ScreenDisplay.DisplayTransformation.get_DeviceFrame().right - iactiveView_0.ScreenDisplay.DisplayTransformation.get_DeviceFrame().left;
+            int num = iactiveView_0.ScreenDisplay.DisplayTransformation.get_DeviceFrame().right -
+                      iactiveView_0.ScreenDisplay.DisplayTransformation.get_DeviceFrame().left;
             double result;
             if (num == 0)
             {
@@ -203,8 +183,8 @@ namespace Yutai.ArcGIS.Common
             else
             {
                 double width = iactiveView_0.ScreenDisplay.DisplayTransformation.VisibleBounds.Width;
-                double num2 = width / (double)num;
-                result = double_1 * num2;
+                double num2 = width/(double) num;
+                result = double_1*num2;
             }
             return result;
         }
@@ -219,7 +199,8 @@ namespace Yutai.ArcGIS.Common
             else
             {
                 double num = this.double_0;
-                if (this._appContext != null && this.esriEngineSnapToleranceUnits_0 == esriEngineSnapToleranceUnits.esriEngineSnapTolerancePixels)
+                if (this._appContext != null &&
+                    this.esriEngineSnapToleranceUnits_0 == esriEngineSnapToleranceUnits.esriEngineSnapTolerancePixels)
                 {
                     num = this.method_0(this._appContext.MapControl.Map as IActiveView, this.double_0);
                     if (num == 0.0)
@@ -230,7 +211,7 @@ namespace Yutai.ArcGIS.Common
                 System.Collections.Hashtable hashtable = new System.Collections.Hashtable();
                 for (int i = 0; i < this.iarray_0.Count; i++)
                 {
-                    IEngineSnapAgent engineSnapAgent = (IEngineSnapAgent)this.iarray_0.get_Element(i);
+                    IEngineSnapAgent engineSnapAgent = (IEngineSnapAgent) this.iarray_0.get_Element(i);
                     IFeatureCache featureCache = null;
                     if (engineSnapAgent is IFeatureSnapAgent)
                     {

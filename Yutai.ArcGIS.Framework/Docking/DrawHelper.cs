@@ -58,18 +58,18 @@ namespace Yutai.ArcGIS.Framework.Docking
             int width = 6;
             if (upCorner)
             {
-                graphicsPath.AddLine(rect.Left, rect.Bottom, rect.Left, rect.Top + (width / 2));
+                graphicsPath.AddLine(rect.Left, rect.Bottom, rect.Left, rect.Top + (width/2));
                 graphicsPath.AddArc(new Rectangle(rect.Left, rect.Top, width, width), 180f, 90f);
-                graphicsPath.AddLine(rect.Left + (width / 2), rect.Top, rect.Right - (width / 2), rect.Top);
+                graphicsPath.AddLine(rect.Left + (width/2), rect.Top, rect.Right - (width/2), rect.Top);
                 graphicsPath.AddArc(new Rectangle(rect.Right - width, rect.Top, width, width), -90f, 90f);
-                graphicsPath.AddLine(rect.Right, rect.Top + (width / 2), rect.Right, rect.Bottom);
+                graphicsPath.AddLine(rect.Right, rect.Top + (width/2), rect.Right, rect.Bottom);
                 return graphicsPath;
             }
-            graphicsPath.AddLine(rect.Right, rect.Top, rect.Right, rect.Bottom - (width / 2));
+            graphicsPath.AddLine(rect.Right, rect.Top, rect.Right, rect.Bottom - (width/2));
             graphicsPath.AddArc(new Rectangle(rect.Right - width, rect.Bottom - width, width, width), 0f, 90f);
-            graphicsPath.AddLine(rect.Right - (width / 2), rect.Bottom, rect.Left + (width / 2), rect.Bottom);
+            graphicsPath.AddLine(rect.Right - (width/2), rect.Bottom, rect.Left + (width/2), rect.Bottom);
             graphicsPath.AddArc(new Rectangle(rect.Left, rect.Bottom - width, width, width), 90f, 90f);
-            graphicsPath.AddLine(rect.Left, rect.Bottom - (width / 2), rect.Left, rect.Top);
+            graphicsPath.AddLine(rect.Left, rect.Bottom - (width/2), rect.Left, rect.Top);
             return graphicsPath;
         }
 
@@ -88,8 +88,8 @@ namespace Yutai.ArcGIS.Framework.Docking
             {
                 return rectangle;
             }
-            return new Rectangle(control.ClientRectangle.Right - rectangle.Right, rectangle.Y, rectangle.Width, rectangle.Height);
+            return new Rectangle(control.ClientRectangle.Right - rectangle.Right, rectangle.Y, rectangle.Width,
+                rectangle.Height);
         }
     }
 }
-

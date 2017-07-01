@@ -12,4 +12,3 @@ namespace Yutai.ArcGIS.Catalog
         IGPToolInfo GPToolInfo { get; set; }
     }
 }
-

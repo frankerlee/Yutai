@@ -32,7 +32,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
                 string[] strArray2;
                 if (this.cbofromToEdgeWeight.SelectedIndex > 0)
                 {
-                    NetworkAnalyst.FromToEdgeFilterWeight = (this.cbofromToEdgeWeight.SelectedItem as WeightWrap).NetWeight;
+                    NetworkAnalyst.FromToEdgeFilterWeight =
+                        (this.cbofromToEdgeWeight.SelectedItem as WeightWrap).NetWeight;
                 }
                 else
                 {
@@ -40,7 +41,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
                 }
                 if (this.cboToFromEdgeWeight.SelectedIndex > 0)
                 {
-                    NetworkAnalyst.ToFromEdgeFilterWeight = (this.cboToFromEdgeWeight.SelectedItem as WeightWrap).NetWeight;
+                    NetworkAnalyst.ToFromEdgeFilterWeight =
+                        (this.cboToFromEdgeWeight.SelectedItem as WeightWrap).NetWeight;
                 }
                 else
                 {
@@ -66,14 +68,14 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
                 }
                 else
                 {
-                    strArray = this.txtJFWRange.Text.Trim().Split(new char[] { ',' });
+                    strArray = this.txtJFWRange.Text.Trim().Split(new char[] {','});
                     objArray = new object[strArray.Length];
                     objArray2 = new object[strArray.Length];
                     try
                     {
                         for (num2 = 0; num2 < strArray.Length; num2++)
                         {
-                            strArray2 = strArray[num2].Trim().Split(new char[] { '-' });
+                            strArray2 = strArray[num2].Trim().Split(new char[] {'-'});
                             if (strArray2.Length > 2)
                             {
                                 MessageBox.Show("权重域输入错误，请检查!");
@@ -123,14 +125,14 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
                 }
                 else
                 {
-                    strArray = this.txtEFWRange.Text.Trim().Split(new char[] { ',' });
+                    strArray = this.txtEFWRange.Text.Trim().Split(new char[] {','});
                     objArray = new object[strArray.Length];
                     objArray2 = new object[strArray.Length];
                     try
                     {
                         for (num2 = 0; num2 < strArray.Length; num2++)
                         {
-                            strArray2 = strArray[num2].Trim().Split(new char[] { '-' });
+                            strArray2 = strArray[num2].Trim().Split(new char[] {'-'});
                             if (strArray2.Length > 2)
                             {
                                 MessageBox.Show("权重域输入错误，请检查!");
@@ -231,7 +233,7 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             this.m_IsDirty = true;
         }
 
- private void Init()
+        private void Init()
         {
             IEnumNetWeightAssociation association;
             INetWeightAssociation association2;
@@ -248,7 +250,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             int num2 = 0;
             int num3 = 0;
             INetSchema network = NetworkAnalyst.m_pAnalystGN.Network as INetSchema;
-            IEnumFeatureClass class2 = NetworkAnalyst.m_pAnalystGN.get_ClassesByType(esriFeatureType.esriFTSimpleJunction);
+            IEnumFeatureClass class2 =
+                NetworkAnalyst.m_pAnalystGN.get_ClassesByType(esriFeatureType.esriFTSimpleJunction);
             class2.Reset();
             IFeatureClass class3 = class2.Next();
             IList list = new ArrayList();
@@ -263,7 +266,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
                     {
                         list.Add(association2.WeightID);
                         this.cboJunWeight.Properties.Items.Add(new WeightWrap(network.get_Weight(association2.WeightID)));
-                        if ((NetworkAnalyst.JunctionFilterWeight != null) && (association2.WeightID == NetworkAnalyst.JunctionFilterWeight.WeightID))
+                        if ((NetworkAnalyst.JunctionFilterWeight != null) &&
+                            (association2.WeightID == NetworkAnalyst.JunctionFilterWeight.WeightID))
                         {
                             num = this.cboJunWeight.Properties.Items.Count - 1;
                         }
@@ -285,7 +289,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
                     {
                         list.Add(association2.WeightID);
                         this.cboJunWeight.Properties.Items.Add(new WeightWrap(network.get_Weight(association2.WeightID)));
-                        if ((NetworkAnalyst.JunctionFilterWeight != null) && (association2.WeightID == NetworkAnalyst.JunctionFilterWeight.WeightID))
+                        if ((NetworkAnalyst.JunctionFilterWeight != null) &&
+                            (association2.WeightID == NetworkAnalyst.JunctionFilterWeight.WeightID))
                         {
                             num = this.cboJunWeight.Properties.Items.Count - 1;
                         }
@@ -307,13 +312,17 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
                     if (list.IndexOf(association2.WeightID) == -1)
                     {
                         list.Add(association2.WeightID);
-                        this.cbofromToEdgeWeight.Properties.Items.Add(new WeightWrap(network.get_Weight(association2.WeightID)));
-                        this.cboToFromEdgeWeight.Properties.Items.Add(new WeightWrap(network.get_Weight(association2.WeightID)));
-                        if ((NetworkAnalyst.FromToEdgeFilterWeight != null) && (association2.WeightID == NetworkAnalyst.FromToEdgeFilterWeight.WeightID))
+                        this.cbofromToEdgeWeight.Properties.Items.Add(
+                            new WeightWrap(network.get_Weight(association2.WeightID)));
+                        this.cboToFromEdgeWeight.Properties.Items.Add(
+                            new WeightWrap(network.get_Weight(association2.WeightID)));
+                        if ((NetworkAnalyst.FromToEdgeFilterWeight != null) &&
+                            (association2.WeightID == NetworkAnalyst.FromToEdgeFilterWeight.WeightID))
                         {
                             num2 = this.cbofromToEdgeWeight.Properties.Items.Count - 1;
                         }
-                        if ((NetworkAnalyst.ToFromEdgeFilterWeight != null) && (association2.WeightID == NetworkAnalyst.ToFromEdgeFilterWeight.WeightID))
+                        if ((NetworkAnalyst.ToFromEdgeFilterWeight != null) &&
+                            (association2.WeightID == NetworkAnalyst.ToFromEdgeFilterWeight.WeightID))
                         {
                             num3 = this.cboToFromEdgeWeight.Properties.Items.Count - 1;
                         }
@@ -333,13 +342,17 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
                     if (list.IndexOf(association2.WeightID) == -1)
                     {
                         list.Add(association2.WeightID);
-                        this.cbofromToEdgeWeight.Properties.Items.Add(new WeightWrap(network.get_Weight(association2.WeightID)));
-                        this.cboToFromEdgeWeight.Properties.Items.Add(new WeightWrap(network.get_Weight(association2.WeightID)));
-                        if ((NetworkAnalyst.FromToEdgeFilterWeight != null) && (association2.WeightID == NetworkAnalyst.FromToEdgeFilterWeight.WeightID))
+                        this.cbofromToEdgeWeight.Properties.Items.Add(
+                            new WeightWrap(network.get_Weight(association2.WeightID)));
+                        this.cboToFromEdgeWeight.Properties.Items.Add(
+                            new WeightWrap(network.get_Weight(association2.WeightID)));
+                        if ((NetworkAnalyst.FromToEdgeFilterWeight != null) &&
+                            (association2.WeightID == NetworkAnalyst.FromToEdgeFilterWeight.WeightID))
                         {
                             num2 = this.cbofromToEdgeWeight.Properties.Items.Count - 1;
                         }
-                        if ((NetworkAnalyst.ToFromEdgeFilterWeight != null) && (association2.WeightID == NetworkAnalyst.ToFromEdgeFilterWeight.WeightID))
+                        if ((NetworkAnalyst.ToFromEdgeFilterWeight != null) &&
+                            (association2.WeightID == NetworkAnalyst.ToFromEdgeFilterWeight.WeightID))
                         {
                             num3 = this.cboToFromEdgeWeight.Properties.Items.Count - 1;
                         }
@@ -369,7 +382,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
                 }
                 else
                 {
-                    str = NetworkAnalyst.JuncfromValues[0].ToString() + " - " + NetworkAnalyst.JunctoValues[0].ToString();
+                    str = NetworkAnalyst.JuncfromValues[0].ToString() + " - " +
+                          NetworkAnalyst.JunctoValues[0].ToString();
                 }
                 for (num4 = 1; num4 < NetworkAnalyst.JuncfromValues.Length; num4++)
                 {
@@ -379,7 +393,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
                     }
                     else
                     {
-                        str = str + " , " + NetworkAnalyst.JuncfromValues[0].ToString() + " - " + NetworkAnalyst.JunctoValues[0].ToString();
+                        str = str + " , " + NetworkAnalyst.JuncfromValues[0].ToString() + " - " +
+                              NetworkAnalyst.JunctoValues[0].ToString();
                     }
                 }
                 this.txtJFWRange.Text = str;
@@ -396,7 +411,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
                 }
                 else
                 {
-                    str = NetworkAnalyst.EdgefromValues[0].ToString() + " - " + NetworkAnalyst.EdgetoValues[0].ToString();
+                    str = NetworkAnalyst.EdgefromValues[0].ToString() + " - " +
+                          NetworkAnalyst.EdgetoValues[0].ToString();
                 }
                 for (num4 = 1; num4 < NetworkAnalyst.JuncfromValues.Length; num4++)
                 {
@@ -406,7 +422,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
                     }
                     else
                     {
-                        str = str + " , " + NetworkAnalyst.EdgefromValues[0].ToString() + " - " + NetworkAnalyst.EdgetoValues[0].ToString();
+                        str = str + " , " + NetworkAnalyst.EdgefromValues[0].ToString() + " - " +
+                              NetworkAnalyst.EdgetoValues[0].ToString();
                     }
                 }
                 this.txtEFWRange.Text = str;
@@ -418,7 +435,7 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             this.m_CanDo = true;
         }
 
- private void NAWeightFilterPropertyPage_Load(object sender, EventArgs e)
+        private void NAWeightFilterPropertyPage_Load(object sender, EventArgs e)
         {
             this.Init();
         }
@@ -434,4 +451,3 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
         }
     }
 }
-

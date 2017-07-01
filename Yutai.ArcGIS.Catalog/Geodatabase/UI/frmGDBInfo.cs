@@ -29,7 +29,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.domainControl_0.Apply();
         }
 
- private void frmGDBInfo_Load(object sender, EventArgs e)
+        private void frmGDBInfo_Load(object sender, EventArgs e)
         {
             this.gdbgeneralCtrl_0.Dock = DockStyle.Fill;
             this.tabPage1.Controls.Add(this.gdbgeneralCtrl_0);
@@ -37,7 +37,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.tabPage2.Controls.Add(this.domainControl_0);
         }
 
- public IWorkspace Workspace
+        public IWorkspace Workspace
         {
             set
             {
@@ -48,4 +48,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

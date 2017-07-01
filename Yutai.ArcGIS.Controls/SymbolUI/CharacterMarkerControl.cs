@@ -40,7 +40,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         private void cboFontName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            System.Drawing.Font font = new System.Drawing.Font((string) this.cboFontName.Properties.Items[this.cboFontName.SelectedIndex], 10f);
+            System.Drawing.Font font =
+                new System.Drawing.Font((string) this.cboFontName.Properties.Items[this.cboFontName.SelectedIndex], 10f);
             this.fontlistView.Font = font;
             if (this.m_CanDo)
             {
@@ -54,9 +55,9 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         public void ChangeUnit(double newunit)
         {
             this.m_CanDo = false;
-            this.numUpDownSize.Value = (decimal) ((((double) this.numUpDownSize.Value) / this.m_unit) * newunit);
-            this.numUpDownXOffset.Value = (decimal) ((((double) this.numUpDownXOffset.Value) / this.m_unit) * newunit);
-            this.numUpDownYOffset.Value = (decimal) ((((double) this.numUpDownYOffset.Value) / this.m_unit) * newunit);
+            this.numUpDownSize.Value = (decimal) ((((double) this.numUpDownSize.Value)/this.m_unit)*newunit);
+            this.numUpDownXOffset.Value = (decimal) ((((double) this.numUpDownXOffset.Value)/this.m_unit)*newunit);
+            this.numUpDownYOffset.Value = (decimal) ((((double) this.numUpDownYOffset.Value)/this.m_unit)*newunit);
             this.m_unit = newunit;
             this.m_CanDo = true;
         }
@@ -76,7 +77,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- private void fontlistView_KeyDown(object sender, KeyEventArgs e)
+        private void fontlistView_KeyDown(object sender, KeyEventArgs e)
         {
         }
 
@@ -112,9 +113,9 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         {
             this.m_CanDo = false;
             this.numUpDownAngle.Value = (decimal) this.m_CharacterMarkerSymbol.Angle;
-            this.numUpDownSize.Value = (decimal) (this.m_CharacterMarkerSymbol.Size * this.m_unit);
-            this.numUpDownXOffset.Value = (decimal) (this.m_CharacterMarkerSymbol.XOffset * this.m_unit);
-            this.numUpDownYOffset.Value = (decimal) (this.m_CharacterMarkerSymbol.YOffset * this.m_unit);
+            this.numUpDownSize.Value = (decimal) (this.m_CharacterMarkerSymbol.Size*this.m_unit);
+            this.numUpDownXOffset.Value = (decimal) (this.m_CharacterMarkerSymbol.XOffset*this.m_unit);
+            this.numUpDownYOffset.Value = (decimal) (this.m_CharacterMarkerSymbol.YOffset*this.m_unit);
             this.numUpDownNuicode.Value = this.m_CharacterMarkerSymbol.CharacterIndex;
             this.SetColorEdit(this.colorEdit1, this.m_CharacterMarkerSymbol.Color);
             this.fontlistView.SelectedIndex = this.m_CharacterMarkerSymbol.CharacterIndex - 32;
@@ -130,7 +131,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.m_CanDo = true;
         }
 
- public static bool IsNmuber(string str)
+        public static bool IsNmuber(string str)
         {
             if (str.Length > 0)
             {
@@ -275,7 +276,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     this.numUpDownSize.ForeColor = SystemColors.WindowText;
-                    this.m_CharacterMarkerSymbol.Size = ((double) this.numUpDownSize.Value) / this.m_unit;
+                    this.m_CharacterMarkerSymbol.Size = ((double) this.numUpDownSize.Value)/this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -292,7 +293,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     this.numUpDownXOffset.ForeColor = SystemColors.WindowText;
-                    this.m_CharacterMarkerSymbol.XOffset = ((double) this.numUpDownXOffset.Value) / this.m_unit;
+                    this.m_CharacterMarkerSymbol.XOffset = ((double) this.numUpDownXOffset.Value)/this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -309,7 +310,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     this.numUpDownYOffset.ForeColor = SystemColors.WindowText;
-                    this.m_CharacterMarkerSymbol.YOffset = ((double) this.numUpDownYOffset.Value) / this.m_unit;
+                    this.m_CharacterMarkerSymbol.YOffset = ((double) this.numUpDownYOffset.Value)/this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -362,4 +363,3 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         }
     }
 }
-

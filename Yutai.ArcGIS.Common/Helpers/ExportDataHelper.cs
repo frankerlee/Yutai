@@ -28,7 +28,8 @@ namespace Yutai.ArcGIS.Common.Helpers
             for (int i = 0; i < fields2.FieldCount; i++)
             {
                 IField field = fields2.get_Field(i);
-                if (((field.Type != esriFieldType.esriFieldTypeOID) && (field.Type != esriFieldType.esriFieldTypeGeometry)) && field.Editable)
+                if (((field.Type != esriFieldType.esriFieldTypeOID) &&
+                     (field.Type != esriFieldType.esriFieldTypeGeometry)) && field.Editable)
                 {
                     try
                     {
@@ -107,13 +108,13 @@ namespace Yutai.ArcGIS.Common.Helpers
             }
             grect.left = 0;
             grect.top = 0;
-            grect.right = iactiveView_0.ExportFrame.right * (num3 / num2);
-            grect.bottom = iactiveView_0.ExportFrame.bottom * (num3 / num2);
+            grect.right = iactiveView_0.ExportFrame.right*(num3/num2);
+            grect.bottom = iactiveView_0.ExportFrame.bottom*(num3/num2);
             IEnvelope envelope = new Envelope() as IEnvelope;
-            envelope.PutCoords((double)grect.left, (double)grect.top, (double)grect.right, (double)grect.bottom);
+            envelope.PutCoords((double) grect.left, (double) grect.top, (double) grect.right, (double) grect.bottom);
             export.PixelBounds = envelope;
             int hDC = export.StartExporting();
-            iactiveView_0.Output(hDC, (int)export.Resolution, ref grect, null, null);
+            iactiveView_0.Output(hDC, (int) export.Resolution, ref grect, null, null);
             export.FinishExporting();
             export.Cleanup();
         }
@@ -143,7 +144,7 @@ namespace Yutai.ArcGIS.Common.Helpers
                 (imap_0 as IActiveView).Extent = extent;
                 for (num = 0; num < imap_0.LayerCount; num++)
                 {
-                    imap_0.get_Layer(num).Visible = (bool)list[num];
+                    imap_0.get_Layer(num).Visible = (bool) list[num];
                 }
             }
         }
@@ -206,6 +207,4 @@ namespace Yutai.ArcGIS.Common.Helpers
             m_count = 0;
         }
     }
-
-
 }

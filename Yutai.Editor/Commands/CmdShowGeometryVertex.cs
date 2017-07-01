@@ -20,7 +20,7 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Plugins.Editor.Commands
 {
-    public class CmdShowGeometryVertex:YutaiCommand,ITask
+    public class CmdShowGeometryVertex : YutaiCommand, ITask
     {
         private IActiveView activeView;
 
@@ -30,7 +30,7 @@ namespace Yutai.Plugins.Editor.Commands
             OnCreate(context);
         }
 
-       
+
         public override void OnCreate(object hook)
         {
             _context = hook as IAppContext;
@@ -44,15 +44,11 @@ namespace Yutai.Plugins.Editor.Commands
             DisplayStyleYT = DisplayStyleYT.ImageAndText;
             base.TextImageRelationYT = TextImageRelationYT.ImageAboveText;
             base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
-           
         }
 
         public override bool Checked
         {
-            get
-            {
-                return SketchToolAssist.CurrentTask == this;
-            }
+            get { return SketchToolAssist.CurrentTask == this; }
         }
 
         public override bool Enabled
@@ -78,10 +74,7 @@ namespace Yutai.Plugins.Editor.Commands
 
         public string DefaultTool
         {
-            get
-            {
-                return "Edit_TargetTool";
-            }
+            get { return "Edit_TargetTool"; }
         }
 
 
@@ -99,7 +92,6 @@ namespace Yutai.Plugins.Editor.Commands
 
         public void Excute()
         {
-            
         }
 
         public bool CheckTaskStatue(ITool itool_0)

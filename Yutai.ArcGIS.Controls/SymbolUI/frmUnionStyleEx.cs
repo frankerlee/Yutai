@@ -33,7 +33,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 IStyleGallery gallery;
                 int num3;
                 string str;
-                SaveFileDialog dialog = new SaveFileDialog {
+                SaveFileDialog dialog = new SaveFileDialog
+                {
                     FileName = this.txtDest.Text
                 };
                 Stream stream = dialog.OpenFile();
@@ -43,11 +44,17 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     int num;
                     if (!this.m_IsStyleFile)
                     {
-                        manifestResourceStream = base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.SymbolUI.template.style");
+                        manifestResourceStream =
+                            base.GetType()
+                                .Assembly.GetManifestResourceStream(
+                                    "Yutai.ArcGIS.Controls.Controls.SymbolUI.template.style");
                     }
                     else
                     {
-                        manifestResourceStream = base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.SymbolUI.template.ServerStyle");
+                        manifestResourceStream =
+                            base.GetType()
+                                .Assembly.GetManifestResourceStream(
+                                    "Yutai.ArcGIS.Controls.Controls.SymbolUI.template.ServerStyle");
                     }
                     byte[] buffer = new byte[4096];
                     while ((num = manifestResourceStream.Read(buffer, 0, 4096)) > 0)
@@ -241,7 +248,5 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 }
             }
         }
-
-
     }
 }

@@ -16,7 +16,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.InitializeComponent();
         }
 
- private void RepresentationPropertyPage_Load(object sender, EventArgs e)
+        private void RepresentationPropertyPage_Load(object sender, EventArgs e)
         {
             int num;
             IRepresentationRule rule;
@@ -32,14 +32,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         public IRepresentation Representation
         {
-            get
-            {
-                return this.m_pRepentation;
-            }
-            set
-            {
-                this.m_pRepentation = value;
-            }
+            get { return this.m_pRepentation; }
+            set { this.m_pRepentation = value; }
         }
 
         internal partial class RepresentationRuleWrap
@@ -57,28 +51,18 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
             public string Name
             {
-                get
-                {
-                    return this._name;
-                }
+                get { return this._name; }
             }
 
             public IRepresentationRule RepresentationRule
             {
-                get
-                {
-                    return this._RepresentationRule;
-                }
+                get { return this._RepresentationRule; }
             }
 
             public int RuleID
             {
-                get
-                {
-                    return this._id;
-                }
+                get { return this._id; }
             }
         }
     }
 }
-

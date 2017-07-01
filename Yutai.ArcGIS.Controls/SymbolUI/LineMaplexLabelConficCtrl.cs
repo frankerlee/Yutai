@@ -10,15 +10,13 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 {
     internal partial class LineMaplexLabelConficCtrl : UserControl
     {
-
         public LineMaplexLabelConficCtrl()
         {
             this.InitializeComponent();
         }
 
- private void PointMaplexLabelConficCtrl_Load(object sender, EventArgs e)
+        private void PointMaplexLabelConficCtrl_Load(object sender, EventArgs e)
         {
         }
     }
 }
-

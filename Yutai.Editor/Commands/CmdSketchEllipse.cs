@@ -159,7 +159,7 @@ namespace Yutai.Plugins.Editor.Commands
             {
                 ellipseFeedback = new NewEllipseFeedback() as INewEllipseFeedback;
                 ellipseFeedback.Display = activeView.ScreenDisplay;
-             //   ellipseFeedback.Symbol = lineSymbol as ISymbol;
+                //   ellipseFeedback.Symbol = lineSymbol as ISymbol;
                 ellipseFeedback.Start(mapPoint);
                 _order = 1;
                 return;
@@ -181,11 +181,11 @@ namespace Yutai.Plugins.Editor.Commands
             if (featureLayer.FeatureClass.ShapeType == esriGeometryType.esriGeometryPolyline)
             {
                 polylineClass = new Polyline() as ISegmentCollection;
-                ISegmentCollection segmentCollection=circularArc as ISegmentCollection;
+                ISegmentCollection segmentCollection = circularArc as ISegmentCollection;
 
                 polylineClass.AddSegment(segmentCollection.Segment[0], ref value, ref value);
                 CreateFeatureTool.CreateFeature(polylineClass as IGeometry, _context.FocusMap as IActiveView,
-                           Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
+                    Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
             }
             else if (featureLayer.FeatureClass.ShapeType != esriGeometryType.esriGeometryPolygon)
             {
@@ -194,11 +194,9 @@ namespace Yutai.Plugins.Editor.Commands
             else
             {
                 CreateFeatureTool.CreateFeature(circularArc as IGeometry, _context.FocusMap as IActiveView,
-                           Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
+                    Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
             }
-            
-           
-            
+
 
             _order = 0;
             ellipseFeedback = null;

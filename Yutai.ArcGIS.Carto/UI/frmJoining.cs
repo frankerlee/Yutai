@@ -26,7 +26,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnJoiningType_Click(object sender, EventArgs e)
         {
-            frmJoinTypeSet set = new frmJoinTypeSet {
+            frmJoinTypeSet set = new frmJoinTypeSet
+            {
                 JoinType = this.esriJoinType_0
             };
             if (set.ShowDialog() == DialogResult.OK)
@@ -37,14 +38,16 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if (((this.cboJoiningField.SelectedIndex != -1) && (this.cboJoiningTable.SelectedIndex != -1)) && (this.cboJoiningTableField.SelectedIndex != -1))
+            if (((this.cboJoiningField.SelectedIndex != -1) && (this.cboJoiningTable.SelectedIndex != -1)) &&
+                (this.cboJoiningTableField.SelectedIndex != -1))
             {
                 ITable featureClass = (this.cboJoiningTable.SelectedItem as ObjectWrap).Object as ITable;
                 if (featureClass is IFeatureLayer)
                 {
                     featureClass = (featureClass as IFeatureLayer).FeatureClass as ITable;
                 }
-                JoiningRelatingHelper.JoinTableLayer(this.itable_0, this.cboJoiningField.Text, featureClass, this.cboJoiningTableField.Text);
+                JoiningRelatingHelper.JoinTableLayer(this.itable_0, this.cboJoiningField.Text, featureClass,
+                    this.cboJoiningTableField.Text);
             }
         }
 
@@ -90,12 +93,12 @@ namespace Yutai.ArcGIS.Carto.UI
         {
         }
 
- private void frmJoining_Load(object sender, EventArgs e)
+        private void frmJoining_Load(object sender, EventArgs e)
         {
             this.method_1();
         }
 
- private void method_0(ICompositeLayer icompositeLayer_0)
+        private void method_0(ICompositeLayer icompositeLayer_0)
         {
             for (int i = 0; i < icompositeLayer_0.Count; i++)
             {
@@ -225,7 +228,11 @@ namespace Yutai.ArcGIS.Carto.UI
                         for (num2 = 0; num2 < attributeTable.Fields.FieldCount; num2++)
                         {
                             field2 = attributeTable.Fields.get_Field(num2);
-                            if ((((field2.Type == esriFieldType.esriFieldTypeDouble) || (field2.Type == esriFieldType.esriFieldTypeInteger)) || ((field2.Type == esriFieldType.esriFieldTypeOID) || (field2.Type == esriFieldType.esriFieldTypeSingle))) || (field2.Type == esriFieldType.esriFieldTypeSmallInteger))
+                            if ((((field2.Type == esriFieldType.esriFieldTypeDouble) ||
+                                  (field2.Type == esriFieldType.esriFieldTypeInteger)) ||
+                                 ((field2.Type == esriFieldType.esriFieldTypeOID) ||
+                                  (field2.Type == esriFieldType.esriFieldTypeSingle))) ||
+                                (field2.Type == esriFieldType.esriFieldTypeSmallInteger))
                             {
                                 this.cboJoiningTableField.Properties.Items.Add(field2.Name);
                             }
@@ -237,18 +244,12 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public ITable CurrentSelectItem
         {
-            set
-            {
-                this.itable_0 = value;
-            }
+            set { this.itable_0 = value; }
         }
 
         public IBasicMap FocusMap
         {
-            set
-            {
-                this.ibasicMap_0 = value;
-            }
+            set { this.ibasicMap_0 = value; }
         }
 
         internal partial class ObjectWrap
@@ -275,16 +276,9 @@ namespace Yutai.ArcGIS.Carto.UI
 
             public object Object
             {
-                get
-                {
-                    return this.object_0;
-                }
-                set
-                {
-                    this.object_0 = null;
-                }
+                get { return this.object_0; }
+                set { this.object_0 = null; }
             }
         }
     }
 }
-

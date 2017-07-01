@@ -2,7 +2,7 @@
 {
     internal class Marker3DEvent
     {
-        public static  event Marker3DChangedHandler Marker3DChanged;
+        public static event Marker3DChangedHandler Marker3DChanged;
 
         public static void Marker3DChangeH(object sender)
         {
@@ -15,4 +15,3 @@
         public delegate void Marker3DChangedHandler(object sender);
     }
 }
-

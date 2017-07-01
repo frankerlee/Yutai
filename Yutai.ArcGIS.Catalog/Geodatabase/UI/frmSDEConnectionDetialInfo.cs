@@ -54,7 +54,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.dateTimePicker1.Value = DateTime.Now;
         }
 
- private void frmSDEConnectionDetialInfo_Load(object sender, EventArgs e)
+        private void frmSDEConnectionDetialInfo_Load(object sender, EventArgs e)
         {
             if (this.iworkspace_0 != null)
             {
@@ -66,7 +66,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 {
                     items[0] = info2.VersionName;
                     items[1] = info2.Description;
-                    ListViewItem item = new ListViewItem(items) {
+                    ListViewItem item = new ListViewItem(items)
+                    {
                         Tag = info2
                     };
                     this.lvwVersions.Items.Add(item);
@@ -75,7 +76,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 IHistoricalWorkspace workspace = this.iworkspace_0 as IHistoricalWorkspace;
                 IEnumHistoricalMarker historicalMarkers = workspace.HistoricalMarkers;
                 historicalMarkers.Reset();
-                for (IHistoricalMarker marker2 = historicalMarkers.Next(); marker2 != null; marker2 = historicalMarkers.Next())
+                for (IHistoricalMarker marker2 = historicalMarkers.Next();
+                    marker2 != null;
+                    marker2 = historicalMarkers.Next())
                 {
                     this.cboHistoricalMarker.Properties.Items.Add(marker2.Name);
                 }
@@ -86,7 +89,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void rdoConnectionDate_CheckedChanged(object sender, EventArgs e)
+        private void rdoConnectionDate_CheckedChanged(object sender, EventArgs e)
         {
         }
 
@@ -121,30 +124,18 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         internal HISTORICALTYPE HISTORICAL
         {
-            get
-            {
-                return this.historicaltype_0;
-            }
+            get { return this.historicaltype_0; }
         }
 
         public object HistoricalInfo
         {
-            get
-            {
-                return this.object_0;
-            }
+            get { return this.object_0; }
         }
 
         public IWorkspace Workspace
         {
-            get
-            {
-                return this.iworkspace_0;
-            }
-            set
-            {
-                this.iworkspace_0 = value;
-            }
+            get { return this.iworkspace_0; }
+            set { this.iworkspace_0 = value; }
         }
 
         internal enum HISTORICALTYPE
@@ -155,4 +146,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

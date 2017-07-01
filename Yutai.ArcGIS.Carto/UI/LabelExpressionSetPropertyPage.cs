@@ -35,13 +35,16 @@ namespace Yutai.ArcGIS.Carto.UI
                 string text = this.listView1.SelectedItems[0].Text;
                 if (this.bool_1)
                 {
-                    string[] strArray = this.string_0.Split(new char[] { this.iannotationExpressionEngine_0.AppendCode.Trim()[0] });
+                    string[] strArray =
+                        this.string_0.Split(new char[] {this.iannotationExpressionEngine_0.AppendCode.Trim()[0]});
                     string str2 = strArray[0];
                     for (int i = 1; i < strArray.Length; i++)
                     {
-                        str2 = str2 + this.iannotationExpressionEngine_0.AppendCode + "\" \"" + this.iannotationExpressionEngine_0.AppendCode + strArray[i];
+                        str2 = str2 + this.iannotationExpressionEngine_0.AppendCode + "\" \"" +
+                               this.iannotationExpressionEngine_0.AppendCode + strArray[i];
                     }
-                    str2 = str2 + this.iannotationExpressionEngine_0.AppendCode + "\" \"" + this.iannotationExpressionEngine_0.AppendCode + "[" + text + "]";
+                    str2 = str2 + this.iannotationExpressionEngine_0.AppendCode + "\" \"" +
+                           this.iannotationExpressionEngine_0.AppendCode + "[" + text + "]";
                     this.string_0 = str2;
                     this.txtExpression.Text = str2;
                 }
@@ -67,12 +70,15 @@ namespace Yutai.ArcGIS.Carto.UI
                 {
                     try
                     {
-                        IAnnotationExpressionParser parser = this.iannotationExpressionEngine_0.SetExpression(this.iannotationExpressionEngine_0.AppendCode, this.string_0);
+                        IAnnotationExpressionParser parser =
+                            this.iannotationExpressionEngine_0.SetExpression(
+                                this.iannotationExpressionEngine_0.AppendCode, this.string_0);
                         str = "[" + parser.get_Attribute(0) + "]";
                         num = 1;
                         while (num < parser.AttributeCount)
                         {
-                            str = str + this.iannotationExpressionEngine_0.AppendCode + "\" \"" + this.iannotationExpressionEngine_0.AppendCode + "[" + parser.get_Attribute(num) + "]";
+                            str = str + this.iannotationExpressionEngine_0.AppendCode + "\" \"" +
+                                  this.iannotationExpressionEngine_0.AppendCode + "[" + parser.get_Attribute(num) + "]";
                             num++;
                         }
                         this.string_0 = str;
@@ -84,7 +90,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 }
                 else
                 {
-                    string[] strArray2 = this.string_0.Split(new char[] { this.iannotationExpressionEngine_0.AppendCode.Trim()[0] });
+                    string[] strArray2 =
+                        this.string_0.Split(new char[] {this.iannotationExpressionEngine_0.AppendCode.Trim()[0]});
                     str = strArray2[0];
                     for (num = 1; num < strArray2.Length; num++)
                     {
@@ -96,7 +103,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void LabelExpressionSetPropertyPage_Load(object sender, EventArgs e)
+        private void LabelExpressionSetPropertyPage_Load(object sender, EventArgs e)
         {
             ITable table = this.method_0();
             if (table != null)
@@ -105,7 +112,9 @@ namespace Yutai.ArcGIS.Carto.UI
                 for (int i = 0; i < fields.FieldCount; i++)
                 {
                     IField field = fields.get_Field(i);
-                    if (((field.Type != esriFieldType.esriFieldTypeBlob) && (field.Type != esriFieldType.esriFieldTypeGeometry)) && (field.Type != esriFieldType.esriFieldTypeRaster))
+                    if (((field.Type != esriFieldType.esriFieldTypeBlob) &&
+                         (field.Type != esriFieldType.esriFieldTypeGeometry)) &&
+                        (field.Type != esriFieldType.esriFieldTypeRaster))
                     {
                         this.listView1.Items.Add(field.Name);
                     }
@@ -147,55 +156,30 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IAnnotationExpressionEngine AnnotationExpressionEngine
         {
-            get
-            {
-                return this.iannotationExpressionEngine_0;
-            }
-            set
-            {
-                this.iannotationExpressionEngine_0 = value;
-            }
+            get { return this.iannotationExpressionEngine_0; }
+            set { this.iannotationExpressionEngine_0 = value; }
         }
 
         public IGeoFeatureLayer GeoFeatureLayer
         {
-            set
-            {
-                this.m_GeoFeatureLayer = value;
-            }
+            set { this.m_GeoFeatureLayer = value; }
         }
 
         public bool IsExpressionSimple
         {
-            get
-            {
-                return this.bool_1;
-            }
-            set
-            {
-                this.bool_1 = value;
-            }
+            get { return this.bool_1; }
+            set { this.bool_1 = value; }
         }
 
         public ILabelEngineLayerProperties LabelEngineLayerProp
         {
-            set
-            {
-                this.ilabelEngineLayerProperties_0 = value;
-            }
+            set { this.ilabelEngineLayerProperties_0 = value; }
         }
 
         public string LabelExpression
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

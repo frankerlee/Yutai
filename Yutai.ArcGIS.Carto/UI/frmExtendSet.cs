@@ -12,9 +12,8 @@ namespace Yutai.ArcGIS.Carto.UI
 {
     public partial class frmExtendSet : Form
     {
-     
         private IContainer icontainer_0 = null;
-       
+
         public frmExtendSet()
         {
             this.InitializeComponent();
@@ -54,7 +53,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     MessageBox.Show("右边值输入错误!");
                     return;
                 }
-                extent = new EnvelopeClass {
+                extent = new EnvelopeClass
+                {
                     XMin = num2,
                     XMax = num4,
                     YMax = num3,
@@ -87,7 +87,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     (outputFilter as ISpatialFilter).Geometry = this.Extend;
                     (outputFilter as ISpatialFilter).SpatialRel = esriSpatialRelEnum.esriSpatialRelIntersects;
                     geometry = new EnumFeatureGeometryClass();
-                    (geometry as IEnumGeometryBind).BindGeometrySource(outputFilter, (layer as IGeoFeatureLayer).FeatureClass);
+                    (geometry as IEnumGeometryBind).BindGeometrySource(outputFilter,
+                        (layer as IGeoFeatureLayer).FeatureClass);
                     IGeometryFactory3 factory = new GeometryEnvironmentClass();
                     IGeometry geometry2 = factory.CreateGeometryFromEnumerator(geometry);
                     int geometryCount = (geometry2 as IGeometryCollection).GeometryCount;
@@ -135,7 +136,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void frmExtendSet_Load(object sender, EventArgs e)
+        private void frmExtendSet_Load(object sender, EventArgs e)
         {
             if (this.Map != null)
             {
@@ -146,7 +147,9 @@ namespace Yutai.ArcGIS.Carto.UI
                     layer.Reset();
                     for (ILayer layer2 = layer.Next(); layer2 != null; layer2 = layer.Next())
                     {
-                        if (((layer2 is IFeatureLayer) && ((layer2 as IFeatureLayer).FeatureClass.ShapeType == esriGeometryType.esriGeometryPolygon)) && ((layer2 as IFeatureLayer).FeatureClass.FeatureCount(null) > 0))
+                        if (((layer2 is IFeatureLayer) &&
+                             ((layer2 as IFeatureLayer).FeatureClass.ShapeType == esriGeometryType.esriGeometryPolygon)) &&
+                            ((layer2 as IFeatureLayer).FeatureClass.FeatureCount(null) > 0))
                         {
                             this.cboLayers.Items.Add(new LayerObject(layer2));
                         }
@@ -209,7 +212,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void method_0(IEnvelope ienvelope_1)
+        private void method_0(IEnvelope ienvelope_1)
         {
             this.txtTop.Text = ienvelope_1.YMax.ToString("0.000");
             this.txtBottom.Text = ienvelope_1.YMin.ToString("0.000");
@@ -340,24 +343,12 @@ namespace Yutai.ArcGIS.Carto.UI
             this.panelLayer.Enabled = this.rdoLayerExtend.Checked;
         }
 
-        public IGeometry ClipGeometry
-        {
-            get; set;
-        }
+        public IGeometry ClipGeometry { get; set; }
 
-        public IEnvelope Extend
-        {
-            get; set;
-        }
+        public IEnvelope Extend { get; set; }
 
-        public ExtendSetType ExtendType
-        {
-            get; set;
-        }
+        public ExtendSetType ExtendType { get; set; }
 
-        public IBasicMap Map
-        {
-            get; set; }
+        public IBasicMap Map { get; set; }
     }
 }
-

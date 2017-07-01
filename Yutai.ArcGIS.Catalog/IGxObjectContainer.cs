@@ -13,4 +13,3 @@
         bool HasChildren { get; }
     }
 }
-

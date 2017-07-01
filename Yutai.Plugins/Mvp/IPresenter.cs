@@ -7,7 +7,6 @@ using System.Windows.Forms;
 
 namespace Yutai.Plugins.Mvp
 {
-
     public interface IPresenter
     {
         /// <summary>

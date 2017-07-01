@@ -13,9 +13,10 @@ using Yutai.UI.Properties;
 
 namespace Yutai.UI.Forms
 {
-    public partial class MainWindowView2 : RibbonForm,IViewInternal
+    public partial class MainWindowView2 : RibbonForm, IViewInternal
     {
         public event Action OkClicked;
+
         public virtual ViewStyle Style
         {
             get
@@ -27,9 +28,9 @@ namespace Yutai.UI.Forms
                 };
             }
         }
+
         public virtual void BeforeClose()
         {
-           
         }
 
         protected void Invoke(Action action)
@@ -39,6 +40,7 @@ namespace Yutai.UI.Forms
                 action();
             }
         }
+
         public virtual void ShowView(IWin32Window parent = null)
         {
             if (!Visible)
@@ -49,7 +51,6 @@ namespace Yutai.UI.Forms
 
         public virtual void UpdateView()
         {
-           
         }
 
         public MainWindowView2()
@@ -97,7 +98,6 @@ namespace Yutai.UI.Forms
         private void MainWindowView2_Load(object sender, EventArgs e)
         {
             // Fixing CORE-160
-
         }
     }
 

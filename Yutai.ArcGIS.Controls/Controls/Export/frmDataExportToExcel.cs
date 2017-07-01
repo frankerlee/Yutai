@@ -33,7 +33,8 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
 
         private void btnOpenFile_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
                 Filter = "Excel工作簿|*.xls|模板|*.xlt",
                 Multiselect = false
             };
@@ -49,7 +50,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             this.groupBox1.Enabled = this.chkUseTemplate.Checked;
         }
 
- private void frmDataExportToExcel_Load(object sender, EventArgs e)
+        private void frmDataExportToExcel_Load(object sender, EventArgs e)
         {
             if (ExportToExcelHelper.ExcelHelper == null)
             {
@@ -57,13 +58,9 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             }
         }
 
- public System.Data.DataTable DataTable
+        public System.Data.DataTable DataTable
         {
-            set
-            {
-                this.m_dt = value;
-            }
+            set { this.m_dt = value; }
         }
     }
 }
-

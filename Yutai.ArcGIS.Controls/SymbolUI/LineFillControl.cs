@@ -82,8 +82,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         public void ChangeUnit(double newunit)
         {
             this.m_CanDo = false;
-            this.numericUpDownOffset.Value = (decimal) ((((double) this.numericUpDownOffset.Value) / this.m_unit) * newunit);
-            this.numericUpDownSpace.Value = (decimal) ((((double) this.numericUpDownSpace.Value) / this.m_unit) * newunit);
+            this.numericUpDownOffset.Value = (decimal) ((((double) this.numericUpDownOffset.Value)/this.m_unit)*newunit);
+            this.numericUpDownSpace.Value = (decimal) ((((double) this.numericUpDownSpace.Value)/this.m_unit)*newunit);
             this.m_unit = newunit;
             this.m_CanDo = true;
         }
@@ -99,7 +99,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- private void GetRGB(uint rgb, out int r, out int g, out int b)
+        private void GetRGB(uint rgb, out int r, out int g, out int b)
         {
             uint num = rgb & 16711680;
             b = (int) (num >> 16);
@@ -113,15 +113,15 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         {
             this.m_CanDo = false;
             this.numericUpDownAngle.Value = (decimal) this.m_LineFillSymbol.Angle;
-            this.numericUpDownOffset.Value = (decimal) (this.m_LineFillSymbol.Offset * this.m_unit);
-            this.numericUpDownSpace.Value = (decimal) (this.m_LineFillSymbol.Separation * this.m_unit);
+            this.numericUpDownOffset.Value = (decimal) (this.m_LineFillSymbol.Offset*this.m_unit);
+            this.numericUpDownSpace.Value = (decimal) (this.m_LineFillSymbol.Separation*this.m_unit);
             this.SetColorEdit(this.colorEdit1, this.m_LineFillSymbol.Color);
             this.btnFillLine.Style = this.m_LineFillSymbol.LineSymbol;
             this.btnOutline.Style = this.m_LineFillSymbol.Outline;
             this.m_CanDo = true;
         }
 
- public static bool IsNmuber(string str)
+        public static bool IsNmuber(string str)
         {
             if (str.Length > 0)
             {
@@ -238,7 +238,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     this.numericUpDownOffset.ForeColor = SystemColors.WindowText;
-                    this.m_LineFillSymbol.Offset = ((double) this.numericUpDownOffset.Value) / this.m_unit;
+                    this.m_LineFillSymbol.Offset = ((double) this.numericUpDownOffset.Value)/this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -255,7 +255,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     this.numericUpDownSpace.ForeColor = SystemColors.WindowText;
-                    this.m_LineFillSymbol.Separation = ((double) this.numericUpDownSpace.Value) / this.m_unit;
+                    this.m_LineFillSymbol.Separation = ((double) this.numericUpDownSpace.Value)/this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -308,4 +308,3 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         }
     }
 }
-

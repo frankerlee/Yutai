@@ -9,6 +9,7 @@ namespace Yutai.Plugins.Catalog.Commands
     class CmdShowCatalogView : YutaiCommand
     {
         private CatalogViewService _dockService;
+
         public CmdShowCatalogView(IAppContext context)
         {
             OnCreate(context);
@@ -46,7 +47,6 @@ namespace Yutai.Plugins.Catalog.Commands
             if (_dockService == null)
             {
                 _dockService = _context.Container.GetInstance<CatalogViewService>();
-
             }
             if (_dockService.Visible == false)
             {

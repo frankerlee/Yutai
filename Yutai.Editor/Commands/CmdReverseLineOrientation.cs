@@ -26,7 +26,8 @@ namespace Yutai.Plugins.Editor.Commands
                     {
                         result = false;
                     }
-                    else if (Yutai.ArcGIS.Common.Editor.Editor.EditMap != null && Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
+                    else if (Yutai.ArcGIS.Common.Editor.Editor.EditMap != null &&
+                             Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
                     {
                         result = false;
                     }
@@ -39,7 +40,10 @@ namespace Yutai.Plugins.Editor.Commands
                             for (IFeature feature = enumFeature.Next(); feature != null; feature = enumFeature.Next())
                             {
                                 esriGeometryType geometryType = feature.Shape.GeometryType;
-                                if ((geometryType == esriGeometryType.esriGeometryPolyline || geometryType == esriGeometryType.esriGeometryPolygon) && Yutai.ArcGIS.Common.Editor.Editor.CheckWorkspaceEdit(feature.Class as IDataset, "IsBeingEdited"))
+                                if ((geometryType == esriGeometryType.esriGeometryPolyline ||
+                                     geometryType == esriGeometryType.esriGeometryPolygon) &&
+                                    Yutai.ArcGIS.Common.Editor.Editor.CheckWorkspaceEdit(feature.Class as IDataset,
+                                        "IsBeingEdited"))
                                 {
                                     result = true;
                                     return result;
@@ -59,24 +63,18 @@ namespace Yutai.Plugins.Editor.Commands
 
         public string CommandName
         {
-            get
-            {
-                return "_Reverse";
-            }
+            get { return "_Reverse"; }
         }
 
-     
 
         public string CommandLines
         {
-            set
-            {
-            }
+            set { }
         }
 
         public CmdReverseLineOrientation(IAppContext context)
         {
-           OnCreate(context);
+            OnCreate(context);
         }
 
         public override void OnCreate(object hook)
@@ -98,7 +96,8 @@ namespace Yutai.Plugins.Editor.Commands
             for (IFeature feature = enumFeature.Next(); feature != null; feature = enumFeature.Next())
             {
                 esriGeometryType geometryType = feature.Shape.GeometryType;
-                if ((geometryType == esriGeometryType.esriGeometryPolyline || geometryType == esriGeometryType.esriGeometryPolygon) &&
+                if ((geometryType == esriGeometryType.esriGeometryPolyline ||
+                     geometryType == esriGeometryType.esriGeometryPolygon) &&
                     Yutai.ArcGIS.Common.Editor.Editor.CheckWorkspaceEdit(feature.Class as IDataset, "IsBeingEdited"))
                 {
                     IPolycurve polycurve = feature.Shape as IPolycurve;
@@ -113,7 +112,7 @@ namespace Yutai.Plugins.Editor.Commands
 
         public override void OnClick(object sender, EventArgs args)
         {
-           OnClick();
+            OnClick();
         }
 
         public void HandleCommandParameter(string string_0)

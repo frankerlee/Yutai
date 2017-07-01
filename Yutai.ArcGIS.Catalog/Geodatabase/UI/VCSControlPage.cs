@@ -24,7 +24,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             if (NewObjectClassHelper.m_pObjectClassHelper.SpatialReference is ISpatialReference3)
             {
-                (NewObjectClassHelper.m_pObjectClassHelper.SpatialReference as ISpatialReference3).VerticalCoordinateSystem = this.ispatialReferenceInfo_0 as IVerticalCoordinateSystem;
+                (NewObjectClassHelper.m_pObjectClassHelper.SpatialReference as ISpatialReference3)
+                    .VerticalCoordinateSystem = this.ispatialReferenceInfo_0 as IVerticalCoordinateSystem;
             }
             return true;
         }
@@ -50,7 +51,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         }
                         else
                         {
-                            this.ispatialReferenceInfo_0 = (dataset2.SpatialReference as ISpatialReference3).VerticalCoordinateSystem;
+                            this.ispatialReferenceInfo_0 =
+                                (dataset2.SpatialReference as ISpatialReference3).VerticalCoordinateSystem;
                             this.textBoxName.Tag = this.ispatialReferenceInfo_0;
                             this.textBoxName.Text = this.ispatialReferenceInfo_0.Name;
                         }
@@ -61,7 +63,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnModify_Click(object sender, EventArgs e)
         {
-            frmNewVCS wvcs = new frmNewVCS {
+            frmNewVCS wvcs = new frmNewVCS
+            {
                 VerticalCoordinateSystem = this.ispatialReferenceInfo_0 as IVerticalCoordinateSystem
             };
             if (wvcs.ShowDialog() == DialogResult.OK)
@@ -83,7 +86,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
             if (e.Node.Tag is ISpatialReferenceInfo)
             {
@@ -104,7 +107,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             ISpatialReferenceFactory3 factory = new SpatialReferenceEnvironmentClass();
             TreeNode node = new TreeNode("垂直坐标系文件夹", 0, 1);
             this.treeView1.Nodes.Add(node);
-            string path = System.IO.Path.Combine(Application.StartupPath, @"Coordinate Systems\Vertical Coordinate Systems");
+            string path = System.IO.Path.Combine(Application.StartupPath,
+                @"Coordinate Systems\Vertical Coordinate Systems");
             if (Directory.Exists(path))
             {
                 string[] directories = Directory.GetDirectories(path);
@@ -117,10 +121,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     {
                         if (System.IO.Path.GetExtension(files[j]).ToLower() == ".prj")
                         {
-                            IVerticalCoordinateSystem system = factory.CreateESRISpatialReferenceInfoFromPRJFile(files[j]) as IVerticalCoordinateSystem;
+                            IVerticalCoordinateSystem system =
+                                factory.CreateESRISpatialReferenceInfoFromPRJFile(files[j]) as IVerticalCoordinateSystem;
                             if (system != null)
                             {
-                                TreeNode node3 = new TreeNode(System.IO.Path.GetFileName(files[j]), 2, 2) {
+                                TreeNode node3 = new TreeNode(System.IO.Path.GetFileName(files[j]), 2, 2)
+                                {
                                     Tag = system
                                 };
                                 node2.Nodes.Add(node3);
@@ -129,11 +135,11 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     }
                 }
             }
-            node = new TreeNode("<NONE>", 2, 2) {
+            node = new TreeNode("<NONE>", 2, 2)
+            {
                 Tag = null
             };
             this.treeView1.Nodes.Add(node);
         }
     }
 }
-

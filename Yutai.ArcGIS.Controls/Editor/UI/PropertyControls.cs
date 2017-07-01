@@ -50,7 +50,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 }
                 if (this.EditTemplate.HasSchema(v.FieldName))
                 {
-                    this.m_pVertXtraGrid.AddButtonEdit(layerFieldAlias, str2, true, new ButtonPressedEventHandler(this.ButtonEditButtonClick), v.FieldName);
+                    this.m_pVertXtraGrid.AddButtonEdit(layerFieldAlias, str2, true,
+                        new ButtonPressedEventHandler(this.ButtonEditButtonClick), v.FieldName);
                 }
                 else if (v.CodeDomainList != null)
                 {
@@ -104,7 +105,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         private void ButtonEditButtonClick(object sender, ButtonPressedEventArgs e)
         {
-            frmSelectSymbolClass class2 = new frmSelectSymbolClass {
+            frmSelectSymbolClass class2 = new frmSelectSymbolClass
+            {
                 EditTemplate = this.EditTemplate
             };
             if (class2.ShowDialog() == DialogResult.OK)
@@ -113,7 +115,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
- private string GetValue(string fn)
+        private string GetValue(string fn)
         {
             object fieldValue = null;
             if (this.EditTemplate != null)
@@ -171,7 +173,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 {
                     info = this.m_sortnamelistInfo[name];
                 }
-                this.textBox1.Text = string.Format("{0}\r\n{1}\r\n{2}", info.FieldName, info.TypeDescription, info.IsNull ? "允许为空" : "不允许为空");
+                this.textBox1.Text = string.Format("{0}\r\n{1}\r\n{2}", info.FieldName, info.TypeDescription,
+                    info.IsNull ? "允许为空" : "不允许为空");
             }
         }
 
@@ -212,7 +215,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             base.Parent.Focus();
         }
 
- private void PropertyControls_Load(object sender, EventArgs e)
+        private void PropertyControls_Load(object sender, EventArgs e)
         {
             if (this.EditTemplate != null)
             {
@@ -257,9 +260,12 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 {
                     if ((featureLayer is IFDOGraphicsLayer) && (string.Compare(field.Name, "SymbolID", true) == 0))
                     {
-                        str = (field.Type == esriFieldType.esriFieldTypeString) ? string.Format("(长度={0})", field.Length) : "";
+                        str = (field.Type == esriFieldType.esriFieldTypeString)
+                            ? string.Format("(长度={0})", field.Length)
+                            : "";
                         info = featureLayer.get_FieldInfo(i);
-                        info2 = new FieldInfo {
+                        info2 = new FieldInfo
+                        {
                             FieldName = "SymbolID",
                             TypeDescription = RowOperator.GetFieldTypeString(field.Type) + str,
                             IsNull = field.IsNullable,
@@ -271,11 +277,18 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                         this.m_sortnamelistInfo.Add(info2.FieldName, info2);
                     }
                 }
-                else if (field.Editable && ((((field.Type != esriFieldType.esriFieldTypeGeometry) && (field.Type != esriFieldType.esriFieldTypeBlob)) && (field.Type != esriFieldType.esriFieldTypeRaster)) && (field.Type != esriFieldType.esriFieldTypeOID)))
+                else if (field.Editable &&
+                         ((((field.Type != esriFieldType.esriFieldTypeGeometry) &&
+                            (field.Type != esriFieldType.esriFieldTypeBlob)) &&
+                           (field.Type != esriFieldType.esriFieldTypeRaster)) &&
+                          (field.Type != esriFieldType.esriFieldTypeOID)))
                 {
-                    str = (field.Type == esriFieldType.esriFieldTypeString) ? string.Format("(长度={0})", field.Length) : "";
+                    str = (field.Type == esriFieldType.esriFieldTypeString)
+                        ? string.Format("(长度={0})", field.Length)
+                        : "";
                     info = featureLayer.get_FieldInfo(i);
-                    info2 = new FieldInfo {
+                    info2 = new FieldInfo
+                    {
                         FieldName = field.Name,
                         TypeDescription = RowOperator.GetFieldTypeString(field.Type) + str,
                         IsNull = field.IsNullable,
@@ -332,4 +345,3 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         }
     }
 }
-

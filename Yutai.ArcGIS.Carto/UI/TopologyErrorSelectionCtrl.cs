@@ -83,7 +83,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private string method_0(esriTopologyRuleType esriTopologyRuleType_0)
+        private string method_0(esriTopologyRuleType esriTopologyRuleType_0)
         {
             switch (esriTopologyRuleType_0)
             {
@@ -187,26 +187,17 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IBasicMap FocusMap
         {
-            set
-            {
-            }
+            set { }
         }
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         public object SelectItem
         {
-            set
-            {
-                this.itopologyErrorSelection_0 = value as ITopologyErrorSelection;
-            }
+            set { this.itopologyErrorSelection_0 = value as ITopologyErrorSelection; }
         }
     }
 }
-

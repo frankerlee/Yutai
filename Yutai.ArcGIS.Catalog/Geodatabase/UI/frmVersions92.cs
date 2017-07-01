@@ -29,7 +29,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 this.int_0 = 0;
                 if (this.VersionInfolist.SelectedItems.Count != -1)
                 {
-                    this.object_0 = this.VersionInfolist.SelectedItems[0].SubItems[1].Text + "." + this.VersionInfolist.SelectedItems[0].Text;
+                    this.object_0 = this.VersionInfolist.SelectedItems[0].SubItems[1].Text + "." +
+                                    this.VersionInfolist.SelectedItems[0].Text;
                 }
             }
             else if (this.cboVersionType.SelectedIndex == 1)
@@ -51,7 +52,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             if (this.iworkspace_0 is IDatabaseConnectionInfo2)
             {
-                this.dateTimePicker1.Value = (DateTime) (this.iworkspace_0 as IDatabaseConnectionInfo2).ConnectionCurrentDateTime;
+                this.dateTimePicker1.Value =
+                    (DateTime) (this.iworkspace_0 as IDatabaseConnectionInfo2).ConnectionCurrentDateTime;
             }
             else
             {
@@ -63,7 +65,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             if (this.cboHistoricalMarker.SelectedIndex != -1)
             {
-                IHistoricalVersion version = (this.iworkspace_0 as IHistoricalWorkspace).FindHistoricalVersionByName(this.cboHistoricalMarker.Text);
+                IHistoricalVersion version =
+                    (this.iworkspace_0 as IHistoricalWorkspace).FindHistoricalVersionByName(
+                        this.cboHistoricalMarker.Text);
                 this.lblDateTimeValue.Text = version.TimeStamp.ToString();
             }
         }
@@ -95,13 +99,13 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void frmVersions92_Load(object sender, EventArgs e)
+        private void frmVersions92_Load(object sender, EventArgs e)
         {
             this.method_2();
             this.bool_0 = true;
         }
 
- private int method_0(IWorkspace iworkspace_1, out object object_1)
+        private int method_0(IWorkspace iworkspace_1, out object object_1)
         {
             int num = -1;
             object_1 = "";
@@ -168,7 +172,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 while (info2 != null)
                 {
                     string versionName = info2.VersionName;
-                    string[] strArray2 = versionName.Split(new char[] { '.' });
+                    string[] strArray2 = versionName.Split(new char[] {'.'});
                     if (strArray2.Length > 1)
                     {
                         items[0] = strArray2[1];
@@ -182,7 +186,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     items[2] = this.method_1(info2.Access);
                     items[3] = info2.Created.ToString();
                     items[4] = info2.Modified.ToString();
-                    ListViewItem item = new ListViewItem(items) {
+                    ListViewItem item = new ListViewItem(items)
+                    {
                         Tag = info2
                     };
                     this.VersionInfolist.Items.Add(item);
@@ -195,7 +200,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 IHistoricalWorkspace workspace = this.iworkspace_0 as IHistoricalWorkspace;
                 IEnumHistoricalMarker historicalMarkers = workspace.HistoricalMarkers;
                 historicalMarkers.Reset();
-                for (IHistoricalMarker marker2 = historicalMarkers.Next(); marker2 != null; marker2 = historicalMarkers.Next())
+                for (IHistoricalMarker marker2 = historicalMarkers.Next();
+                    marker2 != null;
+                    marker2 = historicalMarkers.Next())
                 {
                     this.cboHistoricalMarker.Properties.Items.Add(marker2.Name);
                     if ((this.int_0 == 1) && (marker2.Name == this.object_0.ToString()))
@@ -203,7 +210,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         this.cboHistoricalMarker.SelectedIndex = this.cboHistoricalMarker.Properties.Items.Count - 1;
                     }
                 }
-                if ((this.cboHistoricalMarker.Properties.Items.Count > 0) && (this.cboHistoricalMarker.SelectedIndex == -1))
+                if ((this.cboHistoricalMarker.Properties.Items.Count > 0) &&
+                    (this.cboHistoricalMarker.SelectedIndex == -1))
                 {
                     this.cboHistoricalMarker.SelectedIndex = 0;
                 }
@@ -253,26 +261,14 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public int Type
         {
-            get
-            {
-                return this.int_0;
-            }
-            set
-            {
-                this.int_0 = value;
-            }
+            get { return this.int_0; }
+            set { this.int_0 = value; }
         }
 
         public object VersionName
         {
-            get
-            {
-                return this.object_0;
-            }
-            set
-            {
-                this.object_0 = value;
-            }
+            get { return this.object_0; }
+            set { this.object_0 = value; }
         }
 
         public IWorkspace Workspace
@@ -285,4 +281,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

@@ -12,7 +12,6 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
 {
     internal partial class GraphicsSet : UserControl
     {
-
         public GraphicsSet()
         {
             this.InitializeComponent();
@@ -41,7 +40,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
                 }
                 int index = fields.FindFieldByAliasName(this.cboFields.Text);
                 IField field = fields.get_Field(index);
-                ListViewItem item = new ListViewItem(new string[] { field.Name, field.AliasName });
+                ListViewItem item = new ListViewItem(new string[] {field.Name, field.AliasName});
                 this.listView1.Items.Add(item);
             }
         }
@@ -66,7 +65,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             }
         }
 
- public bool Do()
+        public bool Do()
         {
             if (this.listView1.Items.Count == 0)
             {
@@ -117,7 +116,9 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
                             this.cboHorField.Properties.Items.Add(field.AliasName);
                             break;
                     }
-                    if ((((type == esriFieldType.esriFieldTypeDouble) || (type == esriFieldType.esriFieldTypeSmallInteger)) || (type == esriFieldType.esriFieldTypeInteger)) || (type == esriFieldType.esriFieldTypeSingle))
+                    if ((((type == esriFieldType.esriFieldTypeDouble) ||
+                          (type == esriFieldType.esriFieldTypeSmallInteger)) ||
+                         (type == esriFieldType.esriFieldTypeInteger)) || (type == esriFieldType.esriFieldTypeSingle))
                     {
                         this.cboFields.Properties.Items.Add(field.AliasName);
                     }
@@ -133,7 +134,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             }
         }
 
- private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.listView1.SelectedItems.Count > 0)
             {
@@ -151,4 +152,3 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
         }
     }
 }
-

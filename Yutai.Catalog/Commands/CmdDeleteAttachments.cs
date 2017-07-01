@@ -9,7 +9,6 @@ namespace Yutai.Plugins.Catalog.Commands
 {
     class CmdDeleteAttachments : YutaiCommand
     {
-
         public CmdDeleteAttachments(IAppContext context)
         {
             OnCreate(context);
@@ -47,7 +46,9 @@ namespace Yutai.Plugins.Catalog.Commands
                         esriDatasetType type = (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Type;
                         if (type == esriDatasetType.esriDTFeatureClass || type == esriDatasetType.esriDTTable)
                         {
-                            ITableAttachments tableAttachments = (ITableAttachments)(((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Dataset;
+                            ITableAttachments tableAttachments =
+                                (ITableAttachments)
+                                (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Dataset;
                             if (tableAttachments != null)
                             {
                                 try
@@ -78,10 +79,10 @@ namespace Yutai.Plugins.Catalog.Commands
 
         public override void OnClick()
         {
-
             try
             {
-                ITableAttachments tableAttachments = (ITableAttachments)(((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Dataset;
+                ITableAttachments tableAttachments =
+                    (ITableAttachments) (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Dataset;
                 tableAttachments.DeleteAttachments();
                 System.Windows.Forms.MessageBox.Show("创建附件成果");
             }
@@ -90,6 +91,5 @@ namespace Yutai.Plugins.Catalog.Commands
                 System.Windows.Forms.MessageBox.Show(ex.Message);
             }
         }
-
     }
 }

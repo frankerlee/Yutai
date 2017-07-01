@@ -11,7 +11,6 @@ namespace Yutai.Pipeline.Analysis.Commands
 {
     class CmdSearchAffixAnalysis : YutaiTool
     {
-
         private SearchAffixAnalyDlg searchAffixAnalyDlg_0;
 
         private PipelineAnalysisPlugin _plugin;
@@ -22,9 +21,9 @@ namespace Yutai.Pipeline.Analysis.Commands
             OnCreate(context);
             _plugin = plugin;
         }
+
         public override void OnClick()
         {
-
             _context.SetCurrentTool(this);
             if (this.searchAffixAnalyDlg_0 == null)
             {
@@ -39,7 +38,6 @@ namespace Yutai.Pipeline.Analysis.Commands
                 this.searchAffixAnalyDlg_0.InitAppearance();
                 this.searchAffixAnalyDlg_0.Visible = true;
             }
-
         }
 
 
@@ -67,21 +65,18 @@ namespace Yutai.Pipeline.Analysis.Commands
 
         public override void OnDblClick()
         {
-
         }
 
         public override void OnMouseDown(int button, int Shift, int x, int y)
         {
             IPoint point = _context.ActiveView.ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
             this.searchAffixAnalyDlg_0.OnMouseDown(point.X, point.Y);
-
         }
 
         public override void OnMouseMove(int button, int Shift, int x, int y)
         {
             IPoint point = _context.ActiveView.ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
             this.searchAffixAnalyDlg_0.OnMouseMove(point.X, point.Y);
-
         }
     }
 }

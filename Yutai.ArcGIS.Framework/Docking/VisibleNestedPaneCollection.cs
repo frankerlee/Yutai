@@ -17,20 +17,22 @@ namespace Yutai.ArcGIS.Framework.Docking
         {
             if (base.Count != 0)
             {
-                base[0].NestedDockingStatus.SetDisplayingBounds(this.Container.DisplayingRectangle, this.Container.DisplayingRectangle, Rectangle.Empty);
+                base[0].NestedDockingStatus.SetDisplayingBounds(this.Container.DisplayingRectangle,
+                    this.Container.DisplayingRectangle, Rectangle.Empty);
                 for (int i = 1; i < base.Count; i++)
                 {
                     DockPane pane = base[i];
                     NestedDockingStatus nestedDockingStatus = pane.NestedDockingStatus;
                     NestedDockingStatus status2 = nestedDockingStatus.DisplayingPreviousPane.NestedDockingStatus;
                     Rectangle paneBounds = status2.PaneBounds;
-                    bool flag = (nestedDockingStatus.DisplayingAlignment == DockAlignment.Left) || (nestedDockingStatus.DisplayingAlignment == DockAlignment.Right);
+                    bool flag = (nestedDockingStatus.DisplayingAlignment == DockAlignment.Left) ||
+                                (nestedDockingStatus.DisplayingAlignment == DockAlignment.Right);
                     Rectangle empty = paneBounds;
                     Rectangle rectangle3 = paneBounds;
                     Rectangle splitterBounds = paneBounds;
                     if (nestedDockingStatus.DisplayingAlignment == DockAlignment.Left)
                     {
-                        empty.Width = ((int) (paneBounds.Width * nestedDockingStatus.DisplayingProportion)) - 2;
+                        empty.Width = ((int) (paneBounds.Width*nestedDockingStatus.DisplayingProportion)) - 2;
                         splitterBounds.X = empty.X + empty.Width;
                         splitterBounds.Width = 4;
                         rectangle3.X = splitterBounds.X + splitterBounds.Width;
@@ -38,7 +40,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                     }
                     else if (nestedDockingStatus.DisplayingAlignment == DockAlignment.Right)
                     {
-                        rectangle3.Width = (paneBounds.Width - ((int) (paneBounds.Width * nestedDockingStatus.DisplayingProportion))) - 2;
+                        rectangle3.Width = (paneBounds.Width -
+                                            ((int) (paneBounds.Width*nestedDockingStatus.DisplayingProportion))) - 2;
                         splitterBounds.X = rectangle3.X + rectangle3.Width;
                         splitterBounds.Width = 4;
                         empty.X = splitterBounds.X + splitterBounds.Width;
@@ -46,7 +49,7 @@ namespace Yutai.ArcGIS.Framework.Docking
                     }
                     else if (nestedDockingStatus.DisplayingAlignment == DockAlignment.Top)
                     {
-                        empty.Height = ((int) (paneBounds.Height * nestedDockingStatus.DisplayingProportion)) - 2;
+                        empty.Height = ((int) (paneBounds.Height*nestedDockingStatus.DisplayingProportion)) - 2;
                         splitterBounds.Y = empty.Y + empty.Height;
                         splitterBounds.Height = 4;
                         rectangle3.Y = splitterBounds.Y + splitterBounds.Height;
@@ -54,7 +57,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                     }
                     else if (nestedDockingStatus.DisplayingAlignment == DockAlignment.Bottom)
                     {
-                        rectangle3.Height = (paneBounds.Height - ((int) (paneBounds.Height * nestedDockingStatus.DisplayingProportion))) - 2;
+                        rectangle3.Height = (paneBounds.Height -
+                                             ((int) (paneBounds.Height*nestedDockingStatus.DisplayingProportion))) - 2;
                         splitterBounds.Y = rectangle3.Y + rectangle3.Height;
                         splitterBounds.Height = 4;
                         empty.Y = splitterBounds.Y + splitterBounds.Height;
@@ -81,7 +85,8 @@ namespace Yutai.ArcGIS.Framework.Docking
             {
                 DockPane item = this.NestedPanes[i];
                 nestedDockingStatus = item.NestedDockingStatus;
-                nestedDockingStatus.SetDisplayingStatus(true, nestedDockingStatus.PreviousPane, nestedDockingStatus.Alignment, nestedDockingStatus.Proportion);
+                nestedDockingStatus.SetDisplayingStatus(true, nestedDockingStatus.PreviousPane,
+                    nestedDockingStatus.Alignment, nestedDockingStatus.Proportion);
                 base.Items.Add(item);
             }
             foreach (DockPane pane in this.NestedPanes)
@@ -123,13 +128,15 @@ namespace Yutai.ArcGIS.Framework.Docking
                     int index = base.IndexOf(pane2);
                     base.Items.Remove(pane2);
                     base.Items[base.IndexOf(pane)] = pane2;
-                    pane2.NestedDockingStatus.SetDisplayingStatus(true, nestedDockingStatus.DisplayingPreviousPane, nestedDockingStatus.DisplayingAlignment, nestedDockingStatus.DisplayingProportion);
+                    pane2.NestedDockingStatus.SetDisplayingStatus(true, nestedDockingStatus.DisplayingPreviousPane,
+                        nestedDockingStatus.DisplayingAlignment, nestedDockingStatus.DisplayingProportion);
                     for (num = index - 1; num > base.IndexOf(pane2); num--)
                     {
                         NestedDockingStatus status3 = base[num].NestedDockingStatus;
                         if (status3.PreviousPane == pane)
                         {
-                            status3.SetDisplayingStatus(true, pane2, status3.DisplayingAlignment, status3.DisplayingProportion);
+                            status3.SetDisplayingStatus(true, pane2, status3.DisplayingAlignment,
+                                status3.DisplayingProportion);
                         }
                     }
                 }
@@ -143,35 +150,22 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         public INestedPanesContainer Container
         {
-            get
-            {
-                return this.NestedPanes.Container;
-            }
+            get { return this.NestedPanes.Container; }
         }
 
         public DockState DockState
         {
-            get
-            {
-                return this.NestedPanes.DockState;
-            }
+            get { return this.NestedPanes.DockState; }
         }
 
         public bool IsFloat
         {
-            get
-            {
-                return this.NestedPanes.IsFloat;
-            }
+            get { return this.NestedPanes.IsFloat; }
         }
 
         public NestedPaneCollection NestedPanes
         {
-            get
-            {
-                return this.m_nestedPanes;
-            }
+            get { return this.m_nestedPanes; }
         }
     }
 }
-

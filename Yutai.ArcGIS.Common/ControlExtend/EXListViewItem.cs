@@ -21,15 +21,8 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         public string MyValue
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

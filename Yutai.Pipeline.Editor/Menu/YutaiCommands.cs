@@ -35,7 +35,6 @@ namespace Yutai.Pipeline.Editor.Menu
             {
                 _commands = new List<YutaiCommand>()
                 {
-                  
                 };
             }
             catch (Exception ex)

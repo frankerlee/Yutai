@@ -40,7 +40,8 @@ namespace Yutai.ArcGIS.Common
                 object obj;
                 if ((this.imapControl3_0 == null ? true : this.ipageLayoutControl2_0 == null))
                 {
-                    throw new Exception("ControlsSynchronizer::ActiveControl:\r\nEither MapControl or PageLayoutControl are not initialized!");
+                    throw new Exception(
+                        "ControlsSynchronizer::ActiveControl:\r\nEither MapControl or PageLayoutControl are not initialized!");
                 }
                 obj = (!this.bool_0 ? this.ipageLayoutControl2_0.Object : this.imapControl3_0.Object);
                 return obj;
@@ -59,10 +60,7 @@ namespace Yutai.ArcGIS.Common
 
         public string ActiveViewType
         {
-            get
-            {
-                return (!this.bool_0 ? "PageLayoutControl" : "MapControl");
-            }
+            get { return (!this.bool_0 ? "PageLayoutControl" : "MapControl"); }
         }
 
         public ITool CurrentTool
@@ -111,26 +109,14 @@ namespace Yutai.ArcGIS.Common
 
         public IMapControl3 MapControl
         {
-            get
-            {
-                return this.imapControl3_0;
-            }
-            set
-            {
-                this.imapControl3_0 = value;
-            }
+            get { return this.imapControl3_0; }
+            set { this.imapControl3_0 = value; }
         }
 
         public IPageLayoutControl2 PageLayoutControl
         {
-            get
-            {
-                return this.ipageLayoutControl2_0;
-            }
-            set
-            {
-                this.ipageLayoutControl2_0 = value;
-            }
+            get { return this.ipageLayoutControl2_0; }
+            set { this.ipageLayoutControl2_0 = value; }
         }
 
         public MapAndPageLayoutControls(AxMapControl axMapControl_1, AxPageLayoutControl axPageLayoutControl_1)
@@ -140,18 +126,25 @@ namespace Yutai.ArcGIS.Common
             IGraphicSnapEnvironment2 pageLayout = axPageLayoutControl_1.PageLayout as IGraphicSnapEnvironment2;
             this.imapControl3_0 = axMapControl_1.Object as IMapControl3;
             this.ipageLayoutControl2_0 = axPageLayoutControl_1.Object as IPageLayoutControl2;
-            (this.ipageLayoutControl2_0 as IPageLayoutControlEvents_Event).OnMouseMove += new IPageLayoutControlEvents_OnMouseMoveEventHandler(this.method_5);
-            (this.imapControl3_0 as IMapControlEvents2_Event).OnMouseMove += new IMapControlEvents2_OnMouseMoveEventHandler(this.method_4);
-            (this.ipageLayoutControl2_0 as IPageLayoutControlEvents_Event).OnFocusMapChanged += new IPageLayoutControlEvents_OnFocusMapChangedEventHandler(this.method_6);
-            (this.ipageLayoutControl2_0 as IPageLayoutControlEvents_Event).OnPageLayoutReplaced += new IPageLayoutControlEvents_OnPageLayoutReplacedEventHandler(this.method_1);
+            (this.ipageLayoutControl2_0 as IPageLayoutControlEvents_Event).OnMouseMove +=
+                new IPageLayoutControlEvents_OnMouseMoveEventHandler(this.method_5);
+            (this.imapControl3_0 as IMapControlEvents2_Event).OnMouseMove +=
+                new IMapControlEvents2_OnMouseMoveEventHandler(this.method_4);
+            (this.ipageLayoutControl2_0 as IPageLayoutControlEvents_Event).OnFocusMapChanged +=
+                new IPageLayoutControlEvents_OnFocusMapChangedEventHandler(this.method_6);
+            (this.ipageLayoutControl2_0 as IPageLayoutControlEvents_Event).OnPageLayoutReplaced +=
+                new IPageLayoutControlEvents_OnPageLayoutReplacedEventHandler(this.method_1);
             this.iactiveViewEvents_Event_0 = this.ipageLayoutControl2_0.ActiveView.FocusMap as IActiveViewEvents_Event;
             try
             {
                 if (this.iactiveViewEvents_Event_0 != null)
                 {
-                    this.iactiveViewEvents_Event_0.ItemAdded += new IActiveViewEvents_ItemAddedEventHandler(this.method_8);
-                    this.iactiveViewEvents_Event_0.ItemReordered += new IActiveViewEvents_ItemReorderedEventHandler(this.method_0);
-                    this.iactiveViewEvents_Event_0.ItemDeleted += new IActiveViewEvents_ItemDeletedEventHandler(this.method_7);
+                    this.iactiveViewEvents_Event_0.ItemAdded +=
+                        new IActiveViewEvents_ItemAddedEventHandler(this.method_8);
+                    this.iactiveViewEvents_Event_0.ItemReordered +=
+                        new IActiveViewEvents_ItemReorderedEventHandler(this.method_0);
+                    this.iactiveViewEvents_Event_0.ItemDeleted +=
+                        new IActiveViewEvents_ItemDeletedEventHandler(this.method_7);
                 }
             }
             catch
@@ -260,9 +253,12 @@ namespace Yutai.ArcGIS.Common
             {
                 if (this.iactiveViewEvents_Event_0 != null)
                 {
-                    this.iactiveViewEvents_Event_0.ItemAdded -= new IActiveViewEvents_ItemAddedEventHandler(this.method_8);
-                    this.iactiveViewEvents_Event_0.ItemReordered -= new IActiveViewEvents_ItemReorderedEventHandler(this.method_0);
-                    this.iactiveViewEvents_Event_0.ItemDeleted -= new IActiveViewEvents_ItemDeletedEventHandler(this.method_7);
+                    this.iactiveViewEvents_Event_0.ItemAdded -=
+                        new IActiveViewEvents_ItemAddedEventHandler(this.method_8);
+                    this.iactiveViewEvents_Event_0.ItemReordered -=
+                        new IActiveViewEvents_ItemReorderedEventHandler(this.method_0);
+                    this.iactiveViewEvents_Event_0.ItemDeleted -=
+                        new IActiveViewEvents_ItemDeletedEventHandler(this.method_7);
                 }
             }
             catch
@@ -273,9 +269,12 @@ namespace Yutai.ArcGIS.Common
             {
                 if (this.iactiveViewEvents_Event_0 != null)
                 {
-                    this.iactiveViewEvents_Event_0.ItemAdded += new IActiveViewEvents_ItemAddedEventHandler(this.method_8);
-                    this.iactiveViewEvents_Event_0.ItemReordered += new IActiveViewEvents_ItemReorderedEventHandler(this.method_0);
-                    this.iactiveViewEvents_Event_0.ItemDeleted += new IActiveViewEvents_ItemDeletedEventHandler(this.method_7);
+                    this.iactiveViewEvents_Event_0.ItemAdded +=
+                        new IActiveViewEvents_ItemAddedEventHandler(this.method_8);
+                    this.iactiveViewEvents_Event_0.ItemReordered +=
+                        new IActiveViewEvents_ItemReorderedEventHandler(this.method_0);
+                    this.iactiveViewEvents_Event_0.ItemDeleted +=
+                        new IActiveViewEvents_ItemDeletedEventHandler(this.method_7);
                 }
             }
             catch
@@ -315,11 +314,11 @@ namespace Yutai.ArcGIS.Common
                 double_0 = -double_0;
                 flag = true;
             }
-            int double0 = (int)double_0;
-            double_0 = (double_0 - (double)double0) * 60;
-            int num = (int)double_0;
-            double num1 = (double)Math.Round((double_0 - (double)num) * 60, 2);
-            string[] str = new string[] { double0.ToString(), "°", num.ToString("00"), "′", num1.ToString("00.00"), "″" };
+            int double0 = (int) double_0;
+            double_0 = (double_0 - (double) double0)*60;
+            int num = (int) double_0;
+            double num1 = (double) Math.Round((double_0 - (double) num)*60, 2);
+            string[] str = new string[] {double0.ToString(), "°", num.ToString("00"), "′", num1.ToString("00.00"), "″"};
             string str1 = string.Concat(str);
             if (flag)
             {
@@ -413,11 +412,11 @@ namespace Yutai.ArcGIS.Common
             IActiveView activeView = this.imapControl3_0.ActiveView;
             if (activeView.ScreenDisplay.DisplayTransformation.Units != esriUnits.esriDecimalDegrees)
             {
-                string[] strArrays = new string[] { "坐标:", null, null, null, null, null };
-                double num = (double)Math.Round(double_0, 3);
+                string[] strArrays = new string[] {"坐标:", null, null, null, null, null};
+                double num = (double) Math.Round(double_0, 3);
                 strArrays[1] = num.ToString();
                 strArrays[2] = ", ";
-                num = (double)Math.Round(double_1, 3);
+                num = (double) Math.Round(double_1, 3);
                 strArrays[3] = num.ToString();
                 strArrays[4] = " ";
                 strArrays[5] = this.method_3(activeView.ScreenDisplay.DisplayTransformation.Units);
@@ -444,10 +443,10 @@ namespace Yutai.ArcGIS.Common
             if (focusMap.ScreenDisplay.DisplayTransformation.Units != esriUnits.esriDecimalDegrees)
             {
                 string[] strArrays = new string[5];
-                num = (double)Math.Round(mapPoint.X, 3);
+                num = (double) Math.Round(mapPoint.X, 3);
                 strArrays[0] = num.ToString();
                 strArrays[1] = " ";
-                num = (double)Math.Round(mapPoint.Y, 3);
+                num = (double) Math.Round(mapPoint.Y, 3);
                 strArrays[2] = num.ToString();
                 strArrays[3] = " ";
                 strArrays[4] = this.method_3(focusMap.ScreenDisplay.DisplayTransformation.Units);
@@ -459,9 +458,9 @@ namespace Yutai.ArcGIS.Common
                 string str2 = this.method_2(mapPoint.Y);
                 str = string.Concat(str1, "  ", str2);
             }
-            num = (double)Math.Round(double_0, 2);
+            num = (double) Math.Round(double_0, 2);
             string str3 = num.ToString();
-            num = (double)Math.Round(double_1, 2);
+            num = (double) Math.Round(double_1, 2);
             string str4 = string.Concat(str3, " ", num.ToString(), " 厘米");
             if (this.onMousePostionHandler_0 != null)
             {
@@ -478,9 +477,12 @@ namespace Yutai.ArcGIS.Common
                 {
                     if (this.iactiveViewEvents_Event_0 != null)
                     {
-                        this.iactiveViewEvents_Event_0.ItemAdded -= new IActiveViewEvents_ItemAddedEventHandler(this.method_8);
-                        this.iactiveViewEvents_Event_0.ItemReordered -= new IActiveViewEvents_ItemReorderedEventHandler(this.method_0);
-                        this.iactiveViewEvents_Event_0.ItemDeleted -= new IActiveViewEvents_ItemDeletedEventHandler(this.method_7);
+                        this.iactiveViewEvents_Event_0.ItemAdded -=
+                            new IActiveViewEvents_ItemAddedEventHandler(this.method_8);
+                        this.iactiveViewEvents_Event_0.ItemReordered -=
+                            new IActiveViewEvents_ItemReorderedEventHandler(this.method_0);
+                        this.iactiveViewEvents_Event_0.ItemDeleted -=
+                            new IActiveViewEvents_ItemDeletedEventHandler(this.method_7);
                     }
                 }
                 catch
@@ -492,9 +494,12 @@ namespace Yutai.ArcGIS.Common
                 {
                     if (this.iactiveViewEvents_Event_0 != null)
                     {
-                        this.iactiveViewEvents_Event_0.ItemAdded += new IActiveViewEvents_ItemAddedEventHandler(this.method_8);
-                        this.iactiveViewEvents_Event_0.ItemReordered += new IActiveViewEvents_ItemReorderedEventHandler(this.method_0);
-                        this.iactiveViewEvents_Event_0.ItemDeleted += new IActiveViewEvents_ItemDeletedEventHandler(this.method_7);
+                        this.iactiveViewEvents_Event_0.ItemAdded +=
+                            new IActiveViewEvents_ItemAddedEventHandler(this.method_8);
+                        this.iactiveViewEvents_Event_0.ItemReordered +=
+                            new IActiveViewEvents_ItemReorderedEventHandler(this.method_0);
+                        this.iactiveViewEvents_Event_0.ItemDeleted +=
+                            new IActiveViewEvents_ItemDeletedEventHandler(this.method_7);
                     }
                 }
                 catch
@@ -545,7 +550,8 @@ namespace Yutai.ArcGIS.Common
                     this.imapControl3_0.Map.SpatialReference = new UnknownCoordinateSystem() as ISpatialReference;
                     this.imapControl3_0.Map.MapUnits = esriUnits.esriUnknownUnits;
                     this.imapControl3_0.Map.DistanceUnits = esriUnits.esriUnknownUnits;
-                    (this.imapControl3_0.Map as IActiveView).Extent = (this.imapControl3_0.Map as IActiveView).FullExtent;
+                    (this.imapControl3_0.Map as IActiveView).Extent =
+                        (this.imapControl3_0.Map as IActiveView).FullExtent;
                 }
                 this.imapControl3_0.ActiveView.Refresh();
             }
@@ -555,8 +561,9 @@ namespace Yutai.ArcGIS.Common
         {
             if (object_0 is ILayer && this.imapControl3_0 != null)
             {
-                int num = this.method_10((this.iactiveViewEvents_Event_0 as IActiveView).FocusMap as IBasicMap, object_0 as ILayer);
-                this.imapControl3_0.AddLayer((ILayer)object_0, num);
+                int num = this.method_10((this.iactiveViewEvents_Event_0 as IActiveView).FocusMap as IBasicMap,
+                    object_0 as ILayer);
+                this.imapControl3_0.AddLayer((ILayer) object_0, num);
                 this.imapControl3_0.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeography, object_0, null);
             }
         }
@@ -594,10 +601,12 @@ namespace Yutai.ArcGIS.Common
                 do
                 {
                     onActiveHookChangedHandler = onActiveHookChangedHandler0;
-                    OnActiveHookChangedHandler onActiveHookChangedHandler1 = (OnActiveHookChangedHandler)Delegate.Combine(onActiveHookChangedHandler, value);
-                    onActiveHookChangedHandler0 = Interlocked.CompareExchange<OnActiveHookChangedHandler>(ref this.onActiveHookChangedHandler_0, onActiveHookChangedHandler1, onActiveHookChangedHandler);
-                }
-                while ((object)onActiveHookChangedHandler0 != (object)onActiveHookChangedHandler);
+                    OnActiveHookChangedHandler onActiveHookChangedHandler1 =
+                        (OnActiveHookChangedHandler) Delegate.Combine(onActiveHookChangedHandler, value);
+                    onActiveHookChangedHandler0 =
+                        Interlocked.CompareExchange<OnActiveHookChangedHandler>(ref this.onActiveHookChangedHandler_0,
+                            onActiveHookChangedHandler1, onActiveHookChangedHandler);
+                } while ((object) onActiveHookChangedHandler0 != (object) onActiveHookChangedHandler);
             }
             remove
             {
@@ -606,10 +615,12 @@ namespace Yutai.ArcGIS.Common
                 do
                 {
                     onActiveHookChangedHandler = onActiveHookChangedHandler0;
-                    OnActiveHookChangedHandler onActiveHookChangedHandler1 = (OnActiveHookChangedHandler)Delegate.Remove(onActiveHookChangedHandler, value);
-                    onActiveHookChangedHandler0 = Interlocked.CompareExchange<OnActiveHookChangedHandler>(ref this.onActiveHookChangedHandler_0, onActiveHookChangedHandler1, onActiveHookChangedHandler);
-                }
-                while ((object)onActiveHookChangedHandler0 != (object)onActiveHookChangedHandler);
+                    OnActiveHookChangedHandler onActiveHookChangedHandler1 =
+                        (OnActiveHookChangedHandler) Delegate.Remove(onActiveHookChangedHandler, value);
+                    onActiveHookChangedHandler0 =
+                        Interlocked.CompareExchange<OnActiveHookChangedHandler>(ref this.onActiveHookChangedHandler_0,
+                            onActiveHookChangedHandler1, onActiveHookChangedHandler);
+                } while ((object) onActiveHookChangedHandler0 != (object) onActiveHookChangedHandler);
             }
         }
 
@@ -622,10 +633,12 @@ namespace Yutai.ArcGIS.Common
                 do
                 {
                     onMousePostionHandler = onMousePostionHandler0;
-                    OnMousePostionHandler onMousePostionHandler1 = (OnMousePostionHandler)Delegate.Combine(onMousePostionHandler, value);
-                    onMousePostionHandler0 = Interlocked.CompareExchange<OnMousePostionHandler>(ref this.onMousePostionHandler_0, onMousePostionHandler1, onMousePostionHandler);
-                }
-                while ((object)onMousePostionHandler0 != (object)onMousePostionHandler);
+                    OnMousePostionHandler onMousePostionHandler1 =
+                        (OnMousePostionHandler) Delegate.Combine(onMousePostionHandler, value);
+                    onMousePostionHandler0 =
+                        Interlocked.CompareExchange<OnMousePostionHandler>(ref this.onMousePostionHandler_0,
+                            onMousePostionHandler1, onMousePostionHandler);
+                } while ((object) onMousePostionHandler0 != (object) onMousePostionHandler);
             }
             remove
             {
@@ -634,10 +647,12 @@ namespace Yutai.ArcGIS.Common
                 do
                 {
                     onMousePostionHandler = onMousePostionHandler0;
-                    OnMousePostionHandler onMousePostionHandler1 = (OnMousePostionHandler)Delegate.Remove(onMousePostionHandler, value);
-                    onMousePostionHandler0 = Interlocked.CompareExchange<OnMousePostionHandler>(ref this.onMousePostionHandler_0, onMousePostionHandler1, onMousePostionHandler);
-                }
-                while ((object)onMousePostionHandler0 != (object)onMousePostionHandler);
+                    OnMousePostionHandler onMousePostionHandler1 =
+                        (OnMousePostionHandler) Delegate.Remove(onMousePostionHandler, value);
+                    onMousePostionHandler0 =
+                        Interlocked.CompareExchange<OnMousePostionHandler>(ref this.onMousePostionHandler_0,
+                            onMousePostionHandler1, onMousePostionHandler);
+                } while ((object) onMousePostionHandler0 != (object) onMousePostionHandler);
             }
         }
     }

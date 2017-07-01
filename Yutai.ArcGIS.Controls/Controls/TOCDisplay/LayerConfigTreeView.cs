@@ -49,17 +49,25 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
         {
             this.m_pTOCTreeView = pTOCTreeView;
             this.m_pTOCTreeView.CanDrag = false;
-            this.m_pTOCTreeView.NodeReordering += new TOCTreeView.NodeReorderingEventHandler(this.m_pTOCTreeView_NodeReordering);
-            this.m_pTOCTreeView.NodeReordered += new TOCTreeView.NodeReorderedEventHandler(this.m_pTOCTreeView_NodeReordered);
+            this.m_pTOCTreeView.NodeReordering +=
+                new TOCTreeView.NodeReorderingEventHandler(this.m_pTOCTreeView_NodeReordering);
+            this.m_pTOCTreeView.NodeReordered +=
+                new TOCTreeView.NodeReorderedEventHandler(this.m_pTOCTreeView_NodeReordered);
             this.m_pTOCTreeView.AfterSelect += new TOCTreeView.AfterSelectEventHandler(this.m_pTOCTreeView_AfterSelect);
             this.m_pTOCTreeView.StyleGallery = this.m_pSG;
-            TreeViewEvent.ChildLayersDeleted += new TreeViewEvent.ChildLayersDeletedHandler(this.TreeViewEvent_ChildLayersDeleted);
-            TreeViewEvent.GroupLayerAddLayerChanged += new TreeViewEvent.GroupLayerAddLayerChangedHandler(this.TreeViewEvent_GroupLayerAddLayerChanged);
-            TreeViewEvent.LayerPropertyChanged += new TreeViewEvent.LayerPropertyChangedHandler(this.TreeViewEvent_LayerPropertyChanged);
-            TreeViewEvent.LayerVisibleChanged += new TreeViewEvent.LayerVisibleChangedHandler(this.TreeViewEvent_LayerVisibleChanged);
-            TreeViewEvent.LayerNameChanged += new TreeViewEvent.LayerNameChangedHandler(this.TreeViewEvent_LayerNameChanged);
+            TreeViewEvent.ChildLayersDeleted +=
+                new TreeViewEvent.ChildLayersDeletedHandler(this.TreeViewEvent_ChildLayersDeleted);
+            TreeViewEvent.GroupLayerAddLayerChanged +=
+                new TreeViewEvent.GroupLayerAddLayerChangedHandler(this.TreeViewEvent_GroupLayerAddLayerChanged);
+            TreeViewEvent.LayerPropertyChanged +=
+                new TreeViewEvent.LayerPropertyChangedHandler(this.TreeViewEvent_LayerPropertyChanged);
+            TreeViewEvent.LayerVisibleChanged +=
+                new TreeViewEvent.LayerVisibleChangedHandler(this.TreeViewEvent_LayerVisibleChanged);
+            TreeViewEvent.LayerNameChanged +=
+                new TreeViewEvent.LayerNameChangedHandler(this.TreeViewEvent_LayerNameChanged);
             TreeViewEvent.MapNameChanged += new TreeViewEvent.MapNameChangedHandler(this.TreeViewEvent_MapNameChanged);
-            TreeViewEvent.LayerOrderChanged += new TreeViewEvent.LayerOrderChangedHandler(this.TreeViewEvent_LayerOrderChanged);
+            TreeViewEvent.LayerOrderChanged +=
+                new TreeViewEvent.LayerOrderChangedHandler(this.TreeViewEvent_LayerOrderChanged);
             this.m_barManager1 = this.m_pTOCTreeView.BarManager as BarManager;
             this.CreateMenu(this.m_barManager1);
             this.m_pLayerPopupMenu = this.m_pTOCTreeView.PopupMenu as PopupMenu;
@@ -138,16 +146,24 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
             this.DeleteAllLayer = new BarButtonItem();
             this.SaveRenderProject = new BarButtonItem();
             this.ApplyRenderProject = new BarButtonItem();
-            barManager1.Items.AddRange(new BarItem[] { 
-                this.ZoomToLayer, this.SetVisibleScale, this.SetMinimumScale, this.SetMaximumScale, this.ClearScaleRange, this.LabelFeature, this.AddLayer, this.DeleteLayer, this.LayerProperty, this.ExportLayer, this.NewGroupLayer, this.MapFrameProperty, this.ExportMap, this.OpenAttributeTable, this.DeleteAllLayer, this.SaveRenderProject, 
+            barManager1.Items.AddRange(new BarItem[]
+            {
+                this.ZoomToLayer, this.SetVisibleScale, this.SetMinimumScale, this.SetMaximumScale, this.ClearScaleRange,
+                this.LabelFeature, this.AddLayer, this.DeleteLayer, this.LayerProperty, this.ExportLayer,
+                this.NewGroupLayer, this.MapFrameProperty, this.ExportMap, this.OpenAttributeTable, this.DeleteAllLayer,
+                this.SaveRenderProject,
                 this.ApplyRenderProject
-             });
+            });
             this.ZoomToLayer.Caption = "缩放到图层";
             this.ZoomToLayer.Id = 0;
             this.ZoomToLayer.Name = "ZoomToLayer";
             this.SetVisibleScale.Caption = "可见比例尺范围";
             this.SetVisibleScale.Id = 1;
-            this.SetVisibleScale.LinksPersistInfo.AddRange(new LinkPersistInfo[] { new LinkPersistInfo(this.SetMinimumScale), new LinkPersistInfo(this.SetMaximumScale), new LinkPersistInfo(this.ClearScaleRange) });
+            this.SetVisibleScale.LinksPersistInfo.AddRange(new LinkPersistInfo[]
+            {
+                new LinkPersistInfo(this.SetMinimumScale), new LinkPersistInfo(this.SetMaximumScale),
+                new LinkPersistInfo(this.ClearScaleRange)
+            });
             this.SetVisibleScale.Name = "SetVisibleScale";
             this.SetMinimumScale.Caption = "设置最小范围";
             this.SetMinimumScale.Id = 2;
@@ -280,7 +296,8 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 
         private void DoNewGroupLayer(TOCTreeNode pSelNode)
         {
-            IGroupLayer layer = new GroupLayerClass {
+            IGroupLayer layer = new GroupLayerClass
+            {
                 Name = "新图层组"
             };
             if (pSelNode.TOCNodeType == NodeType.GroupLayer)
@@ -387,7 +404,8 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
         {
             if (pTOCNode.Parent != null)
             {
-                if (((pTOCNode.Parent.TOCNodeType == NodeType.Map) || (pTOCNode.Parent.TOCNodeType == NodeType.MapFrame)) || (pTOCNode.Parent.TOCNodeType == NodeType.GroupLayer))
+                if (((pTOCNode.Parent.TOCNodeType == NodeType.Map) || (pTOCNode.Parent.TOCNodeType == NodeType.MapFrame)) ||
+                    (pTOCNode.Parent.TOCNodeType == NodeType.GroupLayer))
                 {
                     return pTOCNode.Parent;
                 }
@@ -457,7 +475,8 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
         {
             if (this.m_pLayerConfigTable != null)
             {
-                IQueryFilter queryFilter = new QueryFilterClass {
+                IQueryFilter queryFilter = new QueryFilterClass
+                {
                     WhereClause = "Name = '" + pLayer.Name + "'"
                 };
                 IRow row = this.m_pLayerConfigTable.Search(queryFilter, false).NextRow();
@@ -533,14 +552,16 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     {
                         return null;
                     }
-                    node2 = new TOCTreeNodeEx(name) {
+                    node2 = new TOCTreeNodeEx(name)
+                    {
                         TOCNodeType = NodeType.Folder
                     };
                     (node2 as TOCTreeNodeEx).OID = ChildOID;
                     node.Nodes.Add(node2);
                     return node2;
                 }
-                node2 = new TOCTreeNodeEx(name) {
+                node2 = new TOCTreeNodeEx(name)
+                {
                     TOCNodeType = NodeType.Folder
                 };
                 (node2 as TOCTreeNodeEx).OID = ChildOID;
@@ -579,7 +600,8 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     for (num = 0; num < layer.RendererCount; num++)
                     {
                         ITinRenderer renderer = layer.GetRenderer(num);
-                        TOCTreeNode node3 = new TOCTreeNodeEx(renderer.Name) {
+                        TOCTreeNode node3 = new TOCTreeNodeEx(renderer.Name)
+                        {
                             Tag = renderer
                         };
                         pNode.Nodes.Add(node3);
@@ -609,7 +631,8 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                 ILegendGroup group = pLegendInfo.get_LegendGroup(i);
                 if (legendGroupCount > 1)
                 {
-                    pNode = new TOCTreeNodeEx(group.Heading) {
+                    pNode = new TOCTreeNodeEx(group.Heading)
+                    {
                         Tag = group
                     };
                     pParantNode.Nodes.Add(pNode);
@@ -618,7 +641,8 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                 for (int j = 0; j < classCount; j++)
                 {
                     ILegendClass class2 = group.get_Class(j);
-                    node2 = new TOCTreeNodeEx(class2.Label, false, true) {
+                    node2 = new TOCTreeNodeEx(class2.Label, false, true)
+                    {
                         Tag = class2
                     };
                     pNode.Nodes.Add(node2);
@@ -637,7 +661,10 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     name = "Scene";
                 }
                 TOCTreeNode pNode = new TOCTreeNodeEx(name, false, true);
-                Bitmap bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.layers.bmp"));
+                Bitmap bitmap =
+                    new Bitmap(
+                        base.GetType()
+                            .Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.layers.bmp"));
                 pNode.Image = bitmap;
                 pNode.Tag = frame;
                 pParantNodes.Add(pNode);
@@ -745,7 +772,8 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                             IFeatureLayer layer2 = selectedNode.Tag as IFeatureLayer;
                             if (layer2 != null)
                             {
-                                IFeatureWorkspace workspace = (layer2.FeatureClass as IDataset).Workspace as IFeatureWorkspace;
+                                IFeatureWorkspace workspace =
+                                    (layer2.FeatureClass as IDataset).Workspace as IFeatureWorkspace;
                                 IFDOGraphicsLayerFactory factory = new FDOGraphicsLayerFactoryClass();
                             }
                             break;
@@ -755,7 +783,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                             ITable table = selectedNode.Tag as ITable;
                             if (table != null)
                             {
-                                new frmAttributeTable { Table = table, Map = tag }.Show();
+                                new frmAttributeTable {Table = table, Map = tag}.Show();
                             }
                             break;
                         }
@@ -789,7 +817,8 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 
                         case "ExportLayer":
                         {
-                            frmExportMap map2 = new frmExportMap {
+                            frmExportMap map2 = new frmExportMap
+                            {
                                 ActiveView = tag as IActiveView,
                                 Layer = selectedNode.Tag as ILayer
                             };
@@ -797,7 +826,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                             break;
                         }
                         case "ExportMap":
-                            new frmExportMap { ActiveView = tag as IActiveView }.ShowDialog();
+                            new frmExportMap {ActiveView = tag as IActiveView}.ShowDialog();
                             break;
                     }
                 }
@@ -836,15 +865,21 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 
         private void m_pTOCTreeView_Disposed(object sender, EventArgs e)
         {
-            TreeViewEvent.ChildLayersDeleted -= new TreeViewEvent.ChildLayersDeletedHandler(this.TreeViewEvent_ChildLayersDeleted);
-            TreeViewEvent.GroupLayerAddLayerChanged -= new TreeViewEvent.GroupLayerAddLayerChangedHandler(this.TreeViewEvent_GroupLayerAddLayerChanged);
-            TreeViewEvent.LayerPropertyChanged -= new TreeViewEvent.LayerPropertyChangedHandler(this.TreeViewEvent_LayerPropertyChanged);
-            TreeViewEvent.LayerVisibleChanged -= new TreeViewEvent.LayerVisibleChangedHandler(this.TreeViewEvent_LayerVisibleChanged);
-            TreeViewEvent.LayerNameChanged -= new TreeViewEvent.LayerNameChangedHandler(this.TreeViewEvent_LayerNameChanged);
+            TreeViewEvent.ChildLayersDeleted -=
+                new TreeViewEvent.ChildLayersDeletedHandler(this.TreeViewEvent_ChildLayersDeleted);
+            TreeViewEvent.GroupLayerAddLayerChanged -=
+                new TreeViewEvent.GroupLayerAddLayerChangedHandler(this.TreeViewEvent_GroupLayerAddLayerChanged);
+            TreeViewEvent.LayerPropertyChanged -=
+                new TreeViewEvent.LayerPropertyChangedHandler(this.TreeViewEvent_LayerPropertyChanged);
+            TreeViewEvent.LayerVisibleChanged -=
+                new TreeViewEvent.LayerVisibleChangedHandler(this.TreeViewEvent_LayerVisibleChanged);
+            TreeViewEvent.LayerNameChanged -=
+                new TreeViewEvent.LayerNameChangedHandler(this.TreeViewEvent_LayerNameChanged);
             TreeViewEvent.MapNameChanged -= new TreeViewEvent.MapNameChangedHandler(this.TreeViewEvent_MapNameChanged);
         }
 
-        private void m_pTOCTreeView_NodeReordered(TOCTreeNode pFirstOldParent, TOCTreeNode FirstNode, TOCTreeNode pLastOldParent, TOCTreeNode LastNode)
+        private void m_pTOCTreeView_NodeReordered(TOCTreeNode pFirstOldParent, TOCTreeNode FirstNode,
+            TOCTreeNode pLastOldParent, TOCTreeNode LastNode)
         {
         }
 
@@ -859,7 +894,8 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
             int count = reader.ReadInt32();
             byte[] buffer = reader.ReadBytes(count);
             IMemoryBlobStream stream2 = new MemoryBlobStreamClass();
-            IObjectStream pstm = new ObjectStreamClass {
+            IObjectStream pstm = new ObjectStreamClass
+            {
                 Stream = stream2
             };
             ((IMemoryBlobStreamVariant) stream2).ImportFromVariant(buffer);
@@ -894,7 +930,11 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     TOCTreeNode pNode = new TOCTreeNodeEx(name, false, true);
                     base.m_FocusMapNode = pNode;
                     base.m_FocusMapNode.NodeFont = new Font("Arial", 8f, FontStyle.Bold);
-                    Bitmap bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.layers.bmp"));
+                    Bitmap bitmap =
+                        new Bitmap(
+                            base.GetType()
+                                .Assembly.GetManifestResourceStream(
+                                    "Yutai.ArcGIS.Controls.Controls.TOCTreeview.layers.bmp"));
                     pNode.Image = bitmap;
                     pNode.Tag = this.m_pMapCtrl.Map;
                     this.m_pTOCTreeView.Nodes.Add(pNode);
@@ -903,7 +943,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
             }
             catch (Exception exception)
             {
-               Logger.Current.Error("", exception, "");
+                Logger.Current.Error("", exception, "");
             }
             this.m_pTOCTreeView.ExpandAll();
             this.m_pTOCTreeView.Calculate();
@@ -915,7 +955,8 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
         {
             object obj2;
             IMemoryBlobStream stream = new MemoryBlobStreamClass();
-            IObjectStream pstm = new ObjectStreamClass {
+            IObjectStream pstm = new ObjectStreamClass
+            {
                 Stream = stream
             };
             IPropertySet set = new PropertySetClass();
@@ -1033,10 +1074,16 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     {
                         if (this.m_pConnectActiveEvent != null)
                         {
-                            this.m_pConnectActiveEvent.ItemAdded-=(new IActiveViewEvents_ItemAddedEventHandler(this.m_pConnectActiveEvent_ItemAdded));
-                            this.m_pConnectActiveEvent.ItemDeleted-=(new IActiveViewEvents_ItemDeletedEventHandler(this.m_pConnectActiveEvent_ItemDeleted));
-                            this.m_pConnectActiveEvent.ItemReordered-=(new IActiveViewEvents_ItemReorderedEventHandler(this.m_pConnectActiveEvent_ItemReordered));
-                            this.m_pConnectActiveEvent.ContentsCleared-=(new IActiveViewEvents_ContentsClearedEventHandler(this.m_pConnectActiveEvent_ContentsCleared));
+                            this.m_pConnectActiveEvent.ItemAdded -=
+                                (new IActiveViewEvents_ItemAddedEventHandler(this.m_pConnectActiveEvent_ItemAdded));
+                            this.m_pConnectActiveEvent.ItemDeleted -=
+                                (new IActiveViewEvents_ItemDeletedEventHandler(this.m_pConnectActiveEvent_ItemDeleted));
+                            this.m_pConnectActiveEvent.ItemReordered -=
+                            (new IActiveViewEvents_ItemReorderedEventHandler(
+                                this.m_pConnectActiveEvent_ItemReordered));
+                            this.m_pConnectActiveEvent.ContentsCleared -=
+                            (new IActiveViewEvents_ContentsClearedEventHandler(
+                                this.m_pConnectActiveEvent_ContentsCleared));
                         }
                     }
                     catch
@@ -1063,10 +1110,15 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     }
                     if (this.m_pConnectActiveEvent != null)
                     {
-                        this.m_pConnectActiveEvent.ItemAdded+=(new IActiveViewEvents_ItemAddedEventHandler(this.m_pConnectActiveEvent_ItemAdded));
-                        this.m_pConnectActiveEvent.ItemDeleted+=(new IActiveViewEvents_ItemDeletedEventHandler(this.m_pConnectActiveEvent_ItemDeleted));
-                        this.m_pConnectActiveEvent.ItemReordered+=(new IActiveViewEvents_ItemReorderedEventHandler(this.m_pConnectActiveEvent_ItemReordered));
-                        this.m_pConnectActiveEvent.ContentsCleared+=(new IActiveViewEvents_ContentsClearedEventHandler(this.m_pConnectActiveEvent_ContentsCleared));
+                        this.m_pConnectActiveEvent.ItemAdded +=
+                            (new IActiveViewEvents_ItemAddedEventHandler(this.m_pConnectActiveEvent_ItemAdded));
+                        this.m_pConnectActiveEvent.ItemDeleted +=
+                            (new IActiveViewEvents_ItemDeletedEventHandler(this.m_pConnectActiveEvent_ItemDeleted));
+                        this.m_pConnectActiveEvent.ItemReordered +=
+                            (new IActiveViewEvents_ItemReorderedEventHandler(this.m_pConnectActiveEvent_ItemReordered));
+                        this.m_pConnectActiveEvent.ContentsCleared +=
+                        (new IActiveViewEvents_ContentsClearedEventHandler(
+                            this.m_pConnectActiveEvent_ContentsCleared));
                     }
                 }
                 catch (Exception)
@@ -1095,4 +1147,3 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
         }
     }
 }
-

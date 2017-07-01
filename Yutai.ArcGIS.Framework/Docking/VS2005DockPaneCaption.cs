@@ -19,7 +19,10 @@ namespace Yutai.ArcGIS.Framework.Docking
         private static Bitmap _imageButtonClose;
         private static Bitmap _imageButtonDock;
         private static Bitmap _imageButtonOptions;
-        private static TextFormatFlags _textFormat = (TextFormatFlags.EndEllipsis | TextFormatFlags.SingleLine | TextFormatFlags.VerticalCenter);
+
+        private static TextFormatFlags _textFormat = (TextFormatFlags.EndEllipsis | TextFormatFlags.SingleLine |
+                                                      TextFormatFlags.VerticalCenter);
+
         private const int _TextGapBottom = 0;
         private const int _TextGapLeft = 3;
         private const int _TextGapRight = 3;
@@ -66,7 +69,9 @@ namespace Yutai.ArcGIS.Framework.Docking
             {
                 if (base.DockPane.IsActivated)
                 {
-                    using (LinearGradientBrush brush = new LinearGradientBrush(base.ClientRectangle, ActiveBackColorGradientBegin, ActiveBackColorGradientEnd, LinearGradientMode.Vertical))
+                    using (
+                        LinearGradientBrush brush = new LinearGradientBrush(base.ClientRectangle,
+                            ActiveBackColorGradientBegin, ActiveBackColorGradientEnd, LinearGradientMode.Vertical))
                     {
                         brush.Blend = ActiveBackColorGradientBlend;
                         g.FillRectangle(brush, base.ClientRectangle);
@@ -93,7 +98,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                 }
                 clientRectangle.Y += TextGapTop;
                 clientRectangle.Height -= TextGapTop + TextGapBottom;
-                TextRenderer.DrawText(g, base.DockPane.CaptionText, TextFont, DrawHelper.RtlTransform(this, clientRectangle), this.TextColor, this.TextFormat);
+                TextRenderer.DrawText(g, base.DockPane.CaptionText, TextFont,
+                    DrawHelper.RtlTransform(this, clientRectangle), this.TextColor, this.TextFormat);
             }
         }
 
@@ -155,7 +161,7 @@ namespace Yutai.ArcGIS.Framework.Docking
             int num3 = (clientRectangle.Height - ButtonGapTop) - ButtonGapBottom;
             if (height < num3)
             {
-                width *= num3 / height;
+                width *= num3/height;
                 height = num3;
             }
             Size size = new Size(width, height);
@@ -174,10 +180,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         private static Color ActiveBackColorGradientBegin
         {
-            get
-            {
-                return SystemColors.GradientActiveCaption;
-            }
+            get { return SystemColors.GradientActiveCaption; }
         }
 
         private static Blend ActiveBackColorGradientBlend
@@ -186,8 +189,9 @@ namespace Yutai.ArcGIS.Framework.Docking
             {
                 if (_activeBackColorGradientBlend == null)
                 {
-                    Blend blend = new Blend(2) {
-                        Factors = new float[] { 0.5f, 1f }
+                    Blend blend = new Blend(2)
+                    {
+                        Factors = new float[] {0.5f, 1f}
                     };
                     float[] numArray = new float[2];
                     numArray[1] = 1f;
@@ -200,18 +204,12 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         private static Color ActiveBackColorGradientEnd
         {
-            get
-            {
-                return SystemColors.ActiveCaption;
-            }
+            get { return SystemColors.ActiveCaption; }
         }
 
         private static Color ActiveTextColor
         {
-            get
-            {
-                return SystemColors.ActiveCaptionText;
-            }
+            get { return SystemColors.ActiveCaptionText; }
         }
 
         private InertButton ButtonAutoHide
@@ -246,42 +244,27 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         private static int ButtonGapBetween
         {
-            get
-            {
-                return 1;
-            }
+            get { return 1; }
         }
 
         private static int ButtonGapBottom
         {
-            get
-            {
-                return 1;
-            }
+            get { return 1; }
         }
 
         private static int ButtonGapLeft
         {
-            get
-            {
-                return 1;
-            }
+            get { return 1; }
         }
 
         private static int ButtonGapRight
         {
-            get
-            {
-                return 2;
-            }
+            get { return 2; }
         }
 
         private static int ButtonGapTop
         {
-            get
-            {
-                return 2;
-            }
+            get { return 2; }
         }
 
         private InertButton ButtonOptions
@@ -303,16 +286,15 @@ namespace Yutai.ArcGIS.Framework.Docking
         {
             get
             {
-                return ((base.DockPane.ActiveContent != null) ? base.DockPane.ActiveContent.DockHandler.CloseButton : false);
+                return ((base.DockPane.ActiveContent != null)
+                    ? base.DockPane.ActiveContent.DockHandler.CloseButton
+                    : false);
             }
         }
 
         private IContainer Components
         {
-            get
-            {
-                return this.m_components;
-            }
+            get { return this.m_components; }
         }
 
         private static Bitmap ImageButtonAutoHide
@@ -379,34 +361,22 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         private static Color InactiveTextColor
         {
-            get
-            {
-                return SystemColors.ControlText;
-            }
+            get { return SystemColors.ControlText; }
         }
 
         private bool ShouldShowAutoHideButton
         {
-            get
-            {
-                return !base.DockPane.IsFloat;
-            }
+            get { return !base.DockPane.IsFloat; }
         }
 
         private Color TextColor
         {
-            get
-            {
-                return (base.DockPane.IsActivated ? ActiveTextColor : InactiveTextColor);
-            }
+            get { return (base.DockPane.IsActivated ? ActiveTextColor : InactiveTextColor); }
         }
 
         private static Font TextFont
         {
-            get
-            {
-                return SystemInformation.MenuFont;
-            }
+            get { return SystemInformation.MenuFont; }
         }
 
         private TextFormatFlags TextFormat
@@ -423,34 +393,22 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         private static int TextGapBottom
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         private static int TextGapLeft
         {
-            get
-            {
-                return 3;
-            }
+            get { return 3; }
         }
 
         private static int TextGapRight
         {
-            get
-            {
-                return 3;
-            }
+            get { return 3; }
         }
 
         private static int TextGapTop
         {
-            get
-            {
-                return 2;
-            }
+            get { return 2; }
         }
 
         private static string ToolTipAutoHide
@@ -514,28 +472,18 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             private VS2005DockPaneCaption DockPaneCaption
             {
-                get
-                {
-                    return this.m_dockPaneCaption;
-                }
+                get { return this.m_dockPaneCaption; }
             }
 
             public override Bitmap Image
             {
-                get
-                {
-                    return (this.IsAutoHide ? this.m_imageAutoHide : this.m_image);
-                }
+                get { return (this.IsAutoHide ? this.m_imageAutoHide : this.m_image); }
             }
 
             public bool IsAutoHide
             {
-                get
-                {
-                    return this.DockPaneCaption.DockPane.IsAutoHide;
-                }
+                get { return this.DockPaneCaption.DockPane.IsAutoHide; }
             }
         }
     }
 }
-

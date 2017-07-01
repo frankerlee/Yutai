@@ -33,28 +33,36 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
             this.imageListBox.ItemHeight = 25;
         }
 
- private void imageListBox_DrawItem(object sender, DrawItemEventArgs e)
+        private void imageListBox_DrawItem(object sender, DrawItemEventArgs e)
         {
             if (((e.Index >= 0) && (this.imageListBox.Items.Count > 0)) && (e.Index < this.imageListBox.Items.Count))
             {
                 e.DrawBackground();
                 e.DrawFocusRectangle();
-                if (((this.ImageList == null) || (this.ImageList.Images.Count == 0)) || (e.Index == (this.imageListBox.Items.Count - 1)))
+                if (((this.ImageList == null) || (this.ImageList.Images.Count == 0)) ||
+                    (e.Index == (this.imageListBox.Items.Count - 1)))
                 {
-                    e.Graphics.DrawImage(this.image_0, new Rectangle(e.Bounds.X + 2, e.Bounds.Y + 5, this.image_0.Width, this.image_0.Height));
-                    e.Graphics.DrawString(this.imageListBox.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), (float) ((e.Bounds.X + 16) + 3), (float) (e.Bounds.Y + 5));
+                    e.Graphics.DrawImage(this.image_0,
+                        new Rectangle(e.Bounds.X + 2, e.Bounds.Y + 5, this.image_0.Width, this.image_0.Height));
+                    e.Graphics.DrawString(this.imageListBox.Items[e.Index].ToString(), e.Font,
+                        new SolidBrush(e.ForeColor), (float) ((e.Bounds.X + 16) + 3), (float) (e.Bounds.Y + 5));
                 }
                 else
                 {
                     if (e.Index < (this.imageListBox.Items.Count - 1))
                     {
-                        e.Graphics.DrawImage(this.ImageList.Images[e.Index], new Rectangle(e.Bounds.X + 2, e.Bounds.Y + 5, this.ImageList.ImageSize.Width, this.ImageList.ImageSize.Height));
+                        e.Graphics.DrawImage(this.ImageList.Images[e.Index],
+                            new Rectangle(e.Bounds.X + 2, e.Bounds.Y + 5, this.ImageList.ImageSize.Width,
+                                this.ImageList.ImageSize.Height));
                     }
                     else
                     {
-                        e.Graphics.DrawImage(this.image_0, new Rectangle(e.Bounds.X + 2, e.Bounds.Y + 5, this.image_0.Width, this.image_0.Height));
+                        e.Graphics.DrawImage(this.image_0,
+                            new Rectangle(e.Bounds.X + 2, e.Bounds.Y + 5, this.image_0.Width, this.image_0.Height));
                     }
-                    e.Graphics.DrawString(this.imageListBox.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), (float) ((e.Bounds.X + this.ImageList.Images[e.Index].Width) + 3), (float) (e.Bounds.Y + 5));
+                    e.Graphics.DrawString(this.imageListBox.Items[e.Index].ToString(), e.Font,
+                        new SolidBrush(e.ForeColor), (float) ((e.Bounds.X + this.ImageList.Images[e.Index].Width) + 3),
+                        (float) (e.Bounds.Y + 5));
                 }
             }
         }
@@ -77,7 +85,7 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
             base.Size = new Size(this.imageListBox.Size.Width, this.imageListBox.Size.Height);
         }
 
- private void ItemImagesContainer_Load(object sender, EventArgs e)
+        private void ItemImagesContainer_Load(object sender, EventArgs e)
         {
             this.imageListBox.SelectedIndex = -1;
         }
@@ -93,10 +101,7 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible), Browsable(false)]
         public System.Windows.Forms.ImageList ImageList
         {
-            get
-            {
-                return this.imageList_0;
-            }
+            get { return this.imageList_0; }
             set
             {
                 this.imageList_0 = value;
@@ -120,25 +125,15 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
 
         public Image ListBoxIcon
         {
-            get
-            {
-                return this.image_0;
-            }
+            get { return this.image_0; }
         }
 
         public string SelectedItem
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
 
         public delegate void AfterSelectEventHandler(bool bool_0);
     }
 }
-

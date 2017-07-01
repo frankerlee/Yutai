@@ -17,7 +17,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.InitializeComponent();
         }
 
- private void RepresentationRuleListBox1_Load(object sender, EventArgs e)
+        private void RepresentationRuleListBox1_Load(object sender, EventArgs e)
         {
             int num;
             IRepresentationRule rule;
@@ -27,4 +27,3 @@ namespace Yutai.ArcGIS.Carto.UI
         }
     }
 }
-

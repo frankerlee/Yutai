@@ -17,8 +17,13 @@ namespace Yutai.Plugins.TableEditor.Functions.String
             _description = "Right 函数可从字符串右侧返回指定数目的字符。";
             _parameters = new List<Parameter>()
             {
-                new Parameter() { Order = 0, Name = "string", Description = "必需的。从其中返回字符的字符串。"},
-                new Parameter() { Order = 1, Name = "length", Description = @"必需的。规定返回多少字符。如果设置为 0，则返回空字符串 ("")。如果设置为大于或等于字符串的长度，则返回整个的字符串。"}
+                new Parameter() {Order = 0, Name = "string", Description = "必需的。从其中返回字符的字符串。"},
+                new Parameter()
+                {
+                    Order = 1,
+                    Name = "length",
+                    Description = @"必需的。规定返回多少字符。如果设置为 0，则返回空字符串 ("")。如果设置为大于或等于字符串的长度，则返回整个的字符串。"
+                }
             };
         }
     }

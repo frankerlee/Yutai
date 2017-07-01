@@ -31,7 +31,7 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
             this.InitializeComponent();
         }
 
-       
+
         public void Apply()
         {
             if (this.m_IsPageDirty)
@@ -47,10 +47,13 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
                 catch
                 {
                 }
-                this.m_pGpsDisplayProperties.BaseMarkerSymbol = (this.btnBaseMarkerSymbol.Style as IClone).Clone() as IMarkerSymbol;
-                this.m_pGpsDisplayProperties.EstimatedPositionSymbol = (this.btnEstimatedPositionSymbol.Style as IClone).Clone() as IMarkerSymbol;
+                this.m_pGpsDisplayProperties.BaseMarkerSymbol =
+                    (this.btnBaseMarkerSymbol.Style as IClone).Clone() as IMarkerSymbol;
+                this.m_pGpsDisplayProperties.EstimatedPositionSymbol =
+                    (this.btnEstimatedPositionSymbol.Style as IClone).Clone() as IMarkerSymbol;
                 this.m_pGpsDisplayProperties.AltitudeUnits = (esriUnits) this.cboAltitudeUnits.SelectedIndex;
-                this.m_pGpsDisplayProperties.LatLongDisplayFormat = (esriGpsLatLongFormat) this.cboLatLongDisplayFormat.SelectedIndex;
+                this.m_pGpsDisplayProperties.LatLongDisplayFormat =
+                    (esriGpsLatLongFormat) this.cboLatLongDisplayFormat.SelectedIndex;
                 this.m_pGpsDisplayProperties.SpeedUnits = (esriGpsSpeedUnits) this.cboSpeedUnits.SelectedIndex;
             }
         }
@@ -166,11 +169,11 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
             }
         }
 
- private void groupBox2_Enter(object sender, EventArgs e)
+        private void groupBox2_Enter(object sender, EventArgs e)
         {
         }
 
- public void ResetControl()
+        public void ResetControl()
         {
         }
 
@@ -198,47 +201,28 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.m_IsPageDirty;
-            }
+            get { return this.m_IsPageDirty; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public IStyleGallery StyleGallery
         {
-            set
-            {
-                this.m_pSG = value;
-            }
+            set { this.m_pSG = value; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.m_Title;
-            }
-            set
-            {
-                this.m_Title = value;
-            }
+            get { return this.m_Title; }
+            set { this.m_Title = value; }
         }
     }
 }
-

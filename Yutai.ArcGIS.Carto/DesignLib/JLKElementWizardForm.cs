@@ -36,7 +36,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 case 1:
                     this.elementTypeSelectPage_0.Visible = true;
                     this.elementPosition_0.Visible = false;
-                    if ((ElementWizardHelp.ElementType < ElementType.JoinTable) || (ElementWizardHelp.ElementType >= ElementType.CustomLegend))
+                    if ((ElementWizardHelp.ElementType < ElementType.JoinTable) ||
+                        (ElementWizardHelp.ElementType >= ElementType.CustomLegend))
                     {
                         if (ElementWizardHelp.ElementType == ElementType.Legend)
                         {
@@ -55,7 +56,9 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                         {
                             this.legendTitleUserControl_0.Visible = false;
                         }
-                        else if (((ElementWizardHelp.ElementType == ElementType.ScaleBar) || (ElementWizardHelp.ElementType == ElementType.ScaleText)) || (ElementWizardHelp.ElementType == ElementType.North))
+                        else if (((ElementWizardHelp.ElementType == ElementType.ScaleBar) ||
+                                  (ElementWizardHelp.ElementType == ElementType.ScaleText)) ||
+                                 (ElementWizardHelp.ElementType == ElementType.North))
                         {
                             this.btnNext.Text = "下一步>";
                             this.elementSymbolSetPage_0.Visible = false;
@@ -97,7 +100,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 case 0:
                     this.elementTypeSelectPage_0.Apply();
                     this.elementTypeSelectPage_0.Visible = false;
-                    if ((ElementWizardHelp.ElementType < ElementType.JoinTable) || (ElementWizardHelp.ElementType >= ElementType.CustomLegend))
+                    if ((ElementWizardHelp.ElementType < ElementType.JoinTable) ||
+                        (ElementWizardHelp.ElementType >= ElementType.CustomLegend))
                     {
                         if (ElementWizardHelp.ElementType == ElementType.OLE)
                         {
@@ -111,7 +115,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 case 1:
                     this.elementPosition_0.Apply();
                     this.elementPosition_0.Visible = false;
-                    if ((ElementWizardHelp.ElementType < ElementType.JoinTable) || (ElementWizardHelp.ElementType >= ElementType.CustomLegend))
+                    if ((ElementWizardHelp.ElementType < ElementType.JoinTable) ||
+                        (ElementWizardHelp.ElementType >= ElementType.CustomLegend))
                     {
                         if (ElementWizardHelp.ElementType == ElementType.OLE)
                         {
@@ -127,7 +132,9 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                             this.legendTitleUserControl_0.Legend = ElementWizardHelp.Style as ILegend;
                             this.legendTitleUserControl_0.Visible = true;
                         }
-                        else if (((ElementWizardHelp.ElementType == ElementType.ScaleBar) || (ElementWizardHelp.ElementType == ElementType.ScaleText)) || (ElementWizardHelp.ElementType == ElementType.North))
+                        else if (((ElementWizardHelp.ElementType == ElementType.ScaleBar) ||
+                                  (ElementWizardHelp.ElementType == ElementType.ScaleText)) ||
+                                 (ElementWizardHelp.ElementType == ElementType.North))
                         {
                             this.elementSymbolSetPage_0.SetObjects(null);
                             this.elementSymbolSetPage_0.Visible = true;
@@ -168,7 +175,9 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                                 base.DialogResult = DialogResult.OK;
                                 return;
                             }
-                            if (((ElementWizardHelp.ElementType == ElementType.ScaleBar) || (ElementWizardHelp.ElementType == ElementType.ScaleText)) || (ElementWizardHelp.ElementType == ElementType.North))
+                            if (((ElementWizardHelp.ElementType == ElementType.ScaleBar) ||
+                                 (ElementWizardHelp.ElementType == ElementType.ScaleText)) ||
+                                (ElementWizardHelp.ElementType == ElementType.North))
                             {
                                 base.DialogResult = DialogResult.OK;
                                 return;
@@ -195,11 +204,11 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                     goto Label_02C7;
             }
             this.elementPosition_0.Visible = true;
-        Label_02C7:
+            Label_02C7:
             this.int_0++;
         }
 
- private void JLKElementWizardForm_Load(object sender, EventArgs e)
+        private void JLKElementWizardForm_Load(object sender, EventArgs e)
         {
             this.elementTypeSelectPage_0.Dock = DockStyle.Fill;
             this.panel1.Controls.Add(this.elementTypeSelectPage_0);
@@ -230,4 +239,3 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         }
     }
 }
-

@@ -39,7 +39,11 @@ namespace Yutai.Plugins.Catalog.Commands
                 bool flag;
                 if (_context.GxSelection != null)
                 {
-                    flag = (!(((IGxSelection) _context.GxSelection).FirstObject is IGxDataset) || (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).DatasetName.Type != esriDatasetType.esriDTFeatureDataset ? false : true);
+                    flag = (!(((IGxSelection) _context.GxSelection).FirstObject is IGxDataset) ||
+                            (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).DatasetName.Type !=
+                            esriDatasetType.esriDTFeatureDataset
+                        ? false
+                        : true);
                 }
                 else
                 {
@@ -59,7 +63,8 @@ namespace Yutai.Plugins.Catalog.Commands
         {
             frmCreateTopologySet _frmCreateTopologySet = new frmCreateTopologySet()
             {
-                m_pFeatDataset = (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Dataset as IFeatureDataset
+                m_pFeatDataset =
+                    (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Dataset as IFeatureDataset
             };
             if (_frmCreateTopologySet.ShowDialog() == DialogResult.OK)
             {

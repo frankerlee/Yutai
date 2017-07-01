@@ -68,7 +68,8 @@ namespace Yutai.ArcGIS.Carto.UI
                         this.itextSymbol_0.Angle = 0.0;
                         this.bool_0 = false;
                         this.txtAngle.Text = this.double_0.ToString("0.###");
-                        this.txtCharacterSpace.Text = (this.itextSymbol_0 as IFormattedTextSymbol).CharacterSpacing.ToString();
+                        this.txtCharacterSpace.Text =
+                            (this.itextSymbol_0 as IFormattedTextSymbol).CharacterSpacing.ToString();
                         this.txtLeading.Text = (this.itextSymbol_0 as IFormattedTextSymbol).Leading.ToString("#.##");
                         switch (this.esriTextHorizontalAlignment_0)
                         {
@@ -102,15 +103,17 @@ namespace Yutai.ArcGIS.Carto.UI
         {
         }
 
- private void method_0()
+        private void method_0()
         {
             if (this.itextElement_0 != null)
             {
                 this.txtString.Text = this.itextElement_0.Text;
                 stdole.IFontDisp font = this.itextElement_0.Symbol.Font;
                 this.txtFontInfo.Text = font.Name + " " + font.Size.ToString();
-                this.esriTextHorizontalAlignment_0 = (this.itextElement_0 as ISymbolCollectionElement).HorizontalAlignment;
-                this.txtCharacterSpace.Text = (this.itextElement_0 as ISymbolCollectionElement).CharacterSpacing.ToString();
+                this.esriTextHorizontalAlignment_0 =
+                    (this.itextElement_0 as ISymbolCollectionElement).HorizontalAlignment;
+                this.txtCharacterSpace.Text =
+                    (this.itextElement_0 as ISymbolCollectionElement).CharacterSpacing.ToString();
                 this.txtLeading.Text = (this.itextElement_0 as ISymbolCollectionElement).Leading.ToString("0.##");
                 this.double_0 = this.itextSymbol_0.Angle;
                 this.txtAngle.Text = this.double_0.ToString("0.###");
@@ -237,7 +240,8 @@ namespace Yutai.ArcGIS.Carto.UI
             {
                 try
                 {
-                    (this.itextSymbol_0 as IFormattedTextSymbol).CharacterSpacing = double.Parse(this.txtCharacterSpace.Text);
+                    (this.itextSymbol_0 as IFormattedTextSymbol).CharacterSpacing =
+                        double.Parse(this.txtCharacterSpace.Text);
                     this.method_1();
                 }
                 catch
@@ -273,39 +277,23 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

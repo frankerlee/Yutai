@@ -46,7 +46,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
 
         private void btnAddGemoetricEffic_Click(object sender, EventArgs e)
         {
-            frmGeometricEffectList list = new frmGeometricEffectList {
+            frmGeometricEffectList list = new frmGeometricEffectList
+            {
                 BasicSymbolLayerBaseControl = this.m_pControl
             };
             if ((list.ShowDialog() == DialogResult.OK) && (this.m_pControl != null))
@@ -60,11 +61,12 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
             this.contextMenuStrip1.Show(this, this.btnChangeEffic.Right, this.btnChangeEffic.Bottom);
         }
 
- private Control FindControl(int id)
+        private Control FindControl(int id)
         {
             for (int i = 0; i < base.Controls.Count; i++)
             {
-                if ((!(base.Controls[i] is Label) && (base.Controls[i].Tag != null)) && ((base.Controls[i].Tag is int) && (id == ((int) base.Controls[i].Tag))))
+                if ((!(base.Controls[i] is Label) && (base.Controls[i].Tag != null)) &&
+                    ((base.Controls[i].Tag is int) && (id == ((int) base.Controls[i].Tag))))
                 {
                     return base.Controls[i];
                 }
@@ -91,7 +93,7 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
             }
         }
 
- private void txtStart_Leave(object sender, EventArgs e)
+        private void txtStart_Leave(object sender, EventArgs e)
         {
             double val = 0.0;
             try
@@ -115,7 +117,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
 
         private void 修改ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmGeometricEffectList list = new frmGeometricEffectList {
+            frmGeometricEffectList list = new frmGeometricEffectList
+            {
                 BasicSymbolLayerBaseControl = this.m_pControl
             };
             if ((list.ShowDialog() == DialogResult.OK) && (this.m_pControl != null))
@@ -125,4 +128,3 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
         }
     }
 }
-

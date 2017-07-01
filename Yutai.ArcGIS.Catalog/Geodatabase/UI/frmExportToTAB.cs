@@ -23,7 +23,5 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 base.Close();
             }
         }
-
-
     }
 }

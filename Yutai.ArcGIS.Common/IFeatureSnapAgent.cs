@@ -13,4 +13,3 @@ namespace Yutai.ArcGIS.Common
         int GeometryHitType { get; set; }
     }
 }
-

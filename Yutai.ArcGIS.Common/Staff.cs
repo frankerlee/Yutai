@@ -14,51 +14,26 @@
 
         public string LoginName
         {
-            get
-            {
-                return this.string_1;
-            }
-            set
-            {
-                this.string_1 = value;
-            }
+            get { return this.string_1; }
+            set { this.string_1 = value; }
         }
 
         public string Password
         {
-            get
-            {
-                return this.string_3;
-            }
-            set
-            {
-                this.string_3 = value;
-            }
+            get { return this.string_3; }
+            set { this.string_3 = value; }
         }
 
         public string RealName
         {
-            get
-            {
-                return this.string_2;
-            }
-            set
-            {
-                this.string_2 = value;
-            }
+            get { return this.string_2; }
+            set { this.string_2 = value; }
         }
 
         public string StaffID
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

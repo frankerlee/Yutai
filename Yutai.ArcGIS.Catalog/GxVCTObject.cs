@@ -14,21 +14,13 @@ namespace Yutai.ArcGIS.Catalog
     {
         private IGxCatalog igxCatalog_0 = null;
         private IGxObject igxObject_0 = null;
-        [CompilerGenerated]
-        private IGxObject igxObject_1;
+
         private IGxObjectArray igxObjectArray_0 = new GxObjectArray();
         private IWorkspace iworkspace_0 = null;
         internal VctFactory m_ConvertFactory;
         internal IWorkspace objws = null;
         private string string_0 = "";
-        [CompilerGenerated]
-        private string string_1;
-        [CompilerGenerated]
-        private string string_2;
-        [CompilerGenerated]
-        private string string_3;
-        [CompilerGenerated]
-        private string string_4;
+
         internal string TemplatePath = "";
 
         public GxVCTObject()
@@ -90,7 +82,8 @@ namespace Yutai.ArcGIS.Catalog
         {
             if (this.TemplatePath.Length == 0)
             {
-                string path = System.IO.Path.Combine(System.IO.Path.GetTempPath(), Guid.NewGuid().ToString().Replace("-", ""));
+                string path = System.IO.Path.Combine(System.IO.Path.GetTempPath(),
+                    Guid.NewGuid().ToString().Replace("-", ""));
                 Directory.CreateDirectory(path);
                 this.TemplatePath = path;
                 IWorkspaceFactory factory = new ShapefileWorkspaceFactoryClass();
@@ -103,7 +96,8 @@ namespace Yutai.ArcGIS.Catalog
         {
             if (this.objws == null)
             {
-                string path = System.IO.Path.Combine(System.IO.Path.GetTempPath(), Guid.NewGuid().ToString().Replace("-", ""));
+                string path = System.IO.Path.Combine(System.IO.Path.GetTempPath(),
+                    Guid.NewGuid().ToString().Replace("-", ""));
                 Directory.CreateDirectory(path);
                 this.TemplatePath = path;
                 IWorkspaceFactory factory = new ShapefileWorkspaceFactoryClass();
@@ -137,7 +131,8 @@ namespace Yutai.ArcGIS.Catalog
             }
             foreach (ICoConvert convert in this.m_ConvertFactory.Create(this.string_0))
             {
-                GxVCTLayerObject obj2 = new GxVCTLayerObject {
+                GxVCTLayerObject obj2 = new GxVCTLayerObject
+                {
                     VCTLayer = convert
                 };
                 obj2.Attach(this, this.igxCatalog_0);
@@ -168,39 +163,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public bool AreChildrenViewable
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
-        public string BaseName
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.string_3;
-            }
-            [CompilerGenerated]
-            protected set
-            {
-                this.string_3 = value;
-            }
-        }
+        public string BaseName { get; set; }
 
-        public string Category
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.string_4;
-            }
-            [CompilerGenerated]
-            protected set
-            {
-                this.string_4 = value;
-            }
-        }
+        public string Category { get; set; }
 
         public IEnumGxObject Children
         {
@@ -216,100 +184,43 @@ namespace Yutai.ArcGIS.Catalog
 
         public UID ClassID
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
-        public string FullName
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.string_2;
-            }
-            [CompilerGenerated]
-            protected set
-            {
-                this.string_2 = value;
-            }
-        }
+        public string FullName { get; set; }
 
         public bool HasChildren
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public IName InternalObjectName
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public bool IsValid
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public Bitmap LargeImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(6);
-            }
+            get { return ImageLib.GetSmallImage(6); }
         }
 
         public Bitmap LargeSelectedImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(7);
-            }
+            get { return ImageLib.GetSmallImage(7); }
         }
 
-        public string Name
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.string_1;
-            }
-            [CompilerGenerated]
-            protected set
-            {
-                this.string_1 = value;
-            }
-        }
+        public string Name { get; set; }
 
-        public IGxObject Parent
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.igxObject_1;
-            }
-            [CompilerGenerated]
-            protected set
-            {
-                this.igxObject_1 = value;
-            }
-        }
+        public IGxObject Parent { get; set; }
 
         public string Path
         {
-            get
-            {
-                return this.string_0;
-            }
+            get { return this.string_0; }
             set
             {
                 this.string_0 = value;
@@ -321,19 +232,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public Bitmap SmallImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(6);
-            }
+            get { return ImageLib.GetSmallImage(6); }
         }
 
         public Bitmap SmallSelectedImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(7);
-            }
+            get { return ImageLib.GetSmallImage(7); }
         }
     }
 }
-

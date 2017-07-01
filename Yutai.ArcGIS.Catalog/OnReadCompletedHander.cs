@@ -2,4 +2,3 @@
 {
     internal delegate void OnReadCompletedHander();
 }
-

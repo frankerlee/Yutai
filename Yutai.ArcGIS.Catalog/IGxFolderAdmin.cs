@@ -5,4 +5,3 @@
         IGxObject FindChildFolder(string string_0);
     }
 }
-

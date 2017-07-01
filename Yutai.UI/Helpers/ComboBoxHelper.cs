@@ -8,12 +8,14 @@ namespace Yutai.UI.Helpers
 {
     public static class ComboBoxHelper
     {
-        public static IEnumerable<ComboBoxEnumItem<T>> GetComboItems<T>(IEnumerable<T> items) where T : struct, IConvertible
+        public static IEnumerable<ComboBoxEnumItem<T>> GetComboItems<T>(IEnumerable<T> items)
+            where T : struct, IConvertible
         {
             return items.Select(item => new ComboBoxEnumItem<T>(item, EnumHelper.GetToStringFunction<T>()));
         }
 
-        public static void AddItemsFromEnum<T>(this ComboBoxAdv box, IEnumerable<T> items) where T : struct, IConvertible
+        public static void AddItemsFromEnum<T>(this ComboBoxAdv box, IEnumerable<T> items)
+            where T : struct, IConvertible
         {
             if (items == null)
             {

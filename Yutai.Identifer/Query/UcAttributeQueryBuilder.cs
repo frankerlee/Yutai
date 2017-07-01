@@ -19,7 +19,6 @@ namespace Yutai.Plugins.Identifer.Query
 
         private ITable _queryTable = null;
 
-  
 
         public ILayer CurrentLayer
         {
@@ -50,14 +49,8 @@ namespace Yutai.Plugins.Identifer.Query
 
         public string WhereCaluse
         {
-            get
-            {
-                return this.memEditWhereCaluse.Text;
-            }
-            set
-            {
-                this._whereClause = value;
-            }
+            get { return this.memEditWhereCaluse.Text; }
+            set { this._whereClause = value; }
         }
 
         public UcAttributeQueryBuilder()
@@ -131,7 +124,8 @@ namespace Yutai.Plugins.Identifer.Query
                 this.UniqueValuelist.Enabled = true;
                 this.UniqueValuelist.Items.Clear();
                 this.Fieldlist.SelectedItem.ToString();
-                this.GetUniqueValues(this._queryTable, this.Fieldlist.SelectedItem.ToString(), this.UniqueValuelist.Items);
+                this.GetUniqueValues(this._queryTable, this.Fieldlist.SelectedItem.ToString(),
+                    this.UniqueValuelist.Items);
             }
         }
 
@@ -306,7 +300,6 @@ namespace Yutai.Plugins.Identifer.Query
             this.memEditWhereCaluse.Text = "";
         }
 
-     
 
         private void Fieldlist_DoubleClick(object sender, EventArgs e)
         {
@@ -340,7 +333,6 @@ namespace Yutai.Plugins.Identifer.Query
             CommonHelper.GetUniqueValuesEx(itable_1, string_2, listBoxItemCollection_0);
         }
 
-      
 
         private ITable GetQueryTable()
         {
@@ -355,7 +347,9 @@ namespace Yutai.Plugins.Identifer.Query
             }
             else if (!(this._queryLayer is IAttributeTable))
             {
-                displayTable = (!(this._queryLayer is IFeatureLayer) ? this._queryLayer as ITable : (this._queryLayer as IFeatureLayer).FeatureClass as ITable);
+                displayTable = (!(this._queryLayer is IFeatureLayer)
+                    ? this._queryLayer as ITable
+                    : (this._queryLayer as IFeatureLayer).FeatureClass as ITable);
             }
             else
             {
@@ -381,7 +375,8 @@ namespace Yutai.Plugins.Identifer.Query
                     this.btnMatchOneChar.Text = "_";
                     this.btnMatchString.Text = "%";
                     IWorkspace workspace = (this._queryTable as IDataset).Workspace;
-                    if (workspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace && workspace.PathName != null && Path.GetExtension(workspace.PathName).ToLower() == ".mdb")
+                    if (workspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace && workspace.PathName != null &&
+                        Path.GetExtension(workspace.PathName).ToLower() == ".mdb")
                     {
                         this.btnMatchOneChar.Text = "?";
                         this.btnMatchString.Text = "*";
@@ -415,7 +410,9 @@ namespace Yutai.Plugins.Identifer.Query
                 for (int i = 0; i < fields.FieldCount; i++)
                 {
                     IField field = fields.Field[i];
-                    if ((field.Type == esriFieldType.esriFieldTypeGeometry ? false : field.Type != esriFieldType.esriFieldTypeBlob))
+                    if ((field.Type == esriFieldType.esriFieldTypeGeometry
+                        ? false
+                        : field.Type != esriFieldType.esriFieldTypeBlob))
                     {
                         listBoxItemCollection_0.Add(string.Concat(str, field.Name, str1));
                     }

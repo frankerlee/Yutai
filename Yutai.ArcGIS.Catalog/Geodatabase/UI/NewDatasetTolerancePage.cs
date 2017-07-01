@@ -46,7 +46,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
         }
 
- private void method_0()
+        private void method_0()
         {
             if (NewObjectClassHelper.m_pObjectClassHelper.IsEdit)
             {
@@ -81,7 +81,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 {
                     this.txtXYPrecision.Text = "0.000000008982923";
                     this.lblXYResolution.Text = "度";
-                    if ((NewObjectClassHelper.m_pObjectClassHelper.SpatialReference as ISpatialReference3).VerticalCoordinateSystem == null)
+                    if (
+                        (NewObjectClassHelper.m_pObjectClassHelper.SpatialReference as ISpatialReference3)
+                            .VerticalCoordinateSystem == null)
                     {
                         this.lblZResolution.Text = "未知单位";
                     }
@@ -95,7 +97,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 {
                     this.txtXYPrecision.Text = "0.001";
                     this.lblXYResolution.Text = "米";
-                    if ((NewObjectClassHelper.m_pObjectClassHelper.SpatialReference as ISpatialReference3).VerticalCoordinateSystem == null)
+                    if (
+                        (NewObjectClassHelper.m_pObjectClassHelper.SpatialReference as ISpatialReference3)
+                            .VerticalCoordinateSystem == null)
                     {
                         this.lblZResolution.Text = "未知单位";
                     }
@@ -106,7 +110,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     this.lblMResolution.Text = "未知单位";
                 }
             }
-            if (!((NewObjectClassHelper.m_pObjectClassHelper.FeatureDataset == null) || NewObjectClassHelper.m_pObjectClassHelper.IsEdit))
+            if (
+                !((NewObjectClassHelper.m_pObjectClassHelper.FeatureDataset == null) ||
+                  NewObjectClassHelper.m_pObjectClassHelper.IsEdit))
             {
                 this.groupBoxXY.Visible = false;
                 this.groupZ.Visible = false;
@@ -161,4 +167,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

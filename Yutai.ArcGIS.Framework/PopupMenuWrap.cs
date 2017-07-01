@@ -30,7 +30,8 @@ namespace Yutai.ArcGIS.Framework
             if (menuItemDef.HasSubMenu)
             {
                 this.ClearSubItem(menuItemDef.Name);
-                this.AddSubmenuItem(menuItemDef.Name, menuItemDef.Caption, string.IsNullOrEmpty(menuItemDef.MainMenuItem) ? "" : menuItemDef.MainMenuItem, flag);
+                this.AddSubmenuItem(menuItemDef.Name, menuItemDef.Caption,
+                    string.IsNullOrEmpty(menuItemDef.MainMenuItem) ? "" : menuItemDef.MainMenuItem, flag);
             }
             else
             {
@@ -40,7 +41,8 @@ namespace Yutai.ArcGIS.Framework
                     item = this.popupMenu_0.Manager.Items[menuItemDef.MainMenuItem] as BarSubItem;
                     if (item == null)
                     {
-                        item = new BarSubItem {
+                        item = new BarSubItem
+                        {
                             Name = menuItemDef.MainMenuItem
                         };
                         this.popupMenu_0.Manager.Items.Add(item);
@@ -108,7 +110,8 @@ namespace Yutai.ArcGIS.Framework
                 item = this.popupMenu_0.Manager.Items[string_1] as BarSubItem;
                 if (item == null)
                 {
-                    item = new BarSubItem {
+                    item = new BarSubItem
+                    {
                         Name = string_1
                     };
                     this.popupMenu_0.Manager.Items.Add(item);
@@ -176,7 +179,8 @@ namespace Yutai.ArcGIS.Framework
                 item = this.popupMenu_0.Manager.Items[string_2] as BarSubItem;
                 if (item == null)
                 {
-                    item = new BarSubItem {
+                    item = new BarSubItem
+                    {
                         Name = string_2
                     };
                     this.popupMenu_0.Manager.Items.Add(item);
@@ -194,7 +198,8 @@ namespace Yutai.ArcGIS.Framework
             item2 = this.popupMenu_0.Manager.Items[string_0] as BarSubItem;
             if (item2 == null)
             {
-                item2 = new BarSubItem {
+                item2 = new BarSubItem
+                {
                     Name = string_0
                 };
                 if ((string_1 != null) && (string_1.Length > 0))
@@ -265,7 +270,7 @@ namespace Yutai.ArcGIS.Framework
                         command = this.method_0(menuItemDef_0.Path).LoadClass(menuItemDef_0.ClassName) as ICommand;
                         if (command != null)
                         {
-                           // command.OnCreate(null);
+                            // command.OnCreate(null);
                             if (menuItemDef_0.SubType != null)
                             {
                                 try
@@ -328,7 +333,7 @@ namespace Yutai.ArcGIS.Framework
             {
                 item.Glyph = new Bitmap(menuItemDef_0.BitmapPath);
             }
-        Label_01E8:
+            Label_01E8:
             if (command.Category != null)
             {
                 if (command.Category.Length > 0)
@@ -433,10 +438,7 @@ namespace Yutai.ArcGIS.Framework
 
         public bool Visible
         {
-            get
-            {
-                return this.popupMenu_0.Visible;
-            }
+            get { return this.popupMenu_0.Visible; }
             set
             {
                 if (!value)
@@ -447,4 +449,3 @@ namespace Yutai.ArcGIS.Framework
         }
     }
 }
-

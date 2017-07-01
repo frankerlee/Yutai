@@ -32,12 +32,14 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             if (this.m_IsPageDirty)
             {
                 this.m_IsPageDirty = false;
-                m_pMapGrid.SetTickVisibility(this.chkMainLeft.Checked, this.chkMainTop.Checked, this.chkMainRight.Checked, this.chkMainBottom.Checked);
+                m_pMapGrid.SetTickVisibility(this.chkMainLeft.Checked, this.chkMainTop.Checked,
+                    this.chkMainRight.Checked, this.chkMainBottom.Checked);
                 m_pMapGrid.TickLineSymbol = this.btnStyle.Style as ILineSymbol;
                 double num = (double) this.txtTickLength.Value;
                 num = (this.rdoTickPalce.SelectedIndex == 0) ? -num : num;
                 m_pMapGrid.TickLength = num;
-                m_pMapGrid.SetSubTickVisibility(this.chkSubLeft.Checked, this.chkSubTop.Checked, this.chkSubRight.Checked, this.chkSubBottom.Checked);
+                m_pMapGrid.SetSubTickVisibility(this.chkSubLeft.Checked, this.chkSubTop.Checked,
+                    this.chkSubRight.Checked, this.chkSubBottom.Checked);
                 m_pMapGrid.SubTickLineSymbol = this.btnSubStyle.Style as ILineSymbol;
                 num = (double) this.txtSubTickLength.Value;
                 num = (this.rdoSubTickPlace.SelectedIndex == 0) ? -num : num;
@@ -121,7 +123,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- private void GridAxisPropertyPage_Load(object sender, EventArgs e)
+        private void GridAxisPropertyPage_Load(object sender, EventArgs e)
         {
             this.Text = "坐标轴";
             if (m_pMapGrid != null)
@@ -169,7 +171,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         {
         }
 
- private void rdoTickPalce_SelectedIndexChanged(object sender, EventArgs e)
+        private void rdoTickPalce_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.m_CanDo)
             {
@@ -204,39 +206,23 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.m_IsPageDirty;
-            }
+            get { return this.m_IsPageDirty; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.m_Title;
-            }
-            set
-            {
-                this.m_Title = value;
-            }
+            get { return this.m_Title; }
+            set { this.m_Title = value; }
         }
     }
 }
-

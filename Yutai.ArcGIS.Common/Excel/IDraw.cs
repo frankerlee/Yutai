@@ -9,4 +9,3 @@
         System.Drawing.Rectangle Rectangle { get; set; }
     }
 }
-

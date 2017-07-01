@@ -45,7 +45,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnExpress_Click(object sender, EventArgs e)
         {
-            frmExpressionSet set = new frmExpressionSet {
+            frmExpressionSet set = new frmExpressionSet
+            {
                 LabelExpression = this.string_0,
                 AnnotationExpressionEngine = this.iannotationExpressionEngine_0,
                 IsExpressionSimple = this.bool_1,
@@ -57,7 +58,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 this.iannotationExpressionEngine_0 = set.AnnotationExpressionEngine;
                 this.bool_1 = set.IsExpressionSimple;
                 (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).Expression = this.string_0;
-                (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).ExpressionParser = this.iannotationExpressionEngine_0;
+                (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).ExpressionParser =
+                    this.iannotationExpressionEngine_0;
                 (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).IsExpressionSimple = this.bool_1;
                 int index = this.string_0.IndexOf("[", 1);
                 IFields fields = this.igeoFeatureLayer_0.FeatureClass.Fields;
@@ -88,12 +90,13 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnScaleSet_Click(object sender, EventArgs e)
         {
-            new frmAnnoScaleSet { AnnotateLayerProperties = this.iannotateLayerProperties_0 }.ShowDialog();
+            new frmAnnoScaleSet {AnnotateLayerProperties = this.iannotateLayerProperties_0}.ShowDialog();
         }
 
         private void btnSQL_Click(object sender, EventArgs e)
         {
-            frmAttributeQueryBuilder builder = new frmAttributeQueryBuilder {
+            frmAttributeQueryBuilder builder = new frmAttributeQueryBuilder
+            {
                 Table = this.igeoFeatureLayer_0.FeatureClass as ITable,
                 WhereCaluse = this.iannotateLayerProperties_0.WhereClause
             };
@@ -120,34 +123,43 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void chkBelow_Right_CheckedChanged(object sender, EventArgs e)
         {
-            ILineLabelPosition lineLabelPosition = (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties.LineLabelPosition;
+            ILineLabelPosition lineLabelPosition =
+                (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties
+                    .LineLabelPosition;
             lineLabelPosition.Right = this.chkBelow_Right.Checked;
             if (!this.chkBelow_Right.Checked)
             {
                 lineLabelPosition.Below = false;
             }
-            (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties.LineLabelPosition = lineLabelPosition;
+            (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties
+                .LineLabelPosition = lineLabelPosition;
         }
 
         private void chkOnTop_CheckedChanged(object sender, EventArgs e)
         {
-            ILineLabelPosition lineLabelPosition = (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties.LineLabelPosition;
+            ILineLabelPosition lineLabelPosition =
+                (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties
+                    .LineLabelPosition;
             lineLabelPosition.OnTop = this.chkOnTop.Checked;
-            (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties.LineLabelPosition = lineLabelPosition;
+            (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties
+                .LineLabelPosition = lineLabelPosition;
         }
 
         private void chkTop_Left_CheckedChanged(object sender, EventArgs e)
         {
-            ILineLabelPosition lineLabelPosition = (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties.LineLabelPosition;
+            ILineLabelPosition lineLabelPosition =
+                (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties
+                    .LineLabelPosition;
             lineLabelPosition.Left = this.chkTop_Left.Checked;
             if (!this.chkTop_Left.Checked)
             {
                 lineLabelPosition.Above = false;
             }
-            (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties.LineLabelPosition = lineLabelPosition;
+            (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties
+                .LineLabelPosition = lineLabelPosition;
         }
 
- private void LineLabelSetCtrl_Load(object sender, EventArgs e)
+        private void LineLabelSetCtrl_Load(object sender, EventArgs e)
         {
             this.method_0();
             this.bool_2 = true;
@@ -155,21 +167,31 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void method_0()
         {
-            if (((this.igeoFeatureLayer_0 != null) && (this.iannotateLayerProperties_0 != null)) && (this.igeoFeatureLayer_0.FeatureClass != null))
+            if (((this.igeoFeatureLayer_0 != null) && (this.iannotateLayerProperties_0 != null)) &&
+                (this.igeoFeatureLayer_0.FeatureClass != null))
             {
                 this.bool_0 = false;
                 IFields fields = this.igeoFeatureLayer_0.FeatureClass.Fields;
                 for (int i = 0; i < fields.FieldCount; i++)
                 {
                     IField field = fields.get_Field(i);
-                    if (((((field.Type == esriFieldType.esriFieldTypeDate) || (field.Type == esriFieldType.esriFieldTypeDouble)) || ((field.Type == esriFieldType.esriFieldTypeGlobalID) || (field.Type == esriFieldType.esriFieldTypeGUID))) || (((field.Type == esriFieldType.esriFieldTypeInteger) || (field.Type == esriFieldType.esriFieldTypeOID)) || ((field.Type == esriFieldType.esriFieldTypeSingle) || (field.Type == esriFieldType.esriFieldTypeSmallInteger)))) || (field.Type == esriFieldType.esriFieldTypeString))
+                    if (((((field.Type == esriFieldType.esriFieldTypeDate) ||
+                           (field.Type == esriFieldType.esriFieldTypeDouble)) ||
+                          ((field.Type == esriFieldType.esriFieldTypeGlobalID) ||
+                           (field.Type == esriFieldType.esriFieldTypeGUID))) ||
+                         (((field.Type == esriFieldType.esriFieldTypeInteger) ||
+                           (field.Type == esriFieldType.esriFieldTypeOID)) ||
+                          ((field.Type == esriFieldType.esriFieldTypeSingle) ||
+                           (field.Type == esriFieldType.esriFieldTypeSmallInteger)))) ||
+                        (field.Type == esriFieldType.esriFieldTypeString))
                     {
                         this.cboFields.Properties.Items.Add(field.AliasName);
                     }
                 }
                 this.string_0 = (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).Expression.Trim();
                 this.bool_1 = (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).IsExpressionSimple;
-                this.iannotationExpressionEngine_0 = (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).ExpressionParser;
+                this.iannotationExpressionEngine_0 =
+                    (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).ExpressionParser;
                 if (this.string_0.IndexOf("[", 1) != -1)
                 {
                     this.cboFields.Enabled = false;
@@ -195,7 +217,9 @@ namespace Yutai.ArcGIS.Carto.UI
                 this.itextSymbol_0 = (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).Symbol;
                 this.symbolItem.Symbol = this.itextSymbol_0;
                 this.symbolItem.Invalidate();
-                ILineLabelPosition lineLabelPosition = (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties.LineLabelPosition;
+                ILineLabelPosition lineLabelPosition =
+                    (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties
+                        .LineLabelPosition;
                 if (lineLabelPosition.Horizontal)
                 {
                     this.rdoLineLabelPosition.SelectedIndex = 0;
@@ -213,7 +237,9 @@ namespace Yutai.ArcGIS.Carto.UI
                     this.rdoLineLabelPosition.SelectedIndex = 3;
                 }
                 this.txtOffset.Text = lineLabelPosition.Offset.ToString();
-                this.chkBelow_Right.Checked = lineLabelPosition.Below ? lineLabelPosition.Below : lineLabelPosition.Right;
+                this.chkBelow_Right.Checked = lineLabelPosition.Below
+                    ? lineLabelPosition.Below
+                    : lineLabelPosition.Right;
                 this.chkTop_Left.Checked = lineLabelPosition.Above ? lineLabelPosition.Above : lineLabelPosition.Left;
                 this.chkOnTop.Checked = lineLabelPosition.OnTop;
                 this.bool_0 = true;
@@ -224,12 +250,15 @@ namespace Yutai.ArcGIS.Carto.UI
         {
             if (this.bool_0)
             {
-                ILineLabelPosition lineLabelPosition = (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties.LineLabelPosition;
+                ILineLabelPosition lineLabelPosition =
+                    (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties
+                        .LineLabelPosition;
                 lineLabelPosition.Horizontal = this.rdoLineLabelPosition.SelectedIndex == 0;
                 lineLabelPosition.Parallel = this.rdoLineLabelPosition.SelectedIndex == 1;
                 lineLabelPosition.ProduceCurvedLabels = this.rdoLineLabelPosition.SelectedIndex == 2;
                 lineLabelPosition.Perpendicular = this.rdoLineLabelPosition.SelectedIndex == 3;
-                (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties.LineLabelPosition = lineLabelPosition;
+                (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties
+                    .LineLabelPosition = lineLabelPosition;
             }
         }
 
@@ -238,9 +267,12 @@ namespace Yutai.ArcGIS.Carto.UI
             try
             {
                 double num = double.Parse(this.txtOffset.Text);
-                ILineLabelPosition lineLabelPosition = (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties.LineLabelPosition;
+                ILineLabelPosition lineLabelPosition =
+                    (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties
+                        .LineLabelPosition;
                 lineLabelPosition.Offset = num;
-                (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties.LineLabelPosition = lineLabelPosition;
+                (this.iannotateLayerProperties_0 as ILabelEngineLayerProperties).BasicOverposterLayerProperties
+                    .LineLabelPosition = lineLabelPosition;
             }
             catch
             {
@@ -261,11 +293,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IGeoFeatureLayer GeoFeatureLayer
         {
-            set
-            {
-                this.igeoFeatureLayer_0 = value;
-            }
+            set { this.igeoFeatureLayer_0 = value; }
         }
     }
 }
-

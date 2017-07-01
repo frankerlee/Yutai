@@ -17,16 +17,18 @@ namespace Yutai.ArcGIS.Catalog.UI
             this.InitializeComponent();
         }
 
- private void frmAGSProperty_Load(object sender, EventArgs e)
+        private void frmAGSProperty_Load(object sender, EventArgs e)
         {
-            XtraTabPage page = new XtraTabPage {
+            XtraTabPage page = new XtraTabPage
+            {
                 Text = "目录"
             };
             Control control = new ServerDirectoryPropertyPage();
             (control as ServerDirectoryPropertyPage).AGSServerConnectionAdmin = this.iagsserverConnectionAdmin_0;
             page.Controls.Add(control);
             this.xtraTabControl1.TabPages.Add(page);
-            page = new XtraTabPage {
+            page = new XtraTabPage
+            {
                 Text = "计算机"
             };
             control = new ServerHostPropertyPage();
@@ -35,13 +37,9 @@ namespace Yutai.ArcGIS.Catalog.UI
             this.xtraTabControl1.TabPages.Add(page);
         }
 
- public IAGSServerConnectionAdmin AGSServerConnectionAdmin
+        public IAGSServerConnectionAdmin AGSServerConnectionAdmin
         {
-            set
-            {
-                this.iagsserverConnectionAdmin_0 = value;
-            }
+            set { this.iagsserverConnectionAdmin_0 = value; }
         }
     }
 }
-

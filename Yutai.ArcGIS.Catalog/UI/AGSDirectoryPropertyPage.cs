@@ -18,7 +18,5 @@ namespace Yutai.ArcGIS.Catalog.UI
         private void btnAdd_Click(object sender, EventArgs e)
         {
         }
-
-
     }
 }

@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Microsoft.Office.Interop.Excel;
+
 namespace Yutai.ArcGIS.Common.Excel
 {
     public class ExcelClass : IDisposable
@@ -18,7 +19,7 @@ namespace Yutai.ArcGIS.Common.Excel
             if (this._Application_0 == null)
             {
                 this._Application_0 = new ApplicationClass();
-                this._Application_0.DisplayAlerts=(false);
+                this._Application_0.DisplayAlerts = (false);
             }
         }
 
@@ -111,7 +112,8 @@ namespace Yutai.ArcGIS.Common.Excel
             string str = ((char) (int_1 + 65)).ToString();
             try
             {
-                Range range = this._Worksheet_0.get_Range(str + "1", str + this._Worksheet_0.UsedRange.Rows.Count.ToString());
+                Range range = this._Worksheet_0.get_Range(str + "1",
+                    str + this._Worksheet_0.UsedRange.Rows.Count.ToString());
                 range.Select();
                 range.Copy(obj2);
                 this.InsertCol(int_0, range.ColumnWidth);
@@ -126,7 +128,7 @@ namespace Yutai.ArcGIS.Common.Excel
             object obj2 = Missing.Value;
             string str = ((char) (int_0 + 65)).ToString();
             Range range = this._Worksheet_0.get_Range(str + "1", str + this._Worksheet_0.UsedRange.Rows.Count.ToString());
-            range.ColumnWidth=object_1;
+            range.ColumnWidth = object_1;
             range.EntireColumn.Insert((XlInsertShiftDirection) (-4121), obj2);
         }
 
@@ -153,7 +155,7 @@ namespace Yutai.ArcGIS.Common.Excel
                 object obj2 = string_0;
                 object obj3 = string_1;
                 Range range = this._Worksheet_0.get_Range(obj2, obj3);
-                range.MergeCells=(true);
+                range.MergeCells = (true);
                 return range;
             }
             return null;
@@ -161,7 +163,9 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public void OpenWorkbook(string string_0)
         {
-            this._Workbook_0 = this._Application_0.Workbooks.Open(string_0, this.object_0, this.object_0, this.object_0, this.object_0, this.object_0, this.object_0, this.object_0, this.object_0, this.object_0, this.object_0, this.object_0, this.object_0, this.object_0, this.object_0);
+            this._Workbook_0 = this._Application_0.Workbooks.Open(string_0, this.object_0, this.object_0, this.object_0,
+                this.object_0, this.object_0, this.object_0, this.object_0, this.object_0, this.object_0, this.object_0,
+                this.object_0, this.object_0, this.object_0, this.object_0);
             if (this._Workbook_0.Worksheets.Count > 0)
             {
                 object obj2 = 1;
@@ -189,7 +193,9 @@ namespace Yutai.ArcGIS.Common.Excel
         {
             if (this._Workbook_0 != null)
             {
-                this._Workbook_0.SaveAs(string_0, this.object_0, this.object_0, this.object_0, this.object_0, this.object_0, XlSaveAsAccessMode.xlShared, this.object_0, this.object_0, this.object_0, this.object_0, this.object_0);
+                this._Workbook_0.SaveAs(string_0, this.object_0, this.object_0, this.object_0, this.object_0,
+                    this.object_0, XlSaveAsAccessMode.xlShared, this.object_0, this.object_0, this.object_0,
+                    this.object_0, this.object_0);
             }
         }
 
@@ -201,7 +207,7 @@ namespace Yutai.ArcGIS.Common.Excel
                 Range range = this._Worksheet_0.get_Range(obj2, this.object_0);
                 if (range != null)
                 {
-                    range.Value2=(object_1);
+                    range.Value2 = (object_1);
                 }
                 return range;
             }
@@ -216,8 +222,8 @@ namespace Yutai.ArcGIS.Common.Excel
                 Range range = this._Worksheet_0.get_Range(obj2, this.object_0);
                 if (range != null)
                 {
-                    range.NumberFormatLocal=(string_1);
-                    range.Value2=(object_1);
+                    range.NumberFormatLocal = (string_1);
+                    range.Value2 = (object_1);
                 }
                 return range;
             }
@@ -226,10 +232,7 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public _Application Application
         {
-            get
-            {
-                return this._Application_0;
-            }
+            get { return this._Application_0; }
         }
 
         public int CurrentWorksheetIndex
@@ -270,47 +273,25 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public bool DisplayFullScreen
         {
-            get
-            {
-                return this._Application_0.DisplayFullScreen;
-            }
-            set
-            {
-                this._Application_0.DisplayFullScreen = value; 
-            }
+            get { return this._Application_0.DisplayFullScreen; }
+            set { this._Application_0.DisplayFullScreen = value; }
         }
 
         public bool Visible
         {
-            get
-            {
-                return this._Application_0.Visible;
-            }
-            set
-            {
-                this._Application_0.Visible=(value);
-            }
+            get { return this._Application_0.Visible; }
+            set { this._Application_0.Visible = (value); }
         }
 
         public _Workbook Workbook
         {
-            get
-            {
-                return this._Workbook_0;
-            }
+            get { return this._Workbook_0; }
         }
 
         public _Worksheet Worksheet
         {
-            get
-            {
-                return this._Worksheet_0;
-            }
-            set
-            {
-                this._Worksheet_0 = value;
-            }
+            get { return this._Worksheet_0; }
+            set { this._Worksheet_0 = value; }
         }
     }
 }
-

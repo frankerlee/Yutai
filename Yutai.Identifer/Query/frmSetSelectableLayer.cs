@@ -16,10 +16,9 @@ namespace Yutai.Plugins.Identifer.Query
     public partial class frmSetSelectableLayer : MetroForm
     {
         private IMap _mMap;
-       
+
         private bool _isInit = false;
 
-        
 
         public IMap FocusMap
         {
@@ -70,7 +69,7 @@ namespace Yutai.Plugins.Identifer.Query
                 object item = this.checkedListBoxControl.Items[i];
                 if (this.checkedListBoxControl.GetItemChecked(i) == false)
                 {
-                    this.checkedListBoxControl.SetItemChecked(i,true);
+                    this.checkedListBoxControl.SetItemChecked(i, true);
                     ((item as LayerItem).Value as IFeatureLayer).Selectable = true;
                 }
                 else if (this.checkedListBoxControl.GetItemChecked(i) == true)
@@ -93,7 +92,7 @@ namespace Yutai.Plugins.Identifer.Query
                 pLayer.Selectable = false;
         }
 
-    
+
         private void frmSetSelectableLayer_Load(object sender, EventArgs e)
         {
             //_layers.Clear();
@@ -125,7 +124,6 @@ namespace Yutai.Plugins.Identifer.Query
             _isInit = false;
         }
 
-       
 
         private void FillCompLayer(ICompositeLayer compLayer)
         {
@@ -139,7 +137,7 @@ namespace Yutai.Plugins.Identifer.Query
                 else if (layer is IFeatureLayer)
                 {
                     IFeatureLayer featureLayer = layer as IFeatureLayer;
-                    LayerItem item = new LayerItem(featureLayer.Name,featureLayer);
+                    LayerItem item = new LayerItem(featureLayer.Name, featureLayer);
                     bool checkState;
                     if (!featureLayer.Selectable)
                     {
@@ -149,7 +147,7 @@ namespace Yutai.Plugins.Identifer.Query
                     {
                         checkState = true;
                     }
-                   
+
                     this.checkedListBoxControl.Items.Add(item, checkState);
                 }
             }

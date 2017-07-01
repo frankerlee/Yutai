@@ -29,7 +29,9 @@ namespace Yutai.Pipeline.Config.Concretes
         private string _esriClassName;
         private string _validateKeys;
 
-        public FunctionLayer() { }
+        public FunctionLayer()
+        {
+        }
 
         public FunctionLayer(XmlNode node)
         {
@@ -102,8 +104,8 @@ namespace Yutai.Pipeline.Config.Concretes
             set
             {
                 _featureClass = value;
-                _esriClassName = ((IDataset)_featureClass).Name;
-                _name = ((IDataset)_featureClass).Name;
+                _esriClassName = ((IDataset) _featureClass).Name;
+                _name = ((IDataset) _featureClass).Name;
                 _aliasName = _featureClass.AliasName;
                 LoadFieldAutoNames();
             }
@@ -137,7 +139,7 @@ namespace Yutai.Pipeline.Config.Concretes
                 {
                     return "";
                 }
-                string paramName = ((IDataset)_featureClass).Name;
+                string paramName = ((IDataset) _featureClass).Name;
                 string str = paramName;
                 int num = paramName.LastIndexOf(".", StringComparison.Ordinal);
                 if (num >= 0)
@@ -166,13 +168,14 @@ namespace Yutai.Pipeline.Config.Concretes
             {
                 _name = xmlNode.Attributes["Name"].Value;
                 _aliasName = xmlNode.Attributes["AliasName"] == null ? "" : xmlNode.Attributes["AliasName"].Value;
-                _visible = xmlNode.Attributes["Visible"] == null || xmlNode.Attributes["Visible"].Value.ToUpper().StartsWith("T");
+                _visible = xmlNode.Attributes["Visible"] == null ||
+                           xmlNode.Attributes["Visible"].Value.ToUpper().StartsWith("T");
                 _functionType = xmlNode.Attributes["Type"] == null
                     ? enumFunctionLayerType.Other
                     : EnumHelper.ConvertFunctionLayerTypeFromString(xmlNode.Attributes["Type"].Value);
-
             }
-            XmlNodeList nodeList = xmlNode.SelectNodes($"/PipelineConfig/FunctionLayers/FunctionLayer[@Name='{_name}']/Fields/Field");
+            XmlNodeList nodeList =
+                xmlNode.SelectNodes($"/PipelineConfig/FunctionLayers/FunctionLayer[@Name='{_name}']/Fields/Field");
             foreach (XmlNode node in nodeList)
             {
                 IYTField field = new YTField(node);
@@ -195,7 +198,7 @@ namespace Yutai.Pipeline.Config.Concretes
             functionNode.Attributes.Append(aliasAttribute);
             functionNode.Attributes.Append(visibleAttribute);
             functionNode.Attributes.Append(typeAttribute);
-            
+
             XmlNode fieldsNode = doc.CreateElement("Fields");
             foreach (IYTField ytField in _fields)
             {

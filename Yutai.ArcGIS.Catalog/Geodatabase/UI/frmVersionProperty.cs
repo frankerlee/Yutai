@@ -26,13 +26,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.Close();
         }
 
- public IVersion Version
+        public IVersion Version
         {
-            set
-            {
-                this.versionPropertyCtrl_0.Version = value;
-            }
+            set { this.versionPropertyCtrl_0.Version = value; }
         }
     }
 }
-

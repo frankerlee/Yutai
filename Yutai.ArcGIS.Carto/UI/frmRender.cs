@@ -24,7 +24,9 @@ namespace Yutai.ArcGIS.Carto.UI
         private ProportionalSymbolRendererCtrl proportionalSymbolRendererCtrl_0 = new ProportionalSymbolRendererCtrl();
         private SimpleRenderControl simpleRenderControl_0 = new SimpleRenderControl();
         private UniqueValueRendererCtrl uniqueValueRendererCtrl_0 = new UniqueValueRendererCtrl();
-        private UniqueValueRendererMoreAttributeCtrl uniqueValueRendererMoreAttributeCtrl_0 = new UniqueValueRendererMoreAttributeCtrl();
+
+        private UniqueValueRendererMoreAttributeCtrl uniqueValueRendererMoreAttributeCtrl_0 =
+            new UniqueValueRendererMoreAttributeCtrl();
 
         public frmRender()
         {
@@ -116,7 +118,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     }
                     else if ((renderer as IUniqueValueRenderer).FieldCount == 1)
                     {
-                        if (((renderer as IUniqueValueRenderer).LookupStyleset != null) && ((renderer as IUniqueValueRenderer).LookupStyleset.Length > 0))
+                        if (((renderer as IUniqueValueRenderer).LookupStyleset != null) &&
+                            ((renderer as IUniqueValueRenderer).LookupStyleset.Length > 0))
                         {
                             this.cboRenderType.Text = "唯一值渲染";
                             this.iuserControl_0 = this.uniqueValueRendererCtrl_0;
@@ -237,13 +240,13 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void frmRender_Load(object sender, EventArgs e)
+        private void frmRender_Load(object sender, EventArgs e)
         {
             this.method_1();
             this.bool_0 = true;
         }
 
- private void method_0(ICompositeLayer icompositeLayer_0)
+        private void method_0(ICompositeLayer icompositeLayer_0)
         {
             IGeoFeatureLayer layer = null;
             for (int i = 0; i < icompositeLayer_0.Count; i++)
@@ -299,18 +302,12 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IFeatureLayer FeatureLayer
         {
-            set
-            {
-                this.ifeatureLayer_0 = value;
-            }
+            set { this.ifeatureLayer_0 = value; }
         }
 
         public IBasicMap FocusMap
         {
-            set
-            {
-                this.ibasicMap_0 = value;
-            }
+            set { this.ibasicMap_0 = value; }
         }
 
         public IStyleGallery StyleGallery
@@ -348,16 +345,9 @@ namespace Yutai.ArcGIS.Carto.UI
 
             public ILayer Layer
             {
-                get
-                {
-                    return this.ilayer_0;
-                }
-                set
-                {
-                    this.ilayer_0 = value;
-                }
+                get { return this.ilayer_0; }
+                set { this.ilayer_0 = value; }
             }
         }
     }
 }
-

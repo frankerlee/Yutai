@@ -62,7 +62,7 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
             }
         }
 
- private bool FindLayerIsSnap(ILayer pLayer)
+        private bool FindLayerIsSnap(ILayer pLayer)
         {
             IArray snapLayers = this.m_pRealTimeFeedSnap.SnapLayers;
             if (snapLayers != null)
@@ -78,7 +78,7 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
             return false;
         }
 
- public void ResetControl()
+        public void ResetControl()
         {
         }
 
@@ -123,47 +123,28 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.m_IsPageDirty;
-            }
+            get { return this.m_IsPageDirty; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public IMap Map
         {
-            set
-            {
-                this.m_pMap = value;
-            }
+            set { this.m_pMap = value; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.m_Title;
-            }
-            set
-            {
-                this.m_Title = value;
-            }
+            get { return this.m_Title; }
+            set { this.m_Title = value; }
         }
     }
 }
-

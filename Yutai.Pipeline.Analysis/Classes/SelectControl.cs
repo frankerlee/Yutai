@@ -18,22 +18,13 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         public string LayerName
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
 
         public int Count
         {
-            get
-            {
-                return this.arrayList_0.Count;
-            }
+            get { return this.arrayList_0.Count; }
         }
 
         public SelectControl(IAppContext pApp)
@@ -51,7 +42,7 @@ namespace Yutai.Pipeline.Analysis.Classes
             int result;
             for (int i = 0; i < this.Count; i++)
             {
-                int num2 = (int)this.arrayList_0[i];
+                int num2 = (int) this.arrayList_0[i];
                 if (num2 == num)
                 {
                     result = i;
@@ -93,12 +84,12 @@ namespace Yutai.Pipeline.Analysis.Classes
                     string aliasName = featureLayer.FeatureClass.AliasName;
                     if (aliasName == this.LayerName)
                     {
-                        IFeatureSelection featureSelection = (IFeatureSelection)layer;
+                        IFeatureSelection featureSelection = (IFeatureSelection) layer;
                         ISelectionSet selectionSet = featureSelection.SelectionSet;
                         selectionSet.IDs.Reset();
                         for (int i = 0; i < this.Count; i++)
                         {
-                            selectionSet.Add((int)this.arrayList_0[i]);
+                            selectionSet.Add((int) this.arrayList_0[i]);
                         }
                     }
                 }
@@ -113,12 +104,12 @@ namespace Yutai.Pipeline.Analysis.Classes
                 string aliasName = featureLayer.FeatureClass.AliasName;
                 if (aliasName == this.LayerName)
                 {
-                    IFeatureSelection featureSelection = (IFeatureSelection)pLayer;
+                    IFeatureSelection featureSelection = (IFeatureSelection) pLayer;
                     ISelectionSet selectionSet = featureSelection.SelectionSet;
                     selectionSet.IDs.Reset();
                     for (int i = 0; i < this.Count; i++)
                     {
-                        SortInfo sortInfo = (SortInfo)this.m_arrSortInfo[i];
+                        SortInfo sortInfo = (SortInfo) this.m_arrSortInfo[i];
                         selectionSet.Add(sortInfo.SmID);
                     }
                 }

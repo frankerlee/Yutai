@@ -62,7 +62,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                 map[1].OldColor = this.Image.GetPixel(0, 0);
                 map[1].NewColor = Color.Transparent;
                 attributes.SetRemapTable(map);
-                e.Graphics.DrawImage(this.Image, new Rectangle(0, 0, this.Image.Width, this.Image.Height), 0, 0, this.Image.Width, this.Image.Height, GraphicsUnit.Pixel, attributes);
+                e.Graphics.DrawImage(this.Image, new Rectangle(0, 0, this.Image.Width, this.Image.Height), 0, 0,
+                    this.Image.Width, this.Image.Height, GraphicsUnit.Pixel, attributes);
             }
             base.OnPaint(e);
         }
@@ -86,20 +87,14 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         protected override Size DefaultSize
         {
-            get
-            {
-                return Resources.DockPane_Close.Size;
-            }
+            get { return Resources.DockPane_Close.Size; }
         }
 
         public abstract Bitmap Image { get; }
 
         protected bool IsMouseOver
         {
-            get
-            {
-                return this.m_isMouseOver;
-            }
+            get { return this.m_isMouseOver; }
             private set
             {
                 if (this.m_isMouseOver != value)
@@ -111,4 +106,3 @@ namespace Yutai.ArcGIS.Framework.Docking
         }
     }
 }
-

@@ -15,7 +15,7 @@ namespace Yutai.ArcGIS.Carto.UI
     {
         private Container container_0 = null;
         protected IMapFrame m_pMapFrame = null;
-        private string[] string_0 = new string[] { "经纬网", "方里网", "索引格网" };
+        private string[] string_0 = new string[] {"经纬网", "方里网", "索引格网"};
 
         public MapGridControlFirst()
         {
@@ -56,7 +56,8 @@ namespace Yutai.ArcGIS.Carto.UI
             if (grid is IMeasuredGrid)
             {
                 IFormattedGridLabel label = new FormattedGridLabelClass();
-                INumericFormat format = new NumericFormatClass {
+                INumericFormat format = new NumericFormatClass
+                {
                     AlignmentOption = esriNumericAlignmentEnum.esriAlignLeft,
                     AlignmentWidth = 0,
                     RoundingOption = esriRoundingOptionEnum.esriRoundNumberOfDecimals,
@@ -78,7 +79,7 @@ namespace Yutai.ArcGIS.Carto.UI
             return grid;
         }
 
- private void radioMapGridType_SelectedIndexChanged(object sender, EventArgs e)
+        private void radioMapGridType_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.radioMapGridType.SelectedIndex != -1)
             {
@@ -88,11 +89,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IMapFrame MapFrame
         {
-            set
-            {
-                this.m_pMapFrame = value;
-            }
+            set { this.m_pMapFrame = value; }
         }
     }
 }
-

@@ -21,7 +21,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
         }
 
- public bool Do()
+        public bool Do()
         {
             try
             {
@@ -41,7 +41,5 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 return false;
             }
         }
-
-
     }
 }

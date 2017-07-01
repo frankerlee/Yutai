@@ -15,6 +15,7 @@ namespace Yutai.Services.Views
         {
             InitializeComponent();
         }
+
         public ProjectLoadingView(string projectName)
         {
             InitializeComponent();
@@ -24,7 +25,7 @@ namespace Yutai.Services.Views
 
         public override Plugins.Mvp.ViewStyle Style
         {
-            get { return new Plugins.Mvp.ViewStyle() { Modal = false, Sizable = false }; }
+            get { return new Plugins.Mvp.ViewStyle() {Modal = false, Sizable = false}; }
         }
 
         public void ShowProgress(int percent, string message)

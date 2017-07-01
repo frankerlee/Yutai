@@ -30,7 +30,10 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             if (this.cboFields.SelectedIndex != -1)
             {
                 IField field = (this.cboFields.SelectedItem as FieldWrap).Field;
-                if ((((field.Type == esriFieldType.esriFieldTypeDouble) || (field.Type == esriFieldType.esriFieldTypeInteger)) || (field.Type == esriFieldType.esriFieldTypeSmallInteger)) || (field.Type == esriFieldType.esriFieldTypeSingle))
+                if ((((field.Type == esriFieldType.esriFieldTypeDouble) ||
+                      (field.Type == esriFieldType.esriFieldTypeInteger)) ||
+                     (field.Type == esriFieldType.esriFieldTypeSmallInteger)) ||
+                    (field.Type == esriFieldType.esriFieldTypeSingle))
                 {
                     try
                     {
@@ -49,7 +52,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                     IQueryFilter queryFilter = null;
                     if (this.memoEdit.Text.Trim().Length > 0)
                     {
-                        queryFilter = new QueryFilterClass {
+                        queryFilter = new QueryFilterClass
+                        {
                             WhereClause = this.memoEdit.Text.Trim()
                         };
                     }
@@ -100,7 +104,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                             catch (Exception exception2)
                             {
                                 exception = exception2;
-                               Logger.Current.Error("", exception, "");
+                                Logger.Current.Error("", exception, "");
                             }
                         }
                         workspace.StopEditOperation();
@@ -119,7 +123,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             {
                 this.btnQueryDialog.Enabled = true;
                 IFeatureLayer layer = (this.cboLayer.SelectedItem as LayerObject).Layer as IFeatureLayer;
-                frmAttributeQueryBuilder builder = new frmAttributeQueryBuilder {
+                frmAttributeQueryBuilder builder = new frmAttributeQueryBuilder
+                {
                     CurrentLayer = layer,
                     WhereCaluse = this.memoEdit.Text
                 };
@@ -165,7 +170,10 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 for (int i = 0; i < fields.FieldCount; i++)
                 {
                     IField pField = fields.get_Field(i);
-                    if ((((pField.Type != esriFieldType.esriFieldTypeOID) && (pField.Type != esriFieldType.esriFieldTypeGeometry)) && ((pField.Type != esriFieldType.esriFieldTypeRaster) && (pField.Type != esriFieldType.esriFieldTypeBlob))) && pField.Editable)
+                    if ((((pField.Type != esriFieldType.esriFieldTypeOID) &&
+                          (pField.Type != esriFieldType.esriFieldTypeGeometry)) &&
+                         ((pField.Type != esriFieldType.esriFieldTypeRaster) &&
+                          (pField.Type != esriFieldType.esriFieldTypeBlob))) && pField.Editable)
                     {
                         this.cboFields.Properties.Items.Add(new FieldWrap(pField));
                     }
@@ -183,7 +191,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
- private void frmUpdateAttribute_Load(object sender, EventArgs e)
+        private void frmUpdateAttribute_Load(object sender, EventArgs e)
         {
             MapHelper.AddEditLayerToList(this.m_pMap, this.cboLayer.Properties.Items);
             if (this.cboLayer.Properties.Items.Count > 0)
@@ -192,12 +200,9 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
- public IBasicMap FocusMap
+        public IBasicMap FocusMap
         {
-            set
-            {
-                this.m_pMap = value;
-            }
+            set { this.m_pMap = value; }
         }
 
         internal partial class FieldWrap
@@ -220,12 +225,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
             public IField Field
             {
-                get
-                {
-                    return this.m_pField;
-                }
+                get { return this.m_pField; }
             }
         }
     }
 }
-

@@ -14,6 +14,7 @@ namespace Yutai.UI.Controls
     public partial class ConfigPanelControl : Panel
     {
         private Label _gradientLabel1;
+
         public ConfigPanelControl()
         {
             InitializeComponent();

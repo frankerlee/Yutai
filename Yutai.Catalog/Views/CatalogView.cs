@@ -32,9 +32,8 @@ using Point = System.Drawing.Point;
 
 namespace Yutai.Plugins.Catalog.Views
 {
-    public partial class CatalogView : DockPanelControlBase, IPopuMenuWrap,ICatalogView
+    public partial class CatalogView : DockPanelControlBase, IPopuMenuWrap, ICatalogView
     {
-        
         private bool m_TreeCanDo = true;
 
         private bool m_CanDo = true;
@@ -48,24 +47,15 @@ namespace Yutai.Plugins.Catalog.Views
             get { return _context; }
             set { _context = value; }
         }
-        
 
-        public IGxObject CurrentSelect
-        {
-            get;
-            set;
-        }
+
+        public IGxObject CurrentSelect { get; set; }
 
         /// <summary>
         /// 目录列表
         /// </summary>
-        public IGxCatalog GxCatalog
-        {
-            get;
-            set;
-        }
+        public IGxCatalog GxCatalog { get; set; }
 
-      
 
         public CatalogView(IAppContext context)
         {
@@ -84,9 +74,8 @@ namespace Yutai.Plugins.Catalog.Views
                 }
                 else
                 {
-                   // _context.GxSelection = tag;
+                    // _context.GxSelection = tag;
                     (tag as IGxContextMenuWap).Init(this);
-                   
                 }
             }
         }
@@ -105,7 +94,8 @@ namespace Yutai.Plugins.Catalog.Views
                 this.imageComboBoxEdit1.Properties.SmallImages = this.imageList1;
                 this.listView1.LargeImageList = this.imageList1;
                 this.listView1.SmallImageList = this.imageList1;
-                ImageComboBoxItemEx imageComboBoxItemEx = new ImageComboBoxItemEx(name, this.GxCatalog, this.GetImageIndex(this.GxCatalog as IGxObject), 0)
+                ImageComboBoxItemEx imageComboBoxItemEx = new ImageComboBoxItemEx(name, this.GxCatalog,
+                    this.GetImageIndex(this.GxCatalog as IGxObject), 0)
                 {
                     Tag = this.GxCatalog
                 };
@@ -154,7 +144,8 @@ namespace Yutai.Plugins.Catalog.Views
 
         private void ComboBoxHandle()
         {
-            ImageComboBoxItemEx item = this.imageComboBoxEdit1.Properties.Items[this.imageComboBoxEdit1.SelectedIndex] as ImageComboBoxItemEx;
+            ImageComboBoxItemEx item =
+                this.imageComboBoxEdit1.Properties.Items[this.imageComboBoxEdit1.SelectedIndex] as ImageComboBoxItemEx;
             IGxObject tag = item.Tag as IGxObject;
             for (int i = this.imageComboBoxEdit1.Properties.Items.Count - 1; i > 0; i--)
             {
@@ -176,7 +167,6 @@ namespace Yutai.Plugins.Catalog.Views
             }
         }
 
-     
 
         private string GetFinalFileName(string filename)
         {
@@ -253,7 +243,9 @@ namespace Yutai.Plugins.Catalog.Views
                 else if (layer is IFeatureLayer)
                 {
                     featureClass = (layer as IFeatureLayer).FeatureClass;
-                    category = (featureClass != null ? string.Concat(category, CommonHelper.GetFeatureClassType(featureClass)) : string.Concat(category, " Unknown"));
+                    category = (featureClass != null
+                        ? string.Concat(category, CommonHelper.GetFeatureClassType(featureClass))
+                        : string.Concat(category, " Unknown"));
                 }
             }
             else if (pGxObject is IGxDiskConnection)
@@ -292,7 +284,8 @@ namespace Yutai.Plugins.Catalog.Views
         private void imageComboBoxEditEx2_SelectedIndexChanged(object sender, EventArgs e)
         {
             TreeNode node = null;
-            ImageComboBoxItemEx item = this.imageComboBoxEdit1.Properties.Items[this.imageComboBoxEdit1.SelectedIndex] as ImageComboBoxItemEx;
+            ImageComboBoxItemEx item =
+                this.imageComboBoxEdit1.Properties.Items[this.imageComboBoxEdit1.SelectedIndex] as ImageComboBoxItemEx;
             IGxObject tag = item.Tag as IGxObject;
             if (this.m_CanDo)
             {
@@ -359,7 +352,6 @@ namespace Yutai.Plugins.Catalog.Views
             Cursor.Current = Cursors.Default;
         }
 
-     
 
         private bool IsAncestors(IGxObject pGxObject, IGxObject pChildGxObject)
         {
@@ -455,7 +447,8 @@ namespace Yutai.Plugins.Catalog.Views
                                     }
                                     int num2 = degree + 1;
                                     degree = num2;
-                                    item = new ImageComboBoxItemEx(parent.Name, parent.FullName, this.GetImageIndex(parent), num2)
+                                    item = new ImageComboBoxItemEx(parent.Name, parent.FullName,
+                                        this.GetImageIndex(parent), num2)
                                     {
                                         Tag = tag
                                     };
@@ -538,7 +531,9 @@ namespace Yutai.Plugins.Catalog.Views
                     }
                     else
                     {
-                        item = this.imageComboBoxEdit1.Properties.Items[this.imageComboBoxEdit1.SelectedIndex] as ImageComboBoxItemEx;
+                        item =
+                            this.imageComboBoxEdit1.Properties.Items[this.imageComboBoxEdit1.SelectedIndex] as
+                                ImageComboBoxItemEx;
                         int degree = item.Degree;
                         item = new ImageComboBoxItemEx(tag.Name, tag.FullName, this.GetImageIndex(tag), degree + 1)
                         {
@@ -556,17 +551,19 @@ namespace Yutai.Plugins.Catalog.Views
                     {
                         try
                         {
-                            string str = string.Concat(Environment.SystemDirectory.Substring(0, 2), "\\Documents and Settings\\Administrator\\Application Data\\ESRI\\ArcCatalog\\");
+                            string str = string.Concat(Environment.SystemDirectory.Substring(0, 2),
+                                "\\Documents and Settings\\Administrator\\Application Data\\ESRI\\ArcCatalog\\");
                             string finalFileName = string.Concat(str, "OLE DB Connection.odc");
                             if (Directory.Exists(str))
                             {
                                 finalFileName = this.GetFinalFileName(finalFileName);
                                 IWorkspaceFactory oLEDBWorkspaceFactoryClass = new OLEDBWorkspaceFactory();
-                                workspaceNameClass = oLEDBWorkspaceFactoryClass.Create(str, Path.GetFileName(finalFileName), null, 0);
+                                workspaceNameClass = oLEDBWorkspaceFactoryClass.Create(str,
+                                    Path.GetFileName(finalFileName), null, 0);
                                 gxDatabase = new GxDatabase();
                                 (gxDatabase as IGxDatabase).WorkspaceName = workspaceNameClass;
                                 gxDatabase.Attach(tag.Parent, this.GxCatalog);
-                                name = new string[] { gxDatabase.Name, gxDatabase.Category };
+                                name = new string[] {gxDatabase.Name, gxDatabase.Category};
                                 listViewItem = new ListViewItem(name, this.GetImageIndex(gxDatabase))
                                 {
                                     Tag = gxDatabase
@@ -593,7 +590,7 @@ namespace Yutai.Plugins.Catalog.Views
                             workspaceNameClass.PathName = _frmCreateGDBConnection.ConnectionPath;
                             (gxDatabase as IGxDatabase).WorkspaceName = workspaceNameClass;
                             gxDatabase.Attach(tag.Parent, this.GxCatalog);
-                            name = new string[] { gxDatabase.Name, gxDatabase.Category };
+                            name = new string[] {gxDatabase.Name, gxDatabase.Category};
                             listViewItem = new ListViewItem(name, this.GetImageIndex(gxDatabase))
                             {
                                 Tag = gxDatabase
@@ -692,7 +689,9 @@ namespace Yutai.Plugins.Catalog.Views
         {
             if (this.imageComboBoxEdit1.SelectedIndex != -1)
             {
-                ImageComboBoxItemEx item = this.imageComboBoxEdit1.Properties.Items[this.imageComboBoxEdit1.SelectedIndex] as ImageComboBoxItemEx;
+                ImageComboBoxItemEx item =
+                    this.imageComboBoxEdit1.Properties.Items[this.imageComboBoxEdit1.SelectedIndex] as
+                        ImageComboBoxItemEx;
                 IGxObject tag = item.Tag as IGxObject;
                 for (int i = this.imageComboBoxEdit1.Properties.Items.Count - 1; i > 0; i--)
                 {
@@ -758,6 +757,7 @@ namespace Yutai.Plugins.Catalog.Views
 
 
         private OnItemClickEventHandler onItemClickEventHandler_0;
+
         public event OnItemClickEventHandler OnItemClickEvent
         {
             add
@@ -767,10 +767,12 @@ namespace Yutai.Plugins.Catalog.Views
                 do
                 {
                     onItemClickEventHandler = onItemClickEventHandler0;
-                    OnItemClickEventHandler onItemClickEventHandler1 = (OnItemClickEventHandler)Delegate.Combine(onItemClickEventHandler, value);
-                    onItemClickEventHandler0 = Interlocked.CompareExchange<OnItemClickEventHandler>(ref this.onItemClickEventHandler_0, onItemClickEventHandler1, onItemClickEventHandler);
-                }
-                while ((object)onItemClickEventHandler0 != (object)onItemClickEventHandler);
+                    OnItemClickEventHandler onItemClickEventHandler1 =
+                        (OnItemClickEventHandler) Delegate.Combine(onItemClickEventHandler, value);
+                    onItemClickEventHandler0 =
+                        Interlocked.CompareExchange<OnItemClickEventHandler>(ref this.onItemClickEventHandler_0,
+                            onItemClickEventHandler1, onItemClickEventHandler);
+                } while ((object) onItemClickEventHandler0 != (object) onItemClickEventHandler);
             }
             remove
             {
@@ -779,15 +781,18 @@ namespace Yutai.Plugins.Catalog.Views
                 do
                 {
                     onItemClickEventHandler = onItemClickEventHandler0;
-                    OnItemClickEventHandler onItemClickEventHandler1 = (OnItemClickEventHandler)Delegate.Remove(onItemClickEventHandler, value);
-                    onItemClickEventHandler0 = Interlocked.CompareExchange<OnItemClickEventHandler>(ref this.onItemClickEventHandler_0, onItemClickEventHandler1, onItemClickEventHandler);
-                }
-                while ((object)onItemClickEventHandler0 != (object)onItemClickEventHandler);
+                    OnItemClickEventHandler onItemClickEventHandler1 =
+                        (OnItemClickEventHandler) Delegate.Remove(onItemClickEventHandler, value);
+                    onItemClickEventHandler0 =
+                        Interlocked.CompareExchange<OnItemClickEventHandler>(ref this.onItemClickEventHandler_0,
+                            onItemClickEventHandler1, onItemClickEventHandler);
+                } while ((object) onItemClickEventHandler0 != (object) onItemClickEventHandler);
             }
         }
+
         public void AddItem(string cmdName, bool isGroup)
         {
-            BarItem find=_context.RibbonMenu.SubItems.FindItem(cmdName);
+            BarItem find = _context.RibbonMenu.SubItems.FindItem(cmdName);
             if (find == null) return;
             find.Enabled = ((YutaiCommand) find.Tag).Enabled;
             BarItemLink link = popupMenu1.ItemLinks.Add(find);
@@ -796,7 +801,6 @@ namespace Yutai.Plugins.Catalog.Views
 
         public void AddItem(MenuItemDef menuItemDef)
         {
-           
         }
 
         public void AddItemEx(string cmdName, string groupCmdName, bool isGroup)
@@ -808,7 +812,7 @@ namespace Yutai.Plugins.Catalog.Views
             }
             BarItem find = _context.RibbonMenu.SubItems.FindItem(cmdName);
             if (find == null) return;
-            find.Enabled = ((YutaiCommand)find.Tag).Enabled;
+            find.Enabled = ((YutaiCommand) find.Tag).Enabled;
             BarItemLink link = popupMenu1.ItemLinks.Add(find);
             link.BeginGroup = isGroup;
         }
@@ -823,17 +827,16 @@ namespace Yutai.Plugins.Catalog.Views
                     BarSubItem subItem = oldLink.Item as BarSubItem;
                     BarItem find = _context.RibbonMenu.SubItems.FindItem(cmdName);
                     if (find == null) return;
-                    find.Enabled = ((YutaiCommand)find.Tag).Enabled;
+                    find.Enabled = ((YutaiCommand) find.Tag).Enabled;
                     BarItemLink link = subItem.ItemLinks.Add(find);
                     link.BeginGroup = isGroup;
-
                 }
             }
             else
             {
                 BarItem find = _context.RibbonMenu.SubItems.FindItem(cmdName);
                 if (find == null) return;
-                find.Enabled = ((YutaiCommand)find.Tag).Enabled;
+                find.Enabled = ((YutaiCommand) find.Tag).Enabled;
                 BarItemLink link = popupMenu1.ItemLinks.Add(find);
                 link.BeginGroup = isGroup;
             }
@@ -841,20 +844,18 @@ namespace Yutai.Plugins.Catalog.Views
 
         public void AddSubmenuItem(string cmdName, string caption, string parentName, bool isGroup)
         {
-            BarItemLink oldLink=null;
+            BarItemLink oldLink = null;
             if (!string.IsNullOrEmpty(parentName))
                 oldLink = popupMenu1.ItemLinks.FirstOrDefault(c => c.Item.Name == parentName);
-            BarSubItem subItem = new BarSubItem() { Name = cmdName,Caption = caption};
+            BarSubItem subItem = new BarSubItem() {Name = cmdName, Caption = caption};
             if (oldLink == null)
             {
                 (popupMenu1.AddItem(subItem)).BeginGroup = isGroup;
-
             }
             else
             {
-               (((BarSubItem) (oldLink.Item)).ItemLinks.Add(subItem)).BeginGroup=isGroup;
+                (((BarSubItem) (oldLink.Item)).ItemLinks.Add(subItem)).BeginGroup = isGroup;
             }
-         
         }
 
         public void ClearSubItem(string cmdName)
@@ -864,13 +865,13 @@ namespace Yutai.Plugins.Catalog.Views
             if (oldLink != null)
             {
                 subItem = oldLink.Item as BarSubItem;
-               subItem.ItemLinks.Clear();
+                subItem.ItemLinks.Clear();
             }
         }
 
         public void Clear()
         {
-           this.popupMenu1.ItemLinks.Clear();
+            this.popupMenu1.ItemLinks.Clear();
         }
 
         public void UpdateUI()
@@ -889,7 +890,6 @@ namespace Yutai.Plugins.Catalog.Views
                     {
                         item.Item.Enabled = ((YutaiCommand) item.Item.Tag).Enabled;
                     }
-                    
                 }
             }
         }
@@ -905,19 +905,18 @@ namespace Yutai.Plugins.Catalog.Views
                 }
                 if (link.Item.Tag != null)
                 {
-                    link.Item.Enabled = ((YutaiCommand)link.Item.Tag).Enabled;
+                    link.Item.Enabled = ((YutaiCommand) link.Item.Tag).Enabled;
                 }
             }
         }
+
         public void Show(Control control, Point point)
         {
             this.popupMenu1.ShowPopup(point);
         }
 
-
-
-      
         #region Override DockPanelControlBase
+
         public override Bitmap Image
         {
             get { return Properties.Resources.icon_catalog_folder; }
@@ -945,10 +944,18 @@ namespace Yutai.Plugins.Catalog.Views
         }
 
         public const string DefaultDockName = "Catalog_Viewer";
+
         #endregion
 
-        public IEnumerable<ToolStripItemCollection> ToolStrips { get { yield break; } }
-        public IEnumerable<Control> Buttons { get { yield break; } }
+        public IEnumerable<ToolStripItemCollection> ToolStrips
+        {
+            get { yield break; }
+        }
+
+        public IEnumerable<Control> Buttons
+        {
+            get { yield break; }
+        }
 
         public void Initialize(IAppContext context)
         {
@@ -959,4 +966,3 @@ namespace Yutai.Plugins.Catalog.Views
         }
     }
 }
-

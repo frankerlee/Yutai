@@ -59,11 +59,17 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                             string str4;
                             if (!this.m_IsStyleFile)
                             {
-                                manifestResourceStream = base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.SymbolUI.template.style");
+                                manifestResourceStream =
+                                    base.GetType()
+                                        .Assembly.GetManifestResourceStream(
+                                            "Yutai.ArcGIS.Controls.Controls.SymbolUI.template.style");
                             }
                             else
                             {
-                                manifestResourceStream = base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.SymbolUI.template.ServerStyle");
+                                manifestResourceStream =
+                                    base.GetType()
+                                        .Assembly.GetManifestResourceStream(
+                                            "Yutai.ArcGIS.Controls.Controls.SymbolUI.template.ServerStyle");
                             }
                             byte[] buffer = new byte[4096];
                             while ((num = manifestResourceStream.Read(buffer, 0, 4096)) > 0)
@@ -207,7 +213,5 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 }
             }
         }
-
-
     }
 }

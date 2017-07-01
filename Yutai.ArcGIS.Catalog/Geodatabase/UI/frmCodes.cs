@@ -80,13 +80,13 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void frmCodes_Load(object sender, EventArgs e)
+        private void frmCodes_Load(object sender, EventArgs e)
         {
             this.txtCode.Text = this.m_Code.ToString();
             this.txtName.Text = this.m_CodeName;
         }
 
- private object method_0(string string_0)
+        private object method_0(string string_0)
         {
             try
             {
@@ -124,19 +124,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         internal ICodedValueDomain CodeValueDomain
         {
-            set
-            {
-                this.icodedValueDomain_0 = value;
-            }
+            set { this.icodedValueDomain_0 = value; }
         }
 
         internal bool IsEdit
         {
-            set
-            {
-                this.bool_0 = value;
-            }
+            set { this.bool_0 = value; }
         }
     }
 }
-

@@ -8,7 +8,8 @@ namespace Yutai.Shared
     // The code copied from  http: //www.codeproject.com/Articles/103542/Removing-Event-Handlers-using-Reflection
     public static class EventHelper
     {
-        private static readonly Dictionary<Type, List<FieldInfo>> DicEventFieldInfos = new Dictionary<Type, List<FieldInfo>>();
+        private static readonly Dictionary<Type, List<FieldInfo>> DicEventFieldInfos =
+            new Dictionary<Type, List<FieldInfo>>();
 
         static BindingFlags AllBindings
         {
@@ -58,7 +59,7 @@ namespace Yutai.Shared
         private static EventHandlerList GetStaticEventHandlerList(Type t, object obj)
         {
             MethodInfo mi = t.GetMethod("get_Events", AllBindings);
-            return (EventHandlerList)mi.Invoke(obj, new object[] { });
+            return (EventHandlerList) mi.Invoke(obj, new object[] {});
         }
 
         public static void RemoveAllEventHandlers(object obj)

@@ -13,10 +13,10 @@ using Yutai.Plugins.Services;
 
 namespace Yutai.Plugins.Identifer.Commands
 {
-    class CmdSelectByGraphics:YutaiCommand
+    class CmdSelectByGraphics : YutaiCommand
     {
-     
         private IdentifierPlugin _plugin;
+
         public override bool Enabled
         {
             get
@@ -24,7 +24,9 @@ namespace Yutai.Plugins.Identifer.Commands
                 bool flag;
                 if (_context.MapControl.Map != null)
                 {
-                    if ((_context.MapControl.Map.LayerCount <= 0 ? true : (_context.MapControl.Map as IGraphicsContainerSelect).ElementSelectionCount <= 0))
+                    if ((_context.MapControl.Map.LayerCount <= 0
+                        ? true
+                        : (_context.MapControl.Map as IGraphicsContainerSelect).ElementSelectionCount <= 0))
                     {
                         flag = false;
                         return flag;
@@ -37,7 +39,7 @@ namespace Yutai.Plugins.Identifer.Commands
             }
         }
 
-        public CmdSelectByGraphics(IAppContext context,BasePlugin plugin)
+        public CmdSelectByGraphics(IAppContext context, BasePlugin plugin)
         {
             this.m_bitmap = Properties.Resources.icon_select_graphic;
             this.m_caption = "用图形选择";
@@ -52,12 +54,11 @@ namespace Yutai.Plugins.Identifer.Commands
 
         public override void OnCreate(object hook)
         {
-
         }
 
         public override void OnClick()
         {
-            ISelectionEnvironment selectionEnvironmentClass= _plugin.QuerySettings.SelectionEnvironment;
+            ISelectionEnvironment selectionEnvironmentClass = _plugin.QuerySettings.SelectionEnvironment;
             IMap pMap = _context.MapControl.Map;
             IEnumElement selectedElements = (pMap as IGraphicsContainerSelect).SelectedElements;
             selectedElements.Reset();

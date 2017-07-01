@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
@@ -6,49 +6,46 @@ using DevExpress.XtraEditors;
 
 namespace Yutai.Plugins.Editor.Forms
 {
-	internal class frmMaxAllowableOffset : XtraForm
-	{
-		private double double_0 = 0;
+    internal class frmMaxAllowableOffset : XtraForm
+    {
+        private double double_0 = 0;
 
-		private Label label1;
+        private Label label1;
 
-		private TextEdit txtMaxAllowOffset;
+        private TextEdit txtMaxAllowOffset;
 
-		private SimpleButton btnOK;
+        private SimpleButton btnOK;
 
-		private SimpleButton btnCancel;
+        private SimpleButton btnCancel;
 
-		private System.ComponentModel.Container container_0 = null;
+        private System.ComponentModel.Container container_0 = null;
 
-		public double MaxAllowableOffset
-		{
-			get
-			{
-				return this.double_0;
-			}
-		}
+        public double MaxAllowableOffset
+        {
+            get { return this.double_0; }
+        }
 
-		public frmMaxAllowableOffset()
-		{
-			this.InitializeComponent();
-		}
+        public frmMaxAllowableOffset()
+        {
+            this.InitializeComponent();
+        }
 
-		protected override void Dispose(bool bool_0)
-		{
-			if (bool_0 && this.container_0 != null)
-			{
-				this.container_0.Dispose();
-			}
-			base.Dispose(bool_0);
-		}
+        protected override void Dispose(bool bool_0)
+        {
+            if (bool_0 && this.container_0 != null)
+            {
+                this.container_0.Dispose();
+            }
+            base.Dispose(bool_0);
+        }
 
-		private void InitializeComponent()
-		{
+        private void InitializeComponent()
+        {
             this.label1 = new System.Windows.Forms.Label();
             this.txtMaxAllowOffset = new DevExpress.XtraEditors.TextEdit();
             this.btnOK = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaxAllowOffset.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.txtMaxAllowOffset.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -100,32 +97,31 @@ namespace Yutai.Plugins.Editor.Forms
             this.MinimizeBox = false;
             this.Name = "frmMaxAllowableOffset";
             this.Text = "最大允许偏移";
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaxAllowOffset.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.txtMaxAllowOffset.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+        }
 
-		}
-
-		private void txtMaxAllowOffset_TextChanged(object sender, EventArgs e)
-		{
-			string text = this.txtMaxAllowOffset.Text;
-			text.Trim();
-			try
-			{
-				this.double_0 = Convert.ToDouble(text);
-				if (this.double_0 <= 0)
-				{
-					this.btnOK.Enabled = false;
-				}
-				else
-				{
-					this.btnOK.Enabled = true;
-				}
-			}
-			catch
-			{
-				this.btnOK.Enabled = false;
-			}
-		}
-	}
+        private void txtMaxAllowOffset_TextChanged(object sender, EventArgs e)
+        {
+            string text = this.txtMaxAllowOffset.Text;
+            text.Trim();
+            try
+            {
+                this.double_0 = Convert.ToDouble(text);
+                if (this.double_0 <= 0)
+                {
+                    this.btnOK.Enabled = false;
+                }
+                else
+                {
+                    this.btnOK.Enabled = true;
+                }
+            }
+            catch
+            {
+                this.btnOK.Enabled = false;
+            }
+        }
+    }
 }

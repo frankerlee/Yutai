@@ -20,10 +20,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
         }
 
- private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
+        private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
         {
             BulidGeometryNetworkHelper.BulidGNHelper.PreserveEnabledValues = this.radioGroup1.SelectedIndex == 1;
         }
     }
 }
-

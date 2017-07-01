@@ -170,7 +170,8 @@ namespace Yutai.ArcGIS.Catalog.VCT
             List<IPoint> list = new List<IPoint>();
             foreach (ICoPoint point in coPointCollection_0)
             {
-                IPoint item = new PointClass {
+                IPoint item = new PointClass
+                {
                     X = point.X,
                     Y = point.Y,
                     Z = point.Z
@@ -230,4 +231,3 @@ namespace Yutai.ArcGIS.Catalog.VCT
         }
     }
 }
-

@@ -6,29 +6,29 @@
           <BarItem Key="PipeQuery_ByCMIS" Visible="true" />
           <BarItem Key="PipeQuery_Basic" Visible="true" />
           <BarItem Key="PipeQuery_BasicLine" Visible="true" />
-          <BarItem Key="PipeQuery_Complex" Visible="true"/>
-          <BarItem Key="PipeQuery_RelationShip" Visible="true"/>
-          <BarItem Key="PipeQuery_RoadIntersect" Visible="true"/>
+          <BarItem Key="PipeQuery_Complex" Visible="true" />
+          <BarItem Key="PipeQuery_RelationShip" Visible="true" />
+          <BarItem Key="PipeQuery_RoadIntersect" Visible="true" />
         </PageGroup>
         <PageGroup Key="Pipeline_Query_Quick" Caption="快速查询" Visible="true" Index="2">
           <BarItem Key="PipeQuery_ByAddress" Visible="true" />
           <BarItem Key="PipeQuery_ByDate" Visible="true" />
           <BarItem Key="PipeQuery_ByDia" Visible="true" />
-          <BarItem Key="PipeQuery_ByItem" Visible="true"/>
-          <BarItem Key="PipeQuery_ByJdxz" Visible="true"/>
-          <BarItem Key="PipeQuery_ByJMD" Visible="true"/>
-          <BarItem Key="PipeQuery_ByCZ" Visible="true"/>
+          <BarItem Key="PipeQuery_ByItem" Visible="true" />
+          <BarItem Key="PipeQuery_ByJdxz" Visible="true" />
+          <BarItem Key="PipeQuery_ByJMD" Visible="true" />
+          <BarItem Key="PipeQuery_ByCZ" Visible="true" />
         </PageGroup>
         <PageGroup Key="Pipeline_Statistics_Common" Caption="常用统计" Visible="true" Index="3">
           <BarItem Key="PipeQuery_ByGJTJ" Visible="true" />
-          <BarItem Key="PipeQuery_ByMSTJ" Visible="true"/>
-          <BarItem Key="PipeQuery_Statics" Visible="true"/>
-          <BarItem Key="PipeQuery_Report" Visible="true"/>
+          <BarItem Key="PipeQuery_ByMSTJ" Visible="true" />
+          <BarItem Key="PipeQuery_Statics" Visible="true" />
+          <BarItem Key="PipeQuery_Report" Visible="true" />
         </PageGroup>
       </Page>
       <Page Key="PipelineAnalysis" Caption="管线分析" Index="0" Visible="true">
         <PageGroup Key="Pipeline_Analysis_Common" Caption="常用分析" Visible="true" Index="0">
-          
+
           <BarItem Key="PipeAnalysis_CloseValveAnalysis" Visible="true"></BarItem>
           <BarItem Key="PipeAnalysis_ConnectivityAnalysis" Visible="true"></BarItem>
           <BarItem Key="PipeAnalysis_MaiShenAnalysis" Visible="true"></BarItem>
@@ -44,11 +44,11 @@
           <BarItem Key="PipeAnalysis_FlowAnalysis" Visible="true"></BarItem>
           <BarItem Key="PipeAnalysis_PopAlarmAnalysis" Visible="true"></BarItem>
           <BarItem Key="PipeAnalysis_PreAlarmAnalysis" Visible="true"></BarItem>
-          
+
         </PageGroup>
       </Page>
-      <Page  Key="PipelineConfig" Caption="管线配置" Index="0" Visible="true">
-        <PageGroup  Key="Pipeline_Config_Common" Caption="管线配置" Visible="true" Index="0">
+      <Page Key="PipelineConfig" Caption="管线配置" Index="0" Visible="true">
+        <PageGroup Key="Pipeline_Config_Common" Caption="管线配置" Visible="true" Index="0">
           <BarItem Key="PipeQuery_AutoConfig" Visible="true"></BarItem>
           <BarItem Key="PipeQuery_SaveConfig" Visible="true"></BarItem>
         </PageGroup>

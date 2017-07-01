@@ -17,11 +17,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         public GridEditorItem this[int int_0]
         {
-            get
-            {
-                return (base[int_0] as GridEditorItem);
-            }
+            get { return (base[int_0] as GridEditorItem); }
         }
     }
 }
-

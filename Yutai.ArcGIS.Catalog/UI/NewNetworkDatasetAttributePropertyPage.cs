@@ -37,15 +37,22 @@ namespace Yutai.ArcGIS.Catalog.UI
             frmNewNetworkAttribute attribute = new frmNewNetworkAttribute();
             if (attribute.ShowDialog() == DialogResult.OK)
             {
-                string[] items = new string[] { "", "", attribute.NetworkAttribute.Name, CommonHelper.GetUsageTypeDescriptor(attribute.NetworkAttribute.UsageType),
-                    CommonHelper.GetNetworkUnitTypeDescriptor(attribute.NetworkAttribute.Units), CommonHelper.GetDataTypeDescriptor(attribute.NetworkAttribute.DataType) };
+                string[] items = new string[]
+                {
+                    "", "", attribute.NetworkAttribute.Name,
+                    CommonHelper.GetUsageTypeDescriptor(attribute.NetworkAttribute.UsageType),
+                    CommonHelper.GetNetworkUnitTypeDescriptor(attribute.NetworkAttribute.Units),
+                    CommonHelper.GetDataTypeDescriptor(attribute.NetworkAttribute.DataType)
+                };
                 INetworkConstantEvaluator evaluator = new NetworkConstantEvaluatorClass();
                 IEvaluatedNetworkAttribute networkAttribute = attribute.NetworkAttribute as IEvaluatedNetworkAttribute;
                 evaluator.ConstantValue = 0;
                 networkAttribute.set_DefaultEvaluator(esriNetworkElementType.esriNETEdge, evaluator as INetworkEvaluator);
-                networkAttribute.set_DefaultEvaluator(esriNetworkElementType.esriNETJunction, evaluator as INetworkEvaluator);
+                networkAttribute.set_DefaultEvaluator(esriNetworkElementType.esriNETJunction,
+                    evaluator as INetworkEvaluator);
                 networkAttribute.set_DefaultEvaluator(esriNetworkElementType.esriNETTurn, evaluator as INetworkEvaluator);
-                ListViewItem item = new ListViewItem(items) {
+                ListViewItem item = new ListViewItem(items)
+                {
                     Tag = attribute.NetworkAttribute
                 };
                 this.listView1.Items.Add(item);
@@ -72,10 +79,9 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
         }
 
- private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.btnDelete.Enabled = this.listView1.SelectedItems.Count > 0;
         }
     }
 }
-

@@ -2,43 +2,27 @@ using System.Collections.Generic;
 
 namespace Yutai.ArcGIS.Common.Editor
 {
-	public class CopyEnvironment
-	{
-		public static ICopyMaps CopyMaps
-		{
-			get;
-			set;
-		}
+    public class CopyEnvironment
+    {
+        public static ICopyMaps CopyMaps { get; set; }
 
-		public static bool HasCopyMap
-		{
-			get;
-			set;
-		}
+        public static bool HasCopyMap { get; set; }
 
-		public static bool IsAutoUnion
-		{
-			get;
-			set;
-		}
+        public static bool IsAutoUnion { get; set; }
 
-		public List<LayerMap> LayerMaps
-		{
-			get;
-			set;
-		}
+        public List<LayerMap> LayerMaps { get; set; }
 
-		static CopyEnvironment()
-		{
-			CopyEnvironment.old_acctor_mc();
-		}
+        static CopyEnvironment()
+        {
+            CopyEnvironment.old_acctor_mc();
+        }
 
-		public CopyEnvironment()
-		{
-		}
+        public CopyEnvironment()
+        {
+        }
 
-		private static void old_acctor_mc()
-		{
-		}
-	}
+        private static void old_acctor_mc()
+        {
+        }
+    }
 }

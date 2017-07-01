@@ -30,7 +30,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             edit.AliasName_2 = "图形对象";
             edit.Type_2 = esriFieldType.esriFieldTypeGeometry;
             IGeometryDef pGeoDef = new GeometryDef();
-            IGeometryDefEdit class3 = (IGeometryDefEdit)pGeoDef;
+            IGeometryDefEdit class3 = (IGeometryDefEdit) pGeoDef;
 
             class3.GeometryType_2 = pGT;
             class3.HasM_2 = false;
@@ -89,7 +89,8 @@ namespace Yutai.ArcGIS.Common.Helpers
 
         public static int QueryFieldLength(IField paramFld)
         {
-            if ((paramFld.Type == esriFieldType.esriFieldTypeSingle) || (paramFld.Type == esriFieldType.esriFieldTypeDouble))
+            if ((paramFld.Type == esriFieldType.esriFieldTypeSingle) ||
+                (paramFld.Type == esriFieldType.esriFieldTypeDouble))
             {
                 return paramFld.Precision;
             }
@@ -102,7 +103,8 @@ namespace Yutai.ArcGIS.Common.Helpers
 
         public static int QueryFieldPrecision(IField paramFld)
         {
-            if ((paramFld.Type == esriFieldType.esriFieldTypeSingle) || (paramFld.Type == esriFieldType.esriFieldTypeDouble))
+            if ((paramFld.Type == esriFieldType.esriFieldTypeSingle) ||
+                (paramFld.Type == esriFieldType.esriFieldTypeDouble))
             {
                 return paramFld.Scale;
             }
@@ -184,6 +186,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             pEdit.GeometryDef_2 = pGeoDef;
             return pField;
         }
+
         public static IField AlterRasterFieldSR(IField pField, ISpatialReference sr)
         {
             IFieldEdit2 pEdit = pField as IFieldEdit2;

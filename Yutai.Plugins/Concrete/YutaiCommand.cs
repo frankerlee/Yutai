@@ -12,8 +12,6 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Plugins.Concrete
 {
-    
-    
     //YutaiCommand将替换掉MenuCommand,以便实现命令的调用
     public abstract class YutaiCommand : ICommand, Yutai.Plugins.Interfaces.IRibbonItem
     {
@@ -37,11 +35,11 @@ namespace Yutai.Plugins.Concrete
         private ToolStripLayoutStyleYT _toolStripLayoutStyleYt;
         private int _panelRowCount;
         private string _parentName;
-        private int _position=-1;
+        private int _position = -1;
         private bool _isGroup;
         public bool _needUpdateEvent;
 
-        public  Keys ShortcutKeys { get; set; }
+        public Keys ShortcutKeys { get; set; }
         public PluginIdentity PluginIdentity { get; internal set; }
 
         public TextImageRelationYT TextImageRelationYT
@@ -89,10 +87,7 @@ namespace Yutai.Plugins.Concrete
 
         public virtual string Message
         {
-            get
-            {
-                return this.m_message;
-            }
+            get { return this.m_message; }
         }
 
         public virtual Bitmap Image
@@ -107,35 +102,26 @@ namespace Yutai.Plugins.Concrete
 
         public virtual string Caption
         {
-            get
-            {
-                return this.m_caption;
-            }
+            get { return this.m_caption; }
         }
 
         public virtual string Tooltip
         {
-            get
-            {
-                return this.m_toolTip;
-            }
+            get { return this.m_toolTip; }
         }
 
         public virtual int HelpContextID
         {
-            get
-            {
-                return this.m_helpID;
-            }
+            get { return this.m_helpID; }
         }
 
-        public  int Position
+        public int Position
         {
             get { return _position; }
             set { _position = value; }
         }
 
-        public  string ParentName
+        public string ParentName
         {
             get { return _parentName; }
             set { _parentName = value; }
@@ -143,36 +129,23 @@ namespace Yutai.Plugins.Concrete
 
         public virtual string Name
         {
-            get
-            {
-                return this.m_name;
-            }
+            get { return this.m_name; }
         }
-
 
 
         public virtual bool Checked
         {
-            get
-            {
-                return this.m_checked;
-            }
+            get { return this.m_checked; }
         }
 
         public virtual bool Enabled
         {
-            get
-            {
-                return this.m_enabled;
-            }
+            get { return this.m_enabled; }
         }
 
         public virtual string HelpFile
         {
-            get
-            {
-                return this.m_helpFile;
-            }
+            get { return this.m_helpFile; }
         }
 
         public virtual string Category
@@ -195,10 +168,10 @@ namespace Yutai.Plugins.Concrete
         protected YutaiCommand()
         {
             _itemType = RibbonItemType.Tool;
-            _textImageRelationYt= TextImageRelationYT.ImageAboveText;
-            _displayStyleYt= DisplayStyleYT.ImageAndText;
-            _toolStripItemImageScalingYt= ToolStripItemImageScalingYT.None;
-            ToolStripLayoutStyleYT= ToolStripLayoutStyleYT.Flow;
+            _textImageRelationYt = TextImageRelationYT.ImageAboveText;
+            _displayStyleYt = DisplayStyleYT.ImageAndText;
+            _toolStripItemImageScalingYt = ToolStripItemImageScalingYT.None;
+            ToolStripLayoutStyleYT = ToolStripLayoutStyleYT.Flow;
             _panelRowCount = 1;
             _needUpdateEvent = false;
         }
@@ -220,11 +193,9 @@ namespace Yutai.Plugins.Concrete
             }
         }
 
-      
 
-       protected YutaiCommand(string category, string key, string name, string caption, string tooltip, string message)
-       {
-          
+        protected YutaiCommand(string category, string key, string name, string caption, string tooltip, string message)
+        {
             this.m_name = name;
             this.m_message = message;
             this.m_caption = caption;
@@ -240,7 +211,8 @@ namespace Yutai.Plugins.Concrete
             _needUpdateEvent = false;
         }
 
-        protected  YutaiCommand(RibbonItemType itemType,string category, string key, string name, string caption, string tooltip, string message)
+        protected YutaiCommand(RibbonItemType itemType, string category, string key, string name, string caption,
+            string tooltip, string message)
         {
             this.m_name = name;
             this.m_message = message;
@@ -248,7 +220,7 @@ namespace Yutai.Plugins.Concrete
             this.m_category = category;
             this.m_toolTip = tooltip;
             this._key = key;
-            
+
             _textImageRelationYt = TextImageRelationYT.ImageAboveText;
             _displayStyleYt = DisplayStyleYT.ImageAndText;
             _toolStripItemImageScalingYt = ToolStripItemImageScalingYT.None;
@@ -259,7 +231,8 @@ namespace Yutai.Plugins.Concrete
         }
 
 
-        protected YutaiCommand(RibbonItemType itemType, System.Drawing.Bitmap bitmap, string caption, string category, int helpContextId, string helpFile, string message, string name, string toolTip)
+        protected YutaiCommand(RibbonItemType itemType, System.Drawing.Bitmap bitmap, string caption, string category,
+            int helpContextId, string helpFile, string message, string name, string toolTip)
         {
             this._itemType = itemType;
             this.m_bitmap = bitmap;
@@ -279,9 +252,9 @@ namespace Yutai.Plugins.Concrete
             _needUpdateEvent = false;
         }
 
-        protected YutaiCommand( System.Drawing.Bitmap bitmap, string caption, string category, int helpContextId, string helpFile, string message, string name, string toolTip)
+        protected YutaiCommand(System.Drawing.Bitmap bitmap, string caption, string category, int helpContextId,
+            string helpFile, string message, string name, string toolTip)
         {
-           
             this.m_bitmap = bitmap;
             this.m_name = name;
             this.m_message = message;
@@ -299,8 +272,7 @@ namespace Yutai.Plugins.Concrete
             _needUpdateEvent = false;
         }
 
-        
-            
+
         /// <summary>
         /// Destructor. Cleans up GDI resources used by the BaseCommand.
         /// </summary>

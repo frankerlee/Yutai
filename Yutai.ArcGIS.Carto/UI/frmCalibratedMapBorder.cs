@@ -42,7 +42,7 @@ namespace Yutai.ArcGIS.Carto.UI
         {
         }
 
- private void frmCalibratedMapBorder_Load(object sender, EventArgs e)
+        private void frmCalibratedMapBorder_Load(object sender, EventArgs e)
         {
             this.bool_0 = false;
             this.txtBorderWidth.Value = (decimal) this.icalibratedMapGridBorder_0.BorderWidth;
@@ -53,10 +53,10 @@ namespace Yutai.ArcGIS.Carto.UI
             this.bool_0 = true;
         }
 
- private void method_0(uint uint_0, out int int_0, out int int_1, out int int_2)
+        private void method_0(uint uint_0, out int int_0, out int int_1, out int int_2)
         {
             uint num = uint_0 & 16711680;
-             int_2 = (int) (num >> 16);
+            int_2 = (int) (num >> 16);
             num = uint_0 & 65280;
             int_1 = (int) (num >> 8);
             num = uint_0 & 255;
@@ -68,7 +68,7 @@ namespace Yutai.ArcGIS.Carto.UI
             uint num = 0;
             num = (uint) (0 | int_2);
             num = num << 8;
-            num |=(uint) int_1;
+            num |= (uint) int_1;
             num = num << 8;
             return (int) (num | int_0);
         }
@@ -95,22 +95,15 @@ namespace Yutai.ArcGIS.Carto.UI
                 int num3;
                 int num4;
                 int rGB = icolor_0.RGB;
-               this.method_0((uint) rGB, out num2, out num3, out num4);
+                this.method_0((uint) rGB, out num2, out num3, out num4);
                 colorEdit_0.Color = Color.FromArgb(icolor_0.Transparency, num2, num3, num4);
             }
         }
 
         public ICalibratedMapGridBorder CalibratedMapGridBorder
         {
-            get
-            {
-                return this.icalibratedMapGridBorder_0;
-            }
-            set
-            {
-                this.icalibratedMapGridBorder_0 = value;
-            }
+            get { return this.icalibratedMapGridBorder_0; }
+            set { this.icalibratedMapGridBorder_0 = value; }
         }
     }
 }
-

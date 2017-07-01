@@ -1,4 +1,4 @@
 namespace Yutai.ArcGIS.Common.Geodatabase
 {
-	public delegate void SetFeatureCountEnventHandler(int int_0);
+    public delegate void SetFeatureCountEnventHandler(int int_0);
 }

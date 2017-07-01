@@ -60,10 +60,10 @@ namespace Yutai.Plugins.TableEditor.Commands
                         return;
                     foreach (JoinModel joinModel in frm._joinsGrid1.JoinModels)
                     {
-                        _view.CurrentGridView.VirtualGridView.JoinTable(joinModel.Table as IFeatureClass, joinModel.FromField, joinModel.ToField, joinModel.Fields.Split(',').ToList());
+                        _view.CurrentGridView.VirtualGridView.JoinTable(joinModel.Table as IFeatureClass,
+                            joinModel.FromField, joinModel.ToField, joinModel.Fields.Split(',').ToList());
                     }
                 }
-
             }
             catch (Exception exception)
             {

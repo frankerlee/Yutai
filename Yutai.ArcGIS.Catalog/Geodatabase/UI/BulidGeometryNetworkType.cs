@@ -30,7 +30,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.bool_0 = true;
         }
 
- private void rdoCreateType_SelectedIndexChanged(object sender, EventArgs e)
+        private void rdoCreateType_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.bool_0)
             {
@@ -46,4 +46,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

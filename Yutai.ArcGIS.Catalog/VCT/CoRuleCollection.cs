@@ -20,11 +20,7 @@ namespace Yutai.ArcGIS.Catalog.VCT
 
         public string ID
         {
-            get
-            {
-                return this.string_0;
-            }
+            get { return this.string_0; }
         }
     }
 }
-

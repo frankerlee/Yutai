@@ -35,7 +35,8 @@ namespace Yutai.Plugins.Editor.Commands
                 {
                     result = false;
                 }
-                else if ( Yutai.ArcGIS.Common.Editor.Editor.EditMap != null && Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
+                else if (Yutai.ArcGIS.Common.Editor.Editor.EditMap != null &&
+                         Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
                 {
                     result = false;
                 }
@@ -53,7 +54,9 @@ namespace Yutai.Plugins.Editor.Commands
                     enumFeature.Reset();
                     for (IFeature feature = enumFeature.Next(); feature != null; feature = enumFeature.Next())
                     {
-                        if (feature.Shape.GeometryType == esriGeometryType.esriGeometryPolyline && Yutai.ArcGIS.Common.Editor.Editor.CheckWorkspaceEdit(feature.Class as IDataset, "IsBeingEdited"))
+                        if (feature.Shape.GeometryType == esriGeometryType.esriGeometryPolyline &&
+                            Yutai.ArcGIS.Common.Editor.Editor.CheckWorkspaceEdit(feature.Class as IDataset,
+                                "IsBeingEdited"))
                         {
                             result = true;
                             return result;
@@ -105,10 +108,12 @@ namespace Yutai.Plugins.Editor.Commands
             IPoint point;
             if (int_0 == 1)
             {
-                IActiveView focusMap = (IActiveView)_context.FocusMap;
+                IActiveView focusMap = (IActiveView) _context.FocusMap;
                 IPoint anchorPoint = SketchToolAssist.AnchorPoint;
-                double mapUnits = Common.ConvertPixelsToMapUnits(_context.FocusMap as IActiveView, _context.Config.EngineSnapEnvironment.SnapTolerance);
-                Yutai.ArcGIS.Common.Editor.Editor.GetClosesFeature(_context.FocusMap, anchorPoint, mapUnits, esriGeometryType.esriGeometryPolyline, out feature);
+                double mapUnits = Common.ConvertPixelsToMapUnits(_context.FocusMap as IActiveView,
+                    _context.Config.EngineSnapEnvironment.SnapTolerance);
+                Yutai.ArcGIS.Common.Editor.Editor.GetClosesFeature(_context.FocusMap, anchorPoint, mapUnits,
+                    esriGeometryType.esriGeometryPolyline, out feature);
                 if (feature == null)
                 {
                     MessageService.Current.Warn("没有点击的要素上，请设置较大的捕捉范围!");
@@ -124,7 +129,8 @@ namespace Yutai.Plugins.Editor.Commands
                     int num1 = -1;
                     int num2 = -1;
                     bool flag = false;
-                    if (hitTest.HitTest(anchorPoint, mapUnits, esriGeometryHitPartType.esriGeometryPartBoundary, pointClass, ref num, ref num1, ref num2, ref flag))
+                    if (hitTest.HitTest(anchorPoint, mapUnits, esriGeometryHitPartType.esriGeometryPartBoundary,
+                        pointClass, ref num, ref num1, ref num2, ref flag))
                     {
                         Yutai.ArcGIS.Common.Editor.Editor.EditWorkspace.StartEditOperation();
                         IGeometryCollection polylineClass = new Polyline() as IGeometryCollection;
@@ -168,8 +174,10 @@ namespace Yutai.Plugins.Editor.Commands
                             feature1.Store();
                         }
                         Yutai.ArcGIS.Common.Editor.Editor.EditWorkspace.StopEditOperation();
-                        (_context.FocusMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeography, null, envelope);
-                        (_context.FocusMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
+                        (_context.FocusMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeography, null,
+                            envelope);
+                        (_context.FocusMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null,
+                            null);
                     }
                 }
             }
@@ -177,7 +185,7 @@ namespace Yutai.Plugins.Editor.Commands
 
         public override void OnMouseMove(int int_0, int int_1, int int_2, int int_3)
         {
-            IActiveView focusMap = (IActiveView)_context.FocusMap;
+            IActiveView focusMap = (IActiveView) _context.FocusMap;
             this.ipoint_1 = focusMap.ScreenDisplay.DisplayTransformation.ToMapPoint(int_2, int_3);
             SketchToolAssist.SketchMouseMove(this.ipoint_1);
             // base.OnMouseMove(int_0, int_1, int_2, int_3);

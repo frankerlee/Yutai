@@ -84,8 +84,10 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     }
                     if (this.irow_0 != null)
                     {
-                        filter = new QueryFilterClass {
-                            WhereClause = (this.iconflictClass_0 as IObjectClass).OIDFieldName + " = " + this.int_0.ToString()
+                        filter = new QueryFilterClass
+                        {
+                            WhereClause =
+                                (this.iconflictClass_0 as IObjectClass).OIDFieldName + " = " + this.int_0.ToString()
                         };
                         (this.iconflictClass_0 as ITable).DeleteSearchedRows(filter);
                         this.irow_0 = null;
@@ -112,8 +114,10 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     }
                     if (this.irow_0 != null)
                     {
-                        filter = new QueryFilterClass {
-                            WhereClause = (this.iconflictClass_0 as IObjectClass).OIDFieldName + " = " + this.int_0.ToString()
+                        filter = new QueryFilterClass
+                        {
+                            WhereClause =
+                                (this.iconflictClass_0 as IObjectClass).OIDFieldName + " = " + this.int_0.ToString()
                         };
                         (this.iconflictClass_0 as ITable).DeleteSearchedRows(filter);
                         this.irow_0 = null;
@@ -140,22 +144,13 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IConflictClass ConflictClass
         {
-            get
-            {
-                return this.iconflictClass_0;
-            }
-            set
-            {
-                this.iconflictClass_0 = value;
-            }
+            get { return this.iconflictClass_0; }
+            set { this.iconflictClass_0 = value; }
         }
 
         public enumConflictType ConflictType
         {
-            set
-            {
-                this.enumConflictType_0 = value;
-            }
+            set { this.enumConflictType_0 = value; }
         }
 
         public IFields Fields
@@ -172,10 +167,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public int OID
         {
-            get
-            {
-                return this.int_0;
-            }
+            get { return this.int_0; }
             set
             {
                 this.int_0 = value;
@@ -185,27 +177,17 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IRow PreReconcileRow
         {
-            get
-            {
-                return this.irow_2;
-            }
+            get { return this.irow_2; }
         }
 
         public IRow ReconcileRow
         {
-            get
-            {
-                return this.irow_1;
-            }
+            get { return this.irow_1; }
         }
 
         public IRow StartEditingRow
         {
-            get
-            {
-                return this.irow_3;
-            }
+            get { return this.irow_3; }
         }
     }
 }
-

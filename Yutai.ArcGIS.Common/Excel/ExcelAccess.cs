@@ -62,24 +62,30 @@ namespace Yutai.ArcGIS.Common.Excel
             base.MergeCells(base.GetRange(int_0, string_1, int_1, string_2));
         }
 
-        public void SetBordersEdge(int int_0, int int_1, BordersEdge bordersEdge_0, BordersLineStyle bordersLineStyle_0, BordersWeight bordersWeight_0)
+        public void SetBordersEdge(int int_0, int int_1, BordersEdge bordersEdge_0, BordersLineStyle bordersLineStyle_0,
+            BordersWeight bordersWeight_0)
         {
             base.SetBordersEdge(base.GetRange(int_0, int_1), bordersEdge_0, bordersLineStyle_0, bordersWeight_0);
         }
 
-        public void SetBordersEdge(int int_0, string string_1, BordersEdge bordersEdge_0, BordersLineStyle bordersLineStyle_0, BordersWeight bordersWeight_0)
+        public void SetBordersEdge(int int_0, string string_1, BordersEdge bordersEdge_0,
+            BordersLineStyle bordersLineStyle_0, BordersWeight bordersWeight_0)
         {
             base.SetBordersEdge(base.GetRange(int_0, string_1), bordersEdge_0, bordersLineStyle_0, bordersWeight_0);
         }
 
-        public void SetBordersEdge(int int_0, int int_1, int int_2, int int_3, BordersEdge bordersEdge_0, BordersLineStyle bordersLineStyle_0, BordersWeight bordersWeight_0)
+        public void SetBordersEdge(int int_0, int int_1, int int_2, int int_3, BordersEdge bordersEdge_0,
+            BordersLineStyle bordersLineStyle_0, BordersWeight bordersWeight_0)
         {
-            base.SetBordersEdge(base.GetRange(int_0, int_1, int_2, int_3), bordersEdge_0, bordersLineStyle_0, bordersWeight_0);
+            base.SetBordersEdge(base.GetRange(int_0, int_1, int_2, int_3), bordersEdge_0, bordersLineStyle_0,
+                bordersWeight_0);
         }
 
-        public void SetBordersEdge(int int_0, string string_1, int int_1, string string_2, BordersEdge bordersEdge_0, BordersLineStyle bordersLineStyle_0, BordersWeight bordersWeight_0)
+        public void SetBordersEdge(int int_0, string string_1, int int_1, string string_2, BordersEdge bordersEdge_0,
+            BordersLineStyle bordersLineStyle_0, BordersWeight bordersWeight_0)
         {
-            base.SetBordersEdge(base.GetRange(int_0, string_1, int_1, string_2), bordersEdge_0, bordersLineStyle_0, bordersWeight_0);
+            base.SetBordersEdge(base.GetRange(int_0, string_1, int_1, string_2), bordersEdge_0, bordersLineStyle_0,
+                bordersWeight_0);
         }
 
         public void SetBordersEdge(int int_0, int int_1, int int_2, int int_3, bool bool_1)
@@ -130,7 +136,8 @@ namespace Yutai.ArcGIS.Common.Excel
             }
             if (bool_1)
             {
-                this.SetBordersEdge(int_0, int_1, int_0 + dataTable_0.Rows.Count - 1, int_1 + dataTable_0.Columns.Count - 1, false);
+                this.SetBordersEdge(int_0, int_1, int_0 + dataTable_0.Rows.Count - 1,
+                    int_1 + dataTable_0.Columns.Count - 1, false);
             }
         }
 
@@ -153,7 +160,8 @@ namespace Yutai.ArcGIS.Common.Excel
                 }
                 if (bool_1)
                 {
-                    this.SetBordersEdge(int_0, int_1, int_0 + dataTable_0.Rows.Count, int_1 + dataTable_0.Columns.Count - 1, false);
+                    this.SetBordersEdge(int_0, int_1, int_0 + dataTable_0.Rows.Count,
+                        int_1 + dataTable_0.Columns.Count - 1, false);
                 }
             }
             else
@@ -167,7 +175,8 @@ namespace Yutai.ArcGIS.Common.Excel
                 }
                 if (bool_1)
                 {
-                    this.SetBordersEdge(int_0, int_1, int_0 + dataTable_0.Rows.Count - 1, int_1 + dataTable_0.Columns.Count - 1, false);
+                    this.SetBordersEdge(int_0, int_1, int_0 + dataTable_0.Rows.Count - 1,
+                        int_1 + dataTable_0.Columns.Count - 1, false);
                 }
             }
         }

@@ -82,10 +82,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         private DockPanel DockPanel
         {
-            get
-            {
-                return this.m_dockPanel;
-            }
+            get { return this.m_dockPanel; }
         }
 
         public IDockPaneStripFactory DockPaneStripFactory
@@ -161,7 +158,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                 return new DockPane(content, floatWindowBounds, show);
             }
 
-            public DockPane CreateDockPane(IDockContent content, DockPane prevPane, DockAlignment alignment, double proportion, bool show)
+            public DockPane CreateDockPane(IDockContent content, DockPane prevPane, DockAlignment alignment,
+                double proportion, bool show)
             {
                 return new DockPane(content, prevPane, alignment, proportion, show);
             }
@@ -203,7 +201,9 @@ namespace Yutai.ArcGIS.Framework.Docking
             DockPane CreateDockPane(IDockContent content, DockState visibleState, bool show);
             DockPane CreateDockPane(IDockContent content, FloatWindow floatWindow, bool show);
             DockPane CreateDockPane(IDockContent content, Rectangle floatWindowBounds, bool show);
-            DockPane CreateDockPane(IDockContent content, DockPane previousPane, DockAlignment alignment, double proportion, bool show);
+
+            DockPane CreateDockPane(IDockContent content, DockPane previousPane, DockAlignment alignment,
+                double proportion, bool show);
         }
 
         public interface IDockPaneStripFactory
@@ -218,4 +218,3 @@ namespace Yutai.ArcGIS.Framework.Docking
         }
     }
 }
-

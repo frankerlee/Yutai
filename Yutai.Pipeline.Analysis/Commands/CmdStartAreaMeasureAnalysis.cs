@@ -16,12 +16,12 @@ namespace Yutai.Pipeline.Analysis.Commands
 {
     class CmdStartAreaMeasureAnalysis : YutaiTool
     {
-
         private AreaMeasureDlg _areaMeasureDlg;
 
         private IPointCollection _pointCollection = new Polygon();
 
-        private INewPolygonFeedback  _polygonFeedback;
+        private INewPolygonFeedback _polygonFeedback;
+
         public CmdStartAreaMeasureAnalysis(IAppContext context)
         {
             OnCreate(context);
@@ -29,7 +29,6 @@ namespace Yutai.Pipeline.Analysis.Commands
 
         public override void OnClick()
         {
-
             _context.SetCurrentTool(this);
 
             if (this._areaMeasureDlg == null)
@@ -65,7 +64,7 @@ namespace Yutai.Pipeline.Analysis.Commands
             base.m_enabled = true;
             base._itemType = RibbonItemType.Tool;
 
-        
+
             CommonUtils.AppContext = _context;
         }
 
@@ -77,7 +76,7 @@ namespace Yutai.Pipeline.Analysis.Commands
                 ISimpleFillSymbol simpleFillSymbol = new SimpleFillSymbol();
                 ISimpleFillSymbol arg_3E_0 = simpleFillSymbol;
                 IRgbColor rgbColorClass = ColorManage.CreatColor(255, 0, 0) as IRgbColor;
-                arg_3E_0.Color=rgbColorClass;
+                arg_3E_0.Color = rgbColorClass;
                 if (polygon != null)
                 {
                     CommonUtils.NewPolygonElement(_context.FocusMap, polygon);
@@ -88,7 +87,6 @@ namespace Yutai.Pipeline.Analysis.Commands
             this._polygonFeedback = null;
         }
 
-       
 
         public override void OnMouseDown(int button, int Shift, int x, int y)
         {
@@ -122,11 +120,10 @@ namespace Yutai.Pipeline.Analysis.Commands
                 this._polygonFeedback = null;
                 int pointCount = this._pointCollection.PointCount;
                 this._pointCollection.RemovePoints(0, pointCount);
-                
             }
             else
             {
-                IPoint point =_context.ActiveView.ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
+                IPoint point = _context.ActiveView.ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
                 object missing = Type.Missing;
                 this._pointCollection.AddPoint(point, ref missing, ref missing);
                 if (this._polygonFeedback != null)
@@ -134,9 +131,9 @@ namespace Yutai.Pipeline.Analysis.Commands
                     this._polygonFeedback.MoveTo(point);
                 }
                 this._pointCollection.AddPoint(this._pointCollection.get_Point(0), ref missing, ref missing);
-                IPolygon polygon = (IPolygon)this._pointCollection;
+                IPolygon polygon = (IPolygon) this._pointCollection;
                 double length = polygon.Length;
-                IArea area = (IArea)polygon;
+                IArea area = (IArea) polygon;
                 double curArea = Math.Abs(area.Area);
                 if (this._pointCollection.PointCount > 2)
                 {
@@ -148,9 +145,5 @@ namespace Yutai.Pipeline.Analysis.Commands
                 this._pointCollection.RemovePoints(pointCount2 - 1, 1);
             }
         }
-
-        
-
-
     }
 }

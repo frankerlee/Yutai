@@ -18,7 +18,7 @@ namespace Yutai.Plugins.TableEditor.Functions.Math
             _description = "Abs 函数可返回指定的数字的绝对值。";
             _parameters = new List<Parameter>()
             {
-                new Parameter() { Order = 0, Name = "number", Description = "必需的。一个数值表达式。"}
+                new Parameter() {Order = 0, Name = "number", Description = "必需的。一个数值表达式。"}
             };
         }
     }

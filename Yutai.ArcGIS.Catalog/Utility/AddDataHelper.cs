@@ -21,10 +21,9 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.ArcGIS.Catalog.Utility
 {
-    
     public class AddDataHelper
     {
-        private IAppContext iapplication_0 ;
+        private IAppContext iapplication_0;
 
         private object object_0 = null;
 
@@ -36,17 +35,9 @@ namespace Yutai.ArcGIS.Catalog.Utility
 
         private List<ILayer> list_1 = null;
 
-        public bool HasTable
-        {
-            get;
-            protected set;
-        }
+        public bool HasTable { get; protected set; }
 
-        public IMapControl2 InMapCtrl
-        {
-            get;
-            set;
-        }
+        public IMapControl2 InMapCtrl { get; set; }
 
         public AddDataHelper(object object_1)
         {
@@ -142,7 +133,7 @@ namespace Yutai.ArcGIS.Catalog.Utility
                         {
                             if (item.Type == esriDatasetType.esriDTFeatureClass)
                             {
-                                dataset = (IFeatureClass)item;
+                                dataset = (IFeatureClass) item;
                                 if ((gxDataset as IGxObject).Category.IndexOf("CAD") != -1)
                                 {
                                     if (dataset.FeatureType != esriFeatureType.esriFTCoverageAnnotation)
@@ -188,7 +179,9 @@ namespace Yutai.ArcGIS.Catalog.Utility
                                 {
                                     IEnumGxObject enumGxObject = (gxDataset as IGxObjectContainer).Children;
                                     enumGxObject.Reset();
-                                    for (IGxDataset l = enumGxObject.Next() as IGxDataset; l != null; l = enumGxObject.Next() as IGxDataset)
+                                    for (IGxDataset l = enumGxObject.Next() as IGxDataset;
+                                        l != null;
+                                        l = enumGxObject.Next() as IGxDataset)
                                     {
                                         dataset = l.Dataset as IFeatureClass;
                                         if (dataset != null)
@@ -264,7 +257,9 @@ namespace Yutai.ArcGIS.Catalog.Utility
                             }
                             else if (item.Type == esriDatasetType.esriDTTopology)
                             {
-                                if (MessageBox.Show(string.Concat("是否将参加拓扑-", item.Name, "-的所有要素添加到地图中"), "添加拓扑层", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
+                                if (
+                                    MessageBox.Show(string.Concat("是否将参加拓扑-", item.Name, "-的所有要素添加到地图中"), "添加拓扑层",
+                                        MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
                                 {
                                     classes = (item as IFeatureClassContainer).Classes;
                                     classes.Reset();
@@ -289,7 +284,7 @@ namespace Yutai.ArcGIS.Catalog.Utility
                             {
                                 ITinLayer tinLayerClass = new TinLayerClass()
                                 {
-                                    Dataset = (ITin)item,
+                                    Dataset = (ITin) item,
                                     Name = item.Name
                                 };
                                 this.method_0(tinLayerClass);
@@ -298,26 +293,29 @@ namespace Yutai.ArcGIS.Catalog.Utility
                             {
                                 IGdbRasterCatalogLayer gdbRasterCatalogLayerClass = null;
                                 gdbRasterCatalogLayerClass = new GdbRasterCatalogLayerClass();
-                                if (gdbRasterCatalogLayerClass.Setup((ITable)(item as IRasterCatalog)))
+                                if (gdbRasterCatalogLayerClass.Setup((ITable) (item as IRasterCatalog)))
                                 {
                                     this.method_0(gdbRasterCatalogLayerClass as ILayer);
                                 }
                             }
-                            else if (!(item.Type == esriDatasetType.esriDTRasterDataset ? false : item.Type != esriDatasetType.esriDTRasterBand))
+                            else if (
+                                !(item.Type == esriDatasetType.esriDTRasterDataset
+                                    ? false
+                                    : item.Type != esriDatasetType.esriDTRasterBand))
                             {
                                 bool flag = true;
-                                if (!((IRasterPyramid)item).Present)
+                                if (!((IRasterPyramid) item).Present)
                                 {
                                     if (this.iapplication_0.PyramidPromptType == PyramidPromptType.AlwaysBuildNoPrompt)
                                     {
-                                        ((IRasterPyramid)item).Create();
+                                        ((IRasterPyramid) item).Create();
                                     }
                                     else if (this.iapplication_0.PyramidPromptType == PyramidPromptType.AlwaysPrompt)
                                     {
                                         DialogResult dialogResult = BuildPyramidSet.Show();
                                         if (dialogResult == DialogResult.Yes)
                                         {
-                                            ((IRasterPyramid)item).Create();
+                                            ((IRasterPyramid) item).Create();
                                         }
                                         else if (dialogResult == DialogResult.Cancel)
                                         {
@@ -331,7 +329,7 @@ namespace Yutai.ArcGIS.Catalog.Utility
                                     {
                                         Cached = true
                                     };
-                                    rasterLayerClass.CreateFromDataset((IRasterDataset)item);
+                                    rasterLayerClass.CreateFromDataset((IRasterDataset) item);
                                     rasterLayerClass.Name = item.Name;
                                     this.method_0(rasterLayerClass);
                                 }
@@ -351,7 +349,10 @@ namespace Yutai.ArcGIS.Catalog.Utility
                                             if (num < object0.StandaloneTableCount)
                                             {
                                                 ITable table = object0.StandaloneTable[num].Table;
-                                                if (!connectionProperties.IsEqual((table as IDataset).Workspace.ConnectionProperties) || !((table as IDataset).Name == item.Name))
+                                                if (
+                                                    !connectionProperties.IsEqual(
+                                                        (table as IDataset).Workspace.ConnectionProperties) ||
+                                                    !((table as IDataset).Name == item.Name))
                                                 {
                                                     num++;
                                                 }
@@ -386,7 +387,8 @@ namespace Yutai.ArcGIS.Catalog.Utility
                                 IGeometricNetwork geometricNetwork = item as IGeometricNetwork;
                                 if (geometricNetwork != null)
                                 {
-                                    IEnumFeatureClass classesByType = geometricNetwork.ClassesByType[esriFeatureType.esriFTSimpleJunction];
+                                    IEnumFeatureClass classesByType =
+                                        geometricNetwork.ClassesByType[esriFeatureType.esriFTSimpleJunction];
                                     classesByType.Reset();
                                     for (n = classesByType.Next(); n != null; n = classesByType.Next())
                                     {
@@ -397,7 +399,8 @@ namespace Yutai.ArcGIS.Catalog.Utility
                                         };
                                         this.method_0(featureLayerClass);
                                     }
-                                    classesByType = geometricNetwork.ClassesByType[esriFeatureType.esriFTComplexJunction];
+                                    classesByType =
+                                        geometricNetwork.ClassesByType[esriFeatureType.esriFTComplexJunction];
                                     classesByType.Reset();
                                     for (n = classesByType.Next(); n != null; n = classesByType.Next())
                                     {
@@ -439,7 +442,9 @@ namespace Yutai.ArcGIS.Catalog.Utility
                                 {
                                     NetworkDataset = networkDataset
                                 } as ILayer);
-                                if (MessageBox.Show(string.Concat("是否将参加网络要素集-", item.Name, "-的所有要素添加到地图中"), "添加拓扑层", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
+                                if (
+                                    MessageBox.Show(string.Concat("是否将参加网络要素集-", item.Name, "-的所有要素添加到地图中"), "添加拓扑层",
+                                        MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
                                 {
                                     classes = (item as IFeatureClassContainer).Classes;
                                     classes.Reset();
@@ -464,7 +469,8 @@ namespace Yutai.ArcGIS.Catalog.Utility
                 processAssist.End();
                 if (this.list_0.Count > 0)
                 {
-                    MessageBox.Show("警告：数据范围不一致。\r\n 一个或多个添加的图层范围与关联的空间坐标系范围不一致。请检查数据问题。存在问题图层信息请查看错误日志!", "管理平台", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("警告：数据范围不一致。\r\n 一个或多个添加的图层范围与关联的空间坐标系范围不一致。请检查数据问题。存在问题图层信息请查看错误日志!", "管理平台",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     StringBuilder stringBuilder = new StringBuilder();
                     foreach (string list0 in this.list_0)
                     {
@@ -486,7 +492,11 @@ namespace Yutai.ArcGIS.Catalog.Utility
                     if (ienvelope0.LayerCount > 0)
                     {
                         ISpatialReference spatialReference = ienvelope0.SpatialReference;
-                        if ((spatialReference is IUnknownCoordinateSystem || this.ienvelope_0.SpatialReference is IUnknownCoordinateSystem || this.ienvelope_0.SpatialReference == null ? false : spatialReference != null))
+                        if ((spatialReference is IUnknownCoordinateSystem ||
+                             this.ienvelope_0.SpatialReference is IUnknownCoordinateSystem ||
+                             this.ienvelope_0.SpatialReference == null
+                            ? false
+                            : spatialReference != null))
                         {
                             this.ienvelope_0.Project(spatialReference);
                         }
@@ -538,11 +548,18 @@ namespace Yutai.ArcGIS.Catalog.Utility
                     if (this.ienvelope_0 != null)
                     {
                         IEnvelope areaOfInterest = ilayer_0.AreaOfInterest;
-                        if ((areaOfInterest.SpatialReference is IUnknownCoordinateSystem || this.ienvelope_0.SpatialReference is IUnknownCoordinateSystem || this.ienvelope_0.SpatialReference == null ? false : areaOfInterest.SpatialReference != null))
+                        if ((areaOfInterest.SpatialReference is IUnknownCoordinateSystem ||
+                             this.ienvelope_0.SpatialReference is IUnknownCoordinateSystem ||
+                             this.ienvelope_0.SpatialReference == null
+                            ? false
+                            : areaOfInterest.SpatialReference != null))
                         {
-                            if (!(areaOfInterest.SpatialReference is IUnknownCoordinateSystem) || !(this.ienvelope_0.SpatialReference is IUnknownCoordinateSystem))
+                            if (!(areaOfInterest.SpatialReference is IUnknownCoordinateSystem) ||
+                                !(this.ienvelope_0.SpatialReference is IUnknownCoordinateSystem))
                             {
-                                flag = (this.ienvelope_0.SpatialReference != null ? true : areaOfInterest.SpatialReference != null);
+                                flag = (this.ienvelope_0.SpatialReference != null
+                                    ? true
+                                    : areaOfInterest.SpatialReference != null);
                             }
                             else
                             {
@@ -577,9 +594,11 @@ namespace Yutai.ArcGIS.Catalog.Utility
             {
                 this.method_5(this.object_0 as IGroupLayer, ilayer_0, flag1);
             }
-            if (this.InMapCtrl != null && this.iapplication_0.MapControl.Map == this.object_0 && this.iapplication_0.MapControl.Map.LayerCount > this.InMapCtrl.Map.LayerCount)
+            if (this.InMapCtrl != null && this.iapplication_0.MapControl.Map == this.object_0 &&
+                this.iapplication_0.MapControl.Map.LayerCount > this.InMapCtrl.Map.LayerCount)
             {
-                int layerIndexInMap = CommonHelper.GetLayerIndexInMap(this.iapplication_0.MapControl.Map as IBasicMap, ilayer_0);
+                int layerIndexInMap = CommonHelper.GetLayerIndexInMap(this.iapplication_0.MapControl.Map as IBasicMap,
+                    ilayer_0);
                 (this.InMapCtrl.Map as IMapLayers).InsertLayer(ilayer_0, true, layerIndexInMap);
             }
         }
@@ -690,7 +709,11 @@ namespace Yutai.ArcGIS.Catalog.Utility
                         if (this.ienvelope_0 != null)
                         {
                             IEnvelope areaOfInterest = ilayer_0.AreaOfInterest;
-                            if ((areaOfInterest.SpatialReference is IUnknownCoordinateSystem || this.ienvelope_0.SpatialReference is IUnknownCoordinateSystem || this.ienvelope_0.SpatialReference == null ? false : areaOfInterest.SpatialReference != null))
+                            if ((areaOfInterest.SpatialReference is IUnknownCoordinateSystem ||
+                                 this.ienvelope_0.SpatialReference is IUnknownCoordinateSystem ||
+                                 this.ienvelope_0.SpatialReference == null
+                                ? false
+                                : areaOfInterest.SpatialReference != null))
                             {
                                 areaOfInterest.Project(this.ienvelope_0.SpatialReference);
                                 this.ienvelope_0.Union(areaOfInterest);
@@ -744,7 +767,11 @@ namespace Yutai.ArcGIS.Catalog.Utility
                         if (this.ienvelope_0 != null)
                         {
                             IEnvelope areaOfInterest = ilayer_0.AreaOfInterest;
-                            if ((areaOfInterest.SpatialReference is IUnknownCoordinateSystem || this.ienvelope_0.SpatialReference is IUnknownCoordinateSystem || this.ienvelope_0.SpatialReference == null ? false : areaOfInterest.SpatialReference != null))
+                            if ((areaOfInterest.SpatialReference is IUnknownCoordinateSystem ||
+                                 this.ienvelope_0.SpatialReference is IUnknownCoordinateSystem ||
+                                 this.ienvelope_0.SpatialReference == null
+                                ? false
+                                : areaOfInterest.SpatialReference != null))
                             {
                                 areaOfInterest.Project(this.ienvelope_0.SpatialReference);
                                 this.ienvelope_0.Union(areaOfInterest);
@@ -778,7 +805,11 @@ namespace Yutai.ArcGIS.Catalog.Utility
                     if (this.ienvelope_0 != null)
                     {
                         IEnvelope areaOfInterest = ilayer_0.AreaOfInterest;
-                        if ((areaOfInterest.SpatialReference is IUnknownCoordinateSystem || this.ienvelope_0.SpatialReference is IUnknownCoordinateSystem || this.ienvelope_0.SpatialReference == null ? false : areaOfInterest.SpatialReference != null))
+                        if ((areaOfInterest.SpatialReference is IUnknownCoordinateSystem ||
+                             this.ienvelope_0.SpatialReference is IUnknownCoordinateSystem ||
+                             this.ienvelope_0.SpatialReference == null
+                            ? false
+                            : areaOfInterest.SpatialReference != null))
                         {
                             areaOfInterest.Project(this.ienvelope_0.SpatialReference);
                             this.ienvelope_0.Union(areaOfInterest);

@@ -9,7 +9,6 @@ using Yutai.ArcGIS.Controls.ApplicationStyle;
 
 namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
 {
-
     public partial class frmAppConfigSettingEx : Form
     {
         private GDBSettingPropertyPage m_GDBSettingPropertyPage = new GDBSettingPropertyPage();
@@ -42,7 +41,8 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
                     if (AppConfig.m_strConfigfile != null)
                     {
                         AppConfig.m_AppConfig.Save(AppConfig.m_strConfigfile);
-                        string path = AppConfig.m_strConfigfile.Substring(0, AppConfig.m_strConfigfile.Length - 10) + "vshost.exe.config";
+                        string path = AppConfig.m_strConfigfile.Substring(0, AppConfig.m_strConfigfile.Length - 10) +
+                                      "vshost.exe.config";
                         if (File.Exists(path))
                         {
                             AppConfig.m_AppConfig.Save(path);
@@ -77,7 +77,7 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
             {
             }
         }
-     
+
         private void frmAppConfigSettingEx_Load(object sender, EventArgs e)
         {
             PaintStyleMenuItem.SetDefaultStyle();
@@ -109,6 +109,7 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
                 this.m_SySSettingPropertyPage.Init();
             }
         }
+
         [STAThread]
         private static void Main()
         {
@@ -117,4 +118,3 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
         }
     }
 }
-

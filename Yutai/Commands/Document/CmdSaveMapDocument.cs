@@ -14,7 +14,6 @@ namespace Yutai.Commands.Document
 
         public override void OnClick()
         {
-
         }
 
         public override void OnClick(object sender, EventArgs args)

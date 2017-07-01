@@ -51,7 +51,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnGeoTransformation_Click(object sender, EventArgs e)
         {
-            frmGeographicTransformationConvert convert = new frmGeographicTransformationConvert {
+            frmGeographicTransformationConvert convert = new frmGeographicTransformationConvert
+            {
                 Map = this.ibasicMap_0
             };
             if (convert.ShowDialog() != DialogResult.OK)
@@ -73,7 +74,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     if (dataset2 != null)
                     {
                         this.ispatialReference_0 = dataset2.SpatialReference;
-                        TreeNode node = new TreeNode(this.ispatialReference_0.Name, 2, 2) {
+                        TreeNode node = new TreeNode(this.ispatialReference_0.Name, 2, 2)
+                        {
                             Tag = this.ispatialReference_0
                         };
                         this.treeNode_0.Nodes.Add(node);
@@ -86,7 +88,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnModify_Click(object sender, EventArgs e)
         {
-            frmSpatialRefrence refrence = new frmSpatialRefrence {
+            frmSpatialRefrence refrence = new frmSpatialRefrence
+            {
                 SpatialRefrence = this.ispatialReference_0
             };
             if (refrence.ShowDialog() == DialogResult.OK)
@@ -101,22 +104,27 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            System.Drawing.Point pos = new System.Drawing.Point(this.btnNew.Location.X, this.btnNew.Location.Y + this.btnNew.Height);
+            System.Drawing.Point pos = new System.Drawing.Point(this.btnNew.Location.X,
+                this.btnNew.Location.Y + this.btnNew.Height);
             this.contextMenu_0.Show(this, pos);
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
                 Filter = "空间参考文件 (*.prj)|*.prj"
             };
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 string fileName = dialog.FileName;
-                this.ispatialReference_0 = ((ISpatialReferenceFactory2) this.ispatialReferenceFactory_0).CreateESRISpatialReferenceFromPRJFile(fileName);
+                this.ispatialReference_0 =
+                    ((ISpatialReferenceFactory2) this.ispatialReferenceFactory_0).CreateESRISpatialReferenceFromPRJFile(
+                        fileName);
                 this.method_4(this.ispatialReference_0);
                 this.method_6();
-                TreeNode node = new TreeNode(this.ispatialReference_0.Name, 2, 2) {
+                TreeNode node = new TreeNode(this.ispatialReference_0.Name, 2, 2)
+                {
                     Tag = this.ispatialReference_0
                 };
                 this.treeNode_0.Nodes.Add(node);
@@ -128,7 +136,7 @@ namespace Yutai.ArcGIS.Carto.UI
         {
         }
 
- private void MapCoordinateCtrl_Load(object sender, EventArgs e)
+        private void MapCoordinateCtrl_Load(object sender, EventArgs e)
         {
             if (this.ispatialReference_0 == null)
             {
@@ -140,7 +148,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void menuItem_0_Click(object sender, EventArgs e)
         {
-            frmSpatialRefrence refrence = new frmSpatialRefrence {
+            frmSpatialRefrence refrence = new frmSpatialRefrence
+            {
                 SpatialRefrenceType = frmSpatialRefrence.enumSpatialRefrenceType.enumGeographicCoord
             };
             if (refrence.ShowDialog() == DialogResult.OK)
@@ -149,7 +158,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 this.method_5();
                 this.method_4(this.ispatialReference_0);
                 this.method_6();
-                TreeNode node = new TreeNode(this.ispatialReference_0.Name, 2, 2) {
+                TreeNode node = new TreeNode(this.ispatialReference_0.Name, 2, 2)
+                {
                     Tag = this.ispatialReference_0
                 };
                 this.treeNode_0.Nodes.Add(node);
@@ -159,7 +169,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void menuItem_1_Click(object sender, EventArgs e)
         {
-            frmSpatialRefrence refrence = new frmSpatialRefrence {
+            frmSpatialRefrence refrence = new frmSpatialRefrence
+            {
                 SpatialRefrenceType = frmSpatialRefrence.enumSpatialRefrenceType.enumProjectCoord
             };
             if (refrence.ShowDialog() == DialogResult.OK)
@@ -168,7 +179,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 this.method_5();
                 this.method_4(this.ispatialReference_0);
                 this.method_6();
-                TreeNode node = new TreeNode(this.ispatialReference_0.Name, 2, 2) {
+                TreeNode node = new TreeNode(this.ispatialReference_0.Name, 2, 2)
+                {
                     Tag = this.ispatialReference_0
                 };
                 this.treeNode_0.Nodes.Add(node);
@@ -192,7 +204,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 {
                     node = new TreeNode(ilayer_0.Name, 0, 1);
                     treeNode_1.Nodes.Add(node);
-                    node2 = new TreeNode(dataset.SpatialReference.Name, 2, 2) {
+                    node2 = new TreeNode(dataset.SpatialReference.Name, 2, 2)
+                    {
                         Tag = dataset.SpatialReference
                     };
                     node.Nodes.Add(node2);
@@ -212,7 +225,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 {
                     node = new TreeNode(ilayer_0.Name, 0, 1);
                     treeNode_1.Nodes.Add(node);
-                    node2 = new TreeNode(dataset.SpatialReference.Name, 2, 2) {
+                    node2 = new TreeNode(dataset.SpatialReference.Name, 2, 2)
+                    {
                         Tag = dataset.SpatialReference
                     };
                     node.Nodes.Add(node2);
@@ -242,7 +256,8 @@ namespace Yutai.ArcGIS.Carto.UI
                         {
                             node2 = new TreeNode(layer.Name, 0, 1);
                             node.Nodes.Add(node2);
-                            node3 = new TreeNode(dataset.SpatialReference.Name, 2, 2) {
+                            node3 = new TreeNode(dataset.SpatialReference.Name, 2, 2)
+                            {
                                 Tag = dataset.SpatialReference
                             };
                             node2.Nodes.Add(node3);
@@ -264,7 +279,8 @@ namespace Yutai.ArcGIS.Carto.UI
                             {
                                 node2 = new TreeNode(layer.Name, 0, 1);
                                 node.Nodes.Add(node2);
-                                node3 = new TreeNode(dataset.SpatialReference.Name, 2, 2) {
+                                node3 = new TreeNode(dataset.SpatialReference.Name, 2, 2)
+                                {
                                     Tag = dataset.SpatialReference
                                 };
                                 node2.Nodes.Add(node3);
@@ -281,7 +297,8 @@ namespace Yutai.ArcGIS.Carto.UI
             this.treeView1.Nodes.Add(node);
             if (this.ibasicMap_0.SpatialReference != null)
             {
-                node2 = new TreeNode(this.ibasicMap_0.SpatialReference.Name, 2, 2) {
+                node2 = new TreeNode(this.ibasicMap_0.SpatialReference.Name, 2, 2)
+                {
                     Tag = this.ibasicMap_0.SpatialReference
                 };
                 node.Nodes.Add(node2);
@@ -313,7 +330,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 if (ispatialReference_1 is IGeographicCoordinateSystem)
                 {
                     geographicCoordinateSystem = (IGeographicCoordinateSystem) ispatialReference_1;
-                    str = ((ispatialReference_1.Name + "\r\n") + "别名: " + geographicCoordinateSystem.Alias + "\r\n") + "缩略名: " + geographicCoordinateSystem.Abbreviation + "\r\n";
+                    str = ((ispatialReference_1.Name + "\r\n") + "别名: " + geographicCoordinateSystem.Alias + "\r\n") +
+                          "缩略名: " + geographicCoordinateSystem.Abbreviation + "\r\n";
                     string[] strArray = new string[21];
                     strArray[0] = str;
                     strArray[1] = "说明: ";
@@ -335,7 +353,7 @@ namespace Yutai.ArcGIS.Carto.UI
                     strArray[17] = "\r\n    短半轴: ";
                     strArray[18] = geographicCoordinateSystem.Datum.Spheroid.SemiMinorAxis.ToString();
                     strArray[19] = "\r\n    扁率倒数: ";
-                    double num = 1.0 / geographicCoordinateSystem.Datum.Spheroid.Flattening;
+                    double num = 1.0/geographicCoordinateSystem.Datum.Spheroid.Flattening;
                     strArray[20] = num.ToString();
                     str = string.Concat(strArray);
                     this.btnModify.Enabled = true;
@@ -364,10 +382,23 @@ namespace Yutai.ArcGIS.Carto.UI
                         }
                         str2 = str2 + parameters[i].Name + ": " + parameters[i].Value.ToString() + "\r\n ";
                     }
-                    str = (((((ispatialReference_1.Name + "\r\n") + "别名: " + system2.Alias + "\r\n") + "缩略名: " + system2.Abbreviation + "\r\n") + "说明: " + system2.Remarks + "\r\n") + "投影: " + system2.Projection.Name + "\r\n") + "参数:\r\n" + str2;
-                    str = ((((str + "线性单位: " + system2.CoordinateUnit.Name + " (" + system2.CoordinateUnit.MetersPerUnit.ToString() + ")\r\n") + "地理坐标系:\r\n") + "  名称: " + geographicCoordinateSystem.Name + "\r\n") + "  缩略名: " + geographicCoordinateSystem.Abbreviation + "\r\n") + "  说明: " + geographicCoordinateSystem.Remarks + "\r\n";
-                    str = str + "  角度单位: " + geographicCoordinateSystem.CoordinateUnit.Name + " (" + geographicCoordinateSystem.CoordinateUnit.RadiansPerUnit.ToString() + ")\r\n";
-                    str = (((((str + "  本初子午线: " + geographicCoordinateSystem.PrimeMeridian.Name + " (" + geographicCoordinateSystem.PrimeMeridian.Longitude.ToString() + ")\r\n") + "  数据: " + geographicCoordinateSystem.Datum.Name + "\r\n") + "    椭球体: " + geographicCoordinateSystem.Datum.Spheroid.Name + "\r\n") + "    长半轴: " + geographicCoordinateSystem.Datum.Spheroid.SemiMajorAxis.ToString() + "\r\n") + "    短半轴: " + geographicCoordinateSystem.Datum.Spheroid.SemiMinorAxis.ToString() + "\r\n") + "    扁率倒数: " + ((1.0 / geographicCoordinateSystem.Datum.Spheroid.Flattening)).ToString();
+                    str = (((((ispatialReference_1.Name + "\r\n") + "别名: " + system2.Alias + "\r\n") + "缩略名: " +
+                             system2.Abbreviation + "\r\n") + "说明: " + system2.Remarks + "\r\n") + "投影: " +
+                           system2.Projection.Name + "\r\n") + "参数:\r\n" + str2;
+                    str = ((((str + "线性单位: " + system2.CoordinateUnit.Name + " (" +
+                              system2.CoordinateUnit.MetersPerUnit.ToString() + ")\r\n") + "地理坐标系:\r\n") + "  名称: " +
+                            geographicCoordinateSystem.Name + "\r\n") + "  缩略名: " +
+                           geographicCoordinateSystem.Abbreviation + "\r\n") + "  说明: " +
+                          geographicCoordinateSystem.Remarks + "\r\n";
+                    str = str + "  角度单位: " + geographicCoordinateSystem.CoordinateUnit.Name + " (" +
+                          geographicCoordinateSystem.CoordinateUnit.RadiansPerUnit.ToString() + ")\r\n";
+                    str = (((((str + "  本初子午线: " + geographicCoordinateSystem.PrimeMeridian.Name + " (" +
+                               geographicCoordinateSystem.PrimeMeridian.Longitude.ToString() + ")\r\n") + "  数据: " +
+                              geographicCoordinateSystem.Datum.Name + "\r\n") + "    椭球体: " +
+                             geographicCoordinateSystem.Datum.Spheroid.Name + "\r\n") + "    长半轴: " +
+                            geographicCoordinateSystem.Datum.Spheroid.SemiMajorAxis.ToString() + "\r\n") + "    短半轴: " +
+                           geographicCoordinateSystem.Datum.Spheroid.SemiMinorAxis.ToString() + "\r\n") + "    扁率倒数: " +
+                          ((1.0/geographicCoordinateSystem.Datum.Spheroid.Flattening)).ToString();
                     this.btnModify.Enabled = true;
                     this.btnClear.Enabled = true;
                     this.textBoxDetail.Text = str;
@@ -377,7 +408,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void method_5()
         {
-            ESRI.ArcGIS.esriSystem.IPersistStream stream = (ESRI.ArcGIS.esriSystem.IPersistStream) this.ispatialReference_0;
+            ESRI.ArcGIS.esriSystem.IPersistStream stream =
+                (ESRI.ArcGIS.esriSystem.IPersistStream) this.ispatialReference_0;
             IXMLStream stream2 = new XMLStreamClass();
             stream.Save((ESRI.ArcGIS.esriSystem.IStream) stream2, 1);
             string str = stream2.SaveToString();
@@ -435,39 +467,23 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_0;
-            }
+            get { return this.bool_0; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

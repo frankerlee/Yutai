@@ -41,12 +41,12 @@ namespace Yutai.Plugins.Services
         /// <summary>
         /// Validates the list of plugins loaded by MEF.
         /// </summary>
-        void ValidatePlugins();
+        void ValidatePlugins(ISplashView splashView);
 
         /// <summary>
         /// Searches plugins in plugins folder with MEF.
         /// </summary>
-        void AssemblePlugins();
+        void AssemblePlugins(ISplashView splashView);
 
         /// <summary>
         /// Loads a single plugin.

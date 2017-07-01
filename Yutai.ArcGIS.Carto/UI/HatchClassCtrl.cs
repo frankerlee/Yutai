@@ -35,7 +35,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void HatchClassCtrl_Load(object sender, EventArgs e)
+        private void HatchClassCtrl_Load(object sender, EventArgs e)
         {
             this.Init();
         }
@@ -68,7 +68,10 @@ namespace Yutai.ArcGIS.Carto.UI
                 for (int i = 0; i < this.ifields_0.FieldCount; i++)
                 {
                     IField field = this.ifields_0.get_Field(i);
-                    if ((((field.Type == esriFieldType.esriFieldTypeInteger) || (field.Type == esriFieldType.esriFieldTypeSmallInteger)) || (field.Type == esriFieldType.esriFieldTypeDouble)) || (field.Type == esriFieldType.esriFieldTypeSingle))
+                    if ((((field.Type == esriFieldType.esriFieldTypeInteger) ||
+                          (field.Type == esriFieldType.esriFieldTypeSmallInteger)) ||
+                         (field.Type == esriFieldType.esriFieldTypeDouble)) ||
+                        (field.Type == esriFieldType.esriFieldTypeSingle))
                     {
                         this.cboFields.Properties.Items.Add(new FieldWrap(field));
                         if (field.Name == hatchInterval.Field)
@@ -89,7 +92,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
+        private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.bool_0)
             {
@@ -130,22 +133,13 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IFields Fields
         {
-            set
-            {
-                this.ifields_0 = value;
-            }
+            set { this.ifields_0 = value; }
         }
 
         public IHatchClass HatchClass
         {
-            get
-            {
-                return this.ihatchClass_0;
-            }
-            set
-            {
-                this.ihatchClass_0 = value;
-            }
+            get { return this.ihatchClass_0; }
+            set { this.ihatchClass_0 = value; }
         }
 
         internal partial class FieldWrap
@@ -164,14 +158,10 @@ namespace Yutai.ArcGIS.Carto.UI
 
             public IField Field
             {
-                get
-                {
-                    return this.ifield_0;
-                }
+                get { return this.ifield_0; }
             }
         }
 
         public delegate void ValueChangedHandler(object sender, EventArgs e);
     }
 }
-

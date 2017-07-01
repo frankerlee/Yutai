@@ -11,13 +11,13 @@ namespace Yutai.ArcGIS.Controls.Controls
 {
     internal partial class GeoCoordSys : UserControl
     {
-        private int[] DatumeType = new int[] { 6214, 6024, 6326, 6610 };
+        private int[] DatumeType = new int[] {6214, 6024, 6326, 6610};
         private bool m_CanDo = false;
         private int m_ErrorCount = 0;
         private ISpatialReferenceFactory m_SpatialFactory = new SpatialReferenceEnvironmentClass();
-        private int[] PrimeMeridiansType = new int[] { 8901, 8912, 8907 };
-        private int[] SpheresType = new int[] { 7024, 7030, 7049 };
-        private int[] UnitType = new int[] { 9102, 9106, 9103, 9104, 9101 };
+        private int[] PrimeMeridiansType = new int[] {8901, 8912, 8907};
+        private int[] SpheresType = new int[] {7024, 7030, 7049};
+        private int[] UnitType = new int[] {9102, 9106, 9103, 9104, 9101};
 
         public GeoCoordSys()
         {
@@ -106,7 +106,8 @@ namespace Yutai.ArcGIS.Controls.Controls
                     this.cboSpheres.Enabled = false;
                     if (this.m_CanDo)
                     {
-                        this.m_Datum = this.m_SpatialFactory.CreateDatum(this.DatumeType[this.cboDatumName.SelectedIndex - 1]);
+                        this.m_Datum =
+                            this.m_SpatialFactory.CreateDatum(this.DatumeType[this.cboDatumName.SelectedIndex - 1]);
                         this.m_pSphere = this.m_Datum.Spheroid;
                         this.m_CanDo = false;
                     }
@@ -135,14 +136,16 @@ namespace Yutai.ArcGIS.Controls.Controls
                 this.SetEditReadOnly(this.txtSecond, true);
                 if (this.m_CanDo)
                 {
-                    this.m_PrimeMeridian = this.m_SpatialFactory.CreatePrimeMeridian(this.PrimeMeridiansType[this.cboPrimeMeridians.SelectedIndex - 1]);
+                    this.m_PrimeMeridian =
+                        this.m_SpatialFactory.CreatePrimeMeridian(
+                            this.PrimeMeridiansType[this.cboPrimeMeridians.SelectedIndex - 1]);
                 }
                 if (this.m_PrimeMeridian != null)
                 {
                     int longitude = (int) this.m_PrimeMeridian.Longitude;
-                    double num2 = (this.m_PrimeMeridian.Longitude - longitude) * 60.0;
+                    double num2 = (this.m_PrimeMeridian.Longitude - longitude)*60.0;
                     int num3 = (int) num2;
-                    num2 = (num2 - num3) * 60.0;
+                    num2 = (num2 - num3)*60.0;
                     this.txtDegree.Text = longitude.ToString();
                     this.txtMinute.Text = num3.ToString();
                     this.txtSecond.Text = num2.ToString();
@@ -165,18 +168,19 @@ namespace Yutai.ArcGIS.Controls.Controls
                 this.SetEditReadOnly(this.txtFlattening, true);
                 if (this.m_CanDo)
                 {
-                    this.m_pSphere = this.m_SpatialFactory.CreateSpheroid(this.SpheresType[this.cboSpheres.SelectedIndex - 1]);
+                    this.m_pSphere =
+                        this.m_SpatialFactory.CreateSpheroid(this.SpheresType[this.cboSpheres.SelectedIndex - 1]);
                 }
                 if (this.m_pSphere != null)
                 {
                     this.txtMajorAxis.Text = this.m_pSphere.SemiMajorAxis.ToString();
                     this.txtMiniorAxis.Text = this.m_pSphere.SemiMinorAxis.ToString();
-                    this.txtFlattening.Text = (1.0 / this.m_pSphere.Flattening).ToString();
+                    this.txtFlattening.Text = (1.0/this.m_pSphere.Flattening).ToString();
                 }
             }
         }
 
- private void GeoCoordSys_Load(object sender, EventArgs e)
+        private void GeoCoordSys_Load(object sender, EventArgs e)
         {
             this.AddDatumToComboBox();
             this.AddSpheresToComboBox();
@@ -207,12 +211,12 @@ namespace Yutai.ArcGIS.Controls.Controls
                 num = Convert.ToDouble(this.txtMajorAxis.Text);
                 if (this.rdoFlattening.Checked)
                 {
-                    num2 = 1.0 / Convert.ToDouble(this.txtFlattening.Text);
+                    num2 = 1.0/Convert.ToDouble(this.txtFlattening.Text);
                 }
                 else
                 {
                     double num3 = Convert.ToDouble(this.txtMiniorAxis.Text);
-                    num2 = (num - num3) / num;
+                    num2 = (num - num3)/num;
                 }
                 ((ISpheroidEdit) this.m_pSphere).DefineEx(this.cboSpheres.Text, null, null, null, ref num, ref num2);
             }
@@ -230,13 +234,16 @@ namespace Yutai.ArcGIS.Controls.Controls
                 double num4 = Convert.ToDouble(this.txtDegree.Text);
                 if (num4 < 0.0)
                 {
-                    num = (num4 - (Convert.ToDouble(this.txtMinute.Text) / 60.0)) - (Convert.ToDouble(this.txtSecond.Text) / 3600.0);
+                    num = (num4 - (Convert.ToDouble(this.txtMinute.Text)/60.0)) -
+                          (Convert.ToDouble(this.txtSecond.Text)/3600.0);
                 }
                 else
                 {
-                    num = (num4 + (Convert.ToDouble(this.txtMinute.Text) / 60.0)) + (Convert.ToDouble(this.txtSecond.Text) / 3600.0);
+                    num = (num4 + (Convert.ToDouble(this.txtMinute.Text)/60.0)) +
+                          (Convert.ToDouble(this.txtSecond.Text)/3600.0);
                 }
-                ((IPrimeMeridianEdit) this.m_PrimeMeridian).DefineEx(this.cboPrimeMeridians.Text, null, null, null, ref num);
+                ((IPrimeMeridianEdit) this.m_PrimeMeridian).DefineEx(this.cboPrimeMeridians.Text, null, null, null,
+                    ref num);
             }
             this.m_GeoCoordSys = new GeographicCoordinateSystemClass();
             IGeographicCoordinateSystemEdit geoCoordSys = this.m_GeoCoordSys as IGeographicCoordinateSystemEdit;
@@ -244,7 +251,8 @@ namespace Yutai.ArcGIS.Controls.Controls
             string alias = "";
             try
             {
-                geoCoordSys.DefineEx(this.textEditName.Text, alias, alias, alias, alias, this.m_Datum, this.m_PrimeMeridian, geographicUnit);
+                geoCoordSys.DefineEx(this.textEditName.Text, alias, alias, alias, alias, this.m_Datum,
+                    this.m_PrimeMeridian, geographicUnit);
             }
             catch
             {
@@ -279,7 +287,7 @@ namespace Yutai.ArcGIS.Controls.Controls
                         this.cboSpheres.Text = this.m_Datum.Spheroid.Name;
                         this.txtMajorAxis.Text = this.m_pSphere.SemiMajorAxis.ToString();
                         this.txtMiniorAxis.Text = this.m_pSphere.SemiMinorAxis.ToString();
-                        this.txtFlattening.Text = (1.0 / this.m_pSphere.Flattening).ToString();
+                        this.txtFlattening.Text = (1.0/this.m_pSphere.Flattening).ToString();
                     }
                 }
                 this.m_Unit = this.m_GeoCoordSys.CoordinateUnit;
@@ -303,9 +311,9 @@ namespace Yutai.ArcGIS.Controls.Controls
                 {
                     this.cboPrimeMeridians.Text = this.m_PrimeMeridian.Name;
                     int longitude = (int) this.m_PrimeMeridian.Longitude;
-                    double num3 = (this.m_PrimeMeridian.Longitude - longitude) * 60.0;
+                    double num3 = (this.m_PrimeMeridian.Longitude - longitude)*60.0;
                     int num4 = (int) num3;
-                    num3 = (num3 - num4) * 60.0;
+                    num3 = (num3 - num4)*60.0;
                     this.txtDegree.Text = longitude.ToString();
                     this.txtMinute.Text = num4.ToString();
                     this.txtSecond.Text = num3.ToString();
@@ -325,7 +333,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             }
         }
 
- private void rdoFlattening_Click(object sender, EventArgs e)
+        private void rdoFlattening_Click(object sender, EventArgs e)
         {
             if (this.rdoFlattening.Checked)
             {
@@ -686,11 +694,7 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         public IGeographicCoordinateSystem GeographicCoordinateSystem
         {
-            set
-            {
-                this.m_GeoCoordSys = value;
-            }
+            set { this.m_GeoCoordSys = value; }
         }
     }
 }
-

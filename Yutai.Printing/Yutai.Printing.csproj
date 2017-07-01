@@ -35,6 +35,29 @@
     <Reference Include="DevExpress.Utils.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="ESRI.ArcGIS.ADF, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86" />
+    <Reference Include="ESRI.ArcGIS.AxControls, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
+    <Reference Include="ESRI.ArcGIS.Carto, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Controls, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.DataSourcesGDB, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Display, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geodatabase, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geometry, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.System, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.SystemUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -51,7 +74,87 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Draw\AlignGraphicElement.cs" />
+    <Compile Include="Commands\Carto\ToolApplyTemplateByMouseClick.cs" />
+    <Compile Include="Commands\Carto\CmdApplyTfMapTemplate.cs" />
+    <Compile Include="Commands\Carto\CmdApplyTFMapTemplateByDataRange.cs" />
+    <Compile Include="Commands\Carto\CmdCartoSetting.cs" />
+    <Compile Include="Commands\Carto\CmdKeyClipCircleGeometry.cs" />
+    <Compile Include="Commands\Carto\CmdClearCartoTemplate.cs" />
+    <Compile Include="Commands\Carto\CmdClearClipBounds.cs" />
+    <Compile Include="Commands\Carto\CmdClearClipGemetry.cs" />
+    <Compile Include="Commands\Carto\CmdClipGeometryByImportExcel.cs" />
+    <Compile Include="Commands\Carto\ClipHelper.cs" />
+    <Compile Include="Commands\Carto\CmdClipResultOut.cs" />
+    <Compile Include="Commands\Carto\ToolClipResultDataOut.cs" />
+    <Compile Include="Commands\Carto\ToolRealClipOut.cs" />
+    <Compile Include="Commands\Carto\ToolClipOutToOtherFormat.cs" />
+    <Compile Include="Commands\Carto\CmdExportClipRegionFeatureClass.cs" />
+    <Compile Include="Commands\Carto\CmdGroupElementEx.cs" />
+    <Compile Include="Commands\Carto\PahtAssistant.cs" />
+    <Compile Include="Commands\Carto\CmdKeyPolygonClipGeometry.cs" />
+    <Compile Include="Commands\Carto\ToolNewCircleClipGeometry.cs" />
+    <Compile Include="Commands\Carto\ToolNewPolygonClipGeometry.cs" />
+    <Compile Include="Commands\Carto\ToolNewClipBounds.cs" />
+    <Compile Include="Commands\Carto\CmdStartMaptemplateManager.cs" />
+    <Compile Include="Commands\Carto\TempAcceessBD.cs" />
+    <Compile Include="Commands\CmdCloseLayout.cs" />
     <Compile Include="Commands\CmdStartPrintingLayout.cs" />
+    <Compile Include="Commands\Draw\CmdDeleteElement.cs" />
+    <Compile Include="Commands\Draw\ToolInsertCircleElement.cs" />
+    <Compile Include="Commands\Draw\CmdInsertDataGraphic.cs" />
+    <Compile Include="Commands\Draw\ToolInsertEllipseElement.cs" />
+    <Compile Include="Commands\Draw\CmdInsertFeactionText.cs" />
+    <Compile Include="Commands\View\ToolPagePan.cs" />
+    <Compile Include="Commands\View\ToolSelectElement.cs" />
+    <Compile Include="Commands\Draw\CmdElementProperty.cs" />
+    <Compile Include="Commands\Draw\CmdGroupElement.cs" />
+    <Compile Include="Commands\View\CmdPageFixZoomIn.cs" />
+    <Compile Include="Commands\View\CmdPageFixZoomOut.cs" />
+    <Compile Include="Commands\View\ToolPageZoomIn.cs" />
+    <Compile Include="Commands\View\ToolPageZoomOut.cs" />
+    <Compile Include="Commands\View\CmdPageZoomToPercent100.cs" />
+    <Compile Include="Commands\View\CmdPageZoomToWhole.cs" />
+    <Compile Include="Commands\View\CmdPageZoomToWidth.cs" />
+    <Compile Include="Commands\Draw\CmdRedoOperation.cs" />
+    <Compile Include="Commands\Draw\CmdNewJtbElement.cs" />
+    <Compile Include="Commands\Draw\ToolNewLabelElement.cs" />
+    <Compile Include="Commands\Draw\CmdNewLegend.cs" />
+    <Compile Include="Commands\Draw\CmdNewMapFrame.cs" />
+    <Compile Include="Commands\Draw\ToolNewMarkerElement.cs" />
+    <Compile Include="Commands\Draw\CmdNewNeatline.cs" />
+    <Compile Include="Commands\Draw\ToolNewCurveElement.cs" />
+    <Compile Include="Commands\Draw\CmdNewNorthArrow.cs" />
+    <Compile Include="Commands\Draw\CmdNewObject.cs" />
+    <Compile Include="Commands\Draw\CmdNewPicture.cs" />
+    <Compile Include="Commands\Draw\ToolNewPolygonElement.cs" />
+    <Compile Include="Commands\Draw\ToolNewRectangleElement.cs" />
+    <Compile Include="Commands\Draw\CmdNewScaleBar.cs" />
+    <Compile Include="Commands\Draw\CmdNewScaleText.cs" />
+    <Compile Include="Commands\Draw\CmdNewText.cs" />
+    <Compile Include="Commands\Draw\CmdNewTitle.cs" />
+    <Compile Include="Commands\Draw\ToolInsertLineElement.cs" />
+    <Compile Include="Commands\Draw\CmdUndoOperation.cs" />
+    <Compile Include="Commands\Draw\CmdUnGroupElement.cs" />
+    <Compile Include="Forms\CMapPrinter.cs" />
+    <Compile Include="Forms\frmDir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDir.designer.cs">
+      <DependentUpon>frmDir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmFractionTextElement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmFractionTextElement.Designer.cs">
+      <DependentUpon>frmFractionTextElement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmInputText.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmInputText.Designer.cs">
+      <DependentUpon>frmInputText.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -64,24 +167,57 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Yutai.ArcGIS.Carto\Yutai.ArcGIS.Carto.csproj">
+      <Project>{C493421E-9EA5-43C7-94A1-3CAF106014BE}</Project>
+      <Name>Yutai.ArcGIS.Carto</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Yutai.ArcGIS.Catalog\Yutai.ArcGIS.Catalog.csproj">
+      <Project>{A71076F2-B2ED-4522-8DBF-BCA1689EB637}</Project>
+      <Name>Yutai.ArcGIS.Catalog</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Yutai.ArcGIS.Common\Yutai.ArcGIS.Common.csproj">
+      <Project>{1938B3F8-8EDE-48F7-9594-EEB1F126E622}</Project>
+      <Name>Yutai.ArcGIS.Common</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Yutai.ArcGIS.Controls\Yutai.ArcGIS.Controls.csproj">
+      <Project>{0E17B019-EE36-46B7-8B96-C0A3CA666430}</Project>
+      <Name>Yutai.ArcGIS.Controls</Name>
+      <Private>False</Private>
+    </ProjectReference>
     <ProjectReference Include="..\Yutai.Plugins\Yutai.Plugins.csproj">
       <Project>{800F2EE4-47AB-4CD4-934D-A64980D98A23}</Project>
       <Name>Yutai.Plugins</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.Services\Yutai.Services.csproj">
       <Project>{E95B46F1-A8D7-41D8-9F5A-B57BD748A62B}</Project>
       <Name>Yutai.Services</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.Shared\Yutai.Shared.csproj">
       <Project>{4A9B3243-2B0A-4E87-9B23-71A58C1F318D}</Project>
       <Name>Yutai.Shared</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.UI\Yutai.UI.csproj">
       <Project>{9A73B99A-0D59-4B55-B35F-721D321942AF}</Project>
       <Name>Yutai.UI</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\frmDir.resx">
+      <DependentUpon>frmDir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmFractionTextElement.resx">
+      <DependentUpon>frmFractionTextElement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmInputText.resx">
+      <DependentUpon>frmInputText.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -89,11 +225,88 @@
     <EmbeddedResource Include="Menu\MenuLayout.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Forms\" />
+    <EmbeddedResource Include="Resources\Cursor\PageHand.cur" />
+    <EmbeddedResource Include="Resources\Cursor\PageMoveHand.cur" />
+    <EmbeddedResource Include="Resources\Cursor\PageZoomIn.cur" />
+    <EmbeddedResource Include="Resources\Cursor\PageZoomOut.cur" />
+    <EmbeddedResource Include="Resources\Cursor\RotateFeature.cur" />
+    <EmbeddedResource Include="Resources\Cursor\ScaleFeature.cur" />
+    <None Include="Resources\icon_picture.png" />
+    <None Include="Resources\icon_object.png" />
+    <None Include="Resources\icon_undo.png" />
+    <None Include="Resources\icon_redo.png" />
+    <None Include="Resources\icon_curve.png" />
+    <None Include="Resources\icon_netline.png" />
+    <None Include="Resources\icon_marker.png" />
+    <None Include="Resources\icon_mapframe.png" />
+    <None Include="Resources\icon_label.png" />
+    <None Include="Resources\icon_property.png" />
+    <None Include="Resources\icon_layout_exit.png" />
+    <None Include="Resources\icon_ungroup.png" />
+    <None Include="Resources\icon_title.png" />
+    <None Include="Resources\icon_text.png" />
+    <None Include="Resources\icon_select.png" />
+    <None Include="Resources\icon_north_arrow.png" />
+    <None Include="Resources\icon_legend.png" />
+    <None Include="Resources\icon_group.png" />
+    <None Include="Resources\icon_ellipse.png" />
+    <None Include="Resources\icon_delete.png" />
+    <None Include="Resources\icon_align_top.png" />
+    <None Include="Resources\icon_align_right.png" />
+    <None Include="Resources\icon_align_left.png" />
+    <None Include="Resources\icon_align_bottom.png" />
+    <None Include="Resources\icon_feaction.png" />
+    <None Include="Resources\icon_jtb.png" />
+    <None Include="Resources\icon_dataGraphic.png" />
+    <None Include="Resources\icon_clip_circle.png" />
+    <None Include="Resources\icon_clip_circle2.png" />
+    <None Include="Resources\icon_clip_cut1.png" />
+    <None Include="Resources\icon_clip_cut2.png" />
+    <None Include="Resources\icon_clip_cut3.png" />
+    <None Include="Resources\icon_clip_delete.png" />
+    <None Include="Resources\icon_clip_excel.png" />
+    <None Include="Resources\icon_clip_input.png" />
+    <None Include="Resources\icon_clip_polygon.png" />
+    <None Include="Resources\icon_clip_print.png" />
+    <None Include="Resources\icon_clip_print2.png" />
+    <None Include="Resources\icon_clip_rectangle.png" />
+    <None Include="Resources\icon_map_cleae.png" />
+    <None Include="Resources\icon_map_fence.png" />
+    <None Include="Resources\icon_map_index.png" />
+    <None Include="Resources\icon_map_manager.png" />
+    <None Include="Resources\icon_map_marker.png" />
+    <None Include="Resources\icon_map_number.png" />
+    <Content Include="Resources\PageFixZoomIn.bmp" />
+    <Content Include="Resources\PageFixZoomOut.bmp" />
+    <Content Include="Resources\PageHand.bmp" />
+    <Content Include="Resources\pageset.bmp" />
+    <Content Include="Resources\PageZoomIn.bmp" />
+    <Content Include="Resources\PageZoomOut.bmp" />
+    <Content Include="Resources\PageZoomToPercent100.bmp" />
+    <Content Include="Resources\PageZoomToWhole.bmp" />
+    <Content Include="Resources\PageZoomToWidth.bmp" />
+    <Content Include="Resources\ScaleBar.bmp" />
+    <Content Include="Resources\ScaleText.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icon_layout_start.png" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Cursor\Digitise.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_polygon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_rectangle.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

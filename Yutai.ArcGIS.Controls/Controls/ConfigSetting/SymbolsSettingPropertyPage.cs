@@ -80,7 +80,9 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
             {
                 for (num = this.listBox2.SelectedIndices.Count - 1; num >= 0; num--)
                 {
-                    for (num2 = this.listBox2.SelectedIndices[num]; num2 < (this.m_SymbolsNode.Attributes.Count - 1); num2++)
+                    for (num2 = this.listBox2.SelectedIndices[num];
+                        num2 < (this.m_SymbolsNode.Attributes.Count - 1);
+                        num2++)
                     {
                         this.m_SymbolsNode.Attributes[num2].Value = this.m_SymbolsNode.Attributes[num2 + 1].Value;
                     }
@@ -90,7 +92,7 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
             }
         }
 
- private int GetIndex()
+        private int GetIndex()
         {
             int num = 1;
             if (this.m_SymbolsNode.Attributes.Count == 0)
@@ -172,7 +174,7 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
             this.m_CanDo = true;
         }
 
- private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.radioGroup1.SelectedIndex == 0)
             {
@@ -272,4 +274,3 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
         }
     }
 }
-

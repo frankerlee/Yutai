@@ -6,12 +6,9 @@ namespace Yutai.ArcGIS.Controls.Controls.GPSLib
 {
     internal partial class GPSPositionPage : UserControl
     {
-
         public GPSPositionPage()
         {
             this.InitializeComponent();
         }
-
-
     }
 }

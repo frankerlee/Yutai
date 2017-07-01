@@ -7,4 +7,3 @@
         string TargetLocation { get; set; }
     }
 }
-

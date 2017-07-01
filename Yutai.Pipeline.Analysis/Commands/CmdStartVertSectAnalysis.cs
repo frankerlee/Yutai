@@ -22,7 +22,6 @@ namespace Yutai.Pipeline.Analysis.Commands
 {
     class CmdStartVertSectAnalysis : YutaiTool
     {
-
         public SelectControl m_SectionControl;
 
         private PipelineAnalysisPlugin _plugin;
@@ -36,7 +35,6 @@ namespace Yutai.Pipeline.Analysis.Commands
 
         public override void OnClick()
         {
-
             _context.SetCurrentTool(this);
         }
 
@@ -72,9 +70,9 @@ namespace Yutai.Pipeline.Analysis.Commands
             IMap map = _context.FocusMap;
             IEnvelope envelope = new Envelope() as IEnvelope;
             IPoint point = _context.ActiveView.ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
-            IActiveView activeView = (IActiveView)map;
+            IActiveView activeView = (IActiveView) map;
             envelope.PutCoords(point.X, point.Y, point.X, point.Y);
-            double num3 = activeView.Extent.Width / 200.0;
+            double num3 = activeView.Extent.Width/200.0;
             envelope.XMin = (envelope.XMin - num3);
             envelope.YMin = (envelope.YMin - num3);
             envelope.YMax = (envelope.YMax + num3);
@@ -87,7 +85,6 @@ namespace Yutai.Pipeline.Analysis.Commands
         {
             if (keyCode == 27)
             {
-
             }
         }
 
@@ -97,7 +94,7 @@ namespace Yutai.Pipeline.Analysis.Commands
 
             this.SelectByClick(x, y);
             IMap map = _context.FocusMap;
-            IEnumFeature enumFeature = (IEnumFeature)map.FeatureSelection;
+            IEnumFeature enumFeature = (IEnumFeature) map.FeatureSelection;
             IFeature feature = enumFeature.Next();
             if (feature == null)
             {
@@ -191,7 +188,6 @@ namespace Yutai.Pipeline.Analysis.Commands
                     this.m_SectionControl.Add(oID);
                 }
             }
-
         }
 
         public override void OnMouseUp(int button, int shift, int x, int y)
@@ -217,7 +213,8 @@ namespace Yutai.Pipeline.Analysis.Commands
                 {
                     if (flag)
                     {
-                        SectionViewFrm sectionViewFrm = new SectionViewFrm(SectionViewFrm.SectionType.SectionTypeVersect, _context, _plugin.PipeConfig);
+                        SectionViewFrm sectionViewFrm = new SectionViewFrm(
+                            SectionViewFrm.SectionType.SectionTypeVersect, _context, _plugin.PipeConfig);
                         sectionViewFrm.GetSelectedData();
                         sectionViewFrm.ShowDialog();
                     }
@@ -235,7 +232,7 @@ namespace Yutai.Pipeline.Analysis.Commands
         public void GetBaseLine()
         {
             IMap map = _context.FocusMap;
-            IEnumFeature enumFeature = (IEnumFeature)map.FeatureSelection;
+            IEnumFeature enumFeature = (IEnumFeature) map.FeatureSelection;
             if (enumFeature.Next() != null)
             {
                 while (enumFeature.Next() != null)
@@ -251,14 +248,14 @@ namespace Yutai.Pipeline.Analysis.Commands
             hashtable.Clear();
             for (int i = 0; i < count; i++)
             {
-                SortInfo sortInfo = (SortInfo)arrayList[i];
+                SortInfo sortInfo = (SortInfo) arrayList[i];
                 if (hashtable[sortInfo.SmFNode] == null)
                 {
                     hashtable[sortInfo.SmFNode] = 1;
                 }
                 else
                 {
-                    int num = (int)hashtable[sortInfo.SmFNode];
+                    int num = (int) hashtable[sortInfo.SmFNode];
                     hashtable[sortInfo.SmFNode] = num + 1;
                 }
                 if (hashtable[sortInfo.SmTNode] == null)
@@ -267,14 +264,14 @@ namespace Yutai.Pipeline.Analysis.Commands
                 }
                 else
                 {
-                    int num2 = (int)hashtable[sortInfo.SmTNode];
+                    int num2 = (int) hashtable[sortInfo.SmTNode];
                     hashtable[sortInfo.SmTNode] = num2 + 1;
                 }
             }
             bool result = false;
             foreach (DictionaryEntry dictionaryEntry in hashtable)
             {
-                if ((int)dictionaryEntry.Value > 2)
+                if ((int) dictionaryEntry.Value > 2)
                 {
                     result = true;
                     break;
@@ -286,7 +283,7 @@ namespace Yutai.Pipeline.Analysis.Commands
         public void GetSortInfos(ArrayList pSortInfos)
         {
             IMap map = _context.FocusMap;
-            IEnumFeature enumFeature = (IEnumFeature)map.FeatureSelection;
+            IEnumFeature enumFeature = (IEnumFeature) map.FeatureSelection;
             IFeature feature = enumFeature.Next();
             if (feature != null)
             {
@@ -304,8 +301,8 @@ namespace Yutai.Pipeline.Analysis.Commands
                         IEnumFeature enumFeatures = pNetworkClass.GeometricNetwork.SearchForNetworkFeature(newCenter,
                             esriFeatureType.esriFTSimpleEdge);
 
-                        IEdgeFeature edgeFeature = (IEdgeFeature)enumFeatures.Next();
-                        ISimpleEdgeFeature simpedgeFeature = (ISimpleEdgeFeature)edgeFeature;
+                        IEdgeFeature edgeFeature = (IEdgeFeature) enumFeatures.Next();
+                        ISimpleEdgeFeature simpedgeFeature = (ISimpleEdgeFeature) edgeFeature;
                         pSortInfos.Add(new SortInfo
                         {
                             SmID = simpedgeFeature.EID,
@@ -313,10 +310,9 @@ namespace Yutai.Pipeline.Analysis.Commands
                             SmTNode = edgeFeature.ToJunctionEID
                         });
                     }
-                
+
                     feature = enumFeature.Next();
-                }
-                while (feature != null);
+                } while (feature != null);
             }
         }
 
@@ -325,8 +321,8 @@ namespace Yutai.Pipeline.Analysis.Commands
             int count = arrayList.Count;
             for (int i = 0; i < count - 1; i++)
             {
-                SortInfo sortInfo = (SortInfo)arrayList[i];
-                SortInfo sortInfo2 = (SortInfo)arrayList[i + 1];
+                SortInfo sortInfo = (SortInfo) arrayList[i];
+                SortInfo sortInfo2 = (SortInfo) arrayList[i + 1];
                 int pointInfoRleation = sortInfo.GetPointInfoRleation(sortInfo2);
                 if (pointInfoRleation == 21)
                 {
@@ -364,19 +360,19 @@ namespace Yutai.Pipeline.Analysis.Commands
                     result = false;
                     return result;
                 }
-                long num2 = (long)arrayList.Count;
+                long num2 = (long) arrayList.Count;
                 int num3 = 0;
-                while ((long)num3 < num2)
+                while ((long) num3 < num2)
                 {
-                    SortInfo sortInfo = (SortInfo)arrayList[num3];
+                    SortInfo sortInfo = (SortInfo) arrayList[num3];
                     if (arrayList2.Count == 0)
                     {
                         arrayList2.Add(sortInfo);
                         arrayList.Remove(sortInfo);
                         break;
                     }
-                    SortInfo sortInfo2 = (SortInfo)arrayList2[0];
-                    SortInfo sortInfo3 = (SortInfo)arrayList2[arrayList2.Count - 1];
+                    SortInfo sortInfo2 = (SortInfo) arrayList2[0];
+                    SortInfo sortInfo3 = (SortInfo) arrayList2[arrayList2.Count - 1];
                     if (sortInfo2.GetPointInfoRleation(sortInfo) != -1 || sortInfo3.GetPointInfoRleation(sortInfo) != -1)
                     {
                         int pointInfoRleation = sortInfo2.GetPointInfoRleation(sortInfo);
@@ -419,8 +415,5 @@ namespace Yutai.Pipeline.Analysis.Commands
             result = true;
             return result;
         }
-
-
-
     }
 }

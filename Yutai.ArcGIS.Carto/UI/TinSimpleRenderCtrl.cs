@@ -48,7 +48,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void method_0()
+        private void method_0()
         {
             this.txtDescription.Text = this.itinSingleSymbolRenderer_0.Description;
             this.txtLabel.Text = this.itinSingleSymbolRenderer_0.Label;
@@ -63,30 +63,18 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public ILayer CurrentLayer
         {
-            set
-            {
-                this.itinLayer_0 = value as ITinLayer;
-            }
+            set { this.itinLayer_0 = value as ITinLayer; }
         }
 
         bool IUserControl.Visible
         {
-            get
-            {
-                return base.Visible;
-            }
-            set
-            {
-                base.Visible = value;
-            }
+            get { return base.Visible; }
+            set { base.Visible = value; }
         }
 
         public IStyleGallery StyleGallery
         {
-            set
-            {
-                this.istyleGallery_0 = value;
-            }
+            set { this.istyleGallery_0 = value; }
         }
 
         public ITinRenderer TinRenderer
@@ -104,4 +92,3 @@ namespace Yutai.ArcGIS.Carto.UI
         }
     }
 }
-

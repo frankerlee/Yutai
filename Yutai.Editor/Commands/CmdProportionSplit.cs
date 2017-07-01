@@ -21,7 +21,8 @@ namespace Yutai.Plugins.Editor.Commands
                     {
                         result = false;
                     }
-                    else if ( Yutai.ArcGIS.Common.Editor.Editor.EditMap != null && Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
+                    else if (Yutai.ArcGIS.Common.Editor.Editor.EditMap != null &&
+                             Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
                     {
                         result = false;
                     }
@@ -34,7 +35,9 @@ namespace Yutai.Plugins.Editor.Commands
                         IEnumFeature enumFeature = _context.FocusMap.FeatureSelection as IEnumFeature;
                         enumFeature.Reset();
                         IFeature feature = enumFeature.Next();
-                        if (feature != null && feature.Shape.GeometryType == esriGeometryType.esriGeometryPolyline && Yutai.ArcGIS.Common.Editor.Editor.CheckWorkspaceEdit(feature.Class as IDataset, "IsBeingEdited"))
+                        if (feature != null && feature.Shape.GeometryType == esriGeometryType.esriGeometryPolyline &&
+                            Yutai.ArcGIS.Common.Editor.Editor.CheckWorkspaceEdit(feature.Class as IDataset,
+                                "IsBeingEdited"))
                         {
                             result = true;
                         }

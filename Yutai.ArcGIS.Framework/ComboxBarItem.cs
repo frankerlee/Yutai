@@ -17,4 +17,3 @@
         public abstract string Text { get; set; }
     }
 }
-

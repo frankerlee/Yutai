@@ -55,7 +55,7 @@ namespace Yutai.Plugins.Catalog.Commands
         {
             frmNewObjectClass frmNewObjectClass = new frmNewObjectClass();
             IObjectClass objectClass = null;
-            IGxSelection gxSelection=_context.GxSelection as IGxSelection;
+            IGxSelection gxSelection = _context.GxSelection as IGxSelection;
             if (gxSelection.FirstObject is IGxDatabase)
             {
                 GxCatalogCommon.ConnectGDB(gxSelection.FirstObject as IGxDatabase);
@@ -69,7 +69,8 @@ namespace Yutai.Plugins.Catalog.Commands
                     objectClass = frmNewObjectClass.ObjectClass;
                 }
             }
-            else if (gxSelection.FirstObject is IGxDataset && (gxSelection.FirstObject as IGxDataset).DatasetName.Type == esriDatasetType.esriDTFeatureDataset)
+            else if (gxSelection.FirstObject is IGxDataset &&
+                     (gxSelection.FirstObject as IGxDataset).DatasetName.Type == esriDatasetType.esriDTFeatureDataset)
             {
                 try
                 {
@@ -81,7 +82,7 @@ namespace Yutai.Plugins.Catalog.Commands
                 }
                 catch
                 {
-                   MessageService.Current.Warn("该要素集有问题，不能新建要素类!");
+                    MessageService.Current.Warn("该要素集有问题，不能新建要素类!");
                 }
             }
             if (objectClass != null)
@@ -531,11 +532,15 @@ namespace Yutai.Plugins.Catalog.Commands
 
         public override bool Enabled
         {
-            get {
+            get
+            {
                 bool flag;
                 if (_context.GxSelection != null)
                 {
-                    flag = (!(((IGxSelection) _context.GxSelection).FirstObject is IGxDatabase) || !(((IGxSelection) _context.GxSelection).FirstObject as IGxDatabase).IsRemoteDatabase ? false : true);
+                    flag = (!(((IGxSelection) _context.GxSelection).FirstObject is IGxDatabase) ||
+                            !(((IGxSelection) _context.GxSelection).FirstObject as IGxDatabase).IsRemoteDatabase
+                        ? false
+                        : true);
                 }
                 else
                 {
@@ -560,7 +565,6 @@ namespace Yutai.Plugins.Catalog.Commands
                 {
                     _frmEnableGeodatabase.GxObject = ((IGxSelection) _context.GxSelection).FirstObject;
                 }
-                
             }
             catch (Exception exception)
             {
@@ -604,7 +608,11 @@ namespace Yutai.Plugins.Catalog.Commands
                 }
                 else if (((IGxSelection) _context.GxSelection).FirstObject != null)
                 {
-                    flag = (!(((IGxSelection) _context.GxSelection).FirstObject is IGxDatabase) || !(((IGxSelection) _context.GxSelection).FirstObject as IGxDatabase).IsRemoteDatabase || !(((IGxSelection) _context.GxSelection).FirstObject as IGxDatabase).IsConnected ? false : true);
+                    flag = (!(((IGxSelection) _context.GxSelection).FirstObject is IGxDatabase) ||
+                            !(((IGxSelection) _context.GxSelection).FirstObject as IGxDatabase).IsRemoteDatabase ||
+                            !(((IGxSelection) _context.GxSelection).FirstObject as IGxDatabase).IsConnected
+                        ? false
+                        : true);
                 }
                 else
                 {
@@ -626,7 +634,9 @@ namespace Yutai.Plugins.Catalog.Commands
             {
                 frmVersionInfo _frmVersionInfo = new frmVersionInfo()
                 {
-                    VersionWorkspace = (((IGxSelection) _context.GxSelection).FirstObject as IGxDatabase).Workspace as IVersionedWorkspace
+                    VersionWorkspace =
+                        (((IGxSelection) _context.GxSelection).FirstObject as IGxDatabase).Workspace as
+                            IVersionedWorkspace
                 };
                 _frmVersionInfo.ShowDialog();
             }
@@ -671,7 +681,9 @@ namespace Yutai.Plugins.Catalog.Commands
                     }
                     else if (!(firstObject is IGxAGSConnection))
                     {
-                        isConnected = (!(firstObject is IGxGDSConnection) ? false : !(firstObject as IGxGDSConnection).IsConnected);
+                        isConnected = (!(firstObject is IGxGDSConnection)
+                            ? false
+                            : !(firstObject as IGxGDSConnection).IsConnected);
                     }
                     else
                     {
@@ -757,7 +769,9 @@ namespace Yutai.Plugins.Catalog.Commands
                     }
                     else if (!(firstObject is IGxAGSConnection))
                     {
-                        isConnected = (!(firstObject is IGxGDSConnection) ? false : (firstObject as IGxGDSConnection).IsConnected);
+                        isConnected = (!(firstObject is IGxGDSConnection)
+                            ? false
+                            : (firstObject as IGxGDSConnection).IsConnected);
                     }
                     else
                     {
@@ -848,7 +862,8 @@ namespace Yutai.Plugins.Catalog.Commands
         public override void OnClick()
         {
             IGxObject firstObject = ((IGxSelection) _context.GxSelection).FirstObject;
-            IRemoteDatabaseWorkspaceFactory workspaceFactory = (firstObject as IGxDatabase).WorkspaceName.WorkspaceFactory as IRemoteDatabaseWorkspaceFactory;
+            IRemoteDatabaseWorkspaceFactory workspaceFactory =
+                (firstObject as IGxDatabase).WorkspaceName.WorkspaceFactory as IRemoteDatabaseWorkspaceFactory;
             workspaceFactory.EditConnectionFile((firstObject as IGxDatabase).WorkspaceName.PathName, 0);
         }
     }

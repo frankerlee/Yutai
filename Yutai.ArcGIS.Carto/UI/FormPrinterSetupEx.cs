@@ -30,9 +30,11 @@ namespace Yutai.ArcGIS.Carto.UI
         private void button_printerAttribute_Click(object sender, EventArgs e)
         {
             this.printDialog_0.ShowDialog();
-            if (this.ipageLayoutControl_0.Printer.Paper.PrinterName != this.printDialog_0.PrinterSettings.PrinterName.Trim())
+            if (this.ipageLayoutControl_0.Printer.Paper.PrinterName !=
+                this.printDialog_0.PrinterSettings.PrinterName.Trim())
             {
-                this.ipageLayoutControl_0.Printer.Paper.PrinterName = this.printDialog_0.PrinterSettings.PrinterName.Trim();
+                this.ipageLayoutControl_0.Printer.Paper.PrinterName =
+                    this.printDialog_0.PrinterSettings.PrinterName.Trim();
                 this.method_6();
             }
             this.method_5();
@@ -64,7 +66,8 @@ namespace Yutai.ArcGIS.Carto.UI
         {
             if (this.bool_0)
             {
-                this.ipageLayoutControl_0.Page.PageToPrinterMapping = (esriPageToPrinterMapping) this.cboPageToPrinterMapping.SelectedIndex;
+                this.ipageLayoutControl_0.Page.PageToPrinterMapping =
+                    (esriPageToPrinterMapping) this.cboPageToPrinterMapping.SelectedIndex;
                 this.method_4();
             }
         }
@@ -73,7 +76,8 @@ namespace Yutai.ArcGIS.Carto.UI
         {
             if (this.bool_0)
             {
-                this.ipageLayoutControl_0.Printer.Paper.TrayID = (short) (this.cboPaperTrays.SelectedItem as Class10).TrayID;
+                this.ipageLayoutControl_0.Printer.Paper.TrayID =
+                    (short) (this.cboPaperTrays.SelectedItem as Class10).TrayID;
             }
         }
 
@@ -81,7 +85,8 @@ namespace Yutai.ArcGIS.Carto.UI
         {
             if (this.bool_0)
             {
-                this.ipageLayoutControl_0.Printer.Paper.FormID = (short) (this.cboPrinterPageSize.SelectedItem as Class9).FormID;
+                this.ipageLayoutControl_0.Printer.Paper.FormID =
+                    (short) (this.cboPrinterPageSize.SelectedItem as Class9).FormID;
                 if (this.checkBox_usePrinterPageSize.Checked)
                 {
                     double num;
@@ -194,16 +199,18 @@ namespace Yutai.ArcGIS.Carto.UI
             if (this.bool_0)
             {
                 this.printDialog_0.PrinterSettings.PrinterName = this.comboBox_printer.Text;
-                this.ipageLayoutControl_0.Printer.Paper.PrinterName = this.printDialog_0.PrinterSettings.PrinterName.Trim();
+                this.ipageLayoutControl_0.Printer.Paper.PrinterName =
+                    this.printDialog_0.PrinterSettings.PrinterName.Trim();
                 this.method_6();
                 this.method_5();
                 this.method_4();
             }
         }
 
- private void FormPrinterSetupEx_Load(object sender, EventArgs e)
+        private void FormPrinterSetupEx_Load(object sender, EventArgs e)
         {
-            this.checkBox_usePrinterPageSize.Checked = this.ipageLayoutControl_0.Page.FormID == esriPageFormID.esriPageFormSameAsPrinter;
+            this.checkBox_usePrinterPageSize.Checked = this.ipageLayoutControl_0.Page.FormID ==
+                                                       esriPageFormID.esriPageFormSameAsPrinter;
             this.cboPageSize.Items.Add("Letter");
             this.cboPageSize.Items.Add("Legal");
             this.cboPageSize.Items.Add("Tabloid");
@@ -266,7 +273,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.method_4();
         }
 
- private void method_0(IMap imap_0, IEnvelope ienvelope_0)
+        private void method_0(IMap imap_0, IEnvelope ienvelope_0)
         {
             try
             {
@@ -316,25 +323,25 @@ namespace Yutai.ArcGIS.Carto.UI
             switch (esriUnits_0)
             {
                 case esriUnits.esriMillimeters:
-                    return (double_0 * 10.0);
+                    return (double_0*10.0);
 
                 case esriUnits.esriCentimeters:
                     return double_0;
 
                 case esriUnits.esriMeters:
-                    return (double_0 * 0.01);
+                    return (double_0*0.01);
 
                 case esriUnits.esriKilometers:
-                    return (double_0 * 1E-05);
+                    return (double_0*1E-05);
 
                 case esriUnits.esriDecimalDegrees:
                     return double_0;
 
                 case esriUnits.esriDecimeters:
-                    return (double_0 * 0.1);
+                    return (double_0*0.1);
 
                 case esriUnits.esriInches:
-                    return (double_0 / 2.54);
+                    return (double_0/2.54);
             }
             return double_0;
         }
@@ -407,7 +414,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 printer.Paper.QueryPaperSize(out num, out num2);
                 num = this.method_9(printer.Paper.Units, num);
                 num2 = this.method_9(printer.Paper.Units, num2);
-                this.lblPrinterSize.Text = "纸张大小：" + num.ToString("###.000") + " \x00d7 " + num2.ToString("###.000") + " ";
+                this.lblPrinterSize.Text = "纸张大小：" + num.ToString("###.000") + " \x00d7 " + num2.ToString("###.000") +
+                                           " ";
             }
         }
 
@@ -525,32 +533,33 @@ namespace Yutai.ArcGIS.Carto.UI
             switch (esriUnits_0)
             {
                 case esriUnits.esriMillimeters:
-                    return (double_0 * 0.1);
+                    return (double_0*0.1);
 
                 case esriUnits.esriCentimeters:
                     return double_0;
 
                 case esriUnits.esriMeters:
-                    return (double_0 * 100.0);
+                    return (double_0*100.0);
 
                 case esriUnits.esriKilometers:
-                    return (double_0 * 100000.0);
+                    return (double_0*100000.0);
 
                 case esriUnits.esriDecimalDegrees:
                     return double_0;
 
                 case esriUnits.esriDecimeters:
-                    return (double_0 * 10.0);
+                    return (double_0*10.0);
 
                 case esriUnits.esriInches:
-                    return (double_0 * 2.54);
+                    return (double_0*2.54);
             }
             return double_0;
         }
 
         private void optLandscape_Click(object sender, EventArgs e)
         {
-            if (this.optLandscape.Checked && (this.ipageLayoutControl_0.Page.FormID != esriPageFormID.esriPageFormSameAsPrinter))
+            if (this.optLandscape.Checked &&
+                (this.ipageLayoutControl_0.Page.FormID != esriPageFormID.esriPageFormSameAsPrinter))
             {
                 this.ipageLayoutControl_0.Page.Orientation = 2;
             }
@@ -590,7 +599,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void optPortrait_Click(object sender, EventArgs e)
         {
-            if (this.optPortrait.Checked && (this.ipageLayoutControl_0.Page.FormID != esriPageFormID.esriPageFormSameAsPrinter))
+            if (this.optPortrait.Checked &&
+                (this.ipageLayoutControl_0.Page.FormID != esriPageFormID.esriPageFormSameAsPrinter))
             {
                 this.ipageLayoutControl_0.Page.Orientation = 1;
             }
@@ -602,7 +612,8 @@ namespace Yutai.ArcGIS.Carto.UI
             {
                 ipageLayoutControl_1 = this.frmPageLayoutTemp_0.axPageLayoutControl1.Object as IPageLayoutControl;
                 IMap focusMap = ApplicationRef.Application.FocusMap;
-                this.method_0(this.frmPageLayoutTemp_0.axPageLayoutControl1.ActiveView.FocusMap, (focusMap as IActiveView).Extent);
+                this.method_0(this.frmPageLayoutTemp_0.axPageLayoutControl1.ActiveView.FocusMap,
+                    (focusMap as IActiveView).Extent);
                 this.method_1(focusMap, this.frmPageLayoutTemp_0.axPageLayoutControl1.ActiveView.FocusMap);
             }
             this.ipageLayoutControl_0 = ipageLayoutControl_1;
@@ -640,7 +651,8 @@ namespace Yutai.ArcGIS.Carto.UI
         {
             if (!this.method_8(this.txbEndPage.Text))
             {
-                this.txbEndPage.Text = this.ipageLayoutControl_0.get_PrinterPageCount(Convert.ToDouble(this.txbOverlap.Text)).ToString();
+                this.txbEndPage.Text =
+                    this.ipageLayoutControl_0.get_PrinterPageCount(Convert.ToDouble(this.txbOverlap.Text)).ToString();
             }
         }
 
@@ -723,18 +735,12 @@ namespace Yutai.ArcGIS.Carto.UI
 
             public int TrayID
             {
-                get
-                {
-                    return this.int_0;
-                }
+                get { return this.int_0; }
             }
 
             public string TrayName
             {
-                get
-                {
-                    return this.string_0;
-                }
+                get { return this.string_0; }
             }
         }
 
@@ -754,13 +760,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
             public System.Drawing.Printing.PaperSize PaperSize
             {
-                get
-                {
-                    return this.paperSize_0;
-                }
-                set
-                {
-                }
+                get { return this.paperSize_0; }
+                set { }
             }
         }
 
@@ -782,20 +783,13 @@ namespace Yutai.ArcGIS.Carto.UI
 
             public int FormID
             {
-                get
-                {
-                    return this.int_0;
-                }
+                get { return this.int_0; }
             }
 
             public string FormName
             {
-                get
-                {
-                    return this.string_0;
-                }
+                get { return this.string_0; }
             }
         }
     }
 }
-

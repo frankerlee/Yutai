@@ -39,7 +39,11 @@ namespace Yutai.Plugins.Catalog.Commands
                 bool flag;
                 if (_context.GxSelection != null)
                 {
-                    flag = (!(((IGxSelection) _context.GxSelection).FirstObject is IGxDataset) || (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Type != esriDatasetType.esriDTFeatureDataset ? false : true);
+                    flag = (!(((IGxSelection) _context.GxSelection).FirstObject is IGxDataset) ||
+                            (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Type !=
+                            esriDatasetType.esriDTFeatureDataset
+                        ? false
+                        : true);
                 }
                 else
                 {
@@ -60,7 +64,8 @@ namespace Yutai.Plugins.Catalog.Commands
             frmNewGN _frmNewGN = new frmNewGN();
             if (((IGxSelection) _context.GxSelection).FirstObject is IGxDataset)
             {
-                _frmNewGN.FeatureDataset = (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Dataset as IFeatureDataset;
+                _frmNewGN.FeatureDataset =
+                    (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Dataset as IFeatureDataset;
             }
             if (_frmNewGN.ShowDialog() == DialogResult.OK)
             {

@@ -17,27 +17,17 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         public int Column
         {
-            get
-            {
-                return this.int_1;
-            }
+            get { return this.int_1; }
         }
 
         public object NewValue
         {
-            get
-            {
-                return this.object_0;
-            }
+            get { return this.object_0; }
         }
 
         public int Row
         {
-            get
-            {
-                return this.int_0;
-            }
+            get { return this.int_0; }
         }
     }
 }
-

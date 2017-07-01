@@ -35,7 +35,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             string item = ConfigurationManager.AppSettings["SYSPRIVDB"];
             if (!string.IsNullOrEmpty(item))
             {
-                string[] strArrays = new string[] { "||" };
+                string[] strArrays = new string[] {"||"};
                 string[] strArrays1 = item.Split(strArrays, StringSplitOptions.RemoveEmptyEntries);
                 if (!(strArrays1[0].ToLower() == "sqlserver" ? false : !(strArrays1[0].ToLower() == "sql")))
                 {
@@ -76,7 +76,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             {
                 this.dataProviderType_0 = DataProviderType.Sql;
                 string item = ConfigurationManager.AppSettings["SYSPRIVDB"];
-                string[] strArrays = new string[] { "||" };
+                string[] strArrays = new string[] {"||"};
                 string[] strArrays1 = item.Split(strArrays, StringSplitOptions.RemoveEmptyEntries);
                 if (!(strArrays1[0].ToLower() == "sqlserver" ? false : !(strArrays1[0].ToLower() == "sql")))
                 {
@@ -105,10 +105,10 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                     try
                     {
                         string[] roles = this.GetRoles(string_3);
-                        if ((roles == null ? false : (int)roles.Length > 0))
+                        if ((roles == null ? false : (int) roles.Length > 0))
                         {
                             StringBuilder stringBuilder = new StringBuilder(roles[0]);
-                            for (int i = 1; i < (int)roles.Length; i++)
+                            for (int i = 1; i < (int) roles.Length; i++)
                             {
                                 stringBuilder.Append(',');
                                 stringBuilder.Append(roles[i]);
@@ -123,12 +123,18 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             }
         }
 
-        public void AddGrant(string string_3, string string_4, string string_5, string string_6, string string_7, string string_8)
+        public void AddGrant(string string_3, string string_4, string string_5, string string_6, string string_7,
+            string string_8)
         {
-            object[] string3 = new object[] { "SYSGRANTS", string_3, string_4, string_5, string_6, string_7, string_8, null };
+            object[] string3 = new object[]
+                {"SYSGRANTS", string_3, string_4, string_5, string_6, string_7, string_8, null};
             string3[7] = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-            string str = string.Format("insert into {0}(GRANTEE,GRANTEETYPE,GRANTOR,GRANTOBJECT,OBJECTTYPE,PRIVILEGEFLAG,CREATETIME) values('{1}','{2}','{3}','{4}','{5}','{6}','{7}')", string3);
-            DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+            string str =
+                string.Format(
+                    "insert into {0}(GRANTEE,GRANTEETYPE,GRANTOR,GRANTOBJECT,OBJECTTYPE,PRIVILEGEFLAG,CREATETIME) values('{1}','{2}','{3}','{4}','{5}','{6}','{7}')",
+                    string3);
+            DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(
+                this.dataProviderType_0, this.string_0);
             dataAccessLayer.Open();
             dataAccessLayer.ExecuteNonQuery(CommandType.Text, str);
             dataAccessLayer.Close();
@@ -141,19 +147,25 @@ namespace Yutai.ArcGIS.Common.BaseClasses
 
         public static void DeleteByRoleID(DataAccessLayerBaseClass dataAccessLayerBaseClass_0, string string_3)
         {
-            dataAccessLayerBaseClass_0.ExecuteNonQuery(CommandType.Text, string.Format("delete from SYSGRANTS where GRANTEE='{0}' and GRANTEETYPE='Roles'", string_3));
+            dataAccessLayerBaseClass_0.ExecuteNonQuery(CommandType.Text,
+                string.Format("delete from SYSGRANTS where GRANTEE='{0}' and GRANTEETYPE='Roles'", string_3));
         }
 
         public static void DeleteByStaffID(DataAccessLayerBaseClass dataAccessLayerBaseClass_0, string string_3)
         {
-            dataAccessLayerBaseClass_0.ExecuteNonQuery(CommandType.Text, string.Format("delete from SYSGRANTS where GRANTEE='{0}' and GRANTEETYPE='Staff'", string_3));
+            dataAccessLayerBaseClass_0.ExecuteNonQuery(CommandType.Text,
+                string.Format("delete from SYSGRANTS where GRANTEE='{0}' and GRANTEETYPE='Staff'", string_3));
         }
 
         public void DeleteGrant(string string_3, string string_4, string string_5, string string_6)
         {
-            object[] string3 = new object[] { "SYSGRANTS", string_3, string_4, string_5, string_6 };
-            string str = string.Format("delete from  {0} where GRANTEE='{1}' and  GRANTEETYPE='{2}' and  GRANTOBJECT='{3}' and OBJECTTYPE='{4}'", string3);
-            DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+            object[] string3 = new object[] {"SYSGRANTS", string_3, string_4, string_5, string_6};
+            string str =
+                string.Format(
+                    "delete from  {0} where GRANTEE='{1}' and  GRANTEETYPE='{2}' and  GRANTOBJECT='{3}' and OBJECTTYPE='{4}'",
+                    string3);
+            DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(
+                this.dataProviderType_0, this.string_0);
             dataAccessLayer.Open();
             dataAccessLayer.ExecuteNonQuery(CommandType.Text, str);
             dataAccessLayer.Close();
@@ -162,7 +174,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
         public void DeleteGrant(string string_3)
         {
             string str = string.Format("delete from  {0} where  OBJECTTYPE='{1}'", "SYSGRANTS", string_3);
-            DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+            DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(
+                this.dataProviderType_0, this.string_0);
             dataAccessLayer.Open();
             dataAccessLayer.ExecuteNonQuery(CommandType.Text, str);
             dataAccessLayer.Close();
@@ -173,9 +186,12 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             string[] strArrays = null;
             try
             {
-                DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+                DataAccessLayerBaseClass dataAccessLayer =
+                    DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
                 dataAccessLayer.Open();
-                DataTable dataTable = dataAccessLayer.ExecuteDataTable(string.Concat("select * from ORGSTAFFROLES where StaffID='", string_3, "'"));
+                DataTable dataTable =
+                    dataAccessLayer.ExecuteDataTable(string.Concat("select * from ORGSTAFFROLES where StaffID='",
+                        string_3, "'"));
                 strArrays = new string[dataTable.Rows.Count];
                 for (int i = 0; i < dataTable.Rows.Count; i++)
                 {
@@ -189,7 +205,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             {
                 Exception exception = exception1;
                 MessageBox.Show(exception.Message);
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
             return strArrays;
         }
@@ -214,9 +230,11 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                 {
                     str = string.Concat(str, "(ObjectType='gisLayer' or ObjectType='gisDataset') and privilegeFlag>='1'");
                 }
-                DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+                DataAccessLayerBaseClass dataAccessLayer =
+                    DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
                 dataAccessLayer.Open();
-                DataTable dataTable1 = dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
+                DataTable dataTable1 =
+                    dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
                 dataAccessLayer.Close();
                 dataTable = dataTable1;
                 return dataTable;
@@ -225,7 +243,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             {
                 Exception exception = exception1;
                 MessageBox.Show(exception.Message);
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
             dataTable = null;
             return dataTable;
@@ -251,9 +269,11 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                 {
                     str = string.Concat(str, "ObjectType='gisMap' and privilegeFlag>='1'");
                 }
-                DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+                DataAccessLayerBaseClass dataAccessLayer =
+                    DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
                 dataAccessLayer.Open();
-                DataTable dataTable1 = dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
+                DataTable dataTable1 =
+                    dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
                 dataAccessLayer.Close();
                 dataTable = dataTable1;
                 return dataTable;
@@ -262,7 +282,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             {
                 Exception exception = exception1;
                 MessageBox.Show(exception.Message);
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
             dataTable = null;
             return dataTable;
@@ -275,9 +295,11 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             try
             {
                 str = string.Concat("Grantee= '", string_3, "'  and ObjectType='gisPluge' and  GRANTEETYPE='Roles'");
-                DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+                DataAccessLayerBaseClass dataAccessLayer =
+                    DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
                 dataAccessLayer.Open();
-                DataTable dataTable1 = dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
+                DataTable dataTable1 =
+                    dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
                 dataAccessLayer.Close();
                 dataTable = dataTable1;
                 return dataTable;
@@ -286,7 +308,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             {
                 Exception exception = exception1;
                 MessageBox.Show(exception.Message);
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
             dataTable = null;
             return dataTable;
@@ -295,7 +317,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
         public DataTable GetRolesObjectPri(string string_3, string string_4)
         {
             string str = string.Format("ObjectType='{0}' and Grantee='{1}' and GRANTEETYPE='Roles'", string_4, string_3);
-            DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+            DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(
+                this.dataProviderType_0, this.string_0);
             dataAccessLayer.Open();
             DataTable dataTable = dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
             dataAccessLayer.Close();
@@ -338,7 +361,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             {
                 Exception exception = exception1;
                 MessageBox.Show(exception.Message);
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
             table = null;
             strArrays = strArrays1;
@@ -351,11 +374,17 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             string str = "";
             try
             {
-                object[] string3 = new object[] { "Grantee ='", string_3, "' and GRANTEETYPE='Staff' and  ObjectType='gisPluge' and privilegeFlag='", int_0, "'" };
+                object[] string3 = new object[]
+                {
+                    "Grantee ='", string_3, "' and GRANTEETYPE='Staff' and  ObjectType='gisPluge' and privilegeFlag='",
+                    int_0, "'"
+                };
                 str = string.Concat(string3);
-                DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+                DataAccessLayerBaseClass dataAccessLayer =
+                    DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
                 dataAccessLayer.Open();
-                DataTable dataTable1 = dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
+                DataTable dataTable1 =
+                    dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
                 dataAccessLayer.Close();
                 dataTable = dataTable1;
                 return dataTable;
@@ -364,7 +393,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             {
                 Exception exception = exception1;
                 MessageBox.Show(exception.Message);
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
             dataTable = null;
             return dataTable;
@@ -378,8 +407,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                 string str = "";
                 try
                 {
-                    string[] strArrays = string_4.Split(new char[] { '.' });
-                    string_4 = strArrays[(int)strArrays.Length - 1];
+                    string[] strArrays = string_4.Split(new char[] {'.'});
+                    string_4 = strArrays[(int) strArrays.Length - 1];
                     IQueryFilter queryFilterClass = new QueryFilter()
                     {
                         WhereClause = string.Concat("RealName = '", string_4, "'")
@@ -398,12 +427,18 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                         }
                         else
                         {
-                            string[] string2 = new string[] { " ( (Grantee in (", this.string_2, ") and GRANTEETYPE='Roles') or (Grantee='", string_3, "'  and GRANTEETYPE='Staff' ) ) and  " };
+                            string[] string2 = new string[]
+                            {
+                                " ( (Grantee in (", this.string_2, ") and GRANTEETYPE='Roles') or (Grantee='", string_3,
+                                "'  and GRANTEETYPE='Staff' ) ) and  "
+                            };
                             str = string.Concat(string2);
                         }
                         if (int_0 == 2)
                         {
-                            str = string.Concat(str, "  ObjectType='gisDataset' and privilegeFlag='2' and GRANTOBJECT = '", oID.ToString(), "'");
+                            str = string.Concat(str,
+                                "  ObjectType='gisDataset' and privilegeFlag='2' and GRANTOBJECT = '", oID.ToString(),
+                                "'");
                         }
                         else if (int_0 != 1)
                         {
@@ -412,11 +447,15 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                         }
                         else
                         {
-                            str = string.Concat(str, "  ObjectType='gisDataset' and privilegeFlag>='1' and GRANTOBJECT = '", oID.ToString(), "'");
+                            str = string.Concat(str,
+                                "  ObjectType='gisDataset' and privilegeFlag>='1' and GRANTOBJECT = '", oID.ToString(),
+                                "'");
                         }
-                        DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+                        DataAccessLayerBaseClass dataAccessLayer =
+                            DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
                         dataAccessLayer.Open();
-                        DataTable dataTable = dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
+                        DataTable dataTable =
+                            dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
                         dataAccessLayer.Close();
                         bool count = dataTable.Rows.Count > 0;
                         dataTable = null;
@@ -429,7 +468,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                 }
                 catch (Exception exception)
                 {
-                    Logger.Current.Error("",exception, "");
+                    Logger.Current.Error("", exception, "");
                     flag = false;
                 }
             }
@@ -449,8 +488,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                 string str = "";
                 try
                 {
-                    string[] strArrays = string_4.Split(new char[] { '.' });
-                    string_4 = strArrays[(int)strArrays.Length - 1];
+                    string[] strArrays = string_4.Split(new char[] {'.'});
+                    string_4 = strArrays[(int) strArrays.Length - 1];
                     IQueryFilter queryFilterClass = new QueryFilter()
                     {
                         WhereClause = string.Concat("RealName = '", string_4, "'")
@@ -469,13 +508,19 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                         }
                         else
                         {
-                            string[] string2 = new string[] { " ( (Grantee in (", this.string_2, ") and GRANTEETYPE='Roles') or (Grantee='", string_3, "' and GRANTEETYPE='Staff') )  and  " };
+                            string[] string2 = new string[]
+                            {
+                                " ( (Grantee in (", this.string_2, ") and GRANTEETYPE='Roles') or (Grantee='", string_3,
+                                "' and GRANTEETYPE='Staff') )  and  "
+                            };
                             str = string.Concat(string2);
                         }
                         str = string.Concat(str, " ObjectType='gisDataset' and GRANTOBJECT = '", oID.ToString(), "'");
-                        DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+                        DataAccessLayerBaseClass dataAccessLayer =
+                            DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
                         dataAccessLayer.Open();
-                        DataTable dataTable = dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
+                        DataTable dataTable =
+                            dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
                         dataAccessLayer.Close();
                         bool flag1 = false;
                         if (dataTable.Rows.Count > 0)
@@ -519,12 +564,17 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                 }
                 else
                 {
-                    string[] string2 = new string[] { " ( (Grantee in (", this.string_2, ") and GRANTEETYPE='Roles') or (Grantee='", string_3, "'  and GRANTEETYPE='Staff' ) ) and  " };
+                    string[] string2 = new string[]
+                    {
+                        " ( (Grantee in (", this.string_2, ") and GRANTEETYPE='Roles') or (Grantee='", string_3,
+                        "'  and GRANTEETYPE='Staff' ) ) and  "
+                    };
                     str = string.Concat(string2);
                 }
                 if (int_0 == 2)
                 {
-                    str = string.Concat(str, " (ObjectType='gisLayer' or ObjectType='gisDataset') and privilegeFlag='2' ");
+                    str = string.Concat(str,
+                        " (ObjectType='gisLayer' or ObjectType='gisDataset') and privilegeFlag='2' ");
                 }
                 else if (int_0 != 1)
                 {
@@ -535,9 +585,11 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                 {
                     str = string.Concat(str, " (ObjectType='gisLayer' or ObjectType='gisDataset') ");
                 }
-                DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+                DataAccessLayerBaseClass dataAccessLayer =
+                    DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
                 dataAccessLayer.Open();
-                DataTable dataTable1 = dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
+                DataTable dataTable1 =
+                    dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
                 dataAccessLayer.Close();
                 dataTable = dataTable1;
                 return dataTable;
@@ -546,7 +598,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             {
                 Exception exception = exception1;
                 MessageBox.Show(exception.Message);
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
             dataTable = null;
             return dataTable;
@@ -566,8 +618,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                     string str = "";
                     try
                     {
-                        string[] strArrays = string_4.Split(new char[] { '.' });
-                        string_4 = strArrays[(int)strArrays.Length - 1];
+                        string[] strArrays = string_4.Split(new char[] {'.'});
+                        string_4 = strArrays[(int) strArrays.Length - 1];
                         IQueryFilter queryFilterClass = new QueryFilter()
                         {
                             WhereClause = string.Concat("FeatureClassName = '", string_4, "'")
@@ -586,12 +638,18 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                             }
                             else
                             {
-                                string[] string2 = new string[] { " ( (Grantee in (", this.string_2, ") and GRANTEETYPE='Roles') or (Grantee='", string_3, "' and GRANTEETYPE='Staff') )  and  " };
+                                string[] string2 = new string[]
+                                {
+                                    " ( (Grantee in (", this.string_2, ") and GRANTEETYPE='Roles') or (Grantee='",
+                                    string_3, "' and GRANTEETYPE='Staff') )  and  "
+                                };
                                 str = string.Concat(string2);
                             }
                             if (int_0 == 2)
                             {
-                                str = string.Concat(str, " (ObjectType='gisLayer' or ObjectType='gisDataset')  and privilegeFlag='2' and GRANTOBJECT = '", oID.ToString(), "'");
+                                str = string.Concat(str,
+                                    " (ObjectType='gisLayer' or ObjectType='gisDataset')  and privilegeFlag='2' and GRANTOBJECT = '",
+                                    oID.ToString(), "'");
                             }
                             else if (int_0 != 1)
                             {
@@ -600,11 +658,15 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                             }
                             else
                             {
-                                str = string.Concat(str, " (ObjectType='gisLayer' or ObjectType='gisDataset') and privilegeFlag>='1' and GRANTOBJECT = '", oID.ToString(), "'");
+                                str = string.Concat(str,
+                                    " (ObjectType='gisLayer' or ObjectType='gisDataset') and privilegeFlag>='1' and GRANTOBJECT = '",
+                                    oID.ToString(), "'");
                             }
-                            DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+                            DataAccessLayerBaseClass dataAccessLayer =
+                                DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
                             dataAccessLayer.Open();
-                            DataTable dataTable = dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
+                            DataTable dataTable =
+                                dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
                             dataAccessLayer.Close();
                             count = dataTable.Rows.Count > 0;
                         }
@@ -615,7 +677,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                     }
                     catch (Exception exception)
                     {
-                        Logger.Current.Error("",exception, "");
+                        Logger.Current.Error("", exception, "");
                         count = false;
                     }
                 }
@@ -652,12 +714,18 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                         }
                         else
                         {
-                            string[] string2 = new string[] { " ( (Grantee in (", this.string_2, ") and GRANTEETYPE='Roles') or (Grantee='", string_3, "' and GRANTEETYPE='Staff') )  and  " };
+                            string[] string2 = new string[]
+                            {
+                                " ( (Grantee in (", this.string_2, ") and GRANTEETYPE='Roles') or (Grantee='", string_3,
+                                "' and GRANTEETYPE='Staff') )  and  "
+                            };
                             str = string.Concat(string2);
                         }
                         if (int_0 == 2)
                         {
-                            str = string.Concat(str, " (ObjectType='gisLayer' or ObjectType='gisDataset') and privilegeFlag='2' and GRANTOBJECT = '", int1.ToString(), "'");
+                            str = string.Concat(str,
+                                " (ObjectType='gisLayer' or ObjectType='gisDataset') and privilegeFlag='2' and GRANTOBJECT = '",
+                                int1.ToString(), "'");
                         }
                         else if (int_0 != 1)
                         {
@@ -666,17 +734,21 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                         }
                         else
                         {
-                            str = string.Concat(str, " (ObjectType='gisLayer' or ObjectType='gisDataset') and privilegeFlag>='1' and GRANTOBJECT = '", int1.ToString(), "'");
+                            str = string.Concat(str,
+                                " (ObjectType='gisLayer' or ObjectType='gisDataset') and privilegeFlag>='1' and GRANTOBJECT = '",
+                                int1.ToString(), "'");
                         }
-                        DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+                        DataAccessLayerBaseClass dataAccessLayer =
+                            DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
                         dataAccessLayer.Open();
-                        DataTable dataTable = dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
+                        DataTable dataTable =
+                            dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
                         dataAccessLayer.Close();
                         count = dataTable.Rows.Count > 0;
                     }
                     catch (Exception exception)
                     {
-                        Logger.Current.Error("",exception, "");
+                        Logger.Current.Error("", exception, "");
                         count = false;
                     }
                 }
@@ -706,8 +778,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                     string str = "";
                     try
                     {
-                        string[] strArrays = string_4.Split(new char[] { '.' });
-                        string_4 = strArrays[(int)strArrays.Length - 1];
+                        string[] strArrays = string_4.Split(new char[] {'.'});
+                        string_4 = strArrays[(int) strArrays.Length - 1];
                         IQueryFilter queryFilterClass = new QueryFilter()
                         {
                             WhereClause = string.Concat("Name = '", string_4, "'")
@@ -726,12 +798,18 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                             }
                             else
                             {
-                                string[] string2 = new string[] { " ( (Grantee in (", this.string_2, ") and GRANTEETYPE='Roles') or (Grantee='", string_3, "' and GRANTEETYPE='Staff') )  and  " };
+                                string[] string2 = new string[]
+                                {
+                                    " ( (Grantee in (", this.string_2, ") and GRANTEETYPE='Roles') or (Grantee='",
+                                    string_3, "' and GRANTEETYPE='Staff') )  and  "
+                                };
                                 str = string.Concat(string2);
                             }
                             if (int_0 == 2)
                             {
-                                str = string.Concat(str, " ObjectType='gisMap' and privilegeFlag='2' and GRANTOBJECT = '", oID.ToString(), "'");
+                                str = string.Concat(str,
+                                    " ObjectType='gisMap' and privilegeFlag='2' and GRANTOBJECT = '", oID.ToString(),
+                                    "'");
                             }
                             else if (int_0 != 1)
                             {
@@ -740,11 +818,15 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                             }
                             else
                             {
-                                str = string.Concat(str, " ObjectType='gisMap' and privilegeFlag>='1' and GRANTOBJECT = '", oID.ToString(), "'");
+                                str = string.Concat(str,
+                                    " ObjectType='gisMap' and privilegeFlag>='1' and GRANTOBJECT = '", oID.ToString(),
+                                    "'");
                             }
-                            DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+                            DataAccessLayerBaseClass dataAccessLayer =
+                                DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
                             dataAccessLayer.Open();
-                            DataTable dataTable = dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
+                            DataTable dataTable =
+                                dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
                             dataAccessLayer.Close();
                             count = dataTable.Rows.Count > 0;
                         }
@@ -755,7 +837,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                     }
                     catch (Exception exception)
                     {
-                        Logger.Current.Error("",exception, "");
+                        Logger.Current.Error("", exception, "");
                         count = false;
                     }
                 }
@@ -783,7 +865,11 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                 }
                 else
                 {
-                    string[] string2 = new string[] { " ( (Grantee in (", this.string_2, ") and GRANTEETYPE='Roles') or (Grantee='", string_3, "'  and GRANTEETYPE='Staff' ) ) and  " };
+                    string[] string2 = new string[]
+                    {
+                        " ( (Grantee in (", this.string_2, ") and GRANTEETYPE='Roles') or (Grantee='", string_3,
+                        "'  and GRANTEETYPE='Staff' ) ) and  "
+                    };
                     str = string.Concat(string2);
                 }
                 if (int_0 == 2)
@@ -799,9 +885,11 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                 {
                     str = string.Concat(str, " ObjectType='gisMap' ");
                 }
-                DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+                DataAccessLayerBaseClass dataAccessLayer =
+                    DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
                 dataAccessLayer.Open();
-                DataTable dataTable1 = dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
+                DataTable dataTable1 =
+                    dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
                 dataAccessLayer.Close();
                 dataTable = dataTable1;
                 return dataTable;
@@ -810,7 +898,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             {
                 Exception exception = exception1;
                 MessageBox.Show(exception.Message);
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
             dataTable = null;
             return dataTable;
@@ -837,12 +925,17 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                         }
                         else
                         {
-                            string[] string2 = new string[] { " ( (Grantee in (", this.string_2, ") and GRANTEETYPE='Roles') or (Grantee='", string_3, "' and GRANTEETYPE='Staff') )  and  " };
+                            string[] string2 = new string[]
+                            {
+                                " ( (Grantee in (", this.string_2, ") and GRANTEETYPE='Roles') or (Grantee='", string_3,
+                                "' and GRANTEETYPE='Staff') )  and  "
+                            };
                             str = string.Concat(string2);
                         }
                         if (int_0 == 2)
                         {
-                            str = string.Concat(str, " ObjectType='gisMap' and privilegeFlag='2' and GRANTOBJECT = '", int1.ToString(), "'");
+                            str = string.Concat(str, " ObjectType='gisMap' and privilegeFlag='2' and GRANTOBJECT = '",
+                                int1.ToString(), "'");
                         }
                         else if (int_0 != 1)
                         {
@@ -851,17 +944,20 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                         }
                         else
                         {
-                            str = string.Concat(str, " ObjectType='gisMap' and privilegeFlag>='1' and GRANTOBJECT = '", int1.ToString(), "'");
+                            str = string.Concat(str, " ObjectType='gisMap' and privilegeFlag>='1' and GRANTOBJECT = '",
+                                int1.ToString(), "'");
                         }
-                        DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+                        DataAccessLayerBaseClass dataAccessLayer =
+                            DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
                         dataAccessLayer.Open();
-                        DataTable dataTable = dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
+                        DataTable dataTable =
+                            dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
                         dataAccessLayer.Close();
                         count = dataTable.Rows.Count > 0;
                     }
                     catch (Exception exception)
                     {
-                        Logger.Current.Error("",exception, "");
+                        Logger.Current.Error("", exception, "");
                         count = false;
                     }
                 }
@@ -886,17 +982,27 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             {
                 if (this.string_2.Length <= 0)
                 {
-                    string3 = new object[] { " Grantee='", string_3, "'  and GRANTEETYPE='Staff' and  ObjectType='gisPluge' and privilegeFlag='", int_0, "'" };
+                    string3 = new object[]
+                    {
+                        " Grantee='", string_3,
+                        "'  and GRANTEETYPE='Staff' and  ObjectType='gisPluge' and privilegeFlag='", int_0, "'"
+                    };
                     str = string.Concat(string3);
                 }
                 else
                 {
-                    string3 = new object[] { " ( (Grantee in (", this.string_2, ") and GRANTEETYPE='Roles') or (Grantee='", string_3, "' and GRANTEETYPE='Staff') )  and  ObjectType='gisPluge' and privilegeFlag='", int_0, "'" };
+                    string3 = new object[]
+                    {
+                        " ( (Grantee in (", this.string_2, ") and GRANTEETYPE='Roles') or (Grantee='", string_3,
+                        "' and GRANTEETYPE='Staff') )  and  ObjectType='gisPluge' and privilegeFlag='", int_0, "'"
+                    };
                     str = string.Concat(string3);
                 }
-                DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+                DataAccessLayerBaseClass dataAccessLayer =
+                    DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
                 dataAccessLayer.Open();
-                DataTable dataTable1 = dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
+                DataTable dataTable1 =
+                    dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
                 dataAccessLayer.Close();
                 dataTable = dataTable1;
                 return dataTable;
@@ -905,7 +1011,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             {
                 Exception exception = exception1;
                 MessageBox.Show(exception.Message);
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
             dataTable = null;
             return dataTable;
@@ -931,12 +1037,17 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                         }
                         else
                         {
-                            string[] string2 = new string[] { " ( (Grantee in (", this.string_2, ") and GRANTEETYPE='Roles') or (Grantee='", string_3, "' and GRANTEETYPE='Staff') )  and  " };
+                            string[] string2 = new string[]
+                            {
+                                " ( (Grantee in (", this.string_2, ") and GRANTEETYPE='Roles') or (Grantee='", string_3,
+                                "' and GRANTEETYPE='Staff') )  and  "
+                            };
                             str = string.Concat(string2);
                         }
                         if (int_0 == 2)
                         {
-                            str = string.Concat(str, " ObjectType='gisPluge' and privilegeFlag='2' and GRANTOBJECT = '", string_4, "'");
+                            str = string.Concat(str, " ObjectType='gisPluge' and privilegeFlag='2' and GRANTOBJECT = '",
+                                string_4, "'");
                         }
                         else if (int_0 != 1)
                         {
@@ -947,15 +1058,17 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                         {
                             str = string.Concat(str, " ObjectType='gisPluge' and GRANTOBJECT = '", string_4, "'");
                         }
-                        DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+                        DataAccessLayerBaseClass dataAccessLayer =
+                            DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
                         dataAccessLayer.Open();
-                        DataTable dataTable = dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
+                        DataTable dataTable =
+                            dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
                         dataAccessLayer.Close();
                         count = dataTable.Rows.Count > 0;
                     }
                     catch (Exception exception)
                     {
-                        Logger.Current.Error("",exception, "");
+                        Logger.Current.Error("", exception, "");
                         count = false;
                     }
                 }
@@ -989,12 +1102,17 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                     }
                     else
                     {
-                        string[] string2 = new string[] { " ( (Grantee in (", this.string_2, ") and GRANTEETYPE='Roles') or (Grantee='", this.string_1, "' and GRANTEETYPE='Staff') )  and  " };
+                        string[] string2 = new string[]
+                        {
+                            " ( (Grantee in (", this.string_2, ") and GRANTEETYPE='Roles') or (Grantee='",
+                            this.string_1, "' and GRANTEETYPE='Staff') )  and  "
+                        };
                         str = string.Concat(string2);
                     }
                     if (int_0 == 2)
                     {
-                        str = string.Concat(str, " ObjectType='gisPluge' and privilegeFlag='2' and GRANTOBJECT = '", string_3, "'");
+                        str = string.Concat(str, " ObjectType='gisPluge' and privilegeFlag='2' and GRANTOBJECT = '",
+                            string_3, "'");
                     }
                     else if (int_0 != 1)
                     {
@@ -1005,15 +1123,17 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                     {
                         str = string.Concat(str, " ObjectType='gisPluge' and GRANTOBJECT = '", string_3, "'");
                     }
-                    DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+                    DataAccessLayerBaseClass dataAccessLayer =
+                        DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
                     dataAccessLayer.Open();
-                    DataTable dataTable = dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
+                    DataTable dataTable =
+                        dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
                     dataAccessLayer.Close();
                     count = dataTable.Rows.Count > 0;
                 }
                 catch (Exception exception)
                 {
-                    Logger.Current.Error("",exception, str);
+                    Logger.Current.Error("", exception, str);
                     count = false;
                 }
             }
@@ -1037,12 +1157,15 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             {
                 if (int_0 == 1)
                 {
-                    str = string.Concat("Grantee='", string_3, "' and GRANTEETYPE='Staff' and  (ObjectType='gisLayer' or ObjectType='gisDataset') ");
+                    str = string.Concat("Grantee='", string_3,
+                        "' and GRANTEETYPE='Staff' and  (ObjectType='gisLayer' or ObjectType='gisDataset') ");
                     try
                     {
-                        dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+                        dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0,
+                            this.string_0);
                         flag = dataAccessLayer.Open();
-                        dataTable1 = dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
+                        dataTable1 =
+                            dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
                         dataAccessLayer.Close();
                         dataTable = dataTable1;
                         return dataTable;
@@ -1051,7 +1174,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                     {
                         exception = exception1;
                         dialogResult = MessageBox.Show(exception.Message);
-                        Logger.Current.Error("",exception, "");
+                        Logger.Current.Error("", exception, "");
                     }
                     dataTable = null;
                     return dataTable;
@@ -1061,7 +1184,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             }
             else
             {
-                str = string.Concat("Grantee='", string_3, "' and GRANTEETYPE='Staff' and  (ObjectType='gisLayer' or ObjectType='gisDataset') and privilegeFlag='2' ");
+                str = string.Concat("Grantee='", string_3,
+                    "' and GRANTEETYPE='Staff' and  (ObjectType='gisLayer' or ObjectType='gisDataset') and privilegeFlag='2' ");
             }
             try
             {
@@ -1076,7 +1200,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             {
                 exception = exception1;
                 dialogResult = MessageBox.Show(exception.Message);
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
             dataTable = null;
             return dataTable;
@@ -1098,9 +1222,11 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                     str = string.Concat("Grantee='", string_3, "' and GRANTEETYPE='Staff' and  ObjectType='gisMap' ");
                     try
                     {
-                        dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+                        dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0,
+                            this.string_0);
                         flag = dataAccessLayer.Open();
-                        dataTable1 = dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
+                        dataTable1 =
+                            dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
                         dataAccessLayer.Close();
                         dataTable = dataTable1;
                         return dataTable;
@@ -1109,7 +1235,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                     {
                         exception = exception1;
                         dialogResult = MessageBox.Show(exception.Message);
-                        Logger.Current.Error("",exception, "");
+                        Logger.Current.Error("", exception, "");
                     }
                     dataTable = null;
                     return dataTable;
@@ -1119,7 +1245,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             }
             else
             {
-                str = string.Concat("Grantee='", string_3, "' and GRANTEETYPE='Staff' and  ObjectType='gisMap' and privilegeFlag='2' ");
+                str = string.Concat("Grantee='", string_3,
+                    "' and GRANTEETYPE='Staff' and  ObjectType='gisMap' and privilegeFlag='2' ");
             }
             try
             {
@@ -1134,7 +1261,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             {
                 exception = exception1;
                 dialogResult = MessageBox.Show(exception.Message);
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
             dataTable = null;
             return dataTable;
@@ -1147,9 +1274,11 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             try
             {
                 str = string.Concat("Grantee= '", string_3, "'  and ObjectType='gisPluge' and  GRANTEETYPE='Staff'");
-                DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+                DataAccessLayerBaseClass dataAccessLayer =
+                    DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
                 dataAccessLayer.Open();
-                DataTable dataTable1 = dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
+                DataTable dataTable1 =
+                    dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
                 dataAccessLayer.Close();
                 dataTable = dataTable1;
                 return dataTable;
@@ -1158,7 +1287,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             {
                 Exception exception = exception1;
                 MessageBox.Show(exception.Message);
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
             dataTable = null;
             return dataTable;
@@ -1167,7 +1296,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
         public DataTable GetStaffObjectPri(string string_3, string string_4)
         {
             string str = string.Format("ObjectType='{0}' and Grantee='{1}' and GRANTEETYPE='Staff'", string_4, string_3);
-            DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+            DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(
+                this.dataProviderType_0, this.string_0);
             dataAccessLayer.Open();
             DataTable dataTable = dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
             dataAccessLayer.Close();
@@ -1178,13 +1308,19 @@ namespace Yutai.ArcGIS.Common.BaseClasses
         {
             DataTable dataTable;
             string str = "";
-            object[] string3 = new object[] { "Grantee='", string_3, "' and GRANTEETYPE='Staff' and  ObjectType='gisPluge' and privilegeFlag='", int_0, "' " };
+            object[] string3 = new object[]
+            {
+                "Grantee='", string_3, "' and GRANTEETYPE='Staff' and  ObjectType='gisPluge' and privilegeFlag='",
+                int_0, "' "
+            };
             str = string.Concat(string3);
             try
             {
-                DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+                DataAccessLayerBaseClass dataAccessLayer =
+                    DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
                 dataAccessLayer.Open();
-                DataTable dataTable1 = dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
+                DataTable dataTable1 =
+                    dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
                 dataAccessLayer.Close();
                 dataTable = dataTable1;
                 return dataTable;
@@ -1193,7 +1329,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             {
                 Exception exception = exception1;
                 MessageBox.Show(exception.Message);
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
             dataTable = null;
             return dataTable;
@@ -1213,7 +1349,12 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                     if (int_0 == 2)
                     {
                         str = str1;
-                        string3 = new string[] { str, "Grantee='", string_3, "' and GRANTEETYPE='Roles' and ObjectType='gisMap' and privilegeFlag='2' and  GRANTOBJECT = '", int_1.ToString(), "'" };
+                        string3 = new string[]
+                        {
+                            str, "Grantee='", string_3,
+                            "' and GRANTEETYPE='Roles' and ObjectType='gisMap' and privilegeFlag='2' and  GRANTOBJECT = '",
+                            int_1.ToString(), "'"
+                        };
                         str1 = string.Concat(string3);
                     }
                     else if (int_0 != 1)
@@ -1224,12 +1365,19 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                     else
                     {
                         str = str1;
-                        string3 = new string[] { str, "Grantee='", string_3, "' and GRANTEETYPE='Roles' and ObjectType='gisMap' and privilegeFlag>='1' and  GRANTOBJECT = '", int_1.ToString(), "'" };
+                        string3 = new string[]
+                        {
+                            str, "Grantee='", string_3,
+                            "' and GRANTEETYPE='Roles' and ObjectType='gisMap' and privilegeFlag>='1' and  GRANTOBJECT = '",
+                            int_1.ToString(), "'"
+                        };
                         str1 = string.Concat(string3);
                     }
-                    DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+                    DataAccessLayerBaseClass dataAccessLayer =
+                        DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
                     dataAccessLayer.Open();
-                    DataTable dataTable = dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str1));
+                    DataTable dataTable =
+                        dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str1));
                     dataAccessLayer.Close();
                     count = dataTable.Rows.Count > 0;
                 }
@@ -1237,7 +1385,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                 {
                     Exception exception = exception1;
                     MessageBox.Show(exception.Message);
-                    Logger.Current.Error("",exception, "");
+                    Logger.Current.Error("", exception, "");
                 }
                 flag = count;
             }
@@ -1262,11 +1410,11 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                 {
                     str = string.Concat(new string[]
                     {
-                "Grantee='",
-                string_3,
-                "' and GRANTEETYPE='Staff' and  ObjectType='gisMap' and privilegeFlag='2'  and  GRANTOBJECT = '",
-                int_1.ToString(),
-                "'"
+                        "Grantee='",
+                        string_3,
+                        "' and GRANTEETYPE='Staff' and  ObjectType='gisMap' and privilegeFlag='2'  and  GRANTOBJECT = '",
+                        int_1.ToString(),
+                        "'"
                     });
                 }
                 else
@@ -1278,17 +1426,18 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                     }
                     str = string.Concat(new string[]
                     {
-                "Grantee='",
-                string_3,
-                "' and GRANTEETYPE='Staff' and ObjectType='gisMap'  and  GRANTOBJECT = '",
-                int_1.ToString(),
-                "'"
+                        "Grantee='",
+                        string_3,
+                        "' and GRANTEETYPE='Staff' and ObjectType='gisMap'  and  GRANTOBJECT = '",
+                        int_1.ToString(),
+                        "'"
                     });
                 }
                 bool flag = true;
                 try
                 {
-                    DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+                    DataAccessLayerBaseClass dataAccessLayer =
+                        DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
                     dataAccessLayer.Open();
                     DataTable dataTable = dataAccessLayer.ExecuteDataTable("select * from SYSGRANTS where " + str);
                     dataAccessLayer.Close();
@@ -1337,8 +1486,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             string str = "";
             try
             {
-                string[] strArrays = string_4.Split(new char[] { '.' });
-                string_4 = strArrays[(int)strArrays.Length - 1];
+                string[] strArrays = string_4.Split(new char[] {'.'});
+                string_4 = strArrays[(int) strArrays.Length - 1];
                 IQueryFilter queryFilterClass = new QueryFilter()
                 {
                     WhereClause = string.Concat("RealName = '", string_4, "'")
@@ -1353,9 +1502,11 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                     int oID = row.OID;
                     str = string.Concat(" Grantee='", string_3, "'  and GRANTEETYPE='Roles' and  ");
                     str = string.Concat(str, " ObjectType='gisDataset' and GRANTOBJECT = '", oID.ToString(), "'");
-                    DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+                    DataAccessLayerBaseClass dataAccessLayer =
+                        DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
                     dataAccessLayer.Open();
-                    DataTable dataTable = dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
+                    DataTable dataTable =
+                        dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
                     dataAccessLayer.Close();
                     bool flag1 = false;
                     if (dataTable.Rows.Count > 0)
@@ -1395,10 +1546,18 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                 }
                 else
                 {
-                    str = (!string.IsNullOrEmpty(this.string_2) ? string.Format(" ((Grantee in ({0}) and GRANTEETYPE='Roles' ) or (Grantee = '{1}' and GRANTEETYPE='Staff' )) and GRANTOBJECT='{2}' and OBJECTTYPE='gisPluge' ", this.string_2, this.string_1, byClassName.MenuID) : string.Format("  Grantee = '{1}' and GRANTEETYPE='Staff'  and GRANTOBJECT='{2}' and OBJECTTYPE='gisPluge' ", this.string_2, this.string_1, byClassName.MenuID));
-                    DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+                    str = (!string.IsNullOrEmpty(this.string_2)
+                        ? string.Format(
+                            " ((Grantee in ({0}) and GRANTEETYPE='Roles' ) or (Grantee = '{1}' and GRANTEETYPE='Staff' )) and GRANTOBJECT='{2}' and OBJECTTYPE='gisPluge' ",
+                            this.string_2, this.string_1, byClassName.MenuID)
+                        : string.Format(
+                            "  Grantee = '{1}' and GRANTEETYPE='Staff'  and GRANTOBJECT='{2}' and OBJECTTYPE='gisPluge' ",
+                            this.string_2, this.string_1, byClassName.MenuID));
+                    DataAccessLayerBaseClass dataAccessLayer =
+                        DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
                     dataAccessLayer.Open();
-                    DataTable dataTable = dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
+                    DataTable dataTable =
+                        dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
                     dataAccessLayer.Close();
                     flag = (dataTable.Rows.Count <= 0 ? false : true);
                 }
@@ -1423,10 +1582,18 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                 }
                 else
                 {
-                    str = (!string.IsNullOrEmpty(this.string_2) ? string.Format(" ((Grantee in ({0}) and GRANTEETYPE='Roles' ) or (Grantee = '{1}' and GRANTEETYPE='Staff' )) and GRANTOBJECT='{2}' and OBJECTTYPE='gisPluge' ", this.string_2, this.string_1, byClassName.MenuID) : string.Format("  Grantee = '{1}' and GRANTEETYPE='Staff'  and GRANTOBJECT='{2}' and OBJECTTYPE='gisPluge' ", this.string_2, this.string_1, byClassName.MenuID));
-                    DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+                    str = (!string.IsNullOrEmpty(this.string_2)
+                        ? string.Format(
+                            " ((Grantee in ({0}) and GRANTEETYPE='Roles' ) or (Grantee = '{1}' and GRANTEETYPE='Staff' )) and GRANTOBJECT='{2}' and OBJECTTYPE='gisPluge' ",
+                            this.string_2, this.string_1, byClassName.MenuID)
+                        : string.Format(
+                            "  Grantee = '{1}' and GRANTEETYPE='Staff'  and GRANTOBJECT='{2}' and OBJECTTYPE='gisPluge' ",
+                            this.string_2, this.string_1, byClassName.MenuID));
+                    DataAccessLayerBaseClass dataAccessLayer =
+                        DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
                     dataAccessLayer.Open();
-                    DataTable dataTable = dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
+                    DataTable dataTable =
+                        dataAccessLayer.ExecuteDataTable(string.Concat("select * from SYSGRANTS where ", str));
                     dataAccessLayer.Close();
                     flag = (dataTable.Rows.Count <= 0 ? false : true);
                 }
@@ -1440,9 +1607,13 @@ namespace Yutai.ArcGIS.Common.BaseClasses
 
         public void UpdateGrant(string string_3, string string_4, string string_5, string string_6, string string_7)
         {
-            object[] string7 = new object[] { "SYSGRANTS", string_7, string_3, string_4, string_5, string_6 };
-            string str = string.Format("update {0} set PRIVILEGEFLAG='{1}' where GRANTEE='{2}' and GRANTEETYPE='{3}' and GRANTOBJECT='{4}' and OBJECTTYPE='{5}' ", string7);
-            DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_0);
+            object[] string7 = new object[] {"SYSGRANTS", string_7, string_3, string_4, string_5, string_6};
+            string str =
+                string.Format(
+                    "update {0} set PRIVILEGEFLAG='{1}' where GRANTEE='{2}' and GRANTEETYPE='{3}' and GRANTOBJECT='{4}' and OBJECTTYPE='{5}' ",
+                    string7);
+            DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(
+                this.dataProviderType_0, this.string_0);
             dataAccessLayer.Open();
             dataAccessLayer.ExecuteNonQuery(CommandType.Text, str);
             dataAccessLayer.Close();

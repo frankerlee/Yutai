@@ -27,23 +27,13 @@ namespace Yutai.ArcGIS.Framework
 
         public BarEditStyle Style
         {
-            get
-            {
-                return this.m_style;
-            }
+            get { return this.m_style; }
         }
 
         public int Width
         {
-            get
-            {
-                return this.m_width;
-            }
-            set
-            {
-                this.m_width = value;
-            }
+            get { return this.m_width; }
+            set { this.m_width = value; }
         }
     }
 }
-

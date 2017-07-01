@@ -64,7 +64,7 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
             }
         }
 
- private void listView1_ItemChecked(object sender, ItemCheckedEventArgs e)
+        private void listView1_ItemChecked(object sender, ItemCheckedEventArgs e)
         {
             if (this.bool_0)
             {
@@ -82,7 +82,8 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
             {
                 DataObject data = new DataObject();
                 data.SetData(this.listView1.SelectedItems[0]);
-                this.listView1.DoDragDrop(data, DragDropEffects.Link | DragDropEffects.Move | DragDropEffects.Copy | DragDropEffects.Scroll);
+                this.listView1.DoDragDrop(data,
+                    DragDropEffects.Link | DragDropEffects.Move | DragDropEffects.Copy | DragDropEffects.Scroll);
             }
         }
 
@@ -109,7 +110,8 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
                         for (int i = 0; i < list.Count; i++)
                         {
                             ToolStripItem item = list[i];
-                            ListViewItem item2 = new ListViewItem(item.Text) {
+                            ListViewItem item2 = new ListViewItem(item.Text)
+                            {
                                 Tag = item,
                                 Checked = item.Visible
                             };
@@ -228,10 +230,7 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
 
         public StandardBarManager StandardBarManager
         {
-            set
-            {
-                this.standardBarManager_0 = value;
-            }
+            set { this.standardBarManager_0 = value; }
         }
 
         private partial class Class4
@@ -250,10 +249,7 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
 
             public System.Windows.Forms.ToolStrip ToolStrip
             {
-                get
-                {
-                    return this.toolStrip_0;
-                }
+                get { return this.toolStrip_0; }
             }
         }
 
@@ -273,12 +269,8 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
 
             public System.Windows.Forms.ToolStripItem ToolStripItem
             {
-                get
-                {
-                    return this.toolStripItem_0;
-                }
+                get { return this.toolStripItem_0; }
             }
         }
     }
 }
-

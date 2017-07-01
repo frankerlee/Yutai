@@ -37,27 +37,14 @@ namespace Yutai.ArcGIS.Framework
 
         public static IBarManager BarManager
         {
-            get
-            {
-                return m_BarManager;
-            }
-            set
-            {
-                m_BarManager = value;
-            }
+            get { return m_BarManager; }
+            set { m_BarManager = value; }
         }
 
         public static IDockManagerWrap DockManagerWrap
         {
-            get
-            {
-                return m_pDockManagerWrap;
-            }
-            set
-            {
-                m_pDockManagerWrap = value;
-            }
+            get { return m_pDockManagerWrap; }
+            set { m_pDockManagerWrap = value; }
         }
     }
 }
-

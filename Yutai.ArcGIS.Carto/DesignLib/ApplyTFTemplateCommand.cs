@@ -28,7 +28,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         {
             ElementsTableStruct struct2 = new ElementsTableStruct();
             ITable table = AppConfigInfo.OpenTable(struct2.TableName);
-            IQueryFilter queryFilter = new QueryFilterClass {
+            IQueryFilter queryFilter = new QueryFilterClass
+            {
                 WhereClause = struct2.TemplateIDFieldName + "=" + int_0.ToString()
             };
             ICursor o = table.Search(queryFilter, false);
@@ -60,7 +61,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         {
             IMemoryBlobStream o = object_0 as IMemoryBlobStream;
             IPropertySet set = new PropertySetClass();
-            IObjectStream pstm = new ObjectStreamClass {
+            IObjectStream pstm = new ObjectStreamClass
+            {
                 Stream = o
             };
             ESRI.ArcGIS.esriSystem.IPersistStream stream3 = set as ESRI.ArcGIS.esriSystem.IPersistStream;
@@ -91,13 +93,13 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 string text = (element as ITextElement).Text;
                 if (text[0] == '=')
                 {
-                    string[] strArray = text.Substring(1, text.Length - 1).Split(new char[] { '!' });
+                    string[] strArray = text.Substring(1, text.Length - 1).Split(new char[] {'!'});
                     if (strArray[0] == "Field")
                     {
                         string str3;
                         string str4;
                         string str2 = "";
-                        string[] strArray2 = strArray[1].Split(new char[] { '.' });
+                        string[] strArray2 = strArray[1].Split(new char[] {'.'});
                         if (strArray2.Length > 2)
                         {
                             str2 = strArray2[0];
@@ -114,7 +116,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                         if (strArray.Length >= 3)
                         {
                             queryFilter = new QueryFilterClass();
-                            string[] strArray3 = strArray[2].Split(new char[] { '#' });
+                            string[] strArray3 = strArray[2].Split(new char[] {'#'});
                             int index = 0;
                             bool flag = true;
                             for (index = 0; index < strArray3.Length; index++)
@@ -136,7 +138,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                             ITable table2 = ((irow_0.Table as IDataset).Workspace as IFeatureWorkspace).OpenTable(str3);
                             ICursor o = table2.Search(queryFilter, false);
                             IDataStatistics statistics = null;
-                            statistics = new DataStatisticsClass {
+                            statistics = new DataStatisticsClass
+                            {
                                 Field = str4,
                                 Cursor = o
                             };
@@ -186,7 +189,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                                 {
                                 }
                             }
-                        Label_034E:
+                            Label_034E:
                             ComReleaser.ReleaseCOMObject(o);
                         }
                         catch
@@ -241,7 +244,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             return element;
         }
 
-        private IPoint method_4(string string_0, IPageLayout ipageLayout_0, out int int_0, out double double_0, out double double_1)
+        private IPoint method_4(string string_0, IPageLayout ipageLayout_0, out int int_0, out double double_0,
+            out double double_1)
         {
             int_0 = 0;
             double_0 = 0.0;
@@ -287,10 +291,10 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                     element = container.Next();
                 }
                 goto Label_0179;
-            Label_015E:
+                Label_015E:
                 bounds = new EnvelopeClass();
                 element.QueryBounds((ipageLayout_0 as IActiveView).ScreenDisplay, bounds);
-            Label_0179:
+                Label_0179:
                 if (bounds == null)
                 {
                     container.Reset();
@@ -306,7 +310,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
                     case 1:
                         upperLeft = new PointClass();
-                        upperLeft.PutCoords((bounds.XMin + bounds.XMax) / 2.0, bounds.YMax);
+                        upperLeft.PutCoords((bounds.XMin + bounds.XMax)/2.0, bounds.YMax);
                         point.PutCoords(upperLeft.X + double_0, upperLeft.Y + double_1);
                         return point;
 
@@ -327,13 +331,13 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
                     case 5:
                         upperLeft = new PointClass();
-                        upperLeft.PutCoords(bounds.XMin, (bounds.YMin + bounds.YMax) / 2.0);
+                        upperLeft.PutCoords(bounds.XMin, (bounds.YMin + bounds.YMax)/2.0);
                         point.PutCoords(upperLeft.X + double_0, upperLeft.Y + double_1);
                         return point;
 
                     case 6:
                         upperLeft = new PointClass();
-                        upperLeft.PutCoords(bounds.XMax, (bounds.YMin + bounds.YMax) / 2.0);
+                        upperLeft.PutCoords(bounds.XMax, (bounds.YMin + bounds.YMax)/2.0);
                         point.PutCoords(upperLeft.X + double_0, upperLeft.Y + double_1);
                         return point;
 
@@ -354,7 +358,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
                     case 10:
                         upperLeft = new PointClass();
-                        upperLeft.PutCoords((bounds.XMin + bounds.XMax) / 2.0, bounds.YMin);
+                        upperLeft.PutCoords((bounds.XMin + bounds.XMax)/2.0, bounds.YMin);
                         point.PutCoords(upperLeft.X + double_0, upperLeft.Y + double_1);
                         return point;
 
@@ -402,7 +406,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         {
             try
             {
-                frmSelectCartoTemplateWizard wizard = new frmSelectCartoTemplateWizard {
+                frmSelectCartoTemplateWizard wizard = new frmSelectCartoTemplateWizard
+                {
                     Hashtable = this.hashtable_0
                 };
                 if (wizard.ShowDialog() == DialogResult.OK)
@@ -425,11 +430,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         public override bool Enabled
         {
-            get
-            {
-                return (this._hookHelper.ActiveView is IPageLayout);
-            }
+            get { return (this._hookHelper.ActiveView is IPageLayout); }
         }
     }
 }
-

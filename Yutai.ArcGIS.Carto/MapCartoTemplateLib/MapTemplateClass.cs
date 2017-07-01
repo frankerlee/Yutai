@@ -7,17 +7,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 {
     public class MapTemplateClass
     {
-        [CompilerGenerated]
-        private int int_0;
         public List<MapCartoTemplateLib.MapTemplate> mapTemplate;
-        [CompilerGenerated]
-        private MapCartoTemplateLib.MapTemplateGallery mapTemplateGallery_0;
-        [CompilerGenerated]
-        private string string_0;
-        [CompilerGenerated]
-        private string string_1;
-        [CompilerGenerated]
-        private string string_2;
+
 
         public MapTemplateClass(int int_1, MapCartoTemplateLib.MapTemplateGallery mapTemplateGallery_1)
         {
@@ -84,7 +75,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             {
                 this.mapTemplate.Clear();
             }
-            IQueryFilter queryFilter = new QueryFilterClass {
+            IQueryFilter queryFilter = new QueryFilterClass
+            {
                 WhereClause = "ClassID=" + this.OID
             };
             ICursor cursor = this.MapTemplateGallery.MapTemplateTable.Search(queryFilter, false);
@@ -93,7 +85,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             while (o != null)
             {
                 string str = o.get_Value(index).ToString();
-                MapCartoTemplateLib.MapTemplate template2 = new MapCartoTemplateLib.MapTemplate(o.OID, this) {
+                MapCartoTemplateLib.MapTemplate template2 = new MapCartoTemplateLib.MapTemplate(o.OID, this)
+                {
                     Name = str
                 };
                 this.AddMapTemplate(template2);
@@ -137,33 +130,10 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             row.Store();
         }
 
-        public string Description
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.string_2;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.string_2 = value;
-            }
-        }
+        public string Description { get; set; }
 
-        public string Guid
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.string_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.string_0 = value;
-            }
-        }
+        public string Guid { get; set; }
+
 
         public List<MapCartoTemplateLib.MapTemplate> MapTemplate
         {
@@ -188,47 +158,12 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
-        public MapCartoTemplateLib.MapTemplateGallery MapTemplateGallery
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.mapTemplateGallery_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.mapTemplateGallery_0 = value;
-            }
-        }
+        public MapCartoTemplateLib.MapTemplateGallery MapTemplateGallery { get; set; }
 
-        public string Name
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.string_1;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.string_1 = value;
-            }
-        }
 
-        public int OID
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.int_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.int_0 = value;
-            }
-        }
+        public string Name { get; set; }
+
+
+        public int OID { get; set; }
     }
 }
-

@@ -32,8 +32,11 @@ namespace Yutai.ArcGIS.Carto.UI
             IArray array = this.findControl_0.Find();
             this.btnFind.Enabled = false;
             this.btnStop.Enabled = true;
-            frmFindResult result = new frmFindResult {
-                Text = "在" + this.findControl_0.m_strFindLayers + "的" + this.findControl_0.m_strFindField + "中查找" + this.findControl_0.m_strSearch + "的结果",
+            frmFindResult result = new frmFindResult
+            {
+                Text =
+                    "在" + this.findControl_0.m_strFindLayers + "的" + this.findControl_0.m_strFindField + "中查找" +
+                    this.findControl_0.m_strSearch + "的结果",
                 FindResults = array,
                 ActiveView = this.iapplication_0.ActiveView
             };
@@ -48,7 +51,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.btnStop.Enabled = false;
         }
 
- public IApplication Application
+        public IApplication Application
         {
             set
             {
@@ -59,35 +62,22 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public DockingStyle DefaultDockingStyle
         {
-            get
-            {
-                return DockingStyle.Bottom;
-            }
+            get { return DockingStyle.Bottom; }
         }
 
         public IMap FocusMap
         {
-            set
-            {
-                this.findControl_0.FocusMap = value;
-            }
+            set { this.findControl_0.FocusMap = value; }
         }
 
         string IDockContent.Name
         {
-            get
-            {
-                return base.Name;
-            }
+            get { return base.Name; }
         }
 
         int IDockContent.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
     }
 }
-

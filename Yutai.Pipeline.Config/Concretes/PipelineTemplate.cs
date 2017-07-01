@@ -9,7 +9,7 @@ using Yutai.Pipeline.Config.Interfaces;
 
 namespace Yutai.Pipeline.Config.Concretes
 {
-    public  class PipelineTemplate:IPipelineTemplate
+    public class PipelineTemplate : IPipelineTemplate
     {
         private string _name;
         private string _caption;
@@ -18,7 +18,7 @@ namespace Yutai.Pipeline.Config.Concretes
 
         public PipelineTemplate()
         {
-            _fields=new List<IYTField>();
+            _fields = new List<IYTField>();
         }
 
         public PipelineTemplate(XmlNode node)
@@ -26,7 +26,6 @@ namespace Yutai.Pipeline.Config.Concretes
             _fields = new List<IYTField>();
             ReadFromXml(node);
         }
-
 
 
         public string Name
@@ -63,7 +62,8 @@ namespace Yutai.Pipeline.Config.Concretes
                     ? enumPipelineDataType.Point
                     : EnumHelper.ConvertDataTypeFromString(xmlNode.Attributes["DataType"].Value);
             }
-            XmlNodeList nodeList = xmlNode.SelectNodes($"/PipelineConfig/LayerTemplates/Template[@Name='{_name}']/Fields/Field");
+            XmlNodeList nodeList =
+                xmlNode.SelectNodes($"/PipelineConfig/LayerTemplates/Template[@Name='{_name}']/Fields/Field");
             foreach (XmlNode node in nodeList)
             {
                 IYTField field = new YTField(node);

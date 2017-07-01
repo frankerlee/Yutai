@@ -17,15 +17,15 @@ namespace Yutai.Plugins.Editor.Commands
                 bool flag;
                 if (_context.FocusMap != null)
                 {
-                   
-                   
-                    if ((Yutai.ArcGIS.Common.Editor.Editor.EditMap == null ? true : Yutai.ArcGIS.Common.Editor.Editor.EditMap == _context.FocusMap))
+                    if ((Yutai.ArcGIS.Common.Editor.Editor.EditMap == null
+                        ? true
+                        : Yutai.ArcGIS.Common.Editor.Editor.EditMap == _context.FocusMap))
                     {
                         flag = false;
                         return flag;
                     }
-                       
-                   
+
+
                     if (Yutai.ArcGIS.Common.Editor.Editor.EditWorkspace == null)
                     {
                         flag = false;
@@ -41,7 +41,8 @@ namespace Yutai.Plugins.Editor.Commands
                         IFeature feature = featureSelection.Next();
                         while (feature != null)
                         {
-                            if (Yutai.ArcGIS.Common.Editor.Editor.CheckWorkspaceEdit(feature.Class as IDataset, "IsBeingEdited"))
+                            if (Yutai.ArcGIS.Common.Editor.Editor.CheckWorkspaceEdit(feature.Class as IDataset,
+                                "IsBeingEdited"))
                             {
                                 flag = true;
                                 return flag;
@@ -96,7 +97,8 @@ namespace Yutai.Plugins.Editor.Commands
                 Yutai.ArcGIS.Common.Editor.Editor.EditWorkspace.StartEditOperation();
                 while (feature != null)
                 {
-                    flag = Yutai.ArcGIS.Common.Editor.Editor.DeComposeGeometry(feature, feature.ShapeCopy as IGeometryCollection);
+                    flag = Yutai.ArcGIS.Common.Editor.Editor.DeComposeGeometry(feature,
+                        feature.ShapeCopy as IGeometryCollection);
                     feature = featureSelection.Next();
                 }
                 Yutai.ArcGIS.Common.Editor.Editor.EditWorkspace.StopEditOperation();

@@ -15,12 +15,11 @@ namespace Yutai.Plugins.Locator.Menu
 {
     internal class MenuGenerator
     {
-       
         private readonly IAppContext _context;
         private readonly YutaiCommands _commands;
         private readonly object _menuManager;
         private readonly LocatorPlugin _plugin;
-        
+
 
         public MenuGenerator(IAppContext context, LocatorPlugin plugin)
         {
@@ -30,7 +29,7 @@ namespace Yutai.Plugins.Locator.Menu
             _plugin = plugin;
             _context = context;
             _menuManager = _context.MainView.RibbonManager;
-            _commands = new YutaiCommands(_context,plugin.Identity);
+            _commands = new YutaiCommands(_context, plugin.Identity);
             _commands.Plugin = plugin;
             InitMenus();
         }
@@ -39,7 +38,7 @@ namespace Yutai.Plugins.Locator.Menu
         {
             XmlDocument doc = new XmlDocument();
             //检测项目文档里面是否有插件的界面配置，如果没有，则使用默认配置，如果有，则使用配置文件里面的配置
-          Guid dllGuid=new Guid("2b81c89a-ee45-4276-9dc1-72bbbf07f53f");
+            Guid dllGuid = new Guid("2b81c89a-ee45-4276-9dc1-72bbbf07f53f");
             XmlPlugin plugin =
                 ((ISecureContext) _context).YutaiProject.Plugins.FirstOrDefault(
                     c => c.Guid == dllGuid);
@@ -47,30 +46,27 @@ namespace Yutai.Plugins.Locator.Menu
             {
                 if (string.IsNullOrEmpty(plugin.MenuXML))
                 {
-                    doc.Load(base.GetType().Assembly.GetManifestResourceStream("Yutai.Plugins.Locator.Menu.MenuLayout.xml"));
+                    doc.Load(
+                        base.GetType().Assembly.GetManifestResourceStream("Yutai.Plugins.Locator.Menu.MenuLayout.xml"));
                 }
                 else
                 {
                     FileInfo info = new FileInfo(FileHelper.GetFullPath(plugin.MenuXML));
-                    if(info.Exists)
+                    if (info.Exists)
                         doc.Load(FileHelper.GetFullPath(plugin.MenuXML));
                     else
-                        doc.Load(base.GetType().Assembly.GetManifestResourceStream("Yutai.Plugins.Locator.Menu.MenuLayout.xml"));
+                        doc.Load(
+                            base.GetType()
+                                .Assembly.GetManifestResourceStream("Yutai.Plugins.Locator.Menu.MenuLayout.xml"));
                 }
             }
             else
             {
                 doc.Load(base.GetType().Assembly.GetManifestResourceStream("Yutai.Plugins.Locator.Menu.MenuLayout.xml"));
             }
-            
-            RibbonFactory.CreateMenus(_commands.GetCommands(), (RibbonControl) _menuManager,_context.MainView.RibbonStatusBar as RibbonStatusBar, doc);
 
+            RibbonFactory.CreateMenus(_commands.GetCommands(), (RibbonControl) _menuManager,
+                _context.MainView.RibbonStatusBar as RibbonStatusBar, doc);
         }
-
-        
-
-     
-
-      
     }
 }

@@ -22,4 +22,3 @@
         string ServerName { get; }
     }
 }
-

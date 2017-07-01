@@ -18,6 +18,7 @@ namespace Yutai.UI.Docking
             Identity = identity;
             Key = key;
         }
+
         public PluginIdentity Identity { get; set; }
         public string Key { get; set; }
     }

@@ -20,9 +20,8 @@ namespace Yutai.Commands.MapLegend
 {
     public class CmdShowAllLayer : YutaiCommand
     {
-     
         private IMapLegendView _view;
-      
+
 
         public CmdShowAllLayer(IAppContext context, IMapLegendView view)
         {
@@ -43,6 +42,7 @@ namespace Yutai.Commands.MapLegend
             base.m_enabled = true;
             base._itemType = RibbonItemType.Button;
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
@@ -58,17 +58,17 @@ namespace Yutai.Commands.MapLegend
             switch (_view.SelectedItemType)
             {
                 case esriTOCControlItem.esriTOCControlItemMap:
-                    {
-                        IEnumLayer pEnumLayer = _view.SelectedMap.Layers;
+                {
+                    IEnumLayer pEnumLayer = _view.SelectedMap.Layers;
 
-                        if (pEnumLayer == null) return;
-                        ILayer pLayer;
-                        pEnumLayer.Reset();
-                        for (pLayer = pEnumLayer.Next(); pLayer != null; pLayer = pEnumLayer.Next())
-                        {
-                            ShowLayers(pLayer, true);
-                        }
+                    if (pEnumLayer == null) return;
+                    ILayer pLayer;
+                    pEnumLayer.Reset();
+                    for (pLayer = pEnumLayer.Next(); pLayer != null; pLayer = pEnumLayer.Next())
+                    {
+                        ShowLayers(pLayer, true);
                     }
+                }
                     break;
                 default:
                     if (_view.SelectedLayer != null)
@@ -84,7 +84,7 @@ namespace Yutai.Commands.MapLegend
         {
             if (layer is IGroupLayer)
             {
-                ICompositeLayer pCompositeLayer = (ICompositeLayer)layer;
+                ICompositeLayer pCompositeLayer = (ICompositeLayer) layer;
                 for (int i = 0; i < pCompositeLayer.Count; i++)
                 {
                     ILayer pLayer = pCompositeLayer.Layer[i];

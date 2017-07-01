@@ -19,24 +19,20 @@ namespace Yutai.ArcGIS.Carto.UI
             this.string_0 = string_2;
         }
 
- private void frmInput_Load(object sender, EventArgs e)
+        private void frmInput_Load(object sender, EventArgs e)
         {
             this.textEdit1.Text = this.string_1;
             this.label1.Text = this.string_0;
         }
 
- private void simpleButton1_Click(object sender, EventArgs e)
+        private void simpleButton1_Click(object sender, EventArgs e)
         {
             this.string_1 = this.textEdit1.Text;
         }
 
         public string InputValue
         {
-            get
-            {
-                return this.string_1;
-            }
+            get { return this.string_1; }
         }
     }
 }
-

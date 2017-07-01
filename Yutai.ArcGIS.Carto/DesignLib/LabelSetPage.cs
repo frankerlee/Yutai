@@ -12,7 +12,5 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         {
             this.InitializeComponent();
         }
-
-
     }
 }

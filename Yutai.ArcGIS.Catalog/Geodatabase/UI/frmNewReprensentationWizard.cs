@@ -67,14 +67,20 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     try
                     {
                         IWorkspaceExtensionManager manager = workspace as IWorkspaceExtensionManager;
-                        UID gUID = new UIDClass {
+                        UID gUID = new UIDClass
+                        {
                             Value = "{FD05270A-8E0B-4823-9DEE-F149347C32B6}"
                         };
-                        IRepresentationWorkspaceExtension extension = manager.FindExtension(gUID) as IRepresentationWorkspaceExtension;
+                        IRepresentationWorkspaceExtension extension =
+                            manager.FindExtension(gUID) as IRepresentationWorkspaceExtension;
                         if (extension != null)
                         {
                             new RepresentationRulesClass();
-                            this.irepresentationClass_0 = extension.CreateRepresentationClass(this.ifeatureClass_0, this.reprensationGeneralPage_0.RepresentationName, this.reprensationGeneralPage_0.RuleIDFieldName, this.reprensationGeneralPage_0.OverrideFieldName, this.reprensationGeneralPage_0.RequireShapeOverride, this.irepresentationRules_0, null);
+                            this.irepresentationClass_0 = extension.CreateRepresentationClass(this.ifeatureClass_0,
+                                this.reprensationGeneralPage_0.RepresentationName,
+                                this.reprensationGeneralPage_0.RuleIDFieldName,
+                                this.reprensationGeneralPage_0.OverrideFieldName,
+                                this.reprensationGeneralPage_0.RequireShapeOverride, this.irepresentationRules_0, null);
                         }
                     }
                     catch (Exception exception)
@@ -89,7 +95,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.int_0++;
         }
 
- private void frmNewReprensentationWizard_Load(object sender, EventArgs e)
+        private void frmNewReprensentationWizard_Load(object sender, EventArgs e)
         {
             this.irepresentationRules_0 = new RepresentationRulesClass();
             IRepresentationRule repRule = this.method_1(this.ifeatureClass_0);
@@ -104,10 +110,11 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.panel1.Controls.Add(this.representationRulesPage_0);
         }
 
- private IBasicSymbol method_0(IFeatureClass ifeatureClass_1)
+        private IBasicSymbol method_0(IFeatureClass ifeatureClass_1)
         {
             IBasicSymbol symbol = null;
-            if ((ifeatureClass_1.ShapeType == esriGeometryType.esriGeometryMultipoint) || (ifeatureClass_1.ShapeType == esriGeometryType.esriGeometryPoint))
+            if ((ifeatureClass_1.ShapeType == esriGeometryType.esriGeometryMultipoint) ||
+                (ifeatureClass_1.ShapeType == esriGeometryType.esriGeometryPoint))
             {
                 return new BasicMarkerSymbolClass();
             }
@@ -132,19 +139,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IFeatureClass FeatureClass
         {
-            set
-            {
-                this.ifeatureClass_0 = value;
-            }
+            set { this.ifeatureClass_0 = value; }
         }
 
         public IRepresentationClass RepresentationClass
         {
-            get
-            {
-                return this.irepresentationClass_0;
-            }
+            get { return this.irepresentationClass_0; }
         }
     }
 }
-

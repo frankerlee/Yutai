@@ -19,7 +19,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.InitializeComponent();
         }
 
- internal void InitControl()
+        internal void InitControl()
         {
             this.listView1.Items.Clear();
             string[] items = new string[2];
@@ -27,20 +27,22 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             {
                 items[0] = wrap.EditTemplate.Name;
                 items[1] = wrap.EditTemplate.Name;
-                ListViewItem item = new ListViewItem(items) {
+                ListViewItem item = new ListViewItem(items)
+                {
                     Tag = wrap,
                     Checked = wrap.IsUse
                 };
-                if (!this.imageList1.Images.ContainsKey(wrap.EditTemplate.ImageKey) && (wrap.EditTemplate.Bitmap != null))
+                if (!this.imageList1.Images.ContainsKey(wrap.EditTemplate.ImageKey) &&
+                    (wrap.EditTemplate.Bitmap != null))
                 {
-                    this.imageList1.Images.Add((string) wrap.EditTemplate.ImageKey, (Image)wrap.EditTemplate.Bitmap);
+                    this.imageList1.Images.Add((string) wrap.EditTemplate.ImageKey, (Image) wrap.EditTemplate.Bitmap);
                 }
                 item.ImageKey = wrap.EditTemplate.ImageKey;
                 this.listView1.Items.Add(item);
             }
         }
 
- public bool LastStep()
+        public bool LastStep()
         {
             this.Step--;
             this.InitControl();
@@ -83,4 +85,3 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         internal Dictionary<IFeatureLayer, List<YTEditTemplateWrap>> Templates { get; set; }
     }
 }
-

@@ -193,8 +193,8 @@ namespace Yutai.Pipeline.Analysis.Classes
                 IFeatureLayer pLayer = MapHelper.GetLayerByFeature(map as IBasicMap, realFeature);
                 IBasicLayerInfo lineConfig =
                     PipeConfig.GetBasicLayerInfo(realFeature.Class.AliasName) as IBasicLayerInfo;
-              
-                
+
+
                 if (!isMUsing)
                 {
                     qdgcIndex =
@@ -253,7 +253,7 @@ namespace Yutai.Pipeline.Analysis.Classes
                 string text = lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GDXZ) == ""
                     ? "管线性质"
                     : lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GDXZ);
-               
+
                 int num2 = realFeature.Fields.FindField(text);
                 string text2 = "";
                 if (num2 != -1)
@@ -271,16 +271,16 @@ namespace Yutai.Pipeline.Analysis.Classes
                 pipeLine.ID = Convert.ToInt32(realFeature.get_Value(0).ToString());
                 pipeLine.DatasetName = text2;
                 int num3 = realFeature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GXCZ));
-                pipeLine.Material=num3==-1?"": realFeature.get_Value(num3).ToString();
-             
+                pipeLine.Material = num3 == -1 ? "" : realFeature.get_Value(num3).ToString();
+
                 //管径
                 num3 = realFeature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.GJ));
-                string text3= num3==-1?"": realFeature.get_Value(num3).ToString();
-               
+                string text3 = num3 == -1 ? "" : realFeature.get_Value(num3).ToString();
+
                 //断面尺寸
                 num3 = feature.Fields.FindField(lineConfig.GetFieldName(PipeConfigWordHelper.LineWords.DMCC));
-                string text4= num3 == -1?"" : realFeature.get_Value(num3).ToString();
-              
+                string text4 = num3 == -1 ? "" : realFeature.get_Value(num3).ToString();
+
                 Color featureColor = CommonUtils.GetFeatureColor(map, realFeature.Class.AliasName, realFeature);
                 pipeLine.Red = (int) featureColor.R;
                 pipeLine.Green = (int) featureColor.G;
@@ -298,8 +298,8 @@ namespace Yutai.Pipeline.Analysis.Classes
                     pipeLine.PipeWidthHeight = "";
                 }
                 this.arrayList_1.Add(pipeLine);
-                IFeature feature2 = (IFeature) ((IEdgeFeature)realFeature).FromJunctionFeature;
-                IFeature feature3 = (IFeature) ((IEdgeFeature)realFeature).ToJunctionFeature;
+                IFeature feature2 = (IFeature) ((IEdgeFeature) realFeature).FromJunctionFeature;
+                IFeature feature3 = (IFeature) ((IEdgeFeature) realFeature).ToJunctionFeature;
                 IFeature feature4;
                 if (num == 0)
                 {

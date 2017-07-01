@@ -10,4 +10,3 @@
         public static string STATUS_FIELD = "Status";
     }
 }
-

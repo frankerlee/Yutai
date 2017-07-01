@@ -80,22 +80,13 @@ namespace Yutai.ArcGIS.Catalog
 
         public int Count
         {
-            get
-            {
-                return this.igxObjectArray_0.Count;
-            }
+            get { return this.igxObjectArray_0.Count; }
         }
 
         public bool DelayEvents
         {
-            get
-            {
-                return this.bool_0;
-            }
-            set
-            {
-                this.bool_0 = false;
-            }
+            get { return this.bool_0; }
+            set { this.bool_0 = false; }
         }
 
         public IGxObject FirstObject
@@ -112,19 +103,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public IGxObject Location
         {
-            get
-            {
-                return this.igxObject_0;
-            }
+            get { return this.igxObject_0; }
         }
 
         public IEnumGxObject SelectedObjects
         {
-            get
-            {
-                return (this.igxObjectArray_0 as IEnumGxObject);
-            }
+            get { return (this.igxObjectArray_0 as IEnumGxObject); }
         }
     }
 }
-

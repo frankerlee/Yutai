@@ -30,7 +30,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                 }
                 catch (Exception exception)
                 {
-                   Logger.Current.Error("", exception, "");
+                    Logger.Current.Error("", exception, "");
                     object0 = null;
                     return object0;
                 }

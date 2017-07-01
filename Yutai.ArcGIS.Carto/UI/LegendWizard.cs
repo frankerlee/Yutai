@@ -117,7 +117,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- public IMap FocusMap
+        public IMap FocusMap
         {
             set
             {
@@ -142,19 +142,12 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IMapSurroundFrame LegendFrame
         {
-            get
-            {
-                return this.imapSurroundFrame_0;
-            }
+            get { return this.imapSurroundFrame_0; }
         }
 
         public IStyleGallery StyleGallery
         {
-            set
-            {
-                this.legendSetupUserControl_0.StyleGallery = value;
-            }
+            set { this.legendSetupUserControl_0.StyleGallery = value; }
         }
     }
 }
-

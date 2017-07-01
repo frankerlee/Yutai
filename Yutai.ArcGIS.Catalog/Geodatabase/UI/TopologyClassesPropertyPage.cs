@@ -64,26 +64,28 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                             int zRank = topoClass.ZRank;
                             double weight = topoClass.Weight;
                             bool eventNotificationOnValidate = topoClass.EventNotificationOnValidate;
-                            this.itopology_0.AddClass(topoClass as IClass, weight, xYRank, zRank, eventNotificationOnValidate);
+                            this.itopology_0.AddClass(topoClass as IClass, weight, xYRank, zRank,
+                                eventNotificationOnValidate);
                         }
                     }
                     catch (Exception exception1)
                     {
                         exception = exception1;
-                        Logger.Current.Error("",exception, "");
+                        Logger.Current.Error("", exception, "");
                     }
                 }
             }
             catch (Exception exception2)
             {
                 exception = exception2;
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            frmAddClass class2 = new frmAddClass {
+            frmAddClass class2 = new frmAddClass
+            {
                 Topology = this.itopology_0
             };
             if (class2.ShowDialog() == DialogResult.OK)
@@ -101,7 +103,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     for (num2 = 0; num2 < list.Count; num2++)
                     {
                         ITopologyClass class3 = list[num2] as ITopologyClass;
-                        this.vertXtraGrid_0.AddComBoBox((class3 as IDataset).Name, 1, list2, false, new Class6(class3, true));
+                        this.vertXtraGrid_0.AddComBoBox((class3 as IDataset).Name, 1, list2, false,
+                            new Class6(class3, true));
                         TopologyEditHelper.m_pList.Add(class3);
                     }
                     this.bool_1 = true;
@@ -113,7 +116,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 }
                 catch (Exception exception)
                 {
-                    Logger.Current.Error("",exception, "");
+                    Logger.Current.Error("", exception, "");
                 }
             }
         }
@@ -142,10 +145,11 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                             index++;
                         }
                         goto Label_00D3;
-                    Label_00A9:
+                        Label_00A9:
                         TopologyEditHelper.m_pList.Remove(index);
-                        TopologyEditHelper.OnDeleteTopolyClass(((row.Tag as Class6).TopoClass as IObjectClass).ObjectClassID);
-                    Label_00D3:
+                        TopologyEditHelper.OnDeleteTopolyClass(
+                            ((row.Tag as Class6).TopoClass as IObjectClass).ObjectClassID);
+                        Label_00D3:
                         this.vertXtraGrid_0.DeleteRow(row);
                     }
                     this.bool_1 = true;
@@ -157,7 +161,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
         }
 
@@ -187,7 +191,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
         }
 
@@ -195,7 +199,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
         }
 
- private void gridView1_CellValueChanged(object sender, CellValueChangedEventArgs e)
+        private void gridView1_CellValueChanged(object sender, CellValueChangedEventArgs e)
         {
             if (this.bool_0 && (this.OnValueChange != null))
             {
@@ -215,7 +219,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- public void ResetControl()
+        public void ResetControl()
         {
         }
 
@@ -246,7 +250,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     if (class3.IsInTopology)
                     {
                         num = (num < class3.XYRank) ? class3.XYRank : num;
-                        this.vertXtraGrid_0.AddComBoBox((class3 as IDataset).Name, class3.XYRank, list, false, new Class6(class3, false));
+                        this.vertXtraGrid_0.AddComBoBox((class3 as IDataset).Name, class3.XYRank, list, false,
+                            new Class6(class3, false));
                         TopologyEditHelper.m_pList.Add(class3);
                     }
                     class3 = classes.Next() as ITopologyClass;
@@ -264,7 +269,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
             this.bool_0 = true;
         }
@@ -295,38 +300,23 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
 
         private partial class Class6
@@ -342,24 +332,14 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
             public bool IsNew
             {
-                get
-                {
-                    return this.bool_0;
-                }
-                set
-                {
-                    this.bool_0 = value;
-                }
+                get { return this.bool_0; }
+                set { this.bool_0 = value; }
             }
 
             public ITopologyClass TopoClass
             {
-                get
-                {
-                    return this.itopologyClass_0;
-                }
+                get { return this.itopologyClass_0; }
             }
         }
     }
 }
-

@@ -13,6 +13,7 @@ namespace Yutai.Plugins.TableEditor.Commands
     class CmdClearSorting : YutaiCommand
     {
         private ITableEditorView _view;
+
         public CmdClearSorting(IAppContext context, ITableEditorView view)
         {
             _context = context;

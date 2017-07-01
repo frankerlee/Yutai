@@ -22,7 +22,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
 
         public override bool Apply()
         {
-            IGraphicAttributes fillPattern = (base.m_pGeometricEffect as IBasicFillSymbol).FillPattern as IGraphicAttributes;
+            IGraphicAttributes fillPattern =
+                (base.m_pGeometricEffect as IBasicFillSymbol).FillPattern as IGraphicAttributes;
             if (fillPattern.ClassName == "1")
             {
                 fillPattern.set_Value((int) this.symbolItem1.Tag, this.symbolItem1.Symbol);
@@ -129,7 +130,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
 
         private void btnAddGemoetricEffic_Click(object sender, EventArgs e)
         {
-            frmGeometricEffectList list = new frmGeometricEffectList {
+            frmGeometricEffectList list = new frmGeometricEffectList
+            {
                 BasicSymbolLayerBaseControl = this.m_pControl
             };
             if ((list.ShowDialog() == DialogResult.OK) && (this.m_pControl != null))
@@ -147,7 +149,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
         {
             if (this.m_CanDo)
             {
-                ((base.m_pGeometricEffect as IBasicFillSymbol).FillPattern as IGraphicAttributes).set_Value((int) (sender as ComboBox).Tag, (sender as ComboBox).SelectedIndex);
+                ((base.m_pGeometricEffect as IBasicFillSymbol).FillPattern as IGraphicAttributes).set_Value(
+                    (int) (sender as ComboBox).Tag, (sender as ComboBox).SelectedIndex);
             }
         }
 
@@ -155,11 +158,12 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
         {
             if (this.m_CanDo)
             {
-                ((base.m_pGeometricEffect as IBasicFillSymbol).FillPattern as IGraphicAttributes).set_Value((int) (sender as ComboBox).Tag, (sender as ComboBox).SelectedIndex);
+                ((base.m_pGeometricEffect as IBasicFillSymbol).FillPattern as IGraphicAttributes).set_Value(
+                    (int) (sender as ComboBox).Tag, (sender as ComboBox).SelectedIndex);
             }
         }
 
- private void GeometricEffectFillPage_Load(object sender, EventArgs e)
+        private void GeometricEffectFillPage_Load(object sender, EventArgs e)
         {
             int num2;
             string str;
@@ -168,7 +172,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
             {
                 base.m_pGeometricEffect = new BasicFillSymbolClass();
             }
-            IGraphicAttributes fillPattern = (base.m_pGeometricEffect as IBasicFillSymbol).FillPattern as IGraphicAttributes;
+            IGraphicAttributes fillPattern =
+                (base.m_pGeometricEffect as IBasicFillSymbol).FillPattern as IGraphicAttributes;
             switch (fillPattern.GraphicAttributeCount)
             {
                 case 1:
@@ -310,7 +315,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
         private void HatchsymbolItem_Click(object sender, EventArgs e)
         {
             ColorDialog dialog = new ColorDialog();
-            IRgbColor rgbColor = new RgbColorClass {
+            IRgbColor rgbColor = new RgbColorClass
+            {
                 RGB = (this.HatchsymbolItem.Symbol as IColor).RGB
             };
             dialog.Color = Converter.FromRGBColor(rgbColor);
@@ -318,7 +324,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
             {
                 rgbColor = Converter.ToRGBColor(dialog.Color);
                 this.HatchsymbolItem.Symbol = rgbColor;
-                ((base.m_pGeometricEffect as IBasicFillSymbol).FillPattern as IGraphicAttributes).set_Value((int) this.HatchsymbolItem.Tag, this.HatchsymbolItem.Symbol);
+                ((base.m_pGeometricEffect as IBasicFillSymbol).FillPattern as IGraphicAttributes).set_Value(
+                    (int) this.HatchsymbolItem.Tag, this.HatchsymbolItem.Symbol);
             }
         }
 
@@ -372,7 +379,7 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
             this.m_CanDo = true;
         }
 
- private void solidColorToolStripMenuItem_Click(object sender, EventArgs e)
+        private void solidColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.m_CanDo = false;
             if (!this.solidColorToolStripMenuItem.Checked)
@@ -405,7 +412,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
         private void symbolItem1_Click(object sender, EventArgs e)
         {
             ColorDialog dialog = new ColorDialog();
-            IRgbColor rgbColor = new RgbColorClass {
+            IRgbColor rgbColor = new RgbColorClass
+            {
                 RGB = (this.symbolItem1.Symbol as IColor).RGB
             };
             dialog.Color = Converter.FromRGBColor(rgbColor);
@@ -413,14 +421,16 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
             {
                 rgbColor = Converter.ToRGBColor(dialog.Color);
                 this.symbolItem1.Symbol = rgbColor;
-                ((base.m_pGeometricEffect as IBasicFillSymbol).FillPattern as IGraphicAttributes).set_Value((int) this.symbolItem1.Tag, this.symbolItem1.Symbol);
+                ((base.m_pGeometricEffect as IBasicFillSymbol).FillPattern as IGraphicAttributes).set_Value(
+                    (int) this.symbolItem1.Tag, this.symbolItem1.Symbol);
             }
         }
 
         private void symbolItemColor1_Click(object sender, EventArgs e)
         {
             ColorDialog dialog = new ColorDialog();
-            IRgbColor rgbColor = new RgbColorClass {
+            IRgbColor rgbColor = new RgbColorClass
+            {
                 RGB = (this.symbolItemColor1.Symbol as IColor).RGB
             };
             dialog.Color = Converter.FromRGBColor(rgbColor);
@@ -428,14 +438,16 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
             {
                 rgbColor = Converter.ToRGBColor(dialog.Color);
                 this.symbolItemColor1.Symbol = rgbColor;
-                ((base.m_pGeometricEffect as IBasicFillSymbol).FillPattern as IGraphicAttributes).set_Value((int) this.symbolItemColor1.Tag, this.symbolItemColor1.Symbol);
+                ((base.m_pGeometricEffect as IBasicFillSymbol).FillPattern as IGraphicAttributes).set_Value(
+                    (int) this.symbolItemColor1.Tag, this.symbolItemColor1.Symbol);
             }
         }
 
         private void symbolItemColor2_Click(object sender, EventArgs e)
         {
             ColorDialog dialog = new ColorDialog();
-            IRgbColor rgbColor = new RgbColorClass {
+            IRgbColor rgbColor = new RgbColorClass
+            {
                 RGB = (this.symbolItemColor2.Symbol as IColor).RGB
             };
             dialog.Color = Converter.FromRGBColor(rgbColor);
@@ -443,7 +455,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
             {
                 rgbColor = Converter.ToRGBColor(dialog.Color);
                 this.symbolItemColor2.Symbol = rgbColor;
-                ((base.m_pGeometricEffect as IBasicFillSymbol).FillPattern as IGraphicAttributes).set_Value((int) this.symbolItemColor2.Tag, this.symbolItemColor2.Symbol);
+                ((base.m_pGeometricEffect as IBasicFillSymbol).FillPattern as IGraphicAttributes).set_Value(
+                    (int) this.symbolItemColor2.Tag, this.symbolItemColor2.Symbol);
             }
         }
 
@@ -458,8 +471,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
             {
                 return;
             }
-            ((base.m_pGeometricEffect as IBasicFillSymbol).FillPattern as IGraphicAttributes).set_Value((int) (sender as TextBox).Tag, val);
+            ((base.m_pGeometricEffect as IBasicFillSymbol).FillPattern as IGraphicAttributes).set_Value(
+                (int) (sender as TextBox).Tag, val);
         }
     }
 }
-

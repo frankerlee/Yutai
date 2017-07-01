@@ -8,7 +8,7 @@ using ESRI.ArcGIS.Geometry;
 
 namespace Yutai.ArcGIS.Controls
 {
-    internal  class LocalCommonHelper
+    internal class LocalCommonHelper
     {
         public static int GetLayerIndex(IMap imap_0, ILayer ilayer_0)
         {

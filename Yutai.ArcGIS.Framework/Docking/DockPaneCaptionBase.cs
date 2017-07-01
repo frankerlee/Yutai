@@ -11,15 +11,20 @@ namespace Yutai.ArcGIS.Framework.Docking
         protected internal DockPaneCaptionBase(DockPane pane)
         {
             this.m_dockPane = pane;
-            base.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.ResizeRedraw | ControlStyles.UserPaint, true);
+            base.SetStyle(
+                ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.ResizeRedraw |
+                ControlStyles.UserPaint, true);
             base.SetStyle(ControlStyles.Selectable, false);
         }
 
         protected internal abstract int MeasureHeight();
+
         protected override void OnMouseDown(MouseEventArgs e)
         {
             base.OnMouseDown(e);
-            if ((((e.Button == MouseButtons.Left) && this.DockPane.DockPanel.AllowEndUserDocking) && (this.DockPane.AllowDockDragAndDrop && !DockHelper.IsDockStateAutoHide(this.DockPane.DockState))) && (this.DockPane.ActiveContent != null))
+            if ((((e.Button == MouseButtons.Left) && this.DockPane.DockPanel.AllowEndUserDocking) &&
+                 (this.DockPane.AllowDockDragAndDrop && !DockHelper.IsDockStateAutoHide(this.DockPane.DockState))) &&
+                (this.DockPane.ActiveContent != null))
             {
                 this.DockPane.DockPanel.BeginDrag(this.DockPane);
             }
@@ -55,7 +60,7 @@ namespace Yutai.ArcGIS.Framework.Docking
             this.DockPane.ShowTabPageContextMenu(this, position);
         }
 
-        [SecurityPermission(SecurityAction.LinkDemand, Flags=SecurityPermissionFlag.UnmanagedCode)]
+        [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)]
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == 515)
@@ -79,27 +84,17 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         protected DockPane.AppearanceStyle Appearance
         {
-            get
-            {
-                return this.DockPane.Appearance;
-            }
+            get { return this.DockPane.Appearance; }
         }
 
         protected DockPane DockPane
         {
-            get
-            {
-                return this.m_dockPane;
-            }
+            get { return this.m_dockPane; }
         }
 
         protected bool HasTabPageContextMenu
         {
-            get
-            {
-                return this.DockPane.HasTabPageContextMenu;
-            }
+            get { return this.DockPane.HasTabPageContextMenu; }
         }
     }
 }
-

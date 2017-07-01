@@ -105,12 +105,12 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             this.bool_1 = false;
         }
 
- private void ElementPosition_Load(object sender, EventArgs e)
+        private void ElementPosition_Load(object sender, EventArgs e)
         {
             this.method_0();
         }
 
- private void method_0()
+        private void method_0()
         {
             this.bool_0 = false;
             switch (this.mapTemplateElement_0.ElementLocation.LocationType)
@@ -244,26 +244,17 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public MapCartoTemplateLib.MapTemplateElement MapTemplateElement
@@ -277,14 +268,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public string Title
         {
-            get
-            {
-                return "位置";
-            }
-            set
-            {
-            }
+            get { return "位置"; }
+            set { }
         }
     }
 }
-

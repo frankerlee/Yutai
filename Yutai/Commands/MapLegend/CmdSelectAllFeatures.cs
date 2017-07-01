@@ -22,7 +22,6 @@ namespace Yutai.Commands.MapLegend
 {
     public class CmdSelectAllFeatures : YutaiCommand
     {
-      
         private IMapLegendView _view;
 
         public CmdSelectAllFeatures(IAppContext context, IMapLegendView view)
@@ -44,6 +43,7 @@ namespace Yutai.Commands.MapLegend
             base.m_enabled = true;
             base._itemType = RibbonItemType.Button;
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
@@ -64,12 +64,15 @@ namespace Yutai.Commands.MapLegend
                     if (_view.SelectedLayer is IFeatureLayer)
                     {
                         ISelectionEnvironment pSelectionEnvironment = new SelectionEnvironmentClass();
-                        if ((_view.SelectedLayer as IFeatureLayer).FeatureClass.FeatureCount(null) <= (pSelectionEnvironment as ISelectionEnvironmentThreshold).WarningThreshold || MessageBox.Show("所选择记录较多，执行将花较长时间，是否继续？", "选择", MessageBoxButtons.YesNo) != DialogResult.No)
+                        if ((_view.SelectedLayer as IFeatureLayer).FeatureClass.FeatureCount(null) <=
+                            (pSelectionEnvironment as ISelectionEnvironmentThreshold).WarningThreshold ||
+                            MessageBox.Show("所选择记录较多，执行将花较长时间，是否继续？", "选择", MessageBoxButtons.YesNo) != DialogResult.No)
                         {
                             IFeatureSelection featureSelection = _view.SelectedLayer as IFeatureSelection;
                             if (featureSelection != null)
                             {
-                                featureSelection.SelectFeatures(null, esriSelectionResultEnum.esriSelectionResultAdd, false);
+                                featureSelection.SelectFeatures(null, esriSelectionResultEnum.esriSelectionResultAdd,
+                                    false);
                                 pActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeography, featureSelection, null);
                             }
                         }
@@ -77,6 +80,5 @@ namespace Yutai.Commands.MapLegend
                 }
             }
         }
-        
     }
 }

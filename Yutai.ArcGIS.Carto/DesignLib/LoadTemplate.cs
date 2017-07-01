@@ -21,7 +21,9 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             {
                 double num;
                 double num2;
-                IMapFrame frame = (this._hookHelper.PageLayout as IGraphicsContainer).FindFrame(this._hookHelper.FocusMap) as IMapFrame;
+                IMapFrame frame =
+                    (this._hookHelper.PageLayout as IGraphicsContainer).FindFrame(this._hookHelper.FocusMap) as
+                        IMapFrame;
                 IMapDocument document = new MapDocumentClass();
                 IGraphicsContainer pageLayout = document.PageLayout as IGraphicsContainer;
                 pageLayout.Reset();
@@ -64,4 +66,3 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         }
     }
 }
-

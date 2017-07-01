@@ -15,16 +15,16 @@ namespace Yutai.UI.Style
 
         public DevExpressStyleService()
         {
-           // Logger.Current.Trace("In DevExpress Skin");
+            // Logger.Current.Trace("In DevExpress Skin");
         }
 
-        public void ApplyStyle(System.Windows.Forms.Form  form)
+        public void ApplyStyle(System.Windows.Forms.Form form)
         {
             //if (form is XtraForm)
             //{
             //    ((XtraForm) form).AllowFormSkin = true;
             //}
-             
+
 
             //ApplyStyle(form.Controls);
         }
@@ -42,11 +42,8 @@ namespace Yutai.UI.Style
         public void ApplyStyle(Control control)
         {
             //Logger.Current.Trace("Start ApplyStyle");
-         
+
             //Logger.Current.Trace("End ApplyStyle");
         }
-
-       
-        
     }
 }

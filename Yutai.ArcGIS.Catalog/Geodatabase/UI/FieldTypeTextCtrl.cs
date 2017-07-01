@@ -43,27 +43,32 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     if ((this.cboDomain.SelectedItem as DomainWrap1).Domain != null)
                     {
                         this.ifieldEdit_0.Domain_2 = (this.cboDomain.SelectedItem as DomainWrap1).Domain;
-                        if ((NewObjectClassHelper.m_pObjectClassHelper != null) && NewObjectClassHelper.m_pObjectClassHelper.FieldDomanIsExit(this.ifieldEdit_0))
+                        if ((NewObjectClassHelper.m_pObjectClassHelper != null) &&
+                            NewObjectClassHelper.m_pObjectClassHelper.FieldDomanIsExit(this.ifieldEdit_0))
                         {
                             NewObjectClassHelper.m_pObjectClassHelper.FieldDomains[this.ifieldEdit_0] = null;
                         }
                     }
-                    else if (((this.cboDomain.SelectedItem as DomainWrap1).DomainEx != null) && (NewObjectClassHelper.m_pObjectClassHelper != null))
+                    else if (((this.cboDomain.SelectedItem as DomainWrap1).DomainEx != null) &&
+                             (NewObjectClassHelper.m_pObjectClassHelper != null))
                     {
                         if (NewObjectClassHelper.m_pObjectClassHelper.FieldDomanIsExit(this.ifieldEdit_0))
                         {
-                            NewObjectClassHelper.m_pObjectClassHelper.FieldDomains[this.ifieldEdit_0] = (this.cboDomain.SelectedItem as DomainWrap1).DomainEx;
+                            NewObjectClassHelper.m_pObjectClassHelper.FieldDomains[this.ifieldEdit_0] =
+                                (this.cboDomain.SelectedItem as DomainWrap1).DomainEx;
                         }
                         else
                         {
-                            NewObjectClassHelper.m_pObjectClassHelper.FieldDomains.Add(this.ifieldEdit_0, (this.cboDomain.SelectedItem as DomainWrap1).DomainEx);
+                            NewObjectClassHelper.m_pObjectClassHelper.FieldDomains.Add(this.ifieldEdit_0,
+                                (this.cboDomain.SelectedItem as DomainWrap1).DomainEx);
                         }
                     }
                 }
                 else
                 {
                     this.ifieldEdit_0.Domain_2 = null;
-                    if ((NewObjectClassHelper.m_pObjectClassHelper != null) && NewObjectClassHelper.m_pObjectClassHelper.FieldDomanIsExit(this.ifieldEdit_0))
+                    if ((NewObjectClassHelper.m_pObjectClassHelper != null) &&
+                        NewObjectClassHelper.m_pObjectClassHelper.FieldDomanIsExit(this.ifieldEdit_0))
                     {
                         NewObjectClassHelper.m_pObjectClassHelper.FieldDomains[this.ifieldEdit_0] = null;
                     }
@@ -76,7 +81,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void FieldTypeTextCtrl_Load(object sender, EventArgs e)
+        private void FieldTypeTextCtrl_Load(object sender, EventArgs e)
         {
             this.cboDomain.Properties.Items.Clear();
             try
@@ -94,7 +99,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                             if (domain2.FieldType == esriFieldType.esriFieldTypeString)
                             {
                                 this.cboDomain.Properties.Items.Add(new DomainWrap1(domain2));
-                                if ((this.ifieldEdit_0.Domain != null) && (this.ifieldEdit_0.Domain.Name == domain2.Name))
+                                if ((this.ifieldEdit_0.Domain != null) &&
+                                    (this.ifieldEdit_0.Domain.Name == domain2.Name))
                                 {
                                     num = this.cboDomain.Properties.Items.Count - 1;
                                 }
@@ -109,7 +115,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     {
                         if (NewObjectClassHelper.m_pObjectClassHelper.FieldDomains[this.ifieldEdit_0] != null)
                         {
-                            domainID = NewObjectClassHelper.m_pObjectClassHelper.FieldDomains[this.ifieldEdit_0].DomainID;
+                            domainID =
+                                NewObjectClassHelper.m_pObjectClassHelper.FieldDomains[this.ifieldEdit_0].DomainID;
                         }
                     }
                     else if (NewObjectClassHelper.m_pObjectClassHelper.ObjectClass != null)
@@ -151,7 +158,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.method_1();
         }
 
- private void method_0(IField ifield_0, FieldChangeType fieldChangeType_0)
+        private void method_0(IField ifield_0, FieldChangeType fieldChangeType_0)
         {
             if (this.FieldChanged != null)
             {
@@ -189,7 +196,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         {
                             if (NewObjectClassHelper.m_pObjectClassHelper.FieldDomains[this.ifieldEdit_0] != null)
                             {
-                                name = NewObjectClassHelper.m_pObjectClassHelper.FieldDomains[this.ifieldEdit_0].DomainID;
+                                name =
+                                    NewObjectClassHelper.m_pObjectClassHelper.FieldDomains[this.ifieldEdit_0].DomainID;
                             }
                         }
                         else if (NewObjectClassHelper.m_pObjectClassHelper.ObjectClass != null)
@@ -278,27 +286,17 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IField Filed
         {
-            set
-            {
-                this.ifieldEdit_0 = value as IFieldEdit;
-            }
+            set { this.ifieldEdit_0 = value as IFieldEdit; }
         }
 
         public bool IsEdit
         {
-            set
-            {
-                this.bool_1 = value;
-            }
+            set { this.bool_1 = value; }
         }
 
         public IWorkspace Workspace
         {
-            set
-            {
-                this.iworkspace_0 = value;
-            }
+            set { this.iworkspace_0 = value; }
         }
     }
 }
-

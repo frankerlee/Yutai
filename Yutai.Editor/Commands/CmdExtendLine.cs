@@ -25,6 +25,7 @@ namespace Yutai.Plugins.Editor.Commands
         private IApplication iapplication_0 = null;
         private bool bool_0 = false;
         private bool bool_1 = false;
+
         public override bool Enabled
         {
             get
@@ -36,7 +37,8 @@ namespace Yutai.Plugins.Editor.Commands
                     {
                         result = false;
                     }
-                    else if ( Yutai.ArcGIS.Common.Editor.Editor.EditMap != null && Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
+                    else if (Yutai.ArcGIS.Common.Editor.Editor.EditMap != null &&
+                             Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
                     {
                         result = false;
                     }
@@ -55,7 +57,8 @@ namespace Yutai.Plugins.Editor.Commands
                                 result = false;
                                 return result;
                             }
-                            if (Yutai.ArcGIS.Common.Editor.Editor.CheckWorkspaceEdit(feature.Class as IDataset, "IsBeingEdited"))
+                            if (Yutai.ArcGIS.Common.Editor.Editor.CheckWorkspaceEdit(feature.Class as IDataset,
+                                "IsBeingEdited"))
                             {
                                 result = true;
                                 return result;
@@ -72,7 +75,7 @@ namespace Yutai.Plugins.Editor.Commands
             }
         }
 
-      
+
         public CmdExtendLine(IAppContext context)
         {
             OnCreate(context);
@@ -93,17 +96,19 @@ namespace Yutai.Plugins.Editor.Commands
             this.m_message = "延长线";
             this.m_toolTip = "延长线";
             this.m_bitmap = Properties.Resources.icon_edit_extendline;
-            this.m_cursor = new System.Windows.Forms.Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.Plugins.Editor.Resources.Cursor.ExtendLine.cur"));
-          
+            this.m_cursor =
+                new System.Windows.Forms.Cursor(
+                    base.GetType()
+                        .Assembly.GetManifestResourceStream("Yutai.Plugins.Editor.Resources.Cursor.ExtendLine.cur"));
         }
 
-       
+
         public override void OnClick()
         {
             _context.SetCurrentTool(this);
         }
 
-        
+
         public override void OnKeyDown(int int_1, int int_2)
         {
             if (int_1 == 27)
@@ -116,7 +121,7 @@ namespace Yutai.Plugins.Editor.Commands
 
         public override void OnMouseDown(int int_1, int int_2, int int_3, int int_4)
         {
-            IActiveView focusMap = (IActiveView)_context.FocusMap;
+            IActiveView focusMap = (IActiveView) _context.FocusMap;
             IPoint mapPoint = focusMap.ScreenDisplay.DisplayTransformation.ToMapPoint(int_3, int_4);
             TryExtend(mapPoint);
         }
@@ -131,7 +136,8 @@ namespace Yutai.Plugins.Editor.Commands
                 this.double_1 = point.X;
                 //this.iapplication_0.ShowCommandString("找到" + _context.FocusMap.SelectionCount.ToString() + "个对象", CommandTipsType.CTTLog);
                 double num = Common.ConvertPixelsToMapUnits(_context.FocusMap as IActiveView, 6.0);
-                System.Collections.Generic.IList<IFeature> intersectsLineFeatures = Yutai.ArcGIS.Common.Editor.Editor.GetIntersectsLineFeatures(_context.FocusMap, ienvelope_);
+                System.Collections.Generic.IList<IFeature> intersectsLineFeatures =
+                    Yutai.ArcGIS.Common.Editor.Editor.GetIntersectsLineFeatures(_context.FocusMap, ienvelope_);
                 IWorkspaceEdit workspaceEdit = null;
                 if (intersectsLineFeatures.Count > 0)
                 {
@@ -139,7 +145,8 @@ namespace Yutai.Plugins.Editor.Commands
                 }
                 for (int i = 0; i < intersectsLineFeatures.Count; i++)
                 {
-                    IWorkspaceEdit workspaceEdit2 = (intersectsLineFeatures[i].Class as IDataset).Workspace as IWorkspaceEdit;
+                    IWorkspaceEdit workspaceEdit2 =
+                        (intersectsLineFeatures[i].Class as IDataset).Workspace as IWorkspaceEdit;
                     if (workspaceEdit2.IsBeingEdited())
                     {
                         if (workspaceEdit == null)
@@ -148,13 +155,15 @@ namespace Yutai.Plugins.Editor.Commands
                             workspaceEdit.StartEditOperation();
                         }
                         IPolyline polyline;
-                        if (isAddNode==false)
+                        if (isAddNode == false)
                         {
-                            polyline = Yutai.ArcGIS.Common.Editor.Editor.ExtendPolyLine(_context.FocusMap, intersectsLineFeatures[i].Shape);
+                            polyline = Yutai.ArcGIS.Common.Editor.Editor.ExtendPolyLine(_context.FocusMap,
+                                intersectsLineFeatures[i].Shape);
                         }
                         else
                         {
-                            polyline = Yutai.ArcGIS.Common.Editor.Editor.ExtendPolyLineEx(_context.FocusMap, intersectsLineFeatures[i].Shape);
+                            polyline = Yutai.ArcGIS.Common.Editor.Editor.ExtendPolyLineEx(_context.FocusMap,
+                                intersectsLineFeatures[i].Shape);
                         }
                         if (polyline != null && !polyline.IsEmpty && (polyline as IPointCollection).PointCount > 1)
                         {
@@ -169,26 +178,27 @@ namespace Yutai.Plugins.Editor.Commands
                     workspaceEdit.StopEditOperation();
                     _context.ActiveView.Refresh();
                 }
-               
             }
             else
             {
                 double num = Common.ConvertPixelsToMapUnits(_context.FocusMap as IActiveView, 6.0);
                 IFeatureLayer layer;
-                IFeature hitLineFeature = Yutai.ArcGIS.Common.Editor.Editor.GetHitLineFeature(_context.FocusMap, point, num, out layer);
+                IFeature hitLineFeature = Yutai.ArcGIS.Common.Editor.Editor.GetHitLineFeature(_context.FocusMap, point,
+                    num, out layer);
                 if (hitLineFeature != null)
                 {
-                  
                     isAddNode = MessageService.Current.Ask("在相交处产生交点吗?");
-                   
+
                     IPolyline polyline;
-                    if (isAddNode==false)
+                    if (isAddNode == false)
                     {
-                        polyline = Yutai.ArcGIS.Common.Editor.Editor.ExtendPolyLine(_context.FocusMap, hitLineFeature.Shape);
+                        polyline = Yutai.ArcGIS.Common.Editor.Editor.ExtendPolyLine(_context.FocusMap,
+                            hitLineFeature.Shape);
                     }
                     else
                     {
-                        polyline = Yutai.ArcGIS.Common.Editor.Editor.ExtendPolyLineEx(_context.FocusMap, hitLineFeature.Shape);
+                        polyline = Yutai.ArcGIS.Common.Editor.Editor.ExtendPolyLineEx(_context.FocusMap,
+                            hitLineFeature.Shape);
                     }
                     if (polyline != null && !polyline.IsEmpty && (polyline as IPointCollection).PointCount > 1)
                     {
@@ -200,7 +210,6 @@ namespace Yutai.Plugins.Editor.Commands
                         workspaceEdit.StopEditOperation();
                         _context.ActiveView.Refresh();
                     }
-                   
                 }
                 else
                 {
@@ -208,21 +217,18 @@ namespace Yutai.Plugins.Editor.Commands
                     this.idisplayFeedback_0.Display = (_context.FocusMap as IActiveView).ScreenDisplay;
                     (this.idisplayFeedback_0 as INewEnvelopeFeedback).Start(point);
                     this.double_0 = point.X;
-                   
                 }
             }
         }
+
         public override void OnMouseMove(int int_1, int int_2, int int_3, int int_4)
         {
-            IActiveView focusMap = (IActiveView)_context.FocusMap;
+            IActiveView focusMap = (IActiveView) _context.FocusMap;
             IPoint mapPoint = focusMap.ScreenDisplay.DisplayTransformation.ToMapPoint(int_3, int_4);
             if (this.idisplayFeedback_0 != null)
             {
                 (this.idisplayFeedback_0 as INewEnvelopeFeedback).MoveTo(mapPoint);
             }
         }
-
-       
-
     }
 }

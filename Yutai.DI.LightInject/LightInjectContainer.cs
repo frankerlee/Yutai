@@ -31,7 +31,7 @@ namespace Yutai.DI.LightInject
         }
 
         public IApplicationContainer RegisterInstance<TService>(object instance)
-                where TService : class
+            where TService : class
         {
             _container.RegisterInstance<TService>(instance as TService);
             return this;
@@ -87,7 +87,8 @@ namespace Yutai.DI.LightInject
             return this;
         }
 
-        public bool Run<TPresenter, TArgs>(TArgs arg, IWin32Window parent = null) where TPresenter : class, IPresenter<TArgs>
+        public bool Run<TPresenter, TArgs>(TArgs arg, IWin32Window parent = null)
+            where TPresenter : class, IPresenter<TArgs>
         {
             var presenter = GetInstance<TPresenter>();
             return presenter.Run(arg, parent);

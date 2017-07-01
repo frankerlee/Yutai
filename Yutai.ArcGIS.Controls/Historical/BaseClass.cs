@@ -24,7 +24,8 @@ namespace Yutai.ArcGIS.Controls.Historical
             }
         }
 
-        public static bool RunTool(ESRI.ArcGIS.Geoprocessor.Geoprocessor geoprocessor, IGPProcess process, ITrackCancel TC)
+        public static bool RunTool(ESRI.ArcGIS.Geoprocessor.Geoprocessor geoprocessor, IGPProcess process,
+            ITrackCancel TC)
         {
             geoprocessor.OverwriteOutput = true;
             geoprocessor.ClearMessages();
@@ -43,4 +44,3 @@ namespace Yutai.ArcGIS.Controls.Historical
         }
     }
 }
-

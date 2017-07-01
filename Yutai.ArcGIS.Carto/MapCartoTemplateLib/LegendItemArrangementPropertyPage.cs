@@ -31,11 +31,13 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 this.bool_1 = false;
                 if (this.ilegendItem_0 is IVerticalLegendItem)
                 {
-                    (this.ilegendItem_0 as IVerticalLegendItem).Arrangement = (esriLegendItemArrangement) this.rdoVLegendItemArrangement.SelectedIndex;
+                    (this.ilegendItem_0 as IVerticalLegendItem).Arrangement =
+                        (esriLegendItemArrangement) this.rdoVLegendItemArrangement.SelectedIndex;
                 }
                 else if (this.ilegendItem_0 is IHorizontalLegendItem)
                 {
-                    (this.ilegendItem_0 as IHorizontalLegendItem).Arrangement = (esriLegendItemArrangement) this.rdoHLegendItemArrangement.SelectedIndex;
+                    (this.ilegendItem_0 as IHorizontalLegendItem).Arrangement =
+                        (esriLegendItemArrangement) this.rdoHLegendItemArrangement.SelectedIndex;
                 }
             }
         }
@@ -44,7 +46,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         {
         }
 
- private void LegendItemArrangementPropertyPage_Load(object sender, EventArgs e)
+        private void LegendItemArrangementPropertyPage_Load(object sender, EventArgs e)
         {
             this.method_1();
             this.bool_0 = true;
@@ -64,12 +66,14 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             if (this.ilegendItem_0 is IVerticalLegendItem)
             {
                 this.panel2.Visible = true;
-                this.rdoVLegendItemArrangement.SelectedIndex = (int) (this.ilegendItem_0 as IVerticalLegendItem).Arrangement;
+                this.rdoVLegendItemArrangement.SelectedIndex =
+                    (int) (this.ilegendItem_0 as IVerticalLegendItem).Arrangement;
             }
             else if (this.ilegendItem_0 is IHorizontalLegendItem)
             {
                 this.panel1.Visible = true;
-                this.rdoHLegendItemArrangement.SelectedIndex = (int) (this.ilegendItem_0 as IHorizontalLegendItem).Arrangement;
+                this.rdoHLegendItemArrangement.SelectedIndex =
+                    (int) (this.ilegendItem_0 as IHorizontalLegendItem).Arrangement;
             }
         }
 
@@ -103,39 +107,23 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

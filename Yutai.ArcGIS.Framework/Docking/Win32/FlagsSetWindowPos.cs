@@ -22,4 +22,3 @@ namespace Yutai.ArcGIS.Framework.Docking.Win32
         SWP_SHOWWINDOW = 64
     }
 }
-

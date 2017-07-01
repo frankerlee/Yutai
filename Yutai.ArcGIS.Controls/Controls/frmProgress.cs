@@ -15,12 +15,12 @@ namespace Yutai.ArcGIS.Controls.Controls
             this.InitializeComponent();
         }
 
- private void frmProgress_Load(object sender, EventArgs e)
+        private void frmProgress_Load(object sender, EventArgs e)
         {
             Application.DoEvents();
         }
 
- private void timer1_Tick(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
         {
             if (this.pos == this.xpProgressBar1.PositionMax)
             {
@@ -33,11 +33,7 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         public string Messge
         {
-            set
-            {
-                this.xpProgressBar1.Text = value;
-            }
+            set { this.xpProgressBar1.Text = value; }
         }
     }
 }
-

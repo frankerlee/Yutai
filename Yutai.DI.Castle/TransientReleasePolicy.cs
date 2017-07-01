@@ -11,7 +11,6 @@ namespace Yutai.DI.Castle
         public TransientReleasePolicy(IKernel kernel)
             : base(kernel)
         {
-
         }
 
         public override void Track(object instance, Burden burden)

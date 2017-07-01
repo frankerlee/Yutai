@@ -30,9 +30,9 @@ namespace Yutai.Plugins.Identifer.Views
 
             view.ModeChanged += OnIdentifierModeChanged;
             view.ItemSelected += OnItemSelected;
-            _plugin.MapIdentifying+= PluginOnMapIdentifying; 
-            _plugin.UnMapIdentify+= PluginOnUnMapIdentify;
-            _plugin.StartMapIdentify+= PluginOnStartMapIdentify;
+            _plugin.MapIdentifying += PluginOnMapIdentifying;
+            _plugin.UnMapIdentify += PluginOnUnMapIdentify;
+            _plugin.StartMapIdentify += PluginOnStartMapIdentify;
         }
 
         private void PluginOnStartMapIdentify(object sender, EventArgs eventArgs)
@@ -51,14 +51,12 @@ namespace Yutai.Plugins.Identifer.Views
             View.Identify(mapIdentifyArgs.Envelope);
         }
 
-        
 
         public Control GetInternalObject()
         {
             return View as Control;
         }
 
-        
 
         public override void RunCommand(IdentifierCommand command)
         {
@@ -69,11 +67,11 @@ namespace Yutai.Plugins.Identifer.Views
                     break;
             }
         }
-       
+
 
         private void ActivatePanel()
         {
-            var panel = _context.DockPanels.GetDockPanel(((IDockPanelView)View).DockName);
+            var panel = _context.DockPanels.GetDockPanel(((IDockPanelView) View).DockName);
             if (panel != null)
             {
                 panel.Visible = true;
@@ -89,9 +87,6 @@ namespace Yutai.Plugins.Identifer.Views
 
         private void OnItemSelected()
         {
-           
         }
-
-       
     }
 }

@@ -96,7 +96,8 @@ namespace Yutai.ArcGIS.Common.Priviliges
             System.Collections.Generic.List<MenuInfo> list = new System.Collections.Generic.List<MenuInfo>();
             try
             {
-                DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_1);
+                DataAccessLayerBaseClass dataAccessLayer =
+                    DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_1);
                 dataAccessLayer.Open();
                 DataTable dataTable = dataAccessLayer.ExecuteDataTable("select * from " + this.string_0);
                 for (int i = 0; i < dataTable.Rows.Count; i++)
@@ -106,17 +107,31 @@ namespace Yutai.ArcGIS.Common.Priviliges
                     menuInfo.MenuID = System.Convert.ToString(dataRow["MenuID"]);
                     menuInfo.NAME = System.Convert.ToString(dataRow["NAME"]);
                     object arg_8E_0 = dataRow["ORDERBY"];
-                    menuInfo.ORDERBY = new int?((!(dataRow["ORDERBY"] is System.DBNull)) ? System.Convert.ToInt32(dataRow["ORDERBY"]) : -1);
+                    menuInfo.ORDERBY =
+                        new int?((!(dataRow["ORDERBY"] is System.DBNull))
+                            ? System.Convert.ToInt32(dataRow["ORDERBY"])
+                            : -1);
                     menuInfo.PROGID = System.Convert.ToString(dataRow["PROGID"]);
                     menuInfo.SHORTCUT = System.Convert.ToString(dataRow["SHORTCUT"]);
-                    menuInfo.SUBTYPE = new int?((!(dataRow["SUBTYPE"] is System.DBNull)) ? System.Convert.ToInt32(dataRow["SUBTYPE"]) : -1);
-                    menuInfo.VISIBLE = new bool?(dataRow["VISIBLE"] is System.DBNull || System.Convert.ToInt32(dataRow["VISIBLE"]) == 1);
-                    menuInfo.ItemCol = new int?((!(dataRow["ItemCol"] is System.DBNull)) ? System.Convert.ToInt32(dataRow["ItemCol"]) : -1);
-                    menuInfo.ISPOPMENUITEM = new bool?(!(dataRow["ISPOPMENUITEM"] is System.DBNull) && System.Convert.ToInt32(dataRow["ISPOPMENUITEM"]) == 1);
+                    menuInfo.SUBTYPE =
+                        new int?((!(dataRow["SUBTYPE"] is System.DBNull))
+                            ? System.Convert.ToInt32(dataRow["SUBTYPE"])
+                            : -1);
+                    menuInfo.VISIBLE =
+                        new bool?(dataRow["VISIBLE"] is System.DBNull || System.Convert.ToInt32(dataRow["VISIBLE"]) == 1);
+                    menuInfo.ItemCol =
+                        new int?((!(dataRow["ItemCol"] is System.DBNull))
+                            ? System.Convert.ToInt32(dataRow["ItemCol"])
+                            : -1);
+                    menuInfo.ISPOPMENUITEM =
+                        new bool?(!(dataRow["ISPOPMENUITEM"] is System.DBNull) &&
+                                  System.Convert.ToInt32(dataRow["ISPOPMENUITEM"]) == 1);
                     menuInfo.COMPONENTDLLNAME = System.Convert.ToString(dataRow["COMPONENTDLLNAME"]);
                     menuInfo.CLASSNAME = System.Convert.ToString(dataRow["CLASSNAME"]);
                     menuInfo.PARENTIDS = System.Convert.ToString(dataRow["PARENTIDS"]);
-                    menuInfo.BEGINGROUP = new bool?(!(dataRow["BEGINGROUP"] is System.DBNull) && System.Convert.ToInt32(dataRow["BEGINGROUP"]) == 1);
+                    menuInfo.BEGINGROUP =
+                        new bool?(!(dataRow["BEGINGROUP"] is System.DBNull) &&
+                                  System.Convert.ToInt32(dataRow["BEGINGROUP"]) == 1);
                     menuInfo.CAPTION = System.Convert.ToString(dataRow["CAPTION"]);
                     list.Add(menuInfo);
                 }
@@ -133,7 +148,8 @@ namespace Yutai.ArcGIS.Common.Priviliges
             MenuInfo menuInfo = null;
             try
             {
-                DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_1);
+                DataAccessLayerBaseClass dataAccessLayer =
+                    DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_1);
                 dataAccessLayer.Open();
                 DataTable dataTable = dataAccessLayer.ExecuteDataTable(string.Concat(new string[]
                 {
@@ -152,16 +168,30 @@ namespace Yutai.ArcGIS.Common.Priviliges
                     menuInfo.MenuID = System.Convert.ToString(dataRow["MenuID"]);
                     menuInfo.NAME = System.Convert.ToString(dataRow["NAME"]);
                     object arg_C4_0 = dataRow["ORDERBY"];
-                    menuInfo.ORDERBY = new int?((!(dataRow["ORDERBY"] is System.DBNull)) ? System.Convert.ToInt32(dataRow["ORDERBY"]) : -1);
+                    menuInfo.ORDERBY =
+                        new int?((!(dataRow["ORDERBY"] is System.DBNull))
+                            ? System.Convert.ToInt32(dataRow["ORDERBY"])
+                            : -1);
                     menuInfo.PROGID = System.Convert.ToString(dataRow["PROGID"]);
                     menuInfo.SHORTCUT = System.Convert.ToString(dataRow["SHORTCUT"]);
-                    menuInfo.SUBTYPE = new int?((!(dataRow["SUBTYPE"] is System.DBNull)) ? System.Convert.ToInt32(dataRow["SUBTYPE"]) : -1);
-                    menuInfo.VISIBLE = new bool?(dataRow["VISIBLE"] is System.DBNull || System.Convert.ToInt32(dataRow["VISIBLE"]) == 1);
-                    menuInfo.ItemCol = new int?((!(dataRow["ItemCol"] is System.DBNull)) ? System.Convert.ToInt32(dataRow["ItemCol"]) : -1);
-                    menuInfo.ISPOPMENUITEM = new bool?(!(dataRow["ISPOPMENUITEM"] is System.DBNull) && System.Convert.ToInt32(dataRow["ISPOPMENUITEM"]) == 1);
+                    menuInfo.SUBTYPE =
+                        new int?((!(dataRow["SUBTYPE"] is System.DBNull))
+                            ? System.Convert.ToInt32(dataRow["SUBTYPE"])
+                            : -1);
+                    menuInfo.VISIBLE =
+                        new bool?(dataRow["VISIBLE"] is System.DBNull || System.Convert.ToInt32(dataRow["VISIBLE"]) == 1);
+                    menuInfo.ItemCol =
+                        new int?((!(dataRow["ItemCol"] is System.DBNull))
+                            ? System.Convert.ToInt32(dataRow["ItemCol"])
+                            : -1);
+                    menuInfo.ISPOPMENUITEM =
+                        new bool?(!(dataRow["ISPOPMENUITEM"] is System.DBNull) &&
+                                  System.Convert.ToInt32(dataRow["ISPOPMENUITEM"]) == 1);
                     menuInfo.COMPONENTDLLNAME = System.Convert.ToString(dataRow["COMPONENTDLLNAME"]);
                     menuInfo.CLASSNAME = System.Convert.ToString(dataRow["CLASSNAME"]);
-                    menuInfo.BEGINGROUP = new bool?(!(dataRow["BEGINGROUP"] is System.DBNull) && System.Convert.ToInt32(dataRow["BEGINGROUP"]) == 1);
+                    menuInfo.BEGINGROUP =
+                        new bool?(!(dataRow["BEGINGROUP"] is System.DBNull) &&
+                                  System.Convert.ToInt32(dataRow["BEGINGROUP"]) == 1);
                     menuInfo.CAPTION = System.Convert.ToString(dataRow["CAPTION"]);
                     menuInfo.PARENTIDS = System.Convert.ToString(dataRow["PARENTIDS"]);
                 }
@@ -178,7 +208,8 @@ namespace Yutai.ArcGIS.Common.Priviliges
             MenuInfo menuInfo = null;
             try
             {
-                DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_1);
+                DataAccessLayerBaseClass dataAccessLayer =
+                    DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_1);
                 dataAccessLayer.Open();
                 DataTable dataTable = dataAccessLayer.ExecuteDataTable(string.Concat(new string[]
                 {
@@ -195,16 +226,30 @@ namespace Yutai.ArcGIS.Common.Priviliges
                     menuInfo.MenuID = System.Convert.ToString(dataRow["MenuID"]);
                     menuInfo.NAME = System.Convert.ToString(dataRow["NAME"]);
                     object arg_B8_0 = dataRow["ORDERBY"];
-                    menuInfo.ORDERBY = new int?((!(dataRow["ORDERBY"] is System.DBNull)) ? System.Convert.ToInt32(dataRow["ORDERBY"]) : -1);
+                    menuInfo.ORDERBY =
+                        new int?((!(dataRow["ORDERBY"] is System.DBNull))
+                            ? System.Convert.ToInt32(dataRow["ORDERBY"])
+                            : -1);
                     menuInfo.PROGID = System.Convert.ToString(dataRow["PROGID"]);
                     menuInfo.SHORTCUT = System.Convert.ToString(dataRow["SHORTCUT"]);
-                    menuInfo.SUBTYPE = new int?((!(dataRow["SUBTYPE"] is System.DBNull)) ? System.Convert.ToInt32(dataRow["SUBTYPE"]) : -1);
-                    menuInfo.VISIBLE = new bool?(dataRow["VISIBLE"] is System.DBNull || System.Convert.ToInt32(dataRow["VISIBLE"]) == 1);
-                    menuInfo.ItemCol = new int?((!(dataRow["ItemCol"] is System.DBNull)) ? System.Convert.ToInt32(dataRow["ItemCol"]) : -1);
-                    menuInfo.ISPOPMENUITEM = new bool?(!(dataRow["ISPOPMENUITEM"] is System.DBNull) && System.Convert.ToInt32(dataRow["ISPOPMENUITEM"]) == 1);
+                    menuInfo.SUBTYPE =
+                        new int?((!(dataRow["SUBTYPE"] is System.DBNull))
+                            ? System.Convert.ToInt32(dataRow["SUBTYPE"])
+                            : -1);
+                    menuInfo.VISIBLE =
+                        new bool?(dataRow["VISIBLE"] is System.DBNull || System.Convert.ToInt32(dataRow["VISIBLE"]) == 1);
+                    menuInfo.ItemCol =
+                        new int?((!(dataRow["ItemCol"] is System.DBNull))
+                            ? System.Convert.ToInt32(dataRow["ItemCol"])
+                            : -1);
+                    menuInfo.ISPOPMENUITEM =
+                        new bool?(!(dataRow["ISPOPMENUITEM"] is System.DBNull) &&
+                                  System.Convert.ToInt32(dataRow["ISPOPMENUITEM"]) == 1);
                     menuInfo.COMPONENTDLLNAME = System.Convert.ToString(dataRow["COMPONENTDLLNAME"]);
                     menuInfo.CLASSNAME = System.Convert.ToString(dataRow["CLASSNAME"]);
-                    menuInfo.BEGINGROUP = new bool?(!(dataRow["BEGINGROUP"] is System.DBNull) && System.Convert.ToInt32(dataRow["BEGINGROUP"]) == 1);
+                    menuInfo.BEGINGROUP =
+                        new bool?(!(dataRow["BEGINGROUP"] is System.DBNull) &&
+                                  System.Convert.ToInt32(dataRow["BEGINGROUP"]) == 1);
                     menuInfo.CAPTION = System.Convert.ToString(dataRow["CAPTION"]);
                     menuInfo.PARENTIDS = System.Convert.ToString(dataRow["PARENTIDS"]);
                 }
@@ -220,7 +265,8 @@ namespace Yutai.ArcGIS.Common.Priviliges
         {
             try
             {
-                DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_1);
+                DataAccessLayerBaseClass dataAccessLayer =
+                    DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_1);
                 dataAccessLayer.Open();
                 dataAccessLayer.ExecuteNonQuery("delete from " + this.string_0, new object[0]);
                 dataAccessLayer.Close();
@@ -239,24 +285,30 @@ namespace Yutai.ArcGIS.Common.Priviliges
             }
             else
             {
-                string string_ = string.Format("insert into {0}([NAME],PARENTIDS,ORDERBY,[PROGID],[SHORTCUT],SUBTYPE,VISIBLE,ItemCol,ISPOPMENUITEM,COMPONENTDLLNAME,CLASSNAME,BEGINGROUP,CAPTION) values({1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13})", new object[]
-                {
-                    this.string_0,
-                    string.IsNullOrEmpty(menuInfo_0.NAME) ? "NULL" : ("'" + menuInfo_0.NAME + "'"),
-                    string.IsNullOrEmpty(menuInfo_0.PARENTIDS) ? "NULL" : ("'" + menuInfo_0.PARENTIDS + "'"),
-                    menuInfo_0.ORDERBY.HasValue ? menuInfo_0.ORDERBY.Value.ToString() : "NULL",
-                    string.IsNullOrEmpty(menuInfo_0.PROGID) ? "NULL" : ("'" + menuInfo_0.PROGID + "'"),
-                    string.IsNullOrEmpty(menuInfo_0.SHORTCUT) ? "NULL" : ("'" + menuInfo_0.SHORTCUT + "'"),
-                    menuInfo_0.SUBTYPE.HasValue ? menuInfo_0.SUBTYPE.Value.ToString() : "NULL",
-                    menuInfo_0.VISIBLE.HasValue ? (menuInfo_0.VISIBLE.Value ? "1" : "0") : "NULL",
-                    menuInfo_0.ItemCol.HasValue ? menuInfo_0.ItemCol.Value.ToString() : "NULL",
-                    menuInfo_0.ISPOPMENUITEM.HasValue ? (menuInfo_0.ISPOPMENUITEM.Value ? "1" : "0") : "NULL",
-                    string.IsNullOrEmpty(menuInfo_0.COMPONENTDLLNAME) ? "NULL" : ("'" + menuInfo_0.COMPONENTDLLNAME + "'"),
-                    string.IsNullOrEmpty(menuInfo_0.CLASSNAME) ? "NULL" : ("'" + menuInfo_0.CLASSNAME + "'"),
-                    menuInfo_0.BEGINGROUP.HasValue ? (menuInfo_0.BEGINGROUP.Value ? "1" : "0") : "NULL",
-                    string.IsNullOrEmpty(menuInfo_0.CAPTION) ? "NULL" : ("'" + menuInfo_0.CAPTION + "'")
-                });
-                DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_1);
+                string string_ =
+                    string.Format(
+                        "insert into {0}([NAME],PARENTIDS,ORDERBY,[PROGID],[SHORTCUT],SUBTYPE,VISIBLE,ItemCol,ISPOPMENUITEM,COMPONENTDLLNAME,CLASSNAME,BEGINGROUP,CAPTION) values({1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13})",
+                        new object[]
+                        {
+                            this.string_0,
+                            string.IsNullOrEmpty(menuInfo_0.NAME) ? "NULL" : ("'" + menuInfo_0.NAME + "'"),
+                            string.IsNullOrEmpty(menuInfo_0.PARENTIDS) ? "NULL" : ("'" + menuInfo_0.PARENTIDS + "'"),
+                            menuInfo_0.ORDERBY.HasValue ? menuInfo_0.ORDERBY.Value.ToString() : "NULL",
+                            string.IsNullOrEmpty(menuInfo_0.PROGID) ? "NULL" : ("'" + menuInfo_0.PROGID + "'"),
+                            string.IsNullOrEmpty(menuInfo_0.SHORTCUT) ? "NULL" : ("'" + menuInfo_0.SHORTCUT + "'"),
+                            menuInfo_0.SUBTYPE.HasValue ? menuInfo_0.SUBTYPE.Value.ToString() : "NULL",
+                            menuInfo_0.VISIBLE.HasValue ? (menuInfo_0.VISIBLE.Value ? "1" : "0") : "NULL",
+                            menuInfo_0.ItemCol.HasValue ? menuInfo_0.ItemCol.Value.ToString() : "NULL",
+                            menuInfo_0.ISPOPMENUITEM.HasValue ? (menuInfo_0.ISPOPMENUITEM.Value ? "1" : "0") : "NULL",
+                            string.IsNullOrEmpty(menuInfo_0.COMPONENTDLLNAME)
+                                ? "NULL"
+                                : ("'" + menuInfo_0.COMPONENTDLLNAME + "'"),
+                            string.IsNullOrEmpty(menuInfo_0.CLASSNAME) ? "NULL" : ("'" + menuInfo_0.CLASSNAME + "'"),
+                            menuInfo_0.BEGINGROUP.HasValue ? (menuInfo_0.BEGINGROUP.Value ? "1" : "0") : "NULL",
+                            string.IsNullOrEmpty(menuInfo_0.CAPTION) ? "NULL" : ("'" + menuInfo_0.CAPTION + "'")
+                        });
+                DataAccessLayerBaseClass dataAccessLayer =
+                    DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_1);
                 dataAccessLayer.Open();
                 dataAccessLayer.ExecuteNonQuery(CommandType.Text, string_);
                 dataAccessLayer.Close();
@@ -267,8 +319,11 @@ namespace Yutai.ArcGIS.Common.Priviliges
 
         public void Update(MenuInfo menuInfo_0)
         {
-            string string_ = string.Format("update {0} set PARENTIDS='{1}' where MenuID={2}", this.string_0, string.IsNullOrEmpty(menuInfo_0.PARENTIDS) ? "NULL" : ("'" + menuInfo_0.PARENTIDS + "'"), menuInfo_0.MenuID);
-            DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_1);
+            string string_ = string.Format("update {0} set PARENTIDS='{1}' where MenuID={2}", this.string_0,
+                string.IsNullOrEmpty(menuInfo_0.PARENTIDS) ? "NULL" : ("'" + menuInfo_0.PARENTIDS + "'"),
+                menuInfo_0.MenuID);
+            DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(
+                this.dataProviderType_0, this.string_1);
             dataAccessLayer.Open();
             dataAccessLayer.ExecuteNonQuery(CommandType.Text, string_);
             dataAccessLayer.Close();
@@ -279,13 +334,15 @@ namespace Yutai.ArcGIS.Common.Priviliges
             string string_;
             if (string.IsNullOrEmpty(menuInfo_0.PROGID))
             {
-                string_ = string.Format("select * from {0} where  COMPONENTDLLNAME='{1}' and CLASSNAME='{2}'", this.string_0, menuInfo_0.COMPONENTDLLNAME, menuInfo_0.CLASSNAME);
+                string_ = string.Format("select * from {0} where  COMPONENTDLLNAME='{1}' and CLASSNAME='{2}'",
+                    this.string_0, menuInfo_0.COMPONENTDLLNAME, menuInfo_0.CLASSNAME);
             }
             else
             {
                 string_ = string.Format("select * from {0} where  PROGID='{1}' ", this.string_0, menuInfo_0.PROGID);
             }
-            DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_1);
+            DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(
+                this.dataProviderType_0, this.string_1);
             dataAccessLayer.Open();
             DataTable dataTable = dataAccessLayer.ExecuteDataTable(string_);
             dataAccessLayer.Close();
@@ -294,9 +351,11 @@ namespace Yutai.ArcGIS.Common.Priviliges
 
         public MenuInfo Load(string string_2)
         {
-            DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_1);
+            DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(
+                this.dataProviderType_0, this.string_1);
             dataAccessLayer.Open();
-            DataTable dataTable = dataAccessLayer.ExecuteDataTable("select * from " + this.string_0 + " where MenuID=" + string_2);
+            DataTable dataTable =
+                dataAccessLayer.ExecuteDataTable("select * from " + this.string_0 + " where MenuID=" + string_2);
             MenuInfo menuInfo = null;
             if (dataTable.Rows.Count > 0)
             {
@@ -305,16 +364,24 @@ namespace Yutai.ArcGIS.Common.Priviliges
                 menuInfo.MenuID = System.Convert.ToString(dataRow["MenuID"]);
                 object arg_82_0 = dataRow["NAME"];
                 menuInfo.NAME = System.Convert.ToString(dataRow["NAME"]);
-                menuInfo.ORDERBY = new int?((!(dataRow["ORDERBY"] is System.DBNull)) ? System.Convert.ToInt32(dataRow["ORDERBY"]) : -1);
+                menuInfo.ORDERBY =
+                    new int?((!(dataRow["ORDERBY"] is System.DBNull)) ? System.Convert.ToInt32(dataRow["ORDERBY"]) : -1);
                 menuInfo.PROGID = System.Convert.ToString(dataRow["PROGID"]);
                 menuInfo.SHORTCUT = System.Convert.ToString(dataRow["SHORTCUT"]);
-                menuInfo.SUBTYPE = new int?((!(dataRow["SUBTYPE"] is System.DBNull)) ? System.Convert.ToInt32(dataRow["SUBTYPE"]) : -1);
-                menuInfo.VISIBLE = new bool?(dataRow["VISIBLE"] is System.DBNull || System.Convert.ToInt32(dataRow["VISIBLE"]) == 1);
-                menuInfo.ItemCol = new int?((!(dataRow["ItemCol"] is System.DBNull)) ? System.Convert.ToInt32(dataRow["ItemCol"]) : -1);
-                menuInfo.ISPOPMENUITEM = new bool?(!(dataRow["ISPOPMENUITEM"] is System.DBNull) && System.Convert.ToInt32(dataRow["ISPOPMENUITEM"]) == 1);
+                menuInfo.SUBTYPE =
+                    new int?((!(dataRow["SUBTYPE"] is System.DBNull)) ? System.Convert.ToInt32(dataRow["SUBTYPE"]) : -1);
+                menuInfo.VISIBLE =
+                    new bool?(dataRow["VISIBLE"] is System.DBNull || System.Convert.ToInt32(dataRow["VISIBLE"]) == 1);
+                menuInfo.ItemCol =
+                    new int?((!(dataRow["ItemCol"] is System.DBNull)) ? System.Convert.ToInt32(dataRow["ItemCol"]) : -1);
+                menuInfo.ISPOPMENUITEM =
+                    new bool?(!(dataRow["ISPOPMENUITEM"] is System.DBNull) &&
+                              System.Convert.ToInt32(dataRow["ISPOPMENUITEM"]) == 1);
                 menuInfo.COMPONENTDLLNAME = System.Convert.ToString(dataRow["COMPONENTDLLNAME"]);
                 menuInfo.CLASSNAME = System.Convert.ToString(dataRow["CLASSNAME"]);
-                menuInfo.BEGINGROUP = new bool?(!(dataRow["BEGINGROUP"] is System.DBNull) && System.Convert.ToInt32(dataRow["BEGINGROUP"]) == 1);
+                menuInfo.BEGINGROUP =
+                    new bool?(!(dataRow["BEGINGROUP"] is System.DBNull) &&
+                              System.Convert.ToInt32(dataRow["BEGINGROUP"]) == 1);
                 menuInfo.CAPTION = System.Convert.ToString(dataRow["CAPTION"]);
                 menuInfo.PARENTIDS = System.Convert.ToString(dataRow["PARENTIDS"]);
             }
@@ -324,9 +391,11 @@ namespace Yutai.ArcGIS.Common.Priviliges
 
         public MenuInfo GetByName(string string_2)
         {
-            DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(this.dataProviderType_0, this.string_1);
+            DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(
+                this.dataProviderType_0, this.string_1);
             dataAccessLayer.Open();
-            DataTable dataTable = dataAccessLayer.ExecuteDataTable("select * from " + this.string_0 + " where NAME=" + string_2);
+            DataTable dataTable =
+                dataAccessLayer.ExecuteDataTable("select * from " + this.string_0 + " where NAME=" + string_2);
             MenuInfo menuInfo = null;
             if (dataTable.Rows.Count > 0)
             {
@@ -335,16 +404,24 @@ namespace Yutai.ArcGIS.Common.Priviliges
                 menuInfo.MenuID = System.Convert.ToString(dataRow["MenuID"]);
                 object arg_82_0 = dataRow["NAME"];
                 menuInfo.NAME = System.Convert.ToString(dataRow["NAME"]);
-                menuInfo.ORDERBY = new int?((!(dataRow["ORDERBY"] is System.DBNull)) ? System.Convert.ToInt32(dataRow["ORDERBY"]) : -1);
+                menuInfo.ORDERBY =
+                    new int?((!(dataRow["ORDERBY"] is System.DBNull)) ? System.Convert.ToInt32(dataRow["ORDERBY"]) : -1);
                 menuInfo.PROGID = System.Convert.ToString(dataRow["PROGID"]);
                 menuInfo.SHORTCUT = System.Convert.ToString(dataRow["SHORTCUT"]);
-                menuInfo.SUBTYPE = new int?((!(dataRow["SUBTYPE"] is System.DBNull)) ? System.Convert.ToInt32(dataRow["SUBTYPE"]) : -1);
-                menuInfo.VISIBLE = new bool?(dataRow["VISIBLE"] is System.DBNull || System.Convert.ToInt32(dataRow["VISIBLE"]) == 1);
-                menuInfo.ItemCol = new int?((!(dataRow["ItemCol"] is System.DBNull)) ? System.Convert.ToInt32(dataRow["ItemCol"]) : -1);
-                menuInfo.ISPOPMENUITEM = new bool?(!(dataRow["ISPOPMENUITEM"] is System.DBNull) && System.Convert.ToInt32(dataRow["ISPOPMENUITEM"]) == 1);
+                menuInfo.SUBTYPE =
+                    new int?((!(dataRow["SUBTYPE"] is System.DBNull)) ? System.Convert.ToInt32(dataRow["SUBTYPE"]) : -1);
+                menuInfo.VISIBLE =
+                    new bool?(dataRow["VISIBLE"] is System.DBNull || System.Convert.ToInt32(dataRow["VISIBLE"]) == 1);
+                menuInfo.ItemCol =
+                    new int?((!(dataRow["ItemCol"] is System.DBNull)) ? System.Convert.ToInt32(dataRow["ItemCol"]) : -1);
+                menuInfo.ISPOPMENUITEM =
+                    new bool?(!(dataRow["ISPOPMENUITEM"] is System.DBNull) &&
+                              System.Convert.ToInt32(dataRow["ISPOPMENUITEM"]) == 1);
                 menuInfo.COMPONENTDLLNAME = System.Convert.ToString(dataRow["COMPONENTDLLNAME"]);
                 menuInfo.CLASSNAME = System.Convert.ToString(dataRow["CLASSNAME"]);
-                menuInfo.BEGINGROUP = new bool?(!(dataRow["BEGINGROUP"] is System.DBNull) && System.Convert.ToInt32(dataRow["BEGINGROUP"]) == 1);
+                menuInfo.BEGINGROUP =
+                    new bool?(!(dataRow["BEGINGROUP"] is System.DBNull) &&
+                              System.Convert.ToInt32(dataRow["BEGINGROUP"]) == 1);
                 menuInfo.CAPTION = System.Convert.ToString(dataRow["CAPTION"]);
                 menuInfo.PARENTIDS = System.Convert.ToString(dataRow["PARENTIDS"]);
             }

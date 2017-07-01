@@ -9,6 +9,7 @@ namespace Yutai.Commands.Document
     public class CmdSaveYutaiDoc : YutaiCommand
     {
         private IProjectService _projectService;
+
         public CmdSaveYutaiDoc(IAppContext context)
         {
             OnCreate(context);
@@ -17,7 +18,6 @@ namespace Yutai.Commands.Document
 
         public override void OnClick()
         {
-
         }
 
         public override void OnClick(object sender, EventArgs args)

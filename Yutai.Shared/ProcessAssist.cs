@@ -1,12 +1,17 @@
 ﻿namespace Yutai.Shared
 {
-  
     public delegate void OnSetMaxValueHandler(int int_0);
+
     public delegate void OnSetMessageHandler(string string_0);
+
     public delegate void OnSetPostionHandler(int int_0);
+
     public delegate void OnResetHandler(bool bool_0);
+
     public delegate void OnReSetMessageHandler(string string_0);
+
     public delegate void OnSetAutoProcessHandler();
+
     public delegate void OnIncrementHandler(int int_0);
 
     public class ProcessAssist
@@ -33,11 +38,6 @@
 
         protected bool m_IsAutoClose = false;
 
-        [System.Runtime.CompilerServices.CompilerGenerated]
-        private string string_0;
-
-        [System.Runtime.CompilerServices.CompilerGenerated]
-        private bool bool_0;
 
         public event OnSetMaxValueHandler OnSetMaxValue
         {
@@ -48,10 +48,12 @@
                 do
                 {
                     onSetMaxValueHandler2 = onSetMaxValueHandler;
-                    OnSetMaxValueHandler value2 = (OnSetMaxValueHandler)System.Delegate.Combine(onSetMaxValueHandler2, value);
-                    onSetMaxValueHandler = System.Threading.Interlocked.CompareExchange<OnSetMaxValueHandler>(ref this.onSetMaxValueHandler_0, value2, onSetMaxValueHandler2);
-                }
-                while (onSetMaxValueHandler != onSetMaxValueHandler2);
+                    OnSetMaxValueHandler value2 =
+                        (OnSetMaxValueHandler) System.Delegate.Combine(onSetMaxValueHandler2, value);
+                    onSetMaxValueHandler =
+                        System.Threading.Interlocked.CompareExchange<OnSetMaxValueHandler>(
+                            ref this.onSetMaxValueHandler_0, value2, onSetMaxValueHandler2);
+                } while (onSetMaxValueHandler != onSetMaxValueHandler2);
             }
             remove
             {
@@ -60,10 +62,12 @@
                 do
                 {
                     onSetMaxValueHandler2 = onSetMaxValueHandler;
-                    OnSetMaxValueHandler value2 = (OnSetMaxValueHandler)System.Delegate.Remove(onSetMaxValueHandler2, value);
-                    onSetMaxValueHandler = System.Threading.Interlocked.CompareExchange<OnSetMaxValueHandler>(ref this.onSetMaxValueHandler_0, value2, onSetMaxValueHandler2);
-                }
-                while (onSetMaxValueHandler != onSetMaxValueHandler2);
+                    OnSetMaxValueHandler value2 =
+                        (OnSetMaxValueHandler) System.Delegate.Remove(onSetMaxValueHandler2, value);
+                    onSetMaxValueHandler =
+                        System.Threading.Interlocked.CompareExchange<OnSetMaxValueHandler>(
+                            ref this.onSetMaxValueHandler_0, value2, onSetMaxValueHandler2);
+                } while (onSetMaxValueHandler != onSetMaxValueHandler2);
             }
         }
 
@@ -76,10 +80,12 @@
                 do
                 {
                     onSetMessageHandler2 = onSetMessageHandler;
-                    OnSetMessageHandler value2 = (OnSetMessageHandler)System.Delegate.Combine(onSetMessageHandler2, value);
-                    onSetMessageHandler = System.Threading.Interlocked.CompareExchange<OnSetMessageHandler>(ref this.onSetMessageHandler_0, value2, onSetMessageHandler2);
-                }
-                while (onSetMessageHandler != onSetMessageHandler2);
+                    OnSetMessageHandler value2 =
+                        (OnSetMessageHandler) System.Delegate.Combine(onSetMessageHandler2, value);
+                    onSetMessageHandler =
+                        System.Threading.Interlocked.CompareExchange<OnSetMessageHandler>(
+                            ref this.onSetMessageHandler_0, value2, onSetMessageHandler2);
+                } while (onSetMessageHandler != onSetMessageHandler2);
             }
             remove
             {
@@ -88,10 +94,12 @@
                 do
                 {
                     onSetMessageHandler2 = onSetMessageHandler;
-                    OnSetMessageHandler value2 = (OnSetMessageHandler)System.Delegate.Remove(onSetMessageHandler2, value);
-                    onSetMessageHandler = System.Threading.Interlocked.CompareExchange<OnSetMessageHandler>(ref this.onSetMessageHandler_0, value2, onSetMessageHandler2);
-                }
-                while (onSetMessageHandler != onSetMessageHandler2);
+                    OnSetMessageHandler value2 =
+                        (OnSetMessageHandler) System.Delegate.Remove(onSetMessageHandler2, value);
+                    onSetMessageHandler =
+                        System.Threading.Interlocked.CompareExchange<OnSetMessageHandler>(
+                            ref this.onSetMessageHandler_0, value2, onSetMessageHandler2);
+                } while (onSetMessageHandler != onSetMessageHandler2);
             }
         }
 
@@ -104,10 +112,12 @@
                 do
                 {
                     onReSetMessageHandler2 = onReSetMessageHandler;
-                    OnReSetMessageHandler value2 = (OnReSetMessageHandler)System.Delegate.Combine(onReSetMessageHandler2, value);
-                    onReSetMessageHandler = System.Threading.Interlocked.CompareExchange<OnReSetMessageHandler>(ref this.onReSetMessageHandler_0, value2, onReSetMessageHandler2);
-                }
-                while (onReSetMessageHandler != onReSetMessageHandler2);
+                    OnReSetMessageHandler value2 =
+                        (OnReSetMessageHandler) System.Delegate.Combine(onReSetMessageHandler2, value);
+                    onReSetMessageHandler =
+                        System.Threading.Interlocked.CompareExchange<OnReSetMessageHandler>(
+                            ref this.onReSetMessageHandler_0, value2, onReSetMessageHandler2);
+                } while (onReSetMessageHandler != onReSetMessageHandler2);
             }
             remove
             {
@@ -116,10 +126,12 @@
                 do
                 {
                     onReSetMessageHandler2 = onReSetMessageHandler;
-                    OnReSetMessageHandler value2 = (OnReSetMessageHandler)System.Delegate.Remove(onReSetMessageHandler2, value);
-                    onReSetMessageHandler = System.Threading.Interlocked.CompareExchange<OnReSetMessageHandler>(ref this.onReSetMessageHandler_0, value2, onReSetMessageHandler2);
-                }
-                while (onReSetMessageHandler != onReSetMessageHandler2);
+                    OnReSetMessageHandler value2 =
+                        (OnReSetMessageHandler) System.Delegate.Remove(onReSetMessageHandler2, value);
+                    onReSetMessageHandler =
+                        System.Threading.Interlocked.CompareExchange<OnReSetMessageHandler>(
+                            ref this.onReSetMessageHandler_0, value2, onReSetMessageHandler2);
+                } while (onReSetMessageHandler != onReSetMessageHandler2);
             }
         }
 
@@ -132,10 +144,12 @@
                 do
                 {
                     onSetPostionHandler2 = onSetPostionHandler;
-                    OnSetPostionHandler value2 = (OnSetPostionHandler)System.Delegate.Combine(onSetPostionHandler2, value);
-                    onSetPostionHandler = System.Threading.Interlocked.CompareExchange<OnSetPostionHandler>(ref this.onSetPostionHandler_0, value2, onSetPostionHandler2);
-                }
-                while (onSetPostionHandler != onSetPostionHandler2);
+                    OnSetPostionHandler value2 =
+                        (OnSetPostionHandler) System.Delegate.Combine(onSetPostionHandler2, value);
+                    onSetPostionHandler =
+                        System.Threading.Interlocked.CompareExchange<OnSetPostionHandler>(
+                            ref this.onSetPostionHandler_0, value2, onSetPostionHandler2);
+                } while (onSetPostionHandler != onSetPostionHandler2);
             }
             remove
             {
@@ -144,10 +158,12 @@
                 do
                 {
                     onSetPostionHandler2 = onSetPostionHandler;
-                    OnSetPostionHandler value2 = (OnSetPostionHandler)System.Delegate.Remove(onSetPostionHandler2, value);
-                    onSetPostionHandler = System.Threading.Interlocked.CompareExchange<OnSetPostionHandler>(ref this.onSetPostionHandler_0, value2, onSetPostionHandler2);
-                }
-                while (onSetPostionHandler != onSetPostionHandler2);
+                    OnSetPostionHandler value2 =
+                        (OnSetPostionHandler) System.Delegate.Remove(onSetPostionHandler2, value);
+                    onSetPostionHandler =
+                        System.Threading.Interlocked.CompareExchange<OnSetPostionHandler>(
+                            ref this.onSetPostionHandler_0, value2, onSetPostionHandler2);
+                } while (onSetPostionHandler != onSetPostionHandler2);
             }
         }
 
@@ -160,10 +176,12 @@
                 do
                 {
                     onSetAutoProcessHandler2 = onSetAutoProcessHandler;
-                    OnSetAutoProcessHandler value2 = (OnSetAutoProcessHandler)System.Delegate.Combine(onSetAutoProcessHandler2, value);
-                    onSetAutoProcessHandler = System.Threading.Interlocked.CompareExchange<OnSetAutoProcessHandler>(ref this.onSetAutoProcessHandler_0, value2, onSetAutoProcessHandler2);
-                }
-                while (onSetAutoProcessHandler != onSetAutoProcessHandler2);
+                    OnSetAutoProcessHandler value2 =
+                        (OnSetAutoProcessHandler) System.Delegate.Combine(onSetAutoProcessHandler2, value);
+                    onSetAutoProcessHandler =
+                        System.Threading.Interlocked.CompareExchange<OnSetAutoProcessHandler>(
+                            ref this.onSetAutoProcessHandler_0, value2, onSetAutoProcessHandler2);
+                } while (onSetAutoProcessHandler != onSetAutoProcessHandler2);
             }
             remove
             {
@@ -172,10 +190,12 @@
                 do
                 {
                     onSetAutoProcessHandler2 = onSetAutoProcessHandler;
-                    OnSetAutoProcessHandler value2 = (OnSetAutoProcessHandler)System.Delegate.Remove(onSetAutoProcessHandler2, value);
-                    onSetAutoProcessHandler = System.Threading.Interlocked.CompareExchange<OnSetAutoProcessHandler>(ref this.onSetAutoProcessHandler_0, value2, onSetAutoProcessHandler2);
-                }
-                while (onSetAutoProcessHandler != onSetAutoProcessHandler2);
+                    OnSetAutoProcessHandler value2 =
+                        (OnSetAutoProcessHandler) System.Delegate.Remove(onSetAutoProcessHandler2, value);
+                    onSetAutoProcessHandler =
+                        System.Threading.Interlocked.CompareExchange<OnSetAutoProcessHandler>(
+                            ref this.onSetAutoProcessHandler_0, value2, onSetAutoProcessHandler2);
+                } while (onSetAutoProcessHandler != onSetAutoProcessHandler2);
             }
         }
 
@@ -188,10 +208,11 @@
                 do
                 {
                     onIncrementHandler2 = onIncrementHandler;
-                    OnIncrementHandler value2 = (OnIncrementHandler)System.Delegate.Combine(onIncrementHandler2, value);
-                    onIncrementHandler = System.Threading.Interlocked.CompareExchange<OnIncrementHandler>(ref this.onIncrementHandler_0, value2, onIncrementHandler2);
-                }
-                while (onIncrementHandler != onIncrementHandler2);
+                    OnIncrementHandler value2 = (OnIncrementHandler) System.Delegate.Combine(onIncrementHandler2, value);
+                    onIncrementHandler =
+                        System.Threading.Interlocked.CompareExchange<OnIncrementHandler>(ref this.onIncrementHandler_0,
+                            value2, onIncrementHandler2);
+                } while (onIncrementHandler != onIncrementHandler2);
             }
             remove
             {
@@ -200,10 +221,11 @@
                 do
                 {
                     onIncrementHandler2 = onIncrementHandler;
-                    OnIncrementHandler value2 = (OnIncrementHandler)System.Delegate.Remove(onIncrementHandler2, value);
-                    onIncrementHandler = System.Threading.Interlocked.CompareExchange<OnIncrementHandler>(ref this.onIncrementHandler_0, value2, onIncrementHandler2);
-                }
-                while (onIncrementHandler != onIncrementHandler2);
+                    OnIncrementHandler value2 = (OnIncrementHandler) System.Delegate.Remove(onIncrementHandler2, value);
+                    onIncrementHandler =
+                        System.Threading.Interlocked.CompareExchange<OnIncrementHandler>(ref this.onIncrementHandler_0,
+                            value2, onIncrementHandler2);
+                } while (onIncrementHandler != onIncrementHandler2);
             }
         }
 
@@ -216,10 +238,11 @@
                 do
                 {
                     onResetHandler2 = onResetHandler;
-                    OnResetHandler value2 = (OnResetHandler)System.Delegate.Combine(onResetHandler2, value);
-                    onResetHandler = System.Threading.Interlocked.CompareExchange<OnResetHandler>(ref this.onResetHandler_0, value2, onResetHandler2);
-                }
-                while (onResetHandler != onResetHandler2);
+                    OnResetHandler value2 = (OnResetHandler) System.Delegate.Combine(onResetHandler2, value);
+                    onResetHandler =
+                        System.Threading.Interlocked.CompareExchange<OnResetHandler>(ref this.onResetHandler_0, value2,
+                            onResetHandler2);
+                } while (onResetHandler != onResetHandler2);
             }
             remove
             {
@@ -228,24 +251,17 @@
                 do
                 {
                     onResetHandler2 = onResetHandler;
-                    OnResetHandler value2 = (OnResetHandler)System.Delegate.Remove(onResetHandler2, value);
-                    onResetHandler = System.Threading.Interlocked.CompareExchange<OnResetHandler>(ref this.onResetHandler_0, value2, onResetHandler2);
-                }
-                while (onResetHandler != onResetHandler2);
+                    OnResetHandler value2 = (OnResetHandler) System.Delegate.Remove(onResetHandler2, value);
+                    onResetHandler =
+                        System.Threading.Interlocked.CompareExchange<OnResetHandler>(ref this.onResetHandler_0, value2,
+                            onResetHandler2);
+                } while (onResetHandler != onResetHandler2);
             }
         }
 
-        public string Text
-        {
-            get;
-            set;
-        }
+        public string Text { get; set; }
 
-        public bool IsSuccess
-        {
-            get;
-            set;
-        }
+        public bool IsSuccess { get; set; }
 
         public ProcessAssist(System.Windows.Forms.Control control_0)
         {
@@ -414,8 +430,4 @@
             }
         }
     }
-
-
-
-
 }

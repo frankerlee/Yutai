@@ -25,8 +25,10 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         private void btnSelectPicture_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog {
-                Filter = "所有支持格式|*.bmp;*.jpg;*.gif;*.emf;*.tif;*.png|位图文件|*.bmp|JPEG|*.jpg|TIFF|*.tif|EMF|*.emf|PNG|*.png|GIF|*.gif"
+            OpenFileDialog dialog = new OpenFileDialog
+            {
+                Filter =
+                    "所有支持格式|*.bmp;*.jpg;*.gif;*.emf;*.tif;*.png|位图文件|*.bmp|JPEG|*.jpg|TIFF|*.tif|EMF|*.emf|PNG|*.png|GIF|*.gif"
             };
             if (dialog.ShowDialog() == DialogResult.OK)
             {
@@ -38,7 +40,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         {
         }
 
- public void ResetControl()
+        public void ResetControl()
         {
         }
 
@@ -48,38 +50,23 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_0;
-            }
+            get { return this.bool_0; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return "图片";
-            }
-            set
-            {
-            }
+            get { return "图片"; }
+            set { }
         }
     }
 }
-

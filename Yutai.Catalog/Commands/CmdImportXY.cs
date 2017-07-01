@@ -47,14 +47,18 @@ namespace Yutai.Plugins.Catalog.Commands
                     {
                         if (((IGxSelection) _context.GxSelection).FirstObject is IGxDataset)
                         {
-                            if ((((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Type == esriDatasetType.esriDTFeatureDataset)
+                            if ((((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Type ==
+                                esriDatasetType.esriDTFeatureDataset)
                             {
                                 result = true;
                                 return result;
                             }
-                            if ((((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Type == esriDatasetType.esriDTFeatureClass)
+                            if ((((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Type ==
+                                esriDatasetType.esriDTFeatureClass)
                             {
-                                IFeatureClassName featureClassName = (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).DatasetName as IFeatureClassName;
+                                IFeatureClassName featureClassName =
+                                    (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).DatasetName as
+                                        IFeatureClassName;
                                 if (featureClassName.ShapeType == esriGeometryType.esriGeometryPoint)
                                 {
                                     result = true;

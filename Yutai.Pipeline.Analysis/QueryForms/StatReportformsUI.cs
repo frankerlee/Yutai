@@ -1,7 +1,5 @@
-﻿
-using ESRI.ArcGIS.Controls;
+﻿using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Geometry;
-
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -49,13 +47,13 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
         private void BtnOK_Click(object sender, EventArgs e)
         {
-            _featureLayer = ((LayerboxItem)this.CmbLayers.SelectedItem).m_pPipeLayer;
+            _featureLayer = ((LayerboxItem) this.CmbLayers.SelectedItem).m_pPipeLayer;
             if (CmbCalField.SelectedItem == null || CmbStatField.SelectedItem == null || CmbStatWay.SelectedItem == null)
                 return;
             string statFieldName = this.CmbStatField.SelectedItem.ToString();
             string calFieldName = this.CmbCalField.SelectedItem.ToString();
             string statWay = this.CmbStatWay.SelectedItem.ToString();
-            ITable table = (ITable)_featureLayer.FeatureClass;
+            ITable table = (ITable) _featureLayer.FeatureClass;
             ICursor cursor = table.Search(null, false);
             int idxStatField = cursor.FindField(statFieldName);
             int idxCalField = cursor.FindField(calFieldName);
@@ -119,17 +117,17 @@ namespace Yutai.Pipeline.Analysis.QueryForms
         {
             if (ipLay is IFeatureLayer)
             {
-                this.AddFeatureLayer((IFeatureLayer)ipLay);
+                this.AddFeatureLayer((IFeatureLayer) ipLay);
             }
             else if (ipLay is IGroupLayer)
             {
-                this.AddGroupLayer((IGroupLayer)ipLay);
+                this.AddGroupLayer((IGroupLayer) ipLay);
             }
         }
 
         private void AddGroupLayer(IGroupLayer iGLayer)
         {
-            ICompositeLayer compositeLayer = (ICompositeLayer)iGLayer;
+            ICompositeLayer compositeLayer = (ICompositeLayer) iGLayer;
             if (compositeLayer != null)
             {
                 int count = compositeLayer.Count;
@@ -156,9 +154,17 @@ namespace Yutai.Pipeline.Analysis.QueryForms
 
         private void FillFields()
         {
-            _featureLayer = ((LayerboxItem)this.CmbLayers.SelectedItem).m_pPipeLayer;
-            SetComboBoxItems(this.CmbStatField, _featureLayer.FeatureClass.Fields, new List<esriFieldType>() { esriFieldType.esriFieldTypeString });
-            SetComboBoxItems(this.CmbCalField, _featureLayer.FeatureClass.Fields, new List<esriFieldType>() { esriFieldType.esriFieldTypeDouble, esriFieldType.esriFieldTypeInteger, esriFieldType.esriFieldTypeSingle, esriFieldType.esriFieldTypeSmallInteger });
+            _featureLayer = ((LayerboxItem) this.CmbLayers.SelectedItem).m_pPipeLayer;
+            SetComboBoxItems(this.CmbStatField, _featureLayer.FeatureClass.Fields,
+                new List<esriFieldType>() {esriFieldType.esriFieldTypeString});
+            SetComboBoxItems(this.CmbCalField, _featureLayer.FeatureClass.Fields,
+                new List<esriFieldType>()
+                {
+                    esriFieldType.esriFieldTypeDouble,
+                    esriFieldType.esriFieldTypeInteger,
+                    esriFieldType.esriFieldTypeSingle,
+                    esriFieldType.esriFieldTypeSmallInteger
+                });
         }
 
         public void SetComboBoxItems(ComboBox comboBox, IFields fields, List<esriFieldType> types)

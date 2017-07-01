@@ -35,7 +35,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
             netEIDs.Reset();
             int count = netEIDs.Count;
             int num2 = teid2.Count;
-            IEIDHelper helper = new EIDHelperClass {
+            IEIDHelper helper = new EIDHelperClass
+            {
                 GeometricNetwork = NetworkAnalyst.m_pAnalystGN,
                 OutputSpatialReference = pMap.SpatialReference,
                 ReturnGeometries = true,
@@ -109,8 +110,8 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
                     IPoint point4 = new PointClass();
                     pointArray2[index] = pointArray[index];
                     pointArray2[index + 1] = points2.get_Point(index + 1);
-                    point4.X = (pointArray2[index].X + pointArray2[index + 1].X) / 2.0;
-                    point4.Y = (pointArray2[index].Y + pointArray2[index + 1].Y) / 2.0;
+                    point4.X = (pointArray2[index].X + pointArray2[index + 1].X)/2.0;
+                    point4.Y = (pointArray2[index].Y + pointArray2[index + 1].Y)/2.0;
                     this.m_pPointcol.AddPoint(point4, ref before, ref before);
                     line.FromPoint = pointArray2[index];
                     line.ToPoint = pointArray2[index + 1];
@@ -129,7 +130,7 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
         {
             if (this.m_pPointcol != null)
             {
-                double num = 4.0 * Math.Atan(1.0);
+                double num = 4.0*Math.Atan(1.0);
                 IScreenDisplay screenDisplay = ipAV.ScreenDisplay;
                 screenDisplay.StartDrawing(0, 0);
                 IMarkerSymbol determinateFolwArrow = NetworkAnalyst.m_pFlowSymbol.DeterminateFolwArrow as IMarkerSymbol;
@@ -138,12 +139,12 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
                     esriFlowDirection direction = (esriFlowDirection) this.m_eFlowDirection[i];
                     if (direction == esriFlowDirection.esriFDWithFlow)
                     {
-                        determinateFolwArrow.Angle = (180.0 * ((double) this.m_angle[i])) / num;
+                        determinateFolwArrow.Angle = (180.0*((double) this.m_angle[i]))/num;
                         screenDisplay.SetSymbol(determinateFolwArrow as ISymbol);
                     }
                     else if (direction == esriFlowDirection.esriFDAgainstFlow)
                     {
-                        determinateFolwArrow.Angle = ((180.0 * ((double) this.m_angle[i])) / num) + 180.0;
+                        determinateFolwArrow.Angle = ((180.0*((double) this.m_angle[i]))/num) + 180.0;
                         screenDisplay.SetSymbol(determinateFolwArrow as ISymbol);
                     }
                     else if (direction == esriFlowDirection.esriFDIndeterminate)
@@ -162,4 +163,3 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
         }
     }
 }
-

@@ -27,6 +27,5 @@ namespace Yutai.Plugins.TableEditor.Views
         void OpenTable(IFeatureLayer featureLayer);
         void Clear();
         ITableView CurrentGridView { get; }
-
     }
 }

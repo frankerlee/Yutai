@@ -13,10 +13,10 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             base.Text = string_1;
         }
 
-        public override int DoDraw(DrawListViewSubItemEventArgs drawListViewSubItemEventArgs_0, int int_0, EXColumnHeader excolumnHeader_0)
+        public override int DoDraw(DrawListViewSubItemEventArgs drawListViewSubItemEventArgs_0, int int_0,
+            EXColumnHeader excolumnHeader_0)
         {
             return int_0;
         }
     }
 }
-

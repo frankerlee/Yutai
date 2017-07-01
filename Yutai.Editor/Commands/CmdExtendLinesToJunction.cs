@@ -41,7 +41,9 @@ namespace Yutai.Plugins.Editor.Commands
                 {
                     flag = false;
                 }
-                else if ((Yutai.ArcGIS.Common.Editor.Editor.EditMap == null ? true : Yutai.ArcGIS.Common.Editor.Editor.EditMap == _context.FocusMap))
+                else if ((Yutai.ArcGIS.Common.Editor.Editor.EditMap == null
+                    ? true
+                    : Yutai.ArcGIS.Common.Editor.Editor.EditMap == _context.FocusMap))
                 {
                     flag = (Yutai.ArcGIS.Common.Editor.Editor.EditWorkspace == null ? false : true);
                 }
@@ -73,7 +75,9 @@ namespace Yutai.Plugins.Editor.Commands
             this.m_message = "延长两线相交";
             this.m_toolTip = "延长两线相交";
             this.m_bitmap = Properties.Resources.icon_edit_extendjunction;
-            this.m_cursor = new System.Windows.Forms.Cursor(GetType().Assembly.GetManifestResourceStream("Yutai.Plugins.Editor.Resources.Cursor.ExtendLine.cur"));
+            this.m_cursor =
+                new System.Windows.Forms.Cursor(
+                    GetType().Assembly.GetManifestResourceStream("Yutai.Plugins.Editor.Resources.Cursor.ExtendLine.cur"));
             base._itemType = RibbonItemType.Tool;
         }
 
@@ -83,15 +87,16 @@ namespace Yutai.Plugins.Editor.Commands
             _context.SetCurrentTool(this);
         }
 
-       
 
         public override void OnMouseDown(int int_2, int int_3, int int_4, int int_5)
         {
             if (int_2 == 1)
             {
                 IPoint mapPoint = _context.ActiveView.ScreenDisplay.DisplayTransformation.ToMapPoint(int_4, int_5);
-                double mapUnits = Common.ConvertPixelsToMapUnits((IActiveView)_context.FocusMap, _context.Config.EngineSnapEnvironment.SnapTolerance);
-                IFeature hitLineFeature = Yutai.ArcGIS.Common.Editor.Editor.GetHitLineFeature(_context.FocusMap, mapPoint, mapUnits);
+                double mapUnits = Common.ConvertPixelsToMapUnits((IActiveView) _context.FocusMap,
+                    _context.Config.EngineSnapEnvironment.SnapTolerance);
+                IFeature hitLineFeature = Yutai.ArcGIS.Common.Editor.Editor.GetHitLineFeature(_context.FocusMap,
+                    mapPoint, mapUnits);
                 if (hitLineFeature != null)
                 {
                     double num = 0;
@@ -100,12 +105,15 @@ namespace Yutai.Plugins.Editor.Commands
                     int num2 = -1;
                     IPoint pointClass = new ESRI.ArcGIS.Geometry.Point();
                     IHitTest shapeCopy = hitLineFeature.ShapeCopy as IHitTest;
-                    shapeCopy.HitTest(mapPoint, mapUnits, esriGeometryHitPartType.esriGeometryPartBoundary, pointClass, ref num, ref num1, ref num2, ref flag);
+                    shapeCopy.HitTest(mapPoint, mapUnits, esriGeometryHitPartType.esriGeometryPartBoundary, pointClass,
+                        ref num, ref num1, ref num2, ref flag);
                     if (this.ifeature_0 != null)
                     {
                         IWorkspaceEdit workspace = (hitLineFeature.Class as IDataset).Workspace as IWorkspaceEdit;
                         workspace.StartEditOperation();
-                        bool flag1 = Yutai.ArcGIS.Common.Editor.Editor.ConstructJunction(_context.FocusMap, this.ifeature_0, this.ipoint_0, this.int_0, this.int_1, hitLineFeature, pointClass, num1, num2);
+                        bool flag1 = Yutai.ArcGIS.Common.Editor.Editor.ConstructJunction(_context.FocusMap,
+                            this.ifeature_0, this.ipoint_0, this.int_0, this.int_1, hitLineFeature, pointClass, num1,
+                            num2);
                         workspace.StopEditOperation();
                         if (!flag1)
                         {

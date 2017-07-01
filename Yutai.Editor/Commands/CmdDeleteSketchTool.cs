@@ -32,13 +32,8 @@ namespace Yutai.Plugins.Editor.Commands
 
         public override bool Enabled
         {
-            get
-            {
-                return SketchToolAssist.Feedback != null && SketchShareEx.PointCount >= 1;
-            }
+            get { return SketchToolAssist.Feedback != null && SketchShareEx.PointCount >= 1; }
         }
-
-
 
 
         public override void OnClick(object sender, EventArgs args)
@@ -62,8 +57,5 @@ namespace Yutai.Plugins.Editor.Commands
             _context.ShowCommandString(string_, CommandTipsType.CTTInput);
             SketchShareEx.m_pSketchCommandFolw.Reset();
         }
-
-      
-
     }
 }

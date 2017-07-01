@@ -17,6 +17,7 @@ namespace Yutai.Plugins.TableEditor.Commands.ContextMenu
     class CmdStatistics : YutaiCommand
     {
         private CompContextMenuStrip _menuStrip;
+
         public CmdStatistics(IAppContext context, CompContextMenuStrip menuStrip)
         {
             _context = context;
@@ -53,9 +54,9 @@ namespace Yutai.Plugins.TableEditor.Commands.ContextMenu
             int idx = _menuStrip.TableView.FeatureLayer.FeatureClass.FindField(fieldName);
             IField pField = _menuStrip.TableView.FeatureLayer.FeatureClass.Fields.Field[idx];
             if (pField.Type == esriFieldType.esriFieldTypeDouble ||
-                    pField.Type == esriFieldType.esriFieldTypeInteger ||
-                    pField.Type == esriFieldType.esriFieldTypeSingle ||
-                    pField.Type == esriFieldType.esriFieldTypeSmallInteger)
+                pField.Type == esriFieldType.esriFieldTypeInteger ||
+                pField.Type == esriFieldType.esriFieldTypeSingle ||
+                pField.Type == esriFieldType.esriFieldTypeSmallInteger)
             {
                 FieldStatistics frm = new FieldStatistics(_menuStrip.TableView, fieldName);
                 frm.ShowDialog();
@@ -65,6 +66,5 @@ namespace Yutai.Plugins.TableEditor.Commands.ContextMenu
                 MessageBox.Show(@"统计信息不适用于文本字段。");
             }
         }
-
     }
 }

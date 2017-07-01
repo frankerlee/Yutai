@@ -156,7 +156,7 @@ namespace Yutai.ArcGIS.Catalog.VCT
                         break;
                 }
             }
-        Label_00E5:
+            Label_00E5:
             if (feature2 != null)
             {
                 switch (feature2.Type)
@@ -278,9 +278,11 @@ namespace Yutai.ArcGIS.Catalog.VCT
             }
         }
 
-        private ITextElement method_11(string string_0, double double_0, decimal decimal_0, string string_1, int int_0, IPoint ipoint_0)
+        private ITextElement method_11(string string_0, double double_0, decimal decimal_0, string string_1, int int_0,
+            IPoint ipoint_0)
         {
-            ITextSymbol symbol = new TextSymbolClass {
+            ITextSymbol symbol = new TextSymbolClass
+            {
                 HorizontalAlignment = esriTextHorizontalAlignment.esriTHALeft,
                 VerticalAlignment = esriTextVerticalAlignment.esriTVACenter,
                 Angle = double_0,
@@ -297,7 +299,8 @@ namespace Yutai.ArcGIS.Catalog.VCT
             IRgbColor color = new RgbColorClass();
             color = this.method_13(int_0);
             symbol.Color = color;
-            ITextElement element = new TextElementClass {
+            ITextElement element = new TextElementClass
+            {
                 ScaleText = false,
                 Text = string_0,
                 Symbol = symbol
@@ -344,10 +347,10 @@ namespace Yutai.ArcGIS.Catalog.VCT
         {
             int num = int_0;
             IRgbColor color = new RgbColorClass();
-            int num2 = int_0 / 65536;
-            num -= num2 * 65536;
-            int num3 = num / 256;
-            num -= num3 * 256;
+            int num2 = int_0/65536;
+            num -= num2*65536;
+            int num3 = num/256;
+            num -= num3*256;
             int num4 = num;
             color.Red = num2;
             color.Green = num3;
@@ -372,7 +375,8 @@ namespace Yutai.ArcGIS.Catalog.VCT
             List<IPoint> list = new List<IPoint>();
             foreach (ICoPoint point in coPointCollection_0)
             {
-                IPoint item = new PointClass {
+                IPoint item = new PointClass
+                {
                     X = point.X,
                     Y = point.Y,
                     Z = point.Z
@@ -495,7 +499,8 @@ namespace Yutai.ArcGIS.Catalog.VCT
                         {
                             regular = FontStyle.Underline;
                         }
-                        System.Drawing.Font font = new System.Drawing.Font(annotation.Symbol.Font.Name, (float) annotation.Symbol.Font.Size, regular);
+                        System.Drawing.Font font = new System.Drawing.Font(annotation.Symbol.Font.Name,
+                            (float) annotation.Symbol.Font.Size, regular);
                         feature.Font = font;
                     }
                 }
@@ -560,7 +565,8 @@ namespace Yutai.ArcGIS.Catalog.VCT
             switch (icoFeature_0.Type)
             {
                 case CoFeatureType.Point:
-                    if ((this.ifeatureClass_0.FeatureType != esriFeatureType.esriFTAnnotation) && (this.ifeatureClass_0.ShapeType == esriGeometryType.esriGeometryPoint))
+                    if ((this.ifeatureClass_0.FeatureType != esriFeatureType.esriFTAnnotation) &&
+                        (this.ifeatureClass_0.ShapeType == esriGeometryType.esriGeometryPoint))
                     {
                         foreach (IPoint point in this.method_15((icoFeature_0 as ICoPointFeature).Point))
                         {
@@ -570,7 +576,8 @@ namespace Yutai.ArcGIS.Catalog.VCT
                     break;
 
                 case CoFeatureType.Polygon:
-                    if ((this.ifeatureClass_0.FeatureType != esriFeatureType.esriFTAnnotation) && (this.ifeatureClass_0.ShapeType == esriGeometryType.esriGeometryPolygon))
+                    if ((this.ifeatureClass_0.FeatureType != esriFeatureType.esriFTAnnotation) &&
+                        (this.ifeatureClass_0.ShapeType == esriGeometryType.esriGeometryPolygon))
                     {
                         IGeometryCollection geometrys2 = new PolygonClass();
                         foreach (CoPointCollection points in (icoFeature_0 as ICoPolygonFeature).Points)
@@ -596,13 +603,15 @@ namespace Yutai.ArcGIS.Catalog.VCT
                         point.X = feature2.Point[0].X;
                         point.Y = feature2.Point[0].Y;
                         point.Z = feature2.Point[0].Z;
-                        ITextElement element = this.method_11(feature2.Text, 0.0, (decimal) feature2.Font.Size, feature2.Font.Name, feature2.Color.ToArgb(), point);
+                        ITextElement element = this.method_11(feature2.Text, 0.0, (decimal) feature2.Font.Size,
+                            feature2.Font.Name, feature2.Color.ToArgb(), point);
                         feature.Annotation = (IElement) element;
                     }
                     break;
 
                 case CoFeatureType.Polyline:
-                    if ((this.ifeatureClass_0.FeatureType != esriFeatureType.esriFTAnnotation) && (this.ifeatureClass_0.ShapeType == esriGeometryType.esriGeometryPolyline))
+                    if ((this.ifeatureClass_0.FeatureType != esriFeatureType.esriFTAnnotation) &&
+                        (this.ifeatureClass_0.ShapeType == esriGeometryType.esriGeometryPolyline))
                     {
                         IGeometryCollection geometrys = new PolylineClass();
                         foreach (CoPointCollection points in (icoFeature_0 as ICoPolylineFeature).Points)
@@ -889,4 +898,3 @@ namespace Yutai.ArcGIS.Catalog.VCT
         }
     }
 }
-

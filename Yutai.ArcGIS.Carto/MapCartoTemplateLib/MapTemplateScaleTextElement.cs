@@ -50,11 +50,13 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             {
                 style = new ScaleTextClass();
             }
-            UIDClass class2 = new UIDClass {
+            UIDClass class2 = new UIDClass
+            {
                 Value = "esriCarto.ScaleText"
             };
             UID clsid = class2;
-            IMapFrame frame = (ipageLayout_0 as IGraphicsContainer).FindFrame((ipageLayout_0 as IActiveView).FocusMap) as IMapFrame;
+            IMapFrame frame =
+                (ipageLayout_0 as IGraphicsContainer).FindFrame((ipageLayout_0 as IActiveView).FocusMap) as IMapFrame;
             style.MapUnits = frame.Map.DistanceUnits;
             style.PageUnits = ipageLayout_0.Page.Units;
             style.Style = esriScaleTextStyleEnum.esriScaleTextAbsolute;
@@ -123,7 +125,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 {
                 }
             }
-        Label_0112:
+            Label_0112:
             if (!bounds.IsEmpty)
             {
                 IEnvelope envelope2 = new EnvelopeClass();
@@ -161,11 +163,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 set.SetProperty("Style", base.Style);
                 return set;
             }
-            set
-            {
-                base.Style = value.GetProperty("Style");
-            }
+            set { base.Style = value.GetProperty("Style"); }
         }
     }
 }
-

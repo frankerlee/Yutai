@@ -17,15 +17,8 @@
 
         public CoPointCollection Point
         {
-            get
-            {
-                return this.coPointCollection_0;
-            }
-            set
-            {
-                this.coPointCollection_0 = value;
-            }
+            get { return this.coPointCollection_0; }
+            set { this.coPointCollection_0 = value; }
         }
     }
 }
-

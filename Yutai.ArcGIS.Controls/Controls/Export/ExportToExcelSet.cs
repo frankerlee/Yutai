@@ -8,7 +8,6 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
 {
     internal partial class ExportToExcelSet : UserControl
     {
-
         public ExportToExcelSet()
         {
             this.InitializeComponent();
@@ -16,7 +15,8 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
 
         private void btnOpenFile_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
                 Filter = "Excel工作簿|*.xls|模板|*.xlt",
                 Multiselect = false
             };
@@ -32,7 +32,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             this.groupBox1.Enabled = this.chkUseTemplate.Checked;
         }
 
- public bool Do()
+        public bool Do()
         {
             if (this.chkUseTemplate.Checked && (this.txtFileName.Text.Length == 0))
             {
@@ -51,7 +51,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
         {
         }
 
- private void Start1()
+        private void Start1()
         {
         }
 
@@ -83,4 +83,3 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
         }
     }
 }
-

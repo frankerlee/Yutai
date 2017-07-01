@@ -8,15 +8,8 @@ namespace Yutai.ArcGIS.Common.Overview
 
         public Hashtable LayerSettings
         {
-            get
-            {
-                return this.hashtable_0;
-            }
-            set
-            {
-                this.hashtable_0 = value;
-            }
+            get { return this.hashtable_0; }
+            set { this.hashtable_0 = value; }
         }
     }
 }
-

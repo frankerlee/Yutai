@@ -17,4 +17,3 @@ namespace Yutai.ArcGIS.Common.Excel
         PrintPageDelegate PrintPageValue { get; set; }
     }
 }
-

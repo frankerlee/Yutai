@@ -15,14 +15,11 @@ namespace Yutai.Shared
 
         private ProcessAssist processAssist_0;
 
-        private bool bool_0 = false;
+        //  private bool bool_0 = false;
 
         public int MaxValue
         {
-            set
-            {
-                this.progressBar1.Maximum = value;
-            }
+            set { this.progressBar1.Maximum = value; }
         }
 
         public string Message
@@ -49,10 +46,7 @@ namespace Yutai.Shared
 
         public int Step
         {
-            set
-            {
-                this.progressBar1.Step = value;
-            }
+            set { this.progressBar1.Step = value; }
         }
 
         public frmProgress2()
@@ -135,7 +129,7 @@ namespace Yutai.Shared
 
         private void method_4()
         {
-            this.bool_0 = true;
+            // this.bool_0 = true;
         }
 
         private void progressBar1_Click(object sender, EventArgs e)

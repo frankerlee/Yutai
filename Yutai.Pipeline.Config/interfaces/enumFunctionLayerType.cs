@@ -6,13 +6,14 @@
 // 作    者 :  
 // 创建时间 :  2017/06/27  15:48
 // 更新时间 :  2017/06/27  15:48
+
 namespace Yutai.Pipeline.Config.Interfaces
 {
     public enum enumFunctionLayerType
     {
-        Item,   // 项目表
+        Item, // 项目表
         RoadCenterLine, // 道路中心线
-        Jmd,    // 居民地
+        Jmd, // 居民地
         Other
     }
 }

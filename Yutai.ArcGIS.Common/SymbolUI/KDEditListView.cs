@@ -36,7 +36,7 @@ namespace Yutai.ArcGIS.Common.SymbolUI
             base.GridLines = true;
             this.textBox_0.Size = new Size(0, 0);
             this.textBox_0.Location = new Point(0, 0);
-            base.Controls.AddRange(new Control[] { this.textBox_0 });
+            base.Controls.AddRange(new Control[] {this.textBox_0});
             this.textBox_0.KeyPress += new KeyPressEventHandler(this.textBox_0_KeyPress);
             this.textBox_0.LostFocus += new EventHandler(this.textBox_0_LostFocus);
             this.textBox_0.AutoSize = false;
@@ -53,7 +53,7 @@ namespace Yutai.ArcGIS.Common.SymbolUI
             {
                 throw new Exception("Column index is out of range");
             }
-            if (((KDColumnHeader)base.Columns[int_3]).ColumnStyle != KDListViewColumnStyle.ComboBox)
+            if (((KDColumnHeader) base.Columns[int_3]).ColumnStyle != KDListViewColumnStyle.ComboBox)
             {
                 throw new Exception("Column should be ComboBox style");
             }
@@ -64,7 +64,7 @@ namespace Yutai.ArcGIS.Common.SymbolUI
             }
             box.Size = new Size(0, 0);
             box.Location = new Point(0, 0);
-            base.Controls.AddRange(new Control[] { box });
+            base.Controls.AddRange(new Control[] {box});
             box.SelectedIndexChanged += new EventHandler(this.method_1);
             box.LostFocus += new EventHandler(this.method_2);
             box.KeyPress += new KeyPressEventHandler(this.method_0);
@@ -77,7 +77,7 @@ namespace Yutai.ArcGIS.Common.SymbolUI
 
         private void method_0(object sender, KeyPressEventArgs e)
         {
-            ComboBox box = (ComboBox)sender;
+            ComboBox box = (ComboBox) sender;
             if ((e.KeyChar == '\r') || (e.KeyChar == '\x001b'))
             {
                 box.Hide();
@@ -86,7 +86,7 @@ namespace Yutai.ArcGIS.Common.SymbolUI
 
         private void method_1(object sender, EventArgs e)
         {
-            ComboBox box = (ComboBox)sender;
+            ComboBox box = (ComboBox) sender;
             int selectedIndex = box.SelectedIndex;
             if (selectedIndex >= 0)
             {
@@ -101,7 +101,7 @@ namespace Yutai.ArcGIS.Common.SymbolUI
 
         private void method_2(object sender, EventArgs e)
         {
-            ((ComboBox)sender).Hide();
+            ((ComboBox) sender).Hide();
         }
 
         public void SetColumn(int int_3, KDListViewColumnStyle kdlistViewColumnStyle_0)
@@ -110,7 +110,7 @@ namespace Yutai.ArcGIS.Common.SymbolUI
             {
                 throw new Exception("Column index is out of range");
             }
-            ((KDColumnHeader)base.Columns[int_3]).ColumnStyle = kdlistViewColumnStyle_0;
+            ((KDColumnHeader) base.Columns[int_3]).ColumnStyle = kdlistViewColumnStyle_0;
         }
 
         public void SMKDoubleClick(object sender, EventArgs e)
@@ -130,7 +130,7 @@ namespace Yutai.ArcGIS.Common.SymbolUI
                 }
             }
             this.string_0 = this.listViewItem_0.SubItems[this.int_2].Text;
-            KDColumnHeader header = (KDColumnHeader)base.Columns[this.int_2];
+            KDColumnHeader header = (KDColumnHeader) base.Columns[this.int_2];
             if (header.ColumnStyle == KDListViewColumnStyle.ComboBox)
             {
                 ComboBox box = this.comboBox_0[this.int_2];
@@ -188,7 +188,8 @@ namespace Yutai.ArcGIS.Common.SymbolUI
             }
             else
             {
-                if ((this.listViewItem_1 != null) && (this.listViewItem_1.SubItems[this.int_2].Text != this.textBox_0.Text))
+                if ((this.listViewItem_1 != null) &&
+                    (this.listViewItem_1.SubItems[this.int_2].Text != this.textBox_0.Text))
                 {
                     this.listViewItem_1.SubItems[this.int_2].Text = this.textBox_0.Text;
                     if (this.ValueChanged != null)
@@ -203,10 +204,7 @@ namespace Yutai.ArcGIS.Common.SymbolUI
         // Properties
         public Color ComboBoxBgColor
         {
-            get
-            {
-                return this.color_0;
-            }
+            get { return this.color_0; }
             set
             {
                 this.color_0 = value;
@@ -222,22 +220,13 @@ namespace Yutai.ArcGIS.Common.SymbolUI
 
         public Font ComboBoxFont
         {
-            get
-            {
-                return this.font_0;
-            }
-            set
-            {
-                this.font_0 = value;
-            }
+            get { return this.font_0; }
+            set { this.font_0 = value; }
         }
 
         public Color EditBgColor
         {
-            get
-            {
-                return this.color_1;
-            }
+            get { return this.color_1; }
             set
             {
                 this.color_1 = value;
@@ -247,10 +236,7 @@ namespace Yutai.ArcGIS.Common.SymbolUI
 
         public Font EditFont
         {
-            get
-            {
-                return this.font_1;
-            }
+            get { return this.font_1; }
             set
             {
                 this.font_1 = value;

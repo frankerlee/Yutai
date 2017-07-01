@@ -91,7 +91,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- private void GetRGB(uint rgb, out int r, out int g, out int b)
+        private void GetRGB(uint rgb, out int r, out int g, out int b)
         {
             uint num = rgb & 16711680;
             b = (int) (num >> 16);
@@ -118,7 +118,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.m_CanDo = true;
         }
 
- private void MarkFillControl_Load(object sender, EventArgs e)
+        private void MarkFillControl_Load(object sender, EventArgs e)
         {
             this.InitControl();
         }
@@ -186,4 +186,3 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         }
     }
 }
-

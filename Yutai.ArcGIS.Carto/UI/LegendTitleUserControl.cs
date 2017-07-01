@@ -75,7 +75,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- public void InitControl()
+        public void InitControl()
         {
             this.bool_0 = false;
             if (this.itextSymbol_0 == null)
@@ -95,7 +95,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.bool_0 = true;
         }
 
- private void LegendTitleUserControl_Load(object sender, EventArgs e)
+        private void LegendTitleUserControl_Load(object sender, EventArgs e)
         {
             this.memoEditTitle.Text = this.ilegend_0.Title;
             this.InitControl();
@@ -142,7 +142,7 @@ namespace Yutai.ArcGIS.Carto.UI
             uint num = 0;
             num = (uint) (0 | int_2);
             num = num << 8;
-            num |= (uint)int_1;
+            num |= (uint) int_1;
             num = num << 8;
             return (int) (num | int_0);
         }
@@ -183,4 +183,3 @@ namespace Yutai.ArcGIS.Carto.UI
         }
     }
 }
-

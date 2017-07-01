@@ -95,7 +95,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void frmAddValuesEx_Load(object sender, EventArgs e)
+        private void frmAddValuesEx_Load(object sender, EventArgs e)
         {
             if (this.arrayList_0 != null)
             {
@@ -122,12 +122,14 @@ namespace Yutai.ArcGIS.Carto.UI
                 if (table != null)
                 {
                     ITable attributeTable = table.AttributeTable;
-                    IQueryFilter queryFilter = new QueryFilterClass {
+                    IQueryFilter queryFilter = new QueryFilterClass
+                    {
                         WhereClause = "1=1"
                     };
                     (queryFilter as IQueryFilterDefinition).PostfixClause = "Order by " + string_2;
                     ICursor cursor = attributeTable.Search(queryFilter, false);
-                    IDataStatistics statistics = new DataStatisticsClass {
+                    IDataStatistics statistics = new DataStatisticsClass
+                    {
                         Field = string_2,
                         Cursor = cursor
                     };
@@ -180,7 +182,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     }
                     index++;
                 }
-                IQueryFilter queryFilter = new QueryFilterClass {
+                IQueryFilter queryFilter = new QueryFilterClass
+                {
                     WhereClause = "1=1"
                 };
                 (queryFilter as IQueryFilterDefinition).PostfixClause = "Order by " + str;
@@ -243,7 +246,7 @@ namespace Yutai.ArcGIS.Carto.UI
             return false;
         }
 
- private void method_0(object sender, EventArgs e)
+        private void method_0(object sender, EventArgs e)
         {
             if (this.ValuelistBoxControl.SelectedIndices.Count > 0)
             {
@@ -262,71 +265,43 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public ArrayList CountList
         {
-            set
-            {
-                this.arrayList_1 = value;
-            }
+            set { this.arrayList_1 = value; }
         }
 
         public string FieldDelimiter
         {
-            set
-            {
-                this.string_1 = value;
-            }
+            set { this.string_1 = value; }
         }
 
         public string[] FieldNames
         {
-            set
-            {
-                this.string_0 = value;
-            }
+            set { this.string_0 = value; }
         }
 
         public bool GetAllValues
         {
-            get
-            {
-                return this.bool_0;
-            }
-            set
-            {
-                this.bool_0 = value;
-            }
+            get { return this.bool_0; }
+            set { this.bool_0 = value; }
         }
 
         public ILayer Layer
         {
-            set
-            {
-                this.ilayer_0 = value;
-            }
+            set { this.ilayer_0 = value; }
         }
 
         public ArrayList List
         {
-            set
-            {
-                this.arrayList_0 = value;
-            }
+            set { this.arrayList_0 = value; }
         }
 
         public IList SelectedItems
         {
-            get
-            {
-                return this.ilist_0;
-            }
+            get { return this.ilist_0; }
         }
 
         public IUniqueValueRenderer UniqueValueRenderer
         {
-            set
-            {
-                this.iuniqueValueRenderer_0 = value;
-            }
+            set { this.iuniqueValueRenderer_0 = value; }
         }
     }
 }
-

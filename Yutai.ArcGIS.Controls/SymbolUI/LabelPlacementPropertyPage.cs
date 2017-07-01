@@ -29,8 +29,10 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 this.pointFeatureLabelCtrl1.Apply();
                 this.lineFeaturePlaceSetCtrl1.Apply();
                 this.fillFeaturePlaceCtrl1.Apply();
-                this.m_pOverposterLayerProperties.FeatureType = (esriBasicOverposterFeatureType) this.cboFeatureType.SelectedIndex;
-                this.m_pOverposterLayerProperties.NumLabelsOption = (esriBasicNumLabelsOption) (this.radioGroup1.SelectedIndex + 1);
+                this.m_pOverposterLayerProperties.FeatureType =
+                    (esriBasicOverposterFeatureType) this.cboFeatureType.SelectedIndex;
+                this.m_pOverposterLayerProperties.NumLabelsOption =
+                    (esriBasicNumLabelsOption) (this.radioGroup1.SelectedIndex + 1);
             }
         }
 
@@ -74,15 +76,18 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- public void Hide()
+        public void Hide()
         {
         }
 
- private void LabelPlacementPropertyPage_Load(object sender, EventArgs e)
+        private void LabelPlacementPropertyPage_Load(object sender, EventArgs e)
         {
-            this.pointFeatureLabelCtrl1.OnValueChange += new OnValueChangeEventHandler(this.pointFeatureLabelCtrl1_OnValueChange);
-            this.lineFeaturePlaceSetCtrl1.OnValueChange += new OnValueChangeEventHandler(this.pointFeatureLabelCtrl1_OnValueChange);
-            this.fillFeaturePlaceCtrl1.OnValueChange += new OnValueChangeEventHandler(this.pointFeatureLabelCtrl1_OnValueChange);
+            this.pointFeatureLabelCtrl1.OnValueChange +=
+                new OnValueChangeEventHandler(this.pointFeatureLabelCtrl1_OnValueChange);
+            this.lineFeaturePlaceSetCtrl1.OnValueChange +=
+                new OnValueChangeEventHandler(this.pointFeatureLabelCtrl1_OnValueChange);
+            this.fillFeaturePlaceCtrl1.OnValueChange +=
+                new OnValueChangeEventHandler(this.pointFeatureLabelCtrl1_OnValueChange);
             this.cboFeatureType.SelectedIndex = (int) this.m_pOverposterLayerProperties.FeatureType;
             this.radioGroup1.SelectedIndex = ((int) this.m_pOverposterLayerProperties.NumLabelsOption) - 1;
             this.cboFeatureType_SelectedIndexChanged(this, e);
@@ -115,38 +120,23 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.m_IsPageDirty;
-            }
+            get { return this.m_IsPageDirty; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return "放置";
-            }
-            set
-            {
-            }
+            get { return "放置"; }
+            set { }
         }
     }
 }
-

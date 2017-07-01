@@ -121,7 +121,7 @@ namespace Yutai.Shared
             }
             if (lhsValue is IComparable)
             {
-                return ((IComparable)lhsValue).CompareTo(rhsValue);
+                return ((IComparable) lhsValue).CompareTo(rhsValue);
             }
             if (lhsValue.Equals(rhsValue))
             {

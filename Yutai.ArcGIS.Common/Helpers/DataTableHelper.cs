@@ -112,7 +112,7 @@ namespace Yutai.ArcGIS.Common.Helpers
                             }
                         }
                     }
-                IL_B2:
+                    IL_B2:
                     i++;
                     continue;
                     goto IL_B2;
@@ -242,8 +242,8 @@ namespace Yutai.ArcGIS.Common.Helpers
             {
                 DataTable newdt = dt.Copy();
                 newdt.Clear();
-                int rowbegin = (PageIndex - 1) * PageSize;
-                int rowend = PageIndex * PageSize;
+                int rowbegin = (PageIndex - 1)*PageSize;
+                int rowend = PageIndex*PageSize;
                 if (rowbegin >= dt.Rows.Count)
                 {
                     result = newdt;

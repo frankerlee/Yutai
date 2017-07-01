@@ -82,7 +82,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.int_0++;
         }
 
- private void frmCheckInWizard_Load(object sender, EventArgs e)
+        private void frmCheckInWizard_Load(object sender, EventArgs e)
         {
             if (this.iarray_0.Count == 0)
             {
@@ -166,13 +166,13 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void method_0()
+        private void method_0()
         {
             this.checkInSetupCtrl_0.Visible = false;
             this.panelProgress.Visible = true;
             ESRI.ArcGIS.GeoDatabaseDistributed.IFeatureProgress_Event pHelper = CheckInHelper.m_pHelper;
-            pHelper.Step+=(new ESRI.ArcGIS.GeoDatabaseDistributed.IFeatureProgress_StepEventHandler(this.method_7));
-            (pHelper as IReplicaProgress_Event).Startup+=(new IReplicaProgress_StartupEventHandler(this.method_11));
+            pHelper.Step += (new ESRI.ArcGIS.GeoDatabaseDistributed.IFeatureProgress_StepEventHandler(this.method_7));
+            (pHelper as IReplicaProgress_Event).Startup += (new IReplicaProgress_StartupEventHandler(this.method_11));
             CheckInHelper.m_pHelper.Do();
         }
 
@@ -212,17 +212,20 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                                 IVersionedObject obj2 = layer2.FeatureClass as IVersionedObject;
                                 if (obj2.IsRegisteredAsVersioned)
                                 {
-                                    (this.method_14(iarray_1, workspace).EnumName as IEnumNameEdit).Add(featureClass.FullName);
+                                    (this.method_14(iarray_1, workspace).EnumName as IEnumNameEdit).Add(
+                                        featureClass.FullName);
                                 }
                             }
                         }
-                        else if ((workspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace) && (workspace is IWorkspaceReplicas))
+                        else if ((workspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace) &&
+                                 (workspace is IWorkspaceReplicas))
                         {
                             IEnumReplica replicas = (workspace as IWorkspaceReplicas).Replicas;
                             replicas.Reset();
                             if (replicas.Next() != null)
                             {
-                                (this.method_14(this.iarray_0, workspace).EnumName as IEnumNameEdit).Add(featureClass.FullName);
+                                (this.method_14(this.iarray_0, workspace).EnumName as IEnumNameEdit).Add(
+                                    featureClass.FullName);
                             }
                         }
                     }
@@ -261,17 +264,20 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                                 obj2 = layer.FeatureClass as IVersionedObject;
                                 if (obj2.IsRegisteredAsVersioned)
                                 {
-                                    (this.method_14(this.iarray_0, workspace).EnumName as IEnumNameEdit).Add(featureClass.FullName);
+                                    (this.method_14(this.iarray_0, workspace).EnumName as IEnumNameEdit).Add(
+                                        featureClass.FullName);
                                 }
                             }
                         }
-                        else if ((workspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace) && (workspace is IWorkspaceReplicas))
+                        else if ((workspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace) &&
+                                 (workspace is IWorkspaceReplicas))
                         {
                             replicas = (workspace as IWorkspaceReplicas).Replicas;
                             replicas.Reset();
                             if (replicas.Next() != null)
                             {
-                                (this.method_14(this.iarray_0, workspace).EnumName as IEnumNameEdit).Add(featureClass.FullName);
+                                (this.method_14(this.iarray_0, workspace).EnumName as IEnumNameEdit).Add(
+                                    featureClass.FullName);
                             }
                         }
                     }
@@ -292,17 +298,20 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                             obj2 = table as IVersionedObject;
                             if (obj2.IsRegisteredAsVersioned)
                             {
-                                (this.method_14(this.iarray_0, workspace).EnumName as IEnumNameEdit).Add(featureClass.FullName);
+                                (this.method_14(this.iarray_0, workspace).EnumName as IEnumNameEdit).Add(
+                                    featureClass.FullName);
                             }
                         }
                     }
-                    else if ((workspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace) && (workspace is IWorkspaceReplicas))
+                    else if ((workspace.Type == esriWorkspaceType.esriLocalDatabaseWorkspace) &&
+                             (workspace is IWorkspaceReplicas))
                     {
                         replicas = (workspace as IWorkspaceReplicas).Replicas;
                         replicas.Reset();
                         if (replicas.Next() != null)
                         {
-                            (this.method_14(this.iarray_0, workspace).EnumName as IEnumNameEdit).Add(featureClass.FullName);
+                            (this.method_14(this.iarray_0, workspace).EnumName as IEnumNameEdit).Add(
+                                featureClass.FullName);
                         }
                     }
                 }
@@ -395,4 +404,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

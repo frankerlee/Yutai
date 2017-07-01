@@ -28,7 +28,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnAddRule_Click(object sender, EventArgs e)
         {
-            frmRule rule = new frmRule {
+            frmRule rule = new frmRule
+            {
                 OriginClassArray = this.iarray_1
             };
             if (rule.ShowDialog() == DialogResult.OK)
@@ -78,7 +79,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnAddRule1_Click(object sender, EventArgs e)
         {
-            frmAddRuleByClass class2 = new frmAddRuleByClass {
+            frmAddRuleByClass class2 = new frmAddRuleByClass
+            {
                 OriginClassArray = this.iarray_1
             };
             if (class2.ShowDialog() == DialogResult.OK)
@@ -105,11 +107,11 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                             index++;
                         }
                         goto Label_0106;
-                    Label_0093:
+                        Label_0093:
                         this.listRule.Items.Add(class3.AliasName);
                         this.listRule.Items[this.listRule.Items.Count - 1].SubItems.Add(rule.Name);
                         this.listRule.Items[this.listRule.Items.Count - 1].Tag = rule;
-                    Label_0106:
+                        Label_0106:
                         if (rule.OriginClassID != rule.DestinationClassID)
                         {
                             for (index = 0; index < this.iarray_0.Count; index++)
@@ -122,7 +124,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                             }
                         }
                         continue;
-                    Label_015C:
+                        Label_015C:
                         this.listRule.Items[this.listRule.Items.Count - 1].SubItems.Add(class3.AliasName);
                     }
                 }
@@ -166,7 +168,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 ITopologyContainer pFeatDataset = (ITopologyContainer) this.m_pFeatDataset;
                 try
                 {
-                    topology = pFeatDataset.CreateTopology(this.txtTopologyName.Text, double.Parse(this.txtLimiteValue.Text), -1, "");
+                    topology = pFeatDataset.CreateTopology(this.txtTopologyName.Text,
+                        double.Parse(this.txtLimiteValue.Text), -1, "");
                 }
                 catch (COMException exception)
                 {
@@ -204,12 +207,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         if (exception3.ErrorCode != -2147215019)
                         {
                         }
-                        Logger.Current.Error("",exception3, "");
+                        Logger.Current.Error("", exception3, "");
                     }
                     catch (Exception exception6)
                     {
                         exception2 = exception6;
-                        Logger.Current.Error("",exception2, "");
+                        Logger.Current.Error("", exception2, "");
                     }
                     index++;
                 }
@@ -228,7 +231,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     catch (Exception exception7)
                     {
                         exception2 = exception7;
-                        Logger.Current.Error("",exception2, "");
+                        Logger.Current.Error("", exception2, "");
                     }
                     index++;
                 }
@@ -306,7 +309,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
         }
 
- private void frmCreateTopologySet_Load(object sender, EventArgs e)
+        private void frmCreateTopologySet_Load(object sender, EventArgs e)
         {
             this.comboBox_0.Visible = false;
             this.listViewPri.Controls.Add(this.comboBox_0);
@@ -322,7 +325,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             double num5 = xMax - xMin;
             double num6 = yMax - yMin;
             num5 = (num5 > num6) ? num5 : num6;
-            this.txtLimiteValue.Text = ((num5 / 2147483645.0) * 2.0).ToString("0.#############");
+            this.txtLimiteValue.Text = ((num5/2147483645.0)*2.0).ToString("0.#############");
             int num8 = this.m_pFeatDataset.Name.LastIndexOf(".");
             this.txtTopologyName.Text = "topo_" + this.m_pFeatDataset.Name.Substring(num8 + 1);
             IEnumDataset subsets = this.m_pFeatDataset.Subsets;
@@ -331,7 +334,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.iarray_0.RemoveAll();
             while (unk != null)
             {
-                if ((unk.Type == esriDatasetType.esriDTFeatureClass) && ((unk as IFeatureClass).FeatureType == esriFeatureType.esriFTSimple))
+                if ((unk.Type == esriDatasetType.esriDTFeatureClass) &&
+                    ((unk as IFeatureClass).FeatureType == esriFeatureType.esriFTSimple))
                 {
                     string browseName;
                     if (unk is ITopologyClass)
@@ -360,7 +364,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.method_0();
         }
 
- private void listRule_SelectedIndexChanged(object sender, EventArgs e)
+        private void listRule_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.listRule.SelectedItems.Count > 0)
             {
@@ -398,7 +402,10 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     {
                         this.listViewItem_0 = this.listViewPri.Items[i];
                         int tag = (int) this.listViewPri.Items[i].Tag;
-                        this.method_3(new System.Drawing.Point((this.listViewPri.Items[i].Bounds.Left + width) + 1, this.listViewPri.Items[i].Bounds.Top), new Size(num3, this.listViewPri.Items[i].Bounds.Height - 3), ref tag);
+                        this.method_3(
+                            new System.Drawing.Point((this.listViewPri.Items[i].Bounds.Left + width) + 1,
+                                this.listViewPri.Items[i].Bounds.Top),
+                            new Size(num3, this.listViewPri.Items[i].Bounds.Height - 3), ref tag);
                         break;
                     }
                 }
@@ -521,7 +528,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             for (int i = 0; i < iarray_3.Count; i++)
             {
                 ITopologyRule rule = (ITopologyRule) iarray_3.get_Element(i);
-                if (((rule.Name == itopologyRule_0.Name) && (rule.OriginClassID == itopologyRule_0.OriginClassID)) && (rule.DestinationClassID == itopologyRule_0.DestinationClassID))
+                if (((rule.Name == itopologyRule_0.Name) && (rule.OriginClassID == itopologyRule_0.OriginClassID)) &&
+                    (rule.DestinationClassID == itopologyRule_0.DestinationClassID))
                 {
                     return true;
                 }
@@ -534,7 +542,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             for (int i = 0; i < this.listRule.Items.Count; i++)
             {
                 ITopologyRule tag = (ITopologyRule) this.listRule.Items[i].Tag;
-                if (((tag.Name == itopologyRule_0.Name) && (tag.OriginClassID == itopologyRule_0.OriginClassID)) && (tag.DestinationClassID == itopologyRule_0.DestinationClassID))
+                if (((tag.Name == itopologyRule_0.Name) && (tag.OriginClassID == itopologyRule_0.OriginClassID)) &&
+                    (tag.DestinationClassID == itopologyRule_0.DestinationClassID))
                 {
                     return true;
                 }
@@ -635,4 +644,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

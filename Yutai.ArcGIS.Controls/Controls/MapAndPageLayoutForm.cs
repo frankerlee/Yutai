@@ -7,7 +7,7 @@ using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.SystemUI;
 using Yutai.ArcGIS.Common.BaseClasses;
 using Yutai.ArcGIS.Framework.Docking;
-using Editor2=Yutai.ArcGIS.Common.Editor;
+using Editor2 = Yutai.ArcGIS.Common.Editor;
 
 namespace Yutai.ArcGIS.Controls.Controls
 {
@@ -20,7 +20,9 @@ namespace Yutai.ArcGIS.Controls.Controls
         public MapAndPageLayoutForm()
         {
             this.InitializeComponent();
-            this.axPageLayoutControl.OnPageLayoutReplaced += new IPageLayoutControlEvents_Ax_OnPageLayoutReplacedEventHandler(this.axPageLayoutControl_OnPageLayoutReplaced);
+            this.axPageLayoutControl.OnPageLayoutReplaced +=
+                new IPageLayoutControlEvents_Ax_OnPageLayoutReplacedEventHandler(
+                    this.axPageLayoutControl_OnPageLayoutReplaced);
         }
 
         public void ActivateMap()
@@ -29,7 +31,8 @@ namespace Yutai.ArcGIS.Controls.Controls
             {
                 if ((this.axPageLayoutControl == null) || (this.axMapControl == null))
                 {
-                    throw new Exception("ControlsSynchronizer::ActivateMap:\r\nEither MapControl or PageLayoutControl are not initialized!");
+                    throw new Exception(
+                        "ControlsSynchronizer::ActivateMap:\r\nEither MapControl or PageLayoutControl are not initialized!");
                 }
                 this.panel1.Visible = true;
                 this.panel2.Visible = false;
@@ -57,7 +60,8 @@ namespace Yutai.ArcGIS.Controls.Controls
             {
                 if ((this.axPageLayoutControl == null) || (this.axMapControl == null))
                 {
-                    throw new Exception("ControlsSynchronizer::ActivatePageLayout:\r\nEither MapControl or PageLayoutControl are not initialized!");
+                    throw new Exception(
+                        "ControlsSynchronizer::ActivatePageLayout:\r\nEither MapControl or PageLayoutControl are not initialized!");
                 }
                 this.panel2.Visible = true;
                 this.panel1.Visible = false;
@@ -87,7 +91,8 @@ namespace Yutai.ArcGIS.Controls.Controls
             }
         }
 
-        private void axPageLayoutControl_OnPageLayoutReplaced(object sender, IPageLayoutControlEvents_OnPageLayoutReplacedEvent e)
+        private void axPageLayoutControl_OnPageLayoutReplaced(object sender,
+            IPageLayoutControlEvents_OnPageLayoutReplacedEvent e)
         {
             IMap focusMap = this.axPageLayoutControl.ActiveView.FocusMap;
             this.axMapControl.Map = focusMap;
@@ -107,9 +112,11 @@ namespace Yutai.ArcGIS.Controls.Controls
         {
             if ((this.axPageLayoutControl == null) || (this.axMapControl == null))
             {
-                throw new Exception("ControlsSynchronizer::BindControls:\r\nEither MapControl or PageLayoutControl are not initialized!");
+                throw new Exception(
+                    "ControlsSynchronizer::BindControls:\r\nEither MapControl or PageLayoutControl are not initialized!");
             }
-            IMap map = new MapClass {
+            IMap map = new MapClass
+            {
                 Name = "Map"
             };
             IMaps maps = new Maps();
@@ -128,7 +135,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             }
         }
 
- private void Form1_Load(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
             DocumentManager.Register(this.axPageLayoutControl.Object);
             this.axMapControl.OnMouseUp += new IMapControlEvents2_Ax_OnMouseUpEventHandler(this.axMapControl_OnMouseUp);
@@ -136,7 +143,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             this.BindControls(true);
         }
 
- public void NewDocument()
+        public void NewDocument()
         {
             (this.axPageLayoutControl.PageLayout as IGraphicsContainer).DeleteAllElements();
         }
@@ -150,7 +157,8 @@ namespace Yutai.ArcGIS.Controls.Controls
                 Editor2.Editor.EditWorkspace.HasEdits(ref hasEdits);
                 if (hasEdits)
                 {
-                    DialogResult result = MessageBox.Show("数据已经被修改过，保存修改吗?", "更改提示", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                    DialogResult result = MessageBox.Show("数据已经被修改过，保存修改吗?", "更改提示", MessageBoxButtons.YesNoCancel,
+                        MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
                         Editor2.Editor.EditWorkspace.StopEditing(true);
@@ -192,7 +200,8 @@ namespace Yutai.ArcGIS.Controls.Controls
             }
             if ((this.axPageLayoutControl == null) || (this.axMapControl == null))
             {
-                throw new Exception("ControlsSynchronizer::ReplaceMap:\r\nEither MapControl or PageLayoutControl are not initialized!");
+                throw new Exception(
+                    "ControlsSynchronizer::ReplaceMap:\r\nEither MapControl or PageLayoutControl are not initialized!");
             }
             bool isMapCtrlactive = this.m_IsMapCtrlactive;
             this.ActivatePageLayout();
@@ -214,35 +223,19 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         public bool IsMapCtrlactive
         {
-            get
-            {
-                return this.m_IsMapCtrlactive;
-            }
+            get { return this.m_IsMapCtrlactive; }
         }
 
         public AxMapControl MapControl
         {
-            get
-            {
-                return this.axMapControl;
-            }
-            set
-            {
-                this.axMapControl = value;
-            }
+            get { return this.axMapControl; }
+            set { this.axMapControl = value; }
         }
 
         public AxPageLayoutControl PageLayoutControl
         {
-            get
-            {
-                return this.axPageLayoutControl;
-            }
-            set
-            {
-                this.axPageLayoutControl = value;
-            }
+            get { return this.axPageLayoutControl; }
+            set { this.axPageLayoutControl = value; }
         }
     }
 }
-

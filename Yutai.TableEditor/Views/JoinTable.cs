@@ -40,6 +40,7 @@ namespace Yutai.Plugins.TableEditor.Views
             cboExternal.Fields = _featureClass.Fields;
             selectFields1.Fields = _featureClass.Fields;
         }
+
         public static IFeatureClass SelectFeatureClassDialog()
         {
             IGxDialog pGxDialog = new GxDialogClass();
@@ -50,7 +51,7 @@ namespace Yutai.Plugins.TableEditor.Views
             if (pGxDialog.DoModalOpen(0, out pEnumGxObject))
             {
                 IGxObject pSelectGxObject = pEnumGxObject.Next();
-                IGxDataset pGxDataset = (IGxDataset)pSelectGxObject;
+                IGxDataset pGxDataset = (IGxDataset) pSelectGxObject;
                 return pGxDataset.Dataset as IFeatureClass;
             }
             return null;

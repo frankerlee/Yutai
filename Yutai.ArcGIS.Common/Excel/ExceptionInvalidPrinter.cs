@@ -19,11 +19,7 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public override string Message
         {
-            get
-            {
-                return this.string_0;
-            }
+            get { return this.string_0; }
         }
     }
 }
-

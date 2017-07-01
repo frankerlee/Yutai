@@ -22,7 +22,6 @@ namespace Yutai.Services.Concrete
                 }
                 catch (Exception)
                 {
-
                 }
             }
         }

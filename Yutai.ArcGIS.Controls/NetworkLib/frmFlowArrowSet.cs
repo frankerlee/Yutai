@@ -6,12 +6,9 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
 {
     public partial class frmFlowArrowSet : Form
     {
-
         public frmFlowArrowSet()
         {
             this.InitializeComponent();
         }
-
-
     }
 }

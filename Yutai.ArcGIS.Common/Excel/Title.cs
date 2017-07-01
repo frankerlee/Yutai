@@ -26,7 +26,7 @@ namespace Yutai.ArcGIS.Common.Excel
                 string str = base.Text.Substring(num2 + 1);
                 width = base.TextWidth(str);
             }
-            float num3 = (((base.PrinterMargins.Width - width) / 2f) + base.PrinterMargins.Left) + base.MoveX;
+            float num3 = (((base.PrinterMargins.Width - width)/2f) + base.PrinterMargins.Left) + base.MoveX;
             float num4 = base.Rectangle.Y + base.Rectangle.Height;
             float num5 = num3 + width;
             base.Graphics.DrawLine(base.Pen, num3, num4 - 4f, num5, num4 - 4f);
@@ -34,4 +34,3 @@ namespace Yutai.ArcGIS.Common.Excel
         }
     }
 }
-

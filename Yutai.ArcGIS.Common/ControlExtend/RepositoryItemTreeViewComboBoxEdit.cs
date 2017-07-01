@@ -36,31 +36,16 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         private EditorClassInfo editorClassInfo_0 = null;
 
-        public string CodeFieldName
-        {
-            get;
-            set;
-        }
+        public string CodeFieldName { get; set; }
 
-        public string Connection
-        {
-            get;
-            set;
-        }
+        public string Connection { get; set; }
 
         private int CustomItemsShift
         {
-            get
-            {
-                return (this.ShowAllItemVisible ? 1 : 0);
-            }
+            get { return (this.ShowAllItemVisible ? 1 : 0); }
         }
 
-        public DataAccessLayerBaseClass DataAccessLayerBaseClass
-        {
-            get;
-            set;
-        }
+        public DataAccessLayerBaseClass DataAccessLayerBaseClass { get; set; }
 
         protected override EditorClassInfo EditorClassInfo
         {
@@ -68,7 +53,9 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             {
                 if (this.editorClassInfo_0 == null)
                 {
-                    this.editorClassInfo_0 = new EditorClassInfo("TreeViewComboBoxEdit", typeof(TreeViewComboBoxEdit), typeof(RepositoryItemTreeViewComboBoxEdit), typeof(PopupContainerEditViewInfo), new ButtonEditPainter(), true, null, typeof(PopupEditAccessible));
+                    this.editorClassInfo_0 = new EditorClassInfo("TreeViewComboBoxEdit", typeof(TreeViewComboBoxEdit),
+                        typeof(RepositoryItemTreeViewComboBoxEdit), typeof(PopupContainerEditViewInfo),
+                        new ButtonEditPainter(), true, null, typeof(PopupEditAccessible));
                 }
                 return this.editorClassInfo_0;
             }
@@ -76,10 +63,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         public override string EditorTypeName
         {
-            get
-            {
-                return "TreeViewComboBoxEdit";
-            }
+            get { return "TreeViewComboBoxEdit"; }
         }
 
         [Category("Appearance")]
@@ -87,10 +71,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
         [Description("")]
         public virtual HighlightStyle HighlightedItemStyle
         {
-            get
-            {
-                return this.highlightStyle_0;
-            }
+            get { return this.highlightStyle_0; }
             set
             {
                 if (this.HighlightedItemStyle != value)
@@ -102,18 +83,11 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             }
         }
 
-        public string IDFieldName
-        {
-            get;
-            set;
-        }
+        public string IDFieldName { get; set; }
 
         internal bool IsFlags
         {
-            get
-            {
-                return this.type_0 != null;
-            }
+            get { return this.type_0 != null; }
         }
 
         [Category("Data")]
@@ -123,48 +97,30 @@ namespace Yutai.ArcGIS.Common.ControlExtend
         [Localizable(true)]
         public TreeNode Items
         {
-            get
-            {
-                return this.treeNode_0;
-            }
+            get { return this.treeNode_0; }
         }
 
-        public string NameFieldName
-        {
-            get;
-            set;
-        }
+        public string NameFieldName { get; set; }
 
-        public string ParentIDFieldName
-        {
-            get;
-            set;
-        }
+        public string ParentIDFieldName { get; set; }
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override PopupContainerControl PopupControl
         {
-            get
-            {
-                return base.PopupControl;
-            }
-            set
-            {
-                base.PopupControl = value;
-            }
+            get { return base.PopupControl; }
+            set { base.PopupControl = value; }
         }
 
         [Category("Format")]
         [DefaultValue(',')]
-        [Description("Gets or sets the character separating checked items in the edit value, and the resultant text displayed in the edit box.")]
+        [Description(
+             "Gets or sets the character separating checked items in the edit value, and the resultant text displayed in the edit box."
+         )]
         public virtual char SeparatorChar
         {
-            get
-            {
-                return this.char_0;
-            }
+            get { return this.char_0; }
             set
             {
                 if (this.SeparatorChar != value)
@@ -181,10 +137,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
         [Localizable(true)]
         public virtual string ShowAllItemCaption
         {
-            get
-            {
-                return this.string_0;
-            }
+            get { return this.string_0; }
             set
             {
                 if (this.ShowAllItemCaption != value)
@@ -201,10 +154,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
         [Description("Gets or sets whether the 'Show All' check item is visible.")]
         public virtual bool ShowAllItemVisible
         {
-            get
-            {
-                return this.bool_0;
-            }
+            get { return this.bool_0; }
             set
             {
                 if (this.ShowAllItemVisible != value)
@@ -218,13 +168,12 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         [Category("Behavior")]
         [DefaultValue(true)]
-        [Description("Gets or sets whether changing a CheckedComboBoxEdit control's EditValue automatically updates the check states of items in the dropdown.")]
+        [Description(
+             "Gets or sets whether changing a CheckedComboBoxEdit control's EditValue automatically updates the check states of items in the dropdown."
+         )]
         public virtual bool SynchronizeEditValueWithCheckedItems
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
             set
             {
                 if (this.SynchronizeEditValueWithCheckedItems != value)
@@ -236,11 +185,7 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             }
         }
 
-        public string TableName
-        {
-            get;
-            set;
-        }
+        public string TableName { get; set; }
 
         public RepositoryItemTreeViewComboBoxEdit()
         {
@@ -284,7 +229,6 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         protected override void Dispose(bool bool_3)
         {
-            
             base.Dispose(bool_3);
         }
 
@@ -298,7 +242,6 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         private void method_1()
         {
-            
         }
 
         protected override void OnLookAndFeelChanged(object sender, EventArgs e)
@@ -318,9 +261,14 @@ namespace Yutai.ArcGIS.Common.ControlExtend
             {
                 try
                 {
-                    if ((queryDisplayTextEventArgs_0.EditValue == null ? false : queryDisplayTextEventArgs_0.EditValue != DBNull.Value) && queryDisplayTextEventArgs_0.DisplayText == Convert.ToInt32(queryDisplayTextEventArgs_0.EditValue).ToString())
+                    if ((queryDisplayTextEventArgs_0.EditValue == null
+                            ? false
+                            : queryDisplayTextEventArgs_0.EditValue != DBNull.Value) &&
+                        queryDisplayTextEventArgs_0.DisplayText ==
+                        Convert.ToInt32(queryDisplayTextEventArgs_0.EditValue).ToString())
                     {
-                        queryDisplayTextEventArgs_0.DisplayText = Enum.ToObject(this.type_0, queryDisplayTextEventArgs_0.EditValue).ToString();
+                        queryDisplayTextEventArgs_0.DisplayText =
+                            Enum.ToObject(this.type_0, queryDisplayTextEventArgs_0.EditValue).ToString();
                     }
                     if ("0".Equals(queryDisplayTextEventArgs_0.DisplayText))
                     {
@@ -366,7 +314,6 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         internal void SynchronizeEditValue()
         {
-           
         }
 
         internal void SynchronizeItemsWithEditValue()
@@ -381,4 +328,3 @@ namespace Yutai.ArcGIS.Common.ControlExtend
         }
     }
 }
-

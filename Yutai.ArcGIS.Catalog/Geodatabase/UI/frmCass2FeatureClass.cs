@@ -38,7 +38,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnSelectInputFeatures_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
                 Filter = "CASS交换文件(*.cas)|*.cas",
                 Multiselect = true
             };
@@ -53,7 +54,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnSelectOutLocation_Click(object sender, EventArgs e)
         {
-            frmOpenFile file = new frmOpenFile {
+            frmOpenFile file = new frmOpenFile
+            {
                 Text = "保存位置"
             };
             file.RemoveAllFilters();
@@ -71,7 +73,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     }
                     else if (this.igxObject_0 is IGxFolder)
                     {
-                        IWorkspaceName name = new WorkspaceNameClass {
+                        IWorkspaceName name = new WorkspaceNameClass
+                        {
                             WorkspaceFactoryProgID = "esriDataSourcesFile.ShapefileWorkspaceFactory",
                             PathName = (this.igxObject_0.InternalObjectName as IFileName).Path
                         };
@@ -97,7 +100,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             return true;
         }
 
- private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.listView1.SelectedItems.Count > 0)
             {
@@ -142,7 +145,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.int_0++;
             this.progressBar2.Increment(1);
             Application.DoEvents();
-            this.labelFN.Text = "处理图层<" + this.string_0 + "> ,转换第" + this.int_0.ToString() + " 个对象, 共 " + this.int_1.ToString() + " 个对象";
+            this.labelFN.Text = "处理图层<" + this.string_0 + "> ,转换第" + this.int_0.ToString() + " 个对象, 共 " +
+                                this.int_1.ToString() + " 个对象";
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -153,7 +157,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 this.simpleButton1.Enabled = false;
                 this.simpleButton2.Enabled = false;
                 CASSReader reader = new CASSReader();
-                reader.Step+=(new IFeatureProgress_StepEventHandler(this.method_5));
+                reader.Step += (new IFeatureProgress_StepEventHandler(this.method_5));
                 IFeatureWorkspace workspace = this.iname_0.Open() as IFeatureWorkspace;
                 reader.Workspace = workspace as IWorkspace;
                 this.progressBar1.Minimum = 0;
@@ -175,7 +179,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     }
                     catch (Exception exception)
                     {
-                        Logger.Current.Error("",exception, "");
+                        Logger.Current.Error("", exception, "");
                         MessageBox.Show(exception.Message);
                     }
                     num++;
@@ -190,4 +194,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

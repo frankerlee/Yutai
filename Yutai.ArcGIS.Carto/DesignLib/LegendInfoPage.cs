@@ -14,9 +14,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             this.InitializeComponent();
         }
 
- private void LegendInfoPage_Load(object sender, EventArgs e)
+        private void LegendInfoPage_Load(object sender, EventArgs e)
         {
         }
     }
 }
-

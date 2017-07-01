@@ -46,7 +46,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnSelectInputFeatures_Click(object sender, EventArgs e)
         {
-            frmOpenFile file = new frmOpenFile {
+            frmOpenFile file = new frmOpenFile
+            {
                 Text = "添加数据"
             };
             file.RemoveAllFilters();
@@ -70,22 +71,30 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                             else
                             {
                                 ISpatialReference spatialReference = (dataset as IGeoDataset).SpatialReference;
-                                if (!(!(spatialReference is IUnknownCoordinateSystem) || (this.ispatialReference_0 is IUnknownCoordinateSystem)))
+                                if (
+                                    !(!(spatialReference is IUnknownCoordinateSystem) ||
+                                      (this.ispatialReference_0 is IUnknownCoordinateSystem)))
                                 {
                                     MessageBox.Show("空间参考不一致，" + dataset.Name + "不能添加");
                                     continue;
                                 }
-                                if (!(!(spatialReference is IProjectedCoordinateSystem) || (this.ispatialReference_0 is IProjectedCoordinateSystem)))
+                                if (
+                                    !(!(spatialReference is IProjectedCoordinateSystem) ||
+                                      (this.ispatialReference_0 is IProjectedCoordinateSystem)))
                                 {
                                     MessageBox.Show("空间参考不一致，" + dataset.Name + "不能添加");
                                     continue;
                                 }
-                                if (!(!(spatialReference is IGeographicCoordinateSystem) || (this.ispatialReference_0 is IGeographicCoordinateSystem)))
+                                if (
+                                    !(!(spatialReference is IGeographicCoordinateSystem) ||
+                                      (this.ispatialReference_0 is IGeographicCoordinateSystem)))
                                 {
                                     MessageBox.Show("空间参考不一致，" + dataset.Name + "不能添加");
                                     continue;
                                 }
-                                if (((spatialReference is IProjectedCoordinateSystem) && (this.ispatialReference_0 is IProjectedCoordinateSystem)) && !(spatialReference as IClone).IsEqual(this.ispatialReference_0 as IClone))
+                                if (((spatialReference is IProjectedCoordinateSystem) &&
+                                     (this.ispatialReference_0 is IProjectedCoordinateSystem)) &&
+                                    !(spatialReference as IClone).IsEqual(this.ispatialReference_0 as IClone))
                                 {
                                     MessageBox.Show("空间参考不一致，" + dataset.Name + "不能添加");
                                     continue;
@@ -101,7 +110,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnSelectOutLocation_Click(object sender, EventArgs e)
         {
-            SaveFileDialog dialog = new SaveFileDialog {
+            SaveFileDialog dialog = new SaveFileDialog
+            {
                 Filter = "VCT文件(*.vct)|*.vct"
             };
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -125,7 +135,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             return true;
         }
 
- private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.listView1.SelectedItems.Count > 0)
             {
@@ -169,7 +179,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             this.int_0++;
             this.progressBar2.Increment(1);
-            this.labelFN.Text = "处理图层<" + this.string_0 + "> ,转换第" + this.int_0.ToString() + " 个对象, 共 " + this.int_1.ToString() + " 个对象";
+            this.labelFN.Text = "处理图层<" + this.string_0 + "> ,转换第" + this.int_0.ToString() + " 个对象, 共 " +
+                                this.int_1.ToString() + " 个对象";
             Application.DoEvents();
         }
 
@@ -188,7 +199,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 this.simpleButton2.Enabled = false;
                 VCTWrite write = new VCTWrite();
                 write.ProgressMessage += new ProgressMessageHandle(this.method_6);
-                write.Step+=(new IFeatureProgress_StepEventHandler(this.method_5));
+                write.Step += (new IFeatureProgress_StepEventHandler(this.method_5));
                 for (int i = 0; i < this.ilist_0.Count; i++)
                 {
                     write.AddDataset(this.ilist_0[i] as IDataset);
@@ -203,4 +214,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

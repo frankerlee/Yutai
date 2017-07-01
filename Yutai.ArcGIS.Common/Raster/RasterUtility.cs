@@ -47,7 +47,9 @@ namespace Yutai.ArcGIS.Common.Raster
             environment.OutWorkspace = workspace2;
             object zFactor = new object();
             zFactor = Missing.Value;
-            return (IRaster) op.Slope((IGeoDataset) dataset, esriGeoAnalysisSlopeEnum.esriGeoAnalysisSlopeDegrees, ref zFactor);
+            return
+                (IRaster)
+                op.Slope((IGeoDataset) dataset, esriGeoAnalysisSlopeEnum.esriGeoAnalysisSlopeDegrees, ref zFactor);
         }
 
         public static bool ChangeRenderToUVRenderer(IRasterLayer irasterLayer_0, string string_0)
@@ -63,7 +65,8 @@ namespace Yutai.ArcGIS.Common.Raster
             }
             ITable attributeTable = band.AttributeTable;
             int pCount = attributeTable.RowCount(null);
-            IRandomColorRamp ramp = new RandomColorRamp{
+            IRandomColorRamp ramp = new RandomColorRamp
+            {
                 Size = pCount,
                 Seed = 100
             };
@@ -82,7 +85,8 @@ namespace Yutai.ArcGIS.Common.Raster
                 object obj2 = attributeTable.GetRow(i).get_Value(index);
                 renderer.AddValue(0, i, obj2);
                 renderer.set_Label(0, i, obj2.ToString());
-                ISimpleFillSymbol symbol = new SimpleFillSymbol{
+                ISimpleFillSymbol symbol = new SimpleFillSymbol
+                {
                     Color = ramp.get_Color(i)
                 };
                 renderer.set_Symbol(0, i, symbol as ISymbol);
@@ -174,14 +178,17 @@ namespace Yutai.ArcGIS.Common.Raster
             catch (Exception exception7)
             {
                 exception2 = exception7;
-                Console.WriteLine("Unable to set either the output workspace, or extent, or cell size for raster dataset");
+                Console.WriteLine(
+                    "Unable to set either the output workspace, or extent, or cell size for raster dataset");
                 Console.WriteLine(exception2.Message);
                 return;
             }
             op.ToRasterDataset(dataset, "GRID", workspace3, string_1);
         }
 
-        public static IRasterCatalog createCatalog(IRasterWorkspaceEx irasterWorkspaceEx_0, string string_0, string string_1, string string_2, ISpatialReference ispatialReference_0, ISpatialReference ispatialReference_1, bool bool_0, IFields ifields_0, string string_3)
+        public static IRasterCatalog createCatalog(IRasterWorkspaceEx irasterWorkspaceEx_0, string string_0,
+            string string_1, string string_2, ISpatialReference ispatialReference_0,
+            ISpatialReference ispatialReference_1, bool bool_0, IFields ifields_0, string string_3)
         {
             if (ifields_0 == null)
             {
@@ -203,7 +210,8 @@ namespace Yutai.ArcGIS.Common.Raster
             return catalog;
         }
 
-        private static IFields createFields(string string_0, string string_1, bool bool_0, ISpatialReference ispatialReference_0, ISpatialReference ispatialReference_1)
+        private static IFields createFields(string string_0, string string_1, bool bool_0,
+            ISpatialReference ispatialReference_0, ISpatialReference ispatialReference_1)
         {
             IFieldsEdit edit = new Fields() as IFieldsEdit;
             edit.AddField(createOIDField("ObjectID"));
@@ -213,7 +221,8 @@ namespace Yutai.ArcGIS.Common.Raster
             return edit;
         }
 
-        public static IRasterDataset createFileRasterDataset(IRasterWorkspace2 irasterWorkspace2_0, string string_0, int int_0, rstPixelType rstPixelType_0, ISpatialReference ispatialReference_0)
+        public static IRasterDataset createFileRasterDataset(IRasterWorkspace2 irasterWorkspace2_0, string string_0,
+            int int_0, rstPixelType rstPixelType_0, ISpatialReference ispatialReference_0)
         {
             try
             {
@@ -224,7 +233,8 @@ namespace Yutai.ArcGIS.Common.Raster
                 {
                     ispatialReference_0 = new UnknownCoordinateSystem() as ISpatialReference;
                 }
-                dataset = irasterWorkspace2_0.CreateRasterDataset(string_0, "IMAGINE Image", origin, 200, 100, 1.0, 1.0, int_0, rstPixelType_0, ispatialReference_0, true);
+                dataset = irasterWorkspace2_0.CreateRasterDataset(string_0, "IMAGINE Image", origin, 200, 100, 1.0, 1.0,
+                    int_0, rstPixelType_0, ispatialReference_0, true);
                 IRawPixels pixels = null;
                 IPixelBlock3 block = null;
                 IPnt tlc = null;
@@ -243,7 +253,7 @@ namespace Yutai.ArcGIS.Common.Raster
                 {
                     for (int j = 0; j < props.Height; j++)
                     {
-                        objArray[i, j] = (i * j) % 255;
+                        objArray[i, j] = (i*j)%255;
                     }
                 }
                 object cache = pixels.AcquireCache();
@@ -261,9 +271,9 @@ namespace Yutai.ArcGIS.Common.Raster
         private static IGeometryDef createGeometryDef(ISpatialReference ispatialReference_0)
         {
             IGeometryDefEdit edit = new GeometryDef() as IGeometryDefEdit;
-            edit.GeometryType_2 =esriGeometryType.esriGeometryPolygon;
-            edit.AvgNumPoints_2 =4;
-            edit.GridCount_2 =1;
+            edit.GeometryType_2 = esriGeometryType.esriGeometryPolygon;
+            edit.AvgNumPoints_2 = 4;
+            edit.GridCount_2 = 1;
             edit.set_GridSize(0, 1000.0);
             if (ispatialReference_0 == null)
             {
@@ -306,7 +316,8 @@ namespace Yutai.ArcGIS.Common.Raster
 
         public static IRasterDef CreateRasterDef(bool bool_0, ISpatialReference ispatialReference_0)
         {
-            IRasterDef def = new RasterDef{
+            IRasterDef def = new RasterDef
+            {
                 Description = "Raster Dataset"
             };
             if (ispatialReference_0 == null)
@@ -320,7 +331,8 @@ namespace Yutai.ArcGIS.Common.Raster
         private static IField createRasterField(string string_0, bool bool_0, ISpatialReference ispatialReference_0)
         {
             IFieldEdit2 edit = new Field() as IFieldEdit2;
-            IRasterDef def = new RasterDef{
+            IRasterDef def = new RasterDef
+            {
                 Description = "this is a raster catalog",
                 IsManaged = bool_0
             };
@@ -344,23 +356,36 @@ namespace Yutai.ArcGIS.Common.Raster
 
         public static IRasterStorageDef CreateRasterStorageDef()
         {
-            return new RasterStorageDef{ CompressionType = esriRasterCompressionType.esriRasterCompressionRLE, PyramidLevel = 2, PyramidResampleType = rstResamplingTypes.RSP_BilinearInterpolation, TileHeight = 128, TileWidth = 128 };
+            return new RasterStorageDef
+            {
+                CompressionType = esriRasterCompressionType.esriRasterCompressionRLE,
+                PyramidLevel = 2,
+                PyramidResampleType = rstResamplingTypes.RSP_BilinearInterpolation,
+                TileHeight = 128,
+                TileWidth = 128
+            };
         }
 
-        public static IRasterDataset CreateRasterSurf(string string_0, string string_1, string string_2, IPoint ipoint_0, int int_0, int int_1, double double_0, double double_1, rstPixelType rstPixelType_0, ISpatialReference2 ispatialReference2_0, bool bool_0)
+        public static IRasterDataset CreateRasterSurf(string string_0, string string_1, string string_2, IPoint ipoint_0,
+            int int_0, int int_1, double double_0, double double_1, rstPixelType rstPixelType_0,
+            ISpatialReference2 ispatialReference2_0, bool bool_0)
         {
             IWorkspaceFactory factory = new RasterWorkspaceFactory();
             IRasterWorkspace2 workspace2 = factory.OpenFromFile(string_0, 0) as IRasterWorkspace2;
-            return workspace2.CreateRasterDataset(string_1, string_2, ipoint_0, int_0, int_1, double_0, double_1, 1, rstPixelType_0, ispatialReference2_0, bool_0);
+            return workspace2.CreateRasterDataset(string_1, string_2, ipoint_0, int_0, int_1, double_0, double_1, 1,
+                rstPixelType_0, ispatialReference2_0, bool_0);
         }
 
-        public static IRasterDataset CreateRasterSurf(string string_0, string string_1, string string_2, IPoint ipoint_0, int int_0, int int_1, double double_0, double double_1, int int_2, rstPixelType rstPixelType_0, ISpatialReference2 ispatialReference2_0, bool bool_0)
+        public static IRasterDataset CreateRasterSurf(string string_0, string string_1, string string_2, IPoint ipoint_0,
+            int int_0, int int_1, double double_0, double double_1, int int_2, rstPixelType rstPixelType_0,
+            ISpatialReference2 ispatialReference2_0, bool bool_0)
         {
             try
             {
                 IWorkspaceFactory o = new RasterWorkspaceFactory();
                 IWorkspace workspace = o.OpenFromFile(string_0, 0);
-                IRasterDataset dataset = (workspace as IRasterWorkspace2).CreateRasterDataset(string_1, string_2, ipoint_0, int_0, int_1, double_0, double_1, int_2, rstPixelType_0, ispatialReference2_0, bool_0);
+                IRasterDataset dataset = (workspace as IRasterWorkspace2).CreateRasterDataset(string_1, string_2,
+                    ipoint_0, int_0, int_1, double_0, double_1, int_2, rstPixelType_0, ispatialReference2_0, bool_0);
                 Marshal.ReleaseComObject(o);
                 o = null;
                 Marshal.ReleaseComObject(workspace);
@@ -377,15 +402,18 @@ namespace Yutai.ArcGIS.Common.Raster
 
         public static IRasterValue createRasterValue(IRasterDataset irasterDataset_0)
         {
-            IRasterStorageDef def = new RasterStorageDef{
+            IRasterStorageDef def = new RasterStorageDef
+            {
                 CompressionType = esriRasterCompressionType.esriRasterCompressionLZ77,
                 PyramidResampleType = rstResamplingTypes.RSP_BilinearInterpolation,
                 PyramidLevel = -1
             };
-            return new RasterValue{ RasterDataset = irasterDataset_0, RasterStorageDef = def };
+            return new RasterValue {RasterDataset = irasterDataset_0, RasterStorageDef = def};
         }
 
-        public static IRasterDataset CreateSDERasterDs(IRasterWorkspaceEx irasterWorkspaceEx_0, string string_0, int int_0, rstPixelType rstPixelType_0, ISpatialReference ispatialReference_0, IRasterStorageDef irasterStorageDef_0, IRasterDef irasterDef_0, string string_1)
+        public static IRasterDataset CreateSDERasterDs(IRasterWorkspaceEx irasterWorkspaceEx_0, string string_0,
+            int int_0, rstPixelType rstPixelType_0, ISpatialReference ispatialReference_0,
+            IRasterStorageDef irasterStorageDef_0, IRasterDef irasterDef_0, string string_1)
         {
             IRasterDataset dataset = null;
             IGeometryDef geometryDef = null;
@@ -404,7 +432,8 @@ namespace Yutai.ArcGIS.Common.Raster
             }
             try
             {
-                dataset = irasterWorkspaceEx_0.CreateRasterDataset(string_0, int_0, rstPixelType_0, irasterStorageDef_0, string_1, irasterDef_0, geometryDef);
+                dataset = irasterWorkspaceEx_0.CreateRasterDataset(string_0, int_0, rstPixelType_0, irasterStorageDef_0,
+                    string_1, irasterDef_0, geometryDef);
             }
             catch (COMException exception)
             {
@@ -425,9 +454,9 @@ namespace Yutai.ArcGIS.Common.Raster
             {
                 string_0 = "SHAPE";
             }
-            edit.Name_2 =string_0;
-            edit.Type_2 =esriFieldType.esriFieldTypeGeometry;
-            edit.GeometryDef_2 =createGeometryDef(ispatialReference_0);
+            edit.Name_2 = string_0;
+            edit.Type_2 = esriFieldType.esriFieldTypeGeometry;
+            edit.GeometryDef_2 = createGeometryDef(ispatialReference_0);
             return edit;
         }
 
@@ -471,13 +500,14 @@ namespace Yutai.ArcGIS.Common.Raster
             return null;
         }
 
-        public static void QueryPixelBlock(ITinSurface itinSurface_0, double double_0, double double_1, double double_2, double double_3, esriRasterizationType esriRasterizationType_0, object object_0, object object_1)
+        public static void QueryPixelBlock(ITinSurface itinSurface_0, double double_0, double double_1, double double_2,
+            double double_3, esriRasterizationType esriRasterizationType_0, object object_0, object object_1)
         {
             int length = ((float[,]) object_1).GetLength(0);
             int num2 = ((float[,]) object_1).GetLength(1);
             IPoint pPoint = new Point();
             int num3 = 0;
-        Label_0024:
+            Label_0024:
             if (num3 >= num2)
             {
                 return;
@@ -487,8 +517,8 @@ namespace Yutai.ArcGIS.Common.Raster
             {
                 if (num4 < length)
                 {
-                    pPoint.X = double_0 + (num4 * double_2);
-                    pPoint.Y = double_1 - (num3 * double_3);
+                    pPoint.X = double_0 + (num4*double_2);
+                    pPoint.Y = double_1 - (num3*double_3);
                     float slopeDegrees = 0f;
                     try
                     {
@@ -549,16 +579,19 @@ namespace Yutai.ArcGIS.Common.Raster
             return raster;
         }
 
-        public static IRasterDataset TinToRaster(ITinAdvanced itinAdvanced_0, esriRasterizationType esriRasterizationType_0, string string_0, string string_1, rstPixelType rstPixelType_0, double double_0, IEnvelope ienvelope_0, bool bool_0)
+        public static IRasterDataset TinToRaster(ITinAdvanced itinAdvanced_0,
+            esriRasterizationType esriRasterizationType_0, string string_0, string string_1, rstPixelType rstPixelType_0,
+            double double_0, IEnvelope ienvelope_0, bool bool_0)
         {
             IPoint lowerLeft = ienvelope_0.LowerLeft;
-            lowerLeft.X -= double_0 * 0.5;
-            lowerLeft.Y -= double_0 * 0.5;
-            int num = (int) Math.Round((double) ((ienvelope_0.Width / double_0) + 1.0));
-            int num2 = (int) Math.Round((double) ((ienvelope_0.Height / double_0) + 1.0));
+            lowerLeft.X -= double_0*0.5;
+            lowerLeft.Y -= double_0*0.5;
+            int num = (int) Math.Round((double) ((ienvelope_0.Width/double_0) + 1.0));
+            int num2 = (int) Math.Round((double) ((ienvelope_0.Height/double_0) + 1.0));
             IGeoDataset dataset = itinAdvanced_0 as IGeoDataset;
             ISpatialReference2 spatialReference = dataset.SpatialReference as ISpatialReference2;
-            IRasterDataset dataset2 = CreateRasterSurf(string_0, string_1, "GRID", lowerLeft, num, num2, double_0, double_0, rstPixelType_0, spatialReference, true);
+            IRasterDataset dataset2 = CreateRasterSurf(string_0, string_1, "GRID", lowerLeft, num, num2, double_0,
+                double_0, rstPixelType_0, spatialReference, true);
             IRasterBandCollection bands = dataset2 as IRasterBandCollection;
             IRawPixels pixels = bands.Item(0) as IRawPixels;
             ITinSurface pSurface = itinAdvanced_0 as ITinSurface;
@@ -576,7 +609,8 @@ namespace Yutai.ArcGIS.Common.Raster
             {
                 num4 = num2;
             }
-            IPnt size = new DblPnt{
+            IPnt size = new DblPnt
+            {
                 X = num3,
                 Y = num4
             };
@@ -593,10 +627,11 @@ namespace Yutai.ArcGIS.Common.Raster
                         pxls = pixels.CreatePixelBlock(size);
                         block = pxls.get_SafeArray(0);
                     }
-                    point2.X = (lowerLeft.X + (j * double_0)) + (double_0 * 0.5);
-                    point2.Y = (lowerLeft.Y + ((num2 - i) * double_0)) - (double_0 * 0.5);
+                    point2.X = (lowerLeft.X + (j*double_0)) + (double_0*0.5);
+                    point2.Y = (lowerLeft.Y + ((num2 - i)*double_0)) - (double_0*0.5);
                     IGeoDatabaseBridge2 bridge = new GeoDatabaseHelper() as IGeoDatabaseBridge2;
-                    bridge.QueryPixelBlock(pSurface, point2.X, point2.Y, double_0, double_0, esriRasterizationType_0, noDataValue, ref block);
+                    bridge.QueryPixelBlock(pSurface, point2.X, point2.Y, double_0, double_0, esriRasterizationType_0,
+                        noDataValue, ref block);
                     tlc.X = j;
                     tlc.Y = i;
                     pxls.set_SafeArray(0, block);
@@ -620,17 +655,20 @@ namespace Yutai.ArcGIS.Common.Raster
             return dataset2;
         }
 
-        public static IRasterDataset TinToRaster(ITinAdvanced itinAdvanced_0, esriRasterizationType esriRasterizationType_0, string string_0, string string_1, string string_2, rstPixelType rstPixelType_0, double double_0, IEnvelope ienvelope_0, bool bool_0)
+        public static IRasterDataset TinToRaster(ITinAdvanced itinAdvanced_0,
+            esriRasterizationType esriRasterizationType_0, string string_0, string string_1, string string_2,
+            rstPixelType rstPixelType_0, double double_0, IEnvelope ienvelope_0, bool bool_0)
         {
             object obj3;
             IPoint lowerLeft = ienvelope_0.LowerLeft;
-            lowerLeft.X -= double_0 * 0.5;
-            lowerLeft.Y -= double_0 * 0.5;
-            int num = ((int) Math.Round((double) (ienvelope_0.Width / double_0))) + 1;
-            int num2 = ((int) Math.Round((double) (ienvelope_0.Height / double_0))) + 1;
+            lowerLeft.X -= double_0*0.5;
+            lowerLeft.Y -= double_0*0.5;
+            int num = ((int) Math.Round((double) (ienvelope_0.Width/double_0))) + 1;
+            int num2 = ((int) Math.Round((double) (ienvelope_0.Height/double_0))) + 1;
             IGeoDataset dataset = itinAdvanced_0 as IGeoDataset;
             ISpatialReference2 spatialReference = dataset.SpatialReference as ISpatialReference2;
-            IRasterDataset dataset2 = CreateRasterSurf(string_0, string_1, string_2, lowerLeft, num, num2, double_0, double_0, 1, rstPixelType_0, spatialReference, bool_0);
+            IRasterDataset dataset2 = CreateRasterSurf(string_0, string_1, string_2, lowerLeft, num, num2, double_0,
+                double_0, 1, rstPixelType_0, spatialReference, bool_0);
             IRawPixels rawPixels = GetRawPixels(dataset2, 0);
             object cache = rawPixels.AcquireCache();
             ITinSurface pSurface = itinAdvanced_0 as ITinSurface;
@@ -656,16 +694,18 @@ namespace Yutai.ArcGIS.Common.Raster
             {
                 num5 = num2;
             }
-            IPnt size = new DblPnt{
+            IPnt size = new DblPnt
+            {
                 X = num4,
                 Y = num5
             };
             IPixelBlock3 block = rawPixels.CreatePixelBlock(size) as IPixelBlock3;
-            ITrackCancel cancel = new CancelTracker{
+            ITrackCancel cancel = new CancelTracker
+            {
                 CancelOnClick = false,
                 CancelOnKeyPress = true
             };
-            int num6 = (int) (Math.Round((double) ((num / num4) + 0.49)) * Math.Round((double) ((num2 / num5) + 0.49)));
+            int num6 = (int) (Math.Round((double) ((num/num4) + 0.49))*Math.Round((double) ((num2/num5) + 0.49)));
             if (num6 == 1)
             {
                 itinAdvanced_0.TrackCancel = cancel;
@@ -682,10 +722,11 @@ namespace Yutai.ArcGIS.Common.Raster
                         block = rawPixels.CreatePixelBlock(size) as IPixelBlock3;
                         obj4 = block.get_PixelDataByRef(0);
                     }
-                    point2.X = (lowerLeft.X + (j * double_0)) + (double_0 * 0.5);
-                    point2.Y = (lowerLeft.Y + ((num2 - i) * double_0)) - (double_0 * 0.5);
+                    point2.X = (lowerLeft.X + (j*double_0)) + (double_0*0.5);
+                    point2.Y = (lowerLeft.Y + ((num2 - i)*double_0)) - (double_0*0.5);
                     IGeoDatabaseBridge2 bridge = new GeoDatabaseHelper() as IGeoDatabaseBridge2;
-                    bridge.QueryPixelBlock(pSurface, point2.X, point2.Y, double_0, double_0, esriRasterizationType_0, obj3, ref obj4);
+                    bridge.QueryPixelBlock(pSurface, point2.X, point2.Y, double_0, double_0, esriRasterizationType_0,
+                        obj3, ref obj4);
                     tlc.X = j;
                     tlc.Y = i;
                     block.set_PixelData(0, obj4);
@@ -846,7 +887,8 @@ namespace Yutai.ArcGIS.Common.Raster
             renderer2.Update();
             IColor color = ColorManage.CreatColor(255, 0, 0);
             IColor color2 = ColorManage.CreatColor(0, 255, 0);
-            IAlgorithmicColorRamp ramp = new AlgorithmicColorRamp{
+            IAlgorithmicColorRamp ramp = new AlgorithmicColorRamp
+            {
                 Size = 255,
                 FromColor = color,
                 ToColor = color2
@@ -879,4 +921,3 @@ namespace Yutai.ArcGIS.Common.Raster
         }
     }
 }
-

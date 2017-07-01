@@ -69,7 +69,7 @@ namespace Yutai.ArcGIS.Carto.UI
             return "";
         }
 
- private void Fieldlist_DoubleClick(object sender, EventArgs e)
+        private void Fieldlist_DoubleClick(object sender, EventArgs e)
         {
             string selectedItem = this.Fieldlist.SelectedItem as string;
             string text = this.memEditWhereCaluse.Text;
@@ -114,12 +114,14 @@ namespace Yutai.ArcGIS.Carto.UI
                 {
                     str = string_2;
                 }
-                IQueryFilter queryFilter = new QueryFilterClass {
+                IQueryFilter queryFilter = new QueryFilterClass
+                {
                     WhereClause = "1=1"
                 };
                 (queryFilter as IQueryFilterDefinition).PostfixClause = "Order by " + str;
                 ICursor cursor = itable_1.Search(queryFilter, false);
-                IDataStatistics statistics = new DataStatisticsClass {
+                IDataStatistics statistics = new DataStatisticsClass
+                {
                     Field = str,
                     Cursor = cursor
                 };
@@ -138,7 +140,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void lstFunction_DoubleClick(object sender, EventArgs e)
+        private void lstFunction_DoubleClick(object sender, EventArgs e)
         {
             string selectedItem = this.lstFunction.SelectedItem as string;
             string text = this.memEditWhereCaluse.Text;
@@ -305,7 +307,10 @@ namespace Yutai.ArcGIS.Carto.UI
                 for (int i = 0; i < fields.FieldCount; i++)
                 {
                     IField field = fields.get_Field(i);
-                    if ((((field.Type == esriFieldType.esriFieldTypeInteger) || (field.Type == esriFieldType.esriFieldTypeSingle)) || (field.Type == esriFieldType.esriFieldTypeDouble)) || (field.Type == esriFieldType.esriFieldTypeSmallInteger))
+                    if ((((field.Type == esriFieldType.esriFieldTypeInteger) ||
+                          (field.Type == esriFieldType.esriFieldTypeSingle)) ||
+                         (field.Type == esriFieldType.esriFieldTypeDouble)) ||
+                        (field.Type == esriFieldType.esriFieldTypeSmallInteger))
                     {
                         listBoxItemCollection_0.Add(str + field.Name + str2);
                     }
@@ -481,14 +486,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public string Expression
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
 
         public ITable Table
@@ -501,4 +500,3 @@ namespace Yutai.ArcGIS.Carto.UI
         }
     }
 }
-

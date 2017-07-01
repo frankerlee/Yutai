@@ -21,7 +21,7 @@ namespace Yutai.Plugins.Identifer.Query
 {
     public partial class frmAttributeQueryBuilder : MetroForm
     {
-    //后期可能改命令可以同时对二维和三维窗口进行查询
+        //后期可能改命令可以同时对二维和三维窗口进行查询
 
         private UcAttributeQueryBuilder m_pAttributeQuery = new UcAttributeQueryBuilder();
 
@@ -31,7 +31,7 @@ namespace Yutai.Plugins.Identifer.Query
 
         private IScene m_pScene;
 
-       
+
         private QueryTargerEnum _queryTargerEnum;
         private ILayer m_SelLayer = null;
 
@@ -42,12 +42,13 @@ namespace Yutai.Plugins.Identifer.Query
             get { return _queryTargerEnum; }
             set { _queryTargerEnum = value; }
         }
+
         public IBasicMap Map
         {
             set
             {
                 this.m_pMap = value;
-                _queryTargerEnum= QueryTargerEnum.View2D;
+                _queryTargerEnum = QueryTargerEnum.View2D;
             }
         }
 
@@ -56,9 +57,10 @@ namespace Yutai.Plugins.Identifer.Query
             set
             {
                 this.m_pScene = value;
-                _queryTargerEnum=QueryTargerEnum.View3D;
+                _queryTargerEnum = QueryTargerEnum.View3D;
             }
         }
+
         public frmAttributeQueryBuilder(IAppContext context)
         {
             this.InitializeComponent();
@@ -72,7 +74,6 @@ namespace Yutai.Plugins.Identifer.Query
             this.InitializeComponent();
             this.m_pAttributeQuery.Dock = DockStyle.Fill;
             this.panel2.Controls.Add(this.m_pAttributeQuery);
-
         }
 
         private void AddGroupLayer(ICompositeLayer pCompositeLayer)
@@ -112,11 +113,11 @@ namespace Yutai.Plugins.Identifer.Query
                         }
                         else if (!this.chkZoomToSelect.Checked)
                         {
-                            if(_queryTargerEnum== QueryTargerEnum.View2D)
-                            (this.m_pMap as IActiveView).Refresh();
+                            if (_queryTargerEnum == QueryTargerEnum.View2D)
+                                (this.m_pMap as IActiveView).Refresh();
                             else
                             {
-                               ( this.m_pScene as IActiveView).Refresh();
+                                (this.m_pScene as IActiveView).Refresh();
                             }
                         }
                         else
@@ -127,7 +128,6 @@ namespace Yutai.Plugins.Identifer.Query
                             {
                                 CommonHelper.Zoom2SelectedFeature(this.m_pScene as IActiveView);
                             }
-                            
                         }
                     }
                     else
@@ -137,7 +137,7 @@ namespace Yutai.Plugins.Identifer.Query
                 }
                 catch (Exception exception)
                 {
-                    Logger.Current.Error("信息查询错误",exception.Message);
+                    Logger.Current.Error("信息查询错误", exception.Message);
                 }
             }
         }
@@ -149,7 +149,7 @@ namespace Yutai.Plugins.Identifer.Query
 
         private void cboSelectType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.m_SelectionResultType = (esriSelectionResultEnum)this.cboSelectType.SelectedIndex;
+            this.m_SelectionResultType = (esriSelectionResultEnum) this.cboSelectType.SelectedIndex;
         }
 
         private void chkShowSelectbaleLayer_Click(object sender, EventArgs e)
@@ -163,12 +163,11 @@ namespace Yutai.Plugins.Identifer.Query
                     {
                         if (!(layer as IFeatureLayer).Selectable)
                         {
-                           continue;
+                            continue;
                         }
                     }
                     this.comboBoxLayer.Items.Add(new LayerObject(layer));
                 }
-           
             }
             if (this.comboBoxLayer.Items.Count > 0)
             {
@@ -185,7 +184,6 @@ namespace Yutai.Plugins.Identifer.Query
             }
         }
 
-    
 
         private void frmAttributeQueryBuilder_Load(object sender, EventArgs e)
         {
@@ -201,9 +199,10 @@ namespace Yutai.Plugins.Identifer.Query
             }
             else
             {
-                if (m_pScene == null && _context != null && _context.SceneControl!=null)
-                { m_pScene = _context.SceneControl.Scene as IScene;
-                InitControlByScene();
+                if (m_pScene == null && _context != null && _context.SceneControl != null)
+                {
+                    m_pScene = _context.SceneControl.Scene as IScene;
+                    InitControlByScene();
                 }
                 else
                 {
@@ -212,6 +211,7 @@ namespace Yutai.Plugins.Identifer.Query
                 }
             }
         }
+
         private void InitControlByMap()
         {
             this.comboBoxLayer.Items.Clear();
@@ -259,11 +259,10 @@ namespace Yutai.Plugins.Identifer.Query
             if (cmbMap.SelectedIndex == 0)
             {
                 _queryTargerEnum = QueryTargerEnum.View2D;
-
             }
             else
             {
-                _queryTargerEnum= QueryTargerEnum.View3D;
+                _queryTargerEnum = QueryTargerEnum.View3D;
             }
             InitControl();
         }

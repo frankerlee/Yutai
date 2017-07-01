@@ -29,13 +29,13 @@ namespace Yutai.Shared
 
             using (var stream = new MemoryStream(encoding.GetBytes(targetString)))
             {
-                var xmlDict = new XmlDictionaryReaderQuotas { MaxStringContentLength = 285192 };
+                var xmlDict = new XmlDictionaryReaderQuotas {MaxStringContentLength = 285192};
 
                 using (var reader = XmlDictionaryReader.CreateTextReader(stream, xmlDict))
                 {
                     var ser = new XmlSerializer(typeof(T));
 
-                    return (T)ser.Deserialize(reader);
+                    return (T) ser.Deserialize(reader);
                 }
             }
         }
@@ -46,7 +46,7 @@ namespace Yutai.Shared
 
             var ser = new XmlSerializer(typeof(T));
             var o = ser.Deserialize(reader);
-            return (T)o;
+            return (T) o;
         }
 
         public static XmlElement SerializeToElement<T>(this T target)
@@ -104,12 +104,12 @@ namespace Yutai.Shared
         {
             var sb = new StringBuilder();
             var settings = new XmlWriterSettings
-                               {
-                                   Indent = true,
-                                   IndentChars = @"    ",
-                                   NewLineChars = Environment.NewLine,
-                                   NewLineHandling = NewLineHandling.Replace,
-                               };
+            {
+                Indent = true,
+                IndentChars = @"    ",
+                NewLineChars = Environment.NewLine,
+                NewLineHandling = NewLineHandling.Replace,
+            };
 
             using (var writer = XmlWriter.Create(sb, settings))
             {

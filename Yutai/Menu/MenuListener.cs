@@ -17,13 +17,13 @@ namespace Yutai.Menu
     public class MenuListener
     {
         private readonly IAppContext _context;
-      
+
         private readonly IProjectService _projectService;
 
         public MenuListener(
             IAppContext context,
             IProjectService projectService
-           )
+        )
         {
             Logger.Current.Trace("In MenuListener");
             if (context == null) throw new ArgumentNullException("context");
@@ -35,7 +35,6 @@ namespace Yutai.Menu
             {
                 appContext.Broadcaster.ItemClicked += ItemClicked;
             }
-           
         }
 
         public void RunCommand(string menuKey)
@@ -47,7 +46,6 @@ namespace Yutai.Menu
                 return;
             }
 
-            
 
             _context.View.Update();
         }
@@ -56,7 +54,6 @@ namespace Yutai.Menu
         {
             var config = AppConfig.Instance;
 
-          
 
             return false;
         }
@@ -64,45 +61,38 @@ namespace Yutai.Menu
         private bool HandleCursorChanged(string itemKey)
         {
             // MapCursorChanged event is raised automatically; no need to update UI manually
-        
+
             return false;
         }
 
         private bool HandleDialogs(string itemKey)
         {
-           
             return false;
         }
 
         private bool HandleHelpMenu(string itemKey)
         {
-        
-
             return false;
         }
 
         private bool HandleLayerMenu(string itemKey)
         {
-       
-
             return false;
         }
 
         private bool HandleProjectCommand(string itemKey)
         {
-           
             return false;
         }
 
         private void ItemClicked(object sender, EventArgs e)
         {
-           MessageService.Current.Info("Item Click "+sender.GetType().FullName);
+            MessageService.Current.Info("Item Click " + sender.GetType().FullName);
         }
 
         private void MenuItemClicked(object sender, MenuItemEventArgs e)
         {
             RunCommand(e.ItemKey);
         }
-        
     }
 }

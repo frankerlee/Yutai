@@ -39,12 +39,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void frmSelectReconcileVersion_Load(object sender, EventArgs e)
+        private void frmSelectReconcileVersion_Load(object sender, EventArgs e)
         {
             this.method_0();
         }
 
- private void method_0()
+        private void method_0()
         {
             if ((this.iversion_0 != null) && this.iversion_0.HasParent())
             {
@@ -66,11 +66,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IVersion Version
         {
-            set
-            {
-                this.iversion_0 = value;
-            }
+            set { this.iversion_0 = value; }
         }
     }
 }
-

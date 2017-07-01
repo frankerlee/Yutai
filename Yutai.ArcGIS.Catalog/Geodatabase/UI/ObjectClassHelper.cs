@@ -42,7 +42,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 IFeatureClass relatedFeatureClass;
                 if (this.ifeatureDataset_0 != null)
                 {
-                    if ((this.ifeatureDataset_0.Workspace as IWorkspace2).get_NameExists(esriDatasetType.esriDTFeatureClass, this.Name))
+                    if (
+                        (this.ifeatureDataset_0.Workspace as IWorkspace2).get_NameExists(
+                            esriDatasetType.esriDTFeatureClass, this.Name))
                     {
                         MessageBox.Show("要素已存在，请重新给定要素名");
                         return null;
@@ -54,11 +56,14 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         {
                             relatedFeatureClass = this.m_RelatedFeatureClass;
                         }
-                        class2 = this.method_1(this.Name, this.m_RefScale, this.m_pFieds, this.ifeatureDataset_0, relatedFeatureClass, this.iworkspace_0 as IFeatureWorkspaceAnno, this.m_Units, this.m_pAnnoPropertiesColn, this.m_pSymbolColl);
+                        class2 = this.method_1(this.Name, this.m_RefScale, this.m_pFieds, this.ifeatureDataset_0,
+                            relatedFeatureClass, this.iworkspace_0 as IFeatureWorkspaceAnno, this.m_Units,
+                            this.m_pAnnoPropertiesColn, this.m_pSymbolColl);
                     }
                     else
                     {
-                        class2 = this.ifeatureDataset_0.CreateFeatureClass(this.Name, this.m_pFieds, null, null, this.m_FeatreType, this.ShapeFieldName, "");
+                        class2 = this.ifeatureDataset_0.CreateFeatureClass(this.Name, this.m_pFieds, null, null,
+                            this.m_FeatreType, this.ShapeFieldName, "");
                     }
                 }
                 else
@@ -72,12 +77,13 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         }
                         try
                         {
-                            class2 = (this.iworkspace_0 as IFeatureWorkspace).CreateFeatureClass(this.Name, this.m_pFieds, null, null, this.m_FeatreType, this.ShapeFieldName, "");
+                            class2 = (this.iworkspace_0 as IFeatureWorkspace).CreateFeatureClass(this.Name,
+                                this.m_pFieds, null, null, this.m_FeatreType, this.ShapeFieldName, "");
                             goto Label_0262;
                         }
                         catch (Exception exception)
                         {
-                            Logger.Current.Error("",exception, "创建shape文件");
+                            Logger.Current.Error("", exception, "创建shape文件");
                             return null;
                         }
                     }
@@ -93,19 +99,24 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         {
                             relatedFeatureClass = this.m_RelatedFeatureClass;
                         }
-                        class2 = this.method_1(this.Name, this.m_RefScale, this.m_pFieds, null, relatedFeatureClass, this.iworkspace_0 as IFeatureWorkspaceAnno, this.m_Units, this.m_pAnnoPropertiesColn, this.m_pSymbolColl);
+                        class2 = this.method_1(this.Name, this.m_RefScale, this.m_pFieds, null, relatedFeatureClass,
+                            this.iworkspace_0 as IFeatureWorkspaceAnno, this.m_Units, this.m_pAnnoPropertiesColn,
+                            this.m_pSymbolColl);
                     }
                     else
                     {
-                        class2 = (this.iworkspace_0 as IFeatureWorkspace).CreateFeatureClass(this.Name, this.m_pFieds, null, null, this.m_FeatreType, this.ShapeFieldName, "");
+                        class2 = (this.iworkspace_0 as IFeatureWorkspace).CreateFeatureClass(this.Name, this.m_pFieds,
+                            null, null, this.m_FeatreType, this.ShapeFieldName, "");
                     }
                 }
             }
             else
             {
-                class2 = (this.iworkspace_0 as IFeatureWorkspace).CreateTable(this.Name, this.m_pFieds, null, null, "") as IObjectClass;
+                class2 =
+                    (this.iworkspace_0 as IFeatureWorkspace).CreateTable(this.Name, this.m_pFieds, null, null, "") as
+                        IObjectClass;
             }
-        Label_0262:
+            Label_0262:
             if (((class2 != null) && !ObjectClassShareData.m_IsShapeFile) && (this.AliasName.Length > 0))
             {
                 (class2 as IClassSchemaEdit).AlterAliasName(this.AliasName);
@@ -208,17 +219,24 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             (ispatialReference_0 as ISpatialReferenceTolerance).SetDefaultXYTolerance();
         }
 
-        private IFeatureClass method_1(string string_0, double double_0, IFields ifields_0, IFeatureDataset ifeatureDataset_1, IFeatureClass ifeatureClass_0, IFeatureWorkspaceAnno ifeatureWorkspaceAnno_0, esriUnits esriUnits_0, IAnnotateLayerPropertiesCollection2 iannotateLayerPropertiesCollection2_0, ISymbolCollection2 isymbolCollection2_0)
+        private IFeatureClass method_1(string string_0, double double_0, IFields ifields_0,
+            IFeatureDataset ifeatureDataset_1, IFeatureClass ifeatureClass_0,
+            IFeatureWorkspaceAnno ifeatureWorkspaceAnno_0, esriUnits esriUnits_0,
+            IAnnotateLayerPropertiesCollection2 iannotateLayerPropertiesCollection2_0,
+            ISymbolCollection2 isymbolCollection2_0)
         {
             IObjectClassDescription description = new AnnotationFeatureClassDescriptionClass();
             IFeatureClassDescription description2 = description as IFeatureClassDescription;
-            IGraphicsLayerScale referenceScale = new GraphicsLayerScaleClass {
+            IGraphicsLayerScale referenceScale = new GraphicsLayerScaleClass
+            {
                 ReferenceScale = double_0,
                 Units = esriUnits_0
             };
             UID instanceCLSID = description.InstanceCLSID;
             UID classExtensionCLSID = description.ClassExtensionCLSID;
-            return ifeatureWorkspaceAnno_0.CreateAnnotationClass(string_0, ifields_0, instanceCLSID, classExtensionCLSID, description2.ShapeFieldName, "", ifeatureDataset_1, ifeatureClass_0, iannotateLayerPropertiesCollection2_0, referenceScale, isymbolCollection2_0, true);
+            return ifeatureWorkspaceAnno_0.CreateAnnotationClass(string_0, ifields_0, instanceCLSID, classExtensionCLSID,
+                description2.ShapeFieldName, "", ifeatureDataset_1, ifeatureClass_0,
+                iannotateLayerPropertiesCollection2_0, referenceScale, isymbolCollection2_0, true);
         }
 
         private static void old_acctor_mc()
@@ -228,10 +246,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IFeatureDataset FeatureDataset
         {
-            get
-            {
-                return this.ifeatureDataset_0;
-            }
+            get { return this.ifeatureDataset_0; }
             set
             {
                 this.ifeatureDataset_0 = value;
@@ -242,10 +257,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IWorkspace Workspace
         {
-            get
-            {
-                return this.iworkspace_0;
-            }
+            get { return this.iworkspace_0; }
             set
             {
                 this.iworkspace_0 = value;
@@ -254,4 +266,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

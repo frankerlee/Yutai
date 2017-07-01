@@ -9,7 +9,6 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 {
     public partial class EditTemplateListView : ListView
     {
-
         public EditTemplateListView()
         {
             this.InitializeComponent();
@@ -30,9 +29,10 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             base.Items.Add(li);
         }
 
- protected override void OnPaint(PaintEventArgs e)
+        protected override void OnPaint(PaintEventArgs e)
         {
-            StringFormat format = new StringFormat {
+            StringFormat format = new StringFormat
+            {
                 LineAlignment = StringAlignment.Center,
                 Alignment = StringAlignment.Near
             };
@@ -51,7 +51,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                         e.Graphics.DrawString(group.Header, this.Font, brush2, (float) bounds.X, (float) (bounds.Y - 21));
                         Pen pen = new Pen(Color.FromArgb(178, 193, 224));
                         SizeF ef = e.Graphics.MeasureString(group.Header, this.Font);
-                        e.Graphics.DrawLine(pen, bounds.X + ef.Width, (bounds.Y - 21f) + (ef.Height / 2f), (float) (bounds.X + base.ClientRectangle.Width), (bounds.Y - 21f) + (ef.Height / 2f));
+                        e.Graphics.DrawLine(pen, bounds.X + ef.Width, (bounds.Y - 21f) + (ef.Height/2f),
+                            (float) (bounds.X + base.ClientRectangle.Width), (bounds.Y - 21f) + (ef.Height/2f));
                         pen.Dispose();
                         brush.Dispose();
                         brush2.Dispose();
@@ -78,9 +79,11 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                                 brush2 = new SolidBrush(group.Items[j].ForeColor);
                             }
                             Rectangle rectangle4 = group.Items[j].GetBounds(ItemBoundsPortion.Label);
-                            RectangleF rect = new RectangleF((float) rectangle4.X, (float) rectangle4.Y, (float) rectangle4.Width, 16f);
+                            RectangleF rect = new RectangleF((float) rectangle4.X, (float) rectangle4.Y,
+                                (float) rectangle4.Width, 16f);
                             e.Graphics.FillRectangle(brush, rect);
-                            e.Graphics.DrawString(group.Items[j].Text, this.Font, brush2, (float) rectangle4.X, (float) rectangle4.Y);
+                            e.Graphics.DrawString(group.Items[j].Text, this.Font, brush2, (float) rectangle4.X,
+                                (float) rectangle4.Y);
                             brush.Dispose();
                             brush2.Dispose();
                         }
@@ -90,8 +93,9 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             base.OnPaint(e);
         }
 
-        [DllImport("user32.dll", CharSet=CharSet.Auto)]
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
         public static extern int SendMessage(IntPtr handle, int messg, int wparam, int lparam);
+
         public void SetExStyles()
         {
             this.styles = (LVS_EX) SendMessage(base.Handle, 4151, 0, 0);
@@ -107,4 +111,3 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         }
     }
 }
-

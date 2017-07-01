@@ -31,13 +31,12 @@ namespace Yutai.Plugins.Locator.Views
             _map = _context.MapControl.Map;
             _plugin = plugin;
         }
-        
+
 
         public Control GetInternalObject()
         {
             return View as Control;
         }
-
 
 
         public override void RunCommand(LocatorCommand command)
@@ -58,18 +57,12 @@ namespace Yutai.Plugins.Locator.Views
 
         private void ActivatePanel()
         {
-            _context.DockPanels.ShowDockPanel(LocatorDockPanel.DefaultDockName,true,true);
-           
+            _context.DockPanels.ShowDockPanel(LocatorDockPanel.DefaultDockName, true, true);
         }
 
-       
+
         private void OnItemSelected()
         {
-
         }
-
-      
-
-
     }
 }

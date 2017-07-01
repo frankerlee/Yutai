@@ -25,7 +25,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnSelectDelta_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
                 Filter = "*.mdb|*.mdb|*.xml|*.xml",
                 Multiselect = false
             };
@@ -105,7 +106,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.Init();
         }
 
- public bool Do()
+        public bool Do()
         {
             if (CheckInHelper.m_pHelper.MasterWorkspaceName != null)
             {
@@ -182,7 +183,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private string method_0(IWorkspaceName iworkspaceName_0)
+        private string method_0(IWorkspaceName iworkspaceName_0)
         {
             string pathName = iworkspaceName_0.PathName;
             if (iworkspaceName_0.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace)
@@ -235,4 +236,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

@@ -27,11 +27,11 @@ namespace Yutai.ArcGIS.Framework
         {
             base.SuspendLayout();
             base.ClientSize = new Size(292, 273);
-            base.DockAreas = DockAreas.DockBottom | DockAreas.DockTop | DockAreas.DockRight | DockAreas.DockLeft | DockAreas.Float;
+            base.DockAreas = DockAreas.DockBottom | DockAreas.DockTop | DockAreas.DockRight | DockAreas.DockLeft |
+                             DockAreas.Float;
             base.HideOnClose = true;
             base.Name = "MyDockContext";
             base.ResumeLayout(false);
         }
     }
 }
-

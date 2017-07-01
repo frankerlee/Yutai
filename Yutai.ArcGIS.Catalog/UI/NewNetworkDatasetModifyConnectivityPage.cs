@@ -29,7 +29,8 @@ namespace Yutai.ArcGIS.Catalog.UI
                     ListViewItem item = this.listView1.Items[i];
                     if (item.Tag != null)
                     {
-                        NewNetworkDatasetHelper.FeatureClassWrap tag = item.Tag as NewNetworkDatasetHelper.FeatureClassWrap;
+                        NewNetworkDatasetHelper.FeatureClassWrap tag =
+                            item.Tag as NewNetworkDatasetHelper.FeatureClassWrap;
                         if (tag.FeatureClass.ShapeType == esriGeometryType.esriGeometryPolyline)
                         {
                             if (item.SubItems[1].Text == "From End")
@@ -75,7 +76,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
         }
 
- private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             ListViewItem itemAt = this.listView1.GetItemAt(e.X, e.Y);
             if (itemAt != null)
@@ -103,14 +104,18 @@ namespace Yutai.ArcGIS.Catalog.UI
                     for (index = 0; index < fields.FieldCount; index++)
                     {
                         IField field = fields.get_Field(index);
-                        if ((((field.Type == esriFieldType.esriFieldTypeDouble) || (field.Type == esriFieldType.esriFieldTypeInteger)) || (field.Type == esriFieldType.esriFieldTypeSingle)) || (field.Type == esriFieldType.esriFieldTypeSmallInteger))
+                        if ((((field.Type == esriFieldType.esriFieldTypeDouble) ||
+                              (field.Type == esriFieldType.esriFieldTypeInteger)) ||
+                             (field.Type == esriFieldType.esriFieldTypeSingle)) ||
+                            (field.Type == esriFieldType.esriFieldTypeSmallInteger))
                         {
                             this.comboBox1.Items.Add(field.Name);
                         }
                     }
                     this.comboBox1.SelectedValueChanged += new EventHandler(this.comboBox1_SelectedValueChanged);
                     this.comboBox1.Leave += new EventHandler(this.comboBox1_Leave);
-                    this.comboBox1.Location = new System.Drawing.Point(left, this.listView1.GetItemRect(this.listView1.Items.IndexOf(itemAt)).Y);
+                    this.comboBox1.Location = new System.Drawing.Point(left,
+                        this.listView1.GetItemRect(this.listView1.Items.IndexOf(itemAt)).Y);
                     this.comboBox1.Width = this.listView1.Columns[this.int_0].Width;
                     if (this.comboBox1.Width > this.listView1.Width)
                     {
@@ -133,7 +138,8 @@ namespace Yutai.ArcGIS.Catalog.UI
             string[] items = new string[3];
             for (int i = 0; i < NewNetworkDatasetHelper.NewNetworkDataset.FeatureClassWraps.Count; i++)
             {
-                NewNetworkDatasetHelper.FeatureClassWrap wrap = NewNetworkDatasetHelper.NewNetworkDataset.FeatureClassWraps[i];
+                NewNetworkDatasetHelper.FeatureClassWrap wrap =
+                    NewNetworkDatasetHelper.NewNetworkDataset.FeatureClassWraps[i];
                 if (wrap.IsUse)
                 {
                     ListViewItem item;
@@ -142,12 +148,14 @@ namespace Yutai.ArcGIS.Catalog.UI
                         items[0] = wrap.FeatureClass.AliasName;
                         items[1] = "From End";
                         items[2] = "";
-                        item = new ListViewItem(items) {
+                        item = new ListViewItem(items)
+                        {
                             Tag = wrap
                         };
                         this.listView1.Items.Add(item);
                         items[1] = "To End";
-                        item = new ListViewItem(items) {
+                        item = new ListViewItem(items)
+                        {
                             Tag = wrap
                         };
                         this.listView1.Items.Add(item);
@@ -157,7 +165,8 @@ namespace Yutai.ArcGIS.Catalog.UI
                         items[0] = wrap.FeatureClass.AliasName;
                         items[1] = "";
                         items[2] = "";
-                        item = new ListViewItem(items) {
+                        item = new ListViewItem(items)
+                        {
                             Tag = wrap
                         };
                         this.listView1.Items.Add(item);
@@ -176,4 +185,3 @@ namespace Yutai.ArcGIS.Catalog.UI
         }
     }
 }
-

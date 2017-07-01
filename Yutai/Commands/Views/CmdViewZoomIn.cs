@@ -14,8 +14,7 @@ using Yutai.Properties;
 
 namespace Yutai.Commands.Views
 {
-   
-    public class CmdViewZoomIn:YutaiTool
+    public class CmdViewZoomIn : YutaiTool
     {
         private IPoint _iPoint;
         private INewEnvelopeFeedback _envelopeFeedback;
@@ -27,7 +26,7 @@ namespace Yutai.Commands.Views
 
         public CmdViewZoomIn(IAppContext context)
         {
-           OnCreate(context);
+            OnCreate(context);
         }
 
         public override RibbonItemType ItemType
@@ -38,10 +37,9 @@ namespace Yutai.Commands.Views
         public override void OnClick()
         {
             _inZoom = false;
-           _context.SetCurrentTool(this);
+            _context.SetCurrentTool(this);
         }
 
-       
 
         public override void OnClick(object sender, EventArgs args)
         {
@@ -55,7 +53,8 @@ namespace Yutai.Commands.Views
             base.m_category = "View";
             base.m_bitmap = Properties.Resources.icon_zoom_in;
             _cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.Resource.Cursor.ZoomIn.cur"));
-            _cursor1 = new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.Resource.Cursor.MoveZoomIn.cur"));
+            _cursor1 =
+                new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.Resource.Cursor.MoveZoomIn.cur"));
             base.m_name = "View_ZoomIn";
             base._key = "View_ZoomIn";
             base.m_toolTip = "放大";
@@ -93,7 +92,8 @@ namespace Yutai.Commands.Views
                         this._context.ActiveView.Refresh();
                     }
                 }
-                this._iPoint = ((IActiveView)this._context.FocusMap).ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
+                this._iPoint = ((IActiveView) this._context.FocusMap).ScreenDisplay.DisplayTransformation.ToMapPoint(x,
+                    y);
                 this.m_cursor = this._cursor1;
                 this._inZoom = true;
             }
@@ -103,7 +103,7 @@ namespace Yutai.Commands.Views
         {
             if (this._inZoom)
             {
-                IActiveView activeView = (IActiveView)this._context.FocusMap;
+                IActiveView activeView = (IActiveView) this._context.FocusMap;
                 if (this._envelopeFeedback == null)
                 {
                     this._envelopeFeedback = new NewEnvelopeFeedbackClass();
@@ -120,7 +120,7 @@ namespace Yutai.Commands.Views
 
             this.m_cursor = this._cursor;
             this._inZoom = false;
-            IActiveView activeView = (IActiveView)this._context.FocusMap;
+            IActiveView activeView = (IActiveView) this._context.FocusMap;
             IEnvelope envelope;
             if (this._envelopeFeedback == null)
             {
@@ -141,9 +141,6 @@ namespace Yutai.Commands.Views
             activeView.Extent = envelope;
             this._envelopeFeedback = null;
             activeView.Refresh();
-
         }
     }
-
-   
 }

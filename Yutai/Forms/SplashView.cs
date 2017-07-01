@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Forms
 {
@@ -27,6 +28,7 @@ namespace Yutai.Forms
 
             ShowVersion();
         }
+
         private void ShowVersion()
         {
             lblVersion.Text = Assembly.GetExecutingAssembly().GetName().Version.ToString();

@@ -5,4 +5,3 @@
         CoPointCollection Point { get; set; }
     }
 }
-

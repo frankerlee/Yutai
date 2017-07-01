@@ -15,7 +15,6 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 {
     public partial class AnnoClassSetCtrl : UserControl
     {
-
         public AnnoClassSetCtrl()
         {
             this.InitializeComponent();
@@ -58,7 +57,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            frmInput input = new frmInput("名称:", "") {
+            frmInput input = new frmInput("名称:", "")
+            {
                 Text = "输入"
             };
             if (input.ShowDialog() == DialogResult.OK)
@@ -82,7 +82,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     ITextSymbol symbol = new TextSymbolClass();
                     int symbolID = this.method_4(NewObjectClassHelper.m_pObjectClassHelper.m_pSymbolColl);
                     NewObjectClassHelper.m_pObjectClassHelper.m_pSymbolColl.set_Symbol(symbolID, symbol as ISymbol);
-                    IAnnotateLayerProperties item = new LabelEngineLayerPropertiesClass {
+                    IAnnotateLayerProperties item = new LabelEngineLayerPropertiesClass
+                    {
                         Class = input.InputValue,
                         FeatureLinked = NewObjectClassHelper.m_pObjectClassHelper.IsRelatedFeature,
                         AddUnplacedToGraphicsContainer = false,
@@ -94,7 +95,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     if (NewObjectClassHelper.m_pObjectClassHelper.IsRelatedFeature)
                     {
                         new AnnotationVBScriptEngineClass();
-                        IFeatureClass relatedFeatureClass = NewObjectClassHelper.m_pObjectClassHelper.RelatedFeatureClass;
+                        IFeatureClass relatedFeatureClass =
+                            NewObjectClassHelper.m_pObjectClassHelper.RelatedFeatureClass;
                         properties2.Expression = "[" + relatedFeatureClass.ObjectClassID + "]";
                         properties2.IsExpressionSimple = true;
                     }
@@ -113,7 +115,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             if (this.listBoxControl1.SelectedIndex != -1)
             {
                 SymbolIdentifierWrap selectedItem = this.listBoxControl1.SelectedItem as SymbolIdentifierWrap;
-                frmInput input = new frmInput("名称:", selectedItem.AnnotateLayerProperties.Class) {
+                frmInput input = new frmInput("名称:", selectedItem.AnnotateLayerProperties.Class)
+                {
                     Text = "输入新类名"
                 };
                 if (input.ShowDialog() == DialogResult.OK)
@@ -238,7 +241,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
         }
 
- public void Init()
+        public void Init()
         {
             if (NewObjectClassHelper.m_pObjectClassHelper.IsRelatedFeature)
             {
@@ -254,7 +257,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             {
                 ITextSymbol symbol = new TextSymbolClass();
                 NewObjectClassHelper.m_pObjectClassHelper.m_pSymbolColl.set_Symbol(0, symbol as ISymbol);
-                IAnnotateLayerProperties item = new LabelEngineLayerPropertiesClass {
+                IAnnotateLayerProperties item = new LabelEngineLayerPropertiesClass
+                {
                     Class = "要素类 1",
                     FeatureLinked = NewObjectClassHelper.m_pObjectClassHelper.IsRelatedFeature,
                     AddUnplacedToGraphicsContainer = false,
@@ -288,7 +292,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.listBoxControl1.SelectedIndex = 0;
         }
 
- private void listBoxControl1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBoxControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if ((this.listBoxControl1.ItemCount > 1) && (this.listBoxControl1.SelectedIndex != -1))
             {
@@ -311,7 +315,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 stdole.IFontDisp font = (selectedItem.SymbolIdentifier.Symbol as ITextSymbol).Font;
                 if (!NewObjectClassHelper.m_pObjectClassHelper.IsRelatedFeature)
                 {
-                    if ((selectedItem.AnnotateLayerProperties.AnnotationMaximumScale != 0.0) || (selectedItem.AnnotateLayerProperties.AnnotationMinimumScale != 0.0))
+                    if ((selectedItem.AnnotateLayerProperties.AnnotationMaximumScale != 0.0) ||
+                        (selectedItem.AnnotateLayerProperties.AnnotationMinimumScale != 0.0))
                     {
                         this.rdoDisplayScale.SelectedIndex = 1;
                         this.panelScaleSet.Enabled = true;
@@ -431,8 +436,10 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void method_5(SymbolIdentifierWrap symbolIdentifierWrap_0)
         {
-            NewObjectClassHelper.m_pObjectClassHelper.m_pSymbolColl.Replace(symbolIdentifierWrap_0.SymbolIdentifier.ID, symbolIdentifierWrap_0.SymbolIdentifier.Symbol);
-            NewObjectClassHelper.m_pObjectClassHelper.m_pAnnoPropertiesColn.Replace(this.listBoxControl1.SelectedIndex, symbolIdentifierWrap_0.AnnotateLayerProperties);
+            NewObjectClassHelper.m_pObjectClassHelper.m_pSymbolColl.Replace(symbolIdentifierWrap_0.SymbolIdentifier.ID,
+                symbolIdentifierWrap_0.SymbolIdentifier.Symbol);
+            NewObjectClassHelper.m_pObjectClassHelper.m_pAnnoPropertiesColn.Replace(this.listBoxControl1.SelectedIndex,
+                symbolIdentifierWrap_0.AnnotateLayerProperties);
         }
 
         private void rdoDisplayScale_SelectedIndexChanged(object sender, EventArgs e)
@@ -444,7 +451,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 if (this.listBoxControl1.SelectedIndex != -1)
                 {
                     selectedItem = this.listBoxControl1.SelectedItem as SymbolIdentifierWrap;
-                    if ((selectedItem.AnnotateLayerProperties.AnnotationMaximumScale != 0.0) || (selectedItem.AnnotateLayerProperties.AnnotationMinimumScale != 0.0))
+                    if ((selectedItem.AnnotateLayerProperties.AnnotationMaximumScale != 0.0) ||
+                        (selectedItem.AnnotateLayerProperties.AnnotationMinimumScale != 0.0))
                     {
                         selectedItem.AnnotateLayerProperties.AnnotationMaximumScale = 0.0;
                         selectedItem.AnnotateLayerProperties.AnnotationMinimumScale = 0.0;
@@ -527,7 +535,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             private IAnnotateLayerProperties iannotateLayerProperties_0 = null;
             private ISymbolIdentifier2 isymbolIdentifier2_0 = null;
 
-            public SymbolIdentifierWrap(IAnnotateLayerProperties iannotateLayerProperties_1, ISymbolIdentifier2 isymbolIdentifier2_1)
+            public SymbolIdentifierWrap(IAnnotateLayerProperties iannotateLayerProperties_1,
+                ISymbolIdentifier2 isymbolIdentifier2_1)
             {
                 this.iannotateLayerProperties_0 = iannotateLayerProperties_1;
                 this.isymbolIdentifier2_0 = isymbolIdentifier2_1;
@@ -540,20 +549,13 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
             public IAnnotateLayerProperties AnnotateLayerProperties
             {
-                get
-                {
-                    return this.iannotateLayerProperties_0;
-                }
+                get { return this.iannotateLayerProperties_0; }
             }
 
             public ISymbolIdentifier2 SymbolIdentifier
             {
-                get
-                {
-                    return this.isymbolIdentifier2_0;
-                }
+                get { return this.isymbolIdentifier2_0; }
             }
         }
     }
 }
-

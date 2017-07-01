@@ -29,7 +29,8 @@ namespace Yutai.ArcGIS.Carto
             IElement element = this.ielement_0;
             if (element is ITextElement)
             {
-                sheet = new frmElementProperty {
+                sheet = new frmElementProperty
+                {
                     Title = "属性"
                 };
                 page = new TextSetupCtrl();
@@ -48,7 +49,8 @@ namespace Yutai.ArcGIS.Carto
                 IEnvelope envelope;
                 if (element is IMapFrame)
                 {
-                    sheet = new frmElementProperty {
+                    sheet = new frmElementProperty
+                    {
                         Title = "数据框 属性"
                     };
                     page = null;
@@ -68,7 +70,8 @@ namespace Yutai.ArcGIS.Carto
                 }
                 else if (element is IPictureElement)
                 {
-                    sheet = new frmElementProperty {
+                    sheet = new frmElementProperty
+                    {
                         Title = "图像 属性"
                     };
                     page = null;
@@ -86,7 +89,8 @@ namespace Yutai.ArcGIS.Carto
                 }
                 else if (element is IMapSurroundFrame)
                 {
-                    sheet = new frmElementProperty {
+                    sheet = new frmElementProperty
+                    {
                         Title = "属性"
                     };
                     page = null;
@@ -131,7 +135,8 @@ namespace Yutai.ArcGIS.Carto
                 }
                 else if (element is IFrameElement)
                 {
-                    sheet = new frmElementProperty {
+                    sheet = new frmElementProperty
+                    {
                         Title = "属性"
                     };
                     page = null;
@@ -149,7 +154,8 @@ namespace Yutai.ArcGIS.Carto
                 }
                 else if (element is IFillShapeElement)
                 {
-                    sheet = new frmElementProperty {
+                    sheet = new frmElementProperty
+                    {
                         Title = "属性"
                     };
                     page = null;
@@ -167,7 +173,8 @@ namespace Yutai.ArcGIS.Carto
                 }
                 else if (element is ILineElement)
                 {
-                    sheet = new frmElementProperty {
+                    sheet = new frmElementProperty
+                    {
                         Title = "属性"
                     };
                     page = null;
@@ -183,7 +190,8 @@ namespace Yutai.ArcGIS.Carto
                 }
                 else if (element is IJTBElement)
                 {
-                    frmJTBElement element2 = new frmJTBElement {
+                    frmJTBElement element2 = new frmJTBElement
+                    {
                         JTBElement = element as IJTBElement
                     };
                     envelope = element.Geometry.Envelope;
@@ -216,26 +224,17 @@ namespace Yutai.ArcGIS.Carto
 
         public IActiveView ActiveView
         {
-            set
-            {
-                this.iactiveView_0 = value;
-            }
+            set { this.iactiveView_0 = value; }
         }
 
         public bool CanRedo
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public bool CanUndo
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public IElement Element
@@ -249,11 +248,7 @@ namespace Yutai.ArcGIS.Carto
 
         public string MenuString
         {
-            get
-            {
-                return "图形元素属性";
-            }
+            get { return "图形元素属性"; }
         }
     }
 }
-

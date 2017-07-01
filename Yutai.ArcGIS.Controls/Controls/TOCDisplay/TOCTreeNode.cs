@@ -78,11 +78,29 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
             this.m_pTag = null;
             this.m_NodeType = NodeType.None;
             this.m_ChildNodes.Owner = this;
-            this.m_BmpUnCheck = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.uncheck.bmp"));
-            this.m_BmpCheck = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.checked.bmp"));
-            this.m_BmpUnCheck_nofc = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.unchecked_nofc.bmp"));
-            this.m_BmpCheck_nofc = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.checked_nofc.bmp"));
-            this.m_BmpCheck_novis = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.checked_novis.bmp"));
+            this.m_BmpUnCheck =
+                new Bitmap(
+                    base.GetType()
+                        .Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.uncheck.bmp"));
+            this.m_BmpCheck =
+                new Bitmap(
+                    base.GetType()
+                        .Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.checked.bmp"));
+            this.m_BmpUnCheck_nofc =
+                new Bitmap(
+                    base.GetType()
+                        .Assembly.GetManifestResourceStream(
+                            "Yutai.ArcGIS.Controls.Controls.TOCTreeview.unchecked_nofc.bmp"));
+            this.m_BmpCheck_nofc =
+                new Bitmap(
+                    base.GetType()
+                        .Assembly.GetManifestResourceStream(
+                            "Yutai.ArcGIS.Controls.Controls.TOCTreeview.checked_nofc.bmp"));
+            this.m_BmpCheck_novis =
+                new Bitmap(
+                    base.GetType()
+                        .Assembly.GetManifestResourceStream(
+                            "Yutai.ArcGIS.Controls.Controls.TOCTreeview.checked_novis.bmp"));
         }
 
         public TOCTreeNode(string name)
@@ -123,11 +141,29 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
             {
                 this.m_HasText = true;
             }
-            this.m_BmpUnCheck = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.uncheck.bmp"));
-            this.m_BmpCheck = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.checked.bmp"));
-            this.m_BmpUnCheck_nofc = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.unchecked_nofc.bmp"));
-            this.m_BmpCheck_nofc = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.checked_nofc.bmp"));
-            this.m_BmpCheck_novis = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.checked_novis.bmp"));
+            this.m_BmpUnCheck =
+                new Bitmap(
+                    base.GetType()
+                        .Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.uncheck.bmp"));
+            this.m_BmpCheck =
+                new Bitmap(
+                    base.GetType()
+                        .Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.checked.bmp"));
+            this.m_BmpUnCheck_nofc =
+                new Bitmap(
+                    base.GetType()
+                        .Assembly.GetManifestResourceStream(
+                            "Yutai.ArcGIS.Controls.Controls.TOCTreeview.unchecked_nofc.bmp"));
+            this.m_BmpCheck_nofc =
+                new Bitmap(
+                    base.GetType()
+                        .Assembly.GetManifestResourceStream(
+                            "Yutai.ArcGIS.Controls.Controls.TOCTreeview.checked_nofc.bmp"));
+            this.m_BmpCheck_novis =
+                new Bitmap(
+                    base.GetType()
+                        .Assembly.GetManifestResourceStream(
+                            "Yutai.ArcGIS.Controls.Controls.TOCTreeview.checked_novis.bmp"));
         }
 
         public TOCTreeNode(string name, bool HasCheck, bool HasIamge)
@@ -170,11 +206,29 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
             {
                 this.m_HasText = true;
             }
-            this.m_BmpUnCheck = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.uncheck.bmp"));
-            this.m_BmpCheck = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.checked.bmp"));
-            this.m_BmpUnCheck_nofc = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("JYutai.ArcGIS.ControlsLK.Controls.TOCTreeview.unchecked_nofc.bmp"));
-            this.m_BmpCheck_nofc = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.checked_nofc.bmp"));
-            this.m_BmpCheck_novis = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.checked_novis.bmp"));
+            this.m_BmpUnCheck =
+                new Bitmap(
+                    base.GetType()
+                        .Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.uncheck.bmp"));
+            this.m_BmpCheck =
+                new Bitmap(
+                    base.GetType()
+                        .Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.TOCTreeview.checked.bmp"));
+            this.m_BmpUnCheck_nofc =
+                new Bitmap(
+                    base.GetType()
+                        .Assembly.GetManifestResourceStream(
+                            "JYutai.ArcGIS.ControlsLK.Controls.TOCTreeview.unchecked_nofc.bmp"));
+            this.m_BmpCheck_nofc =
+                new Bitmap(
+                    base.GetType()
+                        .Assembly.GetManifestResourceStream(
+                            "Yutai.ArcGIS.Controls.Controls.TOCTreeview.checked_nofc.bmp"));
+            this.m_BmpCheck_novis =
+                new Bitmap(
+                    base.GetType()
+                        .Assembly.GetManifestResourceStream(
+                            "Yutai.ArcGIS.Controls.Controls.TOCTreeview.checked_novis.bmp"));
         }
 
         public void BeginEdit()
@@ -199,7 +253,9 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
             right = (right > this.m_TextRect.Right) ? right : this.m_TextRect.Right;
             if (this.m_pTreeView != null)
             {
-                right = (right > this.m_pTreeView.ClientRectangle.Right) ? right : this.m_pTreeView.ClientRectangle.Right;
+                right = (right > this.m_pTreeView.ClientRectangle.Right)
+                    ? right
+                    : this.m_pTreeView.ClientRectangle.Right;
             }
             height = this.m_ExpandRect.Height;
             height = (height > this.m_ChectRect.Height) ? height : this.m_ChectRect.Height;
@@ -214,7 +270,8 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                 }
                 if (this.m_ChildNodes.Count > 0)
                 {
-                    height = (height + (this.m_ChildNodes[this.m_ChildNodes.Count - 1] as TOCTreeNode).Bounds.Bottom) - (this.m_ChildNodes[0] as TOCTreeNode).Bounds.Top;
+                    height = (height + (this.m_ChildNodes[this.m_ChildNodes.Count - 1] as TOCTreeNode).Bounds.Bottom) -
+                             (this.m_ChildNodes[0] as TOCTreeNode).Bounds.Top;
                 }
             }
             num3 = right - x;
@@ -319,8 +376,12 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     int width = (this.m_ChildNodes[0] as TOCTreeNode).ImageRect.Width;
                     for (num6 = 1; num6 < this.m_ChildNodes.Count; num6++)
                     {
-                        left = (left > (this.m_ChildNodes[num6] as TOCTreeNode).TextRect.Left) ? left : (this.m_ChildNodes[num6] as TOCTreeNode).TextRect.Left;
-                        width = (width > (this.m_ChildNodes[num6] as TOCTreeNode).ImageRect.Width) ? width : (this.m_ChildNodes[num6] as TOCTreeNode).ImageRect.Width;
+                        left = (left > (this.m_ChildNodes[num6] as TOCTreeNode).TextRect.Left)
+                            ? left
+                            : (this.m_ChildNodes[num6] as TOCTreeNode).TextRect.Left;
+                        width = (width > (this.m_ChildNodes[num6] as TOCTreeNode).ImageRect.Width)
+                            ? width
+                            : (this.m_ChildNodes[num6] as TOCTreeNode).ImageRect.Width;
                     }
                     for (num6 = 0; num6 < this.m_ChildNodes.Count; num6++)
                     {
@@ -348,17 +409,21 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
             {
                 if (this.m_ChildNodes.Count > 0)
                 {
-                    point.X = (this.m_ExpandRect.Left + this.m_ExpandRect.Right) / 2;
-                    point.Y = (this.m_ExpandRect.Top + this.m_ExpandRect.Bottom) / 2;
+                    point.X = (this.m_ExpandRect.Left + this.m_ExpandRect.Right)/2;
+                    point.Y = (this.m_ExpandRect.Top + this.m_ExpandRect.Bottom)/2;
                     pGraphics.DrawLine(this.m_Pen, point.X - 4, point.Y, point.X + 4, point.Y);
                     if (!this.m_IsExpanded)
                     {
                         pGraphics.DrawLine(this.m_Pen, point.X, point.Y - 4, point.X, point.Y + 4);
                     }
-                    pGraphics.DrawLine(this.m_Pen, (int) (point.X - 4), (int) (point.Y - 4), (int) (point.X + 4), (int) (point.Y - 4));
-                    pGraphics.DrawLine(this.m_Pen, (int) (point.X + 4), (int) (point.Y - 4), (int) (point.X + 4), (int) (point.Y + 4));
-                    pGraphics.DrawLine(this.m_Pen, (int) (point.X + 4), (int) (point.Y + 4), (int) (point.X - 4), (int) (point.Y + 4));
-                    pGraphics.DrawLine(this.m_Pen, (int) (point.X - 4), (int) (point.Y + 4), (int) (point.X - 4), (int) (point.Y - 4));
+                    pGraphics.DrawLine(this.m_Pen, (int) (point.X - 4), (int) (point.Y - 4), (int) (point.X + 4),
+                        (int) (point.Y - 4));
+                    pGraphics.DrawLine(this.m_Pen, (int) (point.X + 4), (int) (point.Y - 4), (int) (point.X + 4),
+                        (int) (point.Y + 4));
+                    pGraphics.DrawLine(this.m_Pen, (int) (point.X + 4), (int) (point.Y + 4), (int) (point.X - 4),
+                        (int) (point.Y + 4));
+                    pGraphics.DrawLine(this.m_Pen, (int) (point.X - 4), (int) (point.Y + 4), (int) (point.X - 4),
+                        (int) (point.Y - 4));
                 }
                 if (this.m_HasCheck)
                 {
@@ -497,14 +562,14 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     {
                         image = this.m_BmpUnCheck;
                     }
-                    point.X = (this.m_ChectRect.Left + this.m_ChectRect.Right) / 2;
-                    point.Y = (this.m_ChectRect.Top + this.m_ChectRect.Bottom) / 2;
+                    point.X = (this.m_ChectRect.Left + this.m_ChectRect.Right)/2;
+                    point.Y = (this.m_ChectRect.Top + this.m_ChectRect.Bottom)/2;
                     pGraphics.DrawImageUnscaled(image, point.X - 4, point.Y - 7);
                 }
                 if (this.m_pImage != null)
                 {
-                    point.X = (this.m_ImageRect.Left + this.m_ImageRect.Right) / 2;
-                    point.Y = (this.m_ImageRect.Top + this.m_ImageRect.Bottom) / 2;
+                    point.X = (this.m_ImageRect.Left + this.m_ImageRect.Right)/2;
+                    point.Y = (this.m_ImageRect.Top + this.m_ImageRect.Bottom)/2;
                     pGraphics.DrawImageUnscaled(this.m_pImage, point.X - 8, point.Y - 8);
                 }
                 else if (this.m_pTag != null)
@@ -575,7 +640,8 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                         brush = new SolidBrush(Color.Black);
                     }
                     pGraphics.FillRectangle(brush2, this.m_TextRect);
-                    StringFormat format = new StringFormat {
+                    StringFormat format = new StringFormat
+                    {
                         LineAlignment = StringAlignment.Center
                     };
                     try
@@ -623,7 +689,8 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
         {
             if (pChildNode.Parent != null)
             {
-                if ((pChildNode.Parent.GetNodeType() == NodeType.Map) || (pChildNode.Parent.GetNodeType() == NodeType.MapFrame))
+                if ((pChildNode.Parent.GetNodeType() == NodeType.Map) ||
+                    (pChildNode.Parent.GetNodeType() == NodeType.MapFrame))
                 {
                     return pChildNode.Parent;
                 }
@@ -696,14 +763,8 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 
         public Color BackColor
         {
-            get
-            {
-                return this.m_BackColor;
-            }
-            set
-            {
-                this.m_BackColor = value;
-            }
+            get { return this.m_BackColor; }
+            set { this.m_BackColor = value; }
         }
 
         public Rectangle Bounds
@@ -725,7 +786,9 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                 right = (right > this.m_TextRect.Right) ? right : this.m_TextRect.Right;
                 if (this.m_pTreeView != null)
                 {
-                    right = (right > this.m_pTreeView.ClientRectangle.Right) ? right : this.m_pTreeView.ClientRectangle.Right;
+                    right = (right > this.m_pTreeView.ClientRectangle.Right)
+                        ? right
+                        : this.m_pTreeView.ClientRectangle.Right;
                 }
                 height = this.m_ExpandRect.Height;
                 height = (height > this.m_ChectRect.Height) ? height : this.m_ChectRect.Height;
@@ -740,7 +803,8 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                     }
                     if (this.m_ChildNodes.Count > 0)
                     {
-                        height = (height + (this.m_ChildNodes[this.m_ChildNodes.Count - 1] as TOCTreeNode).Bounds.Bottom) - (this.m_ChildNodes[0] as TOCTreeNode).Bounds.Top;
+                        height = (height + (this.m_ChildNodes[this.m_ChildNodes.Count - 1] as TOCTreeNode).Bounds.Bottom) -
+                                 (this.m_ChildNodes[0] as TOCTreeNode).Bounds.Top;
                     }
                 }
                 num3 = right - x;
@@ -754,38 +818,20 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 
         public bool Checked
         {
-            get
-            {
-                return this.m_Checked;
-            }
-            set
-            {
-                this.m_Checked = value;
-            }
+            get { return this.m_Checked; }
+            set { this.m_Checked = value; }
         }
 
         public Rectangle ChectRect
         {
-            get
-            {
-                return this.m_ChectRect;
-            }
-            set
-            {
-                this.m_ChectRect = value;
-            }
+            get { return this.m_ChectRect; }
+            set { this.m_ChectRect = value; }
         }
 
         public Rectangle ExpandRect
         {
-            get
-            {
-                return this.m_ExpandRect;
-            }
-            set
-            {
-                this.m_ExpandRect = value;
-            }
+            get { return this.m_ExpandRect; }
+            set { this.m_ExpandRect = value; }
         }
 
         public TOCTreeNode FirstNode
@@ -802,94 +848,55 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 
         public Color ForeColor
         {
-            get
-            {
-                return this.m_ForeColor;
-            }
-            set
-            {
-                this.m_ForeColor = value;
-            }
+            get { return this.m_ForeColor; }
+            set { this.m_ForeColor = value; }
         }
 
         public bool HasCheck
         {
-            set
-            {
-                this.m_HasCheck = value;
-            }
+            set { this.m_HasCheck = value; }
         }
 
         public bool HasImage
         {
-            set
-            {
-                this.m_HasImage = value;
-            }
+            set { this.m_HasImage = value; }
         }
 
         public bool HasText
         {
-            set
-            {
-                this.m_HasText = value;
-            }
+            set { this.m_HasText = value; }
         }
 
         public System.Drawing.Image Image
         {
-            set
-            {
-                this.m_pImage = value;
-            }
+            set { this.m_pImage = value; }
         }
 
         public Rectangle ImageRect
         {
-            get
-            {
-                return this.m_ImageRect;
-            }
-            set
-            {
-                this.m_ImageRect = value;
-            }
+            get { return this.m_ImageRect; }
+            set { this.m_ImageRect = value; }
         }
 
         public bool IsEditing
         {
-            get
-            {
-                return this.m_IsEditing;
-            }
+            get { return this.m_IsEditing; }
         }
 
         public bool IsExpanded
         {
-            get
-            {
-                return this.m_IsExpanded;
-            }
+            get { return this.m_IsExpanded; }
         }
 
         public bool IsSelected
         {
-            get
-            {
-                return this.m_IsSelected;
-            }
-            set
-            {
-                this.m_IsSelected = value;
-            }
+            get { return this.m_IsSelected; }
+            set { this.m_IsSelected = value; }
         }
 
         public bool IsVisible
         {
-            get
-            {
-                return this.m_IsVisible;
-            }
+            get { return this.m_IsVisible; }
         }
 
         public TOCTreeNode LastNode
@@ -938,22 +945,13 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 
         public TOCTreeNode NextVisibleNode
         {
-            get
-            {
-                return this.m_pNextVisibleNode;
-            }
+            get { return this.m_pNextVisibleNode; }
         }
 
         public Font NodeFont
         {
-            get
-            {
-                return this.m_NodeFont;
-            }
-            set
-            {
-                this.m_NodeFont = value;
-            }
+            get { return this.m_NodeFont; }
+            set { this.m_NodeFont = value; }
         }
 
         public Rectangle NodeRect
@@ -972,7 +970,9 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
                 }
                 if (this.m_pTreeView != null)
                 {
-                    right = (right > this.m_pTreeView.ClientRectangle.Right) ? right : this.m_pTreeView.ClientRectangle.Right;
+                    right = (right > this.m_pTreeView.ClientRectangle.Right)
+                        ? right
+                        : this.m_pTreeView.ClientRectangle.Right;
                 }
                 int width = right - x;
                 int height = this.m_ExpandRect.Height;
@@ -984,18 +984,12 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 
         public TOCTreeNodeCollection Nodes
         {
-            get
-            {
-                return this.m_ChildNodes;
-            }
+            get { return this.m_ChildNodes; }
         }
 
         public TOCTreeNode Parent
         {
-            get
-            {
-                return this.m_pParentNode;
-            }
+            get { return this.m_pParentNode; }
         }
 
         public TOCTreeNode PrevNode
@@ -1031,18 +1025,12 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 
         public TOCTreeNode PrevVisibleNode
         {
-            get
-            {
-                return this.m_pPrevVisibleNode;
-            }
+            get { return this.m_pPrevVisibleNode; }
         }
 
         public object Tag
         {
-            get
-            {
-                return this.m_pTag;
-            }
+            get { return this.m_pTag; }
             set
             {
                 this.m_pTag = value;
@@ -1091,10 +1079,7 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 
         public string Text
         {
-            get
-            {
-                return this.m_Text;
-            }
+            get { return this.m_Text; }
             set
             {
                 this.m_Text = value;
@@ -1107,35 +1092,19 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 
         public Rectangle TextRect
         {
-            get
-            {
-                return this.m_TextRect;
-            }
-            set
-            {
-                this.m_TextRect = value;
-            }
+            get { return this.m_TextRect; }
+            set { this.m_TextRect = value; }
         }
 
         public NodeType TOCNodeType
         {
-            get
-            {
-                return this.m_NodeType;
-            }
-            set
-            {
-                this.m_NodeType = value;
-            }
+            get { return this.m_NodeType; }
+            set { this.m_NodeType = value; }
         }
 
         public TocTreeViewBase TreeView
         {
-            get
-            {
-                return this.m_pTreeView;
-            }
+            get { return this.m_pTreeView; }
         }
     }
 }
-

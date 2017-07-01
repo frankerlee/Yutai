@@ -4,243 +4,152 @@
     {
         public string BorderSymbolField
         {
-            get
-            {
-                return "BorderSymbol";
-            }
+            get { return "BorderSymbol"; }
         }
 
         public override string DescriptionFieldName
         {
-            get
-            {
-                return "Description";
-            }
+            get { return "Description"; }
         }
 
         public string FontInfoField
         {
-            get
-            {
-                return "FontInfo";
-            }
+            get { return "FontInfo"; }
         }
 
         public string GridTicSymbolField
         {
-            get
-            {
-                return "GridTicSymbol";
-            }
+            get { return "GridTicSymbol"; }
         }
 
         public string HeightFieldName
         {
-            get
-            {
-                return "Height";
-            }
+            get { return "Height"; }
         }
 
         public override string IDFieldName
         {
-            get
-            {
-                return "ObjectID";
-            }
+            get { return "ObjectID"; }
         }
 
         public string InOutDistFieldName
         {
-            get
-            {
-                return "InOutDist";
-            }
+            get { return "InOutDist"; }
         }
 
         public string JTBInfoFieldName
         {
-            get
-            {
-                return "JTBInfo";
-            }
+            get { return "JTBInfo"; }
         }
 
         public string LegendInfoFieldName
         {
-            get
-            {
-                return "LegendInfo";
-            }
+            get { return "LegendInfo"; }
         }
 
         public string MapGridFieldName
         {
-            get
-            {
-                return "MapGrid";
-            }
+            get { return "MapGrid"; }
         }
 
         public override string NameFieldName
         {
-            get
-            {
-                return "Name";
-            }
+            get { return "Name"; }
         }
 
         public string NorthInfoFieldName
         {
-            get
-            {
-                return "NorthInfo";
-            }
+            get { return "NorthInfo"; }
         }
 
         public override string OrderIDFieldName
         {
-            get
-            {
-                return "";
-            }
+            get { return ""; }
         }
 
         public string OutBorderWidthFieldName
         {
-            get
-            {
-                return "OutBorderWidth";
-            }
+            get { return "OutBorderWidth"; }
         }
 
         public override string ParentIDFieldName
         {
-            get
-            {
-                return "";
-            }
+            get { return ""; }
         }
 
         public string ScaleFieldName
         {
-            get
-            {
-                return "Scale";
-            }
+            get { return "Scale"; }
         }
 
         public string ScaleInfoFieldName
         {
-            get
-            {
-                return "ScaleInfo";
-            }
+            get { return "ScaleInfo"; }
         }
 
         public string SpheroidTypeField
         {
-            get
-            {
-                return "SpheroidType";
-            }
+            get { return "SpheroidType"; }
         }
 
         public string StartCoodinateMultipleFieldName
         {
-            get
-            {
-                return "StartCoodinateMultiple";
-            }
+            get { return "StartCoodinateMultiple"; }
         }
 
         public string StartXFieldName
         {
-            get
-            {
-                return "StartX";
-            }
+            get { return "StartX"; }
         }
 
         public string StartYFieldName
         {
-            get
-            {
-                return "StartY";
-            }
+            get { return "StartY"; }
         }
 
         public string StripTypeField
         {
-            get
-            {
-                return "StripType";
-            }
+            get { return "StripType"; }
         }
 
         public override string TableName
         {
-            get
-            {
-                return "CartoTemplate";
-            }
+            get { return "CartoTemplate"; }
         }
 
         public string TitleDistFieldName
         {
-            get
-            {
-                return "TitleDist";
-            }
+            get { return "TitleDist"; }
         }
 
         public string TJIDFieldName
         {
-            get
-            {
-                return "TJID";
-            }
+            get { return "TJID"; }
         }
 
         public string TKTypeField
         {
-            get
-            {
-                return "TKType";
-            }
+            get { return "TKType"; }
         }
 
         public string TuKuoInfoFieldName
         {
-            get
-            {
-                return "TuKuoInfo";
-            }
+            get { return "TuKuoInfo"; }
         }
 
         public string WidthFieldName
         {
-            get
-            {
-                return "Width";
-            }
+            get { return "Width"; }
         }
 
         public string XIntervalFieldName
         {
-            get
-            {
-                return "XInterval";
-            }
+            get { return "XInterval"; }
         }
 
         public string YIntervalFieldName
         {
-            get
-            {
-                return "YInterval";
-            }
+            get { return "YInterval"; }
         }
     }
 }
-

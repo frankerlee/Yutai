@@ -58,7 +58,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         private void btnSelectInputFeatures_Click(object sender, EventArgs e)
         {
             int num;
-            frmOpenFile file = new frmOpenFile {
+            frmOpenFile file = new frmOpenFile
+            {
                 Text = "添加数据"
             };
             file.RemoveAllFilters();
@@ -98,7 +99,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnSelectOutLocation_Click(object sender, EventArgs e)
         {
-            SaveFileDialog dialog = new SaveFileDialog {
+            SaveFileDialog dialog = new SaveFileDialog
+            {
                 Filter = "*.dxf|*.dxf"
             };
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -127,14 +129,15 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.iarray_0.RemoveAll();
         }
 
- public void Do()
+        public void Do()
         {
             try
             {
                 this.panel1.Visible = true;
                 ICADConvert convert = new CADConvert();
-                (convert as IFeatureProgress_Event).Step+=(new IFeatureProgress_StepEventHandler(this.method_7));
-                (convert as IConvertEvent).SetFeatureClassNameEnvent += new SetFeatureClassNameEnventHandler(this.method_2);
+                (convert as IFeatureProgress_Event).Step += (new IFeatureProgress_StepEventHandler(this.method_7));
+                (convert as IConvertEvent).SetFeatureClassNameEnvent +=
+                    new SetFeatureClassNameEnventHandler(this.method_2);
                 (convert as IConvertEvent).SetFeatureCountEnvent += new SetFeatureCountEnventHandler(this.method_3);
                 this.progressBar1.Minimum = 0;
                 this.progressBar1.Maximum = this.ilist_0.Count;
@@ -152,7 +155,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
                 MessageBox.Show(exception.Message);
             }
         }
@@ -161,7 +164,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
         }
 
- private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.btnDelete.Enabled = this.listView1.SelectedItems.Count > 0;
         }
@@ -229,19 +232,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IGxObject InGxObject
         {
-            set
-            {
-                this.igxObject_0 = value;
-            }
+            set { this.igxObject_0 = value; }
         }
 
         public IGxObject OutGxObject
         {
-            set
-            {
-                this.igxObject_1 = value;
-            }
+            set { this.igxObject_1 = value; }
         }
     }
 }
-

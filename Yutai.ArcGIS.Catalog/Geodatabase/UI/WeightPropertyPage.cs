@@ -16,7 +16,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.InitializeComponent();
         }
 
- private string method_0(esriWeightType esriWeightType_0)
+        private string method_0(esriWeightType esriWeightType_0)
         {
             switch (esriWeightType_0)
             {
@@ -57,11 +57,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IGeometricNetwork GeometricNetwork
         {
-            set
-            {
-                this.igeometricNetwork_0 = value;
-            }
+            set { this.igeometricNetwork_0 = value; }
         }
     }
 }
-

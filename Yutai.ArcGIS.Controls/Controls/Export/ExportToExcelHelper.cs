@@ -26,7 +26,9 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             while (index < fields.FieldCount)
             {
                 field = fields.get_Field(index);
-                if (((field.Type != esriFieldType.esriFieldTypeBlob) && (field.Type != esriFieldType.esriFieldTypeGeometry)) && (field.Type != esriFieldType.esriFieldTypeRaster))
+                if (((field.Type != esriFieldType.esriFieldTypeBlob) &&
+                     (field.Type != esriFieldType.esriFieldTypeGeometry)) &&
+                    (field.Type != esriFieldType.esriFieldTypeRaster))
                 {
                     if (field.Type == esriFieldType.esriFieldTypeOID)
                     {
@@ -47,7 +49,9 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
                 for (index = 0; index < fields.FieldCount; index++)
                 {
                     field = fields.get_Field(index);
-                    if (((field.Type != esriFieldType.esriFieldTypeBlob) && (field.Type != esriFieldType.esriFieldTypeGeometry)) && (field.Type != esriFieldType.esriFieldTypeRaster))
+                    if (((field.Type != esriFieldType.esriFieldTypeBlob) &&
+                         (field.Type != esriFieldType.esriFieldTypeGeometry)) &&
+                        (field.Type != esriFieldType.esriFieldTypeRaster))
                     {
                         values[num2++] = row.get_Value(index);
                     }
@@ -60,7 +64,8 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             }
             else
             {
-                YTExportExcel.ExcelTemplatePrint(false, table, this.TempleteFile, this.Title, this.TempleteStartRowIndex, this.TempleteRowCount);
+                YTExportExcel.ExcelTemplatePrint(false, table, this.TempleteFile, this.Title, this.TempleteStartRowIndex,
+                    this.TempleteRowCount);
             }
             return true;
         }
@@ -73,7 +78,8 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             }
             else
             {
-                YTExportExcel.ExcelTemplatePrint(false, dt, this.TempleteFile, this.Title, this.TempleteStartRowIndex, this.TempleteRowCount);
+                YTExportExcel.ExcelTemplatePrint(false, dt, this.TempleteFile, this.Title, this.TempleteStartRowIndex,
+                    this.TempleteRowCount);
             }
             return true;
         }
@@ -84,4 +90,3 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
         }
     }
 }
-

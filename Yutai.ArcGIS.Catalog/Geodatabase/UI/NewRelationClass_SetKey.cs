@@ -39,7 +39,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 for (int i = 0; i < fields.FieldCount; i++)
                 {
                     IField field = fields.get_Field(i);
-                    if (((field.Type != esriFieldType.esriFieldTypeBlob) || (field.Type != esriFieldType.esriFieldTypeGeometry)) && (type == field.Type))
+                    if (((field.Type != esriFieldType.esriFieldTypeBlob) ||
+                         (field.Type != esriFieldType.esriFieldTypeGeometry)) && (type == field.Type))
                     {
                         this.cboDestion.Properties.Items.Add(field.Name);
                     }
@@ -59,7 +60,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 for (int i = 0; i < fields.FieldCount; i++)
                 {
                     IField field = fields.get_Field(i);
-                    if (((field.Type != esriFieldType.esriFieldTypeBlob) || (field.Type != esriFieldType.esriFieldTypeGeometry)) && (type == field.Type))
+                    if (((field.Type != esriFieldType.esriFieldTypeBlob) ||
+                         (field.Type != esriFieldType.esriFieldTypeGeometry)) && (type == field.Type))
                     {
                         this.cbodestForeignKey1.Properties.Items.Add(field.Name);
                     }
@@ -67,7 +69,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void NewRelationClass_SetKey_Load(object sender, EventArgs e)
+        private void NewRelationClass_SetKey_Load(object sender, EventArgs e)
         {
             IFields fields;
             int num;
@@ -81,7 +83,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 for (num = 0; num < fields.FieldCount; num++)
                 {
                     field = fields.get_Field(num);
-                    if ((field.Type != esriFieldType.esriFieldTypeBlob) || (field.Type != esriFieldType.esriFieldTypeGeometry))
+                    if ((field.Type != esriFieldType.esriFieldTypeBlob) ||
+                        (field.Type != esriFieldType.esriFieldTypeGeometry))
                     {
                         this.cboOrigin.Properties.Items.Add(field.Name);
                     }
@@ -100,7 +103,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 for (num = 0; num < fields.FieldCount; num++)
                 {
                     field = fields.get_Field(num);
-                    if ((field.Type != esriFieldType.esriFieldTypeBlob) || (field.Type != esriFieldType.esriFieldTypeGeometry))
+                    if ((field.Type != esriFieldType.esriFieldTypeBlob) ||
+                        (field.Type != esriFieldType.esriFieldTypeGeometry))
                     {
                         this.cboOriginPrimaryKey1.Properties.Items.Add(field.Name);
                     }
@@ -123,4 +127,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

@@ -12,7 +12,5 @@ namespace Yutai.ArcGIS.Catalog.UI
         {
             this.InitializeComponent();
         }
-
-
     }
 }

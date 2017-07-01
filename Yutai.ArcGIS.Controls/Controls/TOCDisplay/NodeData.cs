@@ -10,39 +10,20 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 
         public IBasicMap Map
         {
-            get
-            {
-                return this.m_pMap;
-            }
-            set
-            {
-                this.m_pMap = value;
-            }
+            get { return this.m_pMap; }
+            set { this.m_pMap = value; }
         }
 
         public object Parent
         {
-            get
-            {
-                return this.m_pParent;
-            }
-            set
-            {
-                this.m_pParent = value;
-            }
+            get { return this.m_pParent; }
+            set { this.m_pParent = value; }
         }
 
         public object Tag
         {
-            get
-            {
-                return this.m_pTag;
-            }
-            set
-            {
-                this.m_pTag = value;
-            }
+            get { return this.m_pTag; }
+            set { this.m_pTag = value; }
         }
     }
 }
-

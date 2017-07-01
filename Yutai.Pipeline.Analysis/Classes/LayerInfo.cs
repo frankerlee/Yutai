@@ -8,14 +8,8 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         public IFeatureLayer FeatureLauer
         {
-            get
-            {
-                return this.ifeatureLayer_0;
-            }
-            set
-            {
-                this.ifeatureLayer_0 = value;
-            }
+            get { return this.ifeatureLayer_0; }
+            set { this.ifeatureLayer_0 = value; }
         }
 
         public LayerInfo(IFeatureLayer ipLayer)

@@ -55,15 +55,18 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                             }
                         }
                     }
-                    else if (((this.cboDomain.SelectedItem as DomainWrap1).DomainEx != null) && (NewObjectClassHelper.m_pObjectClassHelper != null))
+                    else if (((this.cboDomain.SelectedItem as DomainWrap1).DomainEx != null) &&
+                             (NewObjectClassHelper.m_pObjectClassHelper != null))
                     {
                         if (NewObjectClassHelper.m_pObjectClassHelper.FieldDomanIsExit(this.ifieldEdit_0))
                         {
-                            NewObjectClassHelper.m_pObjectClassHelper.FieldDomains[this.ifieldEdit_0] = (this.cboDomain.SelectedItem as DomainWrap1).DomainEx;
+                            NewObjectClassHelper.m_pObjectClassHelper.FieldDomains[this.ifieldEdit_0] =
+                                (this.cboDomain.SelectedItem as DomainWrap1).DomainEx;
                         }
                         else
                         {
-                            NewObjectClassHelper.m_pObjectClassHelper.FieldDomains.Add(this.ifieldEdit_0, (this.cboDomain.SelectedItem as DomainWrap1).DomainEx);
+                            NewObjectClassHelper.m_pObjectClassHelper.FieldDomains.Add(this.ifieldEdit_0,
+                                (this.cboDomain.SelectedItem as DomainWrap1).DomainEx);
                         }
                     }
                 }
@@ -83,7 +86,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void FieldTypeIntegerCtrl_Load(object sender, EventArgs e)
+        private void FieldTypeIntegerCtrl_Load(object sender, EventArgs e)
         {
             this.cboDomain.Properties.Items.Clear();
             try
@@ -98,10 +101,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         domains.Reset();
                         for (IDomain domain2 = domains.Next(); domain2 != null; domain2 = domains.Next())
                         {
-                            if ((domain2.FieldType == esriFieldType.esriFieldTypeInteger) || (domain2.FieldType == esriFieldType.esriFieldTypeSmallInteger))
+                            if ((domain2.FieldType == esriFieldType.esriFieldTypeInteger) ||
+                                (domain2.FieldType == esriFieldType.esriFieldTypeSmallInteger))
                             {
                                 this.cboDomain.Properties.Items.Add(new DomainWrap1(domain2));
-                                if ((this.ifieldEdit_0.Domain != null) && (this.ifieldEdit_0.Domain.Name == domain2.Name))
+                                if ((this.ifieldEdit_0.Domain != null) &&
+                                    (this.ifieldEdit_0.Domain.Name == domain2.Name))
                                 {
                                     num = this.cboDomain.Properties.Items.Count - 1;
                                 }
@@ -117,7 +122,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     {
                         if (NewObjectClassHelper.m_pObjectClassHelper.FieldDomains[this.ifieldEdit_0] != null)
                         {
-                            domainID = NewObjectClassHelper.m_pObjectClassHelper.FieldDomains[this.ifieldEdit_0].DomainID;
+                            domainID =
+                                NewObjectClassHelper.m_pObjectClassHelper.FieldDomains[this.ifieldEdit_0].DomainID;
                         }
                     }
                     else if (NewObjectClassHelper.m_pObjectClassHelper.ObjectClass != null)
@@ -130,8 +136,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 {
                     while (enumerator.MoveNext())
                     {
-                       CodeDomainEx current = enumerator.Current;
-                        if ((current.FieldType == esriFieldType.esriFieldTypeInteger) || (current.FieldType == esriFieldType.esriFieldTypeSmallInteger))
+                        CodeDomainEx current = enumerator.Current;
+                        if ((current.FieldType == esriFieldType.esriFieldTypeInteger) ||
+                            (current.FieldType == esriFieldType.esriFieldTypeSmallInteger))
                         {
                             this.cboDomain.Properties.Items.Add(new DomainWrap1(current));
                             if (domainID == current.DomainID)
@@ -141,10 +148,10 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         }
                     }
                     goto Label_0247;
-                Label_021F:
+                    Label_021F:
                     num = this.cboDomain.Properties.Items.Count - 1;
                 }
-            Label_0247:
+                Label_0247:
                 this.cboDomain.SelectedIndex = num;
             }
             catch
@@ -166,7 +173,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.method_1();
         }
 
- private void method_0(IField ifield_0, FieldChangeType fieldChangeType_0)
+        private void method_0(IField ifield_0, FieldChangeType fieldChangeType_0)
         {
             if (this.FieldChanged != null)
             {
@@ -272,27 +279,17 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IField Filed
         {
-            set
-            {
-                this.ifieldEdit_0 = value as IFieldEdit;
-            }
+            set { this.ifieldEdit_0 = value as IFieldEdit; }
         }
 
         public bool IsEdit
         {
-            set
-            {
-                this.bool_1 = value;
-            }
+            set { this.bool_1 = value; }
         }
 
         public IWorkspace Workspace
         {
-            set
-            {
-                this.iworkspace_0 = value;
-            }
+            set { this.iworkspace_0 = value; }
         }
     }
 }
-

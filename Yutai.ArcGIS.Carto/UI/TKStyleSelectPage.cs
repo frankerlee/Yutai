@@ -21,18 +21,14 @@ namespace Yutai.ArcGIS.Carto.UI
             return true;
         }
 
- private void TKStyleSelectPage_Load(object sender, EventArgs e)
+        private void TKStyleSelectPage_Load(object sender, EventArgs e)
         {
             this.rdoStandard.Checked = this.jlktkassiatant_0.TKType == TKType.TKStandard;
         }
 
         internal YTTKAssiatant YTTKAssiatant
         {
-            set
-            {
-                this.jlktkassiatant_0 = value;
-            }
+            set { this.jlktkassiatant_0 = value; }
         }
     }
 }
-

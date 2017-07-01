@@ -31,7 +31,7 @@ namespace Yutai.Services.Concrete
         private bool _modified;
 
         public ProjectService(IAppContext context, IFileDialogService fileService,
-         IBroadcasterService broadcaster, IProjectLoader projectLoader, ProjectLoaderLegacy projectLoaderLegacy)
+            IBroadcasterService broadcaster, IProjectLoader projectLoader, ProjectLoaderLegacy projectLoaderLegacy)
         {
             if (context == null) throw new ArgumentNullException("context");
             if (fileService == null) throw new ArgumentNullException("fileService");
@@ -58,14 +58,15 @@ namespace Yutai.Services.Concrete
 
         public ProjectState GetState()
         {
-            return State;       // don't expose as property or it will cause serialization of state on examining it during debugging
+            return State;
+                // don't expose as property or it will cause serialization of state on examining it during debugging
         }
 
         private ProjectState State
         {
             get
             {
-                if ( _context.MapControl.Map.LayerCount == 0)
+                if (_context.MapControl.Map.LayerCount == 0)
                 {
                     return ProjectState.Empty;
                 }
@@ -81,7 +82,9 @@ namespace Yutai.Services.Concrete
                     {
                         var oldState = r.ReadToEnd();
                         var state = SerializeMapState(_filename);
-                        return state.EqualsIgnoreCase(oldState) && !_modified ? ProjectState.NoChanges : ProjectState.HasChanges;
+                        return state.EqualsIgnoreCase(oldState) && !_modified
+                            ? ProjectState.NoChanges
+                            : ProjectState.HasChanges;
                     }
                 }
                 catch
@@ -118,16 +121,16 @@ namespace Yutai.Services.Concrete
 
         private void Clear()
         {
-           /* _context.Map.GeometryEditor.Clear();
-            _context.Legend.Groups.Clear();
-            _context.Legend.Layers.Clear();
-            _context.Map.SetDefaultExtents();
-            _context.Map.MapCursor = Api.Enums.MapCursor.ZoomIn;
-
-            if (_context.Locator != null)
-            {
-                _context.Locator.Clear();
-            }*/
+            /* _context.Map.GeometryEditor.Clear();
+             _context.Legend.Groups.Clear();
+             _context.Legend.Layers.Clear();
+             _context.Map.SetDefaultExtents();
+             _context.Map.MapCursor = Api.Enums.MapCursor.ZoomIn;
+ 
+             if (_context.Locator != null)
+             {
+                 _context.Locator.Clear();
+             }*/
         }
 
         private bool TryCloseCore()
@@ -137,26 +140,26 @@ namespace Yutai.Services.Concrete
             {
                 case ProjectState.NotSaved:
                 case ProjectState.HasChanges:
+                {
+                    string prompt = "是否保存项目?";
+
+                    if (!string.IsNullOrWhiteSpace(_filename))
                     {
-                        string prompt = "是否保存项目?";
-
-                        if (!string.IsNullOrWhiteSpace(_filename))
-                        {
-                            prompt = string.Format("保存项目: {0}?", Path.GetFileName(_filename));
-                        }
-
-                        var result = MessageService.Current.AskWithCancel(prompt);
-                        if (result == DialogResult.Cancel)
-                        {
-                            return false;
-                        }
-
-                        if (result == DialogResult.Yes)
-                        {
-                            Save();
-                        }
-                        break;
+                        prompt = string.Format("保存项目: {0}?", Path.GetFileName(_filename));
                     }
+
+                    var result = MessageService.Current.AskWithCancel(prompt);
+                    if (result == DialogResult.Cancel)
+                    {
+                        return false;
+                    }
+
+                    if (result == DialogResult.Yes)
+                    {
+                        Save();
+                    }
+                    break;
+                }
                 case ProjectState.NoChanges:
                 case ProjectState.Empty:
                     break;
@@ -214,7 +217,7 @@ namespace Yutai.Services.Concrete
                     _filename = filename;
                     _modified = false;
 
-                  //  AppConfig.Instance.AddRecentProject(filename);
+                    //  AppConfig.Instance.AddRecentProject(filename);
 
                     // PM:
                     // MessageService.Current.Info("Project was saved: " + filename);
@@ -244,7 +247,7 @@ namespace Yutai.Services.Concrete
 
         private ProjectLoaderBase GetCurrentLoader(bool legacy = false)
         {
-            return legacy ? _projectLoaderLegacy : (ProjectLoaderBase)_projectLoader;
+            return legacy ? _projectLoaderLegacy : (ProjectLoaderBase) _projectLoader;
         }
 
         public bool Open(string filename, bool silent = true)
@@ -275,7 +278,7 @@ namespace Yutai.Services.Concrete
             //}
             //else
             //{
-                result = OpenCore(filename, silent);
+            result = OpenCore(filename, silent);
             //}
 
             // let's redraw map before hiding the progress
@@ -400,7 +403,7 @@ namespace Yutai.Services.Concrete
                     return false;
                 }
 
-               // AppConfig.Instance.AddRecentProject(filename);
+                // AppConfig.Instance.AddRecentProject(filename);
 
                 _filename = filename;
 

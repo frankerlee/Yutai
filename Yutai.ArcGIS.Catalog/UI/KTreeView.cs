@@ -34,29 +34,27 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         public KTreeView()
         {
-            
-                this.method_0();
-                this.imageList_0 = base.ImageList;
-                if (this.imageList_0 == null)
-                {
-                    this.imageList_0 = new ImageList();
-                    base.ImageList = this.imageList_0;
-                }
-                base.MouseDown += new MouseEventHandler(this.KTreeView_MouseDown);
-                base.DoubleClick += new EventHandler(this.KTreeView_DoubleClick);
-                base.DragDrop += new DragEventHandler(this.KTreeView_DragDrop);
-                base.AfterLabelEdit += new NodeLabelEditEventHandler(this.KTreeView_AfterLabelEdit);
-                base.BeforeLabelEdit += new NodeLabelEditEventHandler(this.KTreeView_BeforeLabelEdit);
-                base.DragOver += new DragEventHandler(this.KTreeView_DragOver);
-                base.MouseMove += new MouseEventHandler(this.KTreeView_MouseMove);
-                base.MouseUp += new MouseEventHandler(this.KTreeView_MouseUp);
-                base.QueryContinueDrag += new QueryContinueDragEventHandler(this.KTreeView_QueryContinueDrag);
-                base.AfterSelect += new TreeViewEventHandler(this.KTreeView_AfterSelect);
-                base.BeforeExpand += new TreeViewCancelEventHandler(this.KTreeView_BeforeExpand);
-                base.AllowDrop = true;
-                base.HideSelection = false;
-                base.LabelEdit = true;
-           
+            this.method_0();
+            this.imageList_0 = base.ImageList;
+            if (this.imageList_0 == null)
+            {
+                this.imageList_0 = new ImageList();
+                base.ImageList = this.imageList_0;
+            }
+            base.MouseDown += new MouseEventHandler(this.KTreeView_MouseDown);
+            base.DoubleClick += new EventHandler(this.KTreeView_DoubleClick);
+            base.DragDrop += new DragEventHandler(this.KTreeView_DragDrop);
+            base.AfterLabelEdit += new NodeLabelEditEventHandler(this.KTreeView_AfterLabelEdit);
+            base.BeforeLabelEdit += new NodeLabelEditEventHandler(this.KTreeView_BeforeLabelEdit);
+            base.DragOver += new DragEventHandler(this.KTreeView_DragOver);
+            base.MouseMove += new MouseEventHandler(this.KTreeView_MouseMove);
+            base.MouseUp += new MouseEventHandler(this.KTreeView_MouseUp);
+            base.QueryContinueDrag += new QueryContinueDragEventHandler(this.KTreeView_QueryContinueDrag);
+            base.AfterSelect += new TreeViewEventHandler(this.KTreeView_AfterSelect);
+            base.BeforeExpand += new TreeViewCancelEventHandler(this.KTreeView_BeforeExpand);
+            base.AllowDrop = true;
+            base.HideSelection = false;
+            base.LabelEdit = true;
         }
 
         public void AddChildNode(IGxObject igxObject_1, TreeNode treeNode_2)
@@ -128,6 +126,7 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         [DllImport("gdi32.dll")]
         private static extern bool DeleteObject(IntPtr intptr_0);
+
         public void DisConnectArcGISServer()
         {
             TreeNode selectedNode = base.SelectedNode;
@@ -180,7 +179,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
             System.Windows.Forms.Cursor.Current = Cursors.Default;
         }
@@ -192,7 +191,8 @@ namespace Yutai.ArcGIS.Catalog.UI
                 this.GxCatalog = new GxCatalog();
             }
             base.Nodes.Clear();
-            TreeNode node = new TreeNode((this.igxCatalog_0 as IGxObject).Name, this.method_3(this.igxCatalog_0 as IGxObject), this.method_4(this.igxCatalog_0 as IGxObject));
+            TreeNode node = new TreeNode((this.igxCatalog_0 as IGxObject).Name,
+                this.method_3(this.igxCatalog_0 as IGxObject), this.method_4(this.igxCatalog_0 as IGxObject));
             base.Nodes.Add(node);
             node.Tag = this.igxCatalog_0;
             this.method_7(node);
@@ -264,7 +264,8 @@ namespace Yutai.ArcGIS.Catalog.UI
                         {
                             try
                             {
-                                string path = Environment.SystemDirectory.Substring(0, 2) + @"\Documents and Settings\Administrator\Application Data\ESRI\ArcCatalog\";
+                                string path = Environment.SystemDirectory.Substring(0, 2) +
+                                              @"\Documents and Settings\Administrator\Application Data\ESRI\ArcCatalog\";
                                 string str2 = path + "OLE DB Connection.odc";
                                 if (Directory.Exists(path))
                                 {
@@ -274,7 +275,9 @@ namespace Yutai.ArcGIS.Catalog.UI
                                     newObject = new GxDatabase();
                                     (newObject as IGxDatabase).WorkspaceName = name;
                                     newObject.Attach(tag.Parent, this.igxCatalog_0);
-                                    node = new TreeNode(newObject.Name, this.method_3(newObject), this.method_4(newObject)) {
+                                    node = new TreeNode(newObject.Name, this.method_3(newObject),
+                                        this.method_4(newObject))
+                                    {
                                         Tag = newObject
                                     };
                                     base.SelectedNode.Parent.Nodes.Add(node);
@@ -292,13 +295,15 @@ namespace Yutai.ArcGIS.Catalog.UI
                             if (connection.ShowDialog() == DialogResult.OK)
                             {
                                 newObject = new GxDatabase();
-                                name = new WorkspaceNameClass {
+                                name = new WorkspaceNameClass
+                                {
                                     WorkspaceFactoryProgID = "esriDataSourcesGDB.SdeWorkspaceFactory",
                                     PathName = connection.ConnectionPath
                                 };
                                 (newObject as IGxDatabase).WorkspaceName = name;
                                 newObject.Attach(tag.Parent, this.igxCatalog_0);
-                                node = new TreeNode(newObject.Name, this.method_3(newObject), this.method_4(newObject)) {
+                                node = new TreeNode(newObject.Name, this.method_3(newObject), this.method_4(newObject))
+                                {
                                     Tag = newObject
                                 };
                                 base.SelectedNode.Parent.Nodes.Add(node);
@@ -349,7 +354,8 @@ namespace Yutai.ArcGIS.Catalog.UI
                             if (newObject != null)
                             {
                                 newObject.Attach(tag.Parent, this.igxCatalog_0);
-                                node = new TreeNode(newObject.Name, this.method_3(newObject), this.method_4(newObject)) {
+                                node = new TreeNode(newObject.Name, this.method_3(newObject), this.method_4(newObject))
+                                {
                                     Tag = newObject
                                 };
                                 base.SelectedNode.Parent.Nodes.Add(node);
@@ -360,7 +366,8 @@ namespace Yutai.ArcGIS.Catalog.UI
                     {
                         try
                         {
-                            frmNewServerObject obj5 = new frmNewServerObject {
+                            frmNewServerObject obj5 = new frmNewServerObject
+                            {
                                 AGSServerConnectionName = (tag.Parent as IGxAGSConnection).AGSServerConnectionName
                             };
                             if (obj5.ShowDialog() == DialogResult.OK)
@@ -386,7 +393,8 @@ namespace Yutai.ArcGIS.Catalog.UI
                 {
                     this.Expand(this.treeNode_1);
                     IEnumNameEdit edit = new NamesEnumeratorClass();
-                    IEnumerator enumerator = (e.Data.GetData("System.Collections.ArrayList") as ArrayList).GetEnumerator();
+                    IEnumerator enumerator =
+                        (e.Data.GetData("System.Collections.ArrayList") as ArrayList).GetEnumerator();
                     enumerator.Reset();
                     IGxObject current = null;
                     while (enumerator.MoveNext())
@@ -507,7 +515,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
         }
 
@@ -518,7 +526,8 @@ namespace Yutai.ArcGIS.Catalog.UI
                 this.point_0 = SystemInformation.WorkingArea.Location;
                 System.Windows.Forms.DataObject data = new System.Windows.Forms.DataObject();
                 data.SetData(this.arrayList_0);
-                base.DoDragDrop(data, DragDropEffects.Link | DragDropEffects.Move | DragDropEffects.Copy | DragDropEffects.Scroll);
+                base.DoDragDrop(data,
+                    DragDropEffects.Link | DragDropEffects.Move | DragDropEffects.Copy | DragDropEffects.Scroll);
             }
         }
 
@@ -733,7 +742,7 @@ namespace Yutai.ArcGIS.Catalog.UI
                         }
                         catch (Exception exception)
                         {
-                            Logger.Current.Error("",exception, "");
+                            Logger.Current.Error("", exception, "");
                         }
                     }
                     else
@@ -933,7 +942,10 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         private TreeNode method_6(IGxObject igxObject_1)
         {
-            return new TreeNode(igxObject_1.Name, this.method_3(igxObject_1), this.method_4(igxObject_1)) { Tag = igxObject_1 };
+            return new TreeNode(igxObject_1.Name, this.method_3(igxObject_1), this.method_4(igxObject_1))
+            {
+                Tag = igxObject_1
+            };
         }
 
         private void method_7(TreeNode treeNode_2)
@@ -1005,23 +1017,23 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         public IGxCatalog GxCatalog
         {
-            get
-            {
-                return this.igxCatalog_0;
-            }
+            get { return this.igxCatalog_0; }
             set
             {
                 if (value != null)
                 {
                     this.igxCatalog_0 = value;
-                    (this.igxCatalog_0 as IGxCatalogEvents).OnObjectAdded += new OnObjectAddedEventHandler(this.method_12);
-                    (this.igxCatalog_0 as IGxCatalogEvents).OnObjectChanged += new OnObjectChangedEventHandler(this.method_13);
-                    (this.igxCatalog_0 as IGxCatalogEvents).OnObjectRefreshed += new OnObjectRefreshedEventHandler(this.method_14);
-                    (this.igxCatalog_0 as IGxCatalogEvents).OnObjectDeleted += new OnObjectDeletedEventHandler(this.method_15);
+                    (this.igxCatalog_0 as IGxCatalogEvents).OnObjectAdded +=
+                        new OnObjectAddedEventHandler(this.method_12);
+                    (this.igxCatalog_0 as IGxCatalogEvents).OnObjectChanged +=
+                        new OnObjectChangedEventHandler(this.method_13);
+                    (this.igxCatalog_0 as IGxCatalogEvents).OnObjectRefreshed +=
+                        new OnObjectRefreshedEventHandler(this.method_14);
+                    (this.igxCatalog_0 as IGxCatalogEvents).OnObjectDeleted +=
+                        new OnObjectDeletedEventHandler(this.method_15);
                     (this.igxCatalog_0 as IGxCatalogEvents).OnRefreshAll += new OnRefreshAllEventHandler(this.method_16);
                 }
             }
         }
     }
 }
-

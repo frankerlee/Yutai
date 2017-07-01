@@ -22,7 +22,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public SimpleRenderControl()
         {
-          //  MessageBox.Show("Testing.....");
+            //  MessageBox.Show("Testing.....");
             this.InitializeComponent();
         }
 
@@ -52,13 +52,13 @@ namespace Yutai.ArcGIS.Carto.UI
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
 
- private void method_0()
+        private void method_0()
         {
             if (this.isimpleRenderer_0 != null)
             {
@@ -71,7 +71,12 @@ namespace Yutai.ArcGIS.Carto.UI
         private IColor method_1()
         {
             Random random = new Random((int) DateTime.Now.Ticks);
-            return new RgbColorClass { Red = (int) (255.0 * random.NextDouble()), Green = (int) (255.0 * random.NextDouble()), Blue = (int) (255.0 * random.NextDouble()) };
+            return new RgbColorClass
+            {
+                Red = (int) (255.0*random.NextDouble()),
+                Green = (int) (255.0*random.NextDouble()),
+                Blue = (int) (255.0*random.NextDouble())
+            };
         }
 
         private ISymbol method_2(esriGeometryType esriGeometryType_0)
@@ -123,7 +128,8 @@ namespace Yutai.ArcGIS.Carto.UI
                             this.isimpleRenderer_0 = new SimpleRendererClass();
                             if (this.igeoFeatureLayer_0.FeatureClass != null)
                             {
-                                this.isimpleRenderer_0.Symbol = this.method_2(this.igeoFeatureLayer_0.FeatureClass.ShapeType);
+                                this.isimpleRenderer_0.Symbol =
+                                    this.method_2(this.igeoFeatureLayer_0.FeatureClass.ShapeType);
                             }
                         }
                     }
@@ -142,23 +148,13 @@ namespace Yutai.ArcGIS.Carto.UI
 
         bool IUserControl.Visible
         {
-            get
-            {
-                return base.Visible;
-            }
-            set
-            {
-                base.Visible = value;
-            }
+            get { return base.Visible; }
+            set { base.Visible = value; }
         }
 
         public IStyleGallery StyleGallery
         {
-            set
-            {
-                this.istyleGallery_0 = value;
-            }
+            set { this.istyleGallery_0 = value; }
         }
     }
 }
-

@@ -10,10 +10,10 @@ namespace Yutai.Plugins.Locator.Menu
     {
         private List<YutaiCommand> _commands;
         private LocatorPlugin _plugin;
+
         public YutaiCommands(IAppContext context, PluginIdentity identity)
             : base(context, identity)
         {
-
         }
 
         public LocatorPlugin Plugin
@@ -21,16 +21,15 @@ namespace Yutai.Plugins.Locator.Menu
             get { return _plugin; }
             set { _plugin = value; }
         }
+
         public override IEnumerable<YutaiCommand> GetCommands()
         {
             //if (_commands == null)
             //{
-                _commands = new List<YutaiCommand>()
-                {
-                    
-                     new CmdStartLocator(_context) as YutaiCommand
-                     
-                };
+            _commands = new List<YutaiCommand>()
+            {
+                new CmdStartLocator(_context) as YutaiCommand
+            };
             //}
             return _commands;
         }

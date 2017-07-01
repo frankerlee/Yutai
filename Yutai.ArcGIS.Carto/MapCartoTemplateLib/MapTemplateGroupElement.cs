@@ -9,11 +9,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 {
     public class MapTemplateGroupElement : MapTemplateElement
     {
-        [CompilerGenerated]
-        private double double_0;
         private IGroupElement igroupElement_0;
-        [CompilerGenerated]
-        private MapCartoTemplateLib.SizeStyle sizeStyle_0;
+
 
         public MapTemplateGroupElement(MapTemplate mapTemplate_1) : base(mapTemplate_1)
         {
@@ -58,7 +55,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
-        public void Create(List<IElement> list_0)
+        public void Create(IList<IElement> list_0)
         {
             foreach (IElement element in list_0)
             {
@@ -88,12 +85,12 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 IEnvelope to = element.Geometry.Envelope;
                 if (this.SizeStyle == MapCartoTemplateLib.SizeStyle.SameAsInsideWidth)
                 {
-                    num = (from.Height * envelope.Width) / from.Width;
+                    num = (from.Height*envelope.Width)/from.Width;
                     to.PutCoords(from.XMin, from.YMin, from.XMin + envelope.Width, from.YMin + num);
                 }
                 else if (this.SizeStyle == MapCartoTemplateLib.SizeStyle.SameAsInsideHeight)
                 {
-                    num = (from.Width * envelope.Height) / from.Height;
+                    num = (from.Width*envelope.Height)/from.Height;
                     to.PutCoords(from.XMin, from.YMin, from.XMin + num, from.YMin + envelope.Height);
                 }
                 else
@@ -101,14 +98,14 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     double num2;
                     if (this.SizeStyle == MapCartoTemplateLib.SizeStyle.InsideWidthScale)
                     {
-                        num2 = envelope.Width * this.SizeScale;
-                        num = (from.Height * num2) / from.Width;
+                        num2 = envelope.Width*this.SizeScale;
+                        num = (from.Height*num2)/from.Width;
                         to.PutCoords(from.XMin, from.YMin, from.XMin + num2, from.YMin + num);
                     }
                     else if (this.SizeStyle == MapCartoTemplateLib.SizeStyle.InsideWidthScale)
                     {
-                        num = envelope.Height * this.SizeScale;
-                        num2 = (from.Width * num) / from.Height;
+                        num = envelope.Height*this.SizeScale;
+                        num2 = (from.Width*num)/from.Height;
                         to.PutCoords(from.XMin, from.YMin, from.XMin + num2, from.YMin + num);
                     }
                 }
@@ -245,33 +242,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
-        public double SizeScale
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.double_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.double_0 = value;
-            }
-        }
+        public double SizeScale { get; set; }
 
-        public MapCartoTemplateLib.SizeStyle SizeStyle
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.sizeStyle_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.sizeStyle_0 = value;
-            }
-        }
+        public MapCartoTemplateLib.SizeStyle SizeStyle { get; set; }
     }
 }
-

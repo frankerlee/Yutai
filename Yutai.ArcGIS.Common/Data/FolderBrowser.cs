@@ -35,10 +35,7 @@ namespace Yutai.ArcGIS.Common.Data
 
         public Data.FolderBrowser.fbFolder StartLocation
         {
-            get
-            {
-                return (Data.FolderBrowser.fbFolder)this.folderBrowser_0.StartLocation;
-            }
+            get { return (Data.FolderBrowser.fbFolder) this.folderBrowser_0.StartLocation; }
             set
             {
                 if (value <= Data.FolderBrowser.fbFolder.Templates)
@@ -48,11 +45,11 @@ namespace Yutai.ArcGIS.Common.Data
                         case Data.FolderBrowser.fbFolder.Desktop:
                             this.folderBrowser_0.StartLocation = FolderNameEditor.FolderBrowserFolder.Desktop;
                             break;
-                        case (Data.FolderBrowser.fbFolder)1:
-                        case (Data.FolderBrowser.fbFolder)2:
-                        case (Data.FolderBrowser.fbFolder)3:
-                        case (Data.FolderBrowser.fbFolder)7:
-                        case (Data.FolderBrowser.fbFolder)10:
+                        case (Data.FolderBrowser.fbFolder) 1:
+                        case (Data.FolderBrowser.fbFolder) 2:
+                        case (Data.FolderBrowser.fbFolder) 3:
+                        case (Data.FolderBrowser.fbFolder) 7:
+                        case (Data.FolderBrowser.fbFolder) 10:
                             break;
                         case Data.FolderBrowser.fbFolder.Printers:
                             this.folderBrowser_0.StartLocation = FolderNameEditor.FolderBrowserFolder.Printers;
@@ -79,7 +76,8 @@ namespace Yutai.ArcGIS.Common.Data
                                     this.folderBrowser_0.StartLocation = FolderNameEditor.FolderBrowserFolder.MyComputer;
                                     break;
                                 case Data.FolderBrowser.fbFolder.NetworkNeighborhood:
-                                    this.folderBrowser_0.StartLocation = FolderNameEditor.FolderBrowserFolder.NetworkNeighborhood;
+                                    this.folderBrowser_0.StartLocation =
+                                        FolderNameEditor.FolderBrowserFolder.NetworkNeighborhood;
                                     break;
                                 case Data.FolderBrowser.fbFolder.Templates:
                                     this.folderBrowser_0.StartLocation = FolderNameEditor.FolderBrowserFolder.Templates;
@@ -92,7 +90,8 @@ namespace Yutai.ArcGIS.Common.Data
                 {
                     if (value == Data.FolderBrowser.fbFolder.NetAndDialUpConnections)
                     {
-                        this.folderBrowser_0.StartLocation = FolderNameEditor.FolderBrowserFolder.NetAndDialUpConnections;
+                        this.folderBrowser_0.StartLocation =
+                            FolderNameEditor.FolderBrowserFolder.NetAndDialUpConnections;
                     }
                 }
                 else
@@ -104,10 +103,7 @@ namespace Yutai.ArcGIS.Common.Data
 
         public Data.FolderBrowser.fbStyles Style
         {
-            get
-            {
-                return (Data.FolderBrowser.fbStyles)this.folderBrowser_0.Style;
-            }
+            get { return (Data.FolderBrowser.fbStyles) this.folderBrowser_0.Style; }
             set
             {
                 if (value <= Data.FolderBrowser.fbStyles.ShowTextBox)
@@ -158,14 +154,8 @@ namespace Yutai.ArcGIS.Common.Data
 
         public string Description
         {
-            get
-            {
-                return this.folderBrowser_0.Description;
-            }
-            set
-            {
-                this.folderBrowser_0.Description = value;
-            }
+            get { return this.folderBrowser_0.Description; }
+            set { this.folderBrowser_0.Description = value; }
         }
 
         public string DirectoryPath

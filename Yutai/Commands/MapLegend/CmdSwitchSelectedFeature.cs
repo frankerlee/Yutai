@@ -22,7 +22,6 @@ namespace Yutai.Commands.MapLegend
 {
     public class CmdSwitchSelectedFeature : YutaiCommand
     {
-
         private IMapLegendView _view;
 
 
@@ -45,6 +44,7 @@ namespace Yutai.Commands.MapLegend
             base.m_enabled = true;
             base._itemType = RibbonItemType.Button;
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
@@ -69,9 +69,13 @@ namespace Yutai.Commands.MapLegend
                         {
                             int count = featureSelection.SelectionSet.Count;
                             ISelectionEnvironment pSelectionEnvironment = new SelectionEnvironmentClass();
-                            if ((_view.SelectedLayer as IFeatureLayer).FeatureClass.FeatureCount(null) - count <= (pSelectionEnvironment as ISelectionEnvironmentThreshold).WarningThreshold || MessageBox.Show("所选择记录较多，执行将花较长时间，是否继续？", "选择", MessageBoxButtons.YesNo) != DialogResult.No)
+                            if ((_view.SelectedLayer as IFeatureLayer).FeatureClass.FeatureCount(null) - count <=
+                                (pSelectionEnvironment as ISelectionEnvironmentThreshold).WarningThreshold ||
+                                MessageBox.Show("所选择记录较多，执行将花较长时间，是否继续？", "选择", MessageBoxButtons.YesNo) !=
+                                DialogResult.No)
                             {
-                                featureSelection.SelectFeatures(null, esriSelectionResultEnum.esriSelectionResultXOR, false);
+                                featureSelection.SelectFeatures(null, esriSelectionResultEnum.esriSelectionResultXOR,
+                                    false);
                                 pActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeography, featureSelection, null);
                             }
                         }

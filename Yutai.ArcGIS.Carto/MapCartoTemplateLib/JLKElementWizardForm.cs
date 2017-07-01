@@ -17,7 +17,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         private LegendFormatSetupCtrl legendFormatSetupCtrl_0 = new LegendFormatSetupCtrl();
         private LegendFrameUserControl legendFrameUserControl_0 = new LegendFrameUserControl();
         private LegendTitleUserControl legendTitleUserControl_0 = new LegendTitleUserControl();
-       
+
         private PictureSelectPage pictureSelectPage_0 = new PictureSelectPage();
         private TableCellSetPage tableCellSetPage_0 = new TableCellSetPage();
         private TableGeneralPage tableGeneralPage_0 = new TableGeneralPage();
@@ -38,7 +38,10 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 case 1:
                     this.elementTypeSelectPage_0.Visible = true;
                     this.elementPosition_0.Visible = false;
-                    if ((this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType == MapTemplateElementType.JoinTableElement) || (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType == MapTemplateElementType.OLEElement))
+                    if ((this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType ==
+                         MapTemplateElementType.JoinTableElement) ||
+                        (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType ==
+                         MapTemplateElementType.OLEElement))
                     {
                         this.btnNext.Text = "下一步>";
                     }
@@ -46,23 +49,32 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
                 case 2:
                     this.elementPosition_0.Visible = true;
-                    if (((this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType != MapTemplateElementType.ScaleBarElement) && (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType != MapTemplateElementType.ScaleTextElement)) && (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType != MapTemplateElementType.NorthElement))
+                    if (((this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType !=
+                          MapTemplateElementType.ScaleBarElement) &&
+                         (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType !=
+                          MapTemplateElementType.ScaleTextElement)) &&
+                        (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType !=
+                         MapTemplateElementType.NorthElement))
                     {
-                        if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType == MapTemplateElementType.TableElement)
+                        if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType ==
+                            MapTemplateElementType.TableElement)
                         {
                             this.tableGeneralPage_0.Visible = false;
                         }
-                        else if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType == MapTemplateElementType.CustomLegendElement)
+                        else if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType ==
+                                 MapTemplateElementType.CustomLegendElement)
                         {
                             this.customLegendConfigPage_0.Visible = false;
                             this.btnNext.Text = "下一步>";
                         }
-                        else if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType == MapTemplateElementType.PictureElement)
+                        else if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType ==
+                                 MapTemplateElementType.PictureElement)
                         {
                             this.btnNext.Text = "下一步>";
                             this.pictureSelectPage_0.Visible = false;
                         }
-                        else if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType == MapTemplateElementType.LegendElement)
+                        else if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType ==
+                                 MapTemplateElementType.LegendElement)
                         {
                             this.legendTitleUserControl_0.Visible = false;
                         }
@@ -78,9 +90,11 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
                 case 3:
                     this.btnNext.Text = "下一步>";
-                    if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType != MapTemplateElementType.LegendElement)
+                    if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType !=
+                        MapTemplateElementType.LegendElement)
                     {
-                        if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType == MapTemplateElementType.TableElement)
+                        if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType ==
+                            MapTemplateElementType.TableElement)
                         {
                             this.tableGeneralPage_0.Visible = true;
                             this.tableCellSetPage_0.Visible = false;
@@ -110,7 +124,10 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     this.MapTemplateElement = this.elementTypeSelectPage_0.MapTemplateElement;
                     this.method_0(this.elementTypeSelectPage_0.MapTemplateElement);
                     this.elementPosition_0.Visible = true;
-                    if ((this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType == MapTemplateElementType.JoinTableElement) || (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType == MapTemplateElementType.OLEElement))
+                    if ((this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType ==
+                         MapTemplateElementType.JoinTableElement) ||
+                        (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType ==
+                         MapTemplateElementType.OLEElement))
                     {
                         this.btnNext.Text = "完成";
                     }
@@ -119,32 +136,45 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 case 1:
                     this.elementPosition_0.Apply();
                     this.elementPosition_0.Visible = false;
-                    if ((this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType != MapTemplateElementType.JoinTableElement) && (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType != MapTemplateElementType.OLEElement))
+                    if ((this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType !=
+                         MapTemplateElementType.JoinTableElement) &&
+                        (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType !=
+                         MapTemplateElementType.OLEElement))
                     {
-                        if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType == MapTemplateElementType.CustomLegendElement)
+                        if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType ==
+                            MapTemplateElementType.CustomLegendElement)
                         {
                             this.customLegendConfigPage_0.Visible = true;
                             this.btnNext.Text = "完成";
                         }
-                        else if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType == MapTemplateElementType.TableElement)
+                        else if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType ==
+                                 MapTemplateElementType.TableElement)
                         {
                             this.tableGeneralPage_0.Visible = true;
                         }
-                        else if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType == MapTemplateElementType.LegendElement)
+                        else if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType ==
+                                 MapTemplateElementType.LegendElement)
                         {
                             this.legendTitleUserControl_0.Visible = true;
                         }
-                        else if (((this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType == MapTemplateElementType.ScaleBarElement) || (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType == MapTemplateElementType.ScaleTextElement)) || (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType == MapTemplateElementType.NorthElement))
+                        else if (((this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType ==
+                                   MapTemplateElementType.ScaleBarElement) ||
+                                  (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType ==
+                                   MapTemplateElementType.ScaleTextElement)) ||
+                                 (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType ==
+                                  MapTemplateElementType.NorthElement))
                         {
                             this.elementSymbolSetPage_0.Visible = true;
                             this.btnNext.Text = "完成";
                         }
-                        else if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType == MapTemplateElementType.PictureElement)
+                        else if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType ==
+                                 MapTemplateElementType.PictureElement)
                         {
                             this.pictureSelectPage_0.Visible = true;
                             this.btnNext.Text = "完成";
                         }
-                        else if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType == MapTemplateElementType.DataGraphicElement)
+                        else if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType ==
+                                 MapTemplateElementType.DataGraphicElement)
                         {
                             base.DialogResult = DialogResult.OK;
                         }
@@ -158,9 +188,11 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     break;
 
                 case 2:
-                    if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType != MapTemplateElementType.PictureElement)
+                    if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType !=
+                        MapTemplateElementType.PictureElement)
                     {
-                        if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType == MapTemplateElementType.TableElement)
+                        if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType ==
+                            MapTemplateElementType.TableElement)
                         {
                             if (!this.tableGeneralPage_0.CanApply())
                             {
@@ -173,18 +205,25 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                         }
                         else
                         {
-                            if (((this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType == MapTemplateElementType.ScaleBarElement) || (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType == MapTemplateElementType.ScaleTextElement)) || (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType == MapTemplateElementType.NorthElement))
+                            if (((this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType ==
+                                  MapTemplateElementType.ScaleBarElement) ||
+                                 (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType ==
+                                  MapTemplateElementType.ScaleTextElement)) ||
+                                (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType ==
+                                 MapTemplateElementType.NorthElement))
                             {
                                 base.DialogResult = DialogResult.OK;
                                 return;
                             }
-                            if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType == MapTemplateElementType.CustomLegendElement)
+                            if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType ==
+                                MapTemplateElementType.CustomLegendElement)
                             {
                                 this.customLegendConfigPage_0.Apply();
                                 base.DialogResult = DialogResult.OK;
                                 return;
                             }
-                            if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType == MapTemplateElementType.LegendElement)
+                            if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType ==
+                                MapTemplateElementType.LegendElement)
                             {
                                 this.legendTitleUserControl_0.Visible = false;
                                 this.legendFormatSetupCtrl_0.Visible = true;
@@ -204,9 +243,11 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     return;
 
                 case 3:
-                    if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType != MapTemplateElementType.LegendElement)
+                    if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType !=
+                        MapTemplateElementType.LegendElement)
                     {
-                        if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType != MapTemplateElementType.TableElement)
+                        if (this.elementTypeSelectPage_0.MapTemplateElement.MapTemplateElementType !=
+                            MapTemplateElementType.TableElement)
                         {
                             this.textElementValueSetPage_0.Apply();
                         }
@@ -221,7 +262,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             this.int_0++;
         }
 
- private void JLKElementWizardForm_Load(object sender, EventArgs e)
+        private void JLKElementWizardForm_Load(object sender, EventArgs e)
         {
             this.elementTypeSelectPage_0.Dock = DockStyle.Fill;
             this.panel1.Controls.Add(this.elementTypeSelectPage_0);
@@ -271,33 +312,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             this.tableGeneralPage_0.SetObjects(mapTemplateElement_1);
         }
 
-        public MapCartoTemplateLib.MapTemplate MapTemplate
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.mapTemplate_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.mapTemplate_0 = value;
-            }
-        }
+        public MapCartoTemplateLib.MapTemplate MapTemplate { get; set; }
 
-        public MapCartoTemplateLib.MapTemplateElement MapTemplateElement
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.mapTemplateElement_0;
-            }
-            [CompilerGenerated]
-            protected set
-            {
-                this.mapTemplateElement_0 = value;
-            }
-        }
+        public MapCartoTemplateLib.MapTemplateElement MapTemplateElement { get; set; }
     }
 }
-

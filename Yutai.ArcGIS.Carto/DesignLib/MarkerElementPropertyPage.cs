@@ -86,7 +86,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             }
         }
 
- private void MarkerElementPropertyPage_Load(object sender, EventArgs e)
+        private void MarkerElementPropertyPage_Load(object sender, EventArgs e)
         {
             this.method_0();
             this.bool_0 = true;
@@ -136,7 +136,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         private void method_2(uint uint_0, out int int_0, out int int_1, out int int_2)
         {
             uint num = uint_0 & 16711680;
-             int_2 = (int) (num >> 16);
+            int_2 = (int) (num >> 16);
             num = uint_0 & 65280;
             int_1 = (int) (num >> 8);
             num = uint_0 & 255;
@@ -148,7 +148,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             uint num = 0;
             num = (uint) (0 | int_2);
             num = num << 8;
-            num |=(uint) int_1;
+            num |= (uint) int_1;
             num = num << 8;
             return (int) (num | int_0);
         }
@@ -222,39 +222,23 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

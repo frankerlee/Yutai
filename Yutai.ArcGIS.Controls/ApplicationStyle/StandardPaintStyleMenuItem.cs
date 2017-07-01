@@ -57,4 +57,3 @@ namespace Yutai.ArcGIS.Controls.ApplicationStyle
         }
     }
 }
-

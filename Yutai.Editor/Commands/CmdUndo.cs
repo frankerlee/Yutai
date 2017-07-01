@@ -11,8 +11,6 @@ namespace Yutai.Plugins.Editor.Commands
 {
     class CmdUndo : YutaiCommand
     {
-        
-
         public CmdUndo(IAppContext context)
         {
             OnCreate(context);
@@ -32,8 +30,6 @@ namespace Yutai.Plugins.Editor.Commands
             base.TextImageRelationYT = TextImageRelationYT.ImageAboveText;
             base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
             _itemType = RibbonItemType.Button;
-
-
         }
 
         public override bool Enabled
@@ -53,13 +49,15 @@ namespace Yutai.Plugins.Editor.Commands
                 {
                     result = false;
                 }
-                else if ( Yutai.ArcGIS.Common.Editor.Editor.EditMap != null && Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
+                else if (Yutai.ArcGIS.Common.Editor.Editor.EditMap != null &&
+                         Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
                 {
                     result = false;
                 }
                 else if (Yutai.ArcGIS.Common.Editor.Editor.EditWorkspace != null)
                 {
-                    if (SketchToolAssist.Feedback != null && SketchToolAssist.Feedback is IOperation && (SketchToolAssist.Feedback as IOperation).CanUndo)
+                    if (SketchToolAssist.Feedback != null && SketchToolAssist.Feedback is IOperation &&
+                        (SketchToolAssist.Feedback as IOperation).CanUndo)
                     {
                         result = true;
                     }
@@ -79,8 +77,6 @@ namespace Yutai.Plugins.Editor.Commands
         }
 
 
-
-
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
@@ -88,7 +84,6 @@ namespace Yutai.Plugins.Editor.Commands
 
         public override void OnClick()
         {
-
             try
             {
                 if (SketchToolAssist.Feedback != null && SketchToolAssist.Feedback is IOperation)

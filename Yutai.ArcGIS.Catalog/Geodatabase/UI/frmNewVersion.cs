@@ -25,17 +25,13 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.Close();
         }
 
- private void frmNewVersion_Load(object sender, EventArgs e)
+        private void frmNewVersion_Load(object sender, EventArgs e)
         {
         }
 
- public IArray ParentVersions
+        public IArray ParentVersions
         {
-            set
-            {
-                this.newVersionControl_0.ParentVersions = value;
-            }
+            set { this.newVersionControl_0.ParentVersions = value; }
         }
     }
 }
-

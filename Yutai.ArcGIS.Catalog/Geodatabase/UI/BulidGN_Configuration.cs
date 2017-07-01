@@ -29,12 +29,15 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 this.radioGroup1.SelectedIndex = 1;
                 BulidGeometryNetworkHelper.BulidGNHelper.ConfigurationKeyword = this.comboBoxEdit.Text;
             }
-            IWorkspaceConfiguration workspace = BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace as IWorkspaceConfiguration;
+            IWorkspaceConfiguration workspace =
+                BulidGeometryNetworkHelper.BulidGNHelper.FeatureDataset.Workspace as IWorkspaceConfiguration;
             if (workspace != null)
             {
                 IEnumConfigurationKeyword configurationKeywords = workspace.ConfigurationKeywords;
                 configurationKeywords.Reset();
-                for (IConfigurationKeyword keyword2 = configurationKeywords.Next(); keyword2 != null; keyword2 = configurationKeywords.Next())
+                for (IConfigurationKeyword keyword2 = configurationKeywords.Next();
+                    keyword2 != null;
+                    keyword2 = configurationKeywords.Next())
                 {
                     if (keyword2.KeywordType == esriConfigurationKeywordType.esriConfigurationKeywordNetwork)
                     {
@@ -53,7 +56,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
+        private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.radioGroup1.SelectedIndex == 0)
             {
@@ -66,4 +69,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

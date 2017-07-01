@@ -9,7 +9,8 @@ namespace Yutai.ArcGIS.Common.Excel
         {
         }
 
-        public static void ExcelTemplatePrint(bool bool_0, object object_0, string string_0, string string_1, int int_0, int int_1)
+        public static void ExcelTemplatePrint(bool bool_0, object object_0, string string_0, string string_1, int int_0,
+            int int_1)
         {
             int i;
             DataTable object0 = null;
@@ -57,7 +58,8 @@ namespace Yutai.ArcGIS.Common.Excel
             }
         }
 
-        public static void ExcelTemplatePrint(bool bool_0, object object_0, string string_0, string string_1, int int_0, int int_1, int int_2)
+        public static void ExcelTemplatePrint(bool bool_0, object object_0, string string_0, string string_1, int int_0,
+            int int_1, int int_2)
         {
             int i;
             DataTable object0 = null;

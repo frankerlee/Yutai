@@ -55,6 +55,5 @@ namespace Yutai.Plugins.TableEditor.Commands.ContextMenu
         {
             _menuStrip.TableView.VirtualGridView.HideField(_menuStrip.ColumnIndex);
         }
-
     }
 }

@@ -20,7 +20,7 @@ namespace Yutai.Services.Concrete
 
         public bool SaveFile(string filter, ref string filename)
         {
-            var dialog = new SaveFileDialog { Filter = filter, FileName = filename };
+            var dialog = new SaveFileDialog {Filter = filter, FileName = filename};
 
             if (!string.IsNullOrWhiteSpace(Title))
             {
@@ -132,16 +132,16 @@ namespace Yutai.Services.Concrete
         {
             switch (layerType)
             {
-               /* case DataSourceType.All:
-                    return GeoSource.FileFilter;
-                case DataSourceType.Raster:
-                    return GeoSource.RasterFilter;
-                case DataSourceType.Vector:
-                    return GeoSource.VectorFilter;*/
-                case DataSourceType.SpatiaLite:
-                    return "SpatiaLite databases|*.sqlite";
-            }
-            return "All files|*.*";
-        }
-    }
-}
+                /* case DataSourceType.All:
+                     return GeoSource.FileFilter;
+                 case DataSourceType.Raster:
+                     return GeoSource.RasterFilter;
+                 case DataSourceType.Vector:
+                     return GeoSource.VectorFilter;*/
+            case DataSourceType.SpatiaLite:
+                return "SpatiaLite databases|*.sqlite";
+                }
+                return "All files|*.*";
+                }
+                }
+                }

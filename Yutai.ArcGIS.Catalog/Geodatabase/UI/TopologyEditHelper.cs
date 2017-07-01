@@ -6,9 +6,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
     {
         internal static IArray m_pList;
 
-        internal static  event DeleteAllTopolyClassHandler DeleteAllTopolyClass;
+        internal static event DeleteAllTopolyClassHandler DeleteAllTopolyClass;
 
-        internal static  event DeleteTopolyClassHandler DeleteTopolyClass;
+        internal static event DeleteTopolyClassHandler DeleteTopolyClass;
 
         static TopologyEditHelper()
         {
@@ -41,4 +41,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         internal delegate void DeleteTopolyClassHandler(int int_0);
     }
 }
-

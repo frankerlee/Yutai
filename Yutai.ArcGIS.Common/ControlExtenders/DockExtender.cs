@@ -37,7 +37,8 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
             {
                 throw new ArgumentException("handle cannot be null");
             }
-            DockState state = new DockState {
+            DockState state = new DockState
+            {
                 Container = scrollableControl_0,
                 Handle = control_1,
                 OrgDockHost = this.control_0,
@@ -70,7 +71,7 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
                         }
                     }
                     return orgDockHost;
-                Label_0087:
+                    Label_0087:
                     orgDockHost = current.DockState.Container;
                 }
             }
@@ -107,11 +108,7 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
 
         public Floaties Floaties
         {
-            get
-            {
-                return this.floaties_0;
-            }
+            get { return this.floaties_0; }
         }
     }
 }
-

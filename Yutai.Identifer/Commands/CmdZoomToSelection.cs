@@ -10,15 +10,16 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Plugins.Identifer.Commands
 {
-    class CmdZoomToSelection:YutaiCommand
+    class CmdZoomToSelection : YutaiCommand
     {
-     
         public override bool Enabled
         {
             get
             {
                 bool flag;
-                flag = (this._context.MapControl.Map == null || this._context.MapControl.Map.SelectionCount <= 0 ? false : true);
+                flag = (this._context.MapControl.Map == null || this._context.MapControl.Map.SelectionCount <= 0
+                    ? false
+                    : true);
                 return flag;
             }
         }
@@ -37,7 +38,6 @@ namespace Yutai.Plugins.Identifer.Commands
 
         public override void OnCreate(object hook)
         {
-           
         }
 
         public override void OnClick()

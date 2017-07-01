@@ -39,7 +39,7 @@ namespace Yutai.Services.Concrete
                 if (img is Icon)
                 {
                     type = "Icon";
-                    Icon image = (Icon)img;
+                    Icon image = (Icon) img;
                     using (Stream outStream = File.OpenWrite(path))
                     {
                         image.Save(outStream);
@@ -49,7 +49,7 @@ namespace Yutai.Services.Concrete
                 else if (img is Bitmap)
                 {
                     type = "Bitmap";
-                    Image image = (Bitmap)img;
+                    Image image = (Bitmap) img;
                     image.Save(path);
                 }
 
@@ -62,7 +62,6 @@ namespace Yutai.Services.Concrete
                         return Convert.ToBase64String(bytes);
                     }
                 }
-
             }
             catch (Exception e)
             {

@@ -97,7 +97,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void frmCompress_Load(object sender, EventArgs e)
+        private void frmCompress_Load(object sender, EventArgs e)
         {
             switch (this.int_0)
             {
@@ -113,17 +113,10 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- public int Type
+        public int Type
         {
-            get
-            {
-                return this.int_0;
-            }
-            set
-            {
-                this.int_0 = value;
-            }
+            get { return this.int_0; }
+            set { this.int_0 = value; }
         }
     }
 }
-

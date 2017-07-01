@@ -37,7 +37,10 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 IRasterWorkspaceEx ex = this.igxObject_0.InternalObjectName.Open() as IRasterWorkspaceEx;
                 try
                 {
-                    if (RasterUtility.CreateSDERasterDs(ex, this.txtRasterDatastName.Text, int.Parse(this.txtRasterBand.Text), (rstPixelType) this.cboPixelType.SelectedIndex, this.ispatialReference_0, null, null, "") != null)
+                    if (
+                        RasterUtility.CreateSDERasterDs(ex, this.txtRasterDatastName.Text,
+                            int.Parse(this.txtRasterBand.Text), (rstPixelType) this.cboPixelType.SelectedIndex,
+                            this.ispatialReference_0, null, null, "") != null)
                     {
                         base.DialogResult = DialogResult.OK;
                     }
@@ -52,7 +55,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnSelectOutLocation_Click(object sender, EventArgs e)
         {
-            frmOpenFile file = new frmOpenFile {
+            frmOpenFile file = new frmOpenFile
+            {
                 Text = "保存位置"
             };
             file.RemoveAllFilters();
@@ -98,7 +102,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void frmCreateGDBRasterDataset_Load(object sender, EventArgs e)
+        private void frmCreateGDBRasterDataset_Load(object sender, EventArgs e)
         {
             if (this.igxObject_0 != null)
             {
@@ -106,7 +110,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void method_0(IGeodatabaseRelease igeodatabaseRelease_0, ISpatialReference ispatialReference_1)
+        private void method_0(IGeodatabaseRelease igeodatabaseRelease_0, ISpatialReference ispatialReference_1)
         {
             SpatialReferenctOperator.ChangeCoordinateSystem(igeodatabaseRelease_0, ispatialReference_1, true);
         }
@@ -118,11 +122,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IGxObject OutLocation
         {
-            set
-            {
-                this.igxObject_0 = value;
-            }
+            set { this.igxObject_0 = value; }
         }
     }
 }
-

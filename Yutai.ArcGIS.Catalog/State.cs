@@ -5,7 +5,6 @@ namespace Yutai.ArcGIS.Catalog
 {
     internal class State
     {
-        [CompilerGenerated]
         private ManualResetEvent manualResetEvent_0;
 
         public State(ManualResetEvent manualResetEvent_1)
@@ -29,19 +28,6 @@ namespace Yutai.ArcGIS.Catalog
             }
         }
 
-        public ManualResetEvent ManualEvent
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.manualResetEvent_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.manualResetEvent_0 = value;
-            }
-        }
+        public ManualResetEvent ManualEvent { get; set; }
     }
 }
-

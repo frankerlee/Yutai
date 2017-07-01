@@ -9,7 +9,8 @@ namespace Yutai.ArcGIS.Catalog
         {
             if (igxObject_0 is IGxDataset)
             {
-                if (((igxObject_0 as IGxDataset).DatasetName.Type == esriDatasetType.esriDTTable) || ((igxObject_0 as IGxDataset).DatasetName.Type == esriDatasetType.esriDTFeatureClass))
+                if (((igxObject_0 as IGxDataset).DatasetName.Type == esriDatasetType.esriDTTable) ||
+                    ((igxObject_0 as IGxDataset).DatasetName.Type == esriDatasetType.esriDTFeatureClass))
                 {
                     myDoubleClickResult_0 = MyDoubleClickResult.myDCRChooseAndDismiss;
                 }
@@ -27,7 +28,9 @@ namespace Yutai.ArcGIS.Catalog
         {
             if (igxObject_0 is IGxDataset)
             {
-                if ((((igxObject_0 as IGxDataset).DatasetName.Type == esriDatasetType.esriDTTable) || ((igxObject_0 as IGxDataset).DatasetName.Type == esriDatasetType.esriDTFeatureClass)) || ((igxObject_0 as IGxDataset).DatasetName.Type == esriDatasetType.esriDTFeatureDataset))
+                if ((((igxObject_0 as IGxDataset).DatasetName.Type == esriDatasetType.esriDTTable) ||
+                     ((igxObject_0 as IGxDataset).DatasetName.Type == esriDatasetType.esriDTFeatureClass)) ||
+                    ((igxObject_0 as IGxDataset).DatasetName.Type == esriDatasetType.esriDTFeatureDataset))
                 {
                     return true;
                 }
@@ -49,7 +52,9 @@ namespace Yutai.ArcGIS.Catalog
             }
             if (igxObject_0 is IGxDatabase)
             {
-                bool_0 = ((igxObject_0 as IGxDatabase).Workspace as IWorkspace2).get_NameExists(esriDatasetType.esriDTFeatureClass, string_0);
+                bool_0 =
+                    ((igxObject_0 as IGxDatabase).Workspace as IWorkspace2).get_NameExists(
+                        esriDatasetType.esriDTFeatureClass, string_0);
                 return true;
             }
             return false;
@@ -57,19 +62,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public string Description
         {
-            get
-            {
-                return "表和要素类";
-            }
+            get { return "表和要素类"; }
         }
 
         public string Name
         {
-            get
-            {
-                return "GxFilterTablesAndFeatureClasses";
-            }
+            get { return "GxFilterTablesAndFeatureClasses"; }
         }
     }
 }
-

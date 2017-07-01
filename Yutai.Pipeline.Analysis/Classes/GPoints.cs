@@ -15,10 +15,10 @@ namespace Yutai.Pipeline.Analysis.Classes
                 double num = 0.0;
                 for (int i = 0; i < count - 1; i++)
                 {
-                    GPoint gPoint = (GPoint)this.m_vtPoints[i];
-                    GPoint toPoint = (GPoint)this.m_vtPoints[i + 1];
-                    float num2 = (float)gPoint.DistanceToPt(toPoint);
-                    num += (double)num2;
+                    GPoint gPoint = (GPoint) this.m_vtPoints[i];
+                    GPoint toPoint = (GPoint) this.m_vtPoints[i + 1];
+                    float num2 = (float) gPoint.DistanceToPt(toPoint);
+                    num += (double) num2;
                 }
                 return num;
             }
@@ -31,7 +31,7 @@ namespace Yutai.Pipeline.Analysis.Classes
                 if (index < 0)
                 {
                 }
-                return (GPoint)this.m_vtPoints[index];
+                return (GPoint) this.m_vtPoints[index];
             }
             set
             {
@@ -69,7 +69,7 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         public void Swap(int m, int n)
         {
-            GPoint value = (GPoint)this.m_vtPoints[m];
+            GPoint value = (GPoint) this.m_vtPoints[m];
             this.m_vtPoints[m] = this.m_vtPoints[n];
             this.m_vtPoints[n] = value;
         }
@@ -86,12 +86,12 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         public GPoint Back()
         {
-            return (GPoint)this.m_vtPoints[this.m_vtPoints.Count - 1];
+            return (GPoint) this.m_vtPoints[this.m_vtPoints.Count - 1];
         }
 
         public GPoint Front()
         {
-            return (GPoint)this.m_vtPoints[0];
+            return (GPoint) this.m_vtPoints[0];
         }
 
         public void PopBack()
@@ -109,7 +109,7 @@ namespace Yutai.Pipeline.Analysis.Classes
             gPoints.Clear();
             for (int i = 0; i < count; i++)
             {
-                GPoint deepCopy = ((GPoint)this.m_vtPoints[i]).GetDeepCopy();
+                GPoint deepCopy = ((GPoint) this.m_vtPoints[i]).GetDeepCopy();
                 gPoints.m_vtPoints.Add(deepCopy);
             }
             return gPoints;
@@ -122,7 +122,7 @@ namespace Yutai.Pipeline.Analysis.Classes
             arrayList.Clear();
             for (int i = 0; i < count; i++)
             {
-                GPoint deepCopy = ((GPoint)this.m_vtPoints[i]).GetDeepCopy();
+                GPoint deepCopy = ((GPoint) this.m_vtPoints[i]).GetDeepCopy();
                 arrayList.Add(deepCopy);
             }
             return arrayList;
@@ -134,7 +134,7 @@ namespace Yutai.Pipeline.Analysis.Classes
             double num = 1.7976931348623157E+308;
             for (int i = 1; i < count; i++)
             {
-                CLinesect cLinesect = new CLinesect((GPoint)this.m_vtPoints[i - 1], (GPoint)this.m_vtPoints[i]);
+                CLinesect cLinesect = new CLinesect((GPoint) this.m_vtPoints[i - 1], (GPoint) this.m_vtPoints[i]);
                 double lenToPt = cLinesect.GetLenToPt(ptDst);
                 num = Math.Min(num, lenToPt);
             }
@@ -154,7 +154,7 @@ namespace Yutai.Pipeline.Analysis.Classes
             {
                 for (int i = 0; i < count - 1; i++)
                 {
-                    cLinesect.SetPoints((GPoint)this.m_vtPoints[i], (GPoint)this.m_vtPoints[i + 1]);
+                    cLinesect.SetPoints((GPoint) this.m_vtPoints[i], (GPoint) this.m_vtPoints[i + 1]);
                     if (cLinesect.IsPtOnLine(ptObj))
                     {
                         result = true;
@@ -172,7 +172,8 @@ namespace Yutai.Pipeline.Analysis.Classes
             {
                 for (int j = 0; j < i; j++)
                 {
-                    if (((GPoint)this.m_vtPoints[j]).DistanceToPt(ptDst) < ((GPoint)this.m_vtPoints[j + 1]).DistanceToPt(ptDst))
+                    if (((GPoint) this.m_vtPoints[j]).DistanceToPt(ptDst) <
+                        ((GPoint) this.m_vtPoints[j + 1]).DistanceToPt(ptDst))
                     {
                         this.Swap(j, j + 1);
                     }

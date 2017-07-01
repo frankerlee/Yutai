@@ -17,13 +17,12 @@ namespace Yutai.Commands.MapLegend
 {
     class CmdLayerProperties : YutaiCommand
     {
-
         private IMapLegendView _view;
 
         public CmdLayerProperties(IAppContext context)
         {
             _context = context;
-           
+
             OnCreate();
         }
 
@@ -48,8 +47,8 @@ namespace Yutai.Commands.MapLegend
             base.m_checked = false;
             base.m_enabled = true;
             base._itemType = RibbonItemType.Button;
-
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
@@ -57,18 +56,19 @@ namespace Yutai.Commands.MapLegend
 
         public override void OnCreate(object hook)
         {
-            _context=hook as IAppContext;
-            
+            _context = hook as IAppContext;
+
             OnCreate();
         }
 
-       
+
         public void OnClick()
         {
-
             if (this.Enabled)
             {
-                if ((_context.CurrentLayer is IFeatureLayer || _context.CurrentLayer is IGroupLayer ? true : _context.CurrentLayer is ICadLayer))
+                if ((_context.CurrentLayer is IFeatureLayer || _context.CurrentLayer is IGroupLayer
+                    ? true
+                    : _context.CurrentLayer is ICadLayer))
                 {
                     frmLayerPropertyEx _frmLayerPropertyEx = new frmLayerPropertyEx()
                     {
@@ -78,8 +78,9 @@ namespace Yutai.Commands.MapLegend
                     };
                     if (_frmLayerPropertyEx.ShowDialog() == DialogResult.OK)
                     {
-                        (_context.FocusMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeography, _context.CurrentLayer, null);
-                        
+                        (_context.FocusMap as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGeography,
+                            _context.CurrentLayer, null);
+
                         _context.MapDocumentChanged();
                     }
                 }

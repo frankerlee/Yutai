@@ -41,7 +41,9 @@ namespace Yutai.ArcGIS.Common.Helpers
         {
             List<IConfigurationKeyword> configurationKeywords = new List<IConfigurationKeyword>();
             IEnumConfigurationKeyword enumConfigurationKeyword = (pWS as IWorkspaceConfiguration).ConfigurationKeywords;
-            for (IConfigurationKeyword i = enumConfigurationKeyword.Next(); i != null; i = enumConfigurationKeyword.Next())
+            for (IConfigurationKeyword i = enumConfigurationKeyword.Next();
+                i != null;
+                i = enumConfigurationKeyword.Next())
             {
                 configurationKeywords.Add(i);
             }
@@ -52,7 +54,9 @@ namespace Yutai.ArcGIS.Common.Helpers
         {
             List<IConfigurationParameter> configurationParameters = new List<IConfigurationParameter>();
             IEnumConfigurationParameter enumConfigurationParameter = pConfig.ConfigurationParameters;
-            for (IConfigurationParameter i = enumConfigurationParameter.Next(); i != null; i = enumConfigurationParameter.Next())
+            for (IConfigurationParameter i = enumConfigurationParameter.Next();
+                i != null;
+                i = enumConfigurationParameter.Next())
             {
                 configurationParameters.Add(i);
             }
@@ -80,7 +84,8 @@ namespace Yutai.ArcGIS.Common.Helpers
             return workspace;
         }
 
-        public static IWorkspace GetSDEWorkspace(string sServerName, string sInstancePort, string sUserName, string sPassword, string sVersionName)
+        public static IWorkspace GetSDEWorkspace(string sServerName, string sInstancePort, string sUserName,
+            string sPassword, string sVersionName)
         {
             IWorkspace workspace;
             IPropertySet propertySetClass = new PropertySet();
@@ -130,7 +135,9 @@ namespace Yutai.ArcGIS.Common.Helpers
             IGeodatabaseRelease geodatabaseRelease = pWorkspace as IGeodatabaseRelease;
             if (geodatabaseRelease != null)
             {
-                flag = ((geodatabaseRelease.MajorVersion != 2 ? true : geodatabaseRelease.MinorVersion != 2) ? false : true);
+                flag = ((geodatabaseRelease.MajorVersion != 2 ? true : geodatabaseRelease.MinorVersion != 2)
+                    ? false
+                    : true);
             }
             else
             {
@@ -141,7 +148,8 @@ namespace Yutai.ArcGIS.Common.Helpers
 
         public static string PGDBDataConnectionString(string sPath)
         {
-            return string.Concat("Provider=ESRI.GeoDB.OLEDB.1;Data Source=", sPath, ";Extended Properties=workspacetype=esriDataSourcesGDB.AccessWorkspaceFactory.1;Geometry=WKB");
+            return string.Concat("Provider=ESRI.GeoDB.OLEDB.1;Data Source=", sPath,
+                ";Extended Properties=workspacetype=esriDataSourcesGDB.AccessWorkspaceFactory.1;Geometry=WKB");
         }
 
         public static List<string> QueryFeatureClassName(IWorkspace pWorkspace)
@@ -220,16 +228,23 @@ namespace Yutai.ArcGIS.Common.Helpers
             return strs;
         }
 
-        public static string SDEDataConnectionString(string sServerName, string sDataSource, string sUserName, string sPW)
+        public static string SDEDataConnectionString(string sServerName, string sDataSource, string sUserName,
+            string sPW)
         {
-            string[] strArrays = new string[] { "Provider=ESRI.GeoDB.OLEDB.1;Location=", sServerName, ";Data Source=", sDataSource, "; User Id=", sUserName, ";Password=", sPW, "; Extended Properties=WorkspaceType= esriDataSourcesGDB.SDEWorkspaceFactory.1;Geometry=WKB|OBJECT;Instance=5151;Version=SDE.DEFAULT" };
+            string[] strArrays = new string[]
+            {
+                "Provider=ESRI.GeoDB.OLEDB.1;Location=", sServerName, ";Data Source=", sDataSource, "; User Id=",
+                sUserName, ";Password=", sPW,
+                "; Extended Properties=WorkspaceType= esriDataSourcesGDB.SDEWorkspaceFactory.1;Geometry=WKB|OBJECT;Instance=5151;Version=SDE.DEFAULT"
+            };
             return string.Concat(strArrays);
         }
 
         public static string ShapefileDataConnectionString(string sPath)
         {
             sPath = Path.GetDirectoryName(sPath);
-            return string.Concat("Provider=ESRI.GeoDB.OLEDB.1;Data Source=", sPath, ";Extended Properties=WorkspaceType=esriDataSourcesFile.ShapefileWorkspaceFactory.1;Geometry=WKB|OBJECT");
+            return string.Concat("Provider=ESRI.GeoDB.OLEDB.1;Data Source=", sPath,
+                ";Extended Properties=WorkspaceType=esriDataSourcesFile.ShapefileWorkspaceFactory.1;Geometry=WKB|OBJECT");
         }
 
         public static IWorkspace SwitchVersionWorkspace(IWorkspace pWS, string sVersion, string sPws)
@@ -240,7 +255,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             return WorkspaceHelper.GetSDEWorkspace(str, str1, str2, sPws, sVersion);
         }
 
-        public static string GetSpecialCharacter(IDataset pDS,esriSQLSpecialCharacters specChar)
+        public static string GetSpecialCharacter(IDataset pDS, esriSQLSpecialCharacters specChar)
         {
             IWorkspace pWorkspace = pDS.Workspace;
             //if (pWorkspace is ShapefileWorkspaceFactory)
@@ -251,7 +266,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             //    if (specChar == esriSQLSpecialCharacters.esriSQL_WildcardManyMatch) return "%";
             //    if (specChar == esriSQLSpecialCharacters.esriSQL_WildcardManyMatch) return "%";
             //}
-            ISQLSyntax sqlSyntax=pWorkspace as ISQLSyntax;
+            ISQLSyntax sqlSyntax = pWorkspace as ISQLSyntax;
             if (sqlSyntax == null) return "";
             return sqlSyntax.GetSpecialCharacter(specChar);
         }

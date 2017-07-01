@@ -11,6 +11,7 @@ namespace Yutai.Plugins.Editor.Commands
     class CmdViewGeometryInfo : YutaiCommand
     {
         private GeometryInfoDockPanelService _dockService;
+
         public CmdViewGeometryInfo(IAppContext context)
         {
             OnCreate(context);
@@ -43,10 +44,11 @@ namespace Yutai.Plugins.Editor.Commands
                 }
                 else if (_context.FocusMap.LayerCount == 0)
                 {
-                    if(_dockService !=null) _dockService.Hide();
+                    if (_dockService != null) _dockService.Hide();
                     result = false;
                 }
-                else if (Yutai.ArcGIS.Common.Editor.Editor.EditMap != null && Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
+                else if (Yutai.ArcGIS.Common.Editor.Editor.EditMap != null &&
+                         Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
                 {
                     if (_dockService != null) _dockService.Hide();
                     result = false;
@@ -65,8 +67,6 @@ namespace Yutai.Plugins.Editor.Commands
         }
 
 
-
-
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
@@ -78,15 +78,15 @@ namespace Yutai.Plugins.Editor.Commands
             {
                 if (_dockService == null)
                     _dockService = _context.Container.GetInstance<GeometryInfoDockPanelService>();
-                this._dockService.Presenter.EditWorkspace = Yutai.ArcGIS.Common.Editor.Editor.EditWorkspace as IWorkspace;
-              
-              
+                this._dockService.Presenter.EditWorkspace =
+                    Yutai.ArcGIS.Common.Editor.Editor.EditWorkspace as IWorkspace;
+
+
                 if (_dockService.Visible == false)
                 {
                     _dockService.Show();
                     return;
                 }
-              
             }
             catch (Exception exception_)
             {

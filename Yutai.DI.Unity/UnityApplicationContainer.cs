@@ -84,7 +84,8 @@ namespace Yutai.DI.Unity
             return this;
         }
 
-        public bool Run<TPresenter, TArgument>(TArgument arg, IWin32Window parent = null) where TPresenter : class, IPresenter<TArgument>
+        public bool Run<TPresenter, TArgument>(TArgument arg, IWin32Window parent = null)
+            where TPresenter : class, IPresenter<TArgument>
         {
             var p = GetInstance<TPresenter>();
             return p.Run(arg);

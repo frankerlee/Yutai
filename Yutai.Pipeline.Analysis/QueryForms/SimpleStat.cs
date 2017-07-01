@@ -80,14 +80,14 @@ namespace Yutai.Pipeline.Analysis.QueryForms
         private void AddLayer(ILayer ipLay)
         {
             if (ipLay is IFeatureLayer)
-                AddFeatureLayer((IFeatureLayer)ipLay);
+                AddFeatureLayer((IFeatureLayer) ipLay);
             else if (ipLay is IGroupLayer)
-                AddGroupLayer((IGroupLayer)ipLay);
+                AddGroupLayer((IGroupLayer) ipLay);
         }
 
         private void AddGroupLayer(IGroupLayer iGLayer)
         {
-            var compositeLayer = (ICompositeLayer)iGLayer;
+            var compositeLayer = (ICompositeLayer) iGLayer;
             if (compositeLayer != null)
             {
                 var count = compositeLayer.Count;
@@ -146,8 +146,8 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                     for (var i = 0; i < count; i++)
                         for (var j = 0; j < count2; j++)
                         {
-                            var text = (string)dataGridView1[0, j].Value;
-                            var text2 = (string)dataGridView1[1, j].Value;
+                            var text = (string) dataGridView1[0, j].Value;
+                            var text2 = (string) dataGridView1[1, j].Value;
                             if ((text == null) || (text2 == null))
                             {
                                 MessageBox.Show(@"请确定上下限的值,其值不能为空");
@@ -166,7 +166,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                                 return;
                             }
                             var pPipeLayer =
-                                ((LayerboxItem)_layersCheckedListBox.CheckedItems[i]).m_pPipeLayer;
+                                ((LayerboxItem) _layersCheckedListBox.CheckedItems[i]).m_pPipeLayer;
                             var fields = pPipeLayer.FeatureClass.Fields;
                             var layerInfo = PPipeCfg.GetBasicLayerInfo(SelectLayer.FeatureClass);
                             var lineTableFieldName = layerInfo.GetFieldName(PipeConfigWordHelper.LineWords.GJ);
@@ -175,7 +175,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                             for (var k = 0; k < fields.FieldCount; k++)
                             {
                                 var field = fields.Field[k];
-                                if (field.Type == (esriFieldType)7)
+                                if (field.Type == (esriFieldType) 7)
                                 {
                                     num2 = k;
                                     break;
@@ -190,10 +190,10 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                                 {
                                     if (MIpGeo != null)
                                         spatialFilter.Geometry = MIpGeo;
-                                    spatialFilter.SpatialRel = (esriSpatialRelEnum)1;
+                                    spatialFilter.SpatialRel = (esriSpatialRelEnum) 1;
                                 }
-                                var selectionSet = featureClass.Select(spatialFilter, (esriSelectionType)3,
-                                    (esriSelectionOption)1, null);
+                                var selectionSet = featureClass.Select(spatialFilter, (esriSelectionType) 3,
+                                    (esriSelectionOption) 1, null);
                                 ITableSort tableSort = new TableSort();
                                 tableSort.Fields = lineTableFieldName;
                                 tableSort.SelectionSet = selectionSet;
@@ -222,17 +222,22 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                                         }
                                         if ((num7 >= num3) && (num7 < num4))
                                         {
-                                            var polyline = (IPolyline)row.Value[num2];
-                                            var pointCollection = (IPointCollection)polyline;
+                                            var polyline = (IPolyline) row.Value[num2];
+                                            var pointCollection = (IPointCollection) polyline;
                                             var num8 = 0.0;
                                             for (var l = 0; l < pointCollection.PointCount - 1; l++)
                                             {
                                                 var point = pointCollection.Point[l];
                                                 var point2 = pointCollection.Point[l + 1];
                                                 if (double.IsNaN(point.Z))
-                                                    num8 += Math.Sqrt(Math.Pow(point.X - point2.X, 2.0) + Math.Pow(point.Y - point2.Y, 2.0));
+                                                    num8 +=
+                                                        Math.Sqrt(Math.Pow(point.X - point2.X, 2.0) +
+                                                                  Math.Pow(point.Y - point2.Y, 2.0));
                                                 else
-                                                    num8 += Math.Sqrt(Math.Pow(point.X - point2.X, 2.0) + Math.Pow(point.Y - point2.Y, 2.0) + Math.Pow(point.Z - point2.Z, 2.0));
+                                                    num8 +=
+                                                        Math.Sqrt(Math.Pow(point.X - point2.X, 2.0) +
+                                                                  Math.Pow(point.Y - point2.Y, 2.0) +
+                                                                  Math.Pow(point.Z - point2.Z, 2.0));
                                             }
                                             num6 += num8;
                                             num5++;
@@ -265,7 +270,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             if (num != -1)
             {
                 List<string> values = new List<string>();
-                CommonHelper.GetUniqueValues((ITable)featureClass, strGJ, values);
+                CommonHelper.GetUniqueValues((ITable) featureClass, strGJ, values);
                 lbVal.Items.AddRange(values.ToArray());
             }
         }
@@ -287,7 +292,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 SelectLayer = null;
                 if (MapControl != null)
                 {
-                    SelectLayer = ((LayerboxItem)_layersCheckedListBox.SelectedItem).m_pPipeLayer;
+                    SelectLayer = ((LayerboxItem) _layersCheckedListBox.SelectedItem).m_pPipeLayer;
                     if (SelectLayer != null)
                     {
                         var layerInfo = PPipeCfg.GetBasicLayerInfo(SelectLayer.FeatureClass);
@@ -445,38 +450,38 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                 object obj = null;
                 var selectionBufferInPixels = MContext.Config.SelectionEnvironment.SearchTolerance;
                 ISymbol symbol = null;
-                switch ((int)MIpGeo.GeometryType)
+                switch ((int) MIpGeo.GeometryType)
                 {
                     case 1:
-                        {
-                            ISimpleMarkerSymbol simpleMarkerSymbol = new SimpleMarkerSymbol();
-                            symbol = (ISymbol)simpleMarkerSymbol;
-                            symbol.ROP2 = (esriRasterOpCode)10;
-                            simpleMarkerSymbol.Color = rgbColor;
-                            simpleMarkerSymbol.Size =
-                                selectionBufferInPixels + selectionBufferInPixels + selectionBufferInPixels;
-                            break;
-                        }
+                    {
+                        ISimpleMarkerSymbol simpleMarkerSymbol = new SimpleMarkerSymbol();
+                        symbol = (ISymbol) simpleMarkerSymbol;
+                        symbol.ROP2 = (esriRasterOpCode) 10;
+                        simpleMarkerSymbol.Color = rgbColor;
+                        simpleMarkerSymbol.Size =
+                            selectionBufferInPixels + selectionBufferInPixels + selectionBufferInPixels;
+                        break;
+                    }
                     case 3:
-                        {
-                            ISimpleLineSymbol simpleLineSymbol = new SimpleLineSymbol();
-                            symbol = (ISymbol)simpleLineSymbol;
-                            symbol.ROP2 = (esriRasterOpCode)10;
-                            simpleLineSymbol.Color = rgbColor;
-                            simpleLineSymbol.Color.Transparency = 1;
-                            simpleLineSymbol.Width = selectionBufferInPixels;
-                            break;
-                        }
+                    {
+                        ISimpleLineSymbol simpleLineSymbol = new SimpleLineSymbol();
+                        symbol = (ISymbol) simpleLineSymbol;
+                        symbol.ROP2 = (esriRasterOpCode) 10;
+                        simpleLineSymbol.Color = rgbColor;
+                        simpleLineSymbol.Color.Transparency = 1;
+                        simpleLineSymbol.Width = selectionBufferInPixels;
+                        break;
+                    }
                     case 4:
                     case 5:
-                        {
-                            ISimpleFillSymbol simpleFillSymbol = new SimpleFillSymbol();
-                            symbol = (ISymbol)simpleFillSymbol;
-                            symbol.ROP2 = (esriRasterOpCode)10;
-                            simpleFillSymbol.Color = rgbColor;
-                            simpleFillSymbol.Color.Transparency = 1;
-                            break;
-                        }
+                    {
+                        ISimpleFillSymbol simpleFillSymbol = new SimpleFillSymbol();
+                        symbol = (ISymbol) simpleFillSymbol;
+                        symbol.ROP2 = (esriRasterOpCode) 10;
+                        simpleFillSymbol.Color = rgbColor;
+                        simpleFillSymbol.Color.Transparency = 1;
+                        break;
+                    }
                 }
                 obj = symbol;
                 MapControl.DrawShape(MIpGeo, ref obj);

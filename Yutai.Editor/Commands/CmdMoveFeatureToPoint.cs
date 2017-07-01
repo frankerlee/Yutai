@@ -46,7 +46,7 @@ namespace Yutai.Plugins.Editor.Commands
                 {
                     result = false;
                 }
-               
+
                 else
                 {
                     if (Yutai.ArcGIS.Common.Editor.Editor.EditWorkspace != null)
@@ -67,8 +67,6 @@ namespace Yutai.Plugins.Editor.Commands
         }
 
 
-
-
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
@@ -76,7 +74,6 @@ namespace Yutai.Plugins.Editor.Commands
 
         public override void OnClick()
         {
-
             frmInputValue1 frmInputValue = new frmInputValue1();
             frmInputValue.Text = "输入x, y值";
             if (frmInputValue.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -102,7 +99,5 @@ namespace Yutai.Plugins.Editor.Commands
                 (_context.FocusMap as IActiveView).Refresh();
             }
         }
-
-
     }
 }

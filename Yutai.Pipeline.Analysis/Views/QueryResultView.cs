@@ -205,7 +205,7 @@ namespace Yutai.Pipeline.Analysis.Views
             }
             IFeature feature = this._cursor.NextFeature();
 
-           layerInfo = _plugin.PipeConfig.GetBasicLayerInfo(feature.Class as IFeatureClass);
+            layerInfo = _plugin.PipeConfig.GetBasicLayerInfo(feature.Class as IFeatureClass);
 
             IFields fields = this._cursor.Fields;
             int num = 0;
@@ -242,7 +242,7 @@ namespace Yutai.Pipeline.Analysis.Views
                         this.cmbCalField.Items.Add(field.Name);
                     }
                     this.cmbStatField.Items.Add(field.Name);
-                   
+
                     if (!this.stable.Columns.Contains(fields.get_Field(i).Name))
                     {
                         IYTField pField = layerInfo.Fields.FirstOrDefault(c => c.Name == field.Name);

@@ -29,7 +29,8 @@ namespace Yutai.ArcGIS.Carto.Library
             {
                 this.mapTemplateApplyHelp_0.HasStrip = this.checkBox1.Checked;
                 this.mapTemplateApplyHelp_0.XOffset = double.Parse(this.textBox1.Text);
-                this.mapTemplateApplyHelp_0.SetJWD(double.Parse(this.txtJD.Text), double.Parse(this.txtWD.Text), double.Parse(this.txtJC.Text), double.Parse(this.txtWC.Text), double.Parse(this.txtScale.Text));
+                this.mapTemplateApplyHelp_0.SetJWD(double.Parse(this.txtJD.Text), double.Parse(this.txtWD.Text),
+                    double.Parse(this.txtJC.Text), double.Parse(this.txtWC.Text), double.Parse(this.txtScale.Text));
             }
             else
             {
@@ -41,7 +42,8 @@ namespace Yutai.ArcGIS.Carto.Library
                 point3.PutCoords(double.Parse(this.txtRightLowX.Text), double.Parse(this.txtRightLowY.Text));
                 IPoint point4 = new PointClass();
                 point4.PutCoords(double.Parse(this.txtLeftLowX.Text), double.Parse(this.txtLeftLowY.Text));
-                this.mapTemplateApplyHelp_0.SetRouneCoordinate(point4, point, point2, point3, double.Parse(this.txtProjScale.Text));
+                this.mapTemplateApplyHelp_0.SetRouneCoordinate(point4, point, point2, point3,
+                    double.Parse(this.txtProjScale.Text));
             }
         }
 
@@ -93,7 +95,7 @@ namespace Yutai.ArcGIS.Carto.Library
             {
                 return false;
             }
-        Label_0160:
+            Label_0160:
             return true;
         }
 
@@ -101,7 +103,7 @@ namespace Yutai.ArcGIS.Carto.Library
         {
         }
 
- private void MapCoordinatePage_Load(object sender, EventArgs e)
+        private void MapCoordinatePage_Load(object sender, EventArgs e)
         {
         }
 
@@ -130,50 +132,29 @@ namespace Yutai.ArcGIS.Carto.Library
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_0;
-            }
+            get { return this.bool_0; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public MapTemplateApplyHelp MapTemplateHelp
         {
-            get
-            {
-                return this.mapTemplateApplyHelp_0;
-            }
-            set
-            {
-                this.mapTemplateApplyHelp_0 = value;
-            }
+            get { return this.mapTemplateApplyHelp_0; }
+            set { this.mapTemplateApplyHelp_0 = value; }
         }
 
         public string Title
         {
-            get
-            {
-                return "坐标";
-            }
-            set
-            {
-            }
+            get { return "坐标"; }
+            set { }
         }
     }
 }
-

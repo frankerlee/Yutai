@@ -89,14 +89,16 @@ namespace Yutai.ArcGIS.Carto.Library
                         this.mapTemplateList_0.Visible = false;
                         if (this.FixDataRange)
                         {
-                            this.mapTemplateParamPage_0.CartoTemplateData = this.mapTemplateList_0.SelectCartoTemplateData;
+                            this.mapTemplateParamPage_0.CartoTemplateData =
+                                this.mapTemplateList_0.SelectCartoTemplateData;
                             this.mapTemplateParamPage_0.Visible = true;
                             this.mapTemplateParamPage_0.Init();
                             this.btnNext.Text = "完成";
                         }
                         else
                         {
-                            this.mapTemplateParamPage_0.CartoTemplateData = this.mapTemplateList_0.SelectCartoTemplateData;
+                            this.mapTemplateParamPage_0.CartoTemplateData =
+                                this.mapTemplateList_0.SelectCartoTemplateData;
                             this.mapTemplateParamPage_0.Visible = true;
                             this.mapTemplateParamPage_0.Init();
                         }
@@ -126,7 +128,8 @@ namespace Yutai.ArcGIS.Carto.Library
                             {
                                 param.Value = this.mapTemplateApplyHelp_0.MapNo;
                             }
-                            this.mapTemplateParamPage_0.CartoTemplateData = this.mapTemplateList_0.SelectCartoTemplateData;
+                            this.mapTemplateParamPage_0.CartoTemplateData =
+                                this.mapTemplateList_0.SelectCartoTemplateData;
                             this.mapTemplateParamPage_0.Visible = true;
                             this.mapTemplateParamPage_0.Init();
                             this.btnNext.Text = "完成";
@@ -163,7 +166,7 @@ namespace Yutai.ArcGIS.Carto.Library
             this.int_0++;
         }
 
- private void frmMapTemplateApplyWizard_Load(object sender, EventArgs e)
+        private void frmMapTemplateApplyWizard_Load(object sender, EventArgs e)
         {
             this.mapTemplateApplyHelp_0.FixDataRange = this.FixDataRange;
             this.mapTemplateList_0.IsInputTF = this.IsInputTF;
@@ -190,7 +193,7 @@ namespace Yutai.ArcGIS.Carto.Library
             this.mapCoordinateInputPage_0.MapTemplateHelp = this.mapTemplateApplyHelp_0;
         }
 
- public void SetMapEnv(IEnvelope ienvelope_1)
+        public void SetMapEnv(IEnvelope ienvelope_1)
         {
             this.ienvelope_0 = ienvelope_1;
             this.double_0 = ienvelope_1.XMin;
@@ -206,53 +209,19 @@ namespace Yutai.ArcGIS.Carto.Library
             this.ienvelope_0 = null;
         }
 
-        public bool FixDataRange
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.bool_1;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.bool_1 = value;
-            }
-        }
+        public bool FixDataRange { get; set; }
 
-        public bool IsInputTF
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.bool_2;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.bool_2 = value;
-            }
-        }
+        public bool IsInputTF { get; set; }
 
         public MapTemplateApplyHelp MapTemplateHelp
         {
-            get
-            {
-                return this.mapTemplateApplyHelp_0;
-            }
-            set
-            {
-                this.mapTemplateApplyHelp_0 = value;
-            }
+            get { return this.mapTemplateApplyHelp_0; }
+            set { this.mapTemplateApplyHelp_0 = value; }
         }
 
         public IWorkspace Workspace
         {
-            set
-            {
-                this.mapTemplateList_0.Workspace = value;
-            }
+            set { this.mapTemplateList_0.Workspace = value; }
         }
     }
 }
-

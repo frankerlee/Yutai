@@ -36,29 +36,29 @@ namespace Yutai.ArcGIS.Catalog.UI
             this.method_0();
         }
 
- private void frmNewNetworkAttribute_Load(object sender, EventArgs e)
+        private void frmNewNetworkAttribute_Load(object sender, EventArgs e)
         {
             this.method_0();
         }
 
- private void method_0()
+        private void method_0()
         {
             this.cboDataType.Properties.Items.Clear();
             if (this.cboUsageType.SelectedIndex == 0)
             {
-                this.cboDataType.Properties.Items.AddRange(new object[] { "Integer", "Float", "Double" });
+                this.cboDataType.Properties.Items.AddRange(new object[] {"Integer", "Float", "Double"});
             }
             else if (this.cboUsageType.SelectedIndex == 1)
             {
-                this.cboDataType.Properties.Items.AddRange(new object[] { "Integer", "Float", "Double", "Boolean" });
+                this.cboDataType.Properties.Items.AddRange(new object[] {"Integer", "Float", "Double", "Boolean"});
             }
             else if (this.cboUsageType.SelectedIndex == 2)
             {
-                this.cboDataType.Properties.Items.AddRange(new object[] { "Boolean" });
+                this.cboDataType.Properties.Items.AddRange(new object[] {"Boolean"});
             }
             else if (this.cboUsageType.SelectedIndex == 3)
             {
-                this.cboDataType.Properties.Items.AddRange(new object[] { "Integer" });
+                this.cboDataType.Properties.Items.AddRange(new object[] {"Integer"});
             }
             if (this.cboDataType.Properties.Items.Count > 0)
             {
@@ -101,7 +101,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
             else if (this.cboUsageType.SelectedIndex == 1)
             {
-                this.cboDataType.Properties.Items.AddRange(new object[] { "Integer", "Float", "Double", "Boolean" });
+                this.cboDataType.Properties.Items.AddRange(new object[] {"Integer", "Float", "Double", "Boolean"});
                 switch (this.cboDataType.SelectedIndex)
                 {
                     case 0:
@@ -119,7 +119,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
             else if (this.cboUsageType.SelectedIndex == 2)
             {
-                this.cboDataType.Properties.Items.AddRange(new object[] { "Boolean" });
+                this.cboDataType.Properties.Items.AddRange(new object[] {"Boolean"});
                 if (this.cboDataType.SelectedIndex == 0)
                 {
                     return esriNetworkAttributeDataType.esriNADTBoolean;
@@ -127,7 +127,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
             else if (this.cboUsageType.SelectedIndex == 3)
             {
-                this.cboDataType.Properties.Items.AddRange(new object[] { "Integer" });
+                this.cboDataType.Properties.Items.AddRange(new object[] {"Integer"});
                 if (this.cboDataType.SelectedIndex == 0)
                 {
                     return esriNetworkAttributeDataType.esriNADTInteger;
@@ -150,15 +150,8 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         public INetworkAttribute NetworkAttribute
         {
-            get
-            {
-                return this.inetworkAttribute_0;
-            }
-            set
-            {
-                this.inetworkAttribute_0 = value;
-            }
+            get { return this.inetworkAttribute_0; }
+            set { this.inetworkAttribute_0 = value; }
         }
     }
 }
-

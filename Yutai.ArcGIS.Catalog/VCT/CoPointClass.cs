@@ -38,39 +38,20 @@
 
         public double X
         {
-            get
-            {
-                return this.double_0;
-            }
-            set
-            {
-                this.double_0 = value;
-            }
+            get { return this.double_0; }
+            set { this.double_0 = value; }
         }
 
         public double Y
         {
-            get
-            {
-                return this.double_1;
-            }
-            set
-            {
-                this.double_1 = value;
-            }
+            get { return this.double_1; }
+            set { this.double_1 = value; }
         }
 
         public double Z
         {
-            get
-            {
-                return this.double_2;
-            }
-            set
-            {
-                this.double_2 = value;
-            }
+            get { return this.double_2; }
+            set { this.double_2 = value; }
         }
     }
 }
-

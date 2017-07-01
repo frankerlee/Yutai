@@ -11,7 +11,8 @@ using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Catalog
 {
-    public class GxRasterDataset : IGxObject, IGxDataset, IGxObjectContainer, IGxObjectEdit, IGxObjectInternalName, IGxObjectProperties, IGxObjectUI, IGxPasteTarget, IGxContextMenuWap
+    public class GxRasterDataset : IGxObject, IGxDataset, IGxObjectContainer, IGxObjectEdit, IGxObjectInternalName,
+        IGxObjectProperties, IGxObjectUI, IGxPasteTarget, IGxContextMenuWap
     {
         private bool bool_0 = false;
         private IDatasetName idatasetName_0 = null;
@@ -126,7 +127,7 @@ namespace Yutai.ArcGIS.Catalog
             IDataset dataset = this.Dataset;
             if ((dataset != null) && (dataset is IObjectClass))
             {
-                new ObjectClassInfoEdit { ObjectClass = dataset as IObjectClass }.ShowDialog();
+                new ObjectClassInfoEdit {ObjectClass = dataset as IObjectClass}.ShowDialog();
             }
         }
 
@@ -151,7 +152,8 @@ namespace Yutai.ArcGIS.Catalog
                 this.ipopuMenuWrap_0.AddItem("Catalog_Refresh", true);
                 this.ipopuMenuWrap_0.UpdateUI();
             }
-            else if ((this.idatasetName_0.Type != esriDatasetType.esriDTRasterBand) && (this.idatasetName_0.Type == esriDatasetType.esriDTRasterCatalog))
+            else if ((this.idatasetName_0.Type != esriDatasetType.esriDTRasterBand) &&
+                     (this.idatasetName_0.Type == esriDatasetType.esriDTRasterCatalog))
             {
                 this.ipopuMenuWrap_0.AddItem("Catalog_Delete", false);
             }
@@ -283,18 +285,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public UID ClassID
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public UID ContextMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IDataset Dataset
@@ -310,7 +306,7 @@ namespace Yutai.ArcGIS.Catalog
                 }
                 catch (Exception exception)
                 {
-                    Logger.Current.Error("",exception, "");
+                    Logger.Current.Error("", exception, "");
                 }
                 return null;
             }
@@ -318,14 +314,8 @@ namespace Yutai.ArcGIS.Catalog
 
         public IDatasetName DatasetName
         {
-            get
-            {
-                return this.idatasetName_0;
-            }
-            set
-            {
-                this.idatasetName_0 = value;
-            }
+            get { return this.idatasetName_0; }
+            set { this.idatasetName_0 = value; }
         }
 
         public string FullName
@@ -338,13 +328,15 @@ namespace Yutai.ArcGIS.Catalog
                     {
                         if (this.idatasetName_0.WorkspaceName.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace)
                         {
-                            return (@"数据库连接\" + Path.GetFileName(this.idatasetName_0.WorkspaceName.PathName) + @"\" + this.idatasetName_0.Name);
+                            return (@"数据库连接\" + Path.GetFileName(this.idatasetName_0.WorkspaceName.PathName) + @"\" +
+                                    this.idatasetName_0.Name);
                         }
                         return (this.idatasetName_0.WorkspaceName.PathName + @"\" + this.idatasetName_0.Name);
                     }
                     if (this.idatasetName_0.WorkspaceName.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace)
                     {
-                        return (@"数据库连接\" + Path.GetFileName(this.idatasetName_0.WorkspaceName.PathName) + @"\" + this.idatasetName_0.Name);
+                        return (@"数据库连接\" + Path.GetFileName(this.idatasetName_0.WorkspaceName.PathName) + @"\" +
+                                this.idatasetName_0.Name);
                     }
                     return (this.idatasetName_0.WorkspaceName.PathName + @"\" + this.idatasetName_0.Name);
                 }
@@ -366,29 +358,18 @@ namespace Yutai.ArcGIS.Catalog
 
         public IName InternalObjectName
         {
-            get
-            {
-                return (this.idatasetName_0 as IName);
-            }
+            get { return (this.idatasetName_0 as IName); }
         }
 
         public bool IsValid
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         IName IGxObjectInternalName.InternalObjectName
         {
-            get
-            {
-                return (this.idatasetName_0 as IName);
-            }
-            set
-            {
-            }
+            get { return (this.idatasetName_0 as IName); }
+            set { }
         }
 
         public Bitmap LargeImage
@@ -435,26 +416,17 @@ namespace Yutai.ArcGIS.Catalog
 
         public UID NewMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IGxObject Parent
         {
-            get
-            {
-                return this.igxObject_0;
-            }
+            get { return this.igxObject_0; }
         }
 
         public int PropertyCount
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         public Bitmap SmallImage
@@ -494,4 +466,3 @@ namespace Yutai.ArcGIS.Catalog
         }
     }
 }
-

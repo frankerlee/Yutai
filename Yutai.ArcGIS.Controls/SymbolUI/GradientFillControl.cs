@@ -69,7 +69,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- private void GradientFillControl1_Load(object sender, EventArgs e)
+        private void GradientFillControl1_Load(object sender, EventArgs e)
         {
             this.InitControl();
         }
@@ -78,11 +78,12 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         {
             this.m_CanDo = false;
             this.numericUpDownAngle.Value = (decimal) this.m_GradientFillSymbol.GradientAngle;
-            this.numericUpDownPrecent.Value = (decimal) (this.m_GradientFillSymbol.GradientPercentage * 100.0);
+            this.numericUpDownPrecent.Value = (decimal) (this.m_GradientFillSymbol.GradientPercentage*100.0);
             this.numericUpDownIntervalCount.Value = this.m_GradientFillSymbol.IntervalCount;
             this.cboGradientFillStyle.SelectedIndex = (int) this.m_GradientFillSymbol.Style;
             this.btnOutline.Style = this.m_GradientFillSymbol.Outline;
-            IStyleGalleryItem item = new ServerStyleGalleryItemClass {
+            IStyleGalleryItem item = new ServerStyleGalleryItemClass
+            {
                 Item = this.m_GradientFillSymbol.ColorRamp
             };
             this.colorRampComboBox.Add(item);
@@ -104,7 +105,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.m_CanDo = true;
         }
 
- public static bool IsNmuber(string str)
+        public static bool IsNmuber(string str)
         {
             if (str.Length > 0)
             {
@@ -233,7 +234,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     this.numericUpDownPrecent.ForeColor = SystemColors.WindowText;
-                    this.m_GradientFillSymbol.GradientPercentage = ((double) this.numericUpDownPrecent.Value) / 100.0;
+                    this.m_GradientFillSymbol.GradientPercentage = ((double) this.numericUpDownPrecent.Value)/100.0;
                     this.refresh(e);
                 }
             }
@@ -248,4 +249,3 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         }
     }
 }
-

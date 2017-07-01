@@ -37,7 +37,8 @@ namespace Yutai.ArcGIS.Carto.UI
             if (this.bool_1)
             {
                 this.bool_1 = false;
-                this.imapSurroundFrame_0.MapSurround = (ScaleBarFormatPropertyPage.m_pScaleBar as IClone).Clone() as IMapSurround;
+                this.imapSurroundFrame_0.MapSurround =
+                    (ScaleBarFormatPropertyPage.m_pScaleBar as IClone).Clone() as IMapSurround;
             }
         }
 
@@ -120,7 +121,8 @@ namespace Yutai.ArcGIS.Carto.UI
         {
             if (this.bool_0)
             {
-                ScaleBarFormatPropertyPage.m_pScaleBar.LabelFrequency = (esriScaleBarFrequency) this.cboLabelFrequency.SelectedIndex;
+                ScaleBarFormatPropertyPage.m_pScaleBar.LabelFrequency =
+                    (esriScaleBarFrequency) this.cboLabelFrequency.SelectedIndex;
                 this.method_2();
             }
         }
@@ -129,7 +131,8 @@ namespace Yutai.ArcGIS.Carto.UI
         {
             if (this.bool_0)
             {
-                ScaleBarFormatPropertyPage.m_pScaleBar.LabelPosition = (esriVertPosEnum) this.cboLabelPosition.SelectedIndex;
+                ScaleBarFormatPropertyPage.m_pScaleBar.LabelPosition =
+                    (esriVertPosEnum) this.cboLabelPosition.SelectedIndex;
                 this.method_2();
             }
         }
@@ -154,7 +157,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void method_0()
+        private void method_0()
         {
             IScaleBar pScaleBar = ScaleBarFormatPropertyPage.m_pScaleBar;
             IScaleMarks marks = pScaleBar as IScaleMarks;
@@ -219,7 +222,8 @@ namespace Yutai.ArcGIS.Carto.UI
             this.imapSurroundFrame_0 = object_0 as IMapSurroundFrame;
             if (ScaleBarFormatPropertyPage.m_pScaleBar == null)
             {
-                ScaleBarFormatPropertyPage.m_pScaleBar = (this.imapSurroundFrame_0.MapSurround as IClone).Clone() as IScaleBar;
+                ScaleBarFormatPropertyPage.m_pScaleBar =
+                    (this.imapSurroundFrame_0.MapSurround as IClone).Clone() as IScaleBar;
             }
         }
 
@@ -273,39 +277,23 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

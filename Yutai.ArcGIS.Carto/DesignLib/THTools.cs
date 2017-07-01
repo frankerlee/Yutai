@@ -122,24 +122,34 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                     num3 = 2.0;
                     goto Label_0196;
             }
-        Label_0145:
+            Label_0145:
             return false;
-        Label_0196:
+            Label_0196:
             if ((ch < 'B') && (ch > 'K'))
             {
                 return false;
             }
-            long num4 = ((int) (double_1 / 4.0)) + 1;
-            long num5 = ((int) (double_2 / 6.0)) + 31;
-            long num6 = ((int) (4.0 / num3)) - ((int) ((double_1 - (((int) (double_1 / 4.0)) * 4)) / num3));
-            long num7 = ((int) ((double_2 - (((int) (double_2 / 6.0)) * 6)) / num2)) + 1;
+            long num4 = ((int) (double_1/4.0)) + 1;
+            long num5 = ((int) (double_2/6.0)) + 31;
+            long num6 = ((int) (4.0/num3)) - ((int) ((double_1 - (((int) (double_1/4.0))*4))/num3));
+            long num7 = ((int) ((double_2 - (((int) (double_2/6.0))*6))/num2)) + 1;
             if (int_2 <= 1000)
             {
-                string_0 = string.Concat(new object[] { Convert.ToChar((long) ((Convert.ToInt16('A') + num4) - 1L)).ToString(), num5, ch.ToString(), num6.ToString("0000"), num7.ToString("0000") });
+                string_0 =
+                    string.Concat(new object[]
+                    {
+                        Convert.ToChar((long) ((Convert.ToInt16('A') + num4) - 1L)).ToString(), num5, ch.ToString(),
+                        num6.ToString("0000"), num7.ToString("0000")
+                    });
             }
             else
             {
-                string_0 = string.Concat(new object[] { Convert.ToChar((long) ((Convert.ToInt16('A') + num4) - 1L)).ToString(), num5, ch.ToString(), num6.ToString("000"), num7.ToString("000") });
+                string_0 =
+                    string.Concat(new object[]
+                    {
+                        Convert.ToChar((long) ((Convert.ToInt16('A') + num4) - 1L)).ToString(), num5, ch.ToString(),
+                        num6.ToString("000"), num7.ToString("000")
+                    });
             }
             return true;
         }
@@ -150,11 +160,16 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             double num3;
             long num4;
             string str = string_0;
-            if (!(((Convert.ToInt16(str) < Convert.ToInt16("B")) | ((Convert.ToInt16(str) > Convert.ToInt16("H")) & (Convert.ToInt16(str) < Convert.ToInt16("b")))) | (Convert.ToInt16(str) > Convert.ToInt16("h"))))
+            if (
+                !(((Convert.ToInt16(str) < Convert.ToInt16("B")) |
+                   ((Convert.ToInt16(str) > Convert.ToInt16("H")) & (Convert.ToInt16(str) < Convert.ToInt16("b")))) |
+                  (Convert.ToInt16(str) > Convert.ToInt16("h"))))
             {
                 if (Convert.ToInt16(str) < Convert.ToInt16("b"))
                 {
-                    str = Convert.ToChar((int) ((Convert.ToInt16(str) + Convert.ToInt16("a")) - Convert.ToInt16("A"))).ToString();
+                    str =
+                        Convert.ToChar((int) ((Convert.ToInt16(str) + Convert.ToInt16("a")) - Convert.ToInt16("A")))
+                            .ToString();
                 }
                 switch (str.ToUpper())
                 {
@@ -195,12 +210,20 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 }
             }
             return false;
-        Label_01F6:
-            num4 = Convert.ToInt16((double) (double_1 / 4.0)) + 1;
-            long num5 = Convert.ToInt16((double) (double_2 / 6.0)) + 1;
-            long num6 = Convert.ToInt16((double) (4.0 / num3)) - Convert.ToInt16((double) ((double_1 - ((num4 - 1.0) * 4.0)) / num3));
-            long num7 = Convert.ToInt16((double) ((double_2 - ((num5 - 1.0) * 6.0)) / num2)) + 1;
-            string_1 = string.Concat(new object[] { Convert.ToChar((long) ((Convert.ToInt16("A") + num4) - 1L)).ToString(), num5, Convert.ToChar((int) ((Convert.ToInt16(str) - Convert.ToInt16("a")) + Convert.ToInt16("A"))).ToString(), num6, num7 });
+            Label_01F6:
+            num4 = Convert.ToInt16((double) (double_1/4.0)) + 1;
+            long num5 = Convert.ToInt16((double) (double_2/6.0)) + 1;
+            long num6 = Convert.ToInt16((double) (4.0/num3)) -
+                        Convert.ToInt16((double) ((double_1 - ((num4 - 1.0)*4.0))/num3));
+            long num7 = Convert.ToInt16((double) ((double_2 - ((num5 - 1.0)*6.0))/num2)) + 1;
+            string_1 =
+                string.Concat(new object[]
+                {
+                    Convert.ToChar((long) ((Convert.ToInt16("A") + num4) - 1L)).ToString(), num5,
+                    Convert.ToChar((int) ((Convert.ToInt16(str) - Convert.ToInt16("a")) + Convert.ToInt16("A")))
+                        .ToString(),
+                    num6, num7
+                });
             return true;
         }
 
@@ -260,15 +283,19 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 }
             }
             return false;
-        Label_01D4:
+            Label_01D4:
             if ((double_1 <= 0.0) || (double_2 <= 0.0))
             {
                 return false;
             }
-            long num4 = (int) (Math.Truncate((double) (double_1 / 4.0)) + 1.0);
-            long num5 = (int) (Math.Truncate((double) (double_2 / 6.0)) + 1.0);
-            long num6 = (int) ((4.0 / num3) - Math.Truncate((double) (Math.Truncate((double) ((((double_1 - ((num4 - 1.0) * 4.0)) / num3) * 10000.0) + 1.0)) / 10000.0)));
-            long num7 = (long) (Math.Truncate((double) ((double_2 - ((num5 - 1.0) * 6.0)) / num2)) + 1);
+            long num4 = (int) (Math.Truncate((double) (double_1/4.0)) + 1.0);
+            long num5 = (int) (Math.Truncate((double) (double_2/6.0)) + 1.0);
+            long num6 =
+                (int)
+                ((4.0/num3) -
+                 Math.Truncate(
+                     (double) (Math.Truncate((double) ((((double_1 - ((num4 - 1.0)*4.0))/num3)*10000.0) + 1.0))/10000.0)));
+            long num7 = (long) (Math.Truncate((double) ((double_2 - ((num5 - 1.0)*6.0))/num2)) + 1);
             string str3 = num6.ToString();
             string str4 = num7.ToString();
             if ((str != "H") && (str != "I"))
@@ -305,7 +332,12 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             {
                 num5 += 30L;
             }
-            string_1 = string.Concat(new object[] { Convert.ToChar((int) ((str[0] - 'A') + 65)).ToString(), Convert.ToChar((long) ((65 + num4) - 1L)).ToString(), num5, str3, str4 });
+            string_1 =
+                string.Concat(new object[]
+                {
+                    Convert.ToChar((int) ((str[0] - 'A') + 65)).ToString(),
+                    Convert.ToChar((long) ((65 + num4) - 1L)).ToString(), num5, str3, str4
+                });
             return true;
         }
 
@@ -325,35 +357,40 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 if (i == 1)
                 {
                     num = 0.0;
-                    num = points.get_Point(i).X * (points.get_Point(i + 1).Y - points.get_Point(points.PointCount - 1).Y);
+                    num = points.get_Point(i).X*(points.get_Point(i + 1).Y - points.get_Point(points.PointCount - 1).Y);
                     num2 += num;
                 }
                 else
                 {
                     num = 0.0;
-                    num = points.get_Point(i).X * (points.get_Point(i + 1).Y - points.get_Point(i - 1).Y);
+                    num = points.get_Point(i).X*(points.get_Point(i + 1).Y - points.get_Point(i - 1).Y);
                     num2 += num;
                 }
             }
-            return (num2 * 0.5);
+            return (num2*0.5);
         }
 
-        public static double CalculateTHTheoryArea(double double_1, double double_2, double double_3, double double_4, double double_5)
+        public static double CalculateTHTheoryArea(double double_1, double double_2, double double_3, double double_4,
+            double double_5)
         {
-            double num = 1.0 - ((double_2 * double_2) / (double_1 * double_1));
-            double num2 = num * num;
-            double num3 = num2 * num;
-            double num4 = num3 * num;
-            double num5 = (((1.0 + (2.0 * num)) + (0.375 * num2)) + (0.3125 * num3)) + (0.2734375 * num4);
-            double num6 = (((0.16666666666666666 * num) + (0.1875 * num2)) + (0.1875 * num3)) + (0.18229166666666666 * num4);
-            double num7 = ((0.0375 * num2) + (0.0625 * num3)) + (0.078125 * num4);
-            double num8 = (0.0089285714285714281 * num3) + (0.1953125 * num4);
-            double num9 = 0.002170138888888889 * num4;
-            double num10 = ((double_5 - double_4) / 180.0) * 3.1415926;
-            double d = ((double_4 + double_5) / 360.0) * 3.1415926;
-            double num12 = (((3.1415926 * double_2) * double_2) * double_3) / 90.0;
-            double num13 = (((((num5 * Math.Sin(num10 / 2.0)) * Math.Cos(d)) - ((num6 * Math.Sin((num10 / 2.0) * 3.0)) * Math.Cos(3.0 * d))) + ((num7 * Math.Sin((num10 / 2.0) * 5.0)) * Math.Cos(5.0 * d))) - ((num8 * Math.Sin((num10 / 2.0) * 7.0)) * Math.Cos(7.0 * d))) + ((num9 * Math.Sin((num10 / 2.0) * 9.0)) * Math.Cos(9.0 * d));
-            return (num12 * num13);
+            double num = 1.0 - ((double_2*double_2)/(double_1*double_1));
+            double num2 = num*num;
+            double num3 = num2*num;
+            double num4 = num3*num;
+            double num5 = (((1.0 + (2.0*num)) + (0.375*num2)) + (0.3125*num3)) + (0.2734375*num4);
+            double num6 = (((0.16666666666666666*num) + (0.1875*num2)) + (0.1875*num3)) + (0.18229166666666666*num4);
+            double num7 = ((0.0375*num2) + (0.0625*num3)) + (0.078125*num4);
+            double num8 = (0.0089285714285714281*num3) + (0.1953125*num4);
+            double num9 = 0.002170138888888889*num4;
+            double num10 = ((double_5 - double_4)/180.0)*3.1415926;
+            double d = ((double_4 + double_5)/360.0)*3.1415926;
+            double num12 = (((3.1415926*double_2)*double_2)*double_3)/90.0;
+            double num13 = (((((num5*Math.Sin(num10/2.0))*Math.Cos(d)) -
+                              ((num6*Math.Sin((num10/2.0)*3.0))*Math.Cos(3.0*d))) +
+                             ((num7*Math.Sin((num10/2.0)*5.0))*Math.Cos(5.0*d))) -
+                            ((num8*Math.Sin((num10/2.0)*7.0))*Math.Cos(7.0*d))) +
+                           ((num9*Math.Sin((num10/2.0)*9.0))*Math.Cos(9.0*d));
+            return (num12*num13);
         }
 
         public double CalculateTKArea(double[] double_1, double[] double_2)
@@ -368,7 +405,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             double num8 = (double) double_1.GetValue(3);
             double num10 = (double) double_2.GetValue(3);
             num = Math.Abs((double) (num7 - (double) num5));
-            return (((Math.Abs((double) (num6 - num8)) + Math.Abs((double) (num4 - num3))) * num) / 2.0);
+            return (((Math.Abs((double) (num6 - num8)) + Math.Abs((double) (num4 - num3)))*num)/2.0);
         }
 
         public static double DEG2DDDMMSS(double double_1, ref long long_0, ref int int_2, ref int int_3)
@@ -380,8 +417,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             }
             Math.Abs(double_1);
             double d = Math.Truncate(double_1);
-            double num2 = Math.Truncate((double) ((double_1 * 60.0) - (d * 60.0)));
-            double num3 = ((double_1 * 3600.0) - (d * 3600.0)) - (num2 * 60.0);
+            double num2 = Math.Truncate((double) ((double_1*60.0) - (d*60.0)));
+            double num3 = ((double_1*3600.0) - (d*3600.0)) - (num2*60.0);
             if (num3 > 59.5)
             {
                 num3 = 0.0;
@@ -389,9 +426,9 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             }
             if (flag)
             {
-                long_0 = Convert.ToInt32((double) (-1.0 * Math.Truncate(d)));
-                int_2 = Convert.ToInt32((double) (-1.0 * Math.Truncate(num2)));
-                int_3 = Convert.ToInt32((double) (-1.0 * Math.Truncate(num3)));
+                long_0 = Convert.ToInt32((double) (-1.0*Math.Truncate(d)));
+                int_2 = Convert.ToInt32((double) (-1.0*Math.Truncate(num2)));
+                int_3 = Convert.ToInt32((double) (-1.0*Math.Truncate(num3)));
             }
             else
             {
@@ -401,9 +438,9 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             }
             if (flag)
             {
-                return -((d + (num2 / 100.0)) + (num3 / 10000.0));
+                return -((d + (num2/100.0)) + (num3/10000.0));
             }
-            return ((d + (num2 / 100.0)) + (num3 / 10000.0));
+            return ((d + (num2/100.0)) + (num3/10000.0));
         }
 
         public double DEG2DMS(double double_1)
@@ -415,8 +452,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             }
             Math.Abs(double_1);
             double num = Math.Truncate(double_1);
-            double num2 = Math.Truncate((double) ((double_1 * 60.0) - (num * 60.0)));
-            double num3 = ((double_1 * 3600.0) - (num * 3600.0)) - (num2 * 60.0);
+            double num2 = Math.Truncate((double) ((double_1*60.0) - (num*60.0)));
+            double num3 = ((double_1*3600.0) - (num*3600.0)) - (num2*60.0);
             if (num3 > 59.5)
             {
                 num3 = 0.0;
@@ -424,9 +461,9 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             }
             if (flag)
             {
-                return -((num + (num2 / 100.0)) + (num3 / 10000.0));
+                return -((num + (num2/100.0)) + (num3/10000.0));
             }
-            return ((num + (num2 / 100.0)) + (num3 / 10000.0));
+            return ((num + (num2/100.0)) + (num3/10000.0));
         }
 
         public double DMS2DEG(double double_1)
@@ -438,16 +475,17 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             }
             double d = Math.Abs(double_1);
             double num2 = Math.Truncate(d);
-            double num3 = Math.Truncate((double) ((d * 100.0) - (num2 * 100.0)));
-            double num4 = ((d * 10000.0) - (num2 * 10000.0)) - (num3 * 100.0);
+            double num3 = Math.Truncate((double) ((d*100.0) - (num2*100.0)));
+            double num4 = ((d*10000.0) - (num2*10000.0)) - (num3*100.0);
             if (flag)
             {
-                return -((num2 + (num3 / 60.0)) + (num4 / 3600.0));
+                return -((num2 + (num3/60.0)) + (num4/3600.0));
             }
-            return ((num2 + (num3 / 60.0)) + (num4 / 3600.0));
+            return ((num2 + (num3/60.0)) + (num4/3600.0));
         }
 
-        public bool FileName2BL(string string_0, out double double_1, out double double_2, out double double_3, out double double_4)
+        public bool FileName2BL(string string_0, out double double_1, out double double_2, out double double_3,
+            out double double_4)
         {
             double_1 = 0.0;
             double_2 = 0.0;
@@ -472,7 +510,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             return false;
         }
 
-        public bool FileName2BL_cqtx(string string_0, ref double double_1, ref double double_2, ref double double_3, ref double double_4)
+        public bool FileName2BL_cqtx(string string_0, ref double double_1, ref double double_2, ref double double_3,
+            ref double double_4)
         {
             char[] separator = new char[1];
             string[] strArray = null;
@@ -495,7 +534,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 long num5 = Convert.ToInt16(strArray.GetValue(3).ToString().Trim());
                 if (strArray.Length >= 5)
                 {
-                    if (((string_0.Contains("a") || string_0.Contains("b")) || string_0.Contains("c")) || string_0.Contains("d"))
+                    if (((string_0.Contains("a") || string_0.Contains("b")) || string_0.Contains("c")) ||
+                        string_0.Contains("d"))
                     {
                         double_4 = 0.03125;
                         double_3 = 0.020833333333333332;
@@ -528,26 +568,27 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 long num7 = num3;
                 long num8 = num4;
                 long num9 = num5;
-                double d = ((double) (num8 - 1L)) / 12.0;
-                int num11 = Convert.ToInt16((double) ((num8 - 1L) - (Math.Truncate(d) * 12.0)));
-                double num12 = ((double) (num9 - 1L)) / 8.0;
-                int num13 = Convert.ToInt16((double) ((num9 - 1L) - (Math.Truncate(num12) * 8.0)));
+                double d = ((double) (num8 - 1L))/12.0;
+                int num11 = Convert.ToInt16((double) ((num8 - 1L) - (Math.Truncate(d)*12.0)));
+                double num12 = ((double) (num9 - 1L))/8.0;
+                int num13 = Convert.ToInt16((double) ((num9 - 1L) - (Math.Truncate(num12)*8.0)));
                 int num14 = 0;
                 if (strArray.Length >= 5)
                 {
-                    double num15 = ((double) (num - 1)) / 2.0;
-                    num14 = Convert.ToInt16((double) ((num - 1) - (Math.Truncate(num15) * 2.0)));
-                    double_2 = ((((num7 - 1.0) * 6.0) + (num11 * 0.5)) + (num13 * 0.0625)) + (num14 * double_4);
+                    double num15 = ((double) (num - 1))/2.0;
+                    num14 = Convert.ToInt16((double) ((num - 1) - (Math.Truncate(num15)*2.0)));
+                    double_2 = ((((num7 - 1.0)*6.0) + (num11*0.5)) + (num13*0.0625)) + (num14*double_4);
                 }
                 else
                 {
-                    double_2 = (((num7 - 1.0) * 6.0) + (num11 * 0.5)) + (num13 * 0.0625);
+                    double_2 = (((num7 - 1.0)*6.0) + (num11*0.5)) + (num13*0.0625);
                 }
                 if (double_2 > 180.0)
                 {
                     double_2 -= 180.0;
                 }
-                double_1 = ((((num6 - 1.0) * 4.0) + ((11.0 - ((int) ((num8 - 1L) / 12L))) / 3.0)) + ((7.0 - ((int) ((num9 - 1L) / 8L))) / 24.0)) + ((1.0 - ((num - 1) / 2)) / 48.0);
+                double_1 = ((((num6 - 1.0)*4.0) + ((11.0 - ((int) ((num8 - 1L)/12L)))/3.0)) +
+                            ((7.0 - ((int) ((num9 - 1L)/8L)))/24.0)) + ((1.0 - ((num - 1)/2))/48.0);
             }
             catch (Exception)
             {
@@ -556,7 +597,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             return flag;
         }
 
-        public bool FileName2BL_standard(string string_0, out double double_1, out double double_2, out double double_3, out double double_4)
+        public bool FileName2BL_standard(string string_0, out double double_1, out double double_2, out double double_3,
+            out double double_4)
         {
             string str2;
             int num5;
@@ -645,7 +687,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 }
             }
             return false;
-        Label_02A9:
+            Label_02A9:
             if (num5 == 3)
             {
                 num = Convert.ToInt16(str2.Substring(4, 3));
@@ -664,14 +706,15 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             }
             long num11 = num;
             long num12 = num2;
-            double_2 = ((num10 - 1.0) * 6.0) + ((num12 - 1.0) * num7);
-            double_1 = ((num9 - 1.0) * 4.0) + (((4.0 / num8) - num11) * num8);
+            double_2 = ((num10 - 1.0)*6.0) + ((num12 - 1.0)*num7);
+            double_1 = ((num9 - 1.0)*4.0) + (((4.0/num8) - num11)*num8);
             double_4 = num7;
             double_3 = num8;
             return true;
         }
 
-        public bool FileName2BL_tx(string string_0, out double double_1, out double double_2, out double double_3, out double double_4)
+        public bool FileName2BL_tx(string string_0, out double double_1, out double double_2, out double double_3,
+            out double double_4)
         {
             int num;
             int num2;
@@ -737,7 +780,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 }
             }
             return false;
-        Label_0226:
+            Label_0226:
             num8 = (num - 97) + 1;
             long num9 = num2;
             if (num9 >= 30L)
@@ -746,14 +789,15 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             }
             long num10 = num3;
             long num11 = num4;
-            double_2 = ((num9 - 1.0) * 6.0) + ((num11 - 1.0) * num6);
-            double_1 = ((num8 - 1.0) * 4.0) + (((4.0 / num7) - num10) * num7);
+            double_2 = ((num9 - 1.0)*6.0) + ((num11 - 1.0)*num6);
+            double_1 = ((num8 - 1.0)*4.0) + (((4.0/num7) - num10)*num7);
             double_4 = num6;
             double_3 = num7;
             return true;
         }
 
-        public bool GetBLFromXY(double double_1, double double_2, ref double double_3, ref double double_4, int int_2, int int_3, int int_4, double double_5)
+        public bool GetBLFromXY(double double_1, double double_2, ref double double_3, ref double double_4, int int_2,
+            int int_3, int int_4, double double_5)
         {
             long num;
             double num2;
@@ -761,15 +805,15 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             double num4;
             if (int_4 == 1)
             {
-                num = (long) Math.Round((double) (double_5 / 6.0));
+                num = (long) Math.Round((double) (double_5/6.0));
             }
             else
             {
-                num = (long) Math.Round((double) (double_5 / 3.0));
+                num = (long) Math.Round((double) (double_5/3.0));
             }
             if (this.int_1 == 1)
             {
-                double_2 -= num * 1000000;
+                double_2 -= num*1000000;
             }
             double_1 /= 1000000.0;
             double_2 -= 500000.0;
@@ -777,21 +821,32 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             {
                 num2 = 6399698.90178271;
                 num3 = 0.0067385254147;
-                num4 = (((((27.11115372595 + (9.02468257083 * (double_1 - 3.0))) - (0.00579740442 * Math.Pow(double_1 - 3.0, 2.0))) - (0.00043532572 * Math.Pow(double_1 - 3.0, 3.0))) + (4.857285E-05 * Math.Pow(double_1 - 3.0, 4.0))) + (2.15727E-06 * Math.Pow(double_1 - 3.0, 5.0))) - (1.9399E-07 * Math.Pow(double_1 - 3.0, 6.0));
+                num4 = (((((27.11115372595 + (9.02468257083*(double_1 - 3.0))) -
+                           (0.00579740442*Math.Pow(double_1 - 3.0, 2.0))) -
+                          (0.00043532572*Math.Pow(double_1 - 3.0, 3.0))) + (4.857285E-05*Math.Pow(double_1 - 3.0, 4.0))) +
+                        (2.15727E-06*Math.Pow(double_1 - 3.0, 5.0))) - (1.9399E-07*Math.Pow(double_1 - 3.0, 6.0));
             }
             else
             {
                 num2 = 6399596.65198801;
                 num3 = 0.0067395018195;
-                num4 = (((((27.11162289465 + (9.02483657729 * (double_1 - 3.0))) - (0.00579850656 * Math.Pow(double_1 - 3.0, 2.0))) - (0.00043540029 * Math.Pow(double_1 - 3.0, 3.0))) + (4.858357E-05 * Math.Pow(double_1 - 3.0, 4.0))) + (2.15769E-06 * Math.Pow(double_1 - 3.0, 5.0))) - (1.9404E-07 * Math.Pow(double_1 - 3.0, 6.0));
+                num4 = (((((27.11162289465 + (9.02483657729*(double_1 - 3.0))) -
+                           (0.00579850656*Math.Pow(double_1 - 3.0, 2.0))) -
+                          (0.00043540029*Math.Pow(double_1 - 3.0, 3.0))) + (4.858357E-05*Math.Pow(double_1 - 3.0, 4.0))) +
+                        (2.15769E-06*Math.Pow(double_1 - 3.0, 5.0))) - (1.9404E-07*Math.Pow(double_1 - 3.0, 6.0));
             }
-            double a = (num4 * 3.1415926535) / 180.0;
+            double a = (num4*3.1415926535)/180.0;
             double x = Math.Tan(a);
-            double num7 = num3 * Math.Pow(Math.Cos(a), 2.0);
-            double num8 = (double_2 * Math.Sqrt(1.0 + num7)) / num2;
-            double num9 = ((90.0 * Math.Pow(num8, 2.0)) - ((7.5 * (((5.0 + (3.0 * Math.Pow(x, 2.0))) + num7) - ((9.0 * num7) * Math.Pow(x, 2.0)))) * Math.Pow(num8, 4.0))) + ((0.25 * ((61.0 + (90.0 * Math.Pow(x, 2.0))) + (45.0 * Math.Pow(x, 4.0)))) * Math.Pow(num8, 6.0));
-            double num10 = num4 - ((((1.0 + num7) * x) * num9) / 3.1415926535);
-            double num11 = ((((180.0 * num8) - ((30.0 * ((1.0 + (2.0 * Math.Pow(x, 2.0))) + num7)) * Math.Pow(num8, 3.0))) + ((1.5 * ((5.0 + (28.0 * Math.Pow(x, 2.0))) + (24.0 * Math.Pow(x, 4.0)))) * Math.Pow(num8, 5.0))) / 3.1415926535) / Math.Cos(a);
+            double num7 = num3*Math.Pow(Math.Cos(a), 2.0);
+            double num8 = (double_2*Math.Sqrt(1.0 + num7))/num2;
+            double num9 = ((90.0*Math.Pow(num8, 2.0)) -
+                           ((7.5*(((5.0 + (3.0*Math.Pow(x, 2.0))) + num7) - ((9.0*num7)*Math.Pow(x, 2.0))))*
+                            Math.Pow(num8, 4.0))) +
+                          ((0.25*((61.0 + (90.0*Math.Pow(x, 2.0))) + (45.0*Math.Pow(x, 4.0))))*Math.Pow(num8, 6.0));
+            double num10 = num4 - ((((1.0 + num7)*x)*num9)/3.1415926535);
+            double num11 = ((((180.0*num8) - ((30.0*((1.0 + (2.0*Math.Pow(x, 2.0))) + num7))*Math.Pow(num8, 3.0))) +
+                             ((1.5*((5.0 + (28.0*Math.Pow(x, 2.0))) + (24.0*Math.Pow(x, 4.0))))*Math.Pow(num8, 5.0)))/
+                            3.1415926535)/Math.Cos(a);
             num11 += double_5;
             if (num11 < 0.0)
             {
@@ -811,9 +866,9 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             double num = Convert.ToDouble(GetStripNum(double_1, bool_0, out int_2)) + int_2;
             if (bool_0)
             {
-                return ((6.0 * num) - 3.0);
+                return ((6.0*num) - 3.0);
             }
-            return (3.0 * num);
+            return (3.0*num);
         }
 
         public string GetDFM(double double_1)
@@ -944,7 +999,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             return (double_1 - GetCentralMeridian(double_1, int_2, bool_0));
         }
 
-        public IList<IPoint> GetProjectCoord(double double_1, double double_2, double double_3, double double_4, IProjectedCoordinateSystem iprojectedCoordinateSystem_0)
+        public IList<IPoint> GetProjectCoord(double double_1, double double_2, double double_3, double double_4,
+            IProjectedCoordinateSystem iprojectedCoordinateSystem_0)
         {
             IList<IPoint> list = new List<IPoint>();
             IPoint item = new PointClass();
@@ -1044,11 +1100,11 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 {
                     if (!bool_1)
                     {
-                        this.MainStrip = (int) Math.Truncate((double) (num2 / 3.0));
+                        this.MainStrip = (int) Math.Truncate((double) (num2/3.0));
                     }
                     else
                     {
-                        this.MainStrip = (int) (Math.Truncate((double) (num2 / 6.0)) + 1);
+                        this.MainStrip = (int) (Math.Truncate((double) (num2/6.0)) + 1);
                     }
                 }
                 else
@@ -1057,16 +1113,20 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 }
                 if (!bool_1)
                 {
-                    num13 = this.MainStrip * 3.0;
+                    num13 = this.MainStrip*3.0;
                 }
                 else
                 {
-                    num13 = (this.MainStrip * 6.0) - 3.0;
+                    num13 = (this.MainStrip*6.0) - 3.0;
                 }
-                GetXYFromBL(num + num3, num2, this.MainStrip, this.DadiCoord == 1, 0, bool_0, num13, this.double_0, out num5, out num6);
-                GetXYFromBL(num, num2, this.MainStrip, this.DadiCoord == 1, 0, bool_0, num13, this.double_0, out num7, out num8);
-                GetXYFromBL(num + num3, num2 + num4, this.MainStrip, this.DadiCoord == 1, 0, bool_0, num13, this.double_0, out num9, out num10);
-                GetXYFromBL(num, num2 + num4, this.MainStrip, this.DadiCoord == 1, 0, bool_0, num13, this.double_0, out num11, out num12);
+                GetXYFromBL(num + num3, num2, this.MainStrip, this.DadiCoord == 1, 0, bool_0, num13, this.double_0,
+                    out num5, out num6);
+                GetXYFromBL(num, num2, this.MainStrip, this.DadiCoord == 1, 0, bool_0, num13, this.double_0, out num7,
+                    out num8);
+                GetXYFromBL(num + num3, num2 + num4, this.MainStrip, this.DadiCoord == 1, 0, bool_0, num13,
+                    this.double_0, out num9, out num10);
+                GetXYFromBL(num, num2 + num4, this.MainStrip, this.DadiCoord == 1, 0, bool_0, num13, this.double_0,
+                    out num11, out num12);
                 item.PutCoords(num6, num5);
                 point2.PutCoords(num8, num7);
                 point3.PutCoords(num10, num9);
@@ -1079,7 +1139,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             return list;
         }
 
-        public IList<IPoint> GetProjectCoord(double double_1, double double_2, double double_3, double double_4, bool bool_0, bool bool_1, int int_2)
+        public IList<IPoint> GetProjectCoord(double double_1, double double_2, double double_3, double double_4,
+            bool bool_0, bool bool_1, int int_2)
         {
             IList<IPoint> list = new List<IPoint>();
             IPoint item = new PointClass();
@@ -1098,21 +1159,25 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             {
                 if (!bool_1)
                 {
-                    this.MainStrip = (int) Math.Truncate((double) (double_1 / 3.0));
+                    this.MainStrip = (int) Math.Truncate((double) (double_1/3.0));
                 }
                 else
                 {
-                    this.MainStrip = (int) (Math.Truncate((double) (double_1 / 6.0)) + 1);
+                    this.MainStrip = (int) (Math.Truncate((double) (double_1/6.0)) + 1);
                 }
             }
             else
             {
                 this.MainStrip = int_2;
             }
-            GetXYFromBL(double_3 + double_4, double_1, this.MainStrip, this.DadiCoord == 1, 0, bool_0, bool_1, this.double_0, out num, out num2);
-            GetXYFromBL(double_3, double_1, this.MainStrip, this.DadiCoord == 1, 0, bool_0, bool_1, this.double_0, out num3, out num4);
-            GetXYFromBL(double_3 + double_4, double_1 + double_2, this.MainStrip, this.DadiCoord == 1, 0, bool_0, bool_1, this.double_0, out num5, out num6);
-            GetXYFromBL(double_3, double_1 + double_2, this.MainStrip, this.DadiCoord == 1, 0, bool_0, bool_1, this.double_0, out num7, out num8);
+            GetXYFromBL(double_3 + double_4, double_1, this.MainStrip, this.DadiCoord == 1, 0, bool_0, bool_1,
+                this.double_0, out num, out num2);
+            GetXYFromBL(double_3, double_1, this.MainStrip, this.DadiCoord == 1, 0, bool_0, bool_1, this.double_0,
+                out num3, out num4);
+            GetXYFromBL(double_3 + double_4, double_1 + double_2, this.MainStrip, this.DadiCoord == 1, 0, bool_0, bool_1,
+                this.double_0, out num5, out num6);
+            GetXYFromBL(double_3, double_1 + double_2, this.MainStrip, this.DadiCoord == 1, 0, bool_0, bool_1,
+                this.double_0, out num7, out num8);
             item.PutCoords(num2, num);
             point2.PutCoords(num4, num3);
             point3.PutCoords(num6, num5);
@@ -1129,15 +1194,15 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             double num;
             if (bool_0)
             {
-                num = (double_1 / 6.0) + 1.0;
+                num = (double_1/6.0) + 1.0;
             }
             else if (double_1 <= 1.5)
             {
-                num = (((double_1 + 360.0) - 1.5) / 3.0) + 1.0;
+                num = (((double_1 + 360.0) - 1.5)/3.0) + 1.0;
             }
             else
             {
-                num = double_1 / 3.0;
+                num = double_1/3.0;
             }
             int num2 = (int) num;
             if (bool_0)
@@ -1197,8 +1262,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             num = int.Parse(string_0.Substring(4, 2));
             num2 = int.Parse(string_0.Substring(6, 2));
             num9 = char.Parse(s);
-            num3 = (int.Parse(str3) - 1) * 6;
-            num4 = ((num9 - 65) + 1) * 4;
+            num3 = (int.Parse(str3) - 1)*6;
+            num4 = ((num9 - 65) + 1)*4;
             if (num3 >= 180.0)
             {
                 num3 -= 180.0;
@@ -1208,15 +1273,15 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 case "H":
                     num7 = 0.03125;
                     num8 = 0.020833333333333332;
-                    num5 = num7 * (num2 - 1);
-                    num6 = num8 * (num - 1);
+                    num5 = num7*(num2 - 1);
+                    num6 = num8*(num - 1);
                     break;
 
                 case "G":
                     num7 = 0.0625;
                     num8 = 0.041666666666666664;
-                    num5 = num7 * (num2 - 1);
-                    num6 = num8 * (num - 1);
+                    num5 = num7*(num2 - 1);
+                    num6 = num8*(num - 1);
                     break;
             }
             num10 = num3 + num5;
@@ -1235,7 +1300,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             double_2.SetValue(num15, 2);
             double_1.SetValue(num16, 3);
             double_2.SetValue(num17, 3);
-            double_3 = num10 + (num7 / 2.0);
+            double_3 = num10 + (num7/2.0);
         }
 
         public static int GetTHMainStrip(string string_0, bool bool_0)
@@ -1297,7 +1362,9 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             double[] numArray2;
             double[] numArray3;
             double[] numArray4;
-            if (!GetTKCoor(string_0, bool_0, bool_1, bool_2, 500000.0, out numArray, out numArray2, out numArray3, out numArray4))
+            if (
+                !GetTKCoor(string_0, bool_0, bool_1, bool_2, 500000.0, out numArray, out numArray2, out numArray3,
+                    out numArray4))
             {
                 return 0.0;
             }
@@ -1312,7 +1379,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             return (polygon as IArea).Area;
         }
 
-        public static bool GetTKCoor(string string_0, bool bool_0, bool bool_1, bool bool_2, double double_1, out double[] double_2, out double[] double_3, out double[] double_4, out double[] double_5)
+        public static bool GetTKCoor(string string_0, bool bool_0, bool bool_1, bool bool_2, double double_1,
+            out double[] double_2, out double[] double_3, out double[] double_4, out double[] double_5)
         {
             double num = 0.0;
             double num2 = 0.0;
@@ -1333,14 +1401,16 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 double_3[3] = double_3[0];
                 for (int i = 0; i <= 3; i++)
                 {
-                    GetXYFromBL(double_2[i], double_3[i], tHMainStrip, bool_2, num3, bool_0, bool_1, double_1, out double_4[i], out double_5[i]);
+                    GetXYFromBL(double_2[i], double_3[i], tHMainStrip, bool_2, num3, bool_0, bool_1, double_1,
+                        out double_4[i], out double_5[i]);
                     flag = true;
                 }
             }
             return flag;
         }
 
-        public bool GetTKCoor(string string_0, bool bool_0, bool bool_1, int int_2, int int_3, ref double[] double_1, ref double[] double_2, ref double[] double_3, ref double[] double_4)
+        public bool GetTKCoor(string string_0, bool bool_0, bool bool_1, int int_2, int int_3, ref double[] double_1,
+            ref double[] double_2, ref double[] double_3, ref double[] double_4)
         {
             double num = 0.0;
             double num2 = 0.0;
@@ -1356,7 +1426,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             str = string_0;
             if (this.FileName2BL(str, out double_1[0], out double_2[0], out num, out num2))
             {
-                GetXYFromBL(double_1[0], double_2[0], this.int_0, int_3 == 1, num3, bool_0, bool_1, this.double_0, out double_3[0], out double_4[0]);
+                GetXYFromBL(double_1[0], double_2[0], this.int_0, int_3 == 1, num3, bool_0, bool_1, this.double_0,
+                    out double_3[0], out double_4[0]);
                 double_1[1] = double_1[0];
                 double_2[1] = double_2[0] + num2;
                 double_1[2] = double_1[0] + num;
@@ -1365,14 +1436,16 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 double_2[3] = double_2[0];
                 for (int i = 1; i <= 3; i++)
                 {
-                    GetXYFromBL(double_1[i], double_2[i], this.int_0, int_3 == 1, num3, bool_0, bool_1, this.double_0, out double_3[i], out double_4[i]);
+                    GetXYFromBL(double_1[i], double_2[i], this.int_0, int_3 == 1, num3, bool_0, bool_1, this.double_0,
+                        out double_3[i], out double_4[i]);
                     flag = true;
                 }
             }
             return flag;
         }
 
-        public void GetXYFormBL54(double[] double_1, double[] double_2, out double[] double_3, out double[] double_4, bool bool_0, double double_5)
+        public void GetXYFormBL54(double[] double_1, double[] double_2, out double[] double_3, out double[] double_4,
+            bool bool_0, double double_5)
         {
             int index = 0;
             double num2 = 0.0;
@@ -1382,75 +1455,96 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             double_4 = new double[length];
             for (index = 0; index < length; index++)
             {
-                GetXYFromBL((double) double_1.GetValue(index), (double) double_2.GetValue(index), this.int_0, true, 1, false, bool_0, double_5, out num2, out num3);
+                GetXYFromBL((double) double_1.GetValue(index), (double) double_2.GetValue(index), this.int_0, true, 1,
+                    false, bool_0, double_5, out num2, out num3);
                 double_3.SetValue(num2, index);
                 double_4.SetValue(num3, index);
             }
         }
 
-        public static void GetXYFromBL(double double_1, double double_2, int int_2, bool bool_0, int int_3, bool bool_1, bool bool_2, double double_3, out double double_4, out double double_5)
+        public static void GetXYFromBL(double double_1, double double_2, int int_2, bool bool_0, int int_3, bool bool_1,
+            bool bool_2, double double_3, out double double_4, out double double_5)
         {
             double num5;
             double num6;
             double num7;
-            double d = (double_1 / 180.0) * 3.1415926535;
+            double d = (double_1/180.0)*3.1415926535;
             double num2 = GetLocalLongitude(double_2, int_3, bool_2);
-            double x = ((Math.Cos(d) * 3.1415926535) * num2) / 180.0;
+            double x = ((Math.Cos(d)*3.1415926535)*num2)/180.0;
             double num4 = Math.Tan(d);
             if (bool_1)
             {
                 num5 = 6399596.65198801;
                 num6 = 0.0067395018195;
-                num7 = (111133.0047 * double_1) - (((((32009.8575 * Math.Sin(d)) + (133.9978 * Math.Pow(Math.Sin(d), 3.0))) + (0.6975 * Math.Pow(Math.Sin(d), 5.0))) + (0.0039 * Math.Pow(Math.Sin(d), 7.0))) * Math.Cos(d));
+                num7 = (111133.0047*double_1) -
+                       (((((32009.8575*Math.Sin(d)) + (133.9978*Math.Pow(Math.Sin(d), 3.0))) +
+                          (0.6975*Math.Pow(Math.Sin(d), 5.0))) + (0.0039*Math.Pow(Math.Sin(d), 7.0)))*Math.Cos(d));
             }
             else
             {
                 num5 = 6399698.90178271;
                 num6 = 0.00673852541468;
-                num7 = (111134.8611 * double_1) - (((((32005.7798 * Math.Sin(d)) + (133.9614 * Math.Pow(Math.Sin(d), 3.0))) + (0.6972 * Math.Pow(Math.Sin(d), 5.0))) + (0.0039 * Math.Pow(Math.Sin(d), 7.0))) * Math.Cos(d));
+                num7 = (111134.8611*double_1) -
+                       (((((32005.7798*Math.Sin(d)) + (133.9614*Math.Pow(Math.Sin(d), 3.0))) +
+                          (0.6972*Math.Pow(Math.Sin(d), 5.0))) + (0.0039*Math.Pow(Math.Sin(d), 7.0)))*Math.Cos(d));
             }
-            double num8 = num6 * Math.Pow(Math.Cos(d), 2.0);
-            double num9 = num5 / Math.Sqrt(1.0 + num8);
-            double num10 = ((Math.Pow(x, 2.0) / 2.0) + (((((5.0 - Math.Pow(num4, 2.0)) + (9.0 * num8)) + (4.0 * Math.Pow(num8, 2.0))) * Math.Pow(x, 4.0)) / 24.0)) + ((((61.0 - (58.0 * Math.Pow(num4, 2.0))) + Math.Pow(num4, 4.0)) * Math.Pow(x, 6.0)) / 720.0);
-            double num11 = (x + ((((1.0 - Math.Pow(num4, 2.0)) + num8) * Math.Pow(x, 3.0)) / 6.0)) + ((((((5.0 - (18.0 * Math.Pow(num4, 2.0))) + Math.Pow(num4, 4.0)) + (14.0 * num8)) - ((58.0 * num8) * Math.Pow(num4, 2.0))) * Math.Pow(x, 5.0)) / 120.0);
-            double_4 = num7 + ((num9 * num4) * num10);
-            double_5 = (num9 * num11) + double_3;
+            double num8 = num6*Math.Pow(Math.Cos(d), 2.0);
+            double num9 = num5/Math.Sqrt(1.0 + num8);
+            double num10 = ((Math.Pow(x, 2.0)/2.0) +
+                            (((((5.0 - Math.Pow(num4, 2.0)) + (9.0*num8)) + (4.0*Math.Pow(num8, 2.0)))*Math.Pow(x, 4.0))/
+                             24.0)) +
+                           ((((61.0 - (58.0*Math.Pow(num4, 2.0))) + Math.Pow(num4, 4.0))*Math.Pow(x, 6.0))/720.0);
+            double num11 = (x + ((((1.0 - Math.Pow(num4, 2.0)) + num8)*Math.Pow(x, 3.0))/6.0)) +
+                           ((((((5.0 - (18.0*Math.Pow(num4, 2.0))) + Math.Pow(num4, 4.0)) + (14.0*num8)) -
+                              ((58.0*num8)*Math.Pow(num4, 2.0)))*Math.Pow(x, 5.0))/120.0);
+            double_4 = num7 + ((num9*num4)*num10);
+            double_5 = (num9*num11) + double_3;
             if (bool_0)
             {
-                double_5 += int_2 * 1000000;
+                double_5 += int_2*1000000;
             }
         }
 
-        public static void GetXYFromBL(double double_1, double double_2, int int_2, bool bool_0, int int_3, bool bool_1, double double_3, double double_4, out double double_5, out double double_6)
+        public static void GetXYFromBL(double double_1, double double_2, int int_2, bool bool_0, int int_3, bool bool_1,
+            double double_3, double double_4, out double double_5, out double double_6)
         {
             double num5;
             double num6;
             double num7;
-            double d = (double_1 / 180.0) * 3.1415926535;
+            double d = (double_1/180.0)*3.1415926535;
             double num2 = double_2 - double_3;
-            double x = ((Math.Cos(d) * 3.1415926535) * num2) / 180.0;
+            double x = ((Math.Cos(d)*3.1415926535)*num2)/180.0;
             double num4 = Math.Tan(d);
             if (bool_1)
             {
                 num5 = 6399596.65198801;
                 num6 = 0.0067395018195;
-                num7 = (111133.0047 * double_1) - (((((32009.8575 * Math.Sin(d)) + (133.9978 * Math.Pow(Math.Sin(d), 3.0))) + (0.6975 * Math.Pow(Math.Sin(d), 5.0))) + (0.0039 * Math.Pow(Math.Sin(d), 7.0))) * Math.Cos(d));
+                num7 = (111133.0047*double_1) -
+                       (((((32009.8575*Math.Sin(d)) + (133.9978*Math.Pow(Math.Sin(d), 3.0))) +
+                          (0.6975*Math.Pow(Math.Sin(d), 5.0))) + (0.0039*Math.Pow(Math.Sin(d), 7.0)))*Math.Cos(d));
             }
             else
             {
                 num5 = 6399698.90178271;
                 num6 = 0.00673852541468;
-                num7 = (111134.8611 * double_1) - (((((32005.7798 * Math.Sin(d)) + (133.9614 * Math.Pow(Math.Sin(d), 3.0))) + (0.6972 * Math.Pow(Math.Sin(d), 5.0))) + (0.0039 * Math.Pow(Math.Sin(d), 7.0))) * Math.Cos(d));
+                num7 = (111134.8611*double_1) -
+                       (((((32005.7798*Math.Sin(d)) + (133.9614*Math.Pow(Math.Sin(d), 3.0))) +
+                          (0.6972*Math.Pow(Math.Sin(d), 5.0))) + (0.0039*Math.Pow(Math.Sin(d), 7.0)))*Math.Cos(d));
             }
-            double num8 = num6 * Math.Pow(Math.Cos(d), 2.0);
-            double num9 = num5 / Math.Sqrt(1.0 + num8);
-            double num10 = ((Math.Pow(x, 2.0) / 2.0) + (((((5.0 - Math.Pow(num4, 2.0)) + (9.0 * num8)) + (4.0 * Math.Pow(num8, 2.0))) * Math.Pow(x, 4.0)) / 24.0)) + ((((61.0 - (58.0 * Math.Pow(num4, 2.0))) + Math.Pow(num4, 4.0)) * Math.Pow(x, 6.0)) / 720.0);
-            double num11 = (x + ((((1.0 - Math.Pow(num4, 2.0)) + num8) * Math.Pow(x, 3.0)) / 6.0)) + ((((((5.0 - (18.0 * Math.Pow(num4, 2.0))) + Math.Pow(num4, 4.0)) + (14.0 * num8)) - ((58.0 * num8) * Math.Pow(num4, 2.0))) * Math.Pow(x, 5.0)) / 120.0);
-            double_5 = num7 + ((num9 * num4) * num10);
-            double_6 = (num9 * num11) + double_4;
+            double num8 = num6*Math.Pow(Math.Cos(d), 2.0);
+            double num9 = num5/Math.Sqrt(1.0 + num8);
+            double num10 = ((Math.Pow(x, 2.0)/2.0) +
+                            (((((5.0 - Math.Pow(num4, 2.0)) + (9.0*num8)) + (4.0*Math.Pow(num8, 2.0)))*Math.Pow(x, 4.0))/
+                             24.0)) +
+                           ((((61.0 - (58.0*Math.Pow(num4, 2.0))) + Math.Pow(num4, 4.0))*Math.Pow(x, 6.0))/720.0);
+            double num11 = (x + ((((1.0 - Math.Pow(num4, 2.0)) + num8)*Math.Pow(x, 3.0))/6.0)) +
+                           ((((((5.0 - (18.0*Math.Pow(num4, 2.0))) + Math.Pow(num4, 4.0)) + (14.0*num8)) -
+                              ((58.0*num8)*Math.Pow(num4, 2.0)))*Math.Pow(x, 5.0))/120.0);
+            double_5 = num7 + ((num9*num4)*num10);
+            double_6 = (num9*num11) + double_4;
             if (bool_0)
             {
-                double_6 += int_2 * 1000000;
+                double_6 += int_2*1000000;
             }
         }
 
@@ -1522,40 +1616,41 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 separator[0] = '-';
                 strArray = string_0.Split(separator);
                 num6 = int.Parse(strArray.GetValue(2).ToString());
-                if ((num6 % 12) != 0)
+                if ((num6%12) != 0)
                 {
-                    num7 = (num6 / 12) + 1;
+                    num7 = (num6/12) + 1;
                 }
                 else
                 {
-                    num7 = num6 / 12;
+                    num7 = num6/12;
                 }
-                if ((num6 % 12) == 0)
+                if ((num6%12) == 0)
                 {
                     num8 = 12;
                 }
                 else
                 {
-                    num8 = num6 % 12;
+                    num8 = num6%12;
                 }
                 num3 = int.Parse(strArray.GetValue(3).ToString().Replace('(', ' ').Replace(')', ' '));
-                if ((num3 % 8) != 0)
+                if ((num3%8) != 0)
                 {
-                    num4 = (num3 / 8) + 1;
+                    num4 = (num3/8) + 1;
                 }
                 else
                 {
-                    num4 = num3 / 8;
+                    num4 = num3/8;
                 }
-                if ((num3 % 8) == 0)
+                if ((num3%8) == 0)
                 {
                     num5 = 8;
                 }
                 else
                 {
-                    num5 = num3 % 8;
+                    num5 = num3%8;
                 }
-                if (((string_0.Contains("a") || string_0.Contains("b")) || string_0.Contains("c")) || string_0.Contains("d"))
+                if (((string_0.Contains("a") || string_0.Contains("b")) || string_0.Contains("c")) ||
+                    string_0.Contains("d"))
                 {
                     str3 = "H";
                     switch (strArray.GetValue((int) (strArray.Length - 1)).ToString())
@@ -1580,14 +1675,14 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                             num10 = 2;
                             break;
                     }
-                    num = ((((num7 - 1) * 8) + (num4 - 1)) * 2) + num9;
-                    num2 = ((((num8 - 1) * 8) + (num5 - 1)) * 2) + num10;
+                    num = ((((num7 - 1)*8) + (num4 - 1))*2) + num9;
+                    num2 = ((((num8 - 1)*8) + (num5 - 1))*2) + num10;
                 }
                 else
                 {
                     str3 = "G";
-                    num = ((num7 - 1) * 8) + num4;
-                    num2 = ((num8 - 1) * 8) + num5;
+                    num = ((num7 - 1)*8) + num4;
+                    num2 = ((num8 - 1)*8) + num5;
                 }
                 str2 = str3 + strArray.GetValue(0) + strArray.GetValue(1);
                 str4 = num.ToString();
@@ -1765,7 +1860,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             return "";
         }
 
-        public static bool THNO2BL(string string_0, out double double_1, out double double_2, out double double_3, out double double_4)
+        public static bool THNO2BL(string string_0, out double double_1, out double double_2, out double double_3,
+            out double double_4)
         {
             double_1 = 0.0;
             double_2 = 0.0;
@@ -1788,7 +1884,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             return false;
         }
 
-        private static bool THNO2BL_cqtx(string string_0, out double double_1, out double double_2, out double double_3, out double double_4)
+        private static bool THNO2BL_cqtx(string string_0, out double double_1, out double double_2, out double double_3,
+            out double double_4)
         {
             double_1 = 0.0;
             double_2 = 0.0;
@@ -1796,7 +1893,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             double_4 = 0.0;
             string str = string_0.ToUpper();
             int num = 0;
-            string[] strArray = str.Split(new char[] { '-' });
+            string[] strArray = str.Split(new char[] {'-'});
             if (strArray.Length != 4)
             {
                 return false;
@@ -1817,20 +1914,22 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             long num9 = num5;
             double_4 = 0.0625;
             double_3 = 0.041666666666666664;
-            double d = (num8 - 1L) / 12L;
-            int num11 = Convert.ToInt16((double) ((num8 - 1L) - (Math.Truncate(d) * 12.0)));
-            double num12 = (num9 - 1L) / 8L;
-            int num13 = Convert.ToInt16((double) ((num9 - 1L) - (Math.Truncate(num12) * 8.0)));
-            double_2 = (((num7 - 1.0) * 6.0) + (num11 * 0.5)) + (num13 * 0.0625);
+            double d = (num8 - 1L)/12L;
+            int num11 = Convert.ToInt16((double) ((num8 - 1L) - (Math.Truncate(d)*12.0)));
+            double num12 = (num9 - 1L)/8L;
+            int num13 = Convert.ToInt16((double) ((num9 - 1L) - (Math.Truncate(num12)*8.0)));
+            double_2 = (((num7 - 1.0)*6.0) + (num11*0.5)) + (num13*0.0625);
             if (double_2 > 180.0)
             {
                 double_2 -= 180.0;
             }
-            double_1 = (((num6 - 1.0) * 4.0) + ((11.0 - ((int) ((num8 - 1L) / 12L))) / 3.0)) + ((7.0 - ((int) ((num9 - 1L) / 8L))) / 24.0);
+            double_1 = (((num6 - 1.0)*4.0) + ((11.0 - ((int) ((num8 - 1L)/12L)))/3.0)) +
+                       ((7.0 - ((int) ((num9 - 1L)/8L)))/24.0);
             return true;
         }
 
-        private static bool THNO2BL_standard(string string_0, out double double_1, out double double_2, out double double_3, out double double_4)
+        private static bool THNO2BL_standard(string string_0, out double double_1, out double double_2,
+            out double double_3, out double double_4)
         {
             double num6;
             double num7;
@@ -1900,19 +1999,20 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 }
             }
             return false;
-        Label_025F:
+            Label_025F:
             num8 = (num3 - 97) + 1;
             long num9 = num4;
             long num10 = num;
             long num11 = num2;
-            double_2 = ((num9 - 1.0) * 6.0) + ((num11 - 1.0) * num6);
-            double_1 = ((num8 - 1.0) * 4.0) + (((4.0 / num7) - num10) * num7);
+            double_2 = ((num9 - 1.0)*6.0) + ((num11 - 1.0)*num6);
+            double_1 = ((num8 - 1.0)*4.0) + (((4.0/num7) - num10)*num7);
             double_4 = num6;
             double_3 = num7;
             return true;
         }
 
-        private static bool THNO2BL_tx(string string_0, out double double_1, out double double_2, out double double_3, out double double_4)
+        private static bool THNO2BL_tx(string string_0, out double double_1, out double double_2, out double double_3,
+            out double double_4)
         {
             int num;
             int num2;
@@ -1978,7 +2078,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 }
             }
             return false;
-        Label_0225:
+            Label_0225:
             num8 = (num - 97) + 1;
             long num9 = num2;
             if (num9 >= 30L)
@@ -1987,8 +2087,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             }
             long num10 = num3;
             long num11 = num4;
-            double_2 = ((num9 - 1.0) * 6.0) + ((num11 - 1.0) * num6);
-            double_1 = ((num8 - 1.0) * 4.0) + (((4.0 / num7) - num10) * num7);
+            double_2 = ((num9 - 1.0)*6.0) + ((num11 - 1.0)*num6);
+            double_1 = ((num8 - 1.0)*4.0) + (((4.0/num7) - num10)*num7);
             double_4 = num6;
             double_3 = num7;
             return true;
@@ -2095,57 +2195,32 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                     return false;
                 }
             }
-        Label_031F:
+            Label_031F:
             return false;
         }
 
         public double CentralMeridian
         {
-            get
-            {
-                return g_iCentralMeridian;
-            }
-            set
-            {
-                g_iCentralMeridian = value;
-            }
+            get { return g_iCentralMeridian; }
+            set { g_iCentralMeridian = value; }
         }
 
         public int DadiCoord
         {
-            get
-            {
-                return this.int_1;
-            }
-            set
-            {
-                this.int_1 = value;
-            }
+            get { return this.int_1; }
+            set { this.int_1 = value; }
         }
 
         public int MainStrip
         {
-            get
-            {
-                return this.int_0;
-            }
-            set
-            {
-                this.int_0 = value;
-            }
+            get { return this.int_0; }
+            set { this.int_0 = value; }
         }
 
         public StandardTypeEnum StandarType
         {
-            get
-            {
-                return this.standardTypeEnum_0;
-            }
-            set
-            {
-                this.standardTypeEnum_0 = value;
-            }
+            get { return this.standardTypeEnum_0; }
+            set { this.standardTypeEnum_0 = value; }
         }
     }
 }
-

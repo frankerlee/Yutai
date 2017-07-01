@@ -33,8 +33,10 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
             (base.m_pGeometricEffect as IGraphicAttributes).set_Value((int) this.textBox1.Tag, val);
             try
             {
-                (base.m_pGeometricEffect as IGraphicAttributes).set_Value((int) this.comboBox1.Tag, this.comboBox1.SelectedIndex);
-                (base.m_pGeometricEffect as IGraphicAttributes).set_Value((int) this.checkBox1.Tag, this.checkBox1.Checked);
+                (base.m_pGeometricEffect as IGraphicAttributes).set_Value((int) this.comboBox1.Tag,
+                    this.comboBox1.SelectedIndex);
+                (base.m_pGeometricEffect as IGraphicAttributes).set_Value((int) this.checkBox1.Tag,
+                    this.checkBox1.Checked);
             }
             catch
             {
@@ -44,7 +46,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
 
         private void btnAddGemoetricEffic_Click(object sender, EventArgs e)
         {
-            frmGeometricEffectList list = new frmGeometricEffectList {
+            frmGeometricEffectList list = new frmGeometricEffectList
+            {
                 BasicSymbolLayerBaseControl = this.m_pControl
             };
             if ((list.ShowDialog() == DialogResult.OK) && (this.m_pControl != null))
@@ -62,7 +65,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
         {
             if (this.m_CanDo)
             {
-                (base.m_pGeometricEffect as IGraphicAttributes).set_Value((int) (sender as CheckBox).Tag, (sender as CheckBox).Checked);
+                (base.m_pGeometricEffect as IGraphicAttributes).set_Value((int) (sender as CheckBox).Tag,
+                    (sender as CheckBox).Checked);
             }
         }
 
@@ -70,11 +74,12 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
         {
             if (this.m_CanDo)
             {
-                (base.m_pGeometricEffect as IGraphicAttributes).set_Value((int) (sender as ComboBox).Tag, (sender as ComboBox).SelectedIndex);
+                (base.m_pGeometricEffect as IGraphicAttributes).set_Value((int) (sender as ComboBox).Tag,
+                    (sender as ComboBox).SelectedIndex);
             }
         }
 
- private void GeometricEffectDonutPage_Load(object sender, EventArgs e)
+        private void GeometricEffectDonutPage_Load(object sender, EventArgs e)
         {
             if (base.m_pGeometricEffect == null)
             {
@@ -95,7 +100,7 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
             this.m_CanDo = true;
         }
 
- private void textBox1_Leave(object sender, EventArgs e)
+        private void textBox1_Leave(object sender, EventArgs e)
         {
             double val = 0.0;
             try
@@ -119,7 +124,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
 
         private void 修改ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmGeometricEffectList list = new frmGeometricEffectList {
+            frmGeometricEffectList list = new frmGeometricEffectList
+            {
                 BasicSymbolLayerBaseControl = this.m_pControl
             };
             if ((list.ShowDialog() == DialogResult.OK) && (this.m_pControl != null))
@@ -129,4 +135,3 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
         }
     }
 }
-

@@ -70,7 +70,9 @@ namespace Yutai.Plugins.Catalog.Commands
             if (firstObject is IGxFile)
             {
                 string path = (firstObject as IGxFile).Path;
-                path = (path[path.Length - 1] != '\\' ? string.Concat(path, "\\新建个人数据库") : string.Concat(path, "新建个人数据库"));
+                path = (path[path.Length - 1] != '\\'
+                    ? string.Concat(path, "\\新建个人数据库")
+                    : string.Concat(path, "新建个人数据库"));
                 string str = string.Concat(path, ".mdb");
                 int num = 1;
                 while (File.Exists(str))
@@ -81,7 +83,8 @@ namespace Yutai.Plugins.Catalog.Commands
                 IWorkspaceFactory accessWorkspaceFactoryClass = new AccessWorkspaceFactory();
                 try
                 {
-                    IWorkspaceName workspaceName = accessWorkspaceFactoryClass.Create(Path.GetDirectoryName(str), Path.GetFileNameWithoutExtension(str), null, 0);
+                    IWorkspaceName workspaceName = accessWorkspaceFactoryClass.Create(Path.GetDirectoryName(str),
+                        Path.GetFileNameWithoutExtension(str), null, 0);
                     IGxObject gxDatabase = new GxDatabase();
                     (gxDatabase as IGxDatabase).WorkspaceName = workspaceName;
                     IGxCatalog catalog = GxCatalogCommon.GetCatalog(firstObject);

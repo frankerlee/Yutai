@@ -149,7 +149,7 @@ namespace Yutai.Controls
             return new TreeNodeAdv(page.PageName)
             {
                 Tag = page,
-                LeftImageIndices = new[] { page.ImageIndex }
+                LeftImageIndices = new[] {page.ImageIndex}
             };
         }
     }

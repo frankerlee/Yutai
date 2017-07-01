@@ -55,7 +55,7 @@ namespace Yutai.Plugins.Concrete
 
         public override bool Equals(object obj)
         {
-            return Guid == ((PluginIdentity)obj).Guid;
+            return Guid == ((PluginIdentity) obj).Guid;
         }
 
         public override int GetHashCode()

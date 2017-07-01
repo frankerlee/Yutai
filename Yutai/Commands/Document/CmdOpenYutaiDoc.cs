@@ -12,9 +12,10 @@ using Yutai.Plugins.Services;
 namespace Yutai.Commands.Document
 {
     //该命令打开后缀为.myt的文档，该文档应该为与mxd，sxd同名的文件，主要是用来描述二维三维文档的关系，以及里面图层的对应关系，然后用于后面的初始化分析
-    public class CmdOpenYutaiDoc:YutaiCommand
+    public class CmdOpenYutaiDoc : YutaiCommand
     {
         private IProjectService _projectService;
+
         public CmdOpenYutaiDoc(IAppContext context)
         {
             OnCreate(context);
@@ -58,6 +59,7 @@ namespace Yutai.Commands.Document
     public class CmdNewYutaiDoc : YutaiCommand
     {
         private IProjectService _projectService;
+
         public CmdNewYutaiDoc(IAppContext context)
         {
             OnCreate(context);

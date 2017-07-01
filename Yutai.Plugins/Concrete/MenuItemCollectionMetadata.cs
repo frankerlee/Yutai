@@ -7,6 +7,7 @@ namespace Yutai.Plugins.Concrete
         public IRibbonItem InsertBefore { get; set; }
         public bool AlignRight { get; set; }
     }
+
     internal class MenuItemCollectionMetadata
     {
         public IMenuItem InsertBefore { get; set; }

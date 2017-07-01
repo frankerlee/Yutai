@@ -18,4 +18,3 @@ namespace Yutai.ArcGIS.Catalog
         IWorkspaceName WorkspaceName { get; set; }
     }
 }
-

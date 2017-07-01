@@ -30,7 +30,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             this.m_pDataSourceTreeView.SetMapCtrl(pMapControl);
         }
 
- private void frmDatasourceTreeView_OnMapReplaced(object newMap)
+        private void frmDatasourceTreeView_OnMapReplaced(object newMap)
         {
             this.m_pDataSourceTreeView.RefreshTree();
         }
@@ -40,7 +40,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             this.m_pDataSourceTreeView.RefreshTree();
         }
 
- public void RefreshTree()
+        public void RefreshTree()
         {
             this.m_pDataSourceTreeView.RefreshTree();
         }
@@ -51,10 +51,7 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         public IApplication Application
         {
-            set
-            {
-                this.m_pDataSourceTreeView.Application = value;
-            }
+            set { this.m_pDataSourceTreeView.Application = value; }
         }
 
         public IMapControl2 MainMapControl
@@ -68,7 +65,8 @@ namespace Yutai.ArcGIS.Controls.Controls
                     this.m_pDataSourceTreeView.Hook = this.m_pMainMapControl;
                     if (this.m_pMainMapControl != null)
                     {
-                        (this.m_pMainMapControl as IMapControlEvents2_Event).OnMapReplaced+=(new IMapControlEvents2_OnMapReplacedEventHandler(this.frmDatasourceTreeView_OnMapReplaced));
+                        (this.m_pMainMapControl as IMapControlEvents2_Event).OnMapReplaced +=
+                            (new IMapControlEvents2_OnMapReplacedEventHandler(this.frmDatasourceTreeView_OnMapReplaced));
                     }
                     this.m_pDataSourceTreeView.RefreshTree();
                 }
@@ -86,7 +84,9 @@ namespace Yutai.ArcGIS.Controls.Controls
                 this.m_pDataSourceTreeView.Hook = this.m_PageLayoutControl;
                 if (this.m_PageLayoutControl != null)
                 {
-                    (this.m_PageLayoutControl as IPageLayoutControlEvents_Event).OnPageLayoutReplaced+=(new IPageLayoutControlEvents_OnPageLayoutReplacedEventHandler(this.frmTOCTreeView_OnPageLayoutReplaced));
+                    (this.m_PageLayoutControl as IPageLayoutControlEvents_Event).OnPageLayoutReplaced +=
+                    (new IPageLayoutControlEvents_OnPageLayoutReplacedEventHandler(
+                        this.frmTOCTreeView_OnPageLayoutReplaced));
                 }
                 this.m_pDataSourceTreeView.RefreshTree();
             }
@@ -94,11 +94,7 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         public IStyleGallery StyleGallery
         {
-            set
-            {
-                this.m_pDataSourceTreeView.StyleGallery = value;
-            }
+            set { this.m_pDataSourceTreeView.StyleGallery = value; }
         }
     }
 }
-

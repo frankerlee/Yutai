@@ -14,7 +14,8 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
     {
         private SimpleQueryByAddressUI1 QueryUI;
         private PipelineAnalysisPlugin _plugin;
-        public CmdQueryByAddress(IAppContext context,PipelineAnalysisPlugin plugin)
+
+        public CmdQueryByAddress(IAppContext context, PipelineAnalysisPlugin plugin)
         {
             OnCreate(context);
             _plugin = plugin;

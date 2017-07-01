@@ -9,7 +9,6 @@ namespace Yutai.Plugins.Catalog.Commands
 {
     class CmdCreateVersionView : YutaiCommand
     {
-       
         public CmdCreateVersionView(IAppContext context)
         {
             OnCreate(context);
@@ -45,9 +44,12 @@ namespace Yutai.Plugins.Catalog.Commands
                     if (((IGxSelection) _context.GxSelection).FirstObject is IGxDataset)
                     {
                         esriDatasetType type = (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Type;
-                        if (type == esriDatasetType.esriDTFeatureClass || type == esriDatasetType.esriDTTable || type == esriDatasetType.esriDTFeatureDataset)
+                        if (type == esriDatasetType.esriDTFeatureClass || type == esriDatasetType.esriDTTable ||
+                            type == esriDatasetType.esriDTFeatureDataset)
                         {
-                            IVersionedObject versionedObject = (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Dataset as IVersionedObject;
+                            IVersionedObject versionedObject =
+                                (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Dataset as
+                                    IVersionedObject;
                             if (versionedObject == null)
                             {
                                 result = false;
@@ -74,10 +76,10 @@ namespace Yutai.Plugins.Catalog.Commands
 
         public override void OnClick()
         {
-
             try
             {
-                IVersionedView versionedView = (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Dataset as IVersionedView;
+                IVersionedView versionedView =
+                    (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Dataset as IVersionedView;
                 string name = ((IGxSelection) _context.GxSelection).FirstObject.Name + "_vw";
                 versionedView.CreateVersionedView(name);
                 System.Windows.Forms.MessageBox.Show("创建附件成果");
@@ -87,6 +89,5 @@ namespace Yutai.Plugins.Catalog.Commands
                 System.Windows.Forms.MessageBox.Show(ex.Message);
             }
         }
-        
     }
 }

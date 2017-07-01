@@ -197,7 +197,8 @@ namespace Yutai.ArcGIS.Framework.Docking
             return this.IsDockStateValid(dockState);
         }
 
-        private static void MergeNestedPanes(VisibleNestedPaneCollection nestedPanesFrom, NestedPaneCollection nestedPanesTo, DockPane prevPane, DockAlignment alignment, double proportion)
+        private static void MergeNestedPanes(VisibleNestedPaneCollection nestedPanesFrom,
+            NestedPaneCollection nestedPanesTo, DockPane prevPane, DockAlignment alignment, double proportion)
         {
             if (nestedPanesFrom.Count != 0)
             {
@@ -225,7 +226,8 @@ namespace Yutai.ArcGIS.Framework.Docking
                             paneArray2[i] = pane;
                         }
                     }
-                    pane = paneArray[num2].DockTo(nestedPanesTo.Container, paneArray2[num2], alignmentArray[num2], numArray[num2]);
+                    pane = paneArray[num2].DockTo(nestedPanesTo.Container, paneArray2[num2], alignmentArray[num2],
+                        numArray[num2]);
                     paneArray[num2].DockState = nestedPanesTo.DockState;
                 }
             }
@@ -322,14 +324,15 @@ namespace Yutai.ArcGIS.Framework.Docking
             }
         }
 
-        [SecurityPermission(SecurityAction.LinkDemand, Flags=SecurityPermissionFlag.UnmanagedCode)]
+        [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)]
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == 161)
             {
                 if (!base.IsDisposed)
                 {
-                    if (((NativeMethods.SendMessage(base.Handle, 132, 0, (uint) ((int) m.LParam)) == 2) && this.DockPanel.AllowEndUserDocking) && this.AllowEndUserDocking)
+                    if (((NativeMethods.SendMessage(base.Handle, 132, 0, (uint) ((int) m.LParam)) == 2) &&
+                         this.DockPanel.AllowEndUserDocking) && this.AllowEndUserDocking)
                     {
                         base.Activate();
                         this.m_dockPanel.BeginDrag(this);
@@ -416,71 +419,43 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         public bool AllowEndUserDocking
         {
-            get
-            {
-                return this.m_allowEndUserDocking;
-            }
-            set
-            {
-                this.m_allowEndUserDocking = value;
-            }
+            get { return this.m_allowEndUserDocking; }
+            set { this.m_allowEndUserDocking = value; }
         }
 
         public virtual Rectangle DisplayingRectangle
         {
-            get
-            {
-                return base.ClientRectangle;
-            }
+            get { return base.ClientRectangle; }
         }
 
         public DockPanel DockPanel
         {
-            get
-            {
-                return this.m_dockPanel;
-            }
+            get { return this.m_dockPanel; }
         }
 
         public DockState DockState
         {
-            get
-            {
-                return DockState.Float;
-            }
+            get { return DockState.Float; }
         }
 
         public bool IsFloat
         {
-            get
-            {
-                return (this.DockState == DockState.Float);
-            }
+            get { return (this.DockState == DockState.Float); }
         }
 
         Control IDragSource.DragControl
         {
-            get
-            {
-                return this;
-            }
+            get { return this; }
         }
 
         public NestedPaneCollection NestedPanes
         {
-            get
-            {
-                return this.m_nestedPanes;
-            }
+            get { return this.m_nestedPanes; }
         }
 
         public VisibleNestedPaneCollection VisibleNestedPanes
         {
-            get
-            {
-                return this.NestedPanes.VisibleNestedPanes;
-            }
+            get { return this.NestedPanes.VisibleNestedPanes; }
         }
     }
 }
-

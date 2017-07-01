@@ -19,6 +19,7 @@ namespace Yutai.Plugins.TableEditor.Commands
     public class CmdZoomToSelectedFeatures : YutaiCommand
     {
         private ITableEditorView _view;
+
         public CmdZoomToSelectedFeatures(IAppContext context, ITableEditorView view)
         {
             _context = context;

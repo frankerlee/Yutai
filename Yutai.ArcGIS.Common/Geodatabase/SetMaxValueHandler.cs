@@ -1,4 +1,4 @@
 namespace Yutai.ArcGIS.Common.Geodatabase
 {
-	public delegate void SetMaxValueHandler(int int_0);
+    public delegate void SetMaxValueHandler(int int_0);
 }

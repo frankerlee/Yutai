@@ -21,4 +21,3 @@ namespace Yutai.ArcGIS.Catalog
         object SelectedServerObjects { get; set; }
     }
 }
-

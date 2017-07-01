@@ -22,11 +22,7 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
 
         public IGeometricNetwork GeometricNetwork
         {
-            get
-            {
-                return this.m_pGeoNetwork;
-            }
+            get { return this.m_pGeoNetwork; }
         }
     }
 }
-

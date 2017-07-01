@@ -11,7 +11,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
     {
         internal static IProjectForm m_pfrm;
 
-        public static IFeatureClass CreateFeatureClass(object object_0, string string_0, ISpatialReference ispatialReference_0, esriFeatureType esriFeatureType_0, esriGeometryType esriGeometryType_0, IFields ifields_0, UID uid_0, UID uid_1, string string_1)
+        public static IFeatureClass CreateFeatureClass(object object_0, string string_0,
+            ISpatialReference ispatialReference_0, esriFeatureType esriFeatureType_0,
+            esriGeometryType esriGeometryType_0, IFields ifields_0, UID uid_0, UID uid_1, string string_1)
         {
             if (object_0 == null)
             {
@@ -131,11 +133,13 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             {
                 IWorkspace workspace = (IWorkspace) object_0;
                 IFeatureWorkspace workspace2 = (IFeatureWorkspace) workspace;
-                return workspace2.CreateFeatureClass(string_0, ifields_0, uid_0, uid_1, esriFeatureType_0, shapeFieldName, string_1);
+                return workspace2.CreateFeatureClass(string_0, ifields_0, uid_0, uid_1, esriFeatureType_0,
+                    shapeFieldName, string_1);
             }
             if (object_0 is IFeatureDataset)
             {
-                class2 = ((IFeatureDataset) object_0).CreateFeatureClass(string_0, ifields_0, uid_0, uid_1, esriFeatureType_0, shapeFieldName, string_1);
+                class2 = ((IFeatureDataset) object_0).CreateFeatureClass(string_0, ifields_0, uid_0, uid_1,
+                    esriFeatureType_0, shapeFieldName, string_1);
             }
             return class2;
         }
@@ -151,14 +155,16 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             ((IFieldEdit) field).GeometryDef_2 = geometryDef;
         }
 
-        public static void Project(IFeatureDataset ifeatureDataset_0, ISpatialReference ispatialReference_0, IWorkspace iworkspace_0, string string_0)
+        public static void Project(IFeatureDataset ifeatureDataset_0, ISpatialReference ispatialReference_0,
+            IWorkspace iworkspace_0, string string_0)
         {
             IGeometryDef outputGeometryDef = new GeometryDefClass();
             ISpatialReference spatialReference = ((IGeoDataset) ifeatureDataset_0).SpatialReference;
             ((IGeometryDefEdit) outputGeometryDef).SpatialReference_2 = ispatialReference_0;
             IWorkspace workspace = ifeatureDataset_0.Workspace;
             IFeatureDataConverter converter = new FeatureDataConverterClass();
-            IWorkspaceName name = new WorkspaceNameClass {
+            IWorkspaceName name = new WorkspaceNameClass
+            {
                 ConnectionProperties = workspace.ConnectionProperties,
                 WorkspaceFactoryProgID = workspace.WorkspaceFactory.GetClassID().Value.ToString()
             };
@@ -175,14 +181,17 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
             name3.Name = str;
             name3.WorkspaceName = name;
-            IDatasetName name4 = new FeatureDatasetNameClass {
+            IDatasetName name4 = new FeatureDatasetNameClass
+            {
                 WorkspaceName = name2,
                 Name = string_0
             };
-            converter.ConvertFeatureDataset((IFeatureDatasetName) name3, (IFeatureDatasetName) name4, outputGeometryDef, "", 1000, 0);
+            converter.ConvertFeatureDataset((IFeatureDatasetName) name3, (IFeatureDatasetName) name4, outputGeometryDef,
+                "", 1000, 0);
         }
 
-        public static void Project(IFeatureClass ifeatureClass_0, ISpatialReference ispatialReference_0, IFeatureDatasetName ifeatureDatasetName_0, string string_0, double double_0)
+        public static void Project(IFeatureClass ifeatureClass_0, ISpatialReference ispatialReference_0,
+            IFeatureDatasetName ifeatureDatasetName_0, string string_0, double double_0)
         {
             string str2;
             double num3;
@@ -193,7 +202,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             IFields fields2;
             IWorkspace workspace = ((IDataset) ifeatureClass_0).Workspace;
             IFeatureDataConverter converter = new FeatureDataConverterClass();
-            IWorkspaceName name = new WorkspaceNameClass {
+            IWorkspaceName name = new WorkspaceNameClass
+            {
                 ConnectionProperties = workspace.ConnectionProperties,
                 WorkspaceFactoryProgID = workspace.WorkspaceFactory.GetClassID().Value.ToString()
             };
@@ -208,19 +218,22 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             name3.Name = aliasName;
             name3.WorkspaceName = name;
             IWorkspace2 workspace2 = (workspaceName as IName).Open() as IWorkspace2;
-            IDatasetName name4 = new FeatureClassNameClass {
+            IDatasetName name4 = new FeatureClassNameClass
+            {
                 WorkspaceName = workspaceName
             };
             (name4 as IFeatureClassName).FeatureDatasetName = ifeatureDatasetName_0 as IDatasetName;
-            IFieldChecker checker = new FieldCheckerClass {
+            IFieldChecker checker = new FieldCheckerClass
+            {
                 ValidateWorkspace = workspace2 as IWorkspace
             };
-            string[] strArray = string_0.Split(new char[] { '.' });
+            string[] strArray = string_0.Split(new char[] {'.'});
             string_0 = strArray[strArray.Length - 1] + "_Project";
             checker.ValidateTableName(string_0, out str2);
             string str3 = str2;
             int num2 = 1;
-            if ((workspaceName.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace) || (workspaceName.Type == esriWorkspaceType.esriLocalDatabaseWorkspace))
+            if ((workspaceName.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace) ||
+                (workspaceName.Type == esriWorkspaceType.esriLocalDatabaseWorkspace))
             {
                 while (workspace2.get_NameExists(esriDatasetType.esriDTFeatureClass, str3))
                 {
@@ -266,7 +279,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
             try
             {
-                converter.ConvertFeatureClass((IFeatureClassName) name3, null, ifeatureDatasetName_0, (IFeatureClassName) name4, geometryDef, fields2, "", 1000, 0);
+                converter.ConvertFeatureClass((IFeatureClassName) name3, null, ifeatureDatasetName_0,
+                    (IFeatureClassName) name4, geometryDef, fields2, "", 1000, 0);
             }
             catch (Exception exception)
             {
@@ -274,7 +288,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
-        public static void Project(IFeatureClass ifeatureClass_0, ISpatialReference ispatialReference_0, IWorkspace iworkspace_0, string string_0, double double_0)
+        public static void Project(IFeatureClass ifeatureClass_0, ISpatialReference ispatialReference_0,
+            IWorkspace iworkspace_0, string string_0, double double_0)
         {
             string str2;
             double num3;
@@ -285,7 +300,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             IFields fields2;
             IWorkspace workspace = ((IDataset) ifeatureClass_0).Workspace;
             IFeatureDataConverter converter = new FeatureDataConverterClass();
-            IWorkspaceName name = new WorkspaceNameClass {
+            IWorkspaceName name = new WorkspaceNameClass
+            {
                 ConnectionProperties = workspace.ConnectionProperties,
                 WorkspaceFactoryProgID = workspace.WorkspaceFactory.GetClassID().Value.ToString()
             };
@@ -302,18 +318,21 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
             name3.Name = aliasName;
             name3.WorkspaceName = name;
-            IDatasetName name4 = new FeatureClassNameClass {
+            IDatasetName name4 = new FeatureClassNameClass
+            {
                 WorkspaceName = name2
             };
-            IFieldChecker checker = new FieldCheckerClass {
+            IFieldChecker checker = new FieldCheckerClass
+            {
                 ValidateWorkspace = iworkspace_0
             };
-            string[] strArray = string_0.Split(new char[] { '.' });
+            string[] strArray = string_0.Split(new char[] {'.'});
             string_0 = strArray[strArray.Length - 1] + "_Project";
             checker.ValidateTableName(string_0, out str2);
             string str3 = str2;
             int num2 = 1;
-            if ((iworkspace_0.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace) || (iworkspace_0.Type == esriWorkspaceType.esriLocalDatabaseWorkspace))
+            if ((iworkspace_0.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace) ||
+                (iworkspace_0.Type == esriWorkspaceType.esriLocalDatabaseWorkspace))
             {
                 while (((IWorkspace2) iworkspace_0).get_NameExists(esriDatasetType.esriDTFeatureClass, str3))
                 {
@@ -359,7 +378,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
             try
             {
-                converter.ConvertFeatureClass((IFeatureClassName) name3, null, null, (IFeatureClassName) name4, geometryDef, fields2, "", 1000, 0);
+                converter.ConvertFeatureClass((IFeatureClassName) name3, null, null, (IFeatureClassName) name4,
+                    geometryDef, fields2, "", 1000, 0);
             }
             catch (Exception exception)
             {
@@ -368,4 +388,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

@@ -73,7 +73,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void FeatureSelectionSetCtrl_Load(object sender, EventArgs e)
+        private void FeatureSelectionSetCtrl_Load(object sender, EventArgs e)
         {
             if (!this.ifeatureSelection_0.SetSelectionSymbol)
             {
@@ -92,7 +92,8 @@ namespace Yutai.ArcGIS.Carto.UI
             }
             if (this.ifeatureSelection_0.SelectionSymbol == null)
             {
-                ILineSymbol symbol = new SimpleLineSymbolClass {
+                ILineSymbol symbol = new SimpleLineSymbolClass
+                {
                     Width = 2.0,
                     Color = ColorManage.CreatColor(0, 255, 255)
                 };
@@ -106,10 +107,10 @@ namespace Yutai.ArcGIS.Carto.UI
             this.bool_1 = true;
         }
 
- private void method_0(uint uint_0, out int int_0, out int int_1, out int int_2)
+        private void method_0(uint uint_0, out int int_0, out int int_1, out int int_2)
         {
             uint num = uint_0 & 16711680;
-             int_2 = (int) (num >> 16);
+            int_2 = (int) (num >> 16);
             num = uint_0 & 65280;
             int_1 = (int) (num >> 8);
             num = uint_0 & 255;
@@ -121,7 +122,7 @@ namespace Yutai.ArcGIS.Carto.UI
             uint num = 0;
             num = (uint) (0 | int_2);
             num = num << 8;
-            num |=(uint) int_1;
+            num |= (uint) int_1;
             num = num << 8;
             return (int) (num | int_0);
         }
@@ -155,7 +156,7 @@ namespace Yutai.ArcGIS.Carto.UI
                 int num3;
                 int num4;
                 int rGB = icolor_0.RGB;
-               this.method_0((uint) rGB, out num2, out num3, out num4);
+                this.method_0((uint) rGB, out num2, out num3, out num4);
                 colorEdit_0.Color = Color.FromArgb(icolor_0.Transparency, num2, num3, num4);
             }
         }
@@ -170,34 +171,22 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IBasicMap FocusMap
         {
-            set
-            {
-            }
+            set { }
         }
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_0;
-            }
+            get { return this.bool_0; }
         }
 
         public object SelectItem
         {
-            set
-            {
-                this.ifeatureSelection_0 = value as IFeatureSelection;
-            }
+            set { this.ifeatureSelection_0 = value as IFeatureSelection; }
         }
 
         public IStyleGallery StyleGallery
         {
-            set
-            {
-                this.m_pSG = value;
-            }
+            set { this.m_pSG = value; }
         }
     }
 }
-

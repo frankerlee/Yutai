@@ -1,51 +1,51 @@
 ﻿<YutaiGIS>
   <StatusBar>
     <Links>
-      <BarItem  Key="Status_Message" Visible="true"  Width="400" IsExtend="true"></BarItem>
-      <BarItem  Key="Status_SelectionCount" Visible="true" Width="200"></BarItem>
-      <BarItem  Key="Status_Coordinates" Visible="true"  Width="300"  IsRight="true"></BarItem>
-      <BarItem  Key="Status_Scale" Visible="true"  Width="120" IsRight="true"></BarItem>
-      <BarItem  Key="Status_Units" Visible="true"  Width="120" IsRight="true"></BarItem>
+      <BarItem Key="Status_Message" Visible="true" Width="400" IsExtend="true"></BarItem>
+      <BarItem Key="Status_SelectionCount" Visible="true" Width="200"></BarItem>
+      <BarItem Key="Status_Coordinates" Visible="true" Width="300" IsRight="true"></BarItem>
+      <BarItem Key="Status_Scale" Visible="true" Width="120" IsRight="true"></BarItem>
+      <BarItem Key="Status_Units" Visible="true" Width="120" IsRight="true"></BarItem>
     </Links>
   </StatusBar>
   <MainMenu>
     <Pages>
       <Page Key="File" Caption="文件" Index="0" Visible="true">
         <PageGroup Key="File_Common" Caption="常用" Visible="true" Index="0">
-          <BarItem  Key="File_Document_NewProject" Visible="true"></BarItem>
-          <BarItem  Key="File_Document_OpenProject" Visible="true"></BarItem>
-          <BarItem  Key="File_Document_SaveProject" Visible="true"></BarItem>
-          <BarItem  Key="File_Common_CloseProject" Visible="true"></BarItem>
+          <BarItem Key="File_Document_NewProject" Visible="true"></BarItem>
+          <BarItem Key="File_Document_OpenProject" Visible="true"></BarItem>
+          <BarItem Key="File_Document_SaveProject" Visible="true"></BarItem>
+          <BarItem Key="File_Common_CloseProject" Visible="true"></BarItem>
         </PageGroup>
         <PageGroup Key="File_2D" Caption="二维文档" Visible="true" Index="0">
-          <BarItem  Key="File_Mxd_OpenMXD" Visible="true"></BarItem>
-          <BarItem  Key="File_Mxd_SaveMXD" Visible="true"></BarItem>
-          <BarItem  Key="File_Mxd_CloseMXD" Visible="true"></BarItem>
+          <BarItem Key="File_Mxd_OpenMXD" Visible="true"></BarItem>
+          <BarItem Key="File_Mxd_SaveMXD" Visible="true"></BarItem>
+          <BarItem Key="File_Mxd_CloseMXD" Visible="true"></BarItem>
         </PageGroup>
       </Page>
       <Page Key="View" Caption="视图" Index="1" Visible="true">
         <PageGroup Key="View_Common" Caption="常用" Visible="true" Index="0">
-          <BarItem  Key="View_ZoomIn" Visible="true"></BarItem>
-          <BarItem  Key="View_ZoomOut" Visible="true"></BarItem>
-          <BarItem  Key="View_Pan" Visible="true"></BarItem>
-          <BarItem  Key="View_FullExtent" Visible="true"></BarItem>
+          <BarItem Key="View_ZoomIn" Visible="true"></BarItem>
+          <BarItem Key="View_ZoomOut" Visible="true"></BarItem>
+          <BarItem Key="View_Pan" Visible="true"></BarItem>
+          <BarItem Key="View_FullExtent" Visible="true"></BarItem>
         </PageGroup>
         <PageGroup Key="View Step" Caption="视图" Visible="true" Index="0">
-          <BarItem  Key="View_FixedZoomIn" Visible="true"></BarItem>
-          <BarItem  Key="View_FixedZoomOut" Visible="true"></BarItem>
-          <BarItem  Key="View_PreviousExtent" Visible="true"></BarItem>
-          <BarItem  Key="View_NextExtent" Visible="true"></BarItem>
+          <BarItem Key="View_FixedZoomIn" Visible="true"></BarItem>
+          <BarItem Key="View_FixedZoomOut" Visible="true"></BarItem>
+          <BarItem Key="View_PreviousExtent" Visible="true"></BarItem>
+          <BarItem Key="View_NextExtent" Visible="true"></BarItem>
         </PageGroup>
         <PageGroup Key="View Measure" Caption="量测" Visible="true" Index="0">
-          <BarItem  Key="View_MeasureLength" Visible="true"></BarItem>
-          <BarItem  Key="View_MeasureArea" Visible="true"></BarItem>
+          <BarItem Key="View_MeasureLength" Visible="true"></BarItem>
+          <BarItem Key="View_MeasureArea" Visible="true"></BarItem>
         </PageGroup>
       </Page>
       <Page Key="Windows" Caption="窗口" Index="10" Visible="true">
         <PageGroup Key="Window_Common" Caption="窗口控制" Visible="true" Index="0">
-          <BarItem  Key="Window_Common_MapLegend" Visible="true"></BarItem>
-          <BarItem  Key="Window_Common_Overview" Visible="true"></BarItem>
-          <BarItem  Key="Window_Common_AttributeTable" Visible="true"></BarItem>
+          <BarItem Key="Window_Common_MapLegend" Visible="true"></BarItem>
+          <BarItem Key="Window_Common_Overview" Visible="true"></BarItem>
+          <BarItem Key="Window_Common_AttributeTable" Visible="true"></BarItem>
         </PageGroup>
       </Page>
     </Pages>

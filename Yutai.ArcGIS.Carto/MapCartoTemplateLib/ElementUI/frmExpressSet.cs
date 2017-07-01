@@ -29,4 +29,3 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib.ElementUI
         }
     }
 }
-

@@ -65,7 +65,11 @@ namespace Yutai.ArcGIS.Framework.Docking
                 this.checkBoxDockFill.Appearance = Appearance.Button;
                 this.checkBoxDockFill.Dock = DockStyle.Fill;
                 this.checkBoxDockFill.FlatStyle = FlatStyle.System;
-                base.Controls.AddRange(new Control[] { this.checkBoxDockFill, this.checkBoxDockBottom, this.checkBoxDockTop, this.checkBoxDockRight, this.checkBoxDockLeft, this.checkBoxFloat });
+                base.Controls.AddRange(new Control[]
+                {
+                    this.checkBoxDockFill, this.checkBoxDockBottom, this.checkBoxDockTop, this.checkBoxDockRight,
+                    this.checkBoxDockLeft, this.checkBoxFloat
+                });
                 base.Size = new Size(160, 144);
                 this.BackColor = SystemColors.Control;
                 base.ResumeLayout();
@@ -143,4 +147,3 @@ namespace Yutai.ArcGIS.Framework.Docking
         }
     }
 }
-

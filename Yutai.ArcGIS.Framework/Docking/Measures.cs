@@ -5,4 +5,3 @@
         public const int SplitterSize = 4;
     }
 }
-

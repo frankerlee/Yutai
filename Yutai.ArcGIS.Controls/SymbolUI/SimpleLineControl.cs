@@ -47,7 +47,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         public void ChangeUnit(double newunit)
         {
             this.m_CanDo = false;
-            this.numericUpDownWidth.Value = (decimal) ((((double) this.numericUpDownWidth.Value) / this.m_unit) * newunit);
+            this.numericUpDownWidth.Value = (decimal) ((((double) this.numericUpDownWidth.Value)/this.m_unit)*newunit);
             this.m_unit = newunit;
             this.m_CanDo = true;
         }
@@ -63,7 +63,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- private void GetRGB(uint rgb, out int r, out int g, out int b)
+        private void GetRGB(uint rgb, out int r, out int g, out int b)
         {
             uint num = rgb & 16711680;
             b = (int) (num >> 16);
@@ -77,12 +77,12 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         {
             this.m_CanDo = false;
             this.cboStyle.SelectedIndex = (int) this.m_pSimpleLineSymbol.Style;
-            this.numericUpDownWidth.Value = (decimal) (this.m_pSimpleLineSymbol.Width * this.m_unit);
+            this.numericUpDownWidth.Value = (decimal) (this.m_pSimpleLineSymbol.Width*this.m_unit);
             this.SetColorEdit(this.colorEdit1, this.m_pSimpleLineSymbol.Color);
             this.m_CanDo = true;
         }
 
- public static bool IsNmuber(string str)
+        public static bool IsNmuber(string str)
         {
             if (str.Length > 0)
             {
@@ -185,7 +185,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     this.numericUpDownWidth.ForeColor = SystemColors.WindowText;
-                    this.m_pSimpleLineSymbol.Width = ((double) this.numericUpDownWidth.Value) / this.m_unit;
+                    this.m_pSimpleLineSymbol.Width = ((double) this.numericUpDownWidth.Value)/this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -243,4 +243,3 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         }
     }
 }
-

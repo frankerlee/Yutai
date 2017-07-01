@@ -78,7 +78,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             this.bool_1 = false;
         }
 
- public void Init()
+        public void Init()
         {
             if (CartoTemplateClass.TuKuoInfo.Length != 0)
             {
@@ -126,7 +126,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             }
         }
 
- private void method_0(StringBuilder stringBuilder_0, string string_0, string string_1)
+        private void method_0(StringBuilder stringBuilder_0, string string_0, string string_1)
         {
             stringBuilder_0.Append("<attribute name=\"");
             stringBuilder_0.Append(string_0);
@@ -178,38 +178,23 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return "图幅";
-            }
-            set
-            {
-            }
+            get { return "图幅"; }
+            set { }
         }
     }
 }
-

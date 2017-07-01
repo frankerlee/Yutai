@@ -24,11 +24,13 @@ namespace Yutai.ArcGIS.Carto.UI
             this.InitializeComponent();
             this.featureInfoControl_0.Dock = DockStyle.Fill;
             base.Controls.Add(this.featureInfoControl_0);
-            this.featureInfoControl_0.IdentifyTypeChanged += new FeatureInfoControl.IdentifyTypeChangedHandler(this.method_1);
-            this.featureInfoControl_0.IdentifyLayerChanged += new FeatureInfoControl.IdentifyLayerChangedHandler(this.method_2);
+            this.featureInfoControl_0.IdentifyTypeChanged +=
+                new FeatureInfoControl.IdentifyTypeChangedHandler(this.method_1);
+            this.featureInfoControl_0.IdentifyLayerChanged +=
+                new FeatureInfoControl.IdentifyLayerChangedHandler(this.method_2);
         }
 
- private void method_0(object sender, EventArgs e)
+        private void method_0(object sender, EventArgs e)
         {
         }
 
@@ -65,34 +67,22 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public ILayer CurrentLayer
         {
-            set
-            {
-                this.featureInfoControl_0.CurrentLayer = value;
-            }
+            set { this.featureInfoControl_0.CurrentLayer = value; }
         }
 
         public IBasicMap FocusMap
         {
-            set
-            {
-                this.featureInfoControl_0.FocusMap = value;
-            }
+            set { this.featureInfoControl_0.FocusMap = value; }
         }
 
         public IdentifyTypeEnum IdentifyType
         {
-            set
-            {
-                this.featureInfoControl_0.IdentifyType = value;
-            }
+            set { this.featureInfoControl_0.IdentifyType = value; }
         }
 
         public bool IsIdentify
         {
-            set
-            {
-                this.featureInfoControl_0.IsIdentify = value;
-            }
+            set { this.featureInfoControl_0.IsIdentify = value; }
         }
 
         public delegate void IdentifyLayerChangedHandler(object object_0, object object_1);
@@ -100,4 +90,3 @@ namespace Yutai.ArcGIS.Carto.UI
         public delegate void IdentifyTypeChangedHandler(object object_0, object object_1);
     }
 }
-

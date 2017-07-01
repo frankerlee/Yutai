@@ -17,7 +17,7 @@ namespace Yutai.Plugins.TableEditor.Functions.String
             _description = "StrReverse 函数可反转一个字符串。";
             _parameters = new List<Parameter>()
             {
-                new Parameter() { Order = 0, Name = "string", Description = "必需的。需被反转的字符串。"}
+                new Parameter() {Order = 0, Name = "string", Description = "必需的。需被反转的字符串。"}
             };
         }
     }

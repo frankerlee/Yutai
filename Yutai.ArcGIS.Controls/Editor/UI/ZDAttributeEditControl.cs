@@ -50,7 +50,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             (pFL as IFeatureSelection).SelectionSet.Search(null, false, out cursor);
             for (IRow row = cursor.NextRow(); row != null; row = cursor.NextRow())
             {
-                TreeNode node = new TreeNode(row.OID.ToString()) {
+                TreeNode node = new TreeNode(row.OID.ToString())
+                {
                     Tag = row
                 };
                 pParentNode.Nodes.Add(node);
@@ -92,7 +93,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.m_SelectType = 0;
         }
 
- private void EditorEvent_OnStartEditing()
+        private void EditorEvent_OnStartEditing()
         {
             this.m_EditMap = this.m_pMap;
             this.m_CanEdit = true;
@@ -104,7 +105,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.m_EditMap = null;
             this.m_CanEdit = false;
             this.Init();
-          //  ApplicationRef.Application.HideDockWindow(this);
+            //  ApplicationRef.Application.HideDockWindow(this);
         }
 
         private void FlashObject_ItemClick(object sender, ItemClickEventArgs e)
@@ -142,7 +143,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                         IFeatureLayer zDFeatureLayer = ZDEditTools.ZDFeatureLayer;
                         if ((zDFeatureLayer as IFeatureSelection).SelectionSet.Count > 0)
                         {
-                            TreeNode node = new TreeNode(zDFeatureLayer.Name) {
+                            TreeNode node = new TreeNode(zDFeatureLayer.Name)
+                            {
                                 Tag = zDFeatureLayer
                             };
                             this.treeView1.Nodes.Add(node);
@@ -155,7 +157,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
- private void m_pActiveViewEvents_SelectionChanged()
+        private void m_pActiveViewEvents_SelectionChanged()
         {
             this.Init();
         }
@@ -203,7 +205,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 }
                 else
                 {
-                    List<object> list = new List<object> {
+                    List<object> list = new List<object>
+                    {
                         tag
                     };
                     this.m_pMultiAttributeListControl.LayerList = list;
@@ -233,10 +236,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         public DockingStyle DefaultDockingStyle
         {
-            get
-            {
-                return DockingStyle.Right;
-            }
+            get { return DockingStyle.Right; }
         }
 
         public IMap FocusMap
@@ -247,7 +247,9 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 {
                     try
                     {
-                        this.m_pActiveViewEvents.SelectionChanged-=(new IActiveViewEvents_SelectionChangedEventHandler(this.m_pActiveViewEvents_SelectionChanged));
+                        this.m_pActiveViewEvents.SelectionChanged -=
+                        (new IActiveViewEvents_SelectionChangedEventHandler(
+                            this.m_pActiveViewEvents_SelectionChanged));
                     }
                     catch
                     {
@@ -268,7 +270,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 if (this.m_pMap != null)
                 {
                     this.m_pActiveViewEvents = this.m_pMap as IActiveViewEvents_Event;
-                    this.m_pActiveViewEvents.SelectionChanged+=(new IActiveViewEvents_SelectionChangedEventHandler(this.m_pActiveViewEvents_SelectionChanged));
+                    this.m_pActiveViewEvents.SelectionChanged +=
+                        (new IActiveViewEvents_SelectionChangedEventHandler(this.m_pActiveViewEvents_SelectionChanged));
                     this.m_pAttributeListControl1.ActiveView = this.m_pMap as IActiveView;
                     this.m_pMultiAttributeListControl.ActiveView = this.m_pMap as IActiveView;
                     if (this.m_CanDo)
@@ -281,19 +284,12 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         string IDockContent.Name
         {
-            get
-            {
-                return base.Name;
-            }
+            get { return base.Name; }
         }
 
         int IDockContent.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
     }
 }
-

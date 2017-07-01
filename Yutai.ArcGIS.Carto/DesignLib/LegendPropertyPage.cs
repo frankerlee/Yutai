@@ -150,7 +150,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         {
         }
 
- private void LegendPropertyPage_Load(object sender, EventArgs e)
+        private void LegendPropertyPage_Load(object sender, EventArgs e)
         {
             if (this.istyleGallery_0 != null)
             {
@@ -200,13 +200,15 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             this.listView1.Items[6].SubItems[1].Text = format.TextGap.ToString("#.##");
             this.listView1.Items[7].SubItems[1].Text = format.VerticalPatchGap.ToString("#.##");
             this.listView1.Items[8].SubItems[1].Text = format.HorizontalPatchGap.ToString("#.##");
-            IStyleGalleryItem oO = new MyStyleGalleryItem {
+            IStyleGalleryItem oO = new MyStyleGalleryItem
+            {
                 Name = "<定制>"
             };
             this.ilinePatch_0 = format.DefaultLinePatch;
             oO.Item = this.ilinePatch_0;
             this.cboLinePatches.SelectStyleGalleryItem(oO);
-            oO = new MyStyleGalleryItem {
+            oO = new MyStyleGalleryItem
+            {
                 Name = "<定制>"
             };
             this.iareaPatch_0 = format.DefaultAreaPatch;
@@ -384,39 +386,23 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

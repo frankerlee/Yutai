@@ -37,6 +37,7 @@ namespace Yutai.Plugins.Editor.Commands
             CmdEditCopy.m_pFeatureList = new List<IFeature>();
             CmdEditCopy.m_pEnumFeature = null;
         }
+
         public CmdEditCopy(IAppContext context)
         {
             OnCreate(context);
@@ -56,7 +57,6 @@ namespace Yutai.Plugins.Editor.Commands
             base.TextImageRelationYT = TextImageRelationYT.ImageAboveText;
             base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
             _itemType = RibbonItemType.Button;
-            
         }
 
         public override bool Enabled
@@ -85,8 +85,6 @@ namespace Yutai.Plugins.Editor.Commands
             }
         }
 
-      
-
 
         public override void OnClick(object sender, EventArgs args)
         {
@@ -95,14 +93,15 @@ namespace Yutai.Plugins.Editor.Commands
 
         public override void OnClick()
         {
-
             if (this.bool_0 && _context.FocusMap.LayerCount > 0 && _context.FocusMap.SelectionCount > 0)
             {
                 CmdEditCopy.m_bIsCopyFeature = true;
                 CmdEditCopy.m_pFeatureList.Clear();
                 CmdEditCopy.m_pEnumFeature = (_context.FocusMap.FeatureSelection as IEnumFeature);
                 CmdEditCopy.m_pEnumFeature.Reset();
-                for (IFeature feature = CmdEditCopy.m_pEnumFeature.Next(); feature != null; feature = CmdEditCopy.m_pEnumFeature.Next())
+                for (IFeature feature = CmdEditCopy.m_pEnumFeature.Next();
+                    feature != null;
+                    feature = CmdEditCopy.m_pEnumFeature.Next())
                 {
                     CmdEditCopy.m_pFeatureList.Add(feature);
                 }
@@ -110,4 +109,3 @@ namespace Yutai.Plugins.Editor.Commands
         }
     }
 }
-    

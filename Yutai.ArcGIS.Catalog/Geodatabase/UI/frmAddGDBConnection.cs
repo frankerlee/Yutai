@@ -17,7 +17,10 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
     {
         private bool bool_0 = false;
         private Container container_0 = null;
-        private frmSDEConnectionDetialInfo.HISTORICALTYPE historicaltype_0 = frmSDEConnectionDetialInfo.HISTORICALTYPE.VERSION;
+
+        private frmSDEConnectionDetialInfo.HISTORICALTYPE historicaltype_0 =
+            frmSDEConnectionDetialInfo.HISTORICALTYPE.VERSION;
+
         private string string_1 = "DEFAULT";
 
         public frmAddGDBConnection()
@@ -38,7 +41,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             IWorkspace workspace = this.method_4();
             if (workspace != null)
             {
-                frmSDEConnectionDetialInfo info = new frmSDEConnectionDetialInfo {
+                frmSDEConnectionDetialInfo info = new frmSDEConnectionDetialInfo
+                {
                     Workspace = workspace
                 };
                 if (info.ShowDialog() == DialogResult.OK)
@@ -54,8 +58,10 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             try
             {
-                IPropertySet connectionProperties = this.method_3(this.chkSaveUserandPsw.Checked, this.chkSaveVersion.Checked);
-                string path = Environment.SystemDirectory.Substring(0, 2) + @"\Documents and Settings\Administrator\Application Data\ESRI\ArcCatalog\";
+                IPropertySet connectionProperties = this.method_3(this.chkSaveUserandPsw.Checked,
+                    this.chkSaveVersion.Checked);
+                string path = Environment.SystemDirectory.Substring(0, 2) +
+                              @"\Documents and Settings\Administrator\Application Data\ESRI\ArcCatalog\";
                 if (Directory.Exists(path))
                 {
                     string str2 = path + "Connection to " + this.txtServer.Text.Trim() + ".sde";
@@ -68,7 +74,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
             base.Close();
         }
@@ -95,11 +101,11 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
         }
 
- private void groupBox1_Enter(object sender, EventArgs e)
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
         }
 
- private void method_0()
+        private void method_0()
         {
             if (this.rdoAuthentic.SelectedIndex == 0)
             {
@@ -300,7 +306,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                             return null;
                     }
                 }
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
             return null;
         }
@@ -336,11 +342,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public string ConnectionPath
         {
-            get
-            {
-                return this.string_0;
-            }
+            get { return this.string_0; }
         }
     }
 }
-

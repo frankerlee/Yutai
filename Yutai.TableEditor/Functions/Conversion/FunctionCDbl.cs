@@ -17,7 +17,7 @@ namespace Yutai.Plugins.TableEditor.Functions.Conversion
             _description = "CDbl 函数可把表达式转换为双精度（Double）类型。";
             _parameters = new List<Parameter>()
             {
-                new Parameter() { Order = 0, Name = "expression", Description = "必需的。任何合法的表达式。"}
+                new Parameter() {Order = 0, Name = "expression", Description = "必需的。任何合法的表达式。"}
             };
         }
     }

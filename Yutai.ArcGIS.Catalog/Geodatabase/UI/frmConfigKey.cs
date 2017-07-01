@@ -21,12 +21,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.Close();
         }
 
- private void frmConfigKey_Load(object sender, EventArgs e)
+        private void frmConfigKey_Load(object sender, EventArgs e)
         {
             this.method_0();
         }
 
- private void method_0()
+        private void method_0()
         {
             if (this.iworkspaceConfiguration_0 != null)
             {
@@ -64,11 +64,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IWorkspaceConfiguration Configuration
         {
-            set
-            {
-                this.iworkspaceConfiguration_0 = value;
-            }
+            set { this.iworkspaceConfiguration_0 = value; }
         }
     }
 }
-

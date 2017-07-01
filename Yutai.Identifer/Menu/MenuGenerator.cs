@@ -11,12 +11,11 @@ namespace Yutai.Plugins.Identifer.Menu
 {
     internal class MenuGenerator
     {
-       
         private readonly IAppContext _context;
         private readonly YutaiCommands _commands;
         private readonly object _menuManager;
         private readonly IdentifierPlugin _plugin;
-        
+
 
         public MenuGenerator(IAppContext context, IdentifierPlugin plugin)
         {
@@ -25,9 +24,9 @@ namespace Yutai.Plugins.Identifer.Menu
 
             _plugin = plugin;
             _context = context;
-           
+
             _menuManager = _context.MainView.RibbonManager;
-            _commands = new YutaiCommands(_context,plugin.Identity);
+            _commands = new YutaiCommands(_context, plugin.Identity);
             _commands.Plugin = plugin;
             InitMenus();
         }
@@ -36,20 +35,13 @@ namespace Yutai.Plugins.Identifer.Menu
         {
             return _commands.GetKeys();
         }
+
         private void InitMenus()
         {
             XmlDocument doc = new XmlDocument();
             doc.Load(base.GetType().Assembly.GetManifestResourceStream("Yutai.Plugins.Identifer.Menu.MenuLayout.xml"));
-            RibbonFactory.CreateMenus(_commands.GetCommands(), (RibbonControl)_menuManager, _context.MainView.RibbonStatusBar as RibbonStatusBar, doc);
-
-          
-
+            RibbonFactory.CreateMenus(_commands.GetCommands(), (RibbonControl) _menuManager,
+                _context.MainView.RibbonStatusBar as RibbonStatusBar, doc);
         }
-
-        
-
-     
-
-      
     }
 }

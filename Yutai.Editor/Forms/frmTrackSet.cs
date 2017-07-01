@@ -1,115 +1,115 @@
-using System;
+﻿using System;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
 namespace Yutai.Plugins.Editor.Forms
 {
-	internal class frmTrackSet : XtraForm
-	{
-		private Label label1;
+    internal class frmTrackSet : XtraForm
+    {
+        private Label label1;
 
-		private TextEdit txtOffset;
+        private TextEdit txtOffset;
 
-		private SimpleButton btnOK;
+        private SimpleButton btnOK;
 
-		private SimpleButton simpleButton1;
+        private SimpleButton simpleButton1;
 
-		private GroupBox groupBox1;
+        private GroupBox groupBox1;
 
-		private RadioGroup radioGroup1;
+        private RadioGroup radioGroup1;
 
-		private CheckEdit checkEdit1;
+        private CheckEdit checkEdit1;
 
-		private System.ComponentModel.Container container_0 = null;
+        private System.ComponentModel.Container container_0 = null;
 
-		public double offset = 0;
+        public double offset = 0;
 
-		public int ConstructOffset = 0;
+        public int ConstructOffset = 0;
 
-		public frmTrackSet()
-		{
-			this.InitializeComponent();
-		}
+        public frmTrackSet()
+        {
+            this.InitializeComponent();
+        }
 
-		private void btnOK_Click(object sender, EventArgs e)
-		{
-			try
-			{
-				this.offset = double.Parse(this.txtOffset.Text);
-				if (!this.checkEdit1.Checked)
-				{
-					this.ConstructOffset = 0;
-				}
-				else
-				{
-					this.ConstructOffset = 1;
-				}
-				switch (this.radioGroup1.SelectedIndex)
-				{
-					case 0:
-					{
-						frmTrackSet constructOffset = this;
-						constructOffset.ConstructOffset = constructOffset.ConstructOffset | 4;
-						break;
-					}
-					case 1:
-					{
-						frmTrackSet _frmTrackSet = this;
-						_frmTrackSet.ConstructOffset = _frmTrackSet.ConstructOffset | 2;
-						break;
-					}
-					case 2:
-					{
-						frmTrackSet constructOffset1 = this;
-						constructOffset1.ConstructOffset = constructOffset1.ConstructOffset | 8;
-						break;
-					}
-				}
-				base.DialogResult = System.Windows.Forms.DialogResult.OK;
-				base.Close();
-			}
-			catch
-			{
-				MessageBox.Show("请输入数字!");
-			}
-		}
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.offset = double.Parse(this.txtOffset.Text);
+                if (!this.checkEdit1.Checked)
+                {
+                    this.ConstructOffset = 0;
+                }
+                else
+                {
+                    this.ConstructOffset = 1;
+                }
+                switch (this.radioGroup1.SelectedIndex)
+                {
+                    case 0:
+                    {
+                        frmTrackSet constructOffset = this;
+                        constructOffset.ConstructOffset = constructOffset.ConstructOffset | 4;
+                        break;
+                    }
+                    case 1:
+                    {
+                        frmTrackSet _frmTrackSet = this;
+                        _frmTrackSet.ConstructOffset = _frmTrackSet.ConstructOffset | 2;
+                        break;
+                    }
+                    case 2:
+                    {
+                        frmTrackSet constructOffset1 = this;
+                        constructOffset1.ConstructOffset = constructOffset1.ConstructOffset | 8;
+                        break;
+                    }
+                }
+                base.DialogResult = System.Windows.Forms.DialogResult.OK;
+                base.Close();
+            }
+            catch
+            {
+                MessageBox.Show("请输入数字!");
+            }
+        }
 
-		protected override void Dispose(bool bool_0)
-		{
-			if (bool_0 && this.container_0 != null)
-			{
-				this.container_0.Dispose();
-			}
-			base.Dispose(bool_0);
-		}
+        protected override void Dispose(bool bool_0)
+        {
+            if (bool_0 && this.container_0 != null)
+            {
+                this.container_0.Dispose();
+            }
+            base.Dispose(bool_0);
+        }
 
-		private void frmTrackSet_Load(object sender, EventArgs e)
-		{
-			this.txtOffset.Text = this.offset.ToString();
-			if ((this.ConstructOffset & 1) == 0)
-			{
-				this.checkEdit1.Checked = false;
-			}
-			else
-			{
-				this.checkEdit1.Checked = true;
-			}
-			if ((this.ConstructOffset & 4) != 0)
-			{
-				this.radioGroup1.SelectedIndex = 0;
-			}
-			else if ((this.ConstructOffset & 2) != 0)
-			{
-				this.radioGroup1.SelectedIndex = 1;
-			}
-			else if ((this.ConstructOffset & 8) != 0)
-			{
-				this.radioGroup1.SelectedIndex = 2;
-			}
-		}
+        private void frmTrackSet_Load(object sender, EventArgs e)
+        {
+            this.txtOffset.Text = this.offset.ToString();
+            if ((this.ConstructOffset & 1) == 0)
+            {
+                this.checkEdit1.Checked = false;
+            }
+            else
+            {
+                this.checkEdit1.Checked = true;
+            }
+            if ((this.ConstructOffset & 4) != 0)
+            {
+                this.radioGroup1.SelectedIndex = 0;
+            }
+            else if ((this.ConstructOffset & 2) != 0)
+            {
+                this.radioGroup1.SelectedIndex = 1;
+            }
+            else if ((this.ConstructOffset & 8) != 0)
+            {
+                this.radioGroup1.SelectedIndex = 2;
+            }
+        }
 
-		private void InitializeComponent()
-		{
+        private void InitializeComponent()
+        {
             this.label1 = new System.Windows.Forms.Label();
             this.txtOffset = new DevExpress.XtraEditors.TextEdit();
             this.btnOK = new DevExpress.XtraEditors.SimpleButton();
@@ -117,10 +117,10 @@ namespace Yutai.Plugins.Editor.Forms
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioGroup1 = new DevExpress.XtraEditors.RadioGroup();
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtOffset.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.txtOffset.Properties)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.radioGroup1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.checkEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -174,10 +174,12 @@ namespace Yutai.Plugins.Editor.Forms
             this.radioGroup1.Name = "radioGroup1";
             this.radioGroup1.Properties.Appearance.BackColor = System.Drawing.SystemColors.Menu;
             this.radioGroup1.Properties.Appearance.Options.UseBackColor = true;
-            this.radioGroup1.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "斜接的"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "平切的"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "圆的")});
+            this.radioGroup1.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[]
+            {
+                new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "斜接的"),
+                new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "平切的"),
+                new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "圆的")
+            });
             this.radioGroup1.Size = new System.Drawing.Size(152, 77);
             this.radioGroup1.TabIndex = 5;
             // 
@@ -206,13 +208,12 @@ namespace Yutai.Plugins.Editor.Forms
             this.Name = "frmTrackSet";
             this.Text = "跟踪设置";
             this.Load += new System.EventHandler(this.frmTrackSet_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.txtOffset.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.txtOffset.Properties)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.radioGroup1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.checkEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
-		}
-	}
+        }
+    }
 }

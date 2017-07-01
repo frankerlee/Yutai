@@ -23,6 +23,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.InitializeComponent();
             _context = context;
         }
+
         public NumericFormatPropertyPage()
         {
             this.InitializeComponent();
@@ -97,11 +98,11 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- public void Hide()
+        public void Hide()
         {
         }
 
- private void NumericFormatPropertyPage_Load(object sender, EventArgs e)
+        private void NumericFormatPropertyPage_Load(object sender, EventArgs e)
         {
             if (this.m_pNumericFormat != null)
             {
@@ -188,38 +189,23 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         public int Height
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.m_IsPageDirty;
-            }
+            get { return this.m_IsPageDirty; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.m_Title;
-            }
-            set
-            {
-            }
+            get { return this.m_Title; }
+            set { }
         }
 
         public int Width
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
     }
 }
-

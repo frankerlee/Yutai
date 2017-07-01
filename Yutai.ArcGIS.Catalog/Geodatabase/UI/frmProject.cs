@@ -58,7 +58,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     double num = 1000.0;
                     this.string_0 = System.IO.Path.GetFileName(this.txtOutFeat.Text);
                     ISpatialReference spatialReference = ((IGeoDataset) this.idataset_0).SpatialReference;
-                    (this.ispatialReference_0 as IControlPrecision2).IsHighPrecision = (spatialReference as IControlPrecision2).IsHighPrecision;
+                    (this.ispatialReference_0 as IControlPrecision2).IsHighPrecision =
+                        (spatialReference as IControlPrecision2).IsHighPrecision;
                     if (spatialReference.HasXYPrecision())
                     {
                         double num2;
@@ -77,8 +78,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                                 extent.Project(this.ispatialReference_0);
                                 if (!extent.IsEmpty)
                                 {
-                                    this.ispatialReference_0.SetDomain(extent.XMin, extent.XMax, extent.YMin, extent.YMax);
-                                    num = extent.Width / 2.0;
+                                    this.ispatialReference_0.SetDomain(extent.XMin, extent.XMax, extent.YMin,
+                                        extent.YMax);
+                                    num = extent.Width/2.0;
                                 }
                             }
                             else if (spatialReference is IGeographicCoordinateSystem)
@@ -87,8 +89,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                                 extent.Project(this.ispatialReference_0);
                                 if (!extent.IsEmpty)
                                 {
-                                    this.ispatialReference_0.SetDomain(extent.XMin, extent.XMax, extent.YMin, extent.YMax);
-                                    num = extent.Width / 2.0;
+                                    this.ispatialReference_0.SetDomain(extent.XMin, extent.XMax, extent.YMin,
+                                        extent.YMax);
+                                    num = extent.Width/2.0;
                                 }
                             }
                         }
@@ -107,18 +110,21 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         spatialReference.GetZDomain(out num8, out num9);
                         this.ispatialReference_0.SetZDomain(num8, num9);
                     }
-                    SpatialReferenctOperator.ChangeCoordinateSystem(this.iworkspace_0 as IGeodatabaseRelease, this.ispatialReference_0, false);
+                    SpatialReferenctOperator.ChangeCoordinateSystem(this.iworkspace_0 as IGeodatabaseRelease,
+                        this.ispatialReference_0, false);
                     this.progressBar1.Visible = true;
                     this.int_2 = this.int_3;
                     this.progressBar1.Value = this.int_3;
                     SRLibCommonFunc.m_pfrm = this;
                     if (this.idataset_0 is IFeatureClass)
                     {
-                        SRLibCommonFunc.Project((IFeatureClass) this.idataset_0, this.ispatialReference_0, this.iworkspace_0, this.string_0, num);
+                        SRLibCommonFunc.Project((IFeatureClass) this.idataset_0, this.ispatialReference_0,
+                            this.iworkspace_0, this.string_0, num);
                     }
                     else if (this.idataset_0 is IFeatureDataset)
                     {
-                        SRLibCommonFunc.Project((IFeatureDataset) this.idataset_0, this.ispatialReference_0, this.iworkspace_0, this.string_0);
+                        SRLibCommonFunc.Project((IFeatureDataset) this.idataset_0, this.ispatialReference_0,
+                            this.iworkspace_0, this.string_0);
                     }
                     this.progressBar1.Visible = false;
                     this.string_0 = "";
@@ -132,7 +138,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnSelectIn_Click(object sender, EventArgs e)
         {
-            frmOpenFile file = new frmOpenFile {
+            frmOpenFile file = new frmOpenFile
+            {
                 AllowMultiSelect = false,
                 Text = "选择要素"
             };
@@ -148,14 +155,17 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     this.txtInputFeat.Text = (this.igxDataset_0 as IGxObject).FullName;
                     this.iworkspace_0 = this.idataset_0.Workspace;
                     string tableName = this.idataset_0.Name + "_Project1";
-                    IFieldChecker checker = new FieldCheckerClass {
+                    IFieldChecker checker = new FieldCheckerClass
+                    {
                         InputWorkspace = this.iworkspace_0
                     };
                     checker.ValidateTableName(tableName, out this.string_0);
                     this.txtOutFeat.Text = this.iworkspace_0.PathName + @"\" + this.string_0;
-                    if ((this.iworkspace_0.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace) || (this.iworkspace_0.Type == esriWorkspaceType.esriLocalDatabaseWorkspace))
+                    if ((this.iworkspace_0.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace) ||
+                        (this.iworkspace_0.Type == esriWorkspaceType.esriLocalDatabaseWorkspace))
                     {
-                        if (((IWorkspace2) this.iworkspace_0).get_NameExists(esriDatasetType.esriDTFeatureClass, this.string_0))
+                        if (((IWorkspace2) this.iworkspace_0).get_NameExists(esriDatasetType.esriDTFeatureClass,
+                            this.string_0))
                         {
                             this.bool_0 = true;
                         }
@@ -181,7 +191,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnSelectOut_Click(object sender, EventArgs e)
         {
-            frmOpenFile file = new frmOpenFile {
+            frmOpenFile file = new frmOpenFile
+            {
                 Text = "保存位置"
             };
             file.RemoveAllFilters();
@@ -198,7 +209,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     }
                     else if (obj2 is IGxFolder)
                     {
-                        IWorkspaceName name = new WorkspaceNameClass {
+                        IWorkspaceName name = new WorkspaceNameClass
+                        {
                             WorkspaceFactoryProgID = "esriDataSourcesFile.ShapefileWorkspaceFactory",
                             PathName = (obj2.InternalObjectName as IFileName).Path
                         };
@@ -210,14 +222,17 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     }
                     this.iworkspace_0 = this.iname_0.Open() as IWorkspace;
                     string saveName = file.SaveName;
-                    IFieldChecker checker = new FieldCheckerClass {
+                    IFieldChecker checker = new FieldCheckerClass
+                    {
                         InputWorkspace = this.iworkspace_0
                     };
                     checker.ValidateTableName(saveName, out this.string_0);
                     this.txtOutFeat.Text = this.iworkspace_0.PathName + @"\" + this.string_0;
-                    if ((this.iworkspace_0.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace) || (this.iworkspace_0.Type == esriWorkspaceType.esriLocalDatabaseWorkspace))
+                    if ((this.iworkspace_0.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace) ||
+                        (this.iworkspace_0.Type == esriWorkspaceType.esriLocalDatabaseWorkspace))
                     {
-                        if (((IWorkspace2) this.iworkspace_0).get_NameExists(esriDatasetType.esriDTFeatureClass, this.string_0))
+                        if (((IWorkspace2) this.iworkspace_0).get_NameExists(esriDatasetType.esriDTFeatureClass,
+                            this.string_0))
                         {
                             this.bool_0 = true;
                         }
@@ -243,7 +258,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnSR_Click(object sender, EventArgs e)
         {
-            frmSpatialReference reference = new frmSpatialReference {
+            frmSpatialReference reference = new frmSpatialReference
+            {
                 SpatialRefrence = this.ispatialReference_0
             };
             if (reference.ShowDialog() == DialogResult.OK)
@@ -253,13 +269,14 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private bool method_0()
+        private bool method_0()
         {
             if (this.iworkspace_0 == null)
             {
                 this.bool_0 = false;
             }
-            else if ((this.iworkspace_0.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace) || (this.iworkspace_0.Type == esriWorkspaceType.esriLocalDatabaseWorkspace))
+            else if ((this.iworkspace_0.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace) ||
+                     (this.iworkspace_0.Type == esriWorkspaceType.esriLocalDatabaseWorkspace))
             {
                 if (((IWorkspace2) this.iworkspace_0).get_NameExists(esriDatasetType.esriDTFeatureClass, this.string_0))
                 {
@@ -343,9 +360,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             set
             {
                 this.ifeatureProgress_Event_0 = (IFeatureProgress_Event) value;
-                this.ifeatureProgress_Event_0.Step+=(new IFeatureProgress_StepEventHandler(this.method_7));
+                this.ifeatureProgress_Event_0.Step += (new IFeatureProgress_StepEventHandler(this.method_7));
             }
         }
     }
 }
-

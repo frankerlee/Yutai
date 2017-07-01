@@ -9,4 +9,3 @@
         CoRuleCollection Rules { get; }
     }
 }
-

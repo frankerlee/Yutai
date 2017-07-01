@@ -35,7 +35,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.m_CanDo = true;
         }
 
- private string GetShapeString(IField pField)
+        private string GetShapeString(IField pField)
         {
             string str = "";
             IGeometryDef geometryDef = pField.GeometryDef;
@@ -92,7 +92,9 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                         IEnumSubtype subtypes = featureClass.Subtypes;
                         subtypes.Reset();
                         int subtypeCode = 0;
-                        for (string str = subtypes.Next(out subtypeCode); str != null; str = subtypes.Next(out subtypeCode))
+                        for (string str = subtypes.Next(out subtypeCode);
+                            str != null;
+                            str = subtypes.Next(out subtypeCode))
                         {
                             if (e.Value.ToString() == str)
                             {
@@ -196,7 +198,10 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                                 else
                                 {
                                     strArray[1] = "<空>";
-                                    if ((((pField.Type == esriFieldType.esriFieldTypeSmallInteger) || (pField.Type == esriFieldType.esriFieldTypeSingle)) || (pField.Type == esriFieldType.esriFieldTypeDouble)) || (pField.Type == esriFieldType.esriFieldTypeInteger))
+                                    if ((((pField.Type == esriFieldType.esriFieldTypeSmallInteger) ||
+                                          (pField.Type == esriFieldType.esriFieldTypeSingle)) ||
+                                         (pField.Type == esriFieldType.esriFieldTypeDouble)) ||
+                                        (pField.Type == esriFieldType.esriFieldTypeInteger))
                                     {
                                         double minValue = 0.0;
                                         double maxValue = 0.0;
@@ -207,7 +212,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                                         }
                                         if (pField.Editable)
                                         {
-                                            this.m_pVertXtraGrid.AddSpinEdit(strArray[0], strArray[1], false, minValue, maxValue);
+                                            this.m_pVertXtraGrid.AddSpinEdit(strArray[0], strArray[1], false, minValue,
+                                                maxValue);
                                         }
                                         else
                                         {
@@ -227,7 +233,10 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                             else
                             {
                                 strArray[1] = "<空>";
-                                if ((((pField.Type == esriFieldType.esriFieldTypeSmallInteger) || (pField.Type == esriFieldType.esriFieldTypeSingle)) || (pField.Type == esriFieldType.esriFieldTypeDouble)) || (pField.Type == esriFieldType.esriFieldTypeInteger))
+                                if ((((pField.Type == esriFieldType.esriFieldTypeSmallInteger) ||
+                                      (pField.Type == esriFieldType.esriFieldTypeSingle)) ||
+                                     (pField.Type == esriFieldType.esriFieldTypeDouble)) ||
+                                    (pField.Type == esriFieldType.esriFieldTypeInteger))
                                 {
                                     if (pField.Editable)
                                     {
@@ -254,7 +263,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
- private bool UpdateFieldValue(IField pField, object str)
+        private bool UpdateFieldValue(IField pField, object str)
         {
             IWorkspaceEdit workspace = (this.m_pFeatLayer.FeatureClass as IDataset).Workspace as IWorkspaceEdit;
             bool flag = false;
@@ -294,7 +303,10 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             for (int i = 0; i < fields.FieldCount; i++)
             {
                 IField field = fields.get_Field(i);
-                if (((((field.Type != esriFieldType.esriFieldTypeGeometry) && (field.Type != esriFieldType.esriFieldTypeOID)) && (field.Type != esriFieldType.esriFieldTypeRaster)) && field.Editable) && !(featureClass.SubtypeFieldName == field.Name))
+                if (((((field.Type != esriFieldType.esriFieldTypeGeometry) &&
+                       (field.Type != esriFieldType.esriFieldTypeOID)) &&
+                      (field.Type != esriFieldType.esriFieldTypeRaster)) && field.Editable) &&
+                    !(featureClass.SubtypeFieldName == field.Name))
                 {
                 }
             }
@@ -302,10 +314,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         public IActiveView ActiveView
         {
-            set
-            {
-                this.m_pActiveView = value;
-            }
+            set { this.m_pActiveView = value; }
         }
 
         public IFeatureLayer SelectLayer
@@ -327,4 +336,3 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         }
     }
 }
-

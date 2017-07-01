@@ -52,7 +52,9 @@ namespace Yutai.ArcGIS.Catalog
         {
             if (igxObject_0 is IGxDataset)
             {
-                if ((((igxObject_0 as IGxDataset).Type == esriDatasetType.esriDTRasterBand) || ((igxObject_0 as IGxDataset).Type == esriDatasetType.esriDTRasterDataset)) || ((igxObject_0 as IGxDataset).Type == esriDatasetType.esriDTRasterBand))
+                if ((((igxObject_0 as IGxDataset).Type == esriDatasetType.esriDTRasterBand) ||
+                     ((igxObject_0 as IGxDataset).Type == esriDatasetType.esriDTRasterDataset)) ||
+                    ((igxObject_0 as IGxDataset).Type == esriDatasetType.esriDTRasterBand))
                 {
                     return true;
                 }
@@ -83,19 +85,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public string Description
         {
-            get
-            {
-                return "栅格数据集";
-            }
+            get { return "栅格数据集"; }
         }
 
         public string Name
         {
-            get
-            {
-                return "GxFilterRasterDatasets";
-            }
+            get { return "GxFilterRasterDatasets"; }
         }
     }
 }
-

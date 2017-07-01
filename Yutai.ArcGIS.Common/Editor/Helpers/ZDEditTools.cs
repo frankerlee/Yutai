@@ -31,11 +31,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 
         private static ITable _ZDChangeHisInfoTable;
 
-        public static DateTime StartEditDateTime
-        {
-            get;
-            set;
-        }
+        public static DateTime StartEditDateTime { get; set; }
 
         public static ITable ZDChangeHisInfoTable
         {
@@ -49,23 +45,11 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
             }
         }
 
-        private static IFeatureClass ZDFeatureClass
-        {
-            get;
-            set;
-        }
+        private static IFeatureClass ZDFeatureClass { get; set; }
 
-        public static IFeatureLayer ZDFeatureLayer
-        {
-            get;
-            set;
-        }
+        public static IFeatureLayer ZDFeatureLayer { get; set; }
 
-        public static IFeatureClass ZDHisFeatureClass
-        {
-            get;
-            set;
-        }
+        public static IFeatureClass ZDHisFeatureClass { get; set; }
 
         static ZDEditTools()
         {
@@ -290,9 +274,14 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
                 int num1 = 0;
                 int num2 = 0;
                 bool flag = false;
-                if (!(shapeCopy as IHitTest).HitTest(ipoint_0, 1E-05, esriGeometryHitPartType.esriGeometryPartVertex, pointClass, ref num, ref num1, ref num2, ref flag))
+                if (
+                    !(shapeCopy as IHitTest).HitTest(ipoint_0, 1E-05, esriGeometryHitPartType.esriGeometryPartVertex,
+                        pointClass, ref num, ref num1, ref num2, ref flag))
                 {
-                    if (!(shapeCopy as IHitTest).HitTest(ipoint_0, 1E-05, esriGeometryHitPartType.esriGeometryPartBoundary, pointClass, ref num, ref num1, ref num2, ref flag) || num >= 0.0001)
+                    if (
+                        !(shapeCopy as IHitTest).HitTest(ipoint_0, 1E-05,
+                            esriGeometryHitPartType.esriGeometryPartBoundary, pointClass, ref num, ref num1, ref num2,
+                            ref flag) || num >= 0.0001)
                     {
                         continue;
                     }
@@ -383,7 +372,11 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
             int num1 = 0;
             int num2 = 0;
             bool flag = false;
-            if ((!(shapeCopy as IHitTest).HitTest(ipoint_0, 0.0001, esriGeometryHitPartType.esriGeometryPartVertex, pointClass, ref num, ref num1, ref num2, ref flag) || num >= 0.0001) && (shapeCopy as IHitTest).HitTest(ipoint_0, 0.0001, esriGeometryHitPartType.esriGeometryPartBoundary, pointClass, ref num, ref num1, ref num2, ref flag) && num < 0.0001)
+            if (
+                (!(shapeCopy as IHitTest).HitTest(ipoint_0, 0.0001, esriGeometryHitPartType.esriGeometryPartVertex,
+                     pointClass, ref num, ref num1, ref num2, ref flag) || num >= 0.0001) &&
+                (shapeCopy as IHitTest).HitTest(ipoint_0, 0.0001, esriGeometryHitPartType.esriGeometryPartBoundary,
+                    pointClass, ref num, ref num1, ref num2, ref flag) && num < 0.0001)
             {
                 ISegmentCollection geometry = (shapeCopy as IGeometryCollection).Geometry[num1] as ISegmentCollection;
                 ISegment segment = geometry.Segment[num2];
@@ -448,9 +441,13 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
                         {
                             if ((featureClass as IVersionedObject).IsRegisteredAsVersioned)
                             {
-                                if ((AppConfigInfo.UserID.Length == 0 ? false : !(AppConfigInfo.UserID.ToLower() == "admin")))
+                                if ((AppConfigInfo.UserID.Length == 0
+                                    ? false
+                                    : !(AppConfigInfo.UserID.ToLower() == "admin")))
                                 {
-                                    if (!Editor.m_SysGrants.GetStaffAndRolesDatasetPri(AppConfigInfo.UserID, 2, featureClass.Name))
+                                    if (
+                                        !Editor.m_SysGrants.GetStaffAndRolesDatasetPri(AppConfigInfo.UserID, 2,
+                                            featureClass.Name))
                                     {
                                         goto Label1;
                                     }
@@ -694,7 +691,6 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 
         public static IFeature Union(List<IFeature> list_0)
         {
-         
             ITopologicalOperator4 shapeCopy = null;
             IGeometry geometry = null;
             List<IFeature> features = new List<IFeature>();
@@ -715,7 +711,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
             feature.Shape = geometry;
             RowOperator.CopyFeatureAttributeToFeature(list_0[0], feature);
             feature.Store();
-            (ZDEditTools.ZDFeatureClass as IDataset).Name.Split(new char[] { '.' });
+            (ZDEditTools.ZDFeatureClass as IDataset).Name.Split(new char[] {'.'});
             ZDHistoryTable zDHistoryTable = new ZDHistoryTable();
             ZDEditTools.StartEditDateTime = DateTime.Now;
             int num = 0;
@@ -762,7 +758,8 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
             }
         }
 
-        public static bool UpdateZDAttribute(IFeature ifeature_0, string string_0, object object_0, out IFeature ifeature_1)
+        public static bool UpdateZDAttribute(IFeature ifeature_0, string string_0, object object_0,
+            out IFeature ifeature_1)
         {
             ZDEditTools.StartEditDateTime = DateTime.Now;
             Editor.StartEditOperation();
@@ -802,7 +799,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
                 }
                 flag1 = false;
                 MessageBox.Show("输入数据格式错误");
-               // CErrorLog.writeErrorLog(null, exception, "");
+                // CErrorLog.writeErrorLog(null, exception, "");
             }
             if (!WorkspaceOperator.WorkspaceIsSame(workspace, Editor.EditWorkspace as IWorkspace))
             {
@@ -814,7 +811,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 
         private static void WriteDelHistoryLine(IFeature ifeature_0, IFeature ifeature_1, int int_0, DateTime dateTime_0)
         {
-            string[] strArrays = (ZDEditTools.ZDFeatureClass as IDataset).Name.Split(new char[] { '.' });
+            string[] strArrays = (ZDEditTools.ZDFeatureClass as IDataset).Name.Split(new char[] {'.'});
             ZDHistoryTable zDHistoryTable = new ZDHistoryTable();
             IRow row = ZDEditTools.ZDChangeHisInfoTable.CreateRow();
             RowOperator.SetFieldValue(row, zDHistoryTable.ChageDateFieldName, dateTime_0);
@@ -829,8 +826,9 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
             {
                 RowOperator.SetFieldValue(row, zDHistoryTable.HisZDOIDName, ifeature_1.OID);
             }
-            RowOperator.SetFieldValue(row, zDHistoryTable.ZDFeatureClassName, strArrays[(int)strArrays.Length - 1]);
-            RowOperator.SetFieldValue(row, zDHistoryTable.ZDRegisterGuidName, ZDRegister.GetRegisterZDGuid(ZDEditTools.ZDFeatureClass));
+            RowOperator.SetFieldValue(row, zDHistoryTable.ZDFeatureClassName, strArrays[(int) strArrays.Length - 1]);
+            RowOperator.SetFieldValue(row, zDHistoryTable.ZDRegisterGuidName,
+                ZDRegister.GetRegisterZDGuid(ZDEditTools.ZDFeatureClass));
             row.Store();
         }
 
@@ -845,7 +843,7 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
 
         private static void WriteHistoryLine(IFeature ifeature_0, IFeature ifeature_1, int int_0, DateTime dateTime_0)
         {
-            string[] strArrays = (ZDEditTools.ZDFeatureClass as IDataset).Name.Split(new char[] { '.' });
+            string[] strArrays = (ZDEditTools.ZDFeatureClass as IDataset).Name.Split(new char[] {'.'});
             ZDHistoryTable zDHistoryTable = new ZDHistoryTable();
             IRow row = ZDEditTools.ZDChangeHisInfoTable.CreateRow();
             RowOperator.SetFieldValue(row, zDHistoryTable.ChageDateFieldName, dateTime_0);
@@ -860,14 +858,16 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
             {
                 RowOperator.SetFieldValue(row, zDHistoryTable.HisZDOIDName, ifeature_1.OID);
             }
-            RowOperator.SetFieldValue(row, zDHistoryTable.ZDFeatureClassName, strArrays[(int)strArrays.Length - 1]);
-            RowOperator.SetFieldValue(row, zDHistoryTable.ZDRegisterGuidName, ZDRegister.GetRegisterZDGuid(ZDEditTools.ZDFeatureClass));
+            RowOperator.SetFieldValue(row, zDHistoryTable.ZDFeatureClassName, strArrays[(int) strArrays.Length - 1]);
+            RowOperator.SetFieldValue(row, zDHistoryTable.ZDRegisterGuidName,
+                ZDRegister.GetRegisterZDGuid(ZDEditTools.ZDFeatureClass));
             row.Store();
         }
 
-        private static void WriteHistoryLine(IFeature ifeature_0, IFeature ifeature_1, IFeature ifeature_2, int int_0, DateTime dateTime_0)
+        private static void WriteHistoryLine(IFeature ifeature_0, IFeature ifeature_1, IFeature ifeature_2, int int_0,
+            DateTime dateTime_0)
         {
-            string[] strArrays = (ZDEditTools.ZDFeatureClass as IDataset).Name.Split(new char[] { '.' });
+            string[] strArrays = (ZDEditTools.ZDFeatureClass as IDataset).Name.Split(new char[] {'.'});
             ZDHistoryTable zDHistoryTable = new ZDHistoryTable();
             IRow row = ZDEditTools.ZDChangeHisInfoTable.CreateRow();
             RowOperator.SetFieldValue(row, zDHistoryTable.ChageDateFieldName, dateTime_0);
@@ -878,12 +878,14 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
             {
                 RowOperator.SetFieldValue(row, zDHistoryTable.HisZDOIDName, ifeature_2.OID);
             }
-            RowOperator.SetFieldValue(row, zDHistoryTable.ZDFeatureClassName, strArrays[(int)strArrays.Length - 1]);
-            RowOperator.SetFieldValue(row, zDHistoryTable.ZDRegisterGuidName, ZDRegister.GetRegisterZDGuid(ZDEditTools.ZDFeatureClass));
+            RowOperator.SetFieldValue(row, zDHistoryTable.ZDFeatureClassName, strArrays[(int) strArrays.Length - 1]);
+            RowOperator.SetFieldValue(row, zDHistoryTable.ZDRegisterGuidName,
+                ZDRegister.GetRegisterZDGuid(ZDEditTools.ZDFeatureClass));
             row.Store();
         }
 
-        private static void WriteHistoryLine(List<IFeature> list_0, IFeature ifeature_0, List<IFeature> list_1, int int_0, DateTime dateTime_0)
+        private static void WriteHistoryLine(List<IFeature> list_0, IFeature ifeature_0, List<IFeature> list_1,
+            int int_0, DateTime dateTime_0)
         {
             int num = 0;
             foreach (IFeature list0 in list_0)
@@ -894,7 +896,8 @@ namespace Yutai.ArcGIS.Common.Editor.Helpers
             }
         }
 
-        private static void WriteHistoryLine(IFeature ifeature_0, List<IFeature> list_0, IFeature ifeature_1, int int_0, DateTime dateTime_0)
+        private static void WriteHistoryLine(IFeature ifeature_0, List<IFeature> list_0, IFeature ifeature_1, int int_0,
+            DateTime dateTime_0)
         {
             foreach (IFeature list0 in list_0)
             {

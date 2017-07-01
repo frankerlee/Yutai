@@ -8,7 +8,7 @@ namespace Yutai.Pipeline.Config.Concretes
     {
         private string _domainName;
         private string _domainValues;
-        private Dictionary<string, string> _domainDirectory=new Dictionary<string, string>();
+        private Dictionary<string, string> _domainDirectory = new Dictionary<string, string>();
 
         public string DomainName
         {
@@ -30,16 +30,13 @@ namespace Yutai.Pipeline.Config.Concretes
 
         public YTDomain()
         {
-            
         }
 
-        public YTDomain(string domainName,string domainValues)
+        public YTDomain(string domainName, string domainValues)
         {
             _domainName = domainName;
             _domainValues = domainValues;
             ParseDomainValues();
-
-
         }
 
         private void ParseDomainValues()
@@ -60,6 +57,7 @@ namespace Yutai.Pipeline.Config.Concretes
                 }
             }
         }
+
         public void ReadFromXml(XmlNode xml)
         {
             if (xml.Attributes != null)

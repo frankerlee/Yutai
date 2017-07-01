@@ -34,7 +34,7 @@ namespace Yutai.ArcGIS.Carto.UI
             return true;
         }
 
- private void TopologyClassesPropertyPage_Load(object sender, EventArgs e)
+        private void TopologyClassesPropertyPage_Load(object sender, EventArgs e)
         {
             try
             {
@@ -55,7 +55,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     if (class3.IsInTopology)
                     {
                         num = (num < class3.XYRank) ? class3.XYRank : num;
-                        this.vertXtraGrid_0.AddComBoBox((class3 as IDataset).Name, class3.XYRank, list, false, new TopoClassWrap(class3, false));
+                        this.vertXtraGrid_0.AddComBoBox((class3 as IDataset).Name, class3.XYRank, list, false,
+                            new TopoClassWrap(class3, false));
                     }
                     class3 = classes.Next() as ITopologyClass;
                 }
@@ -79,17 +80,12 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IBasicMap FocusMap
         {
-            set
-            {
-            }
+            set { }
         }
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         public object SelectItem
@@ -114,24 +110,14 @@ namespace Yutai.ArcGIS.Carto.UI
 
             public bool IsNew
             {
-                get
-                {
-                    return this.bool_0;
-                }
-                set
-                {
-                    this.bool_0 = value;
-                }
+                get { return this.bool_0; }
+                set { this.bool_0 = value; }
             }
 
             public ITopologyClass TopoClass
             {
-                get
-                {
-                    return this.itopologyClass_0;
-                }
+                get { return this.itopologyClass_0; }
             }
         }
     }
 }
-

@@ -15,7 +15,7 @@ namespace Yutai.UI.Controls
     public partial class DockPanelControlBase : UserControl, IDockPanelView
     {
         private bool _shown = false;
-     
+
 
         public DockPanelControlBase()
         {
@@ -35,18 +35,28 @@ namespace Yutai.UI.Controls
                 return Visible;
             }
         }
+
         public int TabPosition { get; set; }
-       
+
         public virtual void SetFocus()
         {
             Focus();
         }
 
-        public virtual string DockName { get;  }
+        public virtual string DockName { get; }
         public virtual Bitmap Image { get; }
         public virtual string Caption { get; set; }
-        public virtual Size DefaultSize { get {return new Size(100,150);} }
-        public virtual DockPanelState DefaultDock { get {return DockPanelState.None;} }
+
+        public virtual Size DefaultSize
+        {
+            get { return new Size(100, 150); }
+        }
+
+        public virtual DockPanelState DefaultDock
+        {
+            get { return DockPanelState.None; }
+        }
+
         public virtual string DefaultNestDockName { get; }
     }
 }

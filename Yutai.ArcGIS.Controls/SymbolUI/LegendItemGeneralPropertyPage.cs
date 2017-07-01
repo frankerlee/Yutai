@@ -21,7 +21,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         private ITextSymbol m_pHeadingSymbol = null;
         private ITextSymbol m_pLabelSymbol = null;
         private ITextSymbol m_pLayerNameSymbol = null;
-        private IStyleGallery m_pSG ;//= ApplicationBase.StyleGallery;
+        private IStyleGallery m_pSG; //= ApplicationBase.StyleGallery;
         private string m_Title = "常规";
 
         public event OnValueChangeEventHandler OnValueChange;
@@ -52,7 +52,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 this.SelectTextSymbol(ref this.m_pDescriptionSymbol);
                 if (this.chkShowDescription.Checked)
                 {
-                    LegendItemArrangementPropertyPage.m_pLegendItem.LegendClassFormat.DescriptionSymbol = this.m_pDescriptionSymbol;
+                    LegendItemArrangementPropertyPage.m_pLegendItem.LegendClassFormat.DescriptionSymbol =
+                        this.m_pDescriptionSymbol;
                 }
             }
         }
@@ -113,7 +114,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     selectStyleGalleryItem = this.cboLinePatches.GetSelectStyleGalleryItem();
                     if (selectStyleGalleryItem != null)
                     {
-                        LegendItemArrangementPropertyPage.m_pLegendItem.LegendClassFormat.LinePatch = selectStyleGalleryItem.Item as ILinePatch;
+                        LegendItemArrangementPropertyPage.m_pLegendItem.LegendClassFormat.LinePatch =
+                            selectStyleGalleryItem.Item as ILinePatch;
                     }
                     else
                     {
@@ -122,7 +124,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     selectStyleGalleryItem = this.cboAreaPatches.GetSelectStyleGalleryItem();
                     if (selectStyleGalleryItem != null)
                     {
-                        LegendItemArrangementPropertyPage.m_pLegendItem.LegendClassFormat.AreaPatch = selectStyleGalleryItem.Item as IAreaPatch;
+                        LegendItemArrangementPropertyPage.m_pLegendItem.LegendClassFormat.AreaPatch =
+                            selectStyleGalleryItem.Item as IAreaPatch;
                     }
                     else
                     {
@@ -206,7 +209,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- public void Hide()
+        public void Hide()
         {
         }
 
@@ -217,7 +220,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 this.m_pLayerNameSymbol = LegendItemArrangementPropertyPage.m_pLegendItem.LayerNameSymbol;
                 this.m_pHeadingSymbol = LegendItemArrangementPropertyPage.m_pLegendItem.HeadingSymbol;
                 this.m_pLabelSymbol = LegendItemArrangementPropertyPage.m_pLegendItem.LegendClassFormat.LabelSymbol;
-                this.m_pDescriptionSymbol = LegendItemArrangementPropertyPage.m_pLegendItem.LegendClassFormat.DescriptionSymbol;
+                this.m_pDescriptionSymbol =
+                    LegendItemArrangementPropertyPage.m_pLegendItem.LegendClassFormat.DescriptionSymbol;
                 this.chkShowLayerName.Checked = LegendItemArrangementPropertyPage.m_pLegendItem.ShowLayerName;
                 this.btnLayerNameSymbol.Enabled = this.chkShowLayerName.Checked;
                 this.chkShowTitle.Checked = LegendItemArrangementPropertyPage.m_pLegendItem.ShowHeading;
@@ -226,13 +230,15 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 this.btnLabelSymbol.Enabled = this.chkShowLabel.Checked;
                 this.chkShowDescription.Checked = LegendItemArrangementPropertyPage.m_pLegendItem.ShowDescriptions;
                 this.btnDescriptionSymbol.Enabled = this.chkShowDescription.Checked;
-                if ((LegendItemArrangementPropertyPage.m_pLegendItem.LegendClassFormat.AreaPatch != null) || (LegendItemArrangementPropertyPage.m_pLegendItem.LegendClassFormat.LinePatch != null))
+                if ((LegendItemArrangementPropertyPage.m_pLegendItem.LegendClassFormat.AreaPatch != null) ||
+                    (LegendItemArrangementPropertyPage.m_pLegendItem.LegendClassFormat.LinePatch != null))
                 {
                     IStyleGalleryItem item;
                     this.chkOveralpDefaultPatch.Checked = true;
                     if (LegendItemArrangementPropertyPage.m_pLegendItem.LegendClassFormat.LinePatch != null)
                     {
-                        item = new MyStyleGalleryItem {
+                        item = new MyStyleGalleryItem
+                        {
                             Name = "<定制>",
                             Item = LegendItemArrangementPropertyPage.m_pLegendItem.LegendClassFormat.LinePatch
                         };
@@ -240,7 +246,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     }
                     if (LegendItemArrangementPropertyPage.m_pLegendItem.LegendClassFormat.AreaPatch != null)
                     {
-                        item = new MyStyleGalleryItem {
+                        item = new MyStyleGalleryItem
+                        {
                             Name = "<定制>",
                             Item = LegendItemArrangementPropertyPage.m_pLegendItem.LegendClassFormat.AreaPatch
                         };
@@ -253,7 +260,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 }
                 this.cboLinePatches.Enabled = this.chkOveralpDefaultPatch.Checked;
                 this.cboAreaPatches.Enabled = this.chkOveralpDefaultPatch.Checked;
-                if ((LegendItemArrangementPropertyPage.m_pLegendItem.LegendClassFormat.PatchHeight != 0.0) && (LegendItemArrangementPropertyPage.m_pLegendItem.LegendClassFormat.PatchHeight != 0.0))
+                if ((LegendItemArrangementPropertyPage.m_pLegendItem.LegendClassFormat.PatchHeight != 0.0) &&
+                    (LegendItemArrangementPropertyPage.m_pLegendItem.LegendClassFormat.PatchHeight != 0.0))
                 {
                     this.chkOveralpDefaultPatchSize.Checked = true;
                     this.txtDefaultPatchHeight.Text = "24";
@@ -261,15 +269,17 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 }
                 else
                 {
-                    this.txtDefaultPatchHeight.Text = LegendItemArrangementPropertyPage.m_pLegendItem.LegendClassFormat.PatchHeight.ToString();
-                    this.txtDefaultPatchWidth.Text = LegendItemArrangementPropertyPage.m_pLegendItem.LegendClassFormat.PatchWidth.ToString();
+                    this.txtDefaultPatchHeight.Text =
+                        LegendItemArrangementPropertyPage.m_pLegendItem.LegendClassFormat.PatchHeight.ToString();
+                    this.txtDefaultPatchWidth.Text =
+                        LegendItemArrangementPropertyPage.m_pLegendItem.LegendClassFormat.PatchWidth.ToString();
                 }
                 this.txtDefaultPatchHeight.Enabled = this.chkOveralpDefaultPatchSize.Checked;
                 this.txtDefaultPatchWidth.Enabled = this.chkOveralpDefaultPatchSize.Checked;
             }
         }
 
- private void LegendItemGeneralPropertyPage_Load(object sender, EventArgs e)
+        private void LegendItemGeneralPropertyPage_Load(object sender, EventArgs e)
         {
             if (this.m_pSG != null)
             {
@@ -321,7 +331,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 LegendItemArrangementPropertyPage.m_pOldLegendItem = @object as ILegendItem;
                 if (LegendItemArrangementPropertyPage.m_pOldLegendItem != null)
                 {
-                    LegendItemArrangementPropertyPage.m_pLegendItem = (LegendItemArrangementPropertyPage.m_pOldLegendItem as IClone).Clone() as ILegendItem;
+                    LegendItemArrangementPropertyPage.m_pLegendItem =
+                        (LegendItemArrangementPropertyPage.m_pOldLegendItem as IClone).Clone() as ILegendItem;
                 }
             }
         }
@@ -337,39 +348,23 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.m_IsPageDirty;
-            }
+            get { return this.m_IsPageDirty; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.m_Title;
-            }
-            set
-            {
-                this.m_Title = value;
-            }
+            get { return this.m_Title; }
+            set { this.m_Title = value; }
         }
     }
 }
-

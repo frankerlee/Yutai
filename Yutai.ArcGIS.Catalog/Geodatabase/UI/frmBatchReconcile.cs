@@ -10,7 +10,6 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 {
     public partial class frmBatchReconcile : Form
     {
-
         public frmBatchReconcile()
         {
             this.InitializeComponent();
@@ -46,9 +45,11 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 if (this.chkPost.Checked)
                 {
                     children.Reset();
-                    this.method_3(this.iversionedWorkspace_0, children, version.VersionName, true, this.chkDeleteOnPost.Checked);
+                    this.method_3(this.iversionedWorkspace_0, children, version.VersionName, true,
+                        this.chkDeleteOnPost.Checked);
                 }
-                this.method_3(this.iversionedWorkspace_0, version.VersionInfo.Children, version.VersionName, false, false);
+                this.method_3(this.iversionedWorkspace_0, version.VersionInfo.Children, version.VersionName, false,
+                    false);
                 this.txtMessage.Text = "合并完成";
             }
             catch (COMException exception)
@@ -63,17 +64,18 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.btnClose.Enabled = true;
         }
 
- private void frmBatchReconcile_Load(object sender, EventArgs e)
+        private void frmBatchReconcile_Load(object sender, EventArgs e)
         {
             this.method_2();
         }
 
- private void method_0(IVersionedWorkspace iversionedWorkspace_1, TreeView treeView_0)
+        private void method_0(IVersionedWorkspace iversionedWorkspace_1, TreeView treeView_0)
         {
             try
             {
                 IVersionInfo versionInfo = iversionedWorkspace_1.DefaultVersion.VersionInfo;
-                TreeNode node = new TreeNode(versionInfo.VersionName) {
+                TreeNode node = new TreeNode(versionInfo.VersionName)
+                {
                     SelectedImageIndex = 0,
                     Tag = versionInfo
                 };
@@ -95,7 +97,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 iversionInfo_0 = children.Next();
                 while (iversionInfo_0 != null)
                 {
-                    TreeNode node = new TreeNode(iversionInfo_0.VersionName) {
+                    TreeNode node = new TreeNode(iversionInfo_0.VersionName)
+                    {
                         Tag = iversionInfo_0
                     };
                     treeNode_0.Nodes.Add(node);
@@ -140,7 +143,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.method_0(this.iversionedWorkspace_0, this.VersionTreeView);
         }
 
-        private bool method_3(IVersionedWorkspace iversionedWorkspace_1, IEnumVersionInfo ienumVersionInfo_0, string string_0, bool bool_0, bool bool_1)
+        private bool method_3(IVersionedWorkspace iversionedWorkspace_1, IEnumVersionInfo ienumVersionInfo_0,
+            string string_0, bool bool_0, bool bool_1)
         {
             bool flag = true;
             try
@@ -322,11 +326,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IVersionedWorkspace VersionedWorkspace
         {
-            set
-            {
-                this.iversionedWorkspace_0 = value;
-            }
+            set { this.iversionedWorkspace_0 = value; }
         }
     }
 }
-

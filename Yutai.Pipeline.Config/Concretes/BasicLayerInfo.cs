@@ -11,7 +11,7 @@ using Yutai.Pipeline.Config.Interfaces;
 
 namespace Yutai.Pipeline.Config.Concretes
 {
-    public class BasicLayerInfo:IBasicLayerInfo
+    public class BasicLayerInfo : IBasicLayerInfo
     {
         private string _name;
         private string _aliasName;
@@ -30,10 +30,12 @@ namespace Yutai.Pipeline.Config.Concretes
             get { return _autoNames; }
             set { _autoNames = value; }
         }
+
         public string FixAutoNames
         {
             get { return "/" + _autoNames + "/"; }
         }
+
         public string Name
         {
             get { return _name; }
@@ -81,14 +83,15 @@ namespace Yutai.Pipeline.Config.Concretes
             get { return _templateName; }
             set { _templateName = value; }
         }
+
         public IFeatureClass FeatureClass
         {
             get { return _featureClass; }
             set
             {
                 _featureClass = value;
-                _esriClassName = ((IDataset)_featureClass).Name;
-                _name = ((IDataset)_featureClass).Name;
+                _esriClassName = ((IDataset) _featureClass).Name;
+                _name = ((IDataset) _featureClass).Name;
                 _aliasName = _featureClass.AliasName;
                 LoadFieldAutoNames();
             }
@@ -103,7 +106,7 @@ namespace Yutai.Pipeline.Config.Concretes
         public string GetFieldName(string typeWord)
         {
             IYTField field = _fields.FirstOrDefault(c => c.TypeName == typeWord);
-            return field!=null? field.Name:typeWord;
+            return field != null ? field.Name : typeWord;
         }
 
         public string EsriClassName
@@ -114,9 +117,8 @@ namespace Yutai.Pipeline.Config.Concretes
 
         public IBasicLayerInfo Clone(bool keepClass)
         {
-            IBasicLayerInfo pClone=new BasicLayerInfo(this,keepClass);
+            IBasicLayerInfo pClone = new BasicLayerInfo(this, keepClass);
             return pClone;
-
         }
 
         public BasicLayerInfo(XmlNode node)
@@ -124,17 +126,17 @@ namespace Yutai.Pipeline.Config.Concretes
             ReadFromXml(node);
         }
 
-        public BasicLayerInfo(XmlNode node,IPipelineTemplate template)
+        public BasicLayerInfo(XmlNode node, IPipelineTemplate template)
         {
             _fields.AddRange(template.Fields);
-           ReadFromXml(node);
+            ReadFromXml(node);
         }
 
         public BasicLayerInfo()
         {
         }
 
-        public BasicLayerInfo(IBasicLayerInfo info,bool keepClass)
+        public BasicLayerInfo(IBasicLayerInfo info, bool keepClass)
         {
             _name = info.Name;
             _autoNames = info.AutoNames;
@@ -144,7 +146,7 @@ namespace Yutai.Pipeline.Config.Concretes
             _heightType = info.HeightType;
             _validateKeys = info.ValidateKeys;
             _templateName = info.TemplateName;
-            _fields=new List<IYTField>();
+            _fields = new List<IYTField>();
             foreach (IYTField infoField in info.Fields)
             {
                 _fields.Add(infoField.Clone(keepClass));
@@ -159,7 +161,6 @@ namespace Yutai.Pipeline.Config.Concretes
         public void LoadTemplate(IPipelineTemplate template)
         {
             _fields.AddRange(template.Fields);
-            
         }
 
         public void ReadFromXml(XmlNode node)
@@ -171,8 +172,12 @@ namespace Yutai.Pipeline.Config.Concretes
                 _visible = node.Attributes["Visible"] == null
                     ? true
                     : (node.Attributes["Visible"].Value.ToUpper().StartsWith("T") ? true : false);
-                _dataType = node.Attributes["DataType"] == null ? enumPipelineDataType.Point : EnumHelper.ConvertDataTypeFromString(node.Attributes["DataType"].Value);
-                _heightType = node.Attributes["HeightType"] == null ? enumPipelineHeightType.Top : EnumHelper.ConvertHeightTypeFromStr(node.Attributes["HeightType"].Value);
+                _dataType = node.Attributes["DataType"] == null
+                    ? enumPipelineDataType.Point
+                    : EnumHelper.ConvertDataTypeFromString(node.Attributes["DataType"].Value);
+                _heightType = node.Attributes["HeightType"] == null
+                    ? enumPipelineHeightType.Top
+                    : EnumHelper.ConvertHeightTypeFromStr(node.Attributes["HeightType"].Value);
                 _validateKeys = node.Attributes["ValidateKeys"] == null ? "" : node.Attributes["ValidateKeys"].Value;
                 _templateName = node.Attributes["TemplateName"] == null ? "" : node.Attributes["TemplateName"].Value;
                 _autoNames = node.Attributes["AutoNames"].Value;
@@ -262,7 +267,7 @@ namespace Yutai.Pipeline.Config.Concretes
             get
             {
                 if (_featureClass == null) return "";
-                string paramName = ((IDataset)_featureClass).Name;
+                string paramName = ((IDataset) _featureClass).Name;
                 string str = paramName;
                 int num = paramName.LastIndexOf(".");
                 if (num >= 0)
@@ -272,6 +277,5 @@ namespace Yutai.Pipeline.Config.Concretes
                 return str;
             }
         }
-
     }
 }

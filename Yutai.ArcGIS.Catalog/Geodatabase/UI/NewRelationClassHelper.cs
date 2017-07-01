@@ -35,17 +35,22 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             {
                 if (m_pFeatureDataset != null)
                 {
-                    return (m_pFeatureDataset as IRelationshipClassContainer).CreateRelationshipClass(relClassName, OriginClass, DestinationClass, forwardLabel, backwardLabel, Cardinality, Notification, IsComposite, IsAttributed, relAttrFields, OriginPrimaryKey, destPrimaryKey, OriginForeignKey, destForeignKey);
+                    return (m_pFeatureDataset as IRelationshipClassContainer).CreateRelationshipClass(relClassName,
+                        OriginClass, DestinationClass, forwardLabel, backwardLabel, Cardinality, Notification,
+                        IsComposite, IsAttributed, relAttrFields, OriginPrimaryKey, destPrimaryKey, OriginForeignKey,
+                        destForeignKey);
                 }
                 if (m_pWorkspace != null)
                 {
-                    return (m_pWorkspace as IFeatureWorkspace).CreateRelationshipClass(relClassName, OriginClass, DestinationClass, forwardLabel, backwardLabel, Cardinality, Notification, IsComposite, IsAttributed, relAttrFields, OriginPrimaryKey, destPrimaryKey, OriginForeignKey, destForeignKey);
+                    return (m_pWorkspace as IFeatureWorkspace).CreateRelationshipClass(relClassName, OriginClass,
+                        DestinationClass, forwardLabel, backwardLabel, Cardinality, Notification, IsComposite,
+                        IsAttributed, relAttrFields, OriginPrimaryKey, destPrimaryKey, OriginForeignKey, destForeignKey);
                 }
             }
             catch (Exception exception)
             {
                 MessageBox.Show("创建关系类类失败");
-                Logger.Current.Error("",exception, "创建关系类");
+                Logger.Current.Error("", exception, "创建关系类");
             }
             return null;
         }
@@ -71,4 +76,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

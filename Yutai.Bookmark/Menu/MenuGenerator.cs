@@ -38,7 +38,6 @@ namespace Yutai.Plugins.Bookmark.Menu
             _menuManager = _context.MainView.RibbonManager;
             _commands = new YutaiCommands(_context, plugin.Identity);
             InitMenu();
-
         }
 
         private void InitMenu()
@@ -46,7 +45,8 @@ namespace Yutai.Plugins.Bookmark.Menu
             XmlDocument doc = new XmlDocument();
             string resString = "Yutai.Plugins.Bookmark.Menu.MenuLayout.xml";
             doc.Load(base.GetType().Assembly.GetManifestResourceStream(resString));
-            RibbonFactory.CreateMenus(_commands.GetCommands(), (RibbonControl)_menuManager, _context.MainView.RibbonStatusBar as RibbonStatusBar, doc);
+            RibbonFactory.CreateMenus(_commands.GetCommands(), (RibbonControl) _menuManager,
+                _context.MainView.RibbonStatusBar as RibbonStatusBar, doc);
         }
     }
 }

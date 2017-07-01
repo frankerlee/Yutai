@@ -30,7 +30,7 @@ namespace Yutai.Plugins.Catalog.Commands
             _itemType = RibbonItemType.Button;
         }
 
-       
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();

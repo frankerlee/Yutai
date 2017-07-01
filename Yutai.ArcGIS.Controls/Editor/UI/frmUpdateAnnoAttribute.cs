@@ -52,7 +52,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 }
                 catch (Exception exception)
                 {
-                   Logger.Current.Error("", exception, "");
+                    Logger.Current.Error("", exception, "");
                 }
             }
             if (workspace != null)
@@ -118,7 +118,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             }
         }
 
- private void frmUpdateAnnoAttribute_Load(object sender, EventArgs e)
+        private void frmUpdateAnnoAttribute_Load(object sender, EventArgs e)
         {
             if (this.m_pAnnoFeatureList.Count > 0)
             {
@@ -167,11 +167,12 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.symbolItem1.Symbol = this.m_pTextElement.Symbol;
         }
 
- private void rdoTHACenter_Click(object sender, EventArgs e)
+        private void rdoTHACenter_Click(object sender, EventArgs e)
         {
             if (this.m_CanDo && this.rdoTHACenter.Checked)
             {
-                (this.m_pTextElement as ISymbolCollectionElement).HorizontalAlignment = esriTextHorizontalAlignment.esriTHACenter;
+                (this.m_pTextElement as ISymbolCollectionElement).HorizontalAlignment =
+                    esriTextHorizontalAlignment.esriTHACenter;
             }
         }
 
@@ -179,7 +180,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         {
             if (this.m_CanDo && this.rdoTHAFul.Checked)
             {
-                (this.m_pTextElement as ISymbolCollectionElement).HorizontalAlignment = esriTextHorizontalAlignment.esriTHAFull;
+                (this.m_pTextElement as ISymbolCollectionElement).HorizontalAlignment =
+                    esriTextHorizontalAlignment.esriTHAFull;
             }
         }
 
@@ -187,7 +189,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         {
             if (this.m_CanDo && this.rdoTHALeft.Checked)
             {
-                (this.m_pTextElement as ISymbolCollectionElement).HorizontalAlignment = esriTextHorizontalAlignment.esriTHALeft;
+                (this.m_pTextElement as ISymbolCollectionElement).HorizontalAlignment =
+                    esriTextHorizontalAlignment.esriTHALeft;
             }
         }
 
@@ -195,7 +198,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         {
             if (this.m_CanDo && this.rdoTHARight.Checked)
             {
-                (this.m_pTextElement as ISymbolCollectionElement).HorizontalAlignment = esriTextHorizontalAlignment.esriTHARight;
+                (this.m_pTextElement as ISymbolCollectionElement).HorizontalAlignment =
+                    esriTextHorizontalAlignment.esriTHARight;
             }
         }
 
@@ -239,11 +243,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         public IList AnnoFeatureList
         {
-            set
-            {
-                this.m_pAnnoFeatureList = value;
-            }
+            set { this.m_pAnnoFeatureList = value; }
         }
     }
 }
-

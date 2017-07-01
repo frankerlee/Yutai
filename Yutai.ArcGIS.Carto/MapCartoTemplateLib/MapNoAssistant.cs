@@ -6,7 +6,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 {
     public abstract class MapNoAssistant
     {
-        [CompilerGenerated]
+      
         private string string_0;
 
         public MapNoAssistant(string string_1)
@@ -43,18 +43,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         public abstract bool Validate();
 
         public string MapNo
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.string_0;
-            }
-            [CompilerGenerated]
-            protected set
-            {
-                this.string_0 = value;
-            }
-        }
+        { get; set; }
     }
 }
 

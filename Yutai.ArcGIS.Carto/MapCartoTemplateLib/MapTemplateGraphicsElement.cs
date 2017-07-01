@@ -66,10 +66,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public override IElement Element
         {
-            get
-            {
-                return base.Element;
-            }
+            get { return base.Element; }
             set
             {
                 base.Element = value;
@@ -102,14 +99,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         protected override IPropertySet PropertySet
         {
-            get
-            {
-                return new PropertySetClass();
-            }
-            set
-            {
-            }
+            get { return new PropertySetClass(); }
+            set { }
         }
     }
 }
-

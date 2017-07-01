@@ -39,7 +39,6 @@ namespace Yutai.Pipeline.Analysis.Forms
         public IGeometry m_pFlashGeo;
 
         private IBasicLayerInfo _baseLayerInfo;
-       
 
 
         public HitAnalyseDlg.HitAnalyseType HitType
@@ -313,12 +312,12 @@ namespace Yutai.Pipeline.Analysis.Forms
             List<IBasicLayerInfo> basicInfos = pipeLayer.GetLayers(enumPipelineDataType.Junction);
             IFeatureClass junFeatureClass = basicInfos.Count > 0 ? basicInfos[0].FeatureClass : null;
             //需要重新获取边信息
-            IGeometricNetwork geometricNetwork = ((INetworkClass)junFeatureClass).GeometricNetwork;
+            IGeometricNetwork geometricNetwork = ((INetworkClass) junFeatureClass).GeometricNetwork;
             IFeatureClassContainer featureDataset = geometricNetwork.FeatureDataset as IFeatureClassContainer;
             IPointToEID pointToEIDClass = new PointToEID();
             pointToEIDClass.SourceMap = (m_app.FocusMap);
             pointToEIDClass.GeometricNetwork = (geometricNetwork);
-            pointToEIDClass.SnapTolerance = (m_app.ActiveView.Extent.Width / 200.0);
+            pointToEIDClass.SnapTolerance = (m_app.ActiveView.Extent.Width/200.0);
             int edgeID = 0;
             IPoint location = null;
             double percent = 0;
@@ -359,9 +358,9 @@ namespace Yutai.Pipeline.Analysis.Forms
                 }
                 this.m_commonDistAls.m_dDiameter =
                     this.m_commonDistAls.GetDiameterFromString(this.tbPipeWidthOrHeight.Text.Trim());
-             
 
-                IEdgeFeature edgeFeature = (IEdgeFeature)lineFeature;
+
+                IEdgeFeature edgeFeature = (IEdgeFeature) lineFeature;
                 this.m_commonDistAls.m_nBaseLineFromID = edgeFeature.FromJunctionEID;
                 this.m_commonDistAls.m_nBaseLineToID = edgeFeature.ToJunctionEID;
                 this.btAnalyse.Enabled = this.m_commonDistAls.m_pBaseLine != null;
@@ -511,63 +510,60 @@ namespace Yutai.Pipeline.Analysis.Forms
                 return;
             }
             IPointCollection mPBaseLine = (IPointCollection) this.m_commonDistAls.m_pBaseLine;
-                IFeature pFeature=null;
-                int qdgcIdx = -1;
-                int qdmsIdx = -1;
-                int zdgcIdx = -1;
-                int zdmsIdx = -1;
-                if (cmbDepthType.SelectedIndex == 0)
+            IFeature pFeature = null;
+            int qdgcIdx = -1;
+            int qdmsIdx = -1;
+            int zdgcIdx = -1;
+            int zdmsIdx = -1;
+            if (cmbDepthType.SelectedIndex == 0)
+            {
+                pFeature = this.chitAnalyse_0.PipeLayer_Class.GetFeature(this.chitAnalyse_0.BaseLine_OID);
+                qdgcIdx = pFeature.Fields.FindField(_baseLayerInfo.GetFieldName(PipeConfigWordHelper.LineWords.QDGC));
+                qdmsIdx = pFeature.Fields.FindField(_baseLayerInfo.GetFieldName(PipeConfigWordHelper.LineWords.QDMS));
+                zdgcIdx = pFeature.Fields.FindField(_baseLayerInfo.GetFieldName(PipeConfigWordHelper.LineWords.ZDGC));
+                zdmsIdx = pFeature.Fields.FindField(_baseLayerInfo.GetFieldName(PipeConfigWordHelper.LineWords.ZDMS));
+            }
+            int pointCount = mPBaseLine.PointCount;
+            if (pointCount != 0)
+            {
+                this.dataGridViewBase.Rows.Clear();
+                for (int i = 0; i < pointCount; i++)
                 {
-                    pFeature = this.chitAnalyse_0.PipeLayer_Class.GetFeature(this.chitAnalyse_0.BaseLine_OID);
-                    qdgcIdx = pFeature.Fields.FindField(_baseLayerInfo.GetFieldName(PipeConfigWordHelper.LineWords.QDGC));
-                    qdmsIdx = pFeature.Fields.FindField(_baseLayerInfo.GetFieldName(PipeConfigWordHelper.LineWords.QDMS));
-                    zdgcIdx = pFeature.Fields.FindField(_baseLayerInfo.GetFieldName(PipeConfigWordHelper.LineWords.ZDGC));
-                    zdmsIdx = pFeature.Fields.FindField(_baseLayerInfo.GetFieldName(PipeConfigWordHelper.LineWords.ZDMS));
+                    IPoint point = mPBaseLine.get_Point(i);
+                    double x = point.X;
+                    double y = point.Y;
+                    double z = 0;
 
-                }
-                int pointCount = mPBaseLine.PointCount;
-                if (pointCount != 0)
-                {
-                    this.dataGridViewBase.Rows.Clear();
-                    for (int i = 0; i < pointCount; i++)
+                    if (cmbDepthType.SelectedIndex == 0)
                     {
-                        IPoint point = mPBaseLine.get_Point(i);
-                        double x = point.X;
-                        double y = point.Y;
-                        double z = 0;
-
-                        if (cmbDepthType.SelectedIndex == 0 )
+                        if (i == 0)
                         {
-                            if (i == 0)
-                            {
-                                double z1 = Convert.ToDouble(pFeature.Value[qdgcIdx]);
-                                double z2 = Convert.ToDouble(pFeature.Value[qdmsIdx]);
-                                z = z1 - z2;
-                            }
-                            else if (i == pointCount - 1)
-                            {
+                            double z1 = Convert.ToDouble(pFeature.Value[qdgcIdx]);
+                            double z2 = Convert.ToDouble(pFeature.Value[qdmsIdx]);
+                            z = z1 - z2;
+                        }
+                        else if (i == pointCount - 1)
+                        {
                             double z1 = Convert.ToDouble(pFeature.Value[zdgcIdx]);
                             double z2 = Convert.ToDouble(pFeature.Value[zdmsIdx]);
                             z = z1 - z2;
-                            }
-                        }
-                        else
-                        {
-                             z= point.Z - point.M;
-                        }
-                        this.dataGridViewBase.Rows.Add(new object[] {""});
-                        this.dataGridViewBase[0, i].Value = i + 1;
-                        this.dataGridViewBase[1, i].Value = x.ToString("f3");
-                        this.dataGridViewBase[2, i].Value = y.ToString("f3");
-                        this.dataGridViewBase[3, i].Value = z.ToString("f3");
-                        if (this.hitAnalyseType_0 == HitAnalyseDlg.HitAnalyseType.emHitAnalyseDraw)
-                        {
-                            this.dataGridViewBase[3, i].Value = "0.000";
                         }
                     }
-                
+                    else
+                    {
+                        z = point.Z - point.M;
+                    }
+                    this.dataGridViewBase.Rows.Add(new object[] {""});
+                    this.dataGridViewBase[0, i].Value = i + 1;
+                    this.dataGridViewBase[1, i].Value = x.ToString("f3");
+                    this.dataGridViewBase[2, i].Value = y.ToString("f3");
+                    this.dataGridViewBase[3, i].Value = z.ToString("f3");
+                    if (this.hitAnalyseType_0 == HitAnalyseDlg.HitAnalyseType.emHitAnalyseDraw)
+                    {
+                        this.dataGridViewBase[3, i].Value = "0.000";
+                    }
+                }
             }
-           
         }
 
         private void tbBufferRadius_KeyPress(object obj, KeyPressEventArgs keyPressEventArg)

@@ -26,14 +26,16 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
         }
 
- private void SOSummaryPropertyPage_Load(object sender, EventArgs e)
+        private void SOSummaryPropertyPage_Load(object sender, EventArgs e)
         {
             if (this.iserverObjectConfiguration_0 != null)
             {
                 object obj2;
                 object obj3;
                 string str = "常规:\r\n";
-                str = ((str + "    名字:" + this.iserverObjectConfiguration_0.Name + "\r\n") + "    类型:" + this.iserverObjectConfiguration_0.TypeName + "\r\n") + "    描述:" + this.iserverObjectConfiguration_0.Description + "\r\n";
+                str = ((str + "    名字:" + this.iserverObjectConfiguration_0.Name + "\r\n") + "    类型:" +
+                       this.iserverObjectConfiguration_0.TypeName + "\r\n") + "    描述:" +
+                      this.iserverObjectConfiguration_0.Description + "\r\n";
                 if (this.iserverObjectConfiguration_0.StartupType == esriStartupType.esriSTAutomatic)
                 {
                     str = str + "    启动类型:自动\r\n";
@@ -53,17 +55,23 @@ namespace Yutai.ArcGIS.Catalog.UI
                 str = str + "\r\n" + "缓冲:\r\n";
                 if (this.iserverObjectConfiguration_0.IsPooled)
                 {
-                    str = ((str + "    是否缓冲:是\r\n") + "    最大实例数:" + this.iserverObjectConfiguration_0.MaxInstances.ToString() + "\r\n") + "    最小实例数:" + this.iserverObjectConfiguration_0.MinInstances.ToString() + "\r\n";
+                    str = ((str + "    是否缓冲:是\r\n") + "    最大实例数:" +
+                           this.iserverObjectConfiguration_0.MaxInstances.ToString() + "\r\n") + "    最小实例数:" +
+                          this.iserverObjectConfiguration_0.MinInstances.ToString() + "\r\n";
                 }
                 else
                 {
-                    str = (str + "    是否缓冲:否\r\n") + "    最大实例数:" + this.iserverObjectConfiguration_0.MaxInstances.ToString() + "\r\n";
+                    str = (str + "    是否缓冲:否\r\n") + "    最大实例数:" +
+                          this.iserverObjectConfiguration_0.MaxInstances.ToString() + "\r\n";
                 }
-                str = ((str + "    最大使用时间:" + this.iserverObjectConfiguration_0.UsageTimeout.ToString() + "\r\n") + "    最大等待时间:" + this.iserverObjectConfiguration_0.WaitTimeout.ToString() + "\r\n") + "\r\n" + "进程:\r\n";
+                str = ((str + "    最大使用时间:" + this.iserverObjectConfiguration_0.UsageTimeout.ToString() + "\r\n") +
+                       "    最大等待时间:" + this.iserverObjectConfiguration_0.WaitTimeout.ToString() + "\r\n") + "\r\n" +
+                      "进程:\r\n";
                 IPropertySet recycleProperties = this.iserverObjectConfiguration_0.RecycleProperties;
                 try
                 {
-                    if (this.iserverObjectConfiguration_0.IsolationLevel == esriServerIsolationLevel.esriServerIsolationHigh)
+                    if (this.iserverObjectConfiguration_0.IsolationLevel ==
+                        esriServerIsolationLevel.esriServerIsolationHigh)
                     {
                         str = str + "    孤立性:高孤立性\r\n";
                     }
@@ -83,23 +91,13 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         public bool isStart
         {
-            get
-            {
-                return (this.radioGroup1.SelectedIndex == 1);
-            }
+            get { return (this.radioGroup1.SelectedIndex == 1); }
         }
 
         public IServerObjectConfiguration ServerObjectConfiguration
         {
-            get
-            {
-                return this.iserverObjectConfiguration_0;
-            }
-            set
-            {
-                this.iserverObjectConfiguration_0 = value;
-            }
+            get { return this.iserverObjectConfiguration_0; }
+            set { this.iserverObjectConfiguration_0 = value; }
         }
     }
 }
-

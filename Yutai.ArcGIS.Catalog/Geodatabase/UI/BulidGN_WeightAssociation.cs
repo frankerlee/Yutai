@@ -39,7 +39,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             for (int i = 0; i < this.ilist_0.Count; i++)
             {
-                BulidGeometryNetworkHelper.WeightAssociation association = this.ilist_0[i] as BulidGeometryNetworkHelper.WeightAssociation;
+                BulidGeometryNetworkHelper.WeightAssociation association =
+                    this.ilist_0[i] as BulidGeometryNetworkHelper.WeightAssociation;
                 if (association.fieldName != "<无>")
                 {
                     BulidGeometryNetworkHelper.BulidGNHelper.WeightAssociations.Clear();
@@ -68,7 +69,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             {
                 if ((this.comboBox_0.SelectedIndex >= 0) && (this.listViewItem_0 != null))
                 {
-                    (this.listViewItem_0.Tag as BulidGeometryNetworkHelper.WeightAssociation).fieldName = this.comboBox_0.Text;
+                    (this.listViewItem_0.Tag as BulidGeometryNetworkHelper.WeightAssociation).fieldName =
+                        this.comboBox_0.Text;
                     this.listViewItem_0.SubItems[1].Text = this.comboBox_0.Text;
                 }
                 this.comboBox_0.Hide();
@@ -77,27 +79,32 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void comboBoxEdit_SelectedIndexChanged(object sender, EventArgs e)
         {
-            BulidGeometryNetworkHelper.Weight selectedItem = this.comboBoxEdit.SelectedItem as BulidGeometryNetworkHelper.Weight;
+            BulidGeometryNetworkHelper.Weight selectedItem =
+                this.comboBoxEdit.SelectedItem as BulidGeometryNetworkHelper.Weight;
             this.listView1.Items.Clear();
             if (selectedItem != null)
             {
                 int num = 0;
                 for (int i = 0; i < BulidGeometryNetworkHelper.BulidGNHelper.FeatureClassWraps.Count; i++)
                 {
-                    BulidGeometryNetworkHelper.FeatureClassWrap wrap = BulidGeometryNetworkHelper.BulidGNHelper.FeatureClassWraps[i] as BulidGeometryNetworkHelper.FeatureClassWrap;
+                    BulidGeometryNetworkHelper.FeatureClassWrap wrap =
+                        BulidGeometryNetworkHelper.BulidGNHelper.FeatureClassWraps[i] as
+                            BulidGeometryNetworkHelper.FeatureClassWrap;
                     if (wrap.IsUse)
                     {
                         num++;
                     }
                 }
-                int num3 = this.comboBoxEdit.SelectedIndex * num;
+                int num3 = this.comboBoxEdit.SelectedIndex*num;
                 string[] items = new string[2];
                 for (int j = num3; j < (num3 + num); j++)
                 {
-                    BulidGeometryNetworkHelper.WeightAssociation association = this.ilist_0[j] as BulidGeometryNetworkHelper.WeightAssociation;
+                    BulidGeometryNetworkHelper.WeightAssociation association =
+                        this.ilist_0[j] as BulidGeometryNetworkHelper.WeightAssociation;
                     items[0] = association.featureClassName;
                     items[1] = association.fieldName;
-                    ListViewItem item = new ListViewItem(items) {
+                    ListViewItem item = new ListViewItem(items)
+                    {
                         Tag = association
                     };
                     this.listView1.Items.Add(item);
@@ -105,22 +112,27 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- public void Init()
+        public void Init()
         {
             for (int i = 0; i < BulidGeometryNetworkHelper.BulidGNHelper.Weights.Count; i++)
             {
-                BulidGeometryNetworkHelper.Weight item = BulidGeometryNetworkHelper.BulidGNHelper.Weights[i] as BulidGeometryNetworkHelper.Weight;
+                BulidGeometryNetworkHelper.Weight item =
+                    BulidGeometryNetworkHelper.BulidGNHelper.Weights[i] as BulidGeometryNetworkHelper.Weight;
                 this.comboBoxEdit.Properties.Items.Add(item);
                 for (int j = 0; j < BulidGeometryNetworkHelper.BulidGNHelper.FeatureClassWraps.Count; j++)
                 {
-                    BulidGeometryNetworkHelper.FeatureClassWrap wrap = BulidGeometryNetworkHelper.BulidGNHelper.FeatureClassWraps[j] as BulidGeometryNetworkHelper.FeatureClassWrap;
+                    BulidGeometryNetworkHelper.FeatureClassWrap wrap =
+                        BulidGeometryNetworkHelper.BulidGNHelper.FeatureClassWraps[j] as
+                            BulidGeometryNetworkHelper.FeatureClassWrap;
                     if (wrap.IsUse)
                     {
-                        BulidGeometryNetworkHelper.WeightAssociation association = new BulidGeometryNetworkHelper.WeightAssociation {
-                            networkWeightName = item.networkWeightName,
-                            featureClassName = (wrap.FeatureClass as IDataset).Name,
-                            fieldName = "<无>"
-                        };
+                        BulidGeometryNetworkHelper.WeightAssociation association = new BulidGeometryNetworkHelper.
+                            WeightAssociation
+                            {
+                                networkWeightName = item.networkWeightName,
+                                featureClassName = (wrap.FeatureClass as IDataset).Name,
+                                fieldName = "<无>"
+                            };
                         this.ilist_0.Add(association);
                     }
                 }
@@ -132,7 +144,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             BulidGeometryNetworkHelper.BulidGNHelper.WeightAssociations.Clear();
         }
 
- private void listView1_DoubleClick(object sender, EventArgs e)
+        private void listView1_DoubleClick(object sender, EventArgs e)
         {
             if (this.listView1.SelectedItems.Count == 1)
             {
@@ -182,7 +194,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 IFeatureClass class2 = this.method_0(this.listView1.SelectedItems[0].Text);
                 if (class2 != null)
                 {
-                    BulidGeometryNetworkHelper.Weight selectedItem = this.comboBoxEdit.SelectedItem as BulidGeometryNetworkHelper.Weight;
+                    BulidGeometryNetworkHelper.Weight selectedItem =
+                        this.comboBoxEdit.SelectedItem as BulidGeometryNetworkHelper.Weight;
                     if (selectedItem != null)
                     {
                         esriFieldType esriFieldTypeOID = esriFieldType.esriFieldTypeOID;
@@ -205,20 +218,29 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         for (int i = 0; i < fields.FieldCount; i++)
                         {
                             IField field = fields.get_Field(i);
-                            if (((((field.Type != esriFieldType.esriFieldTypeOID) && (field.Type != esriFieldType.esriFieldTypeGeometry)) && ((field.Type != esriFieldType.esriFieldTypeGUID) && (field.Type != esriFieldType.esriFieldTypeGlobalID))) && (field.Type != esriFieldType.esriFieldTypeRaster)) && (field.Type != esriFieldType.esriFieldTypeString))
+                            if (((((field.Type != esriFieldType.esriFieldTypeOID) &&
+                                   (field.Type != esriFieldType.esriFieldTypeGeometry)) &&
+                                  ((field.Type != esriFieldType.esriFieldTypeGUID) &&
+                                   (field.Type != esriFieldType.esriFieldTypeGlobalID))) &&
+                                 (field.Type != esriFieldType.esriFieldTypeRaster)) &&
+                                (field.Type != esriFieldType.esriFieldTypeString))
                             {
-                                if ((esriFieldTypeOID == esriFieldType.esriFieldTypeSingle) && (esriFieldTypeOID == field.Type))
+                                if ((esriFieldTypeOID == esriFieldType.esriFieldTypeSingle) &&
+                                    (esriFieldTypeOID == field.Type))
                                 {
                                     this.comboBox_0.Items.Add(field.AliasName);
                                 }
                                 else if (esriFieldTypeOID == esriFieldType.esriFieldTypeDouble)
                                 {
-                                    if ((field.Type == esriFieldType.esriFieldTypeDouble) || (field.Type == esriFieldType.esriFieldTypeSingle))
+                                    if ((field.Type == esriFieldType.esriFieldTypeDouble) ||
+                                        (field.Type == esriFieldType.esriFieldTypeSingle))
                                     {
                                         this.comboBox_0.Items.Add(field.AliasName);
                                     }
                                 }
-                                else if ((esriFieldTypeOID == esriFieldType.esriFieldTypeInteger) && ((field.Type == esriFieldType.esriFieldTypeSmallInteger) || (field.Type == esriFieldType.esriFieldTypeInteger)))
+                                else if ((esriFieldTypeOID == esriFieldType.esriFieldTypeInteger) &&
+                                         ((field.Type == esriFieldType.esriFieldTypeSmallInteger) ||
+                                          (field.Type == esriFieldType.esriFieldTypeInteger)))
                                 {
                                     this.comboBox_0.Items.Add(field.AliasName);
                                 }
@@ -233,7 +255,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             for (int i = 0; i < BulidGeometryNetworkHelper.BulidGNHelper.FeatureClassWraps.Count; i++)
             {
-                BulidGeometryNetworkHelper.FeatureClassWrap wrap = BulidGeometryNetworkHelper.BulidGNHelper.FeatureClassWraps[i] as BulidGeometryNetworkHelper.FeatureClassWrap;
+                BulidGeometryNetworkHelper.FeatureClassWrap wrap =
+                    BulidGeometryNetworkHelper.BulidGNHelper.FeatureClassWraps[i] as
+                        BulidGeometryNetworkHelper.FeatureClassWrap;
                 if (wrap.IsUse && (string_0 == (wrap.FeatureClass as IDataset).Name))
                 {
                     return wrap.FeatureClass;
@@ -243,4 +267,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

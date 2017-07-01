@@ -21,7 +21,8 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
             this.method_7();
             this.dockExtender_0 = new DockExtender(this);
             this.contextMenuStrip_0.Items.Add("自定义");
-            this.contextMenuStrip_0.ItemClicked += new ToolStripItemClickedEventHandler(this.contextMenuStrip_0_ItemClicked);
+            this.contextMenuStrip_0.ItemClicked +=
+                new ToolStripItemClickedEventHandler(this.contextMenuStrip_0_ItemClicked);
             base.TopToolStripPanel.RenderMode = ToolStripRenderMode.ManagerRenderMode;
             base.RightToolStripPanel.RenderMode = ToolStripRenderMode.ManagerRenderMode;
             base.LeftToolStripPanel.RenderMode = ToolStripRenderMode.ManagerRenderMode;
@@ -104,7 +105,7 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
             }
             else if (e.ClickedItem.Text == "自定义")
             {
-                new CustomizationForm { StandardBarManager = this }.ShowDialog();
+                new CustomizationForm {StandardBarManager = this}.ShowDialog();
             }
         }
 
@@ -137,7 +138,12 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
 
         private ToolStripMenuItem method_1(ToolStrip toolStrip_1)
         {
-            return new ToolStripMenuItem { Name = toolStrip_1.Name, Text = toolStrip_1.Text, Checked = toolStrip_1.Visible };
+            return new ToolStripMenuItem
+            {
+                Name = toolStrip_1.Name,
+                Text = toolStrip_1.Text,
+                Checked = toolStrip_1.Visible
+            };
         }
 
         private void method_2(object sender, EventArgs e)
@@ -231,10 +237,7 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
 
         public int BarCount
         {
-            get
-            {
-                return this.ilist_0.Count;
-            }
+            get { return this.ilist_0.Count; }
         }
 
         public ToolStrip MainMenu
@@ -247,10 +250,7 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
                 }
                 return null;
             }
-            set
-            {
-                this.toolStrip_0 = value;
-            }
+            set { this.toolStrip_0 = value; }
         }
 
         public enum BarDockStyle
@@ -263,4 +263,3 @@ namespace Yutai.ArcGIS.Common.ControlExtenders
         }
     }
 }
-

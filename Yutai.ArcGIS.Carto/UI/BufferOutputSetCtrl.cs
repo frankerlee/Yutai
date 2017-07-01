@@ -44,16 +44,19 @@ namespace Yutai.ArcGIS.Carto.UI
                         string fullName = "";
                         if (obj2 is IGxDatabase)
                         {
-                            BufferHelper.m_BufferHelper.m_pOutFeatureWorksapce = (obj2 as IGxDatabase).Workspace as IFeatureWorkspace;
+                            BufferHelper.m_BufferHelper.m_pOutFeatureWorksapce =
+                                (obj2 as IGxDatabase).Workspace as IFeatureWorkspace;
                             fullName = obj2.FullName;
                         }
                         else if (obj2 is IGxFolder)
                         {
-                            name = new WorkspaceNameClass {
+                            name = new WorkspaceNameClass
+                            {
                                 WorkspaceFactoryProgID = "esriDataSourcesFile.ShapefileWorkspaceFactory",
                                 PathName = (obj2.InternalObjectName as IFileName).Path
                             };
-                            BufferHelper.m_BufferHelper.m_pOutFeatureWorksapce = (name as IName).Open() as IFeatureWorkspace;
+                            BufferHelper.m_BufferHelper.m_pOutFeatureWorksapce =
+                                (name as IName).Open() as IFeatureWorkspace;
                             fullName = (obj2.InternalObjectName as IFileName).Path;
                             str = ".shp";
                         }
@@ -78,13 +81,15 @@ namespace Yutai.ArcGIS.Carto.UI
         {
             if (this.cboEditingPolygonLayer.SelectedIndex != -1)
             {
-                BufferHelper.m_BufferHelper.m_pOutFC = ((this.cboEditingPolygonLayer.SelectedItem as ObjectWrap).Object as IFeatureLayer).FeatureClass;
+                BufferHelper.m_BufferHelper.m_pOutFC =
+                    ((this.cboEditingPolygonLayer.SelectedItem as ObjectWrap).Object as IFeatureLayer).FeatureClass;
             }
         }
 
- public void Init()
+        public void Init()
         {
-            UID uid = new UIDClass {
+            UID uid = new UIDClass
+            {
                 Value = "{6CA416B1-E160-11D2-9F4E-00C04F6BC78E}"
             };
             IEnumLayer layer = BufferHelper.m_BufferHelper.m_pFocusMap.get_Layers(uid, true);
@@ -92,7 +97,9 @@ namespace Yutai.ArcGIS.Carto.UI
             layer.Reset();
             for (ILayer layer2 = layer.Next(); layer2 is IFeatureLayer; layer2 = layer.Next())
             {
-                if ((((layer2 as IFeatureLayer).FeatureClass != null) && ((layer2 as IFeatureLayer).FeatureClass.FeatureType == esriFeatureType.esriFTSimple)) && this.method_0(layer2 as IFeatureLayer))
+                if ((((layer2 as IFeatureLayer).FeatureClass != null) &&
+                     ((layer2 as IFeatureLayer).FeatureClass.FeatureType == esriFeatureType.esriFTSimple)) &&
+                    this.method_0(layer2 as IFeatureLayer))
                 {
                     this.cboEditingPolygonLayer.Properties.Items.Add(new ObjectWrap(layer2));
                 }
@@ -107,7 +114,8 @@ namespace Yutai.ArcGIS.Carto.UI
             {
                 this.rdoSaveToEditingLayer.Enabled = false;
             }
-            if (BufferHelper.m_BufferHelper.m_pFeatureLayer.FeatureClass.ShapeType == esriGeometryType.esriGeometryPolygon)
+            if (BufferHelper.m_BufferHelper.m_pFeatureLayer.FeatureClass.ShapeType ==
+                esriGeometryType.esriGeometryPolygon)
             {
                 this.rdoBufferType.Enabled = true;
             }
@@ -120,7 +128,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.cboEditingPolygonLayer.Enabled = this.rdoSaveToEditingLayer.Checked;
         }
 
- private bool method_0(IFeatureLayer ifeatureLayer_0)
+        private bool method_0(IFeatureLayer ifeatureLayer_0)
         {
             return this.method_1(ifeatureLayer_0.FeatureClass as IDataset);
         }
@@ -137,7 +145,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 IVersionedObject obj2 = idataset_0 as IVersionedObject;
                 if (obj2.IsRegisteredAsVersioned)
                 {
-                    return (((AppConfigInfo.UserID.Length == 0) || (AppConfigInfo.UserID.ToLower() == "admin")) || this.sysGrants_0.GetStaffAndRolesLayerPri(AppConfigInfo.UserID, 2, idataset_0.Name));
+                    return (((AppConfigInfo.UserID.Length == 0) || (AppConfigInfo.UserID.ToLower() == "admin")) ||
+                            this.sysGrants_0.GetStaffAndRolesLayerPri(AppConfigInfo.UserID, 2, idataset_0.Name));
                 }
             }
             return true;
@@ -170,7 +179,8 @@ namespace Yutai.ArcGIS.Carto.UI
             this.btnSelectInputFeatures.Enabled = false;
             if (this.cboEditingPolygonLayer.SelectedIndex != -1)
             {
-                BufferHelper.m_BufferHelper.m_pOutFC = ((this.cboEditingPolygonLayer.SelectedItem as ObjectWrap).Object as IFeatureLayer).FeatureClass;
+                BufferHelper.m_BufferHelper.m_pOutFC =
+                    ((this.cboEditingPolygonLayer.SelectedItem as ObjectWrap).Object as IFeatureLayer).FeatureClass;
             }
         }
 
@@ -184,4 +194,3 @@ namespace Yutai.ArcGIS.Carto.UI
         }
     }
 }
-

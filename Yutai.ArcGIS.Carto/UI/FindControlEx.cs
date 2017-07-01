@@ -59,7 +59,8 @@ namespace Yutai.ArcGIS.Carto.UI
             this.btnFind.Enabled = false;
             this.btnStop.Enabled = true;
             IArray array = this.Find();
-            FindResultControlEx ex = new FindResultControlEx {
+            FindResultControlEx ex = new FindResultControlEx
+            {
                 Caption = "在" + this.m_strFindLayers + "的" + this.m_strFindField + "中查找" + this.m_strSearch + "的结果",
                 FindResults = array,
                 FocusMap = this.iapplication_0.FocusMap as IBasicMap
@@ -98,7 +99,10 @@ namespace Yutai.ArcGIS.Carto.UI
                             while (num2 < fields.FieldCount)
                             {
                                 field = fields.get_Field(num2);
-                                if ((((field.Type != esriFieldType.esriFieldTypeGeometry) && (field.Type != esriFieldType.esriFieldTypeBlob)) && (field.Type != esriFieldType.esriFieldTypeRaster)) && (this.cboFields.Properties.Items.IndexOf(field.AliasName) == -1))
+                                if ((((field.Type != esriFieldType.esriFieldTypeGeometry) &&
+                                      (field.Type != esriFieldType.esriFieldTypeBlob)) &&
+                                     (field.Type != esriFieldType.esriFieldTypeRaster)) &&
+                                    (this.cboFields.Properties.Items.IndexOf(field.AliasName) == -1))
                                 {
                                     this.cboFields.Properties.Items.Add(field.AliasName);
                                 }
@@ -118,7 +122,9 @@ namespace Yutai.ArcGIS.Carto.UI
                         for (num2 = 0; num2 < fields.FieldCount; num2++)
                         {
                             field = fields.get_Field(num2);
-                            if (((field.Type != esriFieldType.esriFieldTypeGeometry) && (field.Type != esriFieldType.esriFieldTypeBlob)) && (field.Type != esriFieldType.esriFieldTypeRaster))
+                            if (((field.Type != esriFieldType.esriFieldTypeGeometry) &&
+                                 (field.Type != esriFieldType.esriFieldTypeBlob)) &&
+                                (field.Type != esriFieldType.esriFieldTypeRaster))
                             {
                                 this.cboFields.Properties.Items.Add(field.AliasName);
                             }
@@ -264,7 +270,8 @@ namespace Yutai.ArcGIS.Carto.UI
             this.radioGroup.Properties.Appearance.BackColor = SystemColors.Control;
             this.radioGroup.Properties.Appearance.Options.UseBackColor = true;
             this.radioGroup.Properties.BorderStyle = BorderStyles.NoBorder;
-            this.radioGroup.Properties.Items.AddRange(new RadioGroupItem[] { new RadioGroupItem(null, "所有字段"), new RadioGroupItem(null, "字段"), new RadioGroupItem(null, "图层主显示字段") });
+            this.radioGroup.Properties.Items.AddRange(new RadioGroupItem[]
+                {new RadioGroupItem(null, "所有字段"), new RadioGroupItem(null, "字段"), new RadioGroupItem(null, "图层主显示字段")});
             this.radioGroup.Size = new Size(168, 72);
             this.radioGroup.TabIndex = 23;
             this.radioGroup.SelectedIndexChanged += new EventHandler(this.radioGroup_SelectedIndexChanged);
@@ -296,20 +303,21 @@ namespace Yutai.ArcGIS.Carto.UI
             this.cboSearchString.EditValue = "";
             this.cboSearchString.Location = new Point(48, 7);
             this.cboSearchString.Name = "cboSearchString";
-            this.cboSearchString.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
+            this.cboSearchString.Properties.Buttons.AddRange(new EditorButton[]
+                {new EditorButton(ButtonPredefines.Combo)});
             this.cboSearchString.Size = new Size(128, 23);
             this.cboSearchString.TabIndex = 32;
             this.cboLayers.EditValue = "";
             this.cboLayers.Location = new Point(48, 39);
             this.cboLayers.Name = "cboLayers";
-            this.cboLayers.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
+            this.cboLayers.Properties.Buttons.AddRange(new EditorButton[] {new EditorButton(ButtonPredefines.Combo)});
             this.cboLayers.Size = new Size(128, 23);
             this.cboLayers.TabIndex = 33;
             this.cboLayers.SelectedIndexChanged += new EventHandler(this.cboLayers_SelectedIndexChanged);
             this.cboFields.EditValue = "";
             this.cboFields.Location = new Point(296, 32);
             this.cboFields.Name = "cboFields";
-            this.cboFields.Properties.Buttons.AddRange(new EditorButton[] { new EditorButton(ButtonPredefines.Combo) });
+            this.cboFields.Properties.Buttons.AddRange(new EditorButton[] {new EditorButton(ButtonPredefines.Combo)});
             this.cboFields.Size = new Size(128, 23);
             this.cboFields.TabIndex = 34;
             base.Controls.Add(this.cboFields);
@@ -350,10 +358,14 @@ namespace Yutai.ArcGIS.Carto.UI
             {
                 try
                 {
-                    this.iactiveViewEvents_Event_0.ItemAdded-=(new IActiveViewEvents_ItemAddedEventHandler(this.method_5));
-                    this.iactiveViewEvents_Event_0.ItemDeleted-=(new IActiveViewEvents_ItemDeletedEventHandler(this.method_6));
-                    this.iactiveViewEvents_Event_0.ItemReordered-=(new IActiveViewEvents_ItemReorderedEventHandler(this.method_7));
-                    this.iactiveViewEvents_Event_0.ContentsCleared-=(new IActiveViewEvents_ContentsClearedEventHandler(this.method_8));
+                    this.iactiveViewEvents_Event_0.ItemAdded -=
+                        (new IActiveViewEvents_ItemAddedEventHandler(this.method_5));
+                    this.iactiveViewEvents_Event_0.ItemDeleted -=
+                        (new IActiveViewEvents_ItemDeletedEventHandler(this.method_6));
+                    this.iactiveViewEvents_Event_0.ItemReordered -=
+                        (new IActiveViewEvents_ItemReorderedEventHandler(this.method_7));
+                    this.iactiveViewEvents_Event_0.ContentsCleared -=
+                        (new IActiveViewEvents_ContentsClearedEventHandler(this.method_8));
                 }
                 catch
                 {
@@ -365,10 +377,14 @@ namespace Yutai.ArcGIS.Carto.UI
             {
                 try
                 {
-                    this.iactiveViewEvents_Event_0.ItemAdded+=(new IActiveViewEvents_ItemAddedEventHandler(this.method_5));
-                    this.iactiveViewEvents_Event_0.ItemDeleted+=(new IActiveViewEvents_ItemDeletedEventHandler(this.method_6));
-                    this.iactiveViewEvents_Event_0.ItemReordered+=(new IActiveViewEvents_ItemReorderedEventHandler(this.method_7));
-                    this.iactiveViewEvents_Event_0.ContentsCleared+=(new IActiveViewEvents_ContentsClearedEventHandler(this.method_8));
+                    this.iactiveViewEvents_Event_0.ItemAdded +=
+                        (new IActiveViewEvents_ItemAddedEventHandler(this.method_5));
+                    this.iactiveViewEvents_Event_0.ItemDeleted +=
+                        (new IActiveViewEvents_ItemDeletedEventHandler(this.method_6));
+                    this.iactiveViewEvents_Event_0.ItemReordered +=
+                        (new IActiveViewEvents_ItemReorderedEventHandler(this.method_7));
+                    this.iactiveViewEvents_Event_0.ContentsCleared +=
+                        (new IActiveViewEvents_ContentsClearedEventHandler(this.method_8));
                 }
                 catch
                 {
@@ -470,41 +486,37 @@ namespace Yutai.ArcGIS.Carto.UI
             set
             {
                 this.iapplication_0 = value;
-                (this.iapplication_0 as IApplicationEvents).OnActiveHookChanged += new OnActiveHookChangedHandler(this.method_11);
-                (this.iapplication_0 as IApplicationEvents).OnMapDocumentChangedEvent += new OnMapDocumentChangedEventHandler(this.method_9);
+                (this.iapplication_0 as IApplicationEvents).OnActiveHookChanged +=
+                    new OnActiveHookChangedHandler(this.method_11);
+                (this.iapplication_0 as IApplicationEvents).OnMapDocumentChangedEvent +=
+                    new OnMapDocumentChangedEventHandler(this.method_9);
                 this.imap_0 = this.iapplication_0.FocusMap;
                 this.iactiveViewEvents_Event_0 = this.imap_0 as IActiveViewEvents_Event;
-                this.iactiveViewEvents_Event_0.ItemAdded+=(new IActiveViewEvents_ItemAddedEventHandler(this.method_5));
-                this.iactiveViewEvents_Event_0.ItemDeleted+=(new IActiveViewEvents_ItemDeletedEventHandler(this.method_6));
-                this.iactiveViewEvents_Event_0.ItemReordered+=(new IActiveViewEvents_ItemReorderedEventHandler(this.method_7));
-                this.iactiveViewEvents_Event_0.ContentsChanged+=(new IActiveViewEvents_ContentsChangedEventHandler(this.method_10));
-                this.iactiveViewEvents_Event_0.ContentsCleared+=(new IActiveViewEvents_ContentsClearedEventHandler(this.method_8));
+                this.iactiveViewEvents_Event_0.ItemAdded += (new IActiveViewEvents_ItemAddedEventHandler(this.method_5));
+                this.iactiveViewEvents_Event_0.ItemDeleted +=
+                    (new IActiveViewEvents_ItemDeletedEventHandler(this.method_6));
+                this.iactiveViewEvents_Event_0.ItemReordered +=
+                    (new IActiveViewEvents_ItemReorderedEventHandler(this.method_7));
+                this.iactiveViewEvents_Event_0.ContentsChanged +=
+                    (new IActiveViewEvents_ContentsChangedEventHandler(this.method_10));
+                this.iactiveViewEvents_Event_0.ContentsCleared +=
+                    (new IActiveViewEvents_ContentsClearedEventHandler(this.method_8));
             }
         }
 
         public DockingStyle DefaultDockingStyle
         {
-            get
-            {
-                return DockingStyle.Bottom;
-            }
+            get { return DockingStyle.Bottom; }
         }
 
         string IDockContent.Name
         {
-            get
-            {
-                return base.Name;
-            }
+            get { return base.Name; }
         }
 
         int IDockContent.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
     }
 }
-

@@ -29,7 +29,8 @@ namespace Yutai.ArcGIS.Carto.Library
 
         private void btnSetFolder_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog dialog = new FolderBrowserDialog {
+            FolderBrowserDialog dialog = new FolderBrowserDialog
+            {
                 SelectedPath = this.txtFloder.Text
             };
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -38,11 +39,11 @@ namespace Yutai.ArcGIS.Carto.Library
             }
         }
 
- private void frmCartoConfig_Load(object sender, EventArgs e)
+        private void frmCartoConfig_Load(object sender, EventArgs e)
         {
         }
 
- private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             ListViewItem itemAt = this.listView1.GetItemAt(e.X, e.Y);
             if (itemAt != null)
@@ -64,7 +65,8 @@ namespace Yutai.ArcGIS.Carto.Library
                 if (this.int_0 != 0)
                 {
                     Control control = this.textBox_0;
-                    control.Location = new Point(left, this.listView1.GetItemRect(this.listView1.Items.IndexOf(itemAt)).Y);
+                    control.Location = new Point(left,
+                        this.listView1.GetItemRect(this.listView1.Items.IndexOf(itemAt)).Y);
                     control.Width = this.listView1.Columns[num2].Width;
                     if (control.Width > this.listView1.Width)
                     {
@@ -104,15 +106,8 @@ namespace Yutai.ArcGIS.Carto.Library
 
         public IMap Map
         {
-            get
-            {
-                return this.imap_0;
-            }
-            set
-            {
-                this.imap_0 = value;
-            }
+            get { return this.imap_0; }
+            set { this.imap_0 = value; }
         }
     }
 }
-

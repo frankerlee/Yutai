@@ -21,7 +21,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.InitializeComponent();
         }
 
- public bool Do()
+        public bool Do()
         {
             string path = this.txtOutGDB.Text.Trim();
             if (path.Length == 0)
@@ -39,7 +39,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 IWorkspaceFactory factory = new AccessWorkspaceFactoryClass();
                 try
                 {
-                    IWorkspaceName name = factory.Create(Path.GetDirectoryName(path), Path.GetFileNameWithoutExtension(path), null, 0);
+                    IWorkspaceName name = factory.Create(Path.GetDirectoryName(path),
+                        Path.GetFileNameWithoutExtension(path), null, 0);
                     this.txtOutGDB.Tag = name;
                     goto Label_00EC;
                 }
@@ -49,7 +50,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     return false;
                 }
             }
-            IWorkspaceName name2 = new WorkspaceNameClass {
+            IWorkspaceName name2 = new WorkspaceNameClass
+            {
                 WorkspaceFactoryProgID = "esriDataSourcesGDB.AccessWorkspaceFactory",
                 PathName = path
             };
@@ -59,7 +61,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 return false;
             }
             this.txtOutGDB.Tag = name2;
-        Label_00EC:
+            Label_00EC:
             ExtractionDataHelper.m_pHelper.ReuseSchema = this.chkResueSchema.Checked;
             ExtractionDataHelper.m_pHelper.CheckOnlySchema = this.rdoType.SelectedIndex == 1;
             ExtractionDataHelper.m_pHelper.CheckoutWorkspaceName = this.txtOutGDB.Tag as IWorkspaceName;
@@ -77,9 +79,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.txtOutGDB.Text = path;
         }
 
- private string method_0(IDatasetName idatasetName_0)
+        private string method_0(IDatasetName idatasetName_0)
         {
-            string[] strArray = idatasetName_0.Name.Split(new char[] { '.' });
+            string[] strArray = idatasetName_0.Name.Split(new char[] {'.'});
             return strArray[strArray.Length - 1];
         }
 
@@ -91,7 +93,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 name.Reset();
                 for (IDatasetName name2 = name.Next(); name2 != null; name2 = name.Next())
                 {
-                    string[] strArray = name2.Name.Split(new char[] { '.' });
+                    string[] strArray = name2.Name.Split(new char[] {'.'});
                     string str = strArray[strArray.Length - 1].ToLower();
                     if (string_0 == str)
                     {
@@ -114,7 +116,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             replicas.Next();
             ienumName_0.Reset();
             IDatasetName name = ienumName_0.Next() as IDatasetName;
-        Label_003C:
+            Label_003C:
             if (name != null)
             {
                 bool flag = false;
@@ -137,9 +139,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 MessageBox.Show("选择的导出空间数据库中有同名的要素集，如果要用该导出空间数据库，请在重用选项上打勾。");
                 return false;
             }
-        Label_009D:
+            Label_009D:
             return true;
         }
     }
 }
-

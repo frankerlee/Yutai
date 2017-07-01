@@ -8,6 +8,7 @@ namespace Yutai.Pipeline.Analysis
     {
         private IFeatureCursor _cursor;
         private IFeatureSelection _selection;
+
         public QueryResultArgs()
         {
             _cursor = null;
@@ -19,7 +20,17 @@ namespace Yutai.Pipeline.Analysis
             _cursor = cursor;
             _selection = pSelection;
         }
-        public IFeatureCursor Cursor { get { return _cursor; } set { _cursor = value; } }
-        public IFeatureSelection Selection { get { return _selection; } set { _selection = value; } }
+
+        public IFeatureCursor Cursor
+        {
+            get { return _cursor; }
+            set { _cursor = value; }
+        }
+
+        public IFeatureSelection Selection
+        {
+            get { return _selection; }
+            set { _selection = value; }
+        }
     }
 }

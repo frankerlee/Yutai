@@ -11,7 +11,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
     {
         private IContainer icontainer_0 = null;
         internal SortedList<int, SortedList<int, string>> m_tabcell = new SortedList<int, SortedList<int, string>>();
-        [CompilerGenerated]
+
 
         public frmSetTabelCell()
         {
@@ -22,7 +22,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         {
             if ((this.cboCol.SelectedIndex != -1) && (this.cboRow.SelectedIndex != -1))
             {
-                frmExpressBulider bulider2 = new frmExpressBulider {
+                frmExpressBulider bulider2 = new frmExpressBulider
+                {
                     MapTemplate = this.MapTemplateTableElement.MapTemplate,
                     Expression = this.txtExpress.Text
                 };
@@ -55,7 +56,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
- private void frmSetTabelCell_Load(object sender, EventArgs e)
+        private void frmSetTabelCell_Load(object sender, EventArgs e)
         {
             int num3;
             int rowNumber = this.MapTemplateTableElement.RowNumber;
@@ -72,7 +73,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             this.cboCol.SelectedIndex = 0;
         }
 
- private void method_0(int int_0, int int_1, string string_0)
+        private void method_0(int int_0, int int_1, string string_0)
         {
             SortedList<int, string> list;
             if (this.m_tabcell.ContainsKey(int_0))
@@ -108,19 +109,6 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             return "";
         }
 
-        public MapCartoTemplateLib.MapTemplateTableElement MapTemplateTableElement
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.mapTemplateTableElement_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.mapTemplateTableElement_0 = value;
-            }
-        }
+        public MapCartoTemplateLib.MapTemplateTableElement MapTemplateTableElement { get; set; }
     }
 }
-

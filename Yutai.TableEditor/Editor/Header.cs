@@ -17,6 +17,7 @@ namespace Yutai.Plugins.TableEditor.Editor
     public partial class Header : UserControl
     {
         public event EventHandler<string> Close;
+
         public Header()
         {
             InitializeComponent();
@@ -29,11 +30,12 @@ namespace Yutai.Plugins.TableEditor.Editor
             get { return this.lblValue.Text; }
             set { this.lblValue.Text = value; }
         }
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             OnClose(Value);
         }
-        
+
         private void btnClose_MouseHover(object sender, EventArgs e)
         {
             PictureBox button = sender as PictureBox;

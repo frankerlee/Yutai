@@ -43,15 +43,16 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void frmDataTransferProgress_Load(object sender, EventArgs e)
+        private void frmDataTransferProgress_Load(object sender, EventArgs e)
         {
             this.method_7();
         }
 
- private void method_0(string string_1)
+        private void method_0(string string_1)
         {
             this.int_1++;
-            this.lblObjectClass.Text = string.Concat(new object[] { "传送第 ", this.int_1.ToString(), "个对象，共 ", this.int_0, "个对象" });
+            this.lblObjectClass.Text =
+                string.Concat(new object[] {"传送第 ", this.int_1.ToString(), "个对象，共 ", this.int_0, "个对象"});
             this.lblObject.Text = "传送" + string_1;
             this.progressBarObjectClass.Increment(1);
             this.string_0 = string_1;
@@ -93,7 +94,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         private void method_7()
         {
             this.ienumNameMapping_0.Reset();
-            for (INameMapping mapping = this.ienumNameMapping_0.Next(); mapping != null; mapping = this.ienumNameMapping_0.Next())
+            for (INameMapping mapping = this.ienumNameMapping_0.Next();
+                mapping != null;
+                mapping = this.ienumNameMapping_0.Next())
             {
                 if (mapping.SourceObject is IName)
                 {
@@ -140,10 +143,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IEnumNameMapping EnumNameMapping
         {
-            set
-            {
-                this.ienumNameMapping_0 = value;
-            }
+            set { this.ienumNameMapping_0 = value; }
         }
 
         public IGeoDBDataTransfer GeoDBTransfer
@@ -151,33 +151,24 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             set
             {
                 this.igeoDBDataTransfer_0 = value;
-                (this.igeoDBDataTransfer_0 as IFeatureProgress_Event).Step+=(new IFeatureProgress_StepEventHandler(this.method_6));
+                (this.igeoDBDataTransfer_0 as IFeatureProgress_Event).Step +=
+                    (new IFeatureProgress_StepEventHandler(this.method_6));
             }
         }
 
         public IName ToName
         {
-            set
-            {
-                this.iname_0 = value;
-            }
+            set { this.iname_0 = value; }
         }
 
         public bool TransferOk
         {
-            get
-            {
-                return this.bool_0;
-            }
+            get { return this.bool_0; }
         }
 
         public bool TransferSuccess
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
     }
 }
-

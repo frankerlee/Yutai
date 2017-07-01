@@ -21,11 +21,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         public override bool Enabled
         {
-            get
-            {
-                return base.Enabled;
-            }
+            get { return base.Enabled; }
         }
     }
 }
-

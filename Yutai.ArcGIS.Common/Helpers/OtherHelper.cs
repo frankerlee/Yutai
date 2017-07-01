@@ -18,6 +18,7 @@ namespace Yutai.ArcGIS.Common.Helpers
             Marshal.ReleaseComObject(o);
             GC.Collect();
         }
+
         public static string GetLeftName(string sName)
         {
             string str;
@@ -42,7 +43,9 @@ namespace Yutai.ArcGIS.Common.Helpers
         public static string GetRightName(string sName)
         {
             string str;
-            str = (!(sName == "") ? sName.Substring(sName.IndexOf("|") + 1, sName.Length - sName.IndexOf("|") - 1).Trim() : "");
+            str = (!(sName == "")
+                ? sName.Substring(sName.IndexOf("|") + 1, sName.Length - sName.IndexOf("|") - 1).Trim()
+                : "");
             return str;
         }
 
@@ -51,7 +54,9 @@ namespace Yutai.ArcGIS.Common.Helpers
             string str;
             if (!(sName == ""))
             {
-                str = (sName.IndexOf(sFlag) != -1 ? sName.Substring(sName.IndexOf(sFlag) + 1, sName.Length - sName.IndexOf(sFlag) - 1).Trim() : sName);
+                str = (sName.IndexOf(sFlag) != -1
+                    ? sName.Substring(sName.IndexOf(sFlag) + 1, sName.Length - sName.IndexOf(sFlag) - 1).Trim()
+                    : sName);
             }
             else
             {

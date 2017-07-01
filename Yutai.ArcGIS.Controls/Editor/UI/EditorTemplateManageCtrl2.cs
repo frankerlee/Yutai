@@ -20,31 +20,34 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 {
     public partial class EditorTemplateManageCtrl2 : UserControl
     {
+        public static Dictionary<IMap, Dictionary<IFeatureLayer, List<YTEditTemplate>>> EditMap =
+            new Dictionary<IMap, Dictionary<IFeatureLayer, List<YTEditTemplate>>>();
 
-       
-        public static Dictionary<IMap, Dictionary<IFeatureLayer, List<YTEditTemplate>>> EditMap = new Dictionary<IMap, Dictionary<IFeatureLayer, List<YTEditTemplate>>>();
-       
         private List<IFeatureLayer> FilterLayers = new List<IFeatureLayer>();
-     
+
         private bool IsLoad = false;
-     
+
         private FilterType m_FilterType = FilterType.NoFilter;
         private GroupType m_GroupType = GroupType.GroupByLayer;
         internal static Dictionary<IFeatureLayer, List<YTEditTemplate>> m_list = null;
         public IMap m_Map = null;
-      
+
         public EditorTemplateManageCtrl2()
         {
             InitializeComponent();
 
             base.VisibleChanged += new EventHandler(this.EditorTemplateManageCtrl_VisibleChanged);
             this.Text = "创建属性";
-            EditTemplateManager.OnDeleteTemplate += new OnDeleteTemplateHandler(this.EditTemplateManager_OnDeleteTemplate);
+            EditTemplateManager.OnDeleteTemplate +=
+                new OnDeleteTemplateHandler(this.EditTemplateManager_OnDeleteTemplate);
             EditTemplateManager.OnAddTemplate += new OnAddTemplateHandler(this.EditTemplateManager_OnAddTemplate);
-            EditTemplateManager.OnAddMoreTemplate += new OnAddMoreTemplateHandler(this.EditTemplateManager_OnAddMoreTemplate);
-            
-            EditTemplateManager.OnTemplatePropertyChange += new OnTemplatePropertyChangeHandler(this.EditTemplateManager_OnTemplatePropertyChange);
-            EditTemplateManager.OnDeleteMoreTemplate += new OnDeleteMoreTemplateHandler(this.EditTemplateManager_OnDeleteMoreTemplate);
+            EditTemplateManager.OnAddMoreTemplate +=
+                new OnAddMoreTemplateHandler(this.EditTemplateManager_OnAddMoreTemplate);
+
+            EditTemplateManager.OnTemplatePropertyChange +=
+                new OnTemplatePropertyChangeHandler(this.EditTemplateManager_OnTemplatePropertyChange);
+            EditTemplateManager.OnDeleteMoreTemplate +=
+                new OnDeleteMoreTemplateHandler(this.EditTemplateManager_OnDeleteMoreTemplate);
             if (ApplicationRef.AppContext != null)
             {
                 (ApplicationRef.AppContext as IAppContextEvents).OnMapDocumentChangedEvent +=
@@ -390,7 +393,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 layer.Reset();
                 for (ILayer layer2 = layer.Next(); layer2 != null; layer2 = layer.Next())
                 {
-                    if ((layer2 is IFeatureLayer) && Yutai.ArcGIS.Common.Editor.Editor.LayerCanEdit(layer2 as IFeatureLayer))
+                    if ((layer2 is IFeatureLayer) &&
+                        Yutai.ArcGIS.Common.Editor.Editor.LayerCanEdit(layer2 as IFeatureLayer))
                     {
                         List<YTEditTemplate> list = YTEditTemplateFactory.Create(layer2 as IFeatureLayer);
                         m_list.Add(layer2 as IFeatureLayer, list);
@@ -492,7 +496,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                                 group = group2;
                                 goto Label_0337;
                         }
-                        if ((shapeType != esriGeometryType.esriGeometryPoint) && (shapeType != esriGeometryType.esriGeometryMultipoint))
+                        if ((shapeType != esriGeometryType.esriGeometryPoint) &&
+                            (shapeType != esriGeometryType.esriGeometryMultipoint))
                         {
                             continue;
                         }
@@ -553,14 +558,17 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             esriFeatureType featureType = template.FeatureClass.FeatureType;
             if (this.m_FilterType == FilterType.Point)
             {
-                if ((featureType == esriFeatureType.esriFTSimple) && ((shapeType == esriGeometryType.esriGeometryPoint) || (shapeType == esriGeometryType.esriGeometryMultipoint)))
+                if ((featureType == esriFeatureType.esriFTSimple) &&
+                    ((shapeType == esriGeometryType.esriGeometryPoint) ||
+                     (shapeType == esriGeometryType.esriGeometryMultipoint)))
                 {
                     return true;
                 }
             }
             else if (this.m_FilterType == FilterType.Line)
             {
-                if ((featureType == esriFeatureType.esriFTSimple) && (shapeType == esriGeometryType.esriGeometryPolyline))
+                if ((featureType == esriFeatureType.esriFTSimple) &&
+                    (shapeType == esriGeometryType.esriGeometryPolyline))
                 {
                     return true;
                 }
@@ -596,14 +604,17 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             esriFeatureType featureType = template.FeatureLayer.FeatureClass.FeatureType;
             if (this.m_FilterType == FilterType.Point)
             {
-                if ((featureType == esriFeatureType.esriFTSimple) && ((shapeType == esriGeometryType.esriGeometryPoint) || (shapeType == esriGeometryType.esriGeometryMultipoint)))
+                if ((featureType == esriFeatureType.esriFTSimple) &&
+                    ((shapeType == esriGeometryType.esriGeometryPoint) ||
+                     (shapeType == esriGeometryType.esriGeometryMultipoint)))
                 {
                     return true;
                 }
             }
             else if (this.m_FilterType == FilterType.Line)
             {
-                if ((featureType == esriFeatureType.esriFTSimple) && (shapeType == esriGeometryType.esriGeometryPolyline))
+                if ((featureType == esriFeatureType.esriFTSimple) &&
+                    (shapeType == esriGeometryType.esriGeometryPolyline))
                 {
                     return true;
                 }
@@ -673,9 +684,9 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         {
             if (this.listView1.SelectedItems.Count > 0)
             {
-                Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate = this.listView1.SelectedItems[0].Tag as YTEditTemplate;
+                Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate =
+                    this.listView1.SelectedItems[0].Tag as YTEditTemplate;
                 ApplicationRef.AppContext.UpdateUI();
-               
             }
             else
             {
@@ -731,7 +742,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            new frmTemplatesGroup { Map = this.Map, Templates = m_list }.ShowDialog();
+            new frmTemplatesGroup {Map = this.Map, Templates = m_list}.ShowDialog();
         }
 
         private void 清除分组ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -751,12 +762,10 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 this.InitControl();
             }
         }
+
         public IMap Map
         {
-            get
-            {
-                return this.m_Map;
-            }
+            get { return this.m_Map; }
             set
             {
                 if (value == null)
@@ -766,10 +775,12 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 }
                 if (this.m_Map != null)
                 {
-                    (this.m_Map as IActiveViewEvents_Event).ItemDeleted -= (new IActiveViewEvents_ItemDeletedEventHandler(this.EditorTemplateManageCtrl_ItemDeleted));
+                    (this.m_Map as IActiveViewEvents_Event).ItemDeleted -=
+                        (new IActiveViewEvents_ItemDeletedEventHandler(this.EditorTemplateManageCtrl_ItemDeleted));
                 }
                 this.m_Map = value;
-                (this.m_Map as IActiveViewEvents_Event).ItemDeleted += (new IActiveViewEvents_ItemDeletedEventHandler(this.EditorTemplateManageCtrl_ItemDeleted));
+                (this.m_Map as IActiveViewEvents_Event).ItemDeleted +=
+                    (new IActiveViewEvents_ItemDeletedEventHandler(this.EditorTemplateManageCtrl_ItemDeleted));
                 if (EditMap.ContainsKey(this.m_Map))
                 {
                     m_list = EditMap[this.Map];

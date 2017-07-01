@@ -20,23 +20,16 @@ namespace Yutai.ArcGIS.Carto.Library
             this.string_0 = this.textBox1.Text;
         }
 
- private void frmInputText_Load(object sender, EventArgs e)
+        private void frmInputText_Load(object sender, EventArgs e)
         {
             this.label1.Text = this.Text;
             this.textBox1.Text = this.string_0;
         }
 
- public string InputText
+        public string InputText
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

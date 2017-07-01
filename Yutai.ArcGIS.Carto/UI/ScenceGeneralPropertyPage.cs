@@ -44,7 +44,7 @@ namespace Yutai.ArcGIS.Carto.UI
             double aspectRatio = 0.12;
             try
             {
-                aspectRatio = this.iscene_0.Extent.Width / this.iscene_0.Extent.Height;
+                aspectRatio = this.iscene_0.Extent.Width/this.iscene_0.Extent.Height;
             }
             catch
             {
@@ -74,7 +74,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- public void ResetControl()
+        public void ResetControl()
         {
         }
 
@@ -104,47 +104,28 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public IScene Scence
         {
-            set
-            {
-                this.iscene_0 = value;
-            }
+            set { this.iscene_0 = value; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
     }
 }
-

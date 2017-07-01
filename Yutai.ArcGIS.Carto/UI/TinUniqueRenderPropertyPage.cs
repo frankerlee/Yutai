@@ -81,7 +81,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnAddValue_Click(object sender, EventArgs e)
         {
-            frmAddValues values = new frmAddValues {
+            frmAddValues values = new frmAddValues
+            {
                 List = this.ilist_0 as ArrayList,
                 GetAllValues = true
             };
@@ -149,7 +150,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     IColor color = null;
                     for (int i = 0; i < this.itinUniqueValueRenderer_0.ValueCount; i++)
                     {
-                        ISymbol symbol = this.itinUniqueValueRenderer_0.get_Symbol(this.itinUniqueValueRenderer_0.get_Value(i));
+                        ISymbol symbol =
+                            this.itinUniqueValueRenderer_0.get_Symbol(this.itinUniqueValueRenderer_0.get_Value(i));
                         color = this.ienumColors_0.Next();
                         if (color == null)
                         {
@@ -165,7 +167,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.listView1.SelectedIndices.Count > 0)
             {
@@ -230,7 +232,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 }
                 else if ((this.itinUniqueValueRenderer_0 as ITinRenderer).Name == "Triangle tag")
                 {
-                    (this.itinLayer_0.Dataset as ITinAdvanced2).GetCountedUniqueTagValues(esriTinElementType.esriTinTriangle, out array, out array2);
+                    (this.itinLayer_0.Dataset as ITinAdvanced2).GetCountedUniqueTagValues(
+                        esriTinElementType.esriTinTriangle, out array, out array2);
                     for (num = 0; num < array.Count; num++)
                     {
                         this.ilist_0.Add(array.get_Element(num).ToString());
@@ -294,14 +297,16 @@ namespace Yutai.ArcGIS.Carto.UI
                 case esriGeometryType.esriGeometryPoint:
                 case esriGeometryType.esriGeometryMultipoint:
                 {
-                    IMarkerSymbol symbol = new SimpleMarkerSymbolClass {
+                    IMarkerSymbol symbol = new SimpleMarkerSymbolClass
+                    {
                         Size = 3.0
                     };
                     return (symbol as ISymbol);
                 }
                 case esriGeometryType.esriGeometryPolyline:
                 {
-                    ILineSymbol symbol2 = new SimpleLineSymbolClass {
+                    ILineSymbol symbol2 = new SimpleLineSymbolClass
+                    {
                         Width = 0.2
                     };
                     return (symbol2 as ISymbol);
@@ -328,7 +333,8 @@ namespace Yutai.ArcGIS.Carto.UI
             if (this.cboColorRamp.Items.Count == 0)
             {
                 this.cboColorRamp.Enabled = false;
-                IRandomColorRamp ramp = new RandomColorRampClass {
+                IRandomColorRamp ramp = new RandomColorRampClass
+                {
                     StartHue = 40,
                     EndHue = 120,
                     MinValue = 65,
@@ -356,30 +362,18 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public ILayer CurrentLayer
         {
-            set
-            {
-                this.itinLayer_0 = value as ITinLayer;
-            }
+            set { this.itinLayer_0 = value as ITinLayer; }
         }
 
         bool IUserControl.Visible
         {
-            get
-            {
-                return base.Visible;
-            }
-            set
-            {
-                base.Visible = value;
-            }
+            get { return base.Visible; }
+            set { base.Visible = value; }
         }
 
         public IStyleGallery StyleGallery
         {
-            set
-            {
-                this.istyleGallery_0 = value;
-            }
+            set { this.istyleGallery_0 = value; }
         }
 
         public ITinRenderer TinRenderer
@@ -397,4 +391,3 @@ namespace Yutai.ArcGIS.Carto.UI
         }
     }
 }
-

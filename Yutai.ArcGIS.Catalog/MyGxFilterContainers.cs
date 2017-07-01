@@ -19,19 +19,12 @@
 
         public string Description
         {
-            get
-            {
-                return "容器";
-            }
+            get { return "容器"; }
         }
 
         public string Name
         {
-            get
-            {
-                return "GxFilterContainers";
-            }
+            get { return "GxFilterContainers"; }
         }
     }
 }
-

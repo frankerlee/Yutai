@@ -17,8 +17,8 @@ namespace Yutai.ArcGIS.Controls.Controls
         private int m_ErrorCount = 0;
         private IParameter[] m_pParamters = new IParameter[25];
         private ISpatialReferenceFactory m_SpatialFactory = new SpatialReferenceEnvironmentClass();
-        private int[] ProjectType = new int[] { 43005, 43020, 43033, 43004, 43006 };
-        private int[] UnitType = new int[] { 9001, 9036 };
+        private int[] ProjectType = new int[] {43005, 43020, 43033, 43004, 43006};
+        private int[] UnitType = new int[] {9001, 9036};
 
         public ProjCoordSys()
         {
@@ -43,7 +43,8 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         private void btnModify_Click(object sender, EventArgs e)
         {
-            frmSpatialRefrence refrence = new frmSpatialRefrence {
+            frmSpatialRefrence refrence = new frmSpatialRefrence
+            {
                 Text = "地理坐标系属性",
                 SpatialRefrence = this.m_GeoCoordSys
             };
@@ -56,7 +57,8 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            frmSpatialRefrence refrence = new frmSpatialRefrence {
+            frmSpatialRefrence refrence = new frmSpatialRefrence
+            {
                 Text = "新建地理坐标系",
                 SpatialRefrenceType = frmSpatialRefrence.enumSpatialRefrenceType.enumGeographicCoord
             };
@@ -71,15 +73,18 @@ namespace Yutai.ArcGIS.Controls.Controls
         private void btnSelect_Click(object sender, EventArgs e)
         {
             bool flag;
-            OpenFileDialog dialog = new OpenFileDialog {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
                 Filter = "空间参考文件 (*.prj)|*.prj",
                 RestoreDirectory = true
             };
-        Label_0095:
+            Label_0095:
             flag = true;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                this.m_GeoCoordSys = ((ISpatialReferenceFactory2) this.m_SpatialFactory).CreateESRISpatialReferenceFromPRJFile(dialog.FileName) as IGeographicCoordinateSystem;
+                this.m_GeoCoordSys =
+                    ((ISpatialReferenceFactory2) this.m_SpatialFactory).CreateESRISpatialReferenceFromPRJFile(
+                        dialog.FileName) as IGeographicCoordinateSystem;
                 if (this.m_GeoCoordSys == null)
                 {
                     MessageBox.Show("请选择包含地理坐标系的空间参考文件!");
@@ -112,7 +117,8 @@ namespace Yutai.ArcGIS.Controls.Controls
         {
             if (this.m_CanDo)
             {
-                this.m_Projection = this.m_SpatialFactory.CreateProjection(this.ProjectType[this.cboProjectName.SelectedIndex]);
+                this.m_Projection =
+                    this.m_SpatialFactory.CreateProjection(this.ProjectType[this.cboProjectName.SelectedIndex]);
                 IParameter[] defaultParameters = ((IProjectionGEN) this.m_Projection).GetDefaultParameters();
                 int index = 0;
                 while (index < defaultParameters.Length)
@@ -128,7 +134,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             }
         }
 
- public IProjectedCoordinateSystem GetSpatialRefrence()
+        public IProjectedCoordinateSystem GetSpatialRefrence()
         {
             int num3;
             if (this.m_ErrorCount > 0)
@@ -173,7 +179,8 @@ namespace Yutai.ArcGIS.Controls.Controls
             object parameters = parameterArray;
             try
             {
-                ((IProjectedCoordinateSystemEdit) this.m_ProjectedCoordSys).Define(ref text, ref alias, ref alias, ref alias, ref alias, ref geoCoordSys, ref unit, ref projection, ref parameters);
+                ((IProjectedCoordinateSystemEdit) this.m_ProjectedCoordSys).Define(ref text, ref alias, ref alias,
+                    ref alias, ref alias, ref geoCoordSys, ref unit, ref projection, ref parameters);
             }
             catch
             {
@@ -226,7 +233,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             this.m_CanDo = true;
         }
 
- private void paramlistView_ValueChanged(object sender, ValueChangedEventArgs e)
+        private void paramlistView_ValueChanged(object sender, ValueChangedEventArgs e)
         {
             try
             {
@@ -304,10 +311,17 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         private void WriteGeoCoordSysInfo(IGeographicCoordinateSystem GeoCoordSys)
         {
-            string[] strArray = new string[] { 
-                "名称: ", GeoCoordSys.Name, "\r\n缩略名: ", GeoCoordSys.Abbreviation, "\r\n说明: ", GeoCoordSys.Remarks, "\r\n角度单位: ", GeoCoordSys.CoordinateUnit.Name, " (", GeoCoordSys.CoordinateUnit.RadiansPerUnit.ToString(), ")\r\n本初子午线: ", GeoCoordSys.PrimeMeridian.Name, " (", GeoCoordSys.PrimeMeridian.Longitude.ToString(), ")\r\n数据: ", GeoCoordSys.Datum.Name, 
-                "\r\n  椭球体: ", GeoCoordSys.Datum.Spheroid.Name, "\r\n    长半轴: ", GeoCoordSys.Datum.Spheroid.SemiMajorAxis.ToString(), "\r\n    短半轴: ", GeoCoordSys.Datum.Spheroid.SemiMinorAxis.ToString(), "\r\n    扁率倒数: ", (1.0 / GeoCoordSys.Datum.Spheroid.Flattening).ToString()
-             };
+            string[] strArray = new string[]
+            {
+                "名称: ", GeoCoordSys.Name, "\r\n缩略名: ", GeoCoordSys.Abbreviation, "\r\n说明: ", GeoCoordSys.Remarks,
+                "\r\n角度单位: ", GeoCoordSys.CoordinateUnit.Name, " (",
+                GeoCoordSys.CoordinateUnit.RadiansPerUnit.ToString(), ")\r\n本初子午线: ", GeoCoordSys.PrimeMeridian.Name,
+                " (", GeoCoordSys.PrimeMeridian.Longitude.ToString(), ")\r\n数据: ", GeoCoordSys.Datum.Name,
+                "\r\n  椭球体: ", GeoCoordSys.Datum.Spheroid.Name, "\r\n    长半轴: ",
+                GeoCoordSys.Datum.Spheroid.SemiMajorAxis.ToString(), "\r\n    短半轴: ",
+                GeoCoordSys.Datum.Spheroid.SemiMinorAxis.ToString(), "\r\n    扁率倒数: ",
+                (1.0/GeoCoordSys.Datum.Spheroid.Flattening).ToString()
+            };
             string str = string.Concat(strArray);
             this.textBoxGeoCoodSys.Text = str;
         }
@@ -330,10 +344,7 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         public IGeographicCoordinateSystem GeographicCoordinateSystem
         {
-            get
-            {
-                return this.m_GeoCoordSys;
-            }
+            get { return this.m_GeoCoordSys; }
         }
 
         public IParameter[] Paramters
@@ -360,19 +371,12 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         public IProjectedCoordinateSystem ProjectedCoordinateSystem
         {
-            set
-            {
-                this.m_ProjectedCoordSys = value;
-            }
+            set { this.m_ProjectedCoordSys = value; }
         }
 
         public IProjection Projection
         {
-            get
-            {
-                return this.m_Projection;
-            }
+            get { return this.m_Projection; }
         }
     }
 }
-

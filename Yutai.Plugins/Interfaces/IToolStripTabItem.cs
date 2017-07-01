@@ -23,6 +23,7 @@ namespace Yutai.Plugins.Interfaces
         event EventHandler<MenuItemEventArgs> ItemClicked;
         void FireItemClicked(object sender, MenuItemEventArgs e);
     }
+
     public interface IToolStripTabItem : IToolStripItem
     {
         IToolStripItemCollection SubItems { get; }
@@ -33,14 +34,17 @@ namespace Yutai.Plugins.Interfaces
 
         void Update();
     }
+
     public interface IToolStripExItem : IMenuItem
     {
         /// <summary>
         /// Gets the collection item in submenu for this item.
         /// </summary>
         IToolStripItemCollection SubItems { get; }
+
         void Update();
     }
+
     public interface IToolStripItemCollection : IEnumerable<IToolStripItem>
     {
         IToolStripItem AddLabel(string text, string key, PluginIdentity identity);
@@ -49,7 +53,7 @@ namespace Yutai.Plugins.Interfaces
         IToolStripItem AddButton(string text, string key, PluginIdentity identity);
         IToolStripItem AddButton(string text, string key, Bitmap icon, PluginIdentity identity);
         IToolStripExItem AddDropDown(string text, string key, PluginIdentity identity);
-        
+
         IToolStripItem AddComboBox(string text, string key, PluginIdentity identity);
         IToolStripItem this[int menuItemIndex] { get; }
         void Insert(IToolStripItem item, int index);
@@ -65,6 +69,7 @@ namespace Yutai.Plugins.Interfaces
         /// </summary>
         IToolStripItem InsertBefore { get; set; }
     }
+
     public interface IToolStripItem
     {
         /// <summary>

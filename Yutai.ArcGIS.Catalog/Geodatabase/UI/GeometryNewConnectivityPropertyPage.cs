@@ -24,7 +24,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             if (this.cboConnectivityRule.SelectedIndex != -1)
             {
                 ListViewItem item;
-                ISubtypes featureClass = (this.cboConnectivityRule.SelectedItem as FeatureClassWrap).FeatureClass as ISubtypes;
+                ISubtypes featureClass =
+                    (this.cboConnectivityRule.SelectedItem as FeatureClassWrap).FeatureClass as ISubtypes;
                 string[] items = new string[2];
                 if (featureClass.HasSubtype)
                 {
@@ -35,7 +36,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     {
                         items[0] = str;
                         items[1] = num.ToString();
-                        item = new ListViewItem(items) {
+                        item = new ListViewItem(items)
+                        {
                             Tag = num
                         };
                         this.listView1.Items.Add(item);
@@ -45,7 +47,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 {
                     items[0] = this.cboConnectivityRule.Text;
                     items[1] = "0";
-                    item = new ListViewItem(items) {
+                    item = new ListViewItem(items)
+                    {
                         Tag = 0
                     };
                     this.listView1.Items.Add(item);
@@ -53,7 +56,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void GeometryNewConnectivityPropertyPage_Load(object sender, EventArgs e)
+        private void GeometryNewConnectivityPropertyPage_Load(object sender, EventArgs e)
         {
             IFeatureClass class3;
             IEnumFeatureClass class2 = this.igeometricNetwork_0.get_ClassesByType(esriFeatureType.esriFTSimpleJunction);
@@ -83,7 +86,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.method_0(this.igeometricNetwork_0);
         }
 
- private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.listView1.SelectedIndices.Count != 1)
             {
@@ -128,10 +131,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IGeometricNetwork GeometricNetwork
         {
-            set
-            {
-                this.igeometricNetwork_0 = value;
-            }
+            set { this.igeometricNetwork_0 = value; }
         }
 
         internal partial class ConnectivityRuleWrap
@@ -150,10 +150,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
             public IConnectivityRule ConnectivityRule
             {
-                get
-                {
-                    return this.iconnectivityRule_0;
-                }
+                get { return this.iconnectivityRule_0; }
             }
         }
 
@@ -173,12 +170,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
             public IFeatureClass FeatureClass
             {
-                get
-                {
-                    return this.ifeatureClass_0;
-                }
+                get { return this.ifeatureClass_0; }
             }
         }
     }
 }
-

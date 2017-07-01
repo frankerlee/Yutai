@@ -68,10 +68,7 @@
 
         public bool AreChildrenViewable
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public IEnumGxObject Children
@@ -88,11 +85,7 @@
 
         public bool HasChildren
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
     }
 }
-

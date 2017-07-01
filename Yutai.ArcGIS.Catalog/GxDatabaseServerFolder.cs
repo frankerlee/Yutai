@@ -15,7 +15,8 @@ namespace Yutai.ArcGIS.Catalog
 
         public GxDatabaseServerFolder()
         {
-            this.string_0 = Environment.SystemDirectory.Substring(0, 2) + @"\Documents and Settings\Administrator\Application Data\ESRI\ArcCatalog";
+            this.string_0 = Environment.SystemDirectory.Substring(0, 2) +
+                            @"\Documents and Settings\Administrator\Application Data\ESRI\ArcCatalog";
             if (!Directory.Exists(this.string_0))
             {
                 try
@@ -115,150 +116,93 @@ namespace Yutai.ArcGIS.Catalog
 
         public bool AreChildrenViewable
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public string BaseName
         {
-            get
-            {
-                return "空间数据库服务器";
-            }
+            get { return "空间数据库服务器"; }
         }
 
         public string Category
         {
-            get
-            {
-                return "空间数据库服务器文件夹";
-            }
+            get { return "空间数据库服务器文件夹"; }
         }
 
         public IEnumGxObject Children
         {
-            get
-            {
-                return (this.igxObjectArray_0 as IEnumGxObject);
-            }
+            get { return (this.igxObjectArray_0 as IEnumGxObject); }
         }
 
         public UID ClassID
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public UID ContextMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public string FullName
         {
-            get
-            {
-                return "空间数据库服务器";
-            }
+            get { return "空间数据库服务器"; }
         }
 
         public bool HasChildren
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public IName InternalObjectName
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public bool IsValid
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         public Bitmap LargeImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(74);
-            }
+            get { return ImageLib.GetSmallImage(74); }
         }
 
         public Bitmap LargeSelectedImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(74);
-            }
+            get { return ImageLib.GetSmallImage(74); }
         }
 
         public string Name
         {
-            get
-            {
-                return "空间数据库服务器";
-            }
+            get { return "空间数据库服务器"; }
         }
 
         public UID NewMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IGxObject Parent
         {
-            get
-            {
-                return this.igxObject_0;
-            }
+            get { return this.igxObject_0; }
         }
 
         public string Path
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-            }
+            get { return this.string_0; }
+            set { }
         }
 
         public Bitmap SmallImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(74);
-            }
+            get { return ImageLib.GetSmallImage(74); }
         }
 
         public Bitmap SmallSelectedImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(74);
-            }
+            get { return ImageLib.GetSmallImage(74); }
         }
     }
 }
-

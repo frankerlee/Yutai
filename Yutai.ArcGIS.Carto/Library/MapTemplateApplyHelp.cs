@@ -10,8 +10,7 @@ namespace Yutai.ArcGIS.Carto.Library
         private bool bool_0 = false;
         private bool bool_1 = false;
         private bool bool_2 = false;
-        [CompilerGenerated]
-        private bool bool_3;
+
         private double double_0 = 0.0;
         private double double_1 = 0.0;
         private double double_2;
@@ -34,7 +33,8 @@ namespace Yutai.ArcGIS.Carto.Library
             ((ipageLayout_0 as IActiveView).FocusMap as IMapClipOptions).ClipType = esriMapClipType.esriMapClipNone;
             if ((ipageLayout_0 as IActiveView).FocusMap is IMapAutoExtentOptions)
             {
-                ((ipageLayout_0 as IActiveView).FocusMap as IMapAutoExtentOptions).AutoExtentType = esriExtentTypeEnum.esriExtentDefault;
+                ((ipageLayout_0 as IActiveView).FocusMap as IMapAutoExtentOptions).AutoExtentType =
+                    esriExtentTypeEnum.esriExtentDefault;
             }
             if (this.FixDataRange)
             {
@@ -43,11 +43,13 @@ namespace Yutai.ArcGIS.Carto.Library
             }
             else if (this.IsMapNo)
             {
-                this.mapTemplate_0.CreateTrapezoidTK(ipageLayout_0, MapNoAssistantFactory.CreateMapNoAssistant(this.string_0));
+                this.mapTemplate_0.CreateTrapezoidTK(ipageLayout_0,
+                    MapNoAssistantFactory.CreateMapNoAssistant(this.string_0));
             }
             else if (this.mapTemplate_0.MapFramingType == MapFramingType.StandardFraming)
             {
-                PointClass class2 = new PointClass {
+                PointClass class2 = new PointClass
+                {
                     X = this.double_0,
                     Y = this.double_1
                 };
@@ -91,7 +93,8 @@ namespace Yutai.ArcGIS.Carto.Library
             this.double_7 = double_12;
         }
 
-        public void SetRouneCoordinate(IPoint ipoint_4, IPoint ipoint_5, IPoint ipoint_6, IPoint ipoint_7, double double_8)
+        public void SetRouneCoordinate(IPoint ipoint_4, IPoint ipoint_5, IPoint ipoint_6, IPoint ipoint_7,
+            double double_8)
         {
             this.bool_1 = false;
             this.bool_0 = false;
@@ -104,76 +107,40 @@ namespace Yutai.ArcGIS.Carto.Library
 
         public MapTemplate CartoTemplateData
         {
-            set
-            {
-                this.mapTemplate_0 = value;
-            }
+            set { this.mapTemplate_0 = value; }
         }
 
         public int CoordinateType
         {
-            set
-            {
-                this.int_0 = value;
-            }
+            set { this.int_0 = value; }
         }
 
-        public bool FixDataRange
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.bool_3;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.bool_3 = value;
-            }
-        }
+        public bool FixDataRange { get; set; }
 
         public bool HasStrip
         {
-            get
-            {
-                return this.bool_2;
-            }
-            set
-            {
-                this.bool_2 = value;
-            }
+            get { return this.bool_2; }
+            set { this.bool_2 = value; }
         }
 
         public bool IsMapNo
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         public double JC
         {
-            get
-            {
-                return this.double_4;
-            }
+            get { return this.double_4; }
         }
 
         public double JD
         {
-            get
-            {
-                return this.double_2;
-            }
+            get { return this.double_2; }
         }
 
         public string MapNo
         {
-            get
-            {
-                return this.string_0;
-            }
+            get { return this.string_0; }
             set
             {
                 this.string_0 = value;
@@ -184,47 +151,28 @@ namespace Yutai.ArcGIS.Carto.Library
 
         public double WC
         {
-            get
-            {
-                return this.double_5;
-            }
+            get { return this.double_5; }
         }
 
         public double WD
         {
-            get
-            {
-                return this.double_3;
-            }
+            get { return this.double_3; }
         }
 
         public double X
         {
-            set
-            {
-                this.double_0 = value;
-            }
+            set { this.double_0 = value; }
         }
 
         public double XOffset
         {
-            get
-            {
-                return this.double_6;
-            }
-            set
-            {
-                this.double_6 = value;
-            }
+            get { return this.double_6; }
+            set { this.double_6 = value; }
         }
 
         public double Y
         {
-            set
-            {
-                this.double_1 = value;
-            }
+            set { this.double_1 = value; }
         }
     }
 }
-

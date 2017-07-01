@@ -29,7 +29,8 @@ namespace Yutai.ArcGIS.Carto.UI
         {
             if (this.bool_0 && (this.ilegendItem_0 != null))
             {
-                this.ilegendItem_0.LegendClassFormat.AreaPatch = this.cboAreaPatches.GetSelectStyleGalleryItem().Item as IAreaPatch;
+                this.ilegendItem_0.LegendClassFormat.AreaPatch =
+                    this.cboAreaPatches.GetSelectStyleGalleryItem().Item as IAreaPatch;
             }
         }
 
@@ -37,11 +38,12 @@ namespace Yutai.ArcGIS.Carto.UI
         {
             if (this.bool_0 && (this.ilegendItem_0 != null))
             {
-                this.ilegendItem_0.LegendClassFormat.LinePatch = this.cboLinePatches.GetSelectStyleGalleryItem().Item as ILinePatch;
+                this.ilegendItem_0.LegendClassFormat.LinePatch =
+                    this.cboLinePatches.GetSelectStyleGalleryItem().Item as ILinePatch;
             }
         }
 
- private void LegendSetupUserControl_Load(object sender, EventArgs e)
+        private void LegendSetupUserControl_Load(object sender, EventArgs e)
         {
             if (this.istyleGallery_0 != null)
             {
@@ -74,7 +76,8 @@ namespace Yutai.ArcGIS.Carto.UI
         private void listLegendLayers_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.bool_0 = false;
-            this.ilegendItem_0 = (this.listLegendLayers.Items[this.listLegendLayers.SelectedIndex] as LegendItemWrap).LegendItem;
+            this.ilegendItem_0 =
+                (this.listLegendLayers.Items[this.listLegendLayers.SelectedIndex] as LegendItemWrap).LegendItem;
             if (this.ilegendItem_0 != null)
             {
                 ILegendClassFormat legendClassFormat = this.ilegendItem_0.LegendClassFormat;
@@ -112,7 +115,9 @@ namespace Yutai.ArcGIS.Carto.UI
             for (int i = 0; i < this.ilegend_0.ItemCount; i++)
             {
                 ILegendItem item = this.ilegend_0.get_Item(i);
-                if (!(item.Layer is IFeatureLayer) || (((item.Layer as IFeatureLayer).FeatureClass.ShapeType != esriGeometryType.esriGeometryPoint) && ((item.Layer as IFeatureLayer).FeatureClass.ShapeType != esriGeometryType.esriGeometryMultipoint)))
+                if (!(item.Layer is IFeatureLayer) ||
+                    (((item.Layer as IFeatureLayer).FeatureClass.ShapeType != esriGeometryType.esriGeometryPoint) &&
+                     ((item.Layer as IFeatureLayer).FeatureClass.ShapeType != esriGeometryType.esriGeometryMultipoint)))
                 {
                     this.listLegendLayers.Items.Add(new LegendItemWrap(item));
                 }
@@ -173,10 +178,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public ILegend Legend
         {
-            set
-            {
-                this.ilegend_0 = value;
-            }
+            set { this.ilegend_0 = value; }
         }
 
         public IStyleGallery StyleGallery
@@ -191,4 +193,3 @@ namespace Yutai.ArcGIS.Carto.UI
         }
     }
 }
-

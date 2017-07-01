@@ -27,7 +27,7 @@ namespace Yutai.Menu
 
             _context = context;
 
-           // InitStatusBar();
+            // InitStatusBar();
 
             //var appContext = context as AppContext;
             //if (appContext != null)
@@ -41,8 +41,8 @@ namespace Yutai.Menu
         private void AddMapEventHandlers()
         {
             IMapControl2 map = _context.MapControl as IMapControl2;
-            IMapControlEvents2_Event mapEvents=map as IMapControlEvents2_Event;
-            
+            IMapControlEvents2_Event mapEvents = map as IMapControlEvents2_Event;
+
             if (map == null)
             {
                 throw new InvalidCastException("Map must implement IMap interface");
@@ -51,8 +51,6 @@ namespace Yutai.Menu
             //mapEvents.OnExtentUpdated += MapEvents_OnExtentUpdated;
             //mapEvents.OnSelectionChanged += MapEvents_OnSelectionChanged;
             //mapEvents.OnMouseMove += MapEvents_OnMouseMove;
-
-           
         }
 
         private void MapEvents_OnMouseMove(int button, int shift, int X, int Y, double mapX, double mapY)
@@ -66,7 +64,7 @@ namespace Yutai.Menu
             var statusSelected = _context.StatusBar.FindItem(StatusBarKeys.SelectedCount, Identity);
 
             IMap pMap = _context.MapControl.Map as IMap;
-            statusSelected.Text = "选择个数:"+pMap.SelectionCount.ToString();
+            statusSelected.Text = "选择个数:" + pMap.SelectionCount.ToString();
         }
 
         private void MapEvents_OnExtentUpdated(object displayTransformation, bool sizeChanged, object newEnvelope)
@@ -143,7 +141,7 @@ namespace Yutai.Menu
             //    case StatusBarKeys.ViewStyleAll:
             //        ((ISecureContext)_context).SetViewStyle(MapViewStyle.ViewAll);
             //        break;
-               
+
             //    case StatusBarKeys.ViewStyleConfig:
             //        MessageBox.Show("进一步开发，预留快速二三维联动配置窗口启动");
             //        //var model = _context.Container.GetInstance<ConfigViewModel>();
@@ -174,7 +172,7 @@ namespace Yutai.Menu
             UpdateSelectionMessage();
 
             var statusUnits = bar.FindItem(StatusBarKeys.MapUnits, Identity);
-            statusUnits.Text = "单位: " + MapUnitsHelper.GetMapUnitsDesc((int)_context.MapControl.Map.MapUnits);
+            statusUnits.Text = "单位: " + MapUnitsHelper.GetMapUnitsDesc((int) _context.MapControl.Map.MapUnits);
 
             //UpdateTmsProvider();
 
@@ -220,7 +218,7 @@ namespace Yutai.Menu
         {
             IMap pMap = _context.MapControl.Map;
             if (pMap == null) return;
-            int count=pMap.SelectionCount;
+            int count = pMap.SelectionCount;
             var status = _context.StatusBar.FindItem(StatusBarKeys.SelectedCount, Identity);
             if (status != null)
             {
@@ -238,7 +236,6 @@ namespace Yutai.Menu
 
         private void map_ExtentsChanged(object sender, EventArgs e)
         {
-            
         }
     }
 }

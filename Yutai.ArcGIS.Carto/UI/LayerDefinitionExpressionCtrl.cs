@@ -30,7 +30,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 {
                     if (this.itableDefinition_0 is ITable)
                     {
-                        IQueryFilter queryFilter = new QueryFilterClass {
+                        IQueryFilter queryFilter = new QueryFilterClass
+                        {
                             WhereClause = this.memoEdit.Text
                         };
                         try
@@ -53,7 +54,8 @@ namespace Yutai.ArcGIS.Carto.UI
         {
             if (this.itableDefinition_0 != null)
             {
-                frmAttributeQueryBuilder builder = new frmAttributeQueryBuilder {
+                frmAttributeQueryBuilder builder = new frmAttributeQueryBuilder
+                {
                     Table = this.itableDefinition_0 as ITable,
                     WhereCaluse = this.memoEdit.Text
                 };
@@ -65,7 +67,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void LayerDefinitionExpressionCtrl_Load(object sender, EventArgs e)
+        private void LayerDefinitionExpressionCtrl_Load(object sender, EventArgs e)
         {
             if (this.itableDefinition_0 != null)
             {
@@ -80,34 +82,22 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IFeatureLayerDefinition FeatureLayerDefinition
         {
-            set
-            {
-                this.itableDefinition_0 = value as ITableDefinition;
-            }
+            set { this.itableDefinition_0 = value as ITableDefinition; }
         }
 
         public IBasicMap FocusMap
         {
-            set
-            {
-            }
+            set { }
         }
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_0;
-            }
+            get { return this.bool_0; }
         }
 
         public object SelectItem
         {
-            set
-            {
-                this.itableDefinition_0 = value as ITableDefinition;
-            }
+            set { this.itableDefinition_0 = value as ITableDefinition; }
         }
     }
 }
-

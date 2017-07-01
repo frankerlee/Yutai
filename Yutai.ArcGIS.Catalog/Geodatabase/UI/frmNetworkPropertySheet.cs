@@ -17,7 +17,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.InitializeComponent();
         }
 
- private void frmNetworkPropertySheet_Load(object sender, EventArgs e)
+        private void frmNetworkPropertySheet_Load(object sender, EventArgs e)
         {
             int num2;
             string[] strArray;
@@ -26,7 +26,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.lblNetworkType.Text = this.method_0(this.inetworkDataset_0.NetworkType);
             INetworkQuery query = this.inetworkDataset_0 as INetworkQuery;
             string str = "";
-            str = ((query.get_ElementCount(esriNetworkElementType.esriNETJunction).ToString() + "个连接点\r\n") + query.get_ElementCount(esriNetworkElementType.esriNETEdge).ToString() + "条边\r\n") + query.get_ElementCount(esriNetworkElementType.esriNETTurn).ToString() + "个转向\r\n";
+            str = ((query.get_ElementCount(esriNetworkElementType.esriNETJunction).ToString() + "个连接点\r\n") +
+                   query.get_ElementCount(esriNetworkElementType.esriNETEdge).ToString() + "条边\r\n") +
+                  query.get_ElementCount(esriNetworkElementType.esriNETTurn).ToString() + "个转向\r\n";
             this.lblNetworkElements.Text = str;
             for (num2 = 0; num2 < this.inetworkDataset_0.SourceCount; num2++)
             {
@@ -76,7 +78,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private string method_0(esriNetworkDatasetType esriNetworkDatasetType_0)
+        private string method_0(esriNetworkDatasetType esriNetworkDatasetType_0)
         {
             switch (esriNetworkDatasetType_0)
             {
@@ -126,11 +128,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public INetworkDataset NetworkDataset
         {
-            set
-            {
-                this.inetworkDataset_0 = value;
-            }
+            set { this.inetworkDataset_0 = value; }
         }
     }
 }
-

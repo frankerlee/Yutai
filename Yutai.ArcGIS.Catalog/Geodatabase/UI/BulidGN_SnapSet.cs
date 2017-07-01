@@ -22,7 +22,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.bool_0 = false;
             for (int i = 0; i < BulidGeometryNetworkHelper.BulidGNHelper.FeatureClassWraps.Count; i++)
             {
-                BulidGeometryNetworkHelper.FeatureClassWrap wrap = BulidGeometryNetworkHelper.BulidGNHelper.FeatureClassWraps[i] as BulidGeometryNetworkHelper.FeatureClassWrap;
+                BulidGeometryNetworkHelper.FeatureClassWrap wrap =
+                    BulidGeometryNetworkHelper.BulidGNHelper.FeatureClassWraps[i] as
+                        BulidGeometryNetworkHelper.FeatureClassWrap;
                 if (wrap.IsUse && wrap.canChangeGeometry)
                 {
                     wrap.canChangeGeometry = false;
@@ -37,7 +39,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.bool_0 = false;
             for (int i = 0; i < BulidGeometryNetworkHelper.BulidGNHelper.FeatureClassWraps.Count; i++)
             {
-                BulidGeometryNetworkHelper.FeatureClassWrap wrap = BulidGeometryNetworkHelper.BulidGNHelper.FeatureClassWraps[i] as BulidGeometryNetworkHelper.FeatureClassWrap;
+                BulidGeometryNetworkHelper.FeatureClassWrap wrap =
+                    BulidGeometryNetworkHelper.BulidGNHelper.FeatureClassWraps[i] as
+                        BulidGeometryNetworkHelper.FeatureClassWrap;
                 if (wrap.IsUse && !wrap.canChangeGeometry)
                 {
                     wrap.canChangeGeometry = true;
@@ -60,7 +64,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
             for (int i = 0; i < BulidGeometryNetworkHelper.BulidGNHelper.FeatureClassWraps.Count; i++)
             {
-                BulidGeometryNetworkHelper.FeatureClassWrap item = BulidGeometryNetworkHelper.BulidGNHelper.FeatureClassWraps[i] as BulidGeometryNetworkHelper.FeatureClassWrap;
+                BulidGeometryNetworkHelper.FeatureClassWrap item =
+                    BulidGeometryNetworkHelper.BulidGNHelper.FeatureClassWraps[i] as
+                        BulidGeometryNetworkHelper.FeatureClassWrap;
                 if (item.IsUse)
                 {
                     this.chkChangeFC.Items.Add(item, item.canChangeGeometry);
@@ -74,9 +80,11 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             if (this.radioGroup1.SelectedIndex == 1)
             {
-                if (BulidGeometryNetworkHelper.BulidGNHelper.SnapTolerance < BulidGeometryNetworkHelper.BulidGNHelper.MinSnapTolerance)
+                if (BulidGeometryNetworkHelper.BulidGNHelper.SnapTolerance <
+                    BulidGeometryNetworkHelper.BulidGNHelper.MinSnapTolerance)
                 {
-                    MessageBox.Show("请输入大于或等于最小捕捉容差:" + BulidGeometryNetworkHelper.BulidGNHelper.MinSnapTolerance.ToString() + "的数字!");
+                    MessageBox.Show("请输入大于或等于最小捕捉容差:" +
+                                    BulidGeometryNetworkHelper.BulidGNHelper.MinSnapTolerance.ToString() + "的数字!");
                     return false;
                 }
                 if (this.chkChangeFC.CheckedItems.Count == 0)
@@ -92,7 +100,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             if (this.bool_0)
             {
-                BulidGeometryNetworkHelper.FeatureClassWrap wrap = BulidGeometryNetworkHelper.BulidGNHelper.FeatureClassWraps[e.Index] as BulidGeometryNetworkHelper.FeatureClassWrap;
+                BulidGeometryNetworkHelper.FeatureClassWrap wrap =
+                    BulidGeometryNetworkHelper.BulidGNHelper.FeatureClassWraps[e.Index] as
+                        BulidGeometryNetworkHelper.FeatureClassWrap;
                 if (wrap.IsUse)
                 {
                     wrap.canChangeGeometry = e.NewValue == CheckState.Checked;
@@ -100,7 +110,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
+        private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.groupBox2.Enabled = this.radioGroup1.SelectedIndex == 1;
             if (this.bool_0)
@@ -124,4 +134,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

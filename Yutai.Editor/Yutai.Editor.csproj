@@ -266,6 +266,7 @@
     <ProjectReference Include="..\Yutai.Pipeline.Config\Yutai.Pipeline.Config.csproj">
       <Project>{0AA42995-A1CE-49FD-BB98-F94EED2D7289}</Project>
       <Name>Yutai.Pipeline.Config</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.Plugins\Yutai.Plugins.csproj">
       <Project>{800f2ee4-47ab-4cd4-934d-a64980d98a23}</Project>
@@ -275,6 +276,7 @@
     <ProjectReference Include="..\Yutai.Services\Yutai.Services.csproj">
       <Project>{E95B46F1-A8D7-41D8-9F5A-B57BD748A62B}</Project>
       <Name>Yutai.Services</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.Shared\Yutai.Shared.csproj">
       <Project>{4a9b3243-2b0a-4e87-9b23-71a58c1f318d}</Project>

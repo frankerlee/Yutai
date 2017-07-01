@@ -37,13 +37,8 @@ namespace Yutai.Plugins.Editor.Commands
 
         public override bool Enabled
         {
-            get
-            {
-                return SkectchAssist.CheckEnable(_context);
-            }
+            get { return SkectchAssist.CheckEnable(_context); }
         }
-
-
 
 
         public override void OnClick(object sender, EventArgs args)
@@ -77,12 +72,13 @@ namespace Yutai.Plugins.Editor.Commands
             SketchShareEx.IsFixLength = true;
             if (SketchShareEx.IsFixDirection)
             {
-                double num = SketchShareEx.FixLength * Math.Cos(SketchShareEx.FixDirection * 3.1415926535897931 / 180.0);
-                double num2 = SketchShareEx.FixLength * Math.Sin(SketchShareEx.FixDirection * 3.1415926535897931 / 180.0);
+                double num = SketchShareEx.FixLength*Math.Cos(SketchShareEx.FixDirection*3.1415926535897931/180.0);
+                double num2 = SketchShareEx.FixLength*Math.Sin(SketchShareEx.FixDirection*3.1415926535897931/180.0);
                 num = SketchShareEx.LastPoint.X + num;
                 num2 = SketchShareEx.LastPoint.Y + num2;
                 SketchShareEx.m_pAnchorPoint.PutCoords(num, num2);
-                SketchShareEx.SketchMouseDown(SketchShareEx.m_pAnchorPoint, _context.ActiveView, Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
+                SketchShareEx.SketchMouseDown(SketchShareEx.m_pAnchorPoint, _context.ActiveView,
+                    Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
                 SketchShareEx.IsFixDirection = false;
                 SketchShareEx.IsFixLength = false;
             }

@@ -15,27 +15,17 @@
 
         public int ColumIndex
         {
-            get
-            {
-                return this.int_0;
-            }
+            get { return this.int_0; }
         }
 
         public EXListViewItem EXListViewItem
         {
-            get
-            {
-                return this.exlistViewItem_0;
-            }
+            get { return this.exlistViewItem_0; }
         }
 
         public object OldValue
         {
-            get
-            {
-                return this.object_0;
-            }
+            get { return this.object_0; }
         }
     }
 }
-

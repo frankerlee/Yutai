@@ -36,7 +36,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             this.iserverObjectConfiguration_0.UsageTimeout = int.Parse(this.txtMaxUsageTime.Text);
         }
 
- private void method_0()
+        private void method_0()
         {
             if (this.iserverObjectConfiguration_0.IsPooled)
             {
@@ -165,15 +165,8 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         public IServerObjectConfiguration ServerObjectConfiguration
         {
-            get
-            {
-                return this.iserverObjectConfiguration_0;
-            }
-            set
-            {
-                this.iserverObjectConfiguration_0 = value;
-            }
+            get { return this.iserverObjectConfiguration_0; }
+            set { this.iserverObjectConfiguration_0 = value; }
         }
     }
 }
-

@@ -24,7 +24,7 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
             this.txtDescription.Text = this.m_pList[this.cboVersions.SelectedIndex].ToString();
         }
 
- private void frmSelectVersion_Load(object sender, EventArgs e)
+        private void frmSelectVersion_Load(object sender, EventArgs e)
         {
             this.InitControl();
         }
@@ -35,7 +35,9 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
             {
                 this.m_pEnumVersionInfo.Reset();
                 this.m_pList.Clear();
-                for (IVersionInfo info = this.m_pEnumVersionInfo.Next(); info != null; info = this.m_pEnumVersionInfo.Next())
+                for (IVersionInfo info = this.m_pEnumVersionInfo.Next();
+                    info != null;
+                    info = this.m_pEnumVersionInfo.Next())
                 {
                     this.cboVersions.Properties.Items.Add(info.VersionName);
                     this.m_pList.Add(info.Description);
@@ -47,21 +49,14 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
             }
         }
 
- public IEnumVersionInfo EnumVersionInfo
+        public IEnumVersionInfo EnumVersionInfo
         {
-            set
-            {
-                this.m_pEnumVersionInfo = value;
-            }
+            set { this.m_pEnumVersionInfo = value; }
         }
 
         public string VersionName
         {
-            get
-            {
-                return this.m_VersionName;
-            }
+            get { return this.m_VersionName; }
         }
     }
 }
-

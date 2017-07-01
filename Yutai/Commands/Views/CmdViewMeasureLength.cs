@@ -37,11 +37,12 @@ namespace Yutai.Commands.Views
 
         public override void OnClick()
         {
-            map = _context.MapControl.ActiveView as IMap;
-            activeView = _context.MapControl.ActiveView;
+            map = _context.FocusMap as IMap;
+            activeView = _context.ActiveView;
             graphicsContainer = map as IGraphicsContainer;
             _pointnum = 0;
             graphicsContainer.DeleteAllElements();
+            ((IActiveView) this._context.FocusMap).PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
             _context.SetCurrentTool(this);
         }
 
@@ -88,11 +89,11 @@ namespace Yutai.Commands.Views
                 Color = pRgb2,
                 Size = 10
             };
-            ITextPath textPath=new SimpleTextPathClass();
+            ITextPath textPath = new SimpleTextPathClass();
             ISimpleTextSymbol simpleTextPath = (ISimpleTextSymbol) pAngleSymbol;
             simpleTextPath.TextPath = textPath;
-            simpleTextPath.HorizontalAlignment= esriTextHorizontalAlignment.esriTHACenter;
-            simpleTextPath.VerticalAlignment= esriTextVerticalAlignment.esriTVABaseline;
+            simpleTextPath.HorizontalAlignment = esriTextHorizontalAlignment.esriTHACenter;
+            simpleTextPath.VerticalAlignment = esriTextVerticalAlignment.esriTVABaseline;
             simpleTextPath.YOffset = 3;
 
             pDistSymbol = new TextSymbolClass()
@@ -101,13 +102,11 @@ namespace Yutai.Commands.Views
                 Size = 10
             };
             ITextPath textPath2 = new SimpleTextPathClass();
-            simpleTextPath = (ISimpleTextSymbol)pDistSymbol;
+            simpleTextPath = (ISimpleTextSymbol) pDistSymbol;
             simpleTextPath.TextPath = textPath;
             simpleTextPath.HorizontalAlignment = esriTextHorizontalAlignment.esriTHACenter;
             simpleTextPath.VerticalAlignment = esriTextVerticalAlignment.esriTVATop;
             simpleTextPath.YOffset = -3;
-
-
         }
 
 
@@ -117,6 +116,11 @@ namespace Yutai.Commands.Views
             {
                 _pointnum++;
                 this.CalculateLength(x, y, 1);
+            }
+            else
+            {
+                graphicsContainer.DeleteAllElements();
+                ((IActiveView) this._context.FocusMap).PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
             }
         }
 
@@ -143,11 +147,11 @@ namespace Yutai.Commands.Views
         private void CalculateLength(int x, int y, int num)
         {
             string[] str;
-            string str1 = String.Concat(" ", this.GetUnitDesc(_context.MapControl.ActiveView.FocusMap.MapUnits));
+            string str1 = String.Concat(" ", this.GetUnitDesc(_context.FocusMap.MapUnits));
             ILine lineClass = new Line();
             double length = 0;
             string str2 = "";
-            IPoint mapPoint = _context.MapControl.ActiveView.ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
+            IPoint mapPoint = ((IActiveView) this._context.FocusMap).ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
             if (mapPoint != null)
             {
                 if (!(num != 1 ? true : this._lineFeedback != null))
@@ -156,7 +160,7 @@ namespace Yutai.Commands.Views
                     this._length = 0;
                     this._lineFeedback = new NewLineFeedbackClass()
                     {
-                        Display = _context.MapControl.ActiveView.ScreenDisplay
+                        Display = ((IActiveView) this._context.FocusMap).ScreenDisplay
                     };
                     _lineFeedback.Start(mapPoint);
                     _iPoint0 = mapPoint;
@@ -201,8 +205,9 @@ namespace Yutai.Commands.Views
                             IElement pTextElement4 = pTextElement3 as IElement;
                             pTextElement4.Geometry = (IGeometry) pLine2;
                             graphicsContainer.AddElement(pTextElement4, 0);
-                          
-                            activeView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
+
+                            ((IActiveView) this._context.FocusMap).PartialRefresh(esriViewDrawPhase.esriViewGraphics,
+                                null, null);
                             this._iPoint0 = mapPoint;
 
                             break;
@@ -234,7 +239,7 @@ namespace Yutai.Commands.Views
                             str2 = string.Concat(str);
                             //this.m_HookHelper.SetStatus(str2);
                             this._lineFeedback = null;
-                            _context.MapControl.ActiveView.Refresh();
+                            ((IActiveView) this._context.FocusMap).Refresh();
                             break;
                         }
                     }
@@ -319,6 +324,11 @@ namespace Yutai.Commands.Views
                 }
             }
             return str;
+        }
+
+        public override bool Enabled
+        {
+            get { return this._context.FocusMap != null; }
         }
     }
 }

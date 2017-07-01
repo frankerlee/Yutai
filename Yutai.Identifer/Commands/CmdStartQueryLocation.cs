@@ -13,10 +13,12 @@ namespace Yutai.Plugins.Identifer.Commands
         {
             OnCreate(context);
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
         }
+
         public override void OnClick()
         {
             frmSpatialAndAttributeQuery queryBuilder = new frmSpatialAndAttributeQuery(_context)

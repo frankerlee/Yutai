@@ -38,11 +38,11 @@ namespace Yutai.ArcGIS.Carto.UI
             base.Close();
         }
 
- private void frmLayerProperty_Load(object sender, EventArgs e)
+        private void frmLayerProperty_Load(object sender, EventArgs e)
         {
         }
 
- public ILayer Layer
+        public ILayer Layer
         {
             set
             {
@@ -54,4 +54,3 @@ namespace Yutai.ArcGIS.Carto.UI
         }
     }
 }
-

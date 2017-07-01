@@ -27,10 +27,7 @@ namespace Yutai.Plugins.Identifer.Query
 
         public IBasicMap Map
         {
-            set
-            {
-                this._map = value;
-            }
+            set { this._map = value; }
         }
 
         public UcAttributeQuery()
@@ -73,7 +70,7 @@ namespace Yutai.Plugins.Identifer.Query
                 }
                 catch (Exception exception)
                 {
-                   Logger.Current.Warn("属性查询出错",exception,null);
+                    Logger.Current.Warn("属性查询出错", exception, null);
                 }
             }
         }
@@ -85,7 +82,7 @@ namespace Yutai.Plugins.Identifer.Query
 
         private void cboSelectType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this._selectionResultEnum = (esriSelectionResultEnum)this.cboSelectType.SelectedIndex;
+            this._selectionResultEnum = (esriSelectionResultEnum) this.cboSelectType.SelectedIndex;
         }
 
         private void chkShowSelectbaleLayer_CheckedChanged(object sender, EventArgs e)
@@ -93,7 +90,8 @@ namespace Yutai.Plugins.Identifer.Query
             for (int i = 0; i < this._map.LayerCount; i++)
             {
                 ILayer layer = this._map.Layer[i];
-                if (layer is IFeatureLayer && (!this.chkShowSelectbaleLayer.Checked || (layer as IFeatureLayer).Selectable))
+                if (layer is IFeatureLayer &&
+                    (!this.chkShowSelectbaleLayer.Checked || (layer as IFeatureLayer).Selectable))
                 {
                     this.comboBoxLayer.Items.Add(new LayerObject(layer));
                 }
@@ -113,7 +111,7 @@ namespace Yutai.Plugins.Identifer.Query
             }
         }
 
-      
+
         private void LoadGroupLayer(ICompositeLayer compLayer)
         {
             for (int i = 0; i < compLayer.Count; i++)

@@ -133,7 +133,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             this.int_0++;
         }
 
- private void JLKMapTemplateWizard_Load(object sender, EventArgs e)
+        private void JLKMapTemplateWizard_Load(object sender, EventArgs e)
         {
             this.mapTemplateTypePage_0.Dock = DockStyle.Fill;
             this.panel1.Controls.Add(this.mapTemplateTypePage_0);
@@ -183,7 +183,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             (this.m_pMapGrid as IMeasuredGrid).YIntervalSize = 200.0;
             (this.m_pMapGrid as IMeasuredGrid).FixedOrigin = true;
             IGridLabel labelFormat = this.m_pMapGrid.LabelFormat;
-            ITextSymbol symbol = new TextSymbolClass {
+            ITextSymbol symbol = new TextSymbolClass
+            {
                 Font = labelFormat.Font,
                 Color = labelFormat.Color,
                 Text = labelFormat.DisplayName,
@@ -202,43 +203,24 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public int CatalogID
         {
-            set
-            {
-                this.int_1 = value;
-            }
+            set { this.int_1 = value; }
         }
 
         public IMapFrame MapFrame
         {
-            get
-            {
-                return this.imapFrame_0;
-            }
-            set
-            {
-                this.imapFrame_0 = value;
-            }
+            get { return this.imapFrame_0; }
+            set { this.imapFrame_0 = value; }
         }
 
         public IMapGrid MapGrid
         {
-            get
-            {
-                return this.m_pMapGrid;
-            }
+            get { return this.m_pMapGrid; }
         }
 
         public MapCartoTemplateLib.MapTemplate MapTemplate
         {
-            get
-            {
-                return this.mapTemplate_0;
-            }
-            set
-            {
-                this.mapTemplate_0 = value;
-            }
+            get { return this.mapTemplate_0; }
+            set { this.mapTemplate_0 = value; }
         }
     }
 }
-

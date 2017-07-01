@@ -16,9 +16,10 @@ namespace Yutai.Pipeline.Analysis.Menu
         private PipelineAnalysisPlugin _plugin;
         private List<string> _commandKeys;
 
-        public YutaiCommands(IAppContext context, PipelineAnalysisPlugin plugin) : base(context,plugin.Identity)
+        public YutaiCommands(IAppContext context, PipelineAnalysisPlugin plugin) : base(context, plugin.Identity)
         {
         }
+
         public YutaiCommands(IAppContext context, PluginIdentity identity)
             : base(context, identity)
         {
@@ -43,23 +44,23 @@ namespace Yutai.Pipeline.Analysis.Menu
             {
                 _commands = new List<YutaiCommand>()
                 {
-                    new CmdStartOrganizeMap(_context,_plugin),
-                    new CmdSavePipeConfig(_context,_plugin),
-                    new CmdCloseValveAnalysis(_context,_plugin),
-                    new CmdConnectivityAnalysis(_context,_plugin),
-                    new CmdMaiShenAnalysis(_context,_plugin),
-                    new CmdShortCutAnalysis(_context,_plugin),
+                    new CmdStartOrganizeMap(_context, _plugin),
+                    new CmdSavePipeConfig(_context, _plugin),
+                    new CmdCloseValveAnalysis(_context, _plugin),
+                    new CmdConnectivityAnalysis(_context, _plugin),
+                    new CmdMaiShenAnalysis(_context, _plugin),
+                    new CmdShortCutAnalysis(_context, _plugin),
                     new CmdStartAreaMeasureAnalysis(_context),
                     new CmdStartDistMeasureAnalysis(_context),
-                    new CmdSearchAffixAnalysis(_context,_plugin),
-                    new CmdStartBufferAnalysis(_context,_plugin),
-                    new CmdStartHitAnalysis(_context,_plugin),
-                    new CmdStartHoriDistAnalysis(_context,_plugin),
-                    new CmdStartHoriSectAnalysis(_context,_plugin),
-                    new CmdStartVertSectAnalysis(_context,_plugin),
-                    new CmdTrackAnalysis(_context,_plugin),
-                    new CmdPopAlarmAnalysis(_context,_plugin),
-                    new CmdPreAlarmAnalysis(_context,_plugin),
+                    new CmdSearchAffixAnalysis(_context, _plugin),
+                    new CmdStartBufferAnalysis(_context, _plugin),
+                    new CmdStartHitAnalysis(_context, _plugin),
+                    new CmdStartHoriDistAnalysis(_context, _plugin),
+                    new CmdStartHoriSectAnalysis(_context, _plugin),
+                    new CmdStartVertSectAnalysis(_context, _plugin),
+                    new CmdTrackAnalysis(_context, _plugin),
+                    new CmdPopAlarmAnalysis(_context, _plugin),
+                    new CmdPreAlarmAnalysis(_context, _plugin),
                     //new CmdQueryBasic(_context, _plugin),
                     //new CmdQueryLine(_context, _plugin),
                     //new CmdQueryByAddress(_context, _plugin),

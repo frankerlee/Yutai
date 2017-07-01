@@ -15,7 +15,7 @@ namespace Yutai.ArcGIS.Catalog.UI
     {
         private Container container_0 = null;
         private ICoverageName icoverageName_0 = null;
-        private string[] string_0 = new string[] { "Not Applicable", "Preliminary", "Exists", "Unknown" };
+        private string[] string_0 = new string[] {"Not Applicable", "Preliminary", "Exists", "Unknown"};
 
         public CoverageGeneralPropertyPage()
         {
@@ -38,7 +38,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
                 MessageBox.Show("Bulid失败!");
             }
         }
@@ -61,7 +61,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
                 MessageBox.Show("Clean失败!");
             }
         }
@@ -85,7 +85,8 @@ namespace Yutai.ArcGIS.Catalog.UI
                 {
                     items[2] = "False";
                 }
-                ListViewItem item = new ListViewItem(items) {
+                ListViewItem item = new ListViewItem(items)
+                {
                     Tag = name2
                 };
                 this.listView1.Items.Add(item);
@@ -93,13 +94,9 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
         }
 
- public ICoverageName CoverageName
+        public ICoverageName CoverageName
         {
-            set
-            {
-                this.icoverageName_0 = value;
-            }
+            set { this.icoverageName_0 = value; }
         }
     }
 }
-

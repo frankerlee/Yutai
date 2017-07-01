@@ -12,9 +12,8 @@ namespace Yutai.Commands.MapLegend
 {
     public class CmdDeleteLayer : YutaiCommand
     {
-       
         private IMapLegendView _view;
-     
+
         public CmdDeleteLayer(IAppContext context, IMapLegendView view)
         {
             _context = context;
@@ -27,7 +26,7 @@ namespace Yutai.Commands.MapLegend
             get
             {
                 if (_view == null) return false;
-                if (_view.SelectedItemType ==   esriTOCControlItem.esriTOCControlItemLayer)
+                if (_view.SelectedItemType == esriTOCControlItem.esriTOCControlItemLayer)
                 {
                     if (_view.SelectedLayer == null) return false;
                     if (_view.SelectedLayer is IGroupLayer) return false;
@@ -52,8 +51,8 @@ namespace Yutai.Commands.MapLegend
             base.m_checked = false;
             base.m_enabled = true;
             base._itemType = RibbonItemType.Button;
-
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
@@ -78,9 +77,9 @@ namespace Yutai.Commands.MapLegend
             }
             return lyrName;
         }
+
         public void OnClick()
         {
-
             if (_view.SelectedItemType == esriTOCControlItem.esriTOCControlItemMap)
             {
                 return;
@@ -88,8 +87,8 @@ namespace Yutai.Commands.MapLegend
             else if (_view.SelectedItemType == esriTOCControlItem.esriTOCControlItemLayer)
             {
                 _view.SelectedMap.DeleteLayer(_view.SelectedLayer);
-                    
-                    (_view.SelectedMap as IActiveView).Refresh();
+
+                (_view.SelectedMap as IActiveView).Refresh();
             }
             if (_view.SelectedMap.LayerCount == 0)
             {

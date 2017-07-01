@@ -28,7 +28,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
             TabPage page = new TabPage("面");
             IBasicFillSymbol symbol = new BasicFillSymbolClass();
             this.m_pRepresentationRule.InsertLayer(this.m_pRepresentationRule.LayerCount, symbol as IBasicSymbol);
-            BasicFillSymbolLayer layer = new BasicFillSymbolLayer {
+            BasicFillSymbolLayer layer = new BasicFillSymbolLayer
+            {
                 BasicSymbol = symbol as IBasicSymbol,
                 GeometryType = this.m_pRepresentationRuleItem.GeometryType
             };
@@ -42,7 +43,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
             TabPage page = new TabPage("线");
             IBasicLineSymbol symbol = new BasicLineSymbolClass();
             this.m_pRepresentationRule.InsertLayer(this.m_pRepresentationRule.LayerCount, symbol as IBasicSymbol);
-            BasicLineSymbolLayer layer = new BasicLineSymbolLayer {
+            BasicLineSymbolLayer layer = new BasicLineSymbolLayer
+            {
                 GeometryType = this.m_pRepresentationRuleItem.GeometryType,
                 BasicSymbol = symbol as IBasicSymbol
             };
@@ -67,7 +69,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
                 symbol.MarkerPlacement = placement;
             }
             this.m_pRepresentationRule.InsertLayer(this.m_pRepresentationRule.LayerCount, symbol as IBasicSymbol);
-            BasicMarkerSymbolLayer layer = new BasicMarkerSymbolLayer {
+            BasicMarkerSymbolLayer layer = new BasicMarkerSymbolLayer
+            {
                 GeometryType = this.m_pRepresentationRuleItem.GeometryType,
                 BasicSymbol = symbol as IBasicSymbol
             };
@@ -98,7 +101,7 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
             this.tabControl1.TabPages.Insert(index, tabPage);
         }
 
- public void Init()
+        public void Init()
         {
             int num;
             this.contextMenuStrip1.Items.Clear();
@@ -117,7 +120,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
                     {
                         this.contextMenuStrip1.Items.Add(this.basicMarkerLayerToolStripMenuItem);
                         page = new TabPage("点");
-                        BasicMarkerSymbolLayer layer = new BasicMarkerSymbolLayer {
+                        BasicMarkerSymbolLayer layer = new BasicMarkerSymbolLayer
+                        {
                             BasicSymbol = symbol,
                             GeometryType = this.m_pRepresentationRuleItem.GeometryType
                         };
@@ -130,7 +134,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
                         this.contextMenuStrip1.Items.Add(this.basicMarkerLayerToolStripMenuItem);
                         this.contextMenuStrip1.Items.Add(this.basicLineLayerToolStripMenuItem);
                         page = new TabPage("线");
-                        BasicLineSymbolLayer layer2 = new BasicLineSymbolLayer {
+                        BasicLineSymbolLayer layer2 = new BasicLineSymbolLayer
+                        {
                             BasicSymbol = symbol,
                             GeometryType = this.m_pRepresentationRuleItem.GeometryType
                         };
@@ -144,7 +149,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
                         this.contextMenuStrip1.Items.Add(this.basicLineLayerToolStripMenuItem);
                         this.contextMenuStrip1.Items.Add(this.basicFillLayerToolStripMenuItem);
                         page = new TabPage("面");
-                        BasicFillSymbolLayer layer3 = new BasicFillSymbolLayer {
+                        BasicFillSymbolLayer layer3 = new BasicFillSymbolLayer
+                        {
                             BasicSymbol = symbol,
                             GeometryType = this.m_pRepresentationRuleItem.GeometryType
                         };
@@ -160,7 +166,7 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
             this.tnMoveDown.Enabled = this.m_CanEdit;
         }
 
- private void RepresationRuleCtrl_Load(object sender, EventArgs e)
+        private void RepresationRuleCtrl_Load(object sender, EventArgs e)
         {
             this.contextMenuStrip1.Items.Clear();
             if (this.m_pRepresentationRuleItem != null)
@@ -177,7 +183,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
                     {
                         this.contextMenuStrip1.Items.Add(this.basicMarkerLayerToolStripMenuItem);
                         page = new TabPage("点");
-                        BasicMarkerSymbolLayer layer = new BasicMarkerSymbolLayer {
+                        BasicMarkerSymbolLayer layer = new BasicMarkerSymbolLayer
+                        {
                             BasicSymbol = symbol,
                             GeometryType = this.m_pRepresentationRuleItem.GeometryType
                         };
@@ -190,7 +197,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
                         this.contextMenuStrip1.Items.Add(this.basicMarkerLayerToolStripMenuItem);
                         this.contextMenuStrip1.Items.Add(this.basicLineLayerToolStripMenuItem);
                         page = new TabPage("线");
-                        BasicLineSymbolLayer layer2 = new BasicLineSymbolLayer {
+                        BasicLineSymbolLayer layer2 = new BasicLineSymbolLayer
+                        {
                             BasicSymbol = symbol,
                             GeometryType = this.m_pRepresentationRuleItem.GeometryType
                         };
@@ -204,7 +212,8 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
                         this.contextMenuStrip1.Items.Add(this.basicLineLayerToolStripMenuItem);
                         this.contextMenuStrip1.Items.Add(this.basicFillLayerToolStripMenuItem);
                         page = new TabPage("面");
-                        BasicFillSymbolLayer layer3 = new BasicFillSymbolLayer {
+                        BasicFillSymbolLayer layer3 = new BasicFillSymbolLayer
+                        {
                             BasicSymbol = symbol,
                             GeometryType = this.m_pRepresentationRuleItem.GeometryType
                         };
@@ -249,10 +258,7 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
 
         public bool CanEdit
         {
-            set
-            {
-                this.m_CanEdit = value;
-            }
+            set { this.m_CanEdit = value; }
         }
 
         public esriGeometryType GeometryType
@@ -269,10 +275,7 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
 
         public IRepresentationRule RepresentationRule
         {
-            get
-            {
-                return this.m_pRepresentationRule;
-            }
+            get { return this.m_pRepresentationRule; }
             set
             {
                 if (value != null)
@@ -289,10 +292,7 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
 
         public IRepresentationRuleItem RepresentationRuleItem
         {
-            get
-            {
-                return this.m_pRepresentationRuleItem;
-            }
+            get { return this.m_pRepresentationRuleItem; }
             set
             {
                 if (value != null)
@@ -304,4 +304,3 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
         }
     }
 }
-

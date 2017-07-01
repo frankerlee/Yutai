@@ -19,7 +19,5 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             this.memoEdit1.Text = BulidGeometryNetworkHelper.BulidGNHelper.Summary();
         }
-
-
     }
 }

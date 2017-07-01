@@ -82,13 +82,13 @@ namespace Yutai.Plugins
 
         public IEnumerable<BasePlugin> ListeningPlugins
         {
-            get { return (new[] { _mainPlugin }).Concat(_plugins.Where(p => _active.Contains(p.Identity))); }
+            get { return (new[] {_mainPlugin}).Concat(_plugins.Where(p => _active.Contains(p.Identity))); }
         }
 
         /// <summary>
         /// Validates the list of plugins loaded by MEF.
         /// </summary>
-        public void ValidatePlugins()
+        public void ValidatePlugins(ISplashView splashView)
         {
             _plugins.Clear();
 
@@ -124,13 +124,12 @@ namespace Yutai.Plugins
                     string msg = string.Format("Plugins have duplicate GUIDs: {0} {1}", p, p2);
                     throw new ApplicationException(msg);
                 }
-
+                splashView.ShowStatus("正在检查：" + p.Description);
                 dict.Add(p.Identity.Guid, p);
 
                 _container.RegisterInstance(p.GetType(), p);
 
                 _plugins.Add(p);
-                
             }
 
 #if DEBUG
@@ -144,7 +143,7 @@ namespace Yutai.Plugins
         /// <summary>
         /// Searches plugins in plugins folder with MEF.
         /// </summary>
-        public void AssemblePlugins()
+        public void AssemblePlugins(ISplashView splashView)
         {
             try
             {
@@ -156,7 +155,7 @@ namespace Yutai.Plugins
 
                 container.ComposeParts(this);
 
-                ValidatePlugins();
+                ValidatePlugins(splashView);
             }
             catch (Exception ex)
             {
@@ -171,6 +170,7 @@ namespace Yutai.Plugins
         /// <param name="context">Application context.</param>
         public void LoadPlugin(PluginIdentity identity, IAppContext context)
         {
+            context.ShowSplashMessage("正在引导:" + identity.Name);
             LoadPlugin(identity.Guid, context);
         }
 
@@ -182,6 +182,7 @@ namespace Yutai.Plugins
             }
 
             var plugin = _plugins.FirstOrDefault(p => p.Identity.Guid == pluginGuid);
+            context.ShowSplashMessage("正在引导:" + plugin.Identity.Name);
             if (plugin == null)
             {
                 throw new ApplicationException("Plugin which requested for loading isn't present in the list.");
@@ -238,7 +239,6 @@ namespace Yutai.Plugins
 
             foreach (var p in AllPlugins)
             {
-               
                 bool active = dict.Contains(p.Identity.Guid);
                 p.SetApplicationPlugin(active);
 
@@ -293,7 +293,7 @@ namespace Yutai.Plugins
 
             path = Path.Combine(path, PluginDirectory);
 
-            return new DirectoryCatalog(path, "*.dll");
+            return new DirectoryCatalog(path, "Yutai*.dll");
         }
     }
 }

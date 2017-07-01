@@ -28,12 +28,10 @@ namespace Yutai.Plugins.Locator
             _menuGenerator = context.Container.GetInstance<MenuGenerator>();
             _dockPanelService = context.Container.GetInstance<DockPanelService>();
             _projectListener = context.Container.GetInstance<ProjectListener>();
-           // IPluginManager plugin = _context.Container.GetSingleton<IPluginManager>();
-
+            // IPluginManager plugin = _context.Container.GetSingleton<IPluginManager>();
         }
 
-       
-      
+
         public void FireStartLocator(EventArgs e)
         {
             FireEvent(StartLocator, e);

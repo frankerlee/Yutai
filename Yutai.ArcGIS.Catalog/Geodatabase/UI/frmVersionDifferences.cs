@@ -24,7 +24,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             {
                 this.lstReport.Items.Clear();
                 IList list = new ArrayList();
-                this.versioningUtil_0.GetDifferences1(this.iworkspace_0, this.txtParentVersion.Text, this.txtChildVersion.Text, this.treeViewDataset.Nodes, list);
+                this.versioningUtil_0.GetDifferences1(this.iworkspace_0, this.txtParentVersion.Text,
+                    this.txtChildVersion.Text, this.treeViewDataset.Nodes, list);
                 for (int i = 0; i < list.Count; i++)
                 {
                     this.lstReport.Items.Add(list[i]);
@@ -32,7 +33,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- public void FillTreeViewWithDatasetNames(IWorkspace iworkspace_1, TreeView treeView_0)
+        public void FillTreeViewWithDatasetNames(IWorkspace iworkspace_1, TreeView treeView_0)
         {
             try
             {
@@ -46,7 +47,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     name.Reset();
                     for (IDatasetName name2 = name.Next(); name2 != null; name2 = name.Next())
                     {
-                        node = new TreeNode(name2.Name) {
+                        node = new TreeNode(name2.Name)
+                        {
                             Tag = name2.Name
                         };
                         treeView_0.Nodes.Add(node);
@@ -57,7 +59,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         {
                             if (name4.Type == esriDatasetType.esriDTFeatureClass)
                             {
-                                TreeNode node2 = new TreeNode(name4.Name) {
+                                TreeNode node2 = new TreeNode(name4.Name)
+                                {
                                     Tag = name4
                                 };
                                 node.Nodes.Add(node2);
@@ -69,7 +72,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     subsetNames.Reset();
                     for (name4 = subsetNames.Next(); name4 != null; name4 = subsetNames.Next())
                     {
-                        node = new TreeNode(name4.Name) {
+                        node = new TreeNode(name4.Name)
+                        {
                             Tag = name4.Name
                         };
                         treeView_0.Nodes.Add(node);
@@ -86,7 +90,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.method_2();
         }
 
- private void method_0(IVersionInfo iversionInfo_1, TreeNode treeNode_0)
+        private void method_0(IVersionInfo iversionInfo_1, TreeNode treeNode_0)
         {
             try
             {
@@ -95,7 +99,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 iversionInfo_1 = children.Next();
                 while (iversionInfo_1 != null)
                 {
-                    TreeNode node = new TreeNode(iversionInfo_1.VersionName) {
+                    TreeNode node = new TreeNode(iversionInfo_1.VersionName)
+                    {
                         Tag = iversionInfo_1
                     };
                     treeNode_0.Nodes.Add(node);
@@ -113,7 +118,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             try
             {
                 IVersionInfo versionInfo = iversionedWorkspace_1.DefaultVersion.VersionInfo;
-                TreeNode node = new TreeNode(versionInfo.VersionName) {
+                TreeNode node = new TreeNode(versionInfo.VersionName)
+                {
                     Tag = versionInfo
                 };
                 treeView_0.Nodes.Add(node);
@@ -131,7 +137,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             {
                 IVersion version = this.iversionedWorkspace_0 as IVersion;
                 this.iversionInfo_0 = version.VersionInfo;
-                string[] strArray = this.iversionInfo_0.VersionName.ToUpper().Split(new char[] { '.' });
+                string[] strArray = this.iversionInfo_0.VersionName.ToUpper().Split(new char[] {'.'});
                 if (strArray[strArray.Length - 1] == "DEFAULT")
                 {
                     this.string_0 = this.iversionInfo_0.VersionName;
@@ -187,11 +193,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IVersionedWorkspace VersionedWorkspace
         {
-            set
-            {
-                this.iversionedWorkspace_0 = value;
-            }
+            set { this.iversionedWorkspace_0 = value; }
         }
     }
 }
-

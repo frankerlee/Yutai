@@ -181,7 +181,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private ISurface method_0(ILayer ilayer_1)
+        private ISurface method_0(ILayer ilayer_1)
         {
             ISurface surface = null;
             if (ilayer_1 == null)
@@ -197,7 +197,8 @@ namespace Yutai.ArcGIS.Carto.UI
             {
                 IRasterLayer layer2 = ilayer_1 as IRasterLayer;
                 IRasterBand band = (layer2.Raster as IRasterBandCollection).Item(0);
-                IRasterSurface surface2 = new RasterSurfaceClass {
+                IRasterSurface surface2 = new RasterSurfaceClass
+                {
                     RasterBand = band
                 };
                 surface = surface2 as ISurface;
@@ -215,7 +216,8 @@ namespace Yutai.ArcGIS.Carto.UI
             if (idataset_0 is IRasterBandCollection)
             {
                 IRasterBand band = (idataset_0 as IRasterBandCollection).Item(0);
-                IRasterSurface surface2 = new RasterSurfaceClass {
+                IRasterSurface surface2 = new RasterSurfaceClass
+                {
                     RasterBand = band
                 };
                 surface = surface2 as ISurface;
@@ -225,26 +227,17 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IBasicMap FocusMap
         {
-            set
-            {
-                this.ibasicMap_0 = value;
-            }
+            set { this.ibasicMap_0 = value; }
         }
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_0;
-            }
+            get { return this.bool_0; }
         }
 
         public object SelectItem
         {
-            set
-            {
-                this.ilayer_0 = value as ILayer;
-            }
+            set { this.ilayer_0 = value as ILayer; }
         }
 
         internal partial class SuferWrap
@@ -272,12 +265,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
             internal ISurface Surface
             {
-                get
-                {
-                    return this.isurface_0;
-                }
+                get { return this.isurface_0; }
             }
         }
     }
 }
-

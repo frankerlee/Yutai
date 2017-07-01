@@ -31,7 +31,8 @@ namespace Yutai.ArcGIS.Common
             }
             else if (object_2 is Control)
             {
-                Form form = new Form {
+                Form form = new Form
+                {
                     Size = (object_2 as Control).Size
                 };
                 (object_2 as Control).Dock = DockStyle.Fill;
@@ -52,7 +53,7 @@ namespace Yutai.ArcGIS.Common
             }
         }
 
-       
+
         public void MapDocumentChanged()
         {
             if (this.iapplication_0 != null)
@@ -121,7 +122,9 @@ namespace Yutai.ArcGIS.Common
                     {
                         if ((this.object_1 as MapAndPageLayoutControls).ActiveControl is IPageLayoutControl2)
                         {
-                            return ((this.object_1 as MapAndPageLayoutControls).ActiveControl as IPageLayoutControl2).ActiveView;
+                            return
+                                ((this.object_1 as MapAndPageLayoutControls).ActiveControl as IPageLayoutControl2)
+                                    .ActiveView;
                         }
                         return ((this.object_1 as MapAndPageLayoutControls).ActiveControl as IMapControl2).ActiveView;
                     }
@@ -152,7 +155,9 @@ namespace Yutai.ArcGIS.Common
                     {
                         if ((this.object_0 as MapAndPageLayoutControls).ActiveControl is IPageLayoutControl2)
                         {
-                            return ((this.object_0 as MapAndPageLayoutControls).ActiveControl as IPageLayoutControl2).ActiveView;
+                            return
+                                ((this.object_0 as MapAndPageLayoutControls).ActiveControl as IPageLayoutControl2)
+                                    .ActiveView;
                         }
                         return ((this.object_0 as MapAndPageLayoutControls).ActiveControl as IMapControl2).ActiveView;
                     }
@@ -280,7 +285,9 @@ namespace Yutai.ArcGIS.Common
                         {
                             if ((this.object_1 as MapAndPageLayoutControls).ActiveControl is IPageLayoutControl2)
                             {
-                                return ((this.object_1 as MapAndPageLayoutControls).ActiveControl as IPageLayoutControl2).ActiveView.FocusMap;
+                                return
+                                    ((this.object_1 as MapAndPageLayoutControls).ActiveControl as IPageLayoutControl2)
+                                        .ActiveView.FocusMap;
                             }
                             return ((this.object_1 as MapAndPageLayoutControls).ActiveControl as IMapControl2).Map;
                         }
@@ -319,7 +326,9 @@ namespace Yutai.ArcGIS.Common
                         {
                             if ((this.object_0 as MapAndPageLayoutControls).ActiveControl is IPageLayoutControl2)
                             {
-                                return ((this.object_0 as MapAndPageLayoutControls).ActiveControl as IPageLayoutControl2).ActiveView.FocusMap;
+                                return
+                                    ((this.object_0 as MapAndPageLayoutControls).ActiveControl as IPageLayoutControl2)
+                                        .ActiveView.FocusMap;
                             }
                             return ((this.object_0 as MapAndPageLayoutControls).ActiveControl as IMapControl2).Map;
                         }
@@ -415,10 +424,7 @@ namespace Yutai.ArcGIS.Common
 
         public IOperationStack OperationStack
         {
-            get
-            {
-                return ApplicationBase.m_pOperationStack;
-            }
+            get { return ApplicationBase.m_pOperationStack; }
         }
 
         public IPageLayout PageLayout
@@ -435,9 +441,12 @@ namespace Yutai.ArcGIS.Common
                     {
                         return ((IApplication) this.object_1).PageLayout;
                     }
-                    if ((this.object_1 is MapAndPageLayoutControls) && ((this.object_1 as MapAndPageLayoutControls).ActiveControl is IPageLayoutControl2))
+                    if ((this.object_1 is MapAndPageLayoutControls) &&
+                        ((this.object_1 as MapAndPageLayoutControls).ActiveControl is IPageLayoutControl2))
                     {
-                        return ((this.object_1 as MapAndPageLayoutControls).ActiveControl as IPageLayoutControl2).PageLayout;
+                        return
+                            ((this.object_1 as MapAndPageLayoutControls).ActiveControl as IPageLayoutControl2)
+                                .PageLayout;
                     }
                 }
                 else
@@ -492,10 +501,7 @@ namespace Yutai.ArcGIS.Common
 
         public IStyleGallery StyleGallery
         {
-            get
-            {
-                return ApplicationBase.StyleGallery;
-            }
+            get { return ApplicationBase.StyleGallery; }
         }
 
         public double Tolerance
@@ -518,4 +524,3 @@ namespace Yutai.ArcGIS.Common
         }
     }
 }
-

@@ -31,32 +31,20 @@ namespace Yutai.ArcGIS.Catalog.VCT
         [Browsable(true), Description("规则的中文说明"), DisplayName("描述")]
         public string Description
         {
-            get
-            {
-                return this.string_2;
-            }
-            set
-            {
-                this.string_2 = value;
-            }
+            get { return this.string_2; }
+            set { this.string_2 = value; }
         }
 
         [Description("唯一标识码"), Browsable(false), DisplayName("标识码")]
         public string ID
         {
-            get
-            {
-                return this.string_0;
-            }
+            get { return this.string_0; }
         }
 
         [Description("以数字0-100来描述错误级别，数字越大，错误越严重"), DisplayName("分级")]
         public uint Level
         {
-            get
-            {
-                return this.uint_0;
-            }
+            get { return this.uint_0; }
             set
             {
                 if (value > 100)
@@ -70,15 +58,8 @@ namespace Yutai.ArcGIS.Catalog.VCT
         [Browsable(true), Description("以条件表达式为规则文本，参考SQL标准语法，根据具体使用对象语法有所不同"), DisplayName("规则文本")]
         public string Rule
         {
-            get
-            {
-                return this.string_1;
-            }
-            set
-            {
-                this.string_1 = value;
-            }
+            get { return this.string_1; }
+            set { this.string_1 = value; }
         }
     }
 }
-

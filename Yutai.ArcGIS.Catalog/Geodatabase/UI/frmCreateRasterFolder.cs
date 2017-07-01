@@ -7,7 +7,6 @@ using DevExpress.XtraEditors.Controls;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
-
 using Yutai.ArcGIS.Catalog.UI;
 using Yutai.ArcGIS.Common;
 using Yutai.ArcGIS.Common.Raster;
@@ -35,7 +34,10 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             else
             {
                 IRasterWorkspaceEx ex = this.igxObject_0.InternalObjectName.Open() as IRasterWorkspaceEx;
-                if (RasterUtility.createCatalog(ex, this.txtRasterDatastName.Text, "Raster", "Shape", this.ispatialReference_0, this.ispatialReference_1, this.cboPixelType.SelectedIndex == 0, null, this.cboConfigKey.Text) != null)
+                if (
+                    RasterUtility.createCatalog(ex, this.txtRasterDatastName.Text, "Raster", "Shape",
+                        this.ispatialReference_0, this.ispatialReference_1, this.cboPixelType.SelectedIndex == 0, null,
+                        this.cboConfigKey.Text) != null)
                 {
                     base.DialogResult = DialogResult.OK;
                     base.Close();
@@ -45,7 +47,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnSelectOutLocation_Click(object sender, EventArgs e)
         {
-            frmOpenFile file = new frmOpenFile {
+            frmOpenFile file = new frmOpenFile
+            {
                 Text = "保存位置"
             };
             file.RemoveAllFilters();
@@ -71,7 +74,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnSelectRasterSpatialRef_Click(object sender, EventArgs e)
         {
-            frmSpatialReference reference = new frmSpatialReference {
+            frmSpatialReference reference = new frmSpatialReference
+            {
                 SpatialRefrence = this.ispatialReference_1
             };
             if (reference.ShowDialog() == DialogResult.OK)
@@ -106,7 +110,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
         }
 
- private void frmCreateRasterFolder_Load(object sender, EventArgs e)
+        private void frmCreateRasterFolder_Load(object sender, EventArgs e)
         {
             this.cboConfigKey.Properties.Items.Clear();
             if (this.igxObject_0 != null)
@@ -119,7 +123,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private ISpatialReference method_0(IGeodatabaseRelease igeodatabaseRelease_0)
+        private ISpatialReference method_0(IGeodatabaseRelease igeodatabaseRelease_0)
         {
             return SpatialReferenctOperator.ConstructCoordinateSystem(igeodatabaseRelease_0);
         }
@@ -133,7 +137,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             IEnumConfigurationKeyword configurationKeywords = iworkspaceConfiguration_0.ConfigurationKeywords;
             configurationKeywords.Reset();
-            for (IConfigurationKeyword keyword2 = configurationKeywords.Next(); keyword2 != null; keyword2 = configurationKeywords.Next())
+            for (IConfigurationKeyword keyword2 = configurationKeywords.Next();
+                keyword2 != null;
+                keyword2 = configurationKeywords.Next())
             {
                 this.cboConfigKey.Properties.Items.Add(keyword2.Name);
             }
@@ -141,11 +147,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IGxObject OutLocation
         {
-            set
-            {
-                this.igxObject_0 = value;
-            }
+            set { this.igxObject_0 = value; }
         }
     }
 }
-

@@ -23,9 +23,10 @@ namespace Yutai.UI.Docking
         private readonly IBroadcasterService _broadcaster;
         private readonly IStyleService _styleService;
         private readonly DevExpress.XtraBars.Docking.DockManager _dockingManager;
-        private readonly Dictionary<DockPanelInfo,IDockPanelView> _dict = new Dictionary<DockPanelInfo,IDockPanelView>();
 
-     
+        private readonly Dictionary<DockPanelInfo, IDockPanelView> _dict =
+            new Dictionary<DockPanelInfo, IDockPanelView>();
+
 
         internal DockPanelCollection(object dockingManager, Form mainForm, IBroadcasterService broadcaster,
             IStyleService styleService)
@@ -46,10 +47,8 @@ namespace Yutai.UI.Docking
             }
 
             _dockingManager.VisibilityChanged += _dockingManager_VisibilityChanged;
-          
         }
 
-    
 
         private void _dockingManager_VisibilityChanged(object sender, VisibilityChangedEventArgs e)
         {
@@ -60,8 +59,8 @@ namespace Yutai.UI.Docking
 
 
             var panel = _dockingManager.Panels[ctrlKey];
-           
-            var args = new DockPanelEventArgs(panel,pair.Key.Key);
+
+            var args = new DockPanelEventArgs(panel, pair.Key.Key);
 
             if (panel.Visible)
             {
@@ -73,19 +72,14 @@ namespace Yutai.UI.Docking
             }
         }
 
-       
-      
-        
 
         public void Lock()
         {
-          
             _locked = true;
         }
 
         public void Unlock()
         {
-       
             _locked = false;
         }
 
@@ -106,16 +100,16 @@ namespace Yutai.UI.Docking
                 throw new ApplicationException("Dock panel must have a unique key.");
             }
 
-            if(_dict.ContainsValue(view))
+            if (_dict.ContainsValue(view))
             {
                 throw new ApplicationException("This control has been already added as a docking window.");
             }
 
             //_dockingManager.SetEnableDocking(control, true);
-          
-            _dict.Add(new DockPanelInfo(identity,view.DockName),view);
 
-           return LoadDockPanel(view);
+            _dict.Add(new DockPanelInfo(identity, view.DockName), view);
+
+            return LoadDockPanel(view);
         }
 
         private DockPanel DockTo(string parentName, IDockPanelView view)
@@ -142,20 +136,21 @@ namespace Yutai.UI.Docking
                 panel = parentPanel.AddPanel();
             panel.Name = view.DockName;
             panel.Header = view.Caption;
-            panel.Image =view.Image;
+            panel.Image = view.Image;
             //panel.Dock = DockHelper.MapWindowToDevExpress(((IDockPanelView)_control).DefaultDock);
-            panel.FloatSize =view.DefaultSize;
-            ((Control)view).Dock = DockStyle.Fill;
+            panel.FloatSize = view.DefaultSize;
+            ((Control) view).Dock = DockStyle.Fill;
             panel.TabText = view.Caption;
             panel.Text = view.Caption;
-            panel.Controls.Add((Control)view);
+            panel.Controls.Add((Control) view);
             return panel;
-
         }
+
         private DockPanel LoadDockPanel(IDockPanelView view)
         {
-             return DockTo(view.DefaultNestDockName,view);
+            return DockTo(view.DefaultNestDockName, view);
         }
+
         public void Remove(string panelName, PluginIdentity identity)
         {
             throw new NotImplementedException();
@@ -177,7 +172,6 @@ namespace Yutai.UI.Docking
             _dict.Remove(new DockPanelInfo(identity, view.DockName));
 
             _dockingManager.RemovePanel(_dockingManager.Panels[view.DockName]);
-
         }
 
         public void RemoveItemsForPlugin(PluginIdentity identity)
@@ -197,7 +191,7 @@ namespace Yutai.UI.Docking
 
             foreach (var ctrl in panels)
             {
-               // _dockingManager.SetEnableDocking(ctrl, false);
+                // _dockingManager.SetEnableDocking(ctrl, false);
                 _dict.Remove(ctrl);
                 _dockingManager.RemovePanel(_dockingManager.Panels[ctrl.Key]);
             }
@@ -222,7 +216,7 @@ namespace Yutai.UI.Docking
 
         public DevExpress.XtraBars.Docking.DockPanel Find(string key)
         {
-           return _dockingManager.Panels[key] as DevExpress.XtraBars.Docking.DockPanel;
+            return _dockingManager.Panels[key] as DevExpress.XtraBars.Docking.DockPanel;
         }
 
         public void SetDockVisible(string dockName, bool isVisible, bool isActive)
@@ -247,12 +241,11 @@ namespace Yutai.UI.Docking
             DevExpress.XtraBars.Docking.DockPanel panel = _dockingManager.Panels[dockName];
             if (panel == null)
             {
-               
                 return false;
             }
             return panel.Visible;
-
         }
+
         public IEnumerator<IDockPanelView> GetEnumerator()
         {
             return (IEnumerator<IDockPanelView>) (from view in _dict select view.Value);

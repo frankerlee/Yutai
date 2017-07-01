@@ -25,7 +25,8 @@ namespace Yutai.ArcGIS.Common.Excel
         public override void Draw()
         {
             base.Draw();
-            this.mdrawGrid.Rectangle = new Rectangle(base.Rectangle.X + base.MoveX, base.Rectangle.Y + base.MoveY, base.Rectangle.Width, base.Rectangle.Height);
+            this.mdrawGrid.Rectangle = new Rectangle(base.Rectangle.X + base.MoveX, base.Rectangle.Y + base.MoveY,
+                base.Rectangle.Width, base.Rectangle.Height);
             this.mdrawGrid.Graphics = base.Graphics;
             this.mdrawGrid.Width = this.mdrawGrid.Rectangle.Width;
             this.mdrawGrid.ColsWidth = this.mdrawGrid.GetAverageColsWidth();
@@ -43,7 +44,7 @@ namespace Yutai.ArcGIS.Common.Excel
             this._text = string_0;
             string str = string_0;
             char ch = char_0;
-            string[] strArray = str.Split(new char[] { ch });
+            string[] strArray = str.Split(new char[] {ch});
             if (strArray.Length > 0)
             {
                 this.mdrawGrid.SetText(0, 0, strArray[0]);
@@ -60,10 +61,7 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public object DataSource
         {
-            get
-            {
-                return this._dataSource;
-            }
+            get { return this._dataSource; }
             set
             {
                 if (value != null)
@@ -100,18 +98,12 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public override int Height
         {
-            get
-            {
-                return (this.mdrawGrid.Rows * this.mdrawGrid.PreferredRowHeight);
-            }
+            get { return (this.mdrawGrid.Rows*this.mdrawGrid.PreferredRowHeight); }
         }
 
         public string Text
         {
-            get
-            {
-                return this._text;
-            }
+            get { return this._text; }
             set
             {
                 this._text = value;
@@ -120,4 +112,3 @@ namespace Yutai.ArcGIS.Common.Excel
         }
     }
 }
-

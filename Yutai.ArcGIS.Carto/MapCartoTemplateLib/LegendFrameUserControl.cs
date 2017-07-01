@@ -25,7 +25,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             this.InitializeComponent();
         }
 
- private void LegendFrameUserControl_Load(object sender, EventArgs e)
+        private void LegendFrameUserControl_Load(object sender, EventArgs e)
         {
             this.cboBorder.Add(null);
             this.cboBackground.Add(null);
@@ -77,7 +77,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
             else
             {
-                oO = new MyStyleGalleryItem {
+                oO = new MyStyleGalleryItem
+                {
                     Name = "<定制>",
                     Item = this.iborder_0
                 };
@@ -89,7 +90,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
             else
             {
-                oO = new MyStyleGalleryItem {
+                oO = new MyStyleGalleryItem
+                {
                     Name = "<定制>",
                     Item = this.ibackground_0
                 };
@@ -101,7 +103,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
             else
             {
-                oO = new MyStyleGalleryItem {
+                oO = new MyStyleGalleryItem
+                {
                     Name = "<定制>",
                     Item = this.ishadow_0
                 };
@@ -185,4 +188,3 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         }
     }
 }
-

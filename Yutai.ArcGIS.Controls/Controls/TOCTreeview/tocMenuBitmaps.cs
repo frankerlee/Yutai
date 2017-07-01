@@ -7,7 +7,8 @@ using System.Runtime.CompilerServices;
 
 namespace Yutai.ArcGIS.Controls.Controls.TOCTreeview
 {
-    [DebuggerNonUserCode, CompilerGenerated, GeneratedCode("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [DebuggerNonUserCode, CompilerGenerated,
+     GeneratedCode("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     internal class tocMenuBitmaps
     {
         private static CultureInfo resourceCulture;
@@ -19,31 +20,19 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCTreeview
 
         internal static Bitmap AddData
         {
-            get
-            {
-                return (Bitmap) ResourceManager.GetObject("AddData", resourceCulture);
-            }
+            get { return (Bitmap) ResourceManager.GetObject("AddData", resourceCulture); }
         }
 
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         internal static CultureInfo Culture
         {
-            get
-            {
-                return resourceCulture;
-            }
-            set
-            {
-                resourceCulture = value;
-            }
+            get { return resourceCulture; }
+            set { resourceCulture = value; }
         }
 
         internal static Bitmap PanToSelect
         {
-            get
-            {
-                return (Bitmap) ResourceManager.GetObject("PanToSelect", resourceCulture);
-            }
+            get { return (Bitmap) ResourceManager.GetObject("PanToSelect", resourceCulture); }
         }
 
         [EditorBrowsable(EditorBrowsableState.Advanced)]
@@ -53,7 +42,9 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCTreeview
             {
                 if (object.ReferenceEquals(resourceMan, null))
                 {
-                    System.Resources.ResourceManager manager = new System.Resources.ResourceManager("JLK.Controls.TOCTreeview.tocMenuBitmaps", typeof(tocMenuBitmaps).Assembly);
+                    System.Resources.ResourceManager manager =
+                        new System.Resources.ResourceManager("JLK.Controls.TOCTreeview.tocMenuBitmaps",
+                            typeof(tocMenuBitmaps).Assembly);
                     resourceMan = manager;
                 }
                 return resourceMan;
@@ -62,35 +53,22 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCTreeview
 
         internal static Bitmap SwitchSelection
         {
-            get
-            {
-                return (Bitmap) ResourceManager.GetObject("SwitchSelection", resourceCulture);
-            }
+            get { return (Bitmap) ResourceManager.GetObject("SwitchSelection", resourceCulture); }
         }
 
         internal static Bitmap Table
         {
-            get
-            {
-                return (Bitmap) ResourceManager.GetObject("Table", resourceCulture);
-            }
+            get { return (Bitmap) ResourceManager.GetObject("Table", resourceCulture); }
         }
 
         internal static Bitmap Zoom2SelectFeat
         {
-            get
-            {
-                return (Bitmap) ResourceManager.GetObject("Zoom2SelectFeat", resourceCulture);
-            }
+            get { return (Bitmap) ResourceManager.GetObject("Zoom2SelectFeat", resourceCulture); }
         }
 
         internal static Bitmap ZoomToLayer
         {
-            get
-            {
-                return (Bitmap) ResourceManager.GetObject("ZoomToLayer", resourceCulture);
-            }
+            get { return (Bitmap) ResourceManager.GetObject("ZoomToLayer", resourceCulture); }
         }
     }
 }
-

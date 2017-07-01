@@ -112,7 +112,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
                     goto Label_0123;
             }
             this.btnLast.Enabled = true;
-        Label_0123:
+            Label_0123:
             this.m_Step++;
         }
 
@@ -128,7 +128,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             }
         }
 
- public object DataSource
+        public object DataSource
         {
             set
             {
@@ -139,11 +139,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
 
         public IMap Map
         {
-            set
-            {
-                this.m_pGraphicsSelectData.Map = value;
-            }
+            set { this.m_pGraphicsSelectData.Map = value; }
         }
     }
 }
-

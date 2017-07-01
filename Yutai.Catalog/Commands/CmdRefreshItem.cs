@@ -55,7 +55,6 @@ namespace Yutai.Plugins.Catalog.Commands
 
         public override void OnClick()
         {
-
             ((IGxSelection) _context.GxSelection).FirstObject.Refresh();
         }
     }

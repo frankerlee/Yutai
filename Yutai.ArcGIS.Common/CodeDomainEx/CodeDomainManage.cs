@@ -23,7 +23,8 @@ namespace Yutai.ArcGIS.Common.CodeDomainEx
             old_acctor_mc();
         }
 
-        public static CodeDomainEx AddCodeDomain(string string_0, string string_1, string string_2, string string_3, string string_4, string string_5, string string_6, esriFieldType esriFieldType_0)
+        public static CodeDomainEx AddCodeDomain(string string_0, string string_1, string string_2, string string_3,
+            string string_4, string string_5, string string_6, esriFieldType esriFieldType_0)
         {
             if (m_pDomainTable == null)
             {
@@ -33,7 +34,8 @@ namespace Yutai.ArcGIS.Common.CodeDomainEx
                     return null;
                 }
             }
-            IQueryFilter queryFilter = new QueryFilter {
+            IQueryFilter queryFilter = new QueryFilter
+            {
                 WhereClause = string.Format("{0} = '{1}'", CodeDomainTableStruct.DomainNameFieldName, string_2)
             };
             if (m_pDomainTable.RowCount(queryFilter) > 0)
@@ -54,7 +56,8 @@ namespace Yutai.ArcGIS.Common.CodeDomainEx
             row.set_Value(m_pDomainTable.FindField(CodeDomainTableStruct.IDFieldName), string_5);
             row.set_Value(m_pDomainTable.FindField(CodeDomainTableStruct.ParentIDFieldName), string_6);
             row.Store();
-            CodeDomainEx item = new CodeDomainEx {
+            CodeDomainEx item = new CodeDomainEx
+            {
                 DomainID = str,
                 Name = string_2,
                 FieldType = esriFieldType_0,
@@ -79,7 +82,7 @@ namespace Yutai.ArcGIS.Common.CodeDomainEx
                     return;
                 }
             }
-            string[] strArray = string_0.Split(new char[] { '.' });
+            string[] strArray = string_0.Split(new char[] {'.'});
             string_0 = strArray[strArray.Length - 1];
             if (CheckHasDamain(string_1, string_0))
             {
@@ -105,9 +108,15 @@ namespace Yutai.ArcGIS.Common.CodeDomainEx
                     return false;
                 }
             }
-            string[] strArray = string_1.Split(new char[] { '.' });
-            string str = string.Format("({0}='{1}' and {2}='{3}') or ({0}='{1}' and {2}='')", new object[] { CodeDomainMapTableStruct.FieldName, string_0, CodeDomainMapTableStruct.FeatureClassName, strArray[strArray.Length - 1] });
-            IQueryFilter queryFilter = new QueryFilter {
+            string[] strArray = string_1.Split(new char[] {'.'});
+            string str = string.Format("({0}='{1}' and {2}='{3}') or ({0}='{1}' and {2}='')",
+                new object[]
+                {
+                    CodeDomainMapTableStruct.FieldName, string_0, CodeDomainMapTableStruct.FeatureClassName,
+                    strArray[strArray.Length - 1]
+                });
+            IQueryFilter queryFilter = new QueryFilter
+            {
                 WhereClause = str
             };
             return (m_pDomainMapTable.RowCount(queryFilter) > 0);
@@ -128,10 +137,13 @@ namespace Yutai.ArcGIS.Common.CodeDomainEx
                     return;
                 }
             }
-            string[] strArray = string_0.Split(new char[] { '.' });
+            string[] strArray = string_0.Split(new char[] {'.'});
             string_0 = strArray[strArray.Length - 1];
-            string str = string.Format("{0}='{1}' and {2}='{3}'", new object[] { CodeDomainMapTableStruct.FieldName, string_1, CodeDomainMapTableStruct.FeatureClassName, string_0 });
-            IQueryFilter queryFilter = new QueryFilter {
+            string str = string.Format("{0}='{1}' and {2}='{3}'",
+                new object[]
+                    {CodeDomainMapTableStruct.FieldName, string_1, CodeDomainMapTableStruct.FeatureClassName, string_0});
+            IQueryFilter queryFilter = new QueryFilter
+            {
                 WhereClause = str
             };
             ICursor o = m_pDomainMapTable.Search(queryFilter, false);
@@ -153,7 +165,8 @@ namespace Yutai.ArcGIS.Common.CodeDomainEx
                     return;
                 }
             }
-            IQueryFilter queryFilter = new QueryFilter {
+            IQueryFilter queryFilter = new QueryFilter
+            {
                 WhereClause = string.Format("{0} = '{1}'", CodeDomainTableStruct.DomainIDFieldName, string_0)
             };
             m_pDomainTable.DeleteSearchedRows(queryFilter);
@@ -169,7 +182,8 @@ namespace Yutai.ArcGIS.Common.CodeDomainEx
             m_pDomainMapTable.DeleteSearchedRows(queryFilter);
         }
 
-        public static bool EditDomain(string string_0, string string_1, string string_2, string string_3, string string_4, string string_5, string string_6, string string_7, esriFieldType esriFieldType_0)
+        public static bool EditDomain(string string_0, string string_1, string string_2, string string_3,
+            string string_4, string string_5, string string_6, string string_7, esriFieldType esriFieldType_0)
         {
             if (m_pDomainTable == null)
             {
@@ -179,8 +193,15 @@ namespace Yutai.ArcGIS.Common.CodeDomainEx
                     return false;
                 }
             }
-            IQueryFilter queryFilter = new QueryFilter {
-                WhereClause = string.Format("{0} = '{1}' and {2}<>'{3}'", new object[] { CodeDomainTableStruct.DomainNameFieldName, string_3, CodeDomainTableStruct.DomainIDFieldName, string_0 })
+            IQueryFilter queryFilter = new QueryFilter
+            {
+                WhereClause =
+                    string.Format("{0} = '{1}' and {2}<>'{3}'",
+                        new object[]
+                        {
+                            CodeDomainTableStruct.DomainNameFieldName, string_3,
+                            CodeDomainTableStruct.DomainIDFieldName, string_0
+                        })
             };
             if (m_pDomainTable.RowCount(queryFilter) > 0)
             {
@@ -197,7 +218,8 @@ namespace Yutai.ArcGIS.Common.CodeDomainEx
                 row.set_Value(m_pDomainTable.FindField(CodeDomainTableStruct.DomainNameFieldName), string_3);
                 row.set_Value(m_pDomainTable.FindField(CodeDomainTableStruct.ValueFieldName), string_4);
                 row.set_Value(m_pDomainTable.FindField(CodeDomainTableStruct.DescriptionFieldName), string_5);
-                row.set_Value(m_pDomainTable.FindField(CodeDomainTableStruct.fieldtypeFieldName), (short) esriFieldType_0);
+                row.set_Value(m_pDomainTable.FindField(CodeDomainTableStruct.fieldtypeFieldName),
+                    (short) esriFieldType_0);
                 row.set_Value(m_pDomainTable.FindField(CodeDomainTableStruct.IDFieldName), string_6);
                 row.set_Value(m_pDomainTable.FindField(CodeDomainTableStruct.ParentIDFieldName), string_7);
                 row.Store();
@@ -215,7 +237,8 @@ namespace Yutai.ArcGIS.Common.CodeDomainEx
             if (m_pDomainTable != null)
             {
                 string str = string.Format("{0}='{1}'", CodeDomainTableStruct.DomainIDFieldName, string_0);
-                IQueryFilter queryFilter = new QueryFilter {
+                IQueryFilter queryFilter = new QueryFilter
+                {
                     WhereClause = str
                 };
                 ICursor o = m_pDomainTable.Search(queryFilter, false);
@@ -230,7 +253,8 @@ namespace Yutai.ArcGIS.Common.CodeDomainEx
                     string str3 = row.get_Value(index).ToString();
                     string str4 = row.get_Value(num3).ToString();
                     string str5 = row.get_Value(num4).ToString();
-                    DataAccessLayerBaseClass dataAccessLayer = DataAccessLayerFactory.GetDataAccessLayer(DataProviderType.OleDb, str3);
+                    DataAccessLayerBaseClass dataAccessLayer =
+                        DataAccessLayerFactory.GetDataAccessLayer(DataProviderType.OleDb, str3);
                     string str6 = string.Format("select {0},{1} from {2}", str4, str5, str2);
                     dataAccessLayer.Open();
                     DataTable table = dataAccessLayer.ExecuteDataTable(str6);
@@ -248,7 +272,7 @@ namespace Yutai.ArcGIS.Common.CodeDomainEx
 
         public static NameValueCollection GetCodeDomain(string string_0, string string_1)
         {
-            string[] strArray = string_1.Split(new char[] { '.' });
+            string[] strArray = string_1.Split(new char[] {'.'});
             string key = string.Format("{0},{1}", string_0, strArray[strArray.Length - 1]);
             if (FieldDomain.ContainsKey(key))
             {
@@ -257,8 +281,14 @@ namespace Yutai.ArcGIS.Common.CodeDomainEx
             NameValueCollection values2 = new NameValueCollection();
             if (CheckHasDamain(string_0, string_1))
             {
-                string str2 = string.Format("({0}='{1}' and {2}='{3}') or ({0}='{1}' and {2}='')", new object[] { CodeDomainMapTableStruct.FieldName, string_0, CodeDomainMapTableStruct.FeatureClassName, strArray[strArray.Length - 1] });
-                IQueryFilter queryFilter = new QueryFilter {
+                string str2 = string.Format("({0}='{1}' and {2}='{3}') or ({0}='{1}' and {2}='')",
+                    new object[]
+                    {
+                        CodeDomainMapTableStruct.FieldName, string_0, CodeDomainMapTableStruct.FeatureClassName,
+                        strArray[strArray.Length - 1]
+                    });
+                IQueryFilter queryFilter = new QueryFilter
+                {
                     WhereClause = str2
                 };
                 ICursor o = m_pDomainMapTable.Search(queryFilter, false);
@@ -293,7 +323,7 @@ namespace Yutai.ArcGIS.Common.CodeDomainEx
         public static CodeDomainEx GetCodeDomainEx(string string_0, string string_1)
         {
             CodeDomainEx ex = null;
-            string[] strArray = string_1.Split(new char[] { '.' });
+            string[] strArray = string_1.Split(new char[] {'.'});
             string key = string.Format("{0},{1}", string_0, strArray[strArray.Length - 1]);
             if (FieldDomainMap.ContainsKey(key))
             {
@@ -301,8 +331,14 @@ namespace Yutai.ArcGIS.Common.CodeDomainEx
             }
             if (CheckHasDamain(string_0, string_1))
             {
-                string str2 = string.Format("({0}='{1}' and {2}='{3}') or ({0}='{1}' and {2}='')", new object[] { CodeDomainMapTableStruct.FieldName, string_0, CodeDomainMapTableStruct.FeatureClassName, strArray[strArray.Length - 1] });
-                IQueryFilter queryFilter = new QueryFilter {
+                string str2 = string.Format("({0}='{1}' and {2}='{3}') or ({0}='{1}' and {2}='')",
+                    new object[]
+                    {
+                        CodeDomainMapTableStruct.FieldName, string_0, CodeDomainMapTableStruct.FeatureClassName,
+                        strArray[strArray.Length - 1]
+                    });
+                IQueryFilter queryFilter = new QueryFilter
+                {
                     WhereClause = str2
                 };
                 ICursor o = m_pDomainMapTable.Search(queryFilter, false);
@@ -336,7 +372,8 @@ namespace Yutai.ArcGIS.Common.CodeDomainEx
                     string str11;
                     esriFieldType type;
                     GetDomainInfo(str3, out str5, out str6, out str7, out str8, out str9, out str10, out str11, out type);
-                    ex = new CodeDomainEx {
+                    ex = new CodeDomainEx
+                    {
                         NameFieldName = str9,
                         ParentIDFieldName = str11.Trim(),
                         ConnectionStr = str5,
@@ -364,9 +401,15 @@ namespace Yutai.ArcGIS.Common.CodeDomainEx
                     return str;
                 }
             }
-            string[] strArray = string_1.Split(new char[] { '.' });
-            string str3 = string.Format("{0}='{1}' and {2}='{3}'", new object[] { CodeDomainMapTableStruct.FieldName, string_0, CodeDomainMapTableStruct.FeatureClassName, strArray[strArray.Length - 1] });
-            IQueryFilter queryFilter = new QueryFilter {
+            string[] strArray = string_1.Split(new char[] {'.'});
+            string str3 = string.Format("{0}='{1}' and {2}='{3}'",
+                new object[]
+                {
+                    CodeDomainMapTableStruct.FieldName, string_0, CodeDomainMapTableStruct.FeatureClassName,
+                    strArray[strArray.Length - 1]
+                });
+            IQueryFilter queryFilter = new QueryFilter
+            {
                 WhereClause = str3
             };
             ICursor o = m_pDomainMapTable.Search(queryFilter, false);
@@ -380,7 +423,9 @@ namespace Yutai.ArcGIS.Common.CodeDomainEx
             return str;
         }
 
-        public static bool GetDomainInfo(string string_0, out string string_1, out string string_2, out string string_3, out string string_4, out string string_5, out string string_6, out string string_7, out esriFieldType esriFieldType_0)
+        public static bool GetDomainInfo(string string_0, out string string_1, out string string_2, out string string_3,
+            out string string_4, out string string_5, out string string_6, out string string_7,
+            out esriFieldType esriFieldType_0)
         {
             string_1 = "";
             string_2 = "";
@@ -398,7 +443,8 @@ namespace Yutai.ArcGIS.Common.CodeDomainEx
                     return false;
                 }
             }
-            IQueryFilter queryFilter = new QueryFilter {
+            IQueryFilter queryFilter = new QueryFilter
+            {
                 WhereClause = string.Format("{0} = '{1}'", CodeDomainTableStruct.DomainIDFieldName, string_0)
             };
             ICursor o = m_pDomainTable.Search(queryFilter, false);
@@ -409,10 +455,13 @@ namespace Yutai.ArcGIS.Common.CodeDomainEx
                 string_2 = row.get_Value(m_pDomainTable.FindField(CodeDomainTableStruct.TableFieldName)).ToString();
                 string_3 = row.get_Value(m_pDomainTable.FindField(CodeDomainTableStruct.DomainNameFieldName)).ToString();
                 string_4 = row.get_Value(m_pDomainTable.FindField(CodeDomainTableStruct.ValueFieldName)).ToString();
-                string_5 = row.get_Value(m_pDomainTable.FindField(CodeDomainTableStruct.DescriptionFieldName)).ToString();
+                string_5 =
+                    row.get_Value(m_pDomainTable.FindField(CodeDomainTableStruct.DescriptionFieldName)).ToString();
                 string_6 = row.get_Value(m_pDomainTable.FindField(CodeDomainTableStruct.IDFieldName)).ToString();
                 string_7 = row.get_Value(m_pDomainTable.FindField(CodeDomainTableStruct.ParentIDFieldName)).ToString();
-                esriFieldType_0 = (esriFieldType) Convert.ToInt32(row.get_Value(m_pDomainTable.FindField(CodeDomainTableStruct.fieldtypeFieldName)));
+                esriFieldType_0 =
+                    (esriFieldType)
+                    Convert.ToInt32(row.get_Value(m_pDomainTable.FindField(CodeDomainTableStruct.fieldtypeFieldName)));
             }
             ComReleaser.ReleaseCOMObject(o);
             return true;
@@ -444,7 +493,8 @@ namespace Yutai.ArcGIS.Common.CodeDomainEx
                     {
                         string str2 = row.get_Value(num2).ToString();
                         esriFieldType type = (esriFieldType) Convert.ToInt32(row.get_Value(num3));
-                        CodeDomainEx item = new CodeDomainEx {
+                        CodeDomainEx item = new CodeDomainEx
+                        {
                             DomainID = str2,
                             Name = str,
                             FieldType = type,
@@ -473,10 +523,13 @@ namespace Yutai.ArcGIS.Common.CodeDomainEx
                     return;
                 }
             }
-            string[] strArray = string_0.Split(new char[] { '.' });
+            string[] strArray = string_0.Split(new char[] {'.'});
             string_0 = strArray[strArray.Length - 1];
-            string str = string.Format("{0}='{1}' and {2}='{3}'", new object[] { CodeDomainMapTableStruct.FieldName, string_1, CodeDomainMapTableStruct.FeatureClassName, string_0 });
-            IQueryFilter queryFilter = new QueryFilter {
+            string str = string.Format("{0}='{1}' and {2}='{3}'",
+                new object[]
+                    {CodeDomainMapTableStruct.FieldName, string_1, CodeDomainMapTableStruct.FeatureClassName, string_0});
+            IQueryFilter queryFilter = new QueryFilter
+            {
                 WhereClause = str
             };
             ICursor o = m_pDomainMapTable.Search(queryFilter, false);
@@ -513,11 +566,7 @@ namespace Yutai.ArcGIS.Common.CodeDomainEx
 
         public static ITable DomainTable
         {
-            get
-            {
-                return m_pDomainTable;
-            }
+            get { return m_pDomainTable; }
         }
     }
 }
-

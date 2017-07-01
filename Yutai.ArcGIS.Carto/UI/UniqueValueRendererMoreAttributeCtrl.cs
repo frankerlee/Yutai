@@ -45,7 +45,7 @@ namespace Yutai.ArcGIS.Carto.UI
                 ListViewItemEx ex = this.listView1.Items[i] as ListViewItemEx;
                 if (ex != null)
                 {
-                    string[] strArray = ex.SubItems[1].Text.Split(new char[] { ';' });
+                    string[] strArray = ex.SubItems[1].Text.Split(new char[] {';'});
                     this.iuniqueValueRenderer_0.AddValue(strArray[0], null, ex.Style as ISymbol);
                     this.iuniqueValueRenderer_0.set_Label(strArray[0], ex.SubItems[2].Text);
                     for (int j = 1; j < strArray.Length; j++)
@@ -132,7 +132,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnAddValue_Click(object sender, EventArgs e)
         {
-            frmAddValuesEx ex = new frmAddValuesEx {
+            frmAddValuesEx ex = new frmAddValuesEx
+            {
                 Layer = this.ilayer_0,
                 FieldNames = this.method_4(),
                 FieldDelimiter = this.iuniqueValueRenderer_0.FieldDelimiter,
@@ -313,7 +314,7 @@ namespace Yutai.ArcGIS.Carto.UI
             return object_0.ToString();
         }
 
- public bool GetUniqueValues(ILayer ilayer_1, string[] string_0, IList ilist_2, IList ilist_3)
+        public bool GetUniqueValues(ILayer ilayer_1, string[] string_0, IList ilist_2, IList ilist_3)
         {
             try
             {
@@ -400,7 +401,7 @@ namespace Yutai.ArcGIS.Carto.UI
             return false;
         }
 
- private void listView1_MouseUp(object sender, MouseEventArgs e)
+        private void listView1_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
@@ -465,7 +466,7 @@ namespace Yutai.ArcGIS.Carto.UI
         {
             ListViewItemEx ex = this.listView1.SelectedItems[0] as ListViewItemEx;
             string text = ex.SubItems[1].Text;
-            text.Split(new char[] { ',' });
+            text.Split(new char[] {','});
             int num = -1;
             if (ex.SubItems[3].Text != "?")
             {
@@ -510,7 +511,7 @@ namespace Yutai.ArcGIS.Carto.UI
             try
             {
                 ListViewItemEx ex = this.listView1.SelectedItems[0] as ListViewItemEx;
-                string[] strArray = ex.SubItems[1].Text.Split(new char[] { ';' });
+                string[] strArray = ex.SubItems[1].Text.Split(new char[] {';'});
                 if (ex.SubItems[3].Text != "?")
                 {
                     ex.SubItems[3].Text = "?";
@@ -561,7 +562,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 }
                 if (this.ilayer_0 is IGeoFeatureLayer)
                 {
-                    IUniqueValueRenderer pInObject = (this.ilayer_0 as IGeoFeatureLayer).Renderer as IUniqueValueRenderer;
+                    IUniqueValueRenderer pInObject =
+                        (this.ilayer_0 as IGeoFeatureLayer).Renderer as IUniqueValueRenderer;
                     if (pInObject == null)
                     {
                         if (this.iuniqueValueRenderer_0 == null)
@@ -569,7 +571,8 @@ namespace Yutai.ArcGIS.Carto.UI
                             this.iuniqueValueRenderer_0 = new UniqueValueRendererClass();
                             this.iuniqueValueRenderer_0.FieldCount = 1;
                             this.iuniqueValueRenderer_0.DefaultLabel = "默认符号";
-                            this.iuniqueValueRenderer_0.DefaultSymbol = this.method_6((this.ilayer_0 as IGeoFeatureLayer).FeatureClass.ShapeType);
+                            this.iuniqueValueRenderer_0.DefaultSymbol =
+                                this.method_6((this.ilayer_0 as IGeoFeatureLayer).FeatureClass.ShapeType);
                             this.iuniqueValueRenderer_0.UseDefaultSymbol = true;
                             this.iuniqueValueRenderer_0.FieldDelimiter = ",";
                         }
@@ -619,7 +622,10 @@ namespace Yutai.ArcGIS.Carto.UI
                 while (index < this.ifields_0.FieldCount)
                 {
                     IField field = this.ifields_0.get_Field(index);
-                    if ((((field.Type != esriFieldType.esriFieldTypeOID) && (field.Type != esriFieldType.esriFieldTypeGeometry)) && (field.Type != esriFieldType.esriFieldTypeBlob)) && (field.Type != esriFieldType.esriFieldTypeRaster))
+                    if ((((field.Type != esriFieldType.esriFieldTypeOID) &&
+                          (field.Type != esriFieldType.esriFieldTypeGeometry)) &&
+                         (field.Type != esriFieldType.esriFieldTypeBlob)) &&
+                        (field.Type != esriFieldType.esriFieldTypeRaster))
                     {
                         this.cboFields1.Properties.Items.Add(new FieldWrap(field));
                         this.cboFields2.Properties.Items.Add(new FieldWrap(field));
@@ -760,7 +766,8 @@ namespace Yutai.ArcGIS.Carto.UI
         {
             IFields fields = itable_0.Fields;
             IField field = fields.get_Field(fields.FindField(string_0));
-            IQueryFilter queryFilter = new QueryFilterClass {
+            IQueryFilter queryFilter = new QueryFilterClass
+            {
                 WhereClause = field.Name + " = " + this.ConvertFieldValueToString(field.Type, string_1)
             };
             return itable_0.RowCount(queryFilter);
@@ -816,14 +823,16 @@ namespace Yutai.ArcGIS.Carto.UI
                 case esriGeometryType.esriGeometryPoint:
                 case esriGeometryType.esriGeometryMultipoint:
                 {
-                    IMarkerSymbol symbol = new SimpleMarkerSymbolClass {
+                    IMarkerSymbol symbol = new SimpleMarkerSymbolClass
+                    {
                         Size = 3.0
                     };
                     return (symbol as ISymbol);
                 }
                 case esriGeometryType.esriGeometryPolyline:
                 {
-                    ILineSymbol symbol2 = new SimpleLineSymbolClass {
+                    ILineSymbol symbol2 = new SimpleLineSymbolClass
+                    {
                         Width = 0.2
                     };
                     return (symbol2 as ISymbol);
@@ -904,7 +913,8 @@ namespace Yutai.ArcGIS.Carto.UI
             if (this.cboColorRamp.Items.Count == 0)
             {
                 this.cboColorRamp.Enabled = false;
-                IRandomColorRamp ramp = new RandomColorRampClass {
+                IRandomColorRamp ramp = new RandomColorRampClass
+                {
                     StartHue = 40,
                     EndHue = 120,
                     MinValue = 65,
@@ -947,14 +957,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         bool IUserControl.Visible
         {
-            get
-            {
-                return base.Visible;
-            }
-            set
-            {
-                base.Visible = value;
-            }
+            get { return base.Visible; }
+            set { base.Visible = value; }
         }
 
         public IStyleGallery StyleGallery
@@ -967,4 +971,3 @@ namespace Yutai.ArcGIS.Carto.UI
         }
     }
 }
-

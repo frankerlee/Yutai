@@ -11,8 +11,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
     {
         private bool bool_0 = false;
         private bool bool_1 = false;
-        [CompilerGenerated]
-        private IContainer icontainer_0 = null;
+
 
         public event OnValueChangeEventHandler OnValueChange;
 
@@ -78,7 +77,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         {
         }
 
- public void ResetControl()
+        public void ResetControl()
         {
         }
 
@@ -110,55 +109,27 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
-        public bool IsEdit
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.bool_2;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.bool_2 = value;
-            }
-        }
+        public bool IsEdit { get; set; }
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return "常规";
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get { return "常规"; }
+            set { throw new NotImplementedException(); }
         }
     }
 }
-

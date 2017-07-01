@@ -29,11 +29,11 @@ namespace Yutai.ArcGIS.Carto.UI
             this.method_1(this.listBoxControl1.SelectedIndex);
         }
 
- private void frmAddTinRender_Load(object sender, EventArgs e)
+        private void frmAddTinRender_Load(object sender, EventArgs e)
         {
         }
 
- private void listBoxControl1_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void listBoxControl1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             int num = this.listBoxControl1.IndexFromPoint(new Point(e.X, e.Y));
             this.method_1(num);
@@ -44,10 +44,12 @@ namespace Yutai.ArcGIS.Carto.UI
             this.btnAdd.Enabled = this.listBoxControl1.SelectedIndex != -1;
         }
 
-        private void method_0(IClassify iclassify_0, ITinColorRampRenderer itinColorRampRenderer_0, int int_0, ITin itin_1)
+        private void method_0(IClassify iclassify_0, ITinColorRampRenderer itinColorRampRenderer_0, int int_0,
+            ITin itin_1)
         {
             bool flag;
-            IRandomColorRamp ramp = new RandomColorRampClass {
+            IRandomColorRamp ramp = new RandomColorRampClass
+            {
                 StartHue = 40,
                 EndHue = 120,
                 MinValue = 65,
@@ -86,7 +88,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 IColor color = colors.Next();
                 if ((itinColorRampRenderer_0 as ITinRenderer).Name == "Elevation")
                 {
-                    ISimpleFillSymbol symbol2 = new SimpleFillSymbolClass {
+                    ISimpleFillSymbol symbol2 = new SimpleFillSymbolClass
+                    {
                         Color = color,
                         Style = esriSimpleFillStyle.esriSFSSolid
                     };
@@ -94,7 +97,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 }
                 else if ((itinColorRampRenderer_0 as ITinRenderer).Name == "Node elevation")
                 {
-                    IMarkerSymbol symbol3 = new SimpleMarkerSymbolClass {
+                    IMarkerSymbol symbol3 = new SimpleMarkerSymbolClass
+                    {
                         Color = color
                     };
                     sym = symbol3 as ISymbol;
@@ -199,13 +203,9 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public ITinRenderer TinRenderer
         {
-            get
-            {
-                return this.itinRenderer_0;
-            }
+            get { return this.itinRenderer_0; }
         }
 
         internal delegate void OnAddTinRenderHander(ITinRenderer itinRenderer_0);
     }
 }
-

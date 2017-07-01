@@ -4,195 +4,122 @@
     {
         public override string DescriptionFieldName
         {
-            get
-            {
-                return "Description";
-            }
+            get { return "Description"; }
         }
 
         public string ElementAttributesFieldName
         {
-            get
-            {
-                return "ElementAttributes";
-            }
+            get { return "ElementAttributes"; }
         }
 
         public string ElementTypeFieldName
         {
-            get
-            {
-                return "ElementType";
-            }
+            get { return "ElementType"; }
         }
 
         public string FenFuTypeFieldName
         {
-            get
-            {
-                return "MapTH";
-            }
+            get { return "MapTH"; }
         }
 
         public override string IDFieldName
         {
-            get
-            {
-                return "ObjectID";
-            }
+            get { return "ObjectID"; }
         }
 
         public string JTBInfoFieldName
         {
-            get
-            {
-                return "JTBInfo";
-            }
+            get { return "JTBInfo"; }
         }
 
         public string LocationFieldName
         {
-            get
-            {
-                return "Location";
-            }
+            get { return "Location"; }
         }
 
         public string LowerLeftXFieldName
         {
-            get
-            {
-                return "LowerLeftX";
-            }
+            get { return "LowerLeftX"; }
         }
 
         public string LowerLeftYFieldName
         {
-            get
-            {
-                return "LowerLeftY";
-            }
+            get { return "LowerLeftY"; }
         }
 
         public string LowerRightXFieldName
         {
-            get
-            {
-                return "LowerRightX";
-            }
+            get { return "LowerRightX"; }
         }
 
         public string LowerRightYFieldName
         {
-            get
-            {
-                return "LowerRightY";
-            }
+            get { return "LowerRightY"; }
         }
 
         public string MapTHFieldName
         {
-            get
-            {
-                return "MapTH";
-            }
+            get { return "MapTH"; }
         }
 
         public override string NameFieldName
         {
-            get
-            {
-                return "Name";
-            }
+            get { return "Name"; }
         }
 
         public override string OrderIDFieldName
         {
-            get
-            {
-                return "";
-            }
+            get { return ""; }
         }
 
         public override string ParentIDFieldName
         {
-            get
-            {
-                return "";
-            }
+            get { return ""; }
         }
 
         public string ScaleInfoFieldName
         {
-            get
-            {
-                return "ScaleInfo";
-            }
+            get { return "ScaleInfo"; }
         }
 
         public override string TableName
         {
-            get
-            {
-                return "MapFenFuInfo";
-            }
+            get { return "MapFenFuInfo"; }
         }
 
         public string TemplateIDFieldName
         {
-            get
-            {
-                return "TemplateID";
-            }
+            get { return "TemplateID"; }
         }
 
         public string TJIDFieldName
         {
-            get
-            {
-                return "TJID";
-            }
+            get { return "TJID"; }
         }
 
         public string TuKuoInfoFieldName
         {
-            get
-            {
-                return "TuKuoInfo";
-            }
+            get { return "TuKuoInfo"; }
         }
 
         public string UpperLeftXFieldName
         {
-            get
-            {
-                return "UpperLeftX";
-            }
+            get { return "UpperLeftX"; }
         }
 
         public string UpperLeftYFieldName
         {
-            get
-            {
-                return "UpperLeftY";
-            }
+            get { return "UpperLeftY"; }
         }
 
         public string UpperRightXFieldName
         {
-            get
-            {
-                return "UpperRightX";
-            }
+            get { return "UpperRightX"; }
         }
 
         public string UpperRightYFieldName
         {
-            get
-            {
-                return "UpperRightY";
-            }
+            get { return "UpperRightY"; }
         }
     }
 }
-

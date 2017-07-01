@@ -23,9 +23,11 @@ namespace Yutai.ArcGIS.Carto.UI
         private void button_printerAttribute_Click(object sender, EventArgs e)
         {
             this.printDialog_0.ShowDialog();
-            if (this.ipageLayoutControl_0.Printer.Paper.PrinterName != this.printDialog_0.PrinterSettings.PrinterName.Trim())
+            if (this.ipageLayoutControl_0.Printer.Paper.PrinterName !=
+                this.printDialog_0.PrinterSettings.PrinterName.Trim())
             {
-                this.ipageLayoutControl_0.Printer.Paper.PrinterName = this.printDialog_0.PrinterSettings.PrinterName.Trim();
+                this.ipageLayoutControl_0.Printer.Paper.PrinterName =
+                    this.printDialog_0.PrinterSettings.PrinterName.Trim();
                 this.method_3();
             }
             this.method_2();
@@ -48,7 +50,8 @@ namespace Yutai.ArcGIS.Carto.UI
         {
             if (this.bool_0)
             {
-                this.ipageLayoutControl_0.Page.PageToPrinterMapping = (esriPageToPrinterMapping) this.cboPageToPrinterMapping.SelectedIndex;
+                this.ipageLayoutControl_0.Page.PageToPrinterMapping =
+                    (esriPageToPrinterMapping) this.cboPageToPrinterMapping.SelectedIndex;
                 this.method_1();
             }
         }
@@ -58,7 +61,8 @@ namespace Yutai.ArcGIS.Carto.UI
             if (this.bool_0)
             {
                 PaperSize paperSize = (this.cboPrinterPageSize.SelectedItem as Class0).PaperSize;
-                this.printDialog_0.PrinterSettings.DefaultPageSettings.PaperSize = (this.cboPrinterPageSize.SelectedItem as Class0).PaperSize;
+                this.printDialog_0.PrinterSettings.DefaultPageSettings.PaperSize =
+                    (this.cboPrinterPageSize.SelectedItem as Class0).PaperSize;
             }
         }
 
@@ -99,12 +103,13 @@ namespace Yutai.ArcGIS.Carto.UI
             {
                 this.ipageLayoutControl_0.Printer.Paper.PrinterName = this.comboBox_printer.Text;
                 this.printDialog_0.PrinterSettings.PrinterName = this.comboBox_printer.Text;
-                this.printDialog_0.PrinterSettings.DefaultPageSettings.PaperSize = this.printDialog_0.PrinterSettings.PaperSizes[0];
+                this.printDialog_0.PrinterSettings.DefaultPageSettings.PaperSize =
+                    this.printDialog_0.PrinterSettings.PaperSizes[0];
                 this.method_3();
             }
         }
 
- private void FormPageSetup_Load(object sender, EventArgs e)
+        private void FormPageSetup_Load(object sender, EventArgs e)
         {
             this.cboPageSize.Items.Add("Letter - 8.5in x 11in.");
             this.cboPageSize.Items.Add("Legal - 8.5in x 14in.");
@@ -142,12 +147,13 @@ namespace Yutai.ArcGIS.Carto.UI
             this.printDialog_0.PrinterSettings.PrinterName = this.ipageLayoutControl_0.Printer.Paper.PrinterName;
             this.comboBox_printer.Text = this.printDialog_0.PrinterSettings.PrinterName;
             this.method_3();
-            this.checkBox_usePrinterPageSize.Checked = this.ipageLayoutControl_0.Page.FormID == esriPageFormID.esriPageFormSameAsPrinter;
+            this.checkBox_usePrinterPageSize.Checked = this.ipageLayoutControl_0.Page.FormID ==
+                                                       esriPageFormID.esriPageFormSameAsPrinter;
             this.method_2();
             this.bool_0 = true;
         }
 
- private void method_0()
+        private void method_0()
         {
             this.printerSettings_0 = new PrinterSettings();
             this.printDialog_0.PrinterSettings = this.printerSettings_0;
@@ -186,7 +192,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     this.lblPrinterOrientation.Text = "纸张方向：横向";
                 }
                 printer.Paper.QueryPaperSize(out num, out num2);
-                this.lblPrinterSize.Text = "纸张大小：" + num.ToString("###.000") + " by " + num2.ToString("###.000") + " Inches";
+                this.lblPrinterSize.Text = "纸张大小：" + num.ToString("###.000") + " by " + num2.ToString("###.000") +
+                                           " Inches";
             }
         }
 
@@ -256,7 +263,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void optLandscape_Click(object sender, EventArgs e)
         {
-            if (this.optLandscape.Checked && (this.ipageLayoutControl_0.Page.FormID != esriPageFormID.esriPageFormSameAsPrinter))
+            if (this.optLandscape.Checked &&
+                (this.ipageLayoutControl_0.Page.FormID != esriPageFormID.esriPageFormSameAsPrinter))
             {
                 this.ipageLayoutControl_0.Page.Orientation = 2;
             }
@@ -264,7 +272,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void optPortrait_Click(object sender, EventArgs e)
         {
-            if (this.optPortrait.Checked && (this.ipageLayoutControl_0.Page.FormID != esriPageFormID.esriPageFormSameAsPrinter))
+            if (this.optPortrait.Checked &&
+                (this.ipageLayoutControl_0.Page.FormID != esriPageFormID.esriPageFormSameAsPrinter))
             {
                 this.ipageLayoutControl_0.Page.Orientation = 1;
             }
@@ -293,7 +302,8 @@ namespace Yutai.ArcGIS.Carto.UI
         {
             if (!this.method_5(this.txbEndPage.Text))
             {
-                this.txbEndPage.Text = this.ipageLayoutControl_0.get_PrinterPageCount(Convert.ToDouble(this.txbOverlap.Text)).ToString();
+                this.txbEndPage.Text =
+                    this.ipageLayoutControl_0.get_PrinterPageCount(Convert.ToDouble(this.txbOverlap.Text)).ToString();
             }
         }
 
@@ -330,15 +340,9 @@ namespace Yutai.ArcGIS.Carto.UI
 
             public System.Drawing.Printing.PaperSize PaperSize
             {
-                get
-                {
-                    return this.paperSize_0;
-                }
-                set
-                {
-                }
+                get { return this.paperSize_0; }
+                set { }
             }
         }
     }
 }
-

@@ -27,7 +27,7 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
             base.DialogResult = DialogResult.OK;
         }
 
- private void frmGeometricEffectList_Load(object sender, EventArgs e)
+        private void frmGeometricEffectList_Load(object sender, EventArgs e)
         {
             TreeNode node;
             IGeometricEffect effect;
@@ -179,34 +179,24 @@ namespace Yutai.ArcGIS.Controls.SymbolLib
             }
         }
 
- private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
             this.btnOK.Enabled = (this.treeView1.SelectedNode != null) && (this.treeView1.SelectedNode.Tag != null);
         }
 
         public BasicSymbolLayerBaseControl BasicSymbolLayerBaseControl
         {
-            set
-            {
-                this.m_pControl = value;
-            }
+            set { this.m_pControl = value; }
         }
 
         public IGeometricEffect GeometricEffect
         {
-            get
-            {
-                return this.m_GeometricEffect;
-            }
+            get { return this.m_GeometricEffect; }
         }
 
         public Control SelectControl
         {
-            get
-            {
-                return this.m_SelControl;
-            }
+            get { return this.m_SelControl; }
         }
     }
 }
-

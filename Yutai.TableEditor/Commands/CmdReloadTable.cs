@@ -13,6 +13,7 @@ namespace Yutai.Plugins.TableEditor.Commands
     class CmdReloadTable : YutaiCommand
     {
         private ITableEditorView _view;
+
         public CmdReloadTable(IAppContext context, ITableEditorView view)
         {
             _context = context;

@@ -33,6 +33,7 @@ namespace Yutai.Controls
         private string _caption;
 
         public static string DefaultDockName = "Dock_Main_MapLegend";
+
         public MapLegendDockPanel(IAppContext context)
         {
             if (context == null) throw new ArgumentNullException("context");
@@ -45,12 +46,12 @@ namespace Yutai.Controls
             axTOCControl1.OnMouseDown += AxTocControl1OnOnMouseDown;
             _caption = "二维图例";
             Image = Properties.Resources.icon_maplegend;
-            ((IAppContextEvents)_context).OnMapDocumentChangedEvent+= OnOnMapDocumentChangedEvent;
+            ((IAppContextEvents) _context).OnMapDocumentChangedEvent += OnOnMapDocumentChangedEvent;
         }
 
         private void OnOnMapDocumentChangedEvent()
         {
-           axTOCControl1.Update();
+            axTOCControl1.Update();
         }
 
 
@@ -117,37 +118,40 @@ namespace Yutai.Controls
             {
                 _commands = new List<YutaiCommand>
                 {
-                    new CmdLegendAddGroupLayer(_context,this),
-                    new CmdLegendAddData(_context,this),
+                    new CmdLegendAddGroupLayer(_context, this),
+                    new CmdLegendAddData(_context, this),
                     new CmdOpenAttributeTable(_context, this),
                     new CmdZoomToLayer(_context, this),
-                    new YutaiMenuCommand("dropVisibleScaleRange","dropVisibleScaleRange","dropVisibleScaleRange", "可见比例范围", ""),
+                    new YutaiMenuCommand("dropVisibleScaleRange", "dropVisibleScaleRange", "dropVisibleScaleRange",
+                        "可见比例范围", ""),
                     new CmdSetMinimumScale(_context, this),
                     new CmdSetMaximumScale(_context, this),
-                    new CmdClearScaleRange(_context,this),
-                    new YutaiMenuCommand("dropSelection", "dropSelection","dropSelection", "选择",""),
+                    new CmdClearScaleRange(_context, this),
+                    new YutaiMenuCommand("dropSelection", "dropSelection", "dropSelection", "选择", ""),
                     new CmdZoomToSelectFeatures(_context, this),
                     new CmdPanToSelectedFeature(_context, this),
                     new CmdSelectAllFeatures(_context, this),
                     new CmdSwitchSelectedFeature(_context, this),
-                    new CmdCreateLayerBySelection(_context,this),
-                    new CmdExpandAllLayer(_context,this),
-                    new CmdCollapseAllLayer(_context,this),
+                    new CmdCreateLayerBySelection(_context, this),
+                    new CmdExpandAllLayer(_context, this),
+                    new CmdCollapseAllLayer(_context, this),
                     new CmdShowAllLayer(_context, this),
                     new CmdHideAllLayer(_context, this),
-                    new CmdExportData(_context,this),
-                    new CmdDeleteAllLayer(_context,this),
-                    new CmdDeleteLayer(_context,this),
+                    new CmdExportData(_context, this),
+                    new CmdDeleteAllLayer(_context, this),
+                    new CmdDeleteLayer(_context, this),
                     new CmdLayerProperties(_context)
                 };
             }
         }
 
-        private void AxTocControl1OnOnMouseDown(object sender, ITOCControlEvents_OnMouseDownEvent itocControlEventsOnMouseDownEvent)
+        private void AxTocControl1OnOnMouseDown(object sender,
+            ITOCControlEvents_OnMouseDownEvent itocControlEventsOnMouseDownEvent)
         {
             if (itocControlEventsOnMouseDownEvent.button == 2 || itocControlEventsOnMouseDownEvent.button == 1)
             {
-                axTOCControl1.HitTest(itocControlEventsOnMouseDownEvent.x, itocControlEventsOnMouseDownEvent.y, ref pTocItem, ref pMap, ref pLayer, ref pother, ref pindex);
+                axTOCControl1.HitTest(itocControlEventsOnMouseDownEvent.x, itocControlEventsOnMouseDownEvent.y,
+                    ref pTocItem, ref pMap, ref pLayer, ref pother, ref pindex);
                 if (pTocItem == esriTOCControlItem.esriTOCControlItemMap)
                 {
                     axTOCControl1.SelectItem(pMap, null);
@@ -177,12 +181,12 @@ namespace Yutai.Controls
 
         public ITOCControl Legend
         {
-            get { return (ITOCControl)axTOCControl1.Object; }
+            get { return (ITOCControl) axTOCControl1.Object; }
         }
 
         public AxTOCControl LegendControl
         {
-            get { return (AxTOCControl)axTOCControl1; }
+            get { return (AxTOCControl) axTOCControl1; }
         }
 
         /*private void LegendGroupMouseUp(object sender, GroupMouseEventArgs e)
@@ -239,7 +243,6 @@ namespace Yutai.Controls
 
         private void contextMenuLayer_Opening(object sender, CancelEventArgs e)
         {
-
         }
 
         public ITOCControl2 TocControl
@@ -249,7 +252,7 @@ namespace Yutai.Controls
 
         public ITOCBuddy2 TocBuddyControl
         {
-            get { return ((ITOCControl2)axTOCControl1.Object).Buddy as ITOCBuddy2; }
+            get { return ((ITOCControl2) axTOCControl1.Object).Buddy as ITOCBuddy2; }
         }
 
         public IBasicMap SelectedMap
@@ -269,11 +272,20 @@ namespace Yutai.Controls
 
         public override Bitmap Image { get; }
 
-        public override string Caption { get { return _caption; } set { _caption = value; } }
+        public override string Caption
+        {
+            get { return _caption; }
+            set { _caption = value; }
+        }
 
-        public override DockPanelState DefaultDock { get { return DockPanelState.Left; } }
+        public override DockPanelState DefaultDock
+        {
+            get { return DockPanelState.Left; }
+        }
 
-        public override Size DefaultSize { get { return new Size(200,300); } }
-        
+        public override Size DefaultSize
+        {
+            get { return new Size(200, 300); }
+        }
     }
 }

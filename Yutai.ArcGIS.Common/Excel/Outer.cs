@@ -35,7 +35,8 @@ namespace Yutai.ArcGIS.Common.Excel
                 throw new Exception("对象的行列数还未初始，请用Initialize（）进行操作！");
             }
             base.Draw();
-            this.mdrawGrid.Rectangle = new Rectangle(base.Rectangle.X + base.MoveX, base.Rectangle.Y + base.MoveY, base.Rectangle.Width, base.Rectangle.Height);
+            this.mdrawGrid.Rectangle = new Rectangle(base.Rectangle.X + base.MoveX, base.Rectangle.Y + base.MoveY,
+                base.Rectangle.Width, base.Rectangle.Height);
             this.mdrawGrid.Graphics = base.Graphics;
             if (this.bool_1)
             {
@@ -68,42 +69,29 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public bool CanDraw
         {
-            get
-            {
-                return this.mblnHadInitialized;
-            }
+            get { return this.mblnHadInitialized; }
         }
 
         public int Cols
         {
-            get
-            {
-                return this.mdrawGrid.Cols;
-            }
+            get { return this.mdrawGrid.Cols; }
         }
 
         public int[] ColsWidth
         {
-            get
-            {
-                return this.mdrawGrid.ColsWidth;
-            }
-            set
-            {
-                this.mdrawGrid.ColsWidth = value;
-            }
+            get { return this.mdrawGrid.ColsWidth; }
+            set { this.mdrawGrid.ColsWidth = value; }
         }
 
         public object DataSource
         {
-            get
-            {
-                return this.mdrawGrid.DataSource;
-            }
+            get { return this.mdrawGrid.DataSource; }
             set
             {
                 this.mdrawGrid.DataSource = value;
-                if (((this.DataSource.GetType().ToString() == "System.String[]") || (this.DataSource.GetType().ToString() == "System.String[,]")) || (this.DataSource.GetType().ToString() == "System.Data.DataTable"))
+                if (((this.DataSource.GetType().ToString() == "System.String[]") ||
+                     (this.DataSource.GetType().ToString() == "System.String[,]")) ||
+                    (this.DataSource.GetType().ToString() == "System.Data.DataTable"))
                 {
                     this.mblnHadInitialized = true;
                 }
@@ -112,50 +100,29 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public override int Height
         {
-            get
-            {
-                return (this.mdrawGrid.Rows * this.mdrawGrid.PreferredRowHeight);
-            }
+            get { return (this.mdrawGrid.Rows*this.mdrawGrid.PreferredRowHeight); }
         }
 
         public bool IsAverageColsWidth
         {
-            get
-            {
-                return this.bool_1;
-            }
-            set
-            {
-                this.bool_1 = value;
-            }
+            get { return this.bool_1; }
+            set { this.bool_1 = value; }
         }
 
         public int RowHeight
         {
-            get
-            {
-                return this.mdrawGrid.PreferredRowHeight;
-            }
-            set
-            {
-                this.mdrawGrid.PreferredRowHeight = value;
-            }
+            get { return this.mdrawGrid.PreferredRowHeight; }
+            set { this.mdrawGrid.PreferredRowHeight = value; }
         }
 
         public int Rows
         {
-            get
-            {
-                return this.mdrawGrid.Rows;
-            }
+            get { return this.mdrawGrid.Rows; }
         }
 
         public string[,] Text
         {
-            get
-            {
-                return this.mdrawGrid.GridText;
-            }
+            get { return this.mdrawGrid.GridText; }
             set
             {
                 this.mdrawGrid.GridText = value;
@@ -164,4 +131,3 @@ namespace Yutai.ArcGIS.Common.Excel
         }
     }
 }
-

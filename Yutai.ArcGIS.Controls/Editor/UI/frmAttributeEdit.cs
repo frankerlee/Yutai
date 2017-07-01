@@ -17,21 +17,14 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             base.Controls.Add(this.m_pAttributeCtrl);
         }
 
- public IWorkspace EditWorkspace
+        public IWorkspace EditWorkspace
         {
-            set
-            {
-                this.m_pAttributeCtrl.EditWorkspace = value;
-            }
+            set { this.m_pAttributeCtrl.EditWorkspace = value; }
         }
 
         public IMap FocusMap
         {
-            set
-            {
-                this.m_pAttributeCtrl.FocusMap = value;
-            }
+            set { this.m_pAttributeCtrl.FocusMap = value; }
         }
     }
 }
-

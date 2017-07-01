@@ -35,7 +35,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.Text = "查找结果";
         }
 
- private void FindResultControlEx_Load(object sender, EventArgs e)
+        private void FindResultControlEx_Load(object sender, EventArgs e)
         {
             this.method_0();
         }
@@ -85,14 +85,15 @@ namespace Yutai.ArcGIS.Carto.UI
                 unk = this.listView1.SelectedItems[i].Tag as IFeatureFindData2;
                 array.Add(unk);
             }
-            frmInfo info = new frmInfo {
+            frmInfo info = new frmInfo
+            {
                 FocusMap = this.ibasicMap_0
             };
             info.SetInfo(null, array, array.get_Element(0) as IFeature);
             info.ShowDialog();
         }
 
- private void listView1_MouseUp(object sender, MouseEventArgs e)
+        private void listView1_MouseUp(object sender, MouseEventArgs e)
         {
             if ((e.Button == MouseButtons.Right) && (this.listView1.Items.Count > 0))
             {
@@ -244,7 +245,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
             if (this.ibasicMap_0 is IActiveView)
             {
-               Yutai.ArcGIS.Common.Helpers.CommonHelper.Zoom2Features(this.ibasicMap_0 as IActiveView, array);
+                Yutai.ArcGIS.Common.Helpers.CommonHelper.Zoom2Features(this.ibasicMap_0 as IActiveView, array);
                 (this.ibasicMap_0 as IActiveView).ScreenDisplay.UpdateWindow();
                 for (num = 0; num < this.listView1.SelectedItems.Count; num++)
                 {
@@ -256,51 +257,32 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public string Caption
         {
-            set
-            {
-                this.string_0 = value;
-            }
+            set { this.string_0 = value; }
         }
 
         public DockingStyle DefaultDockingStyle
         {
-            get
-            {
-                return DockingStyle.Bottom;
-            }
+            get { return DockingStyle.Bottom; }
         }
 
         public IArray FindResults
         {
-            set
-            {
-                this.iarray_0 = value;
-            }
+            set { this.iarray_0 = value; }
         }
 
         public IBasicMap FocusMap
         {
-            set
-            {
-                this.ibasicMap_0 = value;
-            }
+            set { this.ibasicMap_0 = value; }
         }
 
         string IDockContent.Name
         {
-            get
-            {
-                return base.Name;
-            }
+            get { return base.Name; }
         }
 
         int IDockContent.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
     }
 }
-

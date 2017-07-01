@@ -17,7 +17,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.InitializeComponent();
         }
 
- private void method_0(IDatasetName idatasetName_0, TreeNode treeNode_0)
+        private void method_0(IDatasetName idatasetName_0, TreeNode treeNode_0)
         {
             try
             {
@@ -25,7 +25,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 subsetNames.Reset();
                 for (IDatasetName name2 = subsetNames.Next(); name2 != null; name2 = subsetNames.Next())
                 {
-                    TreeNode node = new TreeNode(name2.Name) {
+                    TreeNode node = new TreeNode(name2.Name)
+                    {
                         Tag = (name2 as IName).Open()
                     };
                     treeNode_0.Nodes.Add(node);
@@ -44,9 +45,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 name.Reset();
                 for (IDatasetName name2 = name.Next(); name2 != null; name2 = name.Next())
                 {
-                    if (((name2.Type == esriDatasetType.esriDTFeatureClass) || (name2.Type == esriDatasetType.esriDTTable)) || (name2.Type == esriDatasetType.esriDTFeatureDataset))
+                    if (((name2.Type == esriDatasetType.esriDTFeatureClass) ||
+                         (name2.Type == esriDatasetType.esriDTTable)) ||
+                        (name2.Type == esriDatasetType.esriDTFeatureDataset))
                     {
-                        TreeNode node = new TreeNode(name2.Name) {
+                        TreeNode node = new TreeNode(name2.Name)
+                        {
                             Tag = (name2 as IName).Open()
                         };
                         this.treeViewSource.Nodes.Add(node);
@@ -54,7 +58,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         {
                             this.method_0(name2, node);
                         }
-                        node = new TreeNode(name2.Name) {
+                        node = new TreeNode(name2.Name)
+                        {
                             Tag = (name2 as IName).Open()
                         };
                         this.treeViewDest.Nodes.Add(node);
@@ -91,4 +96,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

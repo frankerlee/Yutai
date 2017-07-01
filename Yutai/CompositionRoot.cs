@@ -18,19 +18,19 @@ namespace Yutai
                 .RegisterSingleton<IAppView, AppView>()
                 .RegisterView<IConfigView, ConfigView>()
                 .RegisterInstance<IApplicationContainer>(container)
-                 .RegisterService<MapLegendPresenter>()
+                .RegisterService<MapLegendPresenter>()
                 .RegisterService<MapLegendDockPanel>()
-                 .RegisterService<OverviewPresenter>()
-                .RegisterService<OverviewDockPanel>(); 
+                .RegisterService<OverviewPresenter>()
+                .RegisterService<OverviewDockPanel>();
 
             Services.CompositionRoot.Compose(container);
             Plugins.CompositionRoot.Compose(container);
             UI.CompositionRoot.Compose(container);
-        
+
 
             CommandBarHelper.InitMenuColors();
 
-           // GridEngineFactory.Factory = new AllowResizingIndividualRows();
+            // GridEngineFactory.Factory = new AllowResizingIndividualRows();
         }
     }
 }

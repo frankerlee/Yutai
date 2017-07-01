@@ -9,17 +9,23 @@ using Yutai.ArcGIS.Common;
 
 namespace Yutai.ArcGIS.Catalog
 {
-    public class GxRemoteDatabaseFolder : IGxObject, IGxObjectContainer, IGxRemoteDatabaseFolder, IGxObjectEdit, IGxObjectProperties, IGxObjectUI, IGxPasteTarget
+    public class GxRemoteDatabaseFolder : IGxObject, IGxObjectContainer, IGxRemoteDatabaseFolder, IGxObjectEdit,
+        IGxObjectProperties, IGxObjectUI, IGxPasteTarget
     {
         private IGxCatalog igxCatalog_0 = null;
         private IGxObject igxObject_0 = null;
         private IGxObjectArray igxObjectArray_0 = new GxObjectArray();
-        private string string_0 = (Environment.SystemDirectory.Substring(0, 2) + @"Users\Administrator\AppData\Roaming\ESRI\Desktop10.2\ArcCatalog\");
+
+        private string string_0 = (Environment.SystemDirectory.Substring(0, 2) +
+                                   @"Users\Administrator\AppData\Roaming\ESRI\Desktop10.2\ArcCatalog\");
 
         public GxRemoteDatabaseFolder()
         {
-            string str ="";//= RegistryTools.GetRegistryKey("HKEY_CURRENT_USER", @"Software\ESRI\Desktop10.2\CoreRuntime\Locator\Settings", "LocatorDirectory");
-            if (!string.IsNullOrEmpty(str) && ((str.IndexOf(@"Locators\", StringComparison.OrdinalIgnoreCase) > 0) && (str.IndexOf("ArcCatalog", StringComparison.OrdinalIgnoreCase) == -1)))
+            string str = "";
+                //= RegistryTools.GetRegistryKey("HKEY_CURRENT_USER", @"Software\ESRI\Desktop10.2\CoreRuntime\Locator\Settings", "LocatorDirectory");
+            if (!string.IsNullOrEmpty(str) &&
+                ((str.IndexOf(@"Locators\", StringComparison.OrdinalIgnoreCase) > 0) &&
+                 (str.IndexOf("ArcCatalog", StringComparison.OrdinalIgnoreCase) == -1)))
             {
                 this.string_0 = str.Replace("Locators", "ArcCatalog");
             }
@@ -135,7 +141,8 @@ namespace Yutai.ArcGIS.Catalog
                 foreach (string str in Directory.GetFiles(this.string_0, "*.sde"))
                 {
                     obj2 = new GxDatabase();
-                    name = new WorkspaceNameClass {
+                    name = new WorkspaceNameClass
+                    {
                         WorkspaceFactoryProgID = "esriDataSourcesGDB.SdeWorkspaceFactory",
                         PathName = str
                     };
@@ -145,7 +152,8 @@ namespace Yutai.ArcGIS.Catalog
                 foreach (string str in Directory.GetFiles(this.string_0, "*.odc"))
                 {
                     obj2 = new GxDatabase();
-                    name = new WorkspaceNameClass {
+                    name = new WorkspaceNameClass
+                    {
                         WorkspaceFactoryProgID = "esriDataSourcesOleDB.OLEDBWorkspaceFactory",
                         PathName = str
                     };
@@ -185,158 +193,98 @@ namespace Yutai.ArcGIS.Catalog
 
         public bool AreChildrenViewable
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public string BaseName
         {
-            get
-            {
-                return "数据库连接";
-            }
+            get { return "数据库连接"; }
         }
 
         public string Category
         {
-            get
-            {
-                return "数据库连接文件夹";
-            }
+            get { return "数据库连接文件夹"; }
         }
 
         public IEnumGxObject Children
         {
-            get
-            {
-                return (this.igxObjectArray_0 as IEnumGxObject);
-            }
+            get { return (this.igxObjectArray_0 as IEnumGxObject); }
         }
 
         public UID ClassID
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public UID ContextMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public string FullName
         {
-            get
-            {
-                return "数据库连接";
-            }
+            get { return "数据库连接"; }
         }
 
         public bool HasChildren
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public IName InternalObjectName
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public bool IsValid
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         public Bitmap LargeImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(2);
-            }
+            get { return ImageLib.GetSmallImage(2); }
         }
 
         public Bitmap LargeSelectedImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(2);
-            }
+            get { return ImageLib.GetSmallImage(2); }
         }
 
         public string Name
         {
-            get
-            {
-                return "数据库连接";
-            }
+            get { return "数据库连接"; }
         }
 
         public UID NewMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IGxObject Parent
         {
-            get
-            {
-                return this.igxObject_0;
-            }
+            get { return this.igxObject_0; }
         }
 
         public string Path
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-            }
+            get { return this.string_0; }
+            set { }
         }
 
         public int PropertyCount
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         public Bitmap SmallImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(2);
-            }
+            get { return ImageLib.GetSmallImage(2); }
         }
 
         public Bitmap SmallSelectedImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(2);
-            }
+            get { return ImageLib.GetSmallImage(2); }
         }
     }
 }
-

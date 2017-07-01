@@ -11,7 +11,6 @@ using System.Windows.Forms;
 using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.ADF.CATIDs;
 using ESRI.ArcGIS.Carto;
-
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
@@ -36,7 +35,7 @@ namespace Yutai.UI.Dialogs
         private void btnOutName_Click(object sender, EventArgs e)
         {
             frmExplorerData file = new frmExplorerData();
-            IGxObjectFilter filter=new MyGxFilterShapefiles() as IGxObjectFilter;
+            IGxObjectFilter filter = new MyGxFilterShapefiles() as IGxObjectFilter;
             file.AddFilter(filter, false);
             file.AddFilter(new MyGxFilterFeatureClasses(), true);
             if (file.DoModalSave() == DialogResult.OK)
@@ -62,7 +61,6 @@ namespace Yutai.UI.Dialogs
                     this.txtOutName.Text = obj2.FullName + @"\" + saveName;
                 }
             }
-
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -96,7 +94,7 @@ namespace Yutai.UI.Dialogs
 
                 name2.WorkspaceFactoryProgID = "esriDataSourcesFile.ShapefileWorkspaceFactory";
                 name2.PathName = (tag.InternalObjectName as IFileName).Path;
-                
+
                 internalObjectName = name2 as IName;
                 string text = this.txtOutName.Text;
                 if (Path.GetExtension(this.txtOutName.Text) != ".shp")
@@ -144,12 +142,15 @@ namespace Yutai.UI.Dialogs
                 }
                 try
                 {
-                    if ((workspace is IWorkspace2) && (workspace as IWorkspace2).get_NameExists(esriDatasetType.esriDTFeatureClass, fileNameWithoutExtension))
+                    if ((workspace is IWorkspace2) &&
+                        (workspace as IWorkspace2).get_NameExists(esriDatasetType.esriDTFeatureClass,
+                            fileNameWithoutExtension))
                     {
                         MessageBox.Show("已经存在该要素类，请重新输入要素类名");
                         return;
                     }
-                    class2 = workspace.CreateFeatureClass(fileNameWithoutExtension, fields2, null, null, esriFeatureType.esriFTSimple, name, "");
+                    class2 = workspace.CreateFeatureClass(fileNameWithoutExtension, fields2, null, null,
+                        esriFeatureType.esriFTSimple, name, "");
                 }
                 catch (Exception exception1)
                 {
@@ -184,16 +185,17 @@ namespace Yutai.UI.Dialogs
             }
             try
             {
-                class2 = dataset.CreateFeatureClass(fileNameWithoutExtension, fields2, null, null, esriFeatureType.esriFTSimple, name, "");
+                class2 = dataset.CreateFeatureClass(fileNameWithoutExtension, fields2, null, null,
+                    esriFeatureType.esriFTSimple, name, "");
             }
             catch (Exception exception2)
             {
                 exception = exception2;
                 MessageBox.Show("无法创建输出要素类!,原因:" + exception.Message);
-               
+
                 return;
             }
-        Label_0400:
+            Label_0400:
             if (this.cboExportData.SelectedIndex == 0)
             {
                 ExportDataHelper.ExportData(this.m_pFeatureLayer, class2, false);
@@ -213,7 +215,6 @@ namespace Yutai.UI.Dialogs
                 ExportDataHelper.ExportData(this.m_pFeatureLayer, class2, true);
             }
             base.DialogResult = DialogResult.OK;
-
         }
 
         private void frmExportData_Load(object sender, EventArgs e)
@@ -235,24 +236,16 @@ namespace Yutai.UI.Dialogs
                 path = str + "_" + num.ToString() + ".shp";
             }
             this.txtOutName.Text = path;
-
         }
 
         public IFeatureLayer FeatureLayer
         {
-            set
-            {
-                this.m_pFeatureLayer = value;
-            }
+            set { this.m_pFeatureLayer = value; }
         }
 
         public IBasicMap FocusMap
         {
-            set
-            {
-                this.m_pMap = value;
-            }
+            set { this.m_pMap = value; }
         }
-
     }
 }

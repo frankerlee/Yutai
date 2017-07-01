@@ -16,7 +16,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.InitializeComponent();
         }
 
- private void NewRelationClass_RelationType_Load(object sender, EventArgs e)
+        private void NewRelationClass_RelationType_Load(object sender, EventArgs e)
         {
             NewRelationClassHelper.IsComposite = false;
         }
@@ -34,4 +34,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

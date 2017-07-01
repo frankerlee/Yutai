@@ -11,7 +11,8 @@ using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Catalog
 {
-    public class GxAGSConnection : IGxObject, IGxAGSConnection, IGxObjectContainer, IGxObjectEdit, IGxObjectProperties, IGxObjectUI, IGxPasteTarget, IGxContextMenuWap, IGxRemoteConnection
+    public class GxAGSConnection : IGxObject, IGxAGSConnection, IGxObjectContainer, IGxObjectEdit, IGxObjectProperties,
+        IGxObjectUI, IGxPasteTarget, IGxContextMenuWap, IGxRemoteConnection
     {
         private IAGSServerConnection2 iagsserverConnection2_0 = null;
         private IAGSServerConnectionName iagsserverConnectionName_0 = null;
@@ -80,7 +81,7 @@ namespace Yutai.ArcGIS.Catalog
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
         }
 
@@ -171,7 +172,8 @@ namespace Yutai.ArcGIS.Catalog
 
         public void EditServerProperties(int int_1, short short_0)
         {
-            new frmAGSProperty { AGSServerConnectionAdmin = this.iagsserverConnection2_0 as IAGSServerConnectionAdmin }.ShowDialog();
+            new frmAGSProperty {AGSServerConnectionAdmin = this.iagsserverConnection2_0 as IAGSServerConnectionAdmin}
+                .ShowDialog();
         }
 
         public void GetPropByIndex(int int_1, ref string string_1, ref object object_1)
@@ -225,7 +227,7 @@ namespace Yutai.ArcGIS.Catalog
                 }
                 catch (Exception exception)
                 {
-                    Logger.Current.Error("",exception, "");
+                    Logger.Current.Error("", exception, "");
                 }
             }
         }
@@ -268,7 +270,8 @@ namespace Yutai.ArcGIS.Catalog
                     folders.Reset();
                     for (string str = folders.Next(); str != null; str = folders.Next())
                     {
-                        IGxServersFolder folder = new GxServersFolder {
+                        IGxServersFolder folder = new GxServersFolder
+                        {
                             AGSServerConnection = this.iagsserverConnection2_0,
                             FolderName = str
                         };
@@ -337,7 +340,7 @@ namespace Yutai.ArcGIS.Catalog
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
         }
 
@@ -374,7 +377,8 @@ namespace Yutai.ArcGIS.Catalog
                 }
                 else
                 {
-                    string path = Environment.SystemDirectory.Substring(0, 2) + @"\Users\Administrator\AppData\Roaming\ESRI\Desktop10.2\ArcCatalog\";
+                    string path = Environment.SystemDirectory.Substring(0, 2) +
+                                  @"\Users\Administrator\AppData\Roaming\ESRI\Desktop10.2\ArcCatalog\";
                     if (!Directory.Exists(path))
                     {
                         try
@@ -419,26 +423,17 @@ namespace Yutai.ArcGIS.Catalog
                 }
                 return this.iagsserverConnectionName_0;
             }
-            set
-            {
-                this.iagsserverConnectionName_0 = value;
-            }
+            set { this.iagsserverConnectionName_0 = value; }
         }
 
         public bool AreChildrenViewable
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public string BaseName
         {
-            get
-            {
-                return this.string_0;
-            }
+            get { return this.string_0; }
         }
 
         public string Category
@@ -451,84 +446,59 @@ namespace Yutai.ArcGIS.Catalog
                 }
                 if (this.iagsserverConnectionName_0.ConnectionType == esriAGSConnectionType.esriAGSConnectionTypeLAN)
                 {
-                    return ("ArcGIS Server " + this.iagsserverConnectionName_0.ConnectionProperties.GetProperty("MACHINE").ToString());
+                    return ("ArcGIS Server " +
+                            this.iagsserverConnectionName_0.ConnectionProperties.GetProperty("MACHINE").ToString());
                 }
-                return ("ArcGIS Server " + this.iagsserverConnectionName_0.ConnectionProperties.GetProperty("URL").ToString());
+                return ("ArcGIS Server " +
+                        this.iagsserverConnectionName_0.ConnectionProperties.GetProperty("URL").ToString());
             }
         }
 
         public IEnumGxObject Children
         {
-            get
-            {
-                return (this.igxObjectArray_0 as IEnumGxObject);
-            }
+            get { return (this.igxObjectArray_0 as IEnumGxObject); }
         }
 
         public UID ClassID
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public int ConnectionMode { get; set; }
 
         public UID ContextMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public string FileName
         {
-            get
-            {
-                return this.string_0;
-            }
+            get { return this.string_0; }
         }
 
         public string FullName
         {
-            get
-            {
-                return this.string_0;
-            }
+            get { return this.string_0; }
         }
 
         public bool HasChildren
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public IName InternalObjectName
         {
-            get
-            {
-                return (this.iagsserverConnectionName_0 as IName);
-            }
+            get { return (this.iagsserverConnectionName_0 as IName); }
         }
 
         public bool IsConnected
         {
-            get
-            {
-                return (this.iagsserverConnection2_0 != null);
-            }
+            get { return (this.iagsserverConnection2_0 != null); }
         }
 
         public bool IsValid
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         public Bitmap LargeImage
@@ -557,46 +527,28 @@ namespace Yutai.ArcGIS.Catalog
 
         public string Name
         {
-            get
-            {
-                return Path.GetFileNameWithoutExtension(this.string_0);
-            }
+            get { return Path.GetFileNameWithoutExtension(this.string_0); }
         }
 
         public UID NewMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IGxObject Parent
         {
-            get
-            {
-                return this.igxObject_0;
-            }
+            get { return this.igxObject_0; }
         }
 
         public int PropertyCount
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         public object SelectedServerObjects
         {
-            get
-            {
-                return this.object_0;
-            }
-            set
-            {
-                this.object_0 = value;
-            }
+            get { return this.object_0; }
+            set { this.object_0 = value; }
         }
 
         public Bitmap SmallImage
@@ -624,4 +576,3 @@ namespace Yutai.ArcGIS.Catalog
         }
     }
 }
-

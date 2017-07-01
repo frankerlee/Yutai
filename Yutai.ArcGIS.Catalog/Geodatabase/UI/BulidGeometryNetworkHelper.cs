@@ -77,14 +77,18 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 bool flag1 = false;
                 for (i = 0; i < this.FeatureClassWraps.Count; i++)
                 {
-                    BulidGeometryNetworkHelper.FeatureClassWrap featureClassWrap = this.FeatureClassWraps[i] as BulidGeometryNetworkHelper.FeatureClassWrap;
+                    BulidGeometryNetworkHelper.FeatureClassWrap featureClassWrap =
+                        this.FeatureClassWraps[i] as BulidGeometryNetworkHelper.FeatureClassWrap;
                     if (featureClassWrap.IsUse)
                     {
                         flag = true;
                         IDataset featureClass = featureClassWrap.FeatureClass as IDataset;
-                        esriNetworkLoaderFeatureClassCheck _esriNetworkLoaderFeatureClassCheck = preserveEnabledValues.CanUseFeatureClass(featureClass.Name);
-                        esriNetworkLoaderFeatureClassCheck _esriNetworkLoaderFeatureClassCheck1 = _esriNetworkLoaderFeatureClassCheck;
-                        if (_esriNetworkLoaderFeatureClassCheck1 == esriNetworkLoaderFeatureClassCheck.esriNLFCCUnknownError)
+                        esriNetworkLoaderFeatureClassCheck _esriNetworkLoaderFeatureClassCheck =
+                            preserveEnabledValues.CanUseFeatureClass(featureClass.Name);
+                        esriNetworkLoaderFeatureClassCheck _esriNetworkLoaderFeatureClassCheck1 =
+                            _esriNetworkLoaderFeatureClassCheck;
+                        if (_esriNetworkLoaderFeatureClassCheck1 ==
+                            esriNetworkLoaderFeatureClassCheck.esriNLFCCUnknownError)
                         {
                             MessageBox.Show(string.Concat(featureClass.Name, " 未知错误"));
                             flag = false;
@@ -94,59 +98,62 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                             switch (_esriNetworkLoaderFeatureClassCheck1)
                             {
                                 case esriNetworkLoaderFeatureClassCheck.esriNLFCCInTerrain:
-                                    {
-                                        MessageBox.Show(string.Concat(featureClass.Name, "已用在三角网中"));
-                                        flag = false;
-                                        break;
-                                    }
+                                {
+                                    MessageBox.Show(string.Concat(featureClass.Name, "已用在三角网中"));
+                                    flag = false;
+                                    break;
+                                }
                                 case esriNetworkLoaderFeatureClassCheck.esriNLFCCIsCompressedReadOnly:
-                                    {
-                                        MessageBox.Show(string.Concat(featureClass.Name, "是压缩只读要素类"));
-                                        flag = false;
-                                        break;
-                                    }
+                                {
+                                    MessageBox.Show(string.Concat(featureClass.Name, "是压缩只读要素类"));
+                                    flag = false;
+                                    break;
+                                }
                                 case esriNetworkLoaderFeatureClassCheck.esriNLFCCInTopology:
-                                    {
-                                        MessageBox.Show(string.Concat(featureClass.Name, "已用在拓扑中"));
-                                        flag = false;
-                                        break;
-                                    }
+                                {
+                                    MessageBox.Show(string.Concat(featureClass.Name, "已用在拓扑中"));
+                                    flag = false;
+                                    break;
+                                }
                                 case esriNetworkLoaderFeatureClassCheck.esriNLFCCRegisteredAsVersioned:
-                                    {
-                                        MessageBox.Show(string.Concat(featureClass.Name, "已注册版本"));
-                                        flag = false;
-                                        break;
-                                    }
+                                {
+                                    MessageBox.Show(string.Concat(featureClass.Name, "已注册版本"));
+                                    flag = false;
+                                    break;
+                                }
                                 case esriNetworkLoaderFeatureClassCheck.esriNLFCCInvalidShapeType:
-                                    {
-                                        MessageBox.Show(string.Concat(featureClass.Name, "不是点或线几何要素"));
-                                        flag = false;
-                                        break;
-                                    }
+                                {
+                                    MessageBox.Show(string.Concat(featureClass.Name, "不是点或线几何要素"));
+                                    flag = false;
+                                    break;
+                                }
                                 case esriNetworkLoaderFeatureClassCheck.esriNLFCCInvalidFeatureType:
-                                    {
-                                        MessageBox.Show(string.Concat(featureClass.Name, "是无效要素类型"));
-                                        flag = false;
-                                        break;
-                                    }
+                                {
+                                    MessageBox.Show(string.Concat(featureClass.Name, "是无效要素类型"));
+                                    flag = false;
+                                    break;
+                                }
                                 case esriNetworkLoaderFeatureClassCheck.esriNLFCCInAnotherNetwork:
-                                    {
-                                        MessageBox.Show(string.Concat(featureClass.Name, "已在其它网络中使用"));
-                                        flag = false;
-                                        break;
-                                    }
+                                {
+                                    MessageBox.Show(string.Concat(featureClass.Name, "已在其它网络中使用"));
+                                    flag = false;
+                                    break;
+                                }
                                 case esriNetworkLoaderFeatureClassCheck.esriNLFCCCannotOpen:
-                                    {
-                                        MessageBox.Show(string.Concat("无法打开", featureClass.Name));
-                                        flag = false;
-                                        break;
-                                    }
+                                {
+                                    MessageBox.Show(string.Concat("无法打开", featureClass.Name));
+                                    flag = false;
+                                    break;
+                                }
                             }
                         }
-                        if (flag && _esriNetworkLoaderFeatureClassCheck == esriNetworkLoaderFeatureClassCheck.esriNLFCCValid)
+                        if (flag &&
+                            _esriNetworkLoaderFeatureClassCheck == esriNetworkLoaderFeatureClassCheck.esriNLFCCValid)
                         {
                             preserveEnabledValues.PreserveEnabledValues = this.PreserveEnabledValues;
-                            esriNetworkLoaderFieldCheck _esriNetworkLoaderFieldCheck = preserveEnabledValues.CheckEnabledDisabledField(featureClass.Name, networkLoaderProp.DefaultEnabledField);
+                            esriNetworkLoaderFieldCheck _esriNetworkLoaderFieldCheck =
+                                preserveEnabledValues.CheckEnabledDisabledField(featureClass.Name,
+                                    networkLoaderProp.DefaultEnabledField);
                             if (_esriNetworkLoaderFieldCheck == esriNetworkLoaderFieldCheck.esriNLFCUnknownError)
                             {
                                 MessageBox.Show(string.Concat(featureClass.Name, ": (ENABLED 字段)- 产生未知错误."));
@@ -157,37 +164,40 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                                 switch (_esriNetworkLoaderFieldCheck)
                                 {
                                     case esriNetworkLoaderFieldCheck.esriNLFCInvalidDomain:
-                                        {
-                                            MessageBox.Show(string.Concat(featureClass.Name, ": ENABLED字段有无效域值."));
-                                            flag = false;
-                                            break;
-                                        }
+                                    {
+                                        MessageBox.Show(string.Concat(featureClass.Name, ": ENABLED字段有无效域值."));
+                                        flag = false;
+                                        break;
+                                    }
                                     case esriNetworkLoaderFieldCheck.esriNLFCInvalidType:
-                                        {
-                                            MessageBox.Show(string.Concat(featureClass.Name, ": ENABLED字段有无效类型"));
-                                            flag = false;
-                                            break;
-                                        }
+                                    {
+                                        MessageBox.Show(string.Concat(featureClass.Name, ": ENABLED字段有无效类型"));
+                                        flag = false;
+                                        break;
+                                    }
                                     case esriNetworkLoaderFieldCheck.esriNLFCNotFound:
+                                    {
+                                        try
                                         {
-                                            try
-                                            {
-                                                networkLoader.PutEnabledDisabledFieldName(featureClass.Name, networkLoaderProp.DefaultEnabledField);
-                                                break;
-                                            }
-                                            catch (Exception exception)
-                                            {
-                                                Logger.Current.Error("",exception, "");
-                                                break;
-                                            }
+                                            networkLoader.PutEnabledDisabledFieldName(featureClass.Name,
+                                                networkLoaderProp.DefaultEnabledField);
                                             break;
                                         }
+                                        catch (Exception exception)
+                                        {
+                                            Logger.Current.Error("", exception, "");
+                                            break;
+                                        }
+                                        break;
+                                    }
                                 }
                             }
                             if (flag)
                             {
-                                esriNetworkClassAncillaryRole _esriNetworkClassAncillaryRole = esriNetworkClassAncillaryRole.esriNCARNone;
-                                if (featureClassWrap.GeometryType == esriGeometryType.esriGeometryPoint && featureClassWrap.IsUse)
+                                esriNetworkClassAncillaryRole _esriNetworkClassAncillaryRole =
+                                    esriNetworkClassAncillaryRole.esriNCARNone;
+                                if (featureClassWrap.GeometryType == esriGeometryType.esriGeometryPoint &&
+                                    featureClassWrap.IsUse)
                                 {
                                     _esriNetworkClassAncillaryRole = esriNetworkClassAncillaryRole.esriNCARSourceSink;
                                 }
@@ -197,60 +207,67 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                                     switch (_esriNetworkClassAncillaryRole)
                                     {
                                         case esriNetworkClassAncillaryRole.esriNCARNone:
-                                            {
-                                               
-                                                break;
-                                            }
+                                        {
+                                            break;
+                                        }
                                         case esriNetworkClassAncillaryRole.esriNCARSourceSink:
+                                        {
+                                            _esriNetworkLoaderFieldCheck =
+                                                preserveEnabledValues.CheckAncillaryRoleField(featureClass.Name,
+                                                    networkLoaderProp.DefaultAncillaryRoleField);
+                                            if (_esriNetworkLoaderFieldCheck ==
+                                                esriNetworkLoaderFieldCheck.esriNLFCUnknownError)
                                             {
-                                                _esriNetworkLoaderFieldCheck = preserveEnabledValues.CheckAncillaryRoleField(featureClass.Name, networkLoaderProp.DefaultAncillaryRoleField);
-                                                if (_esriNetworkLoaderFieldCheck == esriNetworkLoaderFieldCheck.esriNLFCUnknownError)
+                                                MessageBox.Show(string.Concat(featureClass.Name,
+                                                    ": (ROLE Field)- An unknown error was encountered."));
+                                                geometricNetworkByName = null;
+                                                return geometricNetworkByName;
+                                            }
+                                            else
+                                            {
+                                                switch (_esriNetworkLoaderFieldCheck)
                                                 {
-                                                    MessageBox.Show(string.Concat(featureClass.Name, ": (ROLE Field)- An unknown error was encountered."));
-                                                    geometricNetworkByName = null;
-                                                    return geometricNetworkByName;
-                                                }
-                                                else
-                                                {
-                                                    switch (_esriNetworkLoaderFieldCheck)
+                                                    case esriNetworkLoaderFieldCheck.esriNLFCInvalidDomain:
                                                     {
-                                                        case esriNetworkLoaderFieldCheck.esriNLFCInvalidDomain:
-                                                            {
-                                                                MessageBox.Show(string.Concat(featureClass.Name, ": ROLE字段有无效域值."));
-                                                                geometricNetworkByName = null;
-                                                                return geometricNetworkByName;
-                                                            }
-                                                        case esriNetworkLoaderFieldCheck.esriNLFCInvalidType:
-                                                            {
-                                                                MessageBox.Show(string.Concat(featureClass.Name, ": ROLE字段有无效类型."));
-                                                                geometricNetworkByName = null;
-                                                                return geometricNetworkByName;
-                                                            }
-                                                        case esriNetworkLoaderFieldCheck.esriNLFCNotFound:
-                                                            {
-                                                                try
-                                                                {
-                                                                    networkLoader.PutAncillaryRole(featureClass.Name, esriNetworkClassAncillaryRole.esriNCARSourceSink, networkLoaderProp.DefaultAncillaryRoleField);
-                                                                    break;
-                                                                }
-                                                                catch
-                                                                {
-                                                                    break;
-                                                                }
-                                                                break;
-                                                            }
-                                                        default:
-                                                            {
-                                                                break;
-                                                            }
+                                                        MessageBox.Show(string.Concat(featureClass.Name,
+                                                            ": ROLE字段有无效域值."));
+                                                        geometricNetworkByName = null;
+                                                        return geometricNetworkByName;
+                                                    }
+                                                    case esriNetworkLoaderFieldCheck.esriNLFCInvalidType:
+                                                    {
+                                                        MessageBox.Show(string.Concat(featureClass.Name,
+                                                            ": ROLE字段有无效类型."));
+                                                        geometricNetworkByName = null;
+                                                        return geometricNetworkByName;
+                                                    }
+                                                    case esriNetworkLoaderFieldCheck.esriNLFCNotFound:
+                                                    {
+                                                        try
+                                                        {
+                                                            networkLoader.PutAncillaryRole(featureClass.Name,
+                                                                esriNetworkClassAncillaryRole.esriNCARSourceSink,
+                                                                networkLoaderProp.DefaultAncillaryRoleField);
+                                                            break;
+                                                        }
+                                                        catch
+                                                        {
+                                                            break;
+                                                        }
+                                                        break;
+                                                    }
+                                                    default:
+                                                    {
+                                                        break;
                                                     }
                                                 }
-                                                break;
                                             }
+                                            break;
+                                        }
                                         default:
-                                            {
-                                                goto case esriNetworkClassAncillaryRole.esriNCARNone;
-                                            }
+                                        {
+                                            goto case esriNetworkClassAncillaryRole.esriNCARNone;
+                                        }
                                     }
                                 }
                                 try
@@ -258,29 +275,35 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                                     switch (featureType)
                                     {
                                         case esriFeatureType.esriFTSimpleJunction:
-                                            {
-                                                networkLoader.AddFeatureClass(featureClass.Name, esriFeatureType.esriFTSimpleJunction, gUIDSIMPLEJUNCTIONCLSID, (this.IsSnap ? featureClassWrap.canChangeGeometry : false));
-                                                goto case esriFeatureType.esriFTComplexJunction;
-                                            }
+                                        {
+                                            networkLoader.AddFeatureClass(featureClass.Name,
+                                                esriFeatureType.esriFTSimpleJunction, gUIDSIMPLEJUNCTIONCLSID,
+                                                (this.IsSnap ? featureClassWrap.canChangeGeometry : false));
+                                            goto case esriFeatureType.esriFTComplexJunction;
+                                        }
                                         case esriFeatureType.esriFTSimpleEdge:
-                                            {
-                                                networkLoader.AddFeatureClass(featureClass.Name, esriFeatureType.esriFTSimpleEdge, gUIDSIMPLEEDGECLSID, (this.IsSnap ? featureClassWrap.canChangeGeometry : false));
-                                                goto case esriFeatureType.esriFTComplexJunction;
-                                            }
+                                        {
+                                            networkLoader.AddFeatureClass(featureClass.Name,
+                                                esriFeatureType.esriFTSimpleEdge, gUIDSIMPLEEDGECLSID,
+                                                (this.IsSnap ? featureClassWrap.canChangeGeometry : false));
+                                            goto case esriFeatureType.esriFTComplexJunction;
+                                        }
                                         case esriFeatureType.esriFTComplexJunction:
-                                            {
-                                                flag1 = true;
-                                                break;
-                                            }
+                                        {
+                                            flag1 = true;
+                                            break;
+                                        }
                                         case esriFeatureType.esriFTComplexEdge:
-                                            {
-                                                networkLoader.AddFeatureClass(featureClass.Name, esriFeatureType.esriFTComplexEdge, uIDClass, (this.IsSnap ? featureClassWrap.canChangeGeometry : false));
-                                                goto case esriFeatureType.esriFTComplexJunction;
-                                            }
+                                        {
+                                            networkLoader.AddFeatureClass(featureClass.Name,
+                                                esriFeatureType.esriFTComplexEdge, uIDClass,
+                                                (this.IsSnap ? featureClassWrap.canChangeGeometry : false));
+                                            goto case esriFeatureType.esriFTComplexJunction;
+                                        }
                                         default:
-                                            {
-                                                goto case esriFeatureType.esriFTComplexJunction;
-                                            }
+                                        {
+                                            goto case esriFeatureType.esriFTComplexJunction;
+                                        }
                                     }
                                 }
                                 catch (COMException cOMException1)
@@ -307,8 +330,10 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 {
                     for (i = 0; i < this.WeightAssociations.Count; i++)
                     {
-                        BulidGeometryNetworkHelper.WeightAssociation weightAssociation = this.WeightAssociations[i] as BulidGeometryNetworkHelper.WeightAssociation;
-                        preserveEnabledValues.AddWeightAssociation(weightAssociation.networkWeightName, weightAssociation.featureClassName, weightAssociation.fieldName);
+                        BulidGeometryNetworkHelper.WeightAssociation weightAssociation =
+                            this.WeightAssociations[i] as BulidGeometryNetworkHelper.WeightAssociation;
+                        preserveEnabledValues.AddWeightAssociation(weightAssociation.networkWeightName,
+                            weightAssociation.featureClassName, weightAssociation.fieldName);
                     }
                     preserveEnabledValues.ConfigurationKeyword = this.ConfigurationKeyword;
                     preserveEnabledValues.PreserveEnabledValues = this.PreserveEnabledValues;
@@ -409,10 +434,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IFeatureDataset FeatureDataset
         {
-            get
-            {
-                return this.ifeatureDataset_0;
-            }
+            get { return this.ifeatureDataset_0; }
             set
             {
                 this.ifeatureDataset_0 = value;
@@ -428,7 +450,10 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             private bool bool_1 = true;
             private bool bool_2 = true;
             private esriFeatureType esriFeatureType_0;
-            private esriNetworkClassAncillaryRole esriNetworkClassAncillaryRole_0 = esriNetworkClassAncillaryRole.esriNCARNone;
+
+            private esriNetworkClassAncillaryRole esriNetworkClassAncillaryRole_0 =
+                esriNetworkClassAncillaryRole.esriNCARNone;
+
             private IFeatureClass ifeatureClass_0 = null;
 
             public FeatureClassWrap(IFeatureClass ifeatureClass_1)
@@ -455,34 +480,19 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
             public bool canChangeGeometry
             {
-                get
-                {
-                    return this.bool_1;
-                }
-                set
-                {
-                    this.bool_1 = value;
-                }
+                get { return this.bool_1; }
+                set { this.bool_1 = value; }
             }
 
             public IFeatureClass FeatureClass
             {
-                get
-                {
-                    return this.ifeatureClass_0;
-                }
+                get { return this.ifeatureClass_0; }
             }
 
             public esriFeatureType FeatureType
             {
-                get
-                {
-                    return this.esriFeatureType_0;
-                }
-                set
-                {
-                    this.esriFeatureType_0 = value;
-                }
+                get { return this.esriFeatureType_0; }
+                set { this.esriFeatureType_0 = value; }
             }
 
             public esriGeometryType GeometryType
@@ -499,38 +509,20 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
             public bool IsEdge
             {
-                get
-                {
-                    return this.bool_2;
-                }
-                set
-                {
-                    this.bool_2 = true;
-                }
+                get { return this.bool_2; }
+                set { this.bool_2 = true; }
             }
 
             public bool IsUse
             {
-                get
-                {
-                    return this.bool_0;
-                }
-                set
-                {
-                    this.bool_0 = value;
-                }
+                get { return this.bool_0; }
+                set { this.bool_0 = value; }
             }
 
             public esriNetworkClassAncillaryRole NetworkClassAncillaryRole
             {
-                get
-                {
-                    return this.esriNetworkClassAncillaryRole_0;
-                }
-                set
-                {
-                    this.esriNetworkClassAncillaryRole_0 = value;
-                }
+                get { return this.esriNetworkClassAncillaryRole_0; }
+                set { this.esriNetworkClassAncillaryRole_0 = value; }
             }
         }
 
@@ -554,4 +546,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

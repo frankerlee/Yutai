@@ -83,6 +83,6 @@ namespace Yutai.Plugins.Mvp
         /// Runs presenter with an argument parameter. Registers presenter type if it's not registered.
         /// </summary>
         bool Run<TPresenter, TArgument>(TArgument arg, IWin32Window parent = null)
-          where TPresenter : class, IPresenter<TArgument>;
+            where TPresenter : class, IPresenter<TArgument>;
     }
 }

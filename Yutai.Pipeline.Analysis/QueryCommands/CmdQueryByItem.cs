@@ -16,6 +16,7 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
 
 
         private PipelineAnalysisPlugin _plugin;
+
         public CmdQueryByItem(IAppContext context, PipelineAnalysisPlugin plugin)
         {
             OnCreate(context);
@@ -31,8 +32,8 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
                 this.QueryUI.MinimizeBox = false;
                 this.QueryUI.MaximizeBox = false;
                 this.QueryUI.TopMost = true;
-                this.QueryUI.MapControl = (IMapControl3)_context.MapControl;
-                this.QueryUI.pPipeCfg =_plugin.PipeConfig;
+                this.QueryUI.MapControl = (IMapControl3) _context.MapControl;
+                this.QueryUI.pPipeCfg = _plugin.PipeConfig;
                 this.QueryUI.m_context = this._context;
                 this.QueryUI.Closing += new CancelEventHandler(this.QueryUI_Closing);
                 this.QueryUI.Show();
@@ -52,7 +53,6 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
 
         public override void OnClick(object sender, EventArgs args)
         {
-
             OnClick();
         }
 

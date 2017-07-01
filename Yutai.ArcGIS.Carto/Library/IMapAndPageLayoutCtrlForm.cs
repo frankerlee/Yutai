@@ -16,4 +16,3 @@ namespace Yutai.ArcGIS.Carto.Library
         IPageLayoutControl2 PageLayoutControl { get; }
     }
 }
-

@@ -11,28 +11,20 @@ using Yutai.Shared;
 
 namespace Yutai.ArcGIS.Common
 {
-    public  class ProgressInfoForm : Form
+    public class ProgressInfoForm : Form
     {
         private IContainer components = null;
 
         protected ProcessAssist m_ProcessAssist = null;
 
-       
-        public bool IsProcess
-        {
-            get;
-            set;
-        }
+
+        public bool IsProcess { get; set; }
 
         public virtual ProcessAssist ProcessAssist
         {
-            set
-            {
-                this.m_ProcessAssist = value;
-            }
+            set { this.m_ProcessAssist = value; }
         }
 
-       
 
         private void method_0()
         {

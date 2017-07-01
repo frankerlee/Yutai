@@ -12,13 +12,15 @@ using Yutai.Shared;
 
 namespace Yutai.Commands.Views
 {
-    public class CmdDisplayCoordinates:YutaiCommand
+    public class CmdDisplayCoordinates : YutaiCommand
     {
         private bool _isDisplay = false;
+
         public CmdDisplayCoordinates(IAppContext context)
         {
             OnCreate(context);
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             _isDisplay = !_isDisplay;
@@ -48,20 +50,21 @@ namespace Yutai.Commands.Views
 
         private void MapEvents_OnMouseMove(int button, int shift, int x, int y, double mapx, double mapy)
         {
-            if(!_isDisplay) return;
-            string coords= string.Format("X={0:#.####},Y={1:#.####}", mapx, mapy);
+            if (!_isDisplay) return;
+            string coords = string.Format("X={0:#.####},Y={1:#.####}", mapx, mapy);
             _context.RibbonMenu.SetStatusValue(m_name, coords);
-            
         }
     }
 
     public class CmdDisplayScale : YutaiCommand
     {
         private bool _isDisplay = false;
+
         public CmdDisplayScale(IAppContext context)
         {
             OnCreate(context);
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             _isDisplay = !_isDisplay;
@@ -91,23 +94,22 @@ namespace Yutai.Commands.Views
 
         private void MapEvents_OnExtentUpdated(object displaytransformation, bool sizechanged, object newenvelope)
         {
-           
             IMap pMap = _context.MapControl.Map as IMap;
             double scale = pMap.MapScale;
             string format = scale <= Int32.MaxValue ? "f0" : "e4";
             _context.RibbonMenu.SetStatusValue(m_name, string.Format("1:{0}", scale.ToString(format)));
         }
-
-       
     }
 
     public class CmdDisplayMsg : YutaiCommand
     {
         private bool _isDisplay = false;
+
         public CmdDisplayMsg(IAppContext context)
         {
             OnCreate(context);
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             _isDisplay = !_isDisplay;
@@ -124,19 +126,19 @@ namespace Yutai.Commands.Views
             m_toolTip = "显示提示信息";
             m_message = "显示提示信息";
             _isDisplay = true;
-            _itemType= RibbonItemType.Label;
+            _itemType = RibbonItemType.Label;
         }
-
-       
-
     }
+
     public class CmdDisplayUnits : YutaiCommand
     {
         private bool _isDisplay = false;
+
         public CmdDisplayUnits(IAppContext context)
         {
             OnCreate(context);
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             _isDisplay = !_isDisplay;
@@ -160,30 +162,27 @@ namespace Yutai.Commands.Views
             {
                 throw new InvalidCastException("Map must implement IMap interface");
             }
-           
-            mapEvents.OnMapReplaced+= MapEventsOnOnMapReplaced;
+
+            mapEvents.OnMapReplaced += MapEventsOnOnMapReplaced;
         }
 
         private void MapEventsOnOnMapReplaced(object newMap)
         {
-
             string format = MapUnitsHelper.GetMapUnitsDesc((int) _context.MapControl.Map.MapUnits);
             if (_context.RibbonMenu == null) return;
             _context.RibbonMenu.SetStatusValue(m_name, format);
         }
-
-     
-
-
     }
 
     public class CmdDisplaySelection : YutaiCommand
     {
         private bool _isDisplay = false;
+
         public CmdDisplaySelection(IAppContext context)
         {
             OnCreate(context);
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             _isDisplay = !_isDisplay;
@@ -194,7 +193,8 @@ namespace Yutai.Commands.Views
             _context = hook as IAppContext;
             m_caption = "";
             m_bitmap = Properties.Resources.icon_selection_small;
-            m_name = "Status_SelectionCount"; _key = "Status_SelectionCount";
+            m_name = "Status_SelectionCount";
+            _key = "Status_SelectionCount";
             m_category = "状态栏";
             m_toolTip = "显示图形窗口当前选择个数,点击可以切换显示状态";
             m_message = "";
@@ -207,7 +207,7 @@ namespace Yutai.Commands.Views
                 throw new InvalidCastException("Map must implement IMap interface");
             }
 
-            mapEvents.OnSelectionChanged+= MapEventsOnOnSelectionChanged;
+            mapEvents.OnSelectionChanged += MapEventsOnOnSelectionChanged;
         }
 
         private void MapEventsOnOnSelectionChanged()
@@ -219,10 +219,8 @@ namespace Yutai.Commands.Views
 
         private void MapEvents_OnMouseMove(int button, int shift, int x, int y, double mapx, double mapy)
         {
-           
             string coords = string.Format("X={0:#.####},Y={1:#.####}", mapx, mapy);
             _context.RibbonMenu.SetStatusValue(m_name, coords);
-
         }
     }
 }

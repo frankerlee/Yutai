@@ -53,7 +53,9 @@ namespace Yutai.Plugins.Catalog.Commands
                     {
                         try
                         {
-                            IVersionedObject versionedObject = (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Dataset as IVersionedObject;
+                            IVersionedObject versionedObject =
+                                (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Dataset as
+                                    IVersionedObject;
                             if (versionedObject == null)
                             {
                                 result = false;
@@ -90,13 +92,13 @@ namespace Yutai.Plugins.Catalog.Commands
 
         public override void OnClick()
         {
-
             frmRegisterAsVersion frmRegisterAsVersion = new frmRegisterAsVersion();
             if (frmRegisterAsVersion.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 try
                 {
-                    IVersionedObject3 versionedObject = (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Dataset as IVersionedObject3;
+                    IVersionedObject3 versionedObject =
+                        (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).Dataset as IVersionedObject3;
                     versionedObject.RegisterAsVersioned3(frmRegisterAsVersion.EditToBase);
                 }
                 catch (Exception ex2)
@@ -106,7 +108,9 @@ namespace Yutai.Plugins.Catalog.Commands
                     {
                         if (ex.ErrorCode == -2147467259)
                         {
-                            System.Windows.Forms.MessageBox.Show("表[" + (((IGxSelection) _context.GxSelection).FirstObject as IGxDataset).DatasetName + "]正在使用");
+                            System.Windows.Forms.MessageBox.Show("表[" +
+                                                                 (((IGxSelection) _context.GxSelection).FirstObject as
+                                                                     IGxDataset).DatasetName + "]正在使用");
                         }
                         else
                         {

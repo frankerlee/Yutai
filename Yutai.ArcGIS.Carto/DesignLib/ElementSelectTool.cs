@@ -52,10 +52,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         public object ContextMenu
         {
-            get
-            {
-                return "";
-            }
+            get { return ""; }
         }
 
         public override bool Enabled
@@ -78,10 +75,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         public IPopuMenuWrap PopuMenu
         {
-            set
-            {
-                this.ipopuMenuWrap_0 = value;
-            }
+            set { this.ipopuMenuWrap_0 = value; }
         }
 
         public ElementSelectTool()
@@ -95,7 +89,9 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             this.ipoint_2 = new PointClass();
             this.ipoint_3 = new PointClass();
             this.m_cursor = Cursors.Default;
-            this.m_bitmap = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Carto.DesignLib.ElementSelect.bmp"));
+            this.m_bitmap =
+                new Bitmap(
+                    base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Carto.DesignLib.ElementSelect.bmp"));
             this.m_name = "ElementSelectTool";
             this.m_caption = "选择元素";
         }
@@ -103,11 +99,11 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         public void Init()
         {
             this.ipopuMenuWrap_0.Clear();
-            string[] strArrays = new string[] { "DeleteElement", "-", "ElmentProperty" };
+            string[] strArrays = new string[] {"DeleteElement", "-", "ElmentProperty"};
             bool flag = false;
-            for (int i = 0; i < (int)strArrays.Length; i++)
+            for (int i = 0; i < (int) strArrays.Length; i++)
             {
-                flag = (i + 1 == (int)strArrays.Length ? false : string.Compare(strArrays[i + 1], "-") == 0);
+                flag = (i + 1 == (int) strArrays.Length ? false : string.Compare(strArrays[i + 1], "-") == 0);
                 this.ipopuMenuWrap_0.AddItem(strArrays[i], flag);
             }
         }
@@ -196,52 +192,55 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                         {
                             IDisplayFeedback resizeEnvelopeFeedbackClass = new ResizeEnvelopeFeedbackClass();
                             selectionTracker.QueryResizeFeedback(ref resizeEnvelopeFeedbackClass);
-                            if (resizeEnvelopeFeedbackClass != null && resizeEnvelopeFeedbackClass is IResizeEnvelopeFeedback)
+                            if (resizeEnvelopeFeedbackClass != null &&
+                                resizeEnvelopeFeedbackClass is IResizeEnvelopeFeedback)
                             {
                                 esriTrackerLocation _esriTrackerLocation = selectionTracker.HitTest(point);
-                                IResizeEnvelopeFeedback resizeEnvelopeFeedback = resizeEnvelopeFeedbackClass as IResizeEnvelopeFeedback;
+                                IResizeEnvelopeFeedback resizeEnvelopeFeedback =
+                                    resizeEnvelopeFeedbackClass as IResizeEnvelopeFeedback;
                                 switch (_esriTrackerLocation)
                                 {
                                     case esriTrackerLocation.LocationTopLeft:
-                                        {
-                                            resizeEnvelopeFeedback.ResizeEdge = esriEnvelopeEdge.esriEnvelopeEdgeTopLeft;
-                                            break;
-                                        }
+                                    {
+                                        resizeEnvelopeFeedback.ResizeEdge = esriEnvelopeEdge.esriEnvelopeEdgeTopLeft;
+                                        break;
+                                    }
                                     case esriTrackerLocation.LocationTopMiddle:
-                                        {
-                                            resizeEnvelopeFeedback.ResizeEdge = esriEnvelopeEdge.esriEnvelopeEdgeTopMiddle;
-                                            break;
-                                        }
+                                    {
+                                        resizeEnvelopeFeedback.ResizeEdge = esriEnvelopeEdge.esriEnvelopeEdgeTopMiddle;
+                                        break;
+                                    }
                                     case esriTrackerLocation.LocationTopRight:
-                                        {
-                                            resizeEnvelopeFeedback.ResizeEdge = esriEnvelopeEdge.esriEnvelopeEdgeTopRight;
-                                            break;
-                                        }
+                                    {
+                                        resizeEnvelopeFeedback.ResizeEdge = esriEnvelopeEdge.esriEnvelopeEdgeTopRight;
+                                        break;
+                                    }
                                     case esriTrackerLocation.LocationMiddleLeft:
-                                        {
-                                            resizeEnvelopeFeedback.ResizeEdge = esriEnvelopeEdge.esriEnvelopeEdgeMiddleLeft;
-                                            break;
-                                        }
+                                    {
+                                        resizeEnvelopeFeedback.ResizeEdge = esriEnvelopeEdge.esriEnvelopeEdgeMiddleLeft;
+                                        break;
+                                    }
                                     case esriTrackerLocation.LocationMiddleRight:
-                                        {
-                                            resizeEnvelopeFeedback.ResizeEdge = esriEnvelopeEdge.esriEnvelopeEdgeMiddleRight;
-                                            break;
-                                        }
+                                    {
+                                        resizeEnvelopeFeedback.ResizeEdge = esriEnvelopeEdge.esriEnvelopeEdgeMiddleRight;
+                                        break;
+                                    }
                                     case esriTrackerLocation.LocationBottomLeft:
-                                        {
-                                            resizeEnvelopeFeedback.ResizeEdge = esriEnvelopeEdge.esriEnvelopeEdgeBottomLeft;
-                                            break;
-                                        }
+                                    {
+                                        resizeEnvelopeFeedback.ResizeEdge = esriEnvelopeEdge.esriEnvelopeEdgeBottomLeft;
+                                        break;
+                                    }
                                     case esriTrackerLocation.LocationBottomMiddle:
-                                        {
-                                            resizeEnvelopeFeedback.ResizeEdge = esriEnvelopeEdge.esriEnvelopeEdgeBottomMiddle;
-                                            break;
-                                        }
+                                    {
+                                        resizeEnvelopeFeedback.ResizeEdge =
+                                            esriEnvelopeEdge.esriEnvelopeEdgeBottomMiddle;
+                                        break;
+                                    }
                                     case esriTrackerLocation.LocationBottomRight:
-                                        {
-                                            resizeEnvelopeFeedback.ResizeEdge = esriEnvelopeEdge.esriEnvelopeEdgeBottomRight;
-                                            break;
-                                        }
+                                    {
+                                        resizeEnvelopeFeedback.ResizeEdge = esriEnvelopeEdge.esriEnvelopeEdgeBottomRight;
+                                        break;
+                                    }
                                 }
                                 if (!(element as IBoundsProperties).FixedAspectRatio)
                                 {
@@ -251,7 +250,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                                 else
                                 {
                                     constraint = esriEnvelopeConstraints.esriEnvelopeConstraintsAspect;
-                                    this.iresizeEnvelopeFeedback2_0.Constraint = esriEnvelopeConstraints.esriEnvelopeConstraintsAspect;
+                                    this.iresizeEnvelopeFeedback2_0.Constraint =
+                                        esriEnvelopeConstraints.esriEnvelopeConstraintsAspect;
                                 }
                                 if (constraint == esriEnvelopeConstraints.esriEnvelopeConstraintsAspect)
                                 {
@@ -259,7 +259,9 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                                 }
                             }
                             esriTrackerLocation _esriTrackerLocation1 = selectionTracker.HitTest(point);
-                            if ((_esriTrackerLocation1 == esriTrackerLocation.LocationInterior ? false : _esriTrackerLocation1 != esriTrackerLocation.LocationNone))
+                            if ((_esriTrackerLocation1 == esriTrackerLocation.LocationInterior
+                                ? false
+                                : _esriTrackerLocation1 != esriTrackerLocation.LocationNone))
                             {
                                 this.method_12(element, _esriTrackerLocation1, point);
                                 flag = true;
@@ -282,33 +284,43 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             {
                 case esriTrackerLocation.LocationTopLeft:
                 case esriTrackerLocation.LocationBottomRight:
-                    {
-                        this.m_cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Carto.DesignLib.trcknwse.cur"));
-                        break;
-                    }
+                {
+                    this.m_cursor =
+                        new Cursor(
+                            base.GetType()
+                                .Assembly.GetManifestResourceStream("Yutai.ArcGIS.Carto.DesignLib.trcknwse.cur"));
+                    break;
+                }
                 case esriTrackerLocation.LocationTopMiddle:
                 case esriTrackerLocation.LocationBottomMiddle:
-                    {
-                        this.m_cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Carto.DesignLib.trckns.cur"));
-                        break;
-                    }
+                {
+                    this.m_cursor =
+                        new Cursor(
+                            base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Carto.DesignLib.trckns.cur"));
+                    break;
+                }
                 case esriTrackerLocation.LocationTopRight:
                 case esriTrackerLocation.LocationBottomLeft:
-                    {
-                        this.m_cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Carto.DesignLib.trcknesw.cur"));
-                        break;
-                    }
+                {
+                    this.m_cursor =
+                        new Cursor(
+                            base.GetType()
+                                .Assembly.GetManifestResourceStream("Yutai.ArcGIS.Carto.DesignLib.trcknesw.cur"));
+                    break;
+                }
                 case esriTrackerLocation.LocationMiddleLeft:
                 case esriTrackerLocation.LocationMiddleRight:
-                    {
-                        this.m_cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Carto.DesignLib.trckwe.cur"));
-                        break;
-                    }
+                {
+                    this.m_cursor =
+                        new Cursor(
+                            base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Carto.DesignLib.trckwe.cur"));
+                    break;
+                }
                 default:
-                    {
-                        this.m_cursor = Cursors.Default;
-                        break;
-                    }
+                {
+                    this.m_cursor = Cursors.Default;
+                    break;
+                }
             }
         }
 
@@ -353,50 +365,50 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 switch (esriTrackerLocation_0)
                 {
                     case esriTrackerLocation.LocationTopLeft:
-                        {
-                            _esriEnvelopeEdge1 = esriEnvelopeEdge.esriEnvelopeEdgeTopLeft;
-                            break;
-                        }
+                    {
+                        _esriEnvelopeEdge1 = esriEnvelopeEdge.esriEnvelopeEdgeTopLeft;
+                        break;
+                    }
                     case esriTrackerLocation.LocationTopMiddle:
-                        {
-                            _esriEnvelopeEdge1 = esriEnvelopeEdge.esriEnvelopeEdgeTopMiddle;
-                            break;
-                        }
+                    {
+                        _esriEnvelopeEdge1 = esriEnvelopeEdge.esriEnvelopeEdgeTopMiddle;
+                        break;
+                    }
                     case esriTrackerLocation.LocationTopRight:
-                        {
-                            _esriEnvelopeEdge1 = esriEnvelopeEdge.esriEnvelopeEdgeTopRight;
-                            break;
-                        }
+                    {
+                        _esriEnvelopeEdge1 = esriEnvelopeEdge.esriEnvelopeEdgeTopRight;
+                        break;
+                    }
                     case esriTrackerLocation.LocationMiddleLeft:
-                        {
-                            _esriEnvelopeEdge1 = esriEnvelopeEdge.esriEnvelopeEdgeMiddleLeft;
-                            break;
-                        }
+                    {
+                        _esriEnvelopeEdge1 = esriEnvelopeEdge.esriEnvelopeEdgeMiddleLeft;
+                        break;
+                    }
                     case esriTrackerLocation.LocationMiddleRight:
-                        {
-                            _esriEnvelopeEdge1 = esriEnvelopeEdge.esriEnvelopeEdgeMiddleRight;
-                            break;
-                        }
+                    {
+                        _esriEnvelopeEdge1 = esriEnvelopeEdge.esriEnvelopeEdgeMiddleRight;
+                        break;
+                    }
                     case esriTrackerLocation.LocationBottomLeft:
-                        {
-                            _esriEnvelopeEdge1 = esriEnvelopeEdge.esriEnvelopeEdgeBottomLeft;
-                            break;
-                        }
+                    {
+                        _esriEnvelopeEdge1 = esriEnvelopeEdge.esriEnvelopeEdgeBottomLeft;
+                        break;
+                    }
                     case esriTrackerLocation.LocationBottomMiddle:
-                        {
-                            _esriEnvelopeEdge1 = esriEnvelopeEdge.esriEnvelopeEdgeBottomMiddle;
-                            break;
-                        }
+                    {
+                        _esriEnvelopeEdge1 = esriEnvelopeEdge.esriEnvelopeEdgeBottomMiddle;
+                        break;
+                    }
                     case esriTrackerLocation.LocationBottomRight:
-                        {
-                            _esriEnvelopeEdge1 = esriEnvelopeEdge.esriEnvelopeEdgeBottomRight;
-                            break;
-                        }
+                    {
+                        _esriEnvelopeEdge1 = esriEnvelopeEdge.esriEnvelopeEdgeBottomRight;
+                        break;
+                    }
                     default:
-                        {
-                            _esriEnvelopeEdge1 = esriEnvelopeEdge.esriEnvelopeEdgeTopLeft;
-                            break;
-                        }
+                    {
+                        _esriEnvelopeEdge1 = esriEnvelopeEdge.esriEnvelopeEdgeTopLeft;
+                        break;
+                    }
                 }
                 _esriEnvelopeEdge = _esriEnvelopeEdge1;
                 return _esriEnvelopeEdge;
@@ -437,7 +449,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             double x = 0;
             try
             {
-                IDisplayTransformation displayTransformation = this.ikhookHelper_0.ActiveView.ScreenDisplay.DisplayTransformation;
+                IDisplayTransformation displayTransformation =
+                    this.ikhookHelper_0.ActiveView.ScreenDisplay.DisplayTransformation;
                 tagPOINT _tagPOINT = new tagPOINT();
                 WKSPoint wKSPoint = new WKSPoint();
                 _tagPOINT.x = 3;
@@ -474,7 +487,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             }
         }
 
-        private void method_17(IGraphicsContainerSelect igraphicsContainerSelect_0, IMoveImageFeedback imoveImageFeedback_1, IGeometry igeometry_1)
+        private void method_17(IGraphicsContainerSelect igraphicsContainerSelect_0,
+            IMoveImageFeedback imoveImageFeedback_1, IGeometry igeometry_1)
         {
             IElement element;
             try
@@ -718,23 +732,23 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 bool flag = false;
                 if (this.ipoint_2.X < this.ipoint_3.X)
                 {
-                    num = (int)this.ipoint_3.X;
-                    x = (int)this.ipoint_2.X;
+                    num = (int) this.ipoint_3.X;
+                    x = (int) this.ipoint_2.X;
                 }
                 else
                 {
-                    x = (int)this.ipoint_3.X;
-                    num = (int)this.ipoint_2.X;
+                    x = (int) this.ipoint_3.X;
+                    num = (int) this.ipoint_2.X;
                 }
                 if (this.ipoint_2.Y < this.ipoint_3.Y)
                 {
-                    y1 = (int)this.ipoint_3.Y;
-                    y = (int)this.ipoint_2.Y;
+                    y1 = (int) this.ipoint_3.Y;
+                    y = (int) this.ipoint_2.Y;
                 }
                 else
                 {
-                    y = (int)this.ipoint_3.Y;
-                    y1 = (int)this.ipoint_2.Y;
+                    y = (int) this.ipoint_3.Y;
+                    y1 = (int) this.ipoint_2.Y;
                 }
                 if ((num - x > 4 ? true : y1 - y > 4))
                 {
@@ -819,7 +833,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             }
         }
 
-        private void method_26(int int_0, IEnumElement ienumElement_0, IGraphicsContainerSelect igraphicsContainerSelect_0)
+        private void method_26(int int_0, IEnumElement ienumElement_0,
+            IGraphicsContainerSelect igraphicsContainerSelect_0)
         {
             IElement element;
             try
@@ -851,7 +866,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             }
         }
 
-        private bool method_27(IEnumElement ienumElement_0, IGraphicsContainerSelect igraphicsContainerSelect_0, out IElement ielement_2)
+        private bool method_27(IEnumElement ienumElement_0, IGraphicsContainerSelect igraphicsContainerSelect_0,
+            out IElement ielement_2)
         {
             bool flag;
             bool flag1 = false;
@@ -968,7 +984,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                     while (num < elementSelectionCount)
                     {
                         IElement element = igraphicsContainerSelect_0.SelectedElement(num);
-                        if (element.Locked || !this.method_20(element, out point) || point == null || (geometry as IRelationalOperator).Disjoint(this.method_14(point)))
+                        if (element.Locked || !this.method_20(element, out point) || point == null ||
+                            (geometry as IRelationalOperator).Disjoint(this.method_14(point)))
                         {
                             num++;
                         }
@@ -1120,7 +1137,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 {
                     if (geometry != null)
                     {
-                        this.ikhookHelper_0.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, ielement_2, null);
+                        this.ikhookHelper_0.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, ielement_2,
+                            null);
                         IResizeElementOperation resizeElementOperation = new ResizeElementOperation()
                         {
                             Element = ielement_2,
@@ -1128,7 +1146,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                         };
                         this.ikhookHelper_0.OperationStack.Do(resizeElementOperation);
                         this.ikhookHelper_0.ActiveView.GraphicsContainer.UpdateElement(ielement_2);
-                        this.ikhookHelper_0.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, ielement_2, null);
+                        this.ikhookHelper_0.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, ielement_2,
+                            null);
                     }
                 }
             }
@@ -1229,7 +1248,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             }
         }
 
-        private void method_36(IEnumElement ienumElement_0, IGraphicsContainerSelect igraphicsContainerSelect_0, IElement ielement_2)
+        private void method_36(IEnumElement ienumElement_0, IGraphicsContainerSelect igraphicsContainerSelect_0,
+            IElement ielement_2)
         {
             try
             {
@@ -1444,7 +1464,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                                                 groupElementClass = i as IGroupElement;
                                                 for (int j = groupElementClass.ElementCount - 1; j <= 0; j = j + -1)
                                                 {
-                                                    graphicsContainer.MoveElementFromGroup(groupElementClass, groupElementClass.Element[j], j);
+                                                    graphicsContainer.MoveElementFromGroup(groupElementClass,
+                                                        groupElementClass.Element[j], j);
                                                 }
                                                 graphicsContainer.DeleteElement(i);
                                             }
@@ -1485,7 +1506,6 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                     if (selectedElements != null)
                     {
                         selectedElements.Reset();
-                      
                     }
                 }
             }
@@ -1671,7 +1691,9 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                         if (selectionTracker != null)
                         {
                             esriTrackerLocation _esriTrackerLocation = selectionTracker.HitTest(point);
-                            if ((_esriTrackerLocation == esriTrackerLocation.LocationInterior ? false : _esriTrackerLocation != esriTrackerLocation.LocationNone))
+                            if ((_esriTrackerLocation == esriTrackerLocation.LocationInterior
+                                ? false
+                                : _esriTrackerLocation != esriTrackerLocation.LocationNone))
                             {
                                 this.method_11(_esriTrackerLocation);
                                 flag = true;
@@ -1738,7 +1760,10 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                         this.imoveImageFeedback_0.Refresh(0);
                         this.imoveImageFeedback_0.ClearImage();
                     }
-                    else if (!(this.enum0_0 == ElementSelectTool.Enum0.eMovingAnchor ? false : this.enum0_0 != ElementSelectTool.Enum0.eMovingcallout))
+                    else if (
+                        !(this.enum0_0 == ElementSelectTool.Enum0.eMovingAnchor
+                            ? false
+                            : this.enum0_0 != ElementSelectTool.Enum0.eMovingcallout))
                     {
                         this.icalloutFeedback_0.Stop();
                     }
@@ -1764,7 +1789,6 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             {
                 this.inewEnvelopeFeedback_0.Constraint = esriEnvelopeConstraints.esriEnvelopeConstraintsNone;
                 this.iresizeEnvelopeFeedback2_0.Constraint = esriEnvelopeConstraints.esriEnvelopeConstraintsNone;
-               
             }
             catch
             {
@@ -1776,15 +1800,16 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             try
             {
                 this.bool_0 = false;
-                int elementSelectionCount = (this.ikhookHelper_0.ActiveView as IGraphicsContainerSelect).ElementSelectionCount;
+                int elementSelectionCount =
+                    (this.ikhookHelper_0.ActiveView as IGraphicsContainerSelect).ElementSelectionCount;
                 if ((int_0 == 1 ? true : elementSelectionCount == 0))
                 {
                     this.ipoint_0 = this.method_2(int_2, int_3);
                     this.ipoint_1.X = this.ipoint_0.X;
                     this.ipoint_1.Y = this.ipoint_0.Y;
                     IGraphicsContainerSelect graphicsContainerSelect = this.method_8();
-                    this.ipoint_2.X = (double)int_2;
-                    this.ipoint_2.Y = (double)int_3;
+                    this.ipoint_2.X = (double) int_2;
+                    this.ipoint_2.Y = (double) int_3;
                     this.ipoint_3.X = 0;
                     this.ipoint_3.Y = 0;
                     if (this.method_3(graphicsContainerSelect))
@@ -1824,34 +1849,34 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                     switch (this.enum0_0)
                     {
                         case ElementSelectTool.Enum0.eDormant:
-                            {
-                                return;
-                            }
+                        {
+                            return;
+                        }
                         case ElementSelectTool.Enum0.eSelecting:
-                            {
-                                this.inewEnvelopeFeedback_0.MoveTo(this.ipoint_0);
-                                return;
-                            }
+                        {
+                            this.inewEnvelopeFeedback_0.MoveTo(this.ipoint_0);
+                            return;
+                        }
                         case ElementSelectTool.Enum0.eMoving:
-                            {
-                                this.imoveImageFeedback_0.MoveTo(this.ipoint_0);
-                                return;
-                            }
+                        {
+                            this.imoveImageFeedback_0.MoveTo(this.ipoint_0);
+                            return;
+                        }
                         case ElementSelectTool.Enum0.eResizing:
-                            {
-                                this.iresizeEnvelopeFeedback2_0.MoveTo(this.ipoint_0);
-                                return;
-                            }
+                        {
+                            this.iresizeEnvelopeFeedback2_0.MoveTo(this.ipoint_0);
+                            return;
+                        }
                         case ElementSelectTool.Enum0.eMovingAnchor:
-                            {
-                                this.icalloutFeedback_0.MoveAnchorTo(this.ipoint_0);
-                                return;
-                            }
+                        {
+                            this.icalloutFeedback_0.MoveAnchorTo(this.ipoint_0);
+                            return;
+                        }
                         case ElementSelectTool.Enum0.eMovingcallout:
-                            {
-                                this.icalloutFeedback_0.MoveTo(this.ipoint_0);
-                                return;
-                            }
+                        {
+                            this.icalloutFeedback_0.MoveTo(this.ipoint_0);
+                            return;
+                        }
                     }
                 }
                 else
@@ -1869,7 +1894,10 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                         }
                         else if (this.method_4(graphicsContainerSelect))
                         {
-                            this.m_cursor = new Cursor(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Carto.DesignLib.trck4way.cur"));
+                            this.m_cursor =
+                                new Cursor(
+                                    base.GetType()
+                                        .Assembly.GetManifestResourceStream("Yutai.ArcGIS.Carto.DesignLib.trck4way.cur"));
                             return;
                         }
                     }
@@ -1890,43 +1918,42 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             {
                 if (int_0 != 1)
                 {
-                    
                 }
                 else
                 {
                     switch (this.enum0_0)
                     {
                         case ElementSelectTool.Enum0.eSelecting:
-                            {
-                                this.ipoint_3.X = (double)int_2;
-                                this.ipoint_3.Y = (double)int_3;
-                                this.method_23(int_1);
-                                break;
-                            }
+                        {
+                            this.ipoint_3.X = (double) int_2;
+                            this.ipoint_3.Y = (double) int_3;
+                            this.method_23(int_1);
+                            break;
+                        }
                         case ElementSelectTool.Enum0.eMoving:
-                            {
-                                this.imoveImageFeedback_0.Refresh(0);
-                                this.imoveImageFeedback_0.ClearImage();
-                                this.method_21(int_1);
-                                break;
-                            }
+                        {
+                            this.imoveImageFeedback_0.Refresh(0);
+                            this.imoveImageFeedback_0.ClearImage();
+                            this.method_21(int_1);
+                            break;
+                        }
                         case ElementSelectTool.Enum0.eResizing:
-                            {
-                                this.method_32(this.ielement_0);
-                                break;
-                            }
+                        {
+                            this.method_32(this.ielement_0);
+                            break;
+                        }
                         case ElementSelectTool.Enum0.eMovingAnchor:
-                            {
-                                this.method_29(this.ielement_1);
-                                break;
-                            }
+                        {
+                            this.method_29(this.ielement_1);
+                            break;
+                        }
                         case ElementSelectTool.Enum0.eMovingcallout:
-                            {
-                                this.icalloutFeedback_0.Refresh(0);
-                                this.icalloutFeedback_0.Stop();
-                                this.method_21(int_1);
-                                break;
-                            }
+                        {
+                            this.icalloutFeedback_0.Refresh(0);
+                            this.icalloutFeedback_0.Stop();
+                            this.method_21(int_1);
+                            break;
+                        }
                     }
                     if (this.enum0_0 != ElementSelectTool.Enum0.eDormant)
                     {

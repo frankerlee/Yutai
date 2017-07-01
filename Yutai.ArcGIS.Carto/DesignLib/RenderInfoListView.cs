@@ -40,10 +40,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         public IStyleGallery StyleGallery
         {
-            set
-            {
-                this.istyleGallery_0 = value;
-            }
+            set { this.istyleGallery_0 = value; }
         }
 
         public RenderInfoListView()
@@ -66,7 +63,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             object tag = listViewItemEx_0.Tag;
             if (tag is IMarkerSymbol)
             {
-                size = (int)(tag as IMarkerSymbol).Size;
+                size = (int) (tag as IMarkerSymbol).Size;
                 if (size > 40)
                 {
                     size = 40;
@@ -78,7 +75,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             }
             else if (tag is ILineSymbol)
             {
-                size = (int)(tag as ILineSymbol).Width;
+                size = (int) (tag as ILineSymbol).Width;
                 if (size > 40)
                 {
                     size = 40;
@@ -108,7 +105,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 string[] str = new string[base.Columns.Count];
                 str[0] = "";
                 object object0 = null;
-                for (int i = 0; i < (int)object_0.Length; i++)
+                for (int i = 0; i < (int) object_0.Length; i++)
                 {
                     if (i == 0)
                     {
@@ -125,7 +122,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 }
                 if (object0 is IMarkerSymbol)
                 {
-                    size = (int)(object0 as IMarkerSymbol).Size;
+                    size = (int) (object0 as IMarkerSymbol).Size;
                     if (size > 40)
                     {
                         size = 40;
@@ -137,7 +134,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 }
                 else if (object0 is ILineSymbol)
                 {
-                    size = (int)(object0 as ILineSymbol).Width;
+                    size = (int) (object0 as ILineSymbol).Width;
                     if (size > 40)
                     {
                         size = 40;
@@ -159,7 +156,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         public void Add(IStyleGalleryItem istyleGalleryItem_0)
         {
-            string[] name = new string[] { istyleGalleryItem_0.Name, istyleGalleryItem_0.Category };
+            string[] name = new string[] {istyleGalleryItem_0.Name, istyleGalleryItem_0.Category};
             ListViewItemEx listViewItemEx = new ListViewItemEx(name)
             {
                 Tag = istyleGalleryItem_0
@@ -182,13 +179,14 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             {
                 IDisplayTransformation displayTransformation = new DisplayTransformationClass();
                 IEnvelope envelope = new EnvelopeClass();
-                envelope.PutCoords((double)rectangle_0.Left, (double)rectangle_0.Top, (double)rectangle_0.Right, (double)rectangle_0.Bottom);
+                envelope.PutCoords((double) rectangle_0.Left, (double) rectangle_0.Top, (double) rectangle_0.Right,
+                    (double) rectangle_0.Bottom);
                 tagRECT tagRECT;
                 tagRECT.left = rectangle_0.Left;
                 tagRECT.right = rectangle_0.Right;
                 tagRECT.bottom = rectangle_0.Bottom;
                 tagRECT.top = rectangle_0.Top;
-                displayTransformation.set_DeviceFrame( ref tagRECT);
+                displayTransformation.set_DeviceFrame(ref tagRECT);
                 displayTransformation.Bounds = envelope;
                 displayTransformation.Resolution = 96.0;
                 displayTransformation.ReferenceScale = 1.0;
@@ -196,7 +194,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 ISymbol symbol;
                 if (object_0 is ISymbol)
                 {
-                    symbol = (ISymbol)object_0;
+                    symbol = (ISymbol) object_0;
                 }
                 else if (object_0 is IColorRamp)
                 {
@@ -204,18 +202,18 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                     ILineSymbol outline = gradientFillSymbol.Outline;
                     outline.Width = 0.0;
                     gradientFillSymbol.Outline = outline;
-                    gradientFillSymbol.ColorRamp = (IColorRamp)object_0;
+                    gradientFillSymbol.ColorRamp = (IColorRamp) object_0;
                     gradientFillSymbol.GradientAngle = 180.0;
                     gradientFillSymbol.GradientPercentage = 1.0;
                     gradientFillSymbol.IntervalCount = 100;
                     gradientFillSymbol.Style = esriGradientFillStyle.esriGFSLinear;
-                    symbol = (ISymbol)gradientFillSymbol;
+                    symbol = (ISymbol) gradientFillSymbol;
                 }
                 else if (object_0 is IColor)
                 {
-                    symbol = (ISymbol)new ColorSymbolClass
+                    symbol = (ISymbol) new ColorSymbolClass
                     {
-                        Color = (IColor)object_0
+                        Color = (IColor) object_0
                     };
                 }
                 else if (object_0 is IAreaPatch)
@@ -225,7 +223,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                     rgbColor.Red = 227;
                     rgbColor.Green = 236;
                     rgbColor.Blue = 19;
-                    ((IFillSymbol)symbol).Color = rgbColor;
+                    ((IFillSymbol) symbol).Color = rgbColor;
                 }
                 else if (object_0 is ILinePatch)
                 {
@@ -238,9 +236,9 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                         IDisplay display = new ScreenDisplayClass();
                         display.StartDrawing(int_3, 0);
                         display.DisplayTransformation = displayTransformation;
-                        ((IMapSurround)object_0).Draw(display, null, envelope);
+                        ((IMapSurround) object_0).Draw(display, null, envelope);
                         display.FinishDrawing();
-                        ((IMapSurround)object_0).Refresh();
+                        ((IMapSurround) object_0).Refresh();
                         return;
                     }
                     if (object_0 is IMapSurround)
@@ -249,13 +247,14 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                         display.StartDrawing(int_3, 0);
                         display.DisplayTransformation = displayTransformation;
                         IEnvelope envelope2 = new EnvelopeClass();
-                        envelope2.PutCoords((double)(rectangle_0.Left + 5), (double)(rectangle_0.Top + 5), (double)(rectangle_0.Right - 5), (double)(rectangle_0.Bottom - 5));
-                        ((IMapSurround)object_0).QueryBounds(display, envelope, envelope2);
+                        envelope2.PutCoords((double) (rectangle_0.Left + 5), (double) (rectangle_0.Top + 5),
+                            (double) (rectangle_0.Right - 5), (double) (rectangle_0.Bottom - 5));
+                        ((IMapSurround) object_0).QueryBounds(display, envelope, envelope2);
                         bool flag;
-                        ((IMapSurround)object_0).FitToBounds(display, envelope2, out flag);
-                        ((IMapSurround)object_0).Draw(display, null, envelope2);
+                        ((IMapSurround) object_0).FitToBounds(display, envelope2, out flag);
+                        ((IMapSurround) object_0).Draw(display, null, envelope2);
                         display.FinishDrawing();
-                        ((IMapSurround)object_0).Refresh();
+                        ((IMapSurround) object_0).Refresh();
                         return;
                     }
                     if (object_0 is IBackground)
@@ -263,8 +262,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                         IDisplay display = new ScreenDisplayClass();
                         display.StartDrawing(int_3, 0);
                         display.DisplayTransformation = displayTransformation;
-                        IGeometry geometry = ((IBackground)object_0).GetGeometry(display, envelope);
-                        ((IBackground)object_0).Draw(display, geometry);
+                        IGeometry geometry = ((IBackground) object_0).GetGeometry(display, envelope);
+                        ((IBackground) object_0).Draw(display, geometry);
                         display.FinishDrawing();
                         return;
                     }
@@ -273,14 +272,14 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                         IDisplay display = new ScreenDisplayClass();
                         display.StartDrawing(int_3, 0);
                         display.DisplayTransformation = displayTransformation;
-                        double horizontalSpacing = ((IShadow)object_0).HorizontalSpacing;
-                        double verticalSpacing = ((IShadow)object_0).VerticalSpacing;
-                        ((IShadow)object_0).HorizontalSpacing = 0.0;
-                        ((IShadow)object_0).VerticalSpacing = 0.0;
-                        IGeometry geometry = ((IShadow)object_0).GetGeometry(display, envelope);
-                        ((IShadow)object_0).Draw(display, geometry);
-                        ((IShadow)object_0).HorizontalSpacing = horizontalSpacing;
-                        ((IShadow)object_0).VerticalSpacing = verticalSpacing;
+                        double horizontalSpacing = ((IShadow) object_0).HorizontalSpacing;
+                        double verticalSpacing = ((IShadow) object_0).VerticalSpacing;
+                        ((IShadow) object_0).HorizontalSpacing = 0.0;
+                        ((IShadow) object_0).VerticalSpacing = 0.0;
+                        IGeometry geometry = ((IShadow) object_0).GetGeometry(display, envelope);
+                        ((IShadow) object_0).Draw(display, geometry);
+                        ((IShadow) object_0).HorizontalSpacing = horizontalSpacing;
+                        ((IShadow) object_0).VerticalSpacing = verticalSpacing;
                         display.FinishDrawing();
                         return;
                     }
@@ -292,14 +291,14 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                         IPointCollection pointCollection = new PolylineClass();
                         object value = System.Reflection.Missing.Value;
                         IPoint point = new PointClass();
-                        point.PutCoords((double)(rectangle_0.X + 4), (double)rectangle_0.Top);
+                        point.PutCoords((double) (rectangle_0.X + 4), (double) rectangle_0.Top);
                         pointCollection.AddPoint(point, ref value, ref value);
-                        point.PutCoords((double)(rectangle_0.X + 4), (double)rectangle_0.Bottom);
+                        point.PutCoords((double) (rectangle_0.X + 4), (double) rectangle_0.Bottom);
                         pointCollection.AddPoint(point, ref value, ref value);
-                        point.PutCoords((double)(rectangle_0.Right - 4), (double)rectangle_0.Bottom);
+                        point.PutCoords((double) (rectangle_0.Right - 4), (double) rectangle_0.Bottom);
                         pointCollection.AddPoint(point, ref value, ref value);
-                        IGeometry geometry = ((IBorder)object_0).GetGeometry(display, (IGeometry)pointCollection);
-                        ((IBorder)object_0).Draw(display, geometry);
+                        IGeometry geometry = ((IBorder) object_0).GetGeometry(display, (IGeometry) pointCollection);
+                        ((IBorder) object_0).Draw(display, geometry);
                         display.FinishDrawing();
                         return;
                     }
@@ -315,23 +314,23 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 }
                 if (object_0 is IPatch)
                 {
-                    this.method_3(symbol, (IPatch)object_0, rectangle_0);
+                    this.method_3(symbol, (IPatch) object_0, rectangle_0);
                 }
                 else if (symbol is IMarkerSymbol)
                 {
-                    this.method_2((IMarkerSymbol)symbol, rectangle_0);
+                    this.method_2((IMarkerSymbol) symbol, rectangle_0);
                 }
                 else if (symbol is ILineSymbol)
                 {
-                    this.method_4((ILineSymbol)symbol, rectangle_0);
+                    this.method_4((ILineSymbol) symbol, rectangle_0);
                 }
                 else if (symbol is IFillSymbol)
                 {
-                    this.method_5((IFillSymbol)symbol, rectangle_0);
+                    this.method_5((IFillSymbol) symbol, rectangle_0);
                 }
                 else if (symbol is ITextSymbol)
                 {
-                    this.method_7((ITextSymbol)symbol, rectangle_0);
+                    this.method_7((ITextSymbol) symbol, rectangle_0);
                 }
                 symbol.ResetDC();
             }
@@ -401,11 +400,11 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                     {
                         num = 40;
                     }
-                    if ((double)base.SmallImageList.ImageSize.Height >= num)
+                    if ((double) base.SmallImageList.ImageSize.Height >= num)
                     {
                         break;
                     }
-                    base.SmallImageList.ImageSize = new Size((int)num, (int)num);
+                    base.SmallImageList.ImageSize = new Size((int) num, (int) num);
                     break;
                 }
             }
@@ -415,16 +414,17 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         {
             IPoint pointClass = new PointClass()
             {
-                X = (double)((rectangle_0.Left + rectangle_0.Right) / 2),
-                Y = (double)((rectangle_0.Bottom + rectangle_0.Top) / 2)
+                X = (double) ((rectangle_0.Left + rectangle_0.Right)/2),
+                Y = (double) ((rectangle_0.Bottom + rectangle_0.Top)/2)
             };
-            ((ISymbol)imarkerSymbol_0).Draw(pointClass);
+            ((ISymbol) imarkerSymbol_0).Draw(pointClass);
         }
 
         private void method_3(ISymbol isymbol_0, IPatch ipatch_0, Rectangle rectangle_0)
         {
             IEnvelope envelopeClass = new EnvelopeClass();
-            envelopeClass.PutCoords((double)rectangle_0.Left, (double)rectangle_0.Top, (double)rectangle_0.Right, (double)rectangle_0.Bottom);
+            envelopeClass.PutCoords((double) rectangle_0.Left, (double) rectangle_0.Top, (double) rectangle_0.Right,
+                (double) rectangle_0.Bottom);
             isymbol_0.Draw(ipatch_0.get_Geometry(envelopeClass));
         }
 
@@ -437,23 +437,25 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             IPoint pointClass;
             if (ilineSymbol_0 is IPictureLineSymbol)
             {
-                if (((IPictureLineSymbol)ilineSymbol_0).Picture != null)
+                if (((IPictureLineSymbol) ilineSymbol_0).Picture != null)
                 {
                     value = Missing.Value;
                     polylineClass = new PolylineClass();
                     pointClass = new PointClass();
-                    pointClass.PutCoords((double)(rectangle_0.Left + 3), (double)((rectangle_0.Bottom + rectangle_0.Top) / 2));
+                    pointClass.PutCoords((double) (rectangle_0.Left + 3),
+                        (double) ((rectangle_0.Bottom + rectangle_0.Top)/2));
                     polylineClass.AddPoint(pointClass, ref value, ref value);
-                    pointClass.PutCoords((double)(rectangle_0.Right - 3), (double)((rectangle_0.Bottom + rectangle_0.Top) / 2));
+                    pointClass.PutCoords((double) (rectangle_0.Right - 3),
+                        (double) ((rectangle_0.Bottom + rectangle_0.Top)/2));
                     polylineClass.AddPoint(pointClass, ref value, ref value);
-                    ((ISymbol)ilineSymbol_0).Draw((IGeometry)polylineClass);
+                    ((ISymbol) ilineSymbol_0).Draw((IGeometry) polylineClass);
                     return;
                 }
                 return;
             }
             else if ((ilineSymbol_0 is IMarkerLineSymbol ? true : ilineSymbol_0 is IHashLineSymbol))
             {
-                ITemplate template = ((ILineProperties)ilineSymbol_0).Template;
+                ITemplate template = ((ILineProperties) ilineSymbol_0).Template;
                 if (template != null)
                 {
                     bool flag = false;
@@ -487,11 +489,11 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             value = Missing.Value;
             polylineClass = new PolylineClass();
             pointClass = new PointClass();
-            pointClass.PutCoords((double)(rectangle_0.Left + 3), (double)((rectangle_0.Bottom + rectangle_0.Top) / 2));
+            pointClass.PutCoords((double) (rectangle_0.Left + 3), (double) ((rectangle_0.Bottom + rectangle_0.Top)/2));
             polylineClass.AddPoint(pointClass, ref value, ref value);
-            pointClass.PutCoords((double)(rectangle_0.Right - 3), (double)((rectangle_0.Bottom + rectangle_0.Top) / 2));
+            pointClass.PutCoords((double) (rectangle_0.Right - 3), (double) ((rectangle_0.Bottom + rectangle_0.Top)/2));
             polylineClass.AddPoint(pointClass, ref value, ref value);
-            ((ISymbol)ilineSymbol_0).Draw((IGeometry)polylineClass);
+            ((ISymbol) ilineSymbol_0).Draw((IGeometry) polylineClass);
         }
 
         private void method_5(IFillSymbol ifillSymbol_0, Rectangle rectangle_0)
@@ -499,17 +501,17 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             object value = Missing.Value;
             IPoint pointClass = new PointClass();
             IPointCollection polygonClass = new PolygonClass();
-            pointClass.PutCoords((double)(rectangle_0.Left + 3), (double)(rectangle_0.Top + 3));
+            pointClass.PutCoords((double) (rectangle_0.Left + 3), (double) (rectangle_0.Top + 3));
             polygonClass.AddPoint(pointClass, ref value, ref value);
-            pointClass.PutCoords((double)(rectangle_0.Right - 3), (double)(rectangle_0.Top + 3));
+            pointClass.PutCoords((double) (rectangle_0.Right - 3), (double) (rectangle_0.Top + 3));
             polygonClass.AddPoint(pointClass, ref value, ref value);
-            pointClass.PutCoords((double)(rectangle_0.Right - 3), (double)(rectangle_0.Bottom - 3));
+            pointClass.PutCoords((double) (rectangle_0.Right - 3), (double) (rectangle_0.Bottom - 3));
             polygonClass.AddPoint(pointClass, ref value, ref value);
-            pointClass.PutCoords((double)(rectangle_0.Left + 3), (double)(rectangle_0.Bottom - 3));
+            pointClass.PutCoords((double) (rectangle_0.Left + 3), (double) (rectangle_0.Bottom - 3));
             polygonClass.AddPoint(pointClass, ref value, ref value);
-            pointClass.PutCoords((double)(rectangle_0.Left + 3), (double)(rectangle_0.Top + 3));
+            pointClass.PutCoords((double) (rectangle_0.Left + 3), (double) (rectangle_0.Top + 3));
             polygonClass.AddPoint(pointClass, ref value, ref value);
-            ((ISymbol)ifillSymbol_0).Draw((IGeometry)polygonClass);
+            ((ISymbol) ifillSymbol_0).Draw((IGeometry) polygonClass);
         }
 
         private void method_6(IFillSymbol ifillSymbol_0, Rectangle rectangle_0, bool bool_1)
@@ -517,32 +519,32 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             object value = Missing.Value;
             IPoint pointClass = new PointClass();
             IPointCollection polygonClass = new PolygonClass();
-            pointClass.PutCoords((double)(rectangle_0.Top + 3), (double)(rectangle_0.Left + 3));
+            pointClass.PutCoords((double) (rectangle_0.Top + 3), (double) (rectangle_0.Left + 3));
             polygonClass.AddPoint(pointClass, ref value, ref value);
-            pointClass.PutCoords((double)(rectangle_0.Top + 3), (double)(rectangle_0.Right - 3));
+            pointClass.PutCoords((double) (rectangle_0.Top + 3), (double) (rectangle_0.Right - 3));
             polygonClass.AddPoint(pointClass, ref value, ref value);
-            pointClass.PutCoords((double)(rectangle_0.Bottom - 3), (double)(rectangle_0.Right - 3));
+            pointClass.PutCoords((double) (rectangle_0.Bottom - 3), (double) (rectangle_0.Right - 3));
             polygonClass.AddPoint(pointClass, ref value, ref value);
-            pointClass.PutCoords((double)(rectangle_0.Bottom - 3), (double)(rectangle_0.Left + 3));
+            pointClass.PutCoords((double) (rectangle_0.Bottom - 3), (double) (rectangle_0.Left + 3));
             polygonClass.AddPoint(pointClass, ref value, ref value);
-            pointClass.PutCoords((double)(rectangle_0.Top + 3), (double)(rectangle_0.Left + 3));
+            pointClass.PutCoords((double) (rectangle_0.Top + 3), (double) (rectangle_0.Left + 3));
             polygonClass.AddPoint(pointClass, ref value, ref value);
-            ((ISymbol)ifillSymbol_0).Draw((IGeometry)polygonClass);
+            ((ISymbol) ifillSymbol_0).Draw((IGeometry) polygonClass);
         }
 
         private void method_7(ITextSymbol itextSymbol_0, Rectangle rectangle_0)
         {
             IPoint pointClass = new PointClass()
             {
-                X = (double)((rectangle_0.Left + rectangle_0.Right) / 2),
-                Y = (double)((rectangle_0.Bottom + rectangle_0.Top) / 2)
+                X = (double) ((rectangle_0.Left + rectangle_0.Right)/2),
+                Y = (double) ((rectangle_0.Bottom + rectangle_0.Top)/2)
             };
-            ISimpleTextSymbol itextSymbol0 = (ISimpleTextSymbol)itextSymbol_0;
+            ISimpleTextSymbol itextSymbol0 = (ISimpleTextSymbol) itextSymbol_0;
             string text = itextSymbol0.Text;
             bool clip = itextSymbol0.Clip;
             itextSymbol0.Text = "AaBbYyZz";
             itextSymbol0.Clip = true;
-            ((ISymbol)itextSymbol_0).Draw(pointClass);
+            ((ISymbol) itextSymbol_0).Draw(pointClass);
             itextSymbol0.Text = text;
             itextSymbol0.Clip = clip;
         }
@@ -578,9 +580,9 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                             bounds.Width = 40;
                         }
                         rectangle = base.Items[i].GetBounds(ItemBoundsPortion.Entire);
-                        float left = (float)(rectangle.Left + bounds.Width);
-                        float top = (float)rectangle.Top;
-                        rectangleF = new RectangleF(left, top, 0f, (float)rectangle.Height);
+                        float left = (float) (rectangle.Left + bounds.Width);
+                        float top = (float) rectangle.Top;
+                        rectangleF = new RectangleF(left, top, 0f, (float) rectangle.Height);
                         if (base.Items[i] is ListViewItemEx)
                         {
                             graphics = paintEventArgs_0.Graphics;
@@ -591,7 +593,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                             }
                             else if ((base.Items[i] as ListViewItemEx).Style is IStyleGalleryItem)
                             {
-                                this.DrawSymbol(hdc.ToInt32(), bounds, ((base.Items[i] as ListViewItemEx).Style as IStyleGalleryItem).Item);
+                                this.DrawSymbol(hdc.ToInt32(), bounds,
+                                    ((base.Items[i] as ListViewItemEx).Style as IStyleGalleryItem).Item);
                             }
                             graphics.ReleaseHdc(hdc);
                         }
@@ -609,28 +612,30 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                         {
                             if (j > 1)
                             {
-                                rectangleF.X = rectangleF.X + (float)base.Columns[j - 1].Width;
+                                rectangleF.X = rectangleF.X + (float) base.Columns[j - 1].Width;
                             }
                             else if (j == 1)
                             {
-                                rectangleF.X = rectangleF.X + (float)base.Columns[0].Width - (float)bounds.Width;
+                                rectangleF.X = rectangleF.X + (float) base.Columns[0].Width - (float) bounds.Width;
                             }
                             if (j != 0)
                             {
-                                rectangleF.Width = (float)base.Columns[j].Width;
+                                rectangleF.Width = (float) base.Columns[j].Width;
                             }
                             else
                             {
-                                rectangleF.Width = (float)(base.Columns[j].Width - bounds.Width);
+                                rectangleF.Width = (float) (base.Columns[j].Width - bounds.Width);
                             }
                             if ((j == 0 ? false : !base.FullRowSelect))
                             {
-                                paintEventArgs_0.Graphics.DrawString(base.Items[i].SubItems[j].Text, this.Font, Brushes.Black, rectangleF, stringFormat);
+                                paintEventArgs_0.Graphics.DrawString(base.Items[i].SubItems[j].Text, this.Font,
+                                    Brushes.Black, rectangleF, stringFormat);
                             }
                             else if ((j != 0 ? true : base.Items[i].SubItems[j].Text.Length != 0))
                             {
                                 paintEventArgs_0.Graphics.FillRectangle(solidBrush, rectangleF);
-                                paintEventArgs_0.Graphics.DrawString(base.Items[i].SubItems[j].Text, this.Font, solidBrush1, rectangleF, stringFormat);
+                                paintEventArgs_0.Graphics.DrawString(base.Items[i].SubItems[j].Text, this.Font,
+                                    solidBrush1, rectangleF, stringFormat);
                             }
                         }
                         solidBrush.Dispose();
@@ -655,7 +660,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                             }
                             else if ((base.Items[i] as ListViewItemEx).Style is IStyleGalleryItem)
                             {
-                                this.DrawSymbol(hdc.ToInt32(), bounds, ((base.Items[i] as ListViewItemEx).Style as IStyleGalleryItem).Item);
+                                this.DrawSymbol(hdc.ToInt32(), bounds,
+                                    ((base.Items[i] as ListViewItemEx).Style as IStyleGalleryItem).Item);
                             }
                             graphics.ReleaseHdc(hdc);
                         }
@@ -672,9 +678,11 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                         if (base.Items[i].SubItems.Count > 1)
                         {
                             rectangle = base.Items[i].GetBounds(ItemBoundsPortion.Label);
-                            rectangleF = new RectangleF((float)rectangle.X, (float)rectangle.Y, (float)rectangle.Width, (float)rectangle.Height);
+                            rectangleF = new RectangleF((float) rectangle.X, (float) rectangle.Y,
+                                (float) rectangle.Width, (float) rectangle.Height);
                             paintEventArgs_0.Graphics.FillRectangle(solidBrush, rectangleF);
-                            paintEventArgs_0.Graphics.DrawString(base.Items[i].SubItems[1].Text, this.Font, solidBrush1, rectangleF);
+                            paintEventArgs_0.Graphics.DrawString(base.Items[i].SubItems[1].Text, this.Font, solidBrush1,
+                                rectangleF);
                         }
                         solidBrush.Dispose();
                         solidBrush1.Dispose();
@@ -758,7 +766,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         public void SetColumnEditable(int int_3, bool bool_1)
         {
             this.ColumnEditables = new bool[base.Columns.Count];
-            for (int i = 0; i < (int)this.ColumnEditables.Length; i++)
+            for (int i = 0; i < (int) this.ColumnEditables.Length; i++)
             {
                 this.ColumnEditables[i] = false;
             }
@@ -787,7 +795,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         {
             if (!this.bool_0)
             {
-                if (this.listViewItem_0 != null && this.int_2 != -1 && this.listViewItem_0.SubItems[this.int_2].Text != this.textBox.Text)
+                if (this.listViewItem_0 != null && this.int_2 != -1 &&
+                    this.listViewItem_0.SubItems[this.int_2].Text != this.textBox.Text)
                 {
                     this.listViewItem_0.SubItems[this.int_2].Text = this.textBox.Text;
                     if (this.onValueChangedHandler_0 != null)
@@ -814,10 +823,12 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 do
                 {
                     onValueChangedHandler = onValueChangedHandler0;
-                    RenderInfoListView.OnValueChangedHandler onValueChangedHandler1 = (RenderInfoListView.OnValueChangedHandler)Delegate.Combine(onValueChangedHandler, value);
-                    onValueChangedHandler0 = Interlocked.CompareExchange<RenderInfoListView.OnValueChangedHandler>(ref this.onValueChangedHandler_0, onValueChangedHandler1, onValueChangedHandler);
-                }
-                while ((object)onValueChangedHandler0 != (object)onValueChangedHandler);
+                    RenderInfoListView.OnValueChangedHandler onValueChangedHandler1 =
+                        (RenderInfoListView.OnValueChangedHandler) Delegate.Combine(onValueChangedHandler, value);
+                    onValueChangedHandler0 =
+                        Interlocked.CompareExchange<RenderInfoListView.OnValueChangedHandler>(
+                            ref this.onValueChangedHandler_0, onValueChangedHandler1, onValueChangedHandler);
+                } while ((object) onValueChangedHandler0 != (object) onValueChangedHandler);
             }
             remove
             {
@@ -826,10 +837,12 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 do
                 {
                     onValueChangedHandler = onValueChangedHandler0;
-                    RenderInfoListView.OnValueChangedHandler onValueChangedHandler1 = (RenderInfoListView.OnValueChangedHandler)Delegate.Remove(onValueChangedHandler, value);
-                    onValueChangedHandler0 = Interlocked.CompareExchange<RenderInfoListView.OnValueChangedHandler>(ref this.onValueChangedHandler_0, onValueChangedHandler1, onValueChangedHandler);
-                }
-                while ((object)onValueChangedHandler0 != (object)onValueChangedHandler);
+                    RenderInfoListView.OnValueChangedHandler onValueChangedHandler1 =
+                        (RenderInfoListView.OnValueChangedHandler) Delegate.Remove(onValueChangedHandler, value);
+                    onValueChangedHandler0 =
+                        Interlocked.CompareExchange<RenderInfoListView.OnValueChangedHandler>(
+                            ref this.onValueChangedHandler_0, onValueChangedHandler1, onValueChangedHandler);
+                } while ((object) onValueChangedHandler0 != (object) onValueChangedHandler);
             }
         }
 

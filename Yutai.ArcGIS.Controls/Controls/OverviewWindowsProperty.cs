@@ -63,7 +63,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             this.m_pFillSymbol = this.btnFillSymbol.Style as IFillSymbol;
         }
 
- private void OverviewWindowsProperty_Load(object sender, EventArgs e)
+        private void OverviewWindowsProperty_Load(object sender, EventArgs e)
         {
             this.checkEdit1.Checked = this.m_ZoomWithMainView;
             this.colorEdit1.Color = this.m_BackgroundColor;
@@ -132,10 +132,7 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         public IFillSymbol FillSymbol
         {
-            get
-            {
-                return this.m_pFillSymbol;
-            }
+            get { return this.m_pFillSymbol; }
             set
             {
                 if (value != null)
@@ -147,50 +144,29 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         public IMap Map
         {
-            set
-            {
-                this.m_pMap = value;
-            }
+            set { this.m_pMap = value; }
         }
 
         public Color MapCtrlBackgroundColor
         {
-            get
-            {
-                return this.m_BackgroundColor;
-            }
-            set
-            {
-                this.m_BackgroundColor = value;
-            }
+            get { return this.m_BackgroundColor; }
+            set { this.m_BackgroundColor = value; }
         }
 
         public IMap OverviewMap
         {
-            set
-            {
-                this.m_pOverviewMap = value;
-            }
+            set { this.m_pOverviewMap = value; }
         }
 
         public IStyleGallery StyleGallery
         {
-            set
-            {
-                this.m_pSG = value;
-            }
+            set { this.m_pSG = value; }
         }
 
         public bool ZoomWithMainView
         {
-            get
-            {
-                return this.m_ZoomWithMainView;
-            }
-            set
-            {
-                this.m_ZoomWithMainView = value;
-            }
+            get { return this.m_ZoomWithMainView; }
+            set { this.m_ZoomWithMainView = value; }
         }
 
         internal partial class LayerWrap
@@ -213,12 +189,8 @@ namespace Yutai.ArcGIS.Controls.Controls
 
             public ILayer Layer
             {
-                get
-                {
-                    return this.m_pLayer;
-                }
+                get { return this.m_pLayer; }
             }
         }
     }
 }
-

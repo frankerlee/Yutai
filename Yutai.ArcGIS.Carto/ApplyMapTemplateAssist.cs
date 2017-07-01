@@ -2,7 +2,7 @@
 {
     public class ApplyMapTemplateAssist
     {
-        public static  event OnActivePageLayoutHandler OnActivePageLayout;
+        public static event OnActivePageLayoutHandler OnActivePageLayout;
 
         public static void ActivePageLayout()
         {
@@ -13,4 +13,3 @@
         }
     }
 }
-

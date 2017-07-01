@@ -38,11 +38,11 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         {
         }
 
- public void Hide()
+        public void Hide()
         {
         }
 
- private void MeasureCoordinatePropertyPage_Load(object sender, EventArgs e)
+        private void MeasureCoordinatePropertyPage_Load(object sender, EventArgs e)
         {
             if ((GridAxisPropertyPage.m_pMapGrid as IProjectedGrid).SpatialReference != null)
             {
@@ -74,39 +74,23 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.m_IsPageDirty;
-            }
+            get { return this.m_IsPageDirty; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.m_Title;
-            }
-            set
-            {
-                this.m_Title = value;
-            }
+            get { return this.m_Title; }
+            set { this.m_Title = value; }
         }
     }
 }
-

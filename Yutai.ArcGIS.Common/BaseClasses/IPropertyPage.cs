@@ -15,6 +15,7 @@
         string Title { get; set; }
         int Width { get; }
     }
+
     public interface IPropertyPageEvents
     {
         // Events
@@ -40,5 +41,6 @@
     }
 
     public delegate void OnApplyEventHandler();
+
     public delegate void OnValueChangeEventHandler();
 }

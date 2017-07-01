@@ -25,7 +25,6 @@ namespace Yutai.Plugins.Bookmark.Menu
         {
             return new List<YutaiCommand>()
             {
-               
                 new CmdCreateBookmark(_context),
                 new CmdManageBookmark(_context)
             };

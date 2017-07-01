@@ -19,6 +19,7 @@ namespace Yutai.Plugins.TableEditor.Commands
     public class CmdExportSelection : YutaiCommand
     {
         private ITableEditorView _view;
+
         public CmdExportSelection(IAppContext context, ITableEditorView view)
         {
             _context = context;
@@ -52,6 +53,5 @@ namespace Yutai.Plugins.TableEditor.Commands
         public void OnClick()
         {
         }
-
     }
 }

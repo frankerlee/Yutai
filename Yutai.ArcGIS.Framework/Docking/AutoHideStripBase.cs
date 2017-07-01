@@ -68,19 +68,23 @@ namespace Yutai.ArcGIS.Framework.Docking
             int height = this.MeasureHeight();
             if ((dockState == DockState.DockTopAutoHide) && (this.PanesTop.Count > 0))
             {
-                return new Rectangle(this.RectangleTopLeft.Width, 0, (base.Width - this.RectangleTopLeft.Width) - this.RectangleTopRight.Width, height);
+                return new Rectangle(this.RectangleTopLeft.Width, 0,
+                    (base.Width - this.RectangleTopLeft.Width) - this.RectangleTopRight.Width, height);
             }
             if ((dockState == DockState.DockBottomAutoHide) && (this.PanesBottom.Count > 0))
             {
-                return new Rectangle(this.RectangleBottomLeft.Width, base.Height - height, (base.Width - this.RectangleBottomLeft.Width) - this.RectangleBottomRight.Width, height);
+                return new Rectangle(this.RectangleBottomLeft.Width, base.Height - height,
+                    (base.Width - this.RectangleBottomLeft.Width) - this.RectangleBottomRight.Width, height);
             }
             if ((dockState == DockState.DockLeftAutoHide) && (this.PanesLeft.Count > 0))
             {
-                return new Rectangle(0, this.RectangleTopLeft.Width, height, (base.Height - this.RectangleTopLeft.Height) - this.RectangleBottomLeft.Height);
+                return new Rectangle(0, this.RectangleTopLeft.Width, height,
+                    (base.Height - this.RectangleTopLeft.Height) - this.RectangleBottomLeft.Height);
             }
             if ((dockState == DockState.DockRightAutoHide) && (this.PanesRight.Count > 0))
             {
-                return new Rectangle(base.Width - height, this.RectangleTopRight.Width, height, (base.Height - this.RectangleTopRight.Height) - this.RectangleBottomRight.Height);
+                return new Rectangle(base.Width - height, this.RectangleTopRight.Width, height,
+                    (base.Height - this.RectangleTopRight.Height) - this.RectangleBottomRight.Height);
             }
             return Rectangle.Empty;
         }
@@ -93,6 +97,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         protected abstract IDockContent HitTest(Point point);
         protected internal abstract int MeasureHeight();
+
         protected override void OnLayout(LayoutEventArgs levent)
         {
             this.RefreshChanges();
@@ -164,42 +169,27 @@ namespace Yutai.ArcGIS.Framework.Docking
 
         protected DockPanel DockPanel
         {
-            get
-            {
-                return this.m_dockPanel;
-            }
+            get { return this.m_dockPanel; }
         }
 
         protected PaneCollection PanesBottom
         {
-            get
-            {
-                return this.m_panesBottom;
-            }
+            get { return this.m_panesBottom; }
         }
 
         protected PaneCollection PanesLeft
         {
-            get
-            {
-                return this.m_panesLeft;
-            }
+            get { return this.m_panesLeft; }
         }
 
         protected PaneCollection PanesRight
         {
-            get
-            {
-                return this.m_panesRight;
-            }
+            get { return this.m_panesRight; }
         }
 
         protected PaneCollection PanesTop
         {
-            get
-            {
-                return this.m_panesTop;
-            }
+            get { return this.m_panesTop; }
         }
 
         protected Rectangle RectangleBottomLeft
@@ -207,7 +197,9 @@ namespace Yutai.ArcGIS.Framework.Docking
             get
             {
                 int width = this.MeasureHeight();
-                return (((this.PanesBottom.Count > 0) && (this.PanesLeft.Count > 0)) ? new Rectangle(0, base.Height - width, width, width) : Rectangle.Empty);
+                return (((this.PanesBottom.Count > 0) && (this.PanesLeft.Count > 0))
+                    ? new Rectangle(0, base.Height - width, width, width)
+                    : Rectangle.Empty);
             }
         }
 
@@ -216,7 +208,9 @@ namespace Yutai.ArcGIS.Framework.Docking
             get
             {
                 int width = this.MeasureHeight();
-                return (((this.PanesBottom.Count > 0) && (this.PanesRight.Count > 0)) ? new Rectangle(base.Width - width, base.Height - width, width, width) : Rectangle.Empty);
+                return (((this.PanesBottom.Count > 0) && (this.PanesRight.Count > 0))
+                    ? new Rectangle(base.Width - width, base.Height - width, width, width)
+                    : Rectangle.Empty);
             }
         }
 
@@ -225,7 +219,9 @@ namespace Yutai.ArcGIS.Framework.Docking
             get
             {
                 int width = this.MeasureHeight();
-                return (((this.PanesTop.Count > 0) && (this.PanesLeft.Count > 0)) ? new Rectangle(0, 0, width, width) : Rectangle.Empty);
+                return (((this.PanesTop.Count > 0) && (this.PanesLeft.Count > 0))
+                    ? new Rectangle(0, 0, width, width)
+                    : Rectangle.Empty);
             }
         }
 
@@ -234,7 +230,9 @@ namespace Yutai.ArcGIS.Framework.Docking
             get
             {
                 int width = this.MeasureHeight();
-                return (((this.PanesTop.Count > 0) && (this.PanesRight.Count > 0)) ? new Rectangle(base.Width - width, 0, width, width) : Rectangle.Empty);
+                return (((this.PanesTop.Count > 0) && (this.PanesRight.Count > 0))
+                    ? new Rectangle(base.Width - width, 0, width, width)
+                    : Rectangle.Empty);
             }
         }
 
@@ -276,10 +274,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             public DockPane DockPane
             {
-                get
-                {
-                    return this.m_dockPane;
-                }
+                get { return this.m_dockPane; }
             }
         }
 
@@ -357,10 +352,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             public DockPanel DockPanel
             {
-                get
-                {
-                    return this.m_dockPanel;
-                }
+                get { return this.m_dockPanel; }
             }
 
             public AutoHideStripBase.Pane this[int index]
@@ -389,10 +381,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             private AutoHideStateCollection States
             {
-                get
-                {
-                    return this.m_states;
-                }
+                get { return this.m_states; }
             }
 
             private class AutoHideState
@@ -407,28 +396,26 @@ namespace Yutai.ArcGIS.Framework.Docking
 
                 public DockState DockState
                 {
-                    get
-                    {
-                        return this.m_dockState;
-                    }
+                    get { return this.m_dockState; }
                 }
 
                 public bool Selected
                 {
-                    get
-                    {
-                        return this.m_selected;
-                    }
-                    set
-                    {
-                        this.m_selected = value;
-                    }
+                    get { return this.m_selected; }
+                    set { this.m_selected = value; }
                 }
             }
 
             private class AutoHideStateCollection
             {
-                private AutoHideStripBase.PaneCollection.AutoHideState[] m_states = new AutoHideStripBase.PaneCollection.AutoHideState[] { new AutoHideStripBase.PaneCollection.AutoHideState(DockState.DockTopAutoHide), new AutoHideStripBase.PaneCollection.AutoHideState(DockState.DockBottomAutoHide), new AutoHideStripBase.PaneCollection.AutoHideState(DockState.DockLeftAutoHide), new AutoHideStripBase.PaneCollection.AutoHideState(DockState.DockRightAutoHide) };
+                private AutoHideStripBase.PaneCollection.AutoHideState[] m_states =
+                    new AutoHideStripBase.PaneCollection.AutoHideState[]
+                    {
+                        new AutoHideStripBase.PaneCollection.AutoHideState(DockState.DockTopAutoHide),
+                        new AutoHideStripBase.PaneCollection.AutoHideState(DockState.DockBottomAutoHide),
+                        new AutoHideStripBase.PaneCollection.AutoHideState(DockState.DockLeftAutoHide),
+                        new AutoHideStripBase.PaneCollection.AutoHideState(DockState.DockRightAutoHide)
+                    };
 
                 public bool ContainsPane(DockPane pane)
                 {
@@ -460,8 +447,6 @@ namespace Yutai.ArcGIS.Framework.Docking
                     }
                 }
             }
-
-
         }
 
         protected class Tab : IDisposable
@@ -490,10 +475,7 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             public IDockContent Content
             {
-                get
-                {
-                    return this.m_content;
-                }
+                get { return this.m_content; }
             }
         }
 
@@ -548,26 +530,17 @@ namespace Yutai.ArcGIS.Framework.Docking
 
             public int Count
             {
-                get
-                {
-                    return this.DockPane.DisplayingContents.Count;
-                }
+                get { return this.DockPane.DisplayingContents.Count; }
             }
 
             public DockPane DockPane
             {
-                get
-                {
-                    return this.m_dockPane;
-                }
+                get { return this.m_dockPane; }
             }
 
             public DockPanel DockPanel
             {
-                get
-                {
-                    return this.DockPane.DockPanel;
-                }
+                get { return this.DockPane.DockPanel; }
             }
 
             public AutoHideStripBase.Tab this[int index]
@@ -586,9 +559,6 @@ namespace Yutai.ArcGIS.Framework.Docking
                     return (content.DockHandler.AutoHideTab as AutoHideStripBase.Tab);
                 }
             }
-
-
         }
     }
 }
-

@@ -11,19 +11,21 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Commands.Views
 {
-    public class CmdViewZoomPrev:YutaiCommand
+    public class CmdViewZoomPrev : YutaiCommand
     {
         public CmdViewZoomPrev(IAppContext context)
         {
             OnCreate(context);
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
         }
+
         public override void OnClick()
         {
-            IActiveView focusMap = (IActiveView)_context.FocusMap;
+            IActiveView focusMap = (IActiveView) _context.FocusMap;
             IExtentStack extentStack = focusMap.ExtentStack;
             if (extentStack.CanUndo())
             {
@@ -31,6 +33,7 @@ namespace Yutai.Commands.Views
                 focusMap.Refresh();
             }
         }
+
         public override bool Enabled
         {
             get
@@ -47,7 +50,7 @@ namespace Yutai.Commands.Views
                     {
                         return false;
                     }
-                    IActiveView focusMap = (IActiveView)_context.FocusMap;
+                    IActiveView focusMap = (IActiveView) _context.FocusMap;
                     IExtentStack extentStack = focusMap.ExtentStack;
                     if (extentStack.CanUndo())
                     {
@@ -58,6 +61,7 @@ namespace Yutai.Commands.Views
                 return false;
             }
         }
+
         public override void OnCreate(object hook)
         {
             _context = hook as IAppContext;

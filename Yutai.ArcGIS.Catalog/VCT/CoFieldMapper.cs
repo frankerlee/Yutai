@@ -13,27 +13,14 @@
 
         public ICoField DestField
         {
-            get
-            {
-                return this.icoField_1;
-            }
-            set
-            {
-                this.icoField_1 = value;
-            }
+            get { return this.icoField_1; }
+            set { this.icoField_1 = value; }
         }
 
         public ICoField SourceField
         {
-            get
-            {
-                return this.icoField_0;
-            }
-            set
-            {
-                this.icoField_0 = value;
-            }
+            get { return this.icoField_0; }
+            set { this.icoField_0 = value; }
         }
     }
 }
-

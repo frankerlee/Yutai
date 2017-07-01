@@ -8,7 +8,6 @@ namespace Yutai.Plugins.Editor.Commands
 {
     class CmdEditAttribute : YutaiCommand
     {
-
         private AttributeEditDockPanelService _dockService;
         private bool bool_0 = false;
 
@@ -31,8 +30,6 @@ namespace Yutai.Plugins.Editor.Commands
             base.TextImageRelationYT = TextImageRelationYT.ImageAboveText;
             base.ToolStripItemImageScalingYT = ToolStripItemImageScalingYT.None;
             _itemType = RibbonItemType.Button;
-
-
         }
 
         public override bool Enabled
@@ -49,7 +46,8 @@ namespace Yutai.Plugins.Editor.Commands
                     if (_dockService != null) _dockService.Hide();
                     result = false;
                 }
-                else if (Yutai.ArcGIS.Common.Editor.Editor.EditMap != null && Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
+                else if (Yutai.ArcGIS.Common.Editor.Editor.EditMap != null &&
+                         Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
                 {
                     if (_dockService != null) _dockService.Hide();
                     result = false;
@@ -68,8 +66,6 @@ namespace Yutai.Plugins.Editor.Commands
         }
 
 
-
-
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
@@ -77,11 +73,9 @@ namespace Yutai.Plugins.Editor.Commands
 
         public override void OnClick()
         {
-
             if (_dockService == null)
             {
                 _dockService = _context.Container.GetInstance<AttributeEditDockPanelService>();
-                
             }
             if (_dockService.Visible == false)
             {

@@ -12,11 +12,12 @@ namespace Yutai.Plugins.Bookmark.Views
         private IAppContext _context;
         private static int nIndex;
         private IBasicMap m_pMap;
+
         public frmCreateBookmarkView(IAppContext context)
         {
             InitializeComponent();
             _context = context;
-            m_pMap = _context.MapControl.Map as IBasicMap;
+            m_pMap = _context.FocusMap as IBasicMap;
         }
 
         static frmCreateBookmarkView()

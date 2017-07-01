@@ -14,7 +14,5 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             this.InitializeComponent();
         }
-
-
     }
 }

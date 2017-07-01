@@ -12,7 +12,6 @@ namespace Yutai.Pipeline.Analysis.Commands
 {
     class CmdStartDistMeasureAnalysis : YutaiTool
     {
-
         private DistMeausreDlg m_dmd;
 
         private GPolyLine gpolyLine_0 = new GPolyLine();
@@ -76,19 +75,18 @@ namespace Yutai.Pipeline.Analysis.Commands
                 ISimpleLineSymbol simpleLineSymbol = new SimpleLineSymbol();
                 ISimpleLineSymbol arg_3E_0 = simpleLineSymbol;
                 IRgbColor rgbColorClass = new RgbColor();
-                rgbColorClass.Red =(255);
-                rgbColorClass.Green=(0);
-                rgbColorClass.Blue=(0);
-                arg_3E_0.Color=(rgbColorClass);
-                simpleLineSymbol.Width=(1.0);
-                simpleLineSymbol.Style= esriSimpleLineStyle.esriSLSSolid;
+                rgbColorClass.Red = (255);
+                rgbColorClass.Green = (0);
+                rgbColorClass.Blue = (0);
+                arg_3E_0.Color = (rgbColorClass);
+                simpleLineSymbol.Width = (1.0);
+                simpleLineSymbol.Style = esriSimpleLineStyle.esriSLSSolid;
                 CommonUtils.NewLineElement(_context.FocusMap, pPolyLine);
             }
             this.gpolyLine_0.Clear();
             this._lineFeedback = null;
             this.m_dmd.CurDist = 0.0;
         }
-
 
 
         public override void OnMouseDown(int button, int Shift, int x, int y)
@@ -139,9 +137,5 @@ namespace Yutai.Pipeline.Analysis.Commands
                 }
             }
         }
-
-
-
-
     }
 }

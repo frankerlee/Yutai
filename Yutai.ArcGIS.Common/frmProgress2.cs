@@ -19,10 +19,7 @@ namespace Yutai.ArcGIS.Common
 
         public int MaxValue
         {
-            set
-            {
-                this.progressBar1.Maximum = value;
-            }
+            set { this.progressBar1.Maximum = value; }
         }
 
         public string Message
@@ -49,10 +46,7 @@ namespace Yutai.ArcGIS.Common
 
         public int Step
         {
-            set
-            {
-                this.progressBar1.Step = value;
-            }
+            set { this.progressBar1.Step = value; }
         }
 
         public frmProgress2()
@@ -60,7 +54,7 @@ namespace Yutai.ArcGIS.Common
             this.InitializeComponent();
         }
 
- private void frmProgress2_Load(object sender, EventArgs e)
+        private void frmProgress2_Load(object sender, EventArgs e)
         {
         }
 
@@ -70,7 +64,7 @@ namespace Yutai.ArcGIS.Common
             Application.DoEvents();
         }
 
- private void method_0(int int_0)
+        private void method_0(int int_0)
         {
             this.progressBar1.Increment(int_0);
         }

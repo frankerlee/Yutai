@@ -12,7 +12,8 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
             return ((type_0 == typeof(InstanceDescriptor)) || base.CanConvertTo(itypeDescriptorContext_0, type_0));
         }
 
-        public override object ConvertTo(ITypeDescriptorContext itypeDescriptorContext_0, CultureInfo cultureInfo_0, object object_0, Type type_0)
+        public override object ConvertTo(ITypeDescriptorContext itypeDescriptorContext_0, CultureInfo cultureInfo_0,
+            object object_0, Type type_0)
         {
             if (type_0 == typeof(InstanceDescriptor))
             {
@@ -22,4 +23,3 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
         }
     }
 }
-

@@ -27,7 +27,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         private bool bool_8 = false;
         private esriFeatureType esriFeatureType_0 = esriFeatureType.esriFTSimple;
         private esriGeometryType esriGeometryType_0 = esriGeometryType.esriGeometryPolygon;
-        public SortedList<IField,CodeDomainEx> FieldDomains = new SortedList<IField,CodeDomainEx>();
+        public SortedList<IField, CodeDomainEx> FieldDomains = new SortedList<IField, CodeDomainEx>();
         private IFeatureClass ifeatureClass_0 = null;
         private IFeatureDataset ifeatureDataset_0 = null;
         private IField ifield_0 = null;
@@ -52,7 +52,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             try
             {
-                return (this.iworkspace_0 as IFeatureWorkspace).CreateFeatureDataset(this.string_0, this.ispatialReference_0);
+                return (this.iworkspace_0 as IFeatureWorkspace).CreateFeatureDataset(this.string_0,
+                    this.ispatialReference_0);
             }
             catch (Exception exception)
             {
@@ -70,7 +71,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 IFeatureClass class4;
                 if (this.ifeatureDataset_0 != null)
                 {
-                    if ((this.ifeatureDataset_0.Workspace as IWorkspace2).get_NameExists(esriDatasetType.esriDTFeatureClass, this.Name))
+                    if (
+                        (this.ifeatureDataset_0.Workspace as IWorkspace2).get_NameExists(
+                            esriDatasetType.esriDTFeatureClass, this.Name))
                     {
                         MessageBox.Show("要素已存在，请重新给定要素名");
                         return null;
@@ -84,7 +87,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         }
                         try
                         {
-                            class2 = this.method_1(this.Name, this.m_RefScale, this.ifields_0, this.ifeatureDataset_0, class4, this.iworkspace_0 as IFeatureWorkspaceAnno, this.m_Units, this.m_pAnnoPropertiesColn, this.m_pSymbolColl);
+                            class2 = this.method_1(this.Name, this.m_RefScale, this.ifields_0, this.ifeatureDataset_0,
+                                class4, this.iworkspace_0 as IFeatureWorkspaceAnno, this.m_Units,
+                                this.m_pAnnoPropertiesColn, this.m_pSymbolColl);
                         }
                         catch (COMException exception1)
                         {
@@ -104,7 +109,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     {
                         try
                         {
-                            class2 = this.ifeatureDataset_0.CreateFeatureClass(this.Name, this.ifields_0, null, null, this.esriFeatureType_0, this.ifield_0.Name, "");
+                            class2 = this.ifeatureDataset_0.CreateFeatureClass(this.Name, this.ifields_0, null, null,
+                                this.esriFeatureType_0, this.ifield_0.Name, "");
                         }
                         catch (COMException exception3)
                         {
@@ -132,12 +138,13 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         }
                         try
                         {
-                            class2 = (this.iworkspace_0 as IFeatureWorkspace).CreateFeatureClass(this.Name, this.ifields_0, null, null, this.esriFeatureType_0, this.ifield_0.Name, "");
+                            class2 = (this.iworkspace_0 as IFeatureWorkspace).CreateFeatureClass(this.Name,
+                                this.ifields_0, null, null, this.esriFeatureType_0, this.ifield_0.Name, "");
                             goto Label_03FA;
                         }
                         catch (Exception exception2)
                         {
-                            Logger.Current.Error("",exception2, "创建shape文件");
+                            Logger.Current.Error("", exception2, "创建shape文件");
                             return null;
                         }
                     }
@@ -155,7 +162,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         }
                         try
                         {
-                            class2 = this.method_1(this.Name, this.m_RefScale, this.ifields_0, null, class4, this.iworkspace_0 as IFeatureWorkspaceAnno, this.m_Units, this.m_pAnnoPropertiesColn, this.m_pSymbolColl);
+                            class2 = this.method_1(this.Name, this.m_RefScale, this.ifields_0, null, class4,
+                                this.iworkspace_0 as IFeatureWorkspaceAnno, this.m_Units, this.m_pAnnoPropertiesColn,
+                                this.m_pSymbolColl);
                             goto Label_03FA;
                         }
                         catch (COMException exception5)
@@ -175,7 +184,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     }
                     try
                     {
-                        class2 = (this.iworkspace_0 as IFeatureWorkspace).CreateFeatureClass(this.Name, this.ifields_0, null, null, this.esriFeatureType_0, this.ifield_0.Name, "");
+                        class2 = (this.iworkspace_0 as IFeatureWorkspace).CreateFeatureClass(this.Name, this.ifields_0,
+                            null, null, this.esriFeatureType_0, this.ifield_0.Name, "");
                     }
                     catch (COMException exception6)
                     {
@@ -200,7 +210,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             {
                 try
                 {
-                    class2 = (this.iworkspace_0 as IFeatureWorkspace).CreateTable(this.Name, this.ifields_0, null, null, "") as IObjectClass;
+                    class2 =
+                        (this.iworkspace_0 as IFeatureWorkspace).CreateTable(this.Name, this.ifields_0, null, null, "")
+                            as IObjectClass;
                 }
                 catch (COMException exception7)
                 {
@@ -220,7 +232,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     class2 = null;
                 }
             }
-        Label_03FA:
+            Label_03FA:
             if (class2 != null)
             {
                 if (!ObjectClassShareData.m_IsShapeFile && (this.AliasName.Length > 0))
@@ -345,16 +357,23 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
-        private IFeatureClass method_1(string string_2, double double_0, IFields ifields_1, IFeatureDataset ifeatureDataset_1, IFeatureClass ifeatureClass_1, IFeatureWorkspaceAnno ifeatureWorkspaceAnno_0, esriUnits esriUnits_0, IAnnotateLayerPropertiesCollection2 iannotateLayerPropertiesCollection2_0, ISymbolCollection2 isymbolCollection2_0)
+        private IFeatureClass method_1(string string_2, double double_0, IFields ifields_1,
+            IFeatureDataset ifeatureDataset_1, IFeatureClass ifeatureClass_1,
+            IFeatureWorkspaceAnno ifeatureWorkspaceAnno_0, esriUnits esriUnits_0,
+            IAnnotateLayerPropertiesCollection2 iannotateLayerPropertiesCollection2_0,
+            ISymbolCollection2 isymbolCollection2_0)
         {
             IObjectClassDescription description = new AnnotationFeatureClassDescriptionClass();
-            IGraphicsLayerScale referenceScale = new GraphicsLayerScaleClass {
+            IGraphicsLayerScale referenceScale = new GraphicsLayerScaleClass
+            {
                 ReferenceScale = double_0,
                 Units = esriUnits_0
             };
             UID instanceCLSID = description.InstanceCLSID;
             UID classExtensionCLSID = description.ClassExtensionCLSID;
-            return ifeatureWorkspaceAnno_0.CreateAnnotationClass(string_2, ifields_1, instanceCLSID, classExtensionCLSID, "Shape", "", ifeatureDataset_1, ifeatureClass_1, iannotateLayerPropertiesCollection2_0, referenceScale, isymbolCollection2_0, true);
+            return ifeatureWorkspaceAnno_0.CreateAnnotationClass(string_2, ifields_1, instanceCLSID, classExtensionCLSID,
+                "Shape", "", ifeatureDataset_1, ifeatureClass_1, iannotateLayerPropertiesCollection2_0, referenceScale,
+                isymbolCollection2_0, true);
         }
 
         private void method_2(string string_2)
@@ -362,9 +381,13 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             for (int i = 0; i < this.ifields_0.FieldCount; i++)
             {
                 IField key = this.ifields_0.get_Field(i);
-                if ((key.Editable && ((((key.Type != esriFieldType.esriFieldTypeOID) && (key.Type != esriFieldType.esriFieldTypeGeometry)) && (key.Type != esriFieldType.esriFieldTypeRaster)) && (key.Type != esriFieldType.esriFieldTypeBlob))) && this.FieldDomains.ContainsKey(key))
+                if ((key.Editable &&
+                     ((((key.Type != esriFieldType.esriFieldTypeOID) &&
+                        (key.Type != esriFieldType.esriFieldTypeGeometry)) &&
+                       (key.Type != esriFieldType.esriFieldTypeRaster)) && (key.Type != esriFieldType.esriFieldTypeBlob))) &&
+                    this.FieldDomains.ContainsKey(key))
                 {
-                   CodeDomainEx ex = this.FieldDomains[key];
+                    CodeDomainEx ex = this.FieldDomains[key];
                     if (ex != null)
                     {
                         CodeDomainManage.AddFieldCodeDoaminMap(string_2, key.Name, ex.DomainID);
@@ -399,22 +422,13 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public string AliasName
         {
-            get
-            {
-                return this.string_1;
-            }
-            set
-            {
-                this.string_1 = value;
-            }
+            get { return this.string_1; }
+            set { this.string_1 = value; }
         }
 
         public IFeatureDataset FeatureDataset
         {
-            get
-            {
-                return this.ifeatureDataset_0;
-            }
+            get { return this.ifeatureDataset_0; }
             set
             {
                 this.ifeatureDataset_0 = value;
@@ -428,118 +442,61 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public esriFeatureType FeatureType
         {
-            get
-            {
-                return this.esriFeatureType_0;
-            }
-            set
-            {
-                this.esriFeatureType_0 = value;
-            }
+            get { return this.esriFeatureType_0; }
+            set { this.esriFeatureType_0 = value; }
         }
 
         public IFields Fields
         {
-            get
-            {
-                return this.ifields_0;
-            }
-            set
-            {
-                this.ifields_0 = value;
-            }
+            get { return this.ifields_0; }
+            set { this.ifields_0 = value; }
         }
 
         public bool HasM
         {
-            get
-            {
-                return this.bool_4;
-            }
-            set
-            {
-                this.bool_4 = value;
-            }
+            get { return this.bool_4; }
+            set { this.bool_4 = value; }
         }
 
         public bool HasZ
         {
-            get
-            {
-                return this.bool_3;
-            }
-            set
-            {
-                this.bool_3 = value;
-            }
+            get { return this.bool_3; }
+            set { this.bool_3 = value; }
         }
 
         public bool IsEdit
         {
-            get
-            {
-                return this.bool_8;
-            }
-            set
-            {
-                this.bool_8 = value;
-            }
+            get { return this.bool_8; }
+            set { this.bool_8 = value; }
         }
 
         public bool IsFeatureClass
         {
-            get
-            {
-                return this.bool_2;
-            }
-            set
-            {
-                this.bool_2 = value;
-            }
+            get { return this.bool_2; }
+            set { this.bool_2 = value; }
         }
 
         public bool IsHighPrecision
         {
-            get
-            {
-                return this.bool_6;
-            }
+            get { return this.bool_6; }
         }
 
         public bool IsNewFeatureDataset
         {
-            get
-            {
-                return this.bool_7;
-            }
-            set
-            {
-                this.bool_7 = value;
-            }
+            get { return this.bool_7; }
+            set { this.bool_7 = value; }
         }
 
         public bool IsRelatedFeature
         {
-            get
-            {
-                return this.bool_5;
-            }
-            set
-            {
-                this.bool_5 = value;
-            }
+            get { return this.bool_5; }
+            set { this.bool_5 = value; }
         }
 
         public bool IsShapefile
         {
-            get
-            {
-                return this.bool_0;
-            }
-            set
-            {
-                this.bool_0 = value;
-            }
+            get { return this.bool_0; }
+            set { this.bool_0 = value; }
         }
 
         public double MResolution
@@ -582,22 +539,13 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public string Name
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
 
         public IObjectClass ObjectClass
         {
-            get
-            {
-                return this.iobjectClass_0;
-            }
+            get { return this.iobjectClass_0; }
             set
             {
                 this.FieldDomains.Clear();
@@ -613,7 +561,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     this.string_0 = (this.iobjectClass_0 as IDataset).Name;
                     this.string_1 = this.iobjectClass_0.AliasName;
                     IFields fields = (this.iobjectClass_0 as IFeatureClass).Fields;
-                    this.ifield_0 = fields.get_Field(fields.FindField((this.iobjectClass_0 as IFeatureClass).ShapeFieldName));
+                    this.ifield_0 =
+                        fields.get_Field(fields.FindField((this.iobjectClass_0 as IFeatureClass).ShapeFieldName));
                     this.bool_3 = this.ifield_0.GeometryDef.HasZ;
                     this.bool_4 = this.ifield_0.GeometryDef.HasM;
                 }
@@ -626,46 +575,25 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IFeatureClass RelatedFeatureClass
         {
-            get
-            {
-                return this.ifeatureClass_0;
-            }
-            set
-            {
-                this.ifeatureClass_0 = value;
-            }
+            get { return this.ifeatureClass_0; }
+            set { this.ifeatureClass_0 = value; }
         }
 
         public IField ShapeFild
         {
-            get
-            {
-                return this.ifield_0;
-            }
-            set
-            {
-                this.ifield_0 = value;
-            }
+            get { return this.ifield_0; }
+            set { this.ifield_0 = value; }
         }
 
         public esriGeometryType ShapeType
         {
-            get
-            {
-                return this.esriGeometryType_0;
-            }
-            set
-            {
-                this.esriGeometryType_0 = value;
-            }
+            get { return this.esriGeometryType_0; }
+            set { this.esriGeometryType_0 = value; }
         }
 
         public ISpatialReference SpatialReference
         {
-            get
-            {
-                return this.ispatialReference_0;
-            }
+            get { return this.ispatialReference_0; }
             set
             {
                 this.ispatialReference_0 = value;
@@ -675,22 +603,13 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public bool UseDefaultDomain
         {
-            get
-            {
-                return this.bool_1;
-            }
-            set
-            {
-                this.bool_1 = value;
-            }
+            get { return this.bool_1; }
+            set { this.bool_1 = value; }
         }
 
         public IWorkspace Workspace
         {
-            get
-            {
-                return this.iworkspace_0;
-            }
+            get { return this.iworkspace_0; }
             set
             {
                 this.iworkspace_0 = value;
@@ -776,4 +695,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

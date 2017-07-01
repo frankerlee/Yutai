@@ -52,13 +52,11 @@ namespace Yutai.Plugins.Editor.Commands
             get
             {
                 return _context.FocusMap != null && _context.FocusMap.LayerCount != 0 &&
-                       ( Yutai.ArcGIS.Common.Editor.Editor.EditMap == null ||
+                       (Yutai.ArcGIS.Common.Editor.Editor.EditMap == null ||
                         Yutai.ArcGIS.Common.Editor.Editor.EditMap == _context.FocusMap) &&
                        (Yutai.ArcGIS.Common.Editor.Editor.EditWorkspace != null && _context.FocusMap.SelectionCount > 0);
             }
         }
-
-
 
 
         public CmdRotateFeature(IAppContext context)
@@ -105,7 +103,6 @@ namespace Yutai.Plugins.Editor.Commands
             _itemType = RibbonItemType.Button;
             this.snapHelper_0 = new SnapHelper(_context.FocusMap as IActiveView,
                 _context.Config.EngineSnapEnvironment);
-
         }
 
         public override void OnClick()
@@ -121,7 +118,6 @@ namespace Yutai.Plugins.Editor.Commands
             }
         }
 
-       
 
         public override void OnMouseDown(int int_2, int int_3, int int_4, int int_5)
         {
@@ -145,7 +141,6 @@ namespace Yutai.Plugins.Editor.Commands
                 }
             }
         }
-
 
 
         public override void OnMouseMove(int int_0, int int_1, int int_2, int int_3)
@@ -247,7 +242,6 @@ namespace Yutai.Plugins.Editor.Commands
                     }
                 }
             }
-
         }
     }
 }

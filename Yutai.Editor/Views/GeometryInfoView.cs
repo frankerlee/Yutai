@@ -669,11 +669,11 @@ namespace Yutai.Plugins.Editor.Views
                 new EditorEvent.OnFeatureGeometryChangedHandler(this.EditorEvent_OnFeatureGeometryChanged);
             EditorEvent.OnStopEditing += new EditorEvent.OnStopEditingHandler(this.EditorEvent_OnStopEditing);
             m_pMap = _context.MapControl.Map;
-           m_pActiveViewEvents = m_pMap as IActiveViewEvents_Event;
-           m_pActiveViewEvents.SelectionChanged += MPActiveViewEventsOnSelectionChanged;
-           //     (new IActiveViewEvents_SelectionChangedEventHandler(m_pActiveViewEvents_SelectionChanged));
+            m_pActiveViewEvents = m_pMap as IActiveViewEvents_Event;
+            m_pActiveViewEvents.SelectionChanged += MPActiveViewEventsOnSelectionChanged;
+            //     (new IActiveViewEvents_SelectionChangedEventHandler(m_pActiveViewEvents_SelectionChanged));
             m_pActiveViewEvents.AfterDraw += MPActiveViewEventsOnAfterDraw;
-               // (new IActiveViewEvents_AfterDrawEventHandler(m_pActiveViewEvents_AfterDraw));
+            // (new IActiveViewEvents_AfterDrawEventHandler(m_pActiveViewEvents_AfterDraw));
             this.Init();
             this.m_CanDo = true;
         }

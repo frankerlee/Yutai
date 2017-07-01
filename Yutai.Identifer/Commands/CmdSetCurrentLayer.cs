@@ -17,9 +17,8 @@ using IActiveViewEvents_Event = ESRI.ArcGIS.Carto.IActiveViewEvents_Event;
 
 namespace Yutai.Plugins.Identifer.Commands
 {
-    public class CmdSetCurrentLayer:YutaiCommand,ICommandComboBox
+    public class CmdSetCurrentLayer : YutaiCommand, ICommandComboBox
     {
-        
         private IdentifierPlugin _plugin;
         private string _caption;
         private bool _showCaption;
@@ -30,18 +29,19 @@ namespace Yutai.Plugins.Identifer.Commands
         private string _selectedText;
         private BarEditItem _linkCombo;
 
-        public CmdSetCurrentLayer(IAppContext context,BasePlugin plugin)
+        public CmdSetCurrentLayer(IAppContext context, BasePlugin plugin)
         {
             OnCreate(context);
-            _plugin=plugin as IdentifierPlugin;
+            _plugin = plugin as IdentifierPlugin;
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
         }
+
         public override void OnClick()
         {
-            
         }
 
         public BarEditItem LinkComboBox
@@ -50,10 +50,10 @@ namespace Yutai.Plugins.Identifer.Commands
             set { _linkCombo = value; }
         }
 
-        public bool DropDownList { get
+        public bool DropDownList
         {
-            return true;
-        } }
+            get { return true; }
+        }
 
         public override void OnCreate(object hook)
         {
@@ -131,7 +131,7 @@ namespace Yutai.Plugins.Identifer.Commands
             }
         }
 
-      
+
         private void InitLayers()
         {
             _items.Clear();
@@ -153,10 +153,9 @@ namespace Yutai.Plugins.Identifer.Commands
 
             if (_linkCombo != null)
             {
-                ((RepositoryItemComboBox)_linkCombo.Edit).Items.Clear();
-                ((RepositoryItemComboBox)_linkCombo.Edit).Items.AddRange(_items.ToArray());
+                ((RepositoryItemComboBox) _linkCombo.Edit).Items.Clear();
+                ((RepositoryItemComboBox) _linkCombo.Edit).Items.AddRange(_items.ToArray());
             }
-            
         }
 
         private void FillCompLayer(ICompositeLayer compLayer)
@@ -179,14 +178,13 @@ namespace Yutai.Plugins.Identifer.Commands
 
         public void OnEditValueChanged(object sender, EventArgs args)
         {
-           BarEditItem barItem=sender as BarEditItem;
-          
-                LayerItem item = barItem.EditValue as LayerItem;
+            BarEditItem barItem = sender as BarEditItem;
+
+            LayerItem item = barItem.EditValue as LayerItem;
             if (item != null)
                 _plugin.QuerySettings.CurrentLayer = item.Value as IFeatureLayer;
             else
                 _plugin.QuerySettings.CurrentLayer = null;
-
         }
 
         public string SelectedText
@@ -196,4 +194,3 @@ namespace Yutai.Plugins.Identifer.Commands
         }
     }
 }
-

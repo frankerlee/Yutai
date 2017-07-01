@@ -57,7 +57,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
         }
 
- private void frmArcGISServerProperty_Load(object sender, EventArgs e)
+        private void frmArcGISServerProperty_Load(object sender, EventArgs e)
         {
             this.bool_0 = true;
             this.txtName.Text = this.string_0;
@@ -66,11 +66,13 @@ namespace Yutai.ArcGIS.Catalog.UI
                 this.rdoServerType.SelectedIndex = ((int) this.iagsserverConnectionName_0.ConnectionType) - 1;
                 if (this.rdoServerType.SelectedIndex == 0)
                 {
-                    this.txtServer.Text = this.iagsserverConnectionName_0.ConnectionProperties.GetProperty("MACHINE").ToString();
+                    this.txtServer.Text =
+                        this.iagsserverConnectionName_0.ConnectionProperties.GetProperty("MACHINE").ToString();
                 }
                 else
                 {
-                    this.txtServer.Text = this.iagsserverConnectionName_0.ConnectionProperties.GetProperty("url").ToString();
+                    this.txtServer.Text =
+                        this.iagsserverConnectionName_0.ConnectionProperties.GetProperty("url").ToString();
                 }
                 if (this.array_0 != null)
                 {
@@ -88,7 +90,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             this.btnOK.Enabled = this.bool_1;
         }
 
- private void method_0(object sender, EventArgs e)
+        private void method_0(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
             this.imapServer_0 = null;
@@ -235,46 +237,25 @@ namespace Yutai.ArcGIS.Catalog.UI
 
         public IAGSServerConnectionName AGSServerConnectionName
         {
-            get
-            {
-                return this.iagsserverConnectionName_0;
-            }
-            set
-            {
-                this.iagsserverConnectionName_0 = value;
-            }
+            get { return this.iagsserverConnectionName_0; }
+            set { this.iagsserverConnectionName_0 = value; }
         }
 
         public string AGSServerName
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
 
         public bool IsConnect
         {
-            set
-            {
-                this.bool_1 = value;
-            }
+            set { this.bool_1 = value; }
         }
 
         public System.Array SelectObjectNames
         {
-            get
-            {
-                return this.array_0;
-            }
-            set
-            {
-                this.array_0 = value;
-            }
+            get { return this.array_0; }
+            set { this.array_0 = value; }
         }
 
         private partial class Class5
@@ -297,12 +278,8 @@ namespace Yutai.ArcGIS.Catalog.UI
 
             public IAGSServerObjectName AGSServerObjectName
             {
-                get
-                {
-                    return this.iagsserverObjectName_0;
-                }
+                get { return this.iagsserverObjectName_0; }
             }
         }
     }
 }
-

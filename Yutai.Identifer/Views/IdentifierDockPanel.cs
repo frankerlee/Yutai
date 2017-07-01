@@ -56,9 +56,9 @@ namespace Yutai.Plugins.Identifer.Views
             btnZoom.Tag = 0;
             InitModeCombo();
         }
+
         private void InitModeCombo()
         {
-           
             _cboIdentifierMode.SelectedIndexChanged += (s, e) =>
             {
                 if (_cboIdentifierMode.SelectedIndex < 0) return;
@@ -68,7 +68,7 @@ namespace Yutai.Plugins.Identifer.Views
                 }
                 else
                 {
-                    AppConfig.Instance.IdentifierMode =IdentifierMode.CurrentLayer;
+                    AppConfig.Instance.IdentifierMode = IdentifierMode.CurrentLayer;
                 }
                 FireModeChanged();
             };
@@ -82,6 +82,7 @@ namespace Yutai.Plugins.Identifer.Views
                 handler();
             }
         }
+
         private void MapEventOnOnMapReplaced(object newMap)
         {
             // InitializeActiveViewEvents();
@@ -273,8 +274,6 @@ namespace Yutai.Plugins.Identifer.Views
             return featureType;
         }
 
-     
-       
 
         public void UpdateView()
         {
@@ -608,9 +607,10 @@ namespace Yutai.Plugins.Identifer.Views
         private void DisplayCoordinates(IGeometry geometry)
         {
             double x, y;
-            GeometryHelper.QueryGeometryLocation(geometry,out x,out y);
+            GeometryHelper.QueryGeometryLocation(geometry, out x, out y);
             DisplayCoordinates(x, y);
         }
+
         private void DisplayCoordinates(double mapX, double mapY)
         {
             if (IsDisposed) return;
@@ -800,20 +800,37 @@ namespace Yutai.Plugins.Identifer.Views
             }
             else
             {
-                _context.Config.IdentifierMode= IdentifierMode.CurrentLayer;
+                _context.Config.IdentifierMode = IdentifierMode.CurrentLayer;
             }
             Identify(_envelope);
         }
 
-        public override Bitmap Image { get { return Properties.Resources.icon_information; } }
+        public override Bitmap Image
+        {
+            get { return Properties.Resources.icon_information; }
+        }
+
         public override string Caption
         {
             get { return "信息查看"; }
             set { Caption = value; }
         }
-        public override DockPanelState DefaultDock { get { return DockPanelState.Right; } }
-        public override string DockName { get { return DefaultDockName; } }
-        public virtual string DefaultNestDockName { get { return ""; } }
+
+        public override DockPanelState DefaultDock
+        {
+            get { return DockPanelState.Right; }
+        }
+
+        public override string DockName
+        {
+            get { return DefaultDockName; }
+        }
+
+        public virtual string DefaultNestDockName
+        {
+            get { return ""; }
+        }
+
         public const string DefaultDockName = "Plug_Identifer_Result";
     }
 }

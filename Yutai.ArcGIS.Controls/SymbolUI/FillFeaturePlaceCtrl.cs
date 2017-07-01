@@ -27,7 +27,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             if (this.m_IsPageDirty)
             {
                 this.m_IsPageDirty = false;
-                this.m_OverLayerProperty.PolygonPlacementMethod = (esriOverposterPolygonPlacementMethod) this.rdoPolygonPlacementMethod.SelectedIndex;
+                this.m_OverLayerProperty.PolygonPlacementMethod =
+                    (esriOverposterPolygonPlacementMethod) this.rdoPolygonPlacementMethod.SelectedIndex;
                 this.m_OverLayerProperty.PlaceOnlyInsidePolygon = this.chkPlaceOnlyInsidePolygon.Checked;
             }
         }
@@ -49,7 +50,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- private void FillFeaturePlaceCtrl_Load(object sender, EventArgs e)
+        private void FillFeaturePlaceCtrl_Load(object sender, EventArgs e)
         {
             if (this.m_OverLayerProperty != null)
             {
@@ -64,7 +65,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         {
         }
 
- private void rdoPolygonPlacementMethod_SelectedIndexChanged(object sender, EventArgs e)
+        private void rdoPolygonPlacementMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (this.rdoPolygonPlacementMethod.SelectedIndex)
             {
@@ -103,38 +104,23 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.m_IsPageDirty;
-            }
+            get { return this.m_IsPageDirty; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return "";
-            }
-            set
-            {
-            }
+            get { return ""; }
+            set { }
         }
     }
 }
-

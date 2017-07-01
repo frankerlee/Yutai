@@ -62,7 +62,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.method_0();
         }
 
- public bool EditProperties(object object_0)
+        public bool EditProperties(object object_0)
         {
             for (int i = 0; i < this.tabControl1.TabPages.Count; i++)
             {
@@ -77,7 +77,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             return this.bool_0;
         }
 
- private void method_0()
+        private void method_0()
         {
             this.bool_0 = true;
             for (int i = 0; i < this.tabControl1.TabPages.Count; i++)
@@ -94,39 +94,20 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public short ActivePage
         {
-            get
-            {
-                return this.short_0;
-            }
-            set
-            {
-                this.short_0 = value;
-            }
+            get { return this.short_0; }
+            set { this.short_0 = value; }
         }
 
         public bool HideApplyButton
         {
-            get
-            {
-                return this.bool_1;
-            }
-            set
-            {
-                this.bool_1 = value;
-            }
+            get { return this.bool_1; }
+            set { this.bool_1 = value; }
         }
 
         public string Title
         {
-            get
-            {
-                return this.Text;
-            }
-            set
-            {
-                this.Text = value;
-            }
+            get { return this.Text; }
+            set { this.Text = value; }
         }
     }
 }
-

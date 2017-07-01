@@ -157,7 +157,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.int_1++;
         }
 
- private void frmCheckOutWizard_Load(object sender, EventArgs e)
+        private void frmCheckOutWizard_Load(object sender, EventArgs e)
         {
             if (this.iarray_0.Count == 0)
             {
@@ -231,13 +231,13 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void method_0()
+        private void method_0()
         {
             this.afterCheckOutSetupCtrl_0.Visible = false;
             this.panelProgress.Visible = true;
             ESRI.ArcGIS.GeoDatabaseDistributed.IFeatureProgress_Event pHelper = CheckOutHelper.m_pHelper;
-            pHelper.Step+=(new ESRI.ArcGIS.GeoDatabaseDistributed.IFeatureProgress_StepEventHandler(this.method_7));
-            (pHelper as IReplicaProgress_Event).Startup+=(new IReplicaProgress_StartupEventHandler(this.method_11));
+            pHelper.Step += (new ESRI.ArcGIS.GeoDatabaseDistributed.IFeatureProgress_StepEventHandler(this.method_7));
+            (pHelper as IReplicaProgress_Event).Startup += (new IReplicaProgress_StartupEventHandler(this.method_11));
             CheckOutHelper.m_pHelper.Do();
         }
 
@@ -270,12 +270,14 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     if ((featureClass != null) && !(featureClass is ICoverageFeatureClass))
                     {
                         IWorkspace workspace = featureClass.Workspace;
-                        if ((workspace.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace) && (workspace is IWorkspaceEdit))
+                        if ((workspace.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace) &&
+                            (workspace is IWorkspaceEdit))
                         {
                             IVersionedObject obj2 = layer2.FeatureClass as IVersionedObject;
                             if (obj2.IsRegisteredAsVersioned)
                             {
-                                (this.method_14(iarray_1, workspace).EnumName as IEnumNameEdit).Add(featureClass.FullName);
+                                (this.method_14(iarray_1, workspace).EnumName as IEnumNameEdit).Add(
+                                    featureClass.FullName);
                             }
                         }
                     }
@@ -306,12 +308,14 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     if ((featureClass != null) && !(featureClass is ICoverageFeatureClass))
                     {
                         workspace = featureClass.Workspace;
-                        if ((workspace.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace) && (workspace is IWorkspaceEdit))
+                        if ((workspace.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace) &&
+                            (workspace is IWorkspaceEdit))
                         {
                             obj2 = layer.FeatureClass as IVersionedObject;
                             if (obj2.IsRegisteredAsVersioned)
                             {
-                                (this.method_14(this.iarray_0, workspace).EnumName as IEnumNameEdit).Add(featureClass.FullName);
+                                (this.method_14(this.iarray_0, workspace).EnumName as IEnumNameEdit).Add(
+                                    featureClass.FullName);
                             }
                         }
                     }
@@ -325,12 +329,14 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 {
                     featureClass = table as IDataset;
                     workspace = featureClass.Workspace;
-                    if ((workspace.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace) && (workspace is IWorkspaceEdit))
+                    if ((workspace.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace) &&
+                        (workspace is IWorkspaceEdit))
                     {
                         obj2 = table as IVersionedObject;
                         if (obj2.IsRegisteredAsVersioned)
                         {
-                            (this.method_14(this.iarray_0, workspace).EnumName as IEnumNameEdit).Add(featureClass.FullName);
+                            (this.method_14(this.iarray_0, workspace).EnumName as IEnumNameEdit).Add(
+                                featureClass.FullName);
                         }
                     }
                 }
@@ -433,9 +439,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     this.lblCheckOutType.Text = "CreatingReplica";
                     goto Label_00FA;
             }
-        Label_00AE:
+            Label_00AE:
             this.lblCheckOutType.Text = esriReplicaProgress_0.ToString();
-        Label_00FA:
+            Label_00FA:
             Application.DoEvents();
         }
 
@@ -455,4 +461,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

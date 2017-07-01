@@ -11,4 +11,3 @@ namespace Yutai.ArcGIS.Catalog
         esriDatasetType Type { get; }
     }
 }
-

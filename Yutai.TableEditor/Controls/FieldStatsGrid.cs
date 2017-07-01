@@ -127,7 +127,7 @@ namespace Yutai.Plugins.TableEditor.Controls
                 //  计算各数值与平均数的差值的平方，然后求和 
                 double sum = values.Sum(d => Math.Pow(d - avg, 2));
                 //  除以数量，然后开方
-                ret = Math.Sqrt(sum / values.Count);
+                ret = Math.Sqrt(sum/values.Count);
             }
             return ret;
         }

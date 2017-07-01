@@ -23,11 +23,11 @@ namespace Yutai.ArcGIS.Controls.Controls
             }
         }
 
- private void frmProgressBar1_Load(object sender, EventArgs e)
+        private void frmProgressBar1_Load(object sender, EventArgs e)
         {
         }
 
- public void KDClose()
+        public void KDClose()
         {
             base.Close();
         }
@@ -49,38 +49,20 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         public string KDCaption1
         {
-            get
-            {
-                return this.Caption1.Text;
-            }
-            set
-            {
-                this.Caption1.Text = value;
-            }
+            get { return this.Caption1.Text; }
+            set { this.Caption1.Text = value; }
         }
 
         public ProgressBar KDProgressBar1
         {
-            get
-            {
-                return this.progressBar1;
-            }
-            set
-            {
-                this.progressBar1 = value;
-            }
+            get { return this.progressBar1; }
+            set { this.progressBar1 = value; }
         }
 
         public string KDTitle
         {
-            get
-            {
-                return this.Text;
-            }
-            set
-            {
-                this.Text = value;
-            }
+            get { return this.Text; }
+            set { this.Text = value; }
         }
 
         public override string Text
@@ -93,11 +75,7 @@ namespace Yutai.ArcGIS.Controls.Controls
                 }
                 return base.Text;
             }
-            set
-            {
-                this.label1.Text = value;
-            }
+            set { this.label1.Text = value; }
         }
     }
 }
-

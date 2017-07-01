@@ -15,7 +15,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             try
             {
                 IWorkspaceExtensionManager manager = pWorkspace as IWorkspaceExtensionManager;
-                UID gUID = new UIDClass {
+                UID gUID = new UIDClass
+                {
                     Value = "{FD05270A-8E0B-4823-9DEE-F149347C32B6}"
                 };
                 return (manager.FindExtension(gUID) as IRepresentationWorkspaceExtension);
@@ -32,7 +33,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             {
                 IDataset dataset = pfclass as IDataset;
                 IWorkspaceExtensionManager workspace = dataset.Workspace as IWorkspaceExtensionManager;
-                UID gUID = new UIDClass {
+                UID gUID = new UIDClass
+                {
                     Value = "{FD05270A-8E0B-4823-9DEE-F149347C32B6}"
                 };
                 return (workspace.FindExtension(gUID) as IRepresentationWorkspaceExtension);
@@ -52,10 +54,12 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 {
                     IDataset dataset = featureClass as IDataset;
                     IWorkspaceExtensionManager workspace = dataset.Workspace as IWorkspaceExtensionManager;
-                    UID gUID = new UIDClass {
+                    UID gUID = new UIDClass
+                    {
                         Value = "{FD05270A-8E0B-4823-9DEE-F149347C32B6}"
                     };
-                    IRepresentationWorkspaceExtension extension = workspace.FindExtension(gUID) as IRepresentationWorkspaceExtension;
+                    IRepresentationWorkspaceExtension extension =
+                        workspace.FindExtension(gUID) as IRepresentationWorkspaceExtension;
                     if (extension == null)
                     {
                         return false;
@@ -77,10 +81,12 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                 {
                     IDataset dataset = pfclass as IDataset;
                     IWorkspaceExtensionManager workspace = dataset.Workspace as IWorkspaceExtensionManager;
-                    UID gUID = new UIDClass {
+                    UID gUID = new UIDClass
+                    {
                         Value = "{FD05270A-8E0B-4823-9DEE-F149347C32B6}"
                     };
-                    IRepresentationWorkspaceExtension extension = workspace.FindExtension(gUID) as IRepresentationWorkspaceExtension;
+                    IRepresentationWorkspaceExtension extension =
+                        workspace.FindExtension(gUID) as IRepresentationWorkspaceExtension;
                     if (extension == null)
                     {
                         return false;
@@ -95,4 +101,3 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         }
     }
 }
-

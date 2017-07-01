@@ -39,7 +39,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         private bool method_1()
         {
             IActiveView activeView = this._hookHelper.ActiveView;
-            IDeleteElementOperation operation = new DeleteElementOperation {
+            IDeleteElementOperation operation = new DeleteElementOperation
+            {
                 ActiveView = activeView,
                 Elements = this.method_0().SelectedElements
             };
@@ -71,4 +72,3 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         }
     }
 }
-

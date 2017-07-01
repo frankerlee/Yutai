@@ -7,25 +7,6 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 {
     public class MapTemplateParam
     {
-        [CompilerGenerated]
-        private bool bool_0;
-        [CompilerGenerated]
-        private DataType dataType_0;
-        [CompilerGenerated]
-        private int int_0;
-        [CompilerGenerated]
-        private MapCartoTemplateLib.MapTemplate mapTemplate_0;
-        [CompilerGenerated]
-        private MapCartoTemplateLib.MapTemplateGallery mapTemplateGallery_0;
-        [CompilerGenerated]
-        private object object_0;
-        [CompilerGenerated]
-        private string string_0;
-        [CompilerGenerated]
-        private string string_1;
-        [CompilerGenerated]
-        private string string_2;
-
         public MapTemplateParam(int int_1, MapCartoTemplateLib.MapTemplate mapTemplate_1)
         {
             this.MapTemplateGallery = mapTemplate_1.MapTemplateGallery;
@@ -37,7 +18,15 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public MapTemplateParam Clone(MapCartoTemplateLib.MapTemplate mapTemplate_1)
         {
-            return new MapTemplateParam(-1, mapTemplate_1) { TempleteGuid = this.TempleteGuid, Name = this.Name, AllowNull = this.AllowNull, Description = this.Description, ParamDataType = this.ParamDataType, Value = this.Value };
+            return new MapTemplateParam(-1, mapTemplate_1)
+            {
+                TempleteGuid = this.TempleteGuid,
+                Name = this.Name,
+                AllowNull = this.AllowNull,
+                Description = this.Description,
+                ParamDataType = this.ParamDataType,
+                Value = this.Value
+            };
         }
 
         public void Delete()
@@ -106,131 +95,20 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             return this.Name;
         }
 
-        public bool AllowNull
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.bool_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.bool_0 = value;
-            }
-        }
+        public bool AllowNull { get; set; }
 
-        public string Description
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.string_2;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.string_2 = value;
-            }
-        }
+        public string Description { get; set; }
 
-        public MapCartoTemplateLib.MapTemplate MapTemplate
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.mapTemplate_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.mapTemplate_0 = value;
-            }
-        }
+        public MapCartoTemplateLib.MapTemplate MapTemplate { get; set; }
+        public MapCartoTemplateLib.MapTemplateGallery MapTemplateGallery { get; set; }
 
-        public MapCartoTemplateLib.MapTemplateGallery MapTemplateGallery
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.mapTemplateGallery_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.mapTemplateGallery_0 = value;
-            }
-        }
+        public string Name { get; set; }
 
-        public string Name
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.string_1;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.string_1 = value;
-            }
-        }
+        public int OID { get; set; }
 
-        public int OID
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.int_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.int_0 = value;
-            }
-        }
+        public DataType ParamDataType { get; set; }
+        public string TempleteGuid { get; set; }
 
-        public DataType ParamDataType
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.dataType_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.dataType_0 = value;
-            }
-        }
-
-        public string TempleteGuid
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.string_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.string_0 = value;
-            }
-        }
-
-        public object Value
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.object_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.object_0 = value;
-            }
-        }
+        public object Value { get; set; }
     }
 }
-

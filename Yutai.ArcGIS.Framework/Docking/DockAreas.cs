@@ -15,4 +15,3 @@ namespace Yutai.ArcGIS.Framework.Docking
         Float = 1
     }
 }
-

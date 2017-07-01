@@ -51,123 +51,77 @@ namespace Yutai.ArcGIS.Catalog
 
         public string BaseName
         {
-            get
-            {
-                return "添加Database Server";
-            }
+            get { return "添加Database Server"; }
         }
 
         public string Category
         {
-            get
-            {
-                return "";
-            }
+            get { return ""; }
         }
 
         public UID ClassID
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public UID ContextMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public string FullName
         {
-            get
-            {
-                return "添加Database Server";
-            }
+            get { return "添加Database Server"; }
         }
 
         public IName InternalObjectName
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public bool IsValid
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         public Bitmap LargeImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(75);
-            }
+            get { return ImageLib.GetSmallImage(75); }
         }
 
         public Bitmap LargeSelectedImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(75);
-            }
+            get { return ImageLib.GetSmallImage(75); }
         }
 
         public string Name
         {
-            get
-            {
-                return "添加Database Server";
-            }
+            get { return "添加Database Server"; }
         }
 
         public UID NewMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IGxObject Parent
         {
-            get
-            {
-                return this.igxObject_0;
-            }
+            get { return this.igxObject_0; }
         }
 
         public int PropertyCount
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         public Bitmap SmallImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(75);
-            }
+            get { return ImageLib.GetSmallImage(75); }
         }
 
         public Bitmap SmallSelectedImage
         {
-            get
-            {
-                return ImageLib.GetSmallImage(75);
-            }
+            get { return ImageLib.GetSmallImage(75); }
         }
     }
 }
-

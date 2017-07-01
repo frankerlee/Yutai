@@ -16,8 +16,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         private bool bool_0 = false;
         private Container container_0 = null;
         private int int_0 = 0;
-        private int[] int_1 = new int[] { 43005, 43020, 43033, 43004, 43006 };
-        private int[] int_2 = new int[] { 9001, 9036 };
+        private int[] int_1 = new int[] {43005, 43020, 43033, 43004, 43006};
+        private int[] int_2 = new int[] {9001, 9036};
         private IParameter[] iparameter_0 = new IParameter[25];
         private ISpatialReferenceFactory ispatialReferenceFactory_0 = new SpatialReferenceEnvironmentClass();
 
@@ -28,7 +28,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnModify_Click(object sender, EventArgs e)
         {
-            frmSpatialRefrence refrence = new frmSpatialRefrence {
+            frmSpatialRefrence refrence = new frmSpatialRefrence
+            {
                 Text = "地理坐标系属性",
                 SpatialRefrence = this.igeographicCoordinateSystem_0
             };
@@ -41,7 +42,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            frmSpatialRefrence refrence = new frmSpatialRefrence {
+            frmSpatialRefrence refrence = new frmSpatialRefrence
+            {
                 Text = "新建地理坐标系",
                 SpatialRefrenceType = frmSpatialRefrence.enumSpatialRefrenceType.enumGeographicCoord
             };
@@ -55,13 +57,16 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
                 Filter = "空间参考文件 (*.prj)|*.prj",
                 RestoreDirectory = true
             };
             while (dialog.ShowDialog() == DialogResult.OK)
             {
-                this.igeographicCoordinateSystem_0 = ((ISpatialReferenceFactory2) this.ispatialReferenceFactory_0).CreateESRISpatialReferenceFromPRJFile(dialog.FileName) as IGeographicCoordinateSystem;
+                this.igeographicCoordinateSystem_0 =
+                    ((ISpatialReferenceFactory2) this.ispatialReferenceFactory_0).CreateESRISpatialReferenceFromPRJFile(
+                        dialog.FileName) as IGeographicCoordinateSystem;
                 if (this.igeographicCoordinateSystem_0 != null)
                 {
                     this.method_3(this.igeographicCoordinateSystem_0);
@@ -84,7 +89,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 this.method_6(this.txtValue, true);
                 if (this.bool_0)
                 {
-                    this.iunit_0 = this.ispatialReferenceFactory_0.CreateUnit(this.int_2[this.cboLineUnitName.SelectedIndex - 1]);
+                    this.iunit_0 =
+                        this.ispatialReferenceFactory_0.CreateUnit(this.int_2[this.cboLineUnitName.SelectedIndex - 1]);
                 }
                 this.txtValue.Text = (this.iunit_0 as ILinearUnit).MetersPerUnit.ToString();
             }
@@ -94,7 +100,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             if (this.bool_0)
             {
-                this.iprojection_0 = this.ispatialReferenceFactory_0.CreateProjection(this.int_1[this.cboProjectName.SelectedIndex]);
+                this.iprojection_0 =
+                    this.ispatialReferenceFactory_0.CreateProjection(this.int_1[this.cboProjectName.SelectedIndex]);
                 IParameter[] defaultParameters = ((IProjectionGEN) this.iprojection_0).GetDefaultParameters();
                 int index = 0;
                 while (index < defaultParameters.Length)
@@ -110,7 +117,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- public IProjectedCoordinateSystem GetSpatialRefrence()
+        public IProjectedCoordinateSystem GetSpatialRefrence()
         {
             int num3;
             if (this.int_0 > 0)
@@ -155,7 +162,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             object parameters = parameterArray;
             try
             {
-                ((IProjectedCoordinateSystemEdit) this.iprojectedCoordinateSystem_0).Define(ref text, ref alias, ref alias, ref alias, ref alias, ref gcs, ref projectedUnit, ref projection, ref parameters);
+                ((IProjectedCoordinateSystemEdit) this.iprojectedCoordinateSystem_0).Define(ref text, ref alias,
+                    ref alias, ref alias, ref alias, ref gcs, ref projectedUnit, ref projection, ref parameters);
             }
             catch
             {
@@ -165,7 +173,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             return this.iprojectedCoordinateSystem_0;
         }
 
- private void method_0()
+        private void method_0()
         {
             this.cboProjectName.Properties.Items.Add("Gauss_Kruger");
             this.cboProjectName.Properties.Items.Add("Lambert_Conformal_Conic");
@@ -226,10 +234,20 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void method_3(IGeographicCoordinateSystem igeographicCoordinateSystem_1)
         {
-            string[] strArray = new string[] { 
-                "名称: ", igeographicCoordinateSystem_1.Name, "\r\n缩略名: ", igeographicCoordinateSystem_1.Abbreviation, "\r\n说明: ", igeographicCoordinateSystem_1.Remarks, "\r\n角度单位: ", igeographicCoordinateSystem_1.CoordinateUnit.Name, " (", igeographicCoordinateSystem_1.CoordinateUnit.RadiansPerUnit.ToString(), ")\r\n本初子午线: ", igeographicCoordinateSystem_1.PrimeMeridian.Name, " (", igeographicCoordinateSystem_1.PrimeMeridian.Longitude.ToString(), ")\r\n数据: ", igeographicCoordinateSystem_1.Datum.Name, 
-                "\r\n  椭球体: ", igeographicCoordinateSystem_1.Datum.Spheroid.Name, "\r\n    长半轴: ", igeographicCoordinateSystem_1.Datum.Spheroid.SemiMajorAxis.ToString(), "\r\n    短半轴: ", igeographicCoordinateSystem_1.Datum.Spheroid.SemiMinorAxis.ToString(), "\r\n    扁率倒数: ", (1.0 / igeographicCoordinateSystem_1.Datum.Spheroid.Flattening).ToString()
-             };
+            string[] strArray = new string[]
+            {
+                "名称: ", igeographicCoordinateSystem_1.Name, "\r\n缩略名: ", igeographicCoordinateSystem_1.Abbreviation,
+                "\r\n说明: ", igeographicCoordinateSystem_1.Remarks, "\r\n角度单位: ",
+                igeographicCoordinateSystem_1.CoordinateUnit.Name, " (",
+                igeographicCoordinateSystem_1.CoordinateUnit.RadiansPerUnit.ToString(), ")\r\n本初子午线: ",
+                igeographicCoordinateSystem_1.PrimeMeridian.Name, " (",
+                igeographicCoordinateSystem_1.PrimeMeridian.Longitude.ToString(), ")\r\n数据: ",
+                igeographicCoordinateSystem_1.Datum.Name,
+                "\r\n  椭球体: ", igeographicCoordinateSystem_1.Datum.Spheroid.Name, "\r\n    长半轴: ",
+                igeographicCoordinateSystem_1.Datum.Spheroid.SemiMajorAxis.ToString(), "\r\n    短半轴: ",
+                igeographicCoordinateSystem_1.Datum.Spheroid.SemiMinorAxis.ToString(), "\r\n    扁率倒数: ",
+                (1.0/igeographicCoordinateSystem_1.Datum.Spheroid.Flattening).ToString()
+            };
             string str = string.Concat(strArray);
             this.textBoxGeoCoodSys.Text = str;
         }
@@ -328,10 +346,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IGeographicCoordinateSystem GeographicCoordinateSystem
         {
-            get
-            {
-                return this.igeographicCoordinateSystem_0;
-            }
+            get { return this.igeographicCoordinateSystem_0; }
         }
 
         public IParameter[] Paramters
@@ -358,19 +373,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IProjectedCoordinateSystem ProjectedCoordinateSystem
         {
-            set
-            {
-                this.iprojectedCoordinateSystem_0 = value;
-            }
+            set { this.iprojectedCoordinateSystem_0 = value; }
         }
 
         public IProjection Projection
         {
-            get
-            {
-                return this.iprojection_0;
-            }
+            get { return this.iprojection_0; }
         }
     }
 }
-

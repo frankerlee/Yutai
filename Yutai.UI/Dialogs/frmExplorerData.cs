@@ -22,29 +22,31 @@ namespace Yutai.UI.Dialogs
 {
     public partial class frmExplorerData : Form
     {
-        private IArray _filterArray=new ESRI.ArcGIS.esriSystem.Array();
-        private IArray _array2=new ESRI.ArcGIS.esriSystem.Array();
+        private IArray _filterArray = new ESRI.ArcGIS.esriSystem.Array();
+        private IArray _array2 = new ESRI.ArcGIS.esriSystem.Array();
 
         private IGxCatalog _gxCatalog;
         private IGxObject _gxObject;
         private IGxObjectFilter _gxObjectFilter;
-        private SortedList<string,int> _sortedList=new SortedList<string, int>();
-        private IList<IGxObject> _gxObjects=new List<IGxObject>();
+        private SortedList<string, int> _sortedList = new SortedList<string, int>();
+        private IList<IGxObject> _gxObjects = new List<IGxObject>();
         private static object _pStartLocation;
 
         private bool _multiSelect = false;
-        private int _modalType=0;
+        private int _modalType = 0;
 
         public int ModalType
         {
             get { return _modalType; }
             set { _modalType = value; }
         }
+
         public bool MultiSelect
         {
             get { return _multiSelect; }
             set { _multiSelect = value; }
         }
+
         public frmExplorerData()
         {
             InitializeComponent();
@@ -59,7 +61,7 @@ namespace Yutai.UI.Dialogs
         {
             for (int i = 0; i < _filterArray.Count; i++)
             {
-                IGxObjectFilter filter=_filterArray.Element[i] as IGxObjectFilter;
+                IGxObjectFilter filter = _filterArray.Element[i] as IGxObjectFilter;
                 if (filter.Name != objectFilter.Name)
                 {
                     if (isSelect)
@@ -74,7 +76,6 @@ namespace Yutai.UI.Dialogs
             {
                 this._gxObjectFilter = objectFilter;
             }
-
         }
 
         private void btnLarge_Click(object sender, EventArgs e)
@@ -97,17 +98,15 @@ namespace Yutai.UI.Dialogs
             folderBrowserDialog1.ShowNewFolderButton = true;
             DialogResult result = folderBrowserDialog1.ShowDialog();
             if (result != DialogResult.OK) return;
-            
         }
 
         private void btnNewGDB_Click(object sender, EventArgs e)
         {
-            
         }
 
         private void btnUpper_Click(object sender, EventArgs e)
         {
-            GISDataComboItem comboItem=gisDataComboBox1.SelectedItem as GISDataComboItem;
+            GISDataComboItem comboItem = gisDataComboBox1.SelectedItem as GISDataComboItem;
             if (comboItem == null) return;
             if (comboItem.Level != 0)
             {
@@ -142,6 +141,7 @@ namespace Yutai.UI.Dialogs
                 this.EndLocation();
             }
         }
+
         private void EndLocation()
         {
             if (this.listView1.SelectedItems.Count > 0)
@@ -212,7 +212,8 @@ namespace Yutai.UI.Dialogs
                                     IWorkspaceFactory factory = new AccessWorkspaceFactory() as IWorkspaceFactory;
                                     try
                                     {
-                                        factory.Create(System.IO.Path.GetDirectoryName(path), System.IO.Path.GetFileNameWithoutExtension(path), null, 0);
+                                        factory.Create(System.IO.Path.GetDirectoryName(path),
+                                            System.IO.Path.GetFileNameWithoutExtension(path), null, 0);
                                     }
                                     catch (Exception exception)
                                     {
@@ -262,32 +263,21 @@ namespace Yutai.UI.Dialogs
         }
 
         public string _saveName;
+
         public string SaveName
         {
-            get
-            {
-                return this._saveName;
-            }
-            set
-            {
-                this._saveName = value;
-            }
+            get { return this._saveName; }
+            set { this._saveName = value; }
         }
 
         public IList SelectedItems
         {
-            get
-            {
-                return this._gxObjects as IList;
-            }
+            get { return this._gxObjects as IList; }
         }
 
         public object StartingLocation
         {
-            set
-            {
-                _pStartLocation = value;
-            }
+            set { _pStartLocation = value; }
         }
 
         private string CheckExtension(string string_2, IGxObjectFilter igxObjectFilter_1)
@@ -375,6 +365,7 @@ namespace Yutai.UI.Dialogs
             this._isFree = true;
             return true;
         }
+
         private void EndOpen()
         {
             if (this.listView1.SelectedItems.Count != 0)
@@ -391,9 +382,9 @@ namespace Yutai.UI.Dialogs
                 this.PassListItem();
             }
         }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
         }
 
         private void cboShowType_SelectedIndexChanged(object sender, EventArgs e)
@@ -404,11 +395,11 @@ namespace Yutai.UI.Dialogs
             }
             else
             {
-                this._gxObjectFilter=_filterArray.Element[this.cboShowType.SelectedIndex] as IGxObjectFilter;
+                this._gxObjectFilter = _filterArray.Element[this.cboShowType.SelectedIndex] as IGxObjectFilter;
             }
             ClearViewer();
-            GISDataComboItem item=gisDataComboBox1.Items[gisDataComboBox1.SelectedIndex] as GISDataComboItem;
-            IGxObject linkTag=item.Tag as IGxObject;
+            GISDataComboItem item = gisDataComboBox1.Items[gisDataComboBox1.SelectedIndex] as GISDataComboItem;
+            IGxObject linkTag = item.Tag as IGxObject;
 
             LoadViewer(linkTag);
         }
@@ -460,7 +451,7 @@ namespace Yutai.UI.Dialogs
                     {
                         for (int i = 0; i < _filterArray.Count; i++)
                         {
-                            IGxObjectFilter filter=_filterArray.Element[i] as IGxObjectFilter;
+                            IGxObjectFilter filter = _filterArray.Element[i] as IGxObjectFilter;
                             if (canDisplay = filter.CanDisplayObject(subObj)) break;
                         }
                     }
@@ -468,7 +459,7 @@ namespace Yutai.UI.Dialogs
                     {
                         items[0] = subObj.Name;
                         items[1] = subObj.Category;
-                        ListViewItem item=new ListViewItem(items,GetImageIndex(subObj))
+                        ListViewItem item = new ListViewItem(items, GetImageIndex(subObj))
                         {
                             Tag = subObj
                         };
@@ -517,6 +508,7 @@ namespace Yutai.UI.Dialogs
             }
             return "";
         }
+
         private int GetImageIndex(IGxObject oneObj)
         {
             IFeatureClass fClass;
@@ -526,7 +518,7 @@ namespace Yutai.UI.Dialogs
             {
                 if ((oneObj as IGxDataset).Type == esriDatasetType.esriDTFeatureClass)
                 {
-                    IFeatureClassName datasetName= (oneObj as IGxDataset).DatasetName as IFeatureClassName;
+                    IFeatureClassName datasetName = (oneObj as IGxDataset).DatasetName as IFeatureClassName;
                     if (datasetName.FeatureType == esriFeatureType.esriFTAnnotation)
                     {
                         category = category + " 注记";
@@ -601,7 +593,7 @@ namespace Yutai.UI.Dialogs
         {
             try
             {
-               this._modalType = 0;
+                this._modalType = 0;
                 this.listView1.MultiSelect = this._multiSelect;
                 this.btnOK.Text = "添加";
                 return base.ShowDialog();
@@ -640,11 +632,12 @@ namespace Yutai.UI.Dialogs
         {
             if (_gxCatalog == null)
             {
-                _gxCatalog=new GxCatalog();
+                _gxCatalog = new GxCatalog();
             }
-            GISDataComboItem item=new GISDataComboItem((_gxCatalog as IGxObject).Name, (_gxCatalog as IGxObject).Name, this.GetImageIndex(this._gxCatalog as IGxObject), 0)
+            GISDataComboItem item = new GISDataComboItem((_gxCatalog as IGxObject).Name, (_gxCatalog as IGxObject).Name,
+                this.GetImageIndex(this._gxCatalog as IGxObject), 0)
             {
-                Tag=_gxCatalog
+                Tag = _gxCatalog
             };
             gisDataComboBox1.Items.Add(item);
             IEnumGxObject children = (this._gxCatalog as IGxObjectContainer).Children;
@@ -769,6 +762,7 @@ namespace Yutai.UI.Dialogs
         }
 
         private bool _isFree;
+
         private void LoadGISDataCombo(IGxObject gxObject)
         {
             GISDataComboItem ex;
@@ -794,7 +788,7 @@ namespace Yutai.UI.Dialogs
                 {
                     Tag = gxObject
                 };
-                this.gisDataComboBox1.AddChildNode( ex);
+                this.gisDataComboBox1.AddChildNode(ex);
                 this.gisDataComboBox1.SelectedIndex++;
             }
             this._isFree = true;
@@ -804,33 +798,31 @@ namespace Yutai.UI.Dialogs
         {
             ListViewItem current;
             string text = "";
-            if ((this._modalType == 0) || ((this._gxObjectFilter != null) && (this._gxObjectFilter.Name == "GxFilterWorkspaces")))
+            if ((this._modalType == 0) ||
+                ((this._gxObjectFilter != null) && (this._gxObjectFilter.Name == "GxFilterWorkspaces")))
             {
                 IEnumerator listItems = this.listView1.SelectedItems.GetEnumerator();
                 object item = listItems.MoveNext();
-                    while( item!=null)
+                while (item != null)
+                {
+                    current = (ListViewItem) listItems.Current;
+                    if (text.Length > 0)
                     {
-                        current = (ListViewItem)listItems.Current;
-                        if (text.Length > 0)
-                        {
-                            text = text + "; " + current.Text;
-                        }
-                        else
-                        {
-                            text = current.Text;
-                        }
+                        text = text + "; " + current.Text;
+                    }
+                    else
+                    {
+                        text = current.Text;
+                    }
                     item = listItems.MoveNext();
                     this.txtName.Text = text;
                 }
-                
-                
             }
             if (((this._modalType == 2) && (this._gxObjectFilter != null)) && (this.listView1.SelectedItems.Count > 0))
             {
                 current = this.listView1.SelectedItems[0];
                 text = current.Text;
             }
-      
         }
 
         private bool IsParent(IGxObject gxObject1, IGxObject gxObject2)
@@ -853,7 +845,8 @@ namespace Yutai.UI.Dialogs
             {
                 ex = this.gisDataComboBox1.Items[i] as GISDataComboItem;
                 IGxObject obj3 = ex.Tag as IGxObject;
-                if ((!(obj3 is IGxCatalog) && !(obj3.Parent is IGxCatalog)) && ((obj3 != tag) && !this.IsParent(obj3, tag)))
+                if ((!(obj3 is IGxCatalog) && !(obj3.Parent is IGxCatalog)) &&
+                    ((obj3 != tag) && !this.IsParent(obj3, tag)))
                 {
                     this.gisDataComboBox1.Items.RemoveAt(i);
                 }
@@ -862,25 +855,17 @@ namespace Yutai.UI.Dialogs
 
         public bool AllowMultiSelect
         {
-            set
-            {
-                this._multiSelect = value;
-            }
+            set { this._multiSelect = value; }
         }
+
         public IArray Items
         {
-            get
-            {
-                return this._array2;
-            }
+            get { return this._array2; }
         }
 
         public IGxObjectFilter ObjectFilter
         {
-            get
-            {
-                return this._gxObjectFilter;
-            }
+            get { return this._gxObjectFilter; }
             set
             {
                 for (int i = 0; i < this._filterArray.Count; i++)
@@ -899,41 +884,30 @@ namespace Yutai.UI.Dialogs
 
         public bool ReplacingObject
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         public IGxObject FinalLocation
         {
-            get
-            {
-                return this._gxObject;
-            }
+            get { return this._gxObject; }
         }
 
         public IGxCatalog GxCatalog
         {
-            set
-            {
-                this._gxCatalog = value;
-            }
-        }
-        public string ButtonCaption
-        {
-            set
-            {
-                this.btnOK.Text = value;
-            }
+            set { this._gxCatalog = value; }
         }
 
-       
+        public string ButtonCaption
+        {
+            set { this.btnOK.Text = value; }
+        }
+
 
         public void RemoveAllFilters()
         {
             this._filterArray.RemoveAll();
         }
+
         private string ChangeODCExtension(string string_2)
         {
             string str = string_2.Substring(0, string_2.Length - 4);
@@ -944,7 +918,8 @@ namespace Yutai.UI.Dialogs
             return string_2;
         }
 
-        private  string _pStartFilePath = "";
+        private string _pStartFilePath = "";
+
         private void PassListItem()
         {
             foreach (ListViewItem item in this.listView1.SelectedItems)
@@ -975,6 +950,7 @@ namespace Yutai.UI.Dialogs
             }
             base.Close();
         }
+
         private void listView1_DoubleClick(object sender, EventArgs e)
         {
             if (this.listView1.SelectedItems.Count != 0)
@@ -1002,7 +978,8 @@ namespace Yutai.UI.Dialogs
                         {
                             try
                             {
-                                string path = Environment.SystemDirectory.Substring(0, 2) + @"\Documents and Settings\Administrator\Application Data\ESRI\ArcCatalog\";
+                                string path = Environment.SystemDirectory.Substring(0, 2) +
+                                              @"\Documents and Settings\Administrator\Application Data\ESRI\ArcCatalog\";
                                 string str2 = path + "OLE DB Connection.odc";
                                 if (Directory.Exists(path))
                                 {
@@ -1012,7 +989,8 @@ namespace Yutai.UI.Dialogs
                                     IGxObject gxDatabase = new GxDatabase() as IGxObject;
                                     (gxDatabase as IGxDatabase).WorkspaceName = name;
                                     gxDatabase.Attach(tag.Parent, this._gxCatalog);
-                                    item = new ListViewItem(new string[] { gxDatabase.Name, gxDatabase.Category }, this.GetImageIndex(gxDatabase))
+                                    item = new ListViewItem(new string[] {gxDatabase.Name, gxDatabase.Category},
+                                        this.GetImageIndex(gxDatabase))
                                     {
                                         Tag = gxDatabase
                                     };
@@ -1039,7 +1017,8 @@ namespace Yutai.UI.Dialogs
 
                                 (oneObj as IGxDatabase).WorkspaceName = name2;
                                 oneObj.Attach(tag.Parent, this._gxCatalog);
-                                item = new ListViewItem(new string[] { oneObj.Name, oneObj.Category }, this.GetImageIndex(oneObj))
+                                item = new ListViewItem(new string[] {oneObj.Name, oneObj.Category},
+                                    this.GetImageIndex(oneObj))
                                 {
                                     Tag = oneObj
                                 };
@@ -1060,7 +1039,11 @@ namespace Yutai.UI.Dialogs
                         esriDatasetType type = (tag as IGxDataset).Type;
                         myDCRShowChildren = MyDoubleClickResult.myDCRShowChildren;
                         this._gxObjectFilter.CanChooseObject(tag, ref myDCRShowChildren);
-                        if ((((type != esriDatasetType.esriDTFeatureDataset) && (type != esriDatasetType.esriDTContainer)) && ((type != esriDatasetType.esriDTRasterCatalog) && (type != esriDatasetType.esriDTCadDrawing))) && (type != esriDatasetType.esriDTRasterDataset))
+                        if ((((type != esriDatasetType.esriDTFeatureDataset) &&
+                              (type != esriDatasetType.esriDTContainer)) &&
+                             ((type != esriDatasetType.esriDTRasterCatalog) &&
+                              (type != esriDatasetType.esriDTCadDrawing))) &&
+                            (type != esriDatasetType.esriDTRasterDataset))
                         {
                             this.PassListItem();
                             return;
@@ -1089,13 +1072,12 @@ namespace Yutai.UI.Dialogs
                             Tag = tag
                         };
                         int selectedIndex = this.gisDataComboBox1.SelectedIndex;
-                        this.gisDataComboBox1.AddChildNode( ex);
+                        this.gisDataComboBox1.AddChildNode(ex);
                         this.gisDataComboBox1.SelectedIndex = selectedIndex + 1;
                     }
                     this._isFree = true;
                 }
             }
-
         }
 
         private void listView1_KeyUp(object sender, KeyEventArgs e)
@@ -1111,7 +1093,8 @@ namespace Yutai.UI.Dialogs
             if (this._isFree)
             {
                 Cursor = Cursors.WaitCursor;
-                GISDataComboItem ex = this.gisDataComboBox1.Items[this.gisDataComboBox1.SelectedIndex] as GISDataComboItem;
+                GISDataComboItem ex =
+                    this.gisDataComboBox1.Items[this.gisDataComboBox1.SelectedIndex] as GISDataComboItem;
                 IGxObject tag = ex.Tag as IGxObject;
                 this.LoadViewer(tag);
                 this.LoadByCombo();
@@ -1119,5 +1102,4 @@ namespace Yutai.UI.Dialogs
             }
         }
     }
- 
 }

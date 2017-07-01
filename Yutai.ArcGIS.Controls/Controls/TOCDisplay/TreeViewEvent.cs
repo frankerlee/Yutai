@@ -4,23 +4,23 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
 {
     public class TreeViewEvent
     {
-        public static  event ChildLayersDeletedHandler ChildLayersDeleted;
+        public static event ChildLayersDeletedHandler ChildLayersDeleted;
 
-        public static  event GroupLayerAddLayerChangedHandler GroupLayerAddLayerChanged;
+        public static event GroupLayerAddLayerChangedHandler GroupLayerAddLayerChanged;
 
-        public static  event GroupLayerEventHandler GroupLayerEvent;
+        public static event GroupLayerEventHandler GroupLayerEvent;
 
-        public static  event LayerNameChangedHandler LayerNameChanged;
+        public static event LayerNameChangedHandler LayerNameChanged;
 
-        public static  event LayerOrderChangedHandler LayerOrderChanged;
+        public static event LayerOrderChangedHandler LayerOrderChanged;
 
-        public static  event LayerPropertyChangedHandler LayerPropertyChanged;
+        public static event LayerPropertyChangedHandler LayerPropertyChanged;
 
-        public static  event LayerVisibleChangedHandler LayerVisibleChanged;
+        public static event LayerVisibleChangedHandler LayerVisibleChanged;
 
-        public static  event MapNameChangedHandler MapNameChanged;
+        public static event MapNameChangedHandler MapNameChanged;
 
-        public static  event UnGroupLayerEventHandler UnGroupLayerEvent;
+        public static event UnGroupLayerEventHandler UnGroupLayerEvent;
 
         public static void OnChildLayersDeleted(object sender, object pObj)
         {
@@ -113,4 +113,3 @@ namespace Yutai.ArcGIS.Controls.Controls.TOCDisplay
         public delegate void UnGroupLayerEventHandler(object sender);
     }
 }
-

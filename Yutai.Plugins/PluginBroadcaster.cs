@@ -25,6 +25,7 @@ namespace Yutai.Plugins
         public event EventHandler<MenuItemEventArgs> StatusItemClicked;
 
         private static IBroadcasterService _instance;
+
         public static IBroadcasterService Instance
         {
             get { return _instance; }
@@ -47,40 +48,42 @@ namespace Yutai.Plugins
         /// <param name="eventHandler">Event of the BasePlugin class to fire, lambda like "p => p.EventName_" should be used.</param>
         /// <param name="sender">Map reference.</param>
         /// <param name="args">Event arguments</param>
-       /* public void BroadcastEvent<T>(Expression<Func<BasePlugin, MapEventHandler<T>>> eventHandler, IMuteMap sender, T args)
-            where T : EventArgs
-        {
-            BroadcastEvent(eventHandler.Body as MemberExpression, sender, args, null);
-        }*/
-
-       /* public void BroadcastEvent<T>(Expression<Func<BasePlugin, LegendEventHandler<T>>> eventHandler, IMuteLegend sender, T args) where T : EventArgs
-        {
-            // symbology plugin is the default listener for legend generated events
-            BroadcastEvent(eventHandler.Body as MemberExpression, sender, args, null, _symbologyPluginGuid);
-        }*/
-
+        /* public void BroadcastEvent<T>(Expression<Func<BasePlugin, MapEventHandler<T>>> eventHandler, IMuteMap sender, T args)
+             where T : EventArgs
+         {
+             BroadcastEvent(eventHandler.Body as MemberExpression, sender, args, null);
+         }*/
+/* public void BroadcastEvent<T>(Expression<Func<BasePlugin, LegendEventHandler<T>>> eventHandler, IMuteLegend sender, T args) where T : EventArgs
+                        {
+                            // symbology plugin is the default listener for legend generated events
+                            BroadcastEvent(eventHandler.Body as MemberExpression, sender, args, null, _symbologyPluginGuid);
+                        }*/
         public void BroadcastEvent<T>(Expression<Func<BasePlugin, EventHandler<T>>> eventHandler, object sender, T args)
             where T : EventArgs
         {
             BroadcastEvent(eventHandler.Body as MemberExpression, sender, args, null);
         }
 
-        public void BroadcastEvent<T>(Expression<Func<BasePlugin, EventHandler<T>>> eventHandler, object sender, T args, PluginIdentity identity)
+        public void BroadcastEvent<T>(Expression<Func<BasePlugin, EventHandler<T>>> eventHandler, object sender, T args,
+            PluginIdentity identity)
             where T : EventArgs
         {
             BroadcastEvent(eventHandler.Body as MemberExpression, sender, args, identity);
         }
 
-       
 
         /// <summary>
         /// Returns list of active plugins with default handler in the last position. 
         /// </summary>
         private List<BasePlugin> GetActiveList(Guid? defaultHandler)
         {
-            var handler = defaultHandler != null ? _manager.ListeningPlugins.FirstOrDefault(p => p.Identity.Guid == defaultHandler) : null;
+            var handler = defaultHandler != null
+                ? _manager.ListeningPlugins.FirstOrDefault(p => p.Identity.Guid == defaultHandler)
+                : null;
 
-            var plugins = handler == null ? _manager.ListeningPlugins : _manager.ListeningPlugins.Where(p => p != handler);
+            var plugins = handler == null
+                ? _manager.ListeningPlugins
+                : _manager.ListeningPlugins.Where(p => p != handler);
             var list = plugins.ToList();
 
             if (handler != null)
@@ -90,7 +93,8 @@ namespace Yutai.Plugins
             return list;
         }
 
-       private void BroadcastEvent<T>(MemberExpression expression, object sender, T args, PluginIdentity identity, Guid? defaultHandler = null)
+        private void BroadcastEvent<T>(MemberExpression expression, object sender, T args, PluginIdentity identity,
+            Guid? defaultHandler = null)
             where T : EventArgs
         {
             if (expression == null)
@@ -111,7 +115,7 @@ namespace Yutai.Plugins
                 {
                     if (identity != null && p.Identity != identity)
                     {
-                        continue;   // it's a wrong target
+                        continue; // it's a wrong target
                     }
 
                     var del = fieldInfo.GetValue(p) as MulticastDelegate;
@@ -119,7 +123,7 @@ namespace Yutai.Plugins
                     {
                         if (del.GetInvocationList().Any())
                         {
-                            del.Method.Invoke(del.Target, new[] { sender, args });
+                            del.Method.Invoke(del.Target, new[] {sender, args});
                         }
                     }
 
@@ -158,7 +162,7 @@ namespace Yutai.Plugins
                 }
             }
         }
-       
+
         public void FireItemClicked(object sender, EventArgs args)
         {
             var item = sender as IRibbonItem;
@@ -181,7 +185,6 @@ namespace Yutai.Plugins
 
         public void FireItemCheckedChanged(object sender, EventArgs args)
         {
-            
         }
 
         public void FireStatusItemClicked(object sender, MenuItemEventArgs args)

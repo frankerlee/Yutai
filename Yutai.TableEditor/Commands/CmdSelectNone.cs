@@ -19,6 +19,7 @@ namespace Yutai.Plugins.TableEditor.Commands
     public class CmdSelectNone : YutaiCommand
     {
         private ITableEditorView _view;
+
         public CmdSelectNone(IAppContext context, ITableEditorView view)
         {
             _context = context;

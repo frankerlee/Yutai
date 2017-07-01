@@ -14,7 +14,7 @@ using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Plugins.Editor.Commands
 {
-    public class CmdPolygonCutByPolygon : YutaiCommand,ITask
+    public class CmdPolygonCutByPolygon : YutaiCommand, ITask
     {
         private IDisplayFeedback idisplayFeedback_0 = null;
 
@@ -30,10 +30,7 @@ namespace Yutai.Plugins.Editor.Commands
 
         public string DefaultTool
         {
-            get
-            {
-                return "Editor_Sketch_Line";
-            }
+            get { return "Editor_Sketch_Line"; }
         }
 
         public override bool Enabled
@@ -49,7 +46,8 @@ namespace Yutai.Plugins.Editor.Commands
                 {
                     result = false;
                 }
-                else if ( Yutai.ArcGIS.Common.Editor.Editor.EditMap != null && Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
+                else if (Yutai.ArcGIS.Common.Editor.Editor.EditMap != null &&
+                         Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
                 {
                     result = false;
                 }
@@ -60,7 +58,8 @@ namespace Yutai.Plugins.Editor.Commands
                         IEnumFeature enumFeature = _context.FocusMap.FeatureSelection as IEnumFeature;
                         enumFeature.Reset();
                         IFeature feature = enumFeature.Next();
-                        if (feature != null && feature.Shape != null && feature.Shape.GeometryType == esriGeometryType.esriGeometryPolygon)
+                        if (feature != null && feature.Shape != null &&
+                            feature.Shape.GeometryType == esriGeometryType.esriGeometryPolygon)
                         {
                             result = Yutai.ArcGIS.Common.Editor.Editor.CheckLayerCanEdit(feature.Class as IFeatureClass);
                             return result;
@@ -71,13 +70,13 @@ namespace Yutai.Plugins.Editor.Commands
                 return result;
             }
         }
+
         public override void OnCreate(object hook)
         {
             this.m_caption = "打断多边形";
             this.m_toolTip = "多边形打断多边形";
             this.m_name = "Edit_PolygonCutByPolygon";
             this.m_category = "编辑器";
-
 
 
             this._key = "Edit_PolygonCutByPolygon";
@@ -166,7 +165,7 @@ namespace Yutai.Plugins.Editor.Commands
             invalidAreaClass.Invalidate(-2);
         }
 
-      
+
         public override void OnClick()
         {
             SketchToolAssist.IsDrawTempLine = DrawTempGeometry.Fill;

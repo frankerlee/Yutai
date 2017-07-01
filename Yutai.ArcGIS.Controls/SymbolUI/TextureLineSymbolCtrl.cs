@@ -15,7 +15,6 @@ using Yutai.ArcGIS.Common.SymbolUI;
 
 namespace Yutai.ArcGIS.Controls.SymbolUI
 {
-   
     internal partial class TextureLineSymbolCtrl : UserControl, CommonInterface
     {
         private bool m_CanDo = false;
@@ -31,8 +30,10 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         private void btnSelectPicture_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog {
-                Filter = "JPEG文件交换格式(*.jpg;*jpeg)|*.jpg;*jpeg|移动网络图形(*.png)|*.png|Windows位图(*.bmp)|*.bmp|tiff(*.tif)|*.tif|GIF(*.gif)|*.gif|动画文件(*.cel)|*.cel|Targa文件(*.tga)|*.tga|SGI图像文件格式(*.rgb;*.rgba)|*.rgb;*.rgba|INT(*.int;*.inta)|*.int;*.inta"
+            OpenFileDialog dialog = new OpenFileDialog
+            {
+                Filter =
+                    "JPEG文件交换格式(*.jpg;*jpeg)|*.jpg;*jpeg|移动网络图形(*.png)|*.png|Windows位图(*.bmp)|*.bmp|tiff(*.tif)|*.tif|GIF(*.gif)|*.gif|动画文件(*.cel)|*.cel|Targa文件(*.tga)|*.tga|SGI图像文件格式(*.rgb;*.rgba)|*.rgb;*.rgba|INT(*.int;*.inta)|*.int;*.inta"
             };
             if (dialog.ShowDialog() == DialogResult.OK)
             {
@@ -44,7 +45,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         public void ChangeUnit(double newunit)
         {
             this.m_CanDo = false;
-            this.numericUpDownWidth.Value = (decimal) ((((double) this.numericUpDownWidth.Value) / this.m_unit) * newunit);
+            this.numericUpDownWidth.Value = (decimal) ((((double) this.numericUpDownWidth.Value)/this.m_unit)*newunit);
             this.m_unit = newunit;
             this.m_CanDo = true;
         }
@@ -126,7 +127,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.axSceneControl1.SceneGraph.RefreshViewers();
         }
 
- private void GetRGB(uint rgb, out int r, out int g, out int b)
+        private void GetRGB(uint rgb, out int r, out int g, out int b)
         {
             uint num = rgb & 16711680;
             b = (int) (num >> 16);
@@ -139,7 +140,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         public void InitControl()
         {
             this.m_CanDo = false;
-            this.numericUpDownWidth.Value = (decimal) (this.m_pTextureLineSymbol.Width * this.m_unit);
+            this.numericUpDownWidth.Value = (decimal) (this.m_pTextureLineSymbol.Width*this.m_unit);
             this.SetColorEdit(this.colorEditForeColor, this.m_pTextureLineSymbol.Color);
             if (this.m_pTextureLineSymbol.BitmapTransparencyColor != null)
             {
@@ -150,7 +151,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.m_CanDo = true;
         }
 
- private void numericUpDownWidth_EditValueChanged(object sender, EventArgs e)
+        private void numericUpDownWidth_EditValueChanged(object sender, EventArgs e)
         {
             if (this.m_CanDo)
             {
@@ -165,7 +166,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     this.numericUpDownWidth.ForeColor = SystemColors.WindowText;
-                    this.m_pTextureLineSymbol.Width = ((double) this.numericUpDownWidth.Value) / this.m_unit;
+                    this.m_pTextureLineSymbol.Width = ((double) this.numericUpDownWidth.Value)/this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -224,4 +225,3 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         }
     }
 }
-

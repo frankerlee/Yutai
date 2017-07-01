@@ -7,4 +7,3 @@ namespace Yutai.ArcGIS.Common.Excel
         public Icon ButtonIcon = null;
     }
 }
-

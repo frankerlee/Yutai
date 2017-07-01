@@ -7,7 +7,6 @@ using System.Windows.Forms;
 
 namespace Yutai.Plugins.Mvp
 {
-    
     public interface IViewInternal
     {
         event Action OkClicked;
@@ -45,7 +44,6 @@ namespace Yutai.Plugins.Mvp
 
         public ViewStyle()
         {
-
         }
     }
 }

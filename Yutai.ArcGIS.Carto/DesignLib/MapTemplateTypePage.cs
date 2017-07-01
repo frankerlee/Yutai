@@ -15,7 +15,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             this.InitializeComponent();
         }
 
- private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             if (this.radioButton2.Checked)
             {
@@ -32,4 +32,3 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         }
     }
 }
-

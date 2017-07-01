@@ -58,12 +58,12 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         public void ChangeUnit(double newunit)
         {
             this.m_CanDo = false;
-            this.numericUpDownSize.Value = (decimal) ((((double) this.numericUpDownSize.Value) / this.m_unit) * newunit);
+            this.numericUpDownSize.Value = (decimal) ((((double) this.numericUpDownSize.Value)/this.m_unit)*newunit);
             this.m_unit = newunit;
             this.m_CanDo = true;
         }
 
- public void InitControl()
+        public void InitControl()
         {
             this.m_CanDo = false;
             if (this.m_pMask.MaskStyle == esriMaskStyle.esriMSHalo)
@@ -74,12 +74,12 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             {
                 this.radMaskStyle.SelectedIndex = 0;
             }
-            this.numericUpDownSize.Value = (decimal) (this.m_pMask.MaskSize * this.m_unit);
+            this.numericUpDownSize.Value = (decimal) (this.m_pMask.MaskSize*this.m_unit);
             this.btnFillSymbol.Style = this.m_pMask.MaskSymbol;
             this.m_CanDo = true;
         }
 
- public static bool IsNmuber(string str)
+        public static bool IsNmuber(string str)
         {
             if (str.Length > 0)
             {
@@ -182,7 +182,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     this.numericUpDownSize.ForeColor = SystemColors.WindowText;
-                    this.m_pMask.MaskSize = ((double) this.numericUpDownSize.Value) / this.m_unit;
+                    this.m_pMask.MaskSize = ((double) this.numericUpDownSize.Value)/this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -213,4 +213,3 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         }
     }
 }
-

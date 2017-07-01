@@ -8,4 +8,3 @@
         LayerSettings
     }
 }
-

@@ -18,12 +18,12 @@ namespace Yutai.ArcGIS.Carto.UI
             this.InitializeComponent();
         }
 
- private void frmTextDisplaySet_Load(object sender, EventArgs e)
+        private void frmTextDisplaySet_Load(object sender, EventArgs e)
         {
             this.method_0();
         }
 
- private void method_0()
+        private void method_0()
         {
             if (this.ihatchDefinition_0 != null)
             {
@@ -74,15 +74,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IHatchDefinition HatchDefinition
         {
-            get
-            {
-                return this.ihatchDefinition_0;
-            }
-            set
-            {
-                this.ihatchDefinition_0 = value;
-            }
+            get { return this.ihatchDefinition_0; }
+            set { this.ihatchDefinition_0 = value; }
         }
     }
 }
-

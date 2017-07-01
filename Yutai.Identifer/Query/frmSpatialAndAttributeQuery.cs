@@ -16,12 +16,10 @@ namespace Yutai.Plugins.Identifer.Query
     {
         private UcSpatialAndAttributeQuery m_pSelectByLocationCtrl = new UcSpatialAndAttributeQuery();
         private IAppContext _context;
+
         public IMap Map
         {
-            set
-            {
-                this.m_pSelectByLocationCtrl.Map = value;
-            }
+            set { this.m_pSelectByLocationCtrl.Map = value; }
         }
 
         public frmSpatialAndAttributeQuery(IAppContext context)
@@ -32,6 +30,5 @@ namespace Yutai.Plugins.Identifer.Query
             _context = context;
             Map = _context.MapControl.Map;
         }
-        
     }
 }

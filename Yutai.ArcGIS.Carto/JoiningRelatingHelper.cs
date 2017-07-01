@@ -21,13 +21,17 @@ namespace Yutai.ArcGIS.Carto
                         itable_0 = (itable_0 as IStandaloneTable).Table;
                     }
                     IMemoryRelationshipClassFactory factory = new MemoryRelationshipClassFactoryClass();
-                    IRelationshipClass relClass = factory.Open("TabletoLayer", (IObjectClass) itable_0, string_1, (IObjectClass) attributeTable, string_0, "forward", "backward", esriRelCardinality.esriRelCardinalityOneToMany);
-                    ((IDisplayRelationshipClass) ilayer_0).DisplayRelationshipClass(relClass, esriJoinType.esriLeftOuterJoin);
+                    IRelationshipClass relClass = factory.Open("TabletoLayer", (IObjectClass) itable_0, string_1,
+                        (IObjectClass) attributeTable, string_0, "forward", "backward",
+                        esriRelCardinality.esriRelCardinalityOneToMany);
+                    ((IDisplayRelationshipClass) ilayer_0).DisplayRelationshipClass(relClass,
+                        esriJoinType.esriLeftOuterJoin);
                 }
             }
             catch (COMException exception)
             {
-                MessageBox.Show(exception.Message, "COM Error: " + exception.ErrorCode.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(exception.Message, "COM Error: " + exception.ErrorCode.ToString(), MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
             }
             catch (Exception exception2)
             {
@@ -64,12 +68,15 @@ namespace Yutai.ArcGIS.Carto
                     itable_1 = (itable_1 as IStandaloneTable).Table;
                 }
                 IMemoryRelationshipClassFactory factory = new MemoryRelationshipClassFactoryClass();
-                IRelationshipClass relClass = factory.Open("TabletoLayer", (IObjectClass) itable_1, string_1, (IObjectClass) attributeTable, string_0, "forward", "backward", esriRelCardinality.esriRelCardinalityOneToMany);
+                IRelationshipClass relClass = factory.Open("TabletoLayer", (IObjectClass) itable_1, string_1,
+                    (IObjectClass) attributeTable, string_0, "forward", "backward",
+                    esriRelCardinality.esriRelCardinalityOneToMany);
                 ((IDisplayRelationshipClass) itable_0).DisplayRelationshipClass(relClass, esriJoinType.esriLeftOuterJoin);
             }
             catch (COMException exception)
             {
-                MessageBox.Show(exception.Message, "COM Error: " + exception.ErrorCode.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(exception.Message, "COM Error: " + exception.ErrorCode.ToString(), MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
             }
             catch (Exception exception2)
             {
@@ -90,13 +97,16 @@ namespace Yutai.ArcGIS.Carto
                         itable_0 = (itable_0 as IStandaloneTable).Table;
                     }
                     IMemoryRelationshipClassFactory factory = new MemoryRelationshipClassFactoryClass();
-                    IRelationshipClass relationshipClass = factory.Open("TabletoLayer", (IObjectClass) itable_0, string_1, (IObjectClass) attributeTable, string_0, "forward", "backward", esriRelCardinality.esriRelCardinalityOneToMany);
+                    IRelationshipClass relationshipClass = factory.Open("TabletoLayer", (IObjectClass) itable_0,
+                        string_1, (IObjectClass) attributeTable, string_0, "forward", "backward",
+                        esriRelCardinality.esriRelCardinalityOneToMany);
                     ((IRelationshipClassCollectionEdit) ilayer_0).AddRelationshipClass(relationshipClass);
                 }
             }
             catch (COMException exception)
             {
-                MessageBox.Show(exception.Message, "COM Error: " + exception.ErrorCode.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(exception.Message, "COM Error: " + exception.ErrorCode.ToString(), MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
             }
             catch (Exception exception2)
             {
@@ -104,7 +114,8 @@ namespace Yutai.ArcGIS.Carto
             }
         }
 
-        public static void RelateTableLayer(string string_0, ITable itable_0, string string_1, ITable itable_1, string string_2)
+        public static void RelateTableLayer(string string_0, ITable itable_0, string string_1, ITable itable_1,
+            string string_2)
         {
             try
             {
@@ -113,13 +124,16 @@ namespace Yutai.ArcGIS.Carto
                 {
                     ITable attributeTable = table.AttributeTable;
                     IMemoryRelationshipClassFactory factory = new MemoryRelationshipClassFactoryClass();
-                    IRelationshipClass relationshipClass = factory.Open(string_0, (IObjectClass) itable_1, string_2, (IObjectClass) attributeTable, string_1, "forward", "backward", esriRelCardinality.esriRelCardinalityOneToMany);
+                    IRelationshipClass relationshipClass = factory.Open(string_0, (IObjectClass) itable_1, string_2,
+                        (IObjectClass) attributeTable, string_1, "forward", "backward",
+                        esriRelCardinality.esriRelCardinalityOneToMany);
                     ((IRelationshipClassCollectionEdit) itable_0).AddRelationshipClass(relationshipClass);
                 }
             }
             catch (COMException exception)
             {
-                MessageBox.Show(exception.Message, "COM Error: " + exception.ErrorCode.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(exception.Message, "COM Error: " + exception.ErrorCode.ToString(), MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
             }
             catch (Exception exception2)
             {
@@ -150,7 +164,8 @@ namespace Yutai.ArcGIS.Carto
             }
             catch (COMException exception)
             {
-                MessageBox.Show(exception.Message, "COM Error: " + exception.ErrorCode.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(exception.Message, "COM Error: " + exception.ErrorCode.ToString(), MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
             }
             catch (Exception exception2)
             {
@@ -182,7 +197,8 @@ namespace Yutai.ArcGIS.Carto
             }
             catch (COMException exception)
             {
-                MessageBox.Show(exception.Message, "COM Error: " + exception.ErrorCode.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(exception.Message, "COM Error: " + exception.ErrorCode.ToString(), MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
             }
             catch (Exception exception2)
             {
@@ -198,7 +214,8 @@ namespace Yutai.ArcGIS.Carto
                 IRelationshipClassCollection classs = ilayer_0 as IRelationshipClassCollection;
                 if (classs != null)
                 {
-                    IEnumRelationshipClass class2 = classs.FindRelationshipClasses(itable_0 as IObjectClass, esriRelRole.esriRelRoleAny);
+                    IEnumRelationshipClass class2 = classs.FindRelationshipClasses(itable_0 as IObjectClass,
+                        esriRelRole.esriRelRoleAny);
                     class2.Reset();
                     if (class2.Next() != null)
                     {
@@ -209,7 +226,8 @@ namespace Yutai.ArcGIS.Carto
             }
             catch (COMException exception)
             {
-                MessageBox.Show(exception.Message, "COM Error: " + exception.ErrorCode.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(exception.Message, "COM Error: " + exception.ErrorCode.ToString(), MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
             }
             catch (Exception exception2)
             {
@@ -225,7 +243,8 @@ namespace Yutai.ArcGIS.Carto
                 IRelationshipClassCollection classs = itable_0 as IRelationshipClassCollection;
                 if (classs != null)
                 {
-                    IEnumRelationshipClass class2 = classs.FindRelationshipClasses(itable_1 as IObjectClass, esriRelRole.esriRelRoleAny);
+                    IEnumRelationshipClass class2 = classs.FindRelationshipClasses(itable_1 as IObjectClass,
+                        esriRelRole.esriRelRoleAny);
                     class2.Reset();
                     if (class2.Next() != null)
                     {
@@ -236,7 +255,8 @@ namespace Yutai.ArcGIS.Carto
             }
             catch (COMException exception)
             {
-                MessageBox.Show(exception.Message, "COM Error: " + exception.ErrorCode.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(exception.Message, "COM Error: " + exception.ErrorCode.ToString(), MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
             }
             catch (Exception exception2)
             {
@@ -246,4 +266,3 @@ namespace Yutai.ArcGIS.Carto
         }
     }
 }
-

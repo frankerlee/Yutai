@@ -14,7 +14,7 @@ namespace Yutai.ArcGIS.Catalog.UI
     {
         private FieldMatchCtrl fieldMatchCtrl_0 = new FieldMatchCtrl();
         private IContainer icontainer_0 = null;
-        [CompilerGenerated]
+
         private int int_0 = 0;
         private SelectedDataLoaderCtrl selectedDataLoaderCtrl_0 = new SelectedDataLoaderCtrl();
         private SetImportRecordCtrl setImportRecordCtrl_0 = new SetImportRecordCtrl();
@@ -53,7 +53,8 @@ namespace Yutai.ArcGIS.Catalog.UI
                 case 0:
                     if (this.selectedDataLoaderCtrl_0.SelectDataset.Count != 0)
                     {
-                        IFields fields = ((this.selectedDataLoaderCtrl_0.SelectDataset[0] as IGxDataset).Dataset as ITable).Fields;
+                        IFields fields =
+                            ((this.selectedDataLoaderCtrl_0.SelectDataset[0] as IGxDataset).Dataset as ITable).Fields;
                         IFields fields2 = (this.Table as ITable).Fields;
                         this.fieldMatchCtrl_0.TargertFields = fields2;
                         this.fieldMatchCtrl_0.SourceFields = fields;
@@ -67,7 +68,8 @@ namespace Yutai.ArcGIS.Catalog.UI
                     return;
 
                 case 1:
-                    this.setImportRecordCtrl_0.Table = (this.selectedDataLoaderCtrl_0.SelectDataset[0] as IGxDataset).Dataset as ITable;
+                    this.setImportRecordCtrl_0.Table =
+                        (this.selectedDataLoaderCtrl_0.SelectDataset[0] as IGxDataset).Dataset as ITable;
                     this.setImportRecordCtrl_0.Visible = true;
                     this.fieldMatchCtrl_0.Visible = false;
                     this.btnNext.Text = "完成";
@@ -83,7 +85,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             this.int_0++;
         }
 
- private void frmDataLoader_Load(object sender, EventArgs e)
+        private void frmDataLoader_Load(object sender, EventArgs e)
         {
             this.selectedDataLoaderCtrl_0.Table = this.Table;
             this.selectedDataLoaderCtrl_0.Dock = DockStyle.Fill;
@@ -96,7 +98,7 @@ namespace Yutai.ArcGIS.Catalog.UI
             this.panel2.Controls.Add(this.setImportRecordCtrl_0);
         }
 
- private bool method_0()
+        private bool method_0()
         {
             Dataloaders dataloaders = new Dataloaders();
             SortedList<string, string> fieldMaps = this.fieldMatchCtrl_0.FieldMaps;
@@ -109,19 +111,6 @@ namespace Yutai.ArcGIS.Catalog.UI
             return true;
         }
 
-        public IDataset Table
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.idataset_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.idataset_0 = value;
-            }
-        }
+        public IDataset Table { get; set; }
     }
 }
-

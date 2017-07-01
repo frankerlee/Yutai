@@ -73,7 +73,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         NewObjectClassHelper.m_pObjectClassHelper.RelatedFeatureClass = null;
                         break;
                     }
-                    NewObjectClassHelper.m_pObjectClassHelper.RelatedFeatureClass = (this.cboRelateFC.SelectedItem as ObjectWrap).Object as IFeatureClass;
+                    NewObjectClassHelper.m_pObjectClassHelper.RelatedFeatureClass =
+                        (this.cboRelateFC.SelectedItem as ObjectWrap).Object as IFeatureClass;
                     break;
 
                 case 6:
@@ -116,10 +117,11 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void chkRelateFeatureClass_CheckedChanged(object sender, EventArgs e)
         {
-            this.cboRelateFC.Enabled = (this.cboRelateFC.Properties.Items.Count > 0) && this.chkRelateFeatureClass.Checked;
+            this.cboRelateFC.Enabled = (this.cboRelateFC.Properties.Items.Count > 0) &&
+                                       this.chkRelateFeatureClass.Checked;
         }
 
- private void method_0(IList ilist_0, IWorkspace iworkspace_0)
+        private void method_0(IList ilist_0, IWorkspace iworkspace_0)
         {
             IEnumDataset dataset = iworkspace_0.get_Datasets(esriDatasetType.esriDTAny);
             dataset.Reset();
@@ -138,7 +140,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     subsets.Reset();
                     for (IDataset dataset4 = subsets.Next(); dataset4 != null; dataset4 = subsets.Next())
                     {
-                        if ((dataset4.Type == esriDatasetType.esriDTFeatureClass) && ((dataset4 as IFeatureClass).FeatureType == esriFeatureType.esriFTSimple))
+                        if ((dataset4.Type == esriDatasetType.esriDTFeatureClass) &&
+                            ((dataset4 as IFeatureClass).FeatureType == esriFeatureType.esriFTSimple))
                         {
                             ilist_0.Add(new ObjectWrap(dataset4));
                         }
@@ -166,7 +169,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     subsetNames.Reset();
                     for (IDatasetName name4 = subsetNames.Next(); name4 != null; name4 = subsetNames.Next())
                     {
-                        if ((name4.Type == esriDatasetType.esriDTFeatureClass) && ((name4 as IFeatureClassName).FeatureType == esriFeatureType.esriFTSimple))
+                        if ((name4.Type == esriDatasetType.esriDTFeatureClass) &&
+                            ((name4 as IFeatureClassName).FeatureType == esriFeatureType.esriFTSimple))
                         {
                             ilist_0.Add(new ObjectWrap(name4));
                         }
@@ -185,7 +189,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 {
                     this.cboRelateFC.SelectedIndex = 0;
                 }
-                this.cboRelateFC.Enabled = (this.cboRelateFC.Properties.Items.Count > 0) && this.chkRelateFeatureClass.Checked;
+                this.cboRelateFC.Enabled = (this.cboRelateFC.Properties.Items.Count > 0) &&
+                                           this.chkRelateFeatureClass.Checked;
                 this.chkRelateFeatureClass.Enabled = this.cboRelateFC.Properties.Items.Count > 0;
             }
             else
@@ -262,11 +267,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 this.string_0 = this.txtAliasName.Text;
                 return this.string_0;
             }
-            set
-            {
-                this.string_0 = value;
-            }
+            set { this.string_0 = value; }
         }
     }
 }
-

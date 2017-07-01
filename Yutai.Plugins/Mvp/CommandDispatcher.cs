@@ -9,7 +9,7 @@ using Yutai.Plugins.Services;
 namespace Yutai.Plugins.Mvp
 {
     public abstract class CommandDispatcher<TCommand>
-       where TCommand : struct, IConvertible
+        where TCommand : struct, IConvertible
     {
         public abstract void RunCommand(TCommand command);
 
@@ -114,7 +114,7 @@ namespace Yutai.Plugins.Mvp
         {
             itemName = itemName.ToLower();
 
-            var prefixes = new[] { "tool", "mnu", "ctx", "btn" };
+            var prefixes = new[] {"tool", "mnu", "ctx", "btn"};
             foreach (var prefix in prefixes)
             {
                 if (itemName.StartsWith(prefix) && itemName.Length > prefix.Length)
@@ -174,6 +174,7 @@ namespace Yutai.Plugins.Mvp
             }
         }
     }
+
     public abstract class CommandDispatcher<TView, TCommand> : CommandDispatcher<TCommand>
         where TCommand : struct, IConvertible
         where TView : IMenuProvider

@@ -7,4 +7,3 @@
         bool HasCachedChildren { get; }
     }
 }
-

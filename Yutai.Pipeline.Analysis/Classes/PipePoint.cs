@@ -48,21 +48,15 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         public PipePoint.SectionPointType PointType
         {
-            get
-            {
-                return this.sectionPointType_0;
-            }
-            set
-            {
-                this.sectionPointType_0 = value;
-            }
+            get { return this.sectionPointType_0; }
+            set { this.sectionPointType_0 = value; }
         }
 
         public double DistanceToPipePoint(PipePoint ppDst)
         {
             double num = ppDst.x - this.x;
             double num2 = ppDst.y - this.y;
-            return Math.Sqrt(num * num + num2 * num2);
+            return Math.Sqrt(num*num + num2*num2);
         }
 
         public string ToStringSpati()

@@ -17,39 +17,20 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public ISymbol BackSymbol
         {
-            get
-            {
-                return this.isymbol_1;
-            }
-            set
-            {
-                this.isymbol_1 = value;
-            }
+            get { return this.isymbol_1; }
+            set { this.isymbol_1 = value; }
         }
 
         public string Description
         {
-            get
-            {
-                return this.string_0;
-            }
-            set
-            {
-                this.string_0 = value;
-            }
+            get { return this.string_0; }
+            set { this.string_0 = value; }
         }
 
         public ISymbol Symbol
         {
-            get
-            {
-                return this.isymbol_0;
-            }
-            set
-            {
-                this.isymbol_0 = value;
-            }
+            get { return this.isymbol_0; }
+            set { this.isymbol_0 = value; }
         }
     }
 }
-

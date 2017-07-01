@@ -44,13 +44,15 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
             {
                 this.graphics_0 = Graphics.FromHwnd(base.Handle);
                 bool flag = false;
-                if ((this.imageComboBox_0.RightToLeft == RightToLeft.Inherit) && (this.imageComboBox_0.Parent.RightToLeft == RightToLeft.Yes))
+                if ((this.imageComboBox_0.RightToLeft == RightToLeft.Inherit) &&
+                    (this.imageComboBox_0.Parent.RightToLeft == RightToLeft.Yes))
                 {
                     flag = true;
                 }
                 if ((this.imageComboBox_0.RightToLeft == RightToLeft.Yes) || flag)
                 {
-                    this.graphics_0.DrawImage(this.CurrentIcon, (float) (this.graphics_0.VisibleClipBounds.Width - this.CurrentIcon.Width), (float) 0f);
+                    this.graphics_0.DrawImage(this.CurrentIcon,
+                        (float) (this.graphics_0.VisibleClipBounds.Width - this.CurrentIcon.Width), (float) 0f);
                 }
                 else if ((this.imageComboBox_0.RightToLeft == RightToLeft.No) || flag)
                 {
@@ -61,12 +63,16 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
             }
         }
 
-        [DllImport("user32", CharSet=CharSet.Auto)]
-        private static extern IntPtr FindWindowEx(IntPtr intptr_0, IntPtr intptr_1, [MarshalAs(UnmanagedType.LPTStr)] string string_0, [MarshalAs(UnmanagedType.LPTStr)] string string_1);
+        [DllImport("user32", CharSet = CharSet.Auto)]
+        private static extern IntPtr FindWindowEx(IntPtr intptr_0, IntPtr intptr_1,
+            [MarshalAs(UnmanagedType.LPTStr)] string string_0, [MarshalAs(UnmanagedType.LPTStr)] string string_1);
+
         [DllImport("user32")]
         private static extern bool GetComboBoxInfo(IntPtr intptr_0, ref Struct3 struct3_1);
-        [DllImport("user32", CharSet=CharSet.Auto)]
+
+        [DllImport("user32", CharSet = CharSet.Auto)]
         private static extern int SendMessage(IntPtr intptr_0, int int_2, int int_3, int int_4);
+
         public void SetImageToDraw()
         {
             try
@@ -79,7 +85,8 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
                         int imageIndex = this.imageComboBox_0.Items[this.int_1].ImageIndex;
                         if (imageIndex != -1)
                         {
-                            this.CurrentIcon = new Bitmap(this.imageComboBox_0.ImageList.Images[imageIndex], this.imageComboBox_0.ItemHeight, this.imageComboBox_0.ItemHeight);
+                            this.CurrentIcon = new Bitmap(this.imageComboBox_0.ImageList.Images[imageIndex],
+                                this.imageComboBox_0.ItemHeight, this.imageComboBox_0.ItemHeight);
                             if (this.imageComboBox_0.RightToLeft == RightToLeft.Yes)
                             {
                                 this.CurrentIcon.RotateFlip(RotateFlipType.RotateNoneFlipX);
@@ -108,14 +115,14 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
                 if (this.imageComboBox_0.RightToLeft == RightToLeft.Yes)
                 {
                     num2 = this.int_0;
-                    SendMessage(base.Handle, 211, 2, num2 * 65536);
+                    SendMessage(base.Handle, 211, 2, num2*65536);
                     SendMessage(base.Handle, 211, 1, num);
                 }
                 else if (this.imageComboBox_0.RightToLeft == RightToLeft.No)
                 {
                     num = this.int_0;
                     SendMessage(base.Handle, 211, 1, this.int_0);
-                    SendMessage(base.Handle, 211, 2, num2 * 65536);
+                    SendMessage(base.Handle, 211, 2, num2*65536);
                 }
             }
         }
@@ -168,14 +175,8 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
         [EditorBrowsable(EditorBrowsableState.Always)]
         public Image CurrentIcon
         {
-            get
-            {
-                return this.image_0;
-            }
-            set
-            {
-                this.image_0 = value;
-            }
+            get { return this.image_0; }
+            set { this.image_0 = value; }
         }
 
         [StructLayout(LayoutKind.Sequential)]
@@ -200,4 +201,3 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
         }
     }
 }
-

@@ -12,7 +12,7 @@ namespace Yutai.Pipeline.Analysis.Commands
         private PipelineAnalysisPlugin _plugin;
 
 
-        public CmdPopAlarmAnalysis(IAppContext context,PipelineAnalysisPlugin plugin)
+        public CmdPopAlarmAnalysis(IAppContext context, PipelineAnalysisPlugin plugin)
         {
             OnCreate(context);
             _plugin = plugin;
@@ -45,7 +45,5 @@ namespace Yutai.Pipeline.Analysis.Commands
 
             CommonUtils.AppContext = _context;
         }
-
-
     }
 }

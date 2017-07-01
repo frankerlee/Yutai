@@ -23,6 +23,7 @@ namespace Yutai.Pipeline.Analysis.Forms
         private DataTable _dataTable;
         private IMap _map;
         private IPipelineConfig _config;
+
         public frmMapLayerOrganize()
         {
             InitializeComponent();
@@ -41,6 +42,7 @@ namespace Yutai.Pipeline.Analysis.Forms
             _map = pMap;
             InitData();
         }
+
         private void InitData()
         {
             _dataSet = new DataSet("管线配置");
@@ -63,10 +65,10 @@ namespace Yutai.Pipeline.Analysis.Forms
             _dataTable.Columns.Add(col);
 
             IArray pArrayClass = ConfigHelper.OrganizeMapWorkspaceAndLayer(_map);
-            for(int i=0; i<pArrayClass.Count;i++)
+            for (int i = 0; i < pArrayClass.Count; i++)
             {
                 PipeWorkspaceInfo info = pArrayClass.Element[i] as PipeWorkspaceInfo;
-                for(int j=0; j<info.ClassArray.Count;j++)
+                for (int j = 0; j < info.ClassArray.Count; j++)
                 {
                     IFeatureClass pClass = info.ClassArray.Element[j] as IFeatureClass;
                     string pShortName = ConfigHelper.GetClassShortName(pClass);
@@ -84,11 +86,11 @@ namespace Yutai.Pipeline.Analysis.Forms
         {
             _config.OrganizeMap(_map);
             _dataTable.Rows.Clear();
-            foreach(var oneItem in _config.Layers)
+            foreach (var oneItem in _config.Layers)
             {
-                foreach(var oneSub in oneItem.Layers)
+                foreach (var oneSub in oneItem.Layers)
                 {
-                    if(oneSub.FeatureClass!=null)
+                    if (oneSub.FeatureClass != null)
                     {
                         DataRow row = _dataTable.NewRow();
                         row[0] = oneItem.Workspace.PathName;

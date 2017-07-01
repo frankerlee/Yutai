@@ -22,7 +22,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             for (int i = 0; i < this.checkedListBox1.Items.Count; i++)
             {
-                BulidGeometryNetworkHelper.FeatureClassWrap wrap = this.checkedListBox1.Items[i] as BulidGeometryNetworkHelper.FeatureClassWrap;
+                BulidGeometryNetworkHelper.FeatureClassWrap wrap =
+                    this.checkedListBox1.Items[i] as BulidGeometryNetworkHelper.FeatureClassWrap;
                 if (wrap.GeometryType == esriGeometryType.esriGeometryPolyline)
                 {
                     this.checkedListBox1.SetItemChecked(i, false);
@@ -34,7 +35,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             for (int i = 0; i < this.checkedListBox1.Items.Count; i++)
             {
-                BulidGeometryNetworkHelper.FeatureClassWrap wrap = this.checkedListBox1.Items[i] as BulidGeometryNetworkHelper.FeatureClassWrap;
+                BulidGeometryNetworkHelper.FeatureClassWrap wrap =
+                    this.checkedListBox1.Items[i] as BulidGeometryNetworkHelper.FeatureClassWrap;
                 if (wrap.GeometryType == esriGeometryType.esriGeometryPolyline)
                 {
                     this.checkedListBox1.SetItemChecked(i, true);
@@ -46,7 +48,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             for (int i = 0; i < BulidGeometryNetworkHelper.BulidGNHelper.FeatureClassWraps.Count; i++)
             {
-                BulidGeometryNetworkHelper.FeatureClassWrap item = BulidGeometryNetworkHelper.BulidGNHelper.FeatureClassWraps[i] as BulidGeometryNetworkHelper.FeatureClassWrap;
+                BulidGeometryNetworkHelper.FeatureClassWrap item =
+                    BulidGeometryNetworkHelper.BulidGNHelper.FeatureClassWraps[i] as
+                        BulidGeometryNetworkHelper.FeatureClassWrap;
                 if (item.IsUse && (item.GeometryType == esriGeometryType.esriGeometryPolyline))
                 {
                     this.checkedListBox1.Items.Add(item, item.FeatureType == esriFeatureType.esriFTComplexEdge);
@@ -56,7 +60,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void checkedListBox1_ItemCheck(object sender, System.Windows.Forms.ItemCheckEventArgs e)
         {
-            BulidGeometryNetworkHelper.FeatureClassWrap wrap = this.checkedListBox1.Items[e.Index] as BulidGeometryNetworkHelper.FeatureClassWrap;
+            BulidGeometryNetworkHelper.FeatureClassWrap wrap =
+                this.checkedListBox1.Items[e.Index] as BulidGeometryNetworkHelper.FeatureClassWrap;
             if (e.NewValue == CheckState.Checked)
             {
                 wrap.FeatureType = esriFeatureType.esriFTComplexEdge;
@@ -67,7 +72,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void rdoIsContainNet_SelectedIndexChanged(object sender, EventArgs e)
+        private void rdoIsContainNet_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.rdoIsContainNet.SelectedIndex == 0)
             {
@@ -80,4 +85,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

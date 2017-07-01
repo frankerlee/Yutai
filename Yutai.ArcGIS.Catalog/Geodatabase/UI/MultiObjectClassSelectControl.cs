@@ -17,7 +17,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
     {
         private bool bool_0 = false;
         private Container container_0 = null;
-        [CompilerGenerated]
+
         private IArray iarray_0 = new ArrayClass();
         private IArray iarray_1 = new ArrayClass();
         private IGxObject igxObject_0 = null;
@@ -55,7 +55,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         private void btnSelectInputFeatures_Click(object sender, EventArgs e)
         {
             int num;
-            frmOpenFile file = new frmOpenFile {
+            frmOpenFile file = new frmOpenFile
+            {
                 Text = "添加数据"
             };
             file.RemoveAllFilters();
@@ -116,7 +117,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         private void btnSelectOutLocation_Click(object sender, EventArgs e)
         {
-            frmOpenFile file = new frmOpenFile {
+            frmOpenFile file = new frmOpenFile
+            {
                 Text = "保存位置"
             };
             file.RemoveAllFilters();
@@ -135,7 +137,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     }
                     else if (this.igxObject_1 is IGxFolder)
                     {
-                        IWorkspaceName name = new WorkspaceNameClass {
+                        IWorkspaceName name = new WorkspaceNameClass
+                        {
                             WorkspaceFactoryProgID = "esriDataSourcesFile.ShapefileWorkspaceFactory",
                             PathName = (this.igxObject_1.InternalObjectName as IFileName).Path
                         };
@@ -175,14 +178,15 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.iarray_1.RemoveAll();
         }
 
- public void Do()
+        public void Do()
         {
             Exception exception;
             try
             {
                 this.panel1.Visible = true;
                 Dataloaders dataloaders = new Dataloaders();
-                (dataloaders.Converter as IFeatureProgress_Event).Step+=(new IFeatureProgress_StepEventHandler(this.method_10));
+                (dataloaders.Converter as IFeatureProgress_Event).Step +=
+                    (new IFeatureProgress_StepEventHandler(this.method_10));
                 this.progressBar1.Minimum = 0;
                 this.progressBar1.Maximum = this.iarray_0.Count;
                 int index = 0;
@@ -197,7 +201,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     IName name = this.iarray_0.get_Element(index) as IName;
                     string fileNameWithoutExtension = (name as IDatasetName).Name;
                     this.labelFeatureClass.Text = "转换:" + fileNameWithoutExtension;
-                    string[] strArray = fileNameWithoutExtension.Split(new char[] { '.' });
+                    string[] strArray = fileNameWithoutExtension.Split(new char[] {'.'});
                     fileNameWithoutExtension = strArray[strArray.Length - 1];
                     Application.DoEvents();
                     try
@@ -207,7 +211,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         int num2;
                         if (this.iname_1 is IWorkspaceName)
                         {
-                            if (((this.iname_1 as IWorkspaceName).Type == esriWorkspaceType.esriLocalDatabaseWorkspace) || ((this.iname_1 as IWorkspaceName).Type == esriWorkspaceType.esriRemoteDatabaseWorkspace))
+                            if (((this.iname_1 as IWorkspaceName).Type == esriWorkspaceType.esriLocalDatabaseWorkspace) ||
+                                ((this.iname_1 as IWorkspaceName).Type == esriWorkspaceType.esriRemoteDatabaseWorkspace))
                             {
                                 workspace = this.iname_1.Open() as IWorkspace;
                                 str2 = fileNameWithoutExtension;
@@ -221,7 +226,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                             }
                             else
                             {
-                                string str3 = (this.iname_1 as IWorkspaceName).PathName + @"\" + fileNameWithoutExtension;
+                                string str3 = (this.iname_1 as IWorkspaceName).PathName + @"\" +
+                                              fileNameWithoutExtension;
                                 str2 = str3 + ".shp";
                                 num2 = 1;
                                 while (File.Exists(str2))
@@ -236,7 +242,9 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                         {
                             workspace = (this.iname_1.Open() as IDataset).Workspace;
                             str2 = fileNameWithoutExtension;
-                            for (num2 = 1; this.method_1(workspace, (name as IDatasetName).Type, str2.ToLower()); num2++)
+                            for (num2 = 1;
+                                this.method_1(workspace, (name as IDatasetName).Type, str2.ToLower());
+                                num2++)
                             {
                                 str2 = fileNameWithoutExtension + "_" + num2.ToString();
                             }
@@ -258,7 +266,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     catch (Exception exception1)
                     {
                         exception = exception1;
-                        Logger.Current.Error("",exception, "");
+                        Logger.Current.Error("", exception, "");
                     }
                     index++;
                 }
@@ -267,12 +275,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             catch (Exception exception2)
             {
                 exception = exception2;
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
                 MessageBox.Show(exception.Message);
             }
         }
 
- private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.btnDelete.Enabled = this.listView1.SelectedItems.Count > 0;
         }
@@ -303,7 +311,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                     name.Reset();
                     for (IDatasetName name2 = name.Next(); name2 != null; name2 = name.Next())
                     {
-                        string[] strArray = name2.Name.Split(new char[] { '.' });
+                        string[] strArray = name2.Name.Split(new char[] {'.'});
                         string str = strArray[strArray.Length - 1].ToLower();
                         if (string_0 == str)
                         {
@@ -357,7 +365,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 }
                 else if (this.igxObject_1 is IGxFolder)
                 {
-                    IWorkspaceName name = new WorkspaceNameClass {
+                    IWorkspaceName name = new WorkspaceNameClass
+                    {
                         WorkspaceFactoryProgID = "esriDataSourcesFile.ShapefileWorkspaceFactory",
                         PathName = (this.igxObject_1.InternalObjectName as IFileName).Path
                     };
@@ -370,15 +379,16 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             try
             {
-                IWorkspaceName name = new WorkspaceNameClass {
+                IWorkspaceName name = new WorkspaceNameClass
+                {
                     WorkspaceFactoryProgID = "esriDataSourcesFile.CadWorkspaceFactory",
                     PathName = idatasetName_0.WorkspaceName.PathName
                 };
-                return new FeatureClassNameClass { Name = idatasetName_0.Name + ":" + string_0, WorkspaceName = name };
+                return new FeatureClassNameClass {Name = idatasetName_0.Name + ":" + string_0, WorkspaceName = name};
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
             return null;
         }
@@ -424,43 +434,21 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.method_2();
         }
 
-        public esriDatasetType ImportDatasetType
-        {
-            [CompilerGenerated]
-            protected get
-            {
-                return this.esriDatasetType_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.esriDatasetType_0 = value;
-            }
-        }
+        public esriDatasetType ImportDatasetType { get; set; }
 
         public IGxObject InGxObject
         {
-            set
-            {
-                this.igxObject_0 = value;
-            }
+            set { this.igxObject_0 = value; }
         }
 
         public bool IsAnnotation
         {
-            set
-            {
-                this.bool_0 = value;
-            }
+            set { this.bool_0 = value; }
         }
 
         public IGxObject OutGxObject
         {
-            set
-            {
-                this.igxObject_1 = value;
-            }
+            set { this.igxObject_1 = value; }
         }
     }
 }
-

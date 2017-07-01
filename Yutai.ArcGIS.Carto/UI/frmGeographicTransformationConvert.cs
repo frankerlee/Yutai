@@ -15,7 +15,7 @@ namespace Yutai.ArcGIS.Carto.UI
         private bool bool_0 = false;
         private IBasicMap ibasicMap_0 = null;
         private IContainer icontainer_0 = null;
-        private int[] int_0 = new int[] { 4214, 4610, 4326 };
+        private int[] int_0 = new int[] {4214, 4610, 4326};
         private List<string> list_0 = new List<string>();
 
         public frmGeographicTransformationConvert()
@@ -27,7 +27,8 @@ namespace Yutai.ArcGIS.Carto.UI
         {
             if (this.txtConvertMethod.Tag != null)
             {
-                frmGaphicTransformation transformation = new frmGaphicTransformation {
+                frmGaphicTransformation transformation = new frmGaphicTransformation
+                {
                     GeoTransformations = this.txtConvertMethod.Tag as IGeoTransformation
                 };
                 if (transformation.ShowDialog() == DialogResult.OK)
@@ -56,7 +57,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 {
                     reference = factory.CreateGeographicCoordinateSystem(4326);
                 }
-                transformation.SourceSpatialReference = (this.listBox1.SelectedItem as ObjectWrap).Object as ISpatialReference;
+                transformation.SourceSpatialReference =
+                    (this.listBox1.SelectedItem as ObjectWrap).Object as ISpatialReference;
                 transformation.TargetSpatialReference = reference;
                 if (transformation.ShowDialog() == DialogResult.OK)
                 {
@@ -75,16 +77,21 @@ namespace Yutai.ArcGIS.Carto.UI
                 {
                     esriTransformDirection direction;
                     IGeoTransformation transformation;
-                    IGeoTransformationOperationSet geographicTransformations = (this.ibasicMap_0 as IMapGeographicTransformations).GeographicTransformations;
-                    IGeographicCoordinateSystem pFromGCS = (this.listBox1.SelectedItem as ObjectWrap).Object as IGeographicCoordinateSystem;
-                    IGeographicCoordinateSystem pToGCS = (this.cboTarget.SelectedItem as ObjectWrap).Object as IGeographicCoordinateSystem;
+                    IGeoTransformationOperationSet geographicTransformations =
+                        (this.ibasicMap_0 as IMapGeographicTransformations).GeographicTransformations;
+                    IGeographicCoordinateSystem pFromGCS =
+                        (this.listBox1.SelectedItem as ObjectWrap).Object as IGeographicCoordinateSystem;
+                    IGeographicCoordinateSystem pToGCS =
+                        (this.cboTarget.SelectedItem as ObjectWrap).Object as IGeographicCoordinateSystem;
                     geographicTransformations.Get(pFromGCS, pToGCS, out direction, out transformation);
                     if (transformation != null)
                     {
                         geographicTransformations.Remove(direction, transformation);
                     }
-                    geographicTransformations.Set(esriTransformDirection.esriTransformForward, this.txtConvertMethod.Tag as IGeoTransformation);
-                    geographicTransformations.Set(esriTransformDirection.esriTransformReverse, this.txtConvertMethod.Tag as IGeoTransformation);
+                    geographicTransformations.Set(esriTransformDirection.esriTransformForward,
+                        this.txtConvertMethod.Tag as IGeoTransformation);
+                    geographicTransformations.Set(esriTransformDirection.esriTransformReverse,
+                        this.txtConvertMethod.Tag as IGeoTransformation);
                 }
             }
             catch (Exception exception)
@@ -102,7 +109,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void frmGeographicTransformationConvert_Load(object sender, EventArgs e)
+        private void frmGeographicTransformationConvert_Load(object sender, EventArgs e)
         {
             int num;
             this.btnEdit.Enabled = false;
@@ -118,8 +125,11 @@ namespace Yutai.ArcGIS.Carto.UI
             this.cboTarget.SelectedIndex = 0;
             if (this.ibasicMap_0.SpatialReference is IProjectedCoordinateSystem)
             {
-                this.list_0.Add((this.ibasicMap_0.SpatialReference as IProjectedCoordinateSystem).GeographicCoordinateSystem.Name);
-                this.listBox1.Items.Add(new ObjectWrap((this.ibasicMap_0.SpatialReference as IProjectedCoordinateSystem).GeographicCoordinateSystem));
+                this.list_0.Add(
+                    (this.ibasicMap_0.SpatialReference as IProjectedCoordinateSystem).GeographicCoordinateSystem.Name);
+                this.listBox1.Items.Add(
+                    new ObjectWrap(
+                        (this.ibasicMap_0.SpatialReference as IProjectedCoordinateSystem).GeographicCoordinateSystem));
             }
             else if (this.ibasicMap_0.SpatialReference is IGeographicCoordinateSystem)
             {
@@ -142,11 +152,17 @@ namespace Yutai.ArcGIS.Carto.UI
                     IGeoDataset dataset = layer as IGeoDataset;
                     if (dataset.SpatialReference is IProjectedCoordinateSystem)
                     {
-                        name = (this.ibasicMap_0.SpatialReference as IProjectedCoordinateSystem).GeographicCoordinateSystem.Name;
+                        name =
+                            (this.ibasicMap_0.SpatialReference as IProjectedCoordinateSystem).GeographicCoordinateSystem
+                                .Name;
                         if (this.list_0.IndexOf(name) == -1)
                         {
-                            this.list_0.Add((this.ibasicMap_0.SpatialReference as IProjectedCoordinateSystem).GeographicCoordinateSystem.Name);
-                            this.listBox1.Items.Add(new ObjectWrap((dataset.SpatialReference as IProjectedCoordinateSystem).GeographicCoordinateSystem));
+                            this.list_0.Add(
+                                (this.ibasicMap_0.SpatialReference as IProjectedCoordinateSystem)
+                                    .GeographicCoordinateSystem.Name);
+                            this.listBox1.Items.Add(
+                                new ObjectWrap(
+                                    (dataset.SpatialReference as IProjectedCoordinateSystem).GeographicCoordinateSystem));
                         }
                     }
                     else if (dataset.SpatialReference is IGeographicCoordinateSystem)
@@ -167,14 +183,17 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.btnNew.Enabled = this.listBox1.SelectedIndex != -1;
             if ((this.bool_0 && (this.listBox1.SelectedIndex != -1)) && (this.cboTarget.SelectedIndex != -1))
             {
-                IGeographicCoordinateSystem pFromGCS = (this.listBox1.SelectedItem as ObjectWrap).Object as IGeographicCoordinateSystem;
-                IGeographicCoordinateSystem pToGCS = (this.cboTarget.SelectedItem as ObjectWrap).Object as IGeographicCoordinateSystem;
-                IGeoTransformationOperationSet geographicTransformations = (this.ibasicMap_0 as IMapGeographicTransformations).GeographicTransformations;
+                IGeographicCoordinateSystem pFromGCS =
+                    (this.listBox1.SelectedItem as ObjectWrap).Object as IGeographicCoordinateSystem;
+                IGeographicCoordinateSystem pToGCS =
+                    (this.cboTarget.SelectedItem as ObjectWrap).Object as IGeographicCoordinateSystem;
+                IGeoTransformationOperationSet geographicTransformations =
+                    (this.ibasicMap_0 as IMapGeographicTransformations).GeographicTransformations;
                 if (geographicTransformations != null)
                 {
                     esriTransformDirection direction;
@@ -215,7 +234,9 @@ namespace Yutai.ArcGIS.Carto.UI
                         if (this.list_0.IndexOf(name) == -1)
                         {
                             this.list_0.Add(name);
-                            this.listBox1.Items.Add(new ObjectWrap((dataset.SpatialReference as IProjectedCoordinateSystem).GeographicCoordinateSystem));
+                            this.listBox1.Items.Add(
+                                new ObjectWrap(
+                                    (dataset.SpatialReference as IProjectedCoordinateSystem).GeographicCoordinateSystem));
                         }
                     }
                     else if (dataset.SpatialReference is IGeographicCoordinateSystem)
@@ -234,11 +255,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IBasicMap Map
         {
-            set
-            {
-                this.ibasicMap_0 = value;
-            }
+            set { this.ibasicMap_0 = value; }
         }
     }
 }
-

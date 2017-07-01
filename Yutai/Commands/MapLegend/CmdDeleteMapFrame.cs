@@ -10,9 +10,8 @@ namespace Yutai.Commands.MapLegend
 {
     public class CmdDeleteMapFrame : YutaiCommand
     {
-       
         private IMapLegendView _view;
-      
+
         public CmdDeleteMapFrame(IAppContext context, IMapLegendView view)
         {
             _context = context;
@@ -47,8 +46,8 @@ namespace Yutai.Commands.MapLegend
             base.m_checked = false;
             base.m_enabled = true;
             base._itemType = RibbonItemType.Button;
-
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
@@ -59,11 +58,9 @@ namespace Yutai.Commands.MapLegend
             OnCreate();
         }
 
-      
+
         public void OnClick()
         {
-
-           
         }
     }
 }

@@ -39,7 +39,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 this.InitializeComponent();
                 this.symbolListView1.FullRowSelect = true;
                 this.symbolListView1.CanEditLabel = true;
-                this.symbolListView1.OnValueChanged += new SymbolListViewEx.OnValueChangedHandler(this.symbolListView1_OnValueChanged);
+                this.symbolListView1.OnValueChanged +=
+                    new SymbolListViewEx.OnValueChangedHandler(this.symbolListView1_OnValueChanged);
             }
         }
 
@@ -52,7 +53,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         {
             if (this.m_pSG != null)
             {
-                System.Drawing.Point pos = new System.Drawing.Point(this.btnStyleSet.Location.X, this.btnStyleSet.Location.Y + this.btnStyleSet.Height);
+                System.Drawing.Point pos = new System.Drawing.Point(this.btnStyleSet.Location.X,
+                    this.btnStyleSet.Location.Y + this.btnStyleSet.Height);
                 IStyleGalleryStorage pSG = (IStyleGalleryStorage) this.m_pSG;
                 for (int i = 0; i < pSG.FileCount; i++)
                 {
@@ -67,7 +69,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     {
                         text = text.Substring(0, length);
                     }
-                    MenuItem item = new MenuItem(text) {
+                    MenuItem item = new MenuItem(text)
+                    {
                         Checked = true
                     };
                     item.Click += new EventHandler(this.item_Click);
@@ -174,7 +177,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 }
             }
             return;
-        Label_0210:
+            Label_0210:
             si.Item = mapGrid;
             si.Name = "新符号";
             si.Category = "Default";
@@ -183,11 +186,12 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 IStyleGalleryStorage pSG = (IStyleGalleryStorage) this.m_pSG;
                 pSG.TargetFile = this.SymbolLibTreeView.SelectedNode.Parent.Text;
                 this.m_pSG.AddItem(si);
-                this.ReadSymbol(this.SymbolLibTreeView.SelectedNode.Text, this.SymbolLibTreeView.SelectedNode.Parent.Text);
+                this.ReadSymbol(this.SymbolLibTreeView.SelectedNode.Text,
+                    this.SymbolLibTreeView.SelectedNode.Parent.Text);
             }
         }
 
- private void EditProperty(IStyleGalleryItem si)
+        private void EditProperty(IStyleGalleryItem si)
         {
             DialogResult none = DialogResult.None;
             if (si.Item is IRepresentationRuleItem)
@@ -207,7 +211,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 ISymbol item = (ISymbol) si.Item;
                 if (item is IMarkerSymbol)
                 {
-                    frmPointSymbolEdit edit = new frmPointSymbolEdit {
+                    frmPointSymbolEdit edit = new frmPointSymbolEdit
+                    {
                         m_pSG = this.m_pSG
                     };
                     edit.SetSymbol(item);
@@ -216,7 +221,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 }
                 else if (item is ILineSymbol)
                 {
-                    frmLineSymbolEdit edit2 = new frmLineSymbolEdit {
+                    frmLineSymbolEdit edit2 = new frmLineSymbolEdit
+                    {
                         m_pSG = this.m_pSG
                     };
                     edit2.SetSymbol(item);
@@ -225,7 +231,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 }
                 else if (item is IFillSymbol)
                 {
-                    frmFillSymbolEdit edit3 = new frmFillSymbolEdit {
+                    frmFillSymbolEdit edit3 = new frmFillSymbolEdit
+                    {
                         m_pSG = this.m_pSG
                     };
                     edit3.SetSymbol(item);
@@ -234,7 +241,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 }
                 else if (item is ITextSymbol)
                 {
-                    frmTextSymbolEdit edit4 = new frmTextSymbolEdit {
+                    frmTextSymbolEdit edit4 = new frmTextSymbolEdit
+                    {
                         m_pSG = this.m_pSG
                     };
                     edit4.SetSymbol(item);
@@ -306,7 +314,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 }
                 else if (obj2 is ILabelStyle)
                 {
-                    property = new frmElementProperty {
+                    property = new frmElementProperty
+                    {
                         Text = "标注属性"
                     };
                     LabelStylePropertyPage page5 = new LabelStylePropertyPage();
@@ -323,7 +332,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     IPropertyPage page6;
                     if (obj2 is IScaleBar)
                     {
-                        property = new frmElementProperty {
+                        property = new frmElementProperty
+                        {
                             Text = "比例尺"
                         };
                         page6 = new ScaleBarFormatPropertyPage();
@@ -341,7 +351,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     }
                     else if (obj2 is IScaleText)
                     {
-                        property = new frmElementProperty {
+                        property = new frmElementProperty
+                        {
                             Text = "比例尺文本"
                         };
                         page6 = new ScaleTextTextPropertyPage();
@@ -357,7 +368,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     }
                     else if (obj2 is ILegendItem)
                     {
-                        property = new frmElementProperty {
+                        property = new frmElementProperty
+                        {
                             Text = "图例项"
                         };
                         page6 = new LegendItemArrangementPropertyPage();
@@ -374,7 +386,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     else if (obj2 is IMapGrid)
                     {
                         GridAxisPropertyPage.m_pSG = this.m_pSG;
-                        property = new frmElementProperty {
+                        property = new frmElementProperty
+                        {
                             Text = "参考系"
                         };
                         page6 = null;
@@ -459,7 +472,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 ISymbol item = (ISymbol) si.Item;
                 if (item is IMarkerSymbol)
                 {
-                    frmPointSymbolEdit edit = new frmPointSymbolEdit {
+                    frmPointSymbolEdit edit = new frmPointSymbolEdit
+                    {
                         m_pSG = this.m_pSG
                     };
                     edit.SetSymbol(item);
@@ -468,7 +482,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 }
                 else if (item is ILineSymbol)
                 {
-                    frmLineSymbolEdit edit2 = new frmLineSymbolEdit {
+                    frmLineSymbolEdit edit2 = new frmLineSymbolEdit
+                    {
                         m_pSG = this.m_pSG
                     };
                     edit2.SetSymbol(item);
@@ -477,7 +492,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 }
                 else if (item is IFillSymbol)
                 {
-                    frmFillSymbolEdit edit3 = new frmFillSymbolEdit {
+                    frmFillSymbolEdit edit3 = new frmFillSymbolEdit
+                    {
                         m_pSG = this.m_pSG
                     };
                     edit3.SetSymbol(item);
@@ -486,7 +502,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 }
                 else if (item is ITextSymbol)
                 {
-                    frmTextSymbolEdit edit4 = new frmTextSymbolEdit {
+                    frmTextSymbolEdit edit4 = new frmTextSymbolEdit
+                    {
                         m_pSG = this.m_pSG
                     };
                     edit4.SetSymbol(item);
@@ -562,7 +579,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     IPropertyPage page5;
                     if (obj2 is IScaleBar)
                     {
-                        property = new frmElementProperty {
+                        property = new frmElementProperty
+                        {
                             Text = "比例尺"
                         };
                         page5 = new ScaleBarFormatPropertyPage();
@@ -579,7 +597,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     }
                     else if (obj2 is ILabelStyle)
                     {
-                        property = new frmElementProperty {
+                        property = new frmElementProperty
+                        {
                             Text = "标注属性"
                         };
                         LabelStylePropertyPage page6 = new LabelStylePropertyPage();
@@ -592,7 +611,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     }
                     else if (obj2 is IScaleText)
                     {
-                        property = new frmElementProperty {
+                        property = new frmElementProperty
+                        {
                             Text = "比例尺文本"
                         };
                         page5 = new ScaleTextTextPropertyPage();
@@ -607,7 +627,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     }
                     else if (obj2 is ILegendItem)
                     {
-                        property = new frmElementProperty {
+                        property = new frmElementProperty
+                        {
                             Text = "图例项"
                         };
                         page5 = new LegendItemArrangementPropertyPage();
@@ -623,7 +644,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     else if (obj2 is IMapGrid)
                     {
                         GridAxisPropertyPage.m_pSG = this.m_pSG;
-                        property = new frmElementProperty {
+                        property = new frmElementProperty
+                        {
                             Text = "参考系"
                         };
                         page5 = null;
@@ -708,7 +730,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 IStyleGalleryStorage pSG = (IStyleGalleryStorage) this.m_pSG;
                 for (int i = 0; i < pSG.FileCount; i++)
                 {
-                    TreeNode pParentNode = new TreeNode(pSG.get_File(i)) {
+                    TreeNode pParentNode = new TreeNode(pSG.get_File(i))
+                    {
                         Tag = 0
                     };
                     this.InsertStyleClassToNode(pParentNode, this.m_pSG);
@@ -721,11 +744,12 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- private void InsertStyleClassToNode(TreeNode pParentNode, IStyleGallery pSG)
+        private void InsertStyleClassToNode(TreeNode pParentNode, IStyleGallery pSG)
         {
             for (int i = 0; i < pSG.ClassCount; i++)
             {
-                TreeNode node = new TreeNode(pSG.get_Class(i).Name) {
+                TreeNode node = new TreeNode(pSG.get_Class(i).Name)
+                {
                     Tag = 1
                 };
                 pParentNode.Nodes.Add(node);
@@ -796,7 +820,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     pSG = null;
-                    TreeNode pParentNode = new TreeNode(dialog.FileName) {
+                    TreeNode pParentNode = new TreeNode(dialog.FileName)
+                    {
                         Tag = 0
                     };
                     this.InsertStyleClassToNode(pParentNode, this.m_pSG);
@@ -850,7 +875,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         private void menuItemNewFillRepRule_Click(object sender, EventArgs e)
         {
-            IRepresentationRuleItem item = new RepresentationRuleItemClass {
+            IRepresentationRuleItem item = new RepresentationRuleItemClass
+            {
                 GeometryType = esriGeometryType.esriGeometryPolygon
             };
             IRepresentationRule rule = new RepresentationRuleClass();
@@ -862,7 +888,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             rule2.RepresentationRuleItem = item;
             if (rule2.ShowDialog() == DialogResult.OK)
             {
-                IStyleGalleryItem item2 = new ServerStyleGalleryItemClass {
+                IStyleGalleryItem item2 = new ServerStyleGalleryItemClass
+                {
                     Item = rule2.RepresentationRuleItem,
                     Name = "新面制图表现",
                     Category = "Default"
@@ -870,13 +897,15 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 IStyleGalleryStorage pSG = (IStyleGalleryStorage) this.m_pSG;
                 pSG.TargetFile = this.SymbolLibTreeView.SelectedNode.Parent.Text;
                 this.m_pSG.AddItem(item2);
-                this.ReadSymbol(this.SymbolLibTreeView.SelectedNode.Text, this.SymbolLibTreeView.SelectedNode.Parent.Text);
+                this.ReadSymbol(this.SymbolLibTreeView.SelectedNode.Text,
+                    this.SymbolLibTreeView.SelectedNode.Parent.Text);
             }
         }
 
         private void menuItemNewLineRepRule_Click(object sender, EventArgs e)
         {
-            IRepresentationRuleItem item = new RepresentationRuleItemClass {
+            IRepresentationRuleItem item = new RepresentationRuleItemClass
+            {
                 GeometryType = esriGeometryType.esriGeometryPolyline
             };
             IRepresentationRule rule = new RepresentationRuleClass();
@@ -888,7 +917,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             rule2.RepresentationRuleItem = item;
             if (rule2.ShowDialog() == DialogResult.OK)
             {
-                IStyleGalleryItem item2 = new ServerStyleGalleryItemClass {
+                IStyleGalleryItem item2 = new ServerStyleGalleryItemClass
+                {
                     Item = rule2.RepresentationRuleItem,
                     Name = "新线制图表现",
                     Category = "Default"
@@ -896,13 +926,15 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 IStyleGalleryStorage pSG = (IStyleGalleryStorage) this.m_pSG;
                 pSG.TargetFile = this.SymbolLibTreeView.SelectedNode.Parent.Text;
                 this.m_pSG.AddItem(item2);
-                this.ReadSymbol(this.SymbolLibTreeView.SelectedNode.Text, this.SymbolLibTreeView.SelectedNode.Parent.Text);
+                this.ReadSymbol(this.SymbolLibTreeView.SelectedNode.Text,
+                    this.SymbolLibTreeView.SelectedNode.Parent.Text);
             }
         }
 
         private void menuItemNewPointRepRule_Click(object sender, EventArgs e)
         {
-            IRepresentationRuleItem item = new RepresentationRuleItemClass {
+            IRepresentationRuleItem item = new RepresentationRuleItemClass
+            {
                 GeometryType = esriGeometryType.esriGeometryPoint
             };
             IRepresentationRule rule = new RepresentationRuleClass();
@@ -914,7 +946,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             rule2.RepresentationRuleItem = item;
             if (rule2.ShowDialog() == DialogResult.OK)
             {
-                IStyleGalleryItem item2 = new ServerStyleGalleryItemClass {
+                IStyleGalleryItem item2 = new ServerStyleGalleryItemClass
+                {
                     Item = rule2.RepresentationRuleItem,
                     Name = "新点制图表现",
                     Category = "Default"
@@ -922,7 +955,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 IStyleGalleryStorage pSG = (IStyleGalleryStorage) this.m_pSG;
                 pSG.TargetFile = this.SymbolLibTreeView.SelectedNode.Parent.Text;
                 this.m_pSG.AddItem(item2);
-                this.ReadSymbol(this.SymbolLibTreeView.SelectedNode.Text, this.SymbolLibTreeView.SelectedNode.Parent.Text);
+                this.ReadSymbol(this.SymbolLibTreeView.SelectedNode.Text,
+                    this.SymbolLibTreeView.SelectedNode.Parent.Text);
             }
         }
 
@@ -947,11 +981,17 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     int num;
                     if (this.m_pSG is ESRI.ArcGIS.esriSystem.IPersistStream)
                     {
-                        manifestResourceStream = base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.SymbolUI.template.ServerStyle");
+                        manifestResourceStream =
+                            base.GetType()
+                                .Assembly.GetManifestResourceStream(
+                                    "Yutai.ArcGIS.Controls.Controls.SymbolUI.template.ServerStyle");
                     }
                     else
                     {
-                        manifestResourceStream = base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.Controls.SymbolUI.template.style");
+                        manifestResourceStream =
+                            base.GetType()
+                                .Assembly.GetManifestResourceStream(
+                                    "Yutai.ArcGIS.Controls.Controls.SymbolUI.template.style");
                     }
                     byte[] buffer = new byte[4096];
                     while ((num = manifestResourceStream.Read(buffer, 0, 4096)) > 0)
@@ -961,7 +1001,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                     stream.Close();
                 }
                 ((IStyleGalleryStorage) this.m_pSG).AddFile(dialog.FileName);
-                TreeNode pParentNode = new TreeNode(dialog.FileName) {
+                TreeNode pParentNode = new TreeNode(dialog.FileName)
+                {
                     Tag = 0
                 };
                 this.InsertStyleClassToNode(pParentNode, this.m_pSG);
@@ -974,7 +1015,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             for (int i = 0; i < this.m_boards.Count; i++)
             {
                 IStyleGalleryItem item = (IStyleGalleryItem) this.m_boards.get_Element(i);
-                IStyleGalleryItem item2 = new ServerStyleGalleryItemClass {
+                IStyleGalleryItem item2 = new ServerStyleGalleryItemClass
+                {
                     Item = ((IClone) item.Item).Clone(),
                     Category = item.Category,
                     Name = "拷贝" + item.Name
@@ -1346,4 +1388,3 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         }
     }
 }
-

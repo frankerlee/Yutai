@@ -94,7 +94,7 @@ namespace Yutai.Plugins.Concrete
         #region Plugin events
 
         // backing fields
-       
+
         internal EventHandler<LogEventArgs> LogEntryAdded_;
         internal EventHandler<EventArgs> ToolStripCliecked_;
         internal EventHandler<MenuItemEventArgs> ItemClicked_;
@@ -111,11 +111,11 @@ namespace Yutai.Plugins.Concrete
         internal EventHandler<PluginMessageEventArgs> MessageBroadcasted_;
 
         // public events
-      /*  public event EventHandler<UpdateJoinEventArgs> UpdateTableJoin
-        {
-            add { UpdateTableJoin_ += value; }
-            remove { UpdateTableJoin_ -= value; }
-        }*/
+        /*  public event EventHandler<UpdateJoinEventArgs> UpdateTableJoin
+          {
+              add { UpdateTableJoin_ += value; }
+              remove { UpdateTableJoin_ -= value; }
+          }*/
 
         public event EventHandler<LogEventArgs> LogEntryAdded
         {
@@ -480,6 +480,7 @@ namespace Yutai.Plugins.Concrete
         }
 
         #endregion
+
         #region MapEvents
 
         //internal EventHandler<MapMouseDownArgs> MapMouseDown_;

@@ -92,24 +92,40 @@ namespace Yutai.ArcGIS.Catalog.UI
         private void CoverageTolerancePropertyPage_Load(object sender, EventArgs e)
         {
             this.txtFuzzy.Text = this.icoverage_0.get_Tolerance(esriCoverageToleranceType.esriCTTFuzzy).ToString();
-            this.lblFuzzy.Text = this.icoverage_0.get_ToleranceStatus(esriCoverageToleranceType.esriCTTFuzzy) ? "Verified" : "缺省值";
+            this.lblFuzzy.Text = this.icoverage_0.get_ToleranceStatus(esriCoverageToleranceType.esriCTTFuzzy)
+                ? "Verified"
+                : "缺省值";
             this.textDangle.Text = this.icoverage_0.get_Tolerance(esriCoverageToleranceType.esriCTTDangle).ToString();
-            this.lblDangle.Text = this.icoverage_0.get_ToleranceStatus(esriCoverageToleranceType.esriCTTDangle) ? "Verified" : "缺省值";
+            this.lblDangle.Text = this.icoverage_0.get_ToleranceStatus(esriCoverageToleranceType.esriCTTDangle)
+                ? "Verified"
+                : "缺省值";
             this.txtEdit.Text = this.icoverage_0.get_Tolerance(esriCoverageToleranceType.esriCTTEdit).ToString();
-            this.lblEdit.Text = this.icoverage_0.get_ToleranceStatus(esriCoverageToleranceType.esriCTTEdit) ? "Verified" : "缺省值";
+            this.lblEdit.Text = this.icoverage_0.get_ToleranceStatus(esriCoverageToleranceType.esriCTTEdit)
+                ? "Verified"
+                : "缺省值";
             this.txtGrain.Text = this.icoverage_0.get_Tolerance(esriCoverageToleranceType.esriCTTGrain).ToString();
-            this.lblGrain.Text = this.icoverage_0.get_ToleranceStatus(esriCoverageToleranceType.esriCTTGrain) ? "Verified" : "缺省值";
+            this.lblGrain.Text = this.icoverage_0.get_ToleranceStatus(esriCoverageToleranceType.esriCTTGrain)
+                ? "Verified"
+                : "缺省值";
             this.txtNodeSnap.Text = this.icoverage_0.get_Tolerance(esriCoverageToleranceType.esriCTTNodeSnap).ToString();
-            this.lblNodeSnap.Text = this.icoverage_0.get_ToleranceStatus(esriCoverageToleranceType.esriCTTNodeSnap) ? "Verified" : "缺省值";
+            this.lblNodeSnap.Text = this.icoverage_0.get_ToleranceStatus(esriCoverageToleranceType.esriCTTNodeSnap)
+                ? "Verified"
+                : "缺省值";
             this.txtSnap.Text = this.icoverage_0.get_Tolerance(esriCoverageToleranceType.esriCTTSnap).ToString();
-            this.lblSnap.Text = this.icoverage_0.get_ToleranceStatus(esriCoverageToleranceType.esriCTTSnap) ? "Verified" : "缺省值";
+            this.lblSnap.Text = this.icoverage_0.get_ToleranceStatus(esriCoverageToleranceType.esriCTTSnap)
+                ? "Verified"
+                : "缺省值";
             this.txtTicMatch.Text = this.icoverage_0.get_Tolerance(esriCoverageToleranceType.esriCTTTicMatch).ToString();
-            this.lblTicMatch.Text = this.icoverage_0.get_ToleranceStatus(esriCoverageToleranceType.esriCTTTicMatch) ? "Verified" : "缺省值";
+            this.lblTicMatch.Text = this.icoverage_0.get_ToleranceStatus(esriCoverageToleranceType.esriCTTTicMatch)
+                ? "Verified"
+                : "缺省值";
             this.txtWeed.Text = this.icoverage_0.get_Tolerance(esriCoverageToleranceType.esriCTTWeed).ToString();
-            this.lblWeed.Text = this.icoverage_0.get_ToleranceStatus(esriCoverageToleranceType.esriCTTWeed) ? "Verified" : "缺省值";
+            this.lblWeed.Text = this.icoverage_0.get_ToleranceStatus(esriCoverageToleranceType.esriCTTWeed)
+                ? "Verified"
+                : "缺省值";
         }
 
- public ICoverageName CoverageName
+        public ICoverageName CoverageName
         {
             set
             {
@@ -119,4 +135,3 @@ namespace Yutai.ArcGIS.Catalog.UI
         }
     }
 }
-

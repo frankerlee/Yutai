@@ -27,7 +27,8 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
 
         public void Add(object dataset, string name, string XValues, string YValues, string LabelField)
         {
-            SerieObject obj2 = new SerieObject {
+            SerieObject obj2 = new SerieObject
+            {
                 dataset = dataset,
                 YValuesField = YValues,
                 Name = name,
@@ -100,7 +101,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             return series;
         }
 
- public void InitChart()
+        public void InitChart()
         {
             this.tChart1.Series.Clear();
             for (int i = 0; i < this.m_pList.Count; i++)
@@ -108,11 +109,13 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
                 SerieObject obj2 = (SerieObject) this.m_pList[i];
                 if (obj2.dataset is DataSet)
                 {
-                    this.tChart1.Series.Add(this.CreateSeriesType((obj2.dataset as DataSet).Tables[0], obj2.Name, obj2.XValuesField, obj2.YValuesField, obj2.LabelField));
+                    this.tChart1.Series.Add(this.CreateSeriesType((obj2.dataset as DataSet).Tables[0], obj2.Name,
+                        obj2.XValuesField, obj2.YValuesField, obj2.LabelField));
                 }
                 else if (obj2.dataset is DataTable)
                 {
-                    this.tChart1.Series.Add(this.CreateSeriesType(obj2.dataset as DataTable, obj2.Name, obj2.XValuesField, obj2.YValuesField, obj2.LabelField));
+                    this.tChart1.Series.Add(this.CreateSeriesType(obj2.dataset as DataTable, obj2.Name,
+                        obj2.XValuesField, obj2.YValuesField, obj2.LabelField));
                 }
             }
             this.tChart1.Text = this._Title;
@@ -134,7 +137,9 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             while (index < fields.FieldCount)
             {
                 field = fields.get_Field(index);
-                if (((field.Type != esriFieldType.esriFieldTypeBlob) && (field.Type != esriFieldType.esriFieldTypeGeometry)) && (field.Type != esriFieldType.esriFieldTypeRaster))
+                if (((field.Type != esriFieldType.esriFieldTypeBlob) &&
+                     (field.Type != esriFieldType.esriFieldTypeGeometry)) &&
+                    (field.Type != esriFieldType.esriFieldTypeRaster))
                 {
                     dataset.Columns.Add(field.AliasName);
                 }
@@ -149,7 +154,9 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
                 while (index < fields.FieldCount)
                 {
                     field = fields.get_Field(index);
-                    if (((field.Type != esriFieldType.esriFieldTypeBlob) && (field.Type != esriFieldType.esriFieldTypeGeometry)) && (field.Type != esriFieldType.esriFieldTypeRaster))
+                    if (((field.Type != esriFieldType.esriFieldTypeBlob) &&
+                         (field.Type != esriFieldType.esriFieldTypeGeometry)) &&
+                        (field.Type != esriFieldType.esriFieldTypeRaster))
                     {
                         values[num2++] = row.get_Value(index);
                     }
@@ -161,12 +168,14 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             o = null;
             for (index = 0; index < GraphicHelper.pGraphicHelper.FiledNames.Count; index++)
             {
-                this.Add(dataset, GraphicHelper.pGraphicHelper.FiledNames[index] as string, GraphicHelper.pGraphicHelper.HorFieldName, GraphicHelper.pGraphicHelper.FiledNames[index] as string, "");
+                this.Add(dataset, GraphicHelper.pGraphicHelper.FiledNames[index] as string,
+                    GraphicHelper.pGraphicHelper.HorFieldName, GraphicHelper.pGraphicHelper.FiledNames[index] as string,
+                    "");
             }
             return true;
         }
 
- private void SeriesChart_Load(object sender, EventArgs e)
+        private void SeriesChart_Load(object sender, EventArgs e)
         {
             this.comboBox1.SelectedIndex = (int) this._Type;
             this.InitChart();
@@ -183,22 +192,13 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
 
         public string ChartTitle
         {
-            get
-            {
-                return this._Title;
-            }
-            set
-            {
-                this._Title = value;
-            }
+            get { return this._Title; }
+            set { this._Title = value; }
         }
 
         public ChartType Type
         {
-            get
-            {
-                return this._Type;
-            }
+            get { return this._Type; }
             set
             {
                 this._Type = value;
@@ -224,4 +224,3 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
         }
     }
 }
-

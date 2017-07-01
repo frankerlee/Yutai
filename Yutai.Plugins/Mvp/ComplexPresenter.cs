@@ -8,7 +8,7 @@ using System.Windows.Forms;
 namespace Yutai.Plugins.Mvp
 {
     public abstract class ComplexPresenter<TView, TCommand> : CommandDispatcher<TView, TCommand>, IPresenter
-      where TCommand : struct, IConvertible where TView : IView, IMenuProvider
+        where TCommand : struct, IConvertible where TView : IView, IMenuProvider
     {
         protected ComplexPresenter(TView view)
             : base(view)
@@ -50,7 +50,9 @@ namespace Yutai.Plugins.Mvp
         /// <summary>
         /// Called after the view was closed and presenter is about to return control flow to the external code.
         /// </summary>
-        protected virtual void OnClosed() { }
+        protected virtual void OnClosed()
+        {
+        }
 
         /// <summary>
         /// A handler for the IView.OkButton.Click event. 
@@ -86,7 +88,8 @@ namespace Yutai.Plugins.Mvp
     /// <typeparam name="TView">The type of the view.</typeparam>
     /// <typeparam name="TCommand">The type of the command.</typeparam>
     /// <typeparam name="TModel">The type of the argument.</typeparam>
-    public abstract class ComplexPresenter<TView, TCommand, TModel> : ComplexPresenter<TView, TCommand>, IPresenter<TModel>
+    public abstract class ComplexPresenter<TView, TCommand, TModel> : ComplexPresenter<TView, TCommand>,
+            IPresenter<TModel>
         where TCommand : struct, IConvertible
         where TView : IView<TModel>, IMenuProvider
         where TModel : class
@@ -121,7 +124,6 @@ namespace Yutai.Plugins.Mvp
         /// </summary>
         protected virtual void Initialize()
         {
-
         }
 
         private void Init(TModel model)

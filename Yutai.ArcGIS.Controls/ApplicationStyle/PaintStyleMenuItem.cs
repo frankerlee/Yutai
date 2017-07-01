@@ -69,7 +69,9 @@ namespace Yutai.ArcGIS.Controls.ApplicationStyle
             this.ipsDefault.Category = category;
             this.ipsDefault.ItemClick += new ItemClickEventHandler(this.ips_ItemClick);
             this.ipsWXP.Caption = "Windows XP";
-            this.ipsWXP.Glyph = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.PaintStyle.WindowsXP.bmp"));
+            this.ipsWXP.Glyph =
+                new Bitmap(
+                    base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.PaintStyle.WindowsXP.bmp"));
             this.ipsWXP.Description = "WindowsXP";
             if (this.m_pBarManager != null)
             {
@@ -79,7 +81,9 @@ namespace Yutai.ArcGIS.Controls.ApplicationStyle
             this.ipsWXP.Category = category;
             this.ipsWXP.ItemClick += new ItemClickEventHandler(this.ips_ItemClick);
             this.ipsOXP.Caption = "Office XP";
-            this.ipsOXP.Glyph = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.PaintStyle.OfficeXP.bmp"));
+            this.ipsOXP.Glyph =
+                new Bitmap(
+                    base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.PaintStyle.OfficeXP.bmp"));
             this.ipsOXP.Description = "OfficeXP";
             this.ipsOXP.Name = "ipsOXP";
             if (this.m_pBarManager != null)
@@ -89,7 +93,9 @@ namespace Yutai.ArcGIS.Controls.ApplicationStyle
             this.ipsOXP.Category = category;
             this.ipsOXP.ItemClick += new ItemClickEventHandler(this.ips_ItemClick);
             this.ipsO2K.Caption = "Office 2000";
-            this.ipsO2K.Glyph = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.PaintStyle.Office2000.bmp"));
+            this.ipsO2K.Glyph =
+                new Bitmap(
+                    base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.PaintStyle.Office2000.bmp"));
             this.ipsO2K.Description = "Office2000";
             this.ipsO2K.Name = "ipsO2K";
             this.ipsO2K.Category = category;
@@ -99,7 +105,9 @@ namespace Yutai.ArcGIS.Controls.ApplicationStyle
             }
             this.ipsO2K.ItemClick += new ItemClickEventHandler(this.ips_ItemClick);
             this.ipsO3.Caption = "Office 2003";
-            this.ipsO3.Glyph = new Bitmap(base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.PaintStyle.Office2003.bmp"));
+            this.ipsO3.Glyph =
+                new Bitmap(
+                    base.GetType().Assembly.GetManifestResourceStream("Yutai.ArcGIS.Controls.PaintStyle.Office2003.bmp"));
             this.ipsO3.Description = "Office2003";
             this.ipsO3.Name = "ipsO3";
             if (this.m_pBarManager != null)
@@ -164,7 +172,8 @@ namespace Yutai.ArcGIS.Controls.ApplicationStyle
                 }
                 foreach (SkinContainer container in SkinManager.Default.Skins)
                 {
-                    item = new BarButtonItem(this.m_pBarManager, this.skinMask + container.SkinName) {
+                    item = new BarButtonItem(this.m_pBarManager, this.skinMask + container.SkinName)
+                    {
                         Name = "bi" + container.SkinName,
                         Id = this.m_pBarManager.GetNewItemId()
                     };
@@ -182,7 +191,8 @@ namespace Yutai.ArcGIS.Controls.ApplicationStyle
                 }
                 foreach (SkinContainer container in SkinManager.Default.Skins)
                 {
-                    item = new BarButtonItem {
+                    item = new BarButtonItem
+                    {
                         Caption = this.skinMask + container.SkinName,
                         Name = "bi" + container.SkinName
                     };
@@ -260,4 +270,3 @@ namespace Yutai.ArcGIS.Controls.ApplicationStyle
         }
     }
 }
-

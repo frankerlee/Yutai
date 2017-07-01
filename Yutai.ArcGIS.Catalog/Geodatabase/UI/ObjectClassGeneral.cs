@@ -50,7 +50,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         {
             if (this.cboRelateFC.SelectedIndex != -1)
             {
-                ObjectClassHelper.m_pObjectClassHelper.m_RelatedFeatureClass = (this.cboRelateFC.SelectedItem as DatasetWrap).Dataset as IFeatureClass;
+                ObjectClassHelper.m_pObjectClassHelper.m_RelatedFeatureClass =
+                    (this.cboRelateFC.SelectedItem as DatasetWrap).Dataset as IFeatureClass;
             }
         }
 
@@ -86,7 +87,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
         }
 
- private void ObjectClassGeneral_Load(object sender, EventArgs e)
+        private void ObjectClassGeneral_Load(object sender, EventArgs e)
         {
             if (this.bool_0)
             {
@@ -96,7 +97,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 this.radioGroup.Enabled = false;
                 try
                 {
-                    if (!(!ObjectClassShareData.m_IsShapeFile && ObjectClassHelper.m_pObjectClassHelper.m_IsFeatureClass))
+                    if (
+                        !(!ObjectClassShareData.m_IsShapeFile && ObjectClassHelper.m_pObjectClassHelper.m_IsFeatureClass))
                     {
                         this.groupBox1.Visible = false;
                     }
@@ -194,10 +196,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 this.string_1 = this.txtAliasName.Text;
                 return this.string_1;
             }
-            set
-            {
-                this.string_1 = value;
-            }
+            set { this.string_1 = value; }
         }
 
         public string ClassName
@@ -207,18 +206,12 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
                 this.string_0 = this.txtName.Text;
                 return this.string_0;
             }
-            set
-            {
-                this.string_0 = value;
-            }
+            set { this.string_0 = value; }
         }
 
         public bool IsEdit
         {
-            set
-            {
-                this.bool_0 = value;
-            }
+            set { this.bool_0 = value; }
         }
 
         internal partial class DatasetWrap
@@ -237,4 +230,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

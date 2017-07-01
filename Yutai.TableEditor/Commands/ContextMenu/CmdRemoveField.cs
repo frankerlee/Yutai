@@ -59,14 +59,12 @@ namespace Yutai.Plugins.TableEditor.Commands.ContextMenu
                 {
                     pClass.DeleteField(pField);
                     _menuStrip.TableView.VirtualGridView.RemoveField(_menuStrip.ColumnIndex);
-
                 }
             }
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
-
         }
     }
 }

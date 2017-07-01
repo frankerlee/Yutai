@@ -51,7 +51,7 @@ namespace Yutai.Plugins.Helpers
             for (int i = 0; i < totalList.Count; i++)
             {
                 var curInfo = totalList[i];
-                for (int j = i + 1; j < totalList.Count; )
+                for (int j = i + 1; j < totalList.Count;)
                 {
                     var secondInfo = totalList[j];
                     if (String.Compare(curInfo.Name, secondInfo.Name, StringComparison.OrdinalIgnoreCase) == 0)

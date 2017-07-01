@@ -6,43 +6,27 @@ namespace Yutai.ArcGIS.Controls.DataConversionTools
     {
         public string Alias
         {
-            get
-            {
-                return "导入坐标数据文件";
-            }
+            get { return "导入坐标数据文件"; }
         }
 
         public object[] ParameterInfo
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public string ToolboxDirectory
         {
-            get
-            {
-                return "";
-            }
+            get { return ""; }
         }
 
         public string ToolboxName
         {
-            get
-            {
-                return "";
-            }
+            get { return ""; }
         }
 
         public string ToolName
         {
-            get
-            {
-                return "";
-            }
+            get { return ""; }
         }
     }
 }
-

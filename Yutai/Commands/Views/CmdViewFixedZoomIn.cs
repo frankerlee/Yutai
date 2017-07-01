@@ -17,13 +17,15 @@ namespace Yutai.Commands.Views
         {
             OnCreate(context);
         }
+
         public override void OnClick(object sender, EventArgs args)
         {
             OnClick();
         }
+
         public override void OnClick()
         {
-            IActiveView focusMap = (IActiveView)_context.FocusMap;
+            IActiveView focusMap = (IActiveView) _context.FocusMap;
             IEnvelope extent = focusMap.Extent;
             extent.Expand(0.75, 0.75, true);
             focusMap.Extent = extent;
@@ -45,4 +47,3 @@ namespace Yutai.Commands.Views
         }
     }
 }
-

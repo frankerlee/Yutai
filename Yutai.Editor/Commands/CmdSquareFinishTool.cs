@@ -45,11 +45,13 @@ namespace Yutai.Plugins.Editor.Commands
                 {
                     result = false;
                 }
-                else if (Yutai.ArcGIS.Common.Editor.Editor.EditMap != null && Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
+                else if (Yutai.ArcGIS.Common.Editor.Editor.EditMap != null &&
+                         Yutai.ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
                 {
                     result = false;
                 }
-                else if (Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate==null || Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer == null)
+                else if (Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate == null ||
+                         Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer == null)
                 {
                     result = false;
                 }
@@ -63,13 +65,12 @@ namespace Yutai.Plugins.Editor.Commands
                 }
                 else
                 {
-                    result = (SketchToolAssist.Feedback is INewPolygonFeedbackEx && (SketchToolAssist.Feedback as INewPolygonFeedbackEx).CanSquareAndFinish);
+                    result = (SketchToolAssist.Feedback is INewPolygonFeedbackEx &&
+                              (SketchToolAssist.Feedback as INewPolygonFeedbackEx).CanSquareAndFinish);
                 }
                 return result;
             }
         }
-
-
 
 
         public override void OnClick(object sender, EventArgs args)
@@ -84,7 +85,8 @@ namespace Yutai.Plugins.Editor.Commands
 
         public void EndSketch()
         {
-            ISpatialReference spatialReference = (Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer as IGeoDataset).SpatialReference;
+            ISpatialReference spatialReference =
+                (Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer as IGeoDataset).SpatialReference;
             IGeometry geometry = null;
             if (SketchToolAssist.Feedback is INewPolylineFeedback)
             {
@@ -96,12 +98,12 @@ namespace Yutai.Plugins.Editor.Commands
             }
             if (geometry != null)
             {
-                SketchShareEx.EndSketch(geometry, _context.ActiveView, Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
+                SketchShareEx.EndSketch(geometry, _context.ActiveView,
+                    Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
                 SketchToolAssist.Feedback = null;
                 SketchShareEx.PointCount = 0;
                 SketchShareEx.m_bInUse = false;
             }
         }
-
     }
 }

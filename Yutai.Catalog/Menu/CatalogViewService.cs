@@ -22,20 +22,17 @@ namespace Yutai.Plugins.Catalog.Menu
             _plugin = plugin;
 
             var panels = context.DockPanels;
-
-
         }
 
         public DockPanel AddPanel()
         {
-
             return _context.DockPanels.Add(_presenter.GetInternalObject() as IDockPanelView, _plugin.Identity);
         }
 
         public void Show()
         {
             DockPanel panel =
-                _context.DockPanels.GetDockPanel(((IDockPanelView)_presenter.GetInternalObject()).DockName);
+                _context.DockPanels.GetDockPanel(((IDockPanelView) _presenter.GetInternalObject()).DockName);
             if (panel == null)
             {
                 panel = AddPanel();
@@ -44,26 +41,26 @@ namespace Yutai.Plugins.Catalog.Menu
             {
                 //  ((ICatalogView)_presenter.GetInternalObject()).ValidateWorkspace();
             }
-            _context.DockPanels.ShowDockPanel(((IDockPanelView)_presenter.GetInternalObject()).DockName, true, true);
+            _context.DockPanels.ShowDockPanel(((IDockPanelView) _presenter.GetInternalObject()).DockName, true, true);
         }
 
         public bool Visible
         {
             get
             {
-                return _context.DockPanels.GetDockVisible(((IDockPanelView)_presenter.GetInternalObject()).DockName);
+                return _context.DockPanels.GetDockVisible(((IDockPanelView) _presenter.GetInternalObject()).DockName);
             }
         }
 
         public void Hide()
         {
             DockPanel panel =
-                _context.DockPanels.GetDockPanel(((IDockPanelView)_presenter.GetInternalObject()).DockName);
+                _context.DockPanels.GetDockPanel(((IDockPanelView) _presenter.GetInternalObject()).DockName);
             if (panel == null)
             {
                 return;
             }
-            _context.DockPanels.ShowDockPanel(((IDockPanelView)_presenter.GetInternalObject()).DockName, false, false);
+            _context.DockPanels.ShowDockPanel(((IDockPanelView) _presenter.GetInternalObject()).DockName, false, false);
         }
     }
 }

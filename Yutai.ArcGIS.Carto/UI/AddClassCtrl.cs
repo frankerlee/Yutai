@@ -35,7 +35,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     IAnnotateLayerProperties properties;
                     int num;
                     this.iannotateLayerPropertiesCollection2_0.QueryItem(0, out properties, out num);
-                    IAnnotateLayerProperties properties2 = new LabelEngineLayerPropertiesClass {
+                    IAnnotateLayerProperties properties2 = new LabelEngineLayerPropertiesClass
+                    {
                         Class = str,
                         FeatureLinked = properties.FeatureLinked,
                         FeatureLayer = properties.FeatureLayer,
@@ -56,7 +57,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     num = this.method_1();
                     properties3.SymbolID = num;
                     properties3.Symbol = (properties4.Symbol as IClone).Clone() as ITextSymbol;
-                    TreeNode node = new TreeNode(str) {
+                    TreeNode node = new TreeNode(str)
+                    {
                         Checked = properties2.DisplayAnnotation,
                         Tag = new frmLabelManager.AnnotateLayerPropertiesWrap(properties2, num, true)
                     };
@@ -65,7 +67,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private bool method_0(string string_0)
+        private bool method_0(string string_0)
         {
             for (int i = 0; i < this.iannotateLayerPropertiesCollection2_0.Count; i++)
             {
@@ -100,19 +102,12 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IAnnotateLayerPropertiesCollection2 AnnoLayerPropsColl
         {
-            set
-            {
-                this.iannotateLayerPropertiesCollection2_0 = value;
-            }
+            set { this.iannotateLayerPropertiesCollection2_0 = value; }
         }
 
         public TreeNode Node
         {
-            set
-            {
-                this.treeNode_0 = value;
-            }
+            set { this.treeNode_0 = value; }
         }
     }
 }
-

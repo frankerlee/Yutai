@@ -13,4 +13,3 @@
         string Text { get; set; }
     }
 }
-

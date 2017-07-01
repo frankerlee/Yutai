@@ -28,7 +28,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         public LabelStylePropertyPage(IAppContext context)
         {
             this.InitializeComponent();
-            _context =context;
+            _context = context;
         }
 
         public void Apply()
@@ -41,7 +41,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         private void btnLabelPlacement_Click(object sender, EventArgs e)
         {
-            frmElementProperty property = new frmElementProperty {
+            frmElementProperty property = new frmElementProperty
+            {
                 Text = "放值属性"
             };
             LabelPlacementPropertyPage page = new LabelPlacementPropertyPage();
@@ -74,7 +75,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.m_IsPageDirty = false;
         }
 
- private void LabelStylePropertyPage_Load(object sender, EventArgs e)
+        private void LabelStylePropertyPage_Load(object sender, EventArgs e)
         {
             this.symbolItem1.Symbol = this.m_pTextSymbol;
         }
@@ -85,44 +86,30 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             if (style != null)
             {
                 this.m_pTextSymbol = (style.Symbol as IClone).Clone() as ITextSymbol;
-                this.m_pOverposterLayerProperties = (style.BasicOverposterLayerProperties as IClone).Clone() as IBasicOverposterLayerProperties;
+                this.m_pOverposterLayerProperties =
+                    (style.BasicOverposterLayerProperties as IClone).Clone() as IBasicOverposterLayerProperties;
             }
         }
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.m_IsPageDirty;
-            }
+            get { return this.m_IsPageDirty; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public string Title
         {
-            get
-            {
-                return "标注样式";
-            }
-            set
-            {
-            }
+            get { return "标注样式"; }
+            set { }
         }
     }
 }
-

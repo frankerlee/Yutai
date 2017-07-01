@@ -24,6 +24,7 @@ namespace Yutai.Plugins.TableEditor.Editor
         private IVirtualGridView _virtualGrid;
         private CompContextMenuStrip _contextMenuStrip;
         private IActiveViewEvents_Event _activeViewEventsEvent;
+
         public TablePage(IAppContext context, ITableEditorView view, IFeatureLayer featureLayer)
         {
             InitializeComponent();
@@ -70,7 +71,7 @@ namespace Yutai.Plugins.TableEditor.Editor
             }
             _virtualGrid.SelectionChanged(oids);
         }
-        
+
         public IVirtualGridView VirtualGridView
         {
             get { return _virtualGrid; }
@@ -95,14 +96,14 @@ namespace Yutai.Plugins.TableEditor.Editor
             _header.Value = Text;
             _header.Close += _header_Close;
 
-            ((Grid)_virtualGrid).Dock = DockStyle.Fill;
-            ((Grid)_virtualGrid).FeatureLayer = _featureLayer;
-            ((Grid)_virtualGrid).ShowTable(null);
-            ((Grid)_virtualGrid).TabIndex = 1;
-            ((Grid)_virtualGrid).SelectFeatures += _virtualGrid_SelectFeatures;
-            ((Grid)_virtualGrid).ColumnHeaderRightClick += _virtualGrid_ColumnHeaderRightClick;
+            ((Grid) _virtualGrid).Dock = DockStyle.Fill;
+            ((Grid) _virtualGrid).FeatureLayer = _featureLayer;
+            ((Grid) _virtualGrid).ShowTable(null);
+            ((Grid) _virtualGrid).TabIndex = 1;
+            ((Grid) _virtualGrid).SelectFeatures += _virtualGrid_SelectFeatures;
+            ((Grid) _virtualGrid).ColumnHeaderRightClick += _virtualGrid_ColumnHeaderRightClick;
 
-            this.Controls.Add(((Grid)_virtualGrid));
+            this.Controls.Add(((Grid) _virtualGrid));
             this.Controls.Add(_header);
             this.ResumeLayout(false);
         }
@@ -135,7 +136,5 @@ namespace Yutai.Plugins.TableEditor.Editor
         {
             get { return _featureLayer; }
         }
-        
-
     }
 }

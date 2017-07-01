@@ -147,7 +147,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.int_0++;
         }
 
- private void frmNewRelationClass_Load(object sender, EventArgs e)
+        private void frmNewRelationClass_Load(object sender, EventArgs e)
         {
             this.newRelationClassSetClass_0 = new NewRelationClassSetClass();
             this.newRelationClassSetClass_0.Dock = DockStyle.Fill;
@@ -174,7 +174,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.panel2.Controls.Add(this.newRelationClass_SetKey_0);
         }
 
- private void simpleButton3_Click(object sender, EventArgs e)
+        private void simpleButton3_Click(object sender, EventArgs e)
         {
         }
 
@@ -197,4 +197,3 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
         }
     }
 }
-

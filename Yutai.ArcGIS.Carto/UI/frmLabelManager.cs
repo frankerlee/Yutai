@@ -33,7 +33,7 @@ namespace Yutai.ArcGIS.Carto.UI
             (this.imap_0 as IActiveView).Refresh();
         }
 
- private void frmLabelManager_Load(object sender, EventArgs e)
+        private void frmLabelManager_Load(object sender, EventArgs e)
         {
             this.groupBox1.Controls.Add(this.pointLabelSetCtrl_0);
             this.pointLabelSetCtrl_0.Visible = false;
@@ -52,7 +52,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 ILayer layer = this.imap_0.get_Layer(i);
                 if (layer is IGeoFeatureLayer)
                 {
-                    TreeNode node = new TreeNode(layer.Name) {
+                    TreeNode node = new TreeNode(layer.Name)
+                    {
                         Checked = (layer as IGeoFeatureLayer).DisplayAnnotation
                     };
                     GeoFeatureLayerWrap wrap = new GeoFeatureLayerWrap(layer as IGeoFeatureLayer);
@@ -68,16 +69,20 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void method_0(TreeNode treeNode_0, IAnnotateLayerPropertiesCollection2 iannotateLayerPropertiesCollection2_0)
+        private void method_0(TreeNode treeNode_0,
+            IAnnotateLayerPropertiesCollection2 iannotateLayerPropertiesCollection2_0)
         {
             for (int i = 0; i < iannotateLayerPropertiesCollection2_0.Count; i++)
             {
                 IAnnotateLayerProperties properties;
                 int num2;
                 iannotateLayerPropertiesCollection2_0.QueryItem(i, out properties, out num2);
-                TreeNode node = new TreeNode(properties.Class) {
+                TreeNode node = new TreeNode(properties.Class)
+                {
                     Checked = properties.DisplayAnnotation,
-                    Tag = new AnnotateLayerPropertiesWrap((properties as IClone).Clone() as IAnnotateLayerProperties, num2, false)
+                    Tag =
+                        new AnnotateLayerPropertiesWrap((properties as IClone).Clone() as IAnnotateLayerProperties, num2,
+                            false)
                 };
                 treeNode_0.Nodes.Add(node);
             }
@@ -85,7 +90,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void method_1(TreeNode treeNode_0)
         {
-            IAnnotateLayerPropertiesCollection2 annoLayerPropertiesColn = (treeNode_0.Tag as GeoFeatureLayerWrap).AnnoLayerPropertiesColn as IAnnotateLayerPropertiesCollection2;
+            IAnnotateLayerPropertiesCollection2 annoLayerPropertiesColn =
+                (treeNode_0.Tag as GeoFeatureLayerWrap).AnnoLayerPropertiesColn as IAnnotateLayerPropertiesCollection2;
             for (int i = 0; i < treeNode_0.Nodes.Count; i++)
             {
                 TreeNode node = treeNode_0.Nodes[i];
@@ -111,7 +117,9 @@ namespace Yutai.ArcGIS.Carto.UI
                 if (selectedNode.Tag is GeoFeatureLayerWrap)
                 {
                     this.addClassCtrl_0.Node = selectedNode;
-                    this.addClassCtrl_0.AnnoLayerPropsColl = (selectedNode.Tag as GeoFeatureLayerWrap).AnnoLayerPropertiesColn as IAnnotateLayerPropertiesCollection2;
+                    this.addClassCtrl_0.AnnoLayerPropsColl =
+                        (selectedNode.Tag as GeoFeatureLayerWrap).AnnoLayerPropertiesColn as
+                            IAnnotateLayerPropertiesCollection2;
                     this.addClassCtrl_0.Visible = true;
                     this.fillLabelSetCtrl_0.Visible = false;
                     this.lineLabelSetCtrl_0.Visible = false;
@@ -128,25 +136,29 @@ namespace Yutai.ArcGIS.Carto.UI
                     {
                         case esriGeometryType.esriGeometryPoint:
                             this.pointLabelSetCtrl_0.GeoFeatureLayer = geoFeatureLayer;
-                            this.pointLabelSetCtrl_0.AnnotateLayerProperties = (selectedNode.Tag as AnnotateLayerPropertiesWrap).AnnoLayerProperty;
+                            this.pointLabelSetCtrl_0.AnnotateLayerProperties =
+                                (selectedNode.Tag as AnnotateLayerPropertiesWrap).AnnoLayerProperty;
                             this.pointLabelSetCtrl_0.Visible = true;
                             break;
 
                         case esriGeometryType.esriGeometryMultipoint:
                             this.pointLabelSetCtrl_0.GeoFeatureLayer = geoFeatureLayer;
-                            this.pointLabelSetCtrl_0.AnnotateLayerProperties = (selectedNode.Tag as AnnotateLayerPropertiesWrap).AnnoLayerProperty;
+                            this.pointLabelSetCtrl_0.AnnotateLayerProperties =
+                                (selectedNode.Tag as AnnotateLayerPropertiesWrap).AnnoLayerProperty;
                             this.pointLabelSetCtrl_0.Visible = true;
                             break;
 
                         case esriGeometryType.esriGeometryPolyline:
                             this.lineLabelSetCtrl_0.GeoFeatureLayer = geoFeatureLayer;
-                            this.lineLabelSetCtrl_0.AnnotateLayerProperties = (selectedNode.Tag as AnnotateLayerPropertiesWrap).AnnoLayerProperty;
+                            this.lineLabelSetCtrl_0.AnnotateLayerProperties =
+                                (selectedNode.Tag as AnnotateLayerPropertiesWrap).AnnoLayerProperty;
                             this.lineLabelSetCtrl_0.Visible = true;
                             break;
 
                         case esriGeometryType.esriGeometryPolygon:
                             this.fillLabelSetCtrl_0.GeoFeatureLayer = geoFeatureLayer;
-                            this.fillLabelSetCtrl_0.AnnotateLayerProperties = (selectedNode.Tag as AnnotateLayerPropertiesWrap).AnnoLayerProperty;
+                            this.fillLabelSetCtrl_0.AnnotateLayerProperties =
+                                (selectedNode.Tag as AnnotateLayerPropertiesWrap).AnnoLayerProperty;
                             this.fillLabelSetCtrl_0.Visible = true;
                             break;
                     }
@@ -156,10 +168,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IMap FocusMap
         {
-            set
-            {
-                this.imap_0 = value;
-            }
+            set { this.imap_0 = value; }
         }
 
         internal partial class AnnotateLayerPropertiesWrap
@@ -168,7 +177,8 @@ namespace Yutai.ArcGIS.Carto.UI
             private IAnnotateLayerProperties iannotateLayerProperties_0 = null;
             private int int_0 = 0;
 
-            public AnnotateLayerPropertiesWrap(IAnnotateLayerProperties iannotateLayerProperties_1, int int_1, bool bool_1)
+            public AnnotateLayerPropertiesWrap(IAnnotateLayerProperties iannotateLayerProperties_1, int int_1,
+                bool bool_1)
             {
                 this.iannotateLayerProperties_0 = iannotateLayerProperties_1;
                 this.int_0 = int_1;
@@ -177,26 +187,17 @@ namespace Yutai.ArcGIS.Carto.UI
 
             public IAnnotateLayerProperties AnnoLayerProperty
             {
-                get
-                {
-                    return this.iannotateLayerProperties_0;
-                }
+                get { return this.iannotateLayerProperties_0; }
             }
 
             public int ID
             {
-                get
-                {
-                    return this.int_0;
-                }
+                get { return this.int_0; }
             }
 
             public bool IsNew
             {
-                get
-                {
-                    return this.bool_0;
-                }
+                get { return this.bool_0; }
             }
         }
 
@@ -213,20 +214,13 @@ namespace Yutai.ArcGIS.Carto.UI
 
             public IAnnotateLayerPropertiesCollection AnnoLayerPropertiesColn
             {
-                get
-                {
-                    return this.iannotateLayerPropertiesCollection_0;
-                }
+                get { return this.iannotateLayerPropertiesCollection_0; }
             }
 
             public IGeoFeatureLayer GeoFeatureLayer
             {
-                get
-                {
-                    return this.igeoFeatureLayer_0;
-                }
+                get { return this.igeoFeatureLayer_0; }
             }
         }
     }
 }
-

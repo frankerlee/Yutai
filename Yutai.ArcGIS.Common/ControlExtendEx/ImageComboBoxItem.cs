@@ -116,23 +116,15 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public System.Drawing.Font Font
         {
-            get
-            {
-                return this.font_0;
-            }
-            set
-            {
-                this.font_0 = value;
-            }
+            get { return this.font_0; }
+            set { this.font_0 = value; }
         }
 
-        [Editor(typeof(DropDownImages), typeof(UITypeEditor)), DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [Editor(typeof(DropDownImages), typeof(UITypeEditor)),
+         DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public string Image
         {
-            get
-            {
-                return this.string_0;
-            }
+            get { return this.string_0; }
             set
             {
                 if (value != null)
@@ -153,33 +145,26 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
         [Browsable(false), EditorBrowsable(EditorBrowsableState.Always)]
         public int ImageIndex
         {
-            get
-            {
-                return this.int_0;
-            }
-            set
-            {
-                this.int_0 = value;
-            }
+            get { return this.int_0; }
+            set { this.int_0 = value; }
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public int IndentLevel
         {
-            get
-            {
-                return this.int_1;
-            }
+            get { return this.int_1; }
             set
             {
                 this.int_1 = value;
                 if (this.int_1 < 0)
                 {
-                    throw new Exception("Please enter a value greater than 0 and less than 5 for indentation." + Environment.NewLine + "Supported indentation levels are from 0-5");
+                    throw new Exception("Please enter a value greater than 0 and less than 5 for indentation." +
+                                        Environment.NewLine + "Supported indentation levels are from 0-5");
                 }
                 if (this.int_1 > 10)
                 {
-                    throw new Exception("Please enter a value greater than 0 and less than 5 for indentation." + Environment.NewLine + "Supported indentation levels are from 0-5");
+                    throw new Exception("Please enter a value greater than 0 and less than 5 for indentation." +
+                                        Environment.NewLine + "Supported indentation levels are from 0-5");
                 }
             }
         }
@@ -187,28 +172,15 @@ namespace Yutai.ArcGIS.Common.ControlExtendEx
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public object Item
         {
-            get
-            {
-                return this.object_0;
-            }
-            set
-            {
-                this.object_0 = value;
-            }
+            get { return this.object_0; }
+            set { this.object_0 = value; }
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible), Localizable(true)]
         public string Text
         {
-            get
-            {
-                return this.string_1;
-            }
-            set
-            {
-                this.string_1 = value;
-            }
+            get { return this.string_1; }
+            set { this.string_1 = value; }
         }
     }
 }
-

@@ -18,7 +18,8 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         public override void OnClick()
         {
-            frmDataFrameProperty property = new frmDataFrameProperty {
+            frmDataFrameProperty property = new frmDataFrameProperty
+            {
                 FocusMap = this._hookHelper.FocusMap as IBasicMap
             };
             if (property.ShowDialog() != DialogResult.OK)
@@ -32,4 +33,3 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         }
     }
 }
-

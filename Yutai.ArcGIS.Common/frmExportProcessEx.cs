@@ -31,9 +31,6 @@ namespace Yutai.ArcGIS.Common
 
         private bool bool_1 = false;
 
-       
-
-       
 
         public IConvertEvent ConvertEvent
         {
@@ -46,22 +43,13 @@ namespace Yutai.ArcGIS.Common
 
         public bool AutoCloseCheckEnable
         {
-            set
-            {
-                this.checkBox1.Enabled = value;
-            }
+            set { this.checkBox1.Enabled = value; }
         }
 
         public bool IsAutoClose
         {
-            get
-            {
-                return this.checkBox1.Checked;
-            }
-            set
-            {
-                this.checkBox1.Checked = value;
-            }
+            get { return this.checkBox1.Checked; }
+            set { this.checkBox1.Checked = value; }
         }
 
         public frmExportProcessEx()
@@ -197,9 +185,5 @@ namespace Yutai.ArcGIS.Common
                 e.Cancel = true;
             }
         }
-
-     
-
-      
     }
 }

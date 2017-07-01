@@ -32,7 +32,8 @@ namespace Yutai.ArcGIS.Carto.UI
         public void Apply()
         {
             IObjectCopy copy = new ObjectCopyClass();
-            IProportionalSymbolRenderer renderer = copy.Copy(this.iproportionalSymbolRenderer_0) as IProportionalSymbolRenderer;
+            IProportionalSymbolRenderer renderer =
+                copy.Copy(this.iproportionalSymbolRenderer_0) as IProportionalSymbolRenderer;
             renderer.CreateLegendSymbols();
             this.igeoFeatureLayer_0.Renderer = renderer as IFeatureRenderer;
         }
@@ -60,7 +61,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void btnDataExclusion_Click(object sender, EventArgs e)
         {
-            frmDataExclusion exclusion = new frmDataExclusion {
+            frmDataExclusion exclusion = new frmDataExclusion
+            {
                 FeatureLayer = this.igeoFeatureLayer_0,
                 DataExclusion = this.iproportionalSymbolRenderer_0 as IDataExclusion
             };
@@ -104,16 +106,19 @@ namespace Yutai.ArcGIS.Carto.UI
                 if (this.cboNormFields.SelectedIndex == 0)
                 {
                     this.iproportionalSymbolRenderer_0.NormField = "";
-                    (this.iproportionalSymbolRenderer_0 as IDataNormalization).NormalizationType = esriDataNormalization.esriNormalizeByNothing;
+                    (this.iproportionalSymbolRenderer_0 as IDataNormalization).NormalizationType =
+                        esriDataNormalization.esriNormalizeByNothing;
                 }
                 else if (this.cboNormFields.SelectedIndex == 1)
                 {
                     this.iproportionalSymbolRenderer_0.NormField = "";
-                    (this.iproportionalSymbolRenderer_0 as IDataNormalization).NormalizationType = esriDataNormalization.esriNormalizeByLog;
+                    (this.iproportionalSymbolRenderer_0 as IDataNormalization).NormalizationType =
+                        esriDataNormalization.esriNormalizeByLog;
                 }
                 else if (this.cboNormFields.SelectedIndex > 1)
                 {
-                    (this.iproportionalSymbolRenderer_0 as IDataNormalization).NormalizationType = esriDataNormalization.esriNormalizeByField;
+                    (this.iproportionalSymbolRenderer_0 as IDataNormalization).NormalizationType =
+                        esriDataNormalization.esriNormalizeByField;
                     this.iproportionalSymbolRenderer_0.NormField = (this.cboNormFields.SelectedItem as FieldWrap).Name;
                 }
                 this.GetMinMaxValue();
@@ -137,7 +142,8 @@ namespace Yutai.ArcGIS.Carto.UI
                         this.btnBackground.Invalidate();
                         this.btnMinSymbol.Invalidate();
                     }
-                    else if ((this.igeoFeatureLayer_0.FeatureClass.ShapeType == esriGeometryType.esriGeometryPoint) || (this.igeoFeatureLayer_0.FeatureClass.ShapeType == esriGeometryType.esriGeometryMultipoint))
+                    else if ((this.igeoFeatureLayer_0.FeatureClass.ShapeType == esriGeometryType.esriGeometryPoint) ||
+                             (this.igeoFeatureLayer_0.FeatureClass.ShapeType == esriGeometryType.esriGeometryMultipoint))
                     {
                         this.SymbolgroupBox1.Visible = true;
                         this.SymbolgroupBox2.Visible = false;
@@ -175,22 +181,25 @@ namespace Yutai.ArcGIS.Carto.UI
             this.iproportionalSymbolRenderer_0.FlanneryCompensation = this.chkFlannery.Checked;
         }
 
- public void GetMinMaxValue()
+        public void GetMinMaxValue()
         {
             try
             {
                 if (this.cboValueFields.SelectedIndex > 0)
                 {
-                    IQueryFilter filter = new QueryFilterClass {
+                    IQueryFilter filter = new QueryFilterClass
+                    {
                         SubFields = this.cboValueFields.Text
                     };
-                    ITableHistogram histogram = new BasicTableHistogramClass {
+                    ITableHistogram histogram = new BasicTableHistogramClass
+                    {
                         Table = this.method_0(),
                         Field = (this.cboValueFields.SelectedItem as FieldWrap).Name
                     };
                     if (this.cboNormFields.SelectedIndex == 0)
                     {
-                        (histogram as IDataNormalization).NormalizationType = esriDataNormalization.esriNormalizeByNothing;
+                        (histogram as IDataNormalization).NormalizationType =
+                            esriDataNormalization.esriNormalizeByNothing;
                     }
                     else if (this.cboNormFields.SelectedIndex == 1)
                     {
@@ -214,7 +223,7 @@ namespace Yutai.ArcGIS.Carto.UI
                         this.iproportionalSymbolRenderer_0.MinDataValue = minimum;
                         this.iproportionalSymbolRenderer_0.MaxDataValue = maximum;
                         ISymbol symbol = (this.iproportionalSymbolRenderer_0.MinSymbol as IClone).Clone() as ISymbol;
-                        double num3 = maximum / minimum;
+                        double num3 = maximum/minimum;
                         if (num3 > 50.0)
                         {
                             num3 = 50.0;
@@ -281,7 +290,8 @@ namespace Yutai.ArcGIS.Carto.UI
                 index = 1;
                 while (index < this.cboValueFields.Properties.Items.Count)
                 {
-                    if ((this.cboValueFields.Properties.Items[index] as FieldWrap).Name == this.iproportionalSymbolRenderer_0.Field)
+                    if ((this.cboValueFields.Properties.Items[index] as FieldWrap).Name ==
+                        this.iproportionalSymbolRenderer_0.Field)
                     {
                         this.cboValueFields.SelectedIndex = index;
                         break;
@@ -289,11 +299,13 @@ namespace Yutai.ArcGIS.Carto.UI
                     index++;
                 }
             }
-            if ((this.iproportionalSymbolRenderer_0 as IDataNormalization).NormalizationType == esriDataNormalization.esriNormalizeByLog)
+            if ((this.iproportionalSymbolRenderer_0 as IDataNormalization).NormalizationType ==
+                esriDataNormalization.esriNormalizeByLog)
             {
                 this.cboNormFields.Text = "<LOG>";
             }
-            else if ((this.iproportionalSymbolRenderer_0 as IDataNormalization).NormalizationType == esriDataNormalization.esriNormalizeByNothing)
+            else if ((this.iproportionalSymbolRenderer_0 as IDataNormalization).NormalizationType ==
+                     esriDataNormalization.esriNormalizeByNothing)
             {
                 this.cboNormFields.Text = "<无>";
             }
@@ -301,7 +313,8 @@ namespace Yutai.ArcGIS.Carto.UI
             {
                 for (index = 2; index < this.cboNormFields.Properties.Items.Count; index++)
                 {
-                    if ((this.cboNormFields.Properties.Items[index] as FieldWrap).Name == this.iproportionalSymbolRenderer_0.NormField)
+                    if ((this.cboNormFields.Properties.Items[index] as FieldWrap).Name ==
+                        this.iproportionalSymbolRenderer_0.NormField)
                     {
                         this.cboNormFields.SelectedIndex = index;
                         break;
@@ -321,7 +334,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     this.btnBackground.Invalidate();
                     this.btnMinSymbol.Invalidate();
                 }
-                else if ((this.igeoFeatureLayer_0.FeatureClass.ShapeType == esriGeometryType.esriGeometryPoint) || (this.igeoFeatureLayer_0.FeatureClass.ShapeType == esriGeometryType.esriGeometryMultipoint))
+                else if ((this.igeoFeatureLayer_0.FeatureClass.ShapeType == esriGeometryType.esriGeometryPoint) ||
+                         (this.igeoFeatureLayer_0.FeatureClass.ShapeType == esriGeometryType.esriGeometryMultipoint))
                 {
                     this.SymbolgroupBox1.Visible = true;
                     this.SymbolgroupBox2.Visible = false;
@@ -342,7 +356,7 @@ namespace Yutai.ArcGIS.Carto.UI
             this.cboLegendCount.Text = this.iproportionalSymbolRenderer_0.LegendSymbolCount.ToString();
         }
 
- private ITable method_0()
+        private ITable method_0()
         {
             if (this.igeoFeatureLayer_0 == null)
             {
@@ -381,13 +395,16 @@ namespace Yutai.ArcGIS.Carto.UI
                         this.iproportionalSymbolRenderer_0.LegendSymbolCount = 3;
                         this.iproportionalSymbolRenderer_0.FlanneryCompensation = false;
                         this.iproportionalSymbolRenderer_0.ValueUnit = esriUnits.esriUnknownUnits;
-                        this.iproportionalSymbolRenderer_0.ValueRepresentation = esriValueRepresentations.esriValueRepUnknown;
+                        this.iproportionalSymbolRenderer_0.ValueRepresentation =
+                            esriValueRepresentations.esriValueRepUnknown;
                         this.iproportionalSymbolRenderer_0.Field = "";
                         (this.iproportionalSymbolRenderer_0 as IDataNormalization).NormalizationField = "";
-                        (this.iproportionalSymbolRenderer_0 as IDataNormalization).NormalizationType = esriDataNormalization.esriNormalizeByNothing;
+                        (this.iproportionalSymbolRenderer_0 as IDataNormalization).NormalizationType =
+                            esriDataNormalization.esriNormalizeByNothing;
                         if (this.igeoFeatureLayer_0.FeatureClass.ShapeType == esriGeometryType.esriGeometryPolygon)
                         {
-                            IFillSymbol symbol = new SimpleFillSymbolClass {
+                            IFillSymbol symbol = new SimpleFillSymbolClass
+                            {
                                 Color = this.method_3(23)
                             };
                             this.iproportionalSymbolRenderer_0.BackgroundSymbol = symbol;
@@ -413,7 +430,8 @@ namespace Yutai.ArcGIS.Carto.UI
         private IColor method_3(int int_0)
         {
             bool flag;
-            IRandomColorRamp ramp = new RandomColorRampClass {
+            IRandomColorRamp ramp = new RandomColorRampClass
+            {
                 StartHue = 40,
                 EndHue = 120,
                 MinValue = 65,
@@ -432,21 +450,28 @@ namespace Yutai.ArcGIS.Carto.UI
         private IColor method_4()
         {
             Random random = new Random((int) DateTime.Now.Ticks);
-            return new RgbColorClass { Red = (int) (255.0 * random.NextDouble()), Green = (int) (255.0 * random.NextDouble()), Blue = (int) (255.0 * random.NextDouble()) };
+            return new RgbColorClass
+            {
+                Red = (int) (255.0*random.NextDouble()),
+                Green = (int) (255.0*random.NextDouble()),
+                Blue = (int) (255.0*random.NextDouble())
+            };
         }
 
         private ISymbol method_5()
         {
             if (this.igeoFeatureLayer_0.FeatureClass.ShapeType == esriGeometryType.esriGeometryPolyline)
             {
-                ILineSymbol symbol = new SimpleLineSymbolClass {
+                ILineSymbol symbol = new SimpleLineSymbolClass
+                {
                     Width = 1.0
                 };
                 (symbol as ISimpleLineSymbol).Style = esriSimpleLineStyle.esriSLSSolid;
                 symbol.Color = this.method_4();
                 return (symbol as ISymbol);
             }
-            IMarkerSymbol symbol3 = new SimpleMarkerSymbolClass {
+            IMarkerSymbol symbol3 = new SimpleMarkerSymbolClass
+            {
                 Size = 2.0,
                 Color = this.method_4()
             };
@@ -481,35 +506,19 @@ namespace Yutai.ArcGIS.Carto.UI
 
         bool IUserControl.Visible
         {
-            get
-            {
-                return base.Visible;
-            }
-            set
-            {
-                base.Visible = value;
-            }
+            get { return base.Visible; }
+            set { base.Visible = value; }
         }
 
         public IProportionalSymbolRenderer ProportionalSymbolRenderer
         {
-            get
-            {
-                return this.iproportionalSymbolRenderer_0;
-            }
-            set
-            {
-                this.iproportionalSymbolRenderer_0 = value;
-            }
+            get { return this.iproportionalSymbolRenderer_0; }
+            set { this.iproportionalSymbolRenderer_0 = value; }
         }
 
         public IStyleGallery StyleGallery
         {
-            set
-            {
-                this.istyleGallery_0 = value;
-            }
+            set { this.istyleGallery_0 = value; }
         }
     }
 }
-

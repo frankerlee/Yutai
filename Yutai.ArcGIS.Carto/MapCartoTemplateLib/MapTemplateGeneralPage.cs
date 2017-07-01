@@ -20,8 +20,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         private bool bool_0 = false;
         private bool bool_1 = false;
         private IContainer icontainer_0 = null;
-        [CompilerGenerated]
-        private MapCartoTemplateLib.MapTemplate mapTemplate_0 = null;
+
 
         public event OnValueChangeEventHandler OnValueChange;
 
@@ -35,36 +34,36 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             if (this.bool_1)
             {
                 this.bool_1 = false;
-                this.mapTemplate_0.Width = double.Parse(this.txtWidth.Text);
-                this.mapTemplate_0.Height = double.Parse(this.txtHeight.Text);
-                this.mapTemplate_0.Scale = double.Parse(this.txtScale.Text);
+                this.MapTemplate.Width = double.Parse(this.txtWidth.Text);
+                this.MapTemplate.Height = double.Parse(this.txtHeight.Text);
+                this.MapTemplate.Scale = double.Parse(this.txtScale.Text);
                 if (this.rdoRect.Checked)
                 {
-                    this.mapTemplate_0.MapFrameType = MapFrameType.MFTRect;
+                    this.MapTemplate.MapFrameType = MapFrameType.MFTRect;
                 }
                 else
                 {
-                    this.mapTemplate_0.MapFrameType = MapFrameType.MFTTrapezoid;
+                    this.MapTemplate.MapFrameType = MapFrameType.MFTTrapezoid;
                 }
-                this.mapTemplate_0.NewMapFrameTypeVal = this.mapTemplate_0.MapFrameType;
-                this.mapTemplate_0.XInterval = double.Parse(this.txtXInterval.Text);
-                this.mapTemplate_0.YInterval = double.Parse(this.txtYInterval.Text);
-                this.mapTemplate_0.Name = this.txtName.Text;
-                this.mapTemplate_0.LeftInOutSpace = double.Parse(this.txtLeftSpace.Text);
-                this.mapTemplate_0.RightInOutSpace = double.Parse(this.txtRightSpace.Text);
-                this.mapTemplate_0.TopInOutSpace = double.Parse(this.txtTopSpace.Text);
-                this.mapTemplate_0.BottomInOutSpace = double.Parse(this.txtBottomSpace.Text);
-                this.mapTemplate_0.BorderSymbol = this.styleButton1.Style as ISymbol;
-                this.mapTemplate_0.OutBorderWidth = double.Parse(this.txtOutBorderWidth.Text);
+                this.MapTemplate.NewMapFrameTypeVal = this.MapTemplate.MapFrameType;
+                this.MapTemplate.XInterval = double.Parse(this.txtXInterval.Text);
+                this.MapTemplate.YInterval = double.Parse(this.txtYInterval.Text);
+                this.MapTemplate.Name = this.txtName.Text;
+                this.MapTemplate.LeftInOutSpace = double.Parse(this.txtLeftSpace.Text);
+                this.MapTemplate.RightInOutSpace = double.Parse(this.txtRightSpace.Text);
+                this.MapTemplate.TopInOutSpace = double.Parse(this.txtTopSpace.Text);
+                this.MapTemplate.BottomInOutSpace = double.Parse(this.txtBottomSpace.Text);
+                this.MapTemplate.BorderSymbol = this.styleButton1.Style as ISymbol;
+                this.MapTemplate.OutBorderWidth = double.Parse(this.txtOutBorderWidth.Text);
                 if (this.chkMapGrid.Checked)
                 {
                     this.method_0();
                 }
                 else
                 {
-                    this.mapTemplate_0.MapGrid = null;
+                    this.MapTemplate.MapGrid = null;
                 }
-                this.mapTemplate_0.FixedWidthAndBottomSpace = this.checkBox1.Checked;
+                this.MapTemplate.FixedWidthAndBottomSpace = this.checkBox1.Checked;
             }
         }
 
@@ -162,13 +161,15 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
- private void MapTemplateGeneralPage_Load(object sender, EventArgs e)
+        private void MapTemplateGeneralPage_Load(object sender, EventArgs e)
         {
             this.cboStyle.SelectedIndex = 0;
-            CartographicLineSymbolClass class2 = new CartographicLineSymbolClass {
+            CartographicLineSymbolClass class2 = new CartographicLineSymbolClass
+            {
                 Cap = esriLineCapStyle.esriLCSSquare
             };
-            RgbColorClass class3 = new RgbColorClass {
+            RgbColorClass class3 = new RgbColorClass
+            {
                 Red = 0,
                 Blue = 0,
                 Green = 0
@@ -178,17 +179,20 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             class2.Width = 1.0;
             this.ilineSymbol_0 = class2;
             SimpleFillSymbolClass class4 = new SimpleFillSymbolClass();
-            RgbColorClass class5 = new RgbColorClass {
+            RgbColorClass class5 = new RgbColorClass
+            {
                 Red = 0,
                 Blue = 0,
                 Green = 0
             };
             class4.Color = class5;
             class4.Style = esriSimpleFillStyle.esriSFSSolid;
-            SimpleLineSymbolClass class6 = new SimpleLineSymbolClass {
+            SimpleLineSymbolClass class6 = new SimpleLineSymbolClass
+            {
                 Width = 0.0
             };
-            RgbColorClass class7 = new RgbColorClass {
+            RgbColorClass class7 = new RgbColorClass
+            {
                 Red = 0,
                 Blue = 0,
                 Green = 0
@@ -197,10 +201,10 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             class4.Outline = class6;
             this.ifillSymbol_0 = class4;
             this.styleButton1.Style = this.ilineSymbol_0;
-            if (this.mapTemplate_0 != null)
+            if (this.MapTemplate != null)
             {
-                this.txtName.Text = this.mapTemplate_0.Name;
-                if (this.mapTemplate_0.MapFramingType == MapFramingType.StandardFraming)
+                this.txtName.Text = this.MapTemplate.Name;
+                if (this.MapTemplate.MapFramingType == MapFramingType.StandardFraming)
                 {
                     this.groupBoxPage.Enabled = true;
                     this.panelScale.Enabled = true;
@@ -210,7 +214,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     this.groupBoxPage.Enabled = false;
                     this.panelScale.Enabled = false;
                 }
-                if (this.mapTemplate_0.MapFrameType == MapFrameType.MFTRect)
+                if (this.MapTemplate.MapFrameType == MapFrameType.MFTRect)
                 {
                     this.rdoRect.Checked = true;
                 }
@@ -218,26 +222,26 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 {
                     this.rdoTrapezoid.Checked = true;
                 }
-                this.txtLeftSpace.Text = this.mapTemplate_0.LeftInOutSpace.ToString();
-                this.txtRightSpace.Text = this.mapTemplate_0.RightInOutSpace.ToString();
-                this.txtTopSpace.Text = this.mapTemplate_0.TopInOutSpace.ToString();
-                this.txtBottomSpace.Text = this.mapTemplate_0.BottomInOutSpace.ToString();
-                this.txtOutBorderWidth.Text = this.mapTemplate_0.OutBorderWidth.ToString();
-                this.styleButton1.Style = this.mapTemplate_0.BorderSymbol;
-                this.cboStyle.SelectedIndex = (int) this.mapTemplate_0.TemplateSizeStyle;
-                this.txtWidth.Text = this.mapTemplate_0.Width.ToString();
-                this.txtHeight.Text = this.mapTemplate_0.Height.ToString();
-                this.txtScale.Text = this.mapTemplate_0.Scale.ToString();
-                this.txtXInterval.Text = this.mapTemplate_0.XInterval.ToString();
-                this.txtYInterval.Text = this.mapTemplate_0.YInterval.ToString();
-                if (this.mapTemplate_0.BorderSymbol is ILineSymbol)
+                this.txtLeftSpace.Text = this.MapTemplate.LeftInOutSpace.ToString();
+                this.txtRightSpace.Text = this.MapTemplate.RightInOutSpace.ToString();
+                this.txtTopSpace.Text = this.MapTemplate.TopInOutSpace.ToString();
+                this.txtBottomSpace.Text = this.MapTemplate.BottomInOutSpace.ToString();
+                this.txtOutBorderWidth.Text = this.MapTemplate.OutBorderWidth.ToString();
+                this.styleButton1.Style = this.MapTemplate.BorderSymbol;
+                this.cboStyle.SelectedIndex = (int) this.MapTemplate.TemplateSizeStyle;
+                this.txtWidth.Text = this.MapTemplate.Width.ToString();
+                this.txtHeight.Text = this.MapTemplate.Height.ToString();
+                this.txtScale.Text = this.MapTemplate.Scale.ToString();
+                this.txtXInterval.Text = this.MapTemplate.XInterval.ToString();
+                this.txtYInterval.Text = this.MapTemplate.YInterval.ToString();
+                if (this.MapTemplate.BorderSymbol is ILineSymbol)
                 {
                     this.rdoLine.Checked = true;
-                    this.ilineSymbol_0 = this.mapTemplate_0.BorderSymbol as ILineSymbol;
+                    this.ilineSymbol_0 = this.MapTemplate.BorderSymbol as ILineSymbol;
                 }
-                else if (this.mapTemplate_0.BorderSymbol is IFillSymbol)
+                else if (this.MapTemplate.BorderSymbol is IFillSymbol)
                 {
-                    this.ifillSymbol_0 = this.mapTemplate_0.BorderSymbol as IFillSymbol;
+                    this.ifillSymbol_0 = this.MapTemplate.BorderSymbol as IFillSymbol;
                     this.rdoFill.Checked = true;
                 }
                 else
@@ -245,10 +249,10 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     this.rdoNoOutLine.Checked = true;
                     this.styleButton1.Enabled = false;
                 }
-                this.styleButton1.Style = this.mapTemplate_0.BorderSymbol;
-                this.cboStyle.SelectedIndex = (int) this.mapTemplate_0.TemplateSizeStyle;
-                this.chkMapGrid.Checked = this.mapTemplate_0.MapGrid != null;
-                this.checkBox1.Checked = this.mapTemplate_0.FixedWidthAndBottomSpace;
+                this.styleButton1.Style = this.MapTemplate.BorderSymbol;
+                this.cboStyle.SelectedIndex = (int) this.MapTemplate.TemplateSizeStyle;
+                this.chkMapGrid.Checked = this.MapTemplate.MapGrid != null;
+                this.checkBox1.Checked = this.MapTemplate.FixedWidthAndBottomSpace;
             }
             this.bool_0 = true;
         }
@@ -258,33 +262,33 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             if (base.Visible)
             {
                 this.bool_0 = false;
-                if (this.mapTemplate_0 != null)
+                if (this.MapTemplate != null)
                 {
-                    this.txtName.Text = this.mapTemplate_0.Name;
-                    this.txtLeftSpace.Text = this.mapTemplate_0.LeftInOutSpace.ToString();
-                    this.txtRightSpace.Text = this.mapTemplate_0.RightInOutSpace.ToString();
-                    this.txtTopSpace.Text = this.mapTemplate_0.TopInOutSpace.ToString();
-                    this.txtBottomSpace.Text = this.mapTemplate_0.BottomInOutSpace.ToString();
-                    this.txtOutBorderWidth.Text = this.mapTemplate_0.OutBorderWidth.ToString();
-                    this.styleButton1.Style = this.mapTemplate_0.BorderSymbol;
-                    this.cboStyle.SelectedIndex = (int) this.mapTemplate_0.TemplateSizeStyle;
-                    this.txtWidth.Text = this.mapTemplate_0.Width.ToString();
-                    this.txtHeight.Text = this.mapTemplate_0.Height.ToString();
-                    this.txtScale.Text = this.mapTemplate_0.Scale.ToString();
-                    this.txtXInterval.Text = this.mapTemplate_0.XInterval.ToString();
-                    this.txtYInterval.Text = this.mapTemplate_0.YInterval.ToString();
-                    if (this.mapTemplate_0.BorderSymbol is ILineSymbol)
+                    this.txtName.Text = this.MapTemplate.Name;
+                    this.txtLeftSpace.Text = this.MapTemplate.LeftInOutSpace.ToString();
+                    this.txtRightSpace.Text = this.MapTemplate.RightInOutSpace.ToString();
+                    this.txtTopSpace.Text = this.MapTemplate.TopInOutSpace.ToString();
+                    this.txtBottomSpace.Text = this.MapTemplate.BottomInOutSpace.ToString();
+                    this.txtOutBorderWidth.Text = this.MapTemplate.OutBorderWidth.ToString();
+                    this.styleButton1.Style = this.MapTemplate.BorderSymbol;
+                    this.cboStyle.SelectedIndex = (int) this.MapTemplate.TemplateSizeStyle;
+                    this.txtWidth.Text = this.MapTemplate.Width.ToString();
+                    this.txtHeight.Text = this.MapTemplate.Height.ToString();
+                    this.txtScale.Text = this.MapTemplate.Scale.ToString();
+                    this.txtXInterval.Text = this.MapTemplate.XInterval.ToString();
+                    this.txtYInterval.Text = this.MapTemplate.YInterval.ToString();
+                    if (this.MapTemplate.BorderSymbol is ILineSymbol)
                     {
                         this.rdoLine.Checked = true;
-                        this.ilineSymbol_0 = this.mapTemplate_0.BorderSymbol as ILineSymbol;
+                        this.ilineSymbol_0 = this.MapTemplate.BorderSymbol as ILineSymbol;
                     }
-                    if (this.mapTemplate_0.BorderSymbol is IFillSymbol)
+                    if (this.MapTemplate.BorderSymbol is IFillSymbol)
                     {
-                        this.ifillSymbol_0 = this.mapTemplate_0.BorderSymbol as IFillSymbol;
+                        this.ifillSymbol_0 = this.MapTemplate.BorderSymbol as IFillSymbol;
                         this.rdoFill.Checked = true;
                     }
-                    this.cboStyle.SelectedIndex = (int) this.mapTemplate_0.TemplateSizeStyle;
-                    this.chkMapGrid.Checked = this.mapTemplate_0.MapGrid != null;
+                    this.cboStyle.SelectedIndex = (int) this.MapTemplate.TemplateSizeStyle;
+                    this.chkMapGrid.Checked = this.MapTemplate.MapGrid != null;
                 }
                 this.bool_0 = true;
             }
@@ -304,7 +308,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             (grid as IMeasuredGrid).YIntervalSize = 200.0;
             (grid as IMeasuredGrid).FixedOrigin = true;
             IGridLabel labelFormat = grid.LabelFormat;
-            ITextSymbol symbol = new TextSymbolClass {
+            ITextSymbol symbol = new TextSymbolClass
+            {
                 Font = labelFormat.Font,
                 Color = labelFormat.Color,
                 Text = labelFormat.DisplayName,
@@ -385,7 +390,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     this.ifillSymbol_0 = this.styleButton1.Style as IFillSymbol;
                 }
                 this.styleButton1.Style = this.ilineSymbol_0;
-                this.txtOutBorderWidth.Text = (this.ilineSymbol_0.Width * 0.0352777778).ToString("0.##");
+                this.txtOutBorderWidth.Text = (this.ilineSymbol_0.Width*0.0352777778).ToString("0.##");
                 this.bool_1 = true;
                 if (this.OnValueChange != null)
                 {
@@ -410,11 +415,13 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         private void rdoRect_CheckedChanged(object sender, EventArgs e)
         {
-            if (this.mapTemplate_0.MapFramingType == MapFramingType.StandardFraming)
+            if (this.MapTemplate.MapFramingType == MapFramingType.StandardFraming)
             {
                 this.groupBoxPage.Enabled = this.rdoRect.Checked;
             }
-            this.mapTemplate_0.NewMapFrameTypeVal = this.rdoRect.Checked ? MapFrameType.MFTRect : MapFrameType.MFTTrapezoid;
+            this.MapTemplate.NewMapFrameTypeVal = this.rdoRect.Checked
+                ? MapFrameType.MFTRect
+                : MapFrameType.MFTTrapezoid;
             this.bool_1 = true;
             if (this.OnValueChange != null)
             {
@@ -444,7 +451,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     if (this.rdoLine.Checked)
                     {
                         this.ilineSymbol_0 = this.styleButton1.Style as ILineSymbol;
-                        this.txtOutBorderWidth.Text = (this.ilineSymbol_0.Width * 0.0352777778).ToString("0.##");
+                        this.txtOutBorderWidth.Text = (this.ilineSymbol_0.Width*0.0352777778).ToString("0.##");
                     }
                     else
                     {
@@ -483,7 +490,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                         try
                         {
                             double num = Convert.ToDouble(this.txtOutBorderWidth.Text);
-                            style.Width = num / 0.0352777778;
+                            style.Width = num/0.0352777778;
                             this.styleButton1.Style = style;
                         }
                         catch
@@ -549,72 +556,33 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
-        public IMapFrame MapFrame
-        {
-            [CompilerGenerated]
-            protected get
-            {
-                return this.imapFrame_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.imapFrame_0 = value;
-            }
-        }
+        public IMapFrame MapFrame { get; set; }
 
-        public MapCartoTemplateLib.MapTemplate MapTemplate
-        {
-            get
-            {
-                return this.mapTemplate_0;
-            }
-            set
-            {
-                this.mapTemplate_0 = value;
-            }
-        }
+        public MapTemplate MapTemplate { get; set; }
+
 
         public string Title
         {
-            get
-            {
-                return "常规";
-            }
-            set
-            {
-            }
+            get { return "常规"; }
+            set { }
         }
 
         public bool UseMapGrid
         {
-            get
-            {
-                return this.chkMapGrid.Checked;
-            }
+            get { return this.chkMapGrid.Checked; }
         }
     }
 }
-

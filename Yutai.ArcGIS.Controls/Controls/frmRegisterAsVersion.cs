@@ -20,17 +20,13 @@ namespace Yutai.ArcGIS.Controls.Controls
             this.edit_to_base = this.checkEdit1.Checked;
         }
 
- private void frmRegisterAsVersion_Load(object sender, EventArgs e)
+        private void frmRegisterAsVersion_Load(object sender, EventArgs e)
         {
         }
 
- public bool EditToBase
+        public bool EditToBase
         {
-            get
-            {
-                return this.edit_to_base;
-            }
+            get { return this.edit_to_base; }
         }
     }
 }
-

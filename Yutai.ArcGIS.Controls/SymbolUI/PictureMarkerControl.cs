@@ -31,9 +31,11 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         public void ChangeUnit(double newunit)
         {
             this.m_CanDo = false;
-            this.numericUpDownSize.Value = (decimal) ((((double) this.numericUpDownSize.Value) / this.m_unit) * newunit);
-            this.numericUpDownXOffset.Value = (decimal) ((((double) this.numericUpDownXOffset.Value) / this.m_unit) * newunit);
-            this.numericUpDownYOffset.Value = (decimal) ((((double) this.numericUpDownYOffset.Value) / this.m_unit) * newunit);
+            this.numericUpDownSize.Value = (decimal) ((((double) this.numericUpDownSize.Value)/this.m_unit)*newunit);
+            this.numericUpDownXOffset.Value =
+                (decimal) ((((double) this.numericUpDownXOffset.Value)/this.m_unit)*newunit);
+            this.numericUpDownYOffset.Value =
+                (decimal) ((((double) this.numericUpDownYOffset.Value)/this.m_unit)*newunit);
             this.m_unit = newunit;
             this.m_CanDo = true;
         }
@@ -80,7 +82,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- private void GetRGB(uint rgb, out int r, out int g, out int b)
+        private void GetRGB(uint rgb, out int r, out int g, out int b)
         {
             uint num = rgb & 16711680;
             b = (int) (num >> 16);
@@ -94,9 +96,9 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         {
             this.m_CanDo = false;
             this.numericUpDownAngle.Value = (decimal) this.m_PictureMarkerSymbol.Angle;
-            this.numericUpDownSize.Value = (decimal) (this.m_PictureMarkerSymbol.Size * this.m_unit);
-            this.numericUpDownXOffset.Value = (decimal) (this.m_PictureMarkerSymbol.XOffset * this.m_unit);
-            this.numericUpDownYOffset.Value = (decimal) (this.m_PictureMarkerSymbol.YOffset * this.m_unit);
+            this.numericUpDownSize.Value = (decimal) (this.m_PictureMarkerSymbol.Size*this.m_unit);
+            this.numericUpDownXOffset.Value = (decimal) (this.m_PictureMarkerSymbol.XOffset*this.m_unit);
+            this.numericUpDownYOffset.Value = (decimal) (this.m_PictureMarkerSymbol.YOffset*this.m_unit);
             if (this.m_PictureMarkerSymbol.Picture != null)
             {
                 if (((stdole.IPicture) this.m_PictureMarkerSymbol.Picture).Type == 1)
@@ -137,7 +139,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.m_CanDo = true;
         }
 
- public static bool IsNmuber(string str)
+        public static bool IsNmuber(string str)
         {
             if (str.Length > 0)
             {
@@ -223,7 +225,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
 
         private void LoadPictureFile(EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
                 Filter = "Bitmaps (*.bmp)|*.bmp|Enhanced Metafiles (*.emf)|*.emf",
                 RestoreDirectory = true
             };
@@ -271,7 +274,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     this.numericUpDownSize.ForeColor = SystemColors.WindowText;
-                    this.m_PictureMarkerSymbol.Size = ((double) this.numericUpDownSize.Value) / this.m_unit;
+                    this.m_PictureMarkerSymbol.Size = ((double) this.numericUpDownSize.Value)/this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -288,7 +291,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     this.numericUpDownXOffset.ForeColor = SystemColors.WindowText;
-                    this.m_PictureMarkerSymbol.XOffset = ((double) this.numericUpDownXOffset.Value) / this.m_unit;
+                    this.m_PictureMarkerSymbol.XOffset = ((double) this.numericUpDownXOffset.Value)/this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -305,7 +308,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     this.numericUpDownYOffset.ForeColor = SystemColors.WindowText;
-                    this.m_PictureMarkerSymbol.YOffset = ((double) this.numericUpDownYOffset.Value) / this.m_unit;
+                    this.m_PictureMarkerSymbol.YOffset = ((double) this.numericUpDownYOffset.Value)/this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -367,4 +370,3 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         }
     }
 }
-

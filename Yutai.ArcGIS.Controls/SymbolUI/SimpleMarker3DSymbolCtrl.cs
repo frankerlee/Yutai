@@ -40,9 +40,9 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         public void ChangeUnit(double newunit)
         {
             this.m_CanDo = false;
-            this.txtSize.Value = (decimal) ((((double) this.txtSize.Value) / this.m_unit) * newunit);
-            this.txtDepth1.Value = (decimal) ((((double) this.txtDepth1.Value) / this.m_unit) * newunit);
-            this.txtWidth.Value = (decimal) ((((double) this.txtWidth.Value) / this.m_unit) * newunit);
+            this.txtSize.Value = (decimal) ((((double) this.txtSize.Value)/this.m_unit)*newunit);
+            this.txtDepth1.Value = (decimal) ((((double) this.txtDepth1.Value)/this.m_unit)*newunit);
+            this.txtWidth.Value = (decimal) ((((double) this.txtWidth.Value)/this.m_unit)*newunit);
             this.m_unit = newunit;
             this.m_CanDo = true;
         }
@@ -51,7 +51,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         {
             if (this.m_CanDo)
             {
-                (this.m_pSimpleMarker3DSymbol as IMarker3DPlacement).MaintainAspectRatio = this.chkMaintainAspectRatio.Checked;
+                (this.m_pSimpleMarker3DSymbol as IMarker3DPlacement).MaintainAspectRatio =
+                    this.chkMaintainAspectRatio.Checked;
                 this.refresh(e);
             }
         }
@@ -106,7 +107,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.axSceneControl1.SceneGraph.RefreshViewers();
         }
 
- private void GetRGB(uint rgb, out int r, out int g, out int b)
+        private void GetRGB(uint rgb, out int r, out int g, out int b)
         {
             uint num = rgb & 16711680;
             b = (int) (num >> 16);
@@ -119,17 +120,18 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         public void InitControl()
         {
             this.m_CanDo = false;
-            this.txtSize.Value = (decimal) ((this.m_pSimpleMarker3DSymbol as IMarkerSymbol).Size * this.m_unit);
-            this.txtDepth1.Value = (decimal) ((this.m_pSimpleMarker3DSymbol as IMarker3DPlacement).Depth * this.m_unit);
-            this.txtWidth.Value = (decimal) ((this.m_pSimpleMarker3DSymbol as IMarker3DPlacement).Width * this.m_unit);
+            this.txtSize.Value = (decimal) ((this.m_pSimpleMarker3DSymbol as IMarkerSymbol).Size*this.m_unit);
+            this.txtDepth1.Value = (decimal) ((this.m_pSimpleMarker3DSymbol as IMarker3DPlacement).Depth*this.m_unit);
+            this.txtWidth.Value = (decimal) ((this.m_pSimpleMarker3DSymbol as IMarker3DPlacement).Width*this.m_unit);
             this.cboStyle.SelectedIndex = (int) this.m_pSimpleMarker3DSymbol.Style;
-            this.chkMaintainAspectRatio.Checked = (this.m_pSimpleMarker3DSymbol as IMarker3DPlacement).MaintainAspectRatio;
+            this.chkMaintainAspectRatio.Checked =
+                (this.m_pSimpleMarker3DSymbol as IMarker3DPlacement).MaintainAspectRatio;
             this.SetColorEdit(this.colorEdit1, (this.m_pSimpleMarker3DSymbol as IMarkerSymbol).Color);
             this.DisplaySymbol();
             this.m_CanDo = true;
         }
 
- private void Marker3DEvent_Marker3DChanged(object sender)
+        private void Marker3DEvent_Marker3DChanged(object sender)
         {
             if (sender != this)
             {
@@ -190,7 +192,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     this.txtDepth1.ForeColor = SystemColors.WindowText;
-                    (this.m_pSimpleMarker3DSymbol as IMarker3DPlacement).Depth = ((double) this.txtDepth1.Value) / this.m_unit;
+                    (this.m_pSimpleMarker3DSymbol as IMarker3DPlacement).Depth = ((double) this.txtDepth1.Value)/
+                                                                                 this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -207,7 +210,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     this.txtSize.ForeColor = SystemColors.WindowText;
-                    (this.m_pSimpleMarker3DSymbol as IMarkerSymbol).Size = ((double) this.txtSize.Value) / this.m_unit;
+                    (this.m_pSimpleMarker3DSymbol as IMarkerSymbol).Size = ((double) this.txtSize.Value)/this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -224,7 +227,8 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
                 else
                 {
                     this.txtWidth.ForeColor = SystemColors.WindowText;
-                    (this.m_pSimpleMarker3DSymbol as IMarker3DPlacement).Width = ((double) this.txtWidth.Value) / this.m_unit;
+                    (this.m_pSimpleMarker3DSymbol as IMarker3DPlacement).Width = ((double) this.txtWidth.Value)/
+                                                                                 this.m_unit;
                     this.refresh(e);
                 }
             }
@@ -241,4 +245,3 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         }
     }
 }
-

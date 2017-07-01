@@ -50,22 +50,26 @@ namespace Yutai.ArcGIS.Catalog.VCT
             XmlReaderClass class2 = new XmlReaderClass(string_0);
             foreach (XmlNode node2 in class2.GetCustomSetting("configuration").ChildNodes)
             {
-                ICoLayer layer = new CoLayerClass {
+                ICoLayer layer = new CoLayerClass
+                {
                     Name = node2.Attributes["sName"].Value,
                     AliasName = node2.Attributes["sAliasName"].Value
                 };
-                ICoLayer layer2 = new CoLayerClass {
+                ICoLayer layer2 = new CoLayerClass
+                {
                     Name = node2.Attributes["dName"].Value,
                     AliasName = node2.Attributes["dAliasName"].Value
                 };
                 CoLayerMapper item = new CoLayerMapper(layer, layer2);
                 foreach (XmlNode node3 in node2.ChildNodes)
                 {
-                    ICoField field = new CoFieldClass {
+                    ICoField field = new CoFieldClass
+                    {
                         Name = node3.Attributes["sName"].Value,
                         AliasName = node3.Attributes["sAliasName"].Value
                     };
-                    ICoField field2 = new CoFieldClass {
+                    ICoField field2 = new CoFieldClass
+                    {
                         Name = node3.Attributes["dName"].Value,
                         AliasName = node3.Attributes["dAliasName"].Value
                     };
@@ -114,35 +118,19 @@ namespace Yutai.ArcGIS.Catalog.VCT
 
         public ICoLayer DestLayer
         {
-            get
-            {
-                return this.icoLayer_1;
-            }
-            set
-            {
-                this.icoLayer_1 = value;
-            }
+            get { return this.icoLayer_1; }
+            set { this.icoLayer_1 = value; }
         }
 
         public List<CoFieldMapper> FieldRelation
         {
-            get
-            {
-                return this.list_0;
-            }
+            get { return this.list_0; }
         }
 
         public ICoLayer SourceLayer
         {
-            get
-            {
-                return this.icoLayer_0;
-            }
-            set
-            {
-                this.icoLayer_0 = value;
-            }
+            get { return this.icoLayer_0; }
+            set { this.icoLayer_0 = value; }
         }
     }
 }
-

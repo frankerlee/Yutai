@@ -17,7 +17,7 @@ namespace Yutai.Plugins.TableEditor.Functions.Math
             _description = "Tan 函数可返回指定数字（角度）的正切。";
             _parameters = new List<Parameter>()
             {
-                new Parameter() { Order = 0, Name = "number", Description = "必需的。将某个角表示为弧度的有效表达式。"}
+                new Parameter() {Order = 0, Name = "number", Description = "必需的。将某个角表示为弧度的有效表达式。"}
             };
         }
     }

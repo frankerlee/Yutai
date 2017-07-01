@@ -25,15 +25,8 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         internal IGeometricNetwork GeometricNetwork
         {
-            get
-            {
-                return this.igeometricNetwork_0;
-            }
-            set
-            {
-                this.igeometricNetwork_0 = value;
-            }
+            get { return this.igeometricNetwork_0; }
+            set { this.igeometricNetwork_0 = value; }
         }
     }
 }
-

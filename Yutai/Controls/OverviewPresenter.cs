@@ -12,15 +12,15 @@ using Yutai.Plugins.Services;
 
 namespace Yutai.Controls
 {
-    public class OverviewPresenter : CommandDispatcher<OverviewDockPanel, OverviewCommand>
+    public class OverviewPresenter : CommandDispatcher<OverviewDockPanel, OverviewCommand>, IOverviewControl
     {
         private readonly IAppContext _context;
         private readonly IBroadcasterService _broadcaster;
         private readonly OverviewDockPanel _overviewDockPanel;
         public MainPlugin _Plugin;
-        
+
         public OverviewPresenter(IAppContext context, IBroadcasterService broadcaster,
-                               OverviewDockPanel overviewDockPanel,MainPlugin plugin)
+            OverviewDockPanel overviewDockPanel, MainPlugin plugin)
             : base(overviewDockPanel)
         {
             if (context == null) throw new ArgumentNullException("context");
@@ -36,14 +36,15 @@ namespace Yutai.Controls
 
             //View.LegendKeyDown += OnLegendKeyDown;
         }
+
         public OverviewDockPanel OverviewControl
         {
             get { return _overviewDockPanel; }
         }
 
-        public void SetBuddyControl(IMapControl2 mainMap)
+        public void SetBuddyControl(object control)
         {
-            _overviewDockPanel.InitMainMap();
+            _overviewDockPanel.InitMainMap(control);
         }
 
         private void _Plugin_ProjectOpened(object sender, EventArgs e)
@@ -55,13 +56,13 @@ namespace Yutai.Controls
         {
             switch (command)
             {
-                    case OverviewCommand.FullExtent:
+                case OverviewCommand.FullExtent:
                     _overviewDockPanel.FullExtent();
                     break;
                 case OverviewCommand.Current:
                     _overviewDockPanel.Current();
                     break;
-                    case OverviewCommand.Properties:
+                case OverviewCommand.Properties:
                     break;
             }
         }

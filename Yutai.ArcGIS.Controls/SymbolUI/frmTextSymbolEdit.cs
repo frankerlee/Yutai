@@ -14,11 +14,11 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
     public partial class frmTextSymbolEdit : Form
     {
         private bool m_CanDo = true;
-        private double[] m_dblScaleRatio = new double[] { 0.25, 0.5, 1.0, 1.25, 2.0 };
+        private double[] m_dblScaleRatio = new double[] {0.25, 0.5, 1.0, 1.25, 2.0};
         public IStyleGallery m_pSG;
         private ITextSymbol m_pTextSymbol = null;
         private int m_ScaleIndex = 2;
-        private double[] point_unit_to = new double[] { 1.0, 0.01388889, 0.0352777778, 0.352777778 };
+        private double[] point_unit_to = new double[] {1.0, 0.01388889, 0.0352777778, 0.352777778};
 
         public frmTextSymbolEdit()
         {
@@ -124,7 +124,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- private void frmTextSymbolEdit_Load(object sender, EventArgs e)
+        private void frmTextSymbolEdit_Load(object sender, EventArgs e)
         {
             this.Init();
         }
@@ -164,7 +164,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             this.m_CanDo = true;
         }
 
- private void pFractionTextSymbolPage_ValueChanged(object sender, EventArgs e)
+        private void pFractionTextSymbolPage_ValueChanged(object sender, EventArgs e)
         {
             this.symbolItem1.Invalidate();
         }
@@ -181,4 +181,3 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         }
     }
 }
-

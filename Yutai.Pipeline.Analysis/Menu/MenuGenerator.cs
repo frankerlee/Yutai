@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Xml;
 using DevExpress.XtraBars.Ribbon;
-
 using Yutai.Plugins.Interfaces;
 using Yutai.UI.Menu.Ribbon;
 

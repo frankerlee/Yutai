@@ -16,7 +16,7 @@ namespace Yutai.Plugins.Printing
     {
         private IAppContext _context;
         private MenuGenerator _menuGenerator;
-     
+
 
         protected override void RegisterServices(IApplicationContainer container)
         {
@@ -33,7 +33,7 @@ namespace Yutai.Plugins.Printing
             //_dockPanelService = context.Container.GetInstance<TemplateDockPanelService>();
 
             //获取配置对象
-           // _pipelineConfig = context.Container.GetSingleton<PipelineConfig>();
+            // _pipelineConfig = context.Container.GetSingleton<PipelineConfig>();
             //if (string.IsNullOrEmpty(_pipelineConfig.XmlFile))
             //{
             //    string fileName = ((ISecureContext) _context).YutaiProject.FindPlugin("4a3bcaab-9d3e-4ca7-a19d-7ee08fb0629e").ConfigXML;

@@ -19,7 +19,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             this.InitializeComponent();
         }
 
- public void InitControl()
+        public void InitControl()
         {
             double xMin = -10000.0;
             double xMax = 11474.83645;
@@ -32,7 +32,7 @@ namespace Yutai.ArcGIS.Controls.Controls
                 double num6 = xMax - xMin;
                 double num7 = yMax - yMin;
                 num6 = (num6 > num7) ? num6 : num7;
-                num5 = 2147483645.0 / num6;
+                num5 = 2147483645.0/num6;
             }
             else
             {
@@ -45,7 +45,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             this.textBoxPrecision.Text = num5.ToString();
         }
 
- private void textBoxMaxX_TextChanged(object sender, EventArgs e)
+        private void textBoxMaxX_TextChanged(object sender, EventArgs e)
         {
             if (this.m_CanDo)
             {
@@ -94,7 +94,7 @@ namespace Yutai.ArcGIS.Controls.Controls
                 {
                     this.textBoxPrecision.ForeColor = SystemColors.WindowText;
                     double num5 = Convert.ToDouble(this.textBoxPrecision.Text);
-                    double num6 = 2147483645.0 / num5;
+                    double num6 = 2147483645.0/num5;
                     double xMin = Convert.ToDouble(this.textBoxMinX.Text);
                     double yMin = Convert.ToDouble(this.textBoxMinY.Text);
                     double xMax = xMin + num6;
@@ -132,14 +132,14 @@ namespace Yutai.ArcGIS.Controls.Controls
             if (xMin > xMax)
             {
                 num5 = Convert.ToDouble(this.textBoxPrecision.Text);
-                num6 = 2147483645.0 / num5;
+                num6 = 2147483645.0/num5;
                 xMax = xMin + num6;
                 this.textBoxMaxX.Text = xMax.ToString();
             }
             else if (yMin > yMax)
             {
                 num5 = Convert.ToDouble(this.textBoxPrecision.Text);
-                num6 = 2147483645.0 / num5;
+                num6 = 2147483645.0/num5;
                 yMax = yMin + num6;
                 this.textBoxMaxY.Text = yMax.ToString();
             }
@@ -148,7 +148,7 @@ namespace Yutai.ArcGIS.Controls.Controls
                 num6 = xMax - xMin;
                 double num7 = yMax - yMin;
                 num6 = (num6 > num7) ? num6 : num7;
-                this.textBoxPrecision.Text = (2147483645.0 / num6).ToString();
+                this.textBoxPrecision.Text = (2147483645.0/num6).ToString();
             }
             this.m_pSpatialRefrence.SetDomain(xMin, xMax, yMin, yMax);
         }
@@ -169,26 +169,17 @@ namespace Yutai.ArcGIS.Controls.Controls
 
         public bool IsEdit
         {
-            set
-            {
-                this.m_IsEdit = value;
-            }
+            set { this.m_IsEdit = value; }
         }
 
         public bool IsHighPrecision
         {
-            set
-            {
-                this.m_IsHighPrecision = value;
-            }
+            set { this.m_IsHighPrecision = value; }
         }
 
         public ISpatialReference SpatialRefrence
         {
-            get
-            {
-                return this.m_pSpatialRefrence;
-            }
+            get { return this.m_pSpatialRefrence; }
             set
             {
                 this.m_pSpatialRefrence = value;
@@ -204,4 +195,3 @@ namespace Yutai.ArcGIS.Controls.Controls
         }
     }
 }
-

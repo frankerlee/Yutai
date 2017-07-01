@@ -34,10 +34,7 @@ namespace Yutai.Plugins.Catalog.Commands
 
         public override bool Enabled
         {
-            get
-            {
-                return _context.GxSelection != null && ((IGxSelection) _context.GxSelection).FirstObject != null;
-            }
+            get { return _context.GxSelection != null && ((IGxSelection) _context.GxSelection).FirstObject != null; }
         }
 
 

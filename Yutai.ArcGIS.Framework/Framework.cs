@@ -151,7 +151,8 @@ namespace Yutai.ArcGIS.Framework
                             this.icommandLine_1 = null;
                             return;
                         }
-                        this._appContext.ShowCommandString(this.icommandLine_0.CommandName, CommandTipsType.CTTCommandName);
+                        this._appContext.ShowCommandString(this.icommandLine_0.CommandName,
+                            CommandTipsType.CTTCommandName);
                     }
                     if (icommand_0 is ITool)
                     {
@@ -269,7 +270,8 @@ namespace Yutai.ArcGIS.Framework
                 this.ibarManager_0.Init();
                 if (this.ibarManager_0 is IBarManagerEvents)
                 {
-                    (this.ibarManager_0 as IBarManagerEvents).OnItemClickEvent += new OnItemClickEventHandler(this.method_13);
+                    (this.ibarManager_0 as IBarManagerEvents).OnItemClickEvent +=
+                        new OnItemClickEventHandler(this.method_13);
                 }
             }
             if (this.icommandLineWindows_0 != null)
@@ -283,15 +285,16 @@ namespace Yutai.ArcGIS.Framework
             {
                 if (this.object_2 is IPageLayoutControl)
                 {
-                    (this.object_2 as IPageLayoutControlEvents_Event).OnPageLayoutReplaced+=(new IPageLayoutControlEvents_OnPageLayoutReplacedEventHandler(this.method_7));
+                    (this.object_2 as IPageLayoutControlEvents_Event).OnPageLayoutReplaced +=
+                        (new IPageLayoutControlEvents_OnPageLayoutReplacedEventHandler(this.method_7));
                 }
             }
             else if (this.object_3 == null)
             {
             }
-        //    (this.iapplication_0 as IApplicationEvents).OnMapDocumentChangedEvent += new OnMapDocumentChangedEventHandler(this.method_20);
-        //    (this.iapplication_0 as IApplicationEvents).OnDockWindowsEvent += new OnDockWindowsEventHandler(this.method_21);
-        //    (this.iapplication_0 as IApplicationEvents).OnUpdateUIEvent += new OnUpdateUIEventHandler(this.method_27);
+            //    (this.iapplication_0 as IApplicationEvents).OnMapDocumentChangedEvent += new OnMapDocumentChangedEventHandler(this.method_20);
+            //    (this.iapplication_0 as IApplicationEvents).OnDockWindowsEvent += new OnDockWindowsEventHandler(this.method_21);
+            //    (this.iapplication_0 as IApplicationEvents).OnUpdateUIEvent += new OnUpdateUIEventHandler(this.method_27);
         }
 
         public void LoadCommand(string string_0)
@@ -356,7 +359,8 @@ namespace Yutai.ArcGIS.Framework
                 }
                 else
                 {
-                    ((this.object_3 as MapAndPageLayoutControls).ActiveControl as IPageLayoutControl2).CurrentTool = itool_0;
+                    ((this.object_3 as MapAndPageLayoutControls).ActiveControl as IPageLayoutControl2).CurrentTool =
+                        itool_0;
                 }
             }
             //else if (this.object_3 is MapAndPageLayoutControlsold)
@@ -367,7 +371,7 @@ namespace Yutai.ArcGIS.Framework
             {
                 SketchToolAssist.CurrentTask.CheckTaskStatue(itool_0);
             }
-            this.iapplication_0.CurrentTool = null;//itool_0;
+            this.iapplication_0.CurrentTool = null; //itool_0;
             if (this.control_0 != null)
             {
                 if (itool_0 is IToolContextMenu)
@@ -438,7 +442,6 @@ namespace Yutai.ArcGIS.Framework
                     {
                         return (hook as MapAndPageLayoutControls).CurrentTool;
                     }
-                
                 }
                 else
                 {
@@ -462,11 +465,13 @@ namespace Yutai.ArcGIS.Framework
                     {
                         if ((this.object_3 as MapAndPageLayoutControls).ActiveControl is IMapControl2)
                         {
-                            return ((this.object_3 as MapAndPageLayoutControls).ActiveControl as IMapControl2).CurrentTool;
+                            return
+                                ((this.object_3 as MapAndPageLayoutControls).ActiveControl as IMapControl2).CurrentTool;
                         }
-                        return ((this.object_3 as MapAndPageLayoutControls).ActiveControl as IPageLayoutControl2).CurrentTool;
+                        return
+                            ((this.object_3 as MapAndPageLayoutControls).ActiveControl as IPageLayoutControl2)
+                                .CurrentTool;
                     }
-                 
                 }
             }
             catch
@@ -519,9 +524,9 @@ namespace Yutai.ArcGIS.Framework
                 flag = true;
             }
             int num = (int) double_0;
-            double_0 = (double_0 - num) * 60.0;
+            double_0 = (double_0 - num)*60.0;
             int num2 = (int) double_0;
-            double num3 = Math.Round((double) ((double_0 - num2) * 60.0), 2);
+            double num3 = Math.Round((double) ((double_0 - num2)*60.0), 2);
             string str = string.Format("{0}\x00b0{1:00}′{2:00.00}″", num, num2, num3);
             if (flag)
             {
@@ -757,7 +762,8 @@ namespace Yutai.ArcGIS.Framework
                     {
                         if ((this.icommandLine_0 as ICommand).Enabled)
                         {
-                            this.icommandLineWindows_0.ShowCommandString(string.Format("恢复执行{0}", this.icommandLine_0.CommandName), 2);
+                            this.icommandLineWindows_0.ShowCommandString(
+                                string.Format("恢复执行{0}", this.icommandLine_0.CommandName), 2);
                             this.icommandLine_0.ActiveCommand();
                         }
                         else
@@ -820,7 +826,7 @@ namespace Yutai.ArcGIS.Framework
 
         private void method_5()
         {
-         //   this.Application.UpdateClickTool = false;
+            //   this.Application.UpdateClickTool = false;
             this.bool_2 = false;
         }
 
@@ -898,7 +904,7 @@ namespace Yutai.ArcGIS.Framework
 
         public void UpdateUI()
         {
-            if (!(this.iapplication_0 !=null) && (this.ibarManager_0 != null))
+            if (!(this.iapplication_0 != null) && (this.ibarManager_0 != null))
             {
                 if ((this.thread_0 != null) && this.bool_2)
                 {
@@ -917,7 +923,8 @@ namespace Yutai.ArcGIS.Framework
                 if (this.updateUIHelper_0 == null)
                 {
                     this.updateUIHelper_0 = new UpdateUIHelper(this.ibarManager_0, this.method_12());
-                    this.updateUIHelper_0.OnUpdateUIComplete += new UpdateUIHelper.OnUpdateUICompleteHandler(this.method_5);
+                    this.updateUIHelper_0.OnUpdateUIComplete +=
+                        new UpdateUIHelper.OnUpdateUICompleteHandler(this.method_5);
                 }
                 else
                 {
@@ -930,15 +937,12 @@ namespace Yutai.ArcGIS.Framework
 
         public Control ActiveControl
         {
-            get
-            {
-                return this.control_0;
-            }
+            get { return this.control_0; }
             set
             {
                 if (this.iapplication_0 != null)
                 {
-                   // this.iapplication_0.ActiveControl = value;
+                    // this.iapplication_0.ActiveControl = value;
                 }
                 this.control_0 = value;
             }
@@ -946,10 +950,7 @@ namespace Yutai.ArcGIS.Framework
 
         public IApplication Application
         {
-            get
-            {
-                return this.iapplication_0;
-            }
+            get { return this.iapplication_0; }
             protected set
             {
                 this.iapplication_0 = value;
@@ -969,16 +970,13 @@ namespace Yutai.ArcGIS.Framework
 
         public IBarManager BarManager
         {
-            get
-            {
-                return this.ibarManager_0;
-            }
+            get { return this.ibarManager_0; }
             set
             {
                 this.ibarManager_0 = value;
                 UIManagerHelper.BarManager = value;
                 this.ibarManager_0.Framework = this;
-            //    this.iapplication_0.PaintStyleName = this.ibarManager_0.PaintStyleName;
+                //    this.iapplication_0.PaintStyleName = this.ibarManager_0.PaintStyleName;
                 ApplicationRef.BarManage = value;
             }
         }
@@ -996,10 +994,7 @@ namespace Yutai.ArcGIS.Framework
 
         public ICommandLineWindows CommandLineWindows
         {
-            get
-            {
-                return this.icommandLineWindows_0;
-            }
+            get { return this.icommandLineWindows_0; }
             set
             {
                 this.icommandLineWindows_0 = value;
@@ -1009,39 +1004,30 @@ namespace Yutai.ArcGIS.Framework
 
         public object ContainerHook
         {
-            get
-            {
-                return this.object_2;
-            }
+            get { return this.object_2; }
             set
             {
                 this.object_2 = value;
-              //  this.iapplication_0.ContainerHook = value;
+                //  this.iapplication_0.ContainerHook = value;
             }
         }
 
         public ILayer CurrentLayer
         {
-            get
-            {
-                return this.ilayer_0;
-            }
+            get { return this.ilayer_0; }
             set
             {
                 this.ilayer_0 = value;
                 if (this.iapplication_0 != null)
                 {
-                   // this.iapplication_0.CurrentLayer = this.ilayer_0;
+                    // this.iapplication_0.CurrentLayer = this.ilayer_0;
                 }
             }
         }
 
         public IDockManagerWrap DockManager
         {
-            get
-            {
-                return this.idockManagerWrap_0;
-            }
+            get { return this.idockManagerWrap_0; }
             set
             {
                 this.idockManagerWrap_0 = value;
@@ -1051,10 +1037,7 @@ namespace Yutai.ArcGIS.Framework
 
         public object Hook
         {
-            get
-            {
-                return this.object_3;
-            }
+            get { return this.object_3; }
             set
             {
                 if (this.object_3 != null)
@@ -1063,17 +1046,22 @@ namespace Yutai.ArcGIS.Framework
                     {
                         if (this.object_3 is IMapControl2)
                         {
-                            (this.object_3 as IMapControlEvents2_Event).OnAfterDraw-=(new IMapControlEvents2_OnAfterDrawEventHandler(this.method_14));
-                            (this.object_3 as IMapControlEvents2_Event).OnMouseMove-=(new IMapControlEvents2_OnMouseMoveEventHandler(this.method_18));
+                            (this.object_3 as IMapControlEvents2_Event).OnAfterDraw -=
+                                (new IMapControlEvents2_OnAfterDrawEventHandler(this.method_14));
+                            (this.object_3 as IMapControlEvents2_Event).OnMouseMove -=
+                                (new IMapControlEvents2_OnMouseMoveEventHandler(this.method_18));
                         }
                         else if (this.object_3 is IPageLayoutControl2)
                         {
-                            (this.object_3 as IPageLayoutControlEvents_Event).OnAfterDraw-=(new IPageLayoutControlEvents_OnAfterDrawEventHandler(this.method_14));
-                            (this.object_3 as IPageLayoutControlEvents_Event).OnMouseMove-=(new IPageLayoutControlEvents_OnMouseMoveEventHandler(this.method_19));
+                            (this.object_3 as IPageLayoutControlEvents_Event).OnAfterDraw -=
+                                (new IPageLayoutControlEvents_OnAfterDrawEventHandler(this.method_14));
+                            (this.object_3 as IPageLayoutControlEvents_Event).OnMouseMove -=
+                                (new IPageLayoutControlEvents_OnMouseMoveEventHandler(this.method_19));
                         }
                         else if (this.object_3 is ISceneControlDefault)
                         {
-                            (this.object_3 as ISceneControlEvents_Event).OnMouseMove-=(new ISceneControlEvents_OnMouseMoveEventHandler(this.method_4));
+                            (this.object_3 as ISceneControlEvents_Event).OnMouseMove -=
+                                (new ISceneControlEvents_OnMouseMoveEventHandler(this.method_4));
                         }
                         else if (!(this.object_3 is IGlobeControlDefault))
                         {
@@ -1090,21 +1078,27 @@ namespace Yutai.ArcGIS.Framework
                 }
                 if (this.object_3 is IMapControl2)
                 {
-                    (this.object_3 as IMapControlEvents2_Event).OnAfterDraw+=(new IMapControlEvents2_OnAfterDrawEventHandler(this.method_14));
-                    (this.object_3 as IMapControlEvents2_Event).OnMouseMove+=(new IMapControlEvents2_OnMouseMoveEventHandler(this.method_18));
+                    (this.object_3 as IMapControlEvents2_Event).OnAfterDraw +=
+                        (new IMapControlEvents2_OnAfterDrawEventHandler(this.method_14));
+                    (this.object_3 as IMapControlEvents2_Event).OnMouseMove +=
+                        (new IMapControlEvents2_OnMouseMoveEventHandler(this.method_18));
                 }
                 else if (this.object_3 is IPageLayoutControl2)
                 {
-                    (this.object_3 as IPageLayoutControlEvents_Event).OnAfterDraw+=(new IPageLayoutControlEvents_OnAfterDrawEventHandler(this.method_14));
-                    (this.object_3 as IPageLayoutControlEvents_Event).OnMouseMove+=(new IPageLayoutControlEvents_OnMouseMoveEventHandler(this.method_19));
+                    (this.object_3 as IPageLayoutControlEvents_Event).OnAfterDraw +=
+                        (new IPageLayoutControlEvents_OnAfterDrawEventHandler(this.method_14));
+                    (this.object_3 as IPageLayoutControlEvents_Event).OnMouseMove +=
+                        (new IPageLayoutControlEvents_OnMouseMoveEventHandler(this.method_19));
                 }
                 else if (this.object_3 is ISceneControlDefault)
                 {
-                    (this.object_3 as ISceneControlEvents_Event).OnMouseMove+=(new ISceneControlEvents_OnMouseMoveEventHandler(this.method_4));
+                    (this.object_3 as ISceneControlEvents_Event).OnMouseMove +=
+                        (new ISceneControlEvents_OnMouseMoveEventHandler(this.method_4));
                 }
                 else if (!(this.object_3 is IGlobeControlDefault) && (this.object_3 is MapAndPageLayoutControls))
                 {
-                    (this.object_3 as MapAndPageLayoutControls).OnMousePostion += new OnMousePostionHandler(this.method_3);
+                    (this.object_3 as MapAndPageLayoutControls).OnMousePostion +=
+                        new OnMousePostionHandler(this.method_3);
                 }
                 if (this.ibarManager_0 != null)
                 {
@@ -1129,51 +1123,33 @@ namespace Yutai.ArcGIS.Framework
 
         public Form MainForm
         {
-            get
-            {
-                return this.form_0;
-            }
-            set
-            {
-                this.form_0 = value;
-            }
+            get { return this.form_0; }
+            set { this.form_0 = value; }
         }
 
         public object MainHook
         {
-            get
-            {
-                return this.object_1;
-            }
+            get { return this.object_1; }
             set
             {
                 this.object_1 = value;
-               // this.iapplication_0.MainHook = value;
+                // this.iapplication_0.MainHook = value;
             }
         }
 
         public IMapControl2 NavigationMap
         {
-            get
-            {
-                return this.imapControl2_0;
-            }
-            set
-            {
-                this.imapControl2_0 = value;
-            }
+            get { return this.imapControl2_0; }
+            set { this.imapControl2_0 = value; }
         }
 
         public object SecondaryHook
         {
-            get
-            {
-                return this.object_0;
-            }
+            get { return this.object_0; }
             set
             {
                 this.object_0 = value;
-               // this.iapplication_0.SecondaryHook = value;
+                // this.iapplication_0.SecondaryHook = value;
             }
         }
 
@@ -1203,4 +1179,3 @@ namespace Yutai.ArcGIS.Framework
         }
     }
 }
-

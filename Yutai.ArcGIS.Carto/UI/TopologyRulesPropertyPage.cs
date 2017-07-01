@@ -30,7 +30,7 @@ namespace Yutai.ArcGIS.Carto.UI
         {
         }
 
- private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.listView1.SelectedItems.Count > 0)
             {
@@ -141,13 +141,19 @@ namespace Yutai.ArcGIS.Carto.UI
                 rules.Reset();
                 for (IRule rule2 = rules.Next(); rule2 != null; rule2 = rules.Next())
                 {
-                    items[0] = (this.itopology_0 as IFeatureClassContainer).get_ClassByID((rule2 as ITopologyRule).OriginClassID).AliasName;
+                    items[0] =
+                        (this.itopology_0 as IFeatureClassContainer).get_ClassByID(
+                            (rule2 as ITopologyRule).OriginClassID).AliasName;
                     items[1] = this.method_0((rule2 as ITopologyRule).TopologyRuleType);
-                    if (((rule2 as ITopologyRule).OriginClassID != (rule2 as ITopologyRule).DestinationClassID) && ((rule2 as ITopologyRule).DestinationClassID != 0))
+                    if (((rule2 as ITopologyRule).OriginClassID != (rule2 as ITopologyRule).DestinationClassID) &&
+                        ((rule2 as ITopologyRule).DestinationClassID != 0))
                     {
-                        items[2] = (this.itopology_0 as IFeatureClassContainer).get_ClassByID((rule2 as ITopologyRule).DestinationClassID).AliasName;
+                        items[2] =
+                            (this.itopology_0 as IFeatureClassContainer).get_ClassByID(
+                                (rule2 as ITopologyRule).DestinationClassID).AliasName;
                     }
-                    ListViewItem item = new ListViewItem(items) {
+                    ListViewItem item = new ListViewItem(items)
+                    {
                         Tag = new TopologyRuleWrap(rule2 as ITopologyRule, false)
                     };
                     this.listView1.Items.Add(item);
@@ -166,17 +172,12 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IBasicMap FocusMap
         {
-            set
-            {
-            }
+            set { }
         }
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_0;
-            }
+            get { return this.bool_0; }
         }
 
         public object SelectItem
@@ -201,24 +202,14 @@ namespace Yutai.ArcGIS.Carto.UI
 
             public bool IsNew
             {
-                get
-                {
-                    return this.bool_0;
-                }
-                set
-                {
-                    this.bool_0 = value;
-                }
+                get { return this.bool_0; }
+                set { this.bool_0 = value; }
             }
 
             public ITopologyRule TopoRule
             {
-                get
-                {
-                    return this.itopologyRule_0;
-                }
+                get { return this.itopologyRule_0; }
             }
         }
     }
 }
-

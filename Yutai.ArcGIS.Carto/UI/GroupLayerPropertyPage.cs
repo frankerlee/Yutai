@@ -71,7 +71,9 @@ namespace Yutai.ArcGIS.Carto.UI
             if (this.listBox1.SelectedItem is LayerWrapObject)
             {
                 object selectedItem = this.listBox1.SelectedItem;
-                int num = this.method_1(this.igroupLayer_0 as ICompositeLayer, (this.listBox1.SelectedItem as LayerWrapObject).Layer) + 1;
+                int num =
+                    this.method_1(this.igroupLayer_0 as ICompositeLayer,
+                        (this.listBox1.SelectedItem as LayerWrapObject).Layer) + 1;
                 this.method_2(this.igroupLayer_0, (this.listBox1.SelectedItem as LayerWrapObject).Layer, num);
                 this.listBox1.Items.Remove(selectedItem);
                 this.listBox1.Items.Insert(num, selectedItem);
@@ -83,7 +85,8 @@ namespace Yutai.ArcGIS.Carto.UI
         {
             if (this.listBox1.SelectedItem is LayerWrapObject)
             {
-                frmLayerPropertyEx ex = new frmLayerPropertyEx {
+                frmLayerPropertyEx ex = new frmLayerPropertyEx
+                {
                     FocusMap = this.ibasicMap_0,
                     SelectItem = (this.listBox1.SelectedItem as LayerWrapObject).Layer
                 };
@@ -99,7 +102,8 @@ namespace Yutai.ArcGIS.Carto.UI
             if (this.listBox1.SelectedItem is LayerWrapObject)
             {
                 object selectedItem = this.listBox1.SelectedItem;
-                int num = this.method_1(this.igroupLayer_0 as ICompositeLayer, (this.listBox1.SelectedItem as LayerWrapObject).Layer);
+                int num = this.method_1(this.igroupLayer_0 as ICompositeLayer,
+                    (this.listBox1.SelectedItem as LayerWrapObject).Layer);
                 if (num != 0)
                 {
                     num--;
@@ -111,13 +115,13 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void GroupLayerPropertyPage_Load(object sender, EventArgs e)
+        private void GroupLayerPropertyPage_Load(object sender, EventArgs e)
         {
             this.method_0();
             this.bool_0 = true;
         }
 
- private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.listBox1.SelectedIndices.Count > 0)
             {
@@ -212,7 +216,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private void method_3(object object_0)
         {
-            frmOpenFile file = new frmOpenFile {
+            frmOpenFile file = new frmOpenFile
+            {
                 Text = "添加数据",
                 AllowMultiSelect = true
             };
@@ -242,14 +247,16 @@ namespace Yutai.ArcGIS.Carto.UI
                                 featureClass = (IFeatureClass) dataset2;
                                 if (featureClass.FeatureType == esriFeatureType.esriFTAnnotation)
                                 {
-                                    layer = new FDOGraphicsLayerClass {
+                                    layer = new FDOGraphicsLayerClass
+                                    {
                                         FeatureClass = featureClass,
                                         Name = featureClass.AliasName
                                     };
                                 }
                                 else
                                 {
-                                    layer = new FeatureLayerClass {
+                                    layer = new FeatureLayerClass
+                                    {
                                         FeatureClass = featureClass,
                                         Name = featureClass.AliasName
                                     };
@@ -263,17 +270,24 @@ namespace Yutai.ArcGIS.Carto.UI
                                 {
                                     IEnumGxObject children = (dataset as IGxObjectContainer).Children;
                                     children.Reset();
-                                    for (IGxDataset dataset3 = children.Next() as IGxDataset; dataset3 != null; dataset3 = children.Next() as IGxDataset)
+                                    for (IGxDataset dataset3 = children.Next() as IGxDataset;
+                                        dataset3 != null;
+                                        dataset3 = children.Next() as IGxDataset)
                                     {
                                         featureClass = dataset3.Dataset as IFeatureClass;
                                         if (featureClass.FeatureType == esriFeatureType.esriFTAnnotation)
                                         {
                                             factory = new FDOGraphicsLayerFactoryClass();
-                                            layer = (IFeatureLayer) factory.OpenGraphicsLayer((IFeatureWorkspace) featureClass.FeatureDataset.Workspace, featureClass.FeatureDataset, featureClass.AliasName);
+                                            layer =
+                                                (IFeatureLayer)
+                                                factory.OpenGraphicsLayer(
+                                                    (IFeatureWorkspace) featureClass.FeatureDataset.Workspace,
+                                                    featureClass.FeatureDataset, featureClass.AliasName);
                                         }
                                         else
                                         {
-                                            layer = new FeatureLayerClass {
+                                            layer = new FeatureLayerClass
+                                            {
                                                 FeatureClass = featureClass,
                                                 Name = featureClass.AliasName
                                             };
@@ -291,11 +305,16 @@ namespace Yutai.ArcGIS.Carto.UI
                                         if (featureClass.FeatureType == esriFeatureType.esriFTAnnotation)
                                         {
                                             factory = new FDOGraphicsLayerFactoryClass();
-                                            layer = (IFeatureLayer) factory.OpenGraphicsLayer((IFeatureWorkspace) featureClass.FeatureDataset.Workspace, featureClass.FeatureDataset, featureClass.AliasName);
+                                            layer =
+                                                (IFeatureLayer)
+                                                factory.OpenGraphicsLayer(
+                                                    (IFeatureWorkspace) featureClass.FeatureDataset.Workspace,
+                                                    featureClass.FeatureDataset, featureClass.AliasName);
                                         }
                                         else
                                         {
-                                            layer = new FeatureLayerClass {
+                                            layer = new FeatureLayerClass
+                                            {
                                                 FeatureClass = featureClass,
                                                 Name = featureClass.AliasName
                                             };
@@ -306,13 +325,15 @@ namespace Yutai.ArcGIS.Carto.UI
                                 }
                                 else if (dataset2.Type == esriDatasetType.esriDTTin)
                                 {
-                                    ITinLayer unk = new TinLayerClass {
+                                    ITinLayer unk = new TinLayerClass
+                                    {
                                         Dataset = (ITin) dataset2,
                                         Name = dataset2.Name
                                     };
                                     array.Add(unk);
                                 }
-                                else if ((dataset2.Type == esriDatasetType.esriDTRasterDataset) || (dataset2.Type == esriDatasetType.esriDTRasterBand))
+                                else if ((dataset2.Type == esriDatasetType.esriDTRasterDataset) ||
+                                         (dataset2.Type == esriDatasetType.esriDTRasterBand))
                                 {
                                     bool flag = true;
                                     if (!((IRasterPyramid) dataset2).Present)
@@ -337,7 +358,8 @@ namespace Yutai.ArcGIS.Carto.UI
                                     }
                                     if (flag)
                                     {
-                                        RasterLayerClass class3 = new RasterLayerClass {
+                                        RasterLayerClass class3 = new RasterLayerClass
+                                        {
                                             Cached = true
                                         };
                                         IRasterLayer layer3 = class3;
@@ -350,7 +372,8 @@ namespace Yutai.ArcGIS.Carto.UI
                                 {
                                     try
                                     {
-                                        IRasterCatalogTable pCatalog = new RasterCatalogTableClass {
+                                        IRasterCatalogTable pCatalog = new RasterCatalogTableClass
+                                        {
                                             Table = (ITable) dataset2
                                         };
                                         pCatalog.Update();
@@ -428,7 +451,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     {
                         layer = layer5 as IFeatureLayer;
                         featureClass = layer.FeatureClass;
-                        if ((featureClass.ShapeType == esriGeometryType.esriGeometryPolygon) || (featureClass.ShapeType == esriGeometryType.esriGeometryEnvelope))
+                        if ((featureClass.ShapeType == esriGeometryType.esriGeometryPolygon) ||
+                            (featureClass.ShapeType == esriGeometryType.esriGeometryEnvelope))
                         {
                             if (object_0 is IMap)
                             {
@@ -450,7 +474,12 @@ namespace Yutai.ArcGIS.Carto.UI
                     {
                         layer = layer5 as IFeatureLayer;
                         featureClass = layer.FeatureClass;
-                        if (((((featureClass.ShapeType == esriGeometryType.esriGeometryLine) || (featureClass.ShapeType == esriGeometryType.esriGeometryBezier3Curve)) || ((featureClass.ShapeType == esriGeometryType.esriGeometryCircularArc) || (featureClass.ShapeType == esriGeometryType.esriGeometryEllipticArc))) || (featureClass.ShapeType == esriGeometryType.esriGeometryPath)) || (featureClass.ShapeType == esriGeometryType.esriGeometryPolyline))
+                        if (((((featureClass.ShapeType == esriGeometryType.esriGeometryLine) ||
+                               (featureClass.ShapeType == esriGeometryType.esriGeometryBezier3Curve)) ||
+                              ((featureClass.ShapeType == esriGeometryType.esriGeometryCircularArc) ||
+                               (featureClass.ShapeType == esriGeometryType.esriGeometryEllipticArc))) ||
+                             (featureClass.ShapeType == esriGeometryType.esriGeometryPath)) ||
+                            (featureClass.ShapeType == esriGeometryType.esriGeometryPolyline))
                         {
                             if (object_0 is IMap)
                             {
@@ -472,7 +501,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     {
                         layer = layer5 as IFeatureLayer;
                         featureClass = layer.FeatureClass;
-                        if ((featureClass.ShapeType == esriGeometryType.esriGeometryMultipoint) || (featureClass.ShapeType == esriGeometryType.esriGeometryPoint))
+                        if ((featureClass.ShapeType == esriGeometryType.esriGeometryMultipoint) ||
+                            (featureClass.ShapeType == esriGeometryType.esriGeometryPoint))
                         {
                             if (object_0 is IMap)
                             {
@@ -506,26 +536,17 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IBasicMap FocusMap
         {
-            set
-            {
-                this.ibasicMap_0 = value;
-            }
+            set { this.ibasicMap_0 = value; }
         }
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         public object SelectItem
         {
-            set
-            {
-                this.icompositeLayer_0 = value as ICompositeLayer;
-            }
+            set { this.icompositeLayer_0 = value as ICompositeLayer; }
         }
 
         protected partial class LayerWrapObject
@@ -544,12 +565,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
             public ILayer Layer
             {
-                get
-                {
-                    return this.ilayer_0;
-                }
+                get { return this.ilayer_0; }
             }
         }
     }
 }
-

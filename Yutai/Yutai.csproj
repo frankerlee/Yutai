@@ -209,7 +209,6 @@
     <Compile Include="Forms\ErrorView.Designer.cs">
       <DependentUpon>ErrorView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ISplashView.cs" />
     <Compile Include="Forms\SplashView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -312,6 +311,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Yutai.Api\Yutai.Api.csproj">
+      <Project>{c0a8949e-d665-4044-8950-1a71c9b2d081}</Project>
+      <Name>Yutai.Api</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Yutai.ArcGIS.Carto\Yutai.ArcGIS.Carto.csproj">
       <Project>{C493421E-9EA5-43C7-94A1-3CAF106014BE}</Project>
       <Name>Yutai.ArcGIS.Carto</Name>

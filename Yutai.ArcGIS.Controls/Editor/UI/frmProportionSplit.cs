@@ -27,7 +27,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.Do();
         }
 
- private bool Do()
+        private bool Do()
         {
             ListViewItem item;
             int num2;
@@ -54,7 +54,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             double num4 = 1.0;
             if (num3 != 0.0)
             {
-                num4 = this.m_pPolyline.Length / distance;
+                num4 = this.m_pPolyline.Length/distance;
             }
             Yutai.ArcGIS.Common.Editor.Editor.EditWorkspace.StartEditOperation();
             int count = this.listView1.Items.Count;
@@ -87,7 +87,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                             num8 = 0;
                             while (num8 < num6)
                             {
-                                geometrys.AddGeometry((this.m_pPolyline as IGeometryCollection).get_Geometry(num8), ref obj2, ref obj2);
+                                geometrys.AddGeometry((this.m_pPolyline as IGeometryCollection).get_Geometry(num8),
+                                    ref obj2, ref obj2);
                                 num8++;
                             }
                             if (num2 == 0)
@@ -130,7 +131,8 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                                 obj2 = Missing.Value;
                                 for (num8 = 0; num8 < num6; num8++)
                                 {
-                                    geometrys.AddGeometry((this.m_pPolyline as IGeometryCollection).get_Geometry(num8), ref obj2, ref obj2);
+                                    geometrys.AddGeometry((this.m_pPolyline as IGeometryCollection).get_Geometry(num8),
+                                        ref obj2, ref obj2);
                                 }
                                 if (num2 == (count - 1))
                                 {
@@ -167,7 +169,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.txtLength.Text = this.m_pPolyline.Length.ToString();
         }
 
- private void listView1_AfterLabelEdit(object sender, LabelEditEventArgs e)
+        private void listView1_AfterLabelEdit(object sender, LabelEditEventArgs e)
         {
             ListViewItem item;
             try
@@ -203,10 +205,10 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                     }
                     else
                     {
-                        num6 = this.m_pPolyline.Length / Math.Abs(num4);
+                        num6 = this.m_pPolyline.Length/Math.Abs(num4);
                         this.txtError.Text = "1:" + num6.ToString("0");
                     }
-                    double num5 = this.m_pPolyline.Length / num2;
+                    double num5 = this.m_pPolyline.Length/num2;
                     for (num3 = 0; num3 < this.listView1.Items.Count; num3++)
                     {
                         item = this.listView1.Items[num3];
@@ -214,18 +216,19 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
                         {
                             if (item.Tag.ToString() != "0")
                             {
-                                num6 = ((double) item.Tag) * num5;
+                                num6 = ((double) item.Tag)*num5;
                                 item.SubItems.Add(num6.ToString());
                             }
                         }
                         else
                         {
-                            item.SubItems[1].Text = (((double) item.Tag) * num5).ToString();
+                            item.SubItems[1].Text = (((double) item.Tag)*num5).ToString();
                         }
                     }
                     if (e.Item == (this.listView1.Items.Count - 1))
                     {
-                        item = new ListViewItem("<点击输入长度>") {
+                        item = new ListViewItem("<点击输入长度>")
+                        {
                             Tag = 0
                         };
                         this.listView1.Items.Add(item);
@@ -261,4 +264,3 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
         }
     }
 }
-

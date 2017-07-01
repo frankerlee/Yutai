@@ -36,12 +36,20 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void frmLableRotateField_Load(object sender, EventArgs e)
+        private void frmLableRotateField_Load(object sender, EventArgs e)
         {
             for (int i = 0; i < this.m_pFields.FieldCount; i++)
             {
                 IField field = this.m_pFields.get_Field(i);
-                if (((((field.Type == esriFieldType.esriFieldTypeDate) || (field.Type == esriFieldType.esriFieldTypeDouble)) || ((field.Type == esriFieldType.esriFieldTypeGlobalID) || (field.Type == esriFieldType.esriFieldTypeGUID))) || (((field.Type == esriFieldType.esriFieldTypeInteger) || (field.Type == esriFieldType.esriFieldTypeOID)) || ((field.Type == esriFieldType.esriFieldTypeSingle) || (field.Type == esriFieldType.esriFieldTypeSmallInteger)))) || (field.Type == esriFieldType.esriFieldTypeString))
+                if (((((field.Type == esriFieldType.esriFieldTypeDate) ||
+                       (field.Type == esriFieldType.esriFieldTypeDouble)) ||
+                      ((field.Type == esriFieldType.esriFieldTypeGlobalID) ||
+                       (field.Type == esriFieldType.esriFieldTypeGUID))) ||
+                     (((field.Type == esriFieldType.esriFieldTypeInteger) ||
+                       (field.Type == esriFieldType.esriFieldTypeOID)) ||
+                      ((field.Type == esriFieldType.esriFieldTypeSingle) ||
+                       (field.Type == esriFieldType.esriFieldTypeSmallInteger)))) ||
+                    (field.Type == esriFieldType.esriFieldTypeString))
                 {
                     this.cboFields.Properties.Items.Add(field.Name);
                 }
@@ -57,7 +65,5 @@ namespace Yutai.ArcGIS.Carto.UI
             }
             this.chkPerpendicularToAngle.Checked = this.m_PerpendicularToAngle;
         }
-
-
     }
 }

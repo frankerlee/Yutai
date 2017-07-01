@@ -16,13 +16,13 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
     internal partial class frmTextSymbolEdit1 : Form
     {
         private bool m_CanDo = true;
-        private double[] m_dblScaleRatio = new double[] { 0.25, 0.5, 1.0, 1.25, 2.0 };
+        private double[] m_dblScaleRatio = new double[] {0.25, 0.5, 1.0, 1.25, 2.0};
         private MaskControl m_pMaskCtrl = new MaskControl();
         public IStyleGallery m_pSG;
         private TextGeneralControl m_pTextGeneralCtrl = new TextGeneralControl();
         private ITextSymbol m_pTextSymbol = null;
         private int m_ScaleIndex = 2;
-        private double[] point_unit_to = new double[] { 1.0, 0.01388889, 0.0352777778, 0.352777778 };
+        private double[] point_unit_to = new double[] {1.0, 0.01388889, 0.0352777778, 0.352777778};
 
         public frmTextSymbolEdit1()
         {
@@ -109,7 +109,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             }
         }
 
- private void frmFillSymbolEdit_Load(object sender, EventArgs e)
+        private void frmFillSymbolEdit_Load(object sender, EventArgs e)
         {
             this.m_CanDo = false;
             this.cboUnit.SelectedIndex = 0;
@@ -133,7 +133,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             return (this.m_pTextSymbol as ISymbol);
         }
 
- public void SetSymbol(ISymbol pSym)
+        public void SetSymbol(ISymbol pSym)
         {
             this.m_pOldSymbol = pSym;
             this.m_pTextSymbol = (pSym as IClone).Clone() as ITextSymbol;
@@ -145,4 +145,3 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
         }
     }
 }
-

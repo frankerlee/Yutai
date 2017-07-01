@@ -29,10 +29,11 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public void Draw(Graphics graphics_0)
         {
-            StringFormat format = new StringFormat {
+            StringFormat format = new StringFormat
+            {
                 FormatFlags = StringFormatFlags.NoWrap
             };
-            float num = this.Rectangle.Width / this.int_0;
+            float num = this.Rectangle.Width/this.int_0;
             float[] tabStops = new float[this.int_0];
             for (int i = 0; i < this.int_0; i++)
             {
@@ -50,22 +51,13 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public int Cols
         {
-            get
-            {
-                return this.int_0;
-            }
-            set
-            {
-                this.int_0 = value;
-            }
+            get { return this.int_0; }
+            set { this.int_0 = value; }
         }
 
         public string Text
         {
-            get
-            {
-                return this.string_0;
-            }
+            get { return this.string_0; }
             set
             {
                 this.string_0 = value;
@@ -75,4 +67,3 @@ namespace Yutai.ArcGIS.Common.Excel
         }
     }
 }
-

@@ -20,11 +20,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public string Name
         {
-            get
-            {
-                return this.ifield_0.Name;
-            }
+            get { return this.ifield_0.Name; }
         }
     }
 }
-

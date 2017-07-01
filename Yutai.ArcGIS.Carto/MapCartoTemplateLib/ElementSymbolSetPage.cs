@@ -33,7 +33,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 this.bool_1 = false;
                 if (this.mapTemplateElement_0.Element is IFillShapeElement)
                 {
-                    (this.mapTemplateElement_0.Element as IFillShapeElement).Symbol = this.styleButton1.Style as IFillSymbol;
+                    (this.mapTemplateElement_0.Element as IFillShapeElement).Symbol =
+                        this.styleButton1.Style as IFillSymbol;
                 }
                 else if (this.mapTemplateElement_0.Element is ILineElement)
                 {
@@ -47,12 +48,12 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             this.bool_1 = false;
         }
 
- private void ElementSymbolSetPage_Load(object sender, EventArgs e)
+        private void ElementSymbolSetPage_Load(object sender, EventArgs e)
         {
             this.method_0();
         }
 
- private void method_0()
+        private void method_0()
         {
             this.bool_0 = false;
             if (this.mapTemplateElement_0.Style != null)
@@ -111,26 +112,17 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public bool IsPageDirty
         {
-            get
-            {
-                return this.bool_1;
-            }
+            get { return this.bool_1; }
         }
 
         int IPropertyPage.Height
         {
-            get
-            {
-                return base.Height;
-            }
+            get { return base.Height; }
         }
 
         int IPropertyPage.Width
         {
-            get
-            {
-                return base.Width;
-            }
+            get { return base.Width; }
         }
 
         public MapCartoTemplateLib.MapTemplateElement MapTemplateElement
@@ -144,14 +136,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public string Title
         {
-            get
-            {
-                return "符号";
-            }
-            set
-            {
-            }
+            get { return "符号"; }
+            set { }
         }
     }
 }
-

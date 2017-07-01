@@ -32,13 +32,8 @@ namespace Yutai.Plugins.Editor.Commands
 
         public override bool Enabled
         {
-            get
-            {
-                return SkectchAssist.CheckEnable(_context);
-            }
+            get { return SkectchAssist.CheckEnable(_context); }
         }
-
-
 
 
         public override void OnClick(object sender, EventArgs args)
@@ -61,7 +56,8 @@ namespace Yutai.Plugins.Editor.Commands
         private void ParseInput(double x, double y)
         {
             SketchShareEx.m_pAnchorPoint.PutCoords(x, y);
-            SketchShareEx.SketchMouseDown(SketchShareEx.m_pAnchorPoint, _context.ActiveView, Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
+            SketchShareEx.SketchMouseDown(SketchShareEx.m_pAnchorPoint, _context.ActiveView,
+                Yutai.ArcGIS.Common.Editor.Editor.CurrentEditTemplate.FeatureLayer);
             SketchShareEx.IsFixDirection = false;
             SketchShareEx.IsFixLength = false;
         }

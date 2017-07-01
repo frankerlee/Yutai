@@ -1,6 +1,4 @@
-﻿
-
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace Yutai.ArcGIS.Common.Excel
 {
@@ -25,34 +23,19 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public string ColsAlignString
         {
-            get
-            {
-                return base.mdrawGrid.ColsAlignString;
-            }
-            set
-            {
-                base.mdrawGrid.ColsAlignString = value;
-            }
+            get { return base.mdrawGrid.ColsAlignString; }
+            set { base.mdrawGrid.ColsAlignString = value; }
         }
 
         public override Font Font
         {
-            get
-            {
-                return base.mdrawGrid.Font;
-            }
-            set
-            {
-                base.mdrawGrid.Font = value;
-            }
+            get { return base.mdrawGrid.Font; }
+            set { base.mdrawGrid.Font = value; }
         }
 
         public string[,] GridText
         {
-            get
-            {
-                return base.mdrawGrid.GridText;
-            }
+            get { return base.mdrawGrid.GridText; }
             set
             {
                 base.mblnHadInitialized = true;
@@ -61,4 +44,3 @@ namespace Yutai.ArcGIS.Common.Excel
         }
     }
 }
-

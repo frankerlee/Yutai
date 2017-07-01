@@ -32,9 +32,4 @@ namespace Yutai.Plugins.Interfaces
         bool ShowCommandString(string string_0, CommandTipsType commandTipsType_0);
         void MapDocumentChanged();
     }
-
-
-
-
-
 }

@@ -11,7 +11,7 @@ namespace Yutai.Plugins.Identifer
     {
         public QuerySettings()
         {
-            SelectionEnvironment=new SelectionEnvironmentClass();
+            SelectionEnvironment = new SelectionEnvironmentClass();
         }
 
         private double QueryTorelance { get; set; }

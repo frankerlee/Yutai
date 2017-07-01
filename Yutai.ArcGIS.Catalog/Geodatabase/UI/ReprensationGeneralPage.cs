@@ -53,13 +53,14 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             return true;
         }
 
- private IRepresentationWorkspaceExtension method_0(IFeatureClass ifeatureClass_1)
+        private IRepresentationWorkspaceExtension method_0(IFeatureClass ifeatureClass_1)
         {
             try
             {
                 IDataset dataset = ifeatureClass_1 as IDataset;
                 IWorkspaceExtensionManager workspace = dataset.Workspace as IWorkspaceExtensionManager;
-                UID gUID = new UIDClass {
+                UID gUID = new UIDClass
+                {
                     Value = "{FD05270A-8E0B-4823-9DEE-F149347C32B6}"
                 };
                 return (workspace.FindExtension(gUID) as IRepresentationWorkspaceExtension);
@@ -133,22 +134,13 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public IFeatureClass FeatureClass
         {
-            set
-            {
-                this.ifeatureClass_0 = value;
-            }
+            set { this.ifeatureClass_0 = value; }
         }
 
         public string OverrideFieldName
         {
-            get
-            {
-                return this.txtoverrideFldName.Text.Trim();
-            }
-            set
-            {
-                this.txtoverrideFldName.Text = value;
-            }
+            get { return this.txtoverrideFldName.Text.Trim(); }
+            set { this.txtoverrideFldName.Text = value; }
         }
 
         public IDatasetName RepClassName
@@ -173,35 +165,19 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 
         public string RepresentationName
         {
-            get
-            {
-                return this.txtRepresentationName.Text.Trim();
-            }
-            set
-            {
-                this.txtRepresentationName.Text = value;
-            }
+            get { return this.txtRepresentationName.Text.Trim(); }
+            set { this.txtRepresentationName.Text = value; }
         }
 
         public bool RequireShapeOverride
         {
-            get
-            {
-                return this.rdoRequireShapeOverride.Checked;
-            }
+            get { return this.rdoRequireShapeOverride.Checked; }
         }
 
         public string RuleIDFieldName
         {
-            get
-            {
-                return this.txtruleIDFldName.Text.Trim();
-            }
-            set
-            {
-                this.txtruleIDFldName.Text = value;
-            }
+            get { return this.txtruleIDFldName.Text.Trim(); }
+            set { this.txtruleIDFldName.Text = value; }
         }
     }
 }
-

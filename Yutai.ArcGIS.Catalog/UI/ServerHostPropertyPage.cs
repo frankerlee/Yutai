@@ -11,7 +11,6 @@ namespace Yutai.ArcGIS.Catalog.UI
 {
     public partial class ServerHostPropertyPage : UserControl
     {
-        [CompilerGenerated]
         private IContainer icontainer_0 = null;
 
         public ServerHostPropertyPage()
@@ -19,11 +18,14 @@ namespace Yutai.ArcGIS.Catalog.UI
             this.InitializeComponent();
         }
 
- private void ServerHostPropertyPage_Load(object sender, EventArgs e)
+        private void ServerHostPropertyPage_Load(object sender, EventArgs e)
         {
-            IEnumServerObjectConfiguration configurations = this.AGSServerConnectionAdmin.ServerObjectAdmin.GetConfigurations();
+            IEnumServerObjectConfiguration configurations =
+                this.AGSServerConnectionAdmin.ServerObjectAdmin.GetConfigurations();
             configurations.Reset();
-            for (IServerObjectConfiguration configuration2 = configurations.Next(); configuration2 != null; configuration2 = configurations.Next())
+            for (IServerObjectConfiguration configuration2 = configurations.Next();
+                configuration2 != null;
+                configuration2 = configurations.Next())
             {
                 object obj2;
                 object obj3;
@@ -38,7 +40,8 @@ namespace Yutai.ArcGIS.Catalog.UI
                 items[0] = (machine2 as IServerMachine3).Name;
                 items[1] = (machine2 as IServerMachine3).AdminURL;
                 items[2] = "已启动";
-                ListViewItem item = new ListViewItem(items) {
+                ListViewItem item = new ListViewItem(items)
+                {
                     Tag = machine2
                 };
                 this.lstDir.Items.Add(item);
@@ -46,19 +49,6 @@ namespace Yutai.ArcGIS.Catalog.UI
             }
         }
 
-        public IAGSServerConnectionAdmin AGSServerConnectionAdmin
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.iagsserverConnectionAdmin_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.iagsserverConnectionAdmin_0 = value;
-            }
-        }
+        public IAGSServerConnectionAdmin AGSServerConnectionAdmin { get; set; }
     }
 }
-

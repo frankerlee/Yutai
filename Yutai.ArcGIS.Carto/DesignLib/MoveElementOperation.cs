@@ -62,51 +62,32 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 
         public IActiveView ActiveView
         {
-            set
-            {
-                this.iactiveView_0 = value;
-            }
+            set { this.iactiveView_0 = value; }
         }
 
         public bool CanRedo
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public bool CanUndo
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public IEnumElement Elements
         {
-            set
-            {
-                this.ienumElement_0 = value;
-            }
+            set { this.ienumElement_0 = value; }
         }
 
         public string MenuString
         {
-            get
-            {
-                return "移动";
-            }
+            get { return "移动"; }
         }
 
         public IPoint Point
         {
-            set
-            {
-                this.ipoint_0 = value;
-            }
+            set { this.ipoint_0 = value; }
         }
     }
 }
-

@@ -15,7 +15,8 @@ using WorkspaceOperator = Yutai.ArcGIS.Common.BaseClasses.WorkspaceOperator;
 
 namespace Yutai.ArcGIS.Catalog
 {
-    public class GxDatabase : IGxObject, IGxDatabase, IGxObjectContainer, IGxObjectEdit, IGxObjectInternalName, IGxObjectProperties, IGxObjectUI, IGxPasteTarget, IGxContextMenuWap, IGxRemoteConnection
+    public class GxDatabase : IGxObject, IGxDatabase, IGxObjectContainer, IGxObjectEdit, IGxObjectInternalName,
+        IGxObjectProperties, IGxObjectUI, IGxPasteTarget, IGxContextMenuWap, IGxRemoteConnection
     {
         private bool bool_0 = false;
         private bool bool_1 = false;
@@ -60,7 +61,7 @@ namespace Yutai.ArcGIS.Catalog
             int count = this.igxObjectArray_0.Count;
             int num4 = 0;
             goto Label_0115;
-        Label_00AC:
+            Label_00AC:
             num = obj3.Name.ToUpper().CompareTo(strB);
             if (num == 0)
             {
@@ -79,8 +80,8 @@ namespace Yutai.ArcGIS.Catalog
                 this.igxObjectArray_0.Insert(num2, igxObject_1);
                 return igxObject_1;
             }
-        Label_0115:
-            num4 = (num2 + count) / 2;
+            Label_0115:
+            num4 = (num2 + count)/2;
             obj3 = this.igxObjectArray_0.Item(num4);
             if (!flag)
             {
@@ -187,7 +188,8 @@ namespace Yutai.ArcGIS.Catalog
                 if (name is IFeatureClassName)
                 {
                     flag2 = true;
-                    if (((name as IDatasetName).WorkspaceName.PathName == this.iworkspaceName_0.PathName) && ((name as IFeatureClassName).FeatureDatasetName != null))
+                    if (((name as IDatasetName).WorkspaceName.PathName == this.iworkspaceName_0.PathName) &&
+                        ((name as IFeatureClassName).FeatureDatasetName != null))
                     {
                         bool_2 = true;
                     }
@@ -246,7 +248,9 @@ namespace Yutai.ArcGIS.Catalog
                 this.iworkspaceName_0.ConnectionProperties.GetAllProperties(out obj2, out obj3);
                 this.iworkspace_0 = (this.iworkspaceName_0 as IName).Open() as IWorkspace;
                 this.iworkspace_0.ConnectionProperties.GetAllProperties(out obj2, out obj3);
-                if (((this.sysGrants_0 == null) && (this.iworkspace_0.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace)) && ((AppConfigInfo.UserID.Length > 0) && (AppConfigInfo.UserID != "admin")))
+                if (((this.sysGrants_0 == null) &&
+                     (this.iworkspace_0.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace)) &&
+                    ((AppConfigInfo.UserID.Length > 0) && (AppConfigInfo.UserID != "admin")))
                 {
                     this.sysGrants_0 = new SysGrants(AppConfigInfo.UserID);
                 }
@@ -282,7 +286,7 @@ namespace Yutai.ArcGIS.Catalog
                             return;
                     }
                 }
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
         }
 
@@ -292,7 +296,8 @@ namespace Yutai.ArcGIS.Catalog
             {
                 if (this.IsRemoteDatabase)
                 {
-                    (this.iworkspaceName_0.WorkspaceFactory as IRemoteDatabaseWorkspaceFactory).DeleteConnectionFile(this.string_0);
+                    (this.iworkspaceName_0.WorkspaceFactory as IRemoteDatabaseWorkspaceFactory).DeleteConnectionFile(
+                        this.string_0);
                 }
                 else
                 {
@@ -374,7 +379,7 @@ namespace Yutai.ArcGIS.Catalog
             }
             if (!(this.iworkspace_0 is IOleDBConnectionInfo))
             {
-                new frmGDBInfo { Workspace = this.iworkspace_0 }.ShowDialog();
+                new frmGDBInfo {Workspace = this.iworkspace_0}.ShowDialog();
             }
         }
 
@@ -469,11 +474,13 @@ namespace Yutai.ArcGIS.Catalog
                     obj2 = null;
                     if (this.IsEnterpriseGeodatabase)
                     {
-                        if ((name2.Type == esriDatasetType.esriDTRasterDataset) || (name2.Type == esriDatasetType.esriDTRasterCatalog))
+                        if ((name2.Type == esriDatasetType.esriDTRasterDataset) ||
+                            (name2.Type == esriDatasetType.esriDTRasterCatalog))
                         {
                             obj2 = new GxRasterDataset();
                         }
-                        else if ((name2.Type == esriDatasetType.esriDTFeatureClass) || (name2.Type == esriDatasetType.esriDTTable))
+                        else if ((name2.Type == esriDatasetType.esriDTFeatureClass) ||
+                                 (name2.Type == esriDatasetType.esriDTTable))
                         {
                             if (AppConfigInfo.UserID.Length > 0)
                             {
@@ -510,11 +517,13 @@ namespace Yutai.ArcGIS.Catalog
                     }
                     else
                     {
-                        if ((name2.Type == esriDatasetType.esriDTRasterDataset) || (name2.Type == esriDatasetType.esriDTRasterCatalog))
+                        if ((name2.Type == esriDatasetType.esriDTRasterDataset) ||
+                            (name2.Type == esriDatasetType.esriDTRasterCatalog))
                         {
                             obj2 = new GxRasterDataset();
                         }
-                        else if ((name2.Type == esriDatasetType.esriDTFeatureClass) || (name2.Type == esriDatasetType.esriDTTable))
+                        else if ((name2.Type == esriDatasetType.esriDTFeatureClass) ||
+                                 (name2.Type == esriDatasetType.esriDTTable))
                         {
                             obj2 = new GxDataset();
                         }
@@ -533,7 +542,7 @@ namespace Yutai.ArcGIS.Catalog
             }
             catch (Exception exception)
             {
-                Logger.Current.Error("",exception, "");
+                Logger.Current.Error("", exception, "");
             }
         }
 
@@ -551,7 +560,8 @@ namespace Yutai.ArcGIS.Catalog
                 {
                     ienumName_0.Reset();
                     IName name = ienumName_0.Next();
-                    if (((name as IDatasetName).WorkspaceName.Type != esriWorkspaceType.esriFileSystemWorkspace) && ((name as IDatasetName).WorkspaceName.PathName == this.iworkspaceName_0.PathName))
+                    if (((name as IDatasetName).WorkspaceName.Type != esriWorkspaceType.esriFileSystemWorkspace) &&
+                        ((name as IDatasetName).WorkspaceName.PathName == this.iworkspaceName_0.PathName))
                     {
                         IDatasetContainer container = (this.iworkspaceName_0 as IName).Open() as IDatasetContainer;
                         while (name != null)
@@ -574,7 +584,8 @@ namespace Yutai.ArcGIS.Catalog
                     flag2 = false;
                     IGeoDBDataTransfer transfer = new MyGeoDBDataTransfer();
                     transfer.GenerateNameMapping(ienumName_0, this.iworkspaceName_0 as IName, out mapping);
-                    frmGeoDBDataTransfer transfer2 = new frmGeoDBDataTransfer {
+                    frmGeoDBDataTransfer transfer2 = new frmGeoDBDataTransfer
+                    {
                         EnumNameMapping = mapping,
                         ToName = this.iworkspaceName_0 as IName,
                         GeoDBTransfer = transfer
@@ -643,7 +654,8 @@ namespace Yutai.ArcGIS.Catalog
                             }
                             else
                             {
-                                (this.iworkspaceName_0.WorkspaceFactory as IRemoteDatabaseWorkspaceFactory).RenameConnectionFile(this.string_0, string_1);
+                                (this.iworkspaceName_0.WorkspaceFactory as IRemoteDatabaseWorkspaceFactory)
+                                    .RenameConnectionFile(this.string_0, string_1);
                                 this.string_0 = str4;
                                 this.iworkspaceName_0.PathName = this.string_0;
                                 this.igxCatalog_0.ObjectChanged(this);
@@ -710,18 +722,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public bool AreChildrenViewable
         {
-            get
-            {
-                return (this.igxObjectArray_0.Count > 0);
-            }
+            get { return (this.igxObjectArray_0.Count > 0); }
         }
 
         public string BaseName
         {
-            get
-            {
-                return Path.GetFileNameWithoutExtension(this.string_0);
-            }
+            get { return Path.GetFileNameWithoutExtension(this.string_0); }
         }
 
         public string Category
@@ -766,18 +772,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public UID ClassID
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public UID ContextMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public string FullName
@@ -794,18 +794,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public bool HasChildren
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         public IName InternalObjectName
         {
-            get
-            {
-                return (this.iworkspaceName_0 as IName);
-            }
+            get { return (this.iworkspaceName_0 as IName); }
         }
 
         public bool IsConnected
@@ -838,7 +832,7 @@ namespace Yutai.ArcGIS.Catalog
                             catch (Exception exception1)
                             {
                                 exception = exception1;
-                                Logger.Current.Error("",exception, "");
+                                Logger.Current.Error("", exception, "");
                                 goto Label_010B;
                             }
                         }
@@ -853,7 +847,7 @@ namespace Yutai.ArcGIS.Catalog
                             catch (Exception exception2)
                             {
                                 exception = exception2;
-                                Logger.Current.Error("",exception, "");
+                                Logger.Current.Error("", exception, "");
                                 goto Label_010B;
                             }
                         }
@@ -870,9 +864,9 @@ namespace Yutai.ArcGIS.Catalog
                 catch (Exception exception3)
                 {
                     exception = exception3;
-                    Logger.Current.Error("",exception, "");
+                    Logger.Current.Error("", exception, "");
                 }
-            Label_010B:
+                Label_010B:
                 return false;
             }
         }
@@ -929,21 +923,13 @@ namespace Yutai.ArcGIS.Catalog
 
         public bool IsValid
         {
-            get
-            {
-                return (this.iworkspaceName_0 != null);
-            }
+            get { return (this.iworkspaceName_0 != null); }
         }
 
         IName IGxObjectInternalName.InternalObjectName
         {
-            get
-            {
-                return (this.iworkspaceName_0 as IName);
-            }
-            set
-            {
-            }
+            get { return (this.iworkspaceName_0 as IName); }
+            set { }
         }
 
         public Bitmap LargeImage
@@ -1003,26 +989,17 @@ namespace Yutai.ArcGIS.Catalog
 
         public UID NewMenu
         {
-            get
-            {
-                return null;
-            }
+            get { return null; }
         }
 
         public IGxObject Parent
         {
-            get
-            {
-                return this.igxObject_0;
-            }
+            get { return this.igxObject_0; }
         }
 
         public int PropertyCount
         {
-            get
-            {
-                return 0;
-            }
+            get { return 0; }
         }
 
         public Bitmap SmallImage
@@ -1073,18 +1050,12 @@ namespace Yutai.ArcGIS.Catalog
 
         public IWorkspace Workspace
         {
-            get
-            {
-                return this.iworkspace_0;
-            }
+            get { return this.iworkspace_0; }
         }
 
         public IWorkspaceName WorkspaceName
         {
-            get
-            {
-                return this.iworkspaceName_0;
-            }
+            get { return this.iworkspaceName_0; }
             set
             {
                 this.iworkspaceName_0 = value;
@@ -1093,4 +1064,3 @@ namespace Yutai.ArcGIS.Catalog
         }
     }
 }
-

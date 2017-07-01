@@ -24,4 +24,3 @@ namespace Yutai.ArcGIS.Framework
         string PaintStyleName { get; }
     }
 }
-

@@ -14,50 +14,26 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         public double X
         {
-            get
-            {
-                return this.double_0;
-            }
-            set
-            {
-                this.double_0 = value;
-            }
+            get { return this.double_0; }
+            set { this.double_0 = value; }
         }
 
         public double Y
         {
-            get
-            {
-                return this.double_1;
-            }
-            set
-            {
-                this.double_1 = value;
-            }
+            get { return this.double_1; }
+            set { this.double_1 = value; }
         }
 
         public double Z
         {
-            get
-            {
-                return this.double_2;
-            }
-            set
-            {
-                this.double_2 = value;
-            }
+            get { return this.double_2; }
+            set { this.double_2 = value; }
         }
 
         public double M
         {
-            get
-            {
-                return this.double_3;
-            }
-            set
-            {
-                this.double_3 = value;
-            }
+            get { return this.double_3; }
+            set { this.double_3 = value; }
         }
 
         public GPoint()
@@ -112,14 +88,14 @@ namespace Yutai.Pipeline.Analysis.Classes
         {
             double num = toPoint.X - this.double_0;
             double num2 = toPoint.Y - this.double_1;
-            return Math.Sqrt(num * num + num2 * num2);
+            return Math.Sqrt(num*num + num2*num2);
         }
 
         public double DistanceToPt(double toX, double toY)
         {
             double num = toX - this.double_0;
             double num2 = toY - this.double_1;
-            return Math.Sqrt(num * num + num2 * num2);
+            return Math.Sqrt(num*num + num2*num2);
         }
 
         public CVeObj GetVeToPt(GPoint toPoint)
@@ -153,8 +129,8 @@ namespace Yutai.Pipeline.Analysis.Classes
 
         public void OffSetByLen(double dAngle, double dLen)
         {
-            this.double_0 += dLen * Math.Cos(dAngle * 0.017453292519943295);
-            this.double_1 += dLen * Math.Sin(dAngle * 0.017453292519943295);
+            this.double_0 += dLen*Math.Cos(dAngle*0.017453292519943295);
+            this.double_1 += dLen*Math.Sin(dAngle*0.017453292519943295);
         }
 
         public static bool operator ==(GPoint tPoint1, GPoint tPoint2)

@@ -8,13 +8,6 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 {
     public class MapTemplateLegendElement : MapTemplateElement
     {
-        [CompilerGenerated]
-        private IBackground ibackground_0;
-        [CompilerGenerated]
-        private IBorder iborder_0;
-        [CompilerGenerated]
-        private IShadow ishadow_0;
-
         public MapTemplateLegendElement(MapTemplate mapTemplate_1) : base(mapTemplate_1)
         {
             base.MapTemplateElementType = MapTemplateElementType.LegendElement;
@@ -68,10 +61,12 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             style.AutoAdd = true;
             style.AutoReorder = true;
             style.AutoVisibility = true;
-            UID clsid = new UIDClass {
+            UID clsid = new UIDClass
+            {
                 Value = "esriCarto.Legend"
             };
-            IMapFrame frame = (ipageLayout_0 as IGraphicsContainer).FindFrame((ipageLayout_0 as IActiveView).FocusMap) as IMapFrame;
+            IMapFrame frame =
+                (ipageLayout_0 as IGraphicsContainer).FindFrame((ipageLayout_0 as IActiveView).FocusMap) as IMapFrame;
             IElement element = frame.CreateSurroundFrame(clsid, style) as IElement;
             (element as IFrameElement).Border = this.Border;
             (element as IFrameElement).Background = this.Background;
@@ -143,58 +138,16 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
-        public IBackground Background
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.ibackground_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.ibackground_0 = value;
-            }
-        }
+        public IBackground Background { get; set; }
 
-        public IBorder Border
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.iborder_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.iborder_0 = value;
-            }
-        }
+        public IBorder Border { get; set; }
 
         protected override IPropertySet PropertySet
         {
-            get
-            {
-                return new PropertySetClass();
-            }
-            set
-            {
-            }
+            get { return new PropertySetClass(); }
+            set { }
         }
 
-        public IShadow Shadow
-        {
-            [CompilerGenerated]
-            get
-            {
-                return this.ishadow_0;
-            }
-            [CompilerGenerated]
-            set
-            {
-                this.ishadow_0 = value;
-            }
-        }
+        public IShadow Shadow { get; set; }
     }
 }
-

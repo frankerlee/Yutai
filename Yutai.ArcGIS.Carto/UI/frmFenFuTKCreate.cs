@@ -181,31 +181,22 @@ namespace Yutai.ArcGIS.Carto.UI
         {
         }
 
- private void frmFenFuTKCreate_Load(object sender, EventArgs e)
+        private void frmFenFuTKCreate_Load(object sender, EventArgs e)
         {
             this.cmbScale.Items.Add("1:5000");
             this.cmbScale.Items.Add("1:10000");
             this.cmbScale.SelectedIndex = 1;
         }
 
- public IActiveView ActiveView
+        public IActiveView ActiveView
         {
-            set
-            {
-                this.iactiveView_0 = value;
-            }
+            set { this.iactiveView_0 = value; }
         }
 
         internal bool IsAdminSys
         {
-            get
-            {
-                return false;
-            }
-            set
-            {
-            }
+            get { return false; }
+            set { }
         }
     }
 }
-

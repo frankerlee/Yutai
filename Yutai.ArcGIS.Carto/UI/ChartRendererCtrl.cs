@@ -107,7 +107,8 @@ namespace Yutai.ArcGIS.Carto.UI
                     ISymbol symbol = this.method_5(color);
                     strArray[0] = "";
                     strArray[1] = wrap.ToString();
-                    ListViewItemEx ex = new ListViewItemEx(strArray) {
+                    ListViewItemEx ex = new ListViewItemEx(strArray)
+                    {
                         Style = symbol,
                         Tag = wrap
                     };
@@ -237,7 +238,7 @@ namespace Yutai.ArcGIS.Carto.UI
             }
         }
 
- private void FieldsListBoxCtrl_SelectedIndexChanged(object sender, EventArgs e)
+        private void FieldsListBoxCtrl_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.FieldsListBoxCtrl.SelectedIndices.Count > 0)
             {
@@ -275,14 +276,19 @@ namespace Yutai.ArcGIS.Carto.UI
             return num;
         }
 
- public IColorRamp MakeNewRamp()
+        public IColorRamp MakeNewRamp()
         {
-            return new AlgorithmicColorRampClass { FromColor = this.RandomColor(), ToColor = this.RandomColor(), Algorithm = esriColorRampAlgorithm.esriLabLChAlgorithm };
+            return new AlgorithmicColorRampClass
+            {
+                FromColor = this.RandomColor(),
+                ToColor = this.RandomColor(),
+                Algorithm = esriColorRampAlgorithm.esriLabLChAlgorithm
+            };
         }
 
         private IColor method_0(int int_1, int int_2, int int_3)
         {
-            return new RgbColorClass { Red = int_1, Green = int_2, Blue = int_3 };
+            return new RgbColorClass {Red = int_1, Green = int_2, Blue = int_3};
         }
 
         private IEnumColors method_1(IColorRamp icolorRamp_1, int int_1)
@@ -323,7 +329,8 @@ namespace Yutai.ArcGIS.Carto.UI
             {
                 IField field = fields2.get_Field(num);
                 esriFieldType type = field.Type;
-                if ((((type != esriFieldType.esriFieldTypeDouble) && (type != esriFieldType.esriFieldTypeInteger)) && (type != esriFieldType.esriFieldTypeSingle)) && (type != esriFieldType.esriFieldTypeSmallInteger))
+                if ((((type != esriFieldType.esriFieldTypeDouble) && (type != esriFieldType.esriFieldTypeInteger)) &&
+                     (type != esriFieldType.esriFieldTypeSingle)) && (type != esriFieldType.esriFieldTypeSmallInteger))
                 {
                     continue;
                 }
@@ -337,9 +344,9 @@ namespace Yutai.ArcGIS.Carto.UI
                     }
                 }
                 goto Label_0147;
-            Label_0145:
+                Label_0145:
                 flag = false;
-            Label_0147:
+                Label_0147:
                 if (flag)
                 {
                     this.FieldsListBoxCtrl.Items.Add(new FieldWrap(field));
@@ -351,13 +358,15 @@ namespace Yutai.ArcGIS.Carto.UI
             {
                 strArray[0] = "";
                 strArray[1] = fields.get_FieldAlias(num);
-                ListViewItemEx ex = new ListViewItemEx(strArray) {
+                ListViewItemEx ex = new ListViewItemEx(strArray)
+                {
                     Style = chartSymbol.get_Symbol(num),
                     Tag = new FieldWrap(fields2.get_Field(fields2.FindField(fields.get_Field(num))))
                 };
                 this.SelectFieldslistView.Add(ex);
             }
-            if ((this.igeoFeatureLayer_0.FeatureClass.ShapeType == esriGeometryType.esriGeometryPoint) || (this.igeoFeatureLayer_0.FeatureClass.ShapeType == esriGeometryType.esriGeometryMultipoint))
+            if ((this.igeoFeatureLayer_0.FeatureClass.ShapeType == esriGeometryType.esriGeometryPoint) ||
+                (this.igeoFeatureLayer_0.FeatureClass.ShapeType == esriGeometryType.esriGeometryMultipoint))
             {
                 this.lblBackground.Visible = false;
                 this.btnStyle.Visible = false;
@@ -450,7 +459,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private ISymbol method_5(IColor icolor_0)
         {
-            IFillSymbol symbol = new SimpleFillSymbolClass {
+            IFillSymbol symbol = new SimpleFillSymbolClass
+            {
                 Color = icolor_0
             };
             return (symbol as ISymbol);
@@ -458,7 +468,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         private double method_6(string string_0)
         {
-            ITableHistogram histogram = new BasicTableHistogramClass {
+            ITableHistogram histogram = new BasicTableHistogramClass
+            {
                 Exclusion = this.ichartRenderer_0 as IDataExclusion,
                 Field = string_0,
                 Table = this.igeoFeatureLayer_0.FeatureClass as ITable
@@ -469,7 +480,12 @@ namespace Yutai.ArcGIS.Carto.UI
         private IColor method_7()
         {
             Random random = new Random((int) DateTime.Now.Ticks);
-            return new RgbColorClass { Red = (int) (255.0 * random.NextDouble()), Green = (int) (255.0 * random.NextDouble()), Blue = (int) (255.0 * random.NextDouble()) };
+            return new RgbColorClass
+            {
+                Red = (int) (255.0*random.NextDouble()),
+                Green = (int) (255.0*random.NextDouble()),
+                Blue = (int) (255.0*random.NextDouble())
+            };
         }
 
         private ISymbol method_8(esriGeometryType esriGeometryType_0)
@@ -507,7 +523,7 @@ namespace Yutai.ArcGIS.Carto.UI
         public IColor RandomColor()
         {
             Random random = new Random((int) DateTime.Now.Ticks);
-            return new RgbColorClass { RGB = (int) ((16777214.0 * random.NextDouble()) + 1.0) };
+            return new RgbColorClass {RGB = (int) ((16777214.0*random.NextDouble()) + 1.0)};
         }
 
         private void SelectFieldslistView_SelectedIndexChanged(object sender, EventArgs e)
@@ -554,10 +570,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public int ChartRenderType
         {
-            set
-            {
-                this.int_0 = value;
-            }
+            set { this.int_0 = value; }
         }
 
         public ILayer CurrentLayer
@@ -577,14 +590,8 @@ namespace Yutai.ArcGIS.Carto.UI
 
         bool IUserControl.Visible
         {
-            get
-            {
-                return base.Visible;
-            }
-            set
-            {
-                base.Visible = value;
-            }
+            get { return base.Visible; }
+            set { base.Visible = value; }
         }
 
         public IStyleGallery StyleGallery
@@ -597,4 +604,3 @@ namespace Yutai.ArcGIS.Carto.UI
         }
     }
 }
-

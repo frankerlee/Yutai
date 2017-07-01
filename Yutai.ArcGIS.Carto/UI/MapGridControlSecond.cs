@@ -20,11 +20,11 @@ namespace Yutai.ArcGIS.Carto.UI
             this.InitializeComponent();
         }
 
- public void Do()
+        public void Do()
         {
         }
 
- private void MapGridControlSecond_Load(object sender, EventArgs e)
+        private void MapGridControlSecond_Load(object sender, EventArgs e)
         {
             this.method_0();
             this.bool_0 = true;
@@ -82,10 +82,7 @@ namespace Yutai.ArcGIS.Carto.UI
 
         public IMapFrame MapFrame
         {
-            set
-            {
-                this.imapFrame_0 = value;
-            }
+            set { this.imapFrame_0 = value; }
         }
 
         public IMapGrid MapGrid
@@ -101,4 +98,3 @@ namespace Yutai.ArcGIS.Carto.UI
         }
     }
 }
-

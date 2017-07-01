@@ -7,4 +7,3 @@ namespace Yutai.ArcGIS.Catalog
         ISpatialReference SpatialReference { get; }
     }
 }
-

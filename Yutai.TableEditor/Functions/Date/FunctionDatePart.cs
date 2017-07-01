@@ -17,8 +17,8 @@ namespace Yutai.Plugins.TableEditor.Functions.Date
             _description = "DatePart 函数可返回给定日期的指定部分。";
             _parameters = new List<Parameter>()
             {
-                new Parameter() { Order = 0, Name = "interval", Description = "必需的。需要增加的时间间隔。"},
-                new Parameter() { Order = 1, Name = "date", Description = "必需的。需计算的日期表达式。"}
+                new Parameter() {Order = 0, Name = "interval", Description = "必需的。需要增加的时间间隔。"},
+                new Parameter() {Order = 1, Name = "date", Description = "必需的。需计算的日期表达式。"}
             };
         }
     }

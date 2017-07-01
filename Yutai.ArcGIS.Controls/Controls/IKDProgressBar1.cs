@@ -9,4 +9,3 @@ namespace Yutai.ArcGIS.Controls.Controls
         ProgressBar KDProgressBar1 { get; set; }
     }
 }
-

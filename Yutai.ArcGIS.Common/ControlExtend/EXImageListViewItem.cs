@@ -35,15 +35,8 @@ namespace Yutai.ArcGIS.Common.ControlExtend
 
         public Image MyImage
         {
-            get
-            {
-                return this.image_0;
-            }
-            set
-            {
-                this.image_0 = value;
-            }
+            get { return this.image_0; }
+            set { this.image_0 = value; }
         }
     }
 }
-

@@ -2,4 +2,3 @@
 {
     public delegate void OnFrameworkClosedHandler(object object_0);
 }
-

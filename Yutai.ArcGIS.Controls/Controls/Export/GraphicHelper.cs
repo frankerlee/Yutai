@@ -54,11 +54,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
 
         public IList FiledNames
         {
-            get
-            {
-                return this.m_pFiledName;
-            }
+            get { return this.m_pFiledName; }
         }
     }
 }
-

@@ -2,7 +2,7 @@
 {
     public class MapTemplateAssis
     {
-        public static  event OnExcuteAddElementHandler OnExcuteAddElement;
+        public static event OnExcuteAddElementHandler OnExcuteAddElement;
 
         public static void ExcuteAddElement()
         {
@@ -13,4 +13,3 @@
         }
     }
 }
-

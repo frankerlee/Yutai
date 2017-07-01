@@ -26,10 +26,7 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public System.Drawing.Brush Brush
         {
-            get
-            {
-                return this.brush_0;
-            }
+            get { return this.brush_0; }
             set
             {
                 if (value != null)
@@ -41,22 +38,13 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public System.Drawing.Graphics Graphics
         {
-            get
-            {
-                return this.graphics_0;
-            }
-            set
-            {
-                this.graphics_0 = value;
-            }
+            get { return this.graphics_0; }
+            set { this.graphics_0 = value; }
         }
 
         public System.Drawing.Pen Pen
         {
-            get
-            {
-                return this.pen_0;
-            }
+            get { return this.pen_0; }
             set
             {
                 if (value != null)
@@ -68,15 +56,8 @@ namespace Yutai.ArcGIS.Common.Excel
 
         public System.Drawing.Rectangle Rectangle
         {
-            get
-            {
-                return this.rectangle_0;
-            }
-            set
-            {
-                this.rectangle_0 = value;
-            }
+            get { return this.rectangle_0; }
+            set { this.rectangle_0 = value; }
         }
     }
 }
-

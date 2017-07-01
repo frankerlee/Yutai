@@ -49,7 +49,8 @@ namespace Yutai.Shared
         public static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
 
         [DllImport("Shlwapi.dll", CharSet = CharSet.Auto)]
-        public static extern long StrFormatByteSize(long fileSize, [MarshalAs(UnmanagedType.LPTStr)] StringBuilder buffer, int bufferSize);
+        public static extern long StrFormatByteSize(long fileSize,
+            [MarshalAs(UnmanagedType.LPTStr)] StringBuilder buffer, int bufferSize);
 
         [DllImport("user32.dll")]
         public static extern bool UpdateWindow(IntPtr hWnd);
@@ -57,9 +58,11 @@ namespace Yutai.Shared
         #region Suspend/Resume redraw
 
         //http ://stackoverflow.com/questions/778095/windows-forms-using-backgroundimage-slows-down-drawing-of-the-forms-controls
-        
-        [DllImport("user32.dll", EntryPoint = "SendMessageA", ExactSpelling = true, CharSet = CharSet.Ansi, SetLastError = true)]
+
+        [DllImport("user32.dll", EntryPoint = "SendMessageA", ExactSpelling = true, CharSet = CharSet.Ansi,
+             SetLastError = true)]
         private static extern int SendMessage(IntPtr hwnd, int wMsg, int wParam, int lParam);
+
         private const int WM_SETREDRAW = 0xB;
 
         public static void SuspendDrawing(this Control target)
