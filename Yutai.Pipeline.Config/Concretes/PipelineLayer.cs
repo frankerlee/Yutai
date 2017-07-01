@@ -23,6 +23,7 @@ namespace Yutai.Pipeline.Config.Concretes
 
         public PipelineLayer()
         {
+            _layers = new List<IBasicLayerInfo>();
         }
 
         public PipelineLayer(IPipelineLayer layer, bool keepClass)
@@ -46,11 +47,13 @@ namespace Yutai.Pipeline.Config.Concretes
 
         public PipelineLayer(XmlNode xmlNode)
         {
+            _layers = new List<IBasicLayerInfo>();
             ReadFromXml(xmlNode);
         }
 
         public PipelineLayer(XmlNode xmlNode, List<IPipelineTemplate> templates)
         {
+            _layers = new List<IBasicLayerInfo>();
             _templates = templates;
             ReadFromXml(xmlNode);
         }
@@ -117,7 +120,7 @@ namespace Yutai.Pipeline.Config.Concretes
                 xml.SelectNodes($"/PipelineConfig/PipelineLayers/PipelineLayer[@Name='{_name}']/Layers/Layer");
             foreach (XmlNode node in nodeList)
             {
-                string template = node.Attributes["Template"].Value;
+                string template = node.Attributes["Template"]?.Value;
                 IBasicLayerInfo layerInfo;
                 if (_templates == null || string.IsNullOrWhiteSpace(template))
                     layerInfo = new BasicLayerInfo(node);

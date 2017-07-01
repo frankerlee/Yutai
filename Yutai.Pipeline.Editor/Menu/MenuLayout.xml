@@ -1,9 +1,25 @@
 ﻿<YutaiGIS>
   <MainMenu>
     <Pages>
-      <Page Key="PipelineQuery" Caption="管线编辑" Index="0" Visible="true">
+      <Page Key="PipelineEditor" Caption="管线编辑" Index="0" Visible="true">
         <PageGroup Key="Pipeline_Editor_Common" Caption="常用" Visible="true" Index="1">
-
+          <BarItem Key="PipelineEditor_PointLineLinkage" Visible="true"/>
+          <BarItem Key="PipelineEditor_MoveTurningPoint" Visible="true"/>
+          <BarItem Key="PipelineEditor_DeletePipePoint" Visible="true"/>
+          <BarItem Key="PipelineEditor_CalculateDepth" Visible="true"/>
+          <BarItem Key="PipelineEditor_AngleConvert" Visible="true"/>
+          <BarItem Key="PipelineEditor_AngleForFPCQQX" Visible="true"/>
+          <BarItem Key="PipelineEditor_AngleForYSBZ" Visible="true"/>
+          <BarItem Key="PipelineEditor_AnnotationSorting" Visible="true"/>
+          <BarItem Key="PipelineEditor_AutoGenerateNumbers" Visible="true"/>
+          <BarItem Key="PipelineEditor_CenterPoint" Visible="true"/>
+          <BarItem Key="PipelineEditor_CopyAttributes" Visible="true"/>
+          <BarItem Key="PipelineEditor_IdentifyRoadName" Visible="true"/>
+          <BarItem Key="PipelineEditor_LayerByAttribute" Visible="true"/>
+          <BarItem Key="PipelineEditor_LineLineToRightAngle" Visible="true"/>
+          <BarItem Key="PipelineEditor_PointLineToRightAngle" Visible="true"/>
+          <BarItem Key="PipelineEditor_ModifyFlow" Visible="true"/>
+          <BarItem Key="PipelineEditor_PartialDistance" Visible="true"/>
         </PageGroup>
       </Page>
     </Pages>

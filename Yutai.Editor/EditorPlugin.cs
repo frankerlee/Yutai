@@ -52,7 +52,7 @@ namespace Yutai.Plugins.Editor
             _dockPanelService = context.Container.GetInstance<TemplateDockPanelService>();
 
             //获取配置对象
-            // _pipelineConfig = context.Container.GetSingleton<PipelineConfig>();
+            _pipelineConfig = context.Container.GetSingleton<PipelineConfig>();
             if (string.IsNullOrEmpty(_pipelineConfig.XmlFile))
             {
                 string fileName =

@@ -123,17 +123,20 @@ namespace Yutai.Pipeline.Config.Concretes
 
         public BasicLayerInfo(XmlNode node)
         {
+            _fields = new List<IYTField>();
             ReadFromXml(node);
         }
 
         public BasicLayerInfo(XmlNode node, IPipelineTemplate template)
         {
+            _fields = new List<IYTField>();
             _fields.AddRange(template.Fields);
             ReadFromXml(node);
         }
 
         public BasicLayerInfo()
         {
+            _fields = new List<IYTField>();
         }
 
         public BasicLayerInfo(IBasicLayerInfo info, bool keepClass)

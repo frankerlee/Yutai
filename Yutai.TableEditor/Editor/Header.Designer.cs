@@ -37,10 +37,9 @@
             // lblValue
             // 
             this.lblValue.AutoSize = true;
-            this.lblValue.Font = new System.Drawing.Font("宋体", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblValue.Location = new System.Drawing.Point(3, 4);
+            this.lblValue.Location = new System.Drawing.Point(3, 3);
             this.lblValue.Name = "lblValue";
-            this.lblValue.Size = new System.Drawing.Size(0, 11);
+            this.lblValue.Size = new System.Drawing.Size(0, 12);
             this.lblValue.TabIndex = 0;
             this.lblValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -58,6 +57,7 @@
             this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btnClose.TabIndex = 1;
             this.btnClose.TabStop = false;
+            this.btnClose.Visible = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             this.btnClose.MouseLeave += new System.EventHandler(this.btnClose_MouseLeave);
             this.btnClose.MouseHover += new System.EventHandler(this.btnClose_MouseHover);
