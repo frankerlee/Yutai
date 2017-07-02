@@ -57,7 +57,7 @@ namespace Yutai.Views
                         var manager = view.MenuManager as MainFrameBarManager;
                         if (manager != null)
                         {
-                            manager.RestoreLayout(MainView.SerializationKey, true);
+                            manager.RestoreLayout(NewMainView.SerializationKey, true);
                         }
                     }
                     break;
@@ -111,7 +111,7 @@ namespace Yutai.Views
                 // restoring layout
                 var view = _context.Container.Resolve<IMainView>();
                 var manager = view.DockingManager as DockingManager;
-                manager.RestoreLayout(MainView.SerializationKey, true);
+                manager.RestoreLayout(NewMainView.SerializationKey, true);
             }
             catch (Exception ex)
             {

@@ -15,7 +15,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
     {
         private bool bool_0 = false;
         private bool bool_1 = false;
-        private IContainer icontainer_0 = null;
+        
 
         public event OnValueChangeEventHandler OnValueChange;
 

@@ -1,6 +1,7 @@
 ﻿<YutaiGIS>
   <MainMenu>
     <Pages>
+  
       <Page Key="Layout" Caption="制图" Index="0" Visible="true">
         <PageGroup Key="Layout_Common" Caption="控制" Visible="true" Index="0">
           <BarItem Key="Layout_StartLayout" Visible="true"></BarItem>
@@ -64,12 +65,13 @@
           <BarItem Key="Printing_ClearClipGeometry" Visible="true"></BarItem>
         </PageGroup>
         <PageGroup Key="Layout_Template" Caption="模板" Visible="true" Index="0">
-          <BarItem Key="Printing_CartoSetting" Visible="true"></BarItem>
+         
           <BarItem Key="Printing_ApplyTFMapTemplate" Visible="true"></BarItem>
           <BarItem Key="Printing_ApplyTFMapTemplateByDataRange" Visible="true"></BarItem>
           <BarItem Key="Printing_ApplyTemplateByMouseClick" Visible="true"></BarItem>
           <BarItem Key="Printing_ClearCartoTemplate" Visible="true"></BarItem>
-          <BarItem Key="Printing_StartMaptemplateManager" Visible="true"></BarItem>
+          <BarItem Key="Printing_OpenMapTemplateView" Visible="true"></BarItem>
+          <BarItem Key="Printing_ConfigSetting" Visible="true"></BarItem>
         </PageGroup>
         <PageGroup Key="Layout_Export" Caption="打印" Visible="true" Index="0">
           <BarItem Key="Printing_RealClipOutToPrint" Visible="true"></BarItem>
@@ -86,6 +88,7 @@
 
         </PageGroup>
       </Page>
+  
     </Pages>
   </MainMenu>
 </YutaiGIS>

@@ -6,7 +6,7 @@ using ESRI.ArcGIS.Carto;
 
 namespace Yutai.ArcGIS.Carto.DesignLib
 {
-    partial class JLKElementWizardForm
+    partial class YTElementWizardForm
     {
         protected override void Dispose(bool bool_0)
         {
@@ -20,7 +20,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
        
  private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(JLKElementWizardForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(YTElementWizardForm));
             this.panel1 = new Panel();
             this.btnLast = new Button();
             this.btnNext = new Button();
@@ -63,7 +63,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             
             base.MaximizeBox = false;
             base.MinimizeBox = false;
-            base.Name = "JLKElementWizardForm";
+            base.Name = "YTElementWizardForm";
             this.Text = "元素向导";
             base.Load += new EventHandler(this.JLKElementWizardForm_Load);
             base.ResumeLayout(false);

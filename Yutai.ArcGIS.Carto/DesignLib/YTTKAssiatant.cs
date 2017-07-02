@@ -9,7 +9,7 @@ using Yutai.ArcGIS.Common.Symbol;
 
 namespace Yutai.ArcGIS.Carto.DesignLib
 {
-    public class JLKTKAssiatant
+    public class YTTKAssiatant
     {
         private bool bool_0 = false;
         private bool bool_1 = false;
@@ -111,7 +111,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                         num5 = -num5;
                     }
                     ipageLayout_0.Page.PutCustomSize(num5 + 10.0, num6 + 10.0);
-                    JLKTransformation transformation = new JLKTransformation(ipageLayout_0 as IActiveView);
+                    YTTransformation transformation = new YTTransformation(ipageLayout_0 as IActiveView);
                     IGroupElement element = this.method_0(ipageLayout_0, list[3], list[0], list[1], list[2]);
                     IElement element2 = null;
                     try
@@ -150,7 +150,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 this.double_3 *= this.Scale/100.0;
                 this.bool_1 = true;
             }
-            JLKTransformation transformation = new JLKTransformation(ipageLayout_0 as IActiveView);
+            YTTransformation transformation = new YTTransformation(ipageLayout_0 as IActiveView);
             IPoint point = transformation.ToPageLayoutPoint(ipoint_0);
             IPoint point2 = transformation.ToPageLayoutPoint(ipoint_1);
             IGroupElement element = new GroupElementClass();
@@ -225,7 +225,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                 frame.MapBounds = envelope2;
                 frame.ExtentType = esriExtentTypeEnum.esriExtentBounds;
             }
-            JLKTransformation transformation = new JLKTransformation(ipageLayout_0 as IActiveView);
+            YTTransformation transformation = new YTTransformation(ipageLayout_0 as IActiveView);
             IPoint point = transformation.ToPageLayoutPoint(ipoint_0);
             IPoint point2 = transformation.ToPageLayoutPoint(ipoint_1);
             IPoint point3 = transformation.ToPageLayoutPoint(ipoint_2);
@@ -388,7 +388,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
                     to.PutCoords(xMin, yMin, xMax, yMax);
                     (frame.Map as IActiveView).Extent = to;
                     ipageLayout_0.Page.PutCustomSize(num5 + 10.0, num6 + 10.0);
-                    JLKTransformation transformation = new JLKTransformation(ipageLayout_0 as IActiveView);
+                    YTTransformation transformation = new YTTransformation(ipageLayout_0 as IActiveView);
                     IGroupElement element = this.method_0(ipageLayout_0, list[3], list[0], list[1], list[2]);
                     IElement element2 = null;
                     try
@@ -452,7 +452,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             IPoint ipoint_3)
         {
             int num;
-            JLKTransformation transformation = new JLKTransformation(ipageLayout_0 as IActiveView);
+            YTTransformation transformation = new YTTransformation(ipageLayout_0 as IActiveView);
             IPoint point = transformation.ToPageLayoutPoint(ipoint_0);
             IPoint point2 = transformation.ToPageLayoutPoint(ipoint_1);
             IPoint point3 = transformation.ToPageLayoutPoint(ipoint_2);
@@ -1170,7 +1170,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             return point;
         }
 
-        private IElement method_22(JLKTransformation jlktransformation_0, IPoint ipoint_0, IPoint ipoint_1)
+        private IElement method_22(YTTransformation jlktransformation_0, IPoint ipoint_0, IPoint ipoint_1)
         {
             IGroupElement element = new GroupElementClass();
             IPoint point = ipoint_0;
@@ -1205,7 +1205,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             return (element as IElement);
         }
 
-        private IElement method_23(JLKTransformation jlktransformation_0, IPoint ipoint_0, IPoint ipoint_1)
+        private IElement method_23(YTTransformation jlktransformation_0, IPoint ipoint_0, IPoint ipoint_1)
         {
             IGroupElement element = new GroupElementClass();
             IPoint point = this.method_20(ipoint_0);
@@ -1236,7 +1236,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             return (element as IElement);
         }
 
-        private IElement method_24(JLKTransformation jlktransformation_0, IPoint ipoint_0, IPoint ipoint_1,
+        private IElement method_24(YTTransformation jlktransformation_0, IPoint ipoint_0, IPoint ipoint_1,
             IPoint ipoint_2, IPoint ipoint_3)
         {
             IMarkerSymbol symbol;
@@ -1280,7 +1280,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             return (element as IElement);
         }
 
-        private IElement method_25(JLKTransformation jlktransformation_0, IPoint ipoint_0, IPoint ipoint_1)
+        private IElement method_25(YTTransformation jlktransformation_0, IPoint ipoint_0, IPoint ipoint_1)
         {
             IPolyline polyline;
             IPointCollection points;
@@ -1345,7 +1345,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             return (multipoint as IPointCollection);
         }
 
-        private IElement method_27(JLKTransformation jlktransformation_0, IPoint ipoint_0, IPoint ipoint_1,
+        private IElement method_27(YTTransformation jlktransformation_0, IPoint ipoint_0, IPoint ipoint_1,
             IPoint ipoint_2, IPoint ipoint_3)
         {
             ILineSymbol symbol;
@@ -1432,7 +1432,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             return (element as IElement);
         }
 
-        private IElement method_28(JLKTransformation jlktransformation_0, IPoint ipoint_0, IPoint ipoint_1)
+        private IElement method_28(YTTransformation jlktransformation_0, IPoint ipoint_0, IPoint ipoint_1)
         {
             IPolyline polyline;
             IPointCollection points;
@@ -1679,7 +1679,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             return (element as IElement);
         }
 
-        private IElement method_29(JLKTransformation jlktransformation_0, IPoint ipoint_0, IPoint ipoint_1)
+        private IElement method_29(YTTransformation jlktransformation_0, IPoint ipoint_0, IPoint ipoint_1)
         {
             IPolyline polyline;
             IPointCollection points;
@@ -1957,7 +1957,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             return (geometrys as IPolygon);
         }
 
-        private IElement method_31(JLKTransformation jlktransformation_0, IPoint ipoint_0, IPoint ipoint_1,
+        private IElement method_31(YTTransformation jlktransformation_0, IPoint ipoint_0, IPoint ipoint_1,
             IPoint ipoint_2, IPoint ipoint_3)
         {
             IPolyline polyline;

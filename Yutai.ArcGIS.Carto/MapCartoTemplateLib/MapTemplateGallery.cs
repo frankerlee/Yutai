@@ -8,6 +8,7 @@ using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.DataSourcesGDB;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
+using Yutai.Plugins.Services;
 
 namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 {
@@ -15,12 +16,12 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
     {
         private static string authentication_mode;
         private static string dbclient;
-        private ITable itable_0 = null;
-        private ITable itable_1 = null;
-        private ITable itable_2 = null;
-        private ITable itable_3 = null;
+        private ITable _templateTable = null;
+        private ITable _classTable = null;
+        private ITable _elementTable = null;
+        private ITable _paramTable = null;
 
-        private List<MapCartoTemplateLib.MapTemplateClass> list_0;
+        private List<MapCartoTemplateLib.MapTemplateClass> _lstTemplates;
         private static string SDEDatabase;
         private static string SDEInstance;
         private static string SDEPassword;
@@ -28,31 +29,45 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         private static string SDEUser;
         private static string SDEVersion;
 
+        private string _connectionString;
+       
+
         static MapTemplateGallery()
         {
-            old_acctor_mc();
+            instance();
         }
 
-        public void AddMapTemplateClass(MapCartoTemplateLib.MapTemplateClass mapTemplateClass_0)
+        public void AddMapTemplateClass(MapCartoTemplateLib.MapTemplateClass mapTemplateClass)
         {
-            if (mapTemplateClass_0 != null)
+            if (mapTemplateClass != null)
             {
-                if (this.list_0 == null)
+                if (this._lstTemplates == null)
                 {
-                    this.list_0 = new List<MapCartoTemplateLib.MapTemplateClass>();
+                    this._lstTemplates = new List<MapCartoTemplateLib.MapTemplateClass>();
                 }
-                if (!this.list_0.Contains(mapTemplateClass_0))
+                if (!this._lstTemplates.Contains(mapTemplateClass))
                 {
-                    this.list_0.Add(mapTemplateClass_0);
+                    this._lstTemplates.Add(mapTemplateClass);
                 }
             }
         }
 
+        public void SetWorkspace(string connectionString)
+        {
+            if (this.Workspace != null)
+                this.Workspace = null;
+            ConnectWorkspace(connectionString);
+        }
+
         public void Init()
         {
+            if (!string.IsNullOrEmpty(_connectionString))
+            {
+                ConnectWorkspace(_connectionString);
+                return;
+            }
             if (this.Workspace == null)
             {
-                IWorkspaceFactory factory;
                 string str = "";
                 try
                 {
@@ -65,109 +80,158 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 {
                     str = ConfigurationManager.AppSettings["GDBConnection"];
                 }
-                foreach (string str2 in str.Split(new char[] {';'}))
+
+                if (string.IsNullOrEmpty(str))
                 {
-                    string[] strArray3 = str2.Split(new char[] {'='});
-                    switch (strArray3[0].ToLower())
-                    {
-                        case "dbclient":
-                            dbclient = strArray3[1].ToLower();
-                            break;
-
-                        case "server":
-                            SDEServer = strArray3[1];
-                            break;
-
-                        case "authentication_mode":
-                            authentication_mode = strArray3[1].ToLower();
-                            break;
-
-                        case "user":
-                            SDEUser = strArray3[1];
-                            break;
-
-                        case "password":
-                            SDEPassword = strArray3[1];
-                            break;
-
-                        case "version":
-                            SDEVersion = strArray3[1];
-                            break;
-
-                        case "database":
-                            SDEDatabase = strArray3[1];
-                            break;
-
-                        case "gdbname":
-                            str = strArray3[1];
-                            break;
-                    }
+                    str = ConfigurationManager.AppSettings["GDBConnection"];
                 }
-                if (dbclient == "mdb")
+
+                if (string.IsNullOrEmpty(str))
                 {
-                    if (str[1] != ':')
+                    FileInfo fileInfo=new FileInfo(System.IO.Path.Combine(Application.StartupPath + "\\plugins\\configs\\MapTemplate.mdb"));
+                    if (fileInfo.Exists)
                     {
-                        str = Path.Combine(Application.StartupPath, str);
+                        _connectionString = BuildConnectionString(fileInfo.FullName);
+                        str = _connectionString;
                     }
-                    factory = new AccessWorkspaceFactoryClass();
-                    this.Workspace = factory.OpenFromFile(str, 0);
+                   
                 }
-                else if (dbclient == "gdb")
+
+
+                if (string.IsNullOrEmpty(str))
                 {
-                    if (str[1] != ':')
-                    {
-                        str = Path.Combine(Application.StartupPath, str);
-                    }
-                    factory = new FileGDBWorkspaceFactoryClass();
-                    this.Workspace = factory.OpenFromFile(str, 0);
+
+                    MessageService.Current.Warn("系统没有找到关于模板的配置，请手动选择模板数据库!");
+                    return;
                 }
-                else
-                {
-                    IWorkspaceFactory factory2 = new SdeWorkspaceFactoryClass();
-                    try
-                    {
-                        IPropertySet connectionProperties = this.method_0();
-                        if (connectionProperties == null)
-                        {
-                            return;
-                        }
-                        this.Workspace = factory2.Open(connectionProperties, 0);
-                    }
-                    catch (Exception exception)
-                    {
-                        //CErrorLog.writeErrorLog(null, exception, "");
-                    }
-                }
-            }
-            if (this.Workspace != null)
-            {
-                this.itable_0 = (this.Workspace as IFeatureWorkspace).OpenTable("MapTemplate");
-                this.itable_1 = (this.Workspace as IFeatureWorkspace).OpenTable("MapTemplateClass");
-                this.itable_2 = (this.Workspace as IFeatureWorkspace).OpenTable("MapTemplateElement");
-                this.itable_3 = (this.Workspace as IFeatureWorkspace).OpenTable("MapTemplateParam");
-                this.method_1();
+                ConnectWorkspace(str);
             }
         }
 
-        public bool MapTemplateClassIsExist(string string_0)
+        private string BuildConnectionString(string fileName)
+        {
+            FileInfo fileInfo = new FileInfo(fileName);
+            string ext = fileInfo.Extension.Substring(1);
+            return string.Format("dbclient={0};gdbname={1}", ext, fileName);
+        }
+        private void ConnectWorkspace(string connectionString)
+        {
+            string str = "";
+            IWorkspaceFactory factory;
+            foreach (string str2 in connectionString.Split(new char[] {';'}))
+            {
+                string[] strArray3 = str2.Split(new char[] {'='});
+                switch (strArray3[0].ToLower())
+                {
+                    case "dbclient":
+                        dbclient = strArray3[1].ToLower();
+                        break;
+
+                    case "server":
+                        SDEServer = strArray3[1];
+                        break;
+
+                    case "authentication_mode":
+                        authentication_mode = strArray3[1].ToLower();
+                        break;
+
+                    case "user":
+                        SDEUser = strArray3[1];
+                        break;
+
+                    case "password":
+                        SDEPassword = strArray3[1];
+                        break;
+
+                    case "version":
+                        SDEVersion = strArray3[1];
+                        break;
+
+                    case "database":
+                        SDEDatabase = strArray3[1];
+                        break;
+
+                    case "gdbname":
+                        str = strArray3[1];
+                        break;
+                }
+            }
+            if (dbclient == "mdb")
+            {
+                if (str[1] != ':')
+                {
+                    str = Path.Combine(Application.StartupPath, str);
+                }
+                factory = new AccessWorkspaceFactory();
+                this.Workspace = factory.OpenFromFile(str, 0);
+            }
+            else if (dbclient == "gdb")
+            {
+                if (str[1] != ':')
+                {
+                    str = Path.Combine(Application.StartupPath, str);
+                }
+                factory = new FileGDBWorkspaceFactory();
+                this.Workspace = factory.OpenFromFile(str, 0);
+            }
+            else if (dbclient == "sde")
+            {
+                if (str[1] != ':')
+                {
+                    str = Path.Combine(Application.StartupPath, str);
+                }
+                factory = new SdeWorkspaceFactory();
+                this.Workspace = factory.OpenFromFile(str, 0);
+            }
+            else
+            {
+                IWorkspaceFactory factory2 = new SdeWorkspaceFactory();
+                try
+                {
+                    IPropertySet connectionProperties = this.CreateConnectionProperty();
+                    if (connectionProperties == null)
+                    {
+                        return;
+                    }
+                    this.Workspace = factory2.Open(connectionProperties, 0);
+                }
+                catch (Exception exception)
+                {
+                    //CErrorLog.writeErrorLog(null, exception, "");
+                }
+            }
+
+            if (this.Workspace != null)
+            {
+                this._templateTable = (this.Workspace as IFeatureWorkspace).OpenTable("MapTemplate");
+                this._classTable = (this.Workspace as IFeatureWorkspace).OpenTable("MapTemplateClass");
+                this._elementTable = (this.Workspace as IFeatureWorkspace).OpenTable("MapTemplateElement");
+                this._paramTable = (this.Workspace as IFeatureWorkspace).OpenTable("MapTemplateParam");
+                this.ReadClasses();
+                this._connectionString = connectionString;
+            }
+        }
+
+        public bool MapTemplateClassIsExist(string className)
         {
             QueryFilterClass class2 = new QueryFilterClass
             {
-                WhereClause = string.Format("Name='{0}'", string_0)
+                WhereClause = string.Format("Name='{0}'", className)
             };
+
             IQueryFilter queryFilter = class2;
             return (this.MapTemplateClassTable.RowCount(queryFilter) > 0);
         }
 
-        private IPropertySet method_0()
+        private IPropertySet CreateConnectionProperty()
         {
             IPropertySet set = new PropertySetClass();
-            if (SDEServer == "")
+            if (SDEServer== "")
             {
                 return null;
             }
-            set.SetProperty("DB_CONNECTION_PROPERTIES", SDEServer);
-            if (dbclient == "sqlserver")
+            set.SetProperty("DB_CONNECTION_PROPERTIES",SDEServer);
+            if (dbclient== "sqlserver")
             {
                 set.SetProperty("DBCLIENT", "sqlserver");
                 set.SetProperty("Database", SDEDatabase);
@@ -183,58 +247,60 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             else
             {
                 set.SetProperty("AUTHENTICATION_MODE", "DBMS");
-                set.SetProperty("User", SDEUser);
-                set.SetProperty("Password", SDEPassword);
+                set.SetProperty("User",SDEUser);
+                set.SetProperty("Password",SDEPassword);
             }
-            return set;
+            return
+                set;
         }
 
-        private void method_1()
+        private void ReadClasses()
         {
-            ICursor cursor = this.itable_1.Search(null, false);
-            IRow o = cursor.NextRow();
-            int index = this.itable_1.FindField("Name");
-            int num2 = this.itable_1.FindField("Description");
-            while (o != null)
+            ICursor cursor = this._classTable.Search(null, false);
+            IRow row = cursor.NextRow();
+            int index = this._classTable.FindField("Name");
+
+            int num2 = this._classTable.FindField("Description");
+            while (row!= null)
             {
-                string str = o.get_Value(index).ToString();
-                string str2 = o.get_Value(num2).ToString();
-                MapCartoTemplateLib.MapTemplateClass class3 = new MapCartoTemplateLib.MapTemplateClass(o.OID, this)
+                string str = row.get_Value(index).ToString();
+                string str2 = row.get_Value(num2).ToString();
+                MapCartoTemplateLib.MapTemplateClass class3 = new MapCartoTemplateLib.MapTemplateClass(row.OID, this)
                 {
                     Name = str,
                     Description = str2
                 };
                 this.AddMapTemplateClass(class3);
-                o = cursor.NextRow();
+                row = cursor.NextRow();
             }
-            ComReleaser.ReleaseCOMObject(o);
+            ComReleaser.ReleaseCOMObject(row);
         }
 
-        private static void old_acctor_mc()
+        private static void instance()
         {
-            SDEServer = "";
-            SDEInstance = "";
-            SDEUser = "";
-            SDEPassword = "";
-            SDEVersion = "";
-            SDEDatabase = "";
-            dbclient = "";
-            authentication_mode = "";
+            SDEServer= "";
+            SDEInstance= "";
+            SDEUser= "";
+            SDEPassword= "";
+            SDEVersion= "";
+            SDEDatabase= "";
+            dbclient= "";
+            authentication_mode= "";
         }
 
         public void RemoveAllMapTemplateClass()
         {
-            if (this.list_0 != null)
+            if (this._lstTemplates != null)
             {
-                this.list_0.Clear();
+                this._lstTemplates.Clear();
             }
         }
 
-        public void RemoveMapTemplateClass(MapCartoTemplateLib.MapTemplateClass mapTemplateClass_0)
+        public void RemoveMapTemplateClass(MapCartoTemplateLib.MapTemplateClass templateClass)
         {
-            if (((mapTemplateClass_0 != null) && (this.list_0 != null)) && this.list_0.Contains(mapTemplateClass_0))
+            if (((templateClass != null) && (this._lstTemplates != null)) && this._lstTemplates.Contains(templateClass))
             {
-                this.list_0.Remove(mapTemplateClass_0);
+                this._lstTemplates.Remove(templateClass);
             }
         }
 
@@ -248,11 +314,11 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         {
             get
             {
-                if (this.list_0 == null)
+                if (this._lstTemplates == null)
                 {
-                    this.list_0 = new List<MapCartoTemplateLib.MapTemplateClass>();
+                    this._lstTemplates = new List<MapCartoTemplateLib.MapTemplateClass>();
                 }
-                return this.list_0;
+                return this._lstTemplates;
             }
             set
             {
@@ -269,28 +335,47 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public ITable MapTemplateClassTable
         {
-            get { return this.itable_1; }
-            set { this.itable_1 = value; }
+            get { return this._classTable; }
+            set { this._classTable = value; }
         }
 
         public ITable MapTemplateElementTable
         {
-            get { return this.itable_2; }
-            set { this.itable_2 = value; }
+            get { return this._elementTable; }
+            set { this._elementTable = value; }
         }
 
         public ITable MapTemplateParamTable
         {
-            get { return this.itable_3; }
-            set { this.itable_3 = value; }
+            get { return this._paramTable; }
+            set { this._paramTable = value; }
         }
 
         public ITable MapTemplateTable
         {
-            get { return this.itable_0; }
-            set { this.itable_0 = value; }
+            get { return this._templateTable; }
+            set { this._templateTable = value; }
         }
 
         public IWorkspace Workspace { get; set; }
+
+        public string ConnectionString
+        {
+            get
+            {
+                return _connectionString;
+            }
+
+            set
+            {
+                _connectionString = value;
+            }
+        }
+
+        public bool IsValid()
+        {
+            if (string.IsNullOrEmpty(_connectionString) || this.Workspace == null) return false;
+            return true;
+        }
     }
 }

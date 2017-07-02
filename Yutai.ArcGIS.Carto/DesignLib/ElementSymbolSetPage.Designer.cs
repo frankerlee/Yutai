@@ -54,7 +54,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             base.Hide();
         }
 
-       
+        private IContainer icontainer_0 = null;
         private Label label1;
         private StyleButton styleButton1;
     }

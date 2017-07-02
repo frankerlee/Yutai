@@ -93,12 +93,14 @@ namespace Yutai.Plugins.Printing.Menu
                     new CmdApplyTFMapTemplateByDataRange(_context),
                     new ToolApplyTemplateByMouseClick(_context),
                     new CmdClearCartoTemplate(_context),
-                    new CmdStartMaptemplateManager(_context),
+                    new CmdPrintingSetting(_context),
                     new ToolRealClipOut(_context) {SubType = 0},
                     new CmdClipResultOut(_context) {SubType = 0},
                     new ToolClipResultDataOut(_context),
                     new CmdExportClipRegionFeatureClass(_context),
                     new ToolClipOutToOtherFormat(_context),
+
+                    new CmdShowMapTemplateView(_context),
                 };
             }
             catch (Exception ex)

@@ -38,7 +38,7 @@
     <Reference Include="ESRI.ArcGIS.ADF, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86" />
     <Reference Include="ESRI.ArcGIS.AxControls, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
     <Reference Include="ESRI.ArcGIS.Carto, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="ESRI.ArcGIS.Controls, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -74,6 +74,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Carto\CmdPrintingSetting.cs" />
+    <Compile Include="Commands\Carto\CmdShowMapTemplateView.cs" />
     <Compile Include="Commands\Draw\AlignGraphicElement.cs" />
     <Compile Include="Commands\Carto\ToolApplyTemplateByMouseClick.cs" />
     <Compile Include="Commands\Carto\CmdApplyTfMapTemplate.cs" />
@@ -96,7 +98,6 @@
     <Compile Include="Commands\Carto\ToolNewCircleClipGeometry.cs" />
     <Compile Include="Commands\Carto\ToolNewPolygonClipGeometry.cs" />
     <Compile Include="Commands\Carto\ToolNewClipBounds.cs" />
-    <Compile Include="Commands\Carto\CmdStartMaptemplateManager.cs" />
     <Compile Include="Commands\Carto\TempAcceessBD.cs" />
     <Compile Include="Commands\CmdCloseLayout.cs" />
     <Compile Include="Commands\CmdStartPrintingLayout.cs" />
@@ -137,6 +138,9 @@
     <Compile Include="Commands\Draw\CmdUndoOperation.cs" />
     <Compile Include="Commands\Draw\CmdUnGroupElement.cs" />
     <Compile Include="Forms\CMapPrinter.cs" />
+    <Compile Include="Forms\frmAddParams.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmDir.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,12 +153,29 @@
     <Compile Include="Forms\frmFractionTextElement.Designer.cs">
       <DependentUpon>frmFractionTextElement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmIndexMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmIndexMap.Designer.cs">
+      <DependentUpon>frmIndexMap.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmInputText.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmInputText.Designer.cs">
       <DependentUpon>frmInputText.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmNewMapTemplateClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TemplateConfigPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\TemplateConfigPage.Designer.cs">
+      <DependentUpon>TemplateConfigPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IndexMap.cs" />
+    <Compile Include="Menu\MapTemplateViewService.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -165,6 +186,13 @@
     <Compile Include="Menu\YutaiCommands.cs" />
     <Compile Include="PrintingPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\IMapTemplateView.cs" />
+    <Compile Include="Views\MapTemplateView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\MapTemplateView.Designer.cs">
+      <DependentUpon>MapTemplateView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Yutai.ArcGIS.Carto\Yutai.ArcGIS.Carto.csproj">
@@ -207,22 +235,41 @@
       <Name>Yutai.UI</Name>
       <Private>False</Private>
     </ProjectReference>
+    <ProjectReference Include="..\Yutai\Yutai.csproj">
+      <Project>{23F812D9-D4AA-44AA-A721-AD0948099A95}</Project>
+      <Name>Yutai</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\frmAddParams.resx">
+      <DependentUpon>frmAddParams.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmDir.resx">
       <DependentUpon>frmDir.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmFractionTextElement.resx">
       <DependentUpon>frmFractionTextElement.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmIndexMap.resx">
+      <DependentUpon>frmIndexMap.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmInputText.resx">
       <DependentUpon>frmInputText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmNewMapTemplateClass.resx">
+      <DependentUpon>frmNewMapTemplateClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TemplateConfigPage.resx">
+      <DependentUpon>TemplateConfigPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu\MenuLayout.xml" />
+    <EmbeddedResource Include="Views\MapTemplateView.resx">
+      <DependentUpon>MapTemplateView.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Cursor\PageHand.cur" />
@@ -276,6 +323,7 @@
     <None Include="Resources\icon_map_manager.png" />
     <None Include="Resources\icon_map_marker.png" />
     <None Include="Resources\icon_map_number.png" />
+    <None Include="Resources\icon_layout.png" />
     <Content Include="Resources\PageFixZoomIn.bmp" />
     <Content Include="Resources\PageFixZoomOut.bmp" />
     <Content Include="Resources\PageHand.bmp" />

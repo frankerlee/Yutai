@@ -1,10 +1,11 @@
-using MapCartoTemplateLib;
+
 using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
+using Yutai.ArcGIS.Carto.MapCartoTemplateLib;
 
 namespace CartoTemplateApp
 {
@@ -26,7 +27,7 @@ namespace CartoTemplateApp
 
 		private ComboBox comboBox1;
 
-		public MapCartoTemplateLib.MapTemplateParam MapTemplateParam
+		public MapTemplateParam MapTemplateParam
 		{
 			get;
 			set;

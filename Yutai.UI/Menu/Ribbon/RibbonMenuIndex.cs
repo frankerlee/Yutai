@@ -609,6 +609,8 @@ namespace Yutai.UI.Menu.Ribbon
                 button.PaintStyle = BarItemPaintStyle.Caption;
             }
             button.Tag = item;
+            button.Enabled = item.Enabled;
+            button.Down = item.Checked;
             button.ItemClick += ((YutaiCommand) item).OnClick;
             if (item.ItemType == RibbonItemType.Tool)
             {

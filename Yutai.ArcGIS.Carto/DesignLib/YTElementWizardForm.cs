@@ -6,7 +6,7 @@ using ESRI.ArcGIS.Carto;
 
 namespace Yutai.ArcGIS.Carto.DesignLib
 {
-    public partial class JLKElementWizardForm : Form
+    public partial class YTElementWizardForm : Form
     {
         private ElementPosition elementPosition_0 = new ElementPosition();
         private ElementSymbolSetPage elementSymbolSetPage_0 = new ElementSymbolSetPage();
@@ -20,7 +20,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         private PictureSelectPage pictureSelectPage_0 = new PictureSelectPage();
         private TextElementValueSetPage textElementValueSetPage_0 = new TextElementValueSetPage();
 
-        public JLKElementWizardForm()
+        public YTElementWizardForm()
         {
             this.InitializeComponent();
             CartoTemplateClass.Reset();

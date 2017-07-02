@@ -1,4 +1,5 @@
 ﻿using Yutai.Plugins.Mvp;
+using Yutai.Plugins.Printing.Views;
 
 namespace Yutai.Plugins.Printing
 {
@@ -6,7 +7,8 @@ namespace Yutai.Plugins.Printing
     {
         public static void Compose(IApplicationContainer container)
         {
-            //container.RegisterService<IEditTemplateView, EditTemplateView>()
+            container.RegisterService<IMapTemplateView, MapTemplateView>()
+                .RegisterSingleton<MapTemplatePresenter>();
             //    .RegisterService<IGeometryInfoView, GeometryInfoView>()
             //     .RegisterService<IAttributeEditView, AttributeEditView>()
             //    .RegisterSingleton<EditTemplatePresenter>()

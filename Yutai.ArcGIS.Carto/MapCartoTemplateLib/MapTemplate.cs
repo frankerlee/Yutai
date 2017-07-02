@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Xml;
 using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
@@ -43,7 +44,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
             else
             {
-                this.method_13();
+                this.InitTemplate();
             }
         }
 
@@ -231,15 +232,15 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             return template;
         }
 
-        public IElement CreateCornerShortLine(MapCartoTemplateLib.YTTransformation jlktransformation_0, IPoint ipoint_0,
+        public IElement CreateCornerShortLine(MapCartoTemplateLib.YTTransformation yttransformation, IPoint ipoint_0,
             IPoint ipoint_1)
         {
             if (this.BorderSymbol == null)
             {
                 return null;
             }
-            IPoint point = jlktransformation_0.ToPageLayoutPoint(ipoint_0);
-            IPoint point2 = jlktransformation_0.ToPageLayoutPoint(ipoint_1);
+            IPoint point = yttransformation.ToPageLayoutPoint(ipoint_0);
+            IPoint point2 = yttransformation.ToPageLayoutPoint(ipoint_1);
             ILineSymbol symbol = this.method_25();
             IGroupElement element2 = new GroupElementClass();
             element2.AddElement(this.method_29(point.X, point.Y, -this.LeftInOutSpace, -this.BottomInOutSpace, symbol));
@@ -312,7 +313,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     Text = str
                 };
                 ITextElement element3 = class3;
-                jlktransformation_0.TextWidth(element3, out num6, out num7);
+                yttransformation.TextWidth(element3, out num6, out num7);
                 symbol2.VerticalAlignment = esriTextVerticalAlignment.esriTVABottom;
                 symbol3.VerticalAlignment = esriTextVerticalAlignment.esriTVABottom;
                 symbol2.HorizontalAlignment = esriTextHorizontalAlignment.esriTHALeft;
@@ -334,7 +335,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                         Text = str2
                     };
                     element3 = class4;
-                    jlktransformation_0.TextWidth(element3, out num6, out num7);
+                    yttransformation.TextWidth(element3, out num6, out num7);
                     element2.AddElement(
                         this.method_26((point2.X + this.RightInOutSpace) - num6, point.Y, str, symbol2) as IElement);
                 }
@@ -385,7 +386,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     Text = str
                 };
                 element3 = class5;
-                jlktransformation_0.TextWidth(element3, out num6, out num7);
+                yttransformation.TextWidth(element3, out num6, out num7);
                 symbol2.VerticalAlignment = esriTextVerticalAlignment.esriTVABottom;
                 symbol3.VerticalAlignment = esriTextVerticalAlignment.esriTVABottom;
                 symbol2.HorizontalAlignment = esriTextHorizontalAlignment.esriTHALeft;
@@ -408,7 +409,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                         Text = str2
                     };
                     element3 = class6;
-                    jlktransformation_0.TextWidth(element3, out num6, out num7);
+                    yttransformation.TextWidth(element3, out num6, out num7);
                     element2.AddElement(
                         this.method_26((point2.X + this.RightInOutSpace) - num6, point2.Y, str, symbol2) as IElement);
                 }
@@ -434,20 +435,20 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             return (element2 as IElement);
         }
 
-        public void CreateDesignTK(IActiveView iactiveView_0)
+        public void CreateDesignTK(IActiveView pActiveView)
         {
             IMapFrame focusMapFrame;
             IEnvelope mapBounds;
             double xMin;
             double num;
-            (iactiveView_0.FocusMap as IMapClipOptions).ClipType = esriMapClipType.esriMapClipNone;
-            if (iactiveView_0.FocusMap is IMapAutoExtentOptions)
+            (pActiveView.FocusMap as IMapClipOptions).ClipType = esriMapClipType.esriMapClipNone;
+            if (pActiveView.FocusMap is IMapAutoExtentOptions)
             {
-                (iactiveView_0.FocusMap as IMapAutoExtentOptions).AutoExtentType = esriExtentTypeEnum.esriExtentDefault;
+                (pActiveView.FocusMap as IMapAutoExtentOptions).AutoExtentType = esriExtentTypeEnum.esriExtentDefault;
             }
             if (this.MapFramingType == MapFramingType.AnyFraming)
             {
-                focusMapFrame = MapFrameAssistant.GetFocusMapFrame(iactiveView_0 as IPageLayout);
+                focusMapFrame = MapFrameAssistant.GetFocusMapFrame(pActiveView as IPageLayout);
                 IEnvelope envelope = (focusMapFrame as IElement).Geometry.Envelope;
                 IEnvelope envelopeClass = new EnvelopeClass();
                 envelopeClass.PutCoords(3, 3, 53, 53);
@@ -457,7 +458,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 transform2D.Transform(esriTransformDirection.esriTransformForward, affineTransformation2DClass);
                 envelope = (focusMapFrame as IElement).Geometry.Envelope;
                 mapBounds = focusMapFrame.MapBounds;
-                IEnvelope extent = (iactiveView_0.FocusMap as IActiveView).Extent;
+                IEnvelope extent = (pActiveView.FocusMap as IActiveView).Extent;
                 xMin = 0;
                 num = 0;
                 if (mapBounds.YMin <= 0)
@@ -470,12 +471,12 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 }
                 this.Scale = focusMapFrame.Map.MapScale;
                 mapBounds.Offset(xMin, num);
-                this.CreateTKByRect(iactiveView_0, mapBounds);
+                this.CreateTKByRect(pActiveView, mapBounds);
             }
             else if (this.MapFramingType == MapFramingType.StandardFraming)
             {
-                focusMapFrame = MapFrameAssistant.GetFocusMapFrame(iactiveView_0 as IPageLayout);
-                mapBounds = iactiveView_0.Extent;
+                focusMapFrame = MapFrameAssistant.GetFocusMapFrame(pActiveView as IPageLayout);
+                mapBounds = pActiveView.Extent;
                 if (this.MapFrameType == MapFrameType.MFTRect)
                 {
                     xMin = 0;
@@ -490,7 +491,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     }
                     mapBounds.Offset(xMin, num);
                     (focusMapFrame.Map as IActiveView).Extent = mapBounds;
-                    this.CreateTKN(iactiveView_0, mapBounds.LowerLeft);
+                    this.CreateTKN(pActiveView, mapBounds.LowerLeft);
                 }
                 else if (this.MapFrameType == MapFrameType.MFTTrapezoid)
                 {
@@ -552,7 +553,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     MapNoAssistant mapNoAssistant = MapNoAssistantFactory.CreateMapNoAssistant(str1);
                     this.Scale = (double) mapNoAssistant.GetScale();
                     this.double_6 = this.Scale;
-                    this.CreateTrapezoidTK(iactiveView_0 as IPageLayout, mapNoAssistant);
+                    this.CreateTrapezoidTK(pActiveView as IPageLayout, mapNoAssistant);
                 }
             }
         }
@@ -1641,14 +1642,14 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 this.SmallFontSize = Convert.ToSingle(RowAssisant.GetFieldValue(row, "SmallFontSize"));
                 this.BigFontSize = Convert.ToSingle(RowAssisant.GetFieldValue(row, "BigFontSize"));
                 this.method_11();
-                this.method_12();
+                this.ReadTemplateElements();
             }
         }
 
-        public void LoadFromFile(string string_6)
+        public void LoadFromFile(string fileName)
         {
             int num3;
-            System.IO.FileStream input = new System.IO.FileStream(string_6, FileMode.Open);
+            System.IO.FileStream input = new System.IO.FileStream(fileName, FileMode.Open);
             BinaryReader reader = new BinaryReader(input);
             int count = reader.ReadInt32();
             byte[] buffer = reader.ReadBytes(count);
@@ -1660,7 +1661,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             ((IMemoryBlobStreamVariant) stream2).ImportFromVariant(buffer);
             IPropertySet set = new PropertySetClass();
             (set as IPersistStream).Load(pstm);
-            string fileNameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(string_6);
+            string fileNameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(fileName);
             this.Name = fileNameWithoutExtension;
             this.Width = Convert.ToDouble(set.GetProperty("Width"));
             this.Height = Convert.ToDouble(set.GetProperty("Height"));
@@ -1920,7 +1921,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             ComReleaser.ReleaseCOMObject(o);
         }
 
-        private void method_12()
+        private void ReadTemplateElements()
         {
             if (this.mapTemplateElelemt != null)
             {
@@ -1931,23 +1932,23 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 WhereClause = "TemplateID=" + this.OID
             };
             ICursor cursor = this.MapTemplateGallery.MapTemplateElementTable.Search(queryFilter, false);
-            IRow o = cursor.NextRow();
+            IRow row = cursor.NextRow();
             int index = this.MapTemplateGallery.MapTemplateElementTable.FindField("ElementType");
-            while (o != null)
+            while (row != null)
             {
-                o.get_Value(index).ToString();
+                row.get_Value(index).ToString();
                 MapCartoTemplateLib.MapTemplateElement element =
-                    MapCartoTemplateLib.MapTemplateElement.CreateMapTemplateElement(o.OID, this);
+                    MapCartoTemplateLib.MapTemplateElement.CreateMapTemplateElement(row.OID, this);
                 if (element != null)
                 {
                     this.AddMapTemplateElement(element);
                 }
-                o = cursor.NextRow();
+                row = cursor.NextRow();
             }
-            ComReleaser.ReleaseCOMObject(o);
+            ComReleaser.ReleaseCOMObject(row);
         }
 
-        private void method_13()
+        private void InitTemplate()
         {
             this.Guid = System.Guid.NewGuid().ToString();
             this.Width = 50.0;
@@ -4111,10 +4112,11 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
-        public void SaveToFile(string string_6)
+      
+        public void SaveToFile(string fileName)
         {
             object obj2;
-            System.IO.FileStream output = new System.IO.FileStream(string_6, FileMode.CreateNew);
+            System.IO.FileStream output = new System.IO.FileStream(fileName, FileMode.CreateNew);
             BinaryWriter writer = new BinaryWriter(output);
             IPropertySet set = new PropertySetClass();
             set.SetProperty("Name", this.Name);

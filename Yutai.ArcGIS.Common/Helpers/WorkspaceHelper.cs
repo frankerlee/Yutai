@@ -106,6 +106,47 @@ namespace Yutai.ArcGIS.Common.Helpers
             return workspace;
         }
 
+        public static IFeatureClass GetFeatureClass(string wksName,string classFullName)
+        {
+            
+            int mdbIndex = wksName.IndexOf(".mdb");
+            string workspacePath;
+            string fcPath;
+            string className = "";
+            IFeatureWorkspace pWorkspace = null;
+            if (mdbIndex > 0)
+            {
+                pWorkspace = GetAccessWorkspace(wksName) as IFeatureWorkspace;
+            }
+            else if (wksName.IndexOf(".gdb") > 0)
+            {
+                    pWorkspace = GetFGDBWorkspace(wksName) as IFeatureWorkspace;
+            }
+            else if (wksName.IndexOf(".sde") > 0)
+            {
+                pWorkspace = GetSDEWorkspace(wksName) as IFeatureWorkspace;
+            }
+
+            className = LayerHelper.GetClassShortName(classFullName);
+            if (pWorkspace == null) return null;
+
+            try
+            {
+                IFeatureClass pClass = pWorkspace.OpenFeatureClass(className);
+                return pClass;
+            }
+            catch (Exception)
+            {
+                return null;
+                throw;
+            }
+        }
+
+        public static IWorkspace GetSDEWorkspace(string connectFile)
+        {
+            IWorkspaceFactory factory=new SdeWorkspaceFactory();
+            return factory.OpenFromFile(connectFile, 0);
+        }
         public static IWorkspace GetShapefileWorkspace(string sFilePath)
         {
             IWorkspace workspace;
@@ -269,6 +310,30 @@ namespace Yutai.ArcGIS.Common.Helpers
             ISQLSyntax sqlSyntax = pWorkspace as ISQLSyntax;
             if (sqlSyntax == null) return "";
             return sqlSyntax.GetSpecialCharacter(specChar);
+        }
+
+        public static IFeatureWorkspace GetWorkspace(string fullName)
+        {
+
+            int mdbIndex = fullName.IndexOf(".mdb");
+            string workspacePath;
+            string fcPath;
+            string className = "";
+            IFeatureWorkspace pWorkspace = null;
+            if (mdbIndex > 0)
+            {
+                pWorkspace = GetAccessWorkspace(fullName) as IFeatureWorkspace;
+            }
+            else if (fullName.IndexOf(".gdb") > 0)
+            {
+                pWorkspace = GetFGDBWorkspace(fullName) as IFeatureWorkspace;
+            }
+            else if (fullName.IndexOf(".sde") > 0)
+            {
+                pWorkspace = GetSDEWorkspace(fullName) as IFeatureWorkspace;
+            }
+
+            return pWorkspace;
         }
     }
 }

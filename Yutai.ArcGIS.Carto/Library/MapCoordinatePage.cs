@@ -73,7 +73,7 @@ namespace Yutai.ArcGIS.Carto.Library
                     double.Parse(this.txtJC.Text);
                     double.Parse(this.txtWC.Text);
                     double.Parse(this.txtScale.Text);
-                    goto Label_0160;
+                    return true;
                 }
                 catch
                 {
@@ -90,13 +90,14 @@ namespace Yutai.ArcGIS.Carto.Library
                 double.Parse(this.txtRightLowY.Text);
                 double.Parse(this.txtLeftLowX.Text);
                 double.Parse(this.txtLeftLowY.Text);
+                return true;
             }
             catch
             {
                 return false;
             }
-            Label_0160:
-            return true;
+           
+          
         }
 
         public void Cancel()

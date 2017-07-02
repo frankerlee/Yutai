@@ -199,6 +199,8 @@ namespace Yutai.Views
             get { return _layoutControl; }
         }
 
+        public AxPageLayoutControl PageLayoutControlContainer { get { return axPageLayoutControl1; } }
+
         public string ActiveViewType
         {
             get { return _controlsSynchronizer.ActiveViewType; }
@@ -229,7 +231,22 @@ namespace Yutai.Views
             _controlsSynchronizer.AddFrameworkControl(control);
         }
 
-        public GISControlType ControlType { get; }
+        public GISControlType ControlType
+        {
+            get
+            {
+                if(tabContent.SelectedTabPageIndex==0)
+                    return GISControlType.MapControl;
+                else if(tabContent.SelectedTabPageIndex==1)
+                    return GISControlType.PageLayout;
+                else if(tabContent.SelectedTabPageIndex==2)
+                    return GISControlType.Scene;
+                else if(tabContent.SelectedTabPageIndex==3)
+                    return GISControlType.Globe;
+                else
+                    return GISControlType.MapControl;
+            }
+        }
 
 
         public event EventHandler<CancelEventArgs> ViewClosing;
@@ -474,6 +491,7 @@ namespace Yutai.Views
                 _controlsSynchronizer.ReplaceMap(map);
                 tabContent.TabPages[0].PageVisible = false;
             }
+            FireArcGISControlChanging();
         }
     }
 }

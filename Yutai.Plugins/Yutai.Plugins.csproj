@@ -128,6 +128,8 @@
     <Compile Include="Concrete\YutaiCommand.cs" />
     <Compile Include="Concrete\YutaiMenuCommand.cs" />
     <Compile Include="Concrete\YutaiTool.cs" />
+    <Compile Include="Interfaces\IIndexMap.cs" />
+    <Compile Include="Interfaces\IPrintingConfig.cs" />
     <Compile Include="Interfaces\IOverviewControl.cs" />
     <Compile Include="Interfaces\IPopuMenu.cs" />
     <Compile Include="Interfaces\IShapeConstructorTool.cs" />

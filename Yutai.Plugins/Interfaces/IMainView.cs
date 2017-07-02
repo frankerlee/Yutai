@@ -26,7 +26,7 @@ namespace Yutai.Plugins.Interfaces
         IMap FocusMap { get; }
 
         IPageLayoutControl2 PageLayoutControl { get; }
-
+        AxPageLayoutControl PageLayoutControlContainer { get; }
         string ActiveViewType { get; }
         object ActiveGISControl { get; }
 

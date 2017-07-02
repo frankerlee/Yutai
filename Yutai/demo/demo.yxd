@@ -33,7 +33,11 @@
       <Guid>5e933989-b5a4-4a45-a5b7-2d9ded61df0f</Guid>
       <Name>地图制图</Name>
     </Plugin>
-    
+    <Plugin>
+      <Guid>95ab64f9-65ca-400f-8f68-c18cadff1421</Guid>
+      <Name>管线编辑</Name>
+    </Plugin>
+   
   </Plugins>
   
   <Overview>

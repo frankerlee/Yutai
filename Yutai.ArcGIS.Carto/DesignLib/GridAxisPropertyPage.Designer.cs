@@ -359,5 +359,6 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         private SpinEdit txtSubCount;
         private SpinEdit txtSubTickLength;
         private SpinEdit txtTickLength;
+        private Container container_0 = null;
     }
 }

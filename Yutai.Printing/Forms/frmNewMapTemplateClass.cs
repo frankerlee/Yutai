@@ -1,10 +1,11 @@
-using MapCartoTemplateLib;
+
 using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
+using Yutai.ArcGIS.Carto.MapCartoTemplateLib;
 
 namespace CartoTemplateApp
 {
@@ -48,7 +49,7 @@ namespace CartoTemplateApp
 			}
 		}
 
-		public MapCartoTemplateLib.MapTemplateGallery MapTemplateGallery
+		public MapTemplateGallery MapTemplateGallery
 		{
 			get;
 			set;

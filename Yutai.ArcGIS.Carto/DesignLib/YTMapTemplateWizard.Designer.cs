@@ -6,9 +6,9 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.esriSystem;
 
-namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
+namespace Yutai.ArcGIS.Carto.DesignLib
 {
-    partial class JLKMapTemplateWizard
+    partial class YTMapTemplateWizard
     {
         protected override void Dispose(bool bool_0)
         {
@@ -33,7 +33,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.btnNext);
             this.panel2.Dock = DockStyle.Bottom;
-            this.panel2.Location = new Point(0, 348);
+            this.panel2.Location = new Point(0, 332);
             this.panel2.Name = "panel2";
             this.panel2.Size = new Size(468, 27);
             this.panel2.TabIndex = 3;
@@ -61,14 +61,14 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             this.panel1.Dock = DockStyle.Fill;
             this.panel1.Location = new Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new Size(468, 348);
+            this.panel1.Size = new Size(468, 332);
             this.panel1.TabIndex = 4;
             base.AutoScaleDimensions = new SizeF(6f, 12f);
             base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            base.ClientSize = new Size(468, 375);
+            base.ClientSize = new Size(468, 359);
             base.Controls.Add(this.panel1);
             base.Controls.Add(this.panel2);
-            base.Name = "JLKMapTemplateWizard";
+            base.Name = "YTMapTemplateWizard";
             this.Text = "制图模板向导";
             base.Load += new EventHandler(this.JLKMapTemplateWizard_Load);
             this.panel2.ResumeLayout(false);
@@ -79,7 +79,6 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         private Button btnLast;
         private Button btnNext;
         private Button button3;
-        private MapCartoTemplateLib.MapTemplate mapTemplate_0;
         private Panel panel1;
         private Panel panel2;
     }

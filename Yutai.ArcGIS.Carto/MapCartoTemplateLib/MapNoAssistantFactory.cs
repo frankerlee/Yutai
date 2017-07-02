@@ -4,7 +4,7 @@
     {
         public static MapNoAssistant CreateMapNoAssistant(string string_0)
         {
-            if (string_0.IndexOf("-") == -1)
+            if (string_0.IndexOf("-") >= -1)
             {
                 if (string_0.Length == 8)
                 {

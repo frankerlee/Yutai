@@ -202,12 +202,9 @@ namespace Yutai.ArcGIS.Carto.DesignLib
             base.PerformLayout();
         }
 
-        void IPropertyPage.Hide()
-        {
-            base.Hide();
-        }
-
        
+
+        private IContainer icontainer_0 = null;
         private GroupBox groupBox1;
         private Label label1;
         private Label label2;

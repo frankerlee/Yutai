@@ -204,7 +204,8 @@ namespace Yutai.Plugins.TableEditor.Views
 
         public ITableView CurrentGridView
         {
-            get { return tabControl.SelectedTab as ITableView; }
+            // get { return tabControl.SelectedTab as ITableView; }
+            get { return xtraTabControl.SelectedTabPage as ITableView; }
         }
 
         public override Bitmap Image

@@ -8,7 +8,7 @@ using ESRI.ArcGIS.esriSystem;
 
 namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 {
-    public partial class JLKMapTemplateWizard : Form
+    public partial class YTMapTemplateWizard : Form
     {
         private GridAxisPropertyPage gridAxisPropertyPage_0 = new GridAxisPropertyPage();
         private IContainer icontainer_0 = null;
@@ -24,7 +24,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         private StarndFenFuMapTemplatePage starndFenFuMapTemplatePage_0 = new StarndFenFuMapTemplatePage();
         private TickSymbolPropertyPage tickSymbolPropertyPage_0 = new TickSymbolPropertyPage();
 
-        public JLKMapTemplateWizard()
+        public YTMapTemplateWizard()
         {
             this.InitializeComponent();
         }

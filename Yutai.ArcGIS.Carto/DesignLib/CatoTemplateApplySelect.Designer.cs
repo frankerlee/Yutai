@@ -61,5 +61,6 @@ namespace Yutai.ArcGIS.Carto.DesignLib
         private ColumnHeader columnHeader_1;
         private Label label1;
         private ListView listView1;
+        private IContainer icontainer_0 = null;
     }
 }

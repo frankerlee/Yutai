@@ -18,7 +18,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
     {
         private bool bool_0 = false;
         private bool bool_1 = false;
-        private Container container_0 = null;
+        
         private IMapGridBorder imapGridBorder_0 = null;
         internal static IMapGrid m_pMapGrid;
         internal static IMapGrid m_pOldMapGrid;

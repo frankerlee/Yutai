@@ -1,0 +1,5 @@
+﻿<PrintingConfig>
+  <TemplateDatabase ConnectionString="dbclient=mdb;gdbname=:\\plugins\\configs\\maptemplate.mdb"></TemplateDatabase>
+  <IndexMaps>
+  </IndexMaps>
+</PrintingConfig>

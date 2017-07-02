@@ -37,7 +37,6 @@ namespace Yutai.Plugins.Catalog.Views
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.panelTreeView = new System.Windows.Forms.Panel();
             this.kTreeView1 = new Yutai.ArcGIS.Catalog.UI.KTreeView();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -53,8 +52,8 @@ namespace Yutai.Plugins.Catalog.Views
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.qqqToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.imageList1 = new System.Windows.Forms.ImageList();
+            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu();
             this.panelTreeView.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();

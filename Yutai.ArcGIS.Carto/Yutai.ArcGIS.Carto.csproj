@@ -147,27 +147,27 @@
     <Compile Include="DesignLib\InsetTemplateElement.cs" />
     <Compile Include="DesignLib\IResizeElementOperation.cs" />
     <Compile Include="DesignLib\JionTab.cs" />
-    <Compile Include="DesignLib\JLKElementWizardForm.cs">
+    <Compile Include="DesignLib\YTElementWizardForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DesignLib\JLKElementWizardForm.Designer.cs">
-      <DependentUpon>JLKElementWizardForm.cs</DependentUpon>
+    <Compile Include="DesignLib\YTElementWizardForm.Designer.cs">
+      <DependentUpon>YTElementWizardForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DesignLib\JLKLegendAssiatant.cs" />
-    <Compile Include="DesignLib\JLKLenendItem.cs" />
-    <Compile Include="DesignLib\JLKMapTemplateWizard.cs">
+    <Compile Include="DesignLib\YTLegendAssiatant.cs" />
+    <Compile Include="DesignLib\YTLegendItem.cs" />
+    <Compile Include="DesignLib\YTMapTemplateWizard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DesignLib\JLKMapTemplateWizard.Designer.cs">
-      <DependentUpon>JLKMapTemplateWizard.cs</DependentUpon>
+    <Compile Include="DesignLib\YTMapTemplateWizard.Designer.cs">
+      <DependentUpon>YTMapTemplateWizard.cs</DependentUpon>
     </Compile>
-    <Compile Include="DesignLib\JLKTKAssiatant.cs" />
-    <Compile Include="DesignLib\JLKTransformation.cs" />
-    <Compile Include="DesignLib\JLKWizardForm.cs">
+    <Compile Include="DesignLib\YTTKAssiatant.cs" />
+    <Compile Include="DesignLib\YTTransformation.cs" />
+    <Compile Include="DesignLib\YTWizardForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DesignLib\JLKWizardForm.Designer.cs">
-      <DependentUpon>JLKWizardForm.cs</DependentUpon>
+    <Compile Include="DesignLib\YTWizardForm.Designer.cs">
+      <DependentUpon>YTWizardForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DesignLib\LabelFormatPropertyPage.cs">
       <SubType>UserControl</SubType>
@@ -985,7 +985,7 @@
       <DependentUpon>frmNewLegendItem.cs</DependentUpon>
     </Compile>
     <Compile Include="MapCartoTemplateLib\ListViewItemEx.cs" />
-    <Compile Include="MapCartoTemplateLib\JLKLenendItem.cs" />
+    <Compile Include="MapCartoTemplateLib\YTLegendItem.cs" />
     <Compile Include="UI\TFInfoPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1136,11 +1136,11 @@
       <DependentUpon>MapTemplateGeneralPage.cs</DependentUpon>
     </Compile>
     <Compile Include="MapCartoTemplateLib\TemplateSizeStyle.cs" />
-    <Compile Include="MapCartoTemplateLib\JLKMapTemplateWizard.cs">
+    <Compile Include="MapCartoTemplateLib\YTMapTemplateWizard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MapCartoTemplateLib\JLKMapTemplateWizard.Designer.cs">
-      <DependentUpon>JLKMapTemplateWizard.cs</DependentUpon>
+    <Compile Include="MapCartoTemplateLib\YTMapTemplateWizard.Designer.cs">
+      <DependentUpon>YTMapTemplateWizard.cs</DependentUpon>
     </Compile>
     <Compile Include="MapCartoTemplateLib\LabelFormatPropertyPage.cs">
       <SubType>UserControl</SubType>
@@ -1266,7 +1266,7 @@
     <Compile Include="UI\LineSymbolPropertyPage.Designer.cs">
       <DependentUpon>LineSymbolPropertyPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="MapCartoTemplateLib\JLKTransformation.cs" />
+    <Compile Include="MapCartoTemplateLib\YTTransformation.cs" />
     <Compile Include="MapCartoTemplateLib\GBMapNoAssistant.cs" />
     <Compile Include="MapCartoTemplateLib\ExpressionTree.cs" />
     <Compile Include="MapCartoTemplateLib\TextElementValueSetPage.cs">
@@ -1314,11 +1314,11 @@
       <DependentUpon>PictureSelectPage.cs</DependentUpon>
     </Compile>
     <Compile Include="MapCartoTemplateLib\MapTemplatePictureElement.cs" />
-    <Compile Include="MapCartoTemplateLib\JLKElementWizardForm.cs">
+    <Compile Include="MapCartoTemplateLib\YTElementWizardForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MapCartoTemplateLib\JLKElementWizardForm.Designer.cs">
-      <DependentUpon>JLKElementWizardForm.cs</DependentUpon>
+    <Compile Include="MapCartoTemplateLib\YTElementWizardForm.Designer.cs">
+      <DependentUpon>YTElementWizardForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MapCartoTemplateLib\ElementTypeSelectPage.cs">
       <SubType>UserControl</SubType>
@@ -1848,14 +1848,14 @@
     <EmbeddedResource Include="DesignLib\GridAxisPropertyPage.resx">
       <DependentUpon>GridAxisPropertyPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DesignLib\JLKElementWizardForm.resx">
-      <DependentUpon>JLKElementWizardForm.cs</DependentUpon>
+    <EmbeddedResource Include="DesignLib\YTElementWizardForm.resx">
+      <DependentUpon>YTElementWizardForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DesignLib\JLKMapTemplateWizard.resx">
-      <DependentUpon>JLKMapTemplateWizard.cs</DependentUpon>
+    <EmbeddedResource Include="DesignLib\YTMapTemplateWizard.resx">
+      <DependentUpon>YTMapTemplateWizard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DesignLib\JLKWizardForm.resx">
-      <DependentUpon>JLKWizardForm.cs</DependentUpon>
+    <EmbeddedResource Include="DesignLib\YTWizardForm.resx">
+      <DependentUpon>YTWizardForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DesignLib\LabelFormatPropertyPage.resx">
       <DependentUpon>LabelFormatPropertyPage.cs</DependentUpon>
@@ -2497,11 +2497,11 @@
     <EmbeddedResource Include="MapCartoTemplateLib\GroupElementExPropertyPage.resx">
       <DependentUpon>GroupElementExPropertyPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MapCartoTemplateLib\JLKElementWizardForm.resx">
-      <DependentUpon>JLKElementWizardForm.cs</DependentUpon>
+    <EmbeddedResource Include="MapCartoTemplateLib\YTElementWizardForm.resx">
+      <DependentUpon>YTElementWizardForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MapCartoTemplateLib\JLKMapTemplateWizard.resx">
-      <DependentUpon>JLKMapTemplateWizard.cs</DependentUpon>
+    <EmbeddedResource Include="MapCartoTemplateLib\YTMapTemplateWizard.resx">
+      <DependentUpon>YTMapTemplateWizard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MapCartoTemplateLib\LabelFormatPropertyPage.resx">
       <DependentUpon>LabelFormatPropertyPage.cs</DependentUpon>

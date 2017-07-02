@@ -198,6 +198,7 @@
       <DependentUpon>IdentifierDockPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\IdentifierPresenter.cs" />
+    <Compile Include="Views\LayerIdentifiedResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Yutai.Api\Yutai.Api.csproj">

@@ -9,7 +9,7 @@ using Yutai.ArcGIS.Common.Symbol;
 
 namespace Yutai.ArcGIS.Carto.DesignLib
 {
-    public class JLKLegendAssiatant
+    public class YTLegendAssiatant
     {
         private bool bool_0 = false;
         private bool bool_1 = true;

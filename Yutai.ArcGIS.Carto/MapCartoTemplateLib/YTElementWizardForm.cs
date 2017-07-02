@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 {
-    public partial class JLKElementWizardForm : Form
+    public partial class YTElementWizardForm : Form
     {
         private CustomLegendConfigPage customLegendConfigPage_0 = new CustomLegendConfigPage();
         private ElementPosition elementPosition_0 = new ElementPosition();
@@ -23,7 +23,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         private TableGeneralPage tableGeneralPage_0 = new TableGeneralPage();
         private TextElementValueSetPage textElementValueSetPage_0 = new TextElementValueSetPage();
 
-        public JLKElementWizardForm()
+        public YTElementWizardForm()
         {
             this.InitializeComponent();
         }

@@ -10,7 +10,7 @@ namespace Yutai.ArcGIS.Carto.DesignLib
 {
     public partial class CatoTemplateApplySelect : UserControl
     {
-        private IContainer icontainer_0 = null;
+        
 
         public CatoTemplateApplySelect()
         {

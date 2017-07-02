@@ -5,12 +5,12 @@ using ESRI.ArcGIS.Geometry;
 
 namespace Yutai.ArcGIS.Carto.DesignLib
 {
-    public class JLKTransformation
+    public class YTTransformation
     {
         private IActiveView iactiveView_0 = null;
         private IActiveView iactiveView_1 = null;
 
-        public JLKTransformation(IActiveView iactiveView_2)
+        public YTTransformation(IActiveView iactiveView_2)
         {
             if (iactiveView_2 is IPageLayout)
             {

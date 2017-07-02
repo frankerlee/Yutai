@@ -40,14 +40,15 @@
           <BarItem Key="View_MeasureLength" Visible="true"></BarItem>
           <BarItem Key="View_MeasureArea" Visible="true"></BarItem>
         </PageGroup>
-      </Page>
-      <Page Key="Windows" Caption="窗口" Index="10" Visible="true">
         <PageGroup Key="Window_Common" Caption="窗口控制" Visible="true" Index="0">
           <BarItem Key="Window_Common_MapLegend" Visible="true"></BarItem>
           <BarItem Key="Window_Common_Overview" Visible="true"></BarItem>
           <BarItem Key="Window_Common_AttributeTable" Visible="true"></BarItem>
+          <BarItem Key="View_MapFrameProps" Visible="true"></BarItem>
         </PageGroup>
+        
       </Page>
+    
     </Pages>
   </MainMenu>
 </YutaiGIS>
