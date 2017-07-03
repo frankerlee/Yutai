@@ -8,14 +8,14 @@ using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
 
-namespace Yutai.Pipeline.Editor.Commands
+namespace Yutai.Pipeline.Editor.Commands.Mark
 {
-    class CmdCalculateDepth : YutaiTool
+    class CmdCheQi : YutaiTool
     {
         private PipelineEditorPlugin _plugin;
         private IPipelineConfig _config;
 
-        public CmdCalculateDepth(IAppContext context, PipelineEditorPlugin plugin)
+        public CmdCheQi(IAppContext context, PipelineEditorPlugin plugin)
         {
             OnCreate(context);
             _plugin = plugin;
@@ -29,14 +29,14 @@ namespace Yutai.Pipeline.Editor.Commands
         public sealed override void OnCreate(object hook)
         {
             _context = hook as IAppContext;
-            base.m_caption = "计算埋深";
+            base.m_caption = "扯旗";
             base.m_category = "PipelineEditor";
             //base.m_bitmap = Properties.Resources.icon_valve;
-            base.m_name = "PipelineEditor_CalculateDepth";
-            base._key = "PipelineEditor_CalculateDepth";
-            base.m_toolTip = "计算埋深";
+            base.m_name = "PipelineEditor_CheQi";
+            base._key = "PipelineEditor_CheQi";
+            base.m_toolTip = "";
             base.m_checked = false;
-            base.m_message = "计算埋深";
+            base.m_message = "";
             base.m_enabled = true;
             base._itemType = RibbonItemType.Tool;
         }

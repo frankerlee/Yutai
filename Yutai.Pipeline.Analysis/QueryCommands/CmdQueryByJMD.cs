@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using ESRI.ArcGIS.Controls;
 using Yutai.Pipeline.Analysis.Helpers;
 using Yutai.Pipeline.Analysis.QueryForms;
+using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
@@ -78,6 +79,22 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
         {
             e.Cancel = true;
             this.QueryUI.Hide();
+        }
+
+        public override bool Enabled
+        {
+            get
+            {
+                if (_plugin.PipeConfig?.Layers == null)
+                    return false;
+                if (_plugin.PipeConfig.Layers.Count <= 0)
+                    return false;
+                if (_plugin.PipeConfig.FunctionLayers.Count <= 0)
+                    return false;
+                if (_plugin.PipeConfig.GetFunctionLayer(enumFunctionLayerType.Jmd) == null)
+                    return false;
+                return true;
+            }
         }
     }
 }

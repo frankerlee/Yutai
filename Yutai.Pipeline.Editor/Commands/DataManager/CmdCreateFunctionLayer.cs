@@ -8,14 +8,14 @@ using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
 
-namespace Yutai.Pipeline.Editor.Commands
+namespace Yutai.Pipeline.Editor.Commands.DataManager
 {
-    class CmdMoveTurningPoint : YutaiTool
+    class CmdCreateFunctionLayer : YutaiTool
     {
         private PipelineEditorPlugin _plugin;
         private IPipelineConfig _config;
 
-        public CmdMoveTurningPoint(IAppContext context, PipelineEditorPlugin plugin)
+        public CmdCreateFunctionLayer(IAppContext context, PipelineEditorPlugin plugin)
         {
             OnCreate(context);
             _plugin = plugin;
@@ -29,14 +29,14 @@ namespace Yutai.Pipeline.Editor.Commands
         public sealed override void OnCreate(object hook)
         {
             _context = hook as IAppContext;
-            base.m_caption = "移动折点";
+            base.m_caption = "新建功能类";
             base.m_category = "PipelineEditor";
             //base.m_bitmap = Properties.Resources.icon_valve;
-            base.m_name = "PipelineEditor_MoveTurningPoint";
-            base._key = "PipelineEditor_MoveTurningPoint";
-            base.m_toolTip = "移动折点";
+            base.m_name = "PipelineEditor_CreateFunctionLayer";
+            base._key = "PipelineEditor_CreateFunctionLayer";
+            base.m_toolTip = "";
             base.m_checked = false;
-            base.m_message = "移动折点";
+            base.m_message = "";
             base.m_enabled = true;
             base._itemType = RibbonItemType.Tool;
         }

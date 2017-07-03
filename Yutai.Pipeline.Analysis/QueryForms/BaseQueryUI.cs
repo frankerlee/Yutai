@@ -139,10 +139,10 @@ namespace Yutai.Pipeline.Analysis.QueryForms
                     this.FieldsBox.Items.Clear();
                     for (int i = 0; i < this.myfields.FieldCount; i++)
                     {
-                        IField field = this.myfields.get_Field(i);
+                        IField field = this.myfields.Field[i];
                         string name = field.Name;
                         if (field.Type != (esriFieldType) 6 && field.Type != (esriFieldType) 7 &&
-                            !(name.ToUpper() == "ENABLED") && !(name.ToUpper() == "SHAPE.LEN"))
+                            name.ToUpper() != "ENABLED" && name.ToUpper() != "SHAPE.LEN")
                         {
                             this.FieldsBox.Items.Add(name);
                         }
@@ -234,7 +234,7 @@ namespace Yutai.Pipeline.Analysis.QueryForms
             int layerCount = m_context.FocusMap.LayerCount;
             for (int i = 0; i < layerCount; i++)
             {
-                ILayer ipLay = m_context.FocusMap.get_Layer(i);
+                ILayer ipLay = m_context.FocusMap.Layer[i];
                 this.AddLayer(ipLay);
             }
             if (this.Layerbox.Items.Count > 0)
