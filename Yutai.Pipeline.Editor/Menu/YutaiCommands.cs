@@ -18,8 +18,8 @@ namespace Yutai.Pipeline.Editor.Menu
         private PipelineEditorPlugin _plugin;
         private List<string> _commandKeys;
 
-        public YutaiCommands(IAppContext context, PluginIdentity identity)
-            : base(context, identity)
+        public YutaiCommands(IAppContext context, PipelineEditorPlugin plugin)
+            : base(context, plugin.Identity)
         {
         }
 
@@ -40,6 +40,8 @@ namespace Yutai.Pipeline.Editor.Menu
 
             try
             {
+                if (_plugin == null)
+                    return new List<YutaiCommand>();
                 _commands = new List<YutaiCommand>()
                 {
                     new CmdCreateDatabase(_context, _plugin),

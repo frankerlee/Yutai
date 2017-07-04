@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ESRI.ArcGIS.Carto;
+using System;
 using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
@@ -10,6 +11,9 @@ namespace Yutai.Pipeline.Editor.Commands.Profession
     {
         private PipelineEditorPlugin _plugin;
         private IPipelineConfig _config;
+        private IFeatureLayer _pointFeatureLayer;
+        private IFeatureLayer _lineFeatureLayer;
+        private bool _isMove = false;
 
         public CmdPointLineLinkage(IAppContext context, PipelineEditorPlugin plugin)
         {
@@ -49,6 +53,15 @@ namespace Yutai.Pipeline.Editor.Commands.Profession
 
         public override void OnMouseDown(int button, int shift, int x, int y)
         {
+            if (_isMove == false)
+            {
+                _context.FocusMap.ClearSelection();
+
+            }
+            else
+            {
+                
+            }
         }
     }
 }

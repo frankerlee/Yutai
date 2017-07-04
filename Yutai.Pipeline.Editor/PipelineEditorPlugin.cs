@@ -45,23 +45,11 @@ namespace Yutai.Pipeline.Editor
             //_mapListener = context.Container.GetInstance<MapListener>();
             // _dockPanelService = context.Container.GetInstance<TemplateDockPanelService>();
         }
-
-        private void FireEvent<T>(EventHandler<T> handler, T args)
-        {
-            if (handler != null)
-            {
-                handler(this, args);
-            }
-        }
-
+        
         public IPipelineConfig PipeConfig
         {
             get { return _config; }
         }
-
-        //public void FireQueryResultChanged(QueryResultArgs e)
-        //{
-        //    FireEvent(QueryResultChanged, e);
-        //}
+        
     }
 }
