@@ -16,6 +16,7 @@ namespace Yutai.Plugins.Template.Concretes
        
         private IFeatureWorkspace _workspace;
         private List<IObjectTemplate> _templates;
+        private List<IObjectDataset> _datasets;
 
         public string DatabaseName
         {
@@ -76,6 +77,75 @@ namespace Yutai.Plugins.Template.Concretes
             ComReleaser.ReleaseCOMObject(pTemplateFields);
         }
 
+        public void LoadDatasets()
+        {
+            if (_datasets != null)
+                _datasets.Clear();
+            else
+                _datasets = new List<IObjectDataset>();
+            ITable pTemplateTable = _workspace.OpenTable("YT_TEMPLATE_DATASET");
+            ITableSort tableSort = new TableSort();
+            tableSort.Table = pTemplateTable;
+            tableSort.Fields = "Dataset";
+            tableSort.Sort(null);
+
+            ICursor pCursor = tableSort.Rows;
+           
+            IRow pRow = pCursor.NextRow();
+            IQueryFilter pQueryFilter = new QueryFilter();
+
+            IObjectDataset oneDataset = null;
+            while (pRow != null)
+            {
+                oneDataset = new ObjectDataset(pRow);
+              
+                _datasets.Add(oneDataset);
+                pRow = pCursor.NextRow();
+            }
+            ComReleaser.ReleaseCOMObject(pCursor);
+            ComReleaser.ReleaseCOMObject(pTemplateTable);
+           
+        }
+
+        public List<IObjectTemplate> GetTemplatesByDataset(string datasetName)
+        {
+           List<IObjectTemplate> templates= new List<IObjectTemplate>();
+            ITable pTemplateTable = _workspace.OpenTable("YT_TEMPLATE_FEATURECLASS");
+            ITable pTemplateFields = _workspace.OpenTable("YT_TEMPLATE_FIELD");
+
+           IQueryFilter pFilter1=new QueryFilter();
+            pFilter1.WhereClause = "Dataset='" + datasetName + "'";
+
+            ICursor pCursor = pTemplateTable.Search(pFilter1,false);
+            int[] fieldIndexes = new int[6];
+            IRow pRow = pCursor.NextRow();
+            IQueryFilter pQueryFilter = new QueryFilter();
+
+            IObjectTemplate oneTemplate = null;
+            while (pRow != null)
+            {
+                oneTemplate = new ObjectTemplate(pRow);
+                pQueryFilter.WhereClause = "TemplateName='" + oneTemplate.Name + "'";
+                ICursor pCursor1 = pTemplateFields.Search(pQueryFilter, false);
+                IRow fieldRow = pCursor1.NextRow();
+                while (fieldRow != null)
+                {
+                    IYTField ytField = new YTField(fieldRow);
+                    oneTemplate.Fields.Add(ytField);
+                    fieldRow = pCursor1.NextRow();
+                }
+                ComReleaser.ReleaseCOMObject(pCursor1);
+                templates.Add(oneTemplate);
+                pRow = pCursor.NextRow();
+            }
+            ComReleaser.ReleaseCOMObject(pFilter1);
+            ComReleaser.ReleaseCOMObject(pCursor);
+            ComReleaser.ReleaseCOMObject(pTemplateTable);
+            ComReleaser.ReleaseCOMObject(pTemplateFields);
+            return templates;
+        }
+
+
         public bool DisConnect()
         {
             if (_workspace == null) return true;
@@ -96,6 +166,12 @@ namespace Yutai.Plugins.Template.Concretes
                 return _templates;
             }
             set { _templates = value; }
+        }
+
+        public List<IObjectDataset> Datasets
+        {
+            get { return _datasets; }
+            set { _datasets = value; }
         }
 
         public bool AddTemplate(IObjectTemplate template)

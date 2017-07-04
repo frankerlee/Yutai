@@ -36,26 +36,26 @@
             this.cmbTemplate = new System.Windows.Forms.ComboBox();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
-            this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
-            this.btnDB = new DevExpress.XtraEditors.SimpleButton();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtSpatialRef = new DevExpress.XtraEditors.TextEdit();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtXMin = new DevExpress.XtraEditors.TextEdit();
-            this.txtYMin = new DevExpress.XtraEditors.TextEdit();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtXMax = new DevExpress.XtraEditors.TextEdit();
-            this.label7 = new System.Windows.Forms.Label();
+            this.btnCurrentExtent = new DevExpress.XtraEditors.SimpleButton();
+            this.btnFullExtent = new DevExpress.XtraEditors.SimpleButton();
             this.txtYMax = new DevExpress.XtraEditors.TextEdit();
             this.label8 = new System.Windows.Forms.Label();
-            this.btnFullExtent = new DevExpress.XtraEditors.SimpleButton();
-            this.btnCurrentExtent = new DevExpress.XtraEditors.SimpleButton();
-            this.chkIndex = new DevExpress.XtraEditors.CheckEdit();
+            this.txtXMax = new DevExpress.XtraEditors.TextEdit();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtYMin = new DevExpress.XtraEditors.TextEdit();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtXMin = new DevExpress.XtraEditors.TextEdit();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtSpatialRef = new DevExpress.XtraEditors.TextEdit();
+            this.label4 = new System.Windows.Forms.Label();
+            this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.grpIndex = new DevExpress.XtraEditors.GroupControl();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtWidth = new DevExpress.XtraEditors.TextEdit();
             this.txtHeight = new DevExpress.XtraEditors.TextEdit();
             this.label10 = new System.Windows.Forms.Label();
+            this.txtWidth = new DevExpress.XtraEditors.TextEdit();
+            this.label9 = new System.Windows.Forms.Label();
+            this.chkIndex = new DevExpress.XtraEditors.CheckEdit();
+            this.btnDB = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.txtDB.Properties)).BeginInit();
@@ -63,17 +63,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
-            this.xtraTabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSpatialRef.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtXMin.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtYMin.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtXMax.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtYMax.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkIndex.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtXMax.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtYMin.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtXMin.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSpatialRef.Properties)).BeginInit();
+            this.xtraTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grpIndex)).BeginInit();
             this.grpIndex.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtWidth.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHeight.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtWidth.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkIndex.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -156,93 +156,23 @@
             this.xtraTabPage1.Size = new System.Drawing.Size(433, 221);
             this.xtraTabPage1.Text = "坐标系";
             // 
-            // xtraTabPage2
+            // btnCurrentExtent
             // 
-            this.xtraTabPage2.Controls.Add(this.grpIndex);
-            this.xtraTabPage2.Controls.Add(this.chkIndex);
-            this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(433, 221);
-            this.xtraTabPage2.Text = "索引设置";
+            this.btnCurrentExtent.Location = new System.Drawing.Point(288, 11);
+            this.btnCurrentExtent.Name = "btnCurrentExtent";
+            this.btnCurrentExtent.Size = new System.Drawing.Size(49, 23);
+            this.btnCurrentExtent.TabIndex = 13;
+            this.btnCurrentExtent.Text = "当前";
+            this.btnCurrentExtent.Click += new System.EventHandler(this.btnCurrentExtent_Click);
             // 
-            // btnDB
+            // btnFullExtent
             // 
-            this.btnDB.Location = new System.Drawing.Point(383, 16);
-            this.btnDB.Name = "btnDB";
-            this.btnDB.Size = new System.Drawing.Size(75, 23);
-            this.btnDB.TabIndex = 7;
-            this.btnDB.Text = "选择";
-            this.btnDB.Click += new System.EventHandler(this.btnDB_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 17);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 14);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "坐标系";
-            // 
-            // txtSpatialRef
-            // 
-            this.txtSpatialRef.Enabled = false;
-            this.txtSpatialRef.Location = new System.Drawing.Point(76, 14);
-            this.txtSpatialRef.Name = "txtSpatialRef";
-            this.txtSpatialRef.Size = new System.Drawing.Size(205, 20);
-            this.txtSpatialRef.TabIndex = 3;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(15, 47);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(38, 14);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "最小X";
-            // 
-            // txtXMin
-            // 
-            this.txtXMin.Location = new System.Drawing.Point(76, 44);
-            this.txtXMin.Name = "txtXMin";
-            this.txtXMin.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtXMin.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtXMin.Size = new System.Drawing.Size(118, 20);
-            this.txtXMin.TabIndex = 5;
-            // 
-            // txtYMin
-            // 
-            this.txtYMin.Location = new System.Drawing.Point(274, 44);
-            this.txtYMin.Name = "txtYMin";
-            this.txtYMin.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtYMin.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtYMin.Size = new System.Drawing.Size(118, 20);
-            this.txtYMin.TabIndex = 7;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(213, 47);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(39, 14);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "最小Y";
-            // 
-            // txtXMax
-            // 
-            this.txtXMax.Location = new System.Drawing.Point(76, 70);
-            this.txtXMax.Name = "txtXMax";
-            this.txtXMax.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtXMax.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtXMax.Size = new System.Drawing.Size(118, 20);
-            this.txtXMax.TabIndex = 9;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(15, 73);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(38, 14);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "最大X";
+            this.btnFullExtent.Location = new System.Drawing.Point(343, 11);
+            this.btnFullExtent.Name = "btnFullExtent";
+            this.btnFullExtent.Size = new System.Drawing.Size(49, 23);
+            this.btnFullExtent.TabIndex = 12;
+            this.btnFullExtent.Text = "全图";
+            this.btnFullExtent.Click += new System.EventHandler(this.btnFullExtent_Click);
             // 
             // txtYMax
             // 
@@ -262,32 +192,84 @@
             this.label8.TabIndex = 10;
             this.label8.Text = "最大Y";
             // 
-            // btnFullExtent
+            // txtXMax
             // 
-            this.btnFullExtent.Location = new System.Drawing.Point(343, 11);
-            this.btnFullExtent.Name = "btnFullExtent";
-            this.btnFullExtent.Size = new System.Drawing.Size(49, 23);
-            this.btnFullExtent.TabIndex = 12;
-            this.btnFullExtent.Text = "全图";
-            this.btnFullExtent.Click += new System.EventHandler(this.btnFullExtent_Click);
+            this.txtXMax.Location = new System.Drawing.Point(76, 70);
+            this.txtXMax.Name = "txtXMax";
+            this.txtXMax.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtXMax.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtXMax.Size = new System.Drawing.Size(118, 20);
+            this.txtXMax.TabIndex = 9;
             // 
-            // btnCurrentExtent
+            // label7
             // 
-            this.btnCurrentExtent.Location = new System.Drawing.Point(288, 11);
-            this.btnCurrentExtent.Name = "btnCurrentExtent";
-            this.btnCurrentExtent.Size = new System.Drawing.Size(49, 23);
-            this.btnCurrentExtent.TabIndex = 13;
-            this.btnCurrentExtent.Text = "当前";
-            this.btnCurrentExtent.Click += new System.EventHandler(this.btnCurrentExtent_Click);
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(15, 73);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(38, 14);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "最大X";
             // 
-            // chkIndex
+            // txtYMin
             // 
-            this.chkIndex.Location = new System.Drawing.Point(16, 16);
-            this.chkIndex.Name = "chkIndex";
-            this.chkIndex.Properties.Caption = "生成索引图";
-            this.chkIndex.Size = new System.Drawing.Size(75, 19);
-            this.chkIndex.TabIndex = 0;
-            this.chkIndex.CheckedChanged += new System.EventHandler(this.chkIndex_CheckedChanged);
+            this.txtYMin.Location = new System.Drawing.Point(274, 44);
+            this.txtYMin.Name = "txtYMin";
+            this.txtYMin.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtYMin.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtYMin.Size = new System.Drawing.Size(118, 20);
+            this.txtYMin.TabIndex = 7;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(213, 47);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(39, 14);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "最小Y";
+            // 
+            // txtXMin
+            // 
+            this.txtXMin.Location = new System.Drawing.Point(76, 44);
+            this.txtXMin.Name = "txtXMin";
+            this.txtXMin.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtXMin.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtXMin.Size = new System.Drawing.Size(118, 20);
+            this.txtXMin.TabIndex = 5;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(15, 47);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(38, 14);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "最小X";
+            // 
+            // txtSpatialRef
+            // 
+            this.txtSpatialRef.Enabled = false;
+            this.txtSpatialRef.Location = new System.Drawing.Point(76, 14);
+            this.txtSpatialRef.Name = "txtSpatialRef";
+            this.txtSpatialRef.Size = new System.Drawing.Size(205, 20);
+            this.txtSpatialRef.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(15, 17);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(43, 14);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "坐标系";
+            // 
+            // xtraTabPage2
+            // 
+            this.xtraTabPage2.Controls.Add(this.grpIndex);
+            this.xtraTabPage2.Controls.Add(this.chkIndex);
+            this.xtraTabPage2.Name = "xtraTabPage2";
+            this.xtraTabPage2.Size = new System.Drawing.Size(433, 221);
+            this.xtraTabPage2.Text = "索引设置";
             // 
             // grpIndex
             // 
@@ -301,25 +283,6 @@
             this.grpIndex.TabIndex = 1;
             this.grpIndex.Text = "索引设置";
             this.grpIndex.Visible = false;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(5, 36);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(31, 14);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "宽度";
-            // 
-            // txtWidth
-            // 
-            this.txtWidth.EditValue = "250";
-            this.txtWidth.Location = new System.Drawing.Point(46, 33);
-            this.txtWidth.Name = "txtWidth";
-            this.txtWidth.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtWidth.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtWidth.Size = new System.Drawing.Size(118, 20);
-            this.txtWidth.TabIndex = 6;
             // 
             // txtHeight
             // 
@@ -339,6 +302,43 @@
             this.label10.Size = new System.Drawing.Size(31, 14);
             this.label10.TabIndex = 7;
             this.label10.Text = "高度";
+            // 
+            // txtWidth
+            // 
+            this.txtWidth.EditValue = "250";
+            this.txtWidth.Location = new System.Drawing.Point(46, 33);
+            this.txtWidth.Name = "txtWidth";
+            this.txtWidth.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtWidth.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtWidth.Size = new System.Drawing.Size(118, 20);
+            this.txtWidth.TabIndex = 6;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(5, 36);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(31, 14);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "宽度";
+            // 
+            // chkIndex
+            // 
+            this.chkIndex.Location = new System.Drawing.Point(16, 16);
+            this.chkIndex.Name = "chkIndex";
+            this.chkIndex.Properties.Caption = "生成索引图";
+            this.chkIndex.Size = new System.Drawing.Size(75, 19);
+            this.chkIndex.TabIndex = 0;
+            this.chkIndex.CheckedChanged += new System.EventHandler(this.chkIndex_CheckedChanged);
+            // 
+            // btnDB
+            // 
+            this.btnDB.Location = new System.Drawing.Point(383, 16);
+            this.btnDB.Name = "btnDB";
+            this.btnDB.Size = new System.Drawing.Size(75, 23);
+            this.btnDB.TabIndex = 7;
+            this.btnDB.Text = "选择";
+            this.btnDB.Click += new System.EventHandler(this.btnDB_Click);
             // 
             // simpleButton1
             // 
@@ -373,6 +373,8 @@
             this.Controls.Add(this.txtDB);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmQuickCreateFeatureClass";
             this.Text = "快速创建要素类";
             ((System.ComponentModel.ISupportInitialize)(this.txtDB.Properties)).EndInit();
@@ -381,18 +383,18 @@
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
             this.xtraTabPage1.PerformLayout();
-            this.xtraTabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtSpatialRef.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtXMin.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtYMin.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtXMax.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtYMax.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkIndex.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtXMax.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtYMin.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtXMin.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSpatialRef.Properties)).EndInit();
+            this.xtraTabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grpIndex)).EndInit();
             this.grpIndex.ResumeLayout(false);
             this.grpIndex.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtWidth.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHeight.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtWidth.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkIndex.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
