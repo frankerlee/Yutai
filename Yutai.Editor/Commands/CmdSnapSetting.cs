@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
-using Yutai.Views;
 
 namespace Yutai.Plugins.Editor.Commands
 {
@@ -47,10 +46,8 @@ namespace Yutai.Plugins.Editor.Commands
 
         public void OnClick()
         {
-            _context.Config.LoadAllConfigPages = false;
-            _context.Config.CustomConfigPages = "Snap";
-            var model = _context.Container.GetInstance<ConfigViewModel>();
-            _context.Container.Run<ConfigPresenter, ConfigViewModel>(model);
+            _context.RunConfigPage("Snap");
+         
         }
     }
 }

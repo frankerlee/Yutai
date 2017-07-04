@@ -4,85 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.Geodatabase;
+using ESRI.ArcGIS.Geometry;
 using Yutai.Plugins.Interfaces;
+using Yutai.Plugins.Services;
 using Yutai.Shared;
+using WorkspaceHelper = Yutai.ArcGIS.Common.Helpers.WorkspaceHelper;
 
 namespace Yutai.Plugins.Printing
 {
-
-    public class PrintingConfig : IPrintingConfig
-    {
-        private List<IIndexMap> _indexMaps;
-        private string _xmlFile;
-        private string _templateConnectionString;
-        
-
-        public PrintingConfig()
-        {
-            _indexMaps=new List<IIndexMap>();
-            
-        }
-
-        public void LoadFromXml(string fileName)
-        {
-            _xmlFile = fileName;
-            XmlDocument doc = new XmlDocument();
-            doc.Load(_xmlFile);
-
-            XmlNode dbNode = doc.SelectSingleNode("/PrintingConfig/TemplateDatabase");
-            _templateConnectionString = dbNode == null ? "" : dbNode.Attributes["ConnectionString"].Value;
-            XmlNodeList nodes = doc.SelectNodes("/PipelineConfig/IndexMaps/IndexMap");
-            if (nodes != null)
-                foreach (XmlNode node in nodes)
-                {
-                  IIndexMap indexMap=new IndexMap(node);
-                    _indexMaps.Add(indexMap);
-                }
-            
-        }
-
-        public void SaveToXml(string fileName)
-        {
-            XmlDocument doc = new XmlDocument();
-
-            XmlNode rootNode = doc.CreateElement("PrintingConfig");
-            XmlNode dbNode = doc.CreateElement("TemplateDatabase");
-            XmlAttribute dbAttr = doc.CreateAttribute("ConnectionString");
-            dbAttr.Value = _templateConnectionString;
-            dbNode.Attributes.Append(dbAttr);
-            rootNode.AppendChild(dbNode);
-            XmlNode configNode = doc.CreateElement("IndexMaps");
-            for (int i = 0; i < _indexMaps.Count; i++)
-            {
-                XmlNode subNode = _indexMaps[i].SaveToXml(doc);
-                configNode.AppendChild(subNode);
-            }
-            rootNode.AppendChild(configNode);
-            doc.AppendChild(rootNode);
-            doc.Save(fileName);
-        }
-
-        public void Save()
-        {
-            SaveToXml(_xmlFile);
-        }
-
-        public string TemplateConnectionString
-        {
-            get { return _templateConnectionString; }
-            set { _templateConnectionString = value; }
-        }
-
-        public List<IIndexMap> IndexMaps
-        {
-            get { return _indexMaps; }
-            set { _indexMaps = value; }
-        }
-    }
-
-    
-
     public class IndexMap : IIndexMap
     {
         private string _name;
@@ -91,6 +22,8 @@ namespace Yutai.Plugins.Printing
         private string _searchFields;
         private string _nameField;
         private string _workspaceName;
+
+        private IFeatureClass _featureClass;
 
         public string Name
         {
@@ -175,6 +108,123 @@ namespace Yutai.Plugins.Printing
             layerNode.Attributes.Append(wksAttribute);
             layerNode.Attributes.Append(layerAttribute);
             return layerNode;
+        }
+
+        public IFeatureCursor Search(string searchKey)
+        {
+            if (_featureClass == null)
+            {
+                bool back= TryOpenFeatureClass();
+                if (!back)
+                {
+                    MessageService.Current.Warn("索引图层不能正确连接，请检查索引图层设置!");
+                    return null;
+                }
+               
+            }
+            return TrySearch(searchKey);
+        }
+
+       
+        private IFeatureCursor TrySearch(string searchKey)
+        {
+            string likeStr = Yutai.ArcGIS.Common.Helpers.WorkspaceHelper.GetSpecialCharacter(_featureClass as IDataset,
+                esriSQLSpecialCharacters.esriSQL_WildcardManyMatch);
+            IQueryFilter queryFilter = new QueryFilter();
+            if (!string.IsNullOrEmpty(searchKey))
+            {
+                queryFilter.WhereClause = BuildWhereClause(_searchFields, searchKey, likeStr);
+            }
+            IFeatureCursor cursor = _featureClass.Search(queryFilter, false);
+            return cursor;
+        }
+        private string BuildWhereClause(string locatorSearchFields, string searchKey, string likeStr)
+        {
+            string[] fields = locatorSearchFields.Split(',');
+            string whereClause = "";
+            for (int i = 0; i < fields.Length; i++)
+            {
+                if (i == 0)
+                    whereClause = string.Format("{0} Like '{1}{2}{1}' ", fields[i], likeStr, searchKey);
+                else
+                    whereClause += string.Format(" OR {0} Like '{1}{2}{1}' ", fields[i], likeStr, searchKey);
+            }
+            return whereClause;
+        }
+        private bool TryOpenFeatureClass()
+        {
+            if (string.IsNullOrEmpty(_workspaceName)) return false;
+            if (string.IsNullOrEmpty(_indexLayerName)) return false;
+
+            IFeatureClass fClass = Yutai.ArcGIS.Common.Helpers.WorkspaceHelper.GetFeatureClass(_workspaceName,_indexLayerName);
+            if (fClass == null) return false;
+            _featureClass = fClass;
+            return true;
+        }
+
+        public List<IPrintPageInfo> QueryPageInfo(IGeometry searchGeometry)
+        {
+            return QueryPageInfo(searchGeometry, "");
+        }
+
+        public List<IPrintPageInfo> QueryPageInfo(IGeometry searchGeometry,string searchKeys)
+        {
+            if (_featureClass == null)
+            {
+                TryOpenFeatureClass();
+            }
+            if (_featureClass == null)
+            {
+                MessageService.Current.Warn("索引图不可用，请检查索引图配置!");
+                return null;
+            }
+            IQueryFilter queryFlter = null;
+            string likeStr = WorkspaceHelper.GetSpecialCharacter(_featureClass as IDataset,
+              esriSQLSpecialCharacters.esriSQL_WildcardManyMatch);
+           
+            if (searchGeometry != null && searchGeometry.IsEmpty == false)
+            {
+                ISpatialFilter filter = new SpatialFilter();
+                filter.Geometry = searchGeometry;
+                filter.SpatialRel = esriSpatialRelEnum.esriSpatialRelIntersects;
+                queryFlter = filter;
+            }
+            if (queryFlter == null)
+            {
+                queryFlter=new QueryFilter();
+            }
+            if (!string.IsNullOrEmpty(searchKeys))
+            {
+                queryFlter.WhereClause= BuildWhereClause(_searchFields, searchKeys, likeStr);
+            }
+            IFeatureCursor pCursor = _featureClass.Search((IQueryFilter)queryFlter, false);
+            List<IPrintPageInfo> pages = new List<IPrintPageInfo>();
+            IFeature pFeature = pCursor.NextFeature();
+            int i = 0;
+            while (pFeature != null)
+            {
+                IPrintPageInfo page = new PrintPageInfo();
+                page.Load(pFeature, _nameField);
+                page.PageID = i + 1;
+                pages.Add(page);
+                i++;
+            }
+
+            foreach (IPrintPageInfo page in pages)
+            {
+                page.TotalCount = i;
+            }
+            
+            ComReleaser.ReleaseCOMObject(pCursor);
+           
+            return pages;
+        }
+
+     
+        public List<IPrintPageInfo> QueryPageInfo(string searchKeys)
+        {
+            return QueryPageInfo(null, searchKeys);
+         
         }
     }
 }

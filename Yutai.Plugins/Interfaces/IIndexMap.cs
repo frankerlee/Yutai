@@ -1,4 +1,7 @@
-﻿using System.Xml;
+﻿using System.Collections.Generic;
+using System.Xml;
+using ESRI.ArcGIS.Geodatabase;
+using ESRI.ArcGIS.Geometry;
 
 namespace Yutai.Plugins.Interfaces
 {
@@ -12,5 +15,10 @@ namespace Yutai.Plugins.Interfaces
         string NameField { get; set; }
         void ReadFromXml(XmlNode xml);
         XmlNode SaveToXml(XmlDocument doc);
+
+        IFeatureCursor Search(string searchKey);
+        List<IPrintPageInfo> QueryPageInfo(IGeometry searchGeometry, string searchKeys);
+        List<IPrintPageInfo> QueryPageInfo(IGeometry searchGeometry);
+        List<IPrintPageInfo> QueryPageInfo(string searchKeys);
     }
 }

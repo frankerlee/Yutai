@@ -28,7 +28,7 @@ namespace Yutai.Plugins.Printing
             CompositionRoot.Compose(container);
             _printConfig = new PrintingConfig() as IPrintingConfig;
             FileInfo newFileInfo = new FileInfo(System.IO.Path.Combine(Application.StartupPath,
-                "plugins\\configs\\MapTemplate.mdb"));
+                "\\plugins\\configs\\MapTemplate.mdb"));
             _printConfig.TemplateConnectionString = newFileInfo.Exists ? newFileInfo.FullName : "";
         }
 

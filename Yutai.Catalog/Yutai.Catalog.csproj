@@ -85,6 +85,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CatalogPlugin.cs" />
+    <Compile Include="Commands\CmdConnection.cs" />
+    <Compile Include="Commands\CmdConnectionProperty.cs" />
+    <Compile Include="Commands\CmdCreateFeatureDataset.cs" />
+    <Compile Include="Commands\CmdCreateRasterDataset.cs" />
+    <Compile Include="Commands\CmdCreateRasterFolder.cs" />
+    <Compile Include="Commands\CmdCreateTable.cs" />
+    <Compile Include="Commands\CmdDisconnection.cs" />
+    <Compile Include="Commands\CmdEGDBStart.cs" />
+    <Compile Include="Commands\CmdImportTable.cs" />
+    <Compile Include="Commands\CmdImportTables.cs" />
     <Compile Include="Commands\CmdNewShapefile.cs" />
     <Compile Include="Commands\CmdCopyItem.cs" />
     <Compile Include="Commands\CmdCreateAttachments.cs" />
@@ -110,12 +120,14 @@
     <Compile Include="Commands\CmdNewFolder.cs" />
     <Compile Include="Commands\CmdNewPGDB.cs" />
     <Compile Include="Commands\CmdPasteItem.cs" />
+    <Compile Include="Commands\CmdRasterToGDB.cs" />
     <Compile Include="Commands\CmdRefreshItem.cs" />
     <Compile Include="Commands\CmdRegisterAsObjectClass.cs" />
     <Compile Include="Commands\CmdRegisterAsVersion.cs" />
     <Compile Include="Commands\CmdRenameItem.cs" />
     <Compile Include="Commands\CmdShowCatalogView.cs" />
     <Compile Include="Commands\CmdUnregisterVersion.cs" />
+    <Compile Include="Commands\CmdVersionInfo.cs" />
     <Compile Include="CompositionRoot.cs" />
     <Compile Include="Forms\frmEnableGeodatabase.cs">
       <SubType>Form</SubType>

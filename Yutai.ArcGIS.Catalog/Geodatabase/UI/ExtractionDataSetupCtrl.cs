@@ -36,7 +36,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             }
             if (!File.Exists(path))
             {
-                IWorkspaceFactory factory = new AccessWorkspaceFactoryClass();
+                IWorkspaceFactory factory = new AccessWorkspaceFactory();
                 try
                 {
                     IWorkspaceName name = factory.Create(Path.GetDirectoryName(path),

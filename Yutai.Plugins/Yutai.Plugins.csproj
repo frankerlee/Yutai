@@ -132,6 +132,7 @@
     <Compile Include="Interfaces\IPrintingConfig.cs" />
     <Compile Include="Interfaces\IOverviewControl.cs" />
     <Compile Include="Interfaces\IPopuMenu.cs" />
+    <Compile Include="Interfaces\IPrintPageInfo.cs" />
     <Compile Include="Interfaces\IShapeConstructorTool.cs" />
     <Compile Include="Interfaces\IAppContextEvents.cs" />
     <Compile Include="Events\AppContextEventCollection.cs" />

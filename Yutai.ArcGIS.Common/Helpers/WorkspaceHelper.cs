@@ -314,7 +314,7 @@ namespace Yutai.ArcGIS.Common.Helpers
 
         public static IFeatureWorkspace GetWorkspace(string fullName)
         {
-
+            if (string.IsNullOrEmpty(fullName)) return null;
             int mdbIndex = fullName.IndexOf(".mdb");
             string workspacePath;
             string fcPath;
@@ -334,6 +334,11 @@ namespace Yutai.ArcGIS.Common.Helpers
             }
 
             return pWorkspace;
+        }
+
+        public static IFeatureWorkspace GetWorkspace(IFeatureClass fullName)
+        {
+            return (IFeatureWorkspace) ((IDataset) fullName).Workspace;
         }
     }
 }

@@ -650,7 +650,7 @@ namespace Yutai.ArcGIS.Catalog.UI
                             {
                                 if (str3 == ".mdb")
                                 {
-                                    IWorkspaceFactory factory = new AccessWorkspaceFactoryClass();
+                                    IWorkspaceFactory factory = new AccessWorkspaceFactory();
                                     try
                                     {
                                         factory.Create(System.IO.Path.GetDirectoryName(path),

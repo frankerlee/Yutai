@@ -95,7 +95,7 @@ namespace Yutai.Plugins.Interfaces
         object GxCatalog { get; set; }
         object GxObject { get; set; }
         void RefreshContextMenu();
-
+        void RunConfigPage(string pageKey);
         void ClearCurrentTool();
     }
 

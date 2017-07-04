@@ -288,11 +288,6 @@
       <Name>Yutai.UI</Name>
       <Private>False</Private>
     </ProjectReference>
-    <ProjectReference Include="..\Yutai\Yutai.csproj">
-      <Project>{23F812D9-D4AA-44AA-A721-AD0948099A95}</Project>
-      <Name>Yutai</Name>
-      <Private>False</Private>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Controls\SnapConfigPage.resx">

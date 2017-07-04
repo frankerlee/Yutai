@@ -304,4 +304,52 @@
   <data name="icon_layout" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_layout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icon_fence_basket" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_fence_basket.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_fence_circle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_fence_circle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_fence_extent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_fence_extent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_fence_line" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_fence_line.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_fence_point" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_fence_point.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_fence_polygon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_fence_polygon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_fence_rectangle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_fence_rectangle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_line_buffer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_line_buffer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_page_first" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_page_first.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_page_next" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_page_next.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_page_print" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_page_print.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_page_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_page_delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_page_last" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_page_last.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_page_prev" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_page_prev.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_page_print2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_page_print2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_page_zoom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_page_zoom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

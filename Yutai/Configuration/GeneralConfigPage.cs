@@ -1,18 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Services;
-using Yutai.Properties;
 using Yutai.UI.Controls;
-using Yutai.Views;
+using Yutai.UI.Properties;
 
 namespace Yutai.Configuration
 {
@@ -79,7 +71,7 @@ namespace Yutai.Configuration
 
         public Bitmap Icon
         {
-            get { return Resources.img_component32; }
+            get { return Resources.bmpTable; }
         }
 
         public ConfigPageType PageType

@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
+using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
 using Yutai.ArcGIS.Carto.MapCartoTemplateLib;
 
@@ -13,12 +14,18 @@ namespace Yutai.ArcGIS.Carto.Library
         private bool bool_0 = false;
 
         private IContainer icontainer_0 = null;
-        private MapTemplateApplyHelp mapTemplateApplyHelp_0 = null;
-        private MapTemplateGallery mapTemplateGallery_0 = new MapTemplateGallery();
+        private MapTemplateApplyHelp mapTemplateApplyHelp = null;
+        private MapTemplateGallery mapTemplateGallery=null;
 
         public MapTemplateList()
         {
             this.InitializeComponent();
+        }
+
+        public MapTemplateList(MapTemplateGallery tempGallery)
+        {
+            this.InitializeComponent();
+            mapTemplateGallery = tempGallery;
         }
 
         public bool Apply()
@@ -28,7 +35,7 @@ namespace Yutai.ArcGIS.Carto.Library
                 MessageBox.Show("请选择模版!");
                 return false;
             }
-            this.mapTemplateApplyHelp_0.CartoTemplateData = this.listBox1.SelectedItem as MapTemplate;
+            this.mapTemplateApplyHelp.CartoTemplateData = this.listBox1.SelectedItem as MapTemplate;
             return true;
         }
 
@@ -74,8 +81,12 @@ namespace Yutai.ArcGIS.Carto.Library
 
         private void MapTemplateList_Load(object sender, EventArgs e)
         {
-            this.mapTemplateGallery_0.Init();
-            foreach (MapTemplateClass class2 in this.mapTemplateGallery_0.MapTemplateClass)
+            if (mapTemplateGallery == null)
+            {
+                mapTemplateGallery=new MapTemplateGallery();
+                this.mapTemplateGallery.Init();
+            }
+            foreach (MapTemplateClass class2 in this.mapTemplateGallery.MapTemplateClass)
             {
                 class2.Load();
                 foreach (MapTemplate template in class2.MapTemplate)
@@ -88,16 +99,16 @@ namespace Yutai.ArcGIS.Carto.Library
                             this.listBox1.Items.Add(template);
                         }
                     }
-                    else if (this.mapTemplateApplyHelp_0.FixDataRange)
+                    else if (this.mapTemplateApplyHelp.FixDataRange)
                     {
                         if (template.MapFramingType == MapFramingType.AnyFraming)
                         {
                             this.listBox1.Items.Add(template);
                         }
                     }
-                    else if (!string.IsNullOrEmpty(this.mapTemplateApplyHelp_0.MapNo))
+                    else if (!string.IsNullOrEmpty(this.mapTemplateApplyHelp.MapNo))
                     {
-                        int scale = this.GetScale(this.mapTemplateApplyHelp_0.MapNo);
+                        int scale = this.GetScale(this.mapTemplateApplyHelp.MapNo);
                         if (((scale != 0) && (template.MapFramingType == MapFramingType.StandardFraming)) &&
                             ((template.MapFrameType == MapFrameType.MFTTrapezoid) && (scale == template.Scale)))
                         {
@@ -117,8 +128,8 @@ namespace Yutai.ArcGIS.Carto.Library
 
         public MapTemplateApplyHelp MapTemplateHelp
         {
-            get { return this.mapTemplateApplyHelp_0; }
-            set { this.mapTemplateApplyHelp_0 = value; }
+            get { return this.mapTemplateApplyHelp; }
+            set { this.mapTemplateApplyHelp = value; }
         }
 
         public MapTemplate SelectCartoTemplateData
@@ -128,7 +139,7 @@ namespace Yutai.ArcGIS.Carto.Library
 
         public IWorkspace Workspace
         {
-            set { this.mapTemplateGallery_0.Workspace = value; }
+            set { this.mapTemplateGallery.Workspace = value; }
         }
     }
 }

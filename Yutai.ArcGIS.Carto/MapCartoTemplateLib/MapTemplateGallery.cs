@@ -162,7 +162,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 {
                     str = Path.Combine(Application.StartupPath, str);
                 }
-                factory = new AccessWorkspaceFactory();
+                factory = new AccessWorkspaceFactoryClass();
                 this.Workspace = factory.OpenFromFile(str, 0);
             }
             else if (dbclient == "gdb")
@@ -171,7 +171,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 {
                     str = Path.Combine(Application.StartupPath, str);
                 }
-                factory = new FileGDBWorkspaceFactory();
+                factory = new FileGDBWorkspaceFactoryClass();
                 this.Workspace = factory.OpenFromFile(str, 0);
             }
             else if (dbclient == "sde")
@@ -185,7 +185,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
             else
             {
-                IWorkspaceFactory factory2 = new SdeWorkspaceFactory();
+                IWorkspaceFactory factory2 = new SdeWorkspaceFactoryClass();
                 try
                 {
                     IPropertySet connectionProperties = this.CreateConnectionProperty();

@@ -11,6 +11,7 @@
     <AssemblyName>Yutai.Printing</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +22,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,12 +31,16 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Data.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
     <Reference Include="ESRI.ArcGIS.ADF, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86" />
     <Reference Include="ESRI.ArcGIS.AxControls, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
     <Reference Include="ESRI.ArcGIS.Carto, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
@@ -176,6 +182,8 @@
     </Compile>
     <Compile Include="IndexMap.cs" />
     <Compile Include="Menu\MapTemplateViewService.cs" />
+    <Compile Include="PrintingConfig.cs" />
+    <Compile Include="PrintPageInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -186,6 +194,15 @@
     <Compile Include="Menu\YutaiCommands.cs" />
     <Compile Include="PrintingPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\AutoLayoutHelper.cs" />
+    <Compile Include="Views\AutoLayoutType.cs" />
+    <Compile Include="Views\AutoLayoutView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\AutoLayoutView.Designer.cs">
+      <DependentUpon>AutoLayoutView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IAutoLayoutView.cs" />
     <Compile Include="Views\IMapTemplateView.cs" />
     <Compile Include="Views\MapTemplateView.cs">
       <SubType>UserControl</SubType>
@@ -235,10 +252,6 @@
       <Name>Yutai.UI</Name>
       <Private>False</Private>
     </ProjectReference>
-    <ProjectReference Include="..\Yutai\Yutai.csproj">
-      <Project>{23F812D9-D4AA-44AA-A721-AD0948099A95}</Project>
-      <Name>Yutai</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\frmAddParams.resx">
@@ -267,6 +280,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu\MenuLayout.xml" />
+    <EmbeddedResource Include="Views\AutoLayoutView.resx">
+      <DependentUpon>AutoLayoutView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\MapTemplateView.resx">
       <DependentUpon>MapTemplateView.cs</DependentUpon>
     </EmbeddedResource>
@@ -324,6 +340,23 @@
     <None Include="Resources\icon_map_marker.png" />
     <None Include="Resources\icon_map_number.png" />
     <None Include="Resources\icon_layout.png" />
+    <None Include="Resources\icon_fence_basket.png" />
+    <None Include="Resources\icon_fence_circle.png" />
+    <None Include="Resources\icon_fence_extent.png" />
+    <None Include="Resources\icon_fence_line.png" />
+    <None Include="Resources\icon_fence_point.png" />
+    <None Include="Resources\icon_fence_polygon.png" />
+    <None Include="Resources\icon_fence_rectangle.png" />
+    <None Include="Resources\icon_line_buffer.png" />
+    <None Include="Resources\icon_page_next1.png" />
+    <None Include="Resources\icon_page_delete.png" />
+    <None Include="Resources\icon_page_first.png" />
+    <None Include="Resources\icon_page_last.png" />
+    <None Include="Resources\icon_page_next.png" />
+    <None Include="Resources\icon_page_prev.png" />
+    <None Include="Resources\icon_page_print.png" />
+    <None Include="Resources\icon_page_print2.png" />
+    <None Include="Resources\icon_page_zoom.png" />
     <Content Include="Resources\PageFixZoomIn.bmp" />
     <Content Include="Resources\PageFixZoomOut.bmp" />
     <Content Include="Resources\PageHand.bmp" />

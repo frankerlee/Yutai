@@ -476,7 +476,10 @@ namespace Yutai.Plugins.Printing.Views
             TreeNode treeNode = new TreeNode("地图模板");
             if (!string.IsNullOrEmpty(fileName))
             {
+                if(!fileName.Contains("dbclient="))
                 this.m_MapTemplateGallery.SetWorkspace(BuildConnectionString(fileName));
+                else
+                    this.m_MapTemplateGallery.SetWorkspace(fileName);
                 foreach (MapTemplateClass mapTemplateClass in this.m_MapTemplateGallery.MapTemplateClass)
                 {
                     TreeNode treeNode1 = new TreeNode(mapTemplateClass.Name)
@@ -1047,6 +1050,7 @@ namespace Yutai.Plugins.Printing.Views
                         if (this.m_pLastSelect != null)
                         {
                             this.DeleteAllElements(this._layoutControl.ActiveView);
+                            ((IActiveView)this._layoutControl.ActiveView.FocusMap).Refresh();
                             this._layoutControl.ActiveView.Refresh();
                         }
                         if (e.Node.Nodes.Count == 1)
@@ -1072,6 +1076,7 @@ namespace Yutai.Plugins.Printing.Views
                             this.m_pLastMapTemplate = e.Node.Tag as MapTemplate;
                             this.m_pLastMapTemplate.CreateDesignTK(this._layoutControl.ActiveView);
                             (this._layoutControl.ActiveView as IGraphicsContainerSelect).UnselectAllElements();
+                            ((IActiveView)this._layoutControl.ActiveView.FocusMap).Refresh();
                             this._layoutControl.ActiveView.Refresh();
                             this.m_pLastSelect = this.treeView1.SelectedNode;
                         }
@@ -1089,6 +1094,7 @@ namespace Yutai.Plugins.Printing.Views
                             this.m_pLastMapTemplate = tag;
                             this.m_pLastMapTemplate.CreateDesignTK(this._layoutControl.ActiveView);
                             (this._layoutControl.ActiveView as IGraphicsContainerSelect).UnselectAllElements();
+                            ((IActiveView)this._layoutControl.ActiveView.FocusMap).Refresh();
                             this._layoutControl.ActiveView.Refresh();
                         }
                         this.m_pLastSelect = this.treeView1.SelectedNode.Parent.Parent;
@@ -1099,6 +1105,7 @@ namespace Yutai.Plugins.Printing.Views
                             this._layoutControl.ActiveView.Selection = elementSelection;
                             graphicsContainer.UnselectAllElements();
                             graphicsContainer.SelectElement((this.treeView1.SelectedNode.Tag as MapTemplateElement).Element);
+                            ((IActiveView)this._layoutControl.ActiveView.FocusMap).Refresh();
                             this._layoutControl.ActiveView.Refresh();
                         }
                         MapTemplate.CurrentMapTemplate = this.m_pLastMapTemplate;
@@ -1109,6 +1116,7 @@ namespace Yutai.Plugins.Printing.Views
                         {
                             this.DeleteAllElements(this._layoutControl.ActiveView);
                         }
+                        ((IActiveView)this._layoutControl.ActiveView.FocusMap).Refresh();
                         this._layoutControl.ActiveView.Refresh();
                         this.m_pLastSelect = null;
                         this._layoutControl = null;
@@ -1131,6 +1139,7 @@ namespace Yutai.Plugins.Printing.Views
                             if (this.m_pLastMapTemplate == tag)
                             {
                                 (this._layoutControl.ActiveView as IGraphicsContainerSelect).UnselectAllElements();
+                                ((IActiveView)this._layoutControl.ActiveView.FocusMap).Refresh();
                                 this._layoutControl.ActiveView.Refresh();
                             }
                             else
@@ -1142,6 +1151,7 @@ namespace Yutai.Plugins.Printing.Views
                                 this.m_pLastMapTemplate = tag;
                                 this.m_pLastMapTemplate.CreateDesignTK(this._layoutControl.ActiveView);
                                 (this._layoutControl.ActiveView as IGraphicsContainerSelect).UnselectAllElements();
+                                ((IActiveView)this._layoutControl.ActiveView.FocusMap).Refresh();
                                 this._layoutControl.ActiveView.Refresh();
                                 this.m_pLastSelect = this.treeView1.SelectedNode.Parent;
                             }

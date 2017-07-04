@@ -47,7 +47,8 @@ namespace Yutai.Plugins.Printing.Forms
 
         public void Save()
         {
-          
+            _plugin.PrintingConfig.TemplateConnectionString = txtDB.Text;
+          _plugin.PrintingConfig.Save();
         }
 
         public string Key

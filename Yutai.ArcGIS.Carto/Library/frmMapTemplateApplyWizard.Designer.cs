@@ -13,9 +13,9 @@ namespace Yutai.ArcGIS.Carto.Library
     {
         protected override void Dispose(bool bool_3)
         {
-            if (bool_3 && (this.icontainer_0 != null))
+            if (bool_3 && (this.icontainer != null))
             {
-                this.icontainer_0.Dispose();
+                this.icontainer.Dispose();
             }
             base.Dispose(bool_3);
         }

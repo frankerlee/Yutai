@@ -1,4 +1,5 @@
-﻿using ESRI.ArcGIS.Geodatabase;
+﻿using System;
+using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 
 namespace Yutai.ArcGIS.Common.Helpers
@@ -195,6 +196,25 @@ namespace Yutai.ArcGIS.Common.Helpers
             return pField;
         }
 
+        public static esriFieldType ConvertFromSimpleString(string typeString)
+        {
+            try
+            {
+                typeString = typeString.StartsWith("esriField") ? typeString : "esriField" + typeString;
+                return (esriFieldType)Enum.Parse(typeof(esriFieldType), typeString);
+            }
+            catch (Exception)
+            {
+                return esriFieldType.esriFieldTypeString;
+                throw;
+            }
+        }
+
+        public static string ConvertToSimpleString(esriFieldType fieldType)
+        {
+            string typeString = fieldType.ToString().Substring(9);
+            return typeString;
+        }
         public static esriFieldType ConvertFromString(string fieldTypeStr)
         {
             switch (fieldTypeStr)

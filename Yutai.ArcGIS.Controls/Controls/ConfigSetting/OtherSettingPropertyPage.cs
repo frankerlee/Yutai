@@ -66,7 +66,7 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
             {
                 try
                 {
-                    factory = new AccessWorkspaceFactoryClass();
+                    factory = new AccessWorkspaceFactory();
                     AppConfig.m_pWorkspace = factory.OpenFromFile(AppConfig.layerconfigdb, 0);
                 }
                 catch (Exception exception2)
@@ -341,7 +341,7 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
             {
                 try
                 {
-                    factory = new AccessWorkspaceFactoryClass();
+                    factory = new AccessWorkspaceFactory();
                     AppConfig.m_pWorkspace = factory.OpenFromFile(AppConfig.layerconfigdb, 0);
                 }
                 catch (Exception exception2)

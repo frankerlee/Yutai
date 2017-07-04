@@ -439,6 +439,7 @@
       <DependentUpon>frmPyramidSet.cs</DependentUpon>
     </Compile>
     <Compile Include="GDBDeletChildVersionCreate.cs" />
+    <Compile Include="Helpers\IndexHelper.cs" />
     <Compile Include="IApplication.cs" />
     <Compile Include="IApplicationEvents.cs" />
     <Compile Include="IFeatureSnapAgent.cs" />

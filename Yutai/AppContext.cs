@@ -32,6 +32,7 @@ using Yutai.UI.Forms;
 using Yutai.UI.Menu;
 using Yutai.UI.Menu.Ribbon;
 using Yutai.UI.Style;
+using Yutai.Views;
 using AfterDraw = Yutai.Plugins.Interfaces.AfterDraw;
 
 namespace Yutai
@@ -363,6 +364,14 @@ namespace Yutai
         public void RefreshContextMenu()
         {
             RibbonMenu.RefreshContextMenu();
+        }
+
+        public void RunConfigPage(string pageKey)
+        {
+            Config.LoadAllConfigPages = false;
+            Config.CustomConfigPages = pageKey;
+            var model = Container.GetInstance<ConfigViewModel>();
+            Container.Run<ConfigPresenter, ConfigViewModel>(model);
         }
 
         public void ClearCurrentTool()

@@ -401,5 +401,26 @@ namespace Yutai.ArcGIS.Common.Helpers
                 }
             }
         }
+
+        public static string ConvertTypeToSimpleString(esriFeatureType featureType)
+        {
+            string simpleString = featureType.ToString().Substring(11);
+            return simpleString;
+
+        }
+
+        public static esriFeatureType ConvertStringToFeatureType(string typeString)
+        {
+            try
+            {
+                typeString = typeString.StartsWith("esriFeature") ? typeString : "esriFeature" + typeString;
+                return (esriFeatureType) Enum.Parse(typeof(esriFeatureType), typeString);
+            }
+            catch (Exception)
+            {
+                return esriFeatureType.esriFTSimple;
+                throw;
+            }
+        }
     }
 }

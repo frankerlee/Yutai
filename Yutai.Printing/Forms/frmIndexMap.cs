@@ -9,11 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
+using ESRI.ArcGIS.Geometry;
 using Yutai.ArcGIS.Carto.MapCartoTemplateLib;
 using Yutai.ArcGIS.Catalog;
 using Yutai.ArcGIS.Catalog.UI;
 using Yutai.ArcGIS.Common.Helpers;
 using Yutai.Plugins.Interfaces;
+using Yutai.Plugins.Services;
 using WorkspaceHelper = Yutai.ArcGIS.Common.Helpers.WorkspaceHelper;
 
 namespace Yutai.Plugins.Printing.Forms
@@ -119,6 +121,11 @@ namespace Yutai.Plugins.Printing.Forms
             IFeatureClassName pClassName = gxObject.InternalObjectName as IFeatureClassName;
             //IWorkspace pWorkspace=((IName) pClassName.FeatureDatasetName.WorkspaceName).Open();
             IFeatureClass pClass = ((IName) pClassName).Open();
+            if (pClass.ShapeType != esriGeometryType.esriGeometryPolygon)
+            {
+                MessageService.Current.Warn("索引图层只能是多边形图层，请重新选择!");
+                return;
+            }
             txtLayer.Text = ((IDataset) pClass).Name;
             txtLayer.Tag = ((IDataset) pClass).Workspace.ConnectionProperties;
             LoadField(pClass);

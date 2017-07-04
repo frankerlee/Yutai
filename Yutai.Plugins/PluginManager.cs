@@ -182,12 +182,13 @@ namespace Yutai.Plugins
             }
 
             var plugin = _plugins.FirstOrDefault(p => p.Identity.Guid == pluginGuid);
-            context.ShowSplashMessage("正在引导:" + plugin.Identity.Name);
+           
             if (plugin == null)
             {
-                throw new ApplicationException("Plugin which requested for loading isn't present in the list.");
+               MessageService.Current.Warn("系统没能找到准备加载的插件"+pluginGuid.ToString());
+                return;
             }
-
+            context.ShowSplashMessage("正在引导:" + plugin.Identity.Name);
             try
             {
                 plugin.DoRegisterServices(context.Container);

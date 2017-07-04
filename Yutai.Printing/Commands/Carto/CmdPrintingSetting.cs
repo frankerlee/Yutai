@@ -2,7 +2,7 @@
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
-using Yutai.Views;
+
 
 namespace Yutai.Plugins.Printing.Commands.Carto
 {
@@ -42,10 +42,10 @@ namespace Yutai.Plugins.Printing.Commands.Carto
 
         public void OnClick()
         {
-            _context.Config.LoadAllConfigPages = false;
-            _context.Config.CustomConfigPages = "Printing";
-            var model = _context.Container.GetInstance<ConfigViewModel>();
-            _context.Container.Run<ConfigPresenter, ConfigViewModel>(model);
+            _context.RunConfigPage("Printing");
+            //_context.Config.CustomConfigPages = "Printing";
+            //var model = _context.Container.GetInstance<ConfigViewModel>();
+            //_context.Container.Run<ConfigPresenter, ConfigViewModel>(model);
         }
     }
 }

@@ -1,0 +1,13 @@
+﻿<YutaiGIS>
+  <MainMenu>
+    <Pages>
+  
+      <Page Key="Template" Caption="模板" Index="0" Visible="true">
+        <PageGroup Key="Template_Common" Caption="常用" Visible="true" Index="0">
+          <BarItem Key="Template_CreateFeatureClass" Visible="true"></BarItem>
+        </PageGroup>
+      </Page>
+  
+    </Pages>
+  </MainMenu>
+</YutaiGIS>

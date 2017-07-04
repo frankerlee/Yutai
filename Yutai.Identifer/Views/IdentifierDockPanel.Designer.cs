@@ -34,12 +34,12 @@ namespace Yutai.Plugins.Identifer.Views
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this._cboIdentifierMode = new System.Windows.Forms.ComboBox();
-            this.btnClear = new DevExpress.XtraEditors.SimpleButton();
-            this.btnZoom = new DevExpress.XtraEditors.CheckButton();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.trvFeatures = new System.Windows.Forms.TreeView();
             this.txtCoords = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.lstAttribute = new System.Windows.Forms.ListView();
+            this.btnClear = new DevExpress.XtraEditors.SimpleButton();
+            this.btnZoom = new DevExpress.XtraEditors.CheckButton();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
@@ -84,22 +84,6 @@ namespace Yutai.Plugins.Identifer.Views
             this._cboIdentifierMode.Name = "_cboIdentifierMode";
             this._cboIdentifierMode.Size = new System.Drawing.Size(132, 20);
             this._cboIdentifierMode.TabIndex = 1;
-            // 
-            // btnClear
-            // 
-            this.btnClear.Image = global::Yutai.Plugins.Identifer.Properties.Resources.img_clear24;
-            this.btnClear.Location = new System.Drawing.Point(231, 3);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(34, 30);
-            this.btnClear.TabIndex = 3;
-            // 
-            // btnZoom
-            // 
-            this.btnZoom.Image = global::Yutai.Plugins.Identifer.Properties.Resources.ZoomSelection;
-            this.btnZoom.Location = new System.Drawing.Point(191, 3);
-            this.btnZoom.Name = "btnZoom";
-            this.btnZoom.Size = new System.Drawing.Size(34, 30);
-            this.btnZoom.TabIndex = 4;
             // 
             // splitContainerControl1
             // 
@@ -147,6 +131,22 @@ namespace Yutai.Plugins.Identifer.Views
             this.lstAttribute.TabIndex = 0;
             this.lstAttribute.UseCompatibleStateImageBehavior = false;
             this.lstAttribute.View = System.Windows.Forms.View.Details;
+            // 
+            // btnClear
+            // 
+            this.btnClear.Image = global::Yutai.Plugins.Identifer.Properties.Resources.img_clear24;
+            this.btnClear.Location = new System.Drawing.Point(231, 3);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(34, 30);
+            this.btnClear.TabIndex = 3;
+            // 
+            // btnZoom
+            // 
+            this.btnZoom.Image = global::Yutai.Plugins.Identifer.Properties.Resources.ZoomSelection;
+            this.btnZoom.Location = new System.Drawing.Point(191, 3);
+            this.btnZoom.Name = "btnZoom";
+            this.btnZoom.Size = new System.Drawing.Size(34, 30);
+            this.btnZoom.TabIndex = 4;
             // 
             // IdentifierDockPanel
             // 

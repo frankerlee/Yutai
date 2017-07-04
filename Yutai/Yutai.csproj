@@ -274,7 +274,9 @@
       <DependentUpon>NewMainView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="demo\demo2.yxd" />
-    <None Include="demo\demo.yxd" />
+    <None Include="demo\demo.yxd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -600,14 +602,10 @@
     <None Include="Resources\ico_zoom_to_layer.ico" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resource\Cursor\MoveZoomIn.cur">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Resource\Cursor\MoveZoomIn.cur" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resource\Cursor\ZoomIn.cur">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Resource\Cursor\ZoomIn.cur" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resource\Cursor\MoveZoomOut.cur" />
@@ -627,28 +625,31 @@
     <None Include="Resources\add_data.png" />
     <EmbeddedResource Include="Menu\MenuLayout.xml" />
     <None Include="Resources\icon_attribute_table.png" />
-    <None Include="plugins\menus\LocatorMenu.xml">
+    <None Include="Plugins\menus\LocatorMenu.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="plugins\menus\EditorMenu.xml">
+    <None Include="Plugins\menus\EditorMenu.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="plugins\menus\CatalogMenu.xml">
+    <None Include="Plugins\menus\CatalogMenu.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="plugins\configs\Locators.xml">
+    <None Include="Plugins\configs\Locators.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <Content Include="plugins\configs\maptemplate.mdb">
+    <Content Include="Plugins\configs\maptemplate.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="plugins\configs\pipeline.xml">
+    <Content Include="Plugins\configs\pipeline.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="plugins\configs\pipelineSet.mdb">
+    <Content Include="Plugins\configs\pipelineSet.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="plugins\configs\Printing.xml" />
+    <Content Include="Plugins\configs\Printing.xml" />
+    <Content Include="Plugins\configs\YutaiTemplate.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\icon_maplegend.png" />
     <Content Include="Resources\icon_overview.png" />
     <Content Include="Resources\icon_zoom_in_fixed.bmp" />

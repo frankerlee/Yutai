@@ -7,6 +7,7 @@ using Yutai.Configuration;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Services;
+using Yutai.Configuration;
 
 namespace Yutai.Views
 {

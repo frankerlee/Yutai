@@ -19,6 +19,7 @@ namespace Yutai.Plugins.Printing.Commands.Carto
 {
     public sealed class CmdApplyTFMapTemplateByDataRange : YutaiCommand
     {
+        private PrintingPlugin _plugin;
         public override bool Enabled
         {
             get
@@ -45,9 +46,10 @@ namespace Yutai.Plugins.Printing.Commands.Carto
             _context = hook as IAppContext;
         }
 
-        public CmdApplyTFMapTemplateByDataRange(IAppContext context)
+        public CmdApplyTFMapTemplateByDataRange(IAppContext context,PrintingPlugin plugin)
         {
             OnCreate(context);
+            _plugin = plugin;
         }
 
         public override void OnClick(object sender, EventArgs args)
@@ -97,7 +99,7 @@ namespace Yutai.Plugins.Printing.Commands.Carto
             }
             else
             {
-                frmMapTemplateApplyWizard frmMapTemplateApplyWizard = new frmMapTemplateApplyWizard();
+                frmMapTemplateApplyWizard frmMapTemplateApplyWizard = new frmMapTemplateApplyWizard(_plugin.TemplateGallery);
                 frmMapTemplateApplyWizard.FixDataRange = true;
                 if (frmMapTemplateApplyWizard.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {

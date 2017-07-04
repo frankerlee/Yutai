@@ -89,7 +89,7 @@ namespace Yutai.ArcGIS.Controls.NetworkLib
         {
             this.CloseWorkspace();
             IFeatureDataset featureDataset =
-                ((IFeatureWorkspace) new AccessWorkspaceFactoryClass().OpenFromFile(AccessFileName, 0))
+                ((IFeatureWorkspace) new AccessWorkspaceFactory().OpenFromFile(AccessFileName, 0))
                     .OpenFeatureDataset(FeatureDatasetName);
             if (!this.InitializeNetworkAndMap(featureDataset))
             {
