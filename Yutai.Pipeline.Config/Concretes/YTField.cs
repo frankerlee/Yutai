@@ -132,22 +132,15 @@ namespace Yutai.Pipeline.Config.Concretes
             {
                 _typeName = xml.Attributes["TypeName"].Value;
                 _name = xml.Attributes["Name"].Value;
-                _aliasName = xml.Attributes["AliasName"].Value;
-                _autoNames = xml.Attributes["AutoNames"].Value;
-                _length = string.IsNullOrWhiteSpace(xml.Attributes["Length"].Value)
-                    ? 50
-                    : Convert.ToInt32(xml.Attributes["Length"].Value);
-                _allowNull = string.IsNullOrWhiteSpace(xml.Attributes["AllowNull"].Value) ||
-                             (xml.Attributes["AllowNull"].Value.ToUpper().StartsWith("T"));
+                _aliasName = xml.Attributes["AliasName"]?.Value;
+                _autoNames = xml.Attributes["AutoNames"]?.Value;
+                _length = string.IsNullOrWhiteSpace(xml.Attributes["Length"].Value) ? 50 : Convert.ToInt32(xml.Attributes["Length"].Value);
+                _allowNull = string.IsNullOrWhiteSpace(xml.Attributes["AllowNull"].Value) || xml.Attributes["AllowNull"].Value.ToUpper().StartsWith("T");
                 _fieldTypeStr = xml.Attributes["FieldType"].Value;
-                _precision = string.IsNullOrWhiteSpace(xml.Attributes["Precision"].Value)
-                    ? 50
-                    : Convert.ToInt32(xml.Attributes["Precision"].Value);
+                _precision = string.IsNullOrWhiteSpace(xml.Attributes["Precision"].Value) ? 50 : Convert.ToInt32(xml.Attributes["Precision"].Value);
                 _fieldType = FieldHelper.ConvertFromString(_fieldTypeStr);
                 _domainValues = xml.Attributes["DomainValues"] == null ? "" : xml.Attributes["DomainValues"].Value;
-                _visible = xml.Attributes["Visible"] == null ||
-                           (string.IsNullOrWhiteSpace(xml.Attributes["Visible"].Value) ||
-                            (xml.Attributes["Visible"].Value.ToUpper().StartsWith("T")));
+                _visible = string.IsNullOrWhiteSpace(xml.Attributes["Visible"]?.Value) || xml.Attributes["Visible"].Value.ToUpper().StartsWith("T");
             }
         }
 

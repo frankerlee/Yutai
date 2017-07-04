@@ -2,15 +2,18 @@
   <MainMenu>
     <Pages>
       <Page Key="PipelineEditor" Caption="管线编辑" Index="0" Visible="true">
-        <PageGroup Key="Pipeline_Editor_Common" Caption="常用" Visible="true" Index="1">
+        <PageGroup Key="Pipeline_Editor_DataManager" Caption="数据管理" Visible="true" Index="1">
+          <BarItem Key="PipelineEditor_CreateDatabase" Visible="true"/>
+          <BarItem Key="PipelineEditor_CreatePipeLayer" Visible="true"/>
+          <BarItem Key="PipelineEditor_CreateFunctionLayer" Visible="true"/>
+        </PageGroup>
+        <PageGroup Key="Pipeline_Editor_Profession" Caption="专业编辑工具" Visible="true" Index="2">
           <BarItem Key="PipelineEditor_PointLineLinkage" Visible="true"/>
           <BarItem Key="PipelineEditor_MoveTurningPoint" Visible="true"/>
           <BarItem Key="PipelineEditor_DeletePipePoint" Visible="true"/>
           <BarItem Key="PipelineEditor_CalculateDepth" Visible="true"/>
           <BarItem Key="PipelineEditor_AngleConvert" Visible="true"/>
-          <BarItem Key="PipelineEditor_AngleForFPCQQX" Visible="true"/>
-          <BarItem Key="PipelineEditor_AngleForYSBZ" Visible="true"/>
-          <BarItem Key="PipelineEditor_AnnotationSorting" Visible="true"/>
+          <BarItem Key="PipelineEditor_AutoAngle" Visible="true"/>
           <BarItem Key="PipelineEditor_AutoGenerateNumbers" Visible="true"/>
           <BarItem Key="PipelineEditor_CenterPoint" Visible="true"/>
           <BarItem Key="PipelineEditor_CopyAttributes" Visible="true"/>
@@ -20,6 +23,31 @@
           <BarItem Key="PipelineEditor_PointLineToRightAngle" Visible="true"/>
           <BarItem Key="PipelineEditor_ModifyFlow" Visible="true"/>
           <BarItem Key="PipelineEditor_PartialDistance" Visible="true"/>
+        </PageGroup>
+        <PageGroup Key="Pipeline_Editor_Mark" Caption="管线注记" Visible="true" Index="3">
+          <BarItem Key="PipelineEditor_BiaoZhu" Visible="true"/>
+          <BarItem Key="PipelineEditor_CheQiSheZhi" Visible="true"/>
+          <BarItem Key="PipelineEditor_CheQi" Visible="true"/>
+          <BarItem Key="PipelineEditor_DuoYaoSuCheQi" Visible="true"/>
+          <BarItem Key="PipelineEditor_ShanChuCheQi" Visible="true"/>
+          <BarItem Key="PipelineEditor_CheQiLianDong" Visible="true"/>
+          <BarItem Key="PipelineEditor_AnnotationSorting" Visible="true"/>
+        </PageGroup>
+        <PageGroup Key="Pipeline_Editor_Verify" Caption="质量检查" Visible="true" Index="4">
+          <BarItem Key="PipelineEditor_VerifySetting" Visible="true"/>
+        </PageGroup>
+        <PageGroup Key="Pipeline_Editor_Exchange" Caption="数据交换" Visible="true" Index="5">
+          <BarItem Key="PipelineEditor_Conversion" Visible="true"/>
+          <BarItem Key="PipelineEditor_Cut" Visible="true"/>
+          <BarItem Key="PipelineEditor_DataStorage" Visible="true"/>
+          <BarItem Key="PipelineEditor_DataExport" Visible="true"/>
+          <BarItem Key="PipelineEditor_ImportAxfData" Visible="true"/>
+          <BarItem Key="PipelineEditor_ImportSurveyData" Visible="true"/>
+          <BarItem Key="PipelineEditor_ImportExcelData" Visible="true"/>
+        </PageGroup>
+        <PageGroup Key="Pipeline_Editor_History" Caption="历史管理" Visible="true" Index="6">
+          <BarItem Key="PipelineEditor_VersionManagement" Visible="true"/>
+          <BarItem Key="PipelineEditor_VersionQuery" Visible="true"/>
         </PageGroup>
       </Page>
     </Pages>

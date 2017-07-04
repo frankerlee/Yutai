@@ -8,14 +8,14 @@ using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
 
-namespace Yutai.Pipeline.Editor.Commands
+namespace Yutai.Pipeline.Editor.Commands.Exchange
 {
-    class CmdCenterPoint : YutaiTool
+    class CmdImportAxfData : YutaiTool
     {
         private PipelineEditorPlugin _plugin;
         private IPipelineConfig _config;
 
-        public CmdCenterPoint(IAppContext context, PipelineEditorPlugin plugin)
+        public CmdImportAxfData(IAppContext context, PipelineEditorPlugin plugin)
         {
             OnCreate(context);
             _plugin = plugin;
@@ -29,14 +29,14 @@ namespace Yutai.Pipeline.Editor.Commands
         public sealed override void OnCreate(object hook)
         {
             _context = hook as IAppContext;
-            base.m_caption = "生成中点坐标";
+            base.m_caption = "导入Axf数据";
             base.m_category = "PipelineEditor";
             //base.m_bitmap = Properties.Resources.icon_valve;
-            base.m_name = "PipelineEditor_CenterPoint";
-            base._key = "PipelineEditor_CenterPoint";
-            base.m_toolTip = "生成中点坐标";
+            base.m_name = "PipelineEditor_ImportAxfData";
+            base._key = "PipelineEditor_ImportAxfData";
+            base.m_toolTip = "";
             base.m_checked = false;
-            base.m_message = "生成中点坐标";
+            base.m_message = "";
             base.m_enabled = true;
             base._itemType = RibbonItemType.Tool;
         }

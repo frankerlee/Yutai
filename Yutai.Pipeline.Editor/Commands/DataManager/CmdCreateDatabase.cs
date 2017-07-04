@@ -8,14 +8,14 @@ using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
 
-namespace Yutai.Pipeline.Editor.Commands
+namespace Yutai.Pipeline.Editor.Commands.DataManager
 {
-    class CmdAngleConvert : YutaiTool
+    class CmdCreateDatabase : YutaiTool
     {
         private PipelineEditorPlugin _plugin;
         private IPipelineConfig _config;
 
-        public CmdAngleConvert(IAppContext context, PipelineEditorPlugin plugin)
+        public CmdCreateDatabase(IAppContext context, PipelineEditorPlugin plugin)
         {
             OnCreate(context);
             _plugin = plugin;
@@ -29,14 +29,14 @@ namespace Yutai.Pipeline.Editor.Commands
         public sealed override void OnCreate(object hook)
         {
             _context = hook as IAppContext;
-            base.m_caption = "角度/弧度互转";
+            base.m_caption = "新建数据库";
             base.m_category = "PipelineEditor";
             //base.m_bitmap = Properties.Resources.icon_valve;
-            base.m_name = "PipelineEditor_AngleConvert";
-            base._key = "PipelineEditor_AngleConvert";
-            base.m_toolTip = "角度/弧度互转";
+            base.m_name = "PipelineEditor_CreateDatabase";
+            base._key = "PipelineEditor_CreateDatabase";
+            base.m_toolTip = "";
             base.m_checked = false;
-            base.m_message = "角度/弧度互转";
+            base.m_message = "";
             base.m_enabled = true;
             base._itemType = RibbonItemType.Tool;
         }

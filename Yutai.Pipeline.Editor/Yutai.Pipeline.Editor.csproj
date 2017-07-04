@@ -47,12 +47,25 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>D:\Program Files (x86)\DevExpress 16.1.4\Components\Bin\Framework\DevExpress.XtraGrid.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="ESRI.ArcGIS.SystemUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+    <Reference Include="ESRI.ArcGIS.Carto, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geodatabase, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Geometry, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.System, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.SystemUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -62,33 +75,78 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\CmdAngleConvert.cs" />
-    <Compile Include="Commands\CmdAngleForFPCQQX.cs" />
-    <Compile Include="Commands\CmdAngleForYSBZ.cs" />
-    <Compile Include="Commands\CmdAnnotationSorting.cs" />
-    <Compile Include="Commands\CmdAutoGenerateNumbers.cs" />
-    <Compile Include="Commands\CmdCalculateDepth.cs" />
-    <Compile Include="Commands\CmdCenterPoint.cs" />
-    <Compile Include="Commands\CmdCopyAttributes.cs" />
-    <Compile Include="Commands\CmdDeletePipePoint.cs" />
-    <Compile Include="Commands\CmdIdentifyRoadName.cs" />
-    <Compile Include="Commands\CmdLayerByAttribute.cs" />
-    <Compile Include="Commands\CmdLineLineToRightAngle.cs" />
-    <Compile Include="Commands\CmdModifyFlow.cs" />
-    <Compile Include="Commands\CmdMoveTurningPoint.cs" />
-    <Compile Include="Commands\CmdPartialDistance.cs" />
-    <Compile Include="Commands\CmdPointLineLinkage.cs" />
-    <Compile Include="Commands\CmdPointLineToRightAngle.cs" />
+    <Compile Include="Commands\Exchange\CmdConversion.cs" />
+    <Compile Include="Commands\Exchange\CmdCut.cs" />
+    <Compile Include="Commands\Exchange\CmdDataExport.cs" />
+    <Compile Include="Commands\Exchange\CmdDataStorage.cs" />
+    <Compile Include="Commands\Exchange\CmdImportAxfData.cs" />
+    <Compile Include="Commands\Exchange\CmdImportExcelData.cs" />
+    <Compile Include="Commands\Exchange\CmdImportSurveyData.cs" />
+    <Compile Include="Commands\Mark\CmdCheQiLianDong.cs" />
+    <Compile Include="Commands\Mark\CmdCheQiSheZhi.cs" />
+    <Compile Include="Commands\Mark\CmdDuoYaoSuCheQi.cs" />
+    <Compile Include="Commands\Mark\CmdShanChuCheQi.cs" />
+    <Compile Include="Commands\Version\CmdVersionManagement.cs" />
+    <Compile Include="Commands\Version\CmdVersionQuery.cs" />
+    <Compile Include="Commands\Mark\CmdBiaoZhu.cs" />
+    <Compile Include="Commands\Mark\CmdCheQi.cs" />
+    <Compile Include="Commands\Profession\CmdAngleConvert.cs" />
+    <Compile Include="Commands\Profession\CmdAutoAngle.cs" />
+    <Compile Include="Commands\Mark\CmdAnnotationSorting.cs" />
+    <Compile Include="Commands\Profession\CmdAutoGenerateNumbers.cs" />
+    <Compile Include="Commands\Profession\CmdCalculateDepth.cs" />
+    <Compile Include="Commands\Profession\CmdCenterPoint.cs" />
+    <Compile Include="Commands\Profession\CmdCopyAttributes.cs" />
+    <Compile Include="Commands\Profession\CmdDeletePipePoint.cs" />
+    <Compile Include="Commands\Profession\CmdIdentifyRoadName.cs" />
+    <Compile Include="Commands\Profession\CmdLayerByAttribute.cs" />
+    <Compile Include="Commands\Profession\CmdLineLineToRightAngle.cs" />
+    <Compile Include="Commands\Profession\CmdModifyFlow.cs" />
+    <Compile Include="Commands\Profession\CmdMoveTurningPoint.cs" />
+    <Compile Include="Commands\Profession\CmdPartialDistance.cs" />
+    <Compile Include="Commands\Profession\CmdPointLineLinkage.cs" />
+    <Compile Include="Commands\Profession\CmdPointLineToRightAngle.cs" />
+    <Compile Include="Commands\DataManager\CmdCreateDatabase.cs" />
+    <Compile Include="Commands\DataManager\CmdCreatePipeLayer.cs" />
+    <Compile Include="Commands\DataManager\CmdCreateFunctionLayer.cs" />
+    <Compile Include="Commands\Verify\CmdVerifySetting.cs" />
     <Compile Include="CompositionRoot.cs" />
+    <Compile Include="Controls\ExpressionTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ExpressionTextBox.Designer.cs">
+      <DependentUpon>ExpressionTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FieldsListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FieldsListBox.Designer.cs">
+      <DependentUpon>FieldsListBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FieldCalculator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FieldCalculator.Designer.cs">
+      <DependentUpon>FieldCalculator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Profession\FrmAutoGenerateCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Profession\FrmAutoGenerateCode.designer.cs">
+      <DependentUpon>FrmAutoGenerateCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\CommonHelper.cs" />
     <Compile Include="Menu\MenuGenerator.cs" />
     <Compile Include="Menu\YutaiCommands.cs" />
     <Compile Include="PipelineEditorPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Forms\" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\Yutai.ArcGIS.Common\Yutai.ArcGIS.Common.csproj">
+      <Project>{1938B3F8-8EDE-48F7-9594-EEB1F126E622}</Project>
+      <Name>Yutai.ArcGIS.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Yutai.Pipeline.Config\Yutai.Pipeline.Config.csproj">
       <Project>{0AA42995-A1CE-49FD-BB98-F94EED2D7289}</Project>
       <Name>Yutai.Pipeline.Config</Name>
@@ -116,6 +174,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\FieldCalculator.resx">
+      <DependentUpon>FieldCalculator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Profession\FrmAutoGenerateCode.resx">
+      <DependentUpon>FrmAutoGenerateCode.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Menu\MenuLayout.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

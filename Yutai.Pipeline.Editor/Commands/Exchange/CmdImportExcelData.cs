@@ -8,14 +8,14 @@ using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
 
-namespace Yutai.Pipeline.Editor.Commands
+namespace Yutai.Pipeline.Editor.Commands.Exchange
 {
-    class CmdPointLineLinkage : YutaiTool
+    class CmdImportExcelData : YutaiTool
     {
         private PipelineEditorPlugin _plugin;
         private IPipelineConfig _config;
 
-        public CmdPointLineLinkage(IAppContext context, PipelineEditorPlugin plugin)
+        public CmdImportExcelData(IAppContext context, PipelineEditorPlugin plugin)
         {
             OnCreate(context);
             _plugin = plugin;
@@ -29,14 +29,14 @@ namespace Yutai.Pipeline.Editor.Commands
         public sealed override void OnCreate(object hook)
         {
             _context = hook as IAppContext;
-            base.m_caption = "点线联动";
+            base.m_caption = "导入Excel数据";
             base.m_category = "PipelineEditor";
             //base.m_bitmap = Properties.Resources.icon_valve;
-            base.m_name = "PipelineEditor_PointLineLinkage";
-            base._key = "PipelineEditor_PointLineLinkage";
-            base.m_toolTip = "点线联动";
+            base.m_name = "PipelineEditor_ImportExcelData";
+            base._key = "PipelineEditor_ImportExcelData";
+            base.m_toolTip = "";
             base.m_checked = false;
-            base.m_message = "点线联动";
+            base.m_message = "";
             base.m_enabled = true;
             base._itemType = RibbonItemType.Tool;
         }

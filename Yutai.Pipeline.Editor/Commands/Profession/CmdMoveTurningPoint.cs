@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
 
-namespace Yutai.Pipeline.Editor.Commands
+namespace Yutai.Pipeline.Editor.Commands.Profession
 {
     class CmdMoveTurningPoint : YutaiTool
     {

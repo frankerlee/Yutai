@@ -16,13 +16,14 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
     {
         private BaseQueryUI QueryUI;
         private PipelineAnalysisPlugin _plugin;
+        private bool _enabled;
 
         public CmdQueryBasic(IAppContext context, PipelineAnalysisPlugin plugin)
         {
             OnCreate(context);
             _plugin = plugin;
         }
-
+        
         public override void OnClick()
         {
             if (this.QueryUI == null || this.QueryUI.IsDisposed)
@@ -65,7 +66,6 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
             base.m_toolTip = "管点查询";
             base.m_checked = false;
             base.m_message = "管点查询";
-            base.m_enabled = true;
             base._itemType = RibbonItemType.Button;
 
             CommonUtils.AppContext = _context;
@@ -97,6 +97,18 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
         {
             e.Cancel = true;
             this.QueryUI.Hide();
+        }
+
+        public override bool Enabled
+        {
+            get
+            {
+                if (_plugin.PipeConfig?.Layers == null)
+                    return false;
+                if (_plugin.PipeConfig.Layers.Count <= 0)
+                    return false;
+                return true;
+            }
         }
     }
 }

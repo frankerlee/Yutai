@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
+using ESRI.ArcGIS.Geodatabase;
 using Syncfusion.Windows.Forms.Tools;
 using Yutai.Shared;
 
@@ -90,6 +92,47 @@ namespace Yutai.UI.Helpers
             if (selectedIndex >= 0 && selectedIndex < comboBox.Items.Count)
             {
                 comboBox.SelectedIndex = selectedIndex;
+            }
+        }
+
+        public static void AddItemsFromList<T>(List<T> list, ComboBox comboBox, string displayMember, string valueMember, string defaultValue = null)
+        {
+            comboBox.DataSource = list;
+            comboBox.DisplayMember = displayMember;
+            comboBox.ValueMember = valueMember;
+
+            if (string.IsNullOrWhiteSpace(defaultValue) == false)
+            {
+                if (comboBox.Items.Contains(defaultValue))
+                    comboBox.SelectedText = defaultValue;
+            }
+        }
+
+        public static void AddItemsFromFields(IFields fields, ComboBox comboBox, bool isEditable = true, string defaultValue = null)
+        {
+            if (comboBox.Items.Count > 0)
+                comboBox.Items.Clear();
+            int count = fields.FieldCount;
+            for (int i = 0; i < count; i++)
+            {
+                IField field = fields.Field[i];
+                if (field != null)
+                {
+                    if (isEditable)
+                    {
+                        if (field.Editable)
+                            comboBox.Items.Add(field.Name);
+                    }
+                    else
+                    {
+                        comboBox.Items.Add(field.Name);
+                    }
+                }
+            }
+            if (string.IsNullOrWhiteSpace(defaultValue) == false)
+            {
+                if (comboBox.Items.Contains(defaultValue))
+                    comboBox.SelectedText = defaultValue;
             }
         }
     }

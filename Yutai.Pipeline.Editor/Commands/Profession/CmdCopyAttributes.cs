@@ -1,21 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
 
-namespace Yutai.Pipeline.Editor.Commands
+namespace Yutai.Pipeline.Editor.Commands.Profession
 {
-    class CmdModifyFlow : YutaiTool
+    class CmdCopyAttributes : YutaiTool
     {
         private PipelineEditorPlugin _plugin;
         private IPipelineConfig _config;
 
-        public CmdModifyFlow(IAppContext context, PipelineEditorPlugin plugin)
+        public CmdCopyAttributes(IAppContext context, PipelineEditorPlugin plugin)
         {
             OnCreate(context);
             _plugin = plugin;
@@ -29,14 +25,14 @@ namespace Yutai.Pipeline.Editor.Commands
         public sealed override void OnCreate(object hook)
         {
             _context = hook as IAppContext;
-            base.m_caption = "修改排水流向";
+            base.m_caption = "属性复制";
             base.m_category = "PipelineEditor";
             //base.m_bitmap = Properties.Resources.icon_valve;
-            base.m_name = "PipelineEditor_ModifyFlow";
-            base._key = "PipelineEditor_ModifyFlow";
-            base.m_toolTip = "修改排水流向";
+            base.m_name = "PipelineEditor_CopyAttributes";
+            base._key = "PipelineEditor_CopyAttributes";
+            base.m_toolTip = "属性复制";
             base.m_checked = false;
-            base.m_message = "修改排水流向";
+            base.m_message = "属性复制";
             base.m_enabled = true;
             base._itemType = RibbonItemType.Tool;
         }

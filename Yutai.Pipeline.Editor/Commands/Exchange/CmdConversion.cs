@@ -8,14 +8,14 @@ using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
 
-namespace Yutai.Pipeline.Editor.Commands
+namespace Yutai.Pipeline.Editor.Commands.Exchange
 {
-    class CmdLineLineToRightAngle : YutaiTool
+    class CmdConversion : YutaiTool
     {
         private PipelineEditorPlugin _plugin;
         private IPipelineConfig _config;
 
-        public CmdLineLineToRightAngle(IAppContext context, PipelineEditorPlugin plugin)
+        public CmdConversion(IAppContext context, PipelineEditorPlugin plugin)
         {
             OnCreate(context);
             _plugin = plugin;
@@ -29,14 +29,14 @@ namespace Yutai.Pipeline.Editor.Commands
         public sealed override void OnCreate(object hook)
         {
             _context = hook as IAppContext;
-            base.m_caption = "生成直角（线线）";
+            base.m_caption = "数据转换";
             base.m_category = "PipelineEditor";
             //base.m_bitmap = Properties.Resources.icon_valve;
-            base.m_name = "PipelineEditor_LineLineToRightAngle";
-            base._key = "PipelineEditor_LineLineToRightAngle";
-            base.m_toolTip = "生成直角（线线）";
+            base.m_name = "PipelineEditor_Conversion";
+            base._key = "PipelineEditor_Conversion";
+            base.m_toolTip = "";
             base.m_checked = false;
-            base.m_message = "生成直角（线线）";
+            base.m_message = "";
             base.m_enabled = true;
             base._itemType = RibbonItemType.Tool;
         }
