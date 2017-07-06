@@ -638,7 +638,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <Content Include="Plugins\configs\maptemplate.mdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Plugins\configs\pipeline.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -646,7 +646,9 @@
     <Content Include="Plugins\configs\pipelineSet.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Plugins\configs\Printing.xml" />
+    <Content Include="Plugins\configs\Printing.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Plugins\configs\YutaiTemplate.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

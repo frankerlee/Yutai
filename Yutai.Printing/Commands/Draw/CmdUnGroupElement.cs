@@ -53,7 +53,7 @@ namespace Yutai.Plugins.Printing.Commands
 
         public override void OnCreate(object hook)
         {
-            this.m_caption = "取消组合";
+            this.m_caption = "";
             this.m_toolTip = "取消组合";
             this.m_category = "制图";
 

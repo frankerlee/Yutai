@@ -81,7 +81,7 @@ namespace Yutai.Plugins.Printing
                 _searchFields = xml.Attributes["SearchFields"] == null ? "" : xml.Attributes["SearchFields"].Value;
                 _nameField = xml.Attributes["NameField"] == null ? "" : xml.Attributes["NameField"].Value;
                 _indexLayerName = xml.Attributes["IndexLayer"] == null ? "" : xml.Attributes["IndexLayer"].Value;
-                _indexLayerName = xml.Attributes["Workspace"] == null ? "" : xml.Attributes["Workspace"].Value;
+                _workspaceName = xml.Attributes["Workspace"] == null ? "" : xml.Attributes["Workspace"].Value;
             }
         
         }
@@ -208,6 +208,7 @@ namespace Yutai.Plugins.Printing
                 page.PageID = i + 1;
                 pages.Add(page);
                 i++;
+                pFeature = pCursor.NextFeature();
             }
 
             foreach (IPrintPageInfo page in pages)

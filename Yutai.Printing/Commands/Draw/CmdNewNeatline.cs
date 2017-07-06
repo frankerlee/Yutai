@@ -18,7 +18,7 @@ namespace Yutai.Plugins.Printing.Commands
         public override void OnCreate(object hook)
         {
             this.m_name = "InsertNeatline";
-            this.m_caption = "轮廓线";
+            this.m_caption = "";
             this.m_message = "在布局视图中插入轮廓线";
             this.m_toolTip = "轮廓线";
             this.m_category = "Printing";

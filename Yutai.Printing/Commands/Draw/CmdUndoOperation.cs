@@ -20,7 +20,7 @@ namespace Yutai.Plugins.Printing.Commands
         public override void OnCreate(object hook)
         {
             this.m_name = "UndoOperation";
-            this.m_caption = "撤销";
+            this.m_caption = "";
             this.m_category = "编辑器";
             this.m_message = "撤销操作";
             this.m_toolTip = "撤销操作";

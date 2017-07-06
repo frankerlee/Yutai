@@ -31,7 +31,7 @@ namespace Yutai.Plugins.Printing.Commands
 
         public override void OnCreate(object hook)
         {
-            this.m_caption = "组合";
+            this.m_caption = "";
             this.m_toolTip = "组合";
             this.m_category = "制图";
             this.m_name = "GroupElement";

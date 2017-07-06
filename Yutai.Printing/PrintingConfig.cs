@@ -26,7 +26,7 @@ namespace Yutai.Plugins.Printing
 
             XmlNode dbNode = doc.SelectSingleNode("/PrintingConfig/TemplateDatabase");
             _templateConnectionString = dbNode == null ? "" : dbNode.Attributes["ConnectionString"].Value;
-            XmlNodeList nodes = doc.SelectNodes("/PipelineConfig/IndexMaps/IndexMap");
+            XmlNodeList nodes = doc.SelectNodes("/PrintingConfig/IndexMaps/IndexMap");
             if (nodes != null)
                 foreach (XmlNode node in nodes)
                 {

@@ -22,7 +22,7 @@ namespace Yutai.Plugins.Printing.Commands
 
         public override void OnCreate(object hook)
         {
-            this.m_caption = "接图表";
+            this.m_caption = "";
             this.m_message = "插入接图表";
             this.m_toolTip = "标题";
             this.m_category = "Printing";

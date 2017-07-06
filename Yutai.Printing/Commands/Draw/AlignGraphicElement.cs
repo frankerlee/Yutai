@@ -27,7 +27,7 @@ namespace Yutai.Plugins.Printing.Commands
         public override void OnCreate(object hook)
         {
             base.m_name = "AlignGraphicElementTop";
-            base.m_caption = "顶对齐";
+            base.m_caption = "";
             base.m_toolTip = "顶对齐";
             base.m_bitmap = Properties.Resources.icon_align_left;
             base.m_name = "Printing_AlignElement";
@@ -81,28 +81,28 @@ namespace Yutai.Plugins.Printing.Commands
                 case 0:
                     this.m_name = "Printing_AlignGraphicElementTop";
                     this._key = "Printing_AlignGraphicElementTop";
-                    this.m_caption = "顶对齐";
+                    this.m_caption = "";
                     this.m_toolTip = "顶对齐";
                     m_bitmap = Properties.Resources.icon_align_top;
                     break;
                 case 1:
                     this.m_name = "Printing_AlignGraphicElementBottom";
                     this._key = "Printing_AlignGraphicElementBottom";
-                    this.m_caption = "底对齐";
+                    this.m_caption = "";
                     this.m_toolTip = "底对齐";
                     m_bitmap = Properties.Resources.icon_align_bottom;
                     break;
                 case 2:
                     this.m_name = "Printing_AlignGraphicElementLeft";
                     this._key = "Printing_AlignGraphicElementLeft";
-                    this.m_caption = "左对齐";
+                    this.m_caption = "";
                     this.m_toolTip = "左对齐";
                     m_bitmap = Properties.Resources.icon_align_left;
                     break;
                 case 3:
                     this.m_name = "Printing_AlignGraphicElementRight";
                     this._key = "Printing_AlignGraphicElementRight";
-                    this.m_caption = "右对齐";
+                    this.m_caption = "";
                     this.m_toolTip = "右对齐";
                     m_bitmap = Properties.Resources.icon_align_right;
                     break;

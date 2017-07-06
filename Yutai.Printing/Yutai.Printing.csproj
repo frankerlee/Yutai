@@ -61,6 +61,9 @@
     <Reference Include="ESRI.ArcGIS.Geometry, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.Output, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.System, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -82,6 +85,8 @@
   <ItemGroup>
     <Compile Include="Commands\Carto\CmdPrintingSetting.cs" />
     <Compile Include="Commands\Carto\CmdShowMapTemplateView.cs" />
+    <Compile Include="Commands\CmdPageSetup.cs" />
+    <Compile Include="Commands\CmdPrintSetup.cs" />
     <Compile Include="Commands\Draw\AlignGraphicElement.cs" />
     <Compile Include="Commands\Carto\ToolApplyTemplateByMouseClick.cs" />
     <Compile Include="Commands\Carto\CmdApplyTfMapTemplate.cs" />
@@ -112,6 +117,8 @@
     <Compile Include="Commands\Draw\CmdInsertDataGraphic.cs" />
     <Compile Include="Commands\Draw\ToolInsertEllipseElement.cs" />
     <Compile Include="Commands\Draw\CmdInsertFeactionText.cs" />
+    <Compile Include="Commands\Fence\CmdShowAutoLayoutView.cs" />
+    <Compile Include="Commands\Fence\ToolFenceCircle.cs" />
     <Compile Include="Commands\View\ToolPagePan.cs" />
     <Compile Include="Commands\View\ToolSelectElement.cs" />
     <Compile Include="Commands\Draw\CmdElementProperty.cs" />
@@ -181,6 +188,7 @@
       <DependentUpon>TemplateConfigPage.cs</DependentUpon>
     </Compile>
     <Compile Include="IndexMap.cs" />
+    <Compile Include="Menu\AutoLayoutViewService.cs" />
     <Compile Include="Menu\MapTemplateViewService.cs" />
     <Compile Include="PrintingConfig.cs" />
     <Compile Include="PrintPageInfo.cs" />
@@ -195,6 +203,7 @@
     <Compile Include="PrintingPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\AutoLayoutHelper.cs" />
+    <Compile Include="Views\AutoLayoutPresenter.cs" />
     <Compile Include="Views\AutoLayoutType.cs" />
     <Compile Include="Views\AutoLayoutView.cs">
       <SubType>UserControl</SubType>
@@ -308,7 +317,6 @@
     <None Include="Resources\icon_ungroup.png" />
     <None Include="Resources\icon_title.png" />
     <None Include="Resources\icon_text.png" />
-    <None Include="Resources\icon_select.png" />
     <None Include="Resources\icon_north_arrow.png" />
     <None Include="Resources\icon_legend.png" />
     <None Include="Resources\icon_group.png" />
@@ -357,6 +365,9 @@
     <None Include="Resources\icon_page_print.png" />
     <None Include="Resources\icon_page_print2.png" />
     <None Include="Resources\icon_page_zoom.png" />
+    <None Include="Resources\icon_autolayout.png" />
+    <None Include="Resources\icon_select.png" />
+    <None Include="Resources\icon_page_setup.png" />
     <Content Include="Resources\PageFixZoomIn.bmp" />
     <Content Include="Resources\PageFixZoomOut.bmp" />
     <Content Include="Resources\PageHand.bmp" />

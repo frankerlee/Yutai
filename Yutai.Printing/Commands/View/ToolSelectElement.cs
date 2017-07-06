@@ -115,7 +115,8 @@ namespace Yutai.Plugins.Printing.Commands
             this.m_cursor = System.Windows.Forms.Cursors.Default;
 
             this.m_name = "ElementSelectTool";
-            this.m_caption = "选择";
+            this.m_message = "选择";
+            this.m_toolTip = "选择";
             this.enum1_0 = ToolSelectElement.Enum1.eDormant;
             base.m_bitmap = Properties.Resources.icon_select;
             base.m_name = "Printing_SelectElement";

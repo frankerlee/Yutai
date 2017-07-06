@@ -23,16 +23,17 @@
       <Guid>5e857d4e-1a77-46d8-b1bb-b36548be7333</Guid>
       <Name>目录管理</Name>
       <MenuXML>\\plugins\\menus\\CatalogMenu.xml</MenuXML>
-    </Plugin>-->
-    <!--<Plugin>
+    </Plugin>
+    <Plugin>
       <Guid>f804e812-481e-45c3-be08-749da82075d1</Guid>
       <Name>管线分析</Name>
       <ConfigXML>\\plugins\\configs\\pipeline.xml</ConfigXML>
     </Plugin>-->
-    <!--<Plugin>
+    <Plugin>
       <Guid>5e933989-b5a4-4a45-a5b7-2d9ded61df0f</Guid>
       <Name>地图制图</Name>
-    </Plugin>-->
+      <ConfigXML>\\plugins\\configs\\Printing.xml</ConfigXML>
+    </Plugin>
     <!--<Plugin>
       <Guid>95ab64f9-65ca-400f-8f68-c18cadff1421</Guid>
       <Name>管线编辑</Name>

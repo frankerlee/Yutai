@@ -19,7 +19,7 @@ namespace Yutai.Plugins.Printing.Commands
 
         public override void OnCreate(object hook)
         {
-            this.m_caption = "重做";
+            this.m_caption = "";
             this.m_category = "编辑器";
             this.m_message = "重做操作";
             this.m_toolTip = "重做操作";

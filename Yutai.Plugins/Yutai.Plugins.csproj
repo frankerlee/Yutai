@@ -124,6 +124,7 @@
     <Compile Include="Concrete\Maps.cs" />
     <Compile Include="Concrete\OperationStackClass.cs" />
     <Compile Include="Concrete\CommandProviderBase.cs" />
+    <Compile Include="Concrete\PrintPageElement.cs" />
     <Compile Include="Concrete\RibbonTabItem.cs" />
     <Compile Include="Concrete\YutaiCommand.cs" />
     <Compile Include="Concrete\YutaiMenuCommand.cs" />

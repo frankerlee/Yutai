@@ -8,7 +8,9 @@ namespace Yutai.Plugins.Printing
         public static void Compose(IApplicationContainer container)
         {
             container.RegisterService<IMapTemplateView, MapTemplateView>()
-                .RegisterSingleton<MapTemplatePresenter>();
+                .RegisterService<IAutoLayoutView, AutoLayoutView>()
+                .RegisterSingleton<MapTemplatePresenter>()
+                .RegisterSingleton<AutoLayoutPresenter>();
             //    .RegisterService<IGeometryInfoView, GeometryInfoView>()
             //     .RegisterService<IAttributeEditView, AttributeEditView>()
             //    .RegisterSingleton<EditTemplatePresenter>()

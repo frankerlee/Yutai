@@ -21,7 +21,7 @@ namespace Yutai.Plugins.Printing.Commands
 
         public override void OnCreate(object hook)
         {
-            this.m_caption = "指北针";
+            this.m_caption = "";
             this.m_message = "在布局视图中插入指北针";
             this.m_toolTip = "指北针";
             this.m_category = "Printing";

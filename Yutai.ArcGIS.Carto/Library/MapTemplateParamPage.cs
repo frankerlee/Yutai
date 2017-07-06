@@ -12,13 +12,13 @@ namespace Yutai.ArcGIS.Carto.Library
     {
         private IContainer icontainer_0 = null;
         private int int_0 = -1;
-        private List<string> list_0 = new List<string>();
-        private List<ITextElement> list_1 = new List<ITextElement>();
-        private List<string> list_2 = new List<string>();
+        private List<string> m_lstString = new List<string>();
+        private List<ITextElement> m_lstTextElements = new List<ITextElement>();
+        private List<string> m_lstString2 = new List<string>();
         private ListViewItem.ListViewSubItem listViewSubItem_0 = null;
-        private MapTemplate mapTemplate_0 = null;
-        private MapTemplateApplyHelp mapTemplateApplyHelp_0 = null;
-        private MapTemplateJoinTableElement mapTemplateJoinTableElement_0 = null;
+        private MapTemplate m_MapTemplate = null;
+        private MapTemplateApplyHelp m_mapTemplateApplyHelp = null;
+        private MapTemplateJoinTableElement m_mapTemplateJoinTableElement = null;
 
         public MapTemplateParamPage()
         {
@@ -27,14 +27,14 @@ namespace Yutai.ArcGIS.Carto.Library
 
         public bool Apply()
         {
-            this.method_3(this.txtJTB1.Text, 1);
-            this.method_3(this.txtJTB2.Text, 2);
-            this.method_3(this.txtJTB3.Text, 3);
-            this.method_3(this.txtJTB4.Text, 4);
-            this.method_3(this.txtJTB6.Text, 6);
-            this.method_3(this.txtJTB7.Text, 7);
-            this.method_3(this.txtJTB8.Text, 8);
-            this.method_3(this.txtJTB9.Text, 9);
+            this.ApplyJTB(this.txtJTB1.Text, 1);
+            this.ApplyJTB(this.txtJTB2.Text, 2);
+            this.ApplyJTB(this.txtJTB3.Text, 3);
+            this.ApplyJTB(this.txtJTB4.Text, 4);
+            this.ApplyJTB(this.txtJTB6.Text, 6);
+            this.ApplyJTB(this.txtJTB7.Text, 7);
+            this.ApplyJTB(this.txtJTB8.Text, 8);
+            this.ApplyJTB(this.txtJTB9.Text, 9);
             for (int i = 0; i < this.listView2.Items.Count; i++)
             {
                 ListViewItem item = this.listView2.Items[i];
@@ -63,28 +63,28 @@ namespace Yutai.ArcGIS.Carto.Library
 
         public void Init()
         {
-            this.mapTemplateJoinTableElement_0 = null;
+            this.m_mapTemplateJoinTableElement = null;
             this.listView2.Items.Clear();
             bool flag = false;
             int num = 0;
-            while (num < this.mapTemplate_0.MapTemplateElement.Count)
+            while (num < this.m_MapTemplate.MapTemplateElement.Count)
             {
-                if (this.mapTemplate_0.MapTemplateElement[num].MapTemplateElementType ==
+                if (this.m_MapTemplate.MapTemplateElement[num].MapTemplateElementType ==
                     MapTemplateElementType.JoinTableElement)
                 {
                     flag = true;
-                    this.panelJTB.Tag = this.mapTemplate_0.MapTemplateElement[num];
-                    this.mapTemplateJoinTableElement_0 =
-                        this.mapTemplate_0.MapTemplateElement[num] as MapTemplateJoinTableElement;
+                    this.panelJTB.Tag = this.m_MapTemplate.MapTemplateElement[num];
+                    this.m_mapTemplateJoinTableElement =
+                        this.m_MapTemplate.MapTemplateElement[num] as MapTemplateJoinTableElement;
                     break;
                 }
                 num++;
             }
             this.panelJTB.Enabled = flag;
             string[] items = new string[2];
-            for (num = 0; num < this.mapTemplate_0.MapTemplateParam.Count; num++)
+            for (num = 0; num < this.m_MapTemplate.MapTemplateParam.Count; num++)
             {
-                MapTemplateParam param = this.mapTemplate_0.MapTemplateParam[num];
+                MapTemplateParam param = this.m_MapTemplate.MapTemplateParam[num];
                 items[0] = param.Name;
                 items[1] = "";
                 ListViewItem item = new ListViewItem(items)
@@ -132,23 +132,23 @@ namespace Yutai.ArcGIS.Carto.Library
             return null;
         }
 
-        private void method_3(string string_0, int int_1)
+        private void ApplyJTB(string pName, int pIndex)
         {
-            if (this.mapTemplateJoinTableElement_0 != null)
+            if (this.m_mapTemplateJoinTableElement != null)
             {
-                this.mapTemplateJoinTableElement_0.SetJTBTH(string_0, int_1 - 1);
+                this.m_mapTemplateJoinTableElement.SetJTBTH(pName, pIndex - 1);
             }
         }
 
         public MapTemplate CartoTemplateData
         {
-            set { this.mapTemplate_0 = value; }
+            set { this.m_MapTemplate = value; }
         }
 
         public MapTemplateApplyHelp MapTemplateHelp
         {
-            get { return this.mapTemplateApplyHelp_0; }
-            set { this.mapTemplateApplyHelp_0 = value; }
+            get { return this.m_mapTemplateApplyHelp; }
+            set { this.m_mapTemplateApplyHelp = value; }
         }
     }
 }

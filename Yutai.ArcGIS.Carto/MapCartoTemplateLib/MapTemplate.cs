@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -13,6 +14,7 @@ using ESRI.ArcGIS.Geometry;
 using stdole;
 using Yutai.ArcGIS.Carto.DesignLib;
 using Yutai.ArcGIS.Common.Symbol;
+using Yutai.Plugins.Interfaces;
 
 namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 {
@@ -20,24 +22,25 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
     {
         private double double_0 = 10.0;
         private double double_1 = 13.0;
-        private double double_2 = 0.0;
-        private double double_3 = 0.0;
-        private double double_4 = 0.0;
-        private double double_5 = 0.0;
-        private double double_6 = 1.0;
+        private double _XMin = 0.0;
+        private double _YMin = 0.0;
+        private double _XMax = 0.0;
+        private double _YMax = 0.0;
+        private double m_Scale = 1.0;
         private ISymbol isymbol_0 = null;
-        public List<MapCartoTemplateLib.MapTemplateElement> mapTemplateElelemt;
-        public List<MapCartoTemplateLib.MapTemplateParam> mapTemplateParam;
+        public List<MapCartoTemplateLib.MapTemplateElement> mapTemplateElelemts;
+        public List<MapCartoTemplateLib.MapTemplateParam> mapTemplateParams;
         private string string_0 = "宋体";
-        private MapCartoTemplateLib.TemplateSizeStyle templateSizeStyle_0;
+        private MapCartoTemplateLib.TemplateSizeStyle templateSizeStyle;
+        private IPrintPageInfo _pageInfo;
 
-        public MapTemplate(int int_1, MapCartoTemplateLib.MapTemplateClass mapTemplateClass_1)
+        public MapTemplate(int templateID, MapCartoTemplateLib.MapTemplateClass templateClass)
         {
-            this.MapTemplateGallery = mapTemplateClass_1.MapTemplateGallery;
-            this.ClassGuid = mapTemplateClass_1.Guid;
+            this.MapTemplateGallery = templateClass.MapTemplateGallery;
+            this.ClassGuid = templateClass.Guid;
             this.IsTest = true;
-            this.MapTemplateClass = mapTemplateClass_1;
-            this.OID = int_1;
+            this.MapTemplateClass = templateClass;
+            this.OID = templateID;
             if (this.OID != -1)
             {
                 this.Load();
@@ -48,45 +51,47 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
-        public void AddMapTemplateElement(MapCartoTemplateLib.MapTemplateElement mapTemplateElement_0)
+        public void AddMapTemplateElement(MapCartoTemplateLib.MapTemplateElement element)
         {
-            if (mapTemplateElement_0 != null)
+            if (element != null)
             {
-                if (this.mapTemplateElelemt == null)
+                if (this.mapTemplateElelemts == null)
                 {
-                    this.mapTemplateElelemt = new List<MapCartoTemplateLib.MapTemplateElement>();
+                    this.mapTemplateElelemts = new List<MapCartoTemplateLib.MapTemplateElement>();
                 }
-                if (!this.mapTemplateElelemt.Contains(mapTemplateElement_0))
+                if (!this.mapTemplateElelemts.Contains(element))
                 {
-                    this.mapTemplateElelemt.Add(mapTemplateElement_0);
+                    this.mapTemplateElelemts.Add(element);
                 }
             }
         }
 
-        public void AddMapTemplateParam(MapCartoTemplateLib.MapTemplateParam mapTemplateParam_0)
+        public void AddMapTemplateParam(MapCartoTemplateLib.MapTemplateParam parameter)
         {
-            if (mapTemplateParam_0 != null)
+            if (parameter != null)
             {
-                if (this.mapTemplateParam == null)
+                if (this.mapTemplateParams == null)
                 {
-                    this.mapTemplateParam = new List<MapCartoTemplateLib.MapTemplateParam>();
+                    this.mapTemplateParams = new List<MapCartoTemplateLib.MapTemplateParam>();
                 }
-                if (!this.mapTemplateParam.Contains(mapTemplateParam_0))
+                if (!this.mapTemplateParams.Contains(parameter))
                 {
-                    this.mapTemplateParam.Add(mapTemplateParam_0);
+                    this.mapTemplateParams.Add(parameter);
                 }
             }
         }
 
-        public bool CanCreateTK(IActiveView iactiveView_0)
+        //!  判断是否能够制作图框，图框只有在投影坐标系下才能制作，因为整个程序支持梯形和矩形，所以会进行多次的坐标转换
+        public bool CanCreateTK(IActiveView iactiveView)
         {
-            if (iactiveView_0.FocusMap.SpatialReference == null)
+            if (iactiveView.FocusMap.SpatialReference == null)
             {
                 return false;
             }
-            return (iactiveView_0.FocusMap.SpatialReference is IProjectedCoordinateSystem);
+            return (iactiveView.FocusMap.SpatialReference is IProjectedCoordinateSystem);
         }
 
+        //! 模板克隆
         public MapCartoTemplateLib.MapTemplate Clone()
         {
             MapCartoTemplateLib.MapTemplate template = new MapCartoTemplateLib.MapTemplate(-1, this.MapTemplateClass)
@@ -158,10 +163,10 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
             return template;
         }
-
-        public MapCartoTemplateLib.MapTemplate Clone(MapCartoTemplateLib.MapTemplateClass mapTemplateClass_1)
+        //! 模板克隆
+        public MapCartoTemplateLib.MapTemplate Clone(MapCartoTemplateLib.MapTemplateClass mapTemplateClass)
         {
-            MapCartoTemplateLib.MapTemplate template = new MapCartoTemplateLib.MapTemplate(-1, mapTemplateClass_1)
+            MapCartoTemplateLib.MapTemplate template = new MapCartoTemplateLib.MapTemplate(-1, mapTemplateClass)
             {
                 Guid = System.Guid.NewGuid().ToString(),
                 AnnoUnit = this.AnnoUnit,
@@ -232,21 +237,22 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             return template;
         }
 
-        public IElement CreateCornerShortLine(MapCartoTemplateLib.YTTransformation yttransformation, IPoint ipoint_0,
-            IPoint ipoint_1)
+        //! 制作图框四角的短线，
+        public IElement CreateCornerShortLine(MapCartoTemplateLib.YTTransformation yttransformation, IPoint zxPoint,
+            IPoint ysPoint)
         {
             if (this.BorderSymbol == null)
             {
                 return null;
             }
-            IPoint point = yttransformation.ToPageLayoutPoint(ipoint_0);
-            IPoint point2 = yttransformation.ToPageLayoutPoint(ipoint_1);
+            IPoint point = yttransformation.ToPageLayoutPoint(zxPoint);
+            IPoint point2 = yttransformation.ToPageLayoutPoint(ysPoint);
             ILineSymbol symbol = this.method_25();
             IGroupElement element2 = new GroupElementClass();
-            element2.AddElement(this.method_29(point.X, point.Y, -this.LeftInOutSpace, -this.BottomInOutSpace, symbol));
-            element2.AddElement(this.method_29(point.X, point2.Y, -this.LeftInOutSpace, this.TopInOutSpace, symbol));
-            element2.AddElement(this.method_29(point2.X, point2.Y, this.RightInOutSpace, this.TopInOutSpace, symbol));
-            element2.AddElement(this.method_29(point2.X, point.Y, this.RightInOutSpace, -this.BottomInOutSpace, symbol));
+            element2.AddElement(this.CreateCornerShortElement(point.X, point.Y, -this.LeftInOutSpace, -this.BottomInOutSpace, symbol));
+            element2.AddElement(this.CreateCornerShortElement(point.X, point2.Y, -this.LeftInOutSpace, this.TopInOutSpace, symbol));
+            element2.AddElement(this.CreateCornerShortElement(point2.X, point2.Y, this.RightInOutSpace, this.TopInOutSpace, symbol));
+            element2.AddElement(this.CreateCornerShortElement(point2.X, point.Y, this.RightInOutSpace, -this.BottomInOutSpace, symbol));
             int num = 10;
             int num2 = 13;
             if (this.DrawCornerText)
@@ -257,7 +263,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     esriTextVerticalAlignment.esriTVABottom);
                 ITextSymbol symbol3 = this.FontStyle((double) num2, esriTextHorizontalAlignment.esriTHALeft,
                     esriTextVerticalAlignment.esriTVABottom);
-                double x = ipoint_0.X;
+                double x = zxPoint.X;
                 double num4 = (this.Width*this.Scale)/100.0;
                 double num5 = (this.Height*this.Scale)/100.0;
                 x = ((int) (x/num4))*num4;
@@ -292,7 +298,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     element2.AddElement(this.method_26(point.X, point2.Y + this.TopInOutSpace, str, symbol2) as IElement);
                 }
                 element2.AddElement(this.method_26(point.X, point2.Y + this.TopInOutSpace, str2, symbol3) as IElement);
-                x = ipoint_0.Y;
+                x = zxPoint.Y;
                 if (Math.Abs(x) > num5)
                 {
                     x = ((int) (x/num5))*num5;
@@ -340,7 +346,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                         this.method_26((point2.X + this.RightInOutSpace) - num6, point.Y, str, symbol2) as IElement);
                 }
                 element2.AddElement(this.method_26(point2.X + this.RightInOutSpace, point.Y, str2, symbol3) as IElement);
-                x = ((int) (ipoint_1.X/num4))*num4;
+                x = ((int) (ysPoint.X/num4))*num4;
                 if (this.BottomInOutSpace > this.TopInOutSpace)
                 {
                     symbol2.VerticalAlignment = esriTextVerticalAlignment.esriTVATop;
@@ -373,7 +379,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                         this.method_26(point2.X, point2.Y + this.TopInOutSpace, str, symbol2) as IElement);
                 }
                 element2.AddElement(this.method_26(point2.X, point2.Y + this.TopInOutSpace, str2, symbol3) as IElement);
-                x = ipoint_1.Y;
+                x = ysPoint.Y;
                 if (Math.Abs(x) > num5)
                 {
                     x = ((int) (x/num5))*num5;
@@ -426,11 +432,11 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
             ILineSymbol symbol = this.method_25();
             IGroupElement element2 = new GroupElementClass();
-            element2.AddElement(this.method_29(ipoint_0.X, ipoint_0.Y, -this.LeftInOutSpace, -this.BottomInOutSpace,
+            element2.AddElement(this.CreateCornerShortElement(ipoint_0.X, ipoint_0.Y, -this.LeftInOutSpace, -this.BottomInOutSpace,
                 symbol));
-            element2.AddElement(this.method_29(ipoint_1.X, ipoint_1.Y, -this.LeftInOutSpace, this.TopInOutSpace, symbol));
-            element2.AddElement(this.method_29(ipoint_2.X, ipoint_2.Y, this.RightInOutSpace, this.TopInOutSpace, symbol));
-            element2.AddElement(this.method_29(ipoint_3.X, ipoint_3.Y, this.RightInOutSpace, -this.BottomInOutSpace,
+            element2.AddElement(this.CreateCornerShortElement(ipoint_1.X, ipoint_1.Y, -this.LeftInOutSpace, this.TopInOutSpace, symbol));
+            element2.AddElement(this.CreateCornerShortElement(ipoint_2.X, ipoint_2.Y, this.RightInOutSpace, this.TopInOutSpace, symbol));
+            element2.AddElement(this.CreateCornerShortElement(ipoint_3.X, ipoint_3.Y, this.RightInOutSpace, -this.BottomInOutSpace,
                 symbol));
             return (element2 as IElement);
         }
@@ -440,7 +446,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             IMapFrame focusMapFrame;
             IEnvelope mapBounds;
             double xMin;
-            double num;
+            double yMin;
             (pActiveView.FocusMap as IMapClipOptions).ClipType = esriMapClipType.esriMapClipNone;
             if (pActiveView.FocusMap is IMapAutoExtentOptions)
             {
@@ -448,8 +454,13 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
             if (this.MapFramingType == MapFramingType.AnyFraming)
             {
+                IEnvelope oldMapEnvelope = ((IActiveView) pActiveView.FocusMap).Extent;
+                Debug.Print(oldMapEnvelope.Width.ToString());
+                Debug.Print(oldMapEnvelope.Height.ToString());
                 focusMapFrame = MapFrameAssistant.GetFocusMapFrame(pActiveView as IPageLayout);
                 IEnvelope envelope = (focusMapFrame as IElement).Geometry.Envelope;
+                Debug.Print(envelope.Width.ToString());
+                Debug.Print(envelope.Height.ToString());
                 IEnvelope envelopeClass = new EnvelopeClass();
                 envelopeClass.PutCoords(3, 3, 53, 53);
                 ITransform2D transform2D = focusMapFrame as ITransform2D;
@@ -460,36 +471,37 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 mapBounds = focusMapFrame.MapBounds;
                 IEnvelope extent = (pActiveView.FocusMap as IActiveView).Extent;
                 xMin = 0;
-                num = 0;
+                yMin = 0;
                 if (mapBounds.YMin <= 0)
                 {
-                    num = 1000 + Math.Abs(mapBounds.YMin);
+                    yMin = 1000 + Math.Abs(mapBounds.YMin);
                 }
                 if (mapBounds.XMin <= 0)
                 {
                     xMin = 500000 + mapBounds.XMin;
                 }
                 this.Scale = focusMapFrame.Map.MapScale;
-                mapBounds.Offset(xMin, num);
+                mapBounds.Offset(xMin, yMin);
                 this.CreateTKByRect(pActiveView, mapBounds);
             }
             else if (this.MapFramingType == MapFramingType.StandardFraming)
             {
                 focusMapFrame = MapFrameAssistant.GetFocusMapFrame(pActiveView as IPageLayout);
                 mapBounds = pActiveView.Extent;
+                //mapBounds = ((IActiveView)pActiveView.FocusMap).Extent;
                 if (this.MapFrameType == MapFrameType.MFTRect)
                 {
                     xMin = 0;
-                    num = 0;
+                    yMin = 0;
                     if (mapBounds.YMin <= 0)
                     {
-                        num = 1000 + Math.Abs(mapBounds.YMin);
+                        yMin = 1000 + Math.Abs(mapBounds.YMin);
                     }
                     if (mapBounds.XMin <= 0)
                     {
                         xMin = 500000 + mapBounds.XMin;
                     }
-                    mapBounds.Offset(xMin, num);
+                    mapBounds.Offset(xMin, yMin);
                     (focusMapFrame.Map as IActiveView).Extent = mapBounds;
                     this.CreateTKN(pActiveView, mapBounds.LowerLeft);
                 }
@@ -552,7 +564,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                         : string.Concat("J50", str, "001001"));
                     MapNoAssistant mapNoAssistant = MapNoAssistantFactory.CreateMapNoAssistant(str1);
                     this.Scale = (double) mapNoAssistant.GetScale();
-                    this.double_6 = this.Scale;
+                    this.m_Scale = this.Scale;
                     this.CreateTrapezoidTK(pActiveView as IPageLayout, mapNoAssistant);
                 }
             }
@@ -585,19 +597,19 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 double mapScale = focusMapFrame.MapScale;
                 if (mapScale != 0.0)
                 {
-                    this.double_6 = mapScale;
+                    this.m_Scale = mapScale;
                     if (!this.IsAdapationScale)
                     {
                     }
                 }
                 else
                 {
-                    this.double_6 = 500.0;
+                    this.m_Scale = 500.0;
                 }
                 if (this.MapGrid != null)
                 {
-                    (this.MapGrid as IMeasuredGrid).XIntervalSize = (this.XInterval*this.double_6)/100.0;
-                    (this.MapGrid as IMeasuredGrid).YIntervalSize = (this.YInterval*this.double_6)/100.0;
+                    (this.MapGrid as IMeasuredGrid).XIntervalSize = (this.XInterval*this.m_Scale)/100.0;
+                    (this.MapGrid as IMeasuredGrid).YIntervalSize = (this.YInterval*this.m_Scale)/100.0;
                     (focusMapFrame as IMapGrids).AddMapGrid(this.MapGrid);
                     if (this.BorderSymbol != null)
                     {
@@ -613,19 +625,19 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 }
             }
             IEnvelope envelope = (focusMapFrame as IElement).Geometry.Envelope;
-            this.double_2 = envelope.XMin;
-            this.double_3 = envelope.YMin;
-            this.double_4 = envelope.XMax;
-            this.double_5 = envelope.YMax;
-            this.method_0(iactiveView_0);
+            this._XMin = envelope.XMin;
+            this._YMin = envelope.YMin;
+            this._XMax = envelope.XMax;
+            this._YMax = envelope.YMax;
+            this.ApplyElementValue(iactiveView_0);
             double num8 = ((((this.BorderSymbol == null)
                                 ? 0.0
                                 : ((this.LeftInOutSpace + this.RightInOutSpace) + this.OutBorderWidth)) + 6.0) +
-                           this.double_4) - this.double_2;
+                           this._XMax) - this._XMin;
             double num9 = ((((this.BorderSymbol == null)
                                 ? 0.0
                                 : ((this.TopInOutSpace + this.BottomInOutSpace) + this.OutBorderWidth)) + 6.0) +
-                           this.double_5) - this.double_3;
+                           this._YMax) - this._YMin;
             (iactiveView_0 as IPageLayout).Page.PutCustomSize(num8, num9);
             this.Width = width;
             this.Height = height;
@@ -667,7 +679,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                             mapNoAssistant_0 = new LandUseMapNoAssistant("GF490994");
                         }
                         this.Scale = mapNoAssistant_0.GetScale();
-                        this.double_6 = this.Scale;
+                        this.m_Scale = this.Scale;
                         this.CreateTrapezoidTK(iactiveView_0 as IPageLayout, mapNoAssistant_0);
                     }
                     this.Width = width;
@@ -675,7 +687,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 }
                 else
                 {
-                    this.double_6 = this.Scale;
+                    this.m_Scale = this.Scale;
                     if (focusMapFrame.MapBounds == null)
                     {
                         focusMapFrame.MapBounds = (focusMapFrame.Map as IActiveView).FullExtent;
@@ -745,30 +757,30 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     }
                 }
                 IEnvelope envelope = (focusMapFrame as IElement).Geometry.Envelope;
-                this.double_2 = envelope.XMin;
-                this.double_3 = envelope.YMin;
-                this.double_4 = envelope.XMax;
-                this.double_5 = envelope.YMax;
-                this.method_0(iactiveView_0);
+                this._XMin = envelope.XMin;
+                this._YMin = envelope.YMin;
+                this._XMax = envelope.XMax;
+                this._YMax = envelope.YMax;
+                this.ApplyElementValue(iactiveView_0);
                 double num11 = ((((this.BorderSymbol == null)
                                      ? 0.0
                                      : ((this.LeftInOutSpace + this.RightInOutSpace) + this.OutBorderWidth)) + 6.0) +
-                                this.double_4) - this.double_2;
-                if (this.double_3 < 0.0)
+                                this._XMax) - this._XMin;
+                if (this._YMin < 0.0)
                 {
-                    this.double_3 = 0.0;
+                    this._YMin = 0.0;
                 }
                 double num12 = ((((this.BorderSymbol == null)
                                      ? 0.0
                                      : ((this.TopInOutSpace + this.BottomInOutSpace) + this.OutBorderWidth)) + 6.0) +
-                                this.double_5) - this.double_3;
+                                this._YMax) - this._YMin;
                 (iactiveView_0 as IPageLayout).Page.PutCustomSize(num11, num12);
             }
         }
 
         public void CreateTK(IActiveView iactiveView_0, double double_22, double double_23)
         {
-            this.double_6 = this.Scale;
+            this.m_Scale = this.Scale;
             IMapFrame focusMapFrame = MapFrameAssistant.GetFocusMapFrame(iactiveView_0 as IPageLayout);
             if (focusMapFrame.Map is IMapAutoExtentOptions)
             {
@@ -813,19 +825,19 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             IGraphicsContainer graphicsContainer = iactiveView_0.GraphicsContainer;
             this.method_2(iactiveView_0 as IPageLayout, num7, num8);
             IEnvelope envelope4 = (focusMapFrame as IElement).Geometry.Envelope;
-            this.double_2 = envelope4.XMin;
-            this.double_3 = envelope4.YMin;
-            this.double_4 = envelope4.XMax;
-            this.double_5 = envelope4.YMax;
-            this.method_0(iactiveView_0);
+            this._XMin = envelope4.XMin;
+            this._YMin = envelope4.YMin;
+            this._XMax = envelope4.XMax;
+            this._YMax = envelope4.YMax;
+            this.ApplyElementValue(iactiveView_0);
             double num11 = ((((this.BorderSymbol == null)
                                  ? 0.0
                                  : ((this.LeftInOutSpace + this.RightInOutSpace) + this.OutBorderWidth)) + 6.0) +
-                            this.double_4) - this.double_2;
+                            this._XMax) - this._XMin;
             double num12 = ((((this.BorderSymbol == null)
                                  ? 0.0
                                  : ((this.TopInOutSpace + this.BottomInOutSpace) + this.OutBorderWidth)) + 6.0) +
-                            this.double_5) - this.double_3;
+                            this._YMax) - this._YMin;
             (iactiveView_0 as IPageLayout).Page.PutCustomSize(num11, num12);
             if (focusMapFrame.Map is IMapAutoExtentOptions)
             {
@@ -846,7 +858,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             num3 = (num3 > num4) ? num3 : num4;
             int num5 = (int) (num3/100.0);
             this.Scale = num5*100;
-            this.double_6 = this.Scale;
+            this.m_Scale = this.Scale;
             width = (ienvelope_0.Width/this.Scale)*100.0;
             height = (ienvelope_0.Height/this.Scale)*100.0;
             if (!(this.IsTest || !this.FixedWidthAndBottomSpace))
@@ -903,11 +915,11 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 IEnvelope envelope3 = (focusMapFrame.Map as IActiveView).Extent;
                 if (mapScale != 0.0)
                 {
-                    this.double_6 = mapScale;
+                    this.m_Scale = mapScale;
                 }
                 else
                 {
-                    this.double_6 = 500.0;
+                    this.m_Scale = 500.0;
                 }
                 if (this.MapGrid != null)
                 {
@@ -928,19 +940,19 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 }
             }
             IEnvelope envelope = (focusMapFrame as IElement).Geometry.Envelope;
-            this.double_2 = envelope.XMin;
-            this.double_3 = envelope.YMin;
-            this.double_4 = envelope.XMax;
-            this.double_5 = envelope.YMax;
-            this.method_0(iactiveView_0);
+            this._XMin = envelope.XMin;
+            this._YMin = envelope.YMin;
+            this._XMax = envelope.XMax;
+            this._YMax = envelope.YMax;
+            this.ApplyElementValue(iactiveView_0);
             double num9 = ((((this.BorderSymbol == null)
                                 ? 0.0
                                 : ((this.LeftInOutSpace + this.RightInOutSpace) + this.OutBorderWidth)) + 6.0) +
-                           this.double_4) - this.double_2;
+                           this._XMax) - this._XMin;
             double num10 = ((((this.BorderSymbol == null)
                                  ? 0.0
                                  : ((this.TopInOutSpace + this.BottomInOutSpace) + this.OutBorderWidth)) + 6.0) +
-                            this.double_5) - this.double_3;
+                            this._YMax) - this._YMin;
             (iactiveView_0 as IPageLayout).Page.PutCustomSize(num9, num10);
             this.Width = width;
             this.Height = height;
@@ -986,18 +998,18 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 num5 = (num5 > num6) ? num5 : num6;
                 int num7 = ((int) (num5/100.0)) + 1;
                 this.Scale = num7*100;
-                this.double_6 = this.Scale;
+                this.m_Scale = this.Scale;
                 IEnvelope from = (focusMapFrame as IElement).Geometry.Envelope;
                 IEnvelope to = new EnvelopeClass();
-                this.method_1();
+                //this.method_1();
                 to.PutCoords(2.0, 2.0, width + 2.0, height + 2.0);
                 IAffineTransformation2D transformation = new AffineTransformation2DClass();
                 transformation.DefineFromEnvelopes(from, to);
                 (focusMapFrame as ITransform2D).Transform(esriTransformDirection.esriTransformForward, transformation);
                 IEnvelope envelope = (focusMapFrame as IElement).Geometry.Envelope;
                 to = new EnvelopeClass();
-                double num8 = (this.Width*this.double_6)/100.0;
-                double num9 = (this.Height*this.double_6)/100.0;
+                double num8 = (this.Width*this.m_Scale)/100.0;
+                double num9 = (this.Height*this.m_Scale)/100.0;
                 IEnvelope extent = (focusMapFrame.Map as IActiveView).Extent;
                 double num10 = num8 - ienvelope_0.Width;
                 double num11 = num9 - ienvelope_0.Height;
@@ -1005,8 +1017,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 double num13 = ienvelope_0.YMin - (num11/2.0);
                 double xMin = num12;
                 double yMin = num13;
-                to.PutCoords(xMin, yMin, xMin + ((this.Width*this.double_6)/100.0),
-                    yMin + ((this.Height*this.double_6)/100.0));
+                to.PutCoords(xMin, yMin, xMin + ((this.Width*this.m_Scale)/100.0),
+                    yMin + ((this.Height*this.m_Scale)/100.0));
                 IActiveView map = focusMapFrame.Map as IActiveView;
                 (focusMapFrame.Map as IActiveView).Extent = to;
                 focusMapFrame.Map.MapScale = this.Scale;
@@ -1022,19 +1034,19 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 envelope = (focusMapFrame.Map as IActiveView).Extent;
                 this.method_2(iactiveView_0 as IPageLayout, xMin, yMin);
                 IEnvelope envelope4 = (focusMapFrame as IElement).Geometry.Envelope;
-                this.double_2 = envelope4.XMin;
-                this.double_3 = envelope4.YMin;
-                this.double_4 = envelope4.XMax;
-                this.double_5 = envelope4.YMax;
-                this.method_0(iactiveView_0);
+                this._XMin = envelope4.XMin;
+                this._YMin = envelope4.YMin;
+                this._XMax = envelope4.XMax;
+                this._YMax = envelope4.YMax;
+                this.ApplyElementValue(iactiveView_0);
                 double num16 = ((((this.BorderSymbol == null)
                                      ? 0.0
                                      : ((this.LeftInOutSpace + this.RightInOutSpace) + this.OutBorderWidth)) + 6.0) +
-                                this.double_4) - this.double_2;
+                                this._XMax) - this._XMin;
                 double num17 = ((((this.BorderSymbol == null)
                                      ? 0.0
                                      : ((this.TopInOutSpace + this.BottomInOutSpace) + this.OutBorderWidth)) + 6.0) +
-                                this.double_5) - this.double_3;
+                                this._YMax) - this._YMin;
                 (iactiveView_0 as IPageLayout).Page.PutCustomSize(num16, num17);
                 if (focusMapFrame.Map is IMapAutoExtentOptions)
                 {
@@ -1050,7 +1062,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public void CreateTKEx(IActiveView iactiveView_0, double double_22, double double_23)
         {
-            this.double_6 = this.Scale;
+            this.m_Scale = this.Scale;
             IMapFrame focusMapFrame = MapFrameAssistant.GetFocusMapFrame(iactiveView_0 as IPageLayout);
             double width = this.Width;
             double height = this.Height;
@@ -1088,27 +1100,27 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             IEnvelope envelope9 = (focusMapFrame.Map as IActiveView).Extent;
             this.method_2(iactiveView_0 as IPageLayout, xMin, yMin);
             IEnvelope envelope3 = (focusMapFrame as IElement).Geometry.Envelope;
-            this.double_2 = envelope3.XMin;
-            this.double_3 = envelope3.YMin;
-            this.double_4 = envelope3.XMax;
-            this.double_5 = envelope3.YMax;
-            this.method_0(iactiveView_0);
+            this._XMin = envelope3.XMin;
+            this._YMin = envelope3.YMin;
+            this._XMax = envelope3.XMax;
+            this._YMax = envelope3.YMax;
+            this.ApplyElementValue(iactiveView_0);
             double num5 = ((((this.BorderSymbol == null)
                                 ? 0.0
                                 : ((this.LeftInOutSpace + this.RightInOutSpace) + this.OutBorderWidth)) + 6.0) +
-                           this.double_5) - this.double_2;
+                           this._YMax) - this._XMin;
             double num6 = ((((this.BorderSymbol == null)
                                 ? 0.0
                                 : ((this.TopInOutSpace + this.BottomInOutSpace) + this.OutBorderWidth)) + 6.0) +
-                           this.double_5) - this.double_3;
+                           this._YMax) - this._YMin;
             (iactiveView_0 as IPageLayout).Page.PutCustomSize(num5, num6);
         }
 
-        public void CreateTKN(IActiveView iactiveView_0)
+        public void CreateTKN(IActiveView pActiveView)
         {
             double width = this.Width;
             double height = this.Height;
-            IMapFrame focusMapFrame = MapFrameAssistant.GetFocusMapFrame(iactiveView_0 as IPageLayout);
+            IMapFrame focusMapFrame = MapFrameAssistant.GetFocusMapFrame(pActiveView as IPageLayout);
             IEnvelope from = (focusMapFrame as IElement).Geometry.Envelope;
             double num3 = ((this.LeftInOutSpace + this.RightInOutSpace) + this.OutBorderWidth) + 8.0;
             double num4 = ((this.TopInOutSpace + this.BottomInOutSpace) + this.OutBorderWidth) + 8.0;
@@ -1119,70 +1131,70 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             IAffineTransformation2D transformation = new AffineTransformation2DClass();
             transformation.DefineFromEnvelopes(from, to);
             (focusMapFrame as ITransform2D).Transform(esriTransformDirection.esriTransformForward, transformation);
-            (iactiveView_0 as IPageLayout).Page.PutCustomSize(from.Width + num3, from.Height + num4);
+            (pActiveView as IPageLayout).Page.PutCustomSize(from.Width + num3, from.Height + num4);
             IEnvelope extent = (focusMapFrame.Map as IActiveView).Extent;
             double mapScale = focusMapFrame.MapScale;
             if (mapScale != 0.0)
             {
-                this.double_6 = ((int) (mapScale/100.0))*100.0;
+                this.m_Scale = ((int) (mapScale/100.0))*100.0;
                 if (!this.IsAdapationScale)
                 {
                 }
             }
             else
             {
-                this.double_6 = 500.0;
+                this.m_Scale = 500.0;
             }
             if (this.MapGrid != null)
             {
-                (this.MapGrid as IMeasuredGrid).XIntervalSize = (this.XInterval*this.double_6)/100.0;
-                (this.MapGrid as IMeasuredGrid).YIntervalSize = (this.YInterval*this.double_6)/100.0;
+                (this.MapGrid as IMeasuredGrid).XIntervalSize = (this.XInterval*this.m_Scale)/100.0;
+                (this.MapGrid as IMeasuredGrid).YIntervalSize = (this.YInterval*this.m_Scale)/100.0;
                 (focusMapFrame as IMapGrids).AddMapGrid(this.MapGrid);
                 if (this.BorderSymbol != null)
                 {
                     IElement element = this.method_14(focusMapFrame, this.BorderSymbol);
-                    (iactiveView_0 as IGraphicsContainer).AddElement(element, -1);
+                    (pActiveView as IGraphicsContainer).AddElement(element, -1);
                 }
             }
             else
             {
                 this.Width = from.Width;
                 this.Height = from.Height;
-                this.method_3(iactiveView_0 as IPageLayout, extent.LowerLeft, extent.UpperRight);
+                this.method_3(pActiveView as IPageLayout, extent.LowerLeft, extent.UpperRight);
             }
             IEnvelope envelope = (focusMapFrame as IElement).Geometry.Envelope;
-            this.double_2 = envelope.XMin;
-            this.double_3 = envelope.YMin;
-            this.double_4 = envelope.XMax;
-            this.double_5 = envelope.YMax;
-            this.method_0(iactiveView_0);
+            this._XMin = envelope.XMin;
+            this._YMin = envelope.YMin;
+            this._XMax = envelope.XMax;
+            this._YMax = envelope.YMax;
+            this.ApplyElementValue(pActiveView);
             double num8 = ((((this.BorderSymbol == null)
                                 ? 0.0
                                 : ((this.LeftInOutSpace + this.RightInOutSpace) + this.OutBorderWidth)) + 6.0) +
-                           this.double_4) - this.double_2;
+                           this._XMax) - this._XMin;
             double num9 = ((((this.BorderSymbol == null)
                                 ? 0.0
                                 : ((this.TopInOutSpace + this.BottomInOutSpace) + this.OutBorderWidth)) + 6.0) +
-                           this.double_5) - this.double_3;
-            (iactiveView_0 as IPageLayout).Page.PutCustomSize(num8, num9);
+                           this._YMax) - this._YMin;
+            (pActiveView as IPageLayout).Page.PutCustomSize(num8, num9);
             this.Width = width;
             this.Height = height;
         }
 
-        public void CreateTKN(IActiveView iactiveView_0, IPoint ipoint_0)
+        public void CreateTKN(IActiveView pActiveView, IPoint zxPoint)
         {
             if (this.MapFrameType == MapCartoTemplateLib.MapFrameType.MFTTrapezoid)
             {
-                ISpatialReference spatialReference = iactiveView_0.FocusMap.SpatialReference;
+                ISpatialReference spatialReference = pActiveView.FocusMap.SpatialReference;
                 if (spatialReference is IProjectedCoordinateSystem)
                 {
                     IGeographicCoordinateSystem geographicCoordinateSystem =
                         (spatialReference as IProjectedCoordinateSystem).GeographicCoordinateSystem;
-                    ipoint_0.SpatialReference = spatialReference;
-                    ipoint_0.Project(geographicCoordinateSystem);
+                    zxPoint.SpatialReference = spatialReference;
+                    zxPoint.Project(geographicCoordinateSystem);
                     THTools tools = new THTools();
                     string str = "";
-                    if (tools.BL2FileName_standard((int) this.Scale, ipoint_0.X, ipoint_0.Y, out str))
+                    if (tools.BL2FileName_standard((int) this.Scale, zxPoint.X, zxPoint.Y, out str))
                     {
                         MapCartoTemplateLib.MapTemplateParam param = this.FindParamByName("图号");
                         if (param != null)
@@ -1191,57 +1203,63 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                         }
                         MapNoAssistant assistant = MapNoAssistantFactory.CreateMapNoAssistant(str);
                         this.Scale = assistant.GetScale();
-                        this.double_6 = this.Scale;
-                        this.CreateTrapezoidTK(iactiveView_0 as IPageLayout, assistant);
+                        this.m_Scale = this.Scale;
+                        this.CreateTrapezoidTK(pActiveView as IPageLayout, assistant);
                     }
                 }
             }
             else
             {
-                double num = (this.Width*this.Scale)/100.0;
-                double num2 = (this.Height*this.Scale)/100.0;
-                double num3 = ((int) (ipoint_0.X/num))*num;
-                double num4 = ((int) (ipoint_0.Y/num2))*num2;
+                //! 图框内框绘制
+
+                double xDelta = (this.Width*this.Scale)/100.0;
+                double yDelta = (this.Height*this.Scale)/100.0;
+                double xQZ = ((int) (zxPoint.X/xDelta))*xDelta;
+                double yQZ = ((int) (zxPoint.Y/yDelta))*yDelta;
                 if (this.DrawJWD)
                 {
-                    double num5 = num3 + num;
-                    double num6 = num4 + num2;
+                    double xQZ2 = xQZ + xDelta;
+                    double yQZ2 = yQZ + yDelta;
+                    //! 左下角
                     PointClass class2 = new PointClass
                     {
-                        X = num3,
-                        Y = num4
+                        X = xQZ,
+                        Y = yQZ
                     };
+                    //! 左上角
                     IPoint point = class2;
                     PointClass class3 = new PointClass
                     {
-                        X = num3,
-                        Y = num6
+                        X = xQZ,
+                        Y = yQZ2
                     };
+                    //! 右上角
                     IPoint point2 = class3;
                     PointClass class4 = new PointClass
                     {
-                        X = num5,
-                        Y = num6
+                        X = xQZ2,
+                        Y = yQZ2
                     };
                     IPoint point3 = class4;
+                    //! 右下角
                     PointClass class5 = new PointClass
                     {
-                        X = num5,
-                        Y = num4
+                        X = xQZ2,
+                        Y = yQZ
                     };
                     IPoint point4 = class5;
-                    this.method_10(iactiveView_0 as IPageLayout, point, point2, point3, point4);
+                    this.method_10(pActiveView as IPageLayout, point, point2, point3, point4);
                 }
                 else
                 {
-                    this.CreateTK(iactiveView_0, num3, num4);
+                    this.CreateTK(pActiveView, xQZ, yQZ);
                 }
             }
         }
 
-        public void CreateTKN(IActiveView iactiveView_0, MapNoAssistant mapNoAssistant_0)
+        public void CreateTKN(IActiveView pActiveView, MapNoAssistant mapNoAssistant_0)
         {
-            if (this.CanCreateTK(iactiveView_0))
+            if (this.CanCreateTK(pActiveView))
             {
                 double num3;
                 double num4;
@@ -1249,7 +1267,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 IAffineTransformation2D transformationd;
                 double width = this.Width;
                 double height = this.Height;
-                IMapFrame focusMapFrame = MapFrameAssistant.GetFocusMapFrame(iactiveView_0 as IPageLayout);
+                IMapFrame focusMapFrame = MapFrameAssistant.GetFocusMapFrame(pActiveView as IPageLayout);
                 IEnvelope from = (focusMapFrame as IElement).Geometry.Envelope;
                 if (this.MapFramingType != MapCartoTemplateLib.MapFramingType.StandardFraming)
                 {
@@ -1268,8 +1286,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                         transformationd.DefineFromEnvelopes(from, envelope2);
                         ITransform2D transformd = focusMapFrame as ITransform2D;
                         transformd.Transform(esriTransformDirection.esriTransformForward, transformationd);
-                        (iactiveView_0 as IPageLayout).Page.PutCustomSize(from.Width + num3, from.Height + num4);
-                        this.method_6(iactiveView_0 as IPageLayout);
+                        (pActiveView as IPageLayout).Page.PutCustomSize(from.Width + num3, from.Height + num4);
+                        this.method_6(pActiveView as IPageLayout);
                     }
                     else
                     {
@@ -1278,22 +1296,22 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                             mapNoAssistant_0 = new LandUseMapNoAssistant("GF490994");
                         }
                         this.Scale = mapNoAssistant_0.GetScale();
-                        this.double_6 = this.Scale;
-                        this.CreateTrapezoidTK(iactiveView_0 as IPageLayout, mapNoAssistant_0);
+                        this.m_Scale = this.Scale;
+                        this.CreateTrapezoidTK(pActiveView as IPageLayout, mapNoAssistant_0);
                     }
                     this.Width = width;
                     this.Height = height;
                 }
                 else
                 {
-                    this.double_6 = this.Scale;
+                    this.m_Scale = this.Scale;
                     if (focusMapFrame.MapBounds == null)
                     {
                         focusMapFrame.MapBounds = (focusMapFrame.Map as IActiveView).FullExtent;
                     }
                     if (this.TemplateSizeStyle == MapCartoTemplateLib.TemplateSizeStyle.SameAsMapFrame)
                     {
-                        this.CreateTK(iactiveView_0);
+                        this.CreateTK(pActiveView);
                         this.Width = width;
                         this.Height = height;
                     }
@@ -1349,31 +1367,31 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                         {
                             width = -width;
                         }
-                        IGraphicsContainer graphicsContainer = iactiveView_0.GraphicsContainer;
+                        IGraphicsContainer graphicsContainer = pActiveView.GraphicsContainer;
                         envelope2.PutCoords(num7, num8, width + num7, height + num8);
                         IEnvelope envelope8 = (focusMapFrame as IElement).Geometry.Envelope;
-                        this.method_2(iactiveView_0 as IPageLayout, x, y);
+                        this.method_2(pActiveView as IPageLayout, x, y);
                     }
                 }
                 IEnvelope envelope = (focusMapFrame as IElement).Geometry.Envelope;
-                this.double_2 = envelope.XMin;
-                this.double_3 = envelope.YMin;
-                this.double_4 = envelope.XMax;
-                this.double_5 = envelope.YMax;
-                this.method_0(iactiveView_0);
+                this._XMin = envelope.XMin;
+                this._YMin = envelope.YMin;
+                this._XMax = envelope.XMax;
+                this._YMax = envelope.YMax;
+                this.ApplyElementValue(pActiveView);
                 double num11 = ((((this.BorderSymbol == null)
                                      ? 0.0
                                      : ((this.LeftInOutSpace + this.RightInOutSpace) + this.OutBorderWidth)) + 6.0) +
-                                this.double_4) - this.double_2;
-                if (this.double_3 < 0.0)
+                                this._XMax) - this._XMin;
+                if (this._YMin < 0.0)
                 {
-                    this.double_3 = 0.0;
+                    this._YMin = 0.0;
                 }
                 double num12 = ((((this.BorderSymbol == null)
                                      ? 0.0
                                      : ((this.TopInOutSpace + this.BottomInOutSpace) + this.OutBorderWidth)) + 6.0) +
-                                this.double_5) - this.double_3;
-                (iactiveView_0 as IPageLayout).Page.PutCustomSize(num11, num12);
+                                this._YMax) - this._YMin;
+                (pActiveView as IPageLayout).Page.PutCustomSize(num11, num12);
             }
         }
 
@@ -1472,7 +1490,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             (ipageLayout_0 as IGraphicsContainer).AddElement(element2 as IElement, -1);
             (element2 as ITransform2D).Scale(bounds.UpperLeft, 1.0, 1.0);
             (ipageLayout_0 as IGraphicsContainer).UpdateElement(element2 as IElement);
-            this.method_0(ipageLayout_0 as IActiveView);
+            this.ApplyElementValue(ipageLayout_0 as IActiveView);
             focusMapFrame.Border = null;
             (ipageLayout_0 as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
         }
@@ -1481,16 +1499,16 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         {
             if (this.OID != -1)
             {
-                if (this.mapTemplateElelemt != null)
+                if (this.mapTemplateElelemts != null)
                 {
-                    foreach (MapCartoTemplateLib.MapTemplateElement element in this.mapTemplateElelemt)
+                    foreach (MapCartoTemplateLib.MapTemplateElement element in this.mapTemplateElelemts)
                     {
                         element.Delete();
                     }
                 }
-                if (this.mapTemplateParam != null)
+                if (this.mapTemplateParams != null)
                 {
-                    foreach (MapCartoTemplateLib.MapTemplateParam param in this.mapTemplateParam)
+                    foreach (MapCartoTemplateLib.MapTemplateParam param in this.mapTemplateParams)
                     {
                         param.Delete();
                     }
@@ -1501,11 +1519,11 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
-        public MapCartoTemplateLib.MapTemplateParam FindParamByName(string string_6)
+        public MapCartoTemplateLib.MapTemplateParam FindParamByName(string pParamName)
         {
             foreach (MapCartoTemplateLib.MapTemplateParam param in this.MapTemplateParam)
             {
-                if (param.Name == string_6)
+                if (param.Name == pParamName)
                 {
                     return param;
                 }
@@ -1641,7 +1659,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     (TemplateSizeStyle) Convert.ToInt32(RowAssisant.GetFieldValue(row, "FixDataRange"));
                 this.SmallFontSize = Convert.ToSingle(RowAssisant.GetFieldValue(row, "SmallFontSize"));
                 this.BigFontSize = Convert.ToSingle(RowAssisant.GetFieldValue(row, "BigFontSize"));
-                this.method_11();
+                this.LoadMapTemplateParam();
                 this.ReadTemplateElements();
             }
         }
@@ -1724,15 +1742,14 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
-        private void method_0(IActiveView iactiveView_0)
+        private void ApplyElementValue(IActiveView iactiveView_0)
         {
             IGraphicsContainer graphicsContainer = iactiveView_0.GraphicsContainer;
             for (int i = 0; i < this.MapTemplateElement.Count; i++)
             {
-                if (!this.IsTest)
-                {
-                    this.MapTemplateElement[i].Init();
-                }
+             
+                this.MapTemplateElement[i].Init();
+                
                 IElement element = this.MapTemplateElement[i].GetElement(iactiveView_0 as IPageLayout);
                 if (element is IGroupElement)
                 {
@@ -1752,12 +1769,14 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 {
                     try
                     {
-                        graphicsContainer.AddElement(element, -1);
+                        
+                         graphicsContainer.AddElement(element, -1);
+                       
                         IEnvelope envelope = element.Geometry.Envelope;
-                        this.double_2 = (this.double_2 < envelope.XMin) ? this.double_2 : envelope.XMin;
-                        this.double_3 = (this.double_3 < envelope.YMin) ? this.double_3 : envelope.YMin;
-                        this.double_4 = (this.double_4 > envelope.XMax) ? this.double_4 : envelope.XMax;
-                        this.double_5 = (this.double_5 > envelope.YMax) ? this.double_5 : envelope.YMax;
+                        this._XMin = (this._XMin < envelope.XMin) ? this._XMin : envelope.XMin;
+                        this._YMin = (this._YMin < envelope.YMin) ? this._YMin : envelope.YMin;
+                        this._XMax = (this._XMax > envelope.XMax) ? this._XMax : envelope.XMax;
+                        this._YMax = (this._YMax > envelope.YMax) ? this._YMax : envelope.YMax;
                     }
                     catch
                     {
@@ -1766,52 +1785,52 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
-        private IPoint method_1()
-        {
-            PointClass class2 = new PointClass
-            {
-                X = 0.0,
-                Y = 0.0
-            };
-            IPoint point = class2;
-            double num1 = (this.LeftInOutSpace + (this.OutBorderWidth/2.0)) + 4.0;
-            double num2 = (this.BottomInOutSpace + (this.OutBorderWidth/2.0)) + 4.0;
-            return point;
-        }
+        //private IPoint method_1()
+        //{
+        //    PointClass class2 = new PointClass
+        //    {
+        //        X = 0.0,
+        //        Y = 0.0
+        //    };
+        //    IPoint point = class2;
+        //    double num1 = (this.LeftInOutSpace + (this.OutBorderWidth/2.0)) + 4.0;
+        //    double num2 = (this.BottomInOutSpace + (this.OutBorderWidth/2.0)) + 4.0;
+        //    return point;
+        //}
 
-        private void method_10(IPageLayout ipageLayout_0, IPoint ipoint_0, IPoint ipoint_1, IPoint ipoint_2,
-            IPoint ipoint_3)
+        private void method_10(IPageLayout iPageLayout, IPoint zxPoint, IPoint zsPoint, IPoint ysPoint,
+            IPoint yxPoint)
         {
-            IMapFrame focusMapFrame = MapFrameAssistant.GetFocusMapFrame(ipageLayout_0);
+            IMapFrame focusMapFrame = MapFrameAssistant.GetFocusMapFrame(iPageLayout);
             IEnvelope bounds = new EnvelopeClass();
             IProjectedCoordinateSystem spatialReference =
                 focusMapFrame.Map.SpatialReference as IProjectedCoordinateSystem;
-            IPoint point = this.method_8(ipoint_0, spatialReference);
-            IPoint point2 = this.method_8(ipoint_1, spatialReference);
-            IPoint point3 = this.method_8(ipoint_3, spatialReference);
-            IPoint point4 = this.method_8(ipoint_2, spatialReference);
-            double num = (point.X < point2.X) ? point.X : point2.X;
-            double num2 = (point.Y < point3.Y) ? point.Y : point3.Y;
-            double num3 = (point3.X > point4.X) ? point3.X : point4.X;
-            double num4 = (point4.Y > point2.Y) ? point4.Y : point2.Y;
-            double num5 = ((double) ((int) (MapFrameAssistant.DEG2DDDMMSS(num)*10000.0)))/10000.0;
-            double num6 = ((double) ((int) (MapFrameAssistant.DEG2DDDMMSS(num2)*10000.0)))/10000.0;
-            double num7 = ((double) ((int) ((MapFrameAssistant.DEG2DDDMMSS(num3)*10000.0) + 0.5)))/10000.0;
-            double num8 = ((double) ((int) ((MapFrameAssistant.DEG2DDDMMSS(num4)*10000.0) + 0.5)))/10000.0;
-            ipoint_0.X = MapFrameAssistant.DDDMMSS2DEG(num5);
-            ipoint_0.Y = MapFrameAssistant.DDDMMSS2DEG(num6);
-            ipoint_1.X = MapFrameAssistant.DDDMMSS2DEG(num5);
-            ipoint_1.Y = MapFrameAssistant.DDDMMSS2DEG(num8);
-            ipoint_2.X = MapFrameAssistant.DDDMMSS2DEG(num7);
-            ipoint_2.Y = MapFrameAssistant.DDDMMSS2DEG(num8);
-            ipoint_3.X = MapFrameAssistant.DDDMMSS2DEG(num7);
-            ipoint_3.Y = MapFrameAssistant.DDDMMSS2DEG(num6);
+            IPoint zxPoint1 = this.ToGeoCS(zxPoint, spatialReference);
+            IPoint zsPoint1 = this.ToGeoCS(zsPoint, spatialReference);
+            IPoint yxPoint1 = this.ToGeoCS(yxPoint, spatialReference);
+            IPoint ysPoint1 = this.ToGeoCS(ysPoint, spatialReference);
+            double xmin = (zxPoint1.X < zsPoint1.X) ? zxPoint1.X : zsPoint1.X;
+            double ymin = (zxPoint1.Y < yxPoint1.Y) ? zxPoint1.Y : yxPoint1.Y;
+            double xmax = (yxPoint1.X > ysPoint1.X) ? yxPoint1.X : ysPoint1.X;
+            double ymax = (ysPoint1.Y > zsPoint1.Y) ? ysPoint1.Y : zsPoint1.Y;
+            double num5 = ((double) ((int) (MapFrameAssistant.DEG2DDDMMSS(xmin)*10000.0)))/10000.0;
+            double num6 = ((double) ((int) (MapFrameAssistant.DEG2DDDMMSS(ymin)*10000.0)))/10000.0;
+            double num7 = ((double) ((int) ((MapFrameAssistant.DEG2DDDMMSS(xmax)*10000.0) + 0.5)))/10000.0;
+            double num8 = ((double) ((int) ((MapFrameAssistant.DEG2DDDMMSS(ymax)*10000.0) + 0.5)))/10000.0;
+            zxPoint.X = MapFrameAssistant.DDDMMSS2DEG(num5);
+            zxPoint.Y = MapFrameAssistant.DDDMMSS2DEG(num6);
+            zsPoint.X = MapFrameAssistant.DDDMMSS2DEG(num5);
+            zsPoint.Y = MapFrameAssistant.DDDMMSS2DEG(num8);
+            ysPoint.X = MapFrameAssistant.DDDMMSS2DEG(num7);
+            ysPoint.Y = MapFrameAssistant.DDDMMSS2DEG(num8);
+            yxPoint.X = MapFrameAssistant.DDDMMSS2DEG(num7);
+            yxPoint.Y = MapFrameAssistant.DDDMMSS2DEG(num6);
             List<IPoint> list = new List<IPoint>
             {
-                this.method_9(ipoint_0, spatialReference),
-                this.method_9(ipoint_1, spatialReference),
-                this.method_9(ipoint_2, spatialReference),
-                this.method_9(ipoint_3, spatialReference)
+                this.ToProCS(zxPoint, spatialReference),
+                this.ToProCS(zsPoint, spatialReference),
+                this.ToProCS(ysPoint, spatialReference),
+                this.ToProCS(yxPoint, spatialReference)
             };
             this.MapXInterval = (this.XInterval*this.Scale)/100.0;
             this.MapYInterval = (this.YInterval*this.Scale)/100.0;
@@ -1819,13 +1838,13 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             double xMax = (list[3].X > list[2].X) ? list[3].X : list[2].X;
             double yMin = (list[3].Y < list[0].Y) ? list[3].Y : list[0].Y;
             double yMax = (list[1].Y > list[2].Y) ? list[1].Y : list[2].Y;
-            double num13 = ((xMax - xMin)/this.Scale)*100.0;
-            double num14 = ((yMax - yMin)/this.Scale)*100.0;
+            double xDWZ = ((xMax - xMin)/this.Scale)*100.0;
+            double yDWZ = ((yMax - yMin)/this.Scale)*100.0;
             IEnvelope envelope = (focusMapFrame as IElement).Geometry.Envelope;
             IEnvelope to = new EnvelopeClass();
             double num15 = (this.LeftInOutSpace + (this.OutBorderWidth/2.0)) + 4.0;
             double num16 = (this.BottomInOutSpace + (this.OutBorderWidth/2.0)) + 4.0;
-            to.PutCoords(num15, num16, num13 + num15, num14 + num16);
+            to.PutCoords(num15, num16, xDWZ + num15, yDWZ + num16);
             IAffineTransformation2D transformationd = new AffineTransformation2DClass();
             transformationd.DefineFromEnvelopes(envelope, to);
             (focusMapFrame as ITransform2D).Transform(esriTransformDirection.esriTransformForward, transformationd);
@@ -1834,21 +1853,21 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             (focusMapFrame.Map as IActiveView).Extent = to;
             focusMapFrame.MapBounds = to;
             focusMapFrame.Map.MapScale = this.Scale;
-            if (num13 < 0.0)
+            if (xDWZ < 0.0)
             {
-                num13 = -num13;
+                xDWZ = -xDWZ;
             }
             double num17 = ((this.LeftInOutSpace + this.RightInOutSpace) + this.OutBorderWidth) + 8.0;
             double num18 = ((this.TopInOutSpace + this.BottomInOutSpace) + this.OutBorderWidth) + 8.0;
-            ipageLayout_0.Page.PutCustomSize(num13 + num17, num14 + num18);
+            iPageLayout.Page.PutCustomSize(xDWZ + num17, yDWZ + num18);
             if (this.BorderSymbol != null)
             {
                 IElement element = this.method_14(focusMapFrame, this.BorderSymbol);
-                (ipageLayout_0 as IGraphicsContainer).AddElement(element, -1);
+                (iPageLayout as IGraphicsContainer).AddElement(element, -1);
             }
             MapCartoTemplateLib.YTTransformation transformation =
-                new MapCartoTemplateLib.YTTransformation(ipageLayout_0 as IActiveView);
-            IGroupElement element2 = this.method_28(ipageLayout_0, list[0], list[1], list[2], list[3]);
+                new MapCartoTemplateLib.YTTransformation(iPageLayout as IActiveView);
+            IGroupElement element2 = this.method_28(iPageLayout, list[0], list[1], list[2], list[3]);
             IPointCollection points = new PolygonClass();
             object before = Missing.Value;
             object after = Missing.Value;
@@ -1872,7 +1891,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 IElement element3 = null;
                 try
                 {
-                    element3 = this.method_41(ipageLayout_0 as IActiveView, transformation, list[0], list[1], list[2],
+                    element3 = this.method_41(iPageLayout as IActiveView, transformation, list[0], list[1], list[2],
                         list[3]);
                 }
                 catch (Exception)
@@ -1882,50 +1901,50 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 {
                     if (element3 is IGroupElement)
                     {
-                        element3.QueryBounds((ipageLayout_0 as IActiveView).ScreenDisplay, bounds);
+                        element3.QueryBounds((iPageLayout as IActiveView).ScreenDisplay, bounds);
                         (element3 as ITransform2D).Scale(bounds.UpperLeft, 1.0, 1.0);
                     }
                     element2.AddElement(element3);
                 }
             }
-            (element2 as IElement).QueryBounds((ipageLayout_0 as IActiveView).ScreenDisplay, bounds);
-            (ipageLayout_0 as IGraphicsContainer).AddElement(element2 as IElement, -1);
+            (element2 as IElement).QueryBounds((iPageLayout as IActiveView).ScreenDisplay, bounds);
+            (iPageLayout as IGraphicsContainer).AddElement(element2 as IElement, -1);
             (element2 as ITransform2D).Scale(bounds.UpperLeft, 1.0, 1.0);
-            (ipageLayout_0 as IGraphicsContainer).UpdateElement(element2 as IElement);
-            this.method_0(ipageLayout_0 as IActiveView);
+            (iPageLayout as IGraphicsContainer).UpdateElement(element2 as IElement);
+            this.ApplyElementValue(iPageLayout as IActiveView);
             focusMapFrame.Border = null;
-            (ipageLayout_0 as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
+            (iPageLayout as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
         }
 
-        private void method_11()
+        private void LoadMapTemplateParam()
         {
-            if (this.mapTemplateParam != null)
+            if (this.mapTemplateParams != null)
             {
-                this.mapTemplateParam.Clear();
+                this.mapTemplateParams.Clear();
             }
             IQueryFilter queryFilter = new QueryFilterClass
             {
                 WhereClause = "MapTemplateOID=" + this.OID
             };
             ICursor cursor = this.MapTemplateGallery.MapTemplateParamTable.Search(queryFilter, false);
-            IRow o = cursor.NextRow();
+            IRow row = cursor.NextRow();
             int index = this.MapTemplateGallery.MapTemplateParamTable.FindField("Name");
-            while (o != null)
+            while (row != null)
             {
-                o.get_Value(index).ToString();
-                MapCartoTemplateLib.MapTemplateParam param = new MapCartoTemplateLib.MapTemplateParam(o.OID, this);
+                
+                MapCartoTemplateLib.MapTemplateParam param = new MapCartoTemplateLib.MapTemplateParam(row.OID, this);
                 param.Load();
                 this.AddMapTemplateParam(param);
-                o = cursor.NextRow();
+                row = cursor.NextRow();
             }
-            ComReleaser.ReleaseCOMObject(o);
+            ComReleaser.ReleaseCOMObject(row);
         }
 
         private void ReadTemplateElements()
         {
-            if (this.mapTemplateElelemt != null)
+            if (this.mapTemplateElelemts != null)
             {
-                this.mapTemplateElelemt.Clear();
+                this.mapTemplateElelemts.Clear();
             }
             IQueryFilter queryFilter = new QueryFilterClass
             {
@@ -2228,8 +2247,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             (focusMapFrame as IMapGrids).ClearMapGrids();
             if (this.MapGrid != null)
             {
-                (this.MapGrid as IMeasuredGrid).XIntervalSize = (this.XInterval*this.double_6)/100.0;
-                (this.MapGrid as IMeasuredGrid).YIntervalSize = (this.YInterval*this.double_6)/100.0;
+                (this.MapGrid as IMeasuredGrid).XIntervalSize = (this.XInterval*this.m_Scale)/100.0;
+                (this.MapGrid as IMeasuredGrid).YIntervalSize = (this.YInterval*this.m_Scale)/100.0;
                 (focusMapFrame as IMapGrids).AddMapGrid(this.MapGrid);
                 if (this.BorderSymbol != null)
                 {
@@ -2244,15 +2263,15 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 IPoint point = new PointClass();
                 point.PutCoords(double_22, double_23);
                 IPoint point2 = new PointClass();
-                if (this.double_6 == 0.0)
+                if (this.m_Scale == 0.0)
                 {
                     num = this.Width/100.0;
                     num2 = this.Height/100.0;
                 }
                 else
                 {
-                    num = (this.Width*this.double_6)/100.0;
-                    num2 = (this.Height*this.double_6)/100.0;
+                    num = (this.Width*this.m_Scale)/100.0;
+                    num2 = (this.Height*this.m_Scale)/100.0;
                 }
                 point2.PutCoords(double_22 + num, double_23 + num2);
                 this.method_3(ipageLayout_0, point, point2);
@@ -2268,22 +2287,22 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             return (multipoint as IPointCollection);
         }
 
-        private ISymbol method_21()
+        private ISymbol GetBorderSymbol()
         {
             return this.BorderSymbol;
         }
 
-        private void method_22(double double_22, double double_23, out string string_6, out string string_7)
+        private void method_22(double x, double y, out string string_6, out string string_7)
         {
             string_6 = "";
             string_7 = "";
-            int num = (int) Math.Truncate((double) (double_22/double_23));
+            int num = (int) Math.Truncate((double) (x/y));
             if (num != 0)
             {
                 string_6 = num.ToString();
             }
-            int num2 = (int) (double_23/1000.0);
-            string_7 = ((int) Math.Truncate((double) (((double_22 - (num*double_23))/double_23)*num2))).ToString();
+            int num2 = (int) (y/1000.0);
+            string_7 = ((int) Math.Truncate((double) (((x - (num*y))/y)*num2))).ToString();
             if ((string_7.Length < 2) && (num != 0))
             {
                 string_7 = "0" + string_7;
@@ -2763,7 +2782,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             return element;
         }
 
-        private IElement method_29(double double_22, double double_23, double double_24, double double_25,
+        private IElement CreateCornerShortElement(double x1, double y1, double leftDelta, double bottomDelta,
             ILineSymbol ilineSymbol_0)
         {
             object missing = Type.Missing;
@@ -2771,54 +2790,54 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             IPointCollection points = polyline as IPointCollection;
             PointClass class2 = new PointClass
             {
-                X = double_22 + double_24,
-                Y = double_23
+                X = x1 + leftDelta,
+                Y = y1
             };
             IPoint inPoint = class2;
             points.AddPoint(inPoint, ref missing, ref missing);
             PointClass class3 = new PointClass
             {
-                X = double_22,
-                Y = double_23
+                X = x1,
+                Y = y1
             };
             inPoint = class3;
             points.AddPoint(inPoint, ref missing, ref missing);
             PointClass class4 = new PointClass
             {
-                X = double_22,
-                Y = double_23 + double_25
+                X = x1,
+                Y = y1 + bottomDelta
             };
             inPoint = class4;
             points.AddPoint(inPoint, ref missing, ref missing);
             return new LineElementClass {Symbol = ilineSymbol_0, Geometry = polyline};
         }
 
-        private void method_3(IPageLayout ipageLayout_0, IPoint ipoint_0, IPoint ipoint_1)
+        private void method_3(IPageLayout ipageLayout_0, IPoint leftDownPnt, IPoint rightTopPnt)
         {
-            this.MapXInterval = (this.XInterval*this.double_6)/100.0;
-            this.MapYInterval = (this.YInterval*this.double_6)/100.0;
+            this.MapXInterval = (this.XInterval*this.m_Scale)/100.0;
+            this.MapYInterval = (this.YInterval*this.m_Scale)/100.0;
             IMapFrame focusMapFrame = MapFrameAssistant.GetFocusMapFrame(ipageLayout_0);
             new EnvelopeClass();
             IEnvelope extent = (focusMapFrame.Map as IActiveView).Extent;
             MapCartoTemplateLib.YTTransformation transformation =
                 new MapCartoTemplateLib.YTTransformation(ipageLayout_0 as IActiveView);
-            IPoint point = transformation.ToPageLayoutPoint(ipoint_0);
-            IPoint point2 = transformation.ToPageLayoutPoint(ipoint_1);
+            IPoint leftDownPntPage = transformation.ToPageLayoutPoint(leftDownPnt);
+            IPoint rightTopPntPage = transformation.ToPageLayoutPoint(rightTopPnt);
             IGroupElement element = new GroupElementClass();
             IElement element2 = null;
             if (this.GridSymbol is ILineSymbol)
             {
-                element2 = this.method_35(transformation, ipoint_0, ipoint_1);
+                element2 = this.method_35(transformation, leftDownPnt, rightTopPnt);
             }
             else if (this.GridSymbol is IMarkerSymbol)
             {
-                element2 = this.method_33(transformation, ipoint_0, ipoint_1);
+                element2 = this.method_33(transformation, leftDownPnt, rightTopPnt);
             }
             if (element2 != null)
             {
                 element.AddElement(element2);
             }
-            element2 = this.method_14(focusMapFrame, this.method_21());
+            element2 = this.method_14(focusMapFrame, this.GetBorderSymbol());
             if (element2 != null)
             {
                 element.AddElement(element2);
@@ -2827,7 +2846,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             {
                 if (this.DrawRoundLineShortLine)
                 {
-                    element2 = this.method_44(transformation, ipoint_0, ipoint_1);
+                    element2 = this.method_44(transformation, leftDownPnt, rightTopPnt);
                     if (element2 != null)
                     {
                         element.AddElement(element2);
@@ -2841,7 +2860,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             {
                 if (this.DrawCornerShortLine)
                 {
-                    element2 = this.CreateCornerShortLine(transformation, ipoint_0, ipoint_1);
+                    element2 = this.CreateCornerShortLine(transformation, leftDownPnt, rightTopPnt);
                     if (element2 != null)
                     {
                         element.AddElement(element2);
@@ -2855,19 +2874,19 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             {
                 PointClass class2 = new PointClass
                 {
-                    X = ipoint_0.X,
-                    Y = ipoint_1.Y,
-                    SpatialReference = ipoint_0.SpatialReference
+                    X = leftDownPnt.X,
+                    Y = rightTopPnt.Y,
+                    SpatialReference = leftDownPnt.SpatialReference
                 };
                 IPoint point3 = class2;
                 PointClass class3 = new PointClass
                 {
-                    X = ipoint_1.X,
-                    Y = ipoint_0.Y,
-                    SpatialReference = ipoint_0.SpatialReference
+                    X = rightTopPnt.X,
+                    Y = leftDownPnt.Y,
+                    SpatialReference = leftDownPnt.SpatialReference
                 };
                 IPoint point4 = class3;
-                element2 = this.method_41(ipageLayout_0 as IActiveView, transformation, ipoint_0, point3, ipoint_1,
+                element2 = this.method_41(ipageLayout_0 as IActiveView, transformation, leftDownPnt, point3, rightTopPnt,
                     point4);
                 if (element2 != null)
                 {
@@ -2880,7 +2899,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     element.AddElement(element2);
                 }
             }
-            element2 = this.method_31(point, point2);
+            element2 = this.method_31(leftDownPntPage, rightTopPntPage);
             if (element2 != null)
             {
                 element.AddElement(element2);
@@ -2945,7 +2964,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         {
             double x = double_22;
             double y = double_23;
-            double num3 = (this.XInterval*this.double_6)/100.0;
+            double num3 = (this.XInterval*this.m_Scale)/100.0;
             x = Math.Truncate((double) (double_22/num3))*num3;
             if (x <= double_22)
             {
@@ -2955,7 +2974,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             {
                 x += num3;
             }
-            double num4 = (this.YInterval*this.double_6)/100.0;
+            double num4 = (this.YInterval*this.m_Scale)/100.0;
             y = Math.Truncate((double) (double_23/num4))*num4;
             if (y <= double_23)
             {
@@ -3918,9 +3937,9 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             num = num2*1000;
             double x = extent.LowerLeft.X;
             double y = extent.LowerLeft.Y;
-            this.double_6 = num;
-            this.MapXInterval = this.XInterval*this.double_6;
-            this.MapYInterval = this.YInterval*this.double_6;
+            this.m_Scale = num;
+            this.MapXInterval = this.XInterval*this.m_Scale;
+            this.MapYInterval = this.YInterval*this.m_Scale;
             this.Width = envelope.Width;
             this.Height = envelope.Height;
             new MapCartoTemplateLib.YTTransformation(ipageLayout_0 as IActiveView);
@@ -3959,9 +3978,9 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
             double x = extent.LowerLeft.X;
             double y = extent.LowerLeft.Y;
-            this.double_6 = num;
-            this.MapXInterval = this.XInterval*this.double_6;
-            this.MapYInterval = this.YInterval*this.double_6;
+            this.m_Scale = num;
+            this.MapXInterval = this.XInterval*this.m_Scale;
+            this.MapYInterval = this.YInterval*this.m_Scale;
             this.Width = envelope.Width;
             this.Height = envelope.Height;
             new MapCartoTemplateLib.YTTransformation(ipageLayout_0 as IActiveView);
@@ -3975,14 +3994,14 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             (ipageLayout_0 as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
         }
 
-        private IPoint method_8(IPoint ipoint_0, IProjectedCoordinateSystem iprojectedCoordinateSystem_0)
+        private IPoint ToGeoCS(IPoint ipoint_0, IProjectedCoordinateSystem iprojectedCoordinateSystem_0)
         {
             ipoint_0.SpatialReference = iprojectedCoordinateSystem_0;
             ipoint_0.Project(iprojectedCoordinateSystem_0.GeographicCoordinateSystem);
             return ipoint_0;
         }
 
-        private IPoint method_9(IPoint ipoint_0, IProjectedCoordinateSystem iprojectedCoordinateSystem_0)
+        private IPoint ToProCS(IPoint ipoint_0, IProjectedCoordinateSystem iprojectedCoordinateSystem_0)
         {
             ipoint_0.SpatialReference = iprojectedCoordinateSystem_0.GeographicCoordinateSystem;
             ipoint_0.Project(iprojectedCoordinateSystem_0);
@@ -3991,35 +4010,35 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
         public void RemoveAllMapTemplateElement()
         {
-            if (this.mapTemplateElelemt != null)
+            if (this.mapTemplateElelemts != null)
             {
-                this.mapTemplateElelemt.Clear();
+                this.mapTemplateElelemts.Clear();
             }
         }
 
         public void RemoveAllMapTemplateParam()
         {
-            if (this.mapTemplateParam != null)
+            if (this.mapTemplateParams != null)
             {
-                this.mapTemplateParam.Clear();
+                this.mapTemplateParams.Clear();
             }
         }
 
         public void RemoveMapTemplateElement(MapCartoTemplateLib.MapTemplateElement mapTemplateElement_0)
         {
-            if (((mapTemplateElement_0 != null) && (this.mapTemplateElelemt != null)) &&
-                this.mapTemplateElelemt.Contains(mapTemplateElement_0))
+            if (((mapTemplateElement_0 != null) && (this.mapTemplateElelemts != null)) &&
+                this.mapTemplateElelemts.Contains(mapTemplateElement_0))
             {
-                this.mapTemplateElelemt.Remove(mapTemplateElement_0);
+                this.mapTemplateElelemts.Remove(mapTemplateElement_0);
             }
         }
 
         public void RemoveMapTemplateParam(MapCartoTemplateLib.MapTemplateParam mapTemplateParam_0)
         {
-            if (((mapTemplateParam_0 != null) && (this.mapTemplateParam != null)) &&
-                this.mapTemplateParam.Contains(mapTemplateParam_0))
+            if (((mapTemplateParam_0 != null) && (this.mapTemplateParams != null)) &&
+                this.mapTemplateParams.Contains(mapTemplateParam_0))
             {
-                this.mapTemplateParam.Remove(mapTemplateParam_0);
+                this.mapTemplateParams.Remove(mapTemplateParam_0);
             }
         }
 
@@ -4096,16 +4115,16 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             RowAssisant.SetFieldValue(row, "SmallFontSize", this.SmallFontSize);
             RowAssisant.SetFieldValue(row, "BigFontSize", this.BigFontSize);
             row.Store();
-            if (this.mapTemplateParam != null)
+            if (this.mapTemplateParams != null)
             {
-                foreach (MapCartoTemplateLib.MapTemplateParam param in this.mapTemplateParam)
+                foreach (MapCartoTemplateLib.MapTemplateParam param in this.mapTemplateParams)
                 {
                     param.Save();
                 }
             }
-            if (this.mapTemplateElelemt != null)
+            if (this.mapTemplateElelemts != null)
             {
-                foreach (MapCartoTemplateLib.MapTemplateElement element in this.mapTemplateElelemt)
+                foreach (MapCartoTemplateLib.MapTemplateElement element in this.mapTemplateElelemts)
                 {
                     element.Save();
                 }
@@ -4149,18 +4168,18 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             set.SetProperty("SmallFontSize", this.SmallFontSize);
             set.SetProperty("BigFontSize", this.BigFontSize);
             IPropertySetArray array = new PropertySetArrayClass();
-            if (this.mapTemplateParam != null)
+            if (this.mapTemplateParams != null)
             {
-                foreach (MapCartoTemplateLib.MapTemplateParam param in this.mapTemplateParam)
+                foreach (MapCartoTemplateLib.MapTemplateParam param in this.mapTemplateParams)
                 {
                     param.Save(array);
                 }
             }
             set.SetProperty("MapParams", array);
             array = new PropertySetArrayClass();
-            if (this.mapTemplateElelemt != null)
+            if (this.mapTemplateElelemts != null)
             {
-                foreach (MapCartoTemplateLib.MapTemplateElement element in this.mapTemplateElelemt)
+                foreach (MapCartoTemplateLib.MapTemplateElement element in this.mapTemplateElelemts)
                 {
                     element.Save(array);
                 }
@@ -4249,11 +4268,11 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         {
             get
             {
-                if (this.mapTemplateElelemt == null)
+                if (this.mapTemplateElelemts == null)
                 {
-                    this.mapTemplateElelemt = new List<MapCartoTemplateLib.MapTemplateElement>();
+                    this.mapTemplateElelemts = new List<MapCartoTemplateLib.MapTemplateElement>();
                 }
-                return this.mapTemplateElelemt;
+                return this.mapTemplateElelemts;
             }
             set
             {
@@ -4275,11 +4294,11 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         {
             get
             {
-                if (this.mapTemplateParam == null)
+                if (this.mapTemplateParams == null)
                 {
-                    this.mapTemplateParam = new List<MapCartoTemplateLib.MapTemplateParam>();
+                    this.mapTemplateParams = new List<MapCartoTemplateLib.MapTemplateParam>();
                 }
-                return this.mapTemplateParam;
+                return this.mapTemplateParams;
             }
             set
             {
@@ -4332,5 +4351,18 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         public double XInterval { get; set; }
 
         public double YInterval { get; set; }
+
+        public IPrintPageInfo PageInfo
+        {
+            get
+            {
+                return _pageInfo;
+            }
+
+            set
+            {
+                _pageInfo = value;
+            }
+        }
     }
 }

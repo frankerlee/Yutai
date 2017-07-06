@@ -9,23 +9,23 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 {
     public class MapTemplateTextElement : MapTemplateElement
     {
-        public MapTemplateTextElement(MapTemplate mapTemplate_1) : base(mapTemplate_1)
+        public MapTemplateTextElement(MapTemplate pMapTemplate) : base(pMapTemplate)
         {
             base.MapTemplateElementType = MapTemplateElementType.TextElement;
             base.Name = "文本";
             base.Style = new TextSymbolClass();
         }
 
-        public MapTemplateTextElement(int int_1, MapTemplate mapTemplate_1) : base(int_1, mapTemplate_1)
+        public MapTemplateTextElement(int id, MapTemplate pMapTemplate) : base(id, pMapTemplate)
         {
             base.MapTemplateElementType = MapTemplateElementType.TextElement;
             base.Name = "文本";
             base.Style = new TextSymbolClass();
         }
 
-        public override MapTemplateElement Clone(MapTemplate mapTemplate_1)
+        public override MapTemplateElement Clone(MapTemplate pMapTemplate)
         {
-            MapTemplateTextElement element = new MapTemplateTextElement(mapTemplate_1)
+            MapTemplateTextElement element = new MapTemplateTextElement(pMapTemplate)
             {
                 IsVerticalText = this.IsVerticalText,
                 Multiline = this.Multiline,
@@ -35,7 +35,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             return element;
         }
 
-        public override IElement CreateElement(IPageLayout ipageLayout_0)
+        public override IElement CreateElement(IPageLayout pPageLayout)
         {
             IElement element = new TextElementClass();
             (element as IElementProperties).Name = base.Name;
@@ -49,20 +49,20 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             return element;
         }
 
-        public override IElement GetElement(IPageLayout ipageLayout_0)
+        public override IElement GetElement(IPageLayout pPageLayout)
         {
             ITextSymbol symbol;
             esriTextHorizontalAlignment horizontalAlignment;
             esriTextVerticalAlignment verticalAlignment;
             if (base.m_pElement == null)
             {
-                this.CreateElement(ipageLayout_0);
+                this.CreateElement(pPageLayout);
             }
             if (base.m_pElement == null)
             {
                 return null;
             }
-            IPoint position = this.GetPosition(ipageLayout_0);
+            IPoint position = this.GetPosition(pPageLayout);
             if (base.Style == null)
             {
                 base.Style = (base.m_pElement as ITextElement).Symbol;
@@ -267,15 +267,15 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
-        public override void Update(IPageLayout ipageLayout_0)
+        public override void Update(IPageLayout pPageLayout)
         {
             if (this.Element != null)
             {
                 ITextSymbol symbol;
                 esriTextHorizontalAlignment horizontalAlignment;
                 esriTextVerticalAlignment verticalAlignment;
-                (ipageLayout_0 as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGraphics, this.Element, null);
-                IPoint position = this.GetPosition(ipageLayout_0);
+                (pPageLayout as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGraphics, this.Element, null);
+                IPoint position = this.GetPosition(pPageLayout);
                 if (base.Style == null)
                 {
                     base.Style = (base.m_pElement as ITextElement).Symbol;
@@ -377,8 +377,8 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 }
                 (base.m_pElement as ITextElement).Text = this.Text;
                 base.m_pElement.Geometry = position;
-                (ipageLayout_0 as IActiveView).GraphicsContainer.UpdateElement(base.m_pElement);
-                (ipageLayout_0 as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGraphics, base.m_pElement, null);
+                (pPageLayout as IActiveView).GraphicsContainer.UpdateElement(base.m_pElement);
+                (pPageLayout as IActiveView).PartialRefresh(esriViewDrawPhase.esriViewGraphics, base.m_pElement, null);
                 this.Save();
             }
         }

@@ -16,7 +16,7 @@ namespace Yutai.Plugins.Printing.Commands
 
         public override void OnCreate(object hook)
         {
-            this.m_caption = "删除";
+            this.m_caption = "";
             this.m_toolTip = "删除";
             this.m_category = "元素";
             base.m_bitmap = Properties.Resources.icon_delete;

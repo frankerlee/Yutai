@@ -32,7 +32,6 @@
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
-            this.chkClip = new DevExpress.XtraEditors.CheckEdit();
             this.cmbScale = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.cmbMapTemplate = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -41,23 +40,23 @@
             this.btnClearPage = new DevExpress.XtraEditors.SimpleButton();
             this.btnQueryPage = new DevExpress.XtraEditors.SimpleButton();
             this.grpFence = new DevExpress.XtraEditors.GroupControl();
-            this.btnClearClip = new DevExpress.XtraEditors.SimpleButton();
-            this.btnExtent = new DevExpress.XtraEditors.SimpleButton();
-            this.btnLineBuffer = new DevExpress.XtraEditors.SimpleButton();
-            this.btnPolyline = new DevExpress.XtraEditors.SimpleButton();
-            this.btnPolygon = new DevExpress.XtraEditors.SimpleButton();
-            this.btnRectangle = new DevExpress.XtraEditors.SimpleButton();
-            this.btnCircle = new DevExpress.XtraEditors.SimpleButton();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnPoint = new DevExpress.XtraEditors.SimpleButton();
+            this.btnCircle = new DevExpress.XtraEditors.SimpleButton();
+            this.btnRectangle = new DevExpress.XtraEditors.SimpleButton();
+            this.btnPolygon = new DevExpress.XtraEditors.SimpleButton();
+            this.btnPolyline = new DevExpress.XtraEditors.SimpleButton();
+            this.btnLineBuffer = new DevExpress.XtraEditors.SimpleButton();
+            this.btnExtent = new DevExpress.XtraEditors.SimpleButton();
+            this.btnClearClip = new DevExpress.XtraEditors.SimpleButton();
             this.grpKey = new DevExpress.XtraEditors.GroupControl();
-            this.btnSearchKey = new DevExpress.XtraEditors.SimpleButton();
             this.txtSearchKey = new DevExpress.XtraEditors.TextEdit();
             this.grpIndexMap = new DevExpress.XtraEditors.GroupControl();
             this.cmbIndexLayer = new DevExpress.XtraEditors.ComboBoxEdit();
             this.rdoSelectMode = new DevExpress.XtraEditors.RadioGroup();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.lstPages = new DevExpress.XtraEditors.CheckedListBoxControl();
+            this.lstPages = new System.Windows.Forms.CheckedListBox();
             this.groupControl6 = new DevExpress.XtraEditors.GroupControl();
             this.btnBatchPrint = new DevExpress.XtraEditors.SimpleButton();
             this.btnDeletePage = new DevExpress.XtraEditors.SimpleButton();
@@ -73,13 +72,13 @@
             this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.groupControl5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkClip.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbScale.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbMapTemplate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grpFence)).BeginInit();
             this.grpFence.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grpKey)).BeginInit();
             this.grpKey.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearchKey.Properties)).BeginInit();
@@ -92,7 +91,6 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lstPages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).BeginInit();
             this.groupControl6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.propertyPage)).BeginInit();
@@ -126,7 +124,6 @@
             // 
             this.groupControl5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupControl5.Controls.Add(this.chkClip);
             this.groupControl5.Controls.Add(this.cmbScale);
             this.groupControl5.Controls.Add(this.labelControl2);
             this.groupControl5.Controls.Add(this.cmbMapTemplate);
@@ -137,23 +134,17 @@
             this.groupControl5.TabIndex = 5;
             this.groupControl5.Text = "模板设置";
             // 
-            // chkClip
-            // 
-            this.chkClip.Location = new System.Drawing.Point(190, 61);
-            this.chkClip.Name = "chkClip";
-            this.chkClip.Properties.Caption = "裁剪内容";
-            this.chkClip.Size = new System.Drawing.Size(75, 19);
-            this.chkClip.TabIndex = 5;
-            // 
             // cmbScale
             // 
+            this.cmbScale.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbScale.Location = new System.Drawing.Point(74, 59);
             this.cmbScale.Margin = new System.Windows.Forms.Padding(8, 3, 3, 3);
             this.cmbScale.Name = "cmbScale";
             this.cmbScale.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbScale.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.cmbScale.Size = new System.Drawing.Size(96, 20);
+            this.cmbScale.Size = new System.Drawing.Size(209, 20);
             this.cmbScale.TabIndex = 4;
             // 
             // labelControl2
@@ -174,6 +165,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbMapTemplate.Size = new System.Drawing.Size(233, 20);
             this.cmbMapTemplate.TabIndex = 1;
+            this.cmbMapTemplate.SelectedIndexChanged += new System.EventHandler(this.cmbMapTemplate_SelectedIndexChanged);
             // 
             // labelControl1
             // 
@@ -187,7 +179,7 @@
             // 
             this.groupControl4.Controls.Add(this.btnClearPage);
             this.groupControl4.Controls.Add(this.btnQueryPage);
-            this.groupControl4.Location = new System.Drawing.Point(7, 362);
+            this.groupControl4.Location = new System.Drawing.Point(7, 395);
             this.groupControl4.Name = "groupControl4";
             this.groupControl4.Size = new System.Drawing.Size(288, 64);
             this.groupControl4.TabIndex = 4;
@@ -200,6 +192,7 @@
             this.btnClearPage.Size = new System.Drawing.Size(82, 29);
             this.btnClearPage.TabIndex = 1;
             this.btnClearPage.Text = "清除";
+            this.btnClearPage.Click += new System.EventHandler(this.btnClearPage_Click);
             // 
             // btnQueryPage
             // 
@@ -208,98 +201,120 @@
             this.btnQueryPage.Size = new System.Drawing.Size(82, 29);
             this.btnQueryPage.TabIndex = 0;
             this.btnQueryPage.Text = "执行查询";
+            this.btnQueryPage.Click += new System.EventHandler(this.btnSearchKey_Click);
             // 
             // grpFence
             // 
-            this.grpFence.Controls.Add(this.btnClearClip);
-            this.grpFence.Controls.Add(this.btnExtent);
-            this.grpFence.Controls.Add(this.btnLineBuffer);
-            this.grpFence.Controls.Add(this.btnPolyline);
-            this.grpFence.Controls.Add(this.btnPolygon);
-            this.grpFence.Controls.Add(this.btnRectangle);
-            this.grpFence.Controls.Add(this.btnCircle);
-            this.grpFence.Controls.Add(this.btnPoint);
+            this.grpFence.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpFence.Controls.Add(this.flowLayoutPanel1);
             this.grpFence.Location = new System.Drawing.Point(7, 289);
             this.grpFence.Name = "grpFence";
-            this.grpFence.Size = new System.Drawing.Size(288, 67);
+            this.grpFence.Size = new System.Drawing.Size(288, 100);
             this.grpFence.TabIndex = 3;
             this.grpFence.Text = "范围工具";
             // 
-            // btnClearClip
+            // flowLayoutPanel1
             // 
-            this.btnClearClip.Image = global::Yutai.Plugins.Printing.Properties.Resources.icon_fence_basket;
-            this.btnClearClip.Location = new System.Drawing.Point(234, 29);
-            this.btnClearClip.Name = "btnClearClip";
-            this.btnClearClip.Size = new System.Drawing.Size(32, 28);
-            this.btnClearClip.TabIndex = 7;
-            this.btnClearClip.ToolTip = "删除";
-            // 
-            // btnExtent
-            // 
-            this.btnExtent.Image = global::Yutai.Plugins.Printing.Properties.Resources.icon_fence_extent;
-            this.btnExtent.Location = new System.Drawing.Point(202, 29);
-            this.btnExtent.Name = "btnExtent";
-            this.btnExtent.Size = new System.Drawing.Size(32, 28);
-            this.btnExtent.TabIndex = 6;
-            this.btnExtent.ToolTip = "当前视图作为绘图区域";
-            // 
-            // btnLineBuffer
-            // 
-            this.btnLineBuffer.Image = global::Yutai.Plugins.Printing.Properties.Resources.icon_line_buffer;
-            this.btnLineBuffer.Location = new System.Drawing.Point(170, 29);
-            this.btnLineBuffer.Name = "btnLineBuffer";
-            this.btnLineBuffer.Size = new System.Drawing.Size(32, 28);
-            this.btnLineBuffer.TabIndex = 5;
-            this.btnLineBuffer.ToolTip = "线加缓冲半径绘图区域";
-            // 
-            // btnPolyline
-            // 
-            this.btnPolyline.Image = global::Yutai.Plugins.Printing.Properties.Resources.icon_fence_line;
-            this.btnPolyline.Location = new System.Drawing.Point(138, 29);
-            this.btnPolyline.Name = "btnPolyline";
-            this.btnPolyline.Size = new System.Drawing.Size(32, 28);
-            this.btnPolyline.TabIndex = 4;
-            this.btnPolyline.ToolTip = "线形绘图区域";
-            // 
-            // btnPolygon
-            // 
-            this.btnPolygon.Image = global::Yutai.Plugins.Printing.Properties.Resources.icon_fence_polygon;
-            this.btnPolygon.Location = new System.Drawing.Point(106, 29);
-            this.btnPolygon.Name = "btnPolygon";
-            this.btnPolygon.Size = new System.Drawing.Size(32, 28);
-            this.btnPolygon.TabIndex = 4;
-            this.btnPolygon.ToolTip = "多边形绘图区域";
-            // 
-            // btnRectangle
-            // 
-            this.btnRectangle.Image = global::Yutai.Plugins.Printing.Properties.Resources.icon_fence_rectangle;
-            this.btnRectangle.Location = new System.Drawing.Point(74, 29);
-            this.btnRectangle.Name = "btnRectangle";
-            this.btnRectangle.Size = new System.Drawing.Size(32, 28);
-            this.btnRectangle.TabIndex = 2;
-            this.btnRectangle.ToolTip = "矩形绘图区域";
-            // 
-            // btnCircle
-            // 
-            this.btnCircle.Image = global::Yutai.Plugins.Printing.Properties.Resources.icon_fence_circle;
-            this.btnCircle.Location = new System.Drawing.Point(42, 29);
-            this.btnCircle.Name = "btnCircle";
-            this.btnCircle.Size = new System.Drawing.Size(32, 28);
-            this.btnCircle.TabIndex = 1;
-            this.btnCircle.ToolTip = "圆形绘图区域";
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel1.Controls.Add(this.btnPoint);
+            this.flowLayoutPanel1.Controls.Add(this.btnCircle);
+            this.flowLayoutPanel1.Controls.Add(this.btnRectangle);
+            this.flowLayoutPanel1.Controls.Add(this.btnPolygon);
+            this.flowLayoutPanel1.Controls.Add(this.btnPolyline);
+            this.flowLayoutPanel1.Controls.Add(this.btnLineBuffer);
+            this.flowLayoutPanel1.Controls.Add(this.btnExtent);
+            this.flowLayoutPanel1.Controls.Add(this.btnClearClip);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(10, 24);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(273, 65);
+            this.flowLayoutPanel1.TabIndex = 8;
             // 
             // btnPoint
             // 
             this.btnPoint.Image = global::Yutai.Plugins.Printing.Properties.Resources.icon_fence_point;
-            this.btnPoint.Location = new System.Drawing.Point(10, 29);
+            this.btnPoint.Location = new System.Drawing.Point(3, 3);
             this.btnPoint.Name = "btnPoint";
             this.btnPoint.Size = new System.Drawing.Size(32, 28);
             this.btnPoint.TabIndex = 0;
             this.btnPoint.ToolTip = "点加半径";
+            this.btnPoint.Click += new System.EventHandler(this.btnPoint_Click);
+            // 
+            // btnCircle
+            // 
+            this.btnCircle.Image = global::Yutai.Plugins.Printing.Properties.Resources.icon_fence_circle;
+            this.btnCircle.Location = new System.Drawing.Point(41, 3);
+            this.btnCircle.Name = "btnCircle";
+            this.btnCircle.Size = new System.Drawing.Size(32, 28);
+            this.btnCircle.TabIndex = 1;
+            this.btnCircle.ToolTip = "圆形绘图区域";
+            this.btnCircle.Click += new System.EventHandler(this.btnCircle_Click);
+            // 
+            // btnRectangle
+            // 
+            this.btnRectangle.Image = global::Yutai.Plugins.Printing.Properties.Resources.icon_fence_rectangle;
+            this.btnRectangle.Location = new System.Drawing.Point(79, 3);
+            this.btnRectangle.Name = "btnRectangle";
+            this.btnRectangle.Size = new System.Drawing.Size(32, 28);
+            this.btnRectangle.TabIndex = 2;
+            this.btnRectangle.ToolTip = "矩形绘图区域";
+            this.btnRectangle.Click += new System.EventHandler(this.btnRectangle_Click);
+            // 
+            // btnPolygon
+            // 
+            this.btnPolygon.Image = global::Yutai.Plugins.Printing.Properties.Resources.icon_fence_polygon;
+            this.btnPolygon.Location = new System.Drawing.Point(117, 3);
+            this.btnPolygon.Name = "btnPolygon";
+            this.btnPolygon.Size = new System.Drawing.Size(32, 28);
+            this.btnPolygon.TabIndex = 4;
+            this.btnPolygon.ToolTip = "多边形绘图区域";
+            this.btnPolygon.Click += new System.EventHandler(this.btnPolygon_Click);
+            // 
+            // btnPolyline
+            // 
+            this.btnPolyline.Image = global::Yutai.Plugins.Printing.Properties.Resources.icon_fence_line;
+            this.btnPolyline.Location = new System.Drawing.Point(155, 3);
+            this.btnPolyline.Name = "btnPolyline";
+            this.btnPolyline.Size = new System.Drawing.Size(32, 28);
+            this.btnPolyline.TabIndex = 4;
+            this.btnPolyline.ToolTip = "线形绘图区域";
+            this.btnPolyline.Click += new System.EventHandler(this.btnPolyline_Click);
+            // 
+            // btnLineBuffer
+            // 
+            this.btnLineBuffer.Image = global::Yutai.Plugins.Printing.Properties.Resources.icon_line_buffer;
+            this.btnLineBuffer.Location = new System.Drawing.Point(193, 3);
+            this.btnLineBuffer.Name = "btnLineBuffer";
+            this.btnLineBuffer.Size = new System.Drawing.Size(32, 28);
+            this.btnLineBuffer.TabIndex = 5;
+            this.btnLineBuffer.ToolTip = "线加缓冲半径绘图区域";
+            this.btnLineBuffer.Click += new System.EventHandler(this.btnLineBuffer_Click);
+            // 
+            // btnExtent
+            // 
+            this.btnExtent.Image = global::Yutai.Plugins.Printing.Properties.Resources.icon_fence_extent;
+            this.btnExtent.Location = new System.Drawing.Point(231, 3);
+            this.btnExtent.Name = "btnExtent";
+            this.btnExtent.Size = new System.Drawing.Size(32, 28);
+            this.btnExtent.TabIndex = 6;
+            this.btnExtent.ToolTip = "当前视图作为绘图区域";
+            this.btnExtent.Click += new System.EventHandler(this.btnExtent_Click);
+            // 
+            // btnClearClip
+            // 
+            this.btnClearClip.Image = global::Yutai.Plugins.Printing.Properties.Resources.icon_fence_basket;
+            this.btnClearClip.Location = new System.Drawing.Point(3, 37);
+            this.btnClearClip.Name = "btnClearClip";
+            this.btnClearClip.Size = new System.Drawing.Size(32, 28);
+            this.btnClearClip.TabIndex = 7;
+            this.btnClearClip.ToolTip = "删除";
+            this.btnClearClip.Click += new System.EventHandler(this.btnClearClip_Click);
             // 
             // grpKey
             // 
-            this.grpKey.Controls.Add(this.btnSearchKey);
+            this.grpKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grpKey.Controls.Add(this.txtSearchKey);
             this.grpKey.Location = new System.Drawing.Point(7, 224);
             this.grpKey.Name = "grpKey";
@@ -307,24 +322,19 @@
             this.grpKey.TabIndex = 2;
             this.grpKey.Text = "关键字";
             // 
-            // btnSearchKey
-            // 
-            this.btnSearchKey.Location = new System.Drawing.Point(216, 27);
-            this.btnSearchKey.Name = "btnSearchKey";
-            this.btnSearchKey.Size = new System.Drawing.Size(58, 20);
-            this.btnSearchKey.TabIndex = 1;
-            this.btnSearchKey.Text = "搜索";
-            this.btnSearchKey.Click += new System.EventHandler(this.btnSearchKey_Click);
-            // 
             // txtSearchKey
             // 
+            this.txtSearchKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearchKey.Location = new System.Drawing.Point(5, 27);
             this.txtSearchKey.Name = "txtSearchKey";
-            this.txtSearchKey.Size = new System.Drawing.Size(202, 20);
+            this.txtSearchKey.Size = new System.Drawing.Size(278, 20);
             this.txtSearchKey.TabIndex = 0;
             // 
             // grpIndexMap
             // 
+            this.grpIndexMap.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grpIndexMap.Controls.Add(this.cmbIndexLayer);
             this.grpIndexMap.Location = new System.Drawing.Point(7, 165);
             this.grpIndexMap.Name = "grpIndexMap";
@@ -334,6 +344,8 @@
             // 
             // cmbIndexLayer
             // 
+            this.cmbIndexLayer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbIndexLayer.Location = new System.Drawing.Point(5, 24);
             this.cmbIndexLayer.Name = "cmbIndexLayer";
             this.cmbIndexLayer.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -381,10 +393,12 @@
             // lstPages
             // 
             this.lstPages.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstPages.FormattingEnabled = true;
             this.lstPages.Location = new System.Drawing.Point(0, 63);
             this.lstPages.Name = "lstPages";
             this.lstPages.Size = new System.Drawing.Size(301, 240);
             this.lstPages.TabIndex = 1;
+            this.lstPages.SelectedIndexChanged += new System.EventHandler(this.lstPages_SelectedIndexChanged);
             // 
             // groupControl6
             // 
@@ -410,6 +424,7 @@
             this.btnBatchPrint.Name = "btnBatchPrint";
             this.btnBatchPrint.Size = new System.Drawing.Size(32, 28);
             this.btnBatchPrint.TabIndex = 15;
+            this.btnBatchPrint.Click += new System.EventHandler(this.btnBatchPrint_Click);
             // 
             // btnDeletePage
             // 
@@ -418,6 +433,7 @@
             this.btnDeletePage.Name = "btnDeletePage";
             this.btnDeletePage.Size = new System.Drawing.Size(32, 28);
             this.btnDeletePage.TabIndex = 14;
+            this.btnDeletePage.Click += new System.EventHandler(this.btnDeletePage_Click);
             // 
             // btnPrint
             // 
@@ -426,6 +442,7 @@
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(32, 28);
             this.btnPrint.TabIndex = 13;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // btnZoom
             // 
@@ -434,6 +451,7 @@
             this.btnZoom.Name = "btnZoom";
             this.btnZoom.Size = new System.Drawing.Size(32, 28);
             this.btnZoom.TabIndex = 11;
+            this.btnZoom.Click += new System.EventHandler(this.btnZoom_Click);
             // 
             // btnLast
             // 
@@ -442,6 +460,7 @@
             this.btnLast.Name = "btnLast";
             this.btnLast.Size = new System.Drawing.Size(32, 28);
             this.btnLast.TabIndex = 12;
+            this.btnLast.Click += new System.EventHandler(this.btnLast_Click);
             // 
             // btnNext
             // 
@@ -450,6 +469,7 @@
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(32, 28);
             this.btnNext.TabIndex = 10;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // btnPre
             // 
@@ -458,6 +478,7 @@
             this.btnPre.Name = "btnPre";
             this.btnPre.Size = new System.Drawing.Size(32, 28);
             this.btnPre.TabIndex = 9;
+            this.btnPre.Click += new System.EventHandler(this.btnPre_Click);
             // 
             // btnFirst
             // 
@@ -466,6 +487,7 @@
             this.btnFirst.Name = "btnFirst";
             this.btnFirst.Size = new System.Drawing.Size(32, 28);
             this.btnFirst.TabIndex = 8;
+            this.btnFirst.Click += new System.EventHandler(this.btnFirst_Click);
             // 
             // propertyPage
             // 
@@ -488,13 +510,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
             this.groupControl5.ResumeLayout(false);
             this.groupControl5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkClip.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbScale.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbMapTemplate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grpFence)).EndInit();
             this.grpFence.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grpKey)).EndInit();
             this.grpKey.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtSearchKey.Properties)).EndInit();
@@ -507,7 +529,6 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.lstPages)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).EndInit();
             this.groupControl6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.propertyPage)).EndInit();
@@ -530,7 +551,6 @@
         private DevExpress.XtraEditors.SimpleButton btnCircle;
         private DevExpress.XtraEditors.SimpleButton btnPoint;
         private DevExpress.XtraEditors.GroupControl grpKey;
-        private DevExpress.XtraEditors.SimpleButton btnSearchKey;
         private DevExpress.XtraEditors.TextEdit txtSearchKey;
         private DevExpress.XtraEditors.GroupControl grpIndexMap;
         private DevExpress.XtraEditors.ComboBoxEdit cmbIndexLayer;
@@ -542,9 +562,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.ComboBoxEdit cmbMapTemplate;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.CheckEdit chkClip;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private DevExpress.XtraEditors.CheckedListBoxControl lstPages;
         private DevExpress.XtraEditors.GroupControl groupControl6;
         private DevExpress.XtraEditors.SimpleButton btnBatchPrint;
         private DevExpress.XtraEditors.SimpleButton btnDeletePage;
@@ -555,5 +573,7 @@
         private DevExpress.XtraEditors.SimpleButton btnPre;
         private DevExpress.XtraEditors.SimpleButton btnFirst;
         private DevExpress.XtraVerticalGrid.PropertyGridControl propertyPage;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.CheckedListBox lstPages;
     }
 }

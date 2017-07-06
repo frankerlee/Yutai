@@ -32,7 +32,7 @@ namespace Yutai.Plugins.Printing.Commands
         public override void OnCreate(object hook)
         {
             _context = hook as IAppContext;
-            base.m_caption = "线";
+            base.m_caption = "";
             base.m_toolTip = "新建线";
             base.m_message = "新建线";
             base.m_category = "Printing";

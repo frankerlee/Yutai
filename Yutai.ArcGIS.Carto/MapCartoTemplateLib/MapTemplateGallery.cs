@@ -203,10 +203,10 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 
             if (this.Workspace != null)
             {
-                this._templateTable = (this.Workspace as IFeatureWorkspace).OpenTable("MapTemplate");
-                this._classTable = (this.Workspace as IFeatureWorkspace).OpenTable("MapTemplateClass");
-                this._elementTable = (this.Workspace as IFeatureWorkspace).OpenTable("MapTemplateElement");
-                this._paramTable = (this.Workspace as IFeatureWorkspace).OpenTable("MapTemplateParam");
+                this._templateTable = (this.Workspace as IFeatureWorkspace).OpenTable("YT_MAPTEMPLATE");
+                this._classTable = (this.Workspace as IFeatureWorkspace).OpenTable("YT_MAPTEMPLATE_CLASS");
+                this._elementTable = (this.Workspace as IFeatureWorkspace).OpenTable("YT_MAPTEMPLATE_ELEMENT");
+                this._paramTable = (this.Workspace as IFeatureWorkspace).OpenTable("YT_MAPTEMPLATE_PARAM");
                 this.ReadClasses();
                 this._connectionString = connectionString;
             }

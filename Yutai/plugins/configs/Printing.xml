@@ -1,5 +1,6 @@
 ﻿<PrintingConfig>
-  <TemplateDatabase ConnectionString="dbclient=mdb;gdbname=:\\plugins\\configs\\maptemplate.mdb"></TemplateDatabase>
+  <TemplateDatabase ConnectionString="dbclient=mdb;gdbname=Plugins\configs\maptemplate.mdb"></TemplateDatabase>
   <IndexMaps>
+    <IndexMap Name="SJZFFT" Template="测试" SearchFields="TH,TM" NameField="TH" Workspace="E:\demo.gdb" IndexLayer="SJZFFT"></IndexMap>
   </IndexMaps>
 </PrintingConfig>

@@ -8,6 +8,9 @@ namespace Yutai.Plugins.Printing.Forms
     {
         public TextEdit txtText;
 
+        public string Label { set { this.label1.Text = value; } }
+        public string Title { set { this.Text = value; } }
+
         private Container container_0 = null;
 
         public frmInputText()

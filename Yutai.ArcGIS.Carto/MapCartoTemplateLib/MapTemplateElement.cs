@@ -14,33 +14,33 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         protected IElement m_pElement;
         public string TempleteGuid;
 
-        public MapTemplateElement(MapCartoTemplateLib.MapTemplate mapTemplate_1)
+        public MapTemplateElement(MapCartoTemplateLib.MapTemplate pMapTemplate)
         {
             this.m_pElement = null;
-            this.MapTemplateGallery = mapTemplate_1.MapTemplateGallery;
+            this.MapTemplateGallery = pMapTemplate.MapTemplateGallery;
             this.OID = -1;
-            this.MapTemplate = mapTemplate_1;
-            this.TempleteGuid = mapTemplate_1.Guid;
+            this.MapTemplate = pMapTemplate;
+            this.TempleteGuid = pMapTemplate.Guid;
             this.ElementLocation = new MapCartoTemplateLib.ElementLocation();
         }
 
-        public MapTemplateElement(int int_1, MapCartoTemplateLib.MapTemplate mapTemplate_1)
+        public MapTemplateElement(int oid, MapCartoTemplateLib.MapTemplate pMapTemplate)
         {
             this.m_pElement = null;
-            this.MapTemplateGallery = mapTemplate_1.MapTemplateGallery;
-            this.OID = int_1;
-            this.MapTemplate = mapTemplate_1;
+            this.MapTemplateGallery = pMapTemplate.MapTemplateGallery;
+            this.OID = oid;
+            this.MapTemplate = pMapTemplate;
             this.ElementLocation = new MapCartoTemplateLib.ElementLocation();
         }
 
-        public void ChangePosition(IPageLayout ipageLayout_0)
+        public void ChangePosition(IPageLayout pPageLayout)
         {
             IPoint lowerLeft;
             double num3;
             double num4;
             double xOffset = this.ElementLocation.XOffset;
             double yOffset = this.ElementLocation.YOffset;
-            IPoint position = this.GetPosition(ipageLayout_0);
+            IPoint position = this.GetPosition(pPageLayout);
             if (this.m_pElement is ITextElement)
             {
                 lowerLeft = this.m_pElement.Geometry.Envelope.LowerLeft;
@@ -78,45 +78,45 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             this.Save();
         }
 
-        public abstract MapTemplateElement Clone(MapCartoTemplateLib.MapTemplate mapTemplate_1);
+        public abstract MapTemplateElement Clone(MapCartoTemplateLib.MapTemplate pMapTemplate);
 
-        public virtual void CopyTo(MapTemplateElement mapTemplateElement_0)
+        public virtual void CopyTo(MapTemplateElement pElement)
         {
-            mapTemplateElement_0.Name = this.Name;
+            pElement.Name = this.Name;
             if (this.Element != null)
             {
-                mapTemplateElement_0.Element = (this.Element as IClone).Clone() as IElement;
+                pElement.Element = (this.Element as IClone).Clone() as IElement;
             }
-            mapTemplateElement_0.ElementLocation = this.ElementLocation.Clone();
+            pElement.ElementLocation = this.ElementLocation.Clone();
             if (this.Style != null)
             {
                 if (this.Style is IClone)
                 {
-                    mapTemplateElement_0.Style = (this.Style as IClone).Clone();
+                    pElement.Style = (this.Style as IClone).Clone();
                 }
                 else
                 {
-                    mapTemplateElement_0.Style = this.Style;
+                    pElement.Style = this.Style;
                 }
             }
         }
 
-        public virtual IElement CreateElement(IPageLayout ipageLayout_0)
+        public virtual IElement CreateElement(IPageLayout pPageLayout)
         {
             return null;
         }
 
-        public static MapTemplateElement CreateMapTemplateElement(IPropertySet ipropertySet_0,
-            MapCartoTemplateLib.MapTemplate mapTemplate_1)
+        public static MapTemplateElement CreateMapTemplateElement(IPropertySet pPropertySet,
+            MapCartoTemplateLib.MapTemplate pMapTemplate)
         {
-            string typeName = Convert.ToString(ipropertySet_0.GetProperty("ElementType"));
-            MapCartoTemplateLib.MapTemplateGallery mapTemplateGallery = mapTemplate_1.MapTemplateGallery;
+            string typeName = Convert.ToString(pPropertySet.GetProperty("ElementType"));
+            MapCartoTemplateLib.MapTemplateGallery mapTemplateGallery = pMapTemplate.MapTemplateGallery;
             Type type = Type.GetType(typeName);
             try
             {
                 MapTemplateElement element =
-                    Activator.CreateInstance(type, new object[] {-1, mapTemplate_1}) as MapTemplateElement;
-                element.Load(ipropertySet_0);
+                    Activator.CreateInstance(type, new object[] {-1, pMapTemplate}) as MapTemplateElement;
+                element.Load(pPropertySet);
                 return element;
             }
             catch (Exception)
@@ -125,18 +125,18 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             return null;
         }
 
-        public static MapTemplateElement CreateMapTemplateElement(int int_1,
-            MapCartoTemplateLib.MapTemplate mapTemplate_1)
+        public static MapTemplateElement CreateMapTemplateElement(int id,
+            MapCartoTemplateLib.MapTemplate pMapTemplate)
         {
-            MapCartoTemplateLib.MapTemplateGallery mapTemplateGallery = mapTemplate_1.MapTemplateGallery;
+            MapCartoTemplateLib.MapTemplateGallery mapTemplateGallery = pMapTemplate.MapTemplateGallery;
             IRow row = null;
-            row = mapTemplateGallery.MapTemplateElementTable.GetRow(int_1);
+            row = mapTemplateGallery.MapTemplateElementTable.GetRow(id);
             int index = row.Fields.FindField("ElementType");
             Type type = Type.GetType(row.get_Value(index).ToString());
             try
             {
                 MapTemplateElement element =
-                    Activator.CreateInstance(type, new object[] {int_1, mapTemplate_1}) as MapTemplateElement;
+                    Activator.CreateInstance(type, new object[] {id, pMapTemplate}) as MapTemplateElement;
                 element.Initlize();
                 return element;
             }
@@ -160,19 +160,19 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
-        public IElement FindElementByType(IGroupElement igroupElement_0, string string_1)
+        public IElement FindElementByType(IGroupElement igroupElement, string typeName)
         {
-            IEnumElement elements = igroupElement_0.Elements;
+            IEnumElement elements = igroupElement.Elements;
             elements.Reset();
             for (IElement element2 = elements.Next(); element2 != null; element2 = elements.Next())
             {
-                if ((element2 is IElementProperties) && ((element2 as IElementProperties).Type == string_1))
+                if ((element2 is IElementProperties) && ((element2 as IElementProperties).Type == typeName))
                 {
                     return element2;
                 }
                 if (element2 is IGroupElement)
                 {
-                    IElement element4 = this.FindElementByType(element2 as IGroupElement, string_1);
+                    IElement element4 = this.FindElementByType(element2 as IGroupElement, typeName);
                     if (element4 != null)
                     {
                         return element4;
@@ -182,19 +182,19 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             return null;
         }
 
-        public IElement FindElementByType(IPageLayout ipageLayout_0, string string_1)
+        public IElement FindElementByType(IPageLayout iPageLayout, string typeName)
         {
-            IGraphicsContainer container = ipageLayout_0 as IGraphicsContainer;
+            IGraphicsContainer container = iPageLayout as IGraphicsContainer;
             container.Reset();
             for (IElement element = container.Next(); element != null; element = container.Next())
             {
-                if ((element is IElementProperties) && ((element as IElementProperties).Type == string_1))
+                if ((element is IElementProperties) && ((element as IElementProperties).Type == typeName))
                 {
                     return element;
                 }
                 if (element is IGroupElement)
                 {
-                    IElement element3 = this.FindElementByType(element as IGroupElement, string_1);
+                    IElement element3 = this.FindElementByType(element as IGroupElement, typeName);
                     if (element3 != null)
                     {
                         return element3;
@@ -204,21 +204,21 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             return null;
         }
 
-        public virtual IElement GetElement(IPageLayout ipageLayout_0)
+        public virtual IElement GetElement(IPageLayout pPageLayout)
         {
             if (this.m_pElement == null)
             {
-                this.CreateElement(ipageLayout_0);
+                this.CreateElement(pPageLayout);
             }
             if (this.m_pElement == null)
             {
                 return null;
             }
-            IPoint position = this.GetPosition(ipageLayout_0);
+            IPoint position = this.GetPosition(pPageLayout);
             IEnvelope bounds = new EnvelopeClass();
             if (!(this.m_pElement is ILineElement))
             {
-                this.m_pElement.QueryBounds((ipageLayout_0 as IActiveView).ScreenDisplay, bounds);
+                this.m_pElement.QueryBounds((pPageLayout as IActiveView).ScreenDisplay, bounds);
                 if (!bounds.IsEmpty)
                 {
                     IEnvelope envelope2 = new EnvelopeClass();
@@ -235,25 +235,25 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             return this.m_pElement;
         }
 
-        protected virtual IPoint GetPosition(IPageLayout ipageLayout_0)
+        protected virtual IPoint GetPosition(IPageLayout pPageLayout)
         {
             IPoint point = new PointClass();
             point.PutCoords(0.0, 0.0);
             try
             {
                 IPoint upperLeft;
-                IGraphicsContainer container = ipageLayout_0 as IGraphicsContainer;
-                IElement element = this.FindElementByType(ipageLayout_0, "外框");
+                IGraphicsContainer container = pPageLayout as IGraphicsContainer;
+                IElement element = this.FindElementByType(pPageLayout, "外框");
                 IEnvelope bounds = null;
                 if (element != null)
                 {
                     bounds = new EnvelopeClass();
-                    element.QueryBounds((ipageLayout_0 as IActiveView).ScreenDisplay, bounds);
+                    element.QueryBounds((pPageLayout as IActiveView).ScreenDisplay, bounds);
                 }
                 if (bounds == null)
                 {
                     container.Reset();
-                    IMapFrame frame = container.FindFrame((ipageLayout_0 as IActiveView).FocusMap) as IMapFrame;
+                    IMapFrame frame = container.FindFrame((pPageLayout as IActiveView).FocusMap) as IMapFrame;
                     bounds = (frame as IElement).Geometry.Envelope;
                 }
                 double num = 0.0;
@@ -387,7 +387,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             return point;
         }
 
-        protected virtual IPoint GetRealPosition(IPageLayout ipageLayout_0)
+        protected virtual IPoint GetRealPosition(IPageLayout pPageLayout)
         {
             return null;
         }
@@ -422,22 +422,22 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             this.Initlize();
         }
 
-        public void Load(IPropertySet ipropertySet_0)
+        public void Load(IPropertySet pPropertySet)
         {
-            this.Name = Convert.ToString(ipropertySet_0.GetProperty("Name"));
-            this.m_pElement = ipropertySet_0.GetProperty("Element") as IElement;
-            string str = Convert.ToString(ipropertySet_0.GetProperty("Location"));
+            this.Name = Convert.ToString(pPropertySet.GetProperty("Name"));
+            this.m_pElement = pPropertySet.GetProperty("Element") as IElement;
+            string str = Convert.ToString(pPropertySet.GetProperty("Location"));
             this.ElementLocation = new MapCartoTemplateLib.ElementLocation(str);
-            IPropertySet property = ipropertySet_0.GetProperty("Attributes") as IPropertySet;
+            IPropertySet property = pPropertySet.GetProperty("Attributes") as IPropertySet;
             if (property != null)
             {
                 this.PropertySet = property;
             }
         }
 
-        private object method_0(IElement ielement_0)
+        private object CloneElement(IElement pElement)
         {
-            IClone clone = ielement_0 as IClone;
+            IClone clone = pElement as IClone;
             IMemoryBlobStream stream = new MemoryBlobStreamClass();
             IObjectStream pstm = new ObjectStreamClass
             {
@@ -485,14 +485,14 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             return property;
         }
 
-        private object method_2(IPropertySet ipropertySet_0)
+        private object method_2(IPropertySet pPropertySet)
         {
             IMemoryBlobStream stream = new MemoryBlobStreamClass();
             IObjectStream pstm = new ObjectStreamClass
             {
                 Stream = stream
             };
-            (ipropertySet_0 as IPersistStream).Save(pstm, 0);
+            (pPropertySet as IPersistStream).Save(pstm, 0);
             return stream;
         }
 
@@ -527,7 +527,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
             RowAssisant.SetFieldValue(row, "Name", this.Name);
             RowAssisant.SetFieldValue(row, "ElementType", base.GetType().ToString());
-            RowAssisant.SetFieldValue(row, "Element", this.method_0(this.Element));
+            RowAssisant.SetFieldValue(row, "Element", this.CloneElement(this.Element));
             RowAssisant.SetFieldValue(row, "TemplateID", this.MapTemplate.OID);
             RowAssisant.SetFieldValue(row, "Location", this.ElementLocation.ToString());
             RowAssisant.SetFieldValue(row, "TemplateGuid", this.TempleteGuid);
@@ -539,7 +539,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             row.Store();
         }
 
-        public void Save(IPropertySetArray ipropertySetArray_0)
+        public void Save(IPropertySetArray pPropertySetArray)
         {
             IPropertySet pPropertySet = new PropertySetClass();
             pPropertySet.SetProperty("Name", this.Name);
@@ -547,10 +547,10 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             pPropertySet.SetProperty("Element", this.Element);
             pPropertySet.SetProperty("Attributes", this.PropertySet);
             pPropertySet.SetProperty("Location", this.ElementLocation.ToString());
-            ipropertySetArray_0.Add(pPropertySet);
+            pPropertySetArray.Add(pPropertySet);
         }
 
-        public abstract void Update(IPageLayout ipageLayout_0);
+        public abstract void Update(IPageLayout pPageLayout);
 
         public virtual IElement Element
         {

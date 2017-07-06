@@ -21,7 +21,7 @@ namespace Yutai.Plugins.Printing.Commands
         public override void OnCreate(object hook)
         {
             this.m_name = "InsertMapFrame";
-            this.m_caption = "数据框";
+            this.m_caption = "";
             this.m_message = "新建数据框";
             this.m_toolTip = "数据框";
             this.m_category = "制图";

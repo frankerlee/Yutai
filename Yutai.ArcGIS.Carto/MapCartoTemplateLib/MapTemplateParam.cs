@@ -7,18 +7,18 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
 {
     public class MapTemplateParam
     {
-        public MapTemplateParam(int int_1, MapCartoTemplateLib.MapTemplate mapTemplate_1)
+        public MapTemplateParam(int id, MapCartoTemplateLib.MapTemplate pMapTemplate)
         {
-            this.MapTemplateGallery = mapTemplate_1.MapTemplateGallery;
+            this.MapTemplateGallery = pMapTemplate.MapTemplateGallery;
             this.ParamDataType = DataType.String;
-            this.TempleteGuid = mapTemplate_1.Guid;
-            this.OID = int_1;
-            this.MapTemplate = mapTemplate_1;
+            this.TempleteGuid = pMapTemplate.Guid;
+            this.OID = id;
+            this.MapTemplate = pMapTemplate;
         }
 
-        public MapTemplateParam Clone(MapCartoTemplateLib.MapTemplate mapTemplate_1)
+        public MapTemplateParam Clone(MapCartoTemplateLib.MapTemplate pMapTemplate)
         {
-            return new MapTemplateParam(-1, mapTemplate_1)
+            return new MapTemplateParam(-1, pMapTemplate)
             {
                 TempleteGuid = this.TempleteGuid,
                 Name = this.Name,
@@ -50,13 +50,13 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
         }
 
-        public void Load(IPropertySet ipropertySet_0)
+        public void Load(IPropertySet pPropertySet)
         {
-            this.Name = Convert.ToString(ipropertySet_0.GetProperty("Name"));
-            this.Description = Convert.ToString(ipropertySet_0.GetProperty("Description"));
-            int num = Convert.ToInt32(ipropertySet_0.GetProperty("AllowNull"));
+            this.Name = Convert.ToString(pPropertySet.GetProperty("Name"));
+            this.Description = Convert.ToString(pPropertySet.GetProperty("Description"));
+            int num = Convert.ToInt32(pPropertySet.GetProperty("AllowNull"));
             this.AllowNull = num == 1;
-            this.ParamDataType = (DataType) Convert.ToInt32(ipropertySet_0.GetProperty("DataType"));
+            this.ParamDataType = (DataType) Convert.ToInt32(pPropertySet.GetProperty("DataType"));
         }
 
         public void Save()
@@ -80,14 +80,14 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             row.Store();
         }
 
-        public void Save(IPropertySetArray ipropertySetArray_0)
+        public void Save(IPropertySetArray pPropertySetArray)
         {
             IPropertySet pPropertySet = new PropertySetClass();
             pPropertySet.SetProperty("Name", this.Name);
             pPropertySet.SetProperty("Description", this.Description);
             pPropertySet.SetProperty("AllowNull", this.AllowNull ? 1 : 0);
             pPropertySet.SetProperty("DataType", (int) this.ParamDataType);
-            ipropertySetArray_0.Add(pPropertySet);
+            pPropertySetArray.Add(pPropertySet);
         }
 
         public override string ToString()

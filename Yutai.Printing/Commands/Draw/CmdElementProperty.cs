@@ -24,10 +24,9 @@ namespace Yutai.Plugins.Printing.Commands
 
         public override void OnCreate(object hook)
         {
-            this.m_caption = "属性";
+            this.m_caption = "";
             this.m_toolTip = "属性";
             this.m_category = "元素";
-            this.m_caption = "属性";
 
             base.m_bitmap = Properties.Resources.icon_property;
             base.m_name = "Printing_ElementProperty";

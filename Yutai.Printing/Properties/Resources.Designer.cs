@@ -103,6 +103,16 @@ namespace Yutai.Plugins.Printing.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap icon_autolayout {
+            get {
+                object obj = ResourceManager.GetObject("icon_autolayout", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap icon_circle {
             get {
                 object obj = ResourceManager.GetObject("icon_circle", resourceCulture);
@@ -616,6 +626,16 @@ namespace Yutai.Plugins.Printing.Properties {
         internal static System.Drawing.Bitmap icon_page_print2 {
             get {
                 object obj = ResourceManager.GetObject("icon_page_print2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_page_setup {
+            get {
+                object obj = ResourceManager.GetObject("icon_page_setup", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

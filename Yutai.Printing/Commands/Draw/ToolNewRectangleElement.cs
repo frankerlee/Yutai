@@ -24,7 +24,7 @@ namespace Yutai.Plugins.Printing.Commands
 
         public override void OnCreate(object hook)
         {
-            this.m_caption = "矩形";
+            this.m_caption = "";
             this.m_message = "新建矩形";
             this.m_toolTip = "新建矩形";
             this.m_category = "制图";
