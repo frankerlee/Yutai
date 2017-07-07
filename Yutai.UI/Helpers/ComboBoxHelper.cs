@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Windows.Forms;
 using ESRI.ArcGIS.Geodatabase;
@@ -133,6 +135,17 @@ namespace Yutai.UI.Helpers
             {
                 if (comboBox.Items.Contains(defaultValue))
                     comboBox.SelectedText = defaultValue;
+            }
+        }
+
+        public static void AddItemsFromSystemFonts(ComboBox comboBox)
+        {
+            if (comboBox.Items.Count > 0)
+                comboBox.Items.Clear();
+            InstalledFontCollection fontCollection = new InstalledFontCollection();
+            foreach (FontFamily fontFamily in fontCollection.Families)
+            {
+                comboBox.Items.Add(fontFamily.Name);
             }
         }
     }

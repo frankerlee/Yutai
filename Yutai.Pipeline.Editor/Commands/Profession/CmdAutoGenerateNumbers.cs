@@ -19,7 +19,6 @@ namespace Yutai.Pipeline.Editor.Commands.Profession
 
         public override void OnClick(object sender, EventArgs args)
         {
-            _context.SetCurrentTool(this);
             FrmAutoGenerateCode frm = new FrmAutoGenerateCode(_context, _plugin.PipeConfig);
             frm.ShowDialog();
         }
@@ -35,7 +34,7 @@ namespace Yutai.Pipeline.Editor.Commands.Profession
             base.m_toolTip = "自动生成编号";
             base.m_checked = false;
             base.m_message = "自动生成编号";
-            base._itemType = RibbonItemType.Tool;
+            base._itemType = RibbonItemType.Button;
         }
         
         public override void OnDblClick()

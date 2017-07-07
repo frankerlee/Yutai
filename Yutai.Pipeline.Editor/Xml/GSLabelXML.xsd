@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid XML Studio Developer Edition 9.0.11.3078 (http://www.liquid-technologies.com)-->
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:complexType name="LineFieldsDef">
+        <xs:sequence>
+            <xs:element name="LineField" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PointFieldsDef">
+        <xs:sequence>
+            <xs:element name="PointField" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ColorDef">
+        <xs:sequence>
+            <xs:element name="ColorR" type="xs:int" />
+            <xs:element name="ColorG" type="xs:int" />
+            <xs:element name="ColorB" type="xs:int" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GSLineLabelDef">
+        <xs:sequence>
+            <xs:element name="LineFields" type="LineFieldsDef" />
+            <xs:element name="LineFont" type="xs:string" />
+            <xs:element name="LineSize" type="xs:float" />
+            <xs:element name="LineColor" type="ColorDef" />
+            <xs:element name="IsBelow" type="xs:boolean" />
+            <xs:element name="IsLink" type="xs:boolean" default="true" />
+            <xs:element name="IsAutoUpdate" type="xs:boolean" default="true" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GSPointLabelDef">
+        <xs:sequence>
+            <xs:element name="PointFields" type="PointFieldsDef" />
+            <xs:element name="PointFont" type="xs:string" />
+            <xs:element name="PointSize" type="xs:float" />
+            <xs:element name="PointColor" type="ColorDef" />
+            <xs:element name="Location" type="xs:string" />
+            <xs:element name="LabelWeight" type="xs:string" />
+            <xs:element name="FeatureWeight" type="xs:string" />
+            <xs:element name="IsLink" type="xs:boolean" default="true" />
+            <xs:element name="IsAutoUpdate" type="xs:boolean" default="true" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="GSLabel">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Description" type="xs:string" />
+                <xs:element name="GSPointLabel" type="GSPointLabelDef" />
+                <xs:element name="GSLineLabel" type="GSLineLabelDef" />
+                <xs:element name="ReferenceScale" type="xs:int" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
