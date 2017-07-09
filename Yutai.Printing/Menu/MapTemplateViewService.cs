@@ -62,5 +62,15 @@ namespace Yutai.Plugins.Printing.Menu
             }
             _context.DockPanels.ShowDockPanel(((IDockPanelView) _presenter.GetInternalObject()).DockName, false, false);
         }
+
+        public void ClearEvents()
+        {
+            _presenter.ClearEvents();
+        }
+
+        public void InitEvents()
+        {
+            _presenter.InitEvents();
+        }
     }
 }

@@ -22,7 +22,7 @@ namespace Yutai.ArcGIS.Carto.UI
     {
         private bool bool_0 = true;
         private IBasicMap ibasicMap_0 = null;
-        private IContainer icontainer_0 = null;
+       
         private IEnvelope ienvelope_0 = null;
         private IEnvelope ienvelope_1 = null;
         private IEnvelope ienvelope_2 = null;

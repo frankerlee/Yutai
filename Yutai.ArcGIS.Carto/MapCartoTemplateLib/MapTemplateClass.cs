@@ -80,19 +80,19 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 WhereClause = "ClassID=" + this.OID
             };
             ICursor cursor = this.MapTemplateGallery.MapTemplateTable.Search(queryFilter, false);
-            IRow o = cursor.NextRow();
+            IRow row = cursor.NextRow();
             int index = this.MapTemplateGallery.MapTemplateTable.FindField("Name");
-            while (o != null)
+            while (row != null)
             {
-                string str = o.get_Value(index).ToString();
-                MapCartoTemplateLib.MapTemplate template2 = new MapCartoTemplateLib.MapTemplate(o.OID, this)
+                string str = row.get_Value(index).ToString();
+                MapCartoTemplateLib.MapTemplate template2 = new MapCartoTemplateLib.MapTemplate(row.OID, this)
                 {
                     Name = str
                 };
                 this.AddMapTemplate(template2);
-                o = cursor.NextRow();
+                row = cursor.NextRow();
             }
-            ComReleaser.ReleaseCOMObject(o);
+            ComReleaser.ReleaseCOMObject(row);
         }
 
         public void RemoveAllMapTemplate()

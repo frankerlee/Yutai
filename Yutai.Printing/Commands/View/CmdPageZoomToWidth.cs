@@ -16,7 +16,7 @@ namespace Yutai.Plugins.Printing.Commands
 
         public override void OnCreate(object hook)
         {
-            this.m_caption = "适宽";
+            this.m_caption = "";
             this.m_toolTip = "缩放到宽度";
             this.m_category = "页面操作";
             base.m_bitmap = Properties.Resources.PageZoomToWidth;

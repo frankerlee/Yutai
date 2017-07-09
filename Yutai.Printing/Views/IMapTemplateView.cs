@@ -14,6 +14,9 @@ namespace Yutai.Plugins.Printing.Views
     {
         void Initialize(IAppContext context, PrintingPlugin plugin);
         void SetBuddyControl();
+        void ClearEvents();
+
+        void InitEvents();
     }
     public enum MapTemplateCommand
     {
@@ -118,6 +121,16 @@ namespace Yutai.Plugins.Printing.Views
 
         private void OnItemSelected()
         {
+        }
+
+        public void ClearEvents()
+        {
+            View.ClearEvents();
+        }
+
+        public void InitEvents()
+        {
+            View.InitEvents();
         }
     }
 }

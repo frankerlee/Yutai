@@ -33,6 +33,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
         private string string_0 = "宋体";
         private MapCartoTemplateLib.TemplateSizeStyle templateSizeStyle;
         private IPrintPageInfo _pageInfo;
+        private bool _isDesign=true;
 
         public MapTemplate(int templateID, MapCartoTemplateLib.MapTemplateClass templateClass)
         {
@@ -79,6 +80,12 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     this.mapTemplateParams.Add(parameter);
                 }
             }
+        }
+
+        public bool IsDesign
+        {
+            get { return _isDesign; }
+            set { _isDesign = value; }
         }
 
         //!  判断是否能够制作图框，图框只有在投影坐标系下才能制作，因为整个程序支持梯形和矩形，所以会进行多次的坐标转换
@@ -462,7 +469,10 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 Debug.Print(envelope.Width.ToString());
                 Debug.Print(envelope.Height.ToString());
                 IEnvelope envelopeClass = new EnvelopeClass();
-                envelopeClass.PutCoords(3, 3, 53, 53);
+
+                //! 修改坐标，依据图幅大小
+                //envelopeClass.PutCoords(3, 3, 53, 53);
+                envelopeClass.PutCoords(3, 3, this.Width+3, this.Height+3);
                 ITransform2D transform2D = focusMapFrame as ITransform2D;
                 IAffineTransformation2D affineTransformation2DClass = new AffineTransformation2DClass();
                 affineTransformation2DClass.DefineFromEnvelopes(envelope, envelopeClass);
@@ -613,7 +623,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                     (focusMapFrame as IMapGrids).AddMapGrid(this.MapGrid);
                     if (this.BorderSymbol != null)
                     {
-                        IElement element = this.method_14(focusMapFrame, this.BorderSymbol);
+                        IElement element = this.CreateFrameBorder(focusMapFrame, this.BorderSymbol);
                         (iactiveView_0 as IGraphicsContainer).AddElement(element, -1);
                     }
                 }
@@ -839,46 +849,72 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                                  : ((this.TopInOutSpace + this.BottomInOutSpace) + this.OutBorderWidth)) + 6.0) +
                             this._YMax) - this._YMin;
             (iactiveView_0 as IPageLayout).Page.PutCustomSize(num11, num12);
-            if (focusMapFrame.Map is IMapAutoExtentOptions)
-            {
-                (focusMapFrame.Map as IMapAutoExtentOptions).AutoExtentType = esriExtentTypeEnum.esriExtentBounds;
-                (focusMapFrame.Map as IMapAutoExtentOptions).AutoExtentBounds = envelope;
-                IEnvelope autoExtentBounds = (focusMapFrame.Map as IMapAutoExtentOptions).AutoExtentBounds;
-            }
+            //if (focusMapFrame.Map is IMapAutoExtentOptions)
+            //{
+            //    (focusMapFrame.Map as IMapAutoExtentOptions).AutoExtentType = esriExtentTypeEnum.esriExtentBounds;
+            //    (focusMapFrame.Map as IMapAutoExtentOptions).AutoExtentBounds = envelope;
+            //    IEnvelope autoExtentBounds = (focusMapFrame.Map as IMapAutoExtentOptions).AutoExtentBounds;
+            //}
         }
 
-        public void CreateTKByRect(IActiveView iactiveView_0, IEnvelope ienvelope_0)
+        public void CreateTKByRect2(IActiveView iactiveView_0, IEnvelope ienvelope_0)
         {
             IMapFrame focusMapFrame = MapFrameAssistant.GetFocusMapFrame(iactiveView_0 as IPageLayout);
+            //首先将图框大小恢复到模板大小
             IEnvelope from = (focusMapFrame as IElement).Geometry.Envelope;
+            from.Width = this.Width;
+            from.Height = this.Height;
+            (focusMapFrame as IElement).Geometry = from;
+            double rotation = (focusMapFrame.Map as IActiveView).ScreenDisplay.DisplayTransformation.Rotation;
+
+            
             double width = from.Width;
             double height = from.Height;
-            double num3 = (ienvelope_0.Width/width)*100.0;
-            double num4 = (ienvelope_0.Height/height)*100.0;
+            if(rotation ==0)
+            { 
+            double num3 = (ienvelope_0.Width / width) * 100.0;
+            double num4 = (ienvelope_0.Height / height) * 100.0;
             num3 = (num3 > num4) ? num3 : num4;
-            int num5 = (int) (num3/100.0);
-            this.Scale = num5*100;
-            this.m_Scale = this.Scale;
-            width = (ienvelope_0.Width/this.Scale)*100.0;
-            height = (ienvelope_0.Height/this.Scale)*100.0;
+            int num5 = (int)(num3 / 100.0);
+
+        
+                this.Scale = num5 * 100;
+                this.m_Scale = this.Scale;
+                width = (ienvelope_0.Width / this.Scale) * 100.0;
+                height = (ienvelope_0.Height / this.Scale) * 100.0;
+            }
+            else
+            {
+                this.Scale = (focusMapFrame.Map as IActiveView).ScreenDisplay.DisplayTransformation.ScaleRatio;
+                this.m_Scale = this.Scale;
+                width = this.Width;
+                height = this.Height;
+            }
+          
             if (!(this.IsTest || !this.FixedWidthAndBottomSpace))
             {
                 this.OldBottomInOutSpace = this.BottomInOutSpace;
-                this.BottomInOutSpace = (this.BottomInOutSpace*width)/this.Width;
+                this.BottomInOutSpace = (this.BottomInOutSpace * width) / this.Width;
                 this.IsChangeBottomLength = true;
-                this.BottomLengthScale = width/this.Width;
+                this.BottomLengthScale = width / this.Width;
             }
             double num1 = ((this.LeftInOutSpace + this.RightInOutSpace) + this.OutBorderWidth) + 8.0;
             double num11 = ((this.TopInOutSpace + this.BottomInOutSpace) + this.OutBorderWidth) + 8.0;
             IEnvelope to = new EnvelopeClass();
-            double xMin = (this.LeftInOutSpace + (this.OutBorderWidth/2.0)) + 2.0;
-            double yMin = (this.BottomInOutSpace + (this.OutBorderWidth/2.0)) + 2.0;
+            double xMin = (this.LeftInOutSpace + (this.OutBorderWidth / 2.0)) + 2.0;
+            double yMin = (this.BottomInOutSpace + (this.OutBorderWidth / 2.0)) + 2.0;
             to.PutCoords(xMin, yMin, width + xMin, height + yMin);
             IAffineTransformation2D transformation = new AffineTransformation2DClass();
             transformation.DefineFromEnvelopes(from, to);
             (focusMapFrame as ITransform2D).Transform(esriTransformDirection.esriTransformForward, transformation);
-            (focusMapFrame.Map as IActiveView).Extent = ienvelope_0;
-            focusMapFrame.Map.MapScale = this.Scale;
+
+            //! 当发现图形有旋转的时候，不再设置显示范围
+
+            if (rotation == 0.0)
+            {
+                (focusMapFrame.Map as IActiveView).Extent = ienvelope_0;
+                focusMapFrame.Map.MapScale = this.Scale;
+            }
             if (this.MapFrameType == MapCartoTemplateLib.MapFrameType.MFTTrapezoid)
             {
                 PointClass class2 = new PointClass
@@ -909,26 +945,36 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             }
             else
             {
-                IEnvelope envelope4 = (focusMapFrame.Map as IActiveView).Extent;
-                focusMapFrame.MapScale = this.Scale;
-                double mapScale = focusMapFrame.MapScale;
-                IEnvelope envelope3 = (focusMapFrame.Map as IActiveView).Extent;
-                if (mapScale != 0.0)
+
+                IEnvelope envelope4 = null;
+                double mapScale;
+                IEnvelope envelope3;
+                envelope4 = (focusMapFrame.Map as IActiveView).Extent;
+                if (rotation == 0.0)
                 {
-                    this.m_Scale = mapScale;
+                    focusMapFrame.MapScale = this.Scale;
+                    mapScale = focusMapFrame.MapScale;
+                    envelope3 = (focusMapFrame.Map as IActiveView).Extent;
+                    if (mapScale != 0.0)
+                    {
+                        this.m_Scale = mapScale;
+                    }
+                    else
+                    {
+                        this.m_Scale = 500.0;
+                    }
                 }
-                else
-                {
-                    this.m_Scale = 500.0;
-                }
+
                 if (this.MapGrid != null)
                 {
-                    (this.MapGrid as IMeasuredGrid).XIntervalSize = (this.XInterval*this.Scale)/100.0;
-                    (this.MapGrid as IMeasuredGrid).YIntervalSize = (this.YInterval*this.Scale)/100.0;
-                    (focusMapFrame as IMapGrids).AddMapGrid(this.MapGrid);
+                    (this.MapGrid as IMeasuredGrid).XIntervalSize = (this.XInterval * this.Scale) / 100.0;
+                    (this.MapGrid as IMeasuredGrid).YIntervalSize = (this.YInterval * this.Scale) / 100.0;
+                    
+
+                   (focusMapFrame as IMapGrids).AddMapGrid(this.MapGrid);
                     if (this.BorderSymbol != null)
                     {
-                        IElement element = this.method_14(focusMapFrame, this.BorderSymbol);
+                        IElement element = this.CreateFrameBorder(focusMapFrame, this.BorderSymbol);
                         (iactiveView_0 as IGraphicsContainer).AddElement(element, -1);
                     }
                 }
@@ -957,12 +1003,160 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             this.Width = width;
             this.Height = height;
             IEnvelope extent = (focusMapFrame.Map as IActiveView).Extent;
-            if (focusMapFrame.Map is IMapAutoExtentOptions)
+            //if (focusMapFrame.Map is IMapAutoExtentOptions)
+            //{
+            //    (focusMapFrame.Map as IMapAutoExtentOptions).AutoExtentType = esriExtentTypeEnum.esriExtentBounds;
+            //    (focusMapFrame.Map as IMapAutoExtentOptions).AutoExtentBounds = extent;
+            //    IEnvelope autoExtentBounds = (focusMapFrame.Map as IMapAutoExtentOptions).AutoExtentBounds;
+            //}
+        }
+        public void CreateTKByRect(IActiveView iactiveView_0, IEnvelope ienvelope_0)
+        {
+            IMapFrame focusMapFrame = MapFrameAssistant.GetFocusMapFrame(iactiveView_0 as IPageLayout);
+            double rotation = (focusMapFrame.Map as IActiveView).ScreenDisplay.DisplayTransformation.Rotation;
+            if (rotation != 0)
             {
-                (focusMapFrame.Map as IMapAutoExtentOptions).AutoExtentType = esriExtentTypeEnum.esriExtentBounds;
-                (focusMapFrame.Map as IMapAutoExtentOptions).AutoExtentBounds = extent;
-                IEnvelope autoExtentBounds = (focusMapFrame.Map as IMapAutoExtentOptions).AutoExtentBounds;
+                CreateTKByRect2(iactiveView_0, ienvelope_0);
+                return;
             }
+
+            IEnvelope from = (focusMapFrame as IElement).Geometry.Envelope;
+            double width = from.Width;
+            double height = from.Height;
+            double num3 = (ienvelope_0.Width/width)*100.0;
+            double num4 = (ienvelope_0.Height/height)*100.0;
+            num3 = (num3 > num4) ? num3 : num4;
+            int num5 = (int) (num3/100.0);
+
+            if (rotation == 0)
+            {
+                this.Scale = num5*100;
+                this.m_Scale = this.Scale;
+            }
+            else
+            {
+                this.Scale = (focusMapFrame.Map as IActiveView).ScreenDisplay.DisplayTransformation.ScaleRatio;
+                this.m_Scale = this.Scale;
+            }
+            width = (ienvelope_0.Width/this.Scale)*100.0;
+            height = (ienvelope_0.Height/this.Scale)*100.0;
+            if (!(this.IsTest || !this.FixedWidthAndBottomSpace))
+            {
+                this.OldBottomInOutSpace = this.BottomInOutSpace;
+                this.BottomInOutSpace = (this.BottomInOutSpace*width)/this.Width;
+                this.IsChangeBottomLength = true;
+                this.BottomLengthScale = width/this.Width;
+            }
+            double num1 = ((this.LeftInOutSpace + this.RightInOutSpace) + this.OutBorderWidth) + 8.0;
+            double num11 = ((this.TopInOutSpace + this.BottomInOutSpace) + this.OutBorderWidth) + 8.0;
+            IEnvelope to = new EnvelopeClass();
+            double xMin = (this.LeftInOutSpace + (this.OutBorderWidth/2.0)) + 2.0;
+            double yMin = (this.BottomInOutSpace + (this.OutBorderWidth/2.0)) + 2.0;
+            to.PutCoords(xMin, yMin, width + xMin, height + yMin);
+            IAffineTransformation2D transformation = new AffineTransformation2DClass();
+            transformation.DefineFromEnvelopes(from, to);
+            (focusMapFrame as ITransform2D).Transform(esriTransformDirection.esriTransformForward, transformation);
+
+            //! 当发现图形有旋转的时候，不再设置显示范围
+           
+            if (rotation== 0.0)
+            {
+                (focusMapFrame.Map as IActiveView).Extent = ienvelope_0;
+                focusMapFrame.Map.MapScale = this.Scale;
+            }
+            if (this.MapFrameType == MapCartoTemplateLib.MapFrameType.MFTTrapezoid)
+            {
+                PointClass class2 = new PointClass
+                {
+                    X = ienvelope_0.XMin,
+                    Y = ienvelope_0.YMin
+                };
+                IPoint point = class2;
+                PointClass class3 = new PointClass
+                {
+                    X = ienvelope_0.XMin,
+                    Y = ienvelope_0.YMax
+                };
+                IPoint point2 = class3;
+                PointClass class4 = new PointClass
+                {
+                    X = ienvelope_0.XMax,
+                    Y = ienvelope_0.YMax
+                };
+                IPoint point3 = class4;
+                PointClass class5 = new PointClass
+                {
+                    X = ienvelope_0.XMax,
+                    Y = ienvelope_0.YMin
+                };
+                IPoint point4 = class5;
+                this.method_10(iactiveView_0 as IPageLayout, point, point2, point3, point4);
+            }
+            else
+            {
+
+                IEnvelope envelope4=null;
+                double mapScale;
+                IEnvelope envelope3;
+                envelope4 = (focusMapFrame.Map as IActiveView).Extent;
+                if (rotation== 0.0)
+                {
+                    focusMapFrame.MapScale = this.Scale;
+                     mapScale = focusMapFrame.MapScale;
+                     envelope3 = (focusMapFrame.Map as IActiveView).Extent;
+                    if (mapScale != 0.0)
+                    {
+                        this.m_Scale = mapScale;
+                    }
+                    else
+                    {
+                        this.m_Scale = 500.0;
+                    }
+                }
+               
+                if (this.MapGrid != null)
+                {
+                    (this.MapGrid as IMeasuredGrid).XIntervalSize = (this.XInterval*this.Scale)/100.0;
+                    (this.MapGrid as IMeasuredGrid).YIntervalSize = (this.YInterval*this.Scale)/100.0;
+                    
+                    (focusMapFrame as IMapGrids).AddMapGrid(this.MapGrid);
+                    if (this.BorderSymbol != null)
+                    {
+                        IElement element = this.CreateFrameBorder(focusMapFrame, this.BorderSymbol);
+                        (iactiveView_0 as IGraphicsContainer).AddElement(element, -1);
+                    }
+                }
+                else
+                {
+                    this.Width = from.Width;
+                    this.Height = from.Height;
+                    this.method_3(iactiveView_0 as IPageLayout, envelope4.LowerLeft, envelope4.UpperRight);
+                }
+            }
+            IEnvelope envelope = (focusMapFrame as IElement).Geometry.Envelope;
+            this._XMin = envelope.XMin;
+            this._YMin = envelope.YMin;
+            this._XMax = envelope.XMax;
+            this._YMax = envelope.YMax;
+            this.ApplyElementValue(iactiveView_0);
+            double num9 = ((((this.BorderSymbol == null)
+                                ? 0.0
+                                : ((this.LeftInOutSpace + this.RightInOutSpace) + this.OutBorderWidth)) + 6.0) +
+                           this._XMax) - this._XMin;
+            double num10 = ((((this.BorderSymbol == null)
+                                 ? 0.0
+                                 : ((this.TopInOutSpace + this.BottomInOutSpace) + this.OutBorderWidth)) + 6.0) +
+                            this._YMax) - this._YMin;
+            (iactiveView_0 as IPageLayout).Page.PutCustomSize(num9, num10);
+            this.Width = width;
+            this.Height = height;
+            IEnvelope extent = (focusMapFrame.Map as IActiveView).Extent;
+            //if (focusMapFrame.Map is IMapAutoExtentOptions)
+            //{
+            //    (focusMapFrame.Map as IMapAutoExtentOptions).AutoExtentType = esriExtentTypeEnum.esriExtentBounds;
+            //    (focusMapFrame.Map as IMapAutoExtentOptions).AutoExtentBounds = extent;
+            //    IEnvelope autoExtentBounds = (focusMapFrame.Map as IMapAutoExtentOptions).AutoExtentBounds;
+            //}
         }
 
         public void CreateTKEx(IActiveView iactiveView_0, IEnvelope ienvelope_0)
@@ -1152,7 +1346,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 (focusMapFrame as IMapGrids).AddMapGrid(this.MapGrid);
                 if (this.BorderSymbol != null)
                 {
-                    IElement element = this.method_14(focusMapFrame, this.BorderSymbol);
+                    IElement element = this.CreateFrameBorder(focusMapFrame, this.BorderSymbol);
                     (pActiveView as IGraphicsContainer).AddElement(element, -1);
                 }
             }
@@ -1432,7 +1626,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             ipageLayout_0.Page.PutCustomSize(num5 + num9, num6 + num10);
             if (this.BorderSymbol != null)
             {
-                IElement element = this.method_14(focusMapFrame, this.BorderSymbol);
+                IElement element = this.CreateFrameBorder(focusMapFrame, this.BorderSymbol);
                 (ipageLayout_0 as IGraphicsContainer).AddElement(element, -1);
             }
             MapCartoTemplateLib.YTTransformation transformation =
@@ -1747,9 +1941,9 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             IGraphicsContainer graphicsContainer = iactiveView_0.GraphicsContainer;
             for (int i = 0; i < this.MapTemplateElement.Count; i++)
             {
-             
+
                 this.MapTemplateElement[i].Init();
-                
+
                 IElement element = this.MapTemplateElement[i].GetElement(iactiveView_0 as IPageLayout);
                 if (element is IGroupElement)
                 {
@@ -1769,9 +1963,9 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 {
                     try
                     {
-                        
-                         graphicsContainer.AddElement(element, -1);
-                       
+
+                        graphicsContainer.AddElement(element, -1);
+
                         IEnvelope envelope = element.Geometry.Envelope;
                         this._XMin = (this._XMin < envelope.XMin) ? this._XMin : envelope.XMin;
                         this._YMin = (this._YMin < envelope.YMin) ? this._YMin : envelope.YMin;
@@ -1862,7 +2056,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             iPageLayout.Page.PutCustomSize(xDWZ + num17, yDWZ + num18);
             if (this.BorderSymbol != null)
             {
-                IElement element = this.method_14(focusMapFrame, this.BorderSymbol);
+                IElement element = this.CreateFrameBorder(focusMapFrame, this.BorderSymbol);
                 (iPageLayout as IGraphicsContainer).AddElement(element, -1);
             }
             MapCartoTemplateLib.YTTransformation transformation =
@@ -2004,36 +2198,36 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             this.MapYInterval = (this.YInterval*this.Scale)/100.0;
         }
 
-        private IElement method_14(IMapFrame imapFrame_0, ISymbol isymbol_3)
+        private IElement CreateFrameBorder(IMapFrame imapFrame_0, ISymbol isymbol_3)
         {
             IEnvelope envelope = (imapFrame_0 as IElement).Geometry.Envelope;
             IPoint lowerLeft = envelope.LowerLeft;
             IPoint upperRight = envelope.UpperRight;
             if (isymbol_3 is ILineSymbol)
             {
-                return this.method_17(lowerLeft, upperRight, isymbol_3);
+                return this.CreateLineElement(lowerLeft, upperRight, isymbol_3);
             }
             if (isymbol_3 is IFillSymbol)
             {
-                return this.method_16(lowerLeft, upperRight, isymbol_3);
+                return this.CreateFillElement(lowerLeft, upperRight, isymbol_3);
             }
             return null;
         }
 
-        private IElement method_15(IPoint ipoint_0, IPoint ipoint_1, IPoint ipoint_2, IPoint ipoint_3, ISymbol isymbol_3)
-        {
-            if (isymbol_3 is ILineSymbol)
-            {
-                return this.method_18(ipoint_0, ipoint_1, ipoint_2, ipoint_3, isymbol_3 as ILineSymbol);
-            }
-            if (isymbol_3 is IFillSymbol)
-            {
-                return this.method_19(ipoint_0, ipoint_1, ipoint_2, ipoint_3, isymbol_3 as IFillSymbol);
-            }
-            return null;
-        }
+        //private IElement method_15(IPoint ipoint_0, IPoint ipoint_1, IPoint ipoint_2, IPoint ipoint_3, ISymbol isymbol_3)
+        //{
+        //    if (isymbol_3 is ILineSymbol)
+        //    {
+        //        return this.CreateOutlineElement(ipoint_0, ipoint_1, ipoint_2, ipoint_3, isymbol_3 as ILineSymbol);
+        //    }
+        //    if (isymbol_3 is IFillSymbol)
+        //    {
+        //        return this.CreateOutlineElement(ipoint_0, ipoint_1, ipoint_2, ipoint_3, isymbol_3 as IFillSymbol);
+        //    }
+        //    return null;
+        //}
 
-        private IElement method_16(IPoint ipoint_0, IPoint ipoint_1, ISymbol isymbol_3)
+        private IElement CreateFillElement(IPoint ipoint_0, IPoint ipoint_1, ISymbol isymbol_3)
         {
             IElement element = new PolygonElementClass();
             IFillShapeElement element2 = element as IFillShapeElement;
@@ -2094,7 +2288,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             return element;
         }
 
-        private IElement method_17(IPoint ipoint_0, IPoint ipoint_1, ISymbol isymbol_3)
+        private IElement CreateLineElement(IPoint ipoint_0, IPoint ipoint_1, ISymbol isymbol_3)
         {
             IElement element = new LineElementClass();
             ILineElement element2 = null;
@@ -2133,7 +2327,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             return element;
         }
 
-        private IElement method_18(IPoint ipoint_0, IPoint ipoint_1, IPoint ipoint_2, IPoint ipoint_3,
+        private IElement CreateOutlineElement(IPoint ipoint_0, IPoint ipoint_1, IPoint ipoint_2, IPoint ipoint_3,
             ILineSymbol ilineSymbol_0)
         {
             IElement element = new LineElementClass();
@@ -2179,7 +2373,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             return element;
         }
 
-        private IElement method_19(IPoint ipoint_0, IPoint ipoint_1, IPoint ipoint_2, IPoint ipoint_3,
+        private IElement CreateOutlineElement(IPoint ipoint_0, IPoint ipoint_1, IPoint ipoint_2, IPoint ipoint_3,
             IFillSymbol ifillSymbol_0)
         {
             IElement element = new PolygonElementClass();
@@ -2252,7 +2446,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 (focusMapFrame as IMapGrids).AddMapGrid(this.MapGrid);
                 if (this.BorderSymbol != null)
                 {
-                    IElement element = this.method_14(focusMapFrame, this.BorderSymbol);
+                    IElement element = this.CreateFrameBorder(focusMapFrame, this.BorderSymbol);
                     (ipageLayout_0 as IGraphicsContainer).AddElement(element, -1);
                 }
             }
@@ -2837,7 +3031,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             {
                 element.AddElement(element2);
             }
-            element2 = this.method_14(focusMapFrame, this.GetBorderSymbol());
+            element2 = this.CreateFrameBorder(focusMapFrame, this.GetBorderSymbol());
             if (element2 != null)
             {
                 element.AddElement(element2);

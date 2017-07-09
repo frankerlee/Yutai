@@ -17,7 +17,7 @@ namespace Yutai.Plugins.Printing.Commands
         public override void OnCreate(object hook)
         {
             this.m_name = "PageZoomToPercent100";
-            this.m_caption = "100%";
+            this.m_caption = "";
             this.m_toolTip = "缩放到100%";
             this.m_category = "页面操作";
             base.m_bitmap = Properties.Resources.PageZoomToPercent100;

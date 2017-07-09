@@ -12,6 +12,18 @@ namespace Yutai.Plugins.Printing.Commands
     public class CmdStartLayout : YutaiCommand
     {
         private PrintingPlugin _plugin;
+        private bool _enabled;
+
+        public override bool Enabled
+        {
+            get
+            {
+                if (_plugin.IsDeign) return false;
+                
+                return !_plugin.IsLayout;
+
+            }
+        }
 
         public CmdStartLayout(IAppContext context, BasePlugin plugin)
         {
@@ -21,7 +33,7 @@ namespace Yutai.Plugins.Printing.Commands
 
         public override void OnCreate(object hook)
         {
-            this.m_bitmap = Properties.Resources.icon_layout_start;
+            this.m_bitmap = Properties.Resources.icon_layout_open;
             this.m_caption = "启动制图";
             this.m_category = "Layout";
             this.m_message = "启动制图";
@@ -43,6 +55,7 @@ namespace Yutai.Plugins.Printing.Commands
         public override void OnClick()
         {
             _context.MainView.ActivatePageLayout();
+            _plugin.IsLayout = true;
         }
     }
 }

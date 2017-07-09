@@ -19,7 +19,12 @@ namespace Yutai.Plugins.Printing.Commands
     {
         public override bool Enabled
         {
-            get { return this._context.FocusMap != null && this.method_0().ElementSelectionCount == 1; }
+            get
+            {
+                if (_context.FocusMap == null) return false;
+                if (this.GetSelection() == null) return false;
+                return this.GetSelection().ElementSelectionCount == 1;
+            }
         }
 
         public override void OnCreate(object hook)
@@ -35,6 +40,7 @@ namespace Yutai.Plugins.Printing.Commands
             base.m_enabled = true;
             base._itemType = RibbonItemType.Button;
             _context = hook as IAppContext;
+            _needUpdateEvent = true;
         }
 
         public CmdElementProperty(IAppContext context)
@@ -53,7 +59,7 @@ namespace Yutai.Plugins.Printing.Commands
         }
 
 
-        private IGraphicsContainerSelect method_0()
+        private IGraphicsContainerSelect GetSelection()
         {
             IGraphicsContainerSelect result;
             try
@@ -65,8 +71,8 @@ namespace Yutai.Plugins.Printing.Commands
                     result = null;
                     return result;
                 }
-                IViewManager viewManager = activeView as IViewManager;
-                ISelection arg_2E_0 = viewManager.ElementSelection;
+                //IViewManager viewManager = activeView as IViewManager;
+                //ISelection arg_2E_0 = viewManager.ElementSelection;
                 result = (graphicsContainer as IGraphicsContainerSelect);
                 return result;
             }
@@ -79,7 +85,7 @@ namespace Yutai.Plugins.Printing.Commands
 
         private bool method_1()
         {
-            IGraphicsContainerSelect graphicsContainerSelect = this.method_0();
+            IGraphicsContainerSelect graphicsContainerSelect = this.GetSelection();
             bool result;
             if (graphicsContainerSelect.ElementSelectionCount == 0)
             {

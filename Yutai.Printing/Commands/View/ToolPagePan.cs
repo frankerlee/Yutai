@@ -34,7 +34,7 @@ namespace Yutai.Plugins.Printing.Commands
             this.m_cursor = this.cursor_0;
             this.m_bitmap = Properties.Resources.PageHand;
             this.m_name = "PagePan";
-            this.m_caption = "移动";
+            this.m_caption = "";
             this.m_toolTip = "页面移动";
             this.m_category = "页面操作";
             base.m_name = "Printing_PagePan";

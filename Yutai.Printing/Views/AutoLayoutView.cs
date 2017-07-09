@@ -10,9 +10,11 @@ using System.Windows.Forms;
 using ESRI.ArcGIS.ADF;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
+using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 using Yutai.ArcGIS.Carto.MapCartoTemplateLib;
+using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Printing.Commands;
@@ -101,7 +103,7 @@ namespace Yutai.Plugins.Printing.Views
             _fenceLine = new ToolFenceLine(_context, _plugin);
             _fenceLineBuffer = new ToolFenceLineBuffer(_context, _plugin);
             _fencePolygon = new ToolFencePolygon(_context, _plugin);
-            _printer=new CmdPrintSetup(_context,_plugin);
+            _printer = new CmdPrintSetup(_context, _plugin);
         }
 
         private void LoadIndexMaps()
@@ -224,23 +226,7 @@ namespace Yutai.Plugins.Printing.Views
 
         #endregion
 
-        private void rdoSelectMode_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (rdoSelectMode.SelectedIndex == 0)
-            {
-                grpIndexMap.Enabled = true;
-                grpKey.Enabled = true;
-                grpFence.Enabled = true;
-                cmbScale.Enabled = false;
-            }
-            else if (rdoSelectMode.SelectedIndex == 1)
-            {
-                grpIndexMap.Enabled = false;
-                grpKey.Enabled = false;
-                grpFence.Enabled = true;
-                cmbScale.Enabled = true;
-            }
-        }
+      
 
         private IGeometry CombineFence(IGeometryArray geometryArray)
         {
@@ -258,9 +244,58 @@ namespace Yutai.Plugins.Printing.Views
             return topo as IGeometry;
         }
 
+        private void StartStripQuery()
+        {
+           
+            _helper.MapTemplate = _template;
+            _helper.Scale = Convert.ToDouble(cmbScale.EditValue);
+            if (_currentPageInfos != null)
+                _currentPageInfos.Clear();
+            else
+                _currentPageInfos = new List<IPrintPageInfo>();
+            for (int i = 0; i < _plugin.Fences.Count; i++)
+            {
+                List<IPrintPageInfo> pages = _helper.CreateStripMapPageInfos(_plugin.Fences.Element[i] as IPolyline);
+                if (pages != null && pages.Count > 0)
+                {
+                    foreach (IPrintPageInfo page in pages)
+                    {
+                            page.AutoElements.Add(new PrintPageElement("PageName","图名",page.PageName));
+                            page.AutoElements.Add(new PrintPageElement("PageID", "图号", page.PageID.ToString()));
+                            page.AutoElements.Add(new PrintPageElement("TotalCount", "总页数", page.TotalCount.ToString()));
+                        _currentPageInfos.Add(page);
+                    }
+                }
+            }
+
+
+            _plugin.PageInfos = _currentPageInfos;
+            FillPageInfos();
+            this.xtraTabControl1.SelectedTabPageIndex = 1;
+        }
+
         private void btnSearchKey_Click(object sender, EventArgs e)
         {
-            if (rdoSelectMode.SelectedIndex == 0 && _plugin.Fences.Count == 0)
+            
+            if (cmbSearchType.SelectedIndex < 0)
+            {
+                MessageService.Current.Warn("请选择出图模板!");
+                return;
+            }
+            if (cmbScale.EditValue == null || Convert.ToDouble(cmbScale.EditValue) < 0)
+            {
+                MessageService.Current.Warn("请设置比例尺!!");
+                return;
+            }
+            if (cmbSearchType.SelectedIndex == 0)
+            {
+                if (cmbIndexLayer.SelectedIndex < 0)
+                {
+                    MessageService.Current.Warn("请设置分幅图用于搜索!");
+                    return;
+                }
+            }
+            if (cmbSearchType.SelectedIndex == 0 && _plugin.Fences.Count == 0)
             {
                 if (string.IsNullOrEmpty(txtSearchKey.Text.Trim()))
                 {
@@ -268,6 +303,32 @@ namespace Yutai.Plugins.Printing.Views
                     return;
                 }
             }
+
+            if (cmbSearchType.SelectedIndex == 1)
+            {
+              
+                if (_plugin.Fences == null || _plugin.Fences.Count == 0)
+                {
+                    MessageService.Current.Warn("请至设置一个打印范围!");
+                    return;
+                }
+            }
+
+            
+            
+
+            if (cmbLayoutType.SelectedIndex == 1)
+                {
+                if (_plugin.Fences.Count == 0)
+                {
+                    MessageService.Current.Warn("请至设置一个打印范围!");
+                    return;
+                }
+                StartStripQuery();
+                    return;
+                }
+           
+
             if (_plugin.Fences.Count > 1)
             {
                 if (MessageService.Current.Ask("系统发现你设置了多个打印范围，系统将对此进行综合后排版，继续吗?") == false)
@@ -289,8 +350,18 @@ namespace Yutai.Plugins.Printing.Views
             _helper.Execute();
             if (_helper.PageInfos != null)
             {
+                
+                foreach (IPrintPageInfo page in _helper.PageInfos)
+                {
+                    page.AutoElements.Add(new PrintPageElement("PageName", "图名", page.PageName));
+                    page.AutoElements.Add(new PrintPageElement("PageID", "图号", page.PageID.ToString()));
+                    page.AutoElements.Add(new PrintPageElement("TotalCount", "总页数", page.TotalCount.ToString()));
+                    //_currentPageInfos.Add(page);
+                }
                 _currentPageInfos = _helper.PageInfos;
+                _plugin.PageInfos = _helper.PageInfos;
                 FillPageInfos();
+                this.xtraTabControl1.SelectedTabPageIndex = 1;
             }
         }
 
@@ -505,13 +576,26 @@ namespace Yutai.Plugins.Printing.Views
         {
             if (isRunning) return;
             propertyPage.SelectedObject = infoWrap.PrintPageInfo;
+
             IActiveView pActiveView = _context.FocusMap as IActiveView;
-            pActiveView.Extent = infoWrap.PrintPageInfo.Boundary.Envelope;
+            pActiveView.ScreenDisplay.DisplayTransformation.Rotation = btnRotatePage.Checked ? infoWrap.PrintPageInfo.Angle : 0;
+            IPoint centerPoint = new ESRI.ArcGIS.Geometry.Point();
+            IEnvelope pEnv = infoWrap.PrintPageInfo.Boundary.Envelope;
+            centerPoint.PutCoords(pEnv.XMin + pEnv.Width / 2.0, pEnv.YMin + pEnv.Height / 2.0);
+            IEnvelope pExtentEnv = pActiveView.Extent;
+            pExtentEnv.CenterAt(centerPoint);
+            pActiveView.Extent = pExtentEnv;
+            pActiveView.ScreenDisplay.DisplayTransformation.ScaleRatio = infoWrap.PrintPageInfo.Scale;
             pActiveView.Refresh();
-            if (_context.MainView.ControlType == GISControlType.PageLayout)
+            if (_context.MainView.ControlType != GISControlType.PageLayout)
             {
-                LoadPrintPage(infoWrap.PrintPageInfo);
+                return;
             }
+            LoadPrintPage(infoWrap.PrintPageInfo);
+            MessageService.Current.Info("Refresh");
+            pActiveView.Extent = pExtentEnv;
+            pActiveView.ScreenDisplay.DisplayTransformation.ScaleRatio = infoWrap.PrintPageInfo.Scale;
+            pActiveView.Refresh();
         }
 
         private void DeleteAllElements(IActiveView pAV)
@@ -531,6 +615,7 @@ namespace Yutai.Plugins.Printing.Views
                 {
                     graphicsContainer.DeleteElement(element);
                 }
+                
                 graphicsContainer.AddElement(mapFrame as IElement, -1);
                 pAV.FocusMap = mapFrame.Map;
             }
@@ -542,8 +627,8 @@ namespace Yutai.Plugins.Printing.Views
         private void LoadPrintPage(IPrintPageInfo pageInfo)
         {
             if (_template == null) return;
-             //因为前面的操作可能对Template有赋值，因此，在将参数付过去之前需要进行初始化
-             _template.Load();
+            //因为前面的操作可能对Template有赋值，因此，在将参数付过去之前需要进行初始化
+            _template.Load();
 
             //! 首先将PageInfo里面的属性值赋给 template
 
@@ -578,23 +663,24 @@ namespace Yutai.Plugins.Printing.Views
 
             _layoutControl = _context.MainView.PageLayoutControl;
             this.DeleteAllElements(this._layoutControl.ActiveView);
-            ((_layoutControl.ActiveView as IActiveView).FocusMap as IMapClipOptions).ClipType = esriMapClipType.esriMapClipNone;
+            ((_layoutControl.ActiveView as IActiveView).FocusMap as IMapClipOptions).ClipType =
+                esriMapClipType.esriMapClipNone;
             if ((_layoutControl.ActiveView as IActiveView).FocusMap is IMapAutoExtentOptions)
             {
-                ((_layoutControl.ActiveView as IActiveView).FocusMap as IMapAutoExtentOptions).AutoExtentType = esriExtentTypeEnum.esriExtentDefault;
+                ((_layoutControl.ActiveView as IActiveView).FocusMap as IMapAutoExtentOptions).AutoExtentType =
+                    esriExtentTypeEnum.esriExtentDefault;
             }
             IEnvelope extent = pageInfo.Boundary.Envelope;
+            MessageService.Current.Info(string.Format("{0},{1},{2},{3}",extent.XMin,extent.YMin,extent.XMax,extent.YMax));
 
             if (_template.MapFramingType == MapFramingType.StandardFraming)
             {
                 _template.CreateTKN(_layoutControl.ActiveView as IActiveView, extent.LowerLeft);
             }
             else
-            _template.CreateTKByRect(_layoutControl.ActiveView as IActiveView, extent);
+                _template.CreateTKByRect2(_layoutControl.ActiveView as IActiveView, extent);
 
             (_layoutControl.ActiveView as IGraphicsContainerSelect).UnselectAllElements();
-           
-         
         }
 
         private void btnClearPage_Click(object sender, EventArgs e)
@@ -602,5 +688,120 @@ namespace Yutai.Plugins.Printing.Views
             _currentPageInfos.Clear();
             lstPages.Items.Clear();
         }
+
+        private void btnSelectAll_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < lstPages.Items.Count; i++)
+            {
+                lstPages.SetItemChecked(i, true);
+            }
+        }
+
+        private void btnUnSelectAll_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < lstPages.Items.Count; i++)
+            {
+                lstPages.SetItemChecked(i, false);
+            }
+        }
+
+        private void btnReserveSelect_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < lstPages.Items.Count; i++)
+            {
+                bool check = lstPages.GetItemChecked(i);
+                lstPages.SetItemChecked(i, !check);
+            }
+        }
+
+        private void btnDrawIndex_Click(object sender, EventArgs e)
+        {
+            if (_currentPageInfos == null || _currentPageInfos.Count == 0) return;
+            if (_context.MainView.ControlType != GISControlType.MapControl)
+            {
+                MessageService.Current.Warn("索引图最好在地图环境下绘制!");
+                return;
+            }
+
+            _plugin.DrawPage = true;
+            _plugin.PageInfos = _currentPageInfos;
+            ((IActiveView) _context.FocusMap).PartialRefresh(esriViewDrawPhase.esriViewGeography, null, null);
+
+            //if (_mapControl3 != null)
+            //{
+            //    ((IActiveViewEvents_Event)_mapControl3.ActiveView).AfterDraw-= OnAfterDraw;
+            //}
+            //_mapControl3 = _context.MainView.MapControl;
+            //((IActiveViewEvents_Event)_mapControl3.ActiveView).AfterDraw += OnAfterDraw;
+        }
+
+        private void chkDrawIndex_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkDrawIndex.Checked)
+            {
+                _plugin.DrawPage = true;
+                _plugin.PageInfos = _currentPageInfos;
+                ((IActiveView) _context.FocusMap).PartialRefresh(esriViewDrawPhase.esriViewGeography, null, null);
+            }
+            else
+            {
+                _plugin.DrawPage = false;
+                _plugin.PageInfos = _currentPageInfos;
+                ((IActiveView) _context.FocusMap).PartialRefresh(esriViewDrawPhase.esriViewGeography, null, null);
+            }
+        }
+
+        private void cmbLayoutType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbLayoutType.SelectedIndex == 0)
+            {
+                btnPoint.Enabled = true;
+                btnCircle.Enabled = true;
+                btnRectangle.Enabled = true;
+                btnPolygon.Enabled = true;
+                btnLineBuffer.Enabled = true;
+                btnPolyline.Enabled = false;
+                btnExtent.Enabled = false;
+                _plugin.ClearFence();
+            }
+            else if (cmbLayoutType.SelectedIndex == 1)
+            {
+                cmbScale.Enabled = true;
+                btnPoint.Enabled = false;
+                btnCircle.Enabled = false;
+                btnRectangle.Enabled = false;
+                btnPolygon.Enabled = false;
+                btnLineBuffer.Enabled = false;
+                btnPolyline.Enabled = true;
+                btnExtent.Enabled = true;
+                _plugin.ClearFence();
+            }
+        }
+
+        private void btnRotatePage_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbSearchType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbSearchType.SelectedIndex == 0)
+            {
+                cmbIndexLayer.Enabled = true;
+                grpKey.Visible = true;
+                grpFence.Visible = true;
+                cmbScale.Enabled = false;
+                cmbLayoutType.Enabled = false;
+            }
+            else if (cmbSearchType.SelectedIndex == 1)
+            {
+                cmbIndexLayer.Enabled = false;
+                grpKey.Visible = false;
+                grpFence.Visible = true;
+                cmbLayoutType.Enabled = true;
+            }
+        }
+
+      
     }
 }

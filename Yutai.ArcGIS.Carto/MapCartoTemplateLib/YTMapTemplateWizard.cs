@@ -133,7 +133,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             this.int_0++;
         }
 
-        private void JLKMapTemplateWizard_Load(object sender, EventArgs e)
+        private void YTMapTemplateWizard_Load(object sender, EventArgs e)
         {
             this.mapTemplateTypePage_0.Dock = DockStyle.Fill;
             this.panel1.Controls.Add(this.mapTemplateTypePage_0);

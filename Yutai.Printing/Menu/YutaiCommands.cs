@@ -5,6 +5,7 @@ using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Printing.Commands;
 using Yutai.Plugins.Printing.Commands.Carto;
 using Yutai.Plugins.Printing.Commands.Fence;
+using Yutai.Plugins.Printing.Commands.View;
 
 namespace Yutai.Plugins.Printing.Menu
 {
@@ -41,6 +42,8 @@ namespace Yutai.Plugins.Printing.Menu
                     new CmdStartLayout(_context, _plugin),
                     new CmdCloseLayout(_context, _plugin),
                     new CmdPageSetup(_context,_plugin),
+                    new CmdStartLayoutDesign(_context,_plugin),
+                    new CmdCloseLayoutDesign(_context,_plugin),
 
                     new ToolInsertLineElement(_context),
                     new ToolInsertCircleElement(_context),
@@ -105,6 +108,8 @@ namespace Yutai.Plugins.Printing.Menu
 
                     new CmdShowMapTemplateView(_context),
                     new CmdShowAutoLayoutView(_context),
+
+                    new CmdMapGridProperty(_context),
                 };
             }
             catch (Exception ex)

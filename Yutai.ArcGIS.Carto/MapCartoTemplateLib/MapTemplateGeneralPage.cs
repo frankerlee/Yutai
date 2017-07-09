@@ -133,7 +133,10 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             else if (this.cboStyle.SelectedIndex == 1)
             {
                 this.groupBoxPage.Visible = true;
-                this.groupBoxPage.Enabled = false;
+
+                //! 这儿修改为任意图幅可以改变图框大小！
+                //this.groupBoxPage.Enabled = false;
+                this.groupBoxPage.Enabled = true;
             }
         }
 
@@ -211,8 +214,10 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
                 }
                 else
                 {
-                    this.groupBoxPage.Enabled = false;
-                    this.panelScale.Enabled = false;
+                    this.groupBoxPage.Enabled = true;
+                    this.panelScale.Enabled = true;
+                    //this.groupBoxPage.Enabled = false;
+                    //this.panelScale.Enabled = false;
                 }
                 if (this.MapTemplate.MapFrameType == MapFrameType.MFTRect)
                 {

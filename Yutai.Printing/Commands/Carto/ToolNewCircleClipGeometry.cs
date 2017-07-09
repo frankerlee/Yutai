@@ -38,6 +38,7 @@ namespace Yutai.Plugins.Printing.Commands.Carto
             base.m_enabled = true;
             base._itemType = RibbonItemType.Tool;
             _context = hook as IAppContext;
+            _needUpdateEvent = true;
         }
 
         public ToolNewCircleClipGeometry(IAppContext context)

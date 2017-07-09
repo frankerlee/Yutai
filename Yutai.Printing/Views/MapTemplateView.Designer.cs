@@ -29,89 +29,76 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.mnuConnectTemplateDB = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuDisconnectTemplateDB = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnConnectDB = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDisconnectDB = new DevExpress.XtraEditors.SimpleButton();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.menuStrip1.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuConnectTemplateDB,
-            this.mnuDisconnectTemplateDB});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(304, 25);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // mnuConnectTemplateDB
-            // 
-            this.mnuConnectTemplateDB.Name = "mnuConnectTemplateDB";
-            this.mnuConnectTemplateDB.Size = new System.Drawing.Size(104, 21);
-            this.mnuConnectTemplateDB.Text = "连接模板数据库";
-            this.mnuConnectTemplateDB.Click += new System.EventHandler(this.mnuConnectTemplateDB_Click);
-            // 
-            // mnuDisconnectTemplateDB
-            // 
-            this.mnuDisconnectTemplateDB.Name = "mnuDisconnectTemplateDB";
-            this.mnuDisconnectTemplateDB.Size = new System.Drawing.Size(68, 21);
-            this.mnuDisconnectTemplateDB.Text = "断开连接";
-            this.mnuDisconnectTemplateDB.Click += new System.EventHandler(this.mnuDisconnectTemplateDB_Click);
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 431);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(304, 22);
-            this.statusStrip1.TabIndex = 1;
-            this.statusStrip1.Text = "statusStrip1";
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.btnConnectDB);
+            this.flowLayoutPanel1.Controls.Add(this.btnDisconnectDB);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(304, 37);
+            this.flowLayoutPanel1.TabIndex = 1;
+            // 
+            // btnConnectDB
+            // 
+            this.btnConnectDB.Image = global::Yutai.Plugins.Printing.Properties.Resources.icon_database_connect;
+            this.btnConnectDB.Location = new System.Drawing.Point(3, 3);
+            this.btnConnectDB.Name = "btnConnectDB";
+            this.btnConnectDB.Size = new System.Drawing.Size(32, 32);
+            this.btnConnectDB.TabIndex = 0;
+            this.btnConnectDB.Click += new System.EventHandler(this.btnConnectDB_Click);
+            // 
+            // btnDisconnectDB
+            // 
+            this.btnDisconnectDB.Image = global::Yutai.Plugins.Printing.Properties.Resources.icon_database_close;
+            this.btnDisconnectDB.Location = new System.Drawing.Point(41, 3);
+            this.btnDisconnectDB.Name = "btnDisconnectDB";
+            this.btnDisconnectDB.Size = new System.Drawing.Size(32, 32);
+            this.btnDisconnectDB.TabIndex = 1;
+            this.btnDisconnectDB.Click += new System.EventHandler(this.btnDisconnectDB_Click);
+            // 
             // treeView1
             // 
-            this.treeView1.ContextMenuStrip = this.contextMenuStrip1;
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Location = new System.Drawing.Point(0, 25);
+            this.treeView1.Location = new System.Drawing.Point(0, 37);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(304, 406);
-            this.treeView1.TabIndex = 3;
+            this.treeView1.Size = new System.Drawing.Size(304, 416);
+            this.treeView1.TabIndex = 2;
             this.treeView1.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeExpand);
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
-            this.treeView1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseUp);
             // 
             // MapTemplateView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.treeView1);
-            this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "MapTemplateView";
             this.Size = new System.Drawing.Size(304, 453);
             this.Load += new System.EventHandler(this.MapTemplateView_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem mnuConnectTemplateDB;
-        private System.Windows.Forms.ToolStripMenuItem mnuDisconnectTemplateDB;
-        private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private DevExpress.XtraEditors.SimpleButton btnConnectDB;
+        private DevExpress.XtraEditors.SimpleButton btnDisconnectDB;
         private System.Windows.Forms.TreeView treeView1;
     }
 }

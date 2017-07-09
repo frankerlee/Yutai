@@ -3,11 +3,18 @@
     <Pages>
   
       <Page Key="Layout" Caption="制图" Index="0" Visible="true">
-        <PageGroup Key="Layout_Common" Caption="控制" Visible="true" Index="0">
+        <PageGroup Key="Layout_Common" Caption="制图控制" Visible="true" Index="0">
           <BarItem Key="Layout_StartLayout" Visible="true"></BarItem>
           <BarItem Key="Layout_CloseLayout" Visible="true"></BarItem>
         <BarItem Key="Layout_PageSetup" Visible="true"></BarItem>
-        
+          <BarItem Key="Printing_OpenAutoLayoutView" Visible="true"></BarItem>
+          <BarItem Key="Printing_ClearCartoTemplate" Visible="true"></BarItem>
+          <BarItem Key="Printing_ConfigSetting" Visible="true"></BarItem>
+          <BarItem Key="Printing_MapGrid" Visible="true"></BarItem>
+        </PageGroup>
+        <PageGroup Key="Layout_Template" Caption="模板" Visible="true" Index="0">
+          <BarItem Key="Layout_StartLayoutDesign" Visible="true"></BarItem>
+          <BarItem Key="Layout_CloseLayoutDesign" Visible="true"></BarItem>
         </PageGroup>
         <PageGroup Key="Layout_View" Caption="页面视图" Visible="true" Index="0">
           <BarItem Key="Printing_PageZoomIn" Visible="true"></BarItem>
@@ -19,15 +26,7 @@
           <BarItem Key="Printing_ZoomToWidth" Visible="true" />
           <BarItem Key="Printing_WholePage" Visible="true" />
         </PageGroup>
-        <PageGroup Key="Layout_Template" Caption="模板" Visible="true" Index="0">
-          <BarItem Key="Printing_OpenAutoLayoutView" Visible="true"></BarItem>
-          <BarItem Key="Printing_OpenMapTemplateView" Visible="true"></BarItem>
-          <BarItem Key="Printing_ApplyTFMapTemplate" Visible="true"></BarItem>
-          <BarItem Key="Printing_ApplyTFMapTemplateByDataRange" Visible="true"></BarItem>
-          <BarItem Key="Printing_ApplyTemplateByMouseClick" Visible="true"></BarItem>
-          <BarItem Key="Printing_ClearCartoTemplate" Visible="true"></BarItem>
-          <BarItem Key="Printing_ConfigSetting" Visible="true"></BarItem>
-        </PageGroup>
+     
         <PageGroup Key="Layout_Draw" Caption="绘图" Visible="true" Index="0">
           <BarItem Key="Printing_SelectElement" Visible="true"></BarItem>
           <BarItem Key="Printing_NewLine" Visible="true"></BarItem>
@@ -74,21 +73,16 @@
           <BarItem Key="Printing_GroupElementEx" Visible="true"></BarItem>
           <BarItem Key="Printing_ClearClipBounds" Visible="true"></BarItem>
           <BarItem Key="Printing_ClearClipGeometry" Visible="true"></BarItem>
-        </PageGroup>
-       
-        <PageGroup Key="Layout_Export" Caption="打印" Visible="true" Index="0">
           <BarItem Key="Printing_RealClipOutToPrint" Visible="true"></BarItem>
           <BarItem Key="Printing_ClipOutToPrint" Visible="true"></BarItem>
-
         </PageGroup>
-
+       
         <PageGroup Key="Layout_ExportData" Caption="数据输出" Visible="true" Index="0">
           <BarItem Key="Printing_ClipResultDataOut" Visible="true"></BarItem>
           <BarItem Key="Printing_RealClipOutToShapefile" Visible="true"></BarItem>
           <BarItem Key="Printing_ClipOutToShapefile" Visible="true"></BarItem>
           <BarItem Key="Printing_ExportClipRegionFeatureClass" Visible="true"></BarItem>
           <BarItem Key="Printing_RealClipOutToOtherFormat" Visible="true"></BarItem>
-
         </PageGroup>
       </Page>
   

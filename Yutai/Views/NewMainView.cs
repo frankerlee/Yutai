@@ -216,6 +216,14 @@ namespace Yutai.Views
             if (tabContent.SelectedTabPageIndex == 0) return;
             tabContent.TabPages[0].PageVisible = true;
             tabContent.SelectedTabPageIndex = 0;
+            if (_mapControl.Map is IMapAutoExtentOptions)
+            {
+                (_mapControl.Map as IMapClipOptions).ClipType = esriMapClipType.esriMapClipNone;
+                (_mapControl.Map as IMapAutoExtentOptions).AutoExtentType = esriExtentTypeEnum.esriExtentDefault;
+                ((IMapControl4) _mapControl).AutoMouseWheel = true;
+                //(_mapControl.Map as IMapAutoExtentOptions).AutoExtentBounds = extent;
+
+            }
         }
 
         public void ActivatePageLayout()
@@ -481,6 +489,8 @@ namespace Yutai.Views
             {
                 tabContent.TabPages[0].PageVisible = true;
                 _controlsSynchronizer.ActivateMap();
+                IMap map = _layoutControl.ActiveView.FocusMap;
+                _controlsSynchronizer.ReplaceMap(map);
                 tabContent.TabPages[1].PageVisible = false;
             }
             else if (e.Page == pageLayout)

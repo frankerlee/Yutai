@@ -70,7 +70,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             base.Controls.Add(this.panel2);
             base.Name = "YTMapTemplateWizard";
             this.Text = "制图模板向导";
-            base.Load += new EventHandler(this.JLKMapTemplateWizard_Load);
+            base.Load += new EventHandler(this.YTMapTemplateWizard_Load);
             this.panel2.ResumeLayout(false);
             base.ResumeLayout(false);
         }

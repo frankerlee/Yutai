@@ -158,14 +158,9 @@ namespace Yutai.Plugins.Printing.Commands
                             Clip.ExtractSpecifyHRegFeatures(workspaceName, this._context.FocusMap, geometry, imap_);
                             new FormPrinterSetup();
                             CMapPrinter cMapPrinter;
-                            if (this._context.Hook is IApplication)
-                            {
-                                cMapPrinter = new CMapPrinter(imap_, ApplicationBase.StyleGallery);
-                            }
-                            else
-                            {
-                                cMapPrinter = new CMapPrinter(imap_);
-                            }
+                           
+                            cMapPrinter = new CMapPrinter(imap_);
+                            
                             cMapPrinter.showPrintUI("打印地图");
                         }
                         else
@@ -230,10 +225,11 @@ namespace Yutai.Plugins.Printing.Commands
                 case 0:
                     m_name = "Printing_RealClipOutToPrint";
                     _key = "Printing_RealClipOutToPrint";
-                    m_caption = "打印";
+                    m_caption = "裁剪并打印";
                     m_message = "打印裁剪";
                     m_toolTip = "打印裁剪";
                     m_bitmap = Properties.Resources.icon_clip_print;
+                    _itemType = RibbonItemType.Tool;
                     break;
                 case 1:
                     m_name = "Printing_RealClipOutToShapefile";
@@ -242,6 +238,7 @@ namespace Yutai.Plugins.Printing.Commands
                     m_message = "数据裁剪";
                     m_toolTip = "数据裁剪";
                     m_bitmap = Properties.Resources.icon_clip_cut3;
+                    _itemType = RibbonItemType.Tool;
                     break;
             }
         }

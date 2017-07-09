@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Carto.Library;
 using Yutai.ArcGIS.Carto.MapCartoTemplateLib;
 using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Services;
@@ -173,7 +174,7 @@ namespace Yutai.Plugins.Printing.Views
 
         }
 
-
+      
         public List<IPrintPageInfo> CreateStripMapPageInfos(IPolyline stripLine)
         {
             IPolyline pPolyline;
@@ -204,8 +205,8 @@ namespace Yutai.Plugins.Printing.Views
             List<IPrintPageInfo> pages=new List<IPrintPageInfo>(); 
             pPolyline = stripLine;
             pCenterPoint = pPolyline.FromPoint;
-            double m_GridWidth = _mapTemplate.Width*_scale/100;
-            double m_GridHeight = _mapTemplate.Height * _scale / 100;
+            double m_GridWidth = _mapTemplate.Width*_scale/100.0;
+            double m_GridHeight = _mapTemplate.Height * _scale / 100.0;
 
             double dCircleRadius;
             List<double> colIntersects=new List<double>();
@@ -223,7 +224,7 @@ namespace Yutai.Plugins.Printing.Views
             {
                 if (bFirstRun)
                 {
-                    dCircleRadius = m_GridWidth/2;
+                    dCircleRadius = m_GridWidth/2.0;
                 }
                 else
                 {
@@ -245,6 +246,7 @@ namespace Yutai.Plugins.Printing.Views
                     if (pGeoCol.GeometryCount == 0)
                     {
                         //! 需要检查，没有交点的的时候的处理
+
                         return null;
                     }
 
@@ -254,7 +256,7 @@ namespace Yutai.Plugins.Printing.Views
                     for (lLoop2 = 0; lLoop2 < pGeoCol.GeometryCount; lLoop2++)
                     {
                         pIntersectPoint = pGeoCol.Geometry[lLoop2] as IPoint;
-                        dIntersect = ReturnPercentageAlong(pArc, pIntersectPoint);
+                        dIntersect = ReturnPercentageAlong(pPolyline, pIntersectPoint);
                         if (dIntersect > (dHighestPrev*1.001) && dIntersect < dHighestThisTurn)
                         {
                             dHighest = dIntersect;
@@ -366,7 +368,7 @@ namespace Yutai.Plugins.Printing.Views
                         dHighest = dTmpHighest;
                     }
 
-                } while (bContinue);
+                } while (!bContinue);
                 bFirstRun = false;
                 dHighestPrev = dHighest;
                 lCounter++;
@@ -457,12 +459,16 @@ namespace Yutai.Plugins.Printing.Views
             double gridWidth = _mapTemplate.Width*_scale/100.0;
             pCurve.QueryTangent(esriSegmentExtension.esriExtendTangentAtTo,1,true, gridWidth*1.1,pLine);
             pPLine=new Polyline() as IPolyline;
-            pPLine.FromPoint = pLine.FromPoint;
-            pPLine.ToPoint = pLine.ToPoint;
+            IPointCollection pPnts=pPLine as IPointCollection;
+            IClone pClone= pLine.FromPoint as IClone;
+            pPnts.AddPoint(pClone.Clone() as IPoint);
+            pClone = pLine.ToPoint as IClone;
+            pPnts.AddPoint(pClone.Clone() as IPoint);
             pTopoOpt = pPLine as ITopologicalOperator;
             pGeoCol=new GeometryBag() as IGeometryCollection;
             pGeoCol =
                 pTopoOpt.Intersect(pCirclePoly, esriGeometryDimension.esriGeometry0Dimension) as IGeometryCollection;
+            if (pGeoCol.GeometryCount == 0) return null;
             return pGeoCol.Geometry[0] as IPoint;
 
 
@@ -474,10 +480,10 @@ namespace Yutai.Plugins.Printing.Views
             double pDist = 0;
             bool pRightSide = false;
             IPoint pOutPt;
-            double compareDist;
+            double compareDist=0;
 
             pOutPt=new Point();
-            pArc.QueryPointAndDistance(esriSegmentExtension.esriNoExtension,pPoint,true,pOutPt, pDistAlong, pDist, pRightSide);
+            pArc.QueryPointAndDistance(esriSegmentExtension.esriNoExtension,pPoint,true,pOutPt,ref pDistAlong,ref pDist, ref pRightSide);
             return (pDistAlong*100);
 
         }

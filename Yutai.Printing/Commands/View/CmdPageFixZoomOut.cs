@@ -18,7 +18,7 @@ namespace Yutai.Plugins.Printing.Commands
 
         public override void OnCreate(object hook)
         {
-            this.m_caption = "固定缩小";
+            this.m_caption = "";
             this.m_toolTip = "页面固定缩小";
             this.m_category = "页面操作";
             base.m_bitmap = Properties.Resources.PageFixZoomOut;

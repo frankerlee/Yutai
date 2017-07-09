@@ -113,6 +113,36 @@ namespace Yutai.Plugins.Printing.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap icon_check_all {
+            get {
+                object obj = ResourceManager.GetObject("icon_check_all", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_check_reserve {
+            get {
+                object obj = ResourceManager.GetObject("icon_check_reserve", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_check_unall {
+            get {
+                object obj = ResourceManager.GetObject("icon_check_unall", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap icon_circle {
             get {
                 object obj = ResourceManager.GetObject("icon_circle", resourceCulture);
@@ -253,6 +283,26 @@ namespace Yutai.Plugins.Printing.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap icon_database_close {
+            get {
+                object obj = ResourceManager.GetObject("icon_database_close", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_database_connect {
+            get {
+                object obj = ResourceManager.GetObject("icon_database_connect", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap icon_dataGraphic {
             get {
                 object obj = ResourceManager.GetObject("icon_dataGraphic", resourceCulture);
@@ -266,6 +316,26 @@ namespace Yutai.Plugins.Printing.Properties {
         internal static System.Drawing.Bitmap icon_delete {
             get {
                 object obj = ResourceManager.GetObject("icon_delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_design_close {
+            get {
+                object obj = ResourceManager.GetObject("icon_design_close", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_design_open {
+            get {
+                object obj = ResourceManager.GetObject("icon_design_open", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -403,9 +473,29 @@ namespace Yutai.Plugins.Printing.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap icon_layout_close {
+            get {
+                object obj = ResourceManager.GetObject("icon_layout_close", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap icon_layout_exit {
             get {
                 object obj = ResourceManager.GetObject("icon_layout_exit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_layout_open {
+            get {
+                object obj = ResourceManager.GetObject("icon_layout_open", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -506,6 +596,16 @@ namespace Yutai.Plugins.Printing.Properties {
         internal static System.Drawing.Bitmap icon_map_number {
             get {
                 object obj = ResourceManager.GetObject("icon_map_number", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_map_rotate {
+            get {
+                object obj = ResourceManager.GetObject("icon_map_rotate", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

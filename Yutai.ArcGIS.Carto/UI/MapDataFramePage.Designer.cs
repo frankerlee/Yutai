@@ -310,7 +310,7 @@ namespace Yutai.ArcGIS.Carto.UI
             base.Hide();
         }
 
-       
+        private IContainer icontainer_0 = null;
         private SimpleButton btnBorderInfo;
         private SimpleButton btnBorderSelector;
         private Button btnExclude;

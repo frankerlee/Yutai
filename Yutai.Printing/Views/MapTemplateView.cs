@@ -68,6 +68,36 @@ namespace Yutai.Plugins.Printing.Views
            
         }
 
+        public void ClearEvents()
+        {
+            ElementChangeEvent.OnEditElementProperty -= new OnEditElementPropertyHandler(this.ElementChangeEvent_OnEditElementProperty);
+            ElementChangeEvent.OnDeleteElement -= new OnDeleteElementHandler(this.ElementChangeEvent_OnDeleteElement);
+            ElementChangeEvent.OnElementPositionChange -= new OnElementPositionChangeHandler(this.ElementChangeEvent_OnElementPositionChange);
+            ElementChangeEvent.OnElementSelectChange -= new OnElementSelectChangeHandler(this.ElementChangeEvent_OnElementSelectChange);
+            if (_layoutControl != null)
+            {
+                this.m_iPageLayout = _layoutControl.ActiveView as IActiveViewEvents_Event;
+                this.m_iPageLayout.ItemAdded -= new IActiveViewEvents_ItemAddedEventHandler(m_iPageLayout_ItemAdded);
+                this.m_iPageLayout.ItemDeleted -=
+                    new IActiveViewEvents_ItemDeletedEventHandler(m_iPageLayout_ItemDeleted);
+            }
+            this.m_CanSelectChange = false;
+            this.m_TreeviewSelectChange = false;
+        }
+
+        public void InitEvents()
+        {
+            //ElementChangeEvent.OnEditElementProperty += new OnEditElementPropertyHandler(this.ElementChangeEvent_OnEditElementProperty);
+            //ElementChangeEvent.OnDeleteElement += new OnDeleteElementHandler(this.ElementChangeEvent_OnDeleteElement);
+            //ElementChangeEvent.OnElementPositionChange += new OnElementPositionChangeHandler(this.ElementChangeEvent_OnElementPositionChange);
+            //ElementChangeEvent.OnElementSelectChange += new OnElementSelectChangeHandler(this.ElementChangeEvent_OnElementSelectChange);
+          
+            //this.m_iPageLayout = _layoutControl.ActiveView as IActiveViewEvents_Event;
+            //this.m_iPageLayout.ItemAdded += new IActiveViewEvents_ItemAddedEventHandler(m_iPageLayout_ItemAdded);
+            //this.m_iPageLayout.ItemDeleted += new IActiveViewEvents_ItemDeletedEventHandler(m_iPageLayout_ItemDeleted);
+            //this.m_CanSelectChange = true;
+            //this.m_TreeviewSelectChange = true;
+        }
 
         #region 菜单生成
         private void BulidMapTemplateClassNodeMeun()
@@ -514,119 +544,113 @@ namespace Yutai.Plugins.Printing.Views
         private void m_iPageLayout_ItemAdded(object Item)
         {
             TreeNode treeNode;
-            if (this.m_CanDo)
+
+            if (_plugin.IsDeign == false) return;
+            if (!this.m_CanDo) return;
+            MapTemplate tag = null;
+            TreeNode item = null;
+            if (this.treeView1.SelectedNode == null) return;
+            if (this.treeView1.SelectedNode.Tag is MapTemplate)
             {
-                MapTemplate tag = null;
-                TreeNode item = null;
-                if (this.treeView1.SelectedNode != null)
+                tag = this.treeView1.SelectedNode.Tag as MapTemplate;
+                if (this.treeView1.SelectedNode.Nodes.Count == 1)
                 {
-                    if (this.treeView1.SelectedNode.Tag is MapTemplate)
+                    if (this.treeView1.SelectedNode.Nodes[0].Tag == null)
                     {
-                        tag = this.treeView1.SelectedNode.Tag as MapTemplate;
-                        if (this.treeView1.SelectedNode.Nodes.Count == 1)
-                        {
-                            if (this.treeView1.SelectedNode.Nodes[0].Tag == null)
-                            {
-                                this.treeView1.SelectedNode.Nodes.Clear();
-                                this.InitMapTemplate(this.treeView1.SelectedNode);
-                            }
-                        }
-                        item = this.treeView1.SelectedNode.Nodes[1];
+                        this.treeView1.SelectedNode.Nodes.Clear();
+                        this.InitMapTemplate(this.treeView1.SelectedNode);
                     }
-                    else if (!(this.treeView1.SelectedNode.Tag is MapTemplateElement ? false : !(this.treeView1.SelectedNode.Tag is MapTemplateParam)))
+                }
+                item = this.treeView1.SelectedNode.Nodes[1];
+            }
+            else if (!(this.treeView1.SelectedNode.Tag is MapTemplateElement ? false : !(this.treeView1.SelectedNode.Tag is MapTemplateParam)))
+            {
+                tag = this.treeView1.SelectedNode.Parent.Parent.Tag as MapTemplate;
+                item = this.treeView1.SelectedNode.Parent.Parent.Nodes[1];
+            }
+            else if (this.treeView1.SelectedNode.Tag is string)
+            {
+                if ((this.treeView1.SelectedNode.Text == "模板元素" ? true : this.treeView1.SelectedNode.Text == "模板参数"))
+                {
+                    tag = this.treeView1.SelectedNode.Parent.Tag as MapTemplate;
+                    item = this.treeView1.SelectedNode.Parent.Nodes[1];
+                }
+            }
+            if (item == null) return;
+            if (Item is IElement)
+            {
+                bool flag = false;
+                string str = "";
+                if (Item is ILineElement)
+                {
+                    str = "线元素";
+                    flag = true;
+                }
+                else if (Item is IPolygonElement)
+                {
+                    str = "面元素";
+                    flag = true;
+                }
+                else if (Item is IRectangleElement)
+                {
+                    str = "矩形元素";
+                    flag = true;
+                }
+                else if (Item is IEllipseElement)
+                {
+                    str = "椭圆元素";
+                    flag = true;
+                }
+                else if (Item is ITextElement)
+                {
+                    str = "文本元素";
+                    flag = true;
+                }
+                else if (Item is ICircleElement)
+                {
+                    str = "圆元素";
+                    flag = true;
+                }
+                else if (Item is IMarkerElement)
+                {
+                    str = "点元素";
+                    flag = true;
+                }
+                if (!flag) return;
+                (Item as IElementProperties2).Name = str;
+                if (!(Item is ITextElement))
+                {
+                    MapTemplateGraphicsElement mapTemplateGraphicsElement = new MapTemplateGraphicsElement(tag)
                     {
-                        tag = this.treeView1.SelectedNode.Parent.Parent.Tag as MapTemplate;
-                        item = this.treeView1.SelectedNode.Parent.Parent.Nodes[1];
-                    }
-                    else if (this.treeView1.SelectedNode.Tag is string)
+                        Element = Item as IElement
+                    };
+                    mapTemplateGraphicsElement.Save();
+                    treeNode = new TreeNode(mapTemplateGraphicsElement.Name)
                     {
-                        if ((this.treeView1.SelectedNode.Text == "模板元素" ? true : this.treeView1.SelectedNode.Text == "模板参数"))
-                        {
-                            tag = this.treeView1.SelectedNode.Parent.Tag as MapTemplate;
-                            item = this.treeView1.SelectedNode.Parent.Nodes[1];
-                        }
-                    }
-                    if (item != null)
+                        Tag = mapTemplateGraphicsElement
+                    };
+                    item.Nodes.Add(treeNode);
+                    tag.AddMapTemplateElement(mapTemplateGraphicsElement);
+                    this.treeView1.SelectedNode = treeNode;
+                }
+                else
+                {
+                    MapTemplateTextElement mapTemplateTextElement = new MapTemplateTextElement(tag)
                     {
-                        if (Item is IElement)
-                        {
-                            bool flag = false;
-                            string str = "";
-                            if (Item is ILineElement)
-                            {
-                                str = "线元素";
-                                flag = true;
-                            }
-                            else if (Item is IPolygonElement)
-                            {
-                                str = "面元素";
-                                flag = true;
-                            }
-                            else if (Item is IRectangleElement)
-                            {
-                                str = "矩形元素";
-                                flag = true;
-                            }
-                            else if (Item is IEllipseElement)
-                            {
-                                str = "椭圆元素";
-                                flag = true;
-                            }
-                            else if (Item is ITextElement)
-                            {
-                                str = "文本元素";
-                                flag = true;
-                            }
-                            else if (Item is ICircleElement)
-                            {
-                                str = "圆元素";
-                                flag = true;
-                            }
-                            else if (Item is IMarkerElement)
-                            {
-                                str = "点元素";
-                                flag = true;
-                            }
-                            if (flag)
-                            {
-                                (Item as IElementProperties2).Name = str;
-                                if (!(Item is ITextElement))
-                                {
-                                    MapTemplateGraphicsElement mapTemplateGraphicsElement = new MapTemplateGraphicsElement(tag)
-                                    {
-                                        Element = Item as IElement
-                                    };
-                                    mapTemplateGraphicsElement.Save();
-                                    treeNode = new TreeNode(mapTemplateGraphicsElement.Name)
-                                    {
-                                        Tag = mapTemplateGraphicsElement
-                                    };
-                                    item.Nodes.Add(treeNode);
-                                    tag.AddMapTemplateElement(mapTemplateGraphicsElement);
-                                    this.treeView1.SelectedNode = treeNode;
-                                }
-                                else
-                                {
-                                    MapTemplateTextElement mapTemplateTextElement = new MapTemplateTextElement(tag)
-                                    {
-                                        Element = Item as IElement
-                                    };
-                                    mapTemplateTextElement.Element = Item as IElement;
-                                    mapTemplateTextElement.Text = (Item as ITextElement).Text;
-                                    mapTemplateTextElement.Style = (Item as ITextElement).Symbol;
-                                    mapTemplateTextElement.Save();
-                                    mapTemplateTextElement.ChangePosition(this._layoutControl.PageLayout);
-                                    treeNode = new TreeNode(mapTemplateTextElement.Name)
-                                    {
-                                        Tag = mapTemplateTextElement
-                                    };
-                                    item.Nodes.Add(treeNode);
-                                    tag.AddMapTemplateElement(mapTemplateTextElement);
-                                    this.treeView1.SelectedNode = treeNode;
-                                }
-                            }
-                        }
-                    }
+                        Element = Item as IElement
+                    };
+                    mapTemplateTextElement.Element = Item as IElement;
+                    mapTemplateTextElement.Text = (Item as ITextElement).Text;
+                    mapTemplateTextElement.Style = (Item as ITextElement).Symbol;
+                    mapTemplateTextElement.Save();
+                    mapTemplateTextElement.ChangePosition(this._layoutControl.PageLayout);
+                    treeNode = new TreeNode(mapTemplateTextElement.Name)
+                    {
+                        Tag = mapTemplateTextElement
+                    };
+                    item.Nodes.Add(treeNode);
+                    tag.AddMapTemplateElement(mapTemplateTextElement);
+                    this.treeView1.SelectedNode = treeNode;
                 }
             }
         }
@@ -634,38 +658,37 @@ namespace Yutai.Plugins.Printing.Views
         private void m_iPageLayout_ItemDeleted(object Item)
         {
             MapTemplateElement tag;
-            if (this.m_CanDo)
+            if (_plugin.IsDeign == false) return;
+            if (!this.m_CanDo) return;
+            if (this.treeView1.SelectedNode == null)
             {
-                if (this.treeView1.SelectedNode == null)
+                if (this.m_pLastSelect != null)
                 {
-                    if (this.m_pLastSelect != null)
-                    {
-                    }
                 }
-                else if (this.treeView1.SelectedNode.Tag is MapTemplateElement)
+            }
+            else if (this.treeView1.SelectedNode.Tag is MapTemplateElement)
+            {
+                if ((this.treeView1.SelectedNode.Tag as MapTemplateElement).Element == Item)
                 {
-                    if ((this.treeView1.SelectedNode.Tag as MapTemplateElement).Element == Item)
-                    {
-                        tag = this.treeView1.SelectedNode.Tag as MapTemplateElement;
-                        tag.Delete();
-                        (this.treeView1.SelectedNode.Parent.Parent.Tag as MapTemplate).RemoveMapTemplateElement(tag);
-                        this.treeView1.SelectedNode.Remove();
-                    }
+                    tag = this.treeView1.SelectedNode.Tag as MapTemplateElement;
+                    tag.Delete();
+                    (this.treeView1.SelectedNode.Parent.Parent.Tag as MapTemplate).RemoveMapTemplateElement(tag);
+                    this.treeView1.SelectedNode.Remove();
                 }
-                else if (this.treeView1.SelectedNode.Tag is string)
+            }
+            else if (this.treeView1.SelectedNode.Tag is string)
+            {
+                if (this.treeView1.SelectedNode.Tag.ToString() == "模板元素")
                 {
-                    if (this.treeView1.SelectedNode.Tag.ToString() == "模板元素")
+                    foreach (TreeNode node in this.treeView1.SelectedNode.Nodes)
                     {
-                        foreach (TreeNode node in this.treeView1.SelectedNode.Nodes)
+                        if ((node.Tag as MapTemplateElement).Element == Item)
                         {
-                            if ((node.Tag as MapTemplateElement).Element == Item)
-                            {
-                                tag = node.Tag as MapTemplateElement;
-                                tag.Delete();
-                                (this.treeView1.SelectedNode.Parent.Tag as MapTemplate).RemoveMapTemplateElement(tag);
-                                node.Remove();
-                                break;
-                            }
+                            tag = node.Tag as MapTemplateElement;
+                            tag.Delete();
+                            (this.treeView1.SelectedNode.Parent.Tag as MapTemplate).RemoveMapTemplateElement(tag);
+                            node.Remove();
+                            break;
                         }
                     }
                 }
@@ -867,6 +890,7 @@ namespace Yutai.Plugins.Printing.Views
         private void MenuItem_MapTemplateProperty(object sender, EventArgs e)
         {
             MapTemplate tag = this.treeView1.SelectedNode.Tag as MapTemplate;
+            tag.Load();
             PropertySheet propertySheet = new PropertySheet();
             propertySheet.AddPage(new MapTemplateGeneralPage());
             if (tag.MapGrid == null)
@@ -1345,7 +1369,7 @@ namespace Yutai.Plugins.Printing.Views
 
         #endregion
 
-        private void mnuConnectTemplateDB_Click(object sender, EventArgs e)
+        private void btnConnectDB_Click(object sender, EventArgs e)
         {
             frmOpenFile openFile = new frmOpenFile();
             openFile.AddFilter(new MyGxFilterPersonalGeodatabases(), true);
@@ -1357,14 +1381,14 @@ namespace Yutai.Plugins.Printing.Views
             InitTree(fileName);
         }
 
-        private void mnuDisconnectTemplateDB_Click(object sender, EventArgs e)
+        private void btnDisconnectDB_Click(object sender, EventArgs e)
         {
             if (this.m_MapTemplateGallery == null || this.m_MapTemplateGallery.IsValid() == false)
             {
                 return;
             }
             m_MapTemplateGallery.Workspace = null;
-            mnuDisconnectTemplateDB.Enabled = false;
+            btnDisconnectDB.Enabled = false;
         }
 
         private void MapTemplateView_Load(object sender, EventArgs e)

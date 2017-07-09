@@ -16,7 +16,7 @@ namespace Yutai.Plugins.Printing.Commands
 
         public override void OnCreate(object hook)
         {
-            this.m_caption = "整页";
+            this.m_caption = "";
             this.m_toolTip = "整页";
             this.m_category = "页面操作";
             base.m_bitmap = Properties.Resources.PageZoomToWhole;

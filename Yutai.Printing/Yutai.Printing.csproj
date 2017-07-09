@@ -39,6 +39,8 @@
     <Reference Include="DevExpress.Utils.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraNavBar.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282" />
     <Reference Include="DevExpress.XtraVerticalGrid.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
     <Reference Include="ESRI.ArcGIS.ADF, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86" />
@@ -70,6 +72,9 @@
     <Reference Include="ESRI.ArcGIS.SystemUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
@@ -85,8 +90,10 @@
   <ItemGroup>
     <Compile Include="Commands\Carto\CmdPrintingSetting.cs" />
     <Compile Include="Commands\Carto\CmdShowMapTemplateView.cs" />
+    <Compile Include="Commands\CmdCloseLayoutDesign.cs" />
     <Compile Include="Commands\CmdPageSetup.cs" />
     <Compile Include="Commands\CmdPrintSetup.cs" />
+    <Compile Include="Commands\CmdStartLayoutDesign.cs" />
     <Compile Include="Commands\Draw\AlignGraphicElement.cs" />
     <Compile Include="Commands\Carto\ToolApplyTemplateByMouseClick.cs" />
     <Compile Include="Commands\Carto\CmdApplyTfMapTemplate.cs" />
@@ -119,6 +126,7 @@
     <Compile Include="Commands\Draw\CmdInsertFeactionText.cs" />
     <Compile Include="Commands\Fence\CmdShowAutoLayoutView.cs" />
     <Compile Include="Commands\Fence\ToolFenceCircle.cs" />
+    <Compile Include="Commands\View\CmdMapGridProperty.cs" />
     <Compile Include="Commands\View\ToolPagePan.cs" />
     <Compile Include="Commands\View\ToolSelectElement.cs" />
     <Compile Include="Commands\Draw\CmdElementProperty.cs" />
@@ -367,7 +375,17 @@
     <None Include="Resources\icon_page_zoom.png" />
     <None Include="Resources\icon_autolayout.png" />
     <None Include="Resources\icon_select.png" />
+    <None Include="Resources\icon_check_all.png" />
+    <None Include="Resources\icon_check_reserve.png" />
+    <None Include="Resources\icon_check_unall.png" />
+    <None Include="Resources\icon_map_rotate.png" />
+    <None Include="Resources\icon_design_open.png" />
+    <None Include="Resources\icon_layout_close.png" />
+    <None Include="Resources\icon_layout_open.png" />
+    <None Include="Resources\icon_master_close.png" />
     <None Include="Resources\icon_page_setup.png" />
+    <None Include="Resources\icon_database_close.png" />
+    <None Include="Resources\icon_database_connect.png" />
     <Content Include="Resources\PageFixZoomIn.bmp" />
     <Content Include="Resources\PageFixZoomOut.bmp" />
     <Content Include="Resources\PageHand.bmp" />

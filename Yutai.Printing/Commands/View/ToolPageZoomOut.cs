@@ -30,7 +30,7 @@ namespace Yutai.Plugins.Printing.Commands
                     base.GetType()
                         .Assembly.GetManifestResourceStream("Yutai.Plugins.Printing.Resources.Cursor.PageZoomOut.cur"));
             this.m_name = "PageZoomOut";
-            this.m_caption = "缩小";
+            this.m_caption = "";
             this.m_toolTip = "页面缩小";
             this.m_category = "页面操作";
             base.m_bitmap = Properties.Resources.PageZoomOut;

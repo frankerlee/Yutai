@@ -146,6 +146,7 @@
     <ProjectReference Include="..\Yutai.ArcGIS.Common\Yutai.ArcGIS.Common.csproj">
       <Project>{1938B3F8-8EDE-48F7-9594-EEB1F126E622}</Project>
       <Name>Yutai.ArcGIS.Common</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.Pipeline.Config\Yutai.Pipeline.Config.csproj">
       <Project>{0AA42995-A1CE-49FD-BB98-F94EED2D7289}</Project>

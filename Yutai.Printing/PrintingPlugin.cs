@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geometry;
+using stdole;
 using Yutai.ArcGIS.Carto.MapCartoTemplateLib;
 using Yutai.ArcGIS.Common.Helpers;
 using Yutai.Plugins.Concrete;
@@ -32,6 +33,12 @@ namespace Yutai.Plugins.Printing
         private bool _drawFence;
         private ISymbol _fillSymbol;
         private ISymbol _lineSymbol;
+        private ITextSymbol _textSymbol;
+
+        private List<IPrintPageInfo> _pageInfos;
+        private bool _drawPage = false;
+        private bool _isDeign;
+        private bool _isLayout;
 
         public event EventHandler<FenceAddedArgs> PrintFenceAdded;
 
@@ -49,6 +56,8 @@ namespace Yutai.Plugins.Printing
             _menuGenerator = context.Container.GetInstance<MenuGenerator>();
             ISecureContext secureContext=context as ISecureContext;
             _drawFence = true;
+            _isDeign = false;
+            _isLayout = false;
             if (secureContext.YutaiProject != null)
             {
                 XmlPlugin xmlPlugin = secureContext.YutaiProject.FindPlugin("5e933989-b5a4-4a45-a5b7-2d9ded61df0f");
@@ -82,10 +91,20 @@ namespace Yutai.Plugins.Printing
             {
                 _fillSymbol = SymbolHelper.CreateTransparentFillSymbol(Color.Blue) as ISymbol;
                 _lineSymbol = SymbolHelper.CreateSimpleLineSymbol(Color.Blue, 1.5) as ISymbol;
+             
             }
+        }
 
-            
+        public List<IPrintPageInfo> PageInfos
+        {
+            set { _pageInfos = value; }
+            get { return _pageInfos; }
+        }
 
+        public bool DrawPage
+        {
+            get { return _drawPage;}
+            set { _drawPage = value; }
         }
 
         private void OnOnActiveHookChanged(object object0)
@@ -119,8 +138,29 @@ namespace Yutai.Plugins.Printing
                     paramScreenDisplay.SetSymbol(_fillSymbol);
                     paramScreenDisplay.DrawPolygon(fence);
                 }
+            }
+            if (_drawPage && _pageInfos != null && _pageInfos.Count > 0)
+            {
+                IFontDisp disp = new StdFont() as IFontDisp;
+                disp.Name = "Arial";
+                disp.Size = new decimal(16);
+               
+                foreach (IPrintPageInfo pageInfo in _pageInfos)
+                {
+                    IGeometry pageBoundary = pageInfo.Boundary;
+                    paramScreenDisplay.SetSymbol(_fillSymbol);
+                    paramScreenDisplay.DrawPolygon(pageBoundary);
+                    _textSymbol = SymbolHelper.CreateTextSymbol(Color.Red, disp, 16, pageInfo.PageName);
+                    paramScreenDisplay.SetSymbol(_textSymbol as ISymbol);
+                    if (!string.IsNullOrEmpty(pageInfo.PageName))
+                    {
+                        IPoint centerPoint=new ESRI.ArcGIS.Geometry.Point();
+                        IEnvelope pEnv = pageBoundary.Envelope;
+                        centerPoint.PutCoords((pEnv.XMin+pEnv.Width/2.0),pEnv.YMin+pEnv.Height/2.0);
+                        paramScreenDisplay.DrawText(centerPoint, pageInfo.PageName);
+                    }
 
-
+                }
             }
             paramScreenDisplay.FinishDrawing();
         }
@@ -194,6 +234,10 @@ namespace Yutai.Plugins.Printing
             {
                 _fenceArray= new GeometryArray() as IGeometryArray;
             }
+            if (fence.SpatialReference == null)
+            {
+                fence.SpatialReference = _context.FocusMap.SpatialReference;
+            }
             _fenceArray.Add(fence);
         }
 
@@ -206,6 +250,18 @@ namespace Yutai.Plugins.Printing
             set { _fenceArray = value; }
         }
 
+        public bool IsDeign
+        {
+            get { return _isDeign; }
+            set { _isDeign = value; }
+        }
+
+        public bool IsLayout
+        {
+            get { return _isLayout; }
+            set { _isLayout = value; }
+        }
+
         public void ClearFence()
         {
             if (_fenceArray == null) return;
@@ -216,6 +272,7 @@ namespace Yutai.Plugins.Printing
     public class PrintLayoutSetting
     {
         public string DefaultTemplateDatabase { get; set; }
+        public bool IsEditingTemplate { get; set; }
     }
 
     public class FenceAddedArgs : EventArgs
