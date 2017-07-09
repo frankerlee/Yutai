@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Yutai.Pipeline.Config.Interfaces;
+using Yutai.Pipeline.Editor.Forms.Mark;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
@@ -13,7 +14,6 @@ namespace Yutai.Pipeline.Editor.Commands.Mark
     class CmdBiaoZhu : YutaiTool
     {
         private PipelineEditorPlugin _plugin;
-        private IPipelineConfig _config;
 
         public CmdBiaoZhu(IAppContext context, PipelineEditorPlugin plugin)
         {
@@ -23,7 +23,8 @@ namespace Yutai.Pipeline.Editor.Commands.Mark
 
         public override void OnClick(object sender, EventArgs args)
         {
-            OnClick();
+            FrmPipeLabelsSetting frm = new FrmPipeLabelsSetting(_context, _plugin.PipeConfig);
+            frm.ShowDialog();
         }
 
         public sealed override void OnCreate(object hook)
@@ -38,14 +39,9 @@ namespace Yutai.Pipeline.Editor.Commands.Mark
             base.m_checked = false;
             base.m_message = "";
             base.m_enabled = true;
-            base._itemType = RibbonItemType.Tool;
+            base._itemType = RibbonItemType.Button;
         }
-
-        public override void OnClick()
-        {
-            _context.SetCurrentTool(this);
-        }
-
+        
         public override void OnDblClick()
         {
 
@@ -53,6 +49,18 @@ namespace Yutai.Pipeline.Editor.Commands.Mark
 
         public override void OnMouseDown(int button, int shift, int x, int y)
         {
+        }
+
+        public override bool Enabled
+        {
+            get
+            {
+                if (_context.FocusMap == null)
+                    return false;
+                if (_context.FocusMap.LayerCount <= 0)
+                    return false;
+                return true;
+            }
         }
     }
 }

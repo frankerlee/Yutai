@@ -55,7 +55,7 @@ namespace Yutai.Plugins.Template.Forms
 
         private void LoadObjectDatasets()
         {
-            if (_plugin.TemplateDatabase.Datasets == null || _plugin.TemplateDatabase.Datasets.Count==0)
+            if (_plugin.TemplateDatabase.Datasets == null || _plugin.TemplateDatabase.Datasets.Count == 0)
             {
                 _plugin.TemplateDatabase.Connect();
                 _plugin.TemplateDatabase.LoadDatasets();
@@ -82,7 +82,7 @@ namespace Yutai.Plugins.Template.Forms
             frmOpenFile openFile = new frmOpenFile();
             openFile.AllowMultiSelect = false;
             openFile.AddFilter(new MyGxFilterWorkspaces(), true);
-         
+
             if (openFile.ShowDialog() == DialogResult.OK)
             {
                 IGxObject gxObject = openFile.Items.get_Element(0);
@@ -94,7 +94,7 @@ namespace Yutai.Plugins.Template.Forms
                     label1.Tag = "Database";
                     xtraTabControl1.TabPages[0].PageVisible = true;
                 }
-             
+
             }
         }
 
@@ -118,7 +118,7 @@ namespace Yutai.Plugins.Template.Forms
             txtYMax.EditValue = pEnv.YMax;
         }
 
-        
+
 
         private void chkNameNext_CheckedChanged(object sender, EventArgs e)
         {
@@ -137,8 +137,8 @@ namespace Yutai.Plugins.Template.Forms
             chkFeatureClasses.Items.Clear();
             string dsName = cmbTemplate.Text;
             _plugin.TemplateDatabase.Connect();
-          _templates =
-                _plugin.TemplateDatabase.GetTemplatesByDataset(dsName);
+            _templates =
+                  _plugin.TemplateDatabase.GetTemplatesByDataset(dsName);
             _plugin.TemplateDatabase.DisConnect();
             if (_templates == null) return;
             foreach (IObjectTemplate template in _templates)
@@ -164,32 +164,36 @@ namespace Yutai.Plugins.Template.Forms
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            DialogResult=DialogResult.Cancel;
+            DialogResult = DialogResult.Cancel;
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             if (Validate(true) == false) return;
-           
+
             object createLoc;
             IWorkspace2 workspace2 = null;
             IObjectDataset dataset =
                 _plugin.TemplateDatabase.Datasets.FirstOrDefault(c => c.Name == cmbTemplate.SelectedItem.ToString());
             if (dataset == null) return;
-          
-                IGxDatabase pDataset = txtDB.Tag as IGxDatabase;
-                IWorkspace workspace = ((IGxObject)pDataset).InternalObjectName.Open();
-                workspace2 = workspace as IWorkspace2;
-               
+
+            IGxDatabase pDataset = txtDB.Tag as IGxDatabase;
+            IWorkspace workspace = ((IGxObject)pDataset).InternalObjectName.Open();
+            workspace2 = workspace as IWorkspace2;
+
 
             string namePre = txtPreName.Text.Trim();
             string nameNext = txtNameNext.Text.Trim();
             string aliasPre = txtAliasPre.Text.Trim();
             string aliasNext = txtAliasNext.Text.Trim();
-            if (!chkNamePre.Checked) { namePre = "";
+            if (!chkNamePre.Checked)
+            {
+                namePre = "";
                 aliasPre = "";
             }
-            if (!chkNameNext.Checked) { nameNext = "";
+            if (!chkNameNext.Checked)
+            {
+                nameNext = "";
                 aliasNext = "";
             }
 
@@ -197,9 +201,9 @@ namespace Yutai.Plugins.Template.Forms
 
 
             if (workspace == null) return;
-            
-          
-        
+
+
+
             if (workspace2.NameExists[esriDatasetType.esriDTFeatureDataset, dsName])
             {
                 MessageService.Current.Warn("该名称已经存在，请重新输入！");
@@ -209,39 +213,49 @@ namespace Yutai.Plugins.Template.Forms
 
             IFeatureDataset pNewDataset =
                 WorkspaceOperator.CreateFeatureDataSet(workspace, dsName, pSpatialReference) as IFeatureDataset;
-            string dsAliasName= CombineName(dataset.AliasName, aliasPre, aliasNext);
-            
+            string dsAliasName = CombineName(dataset.AliasName, aliasPre, aliasNext);
+
             //(pNewDataset as IClassSchemaEdit).AlterAliasName(dsAliasName);
             foreach (int selectedItem in chkFeatureClasses.CheckedIndices)
             {
-
                 IObjectTemplate template = _templates[selectedItem];
-                IFieldsEdit pFieldsEdit = new Fields() as IFieldsEdit;
-                IField pField = FieldHelper.CreateOIDField();
-                pFieldsEdit.AddField(pField);
-               
-                    pField = FieldHelper.CreateGeometryField(template.GeometryType, _map.SpatialReference);
-                    pFieldsEdit.AddField(pField);
-                
-                string keyName = "";
-                foreach (IYTField ytField in template.Fields)
-                {
-                    pField = ytField.CreateField();
-                    pFieldsEdit.AddField(pField);
-                    if (ytField.IsKey) keyName = ytField.Name;
-                }
-
                 string fcName = CombineName(template.BaseName, namePre, nameNext);
                 string fcAliasName = CombineName(template.AliasName, aliasPre, aliasNext);
-                IFeatureClass pClass = WorkspaceOperator.CreateFeatureClass(pNewDataset, fcName, pSpatialReference, template.FeatureType,
-                    template.GeometryType, (IFields)pFieldsEdit, null, null, "");
-                (pClass as IClassSchemaEdit).AlterAliasName(fcAliasName);
-               
 
-                if (pClass == null)
+                if (template.FeatureType == esriFeatureType.esriFTAnnotation)
                 {
-                    MessageService.Current.Info(fcName+"创建失败!");
-                    continue;
+                    WorkspaceOperator.CreateAnnoFeatureClass(fcName, pNewDataset, 1000);
+                }
+                else
+                {
+                    IFieldsEdit pFieldsEdit = new FieldsClass() as IFieldsEdit;
+                    IField pField = FieldHelper.CreateOIDField();
+                    if (pFieldsEdit.FindField(pField.Name) < 0)
+                        pFieldsEdit.AddField(pField);
+
+                    pField = FieldHelper.CreateGeometryField(template.GeometryType, _map.SpatialReference);
+                    if (pFieldsEdit.FindField(pField.Name) < 0)
+                        pFieldsEdit.AddField(pField);
+
+                    string keyName = "";
+                    foreach (IYTField ytField in template.Fields)
+                    {
+                        pField = ytField.CreateField();
+                        if (pFieldsEdit.FindField(pField.Name) < 0)
+                            pFieldsEdit.AddField(pField);
+                        if (ytField.IsKey) keyName = ytField.Name;
+                    }
+
+                    IFeatureClass pClass = WorkspaceOperator.CreateFeatureClass(pNewDataset, fcName, pSpatialReference, template.FeatureType,
+                        template.GeometryType, (IFields)pFieldsEdit, null, null, "");
+                    (pClass as IClassSchemaEdit).AlterAliasName(fcAliasName);
+
+
+                    if (pClass == null)
+                    {
+                        MessageService.Current.Info(fcName + "创建失败!");
+                        continue;
+                    }
                 }
 
             }

@@ -54,7 +54,7 @@ namespace Yutai.Plugins.Template.Concretes
             _fieldTypeName = FeatureHelper.GetRowValue(pRow, "FieldType").ToString();
             _fieldType = FieldHelper.ConvertFromSimpleString(_fieldTypeName);
             string allowNullStr= FeatureHelper.GetRowValue(pRow, "AllowNull").ToString();
-            _allowNull = string.IsNullOrEmpty(allowNullStr) || (allowNullStr.ToUpper().StartsWith("T") == true ? true : false);
+            _allowNull = string.IsNullOrEmpty(allowNullStr) || allowNullStr.ToUpper().StartsWith("T") || allowNullStr == "真";
             string keyStr= FeatureHelper.GetRowValue(pRow, "IsKey").ToString();
             _isKey = string.IsNullOrEmpty(keyStr)==false || (keyStr.ToUpper().StartsWith("T") == true ? true : false);
         }
@@ -130,16 +130,14 @@ namespace Yutai.Plugins.Template.Concretes
                 _length = string.IsNullOrWhiteSpace(xml.Attributes["Length"].Value)
                     ? 50
                     : Convert.ToInt32(xml.Attributes["Length"].Value);
-                _allowNull = string.IsNullOrWhiteSpace(xml.Attributes["AllowNull"].Value) ||
-                             (xml.Attributes["AllowNull"].Value.ToUpper().StartsWith("T"));
+                _allowNull = string.IsNullOrWhiteSpace(xml.Attributes["AllowNull"].Value) || xml.Attributes["AllowNull"].Value.ToUpper().StartsWith("T") || xml.Attributes["AllowNull"].Value.Equals("真");
                 _fieldTypeName = xml.Attributes["FieldType"].Value;
                 _precision = string.IsNullOrWhiteSpace(xml.Attributes["Precision"].Value)
                     ? 50
                     : Convert.ToInt32(xml.Attributes["Precision"].Value);
                 _fieldType = FieldHelper.ConvertFromString(_fieldTypeName);
                 _domainValues = xml.Attributes["DomainValues"] == null ? "" : xml.Attributes["DomainValues"].Value;
-                _isKey = string.IsNullOrWhiteSpace(xml.Attributes["IsKey"].Value) ||
-                            (xml.Attributes["IsKey"].Value.ToUpper().StartsWith("T"));
+                _isKey = string.IsNullOrWhiteSpace(xml.Attributes["IsKey"].Value) || (xml.Attributes["IsKey"].Value.ToUpper().StartsWith("T"));
 
             }
         }

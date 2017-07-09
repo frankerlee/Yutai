@@ -171,7 +171,7 @@ namespace Yutai.Pipeline.Config.Concretes
             string autoStr = "/" + _autoNames + "/";
             IBasicLayerInfo layerInfo =
                 _layers.FirstOrDefault(
-                    c => c.Name == baseName || c.AliasName == baseName || c.FixAutoNames.Contains("/" + baseName + "/"));
+                    c => c.Name == baseName || c.AliasName == baseName || c.FixAutoNames.ToUpper().Replace("_", "").Contains("/" + baseName.ToUpper().Replace("_", "") + "/"));
             if (layerInfo != null && layerInfo.FeatureClass == null)
             {
                 layerInfo.FeatureClass = featureClass;
@@ -188,13 +188,13 @@ namespace Yutai.Pipeline.Config.Concretes
             string autoStr = "/" + _autoNames + "/";
             IBasicLayerInfo layerInfo =
                 _layers.FirstOrDefault(
-                    c => c.Name == baseName || c.AliasName == baseName || autoStr.Contains("/" + baseName + "/"));
+                    c => c.Name.ToUpper() == baseName.ToUpper() || c.AliasName.ToUpper() == baseName.ToUpper() || autoStr.Contains("/" + baseName + "/") || c.AutoNames.ToUpper().Replace("_","").Contains(baseName.ToUpper().Replace("_","")));
             if (layerInfo != null)
             {
                 IPipelineLayer pipeLayer = new PipelineLayer(this, false);
                 layerInfo =
                     pipeLayer.Layers.FirstOrDefault(
-                        c => c.Name == baseName || c.AliasName == baseName || autoStr.Contains("/" + baseName + "/"));
+                        c => c.Name == baseName || c.AliasName == baseName || autoStr.Contains("/" + baseName + "/") || c.AutoNames.ToUpper().Replace("_", "").Contains(baseName.ToUpper().Replace("_", "")));
                 layerInfo.FeatureClass = featureClass;
                 return pipeLayer;
             }

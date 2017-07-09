@@ -413,7 +413,7 @@ namespace Yutai.ArcGIS.Common.Helpers
         {
             try
             {
-                typeString = typeString.StartsWith("esriFeature") ? typeString : "esriFeature" + typeString;
+                typeString = typeString.StartsWith("esriFT") ? typeString : "esriFT" + typeString;
                 return (esriFeatureType) Enum.Parse(typeof(esriFeatureType), typeString);
             }
             catch (Exception)
