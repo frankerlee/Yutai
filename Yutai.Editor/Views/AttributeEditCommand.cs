@@ -4,4 +4,9 @@
     {
         Close
     }
+
+    public enum TopologyErrorViewCommand
+    {
+        Close
+    }
 }

@@ -1,49 +1,40 @@
-﻿using System;
-using System.Collections;
-using System.ComponentModel;
-using System.Drawing;
-using System.Reflection;
-using System.Windows.Forms;
-using DevExpress.XtraBars;
-using DevExpress.XtraEditors;
-using DevExpress.XtraEditors.Controls;
-using ESRI.ArcGIS.ADF;
-using ESRI.ArcGIS.Carto;
-using ESRI.ArcGIS.esriSystem;
-using ESRI.ArcGIS.Geodatabase;
-using ESRI.ArcGIS.Geometry;
-using Yutai.ArcGIS.Common.BaseClasses;
-using Yutai.ArcGIS.Common.Display;
-using Yutai.ArcGIS.Common.Editor.Helpers;
-using Yutai.ArcGIS.Common.Geodatabase;
-using Yutai.ArcGIS.Common.Helpers;
-using Yutai.Shared;
-
-namespace Yutai.ArcGIS.Controls.Editor.UI
+﻿namespace Yutai.Plugins.Editor.Views
 {
-    partial class FindTopologyErrorCtrl
+    partial class TopologyErrorView
     {
+        /// <summary> 
+        /// 必需的设计器变量。
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// 清理所有正在使用的资源。
+        /// </summary>
+        /// <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (this.components != null))
+            if (disposing && (components != null))
             {
-                this.components.Dispose();
+                components.Dispose();
             }
             base.Dispose(disposing);
         }
 
-       
+        #region 组件设计器生成的代码
+
+        /// <summary> 
+        /// 设计器支持所需的方法 - 不要修改
+        /// 使用代码编辑器修改此方法的内容。
+        /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.cboFindType = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.label1 = new System.Windows.Forms.Label();
             this.chkVisibleRegion = new DevExpress.XtraEditors.CheckEdit();
             this.chkException = new DevExpress.XtraEditors.CheckEdit();
             this.chkError = new DevExpress.XtraEditors.CheckEdit();
             this.btnFind = new DevExpress.XtraEditors.SimpleButton();
-            this.lblErrorNum = new System.Windows.Forms.Label();
-            this.cboFindType = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.label1 = new System.Windows.Forms.Label();
             this.listViewError = new System.Windows.Forms.ListView();
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -52,7 +43,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barManager1 = new DevExpress.XtraBars.BarManager();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -72,93 +63,84 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.ExtendLine = new DevExpress.XtraBars.BarButtonItem();
             this.TrimLine = new DevExpress.XtraBars.BarButtonItem();
             this.ShowTopoRuleDescript = new DevExpress.XtraBars.BarButtonItem();
-            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.panel1.SuspendLayout();
+            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu();
+            this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboFindType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVisibleRegion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkException.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkError.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboFindType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // flowLayoutPanel1
             // 
-            this.panel1.Controls.Add(this.chkVisibleRegion);
-            this.panel1.Controls.Add(this.chkException);
-            this.panel1.Controls.Add(this.chkError);
-            this.panel1.Controls.Add(this.btnFind);
-            this.panel1.Controls.Add(this.lblErrorNum);
-            this.panel1.Controls.Add(this.cboFindType);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(504, 72);
-            this.panel1.TabIndex = 1;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // chkVisibleRegion
-            // 
-            this.chkVisibleRegion.EditValue = true;
-            this.chkVisibleRegion.Location = new System.Drawing.Point(232, 44);
-            this.chkVisibleRegion.Name = "chkVisibleRegion";
-            this.chkVisibleRegion.Properties.Caption = "仅限可视区域";
-            this.chkVisibleRegion.Size = new System.Drawing.Size(104, 19);
-            this.chkVisibleRegion.TabIndex = 7;
-            // 
-            // chkException
-            // 
-            this.chkException.Location = new System.Drawing.Point(160, 44);
-            this.chkException.Name = "chkException";
-            this.chkException.Properties.Caption = "例外";
-            this.chkException.Size = new System.Drawing.Size(48, 19);
-            this.chkException.TabIndex = 6;
-            // 
-            // chkError
-            // 
-            this.chkError.EditValue = true;
-            this.chkError.Location = new System.Drawing.Point(96, 44);
-            this.chkError.Name = "chkError";
-            this.chkError.Properties.Caption = "错误";
-            this.chkError.Size = new System.Drawing.Size(48, 19);
-            this.chkError.TabIndex = 5;
-            // 
-            // btnFind
-            // 
-            this.btnFind.Location = new System.Drawing.Point(8, 40);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(72, 24);
-            this.btnFind.TabIndex = 4;
-            this.btnFind.Text = "开始查找";
-            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
-            // 
-            // lblErrorNum
-            // 
-            this.lblErrorNum.AutoSize = true;
-            this.lblErrorNum.Location = new System.Drawing.Point(344, 10);
-            this.lblErrorNum.Name = "lblErrorNum";
-            this.lblErrorNum.Size = new System.Drawing.Size(0, 12);
-            this.lblErrorNum.TabIndex = 3;
+            this.flowLayoutPanel1.Controls.Add(this.label1);
+            this.flowLayoutPanel1.Controls.Add(this.cboFindType);
+            this.flowLayoutPanel1.Controls.Add(this.btnFind);
+            this.flowLayoutPanel1.Controls.Add(this.chkError);
+            this.flowLayoutPanel1.Controls.Add(this.chkException);
+            this.flowLayoutPanel1.Controls.Add(this.chkVisibleRegion);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(650, 32);
+            this.flowLayoutPanel1.TabIndex = 0;
             // 
             // cboFindType
             // 
             this.cboFindType.EditValue = "";
-            this.cboFindType.Location = new System.Drawing.Point(48, 8);
+            this.cboFindType.Location = new System.Drawing.Point(44, 3);
             this.cboFindType.Name = "cboFindType";
             this.cboFindType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cboFindType.Size = new System.Drawing.Size(272, 20);
-            this.cboFindType.TabIndex = 2;
+            this.cboFindType.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 10);
+            this.label1.Location = new System.Drawing.Point(3, 10);
+            this.label1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 12);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 3;
             this.label1.Text = "查找:";
+            // 
+            // chkVisibleRegion
+            // 
+            this.chkVisibleRegion.EditValue = true;
+            this.chkVisibleRegion.Location = new System.Drawing.Point(508, 3);
+            this.chkVisibleRegion.Name = "chkVisibleRegion";
+            this.chkVisibleRegion.Properties.Caption = "仅限可视区域";
+            this.chkVisibleRegion.Size = new System.Drawing.Size(104, 19);
+            this.chkVisibleRegion.TabIndex = 11;
+            // 
+            // chkException
+            // 
+            this.chkException.Location = new System.Drawing.Point(454, 3);
+            this.chkException.Name = "chkException";
+            this.chkException.Properties.Caption = "例外";
+            this.chkException.Size = new System.Drawing.Size(48, 19);
+            this.chkException.TabIndex = 10;
+            // 
+            // chkError
+            // 
+            this.chkError.EditValue = true;
+            this.chkError.Location = new System.Drawing.Point(400, 3);
+            this.chkError.Name = "chkError";
+            this.chkError.Properties.Caption = "错误";
+            this.chkError.Size = new System.Drawing.Size(48, 19);
+            this.chkError.TabIndex = 9;
+            // 
+            // btnFind
+            // 
+            this.btnFind.Location = new System.Drawing.Point(322, 3);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(72, 24);
+            this.btnFind.TabIndex = 8;
+            this.btnFind.Text = "开始查找";
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // listViewError
             // 
@@ -174,15 +156,14 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.listViewError.FullRowSelect = true;
             this.listViewError.GridLines = true;
             this.listViewError.HideSelection = false;
-            this.listViewError.Location = new System.Drawing.Point(0, 72);
+            this.listViewError.Location = new System.Drawing.Point(0, 32);
             this.listViewError.Name = "listViewError";
-            this.listViewError.Size = new System.Drawing.Size(504, 216);
-            this.listViewError.TabIndex = 2;
+            this.listViewError.Size = new System.Drawing.Size(650, 297);
+            this.listViewError.TabIndex = 3;
             this.listViewError.UseCompatibleStateImageBehavior = false;
             this.listViewError.View = System.Windows.Forms.View.Details;
             this.listViewError.SelectedIndexChanged += new System.EventHandler(this.listViewError_SelectedIndexChanged);
             this.listViewError.Click += new System.EventHandler(this.listViewError_Click);
-            this.listViewError.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listViewError_MouseDown);
             // 
             // columnHeader2
             // 
@@ -246,29 +227,29 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(504, 0);
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 32);
+            this.barDockControlTop.Size = new System.Drawing.Size(650, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 288);
-            this.barDockControlBottom.Size = new System.Drawing.Size(504, 0);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 329);
+            this.barDockControlBottom.Size = new System.Drawing.Size(650, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 288);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 32);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 297);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(504, 0);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 288);
+            this.barDockControlRight.Location = new System.Drawing.Point(650, 32);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 297);
             // 
             // ZoomTo
             // 
@@ -386,23 +367,25 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
             // 
-            // FindTopologyErrorCtrl
+            // TopologyErrorView
             // 
-            this.Controls.Add(this.listViewError);
-            this.Controls.Add(this.panel1);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "FindTopologyErrorCtrl";
-            this.Size = new System.Drawing.Size(504, 288);
-            this.Load += new System.EventHandler(this.FindTopologyErrorCtrl_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.Controls.Add(this.listViewError);
+            this.Controls.Add(this.flowLayoutPanel1);
+            this.Name = "TopologyErrorView";
+            this.Size = new System.Drawing.Size(650, 329);
+            this.Load += new System.EventHandler(this.TopologyErrorView_Load);
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboFindType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVisibleRegion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkException.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkError.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboFindType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             this.ResumeLayout(false);
@@ -410,48 +393,43 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
 
         }
 
-       
-        private IContainer components;
-        private BarDockControl barDockControlBottom;
-        private BarDockControl barDockControlLeft;
-        private BarDockControl barDockControlRight;
-        private BarDockControl barDockControlTop;
-        private BarManager barManager1;
-        private SimpleButton btnFind;
-        private ComboBoxEdit cboFindType;
-        private CheckEdit chkError;
-        private CheckEdit chkException;
-        private CheckEdit chkVisibleRegion;
-        private ColumnHeader columnHeader1;
-        private ColumnHeader columnHeader2;
-        private ColumnHeader columnHeader3;
-        private ColumnHeader columnHeader4;
-        private ColumnHeader columnHeader5;
-        private ColumnHeader columnHeader6;
-        private ColumnHeader columnHeader7;
-        private BarButtonItem Delete;
-        private BarButtonItem DemoteFromRuleException;
-        private BarButtonItem Explode;
-        private BarButtonItem ExtendLine;
-        private Label label1;
-        private Label lblErrorNum;
-        private ListView listViewError;
-        private bool m_CanDo;
-        private IWorkspace m_pEditWorkspace;
-        private IMap m_pFocusMap;
-        private ITopologyLayer m_TopologyLayer;
-        private BarButtonItem MergeErrorToFeature;
-        private BarButtonItem NewFeature;
-        private Panel panel1;
-        private BarButtonItem PanTo;
-        private PopupMenu popupMenu1;
-        private BarButtonItem PromoteToRuleException;
-        private BarButtonItem SelectFeature;
-        private BarButtonItem ShowTopoRuleDescript;
-        private BarButtonItem Simplify;
-        private BarButtonItem Split;
-        private BarButtonItem SubtractError;
-        private BarButtonItem TrimLine;
-        private BarButtonItem ZoomTo;
+        #endregion
+
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Label label1;
+        private DevExpress.XtraEditors.ComboBoxEdit cboFindType;
+        private DevExpress.XtraEditors.SimpleButton btnFind;
+        private DevExpress.XtraEditors.CheckEdit chkError;
+        private DevExpress.XtraEditors.CheckEdit chkException;
+        private DevExpress.XtraEditors.CheckEdit chkVisibleRegion;
+        private System.Windows.Forms.ListView listViewError;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private DevExpress.XtraBars.BarManager barManager1;
+        private DevExpress.XtraBars.BarDockControl barDockControlTop;
+        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+        private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private DevExpress.XtraBars.BarButtonItem ZoomTo;
+        private DevExpress.XtraBars.BarButtonItem PanTo;
+        private DevExpress.XtraBars.BarButtonItem SelectFeature;
+        private DevExpress.XtraBars.BarButtonItem PromoteToRuleException;
+        private DevExpress.XtraBars.BarButtonItem DemoteFromRuleException;
+        private DevExpress.XtraBars.BarButtonItem NewFeature;
+        private DevExpress.XtraBars.BarButtonItem MergeErrorToFeature;
+        private DevExpress.XtraBars.BarButtonItem SubtractError;
+        private DevExpress.XtraBars.BarButtonItem Simplify;
+        private DevExpress.XtraBars.BarButtonItem Explode;
+        private DevExpress.XtraBars.BarButtonItem Delete;
+        private DevExpress.XtraBars.BarButtonItem Split;
+        private DevExpress.XtraBars.BarButtonItem ExtendLine;
+        private DevExpress.XtraBars.BarButtonItem TrimLine;
+        private DevExpress.XtraBars.BarButtonItem ShowTopoRuleDescript;
+        private DevExpress.XtraBars.PopupMenu popupMenu1;
     }
 }

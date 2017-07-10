@@ -336,7 +336,7 @@ namespace Yutai.ArcGIS.Controls.Controls
                         }
                         if ((pCommand is IBarEditItem) && (item is BarEditItem))
                         {
-                            (pCommand as IBarEditItem).BarEditItem = new JLKComboxBarItem(item);
+                            (pCommand as IBarEditItem).BarEditItem = new YTComboxBarItem(item);
                         }
                         if (item != null)
                         {

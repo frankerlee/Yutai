@@ -114,6 +114,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompositionRoot.cs" />
+    <Compile Include="Controls\RibbonItemEditValueChangedHandler.cs" />
+    <Compile Include="Controls\ComboxBarEditItem.cs" />
     <Compile Include="Controls\ConfigPageBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -138,6 +140,7 @@
     <Compile Include="Controls\GISDataComboBox.Designer.cs">
       <DependentUpon>GISDataComboBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\RibbonItemEx.cs" />
     <Compile Include="Controls\TwoColumnTreeView.cs">
       <SubType>Component</SubType>
     </Compile>

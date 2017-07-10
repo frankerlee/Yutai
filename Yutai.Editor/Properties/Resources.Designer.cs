@@ -63,6 +63,26 @@ namespace Yutai.Plugins.Editor.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        public static System.Drawing.Bitmap ClearSelectedTopologyElement {
+            get {
+                object obj = ResourceManager.GetObject("ClearSelectedTopologyElement", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap FixTopologyErrorTool {
+            get {
+                object obj = ResourceManager.GetObject("FixTopologyErrorTool", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         public static System.Drawing.Bitmap icon_along_line {
             get {
                 object obj = ResourceManager.GetObject("icon_along_line", resourceCulture);
@@ -686,6 +706,56 @@ namespace Yutai.Plugins.Editor.Properties {
         public static System.Drawing.Bitmap icon_template {
             get {
                 object obj = ResourceManager.GetObject("icon_template", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap ShowShareFeatures {
+            get {
+                object obj = ResourceManager.GetObject("ShowShareFeatures", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap TopologyEdit {
+            get {
+                object obj = ResourceManager.GetObject("TopologyEdit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap ValidateEntireTopology {
+            get {
+                object obj = ResourceManager.GetObject("ValidateEntireTopology", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap ValidateTopologyInCurrentExtendCommand {
+            get {
+                object obj = ResourceManager.GetObject("ValidateTopologyInCurrentExtendCommand", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap ValidateTopologyInExtendCommand {
+            get {
+                object obj = ResourceManager.GetObject("ValidateTopologyInExtendCommand", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

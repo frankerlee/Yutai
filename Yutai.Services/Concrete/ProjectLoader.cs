@@ -67,6 +67,7 @@ namespace Yutai.Services.Concrete
 
         private void RestorePlugins(XmlProject project)
         {
+            if (project.Plugins == null) return;
             foreach (var p in project.Plugins)
             {
                 _context.PluginManager.LoadPlugin(p.Guid, _context);

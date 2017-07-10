@@ -490,6 +490,10 @@ namespace Yutai.UI.Menu.Ribbon
                 {
                     item = CreateComboBox(command);
                 }
+                else if (command.ItemType == RibbonItemType.RibbonEditItem)
+                {
+                    item = CreateRibbonEditItem(command);
+                }
                 else if (command.ItemType == RibbonItemType.CheckBox)
                 {
                     item = CreateCheckBox(command);
@@ -661,7 +665,40 @@ namespace Yutai.UI.Menu.Ribbon
             _ribbonManager.Items.Add(dropItem);
             return dropItem;
         }
+        
 
+        private BarItem CreateRibbonEditItem(IRibbonItem item)
+        {
+            IRibbonEditItem comboSetting = item as IRibbonEditItem;
+            //ComboBoxEdit comboBox = new ComboBoxEdit()
+            //{
+            //    Name = item.Key,
+            //    Caption = item.Caption
+            //};
+            BarEditItem comboBox = new BarEditItem()
+            {
+                Name = item.Key,
+                Caption = item.Caption,
+                Width = comboSetting.Width
+            };
+
+
+            RepositoryItemComboBox cmbEdit = new RepositoryItemComboBox()
+            { Name = item.Key + "_combo", BestFitWidth = 300 };
+            //cmbEdit.Buttons.AddRange(new EditorButton[] {new EditorButton(ButtonPredefines.Combo)  });
+            comboBox.Edit = cmbEdit;
+         
+            comboBox.Tag = item;
+            comboSetting.RibbonEditItem = cmbEdit;
+            //comboSetting.LinkComboBox = comboBox;
+            //comboBox.EditValueChanged += ((ICommandComboBox)item).OnEditValueChanged;
+            //comboSetting.LinkComboBox = comboBox;
+            //开始检查Category是否存在
+            BarManagerCategory category = CheckCategoryExists(item.Category);
+            comboBox.Category = category;
+            _ribbonManager.Items.Add(comboBox);
+            return comboBox;
+        }
         private BarItem CreateComboBox(IRibbonItem item)
         {
             ICommandComboBox comboSetting = item as ICommandComboBox;
@@ -689,9 +726,12 @@ namespace Yutai.UI.Menu.Ribbon
             }
 
             object[] objectItems = comboSetting.Items;
-            for (int i = 0; i < objectItems.Length; i++)
+            if (objectItems != null)
             {
-                cmbEdit.Items.Add(objectItems[i]);
+                for (int i = 0; i < objectItems.Length; i++)
+                {
+                    cmbEdit.Items.Add(objectItems[i]);
+                }
             }
             comboBox.Tag = item;
             comboSetting.LinkComboBox = comboBox;

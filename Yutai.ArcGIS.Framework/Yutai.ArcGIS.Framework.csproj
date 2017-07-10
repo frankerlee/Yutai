@@ -201,7 +201,7 @@
     <Compile Include="IDockManagerWrap.cs" />
     <Compile Include="IFramework.cs" />
     <Compile Include="JLKButtonBarItem.cs" />
-    <Compile Include="JLKComboxBarItem.cs" />
+    <Compile Include="YTComboxBarItem.cs" />
     <Compile Include="MessageHandler.cs" />
     <Compile Include="MSGTYPE.cs" />
     <Compile Include="MyDockContext.cs">

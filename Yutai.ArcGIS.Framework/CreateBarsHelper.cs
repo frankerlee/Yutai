@@ -250,7 +250,7 @@ namespace Yutai.ArcGIS.Framework
                         (item as BarEditItem).Edit = box;
                         box.AutoHeight = false;
                         box.Name = icommand_0.Name + "_ItemComboBox";
-                        (icommand_0 as IBarEditItem).BarEditItem = new JLKComboxBarItem(item);
+                        (icommand_0 as IBarEditItem).BarEditItem = new YTComboxBarItem(item);
                         item.Width = (icommand_0 as IBarEditItem).Width;
                     }
                     else
@@ -566,7 +566,7 @@ namespace Yutai.ArcGIS.Framework
                                 (item as BarEditItem).Edit = box;
                                 box.AutoHeight = false;
                                 box.Name = command.Name + "_ItemComboBox";
-                                (command as IBarEditItem).BarEditItem = new JLKComboxBarItem(item);
+                                (command as IBarEditItem).BarEditItem = new YTComboxBarItem(item);
                                 item.Width = (command as IBarEditItem).Width;
                             }
                             else

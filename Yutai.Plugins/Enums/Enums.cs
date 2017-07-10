@@ -6,6 +6,14 @@ using System.Threading.Tasks;
 
 namespace Yutai.Plugins.Enums
 {
+
+    public enum RibbonEditStyle
+    {
+        TextEdit,
+        ComboBoxEdit,
+        TreeViewComboBoxEdit,
+        ButtonEdit
+    }
     public enum GISControlType
     {
         MapControl,
@@ -75,7 +83,8 @@ namespace Yutai.Plugins.Enums
         DropDown = 6,
         ComboBox = 7,
         CheckBox = 8,
-        Label = 9
+        Label = 9,
+        RibbonEditItem=10,
     }
 
     public enum MenuStyle

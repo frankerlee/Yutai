@@ -4,12 +4,12 @@ using DevExpress.XtraEditors.Repository;
 
 namespace Yutai.ArcGIS.Framework
 {
-    public class JLKComboxBarItem : ComboxBarItem
+    public class YTComboxBarItem : ComboxBarItem
     {
         private BarEditItem barEditItem_0 = null;
         private RepositoryItemComboBox repositoryItemComboBox_0 = null;
 
-        public JLKComboxBarItem(object object_0)
+        public YTComboxBarItem(object object_0)
         {
             this.barEditItem_0 = object_0 as BarEditItem;
             if (this.barEditItem_0 == null)

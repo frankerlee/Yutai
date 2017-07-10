@@ -1248,7 +1248,7 @@ namespace Yutai.ArcGIS.Framework
                         (item as BarEditItem).Edit = box;
                         box.AutoHeight = false;
                         box.Name = icommand_0.Name + "_ItemComboBox";
-                        (icommand_0 as IBarEditItem).BarEditItem = new JLKComboxBarItem(item);
+                        (icommand_0 as IBarEditItem).BarEditItem = new YTComboxBarItem(item);
                         item.Width = (icommand_0 as IBarEditItem).Width;
                     }
                     else

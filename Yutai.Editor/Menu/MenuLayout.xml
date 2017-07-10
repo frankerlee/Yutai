@@ -45,6 +45,25 @@
           <BarItem Key="Edit_PolygonCutByPolygon" Visible="true"></BarItem>
           <BarItem Key="Edit_ConstructParallel" Visible="true"></BarItem>
         </PageGroup>
+        <PageGroup Key="Edit_TopologyTools" Caption="拓扑" Visible="true" Index="2">
+          <BarItem Key="Edit_Topology_Select" Visible="true"></BarItem>
+         
+          <BarItem Key="Editor_Topology_ValidateTopology" Visible="true"></BarItem>
+          <BarItem Key="Editor_Topology_ValidateTopologyInCurrentExtend" Visible="true"></BarItem>
+          <BarItem Key="Editor_Topology_ValidateTopologyInExtend" Visible="true"></BarItem>
+          
+          
+         
+        <BarItem Key="Editor_Topology_EditTopologyElement" Visible="true"></BarItem>
+           <BarItem Key="Editor_Topology_FixTopologyErrorTool" Visible="true"></BarItem>
+         <BarItem Key="Editor_Topology_ShowShareFeatures" Visible="true"></BarItem>
+           <BarItem Key="Editor_Topology_ClearSelectedTopologyElement" Visible="true"></BarItem>
+          
+          <BarItem Key="Edit_Open_TopologyError" Visible="true"></BarItem>
+
+          
+        </PageGroup>
+        
       </Page>
     </Pages>
   </MainMenu>

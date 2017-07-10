@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Editor.Commands;
+using Yutai.Plugins.Editor.Commands.Topology;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
 
@@ -108,6 +109,17 @@ namespace Yutai.Plugins.Editor.Menu
                     new CmdPolygonCutByPolygon(_context),
                     new CmdPolygonCutHollow(_context),
                     new CmdConstructParallel(_context),
+
+                    new CmdShowTopologyErrorView(_context),
+                    new CmdSelectTopology(_context),
+                    new CmdValidateTopology(_context),
+                    new CmdValidateTopologyInCurrentExtend(_context),
+                    new ToolValidateTopologyInExtend(_context),
+
+                    new ToolEditTopologyElement(_context),
+                    new FixTopologyErrorTool(_context),
+                    new CmdShowShareFeatures(_context),
+                   new CmdClearSelectedTopologyElement(_context),
                 };
             }
             catch (Exception ex)
