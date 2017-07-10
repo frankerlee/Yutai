@@ -219,7 +219,7 @@ namespace Yutai.Pipeline.Editor.Forms.Mark
             esriBasicOverposterWeight featureWeight = (esriBasicOverposterWeight)Enum.Parse(typeof(esriBasicOverposterWeight), radioGroupPointFeatureWeight.EditValue.ToString());
             esriLabelWhichFeatures selectionType = (esriLabelWhichFeatures)Enum.Parse(typeof(esriLabelWhichFeatures), radioGroupSelectionType.EditValue.ToString());
 
-            string expression = $"[{cmbPointFields.SelectedItem}]";
+            string expression = TxtPointExpression.Text;
 
             ConvertAnnotation(_context.FocusMap, _pointFeatureLayer, txtPointAno.Text, Convert.ToDouble(cboScale.Text), _workspace, null,
                 pointPlacementPriorities, labelWeight, featureWeight,
@@ -244,7 +244,7 @@ namespace Yutai.Pipeline.Editor.Forms.Mark
             esriBasicOverposterWeight featureWeight = (esriBasicOverposterWeight)Enum.Parse(typeof(esriBasicOverposterWeight), radioGroupPointFeatureWeight.EditValue.ToString());
             esriLabelWhichFeatures selectionType = (esriLabelWhichFeatures)Enum.Parse(typeof(esriLabelWhichFeatures), radioGroupSelectionType.EditValue.ToString());
 
-            string expression = $"[{cmbLineFields.SelectedItem}]";
+            string expression = TxtLineExpression.Text;
 
             ConvertAnnotation(_context.FocusMap, _lineFeatureLayer, txtLineAno.Text, Convert.ToDouble(cboScale.Text), _workspace, pPosition, null,
                 labelWeight, featureWeight,
@@ -322,6 +322,38 @@ namespace Yutai.Pipeline.Editor.Forms.Mark
                 map.MapScale = scale;
                 IActiveView activeView = map as IActiveView;
                 activeView.Refresh();
+            }
+        }
+
+        private void cmbPointFields_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbPointFields.SelectedItem == null)
+                return;
+            TxtPointExpression.Text = cmbPointFields.SelectedItem.ToString();
+        }
+
+        private void cmbLineFields_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbLineFields.SelectedItem == null)
+                return;
+            TxtLineExpression.Text = cmbLineFields.SelectedItem.ToString();
+        }
+
+        private void btnPointExpression_Click(object sender, EventArgs e)
+        {
+            FrmAnnotationExpression frm = new FrmAnnotationExpression(_pointFeatureLayer.FeatureClass.Fields, TxtPointExpression.Text);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                TxtPointExpression.Text = frm.Expression;
+            }
+        }
+
+        private void btnLineExpression_Click(object sender, EventArgs e)
+        {
+            FrmAnnotationExpression frm = new FrmAnnotationExpression(_lineFeatureLayer.FeatureClass.Fields, TxtLineExpression.Text);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                TxtLineExpression.Text = frm.Expression;
             }
         }
     }
