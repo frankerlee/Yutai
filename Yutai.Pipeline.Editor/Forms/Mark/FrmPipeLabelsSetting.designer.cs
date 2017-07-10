@@ -103,6 +103,8 @@
             this.radioGroupSelectionType = new DevExpress.XtraEditors.RadioGroup();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.radioGroupSaveType = new DevExpress.XtraEditors.RadioGroup();
+            this.TxtPointExpression = new System.Windows.Forms.TextBox();
+            this.TxtLineExpression = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.cboScale.Properties)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSavePath.Properties)).BeginInit();
@@ -260,7 +262,7 @@
             this.panel2.Controls.Add(this.btnCancel);
             this.panel2.Controls.Add(this.btnOK);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 555);
+            this.panel2.Location = new System.Drawing.Point(0, 589);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(513, 32);
             this.panel2.TabIndex = 20;
@@ -273,7 +275,7 @@
             this.tabMain.Location = new System.Drawing.Point(0, 174);
             this.tabMain.Name = "tabMain";
             this.tabMain.SelectedIndex = 0;
-            this.tabMain.Size = new System.Drawing.Size(513, 381);
+            this.tabMain.Size = new System.Drawing.Size(513, 415);
             this.tabMain.TabIndex = 21;
             // 
             // tabPage1
@@ -283,7 +285,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(505, 355);
+            this.tabPage1.Size = new System.Drawing.Size(505, 389);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "管线点";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -305,13 +307,13 @@
             this.panelPoint.Enabled = false;
             this.panelPoint.Location = new System.Drawing.Point(3, 28);
             this.panelPoint.Name = "panelPoint";
-            this.panelPoint.Size = new System.Drawing.Size(499, 324);
+            this.panelPoint.Size = new System.Drawing.Size(499, 358);
             this.panelPoint.TabIndex = 19;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(9, 304);
+            this.label10.Location = new System.Drawing.Point(9, 338);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(185, 12);
             this.label10.TabIndex = 21;
@@ -322,7 +324,7 @@
             this.checkBoxPointPlaceOverlappingLabels.AutoSize = true;
             this.checkBoxPointPlaceOverlappingLabels.Checked = true;
             this.checkBoxPointPlaceOverlappingLabels.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxPointPlaceOverlappingLabels.Location = new System.Drawing.Point(188, 285);
+            this.checkBoxPointPlaceOverlappingLabels.Location = new System.Drawing.Point(188, 319);
             this.checkBoxPointPlaceOverlappingLabels.Name = "checkBoxPointPlaceOverlappingLabels";
             this.checkBoxPointPlaceOverlappingLabels.Size = new System.Drawing.Size(96, 16);
             this.checkBoxPointPlaceOverlappingLabels.TabIndex = 20;
@@ -339,7 +341,7 @@
             this.groupBox12.Controls.Add(this.numAboveRight);
             this.groupBox12.Controls.Add(this.numAboveCenter);
             this.groupBox12.Controls.Add(this.numAboveLeft);
-            this.groupBox12.Location = new System.Drawing.Point(11, 193);
+            this.groupBox12.Location = new System.Drawing.Point(11, 227);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(167, 108);
             this.groupBox12.TabIndex = 19;
@@ -485,7 +487,7 @@
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.radioGroupPointFeatureWeight);
-            this.groupBox8.Location = new System.Drawing.Point(261, 134);
+            this.groupBox8.Location = new System.Drawing.Point(261, 168);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(226, 53);
             this.groupBox8.TabIndex = 18;
@@ -510,7 +512,7 @@
             // groupBox9
             // 
             this.groupBox9.Controls.Add(this.radioGroupPointLabelWeight);
-            this.groupBox9.Location = new System.Drawing.Point(261, 79);
+            this.groupBox9.Location = new System.Drawing.Point(261, 113);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(226, 49);
             this.groupBox9.TabIndex = 17;
@@ -539,7 +541,7 @@
             this.groupBox11.Controls.Add(this.label3);
             this.groupBox11.Controls.Add(this.label4);
             this.groupBox11.Controls.Add(this.label5);
-            this.groupBox11.Location = new System.Drawing.Point(11, 79);
+            this.groupBox11.Location = new System.Drawing.Point(11, 113);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(244, 108);
             this.groupBox11.TabIndex = 16;
@@ -636,7 +638,7 @@
             this.chbPointAutoUpdate.AutoSize = true;
             this.chbPointAutoUpdate.Checked = true;
             this.chbPointAutoUpdate.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbPointAutoUpdate.Location = new System.Drawing.Point(302, 193);
+            this.chbPointAutoUpdate.Location = new System.Drawing.Point(302, 227);
             this.chbPointAutoUpdate.Name = "chbPointAutoUpdate";
             this.chbPointAutoUpdate.Size = new System.Drawing.Size(108, 16);
             this.chbPointAutoUpdate.TabIndex = 12;
@@ -648,7 +650,7 @@
             this.chbPointLinked.AutoSize = true;
             this.chbPointLinked.Checked = true;
             this.chbPointLinked.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbPointLinked.Location = new System.Drawing.Point(188, 193);
+            this.chbPointLinked.Location = new System.Drawing.Point(188, 227);
             this.chbPointLinked.Name = "chbPointLinked";
             this.chbPointLinked.Size = new System.Drawing.Size(108, 16);
             this.chbPointLinked.TabIndex = 10;
@@ -657,12 +659,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.TxtPointExpression);
             this.groupBox1.Controls.Add(this.btnPointExpression);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.cmbPointFields);
             this.groupBox1.Location = new System.Drawing.Point(11, 31);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(476, 42);
+            this.groupBox1.Size = new System.Drawing.Size(476, 76);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "字段设置";
@@ -676,6 +679,7 @@
             this.btnPointExpression.Text = "表达式";
             this.btnPointExpression.UseVisualStyleBackColor = true;
             this.btnPointExpression.Visible = false;
+            this.btnPointExpression.Click += new System.EventHandler(this.btnPointExpression_Click);
             // 
             // label1
             // 
@@ -694,6 +698,7 @@
             this.cmbPointFields.Name = "cmbPointFields";
             this.cmbPointFields.Size = new System.Drawing.Size(288, 20);
             this.cmbPointFields.TabIndex = 0;
+            this.cmbPointFields.SelectedIndexChanged += new System.EventHandler(this.cmbPointFields_SelectedIndexChanged);
             // 
             // panel3
             // 
@@ -711,7 +716,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(505, 355);
+            this.tabPage2.Size = new System.Drawing.Size(505, 389);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "管线线";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -732,7 +737,7 @@
             this.panelLine.Enabled = false;
             this.panelLine.Location = new System.Drawing.Point(3, 28);
             this.panelLine.Name = "panelLine";
-            this.panelLine.Size = new System.Drawing.Size(499, 324);
+            this.panelLine.Size = new System.Drawing.Size(499, 358);
             this.panelLine.TabIndex = 20;
             // 
             // checkBoxLinePlaceOverlappingLabels
@@ -740,7 +745,7 @@
             this.checkBoxLinePlaceOverlappingLabels.AutoSize = true;
             this.checkBoxLinePlaceOverlappingLabels.Checked = true;
             this.checkBoxLinePlaceOverlappingLabels.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxLinePlaceOverlappingLabels.Location = new System.Drawing.Point(188, 285);
+            this.checkBoxLinePlaceOverlappingLabels.Location = new System.Drawing.Point(188, 319);
             this.checkBoxLinePlaceOverlappingLabels.Name = "checkBoxLinePlaceOverlappingLabels";
             this.checkBoxLinePlaceOverlappingLabels.Size = new System.Drawing.Size(96, 16);
             this.checkBoxLinePlaceOverlappingLabels.TabIndex = 16;
@@ -750,7 +755,7 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.radioGroupLineFeatureWeight);
-            this.groupBox5.Location = new System.Drawing.Point(261, 134);
+            this.groupBox5.Location = new System.Drawing.Point(261, 168);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(226, 53);
             this.groupBox5.TabIndex = 15;
@@ -775,7 +780,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.radioGroupLineLabelWeight);
-            this.groupBox4.Location = new System.Drawing.Point(261, 79);
+            this.groupBox4.Location = new System.Drawing.Point(261, 113);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(226, 49);
             this.groupBox4.TabIndex = 15;
@@ -804,7 +809,7 @@
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Location = new System.Drawing.Point(11, 79);
+            this.groupBox2.Location = new System.Drawing.Point(11, 113);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(244, 108);
             this.groupBox2.TabIndex = 14;
@@ -892,7 +897,7 @@
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.checkedListBoxLineLabelPosition);
-            this.groupBox6.Location = new System.Drawing.Point(11, 193);
+            this.groupBox6.Location = new System.Drawing.Point(11, 227);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(167, 108);
             this.groupBox6.TabIndex = 13;
@@ -917,7 +922,7 @@
             this.chbLineAutoUpdate.AutoSize = true;
             this.chbLineAutoUpdate.Checked = true;
             this.chbLineAutoUpdate.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbLineAutoUpdate.Location = new System.Drawing.Point(302, 193);
+            this.chbLineAutoUpdate.Location = new System.Drawing.Point(302, 227);
             this.chbLineAutoUpdate.Name = "chbLineAutoUpdate";
             this.chbLineAutoUpdate.Size = new System.Drawing.Size(108, 16);
             this.chbLineAutoUpdate.TabIndex = 9;
@@ -929,7 +934,7 @@
             this.chbLineLinked.AutoSize = true;
             this.chbLineLinked.Checked = true;
             this.chbLineLinked.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbLineLinked.Location = new System.Drawing.Point(188, 193);
+            this.chbLineLinked.Location = new System.Drawing.Point(188, 227);
             this.chbLineLinked.Name = "chbLineLinked";
             this.chbLineLinked.Size = new System.Drawing.Size(108, 16);
             this.chbLineLinked.TabIndex = 8;
@@ -955,12 +960,13 @@
             // 
             // groupBox10
             // 
+            this.groupBox10.Controls.Add(this.TxtLineExpression);
             this.groupBox10.Controls.Add(this.btnLineExpression);
             this.groupBox10.Controls.Add(this.label2);
             this.groupBox10.Controls.Add(this.cmbLineFields);
             this.groupBox10.Location = new System.Drawing.Point(11, 31);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(476, 42);
+            this.groupBox10.Size = new System.Drawing.Size(476, 76);
             this.groupBox10.TabIndex = 9;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "字段设置";
@@ -974,6 +980,7 @@
             this.btnLineExpression.Text = "表达式";
             this.btnLineExpression.UseVisualStyleBackColor = true;
             this.btnLineExpression.Visible = false;
+            this.btnLineExpression.Click += new System.EventHandler(this.btnLineExpression_Click);
             // 
             // label2
             // 
@@ -992,6 +999,7 @@
             this.cmbLineFields.Name = "cmbLineFields";
             this.cmbLineFields.Size = new System.Drawing.Size(288, 20);
             this.cmbLineFields.TabIndex = 0;
+            this.cmbLineFields.SelectedIndexChanged += new System.EventHandler(this.cmbLineFields_SelectedIndexChanged);
             // 
             // panel4
             // 
@@ -1068,11 +1076,27 @@
             this.radioGroupSaveType.Size = new System.Drawing.Size(507, 23);
             this.radioGroupSaveType.TabIndex = 0;
             // 
+            // TxtPointExpression
+            // 
+            this.TxtPointExpression.Location = new System.Drawing.Point(89, 41);
+            this.TxtPointExpression.Multiline = true;
+            this.TxtPointExpression.Name = "TxtPointExpression";
+            this.TxtPointExpression.Size = new System.Drawing.Size(381, 28);
+            this.TxtPointExpression.TabIndex = 3;
+            // 
+            // TxtLineExpression
+            // 
+            this.TxtLineExpression.Location = new System.Drawing.Point(89, 41);
+            this.TxtLineExpression.Multiline = true;
+            this.TxtLineExpression.Name = "TxtLineExpression";
+            this.TxtLineExpression.Size = new System.Drawing.Size(381, 28);
+            this.TxtLineExpression.TabIndex = 4;
+            // 
             // FrmPipeLabelsSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(513, 587);
+            this.ClientSize = new System.Drawing.Size(513, 621);
             this.Controls.Add(this.tabMain);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox3);
@@ -1215,5 +1239,7 @@
         private System.Windows.Forms.NumericUpDown numAboveRight;
         private System.Windows.Forms.NumericUpDown numAboveCenter;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox TxtPointExpression;
+        private System.Windows.Forms.TextBox TxtLineExpression;
     }
 }
