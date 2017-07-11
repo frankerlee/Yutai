@@ -50,6 +50,18 @@
     <Reference Include="ESRI.ArcGIS.Carto, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.Catalog, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.CatalogUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.DataSourcesFile, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.DataSourcesGDB, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.Display, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
@@ -82,6 +94,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\CheQiConfig.cs" />
+    <Compile Include="Classes\ICheQiConfig.cs" />
     <Compile Include="Commands\Exchange\CmdConversion.cs" />
     <Compile Include="Commands\Exchange\CmdCut.cs" />
     <Compile Include="Commands\Exchange\CmdDataExport.cs" />
@@ -130,6 +144,18 @@
     <Compile Include="Controls\FieldsListBox.Designer.cs">
       <DependentUpon>FieldsListBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\UcExtentSetting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UcExtentSetting.Designer.cs">
+      <DependentUpon>UcExtentSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UcSelectFeatureClass.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UcSelectFeatureClass.designer.cs">
+      <DependentUpon>UcSelectFeatureClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FieldCalculator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +174,12 @@
     <Compile Include="Forms\Mark\FrmPipeLabelsSetting.designer.cs">
       <DependentUpon>FrmPipeLabelsSetting.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Profession\FrmAngleConvert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Profession\FrmAngleConvert.designer.cs">
+      <DependentUpon>FrmAngleConvert.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Profession\FrmAutoGenerateCode.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,10 +187,18 @@
       <DependentUpon>FrmAutoGenerateCode.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper\CommonHelper.cs" />
+    <Compile Include="Helper\GxDialogHelper.cs" />
+    <Compile Include="Helper\MapHelper.cs" />
+    <Compile Include="Helper\WorkspaceHelper.cs" />
     <Compile Include="Menu\MenuGenerator.cs" />
     <Compile Include="Menu\YutaiCommands.cs" />
     <Compile Include="PipelineEditorPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Xml\GSLabelXML.designer.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +239,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\UcExtentSetting.resx">
+      <DependentUpon>UcExtentSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UcSelectFeatureClass.resx">
+      <DependentUpon>UcSelectFeatureClass.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FieldCalculator.resx">
       <DependentUpon>FieldCalculator.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,10 +254,23 @@
     <EmbeddedResource Include="Forms\Mark\FrmPipeLabelsSetting.resx">
       <DependentUpon>FrmPipeLabelsSetting.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Profession\FrmAngleConvert.resx">
+      <DependentUpon>FrmAngleConvert.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Profession\FrmAutoGenerateCode.resx">
       <DependentUpon>FrmAutoGenerateCode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu\MenuLayout.xml" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_folder_open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_arrow_change.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
