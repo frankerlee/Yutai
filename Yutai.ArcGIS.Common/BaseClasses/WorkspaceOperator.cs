@@ -24,33 +24,32 @@ namespace Yutai.ArcGIS.Common.BaseClasses
         {
             IObjectClassDescription annotationFeatureClassDescriptionClass = new AnnotationFeatureClassDescription();
             IFeatureClassDescription featureClassDescription =
-                (IFeatureClassDescription) annotationFeatureClassDescriptionClass;
+                (IFeatureClassDescription)annotationFeatureClassDescriptionClass;
             IFields requiredFields = annotationFeatureClassDescriptionClass.RequiredFields;
-            IFeatureWorkspaceAnno workspace = (IFeatureWorkspaceAnno) ifeatureDataset_0.Workspace;
+            IFeatureWorkspaceAnno workspace = (IFeatureWorkspaceAnno)ifeatureDataset_0.Workspace;
             IGraphicsLayerScale graphicsLayerScaleClass = new GraphicsLayerScale()
             {
-                ReferenceScale = double_0,
                 Units = esriUnits.esriMeters
             };
             UID instanceCLSID = annotationFeatureClassDescriptionClass.InstanceCLSID;
             UID classExtensionCLSID = annotationFeatureClassDescriptionClass.ClassExtensionCLSID;
             ISymbolCollection symbolCollectionClass = new SymbolCollection();
-            symbolCollectionClass.Symbol[0] = (ISymbol) WorkspaceOperator.MakeTextSymbol("宋体", 3);
-            symbolCollectionClass.Symbol[1] = (ISymbol) WorkspaceOperator.MakeTextSymbol("宋体", 3.5);
-            symbolCollectionClass.Symbol[2] = (ISymbol) WorkspaceOperator.MakeTextSymbol("宋体", 3);
-            symbolCollectionClass.Symbol[3] = (ISymbol) WorkspaceOperator.MakeTextSymbol("宋体", 2.5);
-            symbolCollectionClass.Symbol[4] = (ISymbol) WorkspaceOperator.MakeTextSymbol("黑体", 2);
-            symbolCollectionClass.Symbol[5] = (ISymbol) WorkspaceOperator.MakeTextSymbol("黑体", 1.5);
-            symbolCollectionClass.Symbol[6] = (ISymbol) WorkspaceOperator.MakeTextSymbol("宋体", 1);
-            symbolCollectionClass.Symbol[7] = (ISymbol) WorkspaceOperator.MakeTextSymbol("宋体", 0.4);
-            symbolCollectionClass.Symbol[8] = (ISymbol) WorkspaceOperator.MakeTextSymbol("宋体", 0.3);
-            symbolCollectionClass.Symbol[9] = (ISymbol) WorkspaceOperator.MakeTextSymbol("黑体", 1);
-            symbolCollectionClass.Symbol[10] = (ISymbol) WorkspaceOperator.MakeTextSymbol("宋体", 0.5);
-            symbolCollectionClass.Symbol[11] = (ISymbol) WorkspaceOperator.MakeTextSymbol("宋体", 0.6);
-            symbolCollectionClass.Symbol[12] = (ISymbol) WorkspaceOperator.MakeTextSymbol("宋体", 0.7);
-            symbolCollectionClass.Symbol[13] = (ISymbol) WorkspaceOperator.MakeTextSymbol("宋体", 0.8);
-            symbolCollectionClass.Symbol[14] = (ISymbol) WorkspaceOperator.MakeTextSymbol("宋体", 0.9);
-            symbolCollectionClass.Symbol[15] = (ISymbol) WorkspaceOperator.MakeTextSymbol("宋体", 1.2);
+            symbolCollectionClass.Symbol[0] = (ISymbol)WorkspaceOperator.MakeTextSymbol("宋体", 3);
+            symbolCollectionClass.Symbol[1] = (ISymbol)WorkspaceOperator.MakeTextSymbol("宋体", 3.5);
+            symbolCollectionClass.Symbol[2] = (ISymbol)WorkspaceOperator.MakeTextSymbol("宋体", 3);
+            symbolCollectionClass.Symbol[3] = (ISymbol)WorkspaceOperator.MakeTextSymbol("宋体", 2.5);
+            symbolCollectionClass.Symbol[4] = (ISymbol)WorkspaceOperator.MakeTextSymbol("黑体", 2);
+            symbolCollectionClass.Symbol[5] = (ISymbol)WorkspaceOperator.MakeTextSymbol("黑体", 1.5);
+            symbolCollectionClass.Symbol[6] = (ISymbol)WorkspaceOperator.MakeTextSymbol("宋体", 1);
+            symbolCollectionClass.Symbol[7] = (ISymbol)WorkspaceOperator.MakeTextSymbol("宋体", 0.4);
+            symbolCollectionClass.Symbol[8] = (ISymbol)WorkspaceOperator.MakeTextSymbol("宋体", 0.3);
+            symbolCollectionClass.Symbol[9] = (ISymbol)WorkspaceOperator.MakeTextSymbol("黑体", 1);
+            symbolCollectionClass.Symbol[10] = (ISymbol)WorkspaceOperator.MakeTextSymbol("宋体", 0.5);
+            symbolCollectionClass.Symbol[11] = (ISymbol)WorkspaceOperator.MakeTextSymbol("宋体", 0.6);
+            symbolCollectionClass.Symbol[12] = (ISymbol)WorkspaceOperator.MakeTextSymbol("宋体", 0.7);
+            symbolCollectionClass.Symbol[13] = (ISymbol)WorkspaceOperator.MakeTextSymbol("宋体", 0.8);
+            symbolCollectionClass.Symbol[14] = (ISymbol)WorkspaceOperator.MakeTextSymbol("宋体", 0.9);
+            symbolCollectionClass.Symbol[15] = (ISymbol)WorkspaceOperator.MakeTextSymbol("宋体", 1.2);
             IFeatureClass featureClass = workspace.CreateAnnotationClass(string_0, requiredFields, instanceCLSID,
                 classExtensionCLSID, featureClassDescription.ShapeFieldName, "", ifeatureDataset_0, null, null,
                 graphicsLayerScaleClass, symbolCollectionClass, true);
@@ -83,45 +82,45 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                 switch (esriFeatureType_0)
                 {
                     case esriFeatureType.esriFTSimple:
-                    {
-                        uid_0.Value = "{52353152-891A-11D0-BEC6-00805F7C4268}";
-                        break;
-                    }
+                        {
+                            uid_0.Value = "{52353152-891A-11D0-BEC6-00805F7C4268}";
+                            break;
+                        }
                     case esriFeatureType.esriFTSimpleJunction:
-                    {
-                        esriGeometryType_0 = esriGeometryType.esriGeometryPoint;
-                        uid_0.Value = "{CEE8D6B8-55FE-11D1-AE55-0000F80372B4}";
-                        break;
-                    }
+                        {
+                            esriGeometryType_0 = esriGeometryType.esriGeometryPoint;
+                            uid_0.Value = "{CEE8D6B8-55FE-11D1-AE55-0000F80372B4}";
+                            break;
+                        }
                     case esriFeatureType.esriFTSimpleEdge:
-                    {
-                        esriGeometryType_0 = esriGeometryType.esriGeometryPolyline;
-                        uid_0.Value = "{E7031C90-55FE-11D1-AE55-0000F80372B4}";
-                        break;
-                    }
+                        {
+                            esriGeometryType_0 = esriGeometryType.esriGeometryPolyline;
+                            uid_0.Value = "{E7031C90-55FE-11D1-AE55-0000F80372B4}";
+                            break;
+                        }
                     case esriFeatureType.esriFTComplexJunction:
-                    {
-                        uid_0.Value = "{DF9D71F4-DA32-11D1-AEBA-0000F80372B4}";
-                        break;
-                    }
+                        {
+                            uid_0.Value = "{DF9D71F4-DA32-11D1-AEBA-0000F80372B4}";
+                            break;
+                        }
                     case esriFeatureType.esriFTComplexEdge:
-                    {
-                        esriGeometryType_0 = esriGeometryType.esriGeometryPolyline;
-                        uid_0.Value = "{A30E8A2A-C50B-11D1-AEA9-0000F80372B4}";
-                        break;
-                    }
+                        {
+                            esriGeometryType_0 = esriGeometryType.esriGeometryPolyline;
+                            uid_0.Value = "{A30E8A2A-C50B-11D1-AEA9-0000F80372B4}";
+                            break;
+                        }
                     case esriFeatureType.esriFTAnnotation:
-                    {
-                        esriGeometryType_0 = esriGeometryType.esriGeometryPolygon;
-                        uid_0.Value = "{E3676993-C682-11D2-8A2A-006097AFF44E}";
-                        break;
-                    }
+                        {
+                            esriGeometryType_0 = esriGeometryType.esriGeometryPolygon;
+                            uid_0.Value = "{E3676993-C682-11D2-8A2A-006097AFF44E}";
+                            break;
+                        }
                     case esriFeatureType.esriFTDimension:
-                    {
-                        esriGeometryType_0 = esriGeometryType.esriGeometryPolygon;
-                        uid_0.Value = "{496764FC-E0C9-11D3-80CE-00C04F601565}";
-                        break;
-                    }
+                        {
+                            esriGeometryType_0 = esriGeometryType.esriGeometryPolygon;
+                            uid_0.Value = "{496764FC-E0C9-11D3-80CE-00C04F601565}";
+                            break;
+                        }
                 }
             }
             if (uid_1 == null)
@@ -129,29 +128,29 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                 switch (esriFeatureType_0)
                 {
                     case esriFeatureType.esriFTAnnotation:
-                    {
-                        uid_1 = new UID()
                         {
-                            Value = "{24429589-D711-11D2-9F41-00C04F6BC6A5}"
-                        };
-                        break;
-                    }
+                            uid_1 = new UID()
+                            {
+                                Value = "{24429589-D711-11D2-9F41-00C04F6BC6A5}"
+                            };
+                            break;
+                        }
                     case esriFeatureType.esriFTDimension:
-                    {
-                        uid_1 = new UID()
                         {
-                            Value = "{48F935E2-DA66-11D3-80CE-00C04F601565}"
-                        };
-                        break;
-                    }
+                            uid_1 = new UID()
+                            {
+                                Value = "{48F935E2-DA66-11D3-80CE-00C04F601565}"
+                            };
+                            break;
+                        }
                 }
             }
             if (ifields_0 == null)
             {
                 ifields_0 = new Fields();
-                IFieldsEdit ifields0 = (IFieldsEdit) ifields_0;
+                IFieldsEdit ifields0 = (IFieldsEdit)ifields_0;
                 IGeometryDef geometryDefClass = new GeometryDef();
-                IGeometryDefEdit esriGeometryType0 = (IGeometryDefEdit) geometryDefClass;
+                IGeometryDefEdit esriGeometryType0 = (IGeometryDefEdit)geometryDefClass;
                 esriGeometryType0.GeometryType_2 = esriGeometryType_0;
                 esriGeometryType0.GridCount_2 = 1;
                 esriGeometryType0.GridSize_2[0] = 8555.04939799;
@@ -163,13 +162,13 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                     esriGeometryType0.SpatialReference_2 = ispatialReference_0;
                 }
                 IField fieldClass = new Field();
-                IFieldEdit fieldEdit = (IFieldEdit) fieldClass;
+                IFieldEdit fieldEdit = (IFieldEdit)fieldClass;
                 fieldEdit.Name_2 = "OBJECTID";
                 fieldEdit.AliasName_2 = "OBJECTID";
                 fieldEdit.Type_2 = esriFieldType.esriFieldTypeOID;
                 ifields0.AddField(fieldClass);
                 IField field = new Field();
-                IFieldEdit fieldEdit1 = (IFieldEdit) field;
+                IFieldEdit fieldEdit1 = (IFieldEdit)field;
                 fieldEdit1.Name_2 = "SHAPE";
                 fieldEdit1.AliasName_2 = "SHAPE";
                 fieldEdit1.Type_2 = esriFieldType.esriFieldTypeGeometry;
@@ -201,13 +200,13 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             IFeatureClass featureClass = null;
             if (object_0 is IWorkspace)
             {
-                IFeatureWorkspace object0 = (IFeatureWorkspace) ((IWorkspace) object_0);
+                IFeatureWorkspace object0 = (IFeatureWorkspace)((IWorkspace)object_0);
                 featureClass = object0.CreateFeatureClass(string_0, ifields_0, uid_0, uid_1, esriFeatureType_0, name,
                     string_1);
             }
             else if (object_0 is IFeatureDataset)
             {
-                IFeatureDataset featureDataset = (IFeatureDataset) object_0;
+                IFeatureDataset featureDataset = (IFeatureDataset)object_0;
                 featureClass = featureDataset.CreateFeatureClass(string_0, ifields_0, uid_0, uid_1, esriFeatureType_0,
                     name, string_1);
             }
@@ -232,7 +231,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             }
             else if (ispatialReference_0 != null)
             {
-                IFeatureWorkspace iworkspace0 = (IFeatureWorkspace) iworkspace_0;
+                IFeatureWorkspace iworkspace0 = (IFeatureWorkspace)iworkspace_0;
                 IDataset dataset1 = null;
                 try
                 {
@@ -335,7 +334,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                 }
             }
             string text2;
-            ((IFieldChecker) new FieldChecker
+            ((IFieldChecker)new FieldChecker
             {
                 ValidateWorkspace = iworkspace_0
             }).ValidateTableName(string_0, out text2);
@@ -343,7 +342,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             if (iworkspace_0.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace ||
                 iworkspace_0.Type == esriWorkspaceType.esriLocalDatabaseWorkspace)
             {
-                while (((IWorkspace2) iworkspace_0).get_NameExists(esriDatasetType.esriDTFeatureClass, text))
+                while (((IWorkspace2)iworkspace_0).get_NameExists(esriDatasetType.esriDTFeatureClass, text))
                 {
                     text = text2 + "_" + num.ToString();
                     num++;
@@ -390,7 +389,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                 }
             }
             string text2;
-            ((IFieldChecker) new FieldChecker
+            ((IFieldChecker)new FieldChecker
             {
                 ValidateWorkspace = iworkspace_0
             }).ValidateTableName(string_1, out text2);
@@ -398,7 +397,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             if (iworkspace_0.Type == esriWorkspaceType.esriRemoteDatabaseWorkspace ||
                 iworkspace_0.Type == esriWorkspaceType.esriLocalDatabaseWorkspace)
             {
-                while (((IWorkspace2) iworkspace_0).get_NameExists(esriDatasetType.esriDTFeatureClass, text))
+                while (((IWorkspace2)iworkspace_0).get_NameExists(esriDatasetType.esriDTFeatureClass, text))
                 {
                     text = string.Concat(new string[]
                     {
@@ -486,7 +485,7 @@ namespace Yutai.ArcGIS.Common.BaseClasses
         public static bool IsConnectedToGeodatabase(IWorkspace iworkspace_0)
         {
             IWorkspaceProperty property =
-                ((IWorkspaceProperties) iworkspace_0).Property[
+                ((IWorkspaceProperties)iworkspace_0).Property[
                     esriWorkspacePropertyGroupType.esriWorkspacePropertyGroup, 7];
             return Convert.ToBoolean(property.PropertyValue);
         }
@@ -521,8 +520,8 @@ namespace Yutai.ArcGIS.Common.BaseClasses
             ITextSymbol textSymbol;
             try
             {
-                ISimpleTextSymbol textSymbolClass = (ISimpleTextSymbol) (new TextSymbol());
-                IFontDisp stdFontClass = (IFontDisp) (new StdFont());
+                ISimpleTextSymbol textSymbolClass = (ISimpleTextSymbol)(new TextSymbol());
+                IFontDisp stdFontClass = (IFontDisp)(new StdFont());
                 stdFontClass.Name = string_0;
                 textSymbolClass.Font = stdFontClass;
                 RgbColor rgbColorClass = new RgbColor();
@@ -629,9 +628,9 @@ namespace Yutai.ArcGIS.Common.BaseClasses
                 string str = "";
                 string lower = "";
                 ipropertySet_0.GetAllProperties(out obj, out obj1);
-                if (((string[]) obj)[0] == "DATABASE")
+                if (((string[])obj)[0] == "DATABASE")
                 {
-                    str = ((object[]) obj1)[0].ToString();
+                    str = ((object[])obj1)[0].ToString();
                     lower = System.IO.Path.GetExtension(str).ToLower();
                 }
                 if (lower == ".mdb")

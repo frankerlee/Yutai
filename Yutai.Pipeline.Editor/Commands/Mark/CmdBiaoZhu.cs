@@ -38,7 +38,6 @@ namespace Yutai.Pipeline.Editor.Commands.Mark
             base.m_toolTip = "";
             base.m_checked = false;
             base.m_message = "";
-            base.m_enabled = true;
             base._itemType = RibbonItemType.Button;
         }
         

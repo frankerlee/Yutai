@@ -1625,7 +1625,7 @@
     <Compile Include="ApplicationStyle\StandardRibbonPaintStyleMenuItem.cs" />
     <Compile Include="ApplicationStyle\PaintStyleMenuItem.cs" />
     <Reference Include="TeeChart">
-      <HintPath>D:\Program Files (x86)\成都领君科技有限公司\JLKEngine中间件平台V8.0\JLKEngine8.9\TeeChart.DLL</HintPath>
+      <HintPath>C:\Program Files (x86)\成都领君科技有限公司\JLKEngine中间件平台V8.0\JLKEngine8.9\TeeChart.DLL</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

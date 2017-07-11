@@ -1,6 +1,7 @@
 ﻿using System;
 using Yutai.Pipeline.Config.Concretes;
 using Yutai.Pipeline.Config.Interfaces;
+using Yutai.Pipeline.Editor.Classes;
 using Yutai.Pipeline.Editor.Menu;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Interfaces;
@@ -17,6 +18,7 @@ namespace Yutai.Pipeline.Editor
         private IAppContext _context;
         private MenuGenerator _menuGenerator;
         private IPipelineConfig _config;
+        private readonly ICheQiConfig _cheQiConfig;
         //private DockPanelService _dockPanelService;
 
         // public event EventHandler<QueryResultArgs> QueryResultChanged;
@@ -50,6 +52,10 @@ namespace Yutai.Pipeline.Editor
         {
             get { return _config; }
         }
-        
+
+        public ICheQiConfig CheQiConfig
+        {
+            get { return _cheQiConfig; }
+        }
     }
 }
