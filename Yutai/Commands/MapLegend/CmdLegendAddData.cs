@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,10 +8,13 @@ using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.SystemUI;
+using Yutai.ArcGIS.Catalog;
+using Yutai.ArcGIS.Catalog.UI;
 using Yutai.Controls;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
+
 
 namespace Yutai.Commands.MapLegend
 {
@@ -18,6 +22,8 @@ namespace Yutai.Commands.MapLegend
     {
         private IMapLegendView _view;
         private ICommand _command;
+        private AddDataHelper pHelper = null;
+        private IList ilist_0 = null;
 
         public CmdLegendAddData(IAppContext context, IMapLegendView view)
         {
@@ -43,7 +49,7 @@ namespace Yutai.Commands.MapLegend
             }
         }
 
-        private void OnCreate()
+       private void OnCreate()
         {
             base.m_caption = "新增数据源";
             base.m_category = "TOC";
@@ -56,6 +62,8 @@ namespace Yutai.Commands.MapLegend
             base._itemType = RibbonItemType.Button;
         }
 
+      
+
         public override void OnClick(object sender, EventArgs args)
         {
             if (_command == null)
@@ -63,26 +71,58 @@ namespace Yutai.Commands.MapLegend
                 _command = new ESRI.ArcGIS.Controls.ControlsAddDataCommandClass();
                 _command.OnCreate(_context.MapControl);
             }
+            object parentObject = null;
+
             if (_view.SelectedLayer != null && _view.SelectedLayer is IGroupLayer)
             {
-                List<ILayer> oldLayers = GetLayers();
-                _command.OnClick();
-                List<ILayer> newLayers = GetLayers();
-                IMapLayers pMapLayers = _view.SelectedMap as IMapLayers;
-                IGroupLayer pGroupLayer = _view.SelectedLayer as IGroupLayer;
-                foreach (ILayer newLayer in newLayers)
-                {
-                    if (oldLayers.Contains(newLayer))
-                        continue;
-                    pMapLayers.MoveLayerEx(null, pGroupLayer, newLayer, 0);
-                }
+                parentObject = _view.SelectedLayer;
             }
             else
             {
-                _command.OnClick();
+                parentObject = _context.FocusMap as IActiveView;
             }
+
+            frmOpenFile _frmOpenFile = new frmOpenFile()
+            {
+                Text = "添加数据",
+                AllowMultiSelect = true
+            };
+            _frmOpenFile.AddFilter(new MyGxFilterDatasets(), true);
+            if (_frmOpenFile.DoModalOpen() == DialogResult.OK)
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                this.pHelper = new AddDataHelper(this.GetMap() as IActiveView);
+                this.ilist_0 = _frmOpenFile.SelectedItems;
+                this.pHelper.m_pApp = _context;
+                if (_view.SelectedLayer != null && _view.SelectedLayer is IGroupLayer)
+                {
+                    pHelper.ParentLayer = _view.SelectedLayer as IGroupLayer;
+                }
+                this.pHelper.LoadData(this.ilist_0);
+                Cursor.Current = Cursors.Default;
+            }
+
         }
 
+
+        private void method_2()
+        {
+            Cursor.Current = Cursors.Default;
+            (this.GetMap() as IActiveView).ScreenDisplay.UpdateWindow();
+        }
+
+
+
+
+        private IMap GetMap()
+        {
+            return this._context.FocusMap;
+        }
+
+        private void method_1()
+        {
+            this.pHelper.InvokeMethod(this.ilist_0);
+        }
         public override void OnCreate(object hook)
         {
             OnCreate();

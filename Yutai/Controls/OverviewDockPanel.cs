@@ -212,7 +212,7 @@ namespace Yutai.Controls
             if (this.axMapControl1.LayerCount == 0) return;
             if (this.CanDo)
             {
-                this._envelope = this._mainMapControl.ActiveView.Extent;
+                this._envelope = ((IActiveView)this._context.FocusMap).Extent;
                 IPoint pointClass = new ESRI.ArcGIS.Geometry.Point();
                 pointClass.PutCoords((this._envelope.XMin + this._envelope.XMax)/2,
                     (this._envelope.YMin + this._envelope.YMax)/2);
@@ -413,8 +413,9 @@ namespace Yutai.Controls
 
         public void Current()
         {
-            axMapControl1.ActiveView.Extent = ((IActiveView) _map).Extent;
+            axMapControl1.ActiveView.Extent = _context.ActiveView.Extent;
             axMapControl1.Refresh();
+           // _rectangleElement.Geometry = null;
             return;
         }
     }

@@ -16,6 +16,13 @@ namespace Yutai.Commands.Windows
 {
     class CmdOverviewDock : YutaiCommand
     {
+        private bool _checked;
+
+        public override bool Checked
+        {
+            get { return _checked; }
+        }
+
         public CmdOverviewDock(IAppContext context)
         {
             OnCreate(context);
@@ -26,7 +33,18 @@ namespace Yutai.Commands.Windows
             ISecureContext sContext = _context as ISecureContext;
             DockPanel dock = _context.DockPanels.GetDockPanel(OverviewDockPanel.DefaultDockName);
             if (dock == null) return;
-            dock.Visible = !dock.Visible;
+            if (dock.Visible)
+            {
+                dock.Hide();
+                _checked = false;
+                return;
+            }
+            else
+            {
+                dock.Show();
+                _checked = true;
+                return;
+            }
         }
 
         public override void OnClick(object sender, EventArgs args)
@@ -45,7 +63,7 @@ namespace Yutai.Commands.Windows
             base.m_toolTip = "鹰眼视图";
             base.m_checked = false;
             base.m_enabled = true;
-            base._itemType = RibbonItemType.Button;
+            base._itemType = RibbonItemType.CheckBox;
         }
     }
 }

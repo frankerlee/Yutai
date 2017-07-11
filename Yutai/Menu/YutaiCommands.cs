@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Yutai.Commands.Data;
 using Yutai.Commands.Document;
 using Yutai.Commands.Settings;
 using Yutai.Commands.Views;
@@ -118,6 +119,13 @@ namespace Yutai.Menu
                     new CmdDisplayUnits(_context),
                     new CmdAttributeTable(_context),
                     new CmdStartMapFrameProps(_context),
+
+                    new CmdAddData(_context),
+                    new CmdPrint(_context),
+                    new CmdPrintPageSetup(_context),
+                    new CmdPrintPreview(_context),
+                    new CmdExportMap(_context),
+                    new CmdExit(_context),
                 };
                 _commandKeys = new List<string>();
                 foreach (var command in _commands)

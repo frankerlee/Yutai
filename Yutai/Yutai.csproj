@@ -84,6 +84,9 @@
     <Reference Include="ESRI.ArcGIS.Geometry, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.GISClient, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.Maplex, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
@@ -129,6 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppContext.cs" />
+    <Compile Include="Commands\Data\CmdAddData.cs" />
     <Compile Include="Commands\Document\CmdCloseMapDocument.cs" />
     <Compile Include="Commands\Document\CmdCloseSceneDocument.cs" />
     <Compile Include="Commands\Document\CmdCloseYutaiDoc.cs" />
@@ -184,6 +188,9 @@
     </Compile>
     <Compile Include="Configuration\Plugins\PluginInfo.cs" />
     <Compile Include="Configuration\Plugins\PluginProvider.cs" />
+    <Compile Include="Controls\AddDataHelper.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\ConfigTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -335,6 +342,10 @@
     <ProjectReference Include="..\Yutai.Plugins\Yutai.Plugins.csproj">
       <Project>{800F2EE4-47AB-4CD4-934D-A64980D98A23}</Project>
       <Name>Yutai.Plugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yutai.Printing\Yutai.Printing.csproj">
+      <Project>{5E933989-B5A4-4A45-A5B7-2D9DED61DF0F}</Project>
+      <Name>Yutai.Printing</Name>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.Services\Yutai.Services.csproj">
       <Project>{e95b46f1-a8d7-41d8-9f5a-b57bd748a62b}</Project>
@@ -652,8 +663,14 @@
     <Content Include="Plugins\configs\YutaiTemplate.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\icon_add_data.png" />
+    <None Include="Resources\icon_exit.png" />
+    <None Include="Resources\icon_exportmap.png" />
     <Content Include="Resources\icon_maplegend.png" />
-    <Content Include="Resources\icon_overview.png" />
+    <None Include="Resources\icon_overview.png" />
+    <None Include="Resources\icon_pagesetup.png" />
+    <None Include="Resources\icon_preview.png" />
+    <None Include="Resources\icon_print.png" />
     <Content Include="Resources\icon_zoom_in_fixed.bmp" />
     <Content Include="Resources\icon_zoom_out_fixed.bmp" />
     <None Include="Resources\save_16.png" />

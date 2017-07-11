@@ -11,16 +11,25 @@
   <MainMenu>
     <Pages>
       <Page Key="File" Caption="文件" Index="0" Visible="true">
-        <PageGroup Key="File_Common" Caption="常用" Visible="true" Index="0">
+        <PageGroup Key="File_Project" Caption="项目" Visible="true" Index="0">
           <BarItem Key="File_Document_NewProject" Visible="true"></BarItem>
           <BarItem Key="File_Document_OpenProject" Visible="true"></BarItem>
           <BarItem Key="File_Document_SaveProject" Visible="true"></BarItem>
           <BarItem Key="File_Common_CloseProject" Visible="true"></BarItem>
         </PageGroup>
-        <PageGroup Key="File_2D" Caption="二维文档" Visible="true" Index="0">
+          <PageGroup Key="File_Common" Caption="常用" Visible="true" Index="0">
+          <BarItem Key="File_Print" Visible="true"></BarItem>
+          <BarItem Key="File_PrintPageSetup" Visible="true"></BarItem>
+          <BarItem Key="File_PrintPreview" Visible="true"></BarItem>
+          <BarItem Key="File_ExportMap" Visible="true"></BarItem>
+          <BarItem Key="File_ExitSys" Visible="true"></BarItem>
+        </PageGroup>
+        <PageGroup Key="File_2D" Caption="文档" Visible="true" Index="0">
           <BarItem Key="File_Mxd_OpenMXD" Visible="true"></BarItem>
           <BarItem Key="File_Mxd_SaveMXD" Visible="true"></BarItem>
-          <BarItem Key="File_Mxd_CloseMXD" Visible="true"></BarItem>
+          <BarItem Key="File_AddData" Visible="true"></BarItem>
+          
+          <!--<BarItem Key="File_Mxd_CloseMXD" Visible="true"></BarItem>-->
         </PageGroup>
       </Page>
       <Page Key="View" Caption="视图" Index="1" Visible="true">

@@ -3,6 +3,8 @@ using System.Windows.Forms;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
+using Yutai.Plugins.Services;
+using Yutai.Services.Serialization;
 
 namespace Yutai.Commands.Document
 {
@@ -15,6 +17,12 @@ namespace Yutai.Commands.Document
 
         public override void OnClick()
         {
+            ISecureContext secureContext = _context as ISecureContext;
+            if (secureContext.YutaiProject!=null && !string.IsNullOrEmpty(secureContext.YutaiProject.MapDocumentName))
+            {
+                if (MessageService.Current.Ask("当前打开的项目有链接的MXD文档，你确认需要进行替换吗?") == false)
+                    return;
+            }
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Title = "打开Mxd文档";
             dialog.Filter = "MXD文档(*.mxd)|*.mxd";
@@ -23,7 +31,30 @@ namespace Yutai.Commands.Document
             DialogResult result = dialog.ShowDialog();
             if (result != DialogResult.OK) return;
             string fileName = dialog.FileName;
-            _context.MapControl.LoadMxFile(fileName, null, null);
+            if (secureContext.YutaiProject == null)
+            {
+                secureContext.YutaiProject=new XmlProject(secureContext,"");
+            }
+            if (_context.MainView.ControlType == GISControlType.MapControl)
+            {
+                _context.MapControl.LoadMxFile(dialog.FileName);
+                secureContext.YutaiProject.MapDocumentName = fileName;
+            }
+            else if (_context.MainView.ControlType == GISControlType.PageLayout)
+            {
+                _context.MainView.PageLayoutControl.LoadMxFile(dialog.FileName);
+                secureContext.YutaiProject.MapDocumentName = fileName;
+            }
+            else
+            {
+                _context.MainView.ActivateMap();
+                _context.MapControl.LoadMxFile(dialog.FileName);
+                secureContext.YutaiProject.MapDocumentName = fileName;
+            }
+
+
+
+
         }
 
         public override void OnClick(object sender, EventArgs args)
