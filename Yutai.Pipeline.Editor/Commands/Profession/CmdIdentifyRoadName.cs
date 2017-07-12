@@ -33,7 +33,6 @@ namespace Yutai.Pipeline.Editor.Commands.Profession
             base.m_toolTip = "道路名称识别";
             base.m_checked = false;
             base.m_message = "道路名称识别";
-            base.m_enabled = true;
             base._itemType = RibbonItemType.Tool;
         }
 
@@ -49,6 +48,24 @@ namespace Yutai.Pipeline.Editor.Commands.Profession
 
         public override void OnMouseDown(int button, int shift, int x, int y)
         {
+        }
+
+        public override bool Enabled
+        {
+            get
+            {
+                if (_context.FocusMap == null)
+                    return false;
+                if (_context.FocusMap.LayerCount <= 0)
+                    return false;
+                if (ArcGIS.Common.Editor.Editor.EditMap == null)
+                    return false;
+                if (ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
+                    return false;
+                if (ArcGIS.Common.Editor.Editor.EditWorkspace == null)
+                    return false;
+                return true;
+            }
         }
     }
 }

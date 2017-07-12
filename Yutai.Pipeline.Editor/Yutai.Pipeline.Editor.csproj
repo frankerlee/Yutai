@@ -156,6 +156,13 @@
     <Compile Include="Controls\UcSelectFeatureClass.designer.cs">
       <DependentUpon>UcSelectFeatureClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\UcSelectField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UcSelectField.designer.cs">
+      <DependentUpon>UcSelectField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Emuns\IdentifyRoadNameCommand.cs" />
     <Compile Include="Forms\FieldCalculator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,6 +206,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\IdentifyRoadNameDockPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\IdentifyRoadNameDockPanel.Designer.cs">
+      <DependentUpon>IdentifyRoadNameDockPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IdentifyRoadNamePresenter.cs" />
+    <Compile Include="Views\IIdentifyRoadNameView.cs" />
     <Compile Include="Xml\GSLabelXML.designer.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -245,6 +260,9 @@
     <EmbeddedResource Include="Controls\UcSelectFeatureClass.resx">
       <DependentUpon>UcSelectFeatureClass.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UcSelectField.resx">
+      <DependentUpon>UcSelectField.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FieldCalculator.resx">
       <DependentUpon>FieldCalculator.cs</DependentUpon>
     </EmbeddedResource>
@@ -265,6 +283,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\IdentifyRoadNameDockPanel.resx">
+      <DependentUpon>IdentifyRoadNameDockPanel.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\img_folder_open.png" />
@@ -272,6 +293,7 @@
   <ItemGroup>
     <None Include="Resources\img_arrow_change.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
