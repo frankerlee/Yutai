@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ClosedXML, Version=0.69.1.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\ClosedXML.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Data.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>D:\Program Files (x86)\DevExpress 16.1.4\Components\Bin\Framework\DevExpress.Data.v16.1.dll</HintPath>
@@ -107,6 +111,8 @@
     <Compile Include="Axf\AXF_TableInfo.cs" />
     <Compile Include="Axf\AXF_TABLES.cs" />
     <Compile Include="Classes\CheQiConfig.cs" />
+    <Compile Include="Classes\eFieldFileHelper.cs" />
+    <Compile Include="Classes\GSCSUtilsGen.cs" />
     <Compile Include="Classes\ICheQiConfig.cs" />
     <Compile Include="Commands\Exchange\CmdConversion.cs" />
     <Compile Include="Commands\Exchange\CmdCut.cs" />
@@ -159,6 +165,12 @@
     <Compile Include="Controls\UcSelectField.designer.cs">
       <DependentUpon>UcSelectField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\UcSelectFile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UcSelectFile.Designer.cs">
+      <DependentUpon>UcSelectFile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\UCSelectFolder.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -166,11 +178,18 @@
       <DependentUpon>UCSelectFolder.cs</DependentUpon>
     </Compile>
     <Compile Include="Emuns\IdentifyRoadNameCommand.cs" />
+    <Compile Include="Emuns\SurveyCoordType.cs" />
     <Compile Include="Forms\Exchange\FrmImportAXFData.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Exchange\FrmImportAXFData.Designer.cs">
       <DependentUpon>FrmImportAXFData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Exchange\FrmImportSurveyData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Exchange\FrmImportSurveyData.Designer.cs">
+      <DependentUpon>FrmImportSurveyData.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FieldCalculator.cs">
       <SubType>Form</SubType>
@@ -282,11 +301,17 @@
     <EmbeddedResource Include="Controls\UcSelectField.resx">
       <DependentUpon>UcSelectField.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UcSelectFile.resx">
+      <DependentUpon>UcSelectFile.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\UCSelectFolder.resx">
       <DependentUpon>UCSelectFolder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Exchange\FrmImportAXFData.resx">
       <DependentUpon>FrmImportAXFData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Exchange\FrmImportSurveyData.resx">
+      <DependentUpon>FrmImportSurveyData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FieldCalculator.resx">
       <DependentUpon>FieldCalculator.cs</DependentUpon>
@@ -318,7 +343,9 @@
   <ItemGroup>
     <None Include="Resources\img_arrow_change.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="DLL\ClosedXML.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
