@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Yutai.Pipeline.Editor.Commands;
-using Yutai.Pipeline.Editor.Commands.DataManager;
 using Yutai.Pipeline.Editor.Commands.Exchange;
 using Yutai.Pipeline.Editor.Commands.Mark;
 using Yutai.Pipeline.Editor.Commands.Profession;
@@ -44,25 +43,9 @@ namespace Yutai.Pipeline.Editor.Menu
                     return new List<YutaiCommand>();
                 _commands = new List<YutaiCommand>()
                 {
-                    new CmdCreateDatabase(_context, _plugin),
-                    new CmdCreateFunctionLayer(_context, _plugin),
-                    new CmdCreatePipeLayer(_context, _plugin),
-
-                    new CmdPointLineLinkage(_context, _plugin),
-                    new CmdMoveTurningPoint(_context, _plugin),
-                    new CmdDeletePipePoint(_context, _plugin),
-                    new CmdCalculateDepth(_context, _plugin),
                     new CmdAngleConvert(_context, _plugin),
-                    new CmdAutoAngle(_context, _plugin),
                     new CmdAutoGenerateNumbers(_context, _plugin),
-                    new CmdCenterPoint(_context, _plugin),
-                    new CmdCopyAttributes(_context, _plugin),
                     new CmdIdentifyRoadName(_context, _plugin),
-                    new CmdLayerByAttribute(_context, _plugin),
-                    new CmdLineLineToRightAngle(_context, _plugin),
-                    new CmdPointLineToRightAngle(_context, _plugin),
-                    new CmdModifyFlow(_context, _plugin),
-                    new CmdPartialDistance(_context, _plugin),
 
                     new CmdConversion(_context, _plugin),
                     new CmdCut(_context, _plugin),

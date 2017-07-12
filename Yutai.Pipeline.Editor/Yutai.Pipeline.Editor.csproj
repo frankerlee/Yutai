@@ -56,6 +56,9 @@
     <Reference Include="ESRI.ArcGIS.CatalogUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.DataInterop, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.DataSourcesFile, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
@@ -84,6 +87,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -94,6 +98,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Axf\AxfOperationType.cs" />
+    <Compile Include="Axf\AXF_FIELD.cs" />
+    <Compile Include="Axf\AXF_FileInfo.cs" />
+    <Compile Include="Axf\AXF_GEOMETRY_COLUMNS.cs" />
+    <Compile Include="Axf\AXF_Info.cs" />
+    <Compile Include="Axf\AXF_LAYERS.cs" />
+    <Compile Include="Axf\AXF_TableInfo.cs" />
+    <Compile Include="Axf\AXF_TABLES.cs" />
     <Compile Include="Classes\CheQiConfig.cs" />
     <Compile Include="Classes\ICheQiConfig.cs" />
     <Compile Include="Commands\Exchange\CmdConversion.cs" />
@@ -112,24 +124,9 @@
     <Compile Include="Commands\Mark\CmdBiaoZhu.cs" />
     <Compile Include="Commands\Mark\CmdCheQi.cs" />
     <Compile Include="Commands\Profession\CmdAngleConvert.cs" />
-    <Compile Include="Commands\Profession\CmdAutoAngle.cs" />
     <Compile Include="Commands\Mark\CmdAnnotationSorting.cs" />
     <Compile Include="Commands\Profession\CmdAutoGenerateNumbers.cs" />
-    <Compile Include="Commands\Profession\CmdCalculateDepth.cs" />
-    <Compile Include="Commands\Profession\CmdCenterPoint.cs" />
-    <Compile Include="Commands\Profession\CmdCopyAttributes.cs" />
-    <Compile Include="Commands\Profession\CmdDeletePipePoint.cs" />
     <Compile Include="Commands\Profession\CmdIdentifyRoadName.cs" />
-    <Compile Include="Commands\Profession\CmdLayerByAttribute.cs" />
-    <Compile Include="Commands\Profession\CmdLineLineToRightAngle.cs" />
-    <Compile Include="Commands\Profession\CmdModifyFlow.cs" />
-    <Compile Include="Commands\Profession\CmdMoveTurningPoint.cs" />
-    <Compile Include="Commands\Profession\CmdPartialDistance.cs" />
-    <Compile Include="Commands\Profession\CmdPointLineLinkage.cs" />
-    <Compile Include="Commands\Profession\CmdPointLineToRightAngle.cs" />
-    <Compile Include="Commands\DataManager\CmdCreateDatabase.cs" />
-    <Compile Include="Commands\DataManager\CmdCreatePipeLayer.cs" />
-    <Compile Include="Commands\DataManager\CmdCreateFunctionLayer.cs" />
     <Compile Include="Commands\Verify\CmdVerifySetting.cs" />
     <Compile Include="CompositionRoot.cs" />
     <Compile Include="Controls\ExpressionTextBox.cs">
@@ -162,7 +159,19 @@
     <Compile Include="Controls\UcSelectField.designer.cs">
       <DependentUpon>UcSelectField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\UCSelectFolder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UCSelectFolder.designer.cs">
+      <DependentUpon>UCSelectFolder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Emuns\IdentifyRoadNameCommand.cs" />
+    <Compile Include="Forms\Exchange\FrmImportAXFData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Exchange\FrmImportAXFData.Designer.cs">
+      <DependentUpon>FrmImportAXFData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FieldCalculator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,6 +203,9 @@
       <DependentUpon>FrmAutoGenerateCode.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper\CommonHelper.cs" />
+    <Compile Include="Helper\FeatureClassUtil.cs" />
+    <Compile Include="Helper\FolderHelper.cs" />
+    <Compile Include="Helper\GeometryConvert.cs" />
     <Compile Include="Helper\GxDialogHelper.cs" />
     <Compile Include="Helper\MapHelper.cs" />
     <Compile Include="Helper\WorkspaceHelper.cs" />
@@ -206,6 +218,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\IdentifyRoadNameDockPanelService.cs" />
+    <Compile Include="SqlCe\ClassGlobalText.cs" />
+    <Compile Include="SqlCe\ClassRichTextBoxExtension.cs" />
+    <Compile Include="SqlCe\ClassSqlCeBase.cs" />
+    <Compile Include="SqlCe\ClassSqlCeDb.cs" />
+    <Compile Include="SqlCe\ClassSqlParser.cs" />
+    <Compile Include="SqlCe\SqlCeResultSet.cs" />
     <Compile Include="Views\IdentifyRoadNameDockPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -262,6 +281,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\UcSelectField.resx">
       <DependentUpon>UcSelectField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UCSelectFolder.resx">
+      <DependentUpon>UCSelectFolder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Exchange\FrmImportAXFData.resx">
+      <DependentUpon>FrmImportAXFData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FieldCalculator.resx">
       <DependentUpon>FieldCalculator.cs</DependentUpon>

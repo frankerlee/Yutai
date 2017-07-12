@@ -1,5 +1,6 @@
 ﻿using System;
 using Yutai.Pipeline.Config.Interfaces;
+using Yutai.Pipeline.Editor.Forms.Profession;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
@@ -56,6 +57,8 @@ namespace Yutai.Pipeline.Editor.Commands.Profession
 
         public override void OnClick()
         {
+            FrmAngleConvert frm = new FrmAngleConvert(_context);
+            frm.ShowDialog();
         }
 
         public override void OnDblClick()

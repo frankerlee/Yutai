@@ -12,6 +12,7 @@ using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 using Yutai.Pipeline.Editor.Helper;
+using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
 using Yutai.UI.Controls;
 
@@ -19,7 +20,7 @@ namespace Yutai.Pipeline.Editor.Views
 {
     public partial class IdentifyRoadNameDockPanel : DockPanelControlBase, IIdentifyRoadNameView
     {
-        private IAppContext _context;
+        private readonly IAppContext _context;
         private int _idxPolyRoadField;
         private int _idxPipeRoadField;
         private IDictionary<int, IGeometry> _envelopDictionary;
@@ -39,6 +40,21 @@ namespace Yutai.Pipeline.Editor.Views
         {
             get { yield break; }
         }
+
+        public override string Caption
+        {
+            get { return "道路名称识别"; }
+            set { Caption = value; }
+        }
+
+        public override DockPanelState DefaultDock => DockPanelState.Bottom;
+
+
+        public override string DockName => DefaultDockName;
+
+        public override string DefaultNestDockName => "";
+
+        public const string DefaultDockName = "PipelineEditor_IdentifyRoadName";
 
         public IFeatureLayer RoadLayer => ucFeatureClass_RoadLayer.SelectFeatureLayer;
 
