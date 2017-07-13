@@ -85,6 +85,9 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="ESRI.ArcGIS.Version, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
@@ -111,7 +114,11 @@
     <Compile Include="Axf\AXF_TableInfo.cs" />
     <Compile Include="Axf\AXF_TABLES.cs" />
     <Compile Include="Classes\CheQiConfig.cs" />
+    <Compile Include="Classes\CustomFeatureClass.cs" />
+    <Compile Include="Classes\CustomField.cs" />
+    <Compile Include="Classes\CustomPoint.cs" />
     <Compile Include="Classes\eFieldFileHelper.cs" />
+    <Compile Include="Classes\FieldMapping.cs" />
     <Compile Include="Classes\GSCSUtilsGen.cs" />
     <Compile Include="Classes\ICheQiConfig.cs" />
     <Compile Include="Commands\Exchange\CmdConversion.cs" />
@@ -185,6 +192,12 @@
     <Compile Include="Forms\Exchange\FrmImportAXFData.Designer.cs">
       <DependentUpon>FrmImportAXFData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Exchange\FrmImportExcelData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Exchange\FrmImportExcelData.designer.cs">
+      <DependentUpon>FrmImportExcelData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Exchange\FrmImportSurveyData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,9 +235,11 @@
       <DependentUpon>FrmAutoGenerateCode.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper\CommonHelper.cs" />
+    <Compile Include="Helper\ExcelHelper.cs" />
     <Compile Include="Helper\FeatureClassUtil.cs" />
     <Compile Include="Helper\FolderHelper.cs" />
     <Compile Include="Helper\GeometryConvert.cs" />
+    <Compile Include="Helper\GeometryHelper.cs" />
     <Compile Include="Helper\GxDialogHelper.cs" />
     <Compile Include="Helper\MapHelper.cs" />
     <Compile Include="Helper\WorkspaceHelper.cs" />
@@ -309,6 +324,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Exchange\FrmImportAXFData.resx">
       <DependentUpon>FrmImportAXFData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Exchange\FrmImportExcelData.resx">
+      <DependentUpon>FrmImportExcelData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Exchange\FrmImportSurveyData.resx">
       <DependentUpon>FrmImportSurveyData.cs</DependentUpon>
