@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ClosedXML, Version=0.69.1.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\ClosedXML.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Data.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>D:\Program Files (x86)\DevExpress 16.1.4\Components\Bin\Framework\DevExpress.Data.v16.1.dll</HintPath>
@@ -56,6 +60,9 @@
     <Reference Include="ESRI.ArcGIS.CatalogUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.DataInterop, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.DataSourcesFile, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
@@ -78,12 +85,16 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="ESRI.ArcGIS.Version, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -94,7 +105,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Axf\AxfOperationType.cs" />
+    <Compile Include="Axf\AXF_FIELD.cs" />
+    <Compile Include="Axf\AXF_FileInfo.cs" />
+    <Compile Include="Axf\AXF_GEOMETRY_COLUMNS.cs" />
+    <Compile Include="Axf\AXF_Info.cs" />
+    <Compile Include="Axf\AXF_LAYERS.cs" />
+    <Compile Include="Axf\AXF_TableInfo.cs" />
+    <Compile Include="Axf\AXF_TABLES.cs" />
     <Compile Include="Classes\CheQiConfig.cs" />
+    <Compile Include="Classes\CustomFeatureClass.cs" />
+    <Compile Include="Classes\CustomField.cs" />
+    <Compile Include="Classes\CustomPoint.cs" />
+    <Compile Include="Classes\eFieldFileHelper.cs" />
+    <Compile Include="Classes\FieldMapping.cs" />
+    <Compile Include="Classes\GSCSUtilsGen.cs" />
     <Compile Include="Classes\ICheQiConfig.cs" />
     <Compile Include="Commands\Exchange\CmdConversion.cs" />
     <Compile Include="Commands\Exchange\CmdCut.cs" />
@@ -112,24 +137,9 @@
     <Compile Include="Commands\Mark\CmdBiaoZhu.cs" />
     <Compile Include="Commands\Mark\CmdCheQi.cs" />
     <Compile Include="Commands\Profession\CmdAngleConvert.cs" />
-    <Compile Include="Commands\Profession\CmdAutoAngle.cs" />
     <Compile Include="Commands\Mark\CmdAnnotationSorting.cs" />
     <Compile Include="Commands\Profession\CmdAutoGenerateNumbers.cs" />
-    <Compile Include="Commands\Profession\CmdCalculateDepth.cs" />
-    <Compile Include="Commands\Profession\CmdCenterPoint.cs" />
-    <Compile Include="Commands\Profession\CmdCopyAttributes.cs" />
-    <Compile Include="Commands\Profession\CmdDeletePipePoint.cs" />
     <Compile Include="Commands\Profession\CmdIdentifyRoadName.cs" />
-    <Compile Include="Commands\Profession\CmdLayerByAttribute.cs" />
-    <Compile Include="Commands\Profession\CmdLineLineToRightAngle.cs" />
-    <Compile Include="Commands\Profession\CmdModifyFlow.cs" />
-    <Compile Include="Commands\Profession\CmdMoveTurningPoint.cs" />
-    <Compile Include="Commands\Profession\CmdPartialDistance.cs" />
-    <Compile Include="Commands\Profession\CmdPointLineLinkage.cs" />
-    <Compile Include="Commands\Profession\CmdPointLineToRightAngle.cs" />
-    <Compile Include="Commands\DataManager\CmdCreateDatabase.cs" />
-    <Compile Include="Commands\DataManager\CmdCreatePipeLayer.cs" />
-    <Compile Include="Commands\DataManager\CmdCreateFunctionLayer.cs" />
     <Compile Include="Commands\Verify\CmdVerifySetting.cs" />
     <Compile Include="CompositionRoot.cs" />
     <Compile Include="Controls\ExpressionTextBox.cs">
@@ -155,6 +165,44 @@
     </Compile>
     <Compile Include="Controls\UcSelectFeatureClass.designer.cs">
       <DependentUpon>UcSelectFeatureClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UcSelectField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UcSelectField.designer.cs">
+      <DependentUpon>UcSelectField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UcSelectFile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UcSelectFile.Designer.cs">
+      <DependentUpon>UcSelectFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UCSelectFolder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UCSelectFolder.designer.cs">
+      <DependentUpon>UCSelectFolder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Emuns\IdentifyRoadNameCommand.cs" />
+    <Compile Include="Emuns\SurveyCoordType.cs" />
+    <Compile Include="Forms\Exchange\FrmImportAXFData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Exchange\FrmImportAXFData.Designer.cs">
+      <DependentUpon>FrmImportAXFData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Exchange\FrmImportExcelData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Exchange\FrmImportExcelData.designer.cs">
+      <DependentUpon>FrmImportExcelData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Exchange\FrmImportSurveyData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Exchange\FrmImportSurveyData.Designer.cs">
+      <DependentUpon>FrmImportSurveyData.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FieldCalculator.cs">
       <SubType>Form</SubType>
@@ -187,6 +235,11 @@
       <DependentUpon>FrmAutoGenerateCode.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper\CommonHelper.cs" />
+    <Compile Include="Helper\ExcelHelper.cs" />
+    <Compile Include="Helper\FeatureClassUtil.cs" />
+    <Compile Include="Helper\FolderHelper.cs" />
+    <Compile Include="Helper\GeometryConvert.cs" />
+    <Compile Include="Helper\GeometryHelper.cs" />
     <Compile Include="Helper\GxDialogHelper.cs" />
     <Compile Include="Helper\MapHelper.cs" />
     <Compile Include="Helper\WorkspaceHelper.cs" />
@@ -199,6 +252,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\IdentifyRoadNameDockPanelService.cs" />
+    <Compile Include="SqlCe\ClassGlobalText.cs" />
+    <Compile Include="SqlCe\ClassRichTextBoxExtension.cs" />
+    <Compile Include="SqlCe\ClassSqlCeBase.cs" />
+    <Compile Include="SqlCe\ClassSqlCeDb.cs" />
+    <Compile Include="SqlCe\ClassSqlParser.cs" />
+    <Compile Include="SqlCe\SqlCeResultSet.cs" />
+    <Compile Include="Views\IdentifyRoadNameDockPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\IdentifyRoadNameDockPanel.Designer.cs">
+      <DependentUpon>IdentifyRoadNameDockPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IdentifyRoadNamePresenter.cs" />
+    <Compile Include="Views\IIdentifyRoadNameView.cs" />
     <Compile Include="Xml\GSLabelXML.designer.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -245,6 +313,24 @@
     <EmbeddedResource Include="Controls\UcSelectFeatureClass.resx">
       <DependentUpon>UcSelectFeatureClass.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UcSelectField.resx">
+      <DependentUpon>UcSelectField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UcSelectFile.resx">
+      <DependentUpon>UcSelectFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UCSelectFolder.resx">
+      <DependentUpon>UCSelectFolder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Exchange\FrmImportAXFData.resx">
+      <DependentUpon>FrmImportAXFData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Exchange\FrmImportExcelData.resx">
+      <DependentUpon>FrmImportExcelData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Exchange\FrmImportSurveyData.resx">
+      <DependentUpon>FrmImportSurveyData.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FieldCalculator.resx">
       <DependentUpon>FieldCalculator.cs</DependentUpon>
     </EmbeddedResource>
@@ -265,12 +351,18 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\IdentifyRoadNameDockPanel.resx">
+      <DependentUpon>IdentifyRoadNameDockPanel.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\img_folder_open.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\img_arrow_change.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DLL\ClosedXML.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

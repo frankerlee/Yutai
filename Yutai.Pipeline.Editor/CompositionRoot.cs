@@ -1,4 +1,5 @@
-﻿using Yutai.Plugins.Mvp;
+﻿using Yutai.Pipeline.Editor.Views;
+using Yutai.Plugins.Mvp;
 
 namespace Yutai.Pipeline.Editor
 {
@@ -13,6 +14,8 @@ namespace Yutai.Pipeline.Editor
             //    .RegisterSingleton<EditTemplatePresenter>()
             //     .RegisterSingleton<GeometryInfoPresenter>()
             //     .RegisterSingleton<AttributeEditPresenter>();
+            container.RegisterService<IIdentifyRoadNameView, IdentifyRoadNameDockPanel>()
+                .RegisterSingleton<IdentifyRoadNamePresenter>();
         }
     }
 }

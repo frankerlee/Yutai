@@ -2,27 +2,11 @@
   <MainMenu>
     <Pages>
       <Page Key="PipelineEditor" Caption="管线编辑" Index="0" Visible="true">
-        <PageGroup Key="Pipeline_Editor_DataManager" Caption="数据管理" Visible="true" Index="1">
-          <BarItem Key="PipelineEditor_CreateDatabase" Visible="true"/>
-          <BarItem Key="PipelineEditor_CreatePipeLayer" Visible="true"/>
-          <BarItem Key="PipelineEditor_CreateFunctionLayer" Visible="true"/>
-        </PageGroup>
         <PageGroup Key="Pipeline_Editor_Profession" Caption="专业编辑工具" Visible="true" Index="2">
-          <BarItem Key="PipelineEditor_PointLineLinkage" Visible="true"/>
-          <BarItem Key="PipelineEditor_MoveTurningPoint" Visible="true"/>
-          <BarItem Key="PipelineEditor_DeletePipePoint" Visible="true"/>
-          <BarItem Key="PipelineEditor_CalculateDepth" Visible="true"/>
+          
           <BarItem Key="PipelineEditor_AngleConvert" Visible="true"/>
-          <BarItem Key="PipelineEditor_AutoAngle" Visible="true"/>
           <BarItem Key="PipelineEditor_AutoGenerateNumbers" Visible="true"/>
-          <BarItem Key="PipelineEditor_CenterPoint" Visible="true"/>
-          <BarItem Key="PipelineEditor_CopyAttributes" Visible="true"/>
           <BarItem Key="PipelineEditor_IdentifyRoadName" Visible="true"/>
-          <BarItem Key="PipelineEditor_LayerByAttribute" Visible="true"/>
-          <BarItem Key="PipelineEditor_LineLineToRightAngle" Visible="true"/>
-          <BarItem Key="PipelineEditor_PointLineToRightAngle" Visible="true"/>
-          <BarItem Key="PipelineEditor_ModifyFlow" Visible="true"/>
-          <BarItem Key="PipelineEditor_PartialDistance" Visible="true"/>
         </PageGroup>
         <PageGroup Key="Pipeline_Editor_Mark" Caption="管线注记" Visible="true" Index="3">
           <BarItem Key="PipelineEditor_BiaoZhu" Visible="true"/>
