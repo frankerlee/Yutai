@@ -154,11 +154,23 @@
     <Compile Include="Controls\FieldsListBox.Designer.cs">
       <DependentUpon>FieldsListBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\UcExportPath.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UcExportPath.Designer.cs">
+      <DependentUpon>UcExportPath.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\UcExtentSetting.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\UcExtentSetting.Designer.cs">
       <DependentUpon>UcExtentSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UcLayerFields.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UcLayerFields.Designer.cs">
+      <DependentUpon>UcLayerFields.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\UcSelectFeatureClass.cs">
       <SubType>UserControl</SubType>
@@ -172,6 +184,12 @@
     <Compile Include="Controls\UcSelectField.designer.cs">
       <DependentUpon>UcSelectField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\UcSelectFields.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UcSelectFields.designer.cs">
+      <DependentUpon>UcSelectFields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\UcSelectFile.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -184,8 +202,20 @@
     <Compile Include="Controls\UCSelectFolder.designer.cs">
       <DependentUpon>UCSelectFolder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\UcSpatialReference.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UcSpatialReference.Designer.cs">
+      <DependentUpon>UcSpatialReference.cs</DependentUpon>
+    </Compile>
     <Compile Include="Emuns\IdentifyRoadNameCommand.cs" />
     <Compile Include="Emuns\SurveyCoordType.cs" />
+    <Compile Include="Forms\Exchange\FrmExportData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Exchange\FrmExportData.Designer.cs">
+      <DependentUpon>FrmExportData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Exchange\FrmImportAXFData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -209,6 +239,12 @@
     </Compile>
     <Compile Include="Forms\FieldCalculator.Designer.cs">
       <DependentUpon>FieldCalculator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmSelectFields.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmSelectFields.Designer.cs">
+      <DependentUpon>FrmSelectFields.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Mark\FrmAnnotationExpression.cs">
       <SubType>Form</SubType>
@@ -307,8 +343,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\UcExportPath.resx">
+      <DependentUpon>UcExportPath.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\UcExtentSetting.resx">
       <DependentUpon>UcExtentSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UcLayerFields.resx">
+      <DependentUpon>UcLayerFields.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\UcSelectFeatureClass.resx">
       <DependentUpon>UcSelectFeatureClass.cs</DependentUpon>
@@ -316,11 +358,20 @@
     <EmbeddedResource Include="Controls\UcSelectField.resx">
       <DependentUpon>UcSelectField.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UcSelectFields.resx">
+      <DependentUpon>UcSelectFields.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\UcSelectFile.resx">
       <DependentUpon>UcSelectFile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\UCSelectFolder.resx">
       <DependentUpon>UCSelectFolder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UcSpatialReference.resx">
+      <DependentUpon>UcSpatialReference.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Exchange\FrmExportData.resx">
+      <DependentUpon>FrmExportData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Exchange\FrmImportAXFData.resx">
       <DependentUpon>FrmImportAXFData.cs</DependentUpon>
@@ -333,6 +384,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FieldCalculator.resx">
       <DependentUpon>FieldCalculator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmSelectFields.resx">
+      <DependentUpon>FrmSelectFields.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Mark\FrmAnnotationExpression.resx">
       <DependentUpon>FrmAnnotationExpression.cs</DependentUpon>

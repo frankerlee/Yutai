@@ -131,7 +131,7 @@ namespace Yutai.Plugins.TableEditor.Editor
         {
             int selectedCount = this.View.SelectedRows.Count;
             int count = this.View.RowCount;
-            this.mnuRecordInfo.Text = string.Format("({0} / {1} 已选择)", selectedCount, count);
+            this.mnuRecordInfo.Text = $@"({selectedCount} / {count} 已选择)";
         }
 
         public void ShowCurrentRowInfo()
