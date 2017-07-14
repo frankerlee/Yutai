@@ -47,7 +47,11 @@
       <Guid>2fd39cff-e0d7-44cb-a6f7-b5e90499124c</Guid>
       <Name>模板工具</Name>
     </Plugin>
-   
+    <Plugin>
+      <Guid>131e4661-6e57-4bba-ba2a-ce7735dc67e1</Guid>
+      <Name>三维</Name>
+    </Plugin>
+    
   </Plugins>
   
   <Overview>

@@ -1,0 +1,43 @@
+﻿<YutaiGIS>
+  <MainMenu>
+    <Pages>
+      <Page Key="Scene" Caption="三维" Index="0" Visible="true">
+        <PageGroup Key="Scene_Common" Caption="三维文档" Visible="true" Index="0">
+          <BarItem Key="Scene_SceneView_Open" Visible="true"></BarItem>
+          <BarItem Key="Scene_OpenProjectSXD" Visible="true"></BarItem>
+          <BarItem Key="Scene_OpenSXD" Visible="true"></BarItem>
+          <BarItem Key="Scene_AddData" Visible="true"></BarItem>
+          <BarItem Key="Scene_LoadDGXFeatureClass" Visible="true"></BarItem>
+          <BarItem Key="Scene_StyleManagerItem" Visible="true"></BarItem>
+          
+        </PageGroup>
+        <PageGroup Key="Scene_View" Caption="三维视图" Visible="true" Index="1">
+          <BarItem Key="Scene_ZoomIn" Visible="true"></BarItem>
+            <BarItem Key="Scene_ZoomOut" Visible="true"></BarItem>
+            <BarItem Key="Scene_FullExtent" Visible="true"></BarItem>
+            <BarItem Key="Scene_Pan" Visible="true"></BarItem>
+
+            <BarItem Key="Scene_Fly" Visible="true"></BarItem>
+            <BarItem Key="Scene_Navigate" Visible="true"></BarItem>
+            <BarItem Key="Scene_SetObserver" Visible="true"></BarItem>
+            <BarItem Key="Scene_TargetCenter" Visible="true"></BarItem>
+            <BarItem Key="Scene_TargetZoom" Visible="true"></BarItem>
+            <BarItem Key="Scene_TargetZoomInOut" Visible="true"></BarItem>
+          <BarItem Key="Scene_ExpandFOV" Visible="true"></BarItem>
+            <BarItem Key="Scene_NarrowFOV" Visible="true"></BarItem>
+            <BarItem Key="Scene_CreateBookmark3D" Visible="true"></BarItem>
+            <BarItem Key="Scene_ManageBookmark3D" Visible="true"></BarItem>
+            
+           
+            
+            <BarItem Key="Scene_DrawFlyByPath" Visible="true"></BarItem>
+            <BarItem Key="Scene_LineOfSight" Visible="true"></BarItem>
+            <BarItem Key="Scene_ViewSetting" Visible="true"></BarItem>
+            <BarItem Key="Scene_DrawStaticLoc" Visible="true"></BarItem>
+            <BarItem Key="Scene_LinkMapControl" Visible="true"></BarItem>
+           
+        </PageGroup>
+      </Page>
+    </Pages>
+  </MainMenu>
+</YutaiGIS>

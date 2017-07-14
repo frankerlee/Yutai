@@ -10,9 +10,11 @@ namespace Yutai.Plugins.Editor
             container.RegisterService<IEditTemplateView, EditTemplateView>()
                 .RegisterService<IGeometryInfoView, GeometryInfoView>()
                 .RegisterService<IAttributeEditView, AttributeEditView>()
+                .RegisterService<ITopologyErrorView, TopologyErrorView>()
                 .RegisterSingleton<EditTemplatePresenter>()
                 .RegisterSingleton<GeometryInfoPresenter>()
-                .RegisterSingleton<AttributeEditPresenter>();
+                .RegisterSingleton<AttributeEditPresenter>()
+                .RegisterSingleton<TopologyErrorPresenter>();
         }
     }
 }
