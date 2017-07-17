@@ -31,14 +31,14 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panelLayers = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ucExportPath1 = new Yutai.Pipeline.Editor.Controls.UcExportPath();
+            this.ucSpatialReference1 = new Yutai.Pipeline.Editor.Controls.UcSpatialReference();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.ucSpatialReference1 = new Yutai.Pipeline.Editor.Controls.UcSpatialReference();
             this.ucExtentSetting1 = new Yutai.Pipeline.Editor.Controls.UcExtentSetting();
-            this.ucExportPath1 = new Yutai.Pipeline.Editor.Controls.UcExportPath();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnOK = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -78,6 +78,52 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "设置输出参数";
             // 
+            // btnOK
+            // 
+            this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnOK.Location = new System.Drawing.Point(371, 153);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(75, 23);
+            this.btnOK.TabIndex = 3;
+            this.btnOK.Text = "确定";
+            this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Location = new System.Drawing.Point(452, 153);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 3;
+            this.btnCancel.Text = "取消";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 109);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "输出位置：";
+            // 
+            // ucExportPath1
+            // 
+            this.ucExportPath1.BackColor = System.Drawing.SystemColors.Control;
+            this.ucExportPath1.Location = new System.Drawing.Point(77, 104);
+            this.ucExportPath1.Name = "ucExportPath1";
+            this.ucExportPath1.Size = new System.Drawing.Size(450, 20);
+            this.ucExportPath1.TabIndex = 1;
+            // 
+            // ucSpatialReference1
+            // 
+            this.ucSpatialReference1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ucSpatialReference1.Location = new System.Drawing.Point(3, 17);
+            this.ucSpatialReference1.Name = "ucSpatialReference1";
+            this.ucSpatialReference1.Size = new System.Drawing.Size(527, 81);
+            this.ucSpatialReference1.TabIndex = 0;
+            // 
             // panel1
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -94,14 +140,6 @@
             this.panel2.Size = new System.Drawing.Size(533, 5);
             this.panel2.TabIndex = 4;
             // 
-            // ucSpatialReference1
-            // 
-            this.ucSpatialReference1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ucSpatialReference1.Location = new System.Drawing.Point(3, 17);
-            this.ucSpatialReference1.Name = "ucSpatialReference1";
-            this.ucSpatialReference1.Size = new System.Drawing.Size(527, 81);
-            this.ucSpatialReference1.TabIndex = 0;
-            // 
             // ucExtentSetting1
             // 
             this.ucExtentSetting1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -110,42 +148,6 @@
             this.ucExtentSetting1.Name = "ucExtentSetting1";
             this.ucExtentSetting1.Size = new System.Drawing.Size(252, 433);
             this.ucExtentSetting1.TabIndex = 0;
-            // 
-            // ucExportPath1
-            // 
-            this.ucExportPath1.Location = new System.Drawing.Point(77, 104);
-            this.ucExportPath1.Name = "ucExportPath1";
-            this.ucExportPath1.Size = new System.Drawing.Size(450, 20);
-            this.ucExportPath1.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 109);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 12);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "输出位置：";
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(452, 153);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 3;
-            this.btnCancel.Text = "取消";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            // 
-            // btnOK
-            // 
-            this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Location = new System.Drawing.Point(371, 153);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 3;
-            this.btnOK.Text = "确定";
-            this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // FrmExportData
             // 
@@ -161,6 +163,8 @@
             this.Controls.Add(this.ucExtentSetting1);
             this.Name = "FrmExportData";
             this.Text = "数据输出";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmExportData_FormClosed);
+            this.Load += new System.EventHandler(this.FrmExportData_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

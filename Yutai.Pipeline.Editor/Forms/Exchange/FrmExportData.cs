@@ -26,6 +26,7 @@ namespace Yutai.Pipeline.Editor.Forms.Exchange
         {
             InitializeComponent();
             _context = context;
+            this.ucExtentSetting1.Context = _context;
             this.ucExtentSetting1.Map = _context.FocusMap;
             LoadLayers();
         }
@@ -143,6 +144,22 @@ namespace Yutai.Pipeline.Editor.Forms.Exchange
             {
                 MessageBox.Show(exception.Message);
             }
+        }
+
+        private void FrmExportData_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.ucExtentSetting1.DrawCompleteEvent -= UcExtentSetting1OnDrawCompleteEvent;
+            this.ucExtentSetting1.Destory();
+        }
+
+        private void FrmExportData_Load(object sender, EventArgs e)
+        {
+            this.ucExtentSetting1.DrawCompleteEvent += UcExtentSetting1OnDrawCompleteEvent;
+        }
+
+        private void UcExtentSetting1OnDrawCompleteEvent(object sender, EventArgs eventArgs)
+        {
+            this.Activate();
         }
     }
 }
