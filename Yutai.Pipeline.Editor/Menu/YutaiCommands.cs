@@ -48,7 +48,7 @@ namespace Yutai.Pipeline.Editor.Menu
                     new CmdIdentifyRoadName(_context, _plugin),
 
                     new CmdConversion(_context, _plugin),
-                    new CmdCut(_context, _plugin),
+                    new CmdClip(_context, _plugin),
                     new CmdDataExport(_context, _plugin),
                     new CmdDataStorage(_context, _plugin),
                     new CmdImportAxfData(_context, _plugin),

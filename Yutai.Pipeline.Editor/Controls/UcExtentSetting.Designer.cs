@@ -40,8 +40,8 @@
             this.buttonBySelection = new System.Windows.Forms.Button();
             this.buttonByView = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.ucSelectFeatureClass = new Yutai.Pipeline.Editor.Controls.UcSelectFeatureClass();
             this.buttonRefersh = new System.Windows.Forms.Button();
+            this.ucSelectFeatureClass = new Yutai.Pipeline.Editor.Controls.UcSelectFeatureClass();
             this.groupBoxExtentType.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroupExtentType.Properties)).BeginInit();
             this.groupBoxIndexLayer.SuspendLayout();
@@ -77,7 +77,7 @@
             new DevExpress.XtraEditors.Controls.RadioGroupItem(0, "全部范围"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "当前视图"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(2, "依据索引"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(3, "鼠标选择")});
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(3, "鼠标选择", false)});
             this.radioGroupExtentType.Size = new System.Drawing.Size(246, 45);
             this.radioGroupExtentType.TabIndex = 0;
             this.radioGroupExtentType.SelectedIndexChanged += new System.EventHandler(this.radioGroupExtentType_SelectedIndexChanged);
@@ -105,6 +105,7 @@
             this.checkedListBoxIndexes.Name = "checkedListBoxIndexes";
             this.checkedListBoxIndexes.Size = new System.Drawing.Size(246, 225);
             this.checkedListBoxIndexes.TabIndex = 3;
+            this.checkedListBoxIndexes.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBoxIndexes_ItemCheck);
             // 
             // panel2
             // 
@@ -194,6 +195,17 @@
             this.splitContainer1.SplitterDistance = 192;
             this.splitContainer1.TabIndex = 0;
             // 
+            // buttonRefersh
+            // 
+            this.buttonRefersh.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonRefersh.Location = new System.Drawing.Point(0, 0);
+            this.buttonRefersh.Name = "buttonRefersh";
+            this.buttonRefersh.Size = new System.Drawing.Size(50, 20);
+            this.buttonRefersh.TabIndex = 0;
+            this.buttonRefersh.Text = "刷新";
+            this.buttonRefersh.UseVisualStyleBackColor = true;
+            this.buttonRefersh.Click += new System.EventHandler(this.buttonRefersh_Click);
+            // 
             // ucSelectFeatureClass
             // 
             this.ucSelectFeatureClass.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -205,17 +217,6 @@
             this.ucSelectFeatureClass.Size = new System.Drawing.Size(192, 20);
             this.ucSelectFeatureClass.TabIndex = 0;
             this.ucSelectFeatureClass.VisibleOpenButton = false;
-            // 
-            // buttonRefersh
-            // 
-            this.buttonRefersh.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonRefersh.Location = new System.Drawing.Point(0, 0);
-            this.buttonRefersh.Name = "buttonRefersh";
-            this.buttonRefersh.Size = new System.Drawing.Size(50, 20);
-            this.buttonRefersh.TabIndex = 0;
-            this.buttonRefersh.Text = "刷新";
-            this.buttonRefersh.UseVisualStyleBackColor = true;
-            this.buttonRefersh.Click += new System.EventHandler(this.buttonRefersh_Click);
             // 
             // UcExtentSetting
             // 

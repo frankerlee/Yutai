@@ -30,6 +30,7 @@ namespace Yutai.Pipeline.Editor.Controls
         private INewPolygonFeedback _polygonFeedback;
         private IPolygon _polygon;
         private IGraphicsContainer _graphicsContainer;
+        private bool _isRadio;
 
         public UcExtentSetting()
         {
@@ -133,6 +134,16 @@ namespace Yutai.Pipeline.Editor.Controls
         {
             get { return ucSelectFeatureClass.SelectFeatureLayer; }
         }
+        
+        [Browsable(true)]
+        [Description("是否单选"), Category("扩展"), DefaultValue(false)]
+        public bool IsRadio
+        {
+            set
+            {
+                _isRadio = value;
+            }
+        }
 
         private void radioGroupExtentType_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -161,7 +172,6 @@ namespace Yutai.Pipeline.Editor.Controls
 
         public void Destory()
         {
-            _polygon = null;
             _polygonFeedback = null;
             this.Cursor = Cursors.Default;
             _graphicsContainer?.DeleteAllElements();
@@ -173,6 +183,7 @@ namespace Yutai.Pipeline.Editor.Controls
 
         private void InitDraw()
         {
+            _polygon = null;
             if (_context == null)
                 return;
             OnStartDrawEvent();
@@ -223,7 +234,7 @@ namespace Yutai.Pipeline.Editor.Controls
             _graphicsContainer.AddElement(element, 100);
             _context.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
             OnDrawCompleteEvent();
-            _polygon = null;
+            //_polygon = null;
             _polygonFeedback = null;
         }
 
@@ -345,6 +356,19 @@ namespace Yutai.Pipeline.Editor.Controls
         protected virtual void OnStartDrawEvent()
         {
             StartDrawEvent?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void checkedListBoxIndexes_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (_isRadio && e.NewValue == CheckState.Checked)
+            {
+                for (int i = 0; i < checkedListBoxIndexes.Items.Count; i++)
+                {
+                    if (e.Index == i)
+                        continue;
+                    checkedListBoxIndexes.SetItemChecked(i, false);
+                }
+            }
         }
     }
 }

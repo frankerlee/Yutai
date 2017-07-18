@@ -125,7 +125,7 @@
     <Compile Include="Classes\GSCSUtilsGen.cs" />
     <Compile Include="Classes\ICheQiConfig.cs" />
     <Compile Include="Commands\Exchange\CmdConversion.cs" />
-    <Compile Include="Commands\Exchange\CmdCut.cs" />
+    <Compile Include="Commands\Exchange\CmdClip.cs" />
     <Compile Include="Commands\Exchange\CmdDataExport.cs" />
     <Compile Include="Commands\Exchange\CmdDataStorage.cs" />
     <Compile Include="Commands\Exchange\CmdImportAxfData.cs" />
@@ -213,6 +213,12 @@
     </Compile>
     <Compile Include="Emuns\IdentifyRoadNameCommand.cs" />
     <Compile Include="Emuns\SurveyCoordType.cs" />
+    <Compile Include="Forms\Exchange\FrmClip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Exchange\FrmClip.Designer.cs">
+      <DependentUpon>FrmClip.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Exchange\FrmExportData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -372,6 +378,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\UcSpatialReference.resx">
       <DependentUpon>UcSpatialReference.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Exchange\FrmClip.resx">
+      <DependentUpon>FrmClip.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Exchange\FrmExportData.resx">
       <DependentUpon>FrmExportData.cs</DependentUpon>
