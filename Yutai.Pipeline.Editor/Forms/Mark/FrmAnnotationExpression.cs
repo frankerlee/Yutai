@@ -24,7 +24,7 @@ namespace Yutai.Pipeline.Editor.Forms.Mark
             int startIndex = TxtExpression.SelectionStart;
             if (string.IsNullOrWhiteSpace(TxtExpression.SelectedText))
             {
-                TxtExpression.Text = TxtExpression.Text.Insert(startIndex, fieldsListBox.Items[index].ToString());
+                TxtExpression.Text = TxtExpression.Text.Insert(startIndex, $"[{fieldsListBox.Items[index]}]");
             }
             else
             {

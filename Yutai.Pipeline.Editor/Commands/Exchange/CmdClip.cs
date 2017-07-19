@@ -51,5 +51,17 @@ namespace Yutai.Pipeline.Editor.Commands.Exchange
         public override void OnMouseDown(int button, int shift, int x, int y)
         {
         }
+
+        public override bool Enabled
+        {
+            get
+            {
+                if (_context.FocusMap == null)
+                    return false;
+                if (_context.FocusMap.LayerCount <= 0)
+                    return false;
+                return true;
+            }
+        }
     }
 }

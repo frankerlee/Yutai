@@ -11,6 +11,7 @@ using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 using Yutai.Pipeline.Config.Concretes;
 using Yutai.Pipeline.Config.Interfaces;
+using Yutai.Pipeline.Editor.Classes;
 
 namespace Yutai.Pipeline.Editor.Helper
 {
@@ -272,5 +273,143 @@ namespace Yutai.Pipeline.Editor.Helper
             IAnnoClassAdmin3 annoClassAdmin3 = annoClass as IAnnoClassAdmin3;
             annoClassAdmin3.ReferenceScale = scale;
         }
+
+        #region 管线注记
+        
+        public static string GetIntersectInformationFlagLineOnlyOne(IGeometry pGeometry, ICheQiConfig cheQiConfig,
+                                                                    IFeature pFeature)
+        {
+            string pFlagInfo = "";
+            pFlagInfo = "类别:" + cheQiConfig.FlagLayer.FeatureClass.AliasName + "  " +
+                                               GetFlagInformationInFeature(pFeature, cheQiConfig.Expression);
+            return pFlagInfo;
+        }
+        
+        /// <summary>
+        /// Gets the flag information in feature.
+        /// </summary>
+        /// <param name="polylinefeature">The polylinefeature.</param>
+        /// <param name="flagfieldlist">The flagfieldlist.</param>
+        /// <returns></returns>
+        private static string GetFlagInformationInFeature(IFeature polylinefeature, string expression)
+        {
+            try
+            {
+                List<IField> fields = GetFields(expression, polylinefeature.Fields);
+                for (int i = 0; i < fields.Count; i++)
+                {
+                    string fieldname = fields[i].Name;
+                    string value = polylinefeature.Value[polylinefeature.Fields.FindField(fieldname)].ToString();
+                    expression = expression.Replace($"[{fieldname}]", value);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return expression;
+        }
+
+
+        public static List<IField> GetFields(string expression, IFields fields)
+        {
+            List<IField> list = new List<IField>();
+
+            expression = expression.Replace("[#####]", "");
+            while (expression.Contains("[") && expression.Contains("]"))
+            {
+                int sIdx = expression.IndexOf("[", StringComparison.Ordinal);
+                int eIdx = expression.IndexOf("]", StringComparison.Ordinal);
+                string fieldName = expression.Substring(sIdx + 1, eIdx - sIdx - 1);
+
+                int idx = fields.FindField(fieldName);
+                if (idx >= 0)
+                    list.Add(fields.Field[idx]);
+
+                expression = expression.Remove(0, eIdx + 1);
+            }
+            return list;
+        }
+
+        /// <summary>
+        /// Gets the depth.
+        /// </summary>
+        /// <param name="polyline">The polyline.</param>
+        /// <param name="point">The point.</param>
+        /// <param name="fromdepth">The fromdepth.</param>
+        /// <param name="todepth">The todepth.</param>
+        /// <returns></returns>
+        public static double GetDepth(IPolyline polyline, IPoint point, double fromdepth, double todepth)
+        {
+            if (fromdepth == todepth) return fromdepth;
+            double fromX = polyline.FromPoint.X;
+            double fromY = polyline.FromPoint.Y;
+            double toX = polyline.ToPoint.X;
+            double toY = polyline.ToPoint.Y;
+            double depth = -999; ;
+            double ratiolenth = 0;
+            double length = Math.Sqrt((fromX - toX) * (fromX - toX) + (fromY - toY) * (fromY - toY));
+            if (fromdepth > todepth)
+            {
+                ratiolenth = Math.Sqrt((point.X - toX) * (point.X - toX) + (point.Y - toY) * (point.Y - toY));
+                depth = ratiolenth * (fromdepth - todepth) / length + todepth;
+
+            }
+            if (fromdepth < todepth)
+            {
+                ratiolenth = Math.Sqrt((point.X - fromX) * (point.X - fromX) + (point.Y - fromY) * (point.Y - fromY));
+                depth = ratiolenth * (todepth - fromdepth) / length + fromdepth;
+
+            }
+            return Math.Round(depth, 2);
+        }
+
+        /// <summary>
+        /// 返回数组中最大的那个所在的位置，从0开始计算
+        /// </summary>
+        /// <param name="strlist"></param>
+        /// <returns></returns>
+        public static int MaxLengthInList(List<string> strlist)
+        {
+            int count = 0;
+            for (int i = 0; i < strlist.Count; i++)
+            {
+                string item = strlist[i];
+                int length = item.Length;
+                if (length > count)
+                {
+                    count = length;
+                }
+            }
+            return count;
+        }
+
+        /// <summary>
+        /// Deletes the anno features in feature layer.
+        /// </summary>
+        /// <param name="featureLayer">The feature layer.</param>
+        public static void DeleteAnnoFeaturesInFeatureLayer(IFeatureLayer featureLayer)
+        {
+            if (featureLayer == null) return;
+            IFeatureClass featureClass = featureLayer.FeatureClass;
+            IDataset dataset = featureClass as IDataset;
+            IWorkspace pWorkspace = dataset.Workspace;
+            IWorkspaceEdit pWorkspaceEdit = pWorkspace as IWorkspaceEdit;
+            pWorkspaceEdit.StartEditing(true);
+            pWorkspaceEdit.StartEditOperation();
+
+            IWorkspaceProperties2 workspaceProperties2 = (IWorkspaceProperties2)pWorkspace;
+            //判断workspace是否可以执行SQL语句
+            IWorkspaceProperty canExecuteSqlProperty = workspaceProperties2.get_Property(esriWorkspacePropertyGroupType.esriWorkspacePropertyGroup, (int)esriWorkspacePropertyType.esriWorkspacePropCanExecuteSQL);
+            if (canExecuteSqlProperty.IsSupported)
+            {
+                //ExecuteSQL删除feature
+                pWorkspace.ExecuteSQL("delete  from " + featureClass.AliasName + " where objectid >=0");
+            }
+            pWorkspaceEdit.StopEditOperation();
+            pWorkspaceEdit.StopEditing(true);
+        }
+
+        #endregion
     }
 }

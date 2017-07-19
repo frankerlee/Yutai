@@ -152,6 +152,45 @@ namespace Yutai.Pipeline.Editor.Helper
                 return null;
             }
         }
+        public static IFeature GetFirstFeatureFromPointSearchInGeoFeatureLayer(Double searchTolerance, IPoint point, IGeoFeatureLayer geoFeatureLayer, IActiveView activeView)
+        {
+            if (searchTolerance < 0 || point == null || geoFeatureLayer == null || activeView == null)
+            {
+                return null;
+            }
+
+            IMap map = activeView.FocusMap;
+
+            // Expand the points envelope to give better search results    
+            //IEnvelope envelope = point.Envelope;
+            //envelope.Expand(searchTolerance, searchTolerance, false);
+            ITopologicalOperator pTopologicalOperator = point as ITopologicalOperator;
+
+            IFeatureClass featureClass = geoFeatureLayer.FeatureClass;
+            String shapeFieldName = featureClass.ShapeFieldName;
+
+            // Create a new spatial filter and use the new envelope as the geometry    
+            ISpatialFilter spatialFilter = new SpatialFilterClass();
+            spatialFilter.Geometry = pTopologicalOperator.Buffer(searchTolerance);
+            spatialFilter.SpatialRel = esriSpatialRelEnum.esriSpatialRelEnvelopeIntersects;
+            spatialFilter.set_OutputSpatialReference(shapeFieldName, map.SpatialReference);
+            spatialFilter.GeometryField = shapeFieldName;
+
+            // Do the search
+            IFeatureCursor featureCursor = featureClass.Search(spatialFilter, false);
+
+            // Get the first feature
+            IFeature feature = featureCursor.NextFeature();
+            Marshal.ReleaseComObject(featureCursor);
+            if (!(feature == null))
+            {
+                return feature;
+            }
+            else
+            {
+                return null;
+            }
+        }
 
         public static IFeatureCursor GetAllFeaturesFromPointSearchInGeoFeatureLayer(Double searchTolerance, IPoint point, IGeoFeatureLayer geoFeatureLayer, IActiveView activeView)
         {

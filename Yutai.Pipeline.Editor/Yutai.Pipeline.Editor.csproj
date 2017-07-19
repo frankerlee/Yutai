@@ -116,7 +116,6 @@
     <Compile Include="Axf\AXF_LAYERS.cs" />
     <Compile Include="Axf\AXF_TableInfo.cs" />
     <Compile Include="Axf\AXF_TABLES.cs" />
-    <Compile Include="Classes\CheQiConfig.cs" />
     <Compile Include="Classes\CustomFeatureClass.cs" />
     <Compile Include="Classes\CustomField.cs" />
     <Compile Include="Classes\CustomPoint.cs" />
@@ -168,6 +167,12 @@
     </Compile>
     <Compile Include="Controls\UcExtentSetting.Designer.cs">
       <DependentUpon>UcExtentSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UcFont.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UcFont.Designer.cs">
+      <DependentUpon>UcFont.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\UcLayerFields.cs">
       <SubType>UserControl</SubType>
@@ -260,6 +265,12 @@
     </Compile>
     <Compile Include="Forms\Mark\FrmAnnotationExpression.Designer.cs">
       <DependentUpon>FrmAnnotationExpression.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Mark\FrmCheQiConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mark\FrmCheQiConfig.Designer.cs">
+      <DependentUpon>FrmCheQiConfig.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Mark\FrmPipeLabelsSetting.cs">
       <SubType>Form</SubType>
@@ -358,6 +369,9 @@
     <EmbeddedResource Include="Controls\UcExtentSetting.resx">
       <DependentUpon>UcExtentSetting.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UcFont.resx">
+      <DependentUpon>UcFont.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\UcLayerFields.resx">
       <DependentUpon>UcLayerFields.cs</DependentUpon>
     </EmbeddedResource>
@@ -402,6 +416,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Mark\FrmAnnotationExpression.resx">
       <DependentUpon>FrmAnnotationExpression.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Mark\FrmCheQiConfig.resx">
+      <DependentUpon>FrmCheQiConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Mark\FrmPipeLabelsSetting.resx">
       <DependentUpon>FrmPipeLabelsSetting.cs</DependentUpon>
