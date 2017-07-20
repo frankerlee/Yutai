@@ -72,6 +72,12 @@ namespace Yutai.Pipeline.Editor.Commands.Mark
                     return false;
                 if (_context.FocusMap.LayerCount <= 0)
                     return false;
+                if (ArcGIS.Common.Editor.Editor.EditMap == null)
+                    return false;
+                if (ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
+                    return false;
+                if (ArcGIS.Common.Editor.Editor.EditWorkspace == null)
+                    return false;
                 if (_plugin.CheQiConfig == null)
                     return false;
                 _cheQiConfig = _plugin.CheQiConfig;
@@ -117,15 +123,17 @@ namespace Yutai.Pipeline.Editor.Commands.Mark
                 if (_lineFeedback == null)
                     return;
                 _polyline = _lineFeedback.Stop();
-                _feature = MapHelper.GetFirstFeatureFromPointSearchInGeoFeatureLayer(0.01, _polyline.FromPoint,
-                    _geoFeatureLayer,
-                    _context.ActiveView);
-
                 if (_lineFeedback != null)
                 {
                     _context.ActiveView.Refresh();
                     _lineFeedback = null;
                 }
+                if (_polyline == null)
+                    return;
+                _feature = MapHelper.GetFirstFeatureFromPointSearchInGeoFeatureLayer(0.01, _polyline.FromPoint,
+                    _geoFeatureLayer,
+                    _context.ActiveView);
+
 
                 if (_feature == null)
                 {
@@ -215,6 +223,7 @@ namespace Yutai.Pipeline.Editor.Commands.Mark
                 IAnnotationFeature annotationFeature = new AnnotationFeatureClass();
                 annotationFeature = annoFeature as IAnnotationFeature;
                 annotationFeature.Annotation = element;
+                annotationFeature.LinkedFeatureID = _feature.OID;
                 annoFeature.Store();
 
                 _context.ActiveView.ScreenDisplay.StartDrawing(_context.ActiveView.ScreenDisplay.hDC, 0);

@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ESRI.ArcGIS.Display;
+using Yutai.Pipeline.Editor.Classes;
 
 namespace Yutai.Pipeline.Editor.Controls
 {
-    public partial class UcFont : UserControl
+    public partial class UcFont : UserControl, IFontConfig
     {
         private FontDialog _fontDialog;
         private ColorDialog _colorDialog;
@@ -32,6 +33,14 @@ namespace Yutai.Pipeline.Editor.Controls
         public Color Color
         {
             get { return _color; }
+        }
+
+        [Browsable(true)]
+        [DisplayName(@"组名"), Description("组名"), Category("扩展"), DefaultValue("字体设置")]
+        public string GroupHeader
+        {
+            get { return this.groupBox1.Text; }
+            set { this.groupBox1.Text = value; }
         }
 
         private void btnFontSetting_Click(object sender, EventArgs e)

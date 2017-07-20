@@ -12,8 +12,8 @@
           <BarItem Key="PipelineEditor_BiaoZhu" Visible="true"/>
           <BarItem Key="PipelineEditor_CheQiSheZhi" Visible="true"/>
           <BarItem Key="PipelineEditor_CheQi" Visible="true"/>
+          <BarItem Key="PipelineEditor_DuoYaoSuCheQiSheZhi" Visible="true"/>
           <BarItem Key="PipelineEditor_DuoYaoSuCheQi" Visible="true"/>
-          <BarItem Key="PipelineEditor_ShanChuCheQi" Visible="true"/>
           <BarItem Key="PipelineEditor_CheQiLianDong" Visible="true"/>
           <BarItem Key="PipelineEditor_AnnotationSorting" Visible="true"/>
         </PageGroup>

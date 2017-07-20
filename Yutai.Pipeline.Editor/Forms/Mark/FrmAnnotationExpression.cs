@@ -28,7 +28,7 @@ namespace Yutai.Pipeline.Editor.Forms.Mark
             }
             else
             {
-                TxtExpression.SelectedText = fieldsListBox.Items[index].ToString();
+                TxtExpression.SelectedText = $"[{fieldsListBox.Items[index]}]";
             }
         }
 

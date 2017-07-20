@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -7,8 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
+using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using stdole;
 using Yutai.Pipeline.Config.Concretes;
 using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Pipeline.Editor.Classes;
@@ -275,7 +278,7 @@ namespace Yutai.Pipeline.Editor.Helper
         }
 
         #region 管线注记
-        
+
         public static string GetIntersectInformationFlagLineOnlyOne(IGeometry pGeometry, ICheQiConfig cheQiConfig,
                                                                     IFeature pFeature)
         {
@@ -284,14 +287,14 @@ namespace Yutai.Pipeline.Editor.Helper
                                                GetFlagInformationInFeature(pFeature, cheQiConfig.Expression);
             return pFlagInfo;
         }
-        
+
         /// <summary>
         /// Gets the flag information in feature.
         /// </summary>
         /// <param name="polylinefeature">The polylinefeature.</param>
         /// <param name="flagfieldlist">The flagfieldlist.</param>
         /// <returns></returns>
-        private static string GetFlagInformationInFeature(IFeature polylinefeature, string expression)
+        public static string GetFlagInformationInFeature(IFeature polylinefeature, string expression)
         {
             try
             {
@@ -411,5 +414,101 @@ namespace Yutai.Pipeline.Editor.Helper
         }
 
         #endregion
+
+        public static List<IElement> CreateAnnoElementList(IMultiCheQiConfig multiCheQiConfig, List<MultiCheQiModel> modelList, IPoint point)
+        {
+            List<IElement> list = new List<IElement>();
+
+            list.AddRange(CreateHeaderElements(multiCheQiConfig, modelList, point));
+            list.AddRange(CreateContentElements(multiCheQiConfig, modelList, point));
+
+            return list;
+        }
+
+        public static List<IElement> CreateContentElements(IMultiCheQiConfig multiCheQiConfig, List<MultiCheQiModel> models, IPoint point)
+        {
+            List<IElement> list = new List<IElement>();
+            double xLength = models[0].XLength;
+            double yLength = 3 + 2.5 * models.Count;
+            IPoint originPoint = new PointClass
+            {
+                X = point.X - xLength - 5,
+                Y = point.Y + yLength - 1.5
+            };
+            for (int i = 0; i < models.Count; i++)
+            {
+                MultiCheQiModel multiCheQiModel = models[i];
+                IPoint tempPoint = new PointClass();
+                tempPoint.X = originPoint.X;
+                tempPoint.Y = originPoint.Y - 2.5 * (i + 1);
+                for (int j = 0; j < multiCheQiModel.FieldMappingList.Count; j++)
+                {
+                    CheQiFieldMapping mapping = multiCheQiModel.FieldMappingList[j];
+                    tempPoint.X += mapping.FieldSetting.Length;
+                    list.Add(CreateTextElement(tempPoint, multiCheQiModel.Color, mapping.FieldValue, multiCheQiConfig.ContentFontConfig));
+                }
+            }
+
+            return list;
+        }
+
+        public static List<IElement> CreateHeaderElements(IMultiCheQiConfig multiCheQiConfig, List<MultiCheQiModel> models, IPoint point)
+        {
+            List<IElement> list = new List<IElement>();
+            double xLength = models[0].XLength;
+            double yLength = 3 + 2.5 * models.Count;
+            IPoint originPoint = new PointClass
+            {
+                X = point.X - xLength - 5,
+                Y = point.Y + yLength - 1.5
+            };
+
+            for (int i = 0; i < multiCheQiConfig.FieldSettingList.Count; i++)
+            {
+                IFieldSetting fieldSetting = multiCheQiConfig.FieldSettingList[i];
+                originPoint.X += fieldSetting.Length;
+                list.Add(CreateTextElement(originPoint, ConvertToRgbColor(multiCheQiConfig.HeaderFontConfig.Color), fieldSetting.FieldName, multiCheQiConfig.HeaderFontConfig));
+            }
+
+            return list;
+        }
+
+        public static IElement CreateTextElement(IPoint point, IColor color, string text, IFontConfig fontConfig)
+        {
+
+            stdole.IFontDisp fontDisp = new StdFontClass() as IFontDisp;
+            fontDisp.Name = fontConfig.Font.Name;
+            fontDisp.Size = (decimal)fontConfig.Font.Size;
+            fontDisp.Italic = fontConfig.Font.Italic;
+            fontDisp.Underline = fontConfig.Font.Underline;
+            fontDisp.Bold = fontConfig.Font.Bold;
+            fontDisp.Strikethrough = fontConfig.Font.Strikeout;
+
+            ITextSymbol textSymbol = new TextSymbolClass();
+            textSymbol.Font = fontDisp;
+            textSymbol.Color = color;
+            textSymbol.HorizontalAlignment = esriTextHorizontalAlignment.esriTHACenter;
+            textSymbol.VerticalAlignment = esriTextVerticalAlignment.esriTVACenter;
+
+            ITextElement textElement = new TextElementClass();
+            textElement.Symbol = textSymbol;
+            textElement.ScaleText = true;
+            textElement.Text = text;
+
+            IElement element = textElement as IElement;
+            element.Geometry = point;
+            return element;
+        }
+
+        public static IRgbColor ConvertToRgbColor(Color color)
+        {
+            IRgbColor pColor = new RgbColorClass();
+            pColor.Red = color.R;
+            pColor.Green = color.G;
+            pColor.Blue = color.B;
+            return pColor;
+        }
+
+
     }
 }

@@ -113,7 +113,7 @@ namespace Yutai.Pipeline.Editor.Helper
             Marshal.ReleaseComObject(pCursor);
             return list;
         }
-        
+
         public static IFeature GetFirstFeatureFromPointSearchInGeoFeatureLayer(Double searchTolerance, IPoint point, IFeatureClass featureClass, IActiveView activeView)
         {
             if (searchTolerance < 0 || point == null || featureClass == null || activeView == null)
@@ -252,7 +252,7 @@ namespace Yutai.Pipeline.Editor.Helper
             return featureCursor;
         }
 
-        
+
 
         public static List<IFeature> GetAllFeaturesFromPolygonInGeoFeatureLayer(IPolygon polygon, IGeoFeatureLayer geoFeatureLayer, IActiveView activeView)
         {
@@ -432,7 +432,7 @@ namespace Yutai.Pipeline.Editor.Helper
             pView.Extent = pEnv;
             pView.Refresh();
         }
-        
+
         /// <summary>
         /// Flashes the geometry.
         /// </summary>
@@ -527,7 +527,7 @@ namespace Yutai.Pipeline.Editor.Helper
             display.FinishDrawing();
         }
 
-        
+
         /// <summary>
         /// Pans to geometry.
         /// </summary>
@@ -559,7 +559,7 @@ namespace Yutai.Pipeline.Editor.Helper
             view.Refresh();
             MapHelper.FlashGeometry(pGeometry, m_map);
         }
-        
+
         /// <summary>
         /// Gets the name of the layer by.
         /// </summary>
@@ -613,8 +613,8 @@ namespace Yutai.Pipeline.Editor.Helper
             List<IFeatureLayer> list = new List<IFeatureLayer>();
             IEnumLayer layers = pMap.Layers;
             layers.Reset();
-            ILayer layer = layers.Next();
-            while (layer != null)
+            ILayer layer;
+            while ((layer = layers.Next()) != null)
             {
                 if (layer.Visible)
                 {
@@ -624,8 +624,29 @@ namespace Yutai.Pipeline.Editor.Helper
                         list.Add(featureLayer);
                     }
                 }
-                layer = layers.Next();
             }
+            return list;
+        }
+        public static List<IFeatureLayer> GetAllFeaturelayerInMap(ICompositeLayer compositeLayer)
+        {
+            List<IFeatureLayer> list = new List<IFeatureLayer>();
+
+            for (int i = 0; i < compositeLayer.Count; i++)
+            {
+                ILayer layer = compositeLayer.Layer[i];
+                if (layer.Visible)
+                {
+                    if (layer is IGroupLayer)
+                        list.AddRange(GetAllFeaturelayerInMap(layer as ICompositeLayer));
+                    else
+                    {
+                        IFeatureLayer featureLayer = layer as IFeatureLayer;
+                        if (featureLayer != null)
+                            list.Add(featureLayer);
+                    }
+                }
+            }
+
             return list;
         }
 
