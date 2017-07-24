@@ -32,14 +32,13 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panelFields = new System.Windows.Forms.Panel();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ucSelectFeatureClasses1 = new Yutai.Pipeline.Editor.Controls.UcSelectFeatureClasses();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.ucSelectFeatureClasses1 = new Yutai.Pipeline.Editor.Controls.UcSelectFeatureClasses();
             this.cmbFlagLineLayer = new Yutai.Pipeline.Editor.Controls.UcSelectFeatureClass();
             this.cmbFlagAnnoLayer = new Yutai.Pipeline.Editor.Controls.UcSelectFeatureClass();
             this.ucFontContent = new Yutai.Pipeline.Editor.Controls.UcFont();
@@ -77,20 +76,10 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // btnCancel
-            // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(623, 427);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 2;
-            this.btnCancel.Text = "取消";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            // 
             // btnOK
             // 
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Location = new System.Drawing.Point(542, 427);
+            this.btnOK.Location = new System.Drawing.Point(623, 427);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 2;
@@ -122,6 +111,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "图层设置";
             // 
+            // ucSelectFeatureClasses1
+            // 
+            this.ucSelectFeatureClasses1.Location = new System.Drawing.Point(79, 19);
+            this.ucSelectFeatureClasses1.Map = null;
+            this.ucSelectFeatureClasses1.Name = "ucSelectFeatureClasses1";
+            this.ucSelectFeatureClasses1.SelectedFeatureLayerList = ((System.Collections.Generic.List<ESRI.ArcGIS.Carto.IFeatureLayer>)(resources.GetObject("ucSelectFeatureClasses1.SelectedFeatureLayerList")));
+            this.ucSelectFeatureClasses1.Size = new System.Drawing.Size(372, 126);
+            this.ucSelectFeatureClasses1.TabIndex = 2;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -148,15 +146,6 @@
             this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 1;
             this.label1.Text = "扯旗图层：";
-            // 
-            // ucSelectFeatureClasses1
-            // 
-            this.ucSelectFeatureClasses1.Location = new System.Drawing.Point(79, 19);
-            this.ucSelectFeatureClasses1.Map = null;
-            this.ucSelectFeatureClasses1.Name = "ucSelectFeatureClasses1";
-            this.ucSelectFeatureClasses1.SelectedFeatureLayerList = ((System.Collections.Generic.List<ESRI.ArcGIS.Carto.IFeatureLayer>)(resources.GetObject("ucSelectFeatureClasses1.SelectedFeatureLayerList")));
-            this.ucSelectFeatureClasses1.Size = new System.Drawing.Size(372, 126);
-            this.ucSelectFeatureClasses1.TabIndex = 2;
             // 
             // cmbFlagLineLayer
             // 
@@ -201,12 +190,10 @@
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(710, 465);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.ucFontContent);
             this.Controls.Add(this.ucFontHeader);
@@ -227,7 +214,6 @@
         private Controls.UcFont ucFontContent;
         private System.Windows.Forms.Panel panelFields;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.GroupBox groupBox2;

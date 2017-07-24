@@ -30,11 +30,11 @@ namespace Yutai.Pipeline.Editor.Commands.Mark
 
         public override void OnClick(object sender, EventArgs args)
         {
-            FrmMultiCheQiConfig multiCheQiConfig = new FrmMultiCheQiConfig(_context);
-            if (multiCheQiConfig.ShowDialog() == DialogResult.OK)
+            if (_plugin.MultiCheQiConfig == null)
             {
-                _plugin.MultiCheQiConfig = multiCheQiConfig;
+                _plugin.MultiCheQiConfig = new FrmMultiCheQiConfig(_context);
             }
+            (_plugin.MultiCheQiConfig as FrmMultiCheQiConfig).ShowDialog();
         }
 
         public sealed override void OnCreate(object hook)

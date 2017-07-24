@@ -15,18 +15,22 @@ using Yutai.Pipeline.Editor.Helper;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
+using ESRI.ArcGIS.Controls;
+using Yutai.ArcGIS.Common.Editor;
+using Yutai.ArcGIS.Common.Symbol;
 
 namespace Yutai.Pipeline.Editor.Commands.Mark
 {
     class CmdCheQi : YutaiTool
     {
         private PipelineEditorPlugin _plugin;
-        private IPipelineConfig _config;
         private ICheQiConfig _cheQiConfig;
         private INewLineFeedback _lineFeedback;
         private IFeature _feature;
         private IGeoFeatureLayer _geoFeatureLayer;
         private IPolyline _polyline;
+        private IPointSnapper _pointSnapper;
+        private double _tolerance = 0.01;
 
         public CmdCheQi(IAppContext context, PipelineEditorPlugin plugin)
         {
@@ -48,6 +52,10 @@ namespace Yutai.Pipeline.Editor.Commands.Mark
             }
             _geoFeatureLayer = _cheQiConfig.FlagLayer as IGeoFeatureLayer;
             _context.SetCurrentTool(this);
+            _pointSnapper = new PointSnapper();
+            (_pointSnapper as PointSnapper).Map = _context.FocusMap;
+
+            _tolerance = _context.Config.EngineSnapEnvironment.SnapTolerance;
         }
 
         public sealed override void OnCreate(object hook)
@@ -92,28 +100,56 @@ namespace Yutai.Pipeline.Editor.Commands.Mark
 
             IActiveView activeView = _context.ActiveView;
             IPoint point = activeView.ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
-            if (_lineFeedback == null)
+            ISnappingResult snappingResult = _pointSnapper.Snap(point);
+            if (snappingResult == null)
             {
-                _lineFeedback = new NewLineFeedbackClass()
+                if (_lineFeedback == null)
                 {
-                    Display = activeView.ScreenDisplay
-                };
-                _lineFeedback.Start(point);
+                    _lineFeedback = new NewLineFeedbackClass()
+                    {
+                        Display = activeView.ScreenDisplay
+                    };
+                    _lineFeedback.Start(point);
+                }
+                else
+                {
+                    _lineFeedback.AddPoint(point);
+                }
             }
             else
             {
-                _lineFeedback.AddPoint(point);
+                point = snappingResult.Location;
+
+                if (_lineFeedback == null)
+                {
+                    _lineFeedback = new NewLineFeedbackClass()
+                    {
+                        Display = activeView.ScreenDisplay
+                    };
+                    _lineFeedback.Start(point);
+                }
+                else
+                {
+                    _lineFeedback.AddPoint(point);
+                }
             }
         }
 
         public override void OnMouseMove(int Button, int Shift, int x, int y)
         {
-            if (_lineFeedback == null)
-                return;
 
             IActiveView activeView = _context.ActiveView;
             IPoint point = activeView.ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
-            _lineFeedback.MoveTo(point);
+            ISnappingResult snappingResult = _pointSnapper.Snap(point);
+            if (snappingResult == null)
+            {
+                _lineFeedback?.MoveTo(point);
+            }
+            else
+            {
+                point = snappingResult.Location;
+                _lineFeedback?.MoveTo(point);
+            }
         }
 
         public override void OnDblClick()
@@ -130,7 +166,13 @@ namespace Yutai.Pipeline.Editor.Commands.Mark
                 }
                 if (_polyline == null)
                     return;
-                _feature = MapHelper.GetFirstFeatureFromPointSearchInGeoFeatureLayer(0.01, _polyline.FromPoint,
+
+                if (_context.Config.EngineSnapEnvironment.SnapToleranceUnits ==
+                    esriEngineSnapToleranceUnits.esriEngineSnapTolerancePixels)
+                {
+                    _tolerance = ArcGIS.Common.Helpers.CommonHelper.ConvertPixelsToMapUnits(_context.ActiveView, _tolerance);
+                }
+                _feature = MapHelper.GetFirstFeatureFromPointSearchInGeoFeatureLayer(_tolerance, _polyline.FromPoint,
                     _geoFeatureLayer,
                     _context.ActiveView);
 
@@ -164,26 +206,9 @@ namespace Yutai.Pipeline.Editor.Commands.Mark
                     return;
                 }
 
-                IFeatureClass flagLineFeatureClass = _cheQiConfig.FlagLineLayer.FeatureClass;
-                IFeature feature = flagLineFeatureClass.CreateFeature();
-                int maxLength = _cheQiConfig.Expression.Length;
                 IPoint referPoint = new PointClass();
                 referPoint.X = _polyline.ToPoint.X;
                 referPoint.Y = _polyline.ToPoint.Y;
-                IPointCollection pointCollection = _polyline as IPointCollection;
-                IPoint point = new PointClass();
-                point.Y = referPoint.Y;
-                if (referPoint.X > _polyline.FromPoint.X)
-                {
-                    point.X = referPoint.X + maxLength * 3;
-                }
-                else
-                {
-                    point.X = referPoint.X - maxLength * 3;
-                }
-                pointCollection.AddPoint(point);
-                feature.Shape = pointCollection as IPolyline;
-                feature.Store();
 
                 stdole.IFontDisp fontDisp = new StdFontClass() as IFontDisp;
                 fontDisp.Name = _cheQiConfig.FontName;
@@ -194,7 +219,7 @@ namespace Yutai.Pipeline.Editor.Commands.Mark
                 fontDisp.Strikethrough = _cheQiConfig.Strikethrough;
 
                 ITextSymbol textSymbol = new TextSymbolClass();
-                textSymbol.Size = (double) _cheQiConfig.FontSize;
+                textSymbol.Size = (double)_cheQiConfig.FontSize;
                 textSymbol.Font = fontDisp;
                 textSymbol.Color = _cheQiConfig.FontColor;
                 textSymbol.HorizontalAlignment = esriTextHorizontalAlignment.esriTHALeft;
@@ -205,16 +230,9 @@ namespace Yutai.Pipeline.Editor.Commands.Mark
                 textElement.ScaleText = true;
 
                 IPoint textPoint = new PointClass();
-                if (referPoint.X > _polyline.FromPoint.X)
-                {
-                    textPoint.X = referPoint.X;
-                    textPoint.Y = referPoint.Y + 1;
-                }
-                else
-                {
-                    textPoint.X = referPoint.X - maxLength * 3;
-                    textPoint.Y = referPoint.Y + 1;
-                }
+                textPoint.X = referPoint.X;
+                textPoint.Y = referPoint.Y + 1;
+
                 IElement element = textElement as IElement;
                 element.Geometry = textPoint;
 
@@ -225,10 +243,20 @@ namespace Yutai.Pipeline.Editor.Commands.Mark
                 annotationFeature.Annotation = element;
                 annotationFeature.LinkedFeatureID = _feature.OID;
                 annoFeature.Store();
-
                 _context.ActiveView.ScreenDisplay.StartDrawing(_context.ActiveView.ScreenDisplay.hDC, 0);
                 annotationClassExtension.Draw(annotationFeature, _context.ActiveView.ScreenDisplay, null);
                 _context.ActiveView.ScreenDisplay.FinishDrawing();
+
+                double maxLength = annoFeature.Shape.Envelope.Width;
+                IFeatureClass flagLineFeatureClass = _cheQiConfig.FlagLineLayer.FeatureClass;
+                IFeature feature = flagLineFeatureClass.CreateFeature();
+                IPointCollection pointCollection = _polyline as IPointCollection;
+                IPoint point = new PointClass();
+                point.Y = referPoint.Y;
+                point.X = referPoint.X + maxLength;
+                pointCollection.AddPoint(point);
+                feature.Shape = pointCollection as IPolyline;
+                feature.Store();
 
                 _context.ActiveView.Refresh();
             }

@@ -26,11 +26,11 @@ namespace Yutai.Pipeline.Editor.Commands.Mark
 
         public override void OnClick(object sender, EventArgs args)
         {
-            FrmCheQiConfig cheQiConfig = new FrmCheQiConfig(_context);
-            if (cheQiConfig.ShowDialog() == DialogResult.OK)
+            if (_plugin.CheQiConfig == null)
             {
-                _plugin.CheQiConfig = cheQiConfig as ICheQiConfig;
+                _plugin.CheQiConfig = new FrmCheQiConfig(_context);
             }
+            (_plugin.CheQiConfig as FrmCheQiConfig).ShowDialog();
         }
 
         public sealed override void OnCreate(object hook)

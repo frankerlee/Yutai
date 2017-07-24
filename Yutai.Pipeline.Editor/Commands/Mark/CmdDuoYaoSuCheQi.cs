@@ -5,9 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
+using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.ArcGIS.Common.Editor;
 using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Pipeline.Editor.Classes;
 using Yutai.Pipeline.Editor.Helper;
@@ -96,6 +98,7 @@ namespace Yutai.Pipeline.Editor.Commands.Mark
             {
                 _lineFeedback.AddPoint(point);
             }
+
         }
 
         public override void OnMouseMove(int Button, int Shift, int x, int y)
@@ -105,7 +108,7 @@ namespace Yutai.Pipeline.Editor.Commands.Mark
 
             IActiveView activeView = _context.ActiveView;
             IPoint point = activeView.ScreenDisplay.DisplayTransformation.ToMapPoint(x, y);
-            _lineFeedback.MoveTo(point);
+            _lineFeedback?.MoveTo(point);
         }
 
         public override void OnDblClick()
@@ -148,36 +151,53 @@ namespace Yutai.Pipeline.Editor.Commands.Mark
                 }
                 if (modelList.Count <= 0)
                     return;
-                List<IElement> elements = CommonHelper.CreateAnnoElementList(_multiCheQiConfig, new List<MultiCheQiModel>(modelList.OrderBy(c => c.Distance)), _polyline.ToPoint);
-                IAnnotationClassExtension annotationClassExtension = _multiCheQiConfig.FlagAnnoLayer.FeatureClass.Extension as IAnnotationClassExtension;
+
                 _context.ActiveView.ScreenDisplay.StartDrawing(_context.ActiveView.ScreenDisplay.hDC, 0);
+                IAnnotationClassExtension annotationClassExtension = _multiCheQiConfig.FlagAnnoLayer.FeatureClass.Extension as IAnnotationClassExtension;
+                IElement headerElement = CommonHelper.CreateHeaderElements(_multiCheQiConfig, _polyline.ToPoint);
+                IFeature headerFeature = _multiCheQiConfig.FlagAnnoLayer.FeatureClass.CreateFeature();
+                IAnnotationFeature headerAnnotationFeature = headerFeature as IAnnotationFeature;
+                headerAnnotationFeature.Annotation = headerElement;
+                headerFeature.Store();
+                double xLength = headerFeature.Shape.Envelope.Width;
+                double yLength = headerFeature.Shape.Envelope.Height;
+
+                IPoint headerPoint = new PointClass();
+                headerPoint.X = (headerElement.Geometry as IPoint).X - xLength / 2;
+                headerPoint.Y = (headerElement.Geometry as IPoint).Y + yLength * (modelList.Count + 0.5);
+                headerElement.Geometry = headerPoint;
+                headerAnnotationFeature.Annotation = headerElement;
+                headerFeature.Store();
+                annotationClassExtension.Draw(headerAnnotationFeature, _context.ActiveView.ScreenDisplay, null);
+                List<MultiCheQiModel> models = new List<MultiCheQiModel>(modelList.OrderBy(c => c.Distance));
+                List<IElement> elements = CommonHelper.CreateContentElements(_multiCheQiConfig, models,
+                    headerElement.Geometry as IPoint, headerFeature.Shape.Envelope.Width,
+                    headerFeature.Shape.Envelope.Height);
                 foreach (IElement element in elements)
                 {
-                    IFeature annoFeature = _multiCheQiConfig.FlagAnnoLayer.FeatureClass.CreateFeature();
-                    IAnnotationFeature annotationFeature = annoFeature as IAnnotationFeature;
-                    annotationFeature.Annotation = element;
-                    annoFeature.Store();
-                    annotationClassExtension.Draw(annotationFeature, _context.ActiveView.ScreenDisplay, null);
+                    IFeature contentFeature = _multiCheQiConfig.FlagAnnoLayer.FeatureClass.CreateFeature();
+                    IAnnotationFeature contentAnnotationFeature = contentFeature as IAnnotationFeature;
+                    contentAnnotationFeature.Annotation = element;
+                    contentFeature.Store();
+                    annotationClassExtension.Draw(contentAnnotationFeature, _context.ActiveView.ScreenDisplay, null);
                 }
                 _context.ActiveView.ScreenDisplay.FinishDrawing();
 
                 IPointCollection pointCollection = _polyline as IPointCollection;
-                double xLength = modelList[0].XLength;
-                double yLength = 3 + 2.5*modelList.Count;
                 IPoint point1 = new PointClass();
                 point1.X = _polyline.ToPoint.X - xLength;
                 point1.Y = _polyline.ToPoint.Y;
 
                 IPoint point2 = new PointClass();
                 point2.X = _polyline.ToPoint.X - xLength;
-                point2.Y = _polyline.ToPoint.Y + yLength;
+                point2.Y = _polyline.ToPoint.Y + yLength * (modelList.Count + 1);
 
                 pointCollection.AddPoint(point1);
                 pointCollection.AddPoint(point2);
                 IFeature lineFeature = _multiCheQiConfig.FlagLineLayer.FeatureClass.CreateFeature();
                 lineFeature.Shape = pointCollection as IPolyline;
                 lineFeature.Store();
-                
+
                 _context.ActiveView.Refresh();
             }
             catch (Exception exception)

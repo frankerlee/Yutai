@@ -36,7 +36,6 @@
             this.TxtExpression = new System.Windows.Forms.TextBox();
             this.btnExpression = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.ucFont = new Yutai.Pipeline.Editor.Controls.UcFont();
             this.cmbFlagLineLayer = new Yutai.Pipeline.Editor.Controls.UcSelectFeatureClass();
@@ -128,20 +127,10 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "管线点字段：";
             // 
-            // btnCancel
-            // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(306, 336);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 11;
-            this.btnCancel.Text = "取消";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            // 
             // btnOK
             // 
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Location = new System.Drawing.Point(225, 336);
+            this.btnOK.Location = new System.Drawing.Point(306, 336);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 11;
@@ -195,10 +184,8 @@
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(393, 366);
             this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.ucFont);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -226,7 +213,6 @@
         private System.Windows.Forms.Button btnExpression;
         private System.Windows.Forms.Label label4;
         private Controls.UcFont ucFont;
-        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOK;
     }
 }

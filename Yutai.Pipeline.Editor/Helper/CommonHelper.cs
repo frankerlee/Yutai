@@ -15,6 +15,7 @@ using stdole;
 using Yutai.Pipeline.Config.Concretes;
 using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Pipeline.Editor.Classes;
+using Yutai.Shared;
 
 namespace Yutai.Pipeline.Editor.Helper
 {
@@ -419,58 +420,58 @@ namespace Yutai.Pipeline.Editor.Helper
         {
             List<IElement> list = new List<IElement>();
 
-            list.AddRange(CreateHeaderElements(multiCheQiConfig, modelList, point));
-            list.AddRange(CreateContentElements(multiCheQiConfig, modelList, point));
+            IElement element = CreateHeaderElements(multiCheQiConfig, point);
+            list.Add(element);
+            list.AddRange(CreateContentElements(multiCheQiConfig, modelList, element.Geometry as IPoint, element.Geometry.Envelope.Width, element.Geometry.Envelope.Height));
 
             return list;
         }
 
-        public static List<IElement> CreateContentElements(IMultiCheQiConfig multiCheQiConfig, List<MultiCheQiModel> models, IPoint point)
+        public static List<IElement> CreateContentElements(IMultiCheQiConfig multiCheQiConfig, List<MultiCheQiModel> models, IPoint point, double xLength, double yLength)
         {
             List<IElement> list = new List<IElement>();
-            double xLength = models[0].XLength;
-            double yLength = 3 + 2.5 * models.Count;
             IPoint originPoint = new PointClass
             {
-                X = point.X - xLength - 5,
-                Y = point.Y + yLength - 1.5
+                X = point.X,
+                Y = point.Y
             };
             for (int i = 0; i < models.Count; i++)
             {
                 MultiCheQiModel multiCheQiModel = models[i];
                 IPoint tempPoint = new PointClass();
                 tempPoint.X = originPoint.X;
-                tempPoint.Y = originPoint.Y - 2.5 * (i + 1);
+                tempPoint.Y = originPoint.Y - yLength * (i + 1);
+                string strContent = null;
                 for (int j = 0; j < multiCheQiModel.FieldMappingList.Count; j++)
                 {
                     CheQiFieldMapping mapping = multiCheQiModel.FieldMappingList[j];
-                    tempPoint.X += mapping.FieldSetting.Length;
-                    list.Add(CreateTextElement(tempPoint, multiCheQiModel.Color, mapping.FieldValue, multiCheQiConfig.ContentFontConfig));
+                    strContent += mapping.FieldValue.PadRight(mapping.FieldSetting.Length);
                 }
+                IElement element = CreateTextElement(tempPoint, multiCheQiModel.Color, strContent,
+                    multiCheQiConfig.ContentFontConfig);
+                list.Add(element);
             }
 
             return list;
         }
 
-        public static List<IElement> CreateHeaderElements(IMultiCheQiConfig multiCheQiConfig, List<MultiCheQiModel> models, IPoint point)
+        public static IElement CreateHeaderElements(IMultiCheQiConfig multiCheQiConfig, IPoint point)
         {
-            List<IElement> list = new List<IElement>();
-            double xLength = models[0].XLength;
-            double yLength = 3 + 2.5 * models.Count;
             IPoint originPoint = new PointClass
             {
-                X = point.X - xLength - 5,
-                Y = point.Y + yLength - 1.5
+                X = point.X,
+                Y = point.Y
             };
-
+            string strHeader = null;
             for (int i = 0; i < multiCheQiConfig.FieldSettingList.Count; i++)
             {
                 IFieldSetting fieldSetting = multiCheQiConfig.FieldSettingList[i];
-                originPoint.X += fieldSetting.Length;
-                list.Add(CreateTextElement(originPoint, ConvertToRgbColor(multiCheQiConfig.HeaderFontConfig.Color), fieldSetting.FieldName, multiCheQiConfig.HeaderFontConfig));
+                strHeader += fieldSetting.FieldName.PadRight(fieldSetting.Length);
             }
+            IElement element = CreateTextElement(originPoint, ConvertToRgbColor(multiCheQiConfig.HeaderFontConfig.Color),
+                strHeader, multiCheQiConfig.HeaderFontConfig);
 
-            return list;
+            return element;
         }
 
         public static IElement CreateTextElement(IPoint point, IColor color, string text, IFontConfig fontConfig)
@@ -508,7 +509,5 @@ namespace Yutai.Pipeline.Editor.Helper
             pColor.Blue = color.B;
             return pColor;
         }
-
-
     }
 }
