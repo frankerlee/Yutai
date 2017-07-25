@@ -62,6 +62,7 @@ namespace Yutai.Pipeline.Editor.Menu
                     new CmdCheQiSheZhi(_context, _plugin),
                     new CmdDuoYaoSuCheQi(_context, _plugin),
                     new CmdDuoYaoSuCheQiSheZhi(_context, _plugin),
+                    new CmdDeleteAll(_context, _plugin),
 
                     new CmdVerifySetting(_context, _plugin),
 

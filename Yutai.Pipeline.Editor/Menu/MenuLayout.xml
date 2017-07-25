@@ -3,7 +3,7 @@
     <Pages>
       <Page Key="PipelineEditor" Caption="管线编辑" Index="0" Visible="true">
         <PageGroup Key="Pipeline_Editor_Profession" Caption="专业编辑工具" Visible="true" Index="2">
-          
+
           <BarItem Key="PipelineEditor_AngleConvert" Visible="true"/>
           <BarItem Key="PipelineEditor_AutoGenerateNumbers" Visible="true"/>
           <BarItem Key="PipelineEditor_IdentifyRoadName" Visible="true"/>
@@ -15,6 +15,7 @@
           <BarItem Key="PipelineEditor_DuoYaoSuCheQiSheZhi" Visible="true"/>
           <BarItem Key="PipelineEditor_DuoYaoSuCheQi" Visible="true"/>
           <BarItem Key="PipelineEditor_CheQiLianDong" Visible="true"/>
+          <BarItem Key="PipelineEditor_DeleteAll" Visible="true"/>
           <BarItem Key="PipelineEditor_AnnotationSorting" Visible="true"/>
         </PageGroup>
         <PageGroup Key="Pipeline_Editor_Exchange" Caption="数据交换" Visible="true" Index="5">

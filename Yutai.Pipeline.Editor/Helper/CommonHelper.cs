@@ -414,6 +414,22 @@ namespace Yutai.Pipeline.Editor.Helper
             pWorkspaceEdit.StopEditing(true);
         }
 
+        public static void ClearFeaturesInFeatureLayer(IFeatureLayer featureLayer)
+        {
+            if (featureLayer == null) return;
+            IFeatureClass featureClass = featureLayer.FeatureClass;
+            IDataset dataset = featureClass as IDataset;
+            IWorkspace pWorkspace = dataset.Workspace;
+            IWorkspaceProperties2 workspaceProperties2 = pWorkspace as IWorkspaceProperties2;
+            //判断workspace是否可以执行SQL语句
+            IWorkspaceProperty canExecuteSqlProperty = workspaceProperties2.Property[esriWorkspacePropertyGroupType.esriWorkspacePropertyGroup, (int)esriWorkspacePropertyType.esriWorkspacePropCanExecuteSQL];
+            if (canExecuteSqlProperty.IsSupported)
+            {
+                //ExecuteSQL删除feature
+                pWorkspace.ExecuteSQL("delete  from " + featureClass.AliasName + " where objectid >=0");
+            }
+        }
+
         #endregion
 
         public static List<IElement> CreateAnnoElementList(IMultiCheQiConfig multiCheQiConfig, List<MultiCheQiModel> modelList, IPoint point)

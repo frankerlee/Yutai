@@ -137,6 +137,7 @@
     <Compile Include="Commands\Exchange\CmdImportSurveyData.cs" />
     <Compile Include="Commands\Mark\CmdCheQiLianDong.cs" />
     <Compile Include="Commands\Mark\CmdCheQiSheZhi.cs" />
+    <Compile Include="Commands\Mark\CmdDeleteAll.cs" />
     <Compile Include="Commands\Mark\CmdDuoYaoSuCheQi.cs" />
     <Compile Include="Commands\Mark\CmdDuoYaoSuCheQiSheZhi.cs" />
     <Compile Include="Commands\Version\CmdVersionManagement.cs" />
@@ -358,6 +359,10 @@
       <Project>{1938B3F8-8EDE-48F7-9594-EEB1F126E622}</Project>
       <Name>Yutai.ArcGIS.Common</Name>
       <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Yutai.Editor\Yutai.Editor.csproj">
+      <Project>{4A3BCAAB-9D3E-4CA7-A19D-7EE08FB0629E}</Project>
+      <Name>Yutai.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.Pipeline.Config\Yutai.Pipeline.Config.csproj">
       <Project>{0AA42995-A1CE-49FD-BB98-F94EED2D7289}</Project>
