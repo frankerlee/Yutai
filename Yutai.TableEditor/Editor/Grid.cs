@@ -266,7 +266,6 @@ namespace Yutai.Plugins.TableEditor.Editor
 
             this._dataGridView.ClearSelection();
             this._dataGridView.SelectionChanged += _dataGridView_SelectionChanged;
-            ;
         }
 
         public void Sort(int columnIndex, ListSortDirection direction)
@@ -519,6 +518,11 @@ namespace Yutai.Plugins.TableEditor.Editor
                 _dataViewSelected.RowFilter = $" {_dataTable.Columns[0].ColumnName} IN {values} ";
                 _dataGridView.DataSource = _dataViewSelected;
             }
+        }
+
+        private void _dataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            _navigationBar.ShowRecordInfo();
         }
     }
 }

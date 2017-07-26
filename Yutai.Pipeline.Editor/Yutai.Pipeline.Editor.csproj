@@ -60,6 +60,9 @@
     <Reference Include="ESRI.ArcGIS.CatalogUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.Controls, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.DataInterop, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
@@ -113,7 +116,8 @@
     <Compile Include="Axf\AXF_LAYERS.cs" />
     <Compile Include="Axf\AXF_TableInfo.cs" />
     <Compile Include="Axf\AXF_TABLES.cs" />
-    <Compile Include="Classes\CheQiConfig.cs" />
+    <Compile Include="Classes\CheQiFieldMapping.cs" />
+    <Compile Include="Classes\MultiCheQiModel.cs" />
     <Compile Include="Classes\CustomFeatureClass.cs" />
     <Compile Include="Classes\CustomField.cs" />
     <Compile Include="Classes\CustomPoint.cs" />
@@ -121,8 +125,13 @@
     <Compile Include="Classes\FieldMapping.cs" />
     <Compile Include="Classes\GSCSUtilsGen.cs" />
     <Compile Include="Classes\ICheQiConfig.cs" />
+    <Compile Include="Classes\IFieldSetting.cs" />
+    <Compile Include="Classes\IFontConfig.cs" />
+    <Compile Include="Classes\IMultiCheQiConfig.cs" />
+    <Compile Include="Commands\Common\CmdGetTargetPoint.cs" />
+    <Compile Include="Commands\Common\CmdPointLineLinkage.cs" />
     <Compile Include="Commands\Exchange\CmdConversion.cs" />
-    <Compile Include="Commands\Exchange\CmdCut.cs" />
+    <Compile Include="Commands\Exchange\CmdClip.cs" />
     <Compile Include="Commands\Exchange\CmdDataExport.cs" />
     <Compile Include="Commands\Exchange\CmdDataStorage.cs" />
     <Compile Include="Commands\Exchange\CmdImportAxfData.cs" />
@@ -130,8 +139,9 @@
     <Compile Include="Commands\Exchange\CmdImportSurveyData.cs" />
     <Compile Include="Commands\Mark\CmdCheQiLianDong.cs" />
     <Compile Include="Commands\Mark\CmdCheQiSheZhi.cs" />
+    <Compile Include="Commands\Mark\CmdDeleteAll.cs" />
     <Compile Include="Commands\Mark\CmdDuoYaoSuCheQi.cs" />
-    <Compile Include="Commands\Mark\CmdShanChuCheQi.cs" />
+    <Compile Include="Commands\Mark\CmdDuoYaoSuCheQiSheZhi.cs" />
     <Compile Include="Commands\Version\CmdVersionManagement.cs" />
     <Compile Include="Commands\Version\CmdVersionQuery.cs" />
     <Compile Include="Commands\Mark\CmdBiaoZhu.cs" />
@@ -154,11 +164,35 @@
     <Compile Include="Controls\FieldsListBox.Designer.cs">
       <DependentUpon>FieldsListBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\UcExportPath.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UcExportPath.Designer.cs">
+      <DependentUpon>UcExportPath.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\UcExtentSetting.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\UcExtentSetting.Designer.cs">
       <DependentUpon>UcExtentSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UcFieldSetting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UcFieldSetting.Designer.cs">
+      <DependentUpon>UcFieldSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UcFont.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UcFont.Designer.cs">
+      <DependentUpon>UcFont.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UcLayerFields.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UcLayerFields.Designer.cs">
+      <DependentUpon>UcLayerFields.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\UcSelectFeatureClass.cs">
       <SubType>UserControl</SubType>
@@ -166,11 +200,23 @@
     <Compile Include="Controls\UcSelectFeatureClass.designer.cs">
       <DependentUpon>UcSelectFeatureClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\UcSelectFeatureClasses.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UcSelectFeatureClasses.Designer.cs">
+      <DependentUpon>UcSelectFeatureClasses.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\UcSelectField.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\UcSelectField.designer.cs">
       <DependentUpon>UcSelectField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UcSelectFields.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UcSelectFields.designer.cs">
+      <DependentUpon>UcSelectFields.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\UcSelectFile.cs">
       <SubType>UserControl</SubType>
@@ -184,8 +230,27 @@
     <Compile Include="Controls\UCSelectFolder.designer.cs">
       <DependentUpon>UCSelectFolder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\UcSpatialReference.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UcSpatialReference.Designer.cs">
+      <DependentUpon>UcSpatialReference.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Emuns\AnnotationSortingCommand.cs" />
     <Compile Include="Emuns\IdentifyRoadNameCommand.cs" />
     <Compile Include="Emuns\SurveyCoordType.cs" />
+    <Compile Include="Forms\Exchange\FrmClip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Exchange\FrmClip.Designer.cs">
+      <DependentUpon>FrmClip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Exchange\FrmExportData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Exchange\FrmExportData.Designer.cs">
+      <DependentUpon>FrmExportData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Exchange\FrmImportAXFData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,11 +275,29 @@
     <Compile Include="Forms\FieldCalculator.Designer.cs">
       <DependentUpon>FieldCalculator.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmSelectFields.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmSelectFields.Designer.cs">
+      <DependentUpon>FrmSelectFields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Mark\FrmAnnotationExpression.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Mark\FrmAnnotationExpression.Designer.cs">
       <DependentUpon>FrmAnnotationExpression.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Mark\FrmCheQiConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mark\FrmCheQiConfig.Designer.cs">
+      <DependentUpon>FrmCheQiConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Mark\FrmMultiCheQiConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mark\FrmMultiCheQiConfig.Designer.cs">
+      <DependentUpon>FrmMultiCheQiConfig.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Mark\FrmPipeLabelsSetting.cs">
       <SubType>Form</SubType>
@@ -252,6 +335,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\AnnotationSortingDockPanelService.cs" />
     <Compile Include="Services\IdentifyRoadNameDockPanelService.cs" />
     <Compile Include="SqlCe\ClassGlobalText.cs" />
     <Compile Include="SqlCe\ClassRichTextBoxExtension.cs" />
@@ -259,6 +343,14 @@
     <Compile Include="SqlCe\ClassSqlCeDb.cs" />
     <Compile Include="SqlCe\ClassSqlParser.cs" />
     <Compile Include="SqlCe\SqlCeResultSet.cs" />
+    <Compile Include="Views\AnnotationSortingDockPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\AnnotationSortingDockPanel.Designer.cs">
+      <DependentUpon>AnnotationSortingDockPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AnnotationSortingPresenter.cs" />
+    <Compile Include="Views\IAnnotationSortingView.cs" />
     <Compile Include="Views\IdentifyRoadNameDockPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -279,6 +371,10 @@
       <Project>{1938B3F8-8EDE-48F7-9594-EEB1F126E622}</Project>
       <Name>Yutai.ArcGIS.Common</Name>
       <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Yutai.Editor\Yutai.Editor.csproj">
+      <Project>{4A3BCAAB-9D3E-4CA7-A19D-7EE08FB0629E}</Project>
+      <Name>Yutai.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="..\Yutai.Pipeline.Config\Yutai.Pipeline.Config.csproj">
       <Project>{0AA42995-A1CE-49FD-BB98-F94EED2D7289}</Project>
@@ -307,20 +403,47 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\UcExportPath.resx">
+      <DependentUpon>UcExportPath.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\UcExtentSetting.resx">
       <DependentUpon>UcExtentSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UcFieldSetting.resx">
+      <DependentUpon>UcFieldSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UcFont.resx">
+      <DependentUpon>UcFont.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UcLayerFields.resx">
+      <DependentUpon>UcLayerFields.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\UcSelectFeatureClass.resx">
       <DependentUpon>UcSelectFeatureClass.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UcSelectFeatureClasses.resx">
+      <DependentUpon>UcSelectFeatureClasses.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\UcSelectField.resx">
       <DependentUpon>UcSelectField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UcSelectFields.resx">
+      <DependentUpon>UcSelectFields.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\UcSelectFile.resx">
       <DependentUpon>UcSelectFile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\UCSelectFolder.resx">
       <DependentUpon>UCSelectFolder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UcSpatialReference.resx">
+      <DependentUpon>UcSpatialReference.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Exchange\FrmClip.resx">
+      <DependentUpon>FrmClip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Exchange\FrmExportData.resx">
+      <DependentUpon>FrmExportData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Exchange\FrmImportAXFData.resx">
       <DependentUpon>FrmImportAXFData.cs</DependentUpon>
@@ -334,8 +457,17 @@
     <EmbeddedResource Include="Forms\FieldCalculator.resx">
       <DependentUpon>FieldCalculator.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmSelectFields.resx">
+      <DependentUpon>FrmSelectFields.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Mark\FrmAnnotationExpression.resx">
       <DependentUpon>FrmAnnotationExpression.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Mark\FrmCheQiConfig.resx">
+      <DependentUpon>FrmCheQiConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Mark\FrmMultiCheQiConfig.resx">
+      <DependentUpon>FrmMultiCheQiConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Mark\FrmPipeLabelsSetting.resx">
       <DependentUpon>FrmPipeLabelsSetting.cs</DependentUpon>
@@ -350,6 +482,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AnnotationSortingDockPanel.resx">
+      <DependentUpon>AnnotationSortingDockPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\IdentifyRoadNameDockPanel.resx">
       <DependentUpon>IdentifyRoadNameDockPanel.cs</DependentUpon>

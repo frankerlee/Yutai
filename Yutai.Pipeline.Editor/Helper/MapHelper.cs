@@ -113,7 +113,7 @@ namespace Yutai.Pipeline.Editor.Helper
             Marshal.ReleaseComObject(pCursor);
             return list;
         }
-        
+
         public static IFeature GetFirstFeatureFromPointSearchInGeoFeatureLayer(Double searchTolerance, IPoint point, IFeatureClass featureClass, IActiveView activeView)
         {
             if (searchTolerance < 0 || point == null || featureClass == null || activeView == null)
@@ -128,6 +128,45 @@ namespace Yutai.Pipeline.Editor.Helper
             //envelope.Expand(searchTolerance, searchTolerance, false);
 
             ITopologicalOperator pTopologicalOperator = point as ITopologicalOperator;
+            String shapeFieldName = featureClass.ShapeFieldName;
+
+            // Create a new spatial filter and use the new envelope as the geometry    
+            ISpatialFilter spatialFilter = new SpatialFilterClass();
+            spatialFilter.Geometry = pTopologicalOperator.Buffer(searchTolerance);
+            spatialFilter.SpatialRel = esriSpatialRelEnum.esriSpatialRelEnvelopeIntersects;
+            spatialFilter.set_OutputSpatialReference(shapeFieldName, map.SpatialReference);
+            spatialFilter.GeometryField = shapeFieldName;
+
+            // Do the search
+            IFeatureCursor featureCursor = featureClass.Search(spatialFilter, false);
+
+            // Get the first feature
+            IFeature feature = featureCursor.NextFeature();
+            Marshal.ReleaseComObject(featureCursor);
+            if (!(feature == null))
+            {
+                return feature;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public static IFeature GetFirstFeatureFromPointSearchInGeoFeatureLayer(Double searchTolerance, IPoint point, IGeoFeatureLayer geoFeatureLayer, IActiveView activeView)
+        {
+            if (searchTolerance < 0 || point == null || geoFeatureLayer == null || activeView == null)
+            {
+                return null;
+            }
+
+            IMap map = activeView.FocusMap;
+
+            // Expand the points envelope to give better search results    
+            //IEnvelope envelope = point.Envelope;
+            //envelope.Expand(searchTolerance, searchTolerance, false);
+            ITopologicalOperator pTopologicalOperator = point as ITopologicalOperator;
+
+            IFeatureClass featureClass = geoFeatureLayer.FeatureClass;
             String shapeFieldName = featureClass.ShapeFieldName;
 
             // Create a new spatial filter and use the new envelope as the geometry    
@@ -213,7 +252,7 @@ namespace Yutai.Pipeline.Editor.Helper
             return featureCursor;
         }
 
-        
+
 
         public static List<IFeature> GetAllFeaturesFromPolygonInGeoFeatureLayer(IPolygon polygon, IGeoFeatureLayer geoFeatureLayer, IActiveView activeView)
         {
@@ -393,7 +432,7 @@ namespace Yutai.Pipeline.Editor.Helper
             pView.Extent = pEnv;
             pView.Refresh();
         }
-        
+
         /// <summary>
         /// Flashes the geometry.
         /// </summary>
@@ -488,7 +527,7 @@ namespace Yutai.Pipeline.Editor.Helper
             display.FinishDrawing();
         }
 
-        
+
         /// <summary>
         /// Pans to geometry.
         /// </summary>
@@ -520,7 +559,7 @@ namespace Yutai.Pipeline.Editor.Helper
             view.Refresh();
             MapHelper.FlashGeometry(pGeometry, m_map);
         }
-        
+
         /// <summary>
         /// Gets the name of the layer by.
         /// </summary>
@@ -574,8 +613,8 @@ namespace Yutai.Pipeline.Editor.Helper
             List<IFeatureLayer> list = new List<IFeatureLayer>();
             IEnumLayer layers = pMap.Layers;
             layers.Reset();
-            ILayer layer = layers.Next();
-            while (layer != null)
+            ILayer layer;
+            while ((layer = layers.Next()) != null)
             {
                 if (layer.Visible)
                 {
@@ -585,8 +624,29 @@ namespace Yutai.Pipeline.Editor.Helper
                         list.Add(featureLayer);
                     }
                 }
-                layer = layers.Next();
             }
+            return list;
+        }
+        public static List<IFeatureLayer> GetAllFeaturelayerInMap(ICompositeLayer compositeLayer)
+        {
+            List<IFeatureLayer> list = new List<IFeatureLayer>();
+
+            for (int i = 0; i < compositeLayer.Count; i++)
+            {
+                ILayer layer = compositeLayer.Layer[i];
+                if (layer.Visible)
+                {
+                    if (layer is IGroupLayer)
+                        list.AddRange(GetAllFeaturelayerInMap(layer as ICompositeLayer));
+                    else
+                    {
+                        IFeatureLayer featureLayer = layer as IFeatureLayer;
+                        if (featureLayer != null)
+                            list.Add(featureLayer);
+                    }
+                }
+            }
+
             return list;
         }
 

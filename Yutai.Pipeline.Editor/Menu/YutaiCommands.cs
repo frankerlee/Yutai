@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Yutai.Pipeline.Editor.Commands;
+using Yutai.Pipeline.Editor.Commands.Common;
 using Yutai.Pipeline.Editor.Commands.Exchange;
 using Yutai.Pipeline.Editor.Commands.Mark;
 using Yutai.Pipeline.Editor.Commands.Profession;
@@ -43,12 +44,14 @@ namespace Yutai.Pipeline.Editor.Menu
                     return new List<YutaiCommand>();
                 _commands = new List<YutaiCommand>()
                 {
+                    new CmdPointLineLinkage(_context, _plugin),
+
                     new CmdAngleConvert(_context, _plugin),
                     new CmdAutoGenerateNumbers(_context, _plugin),
                     new CmdIdentifyRoadName(_context, _plugin),
 
                     new CmdConversion(_context, _plugin),
-                    new CmdCut(_context, _plugin),
+                    new CmdClip(_context, _plugin),
                     new CmdDataExport(_context, _plugin),
                     new CmdDataStorage(_context, _plugin),
                     new CmdImportAxfData(_context, _plugin),
@@ -61,7 +64,8 @@ namespace Yutai.Pipeline.Editor.Menu
                     new CmdCheQiLianDong(_context, _plugin),
                     new CmdCheQiSheZhi(_context, _plugin),
                     new CmdDuoYaoSuCheQi(_context, _plugin),
-                    new CmdShanChuCheQi(_context, _plugin),
+                    new CmdDuoYaoSuCheQiSheZhi(_context, _plugin),
+                    new CmdDeleteAll(_context, _plugin),
 
                     new CmdVerifySetting(_context, _plugin),
 

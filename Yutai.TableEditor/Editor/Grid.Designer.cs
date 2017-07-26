@@ -47,6 +47,7 @@
             this._dataGridView.TabIndex = 1;
             this._dataGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this._dataGridView_ColumnHeaderMouseClick);
             this._dataGridView.CurrentCellChanged += new System.EventHandler(this._dataGridView_CurrentCellChanged);
+            this._dataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this._dataGridView_DataBindingComplete);
             // 
             // _navigationBar
             // 

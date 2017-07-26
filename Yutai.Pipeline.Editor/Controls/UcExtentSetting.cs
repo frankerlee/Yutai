@@ -4,25 +4,45 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
+using ESRI.ArcGIS.Controls;
+using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 using Yutai.Pipeline.Editor.Helper;
+using Yutai.Plugins.Interfaces;
 
 namespace Yutai.Pipeline.Editor.Controls
 {
     public partial class UcExtentSetting : UserControl
     {
+        public event EventHandler StartDrawEvent;
+        public event EventHandler DrawCompleteEvent;
+        private IAppContext _context;
         private IMap _map;
+        private System.Windows.Forms.Cursor _defaultCursor;
+        private System.Windows.Forms.Cursor _drawCursor;
+        private INewPolygonFeedback _polygonFeedback;
+        private IPolygon _polygon;
+        private IGraphicsContainer _graphicsContainer;
+        private bool _isRadio;
 
         public UcExtentSetting()
         {
             InitializeComponent();
             this.Enabled = false;
+            _defaultCursor = System.Windows.Forms.Cursors.Default;
+            _drawCursor = System.Windows.Forms.Cursors.Cross;
+        }
+
+        ~UcExtentSetting()
+        {
+            Destory();
         }
 
         public IMap Map
@@ -33,7 +53,23 @@ namespace Yutai.Pipeline.Editor.Controls
                 if (_map == null)
                     this.Enabled = false;
                 else
+                {
                     this.Enabled = true;
+                    _graphicsContainer = _map as IGraphicsContainer;
+                    _graphicsContainer.DeleteAllElements();
+                }
+            }
+        }
+
+        public IAppContext Context
+        {
+            set
+            {
+                _context = value;
+                if (_context == null)
+                    radioGroupExtentType.Properties.Items[3].Enabled = false;
+                else
+                    radioGroupExtentType.Properties.Items[3].Enabled = true;
             }
         }
 
@@ -78,6 +114,14 @@ namespace Yutai.Pipeline.Editor.Controls
                             }
                         }
                         break;
+                    case 3:
+                        {
+                            if (_polygon != null)
+                            {
+                                boundGeometrys.Add(0, _polygon);
+                            }
+                        }
+                        break;
                     default:
                         break;
                 }
@@ -90,6 +134,16 @@ namespace Yutai.Pipeline.Editor.Controls
         {
             get { return ucSelectFeatureClass.SelectFeatureLayer; }
         }
+        
+        [Browsable(true)]
+        [Description("是否单选"), Category("扩展"), DefaultValue(false)]
+        public bool IsRadio
+        {
+            set
+            {
+                _isRadio = value;
+            }
+        }
 
         private void radioGroupExtentType_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -98,9 +152,112 @@ namespace Yutai.Pipeline.Editor.Controls
             {
                 groupBoxIndexLayer.Enabled = true;
                 LoadIndexLayers();
+                this.Cursor = Cursors.Default;
+                Destory();
+            }
+            else if (editValue == 3)
+            {
+                if (_context == null)
+                    return;
+                groupBoxIndexLayer.Enabled = false;
+                InitDraw();
             }
             else
+            {
                 groupBoxIndexLayer.Enabled = false;
+                this.Cursor = Cursors.Default;
+                Destory();
+            }
+        }
+
+        public void Destory()
+        {
+            _polygonFeedback = null;
+            this.Cursor = Cursors.Default;
+            _graphicsContainer?.DeleteAllElements();
+            ((IMapControlEvents2_Event)_context.MapControl).OnKeyDown -= OnOnKeyDown;
+            ((IMapControlEvents2_Event)_context.MapControl).OnMouseDown -= OnOnMouseDown;
+            ((IMapControlEvents2_Event)_context.MapControl).OnDoubleClick -= OnOnDoubleClick;
+            ((IMapControlEvents2_Event)_context.MapControl).OnMouseMove -= OnOnMouseMove;
+        }
+
+        private void InitDraw()
+        {
+            _polygon = null;
+            if (_context == null)
+                return;
+            OnStartDrawEvent();
+            ((IMapControlEvents2_Event)_context.MapControl).OnKeyDown += OnOnKeyDown;
+            ((IMapControlEvents2_Event)_context.MapControl).OnMouseDown += OnOnMouseDown;
+            ((IMapControlEvents2_Event)_context.MapControl).OnDoubleClick += OnOnDoubleClick;
+            ((IMapControlEvents2_Event)_context.MapControl).OnMouseMove += OnOnMouseMove;
+        }
+
+        private void OnOnMouseMove(int button, int shift, int i, int i1, double mapX, double mapY)
+        {
+            if (_polygonFeedback == null)
+                return;
+            IPoint point = new PointClass();
+            point.PutCoords(mapX, mapY);
+            _polygonFeedback.MoveTo(point);
+        }
+
+        private void OnOnKeyDown(int keyCode, int shift)
+        {
+            if (keyCode == 27)
+            {
+                Destory();
+            }
+        }
+
+        private void OnOnDoubleClick(int button, int shift, int i, int i1, double mapX, double mapY)
+        {
+            if (button == 2)
+                return;
+            if (_polygonFeedback == null)
+                return;
+            IPoint point = new PointClass();
+            point.PutCoords(mapX, mapY);
+            _polygonFeedback.AddPoint(point);
+            _polygon = _polygonFeedback.Stop();
+            IRgbColor rgbColorClass = new RgbColor();
+            rgbColorClass.Red = (0);
+            rgbColorClass.Green = (255);
+            rgbColorClass.Blue = (255);
+            ISimpleFillSymbol simpleFillSymbolClass = new SimpleFillSymbol();
+            ((ISymbol)simpleFillSymbolClass).ROP2 = (esriRasterOpCode)(10);
+            simpleFillSymbolClass.Color = (rgbColorClass);
+            IElement element = new PolygonElement();
+            element.Geometry = _polygon;
+            ((IFillShapeElement)element).Symbol = simpleFillSymbolClass;
+            _graphicsContainer.DeleteAllElements();
+            _graphicsContainer.AddElement(element, 100);
+            _context.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
+            OnDrawCompleteEvent();
+            //_polygon = null;
+            _polygonFeedback = null;
+        }
+
+        private void OnOnMouseDown(int button, int shift, int i, int i1, double mapX, double mapY)
+        {
+            if (button == 2)
+                return;
+
+            IActiveView activeView = _context.ActiveView;
+            IPoint point = new PointClass();
+            point.PutCoords(mapX, mapY);
+            if (_polygonFeedback == null)
+            {
+                _polygonFeedback = new NewPolygonFeedback()
+                {
+                    Display = activeView.ScreenDisplay
+                };
+                _polygonFeedback.Start(point);
+            }
+            else
+            {
+                _polygonFeedback.AddPoint(point);
+            }
         }
 
         private void LoadIndexLayers()
@@ -191,5 +348,27 @@ namespace Yutai.Pipeline.Editor.Controls
             }
         }
 
+        protected virtual void OnDrawCompleteEvent()
+        {
+            DrawCompleteEvent?.Invoke(this, EventArgs.Empty);
+        }
+
+        protected virtual void OnStartDrawEvent()
+        {
+            StartDrawEvent?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void checkedListBoxIndexes_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (_isRadio && e.NewValue == CheckState.Checked)
+            {
+                for (int i = 0; i < checkedListBoxIndexes.Items.Count; i++)
+                {
+                    if (e.Index == i)
+                        continue;
+                    checkedListBoxIndexes.SetItemChecked(i, false);
+                }
+            }
+        }
     }
 }
