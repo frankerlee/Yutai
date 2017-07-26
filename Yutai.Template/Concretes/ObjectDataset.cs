@@ -17,6 +17,7 @@ namespace Yutai.Plugins.Template.Concretes
             set { _name = value; }
         }
 
+        public int ID { get { return _id; } set { _id = value; } }
         public string AliasName
         {
             get { return _aliasName; }

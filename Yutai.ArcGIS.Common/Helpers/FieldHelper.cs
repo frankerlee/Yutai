@@ -200,7 +200,7 @@ namespace Yutai.ArcGIS.Common.Helpers
         {
             try
             {
-                typeString = typeString.StartsWith("esriField") ? typeString : "esriField" + typeString;
+                typeString = typeString.StartsWith("esriFieldType") ? typeString : "esriFieldType" + typeString;
                 return (esriFieldType)Enum.Parse(typeof(esriFieldType), typeString);
             }
             catch (Exception)
@@ -212,7 +212,7 @@ namespace Yutai.ArcGIS.Common.Helpers
 
         public static string ConvertToSimpleString(esriFieldType fieldType)
         {
-            string typeString = fieldType.ToString().Substring(9);
+            string typeString = fieldType.ToString().Substring(13);
             return typeString;
         }
         public static esriFieldType ConvertFromString(string fieldTypeStr)

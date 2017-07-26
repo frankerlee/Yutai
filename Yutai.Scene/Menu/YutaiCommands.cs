@@ -4,6 +4,7 @@ using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Scene.Commands;
 using Yutai.Plugins.Scene.Commands.Common;
+using Yutai.Plugins.Scene.Commands.Creator;
 using Yutai.Plugins.Scene.Commands.View;
 
 namespace Yutai.Plugins.Scene.Menu
@@ -66,6 +67,7 @@ namespace Yutai.Plugins.Scene.Menu
                     new ToolSceneDrawStaticLoc(_context, _plugin),
                     new CmdLinkMapAndScene(_context,_plugin),
 
+                    new CmdCreateBuilding3D(_context,_plugin),
 
                 };
             }

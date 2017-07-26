@@ -37,6 +37,9 @@
             <BarItem Key="Scene_LinkMapControl" Visible="true"></BarItem>
            
         </PageGroup>
+        <PageGroup Key="Scene_Creator" Caption="三维创建" Visible="true" Index="2">
+          <BarItem Key="Scene_CreateBuilding3D" Visible="true"></BarItem>
+        </PageGroup>
       </Page>
     </Pages>
   </MainMenu>

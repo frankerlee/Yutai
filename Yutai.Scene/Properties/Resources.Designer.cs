@@ -163,6 +163,36 @@ namespace Yutai.Plugins.Scene.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap icon_3d_building {
+            get {
+                object obj = ResourceManager.GetObject("icon_3d_building", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_3d_road {
+            get {
+                object obj = ResourceManager.GetObject("icon_3d_road", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_3d_tree {
+            get {
+                object obj = ResourceManager.GetObject("icon_3d_tree", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap icon_linkage {
             get {
                 object obj = ResourceManager.GetObject("icon_linkage", resourceCulture);

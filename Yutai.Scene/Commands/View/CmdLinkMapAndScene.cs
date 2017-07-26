@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using ESRI.ArcGIS.Analyst3D;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
@@ -71,26 +72,121 @@ namespace Yutai.Plugins.Scene.Commands.View
             if (_mapEvents == null)
             {
                 _mapEvents=_context.ActiveView as IActiveViewEvents_Event;
-                _mapEvents.AfterDraw+= MapEventsOnAfterDraw;
+                
 
                 _sceneEvents = _plugin.SceneView.SceneControl.SceneGraph as ISceneGraphEvents_Event;
-                //_sceneEvents.AfterDraw+= SceneEventsOnAfterDraw;
+               
             }
             _isLinked = !_isLinked;
+            try
+            {
+                if (_isLinked)
+                {
+                    _mapEvents.AfterDraw += MapEventsOnAfterDraw;
+                    _sceneEvents.AfterDraw += SceneEventsOnAfterDraw;
+                }
+                else
+                {
+                    _mapEvents.AfterDraw -= MapEventsOnAfterDraw;
+                    _sceneEvents.AfterDraw -= SceneEventsOnAfterDraw;
+                }
+            }
+            catch (Exception ex)
+            {
+                
+               
+            }
             _isInternal = false;
         }
+        [DllImport("user32")]
+        public static extern int GetWindowRect(int int_0, ref System.Drawing.Rectangle rectangle_0);
 
         private void MapEventsOnAfterDraw(IDisplay display, esriViewDrawPhase phase)
         {
             if (!_isLinked) return;
-            if (_isInternal) return;
+            if (_isInternal)
+            {
+                if (phase == esriViewDrawPhase.esriViewInitialized)
+                {
+                    _isInternal = false;
+                    return;
+                }
+                    return;
+            }
 
-            if (phase != esriViewDrawPhase.esriViewAll) return;
+            if (phase != esriViewDrawPhase.esriViewInitialized) return;
             _isInternal = true;
-            IEnvelope pEnvelope = _context.ActiveView.Extent as IEnvelope;
-            IScene scene = _plugin.Scene;
-            IActiveView pActiveView = scene as IActiveView;
-            pActiveView.Extent = pEnvelope;
+
+            IActiveView pactiveview = (IActiveView)_context.FocusMap;
+            ISceneGraph pScenegraph = (ISceneGraph)_plugin.SceneGraph;
+            ICamera pCamera = (ICamera)_plugin.Camera;
+            pCamera.SetDefaultsMBB(pactiveview.Extent);
+            pScenegraph.ActiveViewer.Redraw(true);
+
+            //  IEnvelope pEnvelope = _context.ActiveView.Extent as IEnvelope;
+            //  IPoint centerPoint = new Point();
+            //  centerPoint.PutCoords(pEnvelope.XMin+pEnvelope.Width/2.0,pEnvelope.YMin+pEnvelope.Height/2.0);
+            //  IPoint pTarget = new Point();
+            //  pTarget.PutCoords(centerPoint.X,centerPoint.Y);
+            //  pTarget.Z = 0;
+
+            //  IPoint ptObserver = new Point();
+            //  ptObserver.X = centerPoint.X;
+            //  ptObserver.Y = centerPoint.Y + 90;
+
+            //  double height = pEnvelope.Width < pEnvelope.Height ? pEnvelope.Width : pEnvelope.Height;
+            //  ptObserver.Z = height;
+
+            //  ICamera camera = _plugin.Camera;
+            //  camera.Target = pTarget;
+            //  camera.Observer = ptObserver;
+            //  camera.Inclination = 30;
+            //// camera.Azimuth = 180;
+            //  _plugin.SceneGraph.RefreshViewers();
+
+
+
+            //ISceneGraph sceneGraph = this._plugin.SceneGraph;
+            //if (camera.ProjectionType == esri3DProjectionType.esriPerspectiveProjection)
+            //{
+            //    camera.ZoomToRect(pEnvelope);
+            //}
+            //else
+            //{
+            //    IPoint point;
+            //    object obj;
+            //    object obj2;
+            //    sceneGraph.Locate(sceneGraph.ActiveViewer, (int)(pEnvelope.XMin + pEnvelope.Width / 2.0), (int)(pEnvelope.YMin + pEnvelope.Height / 2.0), esriScenePickMode.esriScenePickAll, true, out point, out obj, out obj2);
+            //    if (point != null)
+            //    {
+            //        camera.Target = point;
+            //    }
+            //    System.Drawing.Rectangle rectangle = default(System.Drawing.Rectangle);
+            //    if (GetWindowRect(this._plugin.ActiveViewer.hWnd, ref rectangle) == 0)
+            //    {
+            //        return;
+            //    }
+            //    double num = pEnvelope.Width;
+            //    double num2 = pEnvelope.Height;
+            //    if (num > 0.0 && num2 > 0.0)
+            //    {
+            //        num /= (double)Math.Abs(rectangle.Right - rectangle.Left);
+            //        num2 /= (double)Math.Abs(rectangle.Top - rectangle.Bottom);
+            //        if (num > num2)
+            //        {
+            //            camera.Zoom(num);
+            //        }
+            //        else
+            //        {
+            //            camera.Zoom(num2);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        camera.Zoom(0.75);
+            //    }
+            //}
+
             _isInternal = false;
         }
 
@@ -99,31 +195,24 @@ namespace Yutai.Plugins.Scene.Commands.View
             if (!_isLinked) return;
             if (_isInternal) return;
          
-            IScene scene = _plugin.Scene;
-            ISceneViewer sceneViewer = _plugin.ActiveViewer;
-            ICamera camera = sceneViewer.Camera as ICamera;
-            IEnvelope pEnvelope = camera.OrthoViewingExtent;
             _isInternal = true;
-            IEnvelope newEnvelope = new Envelope() as IEnvelope;
-            newEnvelope.PutCoords(pEnvelope.XMin, pEnvelope.YMin, pEnvelope.XMax, pEnvelope.YMax);
-            _context.ActiveView.Extent = newEnvelope;
-            _isInternal = false;
+
+            ICamera scenecamera = _plugin.Camera;
+            IVector3D pvector3D = new Vector3D() as IVector3D;
+            pvector3D.ConstructDifference(scenecamera.Observer, scenecamera.Target);
+            ISphere pShere = new Sphere();
+            pShere.Center = scenecamera.Target;
+            pShere.Radius = scenecamera.ViewingDistance * Math.Sin(scenecamera.ViewFieldAngle * Math.PI / 180) * 0.5;
+            IEnvelope penve = pShere.Envelope;
+            IActiveView focusMap = (IActiveView)_context.FocusMap;
+            focusMap.Extent = penve;
+            focusMap.Refresh();
+            
         }
 
        
 
-        private void MapEventsOnOnExtentUpdated(object displayTransformation, bool sizeChanged, object newEnvelope)
-        {
-            if (!_isLinked) return;
-            if (_isInternal) return;
-
-            _isInternal = true;
-            IEnvelope pEnvelope = newEnvelope as IEnvelope;
-            IScene scene = _plugin.Scene;
-            IActiveView pActiveView=scene as IActiveView;
-            pActiveView.Extent = pEnvelope;
-            _isInternal = false;
-        }
+     
         
     }
 }

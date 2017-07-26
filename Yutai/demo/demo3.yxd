@@ -1,0 +1,15 @@
+﻿<YutaiGIS>
+  <MapDoc>demo3.mxd</MapDoc>
+  <SceneDoc>demo3.sxd</SceneDoc>
+  <ViewStyle>1</ViewStyle>
+  <Plugins>
+    <Plugin>
+      <Guid>131e4661-6e57-4bba-ba2a-ce7735dc67e1</Guid>
+      <Name>三维</Name>
+    </Plugin>
+  </Plugins>
+  <Overview>
+    <OverviewType>mxd</OverviewType>
+    <ObjectName>demo3.mxd</ObjectName>
+  </Overview>
+</YutaiGIS>

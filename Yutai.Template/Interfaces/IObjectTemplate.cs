@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Xml;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using Yutai.Plugins.Template.Concretes;
 
 namespace Yutai.Plugins.Template.Interfaces
 {
@@ -25,16 +26,22 @@ namespace Yutai.Plugins.Template.Interfaces
 
         string DatasetName { get; set; }
 
+        string FeatureTypeName { get; set; }
+
         esriFeatureType FeatureType { get; set; }
 
         string GeometryTypeName { get; set; }
 
         esriGeometryType GeometryType { get; set; }
         
-        List<IYTField> Fields { get; set; }
+        List<YTField> Fields { get; set; }
+
+        ITemplateDatabase Database { get; set; }
         void ReadFromXml(XmlNode xmlNode);
         XmlNode ToXml(XmlDocument doc);
 
         void UpdateRow(IRow pRow);
+
+        bool IsValid(out string msg);
     }
 }

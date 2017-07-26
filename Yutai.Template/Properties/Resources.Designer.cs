@@ -63,9 +63,49 @@ namespace Yutai.Plugins.Template.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap icon_template_connectionadd {
+            get {
+                object obj = ResourceManager.GetObject("icon_template_connectionadd", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_template_connectionremove2 {
+            get {
+                object obj = ResourceManager.GetObject("icon_template_connectionremove2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap icon_template_fc {
             get {
                 object obj = ResourceManager.GetObject("icon_template_fc", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_template_manager {
+            get {
+                object obj = ResourceManager.GetObject("icon_template_manager", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_template_refresh {
+            get {
+                object obj = ResourceManager.GetObject("icon_template_refresh", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

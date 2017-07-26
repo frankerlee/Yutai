@@ -280,6 +280,9 @@
     <EmbeddedResource Include="Views\NewMainView.resx">
       <DependentUpon>NewMainView.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="demo\demo3.yxd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="demo\demo2.yxd" />
     <None Include="demo\demo.yxd">
       <SubType>Designer</SubType>
@@ -661,7 +664,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Plugins\configs\YutaiTemplate.mdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\icon_add_data.png" />
     <None Include="Resources\icon_exit.png" />

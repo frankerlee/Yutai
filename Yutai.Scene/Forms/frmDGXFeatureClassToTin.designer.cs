@@ -17,7 +17,7 @@ namespace Yutai.Plugins.Scene.Forms
 	
 	private void InitializeComponent()
 		{
-			ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(frmDGXFeatureClassToTin));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDGXFeatureClassToTin));
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.cboTagValueField = new System.Windows.Forms.ComboBox();
 			this.cboTinSurfaceType = new System.Windows.Forms.ComboBox();
@@ -88,8 +88,7 @@ namespace Yutai.Plugins.Scene.Forms
 			base.Controls.Add(this.groupBox2);
 			base.Controls.Add(this.cmdCancle);
 			base.Controls.Add(this.cmdOK);
-			base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-			base.Icon = (System.Drawing.Icon)componentResourceManager.GetObject("$Icon");
+			base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;			
 			base.MaximizeBox = false;
 			base.MinimizeBox = false;
 			base.Name = "frmDGXFeatureClassToTin";

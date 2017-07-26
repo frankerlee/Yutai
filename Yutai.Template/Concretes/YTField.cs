@@ -6,7 +6,7 @@ using Yutai.Plugins.Template.Interfaces;
 
 namespace Yutai.Plugins.Template.Concretes
 {
-    public class YTField : IYTField
+    public class YTField 
     {
     
         private string _name;
@@ -15,32 +15,42 @@ namespace Yutai.Plugins.Template.Concretes
         private int _precision;
         private esriFieldType _fieldType;
         private bool _allowNull;
-        private string _domainValues;
+        private string _domain;
         private string _esriFieldName;
         private int _id;
         private string _fieldTypeName;
         private bool _isKey;
+        private string _defaultValue;
 
 
         public YTField()
         {
-          
+            _length = 50;
+            _precision = 0;
+            _fieldTypeName = "String";
+            _allowNull = true;
+            _isKey = false;
+            _domain = "";
+            _name = "";
+            _aliasName = "";
+
         }
 
-        public YTField(IYTField pField)
+        public YTField(YTField pField)
         {
             _name = pField.Name;
             _aliasName = pField.AliasName;
             _length = pField.Length;
             _precision = pField.Precision;
             _fieldType = pField.FieldType;
+            _fieldTypeName = pField.FieldTypeName;
             _allowNull = pField.AllowNull;
-            _domainValues = pField.DomainValues;
+            _domain = pField.DomainName;
             _isKey = pField.IsKey;
           
-            if (string.IsNullOrEmpty(_domainValues))
+            if (string.IsNullOrEmpty(_domain))
             {
-                DomainValues = pField.DomainValues;
+                DomainName = pField.DomainName;
             }
         }
 
@@ -57,6 +67,8 @@ namespace Yutai.Plugins.Template.Concretes
             _allowNull = string.IsNullOrEmpty(allowNullStr) || allowNullStr.ToUpper().StartsWith("T") || allowNullStr == "真";
             string keyStr= FeatureHelper.GetRowValue(pRow, "IsKey").ToString();
             _isKey = string.IsNullOrEmpty(keyStr)==false || (keyStr.ToUpper().StartsWith("T") == true ? true : false);
+            _domain = FeatureHelper.GetRowValue(pRow, "FieldDomain").ToString();
+            _defaultValue = FeatureHelper.GetRowValue(pRow, "DefaultValue").ToString();
         }
 
         public YTField(XmlNode node)
@@ -101,6 +113,16 @@ namespace Yutai.Plugins.Template.Concretes
             set { _isKey = value; }
         }
 
+        public string FieldTypeName
+        {
+            get { return _fieldTypeName; }
+            set
+            {
+                _fieldTypeName = value;
+                _fieldType = FieldHelper.ConvertFromSimpleString(_fieldTypeName);
+            }
+        }
+
         public esriFieldType FieldType
         {
             get { return _fieldType; }
@@ -113,13 +135,19 @@ namespace Yutai.Plugins.Template.Concretes
             set { _allowNull = value; }
         }
 
-        public string DomainValues
+        public string DomainName
         {
-            get { return _domainValues; }
-            set { _domainValues = value; }
+            get { return _domain; }
+            set { _domain = value; }
         }
 
-    
+        public string DefaultValue
+        {
+            get { return _defaultValue; }
+            set { _defaultValue = value; }
+        }
+
+
         public void ReadFromXml(XmlNode xml)
         {
             if (xml.Attributes != null)
@@ -136,7 +164,8 @@ namespace Yutai.Plugins.Template.Concretes
                     ? 50
                     : Convert.ToInt32(xml.Attributes["Precision"].Value);
                 _fieldType = FieldHelper.ConvertFromString(_fieldTypeName);
-                _domainValues = xml.Attributes["DomainValues"] == null ? "" : xml.Attributes["DomainValues"].Value;
+                _domain = xml.Attributes["FieldDomain"] == null ? "" : xml.Attributes["FieldDomain"].Value;
+                _defaultValue = xml.Attributes["DefaultValue"] == null ? "" : xml.Attributes["DefaultValue"].Value;
                 _isKey = string.IsNullOrWhiteSpace(xml.Attributes["IsKey"].Value) || (xml.Attributes["IsKey"].Value.ToUpper().StartsWith("T"));
 
             }
@@ -157,9 +186,11 @@ namespace Yutai.Plugins.Template.Concretes
             fieldTypeAttribute.Value = FieldHelper.ConvertToSimpleString(_fieldType);
             XmlAttribute precisionAttribute = doc.CreateAttribute("Precision");
             precisionAttribute.Value = _precision.ToString();
-            XmlAttribute domainAttribute = doc.CreateAttribute("DomainValues");
-            domainAttribute.Value = _domainValues;
-         
+            XmlAttribute domainAttribute = doc.CreateAttribute("FieldDomain");
+            domainAttribute.Value = _domain;
+            XmlAttribute defaultAttribute = doc.CreateAttribute("DefaultValue");
+            defaultAttribute.Value = _defaultValue;
+
             fieldNode.Attributes.Append(nameAttribute);
             fieldNode.Attributes.Append(aliasNameAttribute);
             fieldNode.Attributes.Append(lengthAttribute);
@@ -170,6 +201,7 @@ namespace Yutai.Plugins.Template.Concretes
             domainAttribute = doc.CreateAttribute("IsKey");
             domainAttribute.Value = _isKey ? "True":"False";
             fieldNode.Attributes.Append(domainAttribute);
+            fieldNode.Attributes.Append(defaultAttribute);
 
             return fieldNode;
         }
@@ -181,9 +213,9 @@ namespace Yutai.Plugins.Template.Concretes
             set { _esriFieldName = value; }
         }
 
-        public IYTField Clone(bool keepClass)
+        public YTField Clone(bool keepClass)
         {
-            IYTField newField = new YTField(this);
+            YTField newField = new YTField(this);
             return newField;
         }
 
@@ -196,6 +228,8 @@ namespace Yutai.Plugins.Template.Concretes
             pRow.Value[pRow.Fields.FindField("FieldType")] = FieldHelper.ConvertToSimpleString(_fieldType);
             pRow.Value[pRow.Fields.FindField("AllowNull")] = _allowNull ? "True" : "False";
             pRow.Value[pRow.Fields.FindField("IsKey")] = _isKey ? "True" : "False";
+            pRow.Value[pRow.Fields.FindField("FieldDomain")] = _domain;
+            pRow.Value[pRow.Fields.FindField("DefaultValue")] = _defaultValue;
             pRow.Store();
             _id = pRow.OID;
         }
@@ -213,6 +247,22 @@ namespace Yutai.Plugins.Template.Concretes
                 pFieldEdit.Precision_2 = _precision;
             }
             return pFieldEdit as IField;
+        }
+
+        public bool IsValid(out string msg)
+        {
+            msg = "";
+            if (string.IsNullOrEmpty(_name))
+            {
+                msg = "名称不能为空!";
+                return false;
+            }
+            if (string.IsNullOrEmpty(_fieldTypeName))
+            {
+                msg = "类型不能为空!";
+                return false;
+            }
+            return true;
         }
     }
 }

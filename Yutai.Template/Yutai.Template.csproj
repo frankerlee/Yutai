@@ -35,9 +35,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Data.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282" />
     <Reference Include="DevExpress.XtraWizard.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=d90006c019dd5282, processorArchitecture=MSIL" />
     <Reference Include="ESRI.ArcGIS.ADF, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86">
       <EmbedInteropTypes>False</EmbedInteropTypes>
@@ -60,6 +65,10 @@
     <Reference Include="ESRI.ArcGIS.SystemUI, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -76,11 +85,34 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\CmdCreateFCByTemplate.cs" />
+    <Compile Include="Commands\CmdCreateFeatureDatasetByTemplate.cs" />
+    <Compile Include="Commands\CmdShowTemplateView.cs" />
     <Compile Include="CompositionRoot.cs" />
     <Compile Include="Concretes\ObjectDataset.cs" />
     <Compile Include="Concretes\ObjectTemplate.cs" />
     <Compile Include="Concretes\TemplateDatabase.cs" />
+    <Compile Include="Concretes\YTDomain.cs" />
+    <Compile Include="Concretes\YTDomainValue.cs" />
     <Compile Include="Concretes\YTField.cs" />
+    <Compile Include="Controls\ComboxItemInfo.cs" />
+    <Compile Include="Forms\frmEditDataset.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEditDataset.Designer.cs">
+      <DependentUpon>frmEditDataset.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmEditDomain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEditDomain.Designer.cs">
+      <DependentUpon>frmEditDomain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmEditTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEditTemplate.Designer.cs">
+      <DependentUpon>frmEditTemplate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmQuickCreateFeatureClass.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +129,7 @@
     <Compile Include="Interfaces\ITemplateDatabase.cs" />
     <Compile Include="Interfaces\IYTField.cs" />
     <Compile Include="Menu\MenuGenerator.cs" />
+    <Compile Include="Menu\TemplateViewService.cs" />
     <Compile Include="Menu\YutaiCommands.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -106,12 +139,29 @@
     <Compile Include="TemplatePlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TemplateSetting.cs" />
+    <Compile Include="Views\ITemplateView.cs" />
+    <Compile Include="Views\TemplateView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\TemplateView.Designer.cs">
+      <DependentUpon>TemplateView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TemplateViewCommand.cs" />
+    <Compile Include="Views\TemplateViewPresenter.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controls\" />
-    <Folder Include="Views\" />
+    <None Include="Resources\icon_template_manager.png" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\frmEditDataset.resx">
+      <DependentUpon>frmEditDataset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEditDomain.resx">
+      <DependentUpon>frmEditDomain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEditTemplate.resx">
+      <DependentUpon>frmEditTemplate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmQuickCreateFeatureClass.resx">
       <DependentUpon>frmQuickCreateFeatureClass.cs</DependentUpon>
     </EmbeddedResource>
@@ -123,8 +173,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\TemplateView.resx">
+      <DependentUpon>TemplateView.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Resources\icon_template_fc.png" />
   </ItemGroup>
   <ItemGroup>
@@ -168,6 +223,18 @@
       <Name>Yutai.UI</Name>
       <Private>False</Private>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_template_connectionremove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_template_connectionremove2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_template_connectionadd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_template_refresh.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

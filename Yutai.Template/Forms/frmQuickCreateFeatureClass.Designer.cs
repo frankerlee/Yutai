@@ -327,7 +327,7 @@
             this.chkIndex.Location = new System.Drawing.Point(16, 16);
             this.chkIndex.Name = "chkIndex";
             this.chkIndex.Properties.Caption = "生成索引图";
-            this.chkIndex.Size = new System.Drawing.Size(75, 19);
+            this.chkIndex.Size = new System.Drawing.Size(99, 19);
             this.chkIndex.TabIndex = 0;
             this.chkIndex.CheckedChanged += new System.EventHandler(this.chkIndex_CheckedChanged);
             // 

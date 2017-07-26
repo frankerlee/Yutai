@@ -404,7 +404,7 @@ namespace Yutai.ArcGIS.Common.Helpers
 
         public static string ConvertTypeToSimpleString(esriFeatureType featureType)
         {
-            string simpleString = featureType.ToString().Substring(11);
+            string simpleString = featureType.ToString().Substring(6);
             return simpleString;
 
         }

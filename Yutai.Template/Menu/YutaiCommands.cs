@@ -38,6 +38,7 @@ namespace Yutai.Plugins.Template.Menu
                 {
                    new CmdCreateFCByTemplate(_context,_plugin),
                    new CmdCreateFeatureDatasetByTemplate(_context,_plugin),
+                   new CmdShowTemplateView(_context),
                 };
             }
             catch (Exception ex)
