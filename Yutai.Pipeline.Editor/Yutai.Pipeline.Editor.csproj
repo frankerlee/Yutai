@@ -128,6 +128,8 @@
     <Compile Include="Classes\IFieldSetting.cs" />
     <Compile Include="Classes\IFontConfig.cs" />
     <Compile Include="Classes\IMultiCheQiConfig.cs" />
+    <Compile Include="Commands\Common\CmdGetTargetPoint.cs" />
+    <Compile Include="Commands\Common\CmdPointLineLinkage.cs" />
     <Compile Include="Commands\Exchange\CmdConversion.cs" />
     <Compile Include="Commands\Exchange\CmdClip.cs" />
     <Compile Include="Commands\Exchange\CmdDataExport.cs" />
@@ -234,6 +236,7 @@
     <Compile Include="Controls\UcSpatialReference.Designer.cs">
       <DependentUpon>UcSpatialReference.cs</DependentUpon>
     </Compile>
+    <Compile Include="Emuns\AnnotationSortingCommand.cs" />
     <Compile Include="Emuns\IdentifyRoadNameCommand.cs" />
     <Compile Include="Emuns\SurveyCoordType.cs" />
     <Compile Include="Forms\Exchange\FrmClip.cs">
@@ -332,6 +335,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\AnnotationSortingDockPanelService.cs" />
     <Compile Include="Services\IdentifyRoadNameDockPanelService.cs" />
     <Compile Include="SqlCe\ClassGlobalText.cs" />
     <Compile Include="SqlCe\ClassRichTextBoxExtension.cs" />
@@ -339,6 +343,14 @@
     <Compile Include="SqlCe\ClassSqlCeDb.cs" />
     <Compile Include="SqlCe\ClassSqlParser.cs" />
     <Compile Include="SqlCe\SqlCeResultSet.cs" />
+    <Compile Include="Views\AnnotationSortingDockPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\AnnotationSortingDockPanel.Designer.cs">
+      <DependentUpon>AnnotationSortingDockPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AnnotationSortingPresenter.cs" />
+    <Compile Include="Views\IAnnotationSortingView.cs" />
     <Compile Include="Views\IdentifyRoadNameDockPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -470,6 +482,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AnnotationSortingDockPanel.resx">
+      <DependentUpon>AnnotationSortingDockPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\IdentifyRoadNameDockPanel.resx">
       <DependentUpon>IdentifyRoadNameDockPanel.cs</DependentUpon>

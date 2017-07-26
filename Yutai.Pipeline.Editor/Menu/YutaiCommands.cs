@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Yutai.Pipeline.Editor.Commands;
+using Yutai.Pipeline.Editor.Commands.Common;
 using Yutai.Pipeline.Editor.Commands.Exchange;
 using Yutai.Pipeline.Editor.Commands.Mark;
 using Yutai.Pipeline.Editor.Commands.Profession;
@@ -43,6 +44,8 @@ namespace Yutai.Pipeline.Editor.Menu
                     return new List<YutaiCommand>();
                 _commands = new List<YutaiCommand>()
                 {
+                    new CmdPointLineLinkage(_context, _plugin),
+
                     new CmdAngleConvert(_context, _plugin),
                     new CmdAutoGenerateNumbers(_context, _plugin),
                     new CmdIdentifyRoadName(_context, _plugin),

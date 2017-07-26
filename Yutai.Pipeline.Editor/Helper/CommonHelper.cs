@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,6 +16,7 @@ using stdole;
 using Yutai.Pipeline.Config.Concretes;
 using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Pipeline.Editor.Classes;
+using Yutai.Pipeline.Editor.Views;
 using Yutai.Shared;
 
 namespace Yutai.Pipeline.Editor.Helper
@@ -524,6 +526,182 @@ namespace Yutai.Pipeline.Editor.Helper
             pColor.Green = color.G;
             pColor.Blue = color.B;
             return pColor;
+        }
+
+        public static List<IFeature> GetSelectedFeatures(IMap map)
+        {
+            List<IFeature> features = new List<IFeature>();
+            IEnumFeature enumFeature = map.FeatureSelection as IEnumFeature;
+            IFeature feature;
+            while ((feature = enumFeature.Next()) != null)
+            {
+                features.Add(feature);
+            }
+            return features;
+        }
+
+        public static List<IFeature> GetSelectedFeatures(IFeatureLayer featureLayer)
+        {
+            List<IFeature> features = new List<IFeature>();
+            IFeatureSelection featureSelection = featureLayer as IFeatureSelection;
+            if (featureSelection?.SelectionSet == null || featureSelection.SelectionSet.Count <= 0)
+                return features;
+            ICursor cursor;
+            featureSelection.SelectionSet.Search(null, false, out cursor);
+            if (cursor == null)
+                return features;
+            IFeature feature;
+            while ((feature = cursor.NextRow() as IFeature) != null)
+            {
+                features.Add(feature);
+            }
+            Marshal.ReleaseComObject(cursor);
+            return features;
+        }
+
+        public static List<string> ToAnnotations(List<IFeature> features)
+        {
+            List<string> list = new List<string>();
+            foreach (IFeature feature in features)
+            {
+                IAnnotationFeature pAnnotateFeature = feature as IAnnotationFeature;
+                if (pAnnotateFeature == null)
+                    continue;
+                IElement pElement = pAnnotateFeature.Annotation as IElement;
+                ITextElement pTextElement = pElement as ITextElement;
+                if (pTextElement == null)
+                    continue;
+                list.Add(pTextElement.Text);
+            }
+            return list;
+        }
+        public static List<IPolygon> GetMovedPoints(List<IFeature> features, IPoint point, enumAnnotationDirection direction)
+        {
+            List<IPolygon> list = new List<IPolygon>();
+            if (features.Count <= 0)
+                return list;
+            IPoint originPoint = new PointClass
+            {
+                X = point.X,
+                Y = point.Y - features[0].Extent.Height / 2
+            };
+            for (int i = 0; i < features.Count; i++)
+            {
+                IFeature pFeature = features[i];
+                IPolygon tempPolygon = new PolygonClass();
+                IPointCollection pointCollection = tempPolygon as IPointCollection;
+                IPoint point1 = new PointClass();
+                IPoint point2 = new PointClass();
+                IPoint point3 = new PointClass();
+                IPoint point4 = new PointClass();
+                switch (direction)
+                {
+                    case enumAnnotationDirection.LeftUp:
+                        {
+                            point1 = new PointClass
+                            {
+                                X = originPoint.X - pFeature.Extent.Width,
+                                Y = originPoint.Y + pFeature.Extent.Height * (features.Count - 1 - i)
+                            };
+                            point2 = new PointClass
+                            {
+                                X = originPoint.X - pFeature.Extent.Width,
+                                Y = originPoint.Y + pFeature.Extent.Height * (features.Count - i)
+                            };
+                            point3 = new PointClass
+                            {
+                                X = originPoint.X,
+                                Y = originPoint.Y + pFeature.Extent.Height * (features.Count - i)
+                            };
+                            point4 = new PointClass
+                            {
+                                X = originPoint.X,
+                                Y = originPoint.Y + pFeature.Extent.Height * (features.Count - 1 - i)
+                            };
+                        }
+                        break;
+                    case enumAnnotationDirection.RightUp:
+                        {
+                            point1 = new PointClass
+                            {
+                                X = originPoint.X,
+                                Y = originPoint.Y + pFeature.Extent.Height * (features.Count - 1 - i)
+                            };
+                            point2 = new PointClass
+                            {
+                                X = originPoint.X,
+                                Y = originPoint.Y + pFeature.Extent.Height * (features.Count - i)
+                            };
+                            point3 = new PointClass
+                            {
+                                X = originPoint.X + pFeature.Extent.Width,
+                                Y = originPoint.Y + pFeature.Extent.Height * (features.Count - i)
+                            };
+                            point4 = new PointClass
+                            {
+                                X = originPoint.X + pFeature.Extent.Width,
+                                Y = originPoint.Y + pFeature.Extent.Height * (features.Count - 1 - i)
+                            };
+                        }
+                        break;
+                    case enumAnnotationDirection.RightDown:
+                        {
+                            point1 = new PointClass
+                            {
+                                X = originPoint.X,
+                                Y = originPoint.Y - pFeature.Extent.Height * (i + 1)
+                            };
+                            point2 = new PointClass
+                            {
+                                X = originPoint.X,
+                                Y = originPoint.Y - pFeature.Extent.Height * (i)
+                            };
+                            point3 = new PointClass
+                            {
+                                X = originPoint.X + pFeature.Extent.Width,
+                                Y = originPoint.Y - pFeature.Extent.Height * (i)
+                            };
+                            point4 = new PointClass
+                            {
+                                X = originPoint.X + pFeature.Extent.Width,
+                                Y = originPoint.Y - pFeature.Extent.Height * (i + 1)
+                            };
+                        }
+                        break;
+                    case enumAnnotationDirection.LeftDown:
+                        {
+                            point1 = new PointClass
+                            {
+                                X = originPoint.X - pFeature.Extent.Width,
+                                Y = originPoint.Y - pFeature.Extent.Height * (i + 1)
+                            };
+                            point2 = new PointClass
+                            {
+                                X = originPoint.X - pFeature.Extent.Width,
+                                Y = originPoint.Y - pFeature.Extent.Height * (i)
+                            };
+                            point3 = new PointClass
+                            {
+                                X = originPoint.X,
+                                Y = originPoint.Y - pFeature.Extent.Height * (i)
+                            };
+                            point4 = new PointClass
+                            {
+                                X = originPoint.X,
+                                Y = originPoint.Y - pFeature.Extent.Height * (i + 1)
+                            };
+                        }
+                        break;
+                }
+                pointCollection.AddPoint(point1);
+                pointCollection.AddPoint(point2);
+                pointCollection.AddPoint(point3);
+                pointCollection.AddPoint(point4);
+                pointCollection.AddPoint(point1);
+                list.Add(tempPolygon);
+            }
+
+            return list;
         }
     }
 }
