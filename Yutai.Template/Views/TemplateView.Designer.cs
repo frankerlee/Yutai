@@ -28,38 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TemplateView));
             this.trvDatabase = new System.Windows.Forms.TreeView();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.menuDatabase = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.imageList1 = new System.Windows.Forms.ImageList();
+            this.menuDatabase = new System.Windows.Forms.ContextMenuStrip();
             this.mnuAddConnection = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuRefresh = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuConnection = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuConnection = new System.Windows.Forms.ContextMenuStrip();
             this.mnuRemoveConnection = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuConnectionRefresh = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuRegisterTemplate = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuFCTemplates = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuPasteObject = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuFCTemplates = new System.Windows.Forms.ContextMenuStrip();
             this.mnuAddFCTemplate = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFCTemplateRefresh = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuDomains = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuDomains = new System.Windows.Forms.ContextMenuStrip();
             this.mnuAddDomain = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDomainRefresh = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuCopyDomains = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPasteDomain = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuObject = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuObject = new System.Windows.Forms.ContextMenuStrip();
             this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuProperty = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuCopyObject = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuDatasets = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuDatasets = new System.Windows.Forms.ContextMenuStrip();
             this.mnuAddDataset = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDatasetRefresh = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuPasteObject = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuCreateObject = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDatabase.SuspendLayout();
             this.menuConnection.SuspendLayout();
             this.menuFCTemplates.SuspendLayout();
@@ -127,7 +128,7 @@
             this.toolStripSeparator5,
             this.mnuPasteObject});
             this.menuConnection.Name = "menuConnection";
-            this.menuConnection.Size = new System.Drawing.Size(173, 126);
+            this.menuConnection.Size = new System.Drawing.Size(173, 104);
             // 
             // mnuRemoveConnection
             // 
@@ -154,6 +155,18 @@
             this.mnuRegisterTemplate.Size = new System.Drawing.Size(172, 22);
             this.mnuRegisterTemplate.Text = "注册为模板数据库";
             this.mnuRegisterTemplate.Click += new System.EventHandler(this.mnuRegisterTemplate_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(169, 6);
+            // 
+            // mnuPasteObject
+            // 
+            this.mnuPasteObject.Name = "mnuPasteObject";
+            this.mnuPasteObject.Size = new System.Drawing.Size(172, 22);
+            this.mnuPasteObject.Text = "粘贴";
+            this.mnuPasteObject.Click += new System.EventHandler(this.mnuPasteObject_Click);
             // 
             // menuFCTemplates
             // 
@@ -210,14 +223,14 @@
             // mnuCopyDomains
             // 
             this.mnuCopyDomains.Name = "mnuCopyDomains";
-            this.mnuCopyDomains.Size = new System.Drawing.Size(152, 22);
+            this.mnuCopyDomains.Size = new System.Drawing.Size(148, 22);
             this.mnuCopyDomains.Text = "复制";
             this.mnuCopyDomains.Visible = false;
             // 
             // mnuPasteDomain
             // 
             this.mnuPasteDomain.Name = "mnuPasteDomain";
-            this.mnuPasteDomain.Size = new System.Drawing.Size(152, 22);
+            this.mnuPasteDomain.Size = new System.Drawing.Size(148, 22);
             this.mnuPasteDomain.Text = "粘贴";
             this.mnuPasteDomain.Visible = false;
             // 
@@ -228,38 +241,40 @@
             this.toolStripSeparator3,
             this.mnuProperty,
             this.toolStripSeparator4,
-            this.mnuCopyObject});
+            this.mnuCopyObject,
+            this.toolStripSeparator6,
+            this.mnuCreateObject});
             this.menuObject.Name = "menuObject";
-            this.menuObject.Size = new System.Drawing.Size(101, 82);
+            this.menuObject.Size = new System.Drawing.Size(153, 132);
             // 
             // mnuDelete
             // 
             this.mnuDelete.Name = "mnuDelete";
-            this.mnuDelete.Size = new System.Drawing.Size(100, 22);
+            this.mnuDelete.Size = new System.Drawing.Size(152, 22);
             this.mnuDelete.Text = "删除";
             this.mnuDelete.Click += new System.EventHandler(this.mnuDelete_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(97, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuProperty
             // 
             this.mnuProperty.Name = "mnuProperty";
-            this.mnuProperty.Size = new System.Drawing.Size(100, 22);
+            this.mnuProperty.Size = new System.Drawing.Size(152, 22);
             this.mnuProperty.Text = "属性";
             this.mnuProperty.Click += new System.EventHandler(this.mnuProperty_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(97, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuCopyObject
             // 
             this.mnuCopyObject.Name = "mnuCopyObject";
-            this.mnuCopyObject.Size = new System.Drawing.Size(100, 22);
+            this.mnuCopyObject.Size = new System.Drawing.Size(152, 22);
             this.mnuCopyObject.Text = "复制";
             this.mnuCopyObject.Click += new System.EventHandler(this.mnuCopyObject_Click);
             // 
@@ -285,17 +300,17 @@
             this.mnuDatasetRefresh.Text = "刷新";
             this.mnuDatasetRefresh.Click += new System.EventHandler(this.mnuDatasetRefresh_Click);
             // 
-            // toolStripSeparator5
+            // toolStripSeparator6
             // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(169, 6);
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(149, 6);
             // 
-            // mnuPasteObject
+            // mnuCreateObject
             // 
-            this.mnuPasteObject.Name = "mnuPasteObject";
-            this.mnuPasteObject.Size = new System.Drawing.Size(172, 22);
-            this.mnuPasteObject.Text = "粘贴";
-            this.mnuPasteObject.Click += new System.EventHandler(this.mnuPasteObject_Click);
+            this.mnuCreateObject.Name = "mnuCreateObject";
+            this.mnuCreateObject.Size = new System.Drawing.Size(152, 22);
+            this.mnuCreateObject.Text = "创建对象";
+            this.mnuCreateObject.Click += new System.EventHandler(this.mnuCreateObject_Click);
             // 
             // TemplateView
             // 
@@ -345,5 +360,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuCopyObject;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem mnuPasteObject;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripMenuItem mnuCreateObject;
     }
 }

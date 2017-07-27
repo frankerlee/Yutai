@@ -17,6 +17,7 @@ using Yutai.ArcGIS.Common.BaseClasses;
 using Yutai.ArcGIS.Common.Helpers;
 using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Services;
+using Yutai.Plugins.Template.Concretes;
 using Yutai.Plugins.Template.Interfaces;
 
 namespace Yutai.Plugins.Template.Forms
@@ -24,9 +25,8 @@ namespace Yutai.Plugins.Template.Forms
     public partial class frmQuickCreateFeatureDataset : Form
     {
         private IMap _map;
-
         private IAppContext _context;
-        private TemplatePlugin _plugin;
+        private ITemplateDatabase _database;
         private List<IObjectTemplate> _templates = null;
         public frmQuickCreateFeatureDataset()
         {
@@ -37,9 +37,9 @@ namespace Yutai.Plugins.Template.Forms
             InitializeComponent();
             _context = context;
             _map = _context.FocusMap;
-            _plugin = plugin;
             ISpatialReference spatialReference = _map.SpatialReference;
             txtSpatialRef.Text = spatialReference.Name;
+            _database = plugin.TemplateDatabase;
 
             IActiveView pActiveView = _map as IActiveView;
             IEnvelope pEnv = pActiveView.Extent;
@@ -50,30 +50,55 @@ namespace Yutai.Plugins.Template.Forms
             LoadObjectDatasets();
             chkNamePre.Checked = true;
             chkNameNext.Checked = false;
-
         }
 
+        public frmQuickCreateFeatureDataset(IAppContext context, ITemplateDatabase database)
+        {
+            InitializeComponent();
+            _context = context;
+            _map = _context.FocusMap;
+            ISpatialReference spatialReference = _map.SpatialReference;
+            txtSpatialRef.Text = spatialReference.Name;
+            _database = database;
+
+            IActiveView pActiveView = _map as IActiveView;
+            IEnvelope pEnv = pActiveView.Extent;
+            txtXMin.EditValue = Math.Floor(pEnv.XMin);
+            txtYMin.EditValue = Math.Floor(pEnv.YMin);
+            txtXMax.EditValue = Math.Ceiling(pEnv.XMax);
+            txtYMax.EditValue = Math.Ceiling(pEnv.YMax);
+            LoadObjectDatasets();
+            chkNamePre.Checked = true;
+            chkNameNext.Checked = false;
+        }
+
+        public void SetDataset(string datasetName)
+        {
+            cmbTemplate.SelectedItem = datasetName;
+            LoadFeatureClasses();
+            cmbTemplate.Enabled = false;
+        }
         private void LoadObjectDatasets()
         {
-            if (_plugin.TemplateDatabase.Datasets == null || _plugin.TemplateDatabase.Datasets.Count == 0)
+            if (_database.Datasets == null || _database.Datasets.Count == 0)
             {
-                _plugin.TemplateDatabase.Connect();
-                _plugin.TemplateDatabase.LoadDatasets();
-                _plugin.TemplateDatabase.DisConnect();
+                _database.Connect();
+                _database.LoadDatasets();
+                _database.DisConnect();
             }
-            foreach (IObjectDataset template in _plugin.TemplateDatabase.Datasets)
+            foreach (IObjectDataset template in _database.Datasets)
             {
                 cmbTemplate.Items.Add(template.Name);
             }
         }
         private void LoadTemplates()
         {
-            if (_plugin.TemplateDatabase.Templates == null || _plugin.TemplateDatabase.Templates.Count == 0)
+            if (_database.Templates == null || _database.Templates.Count == 0)
             {
-                _plugin.TemplateDatabase.Connect();
+                _database.Connect();
                 List<IObjectTemplate> templates =
-                    _plugin.TemplateDatabase.GetTemplatesByDataset(cmbTemplate.SelectedItem.ToString());
-                _plugin.TemplateDatabase.DisConnect();
+                    _database.GetTemplatesByDataset(cmbTemplate.SelectedItem.ToString());
+                _database.DisConnect();
             }
         }
 
@@ -134,12 +159,17 @@ namespace Yutai.Plugins.Template.Forms
 
         private void cmbTemplate_SelectedIndexChanged(object sender, EventArgs e)
         {
+            LoadFeatureClasses();
+           
+        }
+
+        private void LoadFeatureClasses()
+        {
             chkFeatureClasses.Items.Clear();
             string dsName = cmbTemplate.Text;
-            _plugin.TemplateDatabase.Connect();
-            _templates =
-                  _plugin.TemplateDatabase.GetTemplatesByDataset(dsName);
-            _plugin.TemplateDatabase.DisConnect();
+            _database.Connect();
+            _templates = _database.GetTemplatesByDataset(dsName);
+            _database.DisConnect();
             if (_templates == null) return;
             foreach (IObjectTemplate template in _templates)
             {
@@ -174,7 +204,7 @@ namespace Yutai.Plugins.Template.Forms
             object createLoc;
             IWorkspace2 workspace2 = null;
             IObjectDataset dataset =
-                _plugin.TemplateDatabase.Datasets.FirstOrDefault(c => c.Name == cmbTemplate.SelectedItem.ToString());
+                _database.Datasets.FirstOrDefault(c => c.Name == cmbTemplate.SelectedItem.ToString());
             if (dataset == null) return;
 
             IGxDatabase pDataset = txtDB.Tag as IGxDatabase;
@@ -238,7 +268,7 @@ namespace Yutai.Plugins.Template.Forms
                         pFieldsEdit.AddField(pField);
 
                     string keyName = "";
-                    foreach (IYTField ytField in template.Fields)
+                    foreach (YTField ytField in template.Fields)
                     {
                         pField = ytField.CreateField();
                         if (pFieldsEdit.FindField(pField.Name) < 0)

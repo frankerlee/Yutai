@@ -581,5 +581,32 @@ namespace Yutai.Plugins.Template.Views
             }
             _copyObject = null;
         }
+
+        private void mnuCreateObject_Click(object sender, EventArgs e)
+        {
+            TreeNode currentNode = trvDatabase.SelectedNode;
+            ITemplateDatabase templateDatabase = currentNode.Parent.Parent.Tag as ITemplateDatabase;
+            if (currentNode.Parent.Text == "模板")
+            {
+                IObjectTemplate template = currentNode.Tag as IObjectTemplate;
+                frmQuickCreateFeatureClass frm=new frmQuickCreateFeatureClass(_context,_plugin);
+                frm.SingleTemplate = template;
+                frm.ShowDialog();
+
+            }
+            if (currentNode.Parent.Text == "数据字典")
+            {
+                
+            }
+            if (currentNode.Parent.Text == "数据集")
+            {
+
+                IObjectDataset dataset = currentNode.Tag as IObjectDataset;
+                frmQuickCreateFeatureDataset frm = new frmQuickCreateFeatureDataset(_context, templateDatabase);
+                frm.SetDataset(dataset.Name);
+                frm.ShowDialog();
+            }
+           
+        }
     }
 }

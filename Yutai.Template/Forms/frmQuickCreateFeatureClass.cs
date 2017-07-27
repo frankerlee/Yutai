@@ -18,6 +18,7 @@ using Yutai.ArcGIS.Common.BaseClasses;
 using Yutai.ArcGIS.Common.Helpers;
 using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Services;
+using Yutai.Plugins.Template.Concretes;
 using Yutai.Plugins.Template.Interfaces;
 using WorkspaceHelper = Yutai.ArcGIS.Common.Helpers.WorkspaceHelper;
 
@@ -26,9 +27,24 @@ namespace Yutai.Plugins.Template.Forms
     public partial class frmQuickCreateFeatureClass : Form
     {
         private IMap _map;
-
         private IAppContext _context;
         private TemplatePlugin _plugin;
+
+        private IObjectTemplate _template;
+        private bool _isSingle = false;
+
+        public IObjectTemplate SingleTemplate
+        {
+            set
+            {
+                _template = value;
+                _isSingle = true;
+                cmbTemplate.Items.Clear();
+                cmbTemplate.Items.Add(_template.Name);
+                cmbTemplate.SelectedIndex = 0;
+                cmbTemplate.Enabled = false;
+            }
+        }
         public frmQuickCreateFeatureClass()
         {
             InitializeComponent();
@@ -159,8 +175,16 @@ namespace Yutai.Plugins.Template.Forms
             if (string.IsNullOrEmpty(locType)) return;
             object createLoc;
             IWorkspace2 workspace2 = null;
-            IObjectTemplate template =
-                _plugin.TemplateDatabase.Templates.FirstOrDefault(c => c.Name == cmbTemplate.SelectedItem.ToString());
+            IObjectTemplate template = null;
+            if (_isSingle)
+            {
+                template = _template;
+            }
+            else
+            {
+                template =_plugin.TemplateDatabase.Templates.FirstOrDefault(c => c.Name == cmbTemplate.SelectedItem.ToString());
+            }
+            
             if (template == null) return;
             if (locType.Contains("Dataset"))
             {
@@ -205,7 +229,7 @@ namespace Yutai.Plugins.Template.Forms
                 pFieldsEdit.AddField(pField);
             }
             string keyName = "";
-            foreach (IYTField ytField in template.Fields)
+            foreach (YTField ytField in template.Fields)
             {
                 pField = ytField.CreateField();
                 pFieldsEdit.AddField(pField);

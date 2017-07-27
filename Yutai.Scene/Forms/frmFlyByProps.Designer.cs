@@ -6,26 +6,26 @@ using ESRI.ArcGIS.Geometry;
 
 namespace Yutai.Plugins.Scene.Forms
 {
-	    partial class frmFlyByProps
+    partial class frmFlyByProps
     {
-		protected override void Dispose(bool bool_3)
-		{
-			try
-			{
-				if (bool_3 && this.icontainer_0 != null)
-				{
-					this.icontainer_0.Dispose();
-				}
-				base.Dispose(bool_3);
-			}
-			catch
-			{
-			}
-		}
+        protected override void Dispose(bool bool_3)
+        {
+            try
+            {
+                if (bool_3 && this.icontainer_0 != null)
+                {
+                    this.icontainer_0.Dispose();
+                }
+                base.Dispose(bool_3);
+            }
+            catch
+            {
+            }
+        }
 
-	
-	private void InitializeComponent()
-		{
+
+        private void InitializeComponent()
+        {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFlyByProps));
             this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -1030,11 +1030,11 @@ namespace Yutai.Plugins.Scene.Forms
             this.fraOutput.PerformLayout();
             this.ResumeLayout(false);
 
-		}
+        }
 
-	
-		private IContainer icontainer_0;
-		private System.Windows.Forms.Button btnSelectBackGround;
+
+        private IContainer icontainer_0;
+        private System.Windows.Forms.Button btnSelectBackGround;
         public System.Windows.Forms.ToolTip ToolTip1;
 
         public System.Windows.Forms.Button cmdDeleteImages;

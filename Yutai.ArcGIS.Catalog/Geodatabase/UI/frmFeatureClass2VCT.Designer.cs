@@ -14,17 +14,17 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
 {
     partial class frmFeatureClass2VCT
     {
-        protected override void Dispose(bool bool_0)
+        protected override void Dispose(bool disposing)
         {
-            if (bool_0 && (this.container_0 != null))
+            if (disposing && (this.container_0 != null))
             {
                 this.container_0.Dispose();
             }
-            base.Dispose(bool_0);
+            base.Dispose(disposing);
         }
 
-       
- private void InitializeComponent()
+
+        private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFeatureClass2VCT));
             this.btnDelete = new SimpleButton();
@@ -44,7 +44,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.panel1.SuspendLayout();
             base.SuspendLayout();
             this.btnDelete.Enabled = false;
-            this.btnDelete.Image = (Image) resources.GetObject("btnDelete.Image");
+            this.btnDelete.Image = (Image)resources.GetObject("btnDelete.Image");
             this.btnDelete.Location = new System.Drawing.Point(272, 64);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new Size(24, 24);
@@ -72,7 +72,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.txtOutLocation.Properties.ReadOnly = true;
             this.txtOutLocation.Size = new Size(248, 21);
             this.txtOutLocation.TabIndex = 10;
-            this.btnSelectInputFeatures.Image = (Image) resources.GetObject("btnSelectInputFeatures.Image");
+            this.btnSelectInputFeatures.Image = (Image)resources.GetObject("btnSelectInputFeatures.Image");
             this.btnSelectInputFeatures.Location = new System.Drawing.Point(272, 24);
             this.btnSelectInputFeatures.Name = "btnSelectInputFeatures";
             this.btnSelectInputFeatures.Size = new Size(24, 24);
@@ -84,7 +84,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             this.lblSelectObjects.Size = new Size(53, 12);
             this.lblSelectObjects.TabIndex = 8;
             this.lblSelectObjects.Text = "选择要素";
-            this.btnSelectOutLocation.Image = (Image) resources.GetObject("btnSelectOutLocation.Image");
+            this.btnSelectOutLocation.Image = (Image)resources.GetObject("btnSelectOutLocation.Image");
             this.btnSelectOutLocation.Location = new System.Drawing.Point(272, 216);
             this.btnSelectOutLocation.Name = "btnSelectOutLocation";
             this.btnSelectOutLocation.Size = new Size(24, 24);
@@ -137,7 +137,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.Controls.Add(this.txtOutLocation);
             base.Controls.Add(this.btnSelectInputFeatures);
             base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-          
+
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmFeatureClass2VCT";
@@ -149,7 +149,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.PerformLayout();
         }
 
-       
+
         private SimpleButton btnDelete;
         private SimpleButton btnSelectInputFeatures;
         private SimpleButton btnSelectOutLocation;
