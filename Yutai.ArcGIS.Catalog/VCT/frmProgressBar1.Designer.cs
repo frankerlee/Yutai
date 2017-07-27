@@ -47,7 +47,7 @@ namespace Yutai.ArcGIS.Catalog.VCT
             base.Controls.Add(this.progressBar1);
             base.Controls.Add(this.Caption1);
             base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            base.Icon = (Icon) resources.GetObject("$this.Icon");
+         
             base.MaximizeBox = false;
             base.Name = "frmProgressBar1";
             base.StartPosition = FormStartPosition.CenterScreen;

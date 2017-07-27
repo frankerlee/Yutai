@@ -58,7 +58,7 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
             _context = hook as IAppContext;
             base.m_caption = "按坐标点查询";
             base.m_category = "PipelineQuery";
-            base.m_bitmap = Properties.Resources.icon_analysis_collision;
+            base.m_bitmap = Properties.Resources.icon_query_coords;
             base.m_name = "PipeQuery_ByCMIS";
             base._key = "PipeQuery_ByCMIS";
             base.m_toolTip = "按坐标点查询";

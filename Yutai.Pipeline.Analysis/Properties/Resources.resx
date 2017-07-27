@@ -163,8 +163,50 @@
   <data name="icon_print" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_print.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icon_query_address" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_query_address.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_query_building" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_query_building.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_query_complex" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_query_complex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_query_coords" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_query_coords.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_query_crossroad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_query_crossroad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_query_date" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_query_date.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_query_gj" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_query_gj.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_query_jdxz" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_query_jdxz.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_query_line" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_query_line.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_query_material" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_query_material.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_query_point" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_query_point.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_query_project" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_query_project.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_query_relationship" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_query_relationship.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icon_save_config" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_save_config.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_secne" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_secne.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icon_section_hor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_section_hor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,8 +214,23 @@
   <data name="icon_section_vert" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_section_vert.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icon_select" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_select.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icon_short_path" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_short_path.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_statics_fd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_statics_fd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_statics_hz" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_statics_hz.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_statics_ms" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_statics_ms.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_static_report" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_static_report.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icon_sum" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_sum.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

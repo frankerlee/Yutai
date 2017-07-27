@@ -139,7 +139,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             base.Controls.Add(this.txtLegendItemName);
             base.Controls.Add(this.labPoint);
             base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            base.Icon = (Icon)resources.GetObject("$this.Icon");
+          
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmNewLegendItem";

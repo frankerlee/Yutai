@@ -314,7 +314,7 @@ namespace Yutai.ArcGIS.Controls.SymbolUI
             base.Controls.Add(this.barDockControlBottom);
             base.Controls.Add(this.barDockControlTop);
             base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-           base.Icon = (Icon) resources.GetObject("$this.Icon");
+          
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmSymbolSelectorEx";

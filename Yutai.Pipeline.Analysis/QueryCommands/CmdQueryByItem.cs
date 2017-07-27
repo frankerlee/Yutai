@@ -62,7 +62,7 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
             _context = hook as IAppContext;
             base.m_caption = "按项目查询";
             base.m_category = "PipelineQuery";
-            base.m_bitmap = Properties.Resources.icon_analysis_collision;
+            base.m_bitmap = Properties.Resources.icon_query_project;
             base.m_name = "PipeQuery_ByItem";
             base._key = "PipeQuery_ByItem";
             base.m_toolTip = "按项目查询";

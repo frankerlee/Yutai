@@ -528,7 +528,7 @@ namespace Yutai.ArcGIS.Carto.UI
             base.Controls.Add(this.cmdPrint);
             base.Controls.Add(this.panel1);
             base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            base.Icon = (Icon)resources.GetObject("$this.Icon");
+         
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "FormPrinterSetup";

@@ -2,19 +2,14 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Windows.Forms;
-using ESRI.ArcGIS.Analyst3D;
-using ESRI.ArcGIS.Carto;
-using ESRI.ArcGIS.Controls;
-using ESRI.ArcGIS.Display;
-using ESRI.ArcGIS.Geometry;
 using ESRI.ArcGIS.SystemUI;
-using stdole;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Events;
 using Yutai.Plugins.Interfaces;
 using Yutai.Plugins.Mef;
+using Yutai.Plugins.Metadata.Menu;
 using Yutai.Plugins.Mvp;
+using Yutai.Plugins.Scene;
 
 
 namespace Yutai.Plugins.Metadata

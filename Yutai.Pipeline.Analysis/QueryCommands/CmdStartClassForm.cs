@@ -63,7 +63,7 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
             _context = hook as IAppContext;
             base.m_caption = "分类汇总";
             base.m_category = "PipelineQuery";
-            base.m_bitmap = Properties.Resources.icon_analysis_collision;
+            base.m_bitmap = Properties.Resources.icon_statics_hz;
             base.m_name = "PipeQuery_Statics";
             base._key = "PipeQuery_Statics";
             base.m_toolTip = "分类汇总";

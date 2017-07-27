@@ -60,7 +60,7 @@ namespace Yutai.ArcGIS.Carto.MapCartoTemplateLib
             base.Controls.Add(this.btnLast);
             base.Controls.Add(this.panel1);
             base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            base.Icon = (Icon)resources.GetObject("$this.Icon");
+          
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "YTElementWizardForm";

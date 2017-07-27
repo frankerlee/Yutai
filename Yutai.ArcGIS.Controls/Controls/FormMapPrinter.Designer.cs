@@ -729,7 +729,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             base.Controls.Add(this.barDockControl4);
             base.Controls.Add(this.barDockControl2);
             base.Controls.Add(this.barDockControl1);
-            base.Icon = (Icon) resources.GetObject("$this.Icon");
+         
             base.Name = "FormMapPrinter";
             base.StartPosition = FormStartPosition.CenterScreen;
             base.WindowState = FormWindowState.Maximized;

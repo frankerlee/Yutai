@@ -132,7 +132,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             base.Controls.Add(this.txtTitle);
             base.Controls.Add(this.chkUseTemplate);
             base.Controls.Add(this.label1);
-            base.Icon = (Icon) resources.GetObject("$this.Icon");
+          
             base.Name = "frmDataExportToExcel";
             this.Text = "导出到Excel";
             base.Load += new EventHandler(this.frmDataExportToExcel_Load);

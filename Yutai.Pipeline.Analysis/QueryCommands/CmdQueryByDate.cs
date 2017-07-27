@@ -60,7 +60,7 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
             _context = hook as IAppContext;
             base.m_caption = "按日期查询";
             base.m_category = "PipelineQuery";
-            base.m_bitmap = Properties.Resources.icon_analysis_collision;
+            base.m_bitmap = Properties.Resources.icon_query_date;
             base.m_name = "PipeQuery_ByDate";
             base._key = "PipeQuery_ByDate";
             base.m_toolTip = "按日期查询";

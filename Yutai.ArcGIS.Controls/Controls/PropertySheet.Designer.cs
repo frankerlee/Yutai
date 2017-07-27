@@ -69,7 +69,7 @@ namespace Yutai.ArcGIS.Controls.Controls
             base.Controls.Add(this.tabControl1);
             base.Controls.Add(this.panel1);
             base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            base.Icon = (Icon) resources.GetObject("$this.Icon");
+           
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "PropertySheet";

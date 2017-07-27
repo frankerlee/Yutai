@@ -54,7 +54,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             base.Controls.Add(this.btnLast);
             base.Controls.Add(this.groupBox1);
             base.Controls.Add(this.panel1);
-            base.Icon = (Icon) resources.GetObject("$this.Icon");
+        
             base.Name = "GraphicsWizard";
             this.Text = "图表向导";
             base.Load += new EventHandler(this.ExportToExcelWizard_Load);

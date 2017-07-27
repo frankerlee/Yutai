@@ -92,7 +92,7 @@ namespace Yutai.ArcGIS.Controls.Editor.UI
             base.ClientSize = new Size(464, 240);
             base.Controls.Add(this.dataGrid1);
             base.Controls.Add(this.panel1);
-            base.Icon = (Icon) resources.GetObject("$this.Icon");
+         
             base.Name = "frmAttributeTable";
             base.Load += new EventHandler(this.TableControl_Load);
             base.SizeChanged += new EventHandler(this.TableControl_SizeChanged);

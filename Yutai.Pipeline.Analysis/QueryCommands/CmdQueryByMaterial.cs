@@ -64,7 +64,7 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
             _context = hook as IAppContext;
             base.m_caption = "按材质查询";
             base.m_category = "PipelineQuery";
-            base.m_bitmap = Properties.Resources.icon_analysis_collision;
+            base.m_bitmap = Properties.Resources.icon_query_material;
             base.m_name = "PipeQuery_ByCZ";
             base._key = "PipeQuery_ByCZ";
             base.m_toolTip = "按材质查询";

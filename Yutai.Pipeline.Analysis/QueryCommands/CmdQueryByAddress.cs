@@ -60,7 +60,7 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
             _context = hook as IAppContext;
             base.m_caption = "按地址查询";
             base.m_category = "PipelineQuery";
-            base.m_bitmap = Properties.Resources.icon_analysis_collision;
+            base.m_bitmap = Properties.Resources.icon_query_address;
             base.m_name = "PipeQuery_ByAddress";
             base._key = "PipeQuery_ByAddress";
             base.m_toolTip = "按地址查询";

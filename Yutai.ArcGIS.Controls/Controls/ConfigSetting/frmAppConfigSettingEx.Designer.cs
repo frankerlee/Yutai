@@ -147,11 +147,11 @@ namespace Yutai.ArcGIS.Controls.Controls.ConfigSetting
             base.Controls.Add(this.panel2);
             base.Controls.Add(this.panel1);
             base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            base.Icon = (Icon) resources.GetObject("$this.Icon");
+         
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmAppConfigSettingEx";
-            this.Text = "JLKEngine2015-应用系统参数设置";
+            this.Text = "应用系统参数设置";
             base.Load += new EventHandler(this.frmAppConfigSettingEx_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

@@ -72,7 +72,7 @@ namespace Yutai.ArcGIS.Carto.UI
             base.Controls.Add(this.btnCancel);
             base.Controls.Add(this.btnOK);
             base.Controls.Add(this.tabControl1);
-            base.Icon = (Icon)resources.GetObject("$this.Icon");
+          
             base.Name = "frmDataFrameProperty";
             this.Text = "数据框属性";
             base.Load += new EventHandler(this.frmDataFrameProperty_Load);

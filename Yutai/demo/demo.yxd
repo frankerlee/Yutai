@@ -3,7 +3,7 @@
   <SceneDoc>demo.sxd</SceneDoc>
   <ViewStyle>1</ViewStyle>
   <Plugins>
-    <!--<Plugin>
+    <Plugin>
       <Guid>2b81c89a-ee45-4276-9dc1-72bbbf07f53f</Guid>
       <Name>定位器</Name>
       <MenuXML>\\plugins\\menus\\LocatorMenu.xml</MenuXML>
@@ -28,7 +28,7 @@
       <Guid>f804e812-481e-45c3-be08-749da82075d1</Guid>
       <Name>管线分析</Name>
       <ConfigXML>\\plugins\\configs\\pipeline.xml</ConfigXML>
-    </Plugin>-->
+    </Plugin>
 
     <Plugin>
       <Guid>4a3bcaab-9d3e-4ca7-a19d-7ee08fb0629e</Guid>
@@ -39,10 +39,10 @@
       <Name>地图制图</Name>
       <ConfigXML>\\plugins\\configs\\Printing.xml</ConfigXML>
     </Plugin>
-    <!--<Plugin>
+    <Plugin>
       <Guid>95ab64f9-65ca-400f-8f68-c18cadff1421</Guid>
       <Name>管线编辑</Name>
-    </Plugin>-->
+    </Plugin>
     <Plugin>
       <Guid>2fd39cff-e0d7-44cb-a6f7-b5e90499124c</Guid>
       <Name>模板工具</Name>

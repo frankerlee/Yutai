@@ -718,7 +718,26 @@
     <Content Include="Resources\icon_depth.png" />
     <None Include="Resources\icon_save_config.png" />
     <None Include="Resources\icon_prealarm.png" />
+    <None Include="Resources\icon_query_address.png" />
+    <None Include="Resources\icon_query_building.png" />
+    <None Include="Resources\icon_query_complex.png" />
+    <None Include="Resources\icon_query_coords.png" />
+    <None Include="Resources\icon_query_crossroad.png" />
+    <None Include="Resources\icon_query_date.png" />
+    <None Include="Resources\icon_query_gj.png" />
+    <None Include="Resources\icon_query_jdxz.png" />
+    <None Include="Resources\icon_query_line.png" />
+    <None Include="Resources\icon_query_material.png" />
+    <None Include="Resources\icon_query_point.png" />
+    <None Include="Resources\icon_query_project.png" />
+    <None Include="Resources\icon_query_relationship.png" />
+    <None Include="Resources\icon_secne.png" />
+    <None Include="Resources\icon_select.png" />
     <Content Include="Resources\icon_short_path.png" />
+    <None Include="Resources\icon_static_report.png" />
+    <None Include="Resources\icon_statics_fd.png" />
+    <None Include="Resources\icon_statics_hz.png" />
+    <None Include="Resources\icon_statics_ms.png" />
     <Content Include="Resources\icon_valve.png" />
   </ItemGroup>
   <ItemGroup>

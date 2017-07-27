@@ -58,7 +58,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.ClientSize = new Size(532, 372);
             base.Controls.Add(this.xtraTabControl1);
             base.Controls.Add(this.panel1);
-            base.Icon = (Icon) resources.GetObject("$this.Icon");
+          
             base.Name = "frmGNPropertySheet";
             this.Text = "网络属性";
             base.Load += new EventHandler(this.frmGNPropertySheet_Load);

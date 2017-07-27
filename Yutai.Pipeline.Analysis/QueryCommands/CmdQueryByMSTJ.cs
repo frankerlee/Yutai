@@ -64,7 +64,7 @@ namespace Yutai.Pipeline.Analysis.QueryCommands
             _context = hook as IAppContext;
             base.m_caption = "埋深分段统计";
             base.m_category = "PipelineQuery";
-            base.m_bitmap = Properties.Resources.icon_analysis_collision;
+            base.m_bitmap = Properties.Resources.icon_statics_ms;
             base.m_name = "PipeQuery_ByMSTJ";
             base._key = "PipeQuery_ByMSTJ";
             base.m_toolTip = "埋深分段统计";

@@ -137,7 +137,7 @@ namespace Yutai.ArcGIS.Catalog.Geodatabase.UI
             base.Controls.Add(this.txtOutLocation);
             base.Controls.Add(this.btnSelectInputFeatures);
             base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            base.Icon = (Icon) resources.GetObject("$this.Icon");
+          
             base.MaximizeBox = false;
             base.MinimizeBox = false;
             base.Name = "frmFeatureClass2VCT";

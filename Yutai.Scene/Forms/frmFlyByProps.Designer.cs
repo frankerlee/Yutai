@@ -1000,7 +1000,6 @@ namespace Yutai.Plugins.Scene.Forms
             this.Controls.Add(this.TabControl1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(3, 22);
             this.MaximizeBox = false;
             this.Name = "frmFlyByProps";

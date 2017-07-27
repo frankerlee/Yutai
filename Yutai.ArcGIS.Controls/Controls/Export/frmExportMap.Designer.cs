@@ -77,7 +77,7 @@ namespace Yutai.ArcGIS.Controls.Controls.Export
             base.Controls.Add(this.btnSelectOutLocation);
             base.Controls.Add(this.textBox1);
             base.Controls.Add(this.label1);
-            base.Icon = (Icon) resources.GetObject("$this.Icon");
+        
             base.Name = "frmExportMap";
             this.Text = "导出地图";
             base.ResumeLayout(false);

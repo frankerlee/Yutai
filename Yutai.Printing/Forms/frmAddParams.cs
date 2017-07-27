@@ -134,7 +134,7 @@ namespace CartoTemplateApp
 			base.Controls.Add(this.button2);
 			base.Controls.Add(this.button1);
 			base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-			base.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+			
 			base.MaximizeBox = false;
 			base.MinimizeBox = false;
 			base.Name = "frmAddParams";
