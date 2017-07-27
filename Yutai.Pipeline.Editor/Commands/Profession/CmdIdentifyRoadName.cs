@@ -29,7 +29,7 @@ namespace Yutai.Pipeline.Editor.Commands.Profession
             _context = hook as IAppContext;
             base.m_caption = "道路名称识别";
             base.m_category = "PipelineEditor";
-            //base.m_bitmap = Properties.Resources.icon_valve;
+            base.m_bitmap = Properties.Resources.icon_pipe_roadknow;
             base.m_name = "PipelineEditor_IdentifyRoadName";
             base._key = "PipelineEditor_IdentifyRoadName";
             base.m_toolTip = "道路名称识别";

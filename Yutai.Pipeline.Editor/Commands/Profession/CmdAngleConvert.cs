@@ -28,7 +28,7 @@ namespace Yutai.Pipeline.Editor.Commands.Profession
             _context = hook as IAppContext;
             base.m_caption = "角度/弧度互转";
             base.m_category = "PipelineEditor";
-            //base.m_bitmap = Properties.Resources.icon_valve;
+            base.m_bitmap = Properties.Resources.icon_pipe_jiaodu;
             base.m_name = "PipelineEditor_AngleConvert";
             base._key = "PipelineEditor_AngleConvert";
             base.m_toolTip = "角度/弧度互转";

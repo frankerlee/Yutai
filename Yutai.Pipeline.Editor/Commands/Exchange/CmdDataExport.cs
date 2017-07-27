@@ -33,7 +33,7 @@ namespace Yutai.Pipeline.Editor.Commands.Exchange
             _context = hook as IAppContext;
             base.m_caption = "数据导出";
             base.m_category = "PipelineEditor";
-            //base.m_bitmap = Properties.Resources.icon_valve;
+            base.m_bitmap = Properties.Resources.icon_pipe_dcsj;
             base.m_name = "PipelineEditor_DataExport";
             base._key = "PipelineEditor_DataExport";
             base.m_toolTip = "";

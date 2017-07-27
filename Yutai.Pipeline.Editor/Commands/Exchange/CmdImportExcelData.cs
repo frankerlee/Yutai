@@ -33,7 +33,7 @@ namespace Yutai.Pipeline.Editor.Commands.Exchange
             _context = hook as IAppContext;
             base.m_caption = "导入Excel数据";
             base.m_category = "PipelineEditor";
-            //base.m_bitmap = Properties.Resources.icon_valve;
+            base.m_bitmap = Properties.Resources.icon_pipe_excel;
             base.m_name = "PipelineEditor_ImportExcelData";
             base._key = "PipelineEditor_ImportExcelData";
             base.m_toolTip = "";
