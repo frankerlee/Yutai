@@ -129,6 +129,7 @@
     <Compile Include="Classes\IFieldSetting.cs" />
     <Compile Include="Classes\IFontConfig.cs" />
     <Compile Include="Classes\IMultiCheQiConfig.cs" />
+    <Compile Include="Classes\TreeRecord.cs" />
     <Compile Include="Commands\Common\CmdCreateLine.cs" />
     <Compile Include="Commands\Common\CmdCreateLineWithFromPoint.cs" />
     <Compile Include="Commands\Common\CmdCreateLineWithPoint.cs" />
@@ -246,6 +247,12 @@
     <Compile Include="Emuns\AnnotationSortingCommand.cs" />
     <Compile Include="Emuns\IdentifyRoadNameCommand.cs" />
     <Compile Include="Emuns\SurveyCoordType.cs" />
+    <Compile Include="Forms\Common\frmDeletePipeline.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Common\frmDeletePipeline.Designer.cs">
+      <DependentUpon>frmDeletePipeline.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Exchange\FrmClip.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -446,6 +453,9 @@
     <EmbeddedResource Include="Controls\UcSpatialReference.resx">
       <DependentUpon>UcSpatialReference.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Common\frmDeletePipeline.resx">
+      <DependentUpon>frmDeletePipeline.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Exchange\FrmClip.resx">
       <DependentUpon>FrmClip.cs</DependentUpon>
     </EmbeddedResource>
@@ -505,15 +515,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DLL\ClosedXML.dll" />
+    <None Include="Resources\icon_DeletePoint.bmp" />
     <None Include="Resources\icon_PointLineLinkage.bmp" />
     <None Include="Resources\icon_CreateLineWithToPoint.bmp" />
     <None Include="Resources\icon_CreateLineWithPoint.bmp" />
     <None Include="Resources\icon_CreateLineWithFromPoint.bmp" />
     <None Include="Resources\icon_CreateLine.bmp" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\Common\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

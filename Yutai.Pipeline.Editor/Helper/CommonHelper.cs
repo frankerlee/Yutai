@@ -771,6 +771,14 @@ namespace Yutai.Pipeline.Editor.Helper
                 throw new Exception(exception.Message);
             }
         }
+
+        public static IPoint GetFarthestPoint(IPolyline polyline, IPoint point)
+        {
+            if (GetDistance(polyline.FromPoint, point) <= GetDistance(polyline.ToPoint, point))
+                return polyline.ToPoint;
+            else
+                return polyline.FromPoint;
+        }
     }
 }
 

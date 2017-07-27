@@ -10,6 +10,7 @@
           <BarItem Key="PipelineEditor_CreateLineWithPoint" Visible="true"/>
           <BarItem Key="PipelineEditor_CreateLineWithFromPoint" Visible="true"/>
           <BarItem Key="PipelineEditor_CreateLineWithToPoint" Visible="true"/>
+          <BarItem Key="PipelineEditor_DeletePoint" Visible="true"/>
           <BarItem Key="PipelineEditor_PointLineLinkage" Visible="true"/>
         </PageGroup>
         <PageGroup Key="Pipeline_Editor_Profession" Caption="专业编辑工具" Visible="true" Index="2">

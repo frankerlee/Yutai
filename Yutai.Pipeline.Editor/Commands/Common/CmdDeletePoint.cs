@@ -11,6 +11,7 @@ using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 using Yutai.ArcGIS.Common.Editor;
 using Yutai.Pipeline.Config.Interfaces;
+using Yutai.Pipeline.Editor.Forms.Common;
 using Yutai.Pipeline.Editor.Helper;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
@@ -47,14 +48,14 @@ namespace Yutai.Pipeline.Editor.Commands.Common
         public sealed override void OnCreate(object hook)
         {
             _context = hook as IAppContext;
-            base.m_caption = "删除管线点";
+            base.m_caption = "删除管点";
             base.m_category = "PipelineEditor";
-            base.m_bitmap = Properties.Resources.icon_CreateLine;
+            base.m_bitmap = Properties.Resources.icon_DeletePoint;
             base.m_name = "PipelineEditor_DeletePoint";
             base._key = "PipelineEditor_DeletePoint";
-            base.m_toolTip = "删除管线点";
+            base.m_toolTip = "删除管线点，合并相连管线";
             base.m_checked = false;
-            base.m_message = "删除管线点";
+            base.m_message = "删除管线点，合并相连管线";
             base._itemType = RibbonItemType.Tool;
         }
 
@@ -132,17 +133,28 @@ namespace Yutai.Pipeline.Editor.Commands.Common
             if (linkPoint == null)
                 return;
             this.SelectByShape(linkPoint);
-            enumFeature = _context.FocusMap.FeatureSelection as IEnumFeature;
-            if (enumFeature == null)
-                return;
-            enumFeature.Reset();
-            if ((_lineFeature1= enumFeature.Next()) == null)
-                return;
-            if ((_lineFeature2= enumFeature.Next()) == null)
-                return;
+            IFeatureSelection featureSelection = _lineFeatureLayer as IFeatureSelection;
+            ICursor cursor;
+            featureSelection.SelectionSet.Search(null, false, out cursor);
 
+            if ((_lineFeature1 = cursor.NextRow() as IFeature) == null)
+                return;
+            if ((_lineFeature2 = cursor.NextRow() as IFeature) == null)
+                return;
+            frmDeletePipeline frm = new frmDeletePipeline(_lineFeature1, _lineFeature2, linkPoint, _lineFeatureLayer);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                _pointFeature.Delete();
+                _lineFeature1.Delete();
+                _lineFeature2.Delete();
+                int oid = frm.FeatureOID;
+                IFeature feature = _lineFeatureLayer.FeatureClass.GetFeature(oid);
+                _context.FocusMap.ClearSelection();
+                _context.FocusMap.SelectFeature(_lineFeatureLayer, feature);
+                _context.ActiveView.Refresh();
+            }
         }
-        
+
         public override void OnDblClick()
         {
             try
