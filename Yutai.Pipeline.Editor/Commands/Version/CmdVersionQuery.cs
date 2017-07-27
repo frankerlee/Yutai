@@ -27,7 +27,7 @@ namespace Yutai.Pipeline.Editor.Commands.Version
             _context = hook as IAppContext;
             base.m_caption = "版本查询";
             base.m_category = "PipelineEditor";
-            //base.m_bitmap = Properties.Resources.icon_valve;
+            base.m_bitmap = Properties.Resources.icon_pipe_versionquery;
             base.m_name = "PipelineEditor_VersionQuery";
             base._key = "PipelineEditor_VersionQuery";
             base.m_toolTip = "";

@@ -29,7 +29,7 @@ namespace Yutai.Pipeline.Editor.Commands.Mark
             _context = hook as IAppContext;
             base.m_caption = "注记排序";
             base.m_category = "PipelineEditor";
-            //base.m_bitmap = Properties.Resources.icon_valve;
+            base.m_bitmap = Properties.Resources.icon_pipe_zjpx;
             base.m_name = "PipelineEditor_AnnotationSorting";
             base._key = "PipelineEditor_AnnotationSorting";
             base.m_toolTip = "注记排序";

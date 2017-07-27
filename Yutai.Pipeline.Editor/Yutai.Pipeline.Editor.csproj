@@ -515,6 +515,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DLL\ClosedXML.dll" />
+    <None Include="Resources\icon_pipe_jiaodu.png" />
+    <None Include="Resources\icon_pipe_autonum.png" />
+    <None Include="Resources\icon_pipe_roadknow.png" />
+    <None Include="Resources\icon_pipe_label.png" />
+    <None Include="Resources\icon_pipe_cqsz.png" />
+    <None Include="Resources\icon_pipe_cq.png" />
+    <None Include="Resources\icon_pipe_dyscqsz.png" />
+    <None Include="Resources\icon_pipe_dyscq.png" />
+    <None Include="Resources\icon_pipe_cqzjld.png" />
+    <None Include="Resources\icon_pipe_qkzj.png" />
+    <None Include="Resources\icon_pipe_zjpx.png" />
+    <None Include="Resources\icon_pipe_sjcj.png" />
+    <None Include="Resources\icon_pipe_dcsj.png" />
+    <None Include="Resources\icon_pipe_axf.png" />
+    <None Include="Resources\icon_pipe_clsj.png" />
+    <None Include="Resources\icon_pipe_excel.png" />
+    <None Include="Resources\icon_pipe_version.png" />
+    <None Include="Resources\icon_pipe_versionquery.png" />
     <None Include="Resources\icon_DeletePoint.bmp" />
     <None Include="Resources\icon_PointLineLinkage.bmp" />
     <None Include="Resources\icon_CreateLineWithToPoint.bmp" />

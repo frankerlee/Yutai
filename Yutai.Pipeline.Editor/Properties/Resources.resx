@@ -118,6 +118,60 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="icon_pipe_autonum" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_pipe_autonum.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_pipe_axf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_pipe_axf.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_pipe_clsj" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_pipe_clsj.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_pipe_cq" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_pipe_cq.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_pipe_cqsz" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_pipe_cqsz.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_pipe_cqzjld" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_pipe_cqzjld.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_pipe_dcsj" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_pipe_dcsj.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_pipe_dyscq" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_pipe_dyscq.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_pipe_dyscqsz" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_pipe_dyscqsz.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_pipe_excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_pipe_excel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_pipe_jiaodu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_pipe_jiaodu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_pipe_label" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_pipe_label.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_pipe_qkzj" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_pipe_qkzj.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_pipe_roadknow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_pipe_roadknow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_pipe_sjcj" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_pipe_sjcj.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_pipe_version" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_pipe_version.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_pipe_versionquery" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_pipe_versionquery.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_pipe_zjpx" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_pipe_zjpx.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icon_CreateLine" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_CreateLine.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

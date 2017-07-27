@@ -32,7 +32,7 @@ namespace Yutai.Pipeline.Editor.Commands.Mark
             _context = hook as IAppContext;
             base.m_caption = "标注";
             base.m_category = "PipelineEditor";
-            //base.m_bitmap = Properties.Resources.icon_valve;
+            base.m_bitmap = Properties.Resources.icon_pipe_label;
             base.m_name = "PipelineEditor_BiaoZhu";
             base._key = "PipelineEditor_BiaoZhu";
             base.m_toolTip = "";

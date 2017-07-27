@@ -68,7 +68,7 @@ namespace Yutai.Pipeline.Editor.Commands.Mark
             _context = hook as IAppContext;
             base.m_caption = "清空注记";
             base.m_category = "PipelineEditor";
-            //base.m_bitmap = Properties.Resources.icon_valve;
+            base.m_bitmap = Properties.Resources.icon_pipe_qkzj;
             base.m_name = "PipelineEditor_DeleteAll";
             base._key = "PipelineEditor_DeleteAll";
             base.m_toolTip = "";

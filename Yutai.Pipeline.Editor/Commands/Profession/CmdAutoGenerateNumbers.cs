@@ -28,7 +28,7 @@ namespace Yutai.Pipeline.Editor.Commands.Profession
             _context = hook as IAppContext;
             base.m_caption = "自动生成编号";
             base.m_category = "PipelineEditor";
-            //base.m_bitmap = Properties.Resources.icon_valve;
+            base.m_bitmap = Properties.Resources.icon_pipe_autonum;
             base.m_name = "PipelineEditor_AutoGenerateNumbers";
             base._key = "PipelineEditor_AutoGenerateNumbers";
             base.m_toolTip = "自动生成编号";
