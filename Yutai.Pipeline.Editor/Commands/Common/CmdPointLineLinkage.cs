@@ -48,7 +48,7 @@ namespace Yutai.Pipeline.Editor.Commands.Common
             _context = hook as IAppContext;
             base.m_caption = "点线联动";
             base.m_category = "PipelineEditor";
-            //base.m_bitmap = Properties.Resources.icon_valve;
+            base.m_bitmap = Properties.Resources.icon_PointLineLinkage;
             base.m_name = "PipelineEditor_PointLineLinkage";
             base._key = "PipelineEditor_PointLineLinkage";
             base.m_toolTip = "移动管点的时候管线也跟着动";

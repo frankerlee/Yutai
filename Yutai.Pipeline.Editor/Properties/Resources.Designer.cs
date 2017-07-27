@@ -63,6 +63,56 @@ namespace Yutai.Pipeline.Editor.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap icon_CreateLine {
+            get {
+                object obj = ResourceManager.GetObject("icon_CreateLine", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_CreateLineWithFromPoint {
+            get {
+                object obj = ResourceManager.GetObject("icon_CreateLineWithFromPoint", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_CreateLineWithPoint {
+            get {
+                object obj = ResourceManager.GetObject("icon_CreateLineWithPoint", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_CreateLineWithToPoint {
+            get {
+                object obj = ResourceManager.GetObject("icon_CreateLineWithToPoint", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_PointLineLinkage {
+            get {
+                object obj = ResourceManager.GetObject("icon_PointLineLinkage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap img_arrow_change {
             get {
                 object obj = ResourceManager.GetObject("img_arrow_change", resourceCulture);
