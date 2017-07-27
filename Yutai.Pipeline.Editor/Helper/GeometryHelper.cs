@@ -62,8 +62,8 @@ namespace Yutai.Pipeline.Editor.Helper
             pZAware.ZAware = hasZ;
             IMAware pMAware = pointCollection as IMAware;
             pMAware.MAware = hasM;
-            pointCollection.AddPoint(point1);
-            pointCollection.AddPoint(point2);
+            pointCollection.AddPoint(CreatePoint(point1.X, point1.Y, point1.Z, point1.M, hasZ, hasM));
+            pointCollection.AddPoint(CreatePoint(point2.X, point2.Y, point2.Z, point2.M, hasZ, hasM));
             return pointCollection;
         }
 

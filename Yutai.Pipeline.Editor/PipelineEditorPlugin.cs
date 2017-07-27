@@ -20,6 +20,7 @@ namespace Yutai.Pipeline.Editor
         private IPipelineConfig _config;
         private ICheQiConfig _cheQiConfig;
         private IMultiCheQiConfig _multiCheQiConfig;
+        private IPipelineLayer _pipelineLayer;
         //private DockPanelService _dockPanelService;
 
         // public event EventHandler<QueryResultArgs> QueryResultChanged;
@@ -64,6 +65,12 @@ namespace Yutai.Pipeline.Editor
         {
             get { return _multiCheQiConfig; }
             set { _multiCheQiConfig = value; }
+        }
+
+        public IPipelineLayer CurrentLayer
+        {
+            get { return _pipelineLayer; }
+            set { _pipelineLayer = value; }
         }
     }
 }

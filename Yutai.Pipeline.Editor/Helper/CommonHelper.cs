@@ -100,7 +100,8 @@ namespace Yutai.Pipeline.Editor.Helper
             return null;
         }
 
-        public static IFeatureLayer GetLayerByFeatureClassAliasName(ICompositeLayer compositeLayer, string featureClassName)
+        public static IFeatureLayer GetLayerByFeatureClassAliasName(ICompositeLayer compositeLayer,
+            string featureClassName)
         {
             try
             {
@@ -141,7 +142,7 @@ namespace Yutai.Pipeline.Editor.Helper
                     IDataset dataset = featureClass as IDataset;
                     if (dataset != null)
                     {
-                        string[] strArray = dataset.Name.Split(new char[] { '.' });
+                        string[] strArray = dataset.Name.Split(new char[] {'.'});
                         string str = strArray[strArray.Length - 1];
                         if (str == featureClassName)
                         {
@@ -170,7 +171,7 @@ namespace Yutai.Pipeline.Editor.Helper
                         IDataset dataset = featureClass as IDataset;
                         if (dataset != null)
                         {
-                            string[] strArray = dataset.Name.Split(new char[] { '.' });
+                            string[] strArray = dataset.Name.Split(new char[] {'.'});
                             string str = strArray[strArray.Length - 1];
                             if (str == featureClassName)
                             {
@@ -200,7 +201,7 @@ namespace Yutai.Pipeline.Editor.Helper
 
         public static double GetDistance(IPoint point1, IPoint point2)
         {
-            return Math.Sqrt((point1.X - point2.X) * (point1.X - point2.X) + (point1.Y - point2.Y) * (point1.Y - point2.Y));
+            return Math.Sqrt((point1.X - point2.X)*(point1.X - point2.X) + (point1.Y - point2.Y)*(point1.Y - point2.Y));
         }
 
         public static FileInfo[] GetLabelDefinitions()
@@ -209,6 +210,7 @@ namespace Yutai.Pipeline.Editor.Helper
             DirectoryInfo directory = new DirectoryInfo(path);
             return directory.GetFiles("*.lab");
         }
+
         public static bool Exist(IWorkspace workspace, string featureClassName)
         {
             IWorkspace2 pWorkspace2 = workspace as IWorkspace2;
@@ -264,6 +266,7 @@ namespace Yutai.Pipeline.Editor.Helper
                 return false;
             }
         }
+
         //删除名称对象
         public static void DeleteByName(IFeatureWorkspace pFeaWorkspace, IDatasetName pDatasetName)
         {
@@ -283,11 +286,11 @@ namespace Yutai.Pipeline.Editor.Helper
         #region 管线注记
 
         public static string GetIntersectInformationFlagLineOnlyOne(IGeometry pGeometry, ICheQiConfig cheQiConfig,
-                                                                    IFeature pFeature)
+            IFeature pFeature)
         {
             string pFlagInfo = "";
             pFlagInfo = "类别:" + cheQiConfig.FlagLayer.FeatureClass.AliasName + "  " +
-                                               GetFlagInformationInFeature(pFeature, cheQiConfig.Expression);
+                        GetFlagInformationInFeature(pFeature, cheQiConfig.Expression);
             return pFlagInfo;
         }
 
@@ -352,19 +355,20 @@ namespace Yutai.Pipeline.Editor.Helper
             double fromY = polyline.FromPoint.Y;
             double toX = polyline.ToPoint.X;
             double toY = polyline.ToPoint.Y;
-            double depth = -999; ;
+            double depth = -999;
+            ;
             double ratiolenth = 0;
-            double length = Math.Sqrt((fromX - toX) * (fromX - toX) + (fromY - toY) * (fromY - toY));
+            double length = Math.Sqrt((fromX - toX)*(fromX - toX) + (fromY - toY)*(fromY - toY));
             if (fromdepth > todepth)
             {
-                ratiolenth = Math.Sqrt((point.X - toX) * (point.X - toX) + (point.Y - toY) * (point.Y - toY));
-                depth = ratiolenth * (fromdepth - todepth) / length + todepth;
+                ratiolenth = Math.Sqrt((point.X - toX)*(point.X - toX) + (point.Y - toY)*(point.Y - toY));
+                depth = ratiolenth*(fromdepth - todepth)/length + todepth;
 
             }
             if (fromdepth < todepth)
             {
-                ratiolenth = Math.Sqrt((point.X - fromX) * (point.X - fromX) + (point.Y - fromY) * (point.Y - fromY));
-                depth = ratiolenth * (todepth - fromdepth) / length + fromdepth;
+                ratiolenth = Math.Sqrt((point.X - fromX)*(point.X - fromX) + (point.Y - fromY)*(point.Y - fromY));
+                depth = ratiolenth*(todepth - fromdepth)/length + fromdepth;
 
             }
             return Math.Round(depth, 2);
@@ -404,9 +408,11 @@ namespace Yutai.Pipeline.Editor.Helper
             pWorkspaceEdit.StartEditing(true);
             pWorkspaceEdit.StartEditOperation();
 
-            IWorkspaceProperties2 workspaceProperties2 = (IWorkspaceProperties2)pWorkspace;
+            IWorkspaceProperties2 workspaceProperties2 = (IWorkspaceProperties2) pWorkspace;
             //判断workspace是否可以执行SQL语句
-            IWorkspaceProperty canExecuteSqlProperty = workspaceProperties2.get_Property(esriWorkspacePropertyGroupType.esriWorkspacePropertyGroup, (int)esriWorkspacePropertyType.esriWorkspacePropCanExecuteSQL);
+            IWorkspaceProperty canExecuteSqlProperty =
+                workspaceProperties2.get_Property(esriWorkspacePropertyGroupType.esriWorkspacePropertyGroup,
+                    (int) esriWorkspacePropertyType.esriWorkspacePropCanExecuteSQL);
             if (canExecuteSqlProperty.IsSupported)
             {
                 //ExecuteSQL删除feature
@@ -424,7 +430,10 @@ namespace Yutai.Pipeline.Editor.Helper
             IWorkspace pWorkspace = dataset.Workspace;
             IWorkspaceProperties2 workspaceProperties2 = pWorkspace as IWorkspaceProperties2;
             //判断workspace是否可以执行SQL语句
-            IWorkspaceProperty canExecuteSqlProperty = workspaceProperties2.Property[esriWorkspacePropertyGroupType.esriWorkspacePropertyGroup, (int)esriWorkspacePropertyType.esriWorkspacePropCanExecuteSQL];
+            IWorkspaceProperty canExecuteSqlProperty =
+                workspaceProperties2.Property[
+                    esriWorkspacePropertyGroupType.esriWorkspacePropertyGroup,
+                    (int) esriWorkspacePropertyType.esriWorkspacePropCanExecuteSQL];
             if (canExecuteSqlProperty.IsSupported)
             {
                 //ExecuteSQL删除feature
@@ -434,18 +443,21 @@ namespace Yutai.Pipeline.Editor.Helper
 
         #endregion
 
-        public static List<IElement> CreateAnnoElementList(IMultiCheQiConfig multiCheQiConfig, List<MultiCheQiModel> modelList, IPoint point)
+        public static List<IElement> CreateAnnoElementList(IMultiCheQiConfig multiCheQiConfig,
+            List<MultiCheQiModel> modelList, IPoint point)
         {
             List<IElement> list = new List<IElement>();
 
             IElement element = CreateHeaderElements(multiCheQiConfig, point);
             list.Add(element);
-            list.AddRange(CreateContentElements(multiCheQiConfig, modelList, element.Geometry as IPoint, element.Geometry.Envelope.Width, element.Geometry.Envelope.Height));
+            list.AddRange(CreateContentElements(multiCheQiConfig, modelList, element.Geometry as IPoint,
+                element.Geometry.Envelope.Width, element.Geometry.Envelope.Height));
 
             return list;
         }
 
-        public static List<IElement> CreateContentElements(IMultiCheQiConfig multiCheQiConfig, List<MultiCheQiModel> models, IPoint point, double xLength, double yLength)
+        public static List<IElement> CreateContentElements(IMultiCheQiConfig multiCheQiConfig,
+            List<MultiCheQiModel> models, IPoint point, double xLength, double yLength)
         {
             List<IElement> list = new List<IElement>();
             IPoint originPoint = new PointClass
@@ -458,7 +470,7 @@ namespace Yutai.Pipeline.Editor.Helper
                 MultiCheQiModel multiCheQiModel = models[i];
                 IPoint tempPoint = new PointClass();
                 tempPoint.X = originPoint.X;
-                tempPoint.Y = originPoint.Y - yLength * (i + 1);
+                tempPoint.Y = originPoint.Y - yLength*(i + 1);
                 string strContent = null;
                 for (int j = 0; j < multiCheQiModel.FieldMappingList.Count; j++)
                 {
@@ -497,7 +509,7 @@ namespace Yutai.Pipeline.Editor.Helper
 
             stdole.IFontDisp fontDisp = new StdFontClass() as IFontDisp;
             fontDisp.Name = fontConfig.Font.Name;
-            fontDisp.Size = (decimal)fontConfig.Font.Size;
+            fontDisp.Size = (decimal) fontConfig.Font.Size;
             fontDisp.Italic = fontConfig.Font.Italic;
             fontDisp.Underline = fontConfig.Font.Underline;
             fontDisp.Bold = fontConfig.Font.Bold;
@@ -575,7 +587,9 @@ namespace Yutai.Pipeline.Editor.Helper
             }
             return list;
         }
-        public static List<IPolygon> GetMovedPoints(List<IFeature> features, IPoint point, enumAnnotationDirection direction)
+
+        public static List<IPolygon> GetMovedPoints(List<IFeature> features, IPoint point,
+            enumAnnotationDirection direction)
         {
             List<IPolygon> list = new List<IPolygon>();
             if (features.Count <= 0)
@@ -583,7 +597,7 @@ namespace Yutai.Pipeline.Editor.Helper
             IPoint originPoint = new PointClass
             {
                 X = point.X,
-                Y = point.Y - features[0].Extent.Height / 2
+                Y = point.Y - features[0].Extent.Height/2
             };
             for (int i = 0; i < features.Count; i++)
             {
@@ -597,100 +611,100 @@ namespace Yutai.Pipeline.Editor.Helper
                 switch (direction)
                 {
                     case enumAnnotationDirection.LeftUp:
+                    {
+                        point1 = new PointClass
                         {
-                            point1 = new PointClass
-                            {
-                                X = originPoint.X - pFeature.Extent.Width,
-                                Y = originPoint.Y + pFeature.Extent.Height * (features.Count - 1 - i)
-                            };
-                            point2 = new PointClass
-                            {
-                                X = originPoint.X - pFeature.Extent.Width,
-                                Y = originPoint.Y + pFeature.Extent.Height * (features.Count - i)
-                            };
-                            point3 = new PointClass
-                            {
-                                X = originPoint.X,
-                                Y = originPoint.Y + pFeature.Extent.Height * (features.Count - i)
-                            };
-                            point4 = new PointClass
-                            {
-                                X = originPoint.X,
-                                Y = originPoint.Y + pFeature.Extent.Height * (features.Count - 1 - i)
-                            };
-                        }
+                            X = originPoint.X - pFeature.Extent.Width,
+                            Y = originPoint.Y + pFeature.Extent.Height*(features.Count - 1 - i)
+                        };
+                        point2 = new PointClass
+                        {
+                            X = originPoint.X - pFeature.Extent.Width,
+                            Y = originPoint.Y + pFeature.Extent.Height*(features.Count - i)
+                        };
+                        point3 = new PointClass
+                        {
+                            X = originPoint.X,
+                            Y = originPoint.Y + pFeature.Extent.Height*(features.Count - i)
+                        };
+                        point4 = new PointClass
+                        {
+                            X = originPoint.X,
+                            Y = originPoint.Y + pFeature.Extent.Height*(features.Count - 1 - i)
+                        };
+                    }
                         break;
                     case enumAnnotationDirection.RightUp:
+                    {
+                        point1 = new PointClass
                         {
-                            point1 = new PointClass
-                            {
-                                X = originPoint.X,
-                                Y = originPoint.Y + pFeature.Extent.Height * (features.Count - 1 - i)
-                            };
-                            point2 = new PointClass
-                            {
-                                X = originPoint.X,
-                                Y = originPoint.Y + pFeature.Extent.Height * (features.Count - i)
-                            };
-                            point3 = new PointClass
-                            {
-                                X = originPoint.X + pFeature.Extent.Width,
-                                Y = originPoint.Y + pFeature.Extent.Height * (features.Count - i)
-                            };
-                            point4 = new PointClass
-                            {
-                                X = originPoint.X + pFeature.Extent.Width,
-                                Y = originPoint.Y + pFeature.Extent.Height * (features.Count - 1 - i)
-                            };
-                        }
+                            X = originPoint.X,
+                            Y = originPoint.Y + pFeature.Extent.Height*(features.Count - 1 - i)
+                        };
+                        point2 = new PointClass
+                        {
+                            X = originPoint.X,
+                            Y = originPoint.Y + pFeature.Extent.Height*(features.Count - i)
+                        };
+                        point3 = new PointClass
+                        {
+                            X = originPoint.X + pFeature.Extent.Width,
+                            Y = originPoint.Y + pFeature.Extent.Height*(features.Count - i)
+                        };
+                        point4 = new PointClass
+                        {
+                            X = originPoint.X + pFeature.Extent.Width,
+                            Y = originPoint.Y + pFeature.Extent.Height*(features.Count - 1 - i)
+                        };
+                    }
                         break;
                     case enumAnnotationDirection.RightDown:
+                    {
+                        point1 = new PointClass
                         {
-                            point1 = new PointClass
-                            {
-                                X = originPoint.X,
-                                Y = originPoint.Y - pFeature.Extent.Height * (i + 1)
-                            };
-                            point2 = new PointClass
-                            {
-                                X = originPoint.X,
-                                Y = originPoint.Y - pFeature.Extent.Height * (i)
-                            };
-                            point3 = new PointClass
-                            {
-                                X = originPoint.X + pFeature.Extent.Width,
-                                Y = originPoint.Y - pFeature.Extent.Height * (i)
-                            };
-                            point4 = new PointClass
-                            {
-                                X = originPoint.X + pFeature.Extent.Width,
-                                Y = originPoint.Y - pFeature.Extent.Height * (i + 1)
-                            };
-                        }
+                            X = originPoint.X,
+                            Y = originPoint.Y - pFeature.Extent.Height*(i + 1)
+                        };
+                        point2 = new PointClass
+                        {
+                            X = originPoint.X,
+                            Y = originPoint.Y - pFeature.Extent.Height*(i)
+                        };
+                        point3 = new PointClass
+                        {
+                            X = originPoint.X + pFeature.Extent.Width,
+                            Y = originPoint.Y - pFeature.Extent.Height*(i)
+                        };
+                        point4 = new PointClass
+                        {
+                            X = originPoint.X + pFeature.Extent.Width,
+                            Y = originPoint.Y - pFeature.Extent.Height*(i + 1)
+                        };
+                    }
                         break;
                     case enumAnnotationDirection.LeftDown:
+                    {
+                        point1 = new PointClass
                         {
-                            point1 = new PointClass
-                            {
-                                X = originPoint.X - pFeature.Extent.Width,
-                                Y = originPoint.Y - pFeature.Extent.Height * (i + 1)
-                            };
-                            point2 = new PointClass
-                            {
-                                X = originPoint.X - pFeature.Extent.Width,
-                                Y = originPoint.Y - pFeature.Extent.Height * (i)
-                            };
-                            point3 = new PointClass
-                            {
-                                X = originPoint.X,
-                                Y = originPoint.Y - pFeature.Extent.Height * (i)
-                            };
-                            point4 = new PointClass
-                            {
-                                X = originPoint.X,
-                                Y = originPoint.Y - pFeature.Extent.Height * (i + 1)
-                            };
-                        }
+                            X = originPoint.X - pFeature.Extent.Width,
+                            Y = originPoint.Y - pFeature.Extent.Height*(i + 1)
+                        };
+                        point2 = new PointClass
+                        {
+                            X = originPoint.X - pFeature.Extent.Width,
+                            Y = originPoint.Y - pFeature.Extent.Height*(i)
+                        };
+                        point3 = new PointClass
+                        {
+                            X = originPoint.X,
+                            Y = originPoint.Y - pFeature.Extent.Height*(i)
+                        };
+                        point4 = new PointClass
+                        {
+                            X = originPoint.X,
+                            Y = originPoint.Y - pFeature.Extent.Height*(i + 1)
+                        };
+                    }
                         break;
                 }
                 pointCollection.AddPoint(point1);
@@ -703,5 +717,60 @@ namespace Yutai.Pipeline.Editor.Helper
 
             return list;
         }
+
+        public static void CreatePointFeatures(IFeatureLayer featureLayer, IPolyline polyline, bool hasFromPoint, bool hasTurningPoint, bool hasToPoint)
+        {
+            try
+            {
+                bool hasZ = FeatureClassUtil.CheckHasZ(featureLayer.FeatureClass);
+                bool hasM = FeatureClassUtil.CheckHasM(featureLayer.FeatureClass);
+                IPointCollection pointCollection = polyline as IPointCollection;
+                if (pointCollection == null)
+                    return;
+                for (int i = 0; i < pointCollection.PointCount; i++)
+                {
+                    if (hasFromPoint == false && i == 0)
+                        continue;
+                    if (hasTurningPoint == false && i > 0 && i < pointCollection.PointCount-1)
+                        continue;
+                    if (hasToPoint == false && i == pointCollection.PointCount-1)
+                        continue;
+                    IPoint point = pointCollection.Point[i];
+                    IFeature feature = featureLayer.FeatureClass.CreateFeature();
+                    feature.Shape = GeometryHelper.CreatePoint(point.X, point.Y,
+                        point.Z, point.M, hasZ, hasM);
+                    feature.Store();
+                }
+            }
+            catch (Exception exception)
+            {
+                throw new Exception(exception.Message);
+            }
+        }
+
+        public static void CreateLineFeature(IFeatureLayer featureLayer, IPolyline polyline)
+        {
+            try
+            {
+                bool hasZ = FeatureClassUtil.CheckHasZ(featureLayer.FeatureClass);
+                bool hasM = FeatureClassUtil.CheckHasM(featureLayer.FeatureClass);
+                IPointCollection pointCollection = polyline as IPointCollection;
+                if (pointCollection == null)
+                    return;
+                for (int i = 1; i < pointCollection.PointCount; i++)
+                {
+                    IPoint fromPoint = pointCollection.Point[i - 1];
+                    IPoint toPoint = pointCollection.Point[i];
+                    IFeature feature = featureLayer.FeatureClass.CreateFeature();
+                    feature.Shape = GeometryHelper.CreatePointCollection(fromPoint, toPoint, hasZ, hasM) as IPolyline;
+                    feature.Store();
+                }
+            }
+            catch (Exception exception)
+            {
+                throw new Exception(exception.Message);
+            }
+        }
     }
 }
+

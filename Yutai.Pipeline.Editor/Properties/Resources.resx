@@ -172,6 +172,21 @@
   <data name="icon_pipe_zjpx" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_pipe_zjpx.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icon_CreateLine" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_CreateLine.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_CreateLineWithFromPoint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_CreateLineWithFromPoint.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_CreateLineWithPoint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_CreateLineWithPoint.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_CreateLineWithToPoint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_CreateLineWithToPoint.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_PointLineLinkage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_PointLineLinkage.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="img_arrow_change" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\img_arrow_change.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

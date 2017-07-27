@@ -2,7 +2,14 @@
   <MainMenu>
     <Pages>
       <Page Key="PipelineEditor" Caption="管线编辑" Index="0" Visible="true">
+        <PageGroup Key="Pipeline_Editor_Setting" Caption="设置" Visible="true" Index="1">
+          <BarItem Key="PipelineEditor_SetLayer" Visible="true"/>
+        </PageGroup>
         <PageGroup Key="Pipeline_Editor_Common" Caption="常用" Visible="true" Index="1">
+          <BarItem Key="PipelineEditor_CreateLine" Visible="true"/>
+          <BarItem Key="PipelineEditor_CreateLineWithPoint" Visible="true"/>
+          <BarItem Key="PipelineEditor_CreateLineWithFromPoint" Visible="true"/>
+          <BarItem Key="PipelineEditor_CreateLineWithToPoint" Visible="true"/>
           <BarItem Key="PipelineEditor_PointLineLinkage" Visible="true"/>
         </PageGroup>
         <PageGroup Key="Pipeline_Editor_Profession" Caption="专业编辑工具" Visible="true" Index="2">

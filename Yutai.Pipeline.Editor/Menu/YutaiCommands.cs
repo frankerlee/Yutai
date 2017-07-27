@@ -5,6 +5,7 @@ using Yutai.Pipeline.Editor.Commands.Common;
 using Yutai.Pipeline.Editor.Commands.Exchange;
 using Yutai.Pipeline.Editor.Commands.Mark;
 using Yutai.Pipeline.Editor.Commands.Profession;
+using Yutai.Pipeline.Editor.Commands.Setting;
 using Yutai.Pipeline.Editor.Commands.Verify;
 using Yutai.Pipeline.Editor.Commands.Version;
 using Yutai.Plugins.Concrete;
@@ -44,6 +45,12 @@ namespace Yutai.Pipeline.Editor.Menu
                     return new List<YutaiCommand>();
                 _commands = new List<YutaiCommand>()
                 {
+                    new CmdSetLayer(_context, _plugin),
+
+                    new CmdCreateLine(_context, _plugin),
+                    new CmdCreateLineWithPoint(_context, _plugin),
+                    new CmdCreateLineWithFromPoint(_context, _plugin),
+                    new CmdCreateLineWithToPoint(_context, _plugin),
                     new CmdPointLineLinkage(_context, _plugin),
 
                     new CmdAngleConvert(_context, _plugin),

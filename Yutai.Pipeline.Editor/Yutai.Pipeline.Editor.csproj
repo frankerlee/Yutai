@@ -117,6 +117,7 @@
     <Compile Include="Axf\AXF_TableInfo.cs" />
     <Compile Include="Axf\AXF_TABLES.cs" />
     <Compile Include="Classes\CheQiFieldMapping.cs" />
+    <Compile Include="Classes\LayerItem.cs" />
     <Compile Include="Classes\MultiCheQiModel.cs" />
     <Compile Include="Classes\CustomFeatureClass.cs" />
     <Compile Include="Classes\CustomField.cs" />
@@ -128,6 +129,11 @@
     <Compile Include="Classes\IFieldSetting.cs" />
     <Compile Include="Classes\IFontConfig.cs" />
     <Compile Include="Classes\IMultiCheQiConfig.cs" />
+    <Compile Include="Commands\Common\CmdCreateLine.cs" />
+    <Compile Include="Commands\Common\CmdCreateLineWithFromPoint.cs" />
+    <Compile Include="Commands\Common\CmdCreateLineWithPoint.cs" />
+    <Compile Include="Commands\Common\CmdCreateLineWithToPoint.cs" />
+    <Compile Include="Commands\Common\CmdDeletePoint.cs" />
     <Compile Include="Commands\Common\CmdGetTargetPoint.cs" />
     <Compile Include="Commands\Common\CmdPointLineLinkage.cs" />
     <Compile Include="Commands\Exchange\CmdConversion.cs" />
@@ -142,6 +148,7 @@
     <Compile Include="Commands\Mark\CmdDeleteAll.cs" />
     <Compile Include="Commands\Mark\CmdDuoYaoSuCheQi.cs" />
     <Compile Include="Commands\Mark\CmdDuoYaoSuCheQiSheZhi.cs" />
+    <Compile Include="Commands\Setting\CmdSetLayer.cs" />
     <Compile Include="Commands\Version\CmdVersionManagement.cs" />
     <Compile Include="Commands\Version\CmdVersionQuery.cs" />
     <Compile Include="Commands\Mark\CmdBiaoZhu.cs" />
@@ -516,6 +523,14 @@
     <None Include="Resources\icon_pipe_excel.png" />
     <None Include="Resources\icon_pipe_version.png" />
     <None Include="Resources\icon_pipe_versionquery.png" />
+    <None Include="Resources\icon_PointLineLinkage.bmp" />
+    <None Include="Resources\icon_CreateLineWithToPoint.bmp" />
+    <None Include="Resources\icon_CreateLineWithPoint.bmp" />
+    <None Include="Resources\icon_CreateLineWithFromPoint.bmp" />
+    <None Include="Resources\icon_CreateLine.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Forms\Common\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

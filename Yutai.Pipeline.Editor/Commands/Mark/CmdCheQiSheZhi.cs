@@ -22,6 +22,7 @@ namespace Yutai.Pipeline.Editor.Commands.Mark
         {
             OnCreate(context);
             _plugin = plugin;
+            _config = _plugin.PipeConfig;
         }
 
         public override void OnClick(object sender, EventArgs args)
