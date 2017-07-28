@@ -61,6 +61,66 @@ namespace Yutai.Pipeline.Editor.Properties {
         }
         
         /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] Digitise {
+            get {
+                object obj = ResourceManager.GetObject("Digitise", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_CreateLine {
+            get {
+                object obj = ResourceManager.GetObject("icon_CreateLine", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_CreateLineWithFromPoint {
+            get {
+                object obj = ResourceManager.GetObject("icon_CreateLineWithFromPoint", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_CreateLineWithPoint {
+            get {
+                object obj = ResourceManager.GetObject("icon_CreateLineWithPoint", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_CreateLineWithToPoint {
+            get {
+                object obj = ResourceManager.GetObject("icon_CreateLineWithToPoint", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_DeletePoint {
+            get {
+                object obj = ResourceManager.GetObject("icon_DeletePoint", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
         internal static System.Drawing.Bitmap icon_pipe_autonum {
@@ -243,59 +303,19 @@ namespace Yutai.Pipeline.Editor.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap icon_CreateLine {
-            get {
-                object obj = ResourceManager.GetObject("icon_CreateLine", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap icon_CreateLineWithFromPoint {
-            get {
-                object obj = ResourceManager.GetObject("icon_CreateLineWithFromPoint", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap icon_CreateLineWithPoint {
-            get {
-                object obj = ResourceManager.GetObject("icon_CreateLineWithPoint", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap icon_CreateLineWithToPoint {
-            get {
-                object obj = ResourceManager.GetObject("icon_CreateLineWithToPoint", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap icon_DeletePoint {
-            get {
-                object obj = ResourceManager.GetObject("icon_DeletePoint", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
         internal static System.Drawing.Bitmap icon_PointLineLinkage {
             get {
                 object obj = ResourceManager.GetObject("icon_PointLineLinkage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_SplitLine {
+            get {
+                object obj = ResourceManager.GetObject("icon_SplitLine", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

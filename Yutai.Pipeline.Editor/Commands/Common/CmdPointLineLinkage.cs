@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using ESRI.ArcGIS.Geometry;
 using Yutai.ArcGIS.Common.Editor;
 using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Pipeline.Editor.Helper;
+using Yutai.Pipeline.Editor.Properties;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
@@ -49,6 +51,7 @@ namespace Yutai.Pipeline.Editor.Commands.Common
             base.m_caption = "点线联动";
             base.m_category = "PipelineEditor";
             base.m_bitmap = Properties.Resources.icon_PointLineLinkage;
+            this.m_cursor = new System.Windows.Forms.Cursor(new MemoryStream(Resources.Digitise));
             base.m_name = "PipelineEditor_PointLineLinkage";
             base._key = "PipelineEditor_PointLineLinkage";
             base.m_toolTip = "移动管点的时候管线也跟着动";

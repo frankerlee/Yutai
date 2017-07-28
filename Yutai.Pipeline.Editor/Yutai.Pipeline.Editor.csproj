@@ -117,7 +117,17 @@
     <Compile Include="Axf\AXF_TableInfo.cs" />
     <Compile Include="Axf\AXF_TABLES.cs" />
     <Compile Include="Classes\CheQiFieldMapping.cs" />
+    <Compile Include="Classes\FeatureSearch.cs" />
+    <Compile Include="Classes\FeatureSearchByPoint.cs" />
+    <Compile Include="Classes\FeatureSearchByPolyline.cs" />
+    <Compile Include="Classes\ICodeSetting.cs" />
+    <Compile Include="Classes\IFeatureCalculate.cs" />
+    <Compile Include="Classes\IFeatureSearch.cs" />
+    <Compile Include="Classes\IFeatureSearchByPoint.cs" />
+    <Compile Include="Classes\IFeatureSearchByPolyline.cs" />
+    <Compile Include="Classes\ILineFeatureCalculate.cs" />
     <Compile Include="Classes\LayerItem.cs" />
+    <Compile Include="Classes\LineFeatureCalculate.cs" />
     <Compile Include="Classes\MultiCheQiModel.cs" />
     <Compile Include="Classes\CustomFeatureClass.cs" />
     <Compile Include="Classes\CustomField.cs" />
@@ -137,6 +147,7 @@
     <Compile Include="Commands\Common\CmdDeletePoint.cs" />
     <Compile Include="Commands\Common\CmdGetTargetPoint.cs" />
     <Compile Include="Commands\Common\CmdPointLineLinkage.cs" />
+    <Compile Include="Commands\Common\CmdSplitLine.cs" />
     <Compile Include="Commands\Exchange\CmdConversion.cs" />
     <Compile Include="Commands\Exchange\CmdClip.cs" />
     <Compile Include="Commands\Exchange\CmdDataExport.cs" />
@@ -247,11 +258,17 @@
     <Compile Include="Emuns\AnnotationSortingCommand.cs" />
     <Compile Include="Emuns\IdentifyRoadNameCommand.cs" />
     <Compile Include="Emuns\SurveyCoordType.cs" />
-    <Compile Include="Forms\Common\frmDeletePipeline.cs">
+    <Compile Include="Forms\Common\FrmCode.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Common\frmDeletePipeline.Designer.cs">
-      <DependentUpon>frmDeletePipeline.cs</DependentUpon>
+    <Compile Include="Forms\Common\FrmCode.Designer.cs">
+      <DependentUpon>FrmCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Common\FrmDeletePipeline.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Common\FrmDeletePipeline.Designer.cs">
+      <DependentUpon>FrmDeletePipeline.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Exchange\FrmClip.cs">
       <SubType>Form</SubType>
@@ -453,8 +470,11 @@
     <EmbeddedResource Include="Controls\UcSpatialReference.resx">
       <DependentUpon>UcSpatialReference.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Common\frmDeletePipeline.resx">
-      <DependentUpon>frmDeletePipeline.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Common\FrmCode.resx">
+      <DependentUpon>FrmCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Common\FrmDeletePipeline.resx">
+      <DependentUpon>FrmDeletePipeline.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Exchange\FrmClip.resx">
       <DependentUpon>FrmClip.cs</DependentUpon>
@@ -515,6 +535,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DLL\ClosedXML.dll" />
+    <None Include="Resources\AddCustomPoint.bmp" />
     <None Include="Resources\icon_pipe_jiaodu.png" />
     <None Include="Resources\icon_pipe_autonum.png" />
     <None Include="Resources\icon_pipe_roadknow.png" />
@@ -540,7 +561,9 @@
     <None Include="Resources\icon_CreateLineWithFromPoint.bmp" />
     <None Include="Resources\icon_CreateLine.bmp" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\Cursors\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

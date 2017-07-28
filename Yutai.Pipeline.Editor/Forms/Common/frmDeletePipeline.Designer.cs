@@ -1,6 +1,6 @@
 ﻿namespace Yutai.Pipeline.Editor.Forms.Common
 {
-    partial class frmDeletePipeline
+    partial class FrmDeletePipeline
     {
         /// <summary>
         /// Required designer variable.

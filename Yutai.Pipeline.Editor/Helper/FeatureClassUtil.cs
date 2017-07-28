@@ -1,6 +1,11 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices;
 using ESRI.ArcGIS.DataInterop;
 using ESRI.ArcGIS.Geodatabase;
+using Yutai.Pipeline.Editor.SqlCe;
 
 namespace Yutai.Pipeline.Editor.Helper
 {
@@ -215,6 +220,26 @@ namespace Yutai.Pipeline.Editor.Helper
                     return pFeatureClass;
             }
             return null;
+        }
+
+        public static string GetMaxValue(IFeatureClass featureClass, string fieldName)
+        {
+            List<string> list = new List<string>();
+            IQueryFilter queryFilter = new QueryFilterClass();
+            queryFilter.SubFields = fieldName;
+            IFeatureCursor featureCursor = featureClass.Search(queryFilter, false);
+            int idx = featureCursor.FindField(fieldName);
+            if (idx < 0)
+                return "";
+            IFeature feature;
+            while ((feature = featureCursor.NextFeature()) != null)
+            {
+                if (feature.Value[idx] is DBNull || feature.Value[idx] == null)
+                    continue;
+                list.Add(feature.Value[idx].ToString());
+            }
+            Marshal.ReleaseComObject(featureCursor);
+            return list.Max();
         }
     }
 }

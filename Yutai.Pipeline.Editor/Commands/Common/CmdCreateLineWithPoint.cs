@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using Yutai.ArcGIS.Common.Editor;
 using Yutai.Pipeline.Config.Interfaces;
 using Yutai.Pipeline.Editor.Forms.Profession;
 using Yutai.Pipeline.Editor.Helper;
+using Yutai.Pipeline.Editor.Properties;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
@@ -35,6 +37,25 @@ namespace Yutai.Pipeline.Editor.Commands.Common
 
         public override void OnClick(object sender, EventArgs args)
         {
+
+            if (_plugin.CurrentLayer == null)
+            {
+                MessageBox.Show(@"未设置当前编辑图层！");
+                _context.ClearCurrentTool();
+                return;
+            }
+            IBasicLayerInfo pointLayerInfo = _plugin.CurrentLayer.Layers.FirstOrDefault(c => c.DataType == enumPipelineDataType.Point);
+            if (pointLayerInfo != null)
+                _pointFeatureLayer = CommonHelper.GetLayerByName(_context.FocusMap, pointLayerInfo.AliasName, true) as IFeatureLayer;
+            IBasicLayerInfo lineLayerInfo = _plugin.CurrentLayer.Layers.FirstOrDefault(c => c.DataType == enumPipelineDataType.Line);
+            if (lineLayerInfo != null)
+                _lineFeatureLayer = CommonHelper.GetLayerByName(_context.FocusMap, lineLayerInfo.AliasName, true) as IFeatureLayer;
+            if (_pointFeatureLayer == null || _lineFeatureLayer == null)
+            {
+                MessageBox.Show(@"点图层或线图层未设置！");
+                _context.ClearCurrentTool();
+                return;
+            }
             _context.SetCurrentTool(this);
             _pointSnapper = new PointSnapper();
             (_pointSnapper as PointSnapper).Map = _context.FocusMap;
@@ -46,6 +67,7 @@ namespace Yutai.Pipeline.Editor.Commands.Common
             base.m_caption = "新建管线(包含端点)";
             base.m_category = "PipelineEditor";
             base.m_bitmap = Properties.Resources.icon_CreateLineWithPoint;
+            this.m_cursor = new System.Windows.Forms.Cursor(new MemoryStream(Resources.Digitise));
             base.m_name = "PipelineEditor_CreateLineWithPoint";
             base._key = "PipelineEditor_CreateLineWithPoint";
             base.m_toolTip = "新建管线数据，包含起点和终点";
@@ -67,16 +89,6 @@ namespace Yutai.Pipeline.Editor.Commands.Common
                 if (ArcGIS.Common.Editor.Editor.EditMap != _context.FocusMap)
                     return false;
                 if (ArcGIS.Common.Editor.Editor.EditWorkspace == null)
-                    return false;
-                if (_plugin.CurrentLayer == null)
-                    return false;
-                IBasicLayerInfo pointLayerInfo = _plugin.CurrentLayer.Layers.FirstOrDefault(c => c.DataType == enumPipelineDataType.Point);
-                if (pointLayerInfo != null)
-                    _pointFeatureLayer = CommonHelper.GetLayerByName(_context.FocusMap, pointLayerInfo.AliasName, true) as IFeatureLayer;
-                IBasicLayerInfo lineLayerInfo = _plugin.CurrentLayer.Layers.FirstOrDefault(c => c.DataType == enumPipelineDataType.Line);
-                if (lineLayerInfo != null)
-                    _lineFeatureLayer = CommonHelper.GetLayerByName(_context.FocusMap, lineLayerInfo.AliasName, true) as IFeatureLayer;
-                if (_pointFeatureLayer == null || _lineFeatureLayer == null)
                     return false;
                 return true;
             }

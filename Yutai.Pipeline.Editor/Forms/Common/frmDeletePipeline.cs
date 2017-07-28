@@ -11,7 +11,7 @@ using Yutai.Pipeline.Editor.Helper;
 
 namespace Yutai.Pipeline.Editor.Forms.Common
 {
-    public partial class frmDeletePipeline : DevExpress.XtraEditors.XtraForm
+    public partial class FrmDeletePipeline : DevExpress.XtraEditors.XtraForm
     {
         private List<TreeRecord> _treeRecords;
         private IFeatureLayer _featureLayer;
@@ -19,7 +19,7 @@ namespace Yutai.Pipeline.Editor.Forms.Common
         private IFeature _lineFeature2;
         private IPoint _linkPoint;
 
-        public frmDeletePipeline(IFeature lineFeature1, IFeature lineFeature2, IPoint linkPoint, IFeatureLayer pFeatureLayer)
+        public FrmDeletePipeline(IFeature lineFeature1, IFeature lineFeature2, IPoint linkPoint, IFeatureLayer pFeatureLayer)
         {
             InitializeComponent();
             _lineFeature1 = lineFeature1;

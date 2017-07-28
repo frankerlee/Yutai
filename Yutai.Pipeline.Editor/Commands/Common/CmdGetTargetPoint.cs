@@ -8,8 +8,10 @@
 // 更新时间 :  2017/07/26  11:23
 
 using System;
+using System.IO;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geometry;
+using Yutai.Pipeline.Editor.Properties;
 using Yutai.Plugins.Concrete;
 using Yutai.Plugins.Enums;
 using Yutai.Plugins.Interfaces;
@@ -37,7 +39,7 @@ namespace Yutai.Pipeline.Editor.Commands.Common
             _context = hook as IAppContext;
             base.m_caption = "";
             base.m_category = "PipelineEditor";
-            //base.m_bitmap = Properties.Resources.icon_valve;
+            this.m_cursor = new System.Windows.Forms.Cursor(new MemoryStream(Resources.Digitise));
             base.m_name = "PipelineEditor_GetTargetPoint";
             base._key = "PipelineEditor_GetTargetPoint";
             base.m_toolTip = "";

@@ -196,4 +196,18 @@
   <data name="img_folder_open" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\img_folder_open.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Digitise" type="System.Byte[], mscorlib">
+    <value>
+        AAACAAEAICAAAA8ADwAwAQAAFgAAACgAAAAgAAAAQAAAAAEAAQAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAA////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAA/////////////////////////////////////////////v////7////+
+        /////v////7////+/////v////7///4AAP///v////7////+/////v////7////+/////v////7/////
+        //////////////////////////////////8=
+</value>
+  </data>
+  <data name="icon_SplitLine" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AddCustomPoint.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
