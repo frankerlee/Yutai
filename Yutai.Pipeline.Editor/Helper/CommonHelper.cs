@@ -807,7 +807,107 @@ namespace Yutai.Pipeline.Editor.Helper
                 return code.Replace(value, d.ToString(CultureInfo.InvariantCulture).PadLeft(value.Length,'0'));
             }
         }
-        
+
+        public static void MovePointWithLine(IFeature pointFeature, List<IFeature> lineFeatures, IPoint targetPoint, double tolerance)
+        {
+            IPoint linkPoint = pointFeature.Shape as IPoint;
+
+            foreach (IFeature lineFeature in lineFeatures)
+            {
+                IPolyline linkPolyline = lineFeature.Shape as IPolyline;
+                if (linkPolyline == null)
+                    continue;
+                IPointCollection pointCollection = linkPolyline as IPointCollection;
+                if (CommonHelper.GetDistance(linkPolyline.FromPoint, linkPoint) < tolerance)
+                {
+                    IPoint fromPoint = pointCollection.Point[0];
+                    fromPoint.PutCoords(targetPoint.X, targetPoint.Y);
+                    pointCollection.UpdatePoint(0, fromPoint);
+                }
+                else if (CommonHelper.GetDistance(linkPolyline.ToPoint, linkPoint) < tolerance)
+                {
+                    IPoint toPoint = pointCollection.Point[pointCollection.PointCount - 1];
+                    toPoint.PutCoords(targetPoint.X, targetPoint.Y);
+                    pointCollection.UpdatePoint(pointCollection.PointCount - 1, toPoint);
+                }
+                lineFeature.Shape = pointCollection as IPolyline;
+                lineFeature.Store();
+            }
+
+            linkPoint.PutCoords(targetPoint.X, targetPoint.Y);
+            pointFeature.Shape = linkPoint;
+            pointFeature.Store();
+        }
+
+        public static IFeature CutOffPolylineByPoint(IFeatureClass featureClass, IFeature polylineFeature,
+            IFeature pointFeature, string keyValue, string sKeyValue, string eKeyValue)
+        {
+            int idxKeyField = pointFeature.Fields.FindField(keyValue);
+            int idxSKeyField = polylineFeature.Fields.FindField(sKeyValue);
+            int idxEKeyField = polylineFeature.Fields.FindField(eKeyValue);
+            if (idxKeyField == -1 || idxSKeyField == -1 || idxEKeyField == -1)
+                return null;
+            bool hasZ = FeatureClassUtil.CheckHasZ(featureClass);
+            bool hasM = FeatureClassUtil.CheckHasM(featureClass);
+            IPoint point = pointFeature.Shape as IPoint;
+            if (point == null)
+                return null;
+            IPolyline polyline1 = polylineFeature.ShapeCopy as IPolyline;
+            if (polyline1 == null)
+                return null;
+            IPolyline firstPolyline = new PolylineClass
+            {
+                FromPoint = GeometryHelper.CreatePoint(polyline1.FromPoint.X, polyline1.FromPoint.Y, polyline1.FromPoint.Z, polyline1.FromPoint.M, hasZ, hasM),
+                ToPoint = GeometryHelper.CreatePoint(point.X, point.Y, point.Z, point.M, hasZ, hasM)
+            };
+            if (hasZ)
+            {
+                IZAware pZAware = firstPolyline as IZAware;
+                pZAware.ZAware = true;
+            }
+            if (hasM)
+            {
+                IMAware pMAware = firstPolyline as IMAware;
+                pMAware.MAware = true;
+            }
+            polylineFeature.Shape = firstPolyline;
+            polylineFeature.Store();
+            IFeature secondFeature = featureClass.CreateFeature();
+            IPolyline secondPolyline = new PolylineClass
+            {
+                FromPoint = GeometryHelper.CreatePoint(point.X, point.Y, point.Z, point.M, hasZ, hasM),
+                ToPoint = GeometryHelper.CreatePoint(polyline1.ToPoint.X, polyline1.ToPoint.Y, polyline1.ToPoint.Z, polyline1.ToPoint.M, hasZ, hasM),
+            };
+            if (hasZ)
+            {
+                IZAware pZAware = secondPolyline as IZAware;
+                pZAware.ZAware = true;
+            }
+            if (hasM)
+            {
+                IMAware pMAware = secondPolyline as IMAware;
+                pMAware.MAware = true;
+            }
+            secondFeature.Shape = secondPolyline;
+            IField pField;
+            for (int i = 0; i < featureClass.Fields.FieldCount; i++)
+            {
+                pField = featureClass.Fields.Field[i];
+                if (pField.Type == esriFieldType.esriFieldTypeGeometry)
+                    continue;
+                int idx = secondFeature.Fields.FindField(pField.Name);
+                if (pField.Editable && idx != -1)
+                    secondFeature.Value[idx] = polylineFeature.Value[idx];
+            }
+            secondFeature.Store();
+
+            polylineFeature.Value[idxEKeyField] = pointFeature.Value[idxKeyField];
+            polylineFeature.Store();
+            secondFeature.Value[idxSKeyField] = pointFeature.Value[idxKeyField];
+            secondFeature.Store();
+            return secondFeature;
+        }
+
     }
 }
 

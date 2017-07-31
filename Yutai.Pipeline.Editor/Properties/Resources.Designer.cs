@@ -303,6 +303,16 @@ namespace Yutai.Pipeline.Editor.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap icon_PipelineStretch {
+            get {
+                object obj = ResourceManager.GetObject("icon_PipelineStretch", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap icon_PointLineLinkage {
             get {
                 object obj = ResourceManager.GetObject("icon_PointLineLinkage", resourceCulture);
@@ -316,6 +326,16 @@ namespace Yutai.Pipeline.Editor.Properties {
         internal static System.Drawing.Bitmap icon_SplitLine {
             get {
                 object obj = ResourceManager.GetObject("icon_SplitLine", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_SplitLineByPoint {
+            get {
+                object obj = ResourceManager.GetObject("icon_SplitLineByPoint", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

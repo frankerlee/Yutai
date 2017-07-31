@@ -155,5 +155,15 @@ namespace Yutai.Pipeline.Editor.Commands.Common
                 MessageBox.Show(exception.Message);
             }
         }
+
+        public override void OnKeyDown(int keyCode, int Shift)
+        {
+            if (keyCode == 27)
+            {
+                _context.FocusMap.ClearSelection();
+                _context.ActiveView.Refresh();
+                _lineFeedback = null;
+            }
+        }
     }
 }

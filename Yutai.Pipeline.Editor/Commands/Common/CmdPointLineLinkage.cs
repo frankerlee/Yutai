@@ -204,33 +204,33 @@ namespace Yutai.Pipeline.Editor.Commands.Common
                     IPointCollection pointCollection = polyline as IPointCollection;
                     pointCollection.UpdatePoint(pointCollection.PointCount - 1, snappingResult.Location);
                 }
+                CommonHelper.MovePointWithLine(_pointFeature, _lineFeatures, polyline.ToPoint, _tolerance);
+                //IPoint linkPoint = _pointFeature.Shape as IPoint;
+                //linkPoint.PutCoords(polyline.ToPoint.X, polyline.ToPoint.Y);
+                //_pointFeature.Shape = linkPoint;
+                //_pointFeature.Store();
 
-                IPoint linkPoint = _pointFeature.Shape as IPoint;
-                linkPoint.PutCoords(polyline.ToPoint.X, polyline.ToPoint.Y);
-                _pointFeature.Shape = linkPoint;
-                _pointFeature.Store();
-
-                foreach (IFeature lineFeature in _lineFeatures)
-                {
-                    IPolyline linkPolyline = lineFeature.Shape as IPolyline;
-                    if (linkPolyline == null)
-                        continue;
-                    IPointCollection pointCollection = linkPolyline as IPointCollection;
-                    if (CommonHelper.GetDistance(linkPolyline.FromPoint, polyline.FromPoint) < _tolerance)
-                    {
-                        IPoint fromPoint = pointCollection.Point[0];
-                        fromPoint.PutCoords(polyline.ToPoint.X, polyline.ToPoint.Y);
-                        pointCollection.UpdatePoint(0, fromPoint);
-                    }
-                    else if (CommonHelper.GetDistance(linkPolyline.ToPoint, polyline.FromPoint) < _tolerance)
-                    {
-                        IPoint toPoint = pointCollection.Point[pointCollection.PointCount - 1];
-                        toPoint.PutCoords(polyline.ToPoint.X, polyline.ToPoint.Y);
-                        pointCollection.UpdatePoint(pointCollection.PointCount - 1, toPoint);
-                    }
-                    lineFeature.Shape = pointCollection as IPolyline;
-                    lineFeature.Store();
-                }
+                //foreach (IFeature lineFeature in _lineFeatures)
+                //{
+                //    IPolyline linkPolyline = lineFeature.Shape as IPolyline;
+                //    if (linkPolyline == null)
+                //        continue;
+                //    IPointCollection pointCollection = linkPolyline as IPointCollection;
+                //    if (CommonHelper.GetDistance(linkPolyline.FromPoint, polyline.FromPoint) < _tolerance)
+                //    {
+                //        IPoint fromPoint = pointCollection.Point[0];
+                //        fromPoint.PutCoords(polyline.ToPoint.X, polyline.ToPoint.Y);
+                //        pointCollection.UpdatePoint(0, fromPoint);
+                //    }
+                //    else if (CommonHelper.GetDistance(linkPolyline.ToPoint, polyline.FromPoint) < _tolerance)
+                //    {
+                //        IPoint toPoint = pointCollection.Point[pointCollection.PointCount - 1];
+                //        toPoint.PutCoords(polyline.ToPoint.X, polyline.ToPoint.Y);
+                //        pointCollection.UpdatePoint(pointCollection.PointCount - 1, toPoint);
+                //    }
+                //    lineFeature.Shape = pointCollection as IPolyline;
+                //    lineFeature.Store();
+                //}
                 _lineFeedback = null;
                 _pointFeature = null;
                 _lineFeatures = null;

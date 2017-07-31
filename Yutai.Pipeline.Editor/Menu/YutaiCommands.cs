@@ -53,7 +53,9 @@ namespace Yutai.Pipeline.Editor.Menu
                     new CmdCreateLineWithToPoint(_context, _plugin),
                     new CmdDeletePoint(_context, _plugin),
                     new CmdSplitLine(_context, _plugin),
+                    new CmdSplitLineByPoint(_context, _plugin),
                     new CmdPointLineLinkage(_context, _plugin),
+                    new CmdPipelineStretch(_context, _plugin),
 
                     new CmdAngleConvert(_context, _plugin),
                     new CmdAutoGenerateNumbers(_context, _plugin),

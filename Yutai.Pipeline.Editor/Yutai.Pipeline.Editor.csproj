@@ -146,8 +146,10 @@
     <Compile Include="Commands\Common\CmdCreateLineWithToPoint.cs" />
     <Compile Include="Commands\Common\CmdDeletePoint.cs" />
     <Compile Include="Commands\Common\CmdGetTargetPoint.cs" />
+    <Compile Include="Commands\Common\CmdPipelineStretch.cs" />
     <Compile Include="Commands\Common\CmdPointLineLinkage.cs" />
     <Compile Include="Commands\Common\CmdSplitLine.cs" />
+    <Compile Include="Commands\Common\CmdSplitLineByPoint.cs" />
     <Compile Include="Commands\Exchange\CmdConversion.cs" />
     <Compile Include="Commands\Exchange\CmdClip.cs" />
     <Compile Include="Commands\Exchange\CmdDataExport.cs" />
@@ -535,6 +537,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DLL\ClosedXML.dll" />
+    <None Include="Resources\icon_SplitLineByPoint.png" />
+    <None Include="Resources\icon_PipelineStretch.png" />
     <None Include="Resources\AddCustomPoint.bmp" />
     <None Include="Resources\icon_pipe_jiaodu.png" />
     <None Include="Resources\icon_pipe_autonum.png" />

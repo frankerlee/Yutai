@@ -12,7 +12,9 @@
           <BarItem Key="PipelineEditor_CreateLineWithToPoint" Visible="true"/>
           <BarItem Key="PipelineEditor_DeletePoint" Visible="true"/>
           <BarItem Key="PipelineEditor_SplitLine" Visible="true"/>
+          <BarItem Key="PipelineEditor_SplitLineByPoint" Visible="true"/>
           <BarItem Key="PipelineEditor_PointLineLinkage" Visible="true"/>
+          <BarItem Key="PipelineEditor_PipelineStretch" Visible="true"/>
         </PageGroup>
         <PageGroup Key="Pipeline_Editor_Profession" Caption="专业编辑工具" Visible="true" Index="2">
           <BarItem Key="PipelineEditor_AngleConvert" Visible="true"/>
