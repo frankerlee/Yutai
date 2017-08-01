@@ -146,8 +146,10 @@
     <Compile Include="Commands\Common\CmdCreateLineWithToPoint.cs" />
     <Compile Include="Commands\Common\CmdDeletePoint.cs" />
     <Compile Include="Commands\Common\CmdGetTargetPoint.cs" />
+    <Compile Include="Commands\Common\CmdLineLineToRightAngle.cs" />
     <Compile Include="Commands\Common\CmdPipelineStretch.cs" />
     <Compile Include="Commands\Common\CmdPointLineLinkage.cs" />
+    <Compile Include="Commands\Common\CmdPointLineToRightAngle.cs" />
     <Compile Include="Commands\Common\CmdSplitLine.cs" />
     <Compile Include="Commands\Common\CmdSplitLineByPoint.cs" />
     <Compile Include="Commands\Exchange\CmdConversion.cs" />
@@ -537,6 +539,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DLL\ClosedXML.dll" />
+    <None Include="Resources\Image1.png" />
+    <None Include="Resources\icon_PointLineToRightAngle.png" />
+    <None Include="Resources\icon_LineLineToRightAngle.png" />
     <None Include="Resources\icon_SplitLineByPoint.png" />
     <None Include="Resources\icon_PipelineStretch.png" />
     <None Include="Resources\AddCustomPoint.bmp" />

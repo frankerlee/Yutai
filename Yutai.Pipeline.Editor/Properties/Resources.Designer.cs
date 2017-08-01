@@ -123,6 +123,16 @@ namespace Yutai.Pipeline.Editor.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap icon_LineLineToRightAngle {
+            get {
+                object obj = ResourceManager.GetObject("icon_LineLineToRightAngle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap icon_pipe_autonum {
             get {
                 object obj = ResourceManager.GetObject("icon_pipe_autonum", resourceCulture);
@@ -316,6 +326,16 @@ namespace Yutai.Pipeline.Editor.Properties {
         internal static System.Drawing.Bitmap icon_PointLineLinkage {
             get {
                 object obj = ResourceManager.GetObject("icon_PointLineLinkage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_PointLineToRightAngle {
+            get {
+                object obj = ResourceManager.GetObject("icon_PointLineToRightAngle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

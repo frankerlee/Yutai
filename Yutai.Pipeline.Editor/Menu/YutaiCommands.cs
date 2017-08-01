@@ -56,6 +56,8 @@ namespace Yutai.Pipeline.Editor.Menu
                     new CmdSplitLineByPoint(_context, _plugin),
                     new CmdPointLineLinkage(_context, _plugin),
                     new CmdPipelineStretch(_context, _plugin),
+                    new CmdPointLineToRightAngle(_context, _plugin),
+                    new CmdLineLineToRightAngle(_context, _plugin),
 
                     new CmdAngleConvert(_context, _plugin),
                     new CmdAutoGenerateNumbers(_context, _plugin),
