@@ -233,6 +233,16 @@ namespace Yutai.Pipeline.Editor.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap icon_pipe_exportexcel {
+            get {
+                object obj = ResourceManager.GetObject("icon_pipe_exportexcel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap icon_pipe_jiaodu {
             get {
                 object obj = ResourceManager.GetObject("icon_pipe_jiaodu", resourceCulture);

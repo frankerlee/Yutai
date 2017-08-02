@@ -56,6 +56,27 @@ namespace Yutai.Pipeline.Editor.Controls
             }
         }
 
+        public IDictionary<int, string> SelectedFieldDictionary
+        {
+            get
+            {
+                IDictionary<int, string> dictionary = new Dictionary<int, string>();
+
+                for (int i = 0; i < checkedListBox1.Items.Count; i++)
+                {
+                    if (checkedListBox1.GetItemChecked(i))
+                    {
+                        string fieldName = checkedListBox1.Items[i].ToString().Split('(')[0];
+                        int idx = _fields.FindField(fieldName);
+                        if (idx < 0)
+                            continue;
+                        dictionary.Add(idx, _fields.Field[idx].Name);
+                    }
+                }
+                return dictionary;
+            }
+        }
+
         public string SelectedFieldNames
         {
             get

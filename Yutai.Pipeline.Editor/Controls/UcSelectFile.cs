@@ -64,6 +64,7 @@ namespace Yutai.Pipeline.Editor.Controls
                             _workspace = new AccessWorkspaceFactoryClass().OpenFromFile(_fileName, 0);
                         }
                     }
+                    txtPath.Text = _fileName;
                 }
             }
             else
@@ -76,6 +77,7 @@ namespace Yutai.Pipeline.Editor.Controls
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     _fileName = dialog.FileName;
+                    txtPath.Text = _fileName;
                 }
             }
         }

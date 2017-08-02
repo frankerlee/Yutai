@@ -67,6 +67,7 @@ namespace Yutai.Pipeline.Editor.Menu
                     new CmdClip(_context, _plugin),
                     new CmdDataExport(_context, _plugin),
                     new CmdDataStorage(_context, _plugin),
+                    new CmdExportExcel(_context, _plugin),
                     new CmdImportAxfData(_context, _plugin),
                     new CmdImportExcelData(_context, _plugin),
                     new CmdImportSurveyData(_context, _plugin),

@@ -31,6 +31,13 @@ namespace Yutai.Pipeline.Editor.Forms
             set { ucSelectFields1.SelectedFieldList = value; }
         }
 
+
+
+        public IDictionary<int, string> SelectedFieldDictionary
+        {
+            get { return ucSelectFields1.SelectedFieldDictionary; }
+        }
+
         private void btnAll_Click(object sender, EventArgs e)
         {
             ucSelectFields1.SelectAll();

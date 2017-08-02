@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using ESRI.ArcGIS.DataInterop;
 using ESRI.ArcGIS.Geodatabase;
+using ESRI.ArcGIS.Geometry;
 using Yutai.Pipeline.Editor.SqlCe;
 
 namespace Yutai.Pipeline.Editor.Helper
@@ -240,6 +242,208 @@ namespace Yutai.Pipeline.Editor.Helper
             }
             Marshal.ReleaseComObject(featureCursor);
             return list.Max();
+        }
+
+        public static DataTable FeatureClassToDataTable(IFeatureClass featureClass, IDictionary<int, IGeometry> geometrys = null, string whereClause = null, IDictionary<int, string> fieldNames = null)
+        {
+            DataTable dataTable;
+            if (fieldNames == null || fieldNames.Count <= 0)
+                dataTable = CreateDataTable(featureClass.AliasName, featureClass.Fields);
+            else
+                dataTable = CreateDataTable(featureClass.AliasName, fieldNames.Values.ToList());
+            string strGeometry = GetShapeString(featureClass);
+            IFeatureCursor featureCursor = null;
+            IFeature feature;
+            if (geometrys == null || geometrys.Count <= 0)
+            {
+                IQueryFilter queryFilter = new QueryFilterClass();
+                if (string.IsNullOrWhiteSpace(whereClause) == false)
+                    queryFilter.WhereClause = whereClause;
+                featureCursor = featureClass.Search(queryFilter, false);
+                while ((feature = featureCursor.NextFeature()) != null)
+                {
+                    DataRow dataRow = dataTable.NewRow();
+                    if (fieldNames == null || fieldNames.Count <= 0)
+                    {
+                        for (int i = 0; i < featureClass.Fields.FieldCount; i++)
+                        {
+                            IField field = featureClass.Fields.Field[i];
+                            if (field.Type == esriFieldType.esriFieldTypeGeometry)
+                            {
+                                dataRow[field.Name] = strGeometry;
+                            }
+                            else if (field.Type != esriFieldType.esriFieldTypeBlob)
+                            {
+                                dataRow[field.Name] = feature.Value[i];
+                            }
+                            else
+                            {
+                                dataRow[field.Name] = "二进制数据";
+                            }
+                        }
+                    }
+                    else
+                    {
+                        foreach (KeyValuePair<int, string> fieldName in fieldNames)
+                        {
+                            IField field = feature.Fields.Field[fieldName.Key];
+
+                            if (field.Type == esriFieldType.esriFieldTypeGeometry)
+                            {
+                                dataRow[field.Name] = strGeometry;
+                            }
+                            else if (field.Type != esriFieldType.esriFieldTypeBlob)
+                            {
+                                dataRow[field.Name] = feature.Value[fieldName.Key];
+                            }
+                            else
+                            {
+                                dataRow[field.Name] = "二进制数据";
+                            }
+                        }
+                    }
+                    dataTable.Rows.Add(dataRow);
+                }
+            }
+            else
+            {
+                foreach (KeyValuePair<int, IGeometry> geometry in geometrys)
+                {
+                    ISpatialFilter spatialFilter = new SpatialFilterClass();
+                    if (string.IsNullOrWhiteSpace(whereClause) == false)
+                        spatialFilter.WhereClause = whereClause;
+                    spatialFilter.Geometry = geometry.Value;
+                    spatialFilter.GeometryField = featureClass.ShapeFieldName;
+                    spatialFilter.SpatialRel = esriSpatialRelEnum.esriSpatialRelIntersects;
+                    featureCursor = featureClass.Search(spatialFilter, false);
+                    while ((feature = featureCursor.NextFeature()) != null)
+                    {
+                        DataRow dataRow = dataTable.NewRow();
+                        if (fieldNames == null || fieldNames.Count <= 0)
+                        {
+                            for (int i = 0; i < featureClass.Fields.FieldCount; i++)
+                            {
+                                IField field = featureClass.Fields.Field[i];
+                                if (field.Type == esriFieldType.esriFieldTypeGeometry)
+                                {
+                                    dataRow[field.Name] = strGeometry;
+                                }
+                                else if (field.Type != esriFieldType.esriFieldTypeBlob)
+                                {
+                                    dataRow[field.Name] = feature.Value[i];
+                                }
+                                else
+                                {
+                                    dataRow[field.Name] = "二进制数据";
+                                }
+                            }
+                        }
+                        else
+                        {
+                            foreach (KeyValuePair<int, string> fieldName in fieldNames)
+                            {
+                                IField field = feature.Fields.Field[fieldName.Key];
+
+                                if (field.Type == esriFieldType.esriFieldTypeGeometry)
+                                {
+                                    dataRow[field.Name] = strGeometry;
+                                }
+                                else if (field.Type != esriFieldType.esriFieldTypeBlob)
+                                {
+                                    dataRow[field.Name] = feature.Value[fieldName.Key];
+                                }
+                                else
+                                {
+                                    dataRow[field.Name] = "二进制数据";
+                                }
+                            }
+                        }
+                        dataTable.Rows.Add(dataRow);
+                    }
+                }
+                
+            }
+            return dataTable;
+        }
+        private static string GetShapeString(IFeatureClass pFeatClass)
+        {
+            string str;
+            if (pFeatClass != null)
+            {
+                string str1 = "";
+                switch (pFeatClass.ShapeType)
+                {
+                    case esriGeometryType.esriGeometryPoint:
+                        {
+                            str1 = "点";
+                            break;
+                        }
+                    case esriGeometryType.esriGeometryMultipoint:
+                        {
+                            str1 = "多点";
+                            break;
+                        }
+                    case esriGeometryType.esriGeometryPolyline:
+                        {
+                            str1 = "线";
+                            break;
+                        }
+                    case esriGeometryType.esriGeometryPolygon:
+                        {
+                            str1 = "多边形";
+                            break;
+                        }
+                    case esriGeometryType.esriGeometryEnvelope:
+                    case esriGeometryType.esriGeometryPath:
+                    case esriGeometryType.esriGeometryAny:
+                    case esriGeometryType.esriGeometryMultiPatch:
+                        {
+                            str1 = "多面";
+                            break;
+                        }
+                    default:
+                        break;
+                }
+                int num = pFeatClass.Fields.FindField(pFeatClass.ShapeFieldName);
+                IGeometryDef geometryDef = pFeatClass.Fields.Field[num].GeometryDef;
+                str1 = string.Concat(str1, " ");
+                if (geometryDef.HasZ)
+                {
+                    str1 = string.Concat(str1, "Z");
+                }
+                if (geometryDef.HasM)
+                {
+                    str1 = string.Concat(str1, "M");
+                }
+                str = str1;
+            }
+            else
+            {
+                str = "";
+            }
+            return str;
+        }
+
+
+        public static DataTable CreateDataTable(string tableName, List<string> columnList)
+        {
+            DataTable dataTable = new DataTable(tableName);
+            foreach (string columnName in columnList)
+            {
+                dataTable.Columns.Add(new DataColumn(columnName));
+            }
+            return dataTable;
+        }
+
+        public static DataTable CreateDataTable(string tableName, IFields fields)
+        {
+            DataTable dataTable = new DataTable(tableName);
+            for (int i = 0; i < fields.FieldCount; i++)
+            {
+                IField field = fields.Field[i];
+                dataTable.Columns.Add(new DataColumn(field.Name));
+            }
+            return dataTable;
         }
     }
 }

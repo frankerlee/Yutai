@@ -21,6 +21,8 @@ namespace Yutai.Pipeline.Editor.Controls
         private IFeatureLayer _featureLayer;
         private List<IField> _selectedFieldList;
         private IDictionary<int, int> _fieldMappingInts;
+        private IDictionary<int, string> _selectedFieldDictionary;
+
         public UcLayerFields()
         {
             InitializeComponent();
@@ -53,22 +55,28 @@ namespace Yutai.Pipeline.Editor.Controls
 
         public IDictionary<int, int> FieldMappingInts => _fieldMappingInts;
 
+
+        public IDictionary<int, string> SelectedFieldDictionary => _selectedFieldDictionary;
+
         private void btnSelectFields_Click(object sender, EventArgs e)
         {
             FrmSelectFields frm = new FrmSelectFields(_featureLayer.FeatureClass.Fields, _selectedFieldList);
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 _selectedFieldList = frm.SelectedFieldList;
+                _selectedFieldDictionary = frm.SelectedFieldDictionary;
             }
         }
 
         public void DefaultFields()
         {
             _selectedFieldList = new List<IField>();
+            _selectedFieldDictionary = new Dictionary<int, string>();
             IFields fields = _featureLayer.FeatureClass.Fields;
             for (int i = 0; i < fields.FieldCount; i++)
             {
                 _selectedFieldList.Add(fields.Field[i]);
+                _selectedFieldDictionary.Add(i ,fields.Field[i].Name);
             }
         }
 

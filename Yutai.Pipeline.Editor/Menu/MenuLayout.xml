@@ -33,16 +33,17 @@
           <BarItem Key="PipelineEditor_DeleteAll" Visible="true"/>
           <BarItem Key="PipelineEditor_AnnotationSorting" Visible="true"/>
         </PageGroup>
-        <PageGroup Key="Pipeline_Editor_Exchange" Caption="数据交换" Visible="true" Index="5">
-          <!--<BarItem Key="PipelineEditor_Conversion" Visible="true"/>-->
-          <BarItem Key="PipelineEditor_Clip" Visible="true"/>
-          <!--<BarItem Key="PipelineEditor_DataStorage" Visible="true"/>-->
-          <BarItem Key="PipelineEditor_DataExport" Visible="true"/>
+        <PageGroup Key="Pipeline_Editor_Import" Caption="数据导入" Visible="true" Index="5">
           <BarItem Key="PipelineEditor_ImportAxfData" Visible="true"/>
           <BarItem Key="PipelineEditor_ImportSurveyData" Visible="true"/>
           <BarItem Key="PipelineEditor_ImportExcelData" Visible="true"/>
         </PageGroup>
-        <PageGroup Key="Pipeline_Editor_History" Caption="历史管理" Visible="true" Index="6">
+        <PageGroup Key="Pipeline_Editor_Export" Caption="数据导出" Visible="true" Index="6">
+          <BarItem Key="PipelineEditor_Clip" Visible="true"/>
+          <BarItem Key="PipelineEditor_DataExport" Visible="true"/>
+          <BarItem Key="PipelineEditor_ExportExcel" Visible="true"/>
+        </PageGroup>
+        <PageGroup Key="Pipeline_Editor_History" Caption="历史管理" Visible="true" Index="7">
           <BarItem Key="PipelineEditor_VersionManagement" Visible="true"/>
           <BarItem Key="PipelineEditor_VersionQuery" Visible="true"/>
         </PageGroup>

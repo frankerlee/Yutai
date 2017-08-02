@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Aspose.Cells, Version=5.3.1.0, Culture=neutral, PublicKeyToken=9ec0ff091d04b091, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\Aspose.Cells.dll</HintPath>
+    </Reference>
     <Reference Include="ClosedXML, Version=0.69.1.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>DLL\ClosedXML.dll</HintPath>
@@ -116,6 +120,7 @@
     <Compile Include="Axf\AXF_LAYERS.cs" />
     <Compile Include="Axf\AXF_TableInfo.cs" />
     <Compile Include="Axf\AXF_TABLES.cs" />
+    <Compile Include="Classes\AsposeExcelTools.cs" />
     <Compile Include="Classes\CheQiFieldMapping.cs" />
     <Compile Include="Classes\FeatureSearch.cs" />
     <Compile Include="Classes\FeatureSearchByPoint.cs" />
@@ -156,6 +161,7 @@
     <Compile Include="Commands\Exchange\CmdClip.cs" />
     <Compile Include="Commands\Exchange\CmdDataExport.cs" />
     <Compile Include="Commands\Exchange\CmdDataStorage.cs" />
+    <Compile Include="Commands\Exchange\CmdExportExcel.cs" />
     <Compile Include="Commands\Exchange\CmdImportAxfData.cs" />
     <Compile Include="Commands\Exchange\CmdImportExcelData.cs" />
     <Compile Include="Commands\Exchange\CmdImportSurveyData.cs" />
@@ -279,6 +285,12 @@
     </Compile>
     <Compile Include="Forms\Exchange\FrmClip.Designer.cs">
       <DependentUpon>FrmClip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Exchange\FrmExportExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Exchange\FrmExportExcel.Designer.cs">
+      <DependentUpon>FrmExportExcel.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Exchange\FrmExportData.cs">
       <SubType>Form</SubType>
@@ -483,6 +495,9 @@
     <EmbeddedResource Include="Forms\Exchange\FrmClip.resx">
       <DependentUpon>FrmClip.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Exchange\FrmExportExcel.resx">
+      <DependentUpon>FrmExportExcel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Exchange\FrmExportData.resx">
       <DependentUpon>FrmExportData.cs</DependentUpon>
     </EmbeddedResource>
@@ -538,7 +553,9 @@
     <None Include="Resources\img_arrow_change.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DLL\Aspose.Cells.dll" />
     <Content Include="DLL\ClosedXML.dll" />
+    <None Include="Resources\icon_pipe_exportexcel.png" />
     <None Include="Resources\Image1.png" />
     <None Include="Resources\icon_PointLineToRightAngle.png" />
     <None Include="Resources\icon_LineLineToRightAngle.png" />
