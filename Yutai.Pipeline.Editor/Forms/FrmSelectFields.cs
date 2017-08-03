@@ -33,7 +33,7 @@ namespace Yutai.Pipeline.Editor.Forms
 
 
 
-        public IDictionary<int, string> SelectedFieldDictionary
+        public IDictionary<int, IField> SelectedFieldDictionary
         {
             get { return ucSelectFields1.SelectedFieldDictionary; }
         }

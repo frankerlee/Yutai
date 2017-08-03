@@ -21,7 +21,7 @@ namespace Yutai.Pipeline.Editor.Controls
         private IFeatureLayer _featureLayer;
         private List<IField> _selectedFieldList;
         private IDictionary<int, int> _fieldMappingInts;
-        private IDictionary<int, string> _selectedFieldDictionary;
+        private IDictionary<int, IField> _selectedFieldDictionary;
 
         public UcLayerFields()
         {
@@ -56,7 +56,7 @@ namespace Yutai.Pipeline.Editor.Controls
         public IDictionary<int, int> FieldMappingInts => _fieldMappingInts;
 
 
-        public IDictionary<int, string> SelectedFieldDictionary => _selectedFieldDictionary;
+        public IDictionary<int, IField> SelectedFieldDictionary => _selectedFieldDictionary;
 
         private void btnSelectFields_Click(object sender, EventArgs e)
         {
@@ -71,12 +71,12 @@ namespace Yutai.Pipeline.Editor.Controls
         public void DefaultFields()
         {
             _selectedFieldList = new List<IField>();
-            _selectedFieldDictionary = new Dictionary<int, string>();
+            _selectedFieldDictionary = new Dictionary<int, IField>();
             IFields fields = _featureLayer.FeatureClass.Fields;
             for (int i = 0; i < fields.FieldCount; i++)
             {
                 _selectedFieldList.Add(fields.Field[i]);
-                _selectedFieldDictionary.Add(i ,fields.Field[i].Name);
+                _selectedFieldDictionary.Add(i ,fields.Field[i]);
             }
         }
 

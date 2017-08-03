@@ -244,13 +244,13 @@ namespace Yutai.Pipeline.Editor.Helper
             return list.Max();
         }
 
-        public static DataTable FeatureClassToDataTable(IFeatureClass featureClass, IDictionary<int, IGeometry> geometrys = null, string whereClause = null, IDictionary<int, string> fieldNames = null)
+        public static DataTable FeatureClassToDataTable(IFeatureClass featureClass, IDictionary<int, IGeometry> geometrys = null, string whereClause = null, IDictionary<int, IField> fields = null)
         {
             DataTable dataTable;
-            if (fieldNames == null || fieldNames.Count <= 0)
+            if (fields == null || fields.Count <= 0)
                 dataTable = CreateDataTable(featureClass.AliasName, featureClass.Fields);
             else
-                dataTable = CreateDataTable(featureClass.AliasName, fieldNames.Values.ToList());
+                dataTable = CreateDataTable(featureClass.AliasName, fields.Values.ToList());
             string strGeometry = GetShapeString(featureClass);
             IFeatureCursor featureCursor = null;
             IFeature feature;
@@ -263,7 +263,7 @@ namespace Yutai.Pipeline.Editor.Helper
                 while ((feature = featureCursor.NextFeature()) != null)
                 {
                     DataRow dataRow = dataTable.NewRow();
-                    if (fieldNames == null || fieldNames.Count <= 0)
+                    if (fields == null || fields.Count <= 0)
                     {
                         for (int i = 0; i < featureClass.Fields.FieldCount; i++)
                         {
@@ -284,21 +284,19 @@ namespace Yutai.Pipeline.Editor.Helper
                     }
                     else
                     {
-                        foreach (KeyValuePair<int, string> fieldName in fieldNames)
+                        foreach (KeyValuePair<int, IField> field in fields)
                         {
-                            IField field = feature.Fields.Field[fieldName.Key];
-
-                            if (field.Type == esriFieldType.esriFieldTypeGeometry)
+                            if (field.Value.Type == esriFieldType.esriFieldTypeGeometry)
                             {
-                                dataRow[field.Name] = strGeometry;
+                                dataRow[field.Value.Name] = strGeometry;
                             }
-                            else if (field.Type != esriFieldType.esriFieldTypeBlob)
+                            else if (field.Value.Type != esriFieldType.esriFieldTypeBlob)
                             {
-                                dataRow[field.Name] = feature.Value[fieldName.Key];
+                                dataRow[field.Value.Name] = feature.Value[field.Key];
                             }
                             else
                             {
-                                dataRow[field.Name] = "二进制数据";
+                                dataRow[field.Value.Name] = "二进制数据";
                             }
                         }
                     }
@@ -319,7 +317,7 @@ namespace Yutai.Pipeline.Editor.Helper
                     while ((feature = featureCursor.NextFeature()) != null)
                     {
                         DataRow dataRow = dataTable.NewRow();
-                        if (fieldNames == null || fieldNames.Count <= 0)
+                        if (fields == null || fields.Count <= 0)
                         {
                             for (int i = 0; i < featureClass.Fields.FieldCount; i++)
                             {
@@ -340,21 +338,19 @@ namespace Yutai.Pipeline.Editor.Helper
                         }
                         else
                         {
-                            foreach (KeyValuePair<int, string> fieldName in fieldNames)
+                            foreach (KeyValuePair<int, IField> field in fields)
                             {
-                                IField field = feature.Fields.Field[fieldName.Key];
-
-                                if (field.Type == esriFieldType.esriFieldTypeGeometry)
+                                if (field.Value.Type == esriFieldType.esriFieldTypeGeometry)
                                 {
-                                    dataRow[field.Name] = strGeometry;
+                                    dataRow[field.Value.Name] = strGeometry;
                                 }
-                                else if (field.Type != esriFieldType.esriFieldTypeBlob)
+                                else if (field.Value.Type != esriFieldType.esriFieldTypeBlob)
                                 {
-                                    dataRow[field.Name] = feature.Value[fieldName.Key];
+                                    dataRow[field.Value.Name] = feature.Value[field.Key];
                                 }
                                 else
                                 {
-                                    dataRow[field.Name] = "二进制数据";
+                                    dataRow[field.Value.Name] = "二进制数据";
                                 }
                             }
                         }
@@ -365,6 +361,7 @@ namespace Yutai.Pipeline.Editor.Helper
             }
             return dataTable;
         }
+
         private static string GetShapeString(IFeatureClass pFeatClass)
         {
             string str;
@@ -425,12 +422,50 @@ namespace Yutai.Pipeline.Editor.Helper
         }
 
 
-        public static DataTable CreateDataTable(string tableName, List<string> columnList)
+        public static DataTable CreateDataTable(string tableName, List<IField> fields)
         {
             DataTable dataTable = new DataTable(tableName);
-            foreach (string columnName in columnList)
+            foreach (IField field in fields)
             {
-                dataTable.Columns.Add(new DataColumn(columnName));
+                DataColumn dataColumn = new DataColumn(field.Name)
+                {
+                    Caption = field.AliasName
+                };
+                if (field.Type == esriFieldType.esriFieldTypeDouble)
+                {
+                    dataColumn.DataType = Type.GetType("System.Double");
+                }
+                else if (field.Type == esriFieldType.esriFieldTypeInteger)
+                {
+                    dataColumn.DataType = Type.GetType("System.Int32");
+                }
+                else if (field.Type == esriFieldType.esriFieldTypeSmallInteger)
+                {
+                    dataColumn.DataType = Type.GetType("System.Int16");
+                }
+                else if (field.Type == esriFieldType.esriFieldTypeSingle)
+                {
+                    dataColumn.DataType = Type.GetType("System.Double");
+                }
+                else if (field.Type == esriFieldType.esriFieldTypeDate)
+                {
+                    dataColumn.DataType = Type.GetType("System.DateTime");
+                }
+
+                if (field.Type == esriFieldType.esriFieldTypeBlob)
+                {
+                    dataColumn.ReadOnly = true;
+                }
+                else if (field.Type != esriFieldType.esriFieldTypeGeometry)
+                {
+                    dataColumn.ReadOnly = !field.Editable;
+                }
+                else
+                {
+                    dataColumn.ReadOnly = true;
+                }
+
+                dataTable.Columns.Add(dataColumn);
             }
             return dataTable;
         }
@@ -441,7 +476,45 @@ namespace Yutai.Pipeline.Editor.Helper
             for (int i = 0; i < fields.FieldCount; i++)
             {
                 IField field = fields.Field[i];
-                dataTable.Columns.Add(new DataColumn(field.Name));
+                DataColumn dataColumn = new DataColumn(field.Name)
+                {
+                    Caption = field.AliasName
+                };
+                if (field.Type == esriFieldType.esriFieldTypeDouble)
+                {
+                    dataColumn.DataType = Type.GetType("System.Double");
+                }
+                else if (field.Type == esriFieldType.esriFieldTypeInteger)
+                {
+                    dataColumn.DataType = Type.GetType("System.Int32");
+                }
+                else if (field.Type == esriFieldType.esriFieldTypeSmallInteger)
+                {
+                    dataColumn.DataType = Type.GetType("System.Int16");
+                }
+                else if (field.Type == esriFieldType.esriFieldTypeSingle)
+                {
+                    dataColumn.DataType = Type.GetType("System.Double");
+                }
+                else if (field.Type == esriFieldType.esriFieldTypeDate)
+                {
+                    dataColumn.DataType = Type.GetType("System.DateTime");
+                }
+
+                if (field.Type == esriFieldType.esriFieldTypeBlob)
+                {
+                    dataColumn.ReadOnly = true;
+                }
+                else if (field.Type != esriFieldType.esriFieldTypeGeometry)
+                {
+                    dataColumn.ReadOnly = !field.Editable;
+                }
+                else
+                {
+                    dataColumn.ReadOnly = true;
+                }
+
+                dataTable.Columns.Add(dataColumn);
             }
             return dataTable;
         }

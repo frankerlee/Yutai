@@ -42,6 +42,7 @@
           <BarItem Key="PipelineEditor_Clip" Visible="true"/>
           <BarItem Key="PipelineEditor_DataExport" Visible="true"/>
           <BarItem Key="PipelineEditor_ExportExcel" Visible="true"/>
+          <BarItem Key="PipelineEditor_ExportMdb" Visible="true"/>
         </PageGroup>
         <PageGroup Key="Pipeline_Editor_History" Caption="历史管理" Visible="true" Index="7">
           <BarItem Key="PipelineEditor_VersionManagement" Visible="true"/>

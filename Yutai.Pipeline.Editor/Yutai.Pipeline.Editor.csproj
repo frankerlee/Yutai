@@ -120,6 +120,7 @@
     <Compile Include="Axf\AXF_LAYERS.cs" />
     <Compile Include="Axf\AXF_TableInfo.cs" />
     <Compile Include="Axf\AXF_TABLES.cs" />
+    <Compile Include="Classes\AccessTools.cs" />
     <Compile Include="Classes\AsposeExcelTools.cs" />
     <Compile Include="Classes\CheQiFieldMapping.cs" />
     <Compile Include="Classes\FeatureSearch.cs" />
@@ -162,6 +163,7 @@
     <Compile Include="Commands\Exchange\CmdDataExport.cs" />
     <Compile Include="Commands\Exchange\CmdDataStorage.cs" />
     <Compile Include="Commands\Exchange\CmdExportExcel.cs" />
+    <Compile Include="Commands\Exchange\CmdExportMdb.cs" />
     <Compile Include="Commands\Exchange\CmdImportAxfData.cs" />
     <Compile Include="Commands\Exchange\CmdImportExcelData.cs" />
     <Compile Include="Commands\Exchange\CmdImportSurveyData.cs" />
@@ -285,6 +287,12 @@
     </Compile>
     <Compile Include="Forms\Exchange\FrmClip.Designer.cs">
       <DependentUpon>FrmClip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Exchange\FrmExportMdb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Exchange\FrmExportMdb.Designer.cs">
+      <DependentUpon>FrmExportMdb.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Exchange\FrmExportExcel.cs">
       <SubType>Form</SubType>
@@ -495,6 +503,9 @@
     <EmbeddedResource Include="Forms\Exchange\FrmClip.resx">
       <DependentUpon>FrmClip.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Exchange\FrmExportMdb.resx">
+      <DependentUpon>FrmExportMdb.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Exchange\FrmExportExcel.resx">
       <DependentUpon>FrmExportExcel.cs</DependentUpon>
     </EmbeddedResource>
@@ -555,6 +566,7 @@
   <ItemGroup>
     <Content Include="DLL\Aspose.Cells.dll" />
     <Content Include="DLL\ClosedXML.dll" />
+    <None Include="Resources\icon_pipe_access.png" />
     <None Include="Resources\icon_pipe_exportexcel.png" />
     <None Include="Resources\Image1.png" />
     <None Include="Resources\icon_PointLineToRightAngle.png" />
@@ -589,6 +601,26 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Cursors\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="ADODB">
+      <Guid>{2A75196C-D9EB-4129-B803-931327F72D5C}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="ADOX">
+      <Guid>{00000600-0000-0010-8000-00AA006D2EA4}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

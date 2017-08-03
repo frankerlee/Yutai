@@ -84,11 +84,11 @@ namespace Yutai.Pipeline.Editor.Controls
 
         private bool CheckGxObjectFilter(string filter)
         {
-            if (filter.ToUpper().Contains(".MDB"))
+            if (filter.ToUpper().Contains("个人地理数据库|*.mdb"))
             {
                 return true;
             }
-            if (filter.ToUpper().Contains(".GDB"))
+            if (filter.ToUpper().Contains("文件地理数据库|*.gdb"))
             {
                 return true;
             }
@@ -128,7 +128,6 @@ namespace Yutai.Pipeline.Editor.Controls
             filters.Add("所有文件|*.*");
             filters.Add("个人地理数据库|*.mdb");
             filters.Add("文件地理数据库|*.gdb");
-            filters.Add("地理数据库|*.mdb;*.gdb");
 
             return new StandardValuesCollection(filters);
         }

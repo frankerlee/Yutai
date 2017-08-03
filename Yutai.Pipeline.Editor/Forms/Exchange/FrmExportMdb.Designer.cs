@@ -1,6 +1,6 @@
 ﻿namespace Yutai.Pipeline.Editor.Forms.Exchange
 {
-    partial class FrmExportExcel
+    partial class FrmExportMdb
     {
         /// <summary>
         /// Required designer variable.
@@ -31,12 +31,12 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panelLayers = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.ucSelectFile1 = new Yutai.Pipeline.Editor.Controls.UcSelectFile();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.ucSelectFile1 = new Yutai.Pipeline.Editor.Controls.UcSelectFile();
             this.ucExtentSetting1 = new Yutai.Pipeline.Editor.Controls.UcExtentSetting();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -75,14 +75,6 @@
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "设置输出参数";
-            // 
-            // ucSelectFile1
-            // 
-            this.ucSelectFile1.Filter = "Excel文件|*.xlsx;*.xls";
-            this.ucSelectFile1.Location = new System.Drawing.Point(77, 20);
-            this.ucSelectFile1.Name = "ucSelectFile1";
-            this.ucSelectFile1.Size = new System.Drawing.Size(450, 22);
-            this.ucSelectFile1.TabIndex = 4;
             // 
             // btnOK
             // 
@@ -130,6 +122,14 @@
             this.panel2.Size = new System.Drawing.Size(533, 5);
             this.panel2.TabIndex = 4;
             // 
+            // ucSelectFile1
+            // 
+            this.ucSelectFile1.Filter = "Access数据库|*.mdb";
+            this.ucSelectFile1.Location = new System.Drawing.Point(77, 20);
+            this.ucSelectFile1.Name = "ucSelectFile1";
+            this.ucSelectFile1.Size = new System.Drawing.Size(450, 22);
+            this.ucSelectFile1.TabIndex = 4;
+            // 
             // ucExtentSetting1
             // 
             this.ucExtentSetting1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -139,7 +139,7 @@
             this.ucExtentSetting1.Size = new System.Drawing.Size(252, 433);
             this.ucExtentSetting1.TabIndex = 0;
             // 
-            // FrmExportExcel
+            // FrmExportMdb
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -151,8 +151,8 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ucExtentSetting1);
-            this.Name = "FrmExportExcel";
-            this.Text = "导出Excel";
+            this.Name = "FrmExportMdb";
+            this.Text = "导出MDB";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmExportData_FormClosed);
             this.Load += new System.EventHandler(this.FrmExportData_Load);
             this.groupBox1.ResumeLayout(false);
