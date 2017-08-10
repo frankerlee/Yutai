@@ -49,5 +49,6 @@ using System.Runtime.InteropServices;
 [assembly: InternalsVisibleTo("Yutai.Metadata")]
 [assembly: InternalsVisibleTo("Yutai.Pipeline.Analysis")]
 [assembly: InternalsVisibleTo("Yutai.Pipeline.Editor")]
+[assembly: InternalsVisibleTo("Yutai.Check")]
 [assembly: InternalsVisibleTo("YutaiGIS")]
 [assembly: InternalsVisibleTo("Yutai.Test")]
