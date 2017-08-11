@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Dynamic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using ESRI.ArcGIS.Geodatabase;
@@ -14,6 +16,7 @@ namespace Yutai.Check.Classes
         private IFeature _mainFeature;
         private List<FeatureItem> _subFeatureItems;
         private string _remarks;
+        private string _name;
 
         public FeatureItem(IFeature feature)
         {
@@ -22,8 +25,7 @@ namespace Yutai.Check.Classes
             _subFeatureItems = new List<FeatureItem>();
         }
 
-        [Browsable(true)]
-        [Description("编号"), Category("Dev"), DefaultValue(0)]
+
         public int OID
         {
             get { return _oid; }
@@ -40,6 +42,12 @@ namespace Yutai.Check.Classes
         {
             get { return _subFeatureItems; }
             set { _subFeatureItems = value; }
+        }
+        
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; }
         }
 
         public string Remarks

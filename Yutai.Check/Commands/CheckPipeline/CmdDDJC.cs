@@ -38,6 +38,7 @@ namespace Yutai.Check.Commands.CheckPipeline
         {
             if (_frmDdjc == null)
                 _frmDdjc = new FrmDDJC(_context);
+            _frmDdjc.RefreshLayers();
             if (_frmDdjc.ShowDialog() != DialogResult.OK)
                 return;
 
@@ -45,9 +46,10 @@ namespace Yutai.Check.Commands.CheckPipeline
             _selectedFields = _frmDdjc.SelectedFields;
             if (!DDJC())
                 return;
-
             if (_dockPanelService == null)
                 _dockPanelService = _context.Container.GetInstance<CheckResultDockPanelService>();
+            _dockPanelService.View.DisplayName = true;
+            _dockPanelService.View.DisplayRemarks = false;
             _dockPanelService.View.FeatureItems = _featureItems;
             _dockPanelService.View.FeatureLayer = _featureLayer;
             _dockPanelService.View.ReloadData();
@@ -63,7 +65,7 @@ namespace Yutai.Check.Commands.CheckPipeline
             base.m_category = "Check_Pipeline";
             base.m_name = "Check_Pipeline_DDJC";
             base._key = "Check_Pipeline_DDJC";
-            base.m_toolTip = "将所选属性完全相同的要素检查出来。";
+            base.m_toolTip = "将缺少起点或终点的管线要素检查出来。";
             base.m_checked = false;
             base.m_message = "单点检查";
             base._itemType = RibbonItemType.Button;
@@ -140,7 +142,7 @@ namespace Yutai.Check.Commands.CheckPipeline
                         {
                             _featureItems.Remove(_featureItems.FirstOrDefault(c => c.OID == pFeature.OID));
                             featureItem.SubFeatureItems.Add(new FeatureItem(pFeature));
-                            featureItem.Remarks = $"重复个数 - {featureItem.SubFeatureItems.Count}";
+                            featureItem.Name = $"重复个数 {featureItem.SubFeatureItems.Count}";
                         }
                     }
                 }
@@ -151,7 +153,17 @@ namespace Yutai.Check.Commands.CheckPipeline
                     if (feature.SubFeatureItems.Count == 0)
                         _featureItems.Remove(feature);
                 }
-                return _featureItems.Any();
+
+                if (_featureItems.Any())
+                {
+                    MessageBox.Show(@"检查完毕", @"提示");
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show(@"检查完毕，未发现任何问题", @"提示");
+                    return false;
+                }
             }
             catch (Exception exception)
             {

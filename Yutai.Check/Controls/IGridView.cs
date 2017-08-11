@@ -11,6 +11,7 @@ namespace Yutai.Check.Controls
 {
     interface IGridView
     {
+        bool DisplayRemarks { get; set; }
         IFeatureLayer FeatureLayer { set; }
         IMap Map { set; }
         DockStyle Dock { get; set; }
@@ -21,5 +22,10 @@ namespace Yutai.Check.Controls
         void ExportToPdf(string exportFilePath);
         void ExportToHtml(string exportFilePath);
         void ExportToMht(string exportFilePath);
+        void BestFitColumns();
+
+        bool IsSelect { get; set; }
+        bool IsPanTo { get; set; }
+        bool IsZoomTo { get; set; }
     }
 }

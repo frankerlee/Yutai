@@ -30,7 +30,6 @@
         {
             this.mainGridControl = new DevExpress.XtraGrid.GridControl();
             this.mainGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.mainGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainGridView)).BeginInit();
             this.SuspendLayout();
@@ -48,25 +47,12 @@
             // 
             // mainGridView
             // 
-            this.mainGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn1});
             this.mainGridView.GridControl = this.mainGridControl;
             this.mainGridView.Name = "mainGridView";
             this.mainGridView.OptionsBehavior.Editable = false;
             this.mainGridView.OptionsView.ColumnAutoWidth = false;
             this.mainGridView.OptionsView.ShowGroupPanel = false;
-            this.mainGridView.OptionsView.ShowPreview = true;
-            this.mainGridView.PreviewFieldName = "Remarks";
             this.mainGridView.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.mainGridView_RowCellClick);
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "编号";
-            this.gridColumn1.FieldName = "OID";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 140;
             // 
             // GridControlView
             // 
@@ -85,6 +71,5 @@
 
         private DevExpress.XtraGrid.GridControl mainGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView mainGridView;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }

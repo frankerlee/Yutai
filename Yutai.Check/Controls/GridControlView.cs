@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,10 +23,26 @@ namespace Yutai.Check.Controls
         private IMap _map;
         private IActiveView _activeView;
         private IFeatureLayer _featureLayer;
+        private bool _isSelect;
+        private bool _isPanTo;
+        private bool _isZoomTo;
 
         public GridControlView()
         {
             InitializeComponent();
+        }
+
+        public bool DisplayRemarks
+        {
+            get
+            {
+                return this.mainGridView.OptionsView.ShowPreview = true;
+            }
+            set
+            {
+                this.mainGridView.OptionsView.ShowPreview = value;
+                this.mainGridView.PreviewFieldName = value ? "[备注]" : "";
+            }
         }
 
         public IFeatureLayer FeatureLayer
@@ -43,6 +60,7 @@ namespace Yutai.Check.Controls
         }
 
         public GridControl Grid => this.mainGridControl;
+
         public void ExportToXls(string exportFilePath)
         {
             this.mainGridControl.ExportToXls(exportFilePath);
@@ -73,15 +91,43 @@ namespace Yutai.Check.Controls
             this.mainGridControl.ExportToMht(exportFilePath);
         }
 
+        public void BestFitColumns()
+        {
+            this.mainGridView.BestFitColumns();
+        }
+
+        public bool IsSelect
+        {
+            get { return _isSelect; }
+            set { _isSelect = value; }
+        }
+
+        public bool IsPanTo
+        {
+            get { return _isPanTo; }
+            set { _isPanTo = value; }
+        }
+
+        public bool IsZoomTo
+        {
+            get { return _isZoomTo; }
+            set { _isZoomTo = value; }
+        }
+
         private void mainGridView_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
             if (_map == null || _featureLayer == null)
                 return;
-            FeatureItem featureItem = mainGridView.GetRow(e.RowHandle) as FeatureItem;
+            ExpandoObject featureItem = mainGridView.GetRow(e.RowHandle) as ExpandoObject;
             if (featureItem == null)
                 return;
-            SelectFeature(_featureLayer, featureItem.OID);
-            PanToFeature(_featureLayer, featureItem.OID);
+            var item = featureItem as IDictionary<string, System.Object>;
+            if (_isSelect)
+                SelectFeature(_featureLayer, (int)item["[编号]"]);
+            if (_isPanTo)
+                PanToFeature(_featureLayer, (int)item["[编号]"]);
+            if (_isZoomTo)
+                ZoomToFeature(_featureLayer, (int)item["[编号]"]);
         }
 
         public IFeature SelectFeature(IFeatureLayer featureLayer, int oid)
@@ -106,6 +152,7 @@ namespace Yutai.Check.Controls
             point.PutCoords(centerX, centerY);
             pEnvelope.CenterAt(point);
             _activeView.Extent = pEnvelope;
+
             _activeView.Refresh();
         }
         public void ZoomToFeature(IFeatureLayer featureLayer, int oid)

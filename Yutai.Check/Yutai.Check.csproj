@@ -111,11 +111,23 @@
     </Compile>
     <Compile Include="Controls\IGridView.cs" />
     <Compile Include="Enums\CheckResultCommand.cs" />
+    <Compile Include="Forms\FrmFKJC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmFKJC.Designer.cs">
+      <DependentUpon>FrmFKJC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmDDJC.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FrmDDJC.Designer.cs">
       <DependentUpon>FrmDDJC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmLDJC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmLDJC.Designer.cs">
+      <DependentUpon>FrmLDJC.cs</DependentUpon>
     </Compile>
     <Compile Include="Menu\MenuGenerator.cs" />
     <Compile Include="Menu\YutaiCommands.cs" />
@@ -161,8 +173,14 @@
     <EmbeddedResource Include="Controls\GridControlView.resx">
       <DependentUpon>GridControlView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmFKJC.resx">
+      <DependentUpon>FrmFKJC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmDDJC.resx">
       <DependentUpon>FrmDDJC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmLDJC.resx">
+      <DependentUpon>FrmLDJC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu\MenuLayout.xml" />
     <EmbeddedResource Include="Views\CheckResultDockPanel.resx">

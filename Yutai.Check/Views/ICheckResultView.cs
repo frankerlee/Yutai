@@ -18,6 +18,8 @@ namespace Yutai.Check.Views
 {
     public interface ICheckResultView : IMenuProvider
     {
+        bool DisplayName { get; set; }
+        bool DisplayRemarks { get; set; }
         List<FeatureItem> FeatureItems { get; set; }
         IFeatureLayer FeatureLayer { set; }
         void Initialize(IAppContext context);

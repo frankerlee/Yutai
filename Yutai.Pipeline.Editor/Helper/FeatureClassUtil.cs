@@ -357,12 +357,111 @@ namespace Yutai.Pipeline.Editor.Helper
                         dataTable.Rows.Add(dataRow);
                     }
                 }
-                
+
             }
             return dataTable;
         }
 
-        private static string GetShapeString(IFeatureClass pFeatClass)
+        public static string GetShapeString(IFeature feature)
+        {
+            string str;
+            if (feature != null)
+            {
+                string str1 = "";
+                switch (feature.Shape.GeometryType)
+                {
+                    case esriGeometryType.esriGeometryPoint:
+                        {
+                            str1 = "点";
+                            break;
+                        }
+                    case esriGeometryType.esriGeometryMultipoint:
+                        {
+                            str1 = "多点";
+                            break;
+                        }
+                    case esriGeometryType.esriGeometryPolyline:
+                        {
+                            str1 = "线";
+                            break;
+                        }
+                    case esriGeometryType.esriGeometryPolygon:
+                        {
+                            str1 = "多边形";
+                            break;
+                        }
+                    case esriGeometryType.esriGeometryEnvelope:
+                    case esriGeometryType.esriGeometryPath:
+                    case esriGeometryType.esriGeometryAny:
+                    case esriGeometryType.esriGeometryMultiPatch:
+                        {
+                            str1 = "多面";
+                            break;
+                        }
+                    default:
+                        break;
+                }
+                int num = feature.Fields.FindField((feature.Class as IFeatureClass).ShapeFieldName);
+                IGeometryDef geometryDef = feature.Fields.Field[num].GeometryDef;
+                str1 = string.Concat(str1, " ");
+                if (geometryDef.HasZ)
+                {
+                    str1 = string.Concat(str1, "Z");
+                }
+                if (geometryDef.HasM)
+                {
+                    str1 = string.Concat(str1, "M");
+                }
+                str = str1;
+            }
+            else
+            {
+                str = "";
+            }
+            return str;
+        }
+
+        public static string GetShapeString(esriGeometryType type)
+        {
+            string str = "";
+            switch (type)
+            {
+                case esriGeometryType.esriGeometryPoint:
+                    {
+                        str = "点";
+                        break;
+                    }
+                case esriGeometryType.esriGeometryMultipoint:
+                    {
+                        str = "多点";
+                        break;
+                    }
+                case esriGeometryType.esriGeometryPolyline:
+                    {
+                        str = "线";
+                        break;
+                    }
+                case esriGeometryType.esriGeometryPolygon:
+                    {
+                        str = "多边形";
+                        break;
+                    }
+                case esriGeometryType.esriGeometryEnvelope:
+                case esriGeometryType.esriGeometryPath:
+                case esriGeometryType.esriGeometryAny:
+                case esriGeometryType.esriGeometryMultiPatch:
+                    {
+                        str = "多面";
+                        break;
+                    }
+                default:
+                    break;
+            }
+
+            return str;
+        }
+
+        public static string GetShapeString(IFeatureClass pFeatClass)
         {
             string str;
             if (pFeatClass != null)
@@ -420,7 +519,6 @@ namespace Yutai.Pipeline.Editor.Helper
             }
             return str;
         }
-
 
         public static DataTable CreateDataTable(string tableName, List<IField> fields)
         {

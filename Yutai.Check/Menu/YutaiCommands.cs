@@ -39,6 +39,8 @@ namespace Yutai.Check.Menu
                 _commands = new List<YutaiCommand>()
                 {
                     new CmdDDJC(_context, _plugin),
+                    new CmdLDJC(_context, _plugin),
+                    new CmdSXFKJC(_context, _plugin),
                 };
             }
             catch (Exception ex)
